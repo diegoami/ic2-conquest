@@ -28,7 +28,7 @@ You are working in `diegoami/ic2-conquest`: a project whose only purpose is to f
 
 ## Hard rules
 
-1. **No game file in git:** no EXE, DAT, SAV, screenshot or video. Saves, screenshots and videos of a run go in a GitHub release of this repository (`run-<id>`), cited by bare filename. Everything in git is text: code, plans, logs, metrics. If you cannot create releases in your environment, keep the artifacts in a gitignored `artifacts/` folder, say so in the run's issue, and ask the player to upload them.
+1. **No game file in git:** no EXE, DAT, SAV, screenshot or video. Saves, screenshots and videos of a run go in a GitHub release of this repository (`run-<id>`), cited by bare filename. Everything in git is text: code, plans, logs, metrics. **Cloud sessions cannot create releases**: the session's GitHub proxy answers "Creating, editing, or deleting releases is not permitted for this session type" (tested 2026-09-29). So keep a run's artifacts in the gitignored `artifacts/run-<id>/`, packaged as one folder per season. At the end of the run, list in the issue the exact `gh release create run-<id> …` command for the player to run on their machine.
 2. **Never write to another repository.** Rule discoveries go to `findings/` here, in the research repo's report format, with the saves cited. The player promotes them.
 3. **The player's words in a strategy file are never edited.** The bot writes only in its own sections.
 4. **No run starts before the player approves it** in the run's GitHub issue.
