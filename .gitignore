@@ -1,0 +1,15 @@
+# Game files and run artifacts never enter git: they go in releases (run-<id>).
+*.exe
+*.EXE
+*.dat
+*.DAT
+*.sav
+*.SAV
+*.hlp
+*.cnt
+*.png
+*.mp4
+*.LOG
+WAVS/
+artifacts/
+__pycache__/

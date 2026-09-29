@@ -102,6 +102,8 @@ The dependency runs **one way**. `ic2-conquest` never writes into another reposi
 - **Video:** the Xvfb display is recorded with `ffmpeg -f x11grab` during the run. The mp4 goes in the release, cut per season; seasons flagged in the debrief are listed with timestamps. For watching battles, a replay run on the `watch rollingsave` build from the same save and seed shows the battle at the game's own pace.
 - **Your own game:** any `AUTOnnnn.SAV` loads in the real game on your desktop, so you can open the turn where things went wrong and look around yourself.
 
+The opening prompt for the first working session is in `docs/opening-prompt.md`.
+
 ## Suggested layout
 
 ```text
@@ -129,7 +131,7 @@ runs/<id>/    turns/nnnn.md, metrics.csv, checkpoints/, debrief.md, viewer.md (t
 
 ## What to carry over from the research session (in this seed)
 
-- `harness/*.sh`: Xvfb and Wine environment, open save, end turn, new game (click the Nth nation), and auto-play a battle. **Coordinates are for a 1280×1024 Xvfb screen with the default window layout.** The save stores window positions per nation, so a loaded game keeps its layout.
+- `harness/*.sh`: Xvfb and Wine environment, open save, end turn, new game (click the Nth nation), and auto-play a battle. **Coordinates are for a 1280×1024 Xvfb screen with the default window layout.** Scratch output (Wine prefix, screenshots, copied saves) goes under `$IC2_WORK`, default `~/ic2-work`, outside the git tree. The executable is picked with `$IC2_EXE`, default `Imperial Conquest 2 fast rollingsave.exe`. The save stores window positions per nation, so a loaded game keeps its layout.
 - `state/queues.py`: SAV and DAT nation-table parsing: army, fleet and nation offsets, and the recruitment slots.
 - `patches/battle_lab.py`: the seed-fixing and in-battle snapshot hooks, a pattern for the whole-turn seed patch.
 
