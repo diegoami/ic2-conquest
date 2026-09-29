@@ -6,6 +6,8 @@
 - **Run 0 has not started.** The proposal is [issue #1](https://github.com/diegoami/ic2-conquest/issues/1) and `runs/0/proposal.md`. The player answered the questions in the session (recorded at the end of `runs/0/proposal.md` and in a comment on the issue), but asked for the remaining order tests and this handover first. **Get an explicit "go" in issue #1 before turn 1.**
 - **Findings** (`findings/`, three drafts) were sent to the research session "AUTOSAVE IMPERIAL_CONQUEST" (session_01VrRVit3CMpJ5PbUA8RZc51) as a one-shot scheduled message at 2026-09-29 20:15 UTC, routine `trig_013u6cRqre8gCTyrK8J35qWr`. Its text is also `findings/PROMPT-for-research-session.md`.
 
+**Note (merged from main):** the research repo answered #515 in parallel. See `2026-09-29-which-cities-may-recruit-and-troop-amounts.md` and `2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md`, cited in `strategies/rome-v1.md`. They confirm the 75 % rule, add the refusal "This city's fortification has fallen below 75%." and the dialog amounts (battalion/5 up to a full battalion), and warn: **never order fortification to exactly 100 % with a remainder** (a bug resets the town to 0 %). This repo's `findings/…fortification-75.md` adds the third condition, "a city already holding one of your queued units". Otherwise it duplicates that report.
+
 ## Bring the environment back (a new container)
 
 ```text
