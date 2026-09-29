@@ -16,18 +16,18 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 | Attack a city (siege) | select the army, click the **adjacent** enemy city | `Game.attack` | `attack` | ✅ | `T_ATTACK.SAV`: army 0 23,700→21,765, "Rome fails to capture Felsina (Gaul).", Felsina loyalty 79→76, fort 68→65, pop 26→25 |
 | Attack an army (field battle) | select, click the adjacent enemy army; tactical screen, *Computer general* | `Game.attack` + `Game.play_battle` | — | 🟡 | battle loop taken from `harness/battle_auto.sh` |
 | Recruit a unit | toolbar *Recruit* (174,58) → *Army recruits* dialog | `Game.recruit` | `recruit` | ✅ | `T_RECRUIT.SAV`: HI 3,200 at Rome (city 85), state 0; treasury 2,200→1,880; mobilization 30→32 |
-| Mobilize | *Army recruits* → select rows → *Mobilize* (350,352) | — | — | ⬜ | |
+| Mobilize | *Army recruits* → city row → unit row (330, 177+12r) → *Mobilize* (350,352) | `Game.mobilize` | manual | ✅ | `saves/mobilize-new-army-0720.SAV`: army 14, HI 4,000 q4, 0 supplies, 0 moves, morale 59 |
 | Disband a queued unit | *Army recruits* → *Disband* (461,352) | — | — | ⬜ | |
-| Supply army | Unit map → Army → Supply army (`TAFSupply`) | — | — | ⬜ | |
-| Hire mercenaries | Unit map → Army → Recruit mercenaries | — | — | ⬜ | |
+| Supply army | select the army, army toolbar *Supply army* (349,108): 10s ▲ (169,94) moves city → army; money 100s ▲ (261,272) treasury → purse; OK (239,337) | `Game.supply` | manual | 🟡 | army 0 170 → 238 t (cap `troops div 100 + 1`), Arretium 150 → 82, purse 100 → 200, treasury −100 |
+| Hire mercenaries | army toolbar (372,108) → *Recruit mercenary unit* (490×165): row (103,86+12r), *Recruit unit* (410,104), OK (248,174); nothing opens if no offer is adjacent | `Game.hire_mercs` | manual | ✅ | `saves/merc-hire-free-0720.SAV`: Samnite LI 3,868 q8 joined army 1; **no price deducted** |
 | Transfer unit / army-to-army | Unit map → Army → Transfer unit | — | — | ⬜ | |
-| Split army | Unit map → Army → Split army | — | — | ⬜ | |
-| Join armies | Unit map → Army → Join armies | — | — | ⬜ | |
+| Split army | army toolbar (421,108) → *Split army* (610×430 at 13,39): two unit lists with Transfer/Disband, supply and money 10s/100s spinners, OK (203,398), Cancel (360,398) | — | — | 🟡 | dialog mapped only |
+| Join armies | army toolbar (445,108) | — | — | ⬜ | needs two adjacent armies (turn 2 of the run-0 plan) |
 | Change units (rename, split, join units) | Unit map → Army → Change units | — | — | ⬜ | |
 | Disband army | Unit map → Army → Disband army | — | — | ⬜ | |
-| Fortify city | Unit map → City → Fortify city | — | — | ⬜ | |
+| Fortify city | click an own city, city toolbar *Fortify city* (349,108) → *Fortify <city>*: 1s ▲ (136,86), 10s ▲ (168,86), OK (123,143) | `Game.fortify` | manual | ✅ | `saves/fortify-arretium-0720.SAV`: Arretium 72 → 372 (3 pending), −99 |
 | Taxation | toolbar % (129,58) → *Change tax level* | — | — | ⬜ | |
-| International relations | toolbar (107,58) → peace/trade/ally/war grid | — | — | ⬜ | |
+| International relations | toolbar (107,58) → *International Relations* (352×436 at 23,49): radio at x = 23 + {peace 94, trade 134, ally 176, war 218}, y = 74 + 23.55·row (Rome row 0); OK (308,217), Cancel (308,283). A refusal box aborts the whole OK: one change per call | `Game.relation` | manual | ✅ | `saves/trade-numidia-0720.SAV`: Numidia accepted; 6 refusals "You cannot trade with X."; 5 silent no-ops (open) |
 | Build fleet | toolbar anchor (196,58) | — | — | ⬜ | |
 | Fleet: move, attack, embark, disembark, supply, repair, transfer, split, join, scuttle | Unit map → Fleet → … | — | — | ⬜ | |
 | News, Balance sheet | toolbar (84,58), (151,58) | — | — | ⬜ | read-only |
@@ -65,6 +65,8 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 - Picking a type shows the default size `standard/5` (HI 1,200); each 1000s ▲ adds 1,000 (HI + 2 × 1000s = 3,200). Initial cost = `troops div 200 × initialPrice` (HI 3,200 → 320), quarterly = `troops div 200 × quarterlyPrice` (32).
 - **The city list** at the start (Rome, 270 BC) is `Luceria`, `ROME` (a capital is written in capitals). The rule, read from the code at `0x454582`: an own city is listed if its fortification is ≥ 75 (a pending order counts its built part), or it is the capital, or it already holds one of your queued units. See `findings/2026-09-29-recruiting-cities-need-fortification-75.md`.
 
+**Toolbars (tooltips read by hovering).** Army selected (unit map strip, y = 108): Supply army 349, Recruit mercenaries 372, Transfer units 397, Split army 421, Join armies 445, Change units 468, Disband army 493, Cancel selection 519. City selected: Fortify city 349, Cancel selection 372. Area map (y = 108): Toggle colour 18, Show cities 44, capital 65, armies 87, fleets 108, all 129, mercenaries by type 153/175/196/218/239, all mercenaries 261, Find a city 285. **Dialogs can end up under the main window** (no window manager): the driver raises a dialog (`xdotool windowraise`) before clicking in it.
+
 **Save As / Open**: the Wine common file dialog. The name field keeps the last name with the caret at the start, so the driver clears it (End, Shift+Home, BackSpace) before typing.
 
 **Battle screen**: title `<A> v <B>`; *Computer general on* (158,112), *End turn* (110,112), result window "Battle ended", *OK* (220,478) (from `harness/battle_auto.sh`).
@@ -97,7 +99,8 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Fleet | "The fleet can only be repaired at one of your cities." · "A fleet cannot be repaired while it is carrying an army." · "You cannot join fleets if one is carrying an army." · "You can not split a fleet containing less than 20 ships." · "You can not split a fleet carrying an army." · "You can not make any more fleets at this time." · "A fleet cannot be scuttled while it is carrying an army." · "To scuttle a fleet it must be near one of your cities." · "Are you sure you want to scuttle this fleet ?" | ⬜ |
 | Build fleet | "The fleet will be built at …" · "… ships will be ready in …" · "You do not have a free coastal city at this time." · "You cannot build a fleet at this time." | ⬜ |
 | Fortify | "You cannot fortify a city which is under siege." · "This city cannot be fortified any further." · "This city is already being fortified." | ⬜ |
-| Relations | "… does not want to make peace at this time." · "You can only trade with 3 nations." · "… does not want to trade with you." · "You cannot trade with …" · "… does not want to ally with your nation." | ⬜ |
+| Relations | "You cannot trade with …" | ✅ `saves/trade-numidia-0720.SAV` (Ptolemaic, Seleucid, Greece, Celtiberia, Dacia) |
+| Relations | "… does not want to make peace at this time." · "You can only trade with 3 nations." · "… does not want to trade with you." · "… does not want to ally with your nation." | ⬜ |
 | End turn (warnings) | "An army of yours cannot afford to pay its mercenary units." · "One of your fleets is not docked at its own city." | ⬜ |
 | Game over | "You have conquerred the Mediterranean, a unique achievement." · "You have reached the end of your allotted 20 years." · "Your army have deposed you because they have not been paid." | ⬜ |
 | Battle | "Are you sure you want to surrender ?" | ⬜ |
@@ -119,11 +122,11 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Winter attrition of city stocks | ⬜ | |
 | Morale from supply | ⬜ | |
 | Auto-resupply next to an own city | ⬜ | |
-| Recruitment readiness and mobilization | ⬜ | |
-| Mercenary hire, pay, desertion | ⬜ | |
+| Recruitment readiness and mobilization | ✅ | `saves/mobilize-new-army-0720.SAV` |
+| Mercenary hire, pay, desertion | 🟡 hire only | `saves/merc-hire-free-0720.SAV` (no up-front price) |
 | Quarterly billing and taxes | ⬜ | |
-| Fortification build | ⬜ | |
-| Trade income | ⬜ | |
+| Fortification build | 🟡 ordered | `saves/fortify-arretium-0720.SAV` |
+| Trade income | 🟡 trade made | `saves/trade-numidia-0720.SAV` |
 | Fleets: build, launch, storms, loss at sea | ⬜ | |
 | Embark, disembark, supply from a fleet | ⬜ | |
 | Rebellion, rebirth | ⬜ | |

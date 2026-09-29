@@ -5,6 +5,8 @@
 *.DAT
 *.sav
 *.SAV
+# ...except the selected saves in saves/ (player decision, 2026-09-29)
+!saves/*.SAV
 *.hlp
 *.cnt
 *.png

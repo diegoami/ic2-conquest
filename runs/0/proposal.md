@@ -65,3 +65,26 @@ Then, as the plan stands (re-planned each turn from the save):
 2. **Archers** in the recruitment mix (bot's proposal, not in rome-v1)?
 3. **Diplomacy** (rome-v1's open question): Rome has one free trade slot. A trade with the Ptolemaic kingdom would pay about 513 talents a quarter (research estimate). Propose it on turn 2?
 4. Taxes stay at 10 % in the pilot unless you say otherwise.
+
+## The player's answers (2026-09-29, given in the working session, recorded by the bot)
+
+- **Strategy:** before besieging Felsina, gather the army and **defeat the Gallic army first**, then start taking cities. **Defeating armies always takes priority over taking cities.** If the Gauls cannot be beaten, escape, wait, recruit more and add the recruits to the army.
+- **Archers:** yes, they go into the recruitment mix.
+- **Trade:** yes, and always try to fill every trade slot.
+- **Taxes:** the player usually taxes high. The side effect is lower loyalty, which has seldom mattered when militarily strong. The player does not know exactly what low loyalty does.
+- **Findings:** sent to the research session "AUTOSAVE IMPERIAL_CONQUEST".
+
+**Approval:** the run has **not** started. The player asked for the remaining order tests first, then a handover.
+
+### What changes in the plan (bot)
+
+- **Turn 2 (0721)** stays: bring armies 0 and 1 together and join them (≈ 49,500 with the Samnite mercenaries).
+- **Turn 3 onward:** the combined army seeks Gaul's field army (40,500 at (93,28) in this game) and attacks it when adjacent. Felsina comes after that battle. The walk to the Gallic army costs about 11–15 moves from Arretium, so the battle is expected on turn 0723–0724. Each battle is fought with *Computer general* and logged with both armies' compositions (P1 calibration).
+- **Rule for escaping:** if the joined army's field strength (research formula, or better, measured battle results) is below Gaul's × k, the army falls back beside Arretium or Rome and waits for the 0724/0726/0728 mobilizations.
+- **Trade:** in this game Rome trades only with Illyria (Macedonia dropped its trade before Rome's first turn: relation −8). Numidia accepts a trade on turn 1; the third slot is tried every turn against the richest nation that has not refused (a refused nation is retried after a quarter).
+- **Tax:** the bot proposes 20 % for the pilot (it is the player's style, and it tests the loyalty side effects). What low loyalty does, from the research (`docs/rules-digest.md` §3, §5):
+  - each quarter, a city at tax < 11 gains loyalty with a chance, and any city loses `Random(tax) div 8` with a 1-in-3 chance;
+  - loyalty is 150 × loyalty of a city's **siege defence**;
+  - below 65, an own city can **defect** to an enemy that captures a city of yours nearby, when your unity is < 650;
+  - below 30, a non-capital city **rebels** each quarter to its allegiance nation or to an enemy army nearby. This has never been observed in any save.
+  - Unity also falls with tax (`+25 − tax/2 − mob/5` a quarter); a nation dies below 400.

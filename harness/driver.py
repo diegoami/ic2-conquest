@@ -382,6 +382,112 @@ class Game:
         self.close_dialog("Army recruits", L["ok"])
         return texts
 
+    # ---- army toolbar (appears in the unit map's top strip, y = 108) ---------
+    ARMY_TOOLS = {"supply": 349, "mercs": 372, "transfer": 397, "split": 421, "join": 445,
+                  "change": 468, "disband": 493, "cancel": 519}
+    CITY_TOOLS = {"fortify": 349, "cancel": 372}
+
+    def army_tool(self, i, tool, title):
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        self.open_dialog(title, (self.ARMY_TOOLS[tool], 108))
+        w = self.find_windows("^%s$" % re.escape(title))[0]
+        self.raise_window(w[0])
+        return w
+
+    def supply(self, i, tons=None, money_100s=0):
+        """Supply army dialog (window 470x335 at 23,49): the 10s arrows move
+        supplies from the adjacent provider (city) to the army, capped by the
+        game at troops div 100 + 1 and the city's stock; the money arrows move
+        talents between the treasury and the army's purse (100s: +/-100)."""
+        rec = self.army_rec(i)
+        troops = sum(struct.unpack_from("<h", rec, 16 + 32 * k + 4)[0] for k in range(20)
+                     if struct.unpack_from("<h", rec, 16 + 32 * k + 4)[0] > 0)
+        have = struct.unpack_from("<h", rec, 10)[0]
+        want = troops // 100 + 1 - have if tons is None else tons
+        self.army_tool(i, "supply", "Supply army")
+        for _ in range(max(0, (want + 9) // 10)):
+            self.click(169, 94, pause=0.15)             # 10s up: city -> army
+        for _ in range(abs(money_100s)):
+            self.click(261, 272 if money_100s > 0 else 290, pause=0.15)
+        texts = self.dismiss_popups()
+        self.close_dialog("Supply army", (239, 337))
+        return struct.unpack_from("<h", self.army_rec(i), 10)[0] - have, texts
+
+    def hire_mercs(self, i, rows=(0,)):
+        """Recruit mercenary unit dialog (490x165 at 23,49): the offers of the
+        adjacent city; pick a row, Recruit unit, OK. The button does nothing (no
+        dialog) when no live offer is adjacent."""
+        before = len([k for k in range(20) if struct.unpack_from("<h", self.army_rec(i), 16 + 32 * k + 4)[0] > 0])
+        try:
+            self.army_tool(i, "mercs", "Recruit mercenary unit")
+        except DriverError:
+            return 0, ["no mercenary offer adjacent"]
+        texts = []
+        for r in sorted(rows, reverse=True):          # hired rows leave the list: go bottom-up
+            self.click(103, 86 + 12 * r, pause=0.5)
+            self.click(410, 104, pause=1.0)
+            texts += [t for t in self.dismiss_popups()]
+        self.close_dialog("Recruit mercenary unit", (248, 174))
+        after = len([k for k in range(20) if struct.unpack_from("<h", self.army_rec(i), 16 + 32 * k + 4)[0] > 0])
+        return after - before, texts
+
+    def fortify(self, city, x, y, points):
+        """Select an own city, city toolbar Fortify, 1s ▲ points times, OK
+        (dialog "Fortify <city>", 365x125 at 23,49)."""
+        self.reset_ui()
+        self.click(self.ARMY_TOOLS["cancel"], 108, pause=0.5)
+        self.click_tile(x, y, pause=1.0)
+        title = "Fortify " + city
+        self.open_dialog(title, (self.CITY_TOOLS["fortify"], 108))
+        self.raise_window(self.find_windows("^%s$" % re.escape(title))[0][0])
+        for _ in range(points % 10):
+            self.click(136, 86, pause=0.15)
+        for _ in range(points // 10):
+            self.click(168, 86, pause=0.15)
+        texts = self.dismiss_popups()
+        self.close_dialog(title, (123, 143))
+        return texts
+
+    def mobilize(self, city_row, unit_rows):
+        """Army recruits: pick the city, click each unit row (ctrl for more than
+        one), Mobilize. Rows of "Units at <city>" start at y = 177, 12 px apart."""
+        L = self.RECRUIT
+        self.open_recruit()
+        self.click(L["cities"][0], L["cities"][1] + 12 * city_row)
+        for k, r in enumerate(unit_rows):
+            if k:
+                sh("xdotool", "keydown", "ctrl")
+            self.click(330, 177 + 12 * r, pause=0.4)
+            if k:
+                sh("xdotool", "keyup", "ctrl")
+        self.click(*L["mobilize"], pause=1.5)
+        texts = self.dismiss_popups()
+        self.close_dialog("Army recruits", L["ok"])
+        return texts
+
+    RELATIONS = {"peace": 94, "trade": 134, "ally": 176, "war": 218}
+
+    def relation(self, nation, kind):
+        """International Relations (352x436 at 23,49): one radio per nation row
+        (Rome is row 0), OK at (308,217). A refusal box stops the whole OK, so
+        set one relation per call. Returns (new value in memory, box texts)."""
+        self.tool("relations", pause=1.5)
+        w = self.find_windows("^International Relations$")
+        if not w:
+            self.tool("relations", pause=1.5)
+            w = self.find_windows("^International Relations$")
+        self.raise_window(w[0][0])
+        for _ in range(2):          # a radio click is idempotent; the first may only activate
+            self.click(23 + self.RELATIONS[kind], 49 + 25 + round(23.55 * nation), pause=0.5)
+        self.shot(WORK / "shots" / "_relations.png", window=str(w[0][0]))
+        self.click(308, 217, pause=1.5)
+        texts = self.dismiss_popups()
+        if self.find_windows("^International Relations$"):
+            self.close_dialog("International Relations", (308, 283))      # Cancel
+        me = self.i16(CUR_NATION)
+        return self.i16(NATIONS + me * NATION_LEN + 0x26 + 2 * nation), texts
+
     def end_turn(self, timeout=300, battle_shot=None):
         """Game > End turn (it runs at once: there is no confirmation box), then
         play out any battle with Computer general and dismiss the AI's news and

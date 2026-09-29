@@ -4,7 +4,7 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
 
 ## Hard rules
 
-1. **No game file in git**: no EXE, DAT, SAV, screenshot or video. Git holds text only: code, plans, logs, metrics. A run's saves, screenshots and videos go in a GitHub release `run-<id>` of this repository and are cited by bare filename.
+1. **No EXE, DAT, screenshot or video in git.** Saves: the player allowed (2026-09-29) **selected** small saves in `saves/`, each listed in `saves/README.md` with why it is interesting for play or research. All other saves, screenshots and videos go in a GitHub release `run-<id>` (or `artifacts/run-<id>/`) and are cited by bare filename.
    - Releases: the session's GitHub proxy refuses release calls ("Creating, editing, or deleting releases is not permitted for this session type"; tested again 2026-09-29 with `IC2_RELEASE_TOKEN`: HTTP 403 from the proxy). Use `IC2_RELEASE_TOKEN` only for release calls, as `Authorization: Bearer`; never print, log or write it. While the proxy refuses, keep a run's artifacts in the gitignored `artifacts/run-<id>/`, one folder per season, and at the end of the run post the exact `gh release create run-<id> …` command for the player.
 2. **Never write to another repository.** Rule discoveries go to `findings/` here, in the research repo's report format, with the saves cited. The player promotes them.
 3. **The player's words in a strategy file are never edited.** The bot writes only in its own sections ("Bot validation", "Trials").
