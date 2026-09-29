@@ -71,9 +71,35 @@ Relax the rule about fortifications: build fortifications only with a purpose, i
 
 ## Bot validation (written by the bot before the run)
 
-- **Understood as:** the principles and phases above, turned into per-turn constraints and milestones.
-- **Supported by the rules as researched:** supply, seasons and winter attrition are documented in the research repo (weekly tick, supply capacity `troops div 100 + 1`, upkeep and desertion, supply-driven morale). Gaps that could break it: the recruitment and fortification rule (P5), and how an army draws supply from several cities (P3).
-- **Test plan:** pilot run of 24 turns (one year) with checkpoints every season; baseline comparison later.
+Written 2026-09-29 for run 0. Rules are cited from `docs/rules-digest.md` (research repo at `60475a30`) and this repository's `findings/`. Numbers for the start position come from `BASE.SAV` (new game, Rome, seed 12345, 270 BC Spring week 1, turn 0720).
+
+### How the bot understood rome-v1
+
+Build up from turn 1 (recruit and fortify with a purpose), bring Rome's two field armies together before any attack, and take Gaul's cities nearest Italy first, choosing units by what beats the Gauls. Keep every army fed, and before winter bring the armies home to where several Roman cities can feed them, splitting them if needed. Hire mercenaries only when the army purses can pay them. Fleets carry supply to distant armies later; they are outside the pilot.
+
+### What the researched rules support, principle by principle
+
+| # | Supported by | What it means in numbers at the start | Gap or risk |
+|---|---|---|---|
+| P1 | Siege strength is `(Σ troops, archers ×3) div 80 × morale`; siege defence `loyalty×150 + fort×250 + pop×200` (+capital, +queued troops/2). Field battles with Rome are always tactical (grid battle, *Computer general*). | Army 0 alone: 20,720; armies 0 + 1: 39,987 at morale 70. Felsina defends 34,050, Mediolanum 35,450, Modena 26,200, Taurasia 17,800. **Only the combined army takes Felsina**; army 0 alone failed there in the test (`T_ATTACK.SAV`, −8.2 %). | For sieges, composition matters only through archers (×3). For field battles, the melee matrix rates HI against LI **1 both ways**: HI's edge over Gallic LI comes from shooting vulnerability (HI 2 vs LI 18), quality and morale. One recorded exchange (Gallic LI 7,135 into Roman HI 5,405) cost the Gauls 2,855 and the Romans 49. The margin `k` must be calibrated from logged battles. |
+| P1b | Unit table: HI 6,000 per battalion, 600 initial, 60 a quarter; archers 3,500, 68 initial, 17 a quarter, 25 shots at range 2. | Gaul's field army is 40,500, of which 33,600 LI (quality 5–6). | **Proposed addition (bot):** archers alongside HI. They are the cheapest unit, count triple in a siege and shoot LI hard. The player decides. |
+| P2 | Consumption per turn `((90 − v) × troops) div 20000`, v = 50/80/80/20 (Spring/Summer/Autumn/Winter); capacity `troops div 100`; morale −2 below 10 % supply, +1 above 15 % (cap 70). | Spring: army 0 eats 47 t a turn of a 237 t capacity (5 turns); Summer/Autumn 11–12; Winter 82. | Free top-up from an adjacent own city via *Supply army*; the automatic resupply at the end of a move is in the code but never confirmed on a human save: the pilot checks it. |
+| P3 | In Winter every city **loses** 2×pop tons of stock a turn; armies eat 7× their Summer rate. | Rome (pop 181) loses ~308 t a turn in Winter; a 22,000-troop army needs ~77 t a turn. | How much the reachable cities can give must be computed from their stocks at Autumn week 11 (checkpoint 0737). |
+| P4 | Recruitment queue: 40 slots, readiness +2 a turn, quality `state/4` at mobilization (≥ 16 to mobilize, 24 = average). An order costs `troops div 200 × initial price` and raises mobilization by `1 + troops × 1000 div wealth`. | Rome starts with 4 queued units (14,000): HI 4,000 and HC 1,000 reach average on turn 0724, HI 3,500 on 0726, LI 5,500 on 0728. | High mobilization cuts city supply production (× (1 − mob/200)) and unity. |
+| P5 | **Resolved by this repo** (`findings/2026-09-29-recruiting-cities-need-fortification-75.md`, from the code at `0x454582`): a city can recruit if its **fortification is ≥ 75**, or it is the capital, or it already holds a queued unit. Fortifying costs `pop (thousands) × points` and builds ~10 points a turn. | At the start only Rome (78, capital) and Luceria (77) can recruit. Arretium (72), next to the Gallic front, needs 3 points: **99 talents**. | The maximum troops per recruit order is still unprobed. |
+| P6 | Mercenary hire costs `(troops × quarterly price div 1000) × quality` **from the army's purse**; pay `((troops div 200) × price × quality) div 5` a quarter from the purse; an unpaid mercenary deserts at the quarter with its supplies. | The Samnite LI offer at Heraclea (3,868, quality 8), adjacent to army 1: 24 talents, then 30 a quarter. Army purses start at 100. | N for "the armies' upkeep for the next N turns" is set to one quarter (6 turns) for the pilot. |
+| P7 | A fleet within 1 tile is a free supply provider; fleets hold `ships × 8` t and eat `ships` a turn; build takes 12 turns, `ships × 10` talents. | — | Out of the pilot's scope (Gaul is reached overland). |
+
+### Gaps that could break the plan
+
+1. **Battles are stochastic and the Roman side is played by *Computer general*.** The same battle replayed gave Rome 36.6 % and 24.4 % losses. Fixed seeds make each turn repeatable but do not make a battle predictable before it is played.
+2. **Seat order**: in this game Rome moves 12th of 16 and Gaul 15th, so Gaul answers every Roman move in the same round. Gaul, at war, hires every mercenary offer within 4 tiles of its army for free; its 40,500 can grow.
+3. **Defection cascade**: Gaul's unity is 577 (< 650), so the first capture can make nearby low-loyalty Gallic cities defect (Taurasia 54, Modena 63), if their defence is below the Roman army's strength.
+4. **Orders not yet driven** (each gets a headless save-diff test before its first use in the run): supply army, join armies, mobilize, hire mercenaries, fortify city, international relations. Move, attack (siege), recruit and end turn are done (`tests/results.md`).
+
+### Test plan
+
+Run 0 is the pilot: 24 turns (270 BC Spring week 1 to Winter week 11, autosaves 0720–0744), every season a checkpoint in the run's issue, and the Autumn week 11 winter check (turn 0737). Each turn is played from its own autosave in a fresh game process with a recorded seed (`12345 + turn − 720`), so any turn can be replayed exactly. The baseline comparison comes after the pilot.
 
 ## Trials
 
