@@ -220,6 +220,31 @@ class Game:
                     break
         return texts
 
+    def close_dialog(self, title, ok_xy, tries=3):
+        """Press a dialog's OK until its window is gone (the first click into an
+        inactive window may only activate it)."""
+        for _ in range(tries):
+            w = self.find_windows("^%s$" % re.escape(title))
+            if not w:
+                return True
+            self.raise_window(w[0][0])
+            self.click(*ok_xy, pause=1.0)
+        if self.find_windows("^%s$" % re.escape(title)):
+            raise DriverError(title + " did not close")
+        return True
+
+    def raise_window(self, wid):
+        # no window manager: a click on the main window can bury a modal dialog
+        sh("xdotool", "windowraise", str(wid), check=False)
+        time.sleep(0.3)
+
+    def open_dialog(self, title, xy, tries=3):
+        for _ in range(tries):
+            self.click(*xy, pause=1.2)
+            if self.find_windows("^%s$" % re.escape(title)):
+                return
+        raise DriverError(title + " did not open")
+
     # ---- file -------------------------------------------------------------
     def set_seed(self, seed):
         seedfile = G / "SEED.TXT"
@@ -354,8 +379,7 @@ class Game:
             self.click(*L["up100"], pause=0.2)
         self.click(*L["recruit"], pause=0.8)
         texts = self.dismiss_popups()
-        self.click(*L["ok"], pause=0.8)
-        self.wait(lambda: not self.find_windows("^Army recruits$"), 10, "Army recruits closed")
+        self.close_dialog("Army recruits", L["ok"])
         return texts
 
     def end_turn(self, timeout=300, battle_shot=None):
