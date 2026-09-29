@@ -38,7 +38,7 @@ Relax the rule about fortifications: build fortifications only with a purpose, i
 | P2 | Never let an army run out of supply; supply keeps morale up | per turn: every Roman army's supplies ≥ its weekly consumption × turns until it can next resupply; the army morale field (`+14`) is logged per army, per turn |
 | P3 | Winter: before winter, pull the armies back into friendly territory where several own cities can feed them; split an army when one city cannot | at the Autumn week 11 checkpoint: for every army, the supply its reachable own cities can give over winter ≥ its winter consumption. An army that fails this is split or moved, and the plan says which |
 | P4 | Recruit from day one; Rome starts too weak even for Gaul | the recruitment queue is never empty in the first year; the number of new slots per turn is logged |
-| P5 | Fortifications are expensive: build them only with a purpose, in towns near where the armies need to be, so those towns can recruit close to the front | every fortification order names its purpose (which campaign, which army it will reinforce) in the turn plan; no fortification order without one. Spending on fortifications is logged per season against treasury. The level needed to recruit is **not yet known** (see below) |
+| P5 | Fortifications are expensive: build them only with a purpose, in towns near where the armies need to be, so those towns can recruit close to the front | every fortification order names its purpose (which campaign, which army it will reinforce) in the turn plan; no fortification order without one. Spending on fortifications is logged per season against treasury. **A town can recruit if it is the capital or its fortification is ≥ 75%** (research report `2026-09-29-which-cities-may-recruit-and-troop-amounts.md`); only 23 of 334 towns start at that level. **An order costs the town's population per point, paid up front; it builds at most 10 points a turn; an adjacent enemy army cancels it without refund. Order to 75%, never to exactly 100% with a remainder (a known bug resets the town to 0%)** (research report `2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md`). At the start Rome can recruit at Rome and Luceria (77%); Arretium, Pisae and Antium reach 75% in one turn for 99–198 each. **The AI never fortifies**, so its recruiting towns stay fixed, while Rome's can grow. All of this is confirmed live |
 | P6 | Mercenaries only when the money is there: armies need money too | before hiring: treasury after hiring ≥ the armies' upkeep for the next N turns (N to calibrate; upkeep as in the research repo's `upkeep-payment-and-desertion.md`) |
 | P7 | Use fleets to supply armies far from home | an army more than a set distance from any own city has a fleet supply route in the plan; the supply transfers are logged |
 
@@ -62,8 +62,14 @@ Relax the rule about fortifications: build fortifications only with a purpose, i
 
 ## Rules the bot still needs from the research (before or during run 0)
 
-- **The fortification level a town needs to recruit, and the troop amounts the recruit dialog allows** (imperial_conquest_2#515, open). P5 cannot be planned exactly until this is known. In the pilot the bot records which towns the dialog offers.
-- The cost and build time of fortifications.
+- ~~The fortification level a town needs to recruit, and the dialog's troop amounts~~ **Answered (#515):**
+  - a town can recruit if it is the capital or its fortification is ≥ 75%; otherwise the refusal is `This city's fortification has fallen below 75%.`;
+  - the other refusals are `You have reached your limit of 40 units.` and `Your mobilisation rate is already 100%.`;
+  - the dialog amount runs from battalion/5 (the default) to the full battalion (LI 15,000, HI 6,000, archers 3,500, LC 7,000, HC 2,500), in steps of 100 and 1,000;
+  - recruiting has no treasury check, so the treasury can go negative; P6's money discipline matters.
+
+  See the research report `2026-09-29-which-cities-may-recruit-and-troop-amounts.md`.
+- ~~The cost and build time of fortifications~~ **Answered:** population × points, paid up front, at most 10 points per turn. See the research report `2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md`.
 - How composition decides a battle in each path. A battle with a human side is tactical (grid battle, the type matrix per exchange). A battle between two computer nations uses the instant resolver, which compares a per-type power weight (unit-type table `+0x26`). The bot's strength estimate should match the tactical path, since Rome is human. The battle golden-master plan in the research repo would make that estimate exact.
 - The winter supply each city gives (the seasonal supply table is in the research repo), and how an army draws supply from several cities.
 
