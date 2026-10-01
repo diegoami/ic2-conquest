@@ -10,6 +10,7 @@ coverage.md ("Dialog layouts").
     g = Game(); g.start(); g.open("BASE.SAV", seed=12345)
     g.recruit("Rome", "hi", 3200); g.move(3, 104, 40); g.end_turn()
 """
+import json
 import os
 import re
 import shutil
@@ -48,6 +49,16 @@ STRATEGY_ITEMS = {"news": 0, "relations": 1, "taxation": 2, "balance": 3, "recru
 TOOLBAR = {"open": 12, "save": 35, "end_turn": 57, "news": 84, "relations": 107, "taxation": 129,
            "balance": 151, "recruit": 174, "build_fleet": 196}        # y = 58; nation icons follow
 TOOLBAR_Y = 58
+# The buttons are wider under some Wine builds, so the x above drifts and a
+# click lands on the neighbour (a `recruit` click opens Balance sheet). Each
+# button's tooltip is a named X window, so the positions are derived at run time
+# by hovering the bar and reading the tooltip; see Game.calibrate_toolbar.
+TOOLBAR_LABELS = {"open": "Open saved game", "save": "Save game position",
+                  "end_turn": "End player's turn", "news": "News",
+                  "relations": "International relations", "taxation": "Taxation",
+                  "balance": "Balance sheet", "recruit": "Recruit unit",
+                  "build_fleet": "Build fleet"}
+TOOLBAR_CACHE = WORK / "toolbar.json"     # derived positions, per environment
 AREA_ORIGIN = (6, 126)          # area map: 1 px per tile; a click there puts that tile at view col 6, row 7
 UNIT_PAINT = (337, 96)          # unit map paint box: tile (ox+c, oy+r) spans x0+32c.., y0+30+32r..
 VIEW_COLS, VIEW_ROWS = 13, 13
@@ -65,6 +76,7 @@ def sh(*args, check=True):
 class Game:
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
+        self.toolbar_x = self._load_toolbar()
 
     # ---- process ---------------------------------------------------------
     def ensure_xvfb(self):
@@ -171,11 +183,48 @@ class Game:
         self.key("Escape")
         self.click(*NEUTRAL, pause=0.2)
 
+    def _load_toolbar(self):
+        try:
+            return {k: int(v) for k, v in json.loads(TOOLBAR_CACHE.read_text()).items()}
+        except (OSError, ValueError):
+            return {}
+
+    def calibrate_toolbar(self, scan=range(4, 232, 3), pause=0.6, force=False):
+        """Find each toolbar button's x by hovering the bar and reading the
+        tooltip, which Wine exposes as a named X window. The buttons are wider
+        under some Wine builds, so the x in TOOLBAR (from coverage.md) drifts and
+        a click lands on the neighbour. Derived once per environment and cached in
+        WORK/toolbar.json; a missing cache, or `force`, re-derives it."""
+        if self.toolbar_x and not force:
+            return self.toolbar_x
+        seen = {label: [] for label in TOOLBAR_LABELS.values()}
+        for x in scan:
+            sh("xdotool", "mousemove", str(x), str(TOOLBAR_Y))
+            time.sleep(pause)
+            names = {w[1] for w in self.find_windows(".")}
+            for label in seen:
+                if label in names:
+                    seen[label].append(x)
+        found = {}
+        for name, label in TOOLBAR_LABELS.items():
+            xs = seen[label]
+            found[name] = (min(xs) + max(xs)) // 2 if xs else TOOLBAR[name]
+        self.toolbar_x = found
+        try:
+            TOOLBAR_CACHE.write_text(json.dumps(found, indent=1))
+        except OSError:
+            pass
+        self.log(f"toolbar calibrated: {found}")
+        return found
+
     def tool(self, name, pause=1.0):
         """Toolbar button: more reliable than the menus, which under Wine without a
-        window manager sometimes ignore the item click after a dialog closed."""
+        window manager sometimes ignore the item click after a dialog closed. The
+        x is the one derived by calibrate_toolbar, falling back to coverage.md."""
+        if not self.toolbar_x:
+            self.calibrate_toolbar()
         self.reset_ui()
-        self.click(TOOLBAR[name], TOOLBAR_Y, pause=pause)
+        self.click(self.toolbar_x.get(name, TOOLBAR[name]), TOOLBAR_Y, pause=pause)
 
     def menu(self, name, item):
         self.reset_ui()
