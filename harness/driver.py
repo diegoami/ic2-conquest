@@ -59,6 +59,19 @@ TOOLBAR_LABELS = {"open": "Open saved game", "save": "Save game position",
                   "balance": "Balance sheet", "recruit": "Recruit unit",
                   "build_fleet": "Build fleet"}
 TOOLBAR_CACHE = WORK / "toolbar.json"     # derived positions, per environment
+# The army toolbar, in the unit map's top strip, visible only while an army is
+# selected. Same drift, same tooltip derivation.
+ARMY_TOOLBAR_LABELS = {"supply": "Supply army", "mercs": "Recruit mercenaries",
+                       "transfer": "Transfer units", "split": "Split army",
+                       "join": "Join armies", "change": "Change units",
+                       "disband": "Disband army", "cancel": "Cancel selection"}
+ARMY_TOOLBAR_Y = 108
+ARMY_TOOLBAR_CACHE = WORK / "army_toolbar.json"
+# The tactical battle's toolbar, in the battle window's top strip (y = 112).
+BATTLE_TOOLBAR_LABELS = {"end_turn": "End turn", "computer": "Computer general on"}
+BATTLE_TOOLBAR_Y = 112
+BATTLE_TOOLBAR_CACHE = WORK / "battle_toolbar.json"
+BATTLE_TOOLS = {"end_turn": 110, "computer": 158}      # coverage.md's fallback
 AREA_ORIGIN = (6, 126)          # area map: 1 px per tile; a click there puts that tile at view col 6, row 7
 UNIT_PAINT = (337, 96)          # unit map paint box: tile (ox+c, oy+r) spans x0+32c.., y0+30+32r..
 VIEW_COLS, VIEW_ROWS = 13, 13
@@ -76,7 +89,9 @@ def sh(*args, check=True):
 class Game:
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
-        self.toolbar_x = self._load_toolbar()
+        self.toolbar_x = self._load_cache(TOOLBAR_CACHE)
+        self.army_x = self._load_cache(ARMY_TOOLBAR_CACHE)
+        self.battle_x = self._load_cache(BATTLE_TOOLBAR_CACHE)
 
     # ---- process ---------------------------------------------------------
     def ensure_xvfb(self):
@@ -117,6 +132,12 @@ class Game:
 
     def i16(self, addr):
         return struct.unpack("<h", self.mem(addr, 2))[0]
+
+    def in_battle(self):
+        """The game's battle flag (byte 0x4A0B7C): 1 while a tactical battle is
+        pending. A stale '<A> v <B>' window can linger after the battle is over,
+        so this is the reliable signal."""
+        return self.mem(BATTLE_FLAG, 1)[0] != 0
 
     def calendar(self):
         return {"season": self.i16(SEASON), "week": self.i16(WEEK), "year_bc": self.i16(YEAR_BC)}
@@ -183,38 +204,81 @@ class Game:
         self.key("Escape")
         self.click(*NEUTRAL, pause=0.2)
 
-    def _load_toolbar(self):
+    def _load_cache(self, path):
         try:
-            return {k: int(v) for k, v in json.loads(TOOLBAR_CACHE.read_text()).items()}
+            return {k: int(v) for k, v in json.loads(path.read_text()).items()}
         except (OSError, ValueError):
             return {}
 
-    def calibrate_toolbar(self, scan=range(4, 232, 3), pause=0.6, force=False):
-        """Find each toolbar button's x by hovering the bar and reading the
-        tooltip, which Wine exposes as a named X window. The buttons are wider
-        under some Wine builds, so the x in TOOLBAR (from coverage.md) drifts and
-        a click lands on the neighbour. Derived once per environment and cached in
-        WORK/toolbar.json; a missing cache, or `force`, re-derives it."""
-        if self.toolbar_x and not force:
-            return self.toolbar_x
-        seen = {label: [] for label in TOOLBAR_LABELS.values()}
-        for x in scan:
-            sh("xdotool", "mousemove", str(x), str(TOOLBAR_Y))
+    def _save_cache(self, path, found, what):
+        try:
+            path.write_text(json.dumps(found, indent=1))
+        except OSError:
+            pass
+        self.log(f"{what} calibrated: {found}")
+
+    def _scan_bar(self, y, labels, x0, x1, pause):
+        """Hover across a toolbar and return {name: centre x} from the tooltips,
+        which Wine exposes as named X windows. A button the scan misses gets no
+        entry, so the caller falls back to its recorded x."""
+        seen = {label: [] for label in labels.values()}
+        for x in range(x0, x1, 3):
+            sh("xdotool", "mousemove", str(x), str(y))
             time.sleep(pause)
             names = {w[1] for w in self.find_windows(".")}
             for label in seen:
                 if label in names:
                     seen[label].append(x)
-        found = {}
-        for name, label in TOOLBAR_LABELS.items():
+        out = {}
+        for name, label in labels.items():
             xs = seen[label]
-            found[name] = (min(xs) + max(xs)) // 2 if xs else TOOLBAR[name]
+            if xs:
+                out[name] = (min(xs) + max(xs)) // 2
+        return out
+
+    def calibrate_toolbar(self, force=False):
+        """The main toolbar's button x, derived from the tooltips (see _scan_bar)
+        and cached in WORK/toolbar.json. The buttons are wider under some Wine
+        builds, so the x in TOOLBAR (from coverage.md) drifts and a click lands on
+        the neighbour. Falls back to TOOLBAR for a missed one."""
+        if self.toolbar_x and not force:
+            return self.toolbar_x
+        found = self._scan_bar(TOOLBAR_Y, TOOLBAR_LABELS, 4, 232, 0.6)
+        for name in TOOLBAR_LABELS:
+            found.setdefault(name, TOOLBAR[name])
         self.toolbar_x = found
-        try:
-            TOOLBAR_CACHE.write_text(json.dumps(found, indent=1))
-        except OSError:
-            pass
-        self.log(f"toolbar calibrated: {found}")
+        self._save_cache(TOOLBAR_CACHE, found, "toolbar")
+        return found
+
+    def calibrate_army_toolbar(self, force=False):
+        """The army toolbar's button x, derived from the tooltips and cached in
+        WORK/army_toolbar.json. Call it with an army selected, or the bar is not
+        there to hover."""
+        if self.army_x and not force:
+            return self.army_x
+        found = self._scan_bar(ARMY_TOOLBAR_Y, ARMY_TOOLBAR_LABELS, 336, 540, 0.5)
+        for name in ARMY_TOOLBAR_LABELS:
+            found.setdefault(name, self.ARMY_TOOLS[name])
+        self.army_x = found
+        self._save_cache(ARMY_TOOLBAR_CACHE, found, "army toolbar")
+        return found
+
+    def calibrate_battle_toolbar(self, force=False):
+        """The tactical battle's toolbar x, derived from the tooltips and cached
+        in WORK/battle_toolbar.json. Call it with the battle window open; it is
+        raised and focused first, or the main window's tooltips win."""
+        if self.battle_x and not force:
+            return self.battle_x
+        w = self.find_windows(" v ")
+        if w:
+            sh("xdotool", "windowraise", str(w[0][0]), check=False)
+            sh("xdotool", "windowfocus", str(w[0][0]), check=False)
+            time.sleep(0.3)
+        found = self._scan_bar(BATTLE_TOOLBAR_Y, BATTLE_TOOLBAR_LABELS, 5, 250, 0.6)
+        for name in BATTLE_TOOLBAR_LABELS:
+            found.setdefault(name, BATTLE_TOOLS[name])
+        self.battle_x = found
+        self._save_cache(BATTLE_TOOLBAR_CACHE, found, "battle toolbar")
         return found
 
     def tool(self, name, pause=1.0):
@@ -235,7 +299,7 @@ class Game:
         exe = WORK / "win_controls.exe"
         if not exe.exists():
             self.build_win_controls(exe)
-        out = sh(WINE, str(exe), title)
+        out = sh(WINE, str(exe), title, check=False)
         cs = []
         for line in out.splitlines():
             p = line.split("\t")
@@ -438,13 +502,20 @@ class Game:
         return self.army_pos(i), texts
 
     def attack(self, i, x, y):
-        """Select army i, then click an adjacent enemy army or city at (x, y)."""
+        """Select army i, then click an adjacent enemy army or city at (x, y). A
+        city is a siege (no screen); an army opens the tactical battle, which is
+        played with Computer general."""
         ax, ay = self.army_pos(i)
         if max(abs(ax - x), abs(ay - y)) != 1:
             raise DriverError(f"target {x},{y} not adjacent to army {i} at {ax},{ay}")
         self.select_army(i, ax, ay)
         self.click_tile(x, y, pause=1.5)
-        return self.dismiss_popups()
+        texts = self.dismiss_popups()
+        if self.in_battle() and self.find_windows(" v "):
+            texts.append("BATTLE " + self.find_windows(" v ")[0][1])
+            self.play_battle()
+            texts += self.dismiss_popups()
+        return texts
 
     def open_recruit(self):
         self.tool("recruit")
@@ -480,10 +551,23 @@ class Game:
     def army_tool(self, i, tool, title):
         ax, ay = self.army_pos(i)
         self.select_army(i, ax, ay)
-        self.open_dialog(title, (self.ARMY_TOOLS[tool], 108))
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.open_dialog(title, (self.army_x.get(tool, self.ARMY_TOOLS[tool]), ARMY_TOOLBAR_Y))
         w = self.find_windows("^%s$" % re.escape(title))[0]
         self.raise_window(w[0])
         return w
+
+    def join(self, i):
+        """Select army i and press Join armies, combining it with an adjacent
+        friendly army. The game keeps one of the two; the save diff shows which,
+        and the combined units."""
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.click(self.army_x.get("join", self.ARMY_TOOLS["join"]), ARMY_TOOLBAR_Y, pause=1.5)
+        return self.dismiss_popups()
 
     def supply(self, i, tons=None, money_100s=0):
         """Supply army dialog (window 470x335 at 23,49): the 10s arrows move
@@ -589,7 +673,7 @@ class Game:
         cal, me = self.calendar(), self.i16(CUR_NATION)
         started = lambda: (self.i16(CUR_NATION) != me or self.calendar() != cal
                            or (log.exists() and len(log.read_text().splitlines()) > n)
-                           or self.popups() or self.find_windows(" v "))
+                           or self.popups() or self.in_battle())
         self.tool("end_turn")
         texts, t0 = [], time.time()
         # EndTurn moves the seat on at once. Click again only after 8 s with no
@@ -603,7 +687,7 @@ class Game:
         while time.time() - t0 < timeout:
             if log.exists() and len(log.read_text().splitlines()) > n:
                 break
-            if self.find_windows(" v "):                   # battle screen "<A> v <B>"
+            if self.in_battle() and self.find_windows(" v "):   # battle screen "<A> v <B>"
                 texts.append("BATTLE " + self.find_windows(" v ")[0][1])
                 self.play_battle(battle_shot)
                 continue
@@ -619,13 +703,31 @@ class Game:
         return line.split()[1], texts
 
     def play_battle(self, shot=None):
+        """Play an open battle with Computer general, then dismiss the result.
+        The battle toolbar's x is derived the same way as the others."""
         time.sleep(2)
-        self.click(158, 112, pause=1.0)                    # Computer general on
-        for _ in range(90):
-            if self.find_windows("Battle ended"):
+        w = self.find_windows(" v ")
+        if w:
+            sh("xdotool", "windowraise", str(w[0][0]), check=False)
+            sh("xdotool", "windowfocus", str(w[0][0]), check=False)
+            time.sleep(0.3)
+        if not self.battle_x:
+            self.calibrate_battle_toolbar()
+        self.click(self.battle_x.get("computer", BATTLE_TOOLS["computer"]), BATTLE_TOOLBAR_Y, pause=1.5)
+        for _ in range(120):
+            if not self.in_battle() or self.find_windows("Battle ended"):
                 break
-            self.click(110, 112, pause=2.0)                # End turn (battle)
+            self.click(self.battle_x.get("end_turn", BATTLE_TOOLS["end_turn"]), BATTLE_TOOLBAR_Y, pause=1.5)
         w = self.find_windows("Battle ended")
         if w and shot:
             self.shot(shot, window=str(w[0][0]))
-        self.click(220, 478, pause=1.5)                    # OK on the result
+        # Dismiss the result dialog: its OK by control, else the default button,
+        # else the recorded coordinate.
+        try:
+            self.click_control(self.control(self.controls("Battle ended"), text="OK"), pause=1.5)
+        except DriverError:
+            self.key("Return")
+            time.sleep(1.5)
+            if self.popups():
+                self.click(220, 478, pause=1.5)
+        self.dismiss_popups()

@@ -145,7 +145,31 @@ def test_attack():
            f"news tail {s2['news'][-3:]}; popups {texts}"
 
 
-TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack"]
+def test_join():
+    """Two turns: army 1 walks to (113,45) on turn 1, then both close in on
+    (104,36)/(103,36) on turn 2 and join into one army."""
+    g, _ = fresh("join")
+    s0 = load(BASE)
+    before = {a["id"]: a["troops"] for a in live_armies(s0, 0)}
+    g.move(1, 113, 45)
+    g.end_turn()
+    g.move(1, 104, 36)
+    g.move(0, 103, 36)
+    a0, a1 = g.army_pos(0), g.army_pos(1)
+    assert max(abs(a0[0] - a1[0]), abs(a0[1] - a1[1])) == 1, ("not adjacent", a0, a1)
+    texts = g.join(0)
+    p = keep(g.save_as("T_JOIN.SAV"), "T_JOIN.SAV")
+    s2 = load(p)
+    armies = live_armies(s2, 0)
+    total = sum(a["troops"] for a in armies)
+    assert len(armies) == 1, [(a["id"], a["x"], a["y"], a["troops"]) for a in armies]
+    assert total == sum(before.values()), (total, before)
+    a = armies[0]
+    return f"armies {before} -> army {a['id']} at ({a['x']},{a['y']}), {a['troops']} troops, " \
+           f"{len(a['units'])} units; popups {texts}"
+
+
+TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
