@@ -602,6 +602,16 @@ class Game:
         self.click(self.army_x.get("join", self.ARMY_TOOLS["join"]), ARMY_TOOLBAR_Y, pause=1.5)
         return self.dismiss_popups()
 
+    def disband_army(self, i):
+        """Select army i and press Disband army, answering the Confirm. The army
+        must be near one of its own cities."""
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.click(self.army_x.get("disband", self.ARMY_TOOLS["disband"]), ARMY_TOOLBAR_Y, pause=1.5)
+        return self.dismiss_popups()
+
     def supply(self, i, tons=None, money_100s=0):
         """Supply army dialog (window 470x335 at 23,49): the 10s arrows move
         supplies from the adjacent provider (city) to the army, capped by the
@@ -696,6 +706,19 @@ class Game:
             self.close_dialog("International Relations", (308, 283))      # Cancel
         me = self.i16(CUR_NATION)
         return self.i16(NATIONS + me * NATION_LEN + 0x26 + 2 * nation), texts
+
+    def build_fleet(self, ships):
+        """Build a fleet of <ships> at the free coastal city the game picks. The
+        Build fleet dialog has a 1s and a 10s spinner; OK starts construction."""
+        self.tool("build_fleet")
+        cs = self.controls("Build fleet")
+        ups = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
+        for _ in range(ships % 10):
+            self.click_control(ups[0], fy=0.25, pause=0.2)
+        for _ in range(ships // 10):
+            self.click_control(ups[1], fy=0.25, pause=0.2)
+        self.click_control(self.control(cs, text="OK"), pause=1.5)
+        return self.dismiss_popups()
 
     def taxation(self, percent):
         """Set the tax level (0..40). The slider is keyboard-driven: focus it,

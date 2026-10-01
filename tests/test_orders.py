@@ -193,8 +193,36 @@ def test_disband_unit():
     return f"Rome queue {before} -> {len(r['recruit_slots'])} (recruit +1, disband -1), treasury {r['treasury']}"
 
 
+def test_disband_army():
+    """Disband army 0, which sits beside Arretium (its own city)."""
+    g, _ = fresh("disbandarmy")
+    before = len(live_armies(load(BASE), 0))
+    g.disband_army(0)
+    p = keep(g.save_as("T_DISBAND_ARMY.SAV"), "T_DISBAND_ARMY.SAV")
+    s = load(p)
+    after = len(live_armies(s, 0))
+    assert after == before - 1, (before, after, [(a["id"], a["x"], a["y"]) for a in live_armies(s, 0)])
+    return f"Roman armies {before} -> {after}, treasury {s['nations'][0]['treasury']}"
+
+
+def test_build_fleet():
+    """Build a 10-ship fleet. Cost is ships x 10 talents, and it starts a
+    countdown at a free coastal city."""
+    g, _ = fresh("fleet")
+    s0 = load(BASE)
+    before = len([f for f in s0["fleets"] if f["owner"] == 0])
+    g.build_fleet(10)
+    p = keep(g.save_as("T_FLEET.SAV"), "T_FLEET.SAV")
+    s = load(p)
+    fl = [f for f in s["fleets"] if f["owner"] == 0]
+    assert len(fl) == before + 1, [(f["id"], f["building"], f["countdown"], f["ships"]) for f in fl]
+    new = fl[-1]
+    return f"Rome fleets {before} -> {len(fl)} (ships {new['ships']}, building {new['building']}, " \
+           f"countdown {new['countdown']}); treasury {s0['nations'][0]['treasury']} -> {s['nations'][0]['treasury']}"
+
+
 TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
-         "taxation", "disband_unit"]
+         "taxation", "disband_unit", "disband_army", "build_fleet"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
