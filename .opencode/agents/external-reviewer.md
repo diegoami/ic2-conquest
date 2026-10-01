@@ -6,34 +6,87 @@ permission:
   task:
     "*": deny
   bash:
-    "*": allow
-    "git push*": deny
-    "git commit*": deny
-    "git stash*": deny
-    "git worktree*": deny
-    "git -C * push*": deny
-    "git -C * commit*": deny
-    "git -C * stash*": deny
-    "git -C * worktree*": deny
-    "gh pr merge*": deny
-    "gh pr comment*": deny
-    "gh pr review*": deny
-    "gh pr edit*": deny
-    "gh pr close*": deny
-    "gh issue create*": deny
-    "gh issue edit*": deny
-    "gh issue comment*": deny
-    "gh issue close*": deny
-    "gh release*": deny
-    "gh api*": deny
-    "gh label*": deny
-    "python3 -m tests*": deny
-    "wine*": deny
-    "xdotool*": deny
-    "Xvfb*": deny
-    "pkill*": deny
-    "kill*": deny
-    "rm *": deny
+    "*": deny
+    "git diff*": allow
+    "git log*": allow
+    "git show*": allow
+    "git status*": allow
+    "git rev-parse*": allow
+    "git rev-list*": allow
+    "git merge-base*": allow
+    "git ls-files*": allow
+    "git grep*": allow
+    "git blame*": allow
+    "git cat-file*": allow
+    "git show-ref*": allow
+    "git branch --list*": allow
+    "git checkout -- *": allow
+    "git -C * diff*": allow
+    "git -C * log*": allow
+    "git -C * show*": allow
+    "git -C * status*": allow
+    "git -C * rev-parse*": allow
+    "git -C * rev-list*": allow
+    "git -C * merge-base*": allow
+    "git -C * ls-files*": allow
+    "git -C * grep*": allow
+    "git -C * blame*": allow
+    "git -C * cat-file*": allow
+    "git -C * checkout -- *": allow
+    "gh pr view*": allow
+    "gh pr diff*": allow
+    "gh issue view*": allow
+    "rg *": allow
+    "grep *": allow
+    "ls*": allow
+    "cat *": allow
+    "head *": allow
+    "tail *": allow
+    "wc *": allow
+    "sort *": allow
+    "uniq *": allow
+    "diff *": allow
+    "stat *": allow
+    "file *": allow
+    "find *": allow
+    "pwd": allow
+    "python3 -m py_compile *": allow
+    "python3 -B -m py_compile *": allow
+    "* > *": deny
+    "* >> *": deny
+    "*>|*": deny
+    "*| tee*": deny
+    "*tee *": deny
+    "*find * -delete*": deny
+    "*find * -exec*": deny
+    "*find * -ok*": deny
+    "*auth.json*": deny
+    "*opencode-data*": deny
+    "*.local/share/opencode*": deny
+    "*/.config/*": deny
+    "*/.ssh/*": deny
+    "*.env*": deny
+    "*/.git/config*": deny
+    "*/.git/hooks*": deny
+    "*&& *": deny
+    "*; *": deny
+    "*$(*": deny
+    "*`*": deny
+    "*curl *": deny
+    "*wget *": deny
+    "*| sh*": deny
+    "*|sh*": deny
+    "*| bash*": deny
+    "*|bash*": deny
+    "*| python*": deny
+    "*xargs*": deny
+    "*--output*": deny
+    "*--pre*": deny
+    "*sort *-o *": deny
+    "*-fprint*": deny
+    "git*grep*-O*": deny
+    "*--ext-diff*": deny
+    "*--open-files-in-pager*": deny
   external_directory:
     "*": ask
     "*tool-output*": allow
@@ -50,8 +103,9 @@ post anything: the calling script posts your final message.
   and the base SHA from the brief.
 - Never touch a path outside the worktree. A read outside it is auto-rejected and the run is reported as
   permission-rejected; do not try to work around it.
-- Scratch files go only in `rendered/` inside the worktree (git-ignored). If you ever edit a tracked file to
-  experiment, restore it with `git checkout -- <file>`.
+- Your shell is a read-only allowlist (git read commands, `gh pr view|diff`, rg, grep, ls, cat, head, tail,
+  find, `python3 -m py_compile`). Redirections, `tee`, `;`, `&&`, `$(...)`, backticks and anything touching
+  credentials are denied. You write no files: your findings go in your final message.
 - Do not run the game tests (`tests/test_orders`): they need Wine and a display and take minutes. Review the
   code and the diff statically; `python3 -m py_compile <file>` is fine.
 

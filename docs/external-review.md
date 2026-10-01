@@ -51,6 +51,17 @@ and fall back to `/review-pr`) · 5 the PR head moved during the review (nothing
 - The agent file is read from the main checkout (`OPENCODE_CONFIG_DIR`), never from the worktree under review,
   so a PR cannot change what its own reviewer may do.
 
+## The reviewer's shell: a read-only allowlist
+
+`bash` is deny-by-default (`"*": deny`), then allows git read commands, `gh pr view|diff`, `gh issue view`, rg,
+grep, ls, cat, head, tail, find and `python3 -m py_compile`. Denies placed last win: redirections, `tee`, `;`,
+`&&`, `$(...)`, backticks, `| sh|bash|python`, `xargs`, `--output`, `--pre`, `sort -o`, `find -exec|-delete`,
+curl/wget, and any path containing `auth.json`, `opencode-data`, `.config`, `.ssh`, `.env`. The agent writes
+no files; its findings are its final message. Tested on a throwaway worktree with a dummy `auth.json` and 18
+commands: every write, redirect, push, `gh pr comment`, `python3 -c`, curl and `env` was refused, `ls`,
+`git log` and `py_compile` ran, no file appeared, and a read of `/etc/hostname` was auto-rejected as
+permission-rejected. Re-run that kind of battery after any change to the allowlist.
+
 ## Chain and trust
 
 The next model is tried only after an infrastructure failure, never after a real verdict; the chain stops after
