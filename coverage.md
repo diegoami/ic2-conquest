@@ -23,7 +23,7 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 | Transfer unit / army-to-army | army toolbar *Transfer units* (needs an adjacent army) → Army to army transfer | `Game.transfer_units` | `transfer_units` | ✅ | `T_TRANSFER.SAV`: 5,000 t from army 0 to army 1 |
 | Split army | army toolbar *Split army* → two unit lists, *Transfer*, *OK* | `Game.split_army` | `split_army` | ✅ | `T_SPLIT.SAV`: armies 2 → 3, troops conserved |
 | Join armies | army toolbar *Join armies* (needs two adjacent armies) | `Game.join` | `join` | ✅ | `T_JOIN.SAV`: armies 0+1 → 45,700 t, 12 units |
-| Change units (rename, split, join units) | Unit map → Army → Change units | `Game.change_units_disband` | `change_units_disband` | 🟡 | Disband only (`T_CHUNITS.SAV`); rename/join/split ⬜ |
+| Change units (rename, split, join units) | Unit map → Army → Change units | `Game.change_units_disband`, `Game.rename_unit`, `Game.split_unit`, `Game.join_units` | `change_units_disband`, `change_units_rename`, `change_units_split`, `change_units_join`, `change_units_refusals` | ✅ | Rename types into a pre-filled box (End + BackSpace×30). Split: "too small to split" for the 4,800 unit, a 5,000 one splits 2,500/2,500, each 100s arrow moves 100 to the original. Join: 5,000 + 5,200 is "too large to be combined"; two halves rejoin to 5,000 (`T_CHUNITS.SAV`, `T_RENAME.SAV`, `T_SPLITUNIT.SAV`, `T_JOINUNITS.SAV`; both refusals in `T_CHUNITS_REFUSED.SAV`) |
 | Disband army | Unit map → Army → Disband army → *Yes* | `Game.disband_army` | `disband_army` | ✅ | `T_DISBAND_ARMY.SAV`: Roman armies 2 → 1 |
 | Fortify city | click an own city, city toolbar *Fortify city* (349,108) → *Fortify <city>*: 1s ▲ (136,86), 10s ▲ (168,86), OK (123,143) | `Game.fortify` | manual | ✅ | `saves/fortify-arretium-0720.SAV`: Arretium 72 → 372 (3 pending), −99 |
 | Taxation | toolbar *Taxation* → *Change tax level* (slider 0..40, LineSize 1, Home then Right×n) | `Game.taxation` | `taxation` | ✅ | `T_TAX.SAV`: Rome 10 → 20% |
@@ -94,7 +94,7 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Mercenaries | "This army already has 20 units." · "This army cannot get any bigger." · "You cannot recruit from an enemy city." · "Your fleet cannot carry any more troops." | ⬜ |
 | Transfer | "This army already has 20 units." · "An army can not hold more than 100,000 troops." · "This fleet can not carry any more troops." | ⬜ |
 | Disband unit | "An army must be near its own city to disband a regular unit." | ⬜ |
-| Change units | "You can only rename 1 unit at a time." · "You can only rename regular units." · "You can only split 1 unit at a time." · "You can only split regular units." · "This unit is too small to split." · "You can only join regular units together." · "You can only combine units of the same type." · "These units are too large to be combined." | ⬜ |
+| Change units | "You can only rename 1 unit at a time." · "You can only rename regular units." · "You can only split 1 unit at a time." · "You can only split regular units." · "This unit is too small to split." ✅ · "You can only join regular units together." · "You can only combine units of the same type." · "These units are too large to be combined." ✅ (`change_units_refusals`) | 🟡 |
 | Join armies | "An army on a fleet cannot be combined with another." | ⬜ |
 | Split army | "You can not split an army containing only 1 unit." | ⬜ |
 | Disband army | "An army must be near its own city to disband." · "Are you sure you want to disband this army ?" | ⬜ |
