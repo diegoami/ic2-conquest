@@ -73,6 +73,17 @@ def oc(exe, env, cwd, *args, timeout=60):
                           capture_output=True, text=True, timeout=timeout)
 
 
+def session_list(exe, env, cwd):
+    """`opencode session list --format json`, parsed from the first '[' so a warning line before the JSON
+    does not abort the watcher."""
+    out = oc(exe, env, cwd, "session", "list", "--format", "json", "-n", "20").stdout
+    i = out.find("[")
+    try:
+        return json.loads(out[i:]) if i >= 0 else []
+    except ValueError:
+        return []
+
+
 def kill_tree(proc):
     """Kill the process group (it was started with its own session)."""
     for sig in (signal.SIGTERM, signal.SIGKILL):
@@ -154,7 +165,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     out, err = open(res["stdout"], "w"), open(res["stderr"], "w")
     proc = subprocess.Popen(cmd, cwd=worktree, env=env, stdin=subprocess.DEVNULL, stdout=out,
                             stderr=err, start_new_session=True)
-    t0, last_move, seen_updated, session, scanned = time.time(), time.time(), None, None, 0
+    t0, last_move, seen_updated, session = time.time(), time.time(), None, None
     try:
         while True:
             time.sleep(3)
@@ -168,8 +179,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
                         kill_tree(proc)
                         return done("permission-rejected", m.group(1))
             if session is None:
-                for s in json.loads(oc(exe, env, worktree, "session", "list", "--format", "json",
-                                       "-n", "20").stdout or "[]"):
+                for s in session_list(exe, env, worktree):
                     if s.get("title") == title:
                         session = s["id"]
                         res["session"] = session
@@ -181,8 +191,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
                     kill_tree(proc)
                     return done("no-session", f"no session within {startup}s")
             else:
-                for s in json.loads(oc(exe, env, worktree, "session", "list", "--format", "json",
-                                       "-n", "20").stdout or "[]"):
+                for s in session_list(exe, env, worktree):
                     if s["id"] == session and s.get("updated") != seen_updated:
                         seen_updated, last_move = s.get("updated"), now
                 if proc.poll() is None and now - last_move > idle:

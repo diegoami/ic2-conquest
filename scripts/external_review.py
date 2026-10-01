@@ -105,6 +105,13 @@ def validate(text, hdr):
     """Return (ok, normalized text, why). Accept a one-line flattened review only if it starts with
     header+verdict and ends with the verdict; restore its paragraph breaks."""
     t = text.strip()
+    # Models often open with a sentence ("All checks done ..."): drop everything before the header line,
+    # which must still be exact. Only the stripped text is posted.
+    ls = t.splitlines()
+    for i, ln in enumerate(ls):
+        if ln.strip() == hdr:
+            t = "\n".join(ls[i:]).strip()
+            break
     verdicts = "|".join(VERDICTS)
     lines = [ln.rstrip() for ln in t.splitlines()]
     if len(lines) == 1 and t.startswith(hdr):
@@ -191,10 +198,6 @@ def main():
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")
         (wt / "rendered").mkdir(exist_ok=True)
-        exclude = Path(sh("git", "-C", str(wt), "rev-parse", "--git-path", "info/exclude"))
-        exclude = exclude if exclude.is_absolute() else wt / exclude
-        with open(exclude, "a") as f:
-            f.write("rendered/\n")
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
         streak = []
         for m in models:
@@ -203,7 +206,7 @@ def main():
             brief.parent.mkdir(parents=True, exist_ok=True)
             brief.write_text(brief_text(kind, n, meta["title"], meta["body"], base, head, hdr, wt) + extra,
                              encoding="utf-8")
-            r = ow.run(brief, wt, m, logs / f"run-{len(failures) + 1}", agent=a.agent, log=lambda s: print(s, flush=True))
+            r = ow.run(brief, wt, m, logs / f"run-{len(failures) + 1}", agent=a.agent, data_dir=WORK / "opencode-data", log=lambda s: print(s, flush=True))
             cls = r["class"]
             if cls == "ok":
                 ok, text, why = validate(r["text"], hdr)

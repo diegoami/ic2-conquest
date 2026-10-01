@@ -68,8 +68,8 @@ permission:
     "*.env*": deny
     "*/.git/config*": deny
     "*/.git/hooks*": deny
-    "*&& *": deny
-    "*; *": deny
+    "*&&*": deny
+    "*;*": deny
     "*$(*": deny
     "*`*": deny
     "*curl *": deny
@@ -99,8 +99,8 @@ post anything: the calling script posts your final message.
 
 - Your cwd is a detached git worktree at the exact commit under review. Pass `git -C <worktree>` to every
   git command, using the worktree path given in the brief.
-- Start your first message of work with a "where I reviewed" block: the worktree path, `git rev-parse HEAD`,
-  and the base SHA from the brief.
+- Before the review, in your tool commentary (never in your final message), say where you reviewed: the
+  worktree path, `git rev-parse HEAD`, and the base SHA from the brief.
 - Never touch a path outside the worktree. A read outside it is auto-rejected and the run is reported as
   permission-rejected; do not try to work around it.
 - Your shell is a read-only allowlist (git read commands, `gh pr view|diff`, rg, grep, ls, cat, head, tail,
