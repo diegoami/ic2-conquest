@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # One-shot environment for ic2-conquest on Ubuntu 24.04 (run as root).
-#   1. apt: wine (32-bit), Xvfb, xdotool, imagemagick, ffmpeg, tesseract (OCR of message boxes)
+#   1. apt: wine (32-bit), Xvfb, xdotool, imagemagick, ffmpeg, tesseract (OCR of
+#      message boxes), mingw (to build the win_controls dialog-control helper)
 #   2. clone the pinned research + fixtures repos under $IC2_SRC (default /home/user/diegoami)
 #   3. build "fast rollingsave seed" (patches/seed_patch.py on top of patch_exe.py)
 #   4. a win32 Wine prefix under $IC2_WORK with the game in C:\IC2
@@ -12,10 +13,10 @@ export IC2_WORK=${IC2_WORK:-$HOME/ic2-work}
 pin(){ awk -v r="$1" '$1==r{print $2}' "$HERE/setup/pins.txt"; }
 
 # 1. packages
-if [ ! -x /usr/lib/wine/wine ] || ! command -v xdotool >/dev/null || ! command -v ffmpeg >/dev/null || ! command -v tesseract >/dev/null; then
+if [ ! -x /usr/lib/wine/wine ] || ! command -v xdotool >/dev/null || ! command -v ffmpeg >/dev/null || ! command -v tesseract >/dev/null || ! command -v i686-w64-mingw32-gcc >/dev/null; then
   dpkg --add-architecture i386
   apt-get update -q
-  pkgs="wine64 wine32:i386 xvfb xdotool imagemagick ffmpeg tesseract-ocr tesseract-ocr-eng"
+  pkgs="wine64 wine32:i386 xvfb xdotool imagemagick ffmpeg tesseract-ocr tesseract-ocr-eng gcc-mingw-w64-i686"
   # a PPA's libgd3 blocks the i386 one on some images: pin both to Ubuntu's
   if apt-cache policy libgd3 | grep -q 'ubuntu24.04.*sury'; then
     v=$(apt-cache policy libgd3 | awk '/archive.ubuntu.com/{print prev} {prev=$1}' | head -1)
@@ -44,6 +45,7 @@ B="$IC2_WORK/build"; mkdir -p "$B"
 cp "$FX/patch_exe.py" "$FX/Imperial Conquest 2.exe" "$B/"
 (cd "$B" && python3 patch_exe.py >/dev/null && python3 "$HERE/patches/seed_patch.py" "$B")
 sha256sum "$B"/*.exe | sed "s|$B/||"
+i686-w64-mingw32-gcc -O2 -o "$IC2_WORK/win_controls.exe" "$HERE/harness/win_controls.c"
 
 # 4. Wine prefix + game folder C:\IC2
 export WINEPREFIX="$IC2_WORK/prefix" WINEARCH=win32 WINEDEBUG=-all

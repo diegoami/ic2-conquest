@@ -10,6 +10,7 @@ coverage.md ("Dialog layouts").
     g = Game(); g.start(); g.open("BASE.SAV", seed=12345)
     g.recruit("Rome", "hi", 3200); g.move(3, 104, 40); g.end_turn()
 """
+import json
 import os
 import re
 import shutil
@@ -48,6 +49,16 @@ STRATEGY_ITEMS = {"news": 0, "relations": 1, "taxation": 2, "balance": 3, "recru
 TOOLBAR = {"open": 12, "save": 35, "end_turn": 57, "news": 84, "relations": 107, "taxation": 129,
            "balance": 151, "recruit": 174, "build_fleet": 196}        # y = 58; nation icons follow
 TOOLBAR_Y = 58
+# The buttons are wider under some Wine builds, so the x above drifts and a
+# click lands on the neighbour (a `recruit` click opens Balance sheet). Each
+# button's tooltip is a named X window, so the positions are derived at run time
+# by hovering the bar and reading the tooltip; see Game.calibrate_toolbar.
+TOOLBAR_LABELS = {"open": "Open saved game", "save": "Save game position",
+                  "end_turn": "End player's turn", "news": "News",
+                  "relations": "International relations", "taxation": "Taxation",
+                  "balance": "Balance sheet", "recruit": "Recruit unit",
+                  "build_fleet": "Build fleet"}
+TOOLBAR_CACHE = WORK / "toolbar.json"     # derived positions, per environment
 AREA_ORIGIN = (6, 126)          # area map: 1 px per tile; a click there puts that tile at view col 6, row 7
 UNIT_PAINT = (337, 96)          # unit map paint box: tile (ox+c, oy+r) spans x0+32c.., y0+30+32r..
 VIEW_COLS, VIEW_ROWS = 13, 13
@@ -65,6 +76,7 @@ def sh(*args, check=True):
 class Game:
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
+        self.toolbar_x = self._load_toolbar()
 
     # ---- process ---------------------------------------------------------
     def ensure_xvfb(self):
@@ -171,11 +183,90 @@ class Game:
         self.key("Escape")
         self.click(*NEUTRAL, pause=0.2)
 
+    def _load_toolbar(self):
+        try:
+            return {k: int(v) for k, v in json.loads(TOOLBAR_CACHE.read_text()).items()}
+        except (OSError, ValueError):
+            return {}
+
+    def calibrate_toolbar(self, scan=range(4, 232, 3), pause=0.6, force=False):
+        """Find each toolbar button's x by hovering the bar and reading the
+        tooltip, which Wine exposes as a named X window. The buttons are wider
+        under some Wine builds, so the x in TOOLBAR (from coverage.md) drifts and
+        a click lands on the neighbour. Derived once per environment and cached in
+        WORK/toolbar.json; a missing cache, or `force`, re-derives it."""
+        if self.toolbar_x and not force:
+            return self.toolbar_x
+        seen = {label: [] for label in TOOLBAR_LABELS.values()}
+        for x in scan:
+            sh("xdotool", "mousemove", str(x), str(TOOLBAR_Y))
+            time.sleep(pause)
+            names = {w[1] for w in self.find_windows(".")}
+            for label in seen:
+                if label in names:
+                    seen[label].append(x)
+        found = {}
+        for name, label in TOOLBAR_LABELS.items():
+            xs = seen[label]
+            found[name] = (min(xs) + max(xs)) // 2 if xs else TOOLBAR[name]
+        self.toolbar_x = found
+        try:
+            TOOLBAR_CACHE.write_text(json.dumps(found, indent=1))
+        except OSError:
+            pass
+        self.log(f"toolbar calibrated: {found}")
+        return found
+
     def tool(self, name, pause=1.0):
         """Toolbar button: more reliable than the menus, which under Wine without a
-        window manager sometimes ignore the item click after a dialog closed."""
+        window manager sometimes ignore the item click after a dialog closed. The
+        x is the one derived by calibrate_toolbar, falling back to coverage.md."""
+        if not self.toolbar_x:
+            self.calibrate_toolbar()
         self.reset_ui()
-        self.click(TOOLBAR[name], TOOLBAR_Y, pause=pause)
+        self.click(self.toolbar_x.get(name, TOOLBAR[name]), TOOLBAR_Y, pause=pause)
+
+    # ---- dialog controls (read from the running game) -----------------------
+    def controls(self, title):
+        """A dialog's controls as [{'cls','text','x','y','w','h'}, ...] in screen
+        coordinates. Wine draws a dialog's controls itself (they are not X
+        windows) and their positions depend on the font and DPI, so they are read
+        from the running game with the win_controls helper, not hardcoded."""
+        exe = WORK / "win_controls.exe"
+        if not exe.exists():
+            self.build_win_controls(exe)
+        out = sh(WINE, str(exe), title)
+        cs = []
+        for line in out.splitlines():
+            p = line.split("\t")
+            if len(p) == 6:
+                cls, text, x, y, w, h = p
+                cs.append({"cls": cls, "text": text, "x": int(x), "y": int(y), "w": int(w), "h": int(h)})
+        if not cs:
+            raise DriverError("no controls found for window %r" % title)
+        return cs
+
+    def build_win_controls(self, exe):
+        src = Path(__file__).resolve().parent / "win_controls.c"
+        try:
+            subprocess.run(["i686-w64-mingw32-gcc", "-O2", "-o", str(exe), str(src)], check=True)
+        except (OSError, subprocess.CalledProcessError) as e:
+            raise DriverError("win_controls.exe is missing and could not be built "
+                              "(install gcc-mingw-w64-i686): %s" % e)
+
+    def control(self, cs, text=None, cls=None, index=0):
+        got = [c for c in cs if (text is None or c["text"] == text)
+               and (cls is None or c["cls"] == cls)]
+        if len(got) <= index:
+            raise DriverError("control not found: text=%r class=%r" % (text, cls))
+        return got[index]
+
+    def click_control(self, c, fx=0.5, fy=0.5, pause=0.6):
+        self.click(c["x"] + int(c["w"] * fx), c["y"] + int(c["h"] * fy), pause=pause)
+
+    def close_controls(self, title, cs, text="OK", pause=1.0):
+        self.click_control(self.control(cs, text=text), pause=pause)
+        self.wait(lambda: not self.find_windows("^%s$" % re.escape(title)), 10, title + " closed")
 
     def menu(self, name, item):
         self.reset_ui()
@@ -355,31 +446,30 @@ class Game:
         self.click_tile(x, y, pause=1.5)
         return self.dismiss_popups()
 
-    RECRUIT = {  # "Army recruits" dialog (window at 23,49, 560x360)
-        "types": {"li": (93, 96), "hi": (93, 128), "ar": (93, 161), "lc": (93, 193), "hc": (93, 225)},
-        "up100": (183, 102), "down100": (183, 120), "up1000": (230, 102), "down1000": (230, 120),
-        "recruit": (93, 279), "ok": (155, 345), "mobilize": (350, 352), "disband": (461, 352),
-        "cities": (365, 75),        # first row of the city list; rows 12 px apart
-    }
-
     def open_recruit(self):
         self.tool("recruit")
         self.wait(lambda: self.find_windows("^Army recruits$"), 10, "Army recruits dialog")
 
     def recruit(self, city_row, unit_type, thousands=0, hundreds=0):
         """Recruit dialog: pick the city (row in its list), the type, then press the
-        1000s/100s arrows. The resulting size is checked from the save diff."""
-        L = self.RECRUIT
+        1000s/100s arrows. The controls are read from the dialog, so the clicks do
+        not depend on the environment's font metrics. The size is checked on the
+        save diff."""
+        TYPES = {"li": "Light infantry", "hi": "Heavy infantry", "ar": "Archers",
+                 "lc": "Light cavalry", "hc": "Heavy cavalry"}
         self.open_recruit()
-        self.click(L["cities"][0], L["cities"][1] + 12 * city_row)
-        self.click(*L["types"][unit_type])
-        for _ in range(thousands):
-            self.click(*L["up1000"], pause=0.2)
+        cs = self.controls("Army recruits")
+        cities = self.control(cs, cls="TListBox", index=0)
+        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click_control(self.control(cs, text=TYPES[unit_type]), pause=0.6)
+        spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
         for _ in range(hundreds):
-            self.click(*L["up100"], pause=0.2)
-        self.click(*L["recruit"], pause=0.8)
+            self.click_control(spins[0], fy=0.25, pause=0.2)
+        for _ in range(thousands):
+            self.click_control(spins[-1], fy=0.25, pause=0.2)
+        self.click_control(self.control(cs, text="Recruit unit"), pause=0.8)
         texts = self.dismiss_popups()
-        self.close_dialog("Army recruits", L["ok"])
+        self.close_controls("Army recruits", cs)
         return texts
 
     # ---- army toolbar (appears in the unit map's top strip, y = 108) ---------
@@ -451,19 +541,21 @@ class Game:
 
     def mobilize(self, city_row, unit_rows):
         """Army recruits: pick the city, click each unit row (ctrl for more than
-        one), Mobilize. Rows of "Units at <city>" start at y = 177, 12 px apart."""
-        L = self.RECRUIT
+        one), Mobilize. The controls are read from the dialog."""
         self.open_recruit()
-        self.click(L["cities"][0], L["cities"][1] + 12 * city_row)
+        cs = self.controls("Army recruits")
+        cities = self.control(cs, cls="TListBox", index=0)
+        units = self.control(cs, cls="TListBox", index=1)
+        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
         for k, r in enumerate(unit_rows):
             if k:
                 sh("xdotool", "keydown", "ctrl")
-            self.click(330, 177 + 12 * r, pause=0.4)
+            self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * r, pause=0.4)
             if k:
                 sh("xdotool", "keyup", "ctrl")
-        self.click(*L["mobilize"], pause=1.5)
+        self.click_control(self.control(cs, text="Mobilize"), pause=1.5)
         texts = self.dismiss_popups()
-        self.close_dialog("Army recruits", L["ok"])
+        self.close_controls("Army recruits", cs)
         return texts
 
     RELATIONS = {"peace": 94, "trade": 134, "ally": 176, "war": 218}
