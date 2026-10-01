@@ -169,7 +169,32 @@ def test_join():
            f"{len(a['units'])} units; popups {texts}"
 
 
-TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join"]
+def test_taxation():
+    """One turn: set Rome's tax to 20% through the Change tax level slider."""
+    g, _ = fresh("tax")
+    g.taxation(20)
+    p = keep(g.save_as("T_TAX.SAV"), "T_TAX.SAV")
+    s = load(p)
+    r = s["nations"][0]
+    assert r["tax"] == 20, ("tax", r["tax"])
+    return f"Rome tax -> {r['tax']}%, treasury {r['treasury']}, unity {r['unity']}"
+
+
+def test_disband_unit():
+    """Recruit a unit at Rome (+1 to the queue), then disband the first queued
+    unit (-1). The queue starts with four at Rome, so the count is unchanged."""
+    g, _ = fresh("disband")
+    before = len(load(BASE)["nations"][0]["recruit_slots"])
+    g.recruit(city_row=1, unit_type="hi", thousands=2)      # 3,200 HI queued at Rome
+    g.disband_unit(city_row=1, unit_row=0)                  # remove the first queued unit
+    p = keep(g.save_as("T_DISBAND.SAV"), "T_DISBAND.SAV")
+    r = load(p)["nations"][0]
+    assert len(r["recruit_slots"]) == before, (before, r["recruit_slots"])
+    return f"Rome queue {before} -> {len(r['recruit_slots'])} (recruit +1, disband -1), treasury {r['treasury']}"
+
+
+TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
+         "taxation", "disband_unit"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS

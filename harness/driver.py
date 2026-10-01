@@ -359,20 +359,39 @@ class Game:
         txt = subprocess.run(["tesseract", str(png), "-", "--psm", "6"], capture_output=True, text=True).stdout
         return " ".join(txt.split())
 
+    def answer(self, title, yes=True):
+        """Press Yes (or No) on a <title> confirmation dialog. Its buttons are
+        Yes / No / Cancel, not the bottom-centre OK that dismiss_popups clicks."""
+        cs = self.controls(title)
+        want = "yes" if yes else "no"
+        c = next((c for c in cs if want in c["text"].lower()), None)
+        if c is None:
+            raise DriverError("%s: no %s button" % (title, want))
+        self.click_control(c, pause=0.8)
+        return True
+
     def dismiss_popups(self, max_n=10):
-        """Press OK on message boxes; return their texts (OCR)."""
+        """Press OK on message boxes; return their texts (OCR). A Confirm box is
+        a Yes/No/Cancel dialog and is answered Yes (the driver only calls this
+        after the action it asked for)."""
         texts = []
         for _ in range(max_n):
             ps = [p for p in self.popups() if p[1] in ("Information", "Confirm", "Warning", "Error", "")
                   and p[4] < 600 and p[5] < 300]
             if not ps:
                 break
-            wid, name, x, y, wd, ht = ps[0]
+            wid, name = ps[0][0], ps[0][1]
             texts.append(self.read_popup(ps[0]))
-            for _ in range(3):      # no window manager: the first click only activates the box
-                self.click(x + wd // 2, y + ht - 24, pause=0.6)     # the OK button, bottom centre
-                if wid not in [p[0] for p in self.popups()]:
-                    break
+            if name == "Confirm":
+                self.answer("Confirm", yes=True)
+                if wid in [p[0] for p in self.popups()]:
+                    self.answer("Confirm", yes=True)
+            else:
+                x, y, wd, ht = ps[0][2], ps[0][3], ps[0][4], ps[0][5]
+                for _ in range(3):  # no window manager: the first click only activates the box
+                    self.click(x + wd // 2, y + ht - 24, pause=0.6)     # OK, bottom centre
+                    if wid not in [p[0] for p in self.popups()]:
+                        break
         return texts
 
     def close_dialog(self, title, ok_xy, tries=3):
@@ -543,6 +562,20 @@ class Game:
         self.close_controls("Army recruits", cs)
         return texts
 
+    def disband_unit(self, city_row, unit_row):
+        """Army recruits: pick the city, select a queued unit, Disband. Controls
+        are read from the dialog."""
+        self.open_recruit()
+        cs = self.controls("Army recruits")
+        cities = self.control(cs, cls="TListBox", index=0)
+        units = self.control(cs, cls="TListBox", index=1)
+        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * unit_row, pause=0.4)
+        self.click_control(self.control(cs, text="Disband"), pause=1.0)
+        texts = self.dismiss_popups()
+        self.close_controls("Army recruits", cs)
+        return texts
+
     # ---- army toolbar (appears in the unit map's top strip, y = 108) ---------
     ARMY_TOOLS = {"supply": 349, "mercs": 372, "transfer": 397, "split": 421, "join": 445,
                   "change": 468, "disband": 493, "cancel": 519}
@@ -663,6 +696,19 @@ class Game:
             self.close_dialog("International Relations", (308, 283))      # Cancel
         me = self.i16(CUR_NATION)
         return self.i16(NATIONS + me * NATION_LEN + 0x26 + 2 * nation), texts
+
+    def taxation(self, percent):
+        """Set the tax level (0..40). The slider is keyboard-driven: focus it,
+        Home to 0, then Right once per percent (its LineSize is 1), then OK."""
+        self.tool("taxation")
+        cs = self.controls("Change tax level")
+        tb = self.control(cs, cls="TTrackBar")
+        self.click(tb["x"] + tb["w"] // 2, tb["y"] + tb["h"] // 2, pause=0.5)
+        self.key("Home")
+        if percent:
+            sh("xdotool", "key", "--repeat", str(percent), "Right", check=False)
+        self.click_control(self.control(cs, text="OK"), pause=1.5)
+        return self.dismiss_popups()
 
     def end_turn(self, timeout=300, battle_shot=None):
         """Game > End turn (it runs at once: there is no confirmation box), then
