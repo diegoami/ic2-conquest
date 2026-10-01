@@ -1,13 +1,13 @@
 # Running ic2-conquest in WSL2 (Ubuntu 24.04)
 
-How to bring the harness up on a Windows machine with WSL2, and the two
-gotchas that make the plain `setup/setup.sh` run fail there. Written after a
-working bootstrap on 2026-10-01: the seeded build matches `tests/results.md`
-(`354d8265…532f`), the game runs headless, loads saves, and 3 of the 5 order
-tests pass (the two failures are the toolbar-coordinate drift, below).
+How to bring the harness up on a Windows machine with WSL2, and the gotchas
+that make the plain `setup/setup.sh` run fail there. Written after a working
+bootstrap on 2026-10-01: the seeded build matches `tests/results.md`
+(`354d8265…532f`), the game runs headless, loads saves, and all five order tests
+pass.
 
-Everything here is machine-level. Nothing in this repository changes except
-this file.
+Most of this is machine-level. The one code change it needed is the run-time
+derivation of the UI positions (§4), which is in `harness/driver.py`.
 
 ## 0. Prerequisites
 
@@ -93,11 +93,12 @@ ls ~/ic2-work/prefix/drive_c/users/$USER
 
 After this, loads work and `move`, `end_turn` and `attack` pass.
 
-## 4. Toolbar coordinates drift under this Wine
+## 4. UI positions drift under this Wine (and how the driver derives them)
 
-The toolbar buttons are wider in this Wine build than the positions recorded
-in `coverage.md` / `harness/driver.py`, so the pitch accumulates and the
-right-hand buttons land one slot over:
+The toolbar buttons and the dialog controls sit at different positions in this
+Wine build than `coverage.md` records, because the font metrics differ. The
+toolbar pitch is ~24 px here against ~22 px recorded, so the right-hand buttons
+land one slot over:
 
 | Button | `coverage.md` x | actual x range (hover scan) | actual centre |
 |---|---|---|---|
@@ -111,34 +112,40 @@ right-hand buttons land one slot over:
 | Recruit unit | 174 | 177–198 | 188 |
 | Build fleet | 196 | 201–228 | 214 |
 
-Symptom: `python3 -m tests.test_orders` fails `recruit` and
-`scripted_turn_repeats` with `timeout waiting for Army recruits dialog`,
-because `TOOLBAR["recruit"] = 174` now hits **Balance sheet**.
+Before the fix, `python3 -m tests.test_orders` failed `recruit` and
+`scripted_turn_repeats`: `TOOLBAR["recruit"] = 174` opened **Balance sheet**,
+and once the dialog opened its `OK` (recorded at `(155,345)`) had moved to
+`(133,359) 70x25`.
 
-**How to derive it at runtime.** Each toolbar button's tooltip is a named X
-window, so the driver can find the buttons without hardcoding anything:
+**The driver now derives both at run time**, so no coordinates are hardcoded:
 
-```bash
-# hover across the toolbar; the tooltip window name is the button's label
-for x in $(seq 6 3 240); do
-  xdotool mousemove --sync $x 58; sleep 0.75
-  for w in $(xdotool search --name "."); do xdotool getwindowname "$w"; done \
-    | grep -vE 'Area map|Unit map|Information|Battlefield|Default IME|Imperial Conquest 2.*' \
-    | grep -v '^$' | head -1 | sed "s/^/$x : /"
-  xdotool mousemove --sync 600 400; sleep 0.25   # reset the tooltip
-done
-```
+- **Toolbar** — each button's tooltip is a named X window.
+  `Game.calibrate_toolbar` hovers across the bar once, reads the tooltip names,
+  and caches the centres in `$IC2_WORK/toolbar.json`; `Game.tool` uses the
+  derived x, falling back to `TOOLBAR` for anything the scan misses. To
+  re-derive, delete the cache file. Tooltip label → driver tool name: `Open
+  saved game`→open, `Save game position`→save, `End player's turn`→end_turn,
+  `News`→news, `International relations`→relations, `Taxation`→taxation,
+  `Balance sheet`→balance, `Recruit unit`→recruit, `Build fleet`→build_fleet.
+- **Dialog controls** — Wine draws a dialog's controls itself; they are **not**
+  X windows, so they cannot be found the way the toolbar is.
+  `harness/win_controls.c` (a ~30-line mingw helper, built to
+  `$IC2_WORK/win_controls.exe` by `setup.sh`) enumerates a window's child HWNDs
+  and prints `class / text / x / y / w / h` in screen coordinates.
+  `Game.controls(title)` parses it; `Game.control` / `click_control` find a
+  control by caption or class and click its centre. Example:
 
-Tooltip label → driver tool name: `Open saved game`→open, `Save game
-position`→save, `End player's turn`→end_turn, `News`→news, `International
-relations`→relations, `Taxation`→taxation, `Balance sheet`→balance, `Recruit
-unit`→recruit, `Build fleet`→build_fleet. Past `Build fleet` come the nation
-icons (`Rome`, …) and `All`.
+  ```text
+  $ wine ~/ic2-work/win_controls.exe "Army recruits"
+  TButton   Recruit unit   53   286  90  25
+  TButton   OK             133  359  70  25
+  TListBox                 313  70   160 70
+  TUpDown                  233  97   30  40
+  ```
 
-The intended fix is to calibrate once when the game starts (after a load) and
-cache the map, falling back to the `coverage.md` values if the scan finds
-nothing. That keeps the harness working on both renderings instead of moving
-the hardcoded numbers from one to the other.
+  `recruit` and `mobilize` use it; the other dialog methods (`supply`,
+  `fortify`, `hire_mercs`, `relation`) still use the recorded coordinates and
+  can be converted the same way.
 
 ## 5. Environment variables and paths
 
@@ -151,6 +158,7 @@ the hardcoded numbers from one to the other.
 | game folder | `$WINEPREFIX/drive_c/IC2` | exe, DAT, HLP, CNT, WAVS |
 | base save | `$IC2_WORK/fixtures/BASE.SAV` | from `saves/run0-start-AUTO0720-seed12345.SAV` |
 | Wine binary | `/usr/lib/wine/wine` | not the `/usr/bin/wine` wrapper |
+| `win_controls.exe` | `$IC2_WORK/win_controls.exe` | built from `harness/win_controls.c`; reads a dialog's controls |
 
 Built executables land in `$IC2_WORK/build` and the game folder; the one the
 driver uses is `Imperial Conquest 2 fast rollingsave seed.exe`, SHA-256
@@ -169,7 +177,9 @@ driver uses is `Imperial Conquest 2 fast rollingsave seed.exe`, SHA-256
 - **A load hangs after clicking Open** — dismiss the "… wants to trade with
   Rome." offer box (OK at about `640,547`) before clicking any toolbar button;
   it is modal and swallows the next click.
-- **`recruit` fails** — the toolbar drift (§4).
+- **A click lands on the wrong control** — the UI drift (§4). The driver derives
+  the positions, so the only cache to clear is `$IC2_WORK/toolbar.json`, and a
+  missing `win_controls.exe` is rebuilt on demand.
 
 ## 7. Restart and teardown
 
@@ -186,4 +196,7 @@ Rebuild the executables after a pull of `imp_conquest_fixtures`:
 cd $IC2_SRC/imp_conquest_fixtures
 python3 patch_exe.py
 python3 /path/to/ic2-conquest/patches/seed_patch.py "$PWD"
+# the dialog-control helper (setup.sh builds this too)
+i686-w64-mingw32-gcc -O2 -o ~/ic2-work/win_controls.exe \
+  /path/to/ic2-conquest/harness/win_controls.c
 ```

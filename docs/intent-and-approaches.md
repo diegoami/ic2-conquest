@@ -171,29 +171,33 @@ can also plan, configurable by URL and key.
 - **Interaction.** Both, per the player: the trainer prints state + options,
   accepts typed commands, and can delegate a turn to the agent.
 
-### 4.4 Toolbar calibration (immediate)
+### 4.4 UI position calibration — **done** (PR #3)
 
-The toolbar buttons are wider under this Wine, so the hardcoded x in
-`coverage.md`/`driver.py` drift and `recruit` clicks **Balance sheet**. The
-player chose runtime derivation.
+Under this Wine the toolbar buttons and the dialog controls sit at different
+positions than `coverage.md` records, so a `recruit` click landed on **Balance
+sheet** and a dialog's `OK` was missed. Both are now derived at run time:
 
-- **A. Hover-scan tooltips (recommended, validated).** Each button's tooltip is
-  a named X window; hovering across the bar and reading the window name maps
-  label → x (scan and observed ranges in `docs/wsl-setup.md` §4). Calibrate once
-  after a load, cache, fall back to the `coverage.md` values if the scan finds
-  nothing. ~40 s at startup, once.
-- **B. Read the VCL `TToolBar` control's button rects from memory.** Exact and
-  instant, but needs the toolbar's address and button layout reverse-engineered;
-  a small research task.
-- **C. Use the Strategy menu instead of the toolbar.** Avoids the drift, but the
-  driver deliberately prefers the toolbar because menus drop clicks under Wine
-  without a window manager.
+- **Toolbar:** `Game.calibrate_toolbar` reads each button's tooltip window (a
+  named X window), caches the centres in `$IC2_WORK/toolbar.json`, and falls
+  back to `TOOLBAR`.
+- **Dialog controls:** `harness/win_controls.c` enumerates a window's child
+  HWNDs (Wine draws them itself; they are not X windows) and `Game.controls`
+  reads their class/text/screen-rect. `recruit` and `mobilize` click by
+  caption/class. `setup.sh` builds the helper with mingw.
 
-Recommended: **A now, B later if the scan proves flaky.**
+All five order tests pass (`move`, `recruit`, `end_turn`,
+`scripted_turn_repeats`, `attack`). The other dialog methods (`supply`,
+`fortify`, `hire_mercs`, `relation`) still use the recorded coordinates; the
+same pattern converts them. Details in `docs/wsl-setup.md` §4.
+
+Rejected alternatives, for the record: reading the VCL `TToolBar`/control rects
+from process memory (exact, but needs the VCL layout reverse-engineered), and
+using the menus instead of the toolbar (the driver prefers the toolbar because
+menus drop clicks under Wine without a window manager).
 
 ### 4.5 Suggested order
 
-1. Toolbar calibration (§4.4 A) → all five order tests green.
+1. ~~Toolbar + dialog-control calibration (§4.4)~~ — **done**, all five order tests green.
 2. Finish the order driver (the ⬜ orders) and the run-0 experiment the
    `HANDOVER.md` lists.
 3. `GameBackend` interface + `OriginalBackend`, and the command vocabulary
