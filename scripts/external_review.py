@@ -151,13 +151,17 @@ def main():
 
     if kind == "release":
         meta = gh_json("issue", "view", str(n), fields="title,body")
-        sh("git", "fetch", "-q", "origin", "main")
-        head = base = sh("git", "rev-parse", "origin/main")
+        sh("git", "fetch", "-q", "origin", "+refs/heads/main:refs/remotes/origin/main")
+        head = base = sh("git", "rev-parse", "refs/remotes/origin/main")
     else:
         meta = gh_json("pr", "view", str(n), fields="title,body,headRefOid,baseRefName,commits,labels")
         head = meta["headRefOid"]
-        sh("git", "fetch", "-q", "origin", f"pull/{n}/head", meta["baseRefName"])
-        base = sh("git", "merge-base", f"origin/{meta['baseRefName']}", head)
+        bref = f"refs/remotes/origin/{meta['baseRefName']}"
+        # explicit refspecs: a bare `git fetch origin <branch>` only reliably sets FETCH_HEAD
+        sh("git", "fetch", "-q", "origin", f"+pull/{n}/head:refs/review/pr{n}",
+           f"+refs/heads/{meta['baseRefName']}:{bref}")
+        head = sh("git", "rev-parse", f"refs/review/pr{n}")
+        base = sh("git", "merge-base", bref, head)
         excl |= implementer_names(meta)
     models = [m for m in models if not any(e and e in m.lower() for e in excl)]
     if not models:
