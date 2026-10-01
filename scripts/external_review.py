@@ -209,6 +209,8 @@ def main():
                 break
     finally:
         sh("git", "worktree", "remove", "--force", str(wt), check=False)
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         if wt.exists():
             shutil.rmtree(wt, ignore_errors=True)
             sh("git", "worktree", "prune", check=False)
