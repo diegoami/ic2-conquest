@@ -693,11 +693,17 @@ class Game:
         self.click_control(self.control(cs, text=button), pause=1.2)
         return cs
 
+    def _ok_until_closed(self, title, cs, pause=1.2):
+        """Press OK until the `title` dialog is gone. A click into an inactive
+        window may only activate it, so try, then retry twice; raise if it stays."""
+        for _ in range(3):
+            self.click_control(self.control(cs, text="OK"), pause=pause)
+            if not self.find_windows("^%s$" % re.escape(title)):
+                return
+        raise DriverError("%s did not close after OK" % title)
+
     def _close_change_units(self, cs):
-        for _ in range(2):              # the first click into an inactive window may only activate it
-            self.click_control(self.control(cs, text="OK"), pause=1.5)
-            if not self.find_windows("^Change units$"):
-                break
+        self._ok_until_closed("Change units", cs, pause=1.5)
 
     def rename_unit(self, i, unit_row, name):
         """Change units: select a unit in army i, Rename unit, type the name."""
@@ -708,10 +714,7 @@ class Game:
         self.key("End")                 # the box is pre-filled and ctrl+a does not select it
         sh("xdotool", "key", "--repeat", "30", "BackSpace")
         sh("xdotool", "type", "--delay", "60", name)
-        for _ in range(2):              # the first click into an inactive window may only activate it
-            self.click_control(self.control(rc, text="OK"), pause=1.0)
-            if not self.find_windows("^Rename unit$"):
-                break
+        self._ok_until_closed("Rename unit", rc)
         texts = self.dismiss_popups()
         self._close_change_units(cs)
         return texts
@@ -723,15 +726,14 @@ class Game:
         down), so the new unit ends at half - 100*hundreds."""
         cs = self._change_units(i, [unit_row], "Split unit")
         texts = self.dismiss_popups() if not self.find_windows("^Split unit$") else []
+        if not texts and not self.find_windows("^Split unit$"):
+            raise DriverError("Split unit: neither the dialog nor a refusal appeared")
         if self.find_windows("^Split unit$"):
             sc = self.controls("Split unit")
             spin = sorted((c for c in sc if c["cls"] == "TUpDown"), key=lambda c: c["x"])[0]
             for _ in range(abs(hundreds)):
                 self.click_control(spin, fy=0.25 if hundreds > 0 else 0.75, pause=0.2)
-            for _ in range(2):
-                self.click_control(self.control(sc, text="OK"), pause=1.0)
-                if not self.find_windows("^Split unit$"):
-                    break
+            self._ok_until_closed("Split unit", sc)
             texts += self.dismiss_popups()
         self._close_change_units(cs)
         return texts

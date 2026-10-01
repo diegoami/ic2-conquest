@@ -1,6 +1,6 @@
 # Test results
 
-Last full run: 2026-10-01, `python3 -m tests.test_orders`, build `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`), Wine 9.0, Xvfb 1280×1024. Start save `BASE.SAV` = a new game as Rome with seed 12345 (`AUTO0720.SAV`, SHA-256 `050bc354f1cbbe37…`, 270 BC Spring week 1). Test saves are kept under `$IC2_WORK/tests/` (not in git). All thirteen tests pass. The toolbar, army-toolbar, battle-toolbar and dialog-control positions are derived at run time (`harness/driver.py`), because they drift with the Wine build.
+Last full run: 2026-10-01, `python3 -m tests.test_orders`, build `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`), Wine 9.0, Xvfb 1280×1024. Start save `BASE.SAV` = a new game as Rome with seed 12345 (`AUTO0720.SAV`, SHA-256 `050bc354f1cbbe37…`, 270 BC Spring week 1). Test saves are kept under `$IC2_WORK/tests/` (not in git). All seventeen tests pass (the first twelve in one full run; the five change-units tests re-run after the driver's OK-retry fix, since the full run was interrupted). The toolbar, army-toolbar, battle-toolbar and dialog-control positions are derived at run time (`harness/driver.py`), because they drift with the Wine build.
 
 ## Seed patch (phase 0)
 
@@ -30,8 +30,13 @@ PASS build_fleet (36s): Rome fleets 0 -> 1 (ships 10, building True, countdown 2
 PASS split_army (36s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18700), (1, 120, 53, 22000), (14, 101, 38, 5000)]
 PASS change_units_disband (39s): army 0 23700 t / 6 units -> 18900 t / 5 units
 PASS transfer_units (63s): army0 23700t/6u -> 18700t/5u; army1 22000t/6u -> 27000t/7u
+PASS change_units_rename (49s): '1st Foot  Battalion' -> 'Legio Test'
+PASS change_units_split (50s): units 6 -> 7; troops [4800, 5000, 5200, 5900, 900, 1900] -> [4800, 3000, 5200, 5900, 900, 1900, 2000]
+PASS change_units_join (61s): split then join: units 6 -> 6; troops [4800, 5000, 5200, 5900, 900, 1900]
+PASS change_units_refusals (61s): split row 0: '@ this unit is too small to split'; join rows 1+2: 'e these units ate too lage to be combined. ak'; units unchanged [4800, 5000, 5200, 5900, 900, 1900]
 ```
 
+- **change units**: Rename types into a pre-filled box. Splitting a 5,000 unit opens at 2,500 / 2,500 and each 100s arrow moves 100 to the original (3,000 + 2,000 after five presses); the new unit is appended as the last row. Refusals: the 4,800 unit is "too small to split"; 5,000 + 5,200 heavy infantry are "too large to be combined" (so the join test rejoins the two halves). Saves: `T_RENAME.SAV`, `T_SPLITUNIT.SAV`, `T_JOINUNITS.SAV`, `T_CHUNITS_REFUSED.SAV`. The OK of Change units, Split unit and Rename unit sometimes needs up to three clicks (an inactive window); the driver clicks until the dialog is gone and raises otherwise.
 - **move**: the only army record that changes is army 0: position, moves (8 → 4: the river tile (101,36) costs 4) and covered cell (plain 2 → river 8).
 - **recruit**: the new slot, the treasury (−320 = 3,200 div 200 × 20) and the mobilization (30 + 1 + 3,200 × 1000 div 2,577,000 = 32) all match the research formulas (`decompiled-recruitment-cost-formula.md`).
 - **scripted_turn_repeats** is phase 0's done criterion: one scripted turn (a move plus a recruit, then End turn) reproduces the same save twice.

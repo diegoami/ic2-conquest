@@ -321,14 +321,30 @@ def test_change_units_join():
     g.join_units(0, [1, len(u0)])           # the new half is appended as the last row
     u1 = _army0_units(g, "T_JOINUNITS.SAV")
     assert len(u1) == len(u0), (len(u0), len(u1))
-    assert sum(u["troops"] for u in u1) == sum(u["troops"] for u in u0)
+    assert sorted(u["troops"] for u in u1) == sorted(u["troops"] for u in u0), \
+        ([u["troops"] for u in u0], [u["troops"] for u in u1])   # the halves rejoined to 5000
     return f"split then join: units {len(u0)} -> {len(u1)}; troops {[u['troops'] for u in u1]}"
+
+
+def test_change_units_refusals():
+    """The two size rules of Change units, each a refusal with the army unchanged:
+    the 4,800-man 1st Foot is "too small to split", and 5,000 + 5,200 heavy
+    infantry are "too large to be combined"."""
+    g, _ = fresh("chunitsrefuse")
+    u0 = next(a for a in live_armies(load(BASE), 0) if a["id"] == 0)["units"]
+    small = " ".join(g.split_unit(0, 0)).lower()
+    large = " ".join(g.join_units(0, [1, 2])).lower()
+    u1 = _army0_units(g, "T_CHUNITS_REFUSED.SAV")
+    assert "too small" in small, small
+    assert "combined" in large, large
+    assert [u["troops"] for u in u1] == [u["troops"] for u in u0], ([u["troops"] for u in u0], [u["troops"] for u in u1])
+    return f"split row 0: {small!r}; join rows 1+2: {large!r}; units unchanged {[u['troops'] for u in u1]}"
 
 
 TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
          "taxation", "disband_unit", "disband_army", "build_fleet", "split_army",
          "change_units_disband", "transfer_units", "change_units_rename",
-         "change_units_split", "change_units_join"]
+         "change_units_split", "change_units_join", "change_units_refusals"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
