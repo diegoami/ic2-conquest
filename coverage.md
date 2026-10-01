@@ -14,21 +14,21 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 | End turn | toolbar *End turn* (57,58); **no confirmation box** | `Game.end_turn` | `end_turn`, `scripted_turn_repeats` | ✅ | `T_END_AUTO0721.SAV`; scripted turn byte-identical twice |
 | Move army | click the army's tile, then the destination tile (one click = whole straight-line walk) | `Game.move` | `move` | ✅ | `T_MOVE.SAV`: army 0 (100,37)→(101,36), moves 8→4 (river tile costs 4) |
 | Attack a city (siege) | select the army, click the **adjacent** enemy city | `Game.attack` | `attack` | ✅ | `T_ATTACK.SAV`: army 0 23,700→21,765, "Rome fails to capture Felsina (Gaul).", Felsina loyalty 79→76, fort 68→65, pop 26→25 |
-| Attack an army (field battle) | select, click the adjacent enemy army; tactical screen, *Computer general* | `Game.attack` + `Game.play_battle` | — | 🟡 | battle loop taken from `harness/battle_auto.sh` |
+| Attack an army (field battle) | select, click the adjacent enemy army; tactical screen, *Computer general* | `Game.attack` (plays it) | — | 🟡 | battle-bar calibrated (`End turn` ~114, `Computer general` ~165); the battle window can end up *below* the game's other windows, so the auto-play is flaky |
 | Recruit a unit | toolbar *Recruit* (174,58) → *Army recruits* dialog | `Game.recruit` | `recruit` | ✅ | `T_RECRUIT.SAV`: HI 3,200 at Rome (city 85), state 0; treasury 2,200→1,880; mobilization 30→32 |
 | Mobilize | *Army recruits* → city row → unit row (330, 177+12r) → *Mobilize* (350,352) | `Game.mobilize` | manual | ✅ | `saves/mobilize-new-army-0720.SAV`: army 14, HI 4,000 q4, 0 supplies, 0 moves, morale 59 |
-| Disband a queued unit | *Army recruits* → *Disband* (461,352) | — | — | ⬜ | |
+| Disband a queued unit | *Army recruits* → select a unit → *Disband* | `Game.disband_unit` | `disband_unit` | ✅ | `T_DISBAND.SAV` |
 | Supply army | select the army, army toolbar *Supply army* (349,108): 10s ▲ (169,94) moves city → army; money 100s ▲ (261,272) treasury → purse; OK (239,337) | `Game.supply` | manual | 🟡 | army 0 170 → 238 t (cap `troops div 100 + 1`), Arretium 150 → 82, purse 100 → 200, treasury −100 |
 | Hire mercenaries | army toolbar (372,108) → *Recruit mercenary unit* (490×165): row (103,86+12r), *Recruit unit* (410,104), OK (248,174); nothing opens if no offer is adjacent | `Game.hire_mercs` | manual | ✅ | `saves/merc-hire-free-0720.SAV`: Samnite LI 3,868 q8 joined army 1; **no price deducted** |
-| Transfer unit / army-to-army | Unit map → Army → Transfer unit | — | — | ⬜ | |
-| Split army | army toolbar (421,108) → *Split army* (610×430 at 13,39): two unit lists with Transfer/Disband, supply and money 10s/100s spinners, OK (203,398), Cancel (360,398) | — | — | 🟡 | dialog mapped only |
-| Join armies | army toolbar (445,108) | — | — | ⬜ | needs two adjacent armies (turn 2 of the run-0 plan) |
-| Change units (rename, split, join units) | Unit map → Army → Change units | — | — | ⬜ | |
-| Disband army | Unit map → Army → Disband army | — | — | ⬜ | |
+| Transfer unit / army-to-army | army toolbar *Transfer units* (needs an adjacent army) → Army to army transfer | `Game.transfer_units` | `transfer_units` | ✅ | `T_TRANSFER.SAV`: 5,000 t from army 0 to army 1 |
+| Split army | army toolbar *Split army* → two unit lists, *Transfer*, *OK* | `Game.split_army` | `split_army` | ✅ | `T_SPLIT.SAV`: armies 2 → 3, troops conserved |
+| Join armies | army toolbar *Join armies* (needs two adjacent armies) | `Game.join` | `join` | ✅ | `T_JOIN.SAV`: armies 0+1 → 45,700 t, 12 units |
+| Change units (rename, split, join units) | Unit map → Army → Change units | `Game.change_units_disband` | `change_units_disband` | 🟡 | Disband only (`T_CHUNITS.SAV`); rename/join/split ⬜ |
+| Disband army | Unit map → Army → Disband army → *Yes* | `Game.disband_army` | `disband_army` | ✅ | `T_DISBAND_ARMY.SAV`: Roman armies 2 → 1 |
 | Fortify city | click an own city, city toolbar *Fortify city* (349,108) → *Fortify <city>*: 1s ▲ (136,86), 10s ▲ (168,86), OK (123,143) | `Game.fortify` | manual | ✅ | `saves/fortify-arretium-0720.SAV`: Arretium 72 → 372 (3 pending), −99 |
-| Taxation | toolbar % (129,58) → *Change tax level* | — | — | ⬜ | |
+| Taxation | toolbar *Taxation* → *Change tax level* (slider 0..40, LineSize 1, Home then Right×n) | `Game.taxation` | `taxation` | ✅ | `T_TAX.SAV`: Rome 10 → 20% |
 | International relations | toolbar (107,58) → *International Relations* (352×436 at 23,49): radio at x = 23 + {peace 94, trade 134, ally 176, war 218}, y = 74 + 23.55·row (Rome row 0); OK (308,217), Cancel (308,283). A refusal box aborts the whole OK: one change per call | `Game.relation` | manual | ✅ | `saves/trade-numidia-0720.SAV`: Numidia accepted; 6 refusals "You cannot trade with X."; 5 silent no-ops (open) |
-| Build fleet | toolbar anchor (196,58) | — | — | ⬜ | |
+| Build fleet | toolbar *Build fleet* → 1s/10s ship spinners → *OK* | `Game.build_fleet` | `build_fleet` | ✅ | `T_FLEET.SAV`: 10 ships, countdown 24, −100 |
 | Fleet: move, attack, embark, disembark, supply, repair, transfer, split, join, scuttle | Unit map → Fleet → … | — | — | ⬜ | |
 | News, Balance sheet | toolbar (84,58), (151,58) | — | — | ⬜ | read-only |
 | Accept a post-battle peace (`TBattlePols`) | Yes/No after a battle | — | — | ⬜ | |
