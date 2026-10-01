@@ -35,6 +35,8 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 
 ## 2. Dialog layouts (1280×1024 Xvfb, the default window layout of a new game)
 
+**These coordinates are a reference, not what the driver clicks.** Under some Wine builds the font metrics differ, so the toolbar buttons and the dialog controls sit at a different pitch and the numbers below drift (a `recruit` click lands on Balance sheet; the Army recruits dialog's OK moves from (155,345) to about (167,372)). The driver derives both at run time: the toolbar from each button's tooltip window (`Game.calibrate_toolbar`, cached in `$IC2_WORK/toolbar.json`), and the dialog controls from the running game with the `win_controls` helper (`Game.controls`, `harness/win_controls.c`). The numbers here remain the fallback and the record of the layout.
+
 **Main window.** Title `Imperial Conquest 2    Rome's turn   (<leader>)`, at (0,26), 650×300. Menu bar y = 36: File 14, Game 45, Strategy 97, Nations 148, Area map 202, Unit map 259, Help 304. Menu items start at y = 56, 16 px apart. Toolbar y = 58: Open 12, Save 35, End turn 57, News 84, International relations 107, Taxation 129, Balance sheet 151, Recruit unit 174, Build fleet 196, then the 16 nation icons and *All*.
 
 - **Menus under Wine with no window manager:** an item click that arrives together with the pointer move is ignored, and after a dialog closes a menu click can be swallowed or re-open the last dialog. The driver hovers before every click, resets menu state (Escape ×2, a click on the bare root window at (1000,900)), and uses toolbar buttons wherever one exists.

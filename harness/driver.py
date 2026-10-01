@@ -226,6 +226,48 @@ class Game:
         self.reset_ui()
         self.click(self.toolbar_x.get(name, TOOLBAR[name]), TOOLBAR_Y, pause=pause)
 
+    # ---- dialog controls (read from the running game) -----------------------
+    def controls(self, title):
+        """A dialog's controls as [{'cls','text','x','y','w','h'}, ...] in screen
+        coordinates. Wine draws a dialog's controls itself (they are not X
+        windows) and their positions depend on the font and DPI, so they are read
+        from the running game with the win_controls helper, not hardcoded."""
+        exe = WORK / "win_controls.exe"
+        if not exe.exists():
+            self.build_win_controls(exe)
+        out = sh(WINE, str(exe), title)
+        cs = []
+        for line in out.splitlines():
+            p = line.split("\t")
+            if len(p) == 6:
+                cls, text, x, y, w, h = p
+                cs.append({"cls": cls, "text": text, "x": int(x), "y": int(y), "w": int(w), "h": int(h)})
+        if not cs:
+            raise DriverError("no controls found for window %r" % title)
+        return cs
+
+    def build_win_controls(self, exe):
+        src = Path(__file__).resolve().parent / "win_controls.c"
+        try:
+            subprocess.run(["i686-w64-mingw32-gcc", "-O2", "-o", str(exe), str(src)], check=True)
+        except (OSError, subprocess.CalledProcessError) as e:
+            raise DriverError("win_controls.exe is missing and could not be built "
+                              "(install gcc-mingw-w64-i686): %s" % e)
+
+    def control(self, cs, text=None, cls=None, index=0):
+        got = [c for c in cs if (text is None or c["text"] == text)
+               and (cls is None or c["cls"] == cls)]
+        if len(got) <= index:
+            raise DriverError("control not found: text=%r class=%r" % (text, cls))
+        return got[index]
+
+    def click_control(self, c, fx=0.5, fy=0.5, pause=0.6):
+        self.click(c["x"] + int(c["w"] * fx), c["y"] + int(c["h"] * fy), pause=pause)
+
+    def close_controls(self, title, cs, text="OK", pause=1.0):
+        self.click_control(self.control(cs, text=text), pause=pause)
+        self.wait(lambda: not self.find_windows("^%s$" % re.escape(title)), 10, title + " closed")
+
     def menu(self, name, item):
         self.reset_ui()
         self.click(MENU[name], 36, pause=0.8)
@@ -404,31 +446,30 @@ class Game:
         self.click_tile(x, y, pause=1.5)
         return self.dismiss_popups()
 
-    RECRUIT = {  # "Army recruits" dialog (window at 23,49, 560x360)
-        "types": {"li": (93, 96), "hi": (93, 128), "ar": (93, 161), "lc": (93, 193), "hc": (93, 225)},
-        "up100": (183, 102), "down100": (183, 120), "up1000": (230, 102), "down1000": (230, 120),
-        "recruit": (93, 279), "ok": (155, 345), "mobilize": (350, 352), "disband": (461, 352),
-        "cities": (365, 75),        # first row of the city list; rows 12 px apart
-    }
-
     def open_recruit(self):
         self.tool("recruit")
         self.wait(lambda: self.find_windows("^Army recruits$"), 10, "Army recruits dialog")
 
     def recruit(self, city_row, unit_type, thousands=0, hundreds=0):
         """Recruit dialog: pick the city (row in its list), the type, then press the
-        1000s/100s arrows. The resulting size is checked from the save diff."""
-        L = self.RECRUIT
+        1000s/100s arrows. The controls are read from the dialog, so the clicks do
+        not depend on the environment's font metrics. The size is checked on the
+        save diff."""
+        TYPES = {"li": "Light infantry", "hi": "Heavy infantry", "ar": "Archers",
+                 "lc": "Light cavalry", "hc": "Heavy cavalry"}
         self.open_recruit()
-        self.click(L["cities"][0], L["cities"][1] + 12 * city_row)
-        self.click(*L["types"][unit_type])
-        for _ in range(thousands):
-            self.click(*L["up1000"], pause=0.2)
+        cs = self.controls("Army recruits")
+        cities = self.control(cs, cls="TListBox", index=0)
+        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click_control(self.control(cs, text=TYPES[unit_type]), pause=0.6)
+        spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
         for _ in range(hundreds):
-            self.click(*L["up100"], pause=0.2)
-        self.click(*L["recruit"], pause=0.8)
+            self.click_control(spins[0], fy=0.25, pause=0.2)
+        for _ in range(thousands):
+            self.click_control(spins[-1], fy=0.25, pause=0.2)
+        self.click_control(self.control(cs, text="Recruit unit"), pause=0.8)
         texts = self.dismiss_popups()
-        self.close_dialog("Army recruits", L["ok"])
+        self.close_controls("Army recruits", cs)
         return texts
 
     # ---- army toolbar (appears in the unit map's top strip, y = 108) ---------
@@ -500,19 +541,21 @@ class Game:
 
     def mobilize(self, city_row, unit_rows):
         """Army recruits: pick the city, click each unit row (ctrl for more than
-        one), Mobilize. Rows of "Units at <city>" start at y = 177, 12 px apart."""
-        L = self.RECRUIT
+        one), Mobilize. The controls are read from the dialog."""
         self.open_recruit()
-        self.click(L["cities"][0], L["cities"][1] + 12 * city_row)
+        cs = self.controls("Army recruits")
+        cities = self.control(cs, cls="TListBox", index=0)
+        units = self.control(cs, cls="TListBox", index=1)
+        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
         for k, r in enumerate(unit_rows):
             if k:
                 sh("xdotool", "keydown", "ctrl")
-            self.click(330, 177 + 12 * r, pause=0.4)
+            self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * r, pause=0.4)
             if k:
                 sh("xdotool", "keyup", "ctrl")
-        self.click(*L["mobilize"], pause=1.5)
+        self.click_control(self.control(cs, text="Mobilize"), pause=1.5)
         texts = self.dismiss_popups()
-        self.close_dialog("Army recruits", L["ok"])
+        self.close_controls("Army recruits", cs)
         return texts
 
     RELATIONS = {"peace": 94, "trade": 134, "ally": 176, "war": 218}
