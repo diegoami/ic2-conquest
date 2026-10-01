@@ -1,11 +1,13 @@
 # External PR reviewer (OpenCode)
 
+Default chain: `opencode-go/glm-5.3` (primary), `opencode-go/deepseek-v4-pro`, then the free `opencode/big-pickle`.
+
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
 
 ```bash
 python3 scripts/external_review.py --pr 7                        # default model chain, posts one comment
-python3 scripts/external_review.py --pr 7 --model opencode/big-pickle#high,opencode/mimo-v2.6-flash-free
+python3 scripts/external_review.py --pr 7 --model opencode-go/kimi-k3#high,opencode/mimo-v2.6-flash-free
 python3 scripts/external_review.py --pr 7 --apply-label          # also sets status:approved|rework|decision
 python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
 python3 scripts/external_review.py --pr 7 --dry-run              # prints the arguments, starts no model

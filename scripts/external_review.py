@@ -29,7 +29,7 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "opencode/big-pickle,opencode/nemotron-3-ultra-free,opencode/mimo-v2.6-flash-free"
+DEFAULT_MODELS = "opencode-go/glm-5.3,opencode-go/deepseek-v4-pro,opencode/big-pickle"
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
 INFRA = {"no-session", "idle-timeout", "total-timeout", "exited-without-session", "nonzero-exit",
          "cut-off", "default-agent", "bad-format", "unknown-model", "unknown-agent"}
