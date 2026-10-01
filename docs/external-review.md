@@ -1,6 +1,17 @@
 # External PR reviewer (OpenCode)
 
-Default chain: `opencode-go/glm-5.3-flash` (primary), `opencode-go/deepseek-v4.1-flash`, then `opencode-go/gpt-6-luna`.
+## Roles and models (player decision, 2026-10-01)
+
+One cheap model first, then the strong Claude model, for both roles:
+
+| Role | First | Then |
+|---|---|---|
+| Implementer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash`) | Sonnet |
+| Reviewer | GPT Luna (`opencode-go/gpt-6-luna`) | Opus (`opencode/claude-opus-5-5`, billed on the Zen balance) |
+
+`scripts/external_review.py` implements the reviewer chain (its default); the implementer chain is a working
+agreement, there is no script behind it. The chain moves to the next model only on an infrastructure failure
+(including a malformed review), never on a real verdict.
 
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
