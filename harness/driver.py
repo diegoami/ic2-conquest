@@ -628,7 +628,8 @@ class Game:
 
     def split_army(self, i, unit_rows=(0,)):
         """Select army i and split the given unit rows (indices in its unit list)
-        into a new army on the same tile."""
+        into a new army on an adjacent tile (the experiment saw (+1,+1) from (100,37);
+        findings/2026-10-02-unit-map-mouse-orders-and-tax-range.md)."""
         ax, ay = self.army_pos(i)
         self.select_army(i, ax, ay)
         if not self.army_x:

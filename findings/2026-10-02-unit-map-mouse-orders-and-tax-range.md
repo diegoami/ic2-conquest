@@ -13,7 +13,7 @@
 ## Method
 
 - **Build and seed:** `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265…532f`), Wine 9.0, Xvfb 1280×1024, `SEED.TXT` = 12345, every scenario from a fresh process and the run-0 start save (`run0-start-AUTO0720-seed12345.SAV` = `BASE.SAV`: Rome, 270 BC Spring week 1, army 0 at (100,37) with 23,700 troops and 8 moves). Relations (nation `+0x26`): Rome–Gaul 3 (war), Rome–Greece 0 (peace).
-- **Driver:** `harness/driver.py` clicks and keys through `xdotool`; the selected army is read from the game's memory (`0x4A0328`, −1 = none), armies, moves and relations from memory and from the saves. The scripts are `runs/experiments/unit-map-mouse/` (`a_c_d_e.py`, `b2_attack_prompt.py`, `g_taxation.py`); the saves and screenshots are in release `run-exp-unitmap-mouse`.
+- **Driver:** `harness/driver.py` clicks and keys through `xdotool`; the selected army is read from the game's memory (`0x4A0328`, −1 = none), armies, moves and relations from memory and from the saves. The scripts are `runs/experiments/unit-map-mouse/` (`a_c_d_e.py`, `b2_attack_prompt.py`, `g_taxation.py`); the saves and screenshots are staged in the gitignored `artifacts/run-exp-unitmap-mouse/` until the release `run-exp-unitmap-mouse` is created (CLAUDE.md rule 1).
 - **(g)** needed a new helper, `harness/win_slider.c` (`win_slider.exe`), which asks a trackbar for its own range and steps (`TBM_GETRANGEMIN/MAX`, `GETPOS`, `GETLINESIZE`, `GETPAGESIZE`) instead of inferring them from keys.
 - **(b)** went to a planner path (`planner/path.py`) one tile per click, ending a turn next to the city so the click is made with a full turn's moves (9). The box is **captured, not auto-answered** (`Game.attack` answers Yes), then answered No, the click is repeated, and answered Yes.
 
@@ -70,7 +70,7 @@ No box appeared for either move.
 
 ## Pitfalls found on the way (they cost two runs)
 
-- **The File → Save menu clears the army selection.** A script that selects an army, saves (`keep`), then clicks a city lands the click on a city with nothing selected: the city is only shown. Select after saving.
+- **The File → Save menu sets the selected-army variable to −1, and an attack click needs it set.** Measured (select army 0 → `0x4A0328` = 0; save → **−1**; a click on the reachable tile (101,36) still **moved** the army to (101,36) with 4 moves and set the variable back to 0; a second save gave −1 again). So the (a) table is sound even though `A_AFTER_CLICK_1.SAV` was saved between its two clicks. But a script that selects an army, saves (`keep`), then clicks an enemy city got the city only *selected* (its details in the Information panel), no attack and no prompt (`b_attack_prompt.py`, `b1_first_attempt.json`). The cause of that difference (the move path not reading the variable the attack path reads) is an inference, not measured. Select the army after saving.
 - **The first check after End turn can race the UI:** a select that fails right after End turn succeeds a few seconds later (`b2_attack_prompt.py` retries with a pause).
 - **`Game.attack` answers the prompt Yes by itself** (`dismiss_popups`); an experiment on the prompt has to capture it before.
 
