@@ -635,6 +635,22 @@ class Game:
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
 
+    def transfer_units(self, i, unit_row):
+        """Transfer a unit from army i to an adjacent friendly army. Opens the
+        Army to army transfer dialog (same layout as Split army)."""
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.open_dialog("Army to army transfer", (self.army_x["transfer"], ARMY_TOOLBAR_Y))
+        cs = self.controls("Army to army transfer")
+        src = sorted((c for c in cs if c["cls"] == "TListBox"), key=lambda c: c["x"])[0]
+        transfer = sorted((c for c in cs if c["text"] == "Transfer"), key=lambda c: c["x"])[0]
+        self.click(src["x"] + src["w"] // 2, src["y"] + 12 + 12 * unit_row, pause=0.4)
+        self.click_control(transfer, pause=0.6)
+        self.click_control(self.control(cs, text="OK"), pause=1.5)
+        return self.dismiss_popups()
+
     def change_units_disband(self, i, unit_row):
         """Change units: select a unit in army i and Disband it."""
         ax, ay = self.army_pos(i)

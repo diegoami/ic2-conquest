@@ -20,7 +20,7 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 | Disband a queued unit | *Army recruits* → select a unit → *Disband* | `Game.disband_unit` | `disband_unit` | ✅ | `T_DISBAND.SAV` |
 | Supply army | select the army, army toolbar *Supply army* (349,108): 10s ▲ (169,94) moves city → army; money 100s ▲ (261,272) treasury → purse; OK (239,337) | `Game.supply` | manual | 🟡 | army 0 170 → 238 t (cap `troops div 100 + 1`), Arretium 150 → 82, purse 100 → 200, treasury −100 |
 | Hire mercenaries | army toolbar (372,108) → *Recruit mercenary unit* (490×165): row (103,86+12r), *Recruit unit* (410,104), OK (248,174); nothing opens if no offer is adjacent | `Game.hire_mercs` | manual | ✅ | `saves/merc-hire-free-0720.SAV`: Samnite LI 3,868 q8 joined army 1; **no price deducted** |
-| Transfer unit / army-to-army | Unit map → Army → Transfer unit | — | — | ⬜ | |
+| Transfer unit / army-to-army | army toolbar *Transfer units* (needs an adjacent army) → Army to army transfer | `Game.transfer_units` | `transfer_units` | ✅ | `T_TRANSFER.SAV`: 5,000 t from army 0 to army 1 |
 | Split army | army toolbar *Split army* → two unit lists, *Transfer*, *OK* | `Game.split_army` | `split_army` | ✅ | `T_SPLIT.SAV`: armies 2 → 3, troops conserved |
 | Join armies | army toolbar *Join armies* (needs two adjacent armies) | `Game.join` | `join` | ✅ | `T_JOIN.SAV`: armies 0+1 → 45,700 t, 12 units |
 | Change units (rename, split, join units) | Unit map → Army → Change units | `Game.change_units_disband` | `change_units_disband` | 🟡 | Disband only (`T_CHUNITS.SAV`); rename/join/split ⬜ |

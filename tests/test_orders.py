@@ -252,9 +252,39 @@ def test_change_units_disband():
     return f"army 0 {a0['troops']} t / {len(a0['units'])} units -> {a1['troops']} t / {len(a1['units'])} units"
 
 
+def test_transfer_units():
+    """Two turns to put armies 0 and 1 adjacent, then transfer a unit from army 0
+    to army 1. Troops move between them; the total is unchanged."""
+    import struct
+    g, _ = fresh("transfer")
+    g.move(1, 113, 45)
+    g.end_turn()
+    g.move(1, 104, 36)
+    g.move(0, 103, 36)
+
+    def mem(i):                         # (units, troops) of the running army
+        rec = g.army_rec(i)
+        us = [struct.unpack_from("<4h", rec, 16 + 32 * k) for k in range(20)]
+        us = [u for u in us if u[2] > 0]
+        return len(us), sum(u[2] for u in us)
+
+    u0, t0 = mem(0)
+    u1, t1 = mem(1)
+    g.transfer_units(0, unit_row=0)
+    p = keep(g.save_as("T_TRANSFER.SAV"), "T_TRANSFER.SAV")
+    s = load(p)
+    a0 = next(a for a in live_armies(s, 0) if a["id"] == 0)
+    a1 = next(a for a in live_armies(s, 0) if a["id"] == 1)
+    assert len(a0["units"]) == u0 - 1 and len(a1["units"]) == u1 + 1, \
+        (u0, len(a0["units"]), u1, len(a1["units"]))
+    assert a0["troops"] + a1["troops"] == t0 + t1, (a0["troops"], a1["troops"], t0, t1)
+    return f"army0 {t0}t/{u0}u -> {a0['troops']}t/{len(a0['units'])}u; " \
+           f"army1 {t1}t/{u1}u -> {a1['troops']}t/{len(a1['units'])}u"
+
+
 TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
          "taxation", "disband_unit", "disband_army", "build_fleet", "split_army",
-         "change_units_disband"]
+         "change_units_disband", "transfer_units"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
