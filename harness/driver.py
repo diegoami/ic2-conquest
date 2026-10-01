@@ -69,9 +69,9 @@ ARMY_TOOLBAR_Y = 108
 ARMY_TOOLBAR_CACHE = WORK / "army_toolbar.json"
 # The tactical battle's toolbar, in the battle window's top strip (y = 112).
 BATTLE_TOOLBAR_LABELS = {"end_turn": "End turn", "computer": "Computer general on"}
-BATTLE_TOOLBAR_Y = 112
+BATTLE_TOOLBAR_Y = 112                                 # the toolbar row, window at (5,103)
+BATTLE_TOOLS = {"end_turn": 114, "computer": 165}      # measured here; coverage.md had 110/158
 BATTLE_TOOLBAR_CACHE = WORK / "battle_toolbar.json"
-BATTLE_TOOLS = {"end_turn": 110, "computer": 158}      # coverage.md's fallback
 AREA_ORIGIN = (6, 126)          # area map: 1 px per tile; a click there puts that tile at view col 6, row 7
 UNIT_PAINT = (337, 96)          # unit map paint box: tile (ox+c, oy+r) spans x0+32c.., y0+30+32r..
 VIEW_COLS, VIEW_ROWS = 13, 13
@@ -264,9 +264,9 @@ class Game:
         return found
 
     def calibrate_battle_toolbar(self, force=False):
-        """The tactical battle's toolbar x, derived from the tooltips and cached
-        in WORK/battle_toolbar.json. Call it with the battle window open; it is
-        raised and focused first, or the main window's tooltips win."""
+        """The battle toolbar's button x, derived from the tooltips and cached in
+        WORK/battle_toolbar.json. The battle window is raised and focused first so
+        its tooltips win over the main window's."""
         if self.battle_x and not force:
             return self.battle_x
         w = self.find_windows(" v ")
@@ -530,6 +530,12 @@ class Game:
         self.select_army(i, ax, ay)
         self.click_tile(x, y, pause=1.5)
         texts = self.dismiss_popups()
+        # The battle window takes a few seconds to open after the click, and the
+        # Computer general toggle must be on during placement, so wait for it.
+        for _ in range(30):
+            if self.in_battle() and self.find_windows(" v "):
+                break
+            time.sleep(0.5)
         if self.in_battle() and self.find_windows(" v "):
             texts.append("BATTLE " + self.find_windows(" v ")[0][1])
             self.play_battle()
@@ -805,13 +811,15 @@ class Game:
 
     def play_battle(self, shot=None):
         """Play an open battle with Computer general, then dismiss the result.
-        The battle toolbar's x is derived the same way as the others."""
+
+        The battle toolbar's button x is derived from the tooltips like the
+        others. Turning Computer general on and then End turn once runs the whole
+        battle, so the two clicks happen immediately, while the battle window is
+        still on top; it can end up below the game's other windows later, and a
+        click then lands behind it."""
         time.sleep(2)
-        w = self.find_windows(" v ")
-        if w:
-            sh("xdotool", "windowraise", str(w[0][0]), check=False)
-            sh("xdotool", "windowfocus", str(w[0][0]), check=False)
-            time.sleep(0.3)
+        if not self.find_windows(" v "):
+            return
         if not self.battle_x:
             self.calibrate_battle_toolbar()
         self.click(self.battle_x.get("computer", BATTLE_TOOLS["computer"]), BATTLE_TOOLBAR_Y, pause=1.5)
