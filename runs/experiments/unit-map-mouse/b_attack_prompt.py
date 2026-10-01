@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """(b) Does clicking an adjacent enemy city ask "Are you sure you want to attack this ...?" only when not at war?
 
-Control: Felsina (Gaul), Rome-Gaul relation 3 (war). Test: Aleria (Carthage), Rome-Carthage relation 0 (peace).
+Control: Felsina (Gaul), Rome-Gaul relation 3 (war). Test: Genua (Greece), Rome-Greece relation 0 (peace).
+FIRST, CONFOUNDED ATTEMPT (its result is kept as b1_first_attempt.json): the army was selected, then a save cleared the
+selected-army variable, so the click only selected the city. See b2_attack_prompt.py for the measured version.
 The prompt is captured by hand: Game.attack would answer it Yes through dismiss_popups."""
 import json
 import sys
@@ -11,7 +13,7 @@ from common import *   # noqa: F401,F403
 from state import sav
 
 REL = 0x26            # nation record: relation to nation j at +0x26 + 2*j
-CARTHAGE, GAUL = 1, 6
+GAUL = 6
 res = {}
 
 

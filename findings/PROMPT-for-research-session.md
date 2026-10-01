@@ -20,6 +20,6 @@ They are drafts in `diegoami/ic2-conquest`, branch `claude/focused-knuth-ci59fz`
    - A click on the Area map puts the clicked tile at column 6, row 7 of the unit map. This was checked live by reading /proc/<pid>/mem under Wine.
 
 Smaller UI facts, from ic2-conquest's coverage.md:
-- Game → End turn runs at once. There is no confirmation box; the executable's only End-turn warnings are "An army of yours cannot afford to pay its mercenary units." and "One of your fleets is not docked at its own city."
+- Game → End turn runs at once. There is no confirmation box, except an "End turn ?" box when an army needs supplies ("An army of yours needs supplies. If you have not finished your turn click MAKE MORE MOVES. If you are finished moving click END TURN."; findings/2026-10-02-unit-map-mouse-orders-and-tax-range.md); the executable's only End-turn warnings are "An army of yours cannot afford to pay its mercenary units." and "One of your fleets is not docked at its own city."
 - A siege on an enemy you are already at war with shows no "Are you sure…" box.
 - All 72 message and refusal strings of the executable are catalogued there.

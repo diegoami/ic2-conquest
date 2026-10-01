@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """(a) click-to-move and selection, (c) left/right click on a unit, (d) Shift+X, (e) where Split army puts the new army."""
 import json
+import struct
 import sys
+import time
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
-from common import *   # noqa: F401,F403
-from state import sav
+from common import BASE, OUT, ROME, SEL_ARMY, SEL_FLEET, fresh, keep, right_click, sh, shot  # noqa: E402
+from state import sav  # noqa: E402
 
 res = {}
 
@@ -33,9 +35,11 @@ for target in [(101, 36), (102, 36), (103, 36), (104, 36)]:
     g.click_tile(*target, pause=1.2)
     tex = g.dismiss_popups()
     steps.append({"clicked": target, "popups": tex, **snap(g)})
-    keep(g, "A_AFTER_CLICK_%d.SAV" % len(steps))
+    # No save between the clicks: File > Save sets the selected-army variable to -1, which would hide whether the
+    # army is deselected by the move itself. The state is read from memory after each click; one save at the end.
     if steps[-1]["army"]["moves"] <= 0:
         break
+keep(g, "A_AFTER_CLICKS.SAV")
 a["clicks"] = steps
 shot(g, "A_2_after_moves.png")
 res["a"] = a
@@ -55,7 +59,10 @@ c["right_click_windows"] = [(w[1], w[4], w[5]) for w in g.popups()]
 shot(g, "C_2_right_click.png")
 for w in g.popups():
     if w[1] not in ("Information",):
-        c.setdefault("right_click_controls", {})[w[1]] = [(k["cls"], k["text"]) for k in g.controls(w[1])] if True else None
+        try:
+            c.setdefault("right_click_controls", {})[w[1]] = [(k["cls"], k["text"]) for k in g.controls(w[1])]
+        except Exception as e:     # noqa: BLE001 - a popup without readable controls is a result, not a failure
+            c.setdefault("right_click_controls", {})[w[1]] = "unreadable: %s" % e
 res["c"] = c
 keep(g, "C_AFTER_RIGHT_CLICK.SAV")
 g.kill()

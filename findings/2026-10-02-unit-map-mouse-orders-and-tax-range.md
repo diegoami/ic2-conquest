@@ -19,7 +19,7 @@
 
 ## Observations
 
-**(a) Select and move** (`a_c_d_e.py`; saves `A_AFTER_CLICK_1.SAV`, `A_AFTER_CLICK_2.SAV`; `A_1_selected.png`, `A_2_after_moves.png`).
+**(a) Select and move** (`a_c_d_e.py`; the state is read from the game's memory after each click, with **no save between the clicks** (a save sets the selected-army variable to −1, see Pitfalls); `A_AFTER_CLICKS.SAV` is saved once after both; `A_1_selected.png`, `A_2_after_moves.png`).
 
 | Step | Selected army | Army 0 | Moves |
 |---|---|---|---|
@@ -37,7 +37,7 @@ No box appeared for either move.
 | relation before | 3 | 0 |
 | army before the click | (97,32), 9 moves, 23,700 troops | (90,30), 9 moves, 23,700 troops |
 | box after the click | **none** | **Confirm: "Are you sure you want to attack this city?"**, buttons Cancel, &No, &Yes |
-| after **No** | – | relation 0, army (90,30), moves 9, **still selected** (`B2_PEACE_GENUA_AFTER_NO.SAV`) |
+| after **No** | – | relation 0, army (90,30), moves 9, **still selected** (read from memory right after the click on No, `b2_attack_prompt.py`, `b2_attack_prompt.json`; the save `B2_PEACE_GENUA_AFTER_NO.SAV` is written afterwards and by itself would read −1) |
 | after the second click and **Yes** | – | box again; relation **3**; news "ROME DECLARES WAR ON GREECE." |
 | result | no box; siege: troops 21,846 (−1,854), moves 0, Felsina loyalty 79→76, fort 68→65, pop 26→25; "Rome fails to capture Felsina (Gaul)." | siege: troops 22,036 (−1,664), moves 0, Genua loyalty 69→66, fort 58→56, pop 30→29; "Rome fails to capture Genua (Greece)." |
 | tactical battle screen | none (a city is a siege) | none |
@@ -70,7 +70,7 @@ No box appeared for either move.
 
 ## Pitfalls found on the way (they cost two runs)
 
-- **The File → Save menu sets the selected-army variable to −1, and an attack click needs it set.** Measured (select army 0 → `0x4A0328` = 0; save → **−1**; a click on the reachable tile (101,36) still **moved** the army to (101,36) with 4 moves and set the variable back to 0; a second save gave −1 again). So the (a) table is sound even though `A_AFTER_CLICK_1.SAV` was saved between its two clicks. But a script that selects an army, saves (`keep`), then clicks an enemy city got the city only *selected* (its details in the Information panel), no attack and no prompt (`b_attack_prompt.py`, `b1_first_attempt.json`). The cause of that difference (the move path not reading the variable the attack path reads) is an inference, not measured. Select the army after saving.
+- **The File → Save menu sets the selected-army variable to −1, and an attack click needs it set.** Measured (select army 0 → `0x4A0328` = 0; save → **−1**; a click on the reachable tile (101,36) still **moved** the army to (101,36) with 4 moves and set the variable back to 0; a second save gave −1 again). The (a) table was first taken with a save between its two clicks and was **re-run without one** (as it stands now): the same result, so the deselect at 0 moves is the move's own effect, not the save's. But a script that selects an army, saves (`keep`), then clicks an enemy city got the city only *selected* (its details in the Information panel), no attack and no prompt (`b_attack_prompt.py`, `b1_first_attempt.json`). The cause of that difference (the move path not reading the variable the attack path reads) is an inference, not measured. Select the army after saving.
 - **The first check after End turn can race the UI:** a select that fails right after End turn succeeds a few seconds later (`b2_attack_prompt.py` retries with a pause).
 - **`Game.attack` answers the prompt Yes by itself** (`dismiss_popups`); an experiment on the prompt has to capture it before.
 
