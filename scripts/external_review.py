@@ -90,7 +90,14 @@ Title: {title}
 {body or '(empty)'}
 --- END ---
 
-Follow the instructions of the external-reviewer agent. Your final message is the review and nothing else.
+Follow the instructions of the external-reviewer agent. Your final message is the review and nothing else:
+no preamble, no summary of what you checked, no closing remark. Its exact shape (replace the angle brackets):
+
+{hdr}
+<one of: {", ".join(VERDICTS)}>
+R1 <file:line> blocking|non-blocking: <what to change>
+R2 <file:line> blocking|non-blocking: <what to change>
+<one of: {", ".join(VERDICTS)}, the same as line 2>
 """
 
 
@@ -155,7 +162,6 @@ def main():
         head = base = sh("git", "rev-parse", "refs/remotes/origin/main")
     else:
         meta = gh_json("pr", "view", str(n), fields="title,body,headRefOid,baseRefName,commits,labels")
-        head = meta["headRefOid"]
         bref = f"refs/remotes/origin/{meta['baseRefName']}"
         # explicit refspecs: a bare `git fetch origin <branch>` only reliably sets FETCH_HEAD
         sh("git", "fetch", "-q", "origin", f"+pull/{n}/head:refs/review/pr{n}",
@@ -165,14 +171,21 @@ def main():
         excl |= implementer_names(meta)
     models = [m for m in models if not any(e and e in m.lower() for e in excl)]
     if not models:
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         print("OpenCode unavailable: every model is excluded", file=sys.stderr)
         return 3
 
     token = secrets.token_hex(3)
     wt = REVIEW_ROOT / f"{kind}{n}-review-{token}"
     logs = REPO / "rendered" / f"{kind}{n}-{token}"
-    REVIEW_ROOT.mkdir(parents=True, exist_ok=True)
-    sh("git", "worktree", "add", "--detach", str(wt), head)
+    try:
+        REVIEW_ROOT.mkdir(parents=True, exist_ok=True)
+        sh("git", "worktree", "add", "--detach", str(wt), head)
+    except Exception:
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+        raise
     failures, final = [], None
     try:
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
