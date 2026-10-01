@@ -54,7 +54,7 @@ def find_exe():
 def data_home(base):
     """The reviewer's OWN OpenCode dirs, so the desktop app (2.x), which shares the default database and can
     migrate it to a schema the 1.x CLI cannot read ("no such column: project_id"), never touches them:
-    XDG_DATA_HOME = <base>, XDG_CACHE_HOME = <base>/cache, XDG_STATE_HOME = <base>/state, all absolute. They go
+    XDG_DATA_HOME = <base>, XDG_CACHE_HOME = <base>/cache, XDG_STATE_HOME = <base>/state, TMPDIR = <base>/tmp, all absolute. They go
     only into the child process's environment, so the caller's own environment needs no restore.
     auth.json (API-key providers) is COPIED from the default dir when missing or older; it is never read or
     printed. OpenCode Go is not in auth.json: it comes from `opencode console login`, which lives in this data
@@ -68,7 +68,12 @@ def data_home(base):
     if src.is_file() and (not (dst / "auth.json").exists() or src.stat().st_mtime > (dst / "auth.json").stat().st_mtime):
         shutil.copyfile(src, dst / "auth.json")
         os.chmod(dst / "auth.json", 0o600)
-    return {"XDG_DATA_HOME": str(base), "XDG_CACHE_HOME": str(base / "cache"), "XDG_STATE_HOME": str(base / "state")}
+    (base / "tmp").mkdir(exist_ok=True)
+    # TMPDIR too: OpenCode saves long tool results (a denial message lists all the rules) under <tmp>/opencode
+    # and the model reads them back. In the shared /tmp/opencode that read is an out-of-tree access (and exposes
+    # other OpenCode sessions' output); in the reviewer's own tmp the agent can allow just that path.
+    return {"XDG_DATA_HOME": str(base), "XDG_CACHE_HOME": str(base / "cache"), "XDG_STATE_HOME": str(base / "state"),
+            "TMPDIR": str(base / "tmp")}
 
 
 def effort(model):

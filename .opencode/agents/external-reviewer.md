@@ -92,6 +92,7 @@ permission:
   external_directory:
     "*": ask
     "*tool-output*": allow
+    "*opencode-data/tmp/opencode/*": allow
 ---
 
 You review one pull request of the ic2-conquest repository. You do not change anything and you do not

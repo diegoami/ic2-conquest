@@ -76,7 +76,7 @@ and accepts a review flattened onto one line. Then:
 - Use the **native Linux binary** `~/.opencode/bin/opencode` (or `$OPENCODE_EXE`). The `opencode` on PATH here
   is the Windows npm shim under `/mnt/c`; the watcher refuses anything under `/mnt/`.
 - Own directories, for the child process only (the caller's environment is untouched, so nothing to restore):
-  `XDG_DATA_HOME=$IC2_WORK/opencode-data`, `XDG_CACHE_HOME=…/cache`, `XDG_STATE_HOME=…/state`, all absolute. The
+  `XDG_DATA_HOME=$IC2_WORK/opencode-data`, `XDG_CACHE_HOME=…/cache`, `XDG_STATE_HOME=…/state`, `TMPDIR=…/tmp`, all absolute. The
   OpenCode desktop app (2.x) shares the default `~/.local/share/opencode/opencode.db` and can migrate it to a
   schema the 1.x CLI cannot read (`no such column: project_id`). `auth.json` is **copied** from
   `~/.local/share/opencode/auth.json` (set `OPENCODE_AUTH` to point elsewhere) when missing or older; it is never
@@ -95,6 +95,10 @@ and accepts a review flattened onto one line. Then:
   lives in that dir's **database**, not in `auth.json`, so the default dir's login does not carry over. Needs OpenCode >= 1.18.34 only if the catalog lacks
   the provider (`opencode models --refresh`); `opencode upgrade` may use the Windows npm, so the WSL binary was
   installed from the GitHub release tarball (`opencode-linux-x64.tar.gz`).
+- **`TMPDIR` is the reviewer's own, and the agent allows reading `…/opencode-data/tmp/opencode/*`.** OpenCode saves a
+  long tool result (a denial message that lists all the rules is long) under `<tmp>/opencode` and the model reads it
+  back. In the shared `/tmp/opencode` that read was an out-of-tree access, auto-rejected as `permission-rejected`:
+  the first real run on PR #9 (2026-10-02) died on it with nothing posted (exit 3). Only that path is allowed.
 - Process control is a process group (`start_new_session`, `killpg`), not `taskkill`; stdin is `/dev/null`.
 - The attached brief goes with `-f`, and the one-line message must come **before** the flags: `-f` is an array
   option and swallows the next argument as a file.
