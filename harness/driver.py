@@ -210,7 +210,12 @@ class Game:
         except (OSError, ValueError):
             return {}
 
-    def _save_cache(self, path, found, what):
+    def _save_cache(self, path, found, what, missed=()):
+        """Cache a calibration only if every button was seen: a missed one carries
+        the recorded fallback x, which must not be frozen into the cache."""
+        if missed:
+            self.log(f"{what}: not seen {list(missed)}, using recorded x, cache not written")
+            return
         try:
             path.write_text(json.dumps(found, indent=1))
         except OSError:
@@ -244,10 +249,11 @@ class Game:
         if self.toolbar_x and not force:
             return self.toolbar_x
         found = self._scan_bar(TOOLBAR_Y, TOOLBAR_LABELS, 4, 232, 0.6)
-        for name in TOOLBAR_LABELS:
-            found.setdefault(name, TOOLBAR[name])
+        missed = [n for n in TOOLBAR_LABELS if n not in found]
+        for name in missed:
+            found[name] = TOOLBAR[name]
         self.toolbar_x = found
-        self._save_cache(TOOLBAR_CACHE, found, "toolbar")
+        self._save_cache(TOOLBAR_CACHE, found, "toolbar", missed)
         return found
 
     def calibrate_army_toolbar(self, force=False):
@@ -257,10 +263,11 @@ class Game:
         if self.army_x and not force:
             return self.army_x
         found = self._scan_bar(ARMY_TOOLBAR_Y, ARMY_TOOLBAR_LABELS, 336, 540, 0.5)
-        for name in ARMY_TOOLBAR_LABELS:
-            found.setdefault(name, self.ARMY_TOOLS[name])
+        missed = [n for n in ARMY_TOOLBAR_LABELS if n not in found]
+        for name in missed:
+            found[name] = self.ARMY_TOOLS[name]
         self.army_x = found
-        self._save_cache(ARMY_TOOLBAR_CACHE, found, "army toolbar")
+        self._save_cache(ARMY_TOOLBAR_CACHE, found, "army toolbar", missed)
         return found
 
     def calibrate_battle_toolbar(self, force=False):
@@ -275,10 +282,11 @@ class Game:
             sh("xdotool", "windowfocus", str(w[0][0]), check=False)
             time.sleep(0.3)
         found = self._scan_bar(BATTLE_TOOLBAR_Y, BATTLE_TOOLBAR_LABELS, 5, 250, 0.6)
-        for name in BATTLE_TOOLBAR_LABELS:
-            found.setdefault(name, BATTLE_TOOLS[name])
+        missed = [n for n in BATTLE_TOOLBAR_LABELS if n not in found]
+        for name in missed:
+            found[name] = BATTLE_TOOLS[name]
         self.battle_x = found
-        self._save_cache(BATTLE_TOOLBAR_CACHE, found, "battle toolbar")
+        self._save_cache(BATTLE_TOOLBAR_CACHE, found, "battle toolbar", missed)
         return found
 
     def tool(self, name, pause=1.0):
