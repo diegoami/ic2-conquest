@@ -5,8 +5,8 @@ posts the result. The model never writes to GitHub.
     external_review.py --pr 7 [--model a#variant,b,c] [--exclude-model x] [--apply-label] [--dry-run]
     external_review.py --issue 9 --kind release [--brief-file F]
 
-Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (nothing posted: the caller runs the Claude
-fallback, Opus) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller reads it and
+Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (nothing posted: the caller decides the
+fallback) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller reads it and
 decides) · 5 the PR head moved while the review ran (nothing posted).
 
 Flow: unique detached worktree at the PR head (removed in `finally`) -> a brief per attempt, with the PR
@@ -32,7 +32,7 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "opencode-go/glm-5.3-flash#high"      # one OpenCode model, then Claude (exit 3 -> caller)
+DEFAULT_MODELS = "opencode-go/deepseek-v4.1-flash#high,openai/gpt-6-luna#high"     # then exit 3 -> the caller
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
 FATAL = {"permission-rejected", "no-executable", "unknown-agent"}     # not retried on another model
 
