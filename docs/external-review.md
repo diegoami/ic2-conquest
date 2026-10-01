@@ -11,8 +11,8 @@
 
 - The chain moves to the next model only after an infrastructure failure (including "no review at all"), never
   after a real or flagged review. When both fail, `scripts/external_review.py` exits **3** and the caller decides
-  what runs next (a Claude Opus review is the obvious fallback; nothing is automatic, and `/review-pr` is
-  PR #7).
+  what runs next. The Claude fallback is the `/review-pr <n>` skill (`.claude/skills/review-pr`, merged in #7), run
+  in a session on Opus; nothing starts it automatically.
 - **The implementer's model never reviews its own PR** (`Co-Authored-By` trailers and `model:<name>` labels are
   excluded, compared without punctuation; `--exclude-model` adds names). Today the implementer is Sonnet, which is
   not in the chain, so nothing is excluded.
