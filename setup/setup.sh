@@ -46,6 +46,7 @@ cp "$FX/patch_exe.py" "$FX/Imperial Conquest 2.exe" "$B/"
 (cd "$B" && python3 patch_exe.py >/dev/null && python3 "$HERE/patches/seed_patch.py" "$B")
 sha256sum "$B"/*.exe | sed "s|$B/||"
 i686-w64-mingw32-gcc -O2 -o "$IC2_WORK/win_controls.exe" "$HERE/harness/win_controls.c"
+i686-w64-mingw32-gcc -O2 -o "$IC2_WORK/win_slider.exe" "$HERE/harness/win_slider.c"
 
 # 4. Wine prefix + game folder C:\IC2
 export WINEPREFIX="$IC2_WORK/prefix" WINEARCH=win32 WINEDEBUG=-all

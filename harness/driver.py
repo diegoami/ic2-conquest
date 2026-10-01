@@ -628,7 +628,9 @@ class Game:
 
     def split_army(self, i, unit_rows=(0,)):
         """Select army i and split the given unit rows (indices in its unit list)
-        into a new army on the same tile."""
+        into a new army. One observation (from (100,37)): the new army appeared at (101,38),
+        diagonally adjacent, not on the same tile; the rule is not established
+        (findings/2026-10-02-unit-map-mouse-orders-and-tax-range.md)."""
         ax, ay = self.army_pos(i)
         self.select_army(i, ax, ay)
         if not self.army_x:
@@ -868,7 +870,8 @@ class Game:
         return self.dismiss_popups()
 
     def end_turn(self, timeout=300, battle_shot=None):
-        """Game > End turn (it runs at once: there is no confirmation box), then
+        """Game > End turn (it runs at once, unless an army needs supplies: then an
+        "End turn ?" box asks, and is answered End turn), then
         play out any battle with Computer general and dismiss the AI's news and
         offer boxes until the autosave line appears."""
         log = G / "AUTOSAVE.LOG"
@@ -893,6 +896,13 @@ class Game:
             if self.in_battle() and self.find_windows(" v "):   # battle screen "<A> v <B>"
                 texts.append("BATTLE " + self.find_windows(" v ")[0][1])
                 self.play_battle(battle_shot)
+                continue
+            if self.find_windows(r"^End turn \?$"):
+                # "An army of yours needs supplies. ... MAKE MORE MOVES / END TURN": the game asks
+                # before ending a turn when an army is out of supplies; we are finished, so End turn.
+                texts.append("CONFIRM " + self.read_popup(self.find_windows(r"^End turn \?$")[0]))
+                cs = self.controls("End turn ?")
+                self.click_control(self.control(cs, text="End turn"), pause=1.5)
                 continue
             texts += self.dismiss_popups()
             time.sleep(1)
