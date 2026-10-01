@@ -116,6 +116,9 @@ planner/      the per-turn agent loop: state -> plan -> orders -> verify
 strategies/   one file per strategy version (rome-v1.md, ...), in the format above
 findings/     rule discoveries drafted in the research repo's report format, awaiting promotion
 runs/<id>/    turns/nnnn.md, metrics.csv, checkpoints/, debrief.md, viewer.md (text only)
+scripts/       the OpenCode PR reviewer (external_review.py, opencode_watched.py); docs/external-review.md
+.opencode/     the reviewer's agent (read-only permissions)
+.claude/skills/review-pr   the Claude-side PR review, the fallback when the OpenCode reviewer exits 3
 ```
 
 ## Phases
