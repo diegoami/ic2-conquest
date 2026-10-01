@@ -1,6 +1,6 @@
 # External PR reviewer (OpenCode)
 
-Default chain: `opencode-go/glm-5.3` (primary), `opencode-go/deepseek-v4-pro`, then the free `opencode/big-pickle`.
+Default chain: `opencode-go/glm-5.3-flash` (primary), `opencode-go/deepseek-v4.1-flash`, then `opencode-go/gpt-6-luna`.
 
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
