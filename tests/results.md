@@ -1,6 +1,6 @@
 # Test results
 
-Last full run: 2026-10-01, `python3 -m tests.test_orders`, build `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`), Wine 9.0, Xvfb 1280×1024. Start save `BASE.SAV` = a new game as Rome with seed 12345 (`AUTO0720.SAV`, SHA-256 `050bc354f1cbbe37…`, 270 BC Spring week 1). Test saves are kept under `$IC2_WORK/tests/` (not in git). All twelve tests pass. The toolbar, army-toolbar, battle-toolbar and dialog-control positions are derived at run time (`harness/driver.py`), because they drift with the Wine build.
+Last full run: 2026-10-01, `python3 -m tests.test_orders`, build `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`), Wine 9.0, Xvfb 1280×1024. Start save `BASE.SAV` = a new game as Rome with seed 12345 (`AUTO0720.SAV`, SHA-256 `050bc354f1cbbe37…`, 270 BC Spring week 1). Test saves are kept under `$IC2_WORK/tests/` (not in git). All thirteen tests pass. The toolbar, army-toolbar, battle-toolbar and dialog-control positions are derived at run time (`harness/driver.py`), because they drift with the Wine build.
 
 ## Seed patch (phase 0)
 
@@ -29,6 +29,7 @@ PASS disband_army (36s): Roman armies 2 -> 1, treasury 2300
 PASS build_fleet (36s): Rome fleets 0 -> 1 (ships 10, building True, countdown 24); treasury 2200 -> 2100
 PASS split_army (36s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18700), (1, 120, 53, 22000), (14, 101, 38, 5000)]
 PASS change_units_disband (39s): army 0 23700 t / 6 units -> 18900 t / 5 units
+PASS transfer_units (63s): army0 23700t/6u -> 18700t/5u; army1 22000t/6u -> 27000t/7u
 ```
 
 - **move**: the only army record that changes is army 0: position, moves (8 → 4: the river tile (101,36) costs 4) and covered cell (plain 2 → river 8).
@@ -39,5 +40,7 @@ PASS change_units_disband (39s): army 0 23700 t / 6 units -> 18900 t / 5 units
 - **taxation**: the Change tax level slider runs 0..40 with LineSize 1; Home then Right × 20 sets 20 %.
 - **disband_unit / disband_army / split_army / change_units_disband**: the Army recruits and army-toolbar dialogs are read from the running game (`win_controls`), so the clicks do not depend on the font metrics. A confirmation is a Yes/No/Cancel *Confirm* box, answered **Yes** by button — the bottom-centre OK misses it.
 - **build_fleet**: 10 ships costs 100 talents and starts a 24-week countdown at a free coastal city.
+- **transfer_units**: two turns to put armies 0 and 1 adjacent, then a 5,000-troop unit moves from army 0 to army 1, the total unchanged.
+- The field battle is not a unit test: it lives in `runs/experiments/gallic-army/` (see that README). Rome destroys Gaul's army early in all four seeds, and a battle turn is byte-repeatable.
 
 Earlier failures, fixed in the driver: a menu item click that arrives with the pointer move is ignored; a menu click after a dialog closed can re-open that dialog; file dialogs keep the last name; the first click into an inactive window only activates it; a second End turn click queued during the AI phase ends two turns (the retry now waits 8 s for any sign of the turn starting).
