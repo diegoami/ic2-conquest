@@ -1,31 +1,59 @@
 # External PR reviewer (OpenCode)
 
-## Roles and models (player decision, 2026-10-01)
+## Roles and models (player decisions, 2026-10-01, revised 2026-10-02)
 
-One cheap model first, then the strong Claude model, for both roles:
+**One OpenCode model per role, then Claude.** A chain of several cheap models multiplies wasted attempts.
 
-| Role | First | Then |
+| Role | OpenCode model (effort `high`) | Then |
 |---|---|---|
-| Implementer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash`) | Sonnet |
-| Reviewer | GPT Luna (`opencode-go/gpt-6-luna`) | Opus (`opencode/claude-opus-5-5`, billed on the Zen balance) |
+| Implementer | `opencode-go/deepseek-v4.1-flash` | Claude Sonnet |
+| Reviewer | `opencode-go/glm-5.3-flash` | Claude Opus (run by the caller) |
 
-`scripts/external_review.py` implements the reviewer chain (its default); the implementer chain is a working
-agreement, there is no script behind it. The chain moves to the next model only on an infrastructure failure
-(including a malformed review), never on a real verdict.
+- On the OpenCode reviewer's failure `scripts/external_review.py` exits **3** and the caller runs the Claude
+  fallback (Opus: `/review-pr`, once that skill is merged). The script no longer has a second model of its own.
+  Other models stay valid as explicit `--model` values; no default path picks them.
+- The implementer chain is a working agreement: there is no implementer script in this repo yet.
+- **The implementer's model never reviews its own PR.** `Co-Authored-By` trailers and `model:<name>` labels are
+  excluded (compared without punctuation: the trailer `DeepSeek V4.1 Flash` excludes
+  `opencode-go/deepseek-v4.1-flash`); `--exclude-model` adds names. If nothing is left, exit 3 and Claude reviews.
+- **Why:** GLM-5.3 and GLM-5.3-Flash sometimes end their turn early in long implementer runs (a whole run of
+  reading, then exit 0 with no commit); as reviewers they were fine and cheap. Go's `gpt-6-luna` returned
+  "Bad Request" in long agent loops (a third-party upstream rejecting assistant messages with empty content), so
+  it is not used for long runs.
+- **Effort is `high`, never `max`** (Go lists low/high/max; max is overkill and slower). A model without a
+  variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line.
 
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
 
 ```bash
-python3 scripts/external_review.py --pr 7                        # default model chain, posts one comment
-python3 scripts/external_review.py --pr 7 --model opencode-go/kimi-k3#high,opencode/mimo-v2.6-flash-free
+python3 scripts/external_review.py --pr 7                        # the default model, posts one comment
+python3 scripts/external_review.py --pr 7 --model opencode-go/kimi-k3#high
 python3 scripts/external_review.py --pr 7 --apply-label          # also sets status:approved|rework|decision
 python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
 python3 scripts/external_review.py --pr 7 --dry-run              # prints the arguments, starts no model
+python3 scripts/external_review.py --pr 7 --review-file R.md --dry-run   # what would be posted, its note, the exit code
+python3 scripts/external_review.py --self-test                   # the review parser over 14 sample outputs
 ```
 
-Exit codes: 0 posted · 3 `OpenCode unavailable: <cause>` (nothing posted; record the cause in one PR comment
-and fall back to `/review-pr`) · 5 the PR head moved during the review (nothing posted).
+Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (nothing posted; record the cause in
+one PR comment and run the Claude fallback, Opus) · **4** posted **flagged** (the verdict could not be read or the
+review looks cut off: a note line on top, no label; read it and decide; no fallback to another paid review) · **5**
+the PR head moved during the review (nothing posted).
+
+**A review is never thrown away; only acting on what cannot be read is refused.** The parser
+(`parse_review`) finds the header case-insensitively, also wrapped in Markdown (`**…**`, a leading `#`,
+backticks) and after a preamble; skips blank lines before the verdict; reads the verdict with decoration, a
+`Verdict:` prefix or trailing punctuation; looks for the closing verdict among the last three non-empty lines;
+and accepts a review flattened onto one line. Then:
+
+| What the model returned | Result |
+|---|---|
+| no header line anywhere (tool chatter, nothing: the early-stop case) | the **only** failure: next model, or exit 3 |
+| readable | normalised (header, verdict, findings, verdict), posted, label set with `--apply-label`, exit 0 |
+| verdict unreadable, or the two verdicts disagree | posted with `> Note from scripts/external_review.py: verdict unreadable`, no label, exit 4 |
+| no closing verdict (cut off) | posted with `> Note …: review may be cut off`, no label, exit 4 |
+| `fixes #N`, `closes #N`, `resolves #N` in the text | **rewritten** to `fixes N` (GitHub closes issues from PR bodies and commits, not comments), logged |
 
 ## Parts
 
@@ -38,21 +66,32 @@ and fall back to `/review-pr`) · 5 the PR head moved during the review (nothing
   total-timeout, exited-without-session, nonzero-exit, permission-rejected (with the path), default-agent,
   cut-off, unknown-model, unknown-agent, no-executable. `result.json` and the stdout/stderr logs are kept.
 - `scripts/external_review.py`: unique detached worktree under `$IC2_REVIEW_ROOT` (default `$IC2_WORK/review`,
-  outside the repo) removed in `finally`; the brief with the PR body pasted in; validation of the review's shape
-  (header line, verdict, verdict repeated last); the head-SHA re-check; one comment; optional label.
+  outside the repo) removed in `finally`; the brief with the PR body pasted in; the tolerant parser above; the
+  head-SHA re-check; one comment; optional label. `--self-test` runs 14 sample outputs through the parser.
   Logs go to the main checkout's git-ignored `rendered/`.
 
 ## WSL notes (this repo's reviewer runs on WSL2, not Windows)
 
 - Use the **native Linux binary** `~/.opencode/bin/opencode` (or `$OPENCODE_EXE`). The `opencode` on PATH here
   is the Windows npm shim under `/mnt/c`; the watcher refuses anything under `/mnt/`.
-- Own data dir (`XDG_DATA_HOME=$IC2_WORK/opencode-data`). `auth.json` is **copied** from
-  `~/.local/share/opencode/auth.json` if it exists (set `OPENCODE_AUTH` to point elsewhere); it is never read
-  or printed. With no auth only the free `opencode/*` models work.
+- Own directories, for the child process only (the caller's environment is untouched, so nothing to restore):
+  `XDG_DATA_HOME=$IC2_WORK/opencode-data`, `XDG_CACHE_HOME=…/cache`, `XDG_STATE_HOME=…/state`, all absolute. The
+  OpenCode desktop app (2.x) shares the default `~/.local/share/opencode/opencode.db` and can migrate it to a
+  schema the 1.x CLI cannot read (`no such column: project_id`). `auth.json` is **copied** from
+  `~/.local/share/opencode/auth.json` (set `OPENCODE_AUTH` to point elsewhere) when missing or older; it is never
+  read or printed. With no auth only the free `opencode/*` models work.
 - **OpenCode Go models** (`opencode-go/*`) come from a console (organisation) login, not from `auth login`:
-  run `opencode console login` once per data dir (the device flow; it showed the account at once here), with
-  `XDG_DATA_HOME=$IC2_WORK/opencode-data` set for the reviewer's own dir. The account lives in that dir's
-  database, so the default dir's login does not carry over. Needs OpenCode >= 1.18.34 only if the catalog lacks
+  run `opencode console login` once per data dir (the device flow: a URL and a code you approve in the browser),
+  once for the default dir and once for the reviewer's own:
+
+  ```bash
+  XDG_DATA_HOME=$IC2_WORK/opencode-data XDG_CACHE_HOME=$IC2_WORK/opencode-data/cache XDG_STATE_HOME=$IC2_WORK/opencode-data/state \
+    ~/.opencode/bin/opencode console login
+  ```
+
+  Check with `opencode console orgs` and `opencode models opencode-go` (about 29 models; `opencode models
+  --refresh` if none; the watcher refreshes once itself and then says which login is missing). The account
+  lives in that dir's **database**, not in `auth.json`, so the default dir's login does not carry over. Needs OpenCode >= 1.18.34 only if the catalog lacks
   the provider (`opencode models --refresh`); `opencode upgrade` may use the Windows npm, so the WSL binary was
   installed from the GitHub release tarball (`opencode-linux-x64.tar.gz`).
 - Process control is a process group (`start_new_session`, `killpg`), not `taskkill`; stdin is `/dev/null`.
@@ -73,11 +112,12 @@ commands: every write, redirect, push, `gh pr comment`, `python3 -c`, curl and `
 `git log` and `py_compile` ran, no file appeared, and a read of `/etc/hostname` was auto-rejected as
 permission-rejected. Re-run that kind of battery after any change to the allowlist.
 
-## Chain and trust
+## Failures and trust
 
-The next model is tried only after an infrastructure failure, never after a real verdict; the chain stops after
-two consecutive failures of one class; `permission-rejected`, `unknown-agent` and `no-executable` stop it at
-once. The posted header names the failures: `PR review (big-pickle; mimo-v2.6-flash-free failed: no-session)`.
-Models named in `Co-Authored-By` trailers and `model:<name>` labels are excluded. Verdicts differ between
-free models and between runs of one model (the same PR got `rework` and then `approve`): treat a verdict as one
-opinion, and read the findings.
+The classes written to `result.json`: ok, no-session, idle-timeout, total-timeout, exited-without-session,
+nonzero-exit, permission-rejected, default-agent, cut-off, unknown-model, unknown-agent, no-executable. With an
+explicit `--model a,b` list the next model is tried only after an infrastructure failure (including "no review
+at all"), never after a real or flagged review; the list stops after two consecutive failures of one class, and
+`permission-rejected`, `unknown-agent` and `no-executable` stop it at once. The posted header names the failures:
+`PR review (kimi-k3; glm-5.3-flash failed: no-session)`. Verdicts differ between models and between runs of one
+model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.

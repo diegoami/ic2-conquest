@@ -5,13 +5,16 @@ posts the result. The model never writes to GitHub.
     external_review.py --pr 7 [--model a#variant,b,c] [--exclude-model x] [--apply-label] [--dry-run]
     external_review.py --issue 9 --kind release [--brief-file F]
 
-Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (nothing posted) · 5 the PR head moved
-while the review ran (nothing posted).
+Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (nothing posted: the caller runs the Claude
+fallback, Opus) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller reads it and
+decides) · 5 the PR head moved while the review ran (nothing posted).
 
 Flow: unique detached worktree at the PR head (removed in `finally`) -> a brief per attempt, with the PR
 body pasted in -> scripts/opencode_watched.py -> validate the review's shape -> re-check the head SHA ->
-ONE comment (+ a status label with --apply-label). The chain moves to the next model only on an
-infrastructure failure, never on a real verdict, and stops after two consecutive failures of one class.
+ONE comment (+ a status label with --apply-label). A review is never thrown away: only "no review at all" (no
+header line anywhere) falls to the next model or to exit 3; a readable review is normalised and acted on; one
+whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4.
+Default: one OpenCode model, effort high; the caller falls back to Claude Opus on exit 3.
 """
 import argparse
 import json
@@ -29,7 +32,7 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "opencode-go/gpt-6-luna,opencode/claude-opus-5-5"
+DEFAULT_MODELS = "opencode-go/glm-5.3-flash#high"      # one OpenCode model, then Claude (exit 3 -> caller)
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
 INFRA = {"no-session", "idle-timeout", "total-timeout", "exited-without-session", "nonzero-exit",
          "cut-off", "default-agent", "bad-format", "unknown-model", "unknown-agent"}
@@ -101,35 +104,131 @@ R2 <file:line> blocking|non-blocking: <what to change>
 """
 
 
-def validate(text, hdr):
-    """Return (ok, normalized text, why). Accept a one-line flattened review only if it starts with
-    header+verdict and ends with the verdict; restore its paragraph breaks."""
-    t = text.strip()
-    # Models often open with a sentence ("All checks done ..."): drop everything before the header line,
-    # which must still be exact. Only the stripped text is posted.
-    ls = t.splitlines()
-    for i, ln in enumerate(ls):
-        if ln.strip() == hdr:
-            t = "\n".join(ls[i:]).strip()
-            break
+NOTE = "> Note from scripts/external_review.py: "
+CLOSERS = re.compile(r"\b(close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#(\d+)", re.I)
+
+
+def deco(line):
+    """A line without Markdown decoration: quote/heading markers, bold, italics, code, table bars."""
+    s = re.sub(r"^[>#\s]+", "", line.strip())
+    return s.strip("*_`~ \t|")
+
+
+def plain(line):
+    """deco() plus a leading 'Verdict:' and trailing punctuation: the form a verdict is read in."""
+    s = re.sub(r"^(?:final\s+)?verdict\s*[:=-]\s*", "", deco(line), flags=re.I)
+    prev = None
+    while prev != s:                       # decoration and punctuation can nest: **`approve`.**
+        prev = s
+        s = s.strip("*_`~ \t|").rstrip(".,:;!?)").strip()
+    return s
+
+
+def verdict_of(line):
+    p = plain(line).lower()
+    return p if p in VERDICTS else None
+
+
+def rewrite_keywords(text):
+    """'fixes #551' -> 'fixes 551': GitHub closes issues from PR bodies and commits, not from comments, but
+    a closing keyword in a review is still rewritten. Returns (text, [changes])."""
+    changes = [m.group(0) for m in CLOSERS.finditer(text)]
+    return CLOSERS.sub(lambda m: f"{m.group(1)} {m.group(2)}", text), changes
+
+
+def parse_review(text, hdr):
+    """Read a model's final message. Returns a dict: status 'ok' | 'unreadable' | 'cutoff' | 'none',
+    text (what to post, without the note), verdict, rewrites.
+
+    Only 'none' (no header line anywhere: tool chatter, or nothing) is a failure that falls to the next model.
+    'ok' is normalised to header / verdict / findings / verdict. 'unreadable' (the verdict after the header
+    cannot be read, or the two verdicts disagree) and 'cutoff' (no closing verdict among the last three
+    non-empty lines) are posted anyway, flagged, with no label."""
+    raw = (text or "").strip()
+    lines = raw.splitlines()
+    h = hdr.lower()
+    start = next((i for i, ln in enumerate(lines) if deco(ln).lower().startswith(h)), None)
+    if start is None:
+        return {"status": "none", "text": raw, "verdict": None, "rewrites": []}
+    body_lines = lines[start:]
+    first = body_lines[0]
+    rest = deco(first)[len(hdr):].strip(" \t:-—–*_`")
+    nonempty = [(i, ln) for i, ln in enumerate(body_lines) if ln.strip()]
     verdicts = "|".join(VERDICTS)
-    lines = [ln.rstrip() for ln in t.splitlines()]
-    if len(lines) == 1 and t.startswith(hdr):
-        m = re.match(re.escape(hdr) + r"\s+(" + verdicts + r")\b(.*)\b\1\s*$", t, re.S)
-        if m:
-            v, mid = m.group(1), m.group(2).strip()
-            t = f"{hdr}\n{v}\n\n{mid}\n\n{v}"
-            lines = t.splitlines()
-    nz = [ln for ln in lines if ln.strip()]
-    if len(nz) < 3 or nz[0].strip() != hdr:
-        return False, t, "line 1 is not the header"
-    v = nz[1].strip()
-    if v not in VERDICTS:
-        return False, t, f"line 2 {v!r} is not a verdict"
-    if nz[-1].strip() != v:
-        return False, t, "the verdict is not repeated as the last line"
-    t = re.sub(r"\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+(#\d+)", r"see \1", t, flags=re.I)
-    return True, t, v
+
+    def result(status, post, verdict=None):
+        post, rw = rewrite_keywords(post)
+        return {"status": status, "text": post, "verdict": verdict, "rewrites": rw}
+
+    flat = "\n".join(body_lines).strip()
+    if rest and len(nonempty) == 1:                      # the whole review on one line
+        m = re.match(r"^\W*(" + verdicts + r")\b(.*?)\b(" + verdicts + r")\W*$", rest, re.I | re.S)
+        if m and m.group(1).lower() == m.group(3).lower():
+            v = m.group(1).lower()
+            return result("ok", "\n".join(x for x in (hdr, v, m.group(2).strip(), v) if x), v)
+        m = re.match(r"^\W*(" + verdicts + r")\b", rest, re.I)
+        return result("cutoff" if m else "unreadable", flat, m.group(1).lower() if m else None)
+    after = [x for x in nonempty[1:]]
+    if not after:
+        return result("unreadable", flat)
+    v = verdict_of(after[0][1])
+    if v is None:
+        return result("unreadable", flat)
+    tail = [x for x in after[1:]][-3:]
+    close = next(((i, ln) for i, ln in reversed(tail) if verdict_of(ln)), None)
+    if close is None:
+        return result("cutoff", flat, v)
+    if verdict_of(close[1]) != v:
+        return result("unreadable", flat)
+    middle = "\n".join(body_lines[after[0][0] + 1:close[0]]).strip()
+    return result("ok", "\n".join(x for x in (hdr, v, middle, v) if x), v)
+
+
+SELF_TEST = [
+    # (name, review text, expected status, expected verdict, expect the keyword rewrite)
+    ("canonical", "PR review (m)\napprove\nR1 a.py:1 non-blocking: x\napprove", "ok", "approve", False),
+    ("bold header and verdict", "**PR review (m)**\n**rework**\nR1 a.py:1 blocking: x\n**rework**", "ok", "rework", False),
+    ("heading, blank lines", "## PR review (m)\n\n\napprove\n\nR1 a.py:1 non-blocking: x\n\napprove", "ok", "approve", False),
+    ("Verdict: prefix", "PR review (m)\nVerdict: rework\nR1 a.py:1 blocking: x\nVerdict: rework.", "ok", "rework", False),
+    ("punctuated", "PR review (m)\n`decision`.\nR1 a.py:1 blocking: x\nDecision!", "ok", "decision", False),
+    ("signed off", "PR review (m)\napprove\nR1 a.py:1 non-blocking: x\napprove\n\n-- glm", "ok", "approve", False),
+    ("preamble, lowercase header", "All checks done.\n\npr review (M)\napprove\nR1 a.py:1 non-blocking: x\napprove", "ok", "approve", False),
+    ("one line", "PR review (m) rework R1 a.py:1 blocking: x. R2 b.py:2 non-blocking: y. rework", "ok", "rework", False),
+    ("closing keyword", "PR review (m)\nrework\nR1 a.py:1 blocking: this fixes #551 for good\nrework", "ok", "rework", True),
+    ("no closing verdict", "PR review (m)\napprove\nR1 a.py:1 non-blocking: x\nR2 b.py:2 non-blocking: y", "cutoff", "approve", False),
+    ("unreadable verdict", "PR review (m)\nlooks good to me\nR1 a.py:1 non-blocking: x\nlooks good", "unreadable", None, False),
+    ("verdicts disagree", "PR review (m)\napprove\nR1 a.py:1 blocking: x\nrework", "unreadable", None, False),
+    ("tool chatter only", "$ git diff\nran 3 commands\ndone", "none", None, False),
+    ("empty", "", "none", None, False),
+]
+
+
+def self_test():
+    bad = 0
+    for name, text, status, verdict, rewrote in SELF_TEST:
+        r = parse_review(text, "PR review (m)")
+        ok = (r["status"] == status and r["verdict"] == verdict and bool(r["rewrites"]) == rewrote
+              and (status != "ok" or (r["text"].splitlines()[0] == "PR review (m)" and r["text"].splitlines()[-1] == verdict)))
+        if rewrote:
+            ok = ok and "fixes 551" in r["text"] and "#551" not in r["text"]
+        print(f"{'PASS' if ok else 'FAIL'} {name}: {r['status']} {r['verdict']}")
+        bad += 0 if ok else 1
+    print(f"{len(SELF_TEST) - bad}/{len(SELF_TEST)} passed")
+    return 1 if bad else 0
+
+
+def effort(model):
+    """Effort 'high' for every variant (see opencode_watched.effort); say so when max is lowered."""
+    if ow.split_model(model)[1] == "max":
+        print(f"effort: {model} lowered to #high (decision 2026-10-02)", flush=True)
+    return ow.effort(model)
+
+
+def excluded(model, excl):
+    """True if the model is one of the excluded names (the implementer's): compared without punctuation,
+    so the trailer 'DeepSeek V4.1 Flash' matches 'opencode-go/deepseek-v4.1-flash'."""
+    flat = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
+    return any(e and flat(e) in flat(ow.split_model(model)[0]) for e in excl)
 
 
 def ensure_labels():
@@ -141,7 +240,7 @@ def ensure_labels():
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    g = ap.add_mutually_exclusive_group(required=True)
+    g = ap.add_mutually_exclusive_group()
     g.add_argument("--pr", type=int)
     g.add_argument("--issue", type=int)
     ap.add_argument("--kind", choices=("pr", "release"), default=None)
@@ -150,12 +249,34 @@ def main():
     ap.add_argument("--exclude-model", default="", help="comma-separated names to skip")
     ap.add_argument("--agent", default="external-reviewer")
     ap.add_argument("--apply-label", action="store_true", help="set status:* from the verdict")
-    ap.add_argument("--dry-run", action="store_true", help="print the arguments only; start no model")
+    ap.add_argument("--dry-run", action="store_true", help="print the arguments only; start no model; post nothing")
+    ap.add_argument("--review-file", help="use this file as the model's final message instead of running a model "
+                    "(with --dry-run: print what would be posted, its note line and the exit code; no billing)")
+    ap.add_argument("--self-test", action="store_true", help="run the review parser over sample outputs")
     a = ap.parse_args()
+    if a.self_test:
+        return self_test()
+    if not (a.pr or a.issue):
+        ap.error("one of --pr / --issue is required (or --self-test)")
     kind = a.kind or ("release" if a.issue else "pr")
     n = a.pr or a.issue
-    models = [m.strip() for m in a.model.split(",") if m.strip()]
+    models = [effort(m.strip()) for m in a.model.split(",") if m.strip()]
     excl = {e.strip().lower() for e in a.exclude_model.split(",") if e.strip()}
+
+    if a.review_file:                                    # offline: parse a saved review, bill nothing
+        hdr = header(kind, models[0], [])
+        r = parse_review(Path(a.review_file).read_text(encoding="utf-8"), hdr)
+        flagged = r["status"] in ("unreadable", "cutoff")
+        note = {"unreadable": "verdict unreadable", "cutoff": "review may be cut off"}.get(r["status"])
+        code = {"ok": 0, "none": 3}.get(r["status"], 4)
+        print(f"status {r['status']}; verdict {r['verdict']}; label "
+              f"{VERDICTS[r['verdict']] if r['status'] == 'ok' and a.apply_label else 'none'}; exit {code}")
+        for c in r["rewrites"]:
+            print(f"rewrote closing keyword: {c!r}")
+        if r["status"] != "none":
+            print("---- would post ----")
+            print((NOTE + note + "\n\n" if flagged else "") + r["text"])
+        return code
 
     if a.dry_run:
         print(json.dumps({"kind": kind, "number": n, "models": models, "exclude": sorted(excl),
@@ -176,7 +297,7 @@ def main():
         head = sh("git", "rev-parse", f"refs/review/pr{n}")
         base = sh("git", "merge-base", bref, head)
         excl |= implementer_names(meta)
-    models = [m for m in models if not any(e and e in m.lower() for e in excl)]
+    models = [m for m in models if not excluded(m, excl)]      # the implementer never reviews its own PR
     if not models:
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
@@ -206,14 +327,15 @@ def main():
             brief.parent.mkdir(parents=True, exist_ok=True)
             brief.write_text(brief_text(kind, n, meta["title"], meta["body"], base, head, hdr, wt) + extra,
                              encoding="utf-8")
-            r = ow.run(brief, wt, m, logs / f"run-{len(failures) + 1}", agent=a.agent, data_dir=WORK / "opencode-data", log=lambda s: print(s, flush=True))
+            r = ow.run(brief, wt, m, logs / f"run-{len(failures) + 1}", agent=a.agent,
+                       data_dir=WORK / "opencode-data", log=lambda s: print(s, flush=True))
             cls = r["class"]
             if cls == "ok":
-                ok, text, why = validate(r["text"], hdr)
-                if ok:
-                    final = (m, text, why)
+                pr = parse_review(r["text"], hdr)
+                if pr["status"] != "none":               # a readable (or flagged) review is never thrown away
+                    final = (m, pr)
                     break
-                cls, r["cause"] = "bad-format", why
+                cls, r["cause"] = "bad-format", "no review in the final message (no header line)"
             if cls in FATAL:
                 failures.append((m, cls))
                 if cls == "permission-rejected":
@@ -235,7 +357,12 @@ def main():
         cause = "; ".join(f"{label_of(m)}: {c}" for m, c in failures) or "no model ran"
         print(f"OpenCode unavailable: {cause}", file=sys.stderr)
         return 3
-    model, text, verdict = final
+    model, pr = final
+    flagged = pr["status"] in ("unreadable", "cutoff")
+    note = {"unreadable": "verdict unreadable", "cutoff": "review may be cut off"}.get(pr["status"])
+    text, verdict = (NOTE + note + "\n\n" if flagged else "") + pr["text"], pr["verdict"]
+    for c in pr["rewrites"]:
+        print(f"rewrote closing keyword: {c!r}", flush=True)
     if kind == "pr" and gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"] != head:
         print("the PR head moved during the review; nothing posted", file=sys.stderr)
         return 5
@@ -243,12 +370,16 @@ def main():
     body.write_bytes((text + "\n").encode("utf-8"))        # UTF-8, no BOM
     noun = "issue" if kind == "release" else "pr"
     sh("gh", noun, "comment", str(n), "--body-file", str(body))
-    if a.apply_label:
+    if a.apply_label and not flagged:                    # a flagged review sets no label
         ensure_labels()
         for lb in VERDICTS.values():
             if lb != VERDICTS[verdict]:
                 sh("gh", noun, "edit", str(n), "--remove-label", lb, check=False)
         sh("gh", noun, "edit", str(n), "--add-label", VERDICTS[verdict])
+    if flagged:
+        print(f"posted one FLAGGED comment on {noun} #{n} ({note}; model {label_of(model)}); no label set; "
+              f"read it and decide; logs {logs}", file=sys.stderr)
+        return 4
     print(f"posted one comment on {noun} #{n}: verdict {verdict} (model {label_of(model)}); logs {logs}")
     return 0
 

@@ -32,6 +32,7 @@ import time
 import uuid
 from pathlib import Path
 
+WORK_DEFAULT = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 ANSI = re.compile(r"\x1b\[[0-9;?]*[ -/]*[@-~]")
 PERM = re.compile(r"^\s*!\s*permission requested: (.+?); auto-rejecting\s*$")
 
@@ -51,15 +52,30 @@ def find_exe():
 
 
 def data_home(base):
-    """An own XDG_DATA_HOME with auth.json copied in (copy only: never read or print it)."""
-    base = Path(base)
+    """The reviewer's OWN OpenCode dirs, so the desktop app (2.x), which shares the default database and can
+    migrate it to a schema the 1.x CLI cannot read ("no such column: project_id"), never touches them:
+    XDG_DATA_HOME = <base>, XDG_CACHE_HOME = <base>/cache, XDG_STATE_HOME = <base>/state, all absolute. They go
+    only into the child process's environment, so the caller's own environment needs no restore.
+    auth.json (API-key providers) is COPIED from the default dir when missing or older; it is never read or
+    printed. OpenCode Go is not in auth.json: it comes from `opencode console login`, which lives in this data
+    dir's database, so every data dir needs its own login."""
+    base = Path(base).expanduser().resolve()
     dst = base / "opencode"
     dst.mkdir(parents=True, exist_ok=True)
+    (base / "cache").mkdir(exist_ok=True)
+    (base / "state").mkdir(exist_ok=True)
     src = Path(os.environ.get("OPENCODE_AUTH", Path.home() / ".local/share/opencode/auth.json"))
-    if src.is_file() and not (dst / "auth.json").exists():
+    if src.is_file() and (not (dst / "auth.json").exists() or src.stat().st_mtime > (dst / "auth.json").stat().st_mtime):
         shutil.copyfile(src, dst / "auth.json")
         os.chmod(dst / "auth.json", 0o600)
-    return str(base)
+    return {"XDG_DATA_HOME": str(base), "XDG_CACHE_HOME": str(base / "cache"), "XDG_STATE_HOME": str(base / "state")}
+
+
+def effort(model):
+    """'provider/model[#variant]' with effort high: no variant means high; max is overkill and slower, so it
+    is lowered to high (decision 2026-10-02)."""
+    base, variant = split_model(model)
+    return f"{base}#{'high' if variant in (None, 'max') else variant}"
 
 
 def split_model(spec):
@@ -137,17 +153,28 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     if not exe:
         return done("no-executable", "no native opencode: set OPENCODE_EXE or install ~/.opencode/bin/opencode")
     env = dict(os.environ)
-    env["XDG_DATA_HOME"] = data_home(data_dir or Path.home() / "ic2-work/opencode-data")
+    env.update(data_home(data_dir or WORK_DEFAULT / "opencode-data"))
     # The reviewer's agent (its permissions) comes from the trusted main checkout, never from the
     # worktree under review: a PR must not be able to change what its own reviewer may do.
     cfg = Path(__file__).resolve().parent.parent / ".opencode"
     if cfg.is_dir():
         env["OPENCODE_CONFIG_DIR"] = str(cfg)
+    model = effort(model)
     mid, variant = split_model(model)
     # Fail fast, before anything is billed.
     models = oc(exe, env, worktree, "models").stdout.split()
+    if mid not in models and mid.startswith("opencode-go/"):
+        oc(exe, env, worktree, "models", "--refresh", timeout=120)      # the catalog may be stale
+        models = oc(exe, env, worktree, "models").stdout.split()
     if mid not in models:
-        return done("unknown-model", f"{mid} is not in `opencode models`")
+        hint = ""
+        if mid.startswith("opencode-go/"):
+            hint = ("; OpenCode Go comes from a console login in this data dir's database: run "
+                    f"XDG_DATA_HOME={env['XDG_DATA_HOME']} XDG_CACHE_HOME={env['XDG_CACHE_HOME']} "
+                    f"XDG_STATE_HOME={env['XDG_STATE_HOME']} {exe} console login (then `models opencode-go`)")
+        elif not (Path(env["XDG_DATA_HOME"]) / "opencode" / "auth.json").exists():
+            hint = "; no auth.json in the reviewer's data dir: log in to the provider and set OPENCODE_AUTH"
+        return done("unknown-model", f"{mid} is not in `opencode models`{hint}")
     a = oc(exe, env, worktree, "debug", "agent", agent)
     if a.returncode != 0:
         return done("unknown-agent", f"`opencode debug agent {agent}` exited {a.returncode}")
