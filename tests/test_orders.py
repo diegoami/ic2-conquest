@@ -221,8 +221,40 @@ def test_build_fleet():
            f"countdown {new['countdown']}); treasury {s0['nations'][0]['treasury']} -> {s['nations'][0]['treasury']}"
 
 
+def test_split_army():
+    """Split army 0's first unit off into a new army."""
+    g, _ = fresh("split")
+    s0 = load(BASE)
+    before = len(live_armies(s0, 0))
+    troops0 = sum(a["troops"] for a in live_armies(s0, 0))
+    g.split_army(0, unit_rows=(0,))
+    p = keep(g.save_as("T_SPLIT.SAV"), "T_SPLIT.SAV")
+    s = load(p)
+    arm = live_armies(s, 0)
+    troops = sum(a["troops"] for a in arm)
+    assert len(arm) == before + 1, [(a["id"], a["x"], a["y"], a["troops"]) for a in arm]
+    assert troops == troops0, (troops, troops0)
+    return f"Roman armies {before} -> {len(arm)} (troops {troops0} -> {troops}); " \
+           f"{[(a['id'], a['x'], a['y'], a['troops']) for a in arm]}"
+
+
+def test_change_units_disband():
+    """Disband one unit from army 0 through the Change units dialog."""
+    g, _ = fresh("changeunits")
+    s0 = load(BASE)
+    a0 = next(a for a in live_armies(s0, 0) if a["id"] == 0)
+    g.change_units_disband(0, unit_row=0)
+    p = keep(g.save_as("T_CHUNITS.SAV"), "T_CHUNITS.SAV")
+    s = load(p)
+    a1 = next(a for a in live_armies(s, 0) if a["id"] == 0)
+    assert len(a1["units"]) == len(a0["units"]) - 1, (len(a0["units"]), len(a1["units"]), a1["units"])
+    assert a1["troops"] < a0["troops"], (a0["troops"], a1["troops"])
+    return f"army 0 {a0['troops']} t / {len(a0['units'])} units -> {a1['troops']} t / {len(a1['units'])} units"
+
+
 TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
-         "taxation", "disband_unit", "disband_army", "build_fleet"]
+         "taxation", "disband_unit", "disband_army", "build_fleet", "split_army",
+         "change_units_disband"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS

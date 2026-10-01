@@ -612,6 +612,38 @@ class Game:
         self.click(self.army_x.get("disband", self.ARMY_TOOLS["disband"]), ARMY_TOOLBAR_Y, pause=1.5)
         return self.dismiss_popups()
 
+    def split_army(self, i, unit_rows=(0,)):
+        """Select army i and split the given unit rows (indices in its unit list)
+        into a new army on the same tile."""
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.open_dialog("Split army", (self.army_x["split"], ARMY_TOOLBAR_Y))
+        cs = self.controls("Split army")
+        left = self.control(cs, cls="TListBox", index=0)
+        transfer = sorted((c for c in cs if c["text"] == "Transfer"), key=lambda c: c["x"])[0]
+        for r in unit_rows:
+            self.click(left["x"] + left["w"] // 2, left["y"] + 12 + 12 * r, pause=0.4)
+            self.click_control(transfer, pause=0.6)
+        self.click_control(self.control(cs, text="OK"), pause=1.5)
+        return self.dismiss_popups()
+
+    def change_units_disband(self, i, unit_row):
+        """Change units: select a unit in army i and Disband it."""
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.open_dialog("Change units", (self.army_x["change"], ARMY_TOOLBAR_Y))
+        cs = self.controls("Change units")
+        lst = self.control(cs, cls="TListBox")
+        self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * unit_row, pause=0.5)
+        self.click_control(self.control(cs, text="Disband"), pause=0.8)
+        texts = self.dismiss_popups()
+        self.click_control(self.control(cs, text="OK"), pause=1.5)
+        return texts
+
     def supply(self, i, tons=None, money_100s=0):
         """Supply army dialog (window 470x335 at 23,49): the 10s arrows move
         supplies from the adjacent provider (city) to the army, capped by the
