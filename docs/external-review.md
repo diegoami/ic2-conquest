@@ -36,6 +36,12 @@ and fall back to `/review-pr`) · 5 the PR head moved during the review (nothing
 - Own data dir (`XDG_DATA_HOME=$IC2_WORK/opencode-data`). `auth.json` is **copied** from
   `~/.local/share/opencode/auth.json` if it exists (set `OPENCODE_AUTH` to point elsewhere); it is never read
   or printed. With no auth only the free `opencode/*` models work.
+- **OpenCode Go models** (`opencode-go/*`) come from a console (organisation) login, not from `auth login`:
+  run `opencode console login` once per data dir (the device flow; it showed the account at once here), with
+  `XDG_DATA_HOME=$IC2_WORK/opencode-data` set for the reviewer's own dir. The account lives in that dir's
+  database, so the default dir's login does not carry over. Needs OpenCode >= 1.18.34 only if the catalog lacks
+  the provider (`opencode models --refresh`); `opencode upgrade` may use the Windows npm, so the WSL binary was
+  installed from the GitHub release tarball (`opencode-linux-x64.tar.gz`).
 - Process control is a process group (`start_new_session`, `killpg`), not `taskkill`; stdin is `/dev/null`.
 - The attached brief goes with `-f`, and the one-line message must come **before** the flags: `-f` is an array
   option and swallows the next argument as a file.
