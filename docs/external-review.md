@@ -1,25 +1,26 @@
 # External PR reviewer (OpenCode)
 
-## Roles and models (player decisions, 2026-10-01, revised 2026-10-02)
+## Roles and models (player decisions, 2026-10-01; revised 2026-10-02, twice)
 
-**One OpenCode model per role, then Claude.** A chain of several cheap models multiplies wasted attempts.
+**Sonnet is the only implementer.** The reviewer is not a Claude model: a chain of two, then the caller decides.
 
-| Role | OpenCode model (effort `high`) | Then |
+| Role | First | Then |
 |---|---|---|
-| Implementer | `opencode-go/deepseek-v4.1-flash` | Claude Sonnet |
-| Reviewer | `opencode-go/glm-5.3-flash` | Claude Opus (run by the caller) |
+| Implementer | Claude Sonnet (no OpenCode implementer) | – |
+| Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-6 Luna (`openai/gpt-6-luna#high`, the OpenAI OAuth credential, not the Go copy) |
 
-- On the OpenCode reviewer's failure `scripts/external_review.py` exits **3** and the caller runs the Claude
-  fallback (Opus: `/review-pr`, once that skill is merged). The script no longer has a second model of its own.
-  Other models stay valid as explicit `--model` values; no default path picks them.
-- The implementer chain is a working agreement: there is no implementer script in this repo yet.
-- **The implementer's model never reviews its own PR.** `Co-Authored-By` trailers and `model:<name>` labels are
-  excluded (compared without punctuation: the trailer `DeepSeek V4.1 Flash` excludes
-  `opencode-go/deepseek-v4.1-flash`); `--exclude-model` adds names. If nothing is left, exit 3 and Claude reviews.
-- **Why:** GLM-5.3 and GLM-5.3-Flash sometimes end their turn early in long implementer runs (a whole run of
-  reading, then exit 0 with no commit); as reviewers they were fine and cheap. Go's `gpt-6-luna` returned
-  "Bad Request" in long agent loops (a third-party upstream rejecting assistant messages with empty content), so
-  it is not used for long runs.
+- The chain moves to the next model only after an infrastructure failure (including "no review at all"), never
+  after a real or flagged review. When both fail, `scripts/external_review.py` exits **3** and the caller decides
+  what runs next (a Claude Opus review is the obvious fallback; nothing is automatic, and `/review-pr` is
+  PR #7).
+- **The implementer's model never reviews its own PR** (`Co-Authored-By` trailers and `model:<name>` labels are
+  excluded, compared without punctuation; `--exclude-model` adds names). Today the implementer is Sonnet, which is
+  not in the chain, so nothing is excluded.
+- **History, so the reasons survive:** the earlier plan was DeepSeek then Sonnet as implementer, and GLM-5.3 Flash
+  then Opus as reviewer. GLM-5.3 and GLM-5.3-Flash sometimes end their turn early in long implementer runs (a
+  whole run of reading, then exit 0 with no commit); Go's `gpt-6-luna` returned "Bad Request" in long agent loops
+  (a third-party upstream rejecting assistant messages with empty content), which is why the Luna in the chain is
+  the **direct OpenAI** one. Both are untested as long runs here; reviews are short.
 - **Effort is `high`, never `max`** (Go lists low/high/max; max is overkill and slower). A model without a
   variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line.
 
@@ -27,7 +28,7 @@ A second, independent reviewer that is not Claude: an OpenCode model reviews a P
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
 
 ```bash
-python3 scripts/external_review.py --pr 7                        # the default model, posts one comment
+python3 scripts/external_review.py --pr 7                        # the default chain, posts one comment
 python3 scripts/external_review.py --pr 7 --model opencode-go/kimi-k3#high
 python3 scripts/external_review.py --pr 7 --apply-label          # also sets status:approved|rework|decision
 python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
@@ -37,7 +38,7 @@ python3 scripts/external_review.py --self-test                   # the review pa
 ```
 
 Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (nothing posted; record the cause in
-one PR comment and run the Claude fallback, Opus) · **4** posted **flagged** (the verdict could not be read or the
+one PR comment and run the fallback you choose, e.g. Claude Opus) · **4** posted **flagged** (the verdict could not be read or the
 review looks cut off: a note line on top, no label; read it and decide; no fallback to another paid review) · **5**
 the PR head moved during the review (nothing posted).
 
@@ -79,7 +80,7 @@ and accepts a review flattened onto one line. Then:
   OpenCode desktop app (2.x) shares the default `~/.local/share/opencode/opencode.db` and can migrate it to a
   schema the 1.x CLI cannot read (`no such column: project_id`). `auth.json` is **copied** from
   `~/.local/share/opencode/auth.json` (set `OPENCODE_AUTH` to point elsewhere) when missing or older; it is never
-  read or printed. With no auth only the free `opencode/*` models work.
+  read or printed. With no auth only the free `opencode/*` models work; the `openai/*` models need the OpenAI OAuth credential in it.
 - **OpenCode Go models** (`opencode-go/*`) come from a console (organisation) login, not from `auth login`:
   run `opencode console login` once per data dir (the device flow: a URL and a code you approve in the browser),
   once for the default dir and once for the reviewer's own:
@@ -124,5 +125,5 @@ nonzero-exit, permission-rejected, default-agent, cut-off, unknown-model, unknow
 explicit `--model a,b` list the next model is tried only after an infrastructure failure (including "no review
 at all"), never after a real or flagged review; the list stops after two consecutive failures of one class, and
 `permission-rejected`, `unknown-agent` and `no-executable` stop it at once. The posted header names the failures:
-`PR review (kimi-k3; glm-5.3-flash failed: no-session)`. Verdicts differ between models and between runs of one
+`PR review (gpt-6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
 model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.
