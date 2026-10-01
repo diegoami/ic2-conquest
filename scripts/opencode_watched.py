@@ -85,8 +85,12 @@ def split_model(spec):
 
 
 def oc(exe, env, cwd, *args, timeout=60):
-    return subprocess.run([exe, *args], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
-                          capture_output=True, text=True, timeout=timeout)
+    """Run an opencode subcommand. A hang is a result, not an exception: returncode 124, empty output."""
+    try:
+        return subprocess.run([exe, *args], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
+                              capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return subprocess.CompletedProcess([exe, *args], 124, "", f"timed out after {timeout}s")
 
 
 def session_list(exe, env, cwd):
@@ -114,7 +118,7 @@ def kill_tree(proc):
             continue
 
 
-def final_text(exe, env, cwd, session, agent, run_dir):
+def final_text(exe, env, cwd, session, run_dir):
     """(text, finish, agent_seen) of the last assistant message, from `opencode export`. The export
     goes to a file: through a pipe a large export arrives truncated."""
     path = Path(run_dir) / "export.json"
@@ -159,10 +163,16 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     cfg = Path(__file__).resolve().parent.parent / ".opencode"
     if cfg.is_dir():
         env["OPENCODE_CONFIG_DIR"] = str(cfg)
+        # OpenCode MERGES the project's own .opencode/ (here: the PR's, in the worktree) with this one, and a
+        # PR could add an allow rule to its own reviewer ("python3 *": allow). Ignore the project config.
+        env["OPENCODE_DISABLE_PROJECT_CONFIG"] = "1"
     model = effort(model)
     mid, variant = split_model(model)
     # Fail fast, before anything is billed.
-    models = oc(exe, env, worktree, "models").stdout.split()
+    listing = oc(exe, env, worktree, "models")
+    if listing.returncode != 0:
+        return done("nonzero-exit", f"`opencode models` failed ({listing.returncode}): {listing.stderr.strip()[:120]}")
+    models = listing.stdout.split()
     if mid not in models and mid.startswith("opencode-go/"):
         oc(exe, env, worktree, "models", "--refresh", timeout=120)      # the catalog may be stale
         models = oc(exe, env, worktree, "models").stdout.split()
@@ -237,7 +247,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     if proc.returncode != 0:
         return done("nonzero-exit", f"exit {proc.returncode}")
     try:
-        text, finish, seen = final_text(exe, env, worktree, session, agent, run_dir)
+        text, finish, seen = final_text(exe, env, worktree, session, run_dir)
     except (ValueError, OSError, subprocess.SubprocessError) as e:
         return done("cut-off", f"the export could not be read: {e}")
     res["text"] = text

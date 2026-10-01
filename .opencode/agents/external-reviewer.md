@@ -3,6 +3,10 @@ description: Read-only PR reviewer. Runs in a detached git worktree at the commi
 mode: all
 permission:
   edit: deny
+  webfetch: deny
+  websearch: deny
+  codesearch: deny
+  skill: deny
   task:
     "*": deny
   bash:
@@ -20,7 +24,6 @@ permission:
     "git cat-file*": allow
     "git show-ref*": allow
     "git branch --list*": allow
-    "git checkout -- *": allow
     "git -C * diff*": allow
     "git -C * log*": allow
     "git -C * show*": allow
@@ -32,7 +35,6 @@ permission:
     "git -C * grep*": allow
     "git -C * blame*": allow
     "git -C * cat-file*": allow
-    "git -C * checkout -- *": allow
     "gh pr view*": allow
     "gh pr diff*": allow
     "gh issue view*": allow

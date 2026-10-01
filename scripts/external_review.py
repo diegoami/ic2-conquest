@@ -34,8 +34,6 @@ WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
 DEFAULT_MODELS = "opencode-go/glm-5.3-flash#high"      # one OpenCode model, then Claude (exit 3 -> caller)
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
-INFRA = {"no-session", "idle-timeout", "total-timeout", "exited-without-session", "nonzero-exit",
-         "cut-off", "default-agent", "bad-format", "unknown-model", "unknown-agent"}
 FATAL = {"permission-rejected", "no-executable", "unknown-agent"}     # not retried on another model
 
 
@@ -66,7 +64,9 @@ def implementer_names(pr):
     names = set()
     for c in pr.get("commits", []):
         for m in re.finditer(r"Co-Authored-By:\s*([^<\n]+?)\s*(?:<|$)", c.get("messageBody", ""), re.I | re.M):
-            names.add(m.group(1).strip().lower())
+            name = m.group(1).strip().lower()
+            if len(re.sub(r"[^a-z0-9]", "", name)) >= 6:      # a short or generic name would match too much
+                names.add(name)
     for lb in pr.get("labels", []):
         if lb["name"].lower().startswith("model:"):
             names.add(lb["name"].split(":", 1)[1].strip().lower())
@@ -167,6 +167,8 @@ def parse_review(text, hdr):
             v = m.group(1).lower()
             return result("ok", "\n".join(x for x in (hdr, v, m.group(2).strip(), v) if x), v)
         m = re.match(r"^\W*(" + verdicts + r")\b", rest, re.I)
+        if m and re.search(r"\b(" + verdicts + r")\W*$", rest, re.I):     # a closing verdict, but a different one
+            return result("unreadable", flat)
         return result("cutoff" if m else "unreadable", flat, m.group(1).lower() if m else None)
     after = [x for x in nonempty[1:]]
     if not after:
@@ -198,6 +200,7 @@ SELF_TEST = [
     ("no closing verdict", "PR review (m)\napprove\nR1 a.py:1 non-blocking: x\nR2 b.py:2 non-blocking: y", "cutoff", "approve", False),
     ("unreadable verdict", "PR review (m)\nlooks good to me\nR1 a.py:1 non-blocking: x\nlooks good", "unreadable", None, False),
     ("verdicts disagree", "PR review (m)\napprove\nR1 a.py:1 blocking: x\nrework", "unreadable", None, False),
+    ("one line, verdicts disagree", "PR review (m) approve R1 a.py:1 blocking: x. rework", "unreadable", None, False),
     ("tool chatter only", "$ git diff\nran 3 commands\ndone", "none", None, False),
     ("empty", "", "none", None, False),
 ]
@@ -250,8 +253,8 @@ def main():
     ap.add_argument("--agent", default="external-reviewer")
     ap.add_argument("--apply-label", action="store_true", help="set status:* from the verdict")
     ap.add_argument("--dry-run", action="store_true", help="print the arguments only; start no model; post nothing")
-    ap.add_argument("--review-file", help="use this file as the model's final message instead of running a model "
-                    "(with --dry-run: print what would be posted, its note line and the exit code; no billing)")
+    ap.add_argument("--review-file", help="offline: parse this file as the model's final message and print what "
+                    "would be posted, its note line, the label and the exit code. No model runs, nothing is posted")
     ap.add_argument("--self-test", action="store_true", help="run the review parser over sample outputs")
     a = ap.parse_args()
     if a.self_test:
@@ -318,7 +321,6 @@ def main():
     try:
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")
-        (wt / "rendered").mkdir(exist_ok=True)
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
         streak = []
         for m in models:

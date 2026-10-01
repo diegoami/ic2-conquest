@@ -32,8 +32,8 @@ python3 scripts/external_review.py --pr 7 --model opencode-go/kimi-k3#high
 python3 scripts/external_review.py --pr 7 --apply-label          # also sets status:approved|rework|decision
 python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
 python3 scripts/external_review.py --pr 7 --dry-run              # prints the arguments, starts no model
-python3 scripts/external_review.py --pr 7 --review-file R.md --dry-run   # what would be posted, its note, the exit code
-python3 scripts/external_review.py --self-test                   # the review parser over 14 sample outputs
+python3 scripts/external_review.py --pr 7 --review-file R.md     # offline: what would be posted, its note, the exit code
+python3 scripts/external_review.py --self-test                   # the review parser over 15 sample outputs
 ```
 
 Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (nothing posted; record the cause in
@@ -59,7 +59,7 @@ and accepts a review flattened onto one line. Then:
 
 - `.opencode/agents/external-reviewer.md`: the agent. OpenCode 1.x uses a `permission:` **map** (last match wins);
   the V2 list form (`permissions:` with action/resource/effect) is silently ignored. After any edit, check that
-  every deny shows up in `~/.opencode/bin/opencode debug agent external-reviewer`. It denies edit, task, git
+  every deny shows up in `~/.opencode/bin/opencode debug agent external-reviewer`. It denies edit, task, the web tools (webfetch, websearch, codesearch: a planted URL in a PR must not be fetched), skill, git
   push/commit/stash/worktree, every `gh` write, the game tests, Wine/Xvfb/xdotool, kill and rm; a read outside
   the worktree is auto-rejected.
 - `scripts/opencode_watched.py`: runs `opencode run` and classifies the end: ok, no-session, idle-timeout,
@@ -67,7 +67,7 @@ and accepts a review flattened onto one line. Then:
   cut-off, unknown-model, unknown-agent, no-executable. `result.json` and the stdout/stderr logs are kept.
 - `scripts/external_review.py`: unique detached worktree under `$IC2_REVIEW_ROOT` (default `$IC2_WORK/review`,
   outside the repo) removed in `finally`; the brief with the PR body pasted in; the tolerant parser above; the
-  head-SHA re-check; one comment; optional label. `--self-test` runs 14 sample outputs through the parser.
+  head-SHA re-check; one comment; optional label. `--self-test` runs 15 sample outputs through the parser.
   Logs go to the main checkout's git-ignored `rendered/`.
 
 ## WSL notes (this repo's reviewer runs on WSL2, not Windows)
@@ -98,8 +98,13 @@ and accepts a review flattened onto one line. Then:
 - The attached brief goes with `-f`, and the one-line message must come **before** the flags: `-f` is an array
   option and swallows the next argument as a file.
 - `opencode export` is written to a file, not read from a pipe: a large export arrives truncated through a pipe.
-- The agent file is read from the main checkout (`OPENCODE_CONFIG_DIR`), never from the worktree under review,
-  so a PR cannot change what its own reviewer may do.
+- The agent file is read from the main checkout (`OPENCODE_CONFIG_DIR`), **and the worktree's own `.opencode/` is
+  ignored** (`OPENCODE_DISABLE_PROJECT_CONFIG=1`), so a PR cannot change what its own reviewer may do. This is not
+  automatic: OpenCode *merges* the two, so before the switch a worktree copy of the agent file could add an allow
+  rule (`"python3 *": allow`) that the trusted file only blocked through its catch-all deny. Found by a battery run
+  on 2026-10-02 (a `git checkout` allowed from an older copy); re-test after any change with
+  `OPENCODE_DISABLE_PROJECT_CONFIG=1 OPENCODE_CONFIG_DIR=<main>/.opencode opencode debug agent external-reviewer`
+  from inside a worktree whose agent file has an extra allow.
 
 ## The reviewer's shell: a read-only allowlist
 
