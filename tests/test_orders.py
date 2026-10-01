@@ -282,9 +282,53 @@ def test_transfer_units():
            f"army1 {t1}t/{u1}u -> {a1['troops']}t/{len(a1['units'])}u"
 
 
+def _army0_units(g, fname):
+    p = keep(g.save_as(fname), fname)
+    return next(a for a in live_armies(load(p), 0) if a["id"] == 0)["units"]
+
+
+def test_change_units_rename():
+    """Rename army 0's first unit through Change units; the 24-byte name changes."""
+    g, _ = fresh("rename")
+    u0 = next(a for a in live_armies(load(BASE), 0) if a["id"] == 0)["units"]
+    g.rename_unit(0, 0, "Legio Test")
+    u1 = _army0_units(g, "T_RENAME.SAV")
+    assert len(u1) == len(u0) and u1[0]["name"] == "Legio Test", (u0[0]["name"], [u["name"] for u in u1])
+    return f"{u0[0]['name']!r} -> {u1[0]['name']!r}"
+
+
+def test_change_units_split():
+    """Split the 5000-man 1st Guards (row 1; the 4800 1st Foot is "too small") and
+    press the 100s arrow five times: the original keeps 3000 and the new unit
+    gets 2000 (the arrow grows the original). One more unit, same troops."""
+    g, _ = fresh("splitunit")
+    u0 = next(a for a in live_armies(load(BASE), 0) if a["id"] == 0)["units"]
+    g.split_unit(0, 1, hundreds=5)
+    u1 = _army0_units(g, "T_SPLITUNIT.SAV")
+    assert len(u1) == len(u0) + 1, (len(u0), len(u1))
+    assert sum(u["troops"] for u in u1) == sum(u["troops"] for u in u0)
+    assert (u1[1]["troops"], u1[-1]["troops"]) == (3000, 2000), [u["troops"] for u in u1]
+    return f"units {len(u0)} -> {len(u1)}; troops {[u['troops'] for u in u0]} -> {[u['troops'] for u in u1]}"
+
+
+def test_change_units_join():
+    """Join needs units that fit together: two heavy-infantry units (5000 + 5200)
+    are "too large to be combined". Split the 5000-man 1st Guards, then join the
+    two halves back: one unit again, same troops."""
+    g, _ = fresh("joinunits")
+    u0 = next(a for a in live_armies(load(BASE), 0) if a["id"] == 0)["units"]
+    g.split_unit(0, 1)
+    g.join_units(0, [1, len(u0)])           # the new half is appended as the last row
+    u1 = _army0_units(g, "T_JOINUNITS.SAV")
+    assert len(u1) == len(u0), (len(u0), len(u1))
+    assert sum(u["troops"] for u in u1) == sum(u["troops"] for u in u0)
+    return f"split then join: units {len(u0)} -> {len(u1)}; troops {[u['troops'] for u in u1]}"
+
+
 TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
          "taxation", "disband_unit", "disband_army", "build_fleet", "split_army",
-         "change_units_disband", "transfer_units"]
+         "change_units_disband", "transfer_units", "change_units_rename",
+         "change_units_split", "change_units_join"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS

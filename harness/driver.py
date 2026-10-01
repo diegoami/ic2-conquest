@@ -671,7 +671,77 @@ class Game:
         self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * unit_row, pause=0.5)
         self.click_control(self.control(cs, text="Disband"), pause=0.8)
         texts = self.dismiss_popups()
-        self.click_control(self.control(cs, text="OK"), pause=1.5)
+        self._close_change_units(cs)
+        return texts
+
+    def _change_units(self, i, unit_rows, button):
+        """Open Change units for army i, select the unit rows (ctrl for more than
+        one) and press `button`. Returns the dialog's controls."""
+        ax, ay = self.army_pos(i)
+        self.select_army(i, ax, ay)
+        if not self.army_x:
+            self.calibrate_army_toolbar()
+        self.open_dialog("Change units", (self.army_x["change"], ARMY_TOOLBAR_Y))
+        cs = self.controls("Change units")
+        lst = self.control(cs, cls="TListBox")
+        for k, r in enumerate(unit_rows):
+            if k:
+                sh("xdotool", "keydown", "ctrl")
+            self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * r, pause=0.4)
+            if k:
+                sh("xdotool", "keyup", "ctrl")
+        self.click_control(self.control(cs, text=button), pause=1.2)
+        return cs
+
+    def _close_change_units(self, cs):
+        for _ in range(2):              # the first click into an inactive window may only activate it
+            self.click_control(self.control(cs, text="OK"), pause=1.5)
+            if not self.find_windows("^Change units$"):
+                break
+
+    def rename_unit(self, i, unit_row, name):
+        """Change units: select a unit in army i, Rename unit, type the name."""
+        cs = self._change_units(i, [unit_row], "Rename unit")
+        rc = self.controls("Rename unit")
+        edit = self.control(rc, cls="TEdit")
+        self.click_control(edit, pause=0.4)
+        self.key("End")                 # the box is pre-filled and ctrl+a does not select it
+        sh("xdotool", "key", "--repeat", "30", "BackSpace")
+        sh("xdotool", "type", "--delay", "60", name)
+        for _ in range(2):              # the first click into an inactive window may only activate it
+            self.click_control(self.control(rc, text="OK"), pause=1.0)
+            if not self.find_windows("^Rename unit$"):
+                break
+        texts = self.dismiss_popups()
+        self._close_change_units(cs)
+        return texts
+
+    def split_unit(self, i, unit_row, hundreds=0):
+        """Change units: split a unit (the game refuses a small one: "too small
+        to split"). The dialog starts at half and half; each 100s arrow press
+        moves 100 troops from the new unit to the original (negative presses
+        down), so the new unit ends at half - 100*hundreds."""
+        cs = self._change_units(i, [unit_row], "Split unit")
+        texts = self.dismiss_popups() if not self.find_windows("^Split unit$") else []
+        if self.find_windows("^Split unit$"):
+            sc = self.controls("Split unit")
+            spin = sorted((c for c in sc if c["cls"] == "TUpDown"), key=lambda c: c["x"])[0]
+            for _ in range(abs(hundreds)):
+                self.click_control(spin, fy=0.25 if hundreds > 0 else 0.75, pause=0.2)
+            for _ in range(2):
+                self.click_control(self.control(sc, text="OK"), pause=1.0)
+                if not self.find_windows("^Split unit$"):
+                    break
+            texts += self.dismiss_popups()
+        self._close_change_units(cs)
+        return texts
+
+    def join_units(self, i, unit_rows):
+        """Change units: select two or more units of the same type (ctrl-click)
+        and Join units."""
+        cs = self._change_units(i, unit_rows, "Join units")
+        texts = self.dismiss_popups()
+        self._close_change_units(cs)
         return texts
 
     def supply(self, i, tons=None, money_100s=0):
