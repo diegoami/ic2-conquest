@@ -24,6 +24,7 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
 - `planner/path.py`: army paths (DAT terrain costs).
 - `patches/seed_patch.py`: the seed option on top of the fixtures' `patch_exe.py`.
 - `tests/test_orders.py`: each order issued headless and checked on the save diff; `tests/results.md`.
+- `scripts/external_review.py`, `scripts/opencode_watched.py`, `.opencode/agents/external-reviewer.md`: the OpenCode PR reviewer in its own worktree (`docs/external-review.md`); `.claude/skills/review-pr`: the Claude-side review.
 - `docs/rules-digest.md`: the researched rules, with sources. `findings/`: drafts for the research repo.
 
 ## Driver pitfalls (Wine, no window manager)
