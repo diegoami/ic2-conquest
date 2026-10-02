@@ -53,7 +53,7 @@ embark rule and capacity, repair cost, split/join/transfer/scuttle. Not seen: an
 
 From `saves/run0-start-AUTO0720-seed12345.SAV` (the New Game with Rome human; the nation records are the same for every seat):
 
-- **Only two fleets exist:** **Carthage** fleet 0, **90 ships, condition 85 %**, at (49,62); **Ptolemaic** fleet 1, **70 ships,
+- **Only two fleets exist** (read from the start save with `state/sav.py`; Appendix A has the parse, and T1 re-reads and confirms it before relying on it): **Carthage** fleet 0, **90 ships, condition 85 %**, at (49,62); **Ptolemaic** fleet 1, **70 ships,
   condition 100 %**, at (190,93). No other nation has one, and **Seleucid has none**.
 - **Carthage** (nation 1): 34 cities (28 coastal), **11,000 talents**, at war only with Celtiberia. **Ptolemaic** (3): 46 cities
   (20 coastal), **−9 talents** (broke), at war with nobody. **Seleucid** (2): 62 cities (16 coastal), 1,840 talents, at war with
@@ -98,13 +98,21 @@ be driven reliably, **stop and report** (decision 2); nothing from T1 starts unt
 **Goal:** find the quirks of starting as each nation, because the harness has only ever started as Rome (the New Game with row 0).
 
 For each nation row 0-15, seed 12345: `New Game` with that nation human, then **two turns** (end the first turn, play a second). Record,
-as a table and per nation: whether the form and the autosave work; the title bar ("<nation>'s turn (<leader>)") and `CUR_NATION`;
-the **turn order position** (Rome's seat differs per game, observed 13, 10, 7, 5); the start popups; treasury, cities, armies,
-fleets, relations; whether **Build fleet** finds a "free coastal city" (nations with 0-5 coastal cities, Dacia and Galatia with
-none, may refuse: "You do not have a free coastal city at this time."); the recruit dialog and queue (`state/queues.py` assumes
-Rome's four slots); anything the driver gets wrong because it assumes nation 0 (`ROME = 0` in `state/` and tests, the
-toolbar, the nation icons, the unit-map origin). Each nation's first-turn saves are kept; the table and the oddities go into a
-findings draft. About three minutes per nation, an hour for the sweep.
+as a table and per nation:
+
+- whether the form and the autosave work; the title bar ("<nation>'s turn (<leader>)") and `CUR_NATION`; the **turn-order position**
+  (Rome's seat differs per game, observed 13, 10, 7, 5); the start popups;
+- treasury, cities, armies, fleets, relations;
+- whether **Build fleet** finds a "free coastal city" (Dacia and Galatia have none, Numidia and Gaul one or two; they may refuse with
+  "You do not have a free coastal city at this time."), and the recruit dialog and queue (the queue reader `state/queues.py` already
+  loops all 16 nations, so it is not the suspect);
+- **anything the harness assumes about nation 0 or Rome**: `Game.relation` (the International relations radio rows, "Rome is row 0",
+  `harness/driver.py`); the tests (`fresh()` loads the Rome start, many check `owner == 0` or `armies[0]`, the recruit test's city rows
+  "Luceria, ROME"); `runs/experiments/unit-map-mouse/common.py` (`ROME = 0`); the toolbar's nation icons; the unit-map origin per nation
+  (record `+0x486/+0x488`).
+
+Each nation's first-turn saves are kept; the table and the oddities go into a findings draft. About three minutes per nation, an hour
+for the sweep.
 **Acceptance:** 16 rows, each with a save or a stated failure; every driver assumption that broke is listed with a fix or an
 open item. **Output also feeds** T0 (seat handling) and the pair choice for later work.
 
@@ -125,7 +133,10 @@ open item. **Output also feeds** T0 (seat handling) and the pair choice for late
 - **Avoid interruptions:** keep both fleets away from AI fleets and from each other's cities until the meeting; keep any army out of
   reach of an enemy; if an AI event breaks the staging, rebuild from the previous autosave (they are per turn).
 
-**Deliverable:** `saves/fleets-adjacent-at-sea-<nnnn>.SAV` (about 130 KB) and `tests/make_fleet_battle_fixture.py`.
+**Deliverable:** `saves/fleets-adjacent-at-sea-<nnnn>.SAV` (about 130 KB, no armies aboard: the T2 baseline) and
+`tests/make_fleet_battle_fixture.py`. **T3 does not branch from this save:** an army can only embark from a land tile next to the fleet, so T3
+restages in port with its own fixtures (`fleets-with-cargo-<size>.SAV`: each fleet in port, the chosen army embarked, then sailed to the meeting
+tile), built by the same script with a cargo argument.
 
 ## 6. Task T2: naval battles, no army aboard
 
@@ -203,6 +214,11 @@ one natural loss "A fleet belonging to X is lost at sea." with the save before a
 
 ## 9. Driver and tooling work this implies
 
+All new orders follow the pitfalls in `CLAUDE.md`: hover before clicking; verify every click's effect (the selected unit, `SEL_ARMY` or
+`SEL_FLEET`, or the save) and retry at most twice; **never click End turn twice** unless the first click provably did nothing (with two human seats
+the next End turn belongs to the other seat, so "did the turn advance" must be read from `CUR_NATION`, not from the calendar alone); a File > Save clears
+the selected-army variable, so select after saving.
+
 1. `new_game` with several human rows; a round loop for two seats; end-turn handling per seat (T0).
 2. `attack_fleet` and its confirm/result handling, including `TBattlePols` (the post-battle peace; it is also on the open list).
 3. A fleet-record writer for synthetic states, with a parse/write round-trip test (T4).
@@ -252,3 +268,18 @@ to a run, so **the player's approval of this revision is requested before T0b/T0
 
 PR with this file only; `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-6 Luna); a Claude pass with
 `/review-pr <n>`; the player answers §12 and approves T0b/T0.
+
+## Appendix A. The start-save facts this plan relies on
+
+Parsed from `saves/run0-start-AUTO0720-seed12345.SAV` with `state/sav.py` (`sav.load`), 2026-10-02:
+
+```text
+fleets: [(0, Carthage,  (49, 62),  90 ships, condition 85), (1, Ptolemaic, (190, 93), 70 ships, condition 100)]
+wars at the start: Bithynia-Seleucid, Carthage-Celtiberia, Galatia-Seleucid, Gaul-Rome
+ 1 Carthage  cities 34 coastal 28 treasury 11000      3 Ptolemaic cities 46 coastal 20 treasury    -9
+ 2 Seleucid  cities 62 coastal 16 treasury  1840      Seleucid-Ptolemaic relation -18, Carthage-Ptolemaic -10
+rough-sea tiles (map code 1): 112
+```
+
+`docs/rules-digest.md` §10 describes Rome's start and does not mention these fleets; the fleet counts here are from the save alone, which is why
+T1 starts by re-reading them from a fresh New Game of the chosen pair.
