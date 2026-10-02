@@ -556,6 +556,15 @@ class Game:
     def fleet_pos(self, i):
         return struct.unpack_from("<2h", self.fleet_rec(i), 0)
 
+    def fleet_state(self, i):
+        """A fleet record read from the game's memory (the save's 26 bytes: x, y, owner +8, countdown +10, moves +12,
+        supplies +14, money +16, ships +18, condition +20, carried army +22). An owner of -1 is a destroyed fleet."""
+        r = self.fleet_rec(i)
+        x, y = struct.unpack_from("<2h", r, 0)
+        owner, countdown, moves, supplies, money, ships, cond, army = struct.unpack_from("<8h", r, 8)
+        return {"id": i, "x": x, "y": y, "owner": owner, "moves": moves, "supplies": supplies, "money": money,
+                "ships": ships, "condition": cond, "army": army}
+
     def fleet_moves(self, i):
         return struct.unpack_from("<h", self.fleet_rec(i), 12)[0]
 
@@ -817,6 +826,43 @@ class Game:
         self.select_army(army, ax, ay)
         self.click_tile(fx, fy, pause=1.5)
         return self.dismiss_popups()
+
+    def attack_fleet(self, own, enemy, answer=None):
+        """Select own fleet, click the adjacent enemy fleet. AT WAR (the tested case: 50 battles) the battle is instant, with no
+        window and no box; its effect is verified from the two fleet records (a destroyed fleet has owner -1 and a winner's
+        ships or condition fall) and the click is retried at most twice if nothing changed; the news line ("X sinks fleet of
+        Y.") is in the next autosave. AT PEACE the click is expected to ask "Are you sure you want to attack this fleet ?"
+        (Yes/No, Yes declares war): **untested for fleets**; with `answer` None a box is only read and left open, with
+        True/False it is answered. Returns the texts of any box seen."""
+        ox, oy = self.fleet_pos(own)
+        ex, ey = self.fleet_pos(enemy)
+        if max(abs(ox - ex), abs(oy - ey)) != 1:
+            raise DriverError(f"fleet {enemy} at {ex},{ey} not adjacent to fleet {own} at {ox},{oy}")
+        self.dismiss_popups()       # a stale news/offer box would be mistaken for the click's effect below
+        before = (self.fleet_state(own), self.fleet_state(enemy))
+        texts = []
+        for _ in range(3):          # verify the click's effect; retry at most twice
+            self.select_fleet(own, ox, oy)
+            self.click_tile(ex, ey, pause=1.5)
+            if self.in_battle() or self.find_windows(" v "):
+                # A tactical screen (not seen for fleets at war: the battle is instant): play it as Game.attack does, and stop.
+                self.play_battle()
+                return [self.read_popup(w) for w in self.popups()] + ["BATTLE screen played (Computer general)"]
+            texts = [self.read_popup(w) for w in self.popups() if w[1] in ("Confirm", "Information", "Warning", "Error")]
+            if texts:               # a box (the untested peace prompt, or a refusal) is the effect: do not click again
+                break
+            time.sleep(1.0)
+            if (self.fleet_state(own), self.fleet_state(enemy)) != before:
+                break
+        else:
+            raise DriverError(f"attacking fleet {enemy} with fleet {own} changed nothing (no box, both fleet records unchanged)")
+        if answer is not None and self.find_windows("^Confirm$"):
+            self.answer("Confirm", yes=answer)
+            time.sleep(1.5)
+            texts += self.dismiss_popups()
+        elif answer is not None:
+            texts += self.dismiss_popups()
+        return texts
 
     def disembark(self, fleet, x, y):
         """Select the fleet and click an adjacent land tile: the carried army lands there. Needs moves on both."""
