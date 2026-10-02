@@ -9,7 +9,7 @@ Cells (attacker v defender; strength = ships x condition / 10 from the research 
   C60 Carthage splits 30 off, its 60 (74) attack Ptolemaic          444 v 441   near parity
   C50 Carthage splits 40 off, its 50 (74) attack Ptolemaic          370 v 441   the attacker is the weaker
 
-    python3 runs/experiments/fleet-battles/trials.py [cell ...] [--seeds N]
+    python3 runs/experiments/fleet-battles/trials.py [cell ...] [--seeds N] [--from K]     # seeds K..N (default 1..10)
 """
 import json
 import shutil
@@ -22,9 +22,12 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import G, Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
-FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV"}
+FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV",
+       "P2": OUT / "FIX_P2_0724_ptolemaic_seat_c60.SAV"}
 CELLS = {"P": ("P", 1, 0, None), "C": ("C", 0, 1, None), "C70": ("C", 0, 1, 20),
-         "C60": ("C", 0, 1, 30), "C50": ("C", 0, 1, 40)}     # fixture, attacker, defender, ships split off first
+         "C60": ("C", 0, 1, 30), "C50": ("C", 0, 1, 40),
+         "C65": ("C", 0, 1, 25), "C55": ("C", 0, 1, 35),          # ratios 1.09 and 0.92 around parity
+         "P60": ("P2", 1, 0, None)}                                # Ptolemaic (70 x 60 = 420) attacks Carthage (60 x 70 = 420): parity, roles swapped     # fixture, attacker, defender, ships split off first
 
 
 def strength(f):
@@ -54,11 +57,12 @@ def trial(cell, seed):
 def main():
     args = sys.argv[1:]
     n = int(args[args.index("--seeds") + 1]) if "--seeds" in args else 10
+    first = int(args[args.index("--from") + 1]) if "--from" in args else 1
     cells = [a for a in args if a in CELLS] or list(CELLS)
     f = OUT / "trials.json"
     res = json.loads(f.read_text()) if f.exists() else []
     for cell in cells:
-        for seed in range(1, n + 1):
+        for seed in range(first, n + 1):
             try:
                 r = trial(cell, seed)
             except Exception as e:     # noqa: BLE001 - a failure is a result
