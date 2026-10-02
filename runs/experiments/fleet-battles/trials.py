@@ -6,6 +6,8 @@ Cells (attacker v defender; strength = ships x condition / 10 from the research 
   P   Ptolemaic (70 ships, 63) attacks Carthage (90, 74)           441 v 666   fixture FIX_P (Ptolemaic's seat)
   C   Carthage (90, 74) attacks Ptolemaic (70, 63)                  666 v 441   fixture FIX_C (Carthage's seat)
   C70 Carthage splits 20 ships off, its 70 (74) attack Ptolemaic    518 v 441   fixture FIX_C
+  C60 Carthage splits 30 off, its 60 (74) attack Ptolemaic          444 v 441   near parity
+  C50 Carthage splits 40 off, its 50 (74) attack Ptolemaic          370 v 441   the attacker is the weaker
 
     python3 runs/experiments/fleet-battles/trials.py [cell ...] [--seeds N]
 """
@@ -21,7 +23,8 @@ from harness.driver import G, Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
 FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV"}
-CELLS = {"P": ("P", 1, 0, None), "C": ("C", 0, 1, None), "C70": ("C", 0, 1, 20)}     # fixture, attacker, defender, ships split off first
+CELLS = {"P": ("P", 1, 0, None), "C": ("C", 0, 1, None), "C70": ("C", 0, 1, 20),
+         "C60": ("C", 0, 1, 30), "C50": ("C", 0, 1, 40)}     # fixture, attacker, defender, ships split off first
 
 
 def strength(f):
