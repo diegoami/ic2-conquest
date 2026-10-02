@@ -281,7 +281,7 @@ class Game:
 
     def calibrate_fleet_toolbar(self, force=False):
         """The fleet toolbar's button x, derived from the tooltips and cached in WORK/fleet_toolbar.json. Call it with
-        a fleet selected. Not cached if a button was missed."""
+        a fleet selected. If a button was missed, the recorded x is used for it in memory and the disk cache is NOT written."""
         if self.fleet_x and not force:
             return self.fleet_x
         found = self._scan_bar(ARMY_TOOLBAR_Y, FLEET_TOOLBAR_LABELS, 336, 540, 0.5)

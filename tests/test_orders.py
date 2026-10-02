@@ -13,7 +13,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from harness.driver import G, WORK, Game  # noqa: E402
+from harness.driver import G, SEL_ARMY, SEL_FLEET, WORK, Game  # noqa: E402
 from state.sav import load, live_armies  # noqa: E402
 
 BASE = WORK / "fixtures" / "BASE.SAV"
@@ -370,6 +370,7 @@ def test_embark_refused():
     this fleet ?" (a box with OK only); the army stays ashore, the fleet is selected instead."""
     g = fresh_save(FLEET_SPLIT)
     texts = g.embark(0, 2)
+    assert g.i16(SEL_FLEET) == 2 and g.i16(SEL_ARMY) == -1, (g.i16(SEL_FLEET), g.i16(SEL_ARMY))   # the click selects the fleet
     s = _snap(g, "T_EMBARK_REFUSED.SAV")
     a, f = _army(s, 0), _fleet(s, 2)
     assert not a["embarked"] and f["army"] == -1, (a["embarked"], f["army"])
@@ -473,6 +474,16 @@ def test_transfer_ships():
     return f"fleet 2: 20 -> {_fleet(s, 2)['ships']}, fleet 5: 10 -> {_fleet(s, 5)['ships']}"
 
 
+def test_transfer_ships_back():
+    """The opposite direction of Transfer ships: -5 (the up arrows) moves five ships from fleet 5 to fleet 2
+    (20/10 -> 25/5), so a swapped up/down arrow would be caught."""
+    g = fresh_save(FLEET_SPLIT)
+    g.transfer_ships(2, -5)
+    s = _snap(g, "T_TRANSFER_SHIPS_BACK.SAV")
+    assert (_fleet(s, 2)["ships"], _fleet(s, 5)["ships"]) == (25, 5), (_fleet(s, 2)["ships"], _fleet(s, 5)["ships"])
+    return f"fleet 2: 20 -> {_fleet(s, 2)['ships']}, fleet 5: 10 -> {_fleet(s, 5)['ships']}"
+
+
 def test_move_fleet():
     """Select fleet 2 and click a sea tile two tiles away, (99,46): a straight walk on calm sea (1 move a tile): the fleet arrives and its moves fall by the distance."""
     g = fresh_save(FLEET_PORT)
@@ -490,7 +501,7 @@ TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join
          "change_units_disband", "transfer_units", "change_units_rename",
          "change_units_split", "change_units_join", "change_units_refusals",
          "embark_refused", "embark", "disembark", "supply_fleet", "repair_fleet", "scuttle_fleet", "split_fleet",
-         "join_fleets", "transfer_ships", "move_fleet"]
+         "join_fleets", "transfer_ships", "transfer_ships_back", "move_fleet"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
