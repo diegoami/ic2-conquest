@@ -26,7 +26,8 @@ def rel(g, a, b):
 
 def snap(g, tag):
     me = g.i16(CUR_NATION)
-    return {"tag": tag, "cur_nation": me, "calendar": g.calendar(), "title": [w[1] for w in g.find_windows("^Imperial Conquest 2    ")],
+    return {"tag": tag, "cur_nation": me, "tax_carthage": struct.unpack_from("<h", g.nation_rec(1), 0x44A)[0],
+            "tax_ptolemaic": struct.unpack_from("<h", g.nation_rec(3), 0x44A)[0], "calendar": g.calendar(), "title": [w[1] for w in g.find_windows("^Imperial Conquest 2    ")],
             "rel_1_to_3": rel(g, 1, 3), "rel_3_to_1": rel(g, 3, 1), "autosave_log": (G / "AUTOSAVE.LOG").read_text().splitlines()[-4:]}
 
 
@@ -46,6 +47,18 @@ def step(name, fn):
 
 g = Game()
 step("load Carthage's turn (T0_AUTO0720.SAV)", lambda: (g.load(OUT / "T0_AUTO0720.SAV", seed=12345), snap(g, "loaded"))[1])
+def relations_dialog():
+    g.tool("relations", pause=2.0)
+    g.wait(lambda: g.find_windows("^International Relations$"), 10, "International Relations")
+    w = g.find_windows("^International Relations$")[0]
+    cs = g.controls("International Relations")
+    g.shot(OUT / "t0_relations_dialog_carthage.png", window=str(w[0]))
+    n = sum(1 for c in cs if c["cls"] == "TRadioButton")
+    g.click_control(g.control(cs, text="Cancel"), pause=1.0)
+    return {"radio_buttons": n, "window": w[2:], "closed": not g.find_windows("^International Relations$")}
+
+
+step("relations dialog (screenshot, radio count)", relations_dialog)
 step("relations: war toward Ptolemaic (row 3)", lambda: (g.relation(3, "war"), snap(g, "after war"))[1])
 g.shot(OUT / "t0_p2_after_war.png")
 step("autosave after war order (save as)", lambda: shutil.copy(g.save_as("T0_P2_WAR.SAV"), OUT / "T0_P2_WAR.SAV").name)
