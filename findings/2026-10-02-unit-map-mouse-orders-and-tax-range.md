@@ -1,6 +1,6 @@
 # The Unit map's mouse orders (select, move, attack prompt, Shift+X, split position) and the Taxation range, measured live
 
-**Status:** **promoted provisionally** by the research session on 2026-10-02 to `imperial-conquest-2-research` as `docs/reports/2026-10-02-unit-map-mouse-orders-and-tax-range.md` (commit `d5c7482`). This file stays here as the source draft; the report in the research repository is the one to cite. **Wine-only: every result below is a candidate until the desktop original confirms it.** The saves and screenshots are now published: release `run-exp-unitmap-mouse` (35 assets, listed in §Evidence below). It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run: there is no finding on it.**
+**Status:** **promoted provisionally** by the research session on 2026-10-02 to `imperial-conquest-2-research` as `docs/reports/2026-10-02-unit-map-mouse-orders-and-tax-range.md` (commit `d5c7482`). This file stays here as the source draft; the report in the research repository is the one to cite. **Wine-only: every result below is a candidate until the desktop original confirms it.** The saves and screenshots are now published: release `run-exp-unitmap-mouse` (35 assets, listed in §Evidence below). It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run here; it was answered later in `findings/2026-10-02-fleet-orders-live.md`.**
 
 **Answer.**
 - **(a)** With an army selected, a left-click on a reachable tile moves it at once; the army **stays selected while it has moves left** and is **deselected when its moves reach 0**.
@@ -61,7 +61,7 @@ No box appeared for either move.
 
 ## What this does not establish
 
-- **(f)**: embark by clicking an adjacent own fleet and unload by clicking an adjacent land tile were **not run** (a fleet needs 12 turns to launch; the run was cut short). Nothing here says anything about fleets.
+- **(f)**: embark and unload by click were **not run in this experiment** (a fleet needs 12 turns to launch); they were measured afterwards, see `findings/2026-10-02-fleet-orders-live.md`. Nothing in this file says anything about fleets.
 - **(b)** was observed on a **city** only. An adjacent enemy army or fleet was not clicked, and so the Yes path's tactical battle was not seen; the siege path was. The prompt text in the saved OCR is garbled ("(7) ‘Ate you sure"); the wording above is from the screenshot, not the decompiled string.
 - **(a)** was one army, one seed, two clicks; the click on a tile it cannot afford (partial walk, blocked path) was not tried, nor a click on sea (fleet move). The selection rule "stays selected while moves remain" is one case (moves 4 left).
 - **(c)** was an own, selected army. A left- or right-click on an **unselected** own army, on an enemy army, or on a city was not tried (a click on a city with nothing selected only showed the city in the Information panel, by accident, in an early attempt).
@@ -91,7 +91,7 @@ relayed:
 - The caveat that held the promotion at "provisional" (the saves unpublished) is resolved: see below. The Wine-only
   caveat is not.
 
-**Still open on this side:** (f) embark and unload by click; the reason a *move* click works after a save (selected
+**Still open on this side:** the reason a *move* click works after a save (selected
 variable −1) while an *attack* click does not is still an inference, not a measurement.
 
 ## Evidence (release `run-exp-unitmap-mouse`)
