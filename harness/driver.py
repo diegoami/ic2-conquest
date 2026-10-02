@@ -999,12 +999,20 @@ class Game:
         to three times; a refusal box stops the whole OK (set one relation per call) and is returned in the texts; if the
         dialog stays open with no box, or the value is not the requested one, it raises instead of reporting success.
         Returns (the current nation's value in memory, box texts)."""
+        self.dismiss_popups()       # a stale news/offer box would block the dialog and be mistaken for a refusal below
         self.tool("relations", pause=1.5)
         if not self.find_windows("^International Relations$"):
             self.tool("relations", pause=1.5)
         w = self.find_windows("^International Relations$")
         self.raise_window(w[0][0])
-        cs = self.controls("International Relations")
+        for _ in range(8):          # the controls are not always enumerable the instant the window appears
+            try:
+                cs = self.controls("International Relations")
+                break
+            except DriverError:
+                time.sleep(1)
+        else:
+            raise DriverError("International Relations: its controls could not be read")
         radios = sorted((c for c in cs if c["cls"] == "TRadioButton"), key=lambda c: (c["y"], c["x"]))
         if len(radios) != 64:
             raise DriverError("International Relations: expected 64 radio buttons (16 rows x 4), found %d" % len(radios))
