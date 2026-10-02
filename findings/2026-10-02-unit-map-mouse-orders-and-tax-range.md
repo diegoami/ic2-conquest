@@ -1,6 +1,6 @@
 # The Unit map's mouse orders (select, move, attack prompt, Shift+X, split position) and the Taxation range, measured live
 
-**Status:** draft finding from `ic2-conquest`, awaiting promotion. **Wine-only: every result below is a candidate until the desktop original confirms it.** It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run.**
+**Status:** **promoted provisionally** by the research session on 2026-10-02 to `imperial-conquest-2-research` as `docs/reports/2026-10-02-unit-map-mouse-orders-and-tax-range.md` (commit `d5c7482`). This file stays here as the source draft; the report in the research repository is the one to cite. **Wine-only: every result below is a candidate until the desktop original confirms it.** The saves and screenshots are now published: release `run-exp-unitmap-mouse` (35 assets, listed in §Evidence below). It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run: there is no finding on it.**
 
 **Answer.**
 - **(a)** With an army selected, a left-click on a reachable tile moves it at once; the army **stays selected while it has moves left** and is **deselected when its moves reach 0**.
@@ -73,6 +73,34 @@ No box appeared for either move.
 - **The File → Save menu sets the selected-army variable to −1, and an attack click needs it set.** Measured (select army 0 → `0x4A0328` = 0; save → **−1**; a click on the reachable tile (101,36) still **moved** the army to (101,36) with 4 moves and set the variable back to 0; a second save gave −1 again). The (a) table was first taken with a save between its two clicks and was **re-run without one** (as it stands now): the same result, so the deselect at 0 moves is the move's own effect, not the save's. But a script that selects an army, saves (`keep`), then clicks an enemy city got the city only *selected* (its details in the Information panel), no attack and no prompt (`b_attack_prompt.py`, `b1_first_attempt.json`). The cause of that difference (the move path not reading the variable the attack path reads) is an inference, not measured. Select the army after saving.
 - **The first check after End turn can race the UI:** a select that fails right after End turn succeeds a few seconds later (`b2_attack_prompt.py` retries with a pause).
 - **`Game.attack` answers the prompt Yes by itself** (`dismiss_popups`); an experiment on the prompt has to capture it before.
+
+## Promotion review (research session, 2026-10-02), recorded here
+
+The research session checked this draft against its existing reports and promoted it provisionally. Its findings, as
+relayed:
+
+- **Already explained by earlier code reports:** the File → Save reset of the selected-army variable to −1 is the
+  documented ending of `SaveGame` (not a Wine quirk); the "Are you sure you want to attack?" box and the war
+  declaration on Yes (this was the first live run of that code path); Shift+X cancelling the selection.
+- **New:** no attack box when the target is already at war; the Taxation slider's 0–40 range with a page step of 5
+  (a dialog limit, unrelated to the formula's tax ≤ 120 bound).
+- **Split placement:** an earlier split in the research record also put the new army one step diagonally (+1,+1)
+  from its parent, so the two agree; that earlier pair of saves is a turn apart, so it does not prove the rule.
+  Reading the placement logic (`FUN_00449F08`) is the research session's next check; it did not re-read any code
+  address from the executable (the Ghidra dumps were not available).
+- The caveat that held the promotion at "provisional" (the saves unpublished) is resolved: see below. The Wine-only
+  caveat is not.
+
+**Still open on this side:** (f) embark and unload by click; the reason a *move* click works after a save (selected
+variable −1) while an *attack* click does not is still an inference, not a measurement.
+
+## Evidence (release `run-exp-unitmap-mouse`)
+
+<https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse>, 35 assets: 15 saves (`A_AFTER_CLICKS`,
+`B2_WAR_FELSINA_{BEFORE,AFTER}`, `B2_PEACE_GENUA_{BEFORE,AFTER_NO,AFTER}`, `B_CONTROL_{BEFORE_CLICK,AFTER_CLICK}`,
+`B_TEST_BEFORE_CLICK`, `C_AFTER_RIGHT_CLICK`, `D_AFTER_SHIFT_X`, `E_AFTER_SPLIT`, `G_TAX_MIN`, `G_TAX_MAX`, `T_SPLIT`,
+all `.SAV`), 15 screenshots, and 5 result JSONs (`a_c_d_e`, `b1_first_attempt`, `b2_attack_prompt`, `b_attack_prompt`,
+`g_taxation`). The start save is `saves/run0-start-AUTO0720-seed12345.SAV` (= `BASE.SAV`), in git.
 
 ## Reproduction
 
