@@ -63,6 +63,6 @@ PASS transfer_ships (39s): fleet 2: 20 -> 15, fleet 5: 10 -> 15
 PASS move_fleet (28s): fleet 2 (101,46) -> (99,46), moves 29 -> 27; popups []
 ```
 
-These ten ran on their own; the other seventeen were not re-run after the driver changes of this day (`Build fleet` now closes its dialog; `answer` accepts a Confirm with OK only), so "Last full run" above is not a run of all twenty-seven. Fleet attack (a naval battle) is not tested: it needs an enemy fleet next to ours.
+These ten ran on their own. After the two driver changes they depend on (`Build fleet` now closes its dialog; `answer` accepts a Confirm with OK only) six of the older tests were re-run and pass: `build_fleet`, `disband_unit`, `disband_army`, `change_units_disband`, `attack`, `end_turn`. The other eleven were not re-run, so "Last full run" above is not a run of all twenty-seven. Fleet attack (a naval battle) is not tested: it needs an enemy fleet next to ours.
 
 Earlier failures, fixed in the driver: a menu item click that arrives with the pointer move is ignored; a menu click after a dialog closed can re-open that dialog; file dialogs keep the last name; the first click into an inactive window only activates it; a second End turn click queued during the AI phase ends two turns (the retry now waits 8 s for any sign of the turn starting).
