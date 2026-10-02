@@ -35,6 +35,8 @@ NATION_LEN = 1172
 VIEW_Y, VIEW_X = 0x486, 0x488   # nation record: unit-map origin (top-left tile)
 ARMIES = 0x47C1EC               # army records, 656 bytes each (the save's army table)
 ARMY_LEN = 656
+FLEETS = 0x49C26C               # fleet records, 26 bytes each (the save's fleet table, docs/sav-layout-notes.md §4)
+FLEET_LEN = 0x1A
 CUR_NATION = 0x4A0320
 SEL_ARMY, SEL_FLEET = 0x4A0328, 0x4A032A
 SEASON, WEEK, YEAR_BC = 0x4A032E, 0x4A0330, 0x4A0332
@@ -66,6 +68,12 @@ ARMY_TOOLBAR_LABELS = {"supply": "Supply army", "mercs": "Recruit mercenaries",
                        "join": "Join armies", "change": "Change units",
                        "disband": "Disband army", "cancel": "Cancel selection"}
 ARMY_TOOLBAR_Y = 108
+# The fleet toolbar (same strip, y = 108), visible while a fleet is selected. Same derivation by tooltip.
+FLEET_TOOLBAR_LABELS = {"supply": "Supply fleet", "repair": "Repair fleet", "transfer": "Transfer ships",
+                        "split": "Split fleet", "join": "Join fleets", "scuttle": "Scuttle fleet",
+                        "cancel": "Cancel selection"}
+FLEET_TOOLS = {"supply": 346, "repair": 367, "transfer": 391, "split": 415, "join": 439, "scuttle": 463, "cancel": 493}
+FLEET_TOOLBAR_CACHE = WORK / "fleet_toolbar.json"
 ARMY_TOOLBAR_CACHE = WORK / "army_toolbar.json"
 # The tactical battle's toolbar, in the battle window's top strip (y = 112).
 BATTLE_TOOLBAR_LABELS = {"end_turn": "End turn", "computer": "Computer general on"}
@@ -92,6 +100,7 @@ class Game:
         self.toolbar_x = self._load_cache(TOOLBAR_CACHE)
         self.army_x = self._load_cache(ARMY_TOOLBAR_CACHE)
         self.battle_x = self._load_cache(BATTLE_TOOLBAR_CACHE)
+        self.fleet_x = self._load_cache(FLEET_TOOLBAR_CACHE)
 
     # ---- process ---------------------------------------------------------
     def ensure_xvfb(self):
@@ -270,6 +279,19 @@ class Game:
         self._save_cache(ARMY_TOOLBAR_CACHE, found, "army toolbar", missed)
         return found
 
+    def calibrate_fleet_toolbar(self, force=False):
+        """The fleet toolbar's button x, derived from the tooltips and cached in WORK/fleet_toolbar.json. Call it with
+        a fleet selected. Not cached if a button was missed."""
+        if self.fleet_x and not force:
+            return self.fleet_x
+        found = self._scan_bar(ARMY_TOOLBAR_Y, FLEET_TOOLBAR_LABELS, 336, 540, 0.5)
+        missed = [n for n in FLEET_TOOLBAR_LABELS if n not in found]
+        for name in missed:
+            found[name] = FLEET_TOOLS[name]
+        self.fleet_x = found
+        self._save_cache(FLEET_TOOLBAR_CACHE, found, "fleet toolbar", missed)
+        return found
+
     def calibrate_battle_toolbar(self, force=False):
         """The battle toolbar's button x, derived from the tooltips and cached in
         WORK/battle_toolbar.json. The battle window is raised and focused first so
@@ -373,6 +395,8 @@ class Game:
         cs = self.controls(title)
         want = "yes" if yes else "no"
         c = next((c for c in cs if want in c["text"].lower()), None)
+        if c is None:                      # a refusal ("The army is too large for this fleet ?") has OK only
+            c = next((c for c in cs if c["text"].replace("&", "").lower() == "ok"), None)
         if c is None:
             raise DriverError("%s: no %s button" % (title, want))
         self.click_control(c, pause=0.8)
@@ -518,6 +542,32 @@ class Game:
 
     def army_pos(self, i):
         return struct.unpack_from("<2h", self.army_rec(i), 0)
+
+    def fleet_rec(self, i):
+        return self.mem(FLEETS + i * FLEET_LEN, FLEET_LEN)
+
+    def fleet_pos(self, i):
+        return struct.unpack_from("<2h", self.fleet_rec(i), 0)
+
+    def fleet_moves(self, i):
+        return struct.unpack_from("<h", self.fleet_rec(i), 12)[0]
+
+    def select_fleet(self, i, x=None, y=None):
+        """Select fleet i by clicking its marker (`SEL_FLEET` = i; fleets are markers 300-347 on the unit map)."""
+        if x is None:
+            x, y = self.fleet_pos(i)
+        for _ in range(3):       # the first click into an inactive window may only activate it
+            self.click_tile(x, y)
+            if self.i16(SEL_FLEET) == i:
+                return
+        raise DriverError(f"fleet {i} at {x},{y} not selected (selected {self.i16(SEL_FLEET)})")
+
+    def move_fleet(self, i, x, y):
+        """Select fleet i and click a sea tile (a click on sea with a fleet selected is a fleet move)."""
+        self.select_fleet(i)
+        self.click_tile(x, y, pause=1.2)
+        texts = self.dismiss_popups()
+        return self.fleet_pos(i), texts
 
     def move(self, i, x, y):
         """Select army i and click the destination tile (one click issues the whole
@@ -748,6 +798,115 @@ class Game:
         self._close_change_units(cs)
         return texts
 
+    # ---- fleets (the fleet toolbar appears in the same strip as the army's, y = 108) ----------------------
+    def embark(self, army, fleet):
+        """Select the army and click the adjacent own fleet: the army goes aboard (its cell becomes -1 and the fleet's
+        carried-army field its index) and both units' moves become 0. Refused ("The army is too large for this
+        fleet ?") when troops > ships x 500; the refusal box has OK only and the click selects the fleet."""
+        ax, ay = self.army_pos(army)
+        fx, fy = self.fleet_pos(fleet)
+        if max(abs(ax - fx), abs(ay - fy)) != 1:
+            raise DriverError(f"fleet {fleet} at {fx},{fy} not adjacent to army {army} at {ax},{ay}")
+        self.select_army(army, ax, ay)
+        self.click_tile(fx, fy, pause=1.5)
+        return self.dismiss_popups()
+
+    def disembark(self, fleet, x, y):
+        """Select the fleet and click an adjacent land tile: the carried army lands there. Needs moves on both."""
+        fx, fy = self.fleet_pos(fleet)
+        if max(abs(fx - x), abs(fy - y)) != 1:
+            raise DriverError(f"tile {x},{y} not adjacent to fleet {fleet} at {fx},{fy}")
+        self.select_fleet(fleet)
+        self.click_tile(x, y, pause=1.5)
+        return self.dismiss_popups()
+
+    def fleet_tool(self, i, tool, title=None):
+        """Select fleet i and press a fleet-toolbar button (x derived from the tooltips). With a title, wait for
+        that dialog and return its window; a button with nothing to act on shows a message or nothing."""
+        self.select_fleet(i)
+        if not self.fleet_x:
+            self.calibrate_fleet_toolbar()
+        x = self.fleet_x.get(tool, FLEET_TOOLS[tool])
+        if title is None:
+            self.click(x, ARMY_TOOLBAR_Y, pause=1.5)
+            return None
+        self.open_dialog(title, (x, ARMY_TOOLBAR_Y))
+        w = self.find_windows("^%s$" % re.escape(title))[0]
+        self.raise_window(w[0])
+        return w
+
+    def _spin(self, ups, presses, fy=0.25):
+        for _ in range(presses):
+            self.click_control(ups, fy=fy, pause=0.2)
+
+    def supply_fleet(self, i, tons=0, money=0):
+        """Supply fleet (an own city or fleet next to it is the provider): the 10s/100s arrows move tons from the
+        provider, the lower pair moves money from the treasury. Capped by the provider's stock."""
+        self.fleet_tool(i, "supply", "Supply fleet")
+        cs = self.controls("Supply fleet")
+        ups = [c for c in cs if c["cls"] == "TUpDown"]
+        top = sorted((c for c in ups if c["y"] < 200), key=lambda c: c["x"])
+        bottom = sorted((c for c in ups if c["y"] >= 200), key=lambda c: c["x"])
+        self._spin(top[1], tons // 100)
+        self._spin(top[0], (tons % 100) // 10)
+        self._spin(bottom[1], money // 100)
+        self._spin(bottom[0], (money % 100) // 10)
+        self._ok_until_closed("Supply fleet", cs)
+        return self.dismiss_popups()
+
+    def repair_fleet(self, i, points):
+        """Repair fleet (only at one of your own cities; the fleet's moves become 0): 1s/10s arrows raise the state of
+        repair; the cost is ships x points / 5 talents."""
+        self.fleet_tool(i, "repair", "Repair fleet")
+        cs = self.controls("Repair fleet")
+        ups = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
+        self._spin(ups[1], points // 10)
+        self._spin(ups[0], points % 10)
+        self._ok_until_closed("Repair fleet", cs)
+        return self.dismiss_popups()
+
+    def scuttle_fleet(self, i, yes=True):
+        """Scuttle fleet: next to one of your cities, not carrying an army; answered through its Confirm."""
+        self.fleet_tool(i, "scuttle")
+        texts = []
+        if self.find_windows("^Confirm$"):
+            texts.append(self.read_popup(self.find_windows("^Confirm$")[0]))
+            self.answer("Confirm", yes=yes)
+        return texts + self.dismiss_popups()
+
+    def split_fleet(self, i, ships):
+        """Split fleet (at least 20 ships, no army aboard): the DOWN arrows (1s/10s) move ships from the first fleet to
+        the second (30/0 -> 20/10); the up arrows move them back. Supply and money rows are left at 0."""
+        self.fleet_tool(i, "split", "Split fleet")
+        cs = self.controls("Split fleet")
+        ups = [c for c in cs if c["cls"] == "TUpDown"]
+        row = sorted((c for c in ups if c["y"] == min(u["y"] for u in ups) or abs(c["y"] - min(u["y"] for u in ups)) < 10),
+                     key=lambda c: c["x"])
+        self._spin(row[1], ships // 10, fy=0.75)       # the DOWN arrows move ships to the second fleet
+        self._spin(row[0], ships % 10, fy=0.75)
+        self._ok_until_closed("Split fleet", cs)
+        return self.dismiss_popups()
+
+    def join_fleets(self, i):
+        """Join fleets: no dialog; fleet i and the adjacent own fleet become one (ships add up, fewer than 100 combined,
+        neither carrying an army) and the joined fleet's moves become 0."""
+        self.fleet_tool(i, "join")
+        return self.dismiss_popups()
+
+    def transfer_ships(self, i, ships):
+        """Transfer ships ("Fleet to fleet transfer", the layout of Split fleet) between fleet i and the adjacent own
+        fleet: a positive `ships` moves that many from the first to the second (down arrows), a negative one back."""
+        self.fleet_tool(i, "transfer", "Fleet to fleet transfer")
+        cs = self.controls("Fleet to fleet transfer")
+        ups = [c for c in cs if c["cls"] == "TUpDown"]
+        top = min(u["y"] for u in ups)
+        row = sorted((c for c in ups if abs(c["y"] - top) < 10), key=lambda c: c["x"])
+        n, fy = abs(ships), (0.75 if ships > 0 else 0.25)
+        self._spin(row[1], n // 10, fy=fy)
+        self._spin(row[0], n % 10, fy=fy)
+        self._ok_until_closed("Fleet to fleet transfer", cs)
+        return self.dismiss_popups()
+
     def supply(self, i, tons=None, money_100s=0):
         """Supply army dialog (window 470x335 at 23,49): the 10s arrows move
         supplies from the adjacent provider (city) to the army, capped by the
@@ -854,7 +1013,16 @@ class Game:
         for _ in range(ships // 10):
             self.click_control(ups[1], fy=0.25, pause=0.2)
         self.click_control(self.control(cs, text="OK"), pause=1.5)
-        return self.dismiss_popups()
+        texts = self.dismiss_popups()
+        # The fleet is ordered at once ("The fleet will be built at <city>"), but the dialog STAYS OPEN, and a
+        # second OK would order a second fleet. Close it with Cancel (it also swallowed the next End turn click).
+        for _ in range(3):
+            if not self.find_windows("^Build fleet$"):
+                break
+            self.click_control(self.control(cs, text="Cancel"), pause=1.0)
+        if self.find_windows("^Build fleet$"):
+            raise DriverError("Build fleet did not close after Cancel")
+        return texts
 
     def taxation(self, percent):
         """Set the tax level (0..40). The slider is keyboard-driven: focus it,

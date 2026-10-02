@@ -341,10 +341,153 @@ def test_change_units_refusals():
     return f"split row 0: {small!r}; join rows 1+2: {large!r}; units unchanged {[u['troops'] for u in u1]}"
 
 
+FLEET_PORT = Path(__file__).resolve().parent.parent / "saves" / "fleet-port-antium-0734.SAV"
+FLEET_SPLIT = Path(__file__).resolve().parent.parent / "saves" / "fleet-split-antium-0734.SAV"
+
+
+def fresh_save(path):
+    """A game loaded from a save (the fleet fixtures), with the test seed."""
+    g = Game()
+    g.load(path, seed=SEED)
+    return g
+
+
+def _snap(g, name):
+    p = keep(g.save_as(name), name)
+    return load(p)
+
+
+def _fleet(s, i):
+    return next(f for f in s["fleets"] if f["id"] == i)
+
+
+def _army(s, i):
+    return next(a for a in s["armies"] if a["id"] == i)
+
+
+def test_embark_refused():
+    """Army 0 (10,700 troops) cannot board fleet 2 once it is 20 ships (capacity 10,000): "The army is too large for
+    this fleet ?" (a box with OK only); the army stays ashore, the fleet is selected instead."""
+    g = fresh_save(FLEET_SPLIT)
+    texts = g.embark(0, 2)
+    s = _snap(g, "T_EMBARK_REFUSED.SAV")
+    a, f = _army(s, 0), _fleet(s, 2)
+    assert not a["embarked"] and f["army"] == -1, (a["embarked"], f["army"])
+    assert texts, "no refusal box"
+    return f"army 0 {a['troops']} troops stays at ({a['x']},{a['y']}), fleet 2 {f['ships']} ships carries {f['army']}; box {texts}"
+
+
+def test_embark():
+    """Select army 0, click the adjacent 30-ship fleet: the army goes aboard onto the fleet's tile, both units' moves
+    become 0, the fleet's carried-army field is the army's index."""
+    g = fresh_save(FLEET_PORT)
+    s0 = load(FLEET_PORT)
+    g.embark(0, 2)
+    s = _snap(g, "T_EMBARK.SAV")
+    a, f = _army(s, 0), _fleet(s, 2)
+    assert a["embarked"] and (a["x"], a["y"]) == (f["x"], f["y"]), (a["embarked"], (a["x"], a["y"]), (f["x"], f["y"]))
+    assert f["army"] == 0 and a["moves"] == 0 and f["moves"] == 0, (f["army"], a["moves"], f["moves"])
+    return (f"army 0 ({_army(s0, 0)['x']},{_army(s0, 0)['y']}) moves {_army(s0, 0)['moves']} -> aboard at ({a['x']},{a['y']}) "
+            f"moves {a['moves']}; fleet 2 moves {_fleet(s0, 2)['moves']} -> {f['moves']}, carries {f['army']}")
+
+
+def test_disembark():
+    """Embark, end the turn (both units have 0 moves), then select the fleet and click the adjacent land tile (101,45):
+    the army lands there and the fleet carries nothing."""
+    g = fresh_save(FLEET_PORT)
+    g.embark(0, 2)
+    g.end_turn()
+    g.disembark(2, 101, 45)
+    s = _snap(g, "T_DISEMBARK.SAV")
+    a, f = _army(s, 0), _fleet(s, 2)
+    assert not a["embarked"] and (a["x"], a["y"]) == (101, 45) and f["army"] == -1, (a["embarked"], (a["x"], a["y"]), f["army"])
+    return f"army 0 landed at ({a['x']},{a['y']}) moves {a['moves']}; fleet 2 moves {f['moves']}, carries {f['army']}"
+
+
+def test_supply_fleet():
+    """Supply fleet next to Antium: the 100s arrow moves 100 tons from the city to the fleet."""
+    g = fresh_save(FLEET_PORT)
+    s0 = load(FLEET_PORT)
+    ant0 = next(c for c in s0["cities"] if c["name"] == "Antium")
+    g.supply_fleet(2, tons=100)
+    s = _snap(g, "T_SUPPLY_FLEET.SAV")
+    ant = next(c for c in s["cities"] if c["name"] == "Antium")
+    f0, f = _fleet(s0, 2), _fleet(s, 2)
+    assert f["supplies"] - f0["supplies"] == 100 and ant0["supplies"] - ant["supplies"] == 100, \
+        (f0["supplies"], f["supplies"], ant0["supplies"], ant["supplies"])
+    return f"fleet supplies {f0['supplies']} -> {f['supplies']}; Antium {ant0['supplies']} -> {ant['supplies']}"
+
+
+def test_repair_fleet():
+    """Repair fleet next to Antium: three 1s presses take the repair from 97 to 100 %, cost ships x points / 5 = 18."""
+    g = fresh_save(FLEET_PORT)
+    s0 = load(FLEET_PORT)
+    g.repair_fleet(2, 3)
+    s = _snap(g, "T_REPAIR_FLEET.SAV")
+    f0, f = _fleet(s0, 2), _fleet(s, 2)
+    t0, t = s0["nations"][0]["treasury"], s["nations"][0]["treasury"]
+    assert f["condition"] - f0["condition"] == 3 and f["moves"] == 0, (f0["condition"], f["condition"], f["moves"])
+    assert t0 - t == 18, (t0, t)
+    return f"condition {f0['condition']} -> {f['condition']}, moves {f0['moves']} -> {f['moves']}, treasury {t0} -> {t} (cost {t0 - t})"
+
+
+def test_scuttle_fleet():
+    """Scuttle fleet next to Antium, answering Yes to "Are you sure you want to scuttle this fleet ?": the fleet is gone."""
+    g = fresh_save(FLEET_PORT)
+    texts = g.scuttle_fleet(2, yes=True)
+    s = _snap(g, "T_SCUTTLE_FLEET.SAV")
+    assert not [f for f in s["fleets"] if f["owner"] == 0], [f for f in s["fleets"] if f["owner"] == 0]
+    return f"Rome fleets 1 -> 0; box {texts}"
+
+
+def test_split_fleet():
+    """Split fleet: ten ships go to a new fleet next to the first (30 -> 20 + 10); the new fleet has 0 moves."""
+    g = fresh_save(FLEET_PORT)
+    g.split_fleet(2, 10)
+    s = _snap(g, "T_SPLIT_FLEET.SAV")
+    fl = [f for f in s["fleets"] if f["owner"] == 0]
+    assert sorted(f["ships"] for f in fl) == [10, 20], [(f["id"], f["ships"]) for f in fl]
+    new = max(fl, key=lambda f: f["id"])
+    return f"Rome fleets 1 -> {len(fl)}: {[(f['id'], f['x'], f['y'], f['ships'], f['moves']) for f in fl]}"
+
+
+def test_join_fleets():
+    """Join fleets (no dialog): fleets 2 (20 ships) and 5 (10) become one 30-ship fleet with 0 moves."""
+    g = fresh_save(FLEET_SPLIT)
+    g.join_fleets(2)
+    s = _snap(g, "T_JOIN_FLEETS.SAV")
+    fl = [f for f in s["fleets"] if f["owner"] == 0]
+    assert len(fl) == 1 and fl[0]["ships"] == 30 and fl[0]["moves"] == 0, [(f["id"], f["ships"], f["moves"]) for f in fl]
+    return f"Rome fleets 2 -> 1: ship 30, moves {fl[0]['moves']}"
+
+
+def test_transfer_ships():
+    """Transfer ships ("Fleet to fleet transfer"): five ships go from fleet 2 to fleet 5 (20/10 -> 15/15)."""
+    g = fresh_save(FLEET_SPLIT)
+    g.transfer_ships(2, 5)
+    s = _snap(g, "T_TRANSFER_SHIPS.SAV")
+    assert (_fleet(s, 2)["ships"], _fleet(s, 5)["ships"]) == (15, 15), (_fleet(s, 2)["ships"], _fleet(s, 5)["ships"])
+    return f"fleet 2: 20 -> {_fleet(s, 2)['ships']}, fleet 5: 10 -> {_fleet(s, 5)['ships']}"
+
+
+def test_move_fleet():
+    """Select fleet 2 and click a sea tile two tiles away, (99,46): a straight walk on calm sea (1 move a tile): the fleet arrives and its moves fall by the distance."""
+    g = fresh_save(FLEET_PORT)
+    s0 = load(FLEET_PORT)
+    pos, texts = g.move_fleet(2, 99, 46)
+    s = _snap(g, "T_MOVE_FLEET.SAV")
+    f0, f = _fleet(s0, 2), _fleet(s, 2)
+    assert (f["x"], f["y"]) == (99, 46), (f["x"], f["y"])
+    assert f0["moves"] - f["moves"] == 2, (f0["moves"], f["moves"])
+    return f"fleet 2 ({f0['x']},{f0['y']}) -> ({f['x']},{f['y']}), moves {f0['moves']} -> {f['moves']}; popups {texts}"
+
+
 TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join",
          "taxation", "disband_unit", "disband_army", "build_fleet", "split_army",
          "change_units_disband", "transfer_units", "change_units_rename",
-         "change_units_split", "change_units_join", "change_units_refusals"]
+         "change_units_split", "change_units_join", "change_units_refusals",
+         "embark_refused", "embark", "disembark", "supply_fleet", "repair_fleet", "scuttle_fleet", "split_fleet",
+         "join_fleets", "transfer_ships", "move_fleet"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
