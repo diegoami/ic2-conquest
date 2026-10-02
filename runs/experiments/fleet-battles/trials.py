@@ -3,13 +3,17 @@
 SEED.TXT at program start).
 
 Cells (attacker v defender; strength = ships x condition / 10 from the research formula):
-  P   Ptolemaic (70 ships, 63) attacks Carthage (90, 74)           441 v 666   fixture FIX_P (Ptolemaic's seat)
-  C   Carthage (90, 74) attacks Ptolemaic (70, 63)                  666 v 441   fixture FIX_C (Carthage's seat)
-  C70 Carthage splits 20 ships off, its 70 (74) attack Ptolemaic    518 v 441   fixture FIX_C
-  C60 Carthage splits 30 off, its 60 (74) attack Ptolemaic          444 v 441   near parity
-  C50 Carthage splits 40 off, its 50 (74) attack Ptolemaic          370 v 441   the attacker is the weaker
+  P    Ptolemaic (70 ships, 63) attacks Carthage (90, 74)           441 v 666   fixture FIX_P (Ptolemaic's seat)
+  C    Carthage (90, 74) attacks Ptolemaic (70, 63)                  666 v 441   fixture FIX_C (Carthage's seat)
+  C70  Carthage splits 20 ships off, its 70 (74) attack Ptolemaic    518 v 441   fixture FIX_C
+  C65  Carthage splits 25 off, its 65 (74) attack Ptolemaic          481 v 441
+  C60  Carthage splits 30 off, its 60 (74) attack Ptolemaic          444 v 441   near parity
+  C55  Carthage splits 35 off, its 55 (74) attack Ptolemaic          407 v 441
+  C50  Carthage splits 40 off, its 50 (74) attack Ptolemaic          370 v 441
+  P60  Ptolemaic (70 x 60) attacks Carthage (60 x 70)                420 v 420   fixture FIX_P2 (stage_p2.py): parity, roles swapped
+With no cell given, all eight run.
 
-    python3 runs/experiments/fleet-battles/trials.py [cell ...] [--seeds N]
+    python3 runs/experiments/fleet-battles/trials.py [cell ...] [--seeds N] [--from K]     # seeds K..N (default 1..10)
 """
 import json
 import shutil
@@ -22,15 +26,23 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
-FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV"}
+FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV",
+       "P2": OUT / "FIX_P2_0724_ptolemaic_seat_c60.SAV"}
 CELLS = {"P": ("P", 1, 0, None), "C": ("C", 0, 1, None), "C70": ("C", 0, 1, 20),
-         "C60": ("C", 0, 1, 30), "C50": ("C", 0, 1, 40)}     # fixture, attacker, defender, ships split off first
+         "C60": ("C", 0, 1, 30), "C50": ("C", 0, 1, 40),
+         "C65": ("C", 0, 1, 25), "C55": ("C", 0, 1, 35),          # ratios 1.09 and 0.92 around parity
+         "P60": ("P2", 1, 0, None)}                                # Ptolemaic (70 x 60 = 420) attacks Carthage (60 x 70 = 420): parity, roles swapped     # fixture, attacker, defender, ships split off first
 
 
 OUT.mkdir(parents=True, exist_ok=True)
-for _name, _p in FIX.items():
-    if not _p.exists() and _name != "P2":
-        sys.exit(f"missing fixture {_p}: run stage_cells.py first (and stage_p2.py for the P60 cell)")
+
+
+def need_fixtures(cells):
+    """Exit with a clear message if a selected cell's fixture is missing (stage_cells.py makes FIX_P/FIX_C, stage_p2.py FIX_P2)."""
+    for cell in cells:
+        fix = CELLS[cell][0]
+        if not FIX[fix].exists():
+            sys.exit(f"cell {cell}: missing fixture {FIX[fix]}: run " + ("stage_p2.py" if fix == "P2" else "stage_cells.py") + " first")
 
 
 def strength(f):
@@ -60,11 +72,13 @@ def trial(cell, seed):
 def main():
     args = sys.argv[1:]
     n = int(args[args.index("--seeds") + 1]) if "--seeds" in args else 10
+    first = int(args[args.index("--from") + 1]) if "--from" in args else 1
     cells = [a for a in args if a in CELLS] or list(CELLS)
+    need_fixtures(cells)
     f = OUT / "trials.json"
     res = json.loads(f.read_text()) if f.exists() else []
     for cell in cells:
-        for seed in range(1, n + 1):
+        for seed in range(first, n + 1):
             try:
                 r = trial(cell, seed)
             except Exception as e:     # noqa: BLE001 - a failure is a result
