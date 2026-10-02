@@ -4,6 +4,17 @@
 This plans three experiments that follow from the fleet orders now in `main` (`findings/2026-10-02-fleet-orders-live.md`),
 which left **naval battles, battles with an army aboard, and storms at sea** untested.
 
+## 0. Decisions taken (player, 2026-10-02)
+
+Answers to the first version's open questions, which this revision applies:
+
+1. **Not Rome-centric.** Rome was a bot assumption; this is exploration. Choose civilisations that **already have fleets and
+   are at war or can go to war soon**. **Pair 1: Carthage + Ptolemaic** (the only two nations with a fleet at the start); **pair 2:
+   Seleucid + Ptolemaic** afterwards. Also **a short run with all 16 civilisations (2 turns each)** to find quirks (§4b).
+2. **If two human seats cannot be driven reliably: stop and report** (no silent fallback to one human).
+3. **Synthetic states are acceptable** for the storm tests, clearly labelled, never presented as play.
+4. **10 seeds per cell** in the battle tables, more cells.
+
 ## 1. What the player asked for
 
 1. **Two human players.** At New Game more than one nation can be made human. Use two, have them **build or move fleets
@@ -40,27 +51,34 @@ embark rule and capacity, repair cost, split/join/transfer/scuttle. Not seen: an
 
 ## 3. Facts about the start position that shape the design
 
-From `saves/run0-start-AUTO0720-seed12345.SAV`:
+From `saves/run0-start-AUTO0720-seed12345.SAV` (the New Game with Rome human; the nation records are the same for every seat):
 
-- **Carthage** (nation 1): 34 cities, **11,000 talents**, an AI fleet of **90 ships at (49,62)** (fleet 0), at war only with
-  Celtiberia, trade with Seleucid, Greece and Thracia. **Rome** (nation 0): 25 cities, 2,200 talents, at war with Gaul.
-- Both are coastal (Rome: Pisae, Tarquinii, Caere, Antium, Neapolis, ...; Carthage: Gades, Malaca, Carthago Novo, ...). The start
-  save has **112 rough-sea tiles** already.
+- **Only two fleets exist:** **Carthage** fleet 0, **90 ships, condition 85 %**, at (49,62); **Ptolemaic** fleet 1, **70 ships,
+  condition 100 %**, at (190,93). No other nation has one, and **Seleucid has none**.
+- **Carthage** (nation 1): 34 cities (28 coastal), **11,000 talents**, at war only with Celtiberia. **Ptolemaic** (3): 46 cities
+  (20 coastal), **−9 talents** (broke), at war with nobody. **Seleucid** (2): 62 cities (16 coastal), 1,840 talents, at war with
+  Bithynia and Galatia. **Carthage–Ptolemaic is −10** (peace with a cooldown) and **Seleucid–Ptolemaic −18** (the value
+  `rules-digest.md` §Relations gives for "ending a war": they fought recently), so both pairs can be put at war, but the
+  cooldown may make the relations dialog refuse; that is something to find out in T0, not to assume.
+- The two fleets are about **140 tiles apart** (Carthage in the western Mediterranean, Ptolemaic in the east); a fleet with 32
+  moves needs several turns of sailing to meet. Natural **differences** are free test material: 90 v 70 ships, 85 v 100 %
+  condition. **Split fleet and Transfer ships** (now tested) can equalise sizes (70 v 70) for the baseline cells.
+- The start save has **112 rough-sea tiles** already (code 1).
 - The New Game form has **one "human" tick per nation row** (`Game.new_game` clicks `(109, 114 + 20·row)`); two ticks is the
-  expected way to get two humans, **not yet tried**.
-- **Lessons from the fleet work:** a fleet takes 12 turns to launch, and in those 12 turns Gaul took Caere (the build port);
-  an AI can interrupt a staged state with a field battle (it happened to army 0). Plans must not depend on 12 quiet turns.
+  expected way to get two humans, **not yet tried**. The nation list rows are the nation order above (Rome 0 ... Thracia 15).
+- **Lessons from the fleet work:** a fleet takes 12 turns to launch (Seleucid needs one), and in those 12 turns Gaul took Rome's
+  build port; an AI can interrupt a staged state with a field battle. Plans must not depend on 12 quiet turns, and the per-turn
+  autosaves are the way back.
 
-**Proposed pair: Rome and Carthage.** Carthage already has a 90-ship fleet (no wait), and the money to build more at once;
-Rome can build the second fleet while Carthage sails. They are far apart (about 35 tiles), a fleet with 32 moves closes that
-in two turns, and putting Rome and Carthage at war is a plain relations change. Alternatives (Rome + Greece, Carthage + Greece)
-are listed as open question Q3.
+**Pairs:** pair 1 **Carthage + Ptolemaic** (ready fleets, battles after a few turns of sailing, war by relations); pair 2
+**Seleucid + Ptolemaic** (Seleucid builds a fleet; the −18 cooldown and Seleucid's own wars are quirks to record). Other pairs
+follow from the §4b sweep.
 
 ## 4. Task T0: a spike, two human seats
 
 **Goal:** know whether and how the original runs with two humans, before designing anything on it.
 
-1. New Game with two human ticks (Rome and Carthage), seed 12345. Record: does the dialog allow it; the turn order; which seat
+1. New Game with two human ticks (Carthage and Ptolemaic), seed 12345. Record: does the dialog allow it; the turn order; which seat
    moves first; what the title bar and `CUR_NATION` (`0x4A0320`) show for each; **what `AUTOSAVE.LOG` and the `AUTOnnnn.SAV` names do
    when two seats are human in one round** (two saves with the same number? one overwritten?).
 2. Make a one-turn script: seat A issues an order, ends the turn, seat B issues an order, ends the turn. Check that
@@ -72,21 +90,40 @@ are listed as open question Q3.
 **Deliverables:** a findings draft (what two human seats do), `Game` support (`new_game(rows=[0, 1])`, `play_seat`,
 a round loop), the new-game save and the first two-seat saves. **Acceptance:** a scripted round with two humans repeats
 byte for byte from the seed (as a single-human turn does today).
-**Risk:** the save format may carry only one "current" seat; the harness assumes one human. If two humans cannot be driven
-reliably, fall back to one human (Rome) plus the AI's own fleet (Carthage's 90-ship fleet) as the opponent, which already
-covers T1/T2 but not "two humans building together".
+**Risk, and the decision:** the save format may carry only one "current" seat; the harness assumes one human. If two humans cannot
+be driven reliably, **stop and report** (decision 2); nothing from T1 starts until the player chooses what to do.
+
+## 4b. Task T0b: all 16 civilisations, two turns each
+
+**Goal:** find the quirks of starting as each nation, because the harness has only ever started as Rome (the New Game with row 0).
+
+For each nation row 0-15, seed 12345: `New Game` with that nation human, then **two turns** (end the first turn, play a second). Record,
+as a table and per nation: whether the form and the autosave work; the title bar ("<nation>'s turn (<leader>)") and `CUR_NATION`;
+the **turn order position** (Rome's seat differs per game, observed 13, 10, 7, 5); the start popups; treasury, cities, armies,
+fleets, relations; whether **Build fleet** finds a "free coastal city" (nations with 0-5 coastal cities, Dacia and Galatia with
+none, may refuse: "You do not have a free coastal city at this time."); the recruit dialog and queue (`state/queues.py` assumes
+Rome's four slots); anything the driver gets wrong because it assumes nation 0 (`ROME = 0` in `state/` and tests, the
+toolbar, the nation icons, the unit-map origin). Each nation's first-turn saves are kept; the table and the oddities go into a
+findings draft. About three minutes per nation, an hour for the sweep.
+**Acceptance:** 16 rows, each with a save or a stated failure; every driver assumption that broke is listed with a fix or an
+open item. **Output also feeds** T0 (seat handling) and the pair choice for later work.
 
 ## 5. Task T1: staging two adjacent fleets (shared by T2 and T3)
 
 **Goal:** a committed, small save in which two hostile fleets are one tile apart at sea, plus a recipe to rebuild it.
 
-- **Fleet A** (Carthage): the existing 90-ship fleet, or a new one. **Fleet B** (Rome): ordered at turn 1 (12 turns); order it at
-  the safest port available (choose by looking at who is at war with Rome: not Caere, which Gaul took).
-- **Move together:** both humans sail toward a meeting tile in open sea; record each fleet's moves per turn (check the
-  `30 - (ships-50)/10` formula for 90 and 30 ships), supplies burn (`ships` a turn), condition drift.
-- **Relations:** Rome and Carthage at war (T0). Then "adjacent enemy fleets, each with moves" is the state T2 and T3 branch from.
-- **Avoid interruptions:** keep both fleets away from AI fleets and from each other's cities until the meeting; keep armies
-  out of reach of Gaul; if an AI event breaks the staging, rebuild from the previous autosave (they are per turn).
+- **Pair 1 (Carthage + Ptolemaic):** both fleets exist at the start (90 ships at 85 %, 70 ships at 100 %, §3), so no 12-turn wait.
+  **Move together:** both humans sail toward a meeting tile in open sea (about 140 tiles apart; moves per turn
+  `30 - (ships-50)/10` gives **26** for 90 ships and **28** for 70: check it live), recording each
+  fleet's position, moves, supplies (`ships` a turn) and condition per turn. Use **Split fleet / Transfer ships** to make the equal-size
+  baselines (70 v 70) from the 90 and the 70, and keep the natural 90 v 70 and 85 v 100 % pairs as cells of their own.
+- **Pair 2 (Seleucid + Ptolemaic):** Seleucid has no fleet: it orders one (12 turns, at a port that is safe from Bithynia and Galatia,
+  its enemies) while Ptolemaic's waits. This also tests Build fleet for a nation that is not Rome, and the "free coastal city" rule
+  for a nation with 16 coastal cities of 62.
+- **Relations:** put the two at war (T0: Carthage–Ptolemaic is −10, Seleucid–Ptolemaic −18; see whether the dialog refuses). Then
+  "adjacent enemy fleets, each with moves" is the state T2 and T3 branch from.
+- **Avoid interruptions:** keep both fleets away from AI fleets and from each other's cities until the meeting; keep any army out of
+  reach of an enemy; if an AI event breaks the staging, rebuild from the previous autosave (they are per turn).
 
 **Deliverable:** `saves/fleets-adjacent-at-sea-<nnnn>.SAV` (about 130 KB) and `tests/make_fleet_battle_fixture.py`.
 
@@ -177,15 +214,18 @@ one natural loss "A fleet belonging to X is lost at sea." with the save before a
 
 ## 10. Sequencing, size, and approval
 
-T0 (spike, S–M) → T1 (staging, M) → T2 (M) → T3 (M) → T4 natural (L) and T4 synthetic (M); the formula tooling (item 6) can
-be built in parallel. After T0, the plan is re-checked: if two humans cannot be driven, T1–T3 use the AI's 90-ship Carthaginian fleet.
+**T0b** (civilisation sweep, M: about an hour of game time) and **T0** (two human seats, S–M) first; they decide how the rest is
+driven. Then T1 (staging, M) → T2 (M) → T3 (M) → T4 natural (L) and T4 synthetic (M); the formula tooling (§9 item 6) can be built in
+parallel. After T0: if two human seats cannot be driven, **stop and report** (decision 2).
 Each task ends with a `findings/` draft (Method, Observations with saves, Inferences, What this does not establish) and a release
-`run-exp-<name>`. Experiments, not runs: no strategy is being proven, but a long two-seat game is close to one, so **the player's
-approval of this plan is requested before T0** (rule 4 applies if any of it is reframed as a run).
+`run-exp-<name>` (the bot creates it). These are experiments, not runs: no strategy is being proven. A long two-seat game is close
+to a run, so **the player's approval of this revision is requested before T0b/T0** (rule 4 applies if any of it is reframed as a run).
 
 ## 11. Risks
 
-- Two human seats may not be driveable, or may break the one-save-per-turn assumption (T0 decides).
+- Two human seats may not be driveable, or may break the one-save-per-turn assumption (T0 decides; the answer to "not driveable" is stop and report).
+- The sweep (T0b) may show that several nations cannot start cleanly with the current harness (assumptions about nation 0); those are fixes or findings, and may add work before T0.
+- Ptolemaic is broke (−9 talents) and Seleucid has wars of its own: an AI-run nation's choices can disturb the staging.
 - AI interference while staging (Gaul took Caere; an AI field battle happened to army 0): mitigated by per-turn saves and by
   choosing quiet ports and sea lanes, not eliminated.
 - A naval battle may play out on a screen (like the field battle) rather than instantly; the driver would need `play_battle`
@@ -194,16 +234,21 @@ approval of this plan is requested before T0** (rule 4 applies if any of it is r
   not 50 % from 60 %.
 - Synthetic states test the formula, not the game's play; they must be labelled so, and a natural loss is still wanted.
 
-## 12. Open questions for the reviewers and the player
+## 12. Questions: answered and still open
 
-1. Is **Rome + Carthage** the right pair (Carthage's ready 90-ship fleet and 11,000 talents), or a pair with neighbouring ports?
-2. Should T0 be allowed to conclude "use one human + the AI fleet", dropping "two humans building together"?
-3. Are synthetic (edited-save) states acceptable as a second evidence class for T4, if labelled?
-4. Is 10 seeds per cell enough, or should T2/T3 aim for a smaller number of cells with 30 seeds?
-5. Should the weather/rough-sea reading (Task T4) come first, since every storm result depends on finding rough sea reliably?
-6. Anything in §2 you believe the original does differently (the research reports are code reading, not play)?
+**Answered by the player (2026-10-02):** the pair (Carthage + Ptolemaic, then Seleucid + Ptolemaic, not Rome); the civilisation sweep
+(all 16, two turns each); stop and report if two humans cannot be driven; synthetic states acceptable, labelled; 10 seeds per cell.
+
+**Still open, for the reviewers:**
+1. Should the **rough-sea reading** (finding code-1 tiles from an autosave and steering a fleet onto one) come before T2, since every
+   storm result and every rough-water battle depends on it? (The plan puts it in T4; it could be a T1 deliverable.)
+2. Are the **cells** in §6-§8 the right ones for 10 seeds each, or is there a cheaper design that answers the same questions
+   (for example fewer sizes, more compositions)?
+3. In T0b, what else should be recorded per nation that would reveal a quirk (the research reports are code reading, not play)?
+4. Anything in §2 you believe the original does differently?
+5. Is two turns per nation enough to see a nation-specific start problem, or should some nations (the fleet owners) get more?
 
 ## 13. Review plan
 
 PR with this file only; `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-6 Luna); a Claude pass with
-`/review-pr <n>`; the player answers §12 and approves T0.
+`/review-pr <n>`; the player answers §12 and approves T0b/T0.
