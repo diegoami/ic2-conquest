@@ -55,9 +55,12 @@ def test_land_cities_and_fleets_block():
     for x in range(10, 14):
         put(s, x, 50, sea.CALM)
     put(s, 12, 50, 316)                             # a fleet marker blocks the way
-    cost, path = sea.sea_path(s, (10, 50), (13, 50))
-    assert path is None, path
-    return "a fleet marker (and land, and a city marker) blocks a fleet"
+    assert sea.sea_path(s, (10, 50), (13, 50)) == (None, None)
+    put(s, 12, 50, 50)                              # so does a city marker (codes 20-99)
+    assert sea.sea_path(s, (10, 50), (13, 50)) == (None, None)
+    put(s, 12, 50, 210)                             # and an army marker (200-247)
+    assert sea.sea_path(s, (10, 50), (13, 50)) == (None, None)
+    return "a fleet, a city and an army marker each block a fleet (land is blocked by the blank map)"
 
 
 def test_adjacent_goal_and_legs():
@@ -82,15 +85,19 @@ def test_fleet_moves_formula():
 
 
 def test_real_route_between_the_two_fleets():
+    """The planner on a committed save: Rome-seat start, Carthage's fleet (49,62) to a tile next to Ptolemaic's (190,93). NOTE: the
+    T1 staging started from the two-human start, where Ptolemaic's fleet is at (189,89) (docs/proposals/fleet-battles-and-storms.md,
+    Appendix A); this test pins the planner, not the staging."""
     s = sav.load(str(ROOT / "saves" / "run0-start-AUTO0720-seed12345.SAV"))
     a = next(f for f in s["fleets"] if f["owner"] == 1)           # Carthage, 90 ships
     b = next(f for f in s["fleets"] if f["owner"] == 3)           # Ptolemaic, 70 ships
+    assert (a["x"], a["y"], b["x"], b["y"]) == (49, 62, 190, 93), (a["x"], a["y"], b["x"], b["y"])
     cost, path = sea.sea_path_adjacent(s, (a["x"], a["y"]), (b["x"], b["y"]))
-    assert path and max(abs(path[-1][0] - b["x"]), abs(path[-1][1] - b["y"])) == 1, path[-1:]
+    assert max(abs(path[-1][0] - b["x"]), abs(path[-1][1] - b["y"])) == 1, path[-1:]
     assert sea.path_cost(s, path) == cost
+    assert len(path) - 1 == 140 and cost == 140, (len(path) - 1, cost)        # all calm sea, one tile per move
     turns = -(-cost // sea.fleet_moves(a["ships"]))
-    return (f"Carthage ({a['x']},{a['y']}) -> next to Ptolemaic ({b['x']},{b['y']}): {len(path) - 1} tiles, cost {cost}, "
-            f"{turns} turns for one fleet alone (26 moves)")
+    return f"Carthage (49,62) -> next to Ptolemaic (190,93): 140 tiles, cost 140 (all calm), {turns} turns for one fleet alone (26 moves)"
 
 
 TESTS = ["straight_calm_corridor", "rough_costs_three_and_is_avoided_when_a_calm_way_exists", "land_cities_and_fleets_block",

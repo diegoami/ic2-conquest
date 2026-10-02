@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from harness.driver import CUR_NATION, G, SEL_FLEET, Game  # noqa: E402
+from harness.driver import G, Game  # noqa: E402
 from planner import sea  # noqa: E402
 from state import sav  # noqa: E402
 
@@ -50,10 +50,17 @@ def sail_toward(g, s, me, other):
     if cheb((f["x"], f["y"]), (o["x"], o["y"])) <= 1:
         return {"already_adjacent": True}
     cost, path = sea.sea_path_adjacent(s, (f["x"], f["y"]), (o["x"], o["y"]))
+    if path is None:
+        raise RuntimeError("no sea path from my fleet to the other fleet")
     moves = g.fleet_moves(f["id"])
     reach, spent = sea.legs(s, path, moves)
     for t in reach[1:]:
-        g.move_fleet(f["id"], *t)
+        for attempt in range(3):          # verify every click's effect; retry at most twice
+            pos, texts = g.move_fleet(f["id"], *t)
+            if tuple(pos) == tuple(t):
+                break
+        else:
+            raise RuntimeError(f"fleet {f['id']} did not reach {t} (at {tuple(pos)}, boxes {texts})")
     return {"from": (f["x"], f["y"]), "to": tuple(g.fleet_pos(f["id"])), "planned": reach[-1], "moves_before": moves,
             "moves_after": g.fleet_moves(f["id"]), "path_cost": cost}
 
