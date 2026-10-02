@@ -5,6 +5,7 @@ if nothing moved them (checked).
 
     python3 runs/experiments/fleet-battles/stage_cells.py
 """
+import json
 import shutil
 import sys
 from pathlib import Path
@@ -27,6 +28,5 @@ fl = [(f["id"], f["owner"], f["x"], f["y"], f["ships"], f.get("condition"), f["m
 print(name, "turn", s["turn"], "seat", s["seat_index"], "current", s["current_nation"], "relation", s["nations"][1]["relations"]["Ptolemaic"])
 print("fleets:", fl)
 print("texts:", texts)
-import json
 (OUT / "stage_cells.json").write_text(json.dumps({"autosave": name, "turn": s["turn"], "seat": s["seat_index"], "fleets": fl, "end_turn_texts": texts}, indent=1, default=str))
 g.kill()

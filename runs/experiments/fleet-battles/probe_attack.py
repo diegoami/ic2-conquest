@@ -6,7 +6,6 @@ select Ptolemaic's fleet and click Carthage's. Nothing is auto-answered: every b
 """
 import json
 import shutil
-import struct
 import sys
 import time
 from pathlib import Path
