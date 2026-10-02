@@ -838,11 +838,16 @@ class Game:
         ex, ey = self.fleet_pos(enemy)
         if max(abs(ox - ex), abs(oy - ey)) != 1:
             raise DriverError(f"fleet {enemy} at {ex},{ey} not adjacent to fleet {own} at {ox},{oy}")
+        self.dismiss_popups()       # a stale news/offer box would be mistaken for the click's effect below
         before = (self.fleet_state(own), self.fleet_state(enemy))
         texts = []
         for _ in range(3):          # verify the click's effect; retry at most twice
             self.select_fleet(own, ox, oy)
             self.click_tile(ex, ey, pause=1.5)
+            if self.in_battle() or self.find_windows(" v "):
+                # A tactical screen (not seen for fleets at war: the battle is instant): play it as Game.attack does, and stop.
+                self.play_battle()
+                return [self.read_popup(w) for w in self.popups()] + ["BATTLE screen played (Computer general)"]
             texts = [self.read_popup(w) for w in self.popups() if w[1] in ("Confirm", "Information", "Warning", "Error")]
             if texts:               # a box (the untested peace prompt, or a refusal) is the effect: do not click again
                 break
