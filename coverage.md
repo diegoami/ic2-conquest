@@ -8,7 +8,7 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 
 | Order | UI path | Driver | Test | Status | Evidence |
 |---|---|---|---|---|---|
-| New game (Rome human) | File → New, tick *human* (109, 114+20·row), OK (344,194) | `Game.new_game` | seed 12345 twice → identical `AUTO0720.SAV` | ✅ | `NEW_a.SAV` = `NEW_b.SAV` = `BASE.SAV`, sha256 `050bc354…` (tests/results.md) |
+| New game (any nation human; several for several human seats) | File → New, tick *human* at (117, 117 + 21.67·row) (row 0 Rome … 15 Thracia), OK (344,194) | `Game.new_game` | seed 12345 twice → identical `AUTO0720.SAV` | ✅ | `NEW_a.SAV` = `NEW_b.SAV` = `BASE.SAV`, sha256 `050bc354…` (tests/results.md) |
 | Open a save | File → Open, name field (636,450), Enter | `Game.open`, `Game.load` (restart + seed + open) | every test | ✅ | all tests |
 | Save As | File → Save As, name field, Enter | `Game.save_as` | every save-diff test | ✅ | `T_*.SAV` |
 | End turn | toolbar *End turn* (57,58); **no confirmation box, except "End turn ?"** when an army needs supplies ("An army of yours needs supplies. … MAKE MORE MOVES / END TURN"; the driver answers *End turn*) | `Game.end_turn` | `end_turn`, `scripted_turn_repeats` | ✅ | `T_END_AUTO0721.SAV`; scripted turn byte-identical twice |
@@ -102,7 +102,7 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Split army | "You can not split an army containing only 1 unit." | ⬜ |
 | Disband army | "An army must be near its own city to disband." · "Are you sure you want to disband this army ?" | ⬜ |
 | Fleet | "The fleet can only be repaired at one of your cities." · "A fleet cannot be repaired while it is carrying an army." · "You cannot join fleets if one is carrying an army." · "You can not split a fleet containing less than 20 ships." · "You can not split a fleet carrying an army." · "You can not make any more fleets at this time." · "A fleet cannot be scuttled while it is carrying an army." · "To scuttle a fleet it must be near one of your cities." · "Are you sure you want to scuttle this fleet ?" | 🟡 seen in probes (no save): "The fleet can only be repaired at one of your cities." and "To scuttle a fleet it must be near one of your cities." (the fleet at (98,43), next to a city Gaul had captured), "Are you sure you want to scuttle this fleet ?" in `T_SCUTTLE_FLEET.SAV`'s test; the rest ⬜ |
-| Build fleet | "The fleet will be built at …" · "… ships will be ready in …" · "You do not have a free coastal city at this time." · "You cannot build a fleet at this time." | ⬜ |
+| Build fleet | "The fleet will be built at …" · "Only nations with coastal cities can build fleets." ✅ (Dacia, Galatia, Media: `sweep.json` of release `run-exp-civ-sweep`; no dialog opens) · "… ships will be ready in …" · "You do not have a free coastal city at this time." · "You cannot build a fleet at this time." | ⬜ |
 | Fortify | "You cannot fortify a city which is under siege." · "This city cannot be fortified any further." · "This city is already being fortified." | ⬜ |
 | Relations | "You cannot trade with …" | ✅ `saves/trade-numidia-0720.SAV` (Ptolemaic, Seleucid, Greece, Celtiberia, Dacia) |
 | Relations | "… does not want to make peace at this time." · "You can only trade with 3 nations." · "… does not want to trade with you." · "… does not want to ally with your nation." | ⬜ |

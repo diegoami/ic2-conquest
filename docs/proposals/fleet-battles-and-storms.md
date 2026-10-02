@@ -22,6 +22,8 @@ Answers to the first version's open questions, which this revision applies:
 2. **Fleet battles with soldiers aboard**, where the result also depends on the soldiers on the fleets.
 3. **Tasks where a fleet is sunk at high sea**, especially in **rough water**.
 
+> **Read §3 and Appendix A with this in mind:** the start facts quoted in this plan are the world from **Rome's seat (11)**; they differ at other seats (T0b sweep).
+
 ## 2. What the research already says (to confirm or correct, not to assume)
 
 From `docs/rules-digest.md` §8 and §9 (research reports named there; all **[C]** = from decompiled code, none live yet):
@@ -64,7 +66,7 @@ From `saves/run0-start-AUTO0720-seed12345.SAV` (the New Game with Rome human; th
   moves needs several turns of sailing to meet. Natural **differences** are free test material: 90 v 70 ships, 85 v 100 %
   condition. **Split fleet and Transfer ships** (now tested) can equalise sizes (70 v 70) for the baseline cells.
 - The start save has **112 rough-sea tiles** already (code 1).
-- The New Game form has **one "human" tick per nation row** (`Game.new_game` clicks `(109, 114 + 20·row)`); two ticks is the
+- The New Game form has **one "human" tick per nation row** (`Game.new_game` clicks `(117, 117 + 21.67·row)`, the measured positions; its `rows` argument takes several); two ticks is the
   expected way to get two humans, **not yet tried**. The nation list rows are the nation order above (Rome 0 ... Thracia 15).
 - **Lessons from the fleet work:** a fleet takes 12 turns to launch (Seleucid needs one), and in those 12 turns Gaul took Rome's
   build port; an AI can interrupt a staged state with a field battle. Plans must not depend on 12 quiet turns, and the per-turn
@@ -117,6 +119,8 @@ for the sweep.
 open item. **Output also feeds** T0 (seat handling) and the pair choice for later work.
 
 ## 5. Task T1: staging two adjacent fleets (shared by T2 and T3)
+
+*(Stage from the starts of the nations that are human, not from the Rome start: see Appendix A's correction.)*
 
 **Goal:** a committed, small save in which two hostile fleets are one tile apart at sea, plus a recipe to rebuild it.
 
@@ -270,6 +274,12 @@ PR with this file only; `python3 scripts/external_review.py --pr <n>` (DeepSeek 
 `/review-pr <n>`; the player answers §12 and approves T0b/T0.
 
 ## Appendix A. The start-save facts this plan relies on
+
+**Correction (2026-10-02, T0b sweep, `findings/2026-10-02-start-as-each-nation.md`):** the facts below are the world **as seen from Rome's seat (seat 11)**,
+after eleven AI seats have moved. The start differs with the nation you choose: in Ptolemaic's own start (seat 2) it has **4,900 talents**, a **war with
+Seleucid**, and its fleet at **(189,89) with condition 75** (not (190,93), 100); in Seleucid's own start (seat 4) it has 2,700 talents and a third war
+(with Ptolemaic). Carthage's fleet (90 ships at (49,62), condition 85) is the same at seats 11 and 13. Pair 1 and pair 2 should be staged from the starts of the
+nations that are human, not from the Rome start.
 
 Parsed from `saves/run0-start-AUTO0720-seed12345.SAV` with `state/sav.py` (`sav.load`), 2026-10-02:
 

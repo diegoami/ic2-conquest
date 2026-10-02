@@ -514,7 +514,7 @@ Moves read 8 in the start state and become 9 after the first tick **[D]** (the s
 | Action | Clicks |
 |---|---|
 | File → Open | *File* (14,36), *Open* (30,72), filename field (636,450), type the name, Enter |
-| File → New | (30,56), the nation's *human* tick at (109, 114 + 20 × row), OK (344,194) |
+| File → New | (30,56), the nation's *human* tick at (117, 117 + 21.67 × row) (the old formula drifted), OK (344,194) |
 | Offer dialog OK | (638,547) |
 | Game → End turn | *Game* (45,30), *End turn* (62,51), confirm *End turn* (122,307) |
 | Battle | *Computer general on* (158,112); *End turn* (110,112), repeated until "Battle ended" shows; result *OK* (220,478) |
