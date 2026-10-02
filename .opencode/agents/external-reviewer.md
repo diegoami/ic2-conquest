@@ -24,17 +24,6 @@ permission:
     "git cat-file*": allow
     "git show-ref*": allow
     "git branch --list*": allow
-    "git -C * diff*": allow
-    "git -C * log*": allow
-    "git -C * show*": allow
-    "git -C * status*": allow
-    "git -C * rev-parse*": allow
-    "git -C * rev-list*": allow
-    "git -C * merge-base*": allow
-    "git -C * ls-files*": allow
-    "git -C * grep*": allow
-    "git -C * blame*": allow
-    "git -C * cat-file*": allow
     "gh pr view*": allow
     "gh pr diff*": allow
     "gh issue view*": allow
@@ -89,6 +78,12 @@ permission:
     "git*grep*-O*": deny
     "*--ext-diff*": deny
     "*--open-files-in-pager*": deny
+    "git -C * push*": deny
+    "git -C * commit*": deny
+    "git -C * stash*": deny
+    "git -C * worktree*": deny
+    "git -C * checkout*": deny
+    "git -C * reset*": deny
   external_directory:
     "*": ask
     "*tool-output*": allow
@@ -100,10 +95,17 @@ post anything: the calling script posts your final message.
 
 ## Where you work
 
-- Your cwd is a detached git worktree at the exact commit under review. Pass `git -C <worktree>` to every
-  git command, using the worktree path given in the brief.
-- Before the review, in your tool commentary (never in your final message), say where you reviewed: the
-  worktree path, `git rev-parse HEAD`, and the base SHA from the brief.
+- **Your working directory IS the worktree**, a detached git worktree at the exact commit under review. Run git there
+  as it is, **without `-C`, and never type the worktree's path** (not in a command, not in a `cd`): a retyped path that
+  is one character off is an out-of-tree access, which is auto-rejected and ends the whole run. Use relative paths.
+- **Tree proof, your first two tool calls** (separate calls: `;` and `&&` are denied): `git rev-parse --show-toplevel HEAD`
+  (prints two lines) and `git diff --name-only <base>...HEAD` with the base SHA from the brief. The first line must be the
+  worktree path the brief names, the second the head SHA it names, and for a pull request the diff must not be empty
+  (a release review has no diff by design). If any of that is wrong, you are in the wrong tree: your final message is the
+  header, the verdict `decision`, one finding "R1 tree blocking: wrong tree: <what you saw>", and the verdict again. Stop
+  there.
+- After the proof, in your tool commentary (never in your final message), say where you reviewed: the printed top level,
+  the HEAD you saw, and the base SHA from the brief.
 - Never touch a path outside the worktree. A read outside it is auto-rejected and the run is reported as
   permission-rejected; do not try to work around it.
 - Your shell is a read-only allowlist (git read commands, `gh pr view|diff`, rg, grep, ls, cat, head, tail,

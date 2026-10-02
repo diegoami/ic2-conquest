@@ -113,7 +113,7 @@ and accepts a review flattened onto one line. Then:
 
 ## The reviewer's shell: a read-only allowlist
 
-`bash` is deny-by-default (`"*": deny`), then allows git read commands, `gh pr view|diff`, `gh issue view`, rg,
+`bash` is deny-by-default (`"*": deny`), then allows git read commands (run in the worktree as they are, **never with `-C`**), `gh pr view|diff`, `gh issue view`, rg,
 grep, ls, cat, head, tail, find and `python3 -m py_compile`. Denies placed last win: redirections, `tee`, `;`,
 `&&`, `$(...)`, backticks, `| sh|bash|python`, `xargs`, `--output`, `--pre`, `sort -o`, `find -exec|-delete`,
 curl/wget, and any path containing `auth.json`, `opencode-data`, `.config`, `.ssh`, `.env`. The agent writes
@@ -131,3 +131,25 @@ at all"), never after a real or flagged review; the list stops after two consecu
 `permission-rejected`, `unknown-agent` and `no-executable` stop it at once. The posted header names the failures:
 `PR review (gpt-6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
 model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.
+
+## Lessons
+
+**2026-10-02: never make the reviewer type its worktree's path (`git -C <worktree>`).**
+- **What happened (another project, harness_imperial#15):** its reviewer agent was told to pass `git -C <worktree>` on every git command. In
+  the first real review the model retyped a 90-character worktree path and got one character wrong; OpenCode auto-rejected the path as
+  `external_directory`, which ends `opencode run`, and the review was lost after 17 seconds. Every retyped path is another chance for it.
+- **Did it apply here:** yes, the same instruction was in our agent file and in the brief, with eleven `git -C * ...` allow rules. Our 13
+  logged reviews had the model type `git -C <path>` 131 times and never got one wrong, so we had not hit it, but the hazard was identical.
+- **Why `-C` buys nothing:** the script already starts OpenCode inside the worktree (`--dir <worktree>` and the process's working directory),
+  so plain `git` runs there. The reason for `-C` was to be sure the model looks at the right tree; the **tree proof** covers that.
+- **The rule now:** the agent file and the brief say "your working directory is the worktree: run git there as it is, without `-C`, and never
+  type the worktree's path". The `git -C * ...` allow rules are gone; `git -C * push|commit|stash|worktree|checkout|reset` stay as deny
+  rules (a safeguard if an allow is ever added again).
+- **The tree proof (first two tool calls, separate because `;` and `&&` are denied):** `git rev-parse --show-toplevel HEAD` (the first line must
+  be the worktree path the brief names, the second the head SHA it names) and `git diff --name-only <base>...HEAD` (must not be empty for a PR;
+  a release review has no diff by design). If anything is wrong the reviewer says it is in the wrong tree (verdict `decision`) and stops.
+- **Guard:** `tests/test_reviewer_prompt.py` fails if the agent's body, its permission rules, the brief template, or what the watcher hands to
+  opencode (checked with a fake opencode: the brief file it receives, and the fixed message and arguments of its command line, which
+  fails if someone edits that message to ask for it) ask for `git -C`. It was broken by hand in each of those four places
+  and failed each time. Not changed: the Claude-side `/review-pr` skill also uses `git -C "$WT"`, but there it is a shell variable in Claude's
+  own session (whose working directory is the main checkout), not text a model retypes.
