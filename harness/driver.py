@@ -990,23 +990,30 @@ class Game:
 
     RELATIONS = {"peace": 94, "trade": 134, "ally": 176, "war": 218}
 
+    RELATION_COLUMN = {"peace": 0, "trade": 1, "ally": 2, "war": 3}
+
     def relation(self, nation, kind):
-        """International Relations (352x436 at 23,49): one radio per nation row
-        (Rome is row 0), OK at (308,217). A refusal box stops the whole OK, so
-        set one relation per call. Returns (new value in memory, box texts)."""
+        """International Relations: one row per nation (all 16, the current nation's own row has no choice), four radios
+        (peace, trade, ally, war), OK / Cancel. The radios and the buttons are read from the running dialog (they drifted
+        from the recorded layout, so a hardcoded OK missed), not hardcoded. A refusal box stops the whole OK, so set one
+        relation per call. Returns (the current nation's new value in memory, box texts)."""
         self.tool("relations", pause=1.5)
-        w = self.find_windows("^International Relations$")
-        if not w:
+        if not self.find_windows("^International Relations$"):
             self.tool("relations", pause=1.5)
-            w = self.find_windows("^International Relations$")
+        w = self.find_windows("^International Relations$")
         self.raise_window(w[0][0])
-        for _ in range(2):          # a radio click is idempotent; the first may only activate
-            self.click(23 + self.RELATIONS[kind], 49 + 25 + round(23.55 * nation), pause=0.5)
+        cs = self.controls("International Relations")
+        radios = sorted((c for c in cs if c["cls"] == "TRadioButton"), key=lambda c: (c["y"], c["x"]))
+        if len(radios) != 64:
+            raise DriverError("International Relations: expected 64 radio buttons, found %d" % len(radios))
+        target = radios[nation * 4 + self.RELATION_COLUMN[kind]]
+        for _ in range(2):          # a radio click is idempotent; the first may only activate the window
+            self.click_control(target, pause=0.5)
         self.shot(WORK / "shots" / "_relations.png", window=str(w[0][0]))
-        self.click(308, 217, pause=1.5)
+        self.click_control(self.control(cs, text="OK"), pause=1.5)
         texts = self.dismiss_popups()
         if self.find_windows("^International Relations$"):
-            self.close_dialog("International Relations", (308, 283))      # Cancel
+            self.click_control(self.control(cs, text="Cancel"), pause=1.0)
         me = self.i16(CUR_NATION)
         return self.i16(NATIONS + me * NATION_LEN + 0x26 + 2 * nation), texts
 
