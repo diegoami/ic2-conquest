@@ -37,7 +37,7 @@ Saves are in release `run-exp-two-humans`. "Seat" is the position in the turn or
 
 **Round 2.** After Carthage's End turn the AI seats 14 and 15, the round tick and the AI seats 0 and 1 played, and Ptolemaic's seat came up: `CUR_NATION` 3, week 3, `AUTO0721.SAV` (`T0_P2_AUTO0721.SAV`: `current_nation` 3, seat 2).
 
-**The war.** The International Relations dialog has all 16 nations as rows (the current nation's own row has no choice) and four radio buttons per row, peace, trade, ally and war: **64 radio buttons**, two buttons, OK and Cancel; Carthage's dialog shows Rome peace, Seleucid trade, **Ptolemaic trade**, Numidia ally, Greece trade, Celtiberia war and peace for the rest (`t0_relations_dialog_carthage.png`), the same as the save. The Carthage–Ptolemaic relation is **1 (trade)** in this two-human start, where it is **−10** (peace with a cooldown) in the Rome-seat start. One click on the war radio and OK: **both** entries became 3 immediately (`T0_P2_WAR.SAV`), no box appeared, and both were still 3 at the next round's start (`T0_P2_AUTO0721.SAV`).
+**The war.** The International Relations dialog has all 16 nations as rows (the current nation's own row has no choice) and four radio buttons per row, peace, trade, ally and war: **64 radio buttons**, two buttons, OK and Cancel; Carthage's dialog shows Rome peace, Seleucid trade, **Ptolemaic trade**, Numidia ally, Greece trade, Celtiberia war and peace for the rest (`t0_relations_dialog_carthage.png`, produced by `t0_phase2.py`), the same as the save. The Carthage–Ptolemaic relation is **1 (trade)** in this two-human start, where it is **−10** (peace with a cooldown) in the Rome-seat start. One click on the war radio and OK: **both** entries became 3 immediately (`T0_P2_WAR.SAV`), no box appeared, and both were still 3 at the next round's start (`T0_P2_AUTO0721.SAV`).
 
 **Driver bug found on the way.** `Game.relation` clicked a hardcoded OK at (308,217) and radios from a recorded layout; in this Wine layout OK is at (333,232), so the war order did nothing and the dialog stayed open (`DriverError: International Relations did not close`, the first phase-2 run). It now reads the radios and the buttons from the dialog (sorted by position: row = nation index, columns peace, trade, ally, war).
 
@@ -55,6 +55,7 @@ Saves are in release `run-exp-two-humans`. "Seat" is the position in the turn or
 - **The war's side effects:** the news of the following turn ("ends all current trading agreements", the ally cascade) was not read.
 - **More than one and a half rounds, one seed, one pair:** the overwrite of the first autosave is two lines of one log; whether a later setting (a rolling save, a different build) changes it is untested.
 - Whether the End turn "mercenary pay" box appears for the same reason in every start (it appeared once).
+- **The Relations dialog at Ptolemaic's seat:** the same step in `t0.py` (open the dialog, screenshot, count the radios) failed in two re-runs ("no controls found", then the window gone before it could be read), while it worked every time at Carthage's seat in `t0_phase2.py`; unexplained, and the failed step is in `t0.json`. The 64-radio count and the screenshot are Carthage's only.
 - **Wine-only.**
 
 ## Reproduction

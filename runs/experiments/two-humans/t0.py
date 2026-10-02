@@ -53,7 +53,7 @@ def step(name, fn):
 
 
 g = Game()
-r = step("new_game rows [1, 3] (Carthage + Ptolemaic)", lambda: [str(x) for x in g.new_game(row=[1, 3], seed=12345)])
+r = step("new_game rows [1, 3] (Carthage + Ptolemaic)", lambda: [str(x) for x in g.new_game(rows=[1, 3], seed=12345)])
 if r:
     start = Path(r[0])
     shutil.copy(start, OUT / "T0_NEWGAME_AUTO0720.SAV")
@@ -63,10 +63,26 @@ if r:
     step("seat A state", lambda: snap(g, "seat A at the start"))
     g.shot(OUT / "t0_seatA.png")
     step("seat A taxation 15", lambda: [g.taxation(15), snap(g, "after taxation")][1])
-    step("seat A international relations dialog", lambda: (g.tool("relations", pause=2.0),
-                                                           g.shot(OUT / "t0_relations_A.png"),
-                                                           [(w[1], w[4], w[5]) for w in g.popups()])[2])
-    step("close relations", lambda: (g.key("Escape"), time.sleep(0.5), g.reset_ui(), [w[1] for w in g.popups()])[3])
+    def relations_dialog():
+        g.tool("relations", pause=2.0)
+        g.wait(lambda: g.find_windows("^International Relations$"), 10, "International Relations")
+        for _ in range(8):          # the controls are not always enumerable the instant the window appears
+            try:
+                cs = g.controls("International Relations")
+                break
+            except Exception:     # noqa: BLE001
+                time.sleep(1)
+        w = g.find_windows("^International Relations$")[0]
+        g.shot(OUT / "t0_relations_dialog_ptolemaic.png", window=str(w[0]))
+        n = sum(1 for c in cs if c["cls"] == "TRadioButton")
+        for _ in range(3):          # Cancel until the window is gone (a click into an inactive window may only activate it)
+            g.click_control(g.control(cs, text="Cancel"), pause=1.5)
+            if not g.find_windows("^International Relations$"):
+                break
+        return {"radio_buttons": n, "window": w[2:], "closed": not g.find_windows("^International Relations$")}
+
+
+    step("seat A international relations dialog (screenshot, radio count)", relations_dialog)
     a1 = step("seat A end turn", lambda: g.end_turn(timeout=180))
     step("after seat A end turn", lambda: snap(g, "after seat A's End turn"))
     g.shot(OUT / "t0_after_A_end.png")

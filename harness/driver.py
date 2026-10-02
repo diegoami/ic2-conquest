@@ -988,15 +988,17 @@ class Game:
         self.close_controls("Army recruits", cs)
         return texts
 
-    RELATIONS = {"peace": 94, "trade": 134, "ally": 176, "war": 218}
 
     RELATION_COLUMN = {"peace": 0, "trade": 1, "ally": 2, "war": 3}
+    RELATION_VALUE = {"trade": 1, "ally": 2, "war": 3}          # what memory must hold after the order (peace may be <= 0: a cooldown)
 
     def relation(self, nation, kind):
-        """International Relations: one row per nation (all 16, the current nation's own row has no choice), four radios
-        (peace, trade, ally, war), OK / Cancel. The radios and the buttons are read from the running dialog (they drifted
-        from the recorded layout, so a hardcoded OK missed), not hardcoded. A refusal box stops the whole OK, so set one
-        relation per call. Returns (the current nation's new value in memory, box texts)."""
+        """International Relations: one row per nation (all 16; each row has four radios, peace, trade, ally, war, and the
+        current nation's own row has none selected: 64 radios in all), OK / Cancel. The radios and the buttons are read from
+        the running dialog (they drifted from the recorded layout, so a hardcoded OK missed), not hardcoded. OK is clicked up
+        to three times; a refusal box stops the whole OK (set one relation per call) and is returned in the texts; if the
+        dialog stays open with no box, or the value is not the requested one, it raises instead of reporting success.
+        Returns (the current nation's value in memory, box texts)."""
         self.tool("relations", pause=1.5)
         if not self.find_windows("^International Relations$"):
             self.tool("relations", pause=1.5)
@@ -1005,17 +1007,27 @@ class Game:
         cs = self.controls("International Relations")
         radios = sorted((c for c in cs if c["cls"] == "TRadioButton"), key=lambda c: (c["y"], c["x"]))
         if len(radios) != 64:
-            raise DriverError("International Relations: expected 64 radio buttons, found %d" % len(radios))
+            raise DriverError("International Relations: expected 64 radio buttons (16 rows x 4), found %d" % len(radios))
         target = radios[nation * 4 + self.RELATION_COLUMN[kind]]
         for _ in range(2):          # a radio click is idempotent; the first may only activate the window
             self.click_control(target, pause=0.5)
         self.shot(WORK / "shots" / "_relations.png", window=str(w[0][0]))
-        self.click_control(self.control(cs, text="OK"), pause=1.5)
-        texts = self.dismiss_popups()
+        texts = []
+        for _ in range(3):          # a click into an inactive window may only activate it: try, then retry twice
+            self.click_control(self.control(cs, text="OK"), pause=1.5)
+            texts += self.dismiss_popups()
+            if texts or not self.find_windows("^International Relations$"):
+                break
         if self.find_windows("^International Relations$"):
-            self.click_control(self.control(cs, text="Cancel"), pause=1.0)
+            if not texts:
+                raise DriverError("International Relations did not close after OK (and no refusal box)")
+            self.click_control(self.control(cs, text="Cancel"), pause=1.0)       # refused: the box stopped the OK
         me = self.i16(CUR_NATION)
-        return self.i16(NATIONS + me * NATION_LEN + 0x26 + 2 * nation), texts
+        value = self.i16(NATIONS + me * NATION_LEN + 0x26 + 2 * nation)
+        want = self.RELATION_VALUE.get(kind)
+        if not texts and ((want is not None and value != want) or (want is None and value > 0)):
+            raise DriverError("relation with nation %d is %d, not %s as ordered" % (nation, value, kind))
+        return value, texts
 
     def build_fleet(self, ships):
         """Build a fleet of <ships> at the free coastal city the game picks. The
