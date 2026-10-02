@@ -395,8 +395,8 @@ class Game:
         cs = self.controls(title)
         want = "yes" if yes else "no"
         c = next((c for c in cs if want in c["text"].lower()), None)
-        if c is None:                      # a refusal ("The army is too large for this fleet ?") has OK only
-            c = next((c for c in cs if c["text"].replace("&", "").lower() == "ok"), None)
+        if c is None and yes:              # a refusal ("The army is too large for this fleet ?") has OK only; OK
+            c = next((c for c in cs if c["text"].replace("&", "").lower() == "ok"), None)   # is never "No"
         if c is None:
             raise DriverError("%s: no %s button" % (title, want))
         self.click_control(c, pause=0.8)
@@ -845,8 +845,9 @@ class Game:
         self.fleet_tool(i, "supply", "Supply fleet")
         cs = self.controls("Supply fleet")
         ups = [c for c in cs if c["cls"] == "TUpDown"]
-        top = sorted((c for c in ups if c["y"] < 200), key=lambda c: c["x"])
-        bottom = sorted((c for c in ups if c["y"] >= 200), key=lambda c: c["x"])
+        mid = (min(c["y"] for c in ups) + max(c["y"] for c in ups)) / 2     # the tons pair above, the money pair below
+        top = sorted((c for c in ups if c["y"] < mid), key=lambda c: c["x"])
+        bottom = sorted((c for c in ups if c["y"] >= mid), key=lambda c: c["x"])
         self._spin(top[1], tons // 100)
         self._spin(top[0], (tons % 100) // 10)
         self._spin(bottom[1], money // 100)

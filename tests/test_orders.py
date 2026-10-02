@@ -373,7 +373,8 @@ def test_embark_refused():
     s = _snap(g, "T_EMBARK_REFUSED.SAV")
     a, f = _army(s, 0), _fleet(s, 2)
     assert not a["embarked"] and f["army"] == -1, (a["embarked"], f["army"])
-    assert texts, "no refusal box"
+    assert a["troops"] == 10700 and f["ships"] == 20 and a["troops"] > f["ships"] * 500, (a["troops"], f["ships"])
+    assert texts and "large" in " ".join(texts).lower(), texts       # "The army is too large for this fleet ?"
     return f"army 0 {a['troops']} troops stays at ({a['x']},{a['y']}), fleet 2 {f['ships']} ships carries {f['army']}; box {texts}"
 
 
@@ -448,6 +449,8 @@ def test_split_fleet():
     fl = [f for f in s["fleets"] if f["owner"] == 0]
     assert sorted(f["ships"] for f in fl) == [10, 20], [(f["id"], f["ships"]) for f in fl]
     new = max(fl, key=lambda f: f["id"])
+    assert new["ships"] == 10 and new["moves"] == 0, (new["ships"], new["moves"])
+    assert max(abs(new["x"] - 101), abs(new["y"] - 46)) == 1, (new["x"], new["y"])        # next to the first fleet
     return f"Rome fleets 1 -> {len(fl)}: {[(f['id'], f['x'], f['y'], f['ships'], f['moves']) for f in fl]}"
 
 

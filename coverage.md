@@ -90,7 +90,7 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Attack | "Are you sure you want to attack this army ?" | ⬜ |
 | Attack | "Are you sure you want to attack this fleet ?" | ⬜ |
 | Attack | "You cannot attack a fleet docked at its own city !" | ⬜ |
-| Embark | "The army is too large for this fleet ?" | ⬜ |
+| Embark | "The army is too large for this fleet ?" (a box with OK only; the click then selects the fleet; the rule is troops > ships × 500) | ✅ `T_EMBARK_REFUSED.SAV` |
 | Mercenaries | "Your army has too little money to pay these mercenaries." | ⬜ |
 | Mercenaries | "An army can not contain more than 100,000 troops." | ⬜ |
 | Mercenaries | "This fleet has too little space for these mercenaries." | ⬜ |
@@ -101,7 +101,6 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Join armies | "An army on a fleet cannot be combined with another." | ⬜ |
 | Split army | "You can not split an army containing only 1 unit." | ⬜ |
 | Disband army | "An army must be near its own city to disband." · "Are you sure you want to disband this army ?" | ⬜ |
-| Embark | "The army is too large for this fleet ?" (a box with OK only; the click then selects the fleet; ships × 500 < troops) | ✅ `T_EMBARK_REFUSED.SAV` |
 | Fleet | "The fleet can only be repaired at one of your cities." · "A fleet cannot be repaired while it is carrying an army." · "You cannot join fleets if one is carrying an army." · "You can not split a fleet containing less than 20 ships." · "You can not split a fleet carrying an army." · "You can not make any more fleets at this time." · "A fleet cannot be scuttled while it is carrying an army." · "To scuttle a fleet it must be near one of your cities." · "Are you sure you want to scuttle this fleet ?" | 🟡 seen in probes (no save): "The fleet can only be repaired at one of your cities." and "To scuttle a fleet it must be near one of your cities." (the fleet at (98,43), next to a city Gaul had captured), "Are you sure you want to scuttle this fleet ?" in `T_SCUTTLE_FLEET.SAV`'s test; the rest ⬜ |
 | Build fleet | "The fleet will be built at …" · "… ships will be ready in …" · "You do not have a free coastal city at this time." · "You cannot build a fleet at this time." | ⬜ |
 | Fortify | "You cannot fortify a city which is under siege." · "This city cannot be fortified any further." · "This city is already being fortified." | ⬜ |
@@ -133,8 +132,9 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Quarterly billing and taxes | ⬜ | |
 | Fortification build | 🟡 ordered | `saves/fortify-arretium-0720.SAV` |
 | Trade income | 🟡 trade made | `saves/trade-numidia-0720.SAV` |
-| Fleets: build, launch, storms, loss at sea | ⬜ | |
-| Embark, disembark, supply from a fleet | ⬜ | |
+| Fleets: build, launch | ✅ | `saves/fleet-port-antium-0734.SAV` (ordered at 0720, launched at 0732, 12 turns; `findings/2026-10-02-fleet-orders-live.md`) |
+| Fleets: storms, loss at sea, naval battles | ⬜ | planned: `docs/proposals/fleet-battles-and-storms.md` |
+| Embark, disembark, supply from a fleet | ✅ | `T_EMBARK.SAV`, `T_DISEMBARK.SAV`, `T_SUPPLY_FLEET.SAV` (release `run-exp-fleet-orders`) |
 | Rebellion, rebirth | ⬜ | |
 | Weather | ⬜ | |
 | AI declares war on Rome | ⬜ | |
