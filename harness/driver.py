@@ -556,6 +556,15 @@ class Game:
     def fleet_pos(self, i):
         return struct.unpack_from("<2h", self.fleet_rec(i), 0)
 
+    def fleet_state(self, i):
+        """A fleet record read from the game's memory (the save's 26 bytes: x, y, owner +8, countdown +10, moves +12,
+        supplies +14, money +16, ships +18, condition +20, carried army +22). An owner of -1 is a destroyed fleet."""
+        r = self.fleet_rec(i)
+        x, y = struct.unpack_from("<2h", r, 0)
+        owner, countdown, moves, supplies, money, ships, cond, army = struct.unpack_from("<8h", r, 8)
+        return {"id": i, "x": x, "y": y, "owner": owner, "moves": moves, "supplies": supplies, "money": money,
+                "ships": ships, "condition": cond, "army": army}
+
     def fleet_moves(self, i):
         return struct.unpack_from("<h", self.fleet_rec(i), 12)[0]
 
@@ -817,6 +826,26 @@ class Game:
         self.select_army(army, ax, ay)
         self.click_tile(fx, fy, pause=1.5)
         return self.dismiss_popups()
+
+    def attack_fleet(self, own, enemy, answer=None):
+        """Select own fleet, click the adjacent enemy fleet. At war the battle is instant, with no window and no box; the
+        news line ("X sinks fleet of Y.") is in the next autosave. At peace the click asks "Are you sure you want to attack
+        this fleet ?": with `answer` None the box is only read and left open (so a caller can capture it), with True/False
+        it is answered Yes/No. Returns the texts of any box seen."""
+        ox, oy = self.fleet_pos(own)
+        ex, ey = self.fleet_pos(enemy)
+        if max(abs(ox - ex), abs(oy - ey)) != 1:
+            raise DriverError(f"fleet {enemy} at {ex},{ey} not adjacent to fleet {own} at {ox},{oy}")
+        self.select_fleet(own, ox, oy)
+        self.click_tile(ex, ey, pause=1.5)
+        texts = [self.read_popup(w) for w in self.popups() if w[1] in ("Confirm", "Information", "Warning", "Error")]
+        if answer is not None and self.find_windows("^Confirm$"):
+            self.answer("Confirm", yes=answer)
+            time.sleep(1.5)
+            texts += self.dismiss_popups()
+        elif answer is not None:
+            texts += self.dismiss_popups()
+        return texts
 
     def disembark(self, fleet, x, y):
         """Select the fleet and click an adjacent land tile: the carried army lands there. Needs moves on both."""
