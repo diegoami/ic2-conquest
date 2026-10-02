@@ -271,6 +271,12 @@ PR with this file only; `python3 scripts/external_review.py --pr <n>` (DeepSeek 
 
 ## Appendix A. The start-save facts this plan relies on
 
+**Correction (2026-10-02, T0b sweep, `findings/2026-10-02-start-as-each-nation.md`):** the facts below are the world **as seen from Rome's seat (seat 11)**,
+after eleven AI seats have moved. The start differs with the nation you choose: in Ptolemaic's own start (seat 2) it has **4,900 talents**, a **war with
+Seleucid**, and its fleet at **(189,89) with condition 75** (not (190,93), 100); in Seleucid's own start (seat 4) it has 2,700 talents and a third war
+(with Ptolemaic). Carthage's fleet (90 ships at (49,62), condition 85) is the same at seats 11 and 13. Pair 1 and pair 2 should be staged from the starts of the
+nations that are human, not from the Rome start.
+
 Parsed from `saves/run0-start-AUTO0720-seed12345.SAV` with `state/sav.py` (`sav.load`), 2026-10-02:
 
 ```text
