@@ -1,6 +1,6 @@
 # Test results
 
-Last full run: 2026-10-01, `python3 -m tests.test_orders`, build `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`), Wine 9.0, Xvfb 1280×1024. Start save `BASE.SAV` = a new game as Rome with seed 12345 (`AUTO0720.SAV`, SHA-256 `050bc354f1cbbe37…`, 270 BC Spring week 1). Test saves are kept under `$IC2_WORK/tests/` (not in git). All seventeen tests pass (the first twelve in one full run; the five change-units tests re-run after the driver's OK-retry fix, since the full run was interrupted). The toolbar, army-toolbar, battle-toolbar and dialog-control positions are derived at run time (`harness/driver.py`), because they drift with the Wine build.
+Last full run: 2026-10-01, `python3 -m tests.test_orders`, build `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`), Wine 9.0, Xvfb 1280×1024. Start save `BASE.SAV` = a new game as Rome with seed 12345 (`AUTO0720.SAV`, SHA-256 `050bc354f1cbbe37…`, 270 BC Spring week 1). Test saves are kept under `$IC2_WORK/tests/` (not in git). All seventeen tests of the original suite pass (the first twelve in one full run; the five change-units tests re-run after the driver's OK-retry fix, since the full run was interrupted). The eleven fleet tests (2026-10-02, below) were run separately, so the file documents twenty-eight tests and no single run of all of them. The toolbar, army-toolbar, battle-toolbar and dialog-control positions are derived at run time (`harness/driver.py`), because they drift with the Wine build.
 
 ## Seed patch (phase 0)
 
@@ -47,5 +47,23 @@ PASS change_units_refusals (61s): split row 0: '@ this unit is too small to spli
 - **build_fleet**: 10 ships costs 100 talents and starts a 24-week countdown at a free coastal city.
 - **transfer_units**: two turns to put armies 0 and 1 adjacent, then a 5,000-troop unit moves from army 0 to army 1, the total unchanged.
 - The field battle is not a unit test: it lives in `runs/experiments/gallic-army/` (see that README). Rome destroys Gaul's army early in all four seeds, and a battle turn is byte-repeatable.
+
+**Fleet orders (2026-10-02, run from the fixtures `saves/fleet-port-antium-0734.SAV` and `fleet-split-antium-0734.SAV`, because a fleet takes 12 turns to build):**
+
+```text
+PASS embark_refused (33s): army 0 10700 troops stays at (101,45), fleet 2 20 ships carries -1; box ['The army is too large for this fleet ?']
+PASS embark (28s): army 0 (101,45) moves 3 -> aboard at (101,46) moves 0; fleet 2 moves 29 -> 0, carries 0
+PASS disembark (43s): army 0 landed at (101,45) moves 0; fleet 2 moves 0, carries -1
+PASS supply_fleet (33s): fleet supplies 0 -> 100; Antium 330 -> 230
+PASS repair_fleet (35s): condition 97 -> 100, moves 29 -> 0, treasury 1730 -> 1712 (cost 18)
+PASS scuttle_fleet (32s): Rome fleets 1 -> 0; box ['Are you sure you want to scuttle this fleet ? Yes No Cancel']
+PASS split_fleet (34s): Rome fleets 1 -> 2: [(2, 101, 46, 20, 29), (5, 101, 47, 10, 0)]
+PASS join_fleets (31s): Rome fleets 2 -> 1: ship 30, moves 0
+PASS transfer_ships (39s): fleet 2: 20 -> 15, fleet 5: 10 -> 15
+PASS transfer_ships_back (39s): fleet 2: 20 -> 25, fleet 5: 10 -> 5
+PASS move_fleet (28s): fleet 2 (101,46) -> (99,46), moves 29 -> 27; popups []
+```
+
+These eleven ran on their own. After the two driver changes they depend on (`Build fleet` now closes its dialog; `answer` accepts a Confirm with OK only) six of the older tests were re-run and pass: `build_fleet`, `disband_unit`, `disband_army`, `change_units_disband`, `attack`, `end_turn`. The other eleven were not re-run, so "Last full run" above is not a run of all twenty-eight. Fleet attack (a naval battle) is not tested: it needs an enemy fleet next to ours.
 
 Earlier failures, fixed in the driver: a menu item click that arrives with the pointer move is ignored; a menu click after a dialog closed can re-open that dialog; file dialogs keep the last name; the first click into an inactive window only activates it; a second End turn click queued during the AI phase ends two turns (the retry now waits 8 s for any sign of the turn starting).
