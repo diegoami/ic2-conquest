@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-from harness.driver import G, Game  # noqa: E402
+from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
 FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV"}

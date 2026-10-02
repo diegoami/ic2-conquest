@@ -828,17 +828,29 @@ class Game:
         return self.dismiss_popups()
 
     def attack_fleet(self, own, enemy, answer=None):
-        """Select own fleet, click the adjacent enemy fleet. At war the battle is instant, with no window and no box; the
-        news line ("X sinks fleet of Y.") is in the next autosave. At peace the click asks "Are you sure you want to attack
-        this fleet ?": with `answer` None the box is only read and left open (so a caller can capture it), with True/False
-        it is answered Yes/No. Returns the texts of any box seen."""
+        """Select own fleet, click the adjacent enemy fleet. AT WAR (the tested case: 50 battles) the battle is instant, with no
+        window and no box; its effect is verified from the two fleet records (a destroyed fleet has owner -1 and a winner's
+        ships or condition fall) and the click is retried at most twice if nothing changed; the news line ("X sinks fleet of
+        Y.") is in the next autosave. AT PEACE the click is expected to ask "Are you sure you want to attack this fleet ?"
+        (Yes/No, Yes declares war): **untested for fleets**; with `answer` None a box is only read and left open, with
+        True/False it is answered. Returns the texts of any box seen."""
         ox, oy = self.fleet_pos(own)
         ex, ey = self.fleet_pos(enemy)
         if max(abs(ox - ex), abs(oy - ey)) != 1:
             raise DriverError(f"fleet {enemy} at {ex},{ey} not adjacent to fleet {own} at {ox},{oy}")
-        self.select_fleet(own, ox, oy)
-        self.click_tile(ex, ey, pause=1.5)
-        texts = [self.read_popup(w) for w in self.popups() if w[1] in ("Confirm", "Information", "Warning", "Error")]
+        before = (self.fleet_state(own), self.fleet_state(enemy))
+        texts = []
+        for _ in range(3):          # verify the click's effect; retry at most twice
+            self.select_fleet(own, ox, oy)
+            self.click_tile(ex, ey, pause=1.5)
+            texts = [self.read_popup(w) for w in self.popups() if w[1] in ("Confirm", "Information", "Warning", "Error")]
+            if texts:               # a box (the untested peace prompt, or a refusal) is the effect: do not click again
+                break
+            time.sleep(1.0)
+            if (self.fleet_state(own), self.fleet_state(enemy)) != before:
+                break
+        else:
+            raise DriverError(f"attacking fleet {enemy} with fleet {own} changed nothing (no box, both fleet records unchanged)")
         if answer is not None and self.find_windows("^Confirm$"):
             self.answer("Confirm", yes=answer)
             time.sleep(1.5)

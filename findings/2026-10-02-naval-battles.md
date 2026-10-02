@@ -38,8 +38,8 @@ Saves, the probe and `trials.json` are in release `run-exp-naval-battle`.
 | P | 0.66 | 0 / 10 | 10 / 10 | 11–21 of 90 (0.122–0.233, mean 0.162) | 9–18 of 74 (0.122–0.243) |
 | C | 1.51 | 10 / 10 | 0 / 10 | 7–15 of 90 (0.078–0.167, mean 0.122) | 6–12 of 74 (0.081–0.162) |
 | C70 | 1.17 | 10 / 10 | 0 / 10 | 9–19 of 70 (0.129–0.271, mean 0.203) | 10–20 of 74 (0.135–0.270) |
-| C60 | 1.007 | **9 / 10** | 1 / 10 (seed 10) | 11–19 of 60 when the attacker won, 19 of 70 when the defender did (0.183–0.317, mean 0.272) | 9–19 points (0.189–0.324) |
-| C50 | 0.84 | 1 / 10 (seed 8) | **9 / 10** | 13–22 of 70 when the defender won, 13 of 50 when the attacker did (0.186–0.314, mean 0.245) | 9–20 points (0.190–0.317) |
+| C60 | 1.007 | **9 / 10** | 1 / 10 (seed 10) | 11–19 of 60 when the attacker won, 19 of 70 when the defender did (0.183–0.317, mean 0.272) | 14–24 of 74 when the attacker won, 17 of 63 when the defender did (0.189–0.324) |
+| C50 | 0.84 | 1 / 10 (seed 8) | **9 / 10** | 13–22 of 70 when the defender won, 13 of 50 when the attacker did (0.186–0.314, mean 0.245) | 12–20 of 63 when the defender won, 20 of 74 when the attacker did (0.190–0.317) |
 
 In every one of the 50 battles the loser's fleet was destroyed (owner −1) and the winner's ships and condition fell **by the same fraction** (largest difference between the two fractions 0.013). No box appeared in any trial (they were at war). The attacker, when it wins, ends with moves 0; a winning defender's moves were unchanged (23).
 
