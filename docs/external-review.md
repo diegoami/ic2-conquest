@@ -148,7 +148,8 @@ model (the same PR got `rework` and then `approve`): treat a verdict as one opin
 - **The tree proof (first two tool calls, separate because `;` and `&&` are denied):** `git rev-parse --show-toplevel HEAD` (the first line must
   be the worktree path the brief names, the second the head SHA it names) and `git diff --name-only <base>...HEAD` (must not be empty for a PR;
   a release review has no diff by design). If anything is wrong the reviewer says it is in the wrong tree (verdict `decision`) and stops.
-- **Guard:** `tests/test_reviewer_prompt.py` fails if the agent's body, its permission rules, the brief template, or the command line and
-  brief the watcher hands to opencode (checked with a fake opencode) ask for `git -C`. It was broken by hand in each of those four places
+- **Guard:** `tests/test_reviewer_prompt.py` fails if the agent's body, its permission rules, the brief template, or what the watcher hands to
+  opencode (checked with a fake opencode: the brief file it receives, and the fixed message and arguments of its command line, which
+  fails if someone edits that message to ask for it) ask for `git -C`. It was broken by hand in each of those four places
   and failed each time. Not changed: the Claude-side `/review-pr` skill also uses `git -C "$WT"`, but there it is a shell variable in Claude's
   own session (whose working directory is the main checkout), not text a model retypes.

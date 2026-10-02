@@ -6,7 +6,8 @@ path as external_directory, which ends `opencode run`, and the review is lost (h
 The script already starts OpenCode inside the worktree (--dir and the process's working directory), so `-C` buys nothing; the tree
 proof (first two tool calls) covers what it was for. See docs/external-review.md, "Lessons".
 
-No game, no network, no credentials: a fake `opencode` records what the watcher gives it.
+No game, no network, no credentials (the watcher is pointed at a missing auth.json, and the test asserts nothing was copied): a fake
+`opencode` records what the watcher gives it.
 
     python3 -m tests.test_reviewer_prompt
 """
@@ -95,12 +96,18 @@ def test_prompt_the_watcher_hands_to_opencode():
         (SCRATCH / f).unlink(missing_ok=True)
     brief = SCRATCH / "brief.md"
     brief.write_text(er.brief_text("pr", 5, "t", "body", BASE, HEAD, "PR review (x)", WT), encoding="utf-8")
-    os.environ["OPENCODE_EXE"], os.environ["FAKE_OC_DIR"] = str(fake), str(SCRATCH)
+    # OPENCODE_AUTH points at a file that does not exist: the watcher copies auth.json into its data dir, and this test
+    # must not leave a copy of the real credentials in the repository tree (even a git-ignored one).
+    env = {"OPENCODE_EXE": str(fake), "FAKE_OC_DIR": str(SCRATCH), "OPENCODE_AUTH": str(SCRATCH / "no-auth.json")}
+    saved = {k: os.environ.get(k) for k in env}
+    os.environ.update(env)
     t0 = time.time()
     try:
         r = ow.run(brief, ROOT, "provider/model", SCRATCH / "run", data_dir=SCRATCH / "data", log=lambda s: None)
     finally:
-        os.environ.pop("OPENCODE_EXE", None)
+        for k, v in saved.items():
+            os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+    assert not (SCRATCH / "data" / "opencode" / "auth.json").exists(), "the test copied a credential file"
     assert r["class"] == "ok", (r["class"], r["cause"])
     argv = json.loads((SCRATCH / "argv.json").read_text())
     got = (SCRATCH / "brief.txt").read_text()
