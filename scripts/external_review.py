@@ -81,11 +81,16 @@ HEADER LINE (line 1 of your final message, exactly): {hdr}
 ALLOWED VERDICTS (line 2, and again alone as the last line): {", ".join(VERDICTS)}
   approve = no blocking finding; rework = at least one blocking finding; decision = a choice only the player can make.
 
-Worktree (your cwd, detached, read-only for you): {wt}
+Worktree (your working directory, detached, read-only for you): {wt}
 Base SHA: {base}
 Head SHA under review: {head}
-Use `git -C {wt} diff {base}...{head}`. Stay inside the worktree: a read outside it is auto-rejected and the
-run is reported as permission-rejected.
+Your working directory IS that worktree: run git there as it is, WITHOUT -C, and never type the worktree's path
+(a retyped path that is one character off is an out-of-tree access: the run is auto-rejected and lost).
+TREE PROOF, your first two tool calls, separate calls: `git rev-parse --show-toplevel HEAD` (the first line must be {wt}, the
+second {head}) and `git diff --name-only {base}...HEAD` ({"a release review has no diff by design: skip this one" if kind == "release" else "it must not be empty"}).
+If anything is wrong you are in the wrong tree: say so in a review whose verdict is `decision` and stop.
+The diff to review is `git diff {base}...HEAD`. Stay inside the worktree: a read outside it is auto-rejected and the run
+is reported as permission-rejected.
 
 Title: {title}
 
