@@ -56,6 +56,7 @@ Saves are in release `run-exp-two-humans`. "Seat" is the position in the turn or
 - **More than one and a half rounds, one seed, one pair:** the overwrite of the first autosave is two lines of one log; whether a later setting (a rolling save, a different build) changes it is untested.
 - Whether the End turn "mercenary pay" box appears for the same reason in every start (it appeared once).
 - **The Relations dialog at Ptolemaic's seat:** the same step in `t0.py` (open the dialog, screenshot, count the radios) failed in two re-runs ("no controls found", then the window gone before it could be read), while it worked every time at Carthage's seat in `t0_phase2.py`; unexplained, and the failed step is in `t0.json`. The 64-radio count and the screenshot are Carthage's only.
+- **The plan's T0 acceptance was not delivered:** it asked for a scripted two-human round that **repeats byte for byte** from the seed, and for a `play_seat` / round-loop helper in the driver. Neither was done: the round was run twice by hand-written scripts (the re-runs reproduced the same relation and tax values and the same saves' state, but the saves were not compared byte for byte), and `Game.end_turn` is used as it is. Both are open.
 - **Wine-only.**
 
 ## Reproduction

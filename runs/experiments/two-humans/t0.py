@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """T0 of docs/proposals/fleet-battles-and-storms.md: what does the original do with two human seats?
 
-New Game with Carthage (row 1) and Ptolemaic (row 3) human, seed 12345. Records the form, the title bar and CUR_NATION, the
-autosaves (names, when they are written), the turn order, an order for each seat (taxation: it writes the current nation's +0x44A),
-End turn for each seat, and the International relations dialog. Every step is wrapped: a failure is a result.
+New Game with Carthage (row 1) and Ptolemaic (row 3) human, seed 12345. Phase 1 (this file) records the form, the title bar and CUR_NATION,
+the autosaves, the turn order, ONE order for the first seat (Ptolemaic's tax) and its End turn, which hands control to the second human
+seat (Carthage). The second seat's order and End turn, and the International relations war order, are phase 2 (t0_phase2.py). Every step is
+wrapped: a failure is a result.
 
     python3 runs/experiments/two-humans/t0.py
 """
@@ -16,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-from harness.driver import CUR_NATION, G, NATIONS, NATION_LEN, Game  # noqa: E402
+from harness.driver import CUR_NATION, G, Game  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-two-humans"

@@ -13,8 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-from harness.driver import CUR_NATION, G, NATIONS, NATION_LEN, Game  # noqa: E402
-from state import sav  # noqa: E402
+from harness.driver import CUR_NATION, G, Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-two-humans"
 res = {"steps": []}
