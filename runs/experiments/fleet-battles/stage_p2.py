@@ -16,9 +16,13 @@ from harness.driver import G, Game  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
+OUT.mkdir(parents=True, exist_ok=True)
 g = Game()
 g.load(OUT / "FIX_C_0723_carthage_seat.SAV", seed=12345)
 texts_split = g.split_fleet(0, 30)
+after_split = g.fleet_state(0)
+print("after the split: fleet 0 has", after_split["ships"], "ships, condition", after_split["condition"])
+assert after_split["ships"] == 60, "the split did not leave Carthage 60 ships: " + str(after_split)
 name, texts = g.end_turn(timeout=300)
 s = sav.load(str(G / name))
 shutil.copy(G / name, OUT / "FIX_P2_0724_ptolemaic_seat_c60.SAV")
@@ -26,5 +30,5 @@ fl = [(f["id"], f["owner"], f["x"], f["y"], f["ships"], f.get("condition"), f["m
 print(name, "turn", s["turn"], "seat", s["seat_index"], "current", s["current_nation"], "relation", s["nations"][1]["relations"]["Ptolemaic"])
 for f in fl:
     print("fleet", f, "strength", f[4] * f[5] / 10)
-(OUT / "stage_p2.json").write_text(json.dumps({"autosave": name, "turn": s["turn"], "seat": s["seat_index"], "fleets": fl, "split_texts": texts_split, "end_turn_texts": texts}, indent=1, default=str))
+(OUT / "stage_p2.json").write_text(json.dumps({"autosave": name, "turn": s["turn"], "seat": s["seat_index"], "fleets": fl, "split_texts": texts_split, "fleet0_after_split": after_split, "end_turn_texts": texts}, indent=1, default=str))
 g.kill()
