@@ -56,3 +56,4 @@ res["after"] = {"cur_nation": g.i16(CUR_NATION), "sel_fleet": g.i16(SEL_FLEET), 
 shutil.copy(FIX, OUT / "PROBE_START.SAV")
 (OUT / "probe_attack.json").write_text(json.dumps(res, indent=1, default=str))
 print("after", res["after"], flush=True)
+g.kill()

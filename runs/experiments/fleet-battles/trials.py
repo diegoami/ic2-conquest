@@ -27,6 +27,12 @@ CELLS = {"P": ("P", 1, 0, None), "C": ("C", 0, 1, None), "C70": ("C", 0, 1, 20),
          "C60": ("C", 0, 1, 30), "C50": ("C", 0, 1, 40)}     # fixture, attacker, defender, ships split off first
 
 
+OUT.mkdir(parents=True, exist_ok=True)
+for _name, _p in FIX.items():
+    if not _p.exists() and _name != "P2":
+        sys.exit(f"missing fixture {_p}: run stage_cells.py first (and stage_p2.py for the P60 cell)")
+
+
 def strength(f):
     return f["ships"] * f["condition"] / 10
 
