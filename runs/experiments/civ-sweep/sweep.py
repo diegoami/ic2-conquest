@@ -11,7 +11,6 @@ each nation and keeps the autosaves as S<row>_<nation>_AUTOnnnn.SAV.
 """
 import json
 import shutil
-import struct
 import sys
 import time
 import traceback
@@ -64,7 +63,7 @@ def one(row, out):
     g = Game()
     tag = f"S{row:02d}_{nation}"
     try:
-        ok, r = step(rec, "new_game", lambda: [str(x) for x in g.new_game(row=row, seed=SEED)[1]] if False else g.new_game(row=row, seed=SEED))
+        ok, r = step(rec, "new_game", lambda: g.new_game(row=row, seed=SEED))
         if not ok:
             return rec
         path, popups = r

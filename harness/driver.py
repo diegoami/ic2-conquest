@@ -472,10 +472,12 @@ class Game:
 
     NEWGAME_TICK = (117, 117, 21.67)     # x, y of Rome's "human" checkbox, row pitch (measured on the 16-row form)
 
-    def new_game(self, row=0, seed=None):
-        """File > New with the given human nation(s): `row` is a row of the nation list (0 = Rome ... 15 = Thracia) or a
-        list of rows for several human seats. The form has 16 rows 21.67 px apart: the old `114 + 20 * row` was 8 px off
-        by the last row (Thracia). The autosave hook fires at new-game start: returns AUTO0720.SAV's path."""
+    def new_game(self, row=0, seed=None, rows=None):
+        """File > New with the given human nation(s). `row` is a row of the nation list (0 = Rome ... 15 = Thracia); `rows`
+        (or a list passed as `row`) is a list of rows for several human seats (not tested in this branch; the
+        T0 spike in `runs/experiments/two-humans` uses it and checks the autosave's human flags). The form has 16 rows 21.67 px
+        apart: the old `(109, 114 + 20 * row)` was off by 8 px in x and, by Thracia (row 15), about 28 px in y (414 against 442).
+        The autosave hook fires at new-game start: returns `(path of AUTO0720.SAV, popup texts)`."""
         self.set_seed(seed)
         for f in G.glob("AUTO*"):
             f.unlink()
@@ -484,7 +486,7 @@ class Game:
         self.menu("file", FILE_ITEMS["new"])
         self.wait(lambda: self.find_windows("^Imperial Conquest 2$"), 10, "new game form")
         x0, y0, pitch = self.NEWGAME_TICK
-        for r in ([row] if isinstance(row, int) else row):
+        for r in (list(rows) if rows is not None else [row] if isinstance(row, int) else list(row)):
             self.click(x0, round(y0 + pitch * r), pause=0.5)       # the nation's "human" tick
         self.click(344, 194)                                  # OK
         self.wait(lambda: (G / "AUTOSAVE.LOG").exists(), 120, "new-game autosave")
@@ -1012,12 +1014,14 @@ class Game:
         """Build a fleet of <ships> at the free coastal city the game picks. The
         Build fleet dialog has a 1s and a 10s spinner; OK starts construction."""
         self.tool("build_fleet")
+        # Either the dialog opens, or a box refuses ("Only nations with coastal cities can build fleets", seen for Dacia,
+        # Galatia and Media; coverage.md also lists "You do not have a free coastal city at this time."): wait for one of them.
+        self.wait(lambda: self.find_windows("^Build fleet$") or [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")],
+                  8, "the Build fleet dialog or its refusal")
         if not self.find_windows("^Build fleet$"):
-            time.sleep(1.5)
             refusal = [self.read_popup(w) for w in self.popups() if w[1] in ("Information", "Warning", "Error")]
-            if refusal:        # "You do not have a free coastal city at this time." (no dialog opens)
-                self.dismiss_popups()
-                return refusal
+            self.dismiss_popups()
+            return refusal
         cs = self.controls("Build fleet")
         ups = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
         for _ in range(ships % 10):
