@@ -50,11 +50,19 @@ step("load Carthage's turn (T0_AUTO0720.SAV)", lambda: (g.load(OUT / "T0_AUTO072
 def relations_dialog():
     g.tool("relations", pause=2.0)
     g.wait(lambda: g.find_windows("^International Relations$"), 10, "International Relations")
+    for _ in range(8):          # the controls are not always enumerable the instant the window appears
+        try:
+            cs = g.controls("International Relations")
+            break
+        except Exception:     # noqa: BLE001
+            time.sleep(1)
     w = g.find_windows("^International Relations$")[0]
-    cs = g.controls("International Relations")
     g.shot(OUT / "t0_relations_dialog_carthage.png", window=str(w[0]))
     n = sum(1 for c in cs if c["cls"] == "TRadioButton")
-    g.click_control(g.control(cs, text="Cancel"), pause=1.0)
+    for _ in range(3):          # Cancel until the window is gone (a click into an inactive window may only activate it)
+        g.click_control(g.control(cs, text="Cancel"), pause=1.5)
+        if not g.find_windows("^International Relations$"):
+            break
     return {"radio_buttons": n, "window": w[2:], "closed": not g.find_windows("^International Relations$")}
 
 
