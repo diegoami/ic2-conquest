@@ -361,18 +361,17 @@ post-battle dialog captured unanswered.
 - **Each task PR:** code, findings draft, a `tests/results.md` line, `coverage.md` rows; the same review once per PR. Reviewers check
   that every claim cites a save, that `lab`/L1/L2 cells are labelled, and that no binary is in git.
 
-## 9. Questions only the player can answer
+## 9. Questions for the player: answered (2026-10-04, relayed from the research session)
 
-1. **Start save:** may the bot download `1_rome_270_winter_11.sav` from release `run-1-rome` (which repository holds it?) to start the
-   sweep, or should it use its own natural `FLD-RG`? Reading a release writes nothing, but it is your call.
-2. **"Three standard battalions":** three units of one battalion (the plan's reading: an i16 holds at most 32,767 troops), or something
-   else? And may the research session settle the rout wording ("half the battalion" against `standardSize/25`)?
-3. **Exchange hook (B11):** can the research session supply the exchange routine's address and register/stack layout? Without them B11
-   is dropped and actions stay inferred.
-4. **Budget:** about 25–33 h of unattended game time in all (the §5 table summed) (5–6 h for the sweep). Run all of it, or stop after B5 + B8 (the research
-   deliverable) and decide the rest then?
-5. **Fixtures in git:** may `FLD-RG`, `SIE-TAU` and one `BATTLEnn.SAV` (a resumable mid-battle save) join `saves/` with README rows?
-6. **A human-style plan for B12:** do you want to write one yourself?
+1. **Start save:** yes, download it: `gh release download run-1-rome --repo diegoami/imp_conquest_fixtures --pattern "1_rome_270_winter_11.sav" --dir <dir>` (the repository is public). It is the branch where the battle was replayed on auto with no freeze: `1_rome_270_winter_7` → `winter_7_b` → `winter_9_b` → `winter_11`. The research repository's `docs/evidence-index.md` maps every cited save to its release.
+2. **"Three standard battalions"** = three units, each of one standard battalion. The standard battalions (DAT unit-type table `+0x1A`) are light infantry 15,000, heavy infantry 6,000, archers 3,500, light cavalry 7,000 and heavy cavalry 2,500 (three LI battalions in one unit would pass the 32,767 cap). **For the icon question, also vary a single unit's troop count across the type's range: about ¼, ½, 1× and 2× the standard battalion, capped at 32,767**, to find the thresholds at which the screen changes a unit's drawing (added to B8).
+3. **Exchange hook (B11):** not yet. A research pass decompiling the whole battle module started on 2026-10-04; its reports (a tactical-battle spec) will name the exchange routine's address and the order of the Random draws. **Build the hook only after they land**; the player will relay the address.
+4. **Budget and staging, and do not start before the player's go.**
+   - **Stage 1:** the sweep with Computer general on both sides, plus the screenshots (each unit type at each size, and the full layout), delivered as a findings draft (B0 to B5, B8, with B1-B4 as their prerequisites).
+   - **Stage 2:** the exchange-level hook (once the address arrives) and the human-driven side (B7, B11, B12 and the sweep re-run with the hook).
+   - The sieges, the resolver and `TBattlePols` (B13 to B16) are not assigned to a stage by the research session; they stay after Stage 1 unless the player says otherwise.
+5. **Saves are never committed.** They go in the run's `run-<id>` release, cited by bare file name; working copies, including a resumable mid-battle save, stay in the git-ignored `artifacts/run-exp-<name>/` (the committed `saves/` folder gets no new file). Neither `imperial_conquest_2` nor the research repository ever holds a save. **This replaces the plan's request to add fixtures to `saves/` in git** (the existing committed saves stay as they are).
+6. **Human-style plan for B12:** the bot scripts it, for example advance in line, shoot when in range, melee the nearest enemy; the plan is recorded exactly with the run so it can be repeated; the player may supply their own later.
 
 ## Appendix: unverified items
 
