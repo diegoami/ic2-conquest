@@ -831,9 +831,9 @@ class Game:
         """Select own fleet, click the adjacent enemy fleet. AT WAR (the tested case: 50 battles) the battle is instant, with no
         window and no box; its effect is verified from the two fleet records (a destroyed fleet has owner -1 and a winner's
         ships or condition fall) and the click is retried at most twice if nothing changed; the news line ("X sinks fleet of
-        Y.") is in the next autosave. AT PEACE the click is expected to ask "Are you sure you want to attack this fleet ?"
-        (Yes/No, Yes declares war): **untested for fleets**; with `answer` None a box is only read and left open, with
-        True/False it is answered. Returns the texts of any box seen."""
+        Y.") is in the next autosave. AT PEACE (tested on trade terms, `findings/2026-10-03-fleet-peace-prompt.md`) the click asks "Are you sure you want to attack this
+        fleet ?" (Yes, No, Cancel; No and Cancel change nothing; Yes declares war on the target and its ally and the battle follows at
+        once); with `answer` None a box is only read and left open, with True/False it is answered. Returns the texts of any box seen."""
         ox, oy = self.fleet_pos(own)
         ex, ey = self.fleet_pos(enemy)
         if max(abs(ox - ex), abs(oy - ey)) != 1:
