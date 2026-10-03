@@ -1,0 +1,385 @@
+# Plan: battles (the tactical screen half-round by half-round, sieges and the instant resolver, the post-battle peace)
+
+**Status:** plan for review (2026-10-04, revised the same day for the research request). Nothing here has been run.
+Author: Claude Opus 5.5 (planner). Implementation: Sonnet; review: DeepSeek V4.1 Flash, then GPT-6 Sol once per PR at low effort.
+These are **experiments, not runs**: no issue approval is needed (rule 4 concerns real runs). Battles come before the chatbot work.
+The form follows `docs/proposals/fleet-battles-and-storms.md`: tasks with cells and seeds, acceptance criteria, natural and synthetic
+evidence, and each experiment ends with a `findings/` draft and a release `run-exp-<name>`.
+
+## 0. Decisions recorded, and what is still open
+
+**Decided by the player (2026-10-04):**
+
+1. **Scope: all four areas.** (A) field battles under *Computer general*; (B) playing the tactical screen ourselves;
+   (C) city sieges and the instant resolver; (D) the post-battle peace dialog `TBattlePols`.
+2. **Process:** Opus plans, Sonnet implements, DeepSeek V4.1 Flash and then GPT-6 Sol (low, once per PR) review.
+3. **Order:** battles first, then the chatbot. **No issue approval for experiments.**
+4. **The research request** (relayed 2026-10-04 from the `imperial_conquest_2` research session; quoted in §0.2) is **the real scope
+   and the deliverable shape of A and B**. It feeds the clone's v0.5.0 "Battles", research issue `imperial_conquest_2#496` and the
+   research roadmap §3 item "Battle minigame: exchange log and sweeps". **Nothing is written to that repository or to the research
+   repository**: the bot tells the user the draft's file name and branch for the research repo's findings intake.
+5. Carried over from the fleet plan: synthetic states are acceptable when labelled; 30 seeds at parity cells where a **win rate**
+   is the measure. The research sweep asks for 2–3 seeds per cell, because the measure there is the **exchange log** and not a rate (§4).
+
+**Still open (§9):** the start save from `run-1-rome`; how to read "three standard battalions"; the exchange hook's addresses; the
+budget; fixtures in `saves/`.
+
+### 0.1 Changes after the research request
+
+- **A and B are rebuilt around a half-round dataset.** The old B1–B4 (win-rate grids under Computer general, from edited strategic
+  armies) become: one sweep of **25 ordered type pairings × 3 sizes × 3 seeds**, every half-round logged from the battle block, both
+  sides on Computer general (B4–B6). The win-rate cells that are still useful to the chatbot (the natural Rome v Gaul battle,
+  repeatability, HI v LI, the morale clamp) become one smaller task, B10.
+- **The battle-lab build is now the main instrument, not an optional probe.** It reseeds at battle start and saves every half-round
+  (`patches/battle_lab.py`). It was question 2 of the first version; now it is the design, labelled `lab` in every table.
+- **New tasks:** the battle-block decoder and a round-trip check (B2); **crafted mid-battle saves** (B3); the survey of every button
+  and the human order set (B7, which absorbs the old B5–B6); screenshots of every unit type at every icon size, plus the full layout
+  (B8); terrain (B9); an **exchange hook** if the research side supplies the addresses (B11).
+- **Kept as they were:** the sieges (now B13–B14), the instant resolver (B15), `TBattlePols` (B16), the dialog capture before any
+  battle is run (§3.5), the scripted plans against Computer general (B12, lower priority).
+- **Budget:** the first version guessed 3 minutes a trial and 25–30 h. With the lab build (a battle computes in 1.3–1.9 s, [R]) a sweep
+  trial is about 1 minute, so the sweep's 225 battles take **about 4–5 h**. That figure is still unmeasured: B0 measures it (§5).
+
+### 0.2 The research request, in short
+
+**Question:** how does `TBattleMap` play out, half-round by half-round, for each pairing of LI, HI, archers, LC and HC at three sizes?
+It covers movement and initiative, the AI general's placement and target choice, shooting against melee, rout, surrender, the capture
+of money and supplies, promotion, terrain and end conditions, and whether the bot can drive or auto-play the screen in each case.
+**Design:** a start save with a provoked battle, then crafted mid-battle saves; the seed fixed at battle start; both sides on Computer
+general; separately, a human side issuing its own orders; try every button. **Measure every half-round:** each slot's position,
+troops, quality and morale; who acted, the action and the target; losses, routs, surrenders, captures, promotions. **At the end:** the
+result dialog, the strategic armies before and after, the news. Add an exchange-level hook if feasible.
+**Deliver:** the saves in a release; a findings draft (Method, Observations, Inferences, a sweep table, "What this does not
+establish", Wine-only); screenshots of every type at every size the screen distinguishes, and of the whole layout.
+
+## 1. What is known, what is only claimed, what was measured live
+
+Tags as in `docs/rules-digest.md`: **[C]** decompiled code, **[D]** derived, **[O]** observed only, **[P]** parsed. New tag **[R]**:
+stated by the research request from research reports this repo cannot see (mainly `2026-09-28-battle-minigame-headless-feasibility.md`).
+An [R] item is to be checked, not assumed.
+
+### A–B. The tactical battle
+
+- Any army-v-army battle with a human side goes to `TBattleMap`; two AI nations use the instant resolver [C] (§6). Code map [R]:
+  `FUN_0044aee4` → `TBattleMap.StartBattle` (`0x436FB4`); a fresh start through `FUN_00437de4`, a resume through `FUN_00439968`;
+  the Computer general loop `FUN_00439c84`/`FUN_00439ce8`; the half-round end `FUN_00439c20`; 12 random-draw sites; RandSeed `0x45E030`.
+- **Repeatability [R]:** with RandSeed fixed at battle start, a battle replays byte-identically. **A save written inside the battle**
+  holds the battle block for every half-round (each slot's position, type, troops, quality and battle-local morale, plus the grid).
+  **Loading it resumes the battle deterministically, and an edited one plays out from the edited state.** A fast-build battle
+  computes in 1.3–1.9 s over 13–20 half-rounds.
+- Battle block in a save (block 12): `2+2+2+1+2+1760+336` bytes, present only with the battle flag set (`docs/sav-layout-notes.md`).
+  The field layout is not in this repo. A guess from the sizes, unverified: 1760 = 40 slots × 44 bytes, 336 = 14 × 12 × 2.
+  There is an unknown slot word at `+2` (`DAT_004a0348`) [R].
+- **Confirmed [R/C]:** melee loss cap `min(raw, floor(0.4 × troops)) + 1`; initial morale `clamp(Random(q×4) + army.morale, 60, 90)`,
+  +3 for a computer side. Rout: the request says "half the standard battalion (600, 240, 140, 280, 100)", but those numbers are
+  **`standardSize/25`** (LI 15,000, HI 6,000, Ar 3,500, LC 7,000, HC 2,500; `rules-digest.md` §4 table, §6 Rout). That wording is to be
+  settled with the research session (§9).
+- **Only structurally checked [R]:** the type matrix `M`, the power term `M × troops × (q×10 + morale)/2000 + 12`, the focus and defence
+  factors, the shooting formula, the morale deltas (§6 gives them as [C]). Tactical moves: LI 4, HI 2, Ar 4, LC 6, HC 5 (§4 table).
+- **Open (the request's gaps):** movement and initiative; placement and target choice (the AI general is not decompiled, §12 gap 6);
+  surrender, capture of money and supplies, promotion (`max(q,6)` then 1-in-4 +1 is only [D, empirical]); terrain; the slot word `+2`;
+  how the screen draws each type at each size.
+- Digest claims to recheck: "36.6 % then 24.4 % from the same save" (clock-seeded: a spread across seeds, not a repeatability
+  failure, `findings/2026-09-29-loading-a-save-does-not-reseed.md`); HI v LI (matrix 1 both ways, §12 gap 10).
+
+**Measured live:** `runs/experiments/gallic-army/`. Rome's joined army (45,700) beat Gaul's (about 43,150) in 4 of 4 seeds and lost
+20.6–30.2 %; the battle turn is byte-repeatable on the normal seed build. The driver knows the battle toolbar (y = 112: End turn
+about 114, Computer general about 165, by tooltip), the phase text in the title ("Rome  v  Gaul          Rome to place units."),
+the battle flag `0x4A0B7C`, and that Computer general must be on during placement. The auto-play is flaky: the window can end up
+below others (`coverage.md` §1 🟡). **Defects found by reading:** `gallic-army.py` keeps only the last unit of each type in
+Gaul's composition; `play_battle` discards the texts of the boxes it closes, and `dismiss_popups` answers any Confirm **Yes**, so
+whether a post-battle dialog appeared in those battles is unknown.
+
+### C. Sieges and the instant resolver (unchanged)
+
+- Siege `FUN_0044b27c` [C] (§5 Siege): `atk = (Σ troops, archers ×3) div 80 × morale`; `def = loyalty×150 + fort×250 + pop×200`,
+  then ×5/3 (a capital with loyalty > 59), ×4/5 (owner ≠ allegiance), + slot troops/2, and ×9/10 (the attacker is the allegiance
+  nation). **`atk > def` wins, ties go to the defender, and the outcome has no random term.** Erosion happens win or lose. Casualties
+  are `troops/(Random(15)+105) × r` with `r = max(1, min(15, def×6 div atk))`. Capture, cascade and conquest rules: §5 [C].
+- The **2.5–2.85 % uniform loss** claim [O] is exactly `r = 3` (3/119 to 3/105) [D, this plan].
+- Instant resolver [C] (§6): higher field strength wins; the winner's casualties are at ratio `loserPower × 40 / winnerPower`; with
+  a 2-in-5 chance, peace with reparations follows.
+- **Live:** one failed siege, `saves/siege-felsina-failed-0721.SAV` (atk 20,720 v def 34,050; −8.2 % against the formula's 7.6–8.6 %;
+  erosion `x×19/20+1`), and Genua at peace (`findings/2026-10-02-unit-map-mouse-orders-and-tax-range.md`). No capture, cascade,
+  conquest or AI-v-AI battle has been measured.
+
+### D. `TBattlePols` (unchanged)
+
+`TBattleOver_OK` may open it ("After defeating you in battle X are willing to end …"); a treaty accepted there is the honourable one
+[C]. It is the only way a human–AI war ends, short of elimination [C] (§7). It has never been seen live.
+
+**Digest gaps this plan closes:** §12 gap 6 (AI general, sampled and logged), 10 (HI v LI), 3 (battle-screen and `TBattlePols` controls),
+11 (repeatability of a battle and of a played battle); the ⬜/🟡 rows of `coverage.md` for field battle, capture, cascade, conquest,
+post-battle peace and "Are you sure you want to surrender ?".
+
+## 2. Evidence classes and the two levels of crafting
+
+- **Natural:** reached by `Game` orders from a New Game with a seed.
+- **Synthetic L1 (strategic edit):** a save edited **before** the attack (an army's units, quality and morale; a city's fields), and
+  the battle then starts fresh. **Placement and initiative stay the game's own**, so L1 is what the sweep uses.
+- **Synthetic L2 (block edit):** a **mid-battle** save whose battle block is edited (slot types, troops and positions). The battle
+  resumes from it. L2 controls positions, ranges and terrain, but it skips placement.
+- **Lab:** run on the battle-lab build. Every sweep row is `lab`. The normal seed build is used for natural anchors and for D.
+  The tables keep these classes apart.
+
+## 3. Common infrastructure (one PR, before any battle grid)
+
+**3.1 Lab builds per seed.** `patches/battle_lab.py` bakes the seed into the exe (`lab.py [seed]` → "IC2 lab.exe", built from
+`patch_exe` with async sound, no delay and autosave). It writes `BATTLEnn.SAV` before every half-round, with a two-digit counter that
+is **not reset between battles**, so one battle per process. Deliverable: `setup/` builds `IC2 lab s<seed>.exe` for seeds 1–3
+(more on demand), recording each exe's SHA-256. *Acceptance:* the same battle twice on one lab exe gives identical `BATTLEnn.SAV`
+series [R to confirm]; two seeds differ.
+
+**3.2 Trial runner** `runs/experiments/battles/trials.py` (the `fleet-battles/trials.py` pattern). A cell table maps each cell to
+(fixture, L1/L2 edits, exe, order, general); per trial it starts a fresh process, loads, snapshots, provokes or resumes, plays, snapshots
+again, copies the `BATTLEnn.SAV` series and a post-battle Save As. Results go to append-only `trials.jsonl`; the runner is resumable,
+records errors, never retries silently, and kills stale wine pids. *Acceptance:* offline dry run with a fake `Game`; one live trial.
+
+**3.3 Staging tool** `runs/experiments/battles/stage.py`. L1: `set_units`, `set_morale`, `set_supplies`, `set_money`, `set_city`,
+`set_unity`, `set_relation`. **Army positions are never edited** (the marker rule is unverified); adjacency comes from `Game.move`.
+*Acceptance:* `tests/test_battle_stage.py`: a no-op edit is byte-identical; each edit changes only its own field; the game reads the
+edited values back from memory.
+
+**3.4 Result reader** `state/battle.py` plus `Game.army_state`/`nation_state`. It reads every unit (slot, type, troops, quality,
+mercenary label), morale, supplies, money, unity and relations, and the news lines of a post-battle Save As. `diff()` gives the winner,
+losses per unit and type, promotions, what was taken and the unity change. *Acceptance:* tests on saved pairs; the gallic per-type bug
+is fixed.
+
+**3.5 Dialog capture in battles** (driver). `play_battle(..., on_dialog="capture"|"yes"|"no"|"strict")`: any window that appears after
+"Battle ended" is screenshotted, OCR'd and dumped with `Game.controls`, and its text is **returned**. Default behaviour stays as it is
+until D. *Acceptance:* offline tests in the style of `tests/test_end_turn_reclick.py`.
+
+**3.6 Media.** Screenshots and videos go to `artifacts/run-exp-<name>/` and then the release, cited by bare filename, **never in git**.
+
+**3.7 Repeatability.** Normal build: `SEED.TXT` is read at program start and New Game only, and loading does not reseed. Lab build:
+reseeded at battle start and on resume [R]. Cells that share a seed set are paired samples, and the analyses say so.
+
+## 4. Tasks
+
+S < 1 day, M 1–2 days, L more. "Game" = needs Wine. Sizes per type (standard battalion `std`: LI 15,000, HI 6,000, Ar 3,500,
+LC 7,000, HC 2,500): **half** = one unit of `std/2`; **one** = one unit of `std`; **three** = **three units of `std`**, because a
+unit's troops are an i16 (45,000 LI does not fit) and one unit per slot is the game's own grain (a reading to confirm, §9).
+
+### B0. Probe (S, game): one battle end to end, both builds
+
+From `FLD-RG` (§4 B1) or the research start save `1_rome_270_winter_11.sav` (release `run-1-rome`, if the player makes it available), nothing auto-answered,
+screenshots at every step:
+1. The normal seed build: attack. Record the title's phase text, `in_battle`, the window geometry and stacking, the time to open,
+   `Game.controls` of the battle window, a tooltip scan of the **whole** toolbar width, the Computer general run, the click count,
+   the "Battle ended" box (OCR and controls), whatever opens after OK (§3.5, **left open**, then **No**), and the post-battle
+   Save As news.
+2. **Save As inside a battle:** with the battle window open, try File → Save As (menu and toolbar). Record whether it is reachable,
+   whether the file has block 12, whether it clears anything (`SEL_ARMY`, the battle flag, the window) and whether the battle continues.
+3. The lab build (seed 1): the same battle; keep the `BATTLEnn.SAV` series; time per trial (process start to post-battle save).
+4. **Resume:** File → Open of `BATTLE05.SAV` (lab) resumes the battle, and the remaining half-rounds equal the original's byte for byte [R].
+
+*Acceptance:* findings note, release `run-exp-battle-probe`; measured time per trial; answers to items 2 and 4.
+**Gate:** 5 battles in a row complete headless, and the resume works. If not, stop and report before B3.
+
+### B1. Fixtures (S, game)
+
+`FLD-RG` (Rome's joined army adjacent to Gaul's at Rome's turn, moves > 0; the `gallic-army.py` route, turn 0723), `FLD-R0G` (army 0
+alone), `SIE-FEL`, `SIE-TAU` (siege approaches), and terrain fixtures for B9 (the same armies adjacent on plain, forest and mountain
+tiles, if they can be reached in a few turns). Built natural, seed 12345, twice byte-identical (`tests/make_battle_fixtures.py`).
+
+### B2. Battle-block decoder (M, game for the inputs)
+
+`state/battle_block.py` parses block 12 from B0's lab series. It decodes the per-slot fields (position, type, troops, quality,
+battle-local morale, the word `+2`) and the grid, checked against the screenshots and the strategic armies, and finds the block in game
+memory so a live battle can be read without saves (`Game.battle_state()`). Diffs between half-rounds give inferred actions: a position
+change is a move; a loss with no adjacent enemy is shooting; a loss next to an enemy is melee. Inferred actions are labelled `[D]`,
+since one half-round can hold several exchanges. *Acceptance:* every field named or listed as unknown; the grid ↔ screen mapping
+checked on 4 cells; the word `+2` tested as a link to the army's unit index (hypothesis).
+
+### B3. Crafted mid-battle saves (M, game)
+
+`stage.py block`: edit slots (type, troops, quality, morale, position) and the grid in a `BATTLEnn.SAV`, **keeping the strategic armies'
+units consistent**. How slots link to units is unknown; B2 decides it. *Acceptance:* the round-trip (a no-op edit is identical, each
+edit is local); an edited save loaded in the lab build resumes and plays from the edited state [R], shown by its first half-round
+diff; one edit that the game rejects or "repairs" is reported.
+
+### B4. One pairing end to end (S, game)
+
+HI v HI at size *one*, both on Computer general, seeds 1–3, L1. The full logger (§3.2 + B2) produces the sweep-table row and the
+per-half-round log, and the same seed runs twice. *Acceptance:* the row format is fixed here; the replay is byte-identical.
+
+### B5. The sweep (L, game): the request's main dataset
+
+- **Cells:** attacker type × defender type (**25 ordered pairings**: the attacker is the human side, Rome, both on Computer general) ×
+  **3 sizes** (both sides at the same level: half/half, one/one, three/three) × **seeds 1–3** = **225 battles**, L1 from `FLD-RG`
+  (natural positions, edited armies, q6, morale 65). Then a **size matrix** for 5 pairings (the diagonal HI-HI, HI→LI, LI→HI, LC→Ar,
+  Ar→HC: 3 × 3 sizes minus the diagonal = 6 extra combinations × 3 seeds = 90 battles).
+- **Per half-round** (from the block): each slot's position, troops, quality, morale; inferred actor, action and target; losses on
+  both sides; routs (a slot removed or fleeing), surrenders. **At the end:** the result box's text, the strategic armies before and
+  after (troops, money, supplies, morale, per-unit quality: promotion), unity, news, the end condition (annihilation, rout, surrender,
+  turn limit) and the number of half-rounds.
+- **Sweep table:** one row per battle: pairing, sizes, seed, half-rounds, winner, losses each side, end condition, saves (start,
+  `BATTLEnn` series, post-battle).
+- *Acceptance:* 315 rows, or the gaps stated; every row cites its saves in release `run-exp-battle-sweep`; placement per type and
+  initiative (who moves first, in what order) tabulated from half-round 0–1; target choice tabulated (nearest? weakest? by type?)
+  as observations of the AI general, not rules.
+
+### B6. Mixed armies and the attacker side (M, game)
+
+Ten mixed-army battles: Rome's natural composition against Gaul's (`FLD-RG` as is, 3 seeds), a balanced mix against a cavalry-heavy
+and an archer-heavy mix, and the same three with the roles swapped. Roles swap through a two-human seat game (Rome and Gaul human;
+`findings/2026-10-02-two-human-seats.md`). That also answers whether Computer general gets the +3, and what the screen does when both
+sides are human. If two humans cannot share a battle, record that and keep Rome as the attacker. *Acceptance:* rows in the sweep
+table; the +3 question answered from the battle-local morale at half-round 0.
+
+### B7. Every button and the human order set (M–L, game): the old B5–B6
+
+- **Survey:** every toolbar button (by tooltip) and every control (`Game.controls`) on the battle screen, each clicked once on a lab
+  save with its effect read from the block: End turn, Computer general, Surrender (the "Are you sure you want to surrender ?" box, **No**
+  then, in a separate trial, **Yes**: what is captured), and any others found.
+- **Human order set:** place, move, melee, shoot and end turn by mouse, each verified on `Game.battle_state()`, retried at most twice,
+  never a second End turn unless the first provably did nothing. Driver orders: `battle_place`, `battle_move`, `battle_attack`,
+  `battle_shoot`, `battle_end_turn`, `battle_surrender(answer)`, with `tests/test_battle_orders.py`.
+- *Acceptance:* a table of buttons with their effects and screenshots; each order tested once; 5 played battles in a row complete
+  headless; the request's "can the bot drive or auto-play in each case" answered per sweep pairing (auto-play from B5; driven from B12).
+
+### B8. Screenshots: every type at every size, and the layout (S–M, game)
+
+- **Icon ladder:** using L2 crafted saves, set one slot per type to troop counts on a ladder (100, 250, 500, 1,000, 2,000, … up to the
+  i16 limit), screenshot the grid at each step, image-diff the slot's icon and bisect between steps where it changes. That gives how
+  many variants the screen draws per type and at what troop thresholds.
+- **Layout:** the whole screen at placement, at a move phase and at the end; panels, the toolbar with tooltips, the unit information
+  shown on click, the result dialog, the surrender box, any post-battle dialog.
+- *Acceptance:* a screenshot index (type × variant × threshold) in the finding; every image in the release; thresholds to ±1 step of
+  the bisection.
+
+### B9. Terrain (S–M, game)
+
+Does the 336-byte grid change with the strategic tile? Compare the grid of battles from plain, forest, mountain and river-adjacent
+fixtures (B1). If it does: two pairings (HI-HI, LC→LI) × the terrain variants × 3 seeds, and L2 edits of the grid to isolate one
+terrain cell. If the grid never changes: report that and stop. *Acceptance:* the grid contents per fixture; a stated answer.
+
+### B10. Win rates for the chatbot (M, game): what remains of the old B1–B4
+
+On the normal seed build, Computer general: the natural Rome v Gaul (`FLD-RG`, 30 seeds) and army 0 alone (`FLD-R0G`, 30), the
+same-seed repeatability (5 × 2, byte compare), HI v LI at troop ratios 1, 1.25, 1.5, 2 (10 seeds each), and the **morale clamp test**:
+army morale 30 v 35 at q6 must give every unit 60, so the two cells must be identical seed by seed [D]; 90 v 95 likewise.
+*Acceptance:* win rates with intervals; the 36.6/24.4 % claim against the observed spread; the clamp passes or fails seed by seed.
+
+### B11. Exchange hook (M, conditional)
+
+Research roadmap step 4: a cave on the exchange routine (as `battle_lab.py` does for the half-round end) appends one line per
+exchange to `EXCH.LOG`: attacker and defender slots, types, troops, terrain, the random draws and the resulting losses. **It needs the
+routine's address and its register/stack layout**, which are in research reports not available here (§9). *Acceptance:* on B4's
+battles the log's losses sum to each half-round's block diff; then re-run B5 with the hook (it is cheap once built).
+
+### B12. Scripted plans against Computer general (M, game, lower priority)
+
+`P-HOLD`, `P-FOCUS` (focus fire `f = 4`: attacker loss ×1/5, defender ×13/5 [D]) and `P-CAV`, paired against Computer general on the same
+seeds (S-PAR 30, two hard sweep cells 10), plus played-battle repeatability (paint routines write RandSeed). *Acceptance:* a paired
+table (McNemar on the discordant pairs), time per played battle, one win and one loss saved per plan.
+
+### B13. Siege threshold and modifiers (S–M, game): unchanged
+
+3 seeds a cell (the outcome is deterministic): atk = def (fails), def ± 1 % (falls / fails), the same atk built with archers (identical
+to the others seed by seed), fort 0/50/100/pending, capital loyalty 59 v 60, owner ≠ allegiance, attacker = allegiance (×9/10, missing
+from `state/sav.siege_defence`), slot troops. *Acceptance:* every outcome as predicted; one natural capture (`SIE-TAU`) with saves.
+
+### B14. Siege casualties, erosion, capture (M, game): unchanged
+
+Casualties at `r` = 1, 3, 9, 15, 10 seeds each (within `r/119 … r/105`; one shared draw or one per unit; the 2.5–2.85 % claim at `r = 3`;
+small units deleted); erosion against the formula; capture effects (owner, unity +9/−15, wealth, treasury, loyalty, slots, the recruit
+list); the defection cascade (natural if possible); conquest (lowest priority). *Acceptance:* tables against the formula, each
+disagreement listed.
+
+### B15. Instant resolver, AI v AI (M, game): unchanged
+
+Natural sampling from autosave pairs (10 seeds × 6 turns, Rome passive); each "X destroys army of Y" between two AI nations is matched to
+both armies; predicted winner by field strength; casualties `loserPower × 40 / winnerPower` %; the 2-in-5 peace. Battles are labelled
+*confounded* if an army also moved or hired that turn. A synthetic boost is used if natural battles are fewer than about 20.
+*Acceptance:* a table with saves; the rule confirmed or contradicted.
+
+### B16. `TBattlePols` (S–M, game): unchanged
+
+After §3.5. D-LOSS (a human defeat: `FLD-R0G` seeds Rome loses, or a weak synthetic army, 10 seeds), D-WIN (a human victory,
+10 seeds): does the dialog open, with what title, text, buttons and controls; **Yes v No** on the same seed: relations (expect −18),
+news, reparations, the next turns. The gate is varied (unity, cities) if the rate is neither 0 nor 1. *Acceptance:* screenshots, saves,
+`answer_battle_peace(yes)` with a test, the `coverage.md` rows.
+
+## 5. Sequencing and an honest budget
+
+| step | task | battles | time per battle | game time |
+|---|---|---:|---|---:|
+| 1 | B0 probe and gate | ~10 | measured here | 1 h |
+| 2 | §3 infrastructure, B1 fixtures, B2 decoder | ~10 | — | 1–2 h (mostly offline work) |
+| 3 | B3 crafted saves, B4 one pairing | ~10 | ~1 min | 0.5 h |
+| 4 | **B5 sweep** | 315 | ~1 min [est.] | **5–6 h** |
+| 5 | B7 buttons + order set, B8 screenshots | ~60 + ladder | 1–3 min | 3–4 h |
+| 6 | B9 terrain, B6 mixed | ~50 | ~1 min | 1–2 h |
+| 7 | B11 hook (if addresses), B5 re-run with the hook | 315 | ~1 min | 5–6 h |
+| 8 | B16 `TBattlePols`, B13, B14 sieges | ~120 | ~1 min | 2–3 h |
+| 9 | B10 win rates, B15 instant resolver, B12 plans | ~250 | 1–2 min | 6–8 h |
+
+**The ~1 min per battle is an estimate.** It is about 10 s of process start, 5 s to load, about 5 s to open the battle and play
+it (1.3–1.9 s of compute [R] plus the clicks), and about 10 s for the result, a Save As and copying the `BATTLEnn` series. A fleet
+trial took about 0.8 min. B0 replaces the estimate with a measurement. An End turn per trial (for the next autosave's news) would add
+30–60 s, so the plan reads the news from a post-battle Save As instead (to be verified in B0). Running several Wine prefixes in
+parallel (one `IC2_WORK` per worker) could cut wall time but is not planned.
+
+**Releases and drafts:** `run-exp-battle-probe` (B0), **`run-exp-battle-sweep`** (B2–B9, B11: start, crafted and every `BATTLEnn`
+save, screenshots), `run-exp-battle-plans` (B10, B12), `run-exp-siege` (B13–B14), `run-exp-instant` (B15), `run-exp-battle-peace`
+(B16). The research request's draft is **`findings/<date>-tactical-battle-sweep.md` on branch `experiment/battle-sweep`**; the bot
+gives the user that name and branch for the research repo's intake. If the release call is refused (HTTP 403), keep the artifacts and
+post the `gh release create` command.
+
+## 6. What the chatbot will need from this (not planned here)
+
+- `legal`: adjacent targets with the relation; the siege's exact outcome (B13) and casualty range (B14); a field battle's win
+  probability and losses by composition and size (B5, B10), flagged as sampled.
+- Typed `attack` effects `{kind, winner, losses per unit, taken, unity, dialog}`; `answer_battle_peace(yes|no)` as an explicit order.
+- A battle mode `general: computer | plan:<name>` (B7, B12) with the measured time and its failure modes as typed errors.
+- Macros (M9) need the margins of B5/B10 and the exact siege rule.
+
+## 7. Risks, and what to verify first
+
+- The battle window below other windows; auto-play stalls; hidden auto-answers (fixed by §3.5): B0 counts each.
+- **The lab build and the normal build may differ** (seed at battle start versus at program start): the sweep is `lab`; B10 and B16 run
+  on the normal build; one sweep cell is re-run on the normal build as a cross-check.
+- **Crafted saves the game "repairs" or rejects**, or slots out of step with the strategic army: B3's acceptance; L1 crafting is preferred
+  wherever placement matters.
+- **Half-round diffs merge exchanges**: actions inferred from them are `[D]`; the B11 hook fixes it if the addresses come.
+- **2–3 seeds per cell** describe how a battle unfolds, not its odds; any win rate quoted from B5 says so, and the odds come from B10.
+- **The two-digit `BATTLEnn` counter** caps a process at 100 half-round saves, and it is not reset between battles: one battle per
+  process; a battle longer than 99 half-rounds is flagged.
+- The AI general is a policy sampled at one geometry (Rome approaching Gaul from the east); B6 and B9 vary it a little, no more.
+- Played-battle repeatability (repaint writes RandSeed): B12 tests it.
+- Two human seats in one battle may not be driveable (B6): fall back to Rome as attacker.
+- Wine-only: every finding is a candidate until the desktop original confirms it.
+
+**Verify first (B0):** one battle on each build, Save As inside a battle, the resume of a `BATTLEnn.SAV`, the time per battle and the
+post-battle dialog captured unanswered.
+
+## 8. Review plan
+
+- **This PR:** this file only. `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-6 Sol, low, once);
+  `/review-pr <n>` if the OpenCode reviewer exits 3; the player answers §9.
+- **Each task PR:** code, findings draft, a `tests/results.md` line, `coverage.md` rows; the same review once per PR. Reviewers check
+  that every claim cites a save, that `lab`/L1/L2 cells are labelled, and that no binary is in git.
+
+## 9. Questions only the player can answer
+
+1. **Start save:** may the bot download `1_rome_270_winter_11.sav` from release `run-1-rome` (which repository holds it?) to start the
+   sweep, or should it use its own natural `FLD-RG`? Reading a release writes nothing, but it is your call.
+2. **"Three standard battalions":** three units of one battalion (the plan's reading: an i16 holds at most 32,767 troops), or something
+   else? And may the research session settle the rout wording ("half the battalion" against `standardSize/25`)?
+3. **Exchange hook (B11):** can the research session supply the exchange routine's address and register/stack layout? Without them B11
+   is dropped and actions stay inferred.
+4. **Budget:** about 20–30 h of unattended game time in all (5–6 h for the sweep). Run all of it, or stop after B5 + B8 (the research
+   deliverable) and decide the rest then?
+5. **Fixtures in git:** may `FLD-RG`, `SIE-TAU` and one `BATTLEnn.SAV` (a resumable mid-battle save) join `saves/` with README rows?
+6. **A human-style plan for B12:** do you want to write one yourself?
+
+## Appendix: unverified items
+
+- Every **[R]** item: byte-identical replay, resume and edited resume of a battle save, 1.3–1.9 s per battle, the code addresses, the slot
+  fields; all from reports this repo cannot read.
+- The battle block's layout (40 × 44 and 14 × 12 × 2 are guesses); the meaning of the slot word `+2`.
+- Whether File → Save As is reachable during a battle and what it clears; whether a post-battle Save As carries the battle's news.
+- Whether Computer general gets the +3; whether the grid has terrain; whether a battle has a turn limit.
+- Whether a post-battle dialog appeared in the gallic battles; `TBattlePols`'s title, buttons and gate.
+- The ~1 min per battle and the budget table; the availability of `run-1-rome`.
