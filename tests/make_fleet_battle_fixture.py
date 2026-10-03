@@ -2,7 +2,7 @@
 """T1 of docs/proposals/fleet-battles-and-storms.md: two hostile fleets one tile apart at sea, from a two-human start.
 
 New Game with Carthage (row 1) and Ptolemaic (row 3) human, seed 12345 (the T0 setup). Carthage sets war toward Ptolemaic on its
-first turn. Each seat's turn: copy the autosave at once (the second human's autosave overwrites the first's: same name), then sail
+first turn (not with --no-war). Each seat's turn: copy the autosave at once (the second human's autosave overwrites the first's: same name), then sail
 its fleet along the sea path toward the other fleet (`planner/sea.py`), stopping next to it; End turn. The sailing stops when the
 fleets are adjacent at the START of a seat's turn: that save is the fixture.
 
@@ -10,7 +10,8 @@ fleets are adjacent at the START of a seat's turn: that save is the fixture.
     python3 -m tests.make_fleet_battle_fixture --no-war   # the same without Carthage's war order (the nations stay on trade terms):
                                                           # the fixture for the fleet peace prompt; files T1P_*, in run-exp-peace-prompt
 
-Output: artifacts/run-exp-fleet-battles/T1_<turn>_<seat>_<nation>.SAV for every seat's turn start, T1_log.json, and the fixture.
+Output: artifacts/run-exp-fleet-battles/T1_<turn>_<seat>_<nation>.SAV for every seat's turn start, T1_log.json, and the fixture
+(with --no-war: artifacts/run-exp-peace-prompt/T1P_* and T1P_log.json).
 """
 import json
 import shutil

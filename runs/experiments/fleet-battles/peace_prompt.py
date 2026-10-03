@@ -39,13 +39,16 @@ def trial(branch, seed):
         if branch in ("no", "cancel"):
             texts = g.attack_fleet(ATT, DEF)                 # reads the box and leaves it open
             box_open = bool(g.find_windows("^Confirm$"))
-            g.shot(OUT / f"peace_prompt_box_{branch}_seed{seed}.png") if seed == 1 else None
-            if box_open and branch == "no":
-                g.answer("Confirm", yes=False)
-                time.sleep(1.5)
-            elif box_open:
-                cs = g.controls("Confirm")
-                g.click_control(next(c for c in cs if "cancel" in c["text"].lower()), pause=0.8)
+            if seed == 1:
+                g.shot(OUT / f"peace_prompt_box_{branch}_seed{seed}.png")
+            for _ in range(3):      # the first click into an inactive window may only activate it: at most two retries
+                if not (box_open and g.find_windows("^Confirm$")):
+                    break
+                if branch == "no":
+                    g.answer("Confirm", yes=False)
+                else:
+                    cs = g.controls("Confirm")
+                    g.click_control(next(c for c in cs if "cancel" in c["text"].lower()), pause=0.8)
                 time.sleep(1.5)
             if box_open:      # the click must have closed the box: dismiss_popups would answer a Confirm still open with Yes
                 g.wait(lambda: not g.find_windows("^Confirm$"), 8, f"the box to close after {branch}")
