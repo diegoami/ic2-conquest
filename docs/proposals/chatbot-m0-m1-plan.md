@@ -106,7 +106,7 @@ chatbot/                       ic2-chat (imports nothing from harness/, state/, 
   outside a virtual environment (PEP 668), so everything runs from the checkout, as `tests/` does today. The pyproject files serve
   a later venv install and declare `[project.optional-dependencies] test = ["jsonschema>=4.10"]`. This machine has
   `python3-jsonschema` 4.10.3. M1 task T1 adds the package to `setup/setup.sh`.
-- **Launching the service.** From the repository root, `gamed/` is a namespace package, so the service starts as `python3 -m gamed.ic2_gamed --backend fake|original` (a venv install would add the `ic2-gamed` script). `GamedClient`'s command defaults to that, with `cwd` the repository root, and the conformance suite uses the same command. T1 includes a test that runs `python3 -m gamed.ic2_gamed --backend fake` from the root of a clean `git clone` of the branch and gets `hello` back.
+- **Launching the service.** From the repository root, `gamed/` is a namespace package, so the service starts as `python3 -m gamed.ic2_gamed --backend fake|original` (a venv install would add the `ic2-gamed` script). `GamedClient`'s command defaults to that, with `cwd` the repository root, and the conformance suite uses the same command. T1 includes a test that copies the checkout (without `.git` and `artifacts/`) to a temporary directory, runs `python3 -m gamed.ic2_gamed --backend fake` from there and gets `hello` back.
 - **Finding the repository:** `ic2_gamed/repo.py` puts the repository root (`Path(__file__).resolve().parents[2]`) on `sys.path`,
   the pattern `tests/test_orders.py:15` uses. `backends/original.py` imports `harness.driver` **lazily**, so the fake path never
   touches it.
@@ -155,7 +155,7 @@ chatbot/                       ic2-chat (imports nothing from harness/, state/, 
     data, not as an error. It measures the Bresenham assumption on the original.
   - A walk that stops early is a success.
 - **`order end_turn`:** `args` is `{}`. `effect` is `{autosave, autosave_kind, turn_before, turn_after, date, battles}`.
-  - The autosave is **copied into the session folder** at once. Two human seats overwrite each other's `AUTOnnnn.SAV`
+  - The autosave is **copied into the session folder** at once, under a name that carries the seat: `AUTOnnnn_sNN_<Nation>.SAV` (`NN` the parsed autosave's `seat_index`, `Nation` its current nation), because two human seats of one turn overwrite each other's `AUTOnnnn.SAV`
     (`findings/2026-10-02-two-human-seats.md`).
   - Any "End turn ?" box answered by the driver shows up in `popups` as `CONFIRM …` (`harness/driver.py:1157-1163`).
   - **The server calls `Game.end_turn` at most once per `order`** and never again after an exception or a timeout (the session becomes degraded, code -32025 below). `Game.end_turn` re-clicks End turn after 8 seconds with no sign of the turn starting (`harness/driver.py:1137-1148`: no change of seat, calendar, `AUTOSAVE.LOG`, popups or battle flag). That is not acceptable under a service that may run unattended: a missing sign is not proof the first click did nothing, and a click queued while the AI seats run ends the next turn too, which a check afterwards cannot undo. **T0 (below), a separate small driver PR merged before T9's `end_turn` and before the live test T12, adds a `reclick=True` parameter to `Game.end_turn`** (the default is today's behaviour, so every existing script is unchanged). `OriginalBackend.end_turn` passes `reclick=False, strict_confirm=True` (the second is T0 too, below): with no sign of the turn starting within 8 seconds it raises `DriverError`, the session is degraded and the result is `state_changed: "unknown"`; the server never clicks twice. After a successful call the server checks that the turn or the seat changed.
@@ -219,7 +219,7 @@ the exact strings from the driver, so a reworded message fails a test instead of
 > {"jsonrpc":"2.0","id":4,"method":"order","params":{"name":"move","args":{"army":0,"x":101,"y":36}}}
 < {"jsonrpc":"2.0","id":4,"result":{"name":"move","effect":{"army":0,"from":[100,37],"to":[101,36],"expected_to":[101,36],"moves_before":8,"moves_after":4,"cell_before":2,"cell_after":8},"popups":[],"retries":0,"turn":720}}
 > {"jsonrpc":"2.0","id":5,"method":"order","params":{"name":"end_turn","args":{}}}
-< {"jsonrpc":"2.0","id":5,"result":{"name":"end_turn","effect":{"autosave":"AUTO0721.SAV","autosave_kind":"sav","turn_before":720,"turn_after":721,"date":"Spring week 3, 270 BC","battles":[]},"popups":["@ Celtiberia wants to trade with Rome."],"retries":0,"turn":721}}
+< {"jsonrpc":"2.0","id":5,"result":{"name":"end_turn","effect":{"autosave":"AUTO0721_s11_Rome.SAV","autosave_kind":"sav","turn_before":720,"turn_after":721,"date":"Spring week 3, 270 BC","battles":[]},"popups":["@ Celtiberia wants to trade with Rome."],"retries":0,"turn":721}}
 > {"jsonrpc":"2.0","id":6,"method":"shutdown","params":{}}
 < {"jsonrpc":"2.0","id":6,"result":{}}
 ```
@@ -251,8 +251,8 @@ changes it.
     after Winter, the BC year decreases by 1. `turn` comes from `state.sav.turn_number`.
   - Each live army's moves are set to `10 − min(5, troops div 20000)` (the weekly value of `docs/sav-layout-notes.md`; the supply term is not modelled).
   - Two news lines are appended: `" "` and `"Week  N      Season      YYYBC"`.
-  - The new state is written as `AUTOnnnn.json` in the session folder and `effect.autosave` names that file (`AUTOnnnn.json`); the original backend names the copied `AUTOnnnn.SAV`. `effect.autosave_kind` is `"json"` (fake) or `"sav"` (original) and the schema's pattern is `^AUTO[0-9]{4}\.(SAV|json)$`. The server copies or writes the file through the backend's `autosave_to(dst)`, so nothing assumes a `.SAV`.
-  - There is no AI, economy, supply or battle. A fake autosave (`AUTOnnnn.json`) is the projected `state` of that turn; the fake's `load` accepts a `.json` snapshot of that form (not only a `.SAV`), which is how a later session restarts or replays on the fake (M7); the original backend loads `.SAV` only.
+  - The new state is written as `AUTOnnnn.json` in the session folder and `effect.autosave` names that file (`AUTOnnnn_sNN_<Nation>.json`); the original backend names the seat-named copy (`AUTOnnnn_sNN_<Nation>.SAV`). `effect.autosave_kind` is `"json"` (fake) or `"sav"` (original) and the schema's pattern is `^AUTO[0-9]{4}_s[0-9]{2}_[A-Za-z]+\.(SAV|json)$`. The server copies or writes the file through the backend's `autosave_to(dst)`, so nothing assumes a `.SAV`.
+  - There is no AI, economy, supply or battle. A fake autosave is a **restorable snapshot**: the full parsed save dict **including the map** (about 0.5 MB as JSON), so the fake's `load` of a `.json` snapshot can be followed by moves; the projected `state` (no map) is only what goes over the wire. That is how a later session restarts or replays on the fake (M7); the original backend loads `.SAV` only. `test_fake.py` loads a fake snapshot and moves an army.
 - Any other order name gets -32010 `unknown_order`. In M3 the fake gains a stub per order, or `not_supported_by_fake`.
 
 **Conformance suite** (`gamed/tests/conformance.py`). It starts the **real server process** (`python3 -m gamed.ic2_gamed --backend
@@ -266,11 +266,11 @@ backends:
    `not_owner`. After each, `state` is byte-identical to the state before.
 4. A move of army 0 to (101,36) succeeds with `to` = `expected_to` = (101,36), moves 8 → 4 and cell 2 → 8 (the outcome of
    `test_move`). Every other army is unchanged.
-5. `end_turn` gives turn 721, "Spring week 3, 270 BC" and the autosave `AUTO0721.<ext>` (`.json` with `autosave_kind` `json` on the fake, `.SAV` with `sav` on the original; the file named exists in the session folder); army 0's moves are `10 − min(5, troops div 20000)` = 9 for its 23,700 troops after the round tick (the start state shows 8 and the first tick makes it 9, `docs/rules-digest.md` §10), not merely above 0 (it had 4 after the move of check 4); the fake applies the same formula, so both backends share the expectation.
+5. `end_turn` gives turn 721, "Spring week 3, 270 BC" and the autosave `AUTO0721_s11_Rome.<ext>` (`.json` with `autosave_kind` `json` on the fake, `.SAV` with `sav` on the original; the file named exists in the session folder); army 0's moves are `10 − min(5, troops div 20000)` = 9 for its 23,700 troops after the round tick (the start state shows 8 and the first tick makes it 9, `docs/rules-digest.md` §10), not merely above 0 (it had 4 after the move of check 4); the fake applies the same formula, so both backends share the expectation.
 6. `shutdown` returns `{}` and the process exits 0 within 15 s. Malformed JSON gives -32700, and the server stays up.
 
 On the fake, the suite runs in `python3 -m gamed.tests` and takes seconds. On the original it is manual: `IC2_GAMED_LIVE=1 python3
--m gamed.tests.conformance --backend original`, needing the environment of `setup/setup.sh`. It takes about 2 to 3 minutes (one load at about 25 s, the snapshots, and `end_turn` at about 40 s, `tests/results.md:20-22`). The result is recorded in `gamed/tests/results.md`
+-m gamed.tests.conformance --backend original`, needing the environment of `setup/setup.sh`. It takes about 2 to 3 minutes (the documented tests that load, order and save take 40 to 47 s each, `tests/results.md:20-22`, the load included; the suite does one load, one move, snapshots and one `end_turn`). The result is recorded in `gamed/tests/results.md`
 with the saves cited, which go to `artifacts/run-exp-gamed-m1/` and the release `run-exp-gamed-m1` (rule 1).
 
 ## 6. M1 work breakdown (implementer: Sonnet)
@@ -280,7 +280,7 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 | # | Task | Files, names | The test that proves it |
 |---|---|---|---|
 | T0 | Driver: `reclick` parameter (its own PR, before T9 and T12; the only driver change of M1) | `harness/driver.py`: `Game.end_turn(timeout=300, battle_shot=None, reclick=True, strict_confirm=False)`; with `reclick=False` the 8-second wait without a sign raises `DriverError("end turn: no sign of the turn starting")` instead of clicking again; with `strict_confirm=True` a Confirm box other than "End turn ?" is **answered No** (never Yes) on **every** path of `end_turn`: the wait loop, the final `dismiss_popups` after the autosave line, and the dismissals around `play_battle`; each, including the dismissal inside `Game.play_battle` (which gets the same `strict` argument; its result dialog "Battle ended" is an OK-only box and stays as is), is replaced by a strict variant that answers No, waits until the dialog is gone, and raises `DriverError("end turn: unexpected Confirm: <text>")` with the box's text (the default `False` keeps `dismiss_popups`'s Yes everywhere) | `tests/test_end_turn_reclick.py` with a `Game` subclass whose `tool`, `wait`, `calendar`, `i16`, `popups` and `in_battle` are scripted: the default clicks twice when no sign appears and once when one does; `reclick=False` clicks exactly once and raises; `strict_confirm=True` answers an unknown Confirm No, checks that the dialog closed and raises, **in each of the three paths** (during the wait, after the autosave line, inside and after a battle), answers "End turn ?" End turn as before, and with the default the same box is answered Yes. The 28 documented tests are not changed |
-| T1 | Skeletons, runners, import boundary | both `pyproject.toml`, the `__init__.py` files, `gamed/tests/__main__.py`, `chatbot/tests/__main__.py`; `python3-jsonschema` added to `setup/setup.sh` | `chatbot/tests/test_boundary.py`: an AST scan of `chatbot/**/*.py` finds no import of `harness`, `state`, `planner`, `gamed` or `ic2_gamed`. A test runs `python3 -m gamed.ic2_gamed --backend fake` from a clean `git clone` of the branch and gets `hello` back (the launch command of §3) A runner exits 1 when a test fails (checked with a deliberately failing dummy test) |
+| T1 | Skeletons, runners, import boundary | both `pyproject.toml`, the `__init__.py` files, `gamed/tests/__main__.py`, `chatbot/tests/__main__.py`; `python3-jsonschema` added to `setup/setup.sh` | `chatbot/tests/test_boundary.py`: an AST scan of `chatbot/**/*.py` finds no import of `harness`, `state`, `planner`, `gamed` or `ic2_gamed`. A test copies the checkout (without `.git` and `artifacts/`) to a temporary directory, runs `python3 -m gamed.ic2_gamed --backend fake` from there and gets `hello` back (the launch command of §3). A runner exits 1 when a test fails (checked with a deliberately failing dummy test) |
 | T2 | Schemas v0 | `gamed/schemas/v0/{envelope,hello,load,state,order_move,order_end_turn,error_data}.schema.json`, `examples/*.json` (the §4 exchange, with the full 64-hex hashes where this text elides them) | `test_schemas.py`: every schema passes `Draft202012Validator.check_schema`, every example validates, `PROTOCOL` in `server.py` equals the schema's `const` |
 | T3 | JSON-RPC core | `rpc.py`: `read_message(stream)`, `write_message(stream, obj)`, `serve(stdin, stdout, dispatch)`; `__main__.py`: `main(argv)` with `--backend fake\|original`, `--session-dir`, `--save-dir` (repeatable) | `test_rpc.py` on in-memory streams: -32700, -32600 (batch, oversized line), -32601, a notification is ignored, EOF ends `serve`, nothing but JSON lines reaches stdout |
 | T4 | State projection | `state_view.py`: `project(parsed, source) -> dict`, `dumps(obj) -> str` | `test_state_view.py`: projecting each of the 14 saves in `saves/` is schema-valid and gives the same bytes twice; for `run0-start…`, army 0 is (100,37) with 8 moves and 23,700 troops, the turn is 720, and there is no `map` key |
@@ -378,8 +378,7 @@ On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and
   Resuming after a crash ("load the last autosave with the run's seed", proposal §8) starts a new random stream, so the bytes match
   only if the recorded run also restarted at that turn. Hence P7: restarting each turn makes every turn replayable on its own, at
   about 25 s per turn.
-- **R5. Time per turn.** A load takes about 25 s, an order about 5-15 s, `end_turn` about 40 s (`tests/results.md`), plus a Save As
-  snapshot for each `state` after an order. Expect 1.5-3 minutes per turn plus LLM time. Client timeouts: 120 s per order, 360 s for
+- **R5. Time per turn.** A documented test that loads, orders and saves takes 40 to 47 s in all (`tests/results.md:20-22`; the load is about half of it), so an order is about 5-15 s and `end_turn` about 20-30 s more than a load-free turn; each `state` after an order adds a Save As snapshot. Expect 1.5-3 minutes per turn plus LLM time. Client timeouts: 120 s per order, 360 s for
   `end_turn` (the driver's own limit is 300 s, `driver.py:1129`).
 - **R6. Stdout pollution.** A stray `print` in the driver path would corrupt the protocol (the default `log=print`). T3's test and
   the original backend's stderr logger guard it.
@@ -397,7 +396,7 @@ On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and
 
 ## 9. Corrections to the proposal
 
-1. **§3 and §12 are out of date on tests and fleets.** `tests/test_orders.py` has **28** tests (`TESTS`, lines 499-504), not 17.
+1. **§3, §10 (M3), §11 and §12 are out of date on tests and fleets** (the "17 tests" count recurs at `docs/proposals/chatbot.md:252` and `:306` as well). `tests/test_orders.py` has **28** tests (`TESTS`, lines 499-504), not 17.
    The fleet orders exist: `move_fleet`, `embark`, `disembark`, `attack_fleet`, supply, repair, split, join, transfer, scuttle
    (`harness/driver.py:571-962`). The peace prompts for a city and for a fleet are measured (findings of 2026-10-02 (b) and
    2026-10-03). Only `TBattlePols` (post-battle peace) is still unbuilt (`coverage.md` §1, ⬜).
