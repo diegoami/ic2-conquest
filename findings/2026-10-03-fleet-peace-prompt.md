@@ -15,7 +15,7 @@
 
 ## Observations
 
-Saves (`PP_yes_seed1.SAV`, `PP_yes_seed1_AUTO0723.SAV`), the box screenshots (`peace_prompt_box_seed1.png`, `peace_prompt_box_cancel_seed1.png`) and `peace_prompt.json` are in release `run-exp-peace-prompt`.
+Saves (`PP_yes_seed1.SAV`, `PP_yes_seed1_AUTO0723.SAV`), the box screenshots (`peace_prompt_box_no_seed1.png`, `peace_prompt_box_cancel_seed1.png`) and `peace_prompt.json` are in release `run-exp-peace-prompt`.
 
 | branch | seed | the box | fleets after | relations after (Carthage→Ptolemaic / back) |
 |---|---|---|---|---|
@@ -24,6 +24,8 @@ Saves (`PP_yes_seed1.SAV`, `PP_yes_seed1_AUTO0723.SAV`), the box screenshots (`p
 | Yes | 1 | the same | attacker destroyed; Carthage 90 → 72 ships, condition 74 → 60 | **3 / 3** |
 | Yes | 2 | the same | attacker destroyed; Carthage 78 ships, 64 | 3 / 3 |
 | Yes | 3 | the same | attacker destroyed; Carthage 78 ships, 64 | 3 / 3 |
+
+**The relation rows** are in `peace_prompt.json` (read from game memory before and after the click, all 16 entries of Ptolemaic's and of Carthage's row): in the Yes trials Ptolemaic's row changed in two entries only, Carthage 1 → 3 and Numidia 0 → 3 (Seleucid stayed 3, Greece 1); Carthage's row has Numidia 2 (alliance), Ptolemaic 3, Celtiberia 3.
 
 **The news** (next autosave, `PP_yes_seed1_AUTO0723.SAV`, the same three lines in seeds 2 and 3): "PTOLEMAIC DECLARES WAR ON CARTHAGE." / "PTOLEMAIC DECLARES WAR ON NUMIDIA." / "Carthage sinks fleet of Ptolemaic." The treaties: before, `Ptolemaic → {Carthage 1, Seleucid 3, Numidia 0, Greece 1, …}` and `Carthage → {Numidia 2, Seleucid 1, Greece 1, Celtiberia 3, …}`; after, `Ptolemaic → {Carthage 3, Seleucid 3, Numidia 3, Greece 1, …}`.
 
@@ -39,7 +41,7 @@ Saves (`PP_yes_seed1.SAV`, `PP_yes_seed1_AUTO0723.SAV`), the box screenshots (`p
 - **Other relation values:** only trade (1) was tested. Peace (0), alliance (2) and the peace-with-cooldown values (−10, −18 of the start saves) were not; an attack on an **ally** may be refused outright. Whether the ally cascade is the rule for every ally, or depends on the alliance's strength or on the attacker's own relations, is one case.
 - **The box's text** is read through a garbled text read; the title and the three buttons are what is certain.
 - **The cascade's reach beyond one step** (Numidia's own allies) was not read; only Ptolemaic's row of the relations was.
-- **One fixture, three seeds for Yes** (the three battles gave the same outcome by strength); the effect on the AI's behaviour in the following turns (revenge, alliances called) was not followed.
+- **One fixture, three seeds for Yes** (in each the attacker was destroyed and Carthage's fleet was reduced, to 72 ships and condition 60 in seed 1 and to 78 and 64 in seeds 2 and 3); the effect on the AI's behaviour in the following turns (revenge, alliances called) was not followed.
 - **Wine-only.**
 
 ## Reproduction

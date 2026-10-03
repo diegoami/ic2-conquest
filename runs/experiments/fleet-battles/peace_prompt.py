@@ -26,7 +26,9 @@ ATT, DEF = 1, 0           # Ptolemaic's fleet attacks Carthage's
 
 def rel(g):
     """Both relation entries (nation record +0x26 + 2 j): Carthage (1) toward Ptolemaic (3) and back."""
-    return {"carthage_to_ptolemaic": g.i16(NATIONS + 1 * NATION_LEN + 0x26 + 2 * 3), "ptolemaic_to_carthage": g.i16(NATIONS + 3 * NATION_LEN + 0x26 + 2 * 1)}
+    return {"carthage_to_ptolemaic": g.i16(NATIONS + 1 * NATION_LEN + 0x26 + 2 * 3), "ptolemaic_to_carthage": g.i16(NATIONS + 3 * NATION_LEN + 0x26 + 2 * 1),
+            "ptolemaic_row": [g.i16(NATIONS + 3 * NATION_LEN + 0x26 + 2 * j) for j in range(16)],        # toward nations 0..15 (own entry unused)
+            "carthage_row": [g.i16(NATIONS + 1 * NATION_LEN + 0x26 + 2 * j) for j in range(16)]}
 
 
 def trial(branch, seed):
@@ -45,6 +47,8 @@ def trial(branch, seed):
                 cs = g.controls("Confirm")
                 g.click_control(next(c for c in cs if "cancel" in c["text"].lower()), pause=0.8)
                 time.sleep(1.5)
+            if box_open:      # the click must have closed the box: dismiss_popups would answer a Confirm still open with Yes
+                g.wait(lambda: not g.find_windows("^Confirm$"), 8, f"the box to close after {branch}")
             after_texts = g.dismiss_popups()
             time.sleep(1.0)
             after = {"att": g.fleet_state(ATT), "def": g.fleet_state(DEF), "rel": rel(g)}
