@@ -6,7 +6,7 @@
 - **A carried army raises the fleet's chance of winning**, in the direction and roughly the size of the research formula (`ships × condition / 10 + siegeStrength / 50`, random 0–30 % on each side): attacker wins out of 10, with 0 for no cargo — 5,000 light infantry **1**, 10,000 **3**, 15,000 **9**, 25,000 **10**.
 - **Composition counts as the formula says (archers ×3):** 5,000 archers and 15,000 light infantry have the same siege strength and gave **the same result in all 10 seeds**, ship for ship (9 wins, identical losses), though the archers are a third of the men. **15,000 heavy infantry (H15) and a mixed army of 11,000 men of five types (M15), both built to the same siege-weighted 15,000, again gave the same result in all 10 seeds** (winner, ships and condition lost): the siege strength weights only archers, not heavy infantry or cavalry.
 - **The defender's cargo counts too:** with the attacker at 15,000 light infantry, giving the defender 5,000 light infantry lowered the attacker's wins from **9 to 5** of 10.
-- **The loser's army is destroyed with its fleet** (owner −1) in all **28** battles whose losing fleet carried one (the 18 lost attacks in the five cells where only the attacker carries, and all 10 battles of L15D5, whose loser always carries), including a defending army (5,000 → 0). Where the loser carried nothing (32 battles) Carthage's army 2 is not aboard and was untouched.
+- **The loser's army is destroyed with its fleet** (owner −1) in all **30** battles whose losing fleet carried one (the 20 lost attacks in the seven cells where only the attacker carries, and all 10 battles of L15D5, whose loser always carries), including a defending army (5,000 → 0). Where the loser carried nothing (50 battles) Carthage's army 2 is not aboard and was untouched.
 - **The winner's army pays more than the fleet does:** when the winning fleet lost a fraction `f` of ships, the army aboard lost about **2.6 to 3.0 × f** (for `f` from 0.10 to 0.229, 21 battles of single-unit armies) and **all of it** when `f` ≥ 0.233 (30 battles of single-unit armies). **A mixed army loses unit by unit and keeps a remnant:** the mixed M15 army (11,000) lost 84–100 % when `f` ≥ 0.243 but only the weakest units went to zero. Morale was unchanged (the army's own, 67 for Ptolemaic's and 65 for Carthage's) and the attacker's moves ended at 0.
 - **The size of the cargo effect is not settled:** the data lean to a larger effect than `/50` (a divisor near 40 fits best), but the formula's `/50` is not excluded.
 
@@ -32,7 +32,7 @@
 
 ## Observations
 
-Saves (`NBC_<cell>_seed1.SAV` for every cell and `NBC_M15_seed2`, `NBC_M15_seed5` (the units after a heavy and a medium loss), and one more of the other outcome: `NBC_L5_seed8` (the only L5 win), `NBC_L10_seed2`, `NBC_L15_seed10`, `NBC_A5_seed10`, `NBC_L15D5_seed2` (losses); L25 has no loss to save; the extra saves are re-runs of those seeds, which reproduced the original outcome and losses exactly), the six fixtures, `t3_trials.json` and the log are in release `run-exp-naval-battle-cargo`.
+Saves (`NBC_<cell>_seed1.SAV` for every cell and `NBC_M15_seed2`, `NBC_M15_seed5` (the units after a heavy and a medium loss), and one more of the other outcome: `NBC_L5_seed8` (the only L5 win), `NBC_L10_seed2`, `NBC_L15_seed10`, `NBC_A5_seed10`, `NBC_L15D5_seed2` (losses); L25 has no loss to save; the extra saves are re-runs of those seeds, which reproduced the original outcome and losses exactly), the eight fixtures, `t3_trials.json` and the log are in release `run-exp-naval-battle-cargo`.
 
 | cell | attacker wins | the formula (`/50`, random 0–30 % on both sides) expects | fraction of ships the winner lost | the winner's army lost |
 |---|---|---|---|---|
@@ -63,7 +63,7 @@ Saves (`NBC_<cell>_seed1.SAV` for every cell and `NBC_M15_seed2`, `NBC_M15_seed5
 
 **The mixed army** (M15, seeds as L15): the winner and its ships and condition lost are the same as L15's in every seed, but the army aboard is not lost whole: troops left of 11,000 at `f` = 0.171, 0.214, 0.214, 0.243, 0.243, 0.300, 0.300, 0.300, 0.300: 5,248; 4,280; 4,475; 1,458; 1,766; 528; 436; 700; 0. In the three saved cases the units differ: at 0.214 (seed 1, `NBC_M15_seed1.SAV`) light infantry 4,000 → 1,660, heavy infantry 3,000 → 1,310, archers 2,000 → 895, heavy cavalry 1,000 → 415 and the light cavalry gone; at 0.300 (seed 2) only 528 archers remain; at 0.243 (seed 5) 614 archers and 844 heavy infantry. So the casualties fall **unit by unit**, each unit losing about the same fraction (55–59 % at 0.214, a multiple of 2.6–2.7 × f) up to all of it, and the light cavalry (the smallest unit, 1,000) first; a one-unit army of 15,000 loses it all at the same `f` where a mixed one loses 84–100 % in total, so the all-or-nothing rows above describe single-unit armies, not armies in general.
 
-**The defender with cargo** (L15D5, seeds 2, 3, 6, 9, 10): the defender won, lost 0.233–0.278 of its ships and its army (5,000) went to 0 in each; and Carthage's 33,900-man army 2, **not** aboard in the other five cells, was untouched in all 50 battles of those cells (33,900 → 33,900).
+**The defender with cargo** (L15D5, seeds 2, 3, 6, 9, 10): the defender won, lost 0.233–0.278 of its ships and its army (5,000) went to 0 in each; and Carthage's 33,900-man army 2, **not** aboard in the other seven cells, was untouched in all 70 battles of those seven cells (33,900 → 33,900).
 
 ## Inferences
 
@@ -76,7 +76,7 @@ Saves (`NBC_<cell>_seed1.SAV` for every cell and `NBC_M15_seed2`, `NBC_M15_seed5
 
 - **A natural cargo:** every cargo here is edited into the save. The edit reproduces a natural embark except for 3 unexplained bytes, but no battle was fought from a naturally embarked fleet (the fleets still had the moves a boarded fleet would not).
 - **Quality, morale and more mixtures:** every unit is of average quality at one morale; one mixed army (M15) was tried, with one composition; cavalry alone was not.
-- **Plan acceptance not fully met:** the plan asked for a win and a loss saved per cell (done except L25, which never lost) and for a heavy-infantry or mixed cell (done afterwards: H15 and M15). The cargo is synthetic where the plan wanted natural staging; the player is asked to accept that deviation in the review of this PR.
+- **Plan acceptance not fully met:** the plan asked for a win and a loss saved per cell (done except L25, which never lost; H15 and M15 lost seed 10, `NBC_H15_seed10`, `NBC_M15_seed10`) and for a heavy-infantry or mixed cell (done afterwards: H15 and M15). The cargo is synthetic where the plan wanted natural staging; the player is asked to accept that deviation in the review of this PR.
 - **Both fleets in the real order of a game**: one fixture, worn unsupplied fleets, calm sea, one pair.
 - **The cargo's effect on moves** (`troops/100/ships + 1` fewer): not measured here. The natural embark save has the cargo aboard and could be ended a turn to read it; not done.
 - **The divisor and the 0–30 % term:** see Inferences; 10 seeds per cell with shared draws cannot separate `/40` from `/50` firmly.
