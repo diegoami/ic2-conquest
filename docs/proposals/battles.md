@@ -21,8 +21,7 @@ evidence, and each experiment ends with a `findings/` draft and a release `run-e
 5. Carried over from the fleet plan: synthetic states are acceptable when labelled; 30 seeds at parity cells where a **win rate**
    is the measure. The research sweep asks for 2–3 seeds per cell, because the measure there is the **exchange log** and not a rate (§4).
 
-**Still open (§9):** the start save from `run-1-rome`; how to read "three standard battalions"; the exchange hook's addresses; the
-budget; fixtures in `saves/`.
+**Open after §9's answers:** the exchange hook's addresses (the research decompile is under way; the player relays them), and the player's go for each stage. The start save, the reading of "three standard battalions", the staging of the budget and the rule that no save is committed are answered in §9.
 
 ### 0.1 Changes after the research request
 
@@ -241,7 +240,7 @@ table; the +3 question answered from the battle-local morale at half-round 0.
 ### B8. Screenshots: every type at every size, and the layout (S–M, game)
 
 - **Icon ladder:** using L2 crafted saves, set one slot per type to troop counts on a ladder (100, 250, 500, 1,000, 2,000, … up to the
-  i16 limit), screenshot the grid at each step, image-diff the slot's icon and bisect between steps where it changes. That gives how
+  i16 limit), **plus, for each type, one single unit at about ¼, ½, 1× and 2× its standard battalion (LI 15,000, HI 6,000, archers 3,500, LC 7,000, HC 2,500, capped at 32,767; §9 item 2)**, screenshot the grid at each step, image-diff the slot's icon and bisect between steps where it changes. That gives how
   many variants the screen draws per type and at what troop thresholds.
 - **Layout:** the whole screen at placement, at a move phase and at the end; panels, the toolbar with tooltips, the unit information
   shown on click, the result dialog, the surrender box, any post-battle dialog.
@@ -361,7 +360,9 @@ post-battle dialog captured unanswered.
 - **Each task PR:** code, findings draft, a `tests/results.md` line, `coverage.md` rows; the same review once per PR. Reviewers check
   that every claim cites a save, that `lab`/L1/L2 cells are labelled, and that no binary is in git.
 
-## 9. Questions for the player: answered (2026-10-04, relayed from the research session)
+## 9. Questions for the player: answered (2026-10-04, relayed by the player from the research session)
+
+The answers below were written by the research session and relayed by the player in this conversation; the player's separate go is still required before Stage 1 starts (the player said not to start on 2026-10-04).
 
 1. **Start save:** yes, download it: `gh release download run-1-rome --repo diegoami/imp_conquest_fixtures --pattern "1_rome_270_winter_11.sav" --dir <dir>` (the repository is public). It is the branch where the battle was replayed on auto with no freeze: `1_rome_270_winter_7` → `winter_7_b` → `winter_9_b` → `winter_11`. The research repository's `docs/evidence-index.md` maps every cited save to its release.
 2. **"Three standard battalions"** = three units, each of one standard battalion. The standard battalions (DAT unit-type table `+0x1A`) are light infantry 15,000, heavy infantry 6,000, archers 3,500, light cavalry 7,000 and heavy cavalry 2,500 (three LI battalions in one unit would pass the 32,767 cap). **For the icon question, also vary a single unit's troop count across the type's range: about ¼, ½, 1× and 2× the standard battalion, capped at 32,767**, to find the thresholds at which the screen changes a unit's drawing (added to B8).
@@ -369,8 +370,8 @@ post-battle dialog captured unanswered.
 4. **Budget and staging, and do not start before the player's go.**
    - **Stage 1:** the sweep with Computer general on both sides, plus the screenshots (each unit type at each size, and the full layout), delivered as a findings draft (B0 to B5, B8, with B1-B4 as their prerequisites).
    - **Stage 2:** the exchange-level hook (once the address arrives) and the human-driven side (B7, B11, B12 and the sweep re-run with the hook).
-   - The sieges, the resolver and `TBattlePols` (B13 to B16) are not assigned to a stage by the research session; they stay after Stage 1 unless the player says otherwise.
-5. **Saves are never committed.** They go in the run's `run-<id>` release, cited by bare file name; working copies, including a resumable mid-battle save, stay in the git-ignored `artifacts/run-exp-<name>/` (the committed `saves/` folder gets no new file). Neither `imperial_conquest_2` nor the research repository ever holds a save. **This replaces the plan's request to add fixtures to `saves/` in git** (the existing committed saves stay as they are).
+   - B6 (mixed armies), B9 (terrain), B10 (win rates), and the sieges, resolver and `TBattlePols` (B13 to B16) are not assigned to a stage by the research session; they wait for the player's go after Stage 1.
+5. **Saves are never committed.** They go in the experiment's release (`run-exp-<name>`, as §3.6 and §5 name them), cited by bare file name; working copies, including a resumable mid-battle save, stay in the git-ignored `artifacts/run-exp-<name>/` (the committed `saves/` folder gets no new file). Neither `imperial_conquest_2` nor the research repository ever holds a save. **This replaces the plan's request to add fixtures to `saves/` in git** (the existing committed saves stay as they are).
 6. **Human-style plan for B12:** the bot scripts it, for example advance in line, shoot when in range, melee the nearest enemy; the plan is recorded exactly with the run so it can be repeated; the player may supply their own later.
 
 ## Appendix: unverified items
