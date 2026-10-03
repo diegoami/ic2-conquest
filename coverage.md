@@ -89,7 +89,7 @@ All 72 message strings in the executable's code segment, by the order that shows
 | Attack | "Are you sure you want to attack this city ?" (not shown when already at war: `T_ATTACK.SAV`) | ⬜ |
 | Attack | "Are you sure you want to attack this army ?" | ⬜ |
 | Attack | "Are you sure you want to attack this fleet ?" | ⬜ |
-| Attack | "You cannot attack a fleet docked at its own city !" | ⬜ |
+| Attack | "You cannot attack a fleet docked at its own city !" | ✅ `P2_0734_s02_Ptolemaic.SAV` (Seleucid's fleet adjacent to Issus; the box read by the driver is garbled; release `run-exp-pair2`) |
 | Embark | "The army is too large for this fleet ?" (a box with OK only; the click then selects the fleet; the rule is troops > ships × 500) | ✅ `T_EMBARK_REFUSED.SAV` |
 | Mercenaries | "Your army has too little money to pay these mercenaries." | ⬜ |
 | Mercenaries | "An army can not contain more than 100,000 troops." | ⬜ |
