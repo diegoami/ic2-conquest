@@ -34,7 +34,7 @@ def edit(src, dst, fleet=0, condition=None, season=None, supplies=None, cargo=No
 
 
 def roundtrip(src):
-    """The edit with nothing changed must leave the file identical, and each edit changes only its own field."""
+    """The edit with nothing changed must leave the file identical, and the condition, supplies and season edits change only their own field (checked for fleet 0, the armies, the map and the date; the cargo edit is `put_cargo`, checked in T3 against a natural embark)."""
     tmp = Path(src).with_name("rt.SAV")
     edit(src, tmp)
     assert tmp.read_bytes() == Path(src).read_bytes()

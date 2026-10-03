@@ -51,7 +51,10 @@ def cell_flags(cell):
 
 
 if __name__ == "__main__":
-    trials = [t for t in json.loads(F.read_text()) if "error" not in t]
+    allt = json.loads(F.read_text())
+    trials = [t for t in allt if "error" not in t]
+    if len(trials) != len(allt):
+        print(f"WARNING: {len(allt) - len(trials)} failed trials dropped:", sorted((t["cell"], t["seed"]) for t in allt if "error" in t))
     by = collections.defaultdict(list)
     for t in trials:
         by[t["cell"]].append(t)
@@ -69,6 +72,6 @@ if __name__ == "__main__":
         for _ in range(n):
             ns, nc, lost, _d = storm(rng, b["ships"], b["condition"], winter, rough, city)
             sim["lost" if lost else (b["ships"] - ns, b["condition"] - nc)] += 1
-        print(f"{cell}: {len(ts)} trials, condition {b['condition']}")
+        print(f"{cell}: {len(ts)} trials (seeds {ts[0]['seed']}-{ts[-1]['seed']}{'' if len(ts) == ts[-1]['seed'] else ', SOME MISSING'}), condition {b['condition']}")
         print("  observed (ships lost, condition lost):", dict(sorted(obs.items(), key=lambda kv: -kv[1])))
         print("  formula  :", {k: round(v / n, 3) for k, v in sorted(sim.items(), key=lambda kv: -kv[1])[:8]})
