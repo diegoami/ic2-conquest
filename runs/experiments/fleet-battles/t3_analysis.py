@@ -5,6 +5,7 @@
     python3 runs/experiments/fleet-battles/t3_analysis.py [trials.json]
 """
 import collections
+import functools
 import json
 import math
 import random
@@ -14,8 +15,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 F = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "artifacts" / "run-exp-naval-battle-cargo" / "t3_trials.json"
 CARGO50 = {"L5": 83.1, "L10": 167.5, "L15": 250.6, "A5": 250.6, "L25": 418.1}   # siegeStrength/50 of the attacker's cargo (army 7, morale 67)
-DEF50 = 81.1                                                                       # Carthage army 2 with 5,000 light infantry (morale 65)
-trials = json.loads(F.read_text())
+DEF50 = 80.6                                                                       # Carthage army 2 with 5,000 light infantry (morale 65)
+trials = [t for t in json.loads(F.read_text()) if "error" not in t]      # failed trials carry only an error
 by = collections.defaultdict(list)
 for t in trials:
     by[t["cell"]].append(t)
@@ -45,7 +46,8 @@ print("morale after:", sorted(collections.Counter((r[0], r[4]) for r in rows).it
 random.seed(7)
 
 
-def p(att, dfn, n=40000):
+@functools.lru_cache(maxsize=None)
+def p(att, dfn, n=200000):          # cached: cells of equal strength share one value
     return sum(att * (1 + random.uniform(0, .3)) > dfn * (1 + random.uniform(0, .3)) for _ in range(n)) / n
 
 
@@ -53,9 +55,10 @@ print("divisor k: expected attacker win rates for", list(wins), "and log-likelih
 for k in (30, 35, 40, 45, 50, 60, 70):
     ll, row = 0, []
     for cell, w in wins.items():
-        att = 441 + (CARGO50.get(cell) or CARGO50["L15"]) * 50 / k
-        dfn = 666 + (DEF50 * 50 / k if cell == "L15D5" else 0)
+        att = round(441 + (CARGO50.get(cell) or CARGO50["L15"]) * 50 / k, 6)
+        dfn = round(666 + (DEF50 * 50 / k if cell == "L15D5" else 0), 6)
         q = min(max(p(att, dfn), 1e-3), 1 - 1e-3)
         row.append(round(q, 2))
-        ll += w * math.log(q) + (10 - w) * math.log(1 - q)
+        n = len(by[cell])
+        ll += w * math.log(q) + (n - w) * math.log(1 - q)
     print(f"  k={k}: {row}  logL {ll:.1f}")

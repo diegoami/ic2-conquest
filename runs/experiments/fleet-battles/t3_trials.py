@@ -11,7 +11,8 @@ army 2 (morale 65); a unit is (type, troops), 0 light infantry, 2 archers.
   L25   25,000 light infantry                         (418.1)
   L15D5 attacker L15, defender carries 5,000 light infantry (does the defender's cargo count?)
 
-    python3 runs/experiments/fleet-battles/t3_stage.py build ; python3 runs/experiments/fleet-battles/t3_trials.py [cell ...] [--seeds N] [--from K]
+    python3 runs/experiments/fleet-battles/t3_stage.py build ; python3 runs/experiments/fleet-battles/t3_trials.py [cell ...] [--seeds N] [--from K] [--save 8,10]
+(seed 1 of each cell is always saved; --save adds seeds, to keep a win and a loss per cell)
 """
 import json
 import shutil
@@ -58,7 +59,7 @@ def army_state(g, i):
     return {"id": i, "x": x, "y": y, "owner": owner, "moves": moves, "cell": cell, "supplies": sup, "morale": morale, "troops": troops}
 
 
-def trial(cell, seed):
+def trial(cell, seed, save=False):
     g = Game()
     try:
         g.load(fixture(cell), seed=seed)
@@ -68,7 +69,7 @@ def trial(cell, seed):
         time.sleep(1.0)
         a1, d1 = g.fleet_state(ATT), g.fleet_state(DEF)
         ar1, dr1 = army_state(g, ATT_ARMY), army_state(g, DEF_ARMY)
-        if seed == 1:
+        if seed == 1 or save:
             shutil.copy(g.save_as(f"NBC_{cell}_seed{seed}.SAV"), OUT / f"NBC_{cell}_seed{seed}.SAV")
         return {"cell": cell, "seed": seed, "attacker_before": a0, "defender_before": d0, "attacker_after": a1, "defender_after": d1,
                 "att_army_before": ar0, "att_army_after": ar1, "def_army_before": dr0, "def_army_after": dr1, "boxes": texts,
@@ -81,6 +82,7 @@ def main():
     args = sys.argv[1:]
     n = int(args[args.index("--seeds") + 1]) if "--seeds" in args else 10
     first = int(args[args.index("--from") + 1]) if "--from" in args else 1
+    save_seeds = {int(x) for x in args[args.index("--save") + 1].split(",")} if "--save" in args else set()   # seeds whose battle is also saved
     cells = [a for a in args if a in CELLS] or list(CELLS)
     for c in cells:
         if not fixture(c).exists():
@@ -90,7 +92,7 @@ def main():
     for cell in cells:
         for seed in range(first, n + 1):
             try:
-                r = trial(cell, seed)
+                r = trial(cell, seed, save=seed in save_seeds)
             except Exception as e:     # noqa: BLE001 - a failure is a result
                 r = {"cell": cell, "seed": seed, "error": f"{type(e).__name__}: {e}"}
             res = [x for x in res if not (x["cell"] == cell and x["seed"] == seed)] + [r]

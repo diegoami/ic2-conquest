@@ -6,7 +6,7 @@
 - **A carried army raises the fleet's chance of winning**, in the direction and roughly the size of the research formula (`ships × condition / 10 + siegeStrength / 50`, random 0–30 % on each side): attacker wins out of 10, with 0 for no cargo — 5,000 light infantry **1**, 10,000 **3**, 15,000 **9**, 25,000 **10**.
 - **Composition counts as the formula says (archers ×3):** 5,000 archers and 15,000 light infantry have the same siege strength and gave **the same result in all 10 seeds**, ship for ship (9 wins, identical losses), though the archers are a third of the men.
 - **The defender's cargo counts too:** with the attacker at 15,000 light infantry, giving the defender 5,000 light infantry lowered the attacker's wins from **9 to 5** of 10.
-- **The loser's army is destroyed with its fleet** (owner −1) in all 60 battles, including a defending army that lost (5,000 → 0).
+- **The loser's army is destroyed with its fleet** (owner −1) in all **28** battles whose losing fleet carried one (the 18 lost attacks in the five cells where only the attacker carries, and all 10 battles of L15D5, whose loser always carries), including a defending army (5,000 → 0). Where the loser carried nothing (32 battles) Carthage's army 2 is not aboard and was untouched.
 - **The winner's army pays more than the fleet does:** when the winning fleet lost a fraction `f` of ships, the army aboard lost about **2.6 to 3.0 × f** (for `f` from 0.10 to 0.229, 18 battles) and **all of it** when `f` ≥ 0.233 (24 battles). Morale was unchanged (the army's own, 67 for Ptolemaic's and 65 for Carthage's) and the attacker's moves ended at 0.
 - **The size of the cargo effect is not settled:** the data lean to a larger effect than `/50` (a divisor near 40 fits best), but the formula's `/50` is not excluded.
 
@@ -24,20 +24,20 @@
 | L15 | 15,000 (+250.6) | nothing | 692 | 666 |
 | A5 | 5,000 archers (+250.6) | nothing | 692 | 666 |
 | L25 | 25,000 (+418.1) | nothing | 859 | 666 |
-| L15D5 | 15,000 (+250.6) | 5,000 light infantry (+81.1) | 692 | 747 |
+| L15D5 | 15,000 (+250.6) | 5,000 light infantry (+80.6) | 692 | 747 |
 
 - **Driver and script:** `Game.attack_fleet(1, 0)`; `t3_trials.py` reads both fleets and both armies from game memory before and after (`army_state`), saves seed 1 of each cell. `python3 runs/experiments/fleet-battles/t3_stage.py build` writes the six fixtures.
 
 ## Observations
 
-Saves (`NBC_<cell>_seed1.SAV`), the six fixtures, `t3_trials.json` and the log are in release `run-exp-naval-battle-cargo`.
+Saves (`NBC_<cell>_seed1.SAV` for every cell, and one more of the other outcome: `NBC_L5_seed8` (the only L5 win), `NBC_L10_seed2`, `NBC_L15_seed10`, `NBC_A5_seed10`, `NBC_L15D5_seed2` (losses); L25 has no loss to save; the extra saves are re-runs of those seeds, which reproduced the original outcome and losses exactly), the six fixtures, `t3_trials.json` and the log are in release `run-exp-naval-battle-cargo`.
 
 | cell | attacker wins | the formula (`/50`, random 0–30 % on both sides) expects | fraction of ships the winner lost | the winner's army lost |
 |---|---|---|---|---|
 | L5 | **1** / 10 (seed 8) | 0.004 | 0.300 | all (5,000 → 0) |
-| L10 | **3** / 10 (seeds 1, 4, 8) | 0.21 | 0.229–0.271 | all, all, 61 % |
-| L15 | **9** / 10 (not seed 10) | 0.64 | 0.171–0.300 | 47–59 % in three, all in six |
-| A5 | **9** / 10 (not seed 10) | 0.63 | the same, seed by seed | 46–59 % in three, all in six |
+| L10 | **3** / 10 (seeds 1, 4, 8) | 0.22 | 0.229–0.271 | all, all, 61 % |
+| L15 | **9** / 10 (not seed 10) | 0.63 | 0.171–0.300 | 47–59 % in three, all in six |
+| A5 | **9** / 10 (not seed 10) | 0.64 | the same, seed by seed | 46–59 % in three, all in six |
 | L25 | **10** / 10 | 1.00 | 0.100–0.214 | 30–62 % in all ten |
 | L15D5 | **5** / 10 (seeds 1, 4, 5, 7, 8) | 0.25 | 0.214–0.314 (attacker wins); 0.233–0.278 (the 5 defender wins) | attacker's army: all in four, 59 % in one; defender's army (5,000): all in the five defender wins |
 
@@ -62,7 +62,7 @@ Saves (`NBC_<cell>_seed1.SAV`), the six fixtures, `t3_trials.json` and the log a
 ## Inferences
 
 - The cargo term is real and of the formula's order: 5,000 light infantry turn 0 of 10 into 1, 15,000 into 9, 25,000 into 10, and the archers' triple weight is exactly what the siege formula gives (same strength, same outcome seed by seed).
-- **Size of the effect.** The attacker won more than the formula expects at L15/A5 (9 of 10 against 0.64: the chance of 9 or more is about 12 %) and L15D5 (5 against 0.25: about 3 %), and L5 won once (0.4 % expected: about 4 % for one or more). A Monte-Carlo with a divisor `k` in `siegeStrength / k` gives the highest likelihood at **k = 40** (log-likelihood −23.9 against −30.5 at k = 50, −36 at 30 and −42 at 60), counting the defender's cargo with the same `k`. This is a **post-hoc fit to six cells of ten that share their random draws (L15 = A5)**, not a measurement: `/50` is not excluded, and the tie to the seed's draws means the cells are not independent samples.
+- **Size of the effect.** The attacker won more than the formula expects at L15/A5 (9 of 10 against 0.63: the chance of 9 or more is about 7 %) and L15D5 (5 against 0.25: about 8 %), and L5 won once (0.4 % expected: about 4 % for one or more). A Monte-Carlo with a divisor `k` in `siegeStrength / k` gives the highest likelihood at **k = 40** (log-likelihood −23.9 against −30.5 at k = 50, −35.9 at 30 and −42.3 at 60), counting the defender's cargo with the same `k`. This is a **post-hoc fit to six cells of ten that share their random draws (L15 = A5)**, not a measurement: `/50` is not excluded, and the tie to the seed's draws means the cells are not independent samples.
 - **The winner's casualties:** a third of the damage goes to the ships and **about three times that fraction to the soldiers aboard, capped at all of them**; in a close fight the whole army is lost (`f` ≥ 0.233 in all 24). A large cargo adds more strength than the ships' own 441, but the winner pays for it in a close fight. The jump between 0.229 (61 %) and 0.233 (all) is **sharp and unexplained**: a multiple of 2.6–3.0 would give about 0.65 at 0.233 (one of the two cases is a defending army, the other an attacking one).
 - For play: an army aboard is both the strongest single lever on a naval battle (25,000 men turned a 0.66 ratio into a win in 10 of 10) and a risk: the army dies with its fleet, and the winner's army is wasted by about half to all of it.
 
@@ -70,7 +70,7 @@ Saves (`NBC_<cell>_seed1.SAV`), the six fixtures, `t3_trials.json` and the log a
 
 - **A natural cargo:** every cargo here is edited into the save. The edit reproduces a natural embark except for 3 unexplained bytes, but no battle was fought from a naturally embarked fleet (the fleets still had the moves a boarded fleet would not).
 - **Armies of mixed composition and quality:** one unit of average quality and one type per army; cavalry and heavy infantry were not tried (the formula weights only archers).
-- **Plan acceptance not fully met:** the plan asked for one win and one loss saved per cell and a heavy-infantry or mixed cell; only seed 1 of each cell was saved (a loss only in L5) and each army is one unit of one type, so heavy infantry and mixed armies are untested.
+- **Plan acceptance not fully met:** the plan asked for a win and a loss saved per cell (done except L25, which never lost) and for a heavy-infantry or mixed cell (not done: each army is one unit of one type, so heavy infantry and mixed armies are untested). The cargo is synthetic where the plan wanted natural staging; the player is asked to accept that deviation in the review of this PR.
 - **Both fleets in the real order of a game**: one fixture, worn unsupplied fleets, calm sea, one pair.
 - **The cargo's effect on moves** (`troops/100/ships + 1` fewer): not measured here. The natural embark save has the cargo aboard and could be ended a turn to read it; not done.
 - **The divisor and the 0–30 % term:** see Inferences; 10 seeds per cell with shared draws cannot separate `/40` from `/50` firmly.
