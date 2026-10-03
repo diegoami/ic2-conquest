@@ -21,6 +21,9 @@ try:
     g.load(START, seed=12345)
     print("army 2 at", g.army_pos(2), "fleet 0 at", g.fleet_pos(0))
     print("move:", g.move(2, 48, 62))
+    ax, ay = g.army_pos(2)
+    fx, fy = g.fleet_pos(0)
+    assert (ax, ay) == (48, 62) and max(abs(ax - fx), abs(ay - fy)) == 1, f"army 2 at {ax},{ay} is not next to fleet 0 at {fx},{fy}"
     print("embark:", g.embark(2, 0))
     print("fleet:", g.fleet_state(0))
     shutil.copy(g.save_as("T3_NATURAL_EMBARK.SAV"), OUT / "T3_NATURAL_EMBARK.SAV")

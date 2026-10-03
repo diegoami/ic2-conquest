@@ -37,7 +37,7 @@ Saves (`NBC_<cell>_seed1.SAV` for every cell, and one more of the other outcome:
 | L5 | **1** / 10 (seed 8) | 0.004 | 0.300 | all (5,000 → 0) |
 | L10 | **3** / 10 (seeds 1, 4, 8) | 0.22 | 0.229–0.271 | all, all, 61 % |
 | L15 | **9** / 10 (not seed 10) | 0.63 | 0.171–0.300 | 47–59 % in three, all in six |
-| A5 | **9** / 10 (not seed 10) | 0.64 | the same, seed by seed | 46–59 % in three, all in six |
+| A5 | **9** / 10 (not seed 10) | 0.63 | the same, seed by seed | 46–59 % in three, all in six |
 | L25 | **10** / 10 | 1.00 | 0.100–0.214 | 30–62 % in all ten |
 | L15D5 | **5** / 10 (seeds 1, 4, 5, 7, 8) | 0.25 | 0.214–0.314 (attacker wins); 0.233–0.278 (the 5 defender wins) | attacker's army: all in four, 59 % in one; defender's army (5,000): all in the five defender wins |
 
