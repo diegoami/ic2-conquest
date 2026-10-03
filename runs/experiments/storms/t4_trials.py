@@ -73,6 +73,7 @@ def trial(cell, seed, fix, save=False):
     cond, season, place, cargo, _ = CELLS[cell]
     s0 = sav.load(str(fix))
     start, path = target(s0, place)
+    assert [f["id"] for f in s0["fleets"] if f["owner"] == 1] == [0] and [f["id"] for f in s0["fleets"] if f["owner"] == 3] == [1], "fleet ids: Carthage 0, Ptolemaic 1"
     g = Game()
     try:
         g.load(fix, seed=seed)

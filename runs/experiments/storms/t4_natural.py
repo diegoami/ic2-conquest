@@ -24,7 +24,7 @@ NAMES = {1: "Carthage", 3: "Ptolemaic"}
 def row(s, label):
     fl = {NAMES[f["owner"]]: (f["ships"], f["condition"], f["supplies"], (f["x"], f["y"])) for f in s["fleets"] if f["owner"] in NAMES}
     return {"save": label, "turn": s["turn"], "seat": s["seat_index"], "season": s["season"], "fleets": fl,
-            "news": [n for n in s["news"][-80:] if "fleet" in n.lower() and "storm" in n.lower() or "lost at sea" in n.lower()]}
+            "news": [n for n in s["news"][-80:] if "fleet" in n.lower() and ("storm" in n.lower() or "lost at sea" in n.lower())]}
 
 
 def main(seed, max_ends=30):
