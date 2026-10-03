@@ -8,7 +8,7 @@ Small (~130 KB) saves kept in git by the player's decision (2026-09-29). Only sa
 | `det-AUTO0721-seed12345.SAV` | 0721 | Start save opened, End turn, seed 12345 | Determinism proof: a second run gives the same bytes (sha256 `48857fdd…`). |
 | `det-AUTO0721-seed999.SAV` | 0721 | Same, seed 999 | Control: 592 bytes differ from the seed-12345 result. |
 | `det-AUTO0721-clock.SAV` | 0721 | Same, no `SEED.TXT` (clock) | Control: another clock run differs again. `findings/2026-09-29-loading-a-save-does-not-reseed.md`. |
-| `phase0-scripted-turn-AUTO0721.SAV` | 0721 | Army 0 moved to (101,36), HI 3,200 recruited at Rome, End turn | **Phase 0's done criterion**: a second run gave identical bytes. |
+| `phase0-scripted-turn-AUTO0721.SAV` | 0721 | Army 0 moved to (101,36), HI 3,200 recruited at Rome, End turn | **Phase 0's done criterion**: a second run gave identical bytes. SHA-256 `6bfd9da2fef85e996d4105a9bd3452192fe98f7034eb4b4e7d262c03ae2f9ff8`. |
 | `siege-felsina-failed-0721.SAV` | 0721 | Army 0 alone besieged Felsina (Gaul) | The siege formula confirmed: attack 20,720 against defence 34,050 fails; the army lost 8.2 % (23,700 → 21,765); Felsina loyalty 79→76, fort 68→65, pop 26→25. No "Are you sure" box, because Rome and Gaul were already at war. |
 | `recruit-hi3200-0720.SAV` | 0720 | Recruit HI 3,200 at Rome | Cost `3,200 div 200 × 20` = 320; mobilization 30 → 32, as the research formula predicts. |
 | `merc-hire-free-0720.SAV` | 0720 | Army 1 hired the Samnite LI (3,868, quality 8) at Heraclea | **Research check:** no hire price was deducted, neither from the army purse (100 → 100) nor from the treasury (2,200 → 2,200). The research predicted 24 talents from the purse. The offer left the pool. |
