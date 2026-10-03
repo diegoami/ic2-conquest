@@ -6,14 +6,14 @@ Flash, then GPT-6 Sol at medium effort (§7).
 
 ## 1. Decisions recorded, and what is still the player's call
 
-**Decided by the player (2026-10-03). This plan does not reopen them:**
+**Decided by the player (2026-10-03), items 1 to 3. This plan does not reopen them; item 4 is advice, not a decision:**
 
 1. **Scope:** the chatbot starts now. The scope is **M1 to M6** (`manual` and `assist` modes). `auto` and replay (M7, M8) come only
    after M6.
 2. **Transport:** JSON-RPC 2.0 over stdio between two processes (`ic2-chat` starts `ic2-gamed` as a child process).
 3. **Roles for each milestone:** Opus plans, Sonnet implements, and `openai/gpt-6-sol` at **medium** effort (never higher) reviews
    each PR. The DeepSeek V4.1 Flash first pass stays.
-4. **Location: advised, awaiting the player's confirmation.** The advice is to put the code in `chatbot/` and `gamed/` in this
+4. **Location (not decided: it is P1 below, the project's advice).** The advice is to put the code in `chatbot/` and `gamed/` in this
    repository. Each gets its own `pyproject.toml`. `chatbot/` imports nothing from `harness/`, `state/` or `planner/`, and nothing
    from `gamed/` either. `gamed/` is the only code that imports them. The contract in `gamed/schemas/` is where the code would be cut
    if it moves to its own repository later. The design stays movable: the chatbot depends only on a command line that starts the
@@ -105,6 +105,7 @@ chatbot/                       ic2-chat (imports nothing from harness/, state/, 
   outside a virtual environment (PEP 668), so everything runs from the checkout, as `tests/` does today. The pyproject files serve
   a later venv install and declare `[project.optional-dependencies] test = ["jsonschema>=4.10"]`. This machine has
   `python3-jsonschema` 4.10.3. M1 task T1 adds the package to `setup/setup.sh`.
+- **Launching the service.** From the repository root, `gamed/` is a namespace package, so the service starts as `python3 -m gamed.ic2_gamed --backend fake|original` (a venv install would add the `ic2-gamed` script). `GamedClient`'s command defaults to that, with `cwd` the repository root, and the conformance suite uses the same command. T1 includes a test that runs `python3 -m gamed.ic2_gamed --backend fake` from the root of a clean `git clone` of the branch and gets `hello` back.
 - **Finding the repository:** `ic2_gamed/repo.py` puts the repository root (`Path(__file__).resolve().parents[2]`) on `sys.path`,
   the pattern `tests/test_orders.py:15` uses. `backends/original.py` imports `harness.driver` **lazily**, so the fake path never
   touches it.
@@ -156,7 +157,7 @@ chatbot/                       ic2-chat (imports nothing from harness/, state/, 
   - The autosave is **copied into the session folder** at once. Two human seats overwrite each other's `AUTOnnnn.SAV`
     (`findings/2026-10-02-two-human-seats.md`).
   - Any "End turn ?" box answered by the driver shows up in `popups` as `CONFIRM …` (`harness/driver.py:1157-1163`).
-  - **The server never issues `end_turn` again on its own.** On a timeout the session becomes degraded (code -32025 below).
+  - **The server calls `Game.end_turn` at most once per `order`** and never again after an exception or a timeout (the session becomes degraded, code -32025 below). `Game.end_turn` has its own re-click after 8 seconds with no sign of the turn starting (no new `AUTOSAVE.LOG` line, `harness/driver.py:1138-1148`): that is the driver's rule, which `gamed` does not change (M1 forbids driver changes); it is the one place the driver clicks twice, a missing sign is not proof the first click did nothing, and the plan treats it as an open risk (V6, §8), not as solved. After the call the server checks that the turn or the seat changed; if it did not, the result is `state_changed: "unknown"` and the session is degraded.
 
 **The prechecks for `move`** run in `validate.py` for both backends, before anything is clicked:
 - the army exists and has troops;
@@ -249,11 +250,11 @@ changes it.
     after Winter, the BC year decreases by 1. `turn` comes from `state.sav.turn_number`.
   - Each live army's moves go back to the value it had at `load`, a stub, not the tick's formula.
   - Two news lines are appended: `" "` and `"Week  N      Season      YYYBC"`.
-  - The new state is written as `AUTOnnnn.json` in the session folder, and `effect.autosave` names `AUTOnnnn.SAV`.
+  - The new state is written as `AUTOnnnn.json` in the session folder and `effect.autosave` names that file (`AUTOnnnn.json`); the original backend names the copied `AUTOnnnn.SAV`. `effect.autosave_kind` is `"json"` (fake) or `"sav"` (original) and the schema's pattern is `^AUTO[0-9]{4}\.(SAV|json)$`. The server copies or writes the file through the backend's `autosave_to(dst)`, so nothing assumes a `.SAV`.
   - There is no AI, economy, supply or battle.
 - Any other order name gets -32010 `unknown_order`. In M3 the fake gains a stub per order, or `not_supported_by_fake`.
 
-**Conformance suite** (`gamed/tests/conformance.py`). It starts the **real server process** (`python3 -m ic2_gamed --backend
+**Conformance suite** (`gamed/tests/conformance.py`). It starts the **real server process** (`python3 -m gamed.ic2_gamed --backend
 <b>`), talks to it over pipes, and validates every response against `schemas/v0`. The same checks run **unchanged** on both
 backends:
 
@@ -264,7 +265,7 @@ backends:
    `not_owner`. After each, `state` is byte-identical to the state before.
 4. A move of army 0 to (101,36) succeeds with `to` = `expected_to` = (101,36), moves 8 → 4 and cell 2 → 8 (the outcome of
    `test_move`). Every other army is unchanged.
-5. `end_turn` gives turn 721, "Spring week 3, 270 BC" and the autosave `AUTO0721.SAV`; army 0 has moves > 0.
+5. `end_turn` gives turn 721, "Spring week 3, 270 BC" and the autosave `AUTO0721.<ext>` (`.json` with `autosave_kind` `json` on the fake, `.SAV` with `sav` on the original; the file named exists in the session folder); army 0 has moves > 0.
 6. `shutdown` returns `{}` and the process exits 0 within 15 s. Malformed JSON gives -32700, and the server stays up.
 
 On the fake, the suite runs in `python3 -m gamed.tests` and takes seconds. On the original it is manual: `IC2_GAMED_LIVE=1 python3
@@ -282,14 +283,14 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 | T2 | Schemas v0 | `gamed/schemas/v0/{envelope,hello,load,state,order_move,order_end_turn,error_data}.schema.json`, `examples/*.json` (the §4 exchange) | `test_schemas.py`: every schema passes `Draft202012Validator.check_schema`, every example validates, `PROTOCOL` in `server.py` equals the schema's `const` |
 | T3 | JSON-RPC core | `rpc.py`: `read_message(stream)`, `write_message(stream, obj)`, `serve(stdin, stdout, dispatch)`; `__main__.py`: `main(argv)` with `--backend fake\|original`, `--session-dir`, `--save-dir` (repeatable) | `test_rpc.py` on in-memory streams: -32700, -32600 (batch, oversized line), -32601, a notification is ignored, EOF ends `serve`, nothing but JSON lines reaches stdout |
 | T4 | State projection | `state_view.py`: `project(parsed, source) -> dict`, `dumps(obj) -> str` | `test_state_view.py`: projecting each of the 14 saves in `saves/` is schema-valid and gives the same bytes twice; for `run0-start…`, army 0 is (100,37) with 8 moves and 23,700 troops, the turn is 720, and there is no `map` key |
-| T5 | Prechecks | `validate.py`: `check_move(state_dict, current_nation, args) -> None` (raises `OrderInvalid(reason, detail)`); `walk.py`: `bresenham(a, b)`, `walk(parsed, army, target) -> (to, spent, stop_reason)` | `test_validate.py`: one case for each reason in §4. `test_walk.py`: (100,37) → (101,36) costs 4; a line into Pisae stops before it; an unaffordable mountain keeps the remaining moves; no `TypeError` on blocked tiles |
+| T5 | Prechecks | `validate.py`: `check_move(state_dict, current_nation, args, tile_code) -> None` (raises `OrderInvalid(reason, detail)`; `tile_code` is the map code of the target, which the projected `state` no longer carries: the fake reads it from its parsed save, the original backend from `Game.cell(x, y)`); `walk.py`: `bresenham(a, b)`, `walk(parsed, army, target) -> (to, spent, stop_reason)` | `test_validate.py`: one case for each reason in §4. `test_walk.py`: (100,37) → (101,36) costs 4; a line into Pisae stops before it; an unaffordable mountain keeps the remaining moves; no `TypeError` on blocked tiles |
 | T6 | FakeBackend | `backends/base.py`: `class Backend(Protocol)` with `hello_info()`, `load(path, seed)`, `state()`, `move(army, x, y)`, `end_turn()`, `close()`; `backends/fake.py`: `class FakeBackend` | `test_fake.py`: the `test_move` outcome; the map marker and covered cell are swapped correctly; calendar wraps (week 11 Spring → week 1 Summer; week 11 Winter → week 1 Spring, year − 1) |
 | T7 | Errors | `errors.py`: the code constants, `RpcError`, `classify(exc) -> RpcError` | `test_errors` (inside `test_original_offline.py`): each driver message quoted in §4 maps to its code; an unknown message gives -32099; the traceback goes to stderr, never into `data` |
 | T8 | Server methods | `server.py`: `class Session` (the backend, a `degraded` flag, the allowlist, the session dir), `dispatch(method, params)`; resolving `load` names; `end_turn` copies the autosave | covered by T9 on the fake. `test_rpc.py` adds: a `load` name with `/` or `..` gives -32602; after a forced degrade, `order` gives -32025 until `load` |
-| T9 | OriginalBackend | `backends/original.py`: `class OriginalBackend(game_factory=None)`. Lazy `from harness.driver import Game, DriverError`; `Game(log=<stderr>)`; `move` = precheck from game memory (`army_pos`, `army_rec`, `cell`, `i16(CUR_NATION)`), then `Game.move`, readback, at most 2 retries when nothing changed and no box appeared, and `Game.popups()` must be empty afterwards; `state` uses Save As or the autosave, as in §4 | `test_original_offline.py` with an injected stub `Game` (scripted positions, popups and exceptions): a swallowed click is retried and then gives -32020; a leftover box gives -32021 and degrades the session; `end_turn` is called exactly once even when it raises |
+| T9 | OriginalBackend | `backends/original.py`: `class OriginalBackend(game_factory=None)`. Lazy `from harness.driver import Game, DriverError`; `Game(log=<stderr>)`; `move` = precheck from game memory (`army_pos`, `army_rec`, `cell`, `i16(CUR_NATION)`), then **not `Game.move`** (it calls `dismiss_popups`, which answers any Confirm box Yes: a click that opened "Are you sure you want to attack ?" would declare war) but `Game.select_army` and `Game.click_tile`, followed by a look at `Game.popups()` **before** anything is dismissed: a Confirm box is answered **No** (`Game.answer(title, yes=False)`), its text goes into the typed error `unexpected_dialog` (-32021) and the session is degraded; only OK-only information boxes are read and dismissed. Readback, at most 2 retries when nothing changed and no box appeared. The marker precheck is a second defence, not the guarantee; `state` uses Save As or the autosave, as in §4 | `test_original_offline.py` with an injected stub `Game` (scripted positions, popups and exceptions): a swallowed click is retried and then gives -32020; a Confirm box after the click is answered No (the stub records which button), gives -32021 and degrades the session, and the stub's `dismiss_popups` is never called while a Confirm is open; `end_turn` is called exactly once even when it raises |
 | T10 | Conformance | `gamed/tests/conformance.py`: `run(backend) -> list[result]`, `main()` | runs on the fake inside `python3 -m gamed.tests`; refuses `--backend original` without `IC2_GAMED_LIVE=1` |
-| T11 | Chatbot client | `ic2_chat/gamed_client.py`: `class GamedClient(command, cwd, env, timeouts)` with `call(method, params)`, `close()`; it starts the child with an **allowlisted environment** (`PATH`, `HOME`, `LANG`, `IC2_WORK`, `IC2_EXE`, `DISPLAY_IC2` only). `cli.py`: `ic2-chat probe --save NAME --seed N` (hello, load, state summary; no LLM) | `test_client.py` against `python3 -m ic2_gamed --backend fake`: hello, load, a move, end_turn, shutdown. With `IC2_CHAT_API_KEY=dummy-key-123` and `IC2_RELEASE_TOKEN=x` set in the parent, the child's environment (echoed by a test-only `--debug-env-names` flag that prints **names only**) contains neither |
-| T12 | Live run, done by a person or a session that has the game | `gamed/tests/results.md` | `IC2_GAMED_LIVE=1 python3 -m gamed.tests.conformance --backend original` passes. Also the two checks from §8 "Verify early" (V1, V5), with the saves cited |
+| T11 | Chatbot client | `ic2_chat/gamed_client.py`: `class GamedClient(command, cwd, env, timeouts)` with `call(method, params)`, `close()`; it starts the child with an **allowlisted environment** (`PATH`, `HOME`, `LANG`, `IC2_WORK`, `IC2_EXE`, `DISPLAY_IC2` only). `cli.py`: `ic2-chat probe --save NAME --seed N` (hello, load, state summary; no LLM) | `test_client.py` against `python3 -m gamed.ic2_gamed --backend fake`: hello, load, a move, end_turn, shutdown. With `IC2_CHAT_API_KEY=dummy-key-123` and `IC2_RELEASE_TOKEN=x` set in the parent, the child's environment (echoed by a test-only `--debug-env-names` flag that prints **names only**) contains neither |
+| T12 | Live run, done by a person or a session that has the game | `gamed/tests/results.md` | `IC2_GAMED_LIVE=1 python3 -m gamed.tests.conformance --backend original` passes. Also the checks from §8 "Verify early" (V1, V5 and the record of V6), with the saves cited |
 
 **Do not:**
 - read, print or store any key or token. No `.env` files; nothing under `~/.local/share/opencode*`; `IC2_RELEASE_TOKEN` only as in
@@ -300,9 +301,9 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 - launch Wine, Xvfb or the game in any offline test. Only `conformance.py --backend original` with `IC2_GAMED_LIVE=1` may;
 - write to stdout from `gamed/` except protocol lines;
 - commit `.SAV`, `.EXE`, screenshots or anything from `$IC2_WORK` (rule 1);
-- call `Game.dismiss_popups()` from `gamed/` after a click that could open a `Confirm` box. In M1 the marker precheck makes this
-  impossible for `move`;
-- issue `end_turn` twice, or retry it after an exception;
+- call `Game.move` or `Game.dismiss_popups()` from `gamed/` for any click that could open a `Confirm` box (they answer it Yes); the
+  original backend clicks with `select_army` and `click_tile` and reads `popups()` first;
+- issue `end_turn` twice, or retry it after an exception (the driver's own internal re-click is the one exception, documented in §4 and §8);
 - add runtime dependencies, or `legal`, the renderer or the LLM client (M2 to M4).
 
 ### Outlines for M2 to M6
@@ -392,6 +393,7 @@ On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and
 - V4. stdout stays clean on the original: run the live conformance with stdout piped through a JSON-line checker.
 - V5. Bresenham: three live moves (straight, diagonal, a shallow slope over mixed terrain) compare `expected_to` with `to`. A
   mismatch is a finding for `findings/`, not a bug to hide.
+- V6. The driver's `end_turn` re-click: `Game.end_turn` clicks End turn a second time after 8 s without a new `AUTOSAVE.LOG` line (`harness/driver.py:1138-1148`). Decide, before M6 runs it unattended, whether that rule is acceptable for `gamed` (the AI seats can take longer than 8 s in a late turn, and a click queued while they run may end the next turn) or whether `gamed` needs a stricter check; any driver change is a separate PR. M1 only records what happens in the live conformance run (the stderr line `end_turn: first click swallowed, clicking again` and the turn number after).
 
 ## 9. Corrections to the proposal
 
