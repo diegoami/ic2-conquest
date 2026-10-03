@@ -404,14 +404,14 @@ class Game:
 
     def _refuse_confirm(self):
         """Strict mode: if a Confirm box is open, answer it No and raise (dismiss_popups(strict=True) does both); other boxes are left alone."""
-        if any(p[1] == "Confirm" for p in self.popups()):
+        if any(p[1] == "Confirm" and p[4] < 600 and p[5] < 300 for p in self.popups()):      # the box set dismiss_popups acts on
             self.dismiss_popups(strict=True)
 
     def dismiss_popups(self, max_n=10, strict=False):
         """Press OK on message boxes; return their texts (OCR). A Confirm box is
         a Yes/No/Cancel dialog and is answered Yes (the driver only calls this
         after the action it asked for). With `strict` a Confirm box is answered No instead, checked to be
-        closed, and DriverError("unexpected Confirm: <text>") is raised (used by `end_turn(strict_confirm=True)`)."""
+        closed, and DriverError("end turn: unexpected Confirm: <text>") is raised (used by `end_turn(strict_confirm=True)`)."""
         texts = []
         for _ in range(max_n):
             ps = [p for p in self.popups() if p[1] in ("Information", "Confirm", "Warning", "Error", "")
