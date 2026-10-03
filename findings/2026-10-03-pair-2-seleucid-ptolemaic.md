@@ -6,7 +6,7 @@
 - **Build fleet works for a nation that is not Rome, with no refusal:** Seleucid's order for 60 ships (turn 0720, its own seat 4) said "The fleet will be built at **Issus**"; the fleet appeared at **0732, twelve turns later**, at (219,55) next to Issus with **0 moves, supplies 50, condition 100** and the news "Seleucid finishes a new fleet at Issus." (the countdown 24 falling by 2 a turn, as for Rome).
 - **A fleet next to its own city cannot be attacked.** With Ptolemaic's fleet adjacent to Seleucid's new fleet, which was **adjacent to Issus** (219,55) against (220,54), the attack click opened a box whose text was read as "You cannot attack a fleet docked at its own city !" (the read of the box has garbled letters; the message is the one the research reports quote) and nothing changed. After Seleucid moved the fleet **3 tiles from Issus** the same click was allowed (the 20 battles below).
 - **The strength formula decides these battles as in pair 1:** with both fleets **supplied** (170 and 190 tons) and condition 97 and 89, Seleucid attacking (strength 582 against 623) **won 5 of 10**, Ptolemaic attacking (623 against 582) **won 9 of 10**; the formula with `1 + U(0, 0.3)` on each side expects 0.27 and 0.73. The loser always sank whole (20 of 20) and the winner lost 0.157 to 0.317 of both ships and condition by one fraction.
-- **The random draw follows the role, not the fleet:** in five seeds (1, 4, 5, 7, 8) the **attacker** won in **both** cells, so Seleucid won when it attacked and Ptolemaic won when it attacked, with the same seed; in seeds 2, 3, 6 and 9 Ptolemaic won in both roles (Seleucid's attack lost), and in seed 10 the defender won in both (Ptolemaic when attacked, Seleucid when attacked by Ptolemaic). A draw tied to the fleet could not have produced the flips.
+- **The random draw follows the role, not the fleet:** in five seeds (1, 4, 5, 7, 8) the **attacker** won in **both** cells, so Seleucid won when it attacked and Ptolemaic won when it attacked, with the same seed; in seeds 2, 3, 6 and 9 Ptolemaic won in both roles (Seleucid's attack lost), and in seed 10 the defender won in both (Ptolemaic when attacked, Seleucid when attacked by Ptolemaic). A draw tied to the fleet could not have produced the flips. (This assumes the two fixtures start the battle from the same random stream for a given seed: the generator is seeded at program start and loading a save does not reseed it, `findings/2026-09-29-loading-a-save-does-not-reseed.md`, so the stream does not depend on the fixture; a direct check across the two fixtures was not made.)
 
 ## Method
 
@@ -32,7 +32,7 @@ Saves (every seat's autosave of both phases, the two fixtures, `P2B_S_seed1.SAV`
 | S: Seleucid attacks, 582 v 623 | **5** / 10 (seeds 1, 4, 5, 7, 8) | 0.27 | 0.217–0.317 | 0.216–0.320 |
 | P: Ptolemaic attacks, 623 v 582 | **9** / 10 (not seed 10) | 0.73 | 0.157–0.317 | 0.157–0.320 |
 
-In every battle the loser's fleet was destroyed and the winner's ships and condition fell by the same fraction (within 0.01). The winning attackers (14) ended with 0 moves and their supplies unchanged (170 and 190 tons). Seeds 2, 3, 6, 9 gave the same loss (50 of 70 ships) in S where Ptolemaic defended and won, and 2, 3, 6, 9 in P where it attacked and won.
+In every battle the loser's fleet was destroyed and the winner's ships and condition fell by the same fraction (within 0.01). The winning attackers (14) ended with 0 moves and their supplies unchanged (170 and 190 tons). In seeds 2, 3, 6 and 9 the winner was Ptolemaic in both cells and ended with the same 50 of its 70 ships (condition 64), as defender in S and as attacker in P.
 
 ## Inferences
 
@@ -54,6 +54,6 @@ In every battle the loser's fleet was destroyed and the winner's ships and condi
 ```text
 setup/setup.sh
 python3 runs/experiments/pair2/phase1.py     # Seleucid builds, Ptolemaic docks; to the launch (about 45 minutes)
-python3 runs/experiments/pair2/phase2.py     # the meeting, the refused attack, the fixtures (about 15 minutes)
+python3 runs/experiments/pair2/phase2.py     # the meeting, the refused attack, the two fixtures (about 15 minutes; re-run once and the fixtures came out byte for byte identical to the first run's)
 python3 runs/experiments/pair2/trials.py     # 20 battles (about 25 minutes)
 ```

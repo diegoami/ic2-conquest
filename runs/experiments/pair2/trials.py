@@ -17,6 +17,13 @@ from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-pair2"
 FIX = {"S": (OUT / "FIX_S2_seleucid_seat_0735.SAV", 2, 1), "P": (OUT / "FIX_S2_ptolemaic_seat_0735.SAV", 1, 2)}   # fixture, attacker, defender
+OUT.mkdir(parents=True, exist_ok=True)
+
+
+def need_fixtures(cells):
+    for c in cells:
+        if not FIX[c][0].exists():
+            sys.exit(f"cell {c}: missing fixture {FIX[c][0]}: run phase1.py and phase2.py first")
 
 
 def trial(cell, seed):
@@ -40,6 +47,7 @@ def main():
     args = sys.argv[1:]
     n = int(args[args.index("--seeds") + 1]) if "--seeds" in args else 10
     cells = [a for a in args if a in FIX] or list(FIX)
+    need_fixtures(cells)
     f = OUT / "trials.json"
     res = json.loads(f.read_text()) if f.exists() else []
     for cell in cells:

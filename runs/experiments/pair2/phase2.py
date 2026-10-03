@@ -2,7 +2,8 @@
 """Pair 2, phase 2: from Seleucid's launch (P2_0732_s02_Ptolemaic.SAV, Ptolemaic's seat) Ptolemaic's fleet (1, 70 ships) sails to Seleucid's new fleet
 (2, 60 ships, next to Issus). When adjacent the fleet is next to Seleucid's own city: Ptolemaic tries the attack once (the plan's 2.6:
 "You cannot attack a fleet docked at its own city !") and Seleucid then sails out of reach of its city; Ptolemaic follows, ends its turn
-adjacent, and the autosave at Seleucid's seat start is the fixture (and the one at Ptolemaic's seat start after Seleucid's End turn).
+adjacent; the autosaves of the next Ptolemaic seat start (Seleucid moved out in its turn, so the fleets are adjacent) and, in the same
+turn, of Seleucid's seat start are the two fixtures `FIX_S2_ptolemaic_seat_<turn>.SAV` and `FIX_S2_seleucid_seat_<turn>.SAV`.
 
     python3 runs/experiments/pair2/phase2.py
 """
@@ -108,12 +109,13 @@ def main(max_turns=14):
             elif me == 2 and d <= 1 and tested26 and not out_done:
                 row["sail_out"] = sail_out(g, s, 2, 3)
                 out_done = True
+            elif me == 3 and d <= 1 and out_done and not near_own_city(s, fl(s, 2), 2):
+                shutil.copy(dst, OUT / f"FIX_S2_ptolemaic_seat_{s['turn']:04d}.SAV")        # Ptolemaic's seat start: Ptolemaic attacks
+                print("FIXTURE at Ptolemaic's seat:", dst.name, flush=True)
             elif me == 2 and d <= 1 and out_done:
-                shutil.copy(dst, OUT / "P2_FIXTURE_seleucid_seat.SAV")
+                shutil.copy(dst, OUT / f"FIX_S2_seleucid_seat_{s['turn']:04d}.SAV")         # Seleucid's seat start, same turn: Seleucid attacks
                 print("FIXTURE at Seleucid's seat:", dst.name, flush=True)
                 seats += 1
-            elif me == 3 and d <= 1 and out_done and not near_own_city(s, fl(s, 2), 2) and seats == 0:
-                pass
             (OUT / "P2_phase2_log.json").write_text(json.dumps(log, indent=1, default=str))
             if seats:
                 break
