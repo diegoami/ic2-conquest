@@ -188,7 +188,7 @@ tiles, if they can be reached in a few turns). Built natural, seed 12345, twice 
 battle-local morale, the word `+2`) and the grid, checked against the screenshots and the strategic armies, and finds the block in game
 memory so a live battle can be read without saves (`Game.battle_state()`). Diffs between half-rounds give inferred actions: a position
 change is a move; a loss with no adjacent enemy is shooting; a loss next to an enemy is melee. Inferred actions are labelled `[D]`,
-since one half-round can hold several exchanges. *Acceptance:* every field named or listed as unknown; the grid ↔ screen mapping
+since one half-round can hold several exchanges: **actor, target and the split of a loss between shooting and melee are `unknown` in any half-round where the diff does not fix them uniquely (several units changed, or several enemies adjacent), and they are only supplied for every exchange by the B11 hook**. Without B11 the action-level columns of the request are delivered as inferred-or-unknown with the share of rows that are unambiguous stated; the position, troops, quality and morale columns are exact. *Acceptance:* every field named or listed as unknown; the grid ↔ screen mapping
 checked on 4 cells; the word `+2` tested as a link to the army's unit index (hypothesis).
 
 ### B3. Crafted mid-battle saves (M, game)
@@ -209,7 +209,7 @@ per-half-round log, and the same seed runs twice. *Acceptance:* the row format i
   **3 sizes** (both sides at the same level: half/half, one/one, three/three) × **seeds 1–3** = **225 battles**, L1 from `FLD-RG`
   (natural positions, edited armies, q6, morale 65). Then a **size matrix** for 5 pairings (the diagonal HI-HI, HI→LI, LI→HI, LC→Ar,
   Ar→HC: 3 × 3 sizes minus the diagonal = 6 extra combinations × 3 seeds = 90 battles).
-- **Per half-round** (from the block): each slot's position, troops, quality, morale; inferred actor, action and target; losses on
+- **Per half-round** (from the block): each slot's position, troops, quality, morale; inferred actor, action and target (`unknown` when ambiguous, see B2); losses on
   both sides; routs (a slot removed or fleeing), surrenders. **At the end:** the result box's text, the strategic armies before and
   after (troops, money, supplies, morale, per-unit quality: promotion), unity, news, the end condition (annihilation, rout, surrender,
   turn limit) and the number of half-rounds.
@@ -272,7 +272,7 @@ battles the log's losses sum to each half-round's block diff; then re-run B5 wit
 
 `P-HOLD`, `P-FOCUS` (focus fire `f = 4`: attacker loss ×1/5, defender ×13/5 [D]) and `P-CAV`, paired against Computer general on the same
 seeds (S-PAR 30, two hard sweep cells 10), plus played-battle repeatability (paint routines write RandSeed). *Acceptance:* a paired
-table (McNemar on the discordant pairs), time per played battle, one win and one loss saved per plan.
+table (McNemar on the discordant pairs), time per played battle, one win and one loss saved per plan. **What this answers:** the request's "can the bot drive or auto-play the battle screen in each case" is answered for auto-play by B5 (Computer general on both sides in all 25 pairings × 3 sizes, success rate stated) and for manual driving by B7 (the order set, tried on a few pairings) and these two sweep cells only; manual driving of all 25 pairings is not claimed.
 
 ### B13. Siege threshold and modifiers (S–M, game): unchanged
 
