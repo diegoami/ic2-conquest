@@ -7,24 +7,24 @@
 - **Composition counts as the formula says (archers ×3):** 5,000 archers and 15,000 light infantry have the same siege strength and gave **the same result in all 10 seeds**, ship for ship (9 wins, identical losses), though the archers are a third of the men.
 - **The defender's cargo counts too:** with the attacker at 15,000 light infantry, giving the defender 5,000 light infantry lowered the attacker's wins from **9 to 5** of 10.
 - **The loser's army is destroyed with its fleet** (owner −1) in all 60 battles, including a defending army that lost (5,000 → 0).
-- **The winner's army pays more than the fleet does:** when the winning fleet lost a fraction `f` of ships, the army aboard lost about **2.6 to 3.0 × f** (for `f` from 0.10 to 0.229, 18 battles) and **all of it** when `f` ≥ 0.233 (24 battles). Morale was unchanged (67) and the attacker's moves ended at 0.
+- **The winner's army pays more than the fleet does:** when the winning fleet lost a fraction `f` of ships, the army aboard lost about **2.6 to 3.0 × f** (for `f` from 0.10 to 0.229, 18 battles) and **all of it** when `f` ≥ 0.233 (24 battles). Morale was unchanged (the army's own, 67 for Ptolemaic's and 65 for Carthage's) and the attacker's moves ended at 0.
 - **The size of the cargo effect is not settled:** the data lean to a larger effect than `/50` (a divisor near 40 fits best), but the formula's `/50` is not excluded.
 
 ## Method
 
 - **Build and seed:** `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265…532f`), Wine 9.0, Xvfb; one fresh process per trial, `SEED.TXT` = the seed (read at program start only).
-- **Fixture and the synthetic cargo:** every cell starts from `FIX_P` (`saves/fleets-adjacent-at-sea-0723.SAV`'s Ptolemaic-seat fixture of the T2 finding: Ptolemaic fleet 1, 70 ships, condition 63, supplies 0, next to Carthage fleet 0, 90 ships, condition 74). An army can only embark from a land tile next to the fleet and the starting armies are 18,600 to 56,400 men, so the cargo is **written into the save** by `runs/experiments/fleet-battles/t3_stage.py`: the army's position becomes the fleet's tile, its cell −1, its moves 0, the fleet's carried-army field the army's index, the map cell the army left its terrain, and the army's units are replaced by the chosen ones (one unit of the chosen type and size, quality average, morale as it was: Ptolemaic army 7 at 67, Carthage army 2 at 65). **The edit was checked against a natural embark:** at the two-human start (`T1_0720_s13_Carthage.SAV`) army 2 was moved to (48,62) and embarked by clicks onto fleet 0 (`t3_natural_embark.py` → `T3_NATURAL_EMBARK.SAV`); the same edit applied to the same start gives a save with the same parsed map, cities, armies and fleets, and **3 raw bytes differ** (offsets 112522, 112526 and 112528, inside the nation records' tail; they changed in the natural embark too, with different values, and look like the view position; not understood). It is **not** a natural staging of the battle: the game never saw the army board in these fixtures, and the fleet kept its 24 moves (a natural embark leaves it 0).
+- **Fixture and the synthetic cargo:** every cell starts from `FIX_P` (`saves/fleets-adjacent-at-sea-0723.SAV`'s Ptolemaic-seat fixture of the T2 finding: Ptolemaic fleet 1, 70 ships, condition 63, supplies 0, next to Carthage fleet 0, 90 ships, condition 74). An army can only embark from a land tile next to the fleet and the starting armies are 18,600 to 56,400 men, so the cargo is **written into the save** by `runs/experiments/fleet-battles/t3_stage.py`: the army's position becomes the fleet's tile, its cell −1, its moves 0, the fleet's carried-army field the army's index, the map cell the army left its terrain, and the army's units are replaced by the chosen ones (one unit of the chosen type and size, quality average, morale as it was: Ptolemaic army 7 at 67, Carthage army 2 at 65). **The edit was checked against a natural embark:** at the two-human start (`T1_0720_s13_Carthage.SAV`) army 2 was moved to (48,62) and embarked by clicks onto fleet 0 (`t3_natural_embark.py` → `T3_NATURAL_EMBARK.SAV`); the same edit's **positional and staging fields** (the army's tile, cell and moves, the fleet's carried-army field, the vacated map cell; army 2 kept its own units) applied to the same start give a save with the same parsed map, cities, armies (position, owner, moves, cell, troops) and fleets, and **3 raw bytes differ** (offsets 112522, 112526 and 112528, inside the nation records' tail; they changed in the natural embark too, with different values, and look like the view position; not understood). The part of the edit that rewrites the units (sizes, types) was **not** compared with a natural save: the game read the edited troops back from its own memory before every battle (`army_state` before = 5,000/10,000/15,000/25,000), and the archers' result shows it used the types. It is **not** a natural staging of the battle: the game never saw the army board in these fixtures, and the fleet kept its 24 moves (a natural embark leaves it 0).
 - **Cells** (attacker Ptolemaic fleet 1 always; `strength` before the random term; cargo = `siegeStrength / 50`, `siegeStrength = troops/80 × morale` with archers' troops ×3, `state/sav.py`):
 
-| cell | attacker carries | defender carries | attacker strength | defender strength |
+| cell | attacker carries | defender carries | attacker strength (rounded) | defender strength (rounded) |
 |---|---|---|---|---|
 | (P, T2) | nothing | nothing | 441 | 666 |
-| L5 | 5,000 light infantry (+83) | nothing | 524 | 666 |
-| L10 | 10,000 (+168) | nothing | 609 | 666 |
-| L15 | 15,000 (+251) | nothing | 692 | 666 |
-| A5 | 5,000 archers (+251) | nothing | 692 | 666 |
-| L25 | 25,000 (+418) | nothing | 859 | 666 |
-| L15D5 | 15,000 (+251) | 5,000 light infantry (+81) | 692 | 747 |
+| L5 | 5,000 light infantry (+83.1) | nothing | 524 | 666 |
+| L10 | 10,000 (+167.5) | nothing | 609 | 666 |
+| L15 | 15,000 (+250.6) | nothing | 692 | 666 |
+| A5 | 5,000 archers (+250.6) | nothing | 692 | 666 |
+| L25 | 25,000 (+418.1) | nothing | 859 | 666 |
+| L15D5 | 15,000 (+250.6) | 5,000 light infantry (+81.1) | 692 | 747 |
 
 - **Driver and script:** `Game.attack_fleet(1, 0)`; `t3_trials.py` reads both fleets and both armies from game memory before and after (`army_state`), saves seed 1 of each cell. `python3 runs/experiments/fleet-battles/t3_stage.py build` writes the six fixtures.
 
@@ -39,7 +39,7 @@ Saves (`NBC_<cell>_seed1.SAV`), the six fixtures, `t3_trials.json` and the log a
 | L15 | **9** / 10 (not seed 10) | 0.64 | 0.171–0.300 | 47–59 % in three, all in six |
 | A5 | **9** / 10 (not seed 10) | 0.63 | the same, seed by seed | 46–59 % in three, all in six |
 | L25 | **10** / 10 | 1.00 | 0.100–0.214 | 30–62 % in all ten |
-| L15D5 | **5** / 10 (seeds 1, 4, 5, 7, 8) | 0.25 | 0.214–0.314 | all in four, 59 % in one |
+| L15D5 | **5** / 10 (seeds 1, 4, 5, 7, 8) | 0.25 | 0.214–0.314 (attacker wins); 0.233–0.278 (the 5 defender wins) | attacker's army: all in four, 59 % in one; defender's army (5,000): all in the five defender wins |
 
 **Seeds share draws across cells.** Seeds 2, 3, 6 and 9 gave the same winner's loss (ships 70 → 49) in L15 and A5, and seeds 1 and 4 the same loss to each other within L10 (70 → 51), L15 and A5 (70 → 55): the random draws are tied to the seed, not to the cell (the T2 finding noted the same).
 
@@ -55,7 +55,7 @@ Saves (`NBC_<cell>_seed1.SAV`), the six fixtures, `t3_trials.json` and the log a
 | 0.229 | 1 | 0.609 (2.66 × f) |
 | 0.233–0.314 | 24 | **1.000 (all)** |
 
-(0.214 and 0.229 rows are single values of f.) Morale after: 67 in every case (a winning attacker's moves 0, a winning defender's unchanged).
+(0.214 and 0.229 rows are single values of f.) Morale after: unchanged in every case (67 for Ptolemaic's army 7, 65 for Carthage's army 2 in the five defender wins of L15D5); a winning attacker's moves 0, a winning defender's unchanged.
 
 **The defender with cargo** (L15D5, seeds 2, 3, 6, 9, 10): the defender won, lost 0.233–0.278 of its ships and its army (5,000) went to 0 in each; and Carthage's 33,900-man army 2, **not** aboard in the other five cells, was untouched in all 50 battles of those cells (33,900 → 33,900).
 
@@ -70,6 +70,7 @@ Saves (`NBC_<cell>_seed1.SAV`), the six fixtures, `t3_trials.json` and the log a
 
 - **A natural cargo:** every cargo here is edited into the save. The edit reproduces a natural embark except for 3 unexplained bytes, but no battle was fought from a naturally embarked fleet (the fleets still had the moves a boarded fleet would not).
 - **Armies of mixed composition and quality:** one unit of average quality and one type per army; cavalry and heavy infantry were not tried (the formula weights only archers).
+- **Plan acceptance not fully met:** the plan asked for one win and one loss saved per cell and a heavy-infantry or mixed cell; only seed 1 of each cell was saved (a loss only in L5) and each army is one unit of one type, so heavy infantry and mixed armies are untested.
 - **Both fleets in the real order of a game**: one fixture, worn unsupplied fleets, calm sea, one pair.
 - **The cargo's effect on moves** (`troops/100/ships + 1` fewer): not measured here. The natural embark save has the cargo aboard and could be ended a turn to read it; not done.
 - **The divisor and the 0–30 % term:** see Inferences; 10 seeds per cell with shared draws cannot separate `/40` from `/50` firmly.
@@ -86,4 +87,5 @@ python3 runs/experiments/fleet-battles/t3_natural_embark.py        # the natural
 python3 runs/experiments/fleet-battles/t3_stage.py check           # the edit against it
 python3 runs/experiments/fleet-battles/t3_stage.py build           # the six cargo fixtures
 python3 runs/experiments/fleet-battles/t3_trials.py                # 60 battles, about an hour
+python3 runs/experiments/fleet-battles/t3_analysis.py              # the win table, the winner's army table, the divisor fit
 ```

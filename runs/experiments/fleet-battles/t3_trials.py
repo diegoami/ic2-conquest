@@ -4,11 +4,11 @@ embark). Same fixture and fleets as cell P of trials.py (Ptolemaic 70 ships x 63
 no cargo: 0 of 10 won), so each cell differs from P only by the army aboard. Ptolemaic's cargo is army 7 (morale 67), Carthage's
 army 2 (morale 65); a unit is (type, troops), 0 light infantry, 2 archers.
 
-  L5    attacker carries 5,000 light infantry        (siegeStrength/50 = 83)
-  L10   10,000 light infantry                         (168)
-  L15   15,000 light infantry                         (251)
+  L5    attacker carries 5,000 light infantry        (siegeStrength/50 = 83.1)
+  L10   10,000 light infantry                         (167.5)
+  L15   15,000 light infantry                         (250.6)
   A5    5,000 archers (x3 weight: the same strength as L15, a third of the men)
-  L25   25,000 light infantry                         (418)
+  L25   25,000 light infantry                         (418.1)
   L15D5 attacker L15, defender carries 5,000 light infantry (does the defender's cargo count?)
 
     python3 runs/experiments/fleet-battles/t3_stage.py build ; python3 runs/experiments/fleet-battles/t3_trials.py [cell ...] [--seeds N] [--from K]
@@ -22,7 +22,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
-from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle-cargo"
 SRC = ROOT / "artifacts" / "run-exp-naval-battle" / "FIX_P_0723_ptolemaic_seat.SAV"
@@ -57,10 +56,6 @@ def army_state(g, i):
     x, y, owner, moves, cell, sup, money, morale = struct.unpack_from("<8h", rec, 0)
     troops = sum(max(0, struct.unpack_from("<h", rec, 16 + 32 * k + 4)[0]) for k in range(20))
     return {"id": i, "x": x, "y": y, "owner": owner, "moves": moves, "cell": cell, "supplies": sup, "morale": morale, "troops": troops}
-
-
-def cargo_strength(s, i):
-    return sav.siege_strength(s["armies"][i]) / 50
 
 
 def trial(cell, seed):
