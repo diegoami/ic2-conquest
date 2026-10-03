@@ -402,10 +402,11 @@ class Game:
         self.click_control(c, pause=0.8)
         return True
 
-    def dismiss_popups(self, max_n=10):
+    def dismiss_popups(self, max_n=10, strict=False):
         """Press OK on message boxes; return their texts (OCR). A Confirm box is
         a Yes/No/Cancel dialog and is answered Yes (the driver only calls this
-        after the action it asked for)."""
+        after the action it asked for). With `strict` a Confirm box is answered No instead, checked to be
+        closed, and DriverError("unexpected Confirm: <text>") is raised (used by `end_turn(strict_confirm=True)`)."""
         texts = []
         for _ in range(max_n):
             ps = [p for p in self.popups() if p[1] in ("Information", "Confirm", "Warning", "Error", "")
@@ -414,6 +415,14 @@ class Game:
                 break
             wid, name = ps[0][0], ps[0][1]
             texts.append(self.read_popup(ps[0]))
+            if name == "Confirm" and strict:
+                for _ in range(3):      # the first click into an inactive window may only activate it
+                    self.answer("Confirm", yes=False)
+                    if wid not in [p[0] for p in self.popups()]:
+                        break
+                if wid in [p[0] for p in self.popups()]:
+                    raise DriverError("end turn: unexpected Confirm that did not close after No: " + texts[-1])
+                raise DriverError("end turn: unexpected Confirm: " + texts[-1])
             if name == "Confirm":
                 self.answer("Confirm", yes=True)
                 if wid in [p[0] for p in self.popups()]:
@@ -1126,11 +1135,17 @@ class Game:
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
 
-    def end_turn(self, timeout=300, battle_shot=None):
+    def end_turn(self, timeout=300, battle_shot=None, reclick=True, strict_confirm=False):
         """Game > End turn (it runs at once, unless an army needs supplies: then an
         "End turn ?" box asks, and is answered End turn), then
         play out any battle with Computer general and dismiss the AI's news and
-        offer boxes until the autosave line appears."""
+        offer boxes until the autosave line appears.
+
+        `reclick` (default True, the historical behaviour): click End turn a second time when no sign of the turn starting
+        appears within 8 s. With `reclick=False` that case raises DriverError("end turn: no sign of the turn starting")
+        after the single click (the first click may have registered: the caller must not click again).
+        `strict_confirm` (default False): a Confirm box other than "End turn ?" is answered No, never Yes, on every path
+        (the wait loop, inside `play_battle`, after the autosave line), and DriverError("end turn: unexpected Confirm: ...") is raised."""
         log = G / "AUTOSAVE.LOG"
         n = len(log.read_text().splitlines()) if log.exists() else 0
         cal, me = self.calendar(), self.i16(CUR_NATION)
@@ -1145,6 +1160,8 @@ class Game:
         try:
             self.wait(started, 8, "turn start", step=0.25)
         except DriverError:
+            if not reclick:
+                raise DriverError("end turn: no sign of the turn starting")
             self.log("end_turn: first click swallowed, clicking again")
             self.tool("end_turn")
         while time.time() - t0 < timeout:
@@ -1152,7 +1169,7 @@ class Game:
                 break
             if self.in_battle() and self.find_windows(" v "):   # battle screen "<A> v <B>"
                 texts.append("BATTLE " + self.find_windows(" v ")[0][1])
-                self.play_battle(battle_shot)
+                self.play_battle(battle_shot, strict=strict_confirm)
                 continue
             if self.find_windows(r"^End turn \?$"):
                 # "An army of yours needs supplies. ... MAKE MORE MOVES / END TURN": the game asks
@@ -1161,18 +1178,18 @@ class Game:
                 cs = self.controls("End turn ?")
                 self.click_control(self.control(cs, text="End turn"), pause=1.5)
                 continue
-            texts += self.dismiss_popups()
+            texts += self.dismiss_popups(strict=strict_confirm)
             time.sleep(1)
         else:
             raise DriverError("end turn timed out")
         time.sleep(3)
-        texts += self.dismiss_popups()
+        texts += self.dismiss_popups(strict=strict_confirm)
         line = log.read_text().splitlines()[-1]
         if not line.rstrip().endswith("OK"):
             raise DriverError("autosave: " + line)
         return line.split()[1], texts
 
-    def play_battle(self, shot=None):
+    def play_battle(self, shot=None, strict=False):
         """Play an open battle with Computer general, then dismiss the result.
 
         The battle toolbar's button x is derived from the tooltips like the
@@ -1202,4 +1219,4 @@ class Game:
             time.sleep(1.5)
             if self.popups():
                 self.click(220, 478, pause=1.5)
-        self.dismiss_popups()
+        self.dismiss_popups(strict=strict)
