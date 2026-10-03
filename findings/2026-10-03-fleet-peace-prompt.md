@@ -27,7 +27,7 @@ Saves (`PP_yes_seed1.SAV`, `PP_yes_seed1_AUTO0723.SAV`), the box screenshots (`p
 
 **The news** (next autosave, `PP_yes_seed1_AUTO0723.SAV`, the same three lines in seeds 2 and 3): "PTOLEMAIC DECLARES WAR ON CARTHAGE." / "PTOLEMAIC DECLARES WAR ON NUMIDIA." / "Carthage sinks fleet of Ptolemaic." The treaties: before, `Ptolemaic → {Carthage 1, Seleucid 3, Numidia 0, Greece 1, …}` and `Carthage → {Numidia 2, Seleucid 1, Greece 1, Celtiberia 3, …}`; after, `Ptolemaic → {Carthage 3, Seleucid 3, Numidia 3, Greece 1, …}`.
 
-**The box is the same in each trial** (the click selects nothing else; after No or Cancel the selection was cleared and the fleets could still be ordered; not tested further). The End turn box after Yes listed the usual army and fleet warnings.
+**The box is the same in each trial.** After No or Cancel nothing was ordered afterwards (what the selection does next was not looked at). The End turn box after Yes listed the usual army and fleet warnings.
 
 ## Inferences
 
