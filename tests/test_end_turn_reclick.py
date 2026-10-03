@@ -195,14 +195,14 @@ class Battle(Scripted):
             self.battle = False
 
     def controls(self, title):
+        if self.confirm_at == "fallback":
+            self.boxes.append((42, "Confirm"))               # a Confirm is open when the fallback starts (the battle loop is over)
         raise D.DriverError("no such dialog: " + title)       # no 'Battle ended' result dialog: the Return fallback runs
 
     def key(self, k):
         self.keys.append(k)
 
     def popups(self):
-        if self.confirm_at == "fallback" and not self.battle and not any(b[1] == "Confirm" for b in self.boxes):
-            self.boxes.append((42, "Confirm"))               # a Confirm is open when the fallback starts
         return [(i, t, 100, 100, 300, 120) for i, t in self.boxes if t != "Battle v Battle" or self.battle]
 
 
