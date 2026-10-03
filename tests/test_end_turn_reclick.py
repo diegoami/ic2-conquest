@@ -19,7 +19,7 @@ class Scripted(D.Game):
     """A Game whose window and memory access is scripted. `boxes` is a list of (id, title) shown by popups()/find_windows();
     `answer` removes the box it answers and records the answer; `tool('end_turn')` counts clicks and optionally writes the autosave line."""
 
-    def __init__(self, log_dir, sign=True, boxes_after_line=None, boxes_during=None, battle=False, defer_line=False):
+    def __init__(self, log_dir, sign=True, boxes_after_line=None, boxes_during=None, battle=False, defer_line=False, ok_only=False):
         self.log = lambda *a: None
         self.dir = log_dir
         self.sign = sign                  # does the first click produce a sign of the turn starting?
@@ -30,6 +30,7 @@ class Scripted(D.Game):
         self.cal = 1
         self.battle = battle
         self.line_written = False
+        self.ok_only = ok_only            # the Confirm box has no No button (answer(yes=False) raises, as the driver's does)
         self.defer_line = defer_line      # the autosave line only appears after the End turn box is answered / the battle played
 
     # --- what end_turn touches ---
@@ -84,6 +85,8 @@ class Scripted(D.Game):
             self._line()
 
     def answer(self, title, yes=True):
+        if self.ok_only and not yes:
+            raise D.DriverError("%s: no no button" % title)
         self.answers.append((title, yes))
         self.boxes = [b for b in self.boxes if b[1] != title]
         return True
@@ -169,13 +172,79 @@ def test_strict_information_boxes_are_still_dismissed():
     assert err is None and not g.popups(), (err, g.popups())
 
 
-def test_real_play_battle_passes_strict_to_its_final_dismissal():
-    """The scripted `play_battle` above only shows end_turn passes `strict`; the real method's final `dismiss_popups` must use it
-    (its other clicks are on an OK-only 'Battle ended' result box). A source check, since the real method needs a battle window."""
-    import inspect
-    src = inspect.getsource(D.Game.play_battle)
-    assert "self.dismiss_popups(strict=strict)" in src and "def play_battle(self, shot=None, strict=False)" in src
-    assert src.count("dismiss_popups") == 1, "every dismissal inside play_battle must be the strict-aware one"
+class Battle(Scripted):
+    """For the REAL `Game.play_battle`: a battle window, no 'Battle ended' dialog (so the Return fallback runs) and a Confirm box on top."""
+
+    def __init__(self, d, confirm_at):
+        super().__init__(d)
+        self.battle_x = {"computer": 1, "end_turn": 2}
+        self.keys, self.ticks, self.confirm_at = [], 0, confirm_at      # confirm_at: "loop" | "fallback" | "never"
+        self.boxes = [(40, "Battle v Battle")]
+        self.battle = True
+
+    def find_windows(self, pattern=None):
+        import re
+        ws = [w for w in self.popups() if pattern is None or re.search(pattern, w[1])]
+        return ws
+
+    def click(self, x, y, pause=0.5):
+        self.ticks += 1
+        if self.confirm_at == "loop" and self.ticks == 2:
+            self.boxes.append((41, "Confirm"))              # a Confirm opens mid-battle
+        if self.ticks == 3:
+            self.battle = False
+
+    def controls(self, title):
+        raise D.DriverError("no such dialog: " + title)       # no 'Battle ended' result dialog: the Return fallback runs
+
+    def key(self, k):
+        self.keys.append(k)
+
+    def popups(self):
+        if self.confirm_at == "fallback" and not self.battle and not any(b[1] == "Confirm" for b in self.boxes):
+            self.boxes.append((42, "Confirm"))               # a Confirm is open when the fallback starts
+        return [(i, t, 100, 100, 300, 120) for i, t in self.boxes if t != "Battle v Battle" or self.battle]
+
+
+def run_real_play_battle(confirm_at, strict):
+    d = Path(tempfile.mkdtemp())
+    old_sleep = D.time.sleep
+    D.time.sleep = lambda s: None
+    try:
+        g = Battle(d, confirm_at)
+        try:
+            D.Game.play_battle(g, strict=strict)
+            err = None
+        except D.DriverError as e:
+            err = str(e)
+        return g, err
+    finally:
+        D.time.sleep = old_sleep
+
+
+def test_real_play_battle_strict_declines_a_confirm_before_return_in_the_fallback():
+    g, err = run_real_play_battle("fallback", strict=True)
+    assert err and "unexpected Confirm" in err and g.keys == [] and ("Confirm", False) in g.answers and ("Confirm", True) not in g.answers, (err, g.keys, g.answers)
+
+
+def test_real_play_battle_strict_declines_a_confirm_in_the_battle_loop():
+    g, err = run_real_play_battle("loop", strict=True)
+    assert err and "unexpected Confirm" in err and ("Confirm", False) in g.answers and ("Confirm", True) not in g.answers, (err, g.answers)
+
+
+def test_real_play_battle_default_still_presses_return_and_answers_yes():
+    g, err = run_real_play_battle("fallback", strict=False)
+    assert g.keys == ["Return"] and ("Confirm", True) in g.answers, (err, g.keys, g.answers)
+
+
+def test_reclick_false_with_a_sign_is_a_normal_return():
+    g, out, err = run(sign=True, reclick=False)
+    assert err is None and g.clicks == 1 and out[0] == "AUTO0721.SAV", (g.clicks, err, out)
+
+
+def test_strict_ok_only_confirm_raises_the_documented_message():
+    g, out, err = run(sign=True, boxes_after_line=[(5, "Confirm")], strict=True, ok_only=True)
+    assert err and err.startswith("end turn: unexpected Confirm:") and "no No button" in err and ("Confirm", True) not in g.answers, (err, g.answers)
 
 
 TESTS = [n for n in sorted(globals()) if n.startswith("test_")]

@@ -402,6 +402,11 @@ class Game:
         self.click_control(c, pause=0.8)
         return True
 
+    def _refuse_confirm(self):
+        """Strict mode: if a Confirm box is open, answer it No and raise (dismiss_popups(strict=True) does both); other boxes are left alone."""
+        if any(p[1] == "Confirm" for p in self.popups()):
+            self.dismiss_popups(strict=True)
+
     def dismiss_popups(self, max_n=10, strict=False):
         """Press OK on message boxes; return their texts (OCR). A Confirm box is
         a Yes/No/Cancel dialog and is answered Yes (the driver only calls this
@@ -417,7 +422,10 @@ class Game:
             texts.append(self.read_popup(ps[0]))
             if name == "Confirm" and strict:
                 for _ in range(3):      # the first click into an inactive window may only activate it
-                    self.answer("Confirm", yes=False)
+                    try:
+                        self.answer("Confirm", yes=False)
+                    except DriverError:     # an OK-only box has no No button: say so in the documented message, never press OK
+                        raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (no No button)")
                     if wid not in [p[0] for p in self.popups()]:
                         break
                 if wid in [p[0] for p in self.popups()]:
@@ -1204,6 +1212,8 @@ class Game:
             self.calibrate_battle_toolbar()
         self.click(self.battle_x.get("computer", BATTLE_TOOLS["computer"]), BATTLE_TOOLBAR_Y, pause=1.5)
         for _ in range(120):
+            if strict:
+                self._refuse_confirm()
             if not self.in_battle() or self.find_windows("Battle ended"):
                 break
             self.click(self.battle_x.get("end_turn", BATTLE_TOOLS["end_turn"]), BATTLE_TOOLBAR_Y, pause=1.5)
@@ -1215,8 +1225,12 @@ class Game:
         try:
             self.click_control(self.control(self.controls("Battle ended"), text="OK"), pause=1.5)
         except DriverError:
+            if strict:
+                self._refuse_confirm()      # Return (below) could accept an unexpected Confirm box: decline it first
             self.key("Return")
             time.sleep(1.5)
+            if strict:
+                self._refuse_confirm()
             if self.popups():
                 self.click(220, 478, pause=1.5)
         self.dismiss_popups(strict=strict)
