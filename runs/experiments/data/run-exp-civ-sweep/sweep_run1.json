@@ -1,0 +1,4445 @@
+{
+ "0": {
+  "row": 0,
+  "nation": "Rome",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     [
+      "@ Bithynia wants to trade with Rome."
+     ]
+    ],
+    "secs": 19.5
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Caere."
+    ],
+    "secs": 12.6
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.3
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 0,
+     "sel": 0
+    },
+    "secs": 3.7
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.8
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     99,
+     37
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.6
+   }
+  ],
+  "start_popups": [
+   "@ Bithynia wants to trade with Rome."
+  ],
+  "cur_nation": 0,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Rome's turn   (Appius Claudius)"
+  ],
+  "view_origin_mem": [
+   107,
+   39
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 11,
+   "current_nation": 0,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    0
+   ],
+   "leader": "Appius Claudius",
+   "treasury": 2200,
+   "cities": 25,
+   "coastal_cities": 15,
+   "armies": [
+    [
+     0,
+     100,
+     37,
+     23700,
+     8
+    ],
+    [
+     1,
+     120,
+     53,
+     22000,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Gaul"
+   ],
+   "tax": 10,
+   "mobilization": 30,
+   "view": [
+    97,
+    39
+   ],
+   "capital": 85
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 11,
+   "current_nation": 0,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    0
+   ],
+   "leader": "Appius Claudius",
+   "treasury": 2100,
+   "cities": 25,
+   "coastal_cities": 15,
+   "armies": [
+    [
+     0,
+     100,
+     37,
+     23700,
+     9
+    ],
+    [
+     1,
+     120,
+     53,
+     22000,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Gaul"
+   ],
+   "tax": 10,
+   "mobilization": 30,
+   "view": [
+    94,
+    30
+   ],
+   "capital": 85
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 11,
+   "current_nation": 0,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    0
+   ],
+   "leader": "Appius Claudius",
+   "treasury": 2100,
+   "cities": 25,
+   "coastal_cities": 15,
+   "armies": [
+    [
+     0,
+     99,
+     37,
+     23700,
+     9
+    ],
+    [
+     1,
+     120,
+     53,
+     22000,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Gaul"
+   ],
+   "tax": 10,
+   "mobilization": 30,
+   "view": [
+    94,
+    30
+   ],
+   "capital": 85
+  },
+  "secs": 69
+ },
+ "1": {
+  "row": 1,
+  "nation": "Carthage",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 15.7
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Carthago."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.8
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 2,
+     "sel": 2
+    },
+    "secs": 3.7
+   },
+   {
+    "step": "select_fleet",
+    "ok": true,
+    "result": {
+     "fleet": 0,
+     "sel": 0
+    },
+    "secs": 1.2
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.7
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     46,
+     61
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     [
+      "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. \u2018One of your fleets is not docked at its own city. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+      "CONFIRM \u2014",
+      "CONFIRM ",
+      "CONFIRM \u2014",
+      "CONFIRM \u2014"
+     ]
+    ],
+    "secs": 16.2
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 1,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Carthage's turn   (Agis)"
+  ],
+  "view_origin_mem": [
+   89,
+   74
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 13,
+   "current_nation": 1,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    1
+   ],
+   "leader": "Agis",
+   "treasury": 11000,
+   "cities": 34,
+   "coastal_cities": 28,
+   "armies": [
+    [
+     2,
+     47,
+     62,
+     33900,
+     8
+    ],
+    [
+     3,
+     93,
+     79,
+     18600,
+     8
+    ]
+   ],
+   "fleets": [
+    [
+     0,
+     49,
+     62,
+     90,
+     85,
+     false
+    ]
+   ],
+   "wars": [
+    "Celtiberia"
+   ],
+   "tax": 5,
+   "mobilization": 15,
+   "view": [
+    89,
+    74
+   ],
+   "capital": 72
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 13,
+   "current_nation": 1,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    1
+   ],
+   "leader": "Agis",
+   "treasury": 10900,
+   "cities": 34,
+   "coastal_cities": 28,
+   "armies": [
+    [
+     2,
+     47,
+     62,
+     33900,
+     9
+    ],
+    [
+     3,
+     93,
+     79,
+     18600,
+     10
+    ]
+   ],
+   "fleets": [
+    [
+     0,
+     49,
+     62,
+     90,
+     82,
+     false
+    ],
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Celtiberia"
+   ],
+   "tax": 5,
+   "mobilization": 15,
+   "view": [
+    41,
+    55
+   ],
+   "capital": 72
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. \u2018One of your fleets is not docked at its own city. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 13,
+   "current_nation": 1,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    1
+   ],
+   "leader": "Agis",
+   "treasury": 10900,
+   "cities": 34,
+   "coastal_cities": 28,
+   "armies": [
+    [
+     2,
+     46,
+     61,
+     33900,
+     9
+    ],
+    [
+     3,
+     93,
+     79,
+     18600,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     0,
+     49,
+     62,
+     90,
+     78,
+     false
+    ],
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Celtiberia"
+   ],
+   "tax": 5,
+   "mobilization": 15,
+   "view": [
+    41,
+    55
+   ],
+   "capital": 72
+  },
+  "secs": 72
+ },
+ "2": {
+  "row": 2,
+  "nation": "Seleucid",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Issus."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.7
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 4,
+     "sel": 4
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     [
+      "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+      "CONFIRM \u2014",
+      "CONFIRM ",
+      "CONFIRM \u2014",
+      "CONFIRM \u2014"
+     ]
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     222,
+     64
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.7
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 2,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Seleucid's turn   (Darius)"
+  ],
+  "view_origin_mem": [
+   216,
+   55
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 4,
+   "current_nation": 2,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    2
+   ],
+   "leader": "Darius",
+   "treasury": 2700,
+   "cities": 62,
+   "coastal_cities": 16,
+   "armies": [
+    [
+     4,
+     223,
+     65,
+     46200,
+     8
+    ],
+    [
+     5,
+     172,
+     49,
+     37300,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Ptolemaic",
+    "Bithynia",
+    "Galatia"
+   ],
+   "tax": 18,
+   "mobilization": 19,
+   "view": [
+    216,
+    55
+   ],
+   "capital": 259
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 4,
+   "current_nation": 2,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    2
+   ],
+   "leader": "Darius",
+   "treasury": 2600,
+   "cities": 62,
+   "coastal_cities": 16,
+   "armies": [
+    [
+     4,
+     223,
+     65,
+     46200,
+     8
+    ],
+    [
+     5,
+     172,
+     49,
+     37300,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Ptolemaic",
+    "Bithynia",
+    "Galatia"
+   ],
+   "tax": 18,
+   "mobilization": 19,
+   "view": [
+    217,
+    58
+   ],
+   "capital": 259
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 4,
+   "current_nation": 2,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    2
+   ],
+   "leader": "Darius",
+   "treasury": 2600,
+   "cities": 62,
+   "coastal_cities": 16,
+   "armies": [
+    [
+     4,
+     222,
+     64,
+     46200,
+     8
+    ],
+    [
+     5,
+     172,
+     49,
+     37300,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Ptolemaic",
+    "Bithynia",
+    "Galatia"
+   ],
+   "tax": 18,
+   "mobilization": 19,
+   "view": [
+    217,
+    58
+   ],
+   "capital": 259
+  },
+  "secs": 71
+ },
+ "3": {
+  "row": 3,
+  "nation": "Ptolemaic",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Alexandria."
+    ],
+    "secs": 12.6
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.7
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 6,
+     "sel": 6
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "select_fleet",
+    "ok": true,
+    "result": {
+     "fleet": 1,
+     "sel": 1
+    },
+    "secs": 3.5
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     [
+      "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+      "CONFIRM \u2014",
+      "CONFIRM ",
+      "CONFIRM \u2014",
+      "CONFIRM \u2014",
+      "BATTLE Seleucid  v  Ptolemaic          Ptolemaic to place units."
+     ]
+    ],
+    "secs": 29.8
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     190,
+     95
+    ],
+    "secs": 4.9
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     [
+      "CONFIRM \u2018One of your fleets is not docked at its own city. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+      "CONFIRM \u2014",
+      "CONFIRM ",
+      "CONFIRM \u2014",
+      "CONFIRM \u2014"
+     ]
+    ],
+    "secs": 16.3
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 3,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Ptolemaic's turn   (Thutmose)"
+  ],
+  "view_origin_mem": [
+   186,
+   90
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 2,
+   "current_nation": 3,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    3
+   ],
+   "leader": "Thutmose",
+   "treasury": 4900,
+   "cities": 46,
+   "coastal_cities": 20,
+   "armies": [
+    [
+     6,
+     225,
+     73,
+     27700,
+     8
+    ],
+    [
+     7,
+     191,
+     96,
+     56400,
+     8
+    ]
+   ],
+   "fleets": [
+    [
+     1,
+     189,
+     89,
+     70,
+     75,
+     false
+    ]
+   ],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 13,
+   "mobilization": 17,
+   "view": [
+    186,
+    90
+   ],
+   "capital": 214
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014",
+    "BATTLE Seleucid  v  Ptolemaic          Ptolemaic to place units."
+   ],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 2,
+   "current_nation": 3,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    3
+   ],
+   "leader": "Thutmose",
+   "treasury": 4800,
+   "cities": 46,
+   "coastal_cities": 20,
+   "armies": [
+    [
+     7,
+     191,
+     96,
+     56400,
+     8
+    ]
+   ],
+   "fleets": [
+    [
+     1,
+     189,
+     89,
+     70,
+     72,
+     false
+    ],
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 13,
+   "mobilization": 17,
+   "view": [
+    183,
+    82
+   ],
+   "capital": 214
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [
+    "CONFIRM \u2018One of your fleets is not docked at its own city. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 2,
+   "current_nation": 3,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    3
+   ],
+   "leader": "Thutmose",
+   "treasury": 4800,
+   "cities": 45,
+   "coastal_cities": 19,
+   "armies": [
+    [
+     7,
+     190,
+     95,
+     56400,
+     8
+    ]
+   ],
+   "fleets": [
+    [
+     1,
+     189,
+     89,
+     70,
+     68,
+     false
+    ],
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 13,
+   "mobilization": 17,
+   "view": [
+    185,
+    89
+   ],
+   "capital": 214
+  },
+  "secs": 96
+ },
+ "4": {
+  "row": 4,
+  "nation": "Macedonia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 15.7
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Pynda."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.3
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 8,
+     "sel": 8
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 11.6
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     144,
+     39
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.7
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 4,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Macedonia's turn   (Alexander)"
+  ],
+  "view_origin_mem": [
+   139,
+   37
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 8,
+   "current_nation": 4,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    4
+   ],
+   "leader": "Alexander",
+   "treasury": 775,
+   "cities": 16,
+   "coastal_cities": 5,
+   "armies": [
+    [
+     8,
+     145,
+     40,
+     29800,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [],
+   "tax": 15,
+   "mobilization": 21,
+   "view": [
+    139,
+    37
+   ],
+   "capital": 144
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 8,
+   "current_nation": 4,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    4
+   ],
+   "leader": "Alexander",
+   "treasury": 675,
+   "cities": 16,
+   "coastal_cities": 5,
+   "armies": [
+    [
+     8,
+     145,
+     40,
+     29800,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 15,
+   "mobilization": 21,
+   "view": [
+    139,
+    33
+   ],
+   "capital": 144
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 8,
+   "current_nation": 4,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    4
+   ],
+   "leader": "Alexander",
+   "treasury": 675,
+   "cities": 16,
+   "coastal_cities": 5,
+   "armies": [
+    [
+     8,
+     144,
+     39,
+     29800,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 15,
+   "mobilization": 21,
+   "view": [
+    139,
+    33
+   ],
+   "capital": 144
+  },
+  "secs": 66
+ },
+ "5": {
+  "row": 5,
+  "nation": "Numidia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Siga."
+    ],
+    "secs": 12.7
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.8
+   },
+   {
+    "step": "select_first_army",
+    "ok": null,
+    "result": "the nation has no army"
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.8
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.7
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 5,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Numidia's turn   (Abu-Simbel)"
+  ],
+  "view_origin_mem": [
+   65,
+   85
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 1,
+   "current_nation": 5,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    5
+   ],
+   "leader": "Abu-Simbel",
+   "treasury": 410,
+   "cities": 8,
+   "coastal_cities": 1,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    65,
+    85
+   ],
+   "capital": 47
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 1,
+   "current_nation": 5,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    5
+   ],
+   "leader": "Abu-Simbel",
+   "treasury": 310,
+   "cities": 8,
+   "coastal_cities": 1,
+   "armies": [],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    75,
+    85
+   ],
+   "capital": 47
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 1,
+   "current_nation": 5,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    5
+   ],
+   "leader": "Abu-Simbel",
+   "treasury": 310,
+   "cities": 8,
+   "coastal_cities": 1,
+   "armies": [],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    75,
+    85
+   ],
+   "capital": 47
+  },
+  "secs": 60
+ },
+ "6": {
+  "row": 6,
+  "nation": "Gaul",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 15.7
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Rotomagus."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 5.1
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 9,
+     "sel": 9
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.7
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     92,
+     27
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     [
+      "BATTLE Rome  v  Gaul          Gaul to place units."
+     ]
+    ],
+    "secs": 25.3
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 6,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Gaul's turn   (Hengest)"
+  ],
+  "view_origin_mem": [
+   63,
+   29
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 14,
+   "current_nation": 6,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    6
+   ],
+   "leader": "Hengest",
+   "treasury": 315,
+   "cities": 28,
+   "coastal_cities": 2,
+   "armies": [
+    [
+     9,
+     93,
+     28,
+     40500,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Rome"
+   ],
+   "tax": 10,
+   "mobilization": 25,
+   "view": [
+    63,
+    29
+   ],
+   "capital": 45
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 14,
+   "current_nation": 6,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    6
+   ],
+   "leader": "Hengest",
+   "treasury": 215,
+   "cities": 28,
+   "coastal_cities": 2,
+   "armies": [
+    [
+     9,
+     93,
+     28,
+     40500,
+     8
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Rome"
+   ],
+   "tax": 10,
+   "mobilization": 25,
+   "view": [
+    87,
+    21
+   ],
+   "capital": 45
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [
+    "BATTLE Rome  v  Gaul          Gaul to place units."
+   ],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 14,
+   "current_nation": 6,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    6
+   ],
+   "leader": "Hengest",
+   "treasury": 215,
+   "cities": 28,
+   "coastal_cities": 2,
+   "armies": [],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Rome"
+   ],
+   "tax": 10,
+   "mobilization": 25,
+   "view": [
+    87,
+    21
+   ],
+   "capital": 45
+  },
+  "secs": 77
+ },
+ "7": {
+  "row": 7,
+  "nation": "Greece",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Athens."
+    ],
+    "secs": 12.4
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.1
+   },
+   {
+    "step": "select_first_army",
+    "ok": null,
+    "result": "the nation has no army"
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.8
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 7,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Greece's turn   (Pergamus)"
+  ],
+  "view_origin_mem": [
+   148,
+   58
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 6,
+   "current_nation": 7,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    7
+   ],
+   "leader": "Pergamus",
+   "treasury": 920,
+   "cities": 21,
+   "coastal_cities": 15,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    148,
+    58
+   ],
+   "capital": 166
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 6,
+   "current_nation": 7,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    7
+   ],
+   "leader": "Pergamus",
+   "treasury": 848,
+   "cities": 21,
+   "coastal_cities": 15,
+   "armies": [],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    158,
+    58
+   ],
+   "capital": 166
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 6,
+   "current_nation": 7,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    7
+   ],
+   "leader": "Pergamus",
+   "treasury": 848,
+   "cities": 21,
+   "coastal_cities": 15,
+   "armies": [],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    158,
+    58
+   ],
+   "capital": 166
+  },
+  "secs": 59
+ },
+ "8": {
+  "row": 8,
+  "nation": "Celtiberia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Saguntum."
+    ],
+    "secs": 12.4
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.2
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 10,
+     "sel": 10
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 11.6
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     33,
+     62
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     [
+      "BATTLE Carthage  v  Celtiberia          Celtiberia to place units.",
+      "e Bithyria wants to ade with Celtiberia, aK"
+     ]
+    ],
+    "secs": 27.5
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 8,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Celtiberia's turn   (Octavian)"
+  ],
+  "view_origin_mem": [
+   38,
+   38
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 15,
+   "current_nation": 8,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    8
+   ],
+   "leader": "Octavian",
+   "treasury": 440,
+   "cities": 19,
+   "coastal_cities": 3,
+   "armies": [
+    [
+     10,
+     34,
+     63,
+     33900,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Carthage"
+   ],
+   "tax": 15,
+   "mobilization": 22,
+   "view": [
+    38,
+    38
+   ],
+   "capital": 23
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 15,
+   "current_nation": 8,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    8
+   ],
+   "leader": "Octavian",
+   "treasury": 340,
+   "cities": 19,
+   "coastal_cities": 3,
+   "armies": [
+    [
+     10,
+     34,
+     63,
+     33900,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Carthage"
+   ],
+   "tax": 15,
+   "mobilization": 22,
+   "view": [
+    28,
+    56
+   ],
+   "capital": 23
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [
+    "BATTLE Carthage  v  Celtiberia          Celtiberia to place units.",
+    "e Bithyria wants to ade with Celtiberia, aK"
+   ],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 15,
+   "current_nation": 8,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    8
+   ],
+   "leader": "Octavian",
+   "treasury": 340,
+   "cities": 19,
+   "coastal_cities": 3,
+   "armies": [],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Carthage"
+   ],
+   "tax": 15,
+   "mobilization": 22,
+   "view": [
+    28,
+    56
+   ],
+   "capital": 23
+  },
+  "secs": 83
+ },
+ "9": {
+  "row": 9,
+  "nation": "Illyria",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 15.6
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Epidamnus."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 5.1
+   },
+   {
+    "step": "select_first_army",
+    "ok": null,
+    "result": "the nation has no army"
+   },
+   {
+    "step": "end_turn_1",
+    "ok": false,
+    "error": "DriverError: end turn timed out",
+    "secs": 302.8
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 9,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Illyria's turn   (Epaminondas)"
+  ],
+  "view_origin_mem": [
+   124,
+   35
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 0,
+   "current_nation": 9,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    9
+   ],
+   "leader": "Epaminondas",
+   "treasury": 580,
+   "cities": 9,
+   "coastal_cities": 6,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    124,
+    35
+   ],
+   "capital": 126
+  },
+  "secs": 338
+ },
+ "10": {
+  "row": 10,
+  "nation": "Dacia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": false,
+    "error": "DriverError: no controls found for window 'Build fleet'",
+    "secs": 2.6
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.8
+   },
+   {
+    "step": "select_first_army",
+    "ok": null,
+    "result": "the nation has no army"
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.8
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.8
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 10,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Dacia's turn   (Theudebert)"
+  ],
+  "view_origin_mem": [
+   132,
+   12
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 7,
+   "current_nation": 10,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    10
+   ],
+   "leader": "Theudebert",
+   "treasury": 180,
+   "cities": 8,
+   "coastal_cities": 0,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    132,
+    12
+   ],
+   "capital": 133
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 7,
+   "current_nation": 10,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    10
+   ],
+   "leader": "Theudebert",
+   "treasury": 180,
+   "cities": 8,
+   "coastal_cities": 0,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    132,
+    12
+   ],
+   "capital": 133
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 7,
+   "current_nation": 10,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    10
+   ],
+   "leader": "Theudebert",
+   "treasury": 180,
+   "cities": 8,
+   "coastal_cities": 0,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 5,
+   "mobilization": 0,
+   "view": [
+    132,
+    12
+   ],
+   "capital": 133
+  },
+  "secs": 50
+ },
+ "11": {
+  "row": 11,
+  "nation": "Bithynia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Sinope."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 5.2
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 11,
+     "sel": 11
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.7
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     189,
+     29
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 11.6
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 11,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Bithynia's turn   (Stesichorus)"
+  ],
+  "view_origin_mem": [
+   205,
+   18
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 12,
+   "current_nation": 11,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    11
+   ],
+   "leader": "Stesichorus",
+   "treasury": 550,
+   "cities": 13,
+   "coastal_cities": 11,
+   "armies": [
+    [
+     11,
+     190,
+     30,
+     33600,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 12,
+   "mobilization": 19,
+   "view": [
+    205,
+    18
+   ],
+   "capital": 250
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 12,
+   "current_nation": 11,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    11
+   ],
+   "leader": "Stesichorus",
+   "treasury": 450,
+   "cities": 13,
+   "coastal_cities": 11,
+   "armies": [
+    [
+     11,
+     190,
+     30,
+     33600,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 12,
+   "mobilization": 19,
+   "view": [
+    184,
+    23
+   ],
+   "capital": 250
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 12,
+   "current_nation": 11,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    11
+   ],
+   "leader": "Stesichorus",
+   "treasury": 450,
+   "cities": 13,
+   "coastal_cities": 11,
+   "armies": [
+    [
+     11,
+     189,
+     29,
+     33600,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 12,
+   "mobilization": 19,
+   "view": [
+    184,
+    23
+   ],
+   "capital": 250
+  },
+  "secs": 64
+ },
+ "12": {
+  "row": 12,
+  "nation": "Galatia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": false,
+    "error": "DriverError: no controls found for window 'Build fleet'",
+    "secs": 2.7
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.8
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 12,
+     "sel": 12
+    },
+    "secs": 1.3
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 10.6
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     199,
+     44
+    ],
+    "secs": 2.6
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.7
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 12,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Galatia's turn   (Androcles)"
+  ],
+  "view_origin_mem": [
+   188,
+   34
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 3,
+   "current_nation": 12,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    12
+   ],
+   "leader": "Androcles",
+   "treasury": 440,
+   "cities": 9,
+   "coastal_cities": 0,
+   "armies": [
+    [
+     12,
+     200,
+     45,
+     19300,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 14,
+   "mobilization": 20,
+   "view": [
+    188,
+    34
+   ],
+   "capital": 218
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 3,
+   "current_nation": 12,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    12
+   ],
+   "leader": "Androcles",
+   "treasury": 440,
+   "cities": 9,
+   "coastal_cities": 0,
+   "armies": [
+    [
+     12,
+     200,
+     45,
+     19300,
+     10
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 14,
+   "mobilization": 20,
+   "view": [
+    188,
+    34
+   ],
+   "capital": 218
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 3,
+   "current_nation": 12,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    12
+   ],
+   "leader": "Androcles",
+   "treasury": 444,
+   "cities": 9,
+   "coastal_cities": 0,
+   "armies": [
+    [
+     10,
+     199,
+     44,
+     19300,
+     9
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Seleucid"
+   ],
+   "tax": 14,
+   "mobilization": 20,
+   "view": [
+    188,
+    34
+   ],
+   "capital": 218
+  },
+  "secs": 54
+ },
+ "13": {
+  "row": 13,
+  "nation": "Armenia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Phasis."
+    ],
+    "secs": 12.7
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 5.1
+   },
+   {
+    "step": "select_first_army",
+    "ok": null,
+    "result": "the nation has no army"
+   },
+   {
+    "step": "end_turn_1",
+    "ok": false,
+    "error": "DriverError: end turn timed out",
+    "secs": 303.1
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 13,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Armenia's turn   (Mesa)"
+  ],
+  "view_origin_mem": [
+   258,
+   30
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 10,
+   "current_nation": 13,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    13
+   ],
+   "leader": "Mesa",
+   "treasury": 530,
+   "cities": 10,
+   "coastal_cities": 5,
+   "armies": [],
+   "fleets": [],
+   "wars": [],
+   "tax": 8,
+   "mobilization": 0,
+   "view": [
+    258,
+    30
+   ],
+   "capital": 297
+  },
+  "secs": 339
+ },
+ "14": {
+  "row": 14,
+  "nation": "Media",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 15.6
+   },
+   {
+    "step": "build_fleet",
+    "ok": false,
+    "error": "DriverError: no controls found for window 'Build fleet'",
+    "secs": 2.6
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 5.1
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 13,
+     "sel": 13
+    },
+    "secs": 3.6
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     [
+      "@ Dacia wants to trade with Media."
+     ]
+    ],
+    "secs": 13.9
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     298,
+     58
+    ],
+    "secs": 4.9
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 10.7
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 14,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Media's turn   (Samuramat)"
+  ],
+  "view_origin_mem": [
+   302,
+   53
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 9,
+   "current_nation": 14,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    14
+   ],
+   "leader": "Samuramat",
+   "treasury": 760,
+   "cities": 14,
+   "coastal_cities": 2,
+   "armies": [
+    [
+     13,
+     299,
+     59,
+     37700,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [],
+   "tax": 10,
+   "mobilization": 25,
+   "view": [
+    302,
+    53
+   ],
+   "capital": 330
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [
+    "@ Dacia wants to trade with Media."
+   ],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 9,
+   "current_nation": 14,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    14
+   ],
+   "leader": "Samuramat",
+   "treasury": 760,
+   "cities": 14,
+   "coastal_cities": 2,
+   "armies": [
+    [
+     13,
+     299,
+     59,
+     37700,
+     9
+    ]
+   ],
+   "fleets": [],
+   "wars": [],
+   "tax": 10,
+   "mobilization": 25,
+   "view": [
+    293,
+    52
+   ],
+   "capital": 330
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 9,
+   "current_nation": 14,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    14
+   ],
+   "leader": "Samuramat",
+   "treasury": 760,
+   "cities": 14,
+   "coastal_cities": 2,
+   "armies": [
+    [
+     9,
+     298,
+     58,
+     37700,
+     9
+    ]
+   ],
+   "fleets": [],
+   "wars": [],
+   "tax": 10,
+   "mobilization": 25,
+   "view": [
+    293,
+    52
+   ],
+   "capital": 330
+  },
+  "secs": 58
+ },
+ "15": {
+  "row": 15,
+  "nation": "Thracia",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     []
+    ],
+    "secs": 16.2
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Byzantium."
+    ],
+    "secs": 12.5
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 7.8
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 14,
+     "sel": 14
+    },
+    "secs": 3.7
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     [
+      "e Cltiberia wants ta trade with Thracia, aK"
+     ]
+    ],
+    "secs": 14.1
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     159,
+     29
+    ],
+    "secs": 4.9
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 11.6
+   }
+  ],
+  "start_popups": [],
+  "cur_nation": 15,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Thracia's turn   (Anacreon)"
+  ],
+  "view_origin_mem": [
+   166,
+   34
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 5,
+   "current_nation": 15,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    15
+   ],
+   "leader": "Anacreon",
+   "treasury": 520,
+   "cities": 12,
+   "coastal_cities": 10,
+   "armies": [
+    [
+     14,
+     160,
+     30,
+     22000,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [],
+   "tax": 9,
+   "mobilization": 22,
+   "view": [
+    166,
+    34
+   ],
+   "capital": 192
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [
+    "e Cltiberia wants ta trade with Thracia, aK"
+   ],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 5,
+   "current_nation": 15,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    15
+   ],
+   "leader": "Anacreon",
+   "treasury": 420,
+   "cities": 12,
+   "coastal_cities": 10,
+   "armies": [
+    [
+     6,
+     160,
+     30,
+     22000,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 9,
+   "mobilization": 22,
+   "view": [
+    154,
+    23
+   ],
+   "capital": 192
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 5,
+   "current_nation": 15,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    15
+   ],
+   "leader": "Anacreon",
+   "treasury": 420,
+   "cities": 12,
+   "coastal_cities": 10,
+   "armies": [
+    [
+     6,
+     159,
+     29,
+     22000,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [],
+   "tax": 9,
+   "mobilization": 22,
+   "view": [
+    154,
+    23
+   ],
+   "capital": 192
+  },
+  "secs": 72
+ }
+}

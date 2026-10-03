@@ -1,0 +1,58 @@
+{
+ "autosave": "AUTO0724.SAV",
+ "turn": 724,
+ "seat": 2,
+ "fleets": [
+  [
+   0,
+   1,
+   110,
+   73,
+   60,
+   70,
+   26,
+   0
+  ],
+  [
+   1,
+   3,
+   111,
+   73,
+   70,
+   60,
+   23,
+   0
+  ],
+  [
+   2,
+   1,
+   111,
+   74,
+   30,
+   68,
+   29,
+   0
+  ]
+ ],
+ "split_texts": [],
+ "fleet0_after_split": {
+  "id": 0,
+  "x": 110,
+  "y": 73,
+  "owner": 1,
+  "moves": 23,
+  "supplies": 0,
+  "money": 1000,
+  "ships": 60,
+  "condition": 74,
+  "army": -1
+ },
+ "end_turn_texts": [
+  "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+  "CONFIRM \u2014",
+  "CONFIRM ",
+  "CONFIRM \u2014",
+  "CONFIRM \u2014",
+  "@ Gaul wants to trade with Ptolemaic."
+ ]
+}

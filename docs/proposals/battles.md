@@ -148,7 +148,7 @@ is fixed.
 "Battle ended" is screenshotted, OCR'd and dumped with `Game.controls`, and its text is **returned**. Default behaviour stays as it is
 until D. *Acceptance:* offline tests in the style of `tests/test_end_turn_reclick.py`.
 
-**3.6 Media.** Screenshots and videos go to `artifacts/run-exp-<name>/` and then the release, cited by bare filename, **never in git**.
+**3.6 Media.** Screenshots and videos go to `artifacts/run-exp-<name>/` and then the release, cited by bare filename, **never in git**. **Measurements (CLAUDE.md rule 6):** every trial table, `trials.jsonl`, probe log, timing, tooltip/OCR dump and result table is written under the tracked `runs/experiments/data/run-exp-<name>/`, committed and pushed after each batch and at least every 30 minutes, never deleted or overwritten (a re-run writes new files beside the old); saves and screenshots stay out of git, with their SHA-256 in `SAVES.sha256`, and are uploaded to the release as batches finish.
 
 **3.7 Repeatability.** Normal build: `SEED.TXT` is read at program start and New Game only, and loading does not reseed. Lab build:
 reseeded at battle start and on resume [R]. Cells that share a seed set are paired samples, and the analyses say so.

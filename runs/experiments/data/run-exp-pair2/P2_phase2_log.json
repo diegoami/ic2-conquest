@@ -1,0 +1,322 @@
+[
+ {
+  "save": "P2_0732_s02_Ptolemaic.SAV",
+  "turn": 732,
+  "nation": "Ptolemaic",
+  "distance": 38,
+  "fleets": {
+   "Seleucid": [
+    219,
+    55,
+    60,
+    100,
+    50,
+    0
+   ],
+   "Ptolemaic": [
+    189,
+    93,
+    70,
+    98,
+    0,
+    25
+   ]
+  },
+  "seleucid_next_to_city": true,
+  "ptolemaic_next_to_city": true,
+  "supply": [],
+  "after_supply": {
+   "id": 1,
+   "x": 189,
+   "y": 93,
+   "owner": 3,
+   "moves": 25,
+   "supplies": 400,
+   "money": 200,
+   "ships": 70,
+   "condition": 98,
+   "army": -1
+  },
+  "sail": {
+   "to": [
+    206,
+    68
+   ],
+   "spent": 25,
+   "path_cost": 37
+  },
+  "end_turn": {
+   "autosave": "AUTO0732.SAV",
+   "texts": []
+  }
+ },
+ {
+  "save": "P2_0732_s04_Seleucid.SAV",
+  "turn": 732,
+  "nation": "Seleucid",
+  "distance": 13,
+  "fleets": {
+   "Seleucid": [
+    219,
+    55,
+    60,
+    100,
+    50,
+    0
+   ],
+   "Ptolemaic": [
+    206,
+    68,
+    70,
+    98,
+    400,
+    0
+   ]
+  },
+  "seleucid_next_to_city": true,
+  "ptolemaic_next_to_city": false,
+  "supply": [],
+  "after_supply": {
+   "id": 2,
+   "x": 219,
+   "y": 55,
+   "owner": 2,
+   "moves": 0,
+   "supplies": 350,
+   "money": 0,
+   "ships": 60,
+   "condition": 100,
+   "army": -1
+  },
+  "end_turn": {
+   "autosave": "AUTO0733.SAV",
+   "texts": []
+  }
+ },
+ {
+  "save": "P2_0733_s02_Ptolemaic.SAV",
+  "turn": 733,
+  "nation": "Ptolemaic",
+  "distance": 13,
+  "fleets": {
+   "Seleucid": [
+    219,
+    55,
+    60,
+    100,
+    290,
+    29
+   ],
+   "Ptolemaic": [
+    206,
+    68,
+    70,
+    95,
+    330,
+    28
+   ]
+  },
+  "seleucid_next_to_city": true,
+  "ptolemaic_next_to_city": false,
+  "sail": {
+   "to": [
+    218,
+    56
+   ],
+   "spent": 12,
+   "path_cost": 12
+  },
+  "end_turn": {
+   "autosave": "AUTO0733.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0733_s04_Seleucid.SAV",
+  "turn": 733,
+  "nation": "Seleucid",
+  "distance": 1,
+  "fleets": {
+   "Seleucid": [
+    219,
+    55,
+    60,
+    100,
+    290,
+    29
+   ],
+   "Ptolemaic": [
+    218,
+    56,
+    70,
+    95,
+    330,
+    16
+   ]
+  },
+  "seleucid_next_to_city": true,
+  "ptolemaic_next_to_city": false,
+  "end_turn": {
+   "autosave": "AUTO0734.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0734_s02_Ptolemaic.SAV",
+  "turn": 734,
+  "nation": "Ptolemaic",
+  "distance": 1,
+  "fleets": {
+   "Seleucid": [
+    219,
+    55,
+    60,
+    100,
+    230,
+    29
+   ],
+   "Ptolemaic": [
+    218,
+    56,
+    70,
+    92,
+    260,
+    28
+   ]
+  },
+  "seleucid_next_to_city": true,
+  "ptolemaic_next_to_city": false,
+  "attack_next_to_city": [
+   "e \u2018You cannot attack a fleet docked a its awn city! aK"
+  ],
+  "end_turn": {
+   "autosave": "AUTO0734.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. \u2018One of your fleets is not docked at its own city. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0734_s04_Seleucid.SAV",
+  "turn": 734,
+  "nation": "Seleucid",
+  "distance": 1,
+  "fleets": {
+   "Seleucid": [
+    219,
+    55,
+    60,
+    100,
+    230,
+    29
+   ],
+   "Ptolemaic": [
+    218,
+    56,
+    70,
+    92,
+    260,
+    28
+   ]
+  },
+  "seleucid_next_to_city": true,
+  "ptolemaic_next_to_city": false,
+  "sail_out": {
+   "to": [
+    217,
+    56
+   ],
+   "spent": 2,
+   "path_cost": 2
+  },
+  "end_turn": {
+   "autosave": "AUTO0735.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014",
+    "e Galatia wants to trade with Ptolemaic. aK"
+   ]
+  }
+ },
+ {
+  "save": "P2_0735_s02_Ptolemaic.SAV",
+  "turn": 735,
+  "nation": "Ptolemaic",
+  "distance": 1,
+  "fleets": {
+   "Seleucid": [
+    217,
+    56,
+    60,
+    97,
+    170,
+    29
+   ],
+   "Ptolemaic": [
+    218,
+    56,
+    70,
+    89,
+    190,
+    28
+   ]
+  },
+  "seleucid_next_to_city": false,
+  "ptolemaic_next_to_city": false,
+  "end_turn": {
+   "autosave": "AUTO0735.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. \u2018One of your fleets is not docked at its own city. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0735_s04_Seleucid.SAV",
+  "turn": 735,
+  "nation": "Seleucid",
+  "distance": 1,
+  "fleets": {
+   "Seleucid": [
+    217,
+    56,
+    60,
+    97,
+    170,
+    29
+   ],
+   "Ptolemaic": [
+    218,
+    56,
+    70,
+    89,
+    190,
+    28
+   ]
+  },
+  "seleucid_next_to_city": false,
+  "ptolemaic_next_to_city": false
+ }
+]

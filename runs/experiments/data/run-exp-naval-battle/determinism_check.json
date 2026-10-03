@@ -1,0 +1,442 @@
+{
+ "what": "seeds 1 and 2 of cells C and P re-run through the later Game.attack_fleet (click verification added); records compared with the first run",
+ "all_identical": true,
+ "trials": [
+  {
+   "cell": "C",
+   "seed": 1,
+   "identical": true,
+   "earlier_run": {
+    "attacker_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 81,
+     "condition": 67,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_alive": true,
+    "defender_alive": false
+   },
+   "rerun_with_verified_attack_fleet": {
+    "attacker_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 81,
+     "condition": 67,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_alive": true,
+    "defender_alive": false
+   }
+  },
+  {
+   "cell": "C",
+   "seed": 2,
+   "identical": true,
+   "earlier_run": {
+    "attacker_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 78,
+     "condition": 64,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_alive": true,
+    "defender_alive": false
+   },
+   "rerun_with_verified_attack_fleet": {
+    "attacker_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 78,
+     "condition": 64,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "attacker_alive": true,
+    "defender_alive": false
+   }
+  },
+  {
+   "cell": "P",
+   "seed": 1,
+   "identical": true,
+   "earlier_run": {
+    "attacker_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 72,
+     "condition": 60,
+     "army": -1
+    },
+    "attacker_alive": false,
+    "defender_alive": true
+   },
+   "rerun_with_verified_attack_fleet": {
+    "attacker_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 72,
+     "condition": 60,
+     "army": -1
+    },
+    "attacker_alive": false,
+    "defender_alive": true
+   }
+  },
+  {
+   "cell": "P",
+   "seed": 2,
+   "identical": true,
+   "earlier_run": {
+    "attacker_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 78,
+     "condition": 64,
+     "army": -1
+    },
+    "attacker_alive": false,
+    "defender_alive": true
+   },
+   "rerun_with_verified_attack_fleet": {
+    "attacker_before": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": 3,
+     "moves": 24,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_before": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 90,
+     "condition": 74,
+     "army": -1
+    },
+    "attacker_after": {
+     "id": 1,
+     "x": 111,
+     "y": 73,
+     "owner": -1,
+     "moves": 0,
+     "supplies": 0,
+     "money": 200,
+     "ships": 70,
+     "condition": 63,
+     "army": -1
+    },
+    "defender_after": {
+     "id": 0,
+     "x": 110,
+     "y": 73,
+     "owner": 1,
+     "moves": 23,
+     "supplies": 0,
+     "money": 1000,
+     "ships": 78,
+     "condition": 64,
+     "army": -1
+    },
+    "attacker_alive": false,
+    "defender_alive": true
+   }
+  }
+ ]
+}
