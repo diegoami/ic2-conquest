@@ -76,6 +76,8 @@ def check():
                      [(a["x"], a["y"], a["owner"], a["moves"], a["cell"], a["troops"]) for a in e["armies"]]
     print("parsed states equal:", same)
     print("raw differing bytes:", len(diff), diff, [(nat[i], ed[i]) for i in diff])
+    assert all(same.values()) is False and [k for k, v in same.items() if not v] == ["nations"], f"parsed states differ in {[k for k, v in same.items() if not v]}"
+    assert diff == [112522, 112526, 112528], f"the raw difference changed: {diff}"     # the view-like bytes inside the nation records, see the finding
 
 
 def build():

@@ -14,8 +14,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 F = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "artifacts" / "run-exp-naval-battle-cargo" / "t3_trials.json"
-CARGO50 = {"L5": 83.1, "L10": 167.5, "L15": 250.6, "A5": 250.6, "L25": 418.1, "H15": 250.6, "M15": 250.6}   # siegeStrength/50 of the attacker's cargo (army 7, morale 67)
-DEF50 = 80.6                                                                       # Carthage army 2 with 5,000 light infantry (morale 65)
+sys.path.insert(0, str(ROOT))
+from state import sav  # noqa: E402
+
+ART = ROOT / "artifacts" / "run-exp-naval-battle-cargo"
+BASE_ATT, BASE_DEF = 441.0, 666.0      # 70 ships x 63 and 90 x 74, / 10 (the fixture's fleets: cell P of trials.py)
+
+
+def cargo50(cell, army):
+    """siegeStrength/50 of an army as written into the cell's fixture."""
+    return sav.siege_strength(sav.load(str(ART / f"FIX_T3_{cell}.SAV"))["armies"][army]) / 50
+
+
+CARGO50 = {c: cargo50(c, 7) for c in ("L5", "L10", "L15", "A5", "L25", "H15", "M15")}     # Ptolemaic army 7, morale 67
+DEF50 = cargo50("L15D5", 2)                                                                 # Carthage army 2 with 5,000 light infantry (morale 65)
 trials = [t for t in json.loads(F.read_text()) if "error" not in t]      # failed trials carry only an error
 by = collections.defaultdict(list)
 for t in trials:
@@ -64,8 +76,8 @@ for k in (30, 35, 40, 45, 50, 60, 70):
     ll, row = 0, []
     for cell in FIT:
         w = wins[cell]
-        att = round(441 + (CARGO50.get(cell) or CARGO50["L15"]) * 50 / k, 6)
-        dfn = round(666 + (DEF50 * 50 / k if cell == "L15D5" else 0), 6)
+        att = round(BASE_ATT + (CARGO50.get(cell) or CARGO50["L15"]) * 50 / k, 6)
+        dfn = round(BASE_DEF + (DEF50 * 50 / k if cell == "L15D5" else 0), 6)
         q = min(max(p(att, dfn), 1e-3), 1 - 1e-3)
         row.append(round(q, 2))
         n = len(by[cell])
