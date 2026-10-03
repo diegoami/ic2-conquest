@@ -91,6 +91,11 @@ def trial(cell, seed, fix, save=False):
         before = g.fleet_state(0) | {"covered": covered(g, 0)}
         if place == "rough" and before["covered"] != 1:
             raise RuntimeError(f"the fleet is not on rough sea (covered {before['covered']}) at {before['x']},{before['y']}")
+        if place != "rough" and before["covered"] != 0:
+            raise RuntimeError(f"the fleet is not on calm sea (covered {before['covered']}) at {before['x']},{before['y']}")
+        near = any(max(abs(before["x"] - c["x"]), abs(before["y"] - c["y"])) <= 1 for c in s0["cities"] if c["owner"] == 1)
+        if (place == "city") != near:
+            raise RuntimeError(f"the fleet at {before['x']},{before['y']} is {'not ' if place == 'city' else ''}next to an own city: wrong cell")
         b1 = g.fleet_state(1)
         name, texts = g.end_turn(timeout=300)
         s1 = sav.load(str(G / name))

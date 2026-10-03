@@ -2,7 +2,7 @@
 """T4 analysis from t4_trials.json: the observed storm outcome of each cell against the research formula
 (docs/rules-digest.md §8, supply-driven-morale-and-fleet-attrition.md), simulated exactly:
 
-    dmg = max(1, Random(100 - condition) / 10)
+    dmg = max(1, Random(100 - condition) // 10)
     Winter: dmg = min(5, 2 dmg);  rough sea: dmg = min(8, 3 dmg)          (both apply, winter first: seen in R85w)
     away from own cities: dmg = 2 dmg + 1 (Winter: a 1-in-20 spike to 30);  next to one: dmg = dmg / 2
     dmg < 6: condition -= dmg;  dmg >= 6: ships and condition lose d/300 of themselves, d = (10000/(dmg+100))^2/100 (integer steps)
@@ -10,6 +10,10 @@
     out of supplies: condition -= Random(2)   (applied after the loss test)
 
     python3 runs/experiments/storms/t4_analysis.py [t4_trials.json]
+
+The table simulates Carthage's fleet (supplies at zero at the tick). The Ptolemaic expectations quoted in the finding (calm sea away from cities,
+70 ships, condition 75, supplies 80 so no out-of-supply term; Spring 0.8/0.2, Winter 0.76/0.19/0.05) are `storm(rng, 70, 75, winter, False, False,
+supplies0=False)` of this file, run by hand.
 """
 import collections
 import json
@@ -72,6 +76,6 @@ if __name__ == "__main__":
         for _ in range(n):
             ns, nc, lost, _d = storm(rng, b["ships"], b["condition"], winter, rough, city)
             sim["lost" if lost else (b["ships"] - ns, b["condition"] - nc)] += 1
-        print(f"{cell}: {len(ts)} trials (seeds {ts[0]['seed']}-{ts[-1]['seed']}{'' if len(ts) == ts[-1]['seed'] else ', SOME MISSING'}), condition {b['condition']}")
+        print(f"{cell}: {len(ts)} trials (seeds {ts[0]['seed']}-{ts[-1]['seed']}{'' if not set(range(1, ts[-1]['seed'] + 1)) - {t['seed'] for t in ts} else ', SOME MISSING'}), condition {b['condition']}")
         print("  observed (ships lost, condition lost):", dict(sorted(obs.items(), key=lambda kv: -kv[1])))
         print("  formula  :", {k: round(v / n, 3) for k, v in sorted(sim.items(), key=lambda kv: -kv[1])[:8]})

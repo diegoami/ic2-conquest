@@ -42,7 +42,7 @@ def main(seed, max_ends=30):
             log.append(r)
             print(r["save"], r["turn"], r["fleets"], r["news"][-2:], flush=True)
             (OUT / f"t4_natural_seed{seed}.json").write_text(json.dumps(log, indent=1, default=str))
-            if len(r["fleets"]) < 2 or any("lost at sea" in n for n in r["news"]):
+            if len(r["fleets"]) < 2:        # one of the two tracked fleets is gone (a "lost at sea" line may be an AI fleet's)
                 break
     finally:
         g.kill()
