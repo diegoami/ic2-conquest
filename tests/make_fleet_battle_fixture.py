@@ -7,6 +7,8 @@ its fleet along the sea path toward the other fleet (`planner/sea.py`), stopping
 fleets are adjacent at the START of a seat's turn: that save is the fixture.
 
     python3 -m tests.make_fleet_battle_fixture            # about 20 minutes
+    python3 -m tests.make_fleet_battle_fixture --no-war   # the same without Carthage's war order (the nations stay on trade terms):
+                                                          # the fixture for the fleet peace prompt; files T1P_*, in run-exp-peace-prompt
 
 Output: artifacts/run-exp-fleet-battles/T1_<turn>_<seat>_<nation>.SAV for every seat's turn start, T1_log.json, and the fixture.
 """
@@ -22,7 +24,9 @@ from harness.driver import G, Game  # noqa: E402
 from planner import sea  # noqa: E402
 from state import sav  # noqa: E402
 
-OUT = ROOT / "artifacts" / "run-exp-fleet-battles"
+NO_WAR = "--no-war" in sys.argv
+OUT = ROOT / "artifacts" / ("run-exp-peace-prompt" if NO_WAR else "run-exp-fleet-battles")
+PREFIX = "T1P" if NO_WAR else "T1"
 OUT.mkdir(parents=True, exist_ok=True)
 NAMES = {1: "Carthage", 3: "Ptolemaic"}
 log = []
@@ -31,7 +35,7 @@ log = []
 def keep(name):
     """Copy the autosave that was just written for this seat's turn start; returns the loaded state."""
     s = sav.load(str(G / name))
-    dst = OUT / f"T1_{s['turn']:04d}_s{s['seat_index']:02d}_{NAMES[s['current_nation']]}.SAV"
+    dst = OUT / f"{PREFIX}_{s['turn']:04d}_s{s['seat_index']:02d}_{NAMES[s['current_nation']]}.SAV"
     shutil.copy(G / name, dst)
     return s, dst
 
@@ -79,18 +83,18 @@ def main(max_rounds=6):
         print(f"{dst.name}: {NAMES[me]} fleet {row['my_fleet'][1:3]} v {row['other_fleet'][1:3]} distance {d}, war value {row['war']}", flush=True)
         log.append(row)
         if d <= 1:
-            shutil.copy(dst, OUT / "T1_FIXTURE_fleets_adjacent.SAV")
+            shutil.copy(dst, OUT / f"{PREFIX}_FIXTURE_fleets_adjacent.SAV")
             print("FIXTURE:", dst.name, flush=True)
             break
-        if me == 1 and s["nations"][1]["relations"]["Ptolemaic"] != 3:
+        if me == 1 and not NO_WAR and s["nations"][1]["relations"]["Ptolemaic"] != 3:
             row["war_order"] = g.relation(3, "war")
         row["sail"] = sail_toward(g, s, me, other)
         print("   ", row["sail"], flush=True)
-        (OUT / "T1_log.json").write_text(json.dumps(log, indent=1, default=str))
+        (OUT / f"{PREFIX}_log.json").write_text(json.dumps(log, indent=1, default=str))
         name, texts = g.end_turn(timeout=300)
         row["end_turn"] = {"autosave": name, "texts": texts}
         s, dst = keep(name)
-    (OUT / "T1_log.json").write_text(json.dumps(log, indent=1, default=str))
+    (OUT / f"{PREFIX}_log.json").write_text(json.dumps(log, indent=1, default=str))
     g.kill()
 
 
