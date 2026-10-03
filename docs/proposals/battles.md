@@ -21,7 +21,7 @@ evidence, and each experiment ends with a `findings/` draft and a release `run-e
 5. Carried over from the fleet plan: synthetic states are acceptable when labelled; 30 seeds at parity cells where a **win rate**
    is the measure. The research sweep asks for 2–3 seeds per cell, because the measure there is the **exchange log** and not a rate (§4).
 
-**Open after §9's answers:** the exchange hook's addresses (the research decompile is under way; the player relays them), and the player's go for each stage. The start save, the reading of "three standard battalions", the staging of the budget and the rule that no save is committed are answered in §9.
+**Open after §9's answers:** the rout wording ("half the battalion" v `standardSize/25`), the exchange hook's addresses (the research decompile is under way; the player relays them), and the player's go for each stage. The start save, the reading of "three standard battalions", the staging of the budget and the rule that no save is committed are answered in §9.
 
 ### 0.1 Changes after the research request
 
@@ -72,7 +72,7 @@ An [R] item is to be checked, not assumed.
 - **Confirmed [R/C]:** melee loss cap `min(raw, floor(0.4 × troops)) + 1`; initial morale `clamp(Random(q×4) + army.morale, 60, 90)`,
   +3 for a computer side. Rout: the request says "half the standard battalion (600, 240, 140, 280, 100)", but those numbers are
   **`standardSize/25`** (LI 15,000, HI 6,000, Ar 3,500, LC 7,000, HC 2,500; `rules-digest.md` §4 table, §6 Rout). That wording is to be
-  settled with the research session (§9).
+  settled with the research session: it is **still open** (§9 item 2 answers only the 'three standard battalions' half; the research decompile may settle the rout wording).
 - **Only structurally checked [R]:** the type matrix `M`, the power term `M × troops × (q×10 + morale)/2000 + 12`, the focus and defence
   factors, the shooting formula, the morale deltas (§6 gives them as [C]). Tactical moves: LI 4, HI 2, Ar 4, LC 6, HC 5 (§4 table).
 - **Open (the request's gaps):** movement and initiative; placement and target choice (the AI general is not decompiled, §12 gap 6);
@@ -356,7 +356,7 @@ post-battle dialog captured unanswered.
 ## 8. Review plan
 
 - **This PR:** this file only. `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-6 Sol, low, once);
-  `/review-pr <n>` if the OpenCode reviewer exits 3; the player answers §9.
+  `/review-pr <n>` if the OpenCode reviewer exits 3; the player's go starts each stage (§9).
 - **Each task PR:** code, findings draft, a `tests/results.md` line, `coverage.md` rows; the same review once per PR. Reviewers check
   that every claim cites a save, that `lab`/L1/L2 cells are labelled, and that no binary is in git.
 
@@ -371,7 +371,7 @@ The answers below were written by the research session and relayed by the player
    - **Stage 1:** the sweep with Computer general on both sides, plus the screenshots (each unit type at each size, and the full layout), delivered as a findings draft (B0 to B5, B8, with B1-B4 as their prerequisites).
    - **Stage 2:** the exchange-level hook (once the address arrives) and the human-driven side (B7, B11, B12 and the sweep re-run with the hook).
    - B6 (mixed armies), B9 (terrain), B10 (win rates), and the sieges, resolver and `TBattlePols` (B13 to B16) are not assigned to a stage by the research session; they wait for the player's go after Stage 1.
-5. **Saves are never committed.** They go in the experiment's release (`run-exp-<name>`, as §3.6 and §5 name them), cited by bare file name; working copies, including a resumable mid-battle save, stay in the git-ignored `artifacts/run-exp-<name>/` (the committed `saves/` folder gets no new file). Neither `imperial_conquest_2` nor the research repository ever holds a save. **This replaces the plan's request to add fixtures to `saves/` in git** (the existing committed saves stay as they are).
+5. **No save from these experiments is committed** (no new file in `saves/`; the 14 already tracked stay, CLAUDE.md rule 1). They go in the experiment's release (`run-exp-<name>`, as §3.6 and §5 name them), cited by bare file name; working copies, including a resumable mid-battle save, stay in the git-ignored `artifacts/run-exp-<name>/` (the committed `saves/` folder gets no new file). Neither `imperial_conquest_2` nor the research repository ever holds a save. **This replaces the plan's request to add fixtures to `saves/` in git** (the existing committed saves stay as they are).
 6. **Human-style plan for B12:** the bot scripts it, for example advance in line, shoot when in range, melee the nearest enemy; the plan is recorded exactly with the run so it can be repeated; the player may supply their own later.
 
 ## Appendix: unverified items
@@ -382,4 +382,4 @@ The answers below were written by the research session and relayed by the player
 - Whether File → Save As is reachable during a battle and what it clears; whether a post-battle Save As carries the battle's news.
 - Whether Computer general gets the +3; whether the grid has terrain; whether a battle has a turn limit.
 - Whether a post-battle dialog appeared in the gallic battles; `TBattlePols`'s title, buttons and gate.
-- The ~1 min per battle and the budget table; the availability of `run-1-rome`.
+- The ~1 min per battle and the budget table; the download of `run-1-rome` (stated public by the research session, not yet fetched).
