@@ -28,7 +28,7 @@ budget; fixtures in `saves/`.
 
 - **A and B are rebuilt around a half-round dataset.** The old B1–B4 (win-rate grids under Computer general, from edited strategic
   armies) become: one sweep of **25 ordered type pairings × 3 sizes × 3 seeds**, every half-round logged from the battle block, both
-  sides on Computer general (B4–B6). The win-rate cells that are still useful to the chatbot (the natural Rome v Gaul battle,
+  sides on Computer general (B4–B5). The win-rate cells that are still useful to the chatbot (the natural Rome v Gaul battle,
   repeatability, HI v LI, the morale clamp) become one smaller task, B10.
 - **The battle-lab build is now the main instrument, not an optional probe.** It reseeds at battle start and saves every half-round
   (`patches/battle_lab.py`). It was question 2 of the first version; now it is the design, labelled `lab` in every table.
@@ -38,7 +38,7 @@ budget; fixtures in `saves/`.
 - **Kept as they were:** the sieges (now B13–B14), the instant resolver (B15), `TBattlePols` (B16), the dialog capture before any
   battle is run (§3.5), the scripted plans against Computer general (B12, lower priority).
 - **Budget:** the first version guessed 3 minutes a trial and 25–30 h. With the lab build (a battle computes in 1.3–1.9 s, [R]) a sweep
-  trial is about 1 minute, so the sweep's 225 battles take **about 4–5 h**. That figure is still unmeasured: B0 measures it (§5).
+  trial is about 1 minute, so the sweep's 225 battles (315 with the size matrix, B5) take **about 5–6 h**. That figure is still unmeasured: B0 measures it (§5).
 
 ### 0.2 The research request, in short
 
@@ -98,7 +98,7 @@ whether a post-battle dialog appeared in those battles is unknown.
   are `troops/(Random(15)+105) × r` with `r = max(1, min(15, def×6 div atk))`. Capture, cascade and conquest rules: §5 [C].
 - The **2.5–2.85 % uniform loss** claim [O] is exactly `r = 3` (3/119 to 3/105) [D, this plan].
 - Instant resolver [C] (§6): higher field strength wins; the winner's casualties are at ratio `loserPower × 40 / winnerPower`; with
-  a 2-in-5 chance, peace with reparations follows.
+  a 2-in-5 chance, peace with reparations follows when the loser's unity is above 500 and it has more than 7 cities (`docs/rules-digest.md` §6).
 - **Live:** one failed siege, `saves/siege-felsina-failed-0721.SAV` (atk 20,720 v def 34,050; −8.2 % against the formula's 7.6–8.6 %;
   erosion `x×19/20+1`), and Genua at peace (`findings/2026-10-02-unit-map-mouse-orders-and-tax-range.md`). No capture, cascade,
   conquest or AI-v-AI battle has been measured.
@@ -201,7 +201,7 @@ diff; one edit that the game rejects or "repairs" is reported.
 ### B4. One pairing end to end (S, game)
 
 HI v HI at size *one*, both on Computer general, seeds 1–3, L1. The full logger (§3.2 + B2) produces the sweep-table row and the
-per-half-round log, and the same seed runs twice. *Acceptance:* the row format is fixed here; the replay is byte-identical.
+per-half-round log, and the same seed runs twice. *Acceptance:* the row format is fixed here; the replay is byte-identical. **Every battle End-turn click's half-round advance is verified** (the `BATTLEnn` series or the battle state moves on after each click); the logger stops with a typed error instead of re-clicking when it cannot prove an advance, so `play_battle`'s 120-click loop (`harness/driver.py:1214-1219`) is never trusted unverified for the dataset.
 
 ### B5. The sweep (L, game): the request's main dataset
 
@@ -221,7 +221,7 @@ per-half-round log, and the same seed runs twice. *Acceptance:* the row format i
 
 ### B6. Mixed armies and the attacker side (M, game)
 
-Ten mixed-army battles: Rome's natural composition against Gaul's (`FLD-RG` as is, 3 seeds), a balanced mix against a cavalry-heavy
+Eighteen mixed-army battles, six cells × 3 seeds: Rome's natural composition against Gaul's (`FLD-RG` as is), a balanced mix against a cavalry-heavy
 and an archer-heavy mix, and the same three with the roles swapped. Roles swap through a two-human seat game (Rome and Gaul human;
 `findings/2026-10-02-two-human-seats.md`). That also answers whether Computer general gets the +3, and what the screen does when both
 sides are human. If two humans cannot share a battle, record that and keep Rome as the attacker. *Acceptance:* rows in the sweep
@@ -369,7 +369,7 @@ post-battle dialog captured unanswered.
    else? And may the research session settle the rout wording ("half the battalion" against `standardSize/25`)?
 3. **Exchange hook (B11):** can the research session supply the exchange routine's address and register/stack layout? Without them B11
    is dropped and actions stay inferred.
-4. **Budget:** about 20–30 h of unattended game time in all (5–6 h for the sweep). Run all of it, or stop after B5 + B8 (the research
+4. **Budget:** about 25–33 h of unattended game time in all (the §5 table summed) (5–6 h for the sweep). Run all of it, or stop after B5 + B8 (the research
    deliverable) and decide the rest then?
 5. **Fixtures in git:** may `FLD-RG`, `SIE-TAU` and one `BATTLEnn.SAV` (a resumable mid-battle save) join `saves/` with README rows?
 6. **A human-style plan for B12:** do you want to write one yourself?
