@@ -29,6 +29,7 @@ Flash, then GPT-6 Sol at medium effort (§7).
 | P4 | Guardrails in §9 of the proposal: the list of irreversible actions, the caps per turn, the allowlist in `auto` (Q8) | M3 (confirm policy), M6 |
 | P5 | Is an **attended** `assist` session on the original a "run" under rule 4 (needs an approved issue), or a trial? | the live M6 smoke |
 | P6 | Should the reviewer agent be allowed to run the offline tests (today its shell allows only `python3 -m py_compile`, `docs/external-review.md` "The reviewer's shell")? | nothing; affects how much reviewers can check |
+| P8 | AI offers during End turn ("Celtiberia wants to trade with Rome" is a Confirm box): `Game.end_turn` answers every one **Yes** (`dismiss_popups`, `harness/driver.py:405-425`), as every experiment did. Should `gamed` keep accepting, decline, or surface them as decisions (`pending_offer`, a `respond_offer` order in M3)? | M6 (before an unattended turn) |
 | P7 | Run convention on the original: **restart the game and load each turn** (each turn can be replayed on its own), or one process per session (§8 risk R4) | M6 recorder format, M7 |
 
 ## 2. Answers to the ten questions of the proposal's §12
@@ -153,18 +154,18 @@ chatbot/                       ic2-chat (imports nothing from harness/, state/, 
   - `expected_to` comes from the shared walk model (`walk.py`, §5). A difference between `to` and `expected_to` is reported as
     data, not as an error. It measures the Bresenham assumption on the original.
   - A walk that stops early is a success.
-- **`order end_turn`:** `args` is `{}`. `effect` is `{autosave, turn_before, turn_after, date, battles}`.
+- **`order end_turn`:** `args` is `{}`. `effect` is `{autosave, autosave_kind, turn_before, turn_after, date, battles}`.
   - The autosave is **copied into the session folder** at once. Two human seats overwrite each other's `AUTOnnnn.SAV`
     (`findings/2026-10-02-two-human-seats.md`).
   - Any "End turn ?" box answered by the driver shows up in `popups` as `CONFIRM …` (`harness/driver.py:1157-1163`).
-  - **The server calls `Game.end_turn` at most once per `order`** and never again after an exception or a timeout (the session becomes degraded, code -32025 below). `Game.end_turn` has its own re-click after 8 seconds with no sign of the turn starting (no new `AUTOSAVE.LOG` line, `harness/driver.py:1138-1148`): that is the driver's rule, which `gamed` does not change (M1 forbids driver changes); it is the one place the driver clicks twice, a missing sign is not proof the first click did nothing, and the plan treats it as an open risk (V6, §8), not as solved. After the call the server checks that the turn or the seat changed; if it did not, the result is `state_changed: "unknown"` and the session is degraded.
+  - **The server calls `Game.end_turn` at most once per `order`** and never again after an exception or a timeout (the session becomes degraded, code -32025 below). `Game.end_turn` re-clicks End turn after 8 seconds with no sign of the turn starting (no new `AUTOSAVE.LOG` line, `harness/driver.py:1138-1148`). That is not acceptable under a service that may run unattended: a missing sign is not proof the first click did nothing, and a click queued while the AI seats run ends the next turn too, which a check afterwards cannot undo. **T0 (below), a separate small driver PR merged before T9's `end_turn` and before the live test T12, adds a `reclick=True` parameter to `Game.end_turn`** (the default is today's behaviour, so every existing script is unchanged). `OriginalBackend.end_turn` passes `reclick=False`: with no sign of the turn starting within 8 seconds it raises `DriverError`, the session is degraded and the result is `state_changed: "unknown"`; the server never clicks twice. After a successful call the server checks that the turn or the seat changed.
 
 **The prechecks for `move`** run in `validate.py` for both backends, before anything is clicked:
 - the army exists and has troops;
 - its owner is the current nation;
 - `moves > 0` (an army with 0 moves cannot be selected, `docs/rules-digest.md` §5 "Moves");
-- the target is on the map (320 × 140) and differs from the army's tile;
-- **the target tile holds no marker:** its map code is below 12. Cities are 20-99, armies 200-247 and fleets 300-347
+- the target is on the map (320 × 140) **before any tile code is read** (the original backend reads the code with `Game.cell(x, y)`, an unchecked memory offset, so the bounds test comes first) and differs from the army's tile;
+- **the target tile is walkable land without a marker:** its map code is not below 2 (sea) and not 12 or above (a marker). Cities are 20-99, armies 200-247 and fleets 300-347
   (`docs/sav-layout-notes.md` "Overlay markers"). Clicking a marker is an attack, a resupply or a peace prompt, and the driver would
   answer that prompt Yes.
 
@@ -191,7 +192,7 @@ retryable, game_text: [...], detail}`. `game_text` is OCR text read by `Game.rea
 | -32700 / -32600 / -32601 / -32602 | standard | parse error, invalid request or batch, unknown method, bad params | no |
 | -32001 | `protocol_mismatch` | a different protocol in `hello` | no |
 | -32002 | `no_game` | `state` or `order` before `load` | no |
-| -32010 | `invalid_order` | a precheck failed; `detail.reason` is one of `no_such_army`, `not_owner`, `no_moves`, `off_map`, `same_tile`, `target_occupied`, `unknown_order` | no |
+| -32010 | `invalid_order` | a precheck failed; `detail.reason` is one of `no_such_army`, `not_owner`, `no_moves`, `off_map`, `same_tile`, `target_not_walkable` (the target's map code is below 2, sea, or 12 and above, a marker), `target_occupied` (a city, army or fleet marker: a code that is a marker), `no_progress` (the walk from the army's tile towards the target takes no step: the first tile is blocked or unaffordable), `unknown_order` | no |
 | -32011 | `order_refused` | the game showed a refusal box and the readback shows no change | no |
 | -32012 | `confirm_required` | reserved for M3 (attack at peace); not raised in M1 | no |
 | -32020 | `click_swallowed` | `DriverError` "army … not selected" (`driver.py:548`) after the driver's 3 tries, or a move whose readback shows no change and no box after 2 retries by gamed | no |
@@ -218,7 +219,7 @@ the exact strings from the driver, so a reworded message fails a test instead of
 > {"jsonrpc":"2.0","id":4,"method":"order","params":{"name":"move","args":{"army":0,"x":101,"y":36}}}
 < {"jsonrpc":"2.0","id":4,"result":{"name":"move","effect":{"army":0,"from":[100,37],"to":[101,36],"expected_to":[101,36],"moves_before":8,"moves_after":4,"cell_before":2,"cell_after":8},"popups":[],"retries":0,"turn":720}}
 > {"jsonrpc":"2.0","id":5,"method":"order","params":{"name":"end_turn","args":{}}}
-< {"jsonrpc":"2.0","id":5,"result":{"name":"end_turn","effect":{"autosave":"AUTO0721.SAV","turn_before":720,"turn_after":721,"date":"Spring week 3, 270 BC","battles":[]},"popups":["@ Celtiberia wants to trade with Rome."],"retries":0,"turn":721}}
+< {"jsonrpc":"2.0","id":5,"result":{"name":"end_turn","effect":{"autosave":"AUTO0721.SAV","autosave_kind":"sav","turn_before":720,"turn_after":721,"date":"Spring week 3, 270 BC","battles":[]},"popups":["@ Celtiberia wants to trade with Rome."],"retries":0,"turn":721}}
 > {"jsonrpc":"2.0","id":6,"method":"shutdown","params":{}}
 < {"jsonrpc":"2.0","id":6,"result":{}}
 ```
@@ -279,7 +280,8 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 
 | # | Task | Files, names | The test that proves it |
 |---|---|---|---|
-| T1 | Skeletons, runners, import boundary | both `pyproject.toml`, the `__init__.py` files, `gamed/tests/__main__.py`, `chatbot/tests/__main__.py`; `python3-jsonschema` added to `setup/setup.sh` | `chatbot/tests/test_boundary.py`: an AST scan of `chatbot/**/*.py` finds no import of `harness`, `state`, `planner` or `ic2_gamed`. A runner exits 1 when a test fails (checked with a deliberately failing dummy test) |
+| T0 | Driver: `reclick` parameter (its own PR, before T9 and T12; the only driver change of M1) | `harness/driver.py`: `Game.end_turn(timeout=300, battle_shot=None, reclick=True)`; with `reclick=False` the 8-second wait without a sign raises `DriverError("end turn: no sign of the turn starting")` instead of clicking again | `tests/test_end_turn_reclick.py` with a `Game` subclass whose `tool`, `wait`, `calendar`, `i16`, `popups` and `in_battle` are scripted: the default clicks twice when no sign appears and once when one does; `reclick=False` clicks exactly once and raises. The 28 documented tests are not changed |
+| T1 | Skeletons, runners, import boundary | both `pyproject.toml`, the `__init__.py` files, `gamed/tests/__main__.py`, `chatbot/tests/__main__.py`; `python3-jsonschema` added to `setup/setup.sh` | `chatbot/tests/test_boundary.py`: an AST scan of `chatbot/**/*.py` finds no import of `harness`, `state`, `planner`, `gamed` or `ic2_gamed`. A test runs `python3 -m gamed.ic2_gamed --backend fake` from a clean `git clone` of the branch and gets `hello` back (the launch command of §3) A runner exits 1 when a test fails (checked with a deliberately failing dummy test) |
 | T2 | Schemas v0 | `gamed/schemas/v0/{envelope,hello,load,state,order_move,order_end_turn,error_data}.schema.json`, `examples/*.json` (the §4 exchange) | `test_schemas.py`: every schema passes `Draft202012Validator.check_schema`, every example validates, `PROTOCOL` in `server.py` equals the schema's `const` |
 | T3 | JSON-RPC core | `rpc.py`: `read_message(stream)`, `write_message(stream, obj)`, `serve(stdin, stdout, dispatch)`; `__main__.py`: `main(argv)` with `--backend fake\|original`, `--session-dir`, `--save-dir` (repeatable) | `test_rpc.py` on in-memory streams: -32700, -32600 (batch, oversized line), -32601, a notification is ignored, EOF ends `serve`, nothing but JSON lines reaches stdout |
 | T4 | State projection | `state_view.py`: `project(parsed, source) -> dict`, `dumps(obj) -> str` | `test_state_view.py`: projecting each of the 14 saves in `saves/` is schema-valid and gives the same bytes twice; for `run0-start…`, army 0 is (100,37) with 8 moves and 23,700 troops, the turn is 720, and there is no `map` key |
@@ -287,7 +289,7 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 | T6 | FakeBackend | `backends/base.py`: `class Backend(Protocol)` with `hello_info()`, `load(path, seed)`, `state()`, `move(army, x, y)`, `end_turn()`, `close()`; `backends/fake.py`: `class FakeBackend` | `test_fake.py`: the `test_move` outcome; the map marker and covered cell are swapped correctly; calendar wraps (week 11 Spring → week 1 Summer; week 11 Winter → week 1 Spring, year − 1) |
 | T7 | Errors | `errors.py`: the code constants, `RpcError`, `classify(exc) -> RpcError` | `test_errors` (inside `test_original_offline.py`): each driver message quoted in §4 maps to its code; an unknown message gives -32099; the traceback goes to stderr, never into `data` |
 | T8 | Server methods | `server.py`: `class Session` (the backend, a `degraded` flag, the allowlist, the session dir), `dispatch(method, params)`; resolving `load` names; `end_turn` copies the autosave | covered by T9 on the fake. `test_rpc.py` adds: a `load` name with `/` or `..` gives -32602; after a forced degrade, `order` gives -32025 until `load` |
-| T9 | OriginalBackend | `backends/original.py`: `class OriginalBackend(game_factory=None)`. Lazy `from harness.driver import Game, DriverError`; `Game(log=<stderr>)`; `move` = precheck from game memory (`army_pos`, `army_rec`, `cell`, `i16(CUR_NATION)`), then **not `Game.move`** (it calls `dismiss_popups`, which answers any Confirm box Yes: a click that opened "Are you sure you want to attack ?" would declare war) but `Game.select_army` and `Game.click_tile`, followed by a look at `Game.popups()` **before** anything is dismissed: a Confirm box is answered **No** (`Game.answer(title, yes=False)`), its text goes into the typed error `unexpected_dialog` (-32021) and the session is degraded; only OK-only information boxes are read and dismissed. Readback, at most 2 retries when nothing changed and no box appeared. The marker precheck is a second defence, not the guarantee; `state` uses Save As or the autosave, as in §4 | `test_original_offline.py` with an injected stub `Game` (scripted positions, popups and exceptions): a swallowed click is retried and then gives -32020; a Confirm box after the click is answered No (the stub records which button), gives -32021 and degrades the session, and the stub's `dismiss_popups` is never called while a Confirm is open; `end_turn` is called exactly once even when it raises |
+| T9 | OriginalBackend | `backends/original.py`: `class OriginalBackend(game_factory=None)`. Lazy `from harness.driver import Game, DriverError`; `Game(log=<stderr>)`; `move` = precheck from game memory (`army_pos`, `army_rec`, `cell`, `i16(CUR_NATION)`), then **not `Game.move`** (it calls `dismiss_popups`, which answers any Confirm box Yes: a click that opened "Are you sure you want to attack ?" would declare war) but `Game.select_army` and `Game.click_tile`, followed by a look at `Game.popups()` **before** anything is dismissed: a Confirm box is answered **No** (`Game.answer(title, yes=False)`), its text goes into the typed error `unexpected_dialog` (-32021) and the session is degraded; only OK-only information boxes are read and dismissed. Before the click the backend runs `walk.py` on the parsed save (it has the map): a walk that takes **no step** is refused as `no_progress` without a click, so an expected no-op is never mistaken for a swallowed click; the readback and the at most 2 retries (nothing changed, no box appeared) apply only when the walk predicts progress (`expected_to` differs from the start). The marker precheck is a second defence, not the guarantee; `state` uses Save As or the autosave, as in §4 | `test_original_offline.py` with an injected stub `Game` (scripted positions, popups and exceptions): a swallowed click is retried and then gives -32020; a Confirm box after the click is answered No (the stub records which button), gives -32021 and degrades the session, and the stub's `dismiss_popups` is never called while a Confirm is open; `end_turn` is called exactly once, with `reclick=False`, even when it raises |
 | T10 | Conformance | `gamed/tests/conformance.py`: `run(backend) -> list[result]`, `main()` | runs on the fake inside `python3 -m gamed.tests`; refuses `--backend original` without `IC2_GAMED_LIVE=1` |
 | T11 | Chatbot client | `ic2_chat/gamed_client.py`: `class GamedClient(command, cwd, env, timeouts)` with `call(method, params)`, `close()`; it starts the child with an **allowlisted environment** (`PATH`, `HOME`, `LANG`, `IC2_WORK`, `IC2_EXE`, `DISPLAY_IC2` only). `cli.py`: `ic2-chat probe --save NAME --seed N` (hello, load, state summary; no LLM) | `test_client.py` against `python3 -m gamed.ic2_gamed --backend fake`: hello, load, a move, end_turn, shutdown. With `IC2_CHAT_API_KEY=dummy-key-123` and `IC2_RELEASE_TOKEN=x` set in the parent, the child's environment (echoed by a test-only `--debug-env-names` flag that prints **names only**) contains neither |
 | T12 | Live run, done by a person or a session that has the game | `gamed/tests/results.md` | `IC2_GAMED_LIVE=1 python3 -m gamed.tests.conformance --backend original` passes. Also the checks from §8 "Verify early" (V1, V5 and the record of V6), with the saves cited |
@@ -295,15 +297,14 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 **Do not:**
 - read, print or store any key or token. No `.env` files; nothing under `~/.local/share/opencode*`; `IC2_RELEASE_TOKEN` only as in
   `CLAUDE.md` rule 1;
-- import `harness`, `state`, `planner` or `ic2_gamed` from `chatbot/`;
-- change the behaviour of `harness/driver.py`, `state/sav.py` or `planner/`. Wrap them in `gamed/`. If a driver change seems
-  needed, stop and say so in the PR;
+- import `harness`, `state`, `planner`, `gamed` or `ic2_gamed` from `chatbot/`;
+- change the behaviour of `harness/driver.py`, `state/sav.py` or `planner/`, except the default-preserving `reclick` parameter of T0 in its own PR. Wrap them in `gamed/`. If another driver change seems needed, stop and say so in the PR;
 - launch Wine, Xvfb or the game in any offline test. Only `conformance.py --backend original` with `IC2_GAMED_LIVE=1` may;
 - write to stdout from `gamed/` except protocol lines;
 - commit `.SAV`, `.EXE`, screenshots or anything from `$IC2_WORK` (rule 1);
 - call `Game.move` or `Game.dismiss_popups()` from `gamed/` for any click that could open a `Confirm` box (they answer it Yes); the
   original backend clicks with `select_army` and `click_tile` and reads `popups()` first;
-- issue `end_turn` twice, or retry it after an exception (the driver's own internal re-click is the one exception, documented in §4 and §8);
+- issue `end_turn` twice, or retry it after an exception; `Game.end_turn` is only ever called with `reclick=False`;
 - add runtime dependencies, or `legal`, the renderer or the LLM client (M2 to M4).
 
 ### Outlines for M2 to M6
@@ -393,7 +394,7 @@ On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and
 - V4. stdout stays clean on the original: run the live conformance with stdout piped through a JSON-line checker.
 - V5. Bresenham: three live moves (straight, diagonal, a shallow slope over mixed terrain) compare `expected_to` with `to`. A
   mismatch is a finding for `findings/`, not a bug to hide.
-- V6. The driver's `end_turn` re-click: `Game.end_turn` clicks End turn a second time after 8 s without a new `AUTOSAVE.LOG` line (`harness/driver.py:1138-1148`). Decide, before M6 runs it unattended, whether that rule is acceptable for `gamed` (the AI seats can take longer than 8 s in a late turn, and a click queued while they run may end the next turn) or whether `gamed` needs a stricter check; any driver change is a separate PR. M1 only records what happens in the live conformance run (the stderr line `end_turn: first click swallowed, clicking again` and the turn number after).
+- V6. T0's `reclick=False`: in the live conformance run (T12) record how often the 8-second wait without a sign expires on the original (the stderr line is no longer printed; the raised `DriverError` is) and how long the AI phase takes in the seat order of `run0-start`; if it expires on a healthy turn, the wait is too short for `gamed` and T0 needs a longer or a state-based condition (a separate PR).
 
 ## 9. Corrections to the proposal
 
