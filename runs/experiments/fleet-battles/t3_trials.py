@@ -10,6 +10,9 @@ army 2 (morale 65); a unit is (type, troops), 0 light infantry, 2 archers.
   A5    5,000 archers (x3 weight: the same strength as L15, a third of the men)
   L25   25,000 light infantry                         (418.1)
   L15D5 attacker L15, defender carries 5,000 light infantry (does the defender's cargo count?)
+  H15   15,000 heavy infantry (the siege formula weights only archers: the same strength as L15)
+  M15   a mixed army of five unit types, 11,000 men, siege-weighted 15,000 (4,000 light infantry, 3,000 heavy infantry, 2,000 archers x3,
+        1,000 light and 1,000 heavy cavalry): the same strength as L15
 
     python3 runs/experiments/fleet-battles/t3_stage.py build ; python3 runs/experiments/fleet-battles/t3_trials.py [cell ...] [--seeds N] [--from K] [--save 8,10]
 (seed 1 of each cell is always saved; --save adds seeds, to keep a win and a loss per cell)
@@ -28,7 +31,8 @@ OUT = ROOT / "artifacts" / "run-exp-naval-battle-cargo"
 SRC = ROOT / "artifacts" / "run-exp-naval-battle" / "FIX_P_0723_ptolemaic_seat.SAV"
 ATT_ARMY, DEF_ARMY, ATT, DEF = 7, 2, 1, 0
 CELLS = {"L5": ([(0, 5000)], None), "L10": ([(0, 10000)], None), "L15": ([(0, 15000)], None), "A5": ([(2, 5000)], None),
-         "L25": ([(0, 25000)], None), "L15D5": ([(0, 15000)], [(0, 5000)])}
+         "L25": ([(0, 25000)], None), "L15D5": ([(0, 15000)], [(0, 5000)]),
+         "H15": ([(1, 15000)], None), "M15": ([(0, 4000), (1, 3000), (2, 2000), (3, 1000), (4, 1000)], None)}
 OUT.mkdir(parents=True, exist_ok=True)
 
 
