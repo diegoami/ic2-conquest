@@ -63,13 +63,16 @@ def sail_toward(g, s, me, other):
     return sail(g, s, f, path) | {"path_cost": cost}
 
 
-def sail_out(g, s, me, other, min_dist=3):
+def sail_out(g, s, me, min_dist=3):
     """Seleucid's fleet leaves its city's reach: the nearest tile at least `min_dist` from every own city, not adjacent to one."""
     f = fl(s, me)
     own = [(c["x"], c["y"]) for c in s["cities"] if c["owner"] == me]
     goal = lambda x, y: all(cheb((x, y), c) >= min_dist for c in own)       # noqa: E731
     cost, path = sea.dijkstra(s, (f["x"], f["y"]), goal)
-    return sail(g, s, f, path) | {"path_cost": cost}
+    out = sail(g, s, f, path) | {"path_cost": cost}
+    if any(cheb(out["to"], c) < min_dist for c in own):
+        raise RuntimeError(f"the fleet stopped at {out['to']}, still within {min_dist} tiles of an own city")
+    return out
 
 
 def main(max_turns=14):
@@ -107,20 +110,18 @@ def main(max_turns=14):
                 tested26 = True
                 print("   attack next to the enemy's city:", row["attack_next_to_city"], flush=True)
             elif me == 2 and d <= 1 and tested26 and not out_done:
-                row["sail_out"] = sail_out(g, s, 2, 3)
+                row["sail_out"] = sail_out(g, s, 2)
                 out_done = True
             elif me == 3 and d <= 1 and out_done and not near_own_city(s, fl(s, 2), 2):
                 shutil.copy(dst, OUT / f"FIX_S2_ptolemaic_seat_{s['turn']:04d}.SAV")        # Ptolemaic's seat start: Ptolemaic attacks
                 print("FIXTURE at Ptolemaic's seat:", dst.name, flush=True)
-            elif me == 2 and d <= 1 and out_done:
+            elif me == 2 and d <= 1 and out_done and not near_own_city(s, fl(s, 2), 2):
                 shutil.copy(dst, OUT / f"FIX_S2_seleucid_seat_{s['turn']:04d}.SAV")         # Seleucid's seat start, same turn: Seleucid attacks
                 print("FIXTURE at Seleucid's seat:", dst.name, flush=True)
                 seats += 1
             (OUT / "P2_phase2_log.json").write_text(json.dumps(log, indent=1, default=str))
             if seats:
                 break
-            if me == 3 and out_done and d > 1:
-                pass
             name, texts = g.end_turn(timeout=300)
             row["end_turn"] = {"autosave": name, "texts": texts}
             s, dst = keep(name)
