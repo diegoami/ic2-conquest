@@ -421,7 +421,7 @@ class Game:
                     if wid not in [p[0] for p in self.popups()]:
                         break
                 if wid in [p[0] for p in self.popups()]:
-                    raise DriverError("end turn: unexpected Confirm that did not close after No: " + texts[-1])
+                    raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (still open after No)")
                 raise DriverError("end turn: unexpected Confirm: " + texts[-1])
             if name == "Confirm":
                 self.answer("Confirm", yes=True)

@@ -102,10 +102,8 @@ class Scripted(D.Game):
 
 
 def run(**kw):
-    with tempfile.TemporaryFile() as _:
-        pass
     d = Path(tempfile.mkdtemp())
-    old = D.G
+    old, old_sleep = D.G, D.time.sleep
     D.G = d
     D.time.sleep = lambda s: None
     try:
@@ -120,6 +118,7 @@ def run(**kw):
         return g, out, err
     finally:
         D.G = old
+        D.time.sleep = old_sleep
 
 
 def test_default_reclicks_without_a_sign():
@@ -149,8 +148,8 @@ def test_strict_answers_an_unknown_confirm_no_after_the_line():
 
 
 def test_strict_answers_an_unknown_confirm_no_in_the_wait_loop():
-    # a box present before the autosave line appears: `sign` False and reclick False would raise earlier, so the box is there from the start
-    g, out, err = run(sign=True, boxes_during=[(6, "Confirm")], strict=True)
+    # a box present while the autosave line has not appeared yet (the line is deferred), so the loop body's dismissal is the call under test
+    g, out, err = run(sign=True, boxes_during=[(6, "Confirm")], strict=True, defer_line=True)
     assert err and "unexpected Confirm" in err and ("Confirm", False) in g.answers and ("Confirm", True) not in g.answers, (err, g.answers)
 
 
