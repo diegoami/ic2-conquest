@@ -129,6 +129,7 @@ def parse(b):
     s["news"] = [cstr(b[o + 2 + 61 * k:o + 2 + 61 * (k + 1)]) for k in range(ni + 1)]
     o += 2 + (ni + 1) * 61
 
+    s["tail_off"] = o                # offset of the 23-short tail (turn order, current nation, week, year, season)
     t = struct.unpack_from("<23h", b, o)
     s["turn_order"] = list(t[:16])
     s["pending_offer"] = {"from": t[16], "type": t[17]}
