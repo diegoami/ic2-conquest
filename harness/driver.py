@@ -7,7 +7,7 @@ never writes game memory. The layouts it relies on are recorded in
 coverage.md ("Dialog layouts").
 
     from harness.driver import Game
-    g = Game(); g.start(); g.open("BASE.SAV", seed=12345)
+    g = Game(); g.load("BASE.SAV", seed=12345)
     g.recruit("Rome", "hi", 3200); g.move(3, 104, 40); g.end_turn()
 """
 import json
@@ -237,7 +237,8 @@ class Game:
         return (int(m.group(1)), int(m.group(2))) if m else (1280, 1024)
 
     def neutral_point(self):
-        """A point on the bare root window, proven to be outside every visible window (a click there harmlessly closes menus).
+        """A point on the bare root window, proven to be outside every visible NAMED window (a click there harmlessly closes menus). Unnamed windows (the Wine
+        Open dialog) are not seen by `find_windows`, so call it when no file dialog is open.
         `NEUTRAL` is used when no window covers it; otherwise (a unit map opened oversized, 1143 x 903 with the research start
         save, covers (1000, 900) and a click there ORDERS A MOVE for a selected army) a point is derived from the screen geometry
         and the windows' geometry: along the bottom strip, then the right and left strips. DriverError if every candidate is covered."""

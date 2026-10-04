@@ -8,7 +8,7 @@ adjacency comes from `Game.move`. Every edit writes only its own field; `edit(sr
     edit("in.sav", "out.sav", ops)
 
 Operations (offsets: docs/sav-layout-notes.md):
-  units army [(type, troops, quality[, label[, name]])]   army record slots 0..n-1 written whole (type li|hi|ar|lc|hc, quality 4..9, label 0
+  units army [(type, troops, quality[, label[, name]])]   army record slots 0..n-1 written whole (type li|hi|ar|lc|hc, quality 0..9, label 0
                                                           = regular; the name defaults to the slot's existing name when its type is unchanged, else "<ordinal> <kind>  Battalion");
                                                           slots n..19 get troops 0 (their other bytes are left as they are: an empty slot)
   morale army v      army +14        supplies army v   +10        money army v   +12 (the army purse)       moves army v   +6

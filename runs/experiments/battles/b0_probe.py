@@ -209,9 +209,12 @@ def keep(p, tag=None):
     """Copy a file of the game folder into the artifacts folder under a name that does not exist yet."""
     p = Path(p)
     dst = OUT / ((tag + "_" if tag else "") + p.name)
-    if dst.exists() and sha(dst) != sha(p):
-        dst = dst.with_name(f"{dst.stem}-{STAMP}{dst.suffix}")
-    shutil.copy(p, dst)
+    base, n = dst, 0
+    while dst.exists() and sha(dst) != sha(p):           # never overwrite (rule 6): loop until a free or identical name
+        n += 1
+        dst = base.with_name(f"{base.stem}-{STAMP}{'' if n == 1 else '-%d' % n}{base.suffix}")
+    if not dst.exists():
+        shutil.copy(p, dst)
     return dst
 
 
