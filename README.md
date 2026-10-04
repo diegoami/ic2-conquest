@@ -1,6 +1,6 @@
 # IC2 Conquest: a bot that dominates Imperial Conquest 2
 
-A public repository: code, plans, logs and metrics as text. No game files are committed (see the rules below).
+A public repository: code, plans, logs and metrics as text, plus a few selected small saves. No EXE, DAT, screenshot or recording is committed (see the rules below).
 
 **Primary goal:** find strategies that dominate the map in the original 1996 game, and **prove it** with a strip of per-turn saves, logs and plans.
 
@@ -10,7 +10,7 @@ The bot plays **the original game**, headless under Wine. It does not play the r
 
 ## Rules this repository keeps
 
-1. **No game file enters git**: no EXE, DAT, SAV, screenshot or recording. The repository holds code, plans, logs and metrics as text. Saves and screenshots of a run go in a GitHub release of this repository, `run-<id>`, and plans cite them by bare filename, as the research repo does.
+1. **No EXE, DAT, screenshot or recording enters git.** The repository holds code, plans, logs and metrics as text. **Saves:** the player allowed (2026-09-29) selected small saves in `saves/`, each listed in `saves/README.md` with why it is interesting for play or research. All other saves, and every screenshot and recording, go in a GitHub release of this repository, `run-<id>`, and plans cite them by bare filename, as the research repo does. `CLAUDE.md` rule 1 is binding.
 2. The game files come from `diegoami/imp_conquest_fixtures`:
    - `patch_exe.py`, which builds `Imperial Conquest 2 fast rollingsave.exe`;
    - the DAT, help files and `WAVS`.
