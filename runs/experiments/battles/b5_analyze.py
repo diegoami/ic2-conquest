@@ -23,6 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C  # noqa: E402
+import stage  # noqa: E402
 import trials as T  # noqa: E402
 
 CHEB = lambda p, q: max(abs(p[0] - q[0]), abs(p[1] - q[1]))
@@ -184,7 +185,10 @@ def main():
             ls = [s for s in rows[-1]["slots"] if s["side"] == loser]
             end_stats[r["winner"]].append({"trial": r["trial"], "loser_units_alive_last_file": len(ls), "loser_troops_last_file": sum(s["troops"] for s in ls),
                                            "loser_start_troops": (a if loser == 0 else d)["troops_before"],
-                                           "loser_morale_min_last_file": min((s["morale"] for s in ls), default=None), "half_rounds": r["half_rounds"]})
+                                           "loser_morale_min_last_file": min((s["morale"] for s in ls), default=None), "half_rounds": r["half_rounds"],
+                                           # [R-code] Rout(u) can only remove a unit that still has troops if troops < std div 25 or morale <= 19 (certain) or 20 <= morale <= 39 (random test);
+                                           # a unit above both cannot be routed, so its removal in the final half-round was a kill (inference, not logged)
+                                           "loser_units_rout_possible": sum(1 for s in ls if s["troops"] < stage.STD[s["type"]] // 25 or s["morale"] <= 39)})
     # aggregates
     wins = defaultdict(Counter)
     for p in pair_rows:
@@ -204,6 +208,11 @@ def main():
                                                     else "defender destroyed" if p["def_destroyed"] else "nobody destroyed") for p in pair_rows))
     summary["end_clicks"] = dict(Counter(p["end_turn_clicks"] for p in pair_rows))
     summary["loser_state_at_last_saved_half_round"] = {w: v for w, v in end_stats.items()}
+    ec = Counter()
+    for w, v in end_stats.items():
+        for x in v:
+            ec["loser already empty in the last saved file" if not x["loser_units_alive_last_file"] else "loser units left; none rout-eligible: removed by troop loss in the final half-round [D, R-code]" if not x["loser_units_rout_possible"] else "loser units left; at least one rout-eligible: kill or rout, not distinguished"] += 1
+    summary["end_condition_inferred_from_last_saved_file"] = dict(ec)
     summary["promotions_total"] = sum(p["promotions"] for p in pair_rows)
     summary["promotions_by_type"] = dict(Counter(u["type"] for u in promo_rows if u["promoted"]))
     summary["promotions_by_winner_side"] = dict(Counter((u["side"]) for u in promo_rows if u["promoted"]))
