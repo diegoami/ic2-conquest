@@ -1,0 +1,4 @@
+354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f  Imperial Conquest 2 fast rollingsave seed.exe
+06bc469dff70ae8c83438e82ef4266a584bab7796752024521d00f8d8d46ec40  Imperial Conquest 2 lab s1.exe
+6616a7cca2de2cff1f9373947fac1bec16c3fd47fc8ec47e0d9a07127e12960a  Imperial Conquest 2 lab s2.exe
+built with: PYTHONPATH=$IC2_WORK/build python3 patches/battle_lab.py <seed>, then renamed 'IC2 lab.exe' to 'Imperial Conquest 2 lab s<seed>.exe' (the driver finds the pid by the name prefix); git commit e648541 of patches/battle_lab.py

@@ -1,0 +1,40 @@
+{"t": 5.08, "event": "process_started", "exe": "Imperial Conquest 2 fast rollingsave seed.exe", "seconds": 5.1, "pid": 166509}
+{"t": 5.08, "event": "seed_line", "line": "S 0000012345"}
+{"t": 19.54, "event": "loaded", "seconds": 14.4, "popups": ["@ Bithynia wants to trade with Rome."], "calendar": {"season": 3, "week": 11, "year_bc": 270}, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 19.7, "event": "shot", "file": "b0-normal-20261004-081149-01-loaded.png"}
+{"t": 22.23, "event": "move", "to": [90, 25], "now": [90, 25], "popups": []}
+{"t": 24.77, "event": "move", "to": [87, 27], "now": [87, 27], "popups": []}
+{"t": 27.3, "event": "move", "to": [86, 28], "now": [86, 28], "popups": []}
+{"t": 35.25, "event": "save_as", "file": "NB_pre_attack.SAV", "seconds": 7.9, "sha256": "39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad"}
+{"t": 35.25, "event": "save_state", "label": "pre-attack", "file": "NB_pre_attack.SAV", "size": 132149, "battle_flag": 0, "turn": 743, "armies": {"0": [0, 37081], "2": [0, 28227], "10": [6, 46700], "13": [0, 38455]}, "last_news": ["Week  9      Winter      270BC", "Naupactus   (Greece)  falls to Illyria.", " ", "Week  11      Winter      270BC"]}
+{"t": 36.76, "event": "attack_clicked", "selected": 0}
+{"t": 43.11, "event": "battle_open", "seconds_from_click": 6.67, "in_battle": true, "title": "Rome  v  Gaul          Rome to place units.", "geometry": [5, 99, 448, 414], "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Rome  v  Gaul          Rome to place units.", 5, 99, 448, 414], ["Information", 458, 70, 338, 426]], "flag": 1}
+{"t": 43.17, "event": "shot", "file": "b0-normal-20261004-081149-02-battle-placement.png"}
+{"t": 43.17, "event": "stacking", "order": ["8388609", "8388612", "8388616", "8388615"], "note": "bottom-to-top order is not given by xdotool search; geometry only"}
+{"t": 43.24, "event": "controls", "label": "battle window", "title": "Rome  v  Gaul          Rome to place units.", "controls": [{"cls": "TPanel", "text": "", "x": 5, "y": 99, "w": 448, "h": 28}]}
+{"t": 152.82, "event": "toolbar_tooltips", "x_ranges": {"Unit moves": [8, 17], "Friendly units": [35, 44], "Enemy units": [59, 68], "Cancel selection": [83, 92], "End turn": [110, 119], "Change pauses": [137, 146], "Computer general on": [161, 170], "Surrender": [188, 197]}}
+{"t": 154.69, "event": "computer_general_clicked", "title": ["Rome  v  Gaul          Rome to move units."], "in_battle": true}
+{"t": 154.74, "event": "shot", "file": "b0-normal-20261004-081149-03-after-computer-general.png"}
+{"t": 156.62, "event": "end_turn_clicked", "n": 1, "in_battle": false, "windows": ["Imperial Conquest 2", "Rome  v  Gaul          Rome to move units.", "Information"]}
+{"t": 159.66, "event": "battle_ended", "end_turn_clicks": 1, "seconds_from_computer_general": 6.8, "seconds_from_attack_click": 13.5, "in_battle": false}
+{"t": 160.72, "event": "shot", "file": "b0-normal-20261004-081149-04-battle-ended.png"}
+{"t": 160.75, "event": "shot", "file": "b0-normal-20261004-081149-04b-battle-ended-window.png"}
+{"t": 160.9, "event": "ocr_battle_ended", "text": "Gaul's army defeats Rome's army. Gaul's army Rome's army start finish start finish light fanry Ce] heavy ifanry Co] (00 | arches Co] [0 0 | Moheeavalry Co] (0) (0 | heavy cavalry Co] total oops Co] The army of Gaul captured 156 talents. The army of Gaul captured no suuplies.", "geometry": [13, 94, 450, 445]}
+{"t": 160.95, "event": "controls", "label": "battle ended", "title": "Battle ended", "controls": [{"cls": "TButton", "text": "OK", "x": 203, "y": 499, "w": 70, "h": 25}]}
+{"t": 162.88, "event": "after_ok", "s": 1.0, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Battle ended", 13, 94, 450, 445]]}
+{"t": 163.91, "event": "after_ok", "s": 2.0, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Battle ended", 13, 94, 450, 445], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 164.96, "event": "after_ok", "s": 3.1, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Battle ended", 13, 94, 450, 445], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 166.0, "event": "after_ok", "s": 4.1, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 167.02, "event": "after_ok", "s": 5.1, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 168.05, "event": "after_ok", "s": 6.2, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 169.08, "event": "after_ok", "s": 7.2, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 170.12, "event": "after_ok", "s": 8.2, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 171.17, "event": "after_ok", "s": 9.3, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 172.21, "event": "after_ok", "s": 10.3, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 173.25, "event": "after_ok", "s": 11.3, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 174.3, "event": "after_ok", "s": 12.4, "in_battle": false, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 174.51, "event": "shot", "file": "b0-normal-20261004-081149-05-after-ok-open.png"}
+{"t": 174.55, "event": "after_ok_popups", "popups": []}
+{"t": 182.53, "event": "save_as", "file": "NB_post_battle.SAV", "seconds": 8.0, "sha256": "3cbf595185ac81b04bceb6121183c8a951e10057a684fd957dd7812a68537e02"}
+{"t": 182.53, "event": "save_state", "label": "post-battle", "file": "NB_post_battle.SAV", "size": 132149, "battle_flag": 0, "turn": 743, "armies": {"2": [0, 28227], "10": [6, 17239], "13": [0, 38455]}, "last_news": ["Naupactus   (Greece)  falls to Illyria.", " ", "Week  11      Winter      270BC", "Gaul destroys army of Rome."]}
+{"t": 182.53, "event": "done", "total_seconds": 182.5}
