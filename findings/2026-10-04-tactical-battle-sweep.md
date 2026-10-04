@@ -163,6 +163,6 @@ python3 runs/experiments/battles/release_sync.py <batch>                # saves 
 python3 runs/experiments/battles/b5_analyze.py                          # tabulations (new files each run)
 python3 runs/experiments/battles/b8_ladder.py hi li ar lc hc            # the icon ladder (v2); then b8_analyze.py
 python3 runs/experiments/battles/b8_layout.py                           # layout screenshots
-python3 runs/experiments/battles/claims_audit.py                        # 104 claims, 0 mismatches (claims-audit-20261004-195251.md)
+python3 runs/experiments/battles/claims_audit.py                        # 104 claims, 0 mismatches (claims-audit-20261004-201404.md)
 python3 -m tests.test_battle_stage; python3 -m tests.test_battle_trials; python3 -m tests.test_driver_battle; python3 -m tests.test_battle_b5_b8
 ```
