@@ -31,12 +31,20 @@ def main():
     rep = int(a[a.index("--rep") + 1]) if "--rep" in a else 1
     base_f = sorted(C.DATA.glob("b5-baseline-*.json"))[-1]
     base = json.loads(base_f.read_text())["baseline"]
-    last = {}
-    for line in (C.DATA / "trials-b11.jsonl").read_text().splitlines():
-        if line.strip():
-            r = json.loads(line)
-            if r.get("status") == "ok" and r.get("variant") == "hook" and r.get("rep") == rep:
-                last[r["trial"]] = r
+    # the final exes: the SHA-256 of the newest EXES-sha256*.txt (the first hooked trial, hi-hi-one_s1_r1_hook, ran on an earlier build that had no reseed boundary caves and
+    # is not the B5 re-run's representative: for that (cell, seed) the first later hooked trial on a final exe stands in, and the table says so in `stands_in_for`)
+    exes = sorted(C.DATA.glob("EXES-sha256*.txt"), key=lambda p: p.stat().st_mtime)[-1].read_text().split()
+    final = {x for x in exes if len(x) == 64}
+    trials = [json.loads(x) for x in (C.DATA / "trials-b11.jsonl").read_text().splitlines() if x.strip()]
+    hooked = [r for r in trials if r.get("status") == "ok" and r.get("variant") == "hook" and r.get("exe_sha256") in final]
+    last, stands = {}, {}
+    for key in {(r["cell"], r["seed"]) for r in hooked}:
+        cand = sorted((r for r in hooked if (r["cell"], r["seed"]) == key), key=lambda r: (r["rep"] != rep, r["rep"]))
+        if cand and cand[0]["rep"] == rep:
+            last[cand[0]["trial"]] = cand[0]
+        elif cand and "%s_s%d_r%d" % (key[0], key[1], rep) in base:
+            last[cand[0]["trial"]] = cand[0]
+            stands[cand[0]["trial"]] = "%s_s%d_r%d_hook" % (key[0], key[1], rep)
     rows, miss_files = [], []
     for tag, r in sorted(last.items()):
         ef = newest("exchange-check-%s*.json" % tag)
@@ -52,12 +60,13 @@ def main():
                      "att_loss": r["att_loss"], "def_loss": r["def_loss"], "hook_records": hc["records"], "hook_overflow": hc["overflow"], "hook_chain_breaks": hc["chain_break_count"],
                      "hook_pass": hc["pass"], "shots": e["shots"], "shots_n_ok": e["shots_n_ok"], "melee": e["melee"], "melee_n_ok": e["melee_n_ok"], "rout_tests": e["rout_tests"],
                      "rout_draw_count_ok": e["rout_draw_count_ok"], "rout_removed": e["rout_removed"], "flank_draws": e["flank_draws"], "placement_draws": e["placement_draws"],
+                     "unconfirmed_exchanges": e["unconfirmed_exchanges"], "half_rounds_with_unaccounted_draws": e["half_rounds_with_unaccounted_draws"],
                      "state_diffs": e["state_diffs"], "misses": e["misses"], "loss_rows": lr, "loss_rows_exact": lx,
                      "b5_loss_rows": b5.get("loss_rows", ""), "b5_unambiguous_rows": b5.get("unambiguous_rows", ""),
                      "copy_in_ok": all(v.get("count_ok") and v.get("ranges_ok") and v.get("morale_rule_ok") for v in e["copy_in"].values()),
                      "post_battle_ok": bool(e["post_battle"]["promotion_draws_equal_survivors"] and e["post_battle"]["promotion_ranges_all_4"] and e["post_battle"]["peace_draws"] <= 1
                                             and e["post_battle"]["peace_range_5"] and e["post_battle"]["offer_iff_draw_below_2"] in (True, None)),
-                     "dialog": r.get("dialog", ""), "exchange_check": ef.name})
+                     "dialog": r.get("dialog", ""), "stands_in_for": stands.get(tag, ""), "exchange_check": ef.name})
     cols = list(rows[0]) if rows else []
     buf = io.StringIO(newline="")
     w = csv.DictWriter(buf, cols, lineterminator="\n")
@@ -70,7 +79,8 @@ def main():
     b5_un = sum(int(r["b5_unambiguous_rows"]) for r in rows if r["b5_unambiguous_rows"] != "")
     summ = {"rep": rep, "battles": len(rows), "battles_without_exchange_check": miss_files, "hook_pass": sum(1 for r in rows if r["hook_pass"]),
             "shots": tot("shots"), "shots_n_ok": tot("shots_n_ok"), "melee": tot("melee"), "melee_n_ok": tot("melee_n_ok"), "rout_tests": tot("rout_tests"),
-            "rout_draw_count_ok": tot("rout_draw_count_ok"), "rout_removed": tot("rout_removed"), "flank_draws": tot("flank_draws"), "state_diffs": tot("state_diffs"),
+            "rout_draw_count_ok": tot("rout_draw_count_ok"), "rout_removed": tot("rout_removed"), "flank_draws": tot("flank_draws"), "state_diffs": tot("state_diffs"), "unconfirmed_exchanges": tot("unconfirmed_exchanges"),
+            "half_rounds_with_unaccounted_draws": tot("half_rounds_with_unaccounted_draws"),
             "misses": tot("misses"), "loss_rows": tot("loss_rows"), "loss_rows_exact": tot("loss_rows_exact"), "b5_loss_rows_same_battles": b5_lr, "b5_unambiguous_same_battles": b5_un,
             "b5_unambiguous_share": round(b5_un / b5_lr, 4) if b5_lr else None, "hook_exact_share": round(tot("loss_rows_exact") / tot("loss_rows"), 4) if rows and tot("loss_rows") else None,
             "battles_with_misses": [r["trial"] for r in rows if r["misses"] or r["state_diffs"]],

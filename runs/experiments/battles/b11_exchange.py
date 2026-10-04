@@ -207,6 +207,9 @@ class Replay:
             row["n_ok"] = False
             self.note("shot: observed n not predicted", actor=s, target=t, observed=n_obs, predicted=n1, predicted_doubled=n2, actor_type=ts, target_type=tt,
                       s_state=(st.tr[s], st.q[s], st.m[s]), t_troops=st.tr[t])
+        # actor and target are the marker's EAX and EDX (fixed by the record); they count as `confirmed` only when the draws' range n is the one the report's
+        # formula gives for exactly this pair in the replayed state
+        row["attribution"] = "confirmed" if row["n_ok"] else "unconfirmed"
         loss = draws[0]["result"] + draws[1]["result"]
         row["loss"] = loss
         dm = min(3, (loss * 35) // (st.tr[t] + 1))
@@ -275,6 +278,8 @@ class Replay:
             row.update({"f": f, "A": A, "D": D, "nA_pred": nA, "nD_pred": nD, "troops_before": (st.tr[a], st.tr[d]), "morale_before": (st.m[a], st.m[d])})
             rg = row["ranges"]
             row["n_ok"] = rg == [nA, nA, nD, nD]
+            # the pair comes from slot order and the snapshot's targets; the four ranges (functions of both units' troops, quality and morale) confirm or refute it
+            row["attribution"] = "confirmed" if row["n_ok"] else "unconfirmed"
             if not row["n_ok"]:
                 self.note("melee: observed ranges differ from the report's nA, nD", actor=a, target=d, observed=rg, predicted=[nA, nA, nD, nD], f=f, A=A, D=D,
                           troops=(st.tr[a], st.tr[d]), q=(st.q[a], st.q[d]), m=(st.m[a], st.m[d]), types=(ta, td))
@@ -308,6 +313,19 @@ class Replay:
         extra = [x for x in self.recs[self.i:] if x["kind"] in ("random", "marker")]
         if extra:
             self.note("records left over after the melee phase", count=len(extra), first=(extra[0]["kind"], hex(extra[0]["site"])))
+
+
+def draws_in(row):
+    """Number of Random draws a reconstructed row accounts for (a shot or melee row includes the draws of the Rout tests that followed it)."""
+    k = row["kind"]
+    if k in ("flank_draw", "placement_draw"):
+        return 1
+    n = len(row.get("draws", [])) if k in ("shot", "melee", "rout_test") else 0
+    if k == "shot" and "rout" in row:
+        n += len(row["rout"].get("draws", []))
+    if k == "melee":
+        n += sum(len(x.get("draws", [])) for x in row.get("rout", []))
+    return n
 
 
 def compare_states(tracked, block, hr):
@@ -394,7 +412,10 @@ def reconstruct(blocks, recs):
         rp2.melee(mover)
         rows += rp2.ex
         miss += rp2.miss
-        per_hr.append({"half_round": k, "header_ok": ok_idx, "mover": mover, "moves_exchanges": sum(1 for x in rp.ex if x["kind"] in ("shot",)),
+        observed = sum(1 for r in grp if r["kind"] == "random")
+        accounted = sum(draws_in(x) for x in rp.ex + rp2.ex)
+        per_hr.append({"half_round": k, "header_ok": ok_idx, "mover": mover, "random_records": observed, "accounted_for_by_the_replay": accounted,
+                       "all_accounted": observed == accounted, "moves_exchanges": sum(1 for x in rp.ex if x["kind"] in ("shot",)),
                        "melee_exchanges": sum(1 for x in rp2.ex if x["kind"] == "melee"), "state_diffs": len(d), "misses": len(rp.miss) + len(rp2.miss)})
         tracked = st
     # the loss rows of the B2 diff (a slot whose troops fell between two consecutive snapshots) and how many the replay explains exactly: a loss row (window ending
@@ -418,11 +439,13 @@ def summarize(rows, summ):
         if r["kind"] == "shot" and "rout" in r:
             routs.append(r["rout"])
         if r["kind"] == "melee":
-            routs += r["rout"]
+            routs += r.get("rout", [])
     return {"shots": len(shots), "shots_n_ok": sum(1 for r in shots if r.get("n_ok")), "melee": len(melees), "melee_n_ok": sum(1 for r in melees if r.get("n_ok")),
             "rout_tests": len(routs), "rout_with_draws": sum(1 for r in routs if r.get("pred_draws") == 2),
             "rout_draw_count_ok": sum(1 for r in routs if len(r.get("draws", [])) == r.get("pred_draws")), "rout_removed": sum(1 for r in routs if r.get("removed")),
             "state_diffs": len(summ["state_diffs"]), "misses": len(summ["misses"]), "loss_rows": summ["loss_rows"], "loss_rows_exact": summ["loss_rows_exact"],
+            "half_rounds_with_unaccounted_draws": sum(1 for h in summ["per_half_round"] if not h["all_accounted"]),
+            "unconfirmed_exchanges": sum(1 for r in rows if r["kind"] in ("shot", "melee") and r.get("attribution") != "confirmed"),
             "flank_draws": sum(1 for r in rows if r["kind"] == "flank_draw"), "placement_draws": sum(1 for r in rows if r["kind"] == "placement_draw")}
 
 

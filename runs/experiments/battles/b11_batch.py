@@ -44,7 +44,7 @@ def plan(base=None):
 
 
 def pairs_file():
-    return sorted(DATA.glob("pairs-*.txt"))[-1]
+    return sorted(DATA.glob("pairs-[0-9]*.txt"))[-1]
 
 
 def round_pairs(n, size):
@@ -89,6 +89,11 @@ def pack_tags(label, tags):
     """tar.gz of every artifact whose name starts with one of the trial tags (series, post save, shots, raw buffer) + a tracked manifest."""
     members = []
     for t in tags:
+        if "*" in t:                                            # an explicit glob under artifacts/run-exp-battle-hook/ (e.g. "start/*.SAV")
+            members += [m for m in sorted(ART.glob(t)) if m.is_file()]
+            continue
+        if (ART / t).is_file():
+            members.append(ART / t)
         members += sorted(ART.glob(t + "_*"))
         members += sorted((ART / "shots").glob(t + "_*")) if (ART / "shots").exists() else []
         if (ART / "hookbuf" / (t + ".bin")).exists():

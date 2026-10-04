@@ -217,6 +217,18 @@ def test_reseed_caves(trials=200):
     return fails, n
 
 
+def test_a_broken_cave_is_detected():
+    """The test must be able to fail: a cave whose epilogue forgets to restore EFLAGS (`popfd` replaced by `pop eax`) is reported."""
+    assert HAVE_UNICORN
+    good = H.SWITCH_OUT
+    try:
+        H.SWITCH_OUT = b"\x61\x58\x8B\x25" + H.u32(H.SV)
+        fails, _ = test_random_cave(20)
+    finally:
+        H.SWITCH_OUT = good
+    assert len(fails) >= 20, "the broken cave was not detected (%d reports)" % len(fails)
+
+
 def test_seed_cave():
     """The hooked seed cave: RandSeed := seed, one boundary record carrying that seed, then it jumps to the battle start."""
     assert HAVE_UNICORN
@@ -258,7 +270,7 @@ def main():
         fails, n = fn(**kw)
         print("%-20s %5d machine states: %s" % (fn.__name__, n, "all equal" if not fails else "%d FAILURES" % len(fails)))
         allfails += fails
-    for fn in (test_seed_cave, test_overflow_never_wraps):
+    for fn in (test_seed_cave, test_overflow_never_wraps, test_a_broken_cave_is_detected):
         try:
             fn()
             print("%-20s ok" % fn.__name__)

@@ -1,0 +1,330 @@
+{
+ "mix-rg_s1_r3_hook": {
+  "none": {
+   "shots": 78,
+   "shots_n_ok": 78,
+   "melee": 34,
+   "melee_n_ok": 34,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 146,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hi][hi] 5 -> 6": {
+   "shots": 78,
+   "shots_n_ok": 78,
+   "melee": 34,
+   "melee_n_ok": 29,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 146,
+   "state_diffs": 0,
+   "misses": 5
+  },
+  "M[li][li] 15 -> 16": {
+   "shots": 78,
+   "shots_n_ok": 78,
+   "melee": 34,
+   "melee_n_ok": 34,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 146,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hc][li] 18 -> 17": {
+   "shots": 78,
+   "shots_n_ok": 78,
+   "melee": 34,
+   "melee_n_ok": 29,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 146,
+   "state_diffs": 0,
+   "misses": 5
+  },
+  "vuln[li] 18 -> 17": {
+   "shots": 78,
+   "shots_n_ok": 34,
+   "melee": 34,
+   "melee_n_ok": 34,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 146,
+   "state_diffs": 0,
+   "misses": 44
+  },
+  "vuln[ar] 18 -> 19": {
+   "shots": 78,
+   "shots_n_ok": 73,
+   "melee": 34,
+   "melee_n_ok": 34,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 146,
+   "state_diffs": 0,
+   "misses": 5
+  },
+  "rout floor hi 240 -> 100": {
+   "shots": 78,
+   "shots_n_ok": 58,
+   "melee": 35,
+   "melee_n_ok": 32,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 145,
+   "state_diffs": 13,
+   "misses": 25
+  },
+  "rout floor li 600 -> 700": {
+   "shots": 78,
+   "shots_n_ok": 78,
+   "melee": 34,
+   "melee_n_ok": 34,
+   "rout_tests": 146,
+   "rout_draw_count_ok": 145,
+   "state_diffs": 0,
+   "misses": 1
+  }
+ },
+ "mix-rg_s3_r3_hook": {
+  "none": {
+   "shots": 80,
+   "shots_n_ok": 80,
+   "melee": 63,
+   "melee_n_ok": 63,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hi][hi] 5 -> 6": {
+   "shots": 80,
+   "shots_n_ok": 80,
+   "melee": 63,
+   "melee_n_ok": 59,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 0,
+   "misses": 4
+  },
+  "M[li][li] 15 -> 16": {
+   "shots": 80,
+   "shots_n_ok": 80,
+   "melee": 63,
+   "melee_n_ok": 60,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 0,
+   "misses": 3
+  },
+  "M[hc][li] 18 -> 17": {
+   "shots": 80,
+   "shots_n_ok": 80,
+   "melee": 63,
+   "melee_n_ok": 62,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 0,
+   "misses": 1
+  },
+  "vuln[li] 18 -> 17": {
+   "shots": 80,
+   "shots_n_ok": 43,
+   "melee": 63,
+   "melee_n_ok": 63,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 0,
+   "misses": 37
+  },
+  "vuln[ar] 18 -> 19": {
+   "shots": 80,
+   "shots_n_ok": 76,
+   "melee": 63,
+   "melee_n_ok": 63,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 0,
+   "misses": 4
+  },
+  "rout floor hi 240 -> 100": {
+   "shots": 80,
+   "shots_n_ok": 80,
+   "melee": 63,
+   "melee_n_ok": 62,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 6,
+   "misses": 1
+  },
+  "rout floor li 600 -> 700": {
+   "shots": 80,
+   "shots_n_ok": 79,
+   "melee": 63,
+   "melee_n_ok": 62,
+   "rout_tests": 206,
+   "rout_draw_count_ok": 206,
+   "state_diffs": 6,
+   "misses": 2
+  }
+ },
+ "ar-hc-three_s3_r1_hook": {
+  "none": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hi][hi] 5 -> 6": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[li][li] 15 -> 16": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hc][li] 18 -> 17": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "vuln[li] 18 -> 17": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "vuln[ar] 18 -> 19": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "rout floor hi 240 -> 100": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "rout floor li 600 -> 700": {
+   "shots": 53,
+   "shots_n_ok": 53,
+   "melee": 24,
+   "melee_n_ok": 24,
+   "rout_tests": 101,
+   "rout_draw_count_ok": 101,
+   "state_diffs": 0,
+   "misses": 0
+  }
+ },
+ "hc-hc-three_s1_r1_hook": {
+  "none": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hi][hi] 5 -> 6": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[li][li] 15 -> 16": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "M[hc][li] 18 -> 17": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "vuln[li] 18 -> 17": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "vuln[ar] 18 -> 19": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "rout floor hi 240 -> 100": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  "rout floor li 600 -> 700": {
+   "shots": 0,
+   "shots_n_ok": 0,
+   "melee": 37,
+   "melee_n_ok": 37,
+   "rout_tests": 74,
+   "rout_draw_count_ok": 74,
+   "state_diffs": 0,
+   "misses": 0
+  }
+ }
+}

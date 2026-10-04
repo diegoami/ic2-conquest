@@ -38,6 +38,24 @@ MIX = "mix-rg"
 JSONL = "trials-b11.jsonl"
 
 
+def parse_cell(cell):
+    """`<att>-<def>-<size>` or, for the size matrix, `<att>-<def>-<att size>-<def size>` (e.g. `hi-li-half-three`): the same cells the B5 sweep (PR #40) ran. The
+    B5 trials.py is not in main yet, so its two small extensions (the size matrix) are repeated here, not imported."""
+    m = re.fullmatch(r"(%s)-(%s)-((?:%s)(?:-(?:%s))?)" % ("|".join(T.TYPES), "|".join(T.TYPES), "|".join(T.SIZES), "|".join(T.SIZES)), cell)
+    if not m:
+        raise ValueError("cell %r is not <type>-<type>-<size>[-<size>]" % cell)
+    return m.groups()
+
+
+def cell_ops(cell):
+    """The L1 edits of a cell (stage.py): both armies' units (all of one type, quality 6) and morale 65; positions are never edited."""
+    a, d, size = parse_cell(cell)
+    sa, _, sd = size.partition("-")
+    (na, fa), (nd, fd) = T.SIZES[sa], T.SIZES[sd or sa]
+    return [("units", C.ROME_ARMY, stage.uniform(a, na, fa, T.Q)), ("morale", C.ROME_ARMY, T.MORALE),
+            ("units", C.GAUL_ARMY, stage.uniform(d, nd, fd, T.Q)), ("morale", C.GAUL_ARMY, T.MORALE)]
+
+
 def trial_tag(cell, seed, rep, variant):
     return "%s_s%d_r%d_%s" % (cell, seed, rep, variant)
 
@@ -73,10 +91,10 @@ def stage_start(cell):
         if cell == MIX:
             return C.keep(fixture(), "MIX-RG_start.SAV", C.ART / "start"), None
         tmp = C.ART / "start" / ("_tmp_%s_%d.SAV" % (cell, os.getpid()))
-        stage.edit(fixture(), tmp, T.cell_ops(cell))
+        stage.edit(fixture(), tmp, cell_ops(cell))
         kept = C.keep(tmp, "%s_start.SAV" % cell, C.ART / "start")
         tmp.unlink()
-        return kept, T.cell_ops(cell)
+        return kept, cell_ops(cell)
 
 
 def analyze(recs, ctl, seed, final_seed_mem):
@@ -258,10 +276,10 @@ def main():
     if a[0] == "run":
         variant = a[1]
         assert variant in ("hook", "plain")
-        cells = [x for x in a[2:] if re.fullmatch(r"[a-z]{2}-[a-z]{2}-[a-z]+|%s" % MIX, x)]
+        cells = [x for x in a[2:] if re.fullmatch(r"[a-z]{2}-[a-z]{2}-[a-z]+(-[a-z]+)?|%s" % MIX, x)]
         for c in cells:
             if c != MIX:
-                T.parse_cell(c)
+                parse_cell(c)
         seeds = T.parse_seeds(a[a.index("--seeds") + 1]) if "--seeds" in a else [1, 2, 3]
         rep = int(a[a.index("--rep") + 1]) if "--rep" in a else 1
         pairs = None
@@ -269,7 +287,7 @@ def main():
             pairs = [(ln.split()[0], int(ln.split()[1])) for ln in Path(a[a.index("--pairs-file") + 1]).read_text().splitlines() if ln.strip()]
             for c, _ in pairs:
                 if c != MIX:
-                    T.parse_cell(c)
+                    parse_cell(c)
         n_ok, n_err = run_all(variant, cells, seeds, rep, "--redo-errors" in a, "--stop-on-error" in a, pairs=pairs)
         sys.exit(1 if n_err else 0)
 
