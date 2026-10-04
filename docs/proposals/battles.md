@@ -383,3 +383,7 @@ The answers below were written by the research session and relayed by the player
 - Whether Computer general gets the +3; whether the grid has terrain; whether a battle has a turn limit.
 - Whether a post-battle dialog appeared in the gallic battles; `TBattlePols`'s title, buttons and gate.
 - The ~1 min per battle and the budget table; the download of `run-1-rome` (stated public by the research session, not yet fetched).
+
+## Bot validation: B0 (2026-10-04, bot-owned; the plan above is unchanged)
+
+Measured in `findings/2026-10-04-battle-probe.md` (release `run-exp-battle-probe`): the **gate passes** (6 lab seed-1 battles in a row, all `BATTLEnn.SAV` series and post-battle saves byte-identical; **57.3 s per battle**, process start to post-battle save); Save As inside a battle works through the menu at human-controlled phases (block 12 present, battle continues); resume of a `BATTLEnn.SAV` works and is deterministic given the save, but the **remaining half-rounds are not byte-identical to the original's** (the Appendix's [R] item is contradicted for the lab build: the stream restarts at resume); the post-battle **"Offer of peace"** box appeared after OK in 3 of 17 logged battles. `1_rome_270_winter_11.sav` is a strategic save (flag 0): the probe walks army 0 to (86,28) first. The start save opens a 1143 × 903 unit map and `reset_ui`'s click point lies on it (a selected army is moved): see the finding before B1.
