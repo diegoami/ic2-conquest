@@ -106,8 +106,12 @@ def run_scenario(name, log):
         log("resumed", scenario=name, seconds=rec["resume_seconds"], memory_equals_file=rec["memory_equals_file"], memory_v_file=rec["memory_v_file"][:12])
         shots = C.ART / "shots"
         shots.mkdir(exist_ok=True)
-        g.shot(shots / f"b3_{name}_resumed.png", window=str(g.find_windows(" v ")[0][0]))
-        res = g.play_battle(shot=shots / f"b3_{name}_battle-ended.png", on_dialog="capture")
+        C.shot(g, f"b3_{name}_resumed.png", window=str(g.find_windows(" v ")[0][0]), folder=shots)
+        tmp_end = shots / f"_tmp_end_{name}.png"
+        res = g.play_battle(shot=tmp_end, on_dialog="capture")
+        if tmp_end.exists():
+            C.keep(tmp_end, f"b3_{name}_battle-ended.png", shots)
+            tmp_end.unlink()
         rec["end_turn_clicks"], rec["dialogs"] = res["end_turn_clicks"], [d["title"] for d in res["dialogs"]]
         post = g.save_as(f"b3_{name}_post.SAV")
         kp = C.keep(post, f"b3_{name}_post.SAV", crafted)
@@ -131,7 +135,7 @@ def run_scenario(name, log):
         rec["error"] = f"{type(e).__name__}: {e}"
         try:
             rec["windows"] = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows(".")]
-            g.shot(C.ART / f"error_b3_{name}.png")
+            C.shot(g, f"error_b3_{name}.png")
         except Exception:       # noqa: BLE001
             pass
         log("error", scenario=name, error=rec["error"])

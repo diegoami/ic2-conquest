@@ -92,8 +92,7 @@ def main():
             if phase != "placement":
                 end_turn(g, win[0], log)
                 time.sleep(2)
-            png = C.ART / f"b2_{phase}_window.png"
-            g.shot(png, window=str(win[0]))
+            png = C.shot(g, f"b2_{phase}_window.png", window=str(win[0]))
             st = g.battle_state()
             sv = C.keep(g.save_as(f"B2_{phase}.SAV"))
             sb = saved_block(sv)

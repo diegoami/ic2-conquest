@@ -40,7 +40,7 @@ Q, MORALE = 6, 65
 END_CONDITIONS = {(False, False): "none (nobody destroyed)", (True, False): "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level): attacker",
                   (False, True): "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level): defender", (True, True): "both destroyed"}
 RESULTS = {"attacker": "Rome defeats Gaul", "defender": "Gaul defeats Rome", "none": "neither army destroyed", "both": "both armies destroyed"}
-COLUMNS = ["trial", "cell", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
+COLUMNS = ["trial", "cell", "build", "level", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
            "att_troops_before", "att_troops_after", "att_loss", "def_troops_before", "def_troops_after", "def_loss",
            "att_destroyed", "def_destroyed", "att_promotions", "def_promotions", "end_condition", "result", "dialog",
            "seconds", "start_save", "series_first", "series_last", "post_save", "post_sha12", "series_sha12", "halflog", "loss_rows", "unambiguous_rows"]
@@ -160,7 +160,12 @@ def run_trial(g, cell, seed, rep, log):
     log("battle_open", trial=tid, seconds_from_click=dt, title=g.find_windows(" v ")[0][1])
     shots = C.ART / "shots"
     shots.mkdir(parents=True, exist_ok=True)
-    res = g.play_battle(shot=shots / f"{tag}_battle-ended.png", on_dialog="capture")
+    tmp_end = shots / f"_tmp_end_{tag}.png"
+    res = g.play_battle(shot=tmp_end, on_dialog="capture")
+    ended_shot = None
+    if tmp_end.exists():       # through keep(): never overwritten, hashed
+        ended_shot = C.keep(tmp_end, f"{tag}_battle-ended.png", shots).name
+        tmp_end.unlink()
     for d in res["dialogs"]:           # the driver writes dialog screenshots to IC2_WORK/shots: keep them with the saves, never overwritten
         if d.get("shot") and Path(d["shot"]).exists():
             d["shot"] = C.keep(d["shot"], f"{tag}_{Path(d['shot']).name}", shots).name
@@ -185,7 +190,7 @@ def run_trial(g, cell, seed, rep, log):
         "series_sha12": hashlib.sha256("".join(C.sha(C.ART / s) for s in series).encode()).hexdigest()[:12],
         "winner": d["winner"], "end_turn_clicks": res["end_turn_clicks"], "result_text_ocr": res["battle_ended_text"],
         "result": RESULTS[d["winner"]],
-        "battle_ended_shot": f"{tag}_battle-ended.png" if (shots / f"{tag}_battle-ended.png").exists() else None,
+        "battle_ended_shot": ended_shot,
         "dialogs": res["dialogs"], "dialog": ";".join(x["title"] for x in res["dialogs"]),
         "end_condition": END_CONDITIONS[(att["destroyed"], dfn["destroyed"])],
         "attacker_result": {k: att[k] for k in ("troops_before", "troops_after", "loss", "destroyed", "type_loss", "promotions", "morale", "money")},
@@ -210,7 +215,7 @@ def row(rec):
     if rec.get("status") != "ok":
         return {"trial": rec.get("trial"), "cell": rec.get("cell"), "status": rec.get("status")}
     a, d = rec["attacker_result"], rec["defender_result"]
-    return {"trial": rec["trial"], "cell": rec["cell"], "attacker": rec["attacker"], "defender": rec["defender"], "size": rec["size"],
+    return {"trial": rec["trial"], "cell": rec["cell"], "build": rec.get("build", ""), "level": rec.get("level", ""), "attacker": rec["attacker"], "defender": rec["defender"], "size": rec["size"],
             "seed": rec["seed"], "rep": rec["rep"], "exe": rec["exe"], "status": "ok", "half_rounds": rec["half_rounds"],
             "winner": rec["winner"], "end_turn_clicks": rec["end_turn_clicks"], "att_troops_before": a["troops_before"],
             "att_troops_after": a["troops_after"], "att_loss": a["loss"], "def_troops_before": d["troops_before"],
@@ -280,10 +285,7 @@ def run_all(cells, seeds, reps, redo_errors=False, stop_on_error=False, make_gam
             try:
                 rec["windows"] = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows(".")]
                 if shot:
-                    p = C.ART / f"error_{tid}_{time.strftime('%H%M%S')}.png"
-                    p.parent.mkdir(parents=True, exist_ok=True)
-                    g.shot(p)
-                    rec["screenshot"] = p.name
+                    rec["screenshot"] = C.shot(g, f"error_{tid}_{time.strftime('%H%M%S')}.png").name
             except Exception:       # noqa: BLE001
                 pass
             n_err += 1

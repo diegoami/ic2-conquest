@@ -19,7 +19,8 @@ Layout (2,105 bytes after the 55-byte trailer; `docs/sav-layout-notes.md` §Bloc
     +8  troops (<= 0 empty / dead)                  [O] equals the strategic unit's troops at the start
     +10 quality                                     [O]
     +12 battle-local morale (60..99 seen)           [O] initial = clamp(Random(q*4) + army morale, 60, 90) (+3 for the computer side) [R]
-    +14 `state`: 0..4                               [?] not decoded; distribution in the finding
+    +14 `state`: 0..6                               [D] movement points left: the type's allowance (HI 2, LI/Ar 4, HC 5, LC 6) refilled when the side starts a half-round; exact
+                                                    semantics [?] (Gaul's LI read 1 at the second file)
     +16 `ammo`: li 7, ar 25, lc 9, hc 0, hi 0 at the start; falls when the unit shoots (ar -4 per volley)   [D]
     +18 `target`: slot index of the enemy it last attacked, -1 none                                          [D]
     +20 name (NUL padded, 24 bytes)

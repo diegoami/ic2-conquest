@@ -70,6 +70,19 @@ def keep(src, name=None, folder=None):
     return dst
 
 
+def shot(g, name, window="root", folder=None):
+    """Screenshot through `keep`: taken to a temp name, then kept under `name` (versioned if the name exists with other content, never overwritten)
+    and its SHA-256 recorded in SAVES.sha256. Returns the kept Path."""
+    folder = folder or ART
+    folder.mkdir(parents=True, exist_ok=True)
+    tmp = folder / f"_tmp_shot_{os.getpid()}.png"
+    g.shot(tmp, window=window)
+    try:
+        return keep(tmp, name, folder)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
 class Log:
     """Timestamped events to a text log and a jsonl file in the tracked folder (new files per run, never overwritten)."""
 

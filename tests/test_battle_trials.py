@@ -135,6 +135,9 @@ def test_dry_run_resume_errors_and_compare():
     out, n = T.write_table()
     rows = out.read_text().splitlines()
     assert n == 4 and len(rows) == 5 and rows[0].split(",") == T.COLUMNS, rows[:2]
+    import csv as _csv
+    r0 = next(_csv.DictReader(out.open()))
+    assert r0["build"] == "lab" and r0["level"].startswith("L1"), (r0["build"], r0["level"])
     # resume: nothing new is run, the file is untouched
     before = (C.DATA / "trials.jsonl").read_text()
     assert T.run_all(["hi-hi-one"], [1, 2], [1, 2], make_game=mk, log=log, shot=False) == (0, 0)
