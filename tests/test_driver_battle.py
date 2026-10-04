@@ -393,6 +393,132 @@ def test_end_turn_until_over_never_clicks_twice_without_a_sign():
     assert len(g.clicks) == 1, g.clicks
 
 
+# ---- answer_battle_peace (B16): which button was clicked, and that the box closed --------------------------------------------------
+PEACE = (10, "Offer of peace", 13, 94, 406, 360)
+
+
+class PeaceFake(Fake):
+    """A fake window whose buttons are rectangles: a real `click_control` lands as a click at a point, the fake finds the button whose rectangle
+    holds it (`pressed`). `sticky`: a press leaves the box open. `ignore_first`: the first press only activates the window."""
+
+    def __init__(self, **kw):
+        super().__init__([AREA, MAP, INFO, PEACE], **kw)
+        self.pressed = []
+        self.sticky = False
+        self.ignore_first = 0
+        self.rects = {"Yes": (94, 414, 70, 25), "No": (269, 414, 70, 25)}
+        self.__dict__.update(kw)
+
+    def controls(self, title):
+        return [{"cls": "TButton", "text": t, "x": r[0], "y": r[1], "w": r[2], "h": r[3], "title": title} for t, r in self.rects.items()]
+
+    def click_control(self, c, fx=0.5, fy=0.5, pause=0.6):
+        D.Game.click_control(self, c, fx, fy, pause)          # the real one: a click at the control's centre
+
+    def click(self, x, y, pause=0.4):
+        self.clicks.append((x, y))
+        for t, (rx, ry, rw, rh) in self.rects.items():
+            if rx <= x < rx + rw and ry <= y < ry + rh:
+                if self.ignore_first:
+                    self.ignore_first -= 1
+                    return
+                self.pressed.append(t)
+                if not self.sticky:
+                    self.wins = [w for w in self.wins if w[1] != "Offer of peace"]
+
+
+def _peace(yes, **kw):
+    g = PeaceFake(**kw)
+    with Clock():
+        try:
+            return g, g.answer_battle_peace(yes), None
+        except D.DriverError as e:
+            return g, None, str(e)
+
+
+def test_peace_yes_presses_yes_and_the_box_closes():
+    g, r, err = _peace(True)
+    assert err is None and g.pressed == ["Yes"] and r["button"] == "Yes" and r["closed"] and r["clicks"] == 1, (r, err, g.pressed)
+    assert r["text"] == "text of Offer of peace" and r["buttons"] == ["Yes", "No"] and not g.find_windows("Offer of peace")
+
+
+def test_peace_no_presses_no():
+    g, r, err = _peace(False)
+    assert err is None and g.pressed == ["No"] and r["button"] == "No", (r, err, g.pressed)
+
+
+def test_peace_wrong_button_would_fail():
+    # the test's own oracle: if the driver clicked the other button the fake would record it, and these assertions would fail
+    for yes in (True, False):
+        g, r, err = _peace(yes)
+        assert g.pressed == ["Yes" if yes else "No"] and g.pressed != ["No" if yes else "Yes"], (yes, g.pressed)
+    g = PeaceFake()
+    g.rects = {"Yes": (269, 414, 70, 25), "No": (94, 414, 70, 25)}      # buttons swapped on screen: the control text still decides the click
+    with Clock():
+        g.answer_battle_peace(True)
+    assert g.pressed == ["Yes"], g.pressed
+
+
+def test_peace_box_that_stays_open_raises_after_three_clicks_of_the_same_button():
+    g, r, err = _peace(True, sticky=True)
+    assert r is None and "still open after 3 clicks on Yes" in err and g.pressed == ["Yes"] * 3, (err, g.pressed)
+
+
+def test_peace_first_click_only_activates_then_one_more_click_closes():
+    g, r, err = _peace(False, ignore_first=1)
+    assert err is None and r["clicks"] == 2 and g.pressed == ["No"], (r, err, g.pressed)
+
+
+def test_peace_absent_box_raises_without_clicking():
+    g = PeaceFake()
+    g.wins = [w for w in g.wins if w[1] != "Offer of peace"]
+    with Clock():
+        try:
+            g.answer_battle_peace(True)
+        except D.DriverError as e:
+            assert "no 'Offer of peace' box" in str(e)
+        else:
+            raise AssertionError("no error for an absent box")
+    assert g.clicks == [] and g.pressed == []
+
+
+def test_peace_box_without_yes_no_buttons_raises():
+    g = PeaceFake()
+    g.rects = {"OK": (94, 414, 70, 25)}
+    with Clock():
+        try:
+            g.answer_battle_peace(True)
+        except D.DriverError as e:
+            assert "no Yes and No buttons" in str(e)
+        else:
+            raise AssertionError("no error")
+    assert g.pressed == []
+
+
+def test_peace_pre_click_runs_before_the_click():
+    g = PeaceFake()
+    seen = []
+    with Clock():
+        g.answer_battle_peace(True, pre_click=lambda info: seen.append((list(g.pressed), info["text"])))
+    assert seen == [([], "text of Offer of peace")], seen
+
+
+def test_play_battle_yes_routes_through_answer_battle_peace():
+    g = battle(peace=True)
+    calls = []
+    orig = g.answer_battle_peace
+    g.answer_battle_peace = lambda yes, **kw: (calls.append(yes), orig(yes, **kw))[1]
+    r, err = run(g, on_dialog="yes")
+    assert err is None and calls == [True] and r["dialogs"][0]["answer"] == "Yes" and r["dialogs"][0]["closed"], (r, err, calls)
+
+
+def test_play_battle_pre_answer_sees_the_box_before_the_answer():
+    g = battle(peace=True)
+    seen = []
+    r, err = run(g, on_dialog="yes", pre_answer=lambda info: seen.append(("Offer of peace", "Yes") in g.answers))
+    assert err is None and seen == [False], (err, seen)
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted(globals().items()):
