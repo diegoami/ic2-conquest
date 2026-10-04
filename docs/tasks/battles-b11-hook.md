@@ -43,8 +43,9 @@ Forbidden results (any one fails the task):
    difference), and the marker cave is held to the same rule as the `Random` cave: every register, EFLAGS and ESP preserved, the
    displaced instructions re-executed exactly, then a jump back; the same emulator test covers it. If a register layout is not as the report
    implies, record that and use only the `Random` records.
-   **Every memory address used** (`RandSeed 0x45E030`, counter `0x4A0B7A`, side `0x4A0B78`, the routine entries, `Random`) is checked
-   once live before the hook relies on it: the header words against B2's decoder and a Save As block, `RandSeed` by stepping the LCG
+   **Every memory address used** (all [R-code]: `RandSeed 0x45E030`, counter `0x4A0B7A`, side `0x4A0B78`, battle flag `0x4A0B7C`, the routine entries, `Random`) is checked
+   once live before the hook relies on it: the header words against B2's decoder and a Save As block, the battle flag by reading it 1 during a battle and 0 right after
+   "Battle ended" in the same process (B0 used it; record it again here), `RandSeed` by stepping the LCG
    across one known `Random` call, the entries by a breakpoint-free check (the marker fires exactly where a lab snapshot says a shot,
    melee or rout happened). Each check is a tracked output.
 3. **The buffer is in memory, not a file.** Enlarge the `.patch` section's virtual size (zero-filled, writable; update
@@ -60,7 +61,7 @@ Forbidden results (any one fails the task):
 2. **Completeness, zero tolerance.** Delphi's `Random` advances `RandSeed` by exactly one LCG step (`seed·0x08088405 + 1`) per call,
    so each record's seed-before must equal the previous record's seed-after, from the battle's first draw to its last. **The
    boundaries are pinned too:** the first record's seed-before must equal the seed the lab cave writes at battle start or resume
-   (nothing drawn before it), and the cave also records `RandSeed` when the battle flag `0x4A0B7C` clears and after the last
+   (nothing drawn before it), and the cave also records `RandSeed` when the battle flag `0x4A0B7C` [R-code, checked live above] clears and after the last
    post-battle site, which must equal the last record's seed-after (nothing drawn after it, up to `TBattlePols`' reseed). Any break
    (a call from an unhooked site, a dropped or duplicated record) fails the battle's log; the task is not done while any hooked
    battle has a break. Separately, compare the records per half-round with the count the report's draw order predicts from the snapshot
