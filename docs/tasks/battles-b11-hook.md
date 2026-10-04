@@ -85,7 +85,8 @@ Forbidden results (any one fails the task):
 ## Done when
 
 - The inertness check passes on all listed cells and on every B5 re-run battle (comparison files in `runs/experiments/data/run-exp-battle-sweep/`).
-- The seed chain is unbroken in every hooked battle (0 breaks, tracked output per battle); the draw-order comparison is in the
+- In every hooked battle the overflow flag is clear and the seed chain is unbroken, boundaries included (0 breaks, tracked output
+  per battle); the draw-order comparison is in the
   finding with every mismatch listed.
 - The register/flag preservation test passes for the `Random` cave and every marker cave; the call-site scan equals the hooked
   list; each address check has its tracked output.
