@@ -40,3 +40,13 @@
 ## PR B5 (follow-ups of PR #36's last review)
 - R4: `b0_probe.end_turn_until_over` now uses `Game.battle_progress_mark()` (flag, titles, BATTLEnn count and the half-round counter), so "the same rule" above is true from this PR on. **The `b0-savein-*` and the B0 gate logs (`runs/experiments/data/run-exp-battle-probe/`) predate this change** (and the savein logs predate even the proven clicks): they were made with the earlier proofs.
 - R5: `b2-analysis-20261004-112837.json` (and `-112840`, a second identical run) carries `all_battle_saves[...]["violating_files_by_scenario"]`: the 14 grid-violating B3 files are c5: 5, c6: 5, d5: 3, d6: 1 (all in B3's resumed series).
+
+## Where the saves and screenshots are (releases; the 1000-asset limit)
+- `run-exp-battle-sweep` holds **1000 assets, GitHub's per-release limit** (HTTP 422 "file_count limited to 1000 assets per release" on the 1001st): the 521 assets of PR #35/#36 and the first 479 saves of the sweep (the trials up to `li-lc-one_s1_r1_BATTLE05.SAV`), loose. Nothing was deleted or replaced.
+- `run-exp-battle-sweep-b5` (created by `release_sync.py` when the limit was hit, before the name `-2` was asked for): the **sweep saves from there on, one `.tar.gz` per batch** (`b5-saves-<batch>-<stamp>.tar.gz`, 19 archives) and the sweep's screenshots, loose. Members and their SHA-256: the tracked `release-manifest-<stamp>.json` files (one per archive set); per-file SHA-256 also in `SAVES.sha256`.
+- `run-exp-battle-sweep-2`: from the B8 batch on (`b8-saves.tar.gz` + `MANIFEST-b8.txt` tracked here, and the B8 screenshots loose). `release_sync.py` skips every name already loose in any of the three releases or listed as a member in a manifest. A save is therefore cited by its bare file name and found by that name in the loose assets of `run-exp-battle-sweep`, or as a member of the archive the manifest names.
+- `b2-analysis` files made after the sweep include the sweep's own series in "B4 trials and other sweep series".
+
+## B8 notes
+- `b8-ladder-2026*.jsonl` (the v1 run, 12 units per side): the defender's block is only 3 cells wide, so more than 9 defenders **share cells** (rows y = 9, 10, 11 ... overlap) and a shared cell shows one grid word for two units; `b8_analyze.py` and `b8_ladder.observe` ignore such units. The v1 run was stopped during `hc` (killed by its own time limit). `b8-ladder-v2-*.jsonl` (9 per side) is the dataset the thresholds come from. Both are kept.
+- `b8-layout-20261004-192710.jsonl`: the layout run (tooltips, unit info, surrender box answered No, move phase, result box).

@@ -11,7 +11,7 @@ shots (a fresh process per round).
   python3 runs/experiments/battles/b8_ladder.py [TYPE ...] [--max-rounds 8]
 
 Rounds per type: (1) the ladder 100, 250, 500, 1000, 2000, 4000, 8000, 16000, 32767 plus 1/4, 1/2, 1x, 2x of the standard battalion (capped at 32767), in chunks of
-12, both sides identical; (2..) per side and per class change the bracket (lo, hi) of adjacent observed troop counts is probed: first the predicted threshold pair
+12, both sides identical; (2..) per side (v2: 9 units per side, see MAXU) and per class change the bracket (lo, hi) of adjacent observed troop counts is probed: first the predicted threshold pair
 (T-1, T) of the std/3 and 2*std/3 hypothesis, then evenly spaced values, until every bracket is one troop wide on BOTH sides. Output: `b8-ladder-<stamp>.jsonl`
 (tracked, one line per round, append-only), the BATTLE01 save and the placement screenshot of each round in artifacts/ (release), SHA-256 in SAVES.sha256.
 """
@@ -28,7 +28,8 @@ from harness.driver import DriverError, Game  # noqa: E402
 from state import battle_block as BB  # noqa: E402
 from b2_icons import rgb, tile_hash  # noqa: E402
 
-MAXU = 12                      # Gaul's row: x = j + 1 (<= 12 units), Rome's parked row x = j (<= 13): 12 per side fit the 14-wide grid
+MAXU = 9                       # Gaul's units are placed in a block 3 cells wide (x = a..a+2, rows y = 9, 10, 11 ...): MORE THAN 9 OVERLAP on shared cells (the v1 run with 12 per side
+                              # had defender slots sharing cells; their grid words are the last unit's and are discarded by `observe`), so 9 per side
 BASE = [100, 250, 500, 1000, 2000, 4000, 8000, 16000, 32767]
 
 
@@ -167,8 +168,13 @@ def run_round(typ, tag, att_troops, def_troops, log):
 
 
 def observe(rec, obs):
+    """Record class by troops for every unit that stands alone on its cell (a cell shared by two slots shows one grid word for both: not an observation)."""
+    cells = {}
     for s in rec.get("slots", []):
-        obs[s["side"]][s["troops"]] = s["size_class"]
+        cells.setdefault((s["x"], s["y"]), []).append(s)
+    for s in rec.get("slots", []):
+        if len(cells[(s["x"], s["y"])]) == 1 and 0 <= s["y"] < BB.GRID_H and 0 <= s["x"] < BB.GRID_W:
+            obs[s["side"]][s["troops"]] = s["size_class"]
 
 
 def run_type(typ, out, log, max_rounds=8):
@@ -176,7 +182,7 @@ def run_type(typ, out, log, max_rounds=8):
     chunks = [ladder(typ)[i:i + MAXU] for i in range(0, len(ladder(typ)), MAXU)]
     rounds = []
     for k, ch in enumerate(chunks):                      # pass 1: the ladder, both sides identical
-        rec = run_round(typ, f"b8_{typ}_r{k + 1}", ch, ch, log)
+        rec = run_round(typ, f"b8v2_{typ}_r{k + 1}", ch, ch, log)
         rec["round"] = k + 1
         rec["purpose"] = "ladder"
         rounds.append(rec)
@@ -192,7 +198,7 @@ def run_type(typ, out, log, max_rounds=8):
         if not p0 and not p1:
             return rounds, "done: every class change is one troop wide on both sides"
         n += 1
-        rec = run_round(typ, f"b8_{typ}_r{n}", p0 or [1], p1 or [1], log)
+        rec = run_round(typ, f"b8v2_{typ}_r{n}", p0 or [1], p1 or [1], log)
         rec["round"], rec["purpose"] = n, "bisect (side 0 probes %s, side 1 probes %s)" % (p0, p1)
         rounds.append(rec)
         with open(out, "a") as f:
@@ -209,7 +215,7 @@ def main():
     types = [a for a in args if a in T.TYPES] or list(T.TYPES)
     mr = int(sys.argv[sys.argv.index("--max-rounds") + 1]) if "--max-rounds" in sys.argv else 8
     log = C.Log("b8-ladder")
-    out = C.DATA / f"b8-ladder-{C.STAMP}.jsonl"
+    out = C.DATA / f"b8-ladder-v2-{C.STAMP}.jsonl"
     for typ in types:
         rounds, why = run_type(typ, out, log, mr)
         log("type_done", type=typ, rounds=len(rounds), why=why)

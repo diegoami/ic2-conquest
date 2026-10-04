@@ -3,7 +3,7 @@
 
 Release `run-exp-battle-sweep` hit GitHub's limit of 1000 assets per release (HTTP 422 "file_count limited to 1000 assets per release") during the B5 sweep,
 after 479 loose saves of the sweep. From then on:
-  * every NEW `.SAV` goes into one `b5-saves-<label>-<stamp>.tar.gz` per call, uploaded to release `run-exp-battle-sweep-b5` (created by this script if missing);
+  * every NEW `.SAV` goes into one `<label>-saves.tar.gz` per call plus a tracked `MANIFEST-<label>.txt`, uploaded to release `run-exp-battle-sweep-2` (created by this script if missing);
     `release-manifest-<stamp>.json` (tracked) lists, per archive, its SHA-256, size and every member with its own SHA-256 (the member names are the bare file
     names the findings cite);
   * every NEW `.png` goes loose to `run-exp-battle-sweep-b5` (there are far fewer than 1000).
@@ -21,7 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C  # noqa: E402
 
-TAG, TAG2 = "run-exp-battle-sweep", "run-exp-battle-sweep-b5"
+TAG, TAG1B, TAG2 = "run-exp-battle-sweep", "run-exp-battle-sweep-b5", "run-exp-battle-sweep-2"      # -b5 holds the B5 sweep archives (made before the coordinator named -2); new uploads go to -2
 EXT = {".sav", ".png"}
 
 
@@ -39,7 +39,7 @@ def manifest_members():
 
 
 def pending():
-    have = (assets(TAG) or set()) | (assets(TAG2) or set()) | manifest_members()
+    have = (assets(TAG) or set()) | (assets(TAG1B) or set()) | (assets(TAG2) or set()) | manifest_members()
     seen, files = set(), []
     for f in sorted(C.ART.rglob("*")):
         if f.is_file() and f.suffix.lower() in EXT and not f.name.startswith("_tmp") and f.name not in have and f.name not in seen:
@@ -68,14 +68,15 @@ def main():
     if sav and not rec["refused"]:
         arch_dir = C.ART / "archives"
         arch_dir.mkdir(exist_ok=True)
-        name = "b5-saves-%s-%s.tar.gz" % (label, C.STAMP)
+        name = "%s-saves.tar.gz" % label
         p = arch_dir / name
         if p.exists():
-            name = "b5-saves-%s-%s-2.tar.gz" % (label, C.STAMP)
+            name = "%s-saves-%s.tar.gz" % (label, C.STAMP)
             p = arch_dir / name
         with tarfile.open(p, "w:gz") as t:
             for f in sav:
                 t.add(f, arcname=f.name)
+        C.write_new(C.DATA, "MANIFEST-%s.txt" % label, "".join("%s  %s\n" % (C.sha(f), f.name) for f in sav))
         rec["archives"][name] = {"sha256": C.sha(p), "size": p.stat().st_size, "members": {f.name: C.sha(f) for f in sav}}
         r = subprocess.run(["gh", "release", "upload", TAG2, str(p)], capture_output=True, text=True)
         if r.returncode:
