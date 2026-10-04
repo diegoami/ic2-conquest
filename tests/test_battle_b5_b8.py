@@ -20,7 +20,8 @@ def test_ladder_has_the_named_rungs_and_caps():
 
 def test_predicted_thresholds_are_the_first_troop_count_of_each_class():
     assert L.predicted("hi") == (2000, 4000) and L.predicted("li") == (5000, 10000)
-    assert L.predicted("ar") == (1167, 2334) and L.predicted("hc") == (834, 1667) and L.predicted("lc") == (2334, 4667)
+    assert L.predicted("ar") == (1166, 2332) and L.predicted("hc") == (833, 1666) and L.predicted("lc") == (2333, 4666)   # [R-code]
+    assert L.hypothesis_b2("ar") == (1167, 2334)           # the earlier B2 hypothesis differs by 1-2 troops
 
 
 def test_probes_close_a_bracket_to_one_troop():
@@ -50,6 +51,35 @@ def test_target_rank_by_distance_troops():
     assert not ev[0]["is_nearest"] and ev[0]["enemies_strictly_nearer"] == 1 and ev[0]["is_weakest"]
     one_enemy = row(6, [sl(0, 0, 0, 1, 100, 20), sl(20, 1, 0, 2, 500, -1)])
     assert A.targets_events([row(5, [sl(0, 0, 0, 0, 100, -1), sl(20, 1, 0, 2, 500, -1)]), one_enemy]) == []
+
+
+def _blk(slots):
+    from state import battle_block as BB
+    full = []
+    for k in range(40):
+        d = slots.get(k)
+        full.append({"slot": k, "side": 0 if k < 20 else 1, "alive": bool(d), "troops": d["troops"] if d else 0, "ammo": d.get("ammo", 0) if d else 0,
+                     "target": d.get("target", -1) if d else -1})
+    return {"slots": full}
+
+
+def test_attribute_uses_words_8_and_9():
+    from state import battle_block as BB
+    a = _blk({0: {"troops": 100, "target": 20}, 20: {"troops": 100}})
+    b = _blk({0: {"troops": 90, "target": -1}, 20: {"troops": 80}})
+    r = BB.attribute(a, b)
+    assert r["losses"] == 2 and r["fixed"] == 2 and r["rows"][20]["links"] == [(0, 20)] and r["rows"][0]["kind"] == "melee"
+    # one archer shoots (ammo falls) at one of two enemies that both lost troops: the shooter is known, the target is not
+    a = _blk({0: {"troops": 100, "ammo": 25}, 20: {"troops": 100}, 21: {"troops": 100}})
+    b = _blk({0: {"troops": 100, "ammo": 21}, 20: {"troops": 90}, 21: {"troops": 95}})
+    r = BB.attribute(a, b)
+    assert r["by_kind"]["shooting"] == 2 and r["fixed"] == 0 and r["rows"][20]["actors"] == [0]
+    # a single loser with a single shooter is fixed
+    b2 = _blk({0: {"troops": 100, "ammo": 21}, 20: {"troops": 90}, 21: {"troops": 100}})
+    assert BB.attribute(a, b2)["fixed"] == 1
+    # a link to an own-side slot (the placeholder target 0 of an attacker at BATTLE01) is not a melee link
+    a = _blk({0: {"troops": 100, "target": 0}, 1: {"troops": 100, "target": 0}})
+    assert BB.attribute(a, _blk({0: {"troops": 90}, 1: {"troops": 100}}))["rows"][0]["kind"] == "unknown"
 
 
 if __name__ == "__main__":

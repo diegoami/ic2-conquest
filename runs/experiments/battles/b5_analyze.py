@@ -38,6 +38,44 @@ def halflog_rows(rec):
     return [json.loads(x) for x in (C.DATA / name).read_text().splitlines() if x.strip()]
 
 
+def attribution(rec):
+    """Old (BB.diff, adjacency/ammo candidates) v new (BB.attribute, words 8 and 9 [R-code]) share of fixed loss rows over a trial's series files."""
+    from state import battle_block as BB
+    files = [C.ART / n for n in rec["series"]]
+    out = {"losses": 0, "old_unambiguous": 0, "new_fixed": 0, "kinds": Counter()}
+    prev = None
+    for f in files:
+        b = BB.from_save(f)
+        if prev is not None:
+            d, n = BB.diff(prev, b), BB.attribute(prev, b)
+            out["losses"] += d["losses"]
+            out["old_unambiguous"] += d["unambiguous"]
+            out["new_fixed"] += n["fixed"]
+            assert n["losses"] == d["losses"], "loss row counts differ"
+            out["kinds"].update(n["by_kind"])
+        prev = b
+    return out
+
+
+def b0_attribution():
+    import glob
+    from state import battle_block as BB
+    probe = C.ROOT / "artifacts" / "run-exp-battle-probe"
+    out = {"losses": 0, "old_unambiguous": 0, "new_fixed": 0, "kinds": Counter()}
+    for tag in ("gate2_a", "gate2_s2a"):
+        prev = None
+        for f in sorted(glob.glob(str(probe / f"{tag}_BATTLE[0-9][0-9].SAV"))):
+            b = BB.from_save(f)
+            if prev is not None:
+                d, n = BB.diff(prev, b), BB.attribute(prev, b)
+                out["losses"] += d["losses"]
+                out["old_unambiguous"] += d["unambiguous"]
+                out["new_fixed"] += n["fixed"]
+                out["kinds"].update(n["by_kind"])
+            prev = b
+    return out
+
+
 def csv_text(cols, rows):
     buf = io.StringIO(newline="")
     w = csv.DictWriter(buf, cols)
@@ -92,6 +130,9 @@ def main():
     last = last_ok()
     recs = [r for r in last.values() if r["rep"] == 1]
     replays = [r["trial"] for r in last.values() if r["rep"] != 1]
+    attr_total = {"1 unit per side": Counter(), "3 units per side": Counter(), "mixed sizes (size matrix)": Counter()}
+    kinds_total = Counter()
+    x2_v_actor = Counter()
     pair_rows, place_rows, target_rows, promo_rows = [], [], [], []
     peace = Counter()
     summary = {"trials": len(recs), "replays_not_counted": len(replays)}
@@ -102,11 +143,16 @@ def main():
         sa, sd = sizes_of(r["cell"])
         a, d = r["attacker_result"], r["defender_result"]
         rows = halflog_rows(r)
+        at = attribution(r)
+        grp = "3 units per side" if (sa == "three" and sd == "three") else "mixed sizes (size matrix)" if sa != sd else "1 unit per side"
+        for k in ("losses", "old_unambiguous", "new_fixed"):
+            attr_total[grp][k] += at[k]
+        kinds_total.update(at["kinds"])
         offer = "Offer of peace" in r.get("dialog", "")
         peace[(sa, sd, "offer" if offer else "none")] += 1
         promos = [(side, u) for side in ("attacker", "defender") for u in r["units"][side] if u["promoted"]]
         pair_rows.append({"cell": r["cell"], "attacker": r["attacker"], "defender": r["defender"], "att_size": sa, "def_size": sd, "seed": r["seed"], "trial": r["trial"],
-                          "half_rounds": r["half_rounds"], "winner": r["winner"], "att_before": a["troops_before"], "att_after": a["troops_after"],
+                          "half_rounds": r["half_rounds"], "loss_rows": at["losses"], "old_unambiguous": at["old_unambiguous"], "attributed_fixed": at["new_fixed"], "winner": r["winner"], "att_before": a["troops_before"], "att_after": a["troops_after"],
                           "def_before": d["troops_before"], "def_after": d["troops_after"], "att_destroyed": a["destroyed"], "def_destroyed": d["destroyed"],
                           "promotions": len(promos), "offer_of_peace": offer, "end_turn_clicks": r["end_turn_clicks"], "seconds": r["seconds"],
                           "def_money_taken": r.get("taken", {}).get("defender_money"), "def_supplies_taken": r.get("taken", {}).get("defender_supplies"),
@@ -122,6 +168,10 @@ def main():
             for s in row["slots"]:
                 place_rows.append({"trial": r["trial"], "cell": r["cell"], "seed": r["seed"], "file_index": k, "half_round": row["half_round"], "slot": s["slot"], "side": s["side"],
                                    "type": s["type"], "x": s["x"], "y": s["y"], "troops": s["troops"], "morale": s["morale"], "state": s["state"]})
+        for row in rows[1:]:
+            act = row.get("since_previous", {}).get("acting_sides_D", [])
+            if len(act) == 1:
+                x2_v_actor["agree" if row["x2"] == act[0] else "disagree"] += 1
         seq = "".join(("A" if x == [0] else "G" if x == [1] else "B" if x else "-") for x in [row.get("since_previous", {}).get("acting_sides_D", []) for row in rows[1:6]])
         init_seq[(r["attacker"], seq)] += 1
         gx = tuple(sorted((s["x"], s["y"]) for s in rows[0]["slots"] if s["side"] == 1))
@@ -183,13 +233,17 @@ def main():
     summary["targets"] = {"events": len(target_rows), "nearest": sum(1 for t in target_rows if t["is_nearest"]), "unique_nearest": sum(1 for t in target_rows if t["is_unique_nearest"]),
                           "weakest": sum(1 for t in target_rows if t["is_weakest"]),
                           "by_attacker_type": {k: dict(Counter("nearest" if t["is_nearest"] else "not nearest" for t in target_rows if t["type"] == k)) for k in sorted({t["type"] for t in target_rows})}}
-    pcols = ["cell", "attacker", "defender", "att_size", "def_size", "seed", "trial", "half_rounds", "winner", "att_before", "att_after", "def_before", "def_after", "att_destroyed", "def_destroyed",
+    pcols = ["cell", "attacker", "defender", "att_size", "def_size", "seed", "trial", "half_rounds", "loss_rows", "old_unambiguous", "attributed_fixed", "winner", "att_before", "att_after", "def_before", "def_after", "att_destroyed", "def_destroyed",
              "promotions", "offer_of_peace", "end_turn_clicks", "seconds", "def_money_taken", "def_supplies_taken", "att_money_taken", "att_supplies_taken", "news"]
     out = {}
     out["pairings"] = C.write_new(C.DATA, f"b5-pairings-{C.STAMP}.csv", csv_text(pcols, pair_rows))
     out["placement"] = C.write_new(C.DATA, f"b5-placement-{C.STAMP}.csv", csv_text(["trial", "cell", "seed", "file_index", "half_round", "slot", "side", "type", "x", "y", "troops", "morale", "state"], place_rows))
     out["targets"] = C.write_new(C.DATA, f"b5-targets-{C.STAMP}.csv", csv_text(["trial", "cell", "seed", "half_round", "side", "slot", "type", "target", "target_type", "enemies_alive", "distance", "enemies_strictly_nearer", "enemies_tied_distance", "enemies_strictly_weaker", "is_nearest", "is_unique_nearest", "is_weakest", "enemy_types", "ranged_shooter"], target_rows))
     out["promotions"] = C.write_new(C.DATA, f"b5-promotions-{C.STAMP}.csv", csv_text(["trial", "cell", "side", "name", "type", "troops_before", "troops_after", "loss", "destroyed", "quality_before", "quality_after", "promoted"], promo_rows))
+    summary["header_x2_v_acting_side"] = {"note": "x2 = the side to move at the snapshot [R-code 0x4A0B78]; compared with the side whose units moved/shot/acquired a target in the diff into that file (only diffs with exactly one acting side)", **dict(x2_v_actor)}
+    b0a = b0_attribution()
+    summary["attribution_R_code_words_8_9"] = {"B0 natural 14-unit battles (gate2_a, gate2_s2a)": {**{k: b0a[k] for k in ("losses", "old_unambiguous", "new_fixed")}, "kinds": dict(b0a["kinds"])},
+                                               "sweep by group": {g: dict(c) for g, c in attr_total.items()}, "sweep kinds": dict(kinds_total)}
     summary["inputs"] = {"trials_jsonl_lines": len(T.read_trials()), "files": {k: v.name for k, v in out.items()}}
     out["summary"] = C.write_new(C.DATA, f"b5-summary-{C.STAMP}.json", json.dumps(summary, indent=1, default=str))
     print(json.dumps({k: v.name for k, v in out.items()}))

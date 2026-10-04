@@ -19,10 +19,10 @@ Layout (2,105 bytes after the 55-byte trailer; `docs/sav-layout-notes.md` §Bloc
     +8  troops (<= 0 empty / dead)                  [O] equals the strategic unit's troops at the start
     +10 quality                                     [O]
     +12 battle-local morale (60..99 seen)           [O] initial = clamp(Random(q*4) + army morale, 60, 90) (+3 for the computer side) [R]
-    +14 `state`: 0..6 seen (LC 6, HC 5)               [D] movement points left: the type's allowance (HI 2, LI/Ar 4, HC 5, LC 6) refilled when the side starts a half-round; exact
+    +14 `state` = slot word 7, moves left this half-round [R-code]: 0..6 seen (LC 6, HC 5)   [D] the type's allowance (HI 2, LI/Ar 4, HC 5, LC 6) refilled when the side starts a half-round; exact
                                                     semantics [?] (Gaul's LI read 1 at the second file)
-    +16 `ammo`: li 7, ar 25, lc 9, hc 0, hi 0 at the start; falls when the unit shoots (ar -4 per volley)   [D]
-    +18 `target`: slot index of the enemy it last attacked, -1 none                                          [D]
+    +16 `ammo` = slot word 8, SHOTS LEFT FOR THE BATTLE [R-code]: li 7, ar 25, lc 9, hc 0, hi 0 at the start; falls when the unit shoots (ar -4 per volley)   [D]
+    +18 `target` = slot word 9, the MELEE TARGET slot [R-code] (a BATTLEnn snapshot is taken before the side's melee, so it holds the targets of the melee that follows; -1 none)                                          [D]
     +20 name (NUL padded, 24 bytes)
   grid: 14 x 12 int16 (336 bytes), index x*12 + y: 50 = empty, else side*20 + 3*type + size class (0..2) = the SPRITE of the unit. It carries
         no terrain in any battle seen and is [D] derived from the slots (checked on every save of the series).
@@ -200,3 +200,45 @@ def diff(a, b):
         if len(row) > 2:
             out[k] = row
     return {"slots": out, "ambiguous": n_amb, "unambiguous": n_ok, "losses": n_loss}
+
+
+def attribute(a, b):
+    """Attribution of the loss rows between two consecutive snapshots using the slot words the decompiled battle module explains [R-code: research repo
+    `docs/reports/2026-10-04-decompiled-tactical-battle-rules.md`]: word 9 (`target`) is the melee target slot (-1 none) and word 8 (`ammo`) the shots left for the
+    battle. A lab BATTLEnn snapshot is the state after a side's moves and BEFORE its melee [R-code], so in the diff a -> b the units of `a` with a live enemy target
+    melee that target (the melee is the first event of the diff), and every drop of an enemy unit's `ammo` between a and b is a shot fired in the moves that
+    finished at b. Per loss row of unit v:
+      melee      v is the target of, or targets, a live enemy in `a` and no enemy unit's ammo fell: `pair` = the single (attacker, target) link when there is exactly one
+                 link involving v (`fixed` True), else the several links (merged exchanges, `fixed` False);
+      shooting   no melee link and enemy ammo fell: `actors` = the shooters; `fixed` True only when exactly one shooter and v is the only unit of its side that
+                 lost troops in the diff (otherwise the SHOOTER is known from word 8 but WHICH of the losing units it hit is not: the word of a shot's target is not stored);
+      mixed      both a melee link and a shooter: `fixed` False (the diff merges them);
+      unknown    none of them.
+    Returns {"rows": {slot: {...}}, "losses": n, "fixed": n_fixed, "by_kind": {...}}. Every entry is [D] (derived from the words, not a logged exchange)."""
+    rows, by_kind, fixed = {}, {"melee": 0, "shooting": 0, "mixed": 0, "unknown": 0}, 0
+    sl = lambda blk, k: blk["slots"][k]
+    links = [(u["slot"], u["target"]) for u in a["slots"] if u["alive"] and u["target"] >= 0 and u["target"] < N_SLOTS
+             and a["slots"][u["target"]]["alive"] and a["slots"][u["target"]]["side"] != u["side"]]
+    shot = {s["slot"] for s in a["slots"] if s["alive"] and sl(b, s["slot"])["ammo"] < s["ammo"]}
+    losers = [s["slot"] for s in a["slots"] if sl(b, s["slot"])["troops"] < s["troops"] and s["alive"]]
+    for v in losers:
+        side = sl(a, v)["side"]
+        mine = []
+        for u, t in links:                       # a mutual pair (u targets t and t targets u) is ONE exchange
+            if v in (u, t) and (t, u) not in mine and (u, t) not in mine:
+                mine.append((u, t))
+        shooters = sorted(s for s in shot if sl(a, s)["side"] != side)
+        row = {"slot": v, "amount": sl(a, v)["troops"] - sl(b, v)["troops"]}
+        if mine and not shooters:
+            row.update(kind="melee", links=mine, fixed=len(mine) == 1)
+        elif shooters and not mine:
+            same_side_losers = [x for x in losers if sl(a, x)["side"] == side]
+            row.update(kind="shooting", actors=shooters, fixed=len(shooters) == 1 and same_side_losers == [v])
+        elif shooters and mine:
+            row.update(kind="mixed", links=mine, actors=shooters, fixed=False)
+        else:
+            row.update(kind="unknown", fixed=False)
+        by_kind[row["kind"]] += 1
+        fixed += row["fixed"]
+        rows[v] = row
+    return {"rows": rows, "losses": len(losers), "fixed": fixed, "by_kind": by_kind}

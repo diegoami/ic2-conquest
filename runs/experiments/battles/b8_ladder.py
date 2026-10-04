@@ -39,11 +39,16 @@ def ladder(typ):
 
 
 def predicted(typ):
-    """(T1, T2) = smallest troop counts of size class 1 and 2 under the hypothesis class = 0 below std/3, 1 below 2*std/3, else 2."""
+    """(T1, T2) = smallest troop counts of size class 1 and 2 under the decompiled rule [R-code, research repo docs/reports/2026-10-04-decompiled-tactical-battle-rules.md]:
+    size = min(2, troops div (std div 3)), i.e. T1 = std div 3 and T2 = 2 * (std div 3): LI 5000/10000, HI 2000/4000, Ar 1166/2332, LC 2333/4666, HC 833/1666.
+    (The earlier B2 hypothesis `3 * troops < std` differs for Ar, LC and HC by one or two troops: both are probed, see HYPOTHESIS_B2.)"""
+    q = stage.STD[typ] // 3
+    return q, 2 * q
+
+
+def hypothesis_b2(typ):
     std = stage.STD[typ]
-    t1 = next(t for t in range(1, 40000) if t * 3 >= std)
-    t2 = next(t for t in range(1, 40000) if t * 3 >= 2 * std)
-    return t1, t2
+    return next(t for t in range(1, 40000) if t * 3 >= std), next(t for t in range(1, 40000) if t * 3 >= 2 * std)
 
 
 def spread(lo, hi, n):
@@ -72,7 +77,10 @@ def next_probes(typ, obs_side):
     open_, exact = brackets(obs_side)
     probes = []
     for lo, hi in open_:
-        for t in (t for t in (t1 - 1, t1, t2 - 1, t2) if lo < t < hi):
+        h1, h2 = hypothesis_b2(typ)
+        for t in sorted({t1 - 1, t1, t2 - 1, t2, h1 - 1, h1, h2 - 1, h2}):
+            if not lo < t < hi:
+                continue
             if t not in obs_side and t not in probes:
                 probes.append(t)
     room = MAXU - len(probes)

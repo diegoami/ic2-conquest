@@ -1,0 +1,1603 @@
+{
+ "trials": 134,
+ "replays_not_counted": 9,
+ "winner_per_cell_3_seeds": {
+  "ar>ar half/half": {
+   "defender": 3
+  },
+  "ar>ar one/one": {
+   "defender": 3
+  },
+  "ar>ar three/three": {
+   "defender": 3
+  },
+  "ar>hc half/half": {
+   "defender": 3
+  },
+  "ar>hc one/one": {
+   "defender": 3
+  },
+  "ar>hc three/three": {
+   "defender": 1
+  },
+  "ar>hi half/half": {
+   "defender": 3
+  },
+  "ar>hi one/one": {
+   "defender": 3
+  },
+  "ar>hi three/three": {
+   "defender": 3
+  },
+  "ar>lc half/half": {
+   "defender": 3
+  },
+  "ar>lc one/one": {
+   "defender": 3
+  },
+  "ar>lc three/three": {
+   "defender": 3
+  },
+  "ar>li half/half": {
+   "defender": 3
+  },
+  "ar>li one/one": {
+   "defender": 3
+  },
+  "ar>li three/three": {
+   "defender": 3
+  },
+  "hi>ar half/half": {
+   "attacker": 3
+  },
+  "hi>ar one/one": {
+   "attacker": 3
+  },
+  "hi>ar three/three": {
+   "attacker": 3
+  },
+  "hi>hc half/half": {
+   "attacker": 3
+  },
+  "hi>hc one/one": {
+   "attacker": 3
+  },
+  "hi>hc three/three": {
+   "attacker": 3
+  },
+  "hi>hi half/half": {
+   "defender": 3
+  },
+  "hi>hi one/one": {
+   "defender": 3
+  },
+  "hi>hi three/three": {
+   "attacker": 1,
+   "defender": 2
+  },
+  "hi>lc half/half": {
+   "attacker": 3
+  },
+  "hi>lc one/one": {
+   "attacker": 3
+  },
+  "hi>lc three/three": {
+   "attacker": 3
+  },
+  "hi>li half/half": {
+   "attacker": 3
+  },
+  "hi>li one/one": {
+   "attacker": 3
+  },
+  "hi>li three/three": {
+   "attacker": 3
+  },
+  "lc>ar half/half": {
+   "attacker": 1
+  },
+  "li>ar half/half": {
+   "attacker": 3
+  },
+  "li>ar one/one": {
+   "attacker": 3
+  },
+  "li>ar three/three": {
+   "attacker": 3
+  },
+  "li>hc half/half": {
+   "defender": 1,
+   "attacker": 2
+  },
+  "li>hc one/one": {
+   "defender": 2,
+   "attacker": 1
+  },
+  "li>hc three/three": {
+   "attacker": 3
+  },
+  "li>hi half/half": {
+   "defender": 3
+  },
+  "li>hi one/one": {
+   "defender": 3
+  },
+  "li>hi three/three": {
+   "defender": 3
+  },
+  "li>lc half/half": {
+   "defender": 3
+  },
+  "li>lc one/one": {
+   "defender": 3
+  },
+  "li>lc three/three": {
+   "defender": 3
+  },
+  "li>li half/half": {
+   "defender": 3
+  },
+  "li>li one/one": {
+   "defender": 3
+  },
+  "li>li three/three": {
+   "defender": 3
+  }
+ },
+ "attacker_wins_by_size_pair": {
+  "half/half": 18,
+  "one/one": 16,
+  "three/three": 19
+ },
+ "trials_per_size_pair": {
+  "half/half": 46,
+  "one/one": 45,
+  "three/three": 43
+ },
+ "winner_counts": {
+  "defender": 81,
+  "attacker": 53
+ },
+ "half_rounds": {
+  "min": 10,
+  "max": 34,
+  "mean": 16.0,
+  "over_99_flag": []
+ },
+ "offer_of_peace": {
+  "rows_with_offer": 33,
+  "rows": 134,
+  "by_size_pair": {
+   "half/half none": 40,
+   "half/half offer": 6,
+   "one/one none": 31,
+   "one/one offer": 14,
+   "three/three none": 30,
+   "three/three offer": 13
+  },
+  "by_winner": {
+   "attacker": 0,
+   "defender": 33,
+   "none": 0,
+   "both": 0
+  }
+ },
+ "end_condition_counts": {
+  "attacker destroyed": 81,
+  "defender destroyed": 53
+ },
+ "end_clicks": {
+  "0": 116,
+  "1": 18
+ },
+ "loser_state_at_last_saved_half_round": {
+  "defender": [
+   {
+    "trial": "ar-ar-half_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-ar-half_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 14
+   },
+   {
+    "trial": "ar-ar-half_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 14
+   },
+   {
+    "trial": "ar-ar-one_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-ar-one_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 14
+   },
+   {
+    "trial": "ar-ar-one_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-ar-three_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-ar-three_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-ar-three_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 18
+   },
+   {
+    "trial": "ar-hc-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 53,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-hc-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 54,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-hc-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 55,
+    "half_rounds": 18
+   },
+   {
+    "trial": "ar-hc-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 47,
+    "half_rounds": 20
+   },
+   {
+    "trial": "ar-hc-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 48,
+    "half_rounds": 20
+   },
+   {
+    "trial": "ar-hc-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 49,
+    "half_rounds": 22
+   },
+   {
+    "trial": "ar-hc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 241,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 24
+   },
+   {
+    "trial": "ar-hi-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 53,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-hi-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 54,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-hi-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 55,
+    "half_rounds": 16
+   },
+   {
+    "trial": "ar-hi-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 47,
+    "half_rounds": 19
+   },
+   {
+    "trial": "ar-hi-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 48,
+    "half_rounds": 19
+   },
+   {
+    "trial": "ar-hi-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 49,
+    "half_rounds": 19
+   },
+   {
+    "trial": "ar-hi-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 452,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 61,
+    "half_rounds": 20
+   },
+   {
+    "trial": "ar-hi-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 452,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 57,
+    "half_rounds": 20
+   },
+   {
+    "trial": "ar-hi-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 271,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 59,
+    "half_rounds": 22
+   },
+   {
+    "trial": "ar-lc-half_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-half_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-half_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 143,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 38,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-one_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-one_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 332,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 55,
+    "half_rounds": 12
+   },
+   {
+    "trial": "ar-lc-three_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-lc-three_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 12
+   },
+   {
+    "trial": "ar-li-half_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-li-half_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-li-half_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-li-one_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 12
+   },
+   {
+    "trial": "ar-li-one_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-li-one_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-li-three_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 10
+   },
+   {
+    "trial": "ar-li-three_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 12
+   },
+   {
+    "trial": "ar-li-three_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 12
+   },
+   {
+    "trial": "hi-hi-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 326,
+    "loser_start_troops": 3000,
+    "loser_morale_min_last_file": 34,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-hi-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 366,
+    "loser_start_troops": 3000,
+    "loser_morale_min_last_file": 43,
+    "half_rounds": 17
+   },
+   {
+    "trial": "hi-hi-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 355,
+    "loser_start_troops": 3000,
+    "loser_morale_min_last_file": 46,
+    "half_rounds": 13
+   },
+   {
+    "trial": "hi-hi-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 376,
+    "loser_start_troops": 6000,
+    "loser_morale_min_last_file": 31,
+    "half_rounds": 19
+   },
+   {
+    "trial": "hi-hi-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 431,
+    "loser_start_troops": 6000,
+    "loser_morale_min_last_file": 40,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-hi-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 250,
+    "loser_start_troops": 6000,
+    "loser_morale_min_last_file": 40,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-hi-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 375,
+    "loser_start_troops": 18000,
+    "loser_morale_min_last_file": 66,
+    "half_rounds": 28
+   },
+   {
+    "trial": "hi-hi-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 312,
+    "loser_start_troops": 18000,
+    "loser_morale_min_last_file": 74,
+    "half_rounds": 30
+   },
+   {
+    "trial": "li-hc-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 750,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 46,
+    "half_rounds": 21
+   },
+   {
+    "trial": "li-hc-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 646,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 41,
+    "half_rounds": 21
+   },
+   {
+    "trial": "li-hc-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 874,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 33,
+    "half_rounds": 26
+   },
+   {
+    "trial": "li-hi-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 726,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 50,
+    "half_rounds": 12
+   },
+   {
+    "trial": "li-hi-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 971,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 54,
+    "half_rounds": 12
+   },
+   {
+    "trial": "li-hi-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 757,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 52,
+    "half_rounds": 12
+   },
+   {
+    "trial": "li-hi-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 870,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 47,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-hi-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 698,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 48,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-hi-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 905,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 49,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-hi-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 2463,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 58,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-hi-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 1439,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 48,
+    "half_rounds": 16
+   },
+   {
+    "trial": "li-hi-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 2611,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 50,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-lc-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 845,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 44,
+    "half_rounds": 15
+   },
+   {
+    "trial": "li-lc-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 809,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 46,
+    "half_rounds": 12
+   },
+   {
+    "trial": "li-lc-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 642,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 43,
+    "half_rounds": 12
+   },
+   {
+    "trial": "li-lc-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 625,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 38,
+    "half_rounds": 17
+   },
+   {
+    "trial": "li-lc-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 601,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 41,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-lc-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 817,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 41,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-lc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 2274,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 59,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-lc-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 1079,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 59,
+    "half_rounds": 18
+   },
+   {
+    "trial": "li-lc-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 947,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 76,
+    "half_rounds": 20
+   },
+   {
+    "trial": "li-li-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 924,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 40,
+    "half_rounds": 18
+   },
+   {
+    "trial": "li-li-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 827,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 42,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-li-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 959,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 34,
+    "half_rounds": 14
+   },
+   {
+    "trial": "li-li-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 722,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 34,
+    "half_rounds": 20
+   },
+   {
+    "trial": "li-li-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 705,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 38,
+    "half_rounds": 16
+   },
+   {
+    "trial": "li-li-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 1530,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 31,
+    "half_rounds": 15
+   },
+   {
+    "trial": "li-li-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 1097,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 71,
+    "half_rounds": 20
+   },
+   {
+    "trial": "li-li-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 1620,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 60,
+    "half_rounds": 20
+   },
+   {
+    "trial": "li-li-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 763,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 57,
+    "half_rounds": 16
+   }
+  ],
+  "attacker": [
+   {
+    "trial": "hi-ar-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 76,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-ar-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 72,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-ar-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 226,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 68,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-ar-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 70,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-ar-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 66,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-ar-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 62,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-ar-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 54,
+    "half_rounds": 20
+   },
+   {
+    "trial": "hi-ar-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 162,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 60,
+    "half_rounds": 21
+   },
+   {
+    "trial": "hi-ar-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 452,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 58,
+    "half_rounds": 19
+   },
+   {
+    "trial": "hi-hc-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 164,
+    "loser_start_troops": 1250,
+    "loser_morale_min_last_file": 69,
+    "half_rounds": 14
+   },
+   {
+    "trial": "hi-hc-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 113,
+    "loser_start_troops": 1250,
+    "loser_morale_min_last_file": 63,
+    "half_rounds": 13
+   },
+   {
+    "trial": "hi-hc-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 122,
+    "loser_start_troops": 1250,
+    "loser_morale_min_last_file": 63,
+    "half_rounds": 17
+   },
+   {
+    "trial": "hi-hc-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 115,
+    "loser_start_troops": 2500,
+    "loser_morale_min_last_file": 63,
+    "half_rounds": 16
+   },
+   {
+    "trial": "hi-hc-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 133,
+    "loser_start_troops": 2500,
+    "loser_morale_min_last_file": 60,
+    "half_rounds": 14
+   },
+   {
+    "trial": "hi-hc-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 146,
+    "loser_start_troops": 2500,
+    "loser_morale_min_last_file": 60,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-hc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 115,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 68,
+    "half_rounds": 23
+   },
+   {
+    "trial": "hi-hc-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 140,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 72,
+    "half_rounds": 25
+   },
+   {
+    "trial": "hi-hc-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 137,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 58,
+    "half_rounds": 23
+   },
+   {
+    "trial": "hi-hi-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 262,
+    "loser_start_troops": 18000,
+    "loser_morale_min_last_file": 74,
+    "half_rounds": 34
+   },
+   {
+    "trial": "hi-lc-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 374,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 76,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-lc-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 377,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-lc-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 280,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 58,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-lc-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 443,
+    "loser_start_troops": 7000,
+    "loser_morale_min_last_file": 73,
+    "half_rounds": 16
+   },
+   {
+    "trial": "hi-lc-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 370,
+    "loser_start_troops": 7000,
+    "loser_morale_min_last_file": 59,
+    "half_rounds": 16
+   },
+   {
+    "trial": "hi-lc-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 331,
+    "loser_start_troops": 7000,
+    "loser_morale_min_last_file": 55,
+    "half_rounds": 16
+   },
+   {
+    "trial": "hi-lc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 580,
+    "loser_start_troops": 21000,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 19
+   },
+   {
+    "trial": "hi-lc-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 355,
+    "loser_start_troops": 21000,
+    "loser_morale_min_last_file": 64,
+    "half_rounds": 23
+   },
+   {
+    "trial": "hi-lc-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 523,
+    "loser_start_troops": 21000,
+    "loser_morale_min_last_file": 66,
+    "half_rounds": 21
+   },
+   {
+    "trial": "hi-li-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 925,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 73,
+    "half_rounds": 11
+   },
+   {
+    "trial": "hi-li-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 971,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 72,
+    "half_rounds": 10
+   },
+   {
+    "trial": "hi-li-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 656,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 65,
+    "half_rounds": 11
+   },
+   {
+    "trial": "hi-li-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 661,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 13
+   },
+   {
+    "trial": "hi-li-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 698,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 66,
+    "half_rounds": 12
+   },
+   {
+    "trial": "hi-li-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 785,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 62,
+    "half_rounds": 12
+   },
+   {
+    "trial": "hi-li-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 1174,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 51,
+    "half_rounds": 15
+   },
+   {
+    "trial": "hi-li-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 602,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 57,
+    "half_rounds": 13
+   },
+   {
+    "trial": "hi-li-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 969,
+    "loser_start_troops": 45000,
+    "loser_morale_min_last_file": 52,
+    "half_rounds": 15
+   },
+   {
+    "trial": "lc-ar-half_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 11
+   },
+   {
+    "trial": "li-ar-half_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 11
+   },
+   {
+    "trial": "li-ar-half_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-ar-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 157,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": 62,
+    "half_rounds": 11
+   },
+   {
+    "trial": "li-ar-one_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-ar-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 144,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": 66,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-ar-one_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 3500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-ar-three_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-ar-three_s2_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-ar-three_s3_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 13
+   },
+   {
+    "trial": "li-hc-half_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 139,
+    "loser_start_troops": 1250,
+    "loser_morale_min_last_file": 57,
+    "half_rounds": 17
+   },
+   {
+    "trial": "li-hc-half_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 123,
+    "loser_start_troops": 1250,
+    "loser_morale_min_last_file": 56,
+    "half_rounds": 24
+   },
+   {
+    "trial": "li-hc-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 104,
+    "loser_start_troops": 2500,
+    "loser_morale_min_last_file": 50,
+    "half_rounds": 20
+   },
+   {
+    "trial": "li-hc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 104,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 48,
+    "half_rounds": 22
+   },
+   {
+    "trial": "li-hc-three_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 171,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 69,
+    "half_rounds": 23
+   },
+   {
+    "trial": "li-hc-three_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 234,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 23
+   }
+  ]
+ },
+ "promotions_total": 49,
+ "promotions_by_type": {
+  "ar": 3,
+  "hc": 5,
+  "hi": 23,
+  "lc": 10,
+  "li": 8
+ },
+ "promotions_by_winner_side": {
+  "defender": 30,
+  "attacker": 19
+ },
+ "money_supplies_taken": {
+  "rows_with_defender_money": 81,
+  "rows_with_defender_supplies": 0,
+  "rows_with_attacker_money": 0,
+  "rows_with_attacker_supplies": 0
+ },
+ "seconds_per_battle": {
+  "mean": 51.6,
+  "min": 49.0,
+  "max": 58.3
+ },
+ "placement_defender_first_file_row_by_type": {
+  "ar y=9": 46,
+  "hc y=9": 39,
+  "hi y=9": 45,
+  "lc y=9": 45,
+  "li y=9": 45
+ },
+ "placement_attacker_first_file_row_by_type": {
+  "ar y=0": 69,
+  "hi y=0": 75,
+  "lc y=0": 1,
+  "li y=0": 75
+ },
+ "placement_attacker_second_file_row_by_type": {
+  "ar y=2": 69,
+  "hi y=2": 75,
+  "lc y=2": 1,
+  "li y=2": 75
+ },
+ "placement_attacker_second_file_x_by_type": {
+  "ar": {
+   "4": 25,
+   "5": 5,
+   "6": 5,
+   "7": 4,
+   "8": 4,
+   "9": 4,
+   "10": 14,
+   "11": 4,
+   "12": 4
+  },
+  "hi": {
+   "4": 25,
+   "5": 5,
+   "6": 5,
+   "7": 5,
+   "8": 5,
+   "9": 5,
+   "10": 15,
+   "11": 5,
+   "12": 5
+  },
+  "lc": {
+   "10": 1
+  },
+  "li": {
+   "1": 25,
+   "2": 5,
+   "3": 5,
+   "4": 5,
+   "5": 5,
+   "6": 5,
+   "7": 15,
+   "8": 5,
+   "9": 5
+  }
+ },
+ "initiative_sequence_files_2_to_6_A_attacker_G_defender_B_both_dash_none": {
+  "ar AAGAG": 43,
+  "hi AAGAG": 45,
+  "lc AAGAG": 1,
+  "li AAGAG": 45
+ },
+ "seed_pairing_gaul_placement_by_defender_army_and_seed": {
+  "ar half seed 1": {
+   "cells": 4,
+   "distinct_gaul_placements": 1
+  },
+  "ar half seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar half seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar one seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar one seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar one seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar three seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar three seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "ar three seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc half seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc half seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc half seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc one seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc one seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc one seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc three seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hc three seed 2": {
+   "cells": 2,
+   "distinct_gaul_placements": 1
+  },
+  "hc three seed 3": {
+   "cells": 2,
+   "distinct_gaul_placements": 1
+  },
+  "hi half seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi half seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi half seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi one seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi one seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi one seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi three seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi three seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "hi three seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc half seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc half seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc half seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc one seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc one seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc one seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc three seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc three seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "lc three seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li half seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li half seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li half seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li one seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li one seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li one seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li three seed 1": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li three seed 2": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  },
+  "li three seed 3": {
+   "cells": 3,
+   "distinct_gaul_placements": 1
+  }
+ },
+ "targets": {
+  "events": 321,
+  "nearest": 321,
+  "unique_nearest": 77,
+  "weakest": 247,
+  "by_attacker_type": {
+   "ar": {
+    "nearest": 9
+   },
+   "hc": {
+    "nearest": 41
+   },
+   "hi": {
+    "nearest": 132
+   },
+   "lc": {
+    "nearest": 43
+   },
+   "li": {
+    "nearest": 96
+   }
+  }
+ },
+ "attribution_R_code_words_8_9": {
+  "B0 natural 14-unit battles (gate2_a, gate2_s2a)": {
+   "losses": 125,
+   "old_unambiguous": 14,
+   "new_fixed": 18,
+   "kinds": {
+    "melee": 61,
+    "shooting": 7,
+    "mixed": 57,
+    "unknown": 0
+   }
+  },
+  "sweep by group": {
+   "1 unit per side": {
+    "losses": 1158,
+    "old_unambiguous": 870,
+    "new_fixed": 302
+   },
+   "3 units per side": {
+    "losses": 1525,
+    "old_unambiguous": 315,
+    "new_fixed": 364
+   },
+   "mixed sizes (size matrix)": {}
+  },
+  "sweep kinds": {
+   "melee": 1919,
+   "shooting": 211,
+   "mixed": 553,
+   "unknown": 0
+  }
+ },
+ "inputs": {
+  "trials_jsonl_lines": 143,
+  "files": {
+   "pairings": "b5-pairings-20261004-133331.csv",
+   "placement": "b5-placement-20261004-133331.csv",
+   "targets": "b5-targets-20261004-133331.csv",
+   "promotions": "b5-promotions-20261004-133331.csv"
+  }
+ }
+}
