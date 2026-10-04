@@ -83,6 +83,22 @@ def test_attribute_uses_words_8_and_9():
     assert BB.attribute(a, _blk({0: {"troops": 90}, 1: {"troops": 100}}))["rows"][0]["kind"] == "unknown"
 
 
+def test_audit_inputs_agree_with_the_analyser_on_real_series():
+    """The audit's independent re-implementations (audit_inputs.py) must give the same loss counts as BB.diff / BB.attribute on the real B0 series (skipped without them)."""
+    import glob
+    import audit_inputs as AI
+    from state import battle_block as BB
+    fs = sorted(glob.glob(str(ROOT / "artifacts" / "run-exp-battle-probe" / "gate2_a_BATTLE[0-9][0-9].SAV")))
+    if len(fs) < 3:
+        return
+    bl = [BB.from_save(f) for f in fs]
+    for a, b in zip(bl, bl[1:]):
+        d, n = BB.diff(a, b), BB.attribute(a, b)
+        r, o = AI.old_rule(a, b)
+        r2, w, k = AI.words_rule(a, b)
+        assert (r, o) == (d["losses"], d["unambiguous"]) and (r2, w) == (n["losses"], n["fixed"]) and dict(k) == {x: v for x, v in n["by_kind"].items() if v}
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted(globals().items()):
