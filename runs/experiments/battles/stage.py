@@ -13,6 +13,7 @@ Operations (offsets: docs/sav-layout-notes.md):
                                                           slots n..19 get troops 0 (their other bytes are left as they are: an empty slot)
   morale army v      army +14        supplies army v   +10        money army v   +12 (the army purse)       moves army v   +6
   treasury n v       nation +0x438 (i32)                          unity n v      nation +0x440
+  ncities n v        nation +0x446 (the count word only, B16)
   relation a b v     nation a's +0x26+2b AND nation b's +0x26+2a (the matrix is symmetric)
   city c {field: v}  city record fields: owner, allegiance, loyalty, supplies, fort, pop, max_pop, tribute
 Position (x, y) of an army, and the map, are never touched.
@@ -211,6 +212,8 @@ def apply(b, ops):
             struct.pack_into("<i", b, _nation(b, op[1]) + 0x438, op[2])
         elif k == "unity":
             set_nation_i16(b, op[1], 0x440, op[2])
+        elif k == "ncities":              # the nation's city-count word (+0x446, `cities_count`); the city list and the cities' owner fields are not touched (B16)
+            set_nation_i16(b, op[1], 0x446, op[2])
         elif k == "relation":
             set_relation(b, op[1], op[2], op[3])
         elif k == "city":

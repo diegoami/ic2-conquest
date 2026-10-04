@@ -198,12 +198,15 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None):
         ops_extra = []
         for kv in [x for x in extra.split(",") if x]:
             k, v = kv.split("=")
-            m = re.fullmatch(r"(unity|treasury)(\d+)", k)
+            m = re.fullmatch(r"(unity|treasury|ncities)(\d+)", k)
+            w = re.fullmatch(r"weak(\d+)", k)
             if m:
                 ops_extra.append((m.group(1), int(m.group(2)), int(v)))
+            elif w:                  # army N replaced by one LI battalion of v troops (quality 6): a weaker Rome elsewhere (armies(L) test)
+                ops_extra.append(("units", int(w.group(1)), [("li", int(v), 6)]))
             else:
                 raise ValueError("gate op %r" % kv)
-        start = stage_start(cell, [o for o in ops_extra if o[0] != "citiesN"])
+        start = stage_start(cell, ops_extra)
         t0 = time.time()
         B.kill_mine(g)
         boxes = g.load(start, seed)

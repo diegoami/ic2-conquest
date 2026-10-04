@@ -161,6 +161,35 @@ def cmd_pairs():
     print(p)
 
 
+def cmd_repeat():
+    """Same cell, same seed, same answer (No and capture both press No), different process: the pre-answer snapshot bytes, the post-answer Save As
+    bytes, the dialog text and every End turn autosave (the turns both runs made), byte for byte. One record per pair of runs."""
+    recs = list(latest_ok().values())
+    groups = {}
+    for r in recs:
+        if r.get("dialogs") or r.get("box_opened") is False:
+            groups.setdefault((r["cell"], r["seed"], "yes" if r["answer_plan"] == "yes" else "no"), []).append(r)
+    out = []
+    for key, rs in sorted(groups.items()):
+        for i in range(len(rs)):
+            for j in range(i + 1, len(rs)):
+                a, b = rs[i], rs[j]
+                row = {"cell": key[0], "seed": key[1], "answer": key[2], "a": a["trial"], "b": b["trial"], "box_opened": (a["box_opened"], b["box_opened"]),
+                       "pre_snapshot_bytes_equal": snap_bytes(a["pre_snap"]) == snap_bytes(b["pre_snap"]),
+                       "box_text_equal": a.get("box_text") == b.get("box_text"),
+                       "post_save_bytes_equal": (B.ART / a["post_save"]).read_bytes() == (B.ART / b["post_save"]).read_bytes(),
+                       "turn_saves": []}
+                for ta, tb in zip(a.get("turns", []), b.get("turns", [])):
+                    if ta.get("save") and tb.get("save"):
+                        row["turn_saves"].append({"turn": ta["turn_index"], "a": ta["save"], "b": tb["save"],
+                                                  "bytes_equal": (B.ART / "turns" / ta["save"]).read_bytes() == (B.ART / "turns" / tb["save"]).read_bytes()})
+                out.append(row)
+    p = C.write_new(B.DATA, "b16-repeat-%s.json" % C.STAMP, json.dumps(out, indent=1))
+    for r in out:
+        print(r["a"], r["b"], "pre", r["pre_snapshot_bytes_equal"], "post", r["post_save_bytes_equal"], "turns", [t["bytes_equal"] for t in r["turn_saves"]])
+    print(p)
+
+
 def main():
     a = sys.argv[1:]
     if not a:
@@ -169,6 +198,8 @@ def main():
         cmd_table()
     elif a[0] == "pairs":
         cmd_pairs()
+    elif a[0] == "repeat":
+        cmd_repeat()
     elif a[0] == "snapdiff":
         print(json.dumps(diff_offsets(snap_bytes(a[1]), snap_bytes(a[2])), indent=1))
 
