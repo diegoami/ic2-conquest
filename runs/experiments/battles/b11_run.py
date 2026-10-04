@@ -15,6 +15,7 @@ import csv
 import hashlib
 import io
 import json
+import os
 import re
 import sys
 import time
@@ -63,10 +64,19 @@ def fixture():
 
 
 def stage_start(cell):
-    if cell == MIX:
-        kept = C.keep(fixture(), "MIX-RG_start.SAV", C.ART / "start")
-        return kept, None
-    return T.stage_start(cell), T.cell_ops(cell)
+    """The cell's start save (as trials.stage_start: FLD-RG with the cell's L1 edits, kept under artifacts/.../start/), under a file lock because several
+    workers may stage the same cell at the same moment (their private tmp name includes the pid)."""
+    import fcntl
+    (C.ART / "start").mkdir(parents=True, exist_ok=True)
+    with open(C.ART / "start" / ".lock", "w") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        if cell == MIX:
+            return C.keep(fixture(), "MIX-RG_start.SAV", C.ART / "start"), None
+        tmp = C.ART / "start" / ("_tmp_%s_%d.SAV" % (cell, os.getpid()))
+        stage.edit(fixture(), tmp, T.cell_ops(cell))
+        kept = C.keep(tmp, "%s_start.SAV" % cell, C.ART / "start")
+        tmp.unlink()
+        return kept, T.cell_ops(cell)
 
 
 def analyze(recs, ctl, seed, final_seed_mem):
@@ -198,43 +208,45 @@ def run_trial(g, cell, seed, rep, variant, log):
     return rec
 
 
-def run_all(variant, cells, seeds, rep=1, redo_errors=False, stop_on_error=False, log=None):
-    log = log or C.Log("b11-run-%s" % variant)
+def run_all(variant, cells, seeds, rep=1, redo_errors=False, stop_on_error=False, log=None, pairs=None):
+    """`pairs` = [(cell, seed), ...] replaces the cells x seeds product (the batch driver gives each worker its own list)."""
+    log = log or C.Log("b11-run-%s%s" % (variant, os.environ.get("B11_WORKER", "")))
+    todo = list(pairs) if pairs else [(c, sd) for c in cells for sd in seeds]
     done = {}
     for r in read_trials():
         done[r["trial"]] = "ok" if done.get(r["trial"]) == "ok" or r.get("status") == "ok" else "error"
     xv = B.start_xvfb()
     log("xvfb", pid=xv, display=B.DISPLAY)
     n_ok = n_err = 0
-    for cell in cells:
-        for seed in seeds:
-            tag = trial_tag(cell, seed, rep, variant)
-            if done.get(tag) == "ok" or (done.get(tag) == "error" and not redo_errors):
-                log("skip", trial=tag, status=done.get(tag))
-                continue
-            g = B.HookGame()
-            attempt = sum(1 for r in read_trials() if r.get("trial") == tag) + 1
-            B.kill_mine(g)
+    for cell, seed in todo:
+        tag = trial_tag(cell, seed, rep, variant)
+        if done.get(tag) == "ok" or (done.get(tag) == "error" and not redo_errors):
+            log("skip", trial=tag, status=done.get(tag))
+            continue
+        g = B.HookGame()
+        attempt = sum(1 for r in read_trials() if r.get("trial") == tag) + 1
+        B.kill_mine(g)
+        try:
+            rec = run_trial(g, cell, seed, rep, variant, log)
+            rec["attempt"] = attempt
+            n_ok += 1
+        except Exception as e:      # noqa: BLE001
+            rec = {"trial": tag, "cell": cell, "variant": variant, "seed": seed, "rep": rep, "status": "error", "attempt": attempt,
+                   "error": "%s: %s" % (type(e).__name__, e), "traceback": traceback.format_exc()[-1500:]}
             try:
-                rec = run_trial(g, cell, seed, rep, variant, log)
-                rec["attempt"] = attempt
-                n_ok += 1
-            except Exception as e:      # noqa: BLE001
-                rec = {"trial": tag, "cell": cell, "variant": variant, "seed": seed, "rep": rep, "status": "error", "attempt": attempt,
-                       "error": "%s: %s" % (type(e).__name__, e), "traceback": traceback.format_exc()[-1500:]}
-                try:
-                    rec["windows"] = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows(".")]
-                    rec["screenshot"] = C.shot(g, "error_%s_%s.png" % (tag, time.strftime("%H%M%S"))).name
-                except Exception:       # noqa: BLE001
-                    pass
-                n_err += 1
-                log("trial_error", trial=tag, error=rec["error"])
-            finally:
-                rec["stamp"] = C.STAMP
-                rec["pids_killed"] = B.kill_mine(g)
-            append_trial(rec)
-            if rec["status"] == "error" and stop_on_error:
-                break
+                rec["windows"] = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows(".")]
+                rec["screenshot"] = C.shot(g, "error_%s_%s.png" % (tag, time.strftime("%H%M%S"))).name
+            except Exception:       # noqa: BLE001
+                pass
+            n_err += 1
+            log("trial_error", trial=tag, error=rec["error"])
+        finally:
+            rec["stamp"] = C.STAMP
+            rec["worker"] = os.environ.get("B11_WORKER", "")
+            rec["pids_killed"] = B.kill_mine(g)
+        append_trial(rec)
+        if rec["status"] == "error" and stop_on_error:
+            break
     log("run_done", ok=n_ok, errors=n_err)
     return n_ok, n_err
 
@@ -252,7 +264,13 @@ def main():
                 T.parse_cell(c)
         seeds = T.parse_seeds(a[a.index("--seeds") + 1]) if "--seeds" in a else [1, 2, 3]
         rep = int(a[a.index("--rep") + 1]) if "--rep" in a else 1
-        n_ok, n_err = run_all(variant, cells, seeds, rep, "--redo-errors" in a, "--stop-on-error" in a)
+        pairs = None
+        if "--pairs-file" in a:                       # lines "cell seed"
+            pairs = [(ln.split()[0], int(ln.split()[1])) for ln in Path(a[a.index("--pairs-file") + 1]).read_text().splitlines() if ln.strip()]
+            for c, _ in pairs:
+                if c != MIX:
+                    T.parse_cell(c)
+        n_ok, n_err = run_all(variant, cells, seeds, rep, "--redo-errors" in a, "--stop-on-error" in a, pairs=pairs)
         sys.exit(1 if n_err else 0)
 
 
