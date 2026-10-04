@@ -1,6 +1,6 @@
 # IC2 Conquest: a bot that dominates Imperial Conquest 2
 
-Seed for a new repository, proposed name `diegoami/ic2-conquest`, private.
+A public repository: code, plans, logs and metrics as text. No game files are committed (see the rules below).
 
 **Primary goal:** find strategies that dominate the map in the original 1996 game, and **prove it** with a strip of per-turn saves, logs and plans.
 
