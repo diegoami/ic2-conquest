@@ -1,0 +1,5268 @@
+{
+ "mix-rg_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "6": 9,
+   "3": 7,
+   "7": 7,
+   "1": 16,
+   "4": 10,
+   "5": 7,
+   "8": 4,
+   "22": 7,
+   "23": 7,
+   "24": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 16,
+   "3": 7,
+   "4": 10,
+   "5": 7,
+   "6": 9,
+   "7": 7,
+   "8": 4,
+   "22": 7,
+   "23": 7,
+   "24": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 146,
+  "alive_first_snapshot": 14,
+  "alive_last_snapshot": 6
+ },
+ "mix-rg_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "24": 7,
+   "23": 5,
+   "22": 7,
+   "1": 6,
+   "4": 4,
+   "3": 7,
+   "5": 10,
+   "7": 7,
+   "6": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 6,
+   "3": 7,
+   "4": 4,
+   "5": 10,
+   "6": 9,
+   "7": 7,
+   "22": 7,
+   "23": 5,
+   "24": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 138,
+  "alive_first_snapshot": 14,
+  "alive_last_snapshot": 4
+ },
+ "mix-rg_s3_r5_hook": {
+  "half_rounds": 28,
+  "melee_markers": 28,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "22": 9,
+   "24": 5,
+   "6": 9,
+   "7": 8,
+   "1": 17,
+   "4": 3,
+   "5": 15,
+   "3": 7,
+   "23": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 17,
+   "3": 7,
+   "4": 3,
+   "5": 15,
+   "6": 9,
+   "7": 8,
+   "22": 9,
+   "23": 7,
+   "24": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 206,
+  "alive_first_snapshot": 14,
+  "alive_last_snapshot": 3
+ },
+ "ar-ar-half_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 14,
+   "0": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "20": 14
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-ar-half_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 13,
+   "0": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "20": 13
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 25,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-ar-half_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 19,
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16,
+   "20": 19
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 35,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-ar-one_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 20,
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16,
+   "20": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-ar-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 16,
+   "0": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "20": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-ar-one_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 17,
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16,
+   "20": 17
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 33,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-ar-three_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 19,
+   "21": 16,
+   "22": 16,
+   "0": 4,
+   "1": 16,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 16,
+   "2": 7,
+   "20": 19,
+   "21": 16,
+   "22": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 78,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "ar-ar-three_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 16,
+   "21": 20,
+   "22": 18,
+   "0": 4,
+   "1": 16,
+   "2": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 16,
+   "2": 8,
+   "20": 16,
+   "21": 20,
+   "22": 18
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 82,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "ar-ar-three_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "21": 24,
+   "22": 23,
+   "0": 4,
+   "1": 12,
+   "2": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 12,
+   "2": 20,
+   "20": 12,
+   "21": 24,
+   "22": 23
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 95,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half-one_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half-one_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half-one_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-half-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-half-three_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-half-three_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-one_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 38,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-one_s3_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 38,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-one_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 38,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-one-half_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 38,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-one-half_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 38,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-one-half_s3_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 38,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hc-one-three_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-one-three_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-one-three_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-three_s1_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8,
+   "1": 25,
+   "2": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 25,
+   "2": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 101,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "ar-hc-three_s2_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8,
+   "1": 25,
+   "2": 19
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 25,
+   "2": 19
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 96,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-three_s3_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8,
+   "1": 20,
+   "2": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 20,
+   "2": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 101,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "ar-hc-three-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8,
+   "1": 8,
+   "2": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 8,
+   "2": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "ar-hc-three-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8,
+   "1": 6,
+   "2": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 6,
+   "2": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "ar-hc-three-half_s2_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 8,
+   "1": 8,
+   "2": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 8,
+   "2": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 24,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "ar-hc-three-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 12,
+   "1": 12,
+   "2": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "1": 12,
+   "2": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 42,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "ar-hc-three-one_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 20,
+   "1": 19,
+   "2": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 20,
+   "1": 19,
+   "2": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "ar-hc-three-one_s3_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 20,
+   "1": 20,
+   "2": 16
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 20,
+   "1": 20,
+   "2": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 66,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "ar-hi-half_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hi-half_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hi-half_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hi-one_s1_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hi-one_s2_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hi-one_s3_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-hi-three_s3_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 12,
+   "1": 24,
+   "2": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "1": 24,
+   "2": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 103,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "ar-hi-three_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 12,
+   "1": 25,
+   "2": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "1": 25,
+   "2": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 103,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "ar-hi-three_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 12,
+   "1": 25,
+   "2": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 12,
+   "1": 25,
+   "2": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 104,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "ar-lc-half_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-lc-half_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 13,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-lc-half_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 6,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 12,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-lc-one_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-lc-one_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-lc-three_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 6,
+   "21": 7,
+   "22": 9,
+   "1": 4,
+   "2": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 4,
+   "2": 4,
+   "20": 6,
+   "21": 7,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "ar-lc-one_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 13,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-lc-three_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 9,
+   "22": 7,
+   "1": 4,
+   "2": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 4,
+   "2": 8,
+   "20": 8,
+   "21": 9,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 44,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "ar-lc-three_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 9,
+   "1": 8,
+   "2": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 8,
+   "2": 4,
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 51,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "ar-li-half_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 10,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-li-half_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 10,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-li-one_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 11,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-li-half_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 10,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-li-one_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 11,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-li-one_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 6,
+   "0": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "20": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "ar-li-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 6,
+   "21": 6,
+   "22": 5,
+   "0": 4,
+   "1": 4,
+   "2": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 4,
+   "2": 4,
+   "20": 6,
+   "21": 6,
+   "22": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 35,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "ar-li-three_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 4,
+   "22": 4,
+   "1": 4,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 4,
+   "2": 7,
+   "20": 7,
+   "21": 4,
+   "22": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-ar-half_s2_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-ar-half_s3_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "ar-li-three_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5,
+   "21": 6,
+   "22": 5,
+   "0": 4,
+   "1": 4,
+   "2": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 4,
+   "2": 8,
+   "20": 5,
+   "21": 6,
+   "22": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 44,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-ar-half_s1_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-ar-one_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-ar-one_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-ar-three_s2_r5_hook": {
+  "half_rounds": 25,
+  "melee_markers": 25,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25,
+   "21": 12,
+   "22": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25,
+   "21": 12,
+   "22": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 108,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-ar-one_s3_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-ar-three_s3_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "21": 25,
+   "22": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 12,
+   "21": 25,
+   "22": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 104,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-ar-three_s1_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "21": 25,
+   "22": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 12,
+   "21": 25,
+   "22": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 106,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-hc-half_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-one_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-half_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-half_s2_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 24,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-one_s3_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-one_s1_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-three_s1_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 74,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-hc-three_s3_r5_hook": {
+  "half_rounds": 35,
+  "melee_markers": 35,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 96,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "hc-hc-three_s2_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 70,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-hi-half_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hi-half_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hi-half_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hi-one_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hi-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hi-one_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-hi-three_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 58,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-hi-three_s1_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 78,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hc-hi-three_s3_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 70,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-lc-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-half_s2_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-one_s2_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-one_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-one_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-three_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 10
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9,
+   "21": 9,
+   "22": 10
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 76,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-lc-three_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 10,
+   "21": 9,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 10,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 68,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-li-half_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-lc-three_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 53,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-li-half_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-li-half_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-li-one_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 15,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "hc-li-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-li-one_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hc-li-three_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 10,
+   "21": 7,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 10,
+   "21": 7,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 54,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-li-three_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 7,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 77,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hc-li-three_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 57,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hi-ar-half_s2_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-ar-half_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-ar-half_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 20
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-ar-one_s1_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-ar-one_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-ar-one_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-ar-three_s2_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 24,
+   "21": 12,
+   "22": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 24,
+   "21": 12,
+   "22": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 103,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hi-ar-three_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 16,
+   "21": 25,
+   "22": 24
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 16,
+   "21": 25,
+   "22": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 107,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hi-ar-three_s3_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 16,
+   "21": 20,
+   "22": 25
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 16,
+   "21": 20,
+   "22": 25
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 103,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hi-hc-half_s1_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hc-half_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hc-half_s3_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hc-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hc-one_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hc-one_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hc-three_s1_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 72,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-hc-three_s2_r5_hook": {
+  "half_rounds": 25,
+  "melee_markers": 25,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 80,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-hc-three_s3_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 76,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-hi-half_s1_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-half_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 24,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-half_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-half-one_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-half-one_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 12,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-half-one_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-half-three_s1_r5_hook": {
+  "half_rounds": 8,
+  "melee_markers": 8,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 12,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-half-three_s2_r5_hook": {
+  "half_rounds": 8,
+  "melee_markers": 8,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 10,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-half-three_s3_r5_hook": {
+  "half_rounds": 8,
+  "melee_markers": 8,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 12,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-one_s1_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-one_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 26,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-one_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-one-half_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-one-half_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-one-half_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-one-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-one-three_s2_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-one-three_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 18,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-three_s1_r5_hook": {
+  "half_rounds": 34,
+  "melee_markers": 34,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 100,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-three-half_s1_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-three-half_s2_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 12,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-three_s2_r5_hook": {
+  "half_rounds": 28,
+  "melee_markers": 28,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 96,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-hi-three-half_s3_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 12,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-hi-three_s3_r5_hook": {
+  "half_rounds": 30,
+  "melee_markers": 30,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 92,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-three-one_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-lc-half_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 29,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-lc-half_s2_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 29,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-three-one_s2_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-lc-half_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 29,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-hi-three-one_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {},
+  "ammo_drop_by_slot_from_snapshots": {},
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-lc-one_s1_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 31,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-lc-three_s1_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 97,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-lc-one_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 31,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-lc-three_s2_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 107,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-lc-one_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 31,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-lc-three_s3_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 101,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "hi-li-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half-one_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half-one_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "hi-li-half-three_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "hi-li-one_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-half-three_s3_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5,
+   "21": 5,
+   "22": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5,
+   "21": 5,
+   "22": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 32,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-one-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one-three_s1_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 75,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one-half_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one-three_s2_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 77,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one-three_s3_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 75,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-one-half_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-three_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "22": 7,
+   "21": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 69,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-three-half_s1_r5_hook": {
+  "half_rounds": 8,
+  "melee_markers": 8,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 15,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-three_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-three-half_s2_r5_hook": {
+  "half_rounds": 8,
+  "melee_markers": 8,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 15,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-three-half_s3_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-three_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 4,
+   "22": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 7,
+   "21": 4,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 64,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-ar-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "hi-li-three-one_s1_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "hi-li-three-one_s2_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "lc-ar-half_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 27,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "hi-li-three-one_s3_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "20": 5
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "lc-ar-half-one_s1_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 24,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 45,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-half-one_s2_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 24,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 45,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-half-one_s3_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 24,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 24
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 45,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-half-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 6,
+   "22": 4,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 8,
+   "21": 6,
+   "22": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 24,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-half-three_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 5,
+   "22": 4,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 8,
+   "21": 5,
+   "22": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-half-three_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 7,
+   "22": 4,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 8,
+   "21": 7,
+   "22": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 25,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 27,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-one_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 20,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 20
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-one_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 16,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 16
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 33,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-ar-one-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "lc-ar-one-half_s2_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "lc-ar-one-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "lc-ar-one-three_s1_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 14,
+   "21": 12,
+   "22": 12,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 14,
+   "21": 12,
+   "22": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 53,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-one-three_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "21": 11,
+   "22": 8,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 12,
+   "21": 11,
+   "22": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 44,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-one-three_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 16,
+   "21": 15,
+   "22": 11,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 16,
+   "21": 15,
+   "22": 11
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 57,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 8,
+   "22": 8,
+   "0": 10,
+   "1": 10,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 10,
+   "1": 10,
+   "2": 9,
+   "20": 8,
+   "21": 8,
+   "22": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-ar-three_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 4,
+   "22": 12,
+   "0": 9,
+   "1": 9,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 9,
+   "20": 8,
+   "21": 4,
+   "22": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-ar-three_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 12,
+   "22": 7,
+   "0": 9,
+   "1": 9,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 9,
+   "20": 8,
+   "21": 12,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 66,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three-half_s1_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4,
+   "1": 3
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 3,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 11,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three-half_s2_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4,
+   "1": 2
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 2,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 10,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three-half_s3_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 2,
+   "0": 4,
+   "1": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 4,
+   "20": 2
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 10,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three-one_s1_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4,
+   "1": 4,
+   "2": 3
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 4,
+   "2": 3,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 15,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three-one_s2_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "0": 4,
+   "1": 5,
+   "2": 3
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 5,
+   "2": 3,
+   "20": 4
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-ar-three-one_s3_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 2,
+   "0": 4,
+   "1": 5,
+   "2": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "1": 5,
+   "2": 4,
+   "20": 2
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 15,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 3
+ },
+ "lc-hc-half_s1_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hc-half_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hc-half_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hc-one_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 25,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hc-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hc-one_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 27,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hc-three_s1_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9,
+   "1": 9,
+   "2": 10
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 10
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 96,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-hc-three_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 11,
+   "1": 9,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 11,
+   "1": 9,
+   "2": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 79,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-hc-three_s3_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9,
+   "1": 11,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 11,
+   "2": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 71,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-hi-half_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hi-half_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 27,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hi-half_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hi-one_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 29,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hi-one_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 27,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hi-three_s1_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9,
+   "1": 9,
+   "2": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 102,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-hi-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 25,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-hi-three_s3_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9,
+   "1": 9,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 103,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-hi-three_s2_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 9,
+   "1": 12,
+   "2": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 12,
+   "2": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 97,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-lc-half_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-one_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-half_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-half_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-one_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-one_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-three_s2_r5_hook": {
+  "half_rounds": 26,
+  "melee_markers": 26,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 9,
+   "1": 9,
+   "2": 5,
+   "0": 10
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 10,
+   "1": 9,
+   "2": 5,
+   "20": 9,
+   "21": 9,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 119,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "lc-li-half_s1_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 32,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-three_s1_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 11,
+   "22": 9,
+   "0": 5,
+   "1": 9,
+   "2": 11
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 5,
+   "1": 9,
+   "2": 11,
+   "20": 9,
+   "21": 11,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 106,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-li-half_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-li-half_s3_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 32,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-lc-three_s3_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 10,
+   "22": 9,
+   "0": 5,
+   "1": 9,
+   "2": 11
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 5,
+   "1": 9,
+   "2": 11,
+   "20": 9,
+   "21": 10,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 105,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-li-one_s2_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 32,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-li-three_s1_r5_hook": {
+  "half_rounds": 28,
+  "melee_markers": 28,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7,
+   "1": 9,
+   "2": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "1": 9,
+   "2": 9,
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 105,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 2
+ },
+ "lc-li-one_s1_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "lc-li-three_s2_r5_hook": {
+  "half_rounds": 19,
+  "melee_markers": 19,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 5,
+   "22": 7,
+   "0": 9,
+   "1": 9,
+   "2": 12
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 12,
+   "20": 7,
+   "21": 5,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 101,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "lc-li-three_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 4,
+   "21": 7,
+   "0": 9,
+   "1": 9,
+   "2": 9,
+   "22": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "1": 9,
+   "2": 9,
+   "20": 4,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 89,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "lc-li-one_s3_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 9
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 9,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-ar-half_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 4
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 4,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 14,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "li-ar-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "20": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 22,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "li-ar-half_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 5,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 15,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "li-ar-one_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 5,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-ar-one_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 12,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 1
+ },
+ "li-ar-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "0": 5
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 5,
+   "20": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-ar-three_s2_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 8,
+   "22": 12,
+   "0": 5,
+   "1": 6,
+   "2": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 5,
+   "1": 6,
+   "2": 6,
+   "20": 8,
+   "21": 8,
+   "22": 12
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 57,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-hc-half_s1_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 35,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-ar-three_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 12,
+   "22": 7,
+   "0": 7,
+   "1": 6,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 6,
+   "2": 7,
+   "20": 8,
+   "21": 12,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 57,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-hc-half_s2_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 27,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hc-half_s3_r5_hook": {
+  "half_rounds": 24,
+  "melee_markers": 24,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 41,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-ar-three_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 8,
+   "21": 12,
+   "22": 7,
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7,
+   "20": 8,
+   "21": 12,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 58,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-hc-one_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 33,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hc-three_s1_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "1": 7,
+   "2": 7,
+   "0": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 8,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 82,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-hc-one_s1_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 35,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hc-three_s2_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "2": 7,
+   "1": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 85,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-hc-three_s3_r5_hook": {
+  "half_rounds": 23,
+  "melee_markers": 23,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "2": 7,
+   "1": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 85,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-hc-one_s3_r5_hook": {
+  "half_rounds": 26,
+  "melee_markers": 26,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 45,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half_s1_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half-one_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half-one_s1_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half-one_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 17,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 19,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half-three_s2_r5_hook": {
+  "half_rounds": 9,
+  "melee_markers": 9,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-half-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-one_s1_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-one_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-half-three_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 16,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-one-half_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 21,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-one-half_s1_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-one-three_s2_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-one-three_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-one-half_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 23,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-one-three_s3_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 20,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three_s1_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6,
+   "1": 7,
+   "2": 8
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "1": 7,
+   "2": 8
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three-half_s1_r5_hook": {
+  "half_rounds": 10,
+  "melee_markers": 10,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 6,
+   "1": 6,
+   "2": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "1": 6,
+   "2": 6
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 34,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three-half_s2_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 43,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three-half_s3_r5_hook": {
+  "half_rounds": 11,
+  "melee_markers": 11,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 39,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 65,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "li-hi-three-one_s1_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 75,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-half_s1_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-three-one_s2_r5_hook": {
+  "half_rounds": 21,
+  "melee_markers": 21,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 75,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-half_s3_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 25,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-half_s2_r5_hook": {
+  "half_rounds": 12,
+  "melee_markers": 12,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 6
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 25,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-hi-three-one_s3_r5_hook": {
+  "half_rounds": 22,
+  "melee_markers": 22,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "1": 7,
+   "2": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 75,
+  "alive_first_snapshot": 4,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-one_s1_r5_hook": {
+  "half_rounds": 17,
+  "melee_markers": 17,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 32,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-three_s1_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 13,
+   "22": 9,
+   "0": 6,
+   "1": 7,
+   "2": 3
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "1": 7,
+   "2": 3,
+   "20": 9,
+   "21": 13,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 83,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "li-lc-one_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-three_s3_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 9,
+   "22": 11,
+   "0": 3,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 3,
+   "1": 7,
+   "2": 7,
+   "20": 9,
+   "21": 9,
+   "22": 11
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 96,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-lc-one_s3_r5_hook": {
+  "half_rounds": 13,
+  "melee_markers": 13,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-lc-three_s2_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 11,
+   "22": 9,
+   "0": 3,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 3,
+   "1": 7,
+   "2": 7,
+   "20": 9,
+   "21": 11,
+   "22": 9
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 94,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-li-half_s1_r5_hook": {
+  "half_rounds": 18,
+  "melee_markers": 18,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 36,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-li-half_s3_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-li-one_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 40,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-li-one_s2_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 32,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-li-half_s2_r5_hook": {
+  "half_rounds": 14,
+  "melee_markers": 14,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 28,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-li-one_s3_r5_hook": {
+  "half_rounds": 15,
+  "melee_markers": 15,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "0": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 7,
+   "20": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 30,
+  "alive_first_snapshot": 2,
+  "alive_last_snapshot": 2
+ },
+ "li-li-three_s1_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 7,
+   "22": 7,
+   "0": 6,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 6,
+   "1": 7,
+   "2": 7,
+   "20": 9,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 97,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ },
+ "li-li-three_s3_r5_hook": {
+  "half_rounds": 16,
+  "melee_markers": 16,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 7,
+   "21": 7,
+   "22": 7,
+   "0": 3,
+   "1": 6,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 3,
+   "1": 6,
+   "2": 7,
+   "20": 7,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 77,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 4
+ },
+ "li-li-three_s2_r5_hook": {
+  "half_rounds": 20,
+  "melee_markers": 20,
+  "melee_markers_equal_half_rounds": true,
+  "shots_by_slot_from_markers": {
+   "20": 9,
+   "21": 7,
+   "22": 7,
+   "0": 3,
+   "1": 7,
+   "2": 7
+  },
+  "ammo_drop_by_slot_from_snapshots": {
+   "0": 3,
+   "1": 7,
+   "2": 7,
+   "20": 9,
+   "21": 7,
+   "22": 7
+  },
+  "shots_equal_ammo_drop_every_slot": true,
+  "rout_markers": 90,
+  "alive_first_snapshot": 6,
+  "alive_last_snapshot": 3
+ }
+}
