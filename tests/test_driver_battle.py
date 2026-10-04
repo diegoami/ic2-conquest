@@ -283,6 +283,25 @@ def test_battle_state_reads_memory_like_the_block():
         raise AssertionError("read a stale block")
 
 
+def test_common_battle_end_turn_never_retries():
+    sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))
+    import common as C
+    C.D.sh = lambda *a, **k: ""
+    g = battle(advance=False)
+    with Clock():
+        try:
+            C.battle_end_turn(g, 4)
+        except D.DriverError as e:
+            assert "not clicking again" in str(e)
+        else:
+            raise AssertionError("no error without progress")
+    assert g.clicks.count((114, 112)) == 1, g.clicks
+    g = battle()
+    with Clock():
+        C.battle_end_turn(g, 4)
+    assert g.clicks.count((114, 112)) == 1
+
+
 def test_bad_mode_rejected():
     try:
         battle().play_battle(on_dialog="maybe")

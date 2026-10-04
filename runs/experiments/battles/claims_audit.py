@@ -110,6 +110,13 @@ def main():
     claim("finding", "resume counter +1 (2->3, 3->4) / +2 (4->6)", "b3-crafted-*.jsonl", ([x for x in b3["c0_control"]["memory_v_file"] if x[0] == "half_round"], [x for x in b3["d0_control"]["memory_v_file"] if x[0] == "half_round"], [x for x in b3["e0_x2"]["memory_v_file"] if x[0] == "half_round"]),
           ([["half_round", 2, 3]], [["half_round", 3, 4]], [["half_round", 4, 6]]))
     claim("finding", "e0: x2 file 1, memory 0 after resume", "b3-crafted-*.jsonl", [x for x in b3["e0_x2"]["memory_v_file"] if x[0] == "x2"], [["x2", 1, 0]])
+    ic = json.loads(sorted(D.glob("b2-icons-*.json"))[-1].read_text())
+    claim("finding", "icons: 42 occupied cells (14 per phase), 11 words, one icon per word, distinct words distinct icons", sorted(D.glob("b2-icons-*.json"))[-1].name,
+          (ic["cells_total"], [v["occupied_cells"] for v in ic["per_phase"].values()], ic["distinct_words_total"], ic["every_word_has_one_icon"], ic["different_words_have_different_icons"]), (42, [14, 14, 14], 11, True, True))
+    claim("finding", "B3 c4 same tactical outcome as c2 (11 half-rounds, Gaul 5330, Rome destroyed) but a different post save", "b3-crafted-*.jsonl",
+          (b3["c4_slot_only"]["half_rounds"], b3["c4_slot_only"]["post_battle"]["defender"]["troops_after"], b3["c4_slot_only"]["post_battle"]["winner"], b3["c4_slot_only"]["post_sha256"] != b3["c2_troops"]["post_sha256"]), (11, 5330, "defender", True))
+    cnt = lambda n: (D / n).read_text().count("end_turn_no_sign")
+    claim("finding", "b2-verify 093834: no no-sign line; 093600: retry fired (2 no-sign lines)", "b2-verify-*.log", (cnt("b2-verify-20261004-093834.log"), cnt("b2-verify-20261004-093600.log")), (0, 2))
     # sha / screenshots / release
     sums = (D / "SAVES.sha256").read_text().splitlines()
     claim("finding", "53 screenshots hashed in SAVES.sha256", "SAVES.sha256", sum(1 for x in sums if x.strip().endswith(".png")), 53)
@@ -117,7 +124,7 @@ def main():
     rel = int(subprocess.run(["gh", "release", "view", "run-exp-battle-sweep", "--json", "assets", "-q", ".assets|length"], capture_output=True, text=True).stdout.strip() or -1)
     claim("PR body", "release holds >= 521 assets (PR body says 520 at the time; now stated as 'about 520+')", "release run-exp-battle-sweep", rel >= 521, True)
     # test counts
-    for mod, e in (("test_driver_battle", 17), ("test_battle_stage", 16), ("test_battle_trials", 7)):
+    for mod, e in (("test_driver_battle", 18), ("test_battle_stage", 16), ("test_battle_trials", 7)):
         out = subprocess.run([sys.executable, "-m", f"tests.{mod}"], capture_output=True, text=True, cwd=C.ROOT).stdout
         claim("results.md", f"{mod}: {e} tests pass", "tests/" + mod + ".py", out.count("\nPASS ") + out.startswith("PASS "), e)
     # sweep table

@@ -577,14 +577,16 @@ def cmd_savein(g):
     # battle is mid-way and nothing runs while the dialog is open (the first two attempts, 081536 and 081801, toggled Computer general
     # first and the battle ran to its end at the next input event, before any dialog opened).
     for k in (1, 2, 3):
-        g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=2.5)
+        C.battle_end_turn(g)       # proven (half-round counter / title / flag), no blind click, no retry
+        time.sleep(1.5)
         log("end_turn_clicked_human", n=k, **state_now(g))
         log.shot(g, f"02-after-end-turn-{k}")
         if k == 2:
             break
     try_save(g, log, "mid-menu", "SI_lab_mid_menu.SAV" if lab else "SI_mid_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))
-    g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=2.5)
+    C.battle_end_turn(g)
+    time.sleep(1.5)
     log("end_turn_clicked_human", n=3, **state_now(g))
     try_save(g, log, "mid2-menu", "SI_lab_mid2_menu.SAV" if lab else "SI_mid2_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))

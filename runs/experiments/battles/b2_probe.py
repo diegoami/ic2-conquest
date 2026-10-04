@@ -48,24 +48,6 @@ def screen_check(png, block, y0=28, tile=32):
     return BB.GRID_W * BB.GRID_H - len(bad), BB.GRID_W * BB.GRID_H, bad
 
 
-def end_turn(g, wid, log):
-    """One End turn click with proof it advanced the battle. After a File > Save As the battle window is inactive and the first click may only
-    activate it: the window is raised and focused first; if there is still no sign of progress within 8 s (proof the click did nothing) ONE
-    more click is made, never a third."""
-    for attempt in (1, 2):
-        C.D.sh("xdotool", "windowraise", str(wid), check=False)
-        C.D.sh("xdotool", "windowfocus", str(wid), check=False)
-        time.sleep(0.3)
-        try:
-            g.end_turn_proven(lambda: g.click(g.battle_x.get("end_turn", C.D.BATTLE_TOOLS["end_turn"]), C.D.BATTLE_TOOLBAR_Y, pause=1.0))
-            log("end_turn_proven", attempt=attempt)
-            return
-        except DriverError as e:
-            log("end_turn_no_sign", attempt=attempt, error=str(e))
-            if attempt == 2:
-                raise
-
-
 def saved_block(path):
     raw = Path(path).read_bytes()
     t = sav.parse(raw)["tail_off"]
@@ -91,7 +73,7 @@ def main():
         win = g.find_windows(" v ")[0]
         for phase in ("placement", "after_end_turn_1", "after_end_turn_2"):
             if phase != "placement":
-                end_turn(g, win[0], log)
+                C.battle_end_turn(g, win[0])
                 time.sleep(2)
             png = C.shot(g, f"b2_{phase}_window.png", window=str(win[0]))
             st = g.battle_state()
