@@ -17,7 +17,7 @@ Forbidden results (any one fails the task):
   fills, the hook stops writing and sets an overflow flag: it never wraps silently);
 - an exchange line (actor, target, kind, losses) written as known when the log and the snapshot do not fix it;
 - the hook writing game memory outside its own buffer, or changing a register or flag that the hooked call site relies on;
-- a measured output overwritten or deleted, a binary (exe, save, screenshot) in git, a blind second End turn, a dialog answered Yes
+- a measured output overwritten or deleted, an EXE, DAT, save, screenshot or video in git, a blind second End turn, a dialog answered Yes
   automatically (CLAUDE.md rules 1 and 6, battles.md §3).
 
 ## Design (the planner's choice; change it only with a stated reason)
@@ -88,5 +88,5 @@ Forbidden results (any one fails the task):
   stops at the write index and reports the overflow flag.
 - The findings draft section B11 states what the hook does not establish (Wine-only; the lab reseed; the AI general's choices are
   observed, not decompiled by this task).
-- CLAUDE.md rule 6 holds throughout: text outputs tracked, committed and pushed per batch, never overwritten; binaries in the release
+- CLAUDE.md rule 6 holds throughout: text outputs tracked, committed and pushed per batch, never overwritten; binaries (EXE, DAT, saves, screenshots, video) never in git (rule 1), in the release
   `run-exp-battle-sweep` with their SHA-256.
