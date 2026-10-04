@@ -565,20 +565,25 @@ class Game:
         self.replace_field(name)
         self.key("Return")
 
+    def loaded(self):
+        """A game is loaded: the main window's title has "turn", or (some saves, e.g. the research start save, never put "turn" in the title,
+        with or without a box open: found with `1_rome_270_winter_11.sav`) both map windows are up."""
+        return bool(self.find_windows("turn") or (self.find_windows("^Unit map$") and self.find_windows("^Area map$")))
+
     def open(self, save, strict=True):
         """File > Open (the save is copied into the game folder first). A save can open with a modal box ("Bithynia wants to
-        trade with Rome." with the research start save): the main window's title only gets "turn" once it is closed, so the wait
-        accepts either; the box's text is captured (OCR) and returned, an information box is closed with OK, and with `strict`
-        (default) a Confirm box is answered No and raises DriverError("end turn: unexpected Confirm: ...") instead of Yes."""
+        trade with Rome." with the research start save), and a box stays up until it is closed: the box's text is captured (OCR) and
+        returned, an information box is closed with OK, and with `strict` (default) a Confirm box is answered No and raises
+        DriverError("end turn: unexpected Confirm: ...") instead of Yes. Done when `loaded()`."""
         src = Path(save)
         if src.parent.resolve() != G.resolve():
             shutil.copy(src, G / src.name)
         self.open_file_dialog(src.name)
-        self.wait(lambda: self.find_windows("turn") or self.message_boxes(), 30, "game window or a message box after load")
+        self.wait(lambda: self.loaded() or self.message_boxes(), 30, "game window or a message box after load")
         time.sleep(3)
         texts = self.dismiss_popups(strict=strict)
-        if not self.find_windows("turn"):
-            self.wait(lambda: self.find_windows("turn"), 30, "game window after the box was closed")
+        if not self.loaded():
+            self.wait(self.loaded, 30, "game window after the box was closed")
             texts += self.dismiss_popups(strict=strict)
         return texts
 
