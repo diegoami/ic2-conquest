@@ -56,7 +56,8 @@ Forbidden results (any one fails the task):
 
 ## Work
 
-1. **Inertness first.** On FLD-RG, HI v HI size one and one mixed cell, seeds 1-3: the hooked and unhooked exes give identical
+1. **Inertness first.** On FLD-RG, HI v HI size one and the mixed cell `MIX-RG` (FLD-RG with both armies as they stand in the research start save, no edit:
+   Rome's army 0 against Gaul's army 10, the B0 battle), seeds 1-3: the hooked and unhooked exes give identical
    series and post-battle saves. If not, stop and report.
 2. **Completeness, zero tolerance.** Delphi's `Random` advances `RandSeed` by exactly one LCG step (`seed·0x08088405 + 1`) per call,
    so each record's seed-before must equal the previous record's seed-after, from the battle's first draw to its last. **The
@@ -71,12 +72,13 @@ Forbidden results (any one fails the task):
 3. **Exchange log.** From each half-round's snapshot (targets in slot word 9, shots in word 8) plus the records, rebuild every
    shot and melee: actor, target, `n`, the draws, the predicted loss by the report's formulas, and the observed loss from the next
    snapshot. Report how many exchanges the formulas reproduce exactly; each miss is listed, not averaged away.
-4. **Re-run B5 with the hook** (battles.md §5 step 7) once 1-3 pass: the same cells and seeds; the sweep table gains the exchange
+4. **Re-run B5 with the hook** (battles.md §5 step 7) once 1-3 pass: the same cells and seeds, and **every hooked battle is compared byte for byte with its unhooked B5 row** (the
+   `BATTLEnn` series and post-battle save SHA-256 recorded by B5); any difference stops the re-run and is reported; the sweep table gains the exchange
    columns, and the share of attributed loss rows becomes exact or each gap is named.
 
 ## Done when
 
-- The inertness check passes on all listed cells (comparison files in `runs/experiments/data/run-exp-battle-sweep/`).
+- The inertness check passes on all listed cells and on every B5 re-run battle (comparison files in `runs/experiments/data/run-exp-battle-sweep/`).
 - The seed chain is unbroken in every hooked battle (0 breaks, tracked output per battle); the draw-order comparison is in the
   finding with every mismatch listed.
 - The register/flag preservation test passes for the `Random` cave and every marker cave; the call-site scan equals the hooked
