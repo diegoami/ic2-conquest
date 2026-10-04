@@ -1,0 +1,180 @@
+{
+ "shots": 11,
+ "shots_n_ok": 11,
+ "melee": 0,
+ "melee_n_ok": 0,
+ "rout_tests": 11,
+ "rout_with_draws": 0,
+ "rout_draw_count_ok": 11,
+ "rout_removed": 1,
+ "state_diffs": 0,
+ "misses": 0,
+ "loss_rows": 2,
+ "loss_rows_exact": 2,
+ "half_rounds_with_unaccounted_draws": 0,
+ "unconfirmed_exchanges": 0,
+ "flank_draws": 1,
+ "placement_draws": 2,
+ "trial": "lc-ar-three-half_s1_r1_hook",
+ "series": [
+  "lc-ar-three-half_s1_r1_hook_BATTLE01.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE02.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE03.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE04.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE05.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE06.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE07.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE08.SAV",
+  "lc-ar-three-half_s1_r1_hook_BATTLE09.SAV"
+ ],
+ "per_half_round": [
+  {
+   "half_round": 1,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 1,
+   "accounted_for_by_the_replay": 1,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 2,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 1,
+   "accounted_for_by_the_replay": 1,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 3,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 1,
+   "accounted_for_by_the_replay": 1,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 4,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 5,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 6,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 7,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 8,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 8,
+   "accounted_for_by_the_replay": 8,
+   "all_accounted": true,
+   "moves_exchanges": 4,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 9,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 14,
+   "accounted_for_by_the_replay": 14,
+   "all_accounted": true,
+   "moves_exchanges": 7,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  }
+ ],
+ "miss_list": [],
+ "state_diff_list": [],
+ "loss_rows_not_exact": [],
+ "copy_in": {
+  "attacker": {
+   "live_slots": 3,
+   "draws": 3,
+   "count_ok": true,
+   "ranges_ok": true,
+   "base_candidates": [
+    65
+   ],
+   "morale_rule_ok": true
+  },
+  "defender": {
+   "live_slots": 1,
+   "draws": 1,
+   "count_ok": true,
+   "ranges_ok": true,
+   "base_candidates": [
+    68
+   ],
+   "morale_rule_ok": true
+  }
+ },
+ "post_battle": {
+  "survivors": 3,
+  "winner_sides": [
+   0
+  ],
+  "promotion_draws": 3,
+  "promotion_draws_equal_survivors": true,
+  "promotion_ranges_all_4": true,
+  "promotions": 1,
+  "peace_draws": 0,
+  "peace_range_5": true,
+  "peace_results": [],
+  "dialog_after_battle": "",
+  "offer_iff_draw_below_2": null
+ }
+}
