@@ -1,0 +1,27 @@
+[   5.10] process_started exe='Imperial Conquest 2 fast rollingsave seed.exe' seconds=5.1 pid=195708
+[   5.10] seed_line line='S 0000012345'
+[  19.60] loaded seconds=14.5 popups=['@ Bithynia wants to trade with Rome.'] calendar={'season': 3, 'week': 11, 'year_bc': 270} windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]
+[  22.14] move to=(90, 25) now=(90, 25) popups=[]
+[  24.68] move to=(87, 27) now=(87, 27) popups=[]
+[  27.22] move to=(86, 28) now=(86, 28) popups=[]
+[  28.74] attack_clicked selected=0
+[  35.13] battle_open seconds_from_click=6.72 in_battle=True title='Rome  v  Gaul          Rome to place units.' geometry=(5, 99, 448, 414) windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)] flag=1
+[  35.20] shot file='b0-savein-20261004-081536-01-placement.png'
+[  35.24] save_try_before label='placement-menu' via='menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  40.18] save_try_after_menu label='placement-menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  40.25] shot file='b0-savein-20261004-081536-placement-menu-after-menu.png'
+[  44.94] save_try_result label='placement-menu' via='menu' file_written=True size=134254 sha256='0d52d52f0f8ae911499e02a3b2f15072391bc60e6aed2a901e4f4808da870dcc' block12=(1, 2105) kept='SI_placement_menu.SAV' after={'in_battle': True, 'sel_army': -1, 'battle_titles': ['Rome  v  Gaul          Rome to place units.'], 'windows': [('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]}
+[  44.99] check_battle_window_still_open in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  45.04] save_try_before label='placement-toolbar' via='toolbar' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  48.15] save_try_after_toolbar_click label='placement-toolbar' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('Save game position', 23, 72, 99, 15)]
+[  48.23] shot file='b0-savein-20261004-081536-placement-toolbar-after-toolbar.png'
+[  53.28] save_try_result label='placement-toolbar' via='toolbar' file_written=False after={'in_battle': True, 'sel_army': -1, 'battle_titles': ['Rome  v  Gaul          Rome to place units.'], 'windows': [('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]}
+[  53.31] check_battle_window_still_open in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  55.22] computer_general_clicked in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  55.30] shot file='b0-savein-20261004-081536-02-move-phase.png'
+[  55.36] save_try_before label='move-menu' via='menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  60.31] save_try_after_menu label='move-menu' in_battle=False sel_army=-1 battle_titles=[] windows=[('Information', 458, 70, 338, 426)]
+[  60.38] shot file='b0-savein-20261004-081536-move-menu-after-menu.png'
+[  77.97] save_try_result label='move-menu' via='menu' file_written=False after={'in_battle': False, 'sel_army': 6, 'battle_titles': [], 'windows': [('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]}
+[  78.02] check_battle_window_still_open in_battle=False sel_army=6 battle_titles=[] windows=[('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]
+[  79.89] computer_general_clicked title=[] in_battle=False

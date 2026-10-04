@@ -1,0 +1,14 @@
+[   0.02] windows windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Battle ended', 53, 99, 64, 1), ('Offer of peace', 13, 94, 406, 360)]
+[   0.08] shot file='b0-peace-capture-20261004-083010-01-offer-of-peace-root.png'
+[   0.09] shot file='b0-peace-capture-20261004-083010-01b-offer-of-peace-window.png'
+[   0.18] ocr text='‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We' geometry=(13, 94, 406, 360)
+[   0.23] controls label='offer of peace' title='Offer of peace' controls=[{'cls': 'TButton', 'text': 'No', 'x': 269, 'y': 414, 'w': 70, 'h': 25}, {'cls': 'TButton', 'text': 'Yes', 'x': 94, 'y': 414, 'w': 70, 'h': 25}]
+[   0.24] tick windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Battle ended', 53, 99, 64, 1), ('Offer of peace', 13, 94, 406, 360)]
+[   1.27] tick windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Battle ended', 53, 99, 64, 1), ('Offer of peace', 13, 94, 406, 360)]
+[   2.28] tick windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Battle ended', 53, 99, 64, 1), ('Offer of peace', 13, 94, 406, 360)]
+[   5.15] no_click_did_not_close attempt=1
+[   7.02] no_click_did_not_close attempt=2
+[   8.88] no_click_did_not_close attempt=3
+[  10.94] after_no windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Battle ended', 53, 99, 64, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)] popups=[(8388623, 'Battle ended', 53, 99, 64, 1)]
+[  10.99] shot file='b0-peace-capture-20261004-083010-02-after-no.png'
+[  18.98] save_state label='after No on the peace offer' file='lab2_a_after_no.SAV' size=132149 battle_flag=0 turn=743 armies={2: (0, 28227), 10: (6, 23431), 13: (0, 38455)} last_news=['Naupactus   (Greece)  falls to Illyria.', ' ', 'Week  11      Winter      270BC', 'Gaul destroys army of Rome.']

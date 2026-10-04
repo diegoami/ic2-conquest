@@ -1,0 +1,42 @@
+[   5.08] process_started exe='Imperial Conquest 2 fast rollingsave seed.exe' seconds=5.1 pid=223132
+[   5.08] seed_line line='S 0000012345'
+[  19.54] loaded seconds=14.4 popups=['@ Bithynia wants to trade with Rome.'] calendar={'season': 3, 'week': 11, 'year_bc': 270} windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]
+[  22.08] move to=(90, 25) now=(90, 25) popups=[]
+[  24.62] move to=(87, 27) now=(87, 27) popups=[]
+[  27.17] move to=(86, 28) now=(86, 28) popups=[]
+[  33.90] control_toolbar_save_on_map files_changed=['1_rome_270_winter_11.sav'] windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)] sel_army=-1
+[  35.41] attack_clicked selected=0
+[  41.76] battle_open seconds_from_click=6.68 in_battle=True title='Rome  v  Gaul          Rome to place units.' geometry=(5, 99, 448, 414) windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)] flag=1
+[  41.83] shot file='b0-savein-20261004-082013-01-placement.png'
+[  41.87] save_try_before label='placement-menu' via='menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  46.80] save_try_after_menu label='placement-menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  46.87] shot file='b0-savein-20261004-082013-placement-menu-after-menu.png'
+[  51.51] save_try_result label='placement-menu' via='menu' file_written=True size=134254 sha256='0d52d52f0f8ae911499e02a3b2f15072391bc60e6aed2a901e4f4808da870dcc' block12=(1, 2105) kept='SI_placement_menu.SAV' after={'in_battle': True, 'sel_army': -1, 'battle_titles': ['Rome  v  Gaul          Rome to place units.'], 'windows': [('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]}
+[  51.53] check_battle_window_still_open in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  51.56] save_try_before label='placement-toolbar' via='toolbar' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  54.63] save_try_after_toolbar_click label='placement-toolbar' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('Save game position', 23, 72, 99, 15)]
+[  54.69] shot file='b0-savein-20261004-082013-placement-toolbar-after-toolbar.png'
+[  59.72] save_try_result label='placement-toolbar' via='toolbar' file_written=False after={'in_battle': True, 'sel_army': -1, 'battle_titles': ['Rome  v  Gaul          Rome to place units.'], 'windows': [('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]}
+[  59.75] check_battle_window_still_open in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to place units.'] windows=[('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  62.64] end_turn_clicked_human n=1 in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('End turn', 108, 130, 46, 15)]
+[  62.70] shot file='b0-savein-20261004-082013-02-after-end-turn-1.png'
+[  65.59] end_turn_clicked_human n=2 in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('End turn', 108, 130, 46, 15)]
+[  65.65] shot file='b0-savein-20261004-082013-02-after-end-turn-2.png'
+[  65.68] save_try_before label='mid-menu' via='menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('End turn', 108, 130, 46, 15)]
+[  70.61] save_try_after_menu label='mid-menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  70.67] shot file='b0-savein-20261004-082013-mid-menu-after-menu.png'
+[  75.22] save_try_result label='mid-menu' via='menu' file_written=True size=134254 sha256='db7f7a0f391d0daa2722f04353a32087720de460541b324a369ecc0f168a10e9' block12=(1, 2105) kept='SI_mid_menu.SAV' after={'in_battle': True, 'sel_army': -1, 'battle_titles': ['Rome  v  Gaul          Rome to move units.'], 'windows': [('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]}
+[  75.24] check_battle_window_still_open in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  78.12] end_turn_clicked_human n=3 in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('End turn', 108, 130, 46, 15)]
+[  78.15] save_try_before label='mid2-menu' via='menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426), ('End turn', 108, 130, 46, 15)]
+[  83.09] save_try_after_menu label='mid2-menu' in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  83.15] shot file='b0-savein-20261004-082013-mid2-menu-after-menu.png'
+[  87.72] save_try_result label='mid2-menu' via='menu' file_written=True size=134254 sha256='b03a72b5f7744b4a3e94ebdd773818b0def256b874522546595d4f585f0b31e5' block12=(1, 2105) kept='SI_mid2_menu.SAV' after={'in_battle': True, 'sel_army': -1, 'battle_titles': ['Rome  v  Gaul          Rome to move units.'], 'windows': [('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]}
+[  87.76] check_battle_window_still_open in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  89.63] computer_general_clicked title=['Rome  v  Gaul          Rome to move units.'] in_battle=True
+[  91.51] end_turn_clicked n=1 in_battle=False windows=['Imperial Conquest 2', 'Rome  v  Gaul          Gaul to move units.', 'Information']
+[  96.09] shot file='b0-savein-20261004-082013-battle-ended-window.png'
+[  96.23] battle_ended end_turn_clicks=1 seconds=8.3 in_battle=False ocr="Gaul's army defeats Rome's army. Gaul's army Rome's army start finish start finish light fanry Ce] heavy ifanry Co] (00 | arches Co] [0 0 | Moheeavalry Co] (0) (0 | heavy cavalry Co] total oops Co] ‘The army of Gaul captured 156 talents. The army of Gaul captured no suuplies."
+[ 102.80] after_ok popups=[] windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]
+[ 110.77] save_as file='SI_post_battle.SAV' seconds=8.0 sha256='2a2a153c8930adc2907fc33bcd9bd140948ec08f29696b11b9a20cd1a6337fdc'
+[ 110.77] save_state label='post-battle after saves in battle' file='SI_post_battle.SAV' size=132149 battle_flag=0 turn=743 armies={2: (0, 28227), 10: (6, 27387), 13: (0, 38455)} last_news=['Naupactus   (Greece)  falls to Illyria.', ' ', 'Week  11      Winter      270BC', 'Gaul destroys army of Rome.']

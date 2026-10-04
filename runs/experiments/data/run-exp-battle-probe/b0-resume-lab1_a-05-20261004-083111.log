@@ -1,0 +1,17 @@
+[   4.58] process_started exe='Imperial Conquest 2 lab s1.exe'
+[   4.58] source file='lab1_a_BATTLE05.SAV' sha256='458a1c60f80c71a10b8bd397b468fe895589cb49ea2970e59943389e61e0593d' block12=(1, 2105)
+[  11.89] after_open s=1.0 in_battle=False sel_army=0 battle_titles=[] windows=[('Imperial Conquest 2', 0, 26, 650, 300)]
+[  12.91] after_open s=2.0 in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  12.94] resumed_window seconds=2.1 in_battle=True sel_army=-1 battle_titles=['Rome  v  Gaul          Rome to move units.'] windows=[('Rome  v  Gaul          Rome to move units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)]
+[  12.99] shot file='b0-resume-lab1_a-05-20261004-083111-01-resumed.png'
+[  13.05] controls label='resumed battle' title='Rome  v  Gaul          Rome to move units.' controls=[{'cls': 'TPanel', 'text': '', 'x': 5, 'y': 99, 'w': 448, 'h': 28}]
+[  13.31] popup name='Rome  v  Gaul          Rome to move units.' text='BOBO. Zelo AAR AA AAA RAS Se SN GNIS PAN Se SN GNIS PAN Se te ee se eee -- 6 Been EEL see aN GAN (i) Game aemanesaN Fe sa PAN AAA ee) Ae ee eee CARIN Ae eee eee AAA A A AAR eee Se SN GNIS PAN Se SN GNIS PAN'
+[  13.37] popup name='Information' text=''
+[  15.23] computer_general_clicked title=['Rome  v  Gaul          Rome to move units.'] in_battle=True
+[  17.11] end_turn_clicked n=1 in_battle=False windows=['Imperial Conquest 2', 'Rome  v  Gaul          Gaul to move units.', 'Information']
+[  21.20] shot file='b0-resume-lab1_a-05-20261004-083111-battle-ended-window.png'
+[  21.32] battle_ended end_turn_clicks=1 seconds=7.8 in_battle=False ocr="Gaul's army defeats Rome's army. Gaul's army Rome's army start finish start finish light fanry Ce] heavy ifanry Co] (00 | arches Co] [0 0 | Moheeavalry Co] (0) (0 | heavy cavalry Co] total oops Co] ‘The army of Gaul captured 156 talents. The army of Gaul captured no suuplies."
+[  27.89] after_ok popups=[] windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 2, 74, 328, 196), ('Unit map', 332, 74, 439, 487), ('Information', 2, 269, 328, 730)]
+[  35.99] save_as file='resume_05_lab1_a_post.SAV' seconds=8.1 sha256='17603c506fa0def640b888164469c98b832af72c67a9b53cd0772e040289c374'
+[  35.99] save_state label='post-battle after resume' file='resume_05_lab1_a_post.SAV' size=132149 battle_flag=0 turn=743 armies={2: (0, 28227), 10: (6, 25265), 13: (0, 38455)} last_news=['Naupactus   (Greece)  falls to Illyria.', ' ', 'Week  11      Winter      270BC', 'Gaul destroys army of Rome.']
+[  35.99] resumed_series files=['resume05_lab1_a_BATTLE01.SAV', 'resume05_lab1_a_BATTLE02.SAV', 'resume05_lab1_a_BATTLE03.SAV', 'resume05_lab1_a_BATTLE04.SAV', 'resume05_lab1_a_BATTLE05.SAV', 'resume05_lab1_a_BATTLE06.SAV', 'resume05_lab1_a_BATTLE07.SAV', 'resume05_lab1_a_BATTLE08.SAV', 'resume05_lab1_a_BATTLE09.SAV', 'resume05_lab1_a_BATTLE10.SAV']
