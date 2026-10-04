@@ -258,6 +258,31 @@ def test_default_is_the_historical_dismissal():
     assert err is None and r["dialogs"] == [] and g.find_windows("Offer of peace"), "default must not answer the Offer of peace"
 
 
+def test_battle_state_reads_memory_like_the_block():
+    import struct
+    from state import battle_block as BB
+    blk = BB.synthetic_block([("hi", 6000, 6, 0, "1st Guards  Battalion"), ("li", 5000, 6, 11, "Gallic")], [("ar", 3000, 6, 0, "2nd Bowmen  Battalion")], 0, 10, half_round=7)
+    blk["x2"], blk["y1"] = 1, 1
+    raw = BB.encode_block(blk)
+    img = {}
+    for a, data in ((D.BATTLE_SLOTS, raw[BB.HEADER_LEN:]), (D.BATTLE_HEADER["attacker_army"], struct.pack("<hhhh", 0, 10, 1, 7)),
+                    (D.BATTLE_HEADER["y1"], bytes([1])), (D.BATTLE_FLAG, bytes([1]))):
+        for i, byte in enumerate(data):
+            img[a + i] = byte
+    g = Fake([AREA])
+    g.battle = True
+    g.mem = lambda addr, n: bytes(img.get(addr + i, 0) for i in range(n))
+    st = g.battle_state()
+    assert BB.encode_block(st) == raw and st["half_round"] == 7 and st["defender_army"] == 10 and st["x2"] == 1 and st["y1"] == 1
+    g.battle = False
+    try:
+        g.battle_state()
+    except D.DriverError as e:
+        assert "no battle pending" in str(e)
+    else:
+        raise AssertionError("read a stale block")
+
+
 def test_bad_mode_rejected():
     try:
         battle().play_battle(on_dialog="maybe")
