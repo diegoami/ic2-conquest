@@ -1418,11 +1418,15 @@ class Game:
         clicks = 0
         self.raise_window(wid)
         for _ in range(tries):
-            self.click_control(want, pause=1.0)
+            self.click_control(want, pause=0.5)
             clicks += 1
-            if wid not in [w[0] for w in self.find_windows("^%s$" % re.escape(self.PEACE_TITLE))]:
-                break
-            time.sleep(1.5)
+            for _ in range(10):         # give the box up to 2.5 s to close before the same button is pressed again (a late close must not take a second click)
+                if wid not in [w[0] for w in self.find_windows("^%s$" % re.escape(self.PEACE_TITLE))]:
+                    break
+                time.sleep(0.25)
+            else:
+                continue
+            break
         if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
             raise DriverError("answer_battle_peace: the box is still open after %d clicks on %s" % (clicks, want["text"]))
         info.update({"button": want["text"], "click": pt, "clicks": clicks, "closed": True})
