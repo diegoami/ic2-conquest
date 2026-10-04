@@ -1,0 +1,17 @@
+[   4.52] process_started exe='Imperial Conquest 2 lab s1.exe' seconds=4.5 pid=582766
+[   4.53] start_save file='1_rome_270_winter_11.sav' sha256='76b09ee31400360f3cfdb12f7d161e5b493896e081691b02cc5e942e136df790'
+[  18.73] loaded seconds=14.2 popups=['@ Bithynia wants to trade with Rome.'] calendar={'season': 3, 'week': 11, 'year_bc': 270} windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]
+[  21.27] move to=(90, 25) now=(90, 25) popups=[]
+[  23.80] move to=(87, 27) now=(87, 27) popups=[]
+[  26.34] move to=(86, 28) now=(86, 28) popups=[]
+[  27.85] attack_clicked selected=0
+[  34.18] battle_open seconds_from_click=6.66 in_battle=True title='Rome  v  Gaul          Rome to place units.' geometry=(5, 99, 448, 414) windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Rome  v  Gaul          Rome to place units.', 5, 99, 448, 414), ('Information', 458, 70, 338, 426)] flag=1
+[  36.05] computer_general_clicked title=['Rome  v  Gaul          Rome to move units.'] in_battle=True
+[  37.44] end_turn_clicked n=1 in_battle=False windows=['Imperial Conquest 2', 'Rome  v  Gaul          Rome to move units.', 'Information']
+[  42.01] shot file='b0-lab-pra_check-20261004-091950-battle-ended-window.png'
+[  42.15] battle_ended end_turn_clicks=1 seconds=7.8 in_battle=False ocr="Gaul's army defeats Rome's army. Gaul's army Rome's army start finish start finish light fanry Ce] heavy ifanry Co] (00 | arches Co] [0 0 | Moheeavalry Co] (0) (0 | heavy cavalry Co] total oops Co] The army of Gaul captured 156 talents. The army of Gaul captured no suuplies."
+[  46.70] after_ok_wait seconds=3.6
+[  48.75] after_ok popups=[] windows=[('Imperial Conquest 2', 640, 512, 1, 1), ('Area map', 13, 65, 328, 196), ('Unit map', 334, 65, 1143, 903), ('Information', 12, 265, 328, 698)]
+[  56.82] save_as file='lab1_pra_check_post.SAV' seconds=8.1 sha256='415797f3a9279e82e92646077c0a1f3007fd66972f53554c079ca32ca4ed858b'
+[  56.83] save_state label='post-battle lab1_pra_check' file='lab1_pra_check_post.SAV' size=132149 battle_flag=0 turn=743 armies={2: (0, 28227), 10: (6, 28428), 13: (0, 38455)} last_news=['Naupactus   (Greece)  falls to Illyria.', ' ', 'Week  11      Winter      270BC', 'Gaul destroys army of Rome.']
+[  56.83] trial tag='lab1_pra_check' exe='Imperial Conquest 2 lab s1.exe' seed=None seconds_process_start_to_post_save=56.8 seconds_loaded=18.7 seconds_staged=26.3 seconds_click_to_battle_window=6.66 seconds_battle_open_to_over=14.6 seconds_post_save=8.1 end_turn_clicks=1 half_round_saves=15 series=['lab1_pra_check_BATTLE01.SAV', 'lab1_pra_check_BATTLE02.SAV', 'lab1_pra_check_BATTLE03.SAV', 'lab1_pra_check_BATTLE04.SAV', 'lab1_pra_check_BATTLE05.SAV', 'lab1_pra_check_BATTLE06.SAV', 'lab1_pra_check_BATTLE07.SAV', 'lab1_pra_check_BATTLE08.SAV', 'lab1_pra_check_BATTLE09.SAV', 'lab1_pra_check_BATTLE10.SAV', 'lab1_pra_check_BATTLE11.SAV', 'lab1_pra_check_BATTLE12.SAV', 'lab1_pra_check_BATTLE13.SAV', 'lab1_pra_check_BATTLE14.SAV', 'lab1_pra_check_BATTLE15.SAV'] post_sha256='415797f3a9279e82e92646077c0a1f3007fd66972f53554c079ca32ca4ed858b' gaul_after=[(10, 28428)] rome_army0_alive=False
