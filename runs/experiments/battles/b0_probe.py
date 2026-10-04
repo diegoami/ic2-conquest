@@ -664,8 +664,8 @@ def cmd_resume(g):
 def cmd_compare(g=None):
     """Compare two kept series: for each file of B, which file of A (if any) is byte-identical; else the nearest by differing bytes."""
     a_tag, b_tag = sys.argv[2], sys.argv[3]
-    A = sorted(OUT.glob(f"{a_tag}_BATTLE*.SAV"))
-    B = sorted(OUT.glob(f"{b_tag}_BATTLE*.SAV"))
+    A = [OUT / n for n in series_names(a_tag)]       # newest version per half-round (a re-run keeps a -<stamp> copy beside the old file)
+    B = [OUT / n for n in series_names(b_tag)]
     out = []
     for fb in B:
         db = fb.read_bytes()
