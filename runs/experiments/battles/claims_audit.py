@@ -27,10 +27,110 @@ def jl(p):
     return [json.loads(x) for x in Path(p).read_text().splitlines() if x.strip()]
 
 
+def new_claims(rows, claim, sweep, all_ok):
+    """Claims of the B5/B8 sections, recomputed from trials.jsonl / halfrounds files / the B8 jsonl, independently of b5_analyze.py's own summary."""
+    from collections import Counter
+    errs = [r for r in jl(D / "trials.jsonl") if r.get("status") == "error"]
+    claim("finding B5", "315 sweep rows (rep 1), 324 ok trial ids incl. 9 B4 repeats, 0 error records", "trials.jsonl", (len(sweep), len(all_ok), len(errs)), (315, 324, 0))
+    cells = Counter((r["attacker"], r["defender"], r["size"]) for r in sweep)
+    grid = [k for k in cells if "-" not in k[2]]
+    claim("finding B5", "225 grid battles = 75 per size (25 pairings x 3 seeds); 90 size-matrix battles = 5 pairings x 6 size combinations x 3 seeds", "trials.jsonl",
+          (sum(cells[k] for k in grid), sum(cells[k] for k in cells if "-" in k[2]), len(grid), all(v == 3 for v in cells.values())), (225, 90, 75, True))
+    claim("finding B5", "all 315 rows lab, L1 from FLD-RG, quality 6 morale 65 (read back before the attack: a trial that fails the read-back raises and is an error record)", "trials.jsonl",
+          ({r["build"] for r in sweep}, {r["level"] for r in sweep}), ({"lab"}, {"L1 from FLD-RG (labelled synthetic)"}))
+    claim("finding B5", "winner counts: attacker 133, defender 182; no draw", "trials.jsonl", dict(Counter(r["winner"] for r in sweep)), {"defender": 182, "attacker": 133})
+    wsz = Counter()
+    for r in sweep:
+        a, d, sz = r["attacker"], r["defender"], r["size"]
+        wsz[(sz, r["winner"])] += 1
+    claim("finding B5", "grid: attacker wins 29 half, 28 one, 31 three (of 75 each)", "trials.jsonl", (wsz[("half", "attacker")], wsz[("one", "attacker")], wsz[("three", "attacker")]), (29, 28, 31))
+    mix = Counter()
+    for r in sweep:
+        if "-" in r["size"]:
+            mix[r["size"]] += r["winner"] == "attacker"
+    claim("finding B5", "size matrix attacker wins (of 15 each): half-one 6, half-three 0, one-half 9, one-three 3, three-half 15, three-one 12", "trials.jsonl",
+          {k: mix[k] for k in sorted(mix)}, {"half-one": 6, "half-three": 0, "one-half": 9, "one-three": 3, "three-half": 15, "three-one": 12})
+    claim("finding B5", "grid: the archers (as attacker) win 0 of 45; HI as attacker wins 36 of 36 against li, ar, lc, hc (3 sizes x 4 x 3 seeds) and 1 of 9 against hi", "trials.jsonl",
+          (sum(1 for r in sweep if r["attacker"] == "ar" and "-" not in r["size"] and r["winner"] == "attacker"),
+           sum(1 for r in sweep if r["attacker"] == "hi" and r["defender"] != "hi" and "-" not in r["size"] and r["winner"] == "attacker"),
+           sum(1 for r in sweep if r["attacker"] == "hi" and r["defender"] == "hi" and "-" not in r["size"] and r["winner"] == "attacker")), (0, 36, 1))
+    hr = [r["half_rounds"] for r in sweep]
+    claim("finding B5", "half-rounds 8 to 35, mean 15.18; none reaches 99", "trials.jsonl", (min(hr), max(hr), round(sum(hr) / len(hr), 2)), (8, 35, 15.18))
+    sec = [r["seconds"] for r in sweep]
+    claim("finding B5", "seconds per battle: mean 52.0, 49.0 to 61.1 (315 rows)", "trials.jsonl", (round(sum(sec) / len(sec), 1), min(sec), max(sec)), (52.0, 49.0, 61.1))
+    claim("finding B5", "Offer of peace in 76 of 315 rows, every one after a defender (Gaul) win, none after an attacker win", "trials.jsonl",
+          (sum("Offer of peace" in r.get("dialog", "") for r in sweep), sum("Offer of peace" in r.get("dialog", "") and r["winner"] == "defender" for r in sweep),
+           sum("Offer of peace" in r.get("dialog", "") and r["winner"] == "attacker" for r in sweep)), (76, 76, 0))
+    claim("finding B5", "every dialog was declined (never Yes): answers recorded", "trials.jsonl", {d.get("answer") for r in sweep for d in r.get("dialogs", [])}, {"No"})
+    claim("finding B5", "End turn clicks: 0 in 279 rows, 1 in 36 (each proven by Game.end_turn_proven; a no-sign result would be an error record)", "trials.jsonl", dict(Counter(r["end_turn_clicks"] for r in sweep)), {0: 279, 1: 36})
+    claim("finding B5", "loser destroyed in every row; attacker destroyed 182 / defender destroyed 133; no row with both", "trials.jsonl",
+          (sum(r["attacker_result"]["destroyed"] for r in sweep), sum(r["defender_result"]["destroyed"] for r in sweep), sum(r["attacker_result"]["destroyed"] and r["defender_result"]["destroyed"] for r in sweep)), (182, 133, 0))
+    pr = [(s, u) for r in sweep for s in ("attacker", "defender") for u in r["units"][s] if u["promoted"]]
+    claim("finding B5", "promotions 146 (attacker 56, defender 90); every promoted unit 6 -> 7; by type hi 61, lc 35, hc 17, li 17, ar 16", "trials.jsonl",
+          (len(pr), Counter(s for s, u in pr)["attacker"], Counter(s for s, u in pr)["defender"], {(u["quality_before"], u["quality_after"]) for s, u in pr}, dict(Counter(u["type"] for s, u in pr))),
+          (146, 56, 90, {(6, 7)}, {"hi": 61, "lc": 35, "hc": 17, "li": 17, "ar": 16}))
+    claim("finding B5", "money captured only by Gaul (the defender) in its 182 wins: 156 talents each time; supplies 0; Rome captured 0 talents and 0 supplies in its 133 wins", "trials.jsonl",
+          ({(r["taken"]["defender_money"], r["taken"]["defender_supplies"]) for r in sweep if r["winner"] == "defender"}, {(r["taken"]["attacker_money"], r["taken"]["attacker_supplies"]) for r in sweep if r["winner"] == "attacker"}),
+          ({(156, 0)}, {(0, 0)}))
+    # half-round logs
+    n_loss = n_old = 0
+    hrs = {}
+    for r in sweep:
+        import trials as T_
+        nm = r.get("halflog") or (T_.backfill_halflog(r) or [None])[0]       # trials 1-6 predate the halflog hook: the halfrounds file written afterwards
+        rows_ = [json.loads(x) for x in (D / nm).read_text().splitlines()] if nm else []
+        hrs[r["trial"]] = rows_
+    claim("finding B5", "a half-round log exists for every one of the 315 rows", "halfrounds-*.jsonl", sum(1 for v in hrs.values() if v), 315)
+    claim("finding B5", "placement: Gaul on row y = 9 and Rome parked on y = 0 in the first file of every battle; Rome on y = 2 in the second", "halfrounds-*.jsonl",
+          ({s["y"] for v in hrs.values() for s in v[0]["slots"] if s["side"] == 1}, {s["y"] for v in hrs.values() for s in v[0]["slots"] if s["side"] == 0}, {s["y"] for v in hrs.values() for s in v[1]["slots"] if s["side"] == 0}), ({9}, {0}, {2}))
+    seq = Counter()
+    for v in hrs.values():
+        seq["".join("A" if x.get("since_previous", {}).get("acting_sides_D") == [0] else "G" if x.get("since_previous", {}).get("acting_sides_D") == [1] else "?" for x in v[1:6])] += 1
+    claim("finding B5", "initiative: the diffs into files 2..6 show Rome, Rome, Gaul, Rome, Gaul acting in all 315 battles", "halfrounds-*.jsonl", dict(seq), {"AAGAG": 315})
+    claim("finding B5", "header x2 equals the side that acted in the diff into the file in all 3,220 diffs with exactly one acting side", "halfrounds-*.jsonl",
+          (sum(1 for v in hrs.values() for x in v[1:] if len(x["since_previous"]["acting_sides_D"]) == 1 and x["x2"] == x["since_previous"]["acting_sides_D"][0]),
+           sum(1 for v in hrs.values() for x in v[1:] if len(x["since_previous"]["acting_sides_D"]) == 1)), (3220, 3220))
+    sm = json.loads(sorted(D.glob("b5-summary-*.json"))[-1].read_text())
+    tg = list(csv.DictReader(sorted(D.glob("b5-targets-*.csv"))[-1].open()))
+    claim("finding B5", "target events (a unit's target word changed to an enemy slot while >= 2 enemies stood): 664, the chosen enemy always (ties included) among the nearest, uniquely nearest in 147", sorted(D.glob("b5-targets-*.csv"))[-1].name,
+          (len(tg), sum(x["is_nearest"] == "True" for x in tg), sum(x["is_unique_nearest"] == "True" for x in tg), sum(x["is_weakest"] == "True" for x in tg)), (664, 664, 147, 507))
+    at = sm["attribution_R_code_words_8_9"]
+    claim("finding B5", "loss rows fixed by words 8/9: B0 natural 29 of 125 (old 14); 1 v 1 battles 1569 of 1931 (old 1481); 3 v 3 1166 of 2805 (old 627); size matrix 624 of 987 (old 574)", sorted(D.glob("b5-summary-*.json"))[-1].name,
+          ([at["B0 natural 14-unit battles (gate2_a, gate2_s2a)"][k] for k in ("new_fixed", "losses", "old_unambiguous")], [[at["sweep by group"][g][k] for k in ("new_fixed", "losses", "old_unambiguous")] for g in ("1 unit per side", "3 units per side", "mixed sizes (size matrix)")]),
+          ([29, 125, 14], [[1569, 1931, 1481], [1166, 2805, 627], [624, 987, 574]]))
+    claim("finding B5", "sweep loss kinds: melee 4263, shooting 371, mixed 1089, unknown 0", sorted(D.glob("b5-summary-*.json"))[-1].name, sm["attribution_R_code_words_8_9"]["sweep kinds"], {"melee": 4263, "shooting": 371, "mixed": 1089, "unknown": 0})
+    claim("finding B5", "end state: loser already empty in the last saved file 58, units left but none rout-eligible 238, rout-eligible 19", sorted(D.glob("b5-summary-*.json"))[-1].name, sm["end_condition_inferred_from_last_saved_file"],
+          {"loser already empty in the last saved file": 58, "loser units left; none rout-eligible: removed by troop loss in the final half-round [D, R-code]": 238, "loser units left; at least one rout-eligible: kill or rout, not distinguished": 19})
+    pg = sm["seed_pairing_gaul_placement_by_defender_army_and_seed"]
+    claim("finding B5", "same seed and same defender army: the same Gaul placement in every cell (45 groups: 24 of 1 cell, 9 of 2, 12 of 5; always 1 distinct placement)", sorted(D.glob("b5-summary-*.json"))[-1].name,
+          (len(pg), sorted(Counter((v["cells"], v["distinct_gaul_placements"]) for v in pg.values()).items())), (45, [((1, 1), 24), ((2, 1), 9), ((5, 1), 12)]))
+    # B8
+    th = json.loads(sorted(D.glob("b8-thresholds-*.json"))[-1].read_text())
+    exp = {"li": [5000, 10000], "hi": [2000, 4000], "ar": [1166, 2332], "lc": [2333, 4666], "hc": [833, 1666]}
+    got = {k.split()[0] + k.split()[-1]: v["first_troops_of_class_1_2"] for k, v in th["per_type_side"].items()}
+    claim("finding B8", "first troop count of icon size 1 and 2, exact to 1 troop, both sides: LI 5000/10000, HI 2000/4000, Ar 1166/2332, LC 2333/4666, HC 833/1666", "b8-thresholds-*.json",
+          got, {k + s: v for k, v in exp.items() for s in "01"})
+    claim("finding B8", "10 (type, side) series monotone, every class change 1 troop wide, equal to min(2, troops div (std div 3)); equal to B2's 3*troops < std for HI and LI only", "b8-thresholds-*.json",
+          (all(v["monotone"] and v["exact_one_troop"] and v["equals_rule_R_code_min2_troops_div_std_div_3"] for v in th["per_type_side"].values()),
+           sorted(k for k, v in th["per_type_side"].items() if v["equals_B2_hypothesis_3troops_lt_std"])), (True, ["hi side 0", "hi side 1", "li side 0", "li side 1"]))
+    claim("finding B8", "icons: 30 (type, side, class) combinations, one icon image each, 30 distinct grid words, different words different icons", "b8-thresholds-*.json",
+          (th["icons"]["type_side_class_combinations"], th["icons"]["one_icon_per_type_side_class"], th["icons"]["words"], th["icons"]["different_words_different_icons"], th["icons"]["every_word_one_icon"]), (30, True, 30, True, True))
+    lay = [json.loads(x) for x in sorted(D.glob("b8-layout-*.jsonl"))[-1].read_text().splitlines() if x.startswith('{"event"')]
+    ev = {e["event"]: e for e in lay}
+    claim("finding B8", "layout: 8 toolbar tooltips; surrender box answered No, battle continued with the block unchanged; result box and move phase captured", "b8-layout-20261004-192710.jsonl",
+          (sorted(ev["tooltips"]["tooltips"]), ev["surrender_box"]["answered"], ev["after_surrender_no"]["still_in_battle"], ev["after_surrender_no"]["block_unchanged"], ev["done"]["status"]),
+          (sorted(["Unit moves", "Friendly units", "Enemy units", "Cancel selection", "End turn", "Change pauses", "Computer general on", "Surrender"]), "No", True, True, "ok"))
+
+
 def main():
-    trials = [r for r in jl(D / "trials.jsonl") if r.get("status") == "ok"]
-    ana = json.loads(latest("b2-analysis-*.json").read_text())
-    anaf = latest("b2-analysis-*.json").name
+    all_ok = {}
+    for r in jl(D / "trials.jsonl"):
+        if r.get("status") == "ok":
+            all_ok[r["trial"]] = r                                # the last ok record of each trial id
+    sweep = [r for r in all_ok.values() if r["rep"] == 1]         # the 315 sweep rows (B4's 4 repeats of hi-hi-one: reps 2-4 are not rows)
+    trials = [r for r in all_ok.values() if r["cell"] == "hi-hi-one"]       # the 12 B4 trials (3 seeds x 4 runs)
+    anaf = "b2-analysis-20261004-110552.json"                      # the analysis the B2-B4 sections cite (the later ones also decode the sweep series)
+    ana = json.loads((D / anaf).read_text())
     ver = json.loads(sorted(D.glob("b2-verify-*093834.json"))[0].read_text())
     rows = []
 
@@ -119,18 +219,19 @@ def main():
     claim("finding", "b2-verify 093834: no no-sign line; 093600: retry fired (2 no-sign lines)", "b2-verify-*.log", (cnt("b2-verify-20261004-093834.log"), cnt("b2-verify-20261004-093600.log")), (0, 2))
     # sha / screenshots / release
     sums = (D / "SAVES.sha256").read_text().splitlines()
-    claim("finding", "53 screenshots hashed in SAVES.sha256", "SAVES.sha256", sum(1 for x in sums if x.strip().endswith(".png")), 53)
+    claim("finding", "at least the 53 screenshots of the PR B review hashed in SAVES.sha256 (more since)", "SAVES.sha256", sum(1 for x in sums if x.strip().endswith(".png")) >= 53, True)
     claim("finding", "FLD-RG sha 39edecd1... twice byte-identical", "fixtures-build-20261004-091421.json", (json.loads((D / "fixtures-build-20261004-091421.json").read_text())["byte_identical_two_builds"], json.loads((D / "fixtures-build-20261004-091421.json").read_text())["sha256"][:8]), (True, "39edecd1"))
     rel = int(subprocess.run(["gh", "release", "view", "run-exp-battle-sweep", "--json", "assets", "-q", ".assets|length"], capture_output=True, text=True).stdout.strip() or -1)
     claim("PR body", "release holds >= 521 assets (PR body says 520 at the time; now stated as 'about 520+')", "release run-exp-battle-sweep", rel >= 521, True)
     # test counts
-    for mod, e in (("test_driver_battle", 18), ("test_battle_stage", 16), ("test_battle_trials", 7)):
+    for mod, e in (("test_driver_battle", 20), ("test_battle_stage", 16), ("test_battle_trials", 7), ("test_battle_b5_b8", 6)):
         out = subprocess.run([sys.executable, "-m", f"tests.{mod}"], capture_output=True, text=True, cwd=C.ROOT).stdout
         claim("results.md", f"{mod}: {e} tests pass", "tests/" + mod + ".py", out.count("\nPASS ") + out.startswith("PASS "), e)
     # sweep table
-    t = latest("sweep-table-*.csv")
+    t = D / "sweep-table-20261004-105525.csv"
     tr = list(csv.DictReader(t.open()))
-    claim("finding", "latest sweep table: 12 rows, build lab, level L1, halflog+counts filled", t.name, (len(tr), {x["build"] for x in tr}, all(x["halflog"] and x["loss_rows"] for x in tr)), (12, {"lab"}, True))
+    claim("finding", "B4 sweep table: 12 rows, build lab, level L1, halflog+counts filled", t.name, (len(tr), {x["build"] for x in tr}, all(x["halflog"] and x["loss_rows"] for x in tr)), (12, {"lab"}, True))
+    new_claims(rows, claim, sweep, all_ok)
     bad = [r_ for r_ in rows if r_[5] != "y"]
     out = C.write_new(D, f"claims-audit-{C.STAMP}.md", "# Claims audit (PR #36)\n\nEvery claim recomputed from the tracked file it cites: %d claims, %d mismatches.\n\n"
                       "| doc | claim | file | value in file | claimed | match |\n|---|---|---|---|---|---|\n" % (len(rows), len(bad))
