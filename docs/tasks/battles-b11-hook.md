@@ -25,7 +25,12 @@ Forbidden results (any one fails the task):
 1. **Hook `Random`, not the routines.** `Random` is `0x40284C` [R-code]; the module calls it from 12 sites (`0x43801A`, `0x43812F`,
    `0x43820D`, `0x438FFB`, `0x439006`, `0x439188`, `0x439191`, `0x439557`, `0x43955F`, `0x4395CE`, `0x4395D8`, `0x43AA88`) and from 2
    after the battle (`0x4592BD`, `0x45951C`) [R-code]. Re-point each of those `call` instructions to one cave that calls the real
-   `Random` and then appends a record `(site, range, result, half-round counter 0x4A0B7A, side to move 0x4A0B78)` to a buffer. Check
+   `Random` and then appends a record `(site, range, result, RandSeed 0x45E030 before and after the call, half-round counter 0x4A0B7A,
+   side to move 0x4A0B78)` to a buffer. **The cave preserves every register and flag**: `pushfd`/`pushad` around its own work, and
+   on return EAX holds exactly the real `Random` result and every other register, EFLAGS and the stack pointer equal what a direct
+   call would leave (the real `Random` is called with the caller's EAX unchanged). An offline test runs the cave under an x86
+   emulator (e.g. `unicorn`, or a hand-checked disassembly if no emulator is available) with randomised register/flag states and
+   compares them with a direct call's. Check
    each site's bytes are `E8 rel32` to `0x40284C` before patching; refuse to build otherwise. The calling convention is Delphi
    register (`range` in EAX, result in EAX): verify it on the first site by reading the record against the formula.
 2. **Markers at the routine entries** (`FUN_0043910C` shot, `FUN_004393EC` melee pass, `FUN_00438FB0` Rout) [R-code]: one record with
@@ -41,9 +46,13 @@ Forbidden results (any one fails the task):
 
 1. **Inertness first.** On FLD-RG, HI v HI size one and one mixed cell, seeds 1-3: the hooked and unhooked exes give identical
    series and post-battle saves. If not, stop and report.
-2. **Completeness.** The number of records per half-round equals the count the report's draw order predicts from the snapshot
+2. **Completeness, zero tolerance.** Delphi's `Random` advances `RandSeed` by exactly one LCG step (`seed·0x08088405 + 1`) per call,
+   so each record's seed-before must equal the previous record's seed-after, from the battle's first draw to its last. Any break
+   (a call from an unhooked site, a dropped or duplicated record) fails the battle's log; the task is not done while any hooked
+   battle has a break. Separately, compare the records per half-round with the count the report's draw order predicts from the snapshot
    (copy-in `Random(q·4)` per live slot, placement `Random(5)`, 2 per shot, 4 per melee, 2 per qualifying rout, `Random(3)` per flank,
-   `Random(4)` per surviving winner unit); list every mismatch.
+   `Random(4)` per surviving winner unit). With the chain intact, a mismatch here is a finding about the report's draw order, not a
+   gap in the log: list each one in the finding.
 3. **Exchange log.** From each half-round's snapshot (targets in slot word 9, shots in word 8) plus the records, rebuild every
    shot and melee: actor, target, `n`, the draws, the predicted loss by the report's formulas, and the observed loss from the next
    snapshot. Report how many exchanges the formulas reproduce exactly; each miss is listed, not averaged away.
@@ -53,7 +62,9 @@ Forbidden results (any one fails the task):
 ## Done when
 
 - The inertness check passes on all listed cells (comparison files in `runs/experiments/data/run-exp-battle-sweep/`).
-- The completeness check runs on every hooked battle, with 0 unexplained mismatches or each one listed in the finding.
+- The seed chain is unbroken in every hooked battle (0 breaks, tracked output per battle); the draw-order comparison is in the
+  finding with every mismatch listed.
+- The register/flag preservation test passes.
 - The exchange log exists for every B5 re-run battle; the formula check's result is in the finding with its tracked output.
 - `tests/`: an offline test that the build refuses a site whose bytes are not `E8 rel32 → 0x40284C`, and one that the log reader
   stops at the write index and reports the overflow flag.
