@@ -8,7 +8,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
-sys.argv = sys.argv[:1] + sys.argv[1:]
 import b0_probe as B  # noqa: E402  (same folder)
 from harness.driver import Game, G, sh  # noqa: E402
 

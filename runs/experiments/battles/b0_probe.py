@@ -4,7 +4,11 @@
     python3 runs/experiments/battles/b0_probe.py normal            # item 1: nothing auto-answered, every step logged
     python3 runs/experiments/battles/b0_probe.py savein [exe]      # item 2: File > Save As and the toolbar Save inside a battle
     python3 runs/experiments/battles/b0_probe.py lab SEED TAG      # item 3: one lab battle, BATTLEnn series kept
-    python3 runs/experiments/battles/b0_probe.py gate              # 5 lab battles in a row + a repeat + seed 2
+    python3 runs/experiments/battles/b0_probe.py gate              # 6 lab seed-1 battles in a row (gate2_a..f) + seed 2 twice (gate2_s2a, s2b);
+                                                                   #   writes gate-summary-<stamp>.json with every series/post comparison
+    python3 runs/experiments/battles/b0_probe.py lab 1 t0          # one lab trial (the first trial, lab1_t0, was made this way)
+    python3 runs/experiments/battles/b0_probe.py report TAG...     # compare kept series with the first (series_equal) -> series-report-<stamp>.json
+    python3 runs/experiments/battles/b0_probe.py resumecmp ORIG RES OFFSET [RES2]  # resume v original (RES file i = ORIG file i+OFFSET) and v a second resume
     python3 runs/experiments/battles/b0_probe.py resume            # item 4: File > Open of BATTLE05.SAV (lab)
 
 Start save: `1_rome_270_winter_11.sav` (release run-1-rome of diegoami/imp_conquest_fixtures): Rome's army 0 (37,081) is 7 tiles
@@ -77,6 +81,26 @@ def win_list(g):
     return [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows()]
 
 
+def window_ids():
+    """Every visible top-level window id, named or not (the Wine file dialog has an EMPTY name, so find_windows(".") never sees it)."""
+    return set(sh("xdotool", "search", "--onlyvisible", "--name", "").split())
+
+
+def open_dialog(g, name):
+    """File > Open and type the name. No click at a fixed point (the old driver click (636, 450) could land in the map): the dialog is
+    proven open by a new, unnamed top-level window (420 x 267 at (430,270) here), which has the focus with the name field as in Save As;
+    if none appears, DriverError and nothing is typed."""
+    before = window_ids()
+    g.menu("file", FILE_ITEMS["open"])
+    try:
+        g.wait(lambda: window_ids() - before, 8, "Open dialog window")
+    except DriverError:
+        raise DriverError("File > Open: no dialog window appeared (nothing typed)")
+    time.sleep(0.5)
+    g.replace_field(name)
+    g.key("Return")
+
+
 def start_game(g, log, exe, seed=None):
     """Fresh process, the research save opened. `seed` (normal build only) goes to SEED.TXT; the lab exe has its seed baked in.
     File > Open is done here, not by Game.open, because this save opens with a modal box ("Bithynia wants to trade with Rome."),
@@ -94,10 +118,7 @@ def start_game(g, log, exe, seed=None):
     shutil.copy(START, G / START.name)
     log("start_save", file=START.name, sha256=sha(START))
     t1 = time.time()
-    g.menu("file", FILE_ITEMS["open"])
-    g.click(636, 450)
-    g.replace_field(START.name)
-    g.key("Return")
+    open_dialog(g, START.name)
     g.wait(lambda: g.find_windows("^Unit map$") and g.find_windows("^Area map$"), 30, "map windows after load")
     time.sleep(3)
     texts = g.dismiss_popups()
@@ -249,15 +270,30 @@ def cmd_normal(g):
     log("done", total_seconds=round(time.time() - t_all, 1))
 
 
-def play_out(g, log, max_clicks=5):
-    """Computer general on, End turn until the "Battle ended" box (counting the clicks), OK, wait for the map. Nothing else is answered."""
+def count_battle_saves():
+    return len(list(G.glob("BATTLE*.SAV")))
+
+
+def play_out(g, log, max_clicks=3):
+    """Computer general on, then End turn until the "Battle ended" box; OK; wait for the map OR an "Offer of peace" box (answered No, never Yes).
+    Each End turn click is made only after the previous one is PROVEN to have advanced the battle (in_battle fell, a Battle ended box
+    appeared, the title changed or a new BATTLEnn.SAV was written, within 8 s); with no proof DriverError, never a blind second click."""
     t0 = time.time()
     g.click(D.BATTLE_TOOLS["computer"], TOOLBAR_Y, pause=1.5)
     log("computer_general_clicked", title=[w[1] for w in g.find_windows(" v ")], in_battle=g.in_battle())
     clicks = 0
-    while clicks < max_clicks and g.in_battle() and not g.find_windows("Battle ended"):
-        g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=1.5)
+    while g.in_battle() and not g.find_windows("Battle ended"):
+        if clicks >= max_clicks:
+            raise DriverError("battle not over after %d End turn clicks" % clicks)
+        before = ([w[1] for w in g.find_windows(" v ")], count_battle_saves())
+        g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=1.0)
         clicks += 1
+        proof = lambda: (not g.in_battle() or g.find_windows("Battle ended")
+                         or ([w[1] for w in g.find_windows(" v ")], count_battle_saves()) != before)
+        try:
+            g.wait(proof, 8, "proof that End turn click %d advanced the battle" % clicks, step=0.25)
+        except DriverError:
+            raise DriverError("End turn click %d: no sign the battle advanced; not clicking again" % clicks)
         log("end_turn_clicked", n=clicks, in_battle=g.in_battle(), windows=[w[1] for w in g.find_windows()])
     g.wait(lambda: g.find_windows("Battle ended"), 30, "Battle ended box")
     time.sleep(1)
@@ -265,24 +301,29 @@ def play_out(g, log, max_clicks=5):
     pw = log.shot(g, "battle-ended-window", window=str(be[0]))
     log("battle_ended", end_turn_clicks=clicks, seconds=round(time.time() - t0, 1), in_battle=g.in_battle(), ocr=ocr(pw))
     g.click_control(g.control(g.controls("Battle ended"), text="OK"), pause=0.5)
+    t_ok = time.time()
+    # the map is back, or the Offer of peace box is up (it blocks the map: the first gate run waited for the map only and aborted there)
     try:
-        g.wait(lambda: g.find_windows("^Unit map$") and not g.find_windows("Battle ended"), 20, "map after OK")
-    except DriverError:      # something is open after OK: leave it open, record it, the caller reads it
-        log("after_ok_map_not_back", windows=win_list(g), popups=g.popups())
+        g.wait(lambda: g.find_windows("^Offer of peace$") or (g.find_windows("^Unit map$") and not g.find_windows("Battle ended")),
+               60, "map or Offer of peace after OK")
+    except DriverError:
+        log("after_ok_nothing", windows=win_list(g), popups=g.popups())
+    log("after_ok_wait", seconds=round(time.time() - t_ok, 1))
     time.sleep(2)
     peace = g.find_windows("^Offer of peace$")
-    if peace:        # TBattlePols: left open and captured (screenshot, OCR, controls), then answered No, verified closed (waits up to 8 s)
-        log("offer_of_peace_open", geometry=peace[0][2:], windows=win_list(g))
+    if peace:        # TBattlePols: left open and captured (screenshot, OCR, controls), then answered No, verified closed (waits up to 12 s)
+        log("offer_of_peace_open", seconds_after_ok=round(time.time() - t_ok, 1), geometry=peace[0][2:], windows=win_list(g))
         pw = log.shot(g, "offer-of-peace-window", window=str(peace[0][0]))
         log("offer_of_peace_ocr", text=ocr(pw))
         cs = dump_controls(g, log, "Offer of peace", "offer of peace")
         log.shot(g, "offer-of-peace-root")
         g.click_control(g.control(cs, text="No"), pause=0.5)
-        for _ in range(16):
+        for _ in range(24):
             if not g.find_windows("^Offer of peace$"):
                 break
             time.sleep(0.5)
         log("offer_of_peace_answered_no", closed=not g.find_windows("^Offer of peace$"), windows=win_list(g))
+        g.wait(lambda: g.find_windows("^Unit map$"), 30, "map after the peace offer")
         time.sleep(2)
     extra = g.popups()
     log("after_ok", popups=extra, windows=win_list(g))
@@ -348,21 +389,62 @@ def cmd_lab(g):
     run_battle(g, Log("b0-lab-" + tag), LAB_EXE % seed, None, f"lab{seed}_{tag}")
 
 
+def series_names(tag):
+    return sorted(p.name for p in OUT.glob(f"{tag}_BATTLE[0-9][0-9].SAV"))
+
+
+def series_report(tags, ref=None):
+    """Byte comparison of kept series, every tag against `ref` (default the first), plus the post-battle saves' hashes."""
+    ref = ref or tags[0]
+    res = {"reference": ref, "series_files": {t: len(series_names(t)) for t in tags}, "vs_reference": {}}
+    for t in tags:
+        res["vs_reference"][t] = series_equal(series_names(ref), series_names(t))
+    res["post_sha256"] = {t: sha(OUT / f"{t}_post.SAV")[:16] for t in tags if (OUT / f"{t}_post.SAV").exists()}
+    return res
+
+
 def cmd_gate(g):
-    """Gate: 5 lab battles in a row on seed 1 (same battle), then seed 2 once; compares the BATTLEnn series byte for byte."""
+    """Gate: six lab seed-1 battles in a row (gate2_a..f, one process each), then seed 2 twice (gate2_s2a, gate2_s2b). The byte comparison
+    of every series and of the post-battle saves, with lab1_t0 (made earlier by `lab 1 t0`) as an extra, is written to
+    gate-summary-<stamp>.json together with the per-trial times (the mean is over the six seed-1 gate trials)."""
     log = Log("b0-gate")
-    recs = []
-    for i in "abcde":
-        recs.append(run_battle(g, log, LAB_EXE % 1, None, f"lab1_{i}"))
-    recs.append(run_battle(g, log, LAB_EXE % 2, None, "lab2_a"))
-    cmp = {}
-    for i in "bcde":
-        cmp["lab1_a v lab1_" + i] = series_equal(recs[0]["series"], recs["abcde".index(i)]["series"])
-    cmp["lab1_a v lab2_a"] = series_equal(recs[0]["series"], recs[5]["series"])
-    cmp["post-battle saves identical (lab1 a..e)"] = len({r["post_sha256"] for r in recs[:5]}) == 1
-    times = [r["seconds_process_start_to_post_save"] for r in recs]
-    log("gate_summary", comparisons=cmp, times=times, mean_lab1=round(sum(times[:5]) / 5, 1))
-    (OUT / f"gate-summary-{STAMP}.json").write_text(json.dumps({"comparisons": cmp, "times": times, "records": recs}, indent=1, default=str))
+    s1 = [run_battle(g, log, LAB_EXE % 1, None, f"gate2_{i}") for i in "abcdef"]
+    s2 = [run_battle(g, log, LAB_EXE % 2, None, f"gate2_s2{i}") for i in "ab"]
+    t1 = [r["seconds_process_start_to_post_save"] for r in s1]
+    tags1 = [f"gate2_{i}" for i in "abcdef"] + (["lab1_t0"] if series_names("lab1_t0") else [])
+    summary = {"seed1": series_report(tags1), "seed2": series_report(["gate2_s2a", "gate2_s2b"]),
+               "seed1_v_seed2": series_equal(series_names("gate2_a"), series_names("gate2_s2a")),
+               "times_seed1_s": t1, "mean_seed1_s": round(sum(t1) / len(t1), 1),
+               "times_seed2_s": [r["seconds_process_start_to_post_save"] for r in s2], "records": s1 + s2}
+    log("gate_summary", **{k: v for k, v in summary.items() if k != "records"})
+    (OUT / f"gate-summary-{STAMP}.json").write_text(json.dumps(summary, indent=1, default=str))
+
+
+def cmd_report(g=None):
+    res = series_report(sys.argv[2:])
+    (OUT / f"series-report-{STAMP}.json").write_text(json.dumps(res, indent=1))
+    print(json.dumps(res, indent=1))
+
+
+def cmd_resumecmp(g=None):
+    """resumecmp ORIG RES OFFSET [RES2]: file i of RES (a resume of ORIG's BATTLE<OFFSET>) against ORIG's file i+OFFSET, and against RES2."""
+    orig, res, off = sys.argv[2], sys.argv[3], int(sys.argv[4])
+    res2 = sys.argv[5] if len(sys.argv) > 5 else None
+    A, R = series_names(orig), series_names(res)
+    rd = lambda n: (OUT / n).read_bytes()
+    rows = []
+    for i, r in enumerate(R):
+        row = {"resumed": r}
+        if i + off < len(A):
+            a = rd(A[i + off])
+            row.update(original=A[i + off], differing_bytes=sum(x != y for x, y in zip(a, rd(r))) + abs(len(a) - len(rd(r))))
+        rows.append(row)
+    out = {"original": orig, "resumed": res, "offset": off, "rows": rows,
+           "all_identical_to_original": all(r.get("differing_bytes") == 0 for r in rows if "differing_bytes" in r)}
+    if res2:
+        out["resume_v_resume"] = series_equal(R, series_names(res2))
+    (OUT / f"resume-comparison-{res}-{STAMP}.json").write_text(json.dumps(out, indent=1))
+    print(json.dumps(out, indent=1))
 
 
 def cmd_win(g):
@@ -520,10 +602,7 @@ def cmd_escape(g):
 
 def open_file(g, log, name):
     shutil.copy(OUT / name, G / name) if (OUT / name).exists() else None
-    g.menu("file", FILE_ITEMS["open"])
-    g.click(636, 450)
-    g.replace_field(name)
-    g.key("Return")
+    open_dialog(g, name)
     t0 = time.time()
     for _ in range(30):
         time.sleep(1)
@@ -536,7 +615,8 @@ def open_file(g, log, name):
 def cmd_resume(g):
     """Item 4: lab exe (seed given), File > Open of <tag>_BATTLE<nn>.SAV, Computer general, End turn, the rest of the series."""
     seed, tag, nn = int(sys.argv[2]), sys.argv[3], sys.argv[4]
-    log = Log(f"b0-resume-{tag}-{nn}")
+    sfx = sys.argv[5] if len(sys.argv) > 5 else ""        # optional suffix of the kept names (a second resume of the same save)
+    log = Log(f"b0-resume-{tag}-{nn}{sfx}")
     src = f"{tag}_BATTLE{nn}.SAV"
     for f in G.glob("BATTLE*.SAV"):
         shutil.copy(f, OUT / f"stray_{f.name}")
@@ -545,7 +625,7 @@ def cmd_resume(g):
     g.start()
     log("process_started", exe=g.exe)
     # the save is opened under a name that is not BATTLEnn.SAV, so the new series cannot overwrite it
-    name = f"RESUME_{nn}_{tag}.SAV"
+    name = f"RESUME_{nn}_{tag}{sfx}.SAV"
     shutil.copy(OUT / src, OUT / name) if not (OUT / name).exists() else None
     log("source", file=src, sha256=sha(OUT / src), block12=block12(OUT / src))
     dt = open_file(g, log, name)
@@ -556,9 +636,9 @@ def cmd_resume(g):
     for p in g.popups():
         log("popup", name=p[1], text=g.read_popup(p))
     play_out(g, log)
-    post = post_save(g, log, f"resume_{nn}_{tag}_post.SAV")
+    post = post_save(g, log, f"resume_{nn}_{tag}{sfx}_post.SAV")
     describe_save(keep(post), log, "post-battle after resume")
-    series = battle_series(f"resume{nn}_{tag}")
+    series = battle_series(f"resume{nn}_{tag}{sfx}")
     log("resumed_series", files=series)
 
 
@@ -586,7 +666,7 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     g = Game()
     try:
-        {"normal": cmd_normal, "lab": cmd_lab, "gate": cmd_gate, "savein": cmd_savein, "win": cmd_win, "escape": cmd_escape, "resume": cmd_resume, "compare": cmd_compare}[cmd](g)
+        {"normal": cmd_normal, "lab": cmd_lab, "gate": cmd_gate, "savein": cmd_savein, "win": cmd_win, "escape": cmd_escape, "resume": cmd_resume, "compare": cmd_compare, "report": cmd_report, "resumecmp": cmd_resumecmp}[cmd](g)
     except KeyError:
         sys.exit(__doc__)
 
