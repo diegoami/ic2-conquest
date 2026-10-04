@@ -19,7 +19,7 @@ done) and this task does not write to it.
 | `b11-entries-*.json` | the markers fire where the snapshots say a shot / melee happened, on 315 hooked battles (`b11_addresses.py entries`). |
 | `trials-b11.jsonl` | append-only, one line per trial attempt (hooked or plain; error lines included; `exe_sha256`, series and post-battle SHA-256, the hook check summary). |
 | `hooklog-<trial>.csv` | every record of the hook buffer of that battle (`state/hook_log.py` layout), as read through `/proc/<pid>/mem` after the battle. |
-| `hookcheck-<trial>.json` | the seed chain, boundary, formula and site checks of that log (`b11_run.py analyze`). |
+| `hookcheck-<trial>.json` | the seed chain, boundary, formula and site checks of that log (`b11_run.analyze`, written by the runner right after the battle). |
 | `chains-*.csv`, `chains-summary-*.json` | one row per hooked battle and the totals of those checks (`b11_chains.py`). |
 | `exchanges-<trial>.jsonl`, `exchange-check-<trial>.json` | the rebuilt exchange log of the battle (every shot, melee, rout test, flank and placement draw: actor, target, `n`, draws, predicted loss, morale) and the check against the snapshots (`b11_exchange.py`). The 48 trials of round 1 and the seven inertness-batch trials have two versions: the second (newest by mtime) has the fields added after round 1 ran (`attribution`, `unconfirmed_exchanges`, `half_rounds_with_unaccounted_draws`); the older ones are kept. |
 | `inertness-*.json`, `inertness-*.csv` | the byte comparison of hooked battles against unhooked ones (`b11_compare.py inertness`): the first (8 rows) is after the first batch; **the last is the full one: 322 hooked battles**. |
