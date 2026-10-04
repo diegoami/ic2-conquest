@@ -294,11 +294,10 @@ def end_turn_until_over(g, log, max_clicks=3):
     while g.in_battle() and not g.find_windows("Battle ended"):
         if clicks >= max_clicks:
             raise DriverError("battle not over after %d End turn clicks" % clicks)
-        before = ([w[1] for w in g.find_windows(" v ")], count_battle_saves())
+        before = g.battle_progress_mark()       # flag, titles, BATTLEnn count AND the half-round counter (the file count alone is no proof)
         g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=1.0)
         clicks += 1
-        proof = lambda: (not g.in_battle() or g.find_windows("Battle ended")
-                         or ([w[1] for w in g.find_windows(" v ")], count_battle_saves()) != before)
+        proof = lambda: (not g.in_battle() or g.find_windows("Battle ended") or g.battle_progress_mark() != before)
         try:
             g.wait(proof, 8, "proof that End turn click %d advanced the battle" % clicks, step=0.25)
         except DriverError:

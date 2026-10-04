@@ -310,6 +310,25 @@ def test_bad_mode_rejected():
     raise AssertionError("accepted")
 
 
+def test_synthetic_block_refuses_more_units_than_the_grid_holds():
+    from state import battle_block as BB
+    u = ("hi", 6000, 6, 0, "x")
+    BB.synthetic_block([u] * 13, [u] * 12)         # the largest that fits: attacker x 0..12, defender x 1..12
+    for att, dfn in (([u] * 14, [u]), ([u], [u] * 13)):
+        try:
+            BB.synthetic_block(att, dfn)
+        except ValueError:
+            continue
+        raise AssertionError("accepted %d v %d units" % (len(att), len(dfn)))
+
+
+def test_end_turn_until_over_proof_includes_the_half_round_counter():
+    import inspect, sys as _s
+    _s.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))
+    import b0_probe
+    assert "battle_progress_mark" in inspect.getsource(b0_probe.end_turn_until_over)
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted(globals().items()):

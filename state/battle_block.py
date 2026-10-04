@@ -5,10 +5,10 @@ Layout (2,105 bytes after the 55-byte trailer; `docs/sav-layout-notes.md` §Bloc
 
   header, 9 bytes, `<hhhBh`:
     +0  i16  attacker's strategic army index (Rome's army 0)                     [O] 0 in every battle seen
-    +2  i16  defender's strategic army index (Gaul's army 10)                    [O] 10 in every battle seen. This is the "word +2" of the plan: it is
-                                                                                  NOT a per-slot word and it is not a unit index (hypothesis rejected for this
-                                                                                  battle; whether it is the defender's or "the other army's" index needs a battle
-                                                                                  with other army indices)
+    +2  i16  defender's strategic army index (Gaul's army 10)                    [O] 10 in every battle seen. A header field, NOT a per-slot word and not a
+                                                                                  unit index. (The research request's "word +2" is the SLOT word index 2 =
+                                                                                  slot byte +4, the origin label below: it is that field the plan's hypothesis
+                                                                                  about a link to the army's unit index was tested on, and rejected.)
     +4  i16  unknown (`x2`): 1, 0, 0, 1, 0, 1, 0, 1 ... from the 4th half-round on 1 at even half-rounds   [?]
     +6  u8   unknown (`y1`): 0 for the first two saves, then 1                                              [?]
     +7  i16  half-round counter = the BATTLEnn number of the lab build (1, 2, 3 ...)                        [O]
@@ -19,7 +19,7 @@ Layout (2,105 bytes after the 55-byte trailer; `docs/sav-layout-notes.md` §Bloc
     +8  troops (<= 0 empty / dead)                  [O] equals the strategic unit's troops at the start
     +10 quality                                     [O]
     +12 battle-local morale (60..99 seen)           [O] initial = clamp(Random(q*4) + army morale, 60, 90) (+3 for the computer side) [R]
-    +14 `state`: 0..6                               [D] movement points left: the type's allowance (HI 2, LI/Ar 4, HC 5, LC 6) refilled when the side starts a half-round; exact
+    +14 `state`: 0..6 seen (LC 6, HC 5)               [D] movement points left: the type's allowance (HI 2, LI/Ar 4, HC 5, LC 6) refilled when the side starts a half-round; exact
                                                     semantics [?] (Gaul's LI read 1 at the second file)
     +16 `ammo`: li 7, ar 25, lc 9, hc 0, hi 0 at the start; falls when the unit shoots (ar -4 per volley)   [D]
     +18 `target`: slot index of the enemy it last attacked, -1 none                                          [D]
@@ -86,6 +86,11 @@ def synthetic_block(attacker_units, defender_units, attacker_army=0, defender_ar
     """A block built from scratch (tests, crafted saves): each side's units are (type, troops, quality, merc, name); attackers stand in row y=0 from
     x=0, defenders in row y=9 from x=1 (the placement seen in B2), full morale 70, ammo li 7 / ar 25 / lc 9 / else 0, no targets; the grid is
     derived with the sprite rule (side*20 + 3*type + size class)."""
+    for side, units in (("attacker", attacker_units), ("defender", defender_units)):
+        if len(units) > 13:       # attacker unit j stands at x=j (0..13), defender j at x=j+1: more than 13 / 12 would leave the 14-wide grid
+            raise ValueError("synthetic_block: %s has %d units; at most 13 (attacker) / 12 (defender) fit the 14 x 12 grid" % (side, len(units)))
+    if len(defender_units) > 12:
+        raise ValueError("synthetic_block: defender has %d units; at most 12 fit the 14 x 12 grid (x = j + 1)" % len(defender_units))
     std = {"li": 15000, "hi": 6000, "ar": 3500, "lc": 7000, "hc": 2500}
     ammo = {"li": 7, "ar": 25, "lc": 9, "hi": 0, "hc": 0}
     slots = []
@@ -114,10 +119,6 @@ def from_save(path):
 
 def cell(x, y):
     return x * GRID_H + y
-
-
-def size_class(typ, troops, grid_value):
-    return grid_value - 3 * (TYPES.index(typ) if isinstance(typ, str) else typ)
 
 
 def expected_grid(b):
