@@ -186,7 +186,8 @@ def run_turns(g, tag, n, log, rec):
 
 
 def trial(cell, seed, answer, turns, log, rep=1, label=None):
-    """One whole run from a fresh process. `answer`: yes | no | capture (capture = declined No). Returns the record (also appended)."""
+    """One whole run from a fresh process. `answer`: yes | no | capture. `no` and `capture` both press No (the driver's `capture` mode: screenshot + controls + No;
+    its `no` mode records neither, which a Yes/No pair needs); the plan is recorded as given. Returns the record (also appended)."""
     tag = "%s_s%d_%s_r%d" % (cell.replace("+", "-").replace("=", ""), seed, label or answer, rep)
     rec = {"trial": tag, "cell": cell, "seed": seed, "answer_plan": answer, "rep": rep, "exe": C.NORMAL_EXE, "build": "normal", "turns_plan": turns,
            "level": "L1 from FLD-RG (labelled synthetic)", "stamp": C.STAMP, "status": "started"}
@@ -230,7 +231,7 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None):
             pre["strategic"] = strategic(b)
             log("pre_answer", trial=tag, text=info["text"], buttons=info["buttons"], geometry=info["geometry"])
 
-        res = g.play_battle(shot=tmp_end, on_dialog={"capture": "capture", "yes": "yes", "no": "no"}[answer], pre_answer=pre_answer)
+        res = g.play_battle(shot=tmp_end, on_dialog={"capture": "capture", "yes": "yes", "no": "capture"}[answer], pre_answer=pre_answer)
         if tmp_end.exists():
             rec["battle_ended_shot"] = C.keep(tmp_end, "%s_battle-ended.png" % tag, shots).name
             tmp_end.unlink()
