@@ -92,6 +92,7 @@ def start_game(g, log, exe, seed=None):
         g.wait(lambda: g.seedlog_lines() > n, 20, "SEED.LOG line at start")
         log("seed_line", line=(G / "SEED.LOG").read_text().splitlines()[-1].strip())
     shutil.copy(START, G / START.name)
+    log("start_save", file=START.name, sha256=sha(START))
     t1 = time.time()
     g.menu("file", FILE_ITEMS["open"])
     g.click(636, 450)
@@ -264,7 +265,10 @@ def play_out(g, log, max_clicks=5):
     pw = log.shot(g, "battle-ended-window", window=str(be[0]))
     log("battle_ended", end_turn_clicks=clicks, seconds=round(time.time() - t0, 1), in_battle=g.in_battle(), ocr=ocr(pw))
     g.click_control(g.control(g.controls("Battle ended"), text="OK"), pause=0.5)
-    g.wait(lambda: g.find_windows("^Unit map$") and not g.find_windows("Battle ended"), 20, "map after OK")
+    try:
+        g.wait(lambda: g.find_windows("^Unit map$") and not g.find_windows("Battle ended"), 20, "map after OK")
+    except DriverError:      # something is open after OK: leave it open, record it, the caller reads it
+        log("after_ok_map_not_back", windows=win_list(g), popups=g.popups())
     time.sleep(2)
     extra = g.popups()
     log("after_ok", popups=extra, windows=win_list(g))
@@ -345,6 +349,26 @@ def cmd_gate(g):
     times = [r["seconds_process_start_to_post_save"] for r in recs]
     log("gate_summary", comparisons=cmp, times=times, mean_lab1=round(sum(times[:5]) / 5, 1))
     (OUT / f"gate-summary-{STAMP}.json").write_text(json.dumps({"comparisons": cmp, "times": times, "records": recs}, indent=1, default=str))
+
+
+def cmd_win(g):
+    """A human VICTORY on the normal build (what opens after the OK of a won battle?): from NB_post_battle.SAV (the item-1 battle, Rome
+    lost army 0) Rome's army 13 (38,455) walks to (86,28) and attacks Gaul's army 10 (17,239) at (85,28); nothing is auto-answered."""
+    global START, ROME_ARMY, LEGS
+    START, ROME_ARMY = OUT / "NB_post_battle.SAV", 13
+    LEGS = [(91, 28), (90, 27), (89, 27), (88, 26), (87, 27), STAGE_TILE]
+    log = Log("b0-win")
+    start_game(g, log, NORMAL_EXE, SEED)
+    stage(g, log)
+    attack_open(g, log)
+    log.shot(g, "01-placement")
+    play_out(g, log)
+    log.shot(g, "02-after-ok")
+    for w in g.popups():
+        log("after_ok_text", name=w[1], text=g.read_popup(w))
+        dump_controls(g, log, w[1], "after OK (win): " + w[1])
+    post = post_save(g, log, "WIN_post_battle.SAV")
+    describe_save(keep(post), log, "post-battle win")
 
 
 def block12(path):
@@ -545,7 +569,7 @@ def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     g = Game()
     try:
-        {"normal": cmd_normal, "lab": cmd_lab, "gate": cmd_gate, "savein": cmd_savein, "escape": cmd_escape, "resume": cmd_resume, "compare": cmd_compare}[cmd](g)
+        {"normal": cmd_normal, "lab": cmd_lab, "gate": cmd_gate, "savein": cmd_savein, "win": cmd_win, "escape": cmd_escape, "resume": cmd_resume, "compare": cmd_compare}[cmd](g)
     except KeyError:
         sys.exit(__doc__)
 
