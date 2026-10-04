@@ -1,0 +1,3 @@
+Correction (PR #35 review R2), added beside EXES-sha256.txt, which is kept as written: its last line labels `git fccb689` as the "last commit touching
+patches/battle_lab.py"; fccb689 is the BLOB hash (`git rev-parse HEAD:patches/battle_lab.py`). The last commit touching the file is
+a7397c5 (`git log -1 --format=%h -- patches/battle_lab.py`). setup/build_lab_exes.sh now writes the commit.

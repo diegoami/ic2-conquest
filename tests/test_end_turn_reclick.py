@@ -191,8 +191,8 @@ class Battle(Scripted):
         self.ticks += 1
         if self.confirm_at == "loop" and self.ticks == 2:
             self.boxes.append((41, "Confirm"))              # a Confirm opens mid-battle
-        if self.ticks == 3:
-            self.battle = False
+        if self.ticks == 2:             # the End turn click (tick 1 is Computer general) ends the battle: a proof that it advanced
+            self.battle = False         # (play_battle no longer re-clicks blindly: B0's R6 fix, battles PR A)
 
     def controls(self, title):
         if self.confirm_at == "fallback":

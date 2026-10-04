@@ -161,6 +161,17 @@ class Game:
     def army_rec(self, i):
         return self.mem(ARMIES + i * ARMY_LEN, ARMY_LEN)
 
+    def army_state(self, i):
+        """Army i from game memory, as the dict of `state.sav.parse_army` (units, morale, supplies, money, position, by-type totals via
+        `state.battle.by_type`)."""
+        from state import sav
+        return sav.parse_army(self.army_rec(i), i)
+
+    def nation_state(self, n):
+        """Nation n from game memory, as the dict of `state.sav.parse_nation` (treasury, unity, relations, ...)."""
+        from state import sav
+        return sav.parse_nation(self.nation_rec(n), n)
+
     def view_origin(self):
         n = self.i16(CUR_NATION)
         rec = self.nation_rec(n)
@@ -206,12 +217,33 @@ class Game:
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         sh("import", "-window", window, str(path))
 
+    def screen_size(self):
+        m = re.search(r"(\d+)\s+(\d+)", sh("xdotool", "getdisplaygeometry", check=False))
+        return (int(m.group(1)), int(m.group(2))) if m else (1280, 1024)
+
+    def neutral_point(self):
+        """A point on the bare root window, proven to be outside every visible window (a click there harmlessly closes menus).
+        `NEUTRAL` is used when no window covers it; otherwise (a unit map opened oversized, 1143 x 903 with the research start
+        save, covers (1000, 900) and a click there ORDERS A MOVE for a selected army) a point is derived from the screen geometry
+        and the windows' geometry: along the bottom strip, then the right and left strips. DriverError if every candidate is covered."""
+        wins = [w for w in self.find_windows(".") if w[4] > 1 and w[5] > 1]
+        covered = lambda x, y: any(w[2] <= x < w[2] + w[4] and w[3] <= y < w[3] + w[5] for w in wins)
+        if not covered(*NEUTRAL):
+            return NEUTRAL
+        sw, sh_ = self.screen_size()
+        cands = [(x, sh_ - 6) for x in (700, 100, 400, 1000, sw - 100)]
+        cands += [(sw - 6, y) for y in (500, 200, 800)] + [(6, y) for y in (500, 200, 800)]
+        for c in cands:
+            if 0 <= c[0] < sw and 0 <= c[1] < sh_ and not covered(*c):
+                return c
+        raise DriverError("no point of the root window is free of windows (%d windows): reset_ui would click on one" % len(wins))
+
     def reset_ui(self):
         # close any open menu and leave menu-bar mode: a click on the menu
         # bar while it is armed would close the menu instead of opening it
         self.key("Escape")
         self.key("Escape")
-        self.click(*NEUTRAL, pause=0.2)
+        self.click(*self.neutral_point(), pause=0.2)
 
     def _load_cache(self, path):
         try:
@@ -512,18 +544,48 @@ class Game:
         line = (G / "AUTOSAVE.LOG").read_text().splitlines()[-1]
         return G / line.split()[1], texts
 
-    def open(self, save):
-        """File > Open (the save is copied into the game folder first)."""
+    BOX_TITLES = ("Information", "Confirm", "Warning", "Error", "")
+
+    def message_boxes(self):
+        """Small modal boxes (the set `dismiss_popups` acts on)."""
+        return [p for p in self.popups() if p[1] in self.BOX_TITLES and p[4] < 600 and p[5] < 300]
+
+    def open_file_dialog(self, name):
+        """File > Open and type the name. The dialog is PROVEN open by a new top-level window (the Wine file dialog has an empty
+        name, so only an unfiltered search sees it) before anything is typed: no click at a fixed point, which could land in the
+        map. DriverError (nothing typed) if none appears in 8 s."""
+        ids = lambda: set(sh("xdotool", "search", "--onlyvisible", "--name", "", check=False).split())
+        before = ids()
+        self.menu("file", FILE_ITEMS["open"])
+        try:
+            self.wait(lambda: ids() - before, 8, "Open dialog window")
+        except DriverError:
+            raise DriverError("File > Open: no dialog window appeared (nothing typed)")
+        time.sleep(0.5)
+        self.replace_field(name)
+        self.key("Return")
+
+    def loaded(self):
+        """A game is loaded: the main window's title has "turn", or (some saves, e.g. the research start save, never put "turn" in the title,
+        with or without a box open: found with `1_rome_270_winter_11.sav`) both map windows are up."""
+        return bool(self.find_windows("turn") or (self.find_windows("^Unit map$") and self.find_windows("^Area map$")))
+
+    def open(self, save, strict=True):
+        """File > Open (the save is copied into the game folder first). A save can open with a modal box ("Bithynia wants to
+        trade with Rome." with the research start save), and a box stays up until it is closed: the box's text is captured (OCR) and
+        returned, an information box is closed with OK, and with `strict` (default) a Confirm box is answered No and raises
+        DriverError("end turn: unexpected Confirm: ...") instead of Yes. Done when `loaded()`."""
         src = Path(save)
         if src.parent.resolve() != G.resolve():
             shutil.copy(src, G / src.name)
-        self.menu("file", FILE_ITEMS["open"])
-        self.click(636, 450)
-        self.replace_field(src.name)
-        self.key("Return")
-        self.wait(lambda: self.find_windows("turn"), 30, "game window after load")
+        self.open_file_dialog(src.name)
+        self.wait(lambda: self.loaded() or self.message_boxes(), 30, "game window or a message box after load")
         time.sleep(3)
-        return self.dismiss_popups()
+        texts = self.dismiss_popups(strict=strict)
+        if not self.loaded():
+            self.wait(self.loaded, 30, "game window after the box was closed")
+            texts += self.dismiss_popups(strict=strict)
+        return texts
 
     def seedlog_lines(self):
         p = G / "SEED.LOG"
@@ -1197,29 +1259,68 @@ class Game:
             raise DriverError("autosave: " + line)
         return line.split()[1], texts
 
-    def play_battle(self, shot=None, strict=False):
-        """Play an open battle with Computer general, then dismiss the result.
+    def battle_progress_mark(self):
+        """What changes when an End turn click advanced the battle: the flag, the title, and (lab build) the BATTLEnn.SAV count."""
+        return (self.in_battle(), tuple(w[1] for w in self.find_windows(" v ")), len(list(G.glob("BATTLE*.SAV"))))
+
+    def end_turn_proven(self, click, timeout=8):
+        """One battle End turn click, then PROOF it advanced: the battle ended (flag down or a "Battle ended" box) or the mark changed
+        within `timeout` s. DriverError (and no further click) if there is no sign: the click may still be queued."""
+        before = self.battle_progress_mark()
+        click()
+        proof = lambda: (not self.in_battle() or self.find_windows("Battle ended") or self.battle_progress_mark() != before)
+        try:
+            self.wait(proof, timeout, "proof that the End turn click advanced the battle", step=0.25)
+        except DriverError:
+            raise DriverError("battle End turn: no sign the battle advanced; not clicking again")
+
+    def play_battle(self, shot=None, strict=False, on_dialog=None, max_clicks=120):
+        """Play an open battle with Computer general, then dismiss the result. Returns a dict
+        {"end_turn_clicks", "battle_ended_text", "dialogs"}; callers that ignore it behave as before.
 
         The battle toolbar's button x is derived from the tooltips like the
         others. Turning Computer general on and then End turn once runs the whole
         battle, so the two clicks happen immediately, while the battle window is
         still on top; it can end up below the game's other windows later, and a
-        click then lands behind it."""
+        click then lands behind it.
+
+        **Every End turn click after the first is made only after proof that the previous one advanced the battle** (flag down,
+        "Battle ended" box, title or BATTLEnn.SAV count changed within 8 s); with no proof DriverError, never a blind re-click.
+        A battle that ended at the Computer general click (flag down) gets no End turn click at all.
+
+        `on_dialog` (None: historical behaviour, `dismiss_popups(strict=strict)` after OK): what to do with a window that opens after
+        the "Battle ended" box's OK (the "Offer of peace" box, TBattlePols, or any other; the loop waits for the map or such a window).
+        Every such window is recorded in `dialogs` as {title, text (OCR), controls, geometry, shot, answer}:
+          "capture": screenshot + OCR + controls, then declined (No; OK for a box with no No button) - never Yes;
+          "no":      OCR text only, then declined;
+          "yes":     screenshot + OCR + controls, then Yes (OK if the box has no Yes);
+          "strict":  screenshot + OCR + controls, declined, and DriverError("battle: unexpected dialog: <text>") raised."""
+        if on_dialog not in (None, "capture", "yes", "no", "strict"):
+            raise DriverError("on_dialog must be None, 'capture', 'yes', 'no' or 'strict'")
+        res = {"end_turn_clicks": 0, "battle_ended_text": None, "dialogs": []}
         time.sleep(2)
         if not self.find_windows(" v "):
-            return
+            return res
         if not self.battle_x:
             self.calibrate_battle_toolbar()
         self.click(self.battle_x.get("computer", BATTLE_TOOLS["computer"]), BATTLE_TOOLBAR_Y, pause=1.5)
-        for _ in range(120):
+        end_click = lambda: self.click(self.battle_x.get("end_turn", BATTLE_TOOLS["end_turn"]), BATTLE_TOOLBAR_Y, pause=1.0)
+        while True:
             if strict:
                 self._refuse_confirm()
             if not self.in_battle() or self.find_windows("Battle ended"):
                 break
-            self.click(self.battle_x.get("end_turn", BATTLE_TOOLS["end_turn"]), BATTLE_TOOLBAR_Y, pause=1.5)
+            if res["end_turn_clicks"] >= max_clicks:
+                raise DriverError("battle not over after %d End turn clicks" % max_clicks)
+            res["end_turn_clicks"] += 1
+            self.end_turn_proven(end_click)
         w = self.find_windows("Battle ended")
+        if not w and on_dialog:
+            w = self.wait(lambda: self.find_windows("Battle ended"), 30, "Battle ended box")
         if w and shot:
             self.shot(shot, window=str(w[0][0]))
+        if w and on_dialog:
+            res["battle_ended_text"] = self.read_popup(w[0])
         # Dismiss the result dialog: its OK by control, else the default button,
         # else the recorded coordinate.
         try:
@@ -1233,4 +1334,52 @@ class Game:
                 self._refuse_confirm()
             if self.popups():
                 self.click(220, 478, pause=1.5)
-        self.dismiss_popups(strict=strict)
+        if on_dialog is None:
+            self.dismiss_popups(strict=strict)
+            return res
+        # the map is back, or a box (Offer of peace) is up and blocks it
+        try:
+            self.wait(lambda: self._post_battle_windows() or (self.find_windows("^Unit map$") and not self.find_windows("Battle ended")),
+                      60, "map or a dialog after the Battle ended box")
+        except DriverError:
+            pass
+        time.sleep(2)
+        for _ in range(6):
+            boxes = self._post_battle_windows()
+            if not boxes:
+                break
+            res["dialogs"].append(self._answer_post_battle(boxes[0], on_dialog))
+            if on_dialog == "strict":
+                raise DriverError("battle: unexpected dialog: " + res["dialogs"][-1]["text"])
+            time.sleep(1.5)
+        return res
+
+    def _post_battle_windows(self):
+        """Windows that are not the permanent ones and not a ghost: after the Battle ended OK these are the boxes to deal with."""
+        return [p for p in self.popups() if p[1] != "Battle ended" and not re.match(r" ?.* v ", p[1])]
+
+    def _answer_post_battle(self, w, mode):
+        wid, title = w[0], w[1]
+        rec = {"title": title, "geometry": list(w[2:]), "text": self.read_popup(w), "controls": None, "shot": None, "answer": None}
+        if mode != "no":
+            png = WORK / "shots" / ("dialog-%s-%d.png" % (re.sub(r"\W+", "_", title) or "untitled", int(time.time())))
+            self.shot(png, window=str(wid))
+            rec["shot"] = str(png)
+        try:
+            cs = self.controls(title) if title else []
+        except DriverError:
+            cs = []
+        if mode != "no":
+            rec["controls"] = cs
+        want = "yes" if mode == "yes" else "no"
+        c = next((c for c in cs if c["text"].replace("&", "").lower() == want), None) \
+            or next((c for c in cs if c["text"].replace("&", "").lower() == "ok"), None)
+        if c is None:
+            raise DriverError("dialog %r: no %s or OK button (controls %s)" % (title, want, [x["text"] for x in cs]))
+        rec["answer"] = c["text"]
+        for _ in range(3):      # the first click into an inactive window may only activate it
+            self.click_control(c, pause=1.0)
+            if wid not in [p[0] for p in self.popups()]:
+                break
+            time.sleep(1.5)
+        return rec

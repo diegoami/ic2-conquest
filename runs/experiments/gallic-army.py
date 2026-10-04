@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from harness.driver import G, WORK, Game          # noqa: E402
+from state.battle import by_type                    # noqa: E402
 from state.sav import UNIT_TYPES, live_armies, load  # noqa: E402
 
 BASE = WORK / "fixtures" / "BASE.SAV"
@@ -63,7 +64,7 @@ def run(seed):
             r["result"] = "Gaul has no army"
             return r
         t = (garmy["x"], garmy["y"])
-        r["gaul_before"] = {u["type"]: u["troops"] for u in garmy["units"]}
+        r["gaul_before"] = {ty: n for ty, n in by_type(garmy).items() if n}      # sum per type (the old comprehension kept only the last unit of each type)
         r["gaul_troops_before"] = garmy["troops"]
         pos = g.army_pos(0)
         r["turns_to_battle"] = turn
@@ -78,7 +79,7 @@ def run(seed):
             name2, _ = g.end_turn()
             s2 = load(G / name2)
             ga2 = army_of(s2, GAUL)
-            r["gaul_after"] = {u["type"]: u["troops"] for u in ga2["units"]} if ga2 else {}
+            r["gaul_after"] = {ty: n for ty, n in by_type(ga2).items() if n} if ga2 else {}
             r["gaul_troops_after"] = ga2["troops"] if ga2 else 0
             r["result"] = "battle"
             return r

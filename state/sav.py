@@ -43,6 +43,48 @@ def move_cost(code):
     return MOVE_COST.get(code, 4 if 6 <= code <= 11 else None)
 
 
+def parse_army(r, i=0):
+    """One 656-byte army record (a save's, or the game's memory at 0x47C1EC + 656*i) as the dict `parse` lists."""
+    x, y, owner, moves, cell, sup, money, morale = struct.unpack_from("<8h", r, 0)
+    units = []
+    for k in range(20):
+        label, typ, troops, q = struct.unpack_from("<4h", r, 16 + 32 * k)
+        if troops > 0:
+            units.append({"slot": k, "type": UNIT_TYPES[typ], "troops": troops, "quality": q,
+                          "merc": label, "name": cstr(r[16 + 32 * k + 8:16 + 32 * k + 32])})
+    troops = sum(u["troops"] for u in units)
+    return {"id": i, "x": x, "y": y, "owner": owner, "moves": moves, "cell": cell,
+            "embarked": cell == -1, "supplies": sup, "money": money, "morale": morale,
+            "troops": troops, "units": units,
+            "supply_pct": sup * 10000 // max(troops, 1) if troops else 0}
+
+
+def parse_nation(r, n):
+    """One 1,172-byte nation record (a save's, or the game's memory at 0x474670 + 1172*n) as the dict `parse` lists."""
+    rel = struct.unpack_from("<16h", r, 0x26)
+    clist = []
+    for k in range(334):
+        c = i16(r, 0x48 + 2 * k)
+        if c < 0:
+            break
+        clist.append(c)
+    slots = []
+    for k in range(40):
+        st, typ, troops, city = struct.unpack_from("<4h", r, 0x2E4 + 8 * k)
+        if troops > 0:
+            slots.append({"slot": k, "state": st, "type": UNIT_TYPES[typ], "troops": troops, "city": city})
+    wealth, wealth0, treasury, treasury0 = struct.unpack_from("<4i", r, 0x430)
+    unity, mob, capital, ncities, ncities0, tax, taxbase, conq = struct.unpack_from("<8h", r, 0x440)
+    return {"id": n, "name": cstr(r[:11]), "leader": cstr(r[0xB:0x26]),
+            "relations": {NATIONS[j]: rel[j] for j in range(16) if j != n},
+            "neighbours": [NATIONS[j] for j in range(16) if (struct.unpack_from("<H", r, 0x46)[0] >> j) & 1],
+            "city_list": clist, "recruit_slots": slots,
+            "wealth": wealth, "treasury": treasury, "unity": unity, "mobilization": mob,
+            "capital": capital, "cities_count": ncities, "tax": tax, "tax_base": taxbase,
+            "conquered_by": conq, "view": [i16(r, 0x488), i16(r, 0x486)], "human": r[0x490] == 1,
+            "alive": unity > 0 and capital != -1}
+
+
 def parse(b):
     s = {"size": len(b)}
     s["map"] = struct.unpack_from("<%dh" % (MAP_W * MAP_H), b, 0)     # (x, y) -> [x*140 + y]
@@ -61,19 +103,7 @@ def parse(b):
     na = i16(b, ARMY_OFF)
     armies, o = [], ARMY_OFF + 2
     for i in range(na):
-        r = b[o + i * ARMY_LEN:o + (i + 1) * ARMY_LEN]
-        x, y, owner, moves, cell, sup, money, morale = struct.unpack_from("<8h", r, 0)
-        units = []
-        for k in range(20):
-            label, typ, troops, q = struct.unpack_from("<4h", r, 16 + 32 * k)
-            if troops > 0:
-                units.append({"slot": k, "type": UNIT_TYPES[typ], "troops": troops, "quality": q,
-                              "merc": label, "name": cstr(r[16 + 32 * k + 8:16 + 32 * k + 32])})
-        troops = sum(u["troops"] for u in units)
-        armies.append({"id": i, "x": x, "y": y, "owner": owner, "moves": moves, "cell": cell,
-                       "embarked": cell == -1, "supplies": sup, "money": money, "morale": morale,
-                       "troops": troops, "units": units,
-                       "supply_pct": sup * 10000 // max(troops, 1) if troops else 0})
+        armies.append(parse_army(b[o + i * ARMY_LEN:o + (i + 1) * ARMY_LEN], i))
     s["armies"] = armies
     o += na * ARMY_LEN
 
@@ -90,29 +120,7 @@ def parse(b):
 
     nations = []
     for n in range(16):
-        r = b[o + n * NATION_LEN:o + (n + 1) * NATION_LEN]
-        rel = struct.unpack_from("<16h", r, 0x26)
-        clist = []
-        for k in range(334):
-            c = i16(r, 0x48 + 2 * k)
-            if c < 0:
-                break
-            clist.append(c)
-        slots = []
-        for k in range(40):
-            st, typ, troops, city = struct.unpack_from("<4h", r, 0x2E4 + 8 * k)
-            if troops > 0:
-                slots.append({"slot": k, "state": st, "type": UNIT_TYPES[typ], "troops": troops, "city": city})
-        wealth, wealth0, treasury, treasury0 = struct.unpack_from("<4i", r, 0x430)
-        unity, mob, capital, ncities, ncities0, tax, taxbase, conq = struct.unpack_from("<8h", r, 0x440)
-        nations.append({"id": n, "name": cstr(r[:11]), "leader": cstr(r[0xB:0x26]),
-                        "relations": {NATIONS[j]: rel[j] for j in range(16) if j != n},
-                        "neighbours": [NATIONS[j] for j in range(16) if (struct.unpack_from("<H", r, 0x46)[0] >> j) & 1],
-                        "city_list": clist, "recruit_slots": slots,
-                        "wealth": wealth, "treasury": treasury, "unity": unity, "mobilization": mob,
-                        "capital": capital, "cities_count": ncities, "tax": tax, "tax_base": taxbase,
-                        "conquered_by": conq, "view": [i16(r, 0x488), i16(r, 0x486)], "human": r[0x490] == 1,
-                        "alive": unity > 0 and capital != -1})
+        nations.append(parse_nation(b[o + n * NATION_LEN:o + (n + 1) * NATION_LEN], n))
     s["nations"] = nations
     o += 16 * NATION_LEN
 
