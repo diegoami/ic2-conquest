@@ -38,7 +38,7 @@ together.
   approve in that case.
 ```
 
-The second section was added after #38, where one reviewer reported one blocker per round over eight rounds.
+The second section was added after #38, where one reviewer took eight rounds, reporting one or two blockers per round.
 
 **Before merging an approve with "not blocking" findings, read them.** If one is a proven way past what item 2 names, treat the
 review as rework, say so on the PR, and record it in `docs/model-trials.md`.
