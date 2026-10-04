@@ -68,11 +68,8 @@ def main():
     if sav and not rec["refused"]:
         arch_dir = C.ART / "archives"
         arch_dir.mkdir(exist_ok=True)
-        name = "%s-saves.tar.gz" % label
-        p = arch_dir / name
-        if p.exists():
-            name = "%s-saves-%s.tar.gz" % (label, C.STAMP)
-            p = arch_dir / name
+        p = C.write_new(arch_dir, "%s-saves.tar.gz" % label, b"")      # exclusive create in a loop (-<stamp>, -<stamp>-2, ...): an earlier archive is never overwritten
+        name = p.name
         with tarfile.open(p, "w:gz") as t:
             for f in sav:
                 t.add(f, arcname=f.name)

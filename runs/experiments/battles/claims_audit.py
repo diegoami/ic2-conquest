@@ -224,7 +224,7 @@ def main():
     rel = int(subprocess.run(["gh", "release", "view", "run-exp-battle-sweep", "--json", "assets", "-q", ".assets|length"], capture_output=True, text=True).stdout.strip() or -1)
     claim("PR body", "release holds >= 521 assets (PR body says 520 at the time; now stated as 'about 520+')", "release run-exp-battle-sweep", rel >= 521, True)
     # test counts
-    for mod, e in (("test_driver_battle", 20), ("test_battle_stage", 16), ("test_battle_trials", 7), ("test_battle_b5_b8", 6)):
+    for mod, e in (("test_driver_battle", 22), ("test_battle_stage", 16), ("test_battle_trials", 7), ("test_battle_b5_b8", 6)):
         out = subprocess.run([sys.executable, "-m", f"tests.{mod}"], capture_output=True, text=True, cwd=C.ROOT).stdout
         claim("results.md", f"{mod}: {e} tests pass", "tests/" + mod + ".py", out.count("\nPASS ") + out.startswith("PASS "), e)
     # sweep table

@@ -132,8 +132,8 @@ class Log:
         self.folder = folder or DATA
         self.folder.mkdir(parents=True, exist_ok=True)
         self.tag, self.t0 = tag, time.time()
-        self.txt = self.folder / f"{tag}-{STAMP}.log"
-        self.jl = self.folder / f"{tag}-{STAMP}.jsonl"
+        self.txt = write_new(self.folder, f"{tag}-{STAMP}.log", b"")        # exclusive create: a second run in the same second gets a new name, never appends to an old file
+        self.jl = write_new(self.folder, f"{tag}-{STAMP}.jsonl", b"")
 
     def __call__(self, event, **kw):
         t = round(time.time() - self.t0, 2)

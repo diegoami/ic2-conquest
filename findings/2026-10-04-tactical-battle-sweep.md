@@ -35,7 +35,7 @@
 |---|---|---|---|
 | header +0 | attacker army index | 0 (Rome's army 0) in every battle | [O] |
 | header +2 | defender army index | 10 (Gaul's army 10) in every battle | [O] |
-| header +4 | `x2` | 1 at the first file of a series, then 0, 0, 1, 0, 1, 0 ...: **the side that acted in the half-round before this file (0 Rome, 1 Gaul)**; the two sides alternate | [D] (the rule "1 at half-round 1, 0 at 2 and 3, then 1 iff the half-round is even" holds on all 241 files, 0 violations, `b2-analysis-20261004-110552.json` `x2_rule`; its memory address is **unverified**, below) |
+| header +4 | `x2` | 1 at the first file of a series, then 0, 0, 1, 0, 1, 0 ...: **the side to move at this snapshot (0 Rome, 1 Gaul), which is also the side that acted in the diff into this file** (B5: 3,220 of 3,220 single-actor diffs); the two sides alternate | [D] (the rule "1 at half-round 1, 0 at 2 and 3, then 1 iff the half-round is even" holds on all 241 files, 0 violations, `b2-analysis-20261004-110552.json` `x2_rule`; its memory address is **unverified**, below) |
 | header +6 | `y1` (byte) | 0 until the placement is done (the first two saves), then 1 | [O] meaning [?] |
 | header +7 | half-round counter | equals the BATTLEnn number in a lab series (1, 2, 3 ...); 2 at the placement Save As, 3, 5, 7 after End turn clicks (two half-rounds per click) | [O] |
 | slot +0, +2 | x (0 to 13), y (0 to 11) | grid index = x × 12 + y | [O] |
@@ -124,7 +124,7 @@ All ten (type, side) series are monotone, every class change is one troop wide (
 **Layout screenshots** (natural `FLD-RG`, Rome's 9 units against Gaul's 5, lab seed 1; `b8_layout_*.png`, `b8-layout-20261004-192710.jsonl`):
 - the whole screen at **placement** (`b8_layout_placement_root.png`, window only `b8_layout_placement_window.png`), at a **move phase** (`b8_layout_move_phase_root.png`: title "Rome v Gaul  Rome to move units.") and **after the battle** (`b8_layout_after_battle_root.png`);
 - the battle toolbar (a strip of 8 buttons above the 14 x 12 map, window title "Rome v Gaul" with the phase), **tooltips by hovering**, one screenshot each: `Unit moves` (`b8_layout_tooltip_01.png`), `Friendly units` (02), `Enemy units` (03), `Cancel selection` (04), `End turn` (05), `Change pauses` (06), `Computer general on` (07), `Surrender` (08); x positions in the jsonl (8, 35, 59, 83, 110, 137, 161, 188 + the button width);
-- the **unit information on a click**: clicking the Gaul unit at slot 20 shows a panel "Gaul's army / 4th Guards Battalion / Heavy infantry / Troops 5,900" (`b8_layout_unit_info_click_gaul_slot20.png`); the click changed nothing in the block;
+- the **unit information on a click**: clicking the Gaul unit at slot 20 shows a panel "Gaul's army / 4th Guards Battalion / Heavy infantry / Troops 5,900" (`b8_layout_unit_info_click_gaul_slot20.png`); the click changed nothing in the block (`unit_info_click` in the layout jsonl was recorded by the first version of the script, which did not test for the panel; the saved screenshot was viewed and shows the Information panel with exactly that text, and the recorded popups text of the same event holds it too);
 - the **surrender box** (`b8_layout_surrender_box_root.png`): "Are you sure you want to surrender ?" with **Yes, No, Cancel**; **answered No**; the battle continued and the block was unchanged (`after_surrender_no`); Yes was never clicked;
 - the **result box** "Battle ended" (`b8_layout_battle-ended.png`): "Gaul's army defeats Rome's army." with a per-type table (start and finish of each army) and "The army of Gaul captured 156 talents. The army of Gaul captured no suuplies." (the game's own spelling); the Offer of peace box did not appear in this run, it is in the sweep's `<trial>_dialog-Offer_of_peace-*.png` screenshots.
 
@@ -142,7 +142,7 @@ All ten (type, side) series are monotone, every class change is one troop wide (
 - **The order of units inside a half-round, the exchanges themselves and which of two losing units a shot hit:** snapshots are half-round states; the exchange-level hook (B11) is not built.
 - **Whether a battle ever ends by rout or surrender** (no unit was seen routed in an image; the end-state classification in B5 is inferred from rout eligibility [R-code]).
 - That the normal (non-lab) build behaves like the lab build in these pairings (one sweep cell on the normal build was not re-run).
-- The meaning of `y1`, and of `x2` beyond "the side that acted last"; the memory addresses of the attacker-army and `x2` header words; why Gaul's LI `state` reads 1 not 4; what `ammo` falls by for each unit type (only archers' 4 per volley is clear).
+- The meaning of `y1`; `x2` is the side to move in every diff with one acting side (B5), its memory address is unverified; the memory addresses of the attacker-army and `x2` header words; why Gaul's LI `state` reads 1 not 4; what `ammo` falls by for each unit type (only archers' 4 per volley is clear).
 - That `state` is exactly "movement points left" (it fits the type's allowance and the moves seen), (the size-class thresholds are now exact, B8).
 - Whether the normal build resumes a block save as the lab build does; whether edits during placement could ever stick (L2 positions at placement are overwritten).
 - **Wine-only.**

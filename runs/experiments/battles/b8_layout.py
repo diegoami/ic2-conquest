@@ -26,7 +26,7 @@ TAG = "b8_layout"
 
 def main():
     log = C.Log("b8-layout")
-    out = C.DATA / f"b8-layout-{C.STAMP}.jsonl"
+    out = C.write_new(C.DATA, f"b8-layout-{C.STAMP}.jsonl", b"")
 
     def rec(event, **kw):
         with open(out, "a") as f:
@@ -81,8 +81,12 @@ def main():
         g.click(sx, sy, pause=1.5)
         after = g.battle_state()
         c = C.shot(g, f"{TAG}_unit_info_click_gaul_slot{gs['slot']}.png", folder=shots)
+        texts = [g.read_popup(p) for p in g.popups()]
+        panel = [t for t in texts if "Troops" in t and "army" in t]            # the Information panel names the army and shows Troops
         rec("unit_info_click", slot=gs["slot"], screen=(sx, sy), shot=c.name, new_windows=sorted({w[1] for w in g.find_windows()} - w_before),
-            block_unchanged=BB.encode_block(before) == BB.encode_block(after), popups=[g.read_popup(p) for p in g.popups()])
+            block_unchanged=BB.encode_block(before) == BB.encode_block(after), popups=texts, panel_shown=bool(panel), panel_text=panel[:1])
+        if not panel:      # nothing is claimed from a click that opened no panel: stop, the files stay
+            raise DriverError("unit info click at %s showed no Information panel (texts %r)" % ((sx, sy), texts))
         # 4. the surrender box: open it, answer No
         sur = next((n for n in seen if "urrender" in n), None)
         if sur:

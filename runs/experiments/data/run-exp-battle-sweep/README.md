@@ -50,3 +50,7 @@
 ## B8 notes
 - `b8-ladder-2026*.jsonl` (the v1 run, 12 units per side): the defender's block is only 3 cells wide, so more than 9 defenders **share cells** (rows y = 9, 10, 11 ... overlap) and a shared cell shows one grid word for two units; `b8_analyze.py` and `b8_ladder.observe` ignore such units. The v1 run was stopped during `hc` (killed by its own time limit). `b8-ladder-v2-*.jsonl` (9 per side) is the dataset the thresholds come from. Both are kept.
 - `b8-layout-20261004-192710.jsonl`: the layout run (tooltips, unit info, surrender box answered No, move phase, result box).
+
+## PR #40 review fixes
+- `b8-layout-20261004-192710.jsonl` `unit_info_click`: written by the first version of `b8_layout.py`, which recorded the click without checking that a panel opened. I looked at `b8_layout_unit_info_click_gaul_slot20.png`: it **does** show the Information panel ("Gaul's army / 4th Guards Battalion / Heavy infantry / Troops 5,900"), and the event's `popups` text holds the same words. The script now records `panel_shown` and refuses to continue without the panel. Files kept, nothing re-captured.
+- Output files are always created exclusively (`common.write_new`, also for `Log` files, the B8 jsonl files and the release archives): a re-run in the same second gets a new name and never appends to or overwrites an earlier measurement.

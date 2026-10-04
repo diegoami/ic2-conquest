@@ -215,7 +215,7 @@ def main():
     types = [a for a in args if a in T.TYPES] or list(T.TYPES)
     mr = int(sys.argv[sys.argv.index("--max-rounds") + 1]) if "--max-rounds" in sys.argv else 8
     log = C.Log("b8-ladder")
-    out = C.DATA / f"b8-ladder-v2-{C.STAMP}.jsonl"
+    out = C.write_new(C.DATA, f"b8-ladder-v2-{C.STAMP}.jsonl", b"")     # exclusive create; the rounds are appended to this new file only
     for typ in types:
         rounds, why = run_type(typ, out, log, mr)
         log("type_done", type=typ, rounds=len(rounds), why=why)
