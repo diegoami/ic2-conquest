@@ -173,6 +173,12 @@ def test_stop_on_error_and_dialog_recorded():
     assert r["dialog"] == "Offer of peace" and "DECLINED" in r["dialog_note"], r
 
 
+def test_end_condition_from_both_destroyed_flags():
+    c = T.END_CONDITIONS
+    assert c[(False, False)].startswith("none") and c[(True, True)] == "both destroyed"
+    assert c[(True, False)].endswith("attacker") and c[(False, True)].endswith("defender")
+
+
 def test_keep_never_overwrites():
     root = setup()
     a, b = root / "a.SAV", root / "b.SAV"

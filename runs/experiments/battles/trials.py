@@ -37,6 +37,8 @@ from state import battle, sav  # noqa: E402
 TYPES = ("li", "hi", "ar", "lc", "hc")
 SIZES = {"half": (1, 0.5), "one": (1, 1.0), "three": (3, 1.0)}      # (units, fraction of one standard battalion)
 Q, MORALE = 6, 65
+END_CONDITIONS = {(False, False): "none (nobody destroyed)", (True, False): "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level): attacker",
+                  (False, True): "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level): defender", (True, True): "both destroyed"}
 RESULTS = {"attacker": "Rome defeats Gaul", "defender": "Gaul defeats Rome", "none": "neither army destroyed", "both": "both armies destroyed"}
 COLUMNS = ["trial", "cell", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
            "att_troops_before", "att_troops_after", "att_loss", "def_troops_before", "def_troops_after", "def_loss",
@@ -185,7 +187,7 @@ def run_trial(g, cell, seed, rep, log):
         "result": RESULTS[d["winner"]],
         "battle_ended_shot": f"{tag}_battle-ended.png" if (shots / f"{tag}_battle-ended.png").exists() else None,
         "dialogs": res["dialogs"], "dialog": ";".join(x["title"] for x in res["dialogs"]),
-        "end_condition": "none (nobody destroyed)" if loser is None else "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level)" if loser["destroyed"] else "loser survived",
+        "end_condition": END_CONDITIONS[(att["destroyed"], dfn["destroyed"])],
         "attacker_result": {k: att[k] for k in ("troops_before", "troops_after", "loss", "destroyed", "type_loss", "promotions", "morale", "money")},
         "defender_result": {k: dfn[k] for k in ("troops_before", "troops_after", "loss", "destroyed", "type_loss", "promotions", "morale", "money")},
         "units": {"attacker": att["units"], "defender": dfn["units"]}, "nations": d["nations"], "news": d["news"], "taken": d["taken"],

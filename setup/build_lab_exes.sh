@@ -18,5 +18,5 @@ for s in "${SEEDS[@]}"; do
     && mv "IC2 lab.exe" "Imperial Conquest 2 lab s$s.exe" && cp "Imperial Conquest 2 lab s$s.exe" "$G/")
   (cd "$B" && sha256sum "Imperial Conquest 2 lab s$s.exe") >> "$F"
 done
-echo "built with: PYTHONPATH=\$IC2_WORK/build python3 patches/battle_lab.py <seed>, 'IC2 lab.exe' renamed to 'Imperial Conquest 2 lab s<seed>.exe'; git $(git -C "$HERE" rev-parse --short HEAD:patches/battle_lab.py 2>/dev/null || git -C "$HERE" log -1 --format=%h -- patches/battle_lab.py) (last commit touching patches/battle_lab.py)" >> "$F"
+echo "built with: PYTHONPATH=\$IC2_WORK/build python3 patches/battle_lab.py <seed>, 'IC2 lab.exe' renamed to 'Imperial Conquest 2 lab s<seed>.exe'; git $(git -C "$HERE" log -1 --format=%h -- patches/battle_lab.py) (last commit touching patches/battle_lab.py)" >> "$F"
 cat "$F"
