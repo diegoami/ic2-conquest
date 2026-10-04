@@ -37,6 +37,7 @@ from state import battle, sav  # noqa: E402
 TYPES = ("li", "hi", "ar", "lc", "hc")
 SIZES = {"half": (1, 0.5), "one": (1, 1.0), "three": (3, 1.0)}      # (units, fraction of one standard battalion)
 Q, MORALE = 6, 65
+RESULTS = {"attacker": "Rome defeats Gaul", "defender": "Gaul defeats Rome", "none": "neither army destroyed", "both": "both armies destroyed"}
 COLUMNS = ["trial", "cell", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
            "att_troops_before", "att_troops_after", "att_loss", "def_troops_before", "def_troops_after", "def_loss",
            "att_destroyed", "def_destroyed", "att_promotions", "def_promotions", "end_condition", "result", "dialog",
@@ -181,8 +182,7 @@ def run_trial(g, cell, seed, rep, log):
         "status": "ok", "half_rounds": len(series), "series": series, "post_save": kept_post.name, "post_sha256": C.sha(kept_post),
         "series_sha12": hashlib.sha256("".join(C.sha(C.ART / s) for s in series).encode()).hexdigest()[:12],
         "winner": d["winner"], "end_turn_clicks": res["end_turn_clicks"], "result_text_ocr": res["battle_ended_text"],
-        "result": {"attacker": "Rome defeats Gaul", "defender": "Gaul defeats Rome",
-                   "none": "neither army destroyed", "both": "both armies destroyed"}[d["winner"]],
+        "result": RESULTS[d["winner"]],
         "battle_ended_shot": f"{tag}_battle-ended.png" if (shots / f"{tag}_battle-ended.png").exists() else None,
         "dialogs": res["dialogs"], "dialog": ";".join(x["title"] for x in res["dialogs"]),
         "end_condition": "none (nobody destroyed)" if loser is None else "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level)" if loser["destroyed"] else "loser survived",
@@ -208,7 +208,7 @@ def row(rec):
             "att_troops_after": a["troops_after"], "att_loss": a["loss"], "def_troops_before": d["troops_before"],
             "def_troops_after": d["troops_after"], "def_loss": d["loss"], "att_destroyed": a["destroyed"], "def_destroyed": d["destroyed"],
             "att_promotions": len(a["promotions"]), "def_promotions": len(d["promotions"]), "end_condition": rec["end_condition"].split(" (")[0],
-            "result": rec["result"], "dialog": rec.get("dialog", ""), "seconds": rec["seconds"],
+            "result": rec.get("result") or RESULTS[rec["winner"]], "dialog": rec.get("dialog", ""), "seconds": rec["seconds"],
             "start_save": rec["start_save"], "series_first": rec["series"][0] if rec["series"] else "",
             "series_last": rec["series"][-1] if rec["series"] else "", "post_save": rec["post_save"],
             "post_sha12": rec["post_sha256"][:12], "series_sha12": rec["series_sha12"]}
