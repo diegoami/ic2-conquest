@@ -116,7 +116,7 @@ Row format fixed in `trials.py` `COLUMNS` (`sweep-table-20261004-095840.csv` was
 | LI | 15,000 | 5,000 | 10,000 | holds | holds |
 | HI | 6,000 | 2,000 | 4,000 | holds | holds |
 | Ar | 3,500 | 1,166 | 2,332 | holds | **off by 1 / 2** (it says 1,167 / 2,334) |
-| LC | 7,000 | 2,333 | 4,666 | holds | **off by 1 / 2** (2,334 / 4,667) |
+| LC | 7,000 | 2,333 | 4,666 | holds | **off by 1** (2,334 / 4,667) |
 | HC | 2,500 | 833 | 1,666 | holds | **off by 1** (834 / 1,667) |
 
 All ten (type, side) series are monotone, every class change is one troop wide (`exact_one_troop`), side 0 and side 1 give the same thresholds, and a unit's size is `min(2, troops div (std div 3))` at every troop count tried (`b8-thresholds-20261004-192949.json`). The ladder reached 32,767 (size 2 for every type). **Images:** one icon (inner 26 x 26 pixels of the 32 x 32 tile, as `b2_icons.py`) per (type, side, size): **30 combinations, 30 distinct images, one image per grid word, different words different images**. **Screenshot index (type x side x size x threshold):** `b8-icon-index-20261004-192949.csv` lists, for each of the 30 (type, side, size), the grid word, the first troop count of that size, an example troop count, the tile hash, the screenshot and the save in which it was read. A routed unit has no image (its cell becomes empty) [R-code]; **no routed unit was captured**: the ladder battles are not played, and the sweep series show routs only as slots that disappear.
@@ -163,6 +163,6 @@ python3 runs/experiments/battles/release_sync.py <batch>                # saves 
 python3 runs/experiments/battles/b5_analyze.py                          # tabulations (new files each run)
 python3 runs/experiments/battles/b8_ladder.py hi li ar lc hc            # the icon ladder (v2); then b8_analyze.py
 python3 runs/experiments/battles/b8_layout.py                           # layout screenshots
-python3 runs/experiments/battles/claims_audit.py                        # 100 claims recomputed from the tracked files, 0 mismatches
+python3 runs/experiments/battles/claims_audit.py                        # 104 claims, 0 mismatches (claims-audit-20261004-195251.md)
 python3 -m tests.test_battle_stage; python3 -m tests.test_battle_trials; python3 -m tests.test_driver_battle; python3 -m tests.test_battle_b5_b8
 ```

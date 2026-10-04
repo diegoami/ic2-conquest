@@ -197,8 +197,6 @@ def main():
     tf = {r["trial"]: AI.trial_facts(r, C.ART) for r in trials}
     trials = [dict(r, winner=tf[r["trial"]]["winner"], half_rounds=len(tf[r["trial"]]["blocks"]), post_sha256=C.sha(C.ART / r["post_save"]),
                    attacker_result={"destroyed": tf[r["trial"]]["att_destroyed"]}, defender_result={"troops_after": tf[r["trial"]]["def_troops"]}) for r in trials]       # outcome fields from the saves
-    anaf = "b2-analysis-20261004-110552.json"                      # the analysis the B2-B4 sections cite (the later ones also decode the sweep series)
-    ana = json.loads((D / anaf).read_text())
     ver = json.loads(sorted(D.glob("b2-verify-*093834.json"))[0].read_text())
     rows = []
 

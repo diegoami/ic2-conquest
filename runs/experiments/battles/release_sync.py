@@ -6,7 +6,7 @@ after 479 loose saves of the sweep. From then on:
   * every NEW `.SAV` goes into one `<label>-saves.tar.gz` per call plus a tracked `MANIFEST-<label>.txt`, uploaded to release `run-exp-battle-sweep-2` (created by this script if missing);
     `release-manifest-<stamp>.json` (tracked) lists, per archive, its SHA-256, size and every member with its own SHA-256 (the member names are the bare file
     names the findings cite);
-  * every NEW `.png` goes loose to `run-exp-battle-sweep-b5` (there are far fewer than 1000).
+  * every NEW `.png` goes loose to `run-exp-battle-sweep-2` (there are far fewer than 1000).
 A file already loose in either release, or a member of an archive in a tracked manifest, is skipped. If a release call is refused the exact command is printed,
 the archive stays in artifacts/ and the script exits 3 (CLAUDE.md rule 1: report it, never retry another way).
 
