@@ -270,6 +270,20 @@ def play_out(g, log, max_clicks=5):
     except DriverError:      # something is open after OK: leave it open, record it, the caller reads it
         log("after_ok_map_not_back", windows=win_list(g), popups=g.popups())
     time.sleep(2)
+    peace = g.find_windows("^Offer of peace$")
+    if peace:        # TBattlePols: left open and captured (screenshot, OCR, controls), then answered No, verified closed (waits up to 8 s)
+        log("offer_of_peace_open", geometry=peace[0][2:], windows=win_list(g))
+        pw = log.shot(g, "offer-of-peace-window", window=str(peace[0][0]))
+        log("offer_of_peace_ocr", text=ocr(pw))
+        cs = dump_controls(g, log, "Offer of peace", "offer of peace")
+        log.shot(g, "offer-of-peace-root")
+        g.click_control(g.control(cs, text="No"), pause=0.5)
+        for _ in range(16):
+            if not g.find_windows("^Offer of peace$"):
+                break
+            time.sleep(0.5)
+        log("offer_of_peace_answered_no", closed=not g.find_windows("^Offer of peace$"), windows=win_list(g))
+        time.sleep(2)
     extra = g.popups()
     log("after_ok", popups=extra, windows=win_list(g))
     return clicks
@@ -435,8 +449,9 @@ def cmd_savein(g):
     """Item 2 on the normal build. Control: toolbar Save on the strategic map. In the battle: Save As (menu) and the toolbar Save at the
     placement phase, then Save As again with Computer general on ("to move units"), opened WITHOUT reset_ui's Escape presses (the
     first attempt, b0-savein-20261004-081536, ended the battle there); then the battle is played out."""
-    log = Log("b0-savein")
-    start_game(g, log, NORMAL_EXE, SEED)
+    lab = len(sys.argv) > 2 and sys.argv[2] == "lab"       # `savein lab`: the same on the lab build (seed 1)
+    log = Log("b0-savein-lab" if lab else "b0-savein")
+    start_game(g, log, LAB_EXE % 1 if lab else NORMAL_EXE, None if lab else SEED)
     stage(g, log)
     # control: the toolbar Save outside a battle (army 0 is selected and stays so)
     before = {f.name: (f.stat().st_mtime_ns, sha(f)) for f in G.glob("*.sav")}
@@ -448,9 +463,9 @@ def cmd_savein(g):
     log("control_toolbar_save_on_map", files_changed=changed, windows=win_list(g), sel_army=g.i16(SEL_ARMY))
     attack_open(g, log)
     log.shot(g, "01-placement")
-    try_save(g, log, "placement-menu", "SI_placement_menu.SAV", "menu")
+    try_save(g, log, "placement-menu", "SI_lab_placement_menu.SAV" if lab else "SI_placement_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))
-    try_save(g, log, "placement-toolbar", "SI_placement_toolbar.SAV", "toolbar")
+    try_save(g, log, "placement-toolbar", "SI_lab_placement_toolbar.SAV" if lab else "SI_placement_toolbar.SAV", "toolbar")
     log("check_battle_window_still_open", **state_now(g))
     # Computer general stays OFF: End turn at the placement phase, then the phases pass with Rome idle and Gaul (AI) playing, so the
     # battle is mid-way and nothing runs while the dialog is open (the first two attempts, 081536 and 081801, toggled Computer general
@@ -461,18 +476,20 @@ def cmd_savein(g):
         log.shot(g, f"02-after-end-turn-{k}")
         if k == 2:
             break
-    try_save(g, log, "mid-menu", "SI_mid_menu.SAV", "menu")
+    try_save(g, log, "mid-menu", "SI_lab_mid_menu.SAV" if lab else "SI_mid_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))
     g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=2.5)
     log("end_turn_clicked_human", n=3, **state_now(g))
-    try_save(g, log, "mid2-menu", "SI_mid2_menu.SAV", "menu")
+    try_save(g, log, "mid2-menu", "SI_lab_mid2_menu.SAV" if lab else "SI_mid2_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))
     if g.in_battle():
         play_out(g, log)
     elif g.find_windows("Battle ended"):
         g.click_control(g.control(g.controls("Battle ended"), text="OK"), pause=1.5)
-    post = post_save(g, log, "SI_post_battle.SAV")
+    post = post_save(g, log, "SI_lab_post_battle.SAV" if lab else "SI_post_battle.SAV")
     describe_save(keep(post), log, "post-battle after saves in battle")
+    if lab:
+        log("lab_series", files=battle_series("silab"))
 
 
 def cmd_escape(g):
