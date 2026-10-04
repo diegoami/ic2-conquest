@@ -42,7 +42,7 @@ def main():
         cand = sorted((r for r in hooked if (r["cell"], r["seed"]) == key), key=lambda r: (r["rep"] != rep, r["rep"]))
         if cand and cand[0]["rep"] == rep:
             last[cand[0]["trial"]] = cand[0]
-        elif cand and "%s_s%d_r%d" % (key[0], key[1], rep) in base:
+        elif cand and "%s_s%d_r1" % (key[0], key[1]) in base:
             last[cand[0]["trial"]] = cand[0]
             stands[cand[0]["trial"]] = "%s_s%d_r%d_hook" % (key[0], key[1], rep)
     rows, miss_files = [], []

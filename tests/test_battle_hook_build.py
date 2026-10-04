@@ -31,6 +31,12 @@ def synthetic():
     for _, va, exp in H.RESEED:
         b[H.off(va):H.off(va) + len(exp)] = exp
     b[H.off(LAB.BATTLE_START_CALL):H.off(LAB.BATTLE_START_CALL) + 5] = b"\xE8" + H.rel32(LAB.BATTLE_START_CALL, LAB.SEED_CAVE)
+    # a section table like the game's: CODE, DATA (writable, with file data), BSS (writable, none), .idata (the IAT), .rdata (read only, with file data)
+    struct.pack_into("<H", b, 0x106, 5)
+    for i, (name, rva, vsize, rsize, rptr, flags) in enumerate([(b"CODE", 0x1000, 0x5B3D4, 0x5B400, 0x400, 0x60000020), (b"DATA", 0x5D000, 0x8A8, 0xA00, 0x5B800, 0xC0000040),
+                                                                (b"BSS", 0x5E000, 0x42BD4, 0, 0x5C200, 0xC0000000), (b".idata", 0xA1000, 0x194E, 0x1A00, 0x5C200, 0xC0000040),
+                                                                (b".rdata", 0xA4000, 0x18, 0x200, 0x5DC00, 0x50000040)]):
+        struct.pack_into("<8sIIIIIIHHI", b, 0x1F8 + 40 * i, name, vsize, rva, rsize, rptr, 0, 0, 0, 0, flags)
     return b
 
 
@@ -75,6 +81,50 @@ def test_refuses_when_scan_list_differs():
     b[H.off(outside):H.off(outside) + 5] = b"\xE8" + H.rel32(outside, H.RANDOM)
     info = H.apply(b, 1, LAB)
     assert info["scan_outside_count"] == 1
+
+
+RDATA_PTR, DATA_PTR, IAT_PTR = 0x4A4000, 0x45D100, 0x4A1010      # a pointer in .rdata (read-only), in DATA (writable), in .idata (the IAT)
+
+
+def put_indirect(b, at, op2, ptr):
+    b[H.off(at):H.off(at) + 6] = bytes([0xFF, op2]) + struct.pack("<I", ptr)
+
+
+def test_indirect_call_through_a_pointer_that_holds_random_is_caught():
+    """R1: the operand of FF 15 / FF 25 is the address of a pointer, so the dword AT it is compared with Random, not the operand."""
+    for op2 in (0x15, 0x25):
+        def mutate(b, op2=op2):
+            put_indirect(b, 0x43A200, op2, RDATA_PTR)
+            struct.pack_into("<I", b, 0x5DC00, H.RANDOM)             # .rdata raw: the pointer's value is Random's address
+        msg = refuses(mutate, "an FF %02X through a read-only pointer holding Random" % op2)
+        assert "0x43a200" in msg.lower() or "43a200" in msg.lower(), msg
+    # the scan lists it as FF15 / FF25, not as an unresolved one
+    b = synthetic()
+    put_indirect(b, 0x452000, 0x15, RDATA_PTR)                     # outside the modules: listed, not a failure
+    struct.pack_into("<I", b, 0x5DC00, H.RANDOM)
+    assert (0x452000, "FF15") in H.scan_random_refs(b)
+    # the OPERAND equal to Random's address is no longer what is compared: an FF 15 whose operand is 0x40284C points at nothing in the image (no section): ignored
+    b = synthetic()
+    put_indirect(b, 0x43A300, 0x15, H.RANDOM)
+    assert not any(va == 0x43A300 for va, _ in H.scan_random_refs(b))
+
+
+def test_indirect_call_whose_pointer_cannot_be_established_refuses():
+    """R1: a pointer in writable memory other than the IAT cannot be resolved statically: inside the two modules the build refuses; outside it is listed as unresolved."""
+    msg = refuses(lambda b: put_indirect(b, 0x43A200, 0x15, DATA_PTR), "an FF 15 through a writable DATA pointer inside the battle module")
+    assert "cannot be established" in msg, msg
+    refuses(lambda b: put_indirect(b, 0x459000, 0x25, DATA_PTR), "an FF 25 through a writable pointer inside TBattleOver")
+    b = synthetic()
+    put_indirect(b, 0x452000, 0x15, DATA_PTR)
+    assert (0x452000, "FF15?") in H.scan_random_refs(b)
+    H.apply(b, 1, LAB)                                             # outside the modules it does not stop the build
+
+
+def test_indirect_calls_through_the_iat_or_a_read_only_pointer_to_something_else_pass():
+    b = synthetic()
+    put_indirect(b, 0x43A200, 0x15, IAT_PTR)                       # an import: the loader fills it with a DLL address, never this image's Random
+    put_indirect(b, 0x43A210, 0x25, RDATA_PTR)                     # read-only pointer holding 0 (not Random)
+    H.apply(b, 1, LAB)
 
 
 def test_refuses_changed_entry_bytes_and_branches_into_displaced():

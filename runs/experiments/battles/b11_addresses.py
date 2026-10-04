@@ -45,6 +45,19 @@ def static():
     refs = H.scan_random_refs(b)
     res["random_refs_total"] = len(refs)
     res["random_ref_kinds"] = sorted({k for _, k in refs})
+    import collections
+    res["ref_kind_counts"] = dict(collections.Counter(k for _, k in refs))
+    mods = (H.BATTLE_MODULE, H.BATTLEOVER_MODULE)
+    res["non_E8_references_inside_the_two_modules"] = [(hex(v), k) for v, k in refs if k != "E8" and H.in_ranges(v, mods)]
+    res["unresolved_indirect_outside_the_modules"] = [hex(v) for v, k in refs if k.endswith("?")]
+    # every FF 15 / FF 25 (indirect call / jump through a pointer) inside the two modules and how its pointer resolves (R1: the dword AT the operand is what counts)
+    code = bytes(b[H.CODE_RAW:H.CODE_RAW + H.CODE_SIZE])
+    ff = collections.Counter()
+    for i in range(len(code) - 6):
+        if code[i] == 0xFF and code[i + 1] in (0x15, 0x25) and H.in_ranges(H.CODE_VA + i, mods):
+            ff[H.resolve_pointer(b, struct.unpack_from("<I", code, i + 2)[0])[0]] += 1
+    res["FF15_FF25_inside_the_two_modules_by_pointer_resolution"] = dict(ff)
+    res["E9_rel32_to_Random_anywhere"] = [hex(v) for v, k in refs if k == "E9"]
     res["inside_module_and_battleover"] = [hex(v) for v in inside]
     res["hooked_list"] = [hex(v) for v in H.SITES]
     res["lists_equal"] = inside == sorted(H.SITES)

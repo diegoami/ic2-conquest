@@ -22,13 +22,15 @@ def newest(tag):
 
 
 def main():
+    rep = int(sys.argv[sys.argv.index("--rep") + 1]) if "--rep" in sys.argv else 1
     tags = []
     for line in (C.DATA / "trials-b11.jsonl").read_text().splitlines():
         if line.strip():
             r = json.loads(line)
-            if r.get("status") == "ok" and r.get("variant") == "hook" and r.get("rep") == 1 and r["trial"] != "hi-hi-one_s1_r1_hook" and r["trial"] not in tags:
+            if r.get("status") == "ok" and r.get("variant") == "hook" and r.get("rep") == rep and r["trial"] != "hi-hi-one_s1_r1_hook" and r["trial"] not in tags:
                 tags.append(r["trial"])
-    tags.append("hi-hi-one_s1_r2_hook")
+    if rep == 1:
+        tags.append("hi-hi-one_s1_r2_hook")
     base = {"attacker": collections.Counter(), "defender": collections.Counter()}
     out = collections.Counter()
     offer = collections.Counter()

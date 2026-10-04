@@ -4,7 +4,7 @@ The hooked lab exe keeps, in its `.patch` section, a control block and a buffer 
 `/proc/<pid>/mem` after the battle. This module only parses; it never writes game memory.
 
 Control block at CTL (0x565000): +0 u32 index (the next free record = the number written), +4 u32 overflow flag, +8 u32 pending record pointer,
-+12 u32 capacity, +16 u32 magic 'HCB1'. Records at BUF (0x565100), 12 little-endian u32 each:
++12 u32 capacity, +16 u32 magic 'HCB1', +32 busy, +36 REENTERED (a cave entered while busy; a set flag fails the battle's log like the overflow flag). Records at BUF (0x565100), 12 little-endian u32 each:
   0 tag      for a Random call, the call site's RETURN address (site + 5); 0x01000000|entry for a marker at a routine entry; 0x02000000|site for a
              flag-clear boundary; 0x03000000 for the battle-start boundary (the lab seed cave); 0x04000000|site for the
              boundary taken just before an instruction that reseeds RandSeed (0x457907 TBattlePols, 0x450C7B)
@@ -31,8 +31,12 @@ def lcg(seed):
 
 
 def parse_ctl(ctl):
+    """The control block: +0 index, +4 overflow, +8 pending, +12 capacity, +16 magic, +32 busy, +36 REENTERED (a cave was entered while another was working: it logged nothing;
+    the battle's log FAILS when it is set, as when the overflow flag is). Accepts a block shorter than 48 bytes (the missing words read as 0)."""
+    ctl = bytes(ctl).ljust(48, b"\0")
     idx, ovf, cur, cap, magic = struct.unpack_from("<5I", ctl, 0)
-    return {"index": idx, "overflow": ovf, "pending": cur, "capacity": cap, "magic_ok": magic == MAGIC}
+    busy, reent = struct.unpack_from("<II", ctl, 32)
+    return {"index": idx, "overflow": ovf, "pending": cur, "capacity": cap, "magic_ok": magic == MAGIC, "busy": busy, "reentered": reent}
 
 
 def decode(raw, seq_expected):
@@ -68,7 +72,7 @@ def parse(ctl, buf):
 
 def read_process(mem):
     """Read the log of a running hooked game: `mem(addr, n)` is `Game.mem`. Returns (control, records)."""
-    ctl = mem(CTL, 32)
+    ctl = mem(CTL, 48)
     c = parse_ctl(ctl)
     n = min(c["index"], c["capacity"]) if c["magic_ok"] else 0
     buf = mem(BUF, n * REC) if n else b""

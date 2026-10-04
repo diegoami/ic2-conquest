@@ -217,6 +217,107 @@ def test_reseed_caves(trials=200):
     return fails, n
 
 
+def _reentry_case(kind, name, site, displaced, state):
+    """Run one cave with BUSY = 1 (a cave is already working) against the unhooked code. The cave must log nothing, leave SV and the private stack untouched, set the
+    REENTERED flag, and leave registers, EFLAGS, ESP, the stack and all memory exactly as the unhooked code does."""
+    ucA, _ = fresh(state)
+    ucB, caves = fresh(state)
+    ucB.mem_write(H.BUSY, struct.pack("<I", 1))
+    ucB.mem_write(H.SV, struct.pack("<I", 0xDEADBEEF))                # the outer cave's saved ESP: must survive
+    priv_before = bytes(ucB.mem_read(H.CTL + 0x40, 0xC0))
+    if kind == "random":
+        direct, hooked, stop = b"\xE8" + H.rel32(SITE, H.RANDOM), b"\xE8" + H.rel32(SITE, caves["random"][0]), SITE + 5
+        at = SITE
+    else:
+        after = site + len(displaced)
+        direct, stop, at = displaced, after, site
+        hooked = b"\xE9" + H.rel32(site, caves[name][0]) + b"\x90" * (len(displaced) - 5)
+    prepare(ucA, state, at, direct + b"\xF4")
+    run(ucA, at, stop)
+    prepare(ucB, state, at, hooked)
+    ucB.mem_write(stop, b"\xF4")
+    ucB.mem_write(H.BUSY, struct.pack("<I", 1))
+    run(ucB, at, stop)
+    a, b = snapshot(ucA), snapshot(ucB)
+    bad = compare(a, b, "re-entry %s" % name)
+    ctl = L.parse_ctl(bytes(ucB.mem_read(H.CTL, 48)))
+    if not ctl["reentered"] or ctl["index"] != 0 or ctl["busy"] != 1:
+        bad.append("re-entry %s: control block %r" % (name, ctl))
+    if struct.unpack("<I", ucB.mem_read(H.SV, 4))[0] != 0xDEADBEEF or bytes(ucB.mem_read(H.CTL + 0x40, 0xC0)) != priv_before:
+        bad.append("re-entry %s: SV or the private stack was touched" % name)
+    return bad
+
+
+def test_reentry_when_busy(trials=60):
+    """Every cave entered while BUSY: no log, REENTERED set, the unhooked behaviour (R2)."""
+    assert HAVE_UNICORN
+    rng = random.Random(77)
+    fails, n = [], 0
+    for t in range(trials):
+        state = random_state(rng)
+        fails += _reentry_case("random", "random", None, None, state)
+        for name, entry, displaced in H.MARKERS:
+            fails += _reentry_case("x", "marker_" + name, entry, displaced, state)
+        for name, site in H.FLAG_CLEAR:
+            fails += _reentry_case("x", name, site, H.FLAG_CLEAR_BYTES, state)
+        for name, site, displaced in H.RESEED:
+            fails += _reentry_case("x", name, site, displaced, state)
+        n += 1
+    return fails, n
+
+
+def test_real_nested_entry_inside_the_recorder():
+    """A genuine re-entry: while the Random cave is inside `rec_body` (BUSY = 1, on the private stack) a second call of the Random cave happens. The inner call must leave
+    EAX, the other registers, EFLAGS and RandSeed as a direct `call Random` from that state does; the outer call must finish; REENTERED is set; one record only."""
+    assert HAVE_UNICORN
+    from unicorn import UC_HOOK_CODE
+    from unicorn.x86_const import UC_X86_REG_EIP
+    rng = random.Random(5)
+    for t in range(30):
+        state = random_state(rng)
+        uc, caves = fresh(state)
+        regs, stack, seed = state
+        prepare(uc, state, SITE, b"\xE8" + H.rel32(SITE, caves["random"][0]) + b"\xF4")
+        trap = caves["rec_body"][0]                                # rec_body entry: every register is saved on the private stack, so the nested call may clobber them like any call
+        seen = {}
+
+        def cb(u, addr, size, _):
+            if "done" in seen:
+                if "after" not in seen:                              # the inner call has returned to the trap address: its end state
+                    seen["after"] = {r: u.reg_read(r) for r in REGS}
+                return
+            seen["done"] = True
+            seen["regs"] = {r: u.reg_read(r) for r in REGS}
+            seen["seed"] = u.mem_read(H.RAND_SEED, 4)
+            sp = u.reg_read(UC_X86_REG_ESP) - 4
+            u.mem_write(sp, struct.pack("<I", addr))             # the inner "call": its return address is the trap address itself
+            u.reg_write(UC_X86_REG_ESP, sp)
+            seen["nested_ret_sp"] = sp + 4
+            u.reg_write(UC_X86_REG_EIP, caves["random"][0])
+            seen["inner_eax"] = u.reg_read(UC_X86_REG_EAX)
+
+        # the trap is hit twice (entering, and again when the inner call returns to it): the second time is not intercepted
+        h = uc.hook_add(UC_HOOK_CODE, cb, begin=trap, end=trap)
+        uc.emu_start(SITE, SITE + 5, count=20000)
+        uc.hook_del(h)
+        # the inner call left the registers, EFLAGS and ESP as a direct `call Random` from the same state does
+        ref, _ = fresh(state)
+        ref.mem_write(SITE, b"\xE8" + H.rel32(SITE, H.RANDOM) + b"\xF4")
+        ref.mem_write(H.RAND_SEED, bytes(seen["seed"]))
+        for r in REGS:
+            ref.reg_write(r, seen["regs"][r])
+        ref.mem_write(seen["regs"][UC_X86_REG_ESP], bytes(0x20))
+        ref.emu_start(SITE, SITE + 5, count=100)
+        for r in REGS:
+            assert ref.reg_read(r) == seen["after"][r], "inner call differs from a direct call in register 0x%x" % r
+        ctl = L.parse_ctl(bytes(uc.mem_read(H.CTL, 48)))
+        assert ctl["reentered"] == 1, ctl
+        assert ctl["busy"] == 0 and ctl["index"] == 1, ctl          # the outer call finished and logged its one record
+        # two draws happened (inner and outer): RandSeed advanced twice
+        assert struct.unpack("<I", uc.mem_read(H.RAND_SEED, 4))[0] == L.lcg(L.lcg(seed))
+        assert uc.reg_read(UC_X86_REG_ESP) == regs[UC_X86_REG_ESP]
+
+
 def test_a_broken_cave_is_detected():
     """The test must be able to fail: a cave whose epilogue forgets to restore EFLAGS (`popfd` replaced by `pop eax`) is reported."""
     assert HAVE_UNICORN
@@ -266,11 +367,12 @@ def main():
         return 2
     allfails = []
     for fn, kw in ((test_random_cave, {"trials": trials}), (test_marker_caves, {"trials": trials}), (test_flag_caves, {"trials": max(1, trials * 2 // 3)}),
-                   (test_reseed_caves, {"trials": max(1, trials * 2 // 3)})):
+                   (test_reseed_caves, {"trials": max(1, trials * 2 // 3)}),
+                   (test_reentry_when_busy, {"trials": max(1, trials // 5)})):
         fails, n = fn(**kw)
         print("%-20s %5d machine states: %s" % (fn.__name__, n, "all equal" if not fails else "%d FAILURES" % len(fails)))
         allfails += fails
-    for fn in (test_seed_cave, test_overflow_never_wraps, test_a_broken_cave_is_detected):
+    for fn in (test_seed_cave, test_overflow_never_wraps, test_real_nested_entry_inside_the_recorder, test_a_broken_cave_is_detected):
         try:
             fn()
             print("%-20s ok" % fn.__name__)

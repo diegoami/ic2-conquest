@@ -117,7 +117,7 @@ def analyze(recs, ctl, seed, final_seed_mem):
     end_pin_memory = bool(recs) and last_seed == final_seed_mem
     post_sites = sorted({hex(r["site"]) for r in post if r["kind"] == "random"})
     return {
-        "records": len(recs), "overflow": ctl["overflow"], "index": ctl["index"], "capacity": ctl["capacity"], "magic_ok": ctl["magic_ok"],
+        "records": len(recs), "overflow": ctl["overflow"], "reentered": ctl.get("reentered", 0), "busy_at_read": ctl.get("busy", 0), "index": ctl["index"], "capacity": ctl["capacity"], "magic_ok": ctl["magic_ok"],
         "kinds": dict(kinds), "random_by_site": {hex(k): v for k, v in sorted(Counter(r["site"] for r in rnd).items())},
         "markers_by_entry": {hex(k): v for k, v in sorted(Counter(r["site"] for r in recs if r["kind"] == "marker").items())},
         "chain_breaks": breaks[:20], "chain_break_count": len(breaks),
@@ -127,7 +127,7 @@ def analyze(recs, ctl, seed, final_seed_mem):
         "end_pin_by_reseed_record": end_pin_reseed, "end_pin_by_memory": end_pin_memory,
         "result_formula_misses": L.result_check(recs)[:20], "result_formula_miss_count": len(L.result_check(recs)),
         "sites_outside_list": sorted({hex(r["site"]) for r in rnd if r["site"] not in H.SITES}),
-        "pass": (ctl["overflow"] == 0 and ctl["magic_ok"] and not breaks and start_ok and not L.result_check(recs) and bool(flag_clears)
+        "pass": (ctl["overflow"] == 0 and ctl.get("reentered", 0) == 0 and ctl["magic_ok"] and not breaks and start_ok and not L.result_check(recs) and bool(flag_clears)
                  and not reseed_inside and (end_pin_reseed or end_pin_memory)),
     }
 
@@ -215,7 +215,7 @@ def run_trial(g, cell, seed, rep, variant, log):
         csvp = C.write_new(C.DATA, "hooklog-%s.csv" % tag, log_csv(recs2))
         chkp = C.write_new(C.DATA, "hookcheck-%s.json" % tag, json.dumps(chk, indent=1, default=str))
         raw = bytes(g.mem(H.BUF, len(recs2) * H.REC)) if recs2 else b""
-        rec.update({"hooklog": csvp.name, "hookcheck": chkp.name, "hook_pass": chk["pass"], "hook_records": chk["records"], "hook_overflow": chk["overflow"],
+        rec.update({"hooklog": csvp.name, "hookcheck": chkp.name, "hook_pass": chk["pass"], "hook_records": chk["records"], "hook_overflow": chk["overflow"], "hook_reentered": chk["reentered"],
                     "hook_chain_breaks": chk["chain_break_count"], "hook_raw_sha256": hashlib.sha256(raw).hexdigest()})
         rawf = C.ART / "hookbuf"           # the raw buffer (a binary: kept in the release archive; its SHA-256 is in the trial line)
         rawf.mkdir(parents=True, exist_ok=True)

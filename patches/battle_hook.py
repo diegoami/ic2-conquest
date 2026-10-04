@@ -50,6 +50,8 @@ HOOK_CODE = 0x564600                        # first byte of the hook's caves
 RAW_SIZE = 0x1200                           # raw size of .patch after the hook: the caves, then the control block + private stack (0x565000-0x565100) in the file
 CTL = 0x565000                              # control block: +0 index (next free record), +4 overflow flag, +8 pending record, +12 capacity, +16 magic,
 SV, TAGV = CTL + 20, CTL + 24               #   +20 the program's ESP while a cave works, +24 the tag of the record being written;
+BUSY, REENT = CTL + 32, CTL + 36            #   +32 busy (a cave is working), +36 REENTERED (a cave was entered while busy: it logged nothing, ran the original code);
+S_EAX, S_FL = CTL + 40, CTL + 44            #   +40/+44 EAX and EFLAGS (AH = SF ZF AF PF CF, AL = OF) parked while the busy test runs;
 PRIV_TOP = CTL + 0x100                      #   0x565040-0x565100: the cave's private stack (grows down from 0x565100)
 BUF = 0x565100
 BUF_RECORDS = 65536
@@ -77,8 +79,37 @@ def u32(v):
 # ---------------------------------------------------------------------------------------------------------------------------------------------
 # checks on the exe bytes
 # ---------------------------------------------------------------------------------------------------------------------------------------------
+def sections(b):
+    """The PE section table of the image: [(name, va, vsize, raw_ptr, raw_size, flags)] (VA = image base + RVA)."""
+    n = struct.unpack_from("<H", b, 0x106)[0]
+    out = []
+    for i in range(n):
+        o = 0x1F8 + 40 * i
+        name = bytes(b[o:o + 8]).rstrip(b"\0").decode("latin1")
+        vsize, rva, rsize, rptr = struct.unpack_from("<IIII", b, o + 8)
+        out.append((name, BASE + rva, vsize, rptr, rsize, struct.unpack_from("<I", b, o + 36)[0]))
+    return out
+
+
+def resolve_pointer(b, p):
+    """What a `call [p]` / `jmp [p]` reaches, as far as the image says: ("none", None) p is in no section (a false hit of the byte-wise scan); ("value", v) p is in a
+    READ-ONLY section with file data: v is the dword stored there; ("import", None) p is in the import address table (.idata), whose entries the loader fills with
+    DLL addresses (never the address of code in this image); ("unresolved", None) p is in other writable memory (or in a section without file data): its value at run
+    time cannot be established statically."""
+    for name, va, vsize, rptr, rsize, flags in sections(b):
+        if va <= p < va + max(vsize, rsize):
+            if name == ".idata":
+                return "import", None
+            if flags & 0x80000000 or p - va + 4 > rsize or rptr == 0:
+                return "unresolved", None
+            return "value", struct.unpack_from("<I", b, rptr + (p - va))[0]
+    return "none", None
+
+
 def scan_random_refs(b):
-    """Every reference to Random in the CODE section: [(va, kind)], kind in E8 / E9 / FF15 / FF25 / abs (an absolute dword equal to it)."""
+    """Every reference to Random in the CODE section: [(va, kind)], kind in E8 / E9 (rel32 to it), FF15 / FF25 (`call [p]` / `jmp [p]` whose pointer p holds it: the
+    operand is the ADDRESS OF A POINTER, so the dword at p is read from the image and compared), FF15? / FF25? (the pointer is in writable memory other than the IAT, so the
+    target cannot be established statically: an unresolved reference, which `check_scan` treats as a failure inside the two modules), abs (an absolute dword equal to it)."""
     code = bytes(b[CODE_RAW:CODE_RAW + CODE_SIZE])
     t, hits = RANDOM, []
     for i in range(len(code) - 4):
@@ -86,8 +117,13 @@ def scan_random_refs(b):
         op = code[i]
         if op in (0xE8, 0xE9) and va + 5 + struct.unpack_from("<i", code, i + 1)[0] == t:
             hits.append((va, "E8" if op == 0xE8 else "E9"))
-        if op == 0xFF and i + 6 <= len(code) and code[i + 1] in (0x15, 0x25) and struct.unpack_from("<I", code, i + 2)[0] == t:
-            hits.append((va, "FF15" if code[i + 1] == 0x15 else "FF25"))
+        if op == 0xFF and i + 6 <= len(code) and code[i + 1] in (0x15, 0x25):
+            kind = "FF15" if code[i + 1] == 0x15 else "FF25"
+            how, v = resolve_pointer(b, struct.unpack_from("<I", code, i + 2)[0])
+            if how == "value" and v == t:
+                hits.append((va, kind))
+            elif how == "unresolved":
+                hits.append((va, kind + "?"))
         if struct.unpack_from("<I", code, i)[0] == t:
             hits.append((va, "abs"))
     return hits
@@ -109,10 +145,13 @@ def check_scan(b, sites=SITES):
     """Refuse unless the scan's list of references inside the battle module and TBattleOver equals the hooked list. Returns (inside, outside)."""
     refs = scan_random_refs(b)
     inside = sorted(va for va, _ in refs if in_ranges(va, (BATTLE_MODULE, BATTLEOVER_MODULE)))
+    unresolved = [(hex(va), k) for va, k in refs if k.endswith("?") and in_ranges(va, (BATTLE_MODULE, BATTLEOVER_MODULE))]
+    if unresolved:
+        raise HookBuildError("indirect call/jump inside the battle module or TBattleOver whose pointer cannot be established statically (it may reach Random): %s" % unresolved)
     if inside != sorted(sites) or any(k != "E8" for va, k in refs if va in sites):
         raise HookBuildError("scan of CODE finds %s inside the battle module and TBattleOver, the hooked list is %s"
                              % ([hex(v) for v in inside], [hex(v) for v in sorted(sites)]))
-    return inside, sorted(va for va, _ in refs if va not in inside)
+    return inside, sorted(va for va, k in refs if va not in inside and not k.endswith("?"))
 
 
 def check_entries(b):
@@ -148,7 +187,7 @@ class Asm:
     """bytes + labels + rel32 call/jmp to absolute VAs + short jumps to labels."""
 
     def __init__(self, origin):
-        self.origin, self.out, self.labels, self.fix = origin, bytearray(), {}, []
+        self.origin, self.out, self.labels, self.fix, self.fix32 = origin, bytearray(), {}, [], []
 
     def b(self, *chunks):
         for c in chunks:
@@ -172,11 +211,19 @@ class Asm:
         self.out += bytes([op, 0])
         return self
 
+    def j32(self, op2, name):
+        """0F <op2> rel32 (a near conditional jump to a label)."""
+        self.fix32.append((len(self.out) + 2, name))
+        self.out += bytes([0x0F, op2]) + bytes(4)
+        return self
+
     def done(self):
         for pos, name in self.fix:
             rel = self.labels[name] - (pos + 1)
             assert -128 <= rel <= 127
             self.out[pos] = rel & 0xFF
+        for pos, name in self.fix32:
+            self.out[pos:pos + 4] = struct.pack("<i", self.labels[name] - (pos + 4))
         return bytes(self.out)
 
 
@@ -223,9 +270,31 @@ def _rec_end_body(a):
     return a
 
 
-# prologue/epilogue of a cave's own work: it runs on a PRIVATE stack inside the control page, so the program's stack below ESP is never written
+# Prologue/epilogue of a cave's own work. It runs on a PRIVATE stack inside the control page, so the program's stack below ESP is never written.
+# A cave first tests the BUSY flag WITHOUT disturbing a register or a flag (EAX and the flags are parked in memory with LAHF/SETO, restored with ADD AL,7Fh/SAHF):
+# if a cave is already working (re-entry), it sets REENTERED, logs nothing, does not touch SV or the private stack, restores EAX and the flags and runs the original
+# instruction(s) / the real Random. Otherwise it sets BUSY and goes on; SWITCH_OUT clears BUSY.
+PARK = (b"\xA3" + u32(S_EAX) + b"\x9F\x0F\x90\xC0" + b"\xA3" + u32(S_FL))             # mov [S_EAX],eax; lahf; seto al; mov [S_FL],eax
+UNPARK = (b"\xA1" + u32(S_FL) + b"\x04\x7F\x9E" + b"\xA1" + u32(S_EAX))                # mov eax,[S_FL]; add al,7Fh (OF = AL); sahf; mov eax,[S_EAX]
 SWITCH_IN = b"\x89\x25" + u32(SV) + b"\xBC" + u32(PRIV_TOP) + b"\x9C\x60"      # mov [SV],esp; mov esp,PRIV_TOP; pushfd; pushad
-SWITCH_OUT = b"\x61\x9D\x8B\x25" + u32(SV)                                     # popad; popfd; mov esp,[SV]   (movs leave EFLAGS alone)
+SWITCH_OUT = b"\x61\x9D\x8B\x25" + u32(SV) + b"\xC7\x05" + u32(BUSY) + u32(0)  # popad; popfd; mov esp,[SV]; BUSY = 0   (movs leave EFLAGS alone)
+
+
+def enter(a, reent):
+    """Busy test + SWITCH_IN. Jumps to label `reent` (with EAX and flags still parked) when busy; otherwise falls through with the caller's state restored, BUSY = 1,
+    on the private stack with flags and registers pushed."""
+    a.b(PARK)
+    a.b(b"\xA1" + u32(BUSY), b"\x85\xC0")                                      # mov eax,[BUSY]; test eax,eax
+    a.j32(0x85, reent)                                                            # jnz reent
+    a.b(b"\xC7\x05" + u32(BUSY) + u32(1))                                        # BUSY = 1
+    a.b(UNPARK)
+    a.b(SWITCH_IN)
+
+
+def reentered(a):
+    """The re-entry path: REENTERED = 1, then the caller's EAX and flags back."""
+    a.b(b"\xC7\x05" + u32(REENT) + u32(1))
+    a.b(UNPARK)
 
 
 def build_caves(code_va=HOOK_CODE):
@@ -244,27 +313,38 @@ def build_caves(code_va=HOOK_CODE):
     RB, RE = caves["rec_body"][0], caves["rec_end_body"][0]
 
     def random_cave(a, va):
-        a.b(SWITCH_IN)
+        enter(a, "reent1")
         a.b(b"\xA1" + u32(SV), b"\x8B\x00", b"\xA3" + u32(TAGV))       # eax = [SV]; eax = [eax] (the site's return address); TAGV = eax
         a.call(RB)
         a.b(SWITCH_OUT)
         a.call(RANDOM)                                                 # the caller's EAX and stack, exactly as a direct call
-        a.b(SWITCH_IN)
+        enter(a, "reent2")
         a.call(RE)
         a.b(SWITCH_OUT)
+        a.b(b"\xC3")
+        a.label("reent1")                                              # re-entered before the draw: no record, the real Random, back
+        reentered(a)
+        a.call(RANDOM)
+        a.b(b"\xC3")
+        a.label("reent2")                                              # re-entered after the draw: the result is in EAX and the flags are Random's: keep them
+        reentered(a)
         a.b(b"\xC3")
         return a.done()
     put("random", build=random_cave)
 
-    def tagged(a, tag):
-        a.b(SWITCH_IN)
+    def tagged(a, tag, reent):
+        enter(a, reent)
         a.b(b"\xC7\x05" + u32(TAGV) + u32(tag))
         a.call(RB)
         a.b(SWITCH_OUT)
 
     def marker(name, entry, displaced):
         def f(a, va):
-            tagged(a, 0x01000000 | entry)
+            tagged(a, 0x01000000 | entry, "reent")
+            a.b(displaced)
+            a.jmp(entry + len(displaced))
+            a.label("reent")
+            reentered(a)
             a.b(displaced)
             a.jmp(entry + len(displaced))
             return a.done()
@@ -276,7 +356,10 @@ def build_caves(code_va=HOOK_CODE):
     def flagcave(name, site):
         def f(a, va):
             a.b(FLAG_CLEAR_BYTES)                                      # the displaced `mov byte [FLAG],0`
-            tagged(a, 0x02000000 | site)
+            tagged(a, 0x02000000 | site, "reent")
+            a.jmp(site + 7)
+            a.label("reent")
+            reentered(a)
             a.jmp(site + 7)
             return a.done()
         put(name, build=f)
@@ -286,8 +369,12 @@ def build_caves(code_va=HOOK_CODE):
 
     def reseedcave(name, site, displaced):
         def f(a, va):
-            tagged(a, 0x04000000 | site)                               # the record first (the seed that is about to be overwritten) ...
+            tagged(a, 0x04000000 | site, "reent")                      # the record first (the seed that is about to be overwritten) ...
             a.b(displaced)                                             # ... then the displaced `mov [RandSeed], reg`
+            a.jmp(site + len(displaced))
+            a.label("reent")
+            reentered(a)
+            a.b(displaced)
             a.jmp(site + len(displaced))
             return a.done()
         put(name, build=f)
@@ -301,10 +388,13 @@ def seed_cave(origin, seed, tbattle_start):
     """The hooked replacement of the lab's seed cave: RandSeed := seed, a boundary record (tag 0x03000000), then the battle start."""
     a = Asm(origin)
     a.b(b"\xC7\x05" + u32(RAND_SEED) + u32(seed))
-    a.b(SWITCH_IN)
+    enter(a, "reent")
     a.b(b"\xC7\x05" + u32(TAGV) + u32(0x03000000))
     a.call(build_caves()["rec_body"][0])
     a.b(SWITCH_OUT)
+    a.jmp(tbattle_start)
+    a.label("reent")
+    reentered(a)
     a.jmp(tbattle_start)
     return a.done()
 

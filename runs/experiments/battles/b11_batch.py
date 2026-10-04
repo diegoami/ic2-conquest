@@ -52,7 +52,7 @@ def round_pairs(n, size):
     return [(c, int(s)) for c, s in lines][(n - 1) * size:n * size]
 
 
-def run_round(n, size, workers):
+def run_round(n, size, workers, rep=1):
     prs = round_pairs(n, size)
     ws = WORKERS[:workers]
     procs = []
@@ -65,7 +65,7 @@ def run_round(n, size, workers):
         f.write_text("".join("%s %d\n" % x for x in mine))
         env = dict(os.environ, IC2_WORK=str(work), DISPLAY_IC2=disp, B11_WORKER="-w%d" % (k + 1))
         log = open(DATA / ("round%02d-w%d-%s.out" % (n, k + 1, stamp)), "w")
-        procs.append(subprocess.Popen([sys.executable, str(RUN), "run", "hook", "--pairs-file", str(f)], env=env, stdout=log, stderr=subprocess.STDOUT))
+        procs.append(subprocess.Popen([sys.executable, str(RUN), "run", "hook", "--pairs-file", str(f), "--rep", str(rep)], env=env, stdout=log, stderr=subprocess.STDOUT))
         time.sleep(2)
     rc = [p.wait() for p in procs]
     print("round", n, "pairs", len(prs), "workers", len(procs), "exit codes", rc)
@@ -80,9 +80,9 @@ def sha(p):
     return h.hexdigest()
 
 
-def pack(n, size):
+def pack(n, size, rep=1):
     prs = round_pairs(n, size)
-    return pack_tags("%02d" % n, ["%s_s%d_r1_hook" % (c, s) for c, s in prs])
+    return pack_tags("%02d" % n if rep == 1 else "v2-%02d" % n, ["%s_s%d_r%d_hook" % (c, s, rep) for c, s in prs])
 
 
 def pack_tags(label, tags):
@@ -128,8 +128,8 @@ if __name__ == "__main__":
     if a[0] == "plan":
         plan(*a[1:2])
     elif a[0] == "round":
-        run_round(int(a[1]), opt(a, "--size", 45), opt(a, "--workers", 5))
+        run_round(int(a[1]), opt(a, "--size", 45), opt(a, "--workers", 5), opt(a, "--rep", 1))
     elif a[0] == "pack":
-        pack(int(a[1]), opt(a, "--size", 45))
+        pack(int(a[1]), opt(a, "--size", 45), opt(a, "--rep", 1))
     elif a[0] == "packtags":                                   # packtags LABEL TAG...   (e.g. the inertness batch)
         pack_tags(a[1], a[2:])

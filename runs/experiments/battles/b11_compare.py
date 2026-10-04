@@ -79,8 +79,10 @@ def inertness(base_path=None):
     base_path = Path(base_path) if base_path else latest("b5-baseline-*.json")
     base = json.loads(base_path.read_text())["baseline"] if base_path else {}
     ok = {}
+    exes = sorted(C.DATA.glob("EXES-sha256*.txt"), key=lambda p: p.stat().st_mtime)[-1].read_text().split()
+    final = None if "--all" in sys.argv else {x for x in exes if len(x) == 64}        # default: the trials on the newest hooked build (+ the unhooked ones)
     for r in read_trials():
-        if r.get("status") == "ok":
+        if r.get("status") == "ok" and (final is None or r["variant"] == "plain" or r.get("exe_sha256") in final):
             ok[r["trial"]] = r
     rows = []
     for tag, r in sorted(ok.items()):

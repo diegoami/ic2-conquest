@@ -40,10 +40,10 @@ def ok_tags():
     return done
 
 
-def one_round(n, size, workers):
+def one_round(n, size, workers, rep=1):
     prs = BA.round_pairs(n, size)
-    tags = ["%s_s%d_r1_hook" % (c, s) for c, s in prs]
-    BA.run_round(n, size, workers)
+    tags = ["%s_s%d_r%d_hook" % (c, s, rep) for c, s in prs]
+    BA.run_round(n, size, workers, rep)
     missing = [t for t in tags if t not in ok_tags()]
     if missing:
         print("round", n, "not ok:", missing, "- one more pass", flush=True)
@@ -51,7 +51,7 @@ def one_round(n, size, workers):
         f = C.DATA / ("pairs-round%02d-redo-%s.txt" % (n, time.strftime("%Y%m%d-%H%M%S")))
         f.write_text("".join("%s %d\n" % x for x in redo))
         env = dict(os.environ, B11_WORKER="-redo")
-        subprocess.run([sys.executable, str(HERE / "b11_run.py"), "run", "hook", "--pairs-file", str(f), "--redo-errors"], cwd=ROOT, env=env)
+        subprocess.run([sys.executable, str(HERE / "b11_run.py"), "run", "hook", "--pairs-file", str(f), "--rep", str(rep), "--redo-errors"], cwd=ROOT, env=env)
         missing = [t for t in tags if t not in ok_tags()]
     have = [t for t in tags if t in ok_tags()]
     # 1. exchange replay of the round's battles (tracked outputs)
@@ -74,7 +74,7 @@ def one_round(n, size, workers):
             bad.append(t)
     print("round", n, "inertness vs B5:", len(have) - len(bad), "identical,", len(bad), "different", bad, flush=True)
     # 3. archive + release
-    tgz, man = BA.pack(n, size)
+    tgz, man = BA.pack(n, size, rep)
     up = sh("gh", "release", "upload", "run-exp-battle-hook", str(tgz), "--repo", "diegoami/ic2-conquest")
     if up.returncode != 0:
         cmd = "gh release upload run-exp-battle-hook %s --repo diegoami/ic2-conquest" % tgz
@@ -93,9 +93,10 @@ def main():
     first, last = int(a[0]), int(a[1])
     size = BA.opt(a, "--size", 48)
     workers = BA.opt(a, "--workers", 6)
+    rep = BA.opt(a, "--rep", 1)
     for n in range(first, last + 1):
         t0 = time.time()
-        missing, bad = one_round(n, size, workers)
+        missing, bad = one_round(n, size, workers, rep)
         print("== round", n, "done in", round(time.time() - t0), "s; not ok:", missing, "; not inert:", bad, flush=True)
         if bad:
             print("STOP: a hooked battle differs from its unhooked B5 battle", flush=True)
