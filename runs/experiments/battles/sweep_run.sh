@@ -8,7 +8,7 @@ for b in "$@"; do
   name=${b%%:*}; cells=${b#*:}
   python3 runs/experiments/battles/trials.py run ${cells//,/ } --seeds 1-3 --stop-on-error; rc=$?
   python3 runs/experiments/battles/trials.py table
-  python3 runs/experiments/battles/release_sync.py; rs=$?
+  python3 runs/experiments/battles/release_sync.py "$name"; rs=$?
   git add runs/experiments/data/run-exp-battle-sweep runs/experiments/battles tests
   git commit -qm "B5 sweep batch $name (trials rc=$rc)
 
