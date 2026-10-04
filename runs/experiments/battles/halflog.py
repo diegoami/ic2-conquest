@@ -49,10 +49,11 @@ def write_halflog(trial_id, series_names, art=None, out=None):
     rows = decode_series([art / n for n in series_names])
     out = out or C.DATA
     out.mkdir(parents=True, exist_ok=True)
-    p = out / f"halfrounds-{trial_id}.jsonl"
-    if p.exists():
-        p = out / f"halfrounds-{trial_id}-{C.STAMP}.jsonl"
-    with open(p, "w") as f:
+    p, n = out / f"halfrounds-{trial_id}.jsonl", 0
+    while p.exists():        # never rewrite a written measurement (rule 6), also on a third regeneration in one process
+        n += 1
+        p = out / f"halfrounds-{trial_id}-{C.STAMP}{'' if n == 1 else '-%d' % n}.jsonl"
+    with open(p, "x") as f:
         for r in rows:
             f.write(json.dumps(r, default=str) + "\n")
     loss = sum(r.get("since_previous", {}).get("losses", 0) for r in rows)

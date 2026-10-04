@@ -18,9 +18,10 @@ Operations (offsets: docs/sav-layout-notes.md):
 Position (x, y) of an army, and the map, are never touched.
 
 L2 (B3): `block_edit(b, ops)` edits the battle block (block 12) of a save written INSIDE a battle (a `BATTLEnn.SAV` of the lab build, or a
-File > Save As at a human phase): the strategic armies' units are in battle SLOT ORDER in such a save (side 0: slot k = army unit k; side 1:
-slot 20+j = army unit j; the AI side is re-sorted at battle start, B2), so a slot edit is MIRRORED into the army's unit by default
-(`consistent=True`: type, troops, quality, label, name) and the grid cell is kept in step (old cell emptied, new cell = the sprite).
+File > Save As at a human phase): the attacker's slots follow its army's unit order but the AI (defender) side is RE-SORTED at battle start and the
+mapping is not stored (B2), so a slot edit is MIRRORED into the army's unit by default (`consistent=True`: type, troops, quality, label, name)
+into the unit found by the slot's OLD (name, type) among that army's units: exactly one match is required, and a slot with no match or with
+several (duplicate names) raises ValueError instead of guessing (pass consistent=False to edit the slot only) and the grid cell is kept in step (old cell emptied, new cell = the sprite).
     ("slot", k, {"x": 6, "y": 5, "troops": 3000, "quality": 6, "morale": 70, "type": "hi", "merc": 0, "state": 0, "ammo": 0, "target": -1,
                   "name": "..."}[, consistent])        ("grid", x, y, value) raw grid word      ("header", {"x2": 1, ...})
 Not edited by default: positions of strategic armies (never), the half-round counter.
@@ -153,11 +154,27 @@ def block_edit(b, ops):
             b[o:o + BB.BLOCK_LEN] = BB.encode_block(blk)
             if consistent and any(f in fields for f in ("type", "troops", "quality", "merc", "name")):
                 army = blk["attacker_army"] if n < 20 else blk["defender_army"]
-                u = n if n < 20 else n - 20
+                u = _army_unit_of_slot(b, army, old)
                 set_units_field(b, army, u, {f: new[f] for f in ("type", "troops", "quality", "merc", "name") if f in fields})
         else:
             raise ValueError("unknown block operation %r" % (k,))
     return b
+
+
+def _army_unit_of_slot(b, army, old_slot):
+    """The index of the strategic army's unit that a battle slot belongs to, matched by the slot's (name, type) BEFORE the edit; exactly one match
+    or ValueError (the defender's slot order differs from its army's unit order, so an index would be wrong)."""
+    base = _army(b, army)
+    hits = []
+    for k in range(20):
+        o = base + 16 + 32 * k
+        typ, troops = struct.unpack_from("<2h", b, o + 2)[0], struct.unpack_from("<h", b, o + 4)[0]
+        if troops > 0 and sav.cstr(bytes(b[o + 8:o + 32])) == old_slot["name"] and sav.UNIT_TYPES[typ] == old_slot["type"]:
+            hits.append(k)
+    if len(hits) != 1:
+        raise ValueError("slot %d (%r, %s) matches %d units of army %d: cannot mirror the edit; use consistent=False"
+                         % (old_slot["slot"], old_slot["name"], old_slot["type"], len(hits), army))
+    return hits[0]
 
 
 def set_units_field(b, army, unit, fields):

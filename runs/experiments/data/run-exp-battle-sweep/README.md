@@ -18,3 +18,8 @@
 - `b2-analysis-20261004-095312.json` (137 files) and `-095840.json` (241 files) are the series analysis of the first and of the later set of trials;
   `-104523.json` adds `all_battle_saves`: every `BATTLE<nn>` save decoded (763: 345 B0, 192 B3 resumed, 226 trials/other), the complete basis of the sprite-rule claim.
 - `sweep-table-*.csv` made before the `build` / `level` columns were added have no such columns: all their rows are lab, L1.
+
+## PR B second review
+- **`stage.py` mirror (R1/R2):** the earlier `consistent=True` mirror mapped defender slot `20+j` to army unit `j`. It now matches the slot's old (name, type) to exactly one unit of the army and refuses otherwise. **No B3 crafted save was affected:** every scenario of `b3_crafted.py` edited slot 0 (the attacker's, whose units follow the army order) or the grid only (`c2, c3, c4, c6, c7, d3, d6, d8`: slot 0; `c5, d5`: grid; `c1`, `c0`, `d0`, `e0`: none), none edited a defender slot, and the results stand (the battle plays from the slots anyway, B3 c4).
+- **`sweep-table-20261004-105525.csv`** (new table, older ones kept): the `halflog`, `loss_rows` and `unambiguous_rows` of trials 1-6 (`hi-hi-one_s{1,2,3}_r{1,2}`), recorded in `trials.jsonl` before the half-round hook existed, are **backfilled** by `trials.py table` from the `halfrounds-<trial>.jsonl` files that `halflog.py` wrote afterwards from the same series (`trials.jsonl` itself is unchanged). Trials 7-12 carry them in their own records.
+- `halflog.py` now never rewrites a written file (versioned name in a loop, file opened exclusively).

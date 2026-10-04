@@ -190,6 +190,47 @@ def test_block_edit_is_local_and_mirrors_the_army():
     assert BB.block_of_save(bytes(b))["x2"] == 1 and len(changed(raw, bytes(b))) == 1
 
 
+def test_defender_slot_edit_mirrors_into_the_right_unit_on_a_real_save():
+    """B2: the AI side is re-sorted, so slot 20+j is not army unit j. On a real B4 save (Gaul's army 10: strategic order 7th Foot, 4th Guards,
+    8th Foot, 9th Foot, 5th Guards; slots 4th Guards, 5th Guards, ...) editing slot 20 (4th Guards) must change army 10's unit named 4th Guards."""
+    from state import battle_block as BB
+    sv = ROOT / "artifacts" / "run-exp-battle-probe" / "gate2_a_BATTLE05.SAV"
+    if not sv.exists():
+        print("   (B0 series not on this machine: skipped)")
+        return
+    raw = bytearray(sv.read_bytes())
+    # in a save written inside the battle army 10 is already in slot order; put it back in a PRE-sort order (rotate its first three units) so
+    # that slot 20 is NOT army unit 0, as at the B2 check (strategic 7th Foot, 4th Guards, ...): an index mapping would hit the wrong unit
+    ab = stage._army(raw, 10) + 16
+    recs = [bytes(raw[ab + 32 * k:ab + 32 * k + 32]) for k in range(3)]
+    for k, r in enumerate(recs[1:] + recs[:1]):
+        raw[ab + 32 * k:ab + 32 * k + 32] = r
+    raw = bytes(raw)
+    b0 = BB.block_of_save(raw)
+    name = b0["slots"][20]["name"]
+    before = {u["name"]: u for u in sav.parse(raw)["armies"][b0["defender_army"]]["units"]}
+    assert list(before).index(name) != 0, "the slot-20 unit is not army unit 0, so an index mapping would hit the wrong unit"
+    b = stage.block_edit(bytearray(raw), [("slot", 20, {"quality": 8, "troops": 1234})])
+    after = {u["name"]: u for u in sav.parse(bytes(b))["armies"][b0["defender_army"]]["units"]}
+    for nm, u in after.items():
+        if nm == name:
+            assert (u["quality"], u["troops"]) == (8, 1234), u
+        else:
+            assert u == before[nm], nm
+    # an ambiguous match (two units of the army with the slot's name and type) is refused, not guessed
+    dup = bytearray(raw)
+    base = stage._army(dup, b0["defender_army"])
+    src = [k for k in range(20) if sav.cstr(bytes(dup[base + 16 + 32 * k + 8:base + 16 + 32 * k + 32])) == name][0]
+    other = [k for k in range(20) if k != src and struct.unpack_from("<h", dup, base + 16 + 32 * k + 4)[0] > 0][0]
+    dup[base + 16 + 32 * other:base + 16 + 32 * other + 32] = dup[base + 16 + 32 * src:base + 16 + 32 * src + 32]
+    try:
+        stage.block_edit(dup, [("slot", 20, {"troops": 99})])
+    except ValueError as e:
+        assert "cannot mirror" in str(e)
+    else:
+        raise AssertionError("ambiguous mirror accepted")
+
+
 def test_block_edit_rejects_bad_input():
     raw, o = battle_save()
     for ops in ([("slot", 40, {})], [("slot", 0, {"bogus": 1})], [("slot", 0, {"x": 14})], [("nope",)]):

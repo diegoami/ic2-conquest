@@ -211,11 +211,21 @@ def run_trial(g, cell, seed, rep, log):
     return rec
 
 
+def backfill_halflog(rec):
+    """For a trial recorded before the halflog hook (no `halflog` key): the oldest `halfrounds-<trial>*.jsonl` written afterwards by `halflog.py`
+    (the same series, decoded later), summarised by reading it. Returns (file name, loss rows, unambiguous rows) or None. trials.jsonl is not changed."""
+    fs = sorted(C.DATA.glob(f"halfrounds-{rec['trial']}*.jsonl"))
+    if not fs:
+        return None
+    rows = [json.loads(x) for x in fs[0].read_text().splitlines()]
+    return fs[0].name, sum(r.get("since_previous", {}).get("losses", 0) for r in rows), sum(r.get("since_previous", {}).get("unambiguous", 0) for r in rows)
+
+
 def row(rec):
     if rec.get("status") != "ok":
         return {"trial": rec.get("trial"), "cell": rec.get("cell"), "status": rec.get("status")}
     a, d = rec["attacker_result"], rec["defender_result"]
-    return {"trial": rec["trial"], "cell": rec["cell"], "build": rec.get("build", ""), "level": rec.get("level", ""), "attacker": rec["attacker"], "defender": rec["defender"], "size": rec["size"],
+    out = {"trial": rec["trial"], "cell": rec["cell"], "build": rec.get("build", ""), "level": rec.get("level", ""), "attacker": rec["attacker"], "defender": rec["defender"], "size": rec["size"],
             "seed": rec["seed"], "rep": rec["rep"], "exe": rec["exe"], "status": "ok", "half_rounds": rec["half_rounds"],
             "winner": rec["winner"], "end_turn_clicks": rec["end_turn_clicks"], "att_troops_before": a["troops_before"],
             "att_troops_after": a["troops_after"], "att_loss": a["loss"], "def_troops_before": d["troops_before"],
@@ -226,6 +236,11 @@ def row(rec):
             "series_last": rec["series"][-1] if rec["series"] else "", "post_save": rec["post_save"],
             "post_sha12": rec["post_sha256"][:12], "series_sha12": rec["series_sha12"], "halflog": rec.get("halflog", ""),
             "loss_rows": rec.get("halflog_summary", {}).get("loss_rows", ""), "unambiguous_rows": rec.get("halflog_summary", {}).get("unambiguous_rows", "")}
+    if not out["halflog"]:       # recorded before the hook: filled from the halfrounds file written afterwards (see the data README)
+        bf = backfill_halflog(rec)
+        if bf:
+            out["halflog"], out["loss_rows"], out["unambiguous_rows"] = bf
+    return out
 
 
 def write_table():
