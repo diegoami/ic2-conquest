@@ -5,8 +5,8 @@
   b5-pairings-<stamp>.csv     one line per (attacker, defender, attacker size, defender size, seed): winner, half-rounds, losses, promotions, peace offer
   b5-placement-<stamp>.csv    per trial and slot: type, side, position in the first file (half-round 1: Gaul placed, Rome parked) and the second
                               (Rome placed), and which side acted in half-rounds 2-5 (initiative, [D] from the diff)
-  b5-targets-<stamp>.csv      every half-round in which a unit's `target` field named a new enemy slot while two or more enemies stood: the
-                              rank of the chosen enemy by distance, by troops and by type (observations of the AI general, NOT rules)
+  b5-targets-<stamp>.csv      every half-round in which a unit's `target` field first showed a new enemy slot while two or more enemies stood: the rank of that enemy by
+                              distance and troops IN THE RESULTING SNAPSHOT, plus prev_* ranks in the previous snapshot (descriptions of where it stood, NOT of how the AI chose)
   b5-promotions-<stamp>.csv   per unit: quality before / after, troops before / after, destroyed
   b5-summary-<stamp>.json     the aggregates every finding sentence cites (counts per type, per end condition, per size, peace offers, timings,
                               seed-pairing check, loser's state at the last saved half-round)
@@ -100,8 +100,21 @@ def sizes_of(cell):
     return sa, sd or sa
 
 
+def _ranks(me, ch, enemies):
+    dist = lambda e: CHEB((me["x"], me["y"]), (e["x"], e["y"]))
+    d_ch = dist(ch)
+    nearer = sum(1 for e in enemies if dist(e) < d_ch)
+    tied = sum(1 for e in enemies if e is not ch and dist(e) == d_ch)
+    weaker = sum(1 for e in enemies if e["troops"] < ch["troops"])
+    return d_ch, nearer, tied, weaker
+
+
 def targets_events(rows):
-    """Every (half-round, slot) whose target changed to an enemy slot while >= 2 enemies were alive: [D] ranks of the chosen one."""
+    """Every (half-round, slot) whose target word (word 9) first shows an enemy slot in a snapshot while >= 2 enemies stood there. The columns without a suffix are ranks in the
+    RESULTING snapshot (the one where word 9 first shows the new target: positions and troops after the side's moves, which are the state the melee starts from [R-code]).
+    The `prev_` columns rank the same chosen enemy in the PREVIOUS snapshot (before the side's moves; limit: positions change during the move phase, and the previous
+    snapshot is the other side's turn, so those ranks do not show the state at the moment of choice either; enemies that died or arrived in between are not ranked).
+    Nothing here says how the AI chose: it only describes where the chosen enemy stood."""
     ev = []
     for prev, cur in zip(rows, rows[1:]):
         by = {s["slot"]: s for s in cur["slots"]}
@@ -114,16 +127,19 @@ def targets_events(rows):
             if len(enemies) < 2:
                 continue
             ch = by[s["target"]]
-            dist = lambda e: CHEB((s["x"], s["y"]), (e["x"], e["y"]))
-            d_ch = dist(ch)
-            nearer = sum(1 for e in enemies if dist(e) < d_ch)
-            tied = sum(1 for e in enemies if e is not ch and dist(e) == d_ch)
-            weaker = sum(1 for e in enemies if e["troops"] < ch["troops"])
-            ev.append({"half_round": cur["half_round"], "side": s["side"], "slot": s["slot"], "type": s["type"], "target": ch["slot"], "target_type": ch["type"],
-                       "enemies_alive": len(enemies), "distance": d_ch, "enemies_strictly_nearer": nearer, "enemies_tied_distance": tied,
-                       "enemies_strictly_weaker": weaker, "is_nearest": nearer == 0, "is_unique_nearest": nearer == 0 and tied == 0,
-                       "is_weakest": weaker == 0, "enemy_types": "".join(sorted(e["type"] for e in enemies)),
-                       "ranged_shooter": s["type"] in ("li", "ar", "lc")})
+            d_ch, nearer, tied, weaker = _ranks(s, ch, enemies)
+            row = {"half_round": cur["half_round"], "side": s["side"], "slot": s["slot"], "type": s["type"], "target": ch["slot"], "target_type": ch["type"],
+                   "enemies_alive": len(enemies), "distance": d_ch, "enemies_strictly_nearer": nearer, "enemies_tied_distance": tied,
+                   "enemies_strictly_weaker": weaker, "is_nearest": nearer == 0, "is_unique_nearest": nearer == 0 and tied == 0,
+                   "is_weakest": weaker == 0, "enemy_types": "".join(sorted(e["type"] for e in enemies)),
+                   "ranged_shooter": s["type"] in ("li", "ar", "lc")}
+            penemies = [e for e in prev["slots"] if e["side"] != s["side"]]
+            pch = next((e for e in penemies if e["slot"] == ch["slot"]), None)
+            if pch is not None and len(penemies) >= 2:
+                pd, pn, pt, pw = _ranks(p, pch, penemies)
+                row.update({"prev_distance": pd, "prev_enemies_strictly_nearer": pn, "prev_enemies_tied_distance": pt, "prev_enemies_strictly_weaker": pw,
+                            "prev_is_nearest": pn == 0, "prev_is_unique_nearest": pn == 0 and pt == 0, "prev_is_weakest": pw == 0})
+            ev.append(row)
     return ev
 
 
@@ -241,13 +257,16 @@ def main():
     # targets
     summary["targets"] = {"events": len(target_rows), "nearest": sum(1 for t in target_rows if t["is_nearest"]), "unique_nearest": sum(1 for t in target_rows if t["is_unique_nearest"]),
                           "weakest": sum(1 for t in target_rows if t["is_weakest"]),
+                          "previous_snapshot_events": sum(1 for t in target_rows if "prev_is_nearest" in t), "previous_snapshot_nearest": sum(1 for t in target_rows if t.get("prev_is_nearest")),
+                          "previous_snapshot_unique_nearest": sum(1 for t in target_rows if t.get("prev_is_unique_nearest")), "previous_snapshot_weakest": sum(1 for t in target_rows if t.get("prev_is_weakest")),
+                          "ranks_are_in": "the resulting snapshot (where word 9 first shows the new target); prev_* = the previous snapshot; no inference about how the AI chose",
                           "by_attacker_type": {k: dict(Counter("nearest" if t["is_nearest"] else "not nearest" for t in target_rows if t["type"] == k)) for k in sorted({t["type"] for t in target_rows})}}
     pcols = ["cell", "attacker", "defender", "att_size", "def_size", "seed", "trial", "half_rounds", "loss_rows", "old_unambiguous", "attributed_fixed", "winner", "att_before", "att_after", "def_before", "def_after", "att_destroyed", "def_destroyed",
              "promotions", "offer_of_peace", "end_turn_clicks", "seconds", "def_money_taken", "def_supplies_taken", "att_money_taken", "att_supplies_taken", "news"]
     out = {}
     out["pairings"] = C.write_new(C.DATA, f"b5-pairings-{C.STAMP}.csv", csv_text(pcols, pair_rows))
     out["placement"] = C.write_new(C.DATA, f"b5-placement-{C.STAMP}.csv", csv_text(["trial", "cell", "seed", "file_index", "half_round", "slot", "side", "type", "x", "y", "troops", "morale", "state"], place_rows))
-    out["targets"] = C.write_new(C.DATA, f"b5-targets-{C.STAMP}.csv", csv_text(["trial", "cell", "seed", "half_round", "side", "slot", "type", "target", "target_type", "enemies_alive", "distance", "enemies_strictly_nearer", "enemies_tied_distance", "enemies_strictly_weaker", "is_nearest", "is_unique_nearest", "is_weakest", "enemy_types", "ranged_shooter"], target_rows))
+    out["targets"] = C.write_new(C.DATA, f"b5-targets-{C.STAMP}.csv", csv_text(["trial", "cell", "seed", "half_round", "side", "slot", "type", "target", "target_type", "enemies_alive", "distance", "enemies_strictly_nearer", "enemies_tied_distance", "enemies_strictly_weaker", "is_nearest", "is_unique_nearest", "is_weakest", "enemy_types", "ranged_shooter", "prev_distance", "prev_enemies_strictly_nearer", "prev_enemies_tied_distance", "prev_enemies_strictly_weaker", "prev_is_nearest", "prev_is_unique_nearest", "prev_is_weakest"], target_rows))
     out["promotions"] = C.write_new(C.DATA, f"b5-promotions-{C.STAMP}.csv", csv_text(["trial", "cell", "side", "name", "type", "troops_before", "troops_after", "loss", "destroyed", "quality_before", "quality_after", "promoted"], promo_rows))
     summary["header_x2_v_acting_side"] = {"note": "x2 = the side to move at the snapshot [R-code 0x4A0B78]; compared with the side whose units moved/shot/acquired a target in the diff into that file (only diffs with exactly one acting side)", **dict(x2_v_actor)}
     b0a = b0_attribution()

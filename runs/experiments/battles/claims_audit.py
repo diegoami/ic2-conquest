@@ -91,9 +91,44 @@ def new_claims(rows, claim, sweep, all_ok):
           (sum(1 for v in hrs.values() for x in v[1:] if len(x["since_previous"]["acting_sides_D"]) == 1 and x["x2"] == x["since_previous"]["acting_sides_D"][0]),
            sum(1 for v in hrs.values() for x in v[1:] if len(x["since_previous"]["acting_sides_D"]) == 1)), (3220, 3220))
     sm = json.loads(sorted(D.glob("b5-summary-*.json"))[-1].read_text())
-    tg = list(csv.DictReader(sorted(D.glob("b5-targets-*.csv"))[-1].open()))
-    claim("finding B5", "target events (a unit's target word changed to an enemy slot while >= 2 enemies stood): 664, the chosen enemy always (ties included) among the nearest, uniquely nearest in 147", sorted(D.glob("b5-targets-*.csv"))[-1].name,
-          (len(tg), sum(x["is_nearest"] == "True" for x in tg), sum(x["is_unique_nearest"] == "True" for x in tg), sum(x["is_weakest"] == "True" for x in tg)), (664, 664, 147, 507))
+    # target ranks: recomputed HERE from the half-round logs (not from b5-targets-*.csv, which comes from b5_analyze.py's own calculation)
+    cnt = Counter()
+    for r in sweep:
+        nm = r.get("halflog") or (T_.backfill_halflog(r) or [None])[0] if (T_ := __import__("trials")) else None
+        L = [json.loads(x) for x in (D / nm).read_text().splitlines()]
+        for pv, cu in zip(L, L[1:]):
+            old = {x["slot"]: x for x in pv["slots"]}
+            for u in cu["slots"]:
+                o = old.get(u["slot"])
+                if o is None or u["target"] == o["target"] or u["target"] < 0:
+                    continue
+                foes = [e for e in cu["slots"] if e["side"] != u["side"]]
+                tgt = next((e for e in foes if e["slot"] == u["target"]), None)
+                if tgt is None or len(foes) < 2:
+                    continue
+                dd = lambda a_, b_: max(abs(a_["x"] - b_["x"]), abs(a_["y"] - b_["y"]))
+                cnt["events"] += 1
+                near = [e for e in foes if dd(u, e) < dd(u, tgt)]
+                tie = [e for e in foes if e is not tgt and dd(u, e) == dd(u, tgt)]
+                cnt["res_nearest"] += not near
+                cnt["res_unique_nearest"] += not near and not tie
+                cnt["res_weakest"] += not [e for e in foes if e["troops"] < tgt["troops"]]
+                pfoes = [e for e in pv["slots"] if e["side"] != u["side"]]
+                ptg = next((e for e in pfoes if e["slot"] == u["target"]), None)
+                if ptg is not None and len(pfoes) >= 2:
+                    cnt["prev_events"] += 1
+                    pn = [e for e in pfoes if dd(o, e) < dd(o, ptg)]
+                    pt = [e for e in pfoes if e is not ptg and dd(o, e) == dd(o, ptg)]
+                    cnt["prev_nearest"] += not pn
+                    cnt["prev_unique_nearest"] += not pn and not pt
+                    cnt["prev_weakest"] += not [e for e in pfoes if e["troops"] < ptg["troops"]]
+    claim("finding B5", "target events: a unit's word 9 first shows an enemy slot while >= 2 enemies stood: 664; RANKS IN THE RESULTING SNAPSHOT: the enemy is among the nearest in 664, uniquely nearest in 147, weakest (ties included) in 507; ranks in the PREVIOUS snapshot (664 events): nearest 602, uniquely nearest 97, weakest 546 (recomputed from the halfrounds-*.jsonl logs, independent of b5_analyze.py)", "halfrounds-*.jsonl",
+          (cnt["events"], cnt["res_nearest"], cnt["res_unique_nearest"], cnt["res_weakest"], cnt["prev_events"], cnt["prev_nearest"], cnt["prev_unique_nearest"], cnt["prev_weakest"]), (664, 664, 147, 507, 664, 602, 97, 546))
+    tgf = sorted(D.glob("b5-targets-*.csv"))[-1]
+    tg = list(csv.DictReader(tgf.open()))
+    claim("finding B5", "b5-targets csv (the tabulation) agrees with the independent recomputation", tgf.name,
+          (len(tg), sum(x["is_nearest"] == "True" for x in tg), sum(x["is_unique_nearest"] == "True" for x in tg), sum(x["is_weakest"] == "True" for x in tg), sum(x["prev_is_nearest"] == "True" for x in tg), sum(x["prev_is_unique_nearest"] == "True" for x in tg), sum(x["prev_is_weakest"] == "True" for x in tg)),
+          (cnt["events"], cnt["res_nearest"], cnt["res_unique_nearest"], cnt["res_weakest"], cnt["prev_nearest"], cnt["prev_unique_nearest"], cnt["prev_weakest"]))
     at = sm["attribution_R_code_words_8_9"]
     claim("finding B5", "loss rows fixed by words 8/9: B0 natural 29 of 125 (old 14); 1 v 1 battles 1569 of 1931 (old 1481); 3 v 3 1166 of 2805 (old 627); size matrix 624 of 987 (old 574)", sorted(D.glob("b5-summary-*.json"))[-1].name,
           ([at["B0 natural 14-unit battles (gate2_a, gate2_s2a)"][k] for k in ("new_fixed", "losses", "old_unambiguous")], [[at["sweep by group"][g][k] for k in ("new_fixed", "losses", "old_unambiguous")] for g in ("1 unit per side", "3 units per side", "mixed sizes (size matrix)")]),

@@ -49,6 +49,7 @@ def test_target_rank_by_distance_troops():
     cur2 = row(6, [sl(0, 0, 0, 1, 100, 21), sl(20, 1, 0, 2, 500, -1), sl(21, 1, 5, 5, 50, -1)])
     ev = A.targets_events([prev, cur2])
     assert not ev[0]["is_nearest"] and ev[0]["enemies_strictly_nearer"] == 1 and ev[0]["is_weakest"]
+    assert ev[0]['prev_is_nearest'] is False or 'prev_is_nearest' in ev[0]      # the previous-snapshot columns exist when the enemy stood there
     one_enemy = row(6, [sl(0, 0, 0, 1, 100, 20), sl(20, 1, 0, 2, 500, -1)])
     assert A.targets_events([row(5, [sl(0, 0, 0, 0, 100, -1), sl(20, 1, 0, 2, 500, -1)]), one_enemy]) == []
 
