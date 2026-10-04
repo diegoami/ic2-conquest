@@ -92,18 +92,23 @@ def sections(b):
 
 
 def resolve_pointer(b, p):
-    """What a `call [p]` / `jmp [p]` reaches, as far as the image says: ("none", None) p is in no section (a false hit of the byte-wise scan); ("value", v) p is in a
+    """What a `call [p]` / `jmp [p]` reaches, as far as the image says: ("value", v) p is in a
     READ-ONLY section with file data: v is the dword stored there; ("import", None) p is in the import address table (.idata), whose entries the loader fills with
-    DLL addresses (never the address of code in this image); ("unresolved", None) p is in other writable memory (or in a section without file data): its value at run
-    time cannot be established statically."""
+    DLL addresses (never the address of code in this image); ("unresolved", None) p is in other writable memory, in a section without file data, outside every section,
+    or its four bytes cross the end of the mapped and file-backed part of its section: its value at run time cannot be established statically (PR #42 round 2)."""
     for name, va, vsize, rptr, rsize, flags in sections(b):
         if va <= p < va + max(vsize, rsize):
+            # all four bytes must lie in this one section, in the part that is both mapped (vsize) and backed by file data (rsize): a pointer that
+            # crosses the section's end may take its remaining bytes from another section or from zero fill, so its value is not established
+            if p + 4 > va + min(vsize, rsize) or rptr == 0:
+                return "unresolved", None
             if name == ".idata":
                 return "import", None
-            if flags & 0x80000000 or p - va + 4 > rsize or rptr == 0:
+            if flags & 0x80000000:
                 return "unresolved", None
             return "value", struct.unpack_from("<I", b, rptr + (p - va))[0]
-    return "none", None
+    # outside every section of the image: memory allocated at run time (or a false hit of the byte-wise scan); its value is not established either
+    return "unresolved", None
 
 
 def scan_random_refs(b):

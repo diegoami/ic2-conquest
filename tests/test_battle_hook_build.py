@@ -103,10 +103,41 @@ def test_indirect_call_through_a_pointer_that_holds_random_is_caught():
     put_indirect(b, 0x452000, 0x15, RDATA_PTR)                     # outside the modules: listed, not a failure
     struct.pack_into("<I", b, 0x5DC00, H.RANDOM)
     assert (0x452000, "FF15") in H.scan_random_refs(b)
-    # the OPERAND equal to Random's address is no longer what is compared: an FF 15 whose operand is 0x40284C points at nothing in the image (no section): ignored
+    # the OPERAND equal to Random's address is no longer what is compared: an FF 15 whose operand is 0x40284C reads the pointer AT 0x40284C, which lies in the
+    # read-only CODE section and holds Random's first code bytes, not its address: a resolved call to something else, not listed
     b = synthetic()
-    put_indirect(b, 0x43A300, 0x15, H.RANDOM)
-    assert not any(va == 0x43A300 for va, _ in H.scan_random_refs(b))
+    put_indirect(b, 0x452300, 0x15, H.RANDOM)
+    assert H.resolve_pointer(b, H.RANDOM)[0] == "value" and not any(va == 0x452300 for va, _ in H.scan_random_refs(b))
+
+
+def test_pointer_outside_every_section_refuses_inside_the_modules():
+    """Round 2, R1: a pointer in no section of the image (memory allocated at run time) may hold Random's address at run time: the build refuses inside the two
+    modules, and outside them it is listed as unresolved without stopping the build."""
+    msg = refuses(lambda b: put_indirect(b, 0x43A300, 0x15, 0x00700000), "an FF 15 through a pointer outside every section, inside the battle module")
+    assert "cannot be established" in msg, msg
+    refuses(lambda b: put_indirect(b, 0x459000, 0x25, 0x00700000), "an FF 25 through a pointer outside every section, inside TBattleOver")
+    b = synthetic()
+    put_indirect(b, 0x452000, 0x15, 0x00700000)
+    assert (0x452000, "FF15?") in H.scan_random_refs(b)
+    H.apply(b, 1, LAB)
+
+
+def test_pointer_crossing_the_end_of_its_section_is_unresolved():
+    """Round 2, R2: .rdata here is mapped for 0x18 bytes, so the last pointer whose four bytes all lie in it starts at +0x14. One starting at +0x15..+0x17 takes
+    bytes from past the section's end: unresolved, and the build refuses inside the modules. The last whole dword is still read and compared."""
+    last = RDATA_PTR + 0x14
+    for cross in (RDATA_PTR + 0x15, RDATA_PTR + 0x17):
+        assert H.resolve_pointer(synthetic(), cross) == ("unresolved", None)
+        msg = refuses(lambda b, c=cross: put_indirect(b, 0x43A200, 0x15, c), "an FF 15 through a pointer crossing the end of .rdata")
+        assert "cannot be established" in msg, msg
+    b = synthetic()
+    struct.pack_into("<I", b, 0x5DC00 + 0x14, H.RANDOM)
+    assert H.resolve_pointer(b, last) == ("value", H.RANDOM)
+    refuses(lambda b: (put_indirect(b, 0x43A200, 0x15, last), struct.pack_into("<I", b, 0x5DC00 + 0x14, H.RANDOM)),
+            "an FF 15 through the last whole dword of .rdata holding Random")
+    b = synthetic()
+    put_indirect(b, 0x43A200, 0x15, last)                          # the same pointer holding 0: a resolved call to something else, the build goes on
+    H.apply(b, 1, LAB)
 
 
 def test_indirect_call_whose_pointer_cannot_be_established_refuses():
