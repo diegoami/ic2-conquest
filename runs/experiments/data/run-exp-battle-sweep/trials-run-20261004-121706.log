@@ -1,0 +1,77 @@
+[   0.00] plan todo=['hi-li-half_s1_r1', 'hi-li-half_s2_r1', 'hi-li-half_s3_r1', 'hi-hi-half_s1_r1', 'hi-hi-half_s2_r1', 'hi-hi-half_s3_r1', 'hi-ar-half_s1_r1', 'hi-ar-half_s2_r1', 'hi-ar-half_s3_r1', 'hi-lc-half_s1_r1', 'hi-lc-half_s2_r1', 'hi-lc-half_s3_r1', 'hi-hc-half_s1_r1', 'hi-hc-half_s2_r1', 'hi-hc-half_s3_r1'] skipped_ok=[] skipped_error=[]
+[   6.06] process_started trial='hi-li-half_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1843443 seconds=5.0
+[  20.37] loaded trial='hi-li-half_s1_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 7500, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[  28.23] battle_open trial='hi-li-half_s1_r1' seconds_from_click=6.35 title='Rome  v  Gaul          Rome to place units.'
+[  42.11] battle_played trial='hi-li-half_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [8] [0 | toheintaery Ce] heavyinfanty 0 | | 0) re [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a" dialogs=[]
+[  50.24] trial_done trial='hi-li-half_s1_r1' seconds=49.2 half_rounds=11 winner='attacker' post_sha12='06dc11f17250'
+[  57.81] process_started trial='hi-li-half_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=1844717 seconds=5.1
+[  72.18] loaded trial='hi-li-half_s2_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 7500, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[  80.03] battle_open trial='hi-li-half_s2_r1' seconds_from_click=6.33 title='Rome  v  Gaul          Rome to place units.'
+[  94.04] battle_played trial='hi-li-half_s2_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [8] [0 | toheintaery Ce] heavyinfanty 0 | | 0) re [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a" dialogs=[]
+[ 102.19] trial_done trial='hi-li-half_s2_r1' seconds=49.4 half_rounds=10 winner='attacker' post_sha12='a02c19e8a346'
+[ 110.28] process_started trial='hi-li-half_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=1845807 seconds=5.6
+[ 124.83] loaded trial='hi-li-half_s3_r1' seconds=20.1 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 7500, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 132.69] battle_open trial='hi-li-half_s3_r1' seconds_from_click=6.33 title='Rome  v  Gaul          Rome to place units.'
+[ 146.67] battle_played trial='hi-li-half_s3_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0 | fake intonty Ce heavy infotry [0 | |_| [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [8] a] how cavalry [8] 3 | total troops Lo]" dialogs=[]
+[ 154.82] trial_done trial='hi-li-half_s3_r1' seconds=50.1 half_rounds=11 winner='attacker' post_sha12='b26968dc6015'
+[ 162.38] process_started trial='hi-hi-half_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1846703 seconds=5.0
+[ 176.91] loaded trial='hi-hi-half_s1_r1' seconds=19.6 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 185.00] battle_open trial='hi-hi-half_s1_r1' seconds_from_click=6.56 title='Rome  v  Gaul          Rome to place units.'
+[ 199.11] battle_played trial='hi-hi-half_s1_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | Gesu cteniny Lo] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [8] a] how cavalry [8] 3 | tales Lo]" dialogs=[]
+[ 207.28] trial_done trial='hi-hi-half_s1_r1' seconds=49.9 half_rounds=18 winner='defender' post_sha12='872d70c96a9c'
+[ 214.84] process_started trial='hi-hi-half_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=1847736 seconds=5.0
+[ 229.17] loaded trial='hi-hi-half_s2_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 237.03] battle_open trial='hi-hi-half_s2_r1' seconds_from_click=6.33 title='Rome  v  Gaul          Rome to place units.'
+[ 257.05] battle_played trial='hi-hi-half_s2_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | Gesu cteniny Lo] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [8] a] how cavalry [8] 3 | tales Lo]" dialogs=[{'title': 'Offer of peace', 'text': '‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We', 'answer': 'No', 'shot': 'hi-hi-half_s2_r1_dialog-Offer_of_peace-1791109275.png'}]
+[ 265.19] trial_done trial='hi-hi-half_s2_r1' seconds=55.4 half_rounds=17 winner='defender' post_sha12='8b936c33d603'
+[ 272.74] process_started trial='hi-hi-half_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=1848499 seconds=5.0
+[ 287.04] loaded trial='hi-hi-half_s3_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 294.86] battle_open trial='hi-hi-half_s3_r1' seconds_from_click=6.3 title='Rome  v  Gaul          Rome to place units.'
+[ 308.68] battle_played trial='hi-hi-half_s3_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | Gesu cteniny Lo] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [8] a] how cavalry [8] 3 | tales Lo]" dialogs=[]
+[ 316.80] trial_done trial='hi-hi-half_s3_r1' seconds=49.1 half_rounds=13 winner='defender' post_sha12='f2a3d52cac21'
+[ 324.35] process_started trial='hi-ar-half_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1849757 seconds=5.0
+[ 338.66] loaded trial='hi-ar-half_s1_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 1750, 'lc': 0, 'hc': 0}
+[ 346.58] battle_open trial='hi-ar-half_s1_r1' seconds_from_click=6.39 title='Rome  v  Gaul          Rome to place units.'
+[ 360.56] battle_played trial='hi-ar-half_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | Tmpirenty | Ol) (_o_] oo archer La [8] a] Hoteeavaty [oe] 3] [8] a] how cavalry [8] 3 | total troops Lo]" dialogs=[]
+[ 368.74] trial_done trial='hi-ar-half_s1_r1' seconds=49.4 half_rounds=15 winner='attacker' post_sha12='1c6565e4fa2f'
+[ 376.88] process_started trial='hi-ar-half_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=1850767 seconds=5.5
+[ 391.50] loaded trial='hi-ar-half_s2_r1' seconds=20.2 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 1750, 'lc': 0, 'hc': 0}
+[ 399.53] battle_open trial='hi-ar-half_s2_r1' seconds_from_click=6.5 title='Rome  v  Gaul          Rome to place units.'
+[ 414.30] battle_played trial='hi-ar-half_s2_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [e | [© | tskeitanty 0 | [0 | heavyinfanty 0 | | 0) Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a" dialogs=[]
+[ 422.52] trial_done trial='hi-ar-half_s2_r1' seconds=51.1 half_rounds=15 winner='attacker' post_sha12='8ff7ea4de006'
+[ 430.62] process_started trial='hi-ar-half_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=1851829 seconds=5.6
+[ 445.22] loaded trial='hi-ar-half_s3_r1' seconds=20.2 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 1750, 'lc': 0, 'hc': 0}
+[ 453.17] battle_open trial='hi-ar-half_s3_r1' seconds_from_click=6.42 title='Rome  v  Gaul          Rome to place units.'
+[ 467.95] battle_played trial='hi-ar-half_s3_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [e | [© | tskeitanty 0 | [0 | heavyinfanty 0 | | 0) Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a" dialogs=[]
+[ 476.16] trial_done trial='hi-ar-half_s3_r1' seconds=51.1 half_rounds=15 winner='attacker' post_sha12='65c3b192fa29'
+[ 483.72] process_started trial='hi-lc-half_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1853267 seconds=5.0
+[ 498.14] loaded trial='hi-lc-half_s1_r1' seconds=19.5 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 3500, 'hc': 0}
+[ 506.11] battle_open trial='hi-lc-half_s1_r1' seconds_from_click=6.44 title='Rome  v  Gaul          Rome to place units.'
+[ 520.05] battle_played trial='hi-lc-half_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | Tmpirenty | Ol) (_o_] [0] [eo] arches |[o | [0 | [0] a Hate cavalry La [8] a] how cavalry [8] 3 | tales Lo]" dialogs=[]
+[ 528.21] trial_done trial='hi-lc-half_s1_r1' seconds=49.5 half_rounds=15 winner='attacker' post_sha12='e272eab13d71'
+[ 535.77] process_started trial='hi-lc-half_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=1855366 seconds=5.0
+[ 550.13] loaded trial='hi-lc-half_s2_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 3500, 'hc': 0}
+[ 558.02] battle_open trial='hi-lc-half_s2_r1' seconds_from_click=6.36 title='Rome  v  Gaul          Rome to place units.'
+[ 571.96] battle_played trial='hi-lc-half_s2_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | heavy infotry [0 | |_| [0] [eo] arches |[o | [0 | [0] a Hate cavalry La [8] a] how cavalry [8] 3 | tales Lo]" dialogs=[]
+[ 580.11] trial_done trial='hi-lc-half_s2_r1' seconds=49.4 half_rounds=15 winner='attacker' post_sha12='38fb4fb0b5e9'
+[ 587.78] process_started trial='hi-lc-half_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=1857312 seconds=5.0
+[ 602.03] loaded trial='hi-lc-half_s3_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 3500, 'hc': 0}
+[ 609.86] battle_open trial='hi-lc-half_s3_r1' seconds_from_click=6.31 title='Rome  v  Gaul          Rome to place units.'
+[ 623.69] battle_played trial='hi-lc-half_s3_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | Tmpirenty | Ol) (_o_] [0] [eo] arches |[o | [0 | [0] a Hate cavalry La [8] a] how cavalry [8] 3 | tales Lo]" dialogs=[]
+[ 631.82] trial_done trial='hi-lc-half_s3_r1' seconds=49.1 half_rounds=15 winner='attacker' post_sha12='445655b1fdc6'
+[ 639.38] process_started trial='hi-hc-half_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1859286 seconds=5.0
+[ 653.65] loaded trial='hi-hc-half_s1_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 1250}
+[ 661.45] battle_open trial='hi-hc-half_s1_r1' seconds_from_click=6.29 title='Rome  v  Gaul          Rome to place units.'
+[ 675.28] battle_played trial='hi-hc-half_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | heavy infotry [0 | |_| [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [a] a] heey cavalry La tales Lo]" dialogs=[]
+[ 683.42] trial_done trial='hi-hc-half_s1_r1' seconds=49.1 half_rounds=14 winner='attacker' post_sha12='22113ee64d11'
+[ 690.97] process_started trial='hi-hc-half_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=1860687 seconds=5.0
+[ 705.26] loaded trial='hi-hc-half_s2_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 1250}
+[ 713.09] battle_open trial='hi-hc-half_s2_r1' seconds_from_click=6.3 title='Rome  v  Gaul          Rome to place units.'
+[ 727.03] battle_played trial='hi-hc-half_s2_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | heavy infantry [8] [9 | [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [a] a] heey cavalry La tales Lo]" dialogs=[]
+[ 735.17] trial_done trial='hi-hc-half_s2_r1' seconds=49.2 half_rounds=13 winner='attacker' post_sha12='bc952bed8278'
+[ 742.77] process_started trial='hi-hc-half_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=1861385 seconds=5.0
+[ 757.25] loaded trial='hi-hc-half_s3_r1' seconds=19.5 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 3000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 1250}
+[ 765.33] battle_open trial='hi-hc-half_s3_r1' seconds_from_click=6.55 title='Rome  v  Gaul          Rome to place units.'
+[ 779.51] battle_played trial='hi-hc-half_s3_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [2] 0] toteintrey [0] To | Tmpirenty | Ol) (_o_] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [a] a] heey cavalry La tales Lo]" dialogs=[]
+[ 787.64] trial_done trial='hi-hc-half_s3_r1' seconds=49.9 half_rounds=17 winner='attacker' post_sha12='43078ed7c72b'
+[ 789.16] run_done ok=15 errors=0

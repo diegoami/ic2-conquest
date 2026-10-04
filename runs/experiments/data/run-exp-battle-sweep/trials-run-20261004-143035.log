@@ -1,0 +1,77 @@
+[   0.01] plan todo=['hc-li-one_s1_r1', 'hc-li-one_s2_r1', 'hc-li-one_s3_r1', 'hc-hi-one_s1_r1', 'hc-hi-one_s2_r1', 'hc-hi-one_s3_r1', 'hc-ar-one_s1_r1', 'hc-ar-one_s2_r1', 'hc-ar-one_s3_r1', 'hc-lc-one_s1_r1', 'hc-lc-one_s2_r1', 'hc-lc-one_s3_r1', 'hc-hc-one_s1_r1', 'hc-hc-one_s2_r1', 'hc-hc-one_s3_r1'] skipped_ok=[] skipped_error=[]
+[   6.08] process_started trial='hc-li-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=2378638 seconds=5.0
+[  20.67] loaded trial='hc-li-one_s1_r1' seconds=19.6 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 15000, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[  28.69] battle_open trial='hc-li-one_s1_r1' seconds_from_click=6.48 title='Rome  v  Gaul          Rome to place units.'
+[  42.79] battle_played trial='hc-li-one_s1_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish liheinforey || 9 | | o| [8] a] heavy infty [9] 9] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [a] a] heey cavalry La total troops Lo]" dialogs=[]
+[  50.93] trial_done trial='hc-li-one_s1_r1' seconds=49.9 half_rounds=13 winner='defender' post_sha12='15196cc63587'
+[  58.51] process_started trial='hc-li-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=2391537 seconds=5.0
+[  72.82] loaded trial='hc-li-one_s2_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 15000, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[  80.67] battle_open trial='hc-li-one_s2_r1' seconds_from_click=6.32 title='Rome  v  Gaul          Rome to place units.'
+[  94.63] battle_played trial='hc-li-one_s2_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish Wteinferey |/o | 0 | [@ [0 | heewinfry 0 | | 0 re [8 | 0 | Uteewaly 0 | 0 [0 [0 heavy cavalry Le] tra tops a" dialogs=[]
+[ 102.78] trial_done trial='hc-li-one_s2_r1' seconds=49.3 half_rounds=12 winner='defender' post_sha12='121648f6a42d'
+[ 110.34] process_started trial='hc-li-one_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=2395104 seconds=5.0
+[ 124.70] loaded trial='hc-li-one_s3_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 15000, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 132.54] battle_open trial='hc-li-one_s3_r1' seconds_from_click=6.31 title='Rome  v  Gaul          Rome to place units.'
+[ 152.66] battle_played trial='hc-li-one_s3_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish Wteinferey |/o | 0 | [@ [0 | heewinfry 0 | | 0 re [8 | 0 | Uteewaly 0 | 0 [0 [0 heavy cavalry Le] tra tops a" dialogs=[{'title': 'Offer of peace', 'text': '‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We', 'answer': 'No', 'shot': 'hc-li-one_s3_r1_dialog-Offer_of_peace-1791117179.png'}]
+[ 160.79] trial_done trial='hc-li-one_s3_r1' seconds=55.5 half_rounds=12 winner='defender' post_sha12='34afaa2675f5'
+[ 168.37] process_started trial='hc-hi-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=2398664 seconds=5.0
+[ 182.76] loaded trial='hc-hi-one_s1_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 190.69] battle_open trial='hc-hi-one_s1_r1' seconds_from_click=6.4 title='Rome  v  Gaul          Rome to place units.'
+[ 204.61] battle_played trial='hc-hi-one_s1_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | hoavyinfarey 0 | [0 | [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [a] a] heey cavalry La total troops Lo]" dialogs=[]
+[ 212.75] trial_done trial='hc-hi-one_s1_r1' seconds=49.4 half_rounds=15 winner='defender' post_sha12='e9aaa5321413'
+[ 220.32] process_started trial='hc-hi-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=2413980 seconds=5.0
+[ 234.63] loaded trial='hc-hi-one_s2_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 242.58] battle_open trial='hc-hi-one_s2_r1' seconds_from_click=6.42 title='Rome  v  Gaul          Rome to place units.'
+[ 256.46] battle_played trial='hc-hi-one_s2_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [e | [© | tskeitanty 0 | [0 | heavyinfanty 0 | | 0) re [8 | 0 | Uteewaly 0 | 0 [0 [0 heavy cavalry Le] tra tops a" dialogs=[]
+[ 264.59] trial_done trial='hc-hi-one_s2_r1' seconds=49.3 half_rounds=14 winner='defender' post_sha12='e35019dc96ef'
+[ 272.17] process_started trial='hc-hi-one_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=2420206 seconds=5.0
+[ 286.99] loaded trial='hc-hi-one_s3_r1' seconds=19.9 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[ 295.05] battle_open trial='hc-hi-one_s3_r1' seconds_from_click=6.52 title='Rome  v  Gaul          Rome to place units.'
+[ 315.27] battle_played trial='hc-hi-one_s3_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | hoavyinfarey 0 | [0 | [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] [a] a] heey cavalry La total troops Lo]" dialogs=[{'title': 'Offer of peace', 'text': '‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We', 'answer': 'No', 'shot': 'hc-hi-one_s3_r1_dialog-Offer_of_peace-1791117342.png'}]
+[ 323.40] trial_done trial='hc-hi-one_s3_r1' seconds=56.3 half_rounds=16 winner='defender' post_sha12='0b7d6ae349f1'
+[ 330.97] process_started trial='hc-ar-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=2431719 seconds=5.0
+[ 345.38] loaded trial='hc-ar-one_s1_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 3500, 'lc': 0, 'hc': 0}
+[ 353.20] battle_open trial='hc-ar-one_s1_r1' seconds_from_click=6.3 title='Rome  v  Gaul          Rome to place units.'
+[ 367.54] battle_played trial='hc-ar-one_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [e | [© | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 heavy cavaly|/— 0) 0 | tra tops a" dialogs=[]
+[ 375.75] trial_done trial='hc-ar-one_s1_r1' seconds=49.8 half_rounds=20 winner='attacker' post_sha12='5df7c66225c6'
+[ 383.31] process_started trial='hc-ar-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=2434783 seconds=5.0
+[ 397.57] loaded trial='hc-ar-one_s2_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 3500, 'lc': 0, 'hc': 0}
+[ 405.41] battle_open trial='hc-ar-one_s2_r1' seconds_from_click=6.32 title='Rome  v  Gaul          Rome to place units.'
+[ 419.73] battle_played trial='hc-ar-one_s2_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [e | [© | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 heavy cavaly|/— 0) 0 | tra tops a" dialogs=[]
+[ 427.86] trial_done trial='hc-ar-one_s2_r1' seconds=49.6 half_rounds=20 winner='attacker' post_sha12='fdfaf40af74c'
+[ 435.42] process_started trial='hc-ar-one_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=2436857 seconds=5.0
+[ 449.70] loaded trial='hc-ar-one_s3_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 3500, 'lc': 0, 'hc': 0}
+[ 457.50] battle_open trial='hc-ar-one_s3_r1' seconds_from_click=6.29 title='Rome  v  Gaul          Rome to place units.'
+[ 471.88] battle_played trial='hc-ar-one_s3_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [e | [© | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 heavy cavaly|/— 0) 0 | tra tops a" dialogs=[]
+[ 480.01] trial_done trial='hc-ar-one_s3_r1' seconds=49.6 half_rounds=20 winner='attacker' post_sha12='776ffcaedcbd'
+[ 487.57] process_started trial='hc-lc-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=2439084 seconds=5.0
+[ 501.86] loaded trial='hc-lc-one_s1_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 7000, 'hc': 0}
+[ 509.68] battle_open trial='hc-lc-one_s1_r1' seconds_from_click=6.29 title='Rome  v  Gaul          Rome to place units.'
+[ 523.52] battle_played trial='hc-lc-one_s1_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [e | [© | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 re Wteewvaly 0 | 0 [0 [0 heavy cavalry Le] tra tops a" dialogs=[]
+[ 531.64] trial_done trial='hc-lc-one_s1_r1' seconds=49.1 half_rounds=12 winner='defender' post_sha12='66bc2d60af93'
+[ 539.21] process_started trial='hc-lc-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=2441346 seconds=5.0
+[ 553.46] loaded trial='hc-lc-one_s2_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 7000, 'hc': 0}
+[ 561.29] battle_open trial='hc-lc-one_s2_r1' seconds_from_click=6.31 title='Rome  v  Gaul          Rome to place units.'
+[ 575.11] battle_played trial='hc-lc-one_s2_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | [8] a] heavy infty [9] 9] [0] [eo] arches |[o | [0 | lighteavaly [0] (0 [a] a] heey cavalry La total troops Lo]" dialogs=[]
+[ 583.22] trial_done trial='hc-lc-one_s2_r1' seconds=49.0 half_rounds=11 winner='defender' post_sha12='2c2e2c1280da'
+[ 590.77] process_started trial='hc-lc-one_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=2443566 seconds=5.0
+[ 605.08] loaded trial='hc-lc-one_s3_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 7000, 'hc': 0}
+[ 612.90] battle_open trial='hc-lc-one_s3_r1' seconds_from_click=6.3 title='Rome  v  Gaul          Rome to place units.'
+[ 632.86] battle_played trial='hc-lc-one_s3_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | [8] a] heavy infty [9] 9] [0] [eo] arches |[o | [0 | leavaly (0 | | 0 | [a] a] heey cavalry La total troops Lo]" dialogs=[{'title': 'Offer of peace', 'text': '‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We', 'answer': 'No', 'shot': 'hc-lc-one_s3_r1_dialog-Offer_of_peace-1791117659.png'}]
+[ 640.98] trial_done trial='hc-lc-one_s3_r1' seconds=55.2 half_rounds=12 winner='defender' post_sha12='87fec7ffed4a'
+[ 648.55] process_started trial='hc-hc-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=2445896 seconds=5.0
+[ 662.82] loaded trial='hc-hc-one_s1_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500}
+[ 670.64] battle_open trial='hc-hc-one_s1_r1' seconds_from_click=6.3 title='Rome  v  Gaul          Rome to place units.'
+[ 690.64] battle_played trial='hc-hc-one_s1_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | [8] a] heavy infty [9] 9] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] heavy cavalry Lo] total troops Lo]" dialogs=[{'title': 'Offer of peace', 'text': '‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We', 'answer': 'No', 'shot': 'hc-hc-one_s1_r1_dialog-Offer_of_peace-1791117717.png'}]
+[ 698.78] trial_done trial='hc-hc-one_s1_r1' seconds=55.2 half_rounds=21 winner='defender' post_sha12='449a0a04fa14'
+[ 706.34] process_started trial='hc-hc-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=2448307 seconds=5.0
+[ 720.58] loaded trial='hc-hc-one_s2_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500}
+[ 728.39] battle_open trial='hc-hc-one_s2_r1' seconds_from_click=6.29 title='Rome  v  Gaul          Rome to place units.'
+[ 742.21] battle_played trial='hc-hc-one_s2_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | [8] a] heavy infty [9] 9] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] heavy cavalry Lo] total troops Lo]" dialogs=[]
+[ 750.34] trial_done trial='hc-hc-one_s2_r1' seconds=49.0 half_rounds=20 winner='defender' post_sha12='09a23d8122de'
+[ 757.91] process_started trial='hc-hc-one_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=2450573 seconds=5.0
+[ 772.25] loaded trial='hc-hc-one_s3_r1' seconds=19.4 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 2500}
+[ 780.10] battle_open trial='hc-hc-one_s3_r1' seconds_from_click=6.32 title='Rome  v  Gaul          Rome to place units.'
+[ 800.30] battle_played trial='hc-hc-one_s3_r1' end_turn_clicks=0 ended="Gaul's army Rome's army start finish start finish [2] 0] toteintrey [0] To | [8] a] heavy infty [9] 9] [0] [eo] arches |[o | [0 | [8] a] Hoteeavaty [oe] 3] heavy cavalry Lo] total troops Lo]" dialogs=[{'title': 'Offer of peace', 'text': '‘After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. ‘An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. ‘Otherwise to continue the war click NO. We', 'answer': 'No', 'shot': 'hc-hc-one_s3_r1_dialog-Offer_of_peace-1791117826.png'}]
+[ 808.47] trial_done trial='hc-hc-one_s3_r1' seconds=55.6 half_rounds=17 winner='defender' post_sha12='cfde2bca742c'
+[ 809.98] run_done ok=15 errors=0

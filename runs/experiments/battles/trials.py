@@ -2,7 +2,7 @@
 """Resumable trial runner of the battle sweep (battles plan §3.2, B4/B5): one fresh lab-build process per battle, L1 edits from FLD-RG,
 both sides on Computer general, every half-round save kept.
 
-A cell is `<attacker>-<defender>-<size>`: types li|hi|ar|lc|hc, size half (one unit of std/2), one (one unit of std) or three (three units
+A cell is `<attacker>-<defender>-<size>` (or `<attacker>-<defender>-<attacker size>-<defender size>` for the size matrix, e.g. `hi-li-half-three`): types li|hi|ar|lc|hc, size half (one unit of std/2), one (one unit of std) or three (three units
 of std); std = LI 15000, HI 6000, Ar 3500, LC 7000, HC 2500; quality 6, army morale 65 on both sides (battles.md §4 B5). The attacker is
 Rome's army 0 (the human seat, Computer general on), the defender Gaul's army 10, which stands next to it in FLD-RG; the armies' positions
 are never edited. Example: `hi-hi-one`.
@@ -47,7 +47,7 @@ COLUMNS = ["trial", "cell", "build", "level", "attacker", "defender", "size", "s
 
 
 def parse_cell(cell):
-    m = re.fullmatch(r"(%s)-(%s)-(%s)" % ("|".join(TYPES), "|".join(TYPES), "|".join(SIZES)), cell)
+    m = re.fullmatch(r"(%s)-(%s)-((?:%s)(?:-(?:%s))?)" % ("|".join(TYPES), "|".join(TYPES), "|".join(SIZES), "|".join(SIZES)), cell)
     if not m:
         raise ValueError("cell %r is not <type>-<type>-<half|one|three>" % cell)
     return m.groups()
@@ -56,9 +56,10 @@ def parse_cell(cell):
 def cell_ops(cell):
     """The L1 edits of a cell (stage.py): both armies' units (all of one type, quality 6) and morale 65. Positions are never edited."""
     a, d, size = parse_cell(cell)
-    n, f = SIZES[size]
-    return [("units", C.ROME_ARMY, stage.uniform(a, n, f, Q)), ("morale", C.ROME_ARMY, MORALE),
-            ("units", C.GAUL_ARMY, stage.uniform(d, n, f, Q)), ("morale", C.GAUL_ARMY, MORALE)]
+    sa, _, sd = size.partition("-")             # `one` = both sides one; `half-three` = attacker half, defender three (the size matrix)
+    (na, fa), (nd, fd) = SIZES[sa], SIZES[sd or sa]
+    return [("units", C.ROME_ARMY, stage.uniform(a, na, fa, Q)), ("morale", C.ROME_ARMY, MORALE),
+            ("units", C.GAUL_ARMY, stage.uniform(d, nd, fd, Q)), ("morale", C.GAUL_ARMY, MORALE)]
 
 
 def trial_id(cell, seed, rep):
@@ -329,7 +330,7 @@ def main():
         out = C.write_new(C.DATA, f"compare-{args[1]}-{args[2]}-{C.STAMP}.json", json.dumps(res, indent=1))
         print(json.dumps(res, indent=1))
     else:
-        cells = [a for a in args[1:] if not a.startswith("--") and re.fullmatch(r"[a-z]{2}-[a-z]{2}-[a-z]+", a)]
+        cells = [a for a in args[1:] if not a.startswith("--") and re.fullmatch(r"[a-z]{2}-[a-z]{2}-[a-z]+(-[a-z]+)?", a)]
         for c in cells:
             parse_cell(c)
         seeds = parse_seeds(args[args.index("--seeds") + 1]) if "--seeds" in args else [1, 2, 3]

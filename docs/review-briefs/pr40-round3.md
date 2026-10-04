@@ -1,0 +1,30 @@
+## Scope
+This task protects: the integrity of the B5/B8 measurements and of the findings draft built on them. Every number in findings/2026-10-04-tactical-battle-sweep.md must be recomputable from a tracked file in runs/experiments/data/run-exp-battle-sweep/. No measured output may be overwritten or deleted (CLAUDE.md rule 6), and no EXE, DAT, save, screenshot or video may enter git (rule 1).
+
+## Blocking means (any one is enough; a blocking finding means rework, never approve)
+1. A Done-when line of docs/tasks/battles-b5-b8.md fails, or cannot be run as written. That includes the offline tests (python3 -m pytest tests/test_driver_battle.py tests/test_battle_stage.py tests/test_battle_trials.py tests/test_battle_b5_b8.py) and the claims audit script.
+2. What this task protects can be got past:
+   - a claim in the finding that no tracked output supports, or that a tracked output contradicts (spot-check at least 10 numbers yourself, especially the win table, the size matrix, thresholds, the Offer-of-peace count, promotions, captured talents and the attribution counts);
+   - a code path in the changed runners/analysers that can overwrite or delete an existing measured file (same-second name collisions included);
+   - a binary added to git;
+   - a save cited by the finding that is in no SAVES.sha256 / release-manifest entry;
+   - an observation of the AI general stated as a rule;
+   - a decompiled-report [R-code] fact presented as measured without the data check.
+   A bypass you proved is blocking, even when it looks like an edge case.
+3. Behaviour the task forbids, or behaviour nobody asked for, inside a file the task requires: for example writes to another repository, a blind End-turn click, or edits outside the battles experiment paths without reason.
+4. Project-specific:
+   - a test that passes with the behaviour it checks deleted;
+   - a statistic that overreads 3 seeds per cell as a probability;
+   - a mismatch between the README's release map (run-exp-battle-sweep, -b5, -2) and the manifests.
+Not blocking: wording, style, and defects in code the PR did not change. File those as follow-ups.
+When unsure, rate it blocking and say why. An approve with a proven bypass is the costliest mistake a review can make.
+
+## Report every blocking finding in this one review
+This review is your only pass before the author fixes. Do not stop at the first blocking finding: finish reading the whole diff and the task file, check every Done-when line and every item under "Blocking means", and report all blocking findings together.
+- Before you write the verdict, make one last pass over the full diff for anything you have not yet rated, and say "Final pass done" as the last line before the verdict.
+- Number the findings R1, R2, … in order of severity. A finding you held back because an earlier one was already blocking is a review defect: if two problems share a cause, list both and say so.
+- Do not rely on a later round. The author fixes everything you list, and the next review checks those fixes and new code only, not anything you saw but did not report.
+- If you ran out of time or context before covering the whole diff, say which files or sections you did not cover. Do not approve in that case. The diff is large in data files: you may sample data files, but cover all code, the finding, the task file and the README.
+
+## This is round 3
+Round 2 (gpt-6-sol) raised R1 (target-choice ranks computed on the snapshot after the choice) and R2 (the audit checked the claim against the same calculation). Check that both fixes are real: the finding and README describe the numbers only as resulting/previous-snapshot ranks, with no inference about how the AI chose; the audit recomputes them independently from halfrounds-*.jsonl, not from b5-targets-*.csv; the new csv is a new versioned file and the old one is untouched. Then review the new code the fixes added. Issues in code that neither round touched are not grounds for rework unless they are a proven bypass of item 2.

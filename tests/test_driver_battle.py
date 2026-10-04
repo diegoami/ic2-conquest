@@ -310,6 +310,89 @@ def test_bad_mode_rejected():
     raise AssertionError("accepted")
 
 
+def test_synthetic_block_refuses_more_units_than_the_grid_holds():
+    from state import battle_block as BB
+    u = ("hi", 6000, 6, 0, "x")
+    BB.synthetic_block([u] * 13, [u] * 12)         # the largest that fits: attacker x 0..12, defender x 1..12
+    for att, dfn in (([u] * 14, [u]), ([u], [u] * 13)):
+        try:
+            BB.synthetic_block(att, dfn)
+        except ValueError:
+            continue
+        raise AssertionError("accepted %d v %d units" % (len(att), len(dfn)))
+
+
+def test_log_files_are_never_reused_in_the_same_second():
+    sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))
+    import common as C
+    d = Path(tempfile.mkdtemp())
+    a, b = C.Log("x", d), C.Log("x", d)
+    a("e", n=1)
+    b("e", n=2)
+    assert a.jl != b.jl and a.txt != b.txt and len(list(d.iterdir())) == 4
+    assert len(a.jl.read_text().splitlines()) == 1 and len(b.jl.read_text().splitlines()) == 1
+    q = C.write_new(d, "x.tar.gz", b"1")
+    assert C.write_new(d, "x.tar.gz", b"2") != q and q.read_bytes() == b"1"
+
+
+class CounterBattle(Fake):
+    """A battle in which an End turn click advances the half-round counter only 2 s (fake time) AFTER the click, with no new BATTLEnn.SAV, the flag
+    still up and the title unchanged: the only sign is the half-round counter. `stuck` = the click never advances anything."""
+
+    def __init__(self, wins, **kw):
+        super().__init__(wins, **kw)
+        self.battle, self.hr, self.pending, self.stuck, self.seen = True, 2, [], False, []
+
+    def half_round_counter(self):
+        now = D.time.time()
+        done = [t for t in self.pending if now - t >= 2]
+        self.pending = [t for t in self.pending if now - t < 2]
+        self.hr += len(done)
+        if self.hr >= 4:
+            self.end_battle()
+        return self.hr
+
+    def click(self, x, y, pause=0.4):
+        if (x, y) == (D.BATTLE_TOOLS["end_turn"], D.BATTLE_TOOLBAR_Y) and self.battle:
+            self.seen.append(self.half_round_counter())     # the counter at the moment of THIS click
+            self.clicks.append((x, y))
+            if not self.stuck:
+                self.pending.append(D.time.time())
+            return
+        super().click(x, y, pause)
+
+
+def _probe():
+    sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))
+    import b0_probe
+    return b0_probe
+
+
+def test_end_turn_until_over_waits_for_the_half_round_counter():
+    """Behavioural: each End turn click is made only after the counter moved on since the previous click (it is the only sign of progress here); with
+    the proof comparison deleted from `end_turn_until_over` the second click comes before the counter advanced and this fails."""
+    b0 = _probe()
+    g = CounterBattle([(5, "Rome  v  Gaul          Rome to move units.", 5, 99, 448, 414)])
+    with Clock():
+        n = b0.end_turn_until_over(g, lambda *a, **k: None, max_clicks=5)
+    assert n == 2 and len(g.clicks) == 2, (n, g.clicks)
+    assert g.seen == [2, 3], g.seen          # click 2 only after the counter went 2 -> 3 (a blind second click would see 2 again)
+
+
+def test_end_turn_until_over_never_clicks_twice_without_a_sign():
+    b0 = _probe()
+    g = CounterBattle([(5, "Rome  v  Gaul          Rome to move units.", 5, 99, 448, 414)])
+    g.stuck = True
+    with Clock():
+        try:
+            b0.end_turn_until_over(g, lambda *a, **k: None, max_clicks=5)
+        except D.DriverError as e:
+            assert "not clicking again" in str(e)
+        else:
+            raise AssertionError("no error without a sign of progress")
+    assert len(g.clicks) == 1, g.clicks
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted(globals().items()):
