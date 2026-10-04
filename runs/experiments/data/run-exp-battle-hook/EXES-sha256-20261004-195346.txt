@@ -1,0 +1,5 @@
+354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f  Imperial Conquest 2 fast rollingsave seed.exe
+d805d28fa1c917305b4167765f339f7c389abd49c5e319d6894b6f1cbe510b8c  Imperial Conquest 2 lab hook s1.exe
+d6fce697abd2bc1c4dbdf3513ac55ba735491f043af4b7343ce8d92df64550af  Imperial Conquest 2 lab hook s2.exe
+feb1440058979335f21900a9a9d24f91a5240f9e793e7527fecf1c1db9c3ea7e  Imperial Conquest 2 lab hook s3.exe
+built with: PYTHONPATH=$IC2_WORK/build python3 patches/battle_lab.py <seed> --hook, 'IC2 lab hook.exe' renamed to 'Imperial Conquest 2 lab hook s<seed>.exe'; git a7397c5 (last commit touching patches/battle_lab.py)
