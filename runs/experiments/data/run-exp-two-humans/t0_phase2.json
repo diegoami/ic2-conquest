@@ -1,0 +1,155 @@
+{
+ "steps": [
+  {
+   "step": "load Carthage's turn (T0_AUTO0720.SAV)",
+   "ok": true,
+   "result": {
+    "tag": "loaded",
+    "cur_nation": 1,
+    "tax_carthage": 5,
+    "tax_ptolemaic": 15,
+    "calendar": {
+     "season": 0,
+     "week": 1,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Carthage's turn   (Agis)"
+    ],
+    "rel_1_to_3": 1,
+    "rel_3_to_1": 1,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  ",
+     "0720 AUTO0720.SAV OK  ",
+     "0721 AUTO0721.SAV OK  "
+    ]
+   },
+   "secs": 17.0
+  },
+  {
+   "step": "relations dialog (screenshot, radio count)",
+   "ok": true,
+   "result": {
+    "radio_buttons": 64,
+    "window": [
+     23,
+     49,
+     352,
+     436
+    ],
+    "closed": true
+   },
+   "secs": 10.0
+  },
+  {
+   "step": "relations: war toward Ptolemaic (row 3)",
+   "ok": true,
+   "result": {
+    "tag": "after war",
+    "cur_nation": 1,
+    "tax_carthage": 5,
+    "tax_ptolemaic": 15,
+    "calendar": {
+     "season": 0,
+     "week": 1,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Carthage's turn   (Agis)"
+    ],
+    "rel_1_to_3": 3,
+    "rel_3_to_1": 3,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  ",
+     "0720 AUTO0720.SAV OK  ",
+     "0721 AUTO0721.SAV OK  "
+    ]
+   },
+   "secs": 11.3
+  },
+  {
+   "step": "autosave after war order (save as)",
+   "ok": true,
+   "result": "T0_P2_WAR.SAV",
+   "secs": 7.9
+  },
+  {
+   "step": "Carthage end turn",
+   "ok": true,
+   "result": [
+    "AUTO0721.SAV",
+    []
+   ],
+   "secs": 11.2
+  },
+  {
+   "step": "after Carthage's End turn",
+   "ok": true,
+   "result": {
+    "tag": "after Carthage's End turn",
+    "cur_nation": 3,
+    "tax_carthage": 5,
+    "tax_ptolemaic": 15,
+    "calendar": {
+     "season": 0,
+     "week": 3,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Ptolemaic's turn   (Thutmose)"
+    ],
+    "rel_1_to_3": 3,
+    "rel_3_to_1": 3,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  ",
+     "0720 AUTO0720.SAV OK  ",
+     "0721 AUTO0721.SAV OK  ",
+     "0721 AUTO0721.SAV OK  "
+    ]
+   },
+   "secs": 0.0
+  },
+  {
+   "step": "autosave files",
+   "ok": true,
+   "result": [
+    [
+     "AUTO0720.SAV",
+     true
+    ],
+    [
+     "AUTO0721.SAV",
+     true
+    ]
+   ],
+   "secs": 0.0
+  },
+  {
+   "step": "who moves now / state",
+   "ok": true,
+   "result": {
+    "tag": "final",
+    "cur_nation": 3,
+    "tax_carthage": 5,
+    "tax_ptolemaic": 15,
+    "calendar": {
+     "season": 0,
+     "week": 3,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Ptolemaic's turn   (Thutmose)"
+    ],
+    "rel_1_to_3": 3,
+    "rel_3_to_1": 3,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  ",
+     "0720 AUTO0720.SAV OK  ",
+     "0721 AUTO0721.SAV OK  ",
+     "0721 AUTO0721.SAV OK  "
+    ]
+   },
+   "secs": 0.0
+  }
+ ]
+}

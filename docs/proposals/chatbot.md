@@ -201,8 +201,8 @@ Each turn writes, under `runs/<run-id>/`, the **same files the project already u
 - `transcript.jsonl`: model messages and tool calls per turn, **with the key and the system prompt hash, not the
   prompt text** (the prompt text is reproducible from the version); optional and off by default for privacy and size;
 - `metrics.csv`, `armies.csv` via the existing `state/metrics.py`;
-- the saves `AUTOnnnn.SAV` of every turn: in `artifacts/run-<id>/` (git-ignored) and, at the end of the run, in the
-  release `run-<id>` (the bot creates it, `CLAUDE.md` rule 1).
+- the saves `AUTOnnnn.SAV` of every turn: in `artifacts/run-<id>/` (git-ignored) and in the
+  release `run-<id>` (the bot creates it at the first batch and uploads after each, `CLAUDE.md` rules 1 and 6).
 
 **Replay:** `ic2-chat replay runs/<id>` restarts the game with the recorded seed and start save, re-issues
 `orders.jsonl` through the same service, and compares each turn's save with the recorded one **byte for byte**. A

@@ -270,7 +270,7 @@ backends:
 6. `shutdown` returns `{}` and the process exits 0 within 15 s. Malformed JSON gives -32700, and the server stays up.
 
 On the fake, the suite runs in `python3 -m gamed.tests` and takes seconds. On the original it is manual: `IC2_GAMED_LIVE=1 python3
--m gamed.tests.conformance --backend original`, needing the environment of `setup/setup.sh`. It takes about 2 to 3 minutes (the documented tests that load, order and save take 40 to 47 s each, `tests/results.md:20-22`, the load included; the suite does one load, one move, snapshots and one `end_turn`). The result is recorded in `gamed/tests/results.md`
+-m gamed.tests.conformance --backend original`, needing the environment of `setup/setup.sh`. It takes about 2 to 3 minutes (the documented tests that load, order and save take 40 to 47 s each, `tests/results.md:20-22`, the load included; the suite does one load, one move, snapshots and one `end_turn`). The result is recorded in `gamed/tests/results.md` (and, per CLAUDE.md rule 6, its text outputs are committed and pushed as they are made)
 with the saves cited, which go to `artifacts/run-exp-gamed-m1/` and the release `run-exp-gamed-m1` (rule 1).
 
 ## 6. M1 work breakdown (implementer: Sonnet)

@@ -1,0 +1,1152 @@
+[
+ {
+  "save": "P2_0720_s02_Ptolemaic.SAV",
+  "turn": 720,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    89,
+    70,
+    75,
+    80,
+    25,
+    -1,
+    false
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2700,
+   "Ptolemaic": 4900
+  },
+  "dock": {
+   "path_cost": 4,
+   "docked_at": [
+    189,
+    93
+   ],
+   "before": {
+    "id": 1,
+    "x": 189,
+    "y": 93,
+    "owner": 3,
+    "moves": 21,
+    "supplies": 80,
+    "money": 200,
+    "ships": 70,
+    "condition": 75,
+    "army": -1
+   },
+   "repair": [],
+   "supply": [],
+   "after": {
+    "id": 1,
+    "x": 189,
+    "y": 93,
+    "owner": 3,
+    "moves": 0,
+    "supplies": 480,
+    "money": 200,
+    "ships": 70,
+    "condition": 100,
+    "army": -1
+   }
+  },
+  "end_turn": {
+   "autosave": "AUTO0720.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0720_s04_Seleucid.SAV",
+  "turn": 720,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    480,
+    0,
+    -1,
+    false
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2700,
+   "Ptolemaic": 4550
+  },
+  "build": [
+   "@ The fleet will be built at Issus."
+  ],
+  "end_turn": {
+   "autosave": "AUTO0721.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0721_s02_Ptolemaic.SAV",
+  "turn": 721,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    410,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    22,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0721.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0721_s04_Seleucid.SAV",
+  "turn": 721,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    410,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    22,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0722.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0722_s02_Ptolemaic.SAV",
+  "turn": 722,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    340,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    20,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0722.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0722_s04_Seleucid.SAV",
+  "turn": 722,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    340,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    20,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0723.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0723_s02_Ptolemaic.SAV",
+  "turn": 723,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    270,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    18,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0723.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0723_s04_Seleucid.SAV",
+  "turn": 723,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    270,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    18,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0724.SAV",
+   "texts": [
+    "BATTLE Bithynia  v  Seleucid          Seleucid to place units."
+   ]
+  }
+ },
+ {
+  "save": "P2_0724_s02_Ptolemaic.SAV",
+  "turn": 724,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    200,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    16,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0724.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0724_s04_Seleucid.SAV",
+  "turn": 724,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    200,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    16,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0725.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014",
+    "@ Illyria wants to trade with Ptolemaic."
+   ]
+  }
+ },
+ {
+  "save": "P2_0725_s02_Ptolemaic.SAV",
+  "turn": 725,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    130,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    14,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0725.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0725_s04_Seleucid.SAV",
+  "turn": 725,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    130,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    14,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 2100,
+   "Ptolemaic": 4550
+  },
+  "end_turn": {
+   "autosave": "AUTO0726.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0726_s02_Ptolemaic.SAV",
+  "turn": 726,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    60,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    12,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0726.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0726_s04_Seleucid.SAV",
+  "turn": 726,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    60,
+    28,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    12,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0727.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "e Thracia wants to trade with Ptolemaic. aK"
+   ]
+  }
+ },
+ {
+  "save": "P2_0727_s02_Ptolemaic.SAV",
+  "turn": 727,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    10,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0727.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. An army of yours cannot afford to pay its mercenary units. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0727_s04_Seleucid.SAV",
+  "turn": 727,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    10,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0728.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0728_s02_Ptolemaic.SAV",
+  "turn": 728,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    8,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0728.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. An army of yours cannot afford to pay its mercenary units. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0728_s04_Seleucid.SAV",
+  "turn": 728,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    100,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    8,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0729.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014",
+    "e Cttiberia wants to trade with Ptolemaic. aK"
+   ]
+  }
+ },
+ {
+  "save": "P2_0729_s02_Ptolemaic.SAV",
+  "turn": 729,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    99,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    6,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0729.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. An army of yours cannot afford to pay its mercenary units. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014",
+    "BATTLE Galatia  v  Seleucid          Seleucid to place units."
+   ]
+  }
+ },
+ {
+  "save": "P2_0729_s04_Seleucid.SAV",
+  "turn": 729,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    99,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    6,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0730.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0730_s02_Ptolemaic.SAV",
+  "turn": 730,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    99,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    4,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0730.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. An army of yours cannot afford to pay its mercenary units. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0730_s04_Seleucid.SAV",
+  "turn": 730,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    99,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    4,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0731.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0731_s02_Ptolemaic.SAV",
+  "turn": 731,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    99,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    2,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0731.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. \u2018An army of yours needs supplies. An army of yours cannot afford to pay its mercenary units. A fleet of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0731_s04_Seleucid.SAV",
+  "turn": 731,
+  "seat": 4,
+  "nation": "Seleucid",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    99,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    0,
+    0,
+    60,
+    null,
+    0,
+    0,
+    2,
+    true
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 3707,
+   "Ptolemaic": 6325
+  },
+  "end_turn": {
+   "autosave": "AUTO0732.SAV",
+   "texts": [
+    "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+    "CONFIRM \u2014",
+    "CONFIRM ",
+    "CONFIRM \u2014",
+    "CONFIRM \u2014"
+   ]
+  }
+ },
+ {
+  "save": "P2_0732_s02_Ptolemaic.SAV",
+  "turn": 732,
+  "seat": 2,
+  "nation": "Ptolemaic",
+  "fleets": [
+   [
+    1,
+    3,
+    189,
+    93,
+    70,
+    98,
+    0,
+    25,
+    -1,
+    false
+   ],
+   [
+    2,
+    2,
+    219,
+    55,
+    60,
+    100,
+    50,
+    0,
+    -1,
+    false
+   ]
+  ],
+  "treasury": {
+   "Seleucid": 5235,
+   "Ptolemaic": 8128
+  }
+ }
+]

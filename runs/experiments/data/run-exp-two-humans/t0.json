@@ -1,0 +1,147 @@
+{
+ "steps": [
+  {
+   "step": "new_game rows [1, 3] (Carthage + Ptolemaic)",
+   "ok": true,
+   "result": [
+    "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+    "[]"
+   ],
+   "secs": 16.6
+  },
+  {
+   "step": "start save",
+   "ok": true,
+   "result": {
+    "human_flags": [
+     1,
+     3
+    ],
+    "seat_index": 2,
+    "current_nation": 3,
+    "turn_order": [
+     9,
+     5,
+     3,
+     12,
+     2,
+     15,
+     7,
+     10,
+     4,
+     14,
+     13,
+     0,
+     11,
+     1,
+     6,
+     8
+    ],
+    "turn": 720
+   },
+   "secs": 0.0
+  },
+  {
+   "step": "seat A state",
+   "ok": true,
+   "result": {
+    "tag": "seat A at the start",
+    "cur_nation": 3,
+    "calendar": {
+     "season": 0,
+     "week": 1,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Ptolemaic's turn   (Thutmose)"
+    ],
+    "tax_of_cur_nation": 13,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  "
+    ],
+    "popups": []
+   },
+   "secs": 0.0
+  },
+  {
+   "step": "seat A taxation 15",
+   "ok": true,
+   "result": {
+    "tag": "after taxation",
+    "cur_nation": 3,
+    "calendar": {
+     "season": 0,
+     "week": 1,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Ptolemaic's turn   (Thutmose)"
+    ],
+    "tax_of_cur_nation": 15,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  "
+    ],
+    "popups": [
+     [
+      "Change tax level",
+      "Current tax 13 \u2018Current income New income 801 924 Set tax level OK Cancel"
+     ]
+    ]
+   },
+   "secs": 6.1
+  },
+  {
+   "step": "seat A international relations dialog (screenshot, radio count)",
+   "ok": false,
+   "error": "IndexError: list index out of range",
+   "secs": 12.7
+  },
+  {
+   "step": "seat A end turn",
+   "ok": true,
+   "result": [
+    "AUTO0720.SAV",
+    [
+     "CONFIRM \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+     "CONFIRM \u2014",
+     "CONFIRM ",
+     "CONFIRM \u2014",
+     "CONFIRM \u2014",
+     "BATTLE Seleucid  v  Ptolemaic          Ptolemaic to place units."
+    ]
+   ],
+   "secs": 28.3
+  },
+  {
+   "step": "after seat A end turn",
+   "ok": true,
+   "result": {
+    "tag": "after seat A's End turn",
+    "cur_nation": 1,
+    "calendar": {
+     "season": 0,
+     "week": 1,
+     "year_bc": 270
+    },
+    "title": [
+     "Imperial Conquest 2    Carthage's turn   (Agis)"
+    ],
+    "tax_of_cur_nation": 5,
+    "autosave_log": [
+     "0720 AUTO0720.SAV OK  ",
+     "0720 AUTO0720.SAV OK  "
+    ],
+    "popups": []
+   },
+   "secs": 0.0
+  },
+  {
+   "step": "autosaves",
+   "ok": true,
+   "result": [
+    "AUTO0720.SAV"
+   ],
+   "secs": 0.0
+  }
+ ]
+}
