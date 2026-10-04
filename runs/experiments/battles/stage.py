@@ -129,9 +129,16 @@ def block_edit(b, ops):
         k = op[0]
         blk = BB.parse_block(bytes(b[o:o + BB.BLOCK_LEN]))
         if k == "header":
+            bad = set(op[1]) - {"attacker_army", "defender_army", "x2", "y1", "half_round"}
+            if bad:
+                raise ValueError("unknown header field(s) %s" % sorted(bad))
             blk.update({f: v for f, v in op[1].items()})
             b[o:o + BB.BLOCK_LEN] = BB.encode_block(blk)
         elif k == "grid":
+            if not (0 <= op[1] < BB.GRID_W and 0 <= op[2] < BB.GRID_H):
+                raise ValueError("grid cell (%s,%s) is outside the %d x %d grid" % (op[1], op[2], BB.GRID_W, BB.GRID_H))
+            if not -32768 <= op[3] <= 32767:
+                raise ValueError("grid word %r does not fit an i16" % (op[3],))
             struct.pack_into("<h", b, o + BB.HEADER_LEN + BB.SLOT_LEN * BB.N_SLOTS + 2 * BB.cell(op[1], op[2]), op[3])
         elif k == "slot":
             n, fields = op[1], dict(op[2])

@@ -7,8 +7,9 @@ On the lab seed-1 exe, from the NATURAL FLD-RG (Rome's army 0, nine units, again
 phase and after two End turn clicks with Computer general OFF (as B0's Save As probe: Rome idle, the AI plays):
   1. `Game.battle_state()` (memory) against File > Save As's block 12 of the same moment: every field of the 2,105 bytes (the header fields
      read from their own addresses) must be equal;
-  2. the grid <-> screen mapping: a screenshot of the battle window, every one of the 14 x 12 cells classified occupied/empty by its corner
-     pixel (the map starts at window y 28, tiles are 32 px) against the block's occupied cells;
+  2. the SLOT POSITIONS <-> screen: a screenshot of the battle window, every one of the 14 x 12 cells classified occupied/empty by its corner
+     pixel (the map starts at window y 28, tiles are 32 px) against the cells the SLOTS occupy (the grid words are checked separately, against
+     the slots, by `BB.check_grid`; the screen is not compared with the grid words);
   3. the slots' merc label ("word +2" of the research request, byte +4 of a slot) against the strategic unit labels, and the slot order
      against the strategic army's unit order (names).
 Nothing is clicked except the attack, End turn (each proven by the half-round counter / title moving on) and File > Save As.
@@ -56,7 +57,7 @@ def end_turn(g, wid, log):
         C.D.sh("xdotool", "windowfocus", str(wid), check=False)
         time.sleep(0.3)
         try:
-            g.end_turn_proven(lambda: g.click(C.D.BATTLE_TOOLS["end_turn"], C.BATTLE_Y, pause=1.0))
+            g.end_turn_proven(lambda: g.click(g.battle_x.get("end_turn", C.D.BATTLE_TOOLS["end_turn"]), C.D.BATTLE_TOOLBAR_Y, pause=1.0))
             log("end_turn_proven", attempt=attempt)
             return
         except DriverError as e:
@@ -118,15 +119,14 @@ def main():
                                   "same_set": sorted(map(key, units)) == sorted((s["name"], s["type"], s["merc"], s["quality"]) for s in slots if s["side"] == side and s["name"])}
         out["merc_label_equals_strategic_label_for_every_unit"] = all(
             {u["name"]: u["merc"] for u in a0["units"] + a10["units"]}.get(s["name"]) == s["merc"] for s in slots if s["name"])
-        g.click(C.D.BATTLE_TOOLS["computer"], C.BATTLE_Y, pause=1.5)       # let the battle end; it is not needed any more
+        g.click(g.battle_x.get("computer", C.D.BATTLE_TOOLS["computer"]), C.D.BATTLE_TOOLBAR_Y, pause=1.5)       # let the battle end; it is not needed any more
         out["status"] = "ok"
     except Exception as e:      # noqa: BLE001
         out["status"] = "error: %s: %s" % (type(e).__name__, e)
         log("error", error=out["status"])
     finally:
         C.kill_stale(g)
-    p = C.DATA / f"b2-verify-{C.STAMP}.json"
-    p.write_text(json.dumps(out, indent=1, default=str))
+    p = C.write_new(C.DATA, f"b2-verify-{C.STAMP}.json", json.dumps(out, indent=1, default=str))
     print(p)
 
 

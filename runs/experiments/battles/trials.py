@@ -212,9 +212,10 @@ def run_trial(g, cell, seed, rep, log):
 
 
 def backfill_halflog(rec):
-    """For a trial recorded before the halflog hook (no `halflog` key): the oldest `halfrounds-<trial>*.jsonl` written afterwards by `halflog.py`
+    """For a trial recorded before the halflog hook (no `halflog` key): the plain `halfrounds-<trial>.jsonl` (else the oldest by mtime) written afterwards by `halflog.py`
     (the same series, decoded later), summarised by reading it. Returns (file name, loss rows, unambiguous rows) or None. trials.jsonl is not changed."""
-    fs = sorted(C.DATA.glob(f"halfrounds-{rec['trial']}*.jsonl"))
+    plain = C.DATA / f"halfrounds-{rec['trial']}.jsonl"       # the first one written; '-' sorts before '.', so a plain sort would prefer a later copy
+    fs = [plain] if plain.exists() else sorted(C.DATA.glob(f"halfrounds-{rec['trial']}-*.jsonl"), key=lambda q: q.stat().st_mtime)
     if not fs:
         return None
     rows = [json.loads(x) for x in fs[0].read_text().splitlines()]
@@ -249,12 +250,13 @@ def write_table():
     for r in read_trials():
         if r.get("status") == "ok":
             last[r["trial"]] = r
-    out = C.DATA / f"sweep-table-{C.STAMP}.csv"
-    with open(out, "w", newline="") as f:
-        w = csv.DictWriter(f, COLUMNS)
-        w.writeheader()
-        for r in last.values():
-            w.writerow(row(r))
+    import io
+    buf = io.StringIO(newline="")
+    w = csv.DictWriter(buf, COLUMNS)
+    w.writeheader()
+    for r in last.values():
+        w.writerow(row(r))
+    out = C.write_new(C.DATA, "sweep-table-%s.csv" % C.STAMP, buf.getvalue())
     return out, len(last)
 
 
@@ -324,8 +326,7 @@ def main():
         print(out, n, "trials")
     elif args[0] == "compare":
         res = compare(args[1], args[2])
-        out = C.DATA / f"compare-{args[1]}-{args[2]}-{C.STAMP}.json"
-        out.write_text(json.dumps(res, indent=1))
+        out = C.write_new(C.DATA, f"compare-{args[1]}-{args[2]}-{C.STAMP}.json", json.dumps(res, indent=1))
         print(json.dumps(res, indent=1))
     else:
         cells = [a for a in args[1:] if not a.startswith("--") and re.fullmatch(r"[a-z]{2}-[a-z]{2}-[a-z]+", a)]

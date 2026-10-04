@@ -29,6 +29,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import common as C  # noqa: E402  (write_new: the one never-overwrite writer)
 import harness.driver as D  # noqa: E402
 from harness.driver import (BATTLE_FLAG, FILE_ITEMS, G, SEL_ARMY, DriverError, Game, sh)  # noqa: E402
 from state.sav import live_armies, load  # noqa: E402
@@ -438,12 +440,12 @@ def cmd_gate(g):
                "times_seed1_s": t1, "mean_seed1_s": round(sum(t1) / len(t1), 1),
                "times_seed2_s": [r["seconds_process_start_to_post_save"] for r in s2], "records": s1 + s2}
     log("gate_summary", **{k: v for k, v in summary.items() if k != "records"})
-    (OUT / f"gate-summary-{STAMP}.json").write_text(json.dumps(summary, indent=1, default=str))
+    C.write_new(OUT, f"gate-summary-{STAMP}.json", json.dumps(summary, indent=1, default=str))
 
 
 def cmd_report(g=None):
     res = series_report(sys.argv[2:])
-    (OUT / f"series-report-{STAMP}.json").write_text(json.dumps(res, indent=1))
+    C.write_new(OUT, f"series-report-{STAMP}.json", json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
 
 
@@ -465,7 +467,7 @@ def cmd_resumecmp(g=None):
            "all_identical_to_original": bool(aligned) and all(r["differing_bytes"] == 0 for r in aligned)}   # never vacuously true
     if res2:
         out["resume_v_resume"] = series_equal(R, series_names(res2))
-    (OUT / f"resume-comparison-{res}-{STAMP}.json").write_text(json.dumps(out, indent=1))
+    C.write_new(OUT, f"resume-comparison-{res}-{STAMP}.json", json.dumps(out, indent=1))
     print(json.dumps(out, indent=1))
 
 
@@ -680,7 +682,7 @@ def cmd_compare(g=None):
                 best = (fa.name, n)
         out.append({"b": fb.name, "closest_a": best[0], "differing_bytes": best[1], "identical": best[1] == 0})
     res = {"a": a_tag, "b": b_tag, "a_files": [f.name for f in A], "rows": out}
-    (OUT / f"compare-{a_tag}-{b_tag}-{STAMP}.json").write_text(json.dumps(res, indent=1))
+    C.write_new(OUT, f"compare-{a_tag}-{b_tag}-{STAMP}.json", json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
 
 

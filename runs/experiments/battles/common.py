@@ -70,6 +70,33 @@ def keep(src, name=None, folder=None):
     return dst
 
 
+def unique_path(folder, name):
+    """A path in `folder` for `name` that does not exist yet: `name`, else `<stem>-<stamp>`, `<stem>-<stamp>-2`, ... (a loop, so any number of
+    writes in the same second all survive)."""
+    folder = Path(folder)
+    folder.mkdir(parents=True, exist_ok=True)
+    p, n = folder / name, 0
+    while p.exists():
+        n += 1
+        p = folder / f"{Path(name).stem}-{STAMP}{'' if n == 1 else '-%d' % n}{Path(name).suffix}"
+    return p
+
+
+def write_new(folder, name, data):
+    """THE writer of measured outputs: creates a file that did not exist (exclusive create, retried on a name race), never overwrites; `data` is
+    str or bytes. Returns the Path written. (Append-only logs/jsonl are the only other writers: they open "a".)"""
+    for _ in range(1000):
+        p = unique_path(folder, name)
+        try:
+            fd = os.open(p, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+        except FileExistsError:
+            continue
+        with os.fdopen(fd, "wb") as f:
+            f.write(data.encode() if isinstance(data, str) else data)
+        return p
+    raise RuntimeError("no free name for " + name)
+
+
 def shot(g, name, window="root", folder=None):
     """Screenshot through `keep`: taken to a temp name, then kept under `name` (versioned if the name exists with other content, never overwritten)
     and its SHA-256 recorded in SAVES.sha256. Returns the kept Path."""

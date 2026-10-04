@@ -69,15 +69,23 @@ def main():
     hdr = []
     placed = []
     amb = {"loss_rows": 0, "unambiguous": 0}
-    grid_bad = sprite_bad = 0
+    per_group = defaultdict(lambda: {"series": 0, "files": 0, "loss_rows": 0, "unambiguous": 0})
+    grp_size = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+    grid_bad = sprite_bad = x2_bad = x2_checked = 0
     acting = Counter()
     for name, files in sets.items():
+        grp = "B0 natural FLD-RG series (gate2_a, gate2_s2a)" if name.startswith("B0") else "B4 1-v-1 trials"
+        per_group[grp]["series"] += 1
         prev = None
         seq = []
         for i, f in enumerate(files):
             b = BB.from_save(f)
             out["files_decoded"] += 1
+            per_group[grp]["files"] += 1
             seq.append((b["half_round"], b["x2"], b["y1"]))
+            z, x2 = b["half_round"], b["x2"]
+            x2_checked += 1
+            x2_bad += not (x2 == (1 if z % 2 == 0 else 0) if z >= 4 else x2 == (1 if z == 1 else 0))
             grid_bad += bool(BB.check_grid(b))
             for s in b["slots"]:
                 if not s["alive"]:
@@ -86,6 +94,7 @@ def main():
                 if v != stage.sprite_value(s["side"], s["type"], s["troops"]):
                     sprite_bad += 1
                 size[s["type"]][v - 20 * s["side"] - 3 * BB.TYPES.index(s["type"])].append(s["troops"])
+                grp_size[grp][s["type"]][v - 20 * s["side"] - 3 * BB.TYPES.index(s["type"])].append(s["troops"])
                 if i == 0:
                     ammo_start[s["type"]][s["ammo"]] += 1
                 if i == 1:
@@ -94,14 +103,19 @@ def main():
                 d = BB.diff(prev, b)
                 amb["loss_rows"] += d["losses"]
                 amb["unambiguous"] += d["unambiguous"]
+                per_group[grp]["loss_rows"] += d["losses"]
+                per_group[grp]["unambiguous"] += d["unambiguous"]
                 import halflog
                 acting[tuple(halflog.acting_sides(d, prev, b))] += 1
             prev = b
         hdr.append({"series": name, "half_round_x2_y1": seq})
+    out["x2_rule"] = {"rule": "x2 = 1 at half-round 1, 0 at 2 and 3, then 1 iff the half-round is even", "files_checked": x2_checked, "violations": x2_bad}
     out["header_sequences"] = hdr
     out["grid_inconsistent_files"] = grid_bad
     out["sprite_rule_violations"] = sprite_bad
     out["size_class_troop_range"] = {t: {c: (min(v), max(v)) for c, v in sorted(cl.items())} for t, cl in size.items()}
+    out["per_group"] = dict(per_group)
+    out["size_class_troop_range_per_group"] = {g: {t: {c: (min(v), max(v)) for c, v in sorted(cl.items())} for t, cl in d.items()} for g, d in grp_size.items()}
     out["size_class_rule_D"] = "class 0 below std/3, 1 below 2*std/3, else 2; std LI 15000 HI 6000 Ar 3500 LC 7000 HC 2500 (stage.sprite_value)"
     out["ammo_at_first_file"] = {t: dict(c) for t, c in ammo_start.items()}
     out["state_at_second_file"] = {t: dict(c) for t, c in state_by_type.items()}
@@ -109,10 +123,9 @@ def main():
     out["acting_sides_per_half_round_D"] = {str(k): v for k, v in acting.items()}
     out["all_battle_saves"] = all_files_pass()
     out["all_battle_saves_total"] = sum(v["files"] for v in out["all_battle_saves"].values())
-    p = C.DATA / f"b2-analysis-{C.STAMP}.json"
-    p.write_text(json.dumps(out, indent=1, default=str))
+    p = C.write_new(C.DATA, f"b2-analysis-{C.STAMP}.json", json.dumps(out, indent=1, default=str))
     print(p)
-    print(json.dumps({k: out[k] for k in ("files_decoded", "grid_inconsistent_files", "sprite_rule_violations", "all_battle_saves_total", "all_battle_saves", "loss_rows_unambiguous", "ammo_at_first_file", "state_at_second_file", "acting_sides_per_half_round_D")}, indent=1))
+    print(json.dumps({k: out[k] for k in ("files_decoded", "grid_inconsistent_files", "sprite_rule_violations", "x2_rule", "all_battle_saves_total", "all_battle_saves", "loss_rows_unambiguous", "per_group", "ammo_at_first_file", "state_at_second_file", "acting_sides_per_half_round_D")}, indent=1))
 
 
 if __name__ == "__main__":

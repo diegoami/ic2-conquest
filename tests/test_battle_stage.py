@@ -233,7 +233,8 @@ def test_defender_slot_edit_mirrors_into_the_right_unit_on_a_real_save():
 
 def test_block_edit_rejects_bad_input():
     raw, o = battle_save()
-    for ops in ([("slot", 40, {})], [("slot", 0, {"bogus": 1})], [("slot", 0, {"x": 14})], [("nope",)]):
+    for ops in ([("grid", 14, 0, 7)], [("grid", 0, 12, 7)], [("grid", -1, 0, 7)], [("grid", 0, 0, 70000)], [("header", {"bogus": 1})],
+                [("slot", 40, {})], [("slot", 0, {"bogus": 1})], [("slot", 0, {"x": 14})], [("nope",)]):
         try:
             stage.block_edit(bytearray(raw), ops)
         except ValueError:
