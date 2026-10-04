@@ -1,0 +1,17 @@
+{"t": 0.0, "event": "plan", "todo": ["lc-ar-half_s1_r1", "hi-li-one_s1_r1", "ar-hc-three_s1_r1"], "skipped_ok": [], "skipped_error": []}
+{"t": 6.06, "event": "process_started", "trial": "lc-ar-half_s1_r1", "exe": "Imperial Conquest 2 lab s1.exe", "pid": 1509812, "seconds": 5.0}
+{"t": 20.48, "event": "loaded", "trial": "lc-ar-half_s1_r1", "seconds": 19.5, "boxes": ["@ Bithynia wants to trade with Rome."], "army0": {"li": 0, "hi": 0, "ar": 0, "lc": 3500, "hc": 0}, "army10": {"li": 0, "hi": 0, "ar": 1750, "lc": 0, "hc": 0}}
+{"t": 28.39, "event": "battle_open", "trial": "lc-ar-half_s1_r1", "seconds_from_click": 6.38, "title": "Rome  v  Gaul          Rome to place units."}
+{"t": 42.74, "event": "battle_played", "trial": "lc-ar-half_s1_r1", "end_turn_clicks": 0, "ended": "Rome's army Gaul's army start finish start finish [e | [\u00a9 | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] Wteewvaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a", "dialogs": []}
+{"t": 50.87, "event": "trial_done", "trial": "lc-ar-half_s1_r1", "seconds": 49.8, "half_rounds": 11, "winner": "attacker", "post_sha12": "e5daa68940b1"}
+{"t": 58.43, "event": "process_started", "trial": "hi-li-one_s1_r1", "exe": "Imperial Conquest 2 lab s1.exe", "pid": 1518900, "seconds": 5.0}
+{"t": 72.72, "event": "loaded", "trial": "hi-li-one_s1_r1", "seconds": 19.3, "boxes": ["@ Bithynia wants to trade with Rome."], "army0": {"li": 0, "hi": 6000, "ar": 0, "lc": 0, "hc": 0}, "army10": {"li": 15000, "hi": 0, "ar": 0, "lc": 0, "hc": 0}}
+{"t": 80.58, "event": "battle_open", "trial": "hi-li-one_s1_r1", "seconds_from_click": 6.34, "title": "Rome  v  Gaul          Rome to place units."}
+{"t": 94.49, "event": "battle_played", "trial": "hi-li-one_s1_r1", "end_turn_clicks": 0, "ended": "Rome's army Gaul's army start finish start finish [8] [0 | toheintaery Ce] heavyinfanty 0 | | 0) re [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a", "dialogs": []}
+{"t": 102.61, "event": "trial_done", "trial": "hi-li-one_s1_r1", "seconds": 49.2, "half_rounds": 13, "winner": "attacker", "post_sha12": "3357ec500d22"}
+{"t": 110.17, "event": "process_started", "trial": "ar-hc-three_s1_r1", "exe": "Imperial Conquest 2 lab s1.exe", "pid": 1521712, "seconds": 5.0}
+{"t": 124.59, "event": "loaded", "trial": "ar-hc-three_s1_r1", "seconds": 19.5, "boxes": ["@ Bithynia wants to trade with Rome."], "army0": {"li": 0, "hi": 0, "ar": 10500, "lc": 0, "hc": 0}, "army10": {"li": 0, "hi": 0, "ar": 0, "lc": 0, "hc": 7500}}
+{"t": 132.48, "event": "battle_open", "trial": "ar-hc-three_s1_r1", "seconds_from_click": 6.37, "title": "Rome  v  Gaul          Rome to place units."}
+{"t": 147.78, "event": "battle_played", "trial": "ar-hc-three_s1_r1", "end_turn_clicks": 1, "ended": "Gaul's army Rome's army start finish start finish [e | [\u00a9 | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 heavy cavaly|/\u2014 0) 0 | tra tops a", "dialogs": []}
+{"t": 155.94, "event": "trial_done", "trial": "ar-hc-three_s1_r1", "seconds": 50.8, "half_rounds": 24, "winner": "defender", "post_sha12": "7c7e72e37623"}
+{"t": 157.46, "event": "run_done", "ok": 3, "errors": 0}
