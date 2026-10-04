@@ -33,9 +33,20 @@ Forbidden results (any one fails the task):
    compares them with a direct call's. Check
    each site's bytes are `E8 rel32` to `0x40284C` before patching; refuse to build otherwise. The calling convention is Delphi
    register (`range` in EAX, result in EAX): verify it on the first site by reading the record against the formula.
+   **Every call site is covered:** the build scans the whole `CODE` section for every reference to `0x40284C` (`E8`/`E9` rel32,
+   `FF 15`/`FF 25` and any absolute dword equal to it), lists those inside the battle module (`0x436FB4`–`0x43ABB4` [R-code]) and in
+   `TBattleOver_InitializeForm`/`OK`, and refuses to build unless that list equals the hooked list (the report's 12 + 2, or the
+   scan's list with the difference stated in the finding).
 2. **Markers at the routine entries** (`FUN_0043910C` shot, `FUN_004393EC` melee pass, `FUN_00438FB0` Rout) [R-code]: one record with
-   the entry's EAX/EDX/ECX, so the log shows which shot, melee or rout the draws belong to. If a register layout is not as the report
+   the entry's EAX/EDX/ECX, so the log shows which shot, melee or rout the draws belong to. A marker displaces the entry's first
+   instruction(s) into its cave: the build checks those bytes against the ones recorded in this task's first build (and refuses on any
+   difference), and the marker cave is held to the same rule as the `Random` cave: every register, EFLAGS and ESP preserved, the
+   displaced instructions re-executed exactly, then a jump back; the same emulator test covers it. If a register layout is not as the report
    implies, record that and use only the `Random` records.
+   **Every memory address used** (`RandSeed 0x45E030`, counter `0x4A0B7A`, side `0x4A0B78`, the routine entries, `Random`) is checked
+   once live before the hook relies on it: the header words against B2's decoder and a Save As block, `RandSeed` by stepping the LCG
+   across one known `Random` call, the entries by a breakpoint-free check (the marker fires exactly where a lab snapshot says a shot,
+   melee or rout happened). Each check is a tracked output.
 3. **The buffer is in memory, not a file.** Enlarge the `.patch` section's virtual size (zero-filled, writable; update
    `SizeOfImage`) for a buffer of at least 64 Ki records, a write index and an overflow flag. The harness reads it through
    `/proc/<pid>/mem` after the battle (`Game` already reads memory) and writes it to the tracked data folder. No file I/O in the cave.
@@ -47,7 +58,10 @@ Forbidden results (any one fails the task):
 1. **Inertness first.** On FLD-RG, HI v HI size one and one mixed cell, seeds 1-3: the hooked and unhooked exes give identical
    series and post-battle saves. If not, stop and report.
 2. **Completeness, zero tolerance.** Delphi's `Random` advances `RandSeed` by exactly one LCG step (`seed·0x08088405 + 1`) per call,
-   so each record's seed-before must equal the previous record's seed-after, from the battle's first draw to its last. Any break
+   so each record's seed-before must equal the previous record's seed-after, from the battle's first draw to its last. **The
+   boundaries are pinned too:** the first record's seed-before must equal the seed the lab cave writes at battle start or resume
+   (nothing drawn before it), and the cave also records `RandSeed` when the battle flag `0x4A0B7C` clears and after the last
+   post-battle site, which must equal the last record's seed-after (nothing drawn after it, up to `TBattlePols`' reseed). Any break
    (a call from an unhooked site, a dropped or duplicated record) fails the battle's log; the task is not done while any hooked
    battle has a break. Separately, compare the records per half-round with the count the report's draw order predicts from the snapshot
    (copy-in `Random(q·4)` per live slot, placement `Random(5)`, 2 per shot, 4 per melee, 2 per qualifying rout, `Random(3)` per flank,
@@ -64,7 +78,8 @@ Forbidden results (any one fails the task):
 - The inertness check passes on all listed cells (comparison files in `runs/experiments/data/run-exp-battle-sweep/`).
 - The seed chain is unbroken in every hooked battle (0 breaks, tracked output per battle); the draw-order comparison is in the
   finding with every mismatch listed.
-- The register/flag preservation test passes.
+- The register/flag preservation test passes for the `Random` cave and every marker cave; the call-site scan equals the hooked
+  list; each address check has its tracked output.
 - The exchange log exists for every B5 re-run battle; the formula check's result is in the finding with its tracked output.
 - `tests/`: an offline test that the build refuses a site whose bytes are not `E8 rel32 → 0x40284C`, and one that the log reader
   stops at the write index and reports the overflow flag.
