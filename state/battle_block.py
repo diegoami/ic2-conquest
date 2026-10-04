@@ -70,6 +70,17 @@ def block_of_save(raw):
     return parse_block(raw[t + 55:])
 
 
+def encode_block(b):
+    """The inverse of `parse_block`: 2,105 bytes from a parsed block (the slots' `name` is kept as given, NUL padded)."""
+    out = bytearray(struct.pack("<hhhBh", b["attacker_army"], b["defender_army"], b["x2"], b["y1"], b["half_round"]))
+    for s in b["slots"]:
+        typ = TYPES.index(s["type"]) if isinstance(s["type"], str) else s["type"]
+        out += struct.pack("<10h", s["x"], s["y"], s["merc"], typ, s["troops"], s["quality"], s["morale"], s["state"], s["ammo"], s["target"])
+        out += s["name"].encode("latin1").ljust(24, b"\0")[:24]
+    out += struct.pack("<%dh" % (GRID_W * GRID_H), *b["grid"])
+    return bytes(out)
+
+
 def from_save(path):
     return block_of_save(Path(path).read_bytes())
 
