@@ -40,10 +40,10 @@ Q, MORALE = 6, 65
 END_CONDITIONS = {(False, False): "none (nobody destroyed)", (True, False): "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level): attacker",
                   (False, True): "loser destroyed (annihilation, rout or surrender: not distinguished at strategic level): defender", (True, True): "both destroyed"}
 RESULTS = {"attacker": "Rome defeats Gaul", "defender": "Gaul defeats Rome", "none": "neither army destroyed", "both": "both armies destroyed"}
-COLUMNS = ["trial", "cell", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
+COLUMNS = ["trial", "cell", "build", "level", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
            "att_troops_before", "att_troops_after", "att_loss", "def_troops_before", "def_troops_after", "def_loss",
            "att_destroyed", "def_destroyed", "att_promotions", "def_promotions", "end_condition", "result", "dialog",
-           "seconds", "start_save", "series_first", "series_last", "post_save", "post_sha12", "series_sha12"]
+           "seconds", "start_save", "series_first", "series_last", "post_save", "post_sha12", "series_sha12", "halflog", "loss_rows", "unambiguous_rows"]
 
 
 def parse_cell(cell):
@@ -160,7 +160,12 @@ def run_trial(g, cell, seed, rep, log):
     log("battle_open", trial=tid, seconds_from_click=dt, title=g.find_windows(" v ")[0][1])
     shots = C.ART / "shots"
     shots.mkdir(parents=True, exist_ok=True)
-    res = g.play_battle(shot=shots / f"{tag}_battle-ended.png", on_dialog="capture")
+    tmp_end = shots / f"_tmp_end_{tag}.png"
+    res = g.play_battle(shot=tmp_end, on_dialog="capture")
+    ended_shot = None
+    if tmp_end.exists():       # through keep(): never overwritten, hashed
+        ended_shot = C.keep(tmp_end, f"{tag}_battle-ended.png", shots).name
+        tmp_end.unlink()
     for d in res["dialogs"]:           # the driver writes dialog screenshots to IC2_WORK/shots: keep them with the saves, never overwritten
         if d.get("shot") and Path(d["shot"]).exists():
             d["shot"] = C.keep(d["shot"], f"{tag}_{Path(d['shot']).name}", shots).name
@@ -185,7 +190,7 @@ def run_trial(g, cell, seed, rep, log):
         "series_sha12": hashlib.sha256("".join(C.sha(C.ART / s) for s in series).encode()).hexdigest()[:12],
         "winner": d["winner"], "end_turn_clicks": res["end_turn_clicks"], "result_text_ocr": res["battle_ended_text"],
         "result": RESULTS[d["winner"]],
-        "battle_ended_shot": f"{tag}_battle-ended.png" if (shots / f"{tag}_battle-ended.png").exists() else None,
+        "battle_ended_shot": ended_shot,
         "dialogs": res["dialogs"], "dialog": ";".join(x["title"] for x in res["dialogs"]),
         "end_condition": END_CONDITIONS[(att["destroyed"], dfn["destroyed"])],
         "attacker_result": {k: att[k] for k in ("troops_before", "troops_after", "loss", "destroyed", "type_loss", "promotions", "morale", "money")},
@@ -194,17 +199,34 @@ def run_trial(g, cell, seed, rep, log):
         "seconds": round(t_saved - t0, 1),
         "timing": {"loaded": round(t_loaded, 1), "click_to_battle": dt, "battle_open_to_over": round(t_over - t_open, 1),
                    "post_save": round(t_saved - t_over, 1)}})
+    try:       # the per-half-round log (B2/B4); a decoding failure is recorded, it never loses the trial
+        import halflog
+        p, summ = halflog.write_halflog(tid, series)
+        rec["halflog"], rec["halflog_summary"] = p.name, summ
+    except Exception as e:      # noqa: BLE001
+        rec["halflog_error"] = f"{type(e).__name__}: {e}"
     if res["dialogs"]:
         rec["dialog_note"] = "an Offer of peace (or other) box appeared after the battle and was DECLINED (never Yes)"
     log("trial_done", trial=tid, seconds=rec["seconds"], half_rounds=len(series), winner=d["winner"], post_sha12=rec["post_sha256"][:12])
     return rec
 
 
+def backfill_halflog(rec):
+    """For a trial recorded before the halflog hook (no `halflog` key): the plain `halfrounds-<trial>.jsonl` (else the oldest by mtime) written afterwards by `halflog.py`
+    (the same series, decoded later), summarised by reading it. Returns (file name, loss rows, unambiguous rows) or None. trials.jsonl is not changed."""
+    plain = C.DATA / f"halfrounds-{rec['trial']}.jsonl"       # the first one written; '-' sorts before '.', so a plain sort would prefer a later copy
+    fs = [plain] if plain.exists() else sorted(C.DATA.glob(f"halfrounds-{rec['trial']}-*.jsonl"), key=lambda q: q.stat().st_mtime)
+    if not fs:
+        return None
+    rows = [json.loads(x) for x in fs[0].read_text().splitlines()]
+    return fs[0].name, sum(r.get("since_previous", {}).get("losses", 0) for r in rows), sum(r.get("since_previous", {}).get("unambiguous", 0) for r in rows)
+
+
 def row(rec):
     if rec.get("status") != "ok":
         return {"trial": rec.get("trial"), "cell": rec.get("cell"), "status": rec.get("status")}
     a, d = rec["attacker_result"], rec["defender_result"]
-    return {"trial": rec["trial"], "cell": rec["cell"], "attacker": rec["attacker"], "defender": rec["defender"], "size": rec["size"],
+    out = {"trial": rec["trial"], "cell": rec["cell"], "build": rec.get("build", ""), "level": rec.get("level", ""), "attacker": rec["attacker"], "defender": rec["defender"], "size": rec["size"],
             "seed": rec["seed"], "rep": rec["rep"], "exe": rec["exe"], "status": "ok", "half_rounds": rec["half_rounds"],
             "winner": rec["winner"], "end_turn_clicks": rec["end_turn_clicks"], "att_troops_before": a["troops_before"],
             "att_troops_after": a["troops_after"], "att_loss": a["loss"], "def_troops_before": d["troops_before"],
@@ -213,7 +235,13 @@ def row(rec):
             "result": rec.get("result") or RESULTS[rec["winner"]], "dialog": rec.get("dialog", ""), "seconds": rec["seconds"],
             "start_save": rec["start_save"], "series_first": rec["series"][0] if rec["series"] else "",
             "series_last": rec["series"][-1] if rec["series"] else "", "post_save": rec["post_save"],
-            "post_sha12": rec["post_sha256"][:12], "series_sha12": rec["series_sha12"]}
+            "post_sha12": rec["post_sha256"][:12], "series_sha12": rec["series_sha12"], "halflog": rec.get("halflog", ""),
+            "loss_rows": rec.get("halflog_summary", {}).get("loss_rows", ""), "unambiguous_rows": rec.get("halflog_summary", {}).get("unambiguous_rows", "")}
+    if not out["halflog"]:       # recorded before the hook: filled from the halfrounds file written afterwards (see the data README)
+        bf = backfill_halflog(rec)
+        if bf:
+            out["halflog"], out["loss_rows"], out["unambiguous_rows"] = bf
+    return out
 
 
 def write_table():
@@ -222,12 +250,13 @@ def write_table():
     for r in read_trials():
         if r.get("status") == "ok":
             last[r["trial"]] = r
-    out = C.DATA / f"sweep-table-{C.STAMP}.csv"
-    with open(out, "w", newline="") as f:
-        w = csv.DictWriter(f, COLUMNS)
-        w.writeheader()
-        for r in last.values():
-            w.writerow(row(r))
+    import io
+    buf = io.StringIO(newline="")
+    w = csv.DictWriter(buf, COLUMNS)
+    w.writeheader()
+    for r in last.values():
+        w.writerow(row(r))
+    out = C.write_new(C.DATA, "sweep-table-%s.csv" % C.STAMP, buf.getvalue())
     return out, len(last)
 
 
@@ -273,10 +302,7 @@ def run_all(cells, seeds, reps, redo_errors=False, stop_on_error=False, make_gam
             try:
                 rec["windows"] = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows(".")]
                 if shot:
-                    p = C.ART / f"error_{tid}_{time.strftime('%H%M%S')}.png"
-                    p.parent.mkdir(parents=True, exist_ok=True)
-                    g.shot(p)
-                    rec["screenshot"] = p.name
+                    rec["screenshot"] = C.shot(g, f"error_{tid}_{time.strftime('%H%M%S')}.png").name
             except Exception:       # noqa: BLE001
                 pass
             n_err += 1
@@ -300,8 +326,7 @@ def main():
         print(out, n, "trials")
     elif args[0] == "compare":
         res = compare(args[1], args[2])
-        out = C.DATA / f"compare-{args[1]}-{args[2]}-{C.STAMP}.json"
-        out.write_text(json.dumps(res, indent=1))
+        out = C.write_new(C.DATA, f"compare-{args[1]}-{args[2]}-{C.STAMP}.json", json.dumps(res, indent=1))
         print(json.dumps(res, indent=1))
     else:
         cells = [a for a in args[1:] if not a.startswith("--") and re.fullmatch(r"[a-z]{2}-[a-z]{2}-[a-z]+", a)]

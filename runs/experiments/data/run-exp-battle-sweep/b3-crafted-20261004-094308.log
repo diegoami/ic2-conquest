@@ -1,0 +1,12 @@
+[  15.06] resumed scenario='c2_troops' seconds=15.1 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[  44.48] scenario_done scenario='c2_troops' status='ok' half_rounds=11 post_sha12='8373c8afc572'
+[  59.07] resumed scenario='c3_adjacent' seconds=14.6 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[  88.55] scenario_done scenario='c3_adjacent' status='ok' half_rounds=16 post_sha12='db4f576949bf'
+[ 103.15] resumed scenario='c4_slot_only' seconds=14.6 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[ 132.63] scenario_done scenario='c4_slot_only' status='ok' half_rounds=11 post_sha12='dd4b3555cccc'
+[ 147.25] resumed scenario='c5_stale_grid' seconds=14.6 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[ 176.72] scenario_done scenario='c5_stale_grid' status='ok' half_rounds=16 post_sha12='db4f576949bf'
+[ 191.33] resumed scenario='c6_same_cell' seconds=14.6 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[ 220.89] scenario_done scenario='c6_same_cell' status='ok' half_rounds=16 post_sha12='db4f576949bf'
+[ 235.96] resumed scenario='c7_type' seconds=15.0 memory_equals_file=False memory_v_file=[('half_round', 2, 3), ('slot0.state', 2, 5)]
+[ 259.35] scenario_done scenario='c7_type' status='ok' half_rounds=16 post_sha12='976b9097f1ac'

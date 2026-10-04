@@ -7,7 +7,7 @@ never writes game memory. The layouts it relies on are recorded in
 coverage.md ("Dialog layouts").
 
     from harness.driver import Game
-    g = Game(); g.start(); g.open("BASE.SAV", seed=12345)
+    g = Game(); g.load("BASE.SAV", seed=12345)
     g.recruit("Rome", "hi", 3200); g.move(3, 104, 40); g.end_turn()
 """
 import json
@@ -38,6 +38,8 @@ ARMY_LEN = 656
 FLEETS = 0x49C26C               # fleet records, 26 bytes each (the save's fleet table, docs/sav-layout-notes.md §4)
 FLEET_LEN = 0x1A
 CUR_NATION = 0x4A0320
+BATTLE_SLOTS = 0x4A0344         # the battle block's 40 slots x 44 bytes then the 14 x 12 grid (336 bytes), contiguous (state/battle_block.py)
+BATTLE_HEADER = {"attacker_army": 0x4A0B74, "defender_army": 0x4A0B76, "x2": 0x4A0B78, "half_round": 0x4A0B7A, "y1": 0x4A0B7D}   # i16, i16, i16, i16, u8
 SEL_ARMY, SEL_FLEET = 0x4A0328, 0x4A032A
 SEASON, WEEK, YEAR_BC = 0x4A032E, 0x4A0330, 0x4A0332
 BATTLE_FLAG = 0x4A0B7C
@@ -148,6 +150,19 @@ class Game:
         so this is the reliable signal."""
         return self.mem(BATTLE_FLAG, 1)[0] != 0
 
+    def battle_state(self):
+        """The battle block read from game memory (no save needed): `state.battle_block.parse_block` of the header fields (their own
+        addresses: attacker army, defender army, x2, half-round counter at 0x4A0B74..0x4A0B7A, y1 at 0x4A0B7D) followed by the
+        slots and the grid (0x4A0344, 2,096 contiguous bytes). Raises DriverError when no battle is pending (the memory is stale then)."""
+        from state import battle_block as BB
+        if not self.in_battle():
+            raise DriverError("battle_state: no battle pending (flag 0x4A0B7C is 0)")
+        h = BATTLE_HEADER
+        a, d, x2, z = (struct.unpack("<h", self.mem(h[k], 2))[0] for k in ("attacker_army", "defender_army", "x2", "half_round"))
+        y1 = self.mem(h["y1"], 1)[0]
+        body = self.mem(BATTLE_SLOTS, BB.BLOCK_LEN - BB.HEADER_LEN)
+        return BB.parse_block(struct.pack("<hhhBh", a, d, x2, y1, z) + body)
+
     def calendar(self):
         return {"season": self.i16(SEASON), "week": self.i16(WEEK), "year_bc": self.i16(YEAR_BC)}
 
@@ -222,7 +237,8 @@ class Game:
         return (int(m.group(1)), int(m.group(2))) if m else (1280, 1024)
 
     def neutral_point(self):
-        """A point on the bare root window, proven to be outside every visible window (a click there harmlessly closes menus).
+        """A point on the bare root window, proven to be outside every visible NAMED window (a click there harmlessly closes menus). Unnamed windows (the Wine
+        Open dialog) are not seen by `find_windows`, so call it when no file dialog is open.
         `NEUTRAL` is used when no window covers it; otherwise (a unit map opened oversized, 1143 x 903 with the research start
         save, covers (1000, 900) and a click there ORDERS A MOVE for a selected army) a point is derived from the screen geometry
         and the windows' geometry: along the bottom strip, then the right and left strips. DriverError if every candidate is covered."""
@@ -1260,8 +1276,16 @@ class Game:
         return line.split()[1], texts
 
     def battle_progress_mark(self):
-        """What changes when an End turn click advanced the battle: the flag, the title, and (lab build) the BATTLEnn.SAV count."""
-        return (self.in_battle(), tuple(w[1] for w in self.find_windows(" v ")), len(list(G.glob("BATTLE*.SAV"))))
+        """What changes when an End turn click advanced the battle: the flag, the title, the BATTLEnn.SAV count (lab build) and the half-round counter."""
+        return (self.in_battle(), tuple(w[1] for w in self.find_windows(" v ")), len(list(G.glob("BATTLE*.SAV"))), self.half_round_counter())
+
+    def half_round_counter(self):
+        """The battle's half-round counter from memory (header word at 0x4A0B7A, the BATTLEnn number of the lab series); None if unreadable.
+        It moves on with every half-round, also when the title, the flag and the number of BATTLE files (a re-run overwrites old ones) do not."""
+        try:
+            return struct.unpack("<h", self.mem(BATTLE_HEADER["half_round"], 2))[0]
+        except (OSError, TypeError, AttributeError, struct.error):
+            return None
 
     def end_turn_proven(self, click, timeout=8):
         """One battle End turn click, then PROOF it advanced: the battle ended (flag down or a "Battle ended" box) or the mark changed

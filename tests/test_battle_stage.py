@@ -133,6 +133,141 @@ def test_b0_pair_if_present():
     assert d["taken"]["defender_money"] == 156 and d["news"] == ["Gaul destroys army of Rome."], d
 
 
+# ---- L2: block edits (battles plan B3) -----------------------------------------------------------------------------------------
+def battle_save():
+    """A save with a battle block: the tracked start save with army 0 as the attacker (units HI 6000, LI 5000) and army 1 as the defender (HI
+    6000, Ar 3000), the flag set and a synthetic block appended (`state.battle_block.synthetic_block`); armies' units set to match."""
+    from state import battle_block as BB
+    b = bytearray(SRC.read_bytes())
+    stage.apply(b, [("units", 0, [("hi", 6000, 6, 0, "1st Guards  Battalion"), ("li", 5000, 6, 0, "1st Foot  Battalion")]),
+                    ("units", 1, [("hi", 6000, 6, 0, "2nd Guards  Battalion"), ("ar", 3000, 6, 0, "2nd Bowmen  Battalion")])])
+    t = sav.parse(bytes(b))["tail_off"]
+    b[t + 54] = 1
+    blk = BB.synthetic_block([("hi", 6000, 6, 0, "1st Guards  Battalion"), ("li", 5000, 6, 0, "1st Foot  Battalion")],
+                             [("hi", 6000, 6, 0, "2nd Guards  Battalion"), ("ar", 3000, 6, 0, "2nd Bowmen  Battalion")], 0, 1)
+    return bytes(b) + BB.encode_block(blk), t + 55
+
+
+def test_block_noop_is_byte_identical():
+    raw, o = battle_save()
+    for ops in ([], [("header", {})], [("slot", 0, {})], [("slot", 0, {"troops": 6000, "x": 0, "y": 0})]):
+        assert bytes(stage.block_edit(bytearray(raw), ops)) == raw, ops
+
+
+def test_block_battle_save_parses_and_grid_is_consistent():
+    from state import battle_block as BB
+    raw, o = battle_save()
+    b = BB.block_of_save(raw)
+    assert BB.encode_block(b) == raw[o:] and BB.check_grid(b) == [] and [s["slot"] for s in b["slots"] if s["alive"]] == [0, 1, 20, 21]
+    assert sav.parse(raw)["battle_flag"] == 1
+
+
+def test_block_edit_is_local_and_mirrors_the_army():
+    from state import battle_block as BB
+    raw, o = battle_save()
+    na = stage._army(bytearray(raw), 0)
+    # troops: the slot's field, the grid word (size class 2 -> 1), and the army's unit; nothing else
+    b = stage.block_edit(bytearray(raw), [("slot", 0, {"troops": 3000})])
+    offs = changed(raw, bytes(b))
+    slot0 = o + BB.HEADER_LEN
+    grid0 = o + BB.HEADER_LEN + BB.SLOT_LEN * BB.N_SLOTS
+    ok = lambda x: (slot0 + 8 <= x < slot0 + 10) or (grid0 + 2 * BB.cell(0, 0) <= x < grid0 + 2 * BB.cell(0, 0) + 2) or (na + 16 + 4 <= x < na + 16 + 6)
+    assert offs and all(ok(x) for x in offs), offs
+    nb = BB.block_of_save(bytes(b))
+    assert nb["slots"][0]["troops"] == 3000 and sav.parse(bytes(b))["armies"][0]["units"][0]["troops"] == 3000 and nb["grid"][BB.cell(0, 0)] == 3 + 1 and BB.check_grid(nb) == []
+    # a move: old cell emptied, new cell set
+    b = stage.block_edit(bytearray(raw), [("slot", 20, {"x": 6, "y": 5})])
+    nb = BB.block_of_save(bytes(b))
+    assert nb["grid"][BB.cell(1, 9)] == BB.EMPTY and nb["grid"][BB.cell(6, 5)] == 20 + 3 + 2 and BB.check_grid(nb) == []
+    assert changed(raw, bytes(b)) and all(slot0 + 44 * 20 <= x < slot0 + 44 * 21 or grid0 <= x < grid0 + 336 for x in changed(raw, bytes(b)))
+    # not mirrored when asked not to
+    b = stage.block_edit(bytearray(raw), [("slot", 0, {"troops": 3000}, False)])
+    assert sav.parse(bytes(b))["armies"][0] == sav.parse(raw)["armies"][0]
+    # raw grid word, header
+    b = stage.block_edit(bytearray(raw), [("grid", 13, 11, 7)])
+    assert len(changed(raw, bytes(b))) == 1 and BB.block_of_save(bytes(b))["grid"][BB.cell(13, 11)] == 7
+    b = stage.block_edit(bytearray(raw), [("header", {"x2": 1})])
+    assert BB.block_of_save(bytes(b))["x2"] == 1 and len(changed(raw, bytes(b))) == 1
+
+
+def test_defender_slot_edit_mirrors_into_the_right_unit_on_a_real_save():
+    """B2: the AI side is re-sorted, so slot 20+j is not army unit j. On a real B4 save (Gaul's army 10: strategic order 7th Foot, 4th Guards,
+    8th Foot, 9th Foot, 5th Guards; slots 4th Guards, 5th Guards, ...) editing slot 20 (4th Guards) must change army 10's unit named 4th Guards."""
+    from state import battle_block as BB
+    sv = ROOT / "artifacts" / "run-exp-battle-probe" / "gate2_a_BATTLE05.SAV"
+    if not sv.exists():
+        print("   (B0 series not on this machine: skipped)")
+        return
+    raw = bytearray(sv.read_bytes())
+    # in a save written inside the battle army 10 is already in slot order; put it back in a PRE-sort order (rotate its first three units) so
+    # that slot 20 is NOT army unit 0, as at the B2 check (strategic 7th Foot, 4th Guards, ...): an index mapping would hit the wrong unit
+    ab = stage._army(raw, 10) + 16
+    recs = [bytes(raw[ab + 32 * k:ab + 32 * k + 32]) for k in range(3)]
+    for k, r in enumerate(recs[1:] + recs[:1]):
+        raw[ab + 32 * k:ab + 32 * k + 32] = r
+    raw = bytes(raw)
+    b0 = BB.block_of_save(raw)
+    name = b0["slots"][20]["name"]
+    before = {u["name"]: u for u in sav.parse(raw)["armies"][b0["defender_army"]]["units"]}
+    assert list(before).index(name) != 0, "the slot-20 unit is not army unit 0, so an index mapping would hit the wrong unit"
+    b = stage.block_edit(bytearray(raw), [("slot", 20, {"quality": 8, "troops": 1234})])
+    after = {u["name"]: u for u in sav.parse(bytes(b))["armies"][b0["defender_army"]]["units"]}
+    for nm, u in after.items():
+        if nm == name:
+            assert (u["quality"], u["troops"]) == (8, 1234), u
+        else:
+            assert u == before[nm], nm
+    # an ambiguous match (two units of the army with the slot's name and type) is refused, not guessed
+    dup = bytearray(raw)
+    base = stage._army(dup, b0["defender_army"])
+    src = [k for k in range(20) if sav.cstr(bytes(dup[base + 16 + 32 * k + 8:base + 16 + 32 * k + 32])) == name][0]
+    other = [k for k in range(20) if k != src and struct.unpack_from("<h", dup, base + 16 + 32 * k + 4)[0] > 0][0]
+    dup[base + 16 + 32 * other:base + 16 + 32 * other + 32] = dup[base + 16 + 32 * src:base + 16 + 32 * src + 32]
+    try:
+        stage.block_edit(dup, [("slot", 20, {"troops": 99})])
+    except ValueError as e:
+        assert "cannot mirror" in str(e)
+    else:
+        raise AssertionError("ambiguous mirror accepted")
+
+
+def test_block_edit_rejects_bad_input():
+    raw, o = battle_save()
+    for ops in ([("grid", 14, 0, 7)], [("grid", 0, 12, 7)], [("grid", -1, 0, 7)], [("grid", 0, 0, 70000)], [("header", {"bogus": 1})],
+                [("slot", 40, {})], [("slot", 0, {"bogus": 1})], [("slot", 0, {"x": 14})], [("nope",)]):
+        try:
+            stage.block_edit(bytearray(raw), ops)
+        except ValueError:
+            continue
+        raise AssertionError(ops)
+    try:
+        stage.block_edit(bytearray(SRC.read_bytes()), [("slot", 0, {})])
+    except ValueError as e:
+        assert "no battle block" in str(e)
+    else:
+        raise AssertionError("a save without block 12 accepted")
+
+
+def test_block_decoder_roundtrip_and_diff_on_real_series_if_present():
+    import glob
+    from state import battle_block as BB
+    fs = sorted(glob.glob(str(ROOT / "artifacts" / "run-exp-battle-probe" / "gate2_a_BATTLE[0-9][0-9].SAV")))
+    if len(fs) < 8:
+        print("   (B0 series not on this machine: synthetic tests only)")
+        return
+    prev = None
+    for f in fs:
+        raw = Path(f).read_bytes()
+        t = sav.parse(raw)["tail_off"]
+        b = BB.parse_block(raw[t + 55:])
+        assert BB.encode_block(b) == raw[t + 55:] and BB.check_grid(b) == [], f
+        assert all(stage.sprite_value(s["side"], s["type"], s["troops"]) == b["grid"][BB.cell(s["x"], s["y"])] for s in b["slots"] if s["alive"]), f
+        if prev:
+            d = BB.diff(prev, b)
+            assert d["ambiguous"] + d["unambiguous"] == d["losses"]
+        prev = b
+
+
 def live():
     """Open an edited save in the game and read army 0's record back from memory."""
     sys.path.insert(0, str(ROOT))

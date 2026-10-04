@@ -29,6 +29,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import common as C  # noqa: E402  (write_new: the one never-overwrite writer)
 import harness.driver as D  # noqa: E402
 from harness.driver import (BATTLE_FLAG, FILE_ITEMS, G, SEL_ARMY, DriverError, Game, sh)  # noqa: E402
 from state.sav import live_armies, load  # noqa: E402
@@ -209,9 +211,12 @@ def keep(p, tag=None):
     """Copy a file of the game folder into the artifacts folder under a name that does not exist yet."""
     p = Path(p)
     dst = OUT / ((tag + "_" if tag else "") + p.name)
-    if dst.exists() and sha(dst) != sha(p):
-        dst = dst.with_name(f"{dst.stem}-{STAMP}{dst.suffix}")
-    shutil.copy(p, dst)
+    base, n = dst, 0
+    while dst.exists() and sha(dst) != sha(p):           # never overwrite (rule 6): loop until a free or identical name
+        n += 1
+        dst = base.with_name(f"{base.stem}-{STAMP}{'' if n == 1 else '-%d' % n}{base.suffix}")
+    if not dst.exists():
+        shutil.copy(p, dst)
     return dst
 
 
@@ -435,12 +440,12 @@ def cmd_gate(g):
                "times_seed1_s": t1, "mean_seed1_s": round(sum(t1) / len(t1), 1),
                "times_seed2_s": [r["seconds_process_start_to_post_save"] for r in s2], "records": s1 + s2}
     log("gate_summary", **{k: v for k, v in summary.items() if k != "records"})
-    (OUT / f"gate-summary-{STAMP}.json").write_text(json.dumps(summary, indent=1, default=str))
+    C.write_new(OUT, f"gate-summary-{STAMP}.json", json.dumps(summary, indent=1, default=str))
 
 
 def cmd_report(g=None):
     res = series_report(sys.argv[2:])
-    (OUT / f"series-report-{STAMP}.json").write_text(json.dumps(res, indent=1))
+    C.write_new(OUT, f"series-report-{STAMP}.json", json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
 
 
@@ -462,7 +467,7 @@ def cmd_resumecmp(g=None):
            "all_identical_to_original": bool(aligned) and all(r["differing_bytes"] == 0 for r in aligned)}   # never vacuously true
     if res2:
         out["resume_v_resume"] = series_equal(R, series_names(res2))
-    (OUT / f"resume-comparison-{res}-{STAMP}.json").write_text(json.dumps(out, indent=1))
+    C.write_new(OUT, f"resume-comparison-{res}-{STAMP}.json", json.dumps(out, indent=1))
     print(json.dumps(out, indent=1))
 
 
@@ -572,14 +577,16 @@ def cmd_savein(g):
     # battle is mid-way and nothing runs while the dialog is open (the first two attempts, 081536 and 081801, toggled Computer general
     # first and the battle ran to its end at the next input event, before any dialog opened).
     for k in (1, 2, 3):
-        g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=2.5)
+        C.battle_end_turn(g)       # proven (half-round counter / title / flag), no blind click, no retry
+        time.sleep(1.5)
         log("end_turn_clicked_human", n=k, **state_now(g))
         log.shot(g, f"02-after-end-turn-{k}")
         if k == 2:
             break
     try_save(g, log, "mid-menu", "SI_lab_mid_menu.SAV" if lab else "SI_mid_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))
-    g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=2.5)
+    C.battle_end_turn(g)
+    time.sleep(1.5)
     log("end_turn_clicked_human", n=3, **state_now(g))
     try_save(g, log, "mid2-menu", "SI_lab_mid2_menu.SAV" if lab else "SI_mid2_menu.SAV", "menu")
     log("check_battle_window_still_open", **state_now(g))
@@ -677,7 +684,7 @@ def cmd_compare(g=None):
                 best = (fa.name, n)
         out.append({"b": fb.name, "closest_a": best[0], "differing_bytes": best[1], "identical": best[1] == 0})
     res = {"a": a_tag, "b": b_tag, "a_files": [f.name for f in A], "rows": out}
-    (OUT / f"compare-{a_tag}-{b_tag}-{STAMP}.json").write_text(json.dumps(res, indent=1))
+    C.write_new(OUT, f"compare-{a_tag}-{b_tag}-{STAMP}.json", json.dumps(res, indent=1))
     print(json.dumps(res, indent=1))
 
 

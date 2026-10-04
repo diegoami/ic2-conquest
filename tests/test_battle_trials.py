@@ -135,6 +135,9 @@ def test_dry_run_resume_errors_and_compare():
     out, n = T.write_table()
     rows = out.read_text().splitlines()
     assert n == 4 and len(rows) == 5 and rows[0].split(",") == T.COLUMNS, rows[:2]
+    import csv as _csv
+    r0 = next(_csv.DictReader(out.open()))
+    assert r0["build"] == "lab" and r0["level"].startswith("L1"), (r0["build"], r0["level"])
     # resume: nothing new is run, the file is untouched
     before = (C.DATA / "trials.jsonl").read_text()
     assert T.run_all(["hi-hi-one"], [1, 2], [1, 2], make_game=mk, log=log, shot=False) == (0, 0)
@@ -177,6 +180,43 @@ def test_end_condition_from_both_destroyed_flags():
     c = T.END_CONDITIONS
     assert c[(False, False)].startswith("none") and c[(True, True)] == "both destroyed"
     assert c[(True, False)].endswith("attacker") and c[(False, True)].endswith("defender")
+
+
+def test_every_writer_survives_a_second_call_in_the_same_stamp():
+    """Rule 6: each measured-output writer, called twice in the same STAMP (same second), leaves both files."""
+    import halflog
+    root = setup()
+    C.STAMP = "20990101-000000"
+    log = C.Log("t")
+    log.txt, log.jl = C.DATA / "x.log", C.DATA / "x.jsonl"
+    T.run_all(["hi-hi-one"], [1, 2], [1], make_game=lambda: FakeGame(), log=log, shot=False)
+    # sweep table (trials.py table), compare (trials.py compare via write_new), write_new itself, halflog
+    t1, _ = T.write_table()
+    t2, _ = T.write_table()
+    assert t1 != t2 and t1.exists() and t2.exists() and t1.read_text() == t2.read_text()
+    a = C.write_new(C.DATA, "compare-x-y-%s.json" % C.STAMP, '{"n": 1}')
+    b = C.write_new(C.DATA, "compare-x-y-%s.json" % C.STAMP, '{"n": 2}')
+    c = C.write_new(C.DATA, "compare-x-y-%s.json" % C.STAMP, b"3")
+    assert len({a, b, c}) == 3 and a.read_text() == '{"n": 1}' and b.read_text() == '{"n": 2}' and c.read_bytes() == b"3"
+    tr = {r["trial"]: r for r in T.read_trials() if r.get("status") == "ok"}["hi-hi-one_s1_r1"]
+    # the fake series files hold no battle block: write the log from the REAL decoder on a synthetic block save
+    from state import battle_block as BB
+    raw, o = __import__("tests.test_battle_stage", fromlist=["x"]).battle_save()
+    names = []
+    for k in range(2):
+        (C.ART / ("hl_BATTLE0%d.SAV" % (k + 1))).write_bytes(raw)
+        names.append("hl_BATTLE0%d.SAV" % (k + 1))
+    p1, _ = halflog.write_halflog("hl", names)
+    p2, _ = halflog.write_halflog("hl", names)
+    p3, _ = halflog.write_halflog("hl", names)
+    assert len({p1, p2, p3}) == 3 and all(p.exists() for p in (p1, p2, p3))
+    # the screenshot keeper and the SAVES.sha256 recorder
+    f = root / "s.png"
+    f.write_bytes(b"1")
+    g = root / "s2.png"
+    g.write_bytes(b"2")
+    k1, k2 = C.keep(f, "shot.png"), C.keep(g, "shot.png")
+    assert k1 != k2 and k1.read_bytes() == b"1" and k2.read_bytes() == b"2"
 
 
 def test_keep_never_overwrites():

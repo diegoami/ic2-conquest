@@ -1,0 +1,5 @@
+[  15.06] resumed scenario='c0_control' seconds=15.1 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[  44.55] scenario_done scenario='c0_control' status='ok' half_rounds=16 post_sha12='db4f576949bf'
+[  59.59] resumed scenario='c1_noop' seconds=15.0 memory_equals_file=False memory_v_file=[('half_round', 2, 3)]
+[  89.04] scenario_done scenario='c1_noop' status='ok' half_rounds=16 post_sha12='db4f576949bf'
+[  89.05] roundtrip noop_file_identical_to_source=True series_a=16 series_b=16 series_identical=True post_identical=True

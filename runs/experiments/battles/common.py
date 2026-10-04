@@ -70,6 +70,61 @@ def keep(src, name=None, folder=None):
     return dst
 
 
+def unique_path(folder, name):
+    """A path in `folder` for `name` that does not exist yet: `name`, else `<stem>-<stamp>`, `<stem>-<stamp>-2`, ... (a loop, so any number of
+    writes in the same second all survive)."""
+    folder = Path(folder)
+    folder.mkdir(parents=True, exist_ok=True)
+    p, n = folder / name, 0
+    while p.exists():
+        n += 1
+        p = folder / f"{Path(name).stem}-{STAMP}{'' if n == 1 else '-%d' % n}{Path(name).suffix}"
+    return p
+
+
+def write_new(folder, name, data):
+    """THE writer of measured outputs: creates a file that did not exist (exclusive create, retried on a name race), never overwrites; `data` is
+    str or bytes. Returns the Path written. (Append-only logs/jsonl are the only other writers: they open "a".)"""
+    for _ in range(1000):
+        p = unique_path(folder, name)
+        try:
+            fd = os.open(p, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o644)
+        except FileExistsError:
+            continue
+        with os.fdopen(fd, "wb") as f:
+            f.write(data.encode() if isinstance(data, str) else data)
+        return p
+    raise RuntimeError("no free name for " + name)
+
+
+def battle_end_turn(g, wid=None):
+    """ONE battle End turn click with proof it advanced (`Game.end_turn_proven`: flag, title, BATTLEnn count or half-round counter moves within
+    8 s). After a File > Save As the battle window is inactive and a click may only activate it, so the window is raised and focused FIRST (not a
+    retry). No retry of any kind: with no sign of progress DriverError propagates, because the click may still be queued (a second click could then
+    end two half-rounds)."""
+    if wid is None:
+        w = g.find_windows(" v ")
+        wid = w[0][0] if w else None
+    if wid is not None:
+        D.sh("xdotool", "windowraise", str(wid), check=False)
+        D.sh("xdotool", "windowfocus", str(wid), check=False)
+        time.sleep(0.3)
+    g.end_turn_proven(lambda: g.click(g.battle_x.get("end_turn", D.BATTLE_TOOLS["end_turn"]), D.BATTLE_TOOLBAR_Y, pause=1.0))
+
+
+def shot(g, name, window="root", folder=None):
+    """Screenshot through `keep`: taken to a temp name, then kept under `name` (versioned if the name exists with other content, never overwritten)
+    and its SHA-256 recorded in SAVES.sha256. Returns the kept Path."""
+    folder = folder or ART
+    folder.mkdir(parents=True, exist_ok=True)
+    tmp = folder / f"_tmp_shot_{os.getpid()}.png"
+    g.shot(tmp, window=window)
+    try:
+        return keep(tmp, name, folder)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
 class Log:
     """Timestamped events to a text log and a jsonl file in the tracked folder (new files per run, never overwritten)."""
 
