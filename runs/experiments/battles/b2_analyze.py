@@ -9,6 +9,7 @@ trials.jsonl (status ok) from artifacts/run-exp-battle-sweep/. All statements ar
 """
 import glob
 import json
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -35,7 +36,7 @@ def all_files_pass():
     """Every `*BATTLE<nn>*.SAV` file under the two artifacts folders (B0's probe series, the trials' series, B3's crafted/resumed series and
     strays), decoded one by one: grid inconsistencies and sprite-rule violations, counted per group. Crafted resumes of an EDITED save
     (`crafted/b3_d5_*`, `b3_d6_*` ...) may violate the rule on purpose (the game does not repair the grid); they are listed separately."""
-    groups = defaultdict(lambda: {"files": 0, "grid_inconsistent": 0, "sprite_violations": 0, "examples": []})
+    groups = defaultdict(lambda: {"files": 0, "grid_inconsistent": 0, "sprite_violations": 0, "examples": [], "violating_files_by_scenario": {}})
     for root in (C.ROOT / "artifacts" / "run-exp-battle-probe", C.ART):
         for f in sorted(root.rglob("*BATTLE[0-9][0-9]*.SAV")):
             if "crafted" in f.parts and f.name.startswith("CRAFT_"):
@@ -57,6 +58,10 @@ def all_files_pass():
                     r["examples"].append((f.name, BB.check_grid(b)[:1]))
             v = sum(1 for s_ in b["slots"] if s_["alive"] and b["grid"][BB.cell(s_["x"], s_["y"])] != stage.sprite_value(s_["side"], s_["type"], s_["troops"]))
             r["sprite_violations"] += v
+            if v or BB.check_grid(b):       # the per-scenario split (PR #36 review R5): which crafted scenario each violating file belongs to (b3_<scenario>_...)
+                m = re.match(r"b3_([a-z]\d+)_", f.name)
+                key = m.group(1) if m else "other:" + f.name
+                r["violating_files_by_scenario"][key] = r["violating_files_by_scenario"].get(key, 0) + 1
     return {k: v for k, v in groups.items()}
 
 

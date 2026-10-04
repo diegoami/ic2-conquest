@@ -117,7 +117,7 @@ def sprite_value(side, typ, troops):
     """The grid word of a unit [D, B2]: side*20 + 3*type + size class; class 0 below std/3, 1 below 2*std/3, else 2 (std: STD)."""
     t = typ if isinstance(typ, str) else sav.UNIT_TYPES[typ]
     std = STD[t]
-    cls = 0 if troops * 3 < std else 1 if troops * 3 < 2 * std else 2
+    cls = min(2, troops // (std // 3))          # [R-code] decompiled rule; B2's earlier `3*troops < std` agrees on every troop count seen in the series
     return side * 20 + 3 * sav.UNIT_TYPES.index(t) + cls
 
 

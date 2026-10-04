@@ -1,0 +1,242 @@
+{
+ "trials": 7,
+ "replays_not_counted": 9,
+ "winner_per_cell_3_seeds": {
+  "ar>hc three/three": {
+   "defender": 1
+  },
+  "hi>hi one/one": {
+   "defender": 3
+  },
+  "hi>li one/one": {
+   "attacker": 1
+  },
+  "lc>ar half/half": {
+   "attacker": 1
+  },
+  "li>li half/half": {
+   "defender": 1
+  }
+ },
+ "attacker_wins_by_size_pair": {
+  "half/half": 1,
+  "one/one": 1,
+  "three/three": 0
+ },
+ "trials_per_size_pair": {
+  "three/three": 1,
+  "one/one": 4,
+  "half/half": 2
+ },
+ "winner_counts": {
+  "defender": 5,
+  "attacker": 2
+ },
+ "half_rounds": {
+  "min": 11,
+  "max": 24,
+  "mean": 16.86,
+  "over_99_flag": []
+ },
+ "offer_of_peace": {
+  "rows_with_offer": 2,
+  "rows": 7,
+  "by_size_pair": {
+   "half/half none": 2,
+   "one/one none": 2,
+   "one/one offer": 2,
+   "three/three none": 1
+  },
+  "by_winner": {
+   "attacker": 0,
+   "defender": 2,
+   "none": 0,
+   "both": 0
+  }
+ },
+ "end_condition_counts": {
+  "attacker destroyed": 5,
+  "defender destroyed": 2
+ },
+ "end_clicks": {
+  "1": 1,
+  "0": 6
+ },
+ "loser_state_at_last_saved_half_round": {
+  "defender": [
+   {
+    "trial": "ar-hc-three_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 241,
+    "loser_start_troops": 10500,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 24
+   },
+   {
+    "trial": "hi-hi-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 376,
+    "loser_start_troops": 6000,
+    "loser_morale_min_last_file": 31,
+    "half_rounds": 19
+   },
+   {
+    "trial": "hi-hi-one_s2_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 431,
+    "loser_start_troops": 6000,
+    "loser_morale_min_last_file": 40,
+    "half_rounds": 18
+   },
+   {
+    "trial": "hi-hi-one_s3_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 250,
+    "loser_start_troops": 6000,
+    "loser_morale_min_last_file": 40,
+    "half_rounds": 15
+   },
+   {
+    "trial": "li-li-half_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 924,
+    "loser_start_troops": 7500,
+    "loser_morale_min_last_file": 40,
+    "half_rounds": 18
+   }
+  ],
+  "attacker": [
+   {
+    "trial": "hi-li-one_s1_r1",
+    "loser_units_alive_last_file": 1,
+    "loser_troops_last_file": 661,
+    "loser_start_troops": 15000,
+    "loser_morale_min_last_file": 67,
+    "half_rounds": 13
+   },
+   {
+    "trial": "lc-ar-half_s1_r1",
+    "loser_units_alive_last_file": 0,
+    "loser_troops_last_file": 0,
+    "loser_start_troops": 1750,
+    "loser_morale_min_last_file": null,
+    "half_rounds": 11
+   }
+  ]
+ },
+ "promotions_total": 4,
+ "promotions_by_type": {
+  "hc": 2,
+  "hi": 1,
+  "lc": 1
+ },
+ "promotions_by_winner_side": {
+  "defender": 2,
+  "attacker": 2
+ },
+ "money_supplies_taken": {
+  "rows_with_defender_money": 5,
+  "rows_with_defender_supplies": 0,
+  "rows_with_attacker_money": 0,
+  "rows_with_attacker_supplies": 0
+ },
+ "seconds_per_battle": {
+  "mean": 51.4,
+  "min": 49.2,
+  "max": 55.5
+ },
+ "placement_defender_first_file_row_by_type": {
+  "ar y=9": 1,
+  "hc y=9": 3,
+  "hi y=9": 3,
+  "li y=9": 2
+ },
+ "placement_attacker_first_file_row_by_type": {
+  "ar y=0": 3,
+  "hi y=0": 4,
+  "lc y=0": 1,
+  "li y=0": 1
+ },
+ "placement_attacker_second_file_row_by_type": {
+  "ar y=2": 3,
+  "hi y=2": 4,
+  "lc y=2": 1,
+  "li y=2": 1
+ },
+ "placement_attacker_second_file_x_by_type": {
+  "ar": {
+   "4": 1,
+   "5": 1,
+   "6": 1
+  },
+  "hi": {
+   "4": 3,
+   "10": 1
+  },
+  "lc": {
+   "10": 1
+  },
+  "li": {
+   "1": 1
+  }
+ },
+ "initiative_sequence_files_2_to_6_A_attacker_G_defender_B_both_dash_none": {
+  "ar AAGAG": 1,
+  "hi AAGAG": 4,
+  "lc AAGAG": 1,
+  "li AAGAG": 1
+ },
+ "seed_pairing_gaul_placement_by_defender_army_and_seed": {
+  "hc three seed 1": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  },
+  "hi one seed 1": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  },
+  "hi one seed 2": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  },
+  "hi one seed 3": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  },
+  "li one seed 1": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  },
+  "ar half seed 1": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  },
+  "li half seed 1": {
+   "cells": 1,
+   "distinct_gaul_placements": 1
+  }
+ },
+ "targets": {
+  "events": 8,
+  "nearest": 8,
+  "unique_nearest": 2,
+  "weakest": 7,
+  "by_attacker_type": {
+   "ar": {
+    "nearest": 2
+   },
+   "hc": {
+    "nearest": 6
+   }
+  }
+ },
+ "inputs": {
+  "trials_jsonl_lines": 16,
+  "files": {
+   "pairings": "b5-pairings-20261004-113407.csv",
+   "placement": "b5-placement-20261004-113407.csv",
+   "targets": "b5-targets-20261004-113407.csv",
+   "promotions": "b5-promotions-20261004-113407.csv"
+  }
+ }
+}

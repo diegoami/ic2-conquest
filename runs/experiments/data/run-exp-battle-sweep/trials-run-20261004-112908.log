@@ -1,0 +1,17 @@
+[   0.00] plan todo=['lc-ar-half_s1_r1', 'hi-li-one_s1_r1', 'ar-hc-three_s1_r1'] skipped_ok=[] skipped_error=[]
+[   6.06] process_started trial='lc-ar-half_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1509812 seconds=5.0
+[  20.48] loaded trial='lc-ar-half_s1_r1' seconds=19.5 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 0, 'lc': 3500, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 1750, 'lc': 0, 'hc': 0}
+[  28.39] battle_open trial='lc-ar-half_s1_r1' seconds_from_click=6.38 title='Rome  v  Gaul          Rome to place units.'
+[  42.74] battle_played trial='lc-ar-half_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [e | [© | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] Wteewvaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a" dialogs=[]
+[  50.87] trial_done trial='lc-ar-half_s1_r1' seconds=49.8 half_rounds=11 winner='attacker' post_sha12='e5daa68940b1'
+[  58.43] process_started trial='hi-li-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1518900 seconds=5.0
+[  72.72] loaded trial='hi-li-one_s1_r1' seconds=19.3 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 15000, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 0}
+[  80.58] battle_open trial='hi-li-one_s1_r1' seconds_from_click=6.34 title='Rome  v  Gaul          Rome to place units.'
+[  94.49] battle_played trial='hi-li-one_s1_r1' end_turn_clicks=0 ended="Rome's army Gaul's army start finish start finish [8] [0 | toheintaery Ce] heavyinfanty 0 | | 0) re [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a" dialogs=[]
+[ 102.61] trial_done trial='hi-li-one_s1_r1' seconds=49.2 half_rounds=13 winner='attacker' post_sha12='3357ec500d22'
+[ 110.17] process_started trial='ar-hc-three_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=1521712 seconds=5.0
+[ 124.59] loaded trial='ar-hc-three_s1_r1' seconds=19.5 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 0, 'ar': 10500, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 0, 'ar': 0, 'lc': 0, 'hc': 7500}
+[ 132.48] battle_open trial='ar-hc-three_s1_r1' seconds_from_click=6.37 title='Rome  v  Gaul          Rome to place units.'
+[ 147.78] battle_played trial='ar-hc-three_s1_r1' end_turn_clicks=1 ended="Gaul's army Rome's army start finish start finish [e | [© | tskeitanty 0 | [0 | [@ [0 | heewinfry 0 | | 0 Foo) archers Le] [8 | 0 | Uteewaly 0 | 0 heavy cavaly|/— 0) 0 | tra tops a" dialogs=[]
+[ 155.94] trial_done trial='ar-hc-three_s1_r1' seconds=50.8 half_rounds=24 winner='defender' post_sha12='7c7e72e37623'
+[ 157.46] run_done ok=3 errors=0

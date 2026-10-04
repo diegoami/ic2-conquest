@@ -110,7 +110,10 @@ def test_cells():
     ops = T.cell_ops("lc-ar-three")
     assert ops[0] == ("units", 0, [("lc", 7000, 6)] * 3) and ops[2] == ("units", 10, [("ar", 3500, 6)] * 3) and ops[1][2] == 65, ops
     assert T.cell_ops("li-hc-half")[0][2] == [("li", 7500, 6)] and T.cell_ops("li-hc-half")[2][2] == [("hc", 1250, 6)]
-    for bad in ("hi-hi", "xx-hi-one", "hi-hi-two"):
+    assert T.parse_cell("hi-li-half-three") == ("hi", "li", "half-three")      # the size matrix: attacker half, defender three
+    mo = T.cell_ops("hi-li-half-three")
+    assert mo[0][2] == [("hi", 3000, 6)] and mo[2][2] == [("li", 15000, 6)] * 3, mo
+    for bad in ("hi-hi", "xx-hi-one", "hi-hi-two", "hi-hi-one-two", "hi-hi-one-half-three"):
         try:
             T.parse_cell(bad)
         except ValueError:

@@ -1,0 +1,454 @@
+{
+ "files": [
+  "b8-ladder-v2-20261004-191835.jsonl",
+  "b8-ladder-v2-20261004-192201.jsonl"
+ ],
+ "rounds": 15,
+ "per_type_side": {
+  "ar side 0": {
+   "points": 22,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 1165,
+     "first_above": 1166,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 2331,
+     "first_above": 2332,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": false,
+   "first_troops_of_class_1_2": [
+    1166,
+    2332
+   ]
+  },
+  "ar side 1": {
+   "points": 22,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 1165,
+     "first_above": 1166,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 2331,
+     "first_above": 2332,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": false,
+   "first_troops_of_class_1_2": [
+    1166,
+    2332
+   ]
+  },
+  "hc side 0": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 832,
+     "first_above": 833,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 1665,
+     "first_above": 1666,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": false,
+   "first_troops_of_class_1_2": [
+    833,
+    1666
+   ]
+  },
+  "hc side 1": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 832,
+     "first_above": 833,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 1665,
+     "first_above": 1666,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": false,
+   "first_troops_of_class_1_2": [
+    833,
+    1666
+   ]
+  },
+  "hi side 0": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 1999,
+     "first_above": 2000,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 3999,
+     "first_above": 4000,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": true,
+   "first_troops_of_class_1_2": [
+    2000,
+    4000
+   ]
+  },
+  "hi side 1": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 1999,
+     "first_above": 2000,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 3999,
+     "first_above": 4000,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": true,
+   "first_troops_of_class_1_2": [
+    2000,
+    4000
+   ]
+  },
+  "lc side 0": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 2332,
+     "first_above": 2333,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 4665,
+     "first_above": 4666,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": false,
+   "first_troops_of_class_1_2": [
+    2333,
+    4666
+   ]
+  },
+  "lc side 1": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 2332,
+     "first_above": 2333,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 4665,
+     "first_above": 4666,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": false,
+   "first_troops_of_class_1_2": [
+    2333,
+    4666
+   ]
+  },
+  "li side 0": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 4999,
+     "first_above": 5000,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 9999,
+     "first_above": 10000,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": true,
+   "first_troops_of_class_1_2": [
+    5000,
+    10000
+   ]
+  },
+  "li side 1": {
+   "points": 21,
+   "troops_min": 100,
+   "troops_max": 32767,
+   "monotone": true,
+   "class_changes": [
+    {
+     "last_below": 4999,
+     "first_above": 5000,
+     "from_class": 0,
+     "to_class": 1
+    },
+    {
+     "last_below": 9999,
+     "first_above": 10000,
+     "from_class": 1,
+     "to_class": 2
+    }
+   ],
+   "exact_one_troop": true,
+   "equals_rule_R_code_min2_troops_div_std_div_3": true,
+   "equals_B2_hypothesis_3troops_lt_std": true,
+   "first_troops_of_class_1_2": [
+    5000,
+    10000
+   ]
+  }
+ },
+ "icons": {
+  "one_icon_per_type_side_class": true,
+  "distinct_type_side_class_icons": 30,
+  "type_side_class_combinations": 30,
+  "every_word_one_icon": true,
+  "different_words_different_icons": true,
+  "words": 30
+ },
+ "rounds_list": [
+  {
+   "tag": "b8v2_hi_r1",
+   "type": "hi",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-191835.jsonl",
+   "screenshot": "b8v2_hi_r1_placement.png",
+   "save": [
+    "b8v2_hi_r1_BATTLE01.SAV"
+   ],
+   "n_slots": 18
+  },
+  {
+   "tag": "b8v2_hi_r2",
+   "type": "hi",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-191835.jsonl",
+   "screenshot": "b8v2_hi_r2_placement.png",
+   "save": [
+    "b8v2_hi_r2_BATTLE01.SAV"
+   ],
+   "n_slots": 8
+  },
+  {
+   "tag": "b8v2_hi_r3",
+   "type": "hi",
+   "purpose": "bisect (side 0 probes [1625, 1750, 1875, 1999, 3250, 3500, 3750, 3999], side 1 probes [1625, 1750, 1875, 1999, 3250, 3500, 3750, 3999])",
+   "file": "b8-ladder-v2-20261004-191835.jsonl",
+   "screenshot": "b8v2_hi_r3_placement.png",
+   "save": [
+    "b8v2_hi_r3_BATTLE01.SAV"
+   ],
+   "n_slots": 16
+  },
+  {
+   "tag": "b8v2_li_r1",
+   "type": "li",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-191835.jsonl",
+   "screenshot": "b8v2_li_r1_placement.png",
+   "save": [
+    "b8v2_li_r1_BATTLE01.SAV"
+   ],
+   "n_slots": 18
+  },
+  {
+   "tag": "b8v2_li_r2",
+   "type": "li",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-191835.jsonl",
+   "screenshot": "b8v2_li_r2_placement.png",
+   "save": [
+    "b8v2_li_r2_BATTLE01.SAV"
+   ],
+   "n_slots": 8
+  },
+  {
+   "tag": "b8v2_li_r3",
+   "type": "li",
+   "purpose": "bisect (side 0 probes [4999, 5000, 5167, 6333, 9999, 10000, 10333, 12667], side 1 probes [4999, 5000, 5167, 6333, 9999, 10000, 10333, 12667])",
+   "file": "b8-ladder-v2-20261004-191835.jsonl",
+   "screenshot": "b8v2_li_r3_placement.png",
+   "save": [
+    "b8v2_li_r3_BATTLE01.SAV"
+   ],
+   "n_slots": 16
+  },
+  {
+   "tag": "b8v2_ar_r1",
+   "type": "ar",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_ar_r1_placement.png",
+   "save": [
+    "b8v2_ar_r1_BATTLE01.SAV"
+   ],
+   "n_slots": 18
+  },
+  {
+   "tag": "b8v2_ar_r2",
+   "type": "ar",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_ar_r2_placement.png",
+   "save": [
+    "b8v2_ar_r2_BATTLE01.SAV"
+   ],
+   "n_slots": 8
+  },
+  {
+   "tag": "b8v2_ar_r3",
+   "type": "ar",
+   "purpose": "bisect (side 0 probes [1165, 1166, 1167, 1375, 2331, 2332, 2333, 2334, 2750], side 1 probes [1165, 1166, 1167, 1375, 2331, 2332, 2333, 2334, 2750])",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_ar_r3_placement.png",
+   "save": [
+    "b8v2_ar_r3_BATTLE01.SAV"
+   ],
+   "n_slots": 18
+  },
+  {
+   "tag": "b8v2_lc_r1",
+   "type": "lc",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_lc_r1_placement.png",
+   "save": [
+    "b8v2_lc_r1_BATTLE01.SAV"
+   ],
+   "n_slots": 18
+  },
+  {
+   "tag": "b8v2_lc_r2",
+   "type": "lc",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_lc_r2_placement.png",
+   "save": [
+    "b8v2_lc_r2_BATTLE01.SAV"
+   ],
+   "n_slots": 8
+  },
+  {
+   "tag": "b8v2_lc_r3",
+   "type": "lc",
+   "purpose": "bisect (side 0 probes [2332, 2333, 2334, 2750, 4665, 4666, 4667, 5500], side 1 probes [2332, 2333, 2334, 2750, 4665, 4666, 4667, 5500])",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_lc_r3_placement.png",
+   "save": [
+    "b8v2_lc_r3_BATTLE01.SAV"
+   ],
+   "n_slots": 16
+  },
+  {
+   "tag": "b8v2_hc_r1",
+   "type": "hc",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_hc_r1_placement.png",
+   "save": [
+    "b8v2_hc_r1_BATTLE01.SAV"
+   ],
+   "n_slots": 18
+  },
+  {
+   "tag": "b8v2_hc_r2",
+   "type": "hc",
+   "purpose": "ladder",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_hc_r2_placement.png",
+   "save": [
+    "b8v2_hc_r2_BATTLE01.SAV"
+   ],
+   "n_slots": 8
+  },
+  {
+   "tag": "b8v2_hc_r3",
+   "type": "hc",
+   "purpose": "bisect (side 0 probes [813, 832, 833, 834, 1625, 1665, 1666, 1667], side 1 probes [813, 832, 833, 834, 1625, 1665, 1666, 1667])",
+   "file": "b8-ladder-v2-20261004-192201.jsonl",
+   "screenshot": "b8v2_hc_r3_placement.png",
+   "save": [
+    "b8v2_hc_r3_BATTLE01.SAV"
+   ],
+   "n_slots": 16
+  }
+ ]
+}
