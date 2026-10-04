@@ -1,0 +1,68 @@
+{
+ "per_phase": {
+  "placement": {
+   "png": "b2_placement_window.png",
+   "save": "B2_placement.SAV",
+   "png_sha256": "012ef295e8e8031232ebcdc5f2af9e66a6e6b06abe4a7b71b375228ed7938047",
+   "save_sha256": "d5b1a823aa6c69e871cc5e6297c39f5fa58d15182f69eca4f2a4fc98e4772c99",
+   "occupied_cells": 14,
+   "distinct_words": 11
+  },
+  "after_end_turn_1": {
+   "png": "b2_after_end_turn_1_window.png",
+   "save": "B2_after_end_turn_1.SAV",
+   "png_sha256": "012ef295e8e8031232ebcdc5f2af9e66a6e6b06abe4a7b71b375228ed7938047",
+   "save_sha256": "10675c76abbe12621e74ecde827a6d80783088c3322c6837d160b11f210d6e83",
+   "occupied_cells": 14,
+   "distinct_words": 11
+  },
+  "after_end_turn_2": {
+   "png": "b2_after_end_turn_2_window.png",
+   "save": "B2_after_end_turn_2.SAV",
+   "png_sha256": "f0f80c6ea6b3c878ebbb9292f4c190df26a7eb604eee09add4b20a474a456caf",
+   "save_sha256": "c85843e95818c3d84cdb31e52a65ece9d93b944eeab0d7fd137adfdabb7f097f",
+   "occupied_cells": 14,
+   "distinct_words": 11
+  }
+ },
+ "word_to_tiles": {
+  "0": [
+   "7d5a5770a05c"
+  ],
+  "1": [
+   "5d40a240efed"
+  ],
+  "2": [
+   "60f74ce353fc"
+  ],
+  "4": [
+   "ff072ed63bdf"
+  ],
+  "6": [
+   "0f620b8cd52c"
+  ],
+  "8": [
+   "ba51849464be"
+  ],
+  "10": [
+   "9a8e49618505"
+  ],
+  "14": [
+   "61be5d309d1b"
+  ],
+  "21": [
+   "befe5f5cd7fe"
+  ],
+  "22": [
+   "f13d499474e5"
+  ],
+  "25": [
+   "402df54895ae"
+  ]
+ },
+ "every_word_has_one_icon": true,
+ "different_words_have_different_icons": true,
+ "distinct_words_total": 11,
+ "cells_total": 42,
+ "note": "tile hash = sha256 of the inner 26 x 26 pixels of the 32 x 32 cell (the 3 px border shows the neighbouring cell's colour and varies with position); the side colour is part of the icon"
+}

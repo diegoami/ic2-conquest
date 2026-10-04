@@ -1,0 +1,6 @@
+{"t": 36.79, "event": "phase", "phase": "placement", "save": "B2_placement.SAV", "screenshot": "b2_placement_window.png", "memory_equals_save_block": true, "differing_byte_offsets": [], "half_round": 2, "x2": 0, "y1": 0, "attacker_army": 0, "defender_army": 10, "title": ["Rome  v  Gaul          Rome to place units."], "grid_check_problems": [], "screen_cells_agreeing": 168, "screen_cells_total": 168, "screen_mismatches": []}
+{"t": 38.47, "event": "end_turn_proven", "attempt": 1}
+{"t": 48.59, "event": "phase", "phase": "after_end_turn_1", "save": "B2_after_end_turn_1.SAV", "screenshot": "b2_after_end_turn_1_window.png", "memory_equals_save_block": true, "differing_byte_offsets": [], "half_round": 3, "x2": 0, "y1": 1, "attacker_army": 0, "defender_army": 10, "title": ["Rome  v  Gaul          Rome to move units."], "grid_check_problems": [], "screen_cells_agreeing": 168, "screen_cells_total": 168, "screen_mismatches": []}
+{"t": 58.43, "event": "end_turn_no_sign", "attempt": 1, "error": "battle End turn: no sign the battle advanced; not clicking again"}
+{"t": 68.29, "event": "end_turn_no_sign", "attempt": 2, "error": "battle End turn: no sign the battle advanced; not clicking again"}
+{"t": 68.29, "event": "error", "error": "error: DriverError: battle End turn: no sign the battle advanced; not clicking again"}

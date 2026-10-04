@@ -1,0 +1,15 @@
+[   4.57] process_started exe='Imperial Conquest 2 lab s1.exe'
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 668, in <module>
+    main()
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 662, in main
+    {"normal": cmd_normal, "lab": cmd_lab, "gate": cmd_gate, "savein": cmd_savein, "win": cmd_win, "escape": cmd_escape, "resume": cmd_resume, "compare": cmd_compare, "report": cmd_report, "resumecmp": cmd_resumecmp}[cmd](g)
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 622, in cmd_resume
+    shutil.copy(OUT / src, OUT / name) if not (OUT / name).exists() else None
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/shutil.py", line 435, in copy
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-probe/gate2_a_BATTLE05.SAV'

@@ -1,0 +1,243 @@
+{
+ "phases": [
+  {
+   "phase": "placement",
+   "save": "B2_placement.SAV",
+   "screenshot": "b2_placement_window.png",
+   "memory_equals_save_block": true,
+   "differing_byte_offsets": [],
+   "half_round": 2,
+   "x2": 0,
+   "y1": 0,
+   "attacker_army": 0,
+   "defender_army": 10,
+   "title": [
+    "Rome  v  Gaul          Rome to place units."
+   ],
+   "grid_check_problems": [],
+   "screen_cells_agreeing": 168,
+   "screen_cells_total": 168,
+   "screen_mismatches": [],
+   "occupied": [
+    [
+     0,
+     0,
+     "hi",
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     "ar",
+     1,
+     0
+    ],
+    [
+     2,
+     0,
+     "hc",
+     2,
+     0
+    ],
+    [
+     3,
+     0,
+     "li",
+     3,
+     0
+    ],
+    [
+     4,
+     0,
+     "ar",
+     4,
+     0
+    ],
+    [
+     5,
+     0,
+     "ar",
+     5,
+     0
+    ],
+    [
+     6,
+     0,
+     "lc",
+     6,
+     0
+    ],
+    [
+     7,
+     0,
+     "li",
+     7,
+     0
+    ],
+    [
+     8,
+     0,
+     "li",
+     8,
+     0
+    ],
+    [
+     20,
+     1,
+     "hi",
+     4,
+     9
+    ],
+    [
+     21,
+     1,
+     "hi",
+     5,
+     9
+    ],
+    [
+     22,
+     1,
+     "li",
+     1,
+     9
+    ],
+    [
+     23,
+     1,
+     "li",
+     2,
+     9
+    ],
+    [
+     24,
+     1,
+     "li",
+     3,
+     9
+    ]
+   ]
+  },
+  {
+   "phase": "after_end_turn_1",
+   "save": "B2_after_end_turn_1.SAV",
+   "screenshot": "b2_after_end_turn_1_window.png",
+   "memory_equals_save_block": true,
+   "differing_byte_offsets": [],
+   "half_round": 3,
+   "x2": 0,
+   "y1": 1,
+   "attacker_army": 0,
+   "defender_army": 10,
+   "title": [
+    "Rome  v  Gaul          Rome to move units."
+   ],
+   "grid_check_problems": [],
+   "screen_cells_agreeing": 168,
+   "screen_cells_total": 168,
+   "screen_mismatches": [],
+   "occupied": [
+    [
+     0,
+     0,
+     "hi",
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     "ar",
+     1,
+     0
+    ],
+    [
+     2,
+     0,
+     "hc",
+     2,
+     0
+    ],
+    [
+     3,
+     0,
+     "li",
+     3,
+     0
+    ],
+    [
+     4,
+     0,
+     "ar",
+     4,
+     0
+    ],
+    [
+     5,
+     0,
+     "ar",
+     5,
+     0
+    ],
+    [
+     6,
+     0,
+     "lc",
+     6,
+     0
+    ],
+    [
+     7,
+     0,
+     "li",
+     7,
+     0
+    ],
+    [
+     8,
+     0,
+     "li",
+     8,
+     0
+    ],
+    [
+     20,
+     1,
+     "hi",
+     4,
+     9
+    ],
+    [
+     21,
+     1,
+     "hi",
+     5,
+     9
+    ],
+    [
+     22,
+     1,
+     "li",
+     1,
+     9
+    ],
+    [
+     23,
+     1,
+     "li",
+     2,
+     9
+    ],
+    [
+     24,
+     1,
+     "li",
+     3,
+     9
+    ]
+   ]
+  }
+ ],
+ "status": "error: DriverError: battle End turn: no sign the battle advanced; not clicking again"
+}

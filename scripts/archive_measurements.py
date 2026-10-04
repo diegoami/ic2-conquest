@@ -8,6 +8,7 @@ Copies the text outputs (json, jsonl, log, csv, txt) of `artifacts/<name>/` to `
 different content is NOT replaced: the new content is written beside it as `<stem>.v<N><ext>` (a growing trials.json is versioned by
 its content, so the history of the batches is kept). Subfolders (one per season) are walked and keep their relative path. A text file
 with an upper-case extension (`AUTOSAVE.LOG`) is archived with the extension lower-cased, because `.gitignore` ignores `*.LOG`.
+`--trailer "<line>"` (with `--commit`) is appended to the commit message after a blank line.
 `--commit` runs `git add` on the folder, refuses to commit if git would still ignore an archived file, commits and pushes the branch.
 """
 import hashlib
@@ -67,7 +68,13 @@ def archive(name):
 
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    argv = sys.argv[1:]
+    trailer = None
+    if "--trailer" in argv:
+        i = argv.index("--trailer")
+        trailer = argv[i + 1] if i + 1 < len(argv) else sys.exit("--trailer needs a line")
+        del argv[i:i + 2]
+    args = [a for a in argv if not a.startswith("--")]
     if len(args) != 1:
         sys.exit(__doc__)
     d = archive(args[0])
@@ -77,6 +84,6 @@ if __name__ == "__main__":
         ignored = subprocess.run(["git", "check-ignore", *files], cwd=ROOT, capture_output=True, text=True).stdout.split()
         if ignored:
             sys.exit("git ignores these archived files, nothing committed: " + " ".join(ignored))
-        r = subprocess.run(["git", "commit", "-q", "-m", f"measurements of {args[0]} (archived, rule 6)"], cwd=ROOT)
+        r = subprocess.run(["git", "commit", "-q", "-m", f"measurements of {args[0]} (archived, rule 6)" + (f"\n\n{trailer}" if trailer else "")], cwd=ROOT)
         if r.returncode == 0:
             subprocess.run(["git", "push", "-q"], cwd=ROOT, check=True)

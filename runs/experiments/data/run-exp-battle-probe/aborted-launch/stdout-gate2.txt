@@ -1,0 +1,26 @@
+[   4.57] process_started exe='Imperial Conquest 2 lab s1.exe' seconds=4.6 pid=335965
+[   4.58] start_save file='1_rome_270_winter_11.sav' sha256='76b09ee31400360f3cfdb12f7d161e5b493896e081691b02cc5e942e136df790'
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 90, in open_dialog
+    g.wait(lambda: {w[0] for w in g.find_windows(".")} - before, 8, "Open dialog window")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 134, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for Open dialog window
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 668, in <module>
+    main()
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 662, in main
+    {"normal": cmd_normal, "lab": cmd_lab, "gate": cmd_gate, "savein": cmd_savein, "win": cmd_win, "escape": cmd_escape, "resume": cmd_resume, "compare": cmd_compare, "report": cmd_report, "resumecmp": cmd_resumecmp}[cmd](g)
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 404, in cmd_gate
+    s1 = [run_battle(g, log, LAB_EXE % 1, None, f"gate2_{i}") for i in "abcdef"]
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 345, in run_battle
+    start_game(g, log, exe, seed)
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 114, in start_game
+    open_dialog(g, START.name)
+  File "/home/diego/projects/ic2-conquest/runs/experiments/battles/b0_probe.py", line 92, in open_dialog
+    raise DriverError("File > Open: no dialog window appeared (nothing typed)")
+harness.driver.DriverError: File > Open: no dialog window appeared (nothing typed)

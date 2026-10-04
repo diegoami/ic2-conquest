@@ -1,0 +1,175 @@
+{
+ "fixture": "FLD-RG",
+ "file": "FLD-RG_0743_rome_army0_at_86_28.SAV",
+ "sha256": "39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad",
+ "byte_identical_two_builds": true,
+ "sizes": [
+  132149,
+  132149
+ ],
+ "differing_bytes": 0,
+ "first_differing_offsets": [],
+ "turn": 743,
+ "battle_flag": 0,
+ "current_nation": 0,
+ "army0": {
+  "id": 0,
+  "x": 86,
+  "y": 28,
+  "owner": 0,
+  "moves": 2,
+  "cell": 2,
+  "embarked": false,
+  "supplies": 0,
+  "money": 156,
+  "morale": 64,
+  "troops": 37081,
+  "supply_pct": 0,
+  "by_type": {
+   "li": 20712,
+   "hi": 2094,
+   "ar": 7517,
+   "lc": 4421,
+   "hc": 2337
+  }
+ },
+ "army10": {
+  "id": 10,
+  "x": 85,
+  "y": 28,
+  "owner": 6,
+  "moves": 0,
+  "cell": 2,
+  "embarked": false,
+  "supplies": 0,
+  "money": 0,
+  "morale": 55,
+  "troops": 46700,
+  "supply_pct": 0,
+  "by_type": {
+   "li": 35800,
+   "hi": 10900,
+   "ar": 0,
+   "lc": 0,
+   "hc": 0
+  }
+ },
+ "units_army0": [
+  {
+   "slot": 0,
+   "type": "hi",
+   "troops": 2094,
+   "quality": 6,
+   "merc": 0,
+   "name": "8th Guards Battalion"
+  },
+  {
+   "slot": 1,
+   "type": "ar",
+   "troops": 3411,
+   "quality": 6,
+   "merc": 0,
+   "name": "3rd Bowmen Battalion"
+  },
+  {
+   "slot": 2,
+   "type": "hc",
+   "troops": 2337,
+   "quality": 6,
+   "merc": 0,
+   "name": "3rd Dragoons Battalion"
+  },
+  {
+   "slot": 3,
+   "type": "li",
+   "troops": 5895,
+   "quality": 9,
+   "merc": 11,
+   "name": "Gallic"
+  },
+  {
+   "slot": 4,
+   "type": "ar",
+   "troops": 789,
+   "quality": 6,
+   "merc": 0,
+   "name": "4th Bowmen Battalion"
+  },
+  {
+   "slot": 5,
+   "type": "ar",
+   "troops": 3317,
+   "quality": 6,
+   "merc": 0,
+   "name": "5th Bowmen Battalion"
+  },
+  {
+   "slot": 6,
+   "type": "lc",
+   "troops": 4421,
+   "quality": 6,
+   "merc": 0,
+   "name": "3rd Lancers Battalion"
+  },
+  {
+   "slot": 7,
+   "type": "li",
+   "troops": 13697,
+   "quality": 6,
+   "merc": 0,
+   "name": "4th Foot Battalion"
+  },
+  {
+   "slot": 8,
+   "type": "li",
+   "troops": 1120,
+   "quality": 6,
+   "merc": 0,
+   "name": "2nd Foot Battalion"
+  }
+ ],
+ "units_army10": [
+  {
+   "slot": 0,
+   "type": "li",
+   "troops": 14400,
+   "quality": 6,
+   "merc": 0,
+   "name": "7th Foot Battalion"
+  },
+  {
+   "slot": 1,
+   "type": "hi",
+   "troops": 5900,
+   "quality": 6,
+   "merc": 0,
+   "name": "4th Guards Battalion"
+  },
+  {
+   "slot": 2,
+   "type": "li",
+   "troops": 14500,
+   "quality": 6,
+   "merc": 0,
+   "name": "8th Foot Battalion"
+  },
+  {
+   "slot": 3,
+   "type": "li",
+   "troops": 6900,
+   "quality": 6,
+   "merc": 0,
+   "name": "9th Foot Battalion"
+  },
+  {
+   "slot": 4,
+   "type": "hi",
+   "troops": 5000,
+   "quality": 6,
+   "merc": 0,
+   "name": "5th Guards Battalion"
+  }
+ ],
+ "FLD-R0G": "not built: identical to FLD-RG (army 0 is alone in both)",
+ "SIE-FEL/SIE-TAU/terrain": "not built (not Stage 1)"
+}

@@ -1,0 +1,20 @@
+{"t": 4.57, "event": "process_started", "exe": "Imperial Conquest 2 fast rollingsave seed.exe", "seconds": 4.6, "pid": 290460}
+{"t": 4.57, "event": "seed_line", "line": "S 0000012345"}
+{"t": 4.58, "event": "start_save", "file": "NB_post_battle.SAV", "sha256": "3cbf595185ac81b04bceb6121183c8a951e10057a684fd957dd7812a68537e02"}
+{"t": 18.97, "event": "loaded", "seconds": 14.4, "popups": ["@ Bithynia wants to trade with Rome."], "calendar": {"season": 3, "week": 11, "year_bc": 270}, "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 21.51, "event": "move", "to": [91, 28], "now": [91, 28], "popups": []}
+{"t": 24.05, "event": "move", "to": [90, 27], "now": [90, 27], "popups": []}
+{"t": 26.59, "event": "move", "to": [89, 27], "now": [89, 27], "popups": []}
+{"t": 29.14, "event": "move", "to": [88, 26], "now": [88, 26], "popups": []}
+{"t": 31.68, "event": "move", "to": [87, 27], "now": [87, 27], "popups": []}
+{"t": 34.22, "event": "move", "to": [86, 28], "now": [86, 28], "popups": []}
+{"t": 35.74, "event": "attack_clicked", "selected": 13}
+{"t": 42.09, "event": "battle_open", "seconds_from_click": 6.69, "in_battle": true, "title": "Rome  v  Gaul          Rome to place units.", "geometry": [5, 99, 448, 414], "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Rome  v  Gaul          Rome to place units.", 5, 99, 448, 414], ["Information", 458, 70, 338, 426]], "flag": 1}
+{"t": 42.14, "event": "shot", "file": "b0-win-20261004-083605-01-placement.png"}
+{"t": 44.01, "event": "computer_general_clicked", "title": ["Rome  v  Gaul          Rome to move units."], "in_battle": false}
+{"t": 48.6, "event": "shot", "file": "b0-win-20261004-083605-battle-ended-window.png"}
+{"t": 48.71, "event": "battle_ended", "end_turn_clicks": 0, "seconds": 6.5, "in_battle": false, "ocr": "Rome's army defeats Gaul's army. Rome's army Gaul's army start finish start finish [33534] [22555 ote infatry Ce] heavy infantry Le] aches [0 | [0 | [8 | 0 | Uteewaly 0 | 0 [8 [0 | Heswenvaly 0 | | 0 tra tops a"}
+{"t": 55.29, "event": "after_ok", "popups": [], "windows": [["Imperial Conquest 2", 640, 512, 1, 1], ["Area map", 13, 65, 328, 196], ["Unit map", 334, 65, 1143, 903], ["Information", 12, 265, 328, 698]]}
+{"t": 55.41, "event": "shot", "file": "b0-win-20261004-083605-02-after-ok.png"}
+{"t": 63.44, "event": "save_as", "file": "WIN_post_battle.SAV", "seconds": 8.0, "sha256": "6c2a334532a978c0f41a87c581647d5067148488c4b37a037798444b314cd476"}
+{"t": 63.44, "event": "save_state", "label": "post-battle win", "file": "WIN_post_battle.SAV", "size": 132149, "battle_flag": 0, "turn": 743, "armies": {"2": [0, 28227], "13": [0, 34871]}, "last_news": [" ", "Week  11      Winter      270BC", "Gaul destroys army of Rome.", "Rome destroys army of Gaul."]}

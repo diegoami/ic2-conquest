@@ -32,7 +32,7 @@ Legend: ✅ exercised and checked on a save diff · 🟡 driven, not yet checked
 | Fleet: move, embark, disembark, supply, repair, split, join, transfer, scuttle | click the fleet marker (`SEL_FLEET`), then a sea tile (move) / an adjacent land tile (unload) / a toolbar button; with an army selected, click the adjacent own fleet (embark) | `Game.move_fleet`, `embark`, `disembark`, `supply_fleet`, `repair_fleet`, `split_fleet`, `join_fleets`, `transfer_ships`, `transfer_ships_back`, `scuttle_fleet` | `move_fleet`, `embark`, `embark_refused`, `disembark`, `supply_fleet`, `repair_fleet`, `split_fleet`, `join_fleets`, `transfer_ships`, `scuttle_fleet` | ✅ | `saves/fleet-port-antium-0734.SAV` (the fixture), `saves/fleet-split-antium-0734.SAV`; `T_EMBARK.SAV` (army 0 aboard: cell −1, fleet carries 0, both moves 0), `T_DISEMBARK.SAV`, `T_SUPPLY_FLEET.SAV` (+100 t from Antium), `T_REPAIR_FLEET.SAV` (97 → 100 %, 18 talents), `T_SPLIT_FLEET.SAV` (20 + 10), `T_JOIN_FLEETS.SAV`, `T_TRANSFER_SHIPS.SAV`, `T_SCUTTLE_FLEET.SAV`, `T_MOVE_FLEET.SAV` |
 | Fleet: attack (naval battle), at war | select the fleet, click the adjacent enemy fleet: no window, no box, instant (news "X sinks fleet of Y.") | `Game.attack_fleet` | no save-diff test in `tests/test_orders.py`: backed by the 50-battle trial run, `runs/experiments/fleet-battles/trials.py` | ✅ | `NB_P_seed1.SAV`, `NB_C_seed1.SAV`, `NB_C70_seed1.SAV`, `NB_C60_seed1.SAV`, `NB_C50_seed1.SAV`, `PROBE_AFTER.SAV` (release `run-exp-naval-battle`); the peace prompt for a fleet: see the Attack "attack this fleet ?" row of §3 |
 | News, Balance sheet | toolbar (84,58), (151,58) | — | — | ⬜ | read-only |
-| Accept a post-battle peace (`TBattlePols`) | Yes/No after a battle | — | — | ⬜ | |
+| Accept a post-battle peace (`TBattlePols`) | after the OK of "Battle ended" an **"Offer of peace"** window (Yes / No `TButton`s) opens in some battles (3 of 17 in B0); `play_battle(on_dialog="capture"|"no"|"yes"|"strict")` captures, declines or answers it | `Game.play_battle(on_dialog=...)` (offline-tested; `Yes` not yet tried live) | `tests/test_driver_battle.py` | 🟡 | `lab2_a_after_no.SAV`, `lab2_b_post.SAV` and `hi-hi-one_s1_r1_post.SAV` (release `run-exp-battle-probe`, `run-exp-battle-sweep`): No answered, war goes on |
 
 ## 2. Dialog layouts (1280×1024 Xvfb, the default window layout of a new game)
 
@@ -121,7 +121,7 @@ All 72 message strings in the executable's code segment, by the order that shows
 | City capture | ⬜ | |
 | Defection cascade | ⬜ | |
 | Conquest (a nation under 6 cities annexed) | ⬜ | |
-| Field battle (tactical, Computer general) | ⬜ | |
+| Field battle (tactical, Computer general) | 🟡 | B0/B1 (`findings/2026-10-04-battle-probe.md`): headless on the lab build in about 56 s, byte-repeatable; fixtures and the L1 runner in `runs/experiments/battles/` (battles PR A) |
 | Post-battle peace offer | ⬜ | |
 | Supply consumption and seasonal rates | ⬜ | |
 | Winter attrition of city stocks | ⬜ | |
