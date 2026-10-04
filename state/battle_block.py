@@ -81,6 +81,32 @@ def encode_block(b):
     return bytes(out)
 
 
+def synthetic_block(attacker_units, defender_units, attacker_army=0, defender_army=10, half_round=1):
+    """A block built from scratch (tests, crafted saves): each side's units are (type, troops, quality, merc, name); attackers stand in row y=0 from
+    x=0, defenders in row y=9 from x=1 (the placement seen in B2), full morale 70, ammo li 7 / ar 25 / lc 9 / else 0, no targets; the grid is
+    derived with the sprite rule (side*20 + 3*type + size class)."""
+    std = {"li": 15000, "hi": 6000, "ar": 3500, "lc": 7000, "hc": 2500}
+    ammo = {"li": 7, "ar": 25, "lc": 9, "hi": 0, "hc": 0}
+    slots = []
+    for side, units in ((0, attacker_units), (1, defender_units)):
+        for j in range(20):
+            if j < len(units):
+                typ, troops, q, merc, name = units[j]
+                x, y = (j, 0) if side == 0 else (j + 1, 9)
+                slots.append({"slot": 20 * side + j, "side": side, "x": x, "y": y, "merc": merc, "type": typ, "troops": troops, "quality": q,
+                              "morale": 70, "state": 0, "ammo": ammo[typ], "target": -1, "name": name, "alive": troops > 0})
+            else:
+                slots.append({"slot": 20 * side + j, "side": side, "x": 0, "y": 0, "merc": 0, "type": 0, "troops": 0, "quality": 0, "morale": 0,
+                              "state": 0, "ammo": 0, "target": -1 if side else 0, "name": "", "alive": False})
+    grid = [EMPTY] * (GRID_W * GRID_H)
+    for s in slots:
+        if s["alive"]:
+            t = s["type"]
+            cls = 0 if s["troops"] * 3 < std[t] else 1 if s["troops"] * 3 < 2 * std[t] else 2
+            grid[cell(s["x"], s["y"])] = 20 * s["side"] + 3 * TYPES.index(t) + cls
+    return {"attacker_army": attacker_army, "defender_army": defender_army, "x2": 0, "y1": 0, "half_round": half_round, "slots": slots, "grid": grid}
+
+
 def from_save(path):
     return block_of_save(Path(path).read_bytes())
 

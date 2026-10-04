@@ -41,7 +41,7 @@ RESULTS = {"attacker": "Rome defeats Gaul", "defender": "Gaul defeats Rome", "no
 COLUMNS = ["trial", "cell", "attacker", "defender", "size", "seed", "rep", "exe", "status", "half_rounds", "winner", "end_turn_clicks",
            "att_troops_before", "att_troops_after", "att_loss", "def_troops_before", "def_troops_after", "def_loss",
            "att_destroyed", "def_destroyed", "att_promotions", "def_promotions", "end_condition", "result", "dialog",
-           "seconds", "start_save", "series_first", "series_last", "post_save", "post_sha12", "series_sha12"]
+           "seconds", "start_save", "series_first", "series_last", "post_save", "post_sha12", "series_sha12", "halflog", "loss_rows", "unambiguous_rows"]
 
 
 def parse_cell(cell):
@@ -192,6 +192,12 @@ def run_trial(g, cell, seed, rep, log):
         "seconds": round(t_saved - t0, 1),
         "timing": {"loaded": round(t_loaded, 1), "click_to_battle": dt, "battle_open_to_over": round(t_over - t_open, 1),
                    "post_save": round(t_saved - t_over, 1)}})
+    try:       # the per-half-round log (B2/B4); a decoding failure is recorded, it never loses the trial
+        import halflog
+        p, summ = halflog.write_halflog(tid, series)
+        rec["halflog"], rec["halflog_summary"] = p.name, summ
+    except Exception as e:      # noqa: BLE001
+        rec["halflog_error"] = f"{type(e).__name__}: {e}"
     if res["dialogs"]:
         rec["dialog_note"] = "an Offer of peace (or other) box appeared after the battle and was DECLINED (never Yes)"
     log("trial_done", trial=tid, seconds=rec["seconds"], half_rounds=len(series), winner=d["winner"], post_sha12=rec["post_sha256"][:12])
@@ -211,7 +217,8 @@ def row(rec):
             "result": rec.get("result") or RESULTS[rec["winner"]], "dialog": rec.get("dialog", ""), "seconds": rec["seconds"],
             "start_save": rec["start_save"], "series_first": rec["series"][0] if rec["series"] else "",
             "series_last": rec["series"][-1] if rec["series"] else "", "post_save": rec["post_save"],
-            "post_sha12": rec["post_sha256"][:12], "series_sha12": rec["series_sha12"]}
+            "post_sha12": rec["post_sha256"][:12], "series_sha12": rec["series_sha12"], "halflog": rec.get("halflog", ""),
+            "loss_rows": rec.get("halflog_summary", {}).get("loss_rows", ""), "unambiguous_rows": rec.get("halflog_summary", {}).get("unambiguous_rows", "")}
 
 
 def write_table():

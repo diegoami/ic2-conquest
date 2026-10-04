@@ -16,6 +16,14 @@ Operations (offsets: docs/sav-layout-notes.md):
   relation a b v     nation a's +0x26+2b AND nation b's +0x26+2a (the matrix is symmetric)
   city c {field: v}  city record fields: owner, allegiance, loyalty, supplies, fort, pop, max_pop, tribute
 Position (x, y) of an army, and the map, are never touched.
+
+L2 (B3): `block_edit(b, ops)` edits the battle block (block 12) of a save written INSIDE a battle (a `BATTLEnn.SAV` of the lab build, or a
+File > Save As at a human phase): the strategic armies' units are in battle SLOT ORDER in such a save (side 0: slot k = army unit k; side 1:
+slot 20+j = army unit j; the AI side is re-sorted at battle start, B2), so a slot edit is MIRRORED into the army's unit by default
+(`consistent=True`: type, troops, quality, label, name) and the grid cell is kept in step (old cell emptied, new cell = the sprite).
+    ("slot", k, {"x": 6, "y": 5, "troops": 3000, "quality": 6, "morale": 70, "type": "hi", "merc": 0, "state": 0, "ammo": 0, "target": -1,
+                  "name": "..."}[, consistent])        ("grid", x, y, value) raw grid word      ("header", {"x2": 1, ...})
+Not edited by default: positions of strategic armies (never), the half-round counter.
 """
 import struct
 import sys
@@ -97,6 +105,77 @@ def set_city(b, c, fields):
         struct.pack_into("<h", b, sav.CITY_OFF + c * sav.CITY_LEN + CITY_FIELDS[k], v)
 
 
+def _block_off(b):
+    t = sav.parse(bytes(b))["tail_off"]
+    if b[t + 54] == 0:
+        raise ValueError("this save has no battle block (battle flag 0): block edits need a save written inside a battle")
+    return t + 55
+
+
+def sprite_value(side, typ, troops):
+    """The grid word of a unit [D, B2]: side*20 + 3*type + size class; class 0 below std/3, 1 below 2*std/3, else 2 (std: STD)."""
+    t = typ if isinstance(typ, str) else sav.UNIT_TYPES[typ]
+    std = STD[t]
+    cls = 0 if troops * 3 < std else 1 if troops * 3 < 2 * std else 2
+    return side * 20 + 3 * sav.UNIT_TYPES.index(t) + cls
+
+
+def block_edit(b, ops):
+    """Apply L2 operations to a bytearray holding a whole save with a battle block; returns b. See the module doc."""
+    from state import battle_block as BB
+    o = _block_off(b)
+    for op in ops:
+        k = op[0]
+        blk = BB.parse_block(bytes(b[o:o + BB.BLOCK_LEN]))
+        if k == "header":
+            blk.update({f: v for f, v in op[1].items()})
+            b[o:o + BB.BLOCK_LEN] = BB.encode_block(blk)
+        elif k == "grid":
+            struct.pack_into("<h", b, o + BB.HEADER_LEN + BB.SLOT_LEN * BB.N_SLOTS + 2 * BB.cell(op[1], op[2]), op[3])
+        elif k == "slot":
+            n, fields = op[1], dict(op[2])
+            consistent = op[3] if len(op) > 3 else True
+            if not 0 <= n < BB.N_SLOTS or not set(fields) <= set(BB.SLOT_FIELDS) | {"name"}:
+                raise ValueError("bad slot edit %r" % (op,))
+            old = blk["slots"][n]
+            new = dict(old)
+            new.update(fields)
+            if new["x"] != old["x"] or new["y"] != old["y"] or new["type"] != old["type"] or new["troops"] != old["troops"]:
+                g = blk["grid"]
+                if old["alive"] and g[BB.cell(old["x"], old["y"])] == sprite_value(old["side"], old["type"], old["troops"]):
+                    g[BB.cell(old["x"], old["y"])] = BB.EMPTY
+                if new["troops"] > 0:
+                    if not (0 <= new["x"] < BB.GRID_W and 0 <= new["y"] < BB.GRID_H):
+                        raise ValueError("cell (%s,%s) is outside the 14 x 12 grid" % (new["x"], new["y"]))
+                    g[BB.cell(new["x"], new["y"])] = sprite_value(old["side"], new["type"], new["troops"])
+            new["alive"] = new["troops"] > 0
+            blk["slots"][n] = new
+            b[o:o + BB.BLOCK_LEN] = BB.encode_block(blk)
+            if consistent and any(f in fields for f in ("type", "troops", "quality", "merc", "name")):
+                army = blk["attacker_army"] if n < 20 else blk["defender_army"]
+                u = n if n < 20 else n - 20
+                set_units_field(b, army, u, {f: new[f] for f in ("type", "troops", "quality", "merc", "name") if f in fields})
+        else:
+            raise ValueError("unknown block operation %r" % (k,))
+    return b
+
+
+def set_units_field(b, army, unit, fields):
+    """Edit fields of ONE unit slot of a strategic army (type, troops, quality, merc, name), nothing else."""
+    base = _army(b, army) + 16 + 32 * unit
+    if "type" in fields:
+        typ = fields["type"]
+        struct.pack_into("<h", b, base + 2, TYPES[typ] if isinstance(typ, str) else typ)
+    if "troops" in fields:
+        struct.pack_into("<h", b, base + 4, fields["troops"])
+    if "quality" in fields:
+        struct.pack_into("<h", b, base + 6, fields["quality"])
+    if "merc" in fields:
+        struct.pack_into("<h", b, base, fields["merc"])
+    if "name" in fields and sav.cstr(bytes(b[base + 8:base + 32])) != fields["name"]:
+        b[base + 8:base + 32] = fields["name"].encode("latin1").ljust(24, b"\0")[:24]
+
+
 def apply(b, ops):
     for op in ops:
         k = op[0]
@@ -117,9 +196,12 @@ def apply(b, ops):
     return b
 
 
-def edit(src, dst, ops=()):
+def edit(src, dst, ops=(), block=()):
+    """dst = src with the L1 `ops` and then the L2 battle-block `block` operations applied."""
     b = bytearray(Path(src).read_bytes())
     apply(b, ops)
+    if block:
+        block_edit(b, block)
     Path(dst).write_bytes(bytes(b))
     return dst
 
