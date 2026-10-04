@@ -2,14 +2,16 @@
 """B0 probe (docs/proposals/battles.md §4 B0): one battle end to end, on the normal seed build and on the battle-lab build.
 
     python3 runs/experiments/battles/b0_probe.py normal            # item 1: nothing auto-answered, every step logged
-    python3 runs/experiments/battles/b0_probe.py savein [exe]      # item 2: File > Save As and the toolbar Save inside a battle
-    python3 runs/experiments/battles/b0_probe.py lab SEED TAG      # item 3: one lab battle, BATTLEnn series kept
-    python3 runs/experiments/battles/b0_probe.py gate              # 6 lab seed-1 battles in a row (gate2_a..f) + seed 2 twice (gate2_s2a, s2b);
-                                                                   #   writes gate-summary-<stamp>.json with every series/post comparison
-    python3 runs/experiments/battles/b0_probe.py lab 1 t0          # one lab trial (the first trial, lab1_t0, was made this way)
+    python3 runs/experiments/battles/b0_probe.py savein [lab]      # item 2: File > Save As and the toolbar Save inside a battle (`lab`: on the lab seed-1 exe)
+    python3 runs/experiments/battles/b0_probe.py escape            # does Escape act on a battle?
+    python3 runs/experiments/battles/b0_probe.py lab SEED TAG      # item 3: one lab battle, BATTLEnn series kept (the first trial, lab1_t0, was `lab 1 t0`)
+    python3 runs/experiments/battles/b0_probe.py gate              # SIX lab seed-1 battles in a row (gate2_a..f) + seed 2 twice (gate2_s2a, s2b);
+                                                                   #   writes gate-summary-<stamp>.json with every series/post comparison (lab1_t0 as an extra)
     python3 runs/experiments/battles/b0_probe.py report TAG...     # compare kept series with the first (series_equal) -> series-report-<stamp>.json
+    python3 runs/experiments/battles/b0_probe.py resume SEED TAG NN [SFX]   # item 4: File > Open of <TAG>_BATTLE<NN>.SAV on lab exe SEED, played out
     python3 runs/experiments/battles/b0_probe.py resumecmp ORIG RES OFFSET [RES2]  # resume v original (RES file i = ORIG file i+OFFSET) and v a second resume
-    python3 runs/experiments/battles/b0_probe.py resume            # item 4: File > Open of BATTLE05.SAV (lab)
+    python3 runs/experiments/battles/b0_probe.py compare A B       # closest file of series A for each file of series B, with the differing byte count
+    python3 runs/experiments/battles/b0_probe.py win               # a human victory
 
 Start save: `1_rome_270_winter_11.sav` (release run-1-rome of diegoami/imp_conquest_fixtures): Rome's army 0 (37,081) is 7 tiles
 from Gaul's army 10 (46,700); it is walked to (86,28) and attacks (85,28). Every output goes to `artifacts/run-exp-battle-probe/`
@@ -41,9 +43,7 @@ SEED = 12345
 TOOLBAR_Y = 112
 # The research save opens with a unit map of 29 x 27 tiles in view (window 1143 x 903), not the driver's 13 x 13.
 D.VIEW_COLS, D.VIEW_ROWS = 29, 27
-# ... and its window covers the driver's NEUTRAL click point (1000, 900): with an army selected, reset_ui's click there ORDERS A MOVE
-# (found in B0: Save As moved army 0 from (86,28) to (86,30)). Use a point below the unit map (screen bottom strip, bare root).
-D.NEUTRAL = (700, 1005)
+# (and its window covers the old NEUTRAL click point (1000, 900): reset_ui ORDERED A MOVE there; `Game.neutral_point` now derives a point off every window)
 STAMP = time.strftime("%Y%m%d-%H%M%S")
 
 
@@ -233,14 +233,9 @@ def cmd_normal(g):
     toolbar_scan(g, log)
     # Computer general, then End turn until the result box (count the clicks, record the title after each)
     tc = time.time()
-    g.click(D.BATTLE_TOOLS["computer"], TOOLBAR_Y, pause=1.5)
-    log("computer_general_clicked", title=[w[1] for w in g.find_windows(" v ")], in_battle=g.in_battle())
+    computer_general_on(g, log)
     log.shot(g, "03-after-computer-general")
-    clicks = 0
-    while clicks < 5 and g.in_battle() and not g.find_windows("Battle ended"):
-        g.click(D.BATTLE_TOOLS["end_turn"], TOOLBAR_Y, pause=1.5)
-        clicks += 1
-        log("end_turn_clicked", n=clicks, in_battle=g.in_battle(), windows=[w[1] for w in g.find_windows()])
+    clicks = end_turn_until_over(g, log, 5)
     g.wait(lambda: g.find_windows("Battle ended"), 20, "Battle ended box")
     log("battle_ended", end_turn_clicks=clicks, seconds_from_computer_general=round(time.time() - tc, 1),
         seconds_from_attack_click=round(time.time() - tc + dt, 1), in_battle=g.in_battle())
@@ -274,13 +269,22 @@ def count_battle_saves():
     return len(list(G.glob("BATTLE*.SAV")))
 
 
-def play_out(g, log, max_clicks=3):
-    """Computer general on, then End turn until the "Battle ended" box; OK; wait for the map OR an "Offer of peace" box (answered No, never Yes).
-    Each End turn click is made only after the previous one is PROVEN to have advanced the battle (in_battle fell, a Battle ended box
-    appeared, the title changed or a new BATTLEnn.SAV was written, within 8 s); with no proof DriverError, never a blind second click."""
-    t0 = time.time()
+def computer_general_on(g, log):
+    """Click Computer general ONCE and verify it took effect (the title becomes "... to move units.", or the battle is already over / the
+    "Battle ended" box is up). The toggle is stateful: no second click, DriverError if there is no sign within 8 s."""
     g.click(D.BATTLE_TOOLS["computer"], TOOLBAR_Y, pause=1.5)
+    try:
+        g.wait(lambda: not g.in_battle() or g.find_windows("Battle ended") or any("to move units" in w[1] for w in g.find_windows(" v ")),
+               8, "Computer general to take effect (title 'to move units' or the battle over)", step=0.25)
+    except DriverError:
+        raise DriverError("Computer general click: no sign it took effect (title %s); not clicking again" % [w[1] for w in g.find_windows(" v ")])
     log("computer_general_clicked", title=[w[1] for w in g.find_windows(" v ")], in_battle=g.in_battle())
+
+
+def end_turn_until_over(g, log, max_clicks=3):
+    """End turn until the "Battle ended" box. Each click is made only after the previous one is PROVEN to have advanced the battle (in_battle
+    fell, a Battle ended box appeared, the title changed or a new BATTLEnn.SAV was written, within 8 s); with no proof DriverError, never a
+    blind second click. Returns the number of End turn clicks (0 if the Computer general click alone ended the battle)."""
     clicks = 0
     while g.in_battle() and not g.find_windows("Battle ended"):
         if clicks >= max_clicks:
@@ -295,6 +299,16 @@ def play_out(g, log, max_clicks=3):
         except DriverError:
             raise DriverError("End turn click %d: no sign the battle advanced; not clicking again" % clicks)
         log("end_turn_clicked", n=clicks, in_battle=g.in_battle(), windows=[w[1] for w in g.find_windows()])
+    return clicks
+
+
+def play_out(g, log, max_clicks=3):
+    """Computer general on, then End turn until the "Battle ended" box; OK; wait for the map OR an "Offer of peace" box (answered No, never Yes).
+    Each End turn click is made only after the previous one is PROVEN to have advanced the battle (in_battle fell, a Battle ended box
+    appeared, the title changed or a new BATTLEnn.SAV was written, within 8 s); with no proof DriverError, never a blind second click."""
+    t0 = time.time()
+    computer_general_on(g, log)
+    clicks = end_turn_until_over(g, log, max_clicks)
     g.wait(lambda: g.find_windows("Battle ended"), 30, "Battle ended box")
     time.sleep(1)
     be = g.find_windows("Battle ended")[0]
@@ -331,22 +345,19 @@ def play_out(g, log, max_clicks=3):
 
 
 def battle_series(tag):
-    """Move the game folder's BATTLEnn.SAV into the artifacts folder as <tag>_BATTLEnn.SAV; return the file names."""
+    """Move the game folder's BATTLEnn.SAV into the artifacts folder as <tag>_BATTLEnn.SAV (through keep(): an existing file with other
+    content gets a -<stamp> suffix, never overwritten); return the kept file names in order."""
     names = []
     for f in sorted(G.glob("BATTLE*.SAV")):
-        dst = OUT / f"{tag}_{f.name}"
-        if dst.exists():
-            dst = dst.with_name(f"{dst.stem}-{STAMP}{dst.suffix}")
-        shutil.copy(f, dst)
+        names.append(keep(f, tag).name)
         f.unlink()
-        names.append(dst.name)
     return names
 
 
 def run_battle(g, log, exe, seed, tag, pre=False):
     """One whole trial from a fresh process; returns the timing record. `tag` names the kept files."""
     for f in G.glob("BATTLE*.SAV"):     # leftovers of an earlier run were copied out by battle_series; a stray one is kept, not lost
-        shutil.copy(f, OUT / f"stray_{f.name}")
+        keep(f, "stray")
         f.unlink()
     t0 = time.time()
     start_game(g, log, exe, seed)
@@ -390,7 +401,14 @@ def cmd_lab(g):
 
 
 def series_names(tag):
-    return sorted(p.name for p in OUT.glob(f"{tag}_BATTLE[0-9][0-9].SAV"))
+    """The kept files of series <tag>, one per half-round number nn: the NEWEST version when a re-run kept a `-<stamp>` copy beside the old
+    one (the plain glob matched only the first run's files)."""
+    best = {}
+    for p in OUT.glob(f"{tag}_BATTLE[0-9][0-9]*.SAV"):
+        nn = p.name[len(tag) + 7:len(tag) + 9]
+        if nn not in best or p.stat().st_mtime_ns > best[nn].stat().st_mtime_ns:
+            best[nn] = p
+    return [best[k].name for k in sorted(best)]
 
 
 def series_report(tags, ref=None):
@@ -439,8 +457,9 @@ def cmd_resumecmp(g=None):
             a = rd(A[i + off])
             row.update(original=A[i + off], differing_bytes=sum(x != y for x, y in zip(a, rd(r))) + abs(len(a) - len(rd(r))))
         rows.append(row)
-    out = {"original": orig, "resumed": res, "offset": off, "rows": rows,
-           "all_identical_to_original": all(r.get("differing_bytes") == 0 for r in rows if "differing_bytes" in r)}
+    aligned = [r for r in rows if "differing_bytes" in r]
+    out = {"original": orig, "resumed": res, "offset": off, "rows": rows, "aligned_rows": len(aligned),
+           "all_identical_to_original": bool(aligned) and all(r["differing_bytes"] == 0 for r in aligned)}   # never vacuously true
     if res2:
         out["resume_v_resume"] = series_equal(R, series_names(res2))
     (OUT / f"resume-comparison-{res}-{STAMP}.json").write_text(json.dumps(out, indent=1))
@@ -619,7 +638,7 @@ def cmd_resume(g):
     log = Log(f"b0-resume-{tag}-{nn}{sfx}")
     src = f"{tag}_BATTLE{nn}.SAV"
     for f in G.glob("BATTLE*.SAV"):
-        shutil.copy(f, OUT / f"stray_{f.name}")
+        keep(f, "stray")
         f.unlink()
     g.exe = LAB_EXE % seed
     g.start()

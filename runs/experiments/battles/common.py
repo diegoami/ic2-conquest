@@ -53,10 +53,11 @@ def record_sha(path, folder=None):
     return line.split()[0]
 
 
-def keep(src, name=None, folder=ART):
+def keep(src, name=None, folder=None):
     """Copy `src` into the artifacts folder under `name` (default its own); NEVER overwrite: an existing file with other content gets a
     `-<stamp>` suffix, an identical one is reused. Returns the Path of the kept copy; its SHA-256 goes to SAVES.sha256."""
     src = Path(src)
+    folder = folder or ART
     folder.mkdir(parents=True, exist_ok=True)
     dst = folder / (name or src.name)
     n = 0
