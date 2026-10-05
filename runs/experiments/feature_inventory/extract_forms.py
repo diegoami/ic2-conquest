@@ -2,6 +2,8 @@
 """Extract every TPF0 form resource from the original exe into a JSON tree and a flat TSV.
 Read-only on the exe. Usage: extract_forms.py <exe> <outdir>"""
 import sys, re, struct, json, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import write_new
 
 def rd(d, p):
     return d[p], p + 1
@@ -76,7 +78,7 @@ def main(exe, out):
             print('FAIL', hex(s), e, file=sys.stderr); continue
         o['offset'] = hex(s); o['end'] = hex(r.p)
         forms.append(o)
-    json.dump(forms, open(os.path.join(out, 'forms.json'), 'w'), indent=1)
+    write_new(os.path.join(out, 'forms.json'), json.dumps(forms, indent=1))
     rows = []
     def walk(o, form, path, depth):
         cap = o['props'].get('Caption')
@@ -90,8 +92,6 @@ def main(exe, out):
                      ';'.join('%s=%s' % kv for kv in ev.items()), scs, o['props'].get('Checked', '')))
         for c in o['children']: walk(c, form, path + '/' + c['name'], depth+1)
     for f in forms: walk(f, f['class'], f['name'], 0)
-    with open(os.path.join(out, 'form_controls.tsv'), 'w') as fh:
-        fh.write('form\tpath\tclass\tname\tcaption\thint\tevents\tshortcut\tchecked\n')
-        for r_ in rows: fh.write('\t'.join(str(x) for x in r_) + '\n')
+    write_new(os.path.join(out, 'form_controls.tsv'), 'form\tpath\tclass\tname\tcaption\thint\tevents\tshortcut\tchecked\n' + ''.join('\t'.join(str(x) for x in r_) + '\n' for r_ in rows))
     print(len(forms), 'forms,', len(rows), 'controls')
 if __name__ == '__main__': main(sys.argv[1], sys.argv[2])

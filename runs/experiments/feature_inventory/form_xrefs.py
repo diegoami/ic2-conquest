@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """For each form class: find its VMT in the exe and every code/data reference to it (a form is created or shown
 only through its VMT address). Read only. Usage: form_xrefs.py <exe> <forms.json> <out.tsv>"""
-import sys, json, struct, re
+import sys, json, struct, re, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import write_new
 exe, forms, out = sys.argv[1:4]
 d = open(exe, 'rb').read()
 CODE_FILE0, CODE_VA0 = 0x400, 0x401000
@@ -41,7 +43,5 @@ for f in json.load(open(forms)):
             use.append('%s@%s' % (owner(a), fmt(a)))
         rows.append((cls, fmt(vmt), len(use), ';'.join(use[:8])))
     if not refs: rows.append((cls, '', 0, ''))
-with open(out, 'w') as fh:
-    fh.write('form\tvmt\tn_refs\treferencing_functions\n')
-    for r in rows: fh.write('\t'.join(str(x) for x in r) + '\n')
+out = write_new(out, 'form\tvmt\tn_refs\treferencing_functions\n' + ''.join('\t'.join(str(x) for x in r) + '\n' for r in rows))
 print(len(rows), 'rows')

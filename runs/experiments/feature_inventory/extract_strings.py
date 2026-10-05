@@ -2,7 +2,9 @@
 """List the Delphi AnsiString literals (refcount -1, length, text, NUL) and other NUL-terminated
 printable runs (>= 3 chars, containing a letter) in the exe's CODE section. Read only.
 Usage: extract_strings.py <exe> <out.tsv>"""
-import sys, re, struct
+import sys, re, struct, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from common import write_new
 exe, out = sys.argv[1:3]
 d = open(exe, 'rb').read()
 CODE_END = 0x5b900   # CODE section ends before the first TPF0 (0x5b984 is data); checked in README of the data folder
@@ -23,7 +25,5 @@ for m in re.finditer(rb'[\x20-\x7e]{3,}\x00', d[:CODE_END]):
     t = m.group()[:-1].decode('latin-1')
     if re.search('[A-Za-z]', t): rows.append((s, 'cstring', t))
 rows.sort()
-with open(out, 'w') as f:
-    f.write('file_offset\tkind\ttext\n')
-    for off, k, t in rows: f.write('0x%06x\t%s\t%s\n' % (off, k, t.replace('\t', ' ')))
+out = write_new(out, 'file_offset\tkind\ttext\n' + ''.join('0x%06x\t%s\t%s\n' % (off, k, t.replace('\t', ' ')) for off, k, t in rows))
 print(len(hdr), 'ansistring literals;', len(rows) - len(hdr), 'other runs')

@@ -5,6 +5,8 @@ os.environ.setdefault('IC2_WORK', '/home/diego/ic2-work-inv')
 os.environ.setdefault('DISPLAY_IC2', ':700')
 ROOT = '/home/diego/projects/wt-inventory'
 sys.path.insert(0, ROOT)
+sys.path.insert(0, ROOT + '/runs/experiments/feature_inventory')
+from common import new_path
 from harness.driver import Game, G, sh
 ART = ROOT + '/artifacts/run-exp-feature-inventory/'
 LOGD = ROOT + '/runs/experiments/data/run-exp-feature-inventory/explore/'
@@ -33,3 +35,22 @@ def attach(g):
                     g.pid = pid; return pid
         except Exception: pass
     raise SystemExit('own game process not found')
+
+import hashlib, re as _re
+def snap(g, name, crop=None):
+    """Screenshot to a NEW file (never overwrites; rule 6). Returns (path, sha256)."""
+    p = new_path(ART + name)
+    if crop: sh('import', '-window', 'root', '-crop', crop, p)
+    else: g.shot(p)
+    return p, hashlib.sha256(open(p, 'rb').read()).hexdigest()
+def ocr_words(path, scale=3):
+    """OCR words with centres: [(text, x, y)] in the screenshot's own pixels."""
+    tmp = '/tmp/claude-1000/ocr_tmp.png'
+    subprocess.run(['convert', path, '-resize', '%d00%%' % scale, '-colorspace', 'Gray', tmp], check=True)
+    out = subprocess.run(['tesseract', tmp, 'stdout', '--psm', '11', 'tsv'], capture_output=True, text=True).stdout
+    res = []
+    for l in out.splitlines()[1:]:
+        f = l.split('\t')
+        if len(f) == 12 and f[11].strip():
+            res.append((f[11].strip(), (int(f[6]) + int(f[8]) // 2) // scale, (int(f[7]) + int(f[9]) // 2) // scale))
+    return res
