@@ -1,0 +1,1502 @@
+kind	key	status	rows	note
+form	form:TAFSupply	mapped	UA01,UF01,D01	rule 5: Supply army / Supply fleet dialog (named TAFSupply = Army/Fleet supply; not the tactical battle)
+form	form:TAboutIC	mapped	H03,H04	rule 4: About box and its hidden Cellular Automata button
+form	form:TAreaMap	mapped	A01,A02,A03,A04,A05,A06,A07,A08,A09,A10	rule 6: Area map window
+form	form:TArmyRecruits	mapped	S05,S05a,S05b	rule 7: Army recruits dialog
+form	form:TArmyToArmy	mapped	UA03,UA04,D03	rule 8: Army to army transfer / Split army
+form	form:TBalanceSheet	mapped	S04	rule 9: Balance sheet
+form	form:TBattleDelays	excluded		rule 10: tactical battle: Change delays (shot and attack pauses)
+form	form:TBattleMap	excluded		rule 11: tactical battle map (Battlefield window)
+form	form:TBattleOver	mapped	D11	rule 12: Battle ended result box: the boundary, listed once
+form	form:TBattlePols	mapped	D09	rule 13: Offer of peace after a battle (strategic)
+form	form:TBuildFleet	mapped	S06	rule 14: Build fleet
+form	form:TCellAuto	mapped	H04	rule 15: Cellular Automata window
+form	form:TChangeArmyUnits	mapped	UA06,D05,D06,D07	rule 16: Change units
+form	form:TChangeTax	mapped	S03	rule 17: Change tax level
+form	form:TFindCity	mapped	A08	rule 18: Find city
+form	form:TFleetToFleet	mapped	UF03,UF04,D04	rule 19: Fleet to fleet transfer / Split fleet
+form	form:TFortifyCity	mapped	UC01	rule 20: Fortify city
+form	form:THVHBatPols	mapped	D10	rule 22: Peace offers between 2 human players
+form	form:THumanFalls	mapped	EG01,V01,V02,V03,V04	rule 21: End of Game
+form	form:TInformation	mapped	UM09,N03,UM02,UM03,UM05	rule 23: Information window
+form	form:TPickLeaders	mapped	F02	rule 24: Human and computer leaders
+form	form:TPolitics	mapped	S02,S02a,S02b,S02c,S02d	rule 25: International Relations
+form	form:TPremierForm	mapped	M01,M02,M03,M04	rule 26: main window
+form	form:TRecruitMercs	mapped	UA02,D02	rule 27: Recruit mercenary unit
+form	form:TRenameArmyUnit	mapped	D05	rule 28: Rename unit
+form	form:TRepairFleet	mapped	UF02	rule 29: Repair fleet
+form	form:TSplitArmyUnit	mapped	D06	rule 30: Split unit
+form	form:TToEndTurn	mapped	D08,L12	rule 31: End turn ? box
+form	form:TUnitMap	mapped	UM01,UM02,UM03,UM05,UM08,MM01,MM02,MM03	rule 32: Unit map window
+control	control:TAboutIC|TAboutIC|AboutIC|About Imperial Conquest 2	mapped	H03	rule 130: About box
+control	control:TAboutIC|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAboutIC|TLabel|Label1|Imperial  Conquest  2    v1.01	mapped	H03	rule 130: About box
+control	control:TAboutIC|TLabel|Label2|This is the full/freeware version	mapped	H03	rule 130: About box
+control	control:TAboutIC|TLabel|Label3|of Imperial Conquest 2, feel free to	mapped	H03	rule 130: About box
+control	control:TAboutIC|TLabel|Label4|copy and distribute it.	mapped	H03	rule 130: About box
+control	control:TAboutIC|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAboutIC|TLabel|Label5|copyright  Serious Games  1997	mapped	H03	rule 130: About box
+control	control:TAboutIC|TButton|btn_ok|OK	mapped	H03	rule 130: About box
+control	control:TAboutIC|TButton|btn_cancell|CAncell	mapped	H04	rule 129: the CAncell button opens Cellular Automata
+control	control:TAFSupply|TAFSupply|AFSupply|Supply army	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|Bevel18|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_buyno3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_buyno2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_onat|Supplies at	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_prvname|Teanum Apulum	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_prvsupps|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_armyfleet|Army's	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|Label1|supplies	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_afsupps|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_buyno1|Supplies	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_buyno2|amount	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_buyno3|Supplies	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_buyno4|cost	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|bvl_buyno4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_buyno5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_buysupplies|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_buycost|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_nfno1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_nfno2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_nfno3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_natfltno2|balance	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_afmoney|Army's	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|bvl_nfno4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TBevel|bvl_nfno5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_natbal|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_money|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_natfltno1|National	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_natfltno6|money	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|bev_listbox|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_natfltno4|100s	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_natfltno3|10s	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|bvl_buyno1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_buyno5|10s	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_buyno6|100s	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TBevel|Bevel15|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAFSupply|TLabel|lbl_suppno1|10s	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TLabel|lbl_suppno2|100s	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TButton|btn_ok|OK	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TUpDown|ud_buy100|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TUpDown|ud_buy10|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TUpDown|ud_mon10|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TUpDown|ud_mon100|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TListBox|lbx_providers|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TButton|btn_buy|Buy supplies	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TUpDown|ud_supp10|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAFSupply|TUpDown|ud_supp100|	mapped	UA01,UF01	rule 131: Supply dialog
+control	control:TAreaMap|TAreaMap|AreaMap|Area map	mapped	A09,A10	rule 34: the Area map window itself (click handler, unit-map rectangle)
+control	control:TAreaMap|TPanel|Panel1|	excluded		rule 101: container of the area-map speed buttons, each mapped on its own
+control	control:TAreaMap|TSpeedButton|sb_areatog|Toggle colour	mapped	A01	rule 102: area-map speed button
+toolbar	toolbar:TAreaMap|sb_areatog|Toggle colour	mapped	A01	rule 214: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areacits|Show cities	mapped	A02	rule 103: area-map speed button
+toolbar	toolbar:TAreaMap|sb_areacits|Show cities	mapped	A02	rule 215: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areacap|Show capital	mapped	A03	rule 104: area-map speed button
+toolbar	toolbar:TAreaMap|sb_areacap|Show capital	mapped	A03	rule 216: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areaarms|Show armies	mapped	A04	rule 105: area-map speed button
+toolbar	toolbar:TAreaMap|sb_areaarms|Show armies	mapped	A04	rule 217: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areaflts|Show fleets	mapped	A05	rule 106: area-map speed button
+toolbar	toolbar:TAreaMap|sb_areaflts|Show fleets	mapped	A05	rule 218: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areaalln|Show all	mapped	A06	rule 107: area-map speed button
+toolbar	toolbar:TAreaMap|sb_areaalln|Show all	mapped	A06	rule 219: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areali|Light infantry	mapped	A07	rule 108: area-map speed button (mercenary views)
+toolbar	toolbar:TAreaMap|sb_areali|Light infantry	mapped	A07	rule 220: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areahi|Heavy infantry	mapped	A07	rule 108: area-map speed button (mercenary views)
+toolbar	toolbar:TAreaMap|sb_areahi|Heavy infantry	mapped	A07	rule 220: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areaarch|Archers	mapped	A07	rule 108: area-map speed button (mercenary views)
+toolbar	toolbar:TAreaMap|sb_areaarch|Archers	mapped	A07	rule 220: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_arealc|Light cavalry	mapped	A07	rule 108: area-map speed button (mercenary views)
+toolbar	toolbar:TAreaMap|sb_arealc|Light cavalry	mapped	A07	rule 220: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areahc|Heavy cavalry	mapped	A07	rule 108: area-map speed button (mercenary views)
+toolbar	toolbar:TAreaMap|sb_areahc|Heavy cavalry	mapped	A07	rule 220: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_areaallm|All mercenaries	mapped	A07	rule 108: area-map speed button (mercenary views)
+toolbar	toolbar:TAreaMap|sb_areaallm|All mercenaries	mapped	A07	rule 220: area-map speed button
+control	control:TAreaMap|TSpeedButton|sb_findcity|Find a city	mapped	A08	rule 109: area-map speed button
+toolbar	toolbar:TAreaMap|sb_findcity|Find a city	mapped	A08	rule 221: area-map speed button
+control	control:TAreaMap|TImageList|MapsList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TAreaMap|TImageList|PointsList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TArmyRecruits|ArmyRecruits|Army recruits	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TLabel|lbl_create|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|lbl_cityat|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TLabel|Label3|100s	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|Label4|1000s	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TLabel|lbl_newunit|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|Label5|New unit	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|Label7|Initial cost	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TLabel|Label8|Quarterly cost	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|lbl_initcost|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|lbl_runcost|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TLabel|Label2|Cities to	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|Label6|recruit at	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TLabel|Label1|Troops	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyRecruits|TButton|btn_ok|OK	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_hvycav|Heavy cavalry	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_litinf|Light infantry	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_hvyinf|Heavy infantry	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_archers|Archers	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_litcav|Light cavalry	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TUpDown|ud_100s|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_recruit|Recruit unit	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TUpDown|ud_1000s|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TListBox|lbx_units|	mapped	S05	rule 134: Army recruits
+control	control:TArmyRecruits|TButton|btn_mobilize|Mobilize	mapped	S05a	rule 132: Mobilize
+control	control:TArmyRecruits|TButton|btn_disband|Disband	mapped	S05b	rule 133: Disband
+control	control:TArmyRecruits|TListBox|lbx_cities|	mapped	S05	rule 134: Army recruits
+control	control:TArmyToArmy|TArmyToArmy|ArmyToArmy|Army to army transfer	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TLabel|Label1|Units in first army	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label2|Units in second army	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TLabel|Label3|10s	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label4|100s	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label5|10s	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label6|100s	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label7|First army's supply	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label8|Second army's supply	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label9|First army's money	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|Label10|Second army's money	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TLabel|lbl_army1supp|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|lbl_army2supp|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|lbl_army1mon|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|lbl_army2mon|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TArmyToArmy|TLabel|lbl_army1|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TLabel|lbl_army2|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TListBox|lbx_units2|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TListBox|lbx_units1|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TButton|btn_ok|OK	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TButton|btn_cancel|Cancel	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TButton|btn_transfer1|Transfer	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TButton|btn_disband1|Disband	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TButton|btn_transfer2|Transfer	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TButton|btn_disband2|Disband	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TUpDown|ud_supp10|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TUpDown|ud_supp100|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TUpDown|ud_mon10|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TArmyToArmy|TUpDown|ud_mon100|	mapped	UA03,UA04	rule 135: Army to army transfer / Split army
+control	control:TBalanceSheet|TBalanceSheet|BalanceSheet|Balance sheet	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TLabel|Label1|Revenue	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TLabel|Label2|Expenditure	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TLabel|Label3|Taxes	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label4|Tribute	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label5|Trade	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TLabel|Label6|Total	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TLabel|Label7|Total	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label8|Administration	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label9|Fleets	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label10|Army recruits	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label11|Regular units	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label12|Mercenary units	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TBevel|Bevel13|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel14|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel15|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TBevel|Bevel16|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBalanceSheet|TLabel|Label13|Balance	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|Label14|Debt limit	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_tax|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_tribute|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_trade|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_totrev|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_balance|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_debtlimit|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_totexp|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_admin|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_fleets|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_recruits|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_regs|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TLabel|lbl_mercs|	mapped	S04	rule 136: Balance sheet
+control	control:TBalanceSheet|TButton|btn_ok|OK	mapped	S04	rule 136: Balance sheet
+control	control:TBattleDelays|TBattleDelays|BattleDelays|Change delays	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleDelays|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleDelays|TLabel|Label6|Shot delay (secs)	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TLabel|Label1|Attack delay (secs)	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleDelays|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleDelays|TLabel|lbl_shot|99	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TLabel|lbl_attack|99	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TLabel|Label3|0.1	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TLabel|Label4|1.0	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TLabel|Label5|0.1	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TLabel|Label7|1.0	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TUpDown|ud_shot1|	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TUpDown|ud_attack1|	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TUpDown|ud_shot10|	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TUpDown|ud_attack10|	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TButton|btn_ok|OK	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleDelays|TButton|btn_cancel|Cancel	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleMap|TBattleMap|BattleMap|Battlefield	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleMap|TPanel|Panel1|	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+control	control:TBattleMap|TSpeedButton|sb_enemyunits|Enemy units	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_enemyunits|Enemy units	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_cancel|Cancel selection	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_cancel|Cancel selection	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_pauses|Change pauses	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_pauses|Change pauses	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_surrender|Surrender	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_surrender|Surrender	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_endturn|End turn	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_endturn|End turn	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_compgen|Computer general on	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_compgen|Computer general on	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_unitmoves|Unit moves	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_unitmoves|Unit moves	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TSpeedButton|sb_friendlyunits|Friendly units	excluded		rule 37: tactical battle window (TBattleMap and TBattleDelays controls)
+toolbar	toolbar:TBattleMap|sb_friendlyunits|Friendly units	excluded		rule 238: tactical battle toolbar
+control	control:TBattleMap|TImageList|BatMapList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleMap|TImageList|UnitsList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBattleOver|BattleOver|Battle ended	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TLabel|lbl_victory|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TLabel|lbl_winner|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_loser|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label1|start	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label2|finish	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label3|start	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label4|finish	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label5|light infantry	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label6|heavy infantry	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label7|archers	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label8|light cavalry	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label9|heavy cavalry	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label10|total troops	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel13|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel14|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel15|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel16|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel17|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel18|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel19|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel20|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel21|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel22|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel23|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel24|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel25|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel26|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel27|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel28|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel29|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TBevel|Bevel30|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattleOver|TLabel|lbl_money|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_supply|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label11|0	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label12|0	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label13|0	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label14|0	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label15|0	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|Label16|0	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no1|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no2|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no3|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no4|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no5|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no6|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no7|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no8|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no9|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no10|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no11|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no12|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no13|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no14|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no15|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no16|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no17|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TLabel|lbl_no18|	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattleOver|TButton|btn_ok|OK	mapped	D11	rule 38: battle result box (boundary row)
+control	control:TBattlePols|TBattlePols|BattlePols|Offer of peace	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TLabel|lbl_result1|	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TLabel|Label1|their war with you,  if you agree to the terms below.	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBattlePols|TLabel|Label2|If the peace terms are acceptable click  YES.	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TLabel|Label3|Otherwise to continue the war click  NO.	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TLabel|lbl_terms1|	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TLabel|lbl_terms2|	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TLabel|lbl_terms3|	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TButton|btn_yes|Yes	mapped	D09	rule 137: Offer of peace
+control	control:TBattlePols|TButton|btn_no|No	mapped	D09	rule 137: Offer of peace
+control	control:TBuildFleet|TBuildFleet|BuildFleet|Build fleet	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBuildFleet|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBuildFleet|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBuildFleet|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBuildFleet|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBuildFleet|TLabel|lbl_initcost|	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|lbl_ships|	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|lbl_runcost|	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|Label1|Ships	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|Label2|1s	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|Label3|10s	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|Label4|Initial cost	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|Label5|Quarterly cost	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TLabel|Label6|Troop capacity	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TBuildFleet|TLabel|lbl_capacity|	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TButton|btn_ok|OK	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TButton|btn_cancel|Cancel	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TUpDown|ud_1s|	mapped	S06	rule 139: Build fleet
+control	control:TBuildFleet|TUpDown|ud_10s|	mapped	S06	rule 139: Build fleet
+control	control:TCellAuto|TCellAuto|CellAuto|Cellular Automata	mapped	H04	rule 128: Cellular Automata window controls
+control	control:TCellAuto|TImage|Image1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TCellAuto|TPanel|Panel1|	mapped	H04	rule 128: Cellular Automata window controls
+control	control:TCellAuto|TSpeedButton|sb_Save|Save structure as .BMP	mapped	H04	rule 128: Cellular Automata window controls
+toolbar	toolbar:TCellAuto|sb_Save|Save structure as .BMP	mapped	H04	rule 237: Cellular Automata window buttons
+control	control:TCellAuto|TSpeedButton|sb_OK|X	mapped	H04	rule 128: Cellular Automata window controls
+toolbar	toolbar:TCellAuto|sb_OK|X	mapped	H04	rule 237: Cellular Automata window buttons
+control	control:TCellAuto|TSpeedButton|sb_next|N	mapped	H04	rule 128: Cellular Automata window controls
+toolbar	toolbar:TCellAuto|sb_next|N	mapped	H04	rule 237: Cellular Automata window buttons
+control	control:TChangeArmyUnits|TChangeArmyUnits|ChangeArmyUnits|Change units	mapped	UA06	rule 143: Change units
+control	control:TChangeArmyUnits|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeArmyUnits|TLabel|Label1|Units in army	mapped	UA06	rule 143: Change units
+control	control:TChangeArmyUnits|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeArmyUnits|TButton|btn_ok|OK	mapped	UA06	rule 143: Change units
+control	control:TChangeArmyUnits|TButton|btn_cancel|Cancel	mapped	UA06	rule 143: Change units
+control	control:TChangeArmyUnits|TListBox|lbx_units|	mapped	UA06	rule 143: Change units
+control	control:TChangeArmyUnits|TButton|btn_join|Join units	mapped	D07	rule 142: Join units / Disband
+control	control:TChangeArmyUnits|TButton|btn_split|Split unit	mapped	D06	rule 141: Split unit
+control	control:TChangeArmyUnits|TButton|btn_disband|Disband	mapped	D07	rule 142: Join units / Disband
+control	control:TChangeArmyUnits|TButton|btn_rename|Rename unit	mapped	D05	rule 140: Rename unit
+control	control:TChangeTax|TChangeTax|ChangeTax|Change tax level	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TLabel|Label1|Current tax	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TLabel|lbl_oldtax|	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TLabel|lbl_oldincome|	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TLabel|Label2|Current income	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TLabel|Label3|New tax	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TLabel|Label4|New income	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TLabel|lbl_newtax|	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TLabel|lbl_newincome|	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TChangeTax|TLabel|Label7|Set tax level	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TButton|btn_ok|OK	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TButton|btn_cancel|Cancel	mapped	S03	rule 144: Change tax level
+control	control:TChangeTax|TTrackBar|tb_settax|	mapped	S03	rule 144: Change tax level
+control	control:TFindCity|TFindCity|FindCity|Find city	mapped	A08	rule 145: Find city
+control	control:TFindCity|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFindCity|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFindCity|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFindCity|TLabel|lbl_nat|	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_ok|OK	mapped	A08	rule 145: Find city
+control	control:TFindCity|TListBox|lbx_cities|	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_rome|Rome	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_carthage|Carthage	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_seleucid|Seleucid	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_ptolemaic|Ptolemaic	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_macedonia|Macedonia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_numidia|Numidia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_gaul|Gaul	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_greece|Greece	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_celtiberia|Celtiberia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_illyria|Illyria	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_dacia|Dacia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_bithynia|Bithynia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_galatia|Galatia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_armenia|Armenia	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_media|Media	mapped	A08	rule 145: Find city
+control	control:TFindCity|TButton|btn_thracia|Thracia	mapped	A08	rule 145: Find city
+control	control:TFleetToFleet|TFleetToFleet|FleetToFleet|Fleet to fleet transfer	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFleetToFleet|TLabel|Label7|First fleet's ships	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label1|First fleet's supply	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label2|First fleet's money	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label8|Second fleet's ships	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label3|Second fleet's supply	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label4|Second fleet's money	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label5|1s	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label6|10s	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label9|10s	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label10|10s	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label11|100s	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|Label12|100s	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|lbl_flt1ships|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|lbl_flt1supply|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|lbl_flt1money|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|lbl_flt2ships|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|lbl_flt2supply|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TLabel|lbl_flt2money|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TButton|btn_ok|OK	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TButton|btn_cancel|Cancel	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TUpDown|ud_ships1|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TUpDown|ud_supply10|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TUpDown|ud_money10|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TUpDown|ud_ships10|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TUpDown|ud_supply100|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFleetToFleet|TUpDown|ud_money100|	mapped	UF03,UF04	rule 146: Fleet to fleet transfer / Split fleet
+control	control:TFortifyCity|TFortifyCity|FortifyCity|Fortify city	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFortifyCity|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFortifyCity|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFortifyCity|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFortifyCity|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFortifyCity|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TFortifyCity|TLabel|Label1|Initial	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label2|fortification	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label3|1s	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label4|10s	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label5|New	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label6|fortification	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label7|Cost of	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|Label8|modification	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|lbl_initfort|99%	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|lbl_newfort|99%	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TLabel|lbl_cost|99%	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TButton|btn_ok|OK	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TButton|btn_cancel|Cancel	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TUpDown|ud_1s|	mapped	UC01	rule 147: Fortify city
+control	control:TFortifyCity|TUpDown|ud_10s|	mapped	UC01	rule 147: Fortify city
+control	control:THumanFalls|THumanFalls|HumanFalls|End of Game	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TLabel|lbl_result2|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_result1|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TLabel|lbl_changes|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel13|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TBevel|Bevel14|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THumanFalls|TLabel|lbl_nat1|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_pop1|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_cities1|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_money1|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_nat2|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_pop2|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_cities2|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TLabel|lbl_money2|	mapped	EG01	rule 148: End of Game
+control	control:THumanFalls|TButton|btn_ok|OK	mapped	EG01	rule 148: End of Game
+control	control:THVHBatPols|THVHBatPols|HVHBatPols|Peace offers between 2 human players	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TLabel|lbl_result1|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|Label1|They would normally offer the terms below for peace.	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TLabel|lbl_terms1|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|lbl_terms2|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|lbl_terms3|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TLabel|Label2|If the two nations want to transfer money as reparations	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|Label3|they should use the controls below.	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TLabel|lbl_nat1|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|lbl_give1|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|lbl_mon1|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TLabel|lbl_nat2|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|lbl_give2|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|lbl_mon2|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:THVHBatPols|TLabel|Label4|100s	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TLabel|Label5|1000s	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TUpDown|ud_100s|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TUpDown|ud_1000s|	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TButton|btn_ok|OK	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:THVHBatPols|TButton|btn_cancel|Cancel	mapped	D10	rule 138: Peace offers between 2 human players
+control	control:TInformation|TInformation|Information|Information	mapped	UM09	rule 149: Information window
+control	control:TInformation|TScrollBar|ScrollBarV|	mapped	UM09	rule 127: information-window scroll bars
+control	control:TInformation|TScrollBar|ScrollBarH|	mapped	UM09	rule 127: information-window scroll bars
+control	control:TPickLeaders|TPickLeaders|PickLeaders|Human and computer leaders	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TLabel|Label2|Nation	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TLabel|Label3|human	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TLabel|Label4|Leader's name	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TButton|btn_ok|OK	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TButton|btn_cancel|Cancel	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_rome|  Rome	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_rome|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_rome|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_carthage|  Carthage	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_carthage|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_carthage|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_seleucid|  Seleucid	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_seleucid|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_seleucid|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_ptolemaic|  Ptolemaic	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_ptolemaic|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_ptolemaic|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_macedonia|  Macedonia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_macedonia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_macedonia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_numidia|  Numidia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_numidia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_numidia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_gaul|  Gaul	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_gaul|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_gaul|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_greece|  Greece	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_greece|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_greece|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_celtiberia|  Celtiberia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_celtiberia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_celtiberia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_illyria|  Illyria	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_illyria|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_illyria|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_dacia|  Dacia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_dacia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_dacia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_bithynia|  Bithynia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_bithynia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_bithynia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_galatia|  Galatia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_galatia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_galatia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_armenia|  Armenia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_armenia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_armenia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_media|  Media	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_media|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_media|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TPanel|pnl_thracia|  Thracia	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TCheckBox|cbx_thracia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPickLeaders|TEdit|ed_thracia|	mapped	F02	rule 150: Human and computer leaders
+control	control:TPolitics|TPolitics|Politics|International Relations	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|Label2|peace	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|Label3|trade	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|Label4|ally	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|Label5|war	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel8|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel9|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel10|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel11|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel12|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel13|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel14|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel15|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TBevel|Bevel16|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TPolitics|TLabel|lbl_rom|Rome	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_car|Carthage	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_sel|Seleucid	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_pto|Ptolemaic	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_mac|Macedonia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_num|Numidia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_gau|Gaul	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_gre|Greece	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_cel|Celtiberia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_ill|Illyria	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_dac|Dacia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_bit|Bithynia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_gal|Galatia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_arm|Armenia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_med|Media	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TLabel|lbl_thr|Thracia	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TButton|btn_ok|OK	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TButton|btn_cancel|Cancel	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|grpbox_rom|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton1|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton2|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton3|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton4|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|grpbox_car|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton5|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton6|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton7|RadioButton7	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton8|RadioButton8	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox2|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton9|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton10|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton11|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton12|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox3|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton13|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton14|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton15|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton16|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox4|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton17|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton18|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton19|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton20|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox5|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton21|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton22|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton23|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton24|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox6|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton25|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton26|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton27|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton28|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox7|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton29|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton30|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton31|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton32|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox8|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton33|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton34|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton35|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton36|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox9|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton37|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton38|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton39|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton40|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox10|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton41|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton42|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton43|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton44|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox11|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton45|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton46|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton47|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton48|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox12|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton49|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton50|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton51|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton52|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox13|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton53|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton54|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton55|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton56|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox14|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton57|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton58|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton59|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton60|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TGroupBox|GroupBox15|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton61|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton62|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton63|	mapped	S02	rule 151: International Relations
+control	control:TPolitics|TRadioButton|RadioButton64|	mapped	S02	rule 151: International Relations
+control	control:TPremierForm|TPremierForm|PremierForm|Imperial Conquest 2	mapped	M01,M03,M04	rule 35: the main window itself (title, key handler, close query)
+control	control:TPremierForm|TPanel|Panel1|	mapped	M02	rule 50: panel holding the speed bar
+control	control:TPremierForm|TSpeedButton|sb_Open|Open saved game	mapped	F03	rule 39: speed bar
+toolbar	toolbar:TPremierForm|sb_Open|Open saved game	mapped	F03	rule 203: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Save|Save game position	mapped	F04	rule 40: speed bar
+toolbar	toolbar:TPremierForm|sb_Save|Save game position	mapped	F04	rule 204: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Endturn|End player's turn	mapped	G01	rule 41: speed bar
+toolbar	toolbar:TPremierForm|sb_Endturn|End player's turn	mapped	G01	rule 205: speed bar
+control	control:TPremierForm|TSpeedButton|sb_News|News	mapped	S01	rule 42: speed bar
+toolbar	toolbar:TPremierForm|sb_News|News	mapped	S01	rule 206: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Pols|International relations	mapped	S02	rule 43: speed bar
+toolbar	toolbar:TPremierForm|sb_Pols|International relations	mapped	S02	rule 207: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Tax|Taxation	mapped	S03	rule 44: speed bar
+toolbar	toolbar:TPremierForm|sb_Tax|Taxation	mapped	S03	rule 208: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Balance|Balance sheet	mapped	S04	rule 45: speed bar
+toolbar	toolbar:TPremierForm|sb_Balance|Balance sheet	mapped	S04	rule 209: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Newunit|Recruit unit	mapped	S05	rule 46: speed bar
+toolbar	toolbar:TPremierForm|sb_Newunit|Recruit unit	mapped	S05	rule 210: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Newfleet|Build fleet	mapped	S06	rule 47: speed bar
+toolbar	toolbar:TPremierForm|sb_Newfleet|Build fleet	mapped	S06	rule 211: speed bar
+control	control:TPremierForm|TSpeedButton|sb_Rome|Rome	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Rome|Rome	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Carthage|Carthage	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Carthage|Carthage	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Seleucid|Seleucid	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Seleucid|Seleucid	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Ptolemaic|Ptolemaic	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Ptolemaic|Ptolemaic	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Macedonia|Macedonia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Macedonia|Macedonia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Numidia|Numidia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Numidia|Numidia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Gaul|Gaul	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Gaul|Gaul	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Greece|Greece	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Greece|Greece	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Celtiberia|Celtiberia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Celtiberia|Celtiberia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Illyria|Illyria	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Illyria|Illyria	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Dacia|Dacia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Dacia|Dacia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Bithynia|Bithynia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Bithynia|Bithynia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Galatia|Galatia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Galatia|Galatia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Armenia|Armenia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Armenia|Armenia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Media|Media	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Media|Media	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Thracia|Thracia	mapped	N01	rule 49: speed bar nation buttons
+toolbar	toolbar:TPremierForm|sb_Thracia|Thracia	mapped	N01	rule 213: speed bar nation buttons
+control	control:TPremierForm|TSpeedButton|sb_Allnations|All nations	mapped	N02	rule 48: speed bar nation button
+toolbar	toolbar:TPremierForm|sb_Allnations|All nations	mapped	N02	rule 212: speed bar
+control	control:TPremierForm|TMainMenu|MainMenu|	mapped	M01	rule 51: the menu bar
+control	control:TPremierForm|TMenuItem|mt_file|File	mapped	M01	rule 55: top-level menu
+menu	menu:mt_file|File	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_Newgame|New	mapped	F01	rule 56: menu item
+menu	menu:mn_Newgame|New	mapped	F01	rule 158: menu item
+control	control:TPremierForm|TMenuItem|mn_Open|Open	mapped	F03	rule 57: menu item
+menu	menu:mn_Open|Open	mapped	F03	rule 159: menu item
+control	control:TPremierForm|TMenuItem|mn_Save|Save	mapped	F04	rule 58: menu item
+menu	menu:mn_Save|Save	mapped	F04	rule 160: menu item
+control	control:TPremierForm|TMenuItem|mn_SaveAs|Save As	mapped	F05	rule 59: menu item
+menu	menu:mn_SaveAs|Save As	mapped	F05	rule 161: menu item
+control	control:TPremierForm|TMenuItem|mn_Exit|Close	mapped	F06	rule 60: menu item
+menu	menu:mn_Exit|Close	mapped	F06	rule 162: menu item
+control	control:TPremierForm|TMenuItem|mt_Game|Game	mapped	M01	rule 55: top-level menu
+menu	menu:mt_Game|Game	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_Endturn|End turn	mapped	G01	rule 61: menu item
+menu	menu:mn_Endturn|End turn	mapped	G01	rule 163: menu item
+control	control:TPremierForm|TMenuItem|mn_Newplayer|New player	mapped	G02	rule 62: menu item
+menu	menu:mn_Newplayer|New player	mapped	G02	rule 164: menu item
+control	control:TPremierForm|TMenuItem|mn_Newnation|New nation	mapped	G03	rule 63: menu item
+menu	menu:mn_Newnation|New nation	mapped	G03	rule 165: menu item
+control	control:TPremierForm|TMenuItem|mn_Abdicate|Abdicate	mapped	G04	rule 64: menu item
+menu	menu:mn_Abdicate|Abdicate	mapped	G04	rule 166: menu item
+control	control:TPremierForm|TMenuItem|mt_Strategy|Strategy	mapped	M01	rule 55: top-level menu
+menu	menu:mt_Strategy|Strategy	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_News|News	mapped	S01	rule 65: menu item
+menu	menu:mn_News|News	mapped	S01	rule 167: menu item
+control	control:TPremierForm|TMenuItem|mn_Politics|International relations	mapped	S02	rule 66: menu item
+menu	menu:mn_Politics|International relations	mapped	S02	rule 168: menu item
+control	control:TPremierForm|TMenuItem|mn_Taxation|Taxation	mapped	S03	rule 67: menu item
+menu	menu:mn_Taxation|Taxation	mapped	S03	rule 169: menu item
+control	control:TPremierForm|TMenuItem|mn_Balancesheet|Balance sheet	mapped	S04	rule 68: menu item
+menu	menu:mn_Balancesheet|Balance sheet	mapped	S04	rule 170: menu item
+control	control:TPremierForm|TMenuItem|mn_Newunit|Recruit unit	mapped	S05	rule 69: menu item
+menu	menu:mn_Newunit|Recruit unit	mapped	S05	rule 171: menu item
+control	control:TPremierForm|TMenuItem|mn_Buildfleet|Build fleet	mapped	S06	rule 70: menu item
+menu	menu:mn_Buildfleet|Build fleet	mapped	S06	rule 172: menu item
+control	control:TPremierForm|TMenuItem|mt_Nations|Nations	mapped	M01	rule 55: top-level menu
+menu	menu:mt_Nations|Nations	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_Rome|Rome	mapped	N01	rule 72: menu item
+menu	menu:mn_Rome|Rome	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Carthage|Carthage	mapped	N01	rule 72: menu item
+menu	menu:mn_Carthage|Carthage	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Seleucid|Seleucid	mapped	N01	rule 72: menu item
+menu	menu:mn_Seleucid|Seleucid	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Ptolemaic|Ptolemaic	mapped	N01	rule 72: menu item
+menu	menu:mn_Ptolemaic|Ptolemaic	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Macedonia|Macedonia	mapped	N01	rule 72: menu item
+menu	menu:mn_Macedonia|Macedonia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Numidia|Numidia	mapped	N01	rule 72: menu item
+menu	menu:mn_Numidia|Numidia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Gaul|Gaul	mapped	N01	rule 72: menu item
+menu	menu:mn_Gaul|Gaul	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Greece|Greece	mapped	N01	rule 72: menu item
+menu	menu:mn_Greece|Greece	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Celtiberia|Celtiberia	mapped	N01	rule 72: menu item
+menu	menu:mn_Celtiberia|Celtiberia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Illyria|Illyria	mapped	N01	rule 72: menu item
+menu	menu:mn_Illyria|Illyria	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Dacia|Dacia	mapped	N01	rule 72: menu item
+menu	menu:mn_Dacia|Dacia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Bithynia|Bithynia	mapped	N01	rule 72: menu item
+menu	menu:mn_Bithynia|Bithynia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Galatia|Galatia	mapped	N01	rule 72: menu item
+menu	menu:mn_Galatia|Galatia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Armenia|Armenia	mapped	N01	rule 72: menu item
+menu	menu:mn_Armenia|Armenia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Media|Media	mapped	N01	rule 72: menu item
+menu	menu:mn_Media|Media	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Thracia|Thracia	mapped	N01	rule 72: menu item
+menu	menu:mn_Thracia|Thracia	mapped	N01	rule 174: menu item
+control	control:TPremierForm|TMenuItem|mn_Allnations|All nations	mapped	N02	rule 71: menu item
+menu	menu:mn_Allnations|All nations	mapped	N02	rule 173: menu item
+control	control:TPremierForm|TMenuItem|mt_Areamap|Area map	mapped	M01	rule 55: top-level menu
+menu	menu:mt_Areamap|Area map	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_Showcities|Show cities	mapped	A02	rule 73: menu item
+menu	menu:mn_Showcities|Show cities	mapped	A02	rule 175: menu item
+control	control:TPremierForm|TMenuItem|mn_Showcapital|Show capital	mapped	A03	rule 74: menu item
+menu	menu:mn_Showcapital|Show capital	mapped	A03	rule 176: menu item
+control	control:TPremierForm|TMenuItem|mn_Showarmies|Show armies	mapped	A04	rule 75: menu item
+menu	menu:mn_Showarmies|Show armies	mapped	A04	rule 177: menu item
+control	control:TPremierForm|TMenuItem|mn_Showfleets|Show fleets	mapped	A05	rule 76: menu item
+menu	menu:mn_Showfleets|Show fleets	mapped	A05	rule 178: menu item
+control	control:TPremierForm|TMenuItem|mn_Showall|Show all	mapped	A06	rule 77: menu item
+menu	menu:mn_Showall|Show all	mapped	A06	rule 179: menu item
+control	control:TPremierForm|TMenuItem|N1|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_Mercenaries|Show mercenaries	mapped	A07	rule 78: menu item
+menu	menu:mn_Mercenaries|Show mercenaries	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|mn_Lightinfantry|Light infantry	mapped	A07	rule 78: menu item
+menu	menu:mn_Lightinfantry|Light infantry	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|mn_Heavyinfantry|Heavy infantry	mapped	A07	rule 78: menu item
+menu	menu:mn_Heavyinfantry|Heavy infantry	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|mn_Archers|Archers	mapped	A07	rule 78: menu item
+menu	menu:mn_Archers|Archers	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|mn_Lightcavalry|Light cavalry	mapped	A07	rule 78: menu item
+menu	menu:mn_Lightcavalry|Light cavalry	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|mn_Heavycavalry|Heavy cavalry	mapped	A07	rule 78: menu item
+menu	menu:mn_Heavycavalry|Heavy cavalry	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|mn_Allmercs|All mercenaries	mapped	A07	rule 78: menu item
+menu	menu:mn_Allmercs|All mercenaries	mapped	A07	rule 180: menu item
+control	control:TPremierForm|TMenuItem|N6|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_Findcity|Find a city	mapped	A08	rule 79: menu item
+menu	menu:mn_Findcity|Find a city	mapped	A08	rule 181: menu item
+control	control:TPremierForm|TMenuItem|mt_Unitmap|Unit map	mapped	M01	rule 55: top-level menu
+menu	menu:mt_Unitmap|Unit map	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_Army|Army	mapped	UA01,UA02,UA03,UA04,UA05,UA06,UA07	rule 80: submenu parent
+menu	menu:mn_Army|Army	mapped	UA01,UA02,UA03,UA04,UA05,UA06,UA07	rule 182: submenu
+control	control:TPremierForm|TMenuItem|mn_Supplyarmy|Supply army	mapped	UA01	rule 83: menu item
+menu	menu:mn_Supplyarmy|Supply army	mapped	UA01	rule 185: menu item
+control	control:TPremierForm|TMenuItem|mn_Recruitmercs|Recruit mercenaries	mapped	UA02	rule 84: menu item
+menu	menu:mn_Recruitmercs|Recruit mercenaries	mapped	UA02	rule 186: menu item
+control	control:TPremierForm|TMenuItem|mn_Transferunit|Transfer unit	mapped	UA03	rule 85: menu item
+menu	menu:mn_Transferunit|Transfer unit	mapped	UA03	rule 187: menu item
+control	control:TPremierForm|TMenuItem|mn_Splitarmy|Split army	mapped	UA04	rule 86: menu item
+menu	menu:mn_Splitarmy|Split army	mapped	UA04	rule 188: menu item
+control	control:TPremierForm|TMenuItem|mn_Joinarmies|Join armies	mapped	UA05	rule 87: menu item
+menu	menu:mn_Joinarmies|Join armies	mapped	UA05	rule 189: menu item
+control	control:TPremierForm|TMenuItem|mn_Changeunits|Change units	mapped	UA06	rule 88: menu item
+menu	menu:mn_Changeunits|Change units	mapped	UA06	rule 190: menu item
+control	control:TPremierForm|TMenuItem|mn_Disbandarmy|Disband army	mapped	UA07	rule 89: menu item
+menu	menu:mn_Disbandarmy|Disband army	mapped	UA07	rule 191: menu item
+control	control:TPremierForm|TMenuItem|N2|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_Fleet|Fleet	mapped	UF01,UF02,UF03,UF04,UF05,UF06	rule 81: submenu parent
+menu	menu:mn_Fleet|Fleet	mapped	UF01,UF02,UF03,UF04,UF05,UF06	rule 183: submenu
+control	control:TPremierForm|TMenuItem|mn_Supplyfleet|Supply fleet	mapped	UF01	rule 90: menu item
+menu	menu:mn_Supplyfleet|Supply fleet	mapped	UF01	rule 192: menu item
+control	control:TPremierForm|TMenuItem|mn_Repairfleet|Repair fleet	mapped	UF02	rule 91: menu item
+menu	menu:mn_Repairfleet|Repair fleet	mapped	UF02	rule 193: menu item
+control	control:TPremierForm|TMenuItem|mn_Transferships|Transfer ships	mapped	UF03	rule 92: menu item
+menu	menu:mn_Transferships|Transfer ships	mapped	UF03	rule 194: menu item
+control	control:TPremierForm|TMenuItem|mn_Splitfleet|Split fleet	mapped	UF04	rule 93: menu item
+menu	menu:mn_Splitfleet|Split fleet	mapped	UF04	rule 195: menu item
+control	control:TPremierForm|TMenuItem|mn_Joinfleets|Join fleets	mapped	UF05	rule 94: menu item
+menu	menu:mn_Joinfleets|Join fleets	mapped	UF05	rule 196: menu item
+control	control:TPremierForm|TMenuItem|mn_Scuttlefleet|Scuttle fleet	mapped	UF06	rule 95: menu item
+menu	menu:mn_Scuttlefleet|Scuttle fleet	mapped	UF06	rule 197: menu item
+control	control:TPremierForm|TMenuItem|N3|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_City|City	mapped	UC01	rule 82: submenu parent
+menu	menu:mn_City|City	mapped	UC01	rule 184: submenu
+control	control:TPremierForm|TMenuItem|mn_Fortifycity|Fortify city	mapped	UC01	rule 96: menu item
+menu	menu:mn_Fortifycity|Fortify city	mapped	UC01	rule 198: menu item
+control	control:TPremierForm|TMenuItem|N4|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_Cancelselection|Cancel selection	mapped	UA08	rule 97: menu item
+menu	menu:mn_Cancelselection|Cancel selection	mapped	UA08	rule 199: menu item
+control	control:TPremierForm|TMenuItem|mt_Help|Help	mapped	M01	rule 55: top-level menu
+menu	menu:mt_Help|Help	mapped	M01	rule 157: top-level menu
+control	control:TPremierForm|TMenuItem|mn_Helptopics|Help topics	mapped	H01	rule 98: menu item
+menu	menu:mn_Helptopics|Help topics	mapped	H01	rule 200: menu item
+control	control:TPremierForm|TMenuItem|N7|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_Showhints|Show hints	mapped	H02	rule 99: menu item
+menu	menu:mn_Showhints|Show hints	mapped	H02	rule 201: menu item
+control	control:TPremierForm|TMenuItem|N5|-	excluded		rule 54: menu separator
+control	control:TPremierForm|TMenuItem|mn_About|About Imperial Conquest	mapped	H03	rule 100: menu item
+menu	menu:mn_About|About Imperial Conquest	mapped	H03	rule 202: menu item
+control	control:TPremierForm|TOpenDialog|GameOpen|	mapped	F03	rule 52: common Open dialog
+control	control:TPremierForm|TSaveDialog|GameSave|	mapped	F05	rule 53: common Save As dialog
+control	control:TRecruitMercs|TRecruitMercs|RecruitMercs|Recruit mercenary unit	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRecruitMercs|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRecruitMercs|TLabel|lbl_city|	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TLabel|Label2|Quarterly	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRecruitMercs|TLabel|Label3|cost	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TLabel|lbl_cost|0	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TButton|btn_ok|OK	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TListBox|lbx_mercs|	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRecruitMercs|TButton|btn_recruit|Recruit unit	mapped	UA02	rule 152: Recruit mercenary unit
+control	control:TRenameArmyUnit|TRenameArmyUnit|RenameArmyUnit|Rename unit	mapped	D05	rule 153: Rename unit
+control	control:TRenameArmyUnit|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRenameArmyUnit|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRenameArmyUnit|TLabel|Label1|Current name	mapped	D05	rule 153: Rename unit
+control	control:TRenameArmyUnit|TLabel|Label2|New name	mapped	D05	rule 153: Rename unit
+control	control:TRenameArmyUnit|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRenameArmyUnit|TLabel|lbl_oldname|	mapped	D05	rule 153: Rename unit
+control	control:TRenameArmyUnit|TButton|btn_ok|OK	mapped	D05	rule 153: Rename unit
+control	control:TRenameArmyUnit|TButton|btn_cancel|Cancel	mapped	D05	rule 153: Rename unit
+control	control:TRenameArmyUnit|TEdit|ed_newname|	mapped	D05	rule 153: Rename unit
+control	control:TRepairFleet|TRepairFleet|RepairFleet|Repair fleet	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TBevel|Bevel6|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TBevel|Bevel7|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TRepairFleet|TLabel|Label1|Original state	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label2|of repair	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label3|1s	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label4|10s	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label5|New state	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label6|of repair	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label7|Cost of	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|Label8|repairs	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|lbl_initrep|99%	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|lbl_newrep|99%	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TLabel|lbl_cost|99%	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TButton|btn_ok|OK	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TButton|btn_cancel|Cancel	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TUpDown|ud_1s|	mapped	UF02	rule 154: Repair fleet
+control	control:TRepairFleet|TUpDown|ud_10s|	mapped	UF02	rule 154: Repair fleet
+control	control:TSplitArmyUnit|TSplitArmyUnit|SplitArmyUnit|Split unit	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TSplitArmyUnit|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TSplitArmyUnit|TLabel|lbl_oldunit|	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TLabel|Label1|Unit to split	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TSplitArmyUnit|TLabel|Label2|Size of new units	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TBevel|Bevel4|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TSplitArmyUnit|TLabel|Label3|100s	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TLabel|Label4|1000s	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TBevel|Bevel13|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TSplitArmyUnit|TLabel|lbl_unit1|	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TBevel|Bevel5|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TSplitArmyUnit|TLabel|lbl_unit2|	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TButton|btn_ok|OK	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TButton|btn_cancel|Cancel	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TUpDown|ud_1000s|	mapped	D06	rule 155: Split unit
+control	control:TSplitArmyUnit|TUpDown|ud_100s|	mapped	D06	rule 155: Split unit
+control	control:TToEndTurn|TToEndTurn|ToEndTurn|End turn ?	mapped	D08	rule 156: End turn ? box
+control	control:TToEndTurn|TBevel|Bevel2|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TToEndTurn|TLabel|Label6|If you have not finished your turn click   MAKE MORE MOVES.	mapped	D08	rule 156: End turn ? box
+control	control:TToEndTurn|TLabel|Label1|If you are finished moving this turn click   END TURN.	mapped	D08	rule 156: End turn ? box
+control	control:TToEndTurn|TBevel|Bevel1|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TToEndTurn|TBevel|Bevel3|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TToEndTurn|TButton|btn_ok|End turn	mapped	D08	rule 156: End turn ? box
+control	control:TToEndTurn|TButton|Button1|Make more moves	mapped	D08	rule 156: End turn ? box
+control	control:TUnitMap|TUnitMap|UnitMap|Unit map	mapped	UM01,MM01,MM02,MM03	rule 36: the Unit map window itself (click handler)
+control	control:TUnitMap|TPanel|Panel1|	excluded		rule 110: container of the unit-map speed buttons, each mapped on its own
+control	control:TUnitMap|TSpeedButton|sb_supplyarmy|Supply army	mapped	UA01	rule 112: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_supplyarmy|Supply army	mapped	UA01	rule 222: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_recruitmercs|Recruit mercenaries	mapped	UA02	rule 113: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_recruitmercs|Recruit mercenaries	mapped	UA02	rule 223: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_transferunit|Transfer units	mapped	UA03	rule 114: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_transferunit|Transfer units	mapped	UA03	rule 224: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_splitarmy|Split army	mapped	UA04	rule 115: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_splitarmy|Split army	mapped	UA04	rule 225: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_joinarmies|Join armies	mapped	UA05	rule 116: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_joinarmies|Join armies	mapped	UA05	rule 226: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_changeunit|Change units	mapped	UA06	rule 117: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_changeunit|Change units	mapped	UA06	rule 227: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_disbandarmy|Disband army	mapped	UA07	rule 118: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_disbandarmy|Disband army	mapped	UA07	rule 228: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_supplyfleet|Supply fleet	mapped	UF01	rule 119: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_supplyfleet|Supply fleet	mapped	UF01	rule 229: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_repairfleet|Repair fleet	mapped	UF02	rule 120: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_repairfleet|Repair fleet	mapped	UF02	rule 230: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_transferships|Transfer ships	mapped	UF03	rule 121: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_transferships|Transfer ships	mapped	UF03	rule 231: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_splitfleet|Split fleet	mapped	UF04	rule 122: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_splitfleet|Split fleet	mapped	UF04	rule 232: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_joinfleets|Join fleets	mapped	UF05	rule 123: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_joinfleets|Join fleets	mapped	UF05	rule 233: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_scuttle|Scuttle fleet	mapped	UF06	rule 124: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_scuttle|Scuttle fleet	mapped	UF06	rule 234: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_fortifycity|Fortify city	mapped	UC01	rule 125: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_fortifycity|Fortify city	mapped	UC01	rule 235: unit-map speed button
+control	control:TUnitMap|TSpeedButton|sb_cancel|Cancel selection	mapped	UA08	rule 126: unit-map speed button
+toolbar	toolbar:TUnitMap|sb_cancel|Cancel selection	mapped	UA08	rule 236: unit-map speed button
+control	control:TUnitMap|TScrollBar|ScrollBarH|	mapped	UM08	rule 111: unit-map scroll bars
+control	control:TUnitMap|TScrollBar|ScrollBarV|	mapped	UM08	rule 111: unit-map scroll bars
+control	control:TUnitMap|TImageList|TerrainList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|ArmiesList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|FleetsList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|Cities1List|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|Cities2List|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|Cities3List|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|Cities4List|	excluded		rule 33: decoration or image strip: no behaviour of its own
+control	control:TUnitMap|TImageList|CapitalsList|	excluded		rule 33: decoration or image strip: no behaviour of its own
+help_cnt	help_cnt:Game aspects|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Game aspects > Introduction|Describe_game	mapped	V05,M03	rule 240: Introduction topic (premise, 16 nations)
+help_cnt	help_cnt:Game aspects > Improvements|Improvements_	excluded		rule 241: prose: changes from Imperial Conquest 1 to 2 (no UI)
+help_cnt	help_cnt:Game aspects > Cities|Cities_	mapped	UM02,E03	rule 242: Cities
+help_cnt	help_cnt:Game aspects > Armies|Armies_	mapped	UM03,UA01,E04	rule 243: Armies
+help_cnt	help_cnt:Game aspects > Fleets|Fleets_	mapped	UF01,E06,MM07	rule 244: Fleets
+help_cnt	help_cnt:Game aspects > Battle|Battle_	excluded		rule 245: tactical battle topic
+help_cnt	help_cnt:Game aspects > Time|Time_	mapped	E02,E04,E06,V02	rule 246: Time
+help_cnt	help_cnt:Game aspects > Victory|Victory_	mapped	V01,V05	rule 247: Victory
+help_cnt	help_cnt:Game aspects > Fonts|Fonts_	excluded		rule 248: rendering note on screen fonts (no feature)
+help_cnt	help_cnt:Menu Commands|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > File|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > File > New|New_game	mapped	F01,F02	rule 249: File > New
+help_cnt	help_cnt:Menu Commands > File > Open|Open_file	mapped	F03	rule 250: File > Open
+help_cnt	help_cnt:Menu Commands > File > Save|Save_file	mapped	F04	rule 251: File > Save
+help_cnt	help_cnt:Menu Commands > File > Save As|SaveAs_file	mapped	F05	rule 252: File > Save As
+help_cnt	help_cnt:Menu Commands > Game|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > Game > End turn|End_turn	mapped	G01	rule 253: Game > End turn
+help_cnt	help_cnt:Menu Commands > Game > New player|New_player	mapped	G02	rule 254: Game > New player
+help_cnt	help_cnt:Menu Commands > Game > New nation|New_nation	mapped	G03	rule 255: Game > New nation
+help_cnt	help_cnt:Menu Commands > Game > Abdicate|Abdicate_nat	mapped	G04	rule 256: Game > Abdicate
+help_cnt	help_cnt:Menu Commands > Strategy|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > Strategy > News|News_last	mapped	S01	rule 257: Strategy > News
+help_cnt	help_cnt:Menu Commands > Strategy > International relations|Pols	mapped	S02,S02a,S02b,S02c,S02d	rule 258: Strategy > International relations
+help_cnt	help_cnt:Menu Commands > Strategy > Taxation|Tax	mapped	S03	rule 259: Strategy > Taxation
+help_cnt	help_cnt:Menu Commands > Strategy > Balance sheet|Balance_sheet	mapped	S04	rule 260: Strategy > Balance sheet
+help_cnt	help_cnt:Menu Commands > Strategy > Recruit unit|New_unit	mapped	S05,S05a,S05b	rule 261: Strategy > Recruit unit
+help_cnt	help_cnt:Menu Commands > Strategy > Build fleet|New_fleet	mapped	S06	rule 262: Strategy > Build fleet
+help_cnt	help_cnt:Menu Commands > Nations|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > Nations > Nations|Nations_cur	mapped	N01,N02,N03	rule 263: Nations
+help_cnt	help_cnt:Menu Commands > Area map|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > Area map > Show cities|Show_cities	mapped	A02	rule 264: Area map > Show cities
+help_cnt	help_cnt:Menu Commands > Area map > Show capital|Show_capital	mapped	A03	rule 265: Area map > Show capital
+help_cnt	help_cnt:Menu Commands > Area map > Show armies|Show_armies	mapped	A04	rule 266: Area map > Show armies
+help_cnt	help_cnt:Menu Commands > Area map > Show fleets|Show_fleets	mapped	A05	rule 267: Area map > Show fleets
+help_cnt	help_cnt:Menu Commands > Area map > Show all|Show_all	mapped	A06	rule 268: Area map > Show all
+help_cnt	help_cnt:Menu Commands > Area map > Show mercenaries|Show_mercs	mapped	A07	rule 269: Area map > Show mercenaries
+help_cnt	help_cnt:Menu Commands > Area map > Find city|Find_city	mapped	A08	rule 270: Area map > Find city
+help_cnt	help_cnt:Menu Commands > Unit map|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Menu Commands > Unit map > Supply army|Supply_army	mapped	UA01	rule 271: Unit map > Supply army
+help_cnt	help_cnt:Menu Commands > Unit map > Recruit mercenaries|Recruit_mercenaries	mapped	UA02	rule 272: Unit map > Recruit mercenaries
+help_cnt	help_cnt:Menu Commands > Unit map > Transfer units|Transfer_units	mapped	UA03	rule 273: Unit map > Transfer units
+help_cnt	help_cnt:Menu Commands > Unit map > Split army|Split_army	mapped	UA04	rule 274: Unit map > Split army
+help_cnt	help_cnt:Menu Commands > Unit map > Join armies|Join_armies	mapped	UA05	rule 275: Unit map > Join armies
+help_cnt	help_cnt:Menu Commands > Unit map > Change units|Change_units	mapped	UA06	rule 276: Unit map > Change units
+help_cnt	help_cnt:Menu Commands > Unit map > Disband army|Disband_army	mapped	UA07	rule 277: Unit map > Disband army
+help_cnt	help_cnt:Menu Commands > Unit map > Supply fleet|Supply_fleet	mapped	UF01	rule 278: Unit map > Supply fleet
+help_cnt	help_cnt:Menu Commands > Unit map > Repair fleet|Repair_fleet	mapped	UF02	rule 279: Unit map > Repair fleet
+help_cnt	help_cnt:Menu Commands > Unit map > Transfer ships|Transfer_ships	mapped	UF03	rule 280: Unit map > Transfer ships
+help_cnt	help_cnt:Menu Commands > Unit map > Split fleet|Split_fleet	mapped	UF04	rule 281: Unit map > Split fleet
+help_cnt	help_cnt:Menu Commands > Unit map > Join fleets|Join_fleets	mapped	UF05	rule 282: Unit map > Join fleets
+help_cnt	help_cnt:Menu Commands > Unit map > Scuttle fleet|Scuttle_fleet	mapped	UF06	rule 283: Unit map > Scuttle fleet
+help_cnt	help_cnt:Menu Commands > Unit map > Fortify city|Fortify_city	mapped	UC01	rule 284: Unit map > Fortify city
+help_cnt	help_cnt:Menu Commands > Unit map > Cancel selection|Cancel_selection	mapped	UA08	rule 285: Unit map > Cancel selection
+help_cnt	help_cnt:Short cut keys|Short_cuts	mapped	K01,K02,K03	rule 286: Short cut keys
+help_cnt	help_cnt:Speed buttons|Speed_buttons	mapped	M02,A01,UM01	rule 287: Speed buttons
+help_cnt	help_cnt:Area map|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Area map > Area map|Area_map	mapped	A09,A10	rule 288: Area map window
+help_cnt	help_cnt:Area map > Show cities|Show_cities	mapped	A02	rule 289: Area map topic list
+help_cnt	help_cnt:Area map > Show capital|Show_capital	mapped	A03	rule 290: Area map topic list
+help_cnt	help_cnt:Area map > Show armies|Show_armies	mapped	A04	rule 291: Area map topic list
+help_cnt	help_cnt:Area map > Show fleets|Show_fleets	mapped	A05	rule 292: Area map topic list
+help_cnt	help_cnt:Area map > Show all|Show_all	mapped	A06	rule 293: Area map topic list
+help_cnt	help_cnt:Area map > Show mercenaries|Show_mercs	mapped	A07	rule 294: Area map topic list
+help_cnt	help_cnt:Area map > Find city|Find_city	mapped	A08	rule 295: Area map topic list
+help_cnt	help_cnt:Unit map|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Unit map > Unit map|Unit_map	mapped	UM01,UM02,UM03,UM06,UM07,MM01,MM10	rule 296: Unit map window
+help_cnt	help_cnt:Unit map > Army actions|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Unit map > Army actions > Army move|Army_move	mapped	MM03,MM07,MM08	rule 297: Army move
+help_cnt	help_cnt:Unit map > Army actions > Army attack|Army_attack	mapped	MM04,MM05	rule 298: Army attack
+help_cnt	help_cnt:Unit map > Army actions > Supply army|Supply_army	mapped	UA01	rule 299: Army actions
+help_cnt	help_cnt:Unit map > Army actions > Recruit mercenaries|Recruit_mercenaries	mapped	UA02	rule 300: Army actions
+help_cnt	help_cnt:Unit map > Army actions > Transfer units|Transfer_units	mapped	UA03	rule 301: Army actions
+help_cnt	help_cnt:Unit map > Army actions > Split army|Split_army	mapped	UA04	rule 302: Army actions
+help_cnt	help_cnt:Unit map > Army actions > Join armies|Join_armies	mapped	UA05	rule 303: Army actions
+help_cnt	help_cnt:Unit map > Army actions > Change units|Change_units	mapped	UA06	rule 304: Army actions
+help_cnt	help_cnt:Unit map > Army actions > Disband army|Disband_army	mapped	UA07	rule 305: Army actions
+help_cnt	help_cnt:Unit map > Fleet actions|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Unit map > Fleet actions > Fleet move|Fleet_move	mapped	MM09,MM08	rule 306: Fleet move
+help_cnt	help_cnt:Unit map > Fleet actions > Fleet attack|Fleet_attack	mapped	MM06	rule 307: Fleet attack
+help_cnt	help_cnt:Unit map > Fleet actions > Supply fleet|Supply_fleet	mapped	UF01	rule 308: Fleet actions
+help_cnt	help_cnt:Unit map > Fleet actions > Repair fleet|Repair_fleet	mapped	UF02	rule 309: Fleet actions
+help_cnt	help_cnt:Unit map > Fleet actions > Transfer ships|Transfer_ships	mapped	UF03	rule 310: Fleet actions
+help_cnt	help_cnt:Unit map > Fleet actions > Split fleet|Split_fleet	mapped	UF04	rule 311: Fleet actions
+help_cnt	help_cnt:Unit map > Fleet actions > Join fleets|Join_fleets	mapped	UF05	rule 312: Fleet actions
+help_cnt	help_cnt:Unit map > Fleet actions > Scuttle fleet|Scuttle_fleet	mapped	UF06	rule 313: Fleet actions
+help_cnt	help_cnt:Unit map > City actions|	excluded		rule 239: contents heading with no topic of its own
+help_cnt	help_cnt:Unit map > City actions > Fortify city|Fortify_city	mapped	UC01	rule 314: City actions
+help_cnt	help_cnt:Cancel selection|Cancel_selection	mapped	UA08	rule 315: Cancel selection
+help_topic	help_topic:0|New	mapped	F01,F03,F04,F05,F06	rule 316: File topics
+help_topic	help_topic:1|Open	mapped	F01,F03,F04,F05,F06	rule 316: File topics
+help_topic	help_topic:2|Save	mapped	F01,F03,F04,F05,F06	rule 316: File topics
+help_topic	help_topic:3|Save as	mapped	F01,F03,F04,F05,F06	rule 316: File topics
+help_topic	help_topic:4|Close	mapped	F01,F03,F04,F05,F06	rule 316: File topics
+help_topic	help_topic:5|End turn	mapped	G01	rule 317: Game topic
+help_topic	help_topic:6|New player	mapped	G02	rule 318: Game topic
+help_topic	help_topic:7|New nation	mapped	G03	rule 319: Game topic
+help_topic	help_topic:8|Abdicate	mapped	G04	rule 320: Game topic
+help_topic	help_topic:9|News	mapped	S01	rule 321: Strategy topic
+help_topic	help_topic:10|International relations	mapped	S02	rule 322: Strategy topic
+help_topic	help_topic:11|Taxation	mapped	S03	rule 323: Strategy topic
+help_topic	help_topic:12|Balance sheet	mapped	S04	rule 324: Strategy topic
+help_topic	help_topic:13|Recruit unit	mapped	S05	rule 325: Strategy topic
+help_topic	help_topic:14|Build fleet	mapped	S06	rule 326: Strategy topic
+help_topic	help_topic:15|Nations	mapped	N01,N03	rule 327: Nations topic
+help_topic	help_topic:16|Toggle colour	mapped	A01	rule 328: Area map topic
+help_topic	help_topic:17|Show cities	mapped	A02	rule 329: Area map topic
+help_topic	help_topic:18|Show capital	mapped	A03	rule 330: Area map topic
+help_topic	help_topic:19|Show armies	mapped	A04	rule 331: Area map topic
+help_topic	help_topic:20|Show fleets	mapped	A05	rule 332: Area map topic
+help_topic	help_topic:21|Show all	mapped	A06	rule 333: Area map topic
+help_topic	help_topic:22|Find city	mapped	A08	rule 334: Area map topic
+help_topic	help_topic:23|Show mercenaries	mapped	A07	rule 335: Area map topic
+help_topic	help_topic:24|Supply army	mapped	UA01	rule 336: Unit map topic
+help_topic	help_topic:25|Recruit mercenaries	mapped	UA02	rule 337: Unit map topic
+help_topic	help_topic:26|Transfer units	mapped	UA03	rule 338: Unit map topic
+help_topic	help_topic:27|Split army	mapped	UA04	rule 339: Unit map topic
+help_topic	help_topic:28|Join armies	mapped	UA05	rule 340: Unit map topic
+help_topic	help_topic:29|Change units	mapped	UA06	rule 341: Unit map topic
+help_topic	help_topic:30|Disband army	mapped	UA07	rule 342: Unit map topic
+help_topic	help_topic:31|Supply fleet	mapped	UF01	rule 343: Unit map topic
+help_topic	help_topic:32|Repair fleet	mapped	UF02	rule 344: Unit map topic
+help_topic	help_topic:33|Transfer ships	mapped	UF03	rule 345: Unit map topic
+help_topic	help_topic:34|Split fleet	mapped	UF04	rule 346: Unit map topic
+help_topic	help_topic:35|Join fleets	mapped	UF05	rule 347: Unit map topic
+help_topic	help_topic:36|Scuttle fleet	mapped	UF06	rule 348: Unit map topic
+help_topic	help_topic:37|Fortify city	mapped	UC01	rule 349: Unit map topic
+help_topic	help_topic:38|Cancel selection	mapped	UA08	rule 350: Unit map topic
+help_topic	help_topic:39|Army move	mapped	MM03,MM07,MM08	rule 351: Unit map topic
+help_topic	help_topic:40|Army attack	mapped	MM04,MM05	rule 352: Unit map topic
+help_topic	help_topic:41|Fleet move	mapped	MM09	rule 353: Unit map topic
+help_topic	help_topic:42|Fleet attack	mapped	MM06	rule 354: Unit map topic
+help_topic	help_topic:43|Introduction	mapped	V05,M03	rule 355: Game aspects
+help_topic	help_topic:44|Improvements	excluded		rule 356: prose: changes from Imperial Conquest 1 to 2
+help_topic	help_topic:45|Fonts	excluded		rule 357: rendering note on screen fonts
+help_topic	help_topic:46|Speed buttons	mapped	M02,A01,UM01	rule 358: speed-button topics
+help_topic	help_topic:47|Main speed buttons	mapped	M02,A01,UM01	rule 358: speed-button topics
+help_topic	help_topic:48|Area map speed buttons	mapped	M02,A01,UM01	rule 358: speed-button topics
+help_topic	help_topic:49|Unit map speed buttons	mapped	M02,A01,UM01	rule 358: speed-button topics
+help_topic	help_topic:50|Area map	mapped	A09,A10	rule 359: Area map window topic
+help_topic	help_topic:51|Unit map	mapped	UM01,UM02,UM03,UM06,UM07,MM01,MM10	rule 360: Unit map window topic
+help_topic	help_topic:52|Terrain	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:53|City symbols	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:54|Army symbols	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:55|Fleet symbols	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:56|National colours	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:57|Short cut keys	mapped	K01,K02,K03	rule 362: Short cut keys
+help_topic	help_topic:58|Cities	mapped	UM02,E03	rule 363: Game aspects
+help_topic	help_topic:59|Armies	mapped	UM03,UA01,E04	rule 364: Game aspects
+help_topic	help_topic:60|Unit costs	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:61|Unit details	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:62|Unit type v type	mapped	H05	rule 361: help reference tables (terrain costs, symbols, colours, unit tables)
+help_topic	help_topic:63|Fleets	mapped	UF01,E06,MM07	rule 365: Game aspects
+help_topic	help_topic:64|(	excluded		rule 368: tactical battle topics (title garbled by the decoder: Battle, battle unit symbols, battle speed buttons)
+help_topic	help_topic:65|( unit symbols	excluded		rule 368: tactical battle topics (title garbled by the decoder: Battle, battle unit symbols, battle speed buttons)
+help_topic	help_topic:66|( speed buttons	excluded		rule 368: tactical battle topics (title garbled by the decoder: Battle, battle unit symbols, battle speed buttons)
+help_topic	help_topic:67|Time	mapped	E02,E04,E06,V02	rule 366: Game aspects
+help_topic	help_topic:68|Victory	mapped	V01,V05	rule 367: Game aspects
+help_topic	help_topic:69|	excluded		rule 369: decoded topic header with no title and no text
+help_topic	help_topic:70|	excluded		rule 369: decoded topic header with no title and no text
+msgfn	msgfn:0x00436920|TBattleDelays_PrintNumbers|  secs	excluded		rule 371: tactical battle window text
+msgfn	msgfn:0x00437724|TBattleMap_MyUnitDetails|\'s units /   /     /      /     Q  /   M 	excluded		rule 371: tactical battle window text
+msgfn	msgfn:0x00437ad8|TBattleMap_Surrender|Are you sure you want to surrender ?	excluded		rule 370: TBattleMap_Surrender: "Are you sure you want to surrender ?" (tactical battle)
+msgfn	msgfn:0x00438504|FUN_00438504|\'s /  army /  mercenaries / Troops - / Quality - / Morale - / Moves - / Shots - /   / Unit set to attack / Troops	excluded		rule 372: tactical battle text (unit stats, SHOOTS AT / ATTACKS, losses, routed, place and move units)
+msgfn	msgfn:0x0043910c|FUN_0043910c| mercenaries / Troops /   /  SHOOTS AT / Unit destroyed ! / TROOP LOSSES  	excluded		rule 372: tactical battle text (unit stats, SHOOTS AT / ATTACKS, losses, routed, place and move units)
+msgfn	msgfn:0x004393ec|FUN_004393ec| mercenaries / Troops /   /  ATTACKS / UNIT  LOSSES / Attacker   / routed / Defender  	excluded		rule 372: tactical battle text (unit stats, SHOOTS AT / ATTACKS, losses, routed, place and move units)
+msgfn	msgfn:0x00439968|FUN_00439968|  v   /            /  to place units. /  to move units.	excluded		rule 372: tactical battle text (unit stats, SHOOTS AT / ATTACKS, losses, routed, place and move units)
+msgfn	msgfn:0x0043b394|TInformation_PaintForm|Unit moves /    (	excluded		rule 374: "Unit moves" heading of the battle information panel
+msgfn	msgfn:0x0043ba7c|TInformation_ShowNationStatus|Nation - / Leader - / Capital - / Cities - / Population - / Unity - / % / Tax rate - / Mobilized - / Treasury - /  talents /    /   /       INTERNATIONAL RELATIONS /    (  /  conquerred by  /  ) /   -	mapped	N03,UM09	rule 375: nation status panel text
+msgfn	msgfn:0x0043be5c|TInformation_ShowCityDetails|City - /   (capital of  / ) / Controlled by - / Allegiance to - / Population - / ( / %) / Loyalty - / Fortification - / % /   (under construction) /    ( / Tribute - /   talents / poor / moderate / ri	mapped	UM02	rule 376: city panel text
+msgfn	msgfn:0x0043c33c|TInformation_ShowArmyDetails|Army of  / Moves - / Supply - /  tons  ( / %) / Morale - / Money - /  talents / Terrain - /    / - / Total troops - / No. of units- / Regulars cost- /   talents per quarter / Mercenary pay-	mapped	UM03	rule 377: army panel text
+msgfn	msgfn:0x0043c890|TInformation_ShowFleetDetails|   / Army / Fleet of  / Moves - / Ships - / Repair - / % / Supply - /  tons  ( / %) / Money - /  talents / Capacity - /  troops / Sea- / calm / rough	mapped	UM05	rule 379: fleet panel text
+msgfn	msgfn:0x0043cc40|TInformation_ShowCityUnits|     / Mercenaries at  / There are no mercenaries at 	mapped	UM07	rule 380: mercenaries at a city text
+msgfn	msgfn:0x0043cdd8|TInformation_ShowArmyUnits|Army of  /    	mapped	UM06	rule 378: army unit list heading
+msgfn	msgfn:0x0043cf3c|TInformation_BattleUnitMoves|Unit moves of  / \'s army. /                              / mv  sh / unit set to attack /                                                            /   /         	excluded		rule 373: tactical battle information text
+msgfn	msgfn:0x0043d324|TInformation_PrintCoordinates|   	UNACCOUNTED		
+msgfn	msgfn:0x0043edc0|TAFSupply_InitializeForm|Supply fleet	mapped	UA01,UF01	rule 381: Supply dialog text
+msgfn	msgfn:0x0043efac|TAFSupply_CityOrFleet|Supplies on / fleet / money / National / balance / Supplies at	mapped	UA01,UF01	rule 381: Supply dialog text
+msgfn	msgfn:0x0043f468|TAFSupply_FindProviders|fleet	mapped	UA01,UF01	rule 381: Supply dialog text
+msgfn	msgfn:0x004404c0|TFortifyCity_InitializeForm|Fortify  /  %	mapped	UC01	rule 394: Fortify dialog text
+msgfn	msgfn:0x00440658|TFortifyCity_PrintNumbers| %	mapped	UC01	rule 394: Fortify dialog text
+msgfn	msgfn:0x00440ac4|TRepairFleet_InitializeForm| %	UNACCOUNTED		
+msgfn	msgfn:0x00440c14|TRepairFleet_PrintNumbers| %	UNACCOUNTED		
+msgfn	msgfn:0x00440fec|TRecruitMercs_InitializeForm|Units at  /   	mapped	UA02,L09	rule 405: mercenary dialog text and refusals
+msgfn	msgfn:0x00441360|TRecruitMercs_RecruitMercUnit|Your army has too little money to pay these mercenaries. / This fleet has too little space for these mercenaries. / An army can not contain more than 100,000 troops.	mapped	UA02,L09	rule 405: mercenary dialog text and refusals
+msgfn	msgfn:0x00441c24|TArmyToArmy_InitializeForm|Split army	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x00441ee0|TArmyToArmy_AddToListBox|  	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x00441ff8|TArmyToArmy_PrintNumbers| unit     /  units     /  troops	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x00442500|TArmyToArmy_Army1Transfer|This army already has 20 units. / An army can not hold more than 100,000 troops. / This fleet can not carry any more troops.	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x004426f0|TArmyToArmy_Army2Transfer|This army already has 20 units. / An army can not hold more than 100,000 troops. / This fleet can not carry any more troops.	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x004428e0|TArmyToArmy_Army1Disband|Are you sure you want to disband  /  unit / s / . / An army must be near its own city to disband a regular unit.	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x00442afc|TArmyToArmy_Army2Disband|Are you sure you want to disband  /  unit / s / . / An army must be near its own city to disband a regular unit.	mapped	UA03,UA04,L09,L11	rule 383: transfer dialog text and refusals
+msgfn	msgfn:0x0044356c|TFleetToFleet_InitializeForm|Split fleet	mapped	UF03,UF04	rule 393: caption 'Split fleet' of the fleet-to-fleet dialog
+msgfn	msgfn:0x004444cc|TSplitArmyUnit_OK|st  / nd  / rd  / th  / Foot  / Guards  / Bowmen  / Lancers  / Dragoons  /  Battalion	mapped	D06	rule 406: unit naming (1st, 2nd ... Foot, Guards, Bowmen, Lancers, Dragoons Battalion)
+msgfn	msgfn:0x00444aa8|TChangeArmyUnits_FillListBox|  	mapped	D05,D06,D07,L09	rule 392: Change units refusals
+msgfn	msgfn:0x00444bb0|TChangeArmyUnits_RenameUnit|You can only rename regular units. / You can only rename 1 unit at a time.	mapped	D05,D06,D07,L09	rule 392: Change units refusals
+msgfn	msgfn:0x00444cc4|TChangeArmyUnits_SplitUnit|This unit is too small to split. / This army already has 20 units. / You can only split regular units. / You can only split 1 unit at a time.	mapped	D05,D06,D07,L09	rule 392: Change units refusals
+msgfn	msgfn:0x00444e8c|TChangeArmyUnits_JoinUnits|You can only join regular units together. / These units are too large to be combined. / You can only combine units of the same type.	mapped	D05,D06,D07,L09	rule 392: Change units refusals
+msgfn	msgfn:0x004450c8|TChangeArmyUnits_Disband|Are you sure you want to disband  /  unit / s / . / An army must be near its own city to disband a regular unit.	mapped	D07,L09,L10	rule 391: Change units disband
+msgfn	msgfn:0x00445958|TUnitMap_InitializeForm|sb_supplyarmy / sb_supplyfleet / sb_fortifycity	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x004466cc|TUnitMap_SelectUnit|Are you sure you want to attack this city ? / Are you sure you want to attack this army ? / The army is too large for this fleet ? / Are you sure you want to attack this fleet ? / You cannot attack a 	mapped	MM04,MM05,MM06,MM07,L09,L10	rule 408: click handler prompts and refusals
+msgfn	msgfn:0x00446ff4|TUnitMap_RecruitMercenaries|You cannot recruit from an enemy city. / No mercenaries will join an army with so few supplies. / Your fleet cannot carry any more troops. / This army cannot get any bigger. / This army already has 20	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x004472fc|TUnitMap_JoinArmies|An army on a fleet cannot be combined with another. / These 2 armies combined contain more than 100,000 troops. / These 2 armies combined contain more than 20 units.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x0044755c|TUnitMap_SplitArmy|You can not split an army containing only 1 unit.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x004476ac|TUnitMap_DisbandArmy|An army must be near its own city to disband. / Are you sure you want to disband this army ?	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x004478c8|TUnitMap_RepairFlt|The fleet can only be repaired at one of your cities. / A fleet cannot be repaired while it is carrying an army.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x00447a48|TUnitMap_JoinFleets|You cannot join fleets if one is carrying an army. / There are more than 100 ships in these fleets combined.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x00447cac|TUnitMap_SplitFleet|You can not split a fleet containing less than 20 ships. / You can not make any more fleets at this time. / You can not split a fleet carrying an army.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x00447e34|TUnitMap_ScuttleFleet|To scuttle a fleet it must be near one of your cities. / Are you sure you want to scuttle this fleet ? / A fleet cannot be scuttled while it is carrying an army.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x00448004|TUnitMap_Fortify|This city cannot be fortified any further. / This city is already being fortified. / You cannot fortify a city which is under siege.	mapped	UA01,UA02,UA04,UA05,UA07,UF02,UF04,UF05,UF06,UC01,L09,L10	rule 409: unit-map order refusals and prompts
+msgfn	msgfn:0x00448e74|FUN_00448e74|             	UNACCOUNTED		
+msgfn	msgfn:0x00449078|FUN_00449078|Imperial Conquest 2	mapped	M04	rule 422: window title text on a seat change
+msgfn	msgfn:0x00449a44|FUN_00449a44| forms an alliance with  /  declares war on  / .	mapped	L03,L03b	rule 410: war and alliance lines
+msgfn	msgfn:0x0044a050|FUN_0044a050| finishes a new fleet at  / .	mapped	L07b,E05	rule 411: fleet launch line
+msgfn	msgfn:0x0044a218|FUN_0044a218|st  / nd  / rd  / th  / Foot / Guards / Bowmen / Lancers / Dragoons /  Battalion	mapped	D06	rule 412: unit naming (Foot, Guards ...)
+msgfn	msgfn:0x0044aee4|FUN_0044aee4| destroys army of  / .	mapped	L05	rule 413: "A destroys army of B." (instant battle)
+msgfn	msgfn:0x0044b27c|FUN_0044b27c|   ( / )  falls to  / . /  fails to capture  / ).	mapped	L04,L04b,E09,E11	rule 414: capture lines
+msgfn	msgfn:0x0044b5d0|FUN_0044b5d0| sinks fleet of  / .	mapped	L05	rule 415: "A sinks fleet of B."
+msgfn	msgfn:0x0044bd2c|FUN_0044bd2c| have moved their capital to  / .	mapped	L04b	rule 416: capital move line
+msgfn	msgfn:0x0044bed8|FUN_0044bed8| defects from  /  to  / .	mapped	L04b,E11	rule 417: defection line
+msgfn	msgfn:0x0044c528|FUN_0044c528|----------------------------------------------------------- /  conquers  / .	mapped	L08,E11	rule 418: elimination banner
+msgfn	msgfn:0x0044c8f0|FUN_0044c8f0| depose their leader  / .	mapped	L08	rule 419: AI leader deposed line
+msgfn	msgfn:0x00450c68|FUN_00450c68| and  /  have agreed to end their war. /  sues  /  for peace and; /      /  ends all current trading agreements. /   ends all current alliances. /  pays reparations of  /  talents.	mapped	L06	rule 420: treaty block
+msgfn	msgfn:0x004514ec|FUN_004514ec|A fleet belonging to  /  is lost at sea. /  is damaged in a storm. /   / Week   /        / BC	mapped	L07,E02,L01	rule 421: round tick lines
+msgfn	msgfn:0x00452d94|TPolitics_MakePeace| does not want to make peace at this time.	mapped	S02a,S02b,S02d,L09	rule 396: relations refusals
+msgfn	msgfn:0x00452e94|TPolitics_MakeTrade|You can only trade with 3 nations. /  does not want to trade with you. / You cannot trade with  / .	mapped	S02a,S02b,S02d,L09	rule 396: relations refusals
+msgfn	msgfn:0x004530d8|TPolitics_MakeAlliance| does not want to ally with your nation.	mapped	S02a,S02b,S02d,L09	rule 396: relations refusals
+msgfn	msgfn:0x0045495c|TArmyRecruits_SetCityRecruits|Create unit at  / Units at  / all cities /   	mapped	S05,S05a,S05b,L09,L11	rule 382: Army recruits text and refusals
+msgfn	msgfn:0x00454e78|TArmyRecruits_RecruitUnit|Your mobilisation rate is already 100%. /    / not ready / All cities / This city\'s fortification has fallen below 75%. / You have reached your limit of 40 units.	mapped	S05,S05a,S05b,L09,L11	rule 382: Army recruits text and refusals
+msgfn	msgfn:0x004552a8|TArmyRecruits_MobilizeUnits|You cannot mobilise a unit at this time.	mapped	S05,S05a,S05b,L09,L11	rule 382: Army recruits text and refusals
+msgfn	msgfn:0x004553b0|TArmyRecruits_DisbandUnits|Are you sure you want to disband  /  unit / s / .	mapped	S05,S05a,S05b,L09,L11	rule 382: Army recruits text and refusals
+msgfn	msgfn:0x00455a94|TBuildFleet_OK|The fleet will be built at  / .	mapped	S06	rule 388: "The fleet will be built at"
+msgfn	msgfn:0x00455e38|THumanFalls_InitializeForm|The game is over for  /  the leader of  / . / You have reached the end of your allotted 20 years. / Your unpopularity has forced the army to overthrow you. / Your army have deposed you because they ha	mapped	V01,V02,V03,V04,EG01	rule 395: End of Game text
+msgfn	msgfn:0x004569c0|TCellAuto_SaveBMP|ca / .BMP	mapped	H04	rule 390: file name of the saved pattern
+msgfn	msgfn:0x004577ec|TBattlePols_InitializeForm|After defeating you in battle  /  are willing to end / After losing to you in battle  / You  / They  / An honourable peace with no reparations or penalties. / will end all current trading agreements. 	mapped	D09	rule 386: Offer of peace text
+msgfn	msgfn:0x00457fa8|THVHBatPols_InitializeForm| has defeated  /  in battle. / An honourable peace with no reparations or penalties. /  will end all current trading agreements. /  will end all current alliances. /  will pay reparations of  /  talen	mapped	D10	rule 387: peace offers between 2 humans, text
+msgfn	msgfn:0x004584b8|THVHBatPols_PrintNumbers|will pay / will receive /  talents	mapped	D10	rule 387: peace offers between 2 humans, text
+msgfn	msgfn:0x00458bc8|TBattleOver_InitializeForm|\'s  army /   defeats   / \'s  army. / \'s army / The army of  /  captured  / no money. /  talents. / no suuplies. /  tons of supplies.	mapped	D11	rule 384: result box text (boundary row)
+msgfn	msgfn:0x00459220|TBattleOver_OK| destroys army of  / .	mapped	L05	rule 385: writes "A destroys army of B."
+msgfn	msgfn:0x00459828|TToEndTurn_InitializeForm|An army of yours needs supplies. / An army of yours cannot afford to pay its mercenary units. / A fleet of yours needs repairing. / One of your fleets is not docked at its own city. / A fleet of yours	mapped	D08,L12	rule 407: End turn ? lines
+msgfn	msgfn:0x0045a780|TPremierForm_InitialiseForm|sb_Open / sb_Rome / sb_Allnations / Imperial Conquest 2.DAT / Imperial Conquest 2.HLP / 1.wav / \\WAVS\\	mapped	M06,H01	rule 399: file names (DAT, HLP, WAVS folder) and speed-button name lookups
+msgfn	msgfn:0x0045a9e0|TPremierForm_NewGame|Are you sure you want to start a new game ?	mapped	F01,L10	rule 401: new-game prompt
+msgfn	msgfn:0x0045abec|TPremierForm_CheckQuit|Are you sure you want to quit ?	mapped	F06,L10	rule 398: quit prompt
+msgfn	msgfn:0x0045ac5c|TPremierForm_StartTurn|trade / form an alliance /  wants to  /  with  / .	mapped	E01	rule 404: diplomatic offer box text
+msgfn	msgfn:0x0045b198|TPremierForm_NewNation|Are you sure you want to lead a different nation ?	mapped	G03,L10	rule 402: new-nation prompt
+msgfn	msgfn:0x0045b24c|TPremierForm_Abdicate|Are you sure you want to abdicate ?	mapped	G04,L10	rule 397: abdicate prompt
+msgfn	msgfn:0x0045b3a8|TPremierForm_BuildNewFleet|A fleet of  /  ships will be ready in  /  weeks at  / . / Only nations with coastal cities can build fleets. / You do not have a free coastal city at this time. / You cannot build a fleet at this time	mapped	S06,L09	rule 389: Build fleet messages
+msgfn	msgfn:0x0045bf28|TPremierForm_MakeSound|Sound1 / Sound2 / Sound3 / Sound4 / Sound5 / Sound6 / Sound7 / Sound8 / Sound9 / Sound10 / .WAV	mapped	M06	rule 400: sound file names
+msgfn	msgfn:0x0045c084|TPremierForm_SetTurnTitle|Imperial Conquest 2     / \'s turn /    ( / )	mapped	M04	rule 403: title bar text
+msgfn	msgfn:0x0045c300|entry|Imperial Conquest 2	mapped	M04	rule 423: program entry: the application title string
+string	string:Fleet's	mapped	UF01	rule 424: label of the Supply dialog (TAFSupply)
+string	string:Fleet's	mapped	UF01	rule 424: label of the Supply dialog (TAFSupply)
+rule_head	rule_head:1. Calendar and turn sequencing	mapped	E02,G01,V02	rule 426: calendar and turn sequencing
+rule_head	rule_head:2. Supply	mapped	E04,E19,E12,UA01	rule 427: supply chapter
+rule_head	rule_head:Fields and capacity	mapped	UA01,UF01	rule 428: capacity rules
+rule_head	rule_head:Consumption per turn (per tick)	mapped	E04	rule 429: consumption by season
+rule_head	rule_head:Supply drives morale and moves	mapped	E29,E20	rule 430: morale and moves from supply
+rule_head	rule_head:How an army resupplies	mapped	UA01,E12	rule 431: manual and automatic resupply
+rule_head	rule_head:City supply stock (`+0x18`), per tick	mapped	E19	rule 432: city stock and winter famine
+rule_head	rule_head:What costs troops	mapped	E04,E21	rule 433: attrition causes
+rule_head	rule_head:3. Treasury, taxes, upkeep, desertion	mapped	E03,E15,E16,E17	rule 434: economy chapter
+rule_head	rule_head:The quarterly tick `FUN_00451b40`	mapped	E03,E27	rule 435: quarterly tick
+rule_head	rule_head:Mercenary pay and desertion	mapped	E15	rule 436: mercenary pay
+rule_head	rule_head:Debt and deposition	mapped	V04,E16	rule 437: deposition
+rule_head	rule_head:Tax effects	mapped	E17,S03	rule 438: tax effects
+rule_head	rule_head:Rome's economy at the start	mapped	E25,S04	rule 439: start values
+rule_head	rule_head:4. Recruitment, mobilization, fortification, mercenaries	mapped	S05,S05a,UC01,UA02	rule 440: recruitment chapter
+rule_head	rule_head:The recruitment queue	mapped	E23	rule 441: queue as garrison
+rule_head	rule_head:Placing an order	mapped	S05,E18	rule 442: placing a recruit order
+rule_head	rule_head:Readiness and quality	mapped	E23,S05a	rule 443: training ladder
+rule_head	rule_head:Mobilizing	mapped	S05a,E18	rule 444: mobilizing
+rule_head	rule_head:Which cities can recruit, and fortification (imperial_conquest_2#515)	mapped	S05,UC01	rule 445: recruiting cities and fortification
+rule_head	rule_head:Mercenaries	mapped	UA02,E10,E26	rule 446: mercenary pool, hire, AI hire
+rule_head	rule_head:5. Movement, attack, siege, capture	mapped	MM03,MM04,E20	rule 447: movement chapter
+rule_head	rule_head:Moves	mapped	E20	rule 448: moves per turn
+rule_head	rule_head:Walking	mapped	MM03,E20	rule 449: walking
+rule_head	rule_head:Adjacency and attack orders	mapped	MM04,MM05,E12	rule 450: attack orders and auto-resupply
+rule_head	rule_head:Siege	mapped	MM04,E21	rule 451: siege
+rule_head	rule_head:Capture, defection cascade, conquest, rebellion	mapped	E11,E14,E13	rule 452: capture, defection, conquest, rebellion
+rule_head	rule_head:6. Combat	excluded		rule 453: tactical battle chapter heading
+rule_head	rule_head:Which resolver runs	mapped	MM05,MM06	rule 454: which resolver runs for a click
+rule_head	rule_head:Tactical battle	excluded		rule 455: tactical battle
+rule_head	rule_head:Strategic strengths and the instant resolver	mapped	MM06,L05,L06	rule 456: AI-versus-AI instant resolver
+rule_head	rule_head:7. Diplomacy	mapped	S02,E22,D09	rule 457: diplomacy chapter
+rule_head	rule_head:8. Fleets	mapped	S06,E24,E06,MM07	rule 458: fleets chapter
+rule_head	rule_head:9. Weather and elimination	mapped	E07,E28,V03	rule 459: weather and elimination
+rule_head	rule_head:10. Rome's starting position (270 BC Spring week 1)	mapped	E25	rule 460: Rome's start
+rule_head	rule_head:11. The UI, for the xdotool driver	excluded		rule 461: driver notes (coordinates), restated by the form and menu rows
+rule_head	rule_head:12. Open gaps for rome-v1	excluded		rule 462: project to-do list, not a game feature
+mechanic	mechanic:Deterministic turn under a fixed seed	excluded		rule 463: property of the patched test build, not a player feature
+mechanic	mechanic:Siege attempt, failure, attacker attrition, city erosion	mapped	E09,E21	rule 464: siege attempt
+mechanic	mechanic:City capture	mapped	E11,E14	rule 465: capture
+mechanic	mechanic:Defection cascade	mapped	E14	rule 466: defection
+mechanic	mechanic:Conquest (a nation under 6 cities annexed)	mapped	E11,E28	rule 467: conquest
+mechanic	mechanic:Field battle (tactical, Computer general)	mapped	MM05	rule 468: leads to the excluded tactical battle
+mechanic	mechanic:Post-battle peace offer	mapped	D09	rule 469: offer of peace
+mechanic	mechanic:Supply consumption and seasonal rates	mapped	E04	rule 470: seasonal supply
+mechanic	mechanic:Winter attrition of city stocks	mapped	E19	rule 471: winter stock
+mechanic	mechanic:Morale from supply	mapped	E29	rule 472: morale
+mechanic	mechanic:Auto-resupply next to an own city	mapped	E12	rule 473: automatic resupply
+mechanic	mechanic:Recruitment readiness and mobilization	mapped	E23,S05a	rule 474: readiness and mobilization
+mechanic	mechanic:Mercenary hire, pay, desertion	mapped	UA02,E15	rule 475: mercenaries
+mechanic	mechanic:Quarterly billing and taxes	mapped	E03	rule 476: quarterly tick
+mechanic	mechanic:Fortification build	mapped	UC01	rule 477: fortification
+mechanic	mechanic:Trade income	mapped	E27	rule 478: trade income
+mechanic	mechanic:Fleets: build, launch	mapped	S06,E05	rule 479: fleets
+mechanic	mechanic:Fleets: storms, loss at sea, naval battles	mapped	E06,MM06	rule 480: storms, naval battles
+mechanic	mechanic:Embark, disembark, supply from a fleet	mapped	MM07,MM08,UF01	rule 481: embark and disembark
+mechanic	mechanic:Rebellion, rebirth	mapped	E13	rule 482: rebellion and rebirth
+mechanic	mechanic:Weather	mapped	E07	rule 483: weather
+mechanic	mechanic:AI declares war on Rome	mapped	E22	rule 484: AI wars
+report	report:2026-09-28-autosave-hook-feasibility.md|Autosave hook: feasible, and a working proof of concept	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:2026-09-28-battle-minigame-headless-feasibility.md|Battle minigame: research and replication through headless runs	excluded		rule 486: tactical battle report
+report	report:2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md|Fortification orders: cost, rate, and a bug that resets a town to 0%	mapped	UC01	rule 487: fortification orders
+report	report:2026-09-29-loading-a-save-does-not-reseed.md|Loading a save does not reseed the random generator; program start and New Game do	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:2026-09-29-nation-marker-colours.md|Nation marker colours: a background and a foreground per nation	mapped	UM01	rule 488: marker colours
+report	report:2026-09-29-nation-view-origin-and-unit-map-clicks.md|Nation `+0x486`/`+0x488` is the unit map's view origin; how a click becomes a tile	mapped	A09,MM01	rule 489: map clicks
+report	report:2026-09-29-new-game-recruitment-queues-come-from-the-dat.md|New games start with the DAT's recruitment queues, unchanged	mapped	E25	rule 490: new-game queues
+report	report:2026-09-29-which-cities-may-recruit-and-troop-amounts.md|Which cities may recruit, and the recruit dialog's troop amounts	mapped	S05	rule 491: recruiting cities
+report	report:2026-10-02-fleet-orders-live.md|Fleets live: build and launch, embark and unload by click, supply, repair, split, join, transfer, scuttle	mapped	UF01,UF02,UF03,UF04,UF05,UF06,MM07,MM08	rule 492: fleet orders
+report	report:2026-10-02-fleets-sail-and-drift.md|Two fleets sailing toward each other: moves, supplies and condition per turn against the research formulas	mapped	MM09,E24	rule 493: fleet moves and drift
+report	report:2026-10-02-naval-battle-army-aboard.md|Naval battles with an army aboard: the cargo adds to the fleet's strength, the winner's army loses about three times the fleet's fraction, the loser's army sinks with it	mapped	MM06	rule 494: naval battles
+report	report:2026-10-02-naval-battle-random-term.md|The random term of a naval battle: 160 battles fit "strength × (1 + U(0, 0.3)) on each side", with no attacker bonus	mapped	MM06	rule 494: naval battles
+report	report:2026-10-02-naval-battles.md|Naval battles between two fleets at war: instant, decided by strength, the loser sinks whole, the winner loses one fraction of ships and condition	mapped	MM06	rule 494: naval battles
+report	report:2026-10-02-start-as-each-nation.md|Starting as each of the 16 nations: one turn order, and a different world at each seat	mapped	E25,F01	rule 495: start per nation
+report	report:2026-10-02-two-human-seats.md|Two human seats: the original supports them, plays the AI seats in between, and overwrites the first human's autosave	mapped	F02,S02c	rule 496: two human seats
+report	report:2026-10-02-unit-map-mouse-orders-and-tax-range.md|The Unit map's mouse orders (select, move, attack prompt, Shift+X, split position) and the Taxation range, measured live	mapped	MM01,MM04,S03	rule 497: map mouse orders and tax range
+report	report:2026-10-03-army-to-army-ok-supply-rebalancing.md|Army to army transfer: what `OK` does with supply and money	mapped	UA03	rule 498: transfer rebalancing
+report	report:2026-10-03-end-turn-warning-box.md|The "End turn ?" box: every trigger, its threshold, and what the buttons do	mapped	D08,L12	rule 499: end-turn box
+report	report:2026-10-03-fleet-peace-prompt.md|Attacking a fleet of a nation you are not at war with: a Yes/No/Cancel box, Yes declares war on it and on its ally, and the battle follows at once	mapped	MM06	rule 500: fleet peace prompt
+report	report:2026-10-03-new-game-turn-order-shuffle.md|The New Game turn-order shuffle: a 16-swap shuffle on Delphi's `Random(16)`, draw 437 onward for seed 12345	mapped	E25	rule 501: turn order shuffle
+report	report:2026-10-03-pair-2-seleucid-ptolemaic.md|Pair 2 (Seleucid + Ptolemaic): a non-Roman nation builds a fleet at Issus in 12 turns, a fleet next to its own city cannot be attacked, and fresh supplied fleets fight as the strength formula says	mapped	MM06	rule 502: second fleet pair
+report	report:2026-10-03-storms-and-losses-at-sea.md|Storms: the research formula reproduces a fleet's damage at condition 85 exactly (rough sea, calm sea, next to a city, winter) and its losses at 45 within chance; a fleet at condition 45 is lost at sea, and an army aboard dies with it or survives as one shrunken unit	mapped	E06	rule 503: storms
+report	report:2026-10-04-battle-probe.md|One tactical battle end to end (battles plan, B0): the screen, Save As inside a battle, the lab build's 57-second repeatable battle, resume, and the post-battle "Offer of peace" box	excluded		rule 486: tactical battle report
+report	report:2026-10-04-decompiled-tactical-battle-rules.md|The tactical battle (`TBattleMap`), decompiled: rules, AI general, write-back and graphics	excluded		rule 486: tactical battle report
+report	report:2026-10-04-tactical-battle-sweep.md|Tactical battle sweep, Stage 1 so far (battles plan B1 to B4): the battle block decoded, crafted mid-battle saves, one pairing (HI v HI, size one) end to end	excluded		rule 486: tactical battle report
+report	report:army-moves-field-signed-and-the-ffff-underflow.md|`ArmyRecord +6` is a signed count, `0xFFFF` is −1 from an unfloored decrement, and the weekly moves formula is `10 − min(5, troops/20000)`	mapped	E20	rule 504: army moves
+report	report:army-records-and-roman-roster.md|Save army table and Roman roster at (100, 42)	mapped	UM03	rule 505: army record and roster
+report	report:army-to-army-transfer-confirmed.md|Army-to-army transfer: exact conservation, confirmed by video, save diff, and code	mapped	UA03	rule 506: transfer
+report	report:attack-and-siege-are-adjacency-orders.md|Attack and siege are adjacency orders, not movement	mapped	MM04	rule 507: adjacency orders
+report	report:battle-code-entry-points.md|Battle code: first static entry points	excluded		rule 486: tactical battle report
+report	report:battle-freeze-diagnosed-procmon.md|The battle "freeze" diagnosed: a hardcoded ~3-second pause per action, not a real hang	excluded		rule 486: tactical battle report
+report	report:battle-observation.md|Rome–Gaul battle: recorded behavior	excluded		rule 486: tactical battle report
+report	report:battle-quality-promotion-and-morale-array-decompiled.md|Digging into the promotion effect: the morale array identified, a clean promotion rule, and a new open field	excluded		rule 486: tactical battle report
+report	report:battle-recording-melee-cap-confirmed.md|The melee 40%-cap formula, confirmed exactly against five new recorded exchanges	excluded		rule 486: tactical battle report
+report	report:battle-replayed-rout-mechanic-and-combat-constants.md|The same battle fought twice: the rout mechanic, the attacker-side cap, and two resolved constants	excluded		rule 486: tactical battle report
+report	report:city-population-growth.md|City population growth: quarterly only, and the "weekly growth" is city supply production	mapped	E17,E19	rule 508: city growth
+report	report:city-units-army-transfer-and-mercenaries.md|City-unit totals, Ptolemaic movement, and the Roman 15,000-soldier transfer	mapped	S05a,UA02	rule 509: city units and mercenaries
+report	report:combat-type-effectiveness-matrix.md|The combat type-effectiveness matrix, located in the DAT file	excluded		rule 486: tactical battle report
+report	report:controlled-army-supply-transfer.md|Controlled army-supply transfer in save 11	mapped	UA01	rule 510: supply transfer
+report	report:dat-neighbour-mask.md|The neighbour mask is in the DAT: nation +0x46 is loaded, never derived, and only conquest changes it	mapped	E22	rule 511: neighbour mask for AI diplomacy
+report	report:decompiled-ai-offers-to-human-seats.md|AI offers to human seats: a notice, not a treaty; and the AI does not declare war on an ally	mapped	E01,E22	rule 512: AI offers
+report	report:decompiled-army-movement-and-river-cost.md|Army movement, decompiled: rivers cost moves, plain terrain apparently doesn't	mapped	MM03,E20	rule 513: movement
+report	report:decompiled-city-capture-resolution.md|City capture, decompiled: the siege-outcome formula and the ownership-transfer routine	mapped	E11,E14	rule 514: capture
+report	report:decompiled-combat-formula-structure.md|Combat resolution, decompiled: structure confirmed, constants partly open	excluded		rule 486: tactical battle report
+report	report:decompiled-defection-and-siege-attrition.md|A cascading defection mechanic, and where siege losses actually come from	mapped	E14,E21	rule 515: defection and siege attrition
+report	report:decompiled-diplomacy-peace-terms-and-instant-battles.md|Diplomacy, the reparations formula, and the original's own instant battle resolution	mapped	S02,D09	rule 516: diplomacy and peace terms
+report	report:decompiled-elimination-cleanup.md|Nation elimination, decompiled: armies deleted, fleets at sea sunk, fleets on the slipway handed over	mapped	V03,E28	rule 517: elimination
+report	report:decompiled-fleet-tax-and-mercenary-formulas.md|Decompiled formulas: fleet cost/capacity, tax income, and mercenary hiring	mapped	S06,S03,UA02	rule 518: fleet, tax, mercenary formulas
+report	report:decompiled-map-code1-overlay.md|Map code 1 is "rough sea": a weekly weather overlay, not a terrain type	mapped	E07	rule 519: rough-sea overlay
+report	report:decompiled-mercenary-offer-list-and-position.md|Mercenary offers are hired by position: adjacency for the player, radius 4 for the AI	mapped	UA02	rule 520: mercenary offers
+report	report:decompiled-mobilization-and-mercenary-restock.md|Mobilization decompiled: `FUN_0044a4e0`, what `> 15` means, and the mobilization rate's missing increment	mapped	S05a,E10,E18	rule 521: mobilization and restock
+report	report:decompiled-new-game-mercenary-fill.md|The New Game mercenary fill: one pass of the quarterly restock over an empty pool	mapped	E25	rule 522: new-game mercenaries
+report	report:decompiled-news-log-identified.md|The 61-byte record identified: it's the news log	mapped	L01	rule 523: news log
+report	report:decompiled-quarterly-billing-and-economy.md|The quarterly billing cycle: upkeep, treasury income, tribute, and rebellion	mapped	E03	rule 524: quarterly billing
+report	report:decompiled-quarterly-rebellion.md|The quarterly rebellion, decompiled: allegiance first, then a nearby enemy, then the best-placed neighbour	mapped	E13	rule 525: rebellion
+report	report:decompiled-recruitment-cost-formula.md|Decompiled recruitment cost formula, and a dead end on diplomacy	mapped	S05	rule 526: recruitment cost
+report	report:decompiled-sav-file-layout.md|The complete SAV file layout, from the actual read/write code	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:decompiled-turn-and-calendar-sequencing.md|Turn sequencing and the weekly tick, decompiled	mapped	E02	rule 527: turn and calendar
+report	report:decompiled-unit-map-orders-and-record-fields.md|The full strategic order set (`TUnitMap_*`), and three corrected record fields	mapped	UA01,UA02,UA04,UA05,UA07,UF01,UF02,UF04,UF05,UF06,UC01	rule 528: unit-map orders
+report	report:decompiled-war-cascade-and-peace-paths.md|The war cascade is one step deep, and an AI never ends a war with a human on its own	mapped	S02c,D09,L03	rule 529: war cascade and peace paths
+report	report:decompiled-weather-events.md|A seasonal weather-event system, not treasury collection	mapped	E07	rule 530: weather
+report	report:diplomatic-reparations-and-more-captures.md|A clean diplomatic reparation, two more captures, and an open fleet-order question	mapped	L06,E11	rule 531: reparations and captures
+report	report:field-recruitment-uniform-attrition-and-fleet-drift.md|A mercenary hire, a uniform attrition signature, and a fleet-record correction	mapped	E24	rule 532: field recruitment, drift
+report	report:fleet-order-at-caere.md|A controlled fleet order decodes the fleet table and confirms map markers 333/335	mapped	S06	rule 533: fleet order
+report	report:fleet-owner-field-confirmed.md|The fleet-record owner field, confirmed — no new experiment needed	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:full-battle-resolution-rome-vs-gaul.md|A complete tactical battle, captured end to end, plus two new UI screens	excluded		rule 486: tactical battle report
+report	report:galatia-elimination-and-city-resupply-confirmed.md|Galatia's elimination and a newly found city-resupply dialog	mapped	V03,E28,UA01	rule 534: elimination and resupply
+report	report:impconq2-full-save-analysis.md|Imperial Conquest 2: full-version and save-file static analysis	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:impconq2-initial-report.md|Imperial Conquest 2: initial static reverse-engineering report	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:instant-resolver-cannot-reproduce-a-tactical-battle.md|The instant resolver reproduces neither the shape nor, at any reachable ratio, the total	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:map-layout.md|Candidate DAT map layout	mapped	UM01	rule 535: map layout
+report	report:menu-and-toolbar-inventory.md|Menu and toolbar inventory	mapped	M01,M02	rule 536: menus and toolbars
+report	report:mercenary-pool-record.md|The mercenary pool: a fixed 50-slot table, confirmed by a real hire	mapped	E10	rule 537: mercenary pool
+report	report:mobilization-movement-and-city-capture-modes.md|Mobilization, army movement, and two capture modes across four turns	mapped	S05a	rule 538: mobilization and capture modes
+report	report:nation-tax-base-and-city-economy-fields.md|Where the nation tax base lives, how it is computed, and three economy fields corrected	mapped	E03,E27	rule 539: tax base
+report	report:news-log-format-and-messages.md|The news log: 40 NUL-terminated 61-byte slots, 21 message templates, and no diplomatic offers	mapped	L01	rule 540: news log format
+report	report:one-turn-save-comparison.md|Comparing `1.sav` and `4.sav` after one reported turn	mapped	E02	rule 541: one-turn comparison
+report	report:pending-offer-block-army-split-and-naupactus.md|The pending-diplomatic-offer block confirmed, an army split checked against its code, and Naupactus	mapped	E01,UA04	rule 542: pending offer, army split
+report	report:ptolemaic-player-and-week9.md|Ptolemaic player addition and Week 9 Summer turn	mapped	F02,E02	rule 543: Ptolemaic player and week 9
+report	report:ptolemy-run-news-log-vocabulary-verified.md|The news log's vocabulary, verified against a played year	mapped	L01	rule 544: news vocabulary
+report	report:ptolemy-run-readiness-ladder-and-mobilization-rate-confirmed.md|The readiness ladder and the mobilization rate, confirmed against a live UI	mapped	E23	rule 545: readiness ladder
+report	report:ptolemy-run-ui-inventory-and-leader-draw.md|The UI inventory, the leader draw, and a complete battle resolution	mapped	UM04,F02	rule 546: UI inventory and leader draw
+report	report:rivers-and-map-markers.md|Rivers, cities, and unit markers in the world grid	mapped	UM01	rule 547: rivers and markers
+report	report:rome-city-recruitment-and-nations.md|Rome city, recruitment queue, and nation colors in `11_supply.sav`	mapped	S05,N01	rule 548: recruitment and nations
+report	report:rome-tax-increase-and-sidon-capture.md|Controlled tax increase and Sidon's capture across three turns	mapped	S03,E11	rule 549: tax increase and capture
+report	report:saves-and-screenshots.md|Later saves and screenshot cross-checks	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:strategic-recording-and-summer-saves.md|Strategic-map recording and saves 8–10	excluded		rule 485: harness, provenance or save-format report: no player feature
+report	report:supply-capacity-rounding.md|Supply capacity: `troops div 100 + 1` in the supply dialog, `troops div 100` everywhere else	mapped	UA01,E12	rule 550: supply capacity
+report	report:supply-driven-morale-and-fleet-attrition.md|Supply drives army morale, and the naval death spiral — the turn tick's two unread branches	mapped	E04,E29,E24	rule 551: supply, morale, fleet attrition
+report	report:terrain-move-cost-table-in-dat.md|The terrain table, located in the DAT file — and a correction to the river-only movement rule	mapped	H05,E20	rule 552: terrain costs
+report	report:unit-type-stat-table-in-dat.md|The unit-type stat table, located in the DAT file and fully decoded	mapped	H05,S05	rule 553: unit type table
+report	report:upkeep-payment-and-desertion.md|Upkeep at the quarter boundary: the treasury pays regulars, the army purse pays mercenaries, and only mercenaries desert	mapped	E15,E16,V04	rule 554: upkeep and desertion
+news	news:n1|A forms an alliance with B.	mapped	L03b	exact literal in function 0x00449a44
+news	news:n2|A declares war on B.	mapped	L03	exact literal in function 0x00449a44
+news	news:n3|N finishes a new fleet at C.	mapped	L07b,E05	exact literal in function 0x0044a050
+news	news:n4|A destroys army of B.	mapped	L05	exact literal in function 0x0044aee4,0x00459220
+news	news:n5|C   (A)  falls to B.	mapped	L04b,E11	exact literal in function 0x0044b27c
+news	news:n6|N fails to capture C   (A).	mapped	L04,E09	exact literal in function 0x0044b27c
+news	news:n7|A sinks fleet of B.	mapped	L05	exact literal in function 0x0044b5d0
+news	news:n8|N have moved their capital to C.	mapped	L04b	exact literal in function 0x0044bd2c
+news	news:n9|C defects from A to B.	mapped	L04b,E11	exact literal in function 0x0044bed8
+news	news:n10|59-dash banner line	mapped	L08,E11	exact literal in function 0x0044c528
+news	news:n11|A conquers B.	mapped	L08,E11	exact literal in function 0x0044c528
+news	news:n13|N depose their leader L.	mapped	L08	exact literal in function 0x0044c8f0
+news	news:n14|A and B have agreed to end their war.	mapped	L06	exact literal in function 0x00450c68
+news	news:n15|B sues A for peace and;	mapped	L06	exact literal in function 0x00450c68
+news	news:n16|(indented) B ends all current trading agreements.	mapped	L06	exact literal in function 0x00450c68
+news	news:n17|(indented) B  ends all current alliances.	mapped	L06	exact literal in function 0x00450c68
+news	news:n18|(indented) B pays reparations of #,### talents.	mapped	L06	exact literal in function 0x00450c68
+news	news:n19|A fleet belonging to N is lost at sea.	mapped	L07,E06	exact literal in function 0x004514ec
+news	news:n20|A fleet belonging to N is damaged in a storm.	mapped	L07,E06	exact literal in function 0x004514ec
+news	news:n22|a single space (blank line)	mapped	L01,E02	exact literal in function 0x004514ec
+news	news:n23|Week  W      Season      YYYBC	mapped	L01,E02	exact literal in function 0x004514ec
+news	news:seed|the 27 lines the DAT seeds into the log (272 BC ... Week 1 Spring 270 BC)	mapped	L02	exact literal in function -
+news	news:offer|X wants to trade with Y. / X wants to form an alliance with Y. (a dialog, not news)	mapped	E01	exact literal in function 0x0045ac5c

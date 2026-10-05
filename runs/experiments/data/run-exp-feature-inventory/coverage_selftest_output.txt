@@ -1,0 +1,16 @@
+confirmed with only a report citation                          REJECTED  ['T1: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)']
+confirmed with only a log path                                 REJECTED  ['T1: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)']
+confirmed with a screenshot not in the manifest                REJECTED  ['T1: screenshot FI_b9_99_nothing.png is not in the tracked manifest']
+confirmed with a save name that no tracked file mentions       REJECTED  ['T1: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)']
+confirmed citing a coverage row that is not ✅                  REJECTED  ["T1: coverage.md row 'Supply army' not found with status ✅"]
+derived with no function, form, report or help topic           REJECTED  ['T1: [derived] without a function, form, report or help topic']
+bad tag word                                                   REJECTED  ["T1: bad tag '[probable]'"]
+two different screens with one hash (batch 1 submenu shots)    REJECTED  ["duplicate screenshot hash 7452604d37... cited as different screens: ['FI_b1_11_menu_unit.png', 'FI_b1_14_menu_unit_fleet_submenu.png']"]
+news literal only a substring of a real literal                REJECTED  ["news x: exact literal ' declares' is not a literal of function(s) 0x00449a44"]
+news literal in the wrong function                             REJECTED  ["news x: exact literal ' declares war on ' is not a literal of function(s) 0x004514ec"]
+news literal that exists nowhere                               REJECTED  ["news x: exact literal 'never written' is not a literal of function(s) 0x00449a44"]
+news literal accepted when exact and in its function (control) ACCEPTED  []
+rules naming a row that no longer exists                       REJECTED
+the real inventory passes (control)                            PASSES
+
+14 of 14 checks behaved as required
