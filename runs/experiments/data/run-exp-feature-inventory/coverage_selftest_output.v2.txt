@@ -1,0 +1,45 @@
+REJECT confirmed with only a report citation                           OK  ['T1: [confirmed] without a manifest screenshot, an independently indexed save or a ✅ coverage.md row (a report or log citation is not confirmation)']
+REJECT confirmed with only a log path                                  OK  ['T1: [confirmed] without a manifest screenshot, an independently indexed save or a ✅ coverage.md row (a report or log citation is not confirmation)']
+REJECT invented save that no independent artifact names                OK  ["T1: save INVENTED_BY_ME.SAV is in no independent artifact (saves/, coverage.md, tests/results.md, other runs' hash lists, other findings)"]
+REJECT invented save also on a derived row                             OK  ["T1: save INVENTED_BY_ME.SAV is in no independent artifact (saves/, coverage.md, tests/results.md, other runs' hash lists, other findings)"]
+the inventory finding is not a source of the save index                OK  
+REJECT save name that is only a substring of a real one (T_MOV.SAV)    OK  ["T1: save T_MOV.SAV is in no independent artifact (saves/, coverage.md, tests/results.md, other runs' hash lists, other findings)"]
+ACCEPT a real save named in coverage.md (control)                      OK  []
+REJECT screenshot not in the manifest                                  OK  ['T1: screenshot FI_b9_99_nothing.png is not in the tracked manifest']
+REJECT two different screens with one hash (batch-1 submenu shots)     OK  ["duplicate screenshot hash 7452604d37... cited as different screens: ['FI_b1_11_menu_unit.png', 'FI_b1_14_menu_unit_fleet_submenu.png']"]
+ACCEPT a unique manifest screenshot (control)                          OK  []
+REJECT wrong-section coverage row (the §1 Fleet row cited as §4)       OK  ["T1: coverage.md §4 has no row whose first cell is exactly 'Fleet: move, embark, disembark, supply, repair, split, join, transfer, scuttle'"]
+REJECT substring of a real row (C:§1 Fleet)                            OK  ["T1: coverage.md §1 has no row whose first cell is exactly 'Fleet'"]
+REJECT ambiguous first cell (C:§3 Attack, several rows)                OK  ["T1: coverage.md §3 first cell 'Attack' is not unique (ambiguous)"]
+REJECT coverage row that is not done (C:§1 Supply army)                OK  ["T1: coverage.md §1 row 'Supply army' does not have status ✅"]
+REJECT bare section citation with no row                               OK  ['T1: bare C:§ citation (cite section and the exact first cell)']
+ACCEPT exact section and row (control)                                 OK  []
+REJECT X:NO_SUCH_FUNCTION                                              OK  ["T1: X: target(s) not in the symbol/function lists: ['NO_SUCH_FUNCTION']"]
+REJECT a bare X:                                                       OK  ['T1: empty X: citation']
+REJECT derived with no target at all                                   OK  ['T1: [derived] without a resolvable function, form, help topic or document']
+REJECT form citation to an unknown form                                OK  ["T1: form citation target(s) unknown: ['TNoSuchForm']"]
+REJECT help topic that does not exist                                  OK  ["T1: help topic(s) unknown: ['No such topic']"]
+REJECT document that does not exist                                    OK  ['T1: unknown document no-such-report.md']
+REJECT finding that does not exist                                     OK  ['T1: unknown document 2099-01-01-nothing.md']
+REJECT rules-digest section that does not exist                        OK  ['T1: rules-digest has no section 99']
+REJECT rules-digest heading that does not exist                        OK  ["T1: rules-digest has no heading 'Nothing like this'"]
+REJECT bad tag word                                                    OK  ["T1: bad tag '[probable]'"]
+ACCEPT real function, form, help topic (control)                       OK  []
+REJECT news literal only a substring of a real literal                 OK  ["news x: exact literal ' declares' is not a literal of function(s) 0x00449a44"]
+REJECT news literal in the wrong function                              OK  ["news x: exact literal ' declares war on ' is not a literal of function(s) 0x004514ec"]
+REJECT news literal that exists nowhere                                OK  ["news x: exact literal 'never written' is not a literal of function(s) 0x00449a44"]
+ACCEPT exact literal in its function (control)                         OK  []
+REJECT an EXCLUDED rule with an empty reason on a real source entry    OK  rule problems: ['cfg line 1: empty reason (every rule, and every exclusion, needs a stated reason)', 'entry form:TAboutI
+REJECT an EXCLUDED rule with a whitespace-only reason                  OK  
+REJECT a real source entry (form TAboutIC) with no rule: unaccounted   OK  
+REJECT rules naming a row that no longer exists                        OK  
+REJECT an audited condition missing from its row                       OK  
+REJECT an audit quote that is not on its source line                   OK  
+REJECT the E12 row with its treasury gate dropped (the review's R1 case) OK  
+ACCEPT the real inventory (control)                                    OK  
+
+Known residual bypasses (semantic, not checkable from tracked files): a cited research-report SECTION is not verified (only the file exists);
+a real function, help topic, save or screenshot cited for a claim it does not support; a finding that exists but does not say what is cited;
+audit keys are regexes written by the author. These are covered by the row_source_audit conditions and by human review.
+
+39 of 39 checks behaved as required

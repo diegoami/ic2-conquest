@@ -17,23 +17,32 @@ open_unit_menu(); pp, ph = snap(g, 'FI_b2_01_unit_menu_parent.png', '480x300+0+2
 parent_words = [t for t, x, y in ocr_words(pp)]
 log(B, 'parent OCR: %s' % parent_words)
 proven = {}
-for sub, expect in (('Army', ('Supply', 'Disband')), ('Fleet', ('Scuttle', 'Repair')), ('City', ('Fortify',))):
+FULL = {'Army': ('Supply army', 'Recruit mercenaries', 'Transfer unit', 'Split army', 'Join armies', 'Change units', 'Disband army'),
+        'Fleet': ('Supply fleet', 'Repair fleet', 'Transfer ships', 'Split fleet', 'Join fleets', 'Scuttle fleet'), 'City': ('Fortify city',)}
+def crop_hash(path, geom):
+    import hashlib as _h
+    tmp = '/tmp/claude-1000/b2_crop.png'; subprocess.run(['convert', path, '-crop', geom, '+repage', tmp], check=True)
+    return _h.sha256(open(tmp, 'rb').read()).hexdigest()
+ph_crop = crop_hash(pp, '480x300+0+0')
+for sub, expect in FULL.items():
     ok = False
-    for attempt in range(4):
+    for attempt in range(2):                      # at most two tries
         open_unit_menu()
-        # the parent menu is re-read each time: locate the item by OCR, then hover it
         p0, h0 = snap(g, 'FI_b2_tmp_%s_%d.png' % (sub, attempt), '480x300+0+26')
         pos = word_pos(p0, sub)
         if not pos: log(B, '%s: item not found by OCR (attempt %d)' % (sub, attempt)); continue
-        x, y = pos[0] + 0, pos[1] + 26
+        x, y = pos[0], pos[1] + 26
         sh('xdotool', 'mousemove', str(x), str(y)); time.sleep(0.4); sh('xdotool', 'mousemove', str(x + 25), str(y + 1)); time.sleep(1.2)
         p1, h1 = snap(g, 'FI_b2_02_unit_%s_submenu.png' % sub.lower(), '700x300+0+26')
-        words = [t for t, xx, yy in ocr_words(p1)]
-        hit = [w for w in expect if any(t.lower().startswith(w.lower()) for t in words)]
-        log(B, '%s attempt %d: hash %s expect %s found %s' % (sub, attempt, h1[:12], expect, hit))
-        if hit and h1 != ph: ok = True; proven[sub] = (p1, h1); break
+        tmp = '/tmp/claude-1000/b2_sub.png'; subprocess.run(['convert', p1, '-crop', '300x300+380+0', '+repage', '-resize', '400%', '-colorspace', 'Gray', tmp], check=True)
+        text = ' '.join(subprocess.run(['tesseract', tmp, 'stdout', '--psm', '4'], capture_output=True, text=True).stdout.lower().split())
+        missing = [w for w in expect if w.lower() not in text]
+        same_as_parent = crop_hash(p1, '480x300+0+0') == ph_crop     # identical crops compared
+        log(B, '%s attempt %d: missing items %s; identical to parent crop: %s' % (sub, attempt, missing, same_as_parent))
+        if not missing and not same_as_parent: ok = True; proven[sub] = (p1, h1); break
     log(B, '%s submenu proven open: %s' % (sub, ok))
     g.reset_ui()
+    if not ok: raise SystemExit('ABORT: the %s submenu was not proven open; its screenshot must not be used as evidence' % sub)
 log(B, 'distinct hashes: %s' % (len({h for p, h in proven.values()}) == len(proven)))
 # --- 2. Show hints toggle: tooltip over the first nation button
 def tooltip(tag):
