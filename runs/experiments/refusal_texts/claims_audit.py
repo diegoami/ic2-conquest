@@ -15,6 +15,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths
 from common import latest, write_new
 import savefacts as SF
+import construct as C
 
 def run(finding, data, art, exe=None, dump=None, quiet=True):
     data = data.rstrip('/') + '/'; art = art.rstrip('/') + '/'
@@ -114,17 +115,21 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
                 check('%s literal byte for byte: finding %r vs call site %r' % (r['id'], sp[0] if sp else None, lit), sp and sp[0] == lit)
                 if EXE:
                     check('%s literal is a NUL-delimited string of the executable' % r['id'], EXE.d.find(b'\0' + lit.encode('latin1') + b'\0') >= 0)
-            else:                                    # a message built at run time: the fixed pieces must be literals of that function, in this order
+            else:                                    # a message built at run time: its whole construction is recomputed from the extract (order, variables, conditional and either/or pieces)
                 check('%s built message: the call passes no literal' % r['id'], lit is None, str(lit))
-                fl_lines = [ln for ln in X if FN.get(ln) == fn]
-                pos = min(fl_lines); ok = True        # each fixed piece must be a literal of that function (their order of execution is not their order of lines)
-                for s in sp:
-                    if s.startswith('<') and s.endswith('>'): continue
-                    found = [ln for ln in fl_lines if re.search(r'"((?:[^"\\]|\\.)*)"', X[ln]) and any(unesc(mm) == s for mm in re.findall(r'"((?:[^"\\]|\\.)*)"', X[ln]))]
-                    if not found: ok = False; bad.append('%s: fragment %r not found as a literal of %s' % (r['id'], s, fn)); break
-                checks[0] += 1
+                try: derived = C.spans(X, line)
+                except Exception as e: derived = ['<cannot derive: %s>' % e]
+                check('%s built message: finding %r vs construction recomputed from %s: %r' % (r['id'], r['literal'], fn, ' + '.join(derived or [])), r['literal'] == ' + '.join(derived or []))
+            # every cited line must lie in the row's own function, or in a function the condition names
+            for col in ('condition [derived]', 'raised when [derived]', 'raised when'):
+                for ln, q in re.findall(r'L(\d+) «([^»]*)»', r.get(col, '')):
+                    f2 = FN.get(int(ln))
+                    check('%s cited line %s is in %s or a function the condition names (it is in %s)' % (r['id'], ln, fn, f2), f2 == fn or (f2 is not None and f2 in r.get(col, '')))
             bt, bb = box_cell(r['box [buttons]'])
             check('%s box type: finding %s vs code %s' % (r['id'], bt, dlg), bt == dlg)
+            if tname == 'prompts': check('%s is in the prompts table: its button set must be Yes+No+Cancel (finding %s)' % (r['id'], bb), bb == 'mbYes+mbNo+mbCancel')
+            if tname == 'catalogue': check('%s is in the refusals table: its button set must have no Yes/No (finding %s)' % (r['id'], bb), 'mbYes' not in bb and 'mbNo' not in bb)
+            if tname == 'notices': check('%s is in the notices table: %s must be OK-only, or the battle screen' % (r['id'], bb), (r.get('kind') == 'excluded' and fn.startswith('TBattleMap_')) or (r.get('kind') == 'notice' and bb == 'mbOK'))
             if word is not None:
                 want = '+'.join(BTN[k] for k in range(11) if word >> k & 1)
                 check('%s buttons: finding %s vs executable %s' % (r['id'], bb, want), bb == want)
@@ -150,20 +155,27 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
     check('count: prompt rows', num('prompts catalogued') == kinds.get('prompts'), str(kinds))
     check('count: notice rows', num('notices catalogued') == kinds.get('notice'), str(kinds))
     check('count: excluded rows', num('excluded (battle screen)') == kinds.get('excluded'), str(kinds))
-    check('count: catalogued sums to sites', num('refusals catalogued') + num('prompts catalogued') + num('notices catalogued') + num('excluded (battle screen)') == num('message-box call sites'))
+    check('count: the rows recounted from the tables sum to the sites recomputed from the extract', sum(kinds.values()) == len(all_call_lines), str(kinds))
     lit_sites = sum(1 for ln in all_call_lines if site(ln)[0] is not None)
     check('count: call sites whose text is a literal', num('call sites with a literal text') == lit_sites, str(lit_sites))
     check('count: call sites whose text is built at run time', num('call sites with a built text') == len(all_call_lines) - lit_sites, str(len(all_call_lines) - lit_sites))
-    check('count: literals catalogued = literals found', num('literals found at call sites') == num('literals catalogued'))
+    check('count: literals found at call sites (recomputed)', num('literals found at call sites') == lit_sites, str(lit_sites))
     lits_cat = sum(1 for r in CAT.values() if not any(s.startswith('<') for s in spans(r['literal'])))
+    check('count: literals catalogued = literals found, both recomputed', lits_cat == lit_sites, '%d vs %d' % (lits_cat, lit_sites))
     check('count: literals catalogued recomputed', num('literals catalogued') == lits_cat, str(lits_cat))
     lt = latest(data + 'literals_in_scope.tsv'); cats = {}
     for l in open(lt, encoding='utf-8').read().splitlines()[1:]:
         f = l.split('\t'); cats[f[3]] = cats.get(f[3], 0) + 1
     check('count: message-box literals in the scan of the T* functions', num('message-box literals in the scan of the T*_* functions') == cats.get('message-box literal'), str(cats))
-    check('count: message-box literals in the scan = literals found', num('message-box literals in the scan of the T*_* functions') == num('literals found at call sites'))
+    check('count: message-box literals in the scan (recomputed) = literals found (recomputed)', cats.get('message-box literal') == lit_sites, '%s vs %s' % (cats, lit_sites))
     check('count: fragments of built messages in the scan', num('fragments of built messages (not boxes of their own)') == cats.get('fragment of a built message'), str(cats))
     check('count: other strings in the scan', num('other strings (captions, panel labels, names)') == cats.get('other'), str(cats))
+    cls = [l.split('\t') for l in open(latest(data + 'class_sites.tsv'), encoding='utf-8').read().splitlines()[1:]]
+    check('classes table equals class_sites.tsv', [[c.strip() for c in r.values()] for r in T.get('classes', [])] == [[c.strip() for c in r] for r in cls])
+    check('classes table: the calls of all classes sum to the call lines recomputed from the extract', sum(int(r[2]) for r in cls) == len(all_call_lines))
+    by_cls = {}
+    for ln in all_call_lines: by_cls[FN[ln].split('_')[0] if re.match(r'T[A-Z]\w*_', FN[ln]) else '(unnamed)'] = by_cls.get(FN[ln].split('_')[0] if re.match(r'T[A-Z]\w*_', FN[ln]) else '(unnamed)', 0) + 1
+    check('classes table: the calls per class equal those recomputed from the extract', all(by_cls.get(r[0], 0) == int(r[2]) for r in cls), str(by_cls))
     if dump and os.path.exists(dump):
         n = sum(1 for l in open(dump, errors='replace') if 'FUN_0042d750(' in l and not l.startswith('void '))
         check('dump check: call sites in all_app_functions.txt (+ the definition line of the wrapper excluded) = %d' % len(all_call_lines), n == len(all_call_lines), str(n))
@@ -187,11 +199,18 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
     def best_ratio(lit, q):
         return max((partial(lit, t) for b in q['boxes'] for t in texts_of(b)), default=0.0)
     def expected_text(r):
-        sp = spans(r['literal'])
-        if not any(s.startswith('<') for s in sp): return [sp[0]]
-        out = []
-        for n in ('1', '2'):
-            out.append(''.join((n if s.startswith('<') else s) for s in sp if not (s == 's' and n == '1')))
+        """the texts the box may show for a row: its pieces joined, a number as 1 or 2 (the conditional `s` only for 2), an either/or piece as each alternative, a name as empty"""
+        import itertools
+        sp = spans(r['literal']); out = []
+        for n in (1, 2):
+            for alt in itertools.product(*[([a_ for a_ in x.split(C.OR)] if C.OR in x else [x]) for x in sp]):
+                t = ''
+                for x, a_ in zip(sp, alt):
+                    if x.startswith(C.COND):
+                        if n == 2: t += x[len(C.COND):]
+                    elif x.startswith('<') and x.endswith('>'): t += str(n) if 'number' in x else ''
+                    else: t += a_
+                if t not in out: out.append(t)
         return out
     THR = 0.85
     for rid, r in CAT.items():
@@ -225,6 +244,23 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
         pid = r['play']
         if not check('play %s has a record' % pid, pid in PL): continue
         q = PL[pid][-1]
+        check('%s: source save column %r vs record %r' % (pid, r['source save'], q['src']), r['source save'] == q['src'])
+        check('%s: order-issued column vs the record' % pid, r['order issued'] == q['note'], '%r vs %r' % (r['order issued'], q['note']))
+        citing = sorted(c['id'] for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', '')))
+        check('%s: rows column %r vs the rows whose play cell names it %r' % (pid, r['rows'], citing), sorted([x for x in r['rows'].split(',') if x]) == citing)
+        check('%s: files column vs the record' % pid, spans(r['files']) == ([q['boxes'][-1]['png']] if q['boxes'] else []) + [q['control'], q['after']], r['files'])
+        stg = [l.rstrip('\n').split('\t') for l in open(data + 'staging_log.tsv')]
+        logged = [x for x in stg if x[4] == q['input']]
+        if r['edit'].startswith('STAGED'):
+            check('%s: the finding says STAGED, so the record must be staged (staged=%s)' % (pid, q['staged']), q['staged'] is True and bool(q['ops']))
+            check('%s: the finding says STAGED, so the staging log has the input %s' % (pid, q['input']), len(logged) >= 1)
+            if logged:
+                check('%s: the staging log hash and operations equal the record\'s' % pid, logged[-1][5] == q['input_sha'] and logged[-1][6].split(' ops=', 1)[1] == json.dumps(q['ops']), logged[-1][6][-80:])
+                check('%s: the staging log source %s equals the record\'s source and hash' % (pid, logged[-1][2]), logged[-1][2] == q['src'] and logged[-1][3] == q['src_sha'])
+            import build_tables as _BT
+            check('%s: the edit column equals the declared edits of the record: %r' % (pid, r['edit']), r['edit'] == 'STAGED: ' + _BT.compact_ops(q['ops']), r['edit'][:80])
+        else:
+            check('%s: the finding says %r, so the record must be unedited and absent from the staging log' % (pid, r['edit']), r['edit'] == 'fixture, unedited' and q['staged'] is False and not q['ops'] and not logged and q['src_sha'] == q['input_sha'])
         for fn_ in spans(r['files']):
             h = hashes.get(fn_)
             check('%s: %s has a hash in SAVES.sha256' % (pid, fn_), h is not None)
@@ -244,42 +280,84 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
             facts2 = '; '.join(SF.fact(aft, sp) for sp in __import__('play_meta').W.get(pid, []))
             check('%s: state facts in the after save: finding %r vs recomputed %r' % (pid, r['state in the after save [recomputed]'], facts2), r['state in the after save [recomputed]'] == facts2)
             cited = [c for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', ''))]
-            dropped = [c for c in cited if c['table'] == 'catalogue' and c['effect [derived]'].startswith('dropped')]
-            clamped = [c for c in cited if c['table'] == 'catalogue' and c['effect [derived]'].startswith('clamped')]
-            if d != 'identical' and dropped and not clamped: check('%s: the row says the order is dropped, so every differing byte must be in the nation record UI block' % pid, SF.ui_only(ctl, aft), d)
+            def has_loop(fnname):
+                return any(re.match(r'\s*(do|while|for)\b', X[ln]) for ln in X if FN.get(ln) == fnname)
+            allowed = []
+            for c in cited:
+                if c['table'] != 'catalogue': continue
+                f_ = c['function:call line'].split(':')[0]
+                if c['effect [derived]'].startswith('clamped'):
+                    check('%s: %s says clamped, which needs a loop in %s' % (pid, c['id'], f_), has_loop(f_))
+                    allowed.append(c['id'])
+            if d != 'identical' and cited and not allowed: check('%s: no cited row is a clamping one, so every differing byte must be in the nation record UI block' % pid, SF.ui_only(ctl, aft), d)
         else: check('%s: saves present in %s' % (pid, art), False, 'fetch them with fetch_archive.py')
-        if q['staged']:
-            stg = [l.split('\t') for l in open(data + 'staging_log.tsv')]
-            check('%s: the staged input %s is in staging_log.tsv with its hash' % (pid, q['input']), any(s[4] == q['input'] and s[5] == q['input_sha'] for s in stg))
-        else:
-            check('%s: the fixture input %s has a hash' % (pid, q['input']), hashes.get(q['input']) == q['input_sha'])
-    # ------------------------------------------------------------ orderings
-    ORD = {}
+        ip = art + 'saves/inputs/' + q['input']
+        if os.path.exists(ip): check('%s: the input save %s hashes as recorded' % (pid, q['input']), sha(ip) == q['input_sha'])
+        check('%s: the input save is in SAVES.sha256' % pid, hashes.get(q['input']) == q['input_sha'])
+    # ------------------------------------------------------------ order of tests: recomputed from the control flow of the extract
+    refus = [r for r in CAT.values() if r['table'] == 'catalogue']
+    line_of = lambda r: int(re.fullmatch(r'\w+:(\d+)', r['function:call line']).group(1))
+    fn_of = lambda r: r['function:call line'].split(':')[0]
+    fns = {}
+    for r in refus: fns.setdefault(fn_of(r), []).append(r)
+    DERIVED = {}
+    for fn, rs in fns.items():
+        ranks = C.rank_in_function(X, [line_of(r) for r in rs])
+        DERIVED[fn] = [r['id'] for r in sorted(rs, key=lambda r: ranks[line_of(r)])]
+        for r in rs:
+            cell = r['test order']; m = re.match(r'(\d+) of (\d+)\b', cell)
+            if cell.startswith('alternative'):
+                others = [o for o in rs if o is not r]
+                indep = all(not (C.last_test(X, line_of(r)) in C.tests_on_path(X, line_of(o)) or C.last_test(X, line_of(o)) in C.tests_on_path(X, line_of(r))) for o in others)
+                check('%s: said to be an alternative of the other refusals of %s: none lies on the path of another' % (r['id'], fn), indep)
+            else:
+                check('%s test order %r: recomputed %d of %d from the control flow of %s' % (r['id'], cell, ranks[line_of(r)], len(rs), fn), bool(m) and int(m.group(1)) == ranks[line_of(r)] and int(m.group(2)) == len(rs))
+    ordrows = {r['function']: [x.strip() for x in r['refusals in the order the code tests them'].split('>')] for r in T.get('orderings', [])}
+    want = {fn: ids for fn, ids in DERIVED.items() if len(ids) >= 2 and not any(CAT[i]['test order'].startswith('alternative') for i in ids)}
+    check('orderings table lists exactly the functions with two or more ordered refusals (%s)' % sorted(want), sorted(ordrows) == sorted(want), sorted(ordrows))
+    for fn, ids in want.items():
+        check('ordering %s: finding %s vs recomputed %s' % (fn, ordrows.get(fn), ids), ordrows.get(fn) == ids)
+    # combined cases: both conditions must have held in the control save, and the box must be the one the code order predicts
+    def numbers(pid, q):
+        ctl = art + 'saves/' + q['control']
+        ents = __import__('play_meta').W.get(pid, [])
+        armies = [SF.army_numbers(ctl, int(e.split(':')[1])) for e in ents if e.startswith('army:')]
+        fleets = [SF.fleet_numbers(ctl, int(e.split(':')[1])) for e in ents if e.startswith('fleet:')]
+        return armies, fleets
+    def threshold(row):
+        for col in ('condition [derived]',):
+            for ln, q in re.findall(r'L(\d+) «([^»]*)»', row.get(col, '')):
+                m = re.search(r'< (0x[0-9a-f]+)', q)
+                if m: return int(m.group(1), 16)
+        return None
     for r in T.get('orderings', []):
-        ids = [x.strip() for x in r['refusals in the order the code tests them'].split('>')]
-        for i in ids: check('ordering %s: %s is a catalogued refusal of that function' % (r['function'], i), i in CAT and CAT[i]['function:call line'].startswith(r['function'] + ':'))
-        ks = []
-        for i in ids:
-            m = re.match(r'(\d+) of (\d+)', CAT[i]['test order']) if i in CAT else None
-            ks.append(int(m.group(1)) if m else None)
-        check('ordering %s: the rows are listed in the order of their "k of n" tests' % r['function'], ks == sorted(k for k in ks if k is not None) and None not in ks, str(ks))
-        if r['combined case played'] != '-':
-            pid, shown = r['combined case played'], r['row whose line appeared']
-            others = [i for i in ids if i != shown]
-            check('ordering %s: the first row listed is the one that appeared (%s)' % (r['function'], shown), ids[0] == shown or True)
-            if pid in PL:
-                q = PL[pid][-1]
-                rs = best_ratio(expected_text(CAT[shown])[0], q)
-                ro = max(best_ratio(expected_text(CAT[o])[0], q) for o in others)
-                check('ordering %s: combined play %s shows %s (%.2f) and not the others (%.2f)' % (r['function'], pid, shown, rs, ro), rs >= THR and rs > ro + 0.1)
-                # and the play really had both conditions: recompute from the control save
-            else: check('combined play %s exists' % pid, False)
-    # ------------------------------------------------------------ the clone table
+        if r['combined case played'] == '-': continue
+        pid, shown, fn = r['combined case played'], r['row whose line appeared'], r['function']
+        if not check('combined play %s exists and its control save is present' % pid, pid in PL and os.path.exists(art + 'saves/' + PL[pid][-1]['control'])): continue
+        q = PL[pid][-1]; armies, fleets = numbers(pid, q); preds = {}
+        for i in DERIVED[fn]:
+            lit = spans(CAT[i]['literal'])[0]; th = threshold(CAT[i])
+            if 'on a fleet' in lit and armies: preds[i] = any(a[2] for a in armies)
+            elif 'more than 20 units' in lit and th and armies: preds[i] = sum(a[0] for a in armies) >= th
+            elif 'troops' in lit and th and armies: preds[i] = sum(a[1] for a in armies) >= th
+            elif 'more than 100 ships' in lit and th and fleets: preds[i] = sum(f[0] for f in fleets) >= th
+            elif 'carrying an army' in lit and fleets: preds[i] = any(f[1] >= 0 for f in fleets)
+        check('combined case %s: every refusal of %s has a predicate recomputed from the control save (%s)' % (pid, fn, preds), set(preds) == set(DERIVED[fn]))
+        true = [i for i in DERIVED[fn] if preds.get(i)]
+        check('combined case %s: at least two refusal conditions hold in the control save (holding: %s)' % (pid, true), len(true) >= 2)
+        check('combined case %s: the box the code order predicts is %s; the finding says %s' % (pid, true[0] if true else None, shown), bool(true) and true[0] == shown)
+        others = [i for i in DERIVED[fn] if i != shown]
+        rs = max(best_ratio(e, q) for e in expected_text(CAT[shown]))
+        ro = max(best_ratio(e, q) for o in others for e in expected_text(CAT[o]))
+        check('combined case %s: the play\'s box reads as %s (%.2f) and not as the others (%.2f)' % (pid, shown, rs, ro), rs >= THR and rs > ro + 0.1)
+    # ------------------------------------------------------------ the clone table: the original's line is recomputed from the extract, not read from another table
+    def row_spans(rid):
+        line = line_of(CAT[rid]); lit = site(line)[0]
+        return [lit] if lit is not None else spans(' + '.join(C.spans(X, line)))
     for r in T.get('clone', []):
         rid = r['row']
         if check('clone row %s is catalogued' % rid, rid in CAT):
-            lit = spans(CAT[rid]['literal'])
-            check('clone table: the original\'s line of %s equals the catalogue literal' % rid, spans(r["the original's line"]) == lit, '%s vs %s' % (r["the original's line"], lit))
+            check('clone table: the original\'s line of %s: finding %r vs the call site in the extract %r' % (rid, r["the original's line"], row_spans(rid)), spans(r["the original's line"]) == row_spans(rid))
     return checks[0], bad
 
 if __name__ == '__main__':

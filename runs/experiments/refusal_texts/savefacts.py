@@ -73,3 +73,17 @@ def ui_only(pa, pb):
         if a[i] != b[i]:
             if not (on <= i < on + 16 * sav.NATION_LEN and 0x46B <= (i - on) % sav.NATION_LEN <= 0x48F): return False
     return True
+
+
+def army_numbers(path, i):
+    """(units as the game counts them = index of the last occupied slot + 1, troops, aboard a fleet) of army i, from the raw record"""
+    b = open(path, 'rb').read(); base = sav.ARMY_OFF + 2 + i * sav.ARMY_LEN
+    tr = [struct.unpack_from('<h', b, base + 16 + 32 * k + 4)[0] for k in range(20)]
+    units = max([k + 1 for k, t in enumerate(tr) if t > 0] or [0])
+    return units, sum(t for t in tr if t > 0), struct.unpack_from('<h', b, base + 8)[0] == -1
+
+def fleet_numbers(path, i):
+    """(ships, carried army index or -1) of fleet i, from the raw record"""
+    b = open(path, 'rb').read(); na = struct.unpack_from('<h', b, sav.ARMY_OFF)[0]; of = sav.ARMY_OFF + 2 + na * sav.ARMY_LEN
+    o = of + 2 + i * sav.FLEET_LEN
+    return struct.unpack_from('<h', b, o + 18)[0], struct.unpack_from('<h', b, o + 22)[0]

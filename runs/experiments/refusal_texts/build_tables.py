@@ -24,6 +24,7 @@ def render(data=DATA):
     S = read_sites(data); X = read_extract(data); P = read_plays(data)
     out = []
     refusals = [r for r in CS.ROWS if r['kind'] == 'refusal']
+    OC = order_cells(S, X)
     rows = []
     for r in refusals:
         s = S[r['line']]
@@ -38,7 +39,7 @@ def render(data=DATA):
                 else: pl.append('%s (not played)' % pid)
             pcell = '[confirmed] ' + '; '.join(pl)
         else: pcell = '-'
-        rows.append([r['id'], r['order'], row_literal_cell(r, S, X), '%s:%d' % (s['function'], s['line']), '%s [%s]' % (s['dlg'].split(' ')[1], s['buttons'].replace('+', '+')), r['cond'], r['effect'], pcell])
+        rows.append([r['id'], OC[r['id']], row_literal_cell(r, S, X), '%s:%d' % (s['function'], s['line']), '%s [%s]' % (s['dlg'].split(' ')[1], s['buttons'].replace('+', '+')), r['cond'], r['effect'], pcell])
     cat = md_table('catalogue', ['id', 'test order', 'literal', 'function:call line', 'box [buttons]', 'condition [derived]', 'effect [derived]', 'play [confirmed]'], rows)
     rows = []
     for r in [r for r in CS.ROWS if r['kind'] == 'prompt']:
@@ -92,12 +93,14 @@ def compact_ops(ops):
 
 def render_more(data=DATA, art=ART):
     S = read_sites(data); X = read_extract(data); P = read_plays(data); RE = read_reread(data)
-    byfn = ids_of_function(S)
+    byfn = {}
+    for r in CS.ROWS:
+        if r['kind'] == 'refusal': byfn.setdefault(S[r['line']]['function'], []).append(r)
     rows = []
     for fn, rs in byfn.items():
-        ref = [r for r in rs if r['kind'] == 'refusal']
-        if len(ref) < 2 or max(int(re.match(r'\d+ of (\d+)', r['order']).group(1)) if re.match(r'\d+ of (\d+)', r['order']) else 1 for r in ref) < 2: continue     # alternatives of one test (the click targets of SelectUnit) are not an order
-        rows.append([fn, ' > '.join(r['id'] for r in sorted(ref, key=lambda r: (int(re.match(r'(\d+) of', r['order']).group(1)) if re.match(r'(\d+) of', r['order']) else 0, r['id'])))])
+        if len(rs) < 2 or any(r['order'].startswith('alternative') for r in rs): continue
+        ranks = CON.rank_in_function(X, [r['line'] for r in rs])
+        rows.append([fn, ' > '.join(r['id'] for r in sorted(rs, key=lambda r: ranks[r['line']]))])
     comb = {'TUnitMap_JoinArmies': ('UA05c', 'R03'), 'TUnitMap_JoinFleets': ('UF05c', 'R15')}
     rows2 = []
     for fn, ids in rows:

@@ -85,6 +85,59 @@ class T(unittest.TestCase):
             n, bad = self.audit(data=d)
             self.assertTrue(any('D05b' in x for x in bad), bad[:5])
         finally: shutil.rmtree(tmp)
+    def cells(self, prefix):
+        lines = self.text.split('\n'); hit = [i for i, l in enumerate(lines) if l.startswith(prefix)]
+        hit = sorted(hit, key=lambda i: -len(lines[i]))[:1] if prefix == '| UA04 |' else hit
+        self.assertEqual(len(hit), 1, (prefix, hit)); return lines, hit[0]
+    def doctor_built(self, prefix, fn, k=1):
+        lines, i = self.cells(prefix); cs = lines[i].split(' | ')           # id | literal | ...
+        parts = cs[k].split(' + '); parts = fn(parts); cs[k] = ' + '.join(parts); lines[i] = ' | '.join(cs)
+        return '\n'.join(lines)
+    def test_built_message_reordered_piece(self):
+        n, bad = self.audit(self.doctor_built('| P09 |', lambda p: [p[1], p[0]] + p[2:]))
+        self.assertTrue(any('P09 built message' in b for b in bad), bad[:3])
+    def test_built_message_omitted_piece(self):
+        n, bad = self.audit(self.doctor_built('| P09 |', lambda p: [x for x in p if '\u27e8if\u27e9' not in x]))
+        self.assertTrue(any('P09 built message' in b for b in bad), bad[:3])
+    def test_built_message_duplicated_piece(self):
+        n, bad = self.audit(self.doctor_built('| P09 |', lambda p: p[:3] + [p[2]] + p[3:]))
+        self.assertTrue(any('P09 built message' in b for b in bad), bad[:3])
+    def test_built_message_variable_moved(self):
+        n, bad = self.audit(self.doctor_built('| R54 |', lambda p: p[::-1], k=2))
+        self.assertTrue(any('R54 built message' in b for b in bad), bad[:3])
+    def test_order_changed_consistently_in_both_tables(self):
+        t = self.text
+        t = t.replace('R02 > R03 > R04', 'R02 > R04 > R03', 1)
+        lines = t.split('\n')
+        for i, l in enumerate(lines):
+            if l.startswith('| R03 |'): lines[i] = l.replace('| 2 of 3 |', '| 3 of 3 |', 1)
+            elif l.startswith('| R04 |'): lines[i] = l.replace('| 3 of 3 |', '| 2 of 3 |', 1)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('recomputed' in b and ('R03' in b or 'R04' in b or 'JoinArmies' in b) for b in bad), bad[:3])
+    def test_single_condition_play_passed_off_as_combined(self):
+        self.assertIn('| UA05c | R03 |', self.text)
+        n, bad = self.audit(self.text.replace('| UA05c | R03 |', '| UA05a | R03 |', 1))
+        self.assertTrue(any('combined case UA05a: at least two' in b for b in bad), bad[:3])
+    def test_staged_play_labelled_natural(self):
+        lines, i = self.cells('| UA05b |'); cs = lines[i].split(' | ')
+        self.assertTrue(cs[3].startswith('STAGED')); cs[3] = 'fixture, unedited'; lines[i] = ' | '.join(cs)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('UA05b' in b and 'unedited' in b for b in bad), bad[:3])
+    def test_natural_play_labelled_staged(self):
+        lines, i = self.cells('| UA04 |'); cs = lines[i].split(' | ')
+        self.assertEqual(cs[3], 'fixture, unedited'); cs[3] = 'STAGED: army 13 units = 1 x hi 5,900'; lines[i] = ' | '.join(cs)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('UA04' in b and 'STAGED' in b for b in bad), bad[:3])
+    def test_play_files_and_rows_columns(self):
+        lines, i = self.cells('| UA04 |'); cs = lines[i].split(' | ')
+        cs[1] = 'R02'; lines[i] = ' | '.join(cs)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('UA04: rows column' in b for b in bad), bad[:3])
+    def test_classes_table(self):
+        lines, i = self.cells('| TUnitMap |'); cs = lines[i].split(' | ')
+        cs[2] = '28 |'; lines[i] = ' | '.join(cs)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('classes table' in b for b in bad), bad[:3])
     def test_doctored_count(self):
         n, bad = self.audit(self.text.replace('| refusals catalogued | 57 |', '| refusals catalogued | 58 |'))
         self.assertTrue(any('refusal rows' in b for b in bad), bad[:5])
@@ -94,5 +147,5 @@ class T(unittest.TestCase):
     def test_doctored_combined_order(self):
         self.assertIn('| UA05c | R03 |', self.text)
         n, bad = self.audit(self.text.replace('| UA05c | R03 |', '| UA05c | R04 |', 1))
-        self.assertTrue(any('combined play UA05c' in b for b in bad), bad[:5])
+        self.assertTrue(any('combined case UA05c' in b for b in bad), bad[:5])
 if __name__ == '__main__': unittest.main()

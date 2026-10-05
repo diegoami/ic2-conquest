@@ -1,0 +1,86 @@
+21:29:05 [UA04] FAILED: DriverError('menu file > open had no verified effect after 3 attempts')
+21:29:59 [UA04] loaded REF_UA04_b7_fixture.v2.SAV (fixture, unedited); popups at load: []
+21:30:10 [UA04] control save REF_UA04_b7_ctl.SAV 2dd60d04fd958412fcab5f9d54a1e1ec14f05f7e262497e740495a157879f8ca
+21:30:22 [UA04] boxes after the order: [('Information', '6 ‘You can not split an army containing only 1 unit.')]
+21:30:38 [UA04] after save REF_UA04_b7_after.SAV 2dd60d04fd958412fcab5f9d54a1e1ec14f05f7e262497e740495a157879f8ca; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:31:13 [A01] loaded REF_A01_b7_staged.SAV (STAGED); popups at load: []
+21:31:23 [A01] control save REF_A01_b7_ctl.SAV a061ea302bbe3b10153768519980ec4306f097602f0e5ddabb727b900c319ee6
+21:31:41 [A01] boxes after the order: []
+21:31:52 [A01] after save REF_A01_b7_after.SAV 4253f165627ffb4ed7f6ba5e7a33b118b0abb8b9679a11f0eac2790b00e81cec; vs control: {"equal": false, "n_bytes": 33, "ranges": [[28648, 28648], [108836, 108836], [108910, 108910], [108912, 108912], [108914, 108915], [108918, 108923], [108925, 108941], [109490, 109491], [109506, 109507]]}
+21:32:16 [A01b] loaded REF_A01b_b7_staged.SAV (STAGED); popups at load: []
+21:32:26 [A01b] control save REF_A01b_b7_ctl.SAV 38b67b76abae1178ae6809750371aae6ffec325793206a648e37b06bdd428080
+21:32:37 [A01b] boxes after the order: [('Information', '6 An army on a fleet cannot be combined with anather.')]
+21:32:51 [A01b] after save REF_A01b_b7_after.SAV 38b67b76abae1178ae6809750371aae6ffec325793206a648e37b06bdd428080; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:33:13 [BF01] loaded REF_BF01_b7_fixture.SAV (fixture, unedited); popups at load: []
+21:33:23 [BF01] control save REF_BF01_b7_ctl.SAV 39f781458775c513cd0c7c5587de610f19eb3e3705a4007a1a9cffe8d755b66a
+21:33:35 [BF01] boxes after the order: [('Information', '6 Only nations with coastal cities can build fleets.')]
+21:33:49 [BF01] after save REF_BF01_b7_after.SAV 39f781458775c513cd0c7c5587de610f19eb3e3705a4007a1a9cffe8d755b66a; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:34:17 [C01] loaded REF_C01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:34:26 [C01] control save REF_C01_b7_ctl.SAV eb8fa43dc1c6c65c6c446f4f5a0dacefa3cd36f0267fe62b45596f91b291048e
+21:34:51 [C01] boxes after the order: [('Information', '6 This city cannot be fortified any further.')]
+21:35:04 [C01] after save REF_C01_b7_after.SAV ef4b2c9b6cf43235f43476ba76899b313c5a4ffad90c7b8d60fb36fe256fa55c; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:35:31 [C02] loaded REF_C02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:35:40 [C02] control save REF_C02_b7_ctl.SAV 34dd4f70eee23a772c655227fdecc2d6a540220ef3ba929c08440435956430fd
+21:36:05 [C02] boxes after the order: [('Information', '6 This city is already being fortified.')]
+21:36:20 [C02] after save REF_C02_b7_after.SAV 4d671dbe214b0b8d167c78ce9b582fb710f94c82ed49e10d50fef0c8f0aada8a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:36:47 [C03] loaded REF_C03_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:36:57 [C03] control save REF_C03_b7_ctl.SAV fda49796f13fadda28c0b402cd80c8845fe9390c52687df48965ae686724922b
+21:37:23 [C03] boxes after the order: [('Information', '6 You cannot fortify a city which is under siege.')]
+21:37:38 [C03] after save REF_C03_b7_after.SAV f72c576b4358a3c40982306ebd89c4684565a4ec03d538d8f501a87355c3db3f; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:38:05 [CU01] loaded REF_CU01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:38:15 [CU01] control save REF_CU01_b7_ctl.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+21:38:27 [CU01] FAILED: DriverError("no controls found for window 'Change units'")
+21:38:52 [CU02] loaded REF_CU02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:39:01 [CU02] control save REF_CU02_b7_ctl.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+21:39:13 [CU02] FAILED: DriverError("no controls found for window 'Change units'")
+21:39:41 [CU03] loaded REF_CU03_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:39:52 [CU03] FAILED: DriverError("Save as: the new window does not read as a file dialog (OCR ['save', 'in:', '|b', 'ic2', '=i', 'eee', 'ee', 'ee', 'ee'])")
+21:40:27 [CU04] loaded REF_CU04_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:40:38 [CU04] control save REF_CU04_b7_ctl.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:40:51 [CU04] FAILED: DriverError("no controls found for window 'Change units'")
+21:41:18 [CU05] loaded REF_CU05_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:41:29 [CU05] control save REF_CU05_b7_ctl.SAV 4300b505486187b374280165e63e5586dcf9af077dd8fa95fd4e01c75e9d3be3
+21:41:41 [CU05] FAILED: DriverError("no controls found for window 'Change units'")
+21:42:09 [CU06] loaded REF_CU06_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:42:19 [CU06] control save REF_CU06_b7_ctl.SAV 32a55e6811ffe665eb02e7c780142d5298f34786c78eb041f6d0a0cce7c7fc50
+21:42:31 [CU06] FAILED: DriverError("no controls found for window 'Change units'")
+21:42:58 [CU07] loaded REF_CU07_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+21:43:08 [CU07] control save REF_CU07_b7_ctl.SAV 69f73fa9b73cf7832641390a6d5a205f681271ac94de38fba15083e5b9b8d3f6
+21:43:20 [CU07] FAILED: DriverError("no controls found for window 'Change units'")
+21:43:47 [CU08] loaded REF_CU08_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+21:44:38 [CU01] loaded REF_CU01_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:44:48 [CU01] control save REF_CU01_b7_ctl.v2.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+21:45:08 [CU01] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:45:35 [CU01] loaded REF_CU01_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:45:46 [CU01] control save REF_CU01_b7_ctl.v3.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+21:46:05 [CU01] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:46:31 [CU02] loaded REF_CU02_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:46:41 [CU02] control save REF_CU02_b7_ctl.v2.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:47:01 [CU02] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:47:28 [CU02] loaded REF_CU02_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:47:38 [CU02] control save REF_CU02_b7_ctl.v3.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:48:00 [CU02] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:48:28 [CU03] loaded REF_CU03_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:48:39 [CU03] control save REF_CU03_b7_ctl.SAV 4300b505486187b374280165e63e5586dcf9af077dd8fa95fd4e01c75e9d3be3
+21:48:59 [CU03] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:49:26 [CU03] loaded REF_CU03_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:49:36 [CU03] control save REF_CU03_b7_ctl.v2.SAV 4300b505486187b374280165e63e5586dcf9af077dd8fa95fd4e01c75e9d3be3
+21:49:56 [CU03] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:50:23 [CU04] loaded REF_CU04_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:50:33 [CU04] control save REF_CU04_b7_ctl.v2.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:50:53 [CU04] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:51:20 [CU04] loaded REF_CU04_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:51:32 [CU04] control save REF_CU04_b7_ctl.v3.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:51:53 [CU04] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:52:18 [CU05] loaded REF_CU05_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:52:27 [CU05] control save REF_CU05_b7_ctl.v2.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+21:52:48 [CU05] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:53:13 [CU05] loaded REF_CU05_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:53:23 [CU05] control save REF_CU05_b7_ctl.v3.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+21:53:43 [CU05] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:54:10 [CU06] loaded REF_CU06_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:54:20 [CU06] control save REF_CU06_b7_ctl.v2.SAV 32a55e6811ffe665eb02e7c780142d5298f34786c78eb041f6d0a0cce7c7fc50
+21:54:40 [CU06] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:55:06 [CU06] loaded REF_CU06_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:55:15 [CU06] control save REF_CU06_b7_ctl.v3.SAV 32a55e6811ffe665eb02e7c780142d5298f34786c78eb041f6d0a0cce7c7fc50
+21:55:35 [CU06] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")

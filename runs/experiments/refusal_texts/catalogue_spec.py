@@ -30,11 +30,11 @@ row(47006, 'R04', 'refusal', 'army order: Join armies (UA05)', '3 of 3',
 row(47102, 'R05', 'refusal', 'army order: Disband army', '1 of 1 (the prompt P01 follows when it passes)',
     'no own city within one tile of the army (FUN_004494e4 returns -1): %s' % C(47101, 'if (sVar2 == -1) {'),
     'dropped: the army is kept', plays=['S01'])
-row(46595, 'R06', 'refusal', 'army order: embark (click an own fleet with an army selected)', '1 of 1 (silent gates before it)',
+row(46595, 'R06', 'refusal', 'army order: embark (click an own fleet with an army selected)', 'alternative of R07 and of the attack prompts (a different click target)',
     'the selected army has 1 or more moves and the fleet is one tile away (bVar4, %s), the fleet carries no army (%s) and the fleet\'s ships are fewer than troops / 500 (%s)'
     % (C(46514, '(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1'), C(46592, '(&DAT_0049c282)[*(short *)(param_1 + 0x224) * 0xd] == -1'), C(46594, 'if ((int)(short)(&DAT_0049c27e)[*(short *)(param_1 + 0x224) * 0xd] < iVar6 / 500) {')),
     'dropped: nobody boards; the click leaves the fleet selected. The call passes type 3 (Confirmation) with an OK-only button set, so the box is titled Confirm', plays=['E01'])
-row(46637, 'R07', 'refusal', 'fleet order: attack a fleet', '1 of 1 (the Yes/No/Cancel attack prompt is the other branch)',
+row(46637, 'R07', 'refusal', 'fleet order: attack a fleet', 'alternative of R06 and of the attack prompts (a different click target)',
     'an own fleet with moves is one tile from an enemy fleet (%s) that is next to a city of its owner (FUN_004494e4 >= 0, else-branch of %s)'
     % (C(46611, 'else if (((DAT_004a032a < 0) || ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) ||'), C(46621, 'if (sVar5 < 0) {')),
     'dropped: no attack, no war declared')
@@ -119,10 +119,10 @@ for (sfx, lines, c20, ctr, cfl) in (('Army1Transfer', (44155, 44159, 44164), C(4
         'the target army is aboard a fleet whose ships are fewer than (troops + the unit) / 500: the pass test is %s' % cfl,
         'clamped per unit: that unit stays (the code jumps over the move)')
 row(44326, 'R34', 'refusal', 'army to army dialog: Disband (Army1Disband)', 'after the prompt P06, once per order',
-    'a regular unit (label 0, %s) is selected and no own city is next to the first army of the dialog (%s; +0x770 is set from that army\'s tile: %s)' % (C(44312, '(*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {'), C(44311, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
+    'a regular unit (label 0, %s) is selected and no own city is next to the first army of the dialog (%s; +0x770 is set in TArmyToArmy_InitializeForm from that army\'s tile: %s)' % (C(44312, '(*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {'), C(44311, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
     'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop', plays=['TD01'])
 row(44412, 'R35', 'refusal', 'army to army dialog: Disband (Army2Disband)', 'after the prompt P07, once per order',
-    'a regular unit (label 0, %s) is selected and no own city is next to the FIRST army of the dialog (%s: the same word +0x770 as for the first list, set at %s)' % (C(44398, '(*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {'), C(44397, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
+    'a regular unit (label 0, %s) is selected and no own city is next to the FIRST army of the dialog (%s: the same word +0x770 as for the first list, set in TArmyToArmy_InitializeForm at %s)' % (C(44398, '(*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {'), C(44397, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
     'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop', plays=['TD02'])
 # ---------------------------------------------------------------- change units
 row(45513, 'R36', 'refusal', 'Change units: Rename unit (D05)', '1 of 2',
@@ -153,7 +153,7 @@ row(45647, 'R44', 'refusal', 'Change units: Join units', '3 of 3',
     'all regular, one type, and the total troops exceed the type\'s size limit: %s' % C(45646, 'if ((short)(&DAT_00478fca)[sVar10 * 0x14] < iStack_18) {'),
     'dropped', plays=['CU06'])
 row(45756, 'R45', 'refusal', 'Change units: Disband', 'after the prompt P08, once per order',
-    'a selected unit is regular (%s) and no own city is next to the army (%s; +0x1d6 is set from the army\'s tile: %s)' % (C(45744, '(*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0)) {'), C(45743, 'if ((*(short *)(param_1 + 0x1d6) == -1) &&'), C(45408, 'uVar2 = FUN_004494e4((undefined *)CONCAT22((short)((uint)(sVar1 * 0x52) >> 0x10),DAT_004a0320),')),
+    'a selected unit is regular (%s) and no own city is next to the army (%s; +0x1d6 is set in TChangeArmyUnits_InitializeForm from the army\'s tile: %s)' % (C(45744, '(*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0)) {'), C(45743, 'if ((*(short *)(param_1 + 0x1d6) == -1) &&'), C(45408, 'uVar2 = FUN_004494e4((undefined *)CONCAT22((short)((uint)(sVar1 * 0x52) >> 0x10),DAT_004a0320),')),
     'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop', plays=['CU07', 'CU08'])
 # ---------------------------------------------------------------- recruitment
 row(56033, 'R46', 'refusal', 'Recruit unit (dialog Army recruits)', '1 of 3',

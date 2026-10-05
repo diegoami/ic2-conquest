@@ -65,11 +65,6 @@ SC['F04'] = dict(src=TE, act=lambda g: fleet_button(g, 2, 'scuttle'), note='Scut
 SC['F05'] = dict(src=TE, ops=[('fleet', 2, 'ships', 25)], pre=embark_pre(0, 2), act=lambda g: fleet_button(g, 2, 'scuttle'), note='Scuttle fleet 2 carrying army 0')
 SC['F06'] = dict(src=TE, ops=[('fleet', 2, 'ships', 25)], pre=embark_pre(0, 2), act=lambda g: fleet_button(g, 2, 'repair'), note='Repair fleet 2 carrying army 0')
 
-def city_button(g, x, y, tool_label='Fortify city'):
-    g.reset_ui(); g.click_tile(x, y, pause=1.0)
-    found = g._scan_bar(ARMY_Y, {'fortify': tool_label}, 336, 420, 0.5)
-    if 'fortify' not in found: raise _drv.DriverError('city toolbar: no %s tooltip' % tool_label)
-    g.click(found['fortify'], ARMY_Y, pause=1.5)
 SC['C01'] = dict(src=TB, ops=[('city', 82, {'fort': 100})], act=lambda g: city_button(g, 99, 42), note='Fortify Caere with fortification 100')
 SC['C02'] = dict(src=TB, ops=[('city', 82, {'fort': 172})], act=lambda g: city_button(g, 99, 42), note='Fortify Caere with a fortification order pending (stored 172)')
 
@@ -79,7 +74,7 @@ def tr_act(army, row):
         army_button(g, army, 'transfer'); open_dialog_tracked(g, 'Army to army transfer', lambda: None, tries=1)
         cs = g.controls('Army to army transfer')
         lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
-        g.click(lists[0]['x'] + lists[0]['w'] // 2, lists[0]['y'] + 12 + 12 * row, pause=0.5)
+        click_row(g, lists[0], row)
         tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[0]
         g.click_control(tb, pause=1.5)
     return act
@@ -107,8 +102,8 @@ SC['A01'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3)], act=lambda g: a
 
 def rel_act(nation, col):
     def act(g):
-        g.tool('relations', pause=1.5)
-        if not g.find_windows('^International Relations$'): g.tool('relations', pause=1.5)
+        main_tool(g, 'relations')
+        if not g.find_windows('^International Relations$'): main_tool(g, 'relations')
         w = g.find_windows('^International Relations$')
         if not w: raise _drv.DriverError('International Relations did not open')
         g.raise_window(w[0][0])
@@ -118,7 +113,7 @@ def rel_act(nation, col):
             except _drv.DriverError: time.sleep(1)
         radios = sorted((c for c in cs if c['cls'] == 'TRadioButton'), key=lambda c: (c['y'], c['x']))
         if len(radios) != 64: raise _drv.DriverError('expected 64 radio buttons, found %d' % len(radios))
-        for _ in range(2): g.click_control(radios[nation * 4 + col], pause=0.5)
+        click_verified(g, radios[nation * 4 + col], 'relations radio nation %d column %d' % (nation, col))
         for attempt in range(2):                          # OK, at most twice (the first click may only activate the window)
             g.click_control(g.control(cs, text='OK'), pause=1.5)
             if boxes(g) or not g.find_windows('^International Relations$'): break
@@ -131,9 +126,9 @@ SC['RL04'] = dict(src=TB, act=rel_act(6, 1), post=rel_post, note='International 
 SC['RL05'] = dict(src=TB, act=rel_act(1, 2), post=rel_post, note='International relations: alliance with Carthage (1) while Rome is at war with Gaul')
 
 def recruit_act(g):
-    g.open_recruit(); cs = g.controls('Army recruits')
+    main_tool(g, 'recruit'); g.wait(lambda: g.find_windows('^Army recruits$'), 10, 'Army recruits dialog'); cs = g.controls('Army recruits')
     cities = g.control(cs, cls='TListBox', index=0)
-    g.click(cities['x'] + cities['w'] // 2, cities['y'] + 12, pause=0.6)
+    click_row(g, cities, 0)
     g.click_control(g.control(cs, text='Light infantry'), pause=0.6)
     g.click_control(g.control(cs, text='Recruit unit'), pause=1.2)
 recruit_post = lambda g: close_dialog_cancel(g, 'Army recruits', button='OK')
@@ -161,7 +156,7 @@ SC['C03'] = dict(src=TB, ops=[('city', 73, {'owner': 0})], act=lambda g: city_bu
 def merc_act(g):
     army_button(g, 1, 'mercs'); open_dialog_tracked(g, 'Recruit mercenary unit', lambda: None, tries=1)
     cs = g.controls('Recruit mercenary unit'); lst = g.control(cs, cls='TListBox', index=0)
-    g.click(lst['x'] + lst['w'] // 2, lst['y'] + 12, pause=0.5)
+    click_row(g, lst, 0)
     g.click_control(g.control(cs, text='Recruit unit'), pause=1.5)
 def merc_post(g):
     cs = g.controls('Recruit mercenary unit')
@@ -171,7 +166,7 @@ SC['MM01'] = dict(src=TB, ops=[('money', 1, 0)], act=merc_act, post=merc_post, n
 SC['MM02'] = dict(src=TB, ops=[('money', 1, 1000), ('units', 1, named([U('li', 11000)] * 9))], act=merc_act, post=merc_post, note='Recruit mercenary unit dialog: first offer, army 1 of 9 x 11,000 = 99,000 troops with 1,000 in its purse')
 
 SC['S02'] = dict(src=TB, act=lambda g: army_button(g, 0, 'disband'), note='Disband army 0 at (100,37), next to Arretium: the prompt (answered No)')
-SC['BF01'] = dict(src=GF('S10_Dacia_AUTO0720.SAV'), act=lambda g: g.tool('build_fleet', pause=1.5),
+SC['BF01'] = dict(src=GF('S10_Dacia_AUTO0720.SAV'), act=lambda g: main_tool(g, 'build_fleet'),
                   note='Build fleet as Dacia (no coastal city); the save is S10_Dacia_AUTO0720.SAV of release run-exp-civ-sweep (a natural new-game autosave), used unedited',
                   fixture_note='from release run-exp-civ-sweep')
 SC['A01b'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1)], act=lambda g: army_button(g, 12, 'join'),
@@ -182,7 +177,7 @@ def td_act(side):
         army_button(g, 0, 'transfer'); open_dialog_tracked(g, 'Army to army transfer', lambda: None, tries=1)
         cs = g.controls('Army to army transfer')
         lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
-        g.click(lists[side]['x'] + lists[side]['w'] // 2, lists[side]['y'] + 12, pause=0.5)
+        click_row(g, lists[side], 0)
         db = sorted((c for c in cs if c['text'] == 'Disband'), key=lambda c: c['x'])
         if len(db) != 2: raise _drv.DriverError('expected two Disband buttons, found %d' % len(db))
         g.click_control(db[side], pause=1.2)
@@ -203,7 +198,7 @@ def tr_act_side(army, row, side):
         army_button(g, army, 'transfer'); open_dialog_tracked(g, 'Army to army transfer', lambda: None, tries=1)
         cs = g.controls('Army to army transfer')
         lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
-        g.click(lists[side]['x'] + lists[side]['w'] // 2, lists[side]['y'] + 12 + 12 * row, pause=0.5)
+        click_row(g, lists[side], row)
         tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[side]
         g.click_control(tb, pause=1.5)
     return act

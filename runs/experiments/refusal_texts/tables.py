@@ -32,14 +32,28 @@ def lit_on_line(X, line):
 def unesc(s):
     return re.sub(r'\\(x[0-9a-fA-F]{2}|.)', lambda m: {'n': '\n', 't': '\t', "'": "'", '"': '"', '\\': '\\'}.get(m.group(1)) or chr(int(m.group(1)[1:], 16)), s)
 
+import construct as CON
+
 def row_literal_cell(r, S, X):
-    """The literal of a catalogue row as the finding prints it: code spans joined by ' + '; built messages show their variable parts as <...>"""
-    if r['tmpl']:
-        parts = []
-        for k, v in r['tmpl']:
-            parts.append('`<%s>`' % v if k == 'var' else '`%s`' % lit_on_line(X, v))
-        return ' + '.join(parts)
+    """The literal of a catalogue row as the finding prints it: a code span; a message built at run time is its whole construction recomputed from the extract (construct.py)"""
+    if S[r['line']]['kind'] == 'expr': return ' + '.join(CON.spans(X, r['line']))
     return '`%s`' % S[r['line']]['literal']
+
+def order_cells(S, X):
+    """{row id: 'k of n (suffix)'} : the position of each refusal in the order its function tests (construct.rank_in_function); rows said to be alternatives keep their text"""
+    import re as _re
+    byfn = {}
+    for r in CS.ROWS:
+        if r['kind'] == 'refusal': byfn.setdefault(S[r['line']]['function'], []).append(r)
+    out = {}
+    for fn, rs in byfn.items():
+        ranks = CON.rank_in_function(X, [r['line'] for r in rs])
+        for r in rs:
+            if r['order'].startswith('alternative'): out[r['id']] = r['order']; continue
+            suf = _re.sub(r'^\d+ of \d+\s*', '', r['order']).strip()
+            if suf and not suf.startswith('('): suf = '(' + suf + ')'
+            out[r['id']] = '%d of %d%s' % (ranks[r['line']], len(rs), (' ' + suf) if suf else '')
+    return out
 
 def esc_cell(s): return s.replace('|', '\\|')
 def unesc_cell(s): return s.replace('\\|', '|')

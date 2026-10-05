@@ -6,6 +6,8 @@ import json, os, re, struct, time, shutil, hashlib, subprocess
 import lib
 from eog import *                                   # noqa: F401,F403
 from eog import _drv, _screen_words, _ids, _geo
+from harness.driver import Game
+from lib import _region_hash
 import eog
 from common import new_path, write_new
 from state import sav as SAV
@@ -72,18 +74,79 @@ def wait_boxes(g, timeout=8, settle=1.5):
         time.sleep(0.3)
     return []
 
+def verified_x(g, bar, tool):
+    """The x of a toolbar button from a tooltip scan made NOW with this run's own game: the button's tooltip window must appear while the pointer is over x. A cached or recorded x is only
+    a hint for where to look first (a narrow window, then the whole bar); it is never clicked unless a tooltip proved it. DriverError (nothing clicked) when the tooltip is not found."""
+    labels, y, full, cache = {'army': (_drv.ARMY_TOOLBAR_LABELS, _drv.ARMY_TOOLBAR_Y, (336, 540), g.army_x), 'fleet': (_drv.FLEET_TOOLBAR_LABELS, _drv.ARMY_TOOLBAR_Y, (336, 540), g.fleet_x),
+                              'main': (_drv.TOOLBAR_LABELS, _drv.TOOLBAR_Y, (4, 232), g.toolbar_x)}[bar]
+    hint = (cache or {}).get(tool)
+    windows = ([(max(full[0], hint - 15), min(full[1], hint + 16))] if hint else []) + [full]
+    for lo, hi in windows:
+        found = g._scan_bar(y, {tool: labels[tool]}, lo, hi, 0.5)
+        if tool in found:
+            log('toolbar', '%s button %s: tooltip %r seen, x=%d (hint %s)' % (bar, tool, labels[tool], found[tool], hint)); return found[tool]
+    raise _drv.DriverError('%s toolbar: the tooltip %r of %s was not seen: nothing clicked' % (bar, labels[tool], tool))
+
 def army_button(g, i, tool):
-    """Select army i (verified through the game's selection word, three attempts at most) and click the army-toolbar button `tool`; the button x comes from the
-    tooltip calibration (a missed button raises: a fallback x is never used)."""
+    """Select army i (verified through the game's selection word, three attempts at most) and click the army-toolbar button `tool` at the x a tooltip proved."""
     ax, ay = g.army_pos(i); g.select_army(i, ax, ay)
-    if not g.army_x: g.calibrate_army_toolbar()
-    if tool not in g.army_x or g.army_x[tool] == g.ARMY_TOOLS[tool] and False: raise _drv.DriverError('army toolbar button %s not calibrated' % tool)
-    g.click(g.army_x[tool], ARMY_Y, pause=1.5)
+    x = verified_x(g, 'army', tool)
+    g.click(x, ARMY_Y, pause=1.5)
 
 def fleet_button(g, i, tool):
     g.select_fleet(i)
-    if not g.fleet_x: g.calibrate_fleet_toolbar()
-    g.click(g.fleet_x[tool], ARMY_Y, pause=1.5)
+    x = verified_x(g, 'fleet', tool)
+    g.click(x, ARMY_Y, pause=1.5)
+
+def main_tool(g, name, pause=1.5):
+    """A button of the main toolbar (relations, build_fleet, recruit ...) at the x a tooltip proved"""
+    g.reset_ui()
+    x = verified_x(g, 'main', name)
+    g.click(x, _drv.TOOLBAR_Y, pause=pause)
+
+class Game2(MyGame):
+    """MyGame whose File > Open is the toolbar's Open button found by its tooltip (verified_x: no fixed menu coordinate; the menu's Open word is not reliably read by OCR), and whose dialog
+    is proven to be the Open dialog by its words before anything is typed."""
+    def controls(self, title):
+        """Game.controls, retried for up to 8 s: a dialog's controls are not always enumerable the instant its window exists"""
+        for k in range(8):
+            try: return Game.controls(self, title)
+            except _drv.DriverError:
+                if k == 7: raise
+                time.sleep(1)
+
+    def open_file_dialog(self, name):
+        base = _ids(); self.reset_ui()
+        x = verified_x(self, 'main', 'open'); self.click(x, _drv.TOOLBAR_Y, pause=1.0)
+        try: self.wait(lambda: [i for i in _ids() - base if _geo(i) and _geo(i)[2] > 200 and _geo(i)[3] > 150], 8, 'Open dialog window')
+        except _drv.DriverError: raise _drv.DriverError('the Open button opened no file-dialog-sized window (nothing typed)')
+        dlg = [(i, _geo(i)) for i in _ids() - base if _geo(i) and _geo(i)[2] > 200 and _geo(i)[3] > 150]
+        if len(dlg) != 1: raise _drv.DriverError('Open: not a single new file-dialog-sized window: %s' % dlg)
+        time.sleep(0.5)
+        words = [w[0] for w in _screen_words(self, dlg[0][1])]
+        log('toolbar', 'Open dialog %s: words %s' % (dlg[0], words[:12]))
+        if 'save' in words or not any(w.startswith('open') or w.startswith('look') for w in words): raise _drv.DriverError('the new window does not read as the Open dialog (OCR %s)' % words[:12])
+        self.replace_field(name); self.key('Return')
+
+def city_button(g, x, y, tool_label='Fortify city'):
+    g.reset_ui(); g.click_tile(x, y, pause=1.0)
+    found = g._scan_bar(ARMY_Y, {'fortify': tool_label}, 336, 420, 0.5)
+    if 'fortify' not in found: raise _drv.DriverError('city toolbar: no %s tooltip: nothing clicked' % tool_label)
+    g.click(found['fortify'], ARMY_Y, pause=1.5)
+
+def click_row(g, lst, r, tries=3):
+    """Select row r of a list box (12 px per row inside the control's own rectangle, from Game.controls) and prove the selection by the change of the list's pixels; at most `tries` clicks"""
+    for k in range(tries):
+        before = _region_hash(g, lst); g.click(lst['x'] + lst['w'] // 2, lst['y'] + 12 + 12 * r, pause=0.5)
+        if _region_hash(g, lst) != before: return k + 1
+    raise _drv.DriverError('list row %d: no change in the list after %d clicks' % (r, tries))
+
+def click_verified(g, c, what, tries=3):
+    """Click a control and prove it changed: the pixels of its rectangle (SHA-256 of the raw screenshot crop) must differ from before; at most `tries` clicks (the first into an inactive window may only activate it)"""
+    for k in range(tries):
+        before = _region_hash(g, c); g.click_control(c, pause=0.7)
+        if _region_hash(g, c) != before: return k + 1
+    raise _drv.DriverError('%s: no change in the control after %d clicks' % (what, tries))
 
 def capture(g, tag, play_id, batch, step):
     """Capture every box open now: for each its X id, title, geometry, controls (Wine's own list), screenshot and OCR; the screenshot of the whole screen too. Returns the records."""
@@ -117,8 +180,8 @@ def close_all(g, tag, answer_no=True):
         for attempt in range(3):
             spend(wid, title, 3)
             c = next((c for c in cs if c['text'].replace('&', '').lower() == want), None)
-            if c: g.click_control(c, pause=1.0)
-            else: g.click(x + w // 2, y + h - 24, pause=1.0)
+            if c is None: raise _drv.DriverError('box %d (%s): no %s control in %s: nothing clicked' % (wid, title, want, [c_['text'] for c_ in cs]))
+            g.click_control(c, pause=1.0)
             if gone(g, wid): break
         else: raise _drv.DriverError('box %d (%s) did not close' % (wid, title))
         done.append((title, text))
@@ -146,7 +209,7 @@ def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=No
     clear_autos()
     if ops: inp = stage_edit(src, SAVEDIR + 'inputs/%s_staged.SAV' % tag, ops, tag)
     else: inp = as_fixture(src, SAVEDIR + 'inputs/%s_fixture.SAV' % tag)
-    g = MyGame()
+    g = Game2()
     texts = g.load(inp, seed=seed)
     L('loaded %s (%s); popups at load: %s' % (os.path.basename(inp), 'STAGED' if ops else 'fixture, unedited', texts))
     snap(g, '%s_00_loaded.png' % tag)
@@ -191,7 +254,7 @@ def select_rows(g, title, rows, cls_index=0):
     cs = g.controls(title); lst = g.control(cs, cls='TListBox', index=cls_index)
     for k, r in enumerate(rows):
         if k: _drv.sh('xdotool', 'keydown', 'ctrl')
-        g.click(lst['x'] + lst['w'] // 2, lst['y'] + 12 + 12 * r, pause=0.4)
+        click_row(g, lst, r)
         if k: _drv.sh('xdotool', 'keyup', 'ctrl')
     return cs
 
