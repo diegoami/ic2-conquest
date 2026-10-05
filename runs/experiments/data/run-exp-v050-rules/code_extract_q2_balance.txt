@@ -1,0 +1,182 @@
+# Code extract q2_balance from /mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt (line numbers are that file's)
+
+55409	// ==== TBalanceSheet_PaintBalance @ 0045376c ====
+55410	
+55411	void TBalanceSheet_PaintBalance(int param_1)
+55412	
+55413	{
+55414	  short sVar1;
+55415	  int iVar2;
+55416	  short *psVar3;
+55417	  short *psVar4;
+55418	  undefined4 *in_FS_OFFSET;
+55419	  undefined4 uStack_4c;
+55420	  undefined1 *puStack_48;
+55421	  undefined1 *puStack_44;
+55422	  uint *local_34;
+55423	  char local_2d [15];
+55424	  short local_1e;
+55425	  undefined *local_1c;
+55426	  int local_18;
+55427	  uint local_14;
+55428	  uint local_10;
+55429	  uint local_c;
+55430	  int local_8;
+55431	  
+55432	  puStack_44 = &stack0xfffffffc;
+55433	  local_34 = (uint *)0x0;
+55434	  puStack_48 = &LAB_00453bf0;
+55435	  uStack_4c = *in_FS_OFFSET;
+55436	  *in_FS_OFFSET = &uStack_4c;
+55437	  iVar2 = (int)DAT_004a0320;
+55438	  local_1c = &DAT_00474670 + iVar2 * 0x494;
+55439	  local_10 = ((int)(short)(&DAT_00474abc)[iVar2 * 0x24a] *
+55440	             (int)(short)(&DAT_00474aba)[iVar2 * 0x24a]) / 100;
+55441	  local_8 = param_1;
+55442	  FUN_00448f18(local_10,local_2d);
+55443	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55444	  FUN_00412cdc(*(int **)(local_8 + 0x228),local_34);
+55445	  iVar2 = (int)*(short *)(local_1c + 0x44c);
+55446	  if (iVar2 < 0) {
+55447	    iVar2 = iVar2 + 3;
+55448	  }
+55449	  FUN_00448f18(iVar2 >> 2,local_2d);
+55450	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55451	  FUN_00412cdc(*(int **)(local_8 + 0x22c),local_34);
+55452	  iVar2 = (int)*(short *)(local_1c + 0x44c);
+55453	  if (iVar2 < 0) {
+55454	    iVar2 = iVar2 + 3;
+55455	  }
+55456	  local_10 = local_10 + (iVar2 >> 2);
+55457	  sVar1 = FUN_004499ec(DAT_004a0320);
+55458	  FUN_00448f18((int)sVar1,local_2d);
+55459	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55460	  FUN_00412cdc(*(int **)(local_8 + 0x230),local_34);
+55461	  sVar1 = FUN_004499ec(DAT_004a0320);
+55462	  local_10 = local_10 + (int)sVar1;
+55463	  FUN_00448f18(local_10,local_2d);
+55464	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55465	  FUN_00412cdc(*(int **)(local_8 + 0x234),local_34);
+55466	  local_10 = *(int *)(local_1c + 0x430) / 20000 + *(short *)(local_1c + 0x446) * 7;
+55467	  FUN_00448f18(local_10,local_2d);
+55468	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55469	  FUN_00412cdc(*(int **)(local_8 + 0x244),local_34);
+55470	  local_c = 0;
+55471	  if (-1 < (short)(DAT_004a0326 + -1)) {
+55472	    local_1e = DAT_004a0326;
+55473	    psVar3 = &DAT_0049c274;
+55474	    do {
+55475	      if (*psVar3 == DAT_004a0320) {
+55476	        local_c = local_c + psVar3[5] * 3;
+55477	      }
+55478	      psVar3 = psVar3 + 0xd;
+55479	      local_1e = local_1e + -1;
+55480	    } while (local_1e != 0);
+55481	  }
+55482	  FUN_00448f18(local_c,local_2d);
+55483	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55484	  FUN_00412cdc(*(int **)(local_8 + 0x248),local_34);
+55485	  local_10 = local_10 + local_c;
+55486	  local_c = 0;
+55487	  sVar1 = 0;
+55488	  do {
+55489	    if (0 < *(short *)(local_1c + sVar1 * 8 + 0x2e8)) {
+55490	      local_c = local_c + ((int)*(short *)(local_1c + sVar1 * 8 + 0x2e8) / 200) *
+55491	                          (int)*(short *)(&DAT_00478fd4 +
+55492	                                         *(short *)(local_1c + sVar1 * 8 + 0x2e6) * 0x28);
+55493	    }
+55494	    sVar1 = sVar1 + 1;
+55495	  } while (sVar1 != 0x28);
+55496	  FUN_00448f18(local_c,local_2d);
+55497	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55498	  FUN_00412cdc(*(int **)(local_8 + 0x24c),local_34);
+55499	  local_10 = local_10 + local_c;
+55500	  local_c = 0;
+55501	  local_14 = 0;
+55502	  if (-1 < (short)(DAT_004a0324 + -1)) {
+55503	    local_1e = DAT_004a0324;
+55504	    psVar3 = &DAT_0047c1f0;
+55505	    do {
+55506	      if (*psVar3 == DAT_004a0320) {
+55507	        sVar1 = 0x14;
+55508	        psVar4 = psVar3 + 6;
+55509	        do {
+55510	          if (0 < psVar4[2]) {
+55511	            local_18 = ((int)psVar4[2] / 200) * (int)*(short *)(&DAT_00478fd4 + psVar4[1] * 0x28);
+55512	            if (*psVar4 == 0) {
+55513	              local_c = local_c + local_18;
+55514	            }
+55515	            else {
+55516	              local_14 = local_14 + (psVar4[3] * local_18) / 5;
+55517	            }
+55518	          }
+55519	          psVar4 = psVar4 + 0x10;
+55520	          sVar1 = sVar1 + -1;
+55521	        } while (sVar1 != 0);
+55522	      }
+55523	      psVar3 = psVar3 + 0x148;
+55524	      local_1e = local_1e + -1;
+55525	    } while (local_1e != 0);
+55526	  }
+55527	  FUN_00448f18(local_c,local_2d);
+55528	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55529	  FUN_00412cdc(*(int **)(local_8 + 0x250),local_34);
+55530	  local_10 = local_10 + local_c;
+55531	  FUN_00448f18(local_14,local_2d);
+55532	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55533	  FUN_00412cdc(*(int **)(local_8 + 0x254),local_34);
+55534	  local_10 = local_10 + local_14;
+55535	  FUN_00448f18(local_10,local_2d);
+55536	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55537	  FUN_00412cdc(*(int **)(local_8 + 0x240),local_34);
+55538	  FUN_00448f18(*(uint *)(local_1c + 0x438),local_2d);
+55539	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55540	  FUN_00412cdc(*(int **)(local_8 + 0x238),local_34);
+55541	  local_c = *(int *)(local_1c + 0x430) / 500;
+55542	  if (20000 < (int)local_c) {
+55543	    local_c = 20000;
+55544	  }
+55545	  if (local_c < 0x1389) {
+55546	    local_c = local_c - (int)local_c % 100;
+55547	  }
+55548	  else if (local_c - 0x1389 < 5000) {
+55549	    local_c = local_c - (int)local_c % 500;
+55550	  }
+55551	  else if (local_c - 0x2711 < 10000) {
+55552	    local_c = local_c - (int)local_c % 1000;
+55553	  }
+55554	  FUN_00448f18(local_c,local_2d);
+55555	  FUN_00403458((int *)&local_34,local_2d,0xf);
+55556	  FUN_00412cdc(*(int **)(local_8 + 0x23c),local_34);
+55557	  *in_FS_OFFSET = uStack_4c;
+55558	  puStack_44 = &LAB_00453bf7;
+55559	  puStack_48 = (undefined1 *)0x453bef;
+55560	  FUN_004032fc((int *)&local_34);
+55561	  return;
+55562	}
+55563	
+55564	
+48415	// ==== FUN_004499ec @ 004499ec ====
+48416	
+48417	short FUN_004499ec(short param_1)
+48418	
+48419	{
+48420	  short sVar1;
+48421	  short *psVar2;
+48422	  short sVar3;
+48423	  
+48424	  sVar3 = 0;
+48425	  sVar1 = 0;
+48426	  psVar2 = &DAT_00474abc;
+48427	  do {
+48428	    if (((&DAT_00474696)[param_1 * 0x24a + (int)sVar1] == 1) ||
+48429	       ((&DAT_00474696)[param_1 * 0x24a + (int)sVar1] == 2)) {
+48430	      sVar3 = sVar3 + *psVar2 / 0xc;
+48431	    }
+48432	    sVar1 = sVar1 + 1;
+48433	    psVar2 = psVar2 + 0x24a;
+48434	  } while (sVar1 != 0x10);
+48435	  return sVar3;
+48436	}
+48437	
+48438	

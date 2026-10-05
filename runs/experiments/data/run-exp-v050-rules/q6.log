@@ -1,0 +1,12 @@
+16:08:02 load: []
+16:08:02    Q6_00_start: relation Gaul->Greece 0, Greece->Gaul 0, army 9 at (93,28) moves 8, selected -1, news lines n/a
+16:08:15 C: army 4 tiles from Genua, click Genua: ([], [])
+16:08:15    Q6_01_after_far_click: relation Gaul->Greece 0, Greece->Gaul 0, army 9 at (93,28) moves 8, selected -1, news lines n/a
+16:08:26 move army 9 to (90,29): ((90, 29), [])
+16:08:26    Q6_02_adjacent_moves5: relation Gaul->Greece 0, Greece->Gaul 0, army 9 at (90,29) moves 5, selected 9, news lines n/a
+16:08:41 B: adjacent with moves, click Genua, answer No: ([('Confirm', '@ Are you sure you want to attack this city ? no | co')], [])
+16:08:41    Q6_03_after_prompt_no: relation Gaul->Greece 0, Greece->Gaul 0, army 9 at (90,29) moves 5, selected -1, news lines n/a
+16:09:02    Q6_04_adjacent_moves0: relation Gaul->Greece 0, Greece->Gaul 0, army 9 at (90,30) moves 0, selected -1, news lines n/a
+16:09:13 A: adjacent with 0 moves, click Genua: ([], [])
+16:09:13    Q6_05_after_zero_move_click: relation Gaul->Greece 0, Greece->Gaul 0, army 9 at (90,30) moves 0, selected -1, news lines n/a
+16:09:21 E: reload Q6_02 (adjacent, 5 moves), click Genua, answer Yes

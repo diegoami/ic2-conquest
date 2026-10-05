@@ -1,0 +1,291 @@
+# Code extract q3_disband_queue from /mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt (line numbers are that file's)
+
+56102	// ==== TArmyRecruits_DisbandUnits @ 004553b0 ====
+56103	
+56104	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+56105	
+56106	void TArmyRecruits_DisbandUnits(int param_1)
+56107	
+56108	{
+56109	  bool bVar1;
+56110	  short sVar2;
+56111	  int iVar3;
+56112	  uint uVar4;
+56113	  undefined4 uVar5;
+56114	  undefined4 extraout_EDX;
+56115	  int iVar6;
+56116	  undefined4 *in_FS_OFFSET;
+56117	  undefined4 uStack_15c;
+56118	  undefined *puStack_158;
+56119	  undefined1 *puStack_154;
+56120	  uint *puStack_144;
+56121	  byte abStack_140 [257];
+56122	  char acStack_3f [51];
+56123	  byte abStack_c [6];
+56124	  short sStack_6;
+56125	  
+56126	  puStack_154 = &stack0xfffffffc;
+56127	  puStack_144 = (uint *)0x0;
+56128	  puStack_158 = &UNK_00455557;
+56129	  uStack_15c = *in_FS_OFFSET;
+56130	  *in_FS_OFFSET = &uStack_15c;
+56131	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56132	  if (0 < iVar3) {
+56133	    FUN_00405b00(acStack_3f,"Are you sure you want to disband ");
+56134	    uVar4 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56135	    FUN_004028c4(uVar4,(char *)abStack_140);
+56136	    FUN_00402978(abStack_140,abStack_c);
+56137	    FUN_00405bc8(acStack_3f,(char *)abStack_c);
+56138	    FUN_00405bc8(acStack_3f," unit");
+56139	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56140	    if (1 < iVar3) {
+56141	      FUN_00405bc8(acStack_3f,"s");
+56142	    }
+56143	    FUN_00405bc8(acStack_3f,".");
+56144	    iVar3 = 0;
+56145	    FUN_00403458((int *)&puStack_144,acStack_3f,0x33);
+56146	    iVar3 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_0045559c,iVar3
+56147	                        );
+56148	    if (iVar3 == 6) {
+56149	      iVar3 = (int)DAT_004a0320;
+56150	      sVar2 = (**(code **)(**(int **)(*(int *)(param_1 + 0x220) + 0xfc) + 0x10))();
+56151	      sVar2 = sVar2 + -1;
+56152	      if (-1 < sVar2) {
+56153	        do {
+56154	          bVar1 = FUN_00429fb4(*(int **)(param_1 + 0x220),(int)sVar2);
+56155	          if (bVar1) {
+56156	            sStack_6 = *(short *)(param_1 + 0x4de + sVar2 * 2);
+56157	            iVar6 = CONCAT22((short)((uint)(((short)(&DAT_00474958)[iVar3 * 0x24a + sStack_6 * 4] *
+56158	                                            1000) % (int)(&DAT_00474aa0)[iVar3 * 0x125]) >> 0x10),
+56159	                             (&DAT_00474ab2)[iVar3 * 0x24a]) + -1;
+56160	            (&DAT_00474ab2)[iVar3 * 0x24a] =
+56161	                 (short)iVar6 -
+56162	                 (short)(((short)(&DAT_00474958)[iVar3 * 0x24a + sStack_6 * 4] * 1000) /
+56163	                        (int)(&DAT_00474aa0)[iVar3 * 0x125]);
+56164	            uVar5 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),
+56165	                                            (&DAT_00474ab2)[iVar3 * 0x24a]));
+56166	            (&DAT_00474ab2)[iVar3 * 0x24a] = (short)uVar5;
+56167	            FUN_0044a610(DAT_004a0320,sStack_6);
+56168	          }
+56169	          sVar2 = sVar2 + -1;
+56170	        } while (sVar2 != -1);
+56171	      }
+56172	      TArmyRecruits_SetCityRecruits(param_1);
+56173	      *(undefined1 *)(param_1 + 0x52e) = 1;
+56174	    }
+56175	  }
+56176	  *in_FS_OFFSET = uStack_15c;
+56177	  puStack_154 = &UNK_0045555e;
+56178	  puStack_158 = &UNK_00455556;
+56179	  FUN_004032fc((int *)&puStack_144);
+56180	  return;
+56181	}
+56182	
+56183	
+48994	// ==== FUN_0044a610 @ 0044a610 ====
+48995	
+48996	void FUN_0044a610(short param_1,short param_2)
+48997	
+48998	{
+48999	  int iVar1;
+49000	  undefined *puVar2;
+49001	  
+49002	  if (param_2 < 0x27) {
+49003	    puVar2 = &DAT_00474670 + param_2 * 8;
+49004	    do {
+49005	      iVar1 = (int)param_1;
+49006	      *(undefined4 *)(puVar2 + iVar1 * 0x494 + 0x2e4) =
+49007	           *(undefined4 *)(puVar2 + iVar1 * 0x494 + 0x2ec);
+49008	      *(undefined4 *)(puVar2 + iVar1 * 0x494 + 0x2e8) =
+49009	           *(undefined4 *)(puVar2 + iVar1 * 0x494 + 0x2f0);
+49010	      param_2 = param_2 + 1;
+49011	      puVar2 = puVar2 + 8;
+49012	    } while (param_2 != 0x27);
+49013	  }
+49014	  *(undefined2 *)(&DAT_00474a90 + param_1 * 0x494) = 0;
+49015	  return;
+49016	}
+49017	
+49018	
+55920	// ==== TArmyRecruits_RecruitUnit @ 00454e78 ====
+55921	
+55922	void TArmyRecruits_RecruitUnit(int param_1,undefined4 param_2)
+55923	
+55924	{
+55925	  undefined2 *puVar1;
+55926	  int *piVar2;
+55927	  short sVar3;
+55928	  int iVar4;
+55929	  undefined4 uVar5;
+55930	  undefined3 uVar7;
+55931	  undefined *puVar6;
+55932	  short sVar8;
+55933	  undefined4 *in_FS_OFFSET;
+55934	  undefined4 uStack_6c;
+55935	  undefined1 *puStack_68;
+55936	  undefined1 *puStack_64;
+55937	  int local_54;
+55938	  char local_4e [15];
+55939	  char local_3f [51];
+55940	  undefined *local_c;
+55941	  short local_6;
+55942	  
+55943	  puStack_64 = &stack0xfffffffc;
+55944	  local_54 = 0;
+55945	  puStack_68 = &LAB_004551d6;
+55946	  uStack_6c = *in_FS_OFFSET;
+55947	  *in_FS_OFFSET = &uStack_6c;
+55948	  uVar7 = (undefined3)((uint)param_2 >> 8);
+55949	  if (*(short *)(&DAT_00474a90 + DAT_004a0320 * 0x494) < 1) {
+55950	    if ((&DAT_00474ab2)[DAT_004a0320 * 0x24a] == 100) {
+55951	      puStack_64 = &stack0xfffffffc;
+55952	      FUN_0042d750((uint *)"Your mobilisation rate is already 100%.",CONCAT31(uVar7,2),DAT_004551e4,
+55953	                   0);
+55954	    }
+55955	    else {
+55956	      sVar8 = *(short *)(param_1 + 0x23c);
+55957	      if (((sVar8 < 0) || (0x4a < (short)(&DAT_004795aa)[sVar8 * 0x11])) ||
+55958	         (sVar8 == (&DAT_00474ab4)[DAT_004a0320 * 0x24a])) {
+55959	        if (-1 < *(short *)(param_1 + 0x23e)) {
+55960	          *(undefined1 *)(param_1 + 0x52e) = 1;
+55961	          sVar8 = -1;
+55962	          sVar3 = 0;
+55963	          puVar6 = &DAT_00474670;
+55964	          do {
+55965	            if ((*(short *)(puVar6 + DAT_004a0320 * 0x494 + 0x2e8) == 0) && (sVar8 == -1)) {
+55966	              sVar8 = sVar3;
+55967	            }
+55968	            sVar3 = sVar3 + 1;
+55969	            puVar6 = puVar6 + 8;
+55970	          } while (sVar3 != 0x28);
+55971	          local_c = &DAT_00474670 + DAT_004a0320 * 0x494;
+55972	          puVar1 = &DAT_00474954 + DAT_004a0320 * 0x24a + sVar8 * 4;
+55973	          puVar1[2] = *(undefined2 *)(param_1 + 0x240);
+55974	          puVar1[1] = *(undefined2 *)(param_1 + 0x23e);
+55975	          *puVar1 = 0;
+55976	          if (*(short *)(param_1 + 0x23c) == -1) {
+55977	            puVar1[3] = (&DAT_00474ab4)[DAT_004a0320 * 0x24a];
+55978	          }
+55979	          else {
+55980	            puVar1[3] = *(short *)(param_1 + 0x23c);
+55981	          }
+55982	          FUN_00405b00(local_3f,&DAT_00478fc0 + *(short *)(param_1 + 0x23e) * 0x28);
+55983	          FUN_00405bc8(local_3f,"  ");
+55984	          FUN_00448f3c((int)*(short *)(param_1 + 0x240),(int)local_4e);
+55985	          FUN_00405bc8(local_3f,local_4e);
+55986	          FUN_00405bc8(local_3f,"  ");
+55987	          FUN_00405bc8(local_3f,"not ready");
+55988	          if (*(short *)(param_1 + 0x23c) == -1) {
+55989	            FUN_00405bc8(local_3f,"  ");
+55990	            FUN_00405bc8(local_3f,&DAT_00479590 +
+55991	                                  (short)(&DAT_00474ab4)[DAT_004a0320 * 0x24a] * 0x22);
+55992	          }
+55993	          FUN_00403458(&local_54,local_3f,0x33);
+55994	          piVar2 = *(int **)(*(int *)(param_1 + 0x220) + 0xfc);
+55995	          (**(code **)(*piVar2 + 0x2c))(piVar2,local_54);
+55996	          *(int *)(local_c + 0x438) =
+55997	               *(int *)(local_c + 0x438) -
+55998	               ((int)*(short *)(param_1 + 0x240) / 200) *
+55999	               (int)*(short *)(&DAT_00478fd2 + *(short *)(param_1 + 0x23e) * 0x28);
+56000	          iVar4 = (*(short *)(param_1 + 0x240) * 1000) / *(int *)(local_c + 0x430);
+56001	          sVar8 = (short)iVar4 + *(short *)(local_c + 0x442) + 1;
+56002	          *(short *)(local_c + 0x442) = sVar8;
+56003	          uVar5 = FUN_00448fd0(CONCAT22((short)((uint)local_c >> 0x10),100),
+56004	                               CONCAT22((short)((uint)iVar4 >> 0x10),sVar8));
+56005	          *(short *)(local_c + 0x442) = (short)uVar5;
+56006	          if (((&DAT_00474ab4)[DAT_004a0320 * 0x24a] != *(short *)(param_1 + 0x23c)) &&
+56007	             (-1 < *(short *)(param_1 + 0x242))) {
+56008	            local_6 = FUN_00429e9c(*(int **)(param_1 + 0x228));
+56009	            piVar2 = *(int **)(*(int *)(param_1 + 0x228) + 0xfc);
+56010	            (**(code **)(*piVar2 + 0x4c))(piVar2,0,"All cities");
+56011	            sVar8 = (**(code **)(**(int **)(*(int *)(param_1 + 0x228) + 0xfc) + 0x10))();
+56012	            if (0 < sVar8) {
+56013	              do {
+56014	                *(undefined2 *)(param_1 + 0x242 + sVar8 * 2) =
+56015	                     *(undefined2 *)(param_1 + 0x240 + sVar8 * 2);
+56016	                sVar8 = sVar8 + -1;
+56017	              } while (sVar8 != 0);
+56018	            }
+56019	            *(undefined2 *)(param_1 + 0x242) = 0xffff;
+56020	            FUN_00429ed4(*(int **)(param_1 + 0x228),(int)local_6 + 1);
+56021	          }
+56022	        }
+56023	      }
+56024	      else {
+56025	        puStack_64 = &stack0xfffffffc;
+56026	        FUN_0042d750((uint *)"This city\'s fortification has fallen below 75%.",
+56027	                     CONCAT31((int3)((uint)(DAT_004a0320 * 0x125) >> 8),2),DAT_004551e4,0);
+56028	      }
+56029	    }
+56030	  }
+56031	  else {
+56032	    puStack_64 = &stack0xfffffffc;
+56033	    FUN_0042d750((uint *)"You have reached your limit of 40 units.",CONCAT31(uVar7,2),DAT_004551e4,0
+56034	                );
+56035	  }
+56036	  *in_FS_OFFSET = uStack_6c;
+56037	  puStack_64 = &LAB_004551dd;
+56038	  puStack_68 = (undefined1 *)0x4551d5;
+56039	  FUN_004032fc(&local_54);
+56040	  return;
+56041	}
+56042	
+56043	
+56044	// ==== TArmyRecruits_MobilizeUnits @ 004552a8 ====
+56045	
+56046	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+56047	
+56048	void TArmyRecruits_MobilizeUnits(int param_1,undefined4 param_2,undefined4 param_3)
+56049	
+56050	{
+56051	  short sVar1;
+56052	  bool bVar2;
+56053	  bool bVar3;
+56054	  short sVar4;
+56055	  int iVar5;
+56056	  int extraout_EDX;
+56057	  int extraout_EDX_00;
+56058	  int extraout_EDX_01;
+56059	  undefined4 uStack_14;
+56060	  
+56061	  uStack_14 = param_3;
+56062	  iVar5 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56063	  if (0 < iVar5) {
+56064	    bVar2 = false;
+56065	    sVar4 = (**(code **)(**(int **)(*(int *)(param_1 + 0x220) + 0xfc) + 0x10))();
+56066	    sVar4 = sVar4 + -1;
+56067	    iVar5 = extraout_EDX;
+56068	    bVar3 = false;
+56069	    if (-1 < sVar4) {
+56070	      do {
+56071	        bVar3 = FUN_00429fb4(*(int **)(param_1 + 0x220),(int)sVar4);
+56072	        iVar5 = extraout_EDX_00;
+56073	        if (bVar3) {
+56074	          sVar1 = *(short *)(param_1 + 0x4de + sVar4 * 2);
+56075	          iVar5 = (int)sVar1;
+56076	          if (0xf < (short)(&DAT_00474954)[DAT_004a0320 * 0x24a + iVar5 * 4]) {
+56077	            FUN_0044a4e0(DAT_004a0320,sVar1,(undefined1 *)&uStack_14);
+56078	            iVar5 = extraout_EDX_01;
+56079	            if ((bVar2) || ((char)uStack_14 == '\0')) {
+56080	              bVar2 = true;
+56081	            }
+56082	            else {
+56083	              bVar2 = false;
+56084	            }
+56085	          }
+56086	        }
+56087	        sVar4 = sVar4 + -1;
+56088	        bVar3 = bVar2;
+56089	      } while (sVar4 != -1);
+56090	    }
+56091	    if (bVar3) {
+56092	      FUN_0042d750((uint *)"You cannot mobilise a unit at this time.",
+56093	                   CONCAT31((int3)((uint)iVar5 >> 8),2),_UNK_00455378,0);
+56094	    }
+56095	    TArmyRecruits_SetCityRecruits(param_1);
+56096	    TPremierForm_RefreshForms(DAT_004a0bd0);
+56097	  }
+56098	  return;
+56099	}
+56100	
+56101	

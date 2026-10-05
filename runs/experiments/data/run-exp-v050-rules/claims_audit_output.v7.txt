@@ -1,0 +1,220 @@
+# claims audit: 219 checks, 12 mismatches
+Q4	MISMATCH	extract line 43635 contains '/ 1000'
+Q4	OK	extract line 43636 contains '0049d0ae'
+Q4	OK	extract line 43605 contains '/ 1000'
+Q4	OK	extract line 54751 contains '/ 200'
+Q4	OK	extract line 54765 contains '/ 5'
+Q1	OK	Supply army x11: predicted purse 1000 and treasury 1201 = the after-save (1000, 1201)
+Q1	OK	extract line 43118 contains 'FUN_00448fd0'
+Q1	OK	extract line 43119 contains '1000 - '
+Q1	OK	extract line 43125 contains 'DAT_00474aa8'
+Q1	OK	extract line 43134 contains 'DAT_0047c1f8'
+Q1	OK	split created exactly one army with purse 0, supplies 0, moves 0 (human owner)
+Q1	OK	extract line 48740 contains 'DAT_0047c1f8'
+Q1	OK	extract line 48732 contains 'DAT_0047c1f2'
+Q1	OK	extract line 48733 contains "== '\\0'"
+Q1	OK	partner supplied x11: predicted purse 1000 and treasury 201 = the before-join save
+Q1	OK	Join: gates hold (not aboard, units 6+1 < 21, troops 20368+5500 <= 100000, partner = highest adjacent index [15])
+Q1	OK	Join: kept purse 2000 = 1000 + 1000 (no cap), supplies 176 = sum, troops = sum, units = sum, moves 0, partner gone, treasury unchanged
+Q1	OK	extract line 46992 contains 'DAT_0047c1f8'
+Q1	OK	extract line 46997 contains 'DAT_0047c1f2'
+Q1	OK	extract line 46984 contains '0x15'
+Q1	OK	extract line 46987 contains '0x186a1'
+Q1	OK	over-cap trim: step min(100, 1000-2000) = -1000: purse 1000 and treasury 1201 predicted = the after-save
+Q1	OK	move next to 2 own cities with stock: the refill condition held (purse<500, treasury>0) yet purse/supplies are unchanged
+Q1	OK	click on own adjacent city ['Heraclea']: army 1 (x,y,moves,purse,supplies,troops) and the treasury identical in the save pair
+Q1	OK	memory-only: selection ['1', '-1'] (before, after) from q1c.log
+Q1	OK	extract line 53092 contains '1000 <'
+Q1	OK	extract line 53096 contains '= 1000'
+Q1	OK	extract line 53098 contains '< 500'
+Q1	OK	extract line 53100 contains '+ 500'
+Q1	OK	extract line 53101 contains 'DAT_00474aa8'
+Q1	OK	extract line 53106 contains '/ 5'
+Q1	OK	extract line 54759 contains '< 1'
+Q1	OK	extract line 54765 contains '/ 5)'
+Q1	OK	extract line 54772 contains 'psVar11[4]'
+Q1	OK	extract line 57618 contains 'DAT_0047c1f8'
+Q1	OK	extract line 49648 contains 'DAT_0047c1f8'
+Q1	OK	extract line 49687 contains 'DAT_0047c1f8'
+Q1	OK	extract line 53967 contains '20000'
+Q1	OK	extract line 53979 contains 'FUN_0044a698'
+Q1	OK	extract line 53980 contains '80000'
+Q1	OK	extract line 53980 contains '-1 <'
+Q1	OK	extract line 53981 contains 'psVar5[4]'
+Q1	MISMATCH	extract line 53974 contains '0x12'
+Q1	OK	extract line 53978 contains '0x14'
+Q1	OK	extract line 43162 contains 'FUN_00448fd0'
+Q1	OK	extract line 43163 contains '1000 - '
+Q1	OK	extract line 43154 contains 'FUN_00448fd0'
+Q1	OK	extract line 43039 contains 'FUN_00448fd0'
+Q1	OK	extract line 43041 contains '* 5)'
+Q1	OK	extract line 44056 contains '1000 - '
+Q1	OK	extract line 46384 contains '0x14'
+Q1	OK	extract line 46384 contains '0x15b'
+Q2	OK	00_tax10 Taxes: derived from the save 252, read from the screenshot 252
+Q2	OK	00_tax10 Tribute: derived from the save 632, read from the screenshot 632
+Q2	OK	00_tax10 Trade: derived from the save 29, read from the screenshot 29
+Q2	OK	00_tax10 Administration: derived from the save 303, read from the screenshot 303
+Q2	OK	00_tax10 Total revenue: derived from the save 913, read from the screenshot 913
+Q2	OK	00_tax10 Debt limit: derived from the save 5000, read from the screenshot 5000
+Q2	OK	01_tax20 Taxes: derived from the save 505, read from the screenshot 505
+Q2	OK	01_tax20 Tribute: derived from the save 632, read from the screenshot 632
+Q2	OK	01_tax20 Trade: derived from the save 29, read from the screenshot 29
+Q2	OK	01_tax20 Administration: derived from the save 303, read from the screenshot 303
+Q2	OK	01_tax20 Total revenue: derived from the save 1166, read from the screenshot 1166
+Q2	OK	01_tax20 Debt limit: derived from the save 5000, read from the screenshot 5000
+Q2	OK	only the tax rate differs between the two saves, so Tribute (taxBase div 4) is the same line in both
+Q2	OK	stored taxBase 2528 differs from the live city sum 2464 (the line follows the stored word)
+Q2	OK	extract line 55439 contains '474abc'
+Q2	OK	extract line 55440 contains '474aba'
+Q2	OK	extract line 55445 contains '0x44c'
+Q2	OK	extract line 55449 contains '>> 2'
+Q2	OK	extract line 55456 contains '>> 2'
+Q2	OK	extract line 55457 contains 'FUN_004499ec'
+Q2	OK	extract line 55466 contains '/ 20000'
+Q2	OK	extract line 54866 contains '0x440'
+Q2	OK	extract line 54875 contains '0x44c'
+Q2	OK	extract line 54875 contains '0x44a'
+Q2	OK	extract line 54876 contains '>> 2'
+Q2	OK	extract line 54877 contains '/ 20000'
+Q2	OK	extract line 48428 contains '== 1'
+Q2	OK	extract line 48430 contains '/ 0xc'
+Q2	OK	extract line 55541 contains '/ 500'
+Q2	OK	extract line 55542 contains '20000'
+Q2	OK	extract line 55545 contains '0x1389'
+Q2	OK	extract line 55548 contains '5000'
+Q2	OK	extract line 55551 contains '10000'
+Q3	OK	step 1 removed exactly one queue entry [('hi', 3200, 85)]
+Q3	OK	step 1: mobilisation 32 -> 30 predicted 30 (floor division; rounding would give 30); treasury 1880 -> 1880 unchanged; queue 5 -> 4
+Q3	OK	step 2 removed exactly one queue entry [('hi', 4000, 85)]
+Q3	OK	step 2: mobilisation 30 -> 28 predicted 28 (floor division; rounding would give 27); treasury 1880 -> 1880 unchanged; queue 4 -> 3
+Q3	OK	cost paid at queueing: treasury 2200 -> 1880 = 320 = 3200 div 200 x initial price 20 (DAT)
+Q3	MISMATCH	cap asymmetry: from 99 a recruit of increment 2 gives 100, its disband then gives 97 (not 99)
+Q3	OK	extract line 56157 contains '00474958'
+Q3	OK	extract line 56158 contains '1000'
+Q3	OK	extract line 56162 contains '1000'
+Q3	OK	extract line 56164 contains 'FUN_00448fd8'
+Q3	OK	extract line 56167 contains 'FUN_0044a610'
+Q3	OK	extract line 49007 contains '0x2ec'
+Q3	OK	extract line 55996 contains '0x438'
+Q3	OK	extract line 55999 contains '00478fd2'
+Q3	OK	extract line 56000 contains '1000'
+Q3	OK	extract line 56001 contains '0x442'
+Q3	OK	extract line 56003 contains 'FUN_00448fd0'
+Q3	OK	extract line 55949 contains '00474a90'
+Q3	OK	extract line 55950 contains '== 100'
+Q3	OK	extract line 55957 contains '0x4a'
+Q3	OK	extract line 56131 contains 'FUN_00429eb8'
+Q3	OK	extract line 56148 contains '== 6'
+Q4	OK	each hire emptied exactly one pool slot ([25], [34]); the refusal emptied none
+Q4	OK	refusal pair: purse 20 < gate 24 of the Samnite offer: no unit, purse 20, treasury 2280 unchanged
+Q4	OK	hire 1: offer li 3868 q8 label 38 -> unit added with the same fields (Samnite, li, 3868, 8, label 38); one unit more, troops +3868
+Q4	OK	hire 1: purse 30 >= gate 24, and nothing was charged: purse 30 -> 30, treasury 2270 -> 2270
+Q4	OK	hire 1: gate 24, displayed estimate 30, actual pay 30; the screenshot box shows 30
+Q4	OK	hire 2: offer hc 960 q9 label 37 -> unit added with the same fields (Etruscan, hc, 960, 9, label 37); one unit more, troops +960
+Q4	OK	hire 2: purse 30 >= gate 27, and nothing was charged: purse 30 -> 30, treasury 2270 -> 2270
+Q4	OK	hire 2: gate 27, displayed estimate 34, actual pay 28; the screenshot box shows 34
+Q4	OK	the HC offer: purse 30 is between the gate 27 and the displayed 34 (hired although the box said more); the displayed 34 differs from the actual pay 28
+Q4	MISMATCH	Q4_04_after_heraclea_hire: Mercenary pay on the army panel None = sum of the actual-pay formula over the army's mercenaries 30 (the displayed formula would give 30)
+Q4	OK	Q4_06_after_thurii_hire: Mercenary pay on the army panel 58 = sum of the actual-pay formula over the army's mercenaries 58 (the displayed formula would give 64)
+Q4	OK	extract line 43633 contains 'DAT_0047c1f8'
+Q4	OK	extract line 43637 contains 'too little money'
+Q4	OK	extract line 43672 contains '0xffff'
+Q4	OK	extract line 43641 contains 'FUN_0044a698'
+Q4	MISMATCH	extract line 43642 contains '0x186a1'
+Q4	MISMATCH	extract line 43645 contains 'FUN_0044a698'
+Q4	MISMATCH	extract line 43648 contains '/ 500'
+Q4	OK	extract line 43691 contains '100,000'
+Q4	OK	extract line 43652 contains 'too little space'
+Q4	OK	extract line 46871 contains '0x89'
+Q4	OK	extract line 46878 contains 'DAT_004a0320'
+Q4	OK	extract line 46881 contains 'FUN_00449d08'
+Q4	OK	extract line 46884 contains '< 1'
+Q4	OK	extract line 46885 contains '0x186a1'
+Q4	OK	extract line 46887 contains '== 3'
+Q4	OK	extract line 46893 contains '< 0xf'
+Q4	OK	extract line 46898 contains '0x89'
+Q4	OK	extract line 46899 contains '/ 500'
+Q4	OK	extract line 46904 contains 'fleet cannot carry'
+Q4	OK	extract line 46910 contains 'bigger'
+Q4	OK	extract line 46914 contains '20 units'
+Q4	OK	extract line 46888 contains 'enemy city'
+Q4	MISMATCH	extract line 41083 contains '/ 200'
+Q4	MISMATCH	extract line 41090 contains '/ 5'
+Q5	OK	Q5A_00_start -> Q5A_01_after_disband_regular: exactly one unit removed [('hi', 5900, 0)]
+Q5	OK	Q5A_00_start: unit hi 5900 (merc label 0): mobilisation 30 -> 27 predicted 27; treasury 2200 -> 2200, purse and supplies unchanged; own city in the 3x3: ['Arretium']
+Q5	OK	Q5B_00_start -> Q5B_01_after_disband_merc: exactly one unit removed [('li', 3868, 38)]
+Q5	OK	Q5B_00_start: unit li 3868 (merc label 38): mobilisation 30 -> 30 predicted 30; treasury 2200 -> 2200, purse and supplies unchanged; own city in the 3x3: ['Heraclea']
+Q5	OK	one case is a regular unit (mobilisation moves) and one a mercenary (it does not)
+Q5	OK	extract line 45787 contains '*psVar1 == 0'
+Q5	OK	extract line 45789 contains '* 1000'
+Q5	OK	extract line 45791 contains 'FUN_00448fd8'
+Q5	OK	extract line 45820 contains '00474ab2'
+Q5	OK	extract line 45718 contains '0 <'
+Q5	OK	extract line 45734 contains '== 6'
+Q5	OK	extract line 45736 contains '0x13'
+Q5	OK	extract line 45739 contains '0x1ee'
+Q5	OK	extract line 45743 contains '0x1d6'
+Q5	OK	extract line 45744 contains '0x1ea'
+Q5	OK	extract line 45756 contains 'near its own city'
+Q5	OK	extract line 45839 contains '= 2'
+Q5	OK	extract line 44483 contains 'param_4'
+Q5	OK	extract line 44485 contains '* 1000'
+Q5	OK	extract line 44316 contains 'TArmyToArmy_RemoveUnit'
+Q5	OK	extract line 44402 contains 'TArmyToArmy_RemoveUnit'
+Q5	OK	extract line 44397 contains '0x770'
+Q5	OK	extract line 43793 contains 'FUN_004494e4'
+Q5	OK	extract line 45408 contains 'FUN_004494e4'
+Q5	OK	extract line 48106 contains '0x13'
+Q6	OK	C far click: legal (moves>=1, distance 1) = False on the before-save; relation (0, 0) -> (0, 0), news and army unchanged
+Q6	OK	B No: legal (moves>=1, distance 1) = True on the before-save; relation (0, 0) -> (0, 0), news and army unchanged
+Q6	OK	A zero moves: legal (moves>=1, distance 1) = False on the before-save; relation (0, 0) -> (0, 0), news and army unchanged
+Q6	OK	Yes branch: legal True, relation (0, 0) -> (3, 3); no ally of the target to cascade to ([]) so no other relation changed; news +2 starting 'GAUL DECLARES WAR ON GREECE.'; army moves 5 -> 0; city Genua now owner 6 (attacker 6)
+Q6	OK	target owner is another nation than the attacker and the relation before the clicks was not war
+Q6	OK	extract line 46514 contains 'DAT_0047c1f2'
+Q6	OK	extract line 46514 contains '< 1'
+Q6	OK	extract line 46515 contains 'FUN_004492a0'
+Q6	OK	extract line 46532 contains '0x14'
+Q6	OK	extract line 46532 contains '0x50'
+Q6	OK	extract line 46539 contains 'bVar4'
+Q6	OK	extract line 46540 contains '== 3'
+Q6	OK	extract line 46541 contains 'attack this city'
+Q6	OK	extract line 46544 contains '!= 3'
+Q6	OK	extract line 46545 contains 'FUN_00449b40'
+Q6	OK	extract line 46547 contains 'FUN_0044b27c'
+Q6	OK	extract line 46551 contains '= -1'
+Q6	OK	extract line 46555 contains '200U'
+Q6	OK	extract line 46563 contains '!= DAT_004a0320'
+Q6	OK	extract line 46566 contains 'attack this army'
+Q6	OK	extract line 46570 contains 'FUN_00449b40'
+Q6	OK	extract line 46572 contains 'FUN_0044aee4'
+Q6	OK	extract line 46582 contains '300U'
+Q6	OK	extract line 46590 contains '== DAT_004a0320'
+Q6	OK	extract line 46592 contains '== -1'
+Q6	MISMATCH	extract line 46593 contains '/ 500'
+Q6	OK	extract line 46601 contains 'FUN_0044b79c'
+Q6	OK	extract line 46611 contains 'DAT_004a032a'
+Q6	MISMATCH	extract line 46612 contains '< 1'
+Q6	MISMATCH	extract line 46613 contains 'FUN_004492a0'
+Q6	OK	extract line 46619 contains 'FUN_004494e4'
+Q6	OK	extract line 46621 contains '< 0'
+Q6	OK	extract line 46622 contains '== 3'
+Q6	OK	extract line 46623 contains 'attack this fleet'
+Q6	OK	extract line 46627 contains 'FUN_00449b40'
+Q6	OK	extract line 46629 contains 'FUN_0044b5d0'
+Q6	OK	extract line 46637 contains 'docked at its own city'
+Q6	OK	extract line 48089 contains 'param_2'
+Q6	OK	extract line 48094 contains '0x13f'
+Q6	OK	extract line 48106 contains '0x13'
+Q6	OK	extract line 48502 contains '00474696'
+Q6	OK	extract line 48504 contains '00474696'
+Q6	OK	extract line 48513 contains '== 3'
+Q6	OK	extract line 48515 contains '= 3'
+Q6	OK	extract line 48532 contains '== 2'
+Q6	OK	extract line 48455 contains 'declares war on'
+Q6	OK	extract line 49815 contains 'DAT_0047c1f2'
+Q6	OK	extract line 55385 contains 'FUN_00449b40'
+Q6	OK	extract line 46384 contains '0x14'
+Q6	OK	extract line 46384 contains '0x15b'
+Q6	OK	extract line 46427 contains 'TUnitMap_SelectUnit'
+Q6	OK	extract line 49903 contains 'DAT_0049c278'

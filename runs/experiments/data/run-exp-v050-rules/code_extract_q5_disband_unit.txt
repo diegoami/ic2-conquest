@@ -1,0 +1,511 @@
+# Code extract q5_disband_unit from /mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt (line numbers are that file's)
+
+45686	// ==== TChangeArmyUnits_Disband @ 004450c8 ====
+45687	
+45688	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+45689	
+45690	void TChangeArmyUnits_Disband(int param_1)
+45691	
+45692	{
+45693	  bool bVar1;
+45694	  int iVar2;
+45695	  uint uVar3;
+45696	  undefined4 extraout_EDX;
+45697	  undefined4 extraout_EDX_00;
+45698	  undefined4 extraout_EDX_01;
+45699	  undefined4 extraout_EDX_02;
+45700	  undefined4 uVar4;
+45701	  short sVar5;
+45702	  undefined4 *in_FS_OFFSET;
+45703	  undefined4 uStack_15c;
+45704	  undefined *puStack_158;
+45705	  undefined1 *puStack_154;
+45706	  uint *puStack_144;
+45707	  byte abStack_140 [258];
+45708	  char acStack_3e [51];
+45709	  char cStack_b;
+45710	  byte abStack_a [6];
+45711	  
+45712	  puStack_154 = &stack0xfffffffc;
+45713	  puStack_144 = (uint *)0x0;
+45714	  puStack_158 = &UNK_00445232;
+45715	  uStack_15c = *in_FS_OFFSET;
+45716	  *in_FS_OFFSET = &uStack_15c;
+45717	  iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45718	  if (0 < iVar2) {
+45719	    FUN_00405b00(acStack_3e,"Are you sure you want to disband ");
+45720	    uVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45721	    FUN_004028c4(uVar3,(char *)abStack_140);
+45722	    FUN_00402978(abStack_140,abStack_a);
+45723	    FUN_00405bc8(acStack_3e,(char *)abStack_a);
+45724	    FUN_00405bc8(acStack_3e," unit");
+45725	    iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45726	    if (1 < iVar2) {
+45727	      FUN_00405bc8(acStack_3e,"s");
+45728	    }
+45729	    FUN_00405bc8(acStack_3e,".");
+45730	    iVar2 = 0;
+45731	    FUN_00403458((int *)&puStack_144,acStack_3e,0x33);
+45732	    iVar2 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_00445274,iVar2
+45733	                        );
+45734	    if (iVar2 == 6) {
+45735	      cStack_b = '\0';
+45736	      sVar5 = 0x13;
+45737	      uVar4 = extraout_EDX_00;
+45738	      do {
+45739	        if (0 < *(short *)(param_1 + 0x1ee + sVar5 * 0x20)) {
+45740	          bVar1 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar5);
+45741	          uVar4 = extraout_EDX_01;
+45742	          if (bVar1) {
+45743	            if ((*(short *)(param_1 + 0x1d6) == -1) &&
+45744	               (*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0)) {
+45745	              cStack_b = '\x01';
+45746	            }
+45747	            else {
+45748	              TChangeArmyUnits_RemoveUnit(param_1,sVar5,1);
+45749	              uVar4 = extraout_EDX_02;
+45750	            }
+45751	          }
+45752	        }
+45753	        sVar5 = sVar5 + -1;
+45754	      } while (sVar5 != -1);
+45755	      if (cStack_b != '\0') {
+45756	        FUN_0042d750((uint *)"An army must be near its own city to disband a regular unit.",
+45757	                     CONCAT31((int3)((uint)uVar4 >> 8),2),_UNK_00445278,0);
+45758	      }
+45759	    }
+45760	  }
+45761	  *in_FS_OFFSET = uStack_15c;
+45762	  puStack_154 = &UNK_00445239;
+45763	  puStack_158 = &UNK_00445231;
+45764	  FUN_004032fc((int *)&puStack_144);
+45765	  return;
+45766	}
+45767	
+45768	
+45769	// ==== TChangeArmyUnits_RemoveUnit @ 004452c4 ====
+45770	
+45771	void TChangeArmyUnits_RemoveUnit(int param_1,short param_2,char param_3)
+45772	
+45773	{
+45774	  short *psVar1;
+45775	  int *piVar2;
+45776	  undefined4 uVar3;
+45777	  undefined4 *puVar4;
+45778	  short sVar5;
+45779	  int iVar6;
+45780	  undefined4 *puVar7;
+45781	  byte bVar8;
+45782	  
+45783	  bVar8 = 0;
+45784	  piVar2 = *(int **)(*(int *)(param_1 + 0x1b8) + 0xfc);
+45785	  (**(code **)(*piVar2 + 0x3c))(piVar2,(int)param_2);
+45786	  psVar1 = (short *)(param_1 + 0x1ea + param_2 * 0x20);
+45787	  if ((param_3 != '\0') && (*psVar1 == 0)) {
+45788	    iVar6 = CONCAT22(param_2 >> 0xf,*(undefined2 *)(param_1 + 0x1d8)) + -1;
+45789	    sVar5 = (short)iVar6 - (short)((psVar1[2] * 1000) / (int)(&DAT_00474aa0)[DAT_004a0320 * 0x125]);
+45790	    *(short *)(param_1 + 0x1d8) = sVar5;
+45791	    uVar3 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),sVar5));
+45792	    *(short *)(param_1 + 0x1d8) = (short)uVar3;
+45793	  }
+45794	  if (param_2 < 0x13) {
+45795	    do {
+45796	      puVar4 = (undefined4 *)(param_1 + 0x20a + param_2 * 0x20);
+45797	      puVar7 = (undefined4 *)(param_1 + 0x1ea + param_2 * 0x20);
+45798	      for (iVar6 = 8; iVar6 != 0; iVar6 = iVar6 + -1) {
+45799	        *puVar7 = *puVar4;
+45800	        puVar4 = puVar4 + (uint)bVar8 * -2 + 1;
+45801	        puVar7 = puVar7 + (uint)bVar8 * -2 + 1;
+45802	      }
+45803	      param_2 = param_2 + 1;
+45804	    } while (param_2 != 0x13);
+45805	  }
+45806	  *(undefined2 *)(param_1 + 0x44e) = 0;
+45807	  return;
+45808	}
+45809	
+45810	
+45811	// ==== TChangeArmyUnits_OK @ 00445378 ====
+45812	
+45813	void TChangeArmyUnits_OK(int *param_1)
+45814	
+45815	{
+45816	  int iVar1;
+45817	  undefined4 *puVar2;
+45818	  undefined4 *puVar3;
+45819	  
+45820	  (&DAT_00474ab2)[DAT_004a0320 * 0x24a] = (short)param_1[0x76];
+45821	  puVar2 = (undefined4 *)((int)param_1 + 0x1da);
+45822	  puVar3 = &DAT_0047c1ec + (short)param_1[0x75] * 0xa4;
+45823	  for (iVar1 = 0xa4; iVar1 != 0; iVar1 = iVar1 + -1) {
+45824	    *puVar3 = *puVar2;
+45825	    puVar2 = puVar2 + 1;
+45826	    puVar3 = puVar3 + 1;
+45827	  }
+45828	  param_1[0x4a] = 1;
+45829	  FUN_0042313c(param_1);
+45830	  return;
+45831	}
+45832	
+45833	
+45389	// ==== TChangeArmyUnits_InitializeForm @ 004449f4 ====
+45390	
+45391	void TChangeArmyUnits_InitializeForm(int *param_1)
+45392	
+45393	{
+45394	  short sVar1;
+45395	  undefined2 uVar2;
+45396	  int iVar3;
+45397	  undefined4 *puVar4;
+45398	  undefined4 *puVar5;
+45399	  byte bVar6;
+45400	  
+45401	  bVar6 = 0;
+45402	  FUN_004127a0(param_1,0x14);
+45403	  FUN_004127c0(param_1,0x14);
+45404	  FUN_00420c58(param_1,0x1c2);
+45405	  FUN_00420c84(param_1,0x136);
+45406	  sVar1 = *(short *)(DAT_0045e740 + 0x220);
+45407	  *(short *)(param_1 + 0x75) = sVar1;
+45408	  uVar2 = FUN_004494e4((undefined *)CONCAT22((short)((uint)(sVar1 * 0x52) >> 0x10),DAT_004a0320),
+45409	                       (undefined *)(&DAT_0047c1ec)[sVar1 * 0xa4]);
+45410	  *(undefined2 *)((int)param_1 + 0x1d6) = uVar2;
+45411	  puVar4 = &DAT_0047c1ec + (short)param_1[0x75] * 0xa4;
+45412	  puVar5 = (undefined4 *)((int)param_1 + 0x1da);
+45413	  for (iVar3 = 0xa4; iVar3 != 0; iVar3 = iVar3 + -1) {
+45414	    *puVar5 = *puVar4;
+45415	    puVar4 = puVar4 + (uint)bVar6 * -2 + 1;
+45416	    puVar5 = puVar5 + (uint)bVar6 * -2 + 1;
+45417	  }
+45418	  *(undefined2 *)(param_1 + 0x76) = (&DAT_00474ab2)[DAT_004a0320 * 0x24a];
+45419	  TChangeArmyUnits_FillListBox((int)param_1);
+45420	  FUN_00422f40(param_1);
+45421	  return;
+45422	}
+45423	
+45424	
+45834	// ==== TChangeArmyUnits_Cancel @ 004453c8 ====
+45835	
+45836	void TChangeArmyUnits_Cancel(int *param_1)
+45837	
+45838	{
+45839	  param_1[0x4a] = 2;
+45840	  FUN_0042313c(param_1);
+45841	  return;
+45842	}
+45843	
+45844	
+44466	// ==== TArmyToArmy_RemoveUnit @ 00442dd8 ====
+44467	
+44468	void TArmyToArmy_RemoveUnit(int param_1,int param_2,short param_3,char param_4)
+44469	
+44470	{
+44471	  short *psVar1;
+44472	  undefined4 uVar2;
+44473	  undefined4 *puVar3;
+44474	  undefined4 *puVar4;
+44475	  short sVar5;
+44476	  undefined4 unaff_EDI;
+44477	  int iVar6;
+44478	  undefined4 *puVar7;
+44479	  byte bVar8;
+44480	  
+44481	  bVar8 = 0;
+44482	  psVar1 = (short *)(param_2 + 0x10 + param_3 * 0x20);
+44483	  if ((param_4 != '\0') && (*psVar1 == 0)) {
+44484	    iVar6 = CONCAT22((short)((uint)unaff_EDI >> 0x10),*(undefined2 *)(param_1 + 0x772)) + -1;
+44485	    sVar5 = (short)iVar6 - (short)((psVar1[2] * 1000) / (int)(&DAT_00474aa0)[DAT_004a0320 * 0x125]);
+44486	    *(short *)(param_1 + 0x772) = sVar5;
+44487	    uVar2 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),sVar5));
+44488	    *(short *)(param_1 + 0x772) = (short)uVar2;
+44489	  }
+44490	  if (param_3 < 0x13) {
+44491	    puVar3 = (undefined4 *)(param_2 + 0x30 + param_3 * 0x20);
+44492	    do {
+44493	      puVar4 = puVar3;
+44494	      puVar7 = puVar3 + -8;
+44495	      for (iVar6 = 8; iVar6 != 0; iVar6 = iVar6 + -1) {
+44496	        *puVar7 = *puVar4;
+44497	        puVar4 = puVar4 + (uint)bVar8 * -2 + 1;
+44498	        puVar7 = puVar7 + (uint)bVar8 * -2 + 1;
+44499	      }
+44500	      param_3 = param_3 + 1;
+44501	      puVar3 = puVar3 + 8;
+44502	    } while (param_3 != 0x13);
+44503	  }
+44504	  *(undefined2 *)(param_2 + 0x274) = 0;
+44505	  TArmyToArmy_PrintNumbers(param_1);
+44506	  return;
+44507	}
+44508	
+44509	
+44253	// ==== TArmyToArmy_Army1Disband @ 004428e0 ====
+44254	
+44255	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+44256	
+44257	void TArmyToArmy_Army1Disband(int param_1)
+44258	
+44259	{
+44260	  int *piVar1;
+44261	  bool bVar2;
+44262	  int iVar3;
+44263	  uint uVar4;
+44264	  undefined4 extraout_EDX;
+44265	  undefined4 extraout_EDX_00;
+44266	  undefined4 extraout_EDX_01;
+44267	  undefined4 extraout_EDX_02;
+44268	  undefined4 uVar5;
+44269	  short sVar6;
+44270	  undefined4 *in_FS_OFFSET;
+44271	  undefined4 uStack_15c;
+44272	  undefined *puStack_158;
+44273	  undefined1 *puStack_154;
+44274	  uint *puStack_144;
+44275	  byte abStack_140 [258];
+44276	  char acStack_3e [51];
+44277	  char cStack_b;
+44278	  byte abStack_a [6];
+44279	  
+44280	  puStack_154 = &stack0xfffffffc;
+44281	  puStack_144 = (uint *)0x0;
+44282	  puStack_158 = &UNK_00442a68;
+44283	  uStack_15c = *in_FS_OFFSET;
+44284	  *in_FS_OFFSET = &uStack_15c;
+44285	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44286	  if (0 < iVar3) {
+44287	    FUN_00405b00(acStack_3e,"Are you sure you want to disband ");
+44288	    uVar4 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44289	    FUN_004028c4(uVar4,(char *)abStack_140);
+44290	    FUN_00402978(abStack_140,abStack_a);
+44291	    FUN_00405bc8(acStack_3e,(char *)abStack_a);
+44292	    FUN_00405bc8(acStack_3e," unit");
+44293	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44294	    if (1 < iVar3) {
+44295	      FUN_00405bc8(acStack_3e,"s");
+44296	    }
+44297	    FUN_00405bc8(acStack_3e,".");
+44298	    iVar3 = 0;
+44299	    FUN_00403458((int *)&puStack_144,acStack_3e,0x33);
+44300	    iVar3 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_00442aac,iVar3
+44301	                        );
+44302	    if (iVar3 == 6) {
+44303	      cStack_b = '\0';
+44304	      sVar6 = 0x13;
+44305	      uVar5 = extraout_EDX_00;
+44306	      do {
+44307	        if (0 < *(short *)(param_1 + 0x260 + sVar6 * 0x20)) {
+44308	          bVar2 = FUN_00429fb4(*(int **)(param_1 + 0x1d4),(int)sVar6);
+44309	          uVar5 = extraout_EDX_01;
+44310	          if (bVar2) {
+44311	            if ((*(short *)(param_1 + 0x770) == -1) &&
+44312	               (*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {
+44313	              cStack_b = '\x01';
+44314	            }
+44315	            else {
+44316	              TArmyToArmy_RemoveUnit(param_1,param_1 + 0x24c,sVar6,1);
+44317	              piVar1 = *(int **)(*(int *)(param_1 + 0x1d4) + 0xfc);
+44318	              (**(code **)(*piVar1 + 0x3c))(piVar1,(int)sVar6);
+44319	              uVar5 = extraout_EDX_02;
+44320	            }
+44321	          }
+44322	        }
+44323	        sVar6 = sVar6 + -1;
+44324	      } while (sVar6 != -1);
+44325	      if (cStack_b != '\0') {
+44326	        FUN_0042d750((uint *)"An army must be near its own city to disband a regular unit.",
+44327	                     CONCAT31((int3)((uint)uVar5 >> 8),2),_UNK_00442ab0,0);
+44328	      }
+44329	    }
+44330	  }
+44331	  *in_FS_OFFSET = uStack_15c;
+44332	  puStack_154 = &UNK_00442a6f;
+44333	  puStack_158 = &UNK_00442a67;
+44334	  FUN_004032fc((int *)&puStack_144);
+44335	  return;
+44336	}
+44337	
+44338	
+44339	// ==== TArmyToArmy_Army2Disband @ 00442afc ====
+44340	
+44341	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+44342	
+44343	void TArmyToArmy_Army2Disband(int param_1)
+44344	
+44345	{
+44346	  int *piVar1;
+44347	  bool bVar2;
+44348	  int iVar3;
+44349	  uint uVar4;
+44350	  undefined4 extraout_EDX;
+44351	  undefined4 extraout_EDX_00;
+44352	  undefined4 extraout_EDX_01;
+44353	  undefined4 extraout_EDX_02;
+44354	  undefined4 uVar5;
+44355	  short sVar6;
+44356	  undefined4 *in_FS_OFFSET;
+44357	  undefined4 uStack_15c;
+44358	  undefined *puStack_158;
+44359	  undefined1 *puStack_154;
+44360	  uint *puStack_144;
+44361	  byte abStack_140 [258];
+44362	  char acStack_3e [51];
+44363	  char cStack_b;
+44364	  byte abStack_a [6];
+44365	  
+44366	  puStack_154 = &stack0xfffffffc;
+44367	  puStack_144 = (uint *)0x0;
+44368	  puStack_158 = &UNK_00442c84;
+44369	  uStack_15c = *in_FS_OFFSET;
+44370	  *in_FS_OFFSET = &uStack_15c;
+44371	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44372	  if (0 < iVar3) {
+44373	    FUN_00405b00(acStack_3e,"Are you sure you want to disband ");
+44374	    uVar4 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44375	    FUN_004028c4(uVar4,(char *)abStack_140);
+44376	    FUN_00402978(abStack_140,abStack_a);
+44377	    FUN_00405bc8(acStack_3e,(char *)abStack_a);
+44378	    FUN_00405bc8(acStack_3e," unit");
+44379	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44380	    if (1 < iVar3) {
+44381	      FUN_00405bc8(acStack_3e,"s");
+44382	    }
+44383	    FUN_00405bc8(acStack_3e,".");
+44384	    iVar3 = 0;
+44385	    FUN_00403458((int *)&puStack_144,acStack_3e,0x33);
+44386	    iVar3 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_00442cc8,iVar3
+44387	                        );
+44388	    if (iVar3 == 6) {
+44389	      cStack_b = '\0';
+44390	      sVar6 = 0x13;
+44391	      uVar5 = extraout_EDX_00;
+44392	      do {
+44393	        if (0 < *(short *)(param_1 + 0x4f0 + sVar6 * 0x20)) {
+44394	          bVar2 = FUN_00429fb4(*(int **)(param_1 + 0x1d8),(int)sVar6);
+44395	          uVar5 = extraout_EDX_01;
+44396	          if (bVar2) {
+44397	            if ((*(short *)(param_1 + 0x770) == -1) &&
+44398	               (*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {
+44399	              cStack_b = '\x01';
+44400	            }
+44401	            else {
+44402	              TArmyToArmy_RemoveUnit(param_1,param_1 + 0x4dc,sVar6,1);
+44403	              piVar1 = *(int **)(*(int *)(param_1 + 0x1d8) + 0xfc);
+44404	              (**(code **)(*piVar1 + 0x3c))(piVar1,(int)sVar6);
+44405	              uVar5 = extraout_EDX_02;
+44406	            }
+44407	          }
+44408	        }
+44409	        sVar6 = sVar6 + -1;
+44410	      } while (sVar6 != -1);
+44411	      if (cStack_b != '\0') {
+44412	        FUN_0042d750((uint *)"An army must be near its own city to disband a regular unit.",
+44413	                     CONCAT31((int3)((uint)uVar5 >> 8),2),_UNK_00442ccc,0);
+44414	      }
+44415	    }
+44416	  }
+44417	  *in_FS_OFFSET = uStack_15c;
+44418	  puStack_154 = &UNK_00442c8b;
+44419	  puStack_158 = &UNK_00442c83;
+44420	  FUN_004032fc((int *)&puStack_144);
+44421	  return;
+44422	}
+44423	
+44424	
+44651	// ==== TArmyToArmy_Cancel @ 004430b0 ====
+44652	
+44653	void TArmyToArmy_Cancel(int *param_1)
+44654	
+44655	{
+44656	  if ((char)param_1[0x1de] != '\0') {
+44657	    FUN_0044ab90(*(short *)((int)param_1 + 0x76e));
+44658	  }
+44659	  param_1[0x4a] = 2;
+44660	  FUN_0042313c(param_1);
+44661	  return;
+44662	}
+44663	
+44664	
+48066	// ==== FUN_004494e4 @ 004494e4 ====
+48067	
+48068	undefined2 FUN_004494e4(undefined *param_1,undefined *param_2)
+48069	
+48070	{
+48071	  short sVar1;
+48072	  short sVar2;
+48073	  short sVar3;
+48074	  undefined4 uVar4;
+48075	  undefined4 uVar5;
+48076	  undefined2 extraout_var;
+48077	  undefined *puVar6;
+48078	  undefined *extraout_EDX;
+48079	  short sVar7;
+48080	  short sVar8;
+48081	  short local_1a;
+48082	  short sStack_18;
+48083	  undefined2 local_16;
+48084	  undefined4 local_14;
+48085	  
+48086	  sVar2 = (short)param_1;
+48087	  local_16 = 0xffff;
+48088	  sVar8 = -1;
+48089	  puVar6 = param_2;
+48090	  do {
+48091	    sVar7 = -1;
+48092	    do {
+48093	      local_1a = (short)param_2;
+48094	      uVar4 = FUN_00448fd0(CONCAT22((short)((uint)param_1 >> 0x10),0x13f),
+48095	                           CONCAT22((short)((uint)puVar6 >> 0x10),local_1a + sVar8));
+48096	      uVar4 = FUN_00448fd8(0,uVar4);
+48097	      sStack_18 = (short)((uint)param_2 >> 0x10);
+48098	      uVar5 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x8b),
+48099	                           CONCAT22(extraout_var,sStack_18 + sVar7));
+48100	      uVar5 = FUN_00448fd8(0,uVar5);
+48101	      sVar3 = (short)uVar5;
+48102	      local_14 = CONCAT22(sVar3,(short)uVar4);
+48103	      puVar6 = &DAT_0045e870 + (short)uVar4 * 0x118;
+48104	      sVar1 = *(short *)(puVar6 + sVar3 * 2);
+48105	      param_1 = (undefined *)CONCAT22(sVar3 >> 0xf,sVar1);
+48106	      if ((0x13 < sVar1) && (puVar6 = (undefined *)(int)sVar3, sVar1 < 100)) {
+48107	        param_1 = (undefined *)((int)sVar1 - 0x14U & 0x8000000f);
+48108	        if ((int)param_1 < 0) {
+48109	          param_1 = (undefined *)(((uint)(param_1 + -1) | 0xfffffff0) + 1);
+48110	        }
+48111	        puVar6 = (undefined *)(int)sVar2;
+48112	        if (param_1 == puVar6) {
+48113	          param_1 = (undefined *)FUN_004498d8(local_14);
+48114	          local_16 = SUB42(param_1,0);
+48115	          puVar6 = extraout_EDX;
+48116	        }
+48117	      }
+48118	      sVar7 = sVar7 + 1;
+48119	    } while (sVar7 != 2);
+48120	    sVar8 = sVar8 + 1;
+48121	  } while (sVar8 != 2);
+48122	  return local_16;
+48123	}
+48124	
+48125	
+47727	// ==== FUN_00449018 @ 00449018 ====
+47728	
+47729	void FUN_00449018(undefined4 param_1,undefined4 param_2)
+47730	
+47731	{
+47732	  uint uVar1;
+47733	  uint uVar2;
+47734	  undefined2 local_8;
+47735	  undefined2 uStack_6;
+47736	  undefined2 local_4;
+47737	  undefined2 uStack_2;
+47738	  
+47739	  uStack_6 = (short)((uint)param_1 >> 0x10);
+47740	  uStack_2 = (short)((uint)param_2 >> 0x10);
+47741	  uVar1 = (int)uStack_6 - (int)uStack_2 >> 0x1f;
+47742	  local_8 = (short)param_1;
+47743	  local_4 = (short)param_2;
+47744	  uVar2 = (int)local_8 - (int)local_4 >> 0x1f;
+47745	  FUN_00448fd8(((int)local_8 - (int)local_4 ^ uVar2) - uVar2,
+47746	               ((int)uStack_6 - (int)uStack_2 ^ uVar1) - uVar1);
+47747	  return;
+47748	}
+47749	
+47750	
