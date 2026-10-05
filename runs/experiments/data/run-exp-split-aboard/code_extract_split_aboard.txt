@@ -1,0 +1,204 @@
+# Code extract split_aboard from /mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt (line numbers are that file's)
+
+47021	// ==== TUnitMap_SplitArmy @ 0044755c ====
+47022	
+47023	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+47024	
+47025	void TUnitMap_SplitArmy(int *param_1,undefined4 param_2,undefined4 param_3)
+47026	
+47027	{
+47028	  short sVar1;
+47029	  undefined4 extraout_ECX;
+47030	  undefined4 extraout_EDX;
+47031	  undefined4 uStack_c;
+47032	  
+47033	  if ((short)param_1[0x89] < 0) {
+47034	    sVar1 = (short)param_1[0x88];
+47035	  }
+47036	  else {
+47037	    sVar1 = (&DAT_0049c282)[(short)param_1[0x89] * 0xd];
+47038	  }
+47039	  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {
+47040	    uStack_c = param_3;
+47041	    if ((&DAT_0047c220)[sVar1 * 0x148] == 0) {
+47042	      FUN_0042d750((uint *)"You can not split an army containing only 1 unit.",
+47043	                   CONCAT31((int3)(char)((ushort)sVar1 >> 8),2),_UNK_00447604,0);
+47044	    }
+47045	    else {
+47046	      FUN_00449f08(DAT_004a0320,(&DAT_0047c1ec)[sVar1 * 0xa4],(short *)&uStack_c);
+47047	      if (-1 < (short)uStack_c) {
+47048	        FUN_00424608(DAT_0045e628,0x44170c,(undefined4 *)0x45e72c);
+47049	        TUnitMap_UpdateUMSelection(param_1,extraout_EDX,extraout_ECX);
+47050	      }
+47051	    }
+47052	  }
+47053	  return;
+47054	}
+47055	
+47056	
+48713	// ==== FUN_00449f08 @ 00449f08 ====
+48714	
+48715	void FUN_00449f08(short param_1,undefined4 param_2,short *param_3)
+48716	
+48717	{
+48718	  short sVar1;
+48719	  int iVar2;
+48720	  undefined4 local_12;
+48721	  
+48722	  *param_3 = -1;
+48723	  local_12 = param_2;
+48724	  FUN_004492c0((short *)&local_12,CONCAT31((int3)((uint)param_2 >> 8),1));
+48725	  if ((-1 < (short)local_12) && (DAT_004a0324 < 0xc6)) {
+48726	    *param_3 = DAT_004a0324;
+48727	    DAT_004a0324 = DAT_004a0324 + 1;
+48728	    iVar2 = (int)*param_3;
+48729	    *(short *)(&DAT_0047c1ec + iVar2 * 0xa4) = (short)local_12;
+48730	    *(short *)((int)&DAT_0047c1ec + iVar2 * 0x290 + 2) = local_12._2_2_;
+48731	    (&DAT_0047c1f0)[iVar2 * 0x148] = param_1;
+48732	    (&DAT_0047c1f2)[iVar2 * 0x148] = 0;
+48733	    if ((&DAT_00474b00)[param_1 * 0x494] == '\0') {
+48734	      (&DAT_0047c1f2)[iVar2 * 0x148] = 1;
+48735	    }
+48736	    (&DAT_0047c1f4)[iVar2 * 0x148] =
+48737	         *(undefined2 *)(&DAT_0045e870 + local_12._2_2_ * 2 + (short)local_12 * 0x118);
+48738	    (&DAT_0047c1f6)[iVar2 * 0x148] = 0;
+48739	    (&DAT_0047c1fa)[iVar2 * 0x148] = 0x3b;
+48740	    (&DAT_0047c1f8)[iVar2 * 0x148] = 0;
+48741	    sVar1 = 0;
+48742	    do {
+48743	      (&DAT_0047c200)[iVar2 * 0x148 + sVar1 * 0x10] = 0;
+48744	      (&DAT_0047c1fe)[iVar2 * 0x148 + sVar1 * 0x10] = 0;
+48745	      sVar1 = sVar1 + 1;
+48746	    } while (sVar1 != 0x14);
+48747	    *(short *)(&DAT_0045e870 + local_12._2_2_ * 2 + (short)local_12 * 0x118) = param_1 + 200;
+48748	  }
+48749	  return;
+48750	}
+48751	
+48752	
+47919	// ==== FUN_004492c0 @ 004492c0 ====
+47920	
+47921	void FUN_004492c0(short *param_1,undefined4 param_2)
+47922	
+47923	{
+47924	  short sVar1;
+47925	  short sVar2;
+47926	  undefined4 uVar3;
+47927	  undefined4 uVar4;
+47928	  short *psVar5;
+47929	  undefined2 extraout_var;
+47930	  short sVar6;
+47931	  short local_1c;
+47932	  short local_1a;
+47933	  short local_18;
+47934	  short local_16;
+47935	  short local_14;
+47936	  
+47937	  if ((char)param_2 == '\0') {
+47938	    local_1c = 0;
+47939	    local_1a = 1;
+47940	  }
+47941	  else {
+47942	    local_1c = 2;
+47943	    local_1a = 0xb;
+47944	  }
+47945	  local_16 = -1;
+47946	  local_18 = -1;
+47947	  psVar5 = param_1;
+47948	  do {
+47949	    sVar6 = -1;
+47950	    do {
+47951	      uVar3 = FUN_00448fd0(CONCAT22((short)((uint)psVar5 >> 0x10),0x13f),
+47952	                           CONCAT22((short)((uint)param_2 >> 0x10),*param_1 + local_18));
+47953	      uVar3 = FUN_00448fd8(0,uVar3);
+47954	      uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar3 >> 0x10),0x8b),
+47955	                           CONCAT22(extraout_var,param_1[1] + sVar6));
+47956	      psVar5 = (short *)FUN_00448fd8(0,uVar4);
+47957	      sVar2 = (short)psVar5;
+47958	      sVar1 = *(short *)(&DAT_0045e870 + sVar2 * 2 + (short)uVar3 * 0x118);
+47959	      param_2 = CONCAT22(sVar2 >> 0xf,sVar1);
+47960	      if ((local_1c <= sVar1) && (sVar1 <= local_1a)) {
+47961	        local_16 = (short)uVar3;
+47962	        local_14 = sVar2;
+47963	      }
+47964	      sVar6 = sVar6 + 1;
+47965	    } while (sVar6 != 2);
+47966	    local_18 = local_18 + 1;
+47967	  } while (local_18 != 2);
+47968	  *param_1 = local_16;
+47969	  param_1[1] = local_14;
+47970	  return;
+47971	}
+47972	
+47973	
+46950	// ==== TUnitMap_JoinArmies @ 004472fc ====
+46951	
+46952	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+46953	
+46954	void TUnitMap_JoinArmies(int *param_1,undefined4 param_2,undefined4 param_3)
+46955	
+46956	{
+46957	  short sVar1;
+46958	  int iVar2;
+46959	  int iVar3;
+46960	  undefined4 extraout_ECX;
+46961	  undefined4 extraout_EDX;
+46962	  undefined4 extraout_EDX_00;
+46963	  undefined4 extraout_EDX_01;
+46964	  undefined4 uStack_10;
+46965	  
+46966	  if ((short)param_1[0x89] < 0) {
+46967	    sVar1 = (short)param_1[0x88];
+46968	  }
+46969	  else {
+46970	    sVar1 = (&DAT_0049c282)[(short)param_1[0x89] * 0xd];
+46971	  }
+46972	  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {
+46973	    uStack_10 = param_3;
+46974	    FUN_00449d64(sVar1,(short *)&uStack_10);
+46975	    if (-1 < (short)uStack_10) {
+46976	      if (((&DAT_0047c1f4)[(short)uStack_10 * 0x148] == -1) ||
+46977	         ((&DAT_0047c1f4)[sVar1 * 0x148] == -1)) {
+46978	        FUN_0042d750((uint *)"An army on a fleet cannot be combined with another.",
+46979	                     CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_0044749c,0);
+46980	      }
+46981	      else {
+46982	        iVar2 = FUN_0044a66c(sVar1);
+46983	        iVar3 = FUN_0044a66c((short)uStack_10);
+46984	        if ((int)(short)iVar2 + (int)(short)iVar3 < 0x15) {
+46985	          iVar2 = FUN_0044a698(sVar1);
+46986	          iVar3 = FUN_0044a698((short)uStack_10);
+46987	          if (iVar2 + iVar3 < 0x186a1) {
+46988	            while (0 < (short)(&DAT_0047c200)[(short)uStack_10 * 0x148]) {
+46989	              FUN_0044acb4((short)uStack_10,sVar1,0);
+46990	            }
+46991	            iVar2 = (int)sVar1;
+46992	            (&DAT_0047c1f8)[iVar2 * 0x148] =
+46993	                 (&DAT_0047c1f8)[iVar2 * 0x148] + (&DAT_0047c1f8)[(short)uStack_10 * 0x148];
+46994	            (&DAT_0047c1f6)[iVar2 * 0x148] =
+46995	                 (&DAT_0047c1f6)[iVar2 * 0x148] + (&DAT_0047c1f6)[(short)uStack_10 * 0x148];
+46996	            FUN_0044ab90((short)uStack_10);
+46997	            (&DAT_0047c1f2)[iVar2 * 0x148] = 0;
+46998	            sVar1 = *(short *)(&DAT_0047c1ec + iVar2 * 0xa4);
+46999	            *(undefined2 *)((int)param_1 + 0x21e) =
+47000	                 *(undefined2 *)
+47001	                  (&DAT_0045e870 + sVar1 * 0x118 +
+47002	                  *(short *)((int)&DAT_0047c1ec + iVar2 * 0x290 + 2) * 2);
+47003	            TUnitMap_UpdateUMSelection(param_1,&DAT_0045e870 + sVar1 * 0x118,extraout_ECX);
+47004	          }
+47005	          else {
+47006	            FUN_0042d750((uint *)"These 2 armies combined contain more than 100,000 troops.",
+47007	                         CONCAT31((int3)((uint)extraout_EDX_01 >> 8),2),_UNK_0044749c,0);
+47008	          }
+47009	        }
+47010	        else {
+47011	          FUN_0042d750((uint *)"These 2 armies combined contain more than 20 units.",
+47012	                       CONCAT31((int3)((uint)extraout_EDX_00 >> 8),2),_UNK_0044749c,0);
+47013	        }
+47014	      }
+47015	    }
+47016	  }
+47017	  return;
+47018	}
+47019	
+47020	
