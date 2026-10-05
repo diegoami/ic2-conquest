@@ -1,12 +1,12 @@
 # External PR reviewer (OpenCode)
 
-## Roles and models (player decisions, 2026-10-01; revised 2026-10-02, twice)
+## Roles and models (player decisions, 2026-10-01; revised 2026-10-02, twice; 2026-10-05)
 
-**Sonnet is the only implementer.** The reviewer is not a Claude model: a chain of two, then the caller decides.
+**Implementers: Claude Sonnet, or OpenCode GPT-6.1 Sol** (the player, 2026-10-05: when Claude's weekly quota is low, research tasks run as OpenCode agents on `openai/gpt-6.1-sol#medium`, and the Claude session only briefs, checks and merges). The reviewer is not a Claude model: a chain of two, then the caller decides.
 
 | Role | First | Then |
 |---|---|---|
-| Implementer | Claude Sonnet (no OpenCode implementer) | – |
+| Implementer | Claude Sonnet | OpenCode `openai/gpt-6.1-sol#medium` with agent `implementer` (`.opencode/agents/implementer.md`), when Claude's quota is low |
 | Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
 
 **Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given. The script also checks itself: before the chain runs it asks quota-tracker (`IC2_QUOTA_URL`, default `http://localhost:8765`) about each model's provider, skips one whose provider is `exhausted` (GPT-5.6 Luna is judged on its own `gpt-5.6-luna:7d` window), names the skip in the posted header (`PR review (gpt-5.6-luna; glm-5.3 failed: quota exhausted (zai, usable in 1h))`) and exits 3 when every model is skipped; when quota-tracker does not answer it goes on unchanged.
@@ -16,8 +16,8 @@
   what runs next. The Claude fallback is the `/review-pr <n>` skill (`.claude/skills/review-pr`, merged in #7), run
   in a session on Opus; nothing starts it automatically.
 - **The implementer's model never reviews its own PR** (`Co-Authored-By` trailers and `model:<name>` labels are
-  excluded, compared without punctuation; `--exclude-model` adds names). Today the implementer is Sonnet, which is
-  not in the chain, so nothing is excluded.
+  excluded, compared without punctuation; `--exclude-model` adds names). Sonnet is not in the chain, so nothing is excluded; a PR
+  implemented by Sol is reviewed by Luna (or another model with quota), never by Sol.
 - **History, so the reasons survive:** the earlier plan was DeepSeek then Sonnet as implementer, and GLM-5.3 Flash
   then Opus as reviewer. GLM-5.3 and GLM-5.3-Flash sometimes end their turn early in long implementer runs (a
   whole run of reading, then exit 0 with no commit); Go's `gpt-6-luna` returned "Bad Request" in long agent loops
@@ -60,6 +60,31 @@ and accepts a review flattened onto one line. Then:
 | verdict unreadable, or the two verdicts disagree | posted with `> Note from scripts/external_review.py: verdict unreadable`, no label, exit 4 |
 | no closing verdict (cut off) | posted with `> Note …: review may be cut off`, no label, exit 4 |
 | `fixes #N`, `closes #N`, `resolves #N` in the text | **rewritten** to `fixes N` (GitHub closes issues from PR bodies and commits, not comments), logged |
+
+## The OpenCode implementer (2026-10-05)
+
+```
+python3 scripts/opencode_watched.py --agent implementer --model 'openai/gpt-6.1-sol#medium' \
+    --brief <brief.md> --worktree <task worktree> --run-dir <dir> --idle 2400 --total 14400
+```
+
+- The agent's permissions come from this checkout's `.opencode/agents/implementer.md`, never from the worktree (as for the reviewer).
+- **Allowed:** edits and bash inside its worktree, Wine/Xvfb in its own game folder and display, read-only access to the research repository
+  and the decompile, `gh pr create|edit|view`, and `gh release create|upload run-exp-*`.
+- **Denied:**
+  - merges, reviews and comments;
+  - a push to main, force-pushes and deletions;
+  - `git worktree`, `reset --hard` and `clean`;
+  - kills by pattern (`pkill`, `killall`);
+  - `sudo`;
+  - anything touching credentials or the environment (`printenv`, `env`, `auth.json`, `~/.config`, the token's name);
+  - writes to the research repository or `/mnt/c`, and edits of `CLAUDE.md` or `.opencode/`.
+- **Idle limit:** `--idle 2400`, because a Wine batch can run for many minutes without a step boundary.
+- **Checks after every run** (the permission map is a guard, not a proof):
+  - the research repository's `git status` is clean;
+  - main has not moved except by the session's own merges;
+  - no binary is in the branch;
+  - the session re-runs the task's audit and tests before any review (L46).
 
 ## Parts
 
