@@ -10,7 +10,7 @@ names = []
 for (name, i, k, txt) in sites.sites(L):
     if name not in names: names.append(name)
 HELPERS = ['FUN_0042d750', 'FUN_0042d770', 'FUN_0044a66c', 'FUN_0044a698', 'FUN_004494e4', 'FUN_004492a0', 'FUN_00449018', 'FUN_00449d64', 'FUN_00449dd8', 'FUN_00449d08',
-           'FUN_00449cd8', 'FUN_004499c0', 'FUN_004497cc', 'FUN_004496e0', 'FUN_004496bc', 'FUN_0044a4e0']
+           'FUN_00449cd8', 'FUN_004499c0', 'FUN_004497cc', 'FUN_004496e0', 'FUN_004496bc', 'FUN_0044a4e0', 'TArmyToArmy_InitializeForm', 'TChangeArmyUnits_InitializeForm', 'FUN_00449f08', 'FUN_0044a120']
 out = ['# Code extract (message-box call sites and the helpers of their conditions) from %s; the first column is that file\'s line number' % os.path.basename(sites.DUMP)]
 for n in names + [h for h in HELPERS if h not in names]:
     v = fn[n]

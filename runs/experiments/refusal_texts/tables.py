@@ -52,3 +52,15 @@ def read_plays(data=DATA):
     return out
 
 def last_play(P, pid): return P[pid][-1]
+
+def read_reread(data=DATA):
+    RE = {}
+    for f in sorted(glob.glob(os.path.join(data, 'ocr_reread*.jsonl'))):
+        for l in open(f, encoding='utf-8'):
+            r = json.loads(l); RE[r['png']] = r
+    return RE
+
+def shown_text(b, RE):
+    """The reading of a box shown in the plays table: the tight-crop psm 6 re-reading (ocr_reread.jsonl) when there is one, else the first reading's crop, else its whole-window text"""
+    if b['png'] in RE and RE[b['png']]['psm6']: return RE[b['png']]['psm6']
+    return b.get('text_crop') or b.get('text', '')

@@ -152,3 +152,25 @@ SC['F04b'] = dict(src=TE, pre=sail_pre(2, 97, 48), act=lambda g: fleet_button(g,
 def sel_act(g):
     ax, ay = g.army_pos(0); g.select_army(0, ax, ay)
 SC['SEL01'] = dict(src=GF('T_BASE.SAV'), act=sel_act, note='control for the UI bytes: army 0 only SELECTED (no order, no box), then the after save')
+
+# ---------------------------------------------------------------- batch b4: more rows
+SC['M04'] = dict(src=TB, ops=[('city', 120, {'owner': 6})], act=lambda g: army_button(g, 1, 'mercs'),
+                 note='Recruit mercenaries, army 1 next to Heraclea (120) whose owner is staged to Gaul (6), at war with Rome')
+SC['C03'] = dict(src=TB, ops=[('city', 73, {'owner': 0})], act=lambda g: city_button(g, 94, 27),
+                 note='Fortify Brixia (73), owner staged to Rome, with the Gaulish army 9 (at war) one tile away')
+def merc_act(g):
+    army_button(g, 1, 'mercs'); open_dialog_tracked(g, 'Recruit mercenary unit', lambda: None, tries=1)
+    cs = g.controls('Recruit mercenary unit'); lst = g.control(cs, cls='TListBox', index=0)
+    g.click(lst['x'] + lst['w'] // 2, lst['y'] + 12, pause=0.5)
+    g.click_control(g.control(cs, text='Recruit unit'), pause=1.5)
+def merc_post(g):
+    cs = g.controls('Recruit mercenary unit')
+    names = [c['text'] for c in cs]
+    close_dialog_cancel(g, 'Recruit mercenary unit', button='Cancel' if 'Cancel' in names else 'OK')
+SC['MM01'] = dict(src=TB, ops=[('money', 1, 0)], act=merc_act, post=merc_post, note='Recruit mercenary unit dialog: first offer, army 1 with 0 in its purse')
+SC['MM02'] = dict(src=TB, ops=[('money', 1, 1000), ('units', 1, named([U('li', 11000)] * 9))], act=merc_act, post=merc_post, note='Recruit mercenary unit dialog: first offer, army 1 of 9 x 11,000 = 99,000 troops with 1,000 in its purse')
+
+SC['S02'] = dict(src=TB, act=lambda g: army_button(g, 0, 'disband'), note='Disband army 0 at (100,37), next to Arretium: the prompt (answered No)')
+SC['BF01'] = dict(src=GF('S10_Dacia_AUTO0720.SAV'), act=lambda g: g.tool('build_fleet', pause=1.5),
+                  note='Build fleet as Dacia (no coastal city); the save is S10_Dacia_AUTO0720.SAV of release run-exp-civ-sweep (a natural new-game autosave), used unedited',
+                  fixture_note='from release run-exp-civ-sweep')

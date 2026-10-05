@@ -117,12 +117,11 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
             else:                                    # a message built at run time: the fixed pieces must be literals of that function, in this order
                 check('%s built message: the call passes no literal' % r['id'], lit is None, str(lit))
                 fl_lines = [ln for ln in X if FN.get(ln) == fn]
-                pos = min(fl_lines); ok = True
+                pos = min(fl_lines); ok = True        # each fixed piece must be a literal of that function (their order of execution is not their order of lines)
                 for s in sp:
                     if s.startswith('<') and s.endswith('>'): continue
-                    found = [ln for ln in fl_lines if ln >= pos and re.search(r'"((?:[^"\\]|\\.)*)"', X[ln]) and any(unesc(mm) == s for mm in re.findall(r'"((?:[^"\\]|\\.)*)"', X[ln]))]
-                    if not found: ok = False; bad.append('%s: fragment %r not found as a literal of %s after line %d' % (r['id'], s, fn, pos)); break
-                    pos = found[0]
+                    found = [ln for ln in fl_lines if re.search(r'"((?:[^"\\]|\\.)*)"', X[ln]) and any(unesc(mm) == s for mm in re.findall(r'"((?:[^"\\]|\\.)*)"', X[ln]))]
+                    if not found: ok = False; bad.append('%s: fragment %r not found as a literal of %s' % (r['id'], s, fn)); break
                 checks[0] += 1
             bt, bb = box_cell(r['box [buttons]'])
             check('%s box type: finding %s vs code %s' % (r['id'], bt, dlg), bt == dlg)
@@ -240,6 +239,8 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
             check('%s: state facts in the control save: finding %r vs recomputed %r' % (pid, r['state in the control save [recomputed]'], facts), r['state in the control save [recomputed]'] == facts)
             d = SF.diff_text(ctl, aft)
             check('%s: after vs control: finding %r vs recomputed %r' % (pid, r['after vs control [recomputed]'], d), r['after vs control [recomputed]'] == d)
+            shown = ' / '.join('%s: %s' % (b['title'], (RE[b['png']]['psm6'] if b['png'] in RE and RE[b['png']]['psm6'] else (b.get('text_crop') or b.get('text', '')))) for b in q['boxes'])
+            check('%s: the OCR reading in the finding is the recorded one' % pid, r['box title: OCR of the message'] == shown, '%r vs %r' % (r['box title: OCR of the message'], shown))
             if d != 'identical': check('%s: every differing byte is in the nation record UI block' % pid, SF.ui_only(ctl, aft), d)
         else: check('%s: saves present in %s' % (pid, art), False, 'fetch them with fetch_archive.py')
         if q['staged']:

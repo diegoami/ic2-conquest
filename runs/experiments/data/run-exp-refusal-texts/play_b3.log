@@ -1,0 +1,16 @@
+20:34:17 [T02] loaded REF_T02_b3_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+20:34:27 [T02] control save REF_T02_b3_ctl.SAV d2e5d28e90b1e5a29782d909f20b1ddb3f5ba54af5df7db74c4d45d17bdf7508
+20:34:35 [T02] boxes after the order: [('Information', '6 An army can not hold more than 100,000 troops.')]
+20:34:53 [T02] after save REF_T02_b3_after.SAV d2e5d28e90b1e5a29782d909f20b1ddb3f5ba54af5df7db74c4d45d17bdf7508; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+20:35:16 [CU01] loaded REF_CU01_b3_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+20:35:26 [CU01] control save REF_CU01_b3_ctl.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+20:35:37 [CU01] boxes after the order: [('Information', '6 This army already has 20 units.')]
+20:35:55 [CU01] after save REF_CU01_b3_after.SAV b5c11e75a3b59e75bcf162df29f7d416d526f6b0cee33a4d881bd4e47587e9e1; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+20:36:18 [CU02] loaded REF_CU02_b3_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+20:36:28 [CU02] control save REF_CU02_b3_ctl.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+20:36:38 [CU02] boxes after the order: [('Information', '6 DiS sre Lesa')]
+20:36:56 [CU02] after save REF_CU02_b3_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+20:37:19 [CU03] loaded REF_CU03_b3_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+20:37:29 [CU03] control save REF_CU03_b3_ctl.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+20:37:40 [CU03] boxes after the order: [('Information', '6 ‘You can only split 1 unit at a time.')]
+20:37:58 [CU03] after save REF_CU03_b3_after.SAV 1087a163aa10dd24b6a4c8cb6bb1e070641717ff7f68d740ad87f9c8e471e22e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}

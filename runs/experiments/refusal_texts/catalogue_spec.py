@@ -63,7 +63,7 @@ row(47187, 'R14', 'refusal', 'fleet order: Repair fleet', '2 of 2',
     'dropped: the dialog does not open', plays=['F06'])
 row(47260, 'R15', 'refusal', 'fleet order: Join fleets (UF05)', '1 of 2',
     'a partner fleet exists (same owner, launched, one tile away: FUN_00449dd8 %s) and the ships add up to 101 or more: the pass test is %s'
-    % (C(48643, '{'), C(47234, 'if ((short)(&DAT_0049c27e)[sVar1 * 0xd] + iVar2 < 0x65) {')),
+    % (C(48643, 'if (((sVar4 != param_1) && ((&DAT_0049c274)[param_1 * 0xd] == *psVar2)) &&'), C(47234, 'if ((short)(&DAT_0049c27e)[sVar1 * 0xd] + iVar2 < 0x65) {')),
     'dropped: nothing merges; shown BEFORE the army test', plays=['UF05b', 'UF05c'])
 row(47237, 'R16', 'refusal', 'fleet order: Join fleets (UF05)', '2 of 2',
     'at most 100 ships together, and the partner (%s) or this fleet (%s) carries an army'
@@ -80,7 +80,7 @@ row(47300, 'R19', 'refusal', 'fleet order: Split fleet', '3 of 3',
     'dropped: nothing is created')
 row(47341, 'R20', 'refusal', 'fleet order: Scuttle fleet', '2 of 2',
     'no army aboard (%s) and no own city within one tile: %s' % (C(47336, 'if ((short)(&DAT_0049c282)[iVar3 * 0xd] < 0) {'), C(47340, 'if (sVar2 == -1) {')),
-    'dropped: the fleet is kept (when a city is near, the prompt of the next section follows)', plays=['F04'])
+    'dropped: the fleet is kept (when a city is near, the prompt P02 follows)', plays=['F04b'])
 row(47362, 'R21', 'refusal', 'fleet order: Scuttle fleet', '1 of 2',
     'the fleet carries an army: the else of %s' % C(47336, 'if ((short)(&DAT_0049c282)[iVar3 * 0xd] < 0) {'),
     'dropped: the fleet is kept; shown BEFORE the city test', plays=['F05'])
@@ -119,10 +119,10 @@ for (sfx, lines, c20, ctr, cfl) in (('Army1Transfer', (44155, 44159, 44164), C(4
         'the target army is aboard a fleet whose ships are fewer than (troops + the unit) / 500: the pass test is %s' % cfl,
         'clamped per unit: that unit stays (the code jumps over the move)')
 row(44326, 'R34', 'refusal', 'army to army dialog: Disband (Army1Disband)', 'after the prompt P06, once per order',
-    'a regular unit (label 0, %s) is selected and no own city is next to the army (%s)' % (C(44312, '(*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {'), C(44311, 'if ((*(short *)(param_1 + 0x770) == -1) &&')),
+    'a regular unit (label 0, %s) is selected and no own city is next to the first army of the dialog (%s; +0x770 is set from that army\'s tile: %s)' % (C(44312, '(*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {'), C(44311, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
     'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop')
 row(44412, 'R35', 'refusal', 'army to army dialog: Disband (Army2Disband)', 'after the prompt P07, once per order',
-    'a regular unit (label 0, %s) is selected and no own city is next to the army (%s)' % (C(44398, '(*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {'), C(44397, 'if ((*(short *)(param_1 + 0x770) == -1) &&')),
+    'a regular unit (label 0, %s) is selected and no own city is next to the FIRST army of the dialog (%s: the same word +0x770 as for the first list, set at %s)' % (C(44398, '(*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {'), C(44397, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
     'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop')
 # ---------------------------------------------------------------- change units
 row(45513, 'R36', 'refusal', 'Change units: Rename unit (D05)', '1 of 2',
@@ -153,7 +153,7 @@ row(45647, 'R44', 'refusal', 'Change units: Join units', '3 of 3',
     'all regular, one type, and the total troops exceed the type\'s size limit: %s' % C(45646, 'if ((short)(&DAT_00478fca)[sVar10 * 0x14] < iStack_18) {'),
     'dropped', plays=['CU06'])
 row(45756, 'R45', 'refusal', 'Change units: Disband', 'after the prompt P08, once per order',
-    'a selected unit is regular (%s) and no own city is next to the army (%s)' % (C(45744, '(*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0)) {'), C(45743, 'if ((*(short *)(param_1 + 0x1d6) == -1) &&')),
+    'a selected unit is regular (%s) and no own city is next to the army (%s; +0x1d6 is set from the army\'s tile: %s)' % (C(45744, '(*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0)) {'), C(45743, 'if ((*(short *)(param_1 + 0x1d6) == -1) &&'), C(45408, 'uVar2 = FUN_004494e4((undefined *)CONCAT22((short)((uint)(sVar1 * 0x52) >> 0x10),DAT_004a0320),')),
     'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop', plays=['CU07', 'CU08'])
 # ---------------------------------------------------------------- recruitment
 row(56033, 'R46', 'refusal', 'Recruit unit (dialog Army recruits)', '1 of 3',
@@ -202,7 +202,7 @@ PR = []
 def prompt(line, id, grp, cond, effect, plays=(), tmpl=None):
     ROWS.append(dict(line=line, id=id, kind='prompt', grp=grp, order='-', cond=cond, effect=effect, tag='[derived]', plays=list(plays), tmpl=tmpl))
 prompt(47106, 'P01', 'army order: Disband army', 'the army is near an own city (the else of the test of R05)', 'Yes (result 6) disbands the army and returns its money and supplies to the nearest city: %s; No or Cancel: nothing' % C(47108, 'if (iVar4 == 6) {'))
-prompt(47345, 'P02', 'fleet order: Scuttle fleet', 'no army aboard and an own city is next to the fleet', 'Yes (6) deletes the fleet and returns money and supplies to the city; No or Cancel: nothing')
+prompt(47345, 'P02', 'fleet order: Scuttle fleet', 'no army aboard and an own city is next to the fleet', 'Yes (6) deletes the fleet and returns money and supplies to the city; No or Cancel: nothing', plays=['F04'])
 prompt(46541, 'P03', 'unit map: attack a city', 'an own army with moves is next to a city of another nation that is not already at war with the current nation', 'Yes (6) sets the relation to 3 (war) and starts the attack; No or Cancel: nothing happens')
 prompt(46566, 'P04', 'unit map: attack an army', 'an own army with moves is next to an army of another nation that is not at war', 'Yes (6) declares war and attacks; No or Cancel: nothing')
 prompt(46623, 'P05', 'unit map: attack a fleet', 'an own fleet with moves is next to an enemy fleet not docked at its city (see R07) and not at war', 'Yes (6) declares war and attacks; No or Cancel: nothing')
@@ -223,6 +223,6 @@ def notice(line, id, grp, cond, effect, tmpl):
     ROWS.append(dict(line=line, id=id, kind='notice', grp=grp, order='-', cond=cond, effect=effect, tag='[derived]', plays=[], tmpl=tmpl))
 notice(56327, 'N01', 'Build fleet dialog: OK', 'a fleet size above 0 was ordered', 'the order is accepted and the notice reports the city', [('lit', 56322), ('var', 'city name'), ('lit', 56324)])
 notice(58517, 'N02', 'Build fleet command', 'one box per own fleet still under construction, before the refusals R55-R57', 'information only', [('lit', 58504), ('var', 'ships'), ('lit', 58508), ('var', 'weeks'), ('lit', 58512), ('var', 'city name'), ('lit', 58514)])
-notice(58228, 'N03', 'start of a turn: a computer nation\'s offer', 'a nation that proposed trade or an alliance last turn has not got it', 'information only; the offer lapses at the next turn start', [('var', 'nation name'), ('lit', 58221), ('lit', 58215), ('lit', 58223), ('var', 'nation name'), ('lit', 58225)])
+notice(58228, 'N03', 'start of a turn: a computer nation\'s offer', 'a nation that proposed trade or an alliance last turn has not got it', 'information only; the offer lapses at the next turn start; the word after `wants to` is the first literal (trade) or the second (form an alliance)', [('var', 'nation name'), ('lit', 58221), ('lit', 58215), ('lit', 58218), ('lit', 58223), ('var', 'nation name'), ('lit', 58225)])
 # ---------------------------------------------------------------- excluded
 ROWS.append(dict(line=37891, id='X01', kind='excluded', grp='battle screen: Surrender', order='-', cond='the Surrender command of the tactical battle', effect='excluded by the task: battles are paused', tag='[derived]', plays=[], tmpl=None))
