@@ -167,7 +167,7 @@ class BattleGame(Game):
 
     def battle_move(self, slot, x, y, partial=False, retries=2):
         """Move own unit `slot` towards the empty cell (x, y). Verified: the unit stands at (x, y) and its moves word fell; with `partial=True` a unit that
-        used ALL its moves (word 7 = 0) and ended nearer the target also passes. A path blocked from the first step changes nothing: OrderFailed("noop")."""
+        ended no farther from the target, having paid at least one move per cell travelled (a blocked path stops the walk early), also passes. A path blocked from the first step changes nothing: OrderFailed("noop")."""
         b = self.battle_state()
         s = self._own(b, slot)
         if b["y1"] != 1:
@@ -186,8 +186,11 @@ class BattleGame(Game):
                 return False, "slot %d moves %d -> %d, position %s -> %s" % (slot, o["state"], n["state"], (o["x"], o["y"]), pos)
             if pos == (x, y):
                 return True, "arrived, moves %d -> %d" % (o["state"], n["state"])
-            if partial and n["state"] == 0 and cheb(pos, (x, y)) < cheb((o["x"], o["y"]), (x, y)):
-                return True, "partial: nearer %s -> %s, moves used up" % ((o["x"], o["y"]), pos)
+            steps = cheb(pos, (o["x"], o["y"]))
+            if partial and cheb(pos, (x, y)) <= cheb((o["x"], o["y"]), (x, y)) and o["state"] - n["state"] >= steps:
+                # moved, no farther from the destination (a detour around a blocked cell can be sideways), and paid at least one move per cell travelled;
+                # the walk stops early when the path is blocked, so moves may be left over
+                return True, "partial: %s -> %s (distance %d -> %d), moves %d -> %d" % ((o["x"], o["y"]), pos, cheb((o["x"], o["y"]), (x, y)), cheb(pos, (x, y)), o["state"], n["state"])
             return False, "slot %d stands at %s, wanted %s (partial=%s)" % (slot, pos, (x, y), partial)
 
         rec, _, _ = self._verified("move", lambda: (self._select_click(s), self.click(*self.battle_xy(x, y), pause=self.CLICK_PAUSE)), check, retries)

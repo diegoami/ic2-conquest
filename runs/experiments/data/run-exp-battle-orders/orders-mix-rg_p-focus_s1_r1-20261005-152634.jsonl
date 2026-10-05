@@ -1,0 +1,42 @@
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 0 at (2,2), wanted (2,2)", "slot": 0, "to": [2, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 1 at (3,2), wanted (3,2)", "slot": 1, "to": [3, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 2 at (4,2), wanted (4,2)", "slot": 2, "to": [4, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 3 at (5,2), wanted (5,2)", "slot": 3, "to": [5, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 4 at (6,2), wanted (6,2)", "slot": 4, "to": [6, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 5 at (7,2), wanted (7,2)", "slot": 5, "to": [7, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 6 at (8,2), wanted (8,2)", "slot": 6, "to": [8, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 7 at (9,2), wanted (9,2)", "slot": 7, "to": [9, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 8 at (10,2), wanted (10,2)", "slot": 8, "to": [10, 2], "rome_half_round": 0}
+{"order": "end_turn", "attempts": 1, "ok": true, "half_round_before": 2, "half_round_after": 3, "ended": false, "rome_half_round": 0}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (3, 2) -> (3, 6) (distance 5 -> 1), moves 4 -> 0", "slot": 1, "to": [3, 7], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (6, 2) -> (4, 6) (distance 5 -> 1), moves 4 -> 0", "slot": 4, "to": [3, 7], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (7, 2) -> (5, 6) (distance 5 -> 2), moves 4 -> 0", "slot": 5, "to": [3, 7], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (2, 2) -> (3, 4) (distance 6 -> 4), moves 2 -> 0", "slot": 0, "to": [4, 8], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (4, 2) -> (4, 5) (distance 6 -> 3), moves 5 -> 2", "slot": 2, "to": [4, 8], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (5, 2) -> (5, 5) (distance 6 -> 3), moves 4 -> 1", "slot": 3, "to": [4, 8], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "arrived, moves 6 -> 0", "slot": 6, "to": [4, 8], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (9, 2) -> (6, 6) (distance 6 -> 2), moves 4 -> 0", "slot": 7, "to": [5, 8], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (10, 2) -> (7, 6) (distance 6 -> 2), moves 4 -> 0", "slot": 8, "to": [5, 8], "rome_half_round": 1}
+{"order": "end_turn", "attempts": 1, "ok": true, "half_round_before": 3, "half_round_after": 5, "ended": false, "rome_half_round": 1}
+{"order": "move", "attempts": 2, "noop_attempts": 2, "slot": 1, "to": [3, 8], "ok": false, "blocked": true, "rome_half_round": 2}
+{"order": "move", "attempts": 1, "ok": true, "why": "arrived, moves 4 -> 3", "slot": 4, "to": [5, 7], "rome_half_round": 2}
+{"order": "shoot", "attempts": 1, "ok": true, "why": "slot 4 shots 25 -> 24, moves 3 -> 2", "slot": 4, "target": 21, "target_troops": [4961, 4959], "rome_half_round": 2}
+{"order": "shoot", "attempts": 1, "ok": true, "why": "slot 4 shots 24 -> 23, moves 2 -> 1", "slot": 4, "target": 21, "target_troops": [4959, 4957], "rome_half_round": 2}
+{"order": "shoot", "attempts": 1, "ok": true, "why": "slot 4 shots 23 -> 22, moves 1 -> 0", "slot": 4, "target": 21, "target_troops": [4957, 4956], "rome_half_round": 2}
+{"order": "move", "attempts": 1, "ok": true, "why": "arrived, moves 4 -> 3", "slot": 5, "to": [6, 7], "rome_half_round": 2}
+{"order": "shoot", "attempts": 1, "ok": true, "why": "slot 5 shots 25 -> 24, moves 3 -> 2", "slot": 5, "target": 21, "target_troops": [4956, 4935], "rome_half_round": 2}
+{"order": "shoot", "attempts": 1, "ok": true, "why": "slot 5 shots 24 -> 23, moves 2 -> 1", "slot": 5, "target": 21, "target_troops": [4935, 4909], "rome_half_round": 2}
+{"order": "shoot", "attempts": 1, "ok": true, "why": "slot 5 shots 23 -> 22, moves 1 -> 0", "slot": 5, "target": 21, "target_troops": [4909, 4889], "rome_half_round": 2}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (3, 4) -> (4, 6) (distance 4 -> 2), moves 2 -> 0", "slot": 0, "to": [5, 8], "rome_half_round": 2}
+{"order": "move", "attempts": 2, "noop_attempts": 2, "slot": 2, "to": [5, 8], "ok": false, "blocked": true, "rome_half_round": 2}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (5, 5) -> (5, 6) (distance 3 -> 2), moves 4 -> 3", "slot": 3, "to": [5, 8], "rome_half_round": 2}
+{"order": "attack", "attempts": 1, "ok": true, "why": "slot 6 target word -1 -> 21, wanted 21", "slot": 6, "target": 21, "rome_half_round": 2}
+{"order": "move", "attempts": 2, "noop_attempts": 2, "slot": 7, "to": [5, 8], "ok": false, "blocked": true, "rome_half_round": 2}
+{"order": "move", "attempts": 1, "ok": true, "why": "arrived, moves 4 -> 1", "slot": 8, "to": [5, 8], "rome_half_round": 2}
+{"order": "attack", "attempts": 1, "ok": true, "why": "slot 8 target word -1 -> 21, wanted 21", "slot": 8, "target": 21, "rome_half_round": 2}
+{"order": "end_turn", "attempts": 1, "ok": true, "half_round_before": 5, "half_round_after": 7, "ended": false, "rome_half_round": 2}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: (4, 5) -> (6, 5) (distance 2 -> 2), moves 5 -> 3", "slot": 2, "to": [6, 7], "rome_half_round": 3}
+{"order": "move", "attempts": 1, "ok": true, "why": "arrived, moves 4 -> 3", "slot": 3, "to": [6, 7], "rome_half_round": 3}
+{"order": "attack", "attempts": 1, "ok": true, "why": "slot 3 target word -1 -> 21, wanted 21", "slot": 3, "target": 21, "rome_half_round": 3}
+{"order": "attack", "attempts": 1, "ok": true, "why": "slot 7 target word -1 -> 21, wanted 21", "slot": 7, "target": 21, "rome_half_round": 3}
+{"order": "end_turn", "attempts": 1, "ok": true, "half_round_before": 7, "half_round_after": null, "ended": true, "rome_half_round": 3}
