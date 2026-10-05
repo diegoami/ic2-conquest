@@ -17,6 +17,11 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
    - Cadence: **commit and push after each batch of trials or probes and at least every 30 minutes**, so a stopped session loses nothing.
    - **Never delete or overwrite a measured output**: a re-run writes new files beside the old ones and the finding names the ones it cites (a resumable runner appends or versions; it does not rewrite history).
    - Every brief for a task that measures (an experiment, a probe, a driver task that times things, a plan handed to an implementer) must carry this rule.
+7. **Read what a delegated run returned before you retry it, re-route it to another model, or call it a failure; never retry blind** (the owner, 2026-10-05).
+   - OpenCode runs (`scripts/opencode_watched.py`, `scripts/external_review.py`): an exit or a class such as `nonzero-exit`, `cut-off` or `bad-format` looks the same for an early end and for a run that stopped and reported. The log's tail shows only the last tool output. Read the model's final message from the session record, read-only, with the session id from the run's log (`opencode session started: ses_…`): `docs/external-review.md`, "Failures and trust". Never read `auth.json` in that directory.
+   - Claude agents: read the agent's final report (its hand-back) in full before acting.
+   - A run that stopped and reported gets an answer to its report: amend the task, decide, or escalate. Post the report on the task's PR (or its run issue) so it is kept.
+   - Treat any earlier "model X ends runs early" verdict as unconfirmed until its runs' final messages have been read.
 
 ## Environment
 
