@@ -32,7 +32,7 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "opencode-go/deepseek-v4.1-flash#high,openai/gpt-6-luna#high"     # then exit 3 -> the caller
+DEFAULT_MODELS = "opencode-go/deepseek-v4.1-flash#high,openai/gpt-5.6-luna#high"     # then exit 3 -> the caller
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
 FATAL = {"permission-rejected", "no-executable", "unknown-agent"}     # not retried on another model
 

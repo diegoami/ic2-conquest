@@ -7,7 +7,9 @@
 | Role | First | Then |
 |---|---|---|
 | Implementer | Claude Sonnet (no OpenCode implementer) | – |
-| Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-6 Luna (`openai/gpt-6-luna#high`, the OpenAI OAuth credential, not the Go copy) |
+| Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
+
+**Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given.
 
 - The chain moves to the next model only after an infrastructure failure (including "no review at all"), never
   after a real or flagged review. When both fail, `scripts/external_review.py` exits **3** and the caller decides
@@ -22,7 +24,9 @@
   (a third-party upstream rejecting assistant messages with empty content), which is why the Luna in the chain is
   the **direct OpenAI** one. Both are untested as long runs here; reviews are short.
 - **Effort is `high`, never `max`** (Go lists low/high/max; max is overkill and slower). A model without a
-  variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line.
+  variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line. That suits the light models in
+  the chain. **A heavy model (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`) is passed with `#low`, or `#medium`
+  when the PR needs it, never `#high`** (the player, 2026-10-05).
 
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
@@ -129,7 +133,7 @@ nonzero-exit, permission-rejected, default-agent, cut-off, unknown-model, unknow
 explicit `--model a,b` list the next model is tried only after an infrastructure failure (including "no review
 at all"), never after a real or flagged review; the list stops after two consecutive failures of one class, and
 `permission-rejected`, `unknown-agent` and `no-executable` stop it at once. The posted header names the failures:
-`PR review (gpt-6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
+`PR review (gpt-5.6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
 model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.
 
 ## Lessons

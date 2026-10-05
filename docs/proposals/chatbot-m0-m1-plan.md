@@ -11,7 +11,7 @@ Flash, then GPT-6 Sol at medium effort (§7).
 1. **Scope:** the chatbot starts now. The scope is **M1 to M6** (`manual` and `assist` modes). `auto` and replay (M7, M8) come only
    after M6.
 2. **Transport:** JSON-RPC 2.0 over stdio between two processes (`ic2-chat` starts `ic2-gamed` as a child process).
-3. **Roles for each milestone:** Opus plans, Sonnet implements, and `openai/gpt-6-sol` at **medium** effort (never higher) reviews
+3. **Roles for each milestone:** Opus plans, Sonnet implements, and `openai/gpt-6.1-sol` at **medium** effort (never higher) reviews
    each PR. The DeepSeek V4.1 Flash first pass stays.
 4. **Location (not decided: it is P1 below, the project's advice).** The advice is to put the code in `chatbot/` and `gamed/` in this
    repository. Each gets its own `pyproject.toml`. `chatbot/` imports nothing from `harness/`, `state/` or `planner/`, and nothing
@@ -325,7 +325,7 @@ list is always passed as an argument:
 
 ```bash
 python3 scripts/external_review.py --pr N --model opencode-go/deepseek-v4.1-flash#high          # first pass, no label
-python3 scripts/external_review.py --pr N --model openai/gpt-6-sol#medium --apply-label         # the review of record
+python3 scripts/external_review.py --pr N --model openai/gpt-6.1-sol#medium --apply-label         # the review of record
 ```
 
 `#medium` survives the script: `opencode_watched.effort` rewrites only a missing variant and `max` (lines 79-83), and passes
@@ -334,7 +334,7 @@ On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and
 
 **M0 tasks, before the first M1 PR:**
 1. **Check that the model id exists for the reviewer.** Run `opencode models openai`, with the reviewer's own `XDG_DATA_HOME`,
-   `XDG_CACHE_HOME` and `XDG_STATE_HOME` (`docs/external-review.md` "WSL notes"), and look for `openai/gpt-6-sol`. It prints the
+   `XDG_CACHE_HOME` and `XDG_STATE_HOME` (`docs/external-review.md` "WSL notes"), and look for `openai/gpt-6.1-sol`. It prints the
    catalogue, not credentials. `--dry-run` is not enough: it starts no model, and the `unknown-model` check runs only inside a real
    run (`opencode_watched.py:175-192`).
 2. **Check that `medium` is a variant the provider accepts for Sol.** The script's comments know only low/high/max for Go. The
@@ -387,7 +387,7 @@ On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and
 - V1. Does a mid-turn Save As (the `state` snapshot) change the next autosave's bytes? Play the scripted turn twice, with and without
   `save_as` between the orders, and compare the two `AUTO0721.SAV`. If they differ, the snapshot must come from a separate path,
   or snapshots must be off in replayable runs.
-- V2. `openai/gpt-6-sol` with `#medium` runs in the reviewer (§7, M0 tasks 1-2).
+- V2. `openai/gpt-6.1-sol` with `#medium` runs in the reviewer (§7, M0 tasks 1-2).
 - V3. All 14 committed saves parse and project (T4).
 - V4. stdout stays clean on the original: run the live conformance with stdout piped through a JSON-line checker.
 - V5. Bresenham: three live moves (straight, diagonal, a shallow slope over mixed terrain) compare `expected_to` with `to`. A
