@@ -23,6 +23,7 @@ import re
 import secrets
 import shutil
 import subprocess
+import urllib.request
 import sys
 from pathlib import Path
 
@@ -51,6 +52,38 @@ def gh_json(*args, fields):
 def label_of(model):
     """'opencode/big-pickle#high' -> 'big-pickle'."""
     return ow.split_model(model)[0].split("/")[-1]
+
+
+QUOTA_URL = os.environ.get("IC2_QUOTA_URL", "http://localhost:8765")     # quota-tracker (docs/environment.md)
+PROVIDERS = (("openai/", "openai"), ("zai-coding-plan/", "zai"), ("opencode-go/", "opencode_go"), ("openrouter/", "openrouter"))
+LUNA_WINDOW = ("openai/gpt-5.6-luna", "gpt-5.6-luna:7d")                # GPT-5.6 Luna has its own weekly pool
+
+
+def fetch_quota(provider):
+    """quota-tracker's record for one provider, or None when the service cannot be reached (then the chain goes on: L50)."""
+    try:
+        with urllib.request.urlopen(f"{QUOTA_URL}/quota/{provider}", timeout=5) as r:
+            return json.loads(r.read().decode())
+    except Exception:
+        return None
+
+
+def quota_skip(model, fetch=fetch_quota):
+    """harness_imperial L50: the reason to skip this model now ("quota exhausted ..."), or None to use it. A provider whose status is
+    'exhausted' is skipped; GPT-5.6 Luna is judged on its own 'gpt-5.6-luna:7d' window instead (usable under 95 % even when openai is
+    exhausted). An unknown provider, or no answer from quota-tracker, never skips."""
+    mid = ow.split_model(model)[0]
+    prov = next((name for prefix, name in PROVIDERS if mid.startswith(prefix)), None)
+    q = fetch(prov) if prov else None
+    if not q:
+        return None
+    if mid == LUNA_WINDOW[0]:
+        w = next((w for w in q.get("windows", []) if w.get("name") == LUNA_WINDOW[1]), None)
+        if w is not None:
+            return None if w.get("used_pct", 0) < 95 else f"quota exhausted ({LUNA_WINDOW[1]}, resets in {w.get('resets_in')})"
+    if q.get("status") == "exhausted":
+        return f"quota exhausted ({prov}, usable in {q.get('available_in')})"
+    return None
 
 
 def header(kind, model, failures):
@@ -221,7 +254,25 @@ def self_test():
             ok = ok and "fixes 551" in r["text"] and "#551" not in r["text"]
         print(f"{'PASS' if ok else 'FAIL'} {name}: {r['status']} {r['verdict']}")
         bad += 0 if ok else 1
-    print(f"{len(SELF_TEST) - bad}/{len(SELF_TEST)} passed")
+    n = len(SELF_TEST)
+    q = {"openai": {"status": "exhausted", "available_in": "2h",
+                    "windows": [{"name": "7d", "used_pct": 99}, {"name": "gpt-5.6-luna:7d", "used_pct": 10, "resets_in": "3d"}]},
+         "zai": {"status": "exhausted", "available_in": "1h", "windows": []},
+         "opencode_go": {"status": "ok", "windows": []}}
+    lunafull = dict(q, openai=dict(q["openai"], windows=[{"name": "gpt-5.6-luna:7d", "used_pct": 96, "resets_in": "3d"}]))
+    for name, model, data, skip in (
+            ("quota: exhausted provider skipped", "zai-coding-plan/glm-5.3#low", q, True),
+            ("quota: ok provider used", "opencode-go/deepseek-v4.1-flash#high", q, False),
+            ("quota: Luna on its own pool though openai is exhausted", "openai/gpt-5.6-luna#high", q, False),
+            ("quota: Sol skipped when openai is exhausted", "openai/gpt-6.1-sol#low", q, True),
+            ("quota: Luna skipped when its own window is full", "openai/gpt-5.6-luna#high", lunafull, True),
+            ("quota: no service, nothing skipped", "zai-coding-plan/glm-5.3#low", {}, False)):
+        got = quota_skip(model, fetch=lambda p, d=data: d.get(p))
+        ok = bool(got) == skip
+        print(f"{'PASS' if ok else 'FAIL'} {name}: {got}")
+        bad += 0 if ok else 1
+        n += 1
+    print(f"{n - bad}/{n} passed")
     return 1 if bad else 0
 
 
@@ -306,7 +357,19 @@ def main():
         base = sh("git", "merge-base", bref, head)
         excl |= implementer_names(meta)
     models = [m for m in models if not excluded(m, excl)]      # the implementer never reviews its own PR
+    skipped = []                                               # L50: a model whose provider is out of quota is skipped, and the header says so
+    for m in list(models):
+        why = quota_skip(m)
+        if why:
+            print(f"skipping {m}: {why}", flush=True)
+            skipped.append((m, why))
+            models.remove(m)
     if not models:
+        if skipped:
+            if kind == "pr":
+                sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+            print("OpenCode unavailable: " + "; ".join(f"{label_of(m)}: {w}" for m, w in skipped), file=sys.stderr)
+            return 3
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         print("OpenCode unavailable: every model is excluded", file=sys.stderr)
@@ -322,7 +385,7 @@ def main():
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         raise
-    failures, final = [], None
+    failures, final = list(skipped), None
     try:
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")

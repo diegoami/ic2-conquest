@@ -9,7 +9,7 @@
 | Implementer | Claude Sonnet (no OpenCode implementer) | – |
 | Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
 
-**Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given.
+**Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given. The script also checks itself: before the chain runs it asks quota-tracker (`IC2_QUOTA_URL`, default `http://localhost:8765`) about each model's provider, skips one whose provider is `exhausted` (GPT-5.6 Luna is judged on its own `gpt-5.6-luna:7d` window), names the skip in the posted header (`PR review (gpt-5.6-luna; glm-5.3 failed: quota exhausted (zai, usable in 1h))`) and exits 3 when every model is skipped; when quota-tracker does not answer it goes on unchanged.
 
 - The chain moves to the next model only after an infrastructure failure (including "no review at all"), never
   after a real or flagged review. When both fail, `scripts/external_review.py` exits **3** and the caller decides

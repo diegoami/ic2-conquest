@@ -2,7 +2,7 @@
 
 **Status:** plan for review (2026-10-03). Author: Claude Opus 5.5 (planner). Builds on the merged proposal
 `docs/proposals/chatbot.md` (called "the proposal" below). Nothing here is built. Implementer: Sonnet; reviewers: DeepSeek V4.1
-Flash, then GPT-6 Sol at medium effort (§7).
+Flash, then GPT-6.1 Sol at medium effort (§7).
 
 ## 1. Decisions recorded, and what is still the player's call
 
