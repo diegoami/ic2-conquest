@@ -179,6 +179,7 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
     if dump and os.path.exists(dump):
         n = sum(1 for l in open(dump, errors='replace') if 'FUN_0042d750(' in l and not l.startswith('void '))
         check('dump check: call sites in all_app_functions.txt (+ the definition line of the wrapper excluded) = %d' % len(all_call_lines), n == len(all_call_lines), str(n))
+    fn_of_cell = lambda c: c['function:call line'].split(':')[0]
     # ------------------------------------------------------------ plays
     PL = {}
     for f in sorted(glob.glob(data + 'plays_*.jsonl')):
@@ -248,6 +249,47 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
         check('%s: order-issued column vs the record' % pid, r['order issued'] == q['note'], '%r vs %r' % (r['order issued'], q['note']))
         citing = sorted(c['id'] for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', '')))
         check('%s: rows column %r vs the rows whose play cell names it %r' % (pid, r['rows'], citing), sorted([x for x in r['rows'].split(',') if x]) == citing)
+        # the order the play issued, as recorded at play time (play_lib.CLICKS), mapped to the handler it reaches; every row cited for the play must belong to that handler
+        TOOL = {('army', 'split'): 'TUnitMap_SplitArmy', ('army', 'join'): 'TUnitMap_JoinArmies', ('army', 'mercs'): 'TUnitMap_RecruitMercenaries', ('army', 'disband'): 'TUnitMap_DisbandArmy',
+                ('fleet', 'repair'): 'TUnitMap_RepairFlt', ('fleet', 'split'): 'TUnitMap_SplitFleet', ('fleet', 'join'): 'TUnitMap_JoinFleets', ('fleet', 'scuttle'): 'TUnitMap_ScuttleFleet',
+                ('city', 'fortify'): 'TUnitMap_Fortify', ('main', 'build_fleet'): 'TPremierForm_BuildNewFleet'}
+        DLG = {('Change units', 'Rename unit'): 'TChangeArmyUnits_RenameUnit', ('Change units', 'Split unit'): 'TChangeArmyUnits_SplitUnit', ('Change units', 'Join units'): 'TChangeArmyUnits_JoinUnits',
+               ('Change units', 'Disband'): 'TChangeArmyUnits_Disband', ('Recruit mercenary unit', 'Recruit unit'): 'TRecruitMercs_RecruitMercUnit', ('Army recruits', 'Recruit unit'): 'TArmyRecruits_RecruitUnit'}
+        RADIO = {0: 'TPolitics_MakePeace', 1: 'TPolitics_MakeTrade', 2: 'TPolitics_MakeAlliance'}
+        def src_offset(fnname):                      # the dialog copy a transfer / disband handler takes its units from, read from its call of MoveUnit / RemoveUnit
+            for ln in X:
+                if FN.get(ln) == fnname:
+                    m = re.search(r'TArmyToArmy_(?:MoveUnit|RemoveUnit)\(param_1,param_1 \+ (0x[0-9a-f]+)', X[ln])
+                    if m: return int(m.group(1), 16)
+        def side_handler(kind, side):                # the first army's list is the left one (caption "Units in first army"); its handler is the one whose source copy is the lower offset
+            hs = sorted([('TArmyToArmy_Army1' + kind, src_offset('TArmyToArmy_Army1' + kind)), ('TArmyToArmy_Army2' + kind, src_offset('TArmyToArmy_Army2' + kind))], key=lambda h: h[1])
+            return hs[0][0] if side == 'left' else hs[1][0]
+        handlers = set(); xfer = None
+        for c in q.get('clicks', []):
+            if c['kind'] == 'toolbar' and (c['bar'], c['tool']) in TOOL: handlers.add(TOOL[(c['bar'], c['tool'])])
+            elif c['kind'] == 'control' and (c['dialog'], c['text']) in DLG: handlers.add(DLG[(c['dialog'], c['text'])])
+            elif c['kind'] == 'radio': handlers.add(RADIO[c['column']])
+            elif c['kind'] == 'tile': handlers.add('TUnitMap_SelectUnit')
+            elif c['kind'] == 'transfer-dialog':
+                handlers.add(side_handler('Transfer' if c['button'] == 'Transfer' else 'Disband', c['side']))
+                if c['button'] == 'Transfer': xfer = c
+        cited_rows = [c for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', ''))]
+        for c in cited_rows:
+            check('%s: row %s (%s) belongs to a handler the play\'s recorded clicks reach %s' % (pid, c['id'], fn_of_cell(c), sorted(handlers)), fn_of_cell(c) in handlers)
+        if cited_rows: check('%s: the record has the clicks of the order (a play cited by rows needs them)' % pid, bool(q.get('clicks')))
+        if xfer and os.path.exists(art + 'saves/' + q['control']):    # a transfer: recompute from the control save that the cited refusal's own condition held at the TARGET of the clicked side
+            ctl_ = art + 'saves/' + q['control']; ents = __import__('play_meta').W.get(pid, [])
+            army_ids = [int(e.split(':')[1]) for e in ents if e.startswith('army:')]; first = xfer['first_army']; other = [a_ for a_ in army_ids if a_ != first][0]
+            srcA, tgtA = (first, other) if xfer['side'] == 'left' else (other, first)
+            unit = SF.slot_troops(ctl_, srcA, xfer['row']); tu, tt, tab = SF.army_numbers(ctl_, tgtA)
+            fl = [SF.fleet_numbers(ctl_, int(e.split(':')[1])) for e in ents if e.startswith('fleet:')]
+            for c in cited_rows:
+                lit = spans(c['literal'])[0]
+                if 'already has 20 units' in lit: ok_ = tu >= 20
+                elif 'more than 100,000 troops' in lit: ok_ = tt + unit >= 100001
+                elif 'can not carry any more troops' in lit: ok_ = tab and any(f[1] == tgtA and (tt + unit) // 500 > f[0] for f in fl)
+                else: continue
+                check('%s: the %s side was clicked (source army %d, target army %d): the condition of %s held in the control save' % (pid, xfer['side'], srcA, tgtA, c['id']), ok_)
         check('%s: files column vs the record' % pid, spans(r['files']) == ([q['boxes'][-1]['png']] if q['boxes'] else []) + [q['control'], q['after']], r['files'])
         stg = [l.rstrip('\n').split('\t') for l in open(data + 'staging_log.tsv')]
         logged = [x for x in stg if x[4] == q['input']]

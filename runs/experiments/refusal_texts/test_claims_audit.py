@@ -1,7 +1,7 @@
 """Tests of claims_audit.py: the audit passes on the finding and fails on (a) a literal with one changed space, (b) a doctored line of the code extract, (c) a doctored save,
 (d) a doctored OCR reading, (e) a doctored count, (f) a changed play fact. Each doctored copy is made in a temporary folder; nothing tracked is touched.
 usage: python3 -m unittest test_claims_audit   (needs the saves: fetch_archive.py)"""
-import os, re, shutil, sys, tempfile, unittest, glob
+import os, re, json, shutil, sys, tempfile, unittest, glob
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths
 from claims_audit import run
@@ -138,6 +138,29 @@ class T(unittest.TestCase):
         cs[2] = '28 |'; lines[i] = ' | '.join(cs)
         n, bad = self.audit('\n'.join(lines))
         self.assertTrue(any('classes table' in b for b in bad), bad[:3])
+    def test_transfer_attribution_swapped_consistently_in_both_tables(self):
+        lines = self.text.split('\n')
+        i28 = [i for i, l in enumerate(lines) if l.startswith('| R28 |')][0]; i31 = [i for i, l in enumerate(lines) if l.startswith('| R31 |')][0]
+        c28 = lines[i28].split(' | '); c31 = lines[i31].split(' | ')
+        self.assertEqual(len(c28), len(c31)); c28[-1], c31[-1] = c31[-1], c28[-1]
+        lines[i28] = ' | '.join(c28); lines[i31] = ' | '.join(c31)
+        for pid, a, b in (('T01', 'R28', 'R31'), ('T01r', 'R31', 'R28')):
+            j = [i for i, l in enumerate(lines) if l.startswith('| %s | %s |' % (pid, a))]
+            self.assertEqual(len(j), 1); lines[j[0]] = lines[j[0]].replace('| %s | %s |' % (pid, a), '| %s | %s |' % (pid, b), 1)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('belongs to a handler' in b and ('T01' in b) for b in bad), bad[:4])
+    def test_record_without_clicks(self):
+        tmp = tempfile.mkdtemp()
+        try:
+            d = copy_data(tmp)
+            for f in glob.glob(d + '/plays_b8.jsonl'):
+                rows = [json.loads(l) for l in open(f)]
+                for r in rows:
+                    if r['play'] == 'T01': r['clicks'] = []
+                open(f, 'w').write('\n'.join(json.dumps(r) for r in rows) + '\n')
+            n, bad = self.audit(data=d)
+            self.assertTrue(any('T01' in b and ('clicks' in b or 'belongs to a handler' in b) for b in bad), bad[:4])
+        finally: shutil.rmtree(tmp)
     def test_doctored_count(self):
         n, bad = self.audit(self.text.replace('| refusals catalogued | 57 |', '| refusals catalogued | 58 |'))
         self.assertTrue(any('refusal rows' in b for b in bad), bad[:5])

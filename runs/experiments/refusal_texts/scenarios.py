@@ -77,6 +77,7 @@ def tr_act(army, row):
         lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
         click_row(g, lists[0], row)
         tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[0]
+        note_click(kind='transfer-dialog', button='Transfer', side='left', first_army=army, row=row)
         g.click_control(tb, pause=1.5)
     return act
 tr_post = lambda g: close_dialog_cancel(g, 'Army to army transfer')
@@ -97,7 +98,9 @@ SC['CU08'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 400
                   note='Change units: Disband a regular and a mercenary unit at (103,36) (Confirm Yes)')
 
 # ---------------------------------------------------------------- batch b3: embark, relations, recruitment
-SC['E01'] = dict(src=TE, act=lambda g: (g.select_army(0, *g.army_pos(0)), g.click_tile(*g.fleet_pos(2), pause=1.5)), note='embark army 0 (10,700 troops, 3 moves) on fleet 2 (20 ships): the click on the fleet')
+def e01_act(g):
+    g.select_army(0, *g.army_pos(0)); note_click(kind='tile', target='own fleet 2 with army 0 selected'); g.click_tile(*g.fleet_pos(2), pause=1.5)
+SC['E01'] = dict(src=TE, act=e01_act, note='embark army 0 (10,700 troops, 3 moves) on fleet 2 (20 ships): the click on the fleet')
 SC['A01'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3)], act=lambda g: army_button(g, 12, 'join'),
                  note='Join armies from army 12 (moves staged to 3) next to army 0, which is aboard fleet 2')
 
@@ -114,7 +117,7 @@ def rel_act(nation, col):
             except _drv.DriverError: time.sleep(1)
         radios = sorted((c for c in cs if c['cls'] == 'TRadioButton'), key=lambda c: (c['y'], c['x']))
         if len(radios) != 64: raise _drv.DriverError('expected 64 radio buttons, found %d' % len(radios))
-        tgt = radios[nation * 4 + col]
+        tgt = radios[nation * 4 + col]; CTX['dialog'] = 'International Relations'; note_click(kind='radio', dialog='International Relations', nation=nation, column=col)
         for attempt in range(3):                          # the refusal box appears at the click of the radio (the callee fails and the radio goes back): that box, or a change of the radio's pixels, proves the click
             before = _region_hash(g, tgt); g.click_control(tgt, pause=1.2)
             if boxes(g): break
@@ -130,7 +133,7 @@ SC['RL04'] = dict(src=TB, act=rel_act(6, 1), post=rel_post, note='International 
 SC['RL05'] = dict(src=TB, act=rel_act(1, 2), post=rel_post, note='International relations: alliance with Carthage (1) while Rome is at war with Gaul')
 
 def recruit_act(g):
-    main_tool(g, 'recruit'); g.wait(lambda: g.find_windows('^Army recruits$'), 10, 'Army recruits dialog'); cs = g.controls('Army recruits')
+    CTX['dialog'] = 'Army recruits'; main_tool(g, 'recruit'); g.wait(lambda: g.find_windows('^Army recruits$'), 10, 'Army recruits dialog'); cs = g.controls('Army recruits')
     cities = g.control(cs, cls='TListBox', index=0)
     click_row(g, cities, 0)
     g.click_control(g.control(cs, text='Light infantry'), pause=0.6)
@@ -184,6 +187,7 @@ def td_act(side):
         click_row(g, lists[side], 0)
         db = sorted((c for c in cs if c['text'] == 'Disband'), key=lambda c: c['x'])
         if len(db) != 2: raise _drv.DriverError('expected two Disband buttons, found %d' % len(db))
+        note_click(kind='transfer-dialog', button='Disband', side=('left', 'right')[side], first_army=0, row=0)
         g.click_control(db[side], pause=1.2)
         confirm_step(g, 'Yes')
     return act
@@ -204,6 +208,7 @@ def tr_act_side(army, row, side):
         lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
         click_row(g, lists[side], row)
         tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[side]
+        note_click(kind='transfer-dialog', button='Transfer', side=('left', 'right')[side], first_army=army, row=row)
         g.click_control(tb, pause=1.5)
     return act
 SC['T01r'] = dict(src=TT, ops=[('units', 0, named([U('li', 1000)] * 20)), ('units', 1, named([U('li', 3000)] * 3))], act=tr_act_side(0, 0, 1), post=tr_post,

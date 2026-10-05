@@ -5,6 +5,7 @@ Every staged save is labelled staged (staging_log.tsv: which bytes, which operat
 import json, os, re, struct, time, shutil, hashlib, subprocess
 import lib
 from eog import *                                   # noqa: F401,F403
+from pathlib import Path
 from eog import _drv, _screen_words, _ids, _geo
 from harness.driver import Game
 from lib import _region_hash
@@ -84,7 +85,7 @@ def verified_x(g, bar, tool):
     for lo, hi in windows:
         found = g._scan_bar(y, {tool: labels[tool]}, lo, hi, 0.5)
         if tool in found:
-            log('toolbar', '%s button %s: tooltip %r seen, x=%d (hint %s)' % (bar, tool, labels[tool], found[tool], hint)); return found[tool]
+            log('toolbar', '%s button %s: tooltip %r seen, x=%d (hint %s)' % (bar, tool, labels[tool], found[tool], hint)); note_click(kind='toolbar', bar=bar, tool=tool, tooltip=labels[tool], x=found[tool]); return found[tool]
     raise _drv.DriverError('%s toolbar: the tooltip %r of %s was not seen: nothing clicked' % (bar, labels[tool], tool))
 
 def army_button(g, i, tool):
@@ -107,12 +108,34 @@ def main_tool(g, name, pause=1.5):
 class Game2(MyGame):
     """MyGame whose File > Open is the toolbar's Open button found by its tooltip (verified_x: no fixed menu coordinate; the menu's Open word is not reliably read by OCR), and whose dialog
     is proven to be the Open dialog by its words before anything is typed."""
+    def click_control(self, c, fx=0.5, fy=0.5, pause=0.6):
+        CLICKS.append({'kind': 'control', 'dialog': CTX.get('dialog'), 'cls': c['cls'], 'text': c['text'], 'x': c['x'], 'y': c['y']})
+        return Game.click_control(self, c, fx, fy, pause)
+
+    def open(self, save, strict=True):
+        """The runner's own load path (Game.open ends in Game.dismiss_popups, which clicks an assumed bottom-centre OK): File > Open through `open_file_dialog`, then every box that
+        appears is cleared only through its enumerated OK control (close_all: no OK control = DriverError, nothing clicked; each box verified gone within a bounded budget). A Confirm box at
+        load is answered No through its control. Returns the box texts (the load popups)."""
+        src = Path(save)
+        if src.parent.resolve() != _drv.G.resolve(): shutil.copy(src, _drv.G / src.name)
+        self.open_file_dialog(src.name)
+        self.wait(lambda: self.loaded() or boxes(self), 30, 'game window or a message box after load')
+        time.sleep(3)
+        texts = [t for _, t in close_all(self, 'load')]
+        if not self.loaded():
+            self.wait(self.loaded, 30, 'game window after the box was closed')
+            texts += [t for _, t in close_all(self, 'load')]
+        LOAD_POPUPS[:] = texts
+        return texts
+
     def controls(self, title):
         """Game.controls, retried for up to 8 s: a dialog's controls are not always enumerable the instant its window exists"""
         for k in range(8):
             try: return Game.controls(self, title)
             except _drv.DriverError:
                 if k == 7: raise
+                if k == 1:                               # the button's own tooltip (same title, visible while the pointer rests on the button) can hide the dialog from win_controls: move the pointer away (a move, not a click)
+                    x, y = self.neutral_point(); _drv.sh('xdotool', 'mousemove', str(x), str(y))
                 time.sleep(1)
 
     def open_file_dialog(self, name):
@@ -132,9 +155,10 @@ def city_button(g, x, y, tool_label='Fortify city'):
     g.reset_ui(); g.click_tile(x, y, pause=1.0)
     found = g._scan_bar(ARMY_Y, {'fortify': tool_label}, 336, 420, 0.5)
     if 'fortify' not in found: raise _drv.DriverError('city toolbar: no %s tooltip: nothing clicked' % tool_label)
-    g.click(found['fortify'], ARMY_Y, pause=1.5)
+    note_click(kind='toolbar', bar='city', tool='fortify', tooltip=tool_label, x=found['fortify']); g.click(found['fortify'], ARMY_Y, pause=1.5)
 
 def click_row(g, lst, r, tries=3):
+    note_click(kind='row', dialog=CTX.get('dialog'), row=r, list_x=lst['x'])
     """Select row r of a list box (12 px per row inside the control's own rectangle, from Game.controls) and prove the selection by the change of the list's pixels; at most `tries` clicks"""
     for k in range(tries):
         before = _region_hash(g, lst); g.click(lst['x'] + lst['w'] // 2, lst['y'] + 12 + 12 * r, pause=0.5)
@@ -200,6 +224,10 @@ def diff_saves(a, b):
 
 CTX = {}
 STEPS = []
+CLICKS = []                                           # the clicks of the order itself (act), recorded at play time: toolbar buttons (with their tooltip), dialog controls, tiles, radios
+LOAD_POPUPS = []
+
+def note_click(**kw): CLICKS.append(kw)
 
 def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=None, fixture_note='', pre=None, post=None):
     """One play. `act(g)` issues the order (no dismissal of boxes). Records everything; returns the record."""
@@ -211,6 +239,7 @@ def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=No
     else: inp = as_fixture(src, SAVEDIR + 'inputs/%s_fixture.SAV' % tag)
     g = Game2()
     texts = g.load(inp, seed=seed)
+    eog._ATTEMPTS.clear()                              # the load boxes' window ids are reused by the order's boxes
     L('loaded %s (%s); popups at load: %s' % (os.path.basename(inp), 'STAGED' if ops else 'fixture, unedited', texts))
     snap(g, '%s_00_loaded.png' % tag)
     if pre:
@@ -219,8 +248,9 @@ def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=No
     ctl = keep_save_ocr(g, '%s_ctl.SAV' % tag)
     L('control save %s %s' % (os.path.basename(ctl), sha(ctl)))
     if boxes(g): raise _drv.DriverError('a box is open before the order')
-    CTX.update(tag=tag, play=play_id, batch=batch, log=L)
+    CTX.update(tag=tag, play=play_id, batch=batch, log=L, dialog=None); del CLICKS[:]
     act(g)
+    clicks = [dict(c) for c in CLICKS]
     bx = wait_boxes(g)
     recs = capture(g, tag, play_id, batch, 'box')
     recs = STEPS[:] + recs; del STEPS[:]
@@ -234,7 +264,7 @@ def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=No
     rec = {'play': play_id, 'batch': batch, 'note': note, 'staged': bool(ops), 'ops': ops, 'src': os.path.basename(str(src)), 'src_sha': sha(src), 'input': os.path.basename(inp),
            'input_sha': sha(inp), 'control': os.path.basename(ctl), 'control_sha': sha(ctl), 'after': os.path.basename(after), 'after_sha': sha(after),
            'boxes': [{'title': r['title'], 'text': r['text'], 'text_crop': r['text_crop'], 'wid': r['wid'], 'png': r['png'], 'controls': r['controls']} for r in recs], 'closed': closed, 'diff_ctl_after': d,
-           'fixture_note': fixture_note, 'pre': bool(pre), 'time': time.strftime('%F %T')}
+           'fixture_note': fixture_note, 'clicks': clicks, 'load_popups': list(LOAD_POPUPS), 'pre': bool(pre), 'time': time.strftime('%F %T')}
     jlog('plays_%s.jsonl' % batch, rec)
     g.kill()
     return rec
@@ -246,7 +276,7 @@ def open_dialog_tracked(g, title, opener, tries=2):
         opener(); time.sleep(1.2)
     w = g.find_windows('^%s$' % re.escape(title))
     if not w: raise _drv.DriverError('%s did not open' % title)
-    g.raise_window(w[0][0]); return w[0][0]
+    CTX['dialog'] = title; g.raise_window(w[0][0]); return w[0][0]
 
 def select_rows(g, title, rows, cls_index=0):
     """Select the rows of the dialog's `cls_index`-th list box (ctrl-click for the 2nd and later); the rows' positions come from Game.controls (list box rectangle,

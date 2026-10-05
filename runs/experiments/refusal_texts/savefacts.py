@@ -87,3 +87,9 @@ def fleet_numbers(path, i):
     b = open(path, 'rb').read(); na = struct.unpack_from('<h', b, sav.ARMY_OFF)[0]; of = sav.ARMY_OFF + 2 + na * sav.ARMY_LEN
     o = of + 2 + i * sav.FLEET_LEN
     return struct.unpack_from('<h', b, o + 18)[0], struct.unpack_from('<h', b, o + 22)[0]
+
+
+def slot_troops(path, i, k):
+    """troops of unit slot k of army i, from the raw record"""
+    b = open(path, 'rb').read()
+    return struct.unpack_from('<h', b, sav.ARMY_OFF + 2 + i * sav.ARMY_LEN + 16 + 32 * k + 4)[0]

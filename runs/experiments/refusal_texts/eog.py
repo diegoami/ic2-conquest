@@ -165,18 +165,19 @@ def answer_confirm(g, title, button, tries=3):
     raise _drv.DriverError('%s (window %d) did not close after %d attempts' % (title, wid, tries))
 
 def close_boxes(g, tries=3):
-    """Close the information boxes (news, offers) with OK at the bottom centre of each box's own rectangle; each box's X id is tracked and verified gone
-    after each click, at most `tries` attempts in all. A Confirm box is NOT answered here (DriverError: a caller answers expected ones with answer_confirm).
-    Returns the texts."""
+    """Close the information boxes (news, offers) with their OK control, enumerated by Game.controls: a box without an OK control raises DriverError and NOTHING is clicked (no geometric
+    fallback). Each box's X id is tracked and verified gone after each click, at most `tries` attempts in all. A Confirm box is NOT answered here (DriverError). Returns the texts."""
     texts = []
     for p in g.popups():
         wid, name, x, y, wd, ht = p
         if name not in BOX_TITLES or wd >= 600 or ht >= 300: continue
         if name == 'Confirm': raise _drv.DriverError('unexpected Confirm box: ' + g.read_popup(p))
         texts.append(g.read_popup(p))
+        cs = g.controls(name); ok = next((c for c in cs if c['text'].replace('&', '').lower() == 'ok'), None)
+        if ok is None: raise _drv.DriverError('box %d (%r): no OK control in %s: nothing clicked' % (wid, texts[-1], [c['text'] for c in cs]))
         for attempt in range(tries):
             spend(wid, 'box', tries)
-            g.click(x + wd // 2, y + ht - 24, pause=0.6)
+            g.click_control(ok, pause=0.6)
             if gone(g, wid, timeout=3): break
         else: raise _drv.DriverError('box %d (%r) did not close after %d attempts' % (wid, texts[-1], tries))
     return texts

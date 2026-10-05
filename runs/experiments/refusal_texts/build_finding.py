@@ -49,13 +49,23 @@ def main():
     ts = latest(os.path.join(DATA, 'test_claims_audit_output.txt')); tests = '?'
     if os.path.exists(ts):
         m = re.search(r'Ran (\d+) tests', open(ts).read()); tests = m.group(1) if m else '?'
-    rr = latest(os.path.join(DATA, 'rerun_summary.txt')); rerun = open(rr).read().strip() + ' (UA05b: its first record was made before the staged units got explicit names, so its input differs in the name bytes of the unit slots; the units, counts and the box are the same)'
-    P = read_plays(); ref = [r for r in CS.ROWS if r['kind'] == 'refusal']
+    rr = sorted(glob.glob(os.path.join(DATA, 'rerun_summary*.txt')), key=lambda p: (len(p), p)); rerun = ' | '.join(open(p).read().strip() for p in rr)
+    P = read_plays(); fired = {}
+    for f in sorted(glob.glob(os.path.join(DATA, 'play_b*.log'))):
+        bn = re.search(r'play_(b\d+)', f).group(1)
+        for l in open(f, encoding='utf-8'):
+            m = re.search(r'\[(\w+)\] loaded .*popups at load: (\[.*\])', l)
+            if m and m.group(2) != '[]' and bn < 'b8': fired.setdefault(bn, set()).add(m.group(1))
+    allfired = sorted(set().union(*fired.values())) if fired else []
+    nb = sum(1 for f in glob.glob(os.path.join(DATA, 'plays_b*.jsonl')) for l in open(f) for bx in json.loads(l)['boxes'] if any(c['text'].replace('&', '').lower() in ('ok', 'no') for c in bx['controls']))
+    nbt = sum(1 for f in glob.glob(os.path.join(DATA, 'plays_b*.jsonl')) for l in open(f) for bx in json.loads(l)['boxes'])
+    fired_txt = ('In batches b1-b7 the load path was the shared driver\'s `Game.open`, whose `dismiss_popups` clicks the assumed bottom-centre OK of a box open at load. The play logs (`play_b1.log`..`play_b7.log`, the line `popups at load: [...]`) show it fired in %d of the %d plays (at least once each; the box was a news or offer box that the save carries, for example "<nation> wants to trade with Rome."): %s. In all of them the box closed and the game loaded, and the order\'s own boxes were closed through their controls; the plays are re-run in b8 anyway.' % (len(allfired), len(P), ', '.join(allfired)))
+    ref = [r for r in CS.ROWS if r['kind'] == 'refusal']
     sub = {'N_CLAMPED': str(sum(1 for r in ref if r['effect'].startswith('clamped'))), 'CLAMPED': ', '.join(r['id'] for r in ref if r['effect'].startswith('clamped')),
            'N_DROPPED': str(sum(1 for r in ref if r['effect'].startswith('dropped'))), 'N_PLAYED': str(sum(1 for r in ref if r['plays'])),
            'N_PROMPTS_PLAYED': str(sum(1 for r in CS.ROWS if r['kind'] == 'prompt' and r['plays'])), 'N_PLAYS': str(len(P)), 'N_STAGED': str(sum(1 for v in P.values() if v[-1]['staged'])),
            'NO_PLAY': ', '.join(r['id'] for r in ref if not r['plays']), 'PRE': ', '.join(sorted(p for p, v in P.items() if v[-1].get('pre'))),
-           'AUDIT_CHECKS': aud[0], 'AUDIT_BAD': aud[1], 'TESTS': tests, 'RERUN': rerun,
+           'FIRED': fired_txt, 'BOXES_WITH_CONTROLS': '%d of %d' % (nb, nbt), 'AUDIT_CHECKS': aud[0], 'AUDIT_BAD': aud[1], 'TESTS': tests, 'RERUN': rerun,
            'UNEDITED': ', '.join(sorted(p for p, v in P.items() if not v[-1]['staged']))}
     out = re.sub(r'\{\{TABLE:(\w+)\}\}', lambda m: tabs[m.group(1)], tpl)
     out = re.sub(r'\{\{(\w+)\}\}', lambda m: sub[m.group(1)], out)
