@@ -1,7 +1,7 @@
 """Q2 play: the Balance sheet of Rome at 0720 (run0-start fixture) at tax 10% and after Taxation to 20%: which line is taxBase div 4?
 Prediction from TBalanceSheet_PaintBalance (:55439-55456): Taxes = taxBase x tax / 100; Tribute = taxBase div 4 (not tax-dependent);
 Trade = sum of partner taxBase div 12 over relation 1 or 2. Rome: taxBase 2,528 -> Taxes 252, Tribute 632 at 10%; Taxes 505, Tribute 632 at 20%."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 g = MyGame(); xvfb()
 log('q2', 'load: %s' % g.load(fixture('run0-start-AUTO0720-seed12345.SAV'), seed=12345))

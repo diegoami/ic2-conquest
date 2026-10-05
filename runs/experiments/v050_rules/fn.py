@@ -2,7 +2,8 @@
 """Print decompiled functions from all_app_functions.txt by address (hex), or grep with line numbers.
 usage: fn.py 00446f50 [...]   |  fn.py -g REGEX"""
 import re,sys
-F='/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt'
+import os
+F=os.environ.get('IC2_DUMP', os.path.expanduser('~') + '/ic2-dump/all_app_functions.txt')
 lines=open(F,errors='replace').read().split('\n')
 idx={}
 for i,l in enumerate(lines):

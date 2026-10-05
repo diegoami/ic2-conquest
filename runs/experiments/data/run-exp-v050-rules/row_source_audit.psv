@@ -1,0 +1,141 @@
+# id|finding|rule (as stated)|source line|quote on that line (in the code extracts)|conditions in the code|key that must be in the finding text|disposition|note (required when excluded)
+P01|purse|Supply army up: step 10 or 100|43101|*(int *)(param_1 + 0x1ec)|step is 10 when the clicked control is the 10s arrow, else 100|10 for the 10s arrow, else 100|stated|
+P02|purse|Supply army up: army branch min(step, 1000-purse)|43119|1000 - (short)|the second argument of FUN_00448fd0 (min) is 1000 minus the army's purse|min(step, 1000 - purse)|stated|
+P03|purse|Supply army up: treasury provider pays|43125|DAT_00474aa8|provider index < 0 means the nation's treasury; treasury -= step, no sign check|`treasury -= step`|stated|
+P04|purse|Supply army up: fleet provider limited by its purse|43129|FUN_00448fd0|step := min(step, fleet purse) when a fleet provides|min(step, fleet's purse)|stated|
+P05|purse|Supply army up: purse += step, signed|43134|DAT_0047c1f8|purse += step; step negative above the cap|a negative step|stated|
+P06|purse|Supply army down: step limited by the army's purse|43154|FUN_00448fd0|step := min(step, army purse)|min(step, army's purse)|stated|
+P07|purse|Supply army down: fleet provider receives at most 1000 - fleet purse (R3)|43163|1000 - |step := min(step, 1000 - fleet purse) when a fleet receives; negative above 1,000|1000 - fleet's purse|stated|
+P08|purse|Supply army down: treasury provider receives without cap|43158|DAT_00474aa8|treasury += step|a treasury provider has no cap|stated|
+P09|purse|Buy supplies: amount clamped to the city stock|43013|FUN_00448fd0|amount := min(amount, city stock)|not above the city's stock|stated|
+P10|purse|Buy supplies: amount clamped to the army's room +1|43025|FUN_0044a698|room = troops div 100 - supplies + 1|`troops div 100 - supplies + 1`|stated|
+P11|purse|Buy supplies: amount clamped to purse x 5|43041|* 5|amount := min(amount, purse * 5)|not above `purse × 5`|stated|
+P12|purse|Buy supplies: purse -= amount div 5|43080|DAT_0047c1f8|army money -= amount/5 (integer)|`purse -= amount div 5`|stated|
+P13|purse|Buy supplies: the city owner's treasury += amount div 5|43072|DAT_00474aa8|treasury of the city's owner += amount/5|treasury += amount div 5|stated|
+P14|purse|Buy supplies: hostile cities are not providers|42641|!= 3|the provider search skips relation 3|hostile cities are not providers|stated|
+P15|purse|Army to army money: min(step, min(1000-receiver, giver))|44056|1000 - |receiver's headroom; giver's money also limits; no floor|min(10 or 100, min(1000 - receiver, giver))|stated|
+P16|purse|OK writes both working copies back|44589|0xa4|copies the whole record|whole 656-byte record|stated|
+P17|purse|OK merge of an emptied army: slot-0 troops 0|44624|DAT_0047c200|test is the army's slot-0 troops == 0|slot-0 troops word is 0|stated|
+P18|purse|merge adds purse and supplies uncapped|44631|DAT_0047c1f8|survivor money += emptied money|`B.purse += A.purse`|stated|
+P19|purse|Split: only one unit refused|47041|DAT_0047c220|slot 1 troops == 0 means a single unit|more than one unit|stated|
+P20|purse|Split: partner needs a free land tile and table room|48725|0xc6|FUN_004492c0 found a tile (x >= 0) and fewer than 198 armies|fewer than 198 armies|stated|
+P21|purse|Split: partner moves 0 or 1 for a non-human owner|48733|== '\0'|moves := 1 when the owner's human flag is 0|or 1 when its owner is not human|stated|
+P22|purse|Split: partner purse 0|48740|DAT_0047c1f8|purse := 0|purse 0|stated|
+P23|purse|Join: aboard refusal|46976|DAT_0047c1f4|either army's +0x8 word == -1|neither army aboard a fleet|stated|
+P24|purse|Join: units fewer than 21|46984|0x15|sum of unit counts < 21|combined units fewer than 21|stated|
+P25|purse|Join: troops at most 100,000|46987|0x186a1|sum of troops < 100,001|combined troops at most 100,000|stated|
+P26|purse|Join: partner is the highest-index adjacent own army|48612|DAT_0047c1f0|loop keeps the last match with the same owner at distance 1|highest-index own army at Chebyshev distance 1|stated|
+P27|purse|Join: purse add and moves := 0|46992|DAT_0047c1f8|kept += partner (16-bit); partner deleted; kept moves := 0 at :46997|kept army's moves become 0|stated|
+P28|purse|Disband army: needs an own city in the 3x3|47098|FUN_004494e4|scan returns -1 without an own city|an own city in the 3 × 3 around it|stated|
+P29|purse|Disband army: Confirm Yes|47106|Are you sure you want to disband this army|Yes = 6|answered Yes|stated|
+P30|purse|Disband army: purse to treasury, supplies to city|47109|DAT_0047c1f8|treasury += purse; city stock += supplies|`treasury += purse`|stated|
+P31|purse|Resupply: tons = min(room, stock), room not floored|53088|FUN_00448fd0|room = troops div 100 - supplies, may be negative|not floored|stated|
+P32|purse|Resupply: own city branch test|53091|0x11|city owner == army owner|the city's owner is the army's owner|stated|
+P33|purse|Resupply: excess over 1000 to the treasury|53092|1000 <|if purse > 1000: treasury += purse - 1000; purse := 1000|`treasury += purse - 1000`|stated|
+P34|purse|Resupply: +500 when purse < 500 and treasury > 0|53098|< 500|purse < 500 and treasury (int) > 0|`treasury > 0` (signed)|stated|
+P35|purse|Resupply: other city buys, tons <= purse div 5|53106|/ 5|tons := min(tons, purse/5); purse -= tons/5; owner treasury += tons/5|min(tons, purse div 5)|stated|
+P36|purse|Resupply callers: AI per army|52926|FUN_0044e41c|FUN_0044F31C loop, army owner == current nation|run by the AI for each army|stated|
+P37|purse|Resupply AI: distance < 5|52242|< 5|city distance < 5 from the army|at Chebyshev distance < 5|stated|
+P38|purse|Resupply AI: own city with stock or non-hostile with stock and purse|52244|0x18|owner == me and stock > 0, or relation != 3 and stock > 0 and purse > 0 at the start (:52234)|had a purse above 0 when the function started|stated|
+P39|purse|Resupply human walk: target tile distance 1 and a city marker|51629|FUN_00449018|tail only when the target tile is at distance 1; city branch: war -> siege if moves, else resupply|only when the walk's **target tile** is at distance exactly 1|stated|
+P40|purse|Human click on terrain goes to the walk, on a marker to SelectUnit|46384|0x14|tile code < 20 or > 347 -> CheckForMove|code under 20 or over 347|stated|
+P41|purse|Quarterly: live army, units with troops > 0|54750|0 < psVar8[2]|army owner >= 0 (:54746), unit troops > 0|owner ≥ 0|stated|
+P42|purse|Quarterly: price = troops div 200 x quarterly price|54751|/ 200|(troops/200) * price|`price = (troops div 200) × quarterlyPrice[type]`|stated|
+P43|purse|Quarterly: regular billed to the treasury|54754|DAT_00474aa8|label == 0: treasury -= price|billed to the **treasury**|stated|
+P44|purse|Quarterly: mercenary x = price x quality, purse < 1 removes|54759|< 1|purse < 1: supplies -= troops/100 and unit removed|`purse < 1` (≤ 0)|stated|
+P45|purse|Quarterly: purse -= x div 5|54765|/ 5|purse -= (short)(x/5)|`purse -= x div 5`|stated|
+P46|purse|Quarterly: floors at 0 after the army|54772|psVar11[4]|purse and supplies floored at 0|floored at 0|stated|
+P47|purse|Battle: winner purse += loser purse|57618|DAT_0047c1f8|16-bit add; loser deleted at :57627|`winner.purse += loser.purse`|stated|
+P48|purse|Instant AI battle only if neither owner human|49637|DAT_00474b00|both human flags 0|Only when **neither** owner is human|stated|
+P49|purse|Instant AI battle: attacker wins only if strictly stronger|49642|iVar4 < iVar3|strength(defender) < strength(attacker)|**strictly** stronger|stated|
+P50|purse|Instant AI battle: purse to the winner|49648|DAT_0047c1f8|winner += loser|`attacker.purse += defender.purse`|stated|
+P51|purse|AI merge: donor under 20,000 troops and not aboard|53967|20000|troops(A) < 20000 and +0x8 word >= 0|`troops(A) < 20,000`|stated|
+P52|purse|AI merge: receiver other, same owner|53973|DAT_004a0320|sVar7 != sVar8 and same owner as current nation|another army (:53973) of the same owner|stated|
+P53|purse|AI merge: distance < 18|53975|0x12|Chebyshev < 18|distance < 18|stated|
+P54|purse|AI merge: units sum < 20|53978|0x14|units(A)+units(B) < 20|`units(A) + units(B) < 20`|stated|
+P55|purse|AI merge: receiver troops < 80,000 only, and not aboard|53980|80000|troops(B) < 80000 and +0x8 word of B >= 0|**B's troops alone**|stated|
+P56|purse|AI merge: purse add|53981|psVar5[4]|B.purse += A.purse|`B.purse += A.purse`|stated|
+P57|purse|AI split: purse div 3|53201|/ 3|new army gets purse/3|`purse div 3`|stated|
+P58|purse|AI split called for non-human owner when ships x 500 < troops|49978|* 500|sVar1*500 < troops|`ships × 500 < the army's troops`|stated|
+P59|purse|Last unit gone deletes the army|49454|DAT_0047c200|slot-0 troops == 0 -> FUN_0044ab90|slot 0 has no troops the army is deleted|stated|
+P60|purse|AI split failure to find a tile unguarded|53198|local_14|index -1 used as army index|not guarded in this function|excluded|failure path not analysed beyond noting it (stated as such in the row)
+Q201|tribute|Taxes = taxBase x rate div 100|55440|474aba|(taxBase*taxRate)/100|`taxBase × taxRate div 100`|stated|
+Q202|tribute|Tribute = taxBase div 4 with the negative adjustment|55445|0x44c|+3 before >>2 if negative|`(x + 3) >> 2`|stated|
+Q203|tribute|Trade = FUN_004499EC over 16 nations, relation 1 or 2, taxBase div 12, 16-bit|48428|== 1|loop 16 nations; relation 1 or 2; /0xc; short accumulate|over all 16 nations|stated|
+Q204|tribute|Total = sum|55456|>> 2|local_10 accumulates the three lines|Total** = their sum|stated|
+Q205|tribute|Administration = wealth div 20000 + cities x 7|55466|/ 20000|wealth/20000 + (+0x446)*7|Administration = `wealth div 20000 + cities × 7`|stated|
+Q206|tribute|Debt limit cap 20000|55542|20000|wealth/500 capped at 20000|capped at 20,000|stated|
+Q207|tribute|Debt limit rounding below 5001|55545|0x1389|multiple of 100|multiple of 100 below 5,001|stated|
+Q208|tribute|Debt limit rounding 5001-10000|55548|5000|multiple of 500|of 500 from 5,001 to 10,000|stated|
+Q209|tribute|Debt limit rounding up to 20000|55551|10000|multiple of 1000|of 1,000 from 10,001 to 20,000|stated|
+Q210|tribute|Quarterly credit only for unity above 0|54866|0x440|0 < unity|unity word (`+0x440`) is above 0|stated|
+Q211|tribute|Quarterly credit formula|54876|>> 2|taxBase*rate/100 + treasury + (taxBase>>2 adj) - cities*7 - wealth/20000|cities × 7 − wealth div 20000|stated|
+Q212|tribute|Quarterly credit plus trade|54878|FUN_004499ec|+ FUN_004499EC|then `+ FUN_004499EC`|stated|
+Q213|tribute|Balance sheet shows Fleet, Army recruits, Regular, Mercenary lines|55486|local_c = 0|other expenditure lines computed from fleets, queue slots, regular/merc units|Administration|excluded|the finding states and tests Taxes, Tribute, Trade, Total, Administration and Debt limit only; the other expenditure lines are outside its claims
+R301|disband-queue|Disband needs a selection|56131|FUN_00429eb8|selected count > 0|nothing happens if no entry is selected|stated|
+R302|disband-queue|Confirm Yes|56148|== 6|answer must be Yes|answer is not Yes|stated|
+R303|disband-queue|processes selected rows last to first|56150|0x10|loop from count-1 down|from the last list row to the first|stated|
+R304|disband-queue|mobilisation formula|56157|00474958|mob -= 1 + troops*1000/wealth (slot troops)|− 1 − troops × 1000 div wealth|stated|
+R305|disband-queue|floor at 0|56164|FUN_00448fd8|max(0,...)|max(0, mobilisation|stated|
+R306|disband-queue|slot removed, queue shifts|56167|FUN_0044a610|FUN_0044a610 shifts later slots|entries after it shift up|stated|
+R307|disband-queue|queue word cleared|49014|00474a90|+0x420 := 0|`+0x420`|stated|
+R308|disband-queue|no treasury write in disband|56172|TArmyRecruits_SetCityRecruits|no store to +0x438 in the function|never writes the treasury|stated|
+R309|disband-queue|cost paid at queueing|55996|0x438|treasury -= (troops/200)*recruit price|`troops div 200 × recruitPrice[type]`|stated|
+R310|disband-queue|queueing adds min(100, ...)|56003|FUN_00448fd0|mob := min(100, mob + t*1000/wealth + 1)|`mobilisation := min(100,|stated|
+R311|disband-queue|queue limit 40|55949|00474a90|queue word < 1|fewer than 40 units|stated|
+R312|disband-queue|queue refused at 100|55950|== 100|mobilisation == 100|already 100|stated|
+R313|disband-queue|fortification above 74 or capital or all cities|55957|0x4a|row < 0, or fort > 74, or city == capital|fortification above 74|stated|
+R401|merc|gate formula|43636|1000|(troops*price/1000)*quality; division first|`(troops × price div 1000) × quality`|stated|
+R402|merc|refusal text|43637|too little money|message|Your army has too little money to pay these mercenaries|stated|
+R403|merc|no purse write in the hire|43672|0xffff|only the pool slot and the unit slot are written|Nothing writes the purse or the treasury|stated|
+R404|merc|displayed estimate formula|43605|/ 1000|(troops*price*quality)/1000|`(troops × price × quality) div 1000`|stated|
+R405|merc|actual pay formula|54751|/ 200|(troops/200)*price then *quality /5|`((troops div 200) × price × quality) div 5`|stated|
+R406|merc|panel pay formula|41084|/ 200|same as the tick|army panel|stated|
+R407|merc|order: army selected or fleet's army, own army|46878|DAT_004a0320|selected army own|an own army (:46878)|stated|
+R408|merc|order: offer city at distance 1, silent otherwise|46881|FUN_00449d08|FUN_00449D08 finds the offer city|nothing happens and no message|stated|
+R409|merc|order: 20 units|46884|< 1|slot 19 troops < 1|20th unit slot must be empty|stated|
+R410|merc|order: 100,000 troops of the current army|46885|0x186a1|army troops < 100001|below 100,001|stated|
+R411|merc|order: enemy city|46887|== 3|relation of owner == 3 refuses|relation ≠ 3|stated|
+R412|merc|order: supplies 15 percent|46893|< 0xf|supplies*10000/troops < 15|at least 15 percent|stated|
+R413|merc|order: fleet capacity troops div 500|46899|/ 500|troops/500 <= fleet ships word when a fleet is selected|`troops div 500 ≤ the fleet's ship-count word`|stated|
+R414|merc|dialog: 100,000 with the offer|43644|0x186a1|army troops + offer < 100001|`army troops + offer troops < 100,001`|stated|
+R415|merc|dialog: fleet space with the offer|43651|/ 500|fleet word < (troops+offer)/500 refuses|This fleet has too little space|stated|
+R501|disband-unit|regular only|45787|*psVar1 == 0|slot +0 == 0|`slot +0 == 0`|stated|
+R502|disband-unit|formula|45789|* 1000|mob - 1 - troops*1000/wealth|`mob := max(0, mob − 1 − troops × 1000 div wealth(+0x430))`|stated|
+R503|disband-unit|floor 0|45791|FUN_00448fd8|max(0,...)|floored at 0|stated|
+R504|disband-unit|commit at OK|45820|00474ab2|OK copies mob to the nation; Cancel does not|committed at OK|stated|
+R505|disband-unit|selection needed|45718|0 <|selected count > 0|at least one row is selected|stated|
+R506|disband-unit|Confirm Yes|45734|== 6|Yes|answered Yes|stated|
+R507|disband-unit|slots last to first, troops > 0, selected|45736|0x13|slots 19..0|from the last to the first|stated|
+R508|disband-unit|near-city refusal for regular units only|45743|0x1d6|flag == -1 and slot+0 == 0 -> refusal flag|only when an own city lies in the 3 × 3|stated|
+R509|disband-unit|refusal message once after the loop|45756|near its own city|message after the loop|shown once|stated|
+R510|disband-unit|flag computed from FUN_004494E4 on the army position|45408|FUN_004494e4|InitializeForm stores the scan result|`TChangeArmyUnits_InitializeForm` :45408-45410|stated|
+R511|disband-unit|scan covers 3x3 and returns own city|48106|0x13|map code 20..99 city of the nation|takes the last own city found|stated|
+R512|disband-unit|Army to army disband same formula|44485|* 1000|same expression|`TArmyToArmy_RemoveUnit` @ 00442DD8|stated|
+R513|disband-unit|Army to army: flag from army A|43793|FUN_004494e4|flag from the selected army A position|also gates partner B's Disband|stated|
+R514|disband-unit|transfer does not change mobilisation|44461|,0)|param_4 = 0|`param_4 = 0`|stated|
+R601|attack|legality: selected army moves >= 1|46514|< 1|army selected and moves >= 1|its moves ≥ 1|stated|
+R602|attack|legality: adjacent distance 1|46515|FUN_004492a0|distance == 1|distance exactly 1|stated|
+R603|attack|city marker range|46532|0x50|codes 20-99|city (marker codes 20-99|stated|
+R604|attack|army marker range|46555|200U|codes 200-247|army (200-247|stated|
+R605|attack|fleet marker range|46582|300U|codes 300-347|fleet (300-347|stated|
+R606|attack|city: owner other than attacker, bVar4, relation 3 skips box|46539|bVar4|owner != me and bVar4 and (relation 3 or Yes)|owner is another nation|stated|
+R607|attack|city prompt text|46541|attack this city|box text|Are you sure you want to attack this city ?|stated|
+R608|attack|declaration only if relation not 3|46544|!= 3|FUN_00449b40 only when relation != 3|only if the relation is not 3|stated|
+R609|attack|siege after declaration|46547|FUN_0044b27c|siege|FUN_0044B27C|stated|
+R610|attack|selection dropped|46551|= -1|selected army := -1|`[memory-only]`|stated|
+R611|attack|army target owner test|46563|!= DAT_004a0320|owner != me|army :46563-46564|stated|
+R612|attack|army prompt and declaration and battle|46572|FUN_0044aee4|FUN_0044AEE4|FUN_0044AEE4|stated|
+R613|attack|fleet legality: selected fleet, moves, adjacency|46611|< 1|fleet selected, moves >= 1, adjacent else silent|selected fleet's|stated|
+R614|attack|fleet: scan 3x3 for the target owner's city|46619|FUN_004494e4|FUN_004494E4(owner, tile)|whole 3 × 3 around the clicked fleet's tile|stated|
+R615|attack|fleet refusal message before prompt|46637|docked at its own city|message|You cannot attack a fleet docked at its own city !|stated|
+R616|attack|fleet prompt unless war|46622|== 3|relation == 3 skips|no box when the relation is 3|stated|
+R617|attack|fleet declaration and battle|46629|FUN_0044b5d0|FUN_0044B5D0 resolves at once|has no refusal of its own|stated|
+R618|attack|own fleet with legal army: embark capacity|46594|/ 500|troops/500 > ships word refuses|army's troops `div 500`|stated|
+R619|attack|own fleet: embark via FUN_0044B79C|46601|FUN_0044b79c|embark|`FUN_0044B79C`|stated|
+R620|attack|own fleet empty test|46592|== -1|fleet carries no army|carries no army|stated|
+R621|attack|declaration writes both relation entries|48502|00474696|[me][them] := 3|`[me][them] := 3`|stated|
+R622|attack|cascade: allies of the target not at war with attacker|48532|== 2|[them][k] == 2 and [me][k] != 3|relation `[them][k] == 2`|stated|
+R623|attack|cascade news|48455|declares war on|news line|declares war on Y|stated|
+R624|attack|human war declaration sites|55385|FUN_00449b40|TPolitics_OK|International Relations dialog|stated|
+R625|attack|siege uses all moves|49815|DAT_0047c1f2|moves := 0|5 → 0|stated|

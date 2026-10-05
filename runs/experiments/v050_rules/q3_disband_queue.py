@@ -3,7 +3,7 @@ Prediction from TArmyRecruits_DisbandUnits (:56157-56167) and FUN_0044a610 (:490
 (the queue shifts), mobilisation falls by 1 + troops x 1000 div wealth(2,577,000), floored at 0:
   HI 3,200 (not ready):  32 -> 32 - 1 - 1 = 30
   HI 4,000 (very poor):  30 -> 30 - 1 - 1 = 28   (floor 1.55 = 1; a rounding rule would give 27)"""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 g = MyGame(); xvfb()
 log('q3', 'load: %s' % g.load(fixture('recruit-hi3200-0720.SAV'), seed=12345))

@@ -1,6 +1,6 @@
 """Q6 play, part 2: the Yes branch from Q6_02_adjacent_moves5.SAV (Gaul army 9 at (90,29), 5 moves, next to Genua, relation to Greece 0):
 click Genua, answer Yes: the relation must be 3 both ways at once (FUN_00449b40 :46545), then the siege runs (FUN_0044B27C :46547)."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 D = sys.modules['harness.driver']
 g = MyGame(); xvfb()

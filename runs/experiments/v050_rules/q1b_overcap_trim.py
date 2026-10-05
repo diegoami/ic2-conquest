@@ -1,7 +1,7 @@
 """Q1 play, part 2: a purse above 1,000 (the 2,000 left by Join armies, save Q1_06_after_join.SAV) opened in Supply army: one click on the
 money 100s up arrow is predicted by TAFSupply_ChangeMoney (:43118-43135) to move min(100, 1000 - 2000) = -1000, i.e. the purse falls
 to 1,000 and the treasury gains 1,000. Then one more click (nothing: min(100, 0))."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 g = MyGame(); xvfb()
 log('q1b', 'load: %s' % g.load(SAVEDIR + 'Q1_06_after_join.SAV', seed=12345))

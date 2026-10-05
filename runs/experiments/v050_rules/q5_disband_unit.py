@@ -4,7 +4,7 @@ Prediction from TChangeArmyUnits_RemoveUnit (:45787-45792) and TChangeArmyUnits_
   mercenary unit (slot +0 != 0): mobilisation unchanged.
 Part A: run0-start-AUTO0720-seed12345.SAV, army 0 at (100,37) next to Arretium (own city): disband HI 5,900 (unit row 3): 30 -> 30 - 1 - 2 = 27 (5900x1000 div 2,577,000 = 2).
 Part B: merc-hire-free-0720.SAV, army 1 next to Heraclea (own city): disband the hired Samnite LI 3,868 (unit row 6, a mercenary): 30 -> 30."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 g = MyGame(); xvfb()
 def change_disband(i, row, tag):

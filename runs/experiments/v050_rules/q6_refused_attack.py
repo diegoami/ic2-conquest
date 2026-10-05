@@ -5,10 +5,10 @@ after Yes, the war declaration FUN_00449b40(me, target, 3) (:46544-46545) and th
  C: army 4 tiles away, click Genua: silent, relation unchanged;  B: adjacent with 5 moves, click Genua: prompt; No: nothing changes;
  A: adjacent with 0 moves (moves burnt by stepping around the city), click Genua: no prompt, relation unchanged;
  E: reload the adjacent state with 5 moves, click Genua, Yes: relation 3 at once, news 'declares war', the siege."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 D = sys.modules['harness.driver']
-IN = ROOT + '/artifacts/run-exp-v050-rules/inputs/S06_Gaul_AUTO0720.SAV'
+IN = ART + 'inputs/S06_Gaul_AUTO0720.SAV'
 g = MyGame(); xvfb()
 GREECE, ME, A9 = 7, 6, 9
 def rel(): return g.nation_state(ME)['relations'].get('Greece')

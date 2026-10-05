@@ -6,7 +6,7 @@ Prediction from TRecruitMercs_RecruitMercUnit (:43633-43636): the hire is refuse
 from the purse or the treasury.
 Steps: (1) purse 20 (< 24) at Heraclea: refusal; (2) purse 30: hire the Samnite (30 >= 24): purse stays 30; (3) move to (120,55) next to Thurii, purse 30:
 hire the HC (30 >= 27 although < 34): purse stays 30."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 g = MyGame(); xvfb()
 log('q4', 'load: %s' % g.load(fixture('run0-start-AUTO0720-seed12345.SAV'), seed=12345))

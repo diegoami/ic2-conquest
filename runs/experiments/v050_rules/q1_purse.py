@@ -3,7 +3,7 @@ Flow A (army 0, purse 100, supplies 170): move to (100,42), adjacent to Rome and
 Flow B (army 1 at Heraclea, purse 100): click the adjacent own city (nothing), Supply army 11 x (+100) (cap at 1000), Split, Supply the partner
 11 x (+100), Join armies: the kept army's purse is the sum (2,000, no cap).
 Every step is saved (File > Save as) and its state logged to the tracked log; nothing is overwritten."""
-import sys; sys.path.insert(0, '/home/diego/projects/wt-rules/runs/experiments/v050_rules')
+import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 D = sys.modules['harness.driver']
 g = MyGame(); xvfb()

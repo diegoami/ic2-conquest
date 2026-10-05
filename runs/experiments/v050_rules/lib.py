@@ -1,13 +1,13 @@
 """Shared setup for the v0.5.0 rule-read plays: own display (:733), own IC2_WORK copy, screenshots to the gitignored artifacts
 folder, tracked text logs; nothing is overwritten (rule 6). Import before harness.driver."""
 import os, sys, time, subprocess, hashlib, glob, struct, shutil
-WORKDIR = '/home/diego/ic2-work-v050'
+from paths import ROOT, ART, DATA, TMP
+WORKDIR = os.environ.get('IC2_WORK_V050', os.path.expanduser('~/ic2-work-v050'))
 DISP = ':733'
 os.environ['IC2_WORK'] = WORKDIR
 os.environ['DISPLAY_IC2'] = DISP
-ROOT = '/home/diego/projects/wt-rules'
 sys.path.insert(0, ROOT)
-sys.path.insert(0, ROOT + '/runs/experiments/v050_rules')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import new_path, write_new
 import harness.driver as _drv
 from harness.driver import Game, G
@@ -17,8 +17,6 @@ def sh(*args, **kw):
     if args and args[0] == 'import' and str(args[-1]).startswith(ART): args = args[:-1] + (new_path(args[-1]),)
     return _orig_sh(*args, **kw)
 _drv.sh = sh
-ART = ROOT + '/artifacts/run-exp-v050-rules/'
-DATA = ROOT + '/runs/experiments/data/run-exp-v050-rules/'
 os.makedirs(ART, exist_ok=True); os.makedirs(DATA, exist_ok=True)
 SAVEDIR = ART + 'saves/'
 os.makedirs(SAVEDIR, exist_ok=True)
@@ -128,7 +126,7 @@ def open_tool(g, name, title, tries=3, wait=6):
     raise _drv.DriverError('%s did not open' % title)
 
 def ocr_text(path, crop=None, scale=3):
-    tmp = '/tmp/claude-1000/ocr_tmp_v050.png'
+    tmp = os.path.join(TMP, 'ic2_v050_ocr_tmp.png')
     cmd = ['convert', path] + (['-crop', crop] if crop else []) + ['-resize', '%d00%%' % scale, '-colorspace', 'Gray', tmp]
     subprocess.run(cmd, check=True)
     return subprocess.run(['tesseract', tmp, 'stdout', '--psm', '6'], capture_output=True, text=True).stdout
