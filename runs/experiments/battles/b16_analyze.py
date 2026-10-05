@@ -101,7 +101,7 @@ def cmd_hook():
             d = h["peace_draws"]
             rows.append({"trial": r["trial"], "seed": r["seed"], "exe_sha256": r["exe_sha256"], "box_opened": r["box_opened"], "preconditions_pass": r["rcode"]["preconditions_pass"],
                          "peace_draw_result": d[0]["result"] if d else None, "peace_draw_range": d[0]["range_eax"] if d else None, "peace_draw_seq": d[0]["seq"] if d else None,
-                         "n_peace_draws": len(d), "reseed_records": ";".join("%s@%s" % x for x in h["reseed_records"]), "records": h["records"], "overflow": h["overflow"],
+                         "n_peace_draws": len(d), "reseed_records": ";".join("%s@%s" % tuple(x) for x in h["reseed_records"]), "records": h["records"], "overflow": h["overflow"],
                          "reentered": h["reentered"], "hooklog": "hooklog-%s.csv" % r["trial"]})
     rows.sort(key=lambda x: x["seed"])
     buf = io.StringIO(newline="")
@@ -229,7 +229,7 @@ def cmd_repeat():
     recs = list(latest_ok().values())
     groups = {}
     for r in recs:
-        if r.get("dialogs") or r.get("box_opened") is False:
+        if r["build"] == "normal" and (r.get("dialogs") or r.get("box_opened") is False):
             groups.setdefault((r["cell"], r["seed"], "yes" if r["answer_plan"] == "yes" else "no"), []).append(r)
     out = []
     for key, rs in sorted(groups.items()):
@@ -239,6 +239,8 @@ def cmd_repeat():
                 row = {"cell": key[0], "seed": key[1], "answer": key[2], "a": a["trial"], "b": b["trial"], "box_opened": (a["box_opened"], b["box_opened"]),
                        "pre_snapshot_bytes_equal": snap_bytes(a["pre_snap"]) == snap_bytes(b["pre_snap"]),
                        "pre_snapshot_equal_outside_volatile": _only_volatile(snap_bytes(a["pre_snap"]), snap_bytes(b["pre_snap"])),
+                       "pre_named_regions_equal": a["pre_regions"] == b["pre_regions"],
+                       "pre_differing_offsets": diff_offsets(snap_bytes(a["pre_snap"]), snap_bytes(b["pre_snap"]))["runs"] if snap_bytes(a["pre_snap"]) != snap_bytes(b["pre_snap"]) else [],
                        "box_text_equal": a.get("box_text") == b.get("box_text"),
                        "post_save_bytes_equal": (B.ART / a["post_save"]).read_bytes() == (B.ART / b["post_save"]).read_bytes(),
                        "turn_saves": []}
@@ -249,7 +251,7 @@ def cmd_repeat():
                 out.append(row)
     p = C.write_new(B.DATA, "b16-repeat-%s.json" % C.STAMP, json.dumps(out, indent=1))
     for r in out:
-        print(r["a"], r["b"], "pre", r["pre_snapshot_bytes_equal"], "post", r["post_save_bytes_equal"], "turns", [t["bytes_equal"] for t in r["turn_saves"]])
+        print(r["a"], r["b"], "pre", r["pre_snapshot_bytes_equal"], "pre-ex-volatile", r["pre_snapshot_equal_outside_volatile"], "named-regions", r["pre_named_regions_equal"], "post", r["post_save_bytes_equal"], "turns", [t["bytes_equal"] for t in r["turn_saves"]])
     print(p)
 
 
