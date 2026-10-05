@@ -1,0 +1,839 @@
+# Code extract q6_attack_order from /mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt (line numbers are that file's)
+
+46359	// ==== TUnitMap_UnitMapClick @ 00446420 ====
+46360	
+46361	void TUnitMap_UnitMapClick(int *param_1,undefined4 param_2,uint param_3,int param_4,int param_5)
+46362	
+46363	{
+46364	  uint uVar1;
+46365	  uint extraout_ECX;
+46366	  uint extraout_ECX_00;
+46367	  uint extraout_ECX_01;
+46368	  short sVar2;
+46369	  short sVar3;
+46370	  int iVar4;
+46371	  undefined4 local_8;
+46372	  
+46373	  if (param_5 < 0) {
+46374	    param_5 = param_5 + 0x1f;
+46375	  }
+46376	  sVar2 = (short)(param_5 >> 5) + *(short *)(&DAT_00474af8 + DAT_004a0320 * 0x494);
+46377	  iVar4 = param_4 + -0x1e;
+46378	  if (iVar4 < 0) {
+46379	    iVar4 = param_4 + 1;
+46380	  }
+46381	  sVar3 = (short)(iVar4 >> 5) + *(short *)(&DAT_00474af6 + DAT_004a0320 * 0x494);
+46382	  local_8 = (undefined *)CONCAT22(sVar3,sVar2);
+46383	  sVar2 = *(short *)(&DAT_0045e870 + sVar3 * 2 + sVar2 * 0x118);
+46384	  if ((sVar2 < 0x14) || (0x15b < sVar2)) {
+46385	    TUnitMap_CheckForMove(param_1,local_8,param_3);
+46386	  }
+46387	  else {
+46388	    if ((char)param_3 == '\0') {
+46389	      if ((ushort)(sVar2 - 0x14U) < 0x50) {
+46390	        TInformation_ShowCityDetails(DAT_0045e70c,local_8);
+46391	        param_3 = extraout_ECX;
+46392	      }
+46393	      else if ((ushort)(sVar2 - 200U) < 0x30) {
+46394	        TInformation_ShowArmyDetails(DAT_0045e70c,local_8);
+46395	        param_3 = extraout_ECX_00;
+46396	      }
+46397	      else if ((ushort)(sVar2 - 300U) < 0x30) {
+46398	        TInformation_ShowFleetDetails(DAT_0045e70c,local_8);
+46399	        param_3 = extraout_ECX_01;
+46400	      }
+46401	    }
+46402	    else if ((char)param_3 == '\x01') {
+46403	      if ((ushort)(sVar2 - 0x14U) < 0x50) {
+46404	        TInformation_ShowCityUnits(DAT_0045e70c,local_8);
+46405	      }
+46406	      else if ((ushort)(sVar2 - 200U) < 0x30) {
+46407	        TInformation_ShowArmyUnits(DAT_0045e70c,local_8);
+46408	      }
+46409	      else if ((ushort)(sVar2 - 300U) < 0x30) {
+46410	        TInformation_ShowFleetUnits(DAT_0045e70c,local_8);
+46411	      }
+46412	      param_3 = (int)sVar2 - 200U & 0x8000000f;
+46413	      if ((int)param_3 < 0) {
+46414	        param_3 = (param_3 - 1 | 0xfffffff0) + 1;
+46415	      }
+46416	      if ((int)DAT_004a0320 != param_3) {
+46417	        DAT_004a0328 = 0xffff;
+46418	      }
+46419	      uVar1 = (int)sVar2 - 300U & 0x8000000f;
+46420	      if ((int)uVar1 < 0) {
+46421	        uVar1 = (uVar1 - 1 | 0xfffffff0) + 1;
+46422	      }
+46423	      if ((int)DAT_004a0320 != uVar1) {
+46424	        DAT_004a032a = 0xffff;
+46425	      }
+46426	    }
+46427	    TUnitMap_SelectUnit((int)param_1,local_8,param_3);
+46428	  }
+46429	  return;
+46430	}
+46431	
+46432	
+46667	// ==== TUnitMap_CheckForMove @ 00446ca4 ====
+46668	
+46669	void TUnitMap_CheckForMove(int *param_1,undefined4 param_2,undefined4 param_3)
+46670	
+46671	{
+46672	  short sVar1;
+46673	  short sVar2;
+46674	  int iVar3;
+46675	  undefined4 extraout_ECX;
+46676	  undefined4 extraout_ECX_00;
+46677	  undefined4 extraout_ECX_01;
+46678	  undefined4 extraout_EDX;
+46679	  short local_14;
+46680	  short sStack_12;
+46681	  
+46682	  sStack_12 = (short)((uint)param_2 >> 0x10);
+46683	  local_14 = (short)param_2;
+46684	  sVar2 = *(short *)(&DAT_0045e870 + sStack_12 * 2 + local_14 * 0x118);
+46685	  if (((-1 < (short)param_1[0x88]) &&
+46686	      ((&DAT_0047c1f0)[(short)param_1[0x88] * 0x148] == DAT_004a0320)) && (1 < sVar2)) {
+46687	    TUnitMap_MoveHumanArmy(param_1,param_2,param_3);
+46688	    param_3 = extraout_ECX;
+46689	  }
+46690	  sVar1 = (short)param_1[0x89];
+46691	  if ((-1 < sVar1) && ((&DAT_0049c274)[sVar1 * 0xd] == DAT_004a0320)) {
+46692	    if (sVar2 < 2) {
+46693	      TUnitMap_MoveHumanFleet(param_1,param_2,param_3);
+46694	    }
+46695	    else {
+46696	      iVar3 = (int)sVar1;
+46697	      if (sVar2 < 0xc) {
+46698	        sVar2 = FUN_00449018(param_2,*(undefined4 *)((int)&DAT_0049c26c + iVar3 * 0x1a));
+46699	        if ((sVar2 == 1) && (-1 < (short)(&DAT_0049c282)[iVar3 * 0xd])) {
+46700	          sVar2 = (&DAT_0049c282)[iVar3 * 0xd];
+46701	          FUN_0044b840((short)param_1[0x89],param_2);
+46702	          TUnitMap_PrintMapSquare((int)param_1,param_2,extraout_ECX_00);
+46703	          TUnitMap_EndUMSelection((int)param_1,extraout_EDX,extraout_ECX_01);
+46704	          TInformation_ShowArmyDetails(DAT_0045e70c,(&DAT_0047c1ec)[sVar2 * 0xa4]);
+46705	        }
+46706	      }
+46707	    }
+46708	  }
+46709	  return;
+46710	}
+46711	
+46712	
+46713	// ==== TUnitMap_MoveHumanArmy @ 00446d9c ====
+46714	
+46715	void TUnitMap_MoveHumanArmy(int *param_1,undefined4 param_2,undefined4 param_3)
+46716	
+46717	{
+46718	  short sVar1;
+46719	  undefined4 extraout_ECX;
+46720	  undefined4 extraout_ECX_00;
+46721	  undefined4 uVar2;
+46722	  undefined4 extraout_ECX_01;
+46723	  undefined4 extraout_EDX;
+46724	  undefined4 extraout_EDX_00;
+46725	  undefined4 uVar3;
+46726	  undefined4 extraout_EDX_01;
+46727	  
+46728	  FUN_0044d734((short)param_1[0x88],param_2,param_3);
+46729	  sVar1 = FUN_00449018((&DAT_0047c1ec)[(short)param_1[0x88] * 0xa4],param_2);
+46730	  uVar2 = extraout_ECX;
+46731	  uVar3 = extraout_EDX;
+46732	  if ((0 < sVar1) && (0 < (short)(&DAT_0047c1f2)[(short)param_1[0x88] * 0x148])) {
+46733	    FUN_0044d734((short)param_1[0x88],param_2,extraout_ECX);
+46734	    uVar2 = extraout_ECX_00;
+46735	    uVar3 = extraout_EDX_00;
+46736	  }
+46737	  *(undefined4 *)((int)param_1 + 0x21a) = (&DAT_0047c1ec)[(short)param_1[0x88] * 0xa4];
+46738	  TUnitMap_UpdateUMSelection(param_1,uVar3,uVar2);
+46739	  if ((&DAT_0047c1f2)[(short)param_1[0x88] * 0x148] == 0) {
+46740	    TUnitMap_EndUMSelection((int)param_1,extraout_EDX_01,extraout_ECX_01);
+46741	  }
+46742	  return;
+46743	}
+46744	
+46745	
+46487	// ==== TUnitMap_SelectUnit @ 004466cc ====
+46488	
+46489	void TUnitMap_SelectUnit(int param_1,undefined *param_2,undefined4 param_3)
+46490	
+46491	{
+46492	  short *psVar1;
+46493	  ushort uVar2;
+46494	  short sVar3;
+46495	  bool bVar4;
+46496	  short sVar5;
+46497	  int iVar6;
+46498	  undefined4 extraout_ECX;
+46499	  undefined4 extraout_ECX_00;
+46500	  undefined4 extraout_ECX_01;
+46501	  undefined4 extraout_ECX_02;
+46502	  undefined4 extraout_ECX_03;
+46503	  undefined4 extraout_ECX_04;
+46504	  undefined4 extraout_EDX;
+46505	  undefined4 extraout_EDX_00;
+46506	  undefined4 extraout_EDX_01;
+46507	  undefined3 uVar7;
+46508	  undefined4 extraout_EDX_02;
+46509	  undefined *unaff_ESI;
+46510	  undefined4 local_14;
+46511	  short local_c;
+46512	  short sStack_a;
+46513	  
+46514	  if (((DAT_004a0328 < 0) || ((short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1)) ||
+46515	     (bVar4 = FUN_004492a0((&DAT_0047c1ec)[DAT_004a0328 * 0xa4],param_2), param_3 = extraout_ECX,
+46516	     !bVar4)) {
+46517	    bVar4 = false;
+46518	  }
+46519	  else {
+46520	    bVar4 = true;
+46521	  }
+46522	  sStack_a = (short)((uint)param_2 >> 0x10);
+46523	  local_c = (short)param_2;
+46524	  sVar5 = *(short *)(&DAT_0045e870 + sStack_a * 2 + local_c * 0x118);
+46525	  psVar1 = (short *)(param_1 + 0x21a);
+46526	  if (-1 < *psVar1) {
+46527	    TUnitMap_PrintMapSquare(param_1,*(undefined4 *)psVar1,param_3);
+46528	  }
+46529	  *(undefined **)psVar1 = param_2;
+46530	  *(short *)(param_1 + 0x21e) = sVar5;
+46531	  FUN_004465a8();
+46532	  if ((ushort)(sVar5 - 0x14U) < 0x50) {
+46533	    iVar6 = FUN_004498d8(param_2);
+46534	    *(short *)(param_1 + 0x222) = (short)iVar6;
+46535	    *(undefined2 *)(param_1 + 0x220) = 0xffff;
+46536	    *(undefined2 *)(param_1 + 0x224) = 0xffff;
+46537	    uVar2 = (&DAT_004795a2)[*(short *)(param_1 + 0x222) * 0x11];
+46538	    unaff_ESI = (undefined *)(uint)uVar2;
+46539	    if (((bVar4) && (uVar2 != DAT_004a0320)) &&
+46540	       (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 ||
+46541	        (iVar6 = FUN_0042d750((uint *)"Are you sure you want to attack this city ?",
+46542	                              CONCAT31((int3)((uint)(&DAT_00474670 + (short)DAT_004a0320 * 0x494) >>
+46543	                                             8),3),DAT_00446b90,0), iVar6 == 6)))) {
+46544	      if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {
+46545	        FUN_00449b40(DAT_004a0320,uVar2,3);
+46546	      }
+46547	      FUN_0044b27c(DAT_004a0328,*(short *)(param_1 + 0x222));
+46548	      TUnitMap_EndUMSelection(param_1,extraout_EDX,extraout_ECX_00);
+46549	      TInformation_PrintNews(DAT_0045e70c);
+46550	    }
+46551	    DAT_004a0328 = -1;
+46552	    DAT_004a032a = -1;
+46553	    sVar3 = DAT_004a0328;
+46554	  }
+46555	  else if ((ushort)(sVar5 - 200U) < 0x30) {
+46556	    iVar6 = FUN_00449920(param_2);
+46557	    *(short *)(param_1 + 0x220) = (short)iVar6;
+46558	    *(undefined2 *)(param_1 + 0x222) = 0xffff;
+46559	    *(undefined2 *)(param_1 + 0x224) = 0xffff;
+46560	    uVar2 = (&DAT_0047c1f0)[*(short *)(param_1 + 0x220) * 0x148];
+46561	    unaff_ESI = (undefined *)(uint)uVar2;
+46562	    sVar3 = *(short *)(param_1 + 0x220);
+46563	    if (uVar2 != DAT_004a0320) {
+46564	      if ((bVar4) &&
+46565	         (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 ||
+46566	          (iVar6 = FUN_0042d750((uint *)"Are you sure you want to attack this army ?",
+46567	                                CONCAT31((int3)((uint)(&DAT_00474670 + (short)DAT_004a0320 * 0x494)
+46568	                                               >> 8),3),DAT_00446b90,0), iVar6 == 6)))) {
+46569	        if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {
+46570	          FUN_00449b40(DAT_004a0320,uVar2,3);
+46571	        }
+46572	        FUN_0044aee4(DAT_004a0328,*(short *)(param_1 + 0x220));
+46573	        TUnitMap_EndUMSelection(param_1,extraout_EDX_00,extraout_ECX_01);
+46574	      }
+46575	      DAT_004a0328 = -1;
+46576	      DAT_004a032a = -1;
+46577	      sVar3 = DAT_004a0328;
+46578	    }
+46579	  }
+46580	  else {
+46581	    sVar3 = DAT_004a0328;
+46582	    if ((ushort)(sVar5 - 300U) < 0x30) {
+46583	      iVar6 = FUN_00449970(param_2);
+46584	      *(short *)(param_1 + 0x224) = (short)iVar6;
+46585	      *(undefined2 *)(param_1 + 0x220) = 0xffff;
+46586	      *(undefined2 *)(param_1 + 0x222) = 0xffff;
+46587	      sVar5 = *(short *)(param_1 + 0x224);
+46588	      uVar2 = (&DAT_0049c274)[sVar5 * 0xd];
+46589	      unaff_ESI = (undefined *)CONCAT22((short)((uint)unaff_ESI >> 0x10),uVar2);
+46590	      if (uVar2 == DAT_004a0320) {
+46591	        DAT_004a032a = sVar5;
+46592	        if ((bVar4) && ((&DAT_0049c282)[*(short *)(param_1 + 0x224) * 0xd] == -1)) {
+46593	          iVar6 = FUN_0044a698(DAT_004a0328);
+46594	          if ((int)(short)(&DAT_0049c27e)[*(short *)(param_1 + 0x224) * 0xd] < iVar6 / 500) {
+46595	            FUN_0042d750((uint *)"The army is too large for this fleet ?",
+46596	                         CONCAT31((int3)(char)((ushort)(&DAT_0049c27e)
+46597	                                                       [*(short *)(param_1 + 0x224) * 0xd] >> 8),3),
+46598	                         DAT_00446bfc,0);
+46599	          }
+46600	          else {
+46601	            FUN_0044b79c(DAT_004a0328,DAT_004a032a);
+46602	            TUnitMap_FleetButtonsOn(param_1);
+46603	            TUnitMap_PaintForm((int *)param_1,local_14,extraout_ECX_02);
+46604	            TInformation_ShowFleetDetails
+46605	                      (DAT_0045e70c,*(undefined4 *)((int)&DAT_0049c26c + DAT_004a032a * 0x1a));
+46606	          }
+46607	        }
+46608	        DAT_004a0328 = -1;
+46609	        sVar3 = DAT_004a0328;
+46610	      }
+46611	      else if (((DAT_004a032a < 0) || ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) ||
+46612	              (bVar4 = FUN_004492a0(*(undefined4 *)((int)&DAT_0049c26c + DAT_004a032a * 0x1a),
+46613	                                    param_2), !bVar4)) {
+46614	        DAT_004a0328 = -1;
+46615	        DAT_004a032a = -1;
+46616	        sVar3 = DAT_004a0328;
+46617	      }
+46618	      else {
+46619	        sVar5 = FUN_004494e4(unaff_ESI,param_2);
+46620	        uVar7 = (undefined3)((uint)extraout_EDX_01 >> 8);
+46621	        if (sVar5 < 0) {
+46622	          if (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3) ||
+46623	             (iVar6 = FUN_0042d750((uint *)"Are you sure you want to attack this fleet ?",
+46624	                                   CONCAT31(uVar7,3),DAT_00446b90,0), sVar3 = DAT_004a0328,
+46625	             iVar6 == 6)) {
+46626	            if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {
+46627	              FUN_00449b40(DAT_004a0320,uVar2,3);
+46628	            }
+46629	            FUN_0044b5d0(DAT_004a032a,*(short *)(param_1 + 0x224));
+46630	            TUnitMap_EndUMSelection(param_1,extraout_EDX_02,extraout_ECX_03);
+46631	            TUnitMap_PaintForm((int *)param_1,local_14,extraout_ECX_04);
+46632	            TInformation_PrintNews(DAT_0045e70c);
+46633	            sVar3 = DAT_004a0328;
+46634	          }
+46635	        }
+46636	        else {
+46637	          FUN_0042d750((uint *)"You cannot attack a fleet docked at its own city !",
+46638	                       CONCAT31(uVar7,2),DAT_00446bfc,0);
+46639	          sVar3 = DAT_004a0328;
+46640	        }
+46641	      }
+46642	    }
+46643	  }
+46644	  DAT_004a0328 = sVar3;
+46645	  if ((ushort)unaff_ESI == DAT_004a0320) {
+46646	    if (*(short *)(param_1 + 0x222) < 0) {
+46647	      if (*(short *)(param_1 + 0x220) < 0) {
+46648	        if (-1 < *(short *)(param_1 + 0x224)) {
+46649	          TUnitMap_FleetButtonsOn(param_1);
+46650	        }
+46651	      }
+46652	      else {
+46653	        TUnitMap_ArmyButtonsOn(param_1);
+46654	      }
+46655	    }
+46656	    else {
+46657	      TUnitMap_CityButtonsOn(param_1);
+46658	    }
+46659	  }
+46660	  else {
+46661	    TUnitMap_AllButtonsOff(param_1);
+46662	  }
+46663	  return;
+46664	}
+46665	
+46666	
+48472	// ==== FUN_00449b40 @ 00449b40 ====
+48473	
+48474	void FUN_00449b40(short param_1,short param_2,short param_3)
+48475	
+48476	{
+48477	  undefined1 *puVar1;
+48478	  undefined1 *puVar2;
+48479	  undefined1 *puVar3;
+48480	  int iVar4;
+48481	  undefined *puVar5;
+48482	  short sVar6;
+48483	  undefined *local_10;
+48484	  undefined *local_c;
+48485	  short local_8;
+48486	  
+48487	  puVar3 = &stack0xfffffffc;
+48488	  local_8 = param_3;
+48489	  if (param_3 == 0) {
+48490	    sVar6 = (&DAT_00474696)[param_1 * 0x24a + (int)param_2];
+48491	    if (sVar6 == 1) {
+48492	      local_8 = -8;
+48493	    }
+48494	    else if (sVar6 == 2) {
+48495	      local_8 = -0x18;
+48496	    }
+48497	    else if (sVar6 == 3) {
+48498	      local_8 = -0x12;
+48499	    }
+48500	  }
+48501	  iVar4 = (int)param_1;
+48502	  (&DAT_00474696)[iVar4 * 0x24a + (int)param_2] = local_8;
+48503	  puVar2 = (undefined1 *)CONCAT22((short)((uint)(&DAT_00474670 + iVar4 * 0x494) >> 0x10),local_8);
+48504	  (&DAT_00474696)[param_2 * 0x24a + iVar4] = local_8;
+48505	  if (local_8 == 2) {
+48506	    puVar1 = &stack0xfffffffc;
+48507	    FUN_00449a44(param_2,2,puVar2,(int)&stack0xfffffffc);
+48508	    puVar2 = puVar1;
+48509	    sVar6 = 0;
+48510	    puVar5 = &DAT_00474670;
+48511	    local_c = &DAT_00474670;
+48512	    do {
+48513	      if ((*(short *)(puVar5 + param_2 * 0x494 + 0x26) == 3) &&
+48514	         (*(short *)(puVar5 + param_1 * 0x494 + 0x26) != 3)) {
+48515	        *(undefined2 *)(puVar5 + param_1 * 0x494 + 0x26) = 3;
+48516	        *(undefined2 *)(local_c + param_1 * 2 + 0x26) = 3;
+48517	        puVar1 = &stack0xfffffffc;
+48518	        FUN_00449a44(sVar6,3,puVar2,(int)&stack0xfffffffc);
+48519	        puVar2 = puVar1;
+48520	      }
+48521	      sVar6 = sVar6 + 1;
+48522	      local_c = local_c + 0x494;
+48523	      puVar5 = puVar5 + 2;
+48524	    } while (sVar6 != 0x10);
+48525	  }
+48526	  if (local_8 == 3) {
+48527	    FUN_00449a44(param_2,3,puVar2,(int)&stack0xfffffffc);
+48528	    sVar6 = 0;
+48529	    puVar5 = &DAT_00474670;
+48530	    local_10 = &DAT_00474670;
+48531	    do {
+48532	      if ((*(short *)(puVar5 + param_2 * 0x494 + 0x26) == 2) &&
+48533	         (*(short *)(puVar5 + param_1 * 0x494 + 0x26) != 3)) {
+48534	        *(undefined2 *)(puVar5 + param_1 * 0x494 + 0x26) = 3;
+48535	        *(undefined2 *)(local_10 + param_1 * 2 + 0x26) = 3;
+48536	        puVar2 = &stack0xfffffffc;
+48537	        FUN_00449a44(sVar6,3,puVar3,(int)&stack0xfffffffc);
+48538	        puVar3 = puVar2;
+48539	      }
+48540	      sVar6 = sVar6 + 1;
+48541	      local_10 = local_10 + 0x494;
+48542	      puVar5 = puVar5 + 2;
+48543	    } while (sVar6 != 0x10);
+48544	  }
+48545	  return;
+48546	}
+48547	
+48548	
+48439	// ==== FUN_00449a44 @ 00449a44 ====
+48440	
+48441	void FUN_00449a44(short param_1,short param_2,undefined4 param_3,int param_4)
+48442	
+48443	{
+48444	  byte *pbVar1;
+48445	  undefined4 extraout_EDX;
+48446	  undefined4 extraout_EDX_00;
+48447	  undefined4 uVar2;
+48448	  byte local_41 [61];
+48449	  
+48450	  FUN_00405b00((char *)local_41,&DAT_00474670 + *(short *)(param_4 + -2) * 0x494);
+48451	  if (param_2 == 2) {
+48452	    FUN_00405bc8((char *)local_41," forms an alliance with ");
+48453	  }
+48454	  else if (param_2 == 3) {
+48455	    FUN_00405bc8((char *)local_41," declares war on ");
+48456	  }
+48457	  FUN_00405bc8((char *)local_41,&DAT_00474670 + param_1 * 0x494);
+48458	  FUN_00405bc8((char *)local_41,".");
+48459	  uVar2 = extraout_EDX;
+48460	  if ((param_2 == 3) &&
+48461	     (((&DAT_00474b00)[*(short *)(param_4 + -2) * 0x494] != '\0' ||
+48462	      ((&DAT_00474b00)[param_1 * 0x494] != '\0')))) {
+48463	    pbVar1 = FUN_00405c98(local_41);
+48464	    FUN_00405b00((char *)local_41,(char *)pbVar1);
+48465	    uVar2 = extraout_EDX_00;
+48466	  }
+48467	  FUN_00449240((char *)local_41,uVar2);
+48468	  return;
+48469	}
+48470	
+48471	
+49765	// ==== FUN_0044b27c @ 0044b27c ====
+49766	
+49767	void FUN_0044b27c(short param_1,short param_2)
+49768	
+49769	{
+49770	  short sVar1;
+49771	  int iVar2;
+49772	  undefined4 extraout_ECX;
+49773	  undefined4 uVar3;
+49774	  int extraout_EDX;
+49775	  int iVar4;
+49776	  undefined4 extraout_EDX_00;
+49777	  undefined4 extraout_EDX_01;
+49778	  undefined4 extraout_EDX_02;
+49779	  undefined4 extraout_EDX_03;
+49780	  undefined1 *puVar5;
+49781	  undefined1 *puVar6;
+49782	  char local_49 [61];
+49783	  int local_c;
+49784	  int local_8;
+49785	  
+49786	  puVar5 = &stack0xfffffffc;
+49787	  puVar6 = &stack0xfffffffc;
+49788	  local_c = FUN_0044a930(param_1);
+49789	  iVar2 = (int)param_2;
+49790	  if (100 < (short)(&DAT_004795aa)[iVar2 * 0x11]) {
+49791	    (&DAT_004795aa)[iVar2 * 0x11] = (short)(&DAT_004795aa)[iVar2 * 0x11] % 100;
+49792	  }
+49793	  local_8 = FUN_0044a98c(param_2);
+49794	  uVar3 = extraout_ECX;
+49795	  iVar4 = extraout_EDX;
+49796	  if ((&DAT_0047c1f0)[param_1 * 0x148] == (&DAT_004795a4)[iVar2 * 0x11]) {
+49797	    iVar4 = local_8 * 9;
+49798	    uVar3 = 10;
+49799	    local_8 = iVar4 / 10;
+49800	    iVar4 = iVar4 % 10;
+49801	  }
+49802	  FUN_0044b230(&DAT_004795a6 + iVar2 * 0x11,iVar4,uVar3,(int)&stack0xfffffffc);
+49803	  FUN_0044b230(&DAT_004795aa + iVar2 * 0x11,extraout_EDX_00,puVar5,(int)&stack0xfffffffc);
+49804	  FUN_0044b230(&DAT_004795ac + iVar2 * 0x11,extraout_EDX_01,puVar6,(int)&stack0xfffffffc);
+49805	  uVar3 = FUN_00448fd8(CONCAT22((short)((uint)((int)(short)(&DAT_004795ae)[iVar2 * 0x11] / 6) >>
+49806	                                       0x10),(&DAT_004795ac)[iVar2 * 0x11]),
+49807	                       (int)(short)(&DAT_004795ae)[iVar2 * 0x11] / 6 + 1);
+49808	  (&DAT_004795ac)[iVar2 * 0x11] = (short)uVar3;
+49809	  FUN_0044a794(param_2);
+49810	  iVar2 = (local_8 * 6) / local_c;
+49811	  uVar3 = FUN_00448fd0(CONCAT22((short)((uint)iVar2 >> 0x10),0xf),iVar2);
+49812	  uVar3 = FUN_00448fd8(CONCAT22((short)((uint)uVar3 >> 0x10),1),uVar3);
+49813	  sVar1 = (&DAT_0047c1f0)[param_1 * 0x148];
+49814	  FUN_0044ae20(param_1,(short)uVar3);
+49815	  (&DAT_0047c1f2)[param_1 * 0x148] = 0;
+49816	  if (local_8 < local_c) {
+49817	    TPremierForm_MakeSound(DAT_004a0bd0,7);
+49818	    FUN_00405b00(local_49,&DAT_00479590 + param_2 * 0x22);
+49819	    FUN_00405bc8(local_49,"   (");
+49820	    FUN_00405bc8(local_49,&DAT_00474670 + (short)(&DAT_004795a2)[param_2 * 0x11] * 0x494);
+49821	    FUN_00405bc8(local_49,")  falls to ");
+49822	    FUN_00405bc8(local_49,&DAT_00474670 + sVar1 * 0x494);
+49823	    FUN_00405bc8(local_49,".");
+49824	    FUN_00449240(local_49,extraout_EDX_03);
+49825	    FUN_0044bb18(param_2,param_1);
+49826	  }
+49827	  else {
+49828	    TPremierForm_MakeSound(DAT_004a0bd0,6);
+49829	    FUN_00405b00(local_49,&DAT_00474670 + sVar1 * 0x494);
+49830	    FUN_00405bc8(local_49," fails to capture ");
+49831	    FUN_00405bc8(local_49,&DAT_00479590 + param_2 * 0x22);
+49832	    FUN_00405bc8(local_49,"   (");
+49833	    FUN_00405bc8(local_49,&DAT_00474670 + (short)(&DAT_004795a2)[param_2 * 0x11] * 0x494);
+49834	    FUN_00405bc8(local_49,").");
+49835	    FUN_00449240(local_49,extraout_EDX_02);
+49836	  }
+49837	  return;
+49838	}
+49839	
+49840	
+49608	// ==== FUN_0044aee4 @ 0044aee4 ====
+49609	
+49610	void FUN_0044aee4(short param_1,short param_2)
+49611	
+49612	{
+49613	  undefined4 *puVar1;
+49614	  int iVar2;
+49615	  int iVar3;
+49616	  int iVar4;
+49617	  int iVar5;
+49618	  undefined4 uVar6;
+49619	  undefined2 uVar7;
+49620	  undefined4 *extraout_EDX;
+49621	  undefined4 *extraout_EDX_00;
+49622	  undefined2 extraout_var;
+49623	  undefined4 *extraout_EDX_01;
+49624	  undefined4 *extraout_EDX_02;
+49625	  undefined4 *puVar8;
+49626	  undefined2 extraout_var_00;
+49627	  undefined4 extraout_EDX_03;
+49628	  undefined2 extraout_var_01;
+49629	  undefined4 *puVar9;
+49630	  short sVar10;
+49631	  short local_5c;
+49632	  short local_5a;
+49633	  char local_50 [64];
+49634	  
+49635	  (&DAT_0047c1f2)[param_1 * 0x148] = 0;
+49636	  iVar2 = (int)param_1;
+49637	  if (((&DAT_00474b00)[(short)(&DAT_0047c1f0)[iVar2 * 0x148] * 0x494] == '\0') &&
+49638	     ((&DAT_00474b00)[(short)(&DAT_0047c1f0)[param_2 * 0x148] * 0x494] == '\0')) {
+49639	    TPremierForm_MakeSound(DAT_004a0bd0,9);
+49640	    iVar3 = FUN_0044a8cc(param_1);
+49641	    iVar4 = FUN_0044a8cc(param_2);
+49642	    if (iVar4 < iVar3) {
+49643	      local_5c = (&DAT_0047c1f0)[iVar2 * 0x148];
+49644	      iVar5 = (int)param_2;
+49645	      local_5a = (&DAT_0047c1f0)[iVar5 * 0x148];
+49646	      FUN_0044ae20(param_1,(short)((iVar4 * 0x28) / iVar3));
+49647	      iVar3 = FUN_0044a698(param_1);
+49648	      (&DAT_0047c1f8)[iVar2 * 0x148] =
+49649	           (&DAT_0047c1f8)[iVar2 * 0x148] + (&DAT_0047c1f8)[iVar5 * 0x148];
+49650	      (&DAT_0047c1f6)[iVar2 * 0x148] =
+49651	           (&DAT_0047c1f6)[iVar2 * 0x148] + (&DAT_0047c1f6)[iVar5 * 0x148];
+49652	      uVar6 = FUN_00448fd0(CONCAT22((short)((uint)(iVar3 / 100) >> 0x10),
+49653	                                    (&DAT_0047c1f6)[iVar2 * 0x148]),iVar3 / 100);
+49654	      (&DAT_0047c1f6)[iVar2 * 0x148] = (short)uVar6;
+49655	      sVar10 = 0x14;
+49656	      puVar9 = &DAT_0047c1ec;
+49657	      puVar8 = extraout_EDX;
+49658	      do {
+49659	        puVar1 = puVar9 + param_1 * 0xa4 + 4;
+49660	        if (0 < *(short *)(puVar1 + 1)) {
+49661	          uVar7 = (undefined2)((uint)puVar1 >> 0x10);
+49662	          uVar6 = FUN_00448fd8(CONCAT22(uVar7,6),
+49663	                               CONCAT22((short)((uint)puVar8 >> 0x10),
+49664	                                        *(undefined2 *)((int)puVar1 + 6)));
+49665	          *(short *)((int)puVar1 + 6) = (short)uVar6;
+49666	          iVar2 = FUN_0040284c(4);
+49667	          puVar8 = extraout_EDX_00;
+49668	          if (iVar2 == 0) {
+49669	            uVar6 = FUN_00448fd0(CONCAT22(uVar7,9),
+49670	                                 CONCAT22((short)((uint)extraout_EDX_00 >> 0x10),
+49671	                                          *(undefined2 *)((int)puVar1 + 6)) + 1);
+49672	            *(short *)((int)puVar1 + 6) = (short)uVar6;
+49673	            puVar8 = puVar1;
+49674	          }
+49675	        }
+49676	        puVar9 = puVar9 + 8;
+49677	        sVar10 = sVar10 + -1;
+49678	      } while (sVar10 != 0);
+49679	      FUN_0044ab90(param_2);
+49680	      uVar7 = extraout_var;
+49681	    }
+49682	    else {
+49683	      iVar5 = (int)param_2;
+49684	      local_5c = (&DAT_0047c1f0)[iVar5 * 0x148];
+49685	      local_5a = (&DAT_0047c1f0)[iVar2 * 0x148];
+49686	      FUN_0044ae20(param_2,(short)((iVar3 * 0x28) / iVar4));
+49687	      (&DAT_0047c1f8)[iVar5 * 0x148] =
+49688	           (&DAT_0047c1f8)[iVar5 * 0x148] + (&DAT_0047c1f8)[iVar2 * 0x148];
+49689	      (&DAT_0047c1f6)[iVar5 * 0x148] =
+49690	           (&DAT_0047c1f6)[iVar5 * 0x148] + (&DAT_0047c1f6)[iVar2 * 0x148];
+49691	      sVar10 = 0x14;
+49692	      puVar9 = &DAT_0047c1ec;
+49693	      puVar8 = extraout_EDX_01;
+49694	      do {
+49695	        puVar1 = puVar9 + param_2 * 0xa4 + 4;
+49696	        if (0 < *(short *)(puVar1 + 1)) {
+49697	          uVar7 = (undefined2)((uint)puVar1 >> 0x10);
+49698	          uVar6 = FUN_00448fd8(CONCAT22(uVar7,6),
+49699	                               CONCAT22((short)((uint)puVar8 >> 0x10),
+49700	                                        *(undefined2 *)((int)puVar1 + 6)));
+49701	          *(short *)((int)puVar1 + 6) = (short)uVar6;
+49702	          iVar2 = FUN_0040284c(4);
+49703	          puVar8 = extraout_EDX_02;
+49704	          if (iVar2 == 0) {
+49705	            uVar6 = FUN_00448fd0(CONCAT22(uVar7,9),
+49706	                                 CONCAT22((short)((uint)extraout_EDX_02 >> 0x10),
+49707	                                          *(undefined2 *)((int)puVar1 + 6)) + 1);
+49708	            *(short *)((int)puVar1 + 6) = (short)uVar6;
+49709	            puVar8 = puVar1;
+49710	          }
+49711	        }
+49712	        puVar9 = puVar9 + 8;
+49713	        sVar10 = sVar10 + -1;
+49714	      } while (sVar10 != 0);
+49715	      FUN_0044ab90(param_1);
+49716	      uVar7 = extraout_var_00;
+49717	    }
+49718	    (&DAT_00474ab0)[local_5a * 0x24a] = (&DAT_00474ab0)[local_5a * 0x24a] + -0x19;
+49719	    iVar2 = (int)local_5c;
+49720	    uVar6 = FUN_00448fd0(CONCAT22(local_5c >> 0xf,0x3de),
+49721	                         CONCAT22(uVar7,(&DAT_00474ab0)[iVar2 * 0x24a] + 0x19));
+49722	    (&DAT_00474ab0)[iVar2 * 0x24a] = (short)uVar6;
+49723	    FUN_00405b00(local_50,&DAT_00474670 + iVar2 * 0x494);
+49724	    FUN_00405bc8(local_50," destroys army of ");
+49725	    FUN_00405bc8(local_50,&DAT_00474670 + local_5a * 0x494);
+49726	    FUN_00405bc8(local_50,".");
+49727	    FUN_00449240(local_50,extraout_EDX_03);
+49728	    iVar2 = FUN_0040284c(5);
+49729	    if (((iVar2 < 2) && (500 < (short)(&DAT_00474ab0)[local_5a * 0x24a])) &&
+49730	       (7 < (short)(&DAT_00474ab6)[local_5a * 0x24a])) {
+49731	      FUN_00450c68(CONCAT22((short)((uint)(local_5a * 0x125) >> 0x10),local_5c),
+49732	                   CONCAT22(extraout_var_01,local_5a));
+49733	    }
+49734	  }
+49735	  else {
+49736	    DAT_004a0b74 = param_1;
+49737	    DAT_004a0b76 = param_2;
+49738	    TPremierForm_StartBattle(DAT_004a0bd0);
+49739	  }
+49740	  return;
+49741	}
+49742	
+49743	
+47907	// ==== FUN_004492a0 @ 004492a0 ====
+47908	
+47909	bool FUN_004492a0(undefined4 param_1,undefined4 param_2)
+47910	
+47911	{
+47912	  short sVar1;
+47913	  
+47914	  sVar1 = FUN_00449018(param_1,param_2);
+47915	  return sVar1 == 1;
+47916	}
+47917	
+47918	
+47727	// ==== FUN_00449018 @ 00449018 ====
+47728	
+47729	void FUN_00449018(undefined4 param_1,undefined4 param_2)
+47730	
+47731	{
+47732	  uint uVar1;
+47733	  uint uVar2;
+47734	  undefined2 local_8;
+47735	  undefined2 uStack_6;
+47736	  undefined2 local_4;
+47737	  undefined2 uStack_2;
+47738	  
+47739	  uStack_6 = (short)((uint)param_1 >> 0x10);
+47740	  uStack_2 = (short)((uint)param_2 >> 0x10);
+47741	  uVar1 = (int)uStack_6 - (int)uStack_2 >> 0x1f;
+47742	  local_8 = (short)param_1;
+47743	  local_4 = (short)param_2;
+47744	  uVar2 = (int)local_8 - (int)local_4 >> 0x1f;
+47745	  FUN_00448fd8(((int)local_8 - (int)local_4 ^ uVar2) - uVar2,
+47746	               ((int)uStack_6 - (int)uStack_2 ^ uVar1) - uVar1);
+47747	  return;
+47748	}
+47749	
+47750	
+51517	// ==== FUN_0044d734 @ 0044d734 ====
+51518	
+51519	void FUN_0044d734(short param_1,undefined4 param_2,undefined4 param_3)
+51520	
+51521	{
+51522	  bool bVar1;
+51523	  ushort uVar2;
+51524	  undefined1 *puVar3;
+51525	  short sVar4;
+51526	  int iVar5;
+51527	  undefined2 extraout_var;
+51528	  undefined2 extraout_var_00;
+51529	  undefined2 uVar7;
+51530	  int iVar6;
+51531	  undefined1 *puVar8;
+51532	  undefined1 *extraout_ECX;
+51533	  uint uVar9;
+51534	  uint extraout_EDX;
+51535	  uint extraout_EDX_00;
+51536	  uint extraout_EDX_01;
+51537	  short local_1c;
+51538	  short local_1a;
+51539	  short local_18;
+51540	  short local_16;
+51541	  ushort local_14;
+51542	  short local_12;
+51543	  short local_10;
+51544	  undefined4 local_e;
+51545	  short local_a;
+51546	  short local_8;
+51547	  short local_6;
+51548	  
+51549	  local_6 = *(short *)(&DAT_0047c1ec + param_1 * 0xa4);
+51550	  local_8 = *(short *)((int)&DAT_0047c1ec + param_1 * 0x290 + 2);
+51551	  local_e._0_2_ = (short)param_2;
+51552	  puVar8 = (undefined1 *)CONCAT22((short)((uint)param_3 >> 0x10),(short)local_e);
+51553	  uVar2 = (ushort)((int)(short)local_e - (int)local_6 >> 0x1f);
+51554	  local_1a = ((ushort)((int)(short)local_e - (int)local_6) ^ uVar2) - uVar2;
+51555	  local_e._2_2_ = (short)((uint)param_2 >> 0x10);
+51556	  uVar9 = (int)local_e._2_2_ - (int)local_8 >> 0x1f;
+51557	  iVar5 = ((int)local_e._2_2_ - (int)local_8 ^ uVar9) - uVar9;
+51558	  local_1c = (short)iVar5;
+51559	  if (local_6 < (short)local_e) {
+51560	    local_10 = 1;
+51561	  }
+51562	  else if ((short)local_e < local_6) {
+51563	    local_10 = -1;
+51564	  }
+51565	  else {
+51566	    local_10 = 0;
+51567	  }
+51568	  if (local_8 < local_e._2_2_) {
+51569	    local_12 = 1;
+51570	  }
+51571	  else if (local_e._2_2_ < local_8) {
+51572	    local_12 = -1;
+51573	  }
+51574	  else {
+51575	    local_12 = 0;
+51576	  }
+51577	  bVar1 = local_1a < local_1c;
+51578	  local_e = param_2;
+51579	  local_a = param_1;
+51580	  if (bVar1) {
+51581	    FUN_00448fe0(&local_1a,&local_1c);
+51582	    iVar5 = CONCAT22(extraout_var,local_1c);
+51583	    puVar8 = extraout_ECX;
+51584	    uVar9 = extraout_EDX;
+51585	  }
+51586	  local_1c = (short)iVar5;
+51587	  local_14 = (ushort)bVar1;
+51588	  local_16 = (short)(iVar5 * 2) - local_1a;
+51589	  iVar5 = CONCAT22((short)((uint)(iVar5 * 2) >> 0x10),local_16);
+51590	  local_18 = 1;
+51591	  do {
+51592	    uVar7 = (undefined2)((uint)iVar5 >> 0x10);
+51593	    while (-1 < local_16) {
+51594	      if (local_14 == 1) {
+51595	        local_6 = local_6 + local_10;
+51596	      }
+51597	      else {
+51598	        local_8 = local_8 + local_12;
+51599	      }
+51600	      iVar5 = CONCAT22((short)((uint)iVar5 >> 0x10),local_1a) * 2;
+51601	      local_16 = local_16 - (short)iVar5;
+51602	      if (0 < local_16) {
+51603	        puVar3 = &stack0xfffffffc;
+51604	        iVar5 = FUN_0044d420(iVar5,uVar9,puVar8,&stack0xfffffffc);
+51605	        puVar8 = puVar3;
+51606	        uVar9 = extraout_EDX_00;
+51607	      }
+51608	      uVar7 = (undefined2)((uint)iVar5 >> 0x10);
+51609	    }
+51610	    if (-1000 < local_16) {
+51611	      if (local_14 == 1) {
+51612	        local_8 = local_8 + local_12;
+51613	      }
+51614	      else {
+51615	        local_6 = local_6 + local_10;
+51616	      }
+51617	      iVar5 = CONCAT22(uVar7,local_1c) * 2;
+51618	      local_16 = local_16 + (short)iVar5;
+51619	      local_18 = local_18 + 1;
+51620	      puVar3 = &stack0xfffffffc;
+51621	      FUN_0044d420(iVar5,uVar9,puVar8,&stack0xfffffffc);
+51622	      puVar8 = puVar3;
+51623	      uVar9 = extraout_EDX_01;
+51624	      uVar7 = extraout_var_00;
+51625	    }
+51626	    iVar5 = CONCAT22(uVar7,local_18);
+51627	  } while (local_18 <= local_1a);
+51628	  iVar5 = (int)local_a;
+51629	  sVar4 = FUN_00449018(local_e,(&DAT_0047c1ec)[iVar5 * 0xa4]);
+51630	  if (sVar4 == 1) {
+51631	    sVar4 = *(short *)(&DAT_0045e870 + local_e._2_2_ * 2 + (short)local_e * 0x118);
+51632	    if (((sVar4 < 0xc) && (1 < sVar4)) &&
+51633	       (*(short *)(&DAT_004792f0 + sVar4 * 0xe) < (short)(&DAT_0047c1f2)[iVar5 * 0x148])) {
+51634	      FUN_0044d734(local_a,local_e,sVar4 * 7);
+51635	    }
+51636	    else if ((sVar4 < 0x14) || (99 < sVar4)) {
+51637	      if ((199 < sVar4) && (sVar4 < 0xf8)) {
+51638	        iVar6 = FUN_00449920(local_e);
+51639	        if (((&DAT_00474696)
+51640	             [DAT_004a0320 * 0x24a + (int)(short)(&DAT_0047c1f0)[(short)iVar6 * 0x148]] == 3) &&
+51641	           (0 < (short)(&DAT_0047c1f2)[iVar5 * 0x148])) {
+51642	          FUN_0044aee4(local_a,(short)iVar6);
+51643	        }
+51644	      }
+51645	    }
+51646	    else {
+51647	      iVar6 = FUN_004498d8(local_e);
+51648	      sVar4 = (short)iVar6;
+51649	      if ((&DAT_00474696)[DAT_004a0320 * 0x24a + (int)(short)(&DAT_004795a2)[sVar4 * 0x11]] == 3) {
+51650	        if (0 < (short)(&DAT_0047c1f2)[iVar5 * 0x148]) {
+51651	          FUN_0044b27c(local_a,sVar4);
+51652	        }
+51653	      }
+51654	      else {
+51655	        FUN_0044f6d8(sVar4,local_a);
+51656	      }
+51657	    }
+51658	  }
+51659	  return;
+51660	}
+51661	
+51662	

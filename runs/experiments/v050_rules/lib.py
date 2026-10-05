@@ -14,7 +14,7 @@ from harness.driver import Game, G
 _orig_sh = _drv.sh
 def sh(*args, **kw):
     """driver.sh, but a screenshot goes to the next free versioned name (never overwrites)."""
-    if args and args[0] == 'import': args = args[:-1] + (new_path(args[-1]),)
+    if args and args[0] == 'import' and str(args[-1]).startswith(ART): args = args[:-1] + (new_path(args[-1]),)
     return _orig_sh(*args, **kw)
 _drv.sh = sh
 ART = ROOT + '/artifacts/run-exp-v050-rules/'

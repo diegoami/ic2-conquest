@@ -1,0 +1,148 @@
+# claims audit: 147 checks, 0 mismatches
+extract	OK	code_extract_q1_purse.txt: 1476 lines, all equal to the source line
+extract	OK	code_extract_q2_balance.txt: 180 lines, all equal to the source line
+extract	OK	code_extract_q3_disband_queue.txt: 289 lines, all equal to the source line
+extract	OK	code_extract_q4_merc_hire.txt: 270 lines, all equal to the source line
+extract	OK	code_extract_q5_disband_unit.txt: 509 lines, all equal to the source line
+extract	OK	code_extract_q6_attack_order.txt: 837 lines, all equal to the source line
+Q1	OK	line 43119 contains '1000 - (short)'
+Q1	OK	line 43125 contains 'DAT_00474aa8'
+Q1	OK	line 43134 contains 'DAT_0047c1f8'
+Q1	OK	line 43041 contains '* 5)'
+Q1	OK	line 43080 contains 'DAT_0047c1f8'
+Q1	OK	line 44056 contains '1000 - *(short *)(param_1 + 600)'
+Q1	OK	line 44631 contains 'DAT_0047c1f8'
+Q1	OK	line 46992 contains 'DAT_0047c1f8'
+Q1	OK	line 46997 contains 'DAT_0047c1f2'
+Q1	OK	line 47110 contains 'DAT_00474aa8'
+Q1	OK	line 48740 contains 'DAT_0047c1f8'
+Q1	OK	line 48740 contains '= 0'
+Q1	OK	line 49648 contains 'DAT_0047c1f8'
+Q1	OK	line 49687 contains 'DAT_0047c1f8'
+Q1	OK	line 53092 contains '1000 <'
+Q1	OK	line 53092 contains 'DAT_0047c1f8'
+Q1	OK	line 53096 contains '= 1000'
+Q1	OK	line 53098 contains '< 500'
+Q1	OK	line 53100 contains '+ 500'
+Q1	OK	line 53106 contains '/ 5'
+Q1	OK	line 53201 contains '/ 3'
+Q1	OK	line 53981 contains 'psVar5[4]'
+Q1	OK	line 54765 contains 'psVar11[4]'
+Q1	OK	line 54759 contains 'psVar11[4] < 1'
+Q1	OK	line 54772 contains 'psVar11[4]'
+Q1	OK	line 57618 contains 'DAT_0047c1f8'
+Q1	OK	line 43633 contains 'DAT_0047c1f8'
+Q1	OK	line 52246 contains 'FUN_0044f6d8'
+Q1	OK	line 51655 contains 'FUN_0044f6d8'
+Q1	OK	line 46384 contains '0x14'
+Q1	OK	line 46384 contains '0x15b'
+Q1	OK	line 46385 contains 'TUnitMap_CheckForMove'
+Q1	OK	line 46427 contains 'TUnitMap_SelectUnit'
+Q1	OK	start: treasury 2101, army 0 purse 100 sup 170 moves 8, army 1 purse 100
+Q1	OK	after the move: army 0 at (100,42), moves 0, purse 100, supplies 170 (no refill), treasury 2101
+Q1	OK	army 0 at (100,42) is adjacent to own cities with stock: ['Caere', 'Rome']
+Q1	OK	supply 11 x 100: army 1 purse 1000, treasury 1201 (-900)
+Q1	OK	split: partner army 15 at (121,54), purse 0, moves 0, supplies 0, 5500 troops
+Q1	OK	partner supplied: army 15 purse 1000, treasury 201 (-1000)
+Q1	OK	join: army 1 purse 2000 = 1000 + 1000, troops 25868, 7 units, moves 0, army 15 gone, treasury 201
+Q1	OK	over-cap trim: army 1 purse 1000, treasury 1201 (+1000)
+Q2	OK	00_tax10 Taxes: recomputed 252, read from the screenshot 252
+Q2	OK	00_tax10 Tribute: recomputed 632, read from the screenshot 632
+Q2	OK	00_tax10 Trade: recomputed 29, read from the screenshot 29
+Q2	OK	00_tax10 Administration: recomputed 303, read from the screenshot 303
+Q2	OK	00_tax10 Total revenue: recomputed 913, read from the screenshot 913
+Q2	OK	00_tax10 tax rate in the save is 10
+Q2	OK	01_tax20 Taxes: recomputed 505, read from the screenshot 505
+Q2	OK	01_tax20 Tribute: recomputed 632, read from the screenshot 632
+Q2	OK	01_tax20 Trade: recomputed 29, read from the screenshot 29
+Q2	OK	01_tax20 Administration: recomputed 303, read from the screenshot 303
+Q2	OK	01_tax20 Total revenue: recomputed 1166, read from the screenshot 1166
+Q2	OK	01_tax20 tax rate in the save is 20
+Q2	OK	stored taxBase 2528 differs from the live sum of city contributions << 2 (2464)
+Q2	OK	debt limit recomputed 5000 = 5000 read
+Q2	OK	Rome trades only with Illyria (relation 1)
+Q2	OK	taxBase 2528 -> Tribute 632 in both sheets, tax-independent
+Q2	OK	line 55439 contains '474abc'
+Q2	OK	line 55440 contains '474aba'
+Q2	OK	line 55445 contains '0x44c'
+Q2	OK	line 55449 contains '>> 2'
+Q2	OK	line 55456 contains '>> 2'
+Q2	OK	line 55457 contains 'FUN_004499ec'
+Q2	OK	line 55466 contains '/ 20000'
+Q2	OK	line 54875 contains '0x44c'
+Q2	OK	line 54876 contains '>> 2'
+Q2	OK	line 54878 contains 'FUN_004499ec'
+Q2	OK	line 48430 contains '/ 0xc'
+Q3	OK	start: treasury 1880, mobilisation 32, 5 queued units (the last HI 3200)
+Q3	OK	disband HI 3200: treasury unchanged 1880, queue 4 units, mobilisation 32 -> 30 = 32 - 1 - 3200*1000//2577000
+Q3	OK	disband HI 4000: treasury unchanged 1880, queue 3 units, mobilisation 30 -> 28 = 30 - 1 - 4000*1000//2577000 (floor; rounding would give 27)
+Q3	OK	recruiting HI 3200 cost 3200//200 * 20 = 320 = 2200 - 1880 (fixtures run0-start and recruit-hi3200)
+Q3	OK	line 56158 contains '1000'
+Q3	OK	line 56162 contains '1000'
+Q3	OK	line 56164 contains 'FUN_00448fd8'
+Q3	OK	line 56167 contains 'FUN_0044a610'
+Q3	OK	line 49007 contains '0x2ec'
+Q3	OK	line 55996 contains '0x438'
+Q3	OK	line 55999 contains '0x23e'
+Q3	OK	line 56000 contains '* 1000'
+Q3	OK	line 56001 contains '0x442'
+Q4	OK	Samnite LI 3868 q8: gate 24 = 24, shown 30 = 30; quarterly pay (3868//200*1*8)//5 = 30
+Q4	OK	Etruscan HC 960 q9: gate 27 = 27, shown 34 = 34
+Q4	OK	start: purse 100, treasury 2200, 6 units; offers slot 25 (li 3868 q8 label 38) and 34 (hc 960 q9 label 37)
+Q4	OK	purse 20 < gate 24: refused (6 units, purse 20, treasury 2280, both offers still in the pool)
+Q4	OK	purse 30 hire: purse 30 -> 30, treasury 2270 -> 2270, units 6 -> 7 (+3868), slot 25 gone, slot 34 stays
+Q4	OK	unit added: slot 6 Samnite li 3868 q8 label 38; slot 7 Etruscan hc 960 q9 label 37
+Q4	OK	Thurii hire: purse 30 (gate 27 <= 30 < shown 34): purse 30 -> 30, treasury 2270, units 8 (+960), slot 34 gone
+Q4	OK	line 43633 contains 'DAT_0047c1f8'
+Q4	OK	line 43635 contains '/'
+Q4	OK	line 43637 contains 'too little money'
+Q4	OK	line 43672 contains '0xffff'
+Q4	OK	line 43603 contains 'DAT_0049d0ac'
+Q4	OK	line 43605 contains '/ 1000'
+Q4	OK	line 46893 contains '< 0xf'
+Q4	OK	line 54757 contains 'psVar8[3]'
+Q4	OK	line 54765 contains '/ 5'
+Q5	OK	regular HI 5900: mobilisation 30 -> 27 = 30 - 1 - 5900*1000//2577000
+Q5	OK	A: troops 23700 -> 17800, treasury 2200, purse 100, supplies 170; the HI 5900 is gone, all units regular
+Q5	OK	B: Samnite merc (label 38) disbanded: mobilisation 30 -> 30, troops 25868 -> 22000, treasury 2200
+Q5	OK	line 45787 contains '*psVar1 == 0'
+Q5	OK	line 45789 contains '* 1000'
+Q5	OK	line 45791 contains 'FUN_00448fd8'
+Q5	OK	line 45820 contains '00474ab2'
+Q5	OK	line 45743 contains '0x1d6'
+Q5	OK	line 45756 contains 'near its own city'
+Q5	OK	line 44483 contains 'param_4'
+Q5	OK	line 44485 contains '* 1000'
+Q5	OK	line 44316 contains 'TArmyToArmy_RemoveUnit'
+Q5	OK	line 44402 contains 'TArmyToArmy_RemoveUnit'
+Q5	OK	line 44461 contains ',0)'
+Q5	OK	line 45839 contains '= 2'
+Q6	OK	C far click: relation 0/0, army 9 at (93,28) 8 moves, no news
+Q6	OK	adjacent at (90,29) with 5 moves; Genua (89,30) Greece; relation 0/0
+Q6	OK	B No: relation 0/0, moves 5, troops 40500, no news
+Q6	OK	A: 0 moves at (90,30) adjacent to Genua; after the click relation 0/0, troops 40500, no news
+Q6	OK	E Yes: relation 3/3, news +2: declares war then falls; army moves 0, troops 38695; Genua owner Gaul
+Q6	OK	Greece has no ally (relation 2) at the start
+Q6	OK	line 46514 contains 'DAT_0047c1f2'
+Q6	OK	line 46515 contains 'FUN_004492a0'
+Q6	OK	line 46541 contains 'attack this city'
+Q6	OK	line 46544 contains '!= 3'
+Q6	OK	line 46545 contains 'FUN_00449b40'
+Q6	OK	line 46547 contains 'FUN_0044b27c'
+Q6	OK	line 46551 contains '= -1'
+Q6	OK	line 46566 contains 'attack this army'
+Q6	OK	line 46570 contains 'FUN_00449b40'
+Q6	OK	line 46572 contains 'FUN_0044aee4'
+Q6	OK	line 46623 contains 'attack this fleet'
+Q6	OK	line 46627 contains 'FUN_00449b40'
+Q6	OK	line 46629 contains 'FUN_0044b5d0'
+Q6	OK	line 46637 contains 'docked at its own city'
+Q6	OK	line 48502 contains '00474696'
+Q6	OK	line 48504 contains '00474696'
+Q6	OK	line 48513 contains '== 3'
+Q6	OK	line 48515 contains '= 3'
+Q6	OK	line 48532 contains '== 2'
+Q6	OK	line 48455 contains 'declares war on'
+Q6	OK	line 49815 contains 'DAT_0047c1f2'
+Q6	OK	line 55385 contains 'FUN_00449b40'
+Q6	OK	line 46384 contains '0x14'
