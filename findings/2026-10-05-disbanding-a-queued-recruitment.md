@@ -40,5 +40,6 @@ Values read from the saves with `state/sav.py` (`claims_audit.py` recomputes eac
 
 ```text
 python3 runs/experiments/v050_rules/q3_disband_queue.py     # about 3 minutes
-python3 runs/experiments/v050_rules/claims_audit.py
+python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
+python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row
 ```

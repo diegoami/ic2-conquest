@@ -87,5 +87,6 @@ All from copies of `mobilize-new-army-0720.SAV`; saves in release `run-exp-v050-
 python3 runs/experiments/v050_rules/extract_code.py q1_purse 0043ff98 0044005c ...      # the code extract (already tracked)
 python3 runs/experiments/v050_rules/q1_purse.py            # about 5 minutes, own display :733 and game folder ~/ic2-work-v050
 python3 runs/experiments/v050_rules/q1b_overcap_trim.py    # needs Q1_06_after_join.SAV from the first script
-python3 runs/experiments/v050_rules/claims_audit.py        # recomputes every number above from the saves and the extract
+python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
+python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row        # recomputes every number above from the saves and the extract
 ```

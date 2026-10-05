@@ -41,5 +41,6 @@ Saves and screenshots: release `run-exp-v050-rules` (`batch-q4-q6.tar.gz`), hash
 
 ```text
 python3 runs/experiments/v050_rules/q5_disband_unit.py    # about 3 minutes
-python3 runs/experiments/v050_rules/claims_audit.py
+python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
+python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row
 ```

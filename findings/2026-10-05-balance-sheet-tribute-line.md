@@ -46,5 +46,6 @@ The expected values are recomputed from the saves by `claims_audit.py` (taxBase,
 ```text
 python3 runs/experiments/v050_rules/q2_balance.py      # about 2 minutes
 python3 runs/experiments/v050_rules/q2_ocr_rows.py     # reads the screenshots into q2_balance_values.tsv (new version each run)
-python3 runs/experiments/v050_rules/claims_audit.py
+python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
+python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row
 ```

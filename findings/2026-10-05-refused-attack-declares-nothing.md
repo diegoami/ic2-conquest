@@ -52,5 +52,6 @@ Army 9 and the relation, read from the saves with `state/sav.py` (`claims_audit.
 gh release download run-exp-civ-sweep -p S06_Gaul_AUTO0720.SAV -D artifacts/run-exp-v050-rules/inputs
 python3 runs/experiments/v050_rules/q6_refused_attack.py      # about 3 minutes (run it in the background: it passes the tool's 2-minute limit)
 python3 runs/experiments/v050_rules/q6b_yes_branch.py
-python3 runs/experiments/v050_rules/claims_audit.py
+python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
+python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row
 ```
