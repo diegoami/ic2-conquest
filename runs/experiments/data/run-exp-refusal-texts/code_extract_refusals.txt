@@ -1,0 +1,2628 @@
+# Code extract (message-box call sites and the helpers of their conditions) from all_app_functions.txt; the first column is that file's line number
+37878	// ==== TBattleMap_Surrender @ 00437ad8 ====
+37879	
+37880	void TBattleMap_Surrender(undefined4 param_1,undefined4 param_2)
+37881	
+37882	{
+37883	  int iVar1;
+37884	  undefined4 extraout_ECX;
+37885	  undefined4 extraout_ECX_00;
+37886	  undefined4 uVar2;
+37887	  short *psVar3;
+37888	  short sVar4;
+37889	  short sVar5;
+37890	  
+37891	  iVar1 = FUN_0042d750((uint *)"Are you sure you want to surrender ?",
+37892	                       CONCAT31((int3)((uint)param_2 >> 8),3),DAT_00437b58,0);
+37893	  if (iVar1 == 6) {
+37894	    uVar2 = extraout_ECX;
+37895	    if (DAT_0045e6ae <= (short)(DAT_0045e6ae + 0x13)) {
+37896	      sVar4 = ((DAT_0045e6ae + 0x13) - DAT_0045e6ae) + 1;
+37897	      psVar3 = &DAT_004a034c + DAT_0045e6ae * 0x16;
+37898	      sVar5 = DAT_0045e6ae;
+37899	      do {
+37900	        if (0 < *psVar3) {
+37901	          FUN_00438f78(sVar5);
+37902	          FUN_00448ffc(1);
+37903	          uVar2 = extraout_ECX_00;
+37904	        }
+37905	        sVar5 = sVar5 + 1;
+37906	        psVar3 = psVar3 + 0x16;
+37907	        sVar4 = sVar4 + -1;
+37908	      } while (sVar4 != 0);
+37909	    }
+37910	    DAT_0045e6a6 = 1;
+37911	    TBattleMap_EndTurn(param_1,param_2,uVar2);
+37912	  }
+37913	  return;
+37914	}
+37915	
+37916	
+43618	// ==== TRecruitMercs_RecruitMercUnit @ 00441360 ====
+43619	
+43620	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+43621	
+43622	void TRecruitMercs_RecruitMercUnit(int param_1,undefined4 param_2)
+43623	
+43624	{
+43625	  short *psVar1;
+43626	  int *piVar2;
+43627	  int iVar3;
+43628	  short sVar4;
+43629	  
+43630	  if (-1 < *(short *)(param_1 + 0x1da)) {
+43631	    iVar3 = *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc;
+43632	    sVar4 = *(short *)(param_1 + 0x1d4);
+43633	    if ((short)(&DAT_0047c1f8)[sVar4 * 0x148] <
+43634	        (short)((short)(((int)*(short *)(&DAT_0049d0ac + iVar3) *
+43635	                        (int)*(short *)(&DAT_00478fd4 + *(short *)(&DAT_0049d0aa + iVar3) * 0x28)) /
+43636	                       1000) * *(short *)(&DAT_0049d0ae + iVar3))) {
+43637	      FUN_0042d750((uint *)"Your army has too little money to pay these mercenaries.",
+43638	                   CONCAT31((int3)((uint)(sVar4 * 0x52) >> 8),2),_UNK_004415f8,0);
+43639	    }
+43640	    else {
+43641	      iVar3 = FUN_0044a698(sVar4);
+43642	      if (iVar3 + *(short *)(&DAT_0049d0ac +
+43643	                            *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc) <
+43644	          0x186a1) {
+43645	        sVar4 = *(short *)(param_1 + 0x1d8);
+43646	        if (-1 < sVar4) {
+43647	          iVar3 = FUN_0044a698(*(short *)(param_1 + 0x1d4));
+43648	          if ((int)(short)(&DAT_0049c27e)[sVar4 * 0xd] <
+43649	              (iVar3 + *(short *)(&DAT_0049d0ac +
+43650	                                 *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc
+43651	                                 )) / 500) {
+43652	            FUN_0042d750((uint *)"This fleet has too little space for these mercenaries.",
+43653	                         CONCAT31((int3)(char)((ushort)(&DAT_0049c27e)[sVar4 * 0xd] >> 8),2),
+43654	                         _UNK_004415f8,0);
+43655	            return;
+43656	          }
+43657	        }
+43658	        iVar3 = FUN_0044a66c(*(short *)(param_1 + 0x1d4));
+43659	        psVar1 = &DAT_0047c1fc + *(short *)(param_1 + 0x1d4) * 0x148 + (short)iVar3 * 0x10;
+43660	        sVar4 = *(short *)(&DAT_0049d0a8 +
+43661	                          *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc);
+43662	        *psVar1 = sVar4;
+43663	        FUN_00405b00((char *)(psVar1 + 4),&DAT_0049cc94 + sVar4 * 0x14);
+43664	        psVar1[2] = *(short *)(&DAT_0049d0ac +
+43665	                              *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc);
+43666	        psVar1[1] = *(short *)(&DAT_0049d0aa +
+43667	                              *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc);
+43668	        psVar1[3] = *(short *)(&DAT_0049d0ae +
+43669	                              *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc);
+43670	        FUN_0044a80c(*(short *)(param_1 + 0x1d4));
+43671	        sVar4 = *(short *)(param_1 + 0x1da);
+43672	        *(undefined2 *)(&DAT_0049d0ac + *(short *)(param_1 + 0x1dc + sVar4 * 2) * 0xc) = 0xffff;
+43673	        *(undefined2 *)(param_1 + 0x1dc + sVar4 * 2) = 0xffff;
+43674	        sVar4 = *(short *)(param_1 + 0x1da);
+43675	        if (sVar4 < 9) {
+43676	          do {
+43677	            FUN_00448fe0((undefined2 *)(param_1 + 0x1dc + sVar4 * 2),
+43678	                         (undefined2 *)(param_1 + 0x1de + sVar4 * 2));
+43679	            sVar4 = sVar4 + 1;
+43680	          } while (sVar4 != 9);
+43681	        }
+43682	        piVar2 = *(int **)(*(int *)(param_1 + 0x1c0) + 0xfc);
+43683	        (**(code **)(*piVar2 + 0x3c))(piVar2,(int)*(short *)(param_1 + 0x1da));
+43684	        FUN_00412cdc(*(int **)(param_1 + 0x1c8),(uint *)&UNK_004416c4);
+43685	        FUN_004127e0(*(int **)(param_1 + 0x1c8),0x2e);
+43686	        if (((short)iVar3 == 0x13) || (*(short *)(param_1 + 0x1dc) == -1)) {
+43687	          TRecruitMercs_OK(param_1,param_2);
+43688	        }
+43689	      }
+43690	      else {
+43691	        FUN_0042d750((uint *)"An army can not contain more than 100,000 troops.",
+43692	                     CONCAT31((int3)(char)((ushort)*(short *)(&DAT_0049d0ac +
+43693	                                                             *(short *)(param_1 + 0x1dc +
+43694	                                                                       *(short *)(param_1 + 0x1da) *
+43695	                                                                       2) * 0xc) >> 8),2),
+43696	                     _UNK_004415f8,0);
+43697	      }
+43698	    }
+43699	  }
+43700	  return;
+43701	}
+43702	
+43703	
+44091	// ==== TArmyToArmy_Army1Transfer @ 00442500 ====
+44092	
+44093	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+44094	
+44095	void TArmyToArmy_Army1Transfer(int param_1)
+44096	
+44097	{
+44098	  short sVar1;
+44099	  bool bVar2;
+44100	  bool bVar3;
+44101	  bool bVar4;
+44102	  bool bVar5;
+44103	  int iVar6;
+44104	  int iVar7;
+44105	  int extraout_EDX;
+44106	  int extraout_EDX_00;
+44107	  int extraout_EDX_01;
+44108	  undefined3 uVar8;
+44109	  int extraout_EDX_02;
+44110	  int extraout_EDX_03;
+44111	  short sVar9;
+44112	  
+44113	  iVar6 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44114	  if (0 < iVar6) {
+44115	    bVar2 = false;
+44116	    bVar4 = false;
+44117	    bVar3 = false;
+44118	    sVar9 = 0x13;
+44119	    iVar6 = extraout_EDX;
+44120	    do {
+44121	      if (0 < *(short *)(param_1 + 0x260 + sVar9 * 0x20)) {
+44122	        bVar5 = FUN_00429fb4(*(int **)(param_1 + 0x1d4),(int)sVar9);
+44123	        iVar6 = extraout_EDX_00;
+44124	        if (bVar5) {
+44125	          if (*(short *)(param_1 + 0x750) < 1) {
+44126	            iVar7 = TArmyToArmy_TroopCount(param_1,(undefined4 *)(param_1 + 0x4dc));
+44127	            iVar6 = (int)*(short *)(param_1 + 0x260 + sVar9 * 0x20);
+44128	            if (iVar7 + iVar6 < 0x186a1) {
+44129	              sVar1 = *(short *)(param_1 + 0x776);
+44130	              if (-1 < sVar1) {
+44131	                iVar7 = TArmyToArmy_TroopCount(param_1,(undefined4 *)(param_1 + 0x4dc));
+44132	                iVar6 = (int)(short)(&DAT_0049c27e)[sVar1 * 0xd];
+44133	                if (iVar6 < (iVar7 + *(short *)(param_1 + 0x260 + sVar9 * 0x20)) / 500) {
+44134	                  bVar4 = true;
+44135	                  goto code_r0x004425f1;
+44136	                }
+44137	              }
+44138	              TArmyToArmy_MoveUnit(param_1,param_1 + 0x24c,param_1 + 0x4dc,1,sVar9);
+44139	              iVar6 = extraout_EDX_01;
+44140	            }
+44141	            else {
+44142	              bVar3 = true;
+44143	            }
+44144	          }
+44145	          else {
+44146	            bVar2 = true;
+44147	          }
+44148	        }
+44149	      }
+44150	code_r0x004425f1:
+44151	      sVar9 = sVar9 + -1;
+44152	    } while (sVar9 != -1);
+44153	    uVar8 = (undefined3)((uint)iVar6 >> 8);
+44154	    if (bVar2) {
+44155	      FUN_0042d750((uint *)"This army already has 20 units.",CONCAT31(uVar8,2),_UNK_00442658,0);
+44156	      iVar6 = extraout_EDX_02;
+44157	    }
+44158	    else if (bVar3) {
+44159	      FUN_0042d750((uint *)"An army can not hold more than 100,000 troops.",CONCAT31(uVar8,2),
+44160	                   _UNK_00442658,0);
+44161	      iVar6 = extraout_EDX_03;
+44162	    }
+44163	    if (bVar4) {
+44164	      FUN_0042d750((uint *)"This fleet can not carry any more troops.",
+44165	                   CONCAT31((int3)((uint)iVar6 >> 8),2),_UNK_00442658,0);
+44166	    }
+44167	  }
+44168	  return;
+44169	}
+44170	
+44171	
+44172	// ==== TArmyToArmy_Army2Transfer @ 004426f0 ====
+44173	
+44174	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+44175	
+44176	void TArmyToArmy_Army2Transfer(int param_1)
+44177	
+44178	{
+44179	  short sVar1;
+44180	  bool bVar2;
+44181	  bool bVar3;
+44182	  bool bVar4;
+44183	  bool bVar5;
+44184	  int iVar6;
+44185	  int iVar7;
+44186	  int extraout_EDX;
+44187	  int extraout_EDX_00;
+44188	  int extraout_EDX_01;
+44189	  undefined3 uVar8;
+44190	  int extraout_EDX_02;
+44191	  int extraout_EDX_03;
+44192	  short sVar9;
+44193	  
+44194	  iVar6 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44195	  if (0 < iVar6) {
+44196	    bVar2 = false;
+44197	    bVar4 = false;
+44198	    bVar3 = false;
+44199	    sVar9 = 0x13;
+44200	    iVar6 = extraout_EDX;
+44201	    do {
+44202	      if (0 < *(short *)(param_1 + 0x4f0 + sVar9 * 0x20)) {
+44203	        bVar5 = FUN_00429fb4(*(int **)(param_1 + 0x1d8),(int)sVar9);
+44204	        iVar6 = extraout_EDX_00;
+44205	        if (bVar5) {
+44206	          if (*(short *)(param_1 + 0x4c0) < 1) {
+44207	            iVar7 = TArmyToArmy_TroopCount(param_1,(undefined4 *)(param_1 + 0x24c));
+44208	            iVar6 = (int)*(short *)(param_1 + 0x4f0 + sVar9 * 0x20);
+44209	            if (iVar7 + iVar6 < 0x186a1) {
+44210	              sVar1 = *(short *)(param_1 + 0x774);
+44211	              if (-1 < sVar1) {
+44212	                iVar7 = TArmyToArmy_TroopCount(param_1,(undefined4 *)(param_1 + 0x24c));
+44213	                iVar6 = (int)(short)(&DAT_0049c27e)[sVar1 * 0xd];
+44214	                if (iVar6 < (iVar7 + *(short *)(param_1 + 0x4f0 + sVar9 * 0x20)) / 500) {
+44215	                  bVar4 = true;
+44216	                  goto code_r0x004427e1;
+44217	                }
+44218	              }
+44219	              TArmyToArmy_MoveUnit(param_1,param_1 + 0x4dc,param_1 + 0x24c,2,sVar9);
+44220	              iVar6 = extraout_EDX_01;
+44221	            }
+44222	            else {
+44223	              bVar3 = true;
+44224	            }
+44225	          }
+44226	          else {
+44227	            bVar2 = true;
+44228	          }
+44229	        }
+44230	      }
+44231	code_r0x004427e1:
+44232	      sVar9 = sVar9 + -1;
+44233	    } while (sVar9 != -1);
+44234	    uVar8 = (undefined3)((uint)iVar6 >> 8);
+44235	    if (bVar2) {
+44236	      FUN_0042d750((uint *)"This army already has 20 units.",CONCAT31(uVar8,2),_UNK_00442848,0);
+44237	      iVar6 = extraout_EDX_02;
+44238	    }
+44239	    else if (bVar3) {
+44240	      FUN_0042d750((uint *)"An army can not hold more than 100,000 troops.",CONCAT31(uVar8,2),
+44241	                   _UNK_00442848,0);
+44242	      iVar6 = extraout_EDX_03;
+44243	    }
+44244	    if (bVar4) {
+44245	      FUN_0042d750((uint *)"This fleet can not carry any more troops.",
+44246	                   CONCAT31((int3)((uint)iVar6 >> 8),2),_UNK_00442848,0);
+44247	    }
+44248	  }
+44249	  return;
+44250	}
+44251	
+44252	
+44253	// ==== TArmyToArmy_Army1Disband @ 004428e0 ====
+44254	
+44255	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+44256	
+44257	void TArmyToArmy_Army1Disband(int param_1)
+44258	
+44259	{
+44260	  int *piVar1;
+44261	  bool bVar2;
+44262	  int iVar3;
+44263	  uint uVar4;
+44264	  undefined4 extraout_EDX;
+44265	  undefined4 extraout_EDX_00;
+44266	  undefined4 extraout_EDX_01;
+44267	  undefined4 extraout_EDX_02;
+44268	  undefined4 uVar5;
+44269	  short sVar6;
+44270	  undefined4 *in_FS_OFFSET;
+44271	  undefined4 uStack_15c;
+44272	  undefined *puStack_158;
+44273	  undefined1 *puStack_154;
+44274	  uint *puStack_144;
+44275	  byte abStack_140 [258];
+44276	  char acStack_3e [51];
+44277	  char cStack_b;
+44278	  byte abStack_a [6];
+44279	  
+44280	  puStack_154 = &stack0xfffffffc;
+44281	  puStack_144 = (uint *)0x0;
+44282	  puStack_158 = &UNK_00442a68;
+44283	  uStack_15c = *in_FS_OFFSET;
+44284	  *in_FS_OFFSET = &uStack_15c;
+44285	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44286	  if (0 < iVar3) {
+44287	    FUN_00405b00(acStack_3e,"Are you sure you want to disband ");
+44288	    uVar4 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44289	    FUN_004028c4(uVar4,(char *)abStack_140);
+44290	    FUN_00402978(abStack_140,abStack_a);
+44291	    FUN_00405bc8(acStack_3e,(char *)abStack_a);
+44292	    FUN_00405bc8(acStack_3e," unit");
+44293	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d4));
+44294	    if (1 < iVar3) {
+44295	      FUN_00405bc8(acStack_3e,"s");
+44296	    }
+44297	    FUN_00405bc8(acStack_3e,".");
+44298	    iVar3 = 0;
+44299	    FUN_00403458((int *)&puStack_144,acStack_3e,0x33);
+44300	    iVar3 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_00442aac,iVar3
+44301	                        );
+44302	    if (iVar3 == 6) {
+44303	      cStack_b = '\0';
+44304	      sVar6 = 0x13;
+44305	      uVar5 = extraout_EDX_00;
+44306	      do {
+44307	        if (0 < *(short *)(param_1 + 0x260 + sVar6 * 0x20)) {
+44308	          bVar2 = FUN_00429fb4(*(int **)(param_1 + 0x1d4),(int)sVar6);
+44309	          uVar5 = extraout_EDX_01;
+44310	          if (bVar2) {
+44311	            if ((*(short *)(param_1 + 0x770) == -1) &&
+44312	               (*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {
+44313	              cStack_b = '\x01';
+44314	            }
+44315	            else {
+44316	              TArmyToArmy_RemoveUnit(param_1,param_1 + 0x24c,sVar6,1);
+44317	              piVar1 = *(int **)(*(int *)(param_1 + 0x1d4) + 0xfc);
+44318	              (**(code **)(*piVar1 + 0x3c))(piVar1,(int)sVar6);
+44319	              uVar5 = extraout_EDX_02;
+44320	            }
+44321	          }
+44322	        }
+44323	        sVar6 = sVar6 + -1;
+44324	      } while (sVar6 != -1);
+44325	      if (cStack_b != '\0') {
+44326	        FUN_0042d750((uint *)"An army must be near its own city to disband a regular unit.",
+44327	                     CONCAT31((int3)((uint)uVar5 >> 8),2),_UNK_00442ab0,0);
+44328	      }
+44329	    }
+44330	  }
+44331	  *in_FS_OFFSET = uStack_15c;
+44332	  puStack_154 = &UNK_00442a6f;
+44333	  puStack_158 = &UNK_00442a67;
+44334	  FUN_004032fc((int *)&puStack_144);
+44335	  return;
+44336	}
+44337	
+44338	
+44339	// ==== TArmyToArmy_Army2Disband @ 00442afc ====
+44340	
+44341	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+44342	
+44343	void TArmyToArmy_Army2Disband(int param_1)
+44344	
+44345	{
+44346	  int *piVar1;
+44347	  bool bVar2;
+44348	  int iVar3;
+44349	  uint uVar4;
+44350	  undefined4 extraout_EDX;
+44351	  undefined4 extraout_EDX_00;
+44352	  undefined4 extraout_EDX_01;
+44353	  undefined4 extraout_EDX_02;
+44354	  undefined4 uVar5;
+44355	  short sVar6;
+44356	  undefined4 *in_FS_OFFSET;
+44357	  undefined4 uStack_15c;
+44358	  undefined *puStack_158;
+44359	  undefined1 *puStack_154;
+44360	  uint *puStack_144;
+44361	  byte abStack_140 [258];
+44362	  char acStack_3e [51];
+44363	  char cStack_b;
+44364	  byte abStack_a [6];
+44365	  
+44366	  puStack_154 = &stack0xfffffffc;
+44367	  puStack_144 = (uint *)0x0;
+44368	  puStack_158 = &UNK_00442c84;
+44369	  uStack_15c = *in_FS_OFFSET;
+44370	  *in_FS_OFFSET = &uStack_15c;
+44371	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44372	  if (0 < iVar3) {
+44373	    FUN_00405b00(acStack_3e,"Are you sure you want to disband ");
+44374	    uVar4 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44375	    FUN_004028c4(uVar4,(char *)abStack_140);
+44376	    FUN_00402978(abStack_140,abStack_a);
+44377	    FUN_00405bc8(acStack_3e,(char *)abStack_a);
+44378	    FUN_00405bc8(acStack_3e," unit");
+44379	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1d8));
+44380	    if (1 < iVar3) {
+44381	      FUN_00405bc8(acStack_3e,"s");
+44382	    }
+44383	    FUN_00405bc8(acStack_3e,".");
+44384	    iVar3 = 0;
+44385	    FUN_00403458((int *)&puStack_144,acStack_3e,0x33);
+44386	    iVar3 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_00442cc8,iVar3
+44387	                        );
+44388	    if (iVar3 == 6) {
+44389	      cStack_b = '\0';
+44390	      sVar6 = 0x13;
+44391	      uVar5 = extraout_EDX_00;
+44392	      do {
+44393	        if (0 < *(short *)(param_1 + 0x4f0 + sVar6 * 0x20)) {
+44394	          bVar2 = FUN_00429fb4(*(int **)(param_1 + 0x1d8),(int)sVar6);
+44395	          uVar5 = extraout_EDX_01;
+44396	          if (bVar2) {
+44397	            if ((*(short *)(param_1 + 0x770) == -1) &&
+44398	               (*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {
+44399	              cStack_b = '\x01';
+44400	            }
+44401	            else {
+44402	              TArmyToArmy_RemoveUnit(param_1,param_1 + 0x4dc,sVar6,1);
+44403	              piVar1 = *(int **)(*(int *)(param_1 + 0x1d8) + 0xfc);
+44404	              (**(code **)(*piVar1 + 0x3c))(piVar1,(int)sVar6);
+44405	              uVar5 = extraout_EDX_02;
+44406	            }
+44407	          }
+44408	        }
+44409	        sVar6 = sVar6 + -1;
+44410	      } while (sVar6 != -1);
+44411	      if (cStack_b != '\0') {
+44412	        FUN_0042d750((uint *)"An army must be near its own city to disband a regular unit.",
+44413	                     CONCAT31((int3)((uint)uVar5 >> 8),2),_UNK_00442ccc,0);
+44414	      }
+44415	    }
+44416	  }
+44417	  *in_FS_OFFSET = uStack_15c;
+44418	  puStack_154 = &UNK_00442c8b;
+44419	  puStack_158 = &UNK_00442c83;
+44420	  FUN_004032fc((int *)&puStack_144);
+44421	  return;
+44422	}
+44423	
+44424	
+45472	// ==== TChangeArmyUnits_RenameUnit @ 00444bb0 ====
+45473	
+45474	void TChangeArmyUnits_RenameUnit(int param_1)
+45475	
+45476	{
+45477	  bool bVar1;
+45478	  int iVar2;
+45479	  undefined4 extraout_EDX;
+45480	  undefined4 extraout_EDX_00;
+45481	  undefined4 extraout_EDX_01;
+45482	  undefined4 uVar3;
+45483	  short sVar4;
+45484	  short unaff_BP;
+45485	  
+45486	  iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45487	  if (iVar2 < 2) {
+45488	    iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45489	    if (iVar2 == 1) {
+45490	      sVar4 = 0;
+45491	      uVar3 = extraout_EDX_00;
+45492	      do {
+45493	        if (0 < *(short *)(param_1 + 0x1ee + sVar4 * 0x20)) {
+45494	          bVar1 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar4);
+45495	          uVar3 = extraout_EDX_01;
+45496	          if (bVar1) {
+45497	            unaff_BP = sVar4;
+45498	          }
+45499	        }
+45500	        sVar4 = sVar4 + 1;
+45501	      } while (sVar4 != 0x14);
+45502	      if (*(short *)(param_1 + 0x1ea + unaff_BP * 0x20) == 0) {
+45503	        FUN_00424608(DAT_0045e628,0x443cb8,(undefined4 *)&DAT_0045e734);
+45504	        TChangeArmyUnits_FillListBox(param_1);
+45505	      }
+45506	      else {
+45507	        FUN_0042d750((uint *)"You can only rename regular units.",
+45508	                     CONCAT31((int3)((uint)uVar3 >> 8),2),DAT_00444c64,0);
+45509	      }
+45510	    }
+45511	  }
+45512	  else {
+45513	    FUN_0042d750((uint *)"You can only rename 1 unit at a time.",
+45514	                 CONCAT31((int3)((uint)extraout_EDX >> 8),2),DAT_00444c64,0);
+45515	  }
+45516	  return;
+45517	}
+45518	
+45519	
+45520	// ==== TChangeArmyUnits_SplitUnit @ 00444cc4 ====
+45521	
+45522	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+45523	
+45524	void TChangeArmyUnits_SplitUnit(int param_1)
+45525	
+45526	{
+45527	  short *psVar1;
+45528	  bool bVar2;
+45529	  int iVar3;
+45530	  undefined4 extraout_EDX;
+45531	  undefined4 extraout_EDX_00;
+45532	  undefined4 extraout_EDX_01;
+45533	  undefined4 uVar4;
+45534	  undefined3 uVar5;
+45535	  short sVar6;
+45536	  short unaff_BP;
+45537	  
+45538	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45539	  if (iVar3 < 2) {
+45540	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45541	    if (iVar3 == 1) {
+45542	      sVar6 = 0;
+45543	      uVar4 = extraout_EDX_00;
+45544	      do {
+45545	        if (0 < *(short *)(param_1 + 0x1ee + sVar6 * 0x20)) {
+45546	          bVar2 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar6);
+45547	          uVar4 = extraout_EDX_01;
+45548	          if (bVar2) {
+45549	            unaff_BP = sVar6;
+45550	          }
+45551	        }
+45552	        sVar6 = sVar6 + 1;
+45553	      } while (sVar6 != 0x14);
+45554	      psVar1 = (short *)(param_1 + 0x1ea + unaff_BP * 0x20);
+45555	      uVar5 = (undefined3)((uint)uVar4 >> 8);
+45556	      if (*psVar1 == 0) {
+45557	        if (*(short *)(param_1 + 0x44e) < 1) {
+45558	          if ((int)psVar1[2] < ((short)(&DAT_00478fca)[psVar1[1] * 0x14] * 2) / 5) {
+45559	            FUN_0042d750((uint *)"This unit is too small to split.",
+45560	                         CONCAT31((int3)(char)((ushort)psVar1[2] >> 8),2),_UNK_00444dd8,0);
+45561	          }
+45562	          else {
+45563	            FUN_00424608(DAT_0045e628,0x444010,(undefined4 *)0x45e738);
+45564	            TChangeArmyUnits_FillListBox(param_1);
+45565	          }
+45566	        }
+45567	        else {
+45568	          FUN_0042d750((uint *)"This army already has 20 units.",CONCAT31(uVar5,2),_UNK_00444dd8,0);
+45569	        }
+45570	      }
+45571	      else {
+45572	        FUN_0042d750((uint *)"You can only split regular units.",CONCAT31(uVar5,2),_UNK_00444dd8,0);
+45573	      }
+45574	    }
+45575	  }
+45576	  else {
+45577	    FUN_0042d750((uint *)"You can only split 1 unit at a time.",
+45578	                 CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_00444dd8,0);
+45579	  }
+45580	  return;
+45581	}
+45582	
+45583	
+45584	// ==== TChangeArmyUnits_JoinUnits @ 00444e8c ====
+45585	
+45586	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+45587	
+45588	void TChangeArmyUnits_JoinUnits(int param_1)
+45589	
+45590	{
+45591	  short *psVar1;
+45592	  int iVar2;
+45593	  bool bVar3;
+45594	  bool bVar4;
+45595	  bool bVar5;
+45596	  int iVar6;
+45597	  undefined4 extraout_EDX;
+45598	  undefined4 extraout_EDX_00;
+45599	  undefined4 uVar7;
+45600	  undefined3 uVar8;
+45601	  short sVar9;
+45602	  short sVar10;
+45603	  short sVar11;
+45604	  short sStack_1c;
+45605	  short sStack_1a;
+45606	  int iStack_18;
+45607	  
+45608	  iVar6 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45609	  if (1 < iVar6) {
+45610	    bVar5 = false;
+45611	    iStack_18 = 0;
+45612	    sVar10 = -1;
+45613	    bVar3 = true;
+45614	    iVar6 = 0;
+45615	    uVar7 = extraout_EDX;
+45616	    do {
+45617	      sVar11 = (short)iVar6;
+45618	      psVar1 = (short *)(param_1 + 0x1ea + sVar11 * 0x20);
+45619	      if (0 < psVar1[2]) {
+45620	        bVar4 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar11);
+45621	        uVar7 = extraout_EDX_00;
+45622	        if (bVar4) {
+45623	          if (*psVar1 == 0) {
+45624	            iStack_18 = iStack_18 + psVar1[2];
+45625	            if (sVar10 == -1) {
+45626	              sVar10 = psVar1[1];
+45627	              sStack_1c = sVar11;
+45628	            }
+45629	            if (sVar10 != psVar1[1]) {
+45630	              bVar3 = false;
+45631	            }
+45632	          }
+45633	          else {
+45634	            bVar5 = true;
+45635	          }
+45636	        }
+45637	      }
+45638	      iVar6 = iVar6 + 1;
+45639	    } while ((short)iVar6 != 0x14);
+45640	    uVar8 = (undefined3)((uint)uVar7 >> 8);
+45641	    if (bVar5) {
+45642	      FUN_0042d750((uint *)"You can only join regular units together.",CONCAT31(uVar8,2),
+45643	                   _UNK_00445024,0);
+45644	    }
+45645	    else if (bVar3) {
+45646	      if ((short)(&DAT_00478fca)[sVar10 * 0x14] < iStack_18) {
+45647	        FUN_0042d750((uint *)"These units are too large to be combined.",CONCAT31(uVar8,2),
+45648	                     _UNK_00445024,0);
+45649	      }
+45650	      else {
+45651	        sVar10 = 0;
+45652	        sVar11 = 0;
+45653	        sStack_1a = 0;
+45654	        iVar6 = CONCAT22((short)((uint)iVar6 >> 0x10),0x13);
+45655	        do {
+45656	          sVar9 = (short)iVar6;
+45657	          iVar2 = param_1 + 0x1ea + sVar9 * 0x20;
+45658	          if (0 < *(short *)(iVar2 + 4)) {
+45659	            bVar5 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar9);
+45660	            if (bVar5) {
+45661	              sVar10 = sVar10 + *(short *)(iVar2 + 4);
+45662	              sVar11 = sVar11 + *(short *)(iVar2 + 6);
+45663	              sStack_1a = sStack_1a + 1;
+45664	              if (sVar9 != sStack_1c) {
+45665	                TChangeArmyUnits_RemoveUnit(param_1,iVar6,0);
+45666	              }
+45667	            }
+45668	          }
+45669	          iVar6 = iVar6 + -1;
+45670	        } while ((short)iVar6 != -1);
+45671	        iVar6 = param_1 + 0x1ea + sStack_1c * 0x20;
+45672	        *(short *)(iVar6 + 4) = sVar10;
+45673	        *(short *)(iVar6 + 6) = sVar11 / sStack_1a;
+45674	        TChangeArmyUnits_FillListBox(param_1);
+45675	      }
+45676	    }
+45677	    else {
+45678	      FUN_0042d750((uint *)"You can only combine units of the same type.",CONCAT31(uVar8,2),
+45679	                   _UNK_00445024,0);
+45680	    }
+45681	  }
+45682	  return;
+45683	}
+45684	
+45685	
+45686	// ==== TChangeArmyUnits_Disband @ 004450c8 ====
+45687	
+45688	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+45689	
+45690	void TChangeArmyUnits_Disband(int param_1)
+45691	
+45692	{
+45693	  bool bVar1;
+45694	  int iVar2;
+45695	  uint uVar3;
+45696	  undefined4 extraout_EDX;
+45697	  undefined4 extraout_EDX_00;
+45698	  undefined4 extraout_EDX_01;
+45699	  undefined4 extraout_EDX_02;
+45700	  undefined4 uVar4;
+45701	  short sVar5;
+45702	  undefined4 *in_FS_OFFSET;
+45703	  undefined4 uStack_15c;
+45704	  undefined *puStack_158;
+45705	  undefined1 *puStack_154;
+45706	  uint *puStack_144;
+45707	  byte abStack_140 [258];
+45708	  char acStack_3e [51];
+45709	  char cStack_b;
+45710	  byte abStack_a [6];
+45711	  
+45712	  puStack_154 = &stack0xfffffffc;
+45713	  puStack_144 = (uint *)0x0;
+45714	  puStack_158 = &UNK_00445232;
+45715	  uStack_15c = *in_FS_OFFSET;
+45716	  *in_FS_OFFSET = &uStack_15c;
+45717	  iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45718	  if (0 < iVar2) {
+45719	    FUN_00405b00(acStack_3e,"Are you sure you want to disband ");
+45720	    uVar3 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45721	    FUN_004028c4(uVar3,(char *)abStack_140);
+45722	    FUN_00402978(abStack_140,abStack_a);
+45723	    FUN_00405bc8(acStack_3e,(char *)abStack_a);
+45724	    FUN_00405bc8(acStack_3e," unit");
+45725	    iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));
+45726	    if (1 < iVar2) {
+45727	      FUN_00405bc8(acStack_3e,"s");
+45728	    }
+45729	    FUN_00405bc8(acStack_3e,".");
+45730	    iVar2 = 0;
+45731	    FUN_00403458((int *)&puStack_144,acStack_3e,0x33);
+45732	    iVar2 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_00445274,iVar2
+45733	                        );
+45734	    if (iVar2 == 6) {
+45735	      cStack_b = '\0';
+45736	      sVar5 = 0x13;
+45737	      uVar4 = extraout_EDX_00;
+45738	      do {
+45739	        if (0 < *(short *)(param_1 + 0x1ee + sVar5 * 0x20)) {
+45740	          bVar1 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar5);
+45741	          uVar4 = extraout_EDX_01;
+45742	          if (bVar1) {
+45743	            if ((*(short *)(param_1 + 0x1d6) == -1) &&
+45744	               (*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0)) {
+45745	              cStack_b = '\x01';
+45746	            }
+45747	            else {
+45748	              TChangeArmyUnits_RemoveUnit(param_1,sVar5,1);
+45749	              uVar4 = extraout_EDX_02;
+45750	            }
+45751	          }
+45752	        }
+45753	        sVar5 = sVar5 + -1;
+45754	      } while (sVar5 != -1);
+45755	      if (cStack_b != '\0') {
+45756	        FUN_0042d750((uint *)"An army must be near its own city to disband a regular unit.",
+45757	                     CONCAT31((int3)((uint)uVar4 >> 8),2),_UNK_00445278,0);
+45758	      }
+45759	    }
+45760	  }
+45761	  *in_FS_OFFSET = uStack_15c;
+45762	  puStack_154 = &UNK_00445239;
+45763	  puStack_158 = &UNK_00445231;
+45764	  FUN_004032fc((int *)&puStack_144);
+45765	  return;
+45766	}
+45767	
+45768	
+46487	// ==== TUnitMap_SelectUnit @ 004466cc ====
+46488	
+46489	void TUnitMap_SelectUnit(int param_1,undefined *param_2,undefined4 param_3)
+46490	
+46491	{
+46492	  short *psVar1;
+46493	  ushort uVar2;
+46494	  short sVar3;
+46495	  bool bVar4;
+46496	  short sVar5;
+46497	  int iVar6;
+46498	  undefined4 extraout_ECX;
+46499	  undefined4 extraout_ECX_00;
+46500	  undefined4 extraout_ECX_01;
+46501	  undefined4 extraout_ECX_02;
+46502	  undefined4 extraout_ECX_03;
+46503	  undefined4 extraout_ECX_04;
+46504	  undefined4 extraout_EDX;
+46505	  undefined4 extraout_EDX_00;
+46506	  undefined4 extraout_EDX_01;
+46507	  undefined3 uVar7;
+46508	  undefined4 extraout_EDX_02;
+46509	  undefined *unaff_ESI;
+46510	  undefined4 local_14;
+46511	  short local_c;
+46512	  short sStack_a;
+46513	  
+46514	  if (((DAT_004a0328 < 0) || ((short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1)) ||
+46515	     (bVar4 = FUN_004492a0((&DAT_0047c1ec)[DAT_004a0328 * 0xa4],param_2), param_3 = extraout_ECX,
+46516	     !bVar4)) {
+46517	    bVar4 = false;
+46518	  }
+46519	  else {
+46520	    bVar4 = true;
+46521	  }
+46522	  sStack_a = (short)((uint)param_2 >> 0x10);
+46523	  local_c = (short)param_2;
+46524	  sVar5 = *(short *)(&DAT_0045e870 + sStack_a * 2 + local_c * 0x118);
+46525	  psVar1 = (short *)(param_1 + 0x21a);
+46526	  if (-1 < *psVar1) {
+46527	    TUnitMap_PrintMapSquare(param_1,*(undefined4 *)psVar1,param_3);
+46528	  }
+46529	  *(undefined **)psVar1 = param_2;
+46530	  *(short *)(param_1 + 0x21e) = sVar5;
+46531	  FUN_004465a8();
+46532	  if ((ushort)(sVar5 - 0x14U) < 0x50) {
+46533	    iVar6 = FUN_004498d8(param_2);
+46534	    *(short *)(param_1 + 0x222) = (short)iVar6;
+46535	    *(undefined2 *)(param_1 + 0x220) = 0xffff;
+46536	    *(undefined2 *)(param_1 + 0x224) = 0xffff;
+46537	    uVar2 = (&DAT_004795a2)[*(short *)(param_1 + 0x222) * 0x11];
+46538	    unaff_ESI = (undefined *)(uint)uVar2;
+46539	    if (((bVar4) && (uVar2 != DAT_004a0320)) &&
+46540	       (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 ||
+46541	        (iVar6 = FUN_0042d750((uint *)"Are you sure you want to attack this city ?",
+46542	                              CONCAT31((int3)((uint)(&DAT_00474670 + (short)DAT_004a0320 * 0x494) >>
+46543	                                             8),3),DAT_00446b90,0), iVar6 == 6)))) {
+46544	      if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {
+46545	        FUN_00449b40(DAT_004a0320,uVar2,3);
+46546	      }
+46547	      FUN_0044b27c(DAT_004a0328,*(short *)(param_1 + 0x222));
+46548	      TUnitMap_EndUMSelection(param_1,extraout_EDX,extraout_ECX_00);
+46549	      TInformation_PrintNews(DAT_0045e70c);
+46550	    }
+46551	    DAT_004a0328 = -1;
+46552	    DAT_004a032a = -1;
+46553	    sVar3 = DAT_004a0328;
+46554	  }
+46555	  else if ((ushort)(sVar5 - 200U) < 0x30) {
+46556	    iVar6 = FUN_00449920(param_2);
+46557	    *(short *)(param_1 + 0x220) = (short)iVar6;
+46558	    *(undefined2 *)(param_1 + 0x222) = 0xffff;
+46559	    *(undefined2 *)(param_1 + 0x224) = 0xffff;
+46560	    uVar2 = (&DAT_0047c1f0)[*(short *)(param_1 + 0x220) * 0x148];
+46561	    unaff_ESI = (undefined *)(uint)uVar2;
+46562	    sVar3 = *(short *)(param_1 + 0x220);
+46563	    if (uVar2 != DAT_004a0320) {
+46564	      if ((bVar4) &&
+46565	         (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 ||
+46566	          (iVar6 = FUN_0042d750((uint *)"Are you sure you want to attack this army ?",
+46567	                                CONCAT31((int3)((uint)(&DAT_00474670 + (short)DAT_004a0320 * 0x494)
+46568	                                               >> 8),3),DAT_00446b90,0), iVar6 == 6)))) {
+46569	        if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {
+46570	          FUN_00449b40(DAT_004a0320,uVar2,3);
+46571	        }
+46572	        FUN_0044aee4(DAT_004a0328,*(short *)(param_1 + 0x220));
+46573	        TUnitMap_EndUMSelection(param_1,extraout_EDX_00,extraout_ECX_01);
+46574	      }
+46575	      DAT_004a0328 = -1;
+46576	      DAT_004a032a = -1;
+46577	      sVar3 = DAT_004a0328;
+46578	    }
+46579	  }
+46580	  else {
+46581	    sVar3 = DAT_004a0328;
+46582	    if ((ushort)(sVar5 - 300U) < 0x30) {
+46583	      iVar6 = FUN_00449970(param_2);
+46584	      *(short *)(param_1 + 0x224) = (short)iVar6;
+46585	      *(undefined2 *)(param_1 + 0x220) = 0xffff;
+46586	      *(undefined2 *)(param_1 + 0x222) = 0xffff;
+46587	      sVar5 = *(short *)(param_1 + 0x224);
+46588	      uVar2 = (&DAT_0049c274)[sVar5 * 0xd];
+46589	      unaff_ESI = (undefined *)CONCAT22((short)((uint)unaff_ESI >> 0x10),uVar2);
+46590	      if (uVar2 == DAT_004a0320) {
+46591	        DAT_004a032a = sVar5;
+46592	        if ((bVar4) && ((&DAT_0049c282)[*(short *)(param_1 + 0x224) * 0xd] == -1)) {
+46593	          iVar6 = FUN_0044a698(DAT_004a0328);
+46594	          if ((int)(short)(&DAT_0049c27e)[*(short *)(param_1 + 0x224) * 0xd] < iVar6 / 500) {
+46595	            FUN_0042d750((uint *)"The army is too large for this fleet ?",
+46596	                         CONCAT31((int3)(char)((ushort)(&DAT_0049c27e)
+46597	                                                       [*(short *)(param_1 + 0x224) * 0xd] >> 8),3),
+46598	                         DAT_00446bfc,0);
+46599	          }
+46600	          else {
+46601	            FUN_0044b79c(DAT_004a0328,DAT_004a032a);
+46602	            TUnitMap_FleetButtonsOn(param_1);
+46603	            TUnitMap_PaintForm((int *)param_1,local_14,extraout_ECX_02);
+46604	            TInformation_ShowFleetDetails
+46605	                      (DAT_0045e70c,*(undefined4 *)((int)&DAT_0049c26c + DAT_004a032a * 0x1a));
+46606	          }
+46607	        }
+46608	        DAT_004a0328 = -1;
+46609	        sVar3 = DAT_004a0328;
+46610	      }
+46611	      else if (((DAT_004a032a < 0) || ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) ||
+46612	              (bVar4 = FUN_004492a0(*(undefined4 *)((int)&DAT_0049c26c + DAT_004a032a * 0x1a),
+46613	                                    param_2), !bVar4)) {
+46614	        DAT_004a0328 = -1;
+46615	        DAT_004a032a = -1;
+46616	        sVar3 = DAT_004a0328;
+46617	      }
+46618	      else {
+46619	        sVar5 = FUN_004494e4(unaff_ESI,param_2);
+46620	        uVar7 = (undefined3)((uint)extraout_EDX_01 >> 8);
+46621	        if (sVar5 < 0) {
+46622	          if (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3) ||
+46623	             (iVar6 = FUN_0042d750((uint *)"Are you sure you want to attack this fleet ?",
+46624	                                   CONCAT31(uVar7,3),DAT_00446b90,0), sVar3 = DAT_004a0328,
+46625	             iVar6 == 6)) {
+46626	            if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {
+46627	              FUN_00449b40(DAT_004a0320,uVar2,3);
+46628	            }
+46629	            FUN_0044b5d0(DAT_004a032a,*(short *)(param_1 + 0x224));
+46630	            TUnitMap_EndUMSelection(param_1,extraout_EDX_02,extraout_ECX_03);
+46631	            TUnitMap_PaintForm((int *)param_1,local_14,extraout_ECX_04);
+46632	            TInformation_PrintNews(DAT_0045e70c);
+46633	            sVar3 = DAT_004a0328;
+46634	          }
+46635	        }
+46636	        else {
+46637	          FUN_0042d750((uint *)"You cannot attack a fleet docked at its own city !",
+46638	                       CONCAT31(uVar7,2),DAT_00446bfc,0);
+46639	          sVar3 = DAT_004a0328;
+46640	        }
+46641	      }
+46642	    }
+46643	  }
+46644	  DAT_004a0328 = sVar3;
+46645	  if ((ushort)unaff_ESI == DAT_004a0320) {
+46646	    if (*(short *)(param_1 + 0x222) < 0) {
+46647	      if (*(short *)(param_1 + 0x220) < 0) {
+46648	        if (-1 < *(short *)(param_1 + 0x224)) {
+46649	          TUnitMap_FleetButtonsOn(param_1);
+46650	        }
+46651	      }
+46652	      else {
+46653	        TUnitMap_ArmyButtonsOn(param_1);
+46654	      }
+46655	    }
+46656	    else {
+46657	      TUnitMap_CityButtonsOn(param_1);
+46658	    }
+46659	  }
+46660	  else {
+46661	    TUnitMap_AllButtonsOff(param_1);
+46662	  }
+46663	  return;
+46664	}
+46665	
+46666	
+46858	// ==== TUnitMap_RecruitMercenaries @ 00446ff4 ====
+46859	
+46860	void TUnitMap_RecruitMercenaries(int *param_1,undefined4 param_2,undefined4 param_3)
+46861	
+46862	{
+46863	  short sVar1;
+46864	  int iVar2;
+46865	  undefined4 extraout_ECX;
+46866	  undefined4 extraout_EDX;
+46867	  undefined3 uVar3;
+46868	  undefined4 extraout_EDX_00;
+46869	  undefined4 local_14;
+46870	  
+46871	  if ((short)param_1[0x89] < 0) {
+46872	    sVar1 = (short)param_1[0x88];
+46873	  }
+46874	  else {
+46875	    sVar1 = (&DAT_0049c282)[(short)param_1[0x89] * 0xd];
+46876	    *(short *)(param_1 + 0x88) = sVar1;
+46877	  }
+46878	  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {
+46879	    local_14 = param_3;
+46880	    iVar2 = FUN_0044a698(sVar1);
+46881	    FUN_00449d08(sVar1,(short *)&local_14);
+46882	    if (-1 < (short)local_14) {
+46883	      uVar3 = (undefined3)((uint)extraout_EDX >> 8);
+46884	      if (*(short *)(&DAT_0047c460 + sVar1 * 0x290) < 1) {
+46885	        if (iVar2 < 0x186a1) {
+46886	          if ((&DAT_00474696)
+46887	              [(short)(&DAT_004795a2)[(short)local_14 * 0x11] * 0x24a + (int)DAT_004a0320] == 3) {
+46888	            FUN_0042d750((uint *)"You cannot recruit from an enemy city.",
+46889	                         CONCAT31((int3)((uint)(&DAT_00474670 +
+46890	                                               (short)(&DAT_004795a2)[(short)local_14 * 0x11] *
+46891	                                               0x494) >> 8),2),DAT_0044718c,0);
+46892	          }
+46893	          else if (((short)(&DAT_0047c1f6)[sVar1 * 0x148] * 10000) / iVar2 < 0xf) {
+46894	            FUN_0042d750((uint *)"No mercenaries will join an army with so few supplies.",
+46895	                         CONCAT31((int3)((uint)(((short)(&DAT_0047c1f6)[sVar1 * 0x148] * 10000) %
+46896	                                               iVar2) >> 8),2),DAT_0044718c,0);
+46897	          }
+46898	          else if (((short)param_1[0x89] < 0) ||
+46899	                  (iVar2 / 500 <= (int)(short)(&DAT_0049c27e)[(short)param_1[0x89] * 0xd])) {
+46900	            FUN_00424608(DAT_0045e628,0x440e48,(undefined4 *)&DAT_0045e728);
+46901	            TUnitMap_UpdateUMSelection(param_1,extraout_EDX_00,extraout_ECX);
+46902	          }
+46903	          else {
+46904	            FUN_0042d750((uint *)"Your fleet cannot carry any more troops.",
+46905	                         CONCAT31((int3)(char)((ushort)(&DAT_0049c27e)[(short)param_1[0x89] * 0xd]
+46906	                                              >> 8),2),DAT_0044718c,0);
+46907	          }
+46908	        }
+46909	        else {
+46910	          FUN_0042d750((uint *)"This army cannot get any bigger.",CONCAT31(uVar3,2),DAT_0044718c,0);
+46911	        }
+46912	      }
+46913	      else {
+46914	        FUN_0042d750((uint *)"This army already has 20 units.",CONCAT31(uVar3,2),DAT_0044718c,0);
+46915	      }
+46916	    }
+46917	  }
+46918	  return;
+46919	}
+46920	
+46921	
+46950	// ==== TUnitMap_JoinArmies @ 004472fc ====
+46951	
+46952	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+46953	
+46954	void TUnitMap_JoinArmies(int *param_1,undefined4 param_2,undefined4 param_3)
+46955	
+46956	{
+46957	  short sVar1;
+46958	  int iVar2;
+46959	  int iVar3;
+46960	  undefined4 extraout_ECX;
+46961	  undefined4 extraout_EDX;
+46962	  undefined4 extraout_EDX_00;
+46963	  undefined4 extraout_EDX_01;
+46964	  undefined4 uStack_10;
+46965	  
+46966	  if ((short)param_1[0x89] < 0) {
+46967	    sVar1 = (short)param_1[0x88];
+46968	  }
+46969	  else {
+46970	    sVar1 = (&DAT_0049c282)[(short)param_1[0x89] * 0xd];
+46971	  }
+46972	  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {
+46973	    uStack_10 = param_3;
+46974	    FUN_00449d64(sVar1,(short *)&uStack_10);
+46975	    if (-1 < (short)uStack_10) {
+46976	      if (((&DAT_0047c1f4)[(short)uStack_10 * 0x148] == -1) ||
+46977	         ((&DAT_0047c1f4)[sVar1 * 0x148] == -1)) {
+46978	        FUN_0042d750((uint *)"An army on a fleet cannot be combined with another.",
+46979	                     CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_0044749c,0);
+46980	      }
+46981	      else {
+46982	        iVar2 = FUN_0044a66c(sVar1);
+46983	        iVar3 = FUN_0044a66c((short)uStack_10);
+46984	        if ((int)(short)iVar2 + (int)(short)iVar3 < 0x15) {
+46985	          iVar2 = FUN_0044a698(sVar1);
+46986	          iVar3 = FUN_0044a698((short)uStack_10);
+46987	          if (iVar2 + iVar3 < 0x186a1) {
+46988	            while (0 < (short)(&DAT_0047c200)[(short)uStack_10 * 0x148]) {
+46989	              FUN_0044acb4((short)uStack_10,sVar1,0);
+46990	            }
+46991	            iVar2 = (int)sVar1;
+46992	            (&DAT_0047c1f8)[iVar2 * 0x148] =
+46993	                 (&DAT_0047c1f8)[iVar2 * 0x148] + (&DAT_0047c1f8)[(short)uStack_10 * 0x148];
+46994	            (&DAT_0047c1f6)[iVar2 * 0x148] =
+46995	                 (&DAT_0047c1f6)[iVar2 * 0x148] + (&DAT_0047c1f6)[(short)uStack_10 * 0x148];
+46996	            FUN_0044ab90((short)uStack_10);
+46997	            (&DAT_0047c1f2)[iVar2 * 0x148] = 0;
+46998	            sVar1 = *(short *)(&DAT_0047c1ec + iVar2 * 0xa4);
+46999	            *(undefined2 *)((int)param_1 + 0x21e) =
+47000	                 *(undefined2 *)
+47001	                  (&DAT_0045e870 + sVar1 * 0x118 +
+47002	                  *(short *)((int)&DAT_0047c1ec + iVar2 * 0x290 + 2) * 2);
+47003	            TUnitMap_UpdateUMSelection(param_1,&DAT_0045e870 + sVar1 * 0x118,extraout_ECX);
+47004	          }
+47005	          else {
+47006	            FUN_0042d750((uint *)"These 2 armies combined contain more than 100,000 troops.",
+47007	                         CONCAT31((int3)((uint)extraout_EDX_01 >> 8),2),_UNK_0044749c,0);
+47008	          }
+47009	        }
+47010	        else {
+47011	          FUN_0042d750((uint *)"These 2 armies combined contain more than 20 units.",
+47012	                       CONCAT31((int3)((uint)extraout_EDX_00 >> 8),2),_UNK_0044749c,0);
+47013	        }
+47014	      }
+47015	    }
+47016	  }
+47017	  return;
+47018	}
+47019	
+47020	
+47021	// ==== TUnitMap_SplitArmy @ 0044755c ====
+47022	
+47023	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+47024	
+47025	void TUnitMap_SplitArmy(int *param_1,undefined4 param_2,undefined4 param_3)
+47026	
+47027	{
+47028	  short sVar1;
+47029	  undefined4 extraout_ECX;
+47030	  undefined4 extraout_EDX;
+47031	  undefined4 uStack_c;
+47032	  
+47033	  if ((short)param_1[0x89] < 0) {
+47034	    sVar1 = (short)param_1[0x88];
+47035	  }
+47036	  else {
+47037	    sVar1 = (&DAT_0049c282)[(short)param_1[0x89] * 0xd];
+47038	  }
+47039	  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {
+47040	    uStack_c = param_3;
+47041	    if ((&DAT_0047c220)[sVar1 * 0x148] == 0) {
+47042	      FUN_0042d750((uint *)"You can not split an army containing only 1 unit.",
+47043	                   CONCAT31((int3)(char)((ushort)sVar1 >> 8),2),_UNK_00447604,0);
+47044	    }
+47045	    else {
+47046	      FUN_00449f08(DAT_004a0320,(&DAT_0047c1ec)[sVar1 * 0xa4],(short *)&uStack_c);
+47047	      if (-1 < (short)uStack_c) {
+47048	        FUN_00424608(DAT_0045e628,0x44170c,(undefined4 *)0x45e72c);
+47049	        TUnitMap_UpdateUMSelection(param_1,extraout_EDX,extraout_ECX);
+47050	      }
+47051	    }
+47052	  }
+47053	  return;
+47054	}
+47055	
+47056	
+47081	// ==== TUnitMap_DisbandArmy @ 004476ac ====
+47082	
+47083	void TUnitMap_DisbandArmy(int param_1)
+47084	
+47085	{
+47086	  short sVar1;
+47087	  short sVar2;
+47088	  int iVar3;
+47089	  int iVar4;
+47090	  undefined4 extraout_ECX;
+47091	  undefined4 extraout_EDX;
+47092	  undefined3 uVar5;
+47093	  undefined4 extraout_EDX_00;
+47094	  
+47095	  sVar1 = *(short *)(param_1 + 0x220);
+47096	  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {
+47097	    iVar3 = (int)sVar1;
+47098	    sVar2 = FUN_004494e4((undefined *)CONCAT22(sVar1 >> 0xf,DAT_004a0320),
+47099	                         (undefined *)(&DAT_0047c1ec)[iVar3 * 0xa4]);
+47100	    uVar5 = (undefined3)((uint)extraout_EDX >> 8);
+47101	    if (sVar2 == -1) {
+47102	      FUN_0042d750((uint *)"An army must be near its own city to disband.",CONCAT31(uVar5,2),
+47103	                   DAT_00447784,0);
+47104	    }
+47105	    else {
+47106	      iVar4 = FUN_0042d750((uint *)"Are you sure you want to disband this army ?",CONCAT31(uVar5,3),
+47107	                           DAT_004477c0,0);
+47108	      if (iVar4 == 6) {
+47109	        sVar2 = (&DAT_0047c1f8)[iVar3 * 0x148];
+47110	        (&DAT_00474aa8)[DAT_004a0320 * 0x125] = (&DAT_00474aa8)[DAT_004a0320 * 0x125] + (int)sVar2;
+47111	        sVar2 = FUN_004494e4((undefined *)CONCAT22(sVar2 >> 0xf,DAT_004a0320),
+47112	                             (undefined *)(&DAT_0047c1ec)[iVar3 * 0xa4]);
+47113	        (&DAT_004795a8)[sVar2 * 0x11] =
+47114	             (&DAT_004795a8)[sVar2 * 0x11] + (&DAT_0047c1f6)[iVar3 * 0x148];
+47115	        FUN_0044ab90(sVar1);
+47116	        TUnitMap_EndUMSelection(param_1,extraout_EDX_00,extraout_ECX);
+47117	      }
+47118	    }
+47119	  }
+47120	  return;
+47121	}
+47122	
+47123	
+47161	// ==== TUnitMap_RepairFlt @ 004478c8 ====
+47162	
+47163	void TUnitMap_RepairFlt(int *param_1)
+47164	
+47165	{
+47166	  short sVar1;
+47167	  short sVar2;
+47168	  undefined4 extraout_ECX;
+47169	  undefined4 extraout_EDX;
+47170	  undefined3 uVar3;
+47171	  undefined4 extraout_EDX_00;
+47172	  
+47173	  sVar1 = (short)param_1[0x89];
+47174	  if ((-1 < sVar1) && ((&DAT_0049c274)[sVar1 * 0xd] == DAT_004a0320)) {
+47175	    sVar2 = FUN_004494e4((undefined *)CONCAT22(sVar1 >> 0xf,DAT_004a0320),
+47176	                         *(undefined **)((int)&DAT_0049c26c + sVar1 * 0x1a));
+47177	    uVar3 = (undefined3)((uint)extraout_EDX >> 8);
+47178	    if (sVar2 == -1) {
+47179	      FUN_0042d750((uint *)"The fleet can only be repaired at one of your cities.",CONCAT31(uVar3,2)
+47180	                   ,DAT_0044796c,0);
+47181	    }
+47182	    else if ((short)(&DAT_0049c282)[sVar1 * 0xd] < 0) {
+47183	      FUN_00424608(DAT_0045e628,0x44087c,(undefined4 *)&DAT_0045e724);
+47184	      TUnitMap_UpdateUMSelection(param_1,extraout_EDX_00,extraout_ECX);
+47185	    }
+47186	    else {
+47187	      FUN_0042d750((uint *)"A fleet cannot be repaired while it is carrying an army.",
+47188	                   CONCAT31(uVar3,2),DAT_0044796c,0);
+47189	    }
+47190	  }
+47191	  return;
+47192	}
+47193	
+47194	
+47218	// ==== TUnitMap_JoinFleets @ 00447a48 ====
+47219	
+47220	void TUnitMap_JoinFleets(int *param_1,undefined4 param_2,undefined4 param_3)
+47221	
+47222	{
+47223	  short sVar1;
+47224	  undefined4 extraout_ECX;
+47225	  int iVar2;
+47226	  undefined4 local_10;
+47227	  
+47228	  sVar1 = (short)param_1[0x89];
+47229	  if ((-1 < sVar1) && ((&DAT_0049c274)[sVar1 * 0xd] == DAT_004a0320)) {
+47230	    local_10 = param_3;
+47231	    FUN_00449dd8(sVar1,(short *)&local_10);
+47232	    if (-1 < (short)local_10) {
+47233	      iVar2 = (int)(short)(&DAT_0049c27e)[(short)local_10 * 0xd];
+47234	      if ((short)(&DAT_0049c27e)[sVar1 * 0xd] + iVar2 < 0x65) {
+47235	        if (((ushort)(&DAT_0049c282)[(short)local_10 * 0xd] < 0x8000) ||
+47236	           (iVar2 = sVar1 * 0xd, -1 < (short)(&DAT_0049c282)[sVar1 * 0xd])) {
+47237	          FUN_0042d750((uint *)"You cannot join fleets if one is carrying an army.",
+47238	                       CONCAT31((int3)((uint)iVar2 >> 8),2),DAT_00447b84,0);
+47239	        }
+47240	        else {
+47241	          iVar2 = (int)sVar1;
+47242	          (&DAT_0049c27e)[iVar2 * 0xd] =
+47243	               (&DAT_0049c27e)[iVar2 * 0xd] + (&DAT_0049c27e)[(short)local_10 * 0xd];
+47244	          (&DAT_0049c27a)[iVar2 * 0xd] =
+47245	               (&DAT_0049c27a)[iVar2 * 0xd] + (&DAT_0049c27a)[(short)local_10 * 0xd];
+47246	          (&DAT_0049c27c)[iVar2 * 0xd] =
+47247	               (&DAT_0049c27c)[iVar2 * 0xd] + (&DAT_0049c27c)[(short)local_10 * 0xd];
+47248	          (&DAT_0049c278)[iVar2 * 0xd] = 0;
+47249	          FUN_0044ad38((short)local_10);
+47250	          FUN_0044a878(sVar1);
+47251	          sVar1 = *(short *)((int)&DAT_0049c26c + iVar2 * 0x1a);
+47252	          *(undefined2 *)((int)param_1 + 0x21e) =
+47253	               *(undefined2 *)
+47254	                (&DAT_0045e870 + sVar1 * 0x118 +
+47255	                *(short *)((int)&DAT_0049c26c + iVar2 * 0x1a + 2) * 2);
+47256	          TUnitMap_UpdateUMSelection(param_1,&DAT_0045e870 + sVar1 * 0x118,extraout_ECX);
+47257	        }
+47258	      }
+47259	      else {
+47260	        FUN_0042d750((uint *)"There are more than 100 ships in these fleets combined.",
+47261	                     CONCAT31((int3)(char)((ushort)(&DAT_0049c27e)[(short)local_10 * 0xd] >> 8),2),
+47262	                     DAT_00447b84,0);
+47263	      }
+47264	    }
+47265	  }
+47266	  return;
+47267	}
+47268	
+47269	
+47270	// ==== TUnitMap_SplitFleet @ 00447cac ====
+47271	
+47272	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+47273	
+47274	void TUnitMap_SplitFleet(int *param_1,undefined4 param_2,undefined4 param_3)
+47275	
+47276	{
+47277	  short sVar1;
+47278	  int iVar2;
+47279	  undefined4 extraout_ECX;
+47280	  undefined3 uVar3;
+47281	  undefined4 extraout_EDX;
+47282	  undefined4 extraout_EDX_00;
+47283	  short sStack_8;
+47284	  short sStack_6;
+47285	  
+47286	  sVar1 = (short)param_1[0x89];
+47287	  sStack_8 = (short)param_3;
+47288	  _sStack_8 = CONCAT22(sVar1,sStack_8);
+47289	  if ((-1 < sVar1) && ((&DAT_0049c274)[sVar1 * 0xd] == DAT_004a0320)) {
+47290	    iVar2 = (int)sVar1;
+47291	    uVar3 = (undefined3)((uint)param_2 >> 8);
+47292	    if ((short)(&DAT_0049c27e)[iVar2 * 0xd] < 0x14) {
+47293	      FUN_0042d750((uint *)"You can not split a fleet containing less than 20 ships.",
+47294	                   CONCAT31(uVar3,2),_UNK_00447d80,0);
+47295	    }
+47296	    else if ((short)(&DAT_0049c282)[iVar2 * 0xd] < 0) {
+47297	      func_0x00447c04(*(undefined4 *)((int)&DAT_0049c26c + iVar2 * 0x1a),&sStack_8,param_3,
+47298	                      &stack0xfffffffc);
+47299	      if (sStack_8 == -1) {
+47300	        FUN_0042d750((uint *)"You can not make any more fleets at this time.",
+47301	                     CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_00447d80,0);
+47302	      }
+47303	      else {
+47304	        FUN_00424608(DAT_0045e628,0x443110,(undefined4 *)0x45e730);
+47305	        TUnitMap_UpdateUMSelection(param_1,extraout_EDX_00,extraout_ECX);
+47306	      }
+47307	    }
+47308	    else {
+47309	      FUN_0042d750((uint *)"You can not split a fleet carrying an army.",CONCAT31(uVar3,2),
+47310	                   _UNK_00447d80,0);
+47311	    }
+47312	  }
+47313	  return;
+47314	}
+47315	
+47316	
+47317	// ==== TUnitMap_ScuttleFleet @ 00447e34 ====
+47318	
+47319	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+47320	
+47321	void TUnitMap_ScuttleFleet(int param_1,undefined4 param_2)
+47322	
+47323	{
+47324	  short sVar1;
+47325	  short sVar2;
+47326	  int iVar3;
+47327	  int iVar4;
+47328	  undefined4 extraout_ECX;
+47329	  undefined4 extraout_EDX;
+47330	  undefined3 uVar5;
+47331	  undefined4 extraout_EDX_00;
+47332	  
+47333	  sVar1 = *(short *)(param_1 + 0x224);
+47334	  if ((-1 < sVar1) && ((&DAT_0049c274)[sVar1 * 0xd] == DAT_004a0320)) {
+47335	    iVar3 = (int)sVar1;
+47336	    if ((short)(&DAT_0049c282)[iVar3 * 0xd] < 0) {
+47337	      sVar2 = FUN_004494e4((undefined *)CONCAT22(sVar1 >> 0xf,DAT_004a0320),
+47338	                           *(undefined **)((int)&DAT_0049c26c + iVar3 * 0x1a));
+47339	      uVar5 = (undefined3)((uint)extraout_EDX >> 8);
+47340	      if (sVar2 == -1) {
+47341	        FUN_0042d750((uint *)"To scuttle a fleet it must be near one of your cities.",
+47342	                     CONCAT31(uVar5,2),_UNK_00447f40,0);
+47343	      }
+47344	      else {
+47345	        iVar4 = FUN_0042d750((uint *)"Are you sure you want to scuttle this fleet ?",
+47346	                             CONCAT31(uVar5,3),_UNK_00447fc8,0);
+47347	        if (iVar4 == 6) {
+47348	          TPremierForm_MakeSound(DAT_004a0bd0,8);
+47349	          sVar2 = (&DAT_0049c27c)[iVar3 * 0xd];
+47350	          (&DAT_00474aa8)[DAT_004a0320 * 0x125] = (&DAT_00474aa8)[DAT_004a0320 * 0x125] + (int)sVar2
+47351	          ;
+47352	          sVar2 = FUN_004494e4((undefined *)CONCAT22(sVar2 >> 0xf,DAT_004a0320),
+47353	                               *(undefined **)((int)&DAT_0049c26c + iVar3 * 0x1a));
+47354	          (&DAT_004795a8)[sVar2 * 0x11] =
+47355	               (&DAT_004795a8)[sVar2 * 0x11] + (&DAT_0049c27a)[iVar3 * 0xd];
+47356	          FUN_0044ad38(sVar1);
+47357	          TUnitMap_EndUMSelection(param_1,extraout_EDX_00,extraout_ECX);
+47358	        }
+47359	      }
+47360	    }
+47361	    else {
+47362	      FUN_0042d750((uint *)"A fleet cannot be scuttled while it is carrying an army.",
+47363	                   CONCAT31((int3)((uint)param_2 >> 8),2),_UNK_00447f40,0);
+47364	    }
+47365	  }
+47366	  return;
+47367	}
+47368	
+47369	
+47370	// ==== TUnitMap_Fortify @ 00448004 ====
+47371	
+47372	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+47373	
+47374	void TUnitMap_Fortify(int *param_1)
+47375	
+47376	{
+47377	  short sVar1;
+47378	  undefined4 uVar2;
+47379	  undefined4 extraout_ECX;
+47380	  undefined4 extraout_EDX;
+47381	  undefined4 extraout_EDX_00;
+47382	  
+47383	  sVar1 = *(short *)((int)param_1 + 0x222);
+47384	  if ((-1 < sVar1) && ((&DAT_004795a2)[sVar1 * 0x11] == DAT_004a0320)) {
+47385	    uVar2 = FUN_004497cc(sVar1);
+47386	    if ((char)uVar2 == '\0') {
+47387	      if ((&DAT_004795aa)[sVar1 * 0x11] == 100) {
+47388	        FUN_0042d750((uint *)"This city cannot be fortified any further.",
+47389	                     CONCAT31((int3)(char)((ushort)sVar1 >> 8),2),_UNK_004480d0,0);
+47390	      }
+47391	      else if ((short)(&DAT_004795aa)[sVar1 * 0x11] < 0x65) {
+47392	        FUN_00424608(DAT_0045e628,0x440278,(undefined4 *)0x45e720);
+47393	        TUnitMap_UpdateUMSelection(param_1,extraout_EDX_00,extraout_ECX);
+47394	      }
+47395	      else {
+47396	        FUN_0042d750((uint *)"This city is already being fortified.",
+47397	                     CONCAT31((int3)((uint)(sVar1 * 0x11) >> 8),2),_UNK_004480d0,0);
+47398	      }
+47399	    }
+47400	    else {
+47401	      FUN_0042d750((uint *)"You cannot fortify a city which is under siege.",
+47402	                   CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_004480d0,0);
+47403	    }
+47404	  }
+47405	  return;
+47406	}
+47407	
+47408	
+55148	// ==== TPolitics_MakePeace @ 00452d94 ====
+55149	
+55150	void TPolitics_MakePeace(int param_1,short param_2,undefined1 *param_3)
+55151	
+55152	{
+55153	  undefined4 extraout_EDX;
+55154	  int iVar1;
+55155	  undefined4 *in_FS_OFFSET;
+55156	  undefined4 uStack_64;
+55157	  undefined1 *puStack_60;
+55158	  undefined1 *puStack_5c;
+55159	  uint *local_4c;
+55160	  char local_45 [61];
+55161	  undefined1 *local_8;
+55162	  
+55163	  puStack_5c = &stack0xfffffffc;
+55164	  local_4c = (uint *)0x0;
+55165	  puStack_60 = &LAB_00452e54;
+55166	  uStack_64 = *in_FS_OFFSET;
+55167	  *in_FS_OFFSET = &uStack_64;
+55168	  iVar1 = (int)param_2;
+55169	  local_8 = param_3;
+55170	  if (((&DAT_00474b00)[iVar1 * 0x494] == '\0') &&
+55171	     ((&DAT_00474696)[DAT_004a0320 * 0x24a + iVar1] == 3)) {
+55172	    *param_3 = 0;
+55173	    FUN_00405b00(local_45,&DAT_00474670 + iVar1 * 0x494);
+55174	    FUN_00405bc8(local_45," does not want to make peace at this time.");
+55175	    iVar1 = 0;
+55176	    FUN_00403458((int *)&local_4c,local_45,0x3d);
+55177	    FUN_0042d750(local_4c,CONCAT31((int3)((uint)extraout_EDX >> 8),2),DAT_00452e90,iVar1);
+55178	  }
+55179	  else if (0 < *(short *)(param_1 + 900 + iVar1 * 2)) {
+55180	    *(undefined2 *)(param_1 + 900 + iVar1 * 2) = 0;
+55181	  }
+55182	  *in_FS_OFFSET = uStack_64;
+55183	  puStack_5c = &LAB_00452e5b;
+55184	  puStack_60 = (undefined1 *)0x452e53;
+55185	  FUN_004032fc((int *)&local_4c);
+55186	  return;
+55187	}
+55188	
+55189	
+55190	// ==== TPolitics_MakeTrade @ 00452e94 ====
+55191	
+55192	void TPolitics_MakeTrade(int param_1,short param_2,undefined1 *param_3)
+55193	
+55194	{
+55195	  bool bVar1;
+55196	  short sVar2;
+55197	  int iVar3;
+55198	  undefined4 extraout_EDX;
+55199	  undefined4 extraout_EDX_00;
+55200	  short sVar4;
+55201	  undefined4 *in_FS_OFFSET;
+55202	  undefined4 uStack_58;
+55203	  undefined1 *puStack_54;
+55204	  undefined1 *puStack_50;
+55205	  uint *local_40;
+55206	  char local_3b [51];
+55207	  undefined1 *local_8;
+55208	  
+55209	  puStack_50 = &stack0xfffffffc;
+55210	  local_40 = (uint *)0x0;
+55211	  puStack_54 = &LAB_00453058;
+55212	  uStack_58 = *in_FS_OFFSET;
+55213	  *in_FS_OFFSET = &uStack_58;
+55214	  sVar4 = 0;
+55215	  sVar2 = 0;
+55216	  do {
+55217	    if (*(short *)(param_1 + 900 + sVar2 * 2) == 1) {
+55218	      sVar4 = sVar4 + 1;
+55219	    }
+55220	    sVar2 = sVar2 + 1;
+55221	  } while (sVar2 != 0x10);
+55222	  local_8 = param_3;
+55223	  iVar3 = FUN_004499c0(param_2);
+55224	  sVar2 = (short)iVar3;
+55225	  if (((&DAT_00474696)[DAT_004a0320 * 0x24a + (int)param_2] == 1) &&
+55226	     (*(short *)(param_1 + 900 + param_2 * 2) != 1)) {
+55227	    sVar2 = sVar2 + -1;
+55228	  }
+55229	  if ((sVar2 == 3) && ((DAT_0049f00a != 1 || (param_2 != DAT_0049f008)))) {
+55230	    bVar1 = true;
+55231	  }
+55232	  else {
+55233	    bVar1 = false;
+55234	  }
+55235	  if (sVar4 == 3) {
+55236	    *local_8 = 0;
+55237	    FUN_0042d750((uint *)"You can only trade with 3 nations.",
+55238	                 CONCAT31((int3)(char)((ushort)param_2 >> 8),2),DAT_00453068,0);
+55239	  }
+55240	  else {
+55241	    iVar3 = (int)param_2;
+55242	    if ((short)(&DAT_00474696)[DAT_004a0320 * 0x24a + iVar3] < 0) {
+55243	      *local_8 = 0;
+55244	      FUN_00405b00(local_3b,&DAT_00474670 + iVar3 * 0x494);
+55245	      FUN_00405bc8(local_3b," does not want to trade with you.");
+55246	      iVar3 = 0;
+55247	      FUN_00403458((int *)&local_40,local_3b,0x33);
+55248	      FUN_0042d750(local_40,CONCAT31((int3)((uint)extraout_EDX >> 8),2),DAT_00453068,iVar3);
+55249	    }
+55250	    else if (bVar1 || 1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)param_2]) {
+55251	      *local_8 = 0;
+55252	      FUN_00405b00(local_3b,"You cannot trade with ");
+55253	      FUN_00405bc8(local_3b,&DAT_00474670 + iVar3 * 0x494);
+55254	      FUN_00405bc8(local_3b,".");
+55255	      iVar3 = 0;
+55256	      FUN_00403458((int *)&local_40,local_3b,0x33);
+55257	      FUN_0042d750(local_40,CONCAT31((int3)((uint)extraout_EDX_00 >> 8),2),DAT_00453068,iVar3);
+55258	    }
+55259	    else {
+55260	      *(undefined2 *)(param_1 + 900 + iVar3 * 2) = 1;
+55261	    }
+55262	  }
+55263	  *in_FS_OFFSET = uStack_58;
+55264	  puStack_50 = &LAB_0045305f;
+55265	  puStack_54 = (undefined1 *)0x453057;
+55266	  FUN_004032fc((int *)&local_40);
+55267	  return;
+55268	}
+55269	
+55270	
+55271	// ==== TPolitics_MakeAlliance @ 004530d8 ====
+55272	
+55273	void TPolitics_MakeAlliance(int param_1,short param_2,undefined1 *param_3)
+55274	
+55275	{
+55276	  bool bVar1;
+55277	  undefined4 uVar2;
+55278	  undefined4 extraout_EDX;
+55279	  short sVar3;
+55280	  undefined4 *in_FS_OFFSET;
+55281	  int iVar4;
+55282	  undefined4 uStack_68;
+55283	  undefined1 *puStack_64;
+55284	  undefined1 *puStack_60;
+55285	  uint *local_50;
+55286	  char local_49 [61];
+55287	  undefined1 *local_c;
+55288	  short local_6;
+55289	  
+55290	  puStack_60 = &stack0xfffffffc;
+55291	  local_50 = (uint *)0x0;
+55292	  puStack_64 = &LAB_004531f1;
+55293	  uStack_68 = *in_FS_OFFSET;
+55294	  *in_FS_OFFSET = &uStack_68;
+55295	  bVar1 = false;
+55296	  sVar3 = 0;
+55297	  local_c = param_3;
+55298	  local_6 = param_2;
+55299	  do {
+55300	    if (*(short *)(param_1 + 900 + sVar3 * 2) == 3) {
+55301	LAB_00453128:
+55302	      bVar1 = true;
+55303	    }
+55304	    else if (*(short *)(param_1 + 900 + sVar3 * 2) == 2) {
+55305	      uVar2 = FUN_00449cd8(sVar3);
+55306	      if ((char)uVar2 != '\0') goto LAB_00453128;
+55307	    }
+55308	    sVar3 = sVar3 + 1;
+55309	  } while (sVar3 != 0x10);
+55310	  if ((&DAT_00474b00)[local_6 * 0x494] == '\0') {
+55311	    if (!bVar1) {
+55312	      uVar2 = FUN_00449cd8(DAT_004a0320);
+55313	      if (((char)uVar2 == '\0') &&
+55314	         (-1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)local_6])) goto LAB_004531cd;
+55315	    }
+55316	    *local_c = 0;
+55317	    FUN_00405b00(local_49,&DAT_00474670 + local_6 * 0x494);
+55318	    FUN_00405bc8(local_49," does not want to ally with your nation.");
+55319	    iVar4 = 0;
+55320	    FUN_00403458((int *)&local_50,local_49,0x3d);
+55321	    FUN_0042d750(local_50,CONCAT31((int3)((uint)extraout_EDX >> 8),2),DAT_0045322c,iVar4);
+55322	  }
+55323	  else {
+55324	LAB_004531cd:
+55325	    *(undefined2 *)(param_1 + 900 + local_6 * 2) = 2;
+55326	  }
+55327	  *in_FS_OFFSET = uStack_68;
+55328	  puStack_60 = &LAB_004531f8;
+55329	  puStack_64 = (undefined1 *)0x4531f0;
+55330	  FUN_004032fc((int *)&local_50);
+55331	  return;
+55332	}
+55333	
+55334	
+55920	// ==== TArmyRecruits_RecruitUnit @ 00454e78 ====
+55921	
+55922	void TArmyRecruits_RecruitUnit(int param_1,undefined4 param_2)
+55923	
+55924	{
+55925	  undefined2 *puVar1;
+55926	  int *piVar2;
+55927	  short sVar3;
+55928	  int iVar4;
+55929	  undefined4 uVar5;
+55930	  undefined3 uVar7;
+55931	  undefined *puVar6;
+55932	  short sVar8;
+55933	  undefined4 *in_FS_OFFSET;
+55934	  undefined4 uStack_6c;
+55935	  undefined1 *puStack_68;
+55936	  undefined1 *puStack_64;
+55937	  int local_54;
+55938	  char local_4e [15];
+55939	  char local_3f [51];
+55940	  undefined *local_c;
+55941	  short local_6;
+55942	  
+55943	  puStack_64 = &stack0xfffffffc;
+55944	  local_54 = 0;
+55945	  puStack_68 = &LAB_004551d6;
+55946	  uStack_6c = *in_FS_OFFSET;
+55947	  *in_FS_OFFSET = &uStack_6c;
+55948	  uVar7 = (undefined3)((uint)param_2 >> 8);
+55949	  if (*(short *)(&DAT_00474a90 + DAT_004a0320 * 0x494) < 1) {
+55950	    if ((&DAT_00474ab2)[DAT_004a0320 * 0x24a] == 100) {
+55951	      puStack_64 = &stack0xfffffffc;
+55952	      FUN_0042d750((uint *)"Your mobilisation rate is already 100%.",CONCAT31(uVar7,2),DAT_004551e4,
+55953	                   0);
+55954	    }
+55955	    else {
+55956	      sVar8 = *(short *)(param_1 + 0x23c);
+55957	      if (((sVar8 < 0) || (0x4a < (short)(&DAT_004795aa)[sVar8 * 0x11])) ||
+55958	         (sVar8 == (&DAT_00474ab4)[DAT_004a0320 * 0x24a])) {
+55959	        if (-1 < *(short *)(param_1 + 0x23e)) {
+55960	          *(undefined1 *)(param_1 + 0x52e) = 1;
+55961	          sVar8 = -1;
+55962	          sVar3 = 0;
+55963	          puVar6 = &DAT_00474670;
+55964	          do {
+55965	            if ((*(short *)(puVar6 + DAT_004a0320 * 0x494 + 0x2e8) == 0) && (sVar8 == -1)) {
+55966	              sVar8 = sVar3;
+55967	            }
+55968	            sVar3 = sVar3 + 1;
+55969	            puVar6 = puVar6 + 8;
+55970	          } while (sVar3 != 0x28);
+55971	          local_c = &DAT_00474670 + DAT_004a0320 * 0x494;
+55972	          puVar1 = &DAT_00474954 + DAT_004a0320 * 0x24a + sVar8 * 4;
+55973	          puVar1[2] = *(undefined2 *)(param_1 + 0x240);
+55974	          puVar1[1] = *(undefined2 *)(param_1 + 0x23e);
+55975	          *puVar1 = 0;
+55976	          if (*(short *)(param_1 + 0x23c) == -1) {
+55977	            puVar1[3] = (&DAT_00474ab4)[DAT_004a0320 * 0x24a];
+55978	          }
+55979	          else {
+55980	            puVar1[3] = *(short *)(param_1 + 0x23c);
+55981	          }
+55982	          FUN_00405b00(local_3f,&DAT_00478fc0 + *(short *)(param_1 + 0x23e) * 0x28);
+55983	          FUN_00405bc8(local_3f,"  ");
+55984	          FUN_00448f3c((int)*(short *)(param_1 + 0x240),(int)local_4e);
+55985	          FUN_00405bc8(local_3f,local_4e);
+55986	          FUN_00405bc8(local_3f,"  ");
+55987	          FUN_00405bc8(local_3f,"not ready");
+55988	          if (*(short *)(param_1 + 0x23c) == -1) {
+55989	            FUN_00405bc8(local_3f,"  ");
+55990	            FUN_00405bc8(local_3f,&DAT_00479590 +
+55991	                                  (short)(&DAT_00474ab4)[DAT_004a0320 * 0x24a] * 0x22);
+55992	          }
+55993	          FUN_00403458(&local_54,local_3f,0x33);
+55994	          piVar2 = *(int **)(*(int *)(param_1 + 0x220) + 0xfc);
+55995	          (**(code **)(*piVar2 + 0x2c))(piVar2,local_54);
+55996	          *(int *)(local_c + 0x438) =
+55997	               *(int *)(local_c + 0x438) -
+55998	               ((int)*(short *)(param_1 + 0x240) / 200) *
+55999	               (int)*(short *)(&DAT_00478fd2 + *(short *)(param_1 + 0x23e) * 0x28);
+56000	          iVar4 = (*(short *)(param_1 + 0x240) * 1000) / *(int *)(local_c + 0x430);
+56001	          sVar8 = (short)iVar4 + *(short *)(local_c + 0x442) + 1;
+56002	          *(short *)(local_c + 0x442) = sVar8;
+56003	          uVar5 = FUN_00448fd0(CONCAT22((short)((uint)local_c >> 0x10),100),
+56004	                               CONCAT22((short)((uint)iVar4 >> 0x10),sVar8));
+56005	          *(short *)(local_c + 0x442) = (short)uVar5;
+56006	          if (((&DAT_00474ab4)[DAT_004a0320 * 0x24a] != *(short *)(param_1 + 0x23c)) &&
+56007	             (-1 < *(short *)(param_1 + 0x242))) {
+56008	            local_6 = FUN_00429e9c(*(int **)(param_1 + 0x228));
+56009	            piVar2 = *(int **)(*(int *)(param_1 + 0x228) + 0xfc);
+56010	            (**(code **)(*piVar2 + 0x4c))(piVar2,0,"All cities");
+56011	            sVar8 = (**(code **)(**(int **)(*(int *)(param_1 + 0x228) + 0xfc) + 0x10))();
+56012	            if (0 < sVar8) {
+56013	              do {
+56014	                *(undefined2 *)(param_1 + 0x242 + sVar8 * 2) =
+56015	                     *(undefined2 *)(param_1 + 0x240 + sVar8 * 2);
+56016	                sVar8 = sVar8 + -1;
+56017	              } while (sVar8 != 0);
+56018	            }
+56019	            *(undefined2 *)(param_1 + 0x242) = 0xffff;
+56020	            FUN_00429ed4(*(int **)(param_1 + 0x228),(int)local_6 + 1);
+56021	          }
+56022	        }
+56023	      }
+56024	      else {
+56025	        puStack_64 = &stack0xfffffffc;
+56026	        FUN_0042d750((uint *)"This city\'s fortification has fallen below 75%.",
+56027	                     CONCAT31((int3)((uint)(DAT_004a0320 * 0x125) >> 8),2),DAT_004551e4,0);
+56028	      }
+56029	    }
+56030	  }
+56031	  else {
+56032	    puStack_64 = &stack0xfffffffc;
+56033	    FUN_0042d750((uint *)"You have reached your limit of 40 units.",CONCAT31(uVar7,2),DAT_004551e4,0
+56034	                );
+56035	  }
+56036	  *in_FS_OFFSET = uStack_6c;
+56037	  puStack_64 = &LAB_004551dd;
+56038	  puStack_68 = (undefined1 *)0x4551d5;
+56039	  FUN_004032fc(&local_54);
+56040	  return;
+56041	}
+56042	
+56043	
+56044	// ==== TArmyRecruits_MobilizeUnits @ 004552a8 ====
+56045	
+56046	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+56047	
+56048	void TArmyRecruits_MobilizeUnits(int param_1,undefined4 param_2,undefined4 param_3)
+56049	
+56050	{
+56051	  short sVar1;
+56052	  bool bVar2;
+56053	  bool bVar3;
+56054	  short sVar4;
+56055	  int iVar5;
+56056	  int extraout_EDX;
+56057	  int extraout_EDX_00;
+56058	  int extraout_EDX_01;
+56059	  undefined4 uStack_14;
+56060	  
+56061	  uStack_14 = param_3;
+56062	  iVar5 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56063	  if (0 < iVar5) {
+56064	    bVar2 = false;
+56065	    sVar4 = (**(code **)(**(int **)(*(int *)(param_1 + 0x220) + 0xfc) + 0x10))();
+56066	    sVar4 = sVar4 + -1;
+56067	    iVar5 = extraout_EDX;
+56068	    bVar3 = false;
+56069	    if (-1 < sVar4) {
+56070	      do {
+56071	        bVar3 = FUN_00429fb4(*(int **)(param_1 + 0x220),(int)sVar4);
+56072	        iVar5 = extraout_EDX_00;
+56073	        if (bVar3) {
+56074	          sVar1 = *(short *)(param_1 + 0x4de + sVar4 * 2);
+56075	          iVar5 = (int)sVar1;
+56076	          if (0xf < (short)(&DAT_00474954)[DAT_004a0320 * 0x24a + iVar5 * 4]) {
+56077	            FUN_0044a4e0(DAT_004a0320,sVar1,(undefined1 *)&uStack_14);
+56078	            iVar5 = extraout_EDX_01;
+56079	            if ((bVar2) || ((char)uStack_14 == '\0')) {
+56080	              bVar2 = true;
+56081	            }
+56082	            else {
+56083	              bVar2 = false;
+56084	            }
+56085	          }
+56086	        }
+56087	        sVar4 = sVar4 + -1;
+56088	        bVar3 = bVar2;
+56089	      } while (sVar4 != -1);
+56090	    }
+56091	    if (bVar3) {
+56092	      FUN_0042d750((uint *)"You cannot mobilise a unit at this time.",
+56093	                   CONCAT31((int3)((uint)iVar5 >> 8),2),_UNK_00455378,0);
+56094	    }
+56095	    TArmyRecruits_SetCityRecruits(param_1);
+56096	    TPremierForm_RefreshForms(DAT_004a0bd0);
+56097	  }
+56098	  return;
+56099	}
+56100	
+56101	
+56102	// ==== TArmyRecruits_DisbandUnits @ 004553b0 ====
+56103	
+56104	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+56105	
+56106	void TArmyRecruits_DisbandUnits(int param_1)
+56107	
+56108	{
+56109	  bool bVar1;
+56110	  short sVar2;
+56111	  int iVar3;
+56112	  uint uVar4;
+56113	  undefined4 uVar5;
+56114	  undefined4 extraout_EDX;
+56115	  int iVar6;
+56116	  undefined4 *in_FS_OFFSET;
+56117	  undefined4 uStack_15c;
+56118	  undefined *puStack_158;
+56119	  undefined1 *puStack_154;
+56120	  uint *puStack_144;
+56121	  byte abStack_140 [257];
+56122	  char acStack_3f [51];
+56123	  byte abStack_c [6];
+56124	  short sStack_6;
+56125	  
+56126	  puStack_154 = &stack0xfffffffc;
+56127	  puStack_144 = (uint *)0x0;
+56128	  puStack_158 = &UNK_00455557;
+56129	  uStack_15c = *in_FS_OFFSET;
+56130	  *in_FS_OFFSET = &uStack_15c;
+56131	  iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56132	  if (0 < iVar3) {
+56133	    FUN_00405b00(acStack_3f,"Are you sure you want to disband ");
+56134	    uVar4 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56135	    FUN_004028c4(uVar4,(char *)abStack_140);
+56136	    FUN_00402978(abStack_140,abStack_c);
+56137	    FUN_00405bc8(acStack_3f,(char *)abStack_c);
+56138	    FUN_00405bc8(acStack_3f," unit");
+56139	    iVar3 = FUN_00429eb8(*(int **)(param_1 + 0x220));
+56140	    if (1 < iVar3) {
+56141	      FUN_00405bc8(acStack_3f,"s");
+56142	    }
+56143	    FUN_00405bc8(acStack_3f,".");
+56144	    iVar3 = 0;
+56145	    FUN_00403458((int *)&puStack_144,acStack_3f,0x33);
+56146	    iVar3 = FUN_0042d750(puStack_144,CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_0045559c,iVar3
+56147	                        );
+56148	    if (iVar3 == 6) {
+56149	      iVar3 = (int)DAT_004a0320;
+56150	      sVar2 = (**(code **)(**(int **)(*(int *)(param_1 + 0x220) + 0xfc) + 0x10))();
+56151	      sVar2 = sVar2 + -1;
+56152	      if (-1 < sVar2) {
+56153	        do {
+56154	          bVar1 = FUN_00429fb4(*(int **)(param_1 + 0x220),(int)sVar2);
+56155	          if (bVar1) {
+56156	            sStack_6 = *(short *)(param_1 + 0x4de + sVar2 * 2);
+56157	            iVar6 = CONCAT22((short)((uint)(((short)(&DAT_00474958)[iVar3 * 0x24a + sStack_6 * 4] *
+56158	                                            1000) % (int)(&DAT_00474aa0)[iVar3 * 0x125]) >> 0x10),
+56159	                             (&DAT_00474ab2)[iVar3 * 0x24a]) + -1;
+56160	            (&DAT_00474ab2)[iVar3 * 0x24a] =
+56161	                 (short)iVar6 -
+56162	                 (short)(((short)(&DAT_00474958)[iVar3 * 0x24a + sStack_6 * 4] * 1000) /
+56163	                        (int)(&DAT_00474aa0)[iVar3 * 0x125]);
+56164	            uVar5 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),
+56165	                                            (&DAT_00474ab2)[iVar3 * 0x24a]));
+56166	            (&DAT_00474ab2)[iVar3 * 0x24a] = (short)uVar5;
+56167	            FUN_0044a610(DAT_004a0320,sStack_6);
+56168	          }
+56169	          sVar2 = sVar2 + -1;
+56170	        } while (sVar2 != -1);
+56171	      }
+56172	      TArmyRecruits_SetCityRecruits(param_1);
+56173	      *(undefined1 *)(param_1 + 0x52e) = 1;
+56174	    }
+56175	  }
+56176	  *in_FS_OFFSET = uStack_15c;
+56177	  puStack_154 = &UNK_0045555e;
+56178	  puStack_158 = &UNK_00455556;
+56179	  FUN_004032fc((int *)&puStack_144);
+56180	  return;
+56181	}
+56182	
+56183	
+56297	// ==== TBuildFleet_OK @ 00455a94 ====
+56298	
+56299	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+56300	
+56301	void TBuildFleet_OK(int *param_1)
+56302	
+56303	{
+56304	  undefined1 *puVar1;
+56305	  undefined4 extraout_EDX;
+56306	  undefined4 *in_FS_OFFSET;
+56307	  int iVar2;
+56308	  undefined4 uStack_4c;
+56309	  undefined *puStack_48;
+56310	  undefined1 *puStack_44;
+56311	  uint *puStack_34;
+56312	  char acStack_2d [41];
+56313	  
+56314	  puStack_44 = &stack0xfffffffc;
+56315	  puStack_34 = (uint *)0x0;
+56316	  puStack_48 = &UNK_00455b5d;
+56317	  uStack_4c = *in_FS_OFFSET;
+56318	  *in_FS_OFFSET = &uStack_4c;
+56319	  puVar1 = &stack0xfffffffc;
+56320	  if (0 < (short)param_1[0x7f]) {
+56321	    FUN_0044a004(DAT_004a0320,*(undefined2 *)((int)param_1 + 0x1fe),(short)param_1[0x7f]);
+56322	    FUN_00405b00(acStack_2d,"The fleet will be built at ");
+56323	    FUN_00405bc8(acStack_2d,&DAT_00479590 + *(short *)((int)param_1 + 0x1fe) * 0x22);
+56324	    FUN_00405bc8(acStack_2d,".");
+56325	    iVar2 = 0;
+56326	    FUN_00403458((int *)&puStack_34,acStack_2d,0x29);
+56327	    FUN_0042d750(puStack_34,CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_00455b8c,iVar2);
+56328	    TPremierForm_RefreshForms(DAT_004a0bd0);
+56329	    puVar1 = puStack_44;
+56330	  }
+56331	  puStack_44 = puVar1;
+56332	  param_1[0x4a] = 1;
+56333	  FUN_0042313c(param_1);
+56334	  *in_FS_OFFSET = uStack_4c;
+56335	  puStack_44 = &UNK_00455b64;
+56336	  puStack_48 = &UNK_00455b5c;
+56337	  FUN_004032fc((int *)&puStack_34);
+56338	  return;
+56339	}
+56340	
+56341	
+58004	// ==== TPremierForm_NewGame @ 0045a9e0 ====
+58005	
+58006	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58007	
+58008	void TPremierForm_NewGame(int param_1)
+58009	
+58010	{
+58011	  char cVar1;
+58012	  int iVar2;
+58013	  undefined4 extraout_EDX;
+58014	  short sVar3;
+58015	  
+58016	  cVar1 = FUN_00449050();
+58017	  if ((cVar1 != '\0') &&
+58018	     (iVar2 = FUN_0042d750((uint *)"Are you sure you want to start a new game ?",
+58019	                           CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_0045aa9c,0), iVar2 != 6)
+58020	     ) {
+58021	    return;
+58022	  }
+58023	  cVar1 = FUN_00449050();
+58024	  if (cVar1 != '\0') {
+58025	    if (DAT_004a0b7c == '\0') {
+58026	      TPremierForm_CloseAllForms(param_1);
+58027	    }
+58028	    else {
+58029	      TPremierForm_ResetBattle(param_1);
+58030	    }
+58031	  }
+58032	  func_0x004481a0();
+58033	  func_0x00448aa4();
+58034	  FUN_00424608(DAT_0045e628,0x456d00,(undefined4 *)0x4a0ba4);
+58035	  cVar1 = FUN_00449050();
+58036	  if (cVar1 == '\0') {
+58037	    TPremierForm_TurnMenusOff(param_1);
+58038	  }
+58039	  else {
+58040	    TPremierForm_TurnMenusOn(param_1);
+58041	    sVar3 = 0;
+58042	    do {
+58043	      TPremierForm_EnableNation(param_1,sVar3);
+58044	      sVar3 = sVar3 + 1;
+58045	    } while (sVar3 != 0x10);
+58046	    if ((&DAT_00474b00)[DAT_004a0320 * 0x494] == '\0') {
+58047	      FUN_00451fdc();
+58048	    }
+58049	    else {
+58050	      FUN_00452034();
+58051	    }
+58052	  }
+58053	  return;
+58054	}
+58055	
+58056	
+58136	// ==== TPremierForm_CheckQuit @ 0045abec ====
+58137	
+58138	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58139	
+58140	void TPremierForm_CheckQuit(int param_1,undefined4 param_2,undefined1 *param_3)
+58141	
+58142	{
+58143	  char cVar1;
+58144	  undefined1 uVar2;
+58145	  int iVar3;
+58146	  undefined4 extraout_EDX;
+58147	  
+58148	  cVar1 = FUN_00449050();
+58149	  if (cVar1 != '\0') {
+58150	    iVar3 = FUN_0042d750((uint *)"Are you sure you want to quit ?",
+58151	                         CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_0045ac28,0);
+58152	    if (iVar3 != 6) {
+58153	      uVar2 = 0;
+58154	      goto code_r0x0045ac1b;
+58155	    }
+58156	  }
+58157	  uVar2 = 1;
+58158	code_r0x0045ac1b:
+58159	  *param_3 = uVar2;
+58160	  *(undefined1 *)(param_1 + 0x433) = *param_3;
+58161	  return;
+58162	}
+58163	
+58164	
+58175	// ==== TPremierForm_StartTurn @ 0045ac5c ====
+58176	
+58177	void TPremierForm_StartTurn(int *param_1)
+58178	
+58179	{
+58180	  undefined4 extraout_ECX;
+58181	  undefined4 extraout_EDX;
+58182	  undefined4 extraout_EDX_00;
+58183	  undefined4 *in_FS_OFFSET;
+58184	  int iVar1;
+58185	  undefined4 uStack_b0;
+58186	  undefined1 *puStack_ac;
+58187	  undefined1 *puStack_a8;
+58188	  uint *local_98;
+58189	  char local_92 [71];
+58190	  char local_4b [71];
+58191	  
+58192	  puStack_a8 = &stack0xfffffffc;
+58193	  local_98 = (uint *)0x0;
+58194	  puStack_ac = &LAB_0045ae20;
+58195	  uStack_b0 = *in_FS_OFFSET;
+58196	  *in_FS_OFFSET = &uStack_b0;
+58197	  FUN_00412e34(param_1,0);
+58198	  TPremierForm_SelectNation((int)param_1,DAT_004a0320);
+58199	  TInformation_PrintNews(DAT_0045e70c);
+58200	  TPremierForm_OpenAllForms((int)param_1,extraout_EDX,extraout_ECX);
+58201	  TPremierForm_SetTurnTitle(param_1);
+58202	  if ((&DAT_00474adb)[DAT_004a0320 * 0x494] == '\0') {
+58203	    FUN_00424950(DAT_0045e628,'\0');
+58204	    FUN_0040fa38(param_1[0xb9],0);
+58205	  }
+58206	  else {
+58207	    FUN_00424950(DAT_0045e628,'\x01');
+58208	    FUN_0040fa38(param_1[0xb9],1);
+58209	  }
+58210	  DAT_004a0328 = 0xffff;
+58211	  DAT_004a032a = 0xffff;
+58212	  if ((-1 < DAT_0049f008) &&
+58213	     ((&DAT_00474696)[DAT_004a0320 * 0x24a + (int)DAT_0049f008] != DAT_0049f00a)) {
+58214	    if (DAT_0049f00a == 1) {
+58215	      FUN_00405b00(local_92,"trade");
+58216	    }
+58217	    else {
+58218	      FUN_00405b00(local_92,"form an alliance");
+58219	    }
+58220	    FUN_00405b00(local_4b,&DAT_00474670 + DAT_0049f008 * 0x494);
+58221	    FUN_00405bc8(local_4b," wants to ");
+58222	    FUN_00405bc8(local_4b,local_92);
+58223	    FUN_00405bc8(local_4b," with ");
+58224	    FUN_00405bc8(local_4b,&DAT_00474670 + DAT_004a0320 * 0x494);
+58225	    FUN_00405bc8(local_4b,".");
+58226	    iVar1 = 0;
+58227	    FUN_00403458((int *)&local_98,local_4b,0x47);
+58228	    FUN_0042d750(local_98,CONCAT31((int3)((uint)extraout_EDX_00 >> 8),2),DAT_0045ae64,iVar1);
+58229	  }
+58230	  *in_FS_OFFSET = uStack_b0;
+58231	  puStack_a8 = &LAB_0045ae27;
+58232	  puStack_ac = (undefined1 *)0x45ae1f;
+58233	  FUN_004032fc((int *)&local_98);
+58234	  return;
+58235	}
+58236	
+58237	
+58388	// ==== TPremierForm_NewNation @ 0045b198 ====
+58389	
+58390	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58391	
+58392	void TPremierForm_NewNation(int *param_1,undefined4 param_2)
+58393	
+58394	{
+58395	  char cVar1;
+58396	  int iVar2;
+58397	  
+58398	  iVar2 = FUN_0042d750((uint *)"Are you sure you want to lead a different nation ?",
+58399	                       CONCAT31((int3)((uint)param_2 >> 8),3),_UNK_0045b20c,0);
+58400	  if (iVar2 == 6) {
+58401	    FUN_00449078(DAT_004a0320);
+58402	    FUN_00424608(DAT_0045e628,0x456d00,(undefined4 *)0x4a0ba4);
+58403	    cVar1 = FUN_00449050();
+58404	    if (cVar1 == '\0') {
+58405	      FUN_00449078(0);
+58406	    }
+58407	    else if ((&DAT_00474b00)[DAT_004a0320 * 0x494] == '\0') {
+58408	      TPremierForm_EndTurn(param_1);
+58409	    }
+58410	  }
+58411	  return;
+58412	}
+58413	
+58414	
+58415	// ==== TPremierForm_Abdicate @ 0045b24c ====
+58416	
+58417	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58418	
+58419	void TPremierForm_Abdicate(int *param_1,undefined4 param_2)
+58420	
+58421	{
+58422	  char cVar1;
+58423	  int iVar2;
+58424	  
+58425	  iVar2 = FUN_0042d750((uint *)"Are you sure you want to abdicate ?",
+58426	                       CONCAT31((int3)((uint)param_2 >> 8),3),_UNK_0045b28c,0);
+58427	  if (iVar2 == 6) {
+58428	    FUN_00449078(DAT_004a0320);
+58429	    cVar1 = FUN_00449050();
+58430	    if (cVar1 != '\0') {
+58431	      TPremierForm_EndTurn(param_1);
+58432	    }
+58433	  }
+58434	  return;
+58435	}
+58436	
+58437	
+58469	// ==== TPremierForm_BuildNewFleet @ 0045b3a8 ====
+58470	
+58471	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58472	
+58473	void TPremierForm_BuildNewFleet(void)
+58474	
+58475	{
+58476	  undefined4 extraout_EDX;
+58477	  undefined4 extraout_EDX_00;
+58478	  undefined3 uVar1;
+58479	  undefined4 *puVar2;
+58480	  short sVar3;
+58481	  undefined4 *in_FS_OFFSET;
+58482	  int iVar4;
+58483	  undefined4 uStack_178;
+58484	  undefined *puStack_174;
+58485	  undefined1 *puStack_170;
+58486	  uint *puStack_160;
+58487	  byte abStack_15c [257];
+58488	  char acStack_5b [81];
+58489	  byte abStack_a [5];
+58490	  char cStack_5;
+58491	  
+58492	  puStack_170 = &stack0xfffffffc;
+58493	  puStack_160 = (uint *)0x0;
+58494	  puStack_174 = &UNK_0045b56d;
+58495	  uStack_178 = *in_FS_OFFSET;
+58496	  *in_FS_OFFSET = &uStack_178;
+58497	  cStack_5 = '\0';
+58498	  if (-1 < (short)(DAT_004a0326 + -1)) {
+58499	    puVar2 = &DAT_0049c26c;
+58500	    sVar3 = DAT_004a0326;
+58501	    puStack_170 = &stack0xfffffffc;
+58502	    do {
+58503	      if ((*(short *)(puVar2 + 2) == DAT_004a0320) && (-1 < *(short *)((int)puVar2 + 10))) {
+58504	        FUN_00405b00(acStack_5b,"A fleet of ");
+58505	        FUN_004028c4((int)*(short *)((int)puVar2 + 0x12),(char *)abStack_15c);
+58506	        FUN_00402978(abStack_15c,abStack_a);
+58507	        FUN_00405bc8(acStack_5b,(char *)abStack_a);
+58508	        FUN_00405bc8(acStack_5b," ships will be ready in ");
+58509	        FUN_004028c4((int)*(short *)((int)puVar2 + 10),(char *)abStack_15c);
+58510	        FUN_00402978(abStack_15c,abStack_a);
+58511	        FUN_00405bc8(acStack_5b,(char *)abStack_a);
+58512	        FUN_00405bc8(acStack_5b," weeks at ");
+58513	        FUN_00405bc8(acStack_5b,&DAT_00479590 + *(short *)(puVar2 + 5) * 0x22);
+58514	        FUN_00405bc8(acStack_5b,".");
+58515	        iVar4 = 0;
+58516	        FUN_00403458((int *)&puStack_160,acStack_5b,0x51);
+58517	        FUN_0042d750(puStack_160,CONCAT31((int3)((uint)extraout_EDX >> 8),2),_UNK_0045b5b4,iVar4);
+58518	        cStack_5 = '\x01';
+58519	      }
+58520	      puVar2 = (undefined4 *)((int)puVar2 + 0x1a);
+58521	      sVar3 = sVar3 + -1;
+58522	    } while (sVar3 != 0);
+58523	  }
+58524	  sVar3 = FUN_004496e0(DAT_004a0320);
+58525	  uVar1 = (undefined3)((uint)extraout_EDX_00 >> 8);
+58526	  if (sVar3 == -1) {
+58527	    if (cStack_5 == '\0') {
+58528	      FUN_0042d750((uint *)"Only nations with coastal cities can build fleets.",CONCAT31(uVar1,2),
+58529	                   _UNK_0045b5b4,0);
+58530	    }
+58531	    else {
+58532	      FUN_0042d750((uint *)"You do not have a free coastal city at this time.",CONCAT31(uVar1,2),
+58533	                   _UNK_0045b5b4,0);
+58534	    }
+58535	  }
+58536	  else if (DAT_004a0326 == 99) {
+58537	    FUN_0042d750((uint *)"You cannot build a fleet at this time.",CONCAT31(uVar1,2),_UNK_0045b5b4,0)
+58538	    ;
+58539	  }
+58540	  else {
+58541	    FUN_00424608(DAT_0045e628,0x455600,(undefined4 *)0x4a0b90);
+58542	  }
+58543	  *in_FS_OFFSET = uStack_178;
+58544	  puStack_170 = &UNK_0045b574;
+58545	  puStack_174 = &UNK_0045b56c;
+58546	  FUN_004032fc((int *)&puStack_160);
+58547	  return;
+58548	}
+58549	
+58550	
+31768	// ==== FUN_0042d750 @ 0042d750 ====
+31769	
+31770	void FUN_0042d750(uint *param_1,undefined4 param_2,ushort param_3,int param_4)
+31771	
+31772	{
+31773	  FUN_0042d770(param_1,param_2,param_3,-1,-1,param_4);
+31774	  return;
+31775	}
+31776	
+31777	
+31778	// ==== FUN_0042d770 @ 0042d770 ====
+31779	
+31780	void FUN_0042d770(uint *param_1,undefined4 param_2,ushort param_3,int param_4,int param_5,
+31781	                 int param_6)
+31782	
+31783	{
+31784	  int *piVar1;
+31785	  undefined4 *in_FS_OFFSET;
+31786	  undefined4 uStack_24;
+31787	  undefined1 *puStack_20;
+31788	  undefined1 *puStack_1c;
+31789	  
+31790	  puStack_1c = (undefined1 *)0x42d791;
+31791	  piVar1 = (int *)FUN_0042d2f4(param_1,param_2,param_3);
+31792	  puStack_20 = &LAB_0042d7eb;
+31793	  uStack_24 = *in_FS_OFFSET;
+31794	  *in_FS_OFFSET = &uStack_24;
+31795	  piVar1[0x34] = param_6;
+31796	  puStack_1c = &stack0xfffffffc;
+31797	  if (-1 < param_5) {
+31798	    puStack_1c = &stack0xfffffffc;
+31799	    FUN_004127a0(piVar1,param_5);
+31800	  }
+31801	  if (-1 < param_4) {
+31802	    FUN_004127c0(piVar1,param_4);
+31803	  }
+31804	  FUN_00422f40(piVar1);
+31805	  *in_FS_OFFSET = uStack_24;
+31806	  puStack_1c = &LAB_0042d7f2;
+31807	  puStack_20 = (undefined1 *)0x42d7ea;
+31808	  TObject_Free(piVar1);
+31809	  return;
+31810	}
+31811	
+31812	
+49019	// ==== FUN_0044a66c @ 0044a66c ====
+49020	
+49021	int FUN_0044a66c(short param_1)
+49022	
+49023	{
+49024	  int iVar1;
+49025	  undefined4 *puVar2;
+49026	  int iVar3;
+49027	  
+49028	  iVar3 = -1;
+49029	  iVar1 = 0;
+49030	  puVar2 = &DAT_0047c1ec;
+49031	  do {
+49032	    if (0 < *(short *)(puVar2 + param_1 * 0xa4 + 5)) {
+49033	      iVar3 = iVar1;
+49034	    }
+49035	    iVar1 = iVar1 + 1;
+49036	    puVar2 = puVar2 + 8;
+49037	  } while ((short)iVar1 != 0x14);
+49038	  return iVar3 + 1;
+49039	}
+49040	
+49041	
+49042	// ==== FUN_0044a698 @ 0044a698 ====
+49043	
+49044	int FUN_0044a698(short param_1)
+49045	
+49046	{
+49047	  int iVar1;
+49048	  undefined4 *puVar2;
+49049	  int iVar3;
+49050	  
+49051	  iVar3 = 0;
+49052	  iVar1 = 0x14;
+49053	  puVar2 = &DAT_0047c1ec;
+49054	  do {
+49055	    iVar3 = iVar3 + *(short *)(puVar2 + param_1 * 0xa4 + 5);
+49056	    puVar2 = puVar2 + 8;
+49057	    iVar1 = iVar1 + -1;
+49058	  } while (iVar1 != 0);
+49059	  if (iVar3 == 0) {
+49060	    iVar3 = 1;
+49061	  }
+49062	  return iVar3;
+49063	}
+49064	
+49065	
+48066	// ==== FUN_004494e4 @ 004494e4 ====
+48067	
+48068	undefined2 FUN_004494e4(undefined *param_1,undefined *param_2)
+48069	
+48070	{
+48071	  short sVar1;
+48072	  short sVar2;
+48073	  short sVar3;
+48074	  undefined4 uVar4;
+48075	  undefined4 uVar5;
+48076	  undefined2 extraout_var;
+48077	  undefined *puVar6;
+48078	  undefined *extraout_EDX;
+48079	  short sVar7;
+48080	  short sVar8;
+48081	  short local_1a;
+48082	  short sStack_18;
+48083	  undefined2 local_16;
+48084	  undefined4 local_14;
+48085	  
+48086	  sVar2 = (short)param_1;
+48087	  local_16 = 0xffff;
+48088	  sVar8 = -1;
+48089	  puVar6 = param_2;
+48090	  do {
+48091	    sVar7 = -1;
+48092	    do {
+48093	      local_1a = (short)param_2;
+48094	      uVar4 = FUN_00448fd0(CONCAT22((short)((uint)param_1 >> 0x10),0x13f),
+48095	                           CONCAT22((short)((uint)puVar6 >> 0x10),local_1a + sVar8));
+48096	      uVar4 = FUN_00448fd8(0,uVar4);
+48097	      sStack_18 = (short)((uint)param_2 >> 0x10);
+48098	      uVar5 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x8b),
+48099	                           CONCAT22(extraout_var,sStack_18 + sVar7));
+48100	      uVar5 = FUN_00448fd8(0,uVar5);
+48101	      sVar3 = (short)uVar5;
+48102	      local_14 = CONCAT22(sVar3,(short)uVar4);
+48103	      puVar6 = &DAT_0045e870 + (short)uVar4 * 0x118;
+48104	      sVar1 = *(short *)(puVar6 + sVar3 * 2);
+48105	      param_1 = (undefined *)CONCAT22(sVar3 >> 0xf,sVar1);
+48106	      if ((0x13 < sVar1) && (puVar6 = (undefined *)(int)sVar3, sVar1 < 100)) {
+48107	        param_1 = (undefined *)((int)sVar1 - 0x14U & 0x8000000f);
+48108	        if ((int)param_1 < 0) {
+48109	          param_1 = (undefined *)(((uint)(param_1 + -1) | 0xfffffff0) + 1);
+48110	        }
+48111	        puVar6 = (undefined *)(int)sVar2;
+48112	        if (param_1 == puVar6) {
+48113	          param_1 = (undefined *)FUN_004498d8(local_14);
+48114	          local_16 = SUB42(param_1,0);
+48115	          puVar6 = extraout_EDX;
+48116	        }
+48117	      }
+48118	      sVar7 = sVar7 + 1;
+48119	    } while (sVar7 != 2);
+48120	    sVar8 = sVar8 + 1;
+48121	  } while (sVar8 != 2);
+48122	  return local_16;
+48123	}
+48124	
+48125	
+47907	// ==== FUN_004492a0 @ 004492a0 ====
+47908	
+47909	bool FUN_004492a0(undefined4 param_1,undefined4 param_2)
+47910	
+47911	{
+47912	  short sVar1;
+47913	  
+47914	  sVar1 = FUN_00449018(param_1,param_2);
+47915	  return sVar1 == 1;
+47916	}
+47917	
+47918	
+47727	// ==== FUN_00449018 @ 00449018 ====
+47728	
+47729	void FUN_00449018(undefined4 param_1,undefined4 param_2)
+47730	
+47731	{
+47732	  uint uVar1;
+47733	  uint uVar2;
+47734	  undefined2 local_8;
+47735	  undefined2 uStack_6;
+47736	  undefined2 local_4;
+47737	  undefined2 uStack_2;
+47738	  
+47739	  uStack_6 = (short)((uint)param_1 >> 0x10);
+47740	  uStack_2 = (short)((uint)param_2 >> 0x10);
+47741	  uVar1 = (int)uStack_6 - (int)uStack_2 >> 0x1f;
+47742	  local_8 = (short)param_1;
+47743	  local_4 = (short)param_2;
+47744	  uVar2 = (int)local_8 - (int)local_4 >> 0x1f;
+47745	  FUN_00448fd8(((int)local_8 - (int)local_4 ^ uVar2) - uVar2,
+47746	               ((int)uStack_6 - (int)uStack_2 ^ uVar1) - uVar1);
+47747	  return;
+47748	}
+47749	
+47750	
+48596	// ==== FUN_00449d64 @ 00449d64 ====
+48597	
+48598	void FUN_00449d64(short param_1,short *param_2)
+48599	
+48600	{
+48601	  bool bVar1;
+48602	  short *psVar2;
+48603	  short sVar3;
+48604	  short sVar4;
+48605	  
+48606	  *param_2 = -1;
+48607	  if (-1 < (short)(DAT_004a0324 + -1)) {
+48608	    sVar4 = 0;
+48609	    psVar2 = &DAT_0047c1f0;
+48610	    sVar3 = DAT_004a0324;
+48611	    do {
+48612	      if ((sVar4 != param_1) && ((&DAT_0047c1f0)[param_1 * 0x148] == *psVar2)) {
+48613	        bVar1 = FUN_004492a0((&DAT_0047c1ec)[param_1 * 0xa4],*(undefined4 *)(psVar2 + -2));
+48614	        if (bVar1) {
+48615	          *param_2 = sVar4;
+48616	        }
+48617	      }
+48618	      sVar4 = sVar4 + 1;
+48619	      psVar2 = psVar2 + 0x148;
+48620	      sVar3 = sVar3 + -1;
+48621	    } while (sVar3 != 0);
+48622	  }
+48623	  return;
+48624	}
+48625	
+48626	
+48627	// ==== FUN_00449dd8 @ 00449dd8 ====
+48628	
+48629	void FUN_00449dd8(short param_1,short *param_2)
+48630	
+48631	{
+48632	  bool bVar1;
+48633	  short *psVar2;
+48634	  short sVar3;
+48635	  short sVar4;
+48636	  
+48637	  *param_2 = -1;
+48638	  if (-1 < (short)(DAT_004a0326 + -1)) {
+48639	    sVar4 = 0;
+48640	    psVar2 = &DAT_0049c274;
+48641	    sVar3 = DAT_004a0326;
+48642	    do {
+48643	      if (((sVar4 != param_1) && ((&DAT_0049c274)[param_1 * 0xd] == *psVar2)) && (psVar2[1] == -1))
+48644	      {
+48645	        bVar1 = FUN_004492a0(*(undefined4 *)((int)&DAT_0049c26c + param_1 * 0x1a),
+48646	                             *(undefined4 *)(psVar2 + -4));
+48647	        if (bVar1) {
+48648	          *param_2 = sVar4;
+48649	        }
+48650	      }
+48651	      sVar4 = sVar4 + 1;
+48652	      psVar2 = psVar2 + 0xd;
+48653	      sVar3 = sVar3 + -1;
+48654	    } while (sVar3 != 0);
+48655	  }
+48656	  return;
+48657	}
+48658	
+48659	
+48572	// ==== FUN_00449d08 @ 00449d08 ====
+48573	
+48574	void FUN_00449d08(short param_1,short *param_2)
+48575	
+48576	{
+48577	  bool bVar1;
+48578	  int iVar2;
+48579	  short sVar3;
+48580	  
+48581	  *param_2 = -1;
+48582	  for (sVar3 = 0xc9; (*param_2 == -1 && (sVar3 < 0xfb)); sVar3 = sVar3 + 1) {
+48583	    if (-1 < *(short *)(&DAT_0049d0ac + sVar3 * 0xc)) {
+48584	      bVar1 = FUN_004492a0((&DAT_0047c1ec)[param_1 * 0xa4],
+48585	                           *(undefined4 *)(&DAT_0049d0a4 + sVar3 * 0xc));
+48586	      if (bVar1) {
+48587	        iVar2 = FUN_004498d8(*(undefined4 *)(&DAT_0049d0a4 + sVar3 * 0xc));
+48588	        *param_2 = (short)iVar2;
+48589	      }
+48590	    }
+48591	  }
+48592	  return;
+48593	}
+48594	
+48595	
+48549	// ==== FUN_00449cd8 @ 00449cd8 ====
+48550	
+48551	undefined4 FUN_00449cd8(short param_1)
+48552	
+48553	{
+48554	  short sVar1;
+48555	  undefined *puVar2;
+48556	  undefined4 uVar3;
+48557	  
+48558	  uVar3 = 0;
+48559	  sVar1 = 0x10;
+48560	  puVar2 = &DAT_00474670;
+48561	  do {
+48562	    if (*(short *)(puVar2 + param_1 * 0x494 + 0x26) == 3) {
+48563	      uVar3 = 1;
+48564	    }
+48565	    puVar2 = puVar2 + 2;
+48566	    sVar1 = sVar1 + -1;
+48567	  } while (sVar1 != 0);
+48568	  return uVar3;
+48569	}
+48570	
+48571	
+48392	// ==== FUN_004499c0 @ 004499c0 ====
+48393	
+48394	int FUN_004499c0(short param_1)
+48395	
+48396	{
+48397	  short sVar1;
+48398	  undefined *puVar2;
+48399	  int iVar3;
+48400	  
+48401	  iVar3 = 0;
+48402	  sVar1 = 0x10;
+48403	  puVar2 = &DAT_00474670;
+48404	  do {
+48405	    if (*(short *)(puVar2 + param_1 * 0x494 + 0x26) == 1) {
+48406	      iVar3 = iVar3 + 1;
+48407	    }
+48408	    puVar2 = puVar2 + 2;
+48409	    sVar1 = sVar1 + -1;
+48410	  } while (sVar1 != 0);
+48411	  return iVar3;
+48412	}
+48413	
+48414	
+48256	// ==== FUN_004497cc @ 004497cc ====
+48257	
+48258	undefined4 FUN_004497cc(short param_1)
+48259	
+48260	{
+48261	  short sVar1;
+48262	  short sVar2;
+48263	  undefined *puVar3;
+48264	  int iVar4;
+48265	  undefined4 uVar5;
+48266	  short sVar6;
+48267	  short sVar7;
+48268	  undefined4 local_16;
+48269	  undefined1 local_12;
+48270	  
+48271	  local_12 = 0;
+48272	  sVar7 = -1;
+48273	  do {
+48274	    sVar6 = -1;
+48275	    do {
+48276	      sVar1 = *(short *)((int)&DAT_0047959e + param_1 * 0x22) + sVar7;
+48277	      sVar2 = *(short *)((int)&DAT_0047959e + param_1 * 0x22 + 2) + sVar6;
+48278	      local_16 = CONCAT22(sVar2,sVar1);
+48279	      sVar1 = *(short *)(&DAT_0045e870 + sVar2 * 2 + sVar1 * 0x118);
+48280	      puVar3 = (undefined *)CONCAT22(sVar2 >> 0xf,sVar1);
+48281	      if ((199 < sVar1) && (sVar1 < 0xf8)) {
+48282	        iVar4 = FUN_00449920(local_16);
+48283	        uVar5 = FUN_00448fd8(0,iVar4);
+48284	        puVar3 = &DAT_00474670 + (short)(&DAT_0047c1f0)[(short)uVar5 * 0x148] * 0x494;
+48285	        if ((&DAT_00474696)
+48286	            [(short)(&DAT_0047c1f0)[(short)uVar5 * 0x148] * 0x24a +
+48287	             (int)(short)(&DAT_004795a2)[param_1 * 0x11]] == 3) {
+48288	          local_12 = 1;
+48289	        }
+48290	      }
+48291	      sVar6 = sVar6 + 1;
+48292	    } while (sVar6 != 2);
+48293	    sVar7 = sVar7 + 1;
+48294	  } while (sVar7 != 2);
+48295	  return CONCAT31((int3)((uint)puVar3 >> 8),local_12);
+48296	}
+48297	
+48298	
+48200	// ==== FUN_004496e0 @ 004496e0 ====
+48201	
+48202	short FUN_004496e0(short param_1)
+48203	
+48204	{
+48205	  short sVar1;
+48206	  undefined4 uVar2;
+48207	  undefined4 *puVar3;
+48208	  undefined *puVar4;
+48209	  short sVar5;
+48210	  short sVar6;
+48211	  short local_1a;
+48212	  short local_18;
+48213	  undefined4 local_16;
+48214	  
+48215	  local_1a = -1;
+48216	  local_18 = 1000;
+48217	  sVar6 = 0;
+48218	  puVar4 = &DAT_00479590;
+48219	  do {
+48220	    if (*(short *)(puVar4 + 0x12) == param_1) {
+48221	      uVar2 = FUN_004496bc(*(undefined4 *)(puVar4 + 0xe));
+48222	      if ((char)uVar2 == '\0') {
+48223	        local_16 = *(undefined4 *)(puVar4 + 0xe);
+48224	        FUN_004492c0((short *)&local_16,0);
+48225	        if (-1 < (short)local_16) {
+48226	          sVar1 = FUN_00449018(*(undefined4 *)(puVar4 + 0xe),
+48227	                               *(undefined4 *)
+48228	                                ((int)&DAT_0047959e + (short)(&DAT_00474ab4)[param_1 * 0x24a] * 0x22
+48229	                                ));
+48230	          if (-1 < (short)(DAT_004a0326 + -1)) {
+48231	            puVar3 = &DAT_0049c26c;
+48232	            sVar5 = DAT_004a0326;
+48233	            do {
+48234	              if (((*(short *)(puVar3 + 2) == param_1) && (-1 < DAT_004a0330)) &&
+48235	                 (sVar6 == *(short *)(puVar3 + 5))) {
+48236	                sVar1 = 2000;
+48237	              }
+48238	              puVar3 = (undefined4 *)((int)puVar3 + 0x1a);
+48239	              sVar5 = sVar5 + -1;
+48240	            } while (sVar5 != 0);
+48241	          }
+48242	          if (sVar1 < local_18) {
+48243	            local_1a = sVar6;
+48244	            local_18 = sVar1;
+48245	          }
+48246	        }
+48247	      }
+48248	    }
+48249	    sVar6 = sVar6 + 1;
+48250	    puVar4 = puVar4 + 0x22;
+48251	  } while (sVar6 != 0x14e);
+48252	  return local_1a;
+48253	}
+48254	
+48255	
+48185	// ==== FUN_004496bc @ 004496bc ====
+48186	
+48187	undefined4 FUN_004496bc(int param_1)
+48188	
+48189	{
+48190	  undefined2 local_4;
+48191	  
+48192	  local_4 = (short)param_1;
+48193	  if ((local_4 < 0xf8) && ((local_4 < 0xd6 || (param_1 < 0x630000)))) {
+48194	    return 0;
+48195	  }
+48196	  return CONCAT31((int3)((uint)param_1 >> 8),1);
+48197	}
+48198	
+48199	
+48951	// ==== FUN_0044a4e0 @ 0044a4e0 ====
+48952	
+48953	void FUN_0044a4e0(short param_1,short param_2,undefined1 *param_3)
+48954	
+48955	{
+48956	  undefined2 *puVar1;
+48957	  int iVar2;
+48958	  short local_e;
+48959	  short local_c;
+48960	  short local_a;
+48961	  short local_8;
+48962	  short local_6;
+48963	  
+48964	  *param_3 = 1;
+48965	  local_8 = *(short *)(&DAT_0047495a + param_2 * 8 + param_1 * 0x494);
+48966	  local_a = param_2;
+48967	  local_6 = param_1;
+48968	  FUN_0044a120(&local_c,&local_e,param_3,(int)&stack0xfffffffc);
+48969	  if (local_c == -1) {
+48970	    FUN_00449f08(local_6,*(undefined4 *)((int)&DAT_0047959e + local_8 * 0x22),&local_c);
+48971	    local_e = 0;
+48972	  }
+48973	  if (local_c == -1) {
+48974	    *param_3 = 0;
+48975	  }
+48976	  else {
+48977	    puVar1 = &DAT_0047c1fc + local_c * 0x148 + local_e * 0x10;
+48978	    *puVar1 = 0;
+48979	    puVar1[2] = (&DAT_00474958)[local_6 * 0x24a + local_a * 4];
+48980	    puVar1[1] = (&DAT_00474956)[local_6 * 0x24a + local_a * 4];
+48981	    iVar2 = (int)(short)(&DAT_00474954)[local_6 * 0x24a + local_a * 4];
+48982	    if (iVar2 < 0) {
+48983	      iVar2 = iVar2 + 3;
+48984	    }
+48985	    puVar1[3] = (short)(iVar2 >> 2);
+48986	    FUN_0044a218(local_c,local_e);
+48987	    FUN_0044a610(local_6,local_a);
+48988	    FUN_0044a80c(local_c);
+48989	  }
+48990	  return;
+48991	}
+48992	
+48993	
