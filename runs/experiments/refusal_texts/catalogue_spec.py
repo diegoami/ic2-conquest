@@ -47,7 +47,7 @@ row(46910, 'R09', 'refusal', 'army order: Recruit mercenaries (button)', '2 of 5
     'dropped: the dialog does not open', plays=['M02'])
 row(46888, 'R10', 'refusal', 'army order: Recruit mercenaries (button)', '3 of 5',
     'the offer\'s city owner is at war with the current nation: %s' % C(46887, '[(short)(&DAT_004795a2)[(short)local_14 * 0x11] * 0x24a + (int)DAT_004a0320] == 3) {'),
-    'dropped: the dialog does not open')
+    'dropped: the dialog does not open', plays=['M04'])
 row(46894, 'R11', 'refusal', 'army order: Recruit mercenaries (button)', '4 of 5',
     'supplies x 10000 / troops is below 15: %s' % C(46893, '< 0xf) {'),
     'dropped: the dialog does not open', plays=['M01'])
@@ -87,7 +87,7 @@ row(47362, 'R21', 'refusal', 'fleet order: Scuttle fleet', '1 of 2',
 # ---------------------------------------------------------------- city
 row(47401, 'R22', 'refusal', 'city order: Fortify city', '1 of 3',
     'an own city is selected and an enemy army is next to it (FUN_004497cc returns 1): the else of %s' % C(47386, "if ((char)uVar2 == '\\0') {"),
-    'dropped: the Fortify dialog does not open')
+    'dropped: the Fortify dialog does not open', plays=['C03'])
 row(47388, 'R23', 'refusal', 'city order: Fortify city', '2 of 3',
     'not under siege and the fortification word equals 100: %s' % C(47387, 'if ((&DAT_004795aa)[sVar1 * 0x11] == 100) {'),
     'dropped: the dialog does not open', plays=['C01'])
@@ -97,10 +97,10 @@ row(47396, 'R24', 'refusal', 'city order: Fortify city', '3 of 3',
 # ---------------------------------------------------------------- mercenary hire dialog
 row(43637, 'R25', 'refusal', 'mercenary dialog: Recruit unit', '1 of 3',
     'the army\'s purse is smaller than the hire price: %s' % C(43633, 'if ((short)(&DAT_0047c1f8)[sVar4 * 0x148] <'),
-    'dropped: the unit is not hired; the dialog stays open')
+    'dropped: the unit is not hired; the dialog stays open', plays=['MM01'])
 row(43691, 'R26', 'refusal', 'mercenary dialog: Recruit unit', '2 of 3',
     'the army\'s troops plus the unit\'s troops would be 100,001 or more: the pass test is %s' % C(43644, '0x186a1) {'),
-    'dropped: the unit is not hired')
+    'dropped: the unit is not hired', plays=['MM02'])
 row(43652, 'R27', 'refusal', 'mercenary dialog: Recruit unit', '3 of 3',
     'the army is aboard a fleet (fleet index >= 0) whose ships are fewer than (troops + the unit) / 500: %s' % C(43648, 'if ((int)(short)(&DAT_0049c27e)[sVar4 * 0xd] <'),
     'dropped: the unit is not hired (the code returns)')
@@ -120,10 +120,10 @@ for (sfx, lines, c20, ctr, cfl) in (('Army1Transfer', (44155, 44159, 44164), C(4
         'clamped per unit: that unit stays (the code jumps over the move)')
 row(44326, 'R34', 'refusal', 'army to army dialog: Disband (Army1Disband)', 'after the prompt P06, once per order',
     'a regular unit (label 0, %s) is selected and no own city is next to the first army of the dialog (%s; +0x770 is set from that army\'s tile: %s)' % (C(44312, '(*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0)) {'), C(44311, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
-    'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop')
+    'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop', plays=['TD01'])
 row(44412, 'R35', 'refusal', 'army to army dialog: Disband (Army2Disband)', 'after the prompt P07, once per order',
     'a regular unit (label 0, %s) is selected and no own city is next to the FIRST army of the dialog (%s: the same word +0x770 as for the first list, set at %s)' % (C(44398, '(*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0)) {'), C(44397, 'if ((*(short *)(param_1 + 0x770) == -1) &&'), C(43793, 'uVar1 = FUN_004494e4((undefined *)')),
-    'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop')
+    'clamped: mercenary units of the selection are removed; regular units are kept; one box after the loop', plays=['TD02'])
 # ---------------------------------------------------------------- change units
 row(45513, 'R36', 'refusal', 'Change units: Rename unit (D05)', '1 of 2',
     'two or more units are selected: the else of %s' % C(45487, 'if (iVar2 < 2) {'),
@@ -190,7 +190,7 @@ row(55321, 'R54', 'refusal', 'International relations: alliance', '1 of 1',
 # ---------------------------------------------------------------- build fleet
 row(58528, 'R55', 'refusal', 'Build fleet (Strategy menu or toolbar)', '1 of 3 (when no own fleet is under construction)',
     'no own city is a free coastal city (FUN_004496e0 returns -1, %s) and no own fleet is under construction (%s)' % (C(58526, 'if (sVar3 == -1) {'), C(58527, "if (cStack_5 == '\\0') {")),
-    'dropped: the dialog does not open')
+    'dropped: the dialog does not open', plays=['BF01'])
 row(58532, 'R56', 'refusal', 'Build fleet (Strategy menu or toolbar)', '2 of 3',
     'no free coastal city and at least one own fleet is under construction: the else of %s' % C(58527, "if (cStack_5 == '\\0') {"),
     'dropped: the dialog does not open (the notices N02 are shown first for each fleet under construction)')
@@ -206,9 +206,9 @@ prompt(47345, 'P02', 'fleet order: Scuttle fleet', 'no army aboard and an own ci
 prompt(46541, 'P03', 'unit map: attack a city', 'an own army with moves is next to a city of another nation that is not already at war with the current nation', 'Yes (6) sets the relation to 3 (war) and starts the attack; No or Cancel: nothing happens')
 prompt(46566, 'P04', 'unit map: attack an army', 'an own army with moves is next to an army of another nation that is not at war', 'Yes (6) declares war and attacks; No or Cancel: nothing')
 prompt(46623, 'P05', 'unit map: attack a fleet', 'an own fleet with moves is next to an enemy fleet not docked at its city (see R07) and not at war', 'Yes (6) declares war and attacks; No or Cancel: nothing')
-prompt(44300, 'P06', 'army to army dialog: Disband (Army1Disband)', 'one or more units selected', 'Yes (6) removes the units, subject to R34; text built from the count',
+prompt(44300, 'P06', 'army to army dialog: Disband (Army1Disband)', 'one or more units selected', 'Yes (6) removes the units, subject to R34; text built from the count', plays=['TD01'],
        tmpl=[('lit', 44287), ('var', 'number of selected units'), ('lit', 44292), ('lit', 44295), ('lit', 44297)])
-prompt(44386, 'P07', 'army to army dialog: Disband (Army2Disband)', 'one or more units selected', 'Yes (6) removes the units, subject to R35; text built from the count',
+prompt(44386, 'P07', 'army to army dialog: Disband (Army2Disband)', 'one or more units selected', 'Yes (6) removes the units, subject to R35; text built from the count', plays=['TD02'],
        tmpl=[('lit', 44373), ('var', 'number of selected units'), ('lit', 44378), ('lit', 44381), ('lit', 44383)])
 prompt(45732, 'P08', 'Change units: Disband', 'one or more units selected', 'Yes (6) removes the units, subject to R45; text built from the count', plays=['CU07', 'CU08'],
        tmpl=[('lit', 45719), ('var', 'number of selected units'), ('lit', 45724), ('lit', 45727), ('lit', 45729)])

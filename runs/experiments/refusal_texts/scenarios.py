@@ -176,3 +176,19 @@ SC['BF01'] = dict(src=GF('S10_Dacia_AUTO0720.SAV'), act=lambda g: g.tool('build_
                   fixture_note='from release run-exp-civ-sweep')
 SC['A01b'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1)], act=lambda g: army_button(g, 12, 'join'),
                   note='Join armies from army 12 (moves staged to 3) next to army 0, aboard fleet 2; army 13, the other own army next to army 12 and the partner the game would pick first (the last in index order), is staged to nation 1 so that army 0 is the partner')
+
+def td_act(side):
+    def act(g):
+        army_button(g, 0, 'transfer'); open_dialog_tracked(g, 'Army to army transfer', lambda: None, tries=1)
+        cs = g.controls('Army to army transfer')
+        lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
+        g.click(lists[side]['x'] + lists[side]['w'] // 2, lists[side]['y'] + 12, pause=0.5)
+        db = sorted((c for c in cs if c['text'] == 'Disband'), key=lambda c: c['x'])
+        if len(db) != 2: raise _drv.DriverError('expected two Disband buttons, found %d' % len(db))
+        g.click_control(db[side], pause=1.2)
+        confirm_step(g, 'Yes')
+    return act
+SC['TD01'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6)])), ('units', 1, named([U('hi', 3000, 7), U('li', 2000, 6)]))], act=td_act(0), post=tr_post,
+                  note='Army to army transfer dialog: Disband (left button) the first unit of army 0 at (103,36), far from a city; Confirm answered Yes')
+SC['TD02'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6)])), ('units', 1, named([U('hi', 3000, 7), U('li', 2000, 6)]))], act=td_act(1), post=tr_post,
+                  note='Army to army transfer dialog: Disband (right button) the first unit of army 1, far from a city; Confirm answered Yes')
