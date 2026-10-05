@@ -163,9 +163,11 @@ def split_army_via_menu(g, tries=3):
     verified: the top menu by the words army/fleet/city, the submenu by split/disband, the dialog by its window. At most two retries per transition."""
     for attempt in range(tries):
         g.reset_ui()
-        g.click(_drv.MENU['unit'], 36, pause=1.0)                                  # the driver's menu-bar position for "Unit map"
+        bar = [w for w in _screen_words(g, (0, 26, 650, 24)) if w[0] == 'unit']           # the menu bar, found by OCR (not a fixed point)
+        if not bar: continue
+        g.click(bar[0][1], bar[0][2], pause=1.0)
         if {'army', 'fleet', 'city'} <= {w[0] for w in _screen_words(g, MENU_REGION)}: break
-    else: raise _drv.DriverError('the Unit map menu did not open after %d attempts' % tries)
+    else: raise _drv.DriverError('the Unit map menu did not open after %d attempts (menu bar OCR + verification)' % tries)
     menu_step(g, 'army', ['split', 'disband'])
     for attempt in range(tries):
         hit = [w for w in _screen_words(g, MENU_REGION) if w[0] == 'split']

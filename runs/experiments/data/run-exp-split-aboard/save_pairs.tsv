@@ -1,3 +1,4 @@
 run	start	before_split	after_split	note
 first	SA_00_start.SAV	SA_01_aboard_before_split.v2.SAV	SA_02_after_split.SAV	split_aboard.py first run, raw screen-coordinate clicks (superseded by the calibrated run, kept)
 calibrated	SA_00_start.v2.SAV	SA_01_aboard_before_split.v3.SAV	SA_02_after_split.v2.SAV	split_aboard.py re-run with split_army_via_menu (OCR-calibrated, verified transitions)
+fully-calibrated	SA_00_start.v3.SAV	SA_01_aboard_before_split.v4.SAV	SA_02_after_split.v3.SAV	split_aboard.py re-run with the top menu bar also found by OCR and verified (split_army_via_menu)
