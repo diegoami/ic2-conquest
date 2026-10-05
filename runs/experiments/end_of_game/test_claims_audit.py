@@ -79,6 +79,7 @@ try:
     results.append(doctor_extract('the years literal', ' years ', ' yrs ', 'W4'))
     results.append(doctor_extract('the 250 threshold of the window', 'DAT_004a0332 == 0xfa) {', 'DAT_004a0332 == 0xfb) {', 'thresholds'))
     results.append(doctor_extract('the unity threshold of the window', ']  < 400) {'.replace(']  <', '] <'), '] < 399) {', 'thresholds'))
+    results.append(doctor_extract('the human flag the hand-over writes', '(&DAT_00474b00)[iVar4 * 0x494] = 0;', '(&DAT_00474b00)[iVar4 * 0x494] = 2;', 'human flag'))
     # (e) a doctored tracked reading: a memory string of one window
     data = os.path.join(tmp, 'data'); shutil.copytree(paths.DATA.rstrip('/'), data)
     for fn in os.listdir(data):

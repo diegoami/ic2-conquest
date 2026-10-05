@@ -269,7 +269,7 @@ The clone's repository is not in this environment, so this table lists what the 
 - The leader's name is described as two draws (observed names are not a guarantee).
 - Confirmation loops (End turn ?, siege Confirm, Abdicate Confirm, information boxes) track the dialog's X id, verify it is gone after each click and stop after 3 attempts in all; Save As is proven to be a file dialog before the name is typed.
 - Re-runs W14-W17 (batch `b9`, release archive `batch-b5.tar.gz`) reproduce W1, W4, W10 and W13 byte for byte.
-- Final audit: 1742 checks, 0 mismatches; `test_claims_audit.py`: 23 of 23 pass.
+- Final audit: 1742 checks, 0 mismatches; `test_claims_audit.py`: 24 of 24 pass (the 24th: the human-flag value the hand-over writes, read from `FUN_00449078` :47789, altered in the extract).
 
 ## Reproduction
 

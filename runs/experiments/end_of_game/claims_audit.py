@@ -27,6 +27,8 @@ SAVES = ART + 'saves/'
 import fmt                                       # noqa: E402  (after paths)
 from common import versions, latest, write_new    # noqa: E402
 CODE = fmt.use(latest(os.path.join(DATA, 'code_extract_end_of_game.txt')))     # literals, thresholds and formatter constants come from the extract under --data
+from harness.driver import NATIONS              # noqa: E402  (the nation records' address in memory: the code's DAT_ addresses are checked against it)
+HUMAN_OFF = fmt.NATION_FIELDS['human'][0]
 
 checks = 0; bad = []
 def check(name, cond, detail=''):
@@ -203,7 +205,8 @@ for r in T.get('after_state', []):
     check('%s leader before/after' % sid, (b['leader'], a['leader']) == (r['leader before'], r['leader after']), '%s %s' % (b['leader'], a['leader']))
     check('%s unity before/after' % sid, (b['unity'], a['unity']) == (int(r['unity before']), int(r['unity after'])), '%s %s' % (b['unity'], a['unity']))
     check('%s treasury before/after' % sid, (b['money'], a['money']) == (num(r['treasury before']), num(r['treasury after'])), '%s %s' % (b['money'], a['money']))
-    check('%s human flag before/after' % sid, (b['human'], a['human']) == (1, 0), '%s %s' % (b['human'], a['human']))
+    # FUN_00449078 :47789 writes the cleared value at the nation record's human byte; the address is checked against the record layout (NATIONS + 0x490)
+    check('%s human flag before/after (cleared to %d by the hand-over at nation +0x%x)' % (sid, CODE.human_cleared, CODE.human_flag_addr - NATIONS), CODE.human_flag_addr - NATIONS == HUMAN_OFF and b['human'] != CODE.human_cleared and a['human'] == CODE.human_cleared, '%s %s' % (b['human'], a['human']))
     rule = r['rule']
     if rule == 'fall':            # FUN_0044c8f0 :50796-50805: unity = max(unity, min(550, unity + 150)); treasury = 0 if negative else + 1000; leader replaced
         check('%s unity rule (fall)' % sid, a['unity'] == max(b['unity'], min(CODE.fall_unity_cap, b['unity'] + CODE.fall_unity_inc)))
