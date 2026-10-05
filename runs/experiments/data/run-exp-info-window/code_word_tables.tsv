@@ -1,0 +1,51 @@
+table	index	mem_address	dat_offset	word	indexed_by
+quality words	0	0x47938C	0x1F6CA	'not ready'	DAT_0047938c + q*0xb: F:41257 (city mercs), F:41302 (army units), q = the unit/merc quality field 0..9 used directly
+quality words	1	0x479397	0x1F6D5	'not ready'	
+quality words	2	0x4793A2	0x1F6E0	'not ready'	
+quality words	3	0x4793AD	0x1F6EB	'not ready'	
+quality words	4	0x4793B8	0x1F6F6	'very poor'	
+quality words	5	0x4793C3	0x1F701	'poor'	
+quality words	6	0x4793CE	0x1F70C	'average'	
+quality words	7	0x4793D9	0x1F717	'good'	
+quality words	8	0x4793E4	0x1F722	'very good'	
+quality words	9	0x4793EF	0x1F72D	'elite'	
+unity/loyalty words	0	0x4793FC	0x1F738	'very low'	DAT_004793fc + (unity/100)*0xb: F:40830 (nation); DAT_004793fc + (loyalty/10)*0xb: F:40926 (city); signed truncating division
+unity/loyalty words	1	0x479407	0x1F743	'very low'	
+unity/loyalty words	2	0x479412	0x1F74E	'very low'	
+unity/loyalty words	3	0x47941D	0x1F759	'very low'	
+unity/loyalty words	4	0x479428	0x1F764	'very low'	
+unity/loyalty words	5	0x479433	0x1F76F	'low'	
+unity/loyalty words	6	0x47943E	0x1F77A	'normal'	
+unity/loyalty words	7	0x479449	0x1F785	'high'	
+unity/loyalty words	8	0x479454	0x1F790	'very high'	
+unity/loyalty words	9	0x47945F	0x1F79B	'excellent'	
+morale words (= unity table from entry 4)	0	0x479428	0x1F764	'very low'	DAT_00479428 + ((m-0x33, or m-0x30 when that is < 0) >> 2)*0xb: F:41052-41058; same bytes as the unity table entries 4..9
+morale words (= unity table from entry 4)	1	0x479433	0x1F76F	'low'	
+morale words (= unity table from entry 4)	2	0x47943E	0x1F77A	'normal'	
+morale words (= unity table from entry 4)	3	0x479449	0x1F785	'high'	
+morale words (= unity table from entry 4)	4	0x479454	0x1F790	'very high'	
+morale words (= unity table from entry 4)	5	0x47945F	0x1F79B	'excellent'	
+relation words	0	0x4794C8	0x1F800	'peace'	DAT_004794c8 + rel*6 when 0 < rel: F:40871 (rel = nation record +0x26 + 2*other)
+relation words	1	0x4794CE	0x1F806	'trade'	
+relation words	2	0x4794D4	0x1F80C	'ally '	
+relation words	3	0x4794DA	0x1F812	'war  '	
+relation words	4	0x4794E0	0x1F818	''	
+terrain names	0	0x4792E4	0x1F622	'Sea'	DAT_004792e4 + cell*0xe: F:41072 (army +8, when >= 0)
+terrain names	1	0x4792F2	0x1F630	'Sea'	
+terrain names	2	0x479300	0x1F63E	'Plain'	
+terrain names	3	0x47930E	0x1F64C	'Desert'	
+terrain names	4	0x47931C	0x1F65A	'Forest'	
+terrain names	5	0x47932A	0x1F668	'Mountains'	
+terrain names	6	0x479338	0x1F676	'River'	
+terrain names	7	0x479346	0x1F684	'River'	
+terrain names	8	0x479354	0x1F692	'River'	
+terrain names	9	0x479362	0x1F6A0	'River'	
+terrain names	10	0x479370	0x1F6AE	'River'	
+terrain names	11	0x47937E	0x1F6BC	'River'	
+unit type names	0	0x478FB0	0x1F2F0	'Light infantry'	DAT_00478fb0 + type*0x28: F:41094, 41254, 41298
+unit type names	1	0x478FD8	0x1F318	'Heavy infantry'	
+unit type names	2	0x479000	0x1F340	'Archers'	
+unit type names	3	0x479028	0x1F368	'Light cavalry'	
+unit type names	4	0x479050	0x1F390	'Heavy cavalry'	
+# tribute word (foreign city), F:40961-40977, u = the city +0x20 field as unsigned 16-bit: u<0xb poor; (u-0xb)<0x14 moderate; (u-0x1f)<0x46 rich; (u-0x65)<0x26ac very rich; otherwise no word (the number text stays)
+# sea word F:41220: fleet +0x18 (DAT_0049c284) == 0 -> calm, else rough
