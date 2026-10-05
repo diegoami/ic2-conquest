@@ -81,7 +81,7 @@ def rows_table(recs):
 
 
 def cmd_table():
-    recs = [r for r in latest_ok().values() if r["answer_plan"] == "capture"]
+    recs = [r for r in latest_ok().values() if r["answer_plan"] == "capture" and r["build"] == "normal"]
     rows = rows_table(sorted(recs, key=lambda r: (r["cell"], r["seed"], r["trial"])))
     buf = io.StringIO(newline="")
     w = csv.DictWriter(buf, list(rows[0]))
@@ -89,6 +89,26 @@ def cmd_table():
     w.writerows(rows)
     p = C.write_new(B.DATA, "b16-survey-table-%s.csv" % C.STAMP, buf.getvalue())
     print(p, len(rows), "rows")
+
+
+def cmd_hook():
+    """The hooked lab runs (B11 exe `lab hook s<seed>`; the lab build reseeds at every battle start, so a hooked seed is not the normal build's seed of the same number):
+    whether the box opened, and the peace draw Random(5) at 0x45951C that the hook logged (every record, `hooklog-<trial>.csv`)."""
+    rows = []
+    for r in latest_ok().values():
+        if r["build"] == "lab hook":
+            h = r["hook"]
+            d = h["peace_draws"]
+            rows.append({"trial": r["trial"], "seed": r["seed"], "exe_sha256": r["exe_sha256"], "box_opened": r["box_opened"], "preconditions_pass": r["rcode"]["preconditions_pass"],
+                         "peace_draw_result": d[0]["result"] if d else None, "peace_draw_range": d[0]["range_eax"] if d else None, "peace_draw_seq": d[0]["seq"] if d else None,
+                         "n_peace_draws": len(d), "reseed_records": ";".join("%s@%s" % x for x in h["reseed_records"]), "records": h["records"], "overflow": h["overflow"],
+                         "reentered": h["reentered"], "hooklog": "hooklog-%s.csv" % r["trial"]})
+    rows.sort(key=lambda x: x["seed"])
+    buf = io.StringIO(newline="")
+    w = csv.DictWriter(buf, list(rows[0]))
+    w.writeheader()
+    w.writerows(rows)
+    print(C.write_new(B.DATA, "b16-hook-table-%s.csv" % C.STAMP, buf.getvalue()), len(rows))
 
 
 def flat(o, path=""):
@@ -239,6 +259,8 @@ def main():
         sys.exit(__doc__)
     if a[0] == "table":
         cmd_table()
+    elif a[0] == "hook":
+        cmd_hook()
     elif a[0] == "pairs":
         cmd_pairs()
     elif a[0] == "repeat":
