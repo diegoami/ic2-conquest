@@ -1,0 +1,149 @@
+{
+ "note": "Code spans of the finding skeleton that are exempt from the literal-number lint: each must be a real file reference (validated by b16_raw.validate_registry and the audit). A span not listed here is linted like any other text.",
+ "spans": {
+  ".tar.gz": {
+   "kind": "fragment",
+   "reason": "an extension fragment naming the archive format"
+  },
+  "<trial>_post.SAV": {
+   "kind": "template",
+   "reason": "a name template whose instances exist (the placeholder is matched by *)"
+  },
+  "<trial>_pre.snap.gz": {
+   "kind": "template",
+   "reason": "a name template whose instances exist (the placeholder is matched by *)"
+  },
+  "EXES-hook-sha256*.txt": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "FLD-RG_0743_rome_army0_at_86_28.SAV": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "Imperial Conquest 2 fast rollingsave seed.exe": {
+   "kind": "game_exe",
+   "reason": "the game executable named in a trial record (not in git)"
+  },
+  "MANIFEST-b16-batch*.txt": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "SAVES.sha256": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "SAVES.v3.sha256": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "b16-claims-audit-*.md": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16-facts-*.json": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16-hook-table-*.csv": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16-pairs-*.json": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16-pairs-summary-*.csv": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16-repeat-*.json": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16-survey-table-*.csv": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "b16_audit.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "b16_fulldiff.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "b16_raw.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "b16_render.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "b16_run.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "decompiled-war-cascade-and-peace-paths.md": {
+   "kind": "external",
+   "reason": "a report of the research repository (read only)"
+  },
+  "docs/reports/2026-10-04-decompiled-tactical-battle-rules.md": {
+   "kind": "external",
+   "reason": "a report of the research repository (read only)"
+  },
+  "findings/b16-finding.skeleton.md": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "hooklog-*.csv": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "loss+weak2=500,weak13=500": {
+   "kind": "cell",
+   "reason": "a cell of trials-b16.jsonl"
+  },
+  "release-manifest-*.json": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  },
+  "runs/experiments/battles/b16_audit.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "runs/experiments/battles/b16_raw.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "scripts/archive_measurements.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "setup/build_lab_exes.sh --hook": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "stage.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "state/sav.py": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "trials-b16.jsonl": {
+   "kind": "path",
+   "reason": "a file of the repository, the data folder or the artifacts"
+  },
+  "win+own12=6,strong12=6,unity6=600,weak2=500,weak13=500": {
+   "kind": "cell",
+   "reason": "a cell of trials-b16.jsonl"
+  },
+  "win-own126,strong126,unity6600,weak2500,weak13500_s3_survey_r1_dialog-Offer_of_peace-*.png": {
+   "kind": "glob",
+   "reason": "a glob that matches at least one file of the data folder, the artifacts or the repository"
+  }
+ }
+}

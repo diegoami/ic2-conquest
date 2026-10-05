@@ -18,3 +18,9 @@ All runs done, committed, pushed; binaries (611) in release `run-exp-battle-peac
 
 ## Rework round 3: the skeleton lint bypass
 `b16_raw.lint_skeleton` now removes only VALID markers (a value name, `lit:KEY` with KEY registered, `table:ID`) line by line; any other double percent is an error (the syntax is described as "double-percent markers"); it reads headings and table rows too, rejects numbers not glued to a letter (so `turn-4`, `..0x4A0B80` count), literal True/False and the computed text values (`PROTECTED`). `b16_audit.sweep_freeze` freezes each of the 295 markers in turn (in memory): 0 pass.
+
+## Rework round 4 (final review R1-R4)
+- R1: `PeaceGame` takes a Handle (pid, start time, pidfd opened at discovery, start read before and after the open) for the launcher and every descendant; the tree is walked only from a parent verified before AND after its children are listed; stop() signals only through those pidfds (plus new children adopted the same way).
+- R2: `findings/b16-finding.bindings.json` tracks the expected markers, in order, of every marker-bearing sentence of the Answer bullets and the clone items (claim id, anchor, markers); `b16_raw.check_bindings` (an audit claim) fails on any difference, a new unbound sentence or a lost anchor.
+- R3: only code spans registered in `findings/b16-finding.files.json` (validated by `b16_raw.validate_registry`: an existing path, a glob with a match, a template with instances, a cell, a report, the game exe) are exempt from the number lint; no span is exempt by its shape.
+- R4: the audit checks each suite's exit code and that the number of PASS lines equals the number of tests the module defines; skipped raw-data tests are counted apart and the audit requires none skipped.

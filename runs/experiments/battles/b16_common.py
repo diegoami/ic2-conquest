@@ -120,19 +120,34 @@ def occupants(display=None, prefix=None, proc="/proc"):
     return out
 
 
+class Handle:
+    """An owned process: pid, start time at discovery, and the pidfd opened AT DISCOVERY (None where the kernel has none)."""
+
+    def __init__(self, pid, start, fd):
+        self.pid, self.start, self.fd = pid, start, fd
+
+    def __repr__(self):
+        return "Handle(%d, %r, fd=%r)" % (self.pid, self.start, self.fd)
+
+
+def children_of(pid, proc="/proc"):
+    return [int(d.name) for d in Path(proc).iterdir() if d.name.isdigit() and proc_ppid(int(d.name), proc) == pid]
+
+
 class PeaceGame(D.Game):
-    """Game whose process is the one THIS object launched. `start()` refuses an occupied display or prefix (no adoption), launches with Popen and records every
-    owned process as an IDENTITY (pid, start time from /proc/<pid>/stat field 22), the launcher's first (it is our unreaped child, so its pid cannot be reused).
-    `stop()` signals a process only if its start time still equals the recorded one (a pid that was recycled by a foreign process is skipped and logged in
-    `self.skipped`), traverses the tree only below VERIFIED owned processes, and signals through a pidfd (`os.pidfd_open`, checked again after it is opened) where the
-    kernel has it, else by pid after the same check. No kill or adoption by command-line pattern, no prefix-wide wine server kill."""
+    """Game whose process is the one THIS object launched. `start()` refuses an occupied display or prefix (no adoption), launches with Popen and takes a HANDLE
+    (pid, start time from /proc/<pid>/stat field 22, and a pidfd opened at that moment, the start time being read before and after the open) of the launcher and of every
+    descendant at discovery. The tree is walked only from a parent whose identity is verified before AND after its children are listed (a parent replaced in between drops
+    the walk); each child is adopted only if its own identity holds across its pidfd open and its parent is still the verified parent. `stop()` signals only through the
+    pidfds opened at discovery (a pidfd names the process that existed when it was opened, so a recycled pid is never hit); without pidfd support it signals by pid only
+    after re-reading the start time. No kill or adoption by command-line pattern, no prefix-wide wine server kill."""
 
     PROC = "/proc"          # the process table to read (a test points it at a fake tree)
 
     def __init__(self, *a, **kw):
         super().__init__(*a, **kw)
         self.popen = None
-        self.owned = []          # [(pid, start time)]
+        self.owned = []          # [Handle]
         self.skipped = []        # [(pid, why)]
 
     def _pidfd(self, pid):
@@ -142,11 +157,51 @@ class PeaceGame(D.Game):
             return None
 
     def _send(self, pid, fd):
-        """SIGKILL through the pidfd (it names the process that existed when it was opened), else by pid."""
+        """SIGKILL through the pidfd, else by pid (the caller re-checked the identity)."""
         if fd is not None:
             signal.pidfd_send_signal(fd, signal.SIGKILL)
         else:
             os.kill(pid, signal.SIGKILL)
+
+    def _close(self, fd):
+        if fd is not None:
+            try:
+                os.close(fd)
+            except (OSError, TypeError):
+                pass
+
+    def _between(self, pid):
+        """Test hook: called after a parent's identity was verified and before its children are listed."""
+
+    def _own(self, pid, parent=None):
+        """A Handle for `pid` if its identity holds across the pidfd open (start time before == after) and, for a child, its parent is still `parent`; else None."""
+        st = proc_start(pid, self.PROC)
+        if st is None:
+            return None
+        fd = self._pidfd(pid)
+        if proc_start(pid, self.PROC) != st or (parent is not None and proc_ppid(pid, self.PROC) != parent.pid):
+            self._close(fd)
+            self.skipped.append((pid, "identity changed while being adopted"))
+            return None
+        return Handle(pid, st, fd)
+
+    def _walk(self, parent):
+        """Handles of the descendants of the VERIFIED `parent`: its identity is checked before the children are listed and again after; a change drops the walk."""
+        if proc_start(parent.pid, self.PROC) != parent.start:
+            self.skipped.append((parent.pid, "parent identity changed before its children were listed: not walked"))
+            return []
+        self._between(parent.pid)
+        kids = children_of(parent.pid, self.PROC)
+        if proc_start(parent.pid, self.PROC) != parent.start:
+            self.skipped.append((parent.pid, "parent replaced while its children were listed: walk dropped"))
+            return []
+        out = []
+        for k in kids:
+            h = self._own(k, parent)
+            if h is not None:
+                out.append(h)
+                out += self._walk(h)
+        return out
 
     def start(self):
         busy = occupants(proc=self.PROC)
@@ -154,44 +209,42 @@ class PeaceGame(D.Game):
             raise D.DriverError("display %s or prefix %s already has game/wine processes %s: refusing to start (they are not ours and are not adopted or killed)"
                                 % (DISPLAY, D.PREFIX, busy))
         self.popen = subprocess.Popen([D.WINE, self.exe], cwd=D.G, env=D.ENV, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
-        self.owned = [(self.popen.pid, proc_start(self.popen.pid, self.PROC))]
+        root = self._own(self.popen.pid)             # our own unreaped child: its pid cannot be recycled while we hold it
+        self.owned = [root] if root else []
         self.wait(lambda: self.find_windows("^Imperial Conquest 2$"), 40, "main window")
         time.sleep(3)
-        tree = descendants(self.popen.pid, self.PROC)
-        self.owned = [(p, proc_start(p, self.PROC)) for p in tree]
-        game = [p for p in tree if proc_cmd(p, self.PROC).startswith(b"Imperial Conquest")]
+        if root:
+            self.owned += self._walk(root)
+        game = [h.pid for h in self.owned if proc_cmd(h.pid, self.PROC).startswith(b"Imperial Conquest")]
         if not game:
-            raise D.DriverError("no game process below the launched pid %d (tree %s)" % (self.popen.pid, tree))
+            raise D.DriverError("no game process below the launched pid %d (owned %s)" % (self.popen.pid, [h.pid for h in self.owned]))
         self.pid = game[0]
 
     def stop(self):
-        """Signal exactly the owned processes whose identity still holds, and what is below them now; returns the (pid, start) pairs signalled. A pid whose start time
-        changed is not signalled and not traversed; it is logged in `self.skipped`."""
-        verified = []
-        for pid, st in self.owned:
-            if st is not None and proc_start(pid, self.PROC) == st:
-                verified.append((pid, st))
+        """Signal the owned processes through the pidfds opened at discovery, plus new descendants of parents whose identity still holds (adopted with their own pidfds);
+        returns the (pid, start) pairs signalled. A replaced parent is not walked; its original process is still reached through its pidfd."""
+        handles = list(self.owned)
+        for h in list(self.owned):
+            if proc_start(h.pid, self.PROC) == h.start:
+                for x in self._walk(h):
+                    if x.pid in [y.pid for y in handles]:
+                        self._close(x.fd)          # already owned from discovery: keep that pidfd, drop the duplicate
+                    else:
+                        handles.append(x)
             else:
-                self.skipped.append((pid, "start time changed or process gone: not ours any more"))
-        targets = list(verified)
-        for pid, _ in verified:
-            for d in descendants(pid, self.PROC):
-                if d not in [t[0] for t in targets]:
-                    targets.append((d, proc_start(d, self.PROC)))
+                self.skipped.append((h.pid, "start time changed or process gone: not walked"))
         done = []
-        for pid, st in sorted(targets, reverse=True):
-            fd = self._pidfd(pid)
+        for h in sorted(handles, key=lambda x: -x.pid):
             try:
-                if st is None or proc_start(pid, self.PROC) != st:          # re-checked AFTER the pidfd was opened: the pidfd then names this very process
-                    self.skipped.append((pid, "identity changed before the signal"))
+                if h.fd is None and proc_start(h.pid, self.PROC) != h.start:          # no pidfd: by pid only if the identity still holds
+                    self.skipped.append((h.pid, "no pidfd and the identity changed: not signalled"))
                     continue
-                self._send(pid, fd)
-                done.append((pid, st))
+                self._send(h.pid, h.fd)
+                done.append((h.pid, h.start))
             except (ProcessLookupError, PermissionError):
                 pass
             finally:
-                if fd is not None:
-                    os.close(fd)
+                self._close(h.fd)
         if self.popen is not None:
             try:
                 self.popen.wait(timeout=10)

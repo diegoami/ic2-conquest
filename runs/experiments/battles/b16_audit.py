@@ -101,6 +101,28 @@ def sweep_freeze(skeleton=None, finding=None):
     return total, uncaught
 
 
+def suite_problems(returncode, stdout, stderr, expected):
+    """Problems of one test-suite run: a nonzero exit code (a crash with empty stdout included), a FAIL line, a number of PASS lines other than the number of tests the
+    module defines. Skipped raw-data tests (a `SKIP` line, then the PASS of the wrapper) are counted separately. Returns (problems, {"pass": n, "skip": n})."""
+    passes, skips, fails = stdout.count("PASS "), stdout.count("SKIP "), stdout.count("FAIL ")
+    probs = []
+    if returncode != 0:
+        probs.append("exit code %d%s" % (returncode, (": " + stderr.strip().splitlines()[-1][:150]) if stderr.strip() else " with no stderr"))
+    if fails:
+        probs.append("%d FAIL lines" % fails)
+    if passes != expected:
+        probs.append("%d PASS lines, the module defines %d tests" % (passes, expected))
+    return probs, {"pass": passes - skips, "skip": skips}
+
+
+def run_suite(mod):
+    src = (C.ROOT / "tests" / (mod + ".py")).read_text()
+    expected = len(re.findall(r"^def test_", src, re.M))
+    p = subprocess.run([sys.executable, "-m", "tests." + mod], capture_output=True, text=True, cwd=C.ROOT)
+    probs, counts = suite_problems(p.returncode, p.stdout, p.stderr, expected)
+    return probs, counts, expected
+
+
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
@@ -118,6 +140,8 @@ def main():
     claim("finding", "the skeleton lint is clean: no stray or unknown double-percent marker, no number outside a valid marker (prose, headings and table rows), only registered `lit:` texts", "findings/b16-finding.skeleton.md", R.lint_skeleton(sk), [])
     total, unc = sweep_freeze(sk)
     claim("finding", "freezing any single marker (%d markers, each replaced in turn by its rendered value) is caught by the lint or the rendering check: none passes" % total, "findings/b16-finding.skeleton.md", [(u[1], u[2][:40]) for u in unc], [])
+    claim("finding", "the registry of exempt code spans (findings/b16-finding.files.json) lists only real file references: an existing path, a glob with a match, a template with instances, a cell, a report, the game exe", "findings/b16-finding.files.json", R.validate_registry(), [])
+    claim("finding", "every marker-bearing sentence of the Answer bullets and the clone items carries exactly its tracked markers, in order (findings/b16-finding.bindings.json)", "findings/b16-finding.skeleton.md", R.check_bindings(sk), [])
     claim("finding", "every placeholder of the skeleton has a computed value", "b16_raw.py", sorted(set(R.placeholders(sk)) - set(V)), [])
     for name in ("btn_same_size", "cityword_ok", "ext_readbacks_consistent", "ext_weak_same", "win_cell_same", "ext_tests_all", "loss_tests_all", "snap_lens_equal", "id_all_volatile", "id_regions_equal",
                  "id_png_equal", "rep_regions_equal", "nn_post_equal", "nn_turns_equal", "g_ok", "hook_rule", "reseed_only_open", "rs_unique"):
@@ -184,8 +208,10 @@ def main():
                 members |= set(a["members"])
     claim("files", "every binary is a member of an uploaded release archive listed in a tracked manifest", "release-manifest-*.json", sorted(p.name for p in bins if p.name not in members)[:5], [])
     for mod in ("test_driver_battle", "test_battle_b16", "test_battle_stage"):
-        out = subprocess.run([sys.executable, "-m", "tests." + mod], capture_output=True, text=True, cwd=C.ROOT).stdout
-        claim("tests", "%s: no failure (%d pass)" % (mod, out.count("PASS ")), "tests/%s.py" % mod, out.count("FAIL "), 0)
+        probs, counts, expected = run_suite(mod)
+        claim("tests", "%s: exit code 0, %d tests defined and run, none failed (passed %d, skipped for missing raw data %d)" % (mod, expected, counts["pass"], counts["skip"]), "tests/%s.py" % mod, probs, [])
+        if mod == "test_battle_b16":
+            claim("tests", "no raw-data test of test_battle_b16 was skipped on this machine", "tests/%s.py" % mod, counts["skip"], 0)
     badr = [r for r in rows if r[5] != "y"]
     out = C.write_new(B.DATA, "b16-claims-audit-%s.md" % C.STAMP,
                       "# B16 claims audit\n\n%d claims, %d mismatches.\n\nThe finding is checked against the rendering of its skeleton from the raw data (first claim); the inputs and what is only compared are listed in the header of `b16_audit.py`. The analysers' files are only compared (claim `analysers`).\n\n"

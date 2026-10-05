@@ -132,17 +132,18 @@ MINE = {"DISPLAY": ":640", "WINEPREFIX": str(R.D.PREFIX)}
 
 
 class FakeOwner:
-    """A PeaceGame wired to a fake /proc whose signals are recorded instead of sent."""
+    """A PeaceGame wired to a fake /proc: a "pidfd" is the tuple ("fd", pid, start time read from the fake /proc at the moment it is opened), so a signal through it
+    names the process that existed when it was opened; signals are recorded instead of sent. `discover(pids)` adopts the given pids as the game would at start."""
 
-    def __init__(self, root, owned, popen_pid):
+    def __init__(self, root, popen_pid):
         import b16_common as BC
         self.BC = BC
         self.g = BC.PeaceGame(exe="x")
         self.g.PROC = str(root)
-        self.g.owned = owned
         self.signalled = []
-        self.g._pidfd = lambda pid: None
-        self.g._send = lambda pid, fd: self.signalled.append(pid)
+        self.g._pidfd = lambda pid: ("fd", pid, BC.proc_start(pid, str(root)))
+        self.g._send = lambda pid, fd: self.signalled.append(fd if fd is not None else ("pid", pid, BC.proc_start(pid, str(root))))
+        self.g._close = lambda fd: None
 
         class P:
             pid = popen_pid
@@ -151,6 +152,9 @@ class FakeOwner:
                 return 0
         self.g.popen = P()
 
+    def discover(self, pids):
+        self.g.owned = [self.g._own(p) for p in pids]
+
     def stop(self):
         old = self.BC.time.sleep
         self.BC.time.sleep = lambda s: None
@@ -158,6 +162,9 @@ class FakeOwner:
             return self.g.stop()
         finally:
             self.BC.time.sleep = old
+
+    def pids(self):
+        return sorted({x[1] for x in self.signalled})
 
 
 def test_descendants_follow_the_ppid_tree_only():
@@ -176,43 +183,70 @@ def test_proc_start_reads_field_22_even_with_a_paren_in_the_name():
 def test_stop_kills_only_the_launched_tree_never_a_matching_foreign_process():
     root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE),
                        200: (1, "Imperial Conquest 2 fast.exe", MINE), 201: (200, "Imperial Conquest 2 fast.exe", {"DISPLAY": ":640"})})
-    f = FakeOwner(root, [(100, 1100), (101, 1101)], 100)
+    f = FakeOwner(root, 100)
+    f.discover([100, 101])
     done = f.stop()
-    assert sorted(f.signalled) == [100, 101] and sorted(p for p, _ in done) == [100, 101] and 200 not in f.signalled and 201 not in f.signalled, (f.signalled, done)
+    assert f.pids() == [100, 101] and sorted(p for p, _ in done) == [100, 101], (f.signalled, done)
 
 
 def test_a_recycled_owned_pid_and_its_foreign_children_are_never_signalled():
-    """Between discovery and stop() the owned child 101 exits and a FOREIGN process takes its pid (new start time) and has foreign children; the launcher 100 is intact."""
+    """Between discovery and stop() the owned child 101 exits and a FOREIGN process takes its pid (new start time) and has foreign children. The foreign process is not
+    walked, and no signal names it or its children (a signal through 101's pidfd names the ORIGINAL process, whose start time is the discovered one)."""
     root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE), 102: (101, "child", MINE)})
-    f = FakeOwner(root, [(100, 1100), (101, 1101), (102, 1102)], 100)
+    f = FakeOwner(root, 100)
+    f.discover([100, 101, 102])
     import shutil
     shutil.rmtree(root / "102")
-    _write_proc(root, 101, 1, "foreign-editor", {"DISPLAY": ":0"}, 999999)          # pid 101 reused by a foreign process
-    _write_proc(root, 150, 101, "foreign-child", {"DISPLAY": ":0"}, 999998)         # with a foreign child
-    done = f.stop()
-    assert sorted(f.signalled) == [100], f.signalled
-    assert 101 not in f.signalled and 150 not in f.signalled and 102 not in f.signalled, f.signalled
-    assert {p for p, _ in f.g.skipped} >= {101, 102}, f.g.skipped
-    assert [p for p, _ in done] == [100], done
+    _write_proc(root, 101, 1, "foreign-editor", {"DISPLAY": ":0"}, 999999)
+    _write_proc(root, 150, 101, "foreign-child", {"DISPLAY": ":0"}, 999998)
+    f.stop()
+    assert 150 not in f.pids() and all(x[2] in (1100, 1101, 1102) for x in f.signalled), f.signalled
+    assert any(p == 101 for p, _ in f.g.skipped), f.g.skipped
 
 
 def test_a_recycled_launcher_pid_pulls_no_foreign_tree_into_cleanup():
-    """The launcher pid 100 is replaced by a foreign process (new start time) with foreign children; the owned child 101 is gone. Nothing is signalled."""
+    """The launcher pid 100 is replaced by a foreign process with foreign children; the owned child 101 is gone. No signal names a foreign process."""
     root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE)})
-    f = FakeOwner(root, [(100, 1100), (101, 1101)], 100)
+    f = FakeOwner(root, 100)
+    f.discover([100, 101])
     import shutil
     shutil.rmtree(root / "101")
     _write_proc(root, 100, 1, "foreign-service", {"DISPLAY": ":0"}, 777777)
     _write_proc(root, 160, 100, "foreign-child", {"DISPLAY": ":0"}, 777778)
     _write_proc(root, 161, 160, "foreign-grandchild", {"DISPLAY": ":0"}, 777779)
-    done = f.stop()
-    assert f.signalled == [] and done == [] and {p for p, _ in f.g.skipped} >= {100, 101}, (f.signalled, done, f.g.skipped)
+    f.stop()
+    assert all(x[2] in (1100, 1101) for x in f.signalled) and not ({160, 161} & set(f.pids())), f.signalled
+    assert {p for p, _ in f.g.skipped} >= {100}, f.g.skipped
 
 
-def test_identity_is_rechecked_after_the_pidfd_is_opened():
-    """A process whose start time changes between traversal and the signal (replaced while the pidfd is being opened) is skipped."""
-    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "child", MINE)})
-    f = FakeOwner(root, [(100, 1100)], 100)
+def test_the_parent_replaced_between_verification_and_traversal_adopts_nothing():
+    """The regression of the final review: a parent that passed its identity check is replaced by a foreign process BEFORE its children are listed (the `_between` hook);
+    neither the replacement nor its children are signalled, and the walk is dropped."""
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE)})
+    f = FakeOwner(root, 100)
+    f.discover([100, 101])
+    import shutil
+    shutil.rmtree(root / "101")
+    swapped = []
+
+    def swap(pid):
+        if pid == 100 and not swapped:
+            swapped.append(1)
+            _write_proc(root, 100, 1, "foreign-service", {"DISPLAY": ":0"}, 777777)       # replaced after verification, before the listing
+            _write_proc(root, 170, 100, "foreign-child", {"DISPLAY": ":0"}, 777778)
+    f.g._between = swap
+    f.stop()
+    assert swapped and 170 not in f.pids(), (swapped, f.signalled)
+    assert all(x[2] in (1100, 1101) for x in f.signalled), f.signalled                   # only the originals (through their pidfds) were named
+    assert any("replaced while its children were listed" in why for _, why in f.g.skipped), f.g.skipped
+
+
+def test_a_process_swapped_while_its_pidfd_is_opened_is_not_adopted():
+    """A new child of a verified parent whose identity changes while its pidfd is being opened is not adopted and not signalled."""
+    root = _fake_proc({100: (1, "wine", MINE)})
+    f = FakeOwner(root, 100)
+    f.discover([100])
+    _write_proc(root, 101, 100, "child", {"DISPLAY": ":640"}, 1101)
     orig = f.g._pidfd
 
     def swap(pid):
@@ -221,7 +255,7 @@ def test_identity_is_rechecked_after_the_pidfd_is_opened():
         return orig(pid)
     f.g._pidfd = swap
     f.stop()
-    assert f.signalled == [100] and (101, "identity changed before the signal") in f.g.skipped, (f.signalled, f.g.skipped)
+    assert f.pids() == [100] and (101, "identity changed while being adopted") in f.g.skipped, (f.signalled, f.g.skipped)
 
 
 def test_start_refuses_an_occupied_display_without_launching_or_killing():
@@ -417,6 +451,62 @@ def test_a_doctored_analyser_file_cannot_change_the_audit_and_is_reported():
     assert ok, detail
     assert {len(r["fields"]) for r in fd["runs"] if r["answer"] == "yes"} == {42} and {len(r["fields"]) for r in fd["runs"] if r["answer"] == "no"} == {0}
     assert any("fulldiff" in b and "fields" in b for b in bad) and any("dropped" in b for b in bad) and any("repeat" in b for b in bad), bad
+
+
+@_need_raw
+def test_a_valid_but_wrong_marker_swapped_into_a_clone_sentence_is_caught():
+    """The R2 regression of the final review: on skeleton line 17 (clone item 2, Yes) `%%rel_yes_t1%%` replaced by `%%rel_yes_ans%%` renders 'next End turn -18 becomes -18'
+    with a REGENERATED finding that equals its rendering; the lint, the placeholders and the freeze sweep accept it, the tracked bindings do not."""
+    import b16_audit as AU
+    import b16_raw as RR
+    sk = _skeleton()
+    lines = sk.split("\n")
+    assert "%%rel_yes_t1%%" in lines[16] and lines[16].startswith("2. **Yes.**"), lines[16][:60]
+    lines[16] = lines[16].replace("%%rel_yes_t1%%", "%%rel_yes_ans%%", 1)
+    mutated = "\n".join(lines)
+    rendered = RR.render(mutated)
+    assert "-18 becomes -18" in rendered
+    ok, _ = AU.check_finding(rendered, mutated)
+    assert ok and RR.lint_skeleton(mutated) == [], "the old checks accept the substitution"
+    errs = RR.check_bindings(mutated)
+    assert errs and any("clone.2" in e and "rel_yes_t1" in e for e in errs), errs
+    assert RR.check_bindings(sk) == []
+    # a new marker-bearing sentence without a tracked binding, and a lost anchor, are errors too
+    assert RR.check_bindings(sk.replace("## Method", "## For the clone: extra\n- A new sentence with %%box_w%%.\n\n## Method", 1))
+    assert RR.check_bindings(sk.replace("**The reseed.**", "**The re-seed.**", 1))
+
+
+@_need_raw
+def test_an_asterisk_code_span_cannot_hide_numbers():
+    """The R3 regression: `999 * 360` in place of the box markers is a code span with an asterisk; the lint must still read it (only registered file references are exempt)."""
+    import b16_raw as RR
+    sk = _skeleton()
+    assert "%%box_w%% x %%box_h%%" in sk
+    mutated = sk.replace("%%box_w%% x %%box_h%%", "`999 * 360`", 1)
+    errs = RR.lint_skeleton(mutated)
+    assert any("literal number 999" in e for e in errs) and any("literal number 360" in e for e in errs), errs
+    assert RR.lint_skeleton(sk) == []
+    bad = Path(tempfile.mkdtemp()) / "files.json"
+    import json as _json
+    reg = _json.loads((ROOT / "findings" / "b16-finding.files.json").read_text())
+    reg["spans"]["999 * 360"] = {"kind": "glob", "reason": "an attempt to exempt arbitrary text"}
+    reg["spans"]["nothing-*.zzz"] = {"kind": "glob", "reason": "matches nothing"}
+    bad.write_text(_json.dumps(reg))
+    flagged = {s for s, _ in RR.validate_registry(bad)}
+    assert {"999 * 360", "nothing-*.zzz"} <= flagged, flagged
+    assert RR.validate_registry() == []
+
+
+def test_a_crashed_suite_with_empty_stdout_is_a_failure():
+    """The R4 regression: a nonzero exit code with empty stdout (an import error) must not count as 'no failure'; a missing PASS count and a FAIL line are problems too."""
+    import b16_audit as AU
+    probs, counts = AU.suite_problems(1, "", "Traceback ...\nImportError: boom", 12)
+    assert any("exit code 1" in p for p in probs) and any("0 PASS lines" in p for p in probs), probs
+    assert AU.suite_problems(0, "PASS a\nPASS b\n", "", 2)[0] == []
+    assert AU.suite_problems(0, "PASS a\n", "", 2)[0]
+    assert AU.suite_problems(0, "PASS a\nFAIL b X\n", "", 2)[0]
+    probs, counts = AU.suite_problems(0, "SKIP a: no raw data\nPASS a\nPASS b\n", "", 2)
+    assert probs == [] and counts == {"pass": 1, "skip": 1}, (probs, counts)
 
 
 if __name__ == "__main__":

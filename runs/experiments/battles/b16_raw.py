@@ -511,6 +511,90 @@ LIT = {"rep_sec": ("§9 item 6", "section reference of the decompiled report"), 
        "ally_cond": ("rel[W][k] == 2 and rel[L][k] == 3", "the ally-loop condition quoted from the report")}
 
 
+FILES = Path(__file__).resolve().parents[3] / "findings" / "b16-finding.files.json"
+
+
+def registry(path=None):
+    """The registered file-reference spans (exempt from the number lint)."""
+    return set(json.loads(Path(path or FILES).read_text())["spans"])
+
+
+def validate_registry(path=None):
+    """Spans of the registry that are NOT what they claim to be (an existing file, a glob matching a file, a template with instances, a cell of the trials, a research report,
+    the game exe of a trial record); [] when every entry is real. A bare `*` therefore cannot exempt arbitrary text."""
+    reg = json.loads(Path(path or FILES).read_text())["spans"]
+    T, _ = trials()
+    cells = {r["cell"] for r in T.values()}
+    exes = {r["exe"] for r in T.values()}
+    research = Path.home() / "projects" / "imperial-conquest-2-research" / "docs" / "reports"
+    bad = []
+
+    def anywhere(pat):
+        return any(B.DATA.glob(pat)) or any(B.ART.rglob(pat)) or any(C.ROOT.glob("**/" + pat)) or any(C.ROOT.glob(pat))
+    for span, e in reg.items():
+        k = e["kind"]
+        first = span.split(" ")[0]
+        ok = {"fragment": span.startswith(".") and span[1:].replace(".", "").isalpha(),
+              "cell": span in cells,
+              "external": (research / Path(span).name).exists(),
+              "template": anywhere(re.sub(r"<[^>]*>|\{[^}]*\}", "*", span)),
+              "game_exe": span in exes,
+              "glob": "*" in span and anywhere(span),
+              "path": "*" not in span and anywhere(first)}.get(k, False)
+        if not ok or not e.get("reason"):
+            bad.append((span, k))
+    return bad
+
+
+BINDINGS = Path(__file__).resolve().parents[3] / "findings" / "b16-finding.bindings.json"
+SPLIT = re.compile(r"(?<=[.;])\s+")
+
+
+def claim_sentences(skeleton):
+    """[(section, bullet number, k, sentence text)] for every sentence of the Answer bullets and the 'For the clone' items of the skeleton (a sentence ends at a '.' or ';'
+    followed by white space)."""
+    out, sect, n = [], None, 0
+    for line in skeleton.split("\n"):
+        if line.startswith("## "):
+            sect = "answer" if line.startswith("## Answer") else "clone" if line.startswith("## For the clone") else None
+            n = 0
+            continue
+        if sect and (line.startswith("- ") or re.match(r"\d+\. ", line)):
+            n += 1
+            for k, sent in enumerate(SPLIT.split(line), 1):
+                out.append((sect, n, k, sent))
+    return out
+
+
+def sentence_markers(sent):
+    return [m.group(0)[2:-2] for m in MARKER.finditer(sent)]
+
+
+def make_bindings(skeleton):
+    """The expected binding of every marker-bearing sentence: claim id (section.bullet.sentence), the sentence's first 50 characters as its anchor, and its marker list in order."""
+    return [{"claim": "%s.%d.%d" % (sec, n, k), "anchor": sent[:50], "markers": sentence_markers(sent)} for sec, n, k, sent in claim_sentences(skeleton) if sentence_markers(sent)]
+
+
+def check_bindings(skeleton, path=None):
+    """Errors: a sentence of the Answer or clone sections whose markers differ from the tracked expectation (swapping `%%rel_yes_t1%%` for `%%rel_yes_ans%%` is one), a
+    marker-bearing sentence with no entry, an entry whose anchor is not in the skeleton."""
+    exp = json.loads(Path(path or BINDINGS).read_text())["bindings"]
+    by_anchor = {e["anchor"]: e for e in exp}
+    seen, errs = set(), []
+    for sec, n, k, sent in claim_sentences(skeleton):
+        mk = sentence_markers(sent)
+        e = by_anchor.get(sent[:50])
+        if e is None:
+            if mk:
+                errs.append("%s.%d.%d: a sentence with markers %s has no tracked binding (anchor %r)" % (sec, n, k, mk, sent[:50]))
+            continue
+        seen.add(e["anchor"])
+        if mk != e["markers"]:
+            errs.append("%s: markers %s differ from the expected %s (%s)" % (e["claim"], mk, e["markers"], sent[:60]))
+    errs += ["%s: anchor %r is not in the skeleton" % (e["claim"], e["anchor"]) for e in exp if e["anchor"] not in seen]
+    return errs
+
+
 def lint_skeleton(skeleton):
     """Errors of the skeleton, line by line: (a) any `%%` that is not part of a VALID marker (a value name, `lit:KEY` with KEY in LIT, `table:ID` with ID in TABLES);
     (b) any numeric token left after the valid markers are removed, in prose, headings AND table rows (a frozen value, a pasted table). Returns [] when clean."""
@@ -525,7 +609,7 @@ def lint_skeleton(skeleton):
             errs.append("line %d: a literal True/False outside a marker (the invariants are computed)" % n)
         if "%%" in rest:
             errs.append("line %d: stray or unknown %%%% marker: %s" % (n, rest[max(0, rest.index("%%") - 30):rest.index("%%") + 30]))
-        for t in NUMS.lint_tokens(rest):
+        for t in NUMS.lint_tokens(rest, registry()):
             errs.append("line %d: literal number %s outside a marker" % (n, t))
     return errs
 
@@ -534,5 +618,5 @@ def literal_numbers(skeleton):
     """The numeric tokens the skeleton states literally (line by line, valid markers removed first; see `lint_skeleton`)."""
     out = []
     for line in skeleton.split("\n"):
-        out += NUMS.lint_tokens(MARKER.sub(lambda m: " " if _valid(m) else m.group(0), line))
+        out += NUMS.lint_tokens(MARKER.sub(lambda m: " " if _valid(m) else m.group(0), line), registry())
     return sorted(set(out))

@@ -32,10 +32,11 @@ FILE_SPAN = re.compile(r"\.(?:png|SAV|sav|csv|json|jsonl|md|py|gz|sha256|txt|log
 CELL_SPAN = re.compile(r"^`(?:loss|win)\+[^`]*`$|^`(?:loss|win)\+")
 
 
-def lint_tokens(line):
+def lint_tokens(line, exempt=frozenset()):
     """Numeric tokens of one skeleton line for the lint: every digit run or hex number not glued to a letter, underscore or digit (so `turn-4`, `..0x4A0B80`, `> 500` count),
-    and the number words two..nine. Only code spans that NAME a file (an extension or a `*`) or a cell (`loss+...`, `win+...`) are set aside, never any other span."""
-    s = CODE.sub(lambda m: " " if (FILE_SPAN.search(m.group(0)) or CELL_SPAN.search(m.group(0))) else m.group(0), line)
+    and the number words two..nine. A code span is set aside ONLY if its text is in `exempt`, the registry of validated file references (findings/b16-finding.files.json);
+    no span is recognised by its shape (an asterisk, an extension)."""
+    s = CODE.sub(lambda m: " " if m.group(0).strip("`") in exempt else m.group(0), line)
     s = DATE.sub(" ", s)
     s = re.sub(r"SHA-256|sha256", " ", s)
     s = re.sub(r"^\s*\d+\.\s", " ", s)                      # the numbering of a list
