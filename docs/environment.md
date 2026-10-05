@@ -68,6 +68,24 @@ Facts that affect availability:
     (or run through `bash -ic`). A harness that cleans the environment won't see it either. If it is still missing, tell the
     owner rather than retrying.
 
+### Free models (OpenRouter): supplement only
+For smaller tasks and additional reviews (a second opinion next to a regular model), never as the main model for important work
+(the owner, 2026-10-06):
+- `openrouter/nvidia/nemotron-3-ultra-550b-a55b:free`: the stronger one;
+- `openrouter/cohere/north-mini-code:free`: coding-focused, faster;
+- also usable: `openrouter/thinkingmachines/inkling:free` (only through OpenCode, not the raw API) and
+  `openrouter/poolside/laguna-s-2.1:free` (often rate-limited).
+
+Cautions:
+- **Rate limits:** one shared allowance of 1,000 requests a day and about 20 a minute across all free models, and each agent step is
+  one request. The remaining count is `free_model_daily_requests` in `/quota/openrouter`.
+- **Privacy:** free providers may log and train on prompts. This repository is public, so its code and findings may be sent; never
+  send secrets, keys, `auth.json` contents, private or client code, or anything under NDA. Never send other repositories' private
+  material either.
+- **Failures:** on a 429, fall back to another model instead of retrying. Free models come and go.
+- **Trust:** a free model's review is a second opinion only. It never replaces the regular reviewer's verdict for a merge, and its
+  output is checked like any unreviewed contribution.
+
 ### If the service isn't running
 Check: `curl -sf localhost:8765/health`. If that fails:
 1. `systemctl --user restart quota-tracker`, wait a few seconds, check `/health` again.
