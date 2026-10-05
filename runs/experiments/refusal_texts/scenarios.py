@@ -99,3 +99,56 @@ def cu_disband_act(g):
 SC['CU07'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6, 11)]))], act=cu_disband_act, post=cu_post, note='Change units: Disband the regular unit 0 of army 0 at (103,36), far from a city (Confirm answered Yes)')
 SC['CU08'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6, 11)]))], act=lambda g: (cu_open(g, 0), select_rows(g, 'Change units', [0, 1]), press(g, 'Change units', 'Disband'), confirm_step(g, 'Yes')), post=cu_post,
                   note='Change units: Disband a regular and a mercenary unit at (103,36) (Confirm Yes)')
+
+# ---------------------------------------------------------------- batch b3: embark, relations, recruitment
+SC['E01'] = dict(src=TE, act=lambda g: (g.select_army(0, *g.army_pos(0)), g.click_tile(*g.fleet_pos(2), pause=1.5)), note='embark army 0 (10,700 troops, 3 moves) on fleet 2 (20 ships): the click on the fleet')
+SC['A01'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3)], act=lambda g: army_button(g, 12, 'join'),
+                 note='Join armies from army 12 (moves staged to 3) next to army 0, which is aboard fleet 2')
+
+def rel_act(nation, col):
+    def act(g):
+        g.tool('relations', pause=1.5)
+        if not g.find_windows('^International Relations$'): g.tool('relations', pause=1.5)
+        w = g.find_windows('^International Relations$')
+        if not w: raise _drv.DriverError('International Relations did not open')
+        g.raise_window(w[0][0])
+        cs = None
+        for _ in range(8):
+            try: cs = g.controls('International Relations'); break
+            except _drv.DriverError: time.sleep(1)
+        radios = sorted((c for c in cs if c['cls'] == 'TRadioButton'), key=lambda c: (c['y'], c['x']))
+        if len(radios) != 64: raise _drv.DriverError('expected 64 radio buttons, found %d' % len(radios))
+        for _ in range(2): g.click_control(radios[nation * 4 + col], pause=0.5)
+        for attempt in range(2):                          # OK, at most twice (the first click may only activate the window)
+            g.click_control(g.control(cs, text='OK'), pause=1.5)
+            if boxes(g) or not g.find_windows('^International Relations$'): break
+    return act
+rel_post = lambda g: close_dialog_cancel(g, 'International Relations')
+SC['RL01'] = dict(src=TB, act=rel_act(6, 0), post=rel_post, note='International relations: peace with Gaul (6), at war with Rome (relation 3)')
+SC['RL02'] = dict(src=TB, ops=[('relation', 0, 1, 1), ('relation', 0, 2, 1)], act=rel_act(7, 1), post=rel_post, note='International relations: trade with Greece (7) while Rome trades with Illyria, Carthage and Seleucid (3 partners; the two staged)')
+SC['RL03'] = dict(src=TB, act=rel_act(4, 1), post=rel_post, note='International relations: trade with Macedonia (4), relation -8 (cooldown)')
+SC['RL04'] = dict(src=TB, act=rel_act(6, 1), post=rel_post, note='International relations: trade with Gaul (6), at war (relation 3)')
+SC['RL05'] = dict(src=TB, act=rel_act(1, 2), post=rel_post, note='International relations: alliance with Carthage (1) while Rome is at war with Gaul')
+
+def recruit_act(g):
+    g.open_recruit(); cs = g.controls('Army recruits')
+    cities = g.control(cs, cls='TListBox', index=0)
+    g.click(cities['x'] + cities['w'] // 2, cities['y'] + 12, pause=0.6)
+    g.click_control(g.control(cs, text='Light infantry'), pause=0.6)
+    g.click_control(g.control(cs, text='Recruit unit'), pause=1.2)
+recruit_post = lambda g: close_dialog_cancel(g, 'Army recruits', button='OK')
+SC['RC01'] = dict(src=TB, ops=[('nation', 0, 0x420, 1)], act=recruit_act, post=recruit_post, note='Recruit unit with the 40th recruitment slot occupied (nation 0 +0x420 staged to 1)')
+SC['RC02'] = dict(src=TB, ops=[('nation', 0, 0x442, 100)], act=recruit_act, post=recruit_post, note='Recruit unit with the mobilisation rate at 100 (nation 0 +0x442 staged)')
+
+def sail_pre(fleet, x, y):
+    def pre(g):
+        g.select_fleet(fleet); g.click_tile(x, y, pause=1.5)
+        p = g.fleet_pos(fleet)
+        if tuple(p) != (x, y): raise _drv.DriverError('fleet %d is at %s, not at (%d,%d) after the move order' % (fleet, tuple(p), x, y))
+    return pre
+SC['F03b'] = dict(src=TE, pre=sail_pre(2, 97, 48), act=lambda g: fleet_button(g, 2, 'repair'), note='Repair fleet 2 after a normal sail order to (97,48), five tiles from any city')
+SC['F04b'] = dict(src=TE, pre=sail_pre(2, 97, 48), act=lambda g: fleet_button(g, 2, 'scuttle'), note='Scuttle fleet 2 after a normal sail order to (97,48)')
+
+def sel_act(g):
+    ax, ay = g.army_pos(0); g.select_army(0, ax, ay)
+SC['SEL01'] = dict(src=GF('T_BASE.SAV'), act=sel_act, note='control for the UI bytes: army 0 only SELECTED (no order, no box), then the after save')

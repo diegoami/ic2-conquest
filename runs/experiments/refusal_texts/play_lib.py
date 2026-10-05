@@ -93,7 +93,7 @@ def capture(g, tag, play_id, batch, step):
         try: cs = g.controls(title)
         except Exception as e: cs = 'ERR %s' % e
         tmp = os.path.join(lib.TMP, 'ic2_ref_crop.png')            # the message text only (the box's icon is on the left, the button at the bottom)
-        subprocess.run(['convert', p, '-crop', '%dx%d+%d+0' % (int(w * 0.72), int(h * 0.68), int(w * 0.28)), '+repage', '-resize', '300%', '-colorspace', 'Gray', tmp], check=True)
+        subprocess.run(['convert', p, '-crop', '%dx%d+%d+0' % (int(w * 0.81), int(h * 0.62), int(w * 0.19)), '+repage', '-resize', '300%', '-colorspace', 'Gray', tmp], check=True)
         tc = subprocess.run(['tesseract', tmp, 'stdout', '--psm', '6'], capture_output=True, text=True).stdout
         rec = {'play': play_id, 'text_crop': ' '.join(tc.split()), 'tag': tag, 'step': step, 'wid': wid, 'title': title, 'geometry': [x, y, w, h], 'controls': cs, 'png': os.path.basename(p),
                'psm6': t6, 'psm4': t4, 'text': ' '.join(t6.split())}
@@ -141,6 +141,7 @@ STEPS = []
 def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=None, fixture_note='', pre=None, post=None):
     """One play. `act(g)` issues the order (no dismissal of boxes). Records everything; returns the record."""
     tag = 'REF_%s_%s' % (play_id, batch)
+    eog._ATTEMPTS.clear()                              # X window ids are reused by a new game process: the click budget is per play
     L = lambda m: log('play_%s' % batch, '[%s] %s' % (play_id, m))
     clear_autos()
     if ops: inp = stage_edit(src, SAVEDIR + 'inputs/%s_staged.SAV' % tag, ops, tag)
