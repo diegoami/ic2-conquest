@@ -250,7 +250,12 @@ def main():
     sys.exit(1 if badr else 0)
 
 
-EXPECT = json.loads((Path(__file__).resolve().parent / "b16_expect.json").read_text()) if (Path(__file__).resolve().parent / "b16_expect.json").exists() else {}
+class _E(dict):
+    def __missing__(self, k):
+        return "<no expected value: %s>" % k
+
+
+EXPECT = _E(json.loads((Path(__file__).resolve().parent / "b16_expect.json").read_text()) if (Path(__file__).resolve().parent / "b16_expect.json").exists() else {})
 
 
 if __name__ == "__main__":
