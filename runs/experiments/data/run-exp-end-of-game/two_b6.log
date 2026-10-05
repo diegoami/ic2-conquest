@@ -1,0 +1,21 @@
+18:50:13 [conquest] loaded EOG2_conquest_b6_staged.SAV; popups ['@ Bithynia wants to trade with Rome.']; humans [0, 6] cur 0
+18:50:13 [conquest] Rome: {"nation": 0, "name": "Rome", "leader": "Appius Claudius", "wealth": 2577000, "wealth_start": 2577000, "treasury": 2200, "treasury_start": 2200, "unity": 821, "mob": 30, "cities": 25, "cities_start": 25, "conquered_by": -1, "human": 1}
+18:50:13 [conquest] Gaul: {"nation": 6, "name": "Gaul", "leader": "Hengest", "wealth": 1512000, "wealth_start": 1512000, "treasury": 315, "treasury_start": 315, "unity": 577, "mob": 25, "cities": 5, "cities_start": 28, "conquered_by": -1, "human": 1}
+18:50:13 [conquest] army 0 at (100, 37)
+18:50:18 [conquest] army 0 after the move order: (99, 34); texts []
+18:50:28 [conquest] Gaul turn: turn []
+18:50:31 [conquest] gaul_turn_0720: humans [0, 6] cur 6 windows ["Imperial Conquest 2    Gaul's turn   (Hengest)", 'Area map', 'Unit map', 'Information'] title ['Imperial Conquest 2', "Imperial Conquest 2    Gaul's turn   (Hengest)"]
+18:50:40 [conquest] Rome turn: turn []
+18:50:43 [conquest] rome_turn_0721: humans [0, 6] cur 0 windows ["Imperial Conquest 2    Rome's turn   (Appius Claudius)", 'Area map', 'Unit map', 'Information'] title ['Imperial Conquest 2', "Imperial Conquest 2    Rome's turn   (Appius Claudius)"]
+18:50:53 [conquest] saved /home/diego/projects/wt-eog/artifacts/run-exp-end-of-game/saves/EOG2_conquest_before_siege.SAV
+18:50:53 [conquest] Felsina at (98, 31); army 0 at (99, 34)
+18:50:56 [conquest] army 0 at (99, 33)
+18:50:59 [conquest] army 0 at (99, 32)
+18:51:08 [conquest] saved /home/diego/projects/wt-eog/artifacts/run-exp-end-of-game/saves/EOG2_conquest_adjacent.SAV
+18:51:11 [conquest] after the siege click: window
+18:51:12 [conquest] [gaul] OCR: The game is over for Hengest the leader of Gaul. | Your nation has been conquerred by Rome. | Your short time in power in Gaul produced these changes. | Gaul in 270 BC. Gaul in 270 BC. | Population 1,512,000 Population 1,497,000 | Treasury 315 talents Treasury 315 talents
+18:51:12 [conquest] [gaul] memory strings: {"The game is over for": ["The game is over for Hengest the leader of Gaul."], "You have reached the end": [], "Your unpopularity": [], "Your army have": [], "Your nation has been": ["Your nation has been conquerred by Rome."], "You have conquerred": [], "in power in": ["in power in Gaul produced these changes."], "Population ": ["Population -1,000     (3%)", "Population   1,497,000 ", "Population   1,512,000"], "Cities   ": ["Cities   4", "Cities   28"], "Treasury ": ["Treasury    315 talents"]}
+18:51:17 [conquest] [gaul] OK pressed (1 click(s))
+18:51:20 [conquest] after_ok: humans [0] cur 0 windows ["Imperial Conquest 2    Rome's turn   (Appius Claudius)", 'Unit map', 'Area map', 'Information'] title ['Imperial Conquest 2', "Imperial Conquest 2    Rome's turn   (Appius Claudius)"]
+18:51:20 [conquest] autosaves ['EOG2_conquest_b6_AUTO0720.SAV', 'EOG2_conquest_b6_AUTO0721.SAV']
+18:51:30 [conquest] saved /home/diego/projects/wt-eog/artifacts/run-exp-end-of-game/saves/EOG2_conquest_after_gaul_conquered.SAV

@@ -138,14 +138,16 @@ def press_end_turn_once(g, timeout=10):
     g.wait(started, timeout, 'sign that End turn registered', step=0.25)
 
 def click_ok(g, title, tries=3):
-    """Press OK of the named window, located by Game.controls (not a fixed point); verified by the window closing; at most two retries."""
+    """Press OK of the named window, located by Game.controls (not a fixed point); verified by THAT window (its X id) disappearing (a second window with the same
+    title may open at once, as with two human seats falling in a row); at most two retries. Returns the number of clicks used."""
+    w0 = g.find_windows('^%s$' % re.escape(title))[0][0]
     for attempt in range(tries):
         cs = g.controls(title)
         g.click_control(g.control(cs, text='OK'), pause=1.5)
         try:
-            g.wait(lambda: not g.find_windows('^%s$' % re.escape(title)), 6, title + ' closed'); return attempt + 1
+            g.wait(lambda: w0 not in [w[0] for w in g.find_windows('^%s$' % re.escape(title))], 6, title + ' closed'); return attempt + 1
         except _drv.DriverError:
-            log('eog', 'OK click %d on %s did not close it' % (attempt + 1, title))
+            log('eog', 'OK click %d on %s (window %d) did not close it' % (attempt + 1, title, w0))
     raise _drv.DriverError('%s did not close' % title)
 
 def harvest(tag):
@@ -195,3 +197,60 @@ def all_windows(g):
 
 def proc_alive(g):
     return os.path.exists('/proc/%d' % g.pid)
+
+def save_as_ocr(g, name, timeout=20):
+    """File > Save as located by OCR (menu_pick: the menu word 'as' of 'Save as'), the name typed in the file dialog once a new window proves it is open
+    (as `Game.open_file_dialog`), and the file proven written. Returns the path in the game folder."""
+    ids = lambda: set(_drv.sh('xdotool', 'search', '--onlyvisible', '--name', '', check=False).split())
+    target = _drv.G / name; target.unlink(missing_ok=True)
+    before = ids()
+    menu_pick(g, 'file', 'as')
+    g.wait(lambda: ids() - before, 8, 'Save as dialog window')
+    time.sleep(0.5)
+    g.replace_field(name); g.key('Return')
+    g.wait(lambda: target.exists() and target.stat().st_size > 100000, timeout, 'save ' + name)
+    time.sleep(0.5)
+    return target
+
+def keep_save_ocr(g, name):
+    """save_as_ocr, then a copy under the next free name in the artifacts, hashed in SAVES.sha256. Returns the artifact path."""
+    t = save_as_ocr(g, name)
+    dst = new_path(SAVEDIR + name); shutil.copy(t, dst)
+    with open(DATA + 'SAVES.sha256', 'a') as f: f.write('%s  %s\n' % (sha(dst), os.path.basename(dst)))
+    return dst
+
+def capture_and_ok(g, tag, batch, reason, step, L):
+    """The End of Game window is open: record the state at the window (memory), the window screenshot and its OCR, the strings in game memory and the
+    window's controls; press OK (located by Game.controls, verified by the window closing, at most two retries); return (state_at_window, ocr text6, n_ok_clicks)."""
+    w = eog_window(g)
+    at = world_state(g, 'window_open')
+    jlog('states_%s.jsonl' % batch, {'reason': reason, 'tag': tag, 'step': step + '_window_open', **at})
+    snap(g, '%s_%s_context.png' % (tag, step))
+    p, t6, t4 = ocr_window(g, w[0], '%s_%s_window' % (tag, step))
+    mem = mem_strings(g, ['The game is over for', 'You have reached the end', 'Your unpopularity', 'Your army have', 'Your nation has been', 'You have conquerred',
+                          'in power in', 'Population ', 'Cities   ', 'Treasury '])
+    jlog('ocr_%s.jsonl' % batch, {'reason': reason, 'tag': tag, 'step': step, 'window': 'End of Game', 'png': os.path.basename(p), 'psm6': t6, 'psm4': t4,
+                                  'geometry': w[2:], 'controls': g.controls('End of Game'), 'memory_strings': mem})
+    L('[%s] OCR: %s' % (step, ' | '.join(l for l in t6.splitlines() if l.strip())))
+    L('[%s] memory strings: %s' % (step, json.dumps(mem)))
+    n_ok = click_ok(g, 'End of Game')
+    L('[%s] OK pressed (%d click(s))' % (step, n_ok))
+    return at, t6, n_ok
+
+def wait_turn_of(g, nation, timeout, L, not_before_log=0):
+    """Wait until it is `nation`'s turn (current nation, an autosave line written since `not_before_log`), closing information boxes and logging them.
+    Never touches an End of Game window (a caller handles it)."""
+    logf = _drv.G / 'AUTOSAVE.LOG'; t0 = time.time(); texts = []
+    while time.time() - t0 < timeout:
+        if g.find_windows(r'^End of Game$'): return 'window', texts
+        if g.i16(_drv.CUR_NATION) == nation and logf.exists() and len(logf.read_text().splitlines()) > not_before_log:
+            time.sleep(2); texts += g.dismiss_popups(); return 'turn', texts
+        if g.find_windows(r'^End turn \?$'):
+            texts.append('CONFIRM ' + g.read_popup(g.find_windows(r'^End turn \?$')[0]))
+            cs = g.controls('End turn ?'); g.click_control(g.control(cs, text='End turn'), pause=1.5); continue
+        texts += g.dismiss_popups(); time.sleep(1)
+    raise _drv.DriverError('timeout waiting for the turn of %d' % nation)
+
+def autosave_lines():
+    f = _drv.G / 'AUTOSAVE.LOG'
+    return len(f.read_text().splitlines()) if f.exists() else 0
