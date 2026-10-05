@@ -107,20 +107,57 @@ def test_save_diff_reports_a_relation_edit_as_two_fields():
     assert r["raw_bytes_differing"] > 0 and sorted(paths) == ["nations[0].relations.Gaul", "nations[6].relations.Rome"], r
 
 
-# ---- R3: processes are killed by ownership, never by pattern ----------------------------------------------------------------------------
+# ---- R3: processes are killed by identity (pid + start time), never by pattern or by a remembered pid alone -------------------------------
 def _fake_proc(entries):
-    """entries: {pid: (ppid, cmdline, environ dict)} written as a /proc-like tree."""
+    """entries: {pid: (ppid, cmdline, environ dict[, start time])} written as a /proc-like tree (status, cmdline, environ, stat)."""
     root = Path(tempfile.mkdtemp())
-    for pid, (ppid, cmd, env) in entries.items():
-        d = root / str(pid)
-        d.mkdir()
-        (d / "status").write_text("Name:\tx\nPPid:\t%d\n" % ppid)
-        (d / "cmdline").write_bytes(cmd.encode() + b"\0")
-        (d / "environ").write_bytes(b"\0".join(("%s=%s" % kv).encode() for kv in env.items()) + b"\0")
+    for pid, e in entries.items():
+        ppid, cmd, env = e[:3]
+        start = e[3] if len(e) > 3 else 1000 + pid
+        _write_proc(root, pid, ppid, cmd, env, start)
     return root
 
 
+def _write_proc(root, pid, ppid, cmd, env, start):
+    d = root / str(pid)
+    d.mkdir(exist_ok=True)
+    (d / "status").write_text("Name:\tx\nPPid:\t%d\n" % ppid)
+    (d / "cmdline").write_bytes(cmd.encode() + b"\0")
+    (d / "environ").write_bytes(b"\0".join(("%s=%s" % kv).encode() for kv in env.items()) + b"\0")
+    # field 22 = starttime; the command name holds a space and a ')' on purpose
+    (d / "stat").write_text("%d (wine pre) loader) S %d 1 1 0 -1 4194560 100 0 0 0 1 1 0 0 20 0 1 0 %d 1000 100 18446744073709551615\n" % (pid, ppid, start))
+
+
 MINE = {"DISPLAY": ":640", "WINEPREFIX": str(R.D.PREFIX)}
+
+
+class FakeOwner:
+    """A PeaceGame wired to a fake /proc whose signals are recorded instead of sent."""
+
+    def __init__(self, root, owned, popen_pid):
+        import b16_common as BC
+        self.BC = BC
+        self.g = BC.PeaceGame(exe="x")
+        self.g.PROC = str(root)
+        self.g.owned = owned
+        self.signalled = []
+        self.g._pidfd = lambda pid: None
+        self.g._send = lambda pid, fd: self.signalled.append(pid)
+
+        class P:
+            pid = popen_pid
+
+            def wait(self, timeout=None):
+                return 0
+        self.g.popen = P()
+
+    def stop(self):
+        old = self.BC.time.sleep
+        self.BC.time.sleep = lambda s: None
+        try:
+            return self.g.stop()
+        finally:
+            self.BC.time.sleep = old
 
 
 def test_descendants_follow_the_ppid_tree_only():
@@ -130,28 +167,61 @@ def test_descendants_follow_the_ppid_tree_only():
     assert sorted(BC.descendants(100, root)) == [100, 101, 102], BC.descendants(100, root)
 
 
-def test_stop_kills_only_the_launched_tree_never_a_matching_foreign_process():
+def test_proc_start_reads_field_22_even_with_a_paren_in_the_name():
     import b16_common as BC
+    root = _fake_proc({100: (1, "wine", MINE, 4242)})
+    assert BC.proc_start(100, root) == 4242 and BC.proc_start(999, root) is None
+
+
+def test_stop_kills_only_the_launched_tree_never_a_matching_foreign_process():
     root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE),
                        200: (1, "Imperial Conquest 2 fast.exe", MINE), 201: (200, "Imperial Conquest 2 fast.exe", {"DISPLAY": ":640"})})
-    g = BC.PeaceGame(exe="x")
-    g.PROC = str(root)
-    g.owned = [100, 101]
+    f = FakeOwner(root, [(100, 1100), (101, 1101)], 100)
+    done = f.stop()
+    assert sorted(f.signalled) == [100, 101] and sorted(p for p, _ in done) == [100, 101] and 200 not in f.signalled and 201 not in f.signalled, (f.signalled, done)
 
-    class P:
-        pid = 100
 
-        def wait(self, timeout=None):
-            return 0
-    g.popen = P()
-    killed = []
-    old = (BC.os.kill, BC.time.sleep)
-    BC.os.kill, BC.time.sleep = (lambda pid, sig: killed.append(pid)), (lambda s: None)
-    try:
-        done = g.stop()
-    finally:
-        BC.os.kill, BC.time.sleep = old
-    assert sorted(killed) == [100, 101] and sorted(done) == [100, 101] and 200 not in killed and 201 not in killed, (killed, done)
+def test_a_recycled_owned_pid_and_its_foreign_children_are_never_signalled():
+    """Between discovery and stop() the owned child 101 exits and a FOREIGN process takes its pid (new start time) and has foreign children; the launcher 100 is intact."""
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE), 102: (101, "child", MINE)})
+    f = FakeOwner(root, [(100, 1100), (101, 1101), (102, 1102)], 100)
+    import shutil
+    shutil.rmtree(root / "102")
+    _write_proc(root, 101, 1, "foreign-editor", {"DISPLAY": ":0"}, 999999)          # pid 101 reused by a foreign process
+    _write_proc(root, 150, 101, "foreign-child", {"DISPLAY": ":0"}, 999998)         # with a foreign child
+    done = f.stop()
+    assert sorted(f.signalled) == [100], f.signalled
+    assert 101 not in f.signalled and 150 not in f.signalled and 102 not in f.signalled, f.signalled
+    assert {p for p, _ in f.g.skipped} >= {101, 102}, f.g.skipped
+    assert [p for p, _ in done] == [100], done
+
+
+def test_a_recycled_launcher_pid_pulls_no_foreign_tree_into_cleanup():
+    """The launcher pid 100 is replaced by a foreign process (new start time) with foreign children; the owned child 101 is gone. Nothing is signalled."""
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE)})
+    f = FakeOwner(root, [(100, 1100), (101, 1101)], 100)
+    import shutil
+    shutil.rmtree(root / "101")
+    _write_proc(root, 100, 1, "foreign-service", {"DISPLAY": ":0"}, 777777)
+    _write_proc(root, 160, 100, "foreign-child", {"DISPLAY": ":0"}, 777778)
+    _write_proc(root, 161, 160, "foreign-grandchild", {"DISPLAY": ":0"}, 777779)
+    done = f.stop()
+    assert f.signalled == [] and done == [] and {p for p, _ in f.g.skipped} >= {100, 101}, (f.signalled, done, f.g.skipped)
+
+
+def test_identity_is_rechecked_after_the_pidfd_is_opened():
+    """A process whose start time changes between traversal and the signal (replaced while the pidfd is being opened) is skipped."""
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "child", MINE)})
+    f = FakeOwner(root, [(100, 1100)], 100)
+    orig = f.g._pidfd
+
+    def swap(pid):
+        if pid == 101:
+            _write_proc(root, 101, 1, "foreign", {"DISPLAY": ":0"}, 5555555)       # replaced exactly while its pidfd is opened
+        return orig(pid)
+    f.g._pidfd = swap
+    f.stop()
+    assert f.signalled == [100] and (101, "identity changed before the signal") in f.g.skipped, (f.signalled, f.g.skipped)
 
 
 def test_start_refuses_an_occupied_display_without_launching_or_killing():
@@ -186,28 +256,108 @@ def test_no_script_of_the_branch_kills_or_adopts_by_pattern():
     assert not hits, hits
 
 
-# ---- R1: the number map check fails on an unmapped line and on an unchecked number ------------------------------------------------------------
-def test_number_map_check_fails_when_a_number_has_no_claim():
-    import b16_audit as AU
-    text = "- **A.** Gaul keeps 23 cities and Rome 30.\n- **B.** No numbers here.\n"
-    key = AU.NUMS.line_key("- **A.** Gaul keeps 23 cities and Rome 30.")
-    cl = {"c1": (True, "[23]"), "bad": (False, "[23, 30]")}
-    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["c1"], "exempt": {}}}, cl)
-    assert n == 1 and k == 2 and len(bad) == 1 and "token 30" in bad[0], (out, bad)        # 30 is in no claim's checked values
-    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["c1"], "exempt": {"30": "x"}}}, cl)
-    assert not bad, bad
-    out, bad, n, k = AU.number_map_check(text, {}, cl)
-    assert len(bad) == 1 and "not in the map" in bad[0], bad
-    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["bad"], "exempt": {}}}, cl)
-    assert any("not matching" in b for b in bad), bad
-    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["c1"], "exempt": {"30": "x"}}, "gone line": {"claims": [], "exempt": {}}}, cl)
-    assert any("no longer in the finding" in b for b in bad), bad
+# ---- R1/R2: the audit uses raw data only; the finding is the rendering of the skeleton -------------------------------------------------------
+ART = ROOT / "artifacts" / "run-exp-battle-peace"
+
+
+def _need_raw(fn):
+    def w():
+        if not (ART / "snaps").exists():
+            print("SKIP %s: the raw artifacts are not on this machine" % fn.__name__)
+            return
+        fn()
+    w.__name__ = fn.__name__
+    return w
+
+
+def _strip_docstring(src):
+    import re as _re
+    return _re.sub(r'^(#!.*\n)?"""(.|\n)*?"""', "", src, count=1)
 
 
 def test_inventory_skips_file_spans_and_dates_but_counts_words_and_hex():
     import b16_numbers as N
     t = N.line_tokens("- see `b16-pairs-20261005-150654.json` on 2026-10-05: four runs, 0x45951C, 12,992 and 33 %, cell `loss+unity0=526`.")
     assert sorted(t) == sorted(["4", "0x45951c", "12992", "33"]), t
+
+
+def test_audit_reads_only_raw_inputs():
+    """The audit and b16_raw name no analyser output outside `compare_with_analyser` (their docstrings list what is not read)."""
+    import re as _re
+    banned = _re.compile(r"b16-(fulldiff|repeat|pairs|survey|hook-table|facts)|b16_expect|b16_number_map|b16_analyze|b16_fulldiff|summary-")
+    audit = _strip_docstring((ROOT / "runs/experiments/battles/b16_audit.py").read_text())
+    i = audit.index("def compare_with_analyser")
+    j = audit.index("def sha(")
+    body_ok, outside = audit[i:j], audit[:i] + audit[j:]
+    assert banned.search(body_ok), "compare_with_analyser should name the analyser files"
+    assert not banned.search(outside), banned.search(outside).group(0)
+    raw = _strip_docstring((ROOT / "runs/experiments/battles/b16_raw.py").read_text())
+    assert not banned.search(raw), banned.search(raw).group(0)
+    for src, name in ((outside, "audit"), (raw, "raw")):
+        for m in _re.finditer(r"(?:glob|read_text|read_bytes|open)\(([^)]*)\)", src):
+            assert not banned.search(m.group(1)), (name, m.group(0))
+
+
+def test_skeleton_literals_are_only_registered_ones():
+    import b16_raw as RR
+    assert RR.literal_numbers("a literal 12 and %%box_w%% and %%lit:rule6%%") == ["12"]
+    assert RR.literal_numbers((ROOT / "findings" / "b16-finding.skeleton.md").read_text()) == []
+
+
+@_need_raw
+def test_finding_equals_the_rendering_and_an_edited_number_fails():
+    """The regression Sol named: '-18 becomes -14' edited to '-18 becomes -18' in a copy of the finding must fail the audit's finding check."""
+    import b16_audit as AU
+    text = (ROOT / "findings" / "2026-10-05-battle-peace-offer.md").read_text()
+    ok, detail = AU.check_finding(text)
+    assert ok, detail
+    assert "-18 becomes -14" in text, "the finding no longer states the transition"
+    ok, detail = AU.check_finding(text.replace("-18 becomes -14", "-18 becomes -18", 1))
+    assert not ok and "becomes" in detail, detail
+    ok, detail = AU.check_finding(text.replace("10 of 30 seeds", "11 of 30 seeds", 1))
+    assert not ok, detail
+    ok, detail = AU.check_finding(text.replace("| 1 | **open** |", "| 1 | closed |", 1))
+    assert not ok, detail
+
+
+@_need_raw
+def test_a_doctored_analyser_file_cannot_change_the_audit_and_is_reported():
+    """The data folder is swapped for a copy whose analyser files (full diff, repeat) are doctored (a field fewer, a repeat result flipped). Everything the audit
+    computes (the full diff, the repeat comparisons, all values, the rendering of the finding) must be unchanged, and the doctoring must be REPORTED by
+    `compare_with_analyser`."""
+    import json as _json
+    import shutil
+    import b16_audit as AU
+    import b16_raw as RR
+    base_vals, _ = RR.values()
+    base_fd, base_rp = RR.fulldiff_raw(), RR.repeat_raw()
+    tmp = Path(tempfile.mkdtemp())
+    for f in RR.B.DATA.iterdir():
+        if f.name == "trials-b16.jsonl" or f.name.startswith("hooklog-"):
+            shutil.copy(f, tmp / f.name)
+    afd = _json.loads(sorted(RR.B.DATA.glob("b16-fulldiff-2*.json"))[-1].read_text())
+    arp = _json.loads(sorted(RR.B.DATA.glob("b16-repeat-*.json"))[-1].read_text())
+    k = next(i for i, r in enumerate(afd["runs"]) if r["fields"])
+    afd["runs"][k]["fields"] = afd["runs"][k]["fields"][:-1]
+    afd["runs"][k]["news_dropped"] = ["doctored line"]
+    arp[0]["pre_named_regions_equal"] = not arp[0]["pre_named_regions_equal"]
+    (tmp / "b16-fulldiff-20261005-000000.json").write_text(_json.dumps(afd))
+    (tmp / "b16-repeat-20261005-000000.json").write_text(_json.dumps(arp))
+    real = RR.B.DATA
+    RR.B.DATA = tmp
+    RR._cache.clear()
+    try:
+        vals, _ = RR.values()
+        fd, rp = RR.fulldiff_raw(), RR.repeat_raw()
+        ok, detail = AU.check_finding()
+        bad = AU.compare_with_analyser(fd, rp)
+    finally:
+        RR.B.DATA = real
+        RR._cache.clear()
+    assert vals == base_vals and fd == base_fd and rp == base_rp, "the audit's numbers moved with the doctored analyser files"
+    assert ok, detail
+    assert {len(r["fields"]) for r in fd["runs"] if r["answer"] == "yes"} == {42} and {len(r["fields"]) for r in fd["runs"] if r["answer"] == "no"} == {0}
+    assert any("fulldiff" in b and "fields" in b for b in bad) and any("dropped" in b for b in bad) and any("repeat" in b for b in bad), bad
 
 
 if __name__ == "__main__":
