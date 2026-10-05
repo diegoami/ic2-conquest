@@ -192,3 +192,5 @@ SC['TD01'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 400
                   note='Army to army transfer dialog: Disband (left button) the first unit of army 0 at (103,36), far from a city; Confirm answered Yes')
 SC['TD02'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6)])), ('units', 1, named([U('hi', 3000, 7), U('li', 2000, 6)]))], act=td_act(1), post=tr_post,
                   note='Army to army transfer dialog: Disband (right button) the first unit of army 1, far from a city; Confirm answered Yes')
+SC['TR3'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1), ('units', 12, named([U('li', 6000), U('li', 1100)]))], act=tr_act(12, 0), post=tr_post,
+                 note='Army to army transfer from army 12 (moves staged to 3; units staged to 6,000 + 1,100) into army 0, aboard fleet 2 (30 ships, 15,000 troops of room; army 0 holds 10,700); army 13 is staged to nation 1 so that army 0 is the partner')
