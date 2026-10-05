@@ -467,35 +467,72 @@ def table_md(name):
     return "\n".join(["| " + " | ".join(hdr) + " |", sep] + ["| " + " | ".join(r) + " |" for r in rows])
 
 
+PROTECTED = ("army12_owner_name", "cell_type", "ext_unit_type", "fd_added_loss", "fd_added_win", "fd_dropped")
+TABLES = ("loss", "win", "ext", "pairs", "gate", "hook")
+MARKER = re.compile(r"%%(?:([A-Za-z_][A-Za-z0-9_]*)|lit:([A-Za-z0-9_]+)|table:([a-z]+))%%")
+
+
+def _valid(m):
+    """A marker is valid if it names a computed value, a registered literal (LIT) or a table id."""
+    name, lit, tab = m.groups()
+    if lit is not None:
+        return lit in LIT
+    if tab is not None:
+        return tab in TABLES
+    return True          # a value name; `values()` decides whether it exists (see `placeholders` and the audit claim)
+
+
 def render(skeleton):
     V, _ = values()
 
     def sub(m):
-        key, _, fmt = m.group(1).partition(":")
-        if key == "table":
-            return table_md(fmt)
-        if key == "lit":
-            return LIT[fmt][0]
-        return c(int(V[key])) if fmt == "c" else V[key]
-    return re.sub(r"%%([A-Za-z0-9_]+(?::[A-Za-z0-9_]+)?)%%", sub, skeleton)
+        name, lit, tab = m.groups()
+        if tab is not None:
+            return table_md(tab)
+        if lit is not None:
+            return LIT[lit][0]
+        return V[name]
+    out = MARKER.sub(sub, skeleton)
+    if "%%" in out:
+        raise ValueError("stray or unknown %% in the skeleton: " + out[out.index("%%") - 40:out.index("%%") + 40])
+    return out
 
 
 def placeholders(skeleton):
-    return [k for k in re.findall(r"%%([A-Za-z0-9_]+)(?::[A-Za-z0-9_]+)?%%", skeleton) if k not in ("table", "lit")]
-
-
+    """Names of the value markers (not `lit:` or `table:`) in the skeleton."""
+    return [m.group(1) for m in MARKER.finditer(skeleton) if m.group(1)]
 
 
 LIT = {"rep_sec": ("§9 item 6", "section reference of the decompiled report"), "rep_sec2": ("§2.3", "section reference of the decompiled report"), "plan7": ("§7", "section of docs/proposals/battles.md"),
        "rule6": ("rule 6", "CLAUDE.md rule number"), "thaw": ("(+1, and +3 with a 1-in-3 chance, the rule is the report's, not measured here)", "the quarterly thaw rule quoted from the report"),
        "ally8": ("ally relations to -8", "the ally-loop rule quoted from the report"), "w2": ("two fresh processes", "the design of a pair (a Yes run and a No run)"),
-       "t3": ("the three tests", "the three tests the report names"), "two_nations": ("both nations", "wording")}
+       "t3": ("the three tests", "the three tests the report names"), "two_nations": ("both nations", "wording"), "weak_edit": ("weak2=500,weak13=500", "the edit expression of the gate cell (the cell is checked to exist in trials-b16.jsonl)"),
+       "reclick": ("reclick=False", "the driver argument named in the sentence"),
+       "ally_cond": ("rel[W][k] == 2 and rel[L][k] == 3", "the ally-loop condition quoted from the report")}
+
+
+def lint_skeleton(skeleton):
+    """Errors of the skeleton, line by line: (a) any `%%` that is not part of a VALID marker (a value name, `lit:KEY` with KEY in LIT, `table:ID` with ID in TABLES);
+    (b) any numeric token left after the valid markers are removed, in prose, headings AND table rows (a frozen value, a pasted table). Returns [] when clean."""
+    errs = []
+    V, _ = values()
+    for n, line in enumerate(skeleton.split("\n"), 1):
+        rest = MARKER.sub(lambda m: " " if _valid(m) else m.group(0), line)
+        for name in PROTECTED:           # a computed text value (a name, a unit type, a news line) frozen into the prose
+            if re.search(r"(?<![\w])" + re.escape(V[name]) + r"(?![\w])", rest):
+                errs.append("line %d: the computed value of %s (%r) is written literally" % (n, name, V[name]))
+        if re.search(r"\b(True|False)\b", rest):
+            errs.append("line %d: a literal True/False outside a marker (the invariants are computed)" % n)
+        if "%%" in rest:
+            errs.append("line %d: stray or unknown %%%% marker: %s" % (n, rest[max(0, rest.index("%%") - 30):rest.index("%%") + 30]))
+        for t in NUMS.lint_tokens(rest):
+            errs.append("line %d: literal number %s outside a marker" % (n, t))
+    return errs
 
 
 def literal_numbers(skeleton):
-    """Numeric tokens the skeleton states outside placeholders (placeholders, including `%%lit:KEY%%` whose text is in LIT with its reason, are removed first)."""
-    text = re.sub(r"%%[^%]+%%", " ", skeleton)
+    """The numeric tokens the skeleton states literally (line by line, valid markers removed first; see `lint_skeleton`)."""
     out = []
-    for line in text.split("\n"):
-        out += NUMS.line_tokens(line)
+    for line in skeleton.split("\n"):
+        out += NUMS.lint_tokens(MARKER.sub(lambda m: " " if _valid(m) else m.group(0), line))
     return sorted(set(out))

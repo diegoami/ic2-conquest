@@ -298,10 +298,69 @@ def test_audit_reads_only_raw_inputs():
             assert not banned.search(m.group(1)), (name, m.group(0))
 
 
-def test_skeleton_literals_are_only_registered_ones():
+def _skeleton():
+    return (ROOT / "findings" / "b16-finding.skeleton.md").read_text()
+
+
+def test_skeleton_lint_is_clean_and_catches_a_literal_number():
     import b16_raw as RR
+    assert RR.lint_skeleton(_skeleton()) == []
     assert RR.literal_numbers("a literal 12 and %%box_w%% and %%lit:rule6%%") == ["12"]
-    assert RR.literal_numbers((ROOT / "findings" / "b16-finding.skeleton.md").read_text()) == []
+
+
+@_need_raw
+def test_hardcoding_a_value_marker_is_caught():
+    """The bypass: `%%box_w%%` replaced by its rendered value 406 (and `%%box_h%%` by 360) renders identically, so only the lint can catch it."""
+    import b16_audit as AU
+    import b16_raw as RR
+    sk = _skeleton()
+    for name, value in (("box_w", "406"), ("box_h", "360")):
+        mutated = sk.replace("%%" + name + "%%", value)
+        ok, _ = AU.check_finding(None, mutated)
+        assert ok, "the rendering is identical, which is the point of the bypass"
+        errs = RR.lint_skeleton(mutated)
+        assert errs and all("literal number %s" % value in e for e in errs), errs
+        # the original bug: a prose line describing the marker syntax with a bare double percent made the old lint pair markers across lines and swallow text
+        # (numbers included); put such a line in front of every 4th line and require the hardcoded value to be found in each variant
+        lines = mutated.split("\n")
+        for pos in range(0, len(lines), 4):
+            variant = "\n".join(lines[:pos] + ["the markers are `%%`-delimited"] + lines[pos:])
+            errs = RR.lint_skeleton(variant)
+            assert any("literal number %s" % value in e for e in errs), (pos, errs[:3])
+
+
+@_need_raw
+def test_hardcoding_a_table_is_caught():
+    """A table pasted into the skeleton in place of its marker (every row a literal) and a single hardcoded cell are both literal numbers on table-row lines."""
+    import b16_raw as RR
+    sk = _skeleton()
+    mutated = sk.replace("%%table:gate%%", RR.table_md("gate"))
+    errs = RR.lint_skeleton(mutated)
+    assert errs and any("literal number 501" in e for e in errs), errs[:3]
+    row = "| `loss+unity0=526` | 501 | 30 | 32743 | 12992 | **open** | **open** | **open** |"
+    assert RR.lint_skeleton(sk + "\n" + row) and any("literal number 501" in e for e in RR.lint_skeleton(sk + "\n" + row))
+
+
+def test_a_stray_double_percent_is_an_error_and_cannot_swallow_text():
+    import b16_raw as RR
+    sk = _skeleton()
+    errs = RR.lint_skeleton(sk + "\nsee the %%-delimited markers, then 406 x %%box_h%%\n")
+    assert any("stray or unknown" in e for e in errs) and any("literal number 406" in e for e in errs), errs
+    try:
+        RR.render("a %% b %%box_w%%")
+    except ValueError as e:
+        assert "stray" in str(e)
+    else:
+        raise AssertionError("render accepted a stray double percent")
+    errs = RR.lint_skeleton("%%box_w%% x %%lit:nope%%")
+    assert any("stray or unknown" in e for e in errs), errs          # an unregistered lit key is not a marker
+
+
+@_need_raw
+def test_freezing_every_marker_in_turn_is_caught():
+    import b16_audit as AU
+    total, uncaught = AU.sweep_freeze()
+    assert total > 250 and uncaught == [], (total, uncaught[:5])
 
 
 @_need_raw

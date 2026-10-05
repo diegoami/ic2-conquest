@@ -85,6 +85,22 @@ def compare_with_analyser(raw_fd, raw_rp, fd_path=None, rp_path=None):
     return bad
 
 
+def sweep_freeze(skeleton=None, finding=None):
+    """Freeze every marker of the skeleton in turn (replace that one occurrence by its rendered text, in memory) and run the audit's finding check (lint + rendering)
+    on the result. Returns (total markers, [(position, marker, rendered value)] of the ones NOT caught)."""
+    skeleton = R.SKELETON.read_text() if skeleton is None else skeleton
+    finding = R.FINDING.read_text() if finding is None else finding
+    uncaught, total = [], 0
+    for m in list(R.MARKER.finditer(skeleton)):
+        total += 1
+        value = R.render(m.group(0)) if (m.group(1) or m.group(2) or m.group(3)) else m.group(0)
+        mutated = skeleton[:m.start()] + value + skeleton[m.end():]
+        ok, _ = check_finding(finding, mutated)
+        if ok and not R.lint_skeleton(mutated):
+            uncaught.append((m.start(), m.group(0), value))
+    return total, uncaught
+
+
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
@@ -99,7 +115,9 @@ def main():
     sk = R.SKELETON.read_text()
     ok, detail = check_finding()
     claim("finding", "the finding equals the rendering of the skeleton with every value computed from the raw data (%d placeholders, %d distinct values)" % (len(R.placeholders(sk)), len(set(R.placeholders(sk)))), "findings + raw data", detail or "equal", "equal")
-    claim("finding", "the skeleton states no number literally outside registered literals (references and quoted rules)", "findings/b16-finding.skeleton.md", R.literal_numbers(sk), [])
+    claim("finding", "the skeleton lint is clean: no stray or unknown double-percent marker, no number outside a valid marker (prose, headings and table rows), only registered `lit:` texts", "findings/b16-finding.skeleton.md", R.lint_skeleton(sk), [])
+    total, unc = sweep_freeze(sk)
+    claim("finding", "freezing any single marker (%d markers, each replaced in turn by its rendered value) is caught by the lint or the rendering check: none passes" % total, "findings/b16-finding.skeleton.md", [(u[1], u[2][:40]) for u in unc], [])
     claim("finding", "every placeholder of the skeleton has a computed value", "b16_raw.py", sorted(set(R.placeholders(sk)) - set(V)), [])
     for name in ("btn_same_size", "cityword_ok", "ext_readbacks_consistent", "ext_weak_same", "win_cell_same", "ext_tests_all", "loss_tests_all", "snap_lens_equal", "id_all_volatile", "id_regions_equal",
                  "id_png_equal", "rep_regions_equal", "nn_post_equal", "nn_turns_equal", "g_ok", "hook_rule", "reseed_only_open", "rs_unique"):

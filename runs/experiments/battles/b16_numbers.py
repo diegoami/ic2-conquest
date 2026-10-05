@@ -27,6 +27,21 @@ def drop_file_spans(line):
 DATE = re.compile(r"\d{4}-\d\d-\d\d")
 
 
+LINT_NUM = re.compile(r"(?<![\w#])(?:0x[0-9A-Fa-f]+|\d[\d,]*(?:\.\d+)?)(?![\w])")
+FILE_SPAN = re.compile(r"\.(?:png|SAV|sav|csv|json|jsonl|md|py|gz|sha256|txt|log|exe|sh)\b|\*")
+CELL_SPAN = re.compile(r"^`(?:loss|win)\+[^`]*`$|^`(?:loss|win)\+")
+
+
+def lint_tokens(line):
+    """Numeric tokens of one skeleton line for the lint: every digit run or hex number not glued to a letter, underscore or digit (so `turn-4`, `..0x4A0B80`, `> 500` count),
+    and the number words two..nine. Only code spans that NAME a file (an extension or a `*`) or a cell (`loss+...`, `win+...`) are set aside, never any other span."""
+    s = CODE.sub(lambda m: " " if (FILE_SPAN.search(m.group(0)) or CELL_SPAN.search(m.group(0))) else m.group(0), line)
+    s = DATE.sub(" ", s)
+    s = re.sub(r"SHA-256|sha256", " ", s)
+    s = re.sub(r"^\s*\d+\.\s", " ", s)                      # the numbering of a list
+    return [norm(m.group(0)) for m in LINT_NUM.finditer(s)] + [WORDS[m.group(1).lower()] for m in WORD.finditer(s)]
+
+
 def norm(tok):
     t = tok.replace(",", "").rstrip("%").lower()
     if t.startswith("0x"):
@@ -34,8 +49,9 @@ def norm(tok):
     return t
 
 
-def line_tokens(line):
-    if line.startswith("|") or line.startswith("#"):
+def line_tokens(line, all_lines=False):
+    """Normalised numeric tokens of one line. Table rows and headings are skipped unless `all_lines` (the skeleton lint reads them too)."""
+    if not all_lines and (line.startswith("|") or line.startswith("#")):
         return []
     s = drop_file_spans(line)
     s = DATE.sub(" ", s)
