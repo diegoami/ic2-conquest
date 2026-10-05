@@ -186,6 +186,30 @@ def test_no_script_of_the_branch_kills_or_adopts_by_pattern():
     assert not hits, hits
 
 
+# ---- R1: the number map check fails on an unmapped line and on an unchecked number ------------------------------------------------------------
+def test_number_map_check_fails_when_a_number_has_no_claim():
+    import b16_audit as AU
+    text = "- **A.** Gaul keeps 23 cities and Rome 30.\n- **B.** No numbers here.\n"
+    key = AU.NUMS.line_key("- **A.** Gaul keeps 23 cities and Rome 30.")
+    cl = {"c1": (True, "[23]"), "bad": (False, "[23, 30]")}
+    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["c1"], "exempt": {}}}, cl)
+    assert n == 1 and k == 2 and len(bad) == 1 and "token 30" in bad[0], (out, bad)        # 30 is in no claim's checked values
+    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["c1"], "exempt": {"30": "x"}}}, cl)
+    assert not bad, bad
+    out, bad, n, k = AU.number_map_check(text, {}, cl)
+    assert len(bad) == 1 and "not in the map" in bad[0], bad
+    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["bad"], "exempt": {}}}, cl)
+    assert any("not matching" in b for b in bad), bad
+    out, bad, n, k = AU.number_map_check(text, {key: {"claims": ["c1"], "exempt": {"30": "x"}}, "gone line": {"claims": [], "exempt": {}}}, cl)
+    assert any("no longer in the finding" in b for b in bad), bad
+
+
+def test_inventory_skips_file_spans_and_dates_but_counts_words_and_hex():
+    import b16_numbers as N
+    t = N.line_tokens("- see `b16-pairs-20261005-150654.json` on 2026-10-05: four runs, 0x45951C, 12,992 and 33 %, cell `loss+unity0=526`.")
+    assert sorted(t) == sorted(["4", "0x45951c", "12992", "33"]), t
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted(globals().items()):

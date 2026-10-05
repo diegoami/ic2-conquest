@@ -1,0 +1,297 @@
+{
+ "**Status:** draft finding from `ic2-conquest` for the research repo's ": {
+  "claims": [],
+  "exempt": {
+   "2.3": "reference to a section or item number of another document, not a measurement",
+   "6": "reference to a section or item number of another document, not a measurement",
+   "9": "reference to a section or item number of another document, not a measurement"
+  }
+ },
+ "- **The box exists and has one shape [O].** Title `Offer of peace`, 40": {
+  "claims": [
+   "geom",
+   "nbuttons"
+  ],
+  "exempt": {}
+ },
+ "- **Open rate [O], normal build, D-LOSS (Rome's army 0 = one 3,000 LI ": {
+  "claims": [
+   "survey_loss",
+   "lossrate",
+   "cells",
+   "winstate",
+   "thresholds",
+   "survey_win"
+  ],
+  "exempt": {}
+ },
+ "- **D-WIN can be made to open [O], with an L1 edit:** Illyria's army 1": {
+  "claims": [
+   "writeback",
+   "extstate",
+   "extcell"
+  ],
+  "exempt": {}
+ },
+ "- **Yes versus No [O], 12 pairs (10 D-LOSS seeds, 2 D-WIN-with-second-": {
+  "claims": [
+   "pairs12",
+   "rel",
+   "cities",
+   "turnidx"
+  ],
+  "exempt": {}
+ },
+ "- **No v No is byte-identical [O]** on two seeds (1 and 3): the post-a": {
+  "claims": [
+   "nonoise2"
+  ],
+  "exempt": {}
+ },
+ "- **The gate against `[R-code]` [O]:** the loser's unity **501 opens, ": {
+  "claims": [
+   "thresholds",
+   "gateall",
+   "gateunity",
+   "hookn",
+   "hookbase",
+   "hookcounts",
+   "hookrange",
+   "writeback"
+  ],
+  "exempt": {}
+ },
+ "1. **The box.** Window title `Offer of peace`, 406 x 360 at (13, 94) i": {
+  "claims": [
+   "geom",
+   "nbuttons",
+   "rects"
+  ],
+  "exempt": {}
+ },
+ "2. **Yes.** Relation between the two nations set to **-18** in both di": {
+  "claims": [
+   "rel",
+   "pairs12"
+  ],
+  "exempt": {}
+ },
+ "3. **No.** No decoded field changes (full before/after diff, 12 runs):": {
+  "claims": [
+   "pairs12",
+   "fulldiff"
+  ],
+  "exempt": {}
+ },
+ "4. **The gate, as measured.** The box opens in a human-AI battle only ": {
+  "claims": [
+   "thresholds",
+   "gateall",
+   "gateunity",
+   "hookbase",
+   "hookcounts",
+   "hookrange",
+   "drawrate",
+   "lossrate",
+   "writeback"
+  ],
+  "exempt": {}
+ },
+ "5. **The reseed.** When the box opens the game sets `RandSeed := winne": {
+  "claims": [
+   "reseed",
+   "hookrange"
+  ],
+  "exempt": {}
+ },
+ "- **Build:** the NORMAL build, `Imperial Conquest 2 fast rollingsave s": {
+  "claims": [],
+  "exempt": {
+   "7": "reference to a section or item number of another document, not a measurement"
+  }
+ },
+ "- **Start:** `FLD-RG_0743_rome_army0_at_86_28.SAV` (Rome's army 0 at (": {
+  "claims": [
+   "start",
+   "cells",
+   "extcell",
+   "gateall",
+   "cityword"
+  ],
+  "exempt": {}
+ },
+ "- **A run (`b16_run.py`):** load, read back, Rome's army 0 attacks Gau": {
+  "claims": [
+   "snaplen",
+   "clicks",
+   "driverconsts",
+   "start"
+  ],
+  "exempt": {}
+ },
+ "- **A pair:** the same save and seed twice, answer Yes in one and No i": {
+  "claims": [
+   "pairs12"
+  ],
+  "exempt": {}
+ },
+ "- **Error records:** one in `trials-b16.jsonl`: `loss_s5_hook-capture_": {
+  "claims": [
+   "hookn"
+  ],
+  "exempt": {}
+ },
+ "- **Output rule (rule 6):** `trials-b16.jsonl` is append-only; every t": {
+  "claims": [
+   "nonoise2"
+  ],
+  "exempt": {
+   "6": "reference to a section or item number of another document, not a measurement"
+  }
+ },
+ "For all 12 pairs the two pre-answer snapshots are equal **except at mo": {
+  "claims": [
+   "volatile",
+   "volatileaddr",
+   "repeat",
+   "reseed",
+   "pairs12",
+   "hookrange"
+  ],
+  "exempt": {}
+ },
+ "**D-LOSS (30 seeds)**": {
+  "claims": [
+   "tab_loss",
+   "lossrate"
+  ],
+  "exempt": {}
+ },
+ "**D-WIN (10 seeds)**": {
+  "claims": [
+   "tab_win",
+   "winstate"
+  ],
+  "exempt": {}
+ },
+ "**D-WIN with a second Gaul army (5 seeds)**": {
+  "claims": [
+   "tab_ext",
+   "extstate"
+  ],
+  "exempt": {}
+ },
+ "`b16_fulldiff.py` (`b16-fulldiff-*.json`, `b16-fulldiff-summary-*.md`)": {
+  "claims": [
+   "fulldiff",
+   "rawdiff",
+   "writeback",
+   "pairs12"
+  ],
+  "exempt": {}
+ },
+ "Normal build, same save, same seed, different process: `loss_s1_{captu": {
+  "claims": [
+   "repeat",
+   "nonoise2",
+   "pairs12"
+  ],
+  "exempt": {}
+ },
+ "- **[D] Why the 10 D-LOSS pairs look alike.** The box reseeds `RandSee": {
+  "claims": [
+   "reseed",
+   "hookrange",
+   "seedsdiffer",
+   "pairs12",
+   "lossrate"
+  ],
+  "exempt": {}
+ },
+ "- **[D] Yes writes the relation and the news and nothing else.** The f": {
+  "claims": [
+   "pairs12",
+   "fulldiff"
+  ],
+  "exempt": {}
+ },
+ "- **[D] The -14 on the next turn** fits the quarterly thaw of a negati": {
+  "claims": [
+   "rel"
+  ],
+  "exempt": {
+   "1": "rule or formula quoted from the decompiled report, not measured here"
+  }
+ },
+ "- **[D] After No Gaul keeps attacking Rome in the D-LOSS cell** becaus": {
+  "claims": [
+   "cities",
+   "start"
+  ],
+  "exempt": {}
+ },
+ "- **[R-code] and [O].** Measured: the draw is `Random(5)` (range 5 log": {
+  "claims": [
+   "hookbase",
+   "hookn",
+   "hookrange",
+   "thresholds",
+   "gateall"
+  ],
+  "exempt": {}
+ },
+ "**Yes versus No (12 pairs; each cell is Yes/No)**": {
+  "claims": [
+   "tab_pairs",
+   "pairs12"
+  ],
+  "exempt": {}
+ },
+ "**Hooked lab runs (peace draw `Random(5)` at `0x45951C`)**": {
+  "claims": [
+   "tab_hook",
+   "hookrange"
+  ],
+  "exempt": {}
+ },
+ "- **One geometry.** Rome v Gaul at (86, 28) / (85, 28), Rome's army 0 ": {
+  "claims": [
+   "start",
+   "cells",
+   "lossrate",
+   "extstate"
+  ],
+  "exempt": {}
+ },
+ "- **Four End turns only**, and a position in which Rome's relations wi": {
+  "claims": [
+   "turnidx"
+  ],
+  "exempt": {
+   "-8": "rule or formula quoted from the decompiled report, not measured here"
+  }
+ },
+ "- **Not tested:** `armies(W)` equal to `armies(L)`; unity or city coun": {
+  "claims": [
+   "thresholds",
+   "pairs12",
+   "rel"
+  ],
+  "exempt": {}
+ },
+ "- The **two volatile words** at `0x45E614/0x45E616` were not identifie": {
+  "claims": [
+   "volatile",
+   "volatileaddr"
+  ],
+  "exempt": {}
+ },
+ "`b16-claims-audit-*.md` (written by `runs/experiments/battles/b16_audi": {
+  "claims": [
+   "ntables"
+  ],
+  "exempt": {
+   "2": "ordinary-language count of a thing named in the sentence, not a measurement"
+  }
+ }
+}
