@@ -328,8 +328,9 @@ python3 scripts/external_review.py --pr N --model opencode-go/deepseek-v4.1-flas
 python3 scripts/external_review.py --pr N --model openai/gpt-6.1-sol#medium --apply-label         # the review of record
 ```
 
-`#medium` survives the script: `opencode_watched.effort` rewrites only a missing variant and `max` (lines 79-83), and passes
-`--variant medium` (lines 205-206). Nothing stops an operator from typing `#high`, so the PR template (below) states the command.
+`#medium` survives the script: since 2026-10-05 `opencode_watched.effort` gives a heavy model with no variant `#low`, lowers `#high`
+and `#max` on one to `#medium` (so an operator's `#high` cannot reach Sol), keeps `#low`/`#medium`, and passes `--variant medium`.
+The PR template (below) still states the command.
 On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and decide; do not pay for another review.
 
 **M0 tasks, before the first M1 PR:**

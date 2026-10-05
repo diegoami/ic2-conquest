@@ -14,7 +14,8 @@ body pasted in -> scripts/opencode_watched.py -> validate the review's shape -> 
 ONE comment (+ a status label with --apply-label). A review is never thrown away: only "no review at all" (no
 header line anywhere) falls to the next model or to exit 3; a readable review is normalised and acted on; one
 whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4.
-Default: one OpenCode model, effort high; the caller falls back to Claude Opus on exit 3.
+Default: the DEFAULT_MODELS chain, after the quota check (models whose provider is exhausted are skipped, L50). Effort: light models
+#high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). The caller falls back to Claude Opus on exit 3.
 """
 import argparse
 import json
@@ -286,7 +287,8 @@ def self_test():
 
 
 def effort(model):
-    """Effort 'high' for every variant (see opencode_watched.effort); say so when max is lowered."""
+    """The model with its effort made explicit (opencode_watched.effort: light #high, heavy #low, heavy #high/#max -> #medium); says so when
+    an explicit variant is lowered."""
     out = ow.effort(model)
     v = ow.split_model(model)[1]
     if v is not None and out != model:
