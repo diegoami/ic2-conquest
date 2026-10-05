@@ -39,7 +39,9 @@ Each provider has:
 | zai         | `opencode -m zai-coding-plan/glm-5.3`             | `opencode -m zai-coding-plan/glm-5.3-flash`           |
 | opencode_go | `opencode -m opencode-go/deepseek-v4-pro`         | `opencode -m opencode-go/deepseek-v4.1-flash`         |
 | openrouter  | `opencode -m openrouter/deepseek/deepseek-v4-pro` | `opencode -m openrouter/deepseek/deepseek-v4.1-flash` |
-| alibaba     | `opencode -m alibaba-token-plan/deepseek-v4-pro`, `…/qwen3.8-max`, `…/glm-5.3` | `opencode -m alibaba-token-plan/deepseek-v4.1-flash`, `…/qwen3.8-flash` (no GLM light on alibaba; zai has `glm-5.3-flash`) |
+| alibaba: DeepSeek | `opencode -m alibaba-token-plan/deepseek-v4-pro` | `opencode -m alibaba-token-plan/deepseek-v4.1-flash` |
+| alibaba: Qwen     | `opencode -m alibaba-token-plan/qwen3.8-max`     | `opencode -m alibaba-token-plan/qwen3.8-flash`       |
+| alibaba: GLM      | `opencode -m alibaba-token-plan/glm-5.3`         | none on alibaba (zai has `glm-5.3-flash`)            |
 
 With `scripts/external_review.py` a model is passed as `--model <id>#<effort>`. Use effort `low` or `medium` for a heavy model and
 `high` for a light one (`CLAUDE.md`, "Effort").
@@ -48,11 +50,22 @@ Facts that affect availability:
 - `gpt-5.6-luna` has its own weekly limit: for light tasks openai is usable while the `gpt-5.6-luna:7d` window in `/quota/openai`
   is under 95%, even if openai is exhausted.
 - openrouter is prepaid credit: its windows never reset, and `remaining_usd` is the balance.
-- alibaba has one monthly credit pool shared by every model on the plan (DeepSeek, Qwen, GLM, Kimi, MiniMax). Its window is
-  named `month` (no 5-hour or weekly windows); the response also has `plan` and `subscription_ends_at`. If it shows
-  `not_configured` or a login error, ask the owner to run `bl auth login --console --console-site international`. If OpenCode
-  answers "Provider not found: alibaba-token-plan", its key is not installed: tell the owner (they run `opencode auth login` and
-  pick Alibaba Token Plan); do not retry.
+- alibaba has one monthly credit pool shared by every model on the plan (DeepSeek, Qwen, GLM). Its window is named `month`
+  (no 5-hour or weekly windows); the response also has `plan` and `subscription_ends_at`. If quota-tracker shows
+  `not_configured` or a login error, ask the owner to run `bl auth login --console --console-site international`.
+- **alibaba in OpenCode** (usable since 2026-10-05): the key comes from the environment variable `ALIBABA_TOKEN_PLAN_API_KEY`
+  (set in `~/.bashrc` on WSL), so it works in every OpenCode data folder, the reviewer's `$IC2_WORK/opencode-data` included.
+  - Never add it to an `auth.json` with `opencode auth login`: a key stored there overrides the variable, and a bad one breaks
+    the provider for that folder. Never print, copy or edit the key or any `auth.json`.
+  - A session started before the variable existed doesn't have it: start OpenCode (and `scripts/external_review.py`) through
+    `bash -ic '…'`, or open a new shell.
+  - The owner's plan is Personal edition: the Kimi and MiniMax models OpenCode lists are Team-only and fail.
+  - Night discount, 22:00-08:00 UTC+8: DeepSeek uses 50% fewer credits, Qwen 60% fewer.
+  - Quick check: `opencode run -m alibaba-token-plan/qwen3.8-flash "Reply with just: ok"`.
+  - **"Invalid API-key":** a stale Alibaba entry in that folder's `auth.json` overrides the variable. Tell the owner which
+    `XDG_DATA_HOME` was used.
+  - **"Provider not found":** the variable is missing from the environment (a new shell fixes it). A harness that cleans the
+    environment won't see it either. Tell the owner rather than retrying.
 
 ### If the service isn't running
 Check: `curl -sf localhost:8765/health`. If that fails:
