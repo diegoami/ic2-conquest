@@ -92,7 +92,7 @@ def s_armies(b, owner):
 
 def s_army_alive(b, i):
     r = ARM - BASE + i * 656
-    return sum(max(0, i16(b, r + 16 + 32 * k + 4)) for k in range(20)) > 0
+    return i16(b, r + 4) == 0 and sum(max(0, i16(b, r + 16 + 32 * k + 4)) for k in range(20)) > 0       # still Rome's (a deleted army is re-owned) with troops
 
 
 # ---- raw readers of a save -------------------------------------------------------------------------------------------------------------------
@@ -121,6 +121,10 @@ def v_news(b):
     return out
 
 
+def differs_only_in_volatile(a, b):
+    return len(a) == len(b) and (a == b or all(0x45E614 <= BASE + i < 0x45E618 for i in range(len(a)) if a[i] != b[i]))
+
+
 def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
@@ -140,7 +144,7 @@ def main():
             survey.setdefault((r["cell"], r["seed"]), r)
 
     def box_from_files(r):         # the box counted from the dialog screenshot file, independent of the record's flag
-        return bool(r.get("dialogs")) and (B.ART / "shots" / r["dialogs"][0]["shot"]).exists()
+        return bool(r.get("dialogs")) and bool(r["dialogs"][0].get("shot")) and (B.ART / "shots" / r["dialogs"][0]["shot"]).exists()
     for cell, seeds in (("loss", range(1, 31)), ("win", range(1, 11))):
         rr = [survey[(cell, s)] for s in seeds if (cell, s) in survey]
         opened = sorted(r["seed"] for r in rr if box_from_files(r))
@@ -155,7 +159,7 @@ def main():
             got[(W, s_armies(b, W) < s_armies(b, L), s_nation(b, L, 0x440) > 500, s_nation(b, L, 0x446) > 7, box_from_files(r))] += 1
         claim("finding survey", "%s: counts of (winner nation, armies(W) < armies(L), unity(L) > 500, cities(L) > 7, box opened) recomputed from the %d snapshots" % (cell, len(rr)),
               "*_pre.snap.gz", dict(sorted(got.items())), EXPECT["rcode_" + cell])
-    claim("finding survey", "no error record in trials-b16.jsonl", "trials-b16.jsonl", len(errs), EXPECT["errors"])
+    claim("finding survey", "exactly one error record in trials-b16.jsonl (the hooked seed 5 launch before that lab hook exe was built, FileNotFoundError; kept, seed 5 was rerun as r2)", "trials-b16.jsonl", len(errs), EXPECT["errors"])
     # ---- the pairs -----------------------------------------------------------------------------------------------------------------------------
     pairs = []
     for cell in sorted({r["cell"] for r in T.values() if r["answer_plan"] in ("yes", "no")}):
@@ -185,8 +189,9 @@ def main():
     news = []
     for c, s, y, n in pairs:
         ry, rn = (v_news(open(B.ART / r["post_save"], "rb").read()) for r in (y, n))
-        news.append(("Gaul and Rome have agreed to end their war." in ry[-3:] or "Rome and Gaul have agreed to end their war." in ry[-3:], "agreed to end their war" in " ".join(rn[-3:])))
-    claim("finding pairs", "news: the Yes save ends with 'Gaul and Rome have agreed to end their war.' (last 3 lines), the No save has no such line", "post saves", set(news), {(True, False)})
+        W, L = ("Rome", "Gaul") if c != "loss" else ("Gaul", "Rome")
+        news.append(("%s and %s have agreed to end their war." % (W, L) in ry[-3:], "agreed to end their war" in " ".join(rn[-3:])))
+    claim("finding pairs", "news: the Yes save ends with '<Winner> and <Loser> have agreed to end their war.' (Gaul and Rome after a human defeat, Rome and Gaul after a human victory; last 3 lines), the No save has no such line", "post saves", set(news), {(True, False)})
     # turns
     for t in range(1, 5):
         got = []
@@ -208,22 +213,57 @@ def main():
             a, b = rs[0], rs[1]
             nn.append((k[0], k[1], (B.ART / a["post_save"]).read_bytes() == (B.ART / b["post_save"]).read_bytes(),
                        [(B.ART / "turns" / x["save"]).read_bytes() == (B.ART / "turns" / y["save"]).read_bytes() for x, y in zip(a["turns"], b["turns"])],
-                       all(snap(a["pre_snap"])[i] == snap(b["pre_snap"])[i] or 0x45E614 <= BASE + i < 0x45E618 for i in range(len(snap(a["pre_snap"]))))))
+                       differs_only_in_volatile(snap(a["pre_snap"]), snap(b["pre_snap"]))))
     claim("finding No/No", "No v No on the same save and seed (two fresh processes): the post-answer save, each of the 4 End-turn saves and the pre-answer snapshot (outside the two volatile words) are byte-equal", "post and turns saves, snapshots",
           nn, EXPECT["nonoise"])
     # ---- gates ---------------------------------------------------------------------------------------------------------------------------------
     gate = defaultdict(dict)
     for r in T.values():
-        if r["cell"].startswith("loss+") and r["answer_plan"] == "capture":
+        if r["cell"].startswith("loss+") and r["answer_plan"] == "capture" and r["build"] == "normal":
             gate[r["cell"]][r["seed"]] = box_from_files(r)
     claim("finding gate", "gate cells (L1 edit of the loss cell): box opened per seed", "trials-b16.jsonl + shots/", {k: dict(sorted(v.items())) for k, v in sorted(gate.items())}, EXPECT["gate"])
     gv = {}
     for r in T.values():
-        if r["cell"].startswith("loss+") and r["answer_plan"] == "capture":
+        if r["cell"].startswith("loss+") and r["answer_plan"] == "capture" and r["build"] == "normal":
             b = snap(r["pre_snap"])
             gv[(r["cell"], r["seed"])] = (s_nation(b, 0, 0x440), s_nation(b, 0, 0x446), s_armies(b, 0), s_armies(b, 6))
     claim("finding gate", "gate cells: (Rome unity, Rome city count, armies(Rome), armies(Gaul)) in the snapshot before the answer / at the box, seeds 1, 3, 5", "*_pre.snap.gz",
           {k[0]: v for k, v in gv.items() if k[1] == 1}, EXPECT["gatevals"])
+    # ---- the box as the clone copies it ---------------------------------------------------------------------------------------------------------
+    normal_open = [r for r in T.values() if r["build"] == "normal" and r["answer_plan"] in ("capture", "yes", "no") and box_from_files(r)]
+    claim("finding box", "every opened run (%d, normal build): title 'Offer of peace', geometry 13,94,406,360, buttons exactly No and Yes (TButton), answered with a recorded click" % len(normal_open), "trials-b16.jsonl",
+          ({r["box_title"] for r in normal_open}, {tuple(r["dialogs"][0]["geometry"]) for r in normal_open}, {tuple(sorted(c["text"] for c in r["dialogs"][0]["controls"] if c["cls"] == "TButton")) for r in normal_open if r["dialogs"][0].get("controls")}, {c["cls"] for r in normal_open if r["dialogs"][0].get("controls") for c in r["dialogs"][0]["controls"]}),
+          ({"Offer of peace"}, {(13, 94, 406, 360)}, {("No", "Yes")}, {"TButton"}))
+    heads = Counter(r["box_text"][:60] for r in normal_open)
+    claim("finding box", "box text (OCR) starts 'After defeating you in battle Gaul are willing to end their war' after a human defeat and 'After losing to you in battle Gaul are willing to end their war' after a human victory", "trials-b16.jsonl",
+          {k.replace("\u2018", "").replace("\u2019", ""): v for k, v in heads.items()}, EXPECT["heads"])
+    claim("finding box", "every opened run's text contains 'honourable peace with no reparations' and 'click YES' and 'click NO'", "trials-b16.jsonl",
+          sum(1 for r in normal_open if "honourable peace with no reparations" in r["box_text"] and "click YES" in r["box_text"] and "click NO" in r["box_text"]), len(normal_open))
+    rs = {struct.unpack("<I", snap(r["pre_snap"])[:4])[0] for r in normal_open}
+    claim("finding box", "RandSeed (first 4 bytes of the snapshot taken with the box up) is 0x3033181F in every opened normal-build run", "*_pre.snap.gz", {hex(x) for x in rs}, {"0x3033181f"})
+    # no change at the answer: Rome and Gaul treasury, unity, city count in the Yes post save == No post save == the snapshot before the answer
+    chg = []
+    for c, s_, y, n in pairs:
+        by, bn = (open(B.ART / r["post_save"], "rb").read() for r in (y, n))
+        bs = snap(y["pre_snap"])
+        vy = [(v_treasury(by, k), v_nation(by, k, 0x440), v_nation(by, k, 0x446)) for k in (0, 6)]
+        vn = [(v_treasury(bn, k), v_nation(bn, k, 0x440), v_nation(bn, k, 0x446)) for k in (0, 6)]
+        vs = [(struct.unpack_from("<i", bs, NAT - BASE + k * 1172 + 0x438)[0], s_nation(bs, k, 0x440), s_nation(bs, k, 0x446)) for k in (0, 6)]
+        chg.append(vy == vn == vs)
+    claim("finding pairs", "at the answer Rome's and Gaul's treasury, unity and city count are the same in the Yes save, the No save and the snapshot before the answer (no money, unity or city change, no reparations): per pair", "post saves + snapshots", chg, [True] * len(pairs))
+    # hooked runs: the draw
+    hk = []
+    for r in T.values():
+        if r["build"] == "lab hook":
+            rows_ = [x.split(",") for x in (B.DATA / ("hooklog-%s.csv" % r["trial"])).read_text().splitlines()[1:]]
+            draws = [int(x[6]) for x in rows_ if x[1] == "random" and x[2] == "0x45951c" and int(x[3]) == 5]
+            hk.append((r["cell"], r["seed"], box_from_files(r), tuple(draws), any(x[1] == "reseed" for x in rows_)))
+    base = [h for h in hk if h[0] == "loss"]
+    claim("finding hook", "16 hooked baseline seeds: box open exactly when the logged Random(5) at 0x45951C is < 2; opened seeds and draws", "hooklog-*.csv + shots/",
+          (len(base), sum(1 for h in base if h[2] == (len(h[3]) == 1 and h[3][0] < 2)), [(h[1], h[3][0]) for h in base if h[2]], sorted({h[3][0] for h in base if not h[2]}), all(h[4] == h[2] for h in base)), EXPECT["hookbase"])
+    gated = [h for h in hk if h[0] != "loss"]
+    claim("finding hook", "hooked gate runs (unity 500, city word 7, weak armies; seeds 10, 11, 14): box closed, no Random(5) draw at 0x45951C at all", "hooklog-*.csv + shots/",
+          (len(gated), sum(1 for h in gated if not h[2] and h[3] == ())), (9, 9))
     # ---- hashes / counts / files ---------------------------------------------------------------------------------------------------------------
     bins = [p for p in B.ART.rglob("*") if p.is_file() and p.suffix.lower() in (".sav", ".png", ".gz") and "archives" not in p.parts and not p.name.startswith("_tmp")]
     bad = [p.name for p in bins if shas.get(p.name) != sha(p)]
@@ -238,7 +278,7 @@ def main():
     import subprocess
     for mod, e in (("test_driver_battle", EXPECT["tests_driver"]), ("test_battle_b16", EXPECT["tests_b16"]), ("test_battle_stage", EXPECT["tests_stage"])):
         out = subprocess.run([sys.executable, "-m", "tests." + mod], capture_output=True, text=True, cwd=C.ROOT).stdout
-        claim("results.md", "%s: %d tests pass, 0 fail" % (mod, e), "tests/" + mod + ".py", (out.count("PASS "), out.count("FAIL ")), (e, 0))
+        claim("results.md", "%s: %s tests pass, 0 fail" % (mod, e), "tests/" + mod + ".py", (out.count("PASS "), out.count("FAIL ")), (e, 0))
     badr = [r for r in rows if r[5] != "y"]
     out = C.write_new(B.DATA, "b16-claims-audit-%s.md" % C.STAMP,
                       "# B16 claims audit\n\n%d claims, %d mismatches.\n\nInputs: raw snapshots, saves and screenshots, read with `struct` in `b16_audit.py`; `trials-b16.jsonl` for the seed, plan, answer clicked and box text. Not used: `b16_analyze.py`, `b16_run.strategic/rcode`, `state.sav`, `state.battle`.\n\n"
