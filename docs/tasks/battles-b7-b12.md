@@ -44,7 +44,7 @@ Branch `experiment/battle-orders-b7-b12`. Data in `runs/experiments/data/run-exp
    - 5 played battles in a row complete headless (Rome driven by the bot, Gaul by Computer general).
 
 ### B12. Scripted plans against Computer general
-**Proposed definitions** (the plan names these but does not define them; the player may adjust them before the work starts):
+**Definitions** (the plan names these but does not define them; proposed by the coordinator and approved by the player, 2026-10-05):
 - `P-HOLD`: Rome's units never advance. Archers shoot the nearest enemy in range. Every unit melees only an enemy that is already
   adjacent.
 - `P-FOCUS`: every Rome unit that can reach or shoot the same enemy unit attacks it, until it routs or leaves; then the next. The target
