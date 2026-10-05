@@ -95,3 +95,7 @@ class PeaceGame(D.Game):
         if not mine:
             raise D.DriverError("no game process on display %s" % DISPLAY)
         self.pid = mine[0]
+
+    def hook_read(self):
+        from state import hook_log
+        return hook_log.read_process(self.mem)

@@ -185,13 +185,14 @@ def run_turns(g, tag, n, log, rec):
     rec["turns"] = rows
 
 
-def trial(cell, seed, answer, turns, log, rep=1, label=None):
+def trial(cell, seed, answer, turns, log, rep=1, label=None, hook=False):
     """One whole run from a fresh process. `answer`: yes | no | capture. `no` and `capture` both press No (the driver's `capture` mode: screenshot + controls + No;
     its `no` mode records neither, which a Yes/No pair needs); the plan is recorded as given. Returns the record (also appended)."""
-    tag = "%s_s%d_%s_r%d" % (cell.replace("+", "-").replace("=", ""), seed, label or answer, rep)
-    rec = {"trial": tag, "cell": cell, "seed": seed, "answer_plan": answer, "rep": rep, "exe": C.NORMAL_EXE, "build": "normal", "turns_plan": turns,
+    tag = "%s_s%d_%s_r%d" % (cell.replace("+", "-").replace("=", ""), seed, ("hook-" if hook else "") + (label or answer), rep)
+    exe_name = (B.HOOK_EXE % seed) if hook else C.NORMAL_EXE
+    rec = {"trial": tag, "cell": cell, "seed": seed, "answer_plan": answer, "rep": rep, "exe": exe_name, "build": "lab hook" if hook else "normal", "turns_plan": turns,
            "level": "L1 from FLD-RG (labelled synthetic)", "stamp": C.STAMP, "status": "started"}
-    g = B.PeaceGame(exe=C.NORMAL_EXE)
+    g = B.PeaceGame(exe=exe_name)
     pre = {}
     try:
         base, _, extra = cell.partition("+")
@@ -213,7 +214,13 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None):
         start = stage_start(cell, ops_extra)
         t0 = time.time()
         B.kill_mine(g)
-        boxes = g.load(start, seed)
+        if hook:       # the lab exe has its seed baked in (reseeded at every battle start): no SEED.TXT, as in b11_run
+            rec["exe_sha256"] = C.sha(D.G / exe_name)
+            g.start()
+            boxes = g.open(start)
+            g.seed_line = "lab hook exe, seed %d baked in" % seed
+        else:
+            boxes = g.load(start, seed)
         rec.update({"start_save": start.name, "start_sha256": C.sha(start), "seed_line": g.seed_line, "open_boxes": boxes, "load_seconds": round(time.time() - t0, 1)})
         a0, a10 = g.army_state(C.ROME_ARMY), g.army_state(C.GAUL_ARMY)
         if (a0["x"], a0["y"]) != C.STAGE_TILE or (a10["x"], a10["y"]) != C.GAUL_TILE or a0["moves"] <= 0:
@@ -271,6 +278,16 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None):
         if not d:
             b = snapshot(g)             # no box: the same read, right after the Battle ended box closed and the map is back
             pre["bytes"], pre["strategic"] = b, strategic(b)
+        if hook:               # the exchange hook's log (B11): the peace draw Random(5) at 0x45951C and every record after the battle-flag clear
+            ctl, recs = g.hook_read()
+            peace = [r for r in recs if r["kind"] == "random" and r["site"] == 0x45951C]
+            clear = next((r["seq"] for r in recs if r["kind"] == "flag_clear"), None)
+            rec["hook"] = {"records": len(recs), "overflow": ctl["overflow"], "reentered": ctl.get("reentered", 0), "magic_ok": ctl["magic_ok"], "flag_clear_seq": clear,
+                           "peace_draws": [{"seq": r["seq"], "range_eax": r["eax"], "result": r["result"], "seed_before": r["seed_before"]} for r in peace],
+                           "reseed_records": [(r["seq"], hex(r["site"])) for r in recs if r["kind"] == "reseed"],
+                           "after_clear": [(r["seq"], r["kind"], hex(r["site"]), r["eax"], r["result"]) for r in recs if clear is not None and r["seq"] > clear]}
+            C.write_new(B.DATA, "hooklog-%s.csv" % tag, "seq,kind,site,eax,seed_before,seed_after,result\n" + "".join(
+                "%d,%s,0x%x,%d,%d,%d,%d\n" % (r["seq"], r["kind"], r["site"], r["eax"], r["seed_before"], r["seed_after"], r["result"]) for r in recs))
         rec["pre_answer_when"] = "box up, before the click" if d else "no box: after the Battle ended box closed and the map returned"
         rec["pre_regions"] = region_hashes(pre["bytes"])
         rec["pre_sha256"] = sha_bytes(pre["bytes"])
@@ -341,7 +358,8 @@ def main():
             for ans in ("yes", "no"):
                 trial(cell, seed, ans, turns, log, rep=next_rep(cell, seed, ans))
     else:
-        trial(cell, int(a[2]), a[3], turns, log, rep=next_rep(cell, int(a[2]), a[3]))
+        hook = "--hook" in a
+        trial(cell, int(a[2]), a[3], turns, log, rep=next_rep(cell, int(a[2]), ("hook-" if hook else "") + a[3]), hook=hook)
 
 
 if __name__ == "__main__":
