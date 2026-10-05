@@ -1,0 +1,2128 @@
+file_offset	kind	text
+0x000000	cstring	MZP
+0x000109	cstring	^B*
+0x0001f8	cstring	CODE
+0x00021f	cstring	`DATA
+0x000248	cstring	BSS
+0x000270	cstring	.idata
+0x000298	cstring	.tls
+0x0002c0	cstring	.rdata
+0x0002e7	cstring	P.reloc
+0x00030f	cstring	P.rsrc
+0x000492	cstring	string
+0x0004c8	cstring	H*@
+0x0004d0	cstring	T*@
+0x00058d	cstring	T+@
+0x00061c	cstring	System
+0x001616	cstring	Uhn#@
+0x001755	cstring	hu#@
+0x002043	cstring	Q,@
+0x0021cc	cstring	T$(j
+0x002cab	cstring	}&j
+0x002cba	cstring	PSWj
+0x002cdb	cstring	SWj
+0x002cfa	cstring	PSWj
+0x002d51	cstring	}+h
+0x002d82	cstring	VSj
+0x002d99	cstring	UWVSj
+0x0036a0	cstring	W4vC
+0x00382a	cstring	VD@
+0x003832	cstring	ZD@
+0x003839	cstring	_D@
+0x003916	cstring	|HtE=
+0x004479	cstring	]$SQRPj
+0x0044bc	cstring	H*@
+0x0044d3	cstring	Exception
+0x00450c	cstring	H*@
+0x004530	cstring	LQ@
+0x00458c	cstring	H*@
+0x004591	cstring	EInOutError
+0x0045cc	cstring	H*@
+0x00460c	cstring	H*@
+0x004634	cstring	PR@
+0x00464c	cstring	H*@
+0x004651	cstring	ERangeError
+0x00468c	cstring	H*@
+0x0046d0	cstring	H*@
+0x004710	cstring	H*@
+0x004738	cstring	TS@
+0x004750	cstring	H*@
+0x004755	cstring	EZeroDivide
+0x004790	cstring	H*@
+0x0047d0	cstring	H*@
+0x004810	cstring	H*@
+0x004815	cstring	EInvalidPointer
+0x00483c	cstring	XT@
+0x004854	cstring	H*@
+0x004898	cstring	H*@
+0x0048dc	cstring	H*@
+0x00490c	cstring	(U@
+0x004924	cstring	H*@
+0x00494c	cstring	hU@
+0x004964	cstring	H*@
+0x0049a8	cstring	H*@
+0x0049e8	cstring	H*@
+0x004a14	cstring	0V@
+0x004a2c	cstring	H*@
+0x004c3d	cstring	TX@
+0x004c54	ansistring	%d
+0x0052c9	cstring	k_@
+0x0052f5	cstring	v_@
+0x0056f2	cstring	Uh,e@
+0x005729	cstring	De@
+0x00574d	cstring	De@
+0x005797	cstring	De@
+0x0057ce	cstring	Pe@
+0x0057f0	cstring	`e@
+0x005825	cstring	xe@
+0x005869	cstring	De@
+0x0058a8	cstring	De@
+0x005919	cstring	h3e@
+0x005950	ansistring	m/d/yy
+0x005960	ansistring	mmmm d, yyyy
+0x005978	ansistring	am
+0x005984	ansistring	pm
+0x00599c	ansistring	hh
+0x0059a8	ansistring	 AMPM
+0x0059b8	ansistring	:mm
+0x0059c4	ansistring	:mm:ss
+0x005bec	cstring	Uh#h@
+0x005c15	cstring	h*h@
+0x005ef3	cstring	0V@
+0x005f40	cstring	LQ@
+0x005f54	cstring	di@
+0x005f5e	cstring	(k@
+0x005f72	cstring	 j@
+0x005f7c	cstring	4j@
+0x006056	cstring	hl@
+0x006070	cstring	dm@
+0x006074	cstring	dm@
+0x0061f3	cstring	3n@
+0x006d0d	cstring	/y@
+0x006d15	cstring	Cy@
+0x006d43	cstring	Wy@
+0x006d47	cstring	Zy@
+0x006d4b	cstring	]y@
+0x006d4f	cstring	`y@
+0x006d53	cstring	cy@
+0x006d77	cstring	Cy@
+0x006e72	cstring	TNotifyEvent
+0x006e89	cstring	TObject
+0x006ec0	cstring	H*@
+0x006f04	cstring	H*@
+0x006f30	cstring	L{@
+0x006f48	cstring	H*@
+0x006f4d	cstring	EFOpenError
+0x006f88	cstring	H*@
+0x006f8d	cstring	EFilerError
+0x006fc8	cstring	H*@
+0x007008	cstring	H*@
+0x00700d	cstring	EWriteError
+0x007030	cstring	L|@
+0x007048	cstring	H*@
+0x00708c	cstring	H*@
+0x0070d0	cstring	H*@
+0x007114	cstring	H*@
+0x00713c	cstring	X}@
+0x007154	cstring	H*@
+0x007194	cstring	H*@
+0x0071dc	cstring	H*@
+0x0071e1	cstring	EComponentError
+0x00724c	cstring	h~@
+0x0072a0	cstring	H*@
+0x0072d4	cstring	Classes
+0x007354	cstring	Classes
+0x0073c8	cstring	Classes
+0x007404	cstring	H*@
+0x007491	cstring	Classes
+0x0075b4	cstring	Classes
+0x0075f0	cstring	H*@
+0x007650	cstring	H*@
+0x0076b1	cstring	TFileStream
+0x0076ec	cstring	H*@
+0x0076fd	cstring	TCustomMemoryStream
+0x0077a5	cstring	TResourceStream
+0x0078de	cstring	TComponentName
+0x007a9a	cstring	L|@
+0x007d3c	cstring	H*@
+0x00841c	cstring	X}@
+0x008678	ansistring	nil
+0x008b90	ansistring	Strings
+0x009be2	cstring	L{@
+0x009ff8	cstring	H*@
+0x00ad50	ansistring	False
+0x00ad60	ansistring	True
+0x00ad70	ansistring	nil
+0x00b500	ansistring	%s_%d
+0x00c234	ansistring	False
+0x00c244	ansistring	True
+0x00c254	ansistring	nil
+0x00d2d0	ansistring	Left
+0x00d2e0	ansistring	Top
+0x00dcc8	cstring	H*@
+0x00de20	cstring	Caption
+0x00de42	cstring	Checked
+0x00de64	cstring	Default
+0x00dea8	cstring	GroupIndexXz@
+0x00def3	cstring	Hint
+0x00df36	cstring	ShortCut
+0x00df59	cstring	Visiblepz@
+0x00e1e5	cstring	Alignment
+0x00e209	cstring	AutoPopupXz@
+0x00e22d	cstring	HelpContextpz@
+0x00e351	cstring	t6h
+0x00edec	ansistring	ShortCutText
+0x00fc0f	cstring	h~@
+0x00fc6c	cstring	LQ@
+0x00fc81	cstring	EOutOfResources
+0x00fcc0	cstring	H*@
+0x00fd1c	cstring	H*@
+0x00fd3d	cstring	TDragObject
+0x00fd78	cstring	H*@
+0x00fe23	cstring	Controls
+0x00fec6	cstring	TMouseEvent
+0x00fedc	cstring	TObject
+0x00feec	cstring	TMouseButton
+0x00ff00	cstring	TShiftState
+0x00ff0f	cstring	Integer
+0x00ff26	cstring	TMouseMoveEvent
+0x00ff40	cstring	TObject
+0x00ff4f	cstring	TShiftState
+0x00ff5e	cstring	Integer
+0x00ff72	cstring	TKeyEvent
+0x00ff93	cstring	Word
+0x00ffae	cstring	TKeyPressEvent
+0x00ffda	cstring	TDragOverEvent
+0x00fff3	cstring	TObject
+0x010003	cstring	TObject
+0x01000e	cstring	Integer
+0x010019	cstring	Integer
+0x010046	cstring	TDragDropEvent
+0x01005f	cstring	TObject
+0x01006f	cstring	TObject
+0x01007a	cstring	Integer
+0x01008e	cstring	TStartDragEvent
+0x0100ca	cstring	TEndDragEvent
+0x0100e2	cstring	TObject
+0x0100f2	cstring	TObject
+0x0100fd	cstring	Integer
+0x010140	cstring	(%A
+0x010148	cstring	d5A
+0x010158	cstring	4&A
+0x010170	cstring	h(A
+0x010174	cstring	@/A
+0x010178	cstring	l%A
+0x01017c	cstring	 &A
+0x010190	cstring	4'A
+0x010200	cstring	`6A
+0x01021c	cstring	\8A
+0x010224	cstring	x9A
+0x010234	cstring	 :A
+0x010238	cstring	(:A
+0x01023c	cstring	0:A
+0x010240	cstring	p:A
+0x010244	cstring	8:A
+0x010248	cstring	T:A
+0x010268	cstring	p2A
+0x010278	cstring	p%A
+0x01027c	cstring	|%A
+0x010284	cstring	t%A
+0x01028c	cstring	48A
+0x010359	cstring	4.A
+0x0103c4	cstring	D;A
+0x0103cc	cstring	d5A
+0x0103f0	cstring	tcA
+0x0103fc	cstring	l%A
+0x010400	cstring	 &A
+0x01040c	cstring	<bA
+0x010414	cstring	P^A
+0x010418	cstring	hbA
+0x010430	cstring	lGA
+0x0104d6	cstring	4QA
+0x0104da	cstring	TQA
+0x0104de	cstring	xQA
+0x0104ee	cstring	,RA
+0x0104f2	cstring	PRA
+0x0104f6	cstring	tRA
+0x010502	cstring	dSA
+0x01050e	cstring	pUA
+0x010516	cstring	<VA
+0x01051a	cstring	\VA
+0x010536	cstring	4XA
+0x01053a	cstring	PXA
+0x010552	cstring	dYA
+0x010556	cstring	xYA
+0x01056a	cstring	(ZA
+0x01056e	cstring	PZA
+0x010586	cstring	,YA
+0x01058a	cstring	8YA
+0x01058e	cstring	DYA
+0x010592	cstring	4[A
+0x010596	cstring	<[A
+0x01059a	cstring	D[A
+0x01059e	cstring	L[A
+0x0105a2	cstring	T[A
+0x0105a6	cstring	H\A
+0x0105aa	cstring	 ]A
+0x0105ae	cstring	t]A
+0x0105be	cstring	h_A
+0x0105c2	cstring	|TA
+0x0105ca	cstring	|gA
+0x0105d6	cstring	|VA
+0x0105da	cstring	tXA
+0x01061a	cstring	Xz@
+0x010635	cstring	HelpContext
+0x010670	cstring	`hA
+0x010678	cstring	d5A
+0x010688	cstring	4&A
+0x0106a0	cstring	h(A
+0x0106a4	cstring	@/A
+0x0106a8	cstring	l%A
+0x0106ac	cstring	 &A
+0x0106c0	cstring	4'A
+0x010700	cstring	Controls
+0x01073c	cstring	(lA
+0x010744	cstring	d5A
+0x010768	cstring	tcA
+0x010774	cstring	l%A
+0x010778	cstring	 &A
+0x010784	cstring	<bA
+0x01078c	cstring	P^A
+0x010790	cstring	hbA
+0x0107a8	cstring	lGA
+0x0107b0	cstring	\lA
+0x0107c4	cstring	TlA
+0x0107f3	cstring	Controls
+0x010830	cstring	(lA
+0x010838	cstring	d5A
+0x01085c	cstring	tcA
+0x010868	cstring	l%A
+0x01086c	cstring	 &A
+0x010878	cstring	<bA
+0x010880	cstring	P^A
+0x010884	cstring	hbA
+0x010890	cstring	liA
+0x01089c	cstring	lGA
+0x0108a4	cstring	\lA
+0x0108b4	cstring	$kA
+0x0108b8	cstring	,jA
+0x0108e8	cstring	Controls
+0x0109a6	cstring	itMask
+0x010a04	cstring	4mA
+0x010a0c	cstring	\{A
+0x010a41	cstring	Controls
+0x010aa4	cstring	4mA
+0x010afe	cstring	(uA
+0x010ba1	cstring	ImageType
+0x010bc5	cstring	Maskedpz@
+0x010be6	cstring	OnChange
+0x010d30	ansistring	crDefault
+0x010d44	ansistring	crArrow
+0x010d54	ansistring	crCross
+0x010d64	ansistring	crIBeam
+0x010d74	ansistring	crSizeNESW
+0x010d88	ansistring	crSizeNS
+0x010d9c	ansistring	crSizeNWSE
+0x010db0	ansistring	crSizeWE
+0x010dc4	ansistring	crUpArrow
+0x010dd8	ansistring	crHourGlass
+0x010dec	ansistring	crDrag
+0x010dfc	ansistring	crNoDrop
+0x010e10	ansistring	crHSplit
+0x010e24	ansistring	crVSplit
+0x010e38	ansistring	crMultiDrag
+0x010e4c	ansistring	crSQLWait
+0x010e60	ansistring	crNo
+0x010e70	ansistring	crAppStart
+0x010e84	ansistring	crHelp
+0x010e94	ansistring	crSize
+0x011596	cstring	Uhq"A
+0x011664	cstring	hx"A
+0x0118c2	cstring	$%A
+0x0118e1	cstring	@-A
+0x011a6c	cstring	t0j
+0x011b7d	cstring	RDj
+0x011eed	cstring	Uhg+A
+0x011f59	cstring	hn+A
+0x012027	cstring	F7j
+0x01204a	cstring	P8j
+0x0120ea	cstring	Uh2-A
+0x012124	cstring	h9-A
+0x012161	cstring	CXj
+0x01223c	cstring	PLj
+0x012390	cstring	C,Pj
+0x01297d	cstring	Ph(5A
+0x0129a8	ansistring	IsControl
+0x012c1c	cstring	08A
+0x0131fd	cstring	M>A
+0x0136bb	cstring	utj
+0x01386b	cstring	C$PVj
+0x013b28	cstring	hGA
+0x013de8	cstring	Uh3JA
+0x013df6	cstring	Uh"JA
+0x013e12	cstring	h)JA
+0x0143c2	cstring	C,Pj
+0x014942	cstring	lUA
+0x0150cc	cstring	tGj
+0x0150e2	cstring	u1j
+0x0152a1	cstring	PWVj
+0x015d1f	cstring	\iA
+0x015d5d	cstring	MS Sans Serif
+0x015e0d	cstring	h"jA
+0x015fae	cstring	jQj
+0x0162c2	cstring	UhDoA
+0x016333	cstring	hKoA
+0x016523	cstring	~#Tj
+0x016563	cstring	~#Tj
+0x01662a	cstring	Q,j
+0x016719	cstring	UhNtA
+0x016745	cstring	Uh.tA
+0x016787	cstring	Q,j
+0x016818	cstring	h5tA
+0x01683d	cstring	hktA
+0x016cdc	cstring	Uh\yA
+0x016d4d	cstring	hcyA
+0x016ff7	cstring	Sh0|A
+0x016ffd	cstring	Shx~A
+0x017010	cstring	(|A
+0x017028	ansistring	Bitmap
+0x01706c	cstring	Uhj~A
+0x0170a8	cstring	UhM~A
+0x01711e	cstring	Uh0~A
+0x01721a	cstring	h7~A
+0x01723f	cstring	hT~A
+0x01725c	cstring	hq~A
+0x0173ef	cstring	D$(
+0x01741d	cstring	D$0
+0x01742b	cstring	D$8
+0x0174c8	cstring	Delphi%.8X
+0x0174d4	cstring	ControlOfs%.8X%.8X
+0x01754c	cstring	H*@
+0x017551	cstring	EInvalidGraphic
+0x017590	cstring	H*@
+0x0177f8	cstring	H*@
+0x01783c	cstring	Graphics
+0x017c1c	cstring	H*@
+0x017c8d	cstring	Graphics
+0x017d49	cstring	Graphics
+0x017d84	cstring	H*@
+0x017e3a	cstring	Graphics
+0x017e74	cstring	H*@
+0x017ec4	cstring	H*@
+0x017f7c	cstring	Graphics
+0x017fb8	cstring	H*@
+0x018056	cstring	TIcon
+0x018066	cstring	Graphics
+0x0180a0	cstring	H*@
+0x01830c	ansistring	clBlack
+0x01831c	ansistring	clMaroon
+0x018330	ansistring	clGreen
+0x018340	ansistring	clOlive
+0x018350	ansistring	clNavy
+0x018360	ansistring	clPurple
+0x018374	ansistring	clTeal
+0x018384	ansistring	clGray
+0x018394	ansistring	clSilver
+0x0183a8	ansistring	clRed
+0x0183b8	ansistring	clLime
+0x0183c8	ansistring	clYellow
+0x0183dc	ansistring	clBlue
+0x0183ec	ansistring	clFuchsia
+0x018400	ansistring	clAqua
+0x018410	ansistring	clWhite
+0x018420	ansistring	clScrollBar
+0x018434	ansistring	clBackground
+0x01844c	ansistring	clActiveCaption
+0x018464	ansistring	clInactiveCaption
+0x018480	ansistring	clMenu
+0x018490	ansistring	clWindow
+0x0184a4	ansistring	clWindowFrame
+0x0184bc	ansistring	clMenuText
+0x0184d0	ansistring	clWindowText
+0x0184e8	ansistring	clCaptionText
+0x018500	ansistring	clActiveBorder
+0x018518	ansistring	clInactiveBorder
+0x018534	ansistring	clAppWorkSpace
+0x01854c	ansistring	clHighlight
+0x018560	ansistring	clHighlightText
+0x018578	ansistring	clBtnFace
+0x01858c	ansistring	clBtnShadow
+0x0185a0	ansistring	clGrayText
+0x0185b4	ansistring	clBtnText
+0x0185c8	ansistring	clInactiveCaptionText
+0x0185e8	ansistring	clBtnHighlight
+0x018600	ansistring	cl3DDkShadow
+0x018618	ansistring	cl3DLight
+0x01862c	ansistring	clInfoText
+0x018640	ansistring	clInfoBk
+0x018654	ansistring	clNone
+0x018e0a	cstring	G  
+0x01aa20	ansistring	Data
+0x01ac60	ansistring	wmf
+0x01ac6c	ansistring	emf
+0x01ac78	ansistring	ico
+0x01ac84	ansistring	bmp
+0x01b034	ansistring	Data
+0x01b258	cstring	h8c
+0x01b3ac	cstring	h8c
+0x01b5e0	cstring	Ph8c
+0x01b5fd	cstring	Ph8c
+0x01b6fc	ansistring	.wmf
+0x01b777	cstring	@$Ph8c
+0x01b863	cstring	@$Ph8c
+0x01b9f9	cstring	tjj
+0x01bcc2	cstring	Graphics
+0x01bfc2	cstring	WVj
+0x01c08a	cstring	PWVj
+0x01c4cf	cstring	I Qj
+0x01d3d0	cstring	H*@
+0x01d499	cstring	Position
+0x01d4bc	cstring	Tracking
+0x01d520	cstring	d5A
+0x01d544	cstring	tcA
+0x01d550	cstring	l%A
+0x01d554	cstring	 &A
+0x01d560	cstring	<bA
+0x01d568	cstring	P^A
+0x01d56c	cstring	hbA
+0x01d584	cstring	lGA
+0x01d84e	cstring	TCloseEvent
+0x01d882	cstring	TCloseQueryEvent
+0x01d914	cstring	tcA
+0x01d920	cstring	l%A
+0x01d924	cstring	 &A
+0x01d930	cstring	<bA
+0x01d938	cstring	P^A
+0x01d93c	cstring	hbA
+0x01d9ca	cstring	,"B
+0x01d9da	cstring	h$B
+0x01d9e6	cstring	`%B
+0x01d9f6	cstring	`&B
+0x01d9fe	cstring	('B
+0x01da2e	cstring	L)B
+0x01da3e	cstring	4-B
+0x01da42	cstring	( B
+0x01da4e	cstring	D B
+0x01da5e	cstring	` B
+0x01da62	cstring	$!B
+0x01da6a	cstring	| B
+0x01da8a	cstring	Forms1
+0x01dafa	cstring	BorderStyle
+0x01db8e	cstring	ClientWidth
+0x01dbd4	cstring	Color
+0x01dbe1	cstring	D,A
+0x01dc03	cstring	x-A
+0x01dca2	cstring	Icon
+0x01dd43	cstring	x,A
+0x01dd9d	cstring	PrintScale
+0x01ddc2	cstring	Scaled
+0x01de06	cstring	VertScrollBar
+0x01de96	cstring	WindowMenupz@
+0x01debb	cstring	OnActivatepz@
+0x01df24	cstring	OnCloseQuerypz@
+0x01df4b	cstring	OnCreatepz@
+0x01df6e	cstring	OnDblClickpz@
+0x01df93	cstring	OnDestroypz@
+0x01e003	cstring	OnDragOverpz@
+0x01e100	cstring	OnMouseUppz@
+0x01e124	cstring	OnPaintpz@
+0x01e146	cstring	OnResizepz@
+0x01e1a0	cstring	P2B
+0x01e1e8	cstring	Forms
+0x01e220	cstring	P8B
+0x01e295	cstring	Forms
+0x01e5b9	cstring	<Ys$h
+0x01e700	cstring	CTL3D32.DLL
+0x01e70c	cstring	Ctl3dRegister
+0x01e71c	cstring	Ctl3dUnregister
+0x01e72c	cstring	Ctl3dSubclassCtl
+0x01e740	cstring	Ctl3dSubclassDlgEx
+0x01e754	cstring	Ctl3dDlgFramePaint
+0x01e768	cstring	Ctl3dCtlColorEx
+0x01e778	cstring	Ctl3dAutoSubclass
+0x01e78c	cstring	Ctl3dUnAutoSubclass
+0x01e7a0	cstring	Ctl3DColorChange
+0x01e7b4	cstring	BtnWndProc3d
+0x01e8c2	cstring	ulj@h
+0x01e960	cstring	TPUtilWindow
+0x01fcc4	ansistring	PixelsPerInch
+0x01fcdc	ansistring	TextHeight
+0x01feed	cstring	tbj
+0x0201ec	cstring	C,Pj
+0x020460	cstring	t h
+0x020897	cstring	t+j
+0x020d90	cstring	MDICLIENT
+0x020e6e	cstring	t%j
+0x021737	cstring	u]j
+0x0218c0	cstring	UhR%B
+0x021944	cstring	hY%B
+0x021d11	cstring	t4j
+0x021ec3	cstring	u6j
+0x021f28	cstring	B,Pj
+0x022408	cstring	Uh*1B
+0x0224e2	cstring	h11B
+0x02260a	cstring	C0j
+0x022616	cstring	C PhX1B
+0x02262f	cstring	C$Vj
+0x02286d	cstring	tAj
+0x022a01	cstring	h05B
+0x022adc	cstring	TApplication
+0x022b4b	cstring	CX2
+0x022b6f	cstring	sxhD8B
+0x022c44	cstring	MAINICON
+0x022ce4	cstring	Shl<B
+0x022f02	cstring	Ph|:B
+0x0236ec	cstring	t h
+0x023a2a	cstring	UhLFB
+0x023fcb	cstring	ChPj
+0x0243c0	cstring	`PB
+0x0243c4	cstring	tPB
+0x0243dc	cstring	(lA
+0x0243e4	cstring	d5A
+0x024408	cstring	tcA
+0x024414	cstring	l%A
+0x024418	cstring	 &A
+0x024424	cstring	<bA
+0x02442c	cstring	P^A
+0x024430	cstring	hbA
+0x024448	cstring	lGA
+0x024450	cstring	\lA
+0x0244a0	cstring	StdCtrls
+0x0244b4	cstring	lQB
+0x0244c4	cstring	`QB
+0x0244dc	cstring	(lA
+0x0244e4	cstring	d5A
+0x024508	cstring	tcA
+0x024514	cstring	l%A
+0x024518	cstring	 &A
+0x024524	cstring	<bA
+0x02452c	cstring	P^A
+0x024530	cstring	hbA
+0x024548	cstring	lGA
+0x024550	cstring	\lA
+0x0245e9	cstring	Color
+0x02464e	cstring	DragMode
+0x02465e	cstring	D,A
+0x024680	cstring	x-A
+0x024693	cstring	Font
+0x0246b2	cstring	ParentColor
+0x0246d8	cstring	ParentCtl3D
+0x0246fe	cstring	ParentFont
+0x024739	cstring	x,A
+0x02474c	cstring	PopupMenu
+0x024793	cstring	TabOrder
+0x0247b6	cstring	TabStop
+0x0247d8	cstring	Visiblepz@
+0x0247fa	cstring	OnClickpz@
+0x02488b	cstring	OnEndDragpz@
+0x0248af	cstring	OnEnterpz@
+0x024978	cstring	(VB
+0x0249a0	cstring	`hA
+0x0249a8	cstring	d5A
+0x0249b8	cstring	4&A
+0x0249d0	cstring	h(A
+0x0249d4	cstring	@/A
+0x0249d8	cstring	l%A
+0x0249dc	cstring	 &A
+0x0249f0	cstring	4'A
+0x024a41	cstring	StdCtrls
+0x024a7c	cstring	`hA
+0x024a84	cstring	d5A
+0x024a94	cstring	4&A
+0x024aac	cstring	h(A
+0x024ab0	cstring	@/A
+0x024ab4	cstring	l%A
+0x024ab8	cstring	 &A
+0x024acc	cstring	4'A
+0x024af4	cstring	(VB
+0x024b40	cstring	Alignment
+0x024bee	cstring	DragMode
+0x024bfe	cstring	D,A
+0x024c47	cstring	x-A
+0x024c5a	cstring	Font
+0x024c79	cstring	ParentColor
+0x024c9f	cstring	ParentFont
+0x024cda	cstring	x,A
+0x024ced	cstring	PopupMenu
+0x024d11	cstring	ShowAccelChar
+0x024d39	cstring	ShowHint
+0x024d5c	cstring	Transparent
+0x024d82	cstring	Visible
+0x024da4	cstring	WordWrappz@
+0x024dc7	cstring	OnClickpz@
+0x024f40	cstring	 \B
+0x024f68	cstring	D;A
+0x024f70	cstring	d5A
+0x024f94	cstring	tcA
+0x024fa0	cstring	l%A
+0x024fa4	cstring	 &A
+0x024fb0	cstring	<bA
+0x024fb8	cstring	P^A
+0x024fbc	cstring	hbA
+0x024fd4	cstring	lGA
+0x025022	cstring	TCustomEditl[B
+0x02505d	cstring	TabStop
+0x025084	cstring	l[B
+0x025094	cstring	D;A
+0x02509c	cstring	d5A
+0x0250c0	cstring	tcA
+0x0250cc	cstring	l%A
+0x0250d0	cstring	 &A
+0x0250dc	cstring	<bA
+0x0250e4	cstring	P^A
+0x0250e8	cstring	hbA
+0x025100	cstring	lGA
+0x025127	cstring	 \B
+0x02512e	cstring	StdCtrls(
+0x025153	cstring	AutoSelect
+0x0251e4	cstring	Color
+0x025249	cstring	DragMode
+0x025259	cstring	D,A
+0x02527b	cstring	x-A
+0x02528e	cstring	Font
+0x0252d5	cstring	MaxLength
+0x0252f9	cstring	OEMConvert
+0x02531e	cstring	ParentColor
+0x025344	cstring	ParentCtl3D
+0x02536a	cstring	ParentFont
+0x0253cc	cstring	x,A
+0x0253df	cstring	PopupMenu
+0x025403	cstring	ReadOnly
+0x025449	cstring	TabOrder
+0x02548e	cstring	Text
+0x0254ad	cstring	Visiblepz@
+0x0254cf	cstring	OnChangepz@
+0x0254f2	cstring	OnClickpz@
+0x025583	cstring	OnEndDragpz@
+0x0255a7	cstring	OnEnterpz@
+0x0256d2	cstring	TDrawItemEvent
+0x0256ec	cstring	TWinControl
+0x0256ff	cstring	Integer
+0x02570d	cstring	TRect
+0x02572e	cstring	TMeasureItemEvent
+0x02574b	cstring	TWinControl
+0x025780	cstring	8dB
+0x025790	cstring	(dB
+0x0257a8	cstring	D;A
+0x0257b0	cstring	d5A
+0x0257d4	cstring	tcA
+0x0257e0	cstring	l%A
+0x0257e4	cstring	 &A
+0x0257f0	cstring	<bA
+0x0257f8	cstring	P^A
+0x0257fc	cstring	hbA
+0x025814	cstring	lGA
+0x025853	cstring	StdCtrls
+0x025868	cstring	<eB
+0x025878	cstring	4eB
+0x025890	cstring	D;A
+0x025898	cstring	d5A
+0x0258bc	cstring	tcA
+0x0258c8	cstring	l%A
+0x0258cc	cstring	 &A
+0x0258d8	cstring	<bA
+0x0258e0	cstring	P^A
+0x0258e4	cstring	hbA
+0x0258fc	cstring	lGA
+0x025949	cstring	8dB
+0x025996	cstring	Caption
+0x0259ff	cstring	DragMode
+0x025a0f	cstring	D,A
+0x025a31	cstring	x-A
+0x025a63	cstring	ModalResult
+0x025a89	cstring	ParentFont
+0x025ac4	cstring	x,A
+0x025ad7	cstring	PopupMenu
+0x025b1e	cstring	TabOrder
+0x025b41	cstring	TabStop
+0x025b63	cstring	Visiblepz@
+0x025bf1	cstring	OnEndDragpz@
+0x025c15	cstring	OnEnterpz@
+0x025d59	cstring	@iB
+0x025d74	cstring	cbGrayed
+0x025d84	cstring	\jB
+0x025d90	cstring	0jB
+0x025d94	cstring	JjB
+0x025dac	cstring	D;A
+0x025db4	cstring	d5A
+0x025dd8	cstring	tcA
+0x025de4	cstring	l%A
+0x025de8	cstring	 &A
+0x025df4	cstring	<bA
+0x025dfc	cstring	P^A
+0x025e00	cstring	hbA
+0x025e18	cstring	lGA
+0x025e71	cstring	8dB
+0x025e9d	cstring	TabStop
+0x025eac	cstring	dkB
+0x025ebc	cstring	XkB
+0x025ed4	cstring	D;A
+0x025edc	cstring	d5A
+0x025f00	cstring	tcA
+0x025f0c	cstring	l%A
+0x025f10	cstring	 &A
+0x025f1c	cstring	<bA
+0x025f24	cstring	P^A
+0x025f28	cstring	hbA
+0x025f40	cstring	lGA
+0x025f73	cstring	\jB
+0x025f7a	cstring	StdCtrls!
+0x025f84	cstring	<z@
+0x025f9f	cstring	Alignment
+0x025fe9	cstring	Caption
+0x02602d	cstring	Color
+0x026092	cstring	DragMode
+0x0260a2	cstring	D,A
+0x0260c4	cstring	x-A
+0x0260d7	cstring	Font
+0x0260f6	cstring	ParentColor
+0x02611c	cstring	ParentCtl3D
+0x026142	cstring	ParentFont
+0x02617d	cstring	x,A
+0x026190	cstring	PopupMenu
+0x0261b4	cstring	ShowHint@iB
+0x0261f7	cstring	TabOrder
+0x02621a	cstring	TabStop
+0x02623c	cstring	Visiblepz@
+0x0262ca	cstring	OnEndDragpz@
+0x0262ee	cstring	OnEnterpz@
+0x026448	cstring	D;A
+0x026450	cstring	d5A
+0x026474	cstring	tcA
+0x026480	cstring	l%A
+0x026484	cstring	 &A
+0x026490	cstring	<bA
+0x026498	cstring	P^A
+0x02649c	cstring	hbA
+0x0264b4	cstring	lGA
+0x0264f2	cstring	TRadioButtonLpB
+0x026502	cstring	8dB
+0x026509	cstring	StdCtrls 
+0x026513	cstring	<z@
+0x026552	cstring	Caption
+0x026596	cstring	Color
+0x0265fb	cstring	DragMode
+0x02660b	cstring	D,A
+0x02662d	cstring	x-A
+0x026640	cstring	Font
+0x02665f	cstring	ParentColor
+0x026685	cstring	ParentCtl3D
+0x0266ab	cstring	ParentFont
+0x0266e6	cstring	x,A
+0x0266f9	cstring	PopupMenu
+0x026740	cstring	TabOrder
+0x026763	cstring	TabStop
+0x026785	cstring	Visiblepz@
+0x0267a7	cstring	OnClickpz@
+0x026838	cstring	OnEndDragpz@
+0x02685c	cstring	OnEnterpz@
+0x0269c1	cstring	lbOwnerDrawVariable
+0x026a0c	cstring	d5A
+0x026a30	cstring	tcA
+0x026a3c	cstring	l%A
+0x026a40	cstring	 &A
+0x026a4c	cstring	<bA
+0x026a54	cstring	P^A
+0x026a58	cstring	hbA
+0x026a70	cstring	lGA
+0x026b50	cstring	d5A
+0x026b74	cstring	tcA
+0x026b80	cstring	l%A
+0x026b84	cstring	 &A
+0x026b90	cstring	<bA
+0x026b98	cstring	P^A
+0x026b9c	cstring	hbA
+0x026bb4	cstring	lGA
+0x026bde	cstring	TListBoxLwB
+0x026bf1	cstring	StdCtrls*
+0x026c7c	cstring	Columns
+0x026ce3	cstring	DragMode
+0x026cf3	cstring	D,A
+0x026d06	cstring	Enabled
+0x026d3e	cstring	x-A
+0x026d51	cstring	Font
+0x026dbe	cstring	Items
+0x026dde	cstring	MultiSelect
+0x026e04	cstring	ParentColor
+0x026e2a	cstring	ParentCtl3D
+0x026e50	cstring	ParentFont
+0x026e8b	cstring	x,A
+0x026e9e	cstring	PopupMenu
+0x026ec2	cstring	ShowHint
+0x026f26	cstring	TabOrder
+0x026f6b	cstring	TabWidth
+0x026f8e	cstring	Visiblepz@
+0x026fb0	cstring	OnClickpz@
+0x027066	cstring	OnEndDragpz@
+0x02708a	cstring	OnEnterpz@
+0x027116	cstring	OnKeyUp,cB
+0x0271de	cstring	TScrollEvent
+0x0271f5	cstring	TObject
+0x027258	cstring	D;A
+0x027260	cstring	d5A
+0x027284	cstring	tcA
+0x027290	cstring	l%A
+0x027294	cstring	 &A
+0x0272a0	cstring	<bA
+0x0272a8	cstring	P^A
+0x0272ac	cstring	hbA
+0x0272c4	cstring	lGA
+0x027302	cstring	TScrollBar\~B
+0x027381	cstring	DragMode
+0x027391	cstring	D,A
+0x027429	cstring	Min
+0x027447	cstring	ParentCtl3D
+0x027483	cstring	x,A
+0x0274ba	cstring	Position
+0x027526	cstring	TabOrder
+0x027549	cstring	TabStop
+0x02756b	cstring	Visiblepz@
+0x0275fa	cstring	OnEndDragpz@
+0x02761e	cstring	OnEnterpz@
+0x027744	cstring	H*@
+0x0277dc	cstring	StdCtrls
+0x027ce5	cstring	Q,j
+0x0280ef	cstring	t8j
+0x028258	cstring	EDIT
+0x0282e0	cstring	t j
+0x028754	cstring	BUTTON
+0x028a20	cstring	BUTTON
+0x028b08	cstring	BUTTON
+0x028c9f	cstring	LpB
+0x028cf2	cstring	t j
+0x028d68	cstring	BUTTON
+0x028e50	cstring	BUTTON
+0x02922b	cstring	~&j
+0x0295e8	cstring	LISTBOX
+0x02960b	cstring	C$Pj
+0x029cc8	cstring	SCROLLBAR
+0x029f8c	cstring	d5A
+0x029f9c	cstring	4&A
+0x029fb4	cstring	h(A
+0x029fb8	cstring	@/A
+0x029fbc	cstring	l%A
+0x029fc0	cstring	 &A
+0x029fd4	cstring	4'A
+0x02a028	cstring	Align
+0x02a048	cstring	AutoSize
+0x02a0b1	cstring	DragMode
+0x02a0c1	cstring	D,A
+0x02a0d4	cstring	Enabled
+0x02a12e	cstring	x,A
+0x02a141	cstring	PopupMenu
+0x02a165	cstring	ShowHint
+0x02a188	cstring	Stretch
+0x02a1aa	cstring	Visiblepz@
+0x02a1cc	cstring	OnClickpz@
+0x02a3b4	cstring	`hA
+0x02a3bc	cstring	d5A
+0x02a3cc	cstring	4&A
+0x02a3e4	cstring	h(A
+0x02a3e8	cstring	@/A
+0x02a3ec	cstring	l%A
+0x02a3f0	cstring	 &A
+0x02a404	cstring	4'A
+0x02a450	cstring	Align
+0x02a499	cstring	Shape
+0x02a4dc	cstring	Style
+0x02a598	cstring	(lA
+0x02a5a0	cstring	d5A
+0x02a5c4	cstring	tcA
+0x02a5d0	cstring	l%A
+0x02a5d4	cstring	 &A
+0x02a5e0	cstring	<bA
+0x02a5e8	cstring	P^A
+0x02a5ec	cstring	hbA
+0x02a604	cstring	lGA
+0x02a60c	cstring	\lA
+0x02a665	cstring	ExtCtrls
+0x02a6a0	cstring	(lA
+0x02a6a8	cstring	d5A
+0x02a6cc	cstring	tcA
+0x02a6d8	cstring	l%A
+0x02a6dc	cstring	 &A
+0x02a6e8	cstring	<bA
+0x02a6f0	cstring	P^A
+0x02a6f4	cstring	hbA
+0x02a70c	cstring	lGA
+0x02a714	cstring	\lA
+0x02a73f	cstring	ExtCtrls$
+0x02a888	cstring	DragMode
+0x02a898	cstring	D,A
+0x02a8ef	cstring	Color
+0x02a91c	cstring	x-A
+0x02a92f	cstring	Font
+0x02a94e	cstring	Locked
+0x02a96f	cstring	ParentColor
+0x02a995	cstring	ParentCtl3D
+0x02a9bb	cstring	ParentFont
+0x02a9f6	cstring	x,A
+0x02aa09	cstring	PopupMenu
+0x02aa50	cstring	TabOrder
+0x02aa73	cstring	TabStop
+0x02aa95	cstring	Visiblepz@
+0x02aab7	cstring	OnClickpz@
+0x02ab48	cstring	OnEndDragpz@
+0x02ab6c	cstring	OnEnterpz@
+0x02abfb	cstring	OnMouseUppz@
+0x02b3de	cstring	@,Pj
+0x02b44c	cstring	oUj
+0x02b95e	cstring	Ctl3DXz@
+0x02bdb8	cstring	Dialogs
+0x02c5d8	cstring	tcA
+0x02c5e4	cstring	l%A
+0x02c5e8	cstring	 &A
+0x02c5f4	cstring	<bA
+0x02c5fc	cstring	P^A
+0x02c600	cstring	hbA
+0x02c655	cstring	Dialogs
+0x02c67c	ansistring	Yes
+0x02c688	ansistring	No
+0x02c694	ansistring	OK
+0x02c6a0	ansistring	Cancel
+0x02c6b0	ansistring	Abort
+0x02c6c0	ansistring	Retry
+0x02c6d0	ansistring	Ignore
+0x02c6e0	ansistring	All
+0x02c6ec	ansistring	Help
+0x02c941	cstring	Q<Wj
+0x02cb38	ansistring	Image
+0x02cb48	ansistring	Message
+0x02cc2d	cstring	D$(
+0x02cc3b	cstring	D$0
+0x02cc64	cstring	commdlg_help
+0x02cc74	cstring	commdlg_FindReplace
+0x02cc88	cstring	WndProcPtr%.8X%.8X
+0x02cd64	cstring	d5A
+0x02cd74	cstring	4&A
+0x02cd8c	cstring	h(A
+0x02cd90	cstring	@/A
+0x02cd94	cstring	l%A
+0x02cd98	cstring	 &A
+0x02cdac	cstring	4'A
+0x02ce72	cstring	GroupIndex
+0x02ceb6	cstring	Caption
+0x02cec5	cstring	D,A
+0x02cee7	cstring	x-A
+0x02cf7b	cstring	NumGlyphs
+0x02cf9f	cstring	ParentFont
+0x02cfc4	cstring	ParentShowHint
+0x02d010	cstring	Spacing
+0x02d032	cstring	Visiblepz@
+0x02d054	cstring	OnClickpz@
+0x02d3b8	cstring	4mA
+0x02d3df	cstring	Buttons
+0x02d41d	cstring	TGlyphCache
+0x02d491	cstring	h~@
+0x02dc02	cstring	PVWj
+0x02dc8b	cstring	PVWj
+0x02dd1c	cstring	PVWj
+0x02de5f	cstring	PVWj
+0x02e0ef	cstring	~]j
+0x02e111	cstring	_^h
+0x02eb3a	cstring	ComCtrls
+0x02eba7	cstring	ComCtrls
+0x02ebe4	cstring	H*@
+0x02ec30	cstring	d5A
+0x02ec54	cstring	tcA
+0x02ec60	cstring	\&C
+0x02ec6c	cstring	|&C
+0x02ec70	cstring	<bA
+0x02ec78	cstring	P^A
+0x02ec7c	cstring	hbA
+0x02ec94	cstring	lGA
+0x02eca8	cstring	D*C
+0x02ecde	cstring	$,C
+0x02ecee	cstring	d)C
+0x02ecfa	cstring	D)C
+0x02ecfe	cstring	h'C
+0x02ed3c	cstring	ComCtrls
+0x02ede4	cstring	tsManual
+0x02ee1c	cstring	D;A
+0x02ee24	cstring	d5A
+0x02ee48	cstring	tcA
+0x02ee54	cstring	l%A
+0x02ee58	cstring	 &A
+0x02ee64	cstring	<bA
+0x02ee6c	cstring	P^A
+0x02ee70	cstring	hbA
+0x02ee84	cstring	4.C
+0x02ee88	cstring	lGA
+0x02eea6	cstring	L/C
+0x02eeca	cstring	ComCtrls 
+0x02ef34	cstring	DragMode
+0x02ef44	cstring	D,A
+0x02efd8	cstring	Orientation
+0x02effe	cstring	ParentCtl3D
+0x02f05d	cstring	x,A
+0x02f0c8	cstring	p2C
+0x02f0e9	cstring	\2C
+0x02f0fc	cstring	SelStart
+0x02f142	cstring	TabOrder
+0x02f174	cstring	l1C
+0x02f198	cstring	X1C
+0x02f1ab	cstring	TickStyle
+0x02f1cf	cstring	Visiblepz@
+0x02f25e	cstring	OnEndDragpz@
+0x02f282	cstring	OnEnterpz@
+0x02f3a2	cstring	TUDClickEvent
+0x02f3ba	cstring	TObject
+0x02f3d6	cstring	TUDChangingEvent
+0x02f440	cstring	D;A
+0x02f448	cstring	d5A
+0x02f454	cstring	48C
+0x02f46c	cstring	tcA
+0x02f478	cstring	l%A
+0x02f47c	cstring	 &A
+0x02f488	cstring	<bA
+0x02f490	cstring	P^A
+0x02f494	cstring	hbA
+0x02f4a0	cstring	43C
+0x02f4ac	cstring	lGA
+0x02f4ca	cstring	l5C
+0x02f4ea	cstring	TCustomUpDownD
+0x02f502	cstring	ComCtrls
+0x02f53c	cstring	D;A
+0x02f544	cstring	d5A
+0x02f550	cstring	48C
+0x02f568	cstring	tcA
+0x02f574	cstring	l%A
+0x02f578	cstring	 &A
+0x02f584	cstring	<bA
+0x02f58c	cstring	P^A
+0x02f590	cstring	hbA
+0x02f59c	cstring	43C
+0x02f5a8	cstring	lGA
+0x02f623	cstring	Associate
+0x02f647	cstring	ArrowKeys
+0x02f658	cstring	D,A
+0x02f6d5	cstring	L9C
+0x02f6f9	cstring	`:C
+0x02f70c	cstring	Orientation
+0x02f748	cstring	x,A
+0x02f77f	cstring	Position
+0x02f7c5	cstring	TabOrder
+0x02f7e8	cstring	TabStop
+0x02f7f7	cstring	D;C
+0x02f80a	cstring	Thousands
+0x02f82e	cstring	Visible
+0x02f894	cstring	OnClickpz@
+0x02f8b6	cstring	OnEnterpz@
+0x02f994	cstring	0<C
+0x02f99c	cstring	x<C
+0x02fa1a	cstring	L=C
+0x02fa38	cstring	t=C
+0x02fa4f	cstring	Width
+0x02fac1	cstring	ComCtrls
+0x02fb2a	cstring	TListItem
+0x02fb3e	cstring	ComCtrls
+0x02fbab	cstring	ComCtrls
+0x02fbde	cstring	iaLeft
+0x02fc14	cstring	H*@
+0x02fc72	cstring	Arrangement
+0x02fc98	cstring	AutoArrange
+0x02fd00	cstring	d5A
+0x02fd0c	cstring	$SC
+0x02fd20	cstring	pMC
+0x02fd24	cstring	tcA
+0x02fd34	cstring	 &A
+0x02fd40	cstring	<bA
+0x02fd48	cstring	P^A
+0x02fd4c	cstring	hbA
+0x02fd64	cstring	lGA
+0x02fda6	cstring	0VC
+0x02fdb2	cstring	DXC
+0x02fdb6	cstring	h[C
+0x02fdba	cstring	4dC
+0x02fdbe	cstring	TVC
+0x02fdce	cstring	H\C
+0x02fdd6	cstring	H[C
+0x02fdde	cstring	`^C
+0x02fde6	cstring	t\C
+0x02fe18	cstring	ComCtrls
+0x030dcc	ansistring	Data
+0x0310d4	cstring	SysTreeView32
+0x03127f	cstring	t_-
+0x031720	cstring	UhM&C
+0x031752	cstring	V#C
+0x031756	cstring	E$C
+0x03175e	cstring	Z%C
+0x031762	cstring	7&C
+0x031a3f	cstring	hT&C
+0x031dca	cstring	Uh4*C
+0x031e26	cstring	h;*C
+0x0321d5	cstring	 .C
+0x032220	cstring	msctls_trackbar32
+0x032709	cstring	03C
+0x0327ac	cstring	msctls_updown32
+0x032b74	cstring	l[B
+0x032bc8	ansistring	TDBEdit
+0x032bd8	ansistring	TDBMemo
+0x032bec	cstring	{$j
+0x032db4	cstring	UhR:C
+0x032de8	cstring	l[B
+0x032e44	cstring	hY:C
+0x0330b0	ansistring	WidthType
+0x03333c	cstring	<@C
+0x0333aa	cstring	ComCtrls
+0x033a15	cstring	tUj
+0x033c1f	cstring	Ph\HC
+0x033c38	cstring	THC
+0x033c54	ansistring	Data
+0x033e0e	cstring	Uh)LC
+0x03401b	cstring	h0LC
+0x03425d	cstring	ShPTC
+0x03426e	cstring	ShtSC
+0x034480	cstring	SysListView32
+0x0344f0	cstring	Uh`QC
+0x03454c	cstring	hgQC
+0x034782	cstring	Uh1TC
+0x03485e	cstring	Uh1UC
+0x034873	cstring	t_-
+0x034c59	cstring	Uh9[C
+0x034f2b	cstring	h@[C
+0x035994	cstring	8fC
+0x035998	cstring	@gC
+0x0359e4	cstring	tcA
+0x0359f0	cstring	l%A
+0x0359f4	cstring	 &A
+0x035a00	cstring	<bA
+0x035a08	cstring	P^A
+0x035a0c	cstring	hbA
+0x035b59	cstring	 iC
+0x035b6c	cstring	TjC
+0x035b7e	cstring	dkC
+0x035bce	cstring	BatDelaysUnit
+0x035d38	cstring	Uh/jC
+0x035d4b	cstring	-@jC
+0x035d7d	cstring	LjC
+0x035db4	cstring	-@jC
+0x035de6	cstring	LjC
+0x035e1e	cstring	h6jC
+0x035e4c	cstring	  secs
+0x035f69	cstring	pFG
+0x0360a8	cstring	LmC
+0x0360b4	cstring	uoC
+0x0360f8	cstring	tcA
+0x036104	cstring	l%A
+0x036108	cstring	 &A
+0x036114	cstring	<bA
+0x03611c	cstring	P^A
+0x036120	cstring	hbA
+0x03626e	cstring	|tC
+0x03627f	cstring	\uC
+0x0362cc	cstring	$wC
+0x0362f7	cstring	`zC
+0x036367	cstring	0|C
+0x0363a7	cstring	BattleUnit
+0x036b40	cstring	pFG
+0x036ccc	cstring	's units
+0x036ce8	cstring	    Q 
+0x036cf0	cstring	  M 
+0x036d40	cstring	pFG
+0x036d4f	cstring	@zC
+0x036db1	cstring	LzC
+0x036dce	cstring	PzC
+0x036e40	cstring	's units
+0x036e50	cstring	mercenaries   
+0x036ee7	cstring	X{C
+0x036eee	cstring	d{C
+0x036f64	ansistring	Are you sure you want to surrender ?
+0x0371e9	cstring	pFG
+0x037957	cstring	pFG
+0x037b9c	cstring	 army
+0x037ba4	cstring	 mercenaries
+0x037bb4	cstring	Troops -
+0x037bc0	cstring	Quality -
+0x037bcc	cstring	Morale -
+0x037bd8	cstring	Moves -
+0x037be0	cstring	Shots -
+0x037bec	cstring	Unit set to attack
+0x037c00	cstring	Troops
+0x0387a0	cstring	 mercenaries
+0x0387b0	cstring	Troops
+0x0387bc	cstring	 SHOOTS AT
+0x0387c8	cstring	TROOP LOSSES  
+0x0387d8	cstring	Unit destroyed !
+0x038d10	cstring	 mercenaries
+0x038d20	cstring	Troops
+0x038d2c	cstring	 ATTACKS
+0x038d38	cstring	UNIT  LOSSES
+0x038d48	cstring	Attacker  
+0x038d54	cstring	routed
+0x038d5c	cstring	Defender  
+0x038dff	cstring	pFG
+0x038e33	cstring	pFG
+0x038e5c	cstring	pFG
+0x038fe8	cstring	  v  
+0x038ffc	cstring	 to place units.
+0x039010	cstring	 to move units.
+0x03a208	cstring	tcA
+0x03a214	cstring	l%A
+0x03a218	cstring	 &A
+0x03a224	cstring	<bA
+0x03a22c	cstring	P^A
+0x03a230	cstring	hbA
+0x03a3e3	cstring	\~B
+0x03a401	cstring	InformationUnit
+0x03ac91	cstring	Book Antiqua
+0x03aca0	cstring	Unit moves
+0x03ae9c	cstring	pFG
+0x03b0fb	cstring	pFG
+0x03b198	cstring	Nation -
+0x03b1a4	cstring	Leader -
+0x03b1b0	cstring	Capital -
+0x03b1bc	cstring	Cities -
+0x03b1c8	cstring	Population -
+0x03b1d8	cstring	Unity -
+0x03b1e4	cstring	Tax rate -
+0x03b1f0	cstring	Mobilized -
+0x03b1fc	cstring	Treasury -
+0x03b208	cstring	 talents
+0x03b21c	cstring	      INTERNATIONAL RELATIONS
+0x03b244	cstring	 conquerred by 
+0x03b2ce	cstring	pFG
+0x03b2ff	cstring	pFG
+0x03b325	cstring	pFG
+0x03b495	cstring	pFG
+0x03b650	cstring	City -
+0x03b658	cstring	  (capital of 
+0x03b66c	cstring	Controlled by -
+0x03b67c	cstring	Allegiance to -
+0x03b68c	cstring	Population -
+0x03b6a4	cstring	Loyalty -
+0x03b6b0	cstring	Fortification -
+0x03b6c4	cstring	  (under construction)
+0x03b6e4	cstring	Tribute -
+0x03b6f0	cstring	  talents
+0x03b6fc	cstring	poor
+0x03b704	cstring	moderate
+0x03b710	cstring	rich
+0x03b718	cstring	very rich
+0x03b724	cstring	Supply -
+0x03b730	cstring	  tons
+0x03b7b0	cstring	pFG
+0x03bbd4	cstring	Army of 
+0x03bbe0	cstring	Moves -
+0x03bbe8	cstring	Supply -
+0x03bbf4	cstring	 tons  (
+0x03bc04	cstring	Morale -
+0x03bc10	cstring	Money -
+0x03bc18	cstring	 talents
+0x03bc24	cstring	Terrain -
+0x03bc38	cstring	Total troops -
+0x03bc48	cstring	No. of units-
+0x03bc58	cstring	Regulars cost-
+0x03bc68	cstring	  talents per quarter
+0x03bc80	cstring	Mercenary pay-
+0x03bd54	cstring	pFG
+0x03bfb0	cstring	Army
+0x03bfb8	cstring	Fleet of 
+0x03bfc4	cstring	Moves -
+0x03bfcc	cstring	Ships -
+0x03bfd4	cstring	Repair -
+0x03bfe4	cstring	Supply -
+0x03bff0	cstring	 tons  (
+0x03c000	cstring	Money -
+0x03c008	cstring	 talents
+0x03c014	cstring	Capacity -
+0x03c020	cstring	 troops
+0x03c028	cstring	Sea-
+0x03c030	cstring	calm
+0x03c038	cstring	rough
+0x03c1a8	cstring	Mercenaries at 
+0x03c1b8	cstring	There are no mercenaries at 
+0x03c229	cstring	pFG
+0x03c2fc	cstring	Army of 
+0x03c39e	cstring	pFG
+0x03c658	cstring	Unit moves of 
+0x03c668	cstring	's army.
+0x03c694	cstring	mv  sh
+0x03c69c	cstring	unit set to attack
+0x03c860	cstring	tcA
+0x03c86c	cstring	l%A
+0x03c870	cstring	 &A
+0x03c87c	cstring	<bA
+0x03c884	cstring	P^A
+0x03c888	cstring	hbA
+0x03ca11	cstring	btn_media
+0x03ca9a	cstring	LwB
+0x03cab6	cstring	FindCityUnit
+0x03cb8e	cstring	pFG
+0x03cc0e	cstring	pFG
+0x03ccf5	cstring	pFG
+0x03cd73	cstring	pFG
+0x03ce60	cstring	tcA
+0x03ce6c	cstring	l%A
+0x03ce70	cstring	 &A
+0x03ce7c	cstring	<bA
+0x03ce84	cstring	P^A
+0x03ce88	cstring	hbA
+0x03d19d	cstring	AreaMapUnit
+0x03db23	cstring	@ F
+0x03dd04	cstring	tcA
+0x03dd10	cstring	l%A
+0x03dd14	cstring	 &A
+0x03dd20	cstring	<bA
+0x03dd28	cstring	P^A
+0x03dd2c	cstring	hbA
+0x03dec1	cstring	Bevel1
+0x03e193	cstring	LwB
+0x03e1b2	cstring	AFSupplyUnit
+0x03e38c	ansistring	Supply fleet
+0x03e3a4	ansistring	Fleet's
+0x03e7f4	ansistring	National
+0x03e808	ansistring	balance
+0x03e818	ansistring	Supplies at
+0x03e82c	ansistring	Supplies on
+0x03e840	ansistring	fleet
+0x03e850	ansistring	Fleet's
+0x03e860	ansistring	money
+0x03e992	cstring	pFG
+0x03ec30	ansistring	fleet
+0x03f6a0	cstring	tcA
+0x03f6ac	cstring	l%A
+0x03f6b0	cstring	 &A
+0x03f6bc	cstring	<bA
+0x03f6c4	cstring	P^A
+0x03f6c8	cstring	hbA
+0x03f8ad	cstring	FortifyCityUnit
+0x03fa48	cstring	Fortify 
+0x03fca4	cstring	tcA
+0x03fcb0	cstring	l%A
+0x03fcb4	cstring	 &A
+0x03fcc0	cstring	<bA
+0x03fcc8	cstring	P^A
+0x03fccc	cstring	hbA
+0x03fe11	cstring	lbl_newrep
+0x03feb5	cstring	RepairFltUnit
+0x040270	cstring	tcA
+0x04027c	cstring	l%A
+0x040280	cstring	 &A
+0x04028c	cstring	<bA
+0x040294	cstring	P^A
+0x040298	cstring	hbA
+0x0403b7	cstring	LwB
+0x0403da	cstring	RecruitMercsUnit
+0x040664	cstring	Units at 
+0x040a04	ansistring	Your army has too little money to pay these mercenaries.
+0x040a48	ansistring	An army can not contain more than 100,000 troops.
+0x040a84	ansistring	This fleet has too little space for these mercenaries.
+0x040b34	cstring	tcA
+0x040b40	cstring	l%A
+0x040b44	cstring	 &A
+0x040b50	cstring	<bA
+0x040b58	cstring	P^A
+0x040b5c	cstring	hbA
+0x040ce5	cstring	Bevel5
+0x040e3d	cstring	\#D
+0x040e50	cstring	H$D
+0x040f1c	cstring	LwB
+0x040f40	cstring	ArmyToArmyUnit
+0x041288	ansistring	Split army
+0x0416f0	cstring	 unit    
+0x0416fc	cstring	 units    
+0x041708	cstring	 troops
+0x041a06	cstring	X&D
+0x041a0d	cstring	d&D
+0x041a23	cstring	X&D
+0x041a3f	cstring	X&D
+0x041a64	ansistring	This army already has 20 units.
+0x041a8c	ansistring	An army can not hold more than 100,000 troops.
+0x041ac4	ansistring	This fleet can not carry any more troops.
+0x041bf6	cstring	H(D
+0x041bfd	cstring	T(D
+0x041c13	cstring	H(D
+0x041c1a	cstring	|(D
+0x041c2f	cstring	H(D
+0x041c54	ansistring	This army already has 20 units.
+0x041c7c	ansistring	An army can not hold more than 100,000 troops.
+0x041cb4	ansistring	This fleet can not carry any more troops.
+0x041cf8	cstring	Uhh*D
+0x041d18	cstring	x*D
+0x041e57	cstring	ho*D
+0x041e78	cstring	Are you sure you want to disband 
+0x041e9c	cstring	 unit
+0x041ebc	ansistring	An army must be near its own city to disband a regular unit.
+0x042094	cstring	Are you sure you want to disband 
+0x0420b8	cstring	 unit
+0x0420d8	ansistring	An army must be near its own city to disband a regular unit.
+0x0424e4	cstring	h4D
+0x0424f4	cstring	H4D
+0x042538	cstring	tcA
+0x042544	cstring	l%A
+0x042548	cstring	 &A
+0x042554	cstring	<bA
+0x04255c	cstring	P^A
+0x042560	cstring	hbA
+0x04258e	cstring	V4D
+0x0426e8	cstring	Bevel7
+0x0427d5	cstring	l5D
+0x0427ea	cstring	H7D
+0x0427fd	cstring	$9D
+0x042834	cstring	H;D
+0x04283d	cstring	X<D
+0x042882	cstring	FleetToFleetUnit
+0x0429d1	cstring	<7D
+0x042b3c	ansistring	Split fleet
+0x043090	cstring	4=D
+0x0430e0	cstring	tcA
+0x0430ec	cstring	l%A
+0x0430f0	cstring	 &A
+0x0430fc	cstring	<bA
+0x043104	cstring	P^A
+0x043108	cstring	hbA
+0x0431c0	cstring	8>D
+0x0431d5	cstring	P?D
+0x043228	cstring	RenameUnitUnit
+0x043244	cstring	Uh@?D
+0x043332	cstring	hG?D
+0x043438	cstring	tcA
+0x043444	cstring	l%A
+0x043448	cstring	 &A
+0x043454	cstring	<bA
+0x04345c	cstring	P^A
+0x043460	cstring	hbA
+0x043586	cstring	$BD
+0x04359b	cstring	|CD
+0x043613	cstring	SplitUnitUnit
+0x043630	cstring	UhnCD
+0x043760	cstring	huCD
+0x043a96	cstring	hGD
+0x043aa5	cstring	lGD
+0x043ab4	cstring	pGD
+0x043ac3	cstring	tGD
+0x043aeb	cstring	 GD
+0x043aef	cstring	/GD
+0x043af4	cstring	xGD
+0x043b68	cstring	st 
+0x043b6c	cstring	nd 
+0x043b70	cstring	rd 
+0x043b74	cstring	th 
+0x043b78	cstring	Foot 
+0x043b80	cstring	Guards 
+0x043b88	cstring	Bowmen 
+0x043b90	cstring	Lancers 
+0x043b9c	cstring	Dragoons 
+0x043ba8	cstring	 Battalion
+0x043bd0	cstring	tHD
+0x043c20	cstring	tcA
+0x043c2c	cstring	l%A
+0x043c30	cstring	 &A
+0x043c3c	cstring	<bA
+0x043c44	cstring	P^A
+0x043c48	cstring	hbA
+0x043d8c	cstring	xSD
+0x043dbb	cstring	LwB
+0x043de1	cstring	ChangeUnitsUnit
+0x043fc9	cstring	dLD
+0x043fd0	cstring	pLD
+0x044031	cstring	dLD
+0x044070	ansistring	You can only rename 1 unit at a time.
+0x0440a0	ansistring	You can only rename regular units.
+0x044173	cstring	@ND
+0x0441ab	cstring	hND
+0x0441e4	ansistring	You can only split 1 unit at a time.
+0x044214	ansistring	You can only split regular units.
+0x044240	ansistring	This army already has 20 units.
+0x044268	ansistring	This unit is too small to split.
+0x044323	cstring	$PD
+0x04432a	cstring	0PD
+0x044344	cstring	$PD
+0x04434b	cstring	dPD
+0x044372	cstring	$PD
+0x044430	ansistring	You can only join regular units together.
+0x044464	ansistring	You can only combine units of the same type.
+0x04449c	ansistring	These units are too large to be combined.
+0x0444e0	cstring	Uh2RD
+0x044500	cstring	@RD
+0x04453c	cstring	dRD
+0x044557	cstring	lRD
+0x044564	cstring	pRD
+0x04458e	cstring	tRD
+0x044609	cstring	xRD
+0x044621	cstring	h9RD
+0x044640	cstring	Are you sure you want to disband 
+0x044664	cstring	 unit
+0x044684	ansistring	An army must be near its own city to disband a regular unit.
+0x0447e0	cstring	4YD
+0x0447e8	cstring	{VD
+0x044834	cstring	tcA
+0x044840	cstring	l%A
+0x044844	cstring	 &A
+0x044850	cstring	<bA
+0x044858	cstring	P^A
+0x04485c	cstring	hbA
+0x044a0d	cstring	sb_transferships
+0x044a72	cstring	sb_cancel"
+0x044a7f	cstring	XYD
+0x044a94	cstring	8[D
+0x044aa9	cstring	8]D
+0x044acd	cstring	(aD
+0x044af6	cstring	hbD
+0x044b1f	cstring	HcD
+0x044b35	cstring	TcD
+0x044b46	cstring	 dD
+0x044b91	cstring	$nD
+0x044bd3	cstring	PoD
+0x044c27	cstring	\uD
+0x044c37	cstring	DvD
+0x044c9e	cstring	HzD
+0x044cc0	cstring	4~D
+0x044d29	cstring	\~B
+0x044d49	cstring	UnitMapUnit
+0x044ed2	cstring	([D
+0x044ef8	ansistring	sb_supplyarmy
+0x044f10	ansistring	sb_supplyfleet
+0x044f28	ansistring	sb_fortifycity
+0x045bdc	cstring	pFG
+0x045c15	cstring	pFG
+0x045cc5	cstring	pFG
+0x045cfe	cstring	pFG
+0x045e91	cstring	8lD
+0x045eb2	cstring	pFG
+0x045eca	cstring	tlD
+0x045ee8	cstring	pFG
+0x045f9c	ansistring	Are you sure you want to attack this city ?
+0x045fd0	ansistring	Are you sure you want to attack this army ?
+0x046008	ansistring	The army is too large for this fleet ?
+0x046038	ansistring	You cannot attack a fleet docked at its own city !
+0x046074	ansistring	Are you sure you want to attack this fleet ?
+0x0464d8	cstring	pFG
+0x046560	cstring	\rD
+0x046598	ansistring	This army already has 20 units.
+0x0465c0	ansistring	This army cannot get any bigger.
+0x0465ec	ansistring	You cannot recruit from an enemy city.
+0x04661c	ansistring	No mercenaries will join an army with so few supplies.
+0x04665c	ansistring	Your fleet cannot carry any more troops.
+0x0467ed	cstring	~'j
+0x0467fb	cstring	 uD
+0x0468a8	ansistring	An army on a fleet cannot be combined with another.
+0x0468e4	ansistring	These 2 armies combined contain more than 20 units.
+0x046920	ansistring	These 2 armies combined contain more than 100,000 troops.
+0x046a10	ansistring	You can not split an army containing only 1 unit.
+0x046b90	ansistring	An army must be near its own city to disband.
+0x046bcc	ansistring	Are you sure you want to disband this army ?
+0x046d18	cstring	lyD
+0x046d1f	cstring	xyD
+0x046d3a	cstring	lyD
+0x046d78	ansistring	The fleet can only be repaired at one of your cities.
+0x046db8	ansistring	A fleet cannot be repaired while it is carrying an army.
+0x046f90	ansistring	There are more than 100 ships in these fleets combined.
+0x046fd0	ansistring	You cannot join fleets if one is carrying an army.
+0x04718c	ansistring	You can not split a fleet containing less than 20 ships.
+0x0471d0	ansistring	You can not split a fleet carrying an army.
+0x047204	ansistring	You can not make any more fleets at this time.
+0x04734c	ansistring	A fleet cannot be scuttled while it is carrying an army.
+0x047390	ansistring	To scuttle a fleet it must be near one of your cities.
+0x0473d4	ansistring	Are you sure you want to scuttle this fleet ?
+0x0474dc	ansistring	You cannot fortify a city which is under siege.
+0x047514	ansistring	This city cannot be fortified any further.
+0x047548	ansistring	This city is already being fortified.
+0x047661	cstring	pFG
+0x0479ba	cstring	pFG
+0x047ca5	cstring	pFG
+0x047eac	cstring	pFG
+0x047f61	cstring	C6-
+0x047f67	cstring	C87
+0x0484c0	cstring	{FG
+0x04851c	ansistring	Imperial Conquest 2
+0x048a85	cstring	pFG
+0x048c7c	cstring	pFG
+0x048dc9	cstring	pFG
+0x048dfe	cstring	pFG
+0x048e60	cstring	pFG
+0x048ea0	cstring	pFG
+0x048f0c	cstring	 forms an alliance with 
+0x048f28	cstring	 declares war on 
+0x048f6a	cstring	pFG
+0x048faa	cstring	pFG
+0x048fc0	cstring	pFG
+0x048fe4	cstring	pFG
+0x048feb	cstring	pFG
+0x049066	cstring	pFG
+0x04906d	cstring	pFG
+0x0490e1	cstring	pFG
+0x049471	cstring	pFG
+0x049500	cstring	 finishes a new fleet at 
+0x0495f1	cstring	pFG
+0x049898	cstring	st 
+0x04989c	cstring	nd 
+0x0498a0	cstring	rd 
+0x0498a4	cstring	th 
+0x0498a8	cstring	Foot
+0x0498b0	cstring	Guards
+0x0498b8	cstring	Bowmen
+0x0498c0	cstring	Lancers
+0x0498c8	cstring	Dragoons
+0x0498d4	cstring	 Battalion
+0x049905	cstring	pFG
+0x04998b	cstring	pFG
+0x0499ac	cstring	pFG
+0x0499cd	cstring	pFG
+0x049a20	cstring	pFG
+0x049e1a	cstring	pFG
+0x04a582	cstring	pFG
+0x04a5a0	cstring	pFG
+0x04a618	cstring	 destroys army of 
+0x04a79c	cstring	pFG
+0x04a7f6	cstring	pFG
+0x04a86b	cstring	pFG
+0x04a890	cstring	pFG
+0x04a8c4	cstring	 fails to capture 
+0x04a8e4	cstring	)  falls to 
+0x04ab2e	cstring	pFG
+0x04ab55	cstring	pFG
+0x04ab84	cstring	 sinks fleet of 
+0x04ad21	cstring	pFG
+0x04ad8a	cstring	pFG
+0x04af65	cstring	pFG
+0x04afd9	cstring	pFG
+0x04b1e7	cstring	pFG
+0x04b2b4	cstring	 have moved their capital to 
+0x04b326	cstring	pFG
+0x04b39c	cstring	pFG
+0x04b4ad	cstring	pFG
+0x04b4d5	cstring	pFG
+0x04b50b	cstring	pFG
+0x04b56a	cstring	f;u
+0x04b5e8	cstring	 defects from 
+0x04b5f8	cstring	 to 
+0x04b6a3	cstring	pFG
+0x04b6d4	cstring	pFG
+0x04b7a0	cstring	pFG
+0x04b7ff	cstring	DG&
+0x04b872	cstring	f;u
+0x04ba3c	cstring	pFG
+0x04bb04	cstring	f;}
+0x04bb8b	cstring	pFG
+0x04bbb2	cstring	pFG
+0x04bbfc	cstring	pFG
+0x04bce0	cstring	 conquers 
+0x04bd05	cstring	pFG
+0x04be14	cstring	 depose their leader 
+0x04cd25	cstring	pFG
+0x04cd82	cstring	pFG
+0x04d7bb	cstring	pFG
+0x04d800	cstring	pFG
+0x04d893	cstring	pFG
+0x04da3a	cstring	pFG
+0x04da89	cstring	pFG
+0x04db0d	cstring	pFG
+0x04dcb4	cstring	pFG
+0x04ddf4	cstring	pFG
+0x04e138	cstring	pFG
+0x04e2dd	cstring	pFG
+0x04e45d	cstring	pFG
+0x04e64b	cstring	pFG
+0x04e6c6	cstring	pFG
+0x04e968	cstring	pFG
+0x04eedb	cstring	pFG
+0x04ef59	cstring	pFG
+0x04efc7	cstring	pFG
+0x04f0e1	cstring	|C&
+0x04f18d	cstring	pFG
+0x04f292	cstring	pFG
+0x04f314	cstring	pFG
+0x04f351	cstring	|B&
+0x04f3df	cstring	pFG
+0x04f6b9	cstring	pFG
+0x04f6fc	cstring	pFG
+0x04f911	cstring	pFG
+0x04f9e1	cstring	pFG
+0x04fe22	cstring	= N
+0x05008a	cstring	pFG
+0x050196	cstring	pFG
+0x0501bd	cstring	pFG
+0x0501f2	cstring	pFG
+0x050219	cstring	pFG
+0x05024e	cstring	pFG
+0x050283	cstring	pFG
+0x0502c6	cstring	pFG
+0x05030d	cstring	pFG
+0x050381	cstring	pFG
+0x0503f9	cstring	pFG
+0x0504a6	cstring	pFG
+0x050508	cstring	 and 
+0x050510	cstring	 have agreed to end their war.
+0x050530	cstring	 sues 
+0x050538	cstring	 for peace and;
+0x050550	cstring	 ends all current trading agreements.
+0x050578	cstring	  ends all current alliances.
+0x050598	cstring	 pays reparations of 
+0x0505b0	cstring	 talents.
+0x050c72	cstring	pFG
+0x050cc2	cstring	pFG
+0x050d7c	cstring	TIG
+0x050ee4	cstring	A fleet belonging to 
+0x050efc	cstring	 is lost at sea.
+0x050f10	cstring	 is damaged in a storm.
+0x050f2c	cstring	Week  
+0x051089	cstring	TIG
+0x051234	cstring	pFG
+0x051447	cstring	pFG
+0x051501	cstring	pFG
+0x0515dc	cstring	$+E
+0x051630	cstring	tcA
+0x05163c	cstring	l%A
+0x051640	cstring	 &A
+0x05164c	cstring	<bA
+0x051654	cstring	P^A
+0x051658	cstring	hbA
+0x05179e	cstring	Bevel15
+0x051bf1	cstring	RadioButton31
+0x051e96	cstring	H+E
+0x051eed	cstring	02E
+0x051f1d	cstring	LpB
+0x051f3a	cstring	PoliticsUnit
+0x051fa7	cstring	$pFG
+0x0521a7	cstring	UhT.E
+0x0521d6	cstring	pFG
+0x0521ee	cstring	pFG
+0x0521f8	cstring	d.E
+0x052246	cstring	h[.E
+0x052264	cstring	 does not want to make peace at this time.
+0x0522ab	cstring	UhX0E
+0x0522eb	cstring	pFG
+0x052336	cstring	h0E
+0x05233d	cstring	t0E
+0x05235e	cstring	pFG
+0x052364	cstring	|z&
+0x052379	cstring	pFG
+0x0523aa	cstring	h0E
+0x0523cd	cstring	pFG
+0x0523fa	cstring	pFG
+0x05242b	cstring	h0E
+0x05244a	cstring	h_0E
+0x052474	ansistring	You can only trade with 3 nations.
+0x052498	cstring	 does not want to trade with you.
+0x0524bc	cstring	You cannot trade with 
+0x052570	cstring	pFG
+0x052576	cstring	|B&
+0x05258f	cstring	pFG
+0x0525c0	cstring	,2E
+0x052600	cstring	 does not want to ally with your nation.
+0x05263d	cstring	pFG
+0x0526d6	cstring	pFG
+0x0527a4	cstring	H4E
+0x0527f4	cstring	tcA
+0x052800	cstring	l%A
+0x052804	cstring	 &A
+0x052810	cstring	<bA
+0x052818	cstring	P^A
+0x05281c	cstring	hbA
+0x05295c	cstring	Label8
+0x052ac5	cstring	07E
+0x052ada	cstring	l7E
+0x052b22	cstring	BalanceUnit
+0x052b9b	cstring	pFG
+0x053018	cstring	L>E
+0x053028	cstring	->E
+0x05306c	cstring	tcA
+0x053078	cstring	l%A
+0x05307c	cstring	 &A
+0x053088	cstring	<bA
+0x053090	cstring	P^A
+0x053094	cstring	hbA
+0x0530c2	cstring	8>E
+0x0531de	cstring	l>E
+0x05324e	cstring	TChangeTaxD<E
+0x053263	cstring	TaxUnit
+0x053560	cstring	tcA
+0x05356c	cstring	l%A
+0x053570	cstring	 &A
+0x05357c	cstring	<bA
+0x053584	cstring	P^A
+0x053588	cstring	hbA
+0x0536e1	cstring	btn_hvyinf
+0x0537ef	cstring	\IE
+0x053829	cstring	\ME
+0x053850	cstring	xNE
+0x0538b0	cstring	LwB
+0x0538b6	cstring	TArmyRecruits8AE
+0x0538ce	cstring	ArmyRecruitsUnit
+0x0538f6	cstring	UhxHE
+0x053915	cstring	pFG
+0x053941	cstring	pFG
+0x053a8d	cstring	XIG
+0x053b1c	cstring	pFG
+0x053c90	ansistring	All cities
+0x053e70	cstring	pFG
+0x053fb0	cstring	Create unit at 
+0x053fc0	cstring	Units at 
+0x053fcc	cstring	all cities
+0x054025	cstring	UhLME
+0x05413e	cstring	hSME
+0x0542df	cstring	$RE
+0x054332	cstring	TRE
+0x05435b	cstring	pFG
+0x054399	cstring	pFG
+0x0545f0	ansistring	You have reached your limit of 40 units.
+0x054624	ansistring	Your mobilisation rate is already 100%.
+0x054654	ansistring	This city's fortification has fallen below 75%.
+0x054688	cstring	not ready
+0x05469c	ansistring	All cities
+0x05470d	cstring	pFG
+0x05474e	cstring	xSE
+0x054784	ansistring	You cannot mobilise a unit at this time.
+0x0547c8	cstring	UhWUE
+0x0547e8	cstring	hUE
+0x05489a	cstring	pFG
+0x054946	cstring	h^UE
+0x054968	cstring	Are you sure you want to disband 
+0x05498c	cstring	 unit
+0x0549d8	cstring	|VE
+0x054a28	cstring	tcA
+0x054a34	cstring	l%A
+0x054a38	cstring	 &A
+0x054a44	cstring	<bA
+0x054a4c	cstring	P^A
+0x054a50	cstring	hbA
+0x054ba1	cstring	<XE
+0x054bc9	cstring	0ZE
+0x054c16	cstring	TBuildFleet
+0x054c2c	cstring	BuildFleetUnit
+0x054d00	cstring	Uh!ZE
+0x054e10	cstring	h(ZE
+0x054ea6	cstring	Uh][E
+0x054ed3	cstring	l[E
+0x054f4f	cstring	hd[E
+0x054f6c	cstring	The fleet will be built at 
+0x054fac	cstring	P\E
+0x054ffc	cstring	tcA
+0x055008	cstring	l%A
+0x05500c	cstring	 &A
+0x055018	cstring	<bA
+0x055020	cstring	P^A
+0x055024	cstring	hbA
+0x055179	cstring	lbl_cities1
+0x0551da	cstring	8^E
+0x055228	cstring	HumanFallsUnit
+0x0552a8	cstring	pFG
+0x05530c	cstring	(cE
+0x05532c	cstring	pcE
+0x055366	cstring	pFG
+0x0553ca	cstring	LdE
+0x0553e1	cstring	TdE
+0x055422	cstring	ddE
+0x05542e	cstring	ldE
+0x055443	cstring	|dE
+0x0556f4	cstring	The game is over for 
+0x05570c	cstring	 the leader of 
+0x055728	ansistring	You have conquerred the Mediterranean, a unique achievement.
+0x055770	ansistring	You have reached the end of your allotted 20 years.
+0x0557a4	cstring	Your nation has been conquerred by 
+0x0557d0	ansistring	Your unpopularity has forced the army to overthrow you.
+0x055810	ansistring	Your army have deposed you because they have not been paid.
+0x05584c	cstring	Your 
+0x055854	cstring	 short time 
+0x055864	cstring	 years 
+0x05586c	cstring	in power in 
+0x05587c	cstring	 produced these changes.
+0x055898	cstring	 in 270 BC.
+0x0558a4	cstring	Population
+0x0558b0	cstring	Cities   
+0x0558bc	cstring	Treasury 
+0x0558c8	cstring	 talents
+0x0558d4	cstring	 in 
+0x0558dc	cstring	 BC.
+0x0558fc	cstring	DfE
+0x05590c	cstring	+fE
+0x055950	cstring	tcA
+0x05595c	cstring	l%A
+0x055960	cstring	 &A
+0x05596c	cstring	<bA
+0x055974	cstring	P^A
+0x055978	cstring	hbA
+0x0559a6	cstring	5fE
+0x0559f0	cstring	hfE
+0x055a05	cstring	DgE
+0x055a24	cstring	pjE
+0x055a46	cstring	TCellAuto(eE
+0x055a5a	cstring	CellAutoUnit
+0x055dd2	cstring	UhSjE
+0x055ddf	cstring	djE
+0x055e0d	cstring	hjE
+0x055e45	cstring	hZjE
+0x055e68	cstring	.BMP
+0x055e8c	cstring	0kE
+0x055edc	cstring	tcA
+0x055ee8	cstring	l%A
+0x055eec	cstring	 &A
+0x055ef8	cstring	<bA
+0x055f00	cstring	P^A
+0x055f04	cstring	hbA
+0x05600d	cstring	AboutUnit
+0x0560a9	cstring	(eE
+0x0560d4	cstring	|qE
+0x0560d8	cstring	|mE
+0x0560e4	cstring	WqE
+0x056128	cstring	tcA
+0x056134	cstring	l%A
+0x056138	cstring	 &A
+0x056144	cstring	<bA
+0x05614c	cstring	P^A
+0x056150	cstring	hbA
+0x05617e	cstring	dqE
+0x0562db	cstring	pnl_thracia
+0x05657e	cstring	TPickLeaders
+0x056595	cstring	PickLeadersUnit
+0x056784	cstring	{FG
+0x056810	cstring	pFG
+0x0569d8	cstring	|vE
+0x0569dc	cstring	~wE
+0x056a28	cstring	tcA
+0x056a34	cstring	l%A
+0x056a38	cstring	 &A
+0x056a44	cstring	<bA
+0x056a4c	cstring	P^A
+0x056a50	cstring	hbA
+0x056b97	cstring	`|E
+0x056bc6	cstring	TBattlePols
+0x056bdc	cstring	BatPolsUnit
+0x056bfe	cstring	Uh={E
+0x056c6c	cstring	L{E
+0x056c88	cstring	pFG
+0x056c95	cstring	l{E
+0x056cc0	cstring	pFG
+0x056ccd	cstring	l{E
+0x056d1c	cstring	pFG
+0x056ed2	cstring	<|E
+0x056ef6	cstring	T|E
+0x056f2f	cstring	hD{E
+0x056f4c	cstring	After losing to you in battle 
+0x056f6c	cstring	 are willing to end
+0x056f80	cstring	After defeating you in battle 
+0x056fa0	cstring	They 
+0x056fa8	cstring	You 
+0x056fb8	ansistring	An honourable peace with no reparations or penalties.
+0x056ff0	cstring	will end all current trading agreements.
+0x05701c	cstring	will end all current alliances.
+0x05703c	cstring	will pay reparations of
+0x057054	cstring	 talents.
+0x0570a8	cstring	L}E
+0x0570f8	cstring	tcA
+0x057104	cstring	l%A
+0x057108	cstring	 &A
+0x057114	cstring	<bA
+0x05711c	cstring	P^A
+0x057120	cstring	hbA
+0x05727a	cstring	lbl_give2
+0x057398	cstring	BatPolsHVHUnit
+0x05741e	cstring	pFG
+0x057457	cstring	pFG
+0x057486	cstring	pFG
+0x0574ac	cstring	pFG
+0x0574f3	cstring	pFG
+0x057621	cstring	pFG
+0x057668	cstring	pFG
+0x0576af	cstring	pFG
+0x05771d	cstring	pFG
+0x05774c	cstring	pFG
+0x0577e4	cstring	 has defeated 
+0x0577f4	cstring	 in battle.
+0x057808	ansistring	An honourable peace with no reparations or penalties.
+0x057840	cstring	 will end all current trading agreements.
+0x05786c	cstring	 will end all current alliances.
+0x057890	cstring	 will pay reparations of 
+0x0578ac	cstring	 talents.
+0x0579bc	ansistring	will receive
+0x0579d4	ansistring	will pay
+0x0579e0	cstring	 talents
+0x057b34	cstring	tcA
+0x057b40	cstring	l%A
+0x057b44	cstring	 &A
+0x057b50	cstring	<bA
+0x057b58	cstring	P^A
+0x057b5c	cstring	hbA
+0x057cb1	cstring	Label15
+0x057fb8	cstring	BattleOverUnit
+0x0580cb	cstring	pFG
+0x058101	cstring	pFG
+0x058148	cstring	pFG
+0x05830e	cstring	pFG
+0x05841b	cstring	pFG
+0x0584d3	cstring	pFG
+0x05859c	cstring	's  army
+0x0585a8	cstring	  defeats  
+0x0585b4	cstring	's  army.
+0x0585c0	cstring	's army
+0x0585c8	cstring	The army of 
+0x0585d8	cstring	 captured 
+0x0585e4	cstring	 talents.
+0x0585f0	cstring	no money.
+0x0585fc	cstring	 tons of supplies.
+0x058610	cstring	no suuplies.
+0x0587a5	cstring	pFG
+0x0587d0	cstring	pFG
+0x05898c	cstring	 destroys army of 
+0x058a00	cstring	tcA
+0x058a0c	cstring	l%A
+0x058a10	cstring	 &A
+0x058a1c	cstring	<bA
+0x058a24	cstring	P^A
+0x058a28	cstring	hbA
+0x058b33	cstring	EndTurnUnit
+0x058e59	cstring	Book Antiqua
+0x058e68	cstring	An army of yours needs supplies.
+0x058e8c	cstring	An army of yours cannot afford to pay its mercenary units.
+0x058ec8	cstring	A fleet of yours needs repairing.
+0x058eec	cstring	One of your fleets is not docked at its own city.
+0x058f20	cstring	A fleet of yours needs supplies.
+0x0590e4	cstring	tcA
+0x0590f0	cstring	l%A
+0x0590f4	cstring	 &A
+0x059100	cstring	<bA
+0x059108	cstring	P^A
+0x05910c	cstring	hbA
+0x059294	cstring	mn_Rome
+0x0596ef	cstring	sb_Save
+0x05988e	cstring	mn_Changeunits$
+0x059b75	cstring	MainUnit
+0x059d70	ansistring	sb_Open
+0x059d80	ansistring	sb_Rome
+0x059d90	ansistring	sb_Allnations
+0x059da0	cstring	Imperial Conquest 2.DAT
+0x059db8	cstring	Imperial Conquest 2.HLP
+0x059dd0	cstring	1.wav
+0x059dd8	cstring	\WAVS\
+0x059ea8	ansistring	Are you sure you want to start a new game ?
+0x05a034	ansistring	Are you sure you want to quit ?
+0x05a12f	cstring	pFG
+0x05a181	cstring	pFG
+0x05a1c5	cstring	pFG
+0x05a230	cstring	trade
+0x05a238	cstring	form an alliance
+0x05a24c	cstring	 wants to 
+0x05a258	cstring	 with 
+0x05a618	ansistring	Are you sure you want to lead a different nation ?
+0x05a698	ansistring	Are you sure you want to abdicate ?
+0x05a73c	cstring	D<E
+0x05a762	cstring	8AE
+0x05a97c	cstring	A fleet of 
+0x05a988	cstring	 ships will be ready in 
+0x05a9a4	cstring	 weeks at 
+0x05a9c0	ansistring	You do not have a free coastal city at this time.
+0x05a9fc	ansistring	Only nations with coastal cities can build fleets.
+0x05aa38	ansistring	You cannot build a fleet at this time.
+0x05b42c	cstring	Sound1
+0x05b434	cstring	Sound2
+0x05b43c	cstring	Sound3
+0x05b444	cstring	Sound4
+0x05b44c	cstring	Sound5
+0x05b454	cstring	Sound6
+0x05b45c	cstring	Sound7
+0x05b464	cstring	Sound8
+0x05b46c	cstring	Sound9
+0x05b474	cstring	Sound10
+0x05b47c	cstring	.WAV
+0x05b4bf	cstring	pFG
+0x05b4f5	cstring	{FG
+0x05b54c	cstring	Imperial Conquest 2    
+0x05b564	cstring	's turn
+0x05b7c0	ansistring	Imperial Conquest 2
+0x05b808	cstring	T @
+0x05b810	cstring	P%@
+0x05b818	cstring	Runtime error     at 00000000
+0x05b836	cstring	Error
+0x05b8f0	cstring	PR@

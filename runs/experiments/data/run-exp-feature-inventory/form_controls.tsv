@@ -1,0 +1,909 @@
+form	path	class	name	caption	hint	events	shortcut	checked
+TAboutIC	AboutIC	TAboutIC	AboutIC	About Imperial Conquest 2		OnCreate=InitializeForm		
+TAboutIC	AboutIC/Bevel1	TBevel	Bevel1					
+TAboutIC	AboutIC/Label1	TLabel	Label1	Imperial  Conquest  2    v1.01				
+TAboutIC	AboutIC/Label2	TLabel	Label2	This is the full/freeware version				
+TAboutIC	AboutIC/Label3	TLabel	Label3	of Imperial Conquest 2, feel free to				
+TAboutIC	AboutIC/Label4	TLabel	Label4	copy and distribute it.				
+TAboutIC	AboutIC/Bevel2	TBevel	Bevel2					
+TAboutIC	AboutIC/Label5	TLabel	Label5	copyright  Serious Games  1997				
+TAboutIC	AboutIC/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TAboutIC	AboutIC/btn_cancell	TButton	btn_cancell	CAncell		OnClick=Cancell		
+TAFSupply	AFSupply	TAFSupply	AFSupply	Supply army		OnCreate=InitializeForm		
+TAFSupply	AFSupply/Bevel1	TBevel	Bevel1					
+TAFSupply	AFSupply/Bevel18	TBevel	Bevel18					
+TAFSupply	AFSupply/Bevel3	TBevel	Bevel3					
+TAFSupply	AFSupply/bvl_buyno3	TBevel	bvl_buyno3					
+TAFSupply	AFSupply/bvl_buyno2	TBevel	bvl_buyno2					
+TAFSupply	AFSupply/Bevel2	TBevel	Bevel2					
+TAFSupply	AFSupply/lbl_onat	TLabel	lbl_onat	Supplies at				
+TAFSupply	AFSupply/lbl_prvname	TLabel	lbl_prvname	Teanum Apulum				
+TAFSupply	AFSupply/Bevel5	TBevel	Bevel5					
+TAFSupply	AFSupply/lbl_prvsupps	TLabel	lbl_prvsupps					
+TAFSupply	AFSupply/lbl_armyfleet	TLabel	lbl_armyfleet	Army's				
+TAFSupply	AFSupply/Label1	TLabel	Label1	supplies				
+TAFSupply	AFSupply/Bevel6	TBevel	Bevel6					
+TAFSupply	AFSupply/lbl_afsupps	TLabel	lbl_afsupps					
+TAFSupply	AFSupply/lbl_buyno1	TLabel	lbl_buyno1	Supplies				
+TAFSupply	AFSupply/lbl_buyno2	TLabel	lbl_buyno2	amount				
+TAFSupply	AFSupply/lbl_buyno3	TLabel	lbl_buyno3	Supplies				
+TAFSupply	AFSupply/lbl_buyno4	TLabel	lbl_buyno4	cost				
+TAFSupply	AFSupply/bvl_buyno4	TBevel	bvl_buyno4					
+TAFSupply	AFSupply/bvl_buyno5	TBevel	bvl_buyno5					
+TAFSupply	AFSupply/lbl_buysupplies	TLabel	lbl_buysupplies					
+TAFSupply	AFSupply/lbl_buycost	TLabel	lbl_buycost					
+TAFSupply	AFSupply/Bevel9	TBevel	Bevel9					
+TAFSupply	AFSupply/bvl_nfno1	TBevel	bvl_nfno1					
+TAFSupply	AFSupply/bvl_nfno2	TBevel	bvl_nfno2					
+TAFSupply	AFSupply/bvl_nfno3	TBevel	bvl_nfno3					
+TAFSupply	AFSupply/lbl_natfltno2	TLabel	lbl_natfltno2	balance				
+TAFSupply	AFSupply/lbl_afmoney	TLabel	lbl_afmoney	Army's				
+TAFSupply	AFSupply/bvl_nfno4	TBevel	bvl_nfno4					
+TAFSupply	AFSupply/bvl_nfno5	TBevel	bvl_nfno5					
+TAFSupply	AFSupply/lbl_natbal	TLabel	lbl_natbal					
+TAFSupply	AFSupply/lbl_money	TLabel	lbl_money					
+TAFSupply	AFSupply/lbl_natfltno1	TLabel	lbl_natfltno1	National				
+TAFSupply	AFSupply/lbl_natfltno6	TLabel	lbl_natfltno6	money				
+TAFSupply	AFSupply/bev_listbox	TBevel	bev_listbox					
+TAFSupply	AFSupply/lbl_natfltno4	TLabel	lbl_natfltno4	100s				
+TAFSupply	AFSupply/lbl_natfltno3	TLabel	lbl_natfltno3	10s				
+TAFSupply	AFSupply/bvl_buyno1	TBevel	bvl_buyno1					
+TAFSupply	AFSupply/lbl_buyno5	TLabel	lbl_buyno5	10s				
+TAFSupply	AFSupply/lbl_buyno6	TLabel	lbl_buyno6	100s				
+TAFSupply	AFSupply/Bevel15	TBevel	Bevel15					
+TAFSupply	AFSupply/lbl_suppno1	TLabel	lbl_suppno1	10s				
+TAFSupply	AFSupply/lbl_suppno2	TLabel	lbl_suppno2	100s				
+TAFSupply	AFSupply/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TAFSupply	AFSupply/ud_buy100	TUpDown	ud_buy100			OnClick=ChangeBuyAmount		
+TAFSupply	AFSupply/ud_buy10	TUpDown	ud_buy10			OnClick=ChangeBuyAmount		
+TAFSupply	AFSupply/ud_mon10	TUpDown	ud_mon10			OnClick=ChangeMoney		
+TAFSupply	AFSupply/ud_mon100	TUpDown	ud_mon100			OnClick=ChangeMoney		
+TAFSupply	AFSupply/lbx_providers	TListBox	lbx_providers			OnClick=ChangeProvider		
+TAFSupply	AFSupply/btn_buy	TButton	btn_buy	Buy supplies		OnClick=TransferSupply		
+TAFSupply	AFSupply/ud_supp10	TUpDown	ud_supp10			OnClick=ChangeSupply		
+TAFSupply	AFSupply/ud_supp100	TUpDown	ud_supp100			OnClick=ChangeSupply		
+TAreaMap	AreaMap	TAreaMap	AreaMap	Area map		OnCloseQuery=CheckQuit;OnCreate=InitializeForm;OnKeyDown=KeyPressed;OnMouseDown=AreaMapClick;OnPaint=PaintForm;OnResize=ResizeForm;OnShow=InitializeForm		
+TAreaMap	AreaMap/Panel1	TPanel	Panel1					
+TAreaMap	AreaMap/Panel1/sb_areatog	TSpeedButton	sb_areatog		Toggle colour	OnClick=ToggleMap		
+TAreaMap	AreaMap/Panel1/sb_areacits	TSpeedButton	sb_areacits		Show cities	OnClick=ShowCities		
+TAreaMap	AreaMap/Panel1/sb_areacap	TSpeedButton	sb_areacap		Show capital	OnClick=ShowCapital		
+TAreaMap	AreaMap/Panel1/sb_areaarms	TSpeedButton	sb_areaarms		Show armies	OnClick=ShowArmies		
+TAreaMap	AreaMap/Panel1/sb_areaflts	TSpeedButton	sb_areaflts		Show fleets	OnClick=ShowFleets		
+TAreaMap	AreaMap/Panel1/sb_areaalln	TSpeedButton	sb_areaalln		Show all	OnClick=ShowAll		
+TAreaMap	AreaMap/Panel1/sb_areali	TSpeedButton	sb_areali		Light infantry	OnClick=ShowMercsLI		
+TAreaMap	AreaMap/Panel1/sb_areahi	TSpeedButton	sb_areahi		Heavy infantry	OnClick=ShowMercsHI		
+TAreaMap	AreaMap/Panel1/sb_areaarch	TSpeedButton	sb_areaarch		Archers	OnClick=ShowMercsAr		
+TAreaMap	AreaMap/Panel1/sb_arealc	TSpeedButton	sb_arealc		Light cavalry	OnClick=ShowMercsLC		
+TAreaMap	AreaMap/Panel1/sb_areahc	TSpeedButton	sb_areahc		Heavy cavalry	OnClick=ShowMercsHC		
+TAreaMap	AreaMap/Panel1/sb_areaallm	TSpeedButton	sb_areaallm		All mercenaries	OnClick=ShowMercsAll		
+TAreaMap	AreaMap/Panel1/sb_findcity	TSpeedButton	sb_findcity		Find a city	OnClick=UseFindCity		
+TAreaMap	AreaMap/MapsList	TImageList	MapsList					
+TAreaMap	AreaMap/PointsList	TImageList	PointsList					
+TArmyRecruits	ArmyRecruits	TArmyRecruits	ArmyRecruits	Army recruits		OnCreate=InitializeForm		
+TArmyRecruits	ArmyRecruits/Bevel2	TBevel	Bevel2					
+TArmyRecruits	ArmyRecruits/Bevel1	TBevel	Bevel1					
+TArmyRecruits	ArmyRecruits/lbl_create	TLabel	lbl_create					
+TArmyRecruits	ArmyRecruits/lbl_cityat	TLabel	lbl_cityat					
+TArmyRecruits	ArmyRecruits/Bevel3	TBevel	Bevel3					
+TArmyRecruits	ArmyRecruits/Bevel4	TBevel	Bevel4					
+TArmyRecruits	ArmyRecruits/Label3	TLabel	Label3	100s				
+TArmyRecruits	ArmyRecruits/Label4	TLabel	Label4	1000s				
+TArmyRecruits	ArmyRecruits/Bevel5	TBevel	Bevel5					
+TArmyRecruits	ArmyRecruits/Bevel6	TBevel	Bevel6					
+TArmyRecruits	ArmyRecruits/lbl_newunit	TLabel	lbl_newunit					
+TArmyRecruits	ArmyRecruits/Label5	TLabel	Label5	New unit				
+TArmyRecruits	ArmyRecruits/Label7	TLabel	Label7	Initial cost				
+TArmyRecruits	ArmyRecruits/Bevel7	TBevel	Bevel7					
+TArmyRecruits	ArmyRecruits/Bevel8	TBevel	Bevel8					
+TArmyRecruits	ArmyRecruits/Label8	TLabel	Label8	Quarterly cost				
+TArmyRecruits	ArmyRecruits/lbl_initcost	TLabel	lbl_initcost					
+TArmyRecruits	ArmyRecruits/lbl_runcost	TLabel	lbl_runcost					
+TArmyRecruits	ArmyRecruits/Bevel9	TBevel	Bevel9					
+TArmyRecruits	ArmyRecruits/Label2	TLabel	Label2	Cities to				
+TArmyRecruits	ArmyRecruits/Label6	TLabel	Label6	recruit at				
+TArmyRecruits	ArmyRecruits/Label1	TLabel	Label1	Troops				
+TArmyRecruits	ArmyRecruits/Bevel10	TBevel	Bevel10					
+TArmyRecruits	ArmyRecruits/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TArmyRecruits	ArmyRecruits/btn_hvycav	TButton	btn_hvycav	Heavy cavalry		OnClick=NewUnitType		
+TArmyRecruits	ArmyRecruits/btn_litinf	TButton	btn_litinf	Light infantry		OnClick=NewUnitType		
+TArmyRecruits	ArmyRecruits/btn_hvyinf	TButton	btn_hvyinf	Heavy infantry		OnClick=NewUnitType		
+TArmyRecruits	ArmyRecruits/btn_archers	TButton	btn_archers	Archers		OnClick=NewUnitType		
+TArmyRecruits	ArmyRecruits/btn_litcav	TButton	btn_litcav	Light cavalry		OnClick=NewUnitType		
+TArmyRecruits	ArmyRecruits/ud_100s	TUpDown	ud_100s			OnClick=ChangeUnitSize		
+TArmyRecruits	ArmyRecruits/btn_recruit	TButton	btn_recruit	Recruit unit		OnClick=RecruitUnit		
+TArmyRecruits	ArmyRecruits/ud_1000s	TUpDown	ud_1000s			OnClick=ChangeUnitSize		
+TArmyRecruits	ArmyRecruits/lbx_units	TListBox	lbx_units					
+TArmyRecruits	ArmyRecruits/btn_mobilize	TButton	btn_mobilize	Mobilize		OnClick=MobilizeUnits		
+TArmyRecruits	ArmyRecruits/btn_disband	TButton	btn_disband	Disband		OnClick=DisbandUnits		
+TArmyRecruits	ArmyRecruits/lbx_cities	TListBox	lbx_cities			OnClick=ChangeCity		
+TArmyToArmy	ArmyToArmy	TArmyToArmy	ArmyToArmy	Army to army transfer		OnCreate=InitializeForm		
+TArmyToArmy	ArmyToArmy/Bevel4	TBevel	Bevel4					
+TArmyToArmy	ArmyToArmy/Bevel6	TBevel	Bevel6					
+TArmyToArmy	ArmyToArmy/Bevel1	TBevel	Bevel1					
+TArmyToArmy	ArmyToArmy/Bevel2	TBevel	Bevel2					
+TArmyToArmy	ArmyToArmy/Label1	TLabel	Label1	Units in first army				
+TArmyToArmy	ArmyToArmy/Label2	TLabel	Label2	Units in second army				
+TArmyToArmy	ArmyToArmy/Bevel3	TBevel	Bevel3					
+TArmyToArmy	ArmyToArmy/Bevel5	TBevel	Bevel5					
+TArmyToArmy	ArmyToArmy/Label3	TLabel	Label3	10s				
+TArmyToArmy	ArmyToArmy/Label4	TLabel	Label4	100s				
+TArmyToArmy	ArmyToArmy/Label5	TLabel	Label5	10s				
+TArmyToArmy	ArmyToArmy/Label6	TLabel	Label6	100s				
+TArmyToArmy	ArmyToArmy/Label7	TLabel	Label7	First army's supply				
+TArmyToArmy	ArmyToArmy/Label8	TLabel	Label8	Second army's supply				
+TArmyToArmy	ArmyToArmy/Label9	TLabel	Label9	First army's money				
+TArmyToArmy	ArmyToArmy/Label10	TLabel	Label10	Second army's money				
+TArmyToArmy	ArmyToArmy/Bevel7	TBevel	Bevel7					
+TArmyToArmy	ArmyToArmy/Bevel8	TBevel	Bevel8					
+TArmyToArmy	ArmyToArmy/Bevel9	TBevel	Bevel9					
+TArmyToArmy	ArmyToArmy/Bevel10	TBevel	Bevel10					
+TArmyToArmy	ArmyToArmy/lbl_army1supp	TLabel	lbl_army1supp					
+TArmyToArmy	ArmyToArmy/lbl_army2supp	TLabel	lbl_army2supp					
+TArmyToArmy	ArmyToArmy/lbl_army1mon	TLabel	lbl_army1mon					
+TArmyToArmy	ArmyToArmy/lbl_army2mon	TLabel	lbl_army2mon					
+TArmyToArmy	ArmyToArmy/Bevel11	TBevel	Bevel11					
+TArmyToArmy	ArmyToArmy/Bevel12	TBevel	Bevel12					
+TArmyToArmy	ArmyToArmy/lbl_army1	TLabel	lbl_army1					
+TArmyToArmy	ArmyToArmy/lbl_army2	TLabel	lbl_army2					
+TArmyToArmy	ArmyToArmy/lbx_units2	TListBox	lbx_units2					
+TArmyToArmy	ArmyToArmy/lbx_units1	TListBox	lbx_units1					
+TArmyToArmy	ArmyToArmy/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TArmyToArmy	ArmyToArmy/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TArmyToArmy	ArmyToArmy/btn_transfer1	TButton	btn_transfer1	Transfer		OnClick=Army1Transfer		
+TArmyToArmy	ArmyToArmy/btn_disband1	TButton	btn_disband1	Disband		OnClick=Army1Disband		
+TArmyToArmy	ArmyToArmy/btn_transfer2	TButton	btn_transfer2	Transfer		OnClick=Army2Transfer		
+TArmyToArmy	ArmyToArmy/btn_disband2	TButton	btn_disband2	Disband		OnClick=Army2Disband		
+TArmyToArmy	ArmyToArmy/ud_supp10	TUpDown	ud_supp10			OnClick=ChangeSupply		
+TArmyToArmy	ArmyToArmy/ud_supp100	TUpDown	ud_supp100			OnClick=ChangeSupply		
+TArmyToArmy	ArmyToArmy/ud_mon10	TUpDown	ud_mon10			OnClick=ChangeMoney		
+TArmyToArmy	ArmyToArmy/ud_mon100	TUpDown	ud_mon100			OnClick=ChangeMoney		
+TBalanceSheet	BalanceSheet	TBalanceSheet	BalanceSheet	Balance sheet		OnCreate=InitializeForm;OnPaint=PaintBalance		
+TBalanceSheet	BalanceSheet/Bevel1	TBevel	Bevel1					
+TBalanceSheet	BalanceSheet/Label1	TLabel	Label1	Revenue				
+TBalanceSheet	BalanceSheet/Bevel2	TBevel	Bevel2					
+TBalanceSheet	BalanceSheet/Label2	TLabel	Label2	Expenditure				
+TBalanceSheet	BalanceSheet/Bevel3	TBevel	Bevel3					
+TBalanceSheet	BalanceSheet/Bevel4	TBevel	Bevel4					
+TBalanceSheet	BalanceSheet/Bevel5	TBevel	Bevel5					
+TBalanceSheet	BalanceSheet/Label3	TLabel	Label3	Taxes				
+TBalanceSheet	BalanceSheet/Label4	TLabel	Label4	Tribute				
+TBalanceSheet	BalanceSheet/Label5	TLabel	Label5	Trade				
+TBalanceSheet	BalanceSheet/Bevel6	TBevel	Bevel6					
+TBalanceSheet	BalanceSheet/Label6	TLabel	Label6	Total				
+TBalanceSheet	BalanceSheet/Bevel7	TBevel	Bevel7					
+TBalanceSheet	BalanceSheet/Bevel8	TBevel	Bevel8					
+TBalanceSheet	BalanceSheet/Bevel9	TBevel	Bevel9					
+TBalanceSheet	BalanceSheet/Bevel10	TBevel	Bevel10					
+TBalanceSheet	BalanceSheet/Bevel11	TBevel	Bevel11					
+TBalanceSheet	BalanceSheet/Bevel12	TBevel	Bevel12					
+TBalanceSheet	BalanceSheet/Label7	TLabel	Label7	Total				
+TBalanceSheet	BalanceSheet/Label8	TLabel	Label8	Administration				
+TBalanceSheet	BalanceSheet/Label9	TLabel	Label9	Fleets				
+TBalanceSheet	BalanceSheet/Label10	TLabel	Label10	Army recruits				
+TBalanceSheet	BalanceSheet/Label11	TLabel	Label11	Regular units				
+TBalanceSheet	BalanceSheet/Label12	TLabel	Label12	Mercenary units				
+TBalanceSheet	BalanceSheet/Bevel13	TBevel	Bevel13					
+TBalanceSheet	BalanceSheet/Bevel14	TBevel	Bevel14					
+TBalanceSheet	BalanceSheet/Bevel15	TBevel	Bevel15					
+TBalanceSheet	BalanceSheet/Bevel16	TBevel	Bevel16					
+TBalanceSheet	BalanceSheet/Label13	TLabel	Label13	Balance				
+TBalanceSheet	BalanceSheet/Label14	TLabel	Label14	Debt limit				
+TBalanceSheet	BalanceSheet/lbl_tax	TLabel	lbl_tax					
+TBalanceSheet	BalanceSheet/lbl_tribute	TLabel	lbl_tribute					
+TBalanceSheet	BalanceSheet/lbl_trade	TLabel	lbl_trade					
+TBalanceSheet	BalanceSheet/lbl_totrev	TLabel	lbl_totrev					
+TBalanceSheet	BalanceSheet/lbl_balance	TLabel	lbl_balance					
+TBalanceSheet	BalanceSheet/lbl_debtlimit	TLabel	lbl_debtlimit					
+TBalanceSheet	BalanceSheet/lbl_totexp	TLabel	lbl_totexp					
+TBalanceSheet	BalanceSheet/lbl_admin	TLabel	lbl_admin					
+TBalanceSheet	BalanceSheet/lbl_fleets	TLabel	lbl_fleets					
+TBalanceSheet	BalanceSheet/lbl_recruits	TLabel	lbl_recruits					
+TBalanceSheet	BalanceSheet/lbl_regs	TLabel	lbl_regs					
+TBalanceSheet	BalanceSheet/lbl_mercs	TLabel	lbl_mercs					
+TBalanceSheet	BalanceSheet/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TBattleDelays	BattleDelays	TBattleDelays	BattleDelays	Change delays		OnCreate=InitializeForm		
+TBattleDelays	BattleDelays/Bevel1	TBevel	Bevel1					
+TBattleDelays	BattleDelays/Bevel2	TBevel	Bevel2					
+TBattleDelays	BattleDelays/Label6	TLabel	Label6	Shot delay (secs)				
+TBattleDelays	BattleDelays/Label1	TLabel	Label1	Attack delay (secs)				
+TBattleDelays	BattleDelays/Bevel4	TBevel	Bevel4					
+TBattleDelays	BattleDelays/Bevel3	TBevel	Bevel3					
+TBattleDelays	BattleDelays/lbl_shot	TLabel	lbl_shot	99				
+TBattleDelays	BattleDelays/lbl_attack	TLabel	lbl_attack	99				
+TBattleDelays	BattleDelays/Label3	TLabel	Label3	0.1				
+TBattleDelays	BattleDelays/Label4	TLabel	Label4	1.0				
+TBattleDelays	BattleDelays/Label5	TLabel	Label5	0.1				
+TBattleDelays	BattleDelays/Label7	TLabel	Label7	1.0				
+TBattleDelays	BattleDelays/ud_shot1	TUpDown	ud_shot1			OnClick=ChangeDelay		
+TBattleDelays	BattleDelays/ud_attack1	TUpDown	ud_attack1			OnClick=ChangeDelay		
+TBattleDelays	BattleDelays/ud_shot10	TUpDown	ud_shot10			OnClick=ChangeDelay		
+TBattleDelays	BattleDelays/ud_attack10	TUpDown	ud_attack10			OnClick=ChangeDelay		
+TBattleDelays	BattleDelays/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TBattleDelays	BattleDelays/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TBattleMap	BattleMap	TBattleMap	BattleMap	Battlefield		OnCloseQuery=CheckQuit;OnMouseDown=OnMapClick;OnPaint=PaintForm		
+TBattleMap	BattleMap/Panel1	TPanel	Panel1					
+TBattleMap	BattleMap/Panel1/sb_enemyunits	TSpeedButton	sb_enemyunits		Enemy units	OnClick=EnemyUnitDetails		
+TBattleMap	BattleMap/Panel1/sb_cancel	TSpeedButton	sb_cancel		Cancel selection	OnClick=CancelSelection		
+TBattleMap	BattleMap/Panel1/sb_pauses	TSpeedButton	sb_pauses		Change pauses	OnClick=ChangePauses		
+TBattleMap	BattleMap/Panel1/sb_surrender	TSpeedButton	sb_surrender		Surrender	OnClick=Surrender		
+TBattleMap	BattleMap/Panel1/sb_endturn	TSpeedButton	sb_endturn		End turn	OnClick=EndTurn		
+TBattleMap	BattleMap/Panel1/sb_compgen	TSpeedButton	sb_compgen		Computer general on	OnClick=ComputerGeneral		
+TBattleMap	BattleMap/Panel1/sb_unitmoves	TSpeedButton	sb_unitmoves		Unit moves	OnClick=UnitsSetMoves		
+TBattleMap	BattleMap/Panel1/sb_friendlyunits	TSpeedButton	sb_friendlyunits		Friendly units	OnClick=MyUnitDetails		
+TBattleMap	BattleMap/BatMapList	TImageList	BatMapList					
+TBattleMap	BattleMap/UnitsList	TImageList	UnitsList					
+TBattleOver	BattleOver	TBattleOver	BattleOver	Battle ended		OnCreate=InitializeForm		
+TBattleOver	BattleOver/Bevel1	TBevel	Bevel1					
+TBattleOver	BattleOver/lbl_victory	TLabel	lbl_victory					
+TBattleOver	BattleOver/Bevel2	TBevel	Bevel2					
+TBattleOver	BattleOver/Bevel3	TBevel	Bevel3					
+TBattleOver	BattleOver/Bevel4	TBevel	Bevel4					
+TBattleOver	BattleOver/lbl_winner	TLabel	lbl_winner					
+TBattleOver	BattleOver/lbl_loser	TLabel	lbl_loser					
+TBattleOver	BattleOver/Label1	TLabel	Label1	start				
+TBattleOver	BattleOver/Label2	TLabel	Label2	finish				
+TBattleOver	BattleOver/Label3	TLabel	Label3	start				
+TBattleOver	BattleOver/Label4	TLabel	Label4	finish				
+TBattleOver	BattleOver/Label5	TLabel	Label5	light infantry				
+TBattleOver	BattleOver/Label6	TLabel	Label6	heavy infantry				
+TBattleOver	BattleOver/Label7	TLabel	Label7	archers				
+TBattleOver	BattleOver/Label8	TLabel	Label8	light cavalry				
+TBattleOver	BattleOver/Label9	TLabel	Label9	heavy cavalry				
+TBattleOver	BattleOver/Label10	TLabel	Label10	total troops				
+TBattleOver	BattleOver/Bevel5	TBevel	Bevel5					
+TBattleOver	BattleOver/Bevel6	TBevel	Bevel6					
+TBattleOver	BattleOver/Bevel7	TBevel	Bevel7					
+TBattleOver	BattleOver/Bevel8	TBevel	Bevel8					
+TBattleOver	BattleOver/Bevel9	TBevel	Bevel9					
+TBattleOver	BattleOver/Bevel10	TBevel	Bevel10					
+TBattleOver	BattleOver/Bevel11	TBevel	Bevel11					
+TBattleOver	BattleOver/Bevel12	TBevel	Bevel12					
+TBattleOver	BattleOver/Bevel13	TBevel	Bevel13					
+TBattleOver	BattleOver/Bevel14	TBevel	Bevel14					
+TBattleOver	BattleOver/Bevel15	TBevel	Bevel15					
+TBattleOver	BattleOver/Bevel16	TBevel	Bevel16					
+TBattleOver	BattleOver/Bevel17	TBevel	Bevel17					
+TBattleOver	BattleOver/Bevel18	TBevel	Bevel18					
+TBattleOver	BattleOver/Bevel19	TBevel	Bevel19					
+TBattleOver	BattleOver/Bevel20	TBevel	Bevel20					
+TBattleOver	BattleOver/Bevel21	TBevel	Bevel21					
+TBattleOver	BattleOver/Bevel22	TBevel	Bevel22					
+TBattleOver	BattleOver/Bevel23	TBevel	Bevel23					
+TBattleOver	BattleOver/Bevel24	TBevel	Bevel24					
+TBattleOver	BattleOver/Bevel25	TBevel	Bevel25					
+TBattleOver	BattleOver/Bevel26	TBevel	Bevel26					
+TBattleOver	BattleOver/Bevel27	TBevel	Bevel27					
+TBattleOver	BattleOver/Bevel28	TBevel	Bevel28					
+TBattleOver	BattleOver/Bevel29	TBevel	Bevel29					
+TBattleOver	BattleOver/Bevel30	TBevel	Bevel30					
+TBattleOver	BattleOver/lbl_money	TLabel	lbl_money					
+TBattleOver	BattleOver/lbl_supply	TLabel	lbl_supply					
+TBattleOver	BattleOver/Label11	TLabel	Label11	0				
+TBattleOver	BattleOver/Label12	TLabel	Label12	0				
+TBattleOver	BattleOver/Label13	TLabel	Label13	0				
+TBattleOver	BattleOver/Label14	TLabel	Label14	0				
+TBattleOver	BattleOver/Label15	TLabel	Label15	0				
+TBattleOver	BattleOver/Label16	TLabel	Label16	0				
+TBattleOver	BattleOver/lbl_no1	TLabel	lbl_no1					
+TBattleOver	BattleOver/lbl_no2	TLabel	lbl_no2					
+TBattleOver	BattleOver/lbl_no3	TLabel	lbl_no3					
+TBattleOver	BattleOver/lbl_no4	TLabel	lbl_no4					
+TBattleOver	BattleOver/lbl_no5	TLabel	lbl_no5					
+TBattleOver	BattleOver/lbl_no6	TLabel	lbl_no6					
+TBattleOver	BattleOver/lbl_no7	TLabel	lbl_no7					
+TBattleOver	BattleOver/lbl_no8	TLabel	lbl_no8					
+TBattleOver	BattleOver/lbl_no9	TLabel	lbl_no9					
+TBattleOver	BattleOver/lbl_no10	TLabel	lbl_no10					
+TBattleOver	BattleOver/lbl_no11	TLabel	lbl_no11					
+TBattleOver	BattleOver/lbl_no12	TLabel	lbl_no12					
+TBattleOver	BattleOver/lbl_no13	TLabel	lbl_no13					
+TBattleOver	BattleOver/lbl_no14	TLabel	lbl_no14					
+TBattleOver	BattleOver/lbl_no15	TLabel	lbl_no15					
+TBattleOver	BattleOver/lbl_no16	TLabel	lbl_no16					
+TBattleOver	BattleOver/lbl_no17	TLabel	lbl_no17					
+TBattleOver	BattleOver/lbl_no18	TLabel	lbl_no18					
+TBattleOver	BattleOver/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TBattlePols	BattlePols	TBattlePols	BattlePols	Offer of peace		OnCreate=InitializeForm		
+TBattlePols	BattlePols/Bevel1	TBevel	Bevel1					
+TBattlePols	BattlePols/Bevel2	TBevel	Bevel2					
+TBattlePols	BattlePols/Bevel3	TBevel	Bevel3					
+TBattlePols	BattlePols/Bevel4	TBevel	Bevel4					
+TBattlePols	BattlePols/lbl_result1	TLabel	lbl_result1					
+TBattlePols	BattlePols/Label1	TLabel	Label1	their war with you,  if you agree to the terms below.				
+TBattlePols	BattlePols/Bevel5	TBevel	Bevel5					
+TBattlePols	BattlePols/Bevel6	TBevel	Bevel6					
+TBattlePols	BattlePols/Bevel7	TBevel	Bevel7					
+TBattlePols	BattlePols/Bevel8	TBevel	Bevel8					
+TBattlePols	BattlePols/Bevel9	TBevel	Bevel9					
+TBattlePols	BattlePols/Label2	TLabel	Label2	If the peace terms are acceptable click  YES.				
+TBattlePols	BattlePols/Label3	TLabel	Label3	Otherwise to continue the war click  NO.				
+TBattlePols	BattlePols/lbl_terms1	TLabel	lbl_terms1					
+TBattlePols	BattlePols/lbl_terms2	TLabel	lbl_terms2					
+TBattlePols	BattlePols/lbl_terms3	TLabel	lbl_terms3					
+TBattlePols	BattlePols/btn_yes	TButton	btn_yes	Yes		OnClick=Yes		
+TBattlePols	BattlePols/btn_no	TButton	btn_no	No		OnClick=No		
+TBuildFleet	BuildFleet	TBuildFleet	BuildFleet	Build fleet		OnCreate=InitializeForm		
+TBuildFleet	BuildFleet/Bevel5	TBevel	Bevel5					
+TBuildFleet	BuildFleet/Bevel2	TBevel	Bevel2					
+TBuildFleet	BuildFleet/Bevel4	TBevel	Bevel4					
+TBuildFleet	BuildFleet/Bevel1	TBevel	Bevel1					
+TBuildFleet	BuildFleet/Bevel3	TBevel	Bevel3					
+TBuildFleet	BuildFleet/lbl_initcost	TLabel	lbl_initcost					
+TBuildFleet	BuildFleet/lbl_ships	TLabel	lbl_ships					
+TBuildFleet	BuildFleet/lbl_runcost	TLabel	lbl_runcost					
+TBuildFleet	BuildFleet/Label1	TLabel	Label1	Ships				
+TBuildFleet	BuildFleet/Label2	TLabel	Label2	1s				
+TBuildFleet	BuildFleet/Label3	TLabel	Label3	10s				
+TBuildFleet	BuildFleet/Label4	TLabel	Label4	Initial cost				
+TBuildFleet	BuildFleet/Label5	TLabel	Label5	Quarterly cost				
+TBuildFleet	BuildFleet/Label6	TLabel	Label6	Troop capacity				
+TBuildFleet	BuildFleet/Bevel6	TBevel	Bevel6					
+TBuildFleet	BuildFleet/lbl_capacity	TLabel	lbl_capacity					
+TBuildFleet	BuildFleet/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TBuildFleet	BuildFleet/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TBuildFleet	BuildFleet/ud_1s	TUpDown	ud_1s			OnClick=ChangeFleetSize		
+TBuildFleet	BuildFleet/ud_10s	TUpDown	ud_10s			OnClick=ChangeFleetSize		
+TCellAuto	CellAuto	TCellAuto	CellAuto	Cellular Automata		OnCreate=InitializeForm		
+TCellAuto	CellAuto/Image1	TImage	Image1					
+TCellAuto	CellAuto/Panel1	TPanel	Panel1					
+TCellAuto	CellAuto/Panel1/sb_Save	TSpeedButton	sb_Save		Save structure as .BMP	OnClick=SaveBMP		
+TCellAuto	CellAuto/Panel1/sb_OK	TSpeedButton	sb_OK	X	Close Cellular Automata	OnClick=OK		
+TCellAuto	CellAuto/Panel1/sb_next	TSpeedButton	sb_next	N	New structure	OnClick=NewPattern		
+TChangeArmyUnits	ChangeArmyUnits	TChangeArmyUnits	ChangeArmyUnits	Change units		OnCreate=InitializeForm		
+TChangeArmyUnits	ChangeArmyUnits/Bevel1	TBevel	Bevel1					
+TChangeArmyUnits	ChangeArmyUnits/Label1	TLabel	Label1	Units in army				
+TChangeArmyUnits	ChangeArmyUnits/Bevel2	TBevel	Bevel2					
+TChangeArmyUnits	ChangeArmyUnits/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TChangeArmyUnits	ChangeArmyUnits/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TChangeArmyUnits	ChangeArmyUnits/lbx_units	TListBox	lbx_units					
+TChangeArmyUnits	ChangeArmyUnits/btn_join	TButton	btn_join	Join units		OnClick=JoinUnits		
+TChangeArmyUnits	ChangeArmyUnits/btn_split	TButton	btn_split	Split unit		OnClick=SplitUnit		
+TChangeArmyUnits	ChangeArmyUnits/btn_disband	TButton	btn_disband	Disband		OnClick=Disband		
+TChangeArmyUnits	ChangeArmyUnits/btn_rename	TButton	btn_rename	Rename unit		OnClick=RenameUnit		
+TChangeTax	ChangeTax	TChangeTax	ChangeTax	Change tax level		OnCreate=InitializeForm		
+TChangeTax	ChangeTax/Bevel1	TBevel	Bevel1					
+TChangeTax	ChangeTax/Bevel2	TBevel	Bevel2					
+TChangeTax	ChangeTax/Bevel3	TBevel	Bevel3					
+TChangeTax	ChangeTax/Label1	TLabel	Label1	Current tax				
+TChangeTax	ChangeTax/lbl_oldtax	TLabel	lbl_oldtax					
+TChangeTax	ChangeTax/lbl_oldincome	TLabel	lbl_oldincome					
+TChangeTax	ChangeTax/Label2	TLabel	Label2	Current income				
+TChangeTax	ChangeTax/Bevel4	TBevel	Bevel4					
+TChangeTax	ChangeTax/Bevel5	TBevel	Bevel5					
+TChangeTax	ChangeTax/Bevel6	TBevel	Bevel6					
+TChangeTax	ChangeTax/Label3	TLabel	Label3	New tax				
+TChangeTax	ChangeTax/Label4	TLabel	Label4	New income				
+TChangeTax	ChangeTax/lbl_newtax	TLabel	lbl_newtax					
+TChangeTax	ChangeTax/lbl_newincome	TLabel	lbl_newincome					
+TChangeTax	ChangeTax/Bevel7	TBevel	Bevel7					
+TChangeTax	ChangeTax/Label7	TLabel	Label7	Set tax level				
+TChangeTax	ChangeTax/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TChangeTax	ChangeTax/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TChangeTax	ChangeTax/tb_settax	TTrackBar	tb_settax			OnChange=SetNewTax		
+TFindCity	FindCity	TFindCity	FindCity	Find city		OnCreate=InitializeForm		
+TFindCity	FindCity/Bevel1	TBevel	Bevel1					
+TFindCity	FindCity/Bevel2	TBevel	Bevel2					
+TFindCity	FindCity/Bevel3	TBevel	Bevel3					
+TFindCity	FindCity/lbl_nat	TLabel	lbl_nat					
+TFindCity	FindCity/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TFindCity	FindCity/lbx_cities	TListBox	lbx_cities			OnClick=ChangeCity		
+TFindCity	FindCity/btn_rome	TButton	btn_rome	Rome		OnClick=ChangeNation		
+TFindCity	FindCity/btn_carthage	TButton	btn_carthage	Carthage		OnClick=ChangeNation		
+TFindCity	FindCity/btn_seleucid	TButton	btn_seleucid	Seleucid		OnClick=ChangeNation		
+TFindCity	FindCity/btn_ptolemaic	TButton	btn_ptolemaic	Ptolemaic		OnClick=ChangeNation		
+TFindCity	FindCity/btn_macedonia	TButton	btn_macedonia	Macedonia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_numidia	TButton	btn_numidia	Numidia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_gaul	TButton	btn_gaul	Gaul		OnClick=ChangeNation		
+TFindCity	FindCity/btn_greece	TButton	btn_greece	Greece		OnClick=ChangeNation		
+TFindCity	FindCity/btn_celtiberia	TButton	btn_celtiberia	Celtiberia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_illyria	TButton	btn_illyria	Illyria		OnClick=ChangeNation		
+TFindCity	FindCity/btn_dacia	TButton	btn_dacia	Dacia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_bithynia	TButton	btn_bithynia	Bithynia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_galatia	TButton	btn_galatia	Galatia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_armenia	TButton	btn_armenia	Armenia		OnClick=ChangeNation		
+TFindCity	FindCity/btn_media	TButton	btn_media	Media		OnClick=ChangeNation		
+TFindCity	FindCity/btn_thracia	TButton	btn_thracia	Thracia		OnClick=ChangeNation		
+TFleetToFleet	FleetToFleet	TFleetToFleet	FleetToFleet	Fleet to fleet transfer		OnCreate=InitializeForm		
+TFleetToFleet	FleetToFleet/Bevel3	TBevel	Bevel3					
+TFleetToFleet	FleetToFleet/Bevel1	TBevel	Bevel1					
+TFleetToFleet	FleetToFleet/Bevel2	TBevel	Bevel2					
+TFleetToFleet	FleetToFleet/Bevel5	TBevel	Bevel5					
+TFleetToFleet	FleetToFleet/Bevel4	TBevel	Bevel4					
+TFleetToFleet	FleetToFleet/Bevel6	TBevel	Bevel6					
+TFleetToFleet	FleetToFleet/Bevel7	TBevel	Bevel7					
+TFleetToFleet	FleetToFleet/Bevel8	TBevel	Bevel8					
+TFleetToFleet	FleetToFleet/Bevel9	TBevel	Bevel9					
+TFleetToFleet	FleetToFleet/Bevel10	TBevel	Bevel10					
+TFleetToFleet	FleetToFleet/Bevel11	TBevel	Bevel11					
+TFleetToFleet	FleetToFleet/Bevel12	TBevel	Bevel12					
+TFleetToFleet	FleetToFleet/Label7	TLabel	Label7	First fleet's ships				
+TFleetToFleet	FleetToFleet/Label1	TLabel	Label1	First fleet's supply				
+TFleetToFleet	FleetToFleet/Label2	TLabel	Label2	First fleet's money				
+TFleetToFleet	FleetToFleet/Label8	TLabel	Label8	Second fleet's ships				
+TFleetToFleet	FleetToFleet/Label3	TLabel	Label3	Second fleet's supply				
+TFleetToFleet	FleetToFleet/Label4	TLabel	Label4	Second fleet's money				
+TFleetToFleet	FleetToFleet/Label5	TLabel	Label5	1s				
+TFleetToFleet	FleetToFleet/Label6	TLabel	Label6	10s				
+TFleetToFleet	FleetToFleet/Label9	TLabel	Label9	10s				
+TFleetToFleet	FleetToFleet/Label10	TLabel	Label10	10s				
+TFleetToFleet	FleetToFleet/Label11	TLabel	Label11	100s				
+TFleetToFleet	FleetToFleet/Label12	TLabel	Label12	100s				
+TFleetToFleet	FleetToFleet/lbl_flt1ships	TLabel	lbl_flt1ships					
+TFleetToFleet	FleetToFleet/lbl_flt1supply	TLabel	lbl_flt1supply					
+TFleetToFleet	FleetToFleet/lbl_flt1money	TLabel	lbl_flt1money					
+TFleetToFleet	FleetToFleet/lbl_flt2ships	TLabel	lbl_flt2ships					
+TFleetToFleet	FleetToFleet/lbl_flt2supply	TLabel	lbl_flt2supply					
+TFleetToFleet	FleetToFleet/lbl_flt2money	TLabel	lbl_flt2money					
+TFleetToFleet	FleetToFleet/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TFleetToFleet	FleetToFleet/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TFleetToFleet	FleetToFleet/ud_ships1	TUpDown	ud_ships1			OnClick=ChangeShips		
+TFleetToFleet	FleetToFleet/ud_supply10	TUpDown	ud_supply10			OnClick=ChangeSupply		
+TFleetToFleet	FleetToFleet/ud_money10	TUpDown	ud_money10			OnClick=ChangeMoney		
+TFleetToFleet	FleetToFleet/ud_ships10	TUpDown	ud_ships10			OnClick=ChangeShips		
+TFleetToFleet	FleetToFleet/ud_supply100	TUpDown	ud_supply100			OnClick=ChangeSupply		
+TFleetToFleet	FleetToFleet/ud_money100	TUpDown	ud_money100			OnClick=ChangeMoney		
+TFortifyCity	FortifyCity	TFortifyCity	FortifyCity	Fortify city		OnCreate=InitializeForm		
+TFortifyCity	FortifyCity/Bevel1	TBevel	Bevel1					
+TFortifyCity	FortifyCity/Bevel2	TBevel	Bevel2					
+TFortifyCity	FortifyCity/Bevel3	TBevel	Bevel3					
+TFortifyCity	FortifyCity/Bevel4	TBevel	Bevel4					
+TFortifyCity	FortifyCity/Bevel5	TBevel	Bevel5					
+TFortifyCity	FortifyCity/Bevel6	TBevel	Bevel6					
+TFortifyCity	FortifyCity/Label1	TLabel	Label1	Initial				
+TFortifyCity	FortifyCity/Label2	TLabel	Label2	fortification				
+TFortifyCity	FortifyCity/Label3	TLabel	Label3	1s				
+TFortifyCity	FortifyCity/Label4	TLabel	Label4	10s				
+TFortifyCity	FortifyCity/Label5	TLabel	Label5	New				
+TFortifyCity	FortifyCity/Label6	TLabel	Label6	fortification				
+TFortifyCity	FortifyCity/Label7	TLabel	Label7	Cost of				
+TFortifyCity	FortifyCity/Label8	TLabel	Label8	modification				
+TFortifyCity	FortifyCity/lbl_initfort	TLabel	lbl_initfort	99%				
+TFortifyCity	FortifyCity/lbl_newfort	TLabel	lbl_newfort	99%				
+TFortifyCity	FortifyCity/lbl_cost	TLabel	lbl_cost	99%				
+TFortifyCity	FortifyCity/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TFortifyCity	FortifyCity/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TFortifyCity	FortifyCity/ud_1s	TUpDown	ud_1s			OnClick=ChangeFortification		
+TFortifyCity	FortifyCity/ud_10s	TUpDown	ud_10s			OnClick=ChangeFortification		
+THumanFalls	HumanFalls	THumanFalls	HumanFalls	End of Game		OnCreate=InitializeForm		
+THumanFalls	HumanFalls/Bevel1	TBevel	Bevel1					
+THumanFalls	HumanFalls/Bevel4	TBevel	Bevel4					
+THumanFalls	HumanFalls/lbl_result2	TLabel	lbl_result2					
+THumanFalls	HumanFalls/lbl_result1	TLabel	lbl_result1					
+THumanFalls	HumanFalls/Bevel2	TBevel	Bevel2					
+THumanFalls	HumanFalls/Bevel5	TBevel	Bevel5					
+THumanFalls	HumanFalls/Bevel3	TBevel	Bevel3					
+THumanFalls	HumanFalls/Bevel6	TBevel	Bevel6					
+THumanFalls	HumanFalls/lbl_changes	TLabel	lbl_changes					
+THumanFalls	HumanFalls/Bevel7	TBevel	Bevel7					
+THumanFalls	HumanFalls/Bevel8	TBevel	Bevel8					
+THumanFalls	HumanFalls/Bevel9	TBevel	Bevel9					
+THumanFalls	HumanFalls/Bevel10	TBevel	Bevel10					
+THumanFalls	HumanFalls/Bevel11	TBevel	Bevel11					
+THumanFalls	HumanFalls/Bevel12	TBevel	Bevel12					
+THumanFalls	HumanFalls/Bevel13	TBevel	Bevel13					
+THumanFalls	HumanFalls/Bevel14	TBevel	Bevel14					
+THumanFalls	HumanFalls/lbl_nat1	TLabel	lbl_nat1					
+THumanFalls	HumanFalls/lbl_pop1	TLabel	lbl_pop1					
+THumanFalls	HumanFalls/lbl_cities1	TLabel	lbl_cities1					
+THumanFalls	HumanFalls/lbl_money1	TLabel	lbl_money1					
+THumanFalls	HumanFalls/lbl_nat2	TLabel	lbl_nat2					
+THumanFalls	HumanFalls/lbl_pop2	TLabel	lbl_pop2					
+THumanFalls	HumanFalls/lbl_cities2	TLabel	lbl_cities2					
+THumanFalls	HumanFalls/lbl_money2	TLabel	lbl_money2					
+THumanFalls	HumanFalls/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+THVHBatPols	HVHBatPols	THVHBatPols	HVHBatPols	Peace offers between 2 human players		OnCreate=InitializeForm		
+THVHBatPols	HVHBatPols/Bevel10	TBevel	Bevel10					
+THVHBatPols	HVHBatPols/Bevel1	TBevel	Bevel1					
+THVHBatPols	HVHBatPols/Bevel4	TBevel	Bevel4					
+THVHBatPols	HVHBatPols/lbl_result1	TLabel	lbl_result1					
+THVHBatPols	HVHBatPols/Label1	TLabel	Label1	They would normally offer the terms below for peace.				
+THVHBatPols	HVHBatPols/Bevel2	TBevel	Bevel2					
+THVHBatPols	HVHBatPols/Bevel5	TBevel	Bevel5					
+THVHBatPols	HVHBatPols/Bevel6	TBevel	Bevel6					
+THVHBatPols	HVHBatPols/Bevel7	TBevel	Bevel7					
+THVHBatPols	HVHBatPols/lbl_terms1	TLabel	lbl_terms1					
+THVHBatPols	HVHBatPols/lbl_terms2	TLabel	lbl_terms2					
+THVHBatPols	HVHBatPols/lbl_terms3	TLabel	lbl_terms3					
+THVHBatPols	HVHBatPols/Bevel3	TBevel	Bevel3					
+THVHBatPols	HVHBatPols/Bevel8	TBevel	Bevel8					
+THVHBatPols	HVHBatPols/Label2	TLabel	Label2	If the two nations want to transfer money as reparations				
+THVHBatPols	HVHBatPols/Label3	TLabel	Label3	they should use the controls below.				
+THVHBatPols	HVHBatPols/Bevel9	TBevel	Bevel9					
+THVHBatPols	HVHBatPols/lbl_nat1	TLabel	lbl_nat1					
+THVHBatPols	HVHBatPols/lbl_give1	TLabel	lbl_give1					
+THVHBatPols	HVHBatPols/lbl_mon1	TLabel	lbl_mon1					
+THVHBatPols	HVHBatPols/Bevel11	TBevel	Bevel11					
+THVHBatPols	HVHBatPols/lbl_nat2	TLabel	lbl_nat2					
+THVHBatPols	HVHBatPols/lbl_give2	TLabel	lbl_give2					
+THVHBatPols	HVHBatPols/lbl_mon2	TLabel	lbl_mon2					
+THVHBatPols	HVHBatPols/Bevel12	TBevel	Bevel12					
+THVHBatPols	HVHBatPols/Label4	TLabel	Label4	100s				
+THVHBatPols	HVHBatPols/Label5	TLabel	Label5	1000s				
+THVHBatPols	HVHBatPols/ud_100s	TUpDown	ud_100s			OnClick=ChangeMoney		
+THVHBatPols	HVHBatPols/ud_1000s	TUpDown	ud_1000s			OnClick=ChangeMoney		
+THVHBatPols	HVHBatPols/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+THVHBatPols	HVHBatPols/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TInformation	Information	TInformation	Information	Information		OnCloseQuery=CheckQuit;OnCreate=InitializeForm;OnKeyDown=KeyPressed;OnPaint=PaintForm;OnResize=ResizeForm;OnShow=InitializeForm		
+TInformation	Information/ScrollBarV	TScrollBar	ScrollBarV			OnKeyDown=KeyPressed;OnScroll=FormScrolled		
+TInformation	Information/ScrollBarH	TScrollBar	ScrollBarH			OnKeyDown=KeyPressed;OnScroll=FormScrolled		
+TPickLeaders	PickLeaders	TPickLeaders	PickLeaders	Human and computer leaders		OnCreate=InitializeForm		
+TPickLeaders	PickLeaders/Label2	TLabel	Label2	Nation				
+TPickLeaders	PickLeaders/Label3	TLabel	Label3	human				
+TPickLeaders	PickLeaders/Label4	TLabel	Label4	Leader's name				
+TPickLeaders	PickLeaders/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TPickLeaders	PickLeaders/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TPickLeaders	PickLeaders/pnl_rome	TPanel	pnl_rome	  Rome				
+TPickLeaders	PickLeaders/pnl_rome/cbx_rome	TCheckBox	cbx_rome			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_rome/ed_rome	TEdit	ed_rome					
+TPickLeaders	PickLeaders/pnl_carthage	TPanel	pnl_carthage	  Carthage				
+TPickLeaders	PickLeaders/pnl_carthage/cbx_carthage	TCheckBox	cbx_carthage			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_carthage/ed_carthage	TEdit	ed_carthage					
+TPickLeaders	PickLeaders/pnl_seleucid	TPanel	pnl_seleucid	  Seleucid				
+TPickLeaders	PickLeaders/pnl_seleucid/cbx_seleucid	TCheckBox	cbx_seleucid			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_seleucid/ed_seleucid	TEdit	ed_seleucid					
+TPickLeaders	PickLeaders/pnl_ptolemaic	TPanel	pnl_ptolemaic	  Ptolemaic				
+TPickLeaders	PickLeaders/pnl_ptolemaic/cbx_ptolemaic	TCheckBox	cbx_ptolemaic			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_ptolemaic/ed_ptolemaic	TEdit	ed_ptolemaic					
+TPickLeaders	PickLeaders/pnl_macedonia	TPanel	pnl_macedonia	  Macedonia				
+TPickLeaders	PickLeaders/pnl_macedonia/cbx_macedonia	TCheckBox	cbx_macedonia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_macedonia/ed_macedonia	TEdit	ed_macedonia					
+TPickLeaders	PickLeaders/pnl_numidia	TPanel	pnl_numidia	  Numidia				
+TPickLeaders	PickLeaders/pnl_numidia/cbx_numidia	TCheckBox	cbx_numidia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_numidia/ed_numidia	TEdit	ed_numidia					
+TPickLeaders	PickLeaders/pnl_gaul	TPanel	pnl_gaul	  Gaul				
+TPickLeaders	PickLeaders/pnl_gaul/cbx_gaul	TCheckBox	cbx_gaul			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_gaul/ed_gaul	TEdit	ed_gaul					
+TPickLeaders	PickLeaders/pnl_greece	TPanel	pnl_greece	  Greece				
+TPickLeaders	PickLeaders/pnl_greece/cbx_greece	TCheckBox	cbx_greece			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_greece/ed_greece	TEdit	ed_greece					
+TPickLeaders	PickLeaders/pnl_celtiberia	TPanel	pnl_celtiberia	  Celtiberia				
+TPickLeaders	PickLeaders/pnl_celtiberia/cbx_celtiberia	TCheckBox	cbx_celtiberia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_celtiberia/ed_celtiberia	TEdit	ed_celtiberia					
+TPickLeaders	PickLeaders/pnl_illyria	TPanel	pnl_illyria	  Illyria				
+TPickLeaders	PickLeaders/pnl_illyria/cbx_illyria	TCheckBox	cbx_illyria			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_illyria/ed_illyria	TEdit	ed_illyria					
+TPickLeaders	PickLeaders/pnl_dacia	TPanel	pnl_dacia	  Dacia				
+TPickLeaders	PickLeaders/pnl_dacia/cbx_dacia	TCheckBox	cbx_dacia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_dacia/ed_dacia	TEdit	ed_dacia					
+TPickLeaders	PickLeaders/pnl_bithynia	TPanel	pnl_bithynia	  Bithynia				
+TPickLeaders	PickLeaders/pnl_bithynia/cbx_bithynia	TCheckBox	cbx_bithynia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_bithynia/ed_bithynia	TEdit	ed_bithynia					
+TPickLeaders	PickLeaders/pnl_galatia	TPanel	pnl_galatia	  Galatia				
+TPickLeaders	PickLeaders/pnl_galatia/cbx_galatia	TCheckBox	cbx_galatia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_galatia/ed_galatia	TEdit	ed_galatia					
+TPickLeaders	PickLeaders/pnl_armenia	TPanel	pnl_armenia	  Armenia				
+TPickLeaders	PickLeaders/pnl_armenia/cbx_armenia	TCheckBox	cbx_armenia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_armenia/ed_armenia	TEdit	ed_armenia					
+TPickLeaders	PickLeaders/pnl_media	TPanel	pnl_media	  Media				
+TPickLeaders	PickLeaders/pnl_media/cbx_media	TCheckBox	cbx_media			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_media/ed_media	TEdit	ed_media					
+TPickLeaders	PickLeaders/pnl_thracia	TPanel	pnl_thracia	  Thracia				
+TPickLeaders	PickLeaders/pnl_thracia/cbx_thracia	TCheckBox	cbx_thracia			OnMouseDown=HumanOrComputer		
+TPickLeaders	PickLeaders/pnl_thracia/ed_thracia	TEdit	ed_thracia					
+TPolitics	Politics	TPolitics	Politics	International Relations		OnCreate=InitialiseForm		
+TPolitics	Politics/Label2	TLabel	Label2	peace				
+TPolitics	Politics/Label3	TLabel	Label3	trade				
+TPolitics	Politics/Label4	TLabel	Label4	ally				
+TPolitics	Politics/Label5	TLabel	Label5	war				
+TPolitics	Politics/Bevel1	TBevel	Bevel1					
+TPolitics	Politics/Bevel2	TBevel	Bevel2					
+TPolitics	Politics/Bevel3	TBevel	Bevel3					
+TPolitics	Politics/Bevel4	TBevel	Bevel4					
+TPolitics	Politics/Bevel5	TBevel	Bevel5					
+TPolitics	Politics/Bevel6	TBevel	Bevel6					
+TPolitics	Politics/Bevel7	TBevel	Bevel7					
+TPolitics	Politics/Bevel8	TBevel	Bevel8					
+TPolitics	Politics/Bevel9	TBevel	Bevel9					
+TPolitics	Politics/Bevel10	TBevel	Bevel10					
+TPolitics	Politics/Bevel11	TBevel	Bevel11					
+TPolitics	Politics/Bevel12	TBevel	Bevel12					
+TPolitics	Politics/Bevel13	TBevel	Bevel13					
+TPolitics	Politics/Bevel14	TBevel	Bevel14					
+TPolitics	Politics/Bevel15	TBevel	Bevel15					
+TPolitics	Politics/Bevel16	TBevel	Bevel16					
+TPolitics	Politics/lbl_rom	TLabel	lbl_rom	Rome				
+TPolitics	Politics/lbl_car	TLabel	lbl_car	Carthage				
+TPolitics	Politics/lbl_sel	TLabel	lbl_sel	Seleucid				
+TPolitics	Politics/lbl_pto	TLabel	lbl_pto	Ptolemaic				
+TPolitics	Politics/lbl_mac	TLabel	lbl_mac	Macedonia				
+TPolitics	Politics/lbl_num	TLabel	lbl_num	Numidia				
+TPolitics	Politics/lbl_gau	TLabel	lbl_gau	Gaul				
+TPolitics	Politics/lbl_gre	TLabel	lbl_gre	Greece				
+TPolitics	Politics/lbl_cel	TLabel	lbl_cel	Celtiberia				
+TPolitics	Politics/lbl_ill	TLabel	lbl_ill	Illyria				
+TPolitics	Politics/lbl_dac	TLabel	lbl_dac	Dacia				
+TPolitics	Politics/lbl_bit	TLabel	lbl_bit	Bithynia				
+TPolitics	Politics/lbl_gal	TLabel	lbl_gal	Galatia				
+TPolitics	Politics/lbl_arm	TLabel	lbl_arm	Armenia				
+TPolitics	Politics/lbl_med	TLabel	lbl_med	Media				
+TPolitics	Politics/lbl_thr	TLabel	lbl_thr	Thracia				
+TPolitics	Politics/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TPolitics	Politics/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TPolitics	Politics/grpbox_rom	TGroupBox	grpbox_rom					
+TPolitics	Politics/grpbox_rom/RadioButton1	TRadioButton	RadioButton1			OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_rom/RadioButton2	TRadioButton	RadioButton2			OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_rom/RadioButton3	TRadioButton	RadioButton3			OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_rom/RadioButton4	TRadioButton	RadioButton4			OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_car	TGroupBox	grpbox_car					
+TPolitics	Politics/grpbox_car/RadioButton5	TRadioButton	RadioButton5			OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_car/RadioButton6	TRadioButton	RadioButton6			OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_car/RadioButton7	TRadioButton	RadioButton7	RadioButton7		OnMouseDown=ChangeIR		
+TPolitics	Politics/grpbox_car/RadioButton8	TRadioButton	RadioButton8	RadioButton8		OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox2	TGroupBox	GroupBox2					
+TPolitics	Politics/GroupBox2/RadioButton9	TRadioButton	RadioButton9			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox2/RadioButton10	TRadioButton	RadioButton10			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox2/RadioButton11	TRadioButton	RadioButton11			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox2/RadioButton12	TRadioButton	RadioButton12			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox3	TGroupBox	GroupBox3					
+TPolitics	Politics/GroupBox3/RadioButton13	TRadioButton	RadioButton13			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox3/RadioButton14	TRadioButton	RadioButton14			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox3/RadioButton15	TRadioButton	RadioButton15			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox3/RadioButton16	TRadioButton	RadioButton16			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox4	TGroupBox	GroupBox4					
+TPolitics	Politics/GroupBox4/RadioButton17	TRadioButton	RadioButton17			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox4/RadioButton18	TRadioButton	RadioButton18			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox4/RadioButton19	TRadioButton	RadioButton19			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox4/RadioButton20	TRadioButton	RadioButton20			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox5	TGroupBox	GroupBox5					
+TPolitics	Politics/GroupBox5/RadioButton21	TRadioButton	RadioButton21			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox5/RadioButton22	TRadioButton	RadioButton22			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox5/RadioButton23	TRadioButton	RadioButton23			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox5/RadioButton24	TRadioButton	RadioButton24			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox6	TGroupBox	GroupBox6					
+TPolitics	Politics/GroupBox6/RadioButton25	TRadioButton	RadioButton25			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox6/RadioButton26	TRadioButton	RadioButton26			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox6/RadioButton27	TRadioButton	RadioButton27			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox6/RadioButton28	TRadioButton	RadioButton28			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox7	TGroupBox	GroupBox7					
+TPolitics	Politics/GroupBox7/RadioButton29	TRadioButton	RadioButton29			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox7/RadioButton30	TRadioButton	RadioButton30			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox7/RadioButton31	TRadioButton	RadioButton31			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox7/RadioButton32	TRadioButton	RadioButton32			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox8	TGroupBox	GroupBox8					
+TPolitics	Politics/GroupBox8/RadioButton33	TRadioButton	RadioButton33			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox8/RadioButton34	TRadioButton	RadioButton34			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox8/RadioButton35	TRadioButton	RadioButton35			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox8/RadioButton36	TRadioButton	RadioButton36			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox9	TGroupBox	GroupBox9					
+TPolitics	Politics/GroupBox9/RadioButton37	TRadioButton	RadioButton37			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox9/RadioButton38	TRadioButton	RadioButton38			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox9/RadioButton39	TRadioButton	RadioButton39			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox9/RadioButton40	TRadioButton	RadioButton40			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox10	TGroupBox	GroupBox10					
+TPolitics	Politics/GroupBox10/RadioButton41	TRadioButton	RadioButton41			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox10/RadioButton42	TRadioButton	RadioButton42			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox10/RadioButton43	TRadioButton	RadioButton43			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox10/RadioButton44	TRadioButton	RadioButton44			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox11	TGroupBox	GroupBox11					
+TPolitics	Politics/GroupBox11/RadioButton45	TRadioButton	RadioButton45			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox11/RadioButton46	TRadioButton	RadioButton46			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox11/RadioButton47	TRadioButton	RadioButton47			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox11/RadioButton48	TRadioButton	RadioButton48			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox12	TGroupBox	GroupBox12					
+TPolitics	Politics/GroupBox12/RadioButton49	TRadioButton	RadioButton49			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox12/RadioButton50	TRadioButton	RadioButton50			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox12/RadioButton51	TRadioButton	RadioButton51			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox12/RadioButton52	TRadioButton	RadioButton52			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox13	TGroupBox	GroupBox13					
+TPolitics	Politics/GroupBox13/RadioButton53	TRadioButton	RadioButton53			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox13/RadioButton54	TRadioButton	RadioButton54			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox13/RadioButton55	TRadioButton	RadioButton55			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox13/RadioButton56	TRadioButton	RadioButton56			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox14	TGroupBox	GroupBox14					
+TPolitics	Politics/GroupBox14/RadioButton57	TRadioButton	RadioButton57			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox14/RadioButton58	TRadioButton	RadioButton58			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox14/RadioButton59	TRadioButton	RadioButton59			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox14/RadioButton60	TRadioButton	RadioButton60			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox15	TGroupBox	GroupBox15					
+TPolitics	Politics/GroupBox15/RadioButton61	TRadioButton	RadioButton61			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox15/RadioButton62	TRadioButton	RadioButton62			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox15/RadioButton63	TRadioButton	RadioButton63			OnMouseDown=ChangeIR		
+TPolitics	Politics/GroupBox15/RadioButton64	TRadioButton	RadioButton64			OnMouseDown=ChangeIR		
+TPremierForm	PremierForm	TPremierForm	PremierForm	Imperial Conquest 2		OnCloseQuery=CheckQuit;OnCreate=InitialiseForm;OnKeyDown=KeyPressed		
+TPremierForm	PremierForm/Panel1	TPanel	Panel1					
+TPremierForm	PremierForm/Panel1/sb_Open	TSpeedButton	sb_Open		Open saved game	OnClick=OpenGameFile		
+TPremierForm	PremierForm/Panel1/sb_Save	TSpeedButton	sb_Save		Save game position	OnClick=SaveGameFile		
+TPremierForm	PremierForm/Panel1/sb_Endturn	TSpeedButton	sb_Endturn		End player's turn	OnClick=EndTurn		
+TPremierForm	PremierForm/Panel1/sb_News	TSpeedButton	sb_News		News	OnClick=StrategicDecision		
+TPremierForm	PremierForm/Panel1/sb_Pols	TSpeedButton	sb_Pols		International relations	OnClick=StrategicDecision		
+TPremierForm	PremierForm/Panel1/sb_Tax	TSpeedButton	sb_Tax		Taxation	OnClick=StrategicDecision		
+TPremierForm	PremierForm/Panel1/sb_Balance	TSpeedButton	sb_Balance		Balance sheet	OnClick=StrategicDecision		
+TPremierForm	PremierForm/Panel1/sb_Newunit	TSpeedButton	sb_Newunit		Recruit unit	OnClick=StrategicDecision		
+TPremierForm	PremierForm/Panel1/sb_Newfleet	TSpeedButton	sb_Newfleet		Build fleet	OnClick=StrategicDecision		
+TPremierForm	PremierForm/Panel1/sb_Rome	TSpeedButton	sb_Rome		Rome	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Carthage	TSpeedButton	sb_Carthage		Carthage	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Seleucid	TSpeedButton	sb_Seleucid		Seleucid	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Ptolemaic	TSpeedButton	sb_Ptolemaic		Ptolemaic	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Macedonia	TSpeedButton	sb_Macedonia		Macedonia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Numidia	TSpeedButton	sb_Numidia		Numidia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Gaul	TSpeedButton	sb_Gaul		Gaul	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Greece	TSpeedButton	sb_Greece		Greece	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Celtiberia	TSpeedButton	sb_Celtiberia		Celtiberia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Illyria	TSpeedButton	sb_Illyria		Illyria	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Dacia	TSpeedButton	sb_Dacia		Dacia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Bithynia	TSpeedButton	sb_Bithynia		Bithynia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Galatia	TSpeedButton	sb_Galatia		Galatia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Armenia	TSpeedButton	sb_Armenia		Armenia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Media	TSpeedButton	sb_Media		Media	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Thracia	TSpeedButton	sb_Thracia		Thracia	OnClick=ChangeNation		
+TPremierForm	PremierForm/Panel1/sb_Allnations	TSpeedButton	sb_Allnations		All nations	OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu	TMainMenu	MainMenu					
+TPremierForm	PremierForm/MainMenu/mt_file	TMenuItem	mt_file	File				
+TPremierForm	PremierForm/MainMenu/mt_file/mn_Newgame	TMenuItem	mn_Newgame	New		OnClick=NewGame		
+TPremierForm	PremierForm/MainMenu/mt_file/mn_Open	TMenuItem	mn_Open	Open		OnClick=OpenGameFile		
+TPremierForm	PremierForm/MainMenu/mt_file/mn_Save	TMenuItem	mn_Save	Save		OnClick=SaveGameFile		
+TPremierForm	PremierForm/MainMenu/mt_file/mn_SaveAs	TMenuItem	mn_SaveAs	Save As		OnClick=SaveGameFileAs		
+TPremierForm	PremierForm/MainMenu/mt_file/mn_Exit	TMenuItem	mn_Exit	Close		OnClick=Quit		
+TPremierForm	PremierForm/MainMenu/mt_Game	TMenuItem	mt_Game	Game				
+TPremierForm	PremierForm/MainMenu/mt_Game/mn_Endturn	TMenuItem	mn_Endturn	End turn		OnClick=EndTurn		
+TPremierForm	PremierForm/MainMenu/mt_Game/mn_Newplayer	TMenuItem	mn_Newplayer	New player		OnClick=NewPlayer		
+TPremierForm	PremierForm/MainMenu/mt_Game/mn_Newnation	TMenuItem	mn_Newnation	New nation		OnClick=NewNation		
+TPremierForm	PremierForm/MainMenu/mt_Game/mn_Abdicate	TMenuItem	mn_Abdicate	Abdicate		OnClick=Abdicate		
+TPremierForm	PremierForm/MainMenu/mt_Strategy	TMenuItem	mt_Strategy	Strategy				
+TPremierForm	PremierForm/MainMenu/mt_Strategy/mn_News	TMenuItem	mn_News	News		OnClick=StrategicDecision	Shift+W	
+TPremierForm	PremierForm/MainMenu/mt_Strategy/mn_Politics	TMenuItem	mn_Politics	International relations		OnClick=StrategicDecision		
+TPremierForm	PremierForm/MainMenu/mt_Strategy/mn_Taxation	TMenuItem	mn_Taxation	Taxation		OnClick=StrategicDecision		
+TPremierForm	PremierForm/MainMenu/mt_Strategy/mn_Balancesheet	TMenuItem	mn_Balancesheet	Balance sheet		OnClick=StrategicDecision	Shift+B	
+TPremierForm	PremierForm/MainMenu/mt_Strategy/mn_Newunit	TMenuItem	mn_Newunit	Recruit unit		OnClick=StrategicDecision		
+TPremierForm	PremierForm/MainMenu/mt_Strategy/mn_Buildfleet	TMenuItem	mn_Buildfleet	Build fleet		OnClick=StrategicDecision		
+TPremierForm	PremierForm/MainMenu/mt_Nations	TMenuItem	mt_Nations	Nations				
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Rome	TMenuItem	mn_Rome	Rome		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Carthage	TMenuItem	mn_Carthage	Carthage		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Seleucid	TMenuItem	mn_Seleucid	Seleucid		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Ptolemaic	TMenuItem	mn_Ptolemaic	Ptolemaic		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Macedonia	TMenuItem	mn_Macedonia	Macedonia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Numidia	TMenuItem	mn_Numidia	Numidia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Gaul	TMenuItem	mn_Gaul	Gaul		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Greece	TMenuItem	mn_Greece	Greece		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Celtiberia	TMenuItem	mn_Celtiberia	Celtiberia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Illyria	TMenuItem	mn_Illyria	Illyria		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Dacia	TMenuItem	mn_Dacia	Dacia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Bithynia	TMenuItem	mn_Bithynia	Bithynia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Galatia	TMenuItem	mn_Galatia	Galatia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Armenia	TMenuItem	mn_Armenia	Armenia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Media	TMenuItem	mn_Media	Media		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Thracia	TMenuItem	mn_Thracia	Thracia		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Nations/mn_Allnations	TMenuItem	mn_Allnations	All nations		OnClick=ChangeNation		
+TPremierForm	PremierForm/MainMenu/mt_Areamap	TMenuItem	mt_Areamap	Area map				
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Showcities	TMenuItem	mn_Showcities	Show cities		OnClick=ShowOnAreaMap	Shift+C	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Showcapital	TMenuItem	mn_Showcapital	Show capital		OnClick=ShowOnAreaMap	Shift+P	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Showarmies	TMenuItem	mn_Showarmies	Show armies		OnClick=ShowOnAreaMap	Shift+A	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Showfleets	TMenuItem	mn_Showfleets	Show fleets		OnClick=ShowOnAreaMap	Shift+F	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Showall	TMenuItem	mn_Showall	Show all		OnClick=ShowOnAreaMap	Shift+L	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/N1	TMenuItem	N1	-				
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries	TMenuItem	mn_Mercenaries	Show mercenaries				
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries/mn_Lightinfantry	TMenuItem	mn_Lightinfantry	Light infantry		OnClick=ShowOnAreaMap	Shift+1	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries/mn_Heavyinfantry	TMenuItem	mn_Heavyinfantry	Heavy infantry		OnClick=ShowOnAreaMap	Shift+2	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries/mn_Archers	TMenuItem	mn_Archers	Archers		OnClick=ShowOnAreaMap	Shift+3	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries/mn_Lightcavalry	TMenuItem	mn_Lightcavalry	Light cavalry		OnClick=ShowOnAreaMap	Shift+4	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries/mn_Heavycavalry	TMenuItem	mn_Heavycavalry	Heavy cavalry		OnClick=ShowOnAreaMap	Shift+5	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Mercenaries/mn_Allmercs	TMenuItem	mn_Allmercs	All mercenaries		OnClick=ShowOnAreaMap	Shift+M	
+TPremierForm	PremierForm/MainMenu/mt_Areamap/N6	TMenuItem	N6	-				
+TPremierForm	PremierForm/MainMenu/mt_Areamap/mn_Findcity	TMenuItem	mn_Findcity	Find a city		OnClick=StrategicDecision	Shift+D	
+TPremierForm	PremierForm/MainMenu/mt_Unitmap	TMenuItem	mt_Unitmap	Unit map				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army	TMenuItem	mn_Army	Army				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Supplyarmy	TMenuItem	mn_Supplyarmy	Supply army		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Recruitmercs	TMenuItem	mn_Recruitmercs	Recruit mercenaries		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Transferunit	TMenuItem	mn_Transferunit	Transfer unit		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Splitarmy	TMenuItem	mn_Splitarmy	Split army		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Joinarmies	TMenuItem	mn_Joinarmies	Join armies		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Changeunits	TMenuItem	mn_Changeunits	Change units		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Army/mn_Disbandarmy	TMenuItem	mn_Disbandarmy	Disband army		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/N2	TMenuItem	N2	-				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet	TMenuItem	mn_Fleet	Fleet				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet/mn_Supplyfleet	TMenuItem	mn_Supplyfleet	Supply fleet		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet/mn_Repairfleet	TMenuItem	mn_Repairfleet	Repair fleet		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet/mn_Transferships	TMenuItem	mn_Transferships	Transfer ships		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet/mn_Splitfleet	TMenuItem	mn_Splitfleet	Split fleet		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet/mn_Joinfleets	TMenuItem	mn_Joinfleets	Join fleets		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Fleet/mn_Scuttlefleet	TMenuItem	mn_Scuttlefleet	Scuttle fleet		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/N3	TMenuItem	N3	-				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_City	TMenuItem	mn_City	City				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_City/mn_Fortifycity	TMenuItem	mn_Fortifycity	Fortify city		OnClick=UnitMapAction		
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/N4	TMenuItem	N4	-				
+TPremierForm	PremierForm/MainMenu/mt_Unitmap/mn_Cancelselection	TMenuItem	mn_Cancelselection	Cancel selection		OnClick=UnitMapAction	Shift+X	
+TPremierForm	PremierForm/MainMenu/mt_Help	TMenuItem	mt_Help	Help				
+TPremierForm	PremierForm/MainMenu/mt_Help/mn_Helptopics	TMenuItem	mn_Helptopics	Help topics		OnClick=HelpTopics		
+TPremierForm	PremierForm/MainMenu/mt_Help/N7	TMenuItem	N7	-				
+TPremierForm	PremierForm/MainMenu/mt_Help/mn_Showhints	TMenuItem	mn_Showhints	Show hints		OnClick=ToggleHints		True
+TPremierForm	PremierForm/MainMenu/mt_Help/N5	TMenuItem	N5	-				
+TPremierForm	PremierForm/MainMenu/mt_Help/mn_About	TMenuItem	mn_About	About Imperial Conquest		OnClick=About		
+TPremierForm	PremierForm/GameOpen	TOpenDialog	GameOpen					
+TPremierForm	PremierForm/GameSave	TSaveDialog	GameSave					
+TRecruitMercs	RecruitMercs	TRecruitMercs	RecruitMercs	Recruit mercenary unit		OnCreate=InitializeForm		
+TRecruitMercs	RecruitMercs/Bevel1	TBevel	Bevel1					
+TRecruitMercs	RecruitMercs/Bevel2	TBevel	Bevel2					
+TRecruitMercs	RecruitMercs/lbl_city	TLabel	lbl_city					
+TRecruitMercs	RecruitMercs/Label2	TLabel	Label2	Quarterly				
+TRecruitMercs	RecruitMercs/Bevel3	TBevel	Bevel3					
+TRecruitMercs	RecruitMercs/Label3	TLabel	Label3	cost				
+TRecruitMercs	RecruitMercs/lbl_cost	TLabel	lbl_cost	0				
+TRecruitMercs	RecruitMercs/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TRecruitMercs	RecruitMercs/lbx_mercs	TListBox	lbx_mercs			OnClick=ChangeUnit		
+TRecruitMercs	RecruitMercs/btn_recruit	TButton	btn_recruit	Recruit unit		OnClick=RecruitMercUnit		
+TRenameArmyUnit	RenameArmyUnit	TRenameArmyUnit	RenameArmyUnit	Rename unit		OnCreate=InitialiseForm		
+TRenameArmyUnit	RenameArmyUnit/Bevel2	TBevel	Bevel2					
+TRenameArmyUnit	RenameArmyUnit/Bevel1	TBevel	Bevel1					
+TRenameArmyUnit	RenameArmyUnit/Label1	TLabel	Label1	Current name				
+TRenameArmyUnit	RenameArmyUnit/Label2	TLabel	Label2	New name				
+TRenameArmyUnit	RenameArmyUnit/Bevel3	TBevel	Bevel3					
+TRenameArmyUnit	RenameArmyUnit/lbl_oldname	TLabel	lbl_oldname					
+TRenameArmyUnit	RenameArmyUnit/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TRenameArmyUnit	RenameArmyUnit/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TRenameArmyUnit	RenameArmyUnit/ed_newname	TEdit	ed_newname					
+TRepairFleet	RepairFleet	TRepairFleet	RepairFleet	Repair fleet		OnCreate=InitializeForm		
+TRepairFleet	RepairFleet/Bevel1	TBevel	Bevel1					
+TRepairFleet	RepairFleet/Bevel2	TBevel	Bevel2					
+TRepairFleet	RepairFleet/Bevel3	TBevel	Bevel3					
+TRepairFleet	RepairFleet/Bevel4	TBevel	Bevel4					
+TRepairFleet	RepairFleet/Bevel5	TBevel	Bevel5					
+TRepairFleet	RepairFleet/Bevel6	TBevel	Bevel6					
+TRepairFleet	RepairFleet/Bevel7	TBevel	Bevel7					
+TRepairFleet	RepairFleet/Label1	TLabel	Label1	Original state				
+TRepairFleet	RepairFleet/Label2	TLabel	Label2	of repair				
+TRepairFleet	RepairFleet/Label3	TLabel	Label3	1s				
+TRepairFleet	RepairFleet/Label4	TLabel	Label4	10s				
+TRepairFleet	RepairFleet/Label5	TLabel	Label5	New state				
+TRepairFleet	RepairFleet/Label6	TLabel	Label6	of repair				
+TRepairFleet	RepairFleet/Label7	TLabel	Label7	Cost of				
+TRepairFleet	RepairFleet/Label8	TLabel	Label8	repairs				
+TRepairFleet	RepairFleet/lbl_initrep	TLabel	lbl_initrep	99%				
+TRepairFleet	RepairFleet/lbl_newrep	TLabel	lbl_newrep	99%				
+TRepairFleet	RepairFleet/lbl_cost	TLabel	lbl_cost	99%				
+TRepairFleet	RepairFleet/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TRepairFleet	RepairFleet/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TRepairFleet	RepairFleet/ud_1s	TUpDown	ud_1s			OnClick=ChangeRepair		
+TRepairFleet	RepairFleet/ud_10s	TUpDown	ud_10s			OnClick=ChangeRepair		
+TSplitArmyUnit	SplitArmyUnit	TSplitArmyUnit	SplitArmyUnit	Split unit		OnCreate=InitializeForm		
+TSplitArmyUnit	SplitArmyUnit/Bevel1	TBevel	Bevel1					
+TSplitArmyUnit	SplitArmyUnit/Bevel3	TBevel	Bevel3					
+TSplitArmyUnit	SplitArmyUnit/lbl_oldunit	TLabel	lbl_oldunit					
+TSplitArmyUnit	SplitArmyUnit/Label1	TLabel	Label1	Unit to split				
+TSplitArmyUnit	SplitArmyUnit/Bevel2	TBevel	Bevel2					
+TSplitArmyUnit	SplitArmyUnit/Label2	TLabel	Label2	Size of new units				
+TSplitArmyUnit	SplitArmyUnit/Bevel4	TBevel	Bevel4					
+TSplitArmyUnit	SplitArmyUnit/Label3	TLabel	Label3	100s				
+TSplitArmyUnit	SplitArmyUnit/Label4	TLabel	Label4	1000s				
+TSplitArmyUnit	SplitArmyUnit/Bevel13	TBevel	Bevel13					
+TSplitArmyUnit	SplitArmyUnit/lbl_unit1	TLabel	lbl_unit1					
+TSplitArmyUnit	SplitArmyUnit/Bevel5	TBevel	Bevel5					
+TSplitArmyUnit	SplitArmyUnit/lbl_unit2	TLabel	lbl_unit2					
+TSplitArmyUnit	SplitArmyUnit/btn_ok	TButton	btn_ok	OK		OnClick=OK		
+TSplitArmyUnit	SplitArmyUnit/btn_cancel	TButton	btn_cancel	Cancel		OnClick=Cancel		
+TSplitArmyUnit	SplitArmyUnit/ud_1000s	TUpDown	ud_1000s			OnClick=ChangeSizes		
+TSplitArmyUnit	SplitArmyUnit/ud_100s	TUpDown	ud_100s			OnClick=ChangeSizes		
+TToEndTurn	ToEndTurn	TToEndTurn	ToEndTurn	End turn ?		OnCreate=InitializeForm;OnPaint=PaintForm		
+TToEndTurn	ToEndTurn/Bevel2	TBevel	Bevel2					
+TToEndTurn	ToEndTurn/Label6	TLabel	Label6	If you have not finished your turn click   MAKE MORE MOVES.				
+TToEndTurn	ToEndTurn/Label1	TLabel	Label1	If you are finished moving this turn click   END TURN.				
+TToEndTurn	ToEndTurn/Bevel1	TBevel	Bevel1					
+TToEndTurn	ToEndTurn/Bevel3	TBevel	Bevel3					
+TToEndTurn	ToEndTurn/btn_ok	TButton	btn_ok	End turn		OnClick=EndTurnOK		
+TToEndTurn	ToEndTurn/Button1	TButton	Button1	Make more moves		OnClick=EndTurnCancel		
+TUnitMap	UnitMap	TUnitMap	UnitMap	Unit map		OnCloseQuery=CheckQuit;OnCreate=InitializeForm;OnKeyDown=KeyPressed;OnMouseDown=UnitMapClick;OnPaint=PaintForm;OnResize=ResizeForm;OnShow=InitializeForm		
+TUnitMap	UnitMap/Panel1	TPanel	Panel1					
+TUnitMap	UnitMap/Panel1/sb_supplyarmy	TSpeedButton	sb_supplyarmy		Supply army	OnClick=SupplyArmy		
+TUnitMap	UnitMap/Panel1/sb_recruitmercs	TSpeedButton	sb_recruitmercs		Recruit mercenaries	OnClick=RecruitMercenaries		
+TUnitMap	UnitMap/Panel1/sb_transferunit	TSpeedButton	sb_transferunit		Transfer units	OnClick=ArmyToArmyTransfer		
+TUnitMap	UnitMap/Panel1/sb_splitarmy	TSpeedButton	sb_splitarmy		Split army	OnClick=SplitArmy		
+TUnitMap	UnitMap/Panel1/sb_joinarmies	TSpeedButton	sb_joinarmies		Join armies	OnClick=JoinArmies		
+TUnitMap	UnitMap/Panel1/sb_changeunit	TSpeedButton	sb_changeunit		Change units	OnClick=ChangeUnitDetails		
+TUnitMap	UnitMap/Panel1/sb_disbandarmy	TSpeedButton	sb_disbandarmy		Disband army	OnClick=DisbandArmy		
+TUnitMap	UnitMap/Panel1/sb_supplyfleet	TSpeedButton	sb_supplyfleet		Supply fleet	OnClick=SupplyFleet		
+TUnitMap	UnitMap/Panel1/sb_repairfleet	TSpeedButton	sb_repairfleet		Repair fleet	OnClick=RepairFlt		
+TUnitMap	UnitMap/Panel1/sb_transferships	TSpeedButton	sb_transferships		Transfer ships	OnClick=FleetToFleetTransfer		
+TUnitMap	UnitMap/Panel1/sb_splitfleet	TSpeedButton	sb_splitfleet		Split fleet	OnClick=SplitFleet		
+TUnitMap	UnitMap/Panel1/sb_joinfleets	TSpeedButton	sb_joinfleets		Join fleets	OnClick=JoinFleets		
+TUnitMap	UnitMap/Panel1/sb_scuttle	TSpeedButton	sb_scuttle		Scuttle fleet	OnClick=ScuttleFleet		
+TUnitMap	UnitMap/Panel1/sb_fortifycity	TSpeedButton	sb_fortifycity		Fortify city	OnClick=Fortify		
+TUnitMap	UnitMap/Panel1/sb_cancel	TSpeedButton	sb_cancel		Cancel selection	OnClick=CancelSelection		
+TUnitMap	UnitMap/ScrollBarH	TScrollBar	ScrollBarH			OnKeyDown=KeyPressed;OnScroll=UnitMapScrolled		
+TUnitMap	UnitMap/ScrollBarV	TScrollBar	ScrollBarV			OnKeyDown=KeyPressed;OnScroll=UnitMapScrolled		
+TUnitMap	UnitMap/TerrainList	TImageList	TerrainList					
+TUnitMap	UnitMap/ArmiesList	TImageList	ArmiesList					
+TUnitMap	UnitMap/FleetsList	TImageList	FleetsList					
+TUnitMap	UnitMap/Cities1List	TImageList	Cities1List					
+TUnitMap	UnitMap/Cities2List	TImageList	Cities2List					
+TUnitMap	UnitMap/Cities3List	TImageList	Cities3List					
+TUnitMap	UnitMap/Cities4List	TImageList	Cities4List					
+TUnitMap	UnitMap/CapitalsList	TImageList	CapitalsList					
