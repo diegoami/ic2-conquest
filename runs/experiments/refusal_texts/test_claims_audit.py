@@ -69,7 +69,7 @@ class T(unittest.TestCase):
         tmp = tempfile.mkdtemp()
         try:
             a = os.path.join(tmp, 'art'); shutil.copytree(paths.ART, a, ignore=shutil.ignore_patterns('*.png', '*.tar.gz'))
-            p = os.path.join(a, 'saves', 'REF_UA05b_b1_ctl.SAV'); b = bytearray(open(p, 'rb').read()); b[5000] ^= 1
+            p = os.path.join(a, 'saves', 'REF_UA05b_b7_ctl.SAV'); b = bytearray(open(p, 'rb').read()); b[5000] ^= 1
             open(p, 'wb').write(bytes(b))
             n, bad = self.audit(art=a)
             self.assertTrue(any('UA05b' in x and ('hash' in x or 'facts' in x) for x in bad), bad[:5])

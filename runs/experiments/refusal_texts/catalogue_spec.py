@@ -172,21 +172,21 @@ row(56092, 'R49', 'refusal', 'Recruit unit (dialog Army recruits): Mobilize', '1
 # ---------------------------------------------------------------- relations
 row(55177, 'R50', 'refusal', 'International relations: peace', '1 of 1',
     'the other nation is computer-controlled (%s) and is at war with the current nation (%s)' % (C(55170, "if (((&DAT_00474b00)[iVar1 * 0x494] == '\\0') &&"), C(55171, '((&DAT_00474696)[DAT_004a0320 * 0x24a + iVar1] == 3)) {')),
-    'dropped: the new value is not applied ("*param_3 = 0"); the OK of the dialog is stopped',
+    'dropped: the callee reports failure (`*param_3 = 0`), so the new value is not applied; in play the box appears at the click on the radio, before OK, and the radio keeps its old value',
     plays=['RL01'], tmpl=[('var', 'nation name'), ('lit', 55174)])
 row(55237, 'R51', 'refusal', 'International relations: trade', '1 of 3',
     'three nations are already marked for trade in the form: %s' % C(55235, 'if (sVar4 == 3) {'),
-    'dropped: the new value is not applied', plays=['RL02'])
+    'dropped: the callee reports failure (`*param_3 = 0`): the new value is not applied (the box appears at the radio click)', plays=['RL02'])
 row(55248, 'R52', 'refusal', 'International relations: trade', '2 of 3',
     'the relation with the target is negative (a cooldown): %s' % C(55242, 'if ((short)(&DAT_00474696)[DAT_004a0320 * 0x24a + iVar3] < 0) {'),
-    'dropped: the new value is not applied', plays=['RL03'], tmpl=[('var', 'nation name'), ('lit', 55245)])
+    'dropped: the callee reports failure (`*param_3 = 0`): the new value is not applied (the box appears at the radio click)', plays=['RL03'], tmpl=[('var', 'nation name'), ('lit', 55245)])
 row(55257, 'R53', 'refusal', 'International relations: trade', '3 of 3',
     'not negative, and either the target already has three trade partners (%s) or the relation is 2 or 3 (%s)' % (C(55229, 'if ((sVar2 == 3) && ((DAT_0049f00a != 1 || (param_2 != DAT_0049f008)))) {'), C(55250, 'else if (bVar1 || 1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)param_2]) {')),
-    'dropped: the new value is not applied', plays=['RL04'], tmpl=[('lit', 55252), ('var', 'nation name'), ('lit', 55254)])
+    'dropped: the callee reports failure (`*param_3 = 0`): the new value is not applied (the box appears at the radio click)', plays=['RL04'], tmpl=[('lit', 55252), ('var', 'nation name'), ('lit', 55254)])
 row(55321, 'R54', 'refusal', 'International relations: alliance', '1 of 1',
     'the target is computer-controlled (%s) and one of: a pending war or a pending alliance with a nation at war (%s), the current nation is at war with anyone (%s), or the relation is negative (%s)'
     % (C(55310, "if ((&DAT_00474b00)[local_6 * 0x494] == '\\0') {"), C(55300, 'if (*(short *)(param_1 + 900 + sVar3 * 2) == 3) {'), C(55313, "if (((char)uVar2 == '\\0') &&"), C(55314, '(-1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)local_6])) goto LAB_004531cd;')),
-    'dropped: the new value is not applied', plays=['RL05'], tmpl=[('var', 'nation name'), ('lit', 55318)])
+    'dropped: the callee reports failure (`*param_3 = 0`): the new value is not applied (the box appears at the radio click)', plays=['RL05'], tmpl=[('var', 'nation name'), ('lit', 55318)])
 # ---------------------------------------------------------------- build fleet
 row(58528, 'R55', 'refusal', 'Build fleet (Strategy menu or toolbar)', '1 of 3 (when no own fleet is under construction)',
     'no own city is a free coastal city (FUN_004496e0 returns -1, %s) and no own fleet is under construction (%s)' % (C(58526, 'if (sVar3 == -1) {'), C(58527, "if (cStack_5 == '\\0') {")),

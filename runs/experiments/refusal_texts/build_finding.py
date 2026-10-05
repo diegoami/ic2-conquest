@@ -46,10 +46,10 @@ def main():
     if fs:
         m = re.search(r': (\d+) checks, (\d+) mismatches', open(fs[-1]).read())
         if m: aud = m.groups()
-    ts = os.path.join(DATA, 'test_claims_audit_output.txt'); tests = '?'
+    ts = latest(os.path.join(DATA, 'test_claims_audit_output.txt')); tests = '?'
     if os.path.exists(ts):
         m = re.search(r'Ran (\d+) tests', open(ts).read()); tests = m.group(1) if m else '?'
-    rr = os.path.join(DATA, 'rerun_summary.txt'); rerun = open(rr).read().strip() if os.path.exists(rr) else '(pending)'
+    rr = latest(os.path.join(DATA, 'rerun_summary.txt')); rerun = open(rr).read().strip() + ' (UA05b: its first record was made before the staged units got explicit names, so its input differs in the name bytes of the unit slots; the units, counts and the box are the same)'
     P = read_plays(); ref = [r for r in CS.ROWS if r['kind'] == 'refusal']
     sub = {'N_CLAMPED': str(sum(1 for r in ref if r['effect'].startswith('clamped'))), 'CLAMPED': ', '.join(r['id'] for r in ref if r['effect'].startswith('clamped')),
            'N_DROPPED': str(sum(1 for r in ref if r['effect'].startswith('dropped'))), 'N_PLAYED': str(sum(1 for r in ref if r['plays'])),

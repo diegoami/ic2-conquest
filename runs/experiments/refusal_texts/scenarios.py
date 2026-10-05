@@ -3,6 +3,7 @@ act(g) (issues the one order without dismissing boxes), note."""
 import os
 from play_lib import *
 from eog import _drv
+from lib import _region_hash
 GF = lambda n: str(_drv.G / n)                 # a save of the private game folder (copied from ~/ic2-work; the T_* saves are the earlier sessions' play states)
 def named(units):
     """explicit names for every unit (the slots' old bytes can hold residue longer than the 23 characters set_units allows)"""
@@ -113,10 +114,13 @@ def rel_act(nation, col):
             except _drv.DriverError: time.sleep(1)
         radios = sorted((c for c in cs if c['cls'] == 'TRadioButton'), key=lambda c: (c['y'], c['x']))
         if len(radios) != 64: raise _drv.DriverError('expected 64 radio buttons, found %d' % len(radios))
-        click_verified(g, radios[nation * 4 + col], 'relations radio nation %d column %d' % (nation, col))
-        for attempt in range(2):                          # OK, at most twice (the first click may only activate the window)
-            g.click_control(g.control(cs, text='OK'), pause=1.5)
-            if boxes(g) or not g.find_windows('^International Relations$'): break
+        tgt = radios[nation * 4 + col]
+        for attempt in range(3):                          # the refusal box appears at the click of the radio (the callee fails and the radio goes back): that box, or a change of the radio's pixels, proves the click
+            before = _region_hash(g, tgt); g.click_control(tgt, pause=1.2)
+            if boxes(g): break
+            if _region_hash(g, tgt) != before: break
+        else: raise _drv.DriverError('relations radio nation %d column %d: neither a box nor a change after 3 clicks' % (nation, col))
+        if not boxes(g): raise _drv.DriverError('the radio changed and no refusal box appeared (the order would be accepted): not a refusal play')
     return act
 rel_post = lambda g: close_dialog_cancel(g, 'International Relations')
 SC['RL01'] = dict(src=TB, act=rel_act(6, 0), post=rel_post, note='International relations: peace with Gaul (6), at war with Rome (relation 3)')

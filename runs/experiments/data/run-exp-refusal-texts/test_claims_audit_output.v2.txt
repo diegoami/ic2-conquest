@@ -1,0 +1,34 @@
+test_built_message_duplicated_piece (test_claims_audit.T.test_built_message_duplicated_piece) ... ok
+test_built_message_omitted_piece (test_claims_audit.T.test_built_message_omitted_piece) ... ok
+test_built_message_reordered_piece (test_claims_audit.T.test_built_message_reordered_piece) ... ok
+test_built_message_variable_moved (test_claims_audit.T.test_built_message_variable_moved) ... ok
+test_classes_table (test_claims_audit.T.test_classes_table) ... ok
+test_clean (test_claims_audit.T.test_clean) ... ok
+test_doctored_call_literal_in_extract (test_claims_audit.T.test_doctored_call_literal_in_extract) ... ok
+test_doctored_combined_order (test_claims_audit.T.test_doctored_combined_order) ... ok
+test_doctored_count (test_claims_audit.T.test_doctored_count) ... ok
+test_doctored_extract_line (test_claims_audit.T.test_doctored_extract_line) ... ok
+test_doctored_literal_clone_table (test_claims_audit.T.test_doctored_literal_clone_table) ... ok
+test_doctored_literal_one_space (test_claims_audit.T.test_doctored_literal_one_space) ... ok
+test_doctored_literal_space_before_question_mark (test_claims_audit.T.test_doctored_literal_space_before_question_mark) ... ok
+test_doctored_ocr (test_claims_audit.T.test_doctored_ocr) ... ok
+test_doctored_save (test_claims_audit.T.test_doctored_save) ... FAIL
+test_doctored_state_fact (test_claims_audit.T.test_doctored_state_fact) ... ok
+test_natural_play_labelled_staged (test_claims_audit.T.test_natural_play_labelled_staged) ... ok
+test_order_changed_consistently_in_both_tables (test_claims_audit.T.test_order_changed_consistently_in_both_tables) ... ok
+test_play_files_and_rows_columns (test_claims_audit.T.test_play_files_and_rows_columns) ... ok
+test_single_condition_play_passed_off_as_combined (test_claims_audit.T.test_single_condition_play_passed_off_as_combined) ... ok
+test_staged_play_labelled_natural (test_claims_audit.T.test_staged_play_labelled_natural) ... ok
+
+======================================================================
+FAIL: test_doctored_save (test_claims_audit.T.test_doctored_save)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/diego/projects/wt-refusals/runs/experiments/refusal_texts/test_claims_audit.py", line 75, in test_doctored_save
+    self.assertTrue(any('UA05b' in x and ('hash' in x or 'facts' in x) for x in bad), bad[:5])
+AssertionError: False is not true : []
+
+----------------------------------------------------------------------
+Ran 21 tests in 17.812s
+
+FAILED (failures=1)
