@@ -1,0 +1,5 @@
+## Scope
+Round 2 of PR #52, narrow. Round 1 (your earlier comment on this PR) found R1-R4. Commits 770197a and c7331e8 fix them: built messages and test order are recomputed from the extract, a verified toolbar runner replaces the fallback coordinates, the radio click is verified, and the staging column is audited. All plays were re-run as batch b7 (MANIFEST-b7.txt, release batch-b7.tar.gz). Check only that R1-R4 are fixed, and that no other instance of their classes remains anywhere in the PR: a check that compares the finding with itself or is always true; a runner path that can click a fallback or fixed coordinate; a claim column that the audit does not compare with a source.
+
+
+<!-- Record note (main session): this round-2 brief was sent WITHOUT its "Blocking means" and "Report every blocking finding" sections, because the round-1 brief file had been lost with the scratchpad when the previous session ended. The reviewer applied the round-1 blocking classes anyway (R1 self-comparison, R2 guessed click). From round 3 on, briefs live in docs/review-briefs/. -->
