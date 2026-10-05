@@ -1,0 +1,29 @@
+# claims audit: 28 checks, 0 mismatches
+OK	code_extract_split_aboard.txt: 202 lines equal to the source
+OK	line 47033 contains '0x89'
+OK	line 47037 contains 'DAT_0049c282'
+OK	line 47037 contains '* 0xd'
+OK	line 47039 contains 'DAT_0047c1f0'
+OK	line 47039 contains 'DAT_004a0320'
+OK	line 47041 contains 'DAT_0047c220'
+OK	line 47046 contains 'FUN_00449f08'
+OK	line 48724 contains 'FUN_004492c0'
+OK	line 48724 contains '1)'
+OK	line 48725 contains '-1 <'
+OK	line 48725 contains '0xc6'
+OK	line 48729 contains 'DAT_0047c1ec'
+OK	line 48736 contains 'DAT_0047c1f4'
+OK	line 47942 contains '= 2'
+OK	line 47943 contains '0xb'
+OK	line 47960 contains 'local_1c <='
+OK	line 47961 contains 'local_16'
+OK	line 47969 contains 'param_1[1]'
+OK	line 46976 contains 'DAT_0047c1f4'
+OK	line 46976 contains '== -1'
+OK	line 46978 contains 'on a fleet cannot be combined'
+OK	start: army 0 at (101,45), 3 units, 10700, not aboard; fleet 2 at (101,46) 30 ships, carries -1
+OK	aboard: army 0 cell -1 at (101,46), moves 0; fleet 2 carries army 0, moves 0
+OK	recomputed placement (last land tile of the 3x3 scan, codes 2..11) = (102, 47) of candidates [(101, 45), (102, 47)]
+OK	after split: new army 14 at (102,47), not aboard, 1 unit, 5000 troops, moves 0, supplies 0, purse 0, owner Rome
+OK	after split: army 0 still aboard at (101,46), 2 units, 5700 troops (10700-5000), purse 100; fleet 2 still carries army 0
+OK	other armies unchanged (12 and 13)
