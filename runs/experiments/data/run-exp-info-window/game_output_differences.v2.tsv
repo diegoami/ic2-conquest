@@ -1,0 +1,2 @@
+png	panel_line	expected	seen	model_vs_game	code_explanation
+A3_nation_07_Greece.png	4	Population 2,147,483,647	Population 2,147,483,647a'TN»C	the game prints junk glyphs after the 13-character number where the model prints the digits only	NOT EXPLAINED BY THE MODEL: FUN_00448f9c copies 12 characters of a 14-character field (F:40826 and the formatter) and does not NUL-terminate; a 13-character number overruns into stale stack bytes that the model cannot know. Unreachable value (a population of 10^9 or more).

@@ -1,0 +1,42 @@
+field	edge(last value of the lower word|first value of the higher word)	word_below	word_above	status	png_below	png_above	note
+loyalty	-20|-19	ry good	ite	derived (outside the range the game produces / staged range; code only)	-	-	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	-10|-9	ite	very low	confirmed	A1_city_071_Pisae.png	A1_city_080_Tarquinii.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	49|50	very low	low	confirmed	A1_city_090_Alba Fucens.png	A1_city_091_Fregellae.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	59|60	low	normal	confirmed	A1_city_096_Hadria.png	A1_city_097_Cales.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	69|70	normal	high	confirmed	A1_city_100_Capua.png	A1_city_101_Neapolis.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	79|80	high	very high	confirmed	A1_city_106_Paestum.png	A1_city_110_Luceria.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	89|90	very high	excellent	confirmed	A1_city_111_Rhegium.png	A1_city_113_Teanum Apulum.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+loyalty	99|100	excellent		confirmed	A1_city_115_Venusia.png	A1_city_116_Locri.png	value div 10 (truncating) -> DAT_004793fc table; <0 and >=110 read other memory
+unity	499|500	very low	low	confirmed	A3_nation_02_Seleucid.png	A3_nation_03_Ptolemaic.png	value div 100 -> the same table; 0 means conquered (not shown as a word)
+unity	599|600	low	normal	confirmed	A3_nation_04_Macedonia.png	A3_nation_05_Numidia.png	value div 100 -> the same table; 0 means conquered (not shown as a word)
+unity	699|700	normal	high	confirmed	A3_nation_06_Gaul.png	A3_nation_07_Greece.png	value div 100 -> the same table; 0 means conquered (not shown as a word)
+unity	799|800	high	very high	confirmed	A3_nation_08_Celtiberia.png	A3_nation_09_Illyria.v2.png	value div 100 -> the same table; 0 means conquered (not shown as a word)
+unity	899|900	very high	excellent	confirmed	A3_nation_10_Dacia.v2.png	A3_nation_11_Bithynia.v2.png	value div 100 -> the same table; 0 means conquered (not shown as a word)
+unity	999|1000	excellent		confirmed	A3_nation_12_Galatia.v2.png	A3_nation_13_Armenia.v2.png	value div 100 -> the same table; 0 means conquered (not shown as a word)
+morale	54|55	very low	low	confirmed	A4_army_02_left.png	A4_army_03_left.png	(m-51)>>2, or (m-48)>>2 when m<51 -> DAT_00479428 (= unity table entry 4)
+morale	58|59	low	normal	confirmed	A4_army_04_left.png	A4_army_05_left.png	(m-51)>>2, or (m-48)>>2 when m<51 -> DAT_00479428 (= unity table entry 4)
+morale	62|63	normal	high	confirmed	A4_army_06_left.png	A4_army_07_left.png	(m-51)>>2, or (m-48)>>2 when m<51 -> DAT_00479428 (= unity table entry 4)
+morale	66|67	high	very high	confirmed	A4_army_08_left.png	A4_army_09_left.png	(m-51)>>2, or (m-48)>>2 when m<51 -> DAT_00479428 (= unity table entry 4)
+morale	70|71	very high	excellent	confirmed	A4_army_10_left.png	A4_army_11_left.png	(m-51)>>2, or (m-48)>>2 when m<51 -> DAT_00479428 (= unity table entry 4)
+morale	74|75	excellent		confirmed	A4_army_12_left.png	A4_army_13_left.png	(m-51)>>2, or (m-48)>>2 when m<51 -> DAT_00479428 (= unity table entry 4)
+relation	0|1		trade	confirmed	A3_nation_00_Rome.png	A3_nation_00_Rome.png	table at DAT_004794c8, 6-byte entries, only when value > 0
+relation	1|2	trade	ally	confirmed	A3_nation_00_Rome.png	A3_nation_01_Carthage.png	table at DAT_004794c8, 6-byte entries, only when value > 0
+relation	2|3	ally	war	confirmed	A3_nation_01_Carthage.png	A3_nation_00_Rome.png	table at DAT_004794c8, 6-byte entries, only when value > 0
+relation	3|4	war		confirmed	A3_nation_00_Rome.png	A3_nation_01_Carthage.png	table at DAT_004794c8, 6-byte entries, only when value > 0
+relation	5|6		5	derived (outside the range the game produces / staged range; code only)	A3_nation_01_Carthage.png	-	table at DAT_004794c8, 6-byte entries, only when value > 0
+relation	6|7	5	[	derived (outside the range the game produces / staged range; code only)	-	-	table at DAT_004794c8, 6-byte entries, only when value > 0
+relation	7|8	[	R	derived (outside the range the game produces / staged range; code only)	-	-	table at DAT_004794c8, 6-byte entries, only when value > 0
+tribute_word_foreign	10|11	poor	moderate	confirmed	A2_city_004_Banasa.png	A2_city_005_Gades.png	foreign city only; unsigned 16-bit tribute
+tribute_word_foreign	30|31	moderate	rich	confirmed	A2_city_006_Lixus.png	A2_city_013_Malaca.png	foreign city only; unsigned 16-bit tribute
+tribute_word_foreign	100|101	rich	very rich	confirmed	A2_city_016_Rusaddir.png	A2_city_018_Sexi.png	foreign city only; unsigned 16-bit tribute
+tribute_word_foreign	10000|10001	very rich	<number>	confirmed	A2_city_025_Carthago Novo.png	A2_city_026_Helice.png	foreign city only; unsigned 16-bit tribute
+sea	-1|0	rough	calm	confirmed	A5_f5a_fleet1_left.png	A5_f5a_fleet2_left.png	fleet +24 field == 0
+sea	0|1	calm	rough	confirmed	A5_f5a_fleet2_left.png	A5_f5a_fleet0_left.png	fleet +24 field == 0
+quality	-1|0	er	notready	derived (outside the range the game produces / staged range; code only)	-	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	3|4	notready	verypoor	confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	4|5	verypoor	poor	confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	5|6	poor	average	confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	6|7	average	good	confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	7|8	good	verygood	confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	8|9	verygood	elite	confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
+quality	9|10	elite		confirmed	A6_army0_right_scrolled.png	A6_army0_right_scrolled.png	DAT_0047938c table, the unit quality 0..9 directly
