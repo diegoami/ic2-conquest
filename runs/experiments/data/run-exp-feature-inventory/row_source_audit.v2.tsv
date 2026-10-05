@@ -1,0 +1,162 @@
+row	source	line	quote	key
+E01	docs/rules-digest.md	409	an offer is an OK-only notice	OK-only
+E01	docs/rules-digest.md	409	lapses at the next turn start	lapses at the next turn start
+E01	docs/rules-digest.md	409	never changes a relation	never changes a relation
+E01	R:decompiled-ai-offers-to-human-seats.md	-	relation[human][r] == 0 and r alive and Random(3) == 0 and r is AI	at peace \(relation 0\).*alive.*computer-controlled.*1-in-3
+E01	R:decompiled-ai-offers-to-human-seats.md	-	taxBase[r] must exceed the human's poorest partner's tax base (or 0 when the human has fewer than 3 partners)	tax base above the human's poorest partner's \(or 0 with fewer than 3 partners\)
+E01	R:decompiled-ai-offers-to-human-seats.md	-	r must be in the human's neighbour mask +0x46, and the human must be at war with nobody	neighbour mask.*at war with nobody
+E02	docs/rules-digest.md	19	weeks are 1, 3, 5, 7, 9, 11	1, 3, 5, 7, 9, 11
+E02	docs/rules-digest.md	29	if the week wraps to 1	wraps to 1
+E02	docs/rules-digest.md	29	mercenary restock	mercenary restock
+E02	docs/rules-digest.md	34	The tick uses the season before the advance	season before the advance
+E03	docs/rules-digest.md	33	before the season advances	before the season advances
+E03	docs/rules-digest.md	138	with **no balance check**	no balance check
+E03	docs/rules-digest.md	138	regulars never desert	never desert
+E03	docs/rules-digest.md	129	launched fleets only	launched fleets only
+E03	docs/rules-digest.md	132	taxBase × taxRate div 100 + taxBase div 4	taxBase x rate div 100 \+ taxBase div 4
+E03	docs/rules-digest.md	133	cities × 7	cities x 7
+E03	docs/rules-digest.md	134	partner.taxBase div 12	partner taxBase div 12
+E03	docs/rules-digest.md	124	relation thaw	relation thaw
+E04	docs/rules-digest.md	51	(Spring 50, Summer 80, Autumn 80, Winter 20)	50 spring, 80 summer and autumn, 20 winter
+E04	docs/rules-digest.md	51	((90 − v) × troops) div 20000	\(90 - v\) x troops\) div 20,000
+E04	docs/rules-digest.md	60	a flat `troops div 200` per turn, all year	troops div 200 all year
+E04	docs/rules-digest.md	61	loses `ships` tons every turn	one ton per ship
+E04	docs/rules-digest.md	77	Mercenaries refuse to join an army under 15 % supply	under 15 percent
+E05	docs/rules-digest.md	418	the countdown starts at 24 and drops 2 per tick	countdown \(24, minus 2
+E05	docs/rules-digest.md	418	On launch it gets condition 100, supplies 50 and money 0	condition 100, supplies 50 and money 0
+E05	docs/rules-digest.md	138	A fleet under construction costs nothing	costs nothing until launched
+E06	docs/rules-digest.md	425	dmg = max(1, Random(100 − condition)/10)	max\(1, Random\(100 - condition\)/10\)
+E06	docs/rules-digest.md	425	Winter: min(5, dmg×2)	at most 5
+E06	docs/rules-digest.md	425	rough sea: min(8, dmg×3)	at most 8
+E06	docs/rules-digest.md	426	not adjacent to one of its own cities: dmg = 2·dmg + 1	2 x damage \+ 1
+E06	docs/rules-digest.md	426	a 1-in-20 spike to 30	1-in-20 spike to 30
+E06	docs/rules-digest.md	427	dmg < 6: condition −= dmg	under 6 only lowers condition
+E06	docs/rules-digest.md	428	if d > 70 loses whole units	exceeds 70
+E06	docs/rules-digest.md	429	condition < 40	below 40
+E06	docs/rules-digest.md	430	out of supply: −3 moves and −Random(2) condition per turn	loses 3 moves
+E07	docs/rules-digest.md	440	Spring 1/15 (radius 4) in weeks < 6, else 1/30 (3)	1/15 \(radius 4\) in weeks before 6, else 1/30 \(3\)
+E07	docs/rules-digest.md	440	Summer 1/40 (2)	summer 1/40
+E07	docs/rules-digest.md	440	Autumn 1/30 (3) in weeks < 7, else 1/15 (4)	autumn 1/30 \(3\) in weeks before 7, else 1/15 \(4\)
+E07	docs/rules-digest.md	440	**Winter 1/5 (5)**	winter 1/5 \(5\)
+E07	docs/rules-digest.md	440	20 fixed sea-region centres	twenty fixed
+E07	docs/rules-digest.md	440	Weather affects fleets only	fleets only
+E08	docs/rules-digest.md	408	The AI toward a human	row E22
+E09	docs/rules-digest.md	309	Ties go to the defender	ties go to the defender
+E09	docs/rules-digest.md	304	units left under standardSize/10 (regular) or /5 (mercenary) are deleted	a tenth of their size, a fifth for mercenaries
+E09	docs/rules-digest.md	303	r = max(1, min(15, def×6 div atk))	r = max\(1, min\(15, def x 6 div atk\)\)
+E09	docs/rules-digest.md	305	army.moves = 0	moves to 0
+E10	docs/rules-digest.md	251	refills with probability 85 % and a live offer is replaced with probability 1/9	85 percent.*1/9
+E10	docs/rules-digest.md	251	Offers have quality 5–9	quality 5 to 9
+E10	docs/rules-digest.md	251	50 fixed slots	fifty fixed
+E11	docs/rules-digest.md	332	fewer than 6 cities** (or takes a capital that cannot be moved)	fewer than 6 cities.*capital that cannot be moved
+E12	docs/rules-digest.md	89	a human army's move that ends against a non-hostile city	human army's move ends against a non-hostile city
+E12	docs/rules-digest.md	89	fills it to `troops div 100` from that city's stock	troops div 100
+E12	docs/rules-digest.md	90	a purse over 1,000 sends the excess to the treasury	over 1,000 sends the excess to the treasury
+E12	docs/rules-digest.md	90	a purse under 500, with a treasury above 0, receives	under 500 receives 500 from the treasury only if the treasury is above 0
+E12	docs/rules-digest.md	91	at most `money div 5` tons, costing `tons div 5`	money div 5 tons, costing tons div 5
+E12	docs/rules-digest.md	92	non-hostile city within 4 tiles	within 4 tiles
+E13	docs/rules-digest.md	333	a non-capital city with loyalty **< 30**	non-capital city with loyalty below 30
+E13	docs/rules-digest.md	334	if owner ≠ allegiance: the city returns to its allegiance nation if that nation is alive	owner is not its allegiance nation, it returns to the allegiance nation when that nation is alive
+E13	docs/rules-digest.md	334	which needs more than 7 disloyal cities	more than 7 disloyal cities
+E13	docs/rules-digest.md	335	otherwise: to a nation at war with the owner that has an army within Chebyshev 9	owner is its allegiance nation, it goes to a nation at war with the owner that has an army within 9 tiles
+E13	docs/rules-digest.md	335	else to the best-placed live neighbour	best-placed live neighbour
+E14	docs/rules-digest.md	321	unity: winner +9 (cap 990), loser −15	rises by 9 .to at most 990. and the loser's falls by 15
+E14	docs/rules-digest.md	322	`pop × 3000` wealth and `contribution × 4` tax base move to the winner	pop x 3000
+E14	docs/rules-digest.md	323	the old owner's recruitment slots at the city are cleared	queued units at the city are cleared
+E14	docs/rules-digest.md	324	loyalty becomes `min(90, 140 − L′)` if the capturer is the city's allegiance nation	min\(90, 140 - L\) when the capturer is the city's allegiance nation
+E14	docs/rules-digest.md	327	it is no nation's capital, and it lies at Chebyshev < 10 from the attacking army	no nation's capital and lies less than 10 tiles from the attacking army
+E14	docs/rules-digest.md	328	is **< 650**, and the city's loyalty is **< 65**	below 650 and the city's loyalty is below 65
+E14	docs/rules-digest.md	329	its defence (÷3 if its allegiance is the capturer) is below the attacker's strength	divided by 3 if its allegiance is the capturer
+E14	docs/rules-digest.md	331	The receiver's unity +3; the loser's unity −20 (floored at 250)	rises by 3.*falls by 20 \(not below 250\)
+E14	docs/rules-digest.md	331	A defected city keeps its population and fortification	keeps its population and fortification
+E15	docs/rules-digest.md	144	from **that army's purse**	own army's purse
+E15	docs/rules-digest.md	145	**≤ 0 when a mercenary slot comes up**	0 or less when a mercenary slot comes up
+E15	docs/rules-digest.md	145	takes `troops div 100` tons of supplies	troops div 100 tons of supplies
+E15	docs/rules-digest.md	145	No news line, no morale change	no news line and no morale change
+E15	docs/rules-digest.md	145	The purse is floored at 0 afterwards	floored at 0
+E15	docs/rules-digest.md	146	the tick never refills a purse	never refills a purse
+E16	docs/rules-digest.md	151	`treasury < −(wealth div 500)`, or `treasury < −20000`, or `unity < 400`	below -\(wealth div 500\) or below -20,000, or unity below 400
+E16	docs/rules-digest.md	153	a 1-in-9 chance per quarter of deposing the leader	1-in-9 chance each quarter
+E16	docs/rules-digest.md	153	which resets a negative treasury to 0	resets a negative treasury to 0
+E16	docs/rules-digest.md	152	tested at the start of each of the human's turns	start of each of his turns
+E17	docs/rules-digest.md	159	loyalty `+= Random(4)` if tax < 11 and loyalty < 80	loyalty rises by Random\(4\) if the tax rate is under 11 and loyalty is under 80
+E17	docs/rules-digest.md	160	with a 1-in-3 chance, loyalty `−= Random(taxRate) div 8`	1-in-3 chance loyalty falls by Random\(tax rate\) div 8
+E17	docs/rules-digest.md	161	skipped when a hostile army is adjacent	skipped when a hostile army is adjacent
+E17	docs/rules-digest.md	162	unity + 25 − tax/2 − mob/5	25 - tax/2 - mobilisation/5
+E17	docs/rules-digest.md	162	`unity = min(990, max(300,	min\(990, max\(300
+E17	docs/rules-digest.md	162	mobilization −3 (floor 0)	not below 0
+E18	docs/rules-digest.md	209	`min(100, mobilization + 1 + troops × 1000 div wealth)`	min\(100, rate \+ 1 \+ troops x 1000 div wealth\)
+E18	docs/rules-digest.md	209	refusing at 100	refused at 100
+E18	docs/rules-digest.md	211	`mobilization −= 1 + troops × 1000 / wealth`	by 1 \+ troops x 1000 / wealth
+E18	docs/rules-digest.md	235	Mobilizing does not change the mobilization rate	does not change it
+E18	docs/rules-digest.md	209	`× (1 − mob/200)`	1 - mob/200
+E18	docs/rules-digest.md	123	mobilization −3	falls by 3
+E19	docs/rules-digest.md	103	if an at-war army is adjacent (3x3): inc = min(inc, 0)	at-war army adjacent \(3 x 3\) the change is at most 0
+E19	docs/rules-digest.md	104	stock = clamp(stock + inc, 0, pop × 10)	between 0 and 10 x pop
+E19	docs/rules-digest.md	105	if stock == 0 and Winter and Random(3) == 0: loyalty −= 1	empty stock in winter.*1-in-3
+E19	docs/rules-digest.md	102	inc = s − s × mobilization / 200	mobilisation/200
+E20	docs/rules-digest.md	264	`moves = 10 − min(5, troops div 20000)`, −1 if supply is under 10 %	10 - min\(5, troops div 20,000\), minus 1 under 10 percent supply
+E20	docs/rules-digest.md	264	Recomputed only at the tick	recomputed only at the tick
+E20	docs/rules-digest.md	265	Set to 0 by** join, field battle (attacker), siege attempt, embark/disembark, and army creation (human)	join, a field battle \(attacker\), a siege attempt, embark or disembark, and creation \(for a human\)
+E20	docs/rules-digest.md	266	An army needs moves > 0 to be selected	above 0 to be selected
+E20	docs/rules-digest.md	281	the walk stops at the first unaffordable step and keeps the remaining moves	first unaffordable step and keeps the remaining moves
+E20	docs/rules-digest.md	281	only the AI loses all its moves there	AI loses them all
+E21	docs/rules-digest.md	294	atk = (Σ troops, archers ×3) div 80 × army.morale(+14)	archers counted triple
+E21	docs/rules-digest.md	295	fort := fort mod 100 if an order is pending	pending fortification order
+E21	docs/rules-digest.md	297	× 5/3  if the city is any nation's capital and loyalty > 59	5/3 if the city is a capital and its loyalty is above 59
+E21	docs/rules-digest.md	298	× 4/5  if owner ≠ allegiance	times 4/5 if its owner is not its allegiance
+E21	docs/rules-digest.md	299	+ (owner's recruitment-slot troops at this city) / 2	half the owner's queued troops
+E21	docs/rules-digest.md	300	def = def × 9/10  if the attacker's nation is the city's allegiance	times 9/10 if the attacker is the allegiance
+E21	docs/rules-digest.md	291	`FUN_0044b27c(army, city)`, run on every attempt	on every attempt, win or lose
+E21	docs/rules-digest.md	303	attacker casualties: every unit loses troops/(Random(15)+105) × r,  r = max(1, min(15, def×6 div atk))	every besieging unit loses troops/\(Random\(15\)\+105\) x r, r = max\(1, min\(15, def x 6 div atk\)\)
+E21	docs/rules-digest.md	304	units left under standardSize/10 (regular) or /5 (mercenary) are deleted	a tenth of their standard size \(a fifth for mercenaries\) are deleted
+E21	docs/rules-digest.md	302	pop = max(pop, maxPop/6 + 1)	maxPop/6 \+ 1
+E21	docs/rules-digest.md	309	Ties go to the defender	ties go to the defender
+E22	docs/rules-digest.md	410	the AI declares war only when it is at war with nobody	only when it is at war with nobody
+E22	docs/rules-digest.md	410	its mobilization is ≤ 40 and it is not Winter	mobilisation is 40 or less and it is not winter
+E22	docs/rules-digest.md	410	the target borders it (neighbour mask) and is not "protected" by an ally	borders it \(neighbour mask\) and is not protected by an ally
+E22	docs/rules-digest.md	410	`8 × P(me) / P(target) > 10`	8 x P\(me\)/P\(target\) is above 10
+E22	docs/rules-digest.md	410	It then declares with a 1-in-10 chance per turn	1-in-10 chance per turn
+E22	docs/rules-digest.md	400	leaving trade writes −8, an alliance −24, ending a war −18	trade writes a cooldown of -8, an alliance -24, ending a war -18
+E22	docs/rules-digest.md	400	with a 1-in-3 chance `v = min(0, v + 3)`	1-in-3 chance becomes min\(0, v \+ 3\)
+E22	docs/rules-digest.md	400	**Only columns 0–7 thaw**	indexed 0 to 7
+E23	docs/rules-digest.md	225	A slot starts at state 0 and gains +2 per tick, capped at 24	starts at state 0 and gains 2 each round up to 24
+E23	docs/rules-digest.md	225	A mobilized unit's quality is `state / 4`, **permanently**	quality is state/4, fixed
+E23	docs/rules-digest.md	225	The player may mobilize at state > 15 (quality ≥ 4); the AI waits for 24	above 15 \(quality 4 or more\), the AI waits for 24
+E23	docs/rules-digest.md	199	Slots cost upkeep** even when not ready	upkeep even when not ready
+E23	docs/rules-digest.md	199	add `troops/2` to their city's siege defence	half their troops
+E23	docs/rules-digest.md	199	are cleared when the city is captured	cleared when the city is captured
+E23	docs/rules-digest.md	197	40 slots of 8 bytes	up to 40
+E24	docs/rules-digest.md	421	A fleet holds `8 × ships` and burns `ships` a turn; a carried army burns `troops/200`	8 tons per ship and uses one ton per ship a turn; a carried army uses troops div 200
+E24	docs/rules-digest.md	419	`30 − (ships − 50)/10`, minus `troops aboard/100/ships + 1` when carrying, −3 with 0 supplies, and `(70 − condition)>>2` below condition 70	30 - \(ships - 50\)/10.*minus 3 with 0 supplies.*below 70
+E25	docs/rules-digest.md	21	New Game shuffles the 16-entry turn order	shuffles the 16-seat turn order
+E25	findings/2026-10-02-start-as-each-nation.md	9	**Five nations start with no army**	five nations start with no army
+E25	findings/2026-10-02-start-as-each-nation.md	9	Carthage and Ptolemaic have a fleet	only Carthage and Ptolemaic have a fleet
+E26	docs/rules-digest.md	258	within Chebyshev 4 of an army, when its nation is at war with someone and the army's purse is above 50	at war with someone and the army's purse is above 50
+E26	docs/rules-digest.md	258	There is **no cost** and no troop, supply or fleet cap	free and has no troop, supply or fleet cap
+E26	docs/rules-digest.md	258	within Chebyshev 4 of an army	within 4 tiles
+E27	docs/rules-digest.md	132	+ taxBase × taxRate div 100 + taxBase div 4	div 100 \+ taxBase div 4
+E27	docs/rules-digest.md	134	Σ over trade/alliance partners (relation 1 or 2): partner.taxBase div 12	\(relation 1 or 2\), the partner's taxBase div 12
+E28	docs/rules-digest.md	332	fewer than 6 cities** (or takes a capital that cannot be moved)	fewer than 6 cities.*capital that cannot be moved
+E28	docs/rules-digest.md	332	fleets under construction go to the conqueror	under construction go to the conqueror
+E28	docs/rules-digest.md	441	shows unity 0 and capital `0xFFFF`	unity 0 and capital 0xFFFF
+E28	docs/rules-digest.md	441	the seat turns AI	seat turns AI
+E29	docs/rules-digest.md	70	| below 10 | −2, floored at **51** | −1 |	not below 51.*1 move
+E29	docs/rules-digest.md	72	| above 15 | +1, capped at **70** | — |	not above 70
+E29	docs/rules-digest.md	71	| 10–15 | no change (dead band) | — |	10 to 15 percent changes nothing
+E29	docs/rules-digest.md	234	at 0 % it loses 2 morale per tick	at 0 percent it loses 2 a tick
+E29	docs/rules-digest.md	75	**starvation never kills troops**	starvation never kills troops
+S02b	docs/rules-digest.md	405	refused while you, or an ally of yours, is at war with anyone	at war with anyone
+S02b	docs/rules-digest.md	405	The AI target's own wars are **not** checked	not checked
+S02d	docs/rules-digest.md	403	peace with an AI you are at war with is refused	while at war with it
+MM05	docs/rules-digest.md	287	**Yes declares war** (relation 3, with the ally cascade) before the attack resolves	Yes declares war
+UA01	docs/rules-digest.md	83	whose owner is **not at war** with you	not at war
+UA01	docs/rules-digest.md	84	**Own city or own fleet:** free and immediate	own city: free
+UA01	docs/rules-digest.md	84	`troops div 100 + 1 − supplies`	troops div 100 \+ 1
+UA01	docs/rules-digest.md	86	a purse is capped at **1,000**	1,000
+UA01	docs/rules-digest.md	85	capped by stock, capacity and `money × 5`	stock.*capacity.*money x 5
+V01	docs/rules-digest.md	20	checked at the start of each human turn in `FUN_00452034`	start of each human turn
+V02	docs/rules-digest.md	20	the game runs 270 BC to 250 BC	250 BC
+V03	docs/rules-digest.md	441	An eliminated human gets the `THumanFalls` dialog and the seat turns AI	seat turns computer-controlled
+V04	docs/rules-digest.md	151	`treasury < −(wealth div 500)`, or `treasury < −20000`, or `unity < 400`	-\(wealth div 500\).*-20,000.*unity below 400
+V04	docs/rules-digest.md	152	tested at the start of each of the human's turns	start of each of the human's turns

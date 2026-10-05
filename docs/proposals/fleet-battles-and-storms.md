@@ -270,7 +270,7 @@ to a run, so **the player's approval of this revision is requested before T0b/T0
 
 ## 13. Review plan
 
-PR with this file only; `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-6 Luna); a Claude pass with
+PR with this file only; `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-5.6 Luna, the default chain since 2026-10-05; the quota check first, `CLAUDE.md` L50); a Claude pass with
 `/review-pr <n>`; the player answers §12 and approves T0b/T0.
 
 ## Appendix A. The start-save facts this plan relies on

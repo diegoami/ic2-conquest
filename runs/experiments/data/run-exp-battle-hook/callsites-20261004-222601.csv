@@ -1,0 +1,22 @@
+site,module,purpose_R_code,battles_with_a_record,records,range_min,range_max,range_distinct,fixed_range_value,phases
+0x43801a,TBattleMap,"copy-in, attacker slots 0..19: Random(quality*4) per live slot (morale = clamp(draw + army morale, 60, 90))",318,552,24,36,2,,pre-battle=552
+0x43812f,TBattleMap,"copy-in, defender slots 20..39: Random(quality*4) per live slot",318,540,24,24,1,24,pre-battle=540
+0x43820d,TBattleMap,AI placement: Random(5) picks the formation row of the side (one per computer-controlled side's placement half-round),318,636,5,5,1,5,placement half-round=636
+0x438ffb,TBattleMap,"Rout(u) test, first draw Random(morale), only when troops >= floor and 20 <= morale <= 39",81,188,22,39,13,,melee phase=90;moves phase=98
+0x439006,TBattleMap,"Rout(u) test, second draw Random(morale)",81,188,22,39,13,,melee phase=90;moves phase=98
+0x439188,TBattleMap,"shot (FUN_0043910C), first draw Random(n)",264,5829,1,699,423,,moves phase=5829
+0x439191,TBattleMap,"shot, second draw Random(n); loss = sum of the two",264,5829,1,699,423,,moves phase=5829
+0x439557,TBattleMap,"melee (FUN_004393EC), attacker's first draw Random(nA)",303,3510,1,10528,1110,,melee phase=3510
+0x43955f,TBattleMap,"melee, attacker's second draw Random(nA)",303,3510,1,10528,1110,,melee phase=3510
+0x4395ce,TBattleMap,"melee, defender's first draw Random(nD)",303,3510,1,17510,1715,,melee phase=3510
+0x4395d8,TBattleMap,"melee, defender's second draw Random(nD)",303,3510,1,17510,1715,,melee phase=3510
+0x43aa88,TBattleMap,"AI general, flank step (pass 3): Random(3) = 0 flips the horizontal direction",16,23,3,3,1,3,moves phase=23
+0x4592bd,TBattleOver_OK,after the battle: promotion Random(4) per surviving winner unit (0 = quality + 1),318,544,4,4,1,4,post-battle=544
+0x45951c,TBattleOver_OK,after the battle: the peace test Random(5) (< 2 opens the Offer of peace box),185,185,5,5,1,5,post-battle=185
+0x43910c,hook,"marker: entry of the shot routine FUN_0043910C (EAX shooter slot, EDX target slot)",264,5829,,,,,
+0x4393ec,hook,marker: entry of the melee pass FUN_004393EC (no arguments),318,4842,,,,,
+0x438fb0,hook,marker: entry of Rout FUN_00438FB0 (EAX the slot),318,12849,,,,,
+0x437b8c,hook,"boundary: `mov byte [0x4A0B7C],0` in the end-of-battle routine called from 0x439CDE",318,318,,,,,
+0x45c21f,hook,"boundary: `mov byte [0x4A0B7C],0` in TPremierForm's clean-up (0x45C208)",0,0,,,,,
+0x457907,hook,boundary before the reseed RandSeed := a + b in the TBattlePols unit,77,77,,,,,
+0x450c7b,hook,boundary before the reseed RandSeed := a + b in the function at 0x450C68,0,0,,,,,

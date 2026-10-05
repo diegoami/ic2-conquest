@@ -1,0 +1,4 @@
+[   2.00] xvfb pid=3505200 display=':577'
+[   8.58] process_started trial='hi-hi-one_s1_r1_hook' exe='Imperial Conquest 2 lab hook s1.exe' pid=3505454
+[  23.66] trial_error trial='hi-hi-one_s1_r1_hook' error="DriverError: hook buffer not clean before the battle: {'index': 3435973836, 'overflow': 3435973836, 'pending': 3435973836, 'capacity': 65536, 'magic_ok': True, 'records': 65536, 'truncated_reader': True}"
+[  25.43] run_done ok=0 errors=1

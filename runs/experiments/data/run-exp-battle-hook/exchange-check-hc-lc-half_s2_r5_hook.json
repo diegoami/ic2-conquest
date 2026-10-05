@@ -1,0 +1,208 @@
+{
+ "shots": 9,
+ "shots_n_ok": 9,
+ "melee": 4,
+ "melee_n_ok": 4,
+ "rout_tests": 17,
+ "rout_with_draws": 1,
+ "rout_draw_count_ok": 17,
+ "rout_removed": 1,
+ "state_diffs": 0,
+ "misses": 0,
+ "loss_rows": 7,
+ "loss_rows_exact": 7,
+ "half_rounds_with_unaccounted_draws": 0,
+ "unconfirmed_exchanges": 0,
+ "flank_draws": 0,
+ "placement_draws": 2,
+ "trial": "hc-lc-half_s2_r5_hook",
+ "series": [
+  "hc-lc-half_s2_r5_hook_BATTLE01.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE02.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE03.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE04.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE05.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE06.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE07.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE08.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE09.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE10.SAV",
+  "hc-lc-half_s2_r5_hook_BATTLE11.SAV"
+ ],
+ "per_half_round": [
+  {
+   "half_round": 1,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 1,
+   "accounted_for_by_the_replay": 1,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 2,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 1,
+   "accounted_for_by_the_replay": 1,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 3,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 4,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 5,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 6,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 7,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 0,
+   "accounted_for_by_the_replay": 0,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 0,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 8,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 12,
+   "accounted_for_by_the_replay": 12,
+   "all_accounted": true,
+   "moves_exchanges": 4,
+   "melee_exchanges": 1,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 9,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 4,
+   "accounted_for_by_the_replay": 4,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 1,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 10,
+   "header_ok": true,
+   "mover": 1,
+   "random_records": 14,
+   "accounted_for_by_the_replay": 14,
+   "all_accounted": true,
+   "moves_exchanges": 5,
+   "melee_exchanges": 1,
+   "state_diffs": 0,
+   "misses": 0
+  },
+  {
+   "half_round": 11,
+   "header_ok": true,
+   "mover": 0,
+   "random_records": 6,
+   "accounted_for_by_the_replay": 6,
+   "all_accounted": true,
+   "moves_exchanges": 0,
+   "melee_exchanges": 1,
+   "state_diffs": 0,
+   "misses": 0
+  }
+ ],
+ "miss_list": [],
+ "state_diff_list": [],
+ "loss_rows_not_exact": [],
+ "copy_in": {
+  "attacker": {
+   "live_slots": 1,
+   "draws": 1,
+   "count_ok": true,
+   "ranges_ok": true,
+   "base_candidates": [
+    65
+   ],
+   "morale_rule_ok": true
+  },
+  "defender": {
+   "live_slots": 1,
+   "draws": 1,
+   "count_ok": true,
+   "ranges_ok": true,
+   "base_candidates": [
+    68
+   ],
+   "morale_rule_ok": true
+  }
+ },
+ "post_battle": {
+  "survivors": 1,
+  "winner_sides": [
+   1
+  ],
+  "promotion_draws": 1,
+  "promotion_draws_equal_survivors": true,
+  "promotion_ranges_all_4": true,
+  "promotions": 1,
+  "peace_draws": 1,
+  "peace_range_5": true,
+  "peace_results": [
+   4
+  ],
+  "dialog_after_battle": "",
+  "offer_iff_draw_below_2": true
+ }
+}

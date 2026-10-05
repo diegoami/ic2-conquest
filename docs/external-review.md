@@ -7,7 +7,9 @@
 | Role | First | Then |
 |---|---|---|
 | Implementer | Claude Sonnet (no OpenCode implementer) | – |
-| Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-6 Luna (`openai/gpt-6-luna#high`, the OpenAI OAuth credential, not the Go copy) |
+| Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
+
+**Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given. The script also checks itself: before the chain runs it asks quota-tracker (`IC2_QUOTA_URL`, default `http://localhost:8765`) about each model's provider, skips one whose provider is `exhausted` (GPT-5.6 Luna is judged on its own `gpt-5.6-luna:7d` window), names the skip in the posted header (`PR review (gpt-5.6-luna; glm-5.3 failed: quota exhausted (zai, usable in 1h))`) and exits 3 when every model is skipped; when quota-tracker does not answer it goes on unchanged.
 
 - The chain moves to the next model only after an infrastructure failure (including "no review at all"), never
   after a real or flagged review. When both fail, `scripts/external_review.py` exits **3** and the caller decides
@@ -22,7 +24,10 @@
   (a third-party upstream rejecting assistant messages with empty content), which is why the Luna in the chain is
   the **direct OpenAI** one. Both are untested as long runs here; reviews are short.
 - **Effort is `high`, never `max`** (Go lists low/high/max; max is overkill and slower). A model without a
-  variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line.
+  variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line. That suits the light models in
+  the chain. **A heavy model (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`) is passed with `#low`, or `#medium`
+  when the PR needs it, never `#high`** (the player, 2026-10-05). `opencode_watched.effort` enforces it: a heavy model with no variant
+  gets `#low`, and `#high` or `#max` on one is lowered to `#medium` with a log line.
 
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
@@ -34,7 +39,7 @@ python3 scripts/external_review.py --pr 7 --apply-label          # also sets sta
 python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
 python3 scripts/external_review.py --pr 7 --dry-run              # prints the arguments, starts no model
 python3 scripts/external_review.py --pr 7 --review-file R.md     # offline: what would be posted, its note, the exit code
-python3 scripts/external_review.py --self-test                   # the review parser over 15 sample outputs
+python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota skip (6) and the effort rule (8)
 ```
 
 Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (nothing posted; record the cause in
@@ -129,7 +134,7 @@ nonzero-exit, permission-rejected, default-agent, cut-off, unknown-model, unknow
 explicit `--model a,b` list the next model is tried only after an infrastructure failure (including "no review
 at all"), never after a real or flagged review; the list stops after two consecutive failures of one class, and
 `permission-rejected`, `unknown-agent` and `no-executable` stop it at once. The posted header names the failures:
-`PR review (gpt-6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
+`PR review (gpt-5.6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
 model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.
 
 ## Lessons

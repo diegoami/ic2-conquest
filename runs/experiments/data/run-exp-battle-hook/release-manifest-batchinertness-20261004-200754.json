@@ -1,0 +1,1568 @@
+{
+ "archive": "b11-hook-batch-inertness.tar.gz",
+ "archive_bytes": 6168689,
+ "archive_sha256": "bd7f68a0ec425569dd7e23e13f89dc6d32a83f56be1d382d63065979e79bedd7",
+ "batch": "inertness",
+ "trials": [
+  "hi-hi-one_s1_r1_hook",
+  "hi-hi-one_s1_r2_hook",
+  "hi-hi-one_s1_r3_hook",
+  "hi-hi-one_s2_r3_hook",
+  "hi-hi-one_s3_r3_hook",
+  "mix-rg_s1_r3_hook",
+  "mix-rg_s2_r3_hook",
+  "mix-rg_s3_r3_hook",
+  "hi-hi-one_s1_r3_plain",
+  "hi-hi-one_s2_r3_plain",
+  "hi-hi-one_s3_r3_plain",
+  "mix-rg_s1_r3_plain",
+  "mix-rg_s2_r3_plain",
+  "mix-rg_s3_r3_plain",
+  "B11_open",
+  "ar-ar-one"
+ ],
+ "members": 308,
+ "files": [
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "61ed8a3c532463db031f54e02d479d99a35cc3c5609595c736ce1dae8a04df2d"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "d9d34ea5b3b85f8554158dfa615b44e8aca90362eddd3a333b65b406f0303fc2"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "b0d5a6fd0966c0fe5ff8bc8d3df32b4a2ea390fa240e72d5c97bed9f4acd6995"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "e33a05187f848c1222ac9d4f569a4752bb14c08ff5c35b2171c6bfe9b1913ad0"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "ec8ea3e6d28d6ec7fb1feffd4e3c02df62e2dd92e21a3e97b7dd649efa970947"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "ae6ee249d238d224111d493a48a8a14ecdc5c7fae5b924ccd215d6304dd94716"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "6d3e442cefe29fb185adae976034ccf7a9df8be8efd564a79d9e24346d208b8d"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "361f479f6db66c619709bee54795dffd5c6cb56d678cff6c6ac531c5efc85946"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "71f1f1e694c6572f906d1325a01034147a46fdea2ecdf68db2c8f2df6a609290"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "9757c5cde865435a20b2bdfbe2958f47b94d4464db20948c31fe007cbcde1dd5"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "61930161b825e7e30672f822b1f6ec2bfe6c227ba804bec3079af39534882098"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "548ecb8c63c24543ea06f4fc64101f2d0a1cdb7f91c6d93a0bd9c7978e317ef7"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "3d419d201d1d5b32612c4a014f75624c5bf141e4add3032028c2229c94e756fa"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "550026838974d89beab863b0b9c4ddbf5542c5b4ae673e00b24e3fc996334e59"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "5c18bad70b41d49e7a8be85fb1c311eceda8695f5c1a2371c043823534342d25"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "91ae5b77ca2e7219b9afd3cf25bb7b9bc9f53f85ddb0847e55e0f13f2d513e0f"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "b060597c2a5798b6d3ac5b22c61dad6fd176ae0b5a90249644ea19de6cabb10b"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "d87b3bd5ec83ec80a3bbdea49f04ad91ac4bbb87a5a954ae0a8a002c3ffe15d7"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_BATTLE19.SAV",
+   "bytes": 134254,
+   "sha256": "0c3e1e2946d536e77f8165da19be1eb4cafaabd2992dd8cd6b555714847508e7"
+  },
+  {
+   "name": "hi-hi-one_s1_r1_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "1043d0aaccf3fac2ce42f75ed8495e117ffc689d1308d19a323a5cba81ad891b"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r1_hook_battle-ended.png",
+   "bytes": 23930,
+   "sha256": "2dbaeb9d6a6a1ebaeb9ad92ee1557277ee77cfc40a8941dfd68e3a8d2178288e"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r1_hook_dialog-Offer_of_peace-1791136286.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "hookbuf/hi-hi-one_s1_r1_hook.bin",
+   "bytes": 5616,
+   "sha256": "7e0e2899c7b62aab942ef5a615c38cf4810beaf61f7079858fa25018447d4f07"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "61ed8a3c532463db031f54e02d479d99a35cc3c5609595c736ce1dae8a04df2d"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "d9d34ea5b3b85f8554158dfa615b44e8aca90362eddd3a333b65b406f0303fc2"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "b0d5a6fd0966c0fe5ff8bc8d3df32b4a2ea390fa240e72d5c97bed9f4acd6995"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "e33a05187f848c1222ac9d4f569a4752bb14c08ff5c35b2171c6bfe9b1913ad0"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "ec8ea3e6d28d6ec7fb1feffd4e3c02df62e2dd92e21a3e97b7dd649efa970947"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "ae6ee249d238d224111d493a48a8a14ecdc5c7fae5b924ccd215d6304dd94716"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "6d3e442cefe29fb185adae976034ccf7a9df8be8efd564a79d9e24346d208b8d"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "361f479f6db66c619709bee54795dffd5c6cb56d678cff6c6ac531c5efc85946"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "71f1f1e694c6572f906d1325a01034147a46fdea2ecdf68db2c8f2df6a609290"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "9757c5cde865435a20b2bdfbe2958f47b94d4464db20948c31fe007cbcde1dd5"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "61930161b825e7e30672f822b1f6ec2bfe6c227ba804bec3079af39534882098"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "548ecb8c63c24543ea06f4fc64101f2d0a1cdb7f91c6d93a0bd9c7978e317ef7"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "3d419d201d1d5b32612c4a014f75624c5bf141e4add3032028c2229c94e756fa"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "550026838974d89beab863b0b9c4ddbf5542c5b4ae673e00b24e3fc996334e59"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "5c18bad70b41d49e7a8be85fb1c311eceda8695f5c1a2371c043823534342d25"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "91ae5b77ca2e7219b9afd3cf25bb7b9bc9f53f85ddb0847e55e0f13f2d513e0f"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "b060597c2a5798b6d3ac5b22c61dad6fd176ae0b5a90249644ea19de6cabb10b"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "d87b3bd5ec83ec80a3bbdea49f04ad91ac4bbb87a5a954ae0a8a002c3ffe15d7"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_BATTLE19.SAV",
+   "bytes": 134254,
+   "sha256": "0c3e1e2946d536e77f8165da19be1eb4cafaabd2992dd8cd6b555714847508e7"
+  },
+  {
+   "name": "hi-hi-one_s1_r2_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "1043d0aaccf3fac2ce42f75ed8495e117ffc689d1308d19a323a5cba81ad891b"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r2_hook_battle-ended.png",
+   "bytes": 23930,
+   "sha256": "2dbaeb9d6a6a1ebaeb9ad92ee1557277ee77cfc40a8941dfd68e3a8d2178288e"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r2_hook_dialog-Offer_of_peace-1791136510.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "hookbuf/hi-hi-one_s1_r2_hook.bin",
+   "bytes": 5664,
+   "sha256": "5e867e2c7555c361bf54206aac8e301a6a8448c2a52c2799cd496ece6d3c1c54"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "61ed8a3c532463db031f54e02d479d99a35cc3c5609595c736ce1dae8a04df2d"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "d9d34ea5b3b85f8554158dfa615b44e8aca90362eddd3a333b65b406f0303fc2"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "b0d5a6fd0966c0fe5ff8bc8d3df32b4a2ea390fa240e72d5c97bed9f4acd6995"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "e33a05187f848c1222ac9d4f569a4752bb14c08ff5c35b2171c6bfe9b1913ad0"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "ec8ea3e6d28d6ec7fb1feffd4e3c02df62e2dd92e21a3e97b7dd649efa970947"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "ae6ee249d238d224111d493a48a8a14ecdc5c7fae5b924ccd215d6304dd94716"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "6d3e442cefe29fb185adae976034ccf7a9df8be8efd564a79d9e24346d208b8d"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "361f479f6db66c619709bee54795dffd5c6cb56d678cff6c6ac531c5efc85946"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "71f1f1e694c6572f906d1325a01034147a46fdea2ecdf68db2c8f2df6a609290"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "9757c5cde865435a20b2bdfbe2958f47b94d4464db20948c31fe007cbcde1dd5"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "61930161b825e7e30672f822b1f6ec2bfe6c227ba804bec3079af39534882098"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "548ecb8c63c24543ea06f4fc64101f2d0a1cdb7f91c6d93a0bd9c7978e317ef7"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "3d419d201d1d5b32612c4a014f75624c5bf141e4add3032028c2229c94e756fa"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "550026838974d89beab863b0b9c4ddbf5542c5b4ae673e00b24e3fc996334e59"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "5c18bad70b41d49e7a8be85fb1c311eceda8695f5c1a2371c043823534342d25"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "91ae5b77ca2e7219b9afd3cf25bb7b9bc9f53f85ddb0847e55e0f13f2d513e0f"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "b060597c2a5798b6d3ac5b22c61dad6fd176ae0b5a90249644ea19de6cabb10b"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "d87b3bd5ec83ec80a3bbdea49f04ad91ac4bbb87a5a954ae0a8a002c3ffe15d7"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_BATTLE19.SAV",
+   "bytes": 134254,
+   "sha256": "0c3e1e2946d536e77f8165da19be1eb4cafaabd2992dd8cd6b555714847508e7"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "1043d0aaccf3fac2ce42f75ed8495e117ffc689d1308d19a323a5cba81ad891b"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r3_hook_battle-ended.png",
+   "bytes": 23930,
+   "sha256": "2dbaeb9d6a6a1ebaeb9ad92ee1557277ee77cfc40a8941dfd68e3a8d2178288e"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r3_hook_dialog-Offer_of_peace-1791136597.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "hookbuf/hi-hi-one_s1_r3_hook.bin",
+   "bytes": 5664,
+   "sha256": "5e867e2c7555c361bf54206aac8e301a6a8448c2a52c2799cd496ece6d3c1c54"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "5b5256c45bd40783be49bdcd9448b3e73784273715e1af675e8a596504daeeee"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "0c79b18101c29f6e4686080d2ba75f8ddab6ed8111f2a54b49ff161890803783"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "ed04127a676949265d14902e9794ad07821fd52a60da0e22af490f724def3424"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "d9cfa4c420847a3559058bba0dda404ce68a2ebfb52be80aa221db15208f6044"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "71aa0f963c26e11cf391fe55bb498eed636d9008e4a9a0ead18efb5ab69ed30a"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "f6b0799c2345586b8be440f8fb0604e92b0e44595e0a0ce68c4ea5b616b2c41f"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "e676e13cfb43df1f998c374641290af0b5731fe886087152b82f3bdb34e93770"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "2d1e11697fb6f2364bdbfc65b4bff17d29c2290df2d344dd99382557de2092f0"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "fcbcd9988d5cb7cb66b9203e31cdf04eea50df28f5b48ec618af646b2de621ce"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "50430b5c500f833d2d6956b09aea5d3b04d62bdf02ee0dc60c1d07b4e9aea8f7"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "9e288ee437a6a0d9919b26799865353fcfe0ce21e4e5456ac62a470f32be7e41"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "5919f0c35decefed5a5aad0ec5570467d15cfe04bb8f1f5ca17c5db6d0540a23"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "5fbfcf6b525c659a5f90061dd2787fb100119f6be87faadd0d7af472fbd9f20e"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "6756890b7f3b3e78a5ddf2f87a32806648a69abfc3beddb0ff931c8cdf50d381"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "d24de1bd1222d37340bd856be983aa72e09c4e8233f6d4e5760c62f8c3733fed"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "db2c116daa2cb23411ac03772ed96290cea3441fd17d533e6ccae71346507016"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "ef802635fdd645f8865abc0f6c80d7d30664859d96bc2b9903a8441df4d6960e"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "c93e545c6456ec7df5e4b4b1764360f2d49dc1034e2f6dc97947c92b9a06e30b"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "3e4a5b00b6de63716c049b0e69981636a9d5c4d9e11fd64bf210473e43617ef6"
+  },
+  {
+   "name": "shots/hi-hi-one_s2_r3_hook_battle-ended.png",
+   "bytes": 23736,
+   "sha256": "706a72b0ef1a67694ed0f2cf842191ec64922f3ab3bcba96b8e44b1696ef7704"
+  },
+  {
+   "name": "hookbuf/hi-hi-one_s2_r3_hook.bin",
+   "bytes": 5088,
+   "sha256": "3e453644c271407791f2477013eb1d92d9871a8bab27c4ebbb9d313b687ee452"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "85d7ec283595127d903be91aecda7fc55b28eb87f382d0fecb5d02d330ab5f7c"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "f27aee39bc9702999c36ce1a36202eb607a035c0fc79a1a9b7d51dab0914a90a"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "3311c39eee0ce5798f736fb0afb82f307e46c807a0894c50b9135f6ce09b718c"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "0f22916316255e4fe8e84d9a2af59bfd42c0b097170c4c6358ea142298669cff"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "c7bed05648530d1fee620742b5e4b3d3278002f8663c8372565bffeb4b2d6a51"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "652676b64160c092a5baf3638d4cb2d751f7e10fd43ea40fdbeb1e029adf22be"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "8a2d5a4c0b1c45ce5366a9792805164db4d0aa8179dc115db1c60b91db0e2144"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "01d8dce40b61714ea7b9f3257d231f9fa657ef3d16b315bc76954e6b157afd6b"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "485eb3a2217e828688b5ae8e83bd0367eea6c6507044736e648166ba3dcb10d2"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "bfcd314df57303e6c6239e12bc119f60bf6e0164fa6046d371c938ea8f580894"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "ac2f0e9be3905e10d042a9f8676af2d76484e38d6a5f6fb188e4df64001383b7"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "89965d5111fbd725a1bdac4d8c2a055eeea47009190d9df6bf1c5988166b9d03"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "3caf611736b65d3c2da1cda6bd7beb7e692fc5ca4162612eab8243ab6148d94c"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "28ce2ab082ca9c8f0f4c5fcd820cd0c5725ebbba1fd2fb98297323ec2d6b8400"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "bd616a7e9f5fef70393ca855743c2cf97d5961e0ffd5000bebf58d126ef2cd34"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "0e99a9b528090135f6f570ebd0dcdf75334da59199c855b2c2670e6006ebafb4"
+  },
+  {
+   "name": "shots/hi-hi-one_s3_r3_hook_battle-ended.png",
+   "bytes": 23292,
+   "sha256": "ac0eccc0d2b3c91497d0fc48049d4d84e7783613d422c5a6ae65e324375efc7f"
+  },
+  {
+   "name": "shots/hi-hi-one_s3_r3_hook_dialog-Offer_of_peace-1791136710.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "hookbuf/hi-hi-one_s3_r3_hook.bin",
+   "bytes": 4032,
+   "sha256": "ffdcde0ad06268c57fdd14fdb77f30cd3a2d2a038e4f807d3e3da5062cebe71c"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "3f1c5ed7690c8026e9556c9e4840b6956d63feb4ae23169bcfb0d6ac71787eb9"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "4254fad6cf83a1da4d406cf0dd1f81c662a599fae03b3f38e441a7749a8e2e70"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "06c0fa8daa03d4b027995a2af5a61a3635809287cb8f3838e691854e501cacb0"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "0edc944009e54520ba6bad8185a2a992767c0cbe70765ef551e713241091ca35"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "458a1c60f80c71a10b8bd397b468fe895589cb49ea2970e59943389e61e0593d"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "de69151203cd4bb20c34a136b32a1ce68110ddc9fb2e0e685940a06eeb082ae9"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "c8dbc44e4610d26e5ff1514d021248225b32953fbc3d76153cea86c63393990b"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "7a29e11eeb78ea1589d2efbcbeb2ac35b188461aab142cf72832286dde3c0a2e"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "6e13e6e38eedd583476ec60789a2555612642e4f6be6a81c6d7119ee1269efcd"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "a2dc29d1b47e85990a5bceff553883533768ef19b08f2776292ecefe5fec0f79"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "19f7f110b8787c618318248a65b3e8a7a3815901dcb60ff4aa37e05c33f5e479"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "3ec2765b983e3ab62198a60ee9176b2585bf62ad38c80934784862a52e2d1e92"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "0157d9b47b4d85390ae7de1bb29ee63f9758dbc7e447e8411e3ff49aa42afce1"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "debd9b3ca54ffb3e4123a801cea7f0c75ca89fe6013a52aeb4e584c71ec77d20"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "b9462af8df491805b5ae960d044a424f0391bd6b16959b36ff91b60b9a1e1f14"
+  },
+  {
+   "name": "mix-rg_s1_r3_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "415797f3a9279e82e92646077c0a1f3007fd66972f53554c079ca32ca4ed858b"
+  },
+  {
+   "name": "shots/mix-rg_s1_r3_hook_battle-ended.png",
+   "bytes": 27197,
+   "sha256": "419eb06b898ec14a708dfeaef25d1c5d7a6fc9861118cbc45f745a367bef9ab5"
+  },
+  {
+   "name": "hookbuf/mix-rg_s1_r3_hook.bin",
+   "bytes": 27168,
+   "sha256": "3030425911ccb55125f3131f4d6b116ff312bf6d4b7a5558dcb5ef8019dfb70d"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "4e95369a84102424386ef7231dd546290b62e8f2a4ac4a8ed91dd1f2aea403e9"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "ba74ffd4b689ecd0775274f63e6f931d483bbec878054676c067fc9d0978beca"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "36762a5dba7e46f8cb00f5fb0449b91981b393c0ac1db309267a898ff806bd3e"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "8e72be611a079b6200f86eac80ace492cf6e412b8a1a6e0c11ace3787db3f74a"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "9073dbf09399300138abbcf76d836d9110538c88dec2cb8b5a2a600d52ff0cfc"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "953a8c3941b5d523cc51ab9c131324eacad93b676a089a912c491a81b716db6d"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "92aa6c32aa9ecf816ca8d039b1d2e8defa185189073a13548a3fd979c1dc2468"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "b020f19404c455a71b6011b98b008ec615099a7aa2830ef517681d296f645ef5"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "04cdbc240e40c5ce5d808a3a1af689aa93e77f43026d8eee3e7ad53e281c32e6"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "0ece6a82bf28f33f34d1e7ad8f9eccfd21ec8b90a0769a6dd85707ed4b52f7bc"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "505d657747ce178735fcf68631903d7a4e0a2e07c5b2121ee1267bf009e4ea15"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "8169877dc12f1602e51d5312103706c9308e0dc79082506eebdfaa4dbde18e6f"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "d1047d0ab441b3cc7a1d5e076056682254ff828cbb2f91e860f66ae09e35b1a1"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "1f6d025fe520874432c5d07cef0cbb51e4bd9dc45b283d2e37c4424dd0a60a63"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "fe9963a7770ca62bcf1b5b1534112a5ac57650bdbbef8e3e5dfc0b867b8f060c"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "778fc25df018349fcac3c9f362c9908fb0da6d180e8524aeac7016f4cc793f1a"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "75fc40fd309008531e73fabe61aa5f5054c95b8487b499e3c7bf4a1b5edf8509"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "4046fe143dbc0fed2baaf60c1e89cf19d16b39d5445526a9447ffdfc2627c236"
+  },
+  {
+   "name": "mix-rg_s2_r3_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "82eadd4ec9b4a762ab74a6f885267d62fd1ccbe66bb6ce371d73c195b5283337"
+  },
+  {
+   "name": "shots/mix-rg_s2_r3_hook_battle-ended.png",
+   "bytes": 26540,
+   "sha256": "264a07ddd4417a3138e4c094d284117c88f841dbd1f126857fb051994368a172"
+  },
+  {
+   "name": "shots/mix-rg_s2_r3_hook_dialog-Offer_of_peace-1791136834.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "hookbuf/mix-rg_s2_r3_hook.bin",
+   "bytes": 26208,
+   "sha256": "4fb177a805fe10030113c27769d96b12536fefc7045d2f7d90d30344d1616908"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "ff3b453b4ce5300e82d5e0543927df08547fce36bcce90afbe77c8689fb6c50c"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "b635c59d1160b2148d7dd6da2d9f0a9aacb2bfe1fe654b0f0c0fbf19c7efeebb"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "e72e555ec0de521626a9d011b65374624126ab3a96ef651e28baba77a09d7114"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "02aa2f0f9144259532bb1d81566fa027218fdee2cc3a96a5498e1003128f0add"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "4ec7f76164370f2a47de4f072e903d2f381ef5d1cf6248a9e65da8d278cbf32d"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "d35d98e0292ccb2f0e67ef18e15165efe85bf53e6837cfaad8cabee4d3ea13f0"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "6c29fa278698a7d286e84bd2ad216fd8206b06bb5dd7e4ce28f1ad2c277df8f8"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "132df44eaec22518f2a732b8b4f414958c5d6d406ac1ec3bc739a7db1ea6dfc4"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "c75c79e745cf14fe2206e669dd363d1f4f09a9bef0e357027802cbae03ffa34a"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "acef18bb8b388ec2363d0b1326661b5adbc55520f5ae16916211f855c44a2344"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "9800e81cc62e34fd74c2533391173424f37523d9fdbeec1be44ee55f21b87829"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "fa5b1e0ab0e90e06f54019ac81ae40b2aef26abe3393490e7757bc1e948630c1"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "f6ee12c7c1e42e4639817431784383ee531213f7726844d94a5d46e0798fd7ed"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "701e8235f1f3ae42120e563cae6b74e577110815f46330fad9406819322b945e"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "7564efd7e2d29c1a8f836460afb2709fd270dac63a607f72966905ec1a2e2aed"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "a3e1f3a1e20867c0bcb9eb7cb2d6a3c21a5a9a57377a10d70c50047f649c2584"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "918b1bcba9e3cd4bc18d560b808efe97539c1a5fcd14cd551ed21c2f566ff23c"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "2f36d7ff3e1922cbdb3f0452c20820112afc54a3fd4a3bd5e40273bf136741c1"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE19.SAV",
+   "bytes": 134254,
+   "sha256": "f1c74f312786f2eedb8b6799bcc715ec22190c734e67a40e6dcf3db39e36e950"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE20.SAV",
+   "bytes": 134254,
+   "sha256": "4e8f0e25d9753770e47cc68d33820e293e6ab33c6d4ffb0123c8b91627f7c160"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE21.SAV",
+   "bytes": 134254,
+   "sha256": "7075a71e178805267842157b91bf7177bdefe768300e1d08420a19b760b5d595"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE22.SAV",
+   "bytes": 134254,
+   "sha256": "9044f2f00e4813e734c977b1d8796ee79f59031ab37c3164f8985f48c0a99050"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE23.SAV",
+   "bytes": 134254,
+   "sha256": "50568b7c430911a008e35db9a1a4968dfd3f553aa427de949f08ec40c062adab"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE24.SAV",
+   "bytes": 134254,
+   "sha256": "829a748d1a05e268a49a02df22ac2c3a47137d31674324ab17d78d2fcce1e915"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE25.SAV",
+   "bytes": 134254,
+   "sha256": "ca8ceda3fac53e8889330655b4a6b5104f4ca61c65a854ee48dd5f9f57cf02bf"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE26.SAV",
+   "bytes": 134254,
+   "sha256": "e79616e11eea90c9fe18bf23ce3d29ca99aca06039964dda742bfcac6b0826c3"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE27.SAV",
+   "bytes": 134254,
+   "sha256": "f45313586987bdadb370d360b4b987a0119449fd47e2e04a5a2258d714a95796"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_BATTLE28.SAV",
+   "bytes": 134254,
+   "sha256": "8b3bd51c40ef19424cf131a4e6a28c11da70f499c1633388107075cc41704557"
+  },
+  {
+   "name": "mix-rg_s3_r3_hook_post.SAV",
+   "bytes": 132149,
+   "sha256": "d7c6c30355e7b8acd331722c8dcf70950305121015676fb98d7731958004880f"
+  },
+  {
+   "name": "shots/mix-rg_s3_r3_hook_battle-ended.png",
+   "bytes": 27045,
+   "sha256": "a700746a1b08af28340dcae951731f81d861c5a24451a6be3a2564d5ef627347"
+  },
+  {
+   "name": "hookbuf/mix-rg_s3_r3_hook.bin",
+   "bytes": 36384,
+   "sha256": "63271c2b647e59e736ef61a8f0739d565ef793938a1d28e968286ebddbda6edd"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "61ed8a3c532463db031f54e02d479d99a35cc3c5609595c736ce1dae8a04df2d"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "d9d34ea5b3b85f8554158dfa615b44e8aca90362eddd3a333b65b406f0303fc2"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "b0d5a6fd0966c0fe5ff8bc8d3df32b4a2ea390fa240e72d5c97bed9f4acd6995"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "e33a05187f848c1222ac9d4f569a4752bb14c08ff5c35b2171c6bfe9b1913ad0"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "ec8ea3e6d28d6ec7fb1feffd4e3c02df62e2dd92e21a3e97b7dd649efa970947"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "ae6ee249d238d224111d493a48a8a14ecdc5c7fae5b924ccd215d6304dd94716"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "6d3e442cefe29fb185adae976034ccf7a9df8be8efd564a79d9e24346d208b8d"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "361f479f6db66c619709bee54795dffd5c6cb56d678cff6c6ac531c5efc85946"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "71f1f1e694c6572f906d1325a01034147a46fdea2ecdf68db2c8f2df6a609290"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "9757c5cde865435a20b2bdfbe2958f47b94d4464db20948c31fe007cbcde1dd5"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "61930161b825e7e30672f822b1f6ec2bfe6c227ba804bec3079af39534882098"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "548ecb8c63c24543ea06f4fc64101f2d0a1cdb7f91c6d93a0bd9c7978e317ef7"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "3d419d201d1d5b32612c4a014f75624c5bf141e4add3032028c2229c94e756fa"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "550026838974d89beab863b0b9c4ddbf5542c5b4ae673e00b24e3fc996334e59"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "5c18bad70b41d49e7a8be85fb1c311eceda8695f5c1a2371c043823534342d25"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "91ae5b77ca2e7219b9afd3cf25bb7b9bc9f53f85ddb0847e55e0f13f2d513e0f"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "b060597c2a5798b6d3ac5b22c61dad6fd176ae0b5a90249644ea19de6cabb10b"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "d87b3bd5ec83ec80a3bbdea49f04ad91ac4bbb87a5a954ae0a8a002c3ffe15d7"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_BATTLE19.SAV",
+   "bytes": 134254,
+   "sha256": "0c3e1e2946d536e77f8165da19be1eb4cafaabd2992dd8cd6b555714847508e7"
+  },
+  {
+   "name": "hi-hi-one_s1_r3_plain_post.SAV",
+   "bytes": 132149,
+   "sha256": "1043d0aaccf3fac2ce42f75ed8495e117ffc689d1308d19a323a5cba81ad891b"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r3_plain_battle-ended.png",
+   "bytes": 23930,
+   "sha256": "2dbaeb9d6a6a1ebaeb9ad92ee1557277ee77cfc40a8941dfd68e3a8d2178288e"
+  },
+  {
+   "name": "shots/hi-hi-one_s1_r3_plain_dialog-Offer_of_peace-1791136949.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "5b5256c45bd40783be49bdcd9448b3e73784273715e1af675e8a596504daeeee"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "0c79b18101c29f6e4686080d2ba75f8ddab6ed8111f2a54b49ff161890803783"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "ed04127a676949265d14902e9794ad07821fd52a60da0e22af490f724def3424"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "d9cfa4c420847a3559058bba0dda404ce68a2ebfb52be80aa221db15208f6044"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "71aa0f963c26e11cf391fe55bb498eed636d9008e4a9a0ead18efb5ab69ed30a"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "f6b0799c2345586b8be440f8fb0604e92b0e44595e0a0ce68c4ea5b616b2c41f"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "e676e13cfb43df1f998c374641290af0b5731fe886087152b82f3bdb34e93770"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "2d1e11697fb6f2364bdbfc65b4bff17d29c2290df2d344dd99382557de2092f0"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "fcbcd9988d5cb7cb66b9203e31cdf04eea50df28f5b48ec618af646b2de621ce"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "50430b5c500f833d2d6956b09aea5d3b04d62bdf02ee0dc60c1d07b4e9aea8f7"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "9e288ee437a6a0d9919b26799865353fcfe0ce21e4e5456ac62a470f32be7e41"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "5919f0c35decefed5a5aad0ec5570467d15cfe04bb8f1f5ca17c5db6d0540a23"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "5fbfcf6b525c659a5f90061dd2787fb100119f6be87faadd0d7af472fbd9f20e"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "6756890b7f3b3e78a5ddf2f87a32806648a69abfc3beddb0ff931c8cdf50d381"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "d24de1bd1222d37340bd856be983aa72e09c4e8233f6d4e5760c62f8c3733fed"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "db2c116daa2cb23411ac03772ed96290cea3441fd17d533e6ccae71346507016"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "ef802635fdd645f8865abc0f6c80d7d30664859d96bc2b9903a8441df4d6960e"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "c93e545c6456ec7df5e4b4b1764360f2d49dc1034e2f6dc97947c92b9a06e30b"
+  },
+  {
+   "name": "hi-hi-one_s2_r3_plain_post.SAV",
+   "bytes": 132149,
+   "sha256": "3e4a5b00b6de63716c049b0e69981636a9d5c4d9e11fd64bf210473e43617ef6"
+  },
+  {
+   "name": "shots/hi-hi-one_s2_r3_plain_battle-ended.png",
+   "bytes": 23736,
+   "sha256": "706a72b0ef1a67694ed0f2cf842191ec64922f3ab3bcba96b8e44b1696ef7704"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "85d7ec283595127d903be91aecda7fc55b28eb87f382d0fecb5d02d330ab5f7c"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "f27aee39bc9702999c36ce1a36202eb607a035c0fc79a1a9b7d51dab0914a90a"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "3311c39eee0ce5798f736fb0afb82f307e46c807a0894c50b9135f6ce09b718c"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "0f22916316255e4fe8e84d9a2af59bfd42c0b097170c4c6358ea142298669cff"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "c7bed05648530d1fee620742b5e4b3d3278002f8663c8372565bffeb4b2d6a51"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "652676b64160c092a5baf3638d4cb2d751f7e10fd43ea40fdbeb1e029adf22be"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "8a2d5a4c0b1c45ce5366a9792805164db4d0aa8179dc115db1c60b91db0e2144"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "01d8dce40b61714ea7b9f3257d231f9fa657ef3d16b315bc76954e6b157afd6b"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "485eb3a2217e828688b5ae8e83bd0367eea6c6507044736e648166ba3dcb10d2"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "bfcd314df57303e6c6239e12bc119f60bf6e0164fa6046d371c938ea8f580894"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "ac2f0e9be3905e10d042a9f8676af2d76484e38d6a5f6fb188e4df64001383b7"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "89965d5111fbd725a1bdac4d8c2a055eeea47009190d9df6bf1c5988166b9d03"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "3caf611736b65d3c2da1cda6bd7beb7e692fc5ca4162612eab8243ab6148d94c"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "28ce2ab082ca9c8f0f4c5fcd820cd0c5725ebbba1fd2fb98297323ec2d6b8400"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "bd616a7e9f5fef70393ca855743c2cf97d5961e0ffd5000bebf58d126ef2cd34"
+  },
+  {
+   "name": "hi-hi-one_s3_r3_plain_post.SAV",
+   "bytes": 132149,
+   "sha256": "0e99a9b528090135f6f570ebd0dcdf75334da59199c855b2c2670e6006ebafb4"
+  },
+  {
+   "name": "shots/hi-hi-one_s3_r3_plain_battle-ended.png",
+   "bytes": 23292,
+   "sha256": "ac0eccc0d2b3c91497d0fc48049d4d84e7783613d422c5a6ae65e324375efc7f"
+  },
+  {
+   "name": "shots/hi-hi-one_s3_r3_plain_dialog-Offer_of_peace-1791137060.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "3f1c5ed7690c8026e9556c9e4840b6956d63feb4ae23169bcfb0d6ac71787eb9"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "4254fad6cf83a1da4d406cf0dd1f81c662a599fae03b3f38e441a7749a8e2e70"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "06c0fa8daa03d4b027995a2af5a61a3635809287cb8f3838e691854e501cacb0"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "0edc944009e54520ba6bad8185a2a992767c0cbe70765ef551e713241091ca35"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "458a1c60f80c71a10b8bd397b468fe895589cb49ea2970e59943389e61e0593d"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "de69151203cd4bb20c34a136b32a1ce68110ddc9fb2e0e685940a06eeb082ae9"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "c8dbc44e4610d26e5ff1514d021248225b32953fbc3d76153cea86c63393990b"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "7a29e11eeb78ea1589d2efbcbeb2ac35b188461aab142cf72832286dde3c0a2e"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "6e13e6e38eedd583476ec60789a2555612642e4f6be6a81c6d7119ee1269efcd"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "a2dc29d1b47e85990a5bceff553883533768ef19b08f2776292ecefe5fec0f79"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "19f7f110b8787c618318248a65b3e8a7a3815901dcb60ff4aa37e05c33f5e479"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "3ec2765b983e3ab62198a60ee9176b2585bf62ad38c80934784862a52e2d1e92"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "0157d9b47b4d85390ae7de1bb29ee63f9758dbc7e447e8411e3ff49aa42afce1"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "debd9b3ca54ffb3e4123a801cea7f0c75ca89fe6013a52aeb4e584c71ec77d20"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "b9462af8df491805b5ae960d044a424f0391bd6b16959b36ff91b60b9a1e1f14"
+  },
+  {
+   "name": "mix-rg_s1_r3_plain_post.SAV",
+   "bytes": 132149,
+   "sha256": "415797f3a9279e82e92646077c0a1f3007fd66972f53554c079ca32ca4ed858b"
+  },
+  {
+   "name": "shots/mix-rg_s1_r3_plain_battle-ended.png",
+   "bytes": 27197,
+   "sha256": "419eb06b898ec14a708dfeaef25d1c5d7a6fc9861118cbc45f745a367bef9ab5"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "4e95369a84102424386ef7231dd546290b62e8f2a4ac4a8ed91dd1f2aea403e9"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "ba74ffd4b689ecd0775274f63e6f931d483bbec878054676c067fc9d0978beca"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "36762a5dba7e46f8cb00f5fb0449b91981b393c0ac1db309267a898ff806bd3e"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "8e72be611a079b6200f86eac80ace492cf6e412b8a1a6e0c11ace3787db3f74a"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "9073dbf09399300138abbcf76d836d9110538c88dec2cb8b5a2a600d52ff0cfc"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "953a8c3941b5d523cc51ab9c131324eacad93b676a089a912c491a81b716db6d"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "92aa6c32aa9ecf816ca8d039b1d2e8defa185189073a13548a3fd979c1dc2468"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "b020f19404c455a71b6011b98b008ec615099a7aa2830ef517681d296f645ef5"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "04cdbc240e40c5ce5d808a3a1af689aa93e77f43026d8eee3e7ad53e281c32e6"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "0ece6a82bf28f33f34d1e7ad8f9eccfd21ec8b90a0769a6dd85707ed4b52f7bc"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "505d657747ce178735fcf68631903d7a4e0a2e07c5b2121ee1267bf009e4ea15"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "8169877dc12f1602e51d5312103706c9308e0dc79082506eebdfaa4dbde18e6f"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "d1047d0ab441b3cc7a1d5e076056682254ff828cbb2f91e860f66ae09e35b1a1"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "1f6d025fe520874432c5d07cef0cbb51e4bd9dc45b283d2e37c4424dd0a60a63"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "fe9963a7770ca62bcf1b5b1534112a5ac57650bdbbef8e3e5dfc0b867b8f060c"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "778fc25df018349fcac3c9f362c9908fb0da6d180e8524aeac7016f4cc793f1a"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "75fc40fd309008531e73fabe61aa5f5054c95b8487b499e3c7bf4a1b5edf8509"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "4046fe143dbc0fed2baaf60c1e89cf19d16b39d5445526a9447ffdfc2627c236"
+  },
+  {
+   "name": "mix-rg_s2_r3_plain_post.SAV",
+   "bytes": 132149,
+   "sha256": "82eadd4ec9b4a762ab74a6f885267d62fd1ccbe66bb6ce371d73c195b5283337"
+  },
+  {
+   "name": "shots/mix-rg_s2_r3_plain_battle-ended.png",
+   "bytes": 26540,
+   "sha256": "264a07ddd4417a3138e4c094d284117c88f841dbd1f126857fb051994368a172"
+  },
+  {
+   "name": "shots/mix-rg_s2_r3_plain_dialog-Offer_of_peace-1791137177.png",
+   "bytes": 13300,
+   "sha256": "38521c4873136ce72af6dde08c4ebba5a84883bd9d6c212828dc75df12d5361f"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "ff3b453b4ce5300e82d5e0543927df08547fce36bcce90afbe77c8689fb6c50c"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "b635c59d1160b2148d7dd6da2d9f0a9aacb2bfe1fe654b0f0c0fbf19c7efeebb"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "e72e555ec0de521626a9d011b65374624126ab3a96ef651e28baba77a09d7114"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE04.SAV",
+   "bytes": 134254,
+   "sha256": "02aa2f0f9144259532bb1d81566fa027218fdee2cc3a96a5498e1003128f0add"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE05.SAV",
+   "bytes": 134254,
+   "sha256": "4ec7f76164370f2a47de4f072e903d2f381ef5d1cf6248a9e65da8d278cbf32d"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE06.SAV",
+   "bytes": 134254,
+   "sha256": "d35d98e0292ccb2f0e67ef18e15165efe85bf53e6837cfaad8cabee4d3ea13f0"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE07.SAV",
+   "bytes": 134254,
+   "sha256": "6c29fa278698a7d286e84bd2ad216fd8206b06bb5dd7e4ce28f1ad2c277df8f8"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE08.SAV",
+   "bytes": 134254,
+   "sha256": "132df44eaec22518f2a732b8b4f414958c5d6d406ac1ec3bc739a7db1ea6dfc4"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE09.SAV",
+   "bytes": 134254,
+   "sha256": "c75c79e745cf14fe2206e669dd363d1f4f09a9bef0e357027802cbae03ffa34a"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE10.SAV",
+   "bytes": 134254,
+   "sha256": "acef18bb8b388ec2363d0b1326661b5adbc55520f5ae16916211f855c44a2344"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE11.SAV",
+   "bytes": 134254,
+   "sha256": "9800e81cc62e34fd74c2533391173424f37523d9fdbeec1be44ee55f21b87829"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE12.SAV",
+   "bytes": 134254,
+   "sha256": "fa5b1e0ab0e90e06f54019ac81ae40b2aef26abe3393490e7757bc1e948630c1"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE13.SAV",
+   "bytes": 134254,
+   "sha256": "f6ee12c7c1e42e4639817431784383ee531213f7726844d94a5d46e0798fd7ed"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE14.SAV",
+   "bytes": 134254,
+   "sha256": "701e8235f1f3ae42120e563cae6b74e577110815f46330fad9406819322b945e"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE15.SAV",
+   "bytes": 134254,
+   "sha256": "7564efd7e2d29c1a8f836460afb2709fd270dac63a607f72966905ec1a2e2aed"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE16.SAV",
+   "bytes": 134254,
+   "sha256": "a3e1f3a1e20867c0bcb9eb7cb2d6a3c21a5a9a57377a10d70c50047f649c2584"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE17.SAV",
+   "bytes": 134254,
+   "sha256": "918b1bcba9e3cd4bc18d560b808efe97539c1a5fcd14cd551ed21c2f566ff23c"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE18.SAV",
+   "bytes": 134254,
+   "sha256": "2f36d7ff3e1922cbdb3f0452c20820112afc54a3fd4a3bd5e40273bf136741c1"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE19.SAV",
+   "bytes": 134254,
+   "sha256": "f1c74f312786f2eedb8b6799bcc715ec22190c734e67a40e6dcf3db39e36e950"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE20.SAV",
+   "bytes": 134254,
+   "sha256": "4e8f0e25d9753770e47cc68d33820e293e6ab33c6d4ffb0123c8b91627f7c160"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE21.SAV",
+   "bytes": 134254,
+   "sha256": "7075a71e178805267842157b91bf7177bdefe768300e1d08420a19b760b5d595"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE22.SAV",
+   "bytes": 134254,
+   "sha256": "9044f2f00e4813e734c977b1d8796ee79f59031ab37c3164f8985f48c0a99050"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE23.SAV",
+   "bytes": 134254,
+   "sha256": "50568b7c430911a008e35db9a1a4968dfd3f553aa427de949f08ec40c062adab"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE24.SAV",
+   "bytes": 134254,
+   "sha256": "829a748d1a05e268a49a02df22ac2c3a47137d31674324ab17d78d2fcce1e915"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE25.SAV",
+   "bytes": 134254,
+   "sha256": "ca8ceda3fac53e8889330655b4a6b5104f4ca61c65a854ee48dd5f9f57cf02bf"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE26.SAV",
+   "bytes": 134254,
+   "sha256": "e79616e11eea90c9fe18bf23ce3d29ca99aca06039964dda742bfcac6b0826c3"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE27.SAV",
+   "bytes": 134254,
+   "sha256": "f45313586987bdadb370d360b4b987a0119449fd47e2e04a5a2258d714a95796"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_BATTLE28.SAV",
+   "bytes": 134254,
+   "sha256": "8b3bd51c40ef19424cf131a4e6a28c11da70f499c1633388107075cc41704557"
+  },
+  {
+   "name": "mix-rg_s3_r3_plain_post.SAV",
+   "bytes": 132149,
+   "sha256": "d7c6c30355e7b8acd331722c8dcf70950305121015676fb98d7731958004880f"
+  },
+  {
+   "name": "shots/mix-rg_s3_r3_plain_battle-ended.png",
+   "bytes": 27045,
+   "sha256": "a700746a1b08af28340dcae951731f81d861c5a24451a6be3a2564d5ef627347"
+  }
+ ],
+ "release": "run-exp-battle-hook"
+}

@@ -1,0 +1,107 @@
+000000	02	New
+000033	20	New
+00005b	20	#Start a new game\n Click in the HUMAN check box for each nation which is to be lead by a human player\nPlayers may enter their leader's name by clicking in the space provided and typing the desired name\nWhen finished click OK.
+00010f	02	Open
+000142	20	Open#Loads a previously saved game.
+000190	02	Save
+0001c3	20	Save
+0001eb	20	Saves the current game\n ;Back-ups are not made if a file is re-saved with its name unchanged the old file is over-written.
+000272	02	Save as
+0002a8	20	Save as
+0002d3	20	Saves the current game after prompting for a new file name.
+000320	02	Close
+000353	20	Close
+00037b	20	Quit the game.
+0003ae	02	End turn
+0003e3	20	End turn
+00040d	20	Ends the current player's turn\nThe following nations will then take their turns until the next (or only) human player's turn\n The order of play is set at random at the beginning of every game.
+0004af	02	New player
+0004e5	20	New player
+000510	20	Lets a new player enter the game\nUpto 16 players can play (or as many players as countries remain). 
+000579	02	New nation
+0005ae	20	New nation
+0005d8	20	+Allows a leader to desert their nation in favour of another\n 
+000623	02	Abdicate
+000656	20	Abdicate
+00067e	20	+Resign the leadership of your nation\n f only 1 person is playing then this ends the current game\n 
+0006de	02	News
+000711	20	News
+000739	20	Shows a list of the most important events in the region over the past 2 years or so\n (Short cut key'Shift+W)
+0007a5	02	International relations
+0007da	20	International relations
+000804	20	This produces the dialog where a nation's international relations is set\n There are only 4 different political relations that may exist between 2 nations; #PEACE-no diplomatic relations\n #TRADE-two nations trade with each other\nNations can have up to 3 trading partners\n ALLY'-two nations are all
+000984	20	On opening the politics dialog a nation's current political relations are shown\nTo change any relationship click on the relevant radio buttons\nf the other nation agrees the new relationship will be shown by the corresponding button\nf you change your mind exit the dialog using CANCEL.
+000a48	02	Taxation
+000a7b	20	|Tax||
+000aa5	20	Lets the leader alter the tax rate that their nation pays between 0 and 40%.The quarterly income from different tax levels is dependent more on the wealth of a nations's cities than its total population\n10% is an average level of taxation more than this will harm your popularity a lower figure will
+000b8b	02	Balance sheet
+000bc1	20	Balance sheet
+000bec	20	Shows the leader the main sources of income and expenditure for their nation each quarter\nThe army recruits total is the money new army units that have not yet been mobilised are payed\nThe regular units cost is for all the regular units in a nation's armies\nThe mercenary units cost is for all the
+000d6a	20	(Short cut key'Shift+B)
+000da0	02	Recruit unit
+000dd5	20	Recruit unit
+000dff	20	This is where a leader gathers recruits from the population into units for training and eventual transfer to armies\nThe troops already recruited are shown along with their quality in the UNITS list box\nEach unit takes 16 weeks to train before they are ready for combat but it takes a little longer 
+000f5a	20	New units can be recruited at your capital or any city which has a fortification level of at least 75%.To see which cities have recruits based there click on the relevant city in the list box\nWhen you click RECRUIT the new unit will be placed in the city currently selected\nf you select ALL CITIES 
+0010e7	20	f your nation is very short of money you can disband a unit by selecting it and clicking the DISBAND button\nThis will reduce future quarterly wage bills but will waste the money already invested in the unit\n See also; Unit costs Unit details Unit type v type/
+0011b5	02	Build fleet
+0011ea	20	Build fleet
+001214	20	f sufficient resources are available this starts the building of a new fleet and takes 24 weeks\nA new fleet can only be constructed if your nation has at least one coastal city\nYou can check on a new fleet's progress by choosing BUILD FLEET from the menu then clicking CANCEL in the dialog box.
+004000	02	Nations
+004033	20	Nations
+00405b	20	This menu or set of speed buttons are used to select which nation's details are shown on the map when options from the AREA MAP menu are selected\nEach time a new nation is chosen that nation's details are shown in the Information window if it is not your nation some details will be omitted\nFor you
+00417b	20	3Tribute is money paid to the government by the cities it controls it is different from taxation and is a good sign of a nation's wealth\n#Trade income is derived from all trading relationships and alliances the richer the trading partner the greater the amount earned\n (the short cut key to see the
+004297	02	Toggle colour
+0042cd	20	Toggle colour
+0042f8	20	The TOGGLE COLOUR speed button on the area map switches between mono and terrain modes\nThe mono mode makes it easier to see the information displayed on the map the terrain mode shows the kinds of terrain.
+004385	02	Show cities
+0043b9	20	Show cities
+0043e2	20	Shows the position of cities belonging to the nation selected in the NATIONS menu\n (Short cut key'Shift+C) (Short cut key'Ctrl+C'\ the leader's nation)
+004456	02	Show capital
+00448a	20	Show capital
+0044b3	20	Shows the position of the capital city of the nation selected in the NATIONS menu\n (Short cut key'Shift+P) (Short cut key'Ctrl+P'\ the leader's nation)
+004528	02	Show armies
+00455c	20	Show armies
+004585	20	Shows the position of armies belonging to the nation selected in the NATIONS menu\n (Short cut key'Shift+A) (Short cut key'Ctrl+A'\ the leader's nation)
+0045f9	02	Show fleets
+00462d	20	Show fleets
+004656	20	Shows the position of fleets belonging to the nation selected in the NATIONS menu\n (Short cut key'Shift+F) (Short cut key'Ctrl+F'\ the leader's nation)
+0046ca	02	Show all
+0046fe	20	Show all
+004727	20	Shows the position of cities armies fleets and the capital of the nation selected in the NATIONS menu\n (Short cut key'Shift+L) (Short cut key'Ctrl+L'\ the leader's nation)
+0047a4	02	Find city
+0047d9	20	Find city
+004803	20	+Brings up a dialog which lets the user select a city from the list of a particular nation's cities so the geographical position of this city can be shown on the area map\nClick on anation button to produce that nation's list of cities then click on the cities whose postions you want to see\n 3Capit
+00490b	02	Show mercenaries
+00493f	20	Show mercenaries
+004968	20	Shows the position on the area map of cities at which mercenary units of the selected type are available\n'ALL TYPES shows all the cities where any type of mercenary unit is available\n (Short cut key'Shift+1\ light infantry) (Short cut key'Shift+2\ heavy infantry) (Short cut key'Shift+3\ archers) (
+004a6b	02	Supply army
+004aa0	20	Supply army
+004aca	20	To supply an army it must be adjacent to a city or one of your fleets or armies\nSelect the army then choose SUPPLY ARMY from the UNIT MAP menu or click the speed button and a dialog will appear\nf the city is one of yours you can transfer supplies from the city if it has any and up to 1000 talents 
+004bff	20	You cannot supply an army at a city with which your nation is at war\n f your army is adjacent to one of your fleets you can transfer supply and money between the two\nf you wish to transfer supply from one army to another use the TRANSFER UNITS option in the UNIT MAP menu or click the speed button.
+004cad	02	Recruit mercenaries
+004ce2	20	Recruit mercenaries
+004d0c	20	To recruit a mercenary unit an army must be adjacent to the city where the mercenaries are situated the army must have at least 15% of supplies and the army must have enough money to pay this unit for at least one quarter\nSelect the army then choose RECRUIT MERCENARIES from the UNIT MAP menu or cli
+004e1d	20	You cannot recruit mercenaries at a city with which your nation is at war\n See also; Unit costs Unit details Unit type v type/
+004e99	02	Transfer units
+004ece	20	Transfer units
+004ef8	20	This option is used to transfer units supply or money between 2 adjacent armies\nMove the 2 armies together select one then choose TRANSFER UNITS from the UNIT MAP menu or click the speed button and the dialog will appear\nTo transfer a unit click on one in the list box then click on TRANSFER\nUse t
+004fea	02	Split army
+00501f	20	Split army
+005049	20	This lets you split an army into 2 smaller armies or to disband certain units from the army\nSelect the army by clicking on it then choose SPLIT ARMY from the UNIT MAP menu or click the speed button\nOn the dialog to transfer units to the new army (or to disband them), click on the relevant unit in 
+005119	02	Join armies
+00514e	20	Join armies
+005178	20	To join 2 armies they must be adjacent their combined total of units must be 20 or lower their combined number of troops must be less than 100,000 and neither must be on a fleet\nSelect one of the armies then choose JOIN ARMIES from the UNIT MAP menu or click the speed button.
+005223	02	Change units
+005258	20	Change units
+005282	20	3Certain details of regular units can be altered and all units can be disbanded\nRegular units can be renamed split (h they are large enough), or combined with other regular units (h their combined size is small enough).Regular units can be disbanded if the army is near one of its own cities and mer
+005394	02	Disband army
+0053c9	20	Disband army
+0053f3	20	For an army to disband it must be next to one of its own cities\nWhen an army disbands all its units are lost (regular units return to civilian life), the army's money is returned to its government and its supply is left with the nearby city\nSelect the army then choose DISBAND ARMY from the UNIT MA
+0054c9	02	Supply fleet
+0054fe	20	Supply fleet
+005528	20	To supply a fleet it must be adjacent to a city or one of your fleets or armies\nSelect the fleet then choose SUPPLY FLEET from the UNIT MAP menu or click the speed button and a dialog will appear\nf the city is one of yours you can transfer supplies from the city if it has any and up to 1000 talent
+018000	20	There is only one certain way of winning Imperial Conquest by building an empire that totally dominates the Mediterranean\nThis is obviously easier to do with some countries than with others for example the Seleucid leader can mobilise enormous numbers of troops while the Dacian leader will struggle
+0181b3	20	Some players may prefer to set themselves the target of leading their nations in a more civilised way only fighting defensive wars and relying on diplomacy and peace to build up their nation's wealth\nFor these the ultimate goal is obviously not one of conquering the Mediterranean but of maintaining
+0183ff	02	
+018430	20	
+018453	02	

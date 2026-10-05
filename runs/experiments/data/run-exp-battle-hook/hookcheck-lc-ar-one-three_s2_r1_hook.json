@@ -1,0 +1,60 @@
+{
+ "records": 198,
+ "overflow": 0,
+ "index": 198,
+ "capacity": 65536,
+ "magic_ok": true,
+ "kinds": {
+  "start": 1,
+  "random": 100,
+  "marker": 96,
+  "flag_clear": 1
+ },
+ "random_by_site": {
+  "0x43801a": 1,
+  "0x43812f": 3,
+  "0x43820d": 2,
+  "0x438ffb": 1,
+  "0x439006": 1,
+  "0x439188": 40,
+  "0x439191": 40,
+  "0x439557": 2,
+  "0x43955f": 2,
+  "0x4395ce": 2,
+  "0x4395d8": 2,
+  "0x4592bd": 3,
+  "0x45951c": 1
+ },
+ "markers_by_entry": {
+  "0x438fb0": 44,
+  "0x43910c": 40,
+  "0x4393ec": 12
+ },
+ "chain_breaks": [],
+ "chain_break_count": 0,
+ "start_boundary_ok": true,
+ "start_seed_expected": 2,
+ "first_seed_before": 2,
+ "flag_clear_records": [
+  [
+   193,
+   "0x437b8c",
+   12,
+   310198434
+  ]
+ ],
+ "reseed_records": [],
+ "reseed_before_flag_clear": [],
+ "post_battle_random_sites": [
+  "0x4592bd",
+  "0x45951c"
+ ],
+ "last_record_seed_after": 3234645022,
+ "final_seed_in_memory": 3234645022,
+ "end_pin_by_reseed_record": false,
+ "end_pin_by_memory": true,
+ "result_formula_misses": [],
+ "result_formula_miss_count": 0,
+ "sites_outside_list": [],
+ "pass": true
+}

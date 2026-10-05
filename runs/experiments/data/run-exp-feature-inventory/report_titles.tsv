@@ -1,0 +1,93 @@
+file	title
+2026-09-28-autosave-hook-feasibility.md	Autosave hook: feasible, and a working proof of concept
+2026-09-28-battle-minigame-headless-feasibility.md	Battle minigame: research and replication through headless runs
+2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md	Fortification orders: cost, rate, and a bug that resets a town to 0%
+2026-09-29-loading-a-save-does-not-reseed.md	Loading a save does not reseed the random generator; program start and New Game do
+2026-09-29-nation-marker-colours.md	Nation marker colours: a background and a foreground per nation
+2026-09-29-nation-view-origin-and-unit-map-clicks.md	Nation `+0x486`/`+0x488` is the unit map's view origin; how a click becomes a tile
+2026-09-29-new-game-recruitment-queues-come-from-the-dat.md	New games start with the DAT's recruitment queues, unchanged
+2026-09-29-which-cities-may-recruit-and-troop-amounts.md	Which cities may recruit, and the recruit dialog's troop amounts
+2026-10-02-fleet-orders-live.md	Fleets live: build and launch, embark and unload by click, supply, repair, split, join, transfer, scuttle
+2026-10-02-fleets-sail-and-drift.md	Two fleets sailing toward each other: moves, supplies and condition per turn against the research formulas
+2026-10-02-naval-battle-army-aboard.md	Naval battles with an army aboard: the cargo adds to the fleet's strength, the winner's army loses about three times the fleet's fraction, the loser's army sinks with it
+2026-10-02-naval-battle-random-term.md	The random term of a naval battle: 160 battles fit "strength × (1 + U(0, 0.3)) on each side", with no attacker bonus
+2026-10-02-naval-battles.md	Naval battles between two fleets at war: instant, decided by strength, the loser sinks whole, the winner loses one fraction of ships and condition
+2026-10-02-start-as-each-nation.md	Starting as each of the 16 nations: one turn order, and a different world at each seat
+2026-10-02-two-human-seats.md	Two human seats: the original supports them, plays the AI seats in between, and overwrites the first human's autosave
+2026-10-02-unit-map-mouse-orders-and-tax-range.md	The Unit map's mouse orders (select, move, attack prompt, Shift+X, split position) and the Taxation range, measured live
+2026-10-03-army-to-army-ok-supply-rebalancing.md	Army to army transfer: what `OK` does with supply and money
+2026-10-03-end-turn-warning-box.md	The "End turn ?" box: every trigger, its threshold, and what the buttons do
+2026-10-03-fleet-peace-prompt.md	Attacking a fleet of a nation you are not at war with: a Yes/No/Cancel box, Yes declares war on it and on its ally, and the battle follows at once
+2026-10-03-new-game-turn-order-shuffle.md	The New Game turn-order shuffle: a 16-swap shuffle on Delphi's `Random(16)`, draw 437 onward for seed 12345
+2026-10-03-pair-2-seleucid-ptolemaic.md	Pair 2 (Seleucid + Ptolemaic): a non-Roman nation builds a fleet at Issus in 12 turns, a fleet next to its own city cannot be attacked, and fresh supplied fleets fight as the strength formula says
+2026-10-03-storms-and-losses-at-sea.md	Storms: the research formula reproduces a fleet's damage at condition 85 exactly (rough sea, calm sea, next to a city, winter) and its losses at 45 within chance; a fleet at condition 45 is lost at sea, and an army aboard dies with it or survives as one shrunken unit
+2026-10-04-battle-probe.md	One tactical battle end to end (battles plan, B0): the screen, Save As inside a battle, the lab build's 57-second repeatable battle, resume, and the post-battle "Offer of peace" box
+2026-10-04-decompiled-tactical-battle-rules.md	The tactical battle (`TBattleMap`), decompiled: rules, AI general, write-back and graphics
+2026-10-04-tactical-battle-sweep.md	Tactical battle sweep, Stage 1 so far (battles plan B1 to B4): the battle block decoded, crafted mid-battle saves, one pairing (HI v HI, size one) end to end
+army-moves-field-signed-and-the-ffff-underflow.md	`ArmyRecord +6` is a signed count, `0xFFFF` is −1 from an unfloored decrement, and the weekly moves formula is `10 − min(5, troops/20000)`
+army-records-and-roman-roster.md	Save army table and Roman roster at (100, 42)
+army-to-army-transfer-confirmed.md	Army-to-army transfer: exact conservation, confirmed by video, save diff, and code
+attack-and-siege-are-adjacency-orders.md	Attack and siege are adjacency orders, not movement
+battle-code-entry-points.md	Battle code: first static entry points
+battle-freeze-diagnosed-procmon.md	The battle "freeze" diagnosed: a hardcoded ~3-second pause per action, not a real hang
+battle-observation.md	Rome–Gaul battle: recorded behavior
+battle-quality-promotion-and-morale-array-decompiled.md	Digging into the promotion effect: the morale array identified, a clean promotion rule, and a new open field
+battle-recording-melee-cap-confirmed.md	The melee 40%-cap formula, confirmed exactly against five new recorded exchanges
+battle-replayed-rout-mechanic-and-combat-constants.md	The same battle fought twice: the rout mechanic, the attacker-side cap, and two resolved constants
+city-population-growth.md	City population growth: quarterly only, and the "weekly growth" is city supply production
+city-units-army-transfer-and-mercenaries.md	City-unit totals, Ptolemaic movement, and the Roman 15,000-soldier transfer
+combat-type-effectiveness-matrix.md	The combat type-effectiveness matrix, located in the DAT file
+controlled-army-supply-transfer.md	Controlled army-supply transfer in save 11
+dat-neighbour-mask.md	The neighbour mask is in the DAT: nation +0x46 is loaded, never derived, and only conquest changes it
+decompiled-ai-offers-to-human-seats.md	AI offers to human seats: a notice, not a treaty; and the AI does not declare war on an ally
+decompiled-army-movement-and-river-cost.md	Army movement, decompiled: rivers cost moves, plain terrain apparently doesn't
+decompiled-city-capture-resolution.md	City capture, decompiled: the siege-outcome formula and the ownership-transfer routine
+decompiled-combat-formula-structure.md	Combat resolution, decompiled: structure confirmed, constants partly open
+decompiled-defection-and-siege-attrition.md	A cascading defection mechanic, and where siege losses actually come from
+decompiled-diplomacy-peace-terms-and-instant-battles.md	Diplomacy, the reparations formula, and the original's own instant battle resolution
+decompiled-elimination-cleanup.md	Nation elimination, decompiled: armies deleted, fleets at sea sunk, fleets on the slipway handed over
+decompiled-fleet-tax-and-mercenary-formulas.md	Decompiled formulas: fleet cost/capacity, tax income, and mercenary hiring
+decompiled-map-code1-overlay.md	Map code 1 is "rough sea": a weekly weather overlay, not a terrain type
+decompiled-mercenary-offer-list-and-position.md	Mercenary offers are hired by position: adjacency for the player, radius 4 for the AI
+decompiled-mobilization-and-mercenary-restock.md	Mobilization decompiled: `FUN_0044a4e0`, what `> 15` means, and the mobilization rate's missing increment
+decompiled-new-game-mercenary-fill.md	The New Game mercenary fill: one pass of the quarterly restock over an empty pool
+decompiled-news-log-identified.md	The 61-byte record identified: it's the news log
+decompiled-quarterly-billing-and-economy.md	The quarterly billing cycle: upkeep, treasury income, tribute, and rebellion
+decompiled-quarterly-rebellion.md	The quarterly rebellion, decompiled: allegiance first, then a nearby enemy, then the best-placed neighbour
+decompiled-recruitment-cost-formula.md	Decompiled recruitment cost formula, and a dead end on diplomacy
+decompiled-sav-file-layout.md	The complete SAV file layout, from the actual read/write code
+decompiled-turn-and-calendar-sequencing.md	Turn sequencing and the weekly tick, decompiled
+decompiled-unit-map-orders-and-record-fields.md	The full strategic order set (`TUnitMap_*`), and three corrected record fields
+decompiled-war-cascade-and-peace-paths.md	The war cascade is one step deep, and an AI never ends a war with a human on its own
+decompiled-weather-events.md	A seasonal weather-event system, not treasury collection
+diplomatic-reparations-and-more-captures.md	A clean diplomatic reparation, two more captures, and an open fleet-order question
+field-recruitment-uniform-attrition-and-fleet-drift.md	A mercenary hire, a uniform attrition signature, and a fleet-record correction
+fleet-order-at-caere.md	A controlled fleet order decodes the fleet table and confirms map markers 333/335
+fleet-owner-field-confirmed.md	The fleet-record owner field, confirmed — no new experiment needed
+full-battle-resolution-rome-vs-gaul.md	A complete tactical battle, captured end to end, plus two new UI screens
+galatia-elimination-and-city-resupply-confirmed.md	Galatia's elimination and a newly found city-resupply dialog
+impconq2-full-save-analysis.md	Imperial Conquest 2: full-version and save-file static analysis
+impconq2-initial-report.md	Imperial Conquest 2: initial static reverse-engineering report
+instant-resolver-cannot-reproduce-a-tactical-battle.md	The instant resolver reproduces neither the shape nor, at any reachable ratio, the total
+map-layout.md	Candidate DAT map layout
+menu-and-toolbar-inventory.md	Menu and toolbar inventory
+mercenary-pool-record.md	The mercenary pool: a fixed 50-slot table, confirmed by a real hire
+mobilization-movement-and-city-capture-modes.md	Mobilization, army movement, and two capture modes across four turns
+nation-tax-base-and-city-economy-fields.md	Where the nation tax base lives, how it is computed, and three economy fields corrected
+news-log-format-and-messages.md	The news log: 40 NUL-terminated 61-byte slots, 21 message templates, and no diplomatic offers
+one-turn-save-comparison.md	Comparing `1.sav` and `4.sav` after one reported turn
+pending-offer-block-army-split-and-naupactus.md	The pending-diplomatic-offer block confirmed, an army split checked against its code, and Naupactus
+ptolemaic-player-and-week9.md	Ptolemaic player addition and Week 9 Summer turn
+ptolemy-run-news-log-vocabulary-verified.md	The news log's vocabulary, verified against a played year
+ptolemy-run-readiness-ladder-and-mobilization-rate-confirmed.md	The readiness ladder and the mobilization rate, confirmed against a live UI
+ptolemy-run-ui-inventory-and-leader-draw.md	The UI inventory, the leader draw, and a complete battle resolution
+rivers-and-map-markers.md	Rivers, cities, and unit markers in the world grid
+rome-city-recruitment-and-nations.md	Rome city, recruitment queue, and nation colors in `11_supply.sav`
+rome-tax-increase-and-sidon-capture.md	Controlled tax increase and Sidon's capture across three turns
+saves-and-screenshots.md	Later saves and screenshot cross-checks
+strategic-recording-and-summer-saves.md	Strategic-map recording and saves 8–10
+supply-capacity-rounding.md	Supply capacity: `troops div 100 + 1` in the supply dialog, `troops div 100` everywhere else
+supply-driven-morale-and-fleet-attrition.md	Supply drives army morale, and the naval death spiral — the turn tick's two unread branches
+terrain-move-cost-table-in-dat.md	The terrain table, located in the DAT file — and a correction to the river-only movement rule
+unit-type-stat-table-in-dat.md	The unit-type stat table, located in the DAT file and fully decoded
+upkeep-payment-and-desertion.md	Upkeep at the quarter boundary: the treasury pays regulars, the army purse pays mercenaries, and only mercenaries desert

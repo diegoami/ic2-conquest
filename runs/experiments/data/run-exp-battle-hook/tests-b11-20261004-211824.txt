@@ -1,0 +1,161 @@
+B11 tests, 2026-10-04T19:18:10Z, branch experiment/battle-hook-b11
+== python3 -m tests.test_battle_hook_build
+ok    test_chain_check_finds_breaks
+ok    test_reader_reports_overflow_flag
+ok    test_reader_stops_at_write_index
+ok    test_real_exe_scan_if_present
+ok    test_refuses_a_site_that_is_not_call_to_random
+ok    test_refuses_changed_entry_bytes_and_branches_into_displaced
+ok    test_refuses_when_scan_list_differs
+ok    test_synthetic_builds
+exit 0
+== python3 -m tests.test_battle_exchange
+ok    test_one_melee_by_hand
+ok    test_one_shot_by_hand
+ok    test_rout_with_draws_and_cascade
+exit 0
+== python3 -m tests.test_battle_hook_caves --trials 300  (venv python with unicorn 2.1.4)
+test_random_cave       300 machine states: all equal
+test_marker_caves      900 machine states: all equal
+test_flag_caves        400 machine states: all equal
+test_reseed_caves      400 machine states: all equal
+test_seed_cave       ok
+test_overflow_never_wraps ok
+test_a_broken_cave_is_detected ok
+exit 0
+== python3 -m tests.test_battle_stage (existing offline tests, regression)
+   (B0 pair not on this machine: synthetic tests only)
+PASS test_b0_pair_if_present
+PASS test_bad_inputs_rejected_and_positions_not_an_operation
+PASS test_block_battle_save_parses_and_grid_is_consistent
+   (B0 series not on this machine: synthetic tests only)
+PASS test_block_decoder_roundtrip_and_diff_on_real_series_if_present
+PASS test_block_edit_is_local_and_mirrors_the_army
+PASS test_block_edit_rejects_bad_input
+PASS test_block_noop_is_byte_identical
+PASS test_by_type_sums_every_unit_of_a_type
+   (B0 series not on this machine: skipped)
+PASS test_defender_slot_edit_mirrors_into_the_right_unit_on_a_real_save
+PASS test_diff_on_a_synthetic_pair
+PASS test_each_edit_changes_only_its_own_field
+PASS test_new_news
+PASS test_noop_is_byte_identical
+PASS test_rewriting_current_values_is_byte_identical
+PASS test_set_units_values_and_empty_slots
+PASS test_uniform_sizes
+exit 0
+== python3 -m tests.test_battle_trials (existing offline tests, regression)
+PASS test_cells
+[   0.00] plan todo=['hi-hi-one_s1_r1', 'hi-hi-one_s1_r2', 'hi-hi-one_s2_r1', 'hi-hi-one_s2_r2'] skipped_ok=[] skipped_error=[]
+[   0.00] process_started trial='hi-hi-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=4242 seconds=0.0
+[   0.00] loaded trial='hi-hi-one_s1_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.00] battle_open trial='hi-hi-one_s1_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.00] battle_played trial='hi-hi-one_s1_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.01] trial_done trial='hi-hi-one_s1_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='1937d0cd6164'
+[   0.02] process_started trial='hi-hi-one_s1_r2' exe='Imperial Conquest 2 lab s1.exe' pid=4242 seconds=0.0
+[   0.02] loaded trial='hi-hi-one_s1_r2' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.02] battle_open trial='hi-hi-one_s1_r2' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.02] battle_played trial='hi-hi-one_s1_r2' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.02] trial_done trial='hi-hi-one_s1_r2' seconds=0.0 half_rounds=3 winner='defender' post_sha12='1937d0cd6164'
+[   0.03] process_started trial='hi-hi-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=4242 seconds=0.0
+[   0.03] loaded trial='hi-hi-one_s2_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.03] battle_open trial='hi-hi-one_s2_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.03] battle_played trial='hi-hi-one_s2_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.04] trial_done trial='hi-hi-one_s2_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='c34a16efb332'
+[   0.04] process_started trial='hi-hi-one_s2_r2' exe='Imperial Conquest 2 lab s2.exe' pid=4242 seconds=0.0
+[   0.04] loaded trial='hi-hi-one_s2_r2' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.04] battle_open trial='hi-hi-one_s2_r2' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.05] battle_played trial='hi-hi-one_s2_r2' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.05] trial_done trial='hi-hi-one_s2_r2' seconds=0.0 half_rounds=3 winner='defender' post_sha12='c34a16efb332'
+[   0.06] run_done ok=4 errors=0
+[   0.06] plan todo=[] skipped_ok=['hi-hi-one_s1_r1', 'hi-hi-one_s1_r2', 'hi-hi-one_s2_r1', 'hi-hi-one_s2_r2'] skipped_error=[]
+[   0.06] run_done ok=0 errors=0
+PASS test_dry_run_resume_errors_and_compare
+PASS test_end_condition_from_both_destroyed_flags
+[   0.00] plan todo=['hi-hi-one_s1_r1', 'hi-hi-one_s2_r1', 'hi-hi-one_s3_r1'] skipped_ok=[] skipped_error=[]
+[   0.00] process_started trial='hi-hi-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=4242 seconds=0.0
+[   0.00] loaded trial='hi-hi-one_s1_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.00] battle_open trial='hi-hi-one_s1_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.00] battle_played trial='hi-hi-one_s1_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.01] trial_done trial='hi-hi-one_s1_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='1937d0cd6164'
+[   0.01] process_started trial='hi-hi-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=4242 seconds=0.0
+[   0.02] trial_error trial='hi-hi-one_s2_r1' error='DriverError: timeout waiting for map windows'
+[   0.02] process_started trial='hi-hi-one_s3_r1' exe='Imperial Conquest 2 lab s3.exe' pid=4242 seconds=0.0
+[   0.02] loaded trial='hi-hi-one_s3_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.02] battle_open trial='hi-hi-one_s3_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.02] battle_played trial='hi-hi-one_s3_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.03] trial_done trial='hi-hi-one_s3_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='53545e09a528'
+[   0.03] run_done ok=2 errors=1
+[   0.03] plan todo=[] skipped_ok=['hi-hi-one_s1_r1', 'hi-hi-one_s3_r1'] skipped_error=['hi-hi-one_s2_r1']
+[   0.03] run_done ok=0 errors=0
+[   0.03] plan todo=['hi-hi-one_s2_r1'] skipped_ok=[] skipped_error=[]
+[   0.03] process_started trial='hi-hi-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=4242 seconds=0.0
+[   0.04] loaded trial='hi-hi-one_s2_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.04] battle_open trial='hi-hi-one_s2_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.04] battle_played trial='hi-hi-one_s2_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.04] trial_done trial='hi-hi-one_s2_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='c34a16efb332'
+[   0.05] run_done ok=1 errors=0
+PASS test_error_recorded_not_retried_silently
+[   0.00] plan todo=['hi-hi-one_s1_r1', 'hi-hi-one_s2_r1'] skipped_ok=[] skipped_error=[]
+[   0.00] process_started trial='hi-hi-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=4242 seconds=0.0
+[   0.00] loaded trial='hi-hi-one_s1_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.00] battle_open trial='hi-hi-one_s1_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.00] battle_played trial='hi-hi-one_s1_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.01] trial_done trial='hi-hi-one_s1_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='1937d0cd6164'
+[   0.01] process_started trial='hi-hi-one_s2_r1' exe='Imperial Conquest 2 lab s2.exe' pid=4242 seconds=0.0
+[   0.02] loaded trial='hi-hi-one_s2_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.02] battle_open trial='hi-hi-one_s2_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.02] battle_played trial='hi-hi-one_s2_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[]
+[   0.02] trial_done trial='hi-hi-one_s2_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='c34a16efb332'
+[   0.03] run_done ok=2 errors=0
+PASS test_every_writer_survives_a_second_call_in_the_same_stamp
+PASS test_keep_never_overwrites
+[   0.00] plan todo=['hi-hi-one_s1_r1', 'hi-hi-one_s2_r1', 'hi-hi-one_s3_r1'] skipped_ok=[] skipped_error=[]
+[   0.00] process_started trial='hi-hi-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=4242 seconds=0.0
+[   0.00] trial_error trial='hi-hi-one_s1_r1' error='DriverError: timeout waiting for map windows'
+[   0.01] run_done ok=0 errors=1
+[   0.01] plan todo=['hi-hi-one_s1_r1'] skipped_ok=[] skipped_error=[]
+[   0.01] process_started trial='hi-hi-one_s1_r1' exe='Imperial Conquest 2 lab s1.exe' pid=4242 seconds=0.0
+[   0.01] loaded trial='hi-hi-one_s1_r1' seconds=0.0 boxes=['@ Bithynia wants to trade with Rome.'] army0={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0} army10={'li': 0, 'hi': 6000, 'ar': 0, 'lc': 0, 'hc': 0}
+[   0.01] battle_open trial='hi-hi-one_s1_r1' seconds_from_click=0.0 title='Rome  v  Gaul          Rome to place units.'
+[   0.01] battle_played trial='hi-hi-one_s1_r1' end_turn_clicks=1 ended="Gaul's army defeats Rome's army." dialogs=[{'title': 'Offer of peace', 'text': 't', 'answer': 'No', 'shot': 'x.png'}]
+[   0.02] trial_done trial='hi-hi-one_s1_r1' seconds=0.0 half_rounds=3 winner='defender' post_sha12='1937d0cd6164'
+[   0.02] run_done ok=1 errors=0
+PASS test_stop_on_error_and_dialog_recorded
+exit 0
+== python3 -m tests.test_driver_battle (existing offline tests, regression)
+PASS test_bad_mode_rejected
+PASS test_battle_state_reads_memory_like_the_block
+PASS test_capture_declines_the_offer_of_peace
+PASS test_common_battle_end_turn_never_retries
+PASS test_default_is_the_historical_dismissal
+PASS test_ended_at_the_computer_general_click_gets_no_end_turn
+PASS test_neutral_is_used_when_free
+PASS test_neutral_moves_off_an_oversized_unit_map
+PASS test_neutral_none_free_raises_without_clicking
+PASS test_no_dialog_means_empty_list
+PASS test_no_mode_declines_without_artifacts
+PASS test_no_proof_no_second_click
+PASS test_one_end_turn_click_when_it_advances
+PASS test_open_confirm_is_answered_no_and_raises
+PASS test_open_reports_and_closes_a_modal_box
+PASS test_reset_ui_clicks_the_derived_point
+PASS test_strict_declines_and_raises
+PASS test_yes_mode_answers_yes
+exit 0
+== python3 -m tests.test_end_turn_reclick (existing offline tests, regression)
+PASS test_default_answers_an_unknown_confirm_yes
+PASS test_default_reclicks_without_a_sign
+PASS test_default_single_click_with_a_sign
+PASS test_real_play_battle_default_still_presses_return_and_answers_yes
+PASS test_real_play_battle_strict_declines_a_confirm_before_return_in_the_fallback
+PASS test_real_play_battle_strict_declines_a_confirm_in_the_battle_loop
+PASS test_reclick_false_clicks_once_and_raises
+PASS test_reclick_false_with_a_sign_is_a_normal_return
+PASS test_strict_answers_an_unknown_confirm_no_after_the_line
+PASS test_strict_answers_an_unknown_confirm_no_in_the_wait_loop
+PASS test_strict_information_boxes_are_still_dismissed
+PASS test_strict_ok_only_confirm_raises_the_documented_message
+PASS test_strict_reaches_play_battle_and_its_dismissal
+PASS test_strict_still_answers_end_turn_box
+exit 0

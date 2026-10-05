@@ -1,0 +1,179 @@
+{
+ "summary": {
+  "hooked_battles": 8,
+  "inert": 8,
+  "not_inert": [],
+  "with_plain_comparison": 8,
+  "with_b5_comparison": 5,
+  "baseline_file": "b5-baseline-20261004-200144.json",
+  "series_files_compared": 151
+ },
+ "rows": [
+  {
+   "trial": "hi-hi-one_s1_r1_hook",
+   "cell": "hi-hi-one",
+   "seed": 1,
+   "rep": 1,
+   "half_rounds": 19,
+   "hook_pass": false,
+   "plain_trial": "hi-hi-one_s1_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 19,
+   "b5_trial": "hi-hi-one_s1_r1",
+   "b5_series_identical": true,
+   "b5_post_identical": true,
+   "b5_start_identical": true,
+   "b5_half_rounds": 19,
+   "compared_against": [
+    "plain",
+    "b5"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "hi-hi-one_s1_r2_hook",
+   "cell": "hi-hi-one",
+   "seed": 1,
+   "rep": 2,
+   "half_rounds": 19,
+   "hook_pass": true,
+   "plain_trial": "hi-hi-one_s1_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 19,
+   "b5_trial": "hi-hi-one_s1_r1",
+   "b5_series_identical": true,
+   "b5_post_identical": true,
+   "b5_start_identical": true,
+   "b5_half_rounds": 19,
+   "compared_against": [
+    "plain",
+    "b5"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "hi-hi-one_s1_r3_hook",
+   "cell": "hi-hi-one",
+   "seed": 1,
+   "rep": 3,
+   "half_rounds": 19,
+   "hook_pass": true,
+   "plain_trial": "hi-hi-one_s1_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 19,
+   "b5_trial": "hi-hi-one_s1_r1",
+   "b5_series_identical": true,
+   "b5_post_identical": true,
+   "b5_start_identical": true,
+   "b5_half_rounds": 19,
+   "compared_against": [
+    "plain",
+    "b5"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "hi-hi-one_s2_r3_hook",
+   "cell": "hi-hi-one",
+   "seed": 2,
+   "rep": 3,
+   "half_rounds": 18,
+   "hook_pass": true,
+   "plain_trial": "hi-hi-one_s2_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 18,
+   "b5_trial": "hi-hi-one_s2_r1",
+   "b5_series_identical": true,
+   "b5_post_identical": true,
+   "b5_start_identical": true,
+   "b5_half_rounds": 18,
+   "compared_against": [
+    "plain",
+    "b5"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "hi-hi-one_s3_r3_hook",
+   "cell": "hi-hi-one",
+   "seed": 3,
+   "rep": 3,
+   "half_rounds": 15,
+   "hook_pass": true,
+   "plain_trial": "hi-hi-one_s3_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 15,
+   "b5_trial": "hi-hi-one_s3_r1",
+   "b5_series_identical": true,
+   "b5_post_identical": true,
+   "b5_start_identical": true,
+   "b5_half_rounds": 15,
+   "compared_against": [
+    "plain",
+    "b5"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "mix-rg_s1_r3_hook",
+   "cell": "mix-rg",
+   "seed": 1,
+   "rep": 3,
+   "half_rounds": 15,
+   "hook_pass": true,
+   "plain_trial": "mix-rg_s1_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 15,
+   "compared_against": [
+    "plain"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "mix-rg_s2_r3_hook",
+   "cell": "mix-rg",
+   "seed": 2,
+   "rep": 3,
+   "half_rounds": 18,
+   "hook_pass": true,
+   "plain_trial": "mix-rg_s2_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 18,
+   "compared_against": [
+    "plain"
+   ],
+   "inert": true
+  },
+  {
+   "trial": "mix-rg_s3_r3_hook",
+   "cell": "mix-rg",
+   "seed": 3,
+   "rep": 3,
+   "half_rounds": 28,
+   "hook_pass": true,
+   "plain_trial": "mix-rg_s3_r3_plain",
+   "plain_series_identical": true,
+   "plain_post_identical": true,
+   "plain_start_identical": true,
+   "plain_half_rounds": 28,
+   "compared_against": [
+    "plain"
+   ],
+   "inert": true
+  }
+ ]
+}

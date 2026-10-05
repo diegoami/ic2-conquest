@@ -20,6 +20,8 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
 
 ## Environment
 
+- **Model quota:** quota-tracker on `localhost:8765` says which providers have quota left (`docs/environment.md`); check it before choosing a model (L50 under Code map).
+
 - `setup/setup.sh` (root, Ubuntu 24.04): installs Wine (32-bit prefix), Xvfb, xdotool, imagemagick, ffmpeg, tesseract; clones the pinned research and fixtures repos (`setup/pins.txt`) under `/home/user/diegoami`; builds the executables into `$IC2_WORK/build` and the game folder `$IC2_WORK/prefix/drive_c/IC2` (`IC2_WORK` defaults to `~/ic2-work`, outside git).
 - The bot plays **`Imperial Conquest 2 fast rollingsave seed.exe`**: instant battles; every human turn writes `AUTOnnnn.SAV` + an `AUTOSAVE.LOG` line; `RandSeed` comes from `SEED.TXT` beside the exe at **program start and New Game only** (loading does not reseed: `findings/2026-09-29-loading-a-save-does-not-reseed.md`). So a repeatable turn = restart the game with the seed, open the save, issue the orders (`Game.load`).
 - `nnnn` = `(300 − yearBC) × 24 + season × 6 + (week − 1) / 2`; 0720 = 270 BC Spring week 1.
@@ -32,6 +34,10 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
 - `patches/seed_patch.py`: the seed option on top of the fixtures' `patch_exe.py`.
 - `tests/test_orders.py`: each order issued headless and checked on the save diff; `tests/results.md`.
 - `scripts/external_review.py`, `scripts/opencode_watched.py`, `.opencode/agents/external-reviewer.md`: the OpenCode PR reviewer in its own worktree (`docs/external-review.md`); `.claude/skills/review-pr`: the Claude-side review (the fallback when the OpenCode reviewer exits 3). **Every review brief carries a "Blocking means" section written for its task** (`docs/review-briefs/README.md`: template, one `pr<n>.md` per review passed with `--brief-file`; reviewer verdicts worth remembering go to `docs/model-trials.md`).
+- **Choosing a model** (harness_imperial L50/L51, adopted 2026-10-05):
+  - **L50, check the quota first.** Before choosing, recommending or delegating to a model (an OpenCode reviewer, a Claude agent or subagent, an OpenRouter model), check how much quota its provider has left with quota-tracker (`docs/environment.md`). A provider whose status is `exhausted` is not used until it is usable again: take the next model of the chain whose provider has quota, pass it explicitly (`--model` for `scripts/external_review.py`, the model of an Agent call or of `opencode -m`), and say so in the run's report or the PR body ("GLM skipped: zai exhausted until 21:40; reviewed by Luna"). Where the service is not installed, go on without it and count a usage-limit error as `exhausted`. Model ids come from the provider's live list (`opencode models <provider>`), never from memory.
+  - **L51, the light OpenAI model is GPT-5.6 Luna.** The light OpenAI model, and the default Luna reviewer, is GPT-5.6 Luna on the direct OpenAI route: `openai/gpt-5.6-luna`, effort `high`. It is not GPT-6 Luna (`openai/gpt-6-luna`), which draws on OpenAI's main pool with Sol; GPT-6 Luna is never the reviewer. Never use a Luna on OpenCode Go (`opencode-go/…`): a proxy behind it returns `Bad Request` in long agent loops.
+  - **Effort.** Heavy models (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`, Opus) run at effort `low`, or `medium` when the task needs it, never `high` (the player, 2026-10-05). Light models (GPT-5.6 Luna, the Flash models) run at `high`.
 - `docs/rules-digest.md`: the researched rules, with sources. `findings/`: drafts for the research repo.
 
 ## Driver pitfalls (Wine, no window manager)
