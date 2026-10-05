@@ -107,6 +107,85 @@ def test_save_diff_reports_a_relation_edit_as_two_fields():
     assert r["raw_bytes_differing"] > 0 and sorted(paths) == ["nations[0].relations.Gaul", "nations[6].relations.Rome"], r
 
 
+# ---- R3: processes are killed by ownership, never by pattern ----------------------------------------------------------------------------
+def _fake_proc(entries):
+    """entries: {pid: (ppid, cmdline, environ dict)} written as a /proc-like tree."""
+    root = Path(tempfile.mkdtemp())
+    for pid, (ppid, cmd, env) in entries.items():
+        d = root / str(pid)
+        d.mkdir()
+        (d / "status").write_text("Name:\tx\nPPid:\t%d\n" % ppid)
+        (d / "cmdline").write_bytes(cmd.encode() + b"\0")
+        (d / "environ").write_bytes(b"\0".join(("%s=%s" % kv).encode() for kv in env.items()) + b"\0")
+    return root
+
+
+MINE = {"DISPLAY": ":640", "WINEPREFIX": str(R.D.PREFIX)}
+
+
+def test_descendants_follow_the_ppid_tree_only():
+    import b16_common as BC
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE), 102: (101, "child", MINE),
+                       200: (1, "Imperial Conquest 2 fast.exe", MINE), 201: (200, "child", MINE), 300: (1, "bash", {})})
+    assert sorted(BC.descendants(100, root)) == [100, 101, 102], BC.descendants(100, root)
+
+
+def test_stop_kills_only_the_launched_tree_never_a_matching_foreign_process():
+    import b16_common as BC
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE),
+                       200: (1, "Imperial Conquest 2 fast.exe", MINE), 201: (200, "Imperial Conquest 2 fast.exe", {"DISPLAY": ":640"})})
+    g = BC.PeaceGame(exe="x")
+    g.PROC = str(root)
+    g.owned = [100, 101]
+
+    class P:
+        pid = 100
+
+        def wait(self, timeout=None):
+            return 0
+    g.popen = P()
+    killed = []
+    old = (BC.os.kill, BC.time.sleep)
+    BC.os.kill, BC.time.sleep = (lambda pid, sig: killed.append(pid)), (lambda s: None)
+    try:
+        done = g.stop()
+    finally:
+        BC.os.kill, BC.time.sleep = old
+    assert sorted(killed) == [100, 101] and sorted(done) == [100, 101] and 200 not in killed and 201 not in killed, (killed, done)
+
+
+def test_start_refuses_an_occupied_display_without_launching_or_killing():
+    import b16_common as BC
+    root = _fake_proc({200: (1, "Imperial Conquest 2 fast.exe", MINE)})
+    g = BC.PeaceGame(exe="x")
+    g.PROC = str(root)
+    launched, killed = [], []
+    old = (BC.subprocess.Popen, BC.os.kill)
+    BC.subprocess.Popen, BC.os.kill = (lambda *a, **k: launched.append(a)), (lambda pid, sig: killed.append(pid))
+    try:
+        try:
+            g.start()
+        except R.D.DriverError as e:
+            assert "refusing to start" in str(e) and "200" in str(e), e
+        else:
+            raise AssertionError("start did not refuse")
+    finally:
+        BC.subprocess.Popen, BC.os.kill = old
+    assert launched == [] and killed == [], (launched, killed)
+
+
+def test_no_script_of_the_branch_kills_or_adopts_by_pattern():
+    import re as _re
+    bad = _re.compile(r"pkill|killall|pgrep|wineserver\s*-k|wineserver\", \"-k|\"-k\"\]")
+    hits = []
+    for f in sorted((ROOT / "runs" / "experiments" / "battles").glob("b16_*.py")) + [ROOT / "tests" / "test_battle_b16.py"]:
+        for n, line in enumerate(f.read_text().splitlines(), 1):
+            code = line.split("#")[0]
+            if f.name != "test_battle_b16.py" and bad.search(code):
+                hits.append((f.name, n, line.strip()))
+    assert not hits, hits
+
+
 if __name__ == "__main__":
     fails = 0
     for name, fn in sorted(globals().items()):

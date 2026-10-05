@@ -213,7 +213,6 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None, hook=False):
                 raise ValueError("gate op %r" % kv)
         start = stage_start(cell, ops_extra)
         t0 = time.time()
-        B.kill_mine(g)
         if hook:       # the lab exe has its seed baked in (reseeded at every battle start): no SEED.TXT, as in b11_run
             rec["exe_sha256"] = C.sha(D.G / exe_name)
             g.start()
@@ -323,7 +322,7 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None, hook=False):
             pass
         log("trial_error", trial=tag, error=rec["error"])
     finally:
-        rec["pids_killed"] = B.kill_mine(g)
+        rec["pids_killed"] = g.stop()
     append_trial(rec)
     log("trial_done", trial=tag, status=rec["status"], box=rec.get("box_opened"), rcode=rec.get("rcode"))
     return rec

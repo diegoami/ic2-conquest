@@ -49,52 +49,117 @@ def start_xvfb():
     return p.pid
 
 
-def my_game_pids():
-    """pids whose command line starts with 'Imperial Conquest' AND whose environment has this run's DISPLAY (never another session's game)."""
-    out = []
-    for d in Path("/proc").iterdir():
-        if not d.name.isdigit():
+def proc_env(pid, proc="/proc"):
+    try:
+        return (Path(proc) / str(pid) / "environ").read_bytes().split(b"\0")
+    except OSError:
+        return []
+
+
+def proc_cmd(pid, proc="/proc"):
+    try:
+        return (Path(proc) / str(pid) / "cmdline").read_bytes()
+    except OSError:
+        return b""
+
+
+def proc_ppid(pid, proc="/proc"):
+    """The parent pid from /proc/<pid>/status (`PPid:`), or None."""
+    try:
+        for line in (Path(proc) / str(pid) / "status").read_text().splitlines():
+            if line.startswith("PPid:"):
+                return int(line.split()[1])
+    except (OSError, ValueError):
+        pass
+    return None
+
+
+def descendants(root, proc="/proc"):
+    """`root` and every process below it in the PPid tree (children, grandchildren, ...), found through /proc/<pid>/status. A process that has been re-parented
+    away (a daemon such as wineserver) is not below `root` and is never returned."""
+    kids = {}
+    for d in Path(proc).iterdir():
+        if d.name.isdigit():
+            pp = proc_ppid(int(d.name), proc)
+            if pp is not None:
+                kids.setdefault(pp, []).append(int(d.name))
+    out, todo = [], [root]
+    while todo:
+        p = todo.pop()
+        if p in out:
             continue
-        try:
-            cmd = (d / "cmdline").read_bytes()
-            if not cmd.startswith(b"Imperial Conquest"):
-                continue
-            env = (d / "environ").read_bytes().split(b"\0")
-            if ("DISPLAY=%s" % DISPLAY).encode() in env and ("WINEPREFIX=%s" % D.PREFIX).encode() in env:
-                out.append(int(d.name))
-        except (OSError, PermissionError):
-            continue
+        out.append(p)
+        todo += kids.get(p, [])
     return out
 
 
-def kill_mine(g=None):
-    """Kill this run's game processes by pid, then this prefix's wineserver (WINEPREFIX is private). Returns the pids killed."""
-    pids = my_game_pids()
-    for p in pids:
-        try:
-            os.kill(p, signal.SIGKILL)
-        except ProcessLookupError:
-            pass
-    if g is not None:
-        try:
-            g.kill()
-        except Exception:       # noqa: BLE001
-            pass
-    return pids
-
-
-C.kill_stale = kill_mine          # the shared helpers (`trials.run_all`, `common`) call this name: never a pattern kill here
+def occupants(display=None, prefix=None, proc="/proc"):
+    """Pids that already use this run's X display or Wine prefix (any process whose environment has DISPLAY=<display> or WINEPREFIX=<prefix> and whose command
+    line is the game or a wine binary). Used ONLY to refuse to start: they are never adopted and never killed."""
+    display = display or DISPLAY
+    prefix = prefix or str(D.PREFIX)
+    out = []
+    for d in Path(proc).iterdir():
+        if not d.name.isdigit():
+            continue
+        env, cmd = proc_env(d.name, proc), proc_cmd(d.name, proc)
+        if not cmd:
+            continue
+        mine = ("DISPLAY=%s" % display).encode() in env or ("WINEPREFIX=%s" % prefix).encode() in env
+        if mine and (cmd.startswith(b"Imperial Conquest") or b"wine" in cmd.split(b"\0")[0].lower()):
+            out.append(int(d.name))
+    return out
 
 
 class PeaceGame(D.Game):
-    """Game whose pid is chosen by display and prefix (never another session's game)."""
+    """Game whose process is the one THIS object launched: `start()` refuses an occupied display or prefix (no adoption), launches with Popen, remembers that pid,
+    finds the game process among its descendants (PPid tree), and `stop()` kills exactly those pids. No kill or adoption by command-line pattern, and no prefix-wide wine server kill."""
+
+    PROC = "/proc"          # the process table to read (a test points it at a fake tree)
+
+    def __init__(self, *a, **kw):
+        super().__init__(*a, **kw)
+        self.popen = None
+        self.owned = []
 
     def start(self):
-        super().start()
-        mine = my_game_pids()
-        if not mine:
-            raise D.DriverError("no game process on display %s" % DISPLAY)
-        self.pid = mine[0]
+        busy = occupants(proc=self.PROC)
+        if busy:
+            raise D.DriverError("display %s or prefix %s already has game/wine processes %s: refusing to start (they are not ours and are not adopted or killed)"
+                                % (DISPLAY, D.PREFIX, busy))
+        self.popen = subprocess.Popen([D.WINE, self.exe], cwd=D.G, env=D.ENV, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, start_new_session=True)
+        self.wait(lambda: self.find_windows("^Imperial Conquest 2$"), 40, "main window")
+        time.sleep(3)
+        self.owned = descendants(self.popen.pid, self.PROC)
+        game = [p for p in self.owned if proc_cmd(p, self.PROC).startswith(b"Imperial Conquest")]
+        if not game:
+            raise D.DriverError("no game process below the launched pid %d (tree %s)" % (self.popen.pid, self.owned))
+        self.pid = game[0]
+
+    def stop(self):
+        """Kill the processes this object launched (the Popen pid and its descendants as of now and as of the start), nothing else; returns the pids signalled.
+        The wine server daemon re-parents itself and ends by itself a few seconds after its last client."""
+        pids = set(self.owned)
+        if self.popen is not None:
+            pids |= set(descendants(self.popen.pid, self.PROC))
+        done = []
+        for p in sorted(pids, reverse=True):
+            try:
+                os.kill(p, signal.SIGKILL)
+                done.append(p)
+            except (ProcessLookupError, PermissionError):
+                pass
+        if self.popen is not None:
+            try:
+                self.popen.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                pass
+        self.popen, self.owned, self.pid = None, [], None
+        time.sleep(4)          # let the wine server notice that its clients are gone before the next start checks the prefix
+        return done
+
+    def kill(self):
+        return self.stop()
 
     def hook_read(self):
         from state import hook_log
