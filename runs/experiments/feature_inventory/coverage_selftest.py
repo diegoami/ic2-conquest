@@ -64,6 +64,10 @@ show('REJECT an EXCLUDED rule with a whitespace-only reason', (not clean) and 'e
 cfg2 = '\n'.join(l for l in cfg.split('\n') if not l.startswith('form :: ^form:TAboutIC$'))
 rep, ent, clean = cc.run(good, ctx, cfg_text=cfg2)
 show('REJECT a real source entry (form TAboutIC) with no rule: unaccounted', (not clean) and 'form:TAboutIC' in ent and 'UNACCOUNTED' in ent.split('form:TAboutIC')[1].split('\n')[0])
+# PR #44 round 3, R1: a function whose only literal has no letter (TRepairFleet_PrintNumbers, ' %') is still a counted family; without its rule it is unaccounted
+cfg3 = '\n'.join(l for l in cfg.split('\n') if 'TRepairFleet_(InitializeForm|PrintNumbers)' not in l)
+rep, ent, clean = cc.run(good, ctx, cfg_text=cfg3)
+show('REJECT a punctuation-only string family (TRepairFleet_PrintNumbers " %") with no rule: unaccounted', (not clean) and 'msgfn:0x00440c14|TRepairFleet_PrintNumbers' in ent and 'UNACCOUNTED' in ent.split('msgfn:0x00440c14|TRepairFleet_PrintNumbers')[1].split('\n')[0])
 rows2 = copy.deepcopy(good); del rows2['L03']
 rep, ent, clean = cc.run(rows2, ctx); show('REJECT rules naming a row that no longer exists', (not clean) and 'missing rows' in rep)
 # --- audit

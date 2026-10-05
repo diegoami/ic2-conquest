@@ -198,7 +198,7 @@ def run(rows=None, ctx=None, cfg_text=None, audit=None, extra_entries=()):
         lit = r['literal'].replace("\\'", "'")
         lits[r['addr']].add(lit)
         if int(r['addr'], 16) < 0x436000: continue
-        if re.search('[A-Za-z]', lit): byfn.setdefault((r['addr'], r['symbol'] or r['function']), []).append(r['literal'])
+        byfn.setdefault((r['addr'], r['symbol'] or r['function']), []).append(r['literal'])   # every literal, letters or not: a function whose only text is ' %' is still a family (PR #44 round 3, R1)
     for (a, s), ls in byfn.items(): entries.append(('msgfn', 'msgfn:%s|%s|%s' % (a, s, ' / '.join(dict.fromkeys(ls))[:200])))
     alllits = {l.replace("\\'", "'") for ls in byfn.values() for l in ls}
     for r in tsv('exe_strings.tsv'):
