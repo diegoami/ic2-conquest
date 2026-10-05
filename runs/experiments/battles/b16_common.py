@@ -157,11 +157,8 @@ class PeaceGame(D.Game):
             return None
 
     def _send(self, pid, fd):
-        """SIGKILL through the pidfd, else by pid (the caller re-checked the identity)."""
-        if fd is not None:
-            signal.pidfd_send_signal(fd, signal.SIGKILL)
-        else:
-            os.kill(pid, signal.SIGKILL)
+        """SIGKILL through the pidfd only; there is no bare-pid path."""
+        signal.pidfd_send_signal(fd, signal.SIGKILL)
 
     def _close(self, fd):
         if fd is not None:
@@ -231,8 +228,14 @@ class PeaceGame(D.Game):
         done = []
         for h in sorted(handles, key=lambda x: -x.pid):
             try:
-                if h.fd is None and proc_start(h.pid, self.PROC) != h.start:          # no pidfd: by pid only if the identity still holds
-                    self.skipped.append((h.pid, "no pidfd and the identity changed: not signalled"))
+                if h.fd is None:
+                    # never by a bare pid: it can be recycled between any check and the kill (PR #45 narrow review, round 2). The one safe exception is the
+                    # launcher, our own unreaped child, whose pid cannot be reused while we hold it: Popen.kill() reaches exactly that process.
+                    if self.popen is not None and h.pid == self.popen.pid:
+                        self.popen.kill()
+                        done.append((h.pid, h.start))
+                    else:
+                        self.skipped.append((h.pid, "no pidfd: not signalled (a bare pid may have been recycled)"))
                     continue
                 self._send(h.pid, h.fd)
                 done.append((h.pid, h.start))

@@ -278,6 +278,20 @@ def test_a_parent_recycled_while_its_child_is_adopted_hands_over_no_child():
     assert 101 not in f.pids() and (101, "identity changed while being adopted") in f.g.skipped, (f.signalled, f.g.skipped)
 
 
+def test_without_a_pidfd_nothing_is_signalled_by_a_bare_pid_except_our_unreaped_launcher():
+    """Narrow review round 2: a handle with no pidfd is never signalled by pid (the pid may be recycled between any check and the kill). Only the launcher, our own
+    unreaped child, is killed, through Popen.kill()."""
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "Imperial Conquest 2 fast.exe", MINE)})
+    f = FakeOwner(root, 100)
+    f.g._pidfd = lambda pid: None                     # no pidfd support
+    killed = []
+    f.g.popen.kill = lambda: killed.append(100)
+    f.discover([100, 101])
+    f.stop()
+    assert f.signalled == [] and killed == [100], (f.signalled, killed)
+    assert (101, "no pidfd: not signalled (a bare pid may have been recycled)") in f.g.skipped, f.g.skipped
+
+
 def test_stop_signals_only_the_handles_from_discovery():
     """Narrow review R2: a child that appears after discovery is neither adopted nor signalled by stop()."""
     root = _fake_proc({100: (1, "wine", MINE)})
