@@ -57,7 +57,7 @@ row(46904, 'R12', 'refusal', 'army order: Recruit mercenaries (button)', '5 of 5
 # ---------------------------------------------------------------- fleet orders
 row(47179, 'R13', 'refusal', 'fleet order: Repair fleet', '1 of 2',
     'no own city within one tile of the fleet: %s' % C(47178, 'if (sVar2 == -1) {'),
-    'dropped: the Repair fleet dialog does not open', plays=['F03'])
+    'dropped: the Repair fleet dialog does not open', plays=['F03b'])
 row(47187, 'R14', 'refusal', 'fleet order: Repair fleet', '2 of 2',
     'near a city but the fleet carries an army: the pass test is %s' % C(47182, 'else if ((short)(&DAT_0049c282)[sVar1 * 0xd] < 0) {'),
     'dropped: the dialog does not open', plays=['F06'])
@@ -201,7 +201,7 @@ row(58537, 'R57', 'refusal', 'Build fleet (Strategy menu or toolbar)', '3 of 3',
 PR = []
 def prompt(line, id, grp, cond, effect, plays=(), tmpl=None):
     ROWS.append(dict(line=line, id=id, kind='prompt', grp=grp, order='-', cond=cond, effect=effect, tag='[derived]', plays=list(plays), tmpl=tmpl))
-prompt(47106, 'P01', 'army order: Disband army', 'the army is near an own city (the else of the test of R05)', 'Yes (result 6) disbands the army and returns its money and supplies to the nearest city: %s; No or Cancel: nothing' % C(47108, 'if (iVar4 == 6) {'))
+prompt(47106, 'P01', 'army order: Disband army', 'the army is near an own city (the else of the test of R05)', 'Yes (result 6) disbands the army and returns its money and supplies to the nearest city: %s; No or Cancel: nothing' % C(47108, 'if (iVar4 == 6) {'), plays=['S02'])
 prompt(47345, 'P02', 'fleet order: Scuttle fleet', 'no army aboard and an own city is next to the fleet', 'Yes (6) deletes the fleet and returns money and supplies to the city; No or Cancel: nothing', plays=['F04'])
 prompt(46541, 'P03', 'unit map: attack a city', 'an own army with moves is next to a city of another nation that is not already at war with the current nation', 'Yes (6) sets the relation to 3 (war) and starts the attack; No or Cancel: nothing happens')
 prompt(46566, 'P04', 'unit map: attack an army', 'an own army with moves is next to an army of another nation that is not at war', 'Yes (6) declares war and attacks; No or Cancel: nothing')
@@ -226,3 +226,8 @@ notice(58517, 'N02', 'Build fleet command', 'one box per own fleet still under c
 notice(58228, 'N03', 'start of a turn: a computer nation\'s offer', 'a nation that proposed trade or an alliance last turn has not got it', 'information only; the offer lapses at the next turn start; the word after `wants to` is the first literal (trade) or the second (form an alliance)', [('var', 'nation name'), ('lit', 58221), ('lit', 58215), ('lit', 58218), ('lit', 58223), ('var', 'nation name'), ('lit', 58225)])
 # ---------------------------------------------------------------- excluded
 ROWS.append(dict(line=37891, id='X01', kind='excluded', grp='battle screen: Surrender', order='-', cond='the Surrender command of the tactical battle', effect='excluded by the task: battles are paused', tag='[derived]', plays=[], tmpl=None))
+
+# plays that evidence rows made in loops above (the left Transfer button is Army1Transfer: it moves units from the first list to the second, TArmyToArmy_MoveUnit(param_1, param_1 + 0x24c, param_1 + 0x4dc, ...) at L44138;
+# the right button is Army2Transfer, from the second list to the first, L44219). The box text is the same literal for both functions: the play shows the line, the button shows the function.
+for _id, _p in {'R28': ['T01'], 'R29': ['T02'], 'R30': ['TR3b'], 'R31': ['T01r'], 'R32': ['T02r']}.items():
+    next(r for r in ROWS if r['id'] == _id)['plays'] = _p

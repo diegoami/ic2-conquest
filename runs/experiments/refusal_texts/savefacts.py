@@ -4,7 +4,7 @@ import os, sys
 ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))
 sys.path.insert(0, ROOT)
 from state import sav
-import struct
+import struct, re
 
 def parse_nation_words(b, n):
     na = struct.unpack_from('<h', b, sav.ARMY_OFF)[0]; of = sav.ARMY_OFF + 2 + na * sav.ARMY_LEN; nf = struct.unpack_from('<h', b, of)[0]
@@ -48,16 +48,21 @@ def label(b, i):
     return '?'
 
 def diff_text(pa, pb):
-    """'identical' or 'N bytes: <labels>' (a nation word at +0x46B..+0x48F is the UI block of docs/sav-layout-notes.md: window fields, not game state)"""
+    """'identical' or 'N byte(s): <entities>', grouped by entity (a nation's bytes are listed by offset: a nation word at +0x46B..+0x48F is the UI block of docs/sav-layout-notes.md)"""
     a, b = open(pa, 'rb').read(), open(pb, 'rb').read()
     if len(a) != len(b): return 'different length %d vs %d' % (len(a), len(b))
     d = [i for i in range(len(a)) if a[i] != b[i]]
     if not d: return 'identical'
-    labs = []
+    groups = {}
     for i in d:
-        l = label(a, i)
-        if l not in labs: labs.append(l)
-    return '%d byte(s): %s' % (len(d), ', '.join(labs))
+        l = label(a, i); m = re.match(r'(nation \d+) (\+0x[0-9a-f]+)$', l)
+        if m: groups.setdefault(m.group(1), []).append(m.group(2))
+        else:
+            m = re.match(r'((?:army|fleet|city) \d+) \+\d+$', l); k = m.group(1) if m else l
+            groups.setdefault(k, []).append(None)
+    parts = []
+    for k, v in groups.items(): parts.append('%s %s' % (k, ', '.join(v)) if v[0] is not None else '%s (%d)' % (k, len(v)))
+    return '%d byte(s): %s' % (len(d), '; '.join(parts))
 
 def ui_only(pa, pb):
     """True when every differing byte is in a nation record's UI block (+0x46B..+0x48F, the 'UI fields' row of docs/sav-layout-notes.md section 5)"""

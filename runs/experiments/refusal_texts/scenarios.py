@@ -194,3 +194,20 @@ SC['TD02'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 400
                   note='Army to army transfer dialog: Disband (right button) the first unit of army 1, far from a city; Confirm answered Yes')
 SC['TR3'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1), ('units', 12, named([U('li', 6000), U('li', 1100)]))], act=tr_act(12, 0), post=tr_post,
                  note='Army to army transfer from army 12 (moves staged to 3; units staged to 6,000 + 1,100) into army 0, aboard fleet 2 (30 ships, 15,000 troops of room; army 0 holds 10,700); army 13 is staged to nation 1 so that army 0 is the partner')
+SC['TR3b'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1), ('units', 12, named([U('li', 6000), U('li', 6000)]))], act=tr_act(12, 0), post=tr_post,
+                  note='Army to army transfer from army 12 (moves staged to 3; units staged to 6,000 + 6,000) into army 0, aboard fleet 2 (30 ships = room for 15,000 troops; army 0 holds 10,700); army 13 is staged to nation 1 so that army 0 is the partner')
+
+def tr_act_side(army, row, side):
+    """like tr_act, but the unit is picked in the list `side` (0 left, 1 right) and that side's Transfer button is pressed"""
+    def act(g):
+        army_button(g, army, 'transfer'); open_dialog_tracked(g, 'Army to army transfer', lambda: None, tries=1)
+        cs = g.controls('Army to army transfer')
+        lists = sorted((c for c in cs if c['cls'] == 'TListBox'), key=lambda c: c['x'])
+        g.click(lists[side]['x'] + lists[side]['w'] // 2, lists[side]['y'] + 12 + 12 * row, pause=0.5)
+        tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[side]
+        g.click_control(tb, pause=1.5)
+    return act
+SC['T01r'] = dict(src=TT, ops=[('units', 0, named([U('li', 1000)] * 20)), ('units', 1, named([U('li', 3000)] * 3))], act=tr_act_side(0, 0, 1), post=tr_post,
+                  note='Army to army transfer, RIGHT Transfer button: one unit of army 1 (3 units) into army 0 (20 units)')
+SC['T02r'] = dict(src=TT, ops=[('units', 0, named([U('hi', 12000)] * 8)), ('units', 1, named([U('hi', 6000)] * 2))], act=tr_act_side(0, 0, 1), post=tr_post,
+                  note='Army to army transfer, RIGHT Transfer button: a 6,000 unit of army 1 into army 0 (8 x 12,000 = 96,000 troops)')

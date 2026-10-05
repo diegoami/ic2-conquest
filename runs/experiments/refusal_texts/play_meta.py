@@ -8,5 +8,5 @@ W = {
  'CU01': ['army:0'], 'CU02': ['army:0'], 'CU03': ['army:0'], 'CU04': ['army:0'], 'CU05': ['army:0'], 'CU06': ['army:0'], 'CU07': ['army:0'], 'CU08': ['army:0'],
  'E01': ['army:0', 'fleet:2'], 'A01': ['army:12', 'army:0', 'fleet:2'],
  'RL01': ['rel:0:6'], 'RL02': ['rel:0:1', 'rel:0:2', 'rel:0:9', 'rel:0:7'], 'RL03': ['rel:0:4'], 'RL04': ['rel:0:6'], 'RL05': ['rel:0:1', 'rel:0:6'],
- 'M04': ['army:1', 'city:120'], 'C03': ['city:73'], 'MM01': ['army:1'], 'MM02': ['army:1'], 'S02': ['army:0'], 'BF01': ['nationword:10:0x446'], 'A01b': ['army:12', 'army:0', 'army:13', 'fleet:2'], 'TD01': ['army:0', 'army:1'], 'TD02': ['army:0', 'army:1'], 'TR3': ['army:12', 'army:0', 'fleet:2'], 'RC01': ['nationword:0:0x420'], 'RC02': ['nationword:0:0x442'], 'SEL01': ['army:0'],
+ 'M04': ['army:1', 'city:120'], 'C03': ['city:73'], 'MM01': ['army:1'], 'MM02': ['army:1'], 'S02': ['army:0'], 'BF01': ['nationword:10:0x446'], 'A01b': ['army:12', 'army:0', 'army:13', 'fleet:2'], 'TD01': ['army:0', 'army:1'], 'TD02': ['army:0', 'army:1'], 'TR3': ['army:12', 'army:0', 'fleet:2'], 'TR3b': ['army:12', 'army:0', 'fleet:2'], 'T01r': ['army:0', 'army:1'], 'T02r': ['army:0', 'army:1'], 'RC01': ['nationword:0:0x420'], 'RC02': ['nationword:0:0x442'], 'SEL01': ['army:0'],
 }

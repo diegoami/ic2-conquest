@@ -40,7 +40,14 @@ def main():
     tpl = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'finding_template.md'), encoding='utf-8').read()
     cat, pr, no = BT.render(); ordt, plt = BT.render_more()
     tabs = {'counts': counts(), 'classes': classes(), 'catalogue': cat, 'prompts': pr, 'notices': no, 'orderings': ordt, 'plays': plt, 'clone': clone()}
+    P = read_plays(); ref = [r for r in CS.ROWS if r['kind'] == 'refusal']
+    sub = {'N_CLAMPED': str(sum(1 for r in ref if r['effect'].startswith('clamped'))), 'CLAMPED': ', '.join(r['id'] for r in ref if r['effect'].startswith('clamped')),
+           'N_DROPPED': str(sum(1 for r in ref if r['effect'].startswith('dropped'))), 'N_PLAYED': str(sum(1 for r in ref if r['plays'])),
+           'N_PROMPTS_PLAYED': str(sum(1 for r in CS.ROWS if r['kind'] == 'prompt' and r['plays'])), 'N_PLAYS': str(len(P)), 'N_STAGED': str(sum(1 for v in P.values() if v[-1]['staged'])),
+           'NO_PLAY': ', '.join(r['id'] for r in ref if not r['plays']), 'PRE': ', '.join(sorted(p for p, v in P.items() if v[-1].get('pre'))),
+           'UNEDITED': ', '.join(sorted(p for p, v in P.items() if not v[-1]['staged']))}
     out = re.sub(r'\{\{TABLE:(\w+)\}\}', lambda m: tabs[m.group(1)], tpl)
+    out = re.sub(r'\{\{(\w+)\}\}', lambda m: sub[m.group(1)], out)
     p = os.path.join(ROOT, 'findings', '2026-10-05-refusal-texts-and-conditions.md')
     open(p, 'w', encoding='utf-8').write(out); print(p, len(out))
 if __name__ == '__main__': main()

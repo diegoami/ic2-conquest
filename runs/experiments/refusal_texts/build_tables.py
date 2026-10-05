@@ -64,7 +64,7 @@ def ids_of_function(S):
 CLONE = [  # (the clone's line as issue #721 gives it, row id of the original's line, issue row)
  ("Army '<id>' has fewer than 2 units and cannot be split.", 'R01', 'UA04'),
  ('There are more than 20 units in these armies combined.', 'R03', 'UA05'),
- ('There are more than 100,000 troops in these armies combined.', 'R04', 'UA05'),
+ ("... troops ... (the issue abbreviates the clone's second join line with an ellipsis: JoinArmiesCommandHandler.cs:70)", 'R04', 'UA05'),
  ('Neither fleet may carry an army to join.', 'R16', 'UF05'),
  ("the clone's own wording (T107 split-unit handler)", 'R41', 'D05/D06 (inventory D06: Split unit)'),
  ("the clone's own wording (T107 rename-unit handler)", 'R36', 'D05/D06 (inventory D05: Rename unit)'),
@@ -72,13 +72,31 @@ CLONE = [  # (the clone's line as issue #721 gives it, row id of the original's 
 ]
 # NB: the clone's third join line, '... troops ...', is given in the issue only as an ellipsis; the issue's wording is kept in the finding text, not audited here.
 
+def compact_ops(ops):
+    out = []
+    for op in ops:
+        k = op[0]
+        if k == 'units':
+            us = op[2]; groups = []
+            for u in us:
+                key = (u[0], u[1], u[3] if len(u) > 3 else 0)
+                if groups and groups[-1][0] == key: groups[-1][1] += 1
+                else: groups.append([key, 1])
+            out.append('army %d units = %s' % (op[1], ' + '.join('%d x %s %s%s' % (n, key[0], format(key[1], ','), ' (mercenary label %d)' % key[2] if key[2] else '') for key, n in groups)))
+        elif k == 'fleet': out.append('fleet %d %s = %d' % (op[1], op[2], op[3]))
+        elif k == 'nation': out.append('nation %d +0x%x = %d' % (op[1], op[2], op[3]))
+        elif k == 'city': out.append('city %d %s' % (op[1], ', '.join('%s = %d' % kv for kv in op[2].items())))
+        elif k == 'relation': out.append('relation %d-%d = %d' % (op[1], op[2], op[3]))
+        else: out.append('army %d %s = %d' % (op[1], op[0], op[2]))
+    return '; '.join(out)
+
 def render_more(data=DATA, art=ART):
     S = read_sites(data); X = read_extract(data); P = read_plays(data); RE = read_reread(data)
     byfn = ids_of_function(S)
     rows = []
     for fn, rs in byfn.items():
         ref = [r for r in rs if r['kind'] == 'refusal']
-        if len(ref) < 2: continue
+        if len(ref) < 2 or max(int(re.match(r'\d+ of (\d+)', r['order']).group(1)) if re.match(r'\d+ of (\d+)', r['order']) else 1 for r in ref) < 2: continue     # alternatives of one test (the click targets of SelectUnit) are not an order
         rows.append([fn, ' > '.join(r['id'] for r in sorted(ref, key=lambda r: (int(re.match(r'(\d+) of', r['order']).group(1)) if re.match(r'(\d+) of', r['order']) else 0, r['id'])))])
     comb = {'TUnitMap_JoinArmies': ('UA05c', 'R03'), 'TUnitMap_JoinFleets': ('UF05c', 'R15')}
     rows2 = []
@@ -98,10 +116,9 @@ def render_more(data=DATA, art=ART):
         d = SF.diff_text(ctl, aft) if os.path.exists(ctl) and os.path.exists(aft) else '?'
         facts2 = '; '.join(SF.fact(aft, sp) for sp in play_meta.W.get(pid, [])) if os.path.exists(aft) else '(save not fetched)'
         bxs = ' / '.join('%s: %s' % (b['title'], shown_text(b, RE)) for b in q['boxes'])
-        staged = ('STAGED %s' % json.dumps(q['ops'])) if q['staged'] else 'fixture, unedited'
-        if q.get('pre'): staged += '; plus a normal order before the control save (%s)' % q['note']
-        prow.append([pid, ','.join(rowsof.get(pid, [])), q['src'], staged.replace('|', '/'), facts, bxs, facts2, d, ' '.join('`%s`' % x for x in [q['boxes'][-1]['png'], q['control'], q['after']])])
-    plt = md_table('plays', ['play', 'rows', 'source save', 'edit', 'state in the control save [recomputed]', 'box title: OCR of the message', 'state in the after save [recomputed]', 'after vs control [recomputed]', 'files'], prow)
+        staged = ('STAGED: %s' % compact_ops(q['ops'])) if q['staged'] else 'fixture, unedited'
+        prow.append([pid, ','.join(rowsof.get(pid, [])), q['src'], staged.replace('|', '/'), q['note'].replace('|', '/'), facts, bxs, facts2, d, ' '.join('`%s`' % x for x in ([q['boxes'][-1]['png']] if q['boxes'] else []) + [q['control'], q['after']])])
+    plt = md_table('plays', ['play', 'rows', 'source save', 'edit', 'order issued', 'state in the control save [recomputed]', 'box title: OCR of the message', 'state in the after save [recomputed]', 'after vs control [recomputed]', 'files'], prow)
     return ordt, plt
 
 if __name__ == '__main__':

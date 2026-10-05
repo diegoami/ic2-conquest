@@ -26,15 +26,25 @@ class T(unittest.TestCase):
     def test_clean(self):
         n, bad = self.audit()
         self.assertEqual(bad, [], bad[:5]); self.assertGreater(n, 500)
+    def doctor_line(self, prefix, old, new):
+        lines = self.text.split('\n'); hit = [i for i, l in enumerate(lines) if l.startswith(prefix)]
+        self.assertEqual(len(hit), 1, (prefix, hit)); self.assertIn(old, lines[hit[0]])
+        lines[hit[0]] = lines[hit[0]].replace(old, new, 1)
+        return '\n'.join(lines)
     def test_doctored_literal_one_space(self):
         lit = 'You can not split an army containing only 1 unit.'
-        self.assertIn(lit, self.text)
-        n, bad = self.audit(self.text.replace('`' + lit + '`', '`' + lit.replace('can not', 'can  not') + '`', 1))
+        n, bad = self.audit(self.doctor_line('| R01 |', '`' + lit + '`', '`' + lit.replace('can not', 'can  not') + '`'))
         self.assertTrue(any('R01 literal byte for byte' in b for b in bad), bad[:5])
+    def test_doctored_literal_space_before_question_mark(self):
+        lit = 'The army is too large for this fleet ?'
+        n, bad = self.audit(self.doctor_line('| R06 |', '`' + lit + '`', '`' + lit.replace(' ?', '?') + '`'))
+        self.assertTrue(any('R06 literal byte for byte' in b for b in bad), bad[:5])
     def test_doctored_literal_clone_table(self):
         lit = 'These 2 armies combined contain more than 20 units.'
-        n, bad = self.audit(self.text.replace('`' + lit + '`', '`' + lit[:-1] + ' .`', 1))
-        self.assertTrue(bad)
+        lines = [l for l in self.text.split('\n') if l.startswith('| UA05 |') and lit in l]
+        self.assertEqual(len(lines), 1)
+        n, bad = self.audit(self.text.replace(lines[0], lines[0].replace('`' + lit + '`', '`' + lit[:-1] + ' .`')))
+        self.assertTrue(any('clone table' in b for b in bad), bad[:5])
     def test_doctored_extract_line(self):
         tmp = tempfile.mkdtemp()
         try:
@@ -82,6 +92,7 @@ class T(unittest.TestCase):
         n, bad = self.audit(self.text.replace('army 13: owner=0 pos=(102,44) units=1', 'army 13: owner=0 pos=(102,44) units=2', 1))
         self.assertTrue(any('UA04' in b and 'facts' in b for b in bad), bad[:5])
     def test_doctored_combined_order(self):
+        self.assertIn('| UA05c | R03 |', self.text)
         n, bad = self.audit(self.text.replace('| UA05c | R03 |', '| UA05c | R04 |', 1))
-        self.assertTrue(bad)
+        self.assertTrue(any('combined play UA05c' in b for b in bad), bad[:5])
 if __name__ == '__main__': unittest.main()
