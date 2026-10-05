@@ -78,6 +78,15 @@ def test_ncities_edits_only_its_word():
     assert sav.parse(bytes(b1))["nations"][0]["cities_count"] == 7
 
 
+def test_owner_edits_only_the_owner_word():
+    b0 = bytearray(SRC.read_bytes())
+    b1 = stage.apply(bytearray(b0), [("owner", 1, 6)])
+    diff = [i for i in range(len(b0)) if b0[i] != b1[i]]
+    base = stage._army(b0, 1) + 4
+    assert diff and all(base <= i < base + 2 for i in diff), diff
+    assert sav.parse(bytes(b1))["armies"][1]["owner"] == 6
+
+
 def test_diff_offsets_and_snapshot_identity():
     a = bytes(1000)
     assert A.diff_offsets(a, a)["differing_bytes"] == 0

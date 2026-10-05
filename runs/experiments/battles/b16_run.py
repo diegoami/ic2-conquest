@@ -202,6 +202,10 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None):
             w = re.fullmatch(r"weak(\d+)", k)
             if m:
                 ops_extra.append((m.group(1), int(m.group(2)), int(v)))
+            elif re.fullmatch(r"own\d+", k):      # army N becomes nation v's (an existing army; position and map untouched)
+                ops_extra.append(("owner", int(k[3:]), int(v)))
+            elif re.fullmatch(r"strong\d+", k):   # army N = v heavy-infantry battalions of 6,000 (quality 6)
+                ops_extra.append(("units", int(k[6:]), [("hi", 6000, 6)] * int(v)))
             elif w:                  # army N replaced by one LI battalion of v troops (quality 6): a weaker Rome elsewhere (armies(L) test)
                 ops_extra.append(("units", int(w.group(1)), [("li", int(v), 6)]))
             else:
@@ -216,6 +220,23 @@ def trial(cell, seed, answer, turns, log, rep=1, label=None):
             raise D.DriverError("geometry: army 0 at %s moves %s, army 10 at %s" % ((a0["x"], a0["y"]), a0["moves"], (a10["x"], a10["y"])))
         rec["armies_loaded"] = {"rome0": [(u["type"], u["troops"], u["quality"]) for u in a0["units"]], "gaul10": [(u["type"], u["troops"], u["quality"]) for u in a10["units"]],
                                 "morale": [a0["morale"], a10["morale"]]}
+        rb = []
+        for o in ops_extra:        # every extra L1 edit is read back from the game's memory before the attack
+            if o[0] == "owner":
+                got = g.army_state(o[1])["owner"]
+            elif o[0] == "units":
+                got = [(u["type"], u["troops"], u["quality"]) for u in g.army_state(o[1])["units"]]
+                o = (o[0], o[1], [tuple(x) for x in o[2]])
+            elif o[0] == "unity":
+                got = g.nation_state(o[1])["unity"]
+            elif o[0] == "ncities":
+                got = g.nation_state(o[1])["cities_count"]
+            else:
+                continue
+            rb.append({"op": [o[0], o[1]], "want": o[2], "got": got})
+            if got != o[2]:
+                raise D.DriverError("read-back mismatch for %s: want %s got %s" % (o[:2], o[2], got))
+        rec["readback"] = rb
         rec["randseed_loaded"] = struct.unpack("<I", g.mem(D.RAND_SEED, 4))[0]
         rec["state_at_load"] = region_hashes(snapshot(g))
         g.select_army(C.ROME_ARMY, *C.STAGE_TILE)
