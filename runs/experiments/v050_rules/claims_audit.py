@@ -49,6 +49,11 @@ class Ctx:
     def tsv_header_comment(self, stem):
         fs = sorted(glob.glob(self.data + stem + '*.tsv'), key=lambda p: (len(p), p))
         return open(fs[-1]).readline()
+    def finding(self, stem):
+        """the text of a finding under review (findings/<stem>.md); tests doctor it to prove a wrong claimed number fails."""
+        t = open(os.path.join(ROOT, 'findings', stem + '.md')).read()
+        f = self.doctor.get(('finding', stem))
+        return f(t) if f else t
     def statelog(self):
         return [json.loads(l) for l in open(self.data + 'state_log.jsonl') if l.strip()]
     def steplog(self, name):
@@ -122,8 +127,17 @@ def run(ctx):
         a = max(0, amount); a = min(a, stock); a = min(a, troops // 100 - supplies + 1); a = min(a, purse * 5)
         q = abs(a) // 5 * (1 if a >= 0 else -1)                                         # IDIV truncates toward zero
         return a, purse - q
-    a, newp = buy(10, 10000, 206, 500, 1000)
-    C('Q1', 'signed Buy supplies [derived]: 10000 troops, 206 supplies, purse 1000: amount %d, purse %d (not capped at 1000); a normal case (supplies 50, press +10) lowers the purse: %s' % (a, newp, buy(10, 10000, 50, 500, 1000)), (a, newp) == (-105, 1021) and buy(10, 10000, 50, 500, 1000)[1] == 998)
+    # the example's inputs and its claimed results are read from the finding; the amount and purse are recomputed here from the inputs alone
+    num = lambda x: int(x.replace(',', '').replace('\u2212', '-'))
+    txt = ctx.finding('2026-10-05-army-purse-writes-and-the-1000-cap')
+    m = re.search(r'Example `\[derived\]`: ([\d,]+) troops, ([\d,]+) supplies, purse ([\d,]+):.*?amount ([\u2212\-]?[\d,]+),.*?purse ([\d,]+)\.', txt)
+    m8 = re.search(r'1,000 \u2192 ([\d,]+)\)', txt)
+    troops, sup, purse0, c_amount, c_purse = (num(g) for g in m.groups()) if m else (0, 0, 0, None, None)
+    a, newp = buy(10, troops, sup, 10**6, purse0)                                      # one up-arrow press (+10), the stock not binding
+    C('Q1', 'signed Buy supplies [derived]: %d troops, %d supplies, purse %d: recomputed amount %d, purse %d; the finding claims amount %s, purse %s (table) and %s (summary)' % (troops, sup, purse0, a, newp, c_amount, c_purse, m8 and m8.group(1)),
+      m is not None and m8 is not None and (a, newp) == (c_amount, c_purse) and num(m8.group(1)) == newp and purse0 == 1000 and newp > purse0)
+    C('Q1', 'signed Buy supplies [derived]: an army below its room (supplies %d) pays for a positive amount: purse %d -> %d' % (troops // 200, purse0, buy(10, troops, troops // 200, 10**6, purse0)[1]),
+      buy(10, troops, troops // 200, 10**6, purse0)[1] < purse0)
 
     # ------------------------------ Q2: the balance sheet
     q2a, q2b = ctx.save('Q2_00_start_tax10'), ctx.save('Q2_01_tax20')

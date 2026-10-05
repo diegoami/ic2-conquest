@@ -19,6 +19,9 @@ class T(unittest.TestCase):
     def test_displayed_reading(self): self.doctored(('tsv', 'q4_displayed_cost'), lambda r: [[x[0], '35'] if 'thurii' in x[0] else x for x in r], 'Q4')
     def test_panel_reading(self): self.doctored(('tsv', 'q4_panel_pay'), lambda r: [x[:2] + ['64'] if 'thurii' in x[1] else x for x in r], 'Q4')
     def test_balance_reading(self): self.doctored(('tsv', 'q2_balance_values'), lambda r: [x[:2] + ['633'] if x[1] == 'Tribute' else x for x in r], 'Q2')
+    def test_finding_signed_purse(self): self.doctored(('finding', '2026-10-05-army-purse-writes-and-the-1000-cap'), lambda t: t.replace('purse 1,021.', 'purse 1,020.'), 'Q1')
+    def test_finding_signed_summary(self): self.doctored(('finding', '2026-10-05-army-purse-writes-and-the-1000-cap'), lambda t: t.replace('1,000 \u2192 1,021', '1,000 \u2192 1,000'), 'Q1')
+    def test_finding_signed_input(self): self.doctored(('finding', '2026-10-05-army-purse-writes-and-the-1000-cap'), lambda t: t.replace('10,000 troops, 206 supplies', '10,000 troops, 205 supplies'), 'Q1')
     def test_extract_line(self): self.doctored(('line', 54751), 'sVar1 = (psVar8[2] / 100) * price;', 'Q4')
 
 class RowAudit(unittest.TestCase):
@@ -36,7 +39,6 @@ class RowAudit(unittest.TestCase):
         p = d + '/row_source_audit.psv'; t = open(p).read().replace('|`troops div 500 ≤ the fleet\'s ship-count word`|', '|a phrase the finding does not contain|'); open(p, 'w').write(t)
         out, fail = R.run(data=d + '/'); self.assertGreaterEqual(fail, 1)
 
-if __name__ == '__main__': unittest.main()
 
 class FetchArchive(unittest.TestCase):
     """fetch_archive never overwrites: a differing file stays byte-for-byte untouched and the run refuses before writing; a matching file is skipped."""
@@ -70,3 +72,5 @@ class FetchArchive(unittest.TestCase):
         from paths import ART
         done, skipped = F.fetch(data=self.data, dest=self.dest, src_dir=self.src); self.assertEqual((done, skipped), (len(self.members), 0))
         done, skipped = F.fetch(data=self.data, dest=self.dest, src_dir=self.src); self.assertEqual((done, skipped), (0, len(self.members)))
+
+if __name__ == '__main__': unittest.main()
