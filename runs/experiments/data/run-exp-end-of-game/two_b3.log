@@ -1,0 +1,22 @@
+18:38:34 [debt_gaul] loaded EOG2_debt_gaul_b3_staged.SAV; popups ['@ Bithynia wants to trade with Rome.']; humans [0, 6] cur 0
+18:38:34 [debt_gaul] Rome: {"nation": 0, "name": "Rome", "leader": "Appius Claudius", "wealth": 2577000, "wealth_start": 2577000, "treasury": 2200, "treasury_start": 2200, "unity": 821, "mob": 30, "cities": 25, "cities_start": 25, "conquered_by": -1, "human": 1}
+18:38:34 [debt_gaul] Gaul: {"nation": 6, "name": "Gaul", "leader": "Hengest", "wealth": 1512000, "wealth_start": 1512000, "treasury": -30000, "treasury_start": 315, "unity": 577, "mob": 25, "cities": 28, "cities_start": 28, "conquered_by": -1, "human": 1}
+18:38:42 [debt_gaul] after Rome ended its turn: window []
+18:38:42 [debt_gaul] [gaul] OCR: The game is over for Hengest the leader of Gaul. | Your army have deposed you because they have not been pz | Your short time in power in Gaul produced these changes. | Gaul in 270 BC. Gaul in 270 BC. | Population 1,512,000 Population 1,512,000 | Cities 28 Cities 28 | Treasury 315 talents Treasury - 30,000 talents
+18:38:42 [debt_gaul] [gaul] memory strings: {"The game is over for": ["The game is over for Hengest the leader of Gaul."], "You have reached the end": [], "Your unpopularity": [], "Your army have": ["Your army have deposed you because they have not been paid."], "Your nation has been": [], "You have conquerred": [], "in power in": ["in power in Gaul produced these changes."], "Population ": ["Population -1,512,000 ", "Population   1,512,000", "Population   1,512,000 "], "Cities   ": ["Cities   28"], "Treasury ": ["Treasury  - 30,000 talents", "Treasury -- 30,000 talents", "Treasury    315 talents"]}
+18:38:53 [debt_gaul] [gaul] OK pressed (2 click(s))
+18:38:58 [debt_gaul] wait for Rome: turn ['@ Celtiberia wants to trade with Rome.']
+18:39:01 [debt_gaul] after_ok_rome_turn: humans [0] cur 0 windows ["Imperial Conquest 2    Rome's turn   (Appius Claudius)", 'Area map', 'Unit map', 'Information'] title ['Imperial Conquest 2', "Imperial Conquest 2    Rome's turn   (Appius Claudius)"]
+18:39:01 [debt_gaul] autosaves ['EOG2_debt_gaul_b3_AUTO0720.SAV', 'EOG2_debt_gaul_b3_AUTO0721.SAV']
+18:39:11 [debt_gaul] saved /home/diego/projects/wt-eog/artifacts/run-exp-end-of-game/saves/EOG2_debt_gaul_after_gaul_falls.SAV
+18:39:37 [abdicate_rome] loaded EOG2_abdicate_rome_b3_staged.SAV; popups ['@ Bithynia wants to trade with Rome.']; humans [0, 6] cur 0
+18:39:37 [abdicate_rome] Rome: {"nation": 0, "name": "Rome", "leader": "Appius Claudius", "wealth": 2577000, "wealth_start": 2577000, "treasury": 2200, "treasury_start": 2200, "unity": 821, "mob": 30, "cities": 25, "cities_start": 25, "conquered_by": -1, "human": 1}
+18:39:37 [abdicate_rome] Gaul: {"nation": 6, "name": "Gaul", "leader": "Hengest", "wealth": 1512000, "wealth_start": 1512000, "treasury": 315, "treasury_start": 315, "unity": 577, "mob": 25, "cities": 28, "cities_start": 28, "conquered_by": -1, "human": 1}
+18:39:42 [abdicate_rome] Confirm OCR: @ Are you sure you want to abdicate ? no | co
+18:39:52 [abdicate_rome] wait for Gaul: turn ['?) ‘Are you sure you want to abdicate ? Yes No Cancel']
+18:39:55 [abdicate_rome] after_yes_gaul_turn: humans [6] cur 6 windows ["Imperial Conquest 2    Gaul's turn   (Hengest)", 'Area map', 'Unit map', 'Information'] title ['Imperial Conquest 2', "Imperial Conquest 2    Gaul's turn   (Hengest)"]
+18:39:56 [abdicate_rome] autosaves ['EOG2_abdicate_rome_b3_AUTO0720.SAV']
+18:40:05 [abdicate_rome] saved /home/diego/projects/wt-eog/artifacts/run-exp-end-of-game/saves/EOG2_abdicate_rome_after.SAV
+18:40:26 [y250_both] loaded EOG2_y250_both_b3_staged.SAV; popups ['@ Bithynia wants to trade with Rome.']; humans [0, 6] cur 0
+18:40:26 [y250_both] Rome: {"nation": 0, "name": "Rome", "leader": "Appius Claudius", "wealth": 2577000, "wealth_start": 2577000, "treasury": 2200, "treasury_start": 2200, "unity": 821, "mob": 30, "cities": 25, "cities_start": 25, "conquered_by": -1, "human": 1}
+18:40:26 [y250_both] Gaul: {"nation": 6, "name": "Gaul", "leader": "Hengest", "wealth": 1512000, "wealth_start": 1512000, "treasury": 315, "treasury_start": 315, "unity": 577, "mob": 25, "cities": 28, "cities_start": 28, "conquered_by": -1, "human": 1}
