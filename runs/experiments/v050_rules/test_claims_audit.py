@@ -37,3 +37,36 @@ class RowAudit(unittest.TestCase):
         out, fail = R.run(data=d + '/'); self.assertGreaterEqual(fail, 1)
 
 if __name__ == '__main__': unittest.main()
+
+class FetchArchive(unittest.TestCase):
+    """fetch_archive never overwrites: a differing file stays byte-for-byte untouched and the run refuses before writing; a matching file is skipped."""
+    def setUp(self):
+        import tempfile, glob, shutil, tarfile
+        from paths import DATA
+        self.src = tempfile.mkdtemp(); self.dest = tempfile.mkdtemp()
+        # build minimal archives from the real archive folder for the first manifest only, with a copy of the manifest dir
+        self.data = tempfile.mkdtemp()
+        m = sorted(glob.glob(DATA + 'MANIFEST-*.txt'))[0]; shutil.copy(m, self.data)
+        import hashlib; sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
+        lines = [l.split() for l in open(m) if l.strip() and not l.startswith('#')]
+        self.members = [mem[7:] for h, mem in lines if mem.startswith('member:')]
+        arc = [l for l in lines if l[1].startswith('archive:')][0][1][8:]
+        from paths import ART
+        with tarfile.open(os.path.join(self.src, arc), 'w:gz') as t:
+            for mem in self.members: t.add(ART + mem, arcname=mem)
+        # the manifest's archive hash is of the original gz; rewrite the copy with the rebuilt archive's hash
+        txt = open(os.path.join(self.data, os.path.basename(m))).read().replace(lines[0][0], sha(os.path.join(self.src, arc)), 1)
+        open(os.path.join(self.data, os.path.basename(m)), 'w').write(txt)
+    def test_never_overwrites(self):
+        import fetch_archive as F
+        victim = self.dest + '/' + [m for m in self.members if m.endswith('.SAV')][0]
+        os.makedirs(os.path.dirname(victim), exist_ok=True); open(victim, 'wb').write(b'a different, measured file')
+        other = self.dest + '/' + [m for m in self.members if m.endswith('.SAV')][1]
+        with self.assertRaises(SystemExit): F.fetch(data=self.data, dest=self.dest, src_dir=self.src)
+        self.assertEqual(open(victim, 'rb').read(), b'a different, measured file')
+        self.assertFalse(os.path.exists(other))                       # the refusal came before anything was written
+    def test_skip_matching_and_extract_rest(self):
+        import fetch_archive as F
+        from paths import ART
+        done, skipped = F.fetch(data=self.data, dest=self.dest, src_dir=self.src); self.assertEqual((done, skipped), (len(self.members), 0))
+        done, skipped = F.fetch(data=self.data, dest=self.dest, src_dir=self.src); self.assertEqual((done, skipped), (0, len(self.members)))

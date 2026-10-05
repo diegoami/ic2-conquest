@@ -1,23 +1,38 @@
 #!/usr/bin/env python3
-"""Prepare the artifacts folder for the audit: download the per-batch archives of release run-exp-v050-rules, check each archive's SHA-256 against its
-tracked MANIFEST-<batch>.txt, extract into <artifacts> (default <repo>/artifacts/run-exp-v050-rules; members are stored with relative paths such as
-saves/Q1_00_start.SAV, inputs/..., *.png), and check every member's SHA-256. usage: fetch_archive.py [--dir DOWNLOADED_TARBALLS_DIR]  (without --dir, `gh release download` is used)"""
+"""Prepare the artifacts folder for the audit: download the per-batch archives of the release (or take them from --dir), check each archive's SHA-256
+against its tracked MANIFEST-<batch>.txt, and extract into <artifacts> (default <repo>/artifacts/run-exp-v050-rules; members carry relative paths).
+NEVER overwrites: before anything is written every member is preflighted against the manifest hash; an existing file with the same hash is skipped, an existing
+file with a different hash makes the whole run refuse (nothing is touched). Members are written one by one to a new file (open 'xb') and re-checked.
+usage: fetch_archive.py [--dir DOWNLOADED_TARBALLS_DIR] [--dest ARTIFACTS_DIR]"""
 import sys, os, glob, hashlib, tarfile, subprocess, tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from paths import ART, DATA
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
-d = sys.argv[sys.argv.index('--dir') + 1] if '--dir' in sys.argv else tempfile.mkdtemp()
-if '--dir' not in sys.argv: subprocess.run(['gh', 'release', 'download', 'run-exp-v050-rules', '-R', 'diegoami/ic2-conquest', '-p', 'batch-*.tar.gz', '-D', d], check=True)
-bad = 0
-for m in sorted(glob.glob(DATA + 'MANIFEST-*.txt')):
-    lines = [l.split() for l in open(m) if l.strip() and not l.startswith('#')]
-    arc = [l for l in lines if l[1].startswith('archive:')][0]; name = arc[1][8:]
-    p = os.path.join(d, name)
-    if not os.path.exists(p): print('missing archive', name); bad += 1; continue
-    if sha(p) != arc[0]: print('archive hash mismatch', name); bad += 1; continue
-    os.makedirs(ART, exist_ok=True)
-    with tarfile.open(p) as t: t.extractall(ART)
-    for h, mem in lines:
-        if mem.startswith('member:') and sha(ART + mem[7:]) != h: print('member hash mismatch', mem); bad += 1
-    print('extracted', name)
-print('FAILED' if bad else 'archive ready in %s' % ART); sys.exit(1 if bad else 0)
+def arg(k): return sys.argv[sys.argv.index(k) + 1] if k in sys.argv else None
+def fetch(data=DATA, dest=ART, src_dir=None, release='run-exp-v050-rules', repo='diegoami/ic2-conquest'):
+    dest = dest.rstrip('/') + '/'
+    d = src_dir
+    if d is None:
+        d = tempfile.mkdtemp(); subprocess.run(['gh', 'release', 'download', release, '-R', repo, '-p', 'batch-*.tar.gz', '-D', d], check=True)
+    plan = []                                                    # (tarpath, member, hash)
+    for m in sorted(glob.glob(os.path.join(data, 'MANIFEST-*.txt'))):
+        lines = [l.split() for l in open(m) if l.strip() and not l.startswith('#')]
+        arc = [l for l in lines if l[1].startswith('archive:')][0]; name = arc[1][8:]; p = os.path.join(d, name)
+        if not os.path.exists(p): raise SystemExit('missing archive %s' % name)
+        if sha(p) != arc[0]: raise SystemExit('archive hash mismatch %s' % name)
+        plan += [(p, mem[7:], h) for h, mem in lines if mem.startswith('member:')]
+    for p, mem, h in plan:                                       # preflight: refuse before writing anything
+        t = dest + mem
+        if os.path.exists(t) and sha(t) != h: raise SystemExit('REFUSED: %s exists with a different hash; nothing was written' % t)
+    done = skipped = 0
+    for p, mem, h in plan:
+        t = dest + mem
+        if os.path.exists(t): skipped += 1; continue
+        os.makedirs(os.path.dirname(t), exist_ok=True)
+        with tarfile.open(p) as tf, tf.extractfile(mem) as src, open(t, 'xb') as out: out.write(src.read())
+        if sha(t) != h: raise SystemExit('member hash mismatch after extraction: %s' % mem)
+        done += 1
+    return done, skipped
+if __name__ == '__main__':
+    done, skipped = fetch(src_dir=arg('--dir'), dest=arg('--dest') or ART)
+    print('archive ready: %d members written, %d already present with the right hash' % (done, skipped))

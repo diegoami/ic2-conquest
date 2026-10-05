@@ -116,6 +116,15 @@ def run(ctx):
                     (43162, ('FUN_00448fd0',)), (43163, ('1000 - ',)), (43154, ('FUN_00448fd0',)), (43039, ('FUN_00448fd0',)), (43041, ('* 5)',)), (44056, ('1000 - ',)), (46384, ('0x14', '0x15b'))):
         line('Q1', n, *subs)
 
+    # signed Buy supplies (R1 of round 2): derived from the clamp order the extract shows, truncation toward zero for the negative division
+    for n, subs in ((43011, ('FUN_00448fd8',)), (43013, ('FUN_00448fd0',)), (43026, ('/ 100',)), (43028, ('+ 1',)), (43041, ('* 5',)), (43071, ('/ 5',)), (43081, ('DAT_0047c1f8',))): line('Q1', n, *subs)
+    def buy(amount, troops, supplies, stock, purse):
+        a = max(0, amount); a = min(a, stock); a = min(a, troops // 100 - supplies + 1); a = min(a, purse * 5)
+        q = abs(a) // 5 * (1 if a >= 0 else -1)                                         # IDIV truncates toward zero
+        return a, purse - q
+    a, newp = buy(10, 10000, 206, 500, 1000)
+    C('Q1', 'signed Buy supplies [derived]: 10000 troops, 206 supplies, purse 1000: amount %d, purse %d (not capped at 1000); a normal case (supplies 50, press +10) lowers the purse: %s' % (a, newp, buy(10, 10000, 50, 500, 1000)), (a, newp) == (-105, 1021) and buy(10, 10000, 50, 500, 1000)[1] == 998)
+
     # ------------------------------ Q2: the balance sheet
     q2a, q2b = ctx.save('Q2_00_start_tax10'), ctx.save('Q2_01_tax20')
     rows = {(r[0], r[1]): r[2] for r in ctx.tsv('q2_balance_values') if len(r) == 3 and r[2]}

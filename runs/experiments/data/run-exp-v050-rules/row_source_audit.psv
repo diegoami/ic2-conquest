@@ -7,9 +7,9 @@ P05|purse|Supply army up: purse += step, signed|43134|DAT_0047c1f8|purse += step
 P06|purse|Supply army down: step limited by the army's purse|43154|FUN_00448fd0|step := min(step, army purse)|min(step, army's purse)|stated|
 P07|purse|Supply army down: fleet provider receives at most 1000 - fleet purse (R3)|43163|1000 - |step := min(step, 1000 - fleet purse) when a fleet receives; negative above 1,000|1000 - fleet's purse|stated|
 P08|purse|Supply army down: treasury provider receives without cap|43158|DAT_00474aa8|treasury += step|a treasury provider has no cap|stated|
-P09|purse|Buy supplies: amount clamped to the city stock|43013|FUN_00448fd0|amount := min(amount, city stock)|not above the city's stock|stated|
+P09|purse|Buy supplies: amount clamped to the city stock|43013|FUN_00448fd0|amount := min(amount, city stock)|`min` the city's stock|stated|
 P10|purse|Buy supplies: amount clamped to the army's room +1|43025|FUN_0044a698|room = troops div 100 - supplies + 1|`troops div 100 - supplies + 1`|stated|
-P11|purse|Buy supplies: amount clamped to purse x 5|43041|* 5|amount := min(amount, purse * 5)|not above `purse × 5`|stated|
+P11|purse|Buy supplies: amount clamped to purse x 5|43041|* 5|amount := min(amount, purse * 5)|`min` `purse × 5`|stated|
 P12|purse|Buy supplies: purse -= amount div 5|43080|DAT_0047c1f8|army money -= amount/5 (integer)|`purse -= amount div 5`|stated|
 P13|purse|Buy supplies: the city owner's treasury += amount div 5|43072|DAT_00474aa8|treasury of the city's owner += amount/5|treasury += amount div 5|stated|
 P14|purse|Buy supplies: hostile cities are not providers|42641|!= 3|the provider search skips relation 3|hostile cities are not providers|stated|
@@ -139,3 +139,13 @@ R622|attack|cascade: allies of the target not at war with attacker|48532|== 2|[t
 R623|attack|cascade news|48455|declares war on|news line|declares war on Y|stated|
 R624|attack|human war declaration sites|55385|FUN_00449b40|TPolitics_OK|International Relations dialog|stated|
 R625|attack|siege uses all moves|49815|DAT_0047c1f2|moves := 0|5 → 0|stated|
+S01|purse|Sweep: Buy amount floored at 0 first|43011|FUN_00448fd8|floor applied before the later minima|floored at 0 (:43011)|stated|
+S02|purse|Sweep: room minimum after the floor, no second floor|43026|/ 100|min(amount, troops/100 - supplies + 1) can be negative|no second floor|stated|
+S03|purse|Sweep: transfer divides the signed amount by 5 (truncating)|43071|/ 5|IDIV toward zero|truncating toward zero|stated|
+S04|purse|Sweep: purse -= signed amount div 5|43081|DAT_0047c1f8|negative amount raises the purse, no cap|the **purse increases**|stated|
+S05|purse|Sweep: AI foreign resupply min with purse div 5 after the unfloored room|53106|/ 5|tons negative when the army is over-full|negative `tons`|stated|
+S06|purse|Sweep: AI foreign resupply purse -= tons div 5 (signed)|53108|DAT_0047c1f8|negative tons raises the purse|the purse **rises**|stated|
+S07|purse|Sweep: Disband army treasury += purse with a negative purse|47110|DAT_00474aa8|a negative purse would lower the treasury|treasury += purse|excluded|purses are floored at 0 by the tick and no path in these rows makes one negative except the last mercenary payment (:54765), floored again at :54772
+S08|purse|Sweep: battle capture adds a loser purse that could be negative|57619|DAT_0047c1f8|16-bit add of the loser's purse|winner.purse += loser.purse|excluded|a loser's purse is non-negative by the same floors; the signed case is not reachable between ticks
+S09|disband-queue|Sweep: mobilisation decrease is floored, increase capped|56164|FUN_00448fd8|max(0,..) on disband; min(100,..) on recruit|max(0, mobilisation|stated|
+S10|purse|Sweep: pay uses a signed purse test, purse < 1|54759|< 1|a negative purse also removes the unit|`purse < 1` (≤ 0)|stated|
