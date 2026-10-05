@@ -58,7 +58,7 @@ if reason == 'abdicate':
                                   'geometry': w[2:], 'controls': g.controls('Confirm')})
     pre = world_state(g, 'confirm_open')
     jlog('states_%s.jsonl' % batch, {'reason': reason, 'tag': tag, 'step': 'confirm_open', **pre})
-    g.answer('Confirm', yes=True)
+    L('Confirm answered: %s' % answer_confirm(g, 'Confirm', '&Yes'))
     for k in range(8):                                       # a timeline: the state does not change at once
         time.sleep(2)
         st = world_state(g, 'after_yes_t%d' % (2 * (k + 1)))
@@ -84,7 +84,7 @@ L('state at window: %s' % json.dumps(at_window['seats']))
 snap(g, '%s_03_window_context.png' % tag)
 p, t6, t4 = ocr_window(g, w[0], tag + '_04_window')
 mem = mem_strings(g, ['The game is over for', 'You have reached the end', 'Your unpopularity', 'Your army have', 'Your nation has been', 'You have conquerred',
-                      'in power in', 'Population ', 'Cities   ', 'Treasury '])
+                      'in power in', 'Population ', 'Cities   ', 'Treasury '], full=['in power in'])
 jlog('ocr_%s.jsonl' % batch, {'reason': reason, 'tag': tag, 'window': 'End of Game', 'png': os.path.basename(p), 'psm6': t6, 'psm4': t4, 'geometry': w[2:],
                               'controls': g.controls('End of Game'), 'memory_strings': mem})
 L('OCR: %s' % ' | '.join(l for l in t6.splitlines() if l.strip()))
@@ -94,7 +94,7 @@ n_ok = click_ok(g, 'End of Game')
 L('OK pressed (%d click(s)); window closed' % n_ok)
 time.sleep(4)
 for _ in range(3):
-    texts = g.dismiss_popups()
+    texts = close_boxes(g)
     if not texts: break
     L('boxes after OK: %s' % texts)
 aft = world_state(g, 'after_ok')

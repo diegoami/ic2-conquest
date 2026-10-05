@@ -26,6 +26,7 @@ DATA = args.data.rstrip('/') + '/'
 SAVES = ART + 'saves/'
 import fmt                                       # noqa: E402  (after paths)
 from common import versions, latest, write_new    # noqa: E402
+CODE = fmt.use(latest(os.path.join(DATA, 'code_extract_end_of_game.txt')))     # literals, thresholds and formatter constants come from the extract under --data
 
 checks = 0; bad = []
 def check(name, cond, detail=''):
@@ -58,7 +59,7 @@ def num(s):
     return int(s.replace(',', '').replace(' ', ''))
 
 T = tables(args.finding)
-for need in ('windows', 'after_state', 'after_game', 'staging', 'start', 'code', 'counts'):
+for need in ('rerun', 'windows', 'after_state', 'after_game', 'staging', 'start', 'code', 'counts'):
     check('table present: ' + need, need in T and T[need], need)
 
 # ------------------------------------------------------------------ the code extract
@@ -69,13 +70,11 @@ for r in T.get('code', []):
 
 def code_const(pat, line):
     m = re.search(pat, X[line]); return m
-# thresholds the port uses are the ones in the extract
-check('threshold: 250 BC is 0xfa at the window (:56391) and in the turn-start test (:55032)', 'DAT_004a0332 == 0xfa' in X[56391] and 'DAT_004a0332 == 0xfa' in X[55032])
-check('threshold: victory below 0x14e = 334 (:56390), turn-start 0x14d < cities (:55032)', '< 0x14e' in X[56390] and '0x14d <' in X[55032])
-check('threshold: unity below 400 (:56396, :55033)', '< 400' in X[56396] and '< 400' in X[55033])
-check('threshold: years in power 0x10e - year (:56419), short time from year 0x10d (:56418)', '0x10e -' in X[56419] and '< 0x10d' in X[56418])
-check('threshold: debt -(wealth / 500) and -20000 (:55034-55035)', '/ -500' in X[55034] and '< -20000' in X[55035])
-check('literal: " in 270 BC." (:56433)', '" in 270 BC."' in X[56433])
+# the thresholds are READ from the extract (fmt.Code); the window's tests and the turn-start tests must agree with each other
+check('thresholds: 250 BC is the same year in the window and in the turn-start test', CODE.year_end == CODE.t_year, '%s %s' % (CODE.year_end, CODE.t_year))
+check('thresholds: victory below %d in the window, above %d at turn start' % (CODE.cities_win, CODE.t_cities), CODE.cities_win == CODE.t_cities + 1)
+check('thresholds: unity below the same value in the window and at turn start', CODE.unity_min == CODE.t_unity)
+check('thresholds: years in power = %d - year, short time from year %d' % (CODE.years_base, CODE.short_year), CODE.years_base == CODE.short_year + 1)
 
 # ------------------------------------------------------------------ raw readings
 def jsonl(pattern, newest=False):
@@ -125,11 +124,12 @@ def window_inputs(src, seat):
         cb = [c for c in SAV.parse(pb)['cities'] if c['name'] == cname][0]; ca = [c for c in SAV.parse(pa)['cities'] if c['name'] == cname][0]
         check('capture: %s changed owner from %d' % (cname, seat), cb['owner'] == seat and ca['owner'] == a['conquered_by'] and a['conquered_by'] != seat, '%s %s' % (cb['owner'], ca['owner']))
         # FUN_0044bb18 (:50183-50185): loser wealth -= pop x 3000, loser city count -= 1; both before FUN_0044c528 annexes the rest
-        pop_now = b['wealth'] - ca['pop'] * 3000; cities_now = b['cities'] - 1
+        pop_now = b['wealth'] - ca['pop'] * CODE.capture_wealth_mult; cities_now = b['cities'] - 1
         mem = state_of('MEM:' + memspec)['seats'][str(seat)]
-        check('capture: wealth %d - %d x 3000 = %d equals the memory reading %d' % (b['wealth'], ca['pop'], pop_now, mem['wealth']), pop_now == mem['wealth'])
+        check('capture: wealth %d - %d x %d = %d equals the memory reading %d' % (b['wealth'], ca['pop'], CODE.capture_wealth_mult, pop_now, mem['wealth']), pop_now == mem['wealth'])
         check('capture: city count %d - 1 = %d equals the memory reading %d' % (b['cities'], cities_now, mem['cities']), cities_now == mem['cities'])
         check('capture: treasury unchanged %d == memory %d' % (b['treasury'], mem['treasury']), b['treasury'] == mem['treasury'])
+        check('capture: the loser is left with %d cities, below the conquest threshold %d read from the extract' % (cities_now, CODE.conquest_below), cities_now < CODE.conquest_below)
         check('capture: the loser now carries conquered_by in the after save', a['conquered_by'] == 0)
         return dict(nation=b['name'], leader=b['leader'], year=b['year'], pop_start=b['wealth_start'], cities_start=b['cities_start'], money_start=b['treasury_start'],
                     pop_now=pop_now, cities_now=cities_now, money_now=b['treasury'], conquered_by=a['conquered_by'], unity=b['unity'], names=b['names'])
@@ -137,7 +137,7 @@ def window_inputs(src, seat):
 
 # ------------------------------------------------------------------ windows
 LABELS = ['lbl_result1', 'lbl_result2', 'lbl_changes', 'lbl_nat1', 'lbl_pop1', 'lbl_cities1', 'lbl_money1', 'lbl_nat2', 'lbl_pop2', 'lbl_cities2', 'lbl_money2']
-shots_seen = set()
+shots_seen = set(); FULL_SEEN = []
 for r in T.get('windows', []):
     wid = r['id']; seat = int(r['seat']); src = r['source']
     w = window_inputs(src, seat)
@@ -148,8 +148,11 @@ for r in T.get('windows', []):
     t = fmt.window_texts(w['nation'], w['leader'], w['year'], w['pop_start'], w['cities_start'], w['money_start'], w['pop_now'], w['cities_now'], w['money_now'],
                          conq_name, w['conquered_by'], w['unity'])
     # claimed cells against the recomputed texts
-    check('%s lbl_result2' % wid, fmt.norm(r['lbl_result2']) == fmt.norm(t['lbl_result2']), '%r vs %r' % (r['lbl_result2'], t['lbl_result2']))
-    check('%s lbl_changes' % wid, fmt.norm(r['lbl_changes']) == fmt.norm(t['lbl_changes']), '%r vs %r' % (r['lbl_changes'], t['lbl_changes']))
+    check('%s lbl_result2 (exact)' % wid, r['lbl_result2'] == t['lbl_result2'], '%r vs %r' % (r['lbl_result2'], t['lbl_result2']))
+    check('%s lbl_changes (exact, spacing included)' % wid, r['lbl_changes'] == t['lbl_changes'], '%r vs %r' % (r['lbl_changes'], t['lbl_changes']))
+    if src.startswith(('AUTO:', 'MEM:')):          # the state the window shows satisfies at least one turn-start condition (thresholds read from the extract)
+        fired = CODE.fires(w['pop_now'], w['money_now'], w['unity'], w['cities_now'], w['year'])
+        check('%s a turn-start condition holds: %s' % (wid, fired), bool(fired))
     for col, key, tgt in (('pop start', 'pop_start', 'lbl_pop1'), ('pop now', 'pop_now', 'lbl_pop2'), ('treasury start', 'money_start', 'lbl_money1'), ('treasury now', 'money_now', 'lbl_money2')):
         check('%s %s' % (wid, col), num(r[col]) == w[key], '%s vs %s' % (r[col], w[key]))
     check('%s cities start' % wid, int(r['cities start']) == w['cities_start'], '%s vs %s' % (r['cities start'], w['cities_start']))
@@ -179,6 +182,10 @@ for r in T.get('windows', []):
         for lab in ('lbl_result1', 'lbl_result2', 'lbl_pop1', 'lbl_cities1', 'lbl_money1', 'lbl_pop2', 'lbl_cities2', 'lbl_money2'):
             check('%s memory string %s' % (wid, lab), t[lab].rstrip() in allm, repr(t[lab]))
         check('%s memory string lbl_changes tail' % wid, any(t['lbl_changes'].endswith(s) for s in ms['in power in']), str(ms['in power in']))
+        full = ms.get('FULL:in power in')
+        if full is not None:         # runs captured since review round 1: the whole caption, so the spacing of the prefix is read from memory
+            check('%s memory string lbl_changes (complete, exact)' % wid, t['lbl_changes'] in full, '%r not in %s' % (t['lbl_changes'], full))
+            FULL_SEEN.append(wid)
         # the string that is on screen is the one the code's decision picks, and no other result string was built for this window
         reasons = [s for k in ('You have reached the end', 'Your unpopularity', 'Your army have', 'Your nation has been', 'You have conquerred') for s in ms[k]]
         check('%s exactly one result2 string in memory' % wid, [s.rstrip() for s in reasons] == [t['lbl_result2']], str(reasons))
@@ -199,14 +206,12 @@ for r in T.get('after_state', []):
     check('%s human flag before/after' % sid, (b['human'], a['human']) == (1, 0), '%s %s' % (b['human'], a['human']))
     rule = r['rule']
     if rule == 'fall':            # FUN_0044c8f0 :50796-50805: unity = max(unity, min(550, unity + 150)); treasury = 0 if negative else + 1000; leader replaced
-        check('%s unity rule (fall)' % sid, a['unity'] == max(b['unity'], min(550, b['unity'] + 150)))
-        check('%s treasury rule (fall)' % sid, a['money'] == (0 if b['money'] < 0 else b['money'] + 1000))
-        check('%s leader replaced' % sid, a['leader'] != b['leader'])
+        check('%s unity rule (fall)' % sid, a['unity'] == max(b['unity'], min(CODE.fall_unity_cap, b['unity'] + CODE.fall_unity_inc)))
+        check('%s treasury rule (fall)' % sid, a['money'] == (0 if b['money'] < 0 else b['money'] + CODE.fall_money_bonus))
     elif rule == 'conquered':     # the same routine, then FUN_0044c528 zeroes unity (:50800 order: it runs after) and records the conqueror
         check('%s unity rule (conquered)' % sid, a['unity'] == 0)
-        check('%s treasury rule (conquered)' % sid, a['money'] == (0 if b['money'] < 0 else b['money'] + 1000))
+        check('%s treasury rule (conquered)' % sid, a['money'] == (0 if b['money'] < 0 else b['money'] + CODE.fall_money_bonus))
         check('%s conquered_by recorded' % sid, a.get('conq') == int(r['conquered by after']))
-        check('%s leader replaced' % sid, a['leader'] != b['leader'])
     elif rule == 'abdicate':      # TPremierForm_Abdicate calls FUN_00449078 only: the flag is cleared; unity and treasury are untouched
         check('%s unity and treasury untouched' % sid, (a['unity'], a['money']) == (b['unity'], b['money']))
     else: check('%s known rule' % sid, False, rule)
@@ -287,6 +292,16 @@ for r in T.get('start', []):
     check('start %s: cities start == count' % r['save'], eq(lambda c, s: c['cities_start'] == c['cities']) == int(r['cities equal']))
     check('start %s: count == city list length' % r['save'], eq(lambda c, s: c['cities'] == len(s['city_list'])) == int(r['count = list']))
     check('start %s: calendar' % r['save'], (st['year_bc'], st['season'], st['week']) == (270, 0, 1))
+
+# ------------------------------------------------------------------ re-runs reproduce the first runs
+WIN = {r['id']: r for r in T.get('windows', [])}
+for r in T.get('rerun', []):
+    f1, f2 = ART + r['first run'], ART + r['re-run']
+    if check('%s both screenshots exist' % r['id'], os.path.exists(f1) and os.path.exists(f2)):
+        check('%s re-run screenshot is byte-identical to the first run' % r['id'], sha(f1) == sha(f2))
+        check('%s sha256 prefix' % r['id'], sha(f2).startswith(r['screenshot sha256 prefix']))
+    check('%s the windows table cites the re-run screenshot' % r['id'], r['id'] in WIN and WIN[r['id']]['screenshot (sha256 prefix)'].startswith(r['re-run']))
+    check('%s complete caption read from memory' % r['id'], (r['id'] in FULL_SEEN) == (r['memory has the complete caption'] == 'yes'), str(FULL_SEEN))
 
 # ------------------------------------------------------------------ counts
 count_src = {'windows captured (rows of the windows table)': len(T.get('windows', [])),

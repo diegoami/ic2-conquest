@@ -14,7 +14,7 @@ g = MyGame(); g.load(staged, seed=12345)
 press_end_turn_once(g)
 w, texts = wait_window(g, r'^End of Game$', 300, 'End of Game')
 capture_and_ok(g, tag, batch, 'unity_menus', 'window', L)
-time.sleep(5); g.dismiss_popups()
+time.sleep(5); close_boxes(g)
 ids = lambda: set(_drv.sh('xdotool', 'search', '--onlyvisible', '--name', '', check=False).split())
 for word in ('file', 'game', 'strategy', 'nations'):
     g.reset_ui()

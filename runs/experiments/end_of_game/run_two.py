@@ -39,7 +39,7 @@ def after(step, wait_for_nation=None):
     """State after a window/menu step: the humans, the current nation, the windows, the title; a Save As when a game is still running."""
     time.sleep(3)
     for _ in range(3):
-        t = g.dismiss_popups()
+        t = close_boxes(g)
         if not t: break
         L('boxes: %s' % t)
     s = world_state(g, step); s.update({'windows': all_windows(g), 'title': main_title(g), 'alive': proc_alive(g), 'loaded': g.loaded()})
@@ -70,7 +70,7 @@ elif scen == 'abdicate_rome':
     w = g.find_windows(r'^Confirm$')[0]
     p, t6, t4 = ocr_window(g, w[0], tag + '_01_confirm')
     L('Confirm OCR: %s' % ' '.join(t6.split()))
-    g.answer('Confirm', yes=True)
+    L('Confirm answered: %s' % answer_confirm(g, 'Confirm', '&Yes'))
     kind, texts = wait_turn_of(g, 6, 300, L, n0)
     L('wait for Gaul: %s %s' % (kind, texts))
     s = after('after_yes_gaul_turn')
@@ -91,7 +91,7 @@ elif scen == 'y250_both':
     while time.time() - t0 < 400:                                # the second window (the other human), or the end of the game
         if g.find_windows(r'^End of Game$'): w2 = True; break
         if not world_state(g, 'poll')['humans']: break
-        g.dismiss_popups(); time.sleep(1)
+        close_boxes(g); time.sleep(1)
     if w2:
         at2, t6b, n_ok2 = capture_and_ok(g, tag, batch, scen, 'second', L)
         L('second window was for nation %s' % at2['cur_nation'])
@@ -102,7 +102,7 @@ elif scen == 'conquest':
     n0 = autosave_lines()
     a0 = g.army_pos(0); L('army 0 at %s' % (a0,))
     g.move(0, 99, 34)
-    L('army 0 after the move order: %s; texts %s' % (g.army_pos(0), g.dismiss_popups()))
+    L('army 0 after the move order: %s; texts %s' % (g.army_pos(0), close_boxes(g)))
     press_end_turn_once(g)
     kind, texts = wait_turn_of(g, 6, 300, L, n0); L('Gaul turn: %s %s' % (kind, texts))
     s = after('gaul_turn_0720')
@@ -125,10 +125,9 @@ elif scen == 'conquest':
     t0 = time.time()
     while time.time() - t0 < 60:
         if g.find_windows(r'^End of Game$'): got = 'window'; break
-        cf = [w for w in g.find_windows('^Confirm$')]
-        if cf:
-            L('Confirm: %s' % g.read_popup(cf[0])); g.answer('Confirm', yes=True); continue
-        t = g.dismiss_popups()
+        if g.find_windows('^Confirm$'):                                # the siege confirmation: answered through answer_confirm (X id tracked, verified gone, 3 attempts in all)
+            L('Confirm: %s' % answer_confirm(g, 'Confirm', '&Yes')); continue
+        t = close_boxes(g)
         if t: L('boxes: %s' % t)
         time.sleep(1)
     L('after the siege click: %s' % got)

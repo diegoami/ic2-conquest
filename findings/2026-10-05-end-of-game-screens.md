@@ -15,7 +15,7 @@
    - conquered: `Your nation has been conquerred by <nation>.` (a real siege, staged state)
    - The text keeps the original's spellings: `conquerred` twice, `Your army have`.
 3. **When two reasons hold, the window shows the first of this order** `[derived]`: victory (cities of 334 or more), then 250 BC, then conquered, then unity below 400, then debt. The turn-start test itself is one OR of five conditions, so it fires once whichever hold. Played: unity and debt together show the unity text (W7); 250 BC and unity together show the 250 BC text (W8); victory and 250 BC together show the victory text (W9) `[confirmed]`. Conquered against the others is `[derived]` only.
-4. **After OK the seat is handed to the computer** and its leader is replaced; if no human seat is left the game is over: the maps close, the main window is left blank with the caption `Imperial Conquest 2`, File > New / Open / Close stay enabled and every other menu item is grey; **the program keeps running** `[confirmed]`. If another human is left, the game goes on with that human `[confirmed for debt, conquest and Abdicate]`.
+4. **After OK the seat is handed to the computer** and its leader name is redrawn (see the end-of-a-fall paragraph); if no human seat is left the game is over: the maps close, the main window is left blank with the caption `Imperial Conquest 2`, File > New / Open / Close stay enabled and every other menu item is grey; **the program keeps running** `[confirmed]`. If another human is left, the game goes on with that human `[confirmed for debt, conquest and Abdicate]`.
 5. **Two humans:** one seat's End of Game **hands that seat to the computer and the other human plays on**; the game ends only when the last human has fallen (250 BC: Rome's window, then Gaul's, then the end) `[confirmed]`.
 
 ## Method
@@ -42,11 +42,11 @@
 - **Start values.** The three start fields (+0x434 wealth, +0x43C treasury, +0x448 city count) are **not written by any function of the decompile**: a search of the dump for the three fields (as `+ 0x434`, `DAT_00474aa4`, and the other forms) finds only the reads of `THumanFalls_InitializeForm` `[derived]`. They are part of the nation record that New Game builds and that every save carries. In the two New Game saves they equal the current values for wealth (16 of 16 nations) and the city count (16 of 16, and equal to the length of the city list), and for the treasury in 11 of 16: the other five (Seleucid, Ptolemaic, Macedonia, Galatia, Media) already differ because the AI seats before the human's first turn have played, so the start value was fixed before that (start table) `[confirmed]`. Every window's start triple equals the New Game save's triple of that nation (windows table, column `base save`): the start values are frozen from New Game to the end `[confirmed]`. Whether they are written at New Game or when each nation first plays is not separated by this data.
 - **Years in power.** 270 minus the calendar word `DAT_004A0332` (the year BC), printed only below 269: the window shows `20 years` at 250 BC `[confirmed]` and ` short time ` in 270 BC `[confirmed]`; 269 BC also gives `short time` (the test is `< 0x10d`), so `1 years` never appears `[derived]`.
 - **The checks.** `FUN_00452034` (run at every human turn start, from `FUN_00451fdc`, and at New Game, :58050) calls `TPremierForm_StartTurn` first, then calls `FUN_0044c8f0(current seat)` when **any** of: year equals 250, cities above 333, unity below 400, treasury below -(wealth div 500), treasury below -20,000 (:55032-55036) `[derived]`. The autosave of the turn is written before the test: the autosave of the turn start holds the state the window then shows `[confirmed]` (windows table, `AUTO` sources). The same function is called by the conquest paths (`FUN_0044bed8`, `FUN_0044c528`, only for a human nation) and by the quarterly update for **computer** nations with a one-in-nine chance (:54900), where, for a computer nation, the routine writes the news line `<nation> depose their leader <leader>.` and applies the same leader, unity and treasury changes `[derived]`.
-- **What happens at the end of a human's fall.** `FUN_0044c8f0` for a human nation sets `DAT_004A032C` to the seat and calls `TPremierForm_HumanLeaderFalls`: it shows the window modally, then `FUN_00449078(seat)` (:47777): clears the human flag (+0x490), draws a new leader name from the nation's 12, and if **no human is left** (`FUN_00449050`, :47753) closes all forms, turns the menus off and sets the caption `Imperial Conquest 2`; else, if the fallen seat is the current one, `HumanLeaderFalls` ends its turn (:59151-59154). Back in `FUN_0044c8f0`: a new leader different from the old one, unity = max(unity, min(550, unity + 150)), treasury = 0 if negative else + 1000, relations of -5 to -1 reset (:50796-50816). `THumanFalls_OK` only sets the form's result to 1 and closes it (:56492-56493) `[derived]`.
+- **What happens at the end of a human's fall.** `FUN_0044c8f0` for a human nation sets `DAT_004A032C` to the seat and calls `TPremierForm_HumanLeaderFalls`: it shows the window modally, then `FUN_00449078(seat)` (:47777): clears the human flag (+0x490), draws a leader name at random from the nation's 12 and writes it into the leader field (**first draw**, :47790-47791; it may equal the leader shown in the window), and if **no human is left** (`FUN_00449050`, :47753) closes all forms, turns the menus off and sets the caption `Imperial Conquest 2`; else, if the fallen seat is the current one, `HumanLeaderFalls` ends its turn (:59151-59154). Back in `FUN_0044c8f0`: a **second draw** (:50789-50794) that repeats until the name differs from the field's current content, which is the first draw, not the leader the window showed, so the final name can be the original one again (assuming `FUN_00405c08` returns 0 for equal strings, as a Pascal string comparison does); unity = max(unity, min(550, unity + 150)), treasury = 0 if negative else + 1000, relations of -5 to -1 reset (:50796-50816). `THumanFalls_OK` only sets the form's result to 1 and closes it (:56492-56493) `[derived]`.
 
 ## Evidence
 
-### The windows (13, all staged)
+### The windows (17, all staged; W14-W17 are re-runs)
 
 `source` says where the fallen seat's numbers come from: `AUTO` the autosave written at that turn start, `MEM` the game's memory read while the window was open, `CAPTURE` the saves before and after the siege plus the capture rule (loser's wealth falls by the city's population x 3000 and its count by 1, :50183-50185), checked against the memory reading. Cells are the label texts the window shows, recomputed from those sources in `claims_audit.py` and compared with the per-label OCR of the screenshot and with the label strings in game memory.
 
@@ -66,8 +66,12 @@
 | W11 | two humans: 250 BC, first window (Rome) | 0 | `MEM:states_b5.jsonl#EOG2_y250_both_b5/first_window_open` | You have reached the end of your allotted 20 years. | Your 20 years in power in Rome produced these changes. | 2,577,000 | 2,601,000 | 25 | 25 | 2,200 | 2,221 | `EOG2_y250_both_b5_first_window.png` (bc8dd4e9321a) | `EOG_2h_base_AUTO0720.SAV` |
 | W12 | two humans: 250 BC, second window (Gaul) | 6 | `AUTO:EOG2_y250_both_b5_AUTO1200.SAV` | You have reached the end of your allotted 20 years. | Your 20 years in power in Gaul produced these changes. | 1,512,000 | 1,587,000 | 28 | 28 | 315 | - 64 | `EOG2_y250_both_b5_second_window.png` (dda73d7c9057) | `EOG_2h_base_AUTO0720.SAV` |
 | W13 | two humans: Gaul conquered by Rome (city count word and Felsina staged) | 6 | `CAPTURE:EOG2_conquest_before_siege.SAV+EOG2_conquest_after_gaul_conquered.SAV#city=Felsina#states_b6.jsonl#EOG2_conquest_b6/gaul_window_open` | Your nation has been conquerred by Rome. | Your  short time in power in Gaul produced these changes. | 1,512,000 | 1,497,000 | 28 | 4 | 315 | 315 | `EOG2_conquest_b6_gaul_window.png` (5c4c8aa433c6) | `EOG_2h_base_AUTO0720.SAV` |
+| W14 | rerun of W1 with the fixed runners | 0 | `AUTO:EOG_debt_b9_AUTO0721.SAV` | Your army have deposed you because they have not been paid. | Your  short time in power in Rome produced these changes. | 2,577,000 | 2,577,000 | 25 | 25 | 2,200 | - 30,000 | `EOG_debt_b9_04_window.png` (a589ba017226) | `run0-start-AUTO0720-seed12345.SAV` |
+| W15 | rerun of W4 with the fixed runners | 0 | `AUTO:EOG_y250_b9_AUTO1200.SAV` | You have reached the end of your allotted 20 years. | Your 20 years in power in Rome produced these changes. | 2,577,000 | 2,601,000 | 25 | 25 | 2,200 | 2,221 | `EOG_y250_b9_04_window.png` (bc8dd4e9321a) | `run0-start-AUTO0720-seed12345.SAV` |
+| W16 | rerun of W10 with the fixed runners | 6 | `AUTO:EOG2_debt_gaul_b9_AUTO0720.SAV` | Your army have deposed you because they have not been paid. | Your  short time in power in Gaul produced these changes. | 1,512,000 | 1,512,000 | 28 | 28 | 315 | - 30,000 | `EOG2_debt_gaul_b9_gaul_window.png` (109e23370302) | `EOG_2h_base_AUTO0720.SAV` |
+| W17 | rerun of W13 with the fixed runners | 6 | `CAPTURE:EOG2_conquest_before_siege.v2.SAV+EOG2_conquest_after_gaul_conquered.v2.SAV#city=Felsina#states_b9.jsonl#EOG2_conquest_b9/gaul_window_open` | Your nation has been conquerred by Rome. | Your  short time in power in Gaul produced these changes. | 1,512,000 | 1,497,000 | 28 | 4 | 315 | 315 | `EOG2_conquest_b9_gaul_window.png` (5c4c8aa433c6) | `EOG_2h_base_AUTO0720.SAV` |
 
-- Screenshots, saves and autosaves are in release `run-exp-end-of-game` (`batch-b1.tar.gz`, `batch-b2.tar.gz`, `batch-b3.tar.gz`), hashes in `MANIFEST-*.txt` and `SAVES.sha256`; `fetch_archive.py` prepares `artifacts/` for the audit.
+- Screenshots, saves and autosaves are in release `run-exp-end-of-game` (`batch-b1.tar.gz` ... `batch-b3.tar.gz` and the re-runs in `batch-b5.tar.gz`), hashes in `MANIFEST-*.txt` and `SAVES.sha256`; `fetch_archive.py` prepares `artifacts/` for the audit.
 - The window is clipped on screen: the reason label is 394 px wide and Wine's font cuts `Your army have deposed you because they have not been pa` and `You have conquerred the Mediterranean, a unique achievem` (screenshots W1, W5); the memory string is complete `[confirmed]`. Whether the original clips on Windows (a different MS Sans Serif) is not established.
 - `Cities` for a conquered nation is the **count word** `+0x446` after the capture's decrement (4), not the number of cities the nation owns (0 after the annexation): Gaul's after save still reads 4 `[confirmed]`.
 
@@ -106,10 +110,22 @@
 | G10 | 250 BC for both, two humans | [0, 6] | [] | 6 | caption only | keeps running | 250 | `MEM:states_b5.jsonl#EOG2_y250_both_b5/first_window_open` | `MEM:states_b5.jsonl#EOG2_y250_both_b5/after_both` |
 | G11 | Gaul conquered by Rome, two humans | [0, 6] | [0] | 0 | game windows | keeps running | 270 | `MEM:states_b6.jsonl#EOG2_conquest_b6/gaul_window_open` | `MEM:states_b6.jsonl#EOG2_conquest_b6/after_ok` |
 
-- **One human, any reason:** the human flag goes to 0, the leader is replaced, `FUN_0044c8f0`'s unity and treasury rules apply (S1-S9), the maps close within about 8 s, the main window stays with the caption `Imperial Conquest 2` and the toolbar's Open button only; File shows New, Open and Close enabled and Save and Save As grey; Game (End turn, New player, New nation, Abdicate), Strategy and Nations items are all grey; no further window; the program keeps running (G1-G7; screenshots `EOGM_unity_b8_menu_*.png`) `[confirmed]`.
+- **One human, any reason:** the human flag goes to 0, the leader name is redrawn (observed: it changed in every fall, S1-S12, but the code does not guarantee a change), `FUN_0044c8f0`'s unity and treasury rules apply (S1-S9), the maps close within about 8 s, the main window stays with the caption `Imperial Conquest 2` and the toolbar's Open button only; File shows New, Open and Close enabled and Save and Save As grey; Game (End turn, New player, New nation, Abdicate), Strategy and Nations items are all grey; no further window; the program keeps running (G1-G7; screenshots `EOGM_unity_b8_menu_*.png`) `[confirmed]`.
 - **Abdicate** (G7, S13): `Game > Abdicate` opens the Confirm box `Are you sure you want to abdicate ?` with Yes, No, Cancel; Yes clears the flag at once (the memory reading 2 s later) and **no End of Game window opens**; unity and treasury are untouched and the leader's name did not change in these runs (the code draws a new name from the nation's 12 and does not forbid the same one; the seed is the same in every run) `[confirmed]`. With a second human (G9, S14) the turn is ended by the game and the second human's turn starts.
 - **Two humans** (G8-G11): the fall hands the seat over and the game goes on with the other human (debt: Gaul falls at the start of its turn, then Rome's turn 0721 starts; conquest: Gaul's window opens during Rome's own turn, the current seat stays Rome after OK); 250 BC gives Rome's window, then Gaul's, then the game is over (G10) `[confirmed]`. The save after Gaul's fall (`EOG2_debt_gaul_after_gaul_falls.SAV`) has Gaul's human flag at 0 and Rome's at 1; the save after Rome's abdication (`EOG2_abdicate_rome_after.SAV`) has Rome 0 and Gaul 1.
 - **Conquest** (S12): Rome's army 0 besieged Felsina in Rome's own turn (a real siege click, Gaul human; `EOG2_conquest_adjacent.SAV` before, `EOG2_conquest_after_gaul_conquered.SAV` after): all 28 cities in Gaul's list went to Rome (53 owned), Gaul's unity is 0 and its treasury 1,315, conquered-by 0 `[confirmed]`.
+
+### Re-run with the fixed runners (review round 1)
+
+The runners were reworked after review (every confirmation click is bounded and verified per window id; Save As is proven to be a file dialog before the name is typed). W1, W4, W10 and W13 were re-run from scratch as W14-W17 (batch `b9`, new files beside the old ones). The window screenshots are **byte-identical** to the first runs, and the complete `lbl_changes` caption was read from game memory this time, so the spacing `Your  short time in power in ...` (two spaces) and `Your 20 years in power in ...` are `[confirmed]` from memory for W14-W17 (the audit compares the finding's cell with that string exactly). For W1-W13 the spacing of the prefix is `[confirmed]` on the screenshot only (the memory string of those runs holds the suffix `in power in ...`), plus `[derived]` from the code.
+
+<!-- table: rerun -->
+| id | first run | re-run | screenshot sha256 prefix | memory has the complete caption |
+|---|---|---|---|---|
+| W14 | EOG_debt_b1_04_window.png | EOG_debt_b9_04_window.png | a589ba017226 | yes |
+| W15 | EOG_y250_b1_04_window.png | EOG_y250_b9_04_window.png | bc8dd4e9321a | yes |
+| W16 | EOG2_debt_gaul_b3_gaul_window.png | EOG2_debt_gaul_b9_gaul_window.png | 109e23370302 | yes |
+| W17 | EOG2_conquest_b6_gaul_window.png | EOG2_conquest_b9_gaul_window.png | 5c4c8aa433c6 | yes |
 
 ### What was staged (every window)
 
@@ -145,6 +161,17 @@
 | EOG_victory_y250_b7_staged.SAV | run0-start-AUTO0720-seed12345.SAV | calendar.season | 0 | 3 | 6 |
 | EOG_victory_y250_b7_staged.SAV | run0-start-AUTO0720-seed12345.SAV | calendar.week | 1 | 11 | 6 |
 | EOGM_unity_b8_staged.SAV | run0-start-AUTO0720-seed12345.SAV | unity[0] | 821 | 100 | 2 |
+| EOG2_debt_gaul_b9_staged.SAV | EOG_2h_base_AUTO0720.SAV | treasury[6] | 315 | -30000 | 4 |
+| EOG_debt_b9_staged.SAV | run0-start-AUTO0720-seed12345.SAV | treasury[0] | 2200 | -30000 | 4 |
+| EOG_y250_b9_staged.SAV | run0-start-AUTO0720-seed12345.SAV | calendar.year | 270 | 251 | 4 |
+| EOG_y250_b9_staged.SAV | run0-start-AUTO0720-seed12345.SAV | calendar.season | 0 | 3 | 4 |
+| EOG_y250_b9_staged.SAV | run0-start-AUTO0720-seed12345.SAV | calendar.week | 1 | 11 | 4 |
+| EOG_abdicate_b9_staged.SAV | run0-start-AUTO0720-seed12345.SAV | (no operation: byte-identical copy) | - | - | 0 |
+| EOG2_conquest_b9_staged.SAV | EOG_2h_base_AUTO0720.SAV | ncities[6] | 28 | 5 | 4 |
+| EOG2_conquest_b9_staged.SAV | EOG_2h_base_AUTO0720.SAV | city[79].loyalty | 79 | 1 | 4 |
+| EOG2_conquest_b9_staged.SAV | EOG_2h_base_AUTO0720.SAV | city[79].fort | 68 | 0 | 4 |
+| EOG2_conquest_b9_staged.SAV | EOG_2h_base_AUTO0720.SAV | city[79].pop | 26 | 1 | 4 |
+| EOG2_abdicate_rome_b9_staged.SAV | EOG_2h_base_AUTO0720.SAV | (no operation: byte-identical copy) | - | - | 0 |
 
 Staged inputs: one field per operation; "changed bytes" is the total for the file. The conquest staging sets Gaul's city-count word to 5 (the capture of Felsina then leaves it below 6, :50213, so `FUN_0044c528` annexes the rest) and Felsina's loyalty 1, fortification 0, population 1 so that army 0 alone takes it; the city list of Gaul is untouched. `own_all[0]`: every city's owner is Rome, Rome's list holds all 334 cities, the other 15 nations have an empty list, 0 cities, unity 0 and no capital (W6); the game ran a full round of 15 computer seats on that state without a fault, which is all that is claimed.
 
@@ -185,7 +212,9 @@ Staged inputs: one field per operation; "changed bytes" is the total for the fil
 | HumanLeaderFalls shows the window then hands the seat over | 59150 | FUN_00449078(DAT_004a032c) |
 | the current seat's turn is ended when it is the fallen one | 59151 | DAT_004a0320 == DAT_004a032c |
 | the seat's human flag is cleared | 47789 | = 0; |
-| the new leader is drawn from the nation's 12 names | 47790 | FUN_0040284c(0xc) |
+| the first draw of a leader name from the nation's 12 names | 47790 | FUN_0040284c(0xc) |
+| the first draw is written into the leader field | 47791 | FUN_00405b00(&DAT_0047467b |
+| the second draw repeats while the name equals the field (the first draw) | 50793 | while (iVar4 == 0) |
 | no human left: forms closed | 47794 | TPremierForm_CloseAllForms |
 | no human left: caption reset | 47797 | Imperial Conquest 2 |
 | unity rule: 550 cap, +150 | 50798 | 0x226 |
@@ -222,7 +251,7 @@ The clone's repository is not in this environment, so this table lists what the 
 | Abdicate | a Confirm box, **no End of Game window** | none shown |
 | after OK, no human left | maps close, blank main window, File > New / Open / Close usable, everything else grey, no exit | same state |
 | after OK, another human | seat handed to the computer, game continues with the other human | same |
-| leader replacement | a new name from the nation's 12, unity max(u, min(550, u + 150)), treasury 0 if negative else + 1000 (not for Abdicate) | same |
+| leader names | two draws from the nation's 12 in a fall (the second differs from the first only), one draw on Abdicate; the observed names are in the after_state table; unity max(u, min(550, u + 150)), treasury 0 if negative else + 1000 (not for Abdicate) | same |
 | victory by an AI nation | `[derived]` the conquest path ends with a test of the conqueror's count above 333 and then the same window for that nation, with no test that it is human (:50753-50755) | check |
 
 ## What this does not establish
@@ -233,6 +262,14 @@ The clone's repository is not in this environment, so this table lists what the 
 - **Where the start values are first written** (New Game or each nation's first move) is not separated; they are frozen from before the first human turn.
 - **The leader name after Abdicate** was unchanged in every run: the code redraws, so a different seed may change it.
 - The OCR is a reading aid: the claims audit compares the per-label OCR with the code's text and the game's memory strings and tolerates only the clipped reason label.
+
+## Review round 1 (what changed)
+
+- The audit's label texts, thresholds and formatter constants are now **read from the code extract under `--data`** (`fmt.Code`); the finding's label cells are compared **exactly** (OCR is normalised, nothing else); tests alter an extract literal and thresholds, and the double space of the short-time line, and each must fail the audit.
+- The leader's name is described as two draws (observed names are not a guarantee).
+- Confirmation loops (End turn ?, siege Confirm, Abdicate Confirm, information boxes) track the dialog's X id, verify it is gone after each click and stop after 3 attempts in all; Save As is proven to be a file dialog before the name is typed.
+- Re-runs W14-W17 (batch `b9`, release archive `batch-b5.tar.gz`) reproduce W1, W4, W10 and W13 byte for byte.
+- Final audit: 1700 checks, 0 mismatches; `test_claims_audit.py`: 23 of 23 pass.
 
 ## Reproduction
 
@@ -248,8 +285,8 @@ python3 runs/experiments/end_of_game/claims_audit.py                            
 <!-- table: counts -->
 | item | value |
 |---|---:|
-| windows captured (rows of the windows table) | 13 |
-| screenshots read per label | 13 |
+| windows captured (rows of the windows table) | 17 |
+| screenshots read per label | 17 |
 | distinct reasons that produced a window | 5 |
-| staged inputs (rows of the staging table, distinct files) | 15 |
+| staged inputs (rows of the staging table, distinct files) | 21 |
 | two-human scenarios (rows of after_game with two humans before) | 4 |

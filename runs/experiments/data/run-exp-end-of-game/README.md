@@ -15,3 +15,5 @@ Binaries (saves, autosaves, staged inputs, screenshots) are in the GitHub releas
 | `SAVES.sha256`, `MANIFEST-*.txt` | SHA-256 of every binary and of each release archive |
 
 Partial runs kept (rule 6): `EOG2_debt_gaul_b2` (the script stopped after OK), `EOG2_y250_both_b3/b4` (the second human's turn was not handled, then the OK check was fooled by the second window), `EOG_abdicate_b1`, the first Abdicate runs (a 3 s snapshot; the timeline run is b2).
+
+Review round 1: batch `b9` (`single_b9.log`, `two_b9.log`, `states_b9.jsonl`, `ocr_b9.jsonl`, `ocr_labels.v2.jsonl`) re-runs debt, 250 BC, Gaul's debt, the conquest, Rome's abdication and the single-human Abdicate with the reworked runners (bounded, id-tracked confirmations; Save As proven open); release archive `batch-b5.tar.gz`. The window screenshots reproduce the first runs byte for byte.

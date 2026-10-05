@@ -21,6 +21,11 @@ W = [  # id, reason, seat, source, screenshot
  ('W11', 'two humans: 250 BC, first window (Rome)', 0, 'MEM:states_b5.jsonl#EOG2_y250_both_b5/first_window_open', 'EOG2_y250_both_b5_first_window.png'),
  ('W12', 'two humans: 250 BC, second window (Gaul)', 6, 'AUTO:EOG2_y250_both_b5_AUTO1200.SAV', 'EOG2_y250_both_b5_second_window.png'),
  ('W13', 'two humans: Gaul conquered by Rome (city count word and Felsina staged)', 6, 'CAPTURE:EOG2_conquest_before_siege.SAV+EOG2_conquest_after_gaul_conquered.SAV#city=Felsina#states_b6.jsonl#EOG2_conquest_b6/gaul_window_open', 'EOG2_conquest_b6_gaul_window.png'),
+
+ ('W14', 'rerun of W1 with the fixed runners', 0, 'AUTO:EOG_debt_b9_AUTO0721.SAV', 'EOG_debt_b9_04_window.png'),
+ ('W15', 'rerun of W4 with the fixed runners', 0, 'AUTO:EOG_y250_b9_AUTO1200.SAV', 'EOG_y250_b9_04_window.png'),
+ ('W16', 'rerun of W10 with the fixed runners', 6, 'AUTO:EOG2_debt_gaul_b9_AUTO0720.SAV', 'EOG2_debt_gaul_b9_gaul_window.png'),
+ ('W17', 'rerun of W13 with the fixed runners', 6, 'CAPTURE:EOG2_conquest_before_siege.v2.SAV+EOG2_conquest_after_gaul_conquered.v2.SAV#city=Felsina#states_b9.jsonl#EOG2_conquest_b9/gaul_window_open', 'EOG2_conquest_b9_gaul_window.png'),
 ]
 def mem_state(spec, seat):
     f, key = spec.split('#'); tag, step = key.split('/')
@@ -47,7 +52,7 @@ def row(w):
     t = fmt.window_texts(c['name'], c['leader'], c['year'], c['wealth_start'], c['cities_start'], c['treasury_start'], pop_now, cities_now, money_now, conq_name, c['conquered_by'], c['unity'])
     sha = hashlib.sha256(open(ART + png, 'rb').read()).hexdigest()[:12]
     return '| %s | %s | %d | `%s` | %s | %s | %s | %s | %d | %d | %s | %s | `%s` (%s) | `%s` |' % (wid, reason, seat, src, t['lbl_result2'], t['lbl_changes'],
-        fmt.f18(c['wealth_start']).strip(), fmt.e74(pop_now).strip(), c['cities_start'], cities_now, fmt.f18(c['treasury_start']).strip(), fmt.f18(money_now).strip(), png, sha, 'EOG_2h_base_AUTO0720.SAV' if wid in ('W10','W11','W12','W13') else 'run0-start-AUTO0720-seed12345.SAV')
+        fmt.f18(c['wealth_start']).strip(), fmt.e74(pop_now).strip(), c['cities_start'], cities_now, fmt.f18(c['treasury_start']).strip(), fmt.f18(money_now).strip(), png, sha, 'EOG_2h_base_AUTO0720.SAV' if wid in ('W10','W11','W12','W13','W16','W17') else 'run0-start-AUTO0720-seed12345.SAV')
 print('| id | reason | seat | source | lbl_result2 | lbl_changes | pop start | pop now | cities start | cities now | treasury start | treasury now | screenshot (sha256 prefix) | base save |')
 print('|---|---|---:|---|---|---|---:|---:|---:|---:|---:|---:|---|---|')
 for w in W: print(row(w))

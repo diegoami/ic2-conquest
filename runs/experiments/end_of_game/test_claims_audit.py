@@ -65,7 +65,20 @@ try:
     results.append(doctor('a staged old/new value', '| EOG_debt_b1_staged.SAV | run0-start-AUTO0720-seed12345.SAV | treasury[0] | 2200 | -30000 | 4 |', '| EOG_debt_b1_staged.SAV | run0-start-AUTO0720-seed12345.SAV | treasury[0] | 2200 | -29000 | 4 |', 'EOG_debt_b1_staged.SAV'))
     results.append(doctor('a start-table count', '| run0-start-AUTO0720-seed12345.SAV | 16 | 11 | 16 | 16 |', '| run0-start-AUTO0720-seed12345.SAV | 16 | 12 | 16 | 16 |', 'start'))
     results.append(doctor('a code citation line', '| 56391 | DAT_004a0332 == 0xfa |', '| 56392 | DAT_004a0332 == 0xfa |', 'code line 56392'))
-    results.append(doctor('a count', '| windows captured (rows of the windows table) | 13 |', '| windows captured (rows of the windows table) | 14 |', 'count'))
+    results.append(doctor('a re-run hash prefix', '| W14 | EOG_debt_b1_04_window.png | EOG_debt_b9_04_window.png | a589ba017226 |', '| W14 | EOG_debt_b1_04_window.png | EOG_debt_b9_04_window.png | a589ba017227 |', 'W14'))
+    results.append(doctor('a count', '| windows captured (rows of the windows table) | 17 |', '| windows captured (rows of the windows table) | 18 |', 'count'))
+    results.append(doctor('the double space of the short-time line', 'Your  short time in power in Rome produced these changes. | 2,577,000 | 2,577,000 | 25 | 25 | 2,200 | 2,200 | `EOG_unity_b1', 'Your short time in power in Rome produced these changes. | 2,577,000 | 2,577,000 | 25 | 25 | 2,200 | 2,200 | `EOG_unity_b1', 'W3'))
+    # (e0) the code extract under --data is the source of the literals and thresholds: an altered literal or threshold changes the recomputed text
+    def doctor_extract(name, old, new, needle):
+        d2 = os.path.join(tmp, 'data_' + re.sub(r'\W', '_', name)); shutil.copytree(paths.DATA.rstrip('/'), d2)
+        cands = sorted(f for f in os.listdir(d2) if f.startswith('code_extract_end_of_game'))
+        p2 = os.path.join(d2, cands[-1]); x = open(p2, encoding='utf-8').read(); assert old in x, old
+        open(p2, 'w', encoding='utf-8').write(x.replace(old, new))
+        code, out = run(data=d2); return expect('doctored code extract: ' + name, code, out, True, needle)
+    results.append(doctor_extract('a result literal', 'Your army have deposed you because they have not been paid.', 'Your army has deposed you because they have not been paid.', 'W1'))
+    results.append(doctor_extract('the years literal', ' years ', ' yrs ', 'W4'))
+    results.append(doctor_extract('the 250 threshold of the window', 'DAT_004a0332 == 0xfa) {', 'DAT_004a0332 == 0xfb) {', 'thresholds'))
+    results.append(doctor_extract('the unity threshold of the window', ']  < 400) {'.replace(']  <', '] <'), '] < 399) {', 'thresholds'))
     # (e) a doctored tracked reading: a memory string of one window
     data = os.path.join(tmp, 'data'); shutil.copytree(paths.DATA.rstrip('/'), data)
     for fn in os.listdir(data):
