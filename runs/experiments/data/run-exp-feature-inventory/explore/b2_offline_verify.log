@@ -1,0 +1,5 @@
+parent crop 480x300 hash d12db4cc6208
+army: identical-crop hash 96e0df1f2830 (parent d12db4cc6208) differs=True; missing items=['Disband army'] -> NOT PROVEN
+fleet: identical-crop hash d3ca42037872 (parent d12db4cc6208) differs=True; missing items=['Supply fleet', 'Join fleets'] -> NOT PROVEN
+city: identical-crop hash b3c4c61eef2e (parent d12db4cc6208) differs=True; missing items=[] -> PROVEN
+SOME NOT PROVEN

@@ -1,7 +1,7 @@
 # Plan: battles (the tactical screen half-round by half-round, sieges and the instant resolver, the post-battle peace)
 
 **Status:** plan for review (2026-10-04, revised the same day for the research request). Nothing here has been run.
-Author: Claude Opus 5.5 (planner). Implementation: Sonnet; review: DeepSeek V4.1 Flash, then GPT-6 Sol once per PR at low effort.
+Author: Claude Opus 5.5 (planner). Implementation: Sonnet; review: DeepSeek V4.1 Flash, then GPT-6.1 Sol once per PR at low effort.
 These are **experiments, not runs**: no issue approval is needed (rule 4 concerns real runs). Battles come before the chatbot work.
 The form follows `docs/proposals/fleet-battles-and-storms.md`: tasks with cells and seeds, acceptance criteria, natural and synthetic
 evidence, and each experiment ends with a `findings/` draft and a release `run-exp-<name>`.
@@ -12,7 +12,8 @@ evidence, and each experiment ends with a `findings/` draft and a release `run-e
 
 1. **Scope: all four areas.** (A) field battles under *Computer general*; (B) playing the tactical screen ourselves;
    (C) city sieges and the instant resolver; (D) the post-battle peace dialog `TBattlePols`.
-2. **Process:** Opus plans, Sonnet implements, DeepSeek V4.1 Flash and then GPT-6 Sol (low, once per PR) review.
+2. **Process:** Opus plans, Sonnet implements, DeepSeek V4.1 Flash and then GPT-6.1 Sol (low, once per PR) review. Since 2026-10-05 each reviewer is
+   chosen after the quota check (`CLAUDE.md` L50; `scripts/external_review.py` skips an exhausted provider), and is passed explicitly with `--model`.
 3. **Order:** battles first, then the chatbot. **No issue approval for experiments.**
 4. **The research request** (relayed 2026-10-04 from the `imperial_conquest_2` research session; quoted in §0.2) is **the real scope
    and the deliverable shape of A and B**. It feeds the clone's v0.5.0 "Battles", research issue `imperial_conquest_2#496` and the
@@ -355,7 +356,7 @@ post-battle dialog captured unanswered.
 
 ## 8. Review plan
 
-- **This PR:** this file only. `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then GPT-6 Sol, low, once);
+- **This PR:** this file only. `python3 scripts/external_review.py --pr <n> --model opencode-go/deepseek-v4.1-flash#high,openai/gpt-6.1-sol#low` (DeepSeek V4.1 Flash, then GPT-6.1 Sol, low, once; after the quota check, `CLAUDE.md` L50);
   `/review-pr <n>` if the OpenCode reviewer exits 3; the player's go starts each stage (§9).
 - **Each task PR:** code, findings draft, a `tests/results.md` line, `coverage.md` rows; the same review once per PR. Reviewers check
   that every claim cites a save, that `lab`/L1/L2 cells are labelled, and that no binary is in git.
