@@ -1,9 +1,9 @@
 """Debug server: owns the game process (so /proc/<pid>/mem is readable) and executes command files dropped in CMD dir.
 usage: server.py [save [seed]]   then: cmd NAME  (writes NAME.py in CMD, waits for NAME.out)."""
 import sys, os, time, io, traceback, contextlib
-sys.path.insert(0, '/home/diego/projects/wt-split/runs/experiments/split_aboard')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
-CMD = '/tmp/claude-1000/cmd/'
+CMD = os.environ.get('IC2_CMD_DIR', '/tmp/ic2-split-cmd') + '/'
 os.makedirs(CMD, exist_ok=True)
 g = MyGame(); xvfb()
 if len(sys.argv) > 1:

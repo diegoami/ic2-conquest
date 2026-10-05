@@ -6,7 +6,7 @@ usage: archive_batch.py BATCH [--no-upload]"""
 import sys, os, glob, hashlib, tarfile, subprocess
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import new_path, write_new, DATA
-ART = '/home/diego/projects/wt-split/artifacts/run-exp-split-aboard/'
+from paths import ART
 REL = 'run-exp-split-aboard'
 def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 batch = sys.argv[1]

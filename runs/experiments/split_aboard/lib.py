@@ -1,13 +1,13 @@
 """Shared setup for the v0.5.0 rule-read plays: own display (:733), own IC2_WORK copy, screenshots to the gitignored artifacts
 folder, tracked text logs; nothing is overwritten (rule 6). Import before harness.driver."""
 import os, sys, time, subprocess, hashlib, glob, struct, shutil
-WORKDIR = '/home/diego/ic2-work-split'
+from paths import ROOT, ART, DATA, TMP
+WORKDIR = os.environ.get('IC2_WORK_SPLIT', os.path.expanduser('~/ic2-work-split'))
 DISP = ':734'
 os.environ['IC2_WORK'] = WORKDIR
 os.environ['DISPLAY_IC2'] = DISP
-ROOT = '/home/diego/projects/wt-split'
 sys.path.insert(0, ROOT)
-sys.path.insert(0, ROOT + '/runs/experiments/split_aboard')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import new_path, write_new
 import harness.driver as _drv
 from harness.driver import Game, G
@@ -17,8 +17,6 @@ def sh(*args, **kw):
     if args and args[0] == 'import' and str(args[-1]).startswith(ART): args = args[:-1] + (new_path(args[-1]),)
     return _orig_sh(*args, **kw)
 _drv.sh = sh
-ART = ROOT + '/artifacts/run-exp-split-aboard/'
-DATA = ROOT + '/runs/experiments/data/run-exp-split-aboard/'
 os.makedirs(ART, exist_ok=True); os.makedirs(DATA, exist_ok=True)
 SAVEDIR = ART + 'saves/'
 os.makedirs(SAVEDIR, exist_ok=True)
@@ -128,7 +126,50 @@ def open_tool(g, name, title, tries=3, wait=6):
     raise _drv.DriverError('%s did not open' % title)
 
 def ocr_text(path, crop=None, scale=3):
-    tmp = '/tmp/claude-1000/ocr_tmp_v050.png'
+    tmp = os.path.join(TMP, 'ic2_split_ocr_tmp.png')
     cmd = ['convert', path] + (['-crop', crop] if crop else []) + ['-resize', '%d00%%' % scale, '-colorspace', 'Gray', tmp]
     subprocess.run(cmd, check=True)
     return subprocess.run(['tesseract', tmp, 'stdout', '--psm', '6'], capture_output=True, text=True).stdout
+
+def _screen_words(g, region):
+    """OCR words (text, centre x, centre y in screen px) of a screen region (x, y, w, h) of a fresh screenshot (tesseract tsv)."""
+    x, y, w, h = region
+    full = os.path.join(TMP, 'ic2_split_screen.png'); crop = os.path.join(TMP, 'ic2_split_crop.png')
+    _orig_sh('import', '-window', 'root', full)
+    subprocess.run(['convert', full, '-crop', '%dx%d+%d+%d' % (w, h, x, y), '+repage', '-resize', '300%', '-colorspace', 'Gray', crop], check=True)
+    out = subprocess.run(['tesseract', crop, 'stdout', '--psm', '11', 'tsv'], capture_output=True, text=True).stdout
+    res = []
+    for l in out.splitlines()[1:]:
+        f = l.split('\t')
+        if len(f) == 12 and f[11].strip():
+            res.append((f[11].strip().lower(), x + (int(f[6]) + int(f[8]) // 2) // 3, y + (int(f[7]) + int(f[9]) // 2) // 3))
+    return res
+
+MENU_REGION = (240, 40, 420, 190)       # the strip under the menu bar in which the Unit map menu and its Army submenu open (1280x1024 screen)
+
+def menu_step(g, click_word, expect_words, tries=3):
+    """One calibrated menu transition: find `click_word` in the OCR of the menu region, click its centre, then verify that every word of `expect_words` is
+    in the region afterwards (the next menu level). The click is repeated at most twice (3 attempts in all); DriverError if the transition never shows."""
+    for attempt in range(tries):
+        hit = [w for w in _screen_words(g, MENU_REGION) if w[0] == click_word]
+        if hit:
+            g.click(hit[0][1], hit[0][2], pause=1.0)
+            seen = {w[0] for w in _screen_words(g, MENU_REGION)}
+            if all(e in seen for e in expect_words): return True
+    raise _drv.DriverError('menu transition %r -> %r did not show after %d attempts' % (click_word, expect_words, tries))
+
+def split_army_via_menu(g, tries=3):
+    """Unit map > Army > Split army by the menu (the fleet-selected route: the army toolbar is not shown while a fleet is selected). Every transition is
+    verified: the top menu by the words army/fleet/city, the submenu by split/disband, the dialog by its window. At most two retries per transition."""
+    for attempt in range(tries):
+        g.reset_ui()
+        g.click(_drv.MENU['unit'], 36, pause=1.0)                                  # the driver's menu-bar position for "Unit map"
+        if {'army', 'fleet', 'city'} <= {w[0] for w in _screen_words(g, MENU_REGION)}: break
+    else: raise _drv.DriverError('the Unit map menu did not open after %d attempts' % tries)
+    menu_step(g, 'army', ['split', 'disband'])
+    for attempt in range(tries):
+        hit = [w for w in _screen_words(g, MENU_REGION) if w[0] == 'split']
+        if hit:
+            g.click(hit[0][1], hit[0][2], pause=2.0)
+            if g.find_windows('^Split army$'): return True
+    raise _drv.DriverError('Split army did not open the Split army dialog after %d attempts' % tries)

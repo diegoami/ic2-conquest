@@ -1,0 +1,38 @@
+# claims audit: 37 checks, 0 mismatches
+OK	extract line 47033 contains '0x89'
+OK	extract line 47037 contains 'DAT_0049c282'
+OK	extract line 47037 contains '* 0xd'
+OK	extract line 47039 contains 'DAT_0047c1f0'
+OK	extract line 47039 contains 'DAT_004a0320'
+OK	extract line 47041 contains 'DAT_0047c220'
+OK	extract line 47046 contains 'FUN_00449f08'
+OK	extract line 47047 contains '-1 <'
+OK	extract line 48724 contains 'FUN_004492c0'
+OK	extract line 48725 contains '-1 <'
+OK	extract line 48725 contains '0xc6'
+OK	extract line 48729 contains 'DAT_0047c1ec'
+OK	extract line 48736 contains 'DAT_0047c1f4'
+OK	extract line 47937 contains "== '\\0'"
+OK	extract line 47942 contains '= 2'
+OK	extract line 47943 contains '0xb'
+OK	extract line 47960 contains 'local_1c <='
+OK	extract line 47961 contains 'local_16'
+OK	extract line 47969 contains 'param_1[1]'
+OK	extract line 46976 contains 'DAT_0047c1f4'
+OK	extract line 46976 contains '== -1'
+OK	extract line 46978 contains 'on a fleet cannot be combined'
+OK	two runs found (the first and the calibrated re-run): [('SA_00_start', 'SA_01_aboard_before_split', 'SA_02_after_split'), ('SA_00_start.v2', 'SA_01_aboard_before_split.v2', 'SA_02_after_split.v2')]
+OK	SA_01_aboard_before_split: exactly one army aboard fleet 2 at (101,46) in the before-save; the fleet carries it
+OK	SA_02_after_split: exactly one new army appeared
+OK	SA_01_aboard_before_split: placement replayed from the extract (last tile with map code 2..11 of the 3x3 around (101,46)) = (102, 47) of [(101, 45), (102, 47)]; the new army is at (102, 47)
+OK	SA_02_after_split: the new army is on land (not aboard), a free map code, adjacent to the fleet; purse/supplies/moves 0; owner 0
+OK	SA_02_after_split: the original army stays aboard at the fleet tile, the fleet still carries it, troops split 10700 = 5700 + 5000, units 3 = 2 + 1, purse unchanged
+OK	SA_01_aboard_before_split: before the split the army had more than one unit (the gate of :47041)
+OK	SA_02_after_split: no other army changed
+OK	SA_01_aboard_before_split.v2: exactly one army aboard fleet 2 at (101,46) in the before-save; the fleet carries it
+OK	SA_02_after_split.v2: exactly one new army appeared
+OK	SA_01_aboard_before_split.v2: placement replayed from the extract (last tile with map code 2..11 of the 3x3 around (101,46)) = (102, 47) of [(101, 45), (102, 47)]; the new army is at (102, 47)
+OK	SA_02_after_split.v2: the new army is on land (not aboard), a free map code, adjacent to the fleet; purse/supplies/moves 0; owner 0
+OK	SA_02_after_split.v2: the original army stays aboard at the fleet tile, the fleet still carries it, troops split 10700 = 5700 + 5000, units 3 = 2 + 1, purse unchanged
+OK	SA_01_aboard_before_split.v2: before the split the army had more than one unit (the gate of :47041)
+OK	SA_02_after_split.v2: no other army changed

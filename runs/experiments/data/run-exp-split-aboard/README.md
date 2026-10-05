@@ -5,3 +5,7 @@ Task `docs/tasks/split-aboard.md`; finding `findings/2026-10-05-split-army-aboar
 **Answer (2026-10-05):** Split army has no aboard refusal (Join armies does). With the fleet selected the split works: the new army is placed on the last free land tile (map code 2..11) of the 3x3 around the fleet, here (102,47); the rest stays aboard. Played: army 0 (10,700) aboard fleet 2 at (101,46) -> army 0 5,700 aboard, army 14 5,000 on land at (102,47). No free tile: no army and no message [derived].
 
 Files: `code_extract_split_aboard.txt` (decompile, source line numbers), `split.log`, `claims_audit_output*.txt` (newest = current), `MANIFEST-b1.txt`, `SAVES.sha256`. Binaries are in release `run-exp-split-aboard`.
+
+## Review rework (PR #48)
+
+The first run (`split_aboard.py` with raw screen-coordinate menu clicks) is kept; the play was re-run with the OCR-calibrated, verified menu steps (`lib.split_army_via_menu`) and reproduced the result (`save_pairs.tsv` lists both runs' saves; the re-run's saves carry `.v2`/`.v3`). The audit (`claims_audit.py`) reads the tracked code extract, not the Ghidra dump; `check_dump_vs_extract.py` is the optional comparison. Paths derive from the script location (`paths.py`). The Rules in the finding are tagged `[derived]`; only the observed fleet-selected case is `[confirmed]`.
