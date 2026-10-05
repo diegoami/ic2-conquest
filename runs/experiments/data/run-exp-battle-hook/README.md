@@ -60,3 +60,9 @@ post-battle save, the screenshots and `hookbuf/<trial>.bin` (the raw buffer; its
 - New static scan `b11-static-20261004-223128.json` (`-212751` kept): inside the two modules still the 14 hooked `E8` sites only; outside them 27 unresolved (21 `FF15?`, 6 `FF25?`; 18 before).
 - Made by the main session (Claude), with `IC2_WORK=~/ic2-work` (read-only use of the original exe) and capstone in a scratch venv.
 - Checked after the change: the three hooked exes rebuilt at 72c3abd (`PYTHONPATH=<copy of the build folder> python3 patches/battle_lab.py <seed> --hook`, built in a scratch copy, not in `~/ic2-work/build`) have SHA-256 `58c683daf7dd25a1…`, `ca1cbf104afcea75…`, `3ef20b4c807c8854…`, equal to `EXES-sha256-20261004-212732.txt`.
+
+## PR #42 review round 3
+- `patches/battle_hook.py`: `iat_slots` reads the import directory; `resolve_pointer` treats a `.idata` pointer as an import only when it is exactly an IAT slot (292 in the original exe), and anything else in `.idata` as unresolved. Two tests; each fails with the fix reverted.
+- New static scan `b11-static-20261005-135831.json` (earlier ones kept): unchanged counts. The three hooked exes rebuilt at this commit (in a scratch copy of the build folder) are byte-identical to `EXES-sha256-20261004-212732.txt` (`58c683da…`, `ca1cbf10…`, `3ef20b4c…`), so the v2 battle outputs stand.
+- The finding states the scan's assumptions: the preferred base (the exe has relocations), no run-time writes to IAT or read-only data, and register and memory-operand calls left to the seed chain.
+- Made by the main session (Claude) after the owner chose "fix, then narrow review".

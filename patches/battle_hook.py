@@ -91,10 +91,36 @@ def sections(b):
     return out
 
 
+def iat_slots(b):
+    """The VAs of every import address table slot, from the PE import directory (data directory 1; the PE header is at 0x100, as `sections` assumes): for each
+    import descriptor (20 bytes, until an all-zero one) its FirstThunk array, one dword per imported function, until a zero dword. Only these slots are filled by
+    the loader with DLL addresses; any other dword of .idata (descriptors, name tables, hint/name entries) is ordinary data (PR #42 round 3)."""
+    secs = sections(b)
+
+    def foff(rva):
+        for _, va, vsize, rptr, rsize, _f in secs:
+            if va <= BASE + rva < va + min(vsize, rsize) and rptr:
+                return rptr + (BASE + rva - va)
+        return None
+    imp_rva = struct.unpack_from("<I", b, 0x118 + 96 + 8)[0]
+    slots, d = set(), foff(imp_rva) if imp_rva else None
+    while d is not None and d + 20 <= len(b):
+        oft, _ts, _fc, name, ft = struct.unpack_from("<IIIII", b, d)
+        if not (oft or name or ft):
+            break
+        t = foff(ft) if ft else None
+        k = 0
+        while t is not None and t + 4 * k + 4 <= len(b) and struct.unpack_from("<I", b, t + 4 * k)[0] and k < 4096:
+            slots.add(BASE + ft + 4 * k)
+            k += 1
+        d += 20
+    return slots
+
+
 def resolve_pointer(b, p):
     """What a `call [p]` / `jmp [p]` reaches, as far as the image says: ("value", v) p is in a
-    READ-ONLY section with file data: v is the dword stored there; ("import", None) p is in the import address table (.idata), whose entries the loader fills with
-    DLL addresses (never the address of code in this image); ("unresolved", None) p is in other writable memory, in a section without file data, outside every section,
+    READ-ONLY section with file data: v is the dword stored there; ("import", None) p is exactly an import address table slot (`iat_slots`, from the import
+    directory), which the loader fills with a DLL address (never the address of code in this image); any other dword of .idata is unresolved; ("unresolved", None) p is in other writable memory, in a section without file data, outside every section,
     or its four bytes cross the end of the mapped and file-backed part of its section: its value at run time cannot be established statically (PR #42 round 2)."""
     for name, va, vsize, rptr, rsize, flags in sections(b):
         if va <= p < va + max(vsize, rsize):
@@ -103,7 +129,8 @@ def resolve_pointer(b, p):
             if p + 4 > va + min(vsize, rsize) or rptr == 0:
                 return "unresolved", None
             if name == ".idata":
-                return "import", None
+                # an import only if p is exactly one of the IAT slots; any other dword of .idata could hold anything, including Random's address
+                return ("import", None) if p in iat_slots(b) else ("unresolved", None)
             if flags & 0x80000000:
                 return "unresolved", None
             return "value", struct.unpack_from("<I", b, rptr + (p - va))[0]

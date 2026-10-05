@@ -37,6 +37,10 @@ def synthetic():
                                                                 (b"BSS", 0x5E000, 0x42BD4, 0, 0x5C200, 0xC0000000), (b".idata", 0xA1000, 0x194E, 0x1A00, 0x5C200, 0xC0000040),
                                                                 (b".rdata", 0xA4000, 0x18, 0x200, 0x5DC00, 0x50000040)]):
         struct.pack_into("<8sIIIIIIHHI", b, 0x1F8 + 40 * i, name, vsize, rva, rsize, rptr, 0, 0, 0, 0, flags)
+    # an import directory (data directory 1) at .idata's start: one descriptor whose FirstThunk array (two slots, then 0) starts at IAT_PTR (PR #42 round 3)
+    struct.pack_into("<II", b, 0x118 + 96 + 8, 0xA1000, 40)
+    struct.pack_into("<IIIII", b, 0x5C200, 0, 0, 0, 0xA1100, IAT_PTR - H.BASE)
+    struct.pack_into("<II", b, 0x5C200 + (IAT_PTR - 0x4A1000), 0xA1200, 0xA1210)
     return b
 
 
@@ -83,7 +87,8 @@ def test_refuses_when_scan_list_differs():
     assert info["scan_outside_count"] == 1
 
 
-RDATA_PTR, DATA_PTR, IAT_PTR = 0x4A4000, 0x45D100, 0x4A1010      # a pointer in .rdata (read-only), in DATA (writable), in .idata (the IAT)
+RDATA_PTR, DATA_PTR, IAT_PTR = 0x4A4000, 0x45D100, 0x4A1040      # a pointer in .rdata (read-only), in DATA (writable), an IAT slot in .idata (after the descriptors)
+IDATA_NOT_SLOT = 0x4A1080                                          # a dword of .idata that is no IAT slot (round 3)
 
 
 def put_indirect(b, at, op2, ptr):
@@ -156,6 +161,32 @@ def test_indirect_calls_through_the_iat_or_a_read_only_pointer_to_something_else
     put_indirect(b, 0x43A200, 0x15, IAT_PTR)                       # an import: the loader fills it with a DLL address, never this image's Random
     put_indirect(b, 0x43A210, 0x25, RDATA_PTR)                     # read-only pointer holding 0 (not Random)
     H.apply(b, 1, LAB)
+
+
+def test_idata_pointer_that_is_not_an_iat_slot_is_unresolved():
+    """Round 3: only the exact IAT slots (from the import directory) are imports. Any other dword of .idata may hold anything, even Random's address:
+    unresolved, so the build refuses inside the modules and lists it outside them."""
+    b = synthetic()
+    assert H.iat_slots(b) == {IAT_PTR, IAT_PTR + 4}
+    assert H.resolve_pointer(b, IAT_PTR) == ("import", None) and H.resolve_pointer(b, IAT_PTR + 4) == ("import", None)
+    assert H.resolve_pointer(b, IAT_PTR + 8) == ("unresolved", None)          # the array's terminating zero is not a slot
+    assert H.resolve_pointer(b, IDATA_NOT_SLOT) == ("unresolved", None)
+    def mutate(b):
+        put_indirect(b, 0x43A200, 0x15, IDATA_NOT_SLOT)
+        struct.pack_into("<I", b, 0x5C200 + (IDATA_NOT_SLOT - 0x4A1000), H.RANDOM)   # a non-slot .idata dword holding Random's address
+    msg = refuses(mutate, "an FF 15 through a .idata dword that is not an IAT slot, inside the battle module")
+    assert "cannot be established" in msg, msg
+    refuses(lambda b: put_indirect(b, 0x43A200, 0x15, 0x4A1002), "an FF 15 through a misaligned pointer into an IAT slot")
+    b = synthetic()
+    put_indirect(b, 0x452000, 0x25, IDATA_NOT_SLOT)
+    assert (0x452000, "FF25?") in H.scan_random_refs(b)
+
+
+def test_no_import_directory_means_no_import():
+    """Without an import directory nothing in .idata is an import: every .idata pointer is unresolved."""
+    b = synthetic()
+    struct.pack_into("<II", b, 0x118 + 96 + 8, 0, 0)
+    assert H.iat_slots(b) == set() and H.resolve_pointer(b, IAT_PTR) == ("unresolved", None)
 
 
 def test_refuses_changed_entry_bytes_and_branches_into_displaced():
