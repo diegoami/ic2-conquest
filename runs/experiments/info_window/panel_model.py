@@ -77,6 +77,8 @@ def nation_panel(s, n, cur):
          ('Tax rate ', f_plain(nt['tax']) + '%')]
     if n == cur:
         L += [('Mobilized ', f_plain(nt['mobilization']) + '%'), ('Treasury ', f_commas(nt['treasury']) + ' talents')]
+    else:
+        L += [('', '  '), ('', '  ')]                      # F:40856-40857: lines 7 and 8 are two blanks
     L += [('', ''), ('', '      INTERNATIONAL RELATIONS')]
     for m, mt in enumerate(s['nations']):
         if mt['unity'] == 0:
@@ -124,6 +126,18 @@ class Raw:
     def merc_names(self):
         return None
 
+def unit_cost(troops, price, label, quality):
+    """One unit slot's share of Regulars cost / Mercenary pay, as F:41084-41089 computes it.
+    s = i16( trunc(i16(troops) / 200) * price )     -- `short sVar4 = (sVar4 / 200) * price`: the product is STORED IN A SIGNED 16-BIT variable
+    label == 0 (regular):  RegularsCost += s                       -- local_140 is a 32-bit uint; the sum itself is not narrowed
+    label != 0 (mercenary): MercenaryPay += trunc( (s * quality) / 5 ) -- int product of the narrowed s and the quality short, signed truncating division; 32-bit sum
+    Returns (regular share, mercenary share)."""
+    s = i16(cdiv(i16(troops), 200) * price)
+    return (s, 0) if label == 0 else (0, cdiv(s * quality, 5))
+def unit_cost_unrestricted(troops, price, label, quality):
+    """The same without the 16-bit store (what a clone would compute if it ignored the narrowing): used by the tests to show where the two differ."""
+    s = cdiv(troops, 200) * price
+    return (s, 0) if label == 0 else (0, cdiv(s * quality, 5))
 def army_lines(raw, i, cur, fleet_shift=False):
     """ShowArmyDetails F:41000-41134. Returns the list of (caption, value) lines 0.. (line index = position)."""
     x, y, owner, moves, cell, sup, money, morale = raw.army_hdr(i)
@@ -133,9 +147,8 @@ def army_lines(raw, i, cur, fleet_shift=False):
     reg = merc = 0
     for lab, typ, tr, q, nm in sl:
         counts[typ] += tr
-        sv = i16(cdiv(tr, 200) * quarterly_price(typ))        # sVar4 is a 16-bit short
-        if lab == 0: reg += sv
-        else: merc += cdiv(sv * q, 5)
+        r_, m_ = unit_cost(tr, quarterly_price(typ), lab, q)
+        reg += r_; merc += m_
     total = sum(t for _, _, t, _, _ in sl) or 1
     nunits = 0
     for k, (_, _, tr, _, _) in enumerate(sl):

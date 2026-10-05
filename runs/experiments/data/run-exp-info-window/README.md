@@ -16,8 +16,7 @@
 > **(b) Fortification bracket** = the sum of `troops` over ALL of the controlling nation's recruit slots whose city is this city, whatever their state
 > (a state-24 trained unit counts), shown only when the sum is positive, own or foreign city. So the digest ("the queue is the garrison") is right and the
 > help ("conscripts being trained") is only partly right. Staged and seen: 1,000 (state 0) + 2,000 (state 24) at one city showed `61% (3,000)`.
-> **(c) Regulars cost** = sum over regular units (slot label 0) of `(troops div 200) * quarterly price[type]` (DAT unit table +0x24, 16-bit);
-> **Mercenary pay** = sum over mercenary units (label != 0) of `(((troops div 200) * price) * quality) div 5`; plain integers, text `talents per quarter`, own army only.
+> **(c)** per unit slot `s = i16(trunc(troops / 200) * price[type])` (the product is stored in a signed 16-bit `short`, F:41084; price = DAT unit table +0x24, quarterly): **Regulars cost** = sum of `s` over regular slots (label 0); **Mercenary pay** = sum of `trunc((s * quality) / 5)` over mercenary slots (label != 0, int product, signed truncating division, F:41089); the two sums are 32-bit and not narrowed; plain integers, text `talents per quarter`, own army only. (Revised in the PR #46 rework: batch 1 said 'unrestricted'.)
 > **(d) Sea** = `calm` when the fleet's `+0x18` field is 0, else `rough`; that field is the map code under the fleet (0 sea, 1 storm square), cleared and re-rolled
 > weekly by the weather overlay (`FUN_00451304`) and copied from the destination cell on every fleet step. No season, ship or supply rule is involved.
 > **(e) Foreign nation panel**: Nation, Leader, Capital, Cities (plain integer), Population (`1,234,000`, thousands separators), Unity (word),

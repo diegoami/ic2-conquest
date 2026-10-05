@@ -10,7 +10,7 @@ def latest(pattern):
     fs = sorted(glob.glob(DATA + pattern), key=lambda p: (len(p), p)); return fs[-1]
 def samples():
     d = {}
-    for f in sorted(glob.glob(DATA + 'band_samples*.tsv'), key=lambda p: (len(p), p)):
+    for f in sorted(glob.glob(DATA + 'band_samples2*.tsv'), key=lambda p: (len(p), p)):
         for r in csv.DictReader(open(f, encoding='utf-8'), delimiter='\t'):
             if r['status'] == 'OK': d.setdefault((r['field'], int(r['value'])), []).append(r['png'])
     return d

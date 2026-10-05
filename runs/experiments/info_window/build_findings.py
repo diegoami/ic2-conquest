@@ -31,7 +31,7 @@ def table(panels):
     return HDR + '\n'.join(rowline(r) for r in FR.ROWS if r['panel'] in panels) + '\n'
 # ---- band tables ----
 edges = list(csv.DictReader(open(latest('band_edges*.tsv')), delimiter='\t'))
-samples = list(csv.DictReader(open(latest('band_samples*.tsv')), delimiter='\t'))
+samples = list(csv.DictReader(open(latest('band_samples2*.tsv')), delimiter='\t'))
 def sample(fld, v):
     for s in samples:
         if s['field'] == fld and int(s['value']) == v and s['status'] == 'OK': return s
@@ -56,7 +56,7 @@ def words(fn, lo, hi):
     out.append((s, hi, cur)); return out
 def wtable(fn, lo, hi):
     return '| from | to | word |\n|---|---|---|\n' + '\n'.join('| %d | %d | %s |' % (a, b, w if w else '(blank)') for a, b, w in words(fn, lo, hi)) + '\n'
-audit = read('claims_audit_summary*.txt'); cov = read('coverage_summary*.txt')
+audit = read('claims_audit2_summary*.txt'); cov = read('coverage_summary*.txt')
 bn = re.search(r'band samples (\d+)', audit).group(1)
 conf = sum(1 for e in edges if e['status'] == 'confirmed')
 doc = '''# The Information window: every field, its formula, and the number-to-word bands
@@ -67,7 +67,7 @@ doc = '''# The Information window: every field, its formula, and the number-to-w
 
 - **Priority (a), the number-to-word bands.** Every word comes from the DAT, not from the exe: the tables are BSS filled by the DAT loader `FUN_004481a0` in a fixed read order, so their DAT offsets are computed, not searched (quality `0x1F6CA`, unity/loyalty `0x1F738`, relations `0x1F800`). Unity and loyalty share one 11-byte table and differ only in the divisor (unity `div 100`, loyalty `div 10`, both truncating); morale is the same table read from entry 4 with index `(m - 51) sar 2`; quality is an index (no band). Sections "Band tables" give every threshold with its words; **%d of %d edges are confirmed on both sides in play** and the rest are [derived] with the reason.
 - **Priority (b), the fortification bracket** is the sum of `troops` over **all** of the controlling nation's recruit slots at that city **whatever their state**, shown only when positive, on foreign cities too (row C07). The rules digest's "the queue is the garrison" is right; the help's "conscripts currently being trained" is too narrow (a state-24 trained unit counts: `61%% (3,000)` for a state-0 1,000 and a state-24 2,000 at one city).
-- **Priority (c), Regulars cost / Mercenary pay** (rows A10, A11): regulars `sum trunc(troops / 200) x price[type]`; mercenaries `sum trunc(trunc(troops / 200) x price x quality / 5)`; price is the unit-type table's quarterly price (`DAT_00478FD4`, record `+0x24`); plain integers, own army only. Recomputed for every own army captured (staged morale, units, qualities, troops 199/399/200 for the `div 200` truncation, regular and mercenary slots) with 0 mismatches in `claims_audit_lines*.tsv`.
+- **Priority (c), Regulars cost / Mercenary pay** (rows A10, A11): per unit slot `s = i16(trunc(troops / 200) x price[type])` (the product is stored in a signed 16-bit `short`, F:41084; i16 = wrap to signed 16 bits), then regulars (label 0) `Regulars cost = sum s` and mercenaries (label not 0) `Mercenary pay = sum trunc((s x quality) / 5)` (F:41086, 41089); the two sums are 32-bit and not narrowed; with the DAT prices (1-4) the narrowing never changes a result, and it is documented so a clone with other prices copies it; price is the unit-type table's quarterly price (`DAT_00478FD4`, record `+0x24`); plain integers, own army only. Recomputed for every own army captured (staged morale, units, qualities, troops 199/399/200 for the `div 200` truncation, regular and mercenary slots) with 0 mismatches in `claims_audit_lines*.tsv`.
 - **Priority (d), the fleet's Sea word** (row F08) is `calm` when the fleet's `+0x18` field is 0, otherwise `rough`. No rule on the panel decides it: the field is the map code under the fleet, cleared and re-rolled by the weekly weather overlay and copied from the destination cell by every fleet step (see the row).
 - **Priority (e), the foreign-nation panel** (rows N01-N12): exact formats are in the nation table; **"peace" really shows blank** (relation 0, and any value `<= 0`, prints nothing; the word `peace` exists in the DAT table but is never printed); the nation's Population is the stored `+0x430` field, **3000 x the sum of its cities' populations in thousands** (so Rome shows 2,577,000 while its city panels add to 859,000); Mobilized and Treasury are blank for a foreign nation.
 - **Coverage:** %s
@@ -77,14 +77,14 @@ doc = '''# The Information window: every field, its formula, and the number-to-w
 
 - **Code read.** The seven routines `TInformation_ShowNationStatus` 0x0043BA7C, `ShowCityDetails` 0x0043BE5C, `ShowArmyDetails` 0x0043C33C, `ShowFleetDetails` 0x0043C890, `ShowCityUnits` 0x0043CC40, `ShowArmyUnits` 0x0043CDD8, `ShowFleetUnits` 0x0043CF0C and the helpers they call were read from `all_app_functions.txt` (`show_fn.py` of the inventory task). `TInformation_PaintForm` (0x0043B394) draws each 61-byte line by splitting it at its **first `-`**: the left part at x, the right part 100 pixels to the right; so every `Caption -value` string below is a two-column row, and a line without a `-` is one string. A line that starts with `   (` is drawn red (the conquered-nation row).
 - **Tables from the DAT.** `FUN_004481a0` (ReTools `scratch/datload.txt`) reads the DAT sequentially: the map `0x15E00`, the cities `0x2C5C`, 15 armies, 2 fleets, 16 nations, then the tables at `0x00478FB0`, ... (read sizes and addresses in `panel_model.LOADER`). The running sum of the read sizes puts `DAT_0047938C` at DAT offset `0x1F6CA`, which is where the first `not ready` is (a cross-check of the loader read against the file, `code_word_tables.tsv`). `panel_model.py` rebuilds the memory image (unfilled bytes are 0) and implements every panel, citing the decompile lines; it reproduces what the game does when an index runs past a table (loyalty -10 prints `ite`, from the end of the previous table).
-- **Staging.** For every band, saves were crafted with the value on each side of every edge (`batch_a*.py`, one value per city, nation, army or fleet, so one save carries many edges), opened on the normal build, the object clicked (left click for the details panel, right click for the unit list or the mercenary list) and the Information window cropped (`import -crop`, 330 x 730) and OCR'd (tesseract). Words were then **checked by eye** on contact sheets of the cropped word lines (loyalty, unity, morale, tribute, sea) and on the scrolled unit lists (quality): no disagreement with the OCR.
+- **Staging.** For every band, saves were crafted with the value on each side of every edge (`batch_a*.py`, one value per city, nation, army or fleet, so one save carries many edges), opened on the normal build, the object clicked (left click for the details panel, right click for the unit list or the mercenary list) and the Information window cropped (`import -crop`, 330 x 730) and OCR'd (tesseract). Every panel line is compared row by row, exactly, with the model (`rowcompare.py`): the only automatic tolerances are spacing, the ordinal glyph (`lst` for `1st`) and explicit clipping of list rows wider than the window (such rows are counted as CLIPPED, partial evidence, and give no band evidence); a trailing scroll-bar glyph row is classed as an artifact; any other difference (a changed digit or word, a missing or extra row) is a MISMATCH unless `visual_corrections.tsv` lists it with a reason and an eye check. Words were also **checked by eye** on contact sheets of the cropped word lines (loyalty, unity, morale, tribute, sea) and on the scrolled unit lists (quality): no disagreement with the OCR.
 - **One caveat found on the way.** After File > Open the nation panel is not refreshed when the same nation is chosen again (it showed the previous save's values); batch a7 captured it that way, four shots are listed in `capture_exclusions.tsv` and were re-captured in batch a7b after choosing another nation first. Six first-run nation shots (batch a3, rows 9-14 clicked at the wrong menu pitch) are excluded by the audit because their panel names another nation than the one staged; they stay in `captures.tsv`.
 - **Rule 6.** Text outputs under `runs/experiments/data/run-exp-info-window/` (never overwritten; versions as `.vN`), binaries in the release `run-exp-info-window` as per-batch tar.gz with `MANIFEST-<batch>.txt` and `SAVES.sha256`.
 
 ## The nation panel (N03 of the inventory)
 
 ''' % (conf, len(edges), cov.strip().replace('\n', ' '), audit.strip().replace('\n', ' ')) + table({'N'}) + '''
-Notes: the relations row of nation `n` lists nation `m`'s name and **nation n's own relation value toward m** (`n`'s record, `+0x26 + 2m`); the conquered test uses nation m's unity (0) and m's `+0x44E`. A conquered nation's menu item is disabled, so its own panel cannot be opened [O] (`t4_menu.png`).
+Notes: the relations row of nation `n` lists nation `m`'s name and **nation n's own relation value toward m** (`n`'s record, `+0x26 + 2m`); the conquered test uses nation m's unity (0) and m's `+0x44E`. A conquered nation's menu item is greyed, so its own panel cannot be opened (screenshot `t4_menu.png`, in the release manifest, checked by eye; it is a menu shot, not a panel capture in `captures.tsv`).
 
 ## The city panel (UM02), left click on any city tile, own or foreign
 
@@ -131,7 +131,7 @@ Indexes 0-3 print the same word (`not ready`: the mobilized quality is `state / 
 ### Tribute of a FOREIGN city (found on the way), the city's `+0x20` field as an unsigned 16-bit
 
 ''' + edge_rows('tribute_word_foreign') + '''
-Above 10000 no word is chosen and the talents number text (row C08's) stays: 10001 prints `10001`, 20000 prints `20000`, 40000 prints `-25536`, 65535 prints `-1` [O].
+Above 10000 no word is chosen and the talents number text (row C08's) stays: 10001 prints `10001`, 20000 prints `20000`, 40000 prints `-25536`, 65535 prints `-1` [O] `A2_city_026_Helice.png`, `A2_city_030_Akra Leuke.png`, `A2_city_033_Icosium.png`, `A2_city_035_Cissa.png`.
 
 ### Relations (nation panel), `DAT_004794C8 + 6 x value` only when `value > 0`
 
@@ -162,17 +162,18 @@ The DAT table also holds `peace` at value 0, which the code never prints. Values
 ## Where the sources disagree
 
 - **Help topic "Cities" versus the code (bracket).** The help says the number in brackets after the fortification is "the number of conscripts currently being trained at that city". The code (C07) sums every slot of the controller's queue at that city whatever its state, trained ones included, and does it for foreign cities as well. [R-code][O] `A2_city_090_Alba Fucens.png` (state 0 + state 24 = `(3,000)`). The digest line "the queue is the garrison" matches the code.
-- **Help topic "Nations" versus the code.** The help lists "tribute payed" and "trade earned" among the details of the own nation; `ShowNationStatus` prints neither (the inventory's N03 already noted the screenshots do not show them). [R-code][O] `A7b_nation00_treasury1.png`: Rome's own panel has Mobilized and Treasury only.
+- **Help topic "Nations" versus the code.** The help lists "tribute payed" and "trade earned" among the details of the own nation; `ShowNationStatus` prints neither (the inventory's N03 already noted the screenshots do not show them). [R-code][O] `A7b_nation00_treasury1.png` (Rome as current nation: Mobilized and Treasury present) and `A8_cur1_nation00.png` (Rome seen from Carthage: neither).
 - **Research report `supply-driven-morale-and-fleet-attrition.md`** says the morale field is bounded 51-70, exactly five 4-wide tiers; the code has six tiers and saves reach 73 (see Morale above).
 - **Research report `rome-city-recruitment-and-nations.md`** lists the loyalty adjective thresholds as "not decoded"; they are in the Loyalty table above.
 - **Inventory rows UM04 and UM05** were [derived]; they are now observed (foreign army: composition, terrain and total only; fleet panel: fields and Sea).
-- **Nation-tax-base report names `+0x430` "wealth"**; the panel prints it as **Population** (3000 x sum of the city populations in thousands: BASE.SAV Rome 859 x 3000 = 2,577,000, Carthage 1607 x 3000 = 4,821,000 [O] `A3_nation_00_Rome.png` shows 2,577,000 with the city populations 859 in `BASE.SAV`).
+- **Nation-tax-base report names `+0x430` "wealth"**; the panel prints it as **Population**. [O] the panels of the unmodified BASE.SAV nations show Rome `2,577,000` (`A8_cur1_nation00.png`) and Carthage `4,821,000` (`A8_cur1_nation01.png`). [D] those equal 3000 x the sum of the cities' `pop` fields of that save (Rome 859, Carthage 1607, computed with `state/sav.py` from `BASE.SAV`, not a capture), which is the report's formula.
 
 ## What this does not establish
 
 - Edges outside the values the game produces (loyalty below 0 or above 109, unity 1000 and above, morale below 48 and above 75, relation values above 5, quality -1 and 10 and above) are the code's reading of other memory and are [derived]; the ones staged are marked confirmed only where both sides were seen.
-- OCR was the reader; the by-eye check covered contact sheets of the cropped word lines, not every one of the 1,400 panel lines. The by-eye pass found no disagreement.
+- OCR was the reader; the by-eye check covered contact sheets of the cropped word lines and the 22 corrected rows, not every one of the 1,500 panel lines. 31 clipped list rows are partial evidence only (their last word is cut by the window); the quality words are evidenced by the scrolled / short lists.
 - `Population` of a nation of 10^9 or more prints junk after the digits; not a reachable value.
+- Carthage as current nation was re-captured with a verified refresh (`A8_cur1_nation01.png`: Mobilized 12%, Treasury 7,777 talents); the first attempt (`A7_cur1_nation01.png`) showed a stale Rome panel and is excluded.
 - A nation panel whose `Capital` is -1, a city with `max_pop` 0 (division by zero in `ShowCityDetails`) and a city whose allegiance is -1 were not staged.
 - The panel is rebuilt only on a click or a menu choice; whether the game redraws it after an order or an end of turn was not studied.
 - Wine 9.0 only; no real Windows run.

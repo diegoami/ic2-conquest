@@ -105,8 +105,57 @@ def test_claims_audit_when_artifacts_exist():
     return "claims audit: 0 mismatches over the local captures"
 
 
+def test_cost_formula_16_bit_narrowing():
+    M = model()
+    # with a (synthetic) price large enough, trunc(troops/200) x price leaves signed 16 bits: the store into `short sVar4` (F:41084) wraps it
+    r, m = M.unit_cost(32000, 500, 0, 0)            # 160 x 500 = 80000 -> i16 = 14464
+    ru, mu = M.unit_cost_unrestricted(32000, 500, 0, 0)
+    assert (r, ru) == (14464, 80000) and r != ru
+    r2, m2 = M.unit_cost(32000, 500, 3, 7)          # mercenary: trunc((14464 x 7) / 5) on the NARROWED value
+    r2u, m2u = M.unit_cost_unrestricted(32000, 500, 3, 7)
+    assert m2 == 20249 and m2u == 112000 and m2 != m2u, (m2, m2u)
+    # negative product wraps the other way; division truncates toward zero
+    assert M.unit_cost(-32000, 500, 0, 0)[0] == -14464 and M.unit_cost(1000, 3, 5, 9)[1] == (5 * 3 * 9) // 5
+    # real DAT prices (1-4): the narrowing never changes a result
+    assert all(M.unit_cost(t, p, 0, 0) == M.unit_cost_unrestricted(t, p, 0, 0) for t in (0, 199, 200, 32767) for p in (1, 2, 3, 4))
+    return "narrowed 14464 vs unrestricted 80000; merc 20249 vs 112000; with prices 1-4 identical"
+
+
+def test_rowcompare_negative_cases():
+    import rowcompare as RC
+    base = ["Army of Rome", "Regulars cost 232 talents per quarter", "Mercenary pay 0 talents per quarter", "Morale very high"]
+    ocr = ["{information"] + base
+    assert all(s in ("OK",) for s, _, _ in RC.compare(base, ocr))
+    def fails(exp, got, clip=None):
+        return any(s in ("MISMATCH", "MISSING", "EXTRA") for s, _, _ in RC.compare(exp, got, clip))
+    assert fails(base, ["Army of Rome", "Regulars cost 233 talents per quarter", base[2], base[3]]), "changed number must fail"
+    assert fails(base, [base[0], base[1], base[2], "Morale very low"]), "changed adjective must fail"
+    assert fails(base, base[:3]), "missing row must fail"
+    assert fails(base, base + ["Terrain Plain"]), "extra row must fail"
+    assert fails(base, [base[0], base[1], base[2], "Morale very"]), "a clipped word is a mismatch outside a list"
+    s = RC.compare(["x 1st Foot Light infantry 4,800 very good"], ["lst Foot Light infantry 4,800 very"], "right")
+    assert s[0][0] in ("MISMATCH",)            # 'x' row differs: not a clip of it
+    ok = RC.compare(["1st Foot Light infantry 4,800 very good"], ["lst Foot Light infantry 4,800 very"], "right")
+    assert ok[0][0] == "CLIPPED-right"
+    assert RC.compare(["1st Foot Light infantry 4,800 very good"], ["lst Foot Light infantry 4,900 very"], "right")[0][0] == "MISMATCH", "a number inside a clipped row must still match"
+    assert "SCROLLBAR-ARTIFACT" in [s for s, _, _ in RC.compare(["Light infantry 1,500 very poor"], ["Light infantry 1,500 very poor", "<j >|"], "right")]
+    return "changed number, changed adjective, missing row, extra row, clipped word outside a list all fail; clip and ordinal tolerances are narrow"
+
+
+def test_call_extraction():
+    model()
+    import coverage_check as C
+    body = 'x = FUN_00401000 (a);\n y = FUN_004498b0\t(b, c);\n z = LocalAlloc(0,4); if (x) { while (y) { } } q = "FUN_dead(1)"; v = (short)(w + 1); '
+    got = C.calls_of(body, "own")
+    assert got == {"FUN_00401000", "FUN_004498b0", "LocalAlloc"}, got
+    assert C.calls_of("a = some_helper (1); b = _under_score(2); c = Class_Method(3);", "own") == {"some_helper", "_under_score", "Class_Method"}
+    assert "<indirect call>" in C.calls_of("(**(code **)(*piVar1 + 4))(piVar1,&DAT_00479590,0x2c5c);", "own")
+    assert C.calls_of("void own(int a) { own2(a); }", "own") == {"own2"}
+    return "spaced, tabbed, differently named and indirect calls are extracted; keywords, casts and literals are not"
+
+
 TESTS = ["loader_offsets", "unity_and_loyalty_bands", "morale_bands", "quality_relation_tribute_sea", "formatters", "army_cost_formulas",
-         "coverage_zero_unaccounted", "claims_audit_when_artifacts_exist"]
+         "cost_formula_16_bit_narrowing", "rowcompare_negative_cases", "call_extraction", "coverage_zero_unaccounted", "claims_audit_when_artifacts_exist"]
 
 if __name__ == "__main__":
     bad = 0

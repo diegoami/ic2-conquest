@@ -13,6 +13,16 @@ EXCL = [('dat', r'DAT_0049f(00c|049|086|0c3|100|13d|17a|1b7|1f4|231|26e|2ab)', '
         ('dat', r'DAT_004a031c', 'the panel line count handed to PrintInfo (last line index): in the tables as the "last line" notes'),
         ('dat', r'DAT_004a0320', 'the current nation (the "own" test): in every condition column'),
         ('dat', r'DAT_00474670', 'the nation record table base (name at +0): N01, C01, A01, F01, U2')]
+NON_HELPER = {'if', 'while', 'for', 'switch', 'return', 'sizeof', 'do', 'else'}      # C control-flow keywords that are followed by '(' : not calls
+def calls_of(body, own):
+    """Every call expression of a function body, independent of naming and whitespace: an identifier followed (after any blanks) by '(' once string literals
+    are removed, minus the C keywords above and the function's own signature. A call through a computed pointer, `(*...)(`, is reported as '<indirect call>'."""
+    b = re.sub(r'"(?:[^"\\]|\\.)*"', '""', body)
+    b = re.sub(r'/\*.*?\*/', ' ', b, flags=re.S)
+    b = re.sub(r'//[^\n]*', ' ', b)
+    names = {m.group(1) for m in re.finditer(r'\b([A-Za-z_]\w*)\s*\(', b)} - NON_HELPER - {own}
+    if re.search(r'\)\s*\(\s*[A-Za-z_&*]', re.sub(r'\([A-Za-z_]\w*(?:\s*\*+)?\)', '', b)): names.add('<indirect call>')
+    return names
 def load():
     t = open(DUMP, encoding='latin-1').read()
     out = {}
@@ -21,7 +31,7 @@ def load():
         b = m.group(2)
         out[n] = {'addr': m.group(1),
                   'lit': set(re.findall(r'"((?:[^"\\]|\\.)*)"', b)),
-                  'call': set(re.findall(r'\b(FUN_[0-9a-f]+|TInformation_\w+|func_0x[0-9a-f]+)\(', b)) - {n},
+                  'call': calls_of(b, n),
                   'dat': set(re.findall(r'DAT_[0-9a-f]{8}', b))}
     return out
 def check(rows=None):
