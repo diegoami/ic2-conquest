@@ -66,7 +66,7 @@ def quarterly_price(t): return i16m(0x478fd4 + t * 0x28)             # DAT_00478
 
 # ---- number formatters ----------------------------------------------------------------------------------------------------------------
 def f_plain(v): return str(v)                  # FUN_004028c4 + FUN_00402978: Str(v) as written, no separators
-def f_commas(v): return '{:,}'.format(v)       # FUN_00448f3c: thousands separators, '-' for negatives (FUN_00448e74 puts ',' every 3 digits)
+def f_commas(v): return ('- ' if v < 0 else '') + '{:,}'.format(abs(v))   # FUN_00448f3c copies from index 1 for a negative: the '-' (index 1), a blank (index 2), then the digits: '- 1,500'
 def f_pop(v): return '{:,}'.format(abs(v)).ljust(12)   # FUN_00448f9c: copies from index 3, so a negative's sign is dropped; 12-char field (trailing blanks)
 
 NAMES = sav.NATIONS

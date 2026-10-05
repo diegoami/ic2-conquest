@@ -1,6 +1,6 @@
 # run-exp-info-window: the Information window (T140 for the clone's v0.5.0)
 
-> **READY (2026-10-05, batch 1): priorities (a)-(e) are done, with code citations and in-play captures. The rest of the panels follow.**
+> **READY (2026-10-05, batch 1, pushed as commit 05b5990): priorities (a)-(e) are done, with code citations and in-play captures.** Batch 2 completed the rest of the panels, the coverage check and the findings draft `findings/2026-10-05-information-window-fields-and-bands.md`.
 > Evidence: `code_word_tables.tsv` (tables and index expressions, decompile line numbers `F:<n>` in ReTools `all_app_functions.txt`),
 > `band_edges.tsv` (every edge, confirmed or derived), `band_samples.tsv` (value, expected word, seen word, screenshot),
 > `claims_audit_summary.txt` (0 mismatches). The answers:

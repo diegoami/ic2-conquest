@@ -39,12 +39,19 @@ def main(write=False):
     rows = []
     for f in sorted(glob.glob(DATA + 'captures*.tsv')):
         rows += list(csv.DictReader(open(f, encoding='utf-8'), delimiter='\t'))
+    excl_file = DATA + 'capture_exclusions.tsv'
+    exclusions = {}
+    if os.path.exists(excl_file):
+        for l in open(excl_file, encoding='utf-8').read().splitlines()[1:]:
+            if l.strip(): k, v = l.split('\t', 1); exclusions[k] = v
     out, mism, ok, excl, fuzzy, bey = [], 0, 0, 0, 0, 0
     raws, band = {}, []
     for r in rows:
         raw = raws.get(r['save']) or raws.setdefault(r['save'], M.Raw(find_save(r['save'])))
         cur = raw.p['current_nation']
         got = lines_of(r['ocr'])
+        if r['png'] in exclusions:
+            excl += 1; out.append((r['png'], r['kind'], int(r['target']), 'EXCLUDED-listed', exclusions[r['png']])); continue
         kind, tg = r['kind'], int(r['target'])
         exp = None
         if kind == 'nation': exp = expect(M.nation_panel(raw.p, tg, cur))
