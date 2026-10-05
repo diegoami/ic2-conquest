@@ -113,9 +113,18 @@ def save_diff(pa, pb):
             "map_cells_differing": sum(1 for x, y in zip(sa["map"], sb["map"]) if x != y), "fields": fields}
 
 
+VOLATILE = [(0x45E614, 0x45E618)]      # two words that vary from run to run for the SAME save, seed and answer (see the finding): not game state
+
+
+def _only_volatile(a, b):
+    if len(a) != len(b):
+        return False
+    return all(any(lo <= SNAP_BASE + i < hi for lo, hi in VOLATILE) for i in range(len(a)) if a[i] != b[i])
+
+
 def pair_compare(ry, rn):
-    keys = ["start_sha256", "seed_line", "randseed_loaded", "state_at_load", "battle_title", "randseed_battle_open", "end_turn_clicks", "battle_ended_text",
-            "box_opened", "box_title", "box_text", "box_buttons", "pre_regions", "pre_sha256", "strategic_pre", "rcode"]
+    keys = ["start_sha256", "seed_line", "randseed_loaded", "state_at_load", "randseed_battle_open", "end_turn_clicks", "battle_ended_text",
+            "box_opened", "box_title", "box_text", "box_buttons", "pre_regions", "strategic_pre", "rcode"]
     same = {k: ry.get(k) == rn.get(k) for k in keys if k != "box_buttons"}
     same["box_buttons"] = sorted(ry.get("box_buttons") or []) == sorted(rn.get("box_buttons") or [])
     dy, dn = ry["dialogs"][0], rn["dialogs"][0]
@@ -123,8 +132,9 @@ def pair_compare(ry, rn):
     same["dialog_controls"] = sorted(map(json.dumps, dy["controls"])) == sorted(map(json.dumps, dn["controls"]))
     same["dialog_shot_png_bytes"] = png_sha(dy.get("shot")) == png_sha(dn.get("shot")) and png_sha(dy.get("shot")) is not None
     ay, an = snap_bytes(ry["pre_snap"]), snap_bytes(rn["pre_snap"])
-    same["pre_snapshot_bytes"] = ay == an
+    same["pre_snapshot_bytes_outside_volatile"] = ay == an or _only_volatile(ay, an)
     out = {"yes": ry["trial"], "no": rn["trial"], "seed": ry["seed"], "cell": ry["cell"], "same": same, "pre_identical": all(same.values()),
+           "pre_strictly_identical": ay == an, "battle_title_at_open": [ry["battle_title"], rn["battle_title"]],
            "snapshot_diff": None if ay == an else diff_offsets(ay, an)}
     return out
 
@@ -155,6 +165,38 @@ def cmd_pairs():
                         row["save_diff"] = save_diff(B.ART / "turns" / ty["save"], B.ART / "turns" / tn["save"])
                     pc["turns"].append(row)
                 res.append(pc)
+    rows = []
+    for pc in res:
+        def rel(x, who):
+            return x[who]["rel"] if x else None
+        ry, rn = pc["after_answer"]["yes"], pc["after_answer"]["no"]
+        pd = pc["post_save_diff"]
+        row = {"cell": pc["cell"], "seed": pc["seed"], "pre_identical": pc["pre_identical"], "answers": "%s/%s" % (pc["answers"]["yes"], pc["answers"]["no"]),
+               "clicks": "%s/%s" % (pc["clicks"]["yes"]["clicks"], pc["clicks"]["no"]["clicks"]),
+               "rel_after_answer_yes_no": "%s/%s" % (ry["Rome"]["rel"], rn["Rome"]["rel"]),
+               "post_save_nonnews_fields": ";".join(f[0] for f in pd["fields"] if not f[0].startswith("news")),
+               "post_save_raw_bytes_differing": pd["raw_bytes_differing"]}
+        for t in pc["turns"]:
+            n = t["turn"]
+            ay, an = t["yes"]["after"], t["no"]["after"]
+            if ay and an:
+                row["t%d_rel" % n] = "%s/%s" % (ay["Rome"]["rel"], an["Rome"]["rel"])
+                row["t%d_rome_cities" % n] = "%s/%s" % (ay["Rome"]["cities"], an["Rome"]["cities"])
+                row["t%d_gaul_cities" % n] = "%s/%s" % (ay["Gaul"]["cities"], an["Gaul"]["cities"])
+                row["t%d_rome_treasury" % n] = "%s/%s" % (ay["Rome"]["treasury"], an["Rome"]["treasury"])
+                row["t%d_gaul_treasury" % n] = "%s/%s" % (ay["Gaul"]["treasury"], an["Gaul"]["treasury"])
+                row["t%d_rome_unity" % n] = "%s/%s" % (ay["Rome"]["unity"], an["Rome"]["unity"])
+                row["t%d_gaul_unity" % n] = "%s/%s" % (ay["Gaul"]["unity"], an["Gaul"]["unity"])
+        rows.append(row)
+    if rows:
+        cols = []
+        for r in rows:
+            cols += [k for k in r if k not in cols]
+        buf = io.StringIO(newline="")
+        w = csv.DictWriter(buf, cols)
+        w.writeheader()
+        w.writerows(rows)
+        print(C.write_new(B.DATA, "b16-pairs-summary-%s.csv" % C.STAMP, buf.getvalue()))
     p = C.write_new(B.DATA, "b16-pairs-%s.json" % C.STAMP, json.dumps(res, indent=1, default=str))
     for pc in res:
         print(pc["yes"], pc["no"], "pre_identical", pc["pre_identical"], {k: v for k, v in pc["same"].items() if not v})
@@ -176,6 +218,7 @@ def cmd_repeat():
                 a, b = rs[i], rs[j]
                 row = {"cell": key[0], "seed": key[1], "answer": key[2], "a": a["trial"], "b": b["trial"], "box_opened": (a["box_opened"], b["box_opened"]),
                        "pre_snapshot_bytes_equal": snap_bytes(a["pre_snap"]) == snap_bytes(b["pre_snap"]),
+                       "pre_snapshot_equal_outside_volatile": _only_volatile(snap_bytes(a["pre_snap"]), snap_bytes(b["pre_snap"])),
                        "box_text_equal": a.get("box_text") == b.get("box_text"),
                        "post_save_bytes_equal": (B.ART / a["post_save"]).read_bytes() == (B.ART / b["post_save"]).read_bytes(),
                        "turn_saves": []}
