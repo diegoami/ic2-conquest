@@ -1,0 +1,368 @@
+{
+ "note": "Expected markers of every marker-bearing sentence of the Answer bullets and the 'For the clone' items of findings/b16-finding.skeleton.md, in order: the audit fails when a sentence's markers differ (a valid but wrong marker swapped in), when a sentence has none registered, or when an anchor is gone. Edited by hand when the prose is reworded.",
+ "bindings": [
+  {
+   "claim": "answer.1.1",
+   "anchor": "- **The box exists and has one shape [O].** Title ",
+   "markers": [
+    "box_w",
+    "box_h",
+    "box_x",
+    "box_y",
+    "ncontrols"
+   ]
+  },
+  {
+   "claim": "answer.2.1",
+   "anchor": "- **Open rate [O], normal build, D-LOSS (Rome's ar",
+   "markers": [
+    "rome_army",
+    "cell_troops",
+    "cell_type",
+    "loss_open",
+    "loss_n",
+    "loss_open_seeds",
+    "loss_pct"
+   ]
+  },
+  {
+   "claim": "answer.2.2",
+   "anchor": "In all %%loss_n%% %%lit:t3%% of `[R-code]` (armies",
+   "markers": [
+    "loss_n",
+    "lit:t3",
+    "g_unity_c1",
+    "g_city_closed",
+    "loss_tests_all"
+   ]
+  },
+  {
+   "claim": "answer.2.3",
+   "anchor": "**D-WIN (Gaul's army %%gaul_army%% = one %%cell_tr",
+   "markers": [
+    "gaul_army",
+    "cell_troops",
+    "cell_type",
+    "win_open",
+    "win_n",
+    "win_armL",
+    "win_unity"
+   ]
+  },
+  {
+   "claim": "answer.3.1",
+   "anchor": "- **D-WIN can be made to open [O], with an L1 edit",
+   "markers": [
+    "army12_owner_name",
+    "ext_army",
+    "ext_owner",
+    "ext_nunits",
+    "ext_unit_type",
+    "ext_unit_troops",
+    "ext_gaul_unity",
+    "rome_other",
+    "ext_weak",
+    "cell_type",
+    "ext_armW",
+    "ext_armL",
+    "ext_unity",
+    "wb_loser",
+    "ext_cities",
+    "ext_open",
+    "ext_n",
+    "ext_open_seeds"
+   ]
+  },
+  {
+   "claim": "answer.4.1",
+   "anchor": "- **Yes versus No [O], %%npairs%% pairs (%%npairs_",
+   "markers": [
+    "npairs",
+    "npairs_loss",
+    "npairs_win",
+    "lit:w2",
+    "rel_yes_ans",
+    "rel_no_ans"
+   ]
+  },
+  {
+   "claim": "answer.4.2",
+   "anchor": "Over the whole decoded save (map, cities, armies, ",
+   "markers": [
+    "fd_yes_rel",
+    "fd_added_loss"
+   ]
+  },
+  {
+   "claim": "answer.4.3",
+   "anchor": "after No no decoded field changes** (recomputed in",
+   "markers": [
+    "fd_runs"
+   ]
+  },
+  {
+   "claim": "answer.4.6",
+   "anchor": "On the next End turn the %%rel_yes_ans%% becomes %",
+   "markers": [
+    "rel_yes_ans",
+    "rel_yes_t1",
+    "rel_yes_all",
+    "nturns"
+   ]
+  },
+  {
+   "claim": "answer.4.7",
+   "anchor": "After No the war goes on: **in the D-LOSS pairs Ga",
+   "markers": [
+    "first_city_turn",
+    "loss_no_rome",
+    "nturns"
+   ]
+  },
+  {
+   "claim": "answer.4.8",
+   "anchor": "Gaul %%loss_no_gaul_first%% to %%loss_no_gaul_last",
+   "markers": [
+    "loss_no_gaul_first",
+    "loss_no_gaul_last",
+    "loss_yes_rome"
+   ]
+  },
+  {
+   "claim": "answer.4.9",
+   "anchor": "in the D-WIN pairs nobody takes a city in %%nturns",
+   "markers": [
+    "nturns",
+    "win_rome",
+    "win_gaul"
+   ]
+  },
+  {
+   "claim": "answer.5.1",
+   "anchor": "- **No v No is byte-identical [O]** on %%nn_n%% se",
+   "markers": [
+    "nn_n",
+    "nn_seeds",
+    "nn_turns",
+    "nn_post_equal"
+   ]
+  },
+  {
+   "claim": "answer.5.2",
+   "anchor": "turn saves equal: %%nn_turns_equal%%).",
+   "markers": [
+    "nn_turns_equal"
+   ]
+  },
+  {
+   "claim": "answer.6.1",
+   "anchor": "- **The gate against `[R-code]` [O]:** the loser's",
+   "markers": [
+    "g_unity_open",
+    "g_unity_c1",
+    "g_seeds"
+   ]
+  },
+  {
+   "claim": "answer.6.2",
+   "anchor": "unity is read after the battle's %%wb_loser%%, so ",
+   "markers": [
+    "wb_loser",
+    "g_before"
+   ]
+  },
+  {
+   "claim": "answer.6.3",
+   "anchor": "the loser's city-count word **%%g_city_open%% open",
+   "markers": [
+    "g_city_open",
+    "g_city_closed"
+   ]
+  },
+  {
+   "claim": "answer.6.4",
+   "anchor": "Rome's other armies cut so that armies(Rome) %%g_w",
+   "markers": [
+    "g_weakL",
+    "g_weakW",
+    "g_weakL",
+    "g_weakW"
+   ]
+  },
+  {
+   "claim": "answer.6.5",
+   "anchor": "With the B11 exchange hook on %%hook_n%% hooked la",
+   "markers": [
+    "hook_n",
+    "draw_range",
+    "draw_site",
+    "draw_open",
+    "hook_open",
+    "hook_open_draws"
+   ]
+  },
+  {
+   "claim": "answer.6.6",
+   "anchor": "%%hook_closed%% closed, draws %%hook_closed_draws%",
+   "markers": [
+    "hook_closed",
+    "hook_closed_draws",
+    "hook_gate_runs",
+    "g_unity_c1",
+    "g_city_closed",
+    "hook_gate_draws",
+    "draw_site"
+   ]
+  },
+  {
+   "claim": "answer.6.7",
+   "anchor": "So the condition `[R-code]` gives is **measured, n",
+   "markers": [
+    "lit:t3"
+   ]
+  },
+  {
+   "claim": "clone.1.2",
+   "anchor": "**The box.** Window title `Offer of peace`, %%box_",
+   "markers": [
+    "box_w",
+    "box_h",
+    "box_x",
+    "box_y",
+    "ncontrols"
+   ]
+  },
+  {
+   "claim": "clone.1.3",
+   "anchor": "%%btn_w%% x %%btn_h%% each;",
+   "markers": [
+    "btn_w",
+    "btn_h"
+   ]
+  },
+  {
+   "claim": "clone.1.4",
+   "anchor": "Yes at box-relative (%%yes_rx%%, %%yes_ry%%), No a",
+   "markers": [
+    "yes_rx",
+    "yes_ry",
+    "no_rx",
+    "no_ry"
+   ]
+  },
+  {
+   "claim": "clone.2.2",
+   "anchor": "**Yes.** Relation between both nations set to **%%",
+   "markers": [
+    "rel_yes_ans"
+   ]
+  },
+  {
+   "claim": "clone.2.3",
+   "anchor": "news line **\"<Winner> and <Loser> have agreed to e",
+   "markers": [
+    "fd_added_loss",
+    "fd_added_win",
+    "fd_yes_news"
+   ]
+  },
+  {
+   "claim": "clone.2.4",
+   "anchor": "**no other change** at the answer (full before/aft",
+   "markers": [
+    "fd_yes_rel"
+   ]
+  },
+  {
+   "claim": "clone.2.6",
+   "anchor": "on the **next End turn %%rel_yes_ans%% becomes %%r",
+   "markers": [
+    "rel_yes_ans",
+    "rel_yes_t1",
+    "rel_yes_all",
+    "nturns"
+   ]
+  },
+  {
+   "claim": "clone.3.2",
+   "anchor": "**No.** No decoded field changes (full before/afte",
+   "markers": [
+    "fd_no_runs",
+    "rel_no_ans",
+    "first_city_turn"
+   ]
+  },
+  {
+   "claim": "clone.4.2",
+   "anchor": "**The gate, as measured.** The box opens in a huma",
+   "markers": [
+    "wb_winner",
+    "wb_loser"
+   ]
+  },
+  {
+   "claim": "clone.4.3",
+   "anchor": "Rome %%loss_armL%% v Gaul %%loss_armW%% opens, %%g",
+   "markers": [
+    "loss_armL",
+    "loss_armW",
+    "g_weakL",
+    "g_weakW",
+    "g_unity_c1",
+    "g_unity_open",
+    "g_unity_c1",
+    "g_city_closed",
+    "g_city_open",
+    "g_city_closed"
+   ]
+  },
+  {
+   "claim": "clone.4.4",
+   "anchor": "**then a draw `Random(%%draw_range%%)` at `%%draw_",
+   "markers": [
+    "draw_range",
+    "draw_site",
+    "draw_open",
+    "hook_open_draws",
+    "hook_closed_draws"
+   ]
+  },
+  {
+   "claim": "clone.4.6",
+   "anchor": "Any of %%lit:t3%% failing means no box and no draw",
+   "markers": [
+    "lit:t3"
+   ]
+  },
+  {
+   "claim": "clone.4.7",
+   "anchor": "Rate with the tests met: %%loss_open%% of %%loss_n",
+   "markers": [
+    "loss_open",
+    "loss_n",
+    "loss_pct"
+   ]
+  },
+  {
+   "claim": "clone.4.8",
+   "anchor": "%%draw_open%% of the %%draw_range%% values of the ",
+   "markers": [
+    "draw_open",
+    "draw_range",
+    "draw_pct"
+   ]
+  },
+  {
+   "claim": "clone.5.2",
+   "anchor": "**The reseed.** When the box opens the game sets `",
+   "markers": [
+    "rs_value",
+    "rome_idx",
+    "gaul_idx",
+    "rome_idx",
+    "gaul_idx",
+    "reseed_site"
+   ]
+  }
+ ]
+}

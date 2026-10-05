@@ -1,0 +1,3 @@
+{"t": 0.0, "event": "xvfb", "pid": null, "display": ":640"}
+{"t": 39.06, "event": "pre_answer", "trial": "loss_s1_capture_r1", "text": "\u2018After defeating you in battle Gaul are willing to end their war with you, if you agree to the terms below. \u2018An honourable peace with no reparations or penalt If the peace terms are acceptable click YES. \u2018Otherwise to continue the war click NO. We", "buttons": ["No", "Yes"], "geometry": [13, 94, 406, 360]}
+{"t": 58.67, "event": "trial_done", "trial": "loss_s1_capture_r1", "status": "ok", "box": true, "rcode": {"winner": 6, "loser": 0, "armies_W": 12992, "armies_L": 32743, "unity_L": 856, "cities_L": 30, "armies_W_lt_L": true, "unity_L_gt_500": true, "cities_L_gt_7": true, "preconditions_pass": true}}

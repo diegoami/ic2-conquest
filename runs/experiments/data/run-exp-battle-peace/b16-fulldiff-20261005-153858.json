@@ -1,0 +1,2777 @@
+{
+ "news_ring_address": "0x49f994",
+ "runs": [
+  {
+   "trial": "loss_s1_no_r2",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 1,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s1_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 1,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s3_no_r2",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 3,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s3_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 3,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s5_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 5,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s5_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 5,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s6_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 6,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s6_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 6,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s7_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 7,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s7_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 7,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s8_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 8,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s8_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 8,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s12_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 12,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s12_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 12,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s18_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 18,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s18_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 18,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s28_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 28,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s28_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 28,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s30_no_r1",
+   "answer": "No",
+   "cell": "loss",
+   "seed": 30,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "loss_s30_yes_r1",
+   "answer": "Yes",
+   "cell": "loss",
+   "seed": 30,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Gaul destroys army of Rome."
+    ],
+    [
+     "news[39]",
+     "Gaul destroys army of Rome.",
+     "Gaul and Rome have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "win-own126,strong126,unity6600,weak2500,weak13500_s3_no_r1",
+   "answer": "No",
+   "cell": "win+own12=6,strong12=6,unity6=600,weak2=500,weak13=500",
+   "seed": 3,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "win-own126,strong126,unity6600,weak2500,weak13500_s3_yes_r1",
+   "answer": "Yes",
+   "cell": "win+own12=6,strong12=6,unity6=600,weak2=500,weak13=500",
+   "seed": 3,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[39]",
+     "Rome destroys army of Gaul.",
+     "Rome and Gaul have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "win-own126,strong126,unity6600,weak2500,weak13500_s5_no_r1",
+   "answer": "No",
+   "cell": "win+own12=6,strong12=6,unity6=600,weak2=500,weak13=500",
+   "seed": 5,
+   "fields": [],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  },
+  {
+   "trial": "win-own126,strong126,unity6600,weak2500,weak13500_s5_yes_r1",
+   "answer": "Yes",
+   "cell": "win+own12=6,strong12=6,unity6=600,weak2=500,weak13=500",
+   "seed": 5,
+   "fields": [
+    [
+     "nations[0].relations.Gaul",
+     3,
+     -18
+    ],
+    [
+     "nations[6].relations.Rome",
+     3,
+     -18
+    ],
+    [
+     "news[0]",
+     "Laranda   (Seleucid)  falls to Galatia.",
+     "Macedonia forms an alliance with Illyria."
+    ],
+    [
+     "news[10]",
+     "Mediolanum   (Gaul)  falls to Rome.",
+     "Taurasia defects from Gaul to Rome."
+    ],
+    [
+     "news[11]",
+     "Taurasia defects from Gaul to Rome.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[12]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[13]",
+     " ",
+     "Week  3      Winter      270BC"
+    ],
+    [
+     "news[14]",
+     "Week  3      Winter      270BC",
+     "Seleucid destroys army of Galatia."
+    ],
+    [
+     "news[15]",
+     "Seleucid destroys army of Galatia.",
+     "Phoenice   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[16]",
+     "Phoenice   (Greece)  falls to Illyria.",
+     "Taurasia   (Rome)  falls to Gaul."
+    ],
+    [
+     "news[17]",
+     "Taurasia   (Rome)  falls to Gaul.",
+     "A fleet belonging to Carthage is damaged in a storm."
+    ],
+    [
+     "news[18]",
+     "A fleet belonging to Carthage is damaged in a storm.",
+     " "
+    ],
+    [
+     "news[19]",
+     " ",
+     "Week  5      Winter      270BC"
+    ],
+    [
+     "news[1]",
+     "Macedonia forms an alliance with Illyria.",
+     "Macedonia declares war on Greece."
+    ],
+    [
+     "news[20]",
+     "Week  5      Winter      270BC",
+     "Iconium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[21]",
+     "Iconium   (Galatia)  falls to Seleucid.",
+     "Ambracia   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[22]",
+     "Ambracia   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[23]",
+     " ",
+     "Week  7      Winter      270BC"
+    ],
+    [
+     "news[24]",
+     "Week  7      Winter      270BC",
+     "Laranda   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[25]",
+     "Laranda   (Galatia)  falls to Seleucid.",
+     "Gordium   (Galatia)  falls to Seleucid."
+    ],
+    [
+     "news[26]",
+     "Gordium   (Galatia)  falls to Seleucid.",
+     "Synnada defects from Galatia to Seleucid."
+    ],
+    [
+     "news[27]",
+     "Synnada defects from Galatia to Seleucid.",
+     "Acroinon defects from Galatia to Seleucid."
+    ],
+    [
+     "news[28]",
+     "Acroinon defects from Galatia to Seleucid.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[29]",
+     "-----------------------------------------------------------",
+     "Seleucid conquers Galatia."
+    ],
+    [
+     "news[2]",
+     "Macedonia declares war on Greece.",
+     "Macedonia destroys army of Greece."
+    ],
+    [
+     "news[30]",
+     "Seleucid conquers Galatia.",
+     "-----------------------------------------------------------"
+    ],
+    [
+     "news[31]",
+     "-----------------------------------------------------------",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[32]",
+     "Rome destroys army of Gaul.",
+     "A fleet belonging to Carthage is lost at sea."
+    ],
+    [
+     "news[33]",
+     "A fleet belonging to Carthage is lost at sea.",
+     " "
+    ],
+    [
+     "news[34]",
+     " ",
+     "Week  9      Winter      270BC"
+    ],
+    [
+     "news[35]",
+     "Week  9      Winter      270BC",
+     "Naupactus   (Greece)  falls to Illyria."
+    ],
+    [
+     "news[36]",
+     "Naupactus   (Greece)  falls to Illyria.",
+     " "
+    ],
+    [
+     "news[37]",
+     " ",
+     "Week  11      Winter      270BC"
+    ],
+    [
+     "news[38]",
+     "Week  11      Winter      270BC",
+     "Rome destroys army of Gaul."
+    ],
+    [
+     "news[39]",
+     "Rome destroys army of Gaul.",
+     "Rome and Gaul have agreed to end their war."
+    ],
+    [
+     "news[3]",
+     "Macedonia destroys army of Greece.",
+     "Greece sues Macedonia for peace and;"
+    ],
+    [
+     "news[4]",
+     "Greece sues Macedonia for peace and;",
+     "    Greece ends all current trading agreements."
+    ],
+    [
+     "news[5]",
+     "    Greece ends all current trading agreements.",
+     "    Greece  ends all current alliances."
+    ],
+    [
+     "news[6]",
+     "    Greece  ends all current alliances.",
+     "    Greece pays reparations of 998 talents."
+    ],
+    [
+     "news[7]",
+     "    Greece pays reparations of 998 talents.",
+     " "
+    ],
+    [
+     "news[8]",
+     " ",
+     "Week  1      Winter      270BC"
+    ],
+    [
+     "news[9]",
+     "Week  1      Winter      270BC",
+     "Mediolanum   (Gaul)  falls to Rome."
+    ]
+   ],
+   "map_cells_changed": 0,
+   "news_lines_before": 40,
+   "news_lines_after": 40
+  }
+ ]
+}

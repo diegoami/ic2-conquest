@@ -1298,7 +1298,7 @@ class Game:
         except DriverError:
             raise DriverError("battle End turn: no sign the battle advanced; not clicking again")
 
-    def play_battle(self, shot=None, strict=False, on_dialog=None, max_clicks=120):
+    def play_battle(self, shot=None, strict=False, on_dialog=None, max_clicks=120, pre_answer=None):
         """Play an open battle with Computer general, then dismiss the result. Returns a dict
         {"end_turn_clicks", "battle_ended_text", "dialogs"}; callers that ignore it behave as before.
 
@@ -1318,7 +1318,9 @@ class Game:
           "capture": screenshot + OCR + controls, then declined (No; OK for a box with no No button) - never Yes;
           "no":      OCR text only, then declined;
           "yes":     screenshot + OCR + controls, then Yes (OK if the box has no Yes);
-          "strict":  screenshot + OCR + controls, declined, and DriverError("battle: unexpected dialog: <text>") raised."""
+          "strict":  screenshot + OCR + controls, declined, and DriverError("battle: unexpected dialog: <text>") raised.
+        The "Offer of peace" box is answered through `answer_battle_peace` (the button clicked and the box closing are verified; `pre_answer(info)`,
+        if given, is called with the box's text/controls just before the click, to read the state that a Yes/No pair must share)."""
         if on_dialog not in (None, "capture", "yes", "no", "strict"):
             raise DriverError("on_dialog must be None, 'capture', 'yes', 'no' or 'strict'")
         res = {"end_turn_clicks": 0, "battle_ended_text": None, "dialogs": []}
@@ -1372,7 +1374,7 @@ class Game:
             boxes = self._post_battle_windows()
             if not boxes:
                 break
-            res["dialogs"].append(self._answer_post_battle(boxes[0], on_dialog))
+            res["dialogs"].append(self._answer_post_battle(boxes[0], on_dialog, pre_answer))
             if on_dialog == "strict":
                 raise DriverError("battle: unexpected dialog: " + res["dialogs"][-1]["text"])
             time.sleep(1.5)
@@ -1382,8 +1384,63 @@ class Game:
         """Windows that are not the permanent ones and not a ghost: after the Battle ended OK these are the boxes to deal with."""
         return [p for p in self.popups() if p[1] != "Battle ended" and not re.match(r" ?.* v ", p[1])]
 
-    def _answer_post_battle(self, w, mode):
+    PEACE_TITLE = "Offer of peace"
+
+    def answer_battle_peace(self, yes, shot=None, pre_click=None, tries=3):
+        """Answer the post-battle "Offer of peace" box (TBattlePols) with Yes (`yes` True) or No, and PROVE it: finds the box (DriverError if there is none),
+        reads its text (OCR) and its controls (`Game.controls`), requires both a Yes and a No button, clicks the wanted one at its centre (the click point
+        is checked to lie inside that button's rectangle and outside the other's), re-clicks the SAME button up to `tries` times when the box is still
+        open (the first click into an inactive window may only activate it), and raises DriverError unless the box is closed afterwards.
+        `pre_click(info)` (optional) is called with the box's text, controls and geometry just before the click: the caller reads the state that must be
+        identical in a Yes/No pair there. `shot` (optional path) takes a screenshot of the box first.
+        Returns {title, text, controls, buttons, button ("Yes"|"No": the control clicked), click (x, y), clicks (how many), closed (True), geometry, shot}."""
+        boxes = self.find_windows("^%s$" % re.escape(self.PEACE_TITLE))
+        if not boxes:
+            raise DriverError("answer_battle_peace: no %r box is open" % self.PEACE_TITLE)
+        wid = boxes[0][0]
+        info = {"title": self.PEACE_TITLE, "geometry": list(boxes[0][2:]), "text": self.read_popup(boxes[0]), "shot": None}
+        if shot:
+            self.shot(shot, window=str(wid))
+            info["shot"] = str(shot)
+        cs = self.controls(self.PEACE_TITLE)
+        norm = lambda c: c["text"].replace("&", "").strip().lower()
+        yes_c, no_c = [next((c for c in cs if norm(c) == k), None) for k in ("yes", "no")]
+        if yes_c is None or no_c is None:
+            raise DriverError("answer_battle_peace: the box has no Yes and No buttons (controls %s)" % [c["text"] for c in cs])
+        info.update({"controls": cs, "buttons": [c["text"] for c in cs if c["cls"].lower().endswith("button")]})
+        want, other = (yes_c, no_c) if yes else (no_c, yes_c)
+        pt = (want["x"] + want["w"] // 2, want["y"] + want["h"] // 2)
+        inside = lambda c: c["x"] <= pt[0] < c["x"] + c["w"] and c["y"] <= pt[1] < c["y"] + c["h"]
+        if not inside(want) or inside(other):
+            raise DriverError("answer_battle_peace: the %s button's centre %s is not clearly inside it (buttons overlap?)" % (want["text"], pt))
+        if pre_click:
+            pre_click(info)
+        clicks = 0
+        self.raise_window(wid)
+        for _ in range(tries):
+            self.click_control(want, pause=0.5)
+            clicks += 1
+            for _ in range(10):         # give the box up to 2.5 s to close before the same button is pressed again (a late close must not take a second click)
+                if wid not in [w[0] for w in self.find_windows("^%s$" % re.escape(self.PEACE_TITLE))]:
+                    break
+                time.sleep(0.25)
+            else:
+                continue
+            break
+        if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
+            raise DriverError("answer_battle_peace: the box is still open after %d clicks on %s" % (clicks, want["text"]))
+        info.update({"button": want["text"], "click": pt, "clicks": clicks, "closed": True})
+        return info
+
+    def _answer_post_battle(self, w, mode, pre_answer=None):
         wid, title = w[0], w[1]
+        if title == self.PEACE_TITLE:         # the Offer of peace box goes through the one verified path
+            png = None
+            if mode != "no":
+                png = WORK / "shots" / ("dialog-%s-%d.png" % (re.sub(r"\W+", "_", title), int(time.time())))
+            r = self.answer_battle_peace(mode == "yes", shot=png, pre_click=pre_answer)
+            return {"title": title, "geometry": r["geometry"], "text": r["text"], "controls": r["controls"] if mode != "no" else None,
+                    "shot": r["shot"], "answer": r["button"], "click": r["click"], "clicks": r["clicks"], "closed": r["closed"]}
         rec = {"title": title, "geometry": list(w[2:]), "text": self.read_popup(w), "controls": None, "shot": None, "answer": None}
         if mode != "no":
             png = WORK / "shots" / ("dialog-%s-%d.png" % (re.sub(r"\W+", "_", title) or "untitled", int(time.time())))

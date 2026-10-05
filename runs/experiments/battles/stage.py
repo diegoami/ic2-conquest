@@ -11,8 +11,10 @@ Operations (offsets: docs/sav-layout-notes.md):
   units army [(type, troops, quality[, label[, name]])]   army record slots 0..n-1 written whole (type li|hi|ar|lc|hc, quality 0..9, label 0
                                                           = regular; the name defaults to the slot's existing name when its type is unchanged, else "<ordinal> <kind>  Battalion");
                                                           slots n..19 get troops 0 (their other bytes are left as they are: an empty slot)
+  owner army v       army +4 (B16: gives an existing army to another nation; position and map untouched)
   morale army v      army +14        supplies army v   +10        money army v   +12 (the army purse)       moves army v   +6
   treasury n v       nation +0x438 (i32)                          unity n v      nation +0x440
+  ncities n v        nation +0x446 (the count word only, B16)
   relation a b v     nation a's +0x26+2b AND nation b's +0x26+2a (the matrix is symmetric)
   city c {field: v}  city record fields: owner, allegiance, loyalty, supplies, fort, pop, max_pop, tribute
 Position (x, y) of an army, and the map, are never touched.
@@ -37,7 +39,7 @@ from state import sav  # noqa: E402
 TYPES = {t: i for i, t in enumerate(sav.UNIT_TYPES)}
 KIND = {"li": "Foot", "hi": "Guards", "ar": "Bowmen", "lc": "Lancers", "hc": "Dragoons"}
 CITY_FIELDS = {"owner": 18, "allegiance": 20, "loyalty": 22, "supplies": 24, "fort": 26, "pop": 28, "max_pop": 30, "tribute": 32}
-ARMY_FIELDS = {"moves": 6, "supplies": 10, "money": 12, "morale": 14}
+ARMY_FIELDS = {"owner": 4, "moves": 6, "supplies": 10, "money": 12, "morale": 14}
 STD = {"li": 15000, "hi": 6000, "ar": 3500, "lc": 7000, "hc": 2500}      # one standard battalion (DAT +0x1A; battles.md §4)
 
 
@@ -211,6 +213,8 @@ def apply(b, ops):
             struct.pack_into("<i", b, _nation(b, op[1]) + 0x438, op[2])
         elif k == "unity":
             set_nation_i16(b, op[1], 0x440, op[2])
+        elif k == "ncities":              # the nation's city-count word (+0x446, `cities_count`); the city list and the cities' owner fields are not touched (B16)
+            set_nation_i16(b, op[1], 0x446, op[2])
         elif k == "relation":
             set_relation(b, op[1], op[2], op[3])
         elif k == "city":

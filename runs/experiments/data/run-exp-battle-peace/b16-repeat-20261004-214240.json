@@ -1,0 +1,117 @@
+[
+ {
+  "cell": "loss",
+  "seed": 1,
+  "answer": "no",
+  "a": "loss_s1_capture_r1",
+  "b": "loss_s1_no_r1",
+  "box_opened": [
+   true,
+   true
+  ],
+  "pre_snapshot_bytes_equal": true,
+  "box_text_equal": true,
+  "post_save_bytes_equal": true,
+  "turn_saves": []
+ },
+ {
+  "cell": "loss",
+  "seed": 1,
+  "answer": "no",
+  "a": "loss_s1_capture_r1",
+  "b": "loss_s1_no_r2",
+  "box_opened": [
+   true,
+   true
+  ],
+  "pre_snapshot_bytes_equal": true,
+  "box_text_equal": true,
+  "post_save_bytes_equal": true,
+  "turn_saves": []
+ },
+ {
+  "cell": "loss",
+  "seed": 1,
+  "answer": "no",
+  "a": "loss_s1_capture_r1",
+  "b": "loss_s1_survey_r1",
+  "box_opened": [
+   true,
+   true
+  ],
+  "pre_snapshot_bytes_equal": true,
+  "box_text_equal": true,
+  "post_save_bytes_equal": true,
+  "turn_saves": []
+ },
+ {
+  "cell": "loss",
+  "seed": 1,
+  "answer": "no",
+  "a": "loss_s1_no_r1",
+  "b": "loss_s1_no_r2",
+  "box_opened": [
+   true,
+   true
+  ],
+  "pre_snapshot_bytes_equal": true,
+  "box_text_equal": true,
+  "post_save_bytes_equal": true,
+  "turn_saves": [
+   {
+    "turn": 1,
+    "a": "loss_s1_no_r1_t1_AUTO0744.SAV",
+    "b": "loss_s1_no_r2_t1_AUTO0744.SAV",
+    "bytes_equal": true
+   },
+   {
+    "turn": 2,
+    "a": "loss_s1_no_r1_t2_AUTO0745.SAV",
+    "b": "loss_s1_no_r2_t2_AUTO0745.SAV",
+    "bytes_equal": true
+   },
+   {
+    "turn": 3,
+    "a": "loss_s1_no_r1_t3_AUTO0746.SAV",
+    "b": "loss_s1_no_r2_t3_AUTO0746.SAV",
+    "bytes_equal": true
+   },
+   {
+    "turn": 4,
+    "a": "loss_s1_no_r1_t4_AUTO0747.SAV",
+    "b": "loss_s1_no_r2_t4_AUTO0747.SAV",
+    "bytes_equal": true
+   }
+  ]
+ },
+ {
+  "cell": "loss",
+  "seed": 1,
+  "answer": "no",
+  "a": "loss_s1_no_r1",
+  "b": "loss_s1_survey_r1",
+  "box_opened": [
+   true,
+   true
+  ],
+  "pre_snapshot_bytes_equal": true,
+  "box_text_equal": true,
+  "post_save_bytes_equal": true,
+  "turn_saves": []
+ },
+ {
+  "cell": "loss",
+  "seed": 1,
+  "answer": "no",
+  "a": "loss_s1_no_r2",
+  "b": "loss_s1_survey_r1",
+  "box_opened": [
+   true,
+   true
+  ],
+  "pre_snapshot_bytes_equal": true,
+  "box_text_equal": true,
+  "post_save_bytes_equal": true,
+  "turn_saves": []
+ }
+]
