@@ -54,7 +54,7 @@ Facts that affect availability:
   (no 5-hour or weekly windows); the response also has `plan` and `subscription_ends_at`. If quota-tracker shows
   `not_configured` or a login error, ask the owner to run `bl auth login --console --console-site international`.
 - **alibaba in OpenCode** (usable since 2026-10-05): the key comes from the environment variable `ALIBABA_TOKEN_PLAN_API_KEY`
-  (set in `~/.bashrc` on WSL), so it works in every OpenCode data folder, the reviewer's `$IC2_WORK/opencode-data` included.
+  (on WSL it comes from `~/.config/ai-keys.env`, loaded by `~/.bashrc` and `~/.profile`, and for commands started from Windows from `WSLENV`; on Windows it is a user variable; that file holds keys and is never read or printed), so it works in every OpenCode data folder, the reviewer's `$IC2_WORK/opencode-data` included.
   - Never add it to an `auth.json` with `opencode auth login`: a key stored there overrides the variable, and a bad one breaks
     the provider for that folder. Never print, copy or edit the key or any `auth.json`.
   - A session started before the variable existed doesn't have it: start OpenCode (and `scripts/external_review.py`) through
@@ -64,8 +64,9 @@ Facts that affect availability:
   - Quick check: `opencode run -m alibaba-token-plan/qwen3.8-flash "Reply with just: ok"`.
   - **"Invalid API-key":** a stale Alibaba entry in that folder's `auth.json` overrides the variable. Tell the owner which
     `XDG_DATA_HOME` was used.
-  - **"Provider not found":** the variable is missing from the environment (a new shell fixes it). A harness that cleans the
-    environment won't see it either. Tell the owner rather than retrying.
+  - **"Provider not found":** the variable is missing from the environment. Restart the session or shell so it picks it up
+    (or run through `bash -ic`). A harness that cleans the environment won't see it either. If it is still missing, tell the
+    owner rather than retrying.
 
 ### If the service isn't running
 Check: `curl -sf localhost:8765/health`. If that fails:
