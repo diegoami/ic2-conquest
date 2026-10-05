@@ -1,0 +1,560 @@
+{
+ "series_dir": "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-sweep",
+ "baseline": "b5-baseline-20261004-200144.json",
+ "trials_checked": 315,
+ "trials_missing_files": [],
+ "totals": {
+  "C_ammo_falls": 1611,
+  "mover_slots_with_target": 3119,
+  "A_checked": 3119,
+  "A_adjacent": 3119,
+  "B_both_fall": 3059,
+  "B_not_both": 60
+ },
+ "failures": 60,
+ "failure_list": [
+  {
+   "trial": "ar-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 21,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 18,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hc-three_s2_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hc-three_s2_r1",
+   "check": "B",
+   "half_round": 18,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 21,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hi-three_s2_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 18,
+   "slot": 21,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "ar-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 18,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s1_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 1,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s1_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 2,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s2_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 1,
+   "target": 21,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s2_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 2,
+   "target": 21,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s2_r1",
+   "check": "B",
+   "half_round": 21,
+   "slot": 2,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s3_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 1,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-ar-three_s3_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 2,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 21,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 24,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hi-three_s1_r1",
+   "check": "B",
+   "half_round": 14,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hi-three_s2_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hi-three_s2_r1",
+   "check": "B",
+   "half_round": 16,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 16,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-lc-three_s2_r1",
+   "check": "B",
+   "half_round": 14,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hc-lc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-ar-three_s1_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 1,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-ar-three_s1_r1",
+   "check": "B",
+   "half_round": 17,
+   "slot": 2,
+   "target": 22,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-ar-three_s2_r1",
+   "check": "B",
+   "half_round": 11,
+   "slot": 2,
+   "target": 21,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-ar-three_s2_r1",
+   "check": "B",
+   "half_round": 17,
+   "slot": 2,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-ar-three_s3_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 1,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 11,
+   "slot": 1,
+   "target": 22,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 11,
+   "slot": 2,
+   "target": 22,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hc-three_s2_r1",
+   "check": "B",
+   "half_round": 10,
+   "slot": 21,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hc-three_s2_r1",
+   "check": "B",
+   "half_round": 10,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 17,
+   "slot": 2,
+   "target": 22,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hi-three_s1_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 21,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hi-three_s2_r1",
+   "check": "B",
+   "half_round": 20,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 1,
+   "target": 20,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-hi-three_s3_r1",
+   "check": "B",
+   "half_round": 20,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "hi-li-three_s3_r1",
+   "check": "B",
+   "half_round": 9,
+   "slot": 2,
+   "target": 21,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 14,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-hc-three_s1_r1",
+   "check": "B",
+   "half_round": 15,
+   "slot": 2,
+   "target": 22,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-hi-three_s1_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-hi-three_s2_r1",
+   "check": "B",
+   "half_round": 16,
+   "slot": 21,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-hi-three_s2_r1",
+   "check": "B",
+   "half_round": 16,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-lc-three_s1_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-lc-three_s2_r1",
+   "check": "B",
+   "half_round": 10,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-lc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 21,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "lc-lc-three_s3_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-hc-three_s2_r1",
+   "check": "B",
+   "half_round": 14,
+   "slot": 22,
+   "target": 0,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-hc-three_s3_r1",
+   "check": "B",
+   "half_round": 17,
+   "slot": 2,
+   "target": 22,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-lc-three_s3_r1",
+   "check": "B",
+   "half_round": 14,
+   "slot": 21,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-lc-three_s3_r1",
+   "check": "B",
+   "half_round": 14,
+   "slot": 22,
+   "target": 1,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-li-three_s1_r1",
+   "check": "B",
+   "half_round": 12,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-li-three_s2_r1",
+   "check": "B",
+   "half_round": 13,
+   "slot": 2,
+   "target": 21,
+   "actor_fell": false,
+   "target_fell": true
+  },
+  {
+   "trial": "li-li-three_s2_r1",
+   "check": "B",
+   "half_round": 16,
+   "slot": 22,
+   "target": 2,
+   "actor_fell": false,
+   "target_fell": true
+  }
+ ],
+ "failure_kinds": {
+  "B": 60
+ }
+}

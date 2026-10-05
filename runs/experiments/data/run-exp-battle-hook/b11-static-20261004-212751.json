@@ -1,0 +1,359 @@
+{
+ "exe": "Imperial Conquest 2.exe",
+ "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+ "random_refs_total": 71,
+ "random_ref_kinds": [
+  "E8",
+  "FF15?"
+ ],
+ "ref_kind_counts": {
+  "FF15?": 18,
+  "E8": 53
+ },
+ "non_E8_references_inside_the_two_modules": [],
+ "unresolved_indirect_outside_the_modules": [
+  "0x402618",
+  "0x402630",
+  "0x402651",
+  "0x40266a",
+  "0x402683",
+  "0x402ed4",
+  "0x40ad9c",
+  "0x40c0e6",
+  "0x41f21c",
+  "0x41f3d3",
+  "0x41f406",
+  "0x41f43b",
+  "0x41f47a",
+  "0x41f482",
+  "0x420e91",
+  "0x420eb5",
+  "0x423e23",
+  "0x424601"
+ ],
+ "FF15_FF25_inside_the_two_modules_by_pointer_resolution": {},
+ "E9_rel32_to_Random_anywhere": [],
+ "inside_module_and_battleover": [
+  "0x43801a",
+  "0x43812f",
+  "0x43820d",
+  "0x438ffb",
+  "0x439006",
+  "0x439188",
+  "0x439191",
+  "0x439557",
+  "0x43955f",
+  "0x4395ce",
+  "0x4395d8",
+  "0x43aa88",
+  "0x4592bd",
+  "0x45951c"
+ ],
+ "hooked_list": [
+  "0x43801a",
+  "0x43812f",
+  "0x43820d",
+  "0x438ffb",
+  "0x439006",
+  "0x439188",
+  "0x439191",
+  "0x439557",
+  "0x43955f",
+  "0x4395ce",
+  "0x4395d8",
+  "0x43aa88",
+  "0x4592bd",
+  "0x45951c"
+ ],
+ "lists_equal": true,
+ "outside_count": 39,
+ "outside": [
+  "0x448b31",
+  "0x448c6b",
+  "0x4490a8",
+  "0x449148",
+  "0x449157",
+  "0x44916a",
+  "0x4491af",
+  "0x4491fe",
+  "0x44aa98",
+  "0x44ae43",
+  "0x44b045",
+  "0x44b111",
+  "0x44b1c9",
+  "0x44b5ac",
+  "0x44c410",
+  "0x44c5b1",
+  "0x44c95c",
+  "0x44fd2f",
+  "0x44fd61",
+  "0x450208",
+  "0x45026c",
+  "0x450c9f",
+  "0x451442",
+  "0x4514b0",
+  "0x451595",
+  "0x451774",
+  "0x45180b",
+  "0x451937",
+  "0x451dcd",
+  "0x451ddb",
+  "0x451df6",
+  "0x451f2a",
+  "0x451f9a",
+  "0x452059",
+  "0x452089",
+  "0x4567ca",
+  "0x4574fa",
+  "0x457933",
+  "0x45810a"
+ ],
+ "battle_module": [
+  "0x436fb4",
+  "0x43adac"
+ ],
+ "battleover_unit": [
+  "0x458bc8",
+  "0x45958b"
+ ],
+ "sites": [
+  {
+   "site": "0x43801a",
+   "bytes": "e82da8fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "438011 inc edi",
+    "438012 adc byte ptr [edi], cl",
+    "438014 mov edi, 0xe0c10a47",
+    "438019 add ch, al"
+   ]
+  },
+  {
+   "site": "0x43812f",
+   "bytes": "e818a7fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "438126 inc edi",
+    "438127 adc byte ptr [edi], cl",
+    "438129 mov edi, 0xe0c10a47",
+    "43812e add ch, al"
+   ]
+  },
+  {
+   "site": "0x43820d",
+   "bytes": "e83aa6fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "438204 dec edi",
+    "438206 jne 0x4381d4",
+    "438208 mov eax, 5",
+    "43820d call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x438ffb",
+   "bytes": "e84c98fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "438fef cmp esi, 0x28",
+    "438ff2 jge 0x439104",
+    "438ff8 movsx eax, si",
+    "438ffb call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x439006",
+   "bytes": "e84198fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": []
+  },
+  {
+   "site": "0x439188",
+   "bytes": "e8bf96fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "43917e call 0x43845c",
+    "439183 mov esi, eax",
+    "439185 movsx eax, si",
+    "439188 call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x439191",
+   "bytes": "e8b696fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "439188 call 0x40284c",
+    "43918d push eax",
+    "43918e movsx eax, si",
+    "439191 call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x439557",
+   "bytes": "e8f092fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "439552 mov ebp, eax",
+    "439554 inc ebp",
+    "439555 mov eax, ebp",
+    "439557 call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x43955f",
+   "bytes": "e8e892fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "439553 call 0xe909209d"
+   ]
+  },
+  {
+   "site": "0x4395ce",
+   "bytes": "e87992fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "4395c5 inc eax",
+    "4395c6 mov dword ptr [esp + 0x14], eax",
+    "4395ca mov eax, dword ptr [esp + 0x14]",
+    "4395ce call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x4395d8",
+   "bytes": "e86f92fcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "4395ce call 0x40284c",
+    "4395d3 push eax",
+    "4395d4 mov eax, dword ptr [esp + 0x18]",
+    "4395d8 call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x43aa88",
+   "bytes": "e8bf7dfcff",
+   "target": "0x40284c",
+   "module": "TBattleMap",
+   "context": [
+    "43aa7c push es",
+    "43aa7d mov word ptr [ebp - 4], 1",
+    "43aa83 mov eax, 3",
+    "43aa88 call 0x40284c"
+   ]
+  },
+  {
+   "site": "0x4592bd",
+   "bytes": "e88a95faff",
+   "target": "0x40284c",
+   "module": "TBattleOver",
+   "context": [
+    "4592b1 std "
+   ]
+  },
+  {
+   "site": "0x45951c",
+   "bytes": "e82b93faff",
+   "target": "0x40284c",
+   "module": "TBattleOver",
+   "context": [
+    "459513 add byte ptr [edi], al",
+    "459515 jle 0x45956e",
+    "459517 mov eax, 5",
+    "45951c call 0x40284c"
+   ]
+  }
+ ],
+ "displaced": [
+  {
+   "name": "shot",
+   "va": "0x43910c",
+   "bytes": "5356575583c4ec",
+   "instructions": [
+    "43910c push ebx",
+    "43910d push esi",
+    "43910e push edi",
+    "43910f push ebp",
+    "439110 add esp, -0x14"
+   ]
+  },
+  {
+   "name": "melee",
+   "va": "0x4393ec",
+   "bytes": "5356575583c4d0",
+   "instructions": [
+    "4393ec push ebx",
+    "4393ed push esi",
+    "4393ee push edi",
+    "4393ef push ebp",
+    "4393f0 add esp, -0x30"
+   ]
+  },
+  {
+   "name": "rout",
+   "va": "0x438fb0",
+   "bytes": "5356575551",
+   "instructions": [
+    "438fb0 push ebx",
+    "438fb1 push esi",
+    "438fb2 push edi",
+    "438fb3 push ebp",
+    "438fb4 push ecx"
+   ]
+  },
+  {
+   "name": "battle_over_clear",
+   "va": "0x437b8c",
+   "bytes": "c6057c0b4a0000",
+   "instructions": [
+    "437b8c mov byte ptr [0x4a0b7c], 0"
+   ]
+  },
+  {
+   "name": "after_battle_clear",
+   "va": "0x45c21f",
+   "bytes": "c6057c0b4a0000",
+   "instructions": [
+    "45c21f mov byte ptr [0x4a0b7c], 0"
+   ]
+  },
+  {
+   "name": "reseed_battlepols",
+   "va": "0x457907",
+   "bytes": "a330e04500",
+   "instructions": [
+    "457907 mov dword ptr [0x45e030], eax"
+   ]
+  },
+  {
+   "name": "reseed_450c7b",
+   "va": "0x450c7b",
+   "bytes": "891530e04500",
+   "instructions": [
+    "450c7b mov dword ptr [0x45e030], edx"
+   ]
+  }
+ ],
+ "function_starts_used": {
+  "shot": "0x43910c",
+  "melee": "0x4393ec",
+  "rout": "0x438fb0",
+  "battle_over_clear": "0x437b8c",
+  "after_battle_clear": "0x45c208",
+  "reseed_450c7b": "0x450c68",
+  "reseed_battlepols": "0x4577ec"
+ },
+ "short_branch_into_displaced_bytes": [],
+ "pass": true
+}

@@ -1,10 +1,14 @@
 # Battle-lab probe (not a shipped patch): fast + autosave, plus a fixed battle
 # seed and a snapshot save at every half-round of a tactical battle.
-#   py lab.py [seed]      -> "IC2 lab.exe" next to the original
+#   py lab.py [seed]          -> "IC2 lab.exe" next to the original
+#   py lab.py [seed] --hook   -> "IC2 lab hook.exe": the same plus the exchange hook (patches/battle_hook.py, battles plan B11): every Random
+#                                call of the battle module is logged to an in-memory buffer; the game's behaviour is not changed
 import struct, sys
 import patch_exe as P
 
-SEED = int(sys.argv[1]) if len(sys.argv) > 1 else 12345
+HOOK = "--hook" in sys.argv
+_ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+SEED = int(_ARGS[0]) if _ARGS else 12345
 RAND_SEED = 0x45E030                    # System.RandSeed
 BATTLE_START_CALL = 0x45C1AE            # TPremierForm.StartBattle: call TBattleMap.StartBattle
 TBATTLE_START = 0x436FB4                # also the resume path when a battle save is loaded
@@ -40,4 +44,10 @@ def battle_lab(b):
         P.patch(b, site, b"\xE8" + P.rel32(site, ROUND_END), b"\xE8" + P.rel32(site, SNAP_CAVE))
 
 
-P.build("IC2 lab.exe", P.async_sound, P.no_delay, P.autosave, battle_lab)
+def battle_hook(b):
+    import battle_hook as H                          # patches/battle_hook.py, next to this script
+    info = H.apply(b, SEED, sys.modules[__name__])
+    print("hook caves:", {k: hex(v) for k, v in info["caves"].items()})
+
+
+P.build("IC2 lab hook.exe" if HOOK else "IC2 lab.exe", P.async_sound, P.no_delay, P.autosave, battle_lab, *([battle_hook] if HOOK else []))

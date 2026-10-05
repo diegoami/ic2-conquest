@@ -1,0 +1,30 @@
+{
+ "battles": 322,
+ "pass": 321,
+ "fail": [
+  "hi-hi-one_s1_r1_hook"
+ ],
+ "overflow_set": 0,
+ "chain_breaks_total": 0,
+ "records_total": 53212,
+ "records_max": 758,
+ "capacity": 65536,
+ "end_pin": {
+  "none": 1,
+  "reseed record": 79,
+  "memory read": 242
+ },
+ "flag_clear_sites": {
+  "0x437b8c": 322
+ },
+ "reseed_sites": {
+  "": 243,
+  "0x457907": 79
+ },
+ "exe_sha12": {
+  "1159bb9cf82d": 1,
+  "d805d28fa1c9": 107,
+  "d6fce697abd2": 107,
+  "feb144005897": 107
+ }
+}

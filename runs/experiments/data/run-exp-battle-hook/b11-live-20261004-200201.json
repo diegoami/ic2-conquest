@@ -1,0 +1,43 @@
+{
+ "cell": "ar-ar-one",
+ "seed": 1,
+ "exe": "Imperial Conquest 2 lab hook s1.exe",
+ "flag_before_attack": 0,
+ "open_battle": {
+  "header_words_memory": {
+   "attacker_army": 0,
+   "defender_army": 10,
+   "x2": 0,
+   "half_round": 2,
+   "y1": 0,
+   "flag": 1
+  },
+  "seed_memory": 870078620,
+  "records": 5,
+  "last_seed_after": 870078620,
+  "seed_memory_equals_last_record_seed_after": true,
+  "kinds": {
+   "random": 3,
+   "start": 1,
+   "marker": 1
+  }
+ },
+ "save_as_block_equals_memory": true,
+ "save_as_header": {
+  "attacker_army": 0,
+  "defender_army": 10,
+  "x2": 0,
+  "y1": 0,
+  "half_round": 2
+ },
+ "memory_header_parsed": {
+  "attacker_army": 0,
+  "defender_army": 10,
+  "x2": 0,
+  "y1": 0,
+  "half_round": 2
+ },
+ "pids_killed": [
+  3588556
+ ]
+}

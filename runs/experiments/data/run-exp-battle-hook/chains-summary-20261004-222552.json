@@ -1,0 +1,27 @@
+{
+ "battles": 318,
+ "pass": 318,
+ "fail": [],
+ "overflow_set": 0,
+ "reentered_set": 0,
+ "chain_breaks_total": 0,
+ "records_total": 52787,
+ "records_max": 758,
+ "capacity": 65536,
+ "end_pin": {
+  "memory read": 241,
+  "reseed record": 77
+ },
+ "flag_clear_sites": {
+  "0x437b8c": 318
+ },
+ "reseed_sites": {
+  "": 241,
+  "0x457907": 77
+ },
+ "exe_sha12": {
+  "58c683daf7dd": 106,
+  "ca1cbf104afc": 106,
+  "3ef20b4c807c": 106
+ }
+}

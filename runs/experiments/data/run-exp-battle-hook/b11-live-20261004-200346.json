@@ -1,0 +1,90 @@
+{
+ "cell": "ar-ar-one",
+ "seed": 1,
+ "exe": "Imperial Conquest 2 lab hook s1.exe",
+ "flag_before_attack": 0,
+ "open_battle": {
+  "header_words_memory": {
+   "attacker_army": 0,
+   "defender_army": 10,
+   "x2": 0,
+   "half_round": 2,
+   "y1": 0,
+   "flag": 1
+  },
+  "seed_memory": 870078620,
+  "records": 5,
+  "last_seed_after": 870078620,
+  "seed_memory_equals_last_record_seed_after": true,
+  "kinds": {
+   "random": 3,
+   "start": 1,
+   "marker": 1
+  }
+ },
+ "save_as_block_equals_memory": true,
+ "save_as_header": {
+  "attacker_army": 0,
+  "defender_army": 10,
+  "x2": 0,
+  "y1": 0,
+  "half_round": 2
+ },
+ "memory_header_parsed": {
+  "attacker_army": 0,
+  "defender_army": 10,
+  "x2": 0,
+  "y1": 0,
+  "half_round": 2
+ },
+ "flag_timeline": [
+  {
+   "t": 0.01,
+   "flag": 1,
+   "battle_ended_window": false,
+   "hook_index": 5
+  },
+  {
+   "t": 3.16,
+   "flag": 0,
+   "battle_ended_window": false,
+   "hook_index": 174
+  },
+  {
+   "t": 7.24,
+   "flag": 0,
+   "battle_ended_window": true,
+   "hook_index": 174
+  },
+  {
+   "t": 20.34,
+   "flag": 0,
+   "battle_ended_window": false,
+   "hook_index": 177
+  }
+ ],
+ "flag_after_play_battle": 0,
+ "flag_clear_records": [
+  [
+   173,
+   "0x437b8c",
+   16
+  ]
+ ],
+ "reseed_records": [
+  [
+   176,
+   "0x457907"
+  ]
+ ],
+ "dialogs": [
+  "Offer of peace"
+ ],
+ "records_total": 177,
+ "flag_seen_1_in_battle": true,
+ "flag_0_when_battle_ended_window_first_seen": 0,
+ "pass": true,
+ "pids_killed": [
+  3603064
+ ]
+}
