@@ -1,0 +1,19 @@
+Feature inventory coverage check (battle excluded)
+inventory rows: 128  ([confirmed] 87, [derived] 41)
+
+kind          total  mapped  excluded UNACCOUNTED
+form             29      27         2           0
+control         908     659       249           0
+toolbar          65      57         8           0
+menu             73      73         0           0
+help_cnt         89      73        16           0
+help_topic       71      64         7           0
+msgfn            83      74         9           0
+string            2       2         0           0
+news             23      23         0           0
+ALL            1343    1052       291           0
+
+help_cnt entries whose title is not a decoded topic title (information only): 0 []
+rows referenced by no entry: ['E07', 'E08', 'E10', 'L13', 'L14', 'M05', 'UM04']
+rule problems: none
+tag/evidence violations: none

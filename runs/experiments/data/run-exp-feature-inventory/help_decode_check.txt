@@ -1,0 +1,4 @@
+records: 250 compressed: 247 exact length: 66 not exact: 181 uncompressed: 3
+decoded minus declared length, not-exact records: min -230 max -2 mean -13.2
+Reading: the decoder never adds text; in most paragraphs it loses a few characters (a phrase or a word after some control codes, e.g. "If" shows as "f").
+The text is readable, not byte-exact. The inventory uses help statements only as cited evidence (digits and nouns survive) and the WinHelp viewer confirms the first topic (FI_b1_06_help_topics.png).
