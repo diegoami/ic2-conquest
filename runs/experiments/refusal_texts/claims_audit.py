@@ -241,7 +241,12 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
             check('%s: after vs control: finding %r vs recomputed %r' % (pid, r['after vs control [recomputed]'], d), r['after vs control [recomputed]'] == d)
             shown = ' / '.join('%s: %s' % (b['title'], (RE[b['png']]['psm6'] if b['png'] in RE and RE[b['png']]['psm6'] else (b.get('text_crop') or b.get('text', '')))) for b in q['boxes'])
             check('%s: the OCR reading in the finding is the recorded one' % pid, r['box title: OCR of the message'] == shown, '%r vs %r' % (r['box title: OCR of the message'], shown))
-            if d != 'identical': check('%s: every differing byte is in the nation record UI block' % pid, SF.ui_only(ctl, aft), d)
+            facts2 = '; '.join(SF.fact(aft, sp) for sp in __import__('play_meta').W.get(pid, []))
+            check('%s: state facts in the after save: finding %r vs recomputed %r' % (pid, r['state in the after save [recomputed]'], facts2), r['state in the after save [recomputed]'] == facts2)
+            cited = [c for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', ''))]
+            dropped = [c for c in cited if c['table'] == 'catalogue' and c['effect [derived]'].startswith('dropped')]
+            clamped = [c for c in cited if c['table'] == 'catalogue' and c['effect [derived]'].startswith('clamped')]
+            if d != 'identical' and dropped and not clamped: check('%s: the row says the order is dropped, so every differing byte must be in the nation record UI block' % pid, SF.ui_only(ctl, aft), d)
         else: check('%s: saves present in %s' % (pid, art), False, 'fetch them with fetch_archive.py')
         if q['staged']:
             stg = [l.split('\t') for l in open(data + 'staging_log.tsv')]

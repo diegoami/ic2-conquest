@@ -96,11 +96,12 @@ def render_more(data=DATA, art=ART):
         ctl = art + 'saves/' + q['control']; aft = art + 'saves/' + q['after']
         facts = '; '.join(SF.fact(ctl, sp) for sp in play_meta.W.get(pid, [])) if os.path.exists(ctl) else '(save not fetched)'
         d = SF.diff_text(ctl, aft) if os.path.exists(ctl) and os.path.exists(aft) else '?'
+        facts2 = '; '.join(SF.fact(aft, sp) for sp in play_meta.W.get(pid, [])) if os.path.exists(aft) else '(save not fetched)'
         bxs = ' / '.join('%s: %s' % (b['title'], shown_text(b, RE)) for b in q['boxes'])
         staged = ('STAGED %s' % json.dumps(q['ops'])) if q['staged'] else 'fixture, unedited'
         if q.get('pre'): staged += '; plus a normal order before the control save (%s)' % q['note']
-        prow.append([pid, ','.join(rowsof.get(pid, [])), q['src'], staged.replace('|', '/'), facts, bxs, d, ' '.join('`%s`' % x for x in [q['boxes'][-1]['png'], q['control'], q['after']])])
-    plt = md_table('plays', ['play', 'rows', 'source save', 'edit', 'state in the control save [recomputed]', 'box title: OCR of the message', 'after vs control [recomputed]', 'files'], prow)
+        prow.append([pid, ','.join(rowsof.get(pid, [])), q['src'], staged.replace('|', '/'), facts, bxs, facts2, d, ' '.join('`%s`' % x for x in [q['boxes'][-1]['png'], q['control'], q['after']])])
+    plt = md_table('plays', ['play', 'rows', 'source save', 'edit', 'state in the control save [recomputed]', 'box title: OCR of the message', 'state in the after save [recomputed]', 'after vs control [recomputed]', 'files'], prow)
     return ordt, plt
 
 if __name__ == '__main__':

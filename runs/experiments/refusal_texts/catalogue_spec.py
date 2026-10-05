@@ -20,7 +20,7 @@ row(47042, 'R01', 'refusal', 'army order: Split army (UA04)', '1 of 1',
 row(46978, 'R02', 'refusal', 'army order: Join armies (UA05)', '1 of 3',
     'the army has a partner (the last own army one tile away, FUN_00449d64 %s; no partner = no box) and one of the two is aboard a fleet: %s'
     % (C(48612, 'if ((sVar4 != param_1) && ((&DAT_0047c1f0)[param_1 * 0x148] == *psVar2)) {'), C(46976, '(&DAT_0047c1f4)[(short)uStack_10 * 0x148] == -1) ||')),
-    'dropped: nothing merges', plays=['A01'])
+    'dropped: nothing merges', plays=['A01b'])
 row(47011, 'R03', 'refusal', 'army order: Join armies (UA05)', '2 of 3',
     'not aboard, and the two armies together hold 21 or more units (the sum of FUN_0044a66c, the index of the last occupied slot + 1, fails %s)' % C(46984, '(int)(short)iVar2 + (int)(short)iVar3 < 0x15'),
     'dropped: nothing merges; shown BEFORE the troop test, so when both limits are exceeded this line appears', plays=['UA05a', 'UA05c'])

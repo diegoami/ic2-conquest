@@ -174,3 +174,5 @@ SC['S02'] = dict(src=TB, act=lambda g: army_button(g, 0, 'disband'), note='Disba
 SC['BF01'] = dict(src=GF('S10_Dacia_AUTO0720.SAV'), act=lambda g: g.tool('build_fleet', pause=1.5),
                   note='Build fleet as Dacia (no coastal city); the save is S10_Dacia_AUTO0720.SAV of release run-exp-civ-sweep (a natural new-game autosave), used unedited',
                   fixture_note='from release run-exp-civ-sweep')
+SC['A01b'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1)], act=lambda g: army_button(g, 12, 'join'),
+                  note='Join armies from army 12 (moves staged to 3) next to army 0, aboard fleet 2; army 13, the other own army next to army 12 and the partner the game would pick first (the last in index order), is staged to nation 1 so that army 0 is the partner')
