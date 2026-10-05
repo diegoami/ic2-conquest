@@ -34,7 +34,7 @@ def last_tile(d, x0, y0):
 ar = lambda d, i: next((a for a in d['armies'] if a['id'] == i), None)
 pairs = [l.split('\t') for l in open(DATA + 'save_pairs.tsv').read().split('\n')[1:] if l]            # which saves belong to which run (tracked)
 runs = [(p[1][:-4], p[2][:-4], p[3][:-4]) for p in pairs]
-C('three runs listed (first, calibrated, fully calibrated): %s' % [p[0] for p in pairs], len(runs) == 3 and all(os.path.exists(art + 'saves/' + n + '.SAV') for r in runs for n in r))
+C('four runs listed (first, calibrated, fully calibrated, verified steps): %s' % [p[0] for p in pairs], len(runs) == 4 and all(os.path.exists(art + 'saves/' + n + '.SAV') for r in runs for n in r))
 for (n0, n1, n2), p in zip(runs, pairs):
     n0 = p[1][:-4]
     s0, s1, s2 = (S.load(art + 'saves/' + n + '.SAV') for n in (n0, n1, n2))

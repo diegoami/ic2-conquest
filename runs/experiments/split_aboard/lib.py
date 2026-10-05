@@ -175,3 +175,46 @@ def split_army_via_menu(g, tries=3):
             g.click(hit[0][1], hit[0][2], pause=2.0)
             if g.find_windows('^Split army$'): return True
     raise _drv.DriverError('Split army did not open the Split army dialog after %d attempts' % tries)
+
+def embark_verified(g, army, fleet, tries=3):
+    """Embark `army` on `fleet` (Game.embark) and verify it in memory: the fleet's carried-army field is the army's index. The click is repeated only
+    while nothing changed, at most twice (3 attempts in all); DriverError otherwise. Returns the popup texts seen."""
+    texts = []
+    for attempt in range(tries):
+        if g.fleet_state(fleet)['army'] == army: return texts
+        texts += g.embark(army, fleet) or []
+        log('split', 'embark attempt %d: fleet %d carries %d, army %d embarked %s' % (attempt + 1, fleet, g.fleet_state(fleet)['army'], army, g.army_state(army)['embarked']))
+        if g.fleet_state(fleet)['army'] == army: return texts
+    raise _drv.DriverError('embark of army %d on fleet %d not seen in memory after %d attempts' % (army, fleet, tries))
+
+def _region_hash(g, c):
+    """SHA-256 of the raw pixels of a control's rectangle on a fresh screenshot (to see whether a click changed it)."""
+    full = os.path.join(TMP, 'ic2_split_screen.png')
+    _orig_sh('import', '-window', 'root', full)
+    px = subprocess.run(['convert', full, '-crop', '%dx%d+%d+%d' % (c['w'], c['h'], c['x'], c['y']), '+repage', 'rgb:-'], capture_output=True, check=True).stdout
+    return hashlib.sha256(px).hexdigest()
+
+def transfer_first_unit(g, cs, tries=3):
+    """In the open Split army dialog, select the first unit of the left list and press Transfer, each step verified on the screen: the selection by a change
+    of the left list's pixels (the highlight), the transfer by a change of both lists and OCR text appearing in the right (new army's) list. Each click is
+    repeated at most twice; DriverError otherwise. Returns the OCR words of the right list."""
+    left = g.control(cs, cls='TListBox', index=0); right = g.control(cs, cls='TListBox', index=1)
+    transfer = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[0]
+    words = lambda c: [w[0] for w in _screen_words(g, (c['x'], c['y'], c['w'], c['h']))]
+    r0 = words(right)
+    if r0: raise _drv.DriverError('the right list is not empty before the transfer: %s' % r0)
+    for attempt in range(tries):
+        h0 = _region_hash(g, left)
+        g.click(left['x'] + left['w'] // 2, left['y'] + 12, pause=0.4)
+        if _region_hash(g, left) != h0: break
+        log('split', 'unit selection attempt %d: the left list did not change' % (attempt + 1))
+    else: raise _drv.DriverError('selecting the first unit did not change the left list after %d attempts' % tries)
+    log('split', 'unit selected (left list changed, attempt %d)' % (attempt + 1))
+    for attempt in range(tries):
+        hl, hr = _region_hash(g, left), _region_hash(g, right)
+        g.click_control(transfer, pause=0.6)
+        r1 = words(right)
+        if r1 and _region_hash(g, right) != hr and _region_hash(g, left) != hl:
+            log('split', 'transfer verified (attempt %d): right list now reads %s' % (attempt + 1, r1)); return r1
+        log('split', 'transfer attempt %d: no change seen (right list %s)' % (attempt + 1, r1))
+    raise _drv.DriverError('Transfer did not move a unit to the right list after %d attempts' % tries)

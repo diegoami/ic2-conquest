@@ -1,6 +1,6 @@
 """Play: split an army that is aboard a fleet. Fixture copy: saves/fleet-port-antium-0734.SAV (Rome; fleet 2, 30 ships, at (101,46);
-army 0, 3 units, 10,700 troops at (101,45)). Steps: embark army 0 on fleet 2 (select the army, click the fleet); save (SA_01); select the FLEET; Unit map >
-Army > Split army through split_army_via_menu (calibrated by OCR of the open menu, each transition verified, at most two retries; with a fleet selected TUnitMap_SplitArmy takes the fleet's carried army); transfer the first unit; OK; save (SA_02)."""
+army 0, 3 units, 10,700 troops at (101,45)). Steps: embark army 0 on fleet 2 (select the army, click the fleet; verified in memory, at most two retries); save (SA_01); select the FLEET; Unit map >
+Army > Split army through split_army_via_menu (calibrated by OCR of the open menu, each transition verified, at most two retries; with a fleet selected TUnitMap_SplitArmy takes the fleet's carried army); transfer the first unit (the selection and the transfer each verified on the screen, at most two retries); OK; save (SA_02)."""
 import sys, os; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 D = sys.modules['harness.driver']
@@ -14,7 +14,7 @@ def armies(tag):
     log('split', '%s: armies %s fleet2 %s' % (tag, out, g.fleet_state(2)))
 armies('SA_00_start')
 keep_save(g, 'SA_00_start.SAV')
-log('split', 'embark: %s' % g.embark(0, 2))
+log('split', 'embark: %s' % embark_verified(g, 0, 2))
 armies('SA_01_aboard')
 keep_save(g, 'SA_01_aboard_before_split.SAV')
 g.select_fleet(2)
@@ -23,10 +23,7 @@ split_army_via_menu(g)
 log('split', 'windows after Split army: %s' % [w[1] for w in g.find_windows('.') if w[4] > 1])
 snap(g, 'SA_split_dialog_open.png')
 cs = g.controls('Split army')
-left = g.control(cs, cls='TListBox', index=0)
-transfer = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[0]
-g.click(left['x'] + left['w'] // 2, left['y'] + 12, pause=0.4)
-g.click_control(transfer, pause=0.6)
+transfer_first_unit(g, cs)
 snap(g, 'SA_split_dialog_transferred.png')
 g._ok_until_closed('Split army', cs)
 log('split', 'popups: %s' % g.dismiss_popups())
