@@ -35,6 +35,21 @@ def edit_save(src, dst, ops, tag):
             for f in op[2]:
                 allowed.append((SAV.CITY_OFF + op[1] * SAV.CITY_LEN + STAGE.CITY_FIELDS[f], 2, 'city %d %s' % (op[1], f)))
             STAGE.apply(b, [op])
+        elif k == 'own_all':                    # ('own_all', n): every city's owner = n, n's list = all 334 cities, every other nation: empty list, 0 cities, unity 0, capital 0xFFFF
+            n = op[1]
+            for c in range(SAV.CITY_N):
+                o = SAV.CITY_OFF + c * SAV.CITY_LEN + STAGE.CITY_FIELDS['owner']; allowed.append((o, 2, 'city %d owner' % c)); struct.pack_into('<h', b, o, n)
+            for m in range(16):
+                base = nation_base(b, m)
+                if m == n:
+                    allowed.append((base + 0x48, 668, 'nation %d city list' % m)); allowed.append((base + 0x446, 2, 'nation %d count' % m))
+                    for i in range(SAV.CITY_N): struct.pack_into('<H', b, base + 0x48 + 2 * i, i)
+                    struct.pack_into('<h', b, base + 0x446, SAV.CITY_N)
+                else:
+                    allowed += [(base + 0x48, 2, 'nation %d list head' % m), (base + 0x446, 2, 'nation %d count' % m), (base + 0x440, 2, 'nation %d unity' % m),
+                                (base + 0x444, 2, 'nation %d capital' % m)]
+                    struct.pack_into('<H', b, base + 0x48, 0xFFFF); struct.pack_into('<h', b, base + 0x446, 0)
+                    struct.pack_into('<h', b, base + 0x440, 0); struct.pack_into('<H', b, base + 0x444, 0xFFFF)
         elif k == 'calendar':
             off, ln = CAL_OFF[op[1]]; o = tail_off(b) + off
             allowed.append((o, ln, 'calendar ' + op[1])); struct.pack_into('<h', b, o, op[2])

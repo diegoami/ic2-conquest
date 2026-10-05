@@ -19,6 +19,8 @@ SC = {
     'unity':       [('unity', 0, 100)],
     'y250':        [('calendar', 'year', 251), ('calendar', 'season', 3), ('calendar', 'week', 11)],
     'victory':     [('ncities', 0, 334)],                      # the city-count word only: the cities' owners and lists are untouched
+    'victory_full': [('own_all', 0)],                          # every city owned by Rome, Rome's list = all 334, the other 15 nations emptied (unity 0)
+    'victory_y250': [('ncities', 0, 334), ('calendar', 'year', 251), ('calendar', 'season', 3), ('calendar', 'week', 11)],
     'unity_debt':  [('unity', 0, 100), ('treasury', 0, -30000)],
     'y250_unity':  [('calendar', 'year', 251), ('calendar', 'season', 3), ('calendar', 'week', 11), ('unity', 0, 100)],
     'abdicate':    [],
@@ -42,6 +44,7 @@ for op in SC:
     if op[0] == 'treasury': assert rome['treasury'] == op[2], rome
     if op[0] == 'unity': assert rome['unity'] == op[2], rome
     if op[0] == 'ncities': assert rome['cities'] == op[2], rome
+    if op[0] == 'own_all': assert rome['cities'] == 334, rome
     if op[0] == 'calendar': assert before['calendar'][{'year': 'year_bc'}.get(op[1], op[1])] == op[2], before['calendar']
 snap(g, '%s_00_loaded.png' % tag)
 
