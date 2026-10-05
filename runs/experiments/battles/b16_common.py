@@ -204,6 +204,10 @@ class PeaceGame(D.Game):
         return out
 
     def start(self):
+        # cleanup signals only through pidfds (never a bare pid), so a system without pidfd support could leave the game running: refuse to start there
+        # (PR #45, the player's decision 2026-10-05)
+        if not hasattr(os, "pidfd_open") or not hasattr(signal, "pidfd_send_signal"):
+            raise D.DriverError("this system has no pidfd support (os.pidfd_open / signal.pidfd_send_signal): refusing to start, because cleanup could not stop the game safely")
         busy = occupants(proc=self.PROC)
         if busy:
             raise D.DriverError("display %s or prefix %s already has game/wine processes %s: refusing to start (they are not ours and are not adopted or killed)"

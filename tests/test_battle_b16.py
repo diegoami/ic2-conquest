@@ -292,6 +292,29 @@ def test_without_a_pidfd_nothing_is_signalled_by_a_bare_pid_except_our_unreaped_
     assert (101, "no pidfd: not signalled (a bare pid may have been recycled)") in f.g.skipped, f.g.skipped
 
 
+def test_start_refuses_without_pidfd_support():
+    """The player's decision on PR #45: without pidfd support the runner refuses to start (cleanup could not stop the game safely), launching nothing."""
+    import b16_common as BC
+    g = BC.PeaceGame(exe="x")
+    launched = []
+    old_popen, had = BC.subprocess.Popen, hasattr(BC.os, "pidfd_open")
+    saved = getattr(BC.os, "pidfd_open", None)
+    BC.subprocess.Popen = lambda *a, **k: launched.append(a)
+    if had:
+        del BC.os.pidfd_open
+    try:
+        try:
+            g.start()
+            raise AssertionError("start() did not refuse")
+        except BC.D.DriverError as e:
+            assert "no pidfd support" in str(e), e
+        assert launched == [], launched
+    finally:
+        BC.subprocess.Popen = old_popen
+        if had:
+            BC.os.pidfd_open = saved
+
+
 def test_stop_signals_only_the_handles_from_discovery():
     """Narrow review R2: a child that appears after discovery is neither adopted nor signalled by stop()."""
     root = _fake_proc({100: (1, "wine", MINE)})
