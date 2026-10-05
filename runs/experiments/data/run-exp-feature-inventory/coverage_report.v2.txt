@@ -1,0 +1,21 @@
+Feature inventory coverage check (battle excluded)
+inventory rows: 146  ([confirmed] 87, [derived] 59)
+
+kind          total  mapped  excluded UNACCOUNTED
+form             29      27         2           0
+control         908     659       249           0
+toolbar          65      57         8           0
+menu             73      73         0           0
+help_cnt         89      73        16           0
+help_topic       71      64         7           0
+msgfn            83      74         9           0
+string            2       2         0           0
+rule_head        37      33         4           0
+mechanic         22      21         1           0
+report           92      70        22           0
+news             23      23         0           0
+ALL            1494    1176       318           0
+
+rows referenced by no entry (their evidence is a screenshot, a save or a report, not an extracted entry): ['E08', 'L13', 'L14', 'M05']
+rule problems: none
+tag/evidence violations: ['M04: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', 'S02c: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "A09: coverage.md row 'Area map' not found with status ✅", "UA01: coverage.md row 'Supply army' not found with status ✅", 'UA08: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "UM01: coverage.md row 'Unit map' not found with status ✅", 'UM03: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', 'UM06: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', 'MM01: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "MM05: coverage.md row 'Attack an army (field battle)' not found with status ✅", 'D03: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', 'D04: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "D09: coverage.md row 'Accept a post-battle peace (TBattlePols)' not found with status ✅", 'D11: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "E03: coverage.md row 'Quarterly billing and taxes' not found with status ✅", "E04: coverage.md row 'Supply consumption and seasonal rates' not found with status ✅", 'E06: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "E11: coverage.md row 'City capture' not found with status ✅", "E12: coverage.md row 'Auto-resupply next to an own city' not found with status ✅", "E13: coverage.md row 'Rebellion, rebirth' not found with status ✅", "E14: coverage.md row 'City capture' not found with status ✅", "E15: coverage.md row 'Mercenary hire, pay, desertion' not found with status ✅", "E19: coverage.md row 'Winter attrition of city stocks' not found with status ✅", "E22: coverage.md row 'AI declares war on Rome' not found with status ✅", "E27: coverage.md row 'Trade income' not found with status ✅", "E29: coverage.md row 'Morale from supply' not found with status ✅", 'L03: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', 'L07: [confirmed] without a manifest screenshot, a named save or a ✅ coverage.md row (a report or log citation is not confirmation)', "V03: coverage.md row 'Conquest' not found with status ✅", "duplicate screenshot hash 0f71581feb... cited as different screens: ['FI_b2_03_hint_on_again.png', 'FI_b2_03_hint_on_before.png']"]

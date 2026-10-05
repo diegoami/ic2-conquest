@@ -7,7 +7,14 @@ ROOT = '/home/diego/projects/wt-inventory'
 sys.path.insert(0, ROOT)
 sys.path.insert(0, ROOT + '/runs/experiments/feature_inventory')
 from common import new_path
-from harness.driver import Game, G, sh
+import harness.driver as _drv
+from harness.driver import Game, G
+_orig_sh = _drv.sh
+def sh(*args, **kw):
+    """driver.sh, but a screenshot (`import ... <file>`) goes to the next free versioned name: EXPLORE runs never overwrite (rule 6)."""
+    if args and args[0] == 'import': args = args[:-1] + (new_path(args[-1]),)
+    return _orig_sh(*args, **kw)
+_drv.sh = sh
 ART = ROOT + '/artifacts/run-exp-feature-inventory/'
 LOGD = ROOT + '/runs/experiments/data/run-exp-feature-inventory/explore/'
 os.makedirs(ART, exist_ok=True); os.makedirs(LOGD, exist_ok=True)
