@@ -1,0 +1,80 @@
+# claims audit: 79 checks, 5 mismatches
+extract	OK	code_extract_q1_purse.txt: 1476 lines, all equal to the source line
+Q1	MISMATCH	line 43118 contains '1000 - (short)'
+Q1	OK	line 43125 contains 'DAT_00474aa8'
+Q1	OK	line 43134 contains 'DAT_0047c1f8'
+Q1	MISMATCH	line 43038 contains '0x28c) * 0x148]'
+Q1	OK	line 43041 contains '* 5)'
+Q1	OK	line 43080 contains 'DAT_0047c1f8'
+Q1	OK	line 44056 contains '1000 - *(short *)(param_1 + 600)'
+Q1	OK	line 44631 contains 'DAT_0047c1f8'
+Q1	OK	line 46992 contains 'DAT_0047c1f8'
+Q1	OK	line 46997 contains 'DAT_0047c1f2'
+Q1	OK	line 47110 contains 'DAT_00474aa8'
+Q1	OK	line 48740 contains 'DAT_0047c1f8'
+Q1	OK	line 48740 contains '= 0'
+Q1	OK	line 49648 contains 'DAT_0047c1f8'
+Q1	OK	line 49687 contains 'DAT_0047c1f8'
+Q1	OK	line 53092 contains '1000 <'
+Q1	OK	line 53092 contains 'DAT_0047c1f8'
+Q1	OK	line 53096 contains '= 1000'
+Q1	OK	line 53098 contains '< 500'
+Q1	OK	line 53100 contains '+ 500'
+Q1	OK	line 53106 contains '/ 5'
+Q1	OK	line 53201 contains '/ 3'
+Q1	OK	line 53981 contains 'psVar5[4]'
+Q1	OK	line 54765 contains 'psVar11[4]'
+Q1	OK	line 54759 contains 'psVar11[4] < 1'
+Q1	OK	line 54772 contains 'psVar11[4]'
+Q1	OK	line 57618 contains 'DAT_0047c1f8'
+Q1	OK	line 43633 contains 'DAT_0047c1f8'
+Q1	OK	line 52246 contains 'FUN_0044f6d8'
+Q1	OK	line 51655 contains 'FUN_0044f6d8'
+Q1	OK	line 46384 contains '0x14'
+Q1	OK	line 46384 contains '0x15b'
+Q1	OK	line 46385 contains 'TUnitMap_CheckForMove'
+Q1	OK	line 46427 contains 'TUnitMap_SelectUnit'
+Q1	OK	start: treasury 2101, army 0 purse 100 sup 170 moves 8, army 1 purse 100
+Q1	OK	after the move: army 0 at (100,42), moves 0, purse 100, supplies 170 (no refill), treasury 2101
+Q1	OK	army 0 at (100,42) is adjacent to own cities with stock: ['Caere', 'Rome']
+Q1	OK	supply 11 x 100: army 1 purse 1000, treasury 1201 (-900)
+Q1	OK	split: partner army 15 at (121,54), purse 0, moves 0, supplies 0, 5500 troops
+Q1	OK	partner supplied: army 15 purse 1000, treasury 201 (-1000)
+Q1	OK	join: army 1 purse 2000 = 1000 + 1000, troops 25868, 7 units, moves 0, army 15 gone, treasury 201
+Q1	OK	over-cap trim: army 1 purse 1000, treasury 1201 (+1000)
+Q2	OK	00_tax10 Taxes: recomputed 252, read from the screenshot 252
+Q2	OK	00_tax10 Tribute: recomputed 632, read from the screenshot 632
+Q2	OK	00_tax10 Trade: recomputed 29, read from the screenshot 29
+Q2	OK	00_tax10 Administration: recomputed 303, read from the screenshot 303
+Q2	OK	00_tax10 Total revenue: recomputed 913, read from the screenshot 913
+Q2	OK	00_tax10 tax rate in the save is 10
+Q2	OK	01_tax20 Taxes: recomputed 505, read from the screenshot 505
+Q2	OK	01_tax20 Tribute: recomputed 632, read from the screenshot 632
+Q2	OK	01_tax20 Trade: recomputed 29, read from the screenshot 29
+Q2	OK	01_tax20 Administration: recomputed 303, read from the screenshot 303
+Q2	OK	01_tax20 Total revenue: recomputed 1166, read from the screenshot 1166
+Q2	OK	01_tax20 tax rate in the save is 20
+Q2	OK	taxBase 2528 -> Tribute 632 in both sheets, tax-independent
+Q2	OK	line 55439 contains '474abc'
+Q2	OK	line 55440 contains '474aba'
+Q2	OK	line 55445 contains '0x44c'
+Q2	OK	line 55449 contains '>> 2'
+Q2	OK	line 55456 contains '>> 2'
+Q2	OK	line 55457 contains 'FUN_004499ec'
+Q2	OK	line 55466 contains '/ 20000'
+Q2	MISMATCH	line 54874 contains '0x44c'
+Q2	OK	line 54878 contains 'FUN_004499ec'
+Q2	OK	line 48430 contains '/ 0xc'
+Q3	OK	start: treasury 1880, mobilisation 32, 5 queued units (the last HI 3200)
+Q3	OK	disband HI 3200: treasury unchanged 1880, queue 4 units, mobilisation 32 -> 30 = 32 - 1 - 3200*1000//2577000
+Q3	OK	disband HI 4000: treasury unchanged 1880, queue 3 units, mobilisation 30 -> 28 = 30 - 1 - 4000*1000//2577000 (floor; rounding would give 27)
+Q3	OK	recruiting HI 3200 cost 3200//200 * 20 = 320 = 2200 - 1880 (fixtures run0-start and recruit-hi3200)
+Q3	MISMATCH	line 56157 contains '1000'
+Q3	OK	line 56162 contains '1000'
+Q3	OK	line 56164 contains 'FUN_00448fd8'
+Q3	OK	line 56167 contains 'FUN_0044a610'
+Q3	MISMATCH	line 49006 contains '0x2ec'
+Q3	OK	line 55996 contains '0x438'
+Q3	OK	line 55999 contains '0x23e'
+Q3	OK	line 56000 contains '* 1000'
+Q3	OK	line 56001 contains '0x442'
