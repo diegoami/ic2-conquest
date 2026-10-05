@@ -1,4 +1,4 @@
-"""[O]-citation sweep (PR #46 R5/R-D): every screenshot cited as observation in the findings must, in the audit's row table (claims_audit2_rows*), contain the row
+"""[O]-citation sweep (PR #46 R5/R-D): every screenshot cited as observation in the findings must, in the audit's row table (claims_audit3_rows*), contain the row
 the claim is about, matched exactly (status OK, OK-ordinal or CORRECTED, never a clipped row). Two lists: ROW_CHECK (one regex per table row id, applied to the
 capture cited in findings_rows.py) and PROSE (the citations in the findings' prose and band notes). Also: every *.png token of the findings must be in captures.tsv or in
 the explicit NOT_IN_CAPTURES list (labelled in the text). Exit 1 on any failure.   python3 citation_check.py [--write]"""
@@ -6,7 +6,7 @@ import sys, os, re, csv, glob
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from iw_lib import DATA, ROOT, write_new
 import findings_rows as FR
-OKS = ('OK', 'OK-ordinal', 'CORRECTED')
+OKS = ('OK', 'OK-ordinal', 'CORRECTED-OCR')
 ROW_CHECK = {
  'N01': r'^Nation \w', 'N02': r'^Leader \w', 'N03': r'^Capital \w', 'N04': r'^Cities \d', 'N05': r'^Population \d{1,3}(,\d{3})+$', 'N06': r'^Unity (very low|low|normal|high|very high|excellent)$',
  'N07': r'^Tax rate \d+%$', 'N08': r'^Mobilized \d+%$', 'N09': r'^Treasury -? ?[\d,]+ talents$', 'N10': r'^INTERNATIONAL RELATIONS$', 'N11': r'^\w+ (trade|ally|war)$', 'N12': r'conquerred by',
@@ -50,8 +50,8 @@ PROSE = [
 NOT_IN_CAPTURES = {'t4_menu.png': 'menu screenshot (Thracia item greyed): in the release manifest, checked by eye, not a panel capture'}
 def main(write=False):
     rows = {}
-    for f in glob.glob(DATA + 'claims_audit2_rows*.tsv'): pass
-    f = sorted(glob.glob(DATA + 'claims_audit2_rows*.tsv'), key=lambda p: (len(p), p))[-1]
+    for f in glob.glob(DATA + 'claims_audit3_rows*.tsv'): pass
+    f = sorted(glob.glob(DATA + 'claims_audit3_rows*.tsv'), key=lambda p: (len(p), p))[-1]
     for r in csv.DictReader(open(f, encoding='utf-8'), delimiter='\t'):
         if r['status'] in OKS: rows.setdefault(r['png'], []).append(r['expected'])
     caps = set()

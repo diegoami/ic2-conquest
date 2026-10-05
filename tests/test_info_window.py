@@ -133,12 +133,17 @@ def test_rowcompare_negative_cases():
     assert fails(base, base[:3]), "missing row must fail"
     assert fails(base, base + ["Terrain Plain"]), "extra row must fail"
     assert fails(base, [base[0], base[1], base[2], "Morale very"]), "a clipped word is a mismatch outside a list"
-    s = RC.compare(["x 1st Foot Light infantry 4,800 very good"], ["lst Foot Light infantry 4,800 very"], "right")
-    assert s[0][0] in ("MISMATCH",)            # 'x' row differs: not a clip of it
-    ok = RC.compare(["1st Foot Light infantry 4,800 very good"], ["lst Foot Light infantry 4,800 very"], "right")
-    assert ok[0][0] == "CLIPPED-right"
-    assert RC.compare(["1st Foot Light infantry 4,800 very good"], ["lst Foot Light infantry 4,900 very"], "right")[0][0] == "MISMATCH", "a number inside a clipped row must still match"
-    assert "SCROLLBAR-ARTIFACT" in [s for s, _, _ in RC.compare(["Light infantry 1,500 very poor"], ["Light infantry 1,500 very poor", "<j >|"], "right")]
+    exp = ["1st Foot Light infantry 4,800 very good"]
+    ev = {0: "right"}
+    assert RC.compare(exp, ["lst Foot Light infantry 4,800 very"], ev)[0][0] == "CLIPPED-right"
+    assert RC.compare(exp, ["lst Foot Light infantry 4,800 very"])[0][0] == "MISMATCH", "no pixel evidence for the row: no clipping"
+    assert RC.compare(exp, ["lst Foot Light infantry 4,900 very"], ev)[0][0] == "MISMATCH", "a number inside a clipped row must still match"
+    # round-2 counterexamples (Sol): a short header cut to 'Army', and a full-length changed word
+    assert RC.compare(["Army of Rome"], ["Army"], {0: "right"})[0][0] == "MISMATCH", "a short row is never a clip"
+    assert RC.compare(["Army of Rome"], ["Army"])[0][0] == "MISMATCH"
+    assert RC.compare(["Light infantry 1,500 elite"], ["Light infantry 1,500 elitX"], {0: "right"})[0][0] == "MISMATCH", "equal-length changed word"
+    assert RC.compare(["Light infantry 1,500 elite"], ["Light infantry 1,500 elitX"])[0][0] == "MISMATCH"
+    assert "SCROLLBAR-ARTIFACT" in [s for s, _, _ in RC.compare(["Light infantry 1,500 very poor"], ["Light infantry 1,500 very poor", "<j >|"], {0: "right"})]
     return "changed number, changed adjective, missing row, extra row, clipped word outside a list all fail; clip and ordinal tolerances are narrow"
 
 
@@ -151,11 +156,63 @@ def test_call_extraction():
     assert C.calls_of("a = some_helper (1); b = _under_score(2); c = Class_Method(3);", "own") == {"some_helper", "_under_score", "Class_Method"}
     assert "<indirect call>" in C.calls_of("(**(code **)(*piVar1 + 4))(piVar1,&DAT_00479590,0x2c5c);", "own")
     assert C.calls_of("void own(int a) { own2(a); }", "own") == {"own2"}
+    for form in ("(*callback)();", "(*callback)(0);", "(*cb)((1 + 2));", "tbl[3](x);", "(f)(0);", "(*vt[2])();"):
+        assert C.calls_of(form, "own") == {"<indirect call>"}, form
+    assert C.calls_of("x = (short)(a + 1); y = (char *)(p + 2); z = (undefined4 *)0x45; if (a) (b); while (c) { }", "own") == set()
+    for n, d in C.load().items():
+        assert "<indirect call>" not in d["call"], n          # none of the seven routines has an indirect call
     return "spaced, tabbed, differently named and indirect calls are extracted; keywords, casts and literals are not"
 
 
+def test_audit_statuses_each_discrepancy_is_counted():
+    model()
+    import audit, csv
+    from iw_lib import ART, DATA
+    if not os.path.isdir(ART + "saves"):
+        raise Skip("no local capture artifacts")
+    rows, excl, occ, gd, ext, scroll = audit.load_inputs()
+    base = next(r for r in rows if r["png"] == "A4_army_02_left.png")             # own army with mercenaries: Moves 6, Morale very low, Mercenary pay 304
+    raws = {}
+    lr = lambda s: raws.get(s) or raws.setdefault(s, audit.M.Raw(audit.find_save(s)))
+    def run(mut, kind=None, ex=None, oc=None, g=None, extents=None, sc=None):
+        r = dict(base); r["png"] = "INJECT.png"; r["ocr"] = mut(base["ocr"])
+        if kind: r["kind"] = kind
+        out, cnt, _ = audit.evaluate([r], lr, ex or {}, oc or {}, g or {}, extents or {}, sc or {})
+        return cnt
+    assert run(lambda o: o)["OK"] > 5 and not any(k in run(lambda o: o) for k in audit.FAILING_STATUSES)
+    assert run(lambda o: o.replace("Mercenary pay 304", "Mercenary pay 305")).get("MISMATCH") == 1
+    assert run(lambda o: o.replace("Morale very low", "Morale low")).get("MISMATCH") == 1
+    assert run(lambda o: o.replace(" | Money 39 talents", "")).get("MISSING", 0) >= 1
+    assert run(lambda o: o + " | No. of cats 4").get("EXTRA") == 1
+    cnt = run(lambda o: o, kind="bogus_kind"); assert cnt == {"NOT-MODELLED": 1}, cnt          # an unmodelled kind is counted as failing
+    assert audit.FAILING_STATUSES == ("MISMATCH", "MISSING", "EXTRA", "NOT-MODELLED")
+    assert run(lambda o: o + " | <j >|").get("EXTRA") == 1                                      # a scroll-bar row that is not listed is an extra row
+    assert run(lambda o: o + " | <j >|", sc={"INJECT.png": {"<j >|"}}).get("SCROLLBAR-ARTIFACT") == 1
+    assert run(lambda o: o, ex={"INJECT.png": "x"}) == {"EXCLUDED-listed": 1}
+    ocr_bad = lambda o: o.replace("Morale very low", "Morale very lcw")
+    assert run(ocr_bad, oc={"INJECT.png": [("Morale very low", "Morale very lcw")]}).get("CORRECTED-OCR") == 1
+    assert run(ocr_bad, g={"INJECT.png": [("Morale very low", "Morale very lcw")]}).get("NOT-MODELLED-OUTPUT") == 1
+    assert run(lambda o: o.replace("Morale very low", "Morale very lcw")).get("MISMATCH") == 1
+    return "each kind of discrepancy lands in its own counted status; the failing ones are MISMATCH, MISSING, EXTRA, NOT-MODELLED"
+
+
+def test_audit_clipping_needs_pixel_evidence():
+    model()
+    import audit
+    from iw_lib import ART
+    if not os.path.isdir(ART + "saves"):
+        raise Skip("no local capture artifacts")
+    rows, excl, occ, gd, ext, scroll = audit.load_inputs()
+    base = next(r for r in rows if r["png"] == "A6_army0_right.png")
+    raw = audit.M.Raw(audit.find_save(base["save"]))
+    r = dict(base); r["png"] = "INJECT2.png"; r["ocr"] = base["ocr"].replace("not ready", "not")             # cut the last word of one row
+    out, cnt, _ = audit.evaluate([r], lambda s: raw, {}, {}, {}, {}, {})
+    assert cnt.get("MISMATCH", 0) >= 1 and "CLIPPED-right" not in cnt, cnt                                      # no extent evidence: mismatch
+    return "a shortened row without row_extents evidence is a MISMATCH"
+
+
 TESTS = ["loader_offsets", "unity_and_loyalty_bands", "morale_bands", "quality_relation_tribute_sea", "formatters", "army_cost_formulas",
-         "cost_formula_16_bit_narrowing", "rowcompare_negative_cases", "call_extraction", "coverage_zero_unaccounted", "claims_audit_when_artifacts_exist"]
+         "audit_statuses_each_discrepancy_is_counted", "audit_clipping_needs_pixel_evidence", "cost_formula_16_bit_narrowing", "rowcompare_negative_cases", "call_extraction", "coverage_zero_unaccounted", "claims_audit_when_artifacts_exist"]
 
 if __name__ == "__main__":
     bad = 0

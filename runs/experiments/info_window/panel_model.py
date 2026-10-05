@@ -29,10 +29,19 @@ def build_mem(path=DAT):
         off += n
     return mem, tables
 MEM, TABLES = build_mem()
+CITY_BASE, CITY_LEN_ALL = 0x479590, 0x2c5c
+OVERLAY = {}
+def use(raw):
+    """Make the memory image of this save's city table visible to cstr(): the game holds the 334 city records at 0x00479590 (loaded from the SAVE, not the DAT),
+    so an index that runs past the last DAT table (relation >= 6 at 6 bytes each) reads city bytes."""
+    from state import sav as _s
+    OVERLAY.clear()
+    blob = bytes(raw.b[_s.CITY_OFF:_s.CITY_OFF + CITY_LEN_ALL])
+    for k, v in enumerate(blob): OVERLAY[CITY_BASE + k] = v
 def cstr(addr, limit=60):
     out = bytearray()
     for k in range(limit):
-        b = MEM.get(addr + k, 0)
+        b = MEM.get(addr + k, OVERLAY.get(addr + k, 0))
         if b == 0: break
         out.append(b)
     return out.decode('latin1')

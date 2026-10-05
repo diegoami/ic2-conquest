@@ -1,0 +1,73 @@
+kind	claim	png	status
+row	N01	A3_nation_00_Rome.png	OK
+row	N02	A3_nation_00_Rome.png	OK
+row	N03	A3_nation_00_Rome.png	OK
+row	N04	A3_nation_00_Rome.png	OK
+row	N05	A8_cur1_nation00.png	OK
+row	N06	A3_nation_00_Rome.png	OK
+row	N07	A3_nation_00_Rome.png	OK
+row	N08	A3_nation_00_Rome.png	OK
+row	N09	A3_nation_00_Rome.png	OK
+row	N10	A3_nation_00_Rome.png	OK
+row	N11	A3_nation_01_Carthage.png	OK
+row	N12	A3_nation_01_Carthage.png	OK
+row	C01	A6_city097_Cales.png	OK
+row	C02	A1_city_085_Rome.png	OK
+row	C03	A1_city_120_Heraclea.png	OK
+row	C04	A1_city_085_Rome.png	OK
+row	C05	A1_city_085_Rome.png	OK
+row	C06	A1_city_085_Rome.png	OK
+row	C07	A2_city_090_Alba Fucens.png	OK
+row	C08	A1_city_085_Rome.png	OK
+row	C09	A2_city_004_Banasa.png	OK
+row	C10	A1_city_085_Rome.png	OK
+row	A01	A4_army_00_left.png	OK
+row	A02	A4_army_03_left.png	OK
+row	A03	A4_army_00_left.png	OK
+row	A04	A4_army_03_left.png	OK
+row	A05	A4_army_00_left.png	OK
+row	A06	A4_army_01_left.png	OK
+row	A07	A4_army_00_left.png	OK
+row	A08	A4_army_00_left.png	OK
+row	A09	A6_army1_left.png	OK
+row	A10	A4_army_00_left.png	OK
+row	A11	A4_army_02_left.png	OK
+row	F01	A5_f5a_fleet2_left.png	OK
+row	F02	A5_f5a_fleet2_left.png	OK
+row	F03	A5_f5a_fleet0_left.png	OK
+row	F04	A5_f5a_fleet2_left.png	OK
+row	F05	A5_f5a_fleet2_left.png	OK
+row	F06	A5_f5a_fleet2_left.png	OK
+row	F07	A5_f5a_fleet0_left.png	OK
+row	F08	A5_f5a_fleet0_left.png	OK
+row	F09	A5_f5a_fleet2_left.png	OK
+row	U1	A6_merc_rome.png	OK
+row	U2	A6_army0_right_scrolled.png	OK
+row	U3	A5_f5a_fleet2_right.png	OK
+prose	loyalty -10 prints ite	A1_city_071_Pisae.png	OK
+prose	loyalty -9 prints very low	A1_city_080_Tarquinii.png	OK
+prose	morale 50 very low	A4_army_00_left.png	OK
+prose	morale 75 blank	A4_army_13_left.png	OK
+prose	quality 10 and 11 blank, 9 elite	A6_army0_right_scrolled.png	OK
+prose	tribute 10001 prints the number	A2_city_026_Helice.png	OK
+prose	tribute 20000	A2_city_030_Akra Leuke.png	OK
+prose	tribute 40000 prints -25536	A2_city_033_Icosium.png	OK
+prose	tribute 65535 prints -1	A2_city_035_Cissa.png	OK
+prose	fortification 100 prints 100%	A1_city_082_Caere.png	OK
+prose	fortification 101 prints 1% under construction	A1_city_101_Neapolis.png	OK
+prose	state 0 + state 24 = (3,000)	A2_city_090_Alba Fucens.png	OK
+prose	own nation panel has Mobilized and Treasury	A7b_nation00_treasury1.png	OK
+prose	Rome (foreign, current Carthage): Population 2,577,000, no Mobilized/Treasury	A8_cur1_nation00.png	OK
+prose	Carthage as current nation: Population 4,821,000, Mobilized 12%, Treasury 7,777	A8_cur1_nation01.png	OK
+prose	negative treasury: minus, blank, digits	A7_nation00_treasury0.png	OK
+prose	population -5000 prints without its sign	A3_nation_08_Celtiberia.v2.png	OK
+prose	unity 1000 blank	A3_nation_13_Armenia.v2.png	OK
+prose	unity 1100 blank	A3_nation_14_Media.v2.png	OK
+prose	foreign army: captions only, composition, no cost lines	A5_foreign_army2_left.png	OK
+prose	right click on a foreign army prints nothing new	A5_foreign_army2_right.png	OK
+prose	foreign fleet	A5_f5a_fleet0_left.png	OK
+prose	foreign fleet calm	A5_f5b_fleet1_left.png	OK
+prose	foreign fleet carrying an army: composition only	A5_f5c_fleet0_left.png	OK
+prose	sea 0 calm	A5_f5a_fleet2_left.png	OK
+prose	sea -1 rough	A5_f5a_fleet1_left.png	OK
+prose	sea 2 rough	A5_f5b_fleet0_left.png	OK

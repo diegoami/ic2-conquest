@@ -1,0 +1,235 @@
+function	kind	item	status	row_or_reason
+TInformation_ShowNationStatus	lit	 	row	N10
+TInformation_ShowNationStatus	lit	  	row	N09,N11
+TInformation_ShowNationStatus	lit	      INTERNATIONAL RELATIONS	row	N10
+TInformation_ShowNationStatus	lit	   ( 	row	N12
+TInformation_ShowNationStatus	lit	  -	row	N11
+TInformation_ShowNationStatus	lit	 )	row	N12
+TInformation_ShowNationStatus	lit	 conquerred by 	row	N12
+TInformation_ShowNationStatus	lit	 talents	row	N09
+TInformation_ShowNationStatus	lit	%	row	N07
+TInformation_ShowNationStatus	lit	Capital -	row	N03
+TInformation_ShowNationStatus	lit	Cities -	row	N04
+TInformation_ShowNationStatus	lit	Leader -	row	N02
+TInformation_ShowNationStatus	lit	Mobilized -	row	N08
+TInformation_ShowNationStatus	lit	Nation -	row	N01
+TInformation_ShowNationStatus	lit	Population -	row	N05
+TInformation_ShowNationStatus	lit	Tax rate -	row	N07
+TInformation_ShowNationStatus	lit	Treasury -	row	N09
+TInformation_ShowNationStatus	lit	Unity -	row	N06
+TInformation_ShowNationStatus	call	FUN_004028c4	row	N04
+TInformation_ShowNationStatus	call	FUN_00402978	row	N04
+TInformation_ShowNationStatus	call	FUN_00405b00	row	H1
+TInformation_ShowNationStatus	call	FUN_00405bc8	row	H1
+TInformation_ShowNationStatus	call	FUN_00448f3c	row	N09
+TInformation_ShowNationStatus	call	FUN_00448f9c	row	N05
+TInformation_ShowNationStatus	call	TInformation_PrintInfo	row	H1
+TInformation_ShowNationStatus	dat	DAT_00474670	row	N01
+TInformation_ShowNationStatus	dat	DAT_0047467b	row	N02
+TInformation_ShowNationStatus	dat	DAT_00474696	row	N11
+TInformation_ShowNationStatus	dat	DAT_00474aa0	row	N05
+TInformation_ShowNationStatus	dat	DAT_00474aa8	row	N09
+TInformation_ShowNationStatus	dat	DAT_00474ab0	row	N06
+TInformation_ShowNationStatus	dat	DAT_00474ab2	row	N08
+TInformation_ShowNationStatus	dat	DAT_00474ab4	row	N03
+TInformation_ShowNationStatus	dat	DAT_00474ab6	row	N04
+TInformation_ShowNationStatus	dat	DAT_00474aba	row	N07
+TInformation_ShowNationStatus	dat	DAT_004793fc	row	N06
+TInformation_ShowNationStatus	dat	DAT_004794c8	row	N11
+TInformation_ShowNationStatus	dat	DAT_00479590	row	N03
+TInformation_ShowNationStatus	dat	DAT_0049f00c	row	N01
+TInformation_ShowNationStatus	dat	DAT_0049f049	row	N02
+TInformation_ShowNationStatus	dat	DAT_0049f086	row	N03
+TInformation_ShowNationStatus	dat	DAT_0049f0c3	row	N04
+TInformation_ShowNationStatus	dat	DAT_0049f100	row	N05
+TInformation_ShowNationStatus	dat	DAT_0049f13d	row	N06
+TInformation_ShowNationStatus	dat	DAT_0049f17a	row	N07
+TInformation_ShowNationStatus	dat	DAT_0049f1b7	row	N08
+TInformation_ShowNationStatus	dat	DAT_0049f1f4	row	N09
+TInformation_ShowNationStatus	dat	DAT_0049f231	row	N10
+TInformation_ShowNationStatus	dat	DAT_0049f26e	row	N10
+TInformation_ShowNationStatus	dat	DAT_0049f2ab	row	H1,N11
+TInformation_ShowNationStatus	dat	DAT_004a031c	row	N01
+TInformation_ShowNationStatus	dat	DAT_004a0320	row	N08
+TInformation_ShowCityDetails	lit	 	row	C10
+TInformation_ShowCityDetails	lit	   (	row	C07
+TInformation_ShowCityDetails	lit	  (capital of 	row	C01
+TInformation_ShowCityDetails	lit	  (under construction)	row	C06
+TInformation_ShowCityDetails	lit	  talents	row	C08
+TInformation_ShowCityDetails	lit	  tons	row	C10
+TInformation_ShowCityDetails	lit	%	row	C06
+TInformation_ShowCityDetails	lit	%)	row	C04
+TInformation_ShowCityDetails	lit	(	row	C04
+TInformation_ShowCityDetails	lit	)	row	C01,C07
+TInformation_ShowCityDetails	lit	Allegiance to -	row	C03
+TInformation_ShowCityDetails	lit	City -	row	C01
+TInformation_ShowCityDetails	lit	Controlled by -	row	C02
+TInformation_ShowCityDetails	lit	Fortification -	row	C06
+TInformation_ShowCityDetails	lit	Loyalty -	row	C05
+TInformation_ShowCityDetails	lit	Population -	row	C04
+TInformation_ShowCityDetails	lit	Supply -	row	C10
+TInformation_ShowCityDetails	lit	Tribute -	row	C08
+TInformation_ShowCityDetails	lit	moderate	row	C09
+TInformation_ShowCityDetails	lit	poor	row	C09
+TInformation_ShowCityDetails	lit	rich	row	C09
+TInformation_ShowCityDetails	lit	very rich	row	C09
+TInformation_ShowCityDetails	call	FUN_004028c4	row	C06,H1
+TInformation_ShowCityDetails	call	FUN_00402978	row	C06,H1
+TInformation_ShowCityDetails	call	FUN_00405b00	row	H1
+TInformation_ShowCityDetails	call	FUN_00405bc8	row	H1
+TInformation_ShowCityDetails	call	FUN_00448f3c	row	C07
+TInformation_ShowCityDetails	call	FUN_00448f9c	row	C04
+TInformation_ShowCityDetails	call	FUN_004498b0	row	C08
+TInformation_ShowCityDetails	call	FUN_004498d8	row	C01
+TInformation_ShowCityDetails	call	FUN_0044b8d0	row	C01
+TInformation_ShowCityDetails	call	TInformation_PrintInfo	row	H1
+TInformation_ShowCityDetails	dat	DAT_00474670	row	C01
+TInformation_ShowCityDetails	dat	DAT_004793fc	row	C05
+TInformation_ShowCityDetails	dat	DAT_00479590	row	C01
+TInformation_ShowCityDetails	dat	DAT_004795a2	row	C01
+TInformation_ShowCityDetails	dat	DAT_004795a4	row	C03
+TInformation_ShowCityDetails	dat	DAT_004795a6	row	C05
+TInformation_ShowCityDetails	dat	DAT_004795a8	row	C10
+TInformation_ShowCityDetails	dat	DAT_004795aa	row	C06
+TInformation_ShowCityDetails	dat	DAT_004795ac	row	C04
+TInformation_ShowCityDetails	dat	DAT_004795ae	row	C04
+TInformation_ShowCityDetails	dat	DAT_004795b0	row	C08
+TInformation_ShowCityDetails	dat	DAT_0049f00c	row	C01
+TInformation_ShowCityDetails	dat	DAT_0049f049	row	C02
+TInformation_ShowCityDetails	dat	DAT_0049f086	row	C03
+TInformation_ShowCityDetails	dat	DAT_0049f0c3	row	C04
+TInformation_ShowCityDetails	dat	DAT_0049f100	row	C05
+TInformation_ShowCityDetails	dat	DAT_0049f13d	row	C06
+TInformation_ShowCityDetails	dat	DAT_0049f17a	row	C08
+TInformation_ShowCityDetails	dat	DAT_0049f1b7	row	C10
+TInformation_ShowCityDetails	dat	DAT_004a031c	row	C10
+TInformation_ShowCityDetails	dat	DAT_004a0320	row	C10
+TInformation_ShowArmyDetails	lit	  	row	A07,A10
+TInformation_ShowArmyDetails	lit	  talents per quarter	row	A10
+TInformation_ShowArmyDetails	lit	 talents	row	A05
+TInformation_ShowArmyDetails	lit	 tons  (	row	A03
+TInformation_ShowArmyDetails	lit	%)	row	A03
+TInformation_ShowArmyDetails	lit	-	row	A07
+TInformation_ShowArmyDetails	lit	Army of 	row	A01
+TInformation_ShowArmyDetails	lit	Mercenary pay-	row	A11
+TInformation_ShowArmyDetails	lit	Money -	row	A05
+TInformation_ShowArmyDetails	lit	Morale -	row	A04
+TInformation_ShowArmyDetails	lit	Moves -	row	A02
+TInformation_ShowArmyDetails	lit	No. of units-	row	A09
+TInformation_ShowArmyDetails	lit	Regulars cost-	row	A10
+TInformation_ShowArmyDetails	lit	Supply -	row	A03
+TInformation_ShowArmyDetails	lit	Terrain -	row	A06
+TInformation_ShowArmyDetails	lit	Total troops -	row	A08
+TInformation_ShowArmyDetails	call	FUN_004028c4	row	H1
+TInformation_ShowArmyDetails	call	FUN_00402978	row	H1
+TInformation_ShowArmyDetails	call	FUN_00405b00	row	H1
+TInformation_ShowArmyDetails	call	FUN_00405bc8	row	H1
+TInformation_ShowArmyDetails	call	FUN_00448f9c	row	A07
+TInformation_ShowArmyDetails	call	FUN_00449920	row	A01
+TInformation_ShowArmyDetails	call	FUN_0044a66c	row	A09
+TInformation_ShowArmyDetails	call	FUN_0044a698	row	A03
+TInformation_ShowArmyDetails	call	TInformation_PrintInfo	row	H1
+TInformation_ShowArmyDetails	dat	DAT_00474670	row	A01
+TInformation_ShowArmyDetails	dat	DAT_00478fb0	row	A07
+TInformation_ShowArmyDetails	dat	DAT_00478fd4	row	A10
+TInformation_ShowArmyDetails	dat	DAT_004792e4	row	A06
+TInformation_ShowArmyDetails	dat	DAT_00479428	row	A04
+TInformation_ShowArmyDetails	dat	DAT_0047c1f0	row	A01
+TInformation_ShowArmyDetails	dat	DAT_0047c1f2	row	A02
+TInformation_ShowArmyDetails	dat	DAT_0047c1f4	row	A06
+TInformation_ShowArmyDetails	dat	DAT_0047c1f6	row	A03
+TInformation_ShowArmyDetails	dat	DAT_0047c1f8	row	A05
+TInformation_ShowArmyDetails	dat	DAT_0047c1fa	row	A04
+TInformation_ShowArmyDetails	dat	DAT_0047c1fc	row	A07
+TInformation_ShowArmyDetails	dat	DAT_0049f00c	row	A01
+TInformation_ShowArmyDetails	dat	DAT_0049f049	row	A02
+TInformation_ShowArmyDetails	dat	DAT_0049f086	row	A03
+TInformation_ShowArmyDetails	dat	DAT_0049f0c3	row	A04
+TInformation_ShowArmyDetails	dat	DAT_0049f100	row	A05
+TInformation_ShowArmyDetails	dat	DAT_0049f13d	row	A06
+TInformation_ShowArmyDetails	dat	DAT_0049f17a	row	A08
+TInformation_ShowArmyDetails	dat	DAT_0049f1b7	row	A09
+TInformation_ShowArmyDetails	dat	DAT_0049f1f4	row	A11
+TInformation_ShowArmyDetails	dat	DAT_0049f231	row	A10
+TInformation_ShowArmyDetails	dat	DAT_0049f26e	row	A11
+TInformation_ShowArmyDetails	dat	DAT_004a031c	excluded	the panel line count handed to PrintInfo (last line index): in the tables as the "last line" notes
+TInformation_ShowArmyDetails	dat	DAT_004a0320	excluded	the current nation (the "own" test): in every condition column
+TInformation_ShowFleetDetails	lit	  	row	F09
+TInformation_ShowFleetDetails	lit	 talents	row	F06
+TInformation_ShowFleetDetails	lit	 tons  (	row	F05
+TInformation_ShowFleetDetails	lit	 troops	row	F07
+TInformation_ShowFleetDetails	lit	%	row	F04
+TInformation_ShowFleetDetails	lit	%)	row	F05
+TInformation_ShowFleetDetails	lit	Army	row	F09
+TInformation_ShowFleetDetails	lit	Capacity -	row	F07
+TInformation_ShowFleetDetails	lit	Fleet of 	row	F01
+TInformation_ShowFleetDetails	lit	Money -	row	F06
+TInformation_ShowFleetDetails	lit	Moves -	row	F02
+TInformation_ShowFleetDetails	lit	Repair -	row	F04
+TInformation_ShowFleetDetails	lit	Sea-	row	F08
+TInformation_ShowFleetDetails	lit	Ships -	row	F03
+TInformation_ShowFleetDetails	lit	Supply -	row	F05
+TInformation_ShowFleetDetails	lit	calm	row	F08
+TInformation_ShowFleetDetails	lit	rough	row	F08
+TInformation_ShowFleetDetails	call	FUN_004028c4	row	H1
+TInformation_ShowFleetDetails	call	FUN_00402978	row	H1
+TInformation_ShowFleetDetails	call	FUN_00405b00	row	H1
+TInformation_ShowFleetDetails	call	FUN_00405bc8	row	H1
+TInformation_ShowFleetDetails	call	FUN_00448f3c	row	F07,H1
+TInformation_ShowFleetDetails	call	FUN_00449970	row	F01
+TInformation_ShowFleetDetails	call	TInformation_PrintInfo	row	H1
+TInformation_ShowFleetDetails	call	TInformation_ShowArmyDetails	row	F09
+TInformation_ShowFleetDetails	dat	DAT_00474670	excluded	the nation record table base (name at +0): N01, C01, A01, F01, U2
+TInformation_ShowFleetDetails	dat	DAT_0049c274	row	F01
+TInformation_ShowFleetDetails	dat	DAT_0049c278	row	F02
+TInformation_ShowFleetDetails	dat	DAT_0049c27a	row	F05
+TInformation_ShowFleetDetails	dat	DAT_0049c27c	row	F06
+TInformation_ShowFleetDetails	dat	DAT_0049c27e	row	F03
+TInformation_ShowFleetDetails	dat	DAT_0049c280	row	F04
+TInformation_ShowFleetDetails	dat	DAT_0049c282	row	F09
+TInformation_ShowFleetDetails	dat	DAT_0049c284	row	F08
+TInformation_ShowFleetDetails	dat	DAT_0049ee24	row	F09
+TInformation_ShowFleetDetails	dat	DAT_0049f00c	excluded	the 61-byte display-line buffer: the line index of each row is in the tables (line = (address - 0x0049F00C) / 0x3D)
+TInformation_ShowFleetDetails	dat	DAT_0049f049	excluded	the 61-byte display-line buffer: the line index of each row is in the tables (line = (address - 0x0049F00C) / 0x3D)
+TInformation_ShowFleetDetails	dat	DAT_0049f086	row	F03
+TInformation_ShowFleetDetails	dat	DAT_0049f0c3	row	F04
+TInformation_ShowFleetDetails	dat	DAT_0049f100	row	F05
+TInformation_ShowFleetDetails	dat	DAT_0049f13d	row	F06
+TInformation_ShowFleetDetails	dat	DAT_0049f17a	row	F07
+TInformation_ShowFleetDetails	dat	DAT_0049f1b7	row	F08
+TInformation_ShowFleetDetails	dat	DAT_0049f1f4	row	F09
+TInformation_ShowFleetDetails	dat	DAT_0049f231	row	F09
+TInformation_ShowFleetDetails	dat	DAT_004a031c	excluded	the panel line count handed to PrintInfo (last line index): in the tables as the "last line" notes
+TInformation_ShowFleetDetails	dat	DAT_004a0320	excluded	the current nation (the "own" test): in every condition column
+TInformation_ShowCityUnits	lit	    	row	U1
+TInformation_ShowCityUnits	lit	Mercenaries at 	row	U1
+TInformation_ShowCityUnits	lit	There are no mercenaries at 	row	U1
+TInformation_ShowCityUnits	call	FUN_00405b00	row	H1
+TInformation_ShowCityUnits	call	FUN_00405bc8	row	H1
+TInformation_ShowCityUnits	call	FUN_00448e74	row	U1
+TInformation_ShowCityUnits	call	FUN_004498d8	row	H1
+TInformation_ShowCityUnits	call	TInformation_PrintInfo	row	H1
+TInformation_ShowCityUnits	dat	DAT_00478fb0	row	U1
+TInformation_ShowCityUnits	dat	DAT_0047938c	row	U1
+TInformation_ShowCityUnits	dat	DAT_00479590	row	U1
+TInformation_ShowCityUnits	dat	DAT_0049cc94	row	U1
+TInformation_ShowCityUnits	dat	DAT_0049da10	row	U1
+TInformation_ShowCityUnits	dat	DAT_0049f00c	row	U1
+TInformation_ShowCityUnits	dat	DAT_004a031c	row	U1
+TInformation_ShowArmyUnits	lit	   	row	U2
+TInformation_ShowArmyUnits	lit	Army of 	row	U2
+TInformation_ShowArmyUnits	call	FUN_00405b00	row	H1
+TInformation_ShowArmyUnits	call	FUN_00405bc8	row	H1
+TInformation_ShowArmyUnits	call	FUN_00448f18	row	U2
+TInformation_ShowArmyUnits	call	FUN_00449920	row	U2
+TInformation_ShowArmyUnits	call	TInformation_PrintInfo	row	H1
+TInformation_ShowArmyUnits	dat	DAT_00474670	row	U2
+TInformation_ShowArmyUnits	dat	DAT_00478fb0	row	U2
+TInformation_ShowArmyUnits	dat	DAT_0047938c	row	U2
+TInformation_ShowArmyUnits	dat	DAT_0047c1f0	row	U2
+TInformation_ShowArmyUnits	dat	DAT_0049f00c	row	U2
+TInformation_ShowArmyUnits	dat	DAT_004a031c	row	U2
+TInformation_ShowArmyUnits	dat	DAT_004a0320	row	U2
+TInformation_ShowFleetUnits	call	FUN_00449970	row	U3
+TInformation_ShowFleetUnits	call	TInformation_ShowArmyUnits	row	U3
+TInformation_ShowFleetUnits	dat	DAT_0049c282	row	U3
