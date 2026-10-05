@@ -28,6 +28,14 @@ Forbidden results (any one fails the task, and a reviewer will block on it):
   - `harness/driver.py`;
   - `runs/experiments/feature_inventory/explore_lib.py`, for runs.
 
+## Priority (from the imperial_conquest_2 main session, 2026-10-05; T140 needs them in this order)
+a. The number-to-word bands: unity (N03, the nation panel), loyalty and morale (UM02 city, UM03 army), and quality if it has a word.
+b. What the city's fortification bracket counts. The help file and the rules digest disagree; settle it from the code and in play.
+c. One army's "Regulars cost" and "Mercenary pay": the formula and its inputs.
+d. What decides a fleet's Sea word, calm or rough. If no field or rule decides it, say so.
+e. The foreign-nation panel's fields (clone #614): population, unity, tax rate and the relations row. Give their exact format, and say whether "peace" really shows blank.
+Everything else in the panels comes after (a)-(e). Commit and push (a)-(e) first, so the coordinator can relay them early.
+
 ## Work
 Branch `experiment/info-window`. Data goes in `runs/experiments/data/run-exp-info-window/`; scripts in `runs/experiments/info_window/`; binaries to release `run-exp-info-window` as per-batch tar.gz archives with a tracked manifest.
 
