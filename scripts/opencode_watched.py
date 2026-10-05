@@ -76,10 +76,23 @@ def data_home(base):
             "TMPDIR": str(base / "tmp")}
 
 
+# Heavy models (docs/environment.md): effort low, or medium when the task needs it, never high (the player, 2026-10-05)
+HEAVY = ("openai/gpt-6.1-sol", "openai/gpt-6-sol", "openai/gpt-5.6-sol", "zai-coding-plan/glm-5.3", "opencode-go/deepseek-v4-pro",
+         "openrouter/deepseek/deepseek-v4-pro")
+
+
+def is_heavy(base):
+    """True for a heavy model id (fast variants included, e.g. 'openai/gpt-6.1-sol-fast'); the Flash/Luna light models are not."""
+    return any(base == h or base.startswith(h + "-") for h in HEAVY) and "flash" not in base
+
+
 def effort(model):
-    """'provider/model[#variant]' with effort high: no variant means high; max is overkill and slower, so it
-    is lowered to high (decision 2026-10-02)."""
+    """'provider/model[#variant]' with its effort made explicit. A light model: no variant means high, and max is lowered to high
+    (overkill and slower; decision 2026-10-02). A heavy model: no variant means low, and high or max is lowered to medium (the player,
+    2026-10-05: low, or medium when needed, never high)."""
     base, variant = split_model(model)
+    if is_heavy(base):
+        return f"{base}#{'low' if variant is None else 'medium' if variant in ('high', 'max') else variant}"
     return f"{base}#{'high' if variant in (None, 'max') else variant}"
 
 

@@ -26,7 +26,8 @@
 - **Effort is `high`, never `max`** (Go lists low/high/max; max is overkill and slower). A model without a
   variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line. That suits the light models in
   the chain. **A heavy model (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`) is passed with `#low`, or `#medium`
-  when the PR needs it, never `#high`** (the player, 2026-10-05).
+  when the PR needs it, never `#high`** (the player, 2026-10-05). `opencode_watched.effort` enforces it: a heavy model with no variant
+  gets `#low`, and `#high` or `#max` on one is lowered to `#medium` with a log line.
 
 A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
@@ -38,7 +39,7 @@ python3 scripts/external_review.py --pr 7 --apply-label          # also sets sta
 python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
 python3 scripts/external_review.py --pr 7 --dry-run              # prints the arguments, starts no model
 python3 scripts/external_review.py --pr 7 --review-file R.md     # offline: what would be posted, its note, the exit code
-python3 scripts/external_review.py --self-test                   # the review parser over 15 sample outputs
+python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota skip (6) and the effort rule (8)
 ```
 
 Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (nothing posted; record the cause in

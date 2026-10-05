@@ -272,15 +272,26 @@ def self_test():
         print(f"{'PASS' if ok else 'FAIL'} {name}: {got}")
         bad += 0 if ok else 1
         n += 1
+    for model, want in (("openai/gpt-6.1-sol", "openai/gpt-6.1-sol#low"), ("openai/gpt-6.1-sol#high", "openai/gpt-6.1-sol#medium"),
+                        ("zai-coding-plan/glm-5.3#max", "zai-coding-plan/glm-5.3#medium"), ("openai/gpt-6.1-sol#medium", "openai/gpt-6.1-sol#medium"),
+                        ("openai/gpt-6.1-sol-fast", "openai/gpt-6.1-sol-fast#low"), ("zai-coding-plan/glm-5.3-flash", "zai-coding-plan/glm-5.3-flash#high"),
+                        ("openai/gpt-5.6-luna", "openai/gpt-5.6-luna#high"), ("opencode-go/deepseek-v4.1-flash#max", "opencode-go/deepseek-v4.1-flash#high")):
+        got = ow.effort(model)
+        ok = got == want
+        print(f"{'PASS' if ok else 'FAIL'} effort {model}: {got}")
+        bad += 0 if ok else 1
+        n += 1
     print(f"{n - bad}/{n} passed")
     return 1 if bad else 0
 
 
 def effort(model):
     """Effort 'high' for every variant (see opencode_watched.effort); say so when max is lowered."""
-    if ow.split_model(model)[1] == "max":
-        print(f"effort: {model} lowered to #high (decision 2026-10-02)", flush=True)
-    return ow.effort(model)
+    out = ow.effort(model)
+    v = ow.split_model(model)[1]
+    if v is not None and out != model:
+        print(f"effort: {model} lowered to #{ow.split_model(out)[1]} (decisions 2026-10-02, 2026-10-05)", flush=True)
+    return out
 
 
 def excluded(model, excl):
