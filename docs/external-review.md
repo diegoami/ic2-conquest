@@ -137,6 +137,27 @@ at all"), never after a real or flagged review; the list stops after two consecu
 `PR review (gpt-5.6-luna; deepseek-v4.1-flash failed: no-session)`. Verdicts differ between models and between runs of one
 model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.
 
+**Read before you retry (CLAUDE.md rule 7, the owner, 2026-10-05).** Before a run is retried, re-routed to another model or called a
+failure, read what it returned. A run that stopped and reported a blocker can end with the same exit as an early end, and the log's
+tail shows only the last tool output. The model's final message is in the session record of the run's data dir (default
+`$IC2_WORK/opencode-data`), opened read-only; the session id is the `opencode session started: ses_…` line of the run's log:
+
+```
+python3 - <<'EOF'
+import sqlite3, json, os
+db = 'file:' + os.path.expanduser('~/ic2-work/opencode-data/opencode/opencode.db') + '?mode=ro'
+c = sqlite3.connect(db, uri=True)
+sid = 'ses_...'   # from the run's log
+parts = c.execute("select data from part where session_id=? order by time_created", (sid,)).fetchall()
+texts = [json.loads(d) for (d,) in parts if json.loads(d).get('type') == 'text']
+print(texts[-1]['text'] if texts else 'no text part')
+EOF
+```
+
+Never read `auth.json` in that directory. A run that reported gets an answer (amend the task, decide, or escalate), and its report is
+posted on the task's PR or run issue. An earlier "model X ends runs early" verdict stays unconfirmed until its runs' final messages
+have been read.
+
 ## Lessons
 
 **2026-10-02: never make the reviewer type its worktree's path (`git -C <worktree>`).**
