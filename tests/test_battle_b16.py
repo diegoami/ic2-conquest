@@ -201,7 +201,7 @@ def test_a_recycled_owned_pid_and_its_foreign_children_are_never_signalled():
     _write_proc(root, 150, 101, "foreign-child", {"DISPLAY": ":0"}, 999998)
     f.stop()
     assert 150 not in f.pids() and all(x[2] in (1100, 1101, 1102) for x in f.signalled), f.signalled
-    assert any(p == 101 for p, _ in f.g.skipped), f.g.skipped
+    # stop() walks nothing since the narrow review (R2), so there is no walk to skip: the signals above are the whole check
 
 
 def test_a_recycled_launcher_pid_pulls_no_foreign_tree_into_cleanup():
@@ -216,7 +216,7 @@ def test_a_recycled_launcher_pid_pulls_no_foreign_tree_into_cleanup():
     _write_proc(root, 161, 160, "foreign-grandchild", {"DISPLAY": ":0"}, 777779)
     f.stop()
     assert all(x[2] in (1100, 1101) for x in f.signalled) and not ({160, 161} & set(f.pids())), f.signalled
-    assert {p for p, _ in f.g.skipped} >= {100}, f.g.skipped
+    # stop() walks nothing since the narrow review (R2), so there is no walk to skip: the signals above are the whole check
 
 
 def test_the_parent_replaced_between_verification_and_traversal_adopts_nothing():
@@ -235,6 +235,7 @@ def test_the_parent_replaced_between_verification_and_traversal_adopts_nothing()
             _write_proc(root, 100, 1, "foreign-service", {"DISPLAY": ":0"}, 777777)       # replaced after verification, before the listing
             _write_proc(root, 170, 100, "foreign-child", {"DISPLAY": ":0"}, 777778)
     f.g._between = swap
+    f.g.owned += f.g._walk(f.g.owned[0])          # children are adopted only at discovery (stop() walks nothing since the narrow review)
     f.stop()
     assert swapped and 170 not in f.pids(), (swapped, f.signalled)
     assert all(x[2] in (1100, 1101) for x in f.signalled), f.signalled                   # only the originals (through their pidfds) were named
@@ -254,8 +255,37 @@ def test_a_process_swapped_while_its_pidfd_is_opened_is_not_adopted():
             _write_proc(root, 101, 1, "foreign", {"DISPLAY": ":0"}, 5555555)       # replaced exactly while its pidfd is opened
         return orig(pid)
     f.g._pidfd = swap
+    f.g.owned += f.g._walk(f.g.owned[0])
     f.stop()
     assert f.pids() == [100] and (101, "identity changed while being adopted") in f.g.skipped, (f.signalled, f.g.skipped)
+
+
+def test_a_parent_recycled_while_its_child_is_adopted_hands_over_no_child():
+    """Narrow review R1: the parent passes its checks, then is recycled (new start time) while a child is being adopted; the child still names the old pid as its
+    parent. The child is not adopted and not signalled."""
+    root = _fake_proc({100: (1, "wine", MINE), 101: (100, "foreign-child", {"DISPLAY": ":0"})})
+    f = FakeOwner(root, 100)
+    f.discover([100])
+    orig = f.g._pidfd
+
+    def recycle_parent(pid):
+        if pid == 101:
+            _write_proc(root, 100, 1, "foreign-service", {"DISPLAY": ":0"}, 888888)      # the parent pid now names another process
+        return orig(pid)
+    f.g._pidfd = recycle_parent
+    f.g.owned += f.g._walk(f.g.owned[0])
+    f.stop()
+    assert 101 not in f.pids() and (101, "identity changed while being adopted") in f.g.skipped, (f.signalled, f.g.skipped)
+
+
+def test_stop_signals_only_the_handles_from_discovery():
+    """Narrow review R2: a child that appears after discovery is neither adopted nor signalled by stop()."""
+    root = _fake_proc({100: (1, "wine", MINE)})
+    f = FakeOwner(root, 100)
+    f.discover([100])
+    _write_proc(root, 101, 100, "Imperial Conquest 2 fast.exe", MINE, 1101)
+    f.stop()
+    assert f.pids() == [100], f.signalled
 
 
 def test_start_refuses_an_occupied_display_without_launching_or_killing():

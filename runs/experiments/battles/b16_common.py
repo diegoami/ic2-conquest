@@ -179,7 +179,10 @@ class PeaceGame(D.Game):
         if st is None:
             return None
         fd = self._pidfd(pid)
-        if proc_start(pid, self.PROC) != st or (parent is not None and proc_ppid(pid, self.PROC) != parent.pid):
+        # a child is ours only if, AFTER its pidfd is open, it is still the same process, its parent is still `parent`'s pid, and that pid is still the verified
+        # parent (same start time): a parent recycled while the child is adopted would otherwise hand us a foreign child (PR #45 narrow review, R1)
+        if (proc_start(pid, self.PROC) != st or (parent is not None and (proc_ppid(pid, self.PROC) != parent.pid
+                                                                          or proc_start(parent.pid, self.PROC) != parent.start))):
             self._close(fd)
             self.skipped.append((pid, "identity changed while being adopted"))
             return None
@@ -221,18 +224,10 @@ class PeaceGame(D.Game):
         self.pid = game[0]
 
     def stop(self):
-        """Signal the owned processes through the pidfds opened at discovery, plus new descendants of parents whose identity still holds (adopted with their own pidfds);
-        returns the (pid, start) pairs signalled. A replaced parent is not walked; its original process is still reached through its pidfd."""
+        """Signal ONLY the handles captured at discovery (in start()), through the pidfds opened then; nothing is walked or adopted during cleanup (PR #45 narrow
+        review, R2). Returns the (pid, start) pairs signalled. Trade-off: a process the game spawns after discovery is not signalled here; the wine server then
+        ends by itself after its last client, and start() refuses an occupied display or prefix, so a leftover can never be adopted by a later run."""
         handles = list(self.owned)
-        for h in list(self.owned):
-            if proc_start(h.pid, self.PROC) == h.start:
-                for x in self._walk(h):
-                    if x.pid in [y.pid for y in handles]:
-                        self._close(x.fd)          # already owned from discovery: keep that pidfd, drop the duplicate
-                    else:
-                        handles.append(x)
-            else:
-                self.skipped.append((h.pid, "start time changed or process gone: not walked"))
         done = []
         for h in sorted(handles, key=lambda x: -x.pid):
             try:
