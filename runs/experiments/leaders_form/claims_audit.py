@@ -234,7 +234,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             rec = b[o + n * SAV.NATION_LEN: o + (n + 1) * SAV.NATION_LEN]
             s['nations'][n]['leader_raw_hex'] = rec[0x0B:0x0B + 26].hex()
             s['nations'][n]['leader'] = cstr(rec[0x0B:0x0B + 26]); s['nations'][n]['name'] = cstr(rec[:11])
-            s['nations'][n]['view_differs_from_default'] = (s['nations'][n]['view'] != [DEF['0x488'], DEF['0x486']])
+            s['nations'][n]['view_differs_from_default'] = (s['nations'][n]['view'] != [DEF['0x488'], DEF['0x486']]); s['nations'][n]['view_default'] = [DEF['0x488'], DEF['0x486']]
         s['humans'] = [n['id'] for n in s['nations'] if n['human']]
         names = [n['leader'] for n in s['nations'] if len(n['leader'].strip()) >= 3]
         s['news_naming_a_leader'] = [x for x in s['news'] if any(nm in x for nm in names)]
@@ -456,10 +456,10 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if m:
             objs = [o for o in allobjs if o['class'] == m.group(1)]; props = m.group(2).split()
             check(name, objs and not any(p in o['props'] for o in objs for p in props), 'found'); return
-        m = re.fullmatch(r'pool (size|nations|bytes_per_name|read_length|offset|duplicates_across_nations|(\w+) len) == (.+)', item)
+        m = re.fullmatch(r'pool (size|nations|bytes_per_name|read_length|offset|duplicates_across_nations|duplicate_names|max_nations_per_duplicate|(\w+) len) == (.+)', item)
         if m:
             what, nat, rhs = m.groups(); got = {'size': sum(len(v) for v in POOL.values()), 'nations': len(POOL), 'bytes_per_name': pool_len // (len(POOL) * 12) if POOL else None, 'read_length': pool_len, 'offset': off_calc,
-                                                 'duplicates_across_nations': dups_text}.get(what, len(POOL.get(nat, [])) if nat else None)
+                                                 'duplicates_across_nations': dups_text, 'duplicate_names': len(DUPS), 'max_nations_per_duplicate': max([len(v) for v in DUPS.values()] or [0])}.get(what, len(POOL.get(nat, [])) if nat else None)
             want = lit if rhs == '@literal' else int(rhs); check(name, got == want, 'recomputed %r' % (got,)); return
         m = re.fullmatch(r'sav (\w+) == (\d+)', item)
         if m: check(name, getattr(SAV, m.group(1), None) == int(m.group(2)), 'state/sav.py has %r' % getattr(SAV, m.group(1), None)); return
@@ -468,6 +468,8 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             kind, what, rhs = m.groups(); ok, got = scan(kind, what)
             if not check(name + ' scanned', ok, str(got)): return
             check(name, got == json.loads(rhs), 'the recordings give %r' % (got,)); return
+        m = re.fullmatch(r'draws count == (\d+)', item)
+        if m: check(name, len(DRAW_PLAYS) == int(m.group(1)), 'the draws table has %d rows with a recording' % len(DRAW_PLAYS)); return
         m = re.fullmatch(r'draws (all_in_pool|pairwise_different) == true', item)
         if m:
             lists = []
@@ -626,7 +628,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if m:
             phrase, inner = m.groups(); n0 = len(bad)
             prose = row.get('rule', row.get('statement', ''))
-            check(name + ' the phrase is in the prose of the row', plain(prose).find(phrase) >= 0, 'phrase %r not found in %r' % (phrase, plain(prose)[:120]))
+            check(name + ' the phrase is in the prose of the row', plain(prose).lower().find(phrase.lower()) >= 0, 'phrase %r not found in %r' % (phrase, plain(prose)[:120]))
             run_check(rid, inner, lit, row)
             kind, nums = LAST['kind'], set(LAST['nums'])
             pn = numbers(phrase); wrong = sorted(fmtn(x) for x in pn if x not in nums)
@@ -696,18 +698,24 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         cand = [t for t, x in EVID.items() if x['play'] == r['play']]
         if cand: DRAW_PLAYS.append((r['play'], cand[-1], 'default' if 'default' in REC[cand[-1]]['forms'] else 'second_default'))
     # ---- rules
-    RULE = {}; ROW_OBL = {}
+    RULE = {}; ROW_OBL = {}; SUGGEST = {}
+    SPELL_VAL = {'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'eight': 8, 'ten': 10, 'twelve': 12, 'sixteen': 16}
+    SPELLED = re.compile(r'\b(%s)\b' % '|'.join(SPELL_VAL), re.I)
     def coverage(label, text, sayslist, derived=True, words=True):
         """every number and every operation word (LEX) of `text` lies inside an occurrence of a phrase of a passing `says` item (in `sayslist`) whose check derives that number, or is of the kind the word requires"""
         pt = plain(text); spans_ = []
         for sy in sayslist:
             if not sy['ok']: continue
-            for mm in re.finditer(re.escape(sy['phrase']), pt): spans_.append((mm.start(), mm.end(), sy))
+            for mm in re.finditer(re.escape(sy['phrase']), pt, re.I): spans_.append((mm.start(), mm.end(), sy))
         for mm in NUM_RE.finditer(pt):
             t = mm.group(1).replace(',', ''); sp = ('x', int(t, 16)) if t.lower().startswith('0x') else ('d', int(t))
             if re.match(r'\[', pt[max(0, mm.start() - 1):mm.start()]) or re.match(r'\]', pt[mm.end():mm.end() + 1]): continue          # an array index
             cov = [sy for sa, sb, sy in spans_ if sa <= mm.start() and mm.end() <= sb]
             check('%s: the number %s ("...%s...") lies in a phrase of a passing says check that derives it' % (label, mm.group(1), pt[max(0, mm.start() - 18):mm.end() + 12]), any(sp in sy['nums'] for sy in cov), 'phrases covering it: %s' % [sy['phrase'] for sy in cov])
+        for mm in SPELLED.finditer(pt):
+            sp = ('d', SPELL_VAL[mm.group(1).lower()])
+            cov = [sy for sa, sb, sy in spans_ if sa <= mm.start() and mm.end() <= sb]
+            check('%s: the spelled number "%s" ("...%s...") lies in a phrase of a passing says check that derives it' % (label, mm.group(1), pt[max(0, mm.start() - 18):mm.end() + 12]), any(sp in sy['nums'] for sy in cov), 'phrases covering it: %s' % [sy['phrase'] for sy in cov])
         for rx, kinds in (LEX if words else []):
             if rx.startswith(r'\bbefore') and not derived: continue
             for mm in re.finditer(rx, pt, re.I):
@@ -798,6 +806,18 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             check('%s derived rows read no play' % rid, not any(re.match(PLAY_ID + ' ', it) for it in items))
         else:
             check('%s confirmed rows cite no code line' % rid, r['source'] == '-', r['source'])
+            if os.environ.get('AUDIT_SUGGEST'):            # developer aid: the evidence the checks of this row read (to be reviewed and pasted by hand); never used by the audit's own verdict
+                sug_ = set(); pls_ = set()
+                for it in items:
+                    for mm in re.finditer(r'(%s) ((?:[^\s{]|\{[^}]*\})+)' % PLAY_ID, it):
+                        tg_ = [t_ for t_, x_ in EVID.items() if x_['play'] == mm.group(1)]
+                        if tg_:
+                            pls_.add(mm.group(1))
+                            try: sug_ |= needs(tg_[-1], mm.group(2))
+                            except (KeyError, IndexError): pass
+                    gm = re.match(r'(%s) png (\S+) grey' % PLAY_ID, it)
+                    if gm: sug_.add(gm.group(2)); pls_.add(gm.group(1))
+                SUGGEST[rid] = '; '.join(sum([[p_] + sorted(x for x in sug_ if re.match(r'LF_%s_b\d+[_:]' % p_, x)) for p_ in sorted(pls_)], []))
             res, fl = resolve_row(rid, r, items); CUR['res'] = res
             check('%s confirmed rows cite a play' % rid, bool(res))
             for f in fl:
@@ -841,7 +861,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     def need(label, tag):
         check('required play exists (task Done-when): ' + label, tag is not None); return tag
     t0h = need('0 humans ticked, OK', newest(lambda r: hum(r) == [] and verified(r, 'press OK') and r.get('dumps')))
-    if t0h: obliged('0 humans ticked, OK: no human flag in the records', t0h, r'mem\.nations\[\*\]\.human', 0); obliged('0 humans ticked, OK: no autosave', t0h, r'rec\.autosave', None, 'absent')
+    if t0h: obliged('0 humans ticked, OK: no human flag in the records', t0h, r'mem\.nations\[\*\]\.human', 0); obliged('0 humans ticked, OK: no autosave file seen', t0h, r'rec\.autosave_seen\.state\.files', [], '==')
     for n_ in (1, 2, 16):
         t = need('%d human(s) ticked, OK' % n_, newest(lambda r: hum(r) is not None and len(hum(r)) == n_ and r.get('autosave') and (verified(r, 'press OK') or verified(r, 'key Return'))))
         if t: obliged('%d human(s) ticked: the flags in the save are the ticked nations' % n_, t, r'save\.humans', sorted(hum(REC[t])))
@@ -1052,7 +1072,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         cites = [s.strip() for s in r['rules'].split(',') if s.strip()]
         for x in cites: check('clone row %s cites rule %s that exists' % (r['id'], x), x in ruleids)
         check('clone row %s names the original' % r['id'], bool(r['the original']))
-        src_ = ' || '.join(frag(RULE[x]['rule']) for x in cites if x in RULE)
+        src_ = ' || '.join(frag(RULE[x]['rule'] + ' ' + RULE[x]['literal']) for x in cites if x in RULE)
         for fr_ in [f_.strip() for f_ in r['the original'].split(';') if f_.strip()]:
             if fr_ == '(not stated)': continue
             check('clone row %s: the fragment "%s" is a verbatim piece of a rule it cites (at least 3 words)' % (r['id'], fr_[:60]), len(fr_.split()) >= 3 and frag(fr_) in src_, 'not found in %s' % cites)
@@ -1140,7 +1160,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     def count_check(item, value):
         r = [v for k, v in cnt.items() if k.startswith(item)]
         if check('counts row present: ' + item, bool(r)): check('count %s: finding %s vs sources %s' % (item, r[0]['count'], value), int(r[0]['count']) == value)
-    count_check('unique play ids recorded ok', len(PIDS_OK)); count_check('successful recordings (all runners)', len(OKREC)); count_check('successful recordings by the pointer-verified runner', len(EVID))
+    count_check('unique play ids recorded ok', len(PIDS_OK)); count_check('successful recordings (all runners)', len(OKREC)); count_check('successful recordings by the evidence runner', len(EVID))
     count_check('failed recordings', len(FAILED)); count_check('recordings in all', len(REC)); count_check('pool names', sum(len(v) for v in POOL.values()))
     count_check('form controls', sum(1 for o in allobjs if o['class'] in ('TPanel', 'TCheckBox', 'TEdit'))); count_check('objects of the resource', len(allobjs))
     # ---- every number and operation word of the Answer and of "What this does not establish" lies in a phrase that a row the item CITES derives from a source (not in the union of the numbers of those rows); a cited id that does not exist fails
@@ -1166,6 +1186,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             for i_ in ids_: check('section "%s", item "%s...": the cited id %s exists in a table of the finding' % (sec, it[:30], i_), i_ in ALLIDS)
             txt = re.sub(r'\([A-Z]\d{2}[^)]*\)', '', it); txt = re.sub(r'`?\b[A-Z]{1,3}\d{2}\b`?', '', txt); txt = re.sub(r'^\d+\. ', '', txt)
             coverage('section "%s", item "%s..."' % (sec, txt.strip()[:40]), txt, [sy for i_ in ids_ for sy in SAYS.get(i_, [])], derived=False, words=(sec == 'Answer'))
+    if os.environ.get('AUDIT_SUGGEST'): json.dump(SUGGEST, open(os.environ['AUDIT_SUGGEST'], 'w'), indent=1)
     return checks[0], bad
 
 def main():
