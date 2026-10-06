@@ -12,6 +12,7 @@
  */
 #include <windows.h>
 #include <stdio.h>
+#include <string.h>
 
 static BOOL CALLBACK dump(HWND h, LPARAM lp)
 {
@@ -25,16 +26,33 @@ static BOOL CALLBACK dump(HWND h, LPARAM lp)
     return TRUE;
 }
 
+/* A hidden window can carry the same title as the dialog (a toolbar button's tooltip window, which Wine keeps after the pointer leaves, is named like its button:
+ * "Change units"); FindWindow may return that one, which has no controls. Pick the first VISIBLE top-level window with the title; with none, fail
+ * (never fall back to a hidden window of that title). */
+struct find { const char *title; HWND found; };
+static BOOL CALLBACK pick(HWND h, LPARAM lp)
+{
+    struct find *f = (struct find *)lp;
+    char txt[512] = "";
+    if (!IsWindowVisible(h)) return TRUE;
+    GetWindowTextA(h, txt, sizeof txt);
+    if (strcmp(txt, f->title) == 0) { f->found = h; return FALSE; }
+    return TRUE;
+}
+
 int main(int argc, char **argv)
 {
     HWND h;
+    struct find f;
     if (argc < 2) {
         fprintf(stderr, "usage: win_controls <window-title>\n");
         return 2;
     }
-    h = FindWindowA(NULL, argv[1]);
+    f.title = argv[1]; f.found = NULL;
+    EnumWindows(pick, (LPARAM)&f);
+    h = f.found;
     if (!h) {
-        fprintf(stderr, "window not found: %s\n", argv[1]);
+        fprintf(stderr, "visible window not found: %s\n", argv[1]);
         return 1;
     }
     EnumChildWindows(h, dump, 0);

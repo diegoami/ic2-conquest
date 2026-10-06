@@ -1,0 +1,323 @@
+21:29:05 [UA04] FAILED: DriverError('menu file > open had no verified effect after 3 attempts')
+21:29:59 [UA04] loaded REF_UA04_b7_fixture.v2.SAV (fixture, unedited); popups at load: []
+21:30:10 [UA04] control save REF_UA04_b7_ctl.SAV 2dd60d04fd958412fcab5f9d54a1e1ec14f05f7e262497e740495a157879f8ca
+21:30:22 [UA04] boxes after the order: [('Information', '6 ‘You can not split an army containing only 1 unit.')]
+21:30:38 [UA04] after save REF_UA04_b7_after.SAV 2dd60d04fd958412fcab5f9d54a1e1ec14f05f7e262497e740495a157879f8ca; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:31:13 [A01] loaded REF_A01_b7_staged.SAV (STAGED); popups at load: []
+21:31:23 [A01] control save REF_A01_b7_ctl.SAV a061ea302bbe3b10153768519980ec4306f097602f0e5ddabb727b900c319ee6
+21:31:41 [A01] boxes after the order: []
+21:31:52 [A01] after save REF_A01_b7_after.SAV 4253f165627ffb4ed7f6ba5e7a33b118b0abb8b9679a11f0eac2790b00e81cec; vs control: {"equal": false, "n_bytes": 33, "ranges": [[28648, 28648], [108836, 108836], [108910, 108910], [108912, 108912], [108914, 108915], [108918, 108923], [108925, 108941], [109490, 109491], [109506, 109507]]}
+21:32:16 [A01b] loaded REF_A01b_b7_staged.SAV (STAGED); popups at load: []
+21:32:26 [A01b] control save REF_A01b_b7_ctl.SAV 38b67b76abae1178ae6809750371aae6ffec325793206a648e37b06bdd428080
+21:32:37 [A01b] boxes after the order: [('Information', '6 An army on a fleet cannot be combined with anather.')]
+21:32:51 [A01b] after save REF_A01b_b7_after.SAV 38b67b76abae1178ae6809750371aae6ffec325793206a648e37b06bdd428080; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:33:13 [BF01] loaded REF_BF01_b7_fixture.SAV (fixture, unedited); popups at load: []
+21:33:23 [BF01] control save REF_BF01_b7_ctl.SAV 39f781458775c513cd0c7c5587de610f19eb3e3705a4007a1a9cffe8d755b66a
+21:33:35 [BF01] boxes after the order: [('Information', '6 Only nations with coastal cities can build fleets.')]
+21:33:49 [BF01] after save REF_BF01_b7_after.SAV 39f781458775c513cd0c7c5587de610f19eb3e3705a4007a1a9cffe8d755b66a; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:34:17 [C01] loaded REF_C01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:34:26 [C01] control save REF_C01_b7_ctl.SAV eb8fa43dc1c6c65c6c446f4f5a0dacefa3cd36f0267fe62b45596f91b291048e
+21:34:51 [C01] boxes after the order: [('Information', '6 This city cannot be fortified any further.')]
+21:35:04 [C01] after save REF_C01_b7_after.SAV ef4b2c9b6cf43235f43476ba76899b313c5a4ffad90c7b8d60fb36fe256fa55c; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:35:31 [C02] loaded REF_C02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:35:40 [C02] control save REF_C02_b7_ctl.SAV 34dd4f70eee23a772c655227fdecc2d6a540220ef3ba929c08440435956430fd
+21:36:05 [C02] boxes after the order: [('Information', '6 This city is already being fortified.')]
+21:36:20 [C02] after save REF_C02_b7_after.SAV 4d671dbe214b0b8d167c78ce9b582fb710f94c82ed49e10d50fef0c8f0aada8a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:36:47 [C03] loaded REF_C03_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:36:57 [C03] control save REF_C03_b7_ctl.SAV fda49796f13fadda28c0b402cd80c8845fe9390c52687df48965ae686724922b
+21:37:23 [C03] boxes after the order: [('Information', '6 You cannot fortify a city which is under siege.')]
+21:37:38 [C03] after save REF_C03_b7_after.SAV f72c576b4358a3c40982306ebd89c4684565a4ec03d538d8f501a87355c3db3f; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:38:05 [CU01] loaded REF_CU01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:38:15 [CU01] control save REF_CU01_b7_ctl.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+21:38:27 [CU01] FAILED: DriverError("no controls found for window 'Change units'")
+21:38:52 [CU02] loaded REF_CU02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:39:01 [CU02] control save REF_CU02_b7_ctl.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+21:39:13 [CU02] FAILED: DriverError("no controls found for window 'Change units'")
+21:39:41 [CU03] loaded REF_CU03_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:39:52 [CU03] FAILED: DriverError("Save as: the new window does not read as a file dialog (OCR ['save', 'in:', '|b', 'ic2', '=i', 'eee', 'ee', 'ee', 'ee'])")
+21:40:27 [CU04] loaded REF_CU04_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:40:38 [CU04] control save REF_CU04_b7_ctl.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:40:51 [CU04] FAILED: DriverError("no controls found for window 'Change units'")
+21:41:18 [CU05] loaded REF_CU05_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:41:29 [CU05] control save REF_CU05_b7_ctl.SAV 4300b505486187b374280165e63e5586dcf9af077dd8fa95fd4e01c75e9d3be3
+21:41:41 [CU05] FAILED: DriverError("no controls found for window 'Change units'")
+21:42:09 [CU06] loaded REF_CU06_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:42:19 [CU06] control save REF_CU06_b7_ctl.SAV 32a55e6811ffe665eb02e7c780142d5298f34786c78eb041f6d0a0cce7c7fc50
+21:42:31 [CU06] FAILED: DriverError("no controls found for window 'Change units'")
+21:42:58 [CU07] loaded REF_CU07_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+21:43:08 [CU07] control save REF_CU07_b7_ctl.SAV 69f73fa9b73cf7832641390a6d5a205f681271ac94de38fba15083e5b9b8d3f6
+21:43:20 [CU07] FAILED: DriverError("no controls found for window 'Change units'")
+21:43:47 [CU08] loaded REF_CU08_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+21:44:38 [CU01] loaded REF_CU01_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:44:48 [CU01] control save REF_CU01_b7_ctl.v2.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+21:45:08 [CU01] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:45:35 [CU01] loaded REF_CU01_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:45:46 [CU01] control save REF_CU01_b7_ctl.v3.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+21:46:05 [CU01] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:46:31 [CU02] loaded REF_CU02_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:46:41 [CU02] control save REF_CU02_b7_ctl.v2.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:47:01 [CU02] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:47:28 [CU02] loaded REF_CU02_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:47:38 [CU02] control save REF_CU02_b7_ctl.v3.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:48:00 [CU02] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:48:28 [CU03] loaded REF_CU03_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:48:39 [CU03] control save REF_CU03_b7_ctl.SAV 4300b505486187b374280165e63e5586dcf9af077dd8fa95fd4e01c75e9d3be3
+21:48:59 [CU03] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:49:26 [CU03] loaded REF_CU03_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:49:36 [CU03] control save REF_CU03_b7_ctl.v2.SAV 4300b505486187b374280165e63e5586dcf9af077dd8fa95fd4e01c75e9d3be3
+21:49:56 [CU03] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:50:23 [CU04] loaded REF_CU04_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:50:33 [CU04] control save REF_CU04_b7_ctl.v2.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:50:53 [CU04] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:51:20 [CU04] loaded REF_CU04_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:51:32 [CU04] control save REF_CU04_b7_ctl.v3.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+21:51:53 [CU04] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:52:18 [CU05] loaded REF_CU05_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:52:27 [CU05] control save REF_CU05_b7_ctl.v2.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+21:52:48 [CU05] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:53:13 [CU05] loaded REF_CU05_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:53:23 [CU05] control save REF_CU05_b7_ctl.v3.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+21:53:43 [CU05] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+21:54:10 [CU06] loaded REF_CU06_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:54:20 [CU06] control save REF_CU06_b7_ctl.v2.SAV 32a55e6811ffe665eb02e7c780142d5298f34786c78eb041f6d0a0cce7c7fc50
+21:54:40 [CU06] attempt 1 FAILED: DriverError("no controls found for window 'Change units'")
+21:55:06 [CU06] loaded REF_CU06_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:55:15 [CU06] control save REF_CU06_b7_ctl.v3.SAV 32a55e6811ffe665eb02e7c780142d5298f34786c78eb041f6d0a0cce7c7fc50
+21:55:35 [CU06] attempt 2 FAILED: DriverError("no controls found for window 'Change units'")
+22:00:51 [CU01] loaded REF_CU01_b7_staged.v4.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:01:01 [CU01] control save REF_CU01_b7_ctl.v4.SAV 23a9d9473470d35fa54275ceadcf96a5ffef48a6661eacb8d94d01db341c7e60
+22:01:18 [CU01] boxes after the order: [('Information', '6 This army already has 20 units.')]
+22:01:37 [CU01] after save REF_CU01_b7_after.SAV b5c11e75a3b59e75bcf162df29f7d416d526f6b0cee33a4d881bd4e47587e9e1; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:02:04 [CU02] loaded REF_CU02_b7_staged.v4.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:02:14 [CU02] control save REF_CU02_b7_ctl.v4.SAV c7a790f4ff6dc41596e91ee762ec78f39968856afedf7478c3fca2689b36d862
+22:02:31 [CU02] boxes after the order: [('Information', '6 DiS sre Lesa')]
+22:02:50 [CU02] after save REF_CU02_b7_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:03:17 [CU03] loaded REF_CU03_b7_staged.v4.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:03:26 [CU03] control save REF_CU03_b7_ctl.v3.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+22:03:45 [CU03] boxes after the order: [('Information', '6 ‘You can only split 1 unit at a time.')]
+22:04:04 [CU03] after save REF_CU03_b7_after.SAV 1087a163aa10dd24b6a4c8cb6bb1e070641717ff7f68d740ad87f9c8e471e22e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:04:29 [CU04] loaded REF_CU04_b7_staged.v4.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:04:39 [CU04] control save REF_CU04_b7_ctl.v4.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+22:04:57 [CU04] boxes after the order: [('Information', '6 You can only join regular units together.')]
+22:05:15 [CU04] after save REF_CU04_b7_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:05:41 [CU05] loaded REF_CU05_b7_staged.v4.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:05:50 [CU05] control save REF_CU05_b7_ctl.v4.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+22:06:08 [CU05] boxes after the order: [('Information', '6 ‘You can only combine units of the same type.')]
+22:06:26 [CU05] after save REF_CU05_b7_after.SAV 1087a163aa10dd24b6a4c8cb6bb1e070641717ff7f68d740ad87f9c8e471e22e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:06:52 [CU06] loaded REF_CU06_b7_staged.v4.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:07:02 [CU06] control save REF_CU06_b7_ctl.v4.SAV 8efddf7988506d612308297cbbbb88dad9051c0c3cf13cde657f2b9a69fc00fb
+22:07:19 [CU06] boxes after the order: [('Information', '6 These units are too large to be combined.')]
+22:07:38 [CU06] after save REF_CU06_b7_after.SAV 114fc14d42c4d6fe33d2b03b9028b07209e1aabbdb57760ad5aa49686400b829; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:08:03 [CU07] loaded REF_CU07_b7_staged.v3.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:08:13 [CU07] control save REF_CU07_b7_ctl.v2.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27
+22:08:27 [CU07] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+22:08:33 [CU07] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+22:08:51 [CU07] after save REF_CU07_b7_after.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:09:17 [CU08] loaded REF_CU08_b7_staged.v2.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:09:26 [CU08] control save REF_CU08_b7_ctl.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27
+22:09:41 [CU08] Confirm box ['@ Are you sure you want to disband 2 units. no | co'] answered Yes
+22:09:47 [CU08] boxes after the order: [('Confirm', '@ Are you sure you want to disband 2 units. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+22:10:05 [CU08] after save REF_CU08_b7_after.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:10:31 [D05a] loaded REF_D05a_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:10:40 [D05a] control save REF_D05a_b7_ctl.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+22:10:58 [D05a] boxes after the order: [('Information', '6 ‘You can only rename 1 unit at a time.')]
+22:11:16 [D05a] after save REF_D05a_b7_after.SAV 1087a163aa10dd24b6a4c8cb6bb1e070641717ff7f68d740ad87f9c8e471e22e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:11:42 [D05b] loaded REF_D05b_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:11:51 [D05b] control save REF_D05b_b7_ctl.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+22:12:08 [D05b] boxes after the order: [('Information', '6 ‘You can only rename regular units.')]
+22:12:27 [D05b] after save REF_D05b_b7_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:12:52 [D06] loaded REF_D06_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:13:02 [D06] control save REF_D06_b7_ctl.SAV 0391e64d32edb38c47820af89aa46622d24b28eaad590d8f46093ed506db67d8
+22:13:18 [D06] boxes after the order: [('Information', '6 This unit is too small to split.')]
+22:13:37 [D06] after save REF_D06_b7_after.SAV 45db23d024c6c938a4de2f794f0bd34127c834accbd50c4cac03409c2ea35507; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:13:59 [E01] loaded REF_E01_b7_fixture.SAV (fixture, unedited); popups at load: []
+22:14:09 [E01] control save REF_E01_b7_ctl.SAV 927d5bc927536768d0998f90f988e60b4f616245eadd99a6ec028fe520abd095
+22:14:14 [E01] boxes after the order: [('Confirm', '@ The army is too large for this fleet ?')]
+22:14:27 [E01] after save REF_E01_b7_after.SAV 927d5bc927536768d0998f90f988e60b4f616245eadd99a6ec028fe520abd095; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:14:50 [F01] loaded REF_F01_b7_fixture.SAV (fixture, unedited); popups at load: []
+22:15:00 [F01] control save REF_F01_b7_ctl.SAV 927d5bc927536768d0998f90f988e60b4f616245eadd99a6ec028fe520abd095
+22:15:11 [F01] boxes after the order: [('Information', '6 ‘You can nat split a fleet containing less than 20 ships.')]
+22:15:24 [F01] after save REF_F01_b7_after.SAV 927d5bc927536768d0998f90f988e60b4f616245eadd99a6ec028fe520abd095; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:15:47 [F02] loaded REF_F02_b7_staged.SAV (STAGED); popups at load: []
+22:15:50 [F02] pre-order step done (a normal game order, before the control save)
+22:15:59 [F02] control save REF_F02_b7_ctl.SAV 18c5ad53c5bc8e4448457e7dde650165c73f85755b459268671e61c167d0ebca
+22:16:10 [F02] boxes after the order: [('Information', '6 ‘You can not split a fleet carrying an army.')]
+22:16:23 [F02] after save REF_F02_b7_after.SAV 18c5ad53c5bc8e4448457e7dde650165c73f85755b459268671e61c167d0ebca; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:16:46 [F03b] loaded REF_F03b_b7_fixture.SAV (fixture, unedited); popups at load: []
+22:16:49 [F03b] pre-order step done (a normal game order, before the control save)
+22:16:58 [F03b] control save REF_F03b_b7_ctl.SAV a727fecb2f3bc2fc0af373695331b231ff8f15566c1c427973f5df60a28ef1b8
+22:17:09 [F03b] boxes after the order: [('Information', '6 The fleet can only be repaired at one of your cities.')]
+22:17:23 [F03b] after save REF_F03b_b7_after.SAV a727fecb2f3bc2fc0af373695331b231ff8f15566c1c427973f5df60a28ef1b8; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:17:45 [F04] loaded REF_F04_b7_fixture.SAV (fixture, unedited); popups at load: []
+22:17:55 [F04] control save REF_F04_b7_ctl.SAV 927d5bc927536768d0998f90f988e60b4f616245eadd99a6ec028fe520abd095
+22:18:06 [F04] boxes after the order: [('Confirm', '@ Are you sure you want to scuttle this fleet ? no | co')]
+22:18:19 [F04] after save REF_F04_b7_after.SAV 927d5bc927536768d0998f90f988e60b4f616245eadd99a6ec028fe520abd095; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:18:42 [F04b] loaded REF_F04b_b7_fixture.SAV (fixture, unedited); popups at load: []
+22:18:45 [F04b] pre-order step done (a normal game order, before the control save)
+22:18:54 [F04b] control save REF_F04b_b7_ctl.SAV a727fecb2f3bc2fc0af373695331b231ff8f15566c1c427973f5df60a28ef1b8
+22:19:05 [F04b] boxes after the order: [('Information', '6 To scuttle a fleet it must be near one of your cities.')]
+22:19:18 [F04b] after save REF_F04b_b7_after.SAV a727fecb2f3bc2fc0af373695331b231ff8f15566c1c427973f5df60a28ef1b8; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:19:41 [F05] loaded REF_F05_b7_staged.SAV (STAGED); popups at load: []
+22:19:44 [F05] pre-order step done (a normal game order, before the control save)
+22:19:54 [F05] control save REF_F05_b7_ctl.SAV 18c5ad53c5bc8e4448457e7dde650165c73f85755b459268671e61c167d0ebca
+22:20:05 [F05] boxes after the order: [('Information', '6 & fleet cannot be scuttled while it is carrying an army.')]
+22:20:18 [F05] after save REF_F05_b7_after.SAV 18c5ad53c5bc8e4448457e7dde650165c73f85755b459268671e61c167d0ebca; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:20:41 [F06] loaded REF_F06_b7_staged.SAV (STAGED); popups at load: []
+22:20:44 [F06] pre-order step done (a normal game order, before the control save)
+22:20:54 [F06] control save REF_F06_b7_ctl.SAV 18c5ad53c5bc8e4448457e7dde650165c73f85755b459268671e61c167d0ebca
+22:21:05 [F06] boxes after the order: [('Information', '6 & fleet cannot be repaired while it is carrying an army.')]
+22:21:18 [F06] after save REF_F06_b7_after.SAV 18c5ad53c5bc8e4448457e7dde650165c73f85755b459268671e61c167d0ebca; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:21:44 [M01] loaded REF_M01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:21:53 [M01] control save REF_M01_b7_ctl.SAV 50d551065c160a2f76561e1d91fb45b74c3d8d1cf1446eba7de6ba2f9e23f4bc
+22:22:07 [M01] boxes after the order: [('Information', '© No mercenaries will join an army with so few supplies.')]
+22:22:20 [M01] after save REF_M01_b7_after.SAV 659aebf0b64ac5f28ce05e17d30246d598204d7a92d7eb9ad0974cd1d2bcfaf4; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:22:46 [M02] loaded REF_M02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:22:55 [M02] control save REF_M02_b7_ctl.SAV 0c18f28a2ec19a22a76000bf2ff888f7be1c9fb29086a8854b17f27fe305748f
+22:23:08 [M02] boxes after the order: [('Information', '6 This army cannot get any bigger.')]
+22:23:22 [M02] after save REF_M02_b7_after.SAV 0dd2bf69f113203972b6e5f8c1085d621713f6119db5478adbf700ab3fccaa1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:23:48 [M03] loaded REF_M03_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:23:58 [M03] control save REF_M03_b7_ctl.SAV fb707e2830093b44aa626a26405d9d0bc6b3ce98f7f6c3422e50ac01e229bf9c
+22:24:11 [M03] boxes after the order: [('Information', '6 This army already has 20 units.')]
+22:24:25 [M03] after save REF_M03_b7_after.SAV 0e19547e95083cc4de83c00417af392640fda75f27b837993cd3431a855a7b69; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:24:51 [M04] loaded REF_M04_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:25:00 [M04] control save REF_M04_b7_ctl.SAV 02f4235e38ab19a4141cdc6e6aa35414e0d36117c459f51205749b11ca631349
+22:25:14 [M04] boxes after the order: [('Information', '6 You cannot recruit from an enemy city.')]
+22:25:27 [M04] after save REF_M04_b7_after.SAV 56bb2cee8f0ae6e12f8019ebd61f27f975e6b57fa719ebd62773d0e30aff2271; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:25:52 [MM01] loaded REF_MM01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:26:02 [MM01] control save REF_MM01_b7_ctl.SAV 78e25404aa80efa33dc27c18a2d20d22966cf53e3041811bf7b19e49f20d2caf
+22:26:19 [MM01] boxes after the order: [('Information', '© ‘Your army has too little money to pay these mercenaries.')]
+22:26:37 [MM01] after save REF_MM01_b7_after.SAV 3c862d32e6153bb5b84f3d50d01128aadf74f5f71c9f2aae4442179db87bf19e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:27:03 [MM02] loaded REF_MM02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:27:12 [MM02] control save REF_MM02_b7_ctl.SAV 47735ff619fe78f6259005ab98a521b2e7c66bd94f3fe3b3029aa562b3bcc2fc
+22:27:29 [MM02] boxes after the order: [('Information', '6 An army can not contain more than 100,000 troops.')]
+22:27:47 [MM02] after save REF_MM02_b7_after.SAV d071494b4b321739d38d4a435ba1a6891a0e6c65bda179f84225625a6e315319; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:28:13 [RC01] loaded REF_RC01_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:28:23 [RC01] control save REF_RC01_b7_ctl.SAV f97249aff3f8badc02c5b14b836d1cfacf047b9a6467d7581751b87e659c6c08
+22:28:38 [RC01] boxes after the order: [('Information', '6 ‘You have reached your limit of 40 units.')]
+22:28:56 [RC01] after save REF_RC01_b7_after.SAV f97249aff3f8badc02c5b14b836d1cfacf047b9a6467d7581751b87e659c6c08; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:29:21 [RC02] loaded REF_RC02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:29:31 [RC02] control save REF_RC02_b7_ctl.SAV c1caed6d9cc81221bda8b51d48eb56c81af33cb59b0b36521d821bf0e725c50b
+22:29:46 [RC02] boxes after the order: [('Information', 'S Your mobilisation rate is already 100%.')]
+22:30:04 [RC02] after save REF_RC02_b7_after.SAV c1caed6d9cc81221bda8b51d48eb56c81af33cb59b0b36521d821bf0e725c50b; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:30:30 [RL01] loaded REF_RL01_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:30:40 [RL01] control save REF_RL01_b7_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:30:53 [RL01] attempt 1 FAILED: DriverError('relations radio nation 6 column 0: no change in the control after 3 clicks')
+22:31:18 [RL01] loaded REF_RL01_b7_fixture.v2.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:31:27 [RL01] control save REF_RL01_b7_ctl.v2.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:31:40 [RL01] attempt 2 FAILED: DriverError('relations radio nation 6 column 0: no change in the control after 3 clicks')
+22:32:05 [RL02] loaded REF_RL02_b7_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:32:15 [RL02] control save REF_RL02_b7_ctl.SAV 1b8c02e517da28330299aa3fe65ce0eccfdb14de6ce149f272c9e8e953ae74bb
+22:32:28 [RL02] attempt 1 FAILED: DriverError('relations radio nation 7 column 1: no change in the control after 3 clicks')
+22:32:52 [RL02] loaded REF_RL02_b7_staged.v2.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:33:02 [RL02] control save REF_RL02_b7_ctl.v2.SAV 1b8c02e517da28330299aa3fe65ce0eccfdb14de6ce149f272c9e8e953ae74bb
+22:33:15 [RL02] attempt 2 FAILED: DriverError('relations radio nation 7 column 1: no change in the control after 3 clicks')
+22:33:40 [RL03] loaded REF_RL03_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:33:49 [RL03] control save REF_RL03_b7_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:34:03 [RL03] attempt 1 FAILED: DriverError('relations radio nation 4 column 1: no change in the control after 3 clicks')
+22:34:27 [RL03] loaded REF_RL03_b7_fixture.v2.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:34:37 [RL03] control save REF_RL03_b7_ctl.v2.SAV 5310d2e068262bcac19d8f4090a8d0f6f08a97b371d4682e9724542338681916
+22:34:50 [RL03] attempt 2 FAILED: DriverError('relations radio nation 4 column 1: no change in the control after 3 clicks')
+22:35:15 [RL04] loaded REF_RL04_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:35:24 [RL04] control save REF_RL04_b7_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:35:37 [RL04] attempt 1 FAILED: DriverError('relations radio nation 6 column 1: no change in the control after 3 clicks')
+22:36:02 [RL04] loaded REF_RL04_b7_fixture.v2.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:36:11 [RL04] control save REF_RL04_b7_ctl.v2.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:36:25 [RL04] attempt 2 FAILED: DriverError('relations radio nation 6 column 1: no change in the control after 3 clicks')
+22:36:49 [RL05] loaded REF_RL05_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:36:59 [RL05] control save REF_RL05_b7_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:37:12 [RL05] attempt 1 FAILED: DriverError('relations radio nation 1 column 2: no change in the control after 3 clicks')
+22:37:37 [RL05] loaded REF_RL05_b7_fixture.v2.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:37:46 [RL05] control save REF_RL05_b7_ctl.v2.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:37:59 [RL05] attempt 2 FAILED: DriverError('relations radio nation 1 column 2: no change in the control after 3 clicks')
+22:38:24 [S01] loaded REF_S01_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:38:33 [S01] control save REF_S01_b7_ctl.SAV 3549b67118fd2c97e257757577738eabd0bf3ebbb2c193cabd894b84ac552963
+22:38:44 [S01] boxes after the order: [('Information', '6 An army must be near its own city to disband.')]
+22:38:57 [S01] after save REF_S01_b7_after.SAV 3549b67118fd2c97e257757577738eabd0bf3ebbb2c193cabd894b84ac552963; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:39:23 [S02] loaded REF_S02_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:39:32 [S02] control save REF_S02_b7_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:39:46 [S02] boxes after the order: [('Confirm', '@ Are you sure you want to disband this army ? no | co')]
+22:39:59 [S02] after save REF_S02_b7_after.SAV 8c289c85a06eb87a9021b665337e30662578b68180aef8f2871e62a864a6bea5; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:40:25 [SEL01] loaded REF_SEL01_b7_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+22:40:34 [SEL01] control save REF_SEL01_b7_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+22:40:46 [SEL01] boxes after the order: []
+22:40:57 [SEL01] after save REF_SEL01_b7_after.SAV 8c289c85a06eb87a9021b665337e30662578b68180aef8f2871e62a864a6bea5; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+22:41:22 [T01] loaded REF_T01_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:41:33 [T01] control save REF_T01_b7_ctl.SAV ec37d3fbaa03679d9d542bc3a3cb1ed7eeabd34d7fefa0172dac71f41e9717ad
+22:41:48 [T01] boxes after the order: [('Information', '6 This army already has 20 units.')]
+22:42:06 [T01] after save REF_T01_b7_after.SAV ec37d3fbaa03679d9d542bc3a3cb1ed7eeabd34d7fefa0172dac71f41e9717ad; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:42:33 [T01r] loaded REF_T01r_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:42:43 [T01r] control save REF_T01r_b7_ctl.SAV 9b5e1b485e472a6636457439496a68c56e6382f210d5ba7bcb6b381708a703c0
+22:42:59 [T01r] boxes after the order: [('Information', '6 This army already has 20 units.')]
+22:43:17 [T01r] after save REF_T01r_b7_after.SAV 9b5e1b485e472a6636457439496a68c56e6382f210d5ba7bcb6b381708a703c0; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:43:43 [T02] loaded REF_T02_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:43:53 [T02] control save REF_T02_b7_ctl.SAV d2e5d28e90b1e5a29782d909f20b1ddb3f5ba54af5df7db74c4d45d17bdf7508
+22:44:08 [T02] boxes after the order: [('Information', '6 An army can not hold more than 100,000 troops.')]
+22:44:26 [T02] after save REF_T02_b7_after.SAV d2e5d28e90b1e5a29782d909f20b1ddb3f5ba54af5df7db74c4d45d17bdf7508; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:44:52 [T02r] loaded REF_T02r_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:45:01 [T02r] control save REF_T02r_b7_ctl.SAV 1f719233a8acad3c4552116f89d0d0c18a2726260474432852fddb49eeae6713
+22:45:17 [T02r] boxes after the order: [('Information', '6 An army can not hold more than 100,000 troops.')]
+22:45:36 [T02r] after save REF_T02r_b7_after.SAV 1f719233a8acad3c4552116f89d0d0c18a2726260474432852fddb49eeae6713; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:46:02 [TD01] loaded REF_TD01_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:46:12 [TD01] control save REF_TD01_b7_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+22:46:26 [TD01] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+22:46:32 [TD01] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+22:46:50 [TD01] after save REF_TD01_b7_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:47:16 [TD02] loaded REF_TD02_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:47:25 [TD02] control save REF_TD02_b7_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+22:47:38 [TD02] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+22:47:44 [TD02] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+22:48:03 [TD02] after save REF_TD02_b7_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:48:26 [TR3] loaded REF_TR3_b7_staged.SAV (STAGED); popups at load: []
+22:48:36 [TR3] control save REF_TR3_b7_ctl.SAV 742a9f20b380995f036a5ffb6269bdf43fcdd7aa195eaf33e0109e6fd99a63e7
+22:48:57 [TR3] boxes after the order: []
+22:49:12 [TR3] after save REF_TR3_b7_after.SAV 742a9f20b380995f036a5ffb6269bdf43fcdd7aa195eaf33e0109e6fd99a63e7; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:49:35 [TR3b] loaded REF_TR3b_b7_staged.SAV (STAGED); popups at load: []
+22:49:45 [TR3b] control save REF_TR3b_b7_ctl.SAV ba0c5a7aeec47e25a1a8d77e82119e7131c361b4b4c0649905896f3543471be4
+22:49:59 [TR3b] boxes after the order: [('Information', '6 This fleet can not carry any more troops.')]
+22:50:17 [TR3b] after save REF_TR3b_b7_after.SAV ba0c5a7aeec47e25a1a8d77e82119e7131c361b4b4c0649905896f3543471be4; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:50:43 [UA05a] loaded REF_UA05a_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:50:53 [UA05a] control save REF_UA05a_b7_ctl.SAV f29dad6b758de9cceeb468d5ed342c6ad623b3890dedb271b1989d6e81ec6315
+22:51:04 [UA05a] boxes after the order: [('Information', '6 These 2 armies combined contain more than 20 units.')]
+22:51:17 [UA05a] after save REF_UA05a_b7_after.SAV f29dad6b758de9cceeb468d5ed342c6ad623b3890dedb271b1989d6e81ec6315; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:51:43 [UA05b] loaded REF_UA05b_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:51:53 [UA05b] control save REF_UA05b_b7_ctl.SAV 50e06b2664b208207b605994cf481ff48dd6b41610320245e7462c8c97a1d250
+22:52:04 [UA05b] boxes after the order: [('Information', '6 These 2 armies combined contain more than 100,000 troops.')]
+22:52:18 [UA05b] after save REF_UA05b_b7_after.SAV 50e06b2664b208207b605994cf481ff48dd6b41610320245e7462c8c97a1d250; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:52:43 [UA05c] loaded REF_UA05c_b7_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+22:52:53 [UA05c] control save REF_UA05c_b7_ctl.SAV bce57c078576af769590cb6e3ecca0aa14ffbdb3fff9d760623e63a509057234
+22:53:04 [UA05c] boxes after the order: [('Information', '6 These 2 armies combined contain more than 20 units.')]
+22:53:17 [UA05c] after save REF_UA05c_b7_after.SAV bce57c078576af769590cb6e3ecca0aa14ffbdb3fff9d760623e63a509057234; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:53:40 [UF05] loaded REF_UF05_b7_staged.SAV (STAGED); popups at load: []
+22:53:43 [UF05] pre-order step done (a normal game order, before the control save)
+22:53:52 [UF05] control save REF_UF05_b7_ctl.SAV 4b27b2534a692ef98d01508c704eed2c322ecc5dac8a97b961e48eb01357b6c0
+22:54:04 [UF05] boxes after the order: [('Information', '6 ‘You cannot join fleets if one is carrying an army,')]
+22:54:17 [UF05] after save REF_UF05_b7_after.SAV 4b27b2534a692ef98d01508c704eed2c322ecc5dac8a97b961e48eb01357b6c0; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:54:39 [UF05b] loaded REF_UF05b_b7_staged.SAV (STAGED); popups at load: []
+22:54:49 [UF05b] control save REF_UF05b_b7_ctl.SAV 9678f09264dc68c2dabb98c7dca611f88ecb783cbc9ed8569297adbac26885a9
+22:55:00 [UF05b] boxes after the order: [('Information', '6 There are more than 100 ships in these fleets combined.')]
+22:55:13 [UF05b] after save REF_UF05b_b7_after.SAV 9678f09264dc68c2dabb98c7dca611f88ecb783cbc9ed8569297adbac26885a9; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+22:55:36 [UF05c] loaded REF_UF05c_b7_staged.SAV (STAGED); popups at load: []
+22:55:39 [UF05c] pre-order step done (a normal game order, before the control save)
+22:55:49 [UF05c] control save REF_UF05c_b7_ctl.SAV 0e6b96c90a5a419a04433085c801c9138cccd4a13dd9b6fe0803f192c18c5bea
+22:56:00 [UF05c] boxes after the order: [('Information', '6 There are more than 100 ships in these fleets combined.')]
+22:56:13 [UF05c] after save REF_UF05c_b7_after.SAV 0e6b96c90a5a419a04433085c801c9138cccd4a13dd9b6fe0803f192c18c5bea; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+23:01:23 [RL01] loaded REF_RL01_b7_fixture.v3.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+23:01:33 [RL01] control save REF_RL01_b7_ctl.v3.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+23:01:47 [RL01] boxes after the order: [('Information', '6 Gaul does not want to make peace at this time.')]
+23:02:05 [RL01] after save REF_RL01_b7_after.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+23:02:31 [RL02] loaded REF_RL02_b7_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+23:02:40 [RL02] control save REF_RL02_b7_ctl.v3.SAV 1b8c02e517da28330299aa3fe65ce0eccfdb14de6ce149f272c9e8e953ae74bb
+23:02:54 [RL02] boxes after the order: [('Information', '6 You can only trade with 3 nations.')]
+23:03:12 [RL02] after save REF_RL02_b7_after.SAV 1b8c02e517da28330299aa3fe65ce0eccfdb14de6ce149f272c9e8e953ae74bb; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+23:03:38 [RL03] loaded REF_RL03_b7_fixture.v3.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+23:03:48 [RL03] control save REF_RL03_b7_ctl.v3.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+23:04:01 [RL03] boxes after the order: [('Information', '6 Macedonia does not want to trade with you.')]
+23:04:19 [RL03] after save REF_RL03_b7_after.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+23:04:45 [RL04] loaded REF_RL04_b7_fixture.v3.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+23:04:55 [RL04] control save REF_RL04_b7_ctl.v3.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+23:05:08 [RL04] boxes after the order: [('Information', 'GQ rer')]
+23:05:27 [RL04] after save REF_RL04_b7_after.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+23:05:53 [RL05] loaded REF_RL05_b7_fixture.v3.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+23:06:03 [RL05] control save REF_RL05_b7_ctl.v3.SAV 5310d2e068262bcac19d8f4090a8d0f6f08a97b371d4682e9724542338681916
+23:06:16 [RL05] boxes after the order: [('Information', '6 Carthage does not want to ally with your nation.')]
+23:06:34 [RL05] after save REF_RL05_b7_after.SAV 5310d2e068262bcac19d8f4090a8d0f6f08a97b371d4682e9724542338681916; vs control: {"equal": true, "n_bytes": 0, "ranges": []}

@@ -1,0 +1,18 @@
+11:14:07 [TD01] loaded REF_TD01_b9c6_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+11:14:17 [TD01] control save REF_TD01_b9c6_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+11:14:29 [TD01] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+11:14:35 [TD01] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+11:14:53 [TD01] after save REF_TD01_b9c6_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+11:15:17 [TD02] loaded REF_TD02_b9c6_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+11:15:27 [TD02] control save REF_TD02_b9c6_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+11:15:39 [TD02] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+11:15:45 [TD02] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+11:16:03 [TD02] after save REF_TD02_b9c6_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+11:16:27 [MM01] loaded REF_MM01_b9c6_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+11:16:37 [MM01] control save REF_MM01_b9c6_ctl.SAV 78e25404aa80efa33dc27c18a2d20d22966cf53e3041811bf7b19e49f20d2caf
+11:16:52 [MM01] boxes after the order: [('Information', '© ‘Your army has too little money to pay these mercenaries.')]
+11:17:10 [MM01] after save REF_MM01_b9c6_after.SAV 3c862d32e6153bb5b84f3d50d01128aadf74f5f71c9f2aae4442179db87bf19e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+11:17:35 [MM02] loaded REF_MM02_b9c6_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+11:17:44 [MM02] control save REF_MM02_b9c6_ctl.SAV 47735ff619fe78f6259005ab98a521b2e7c66bd94f3fe3b3029aa562b3bcc2fc
+11:18:00 [MM02] boxes after the order: [('Information', '6 An army can not contain more than 100,000 troops.')]
+11:18:18 [MM02] after save REF_MM02_b9c6_after.SAV d071494b4b321739d38d4a435ba1a6891a0e6c65bda179f84225625a6e315319; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}

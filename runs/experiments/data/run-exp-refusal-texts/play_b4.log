@@ -1,0 +1,28 @@
+20:59:48 [A01b] loaded REF_A01b_b4_staged.SAV (STAGED); popups at load: []
+20:59:58 [A01b] control save REF_A01b_b4_ctl.SAV 38b67b76abae1178ae6809750371aae6ffec325793206a648e37b06bdd428080
+21:00:04 [A01b] boxes after the order: [('Information', '6 An army on a fleet cannot be combined with anather.')]
+21:00:17 [A01b] after save REF_A01b_b4_after.SAV 38b67b76abae1178ae6809750371aae6ffec325793206a648e37b06bdd428080; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:00:40 [M04] loaded REF_M04_b4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:00:50 [M04] control save REF_M04_b4_ctl.SAV 02f4235e38ab19a4141cdc6e6aa35414e0d36117c459f51205749b11ca631349
+21:00:58 [M04] boxes after the order: [('Information', '6 You cannot recruit from an enemy city.')]
+21:01:11 [M04] after save REF_M04_b4_after.SAV 56bb2cee8f0ae6e12f8019ebd61f27f975e6b57fa719ebd62773d0e30aff2271; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:01:34 [C03] loaded REF_C03_b4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:01:44 [C03] control save REF_C03_b4_ctl.SAV b7804c2aa1cbd2de0ddcbd75a72e86822f0d5a3016942af3fb2a56bb8dad1bf0
+21:02:09 [C03] boxes after the order: [('Information', '6 You cannot fortify a city which is under siege.')]
+21:02:22 [C03] after save REF_C03_b4_after.SAV f72c576b4358a3c40982306ebd89c4684565a4ec03d538d8f501a87355c3db3f; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:02:45 [MM01] loaded REF_MM01_b4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:02:55 [MM01] control save REF_MM01_b4_ctl.SAV 78e25404aa80efa33dc27c18a2d20d22966cf53e3041811bf7b19e49f20d2caf
+21:03:05 [MM01] boxes after the order: [('Information', '© ‘Your army has too little money to pay these mercenaries.')]
+21:03:24 [MM01] after save REF_MM01_b4_after.SAV 3c862d32e6153bb5b84f3d50d01128aadf74f5f71c9f2aae4442179db87bf19e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:03:47 [MM02] loaded REF_MM02_b4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:03:57 [MM02] control save REF_MM02_b4_ctl.SAV 47735ff619fe78f6259005ab98a521b2e7c66bd94f3fe3b3029aa562b3bcc2fc
+21:04:07 [MM02] boxes after the order: [('Information', '6 An army can not contain more than 100,000 troops.')]
+21:04:26 [MM02] after save REF_MM02_b4_after.SAV d071494b4b321739d38d4a435ba1a6891a0e6c65bda179f84225625a6e315319; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:04:48 [S02] loaded REF_S02_b4_fixture.SAV (fixture, unedited); popups at load: ['@ Bithynia wants to trade with Rome.']
+21:04:58 [S02] control save REF_S02_b4_ctl.SAV 0c8cf5d4f5f7aede81eb3a42d43e1e56bad240af570632f597d5807072390f72
+21:05:06 [S02] boxes after the order: [('Confirm', '@ Are you sure you want to disband this army ? no | co')]
+21:05:19 [S02] after save REF_S02_b4_after.SAV 8c289c85a06eb87a9021b665337e30662578b68180aef8f2871e62a864a6bea5; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+21:05:39 [BF01] loaded REF_BF01_b4_fixture.SAV (fixture, unedited); popups at load: []
+21:05:49 [BF01] control save REF_BF01_b4_ctl.SAV 39f781458775c513cd0c7c5587de610f19eb3e3705a4007a1a9cffe8d755b66a
+21:05:54 [BF01] boxes after the order: [('Information', '6 Only nations with coastal cities can build fleets.')]
+21:06:08 [BF01] after save REF_BF01_b4_after.SAV 39f781458775c513cd0c7c5587de610f19eb3e3705a4007a1a9cffe8d755b66a; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
