@@ -1,0 +1,26 @@
+10:59:06 [CU03] loaded REF_CU03_b9c4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+10:59:16 [CU03] control save REF_CU03_b9c4_ctl.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+10:59:32 [CU03] boxes after the order: [('Information', '6 ‘You can only split 1 unit at a time.')]
+10:59:50 [CU03] after save REF_CU03_b9c4_after.SAV 1087a163aa10dd24b6a4c8cb6bb1e070641717ff7f68d740ad87f9c8e471e22e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+11:00:15 [CU04] loaded REF_CU04_b9c4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+11:00:24 [CU04] control save REF_CU04_b9c4_ctl.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+11:00:41 [CU04] boxes after the order: [('Information', '6 You can only join regular units together.')]
+11:00:59 [CU04] after save REF_CU04_b9c4_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+11:01:24 [CU05] loaded REF_CU05_b9c4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+11:01:33 [CU05] control save REF_CU05_b9c4_ctl.SAV 29e9cbfa8c473c142e369bb944a2deb5a220891e03ec6561f8597ac0f82f3c08
+11:01:50 [CU05] boxes after the order: [('Information', '6 ‘You can only combine units of the same type.')]
+11:02:08 [CU05] after save REF_CU05_b9c4_after.SAV 1087a163aa10dd24b6a4c8cb6bb1e070641717ff7f68d740ad87f9c8e471e22e; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+11:02:33 [CU06] loaded REF_CU06_b9c4_staged.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+11:02:42 [CU06] control save REF_CU06_b9c4_ctl.SAV 8efddf7988506d612308297cbbbb88dad9051c0c3cf13cde657f2b9a69fc00fb
+11:02:59 [CU06] boxes after the order: [('Information', '6 These units are too large to be combined.')]
+11:03:17 [CU06] after save REF_CU06_b9c4_after.SAV 114fc14d42c4d6fe33d2b03b9028b07209e1aabbdb57760ad5aa49686400b829; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+11:03:41 [CU07] loaded REF_CU07_b9c4_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+11:03:51 [CU07] control save REF_CU07_b9c4_ctl.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27
+11:04:03 [CU07] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+11:04:09 [CU07] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+11:04:27 [CU07] after save REF_CU07_b9c4_after.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+11:04:51 [CU08] loaded REF_CU08_b9c4_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+11:05:01 [CU08] control save REF_CU08_b9c4_ctl.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27
+11:05:15 [CU08] Confirm box ['@ Are you sure you want to disband 2 units. no | co'] answered Yes
+11:05:20 [CU08] boxes after the order: [('Confirm', '@ Are you sure you want to disband 2 units. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+11:05:39 [CU08] after save REF_CU08_b9c4_after.SAV 3c847b03b7f523452de2a0cfa3ca4b7ced4234e4f97782c16803df9f0e66ef27; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
