@@ -201,3 +201,15 @@
 00:18:42 [T02r] control save REF_T02r_b8_ctl.SAV 1f719233a8acad3c4552116f89d0d0c18a2726260474432852fddb49eeae6713
 00:18:56 [T02r] boxes after the order: [('Information', '6 An army can not hold more than 100,000 troops.')]
 00:19:17 [T02r] after save REF_T02r_b8_after.SAV 1f719233a8acad3c4552116f89d0d0c18a2726260474432852fddb49eeae6713; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:29:22 [CU04] loaded REF_CU04_b8_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+09:29:31 [CU04] control save REF_CU04_b8_ctl.v3.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+09:29:49 [CU04] boxes after the order: [('Information', '6 You can only join regular units together.')]
+09:30:06 [CU04] after save REF_CU04_b8_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+09:30:31 [D05b] loaded REF_D05b_b8_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+09:30:40 [D05b] control save REF_D05b_b8_ctl.v3.SAV f9b6d5dacbcea920d66c17eb2f7056178005b71be7d0b895c1f1f2c451937ab8
+09:30:56 [D05b] boxes after the order: [('Information', '6 ‘You can only rename regular units.')]
+09:31:14 [D05b] after save REF_D05b_b8_after.SAV 7b835e0ef061ac3e6aca7dd32daedc04ce2f69f8b849ae45c6c22a4c9252be1a; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+09:31:39 [D06] loaded REF_D06_b8_staged.v3.SAV (STAGED); popups at load: ['@ Bithynia wants to trade with Rome.']
+09:31:48 [D06] control save REF_D06_b8_ctl.v3.SAV 0391e64d32edb38c47820af89aa46622d24b28eaad590d8f46093ed506db67d8
+09:32:04 [D06] boxes after the order: [('Information', '6 This unit is too small to split.')]
+09:32:22 [D06] after save REF_D06_b8_after.SAV 45db23d024c6c938a4de2f794f0bd34127c834accbd50c4cac03409c2ea35507; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
