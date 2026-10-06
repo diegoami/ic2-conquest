@@ -360,6 +360,18 @@ class RawDumps(Base):
             for row in r['forms']['default']['rows']:
                 if row[3] == 'Antipater': row[3] = 'Antipatex'
         self.edit('LF_P08a_b8', f); self.fails('P08a')
+    def test_r5_a_doctored_name_in_p09s_third_untouched_form_fails_v04(self):
+        """round-3 R5: P09's first, second and third forms are untouched forms although none is labelled `default`; V04 must scan them"""
+        def f(r):
+            old = r['forms']['third_default']['rows'][0][3]
+            r['forms']['third_default']['raw'] = r['forms']['third_default']['raw'].replace(old, old + 'x')
+            r['forms']['third_default']['rows'][0][3] = old + 'x'
+        self.edit('LF_P09_b8', f); self.fails('V04')
+    def test_r5_the_form_count_changed_in_v04_fails(self):
+        self.edit_finding('14 forms in 12 recorded plays', '10 forms in 12 recorded plays', count=1)
+        self.edit_finding('says "14 forms" :: scan default_forms count == 14', 'says "10 forms" :: scan default_forms count == 10'); self.fails('V04')
+    def test_r5_the_play_count_changed_in_v04_fails(self):
+        self.edit_finding('in 12 recorded plays', 'in 10 recorded plays'); self.edit_finding('says "12 recorded plays"', 'says "10 recorded plays"'); self.fails('V04')
     def test_the_immediate_post_tick_state_doctored_fails(self):
         def f(r):
             for v in r['verified']:
@@ -521,5 +533,26 @@ class Recordings(Base):
             r['forms']['default']['rows'][3][4] = 1
             r['forms']['default']['raw'] = r['forms']['default']['raw']
         self.edit('LF_P08a_b8', f); self.fails('the recorded rows and focus equal the audit')
+
+
+
+class PlayPlans(unittest.TestCase):
+    """round-3 R5: the untouched forms of a play come from its definition (scenarios.py), not from the label a recording gives the form"""
+    def test_untouched_forms_come_from_the_scenario_not_the_label(self):
+        import play_plans
+        sc = os.path.join(HERE, 'scenarios.py')
+        U = lambda p: play_plans.plan_of(sc, p).untouched
+        self.assertEqual(U('P01'), ['default'])                                        # the form after the tab walk is not untouched
+        self.assertEqual(U('P02'), ['before_ok'])                                      # untouched although labelled before_ok
+        self.assertEqual(U('P09'), ['first_default', 'second_default', 'third_default'])
+        for p in ('P10', 'P11', 'P12'): self.assertEqual(U(p), [], p)
+        self.assertEqual(play_plans.plan_of(sc, 'P09').forms_opened, 3); self.assertEqual(play_plans.plan_of(sc, 'P10').forms_opened, 1)
+        self.assertEqual(sum(len(U(p)) for p in play_plans.plays(sc)), 14); self.assertEqual(sum(play_plans.plan_of(sc, p).forms_opened for p in play_plans.plays(sc)), 17)
+    def test_a_form_read_after_a_tick_is_not_untouched(self):
+        import play_plans, tempfile
+        src = open(os.path.join(HERE, 'scenarios.py'), encoding='utf-8').read()
+        src = src.replace("def p02(g, tag, rec):\n    open_form(g, tag, rec); record_form(g, tag, 'before_ok', rec)", "def p02(g, tag, rec):\n    open_form(g, tag, rec); set_tick(g, 1, True); record_form(g, tag, 'default', rec)")
+        d = tempfile.mkdtemp(); p = os.path.join(d, 'scenarios.py'); open(p, 'w', encoding='utf-8').write(src)
+        self.assertEqual(play_plans.plan_of(p, 'P02').untouched, [])
 
 if __name__ == '__main__': unittest.main()

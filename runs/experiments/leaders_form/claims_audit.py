@@ -387,12 +387,13 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             return v
         return json.loads(tok)
     DRAW_PLAYS = []                                                # filled from the draws table: (play id, tag, step)
+    NEWGAME_OF_STATE = {'state': -1, 'state_first_game': 0, 'state_before_new': 0, 'state_after_no': 0, 'state_after_cancel': 1}      # which New Game of the recording a memory read belongs to (the index into new_games)
     def scan(kind, what):
         """a statement about every recording of runner 2 (a `scan` check of the facts table): the values are read from the records, never from the finding"""
         recs = list(EVID.values())
         ds = lambda r, k: dump_state(r['_tag'], k) if k in r.get('dumps', {}) else None
         if kind == 'score':
-            vals = sorted((n['score_0x440'], n['name']) for r in recs for st in [ds(r, 'state'), ds(r, 'state_after_cancel'), ds(r, 'state_first_game'), ds(r, 'state_before_new')] if st for n in st['nations'])
+            vals = sorted((n['score_0x440'], n['name']) for r in recs for st in [ds(r, k_) for k_ in r.get('dumps', {})] if st for n in st['nations'])
             if not vals: return False, 'no states'
             ma = re.fullmatch(r'min_above_(\d+)', what)
             if ma: return True, vals[0][0] > int(ma.group(1))
@@ -400,19 +401,23 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if kind == 'turn_order':
             by = collections.defaultdict(set)
             for r in recs:
-                st = ds(r, 'state')
-                if st: by[r['new_games'][-1]['seed']].add(tuple(st['turn_order']))      # the seed of the New Game that drew the state
+                for k_, gi in NEWGAME_OF_STATE.items():                                  # every state read, with the seed of the New Game that drew it (a second and a third New Game of P09 included)
+                    st = ds(r, k_)
+                    if st and r['new_games']: by[r['new_games'][min(gi, len(r['new_games']) - 1)]['seed']].add(tuple(st['turn_order']))
             if not by: return False, 'no states'
             return True, {'one_per_seed': all(len(v) == 1 for v in by.values()), 'differs_between_seeds': len({next(iter(v)) for v in by.values()}) == len(by), 'seeds': len(by)}[what]
         if kind == 'initial_nation':                                 # every state read where no turn has started: the current nation is the first entry of the order
-            sts = [ds(r, 'state') for r in recs if ds(r, 'state') and not r.get('autosave')]
+            sts = [st for r in recs for k_ in r.get('dumps', {}) for st in [ds(r, k_)] if st and not any(n['human'] for n in st['nations'])]          # every state read in which no nation has a human flag: no turn has started
             if not sts: return False, 'no states'
             return True, {'is_first_in_order': all(st['cur_nation'] == st['turn_order'][0] for st in sts), 'states': len(sts)}[what]
-        if kind == 'default_forms':                                  # the form of every recording that opened it, before any edit
-            fvs = [f for r in recs for step, f in form_view(r['_tag']).items() if step == 'default']
-            fvs0 = [f for r in recs if not r.get('autosave') for step, f in form_view(r['_tag']).items() if step == 'default']          # no human started afterwards: the records still hold the drawn names
+        if kind == 'default_forms':                                  # every UNTOUCHED form: read straight after it opened, before any tick, edit or key; membership comes from the play definition (play_plans), never from the label a recording gives the step
+            plans = {r['_tag']: play_plans.plan_of(SCENARIOS, r['play']) for r in recs}
+            fvs_ = [(r, f) for r in recs for step, f in form_view(r['_tag']).items() if step in plans[r['_tag']].untouched]
+            fvs = [f for _, f in fvs_]
+            fvs0 = [f for r, f in fvs_ if not r.get('autosave') and len(r['new_games']) == 1]          # one New Game, no human started afterwards: the records still hold the drawn names the form showed
             if not fvs: return False, 'no forms'
-            return True, {'count': len(fvs), 'count_unedited': len(fvs0), 'rows_match': bool(fvs0) and all(f.get('rows_match_nations') is True for f in fvs0), 'all_unticked': all(not any(f['checks']) for f in fvs),
+            return True, {'count': len(fvs), 'plays': len({r['play'] for r, _ in fvs_}), 'opened': sum(p_.forms_opened for p_ in plans.values()), 'opening_plays': len(recs), 'count_unedited': len({r['play'] for r, f in fvs_ if not r.get('autosave') and len(r['new_games']) == 1}),
+                          'rows_match': bool(fvs0) and all(f.get('rows_match_nations') is True for f in fvs0), 'all_unticked': all(not any(f['checks']) for f in fvs),
                           'all_greyed': all(not any(f['edit_enabled']) for f in fvs), 'in_pool': all(f['names_in_pool'] for f in fvs), 'all_ticks_enabled': all(all(f['cb_enabled']) for f in fvs)}[what]
         return False, 'unknown scan %s' % kind
     PCHECKS = []                                                   # every passing play check of the current row: (pid, path, op, want); the play paths on the right of a comparison are listed too (op 'rhs')
@@ -1188,8 +1193,8 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         check('draws row %s: the seed %s is the seed the New Game that opened that form recorded (%s)' % (pid, r['seed'], f['seed']), str(f['seed']) == r['seed'], '%s vs %s' % (f['seed'], r['seed']))
         calc = [POOL[NAT[i]].index(n) if n in POOL[NAT[i]] else None for i, n in enumerate(names)]
         check('draws row %s: every name is in its nation\'s pool and its slot is the one recomputed' % pid, calc == slots, '%s vs %s' % (calc, slots))
-    seen_seeds = {str(f['seed']) for r in EVID.values() for stp, f in form_view(r['_tag']).items() if stp in ('default', 'second_default')}
-    check('the draws table covers every seed of which a recording of runner 2 opened a default form', drawn_seeds == seen_seeds, '%s vs %s' % (sorted(drawn_seeds), sorted(seen_seeds)))
+    seen_seeds = {str(f['seed']) for r in EVID.values() for stp, f in form_view(r['_tag']).items() if stp in play_plans.plan_of(SCENARIOS, r['play']).untouched}
+    check('the draws table covers every seed of which a recording of runner 3 opened an untouched form (derived from the play definitions)', drawn_seeds == seen_seeds, '%s vs %s' % (sorted(drawn_seeds), sorted(seen_seeds)))
     # ---- facts: every universal or numeric statement the finding makes about the records, each recomputed from the records
     for r in T.get('facts', []):
         rid = r['id']; items = [x for x in r['check'].split(' ;; ') if x.strip()]; check('%s has checks' % rid, bool(items))

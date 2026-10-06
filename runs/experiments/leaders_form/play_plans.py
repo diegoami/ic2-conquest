@@ -11,7 +11,7 @@ NATIONS = ['Rome', 'Carthage', 'Seleucid', 'Ptolemaic', 'Macedonia', 'Numidia', 
 IGNORED = {'record_form', 'snap_rec', 'capture', 'sleep', 'set_seed', 'form_wid', 'basename', 'keep_memory', 'game_state', 'sha', 'DriverError', 'dict', 'len', 'list', 'range', 'sorted', 'open', 'read'}
 
 class Plan:
-    def __init__(self): self.steps = []; self.seeds = []; self.confirms = 0; self.humans = set(); self.running = False; self.seed = None; self.forms_opened = 0
+    def __init__(self): self.steps = []; self.seeds = []; self.confirms = 0; self.humans = set(); self.running = False; self.seed = None; self.forms_opened = 0; self.untouched = []; self.dirty = True
 
 def _eval(node, consts):
     """a literal argument: numbers, strings, lists, list(range(n)), a module constant"""
@@ -46,6 +46,10 @@ def plan_of(scenarios_path, play):
         f = c.func
         nm = f.id if isinstance(f, ast.Name) else f.attr if isinstance(f, ast.Attribute) else None
         args = c.args; kws = {k.arg: k.value for k in c.keywords}
+        if nm == 'record_form':                                                          # a form read straight after it opened, before any tick, edit, key or press: an UNTOUCHED (default) form, whatever label the scenario gives it
+            if not pl.dirty: pl.untouched.append(_eval(args[2], consts))
+            return
+        if nm in ('set_tick', 'ticks', 'edit_text', 'try_edit_disabled', 'press_button', 'press_key_close', 'tab_walk', 'focus_checkbox_by_tab', 'key_toggle', 'menu_probe'): pl.dirty = True
         if nm == 'set_seed': pl.seed = _eval(args[0], consts); return
         if nm == 'open_form':
             answer = _eval(kws['answer'], consts) if 'answer' in kws else 'Yes'
@@ -53,7 +57,7 @@ def plan_of(scenarios_path, play):
             if pl.running:
                 pl.steps.append('confirm %s' % answer); pl.confirms += 1
                 if answer != 'Yes': return
-            pl.seeds.append(pl.seed); pl.humans = set(); pl.running = False; pl.forms_opened += 1; return
+            pl.seeds.append(pl.seed); pl.humans = set(); pl.running = False; pl.forms_opened += 1; pl.dirty = False; return
         if nm == 'set_tick':
             n = _eval(args[1], consts); want = _eval(args[2], consts)
             pl.steps.append('tick %s %s' % (NATIONS[n], 'on' if want else 'off')); (pl.humans.add if want else pl.humans.discard)(n); return
