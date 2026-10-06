@@ -1,0 +1,53 @@
+PASS canonical: ok approve
+PASS bold header and verdict: ok rework
+PASS heading, blank lines: ok approve
+PASS Verdict: prefix: ok rework
+PASS punctuated: ok decision
+PASS signed off: ok approve
+PASS preamble, lowercase header: ok approve
+PASS one line: ok rework
+PASS closing keyword: ok rework
+PASS no closing verdict: cutoff approve
+PASS unreadable verdict: unreadable None
+PASS verdicts disagree: unreadable None
+PASS one line, verdicts disagree: unreadable None
+PASS tool chatter only: none None
+PASS empty: none None
+PASS quota: exhausted provider skipped: quota exhausted (zai, usable in 1h)
+PASS quota: ok provider used: None
+PASS quota: Luna on its own pool though openai is exhausted: None
+PASS quota: Sol skipped when openai is exhausted: quota exhausted (openai, usable in 2h)
+PASS quota: Luna skipped when its own window is full: quota exhausted (gpt-5.6-luna:7d, resets in 3d)
+PASS quota: alibaba model used while alibaba has quota: None
+PASS quota: minimax model skipped when minimax is exhausted: quota exhausted (minimax, usable in 4h)
+PASS quota: no service, nothing skipped: None
+PASS pricing: alibaba night discount noted: pricing: alibaba night discount until 01:40 (qwen3.8-max/flash 60% off, deepseek-v4-pro-0813 and v4.1-flash 50% off, glm-5.3 none)
+PASS pricing: no note while zai is off-peak: None
+PASS pricing: zai peak noted: pricing: zai peak until 01:40 (glm-5.3 3x quota, glm-5.3-flash 1.2x)
+PASS pricing: nothing for a provider without pricing: None
+PASS effort openai/gpt-6.1-sol: openai/gpt-6.1-sol#low
+PASS effort openai/gpt-6.1-sol#high: openai/gpt-6.1-sol#medium
+PASS effort zai-coding-plan/glm-5.3#max: zai-coding-plan/glm-5.3#medium
+PASS effort openai/gpt-6.1-sol#medium: openai/gpt-6.1-sol#medium
+PASS effort openai/gpt-6.1-sol-fast: openai/gpt-6.1-sol-fast#low
+PASS effort zai-coding-plan/glm-5.3-flash: zai-coding-plan/glm-5.3-flash#high
+PASS effort openai/gpt-5.6-luna: openai/gpt-5.6-luna#high
+PASS effort opencode-go/deepseek-v4.1-flash#max: opencode-go/deepseek-v4.1-flash#high
+PASS effort minimax/MiniMax-M3: minimax/MiniMax-M3#thinking
+PASS effort minimax/MiniMax-M3#high: minimax/MiniMax-M3#thinking
+PASS effort minimax/MiniMax-M3#none: minimax/MiniMax-M3#none
+PASS effort minimax/MiniMax-M3#thinking: minimax/MiniMax-M3#thinking
+PASS effort minimax/MiniMax-M2.7: minimax/MiniMax-M2.7
+PASS effort minimax/MiniMax-M2.7#high: minimax/MiniMax-M2.7
+PASS effort alibaba-token-plan/deepseek-v4-pro-0813: alibaba-token-plan/deepseek-v4-pro-0813#high
+PASS effort alibaba-token-plan/deepseek-v4-pro-0813#max: alibaba-token-plan/deepseek-v4-pro-0813#high
+PASS effort alibaba-token-plan/deepseek-v4-pro-0813#low: alibaba-token-plan/deepseek-v4-pro-0813#high
+PASS effort alibaba-token-plan/qwen3.8-max: alibaba-token-plan/qwen3.8-max#low
+PASS effort alibaba-token-plan/qwen3.8-max#high: alibaba-token-plan/qwen3.8-max#medium
+PASS effort alibaba-token-plan/qwen3.8-flash: alibaba-token-plan/qwen3.8-flash#medium
+PASS effort alibaba-token-plan/qwen3.8-flash#high: alibaba-token-plan/qwen3.8-flash#medium
+PASS effort alibaba-token-plan/qwen3.8-flash#low: alibaba-token-plan/qwen3.8-flash#low
+PASS effort alibaba-token-plan/deepseek-v4.1-flash: alibaba-token-plan/deepseek-v4.1-flash#high
+PASS effort alibaba-token-plan/deepseek-v4.1-flash#medium: alibaba-token-plan/deepseek-v4.1-flash#high
+PASS effort alibaba-token-plan/glm-5.3: alibaba-token-plan/glm-5.3#low
+52/52 passed

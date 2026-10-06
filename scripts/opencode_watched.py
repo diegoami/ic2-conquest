@@ -78,7 +78,30 @@ def data_home(base):
 
 # Heavy models (docs/environment.md): effort low, or medium when the task needs it, never high (the player, 2026-10-05)
 HEAVY = ("openai/gpt-6.1-sol", "openai/gpt-6-sol", "openai/gpt-5.6-sol", "zai-coding-plan/glm-5.3", "opencode-go/deepseek-v4-pro",
-         "openrouter/deepseek/deepseek-v4-pro")
+         "openrouter/deepseek/deepseek-v4-pro", "alibaba-token-plan/deepseek-v4-pro-0813", "alibaba-token-plan/qwen3.8-max",
+         "alibaba-token-plan/glm-5.3", "minimax/MiniMax-M3")
+
+# The variants each of the new providers' models actually offers (`opencode models --verbose`, 2026-10-06), and the variant to use
+# when the generic ladder (heavy #low / light #high, with heavy #high/#max lowered to #medium) lands outside that set: the
+# normalisation must never invent a variant the model does not offer. A model listed with () offers no variant at all: nothing
+# may be appended to it. Models absent from OFFERS take the generic ladder unchanged.
+OFFERS = {
+    "minimax/MiniMax-M3": ("none", "thinking"),                 # thinking is its high (the player, 2026-10-06)
+    "minimax/MiniMax-M2.7": (),
+    "alibaba-token-plan/deepseek-v4-pro-0813": ("high", "max"),  # no low: heavy default high (the player, 2026-10-06)
+    "alibaba-token-plan/qwen3.8-max": ("low", "medium"),
+    "alibaba-token-plan/qwen3.8-flash": ("low", "medium"),       # no plain high: light default medium
+    "alibaba-token-plan/deepseek-v4.1-flash": ("low", "high", "max"),
+    "alibaba-token-plan/glm-5.3": ("low", "high", "max"),
+}
+DEFAULT_VARIANT = {
+    "minimax/MiniMax-M3": "thinking",
+    "alibaba-token-plan/deepseek-v4-pro-0813": "high",
+    "alibaba-token-plan/qwen3.8-max": "low",
+    "alibaba-token-plan/qwen3.8-flash": "medium",
+    "alibaba-token-plan/deepseek-v4.1-flash": "high",
+    "alibaba-token-plan/glm-5.3": "low",
+}
 
 
 def is_heavy(base):
@@ -89,11 +112,21 @@ def is_heavy(base):
 def effort(model):
     """'provider/model[#variant]' with its effort made explicit. A light model: no variant means high, and max is lowered to high
     (overkill and slower; decision 2026-10-02). A heavy model: no variant means low, and high or max is lowered to medium (the player,
-    2026-10-05: low, or medium when needed, never high)."""
+    2026-10-05: low, or medium when needed, never high). A model in OFFERS never gets a variant it does not offer: an unoffered
+    result becomes its DEFAULT_VARIANT (every DEFAULT_VARIANT value is one of its model's OFFERS), and a model with no variants
+    at all keeps no suffix."""
     base, variant = split_model(model)
     if is_heavy(base):
-        return f"{base}#{'low' if variant is None else 'medium' if variant in ('high', 'max') else variant}"
-    return f"{base}#{'high' if variant in (None, 'max') else variant}"
+        variant = 'low' if variant is None else 'medium' if variant in ('high', 'max') else variant
+    else:
+        variant = 'high' if variant in (None, 'max') else variant
+    offered = OFFERS.get(base)
+    if offered is not None:
+        if not offered:
+            return base
+        if variant not in offered:
+            variant = DEFAULT_VARIANT[base]
+    return base if variant is None else f"{base}#{variant}"
 
 
 def split_model(spec):
