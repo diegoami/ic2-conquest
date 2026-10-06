@@ -216,6 +216,26 @@ def press_button(g, text, tries=3):
             note_verified(step='press %s' % text, how='form window (X id %d) gone' % wid, attempts=k + 1); return k + 1
     raise _drv.DriverError('the form did not close after %d clicks on %s' % (tries, text))
 
+def focus_checkbox_by_tab(g, n, max_tabs=24):
+    """Send Tab (a key) until the focus is on nation n's tick box (compared by its rectangle from the form), at most `max_tabs` presses; DriverError otherwise. Returns the number of presses."""
+    for i in range(max_tabs + 1):
+        fs = form_state(g); cb = fs['rows'][n]['cb']
+        if cb['focus'] == 1: return i
+        if i == max_tabs: break
+        CTX['why'] = 'Tab towards the %s tick box' % fs['rows'][n]['nation']; g.key('Tab'); time.sleep(0.3)
+    raise _drv.DriverError('the focus did not reach the %s tick box after %d Tab presses' % (NATIONS[n], max_tabs))
+
+def key_toggle(g, n, tries=2):
+    """With the focus on nation n's tick box press the space bar (a key) and verify the box changed state; returns (before, after) summaries of the row"""
+    before = form_state(g)
+    for k in range(tries):
+        CTX['why'] = 'space on the %s tick box' % NATIONS[n]; g.key('space'); time.sleep(0.6)
+        after = form_state(g)
+        if after['rows'][n]['cb']['check'] != before['rows'][n]['cb']['check']:
+            note_verified(step='space on tick %s' % NATIONS[n], how='checkbox state read after the key', attempts=k + 1, before=summary(before)[n], after=summary(after)[n], others_unchanged=others_unchanged(before, after, n))
+            return summary(before)[n], summary(after)[n]
+    raise _drv.DriverError('the space bar did not change the %s tick box' % NATIONS[n])
+
 def press_key_close(g, key, tries=2):
     """Close the form with a key (Escape = the Cancel button, Return = the default OK button, as the DFM declares): the key is sent to the form, its X id must be gone; at most `tries` sends"""
     wid = form_wid(g)

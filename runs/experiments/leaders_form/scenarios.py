@@ -81,8 +81,9 @@ def p07(g, tag, rec):
 # ---- P08 (seeds 111, 222, 333): the draw: open the form and Cancel
 def p08(g, tag, rec):
     open_form(g, tag, rec); record_form(g, tag, 'default', rec)
-    press_button(g, 'Cancel')
-    time.sleep(2); rec['state'] = game_state(g)
+    press_button(g, 'Cancel'); rec['humans_ticked'] = []
+    time.sleep(2); rec['state'] = game_state(g); snap(g, '%s_after_cancel_screen.png' % tag)
+    rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_cancel')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
 
 # ---- P09: a second New Game in the same process, with another seed, after a game with a human; Cancel; then New Game again
 def p09(g, tag, rec):
@@ -121,6 +122,14 @@ def p12(g, tag, rec):
     press_key_close(g, 'Return'); rec['humans_ticked'] = [3]
     after_ok(g, tag, rec, [3])
 
+# ---- P13: the keyboard: Tab to Carthage's tick box and press space (the handler is OnMouseDown: does the name box wake up?), then OK
+def p13(g, tag, rec):
+    open_form(g, tag, rec); record_form(g, tag, 'default', rec)
+    rec['tabs_to_carthage'] = focus_checkbox_by_tab(g, 1)
+    rec['space'] = key_toggle(g, 1); record_form(g, tag, 'after_space', rec)
+    press_button(g, 'OK'); rec['humans_ticked'] = [1]
+    after_ok(g, tag, rec, [1])
+
 SC = {'P01': dict(seed=12345, fn=p01, note='the form as it opens, tab order, Cancel with nothing ticked'),
       'P02': dict(seed=12345, fn=p02, note='zero humans, OK'),
       'P03': dict(seed=12345, fn=p03, note='Cancel after ticking Carthage and Ptolemaic and editing Carthage'),
@@ -132,6 +141,7 @@ SC = {'P01': dict(seed=12345, fn=p01, note='the form as it opens, tab order, Can
       'P09': dict(seed=12345, fn=p09, note='second New Game with another seed, Cancel, New Game again'),
       'P11': dict(seed=12345, fn=p11, note='Escape closes the form like Cancel'),
       'P12': dict(seed=12345, fn=p12, note='Return closes the form like OK'),
+      'P13': dict(seed=12345, fn=p13, note='keyboard: Tab to the Carthage tick box, space, OK'),
       'P10': dict(seed=12345, fn=p10, note='File > New with a game running, Confirm answered No')}
 
 def run(pid, batch):
