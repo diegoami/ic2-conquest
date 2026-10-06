@@ -1,0 +1,35 @@
+$ /usr/bin/python3 -W ignore -m unittest -v test_claims_audit
+# 2026-10-06 14:58:00
+test_a_cited_line_moved_to_another_function_fails (test_claims_audit.ExtractLines.test_a_cited_line_moved_to_another_function_fails) ... ok
+test_a_cited_line_that_is_not_in_the_extract_fails (test_claims_audit.ExtractLines.test_a_cited_line_that_is_not_in_the_extract_fails) ... ok
+test_a_doctored_extract_line_fails (test_claims_audit.ExtractLines.test_a_doctored_extract_line_fails) ... ok
+test_a_doctored_loader_read_changes_the_pool_offset (test_claims_audit.ExtractLines.test_a_doctored_loader_read_changes_the_pool_offset) ... ok
+test_a_doctored_pool_name_fails (test_claims_audit.ExtractLines.test_a_doctored_pool_name_fails) ... ok
+test_a_message_box_call_added_to_ok_fails (test_claims_audit.ExtractLines.test_a_message_box_call_added_to_ok_fails) ... ok
+test_a_doctored_caption_with_one_space_fails (test_claims_audit.Literals.test_a_doctored_caption_with_one_space_fails) ... ok
+test_a_doctored_control_literal_fails (test_claims_audit.Literals.test_a_doctored_control_literal_fails) ... ok
+test_a_doctored_name_limit_fails (test_claims_audit.Literals.test_a_doctored_name_limit_fails) ... ok
+test_a_doctored_resource_line_fails (test_claims_audit.Literals.test_a_doctored_resource_line_fails) ... ok
+test_a_doctored_rule_literal_fails (test_claims_audit.Literals.test_a_doctored_rule_literal_fails) ... ok
+test_the_real_sources_pass (test_claims_audit.RealSources.test_the_real_sources_pass) ... ok
+test_a_confirmed_row_without_a_screenshot_fails (test_claims_audit.RemovedClaims.test_a_confirmed_row_without_a_screenshot_fails) ... ok
+test_a_derived_row_that_cites_a_play_fails (test_claims_audit.RemovedClaims.test_a_derived_row_that_cites_a_play_fails) ... ok
+test_a_doctored_count_fails (test_claims_audit.RemovedClaims.test_a_doctored_count_fails) ... ok
+test_a_play_removed_from_the_plays_table_fails (test_claims_audit.RemovedClaims.test_a_play_removed_from_the_plays_table_fails) ... ok
+test_the_escape_and_return_claim_removed_consistently_still_fails (test_claims_audit.RemovedClaims.test_the_escape_and_return_claim_removed_consistently_still_fails) ... ok
+test_the_sixteen_humans_claim_removed_from_the_rules_and_the_clone_table_still_fails (test_claims_audit.RemovedClaims.test_the_sixteen_humans_claim_removed_from_the_rules_and_the_clone_table_still_fails) ... ok
+test_a_click_without_a_reason_fails (test_claims_audit.Saves.test_a_click_without_a_reason_fails) ... ok
+test_a_doctored_play_record_fails (test_claims_audit.Saves.test_a_doctored_play_record_fails) ... ok
+test_a_doctored_save_fails_its_hash (test_claims_audit.Saves.test_a_doctored_save_fails_its_hash) ... ok
+test_a_doctored_save_with_hashes_rewritten_still_fails_its_claims (test_claims_audit.Saves.test_a_doctored_save_with_hashes_rewritten_still_fails_its_claims) ... ok
+test_a_missing_memory_dump_fails (test_claims_audit.Saves.test_a_missing_memory_dump_fails) ... ok
+test_a_missing_screenshot_fails (test_claims_audit.Saves.test_a_missing_screenshot_fails) ... ok
+test_a_replaced_screenshot_fails_its_hash (test_claims_audit.Saves.test_a_replaced_screenshot_fails_its_hash) ... ok
+test_an_unverified_tick_click_fails (test_claims_audit.Saves.test_an_unverified_tick_click_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 3.678s
+
+OK
+
+exit status 0

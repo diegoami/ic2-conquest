@@ -1,0 +1,32 @@
+$ /usr/bin/python3 -W ignore -m unittest -v test_runner
+# 2026-10-06 14:57:57
+test_button_closes_second_click (test_runner.ButtonTests.test_button_closes_second_click) ... ok
+test_button_missing_clicks_nothing (test_runner.ButtonTests.test_button_missing_clicks_nothing) ... ok
+test_button_that_never_closes_the_form_fails_closed_after_three_clicks (test_runner.ButtonTests.test_button_that_never_closes_the_form_fails_closed_after_three_clicks) ... ok
+test_key_close_bounded_and_fails_closed (test_runner.ButtonTests.test_key_close_bounded_and_fails_closed) ... ok
+test_no_form_means_no_click (test_runner.ButtonTests.test_no_form_means_no_click) ... ok
+test_edit_cut_to_the_limit_is_the_expected_text (test_runner.EditTests.test_edit_cut_to_the_limit_is_the_expected_text) ... ok
+test_edit_of_a_greyed_box_clicks_nothing (test_runner.EditTests.test_edit_of_a_greyed_box_clicks_nothing) ... ok
+test_edit_whose_text_never_matches_fails_closed_after_three_rounds (test_runner.EditTests.test_edit_whose_text_never_matches_fails_closed_after_three_rounds) ... ok
+test_edit_without_focus_is_retried_then_fails_closed (test_runner.EditTests.test_edit_without_focus_is_retried_then_fails_closed) ... ok
+test_typing_into_a_greyed_box_that_changes_is_an_error (test_runner.EditTests.test_typing_into_a_greyed_box_that_changes_is_an_error) ... ok
+test_every_click_site_is_accounted_for (test_runner.GuessedCoordinateTests.test_every_click_site_is_accounted_for) ... ok
+test_no_forbidden_driver_call_and_no_constant_coordinate (test_runner.GuessedCoordinateTests.test_no_forbidden_driver_call_and_no_constant_coordinate) ... ok
+test_the_guard_catches_each_way_back (test_runner.GuessedCoordinateTests.test_the_guard_catches_each_way_back) ... ok
+test_space_that_changes_nothing_fails_closed_after_two_presses (test_runner.KeyboardTests.test_space_that_changes_nothing_fails_closed_after_two_presses) ... ok
+test_tab_walk_is_bounded (test_runner.KeyboardTests.test_tab_walk_is_bounded) ... ok
+test_form_text_is_read_as_latin1_not_utf8 (test_runner.MenuTests.test_form_text_is_read_as_latin1_not_utf8) ... ok
+test_menu_new_without_words_clicks_only_the_reset (test_runner.MenuTests.test_menu_new_without_words_clicks_only_the_reset) ... ok
+test_tick_already_in_the_wanted_state_proves_nothing_and_clicks_nothing (test_runner.TickTests.test_tick_already_in_the_wanted_state_proves_nothing_and_clicks_nothing) ... ok
+test_tick_first_click_only_activates_second_registers (test_runner.TickTests.test_tick_first_click_only_activates_second_registers) ... ok
+test_tick_registers_first_click (test_runner.TickTests.test_tick_registers_first_click) ... ok
+test_tick_that_changes_another_row_is_an_error (test_runner.TickTests.test_tick_that_changes_another_row_is_an_error) ... ok
+test_tick_that_never_registers_fails_closed_after_three_clicks (test_runner.TickTests.test_tick_that_never_registers_fails_closed_after_three_clicks) ... ok
+test_untick (test_runner.TickTests.test_untick) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.083s
+
+OK
+
+exit status 0

@@ -1,0 +1,972 @@
+# Code extract of the leaders-form finding. Sections: one per dump file; the first column is that file's line number
+# FILE all_app_functions.txt
+56776	// ==== TPickLeaders_InitializeForm @ 004571a8 ====
+56777	
+56778	void TPickLeaders_InitializeForm(int *param_1)
+56779	
+56780	{
+56781	  uint uVar1;
+56782	  int iVar2;
+56783	  int *piVar3;
+56784	  undefined4 uVar4;
+56785	  ushort uVar5;
+56786	  short *psVar6;
+56787	  short sVar7;
+56788	  undefined4 *in_FS_OFFSET;
+56789	  undefined4 uStack_24;
+56790	  undefined *puStack_20;
+56791	  undefined1 *puStack_1c;
+56792	  uint *puStack_c;
+56793	  int *piStack_8;
+56794	  
+56795	  puStack_1c = &stack0xfffffffc;
+56796	  puStack_c = (uint *)0x0;
+56797	  puStack_20 = &UNK_004572fe;
+56798	  uStack_24 = *in_FS_OFFSET;
+56799	  *in_FS_OFFSET = &uStack_24;
+56800	  FUN_004127a0(param_1,10);
+56801	  FUN_004127c0(param_1,0x3c);
+56802	  FUN_00420c58(param_1,0x1cc);
+56803	  FUN_00420c84(param_1,0x1ae);
+56804	  uVar1 = FUN_004143cc((int)param_1);
+56805	  if (-1 < (short)((short)uVar1 + -1)) {
+56806	    sVar7 = 0;
+56807	    do {
+56808	      iVar2 = FUN_0041439c((int)param_1,(int)sVar7);
+56809	      if (iVar2 == param_1[0x70]) {
+56810	        *(short *)(param_1 + 0xa0) = sVar7;
+56811	      }
+56812	      sVar7 = sVar7 + 1;
+56813	      uVar5 = (short)uVar1 - 1;
+56814	      uVar1 = (uint)uVar5;
+56815	    } while (uVar5 != 0);
+56816	  }
+56817	  sVar7 = 0;
+56818	  psVar6 = &DAT_00474ab0;
+56819	  do {
+56820	    piStack_8 = (int *)FUN_0041439c((int)param_1,(int)(short)param_1[0xa0] + (int)sVar7);
+56821	    if (*psVar6 == 0) {
+56822	      FUN_00412cdc(piStack_8,(uint *)0x0);
+56823	      piVar3 = (int *)FUN_0041439c((int)piStack_8,0);
+56824	      FUN_00412c44(piVar3,'\0');
+56825	    }
+56826	    else {
+56827	      piVar3 = (int *)FUN_0041439c((int)piStack_8,1);
+56828	      FUN_00403458((int *)&puStack_c,(char *)((int)psVar6 + -0x435),0x1a);
+56829	      FUN_00412cdc(piVar3,puStack_c);
+56830	    }
+56831	    piVar3 = (int *)FUN_0041439c((int)piStack_8,1);
+56832	    FUN_00412c44(piVar3,'\0');
+56833	    if ((char)psVar6[0x28] != '\0') {
+56834	      uVar4 = FUN_0041439c((int)piStack_8,0);
+56835	      func_0x0042958c(uVar4,1);
+56836	      piVar3 = (int *)FUN_0041439c((int)piStack_8,1);
+56837	      FUN_00412c44(piVar3,'\x01');
+56838	    }
+56839	    sVar7 = sVar7 + 1;
+56840	    psVar6 = psVar6 + 0x24a;
+56841	  } while (sVar7 != 0x10);
+56842	  FUN_00422f40(param_1);
+56843	  *in_FS_OFFSET = uStack_24;
+56844	  puStack_1c = &UNK_00457305;
+56845	  puStack_20 = &UNK_004572fd;
+56846	  FUN_004032fc((int *)&puStack_c);
+56847	  return;
+56848	}
+56849	
+56850
+56851	// ==== TPickLeaders_HumanOrComputer @ 0045730c ====
+56852	
+56853	void TPickLeaders_HumanOrComputer(int param_1,int param_2)
+56854	
+56855	{
+56856	  char cVar1;
+56857	  int iVar2;
+56858	  int *piVar3;
+56859	  undefined4 uVar4;
+56860	  short sVar5;
+56861	  undefined4 *in_FS_OFFSET;
+56862	  undefined4 uStack_24;
+56863	  undefined *puStack_20;
+56864	  undefined1 *puStack_1c;
+56865	  uint *puStack_c;
+56866	  short sStack_6;
+56867	  
+56868	  puStack_1c = &stack0xfffffffc;
+56869	  puStack_c = (uint *)0x0;
+56870	  puStack_20 = &UNK_004573f2;
+56871	  uStack_24 = *in_FS_OFFSET;
+56872	  *in_FS_OFFSET = &uStack_24;
+56873	  sVar5 = 0;
+56874	  do {
+56875	    iVar2 = FUN_0041439c(param_1,(int)*(short *)(param_1 + 0x280) + (int)sVar5);
+56876	    if (iVar2 == *(int *)(param_2 + 0x20)) {
+56877	      sStack_6 = sVar5;
+56878	    }
+56879	    sVar5 = sVar5 + 1;
+56880	  } while (sVar5 != 0x10);
+56881	  iVar2 = *(int *)(param_2 + 0x20);
+56882	  FUN_0041439c(iVar2,0);
+56883	  cVar1 = func_0x0042956c();
+56884	  if (cVar1 == '\0') {
+56885	    uVar4 = FUN_0041439c(iVar2,0);
+56886	    func_0x0042958c(uVar4,1);
+56887	    piVar3 = (int *)FUN_0041439c(iVar2,1);
+56888	    FUN_00412c44(piVar3,'\x01');
+56889	    (**(code **)(*piVar3 + 0x78))();
+56890	    FUN_00428d88(piVar3);
+56891	  }
+56892	  else {
+56893	    piVar3 = (int *)FUN_0041439c(iVar2,1);
+56894	    FUN_00403458((int *)&puStack_c,&DAT_0047467b + sStack_6 * 0x494,0x1a);
+56895	    FUN_00412cdc(piVar3,puStack_c);
+56896	    FUN_00412c44(piVar3,'\0');
+56897	  }
+56898	  *in_FS_OFFSET = uStack_24;
+56899	  puStack_1c = &UNK_004573f9;
+56900	  puStack_20 = &UNK_004573f1;
+56901	  FUN_004032fc((int *)&puStack_c);
+56902	  return;
+56903	}
+56904	
+56905
+56906	// ==== TPickLeaders_OK @ 00457404 ====
+56907	
+56908	void TPickLeaders_OK(int *param_1)
+56909	
+56910	{
+56911	  int iVar1;
+56912	  undefined4 uVar2;
+56913	  int *piVar3;
+56914	  char *pcVar4;
+56915	  undefined2 extraout_var;
+56916	  undefined2 extraout_var_00;
+56917	  undefined *puVar6;
+56918	  short sVar7;
+56919	  undefined *puStack_14;
+56920	  undefined2 uVar5;
+56921	  
+56922	  sVar7 = 0;
+56923	  puVar6 = &DAT_00474670;
+56924	  puStack_14 = &DAT_0049dc68;
+56925	  do {
+56926	    iVar1 = FUN_0041439c((int)param_1,(int)(short)param_1[0xa0] + (int)sVar7);
+56927	    FUN_0041439c(iVar1,0);
+56928	    uVar2 = func_0x0042956c();
+56929	    if ((char)uVar2 == '\0') {
+56930	      if (puVar6[0x490] != '\0') {
+56931	        puVar6[0x490] = 0;
+56932	        iVar1 = FUN_0040284c(0xc);
+56933	        pcVar4 = FUN_00405b00(puVar6 + 0xb,puStack_14 + iVar1 * 0x1a);
+56934	        uVar5 = (undefined2)((uint)pcVar4 >> 0x10);
+56935	        if (*(int *)(puVar6 + 0x438) < 0) {
+56936	          uVar5 = 0;
+56937	          *(undefined4 *)(puVar6 + 0x438) = 0;
+56938	        }
+56939	        uVar2 = FUN_00448fd8(CONCAT22(uVar5,500),
+56940	                             CONCAT22(extraout_var_00,*(undefined2 *)(puVar6 + 0x440)));
+56941	        *(short *)(puVar6 + 0x440) = (short)uVar2;
+56942	      }
+56943	    }
+56944	    else if (puVar6[0x490] == '\0') {
+56945	      if (*(int *)(puVar6 + 0x438) < 0) {
+56946	        uVar2 = 0;
+56947	        *(undefined4 *)(puVar6 + 0x438) = 0;
+56948	      }
+56949	      uVar2 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),0x1c2),
+56950	                           CONCAT22(extraout_var,*(undefined2 *)(puVar6 + 0x440)));
+56951	      *(short *)(puVar6 + 0x440) = (short)uVar2;
+56952	      puVar6[0x490] = 1;
+56953	      piVar3 = (int *)FUN_0041439c(iVar1,1);
+56954	      FUN_00412c6c(piVar3,puVar6 + 0xb,0x1a);
+56955	      *(short *)(puVar6 + 0x486) =
+56956	           *(short *)((int)&DAT_0047959e + *(short *)(puVar6 + 0x444) * 0x22 + 2) + -4;
+56957	      *(short *)(puVar6 + 0x488) =
+56958	           *(short *)((int)&DAT_0047959e + *(short *)(puVar6 + 0x444) * 0x22) + -4;
+56959	    }
+56960	    sVar7 = sVar7 + 1;
+56961	    puStack_14 = puStack_14 + 0x138;
+56962	    puVar6 = puVar6 + 0x494;
+56963	  } while (sVar7 != 0x10);
+56964	  FUN_00420c58(param_1,0x32);
+56965	  FUN_00420c84(param_1,0x14);
+56966	  FUN_004127c0(param_1,0x3c);
+56967	  param_1[0x4a] = 1;
+56968	  FUN_0042313c(param_1);
+56969	  return;
+56970	}
+56971	
+56972
+56973	// ==== TPickLeaders_Cancel @ 00457590 ====
+56974	
+56975	void TPickLeaders_Cancel(int *param_1)
+56976	
+56977	{
+56978	  FUN_00420c58(param_1,0x32);
+56979	  FUN_00420c84(param_1,0x14);
+56980	  FUN_004127c0(param_1,0x3c);
+56981	  param_1[0x4a] = 2;
+56982	  FUN_0042313c(param_1);
+56983	  return;
+56984	}
+56985	
+56986
+58004	// ==== TPremierForm_NewGame @ 0045a9e0 ====
+58005	
+58006	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58007	
+58008	void TPremierForm_NewGame(int param_1)
+58009	
+58010	{
+58011	  char cVar1;
+58012	  int iVar2;
+58013	  undefined4 extraout_EDX;
+58014	  short sVar3;
+58015	  
+58016	  cVar1 = FUN_00449050();
+58017	  if ((cVar1 != '\0') &&
+58018	     (iVar2 = FUN_0042d750((uint *)"Are you sure you want to start a new game ?",
+58019	                           CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_0045aa9c,0), iVar2 != 6)
+58020	     ) {
+58021	    return;
+58022	  }
+58023	  cVar1 = FUN_00449050();
+58024	  if (cVar1 != '\0') {
+58025	    if (DAT_004a0b7c == '\0') {
+58026	      TPremierForm_CloseAllForms(param_1);
+58027	    }
+58028	    else {
+58029	      TPremierForm_ResetBattle(param_1);
+58030	    }
+58031	  }
+58032	  func_0x004481a0();
+58033	  func_0x00448aa4();
+58034	  FUN_00424608(DAT_0045e628,0x456d00,(undefined4 *)0x4a0ba4);
+58035	  cVar1 = FUN_00449050();
+58036	  if (cVar1 == '\0') {
+58037	    TPremierForm_TurnMenusOff(param_1);
+58038	  }
+58039	  else {
+58040	    TPremierForm_TurnMenusOn(param_1);
+58041	    sVar3 = 0;
+58042	    do {
+58043	      TPremierForm_EnableNation(param_1,sVar3);
+58044	      sVar3 = sVar3 + 1;
+58045	    } while (sVar3 != 0x10);
+58046	    if ((&DAT_00474b00)[DAT_004a0320 * 0x494] == '\0') {
+58047	      FUN_00451fdc();
+58048	    }
+58049	    else {
+58050	      FUN_00452034();
+58051	    }
+58052	  }
+58053	  return;
+58054	}
+58055	
+58056
+58368	// ==== TPremierForm_NewPlayer @ 0045b148 ====
+58369	
+58370	void TPremierForm_NewPlayer(int *param_1)
+58371	
+58372	{
+58373	  char cVar1;
+58374	  
+58375	  FUN_00424608(DAT_0045e628,0x456d00,(undefined4 *)0x4a0ba4);
+58376	  cVar1 = FUN_00449050();
+58377	  if (cVar1 == '\0') {
+58378	    FUN_00449078(0);
+58379	    return;
+58380	  }
+58381	  if ((&DAT_00474b00)[DAT_004a0320 * 0x494] == '\0') {
+58382	    TPremierForm_EndTurn(param_1);
+58383	  }
+58384	  return;
+58385	}
+58386	
+58387
+58388	// ==== TPremierForm_NewNation @ 0045b198 ====
+58389	
+58390	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+58391	
+58392	void TPremierForm_NewNation(int *param_1,undefined4 param_2)
+58393	
+58394	{
+58395	  char cVar1;
+58396	  int iVar2;
+58397	  
+58398	  iVar2 = FUN_0042d750((uint *)"Are you sure you want to lead a different nation ?",
+58399	                       CONCAT31((int3)((uint)param_2 >> 8),3),_UNK_0045b20c,0);
+58400	  if (iVar2 == 6) {
+58401	    FUN_00449078(DAT_004a0320);
+58402	    FUN_00424608(DAT_0045e628,0x456d00,(undefined4 *)0x4a0ba4);
+58403	    cVar1 = FUN_00449050();
+58404	    if (cVar1 == '\0') {
+58405	      FUN_00449078(0);
+58406	    }
+58407	    else if ((&DAT_00474b00)[DAT_004a0320 * 0x494] == '\0') {
+58408	      TPremierForm_EndTurn(param_1);
+58409	    }
+58410	  }
+58411	  return;
+58412	}
+58413	
+58414
+47751	// ==== FUN_00449050 @ 00449050 ====
+47752	
+47753	char FUN_00449050(void)
+47754	
+47755	{
+47756	  char *pcVar1;
+47757	  short sVar2;
+47758	  char cVar3;
+47759	  
+47760	  cVar3 = '\0';
+47761	  sVar2 = 0x10;
+47762	  pcVar1 = &DAT_00474b00;
+47763	  do {
+47764	    if ((cVar3 == '\0') && (*pcVar1 == '\0')) {
+47765	      cVar3 = '\0';
+47766	    }
+47767	    else {
+47768	      cVar3 = '\x01';
+47769	    }
+47770	    pcVar1 = pcVar1 + 0x494;
+47771	    sVar2 = sVar2 + -1;
+47772	  } while (sVar2 != 0);
+47773	  return cVar3;
+47774	}
+47775	
+47776
+47777	// ==== FUN_00449078 @ 00449078 ====
+47778	
+47779	void FUN_00449078(short param_1)
+47780	
+47781	{
+47782	  char cVar1;
+47783	  char cVar2;
+47784	  int iVar3;
+47785	  int iVar4;
+47786	  
+47787	  cVar1 = (&DAT_00474b00)[DAT_004a0320 * 0x494];
+47788	  iVar4 = (int)param_1;
+47789	  (&DAT_00474b00)[iVar4 * 0x494] = 0;
+47790	  iVar3 = FUN_0040284c(0xc);
+47791	  FUN_00405b00(&DAT_0047467b + iVar4 * 0x494,&DAT_0049dc68 + iVar3 * 0x1a + iVar4 * 0x138);
+47792	  cVar2 = FUN_00449050();
+47793	  if (cVar2 == '\0') {
+47794	    TPremierForm_CloseAllForms((int)DAT_004a0bd0);
+47795	    TPremierForm_TurnMenusOff((int)DAT_004a0bd0);
+47796	    FUN_00412e34(DAT_004a0bd0,0);
+47797	    FUN_00412cdc(DAT_004a0bd0,(uint *)"Imperial Conquest 2");
+47798	  }
+47799	  else if (cVar1 == '\0') {
+47800	    FUN_00451fdc();
+47801	  }
+47802	  return;
+47803	}
+47804	
+47805
+1585	// ==== FUN_0040284c @ 0040284c ====
+1586	
+1587	undefined4 FUN_0040284c(uint param_1)
+1588	
+1589	{
+1590	  DAT_0045e030 = DAT_0045e030 * 0x8088405 + 1;
+1591	  return (int)((ulonglong)param_1 * (ulonglong)DAT_0045e030 >> 0x20);
+1592	}
+1593	
+1594
+16331	// ==== FUN_00412c44 @ 00412c44 ====
+16332	
+16333	void FUN_00412c44(int *param_1,char param_2)
+16334	
+16335	{
+16336	  if (param_2 != (char)param_1[0xe]) {
+16337	    *(char *)(param_1 + 0xe) = param_2;
+16338	    FUN_004133c0(param_1,0xb00c,0,0);
+16339	  }
+16340	  return;
+16341	}
+16342	
+16343
+16354	// ==== FUN_00412c6c @ 00412c6c ====
+16355	
+16356	void FUN_00412c6c(int *param_1,undefined4 param_2,undefined4 param_3)
+16357	
+16358	{
+16359	  FUN_004133c0(param_1,0xd,param_3,param_2);
+16360	  return;
+16361	}
+16362	
+16363
+16404	// ==== FUN_00412cdc @ 00412cdc ====
+16405	
+16406	void FUN_00412cdc(int *param_1,uint *param_2)
+16407	
+16408	{
+16409	  undefined *puVar1;
+16410	  undefined4 *in_FS_OFFSET;
+16411	  undefined1 uVar2;
+16412	  undefined4 uStack_20;
+16413	  undefined1 *puStack_1c;
+16414	  undefined1 *puStack_18;
+16415	  uint *local_8;
+16416	  
+16417	  puStack_18 = &stack0xfffffffc;
+16418	  local_8 = (uint *)0x0;
+16419	  uVar2 = 1;
+16420	  puStack_1c = &LAB_00412d32;
+16421	  uStack_20 = *in_FS_OFFSET;
+16422	  *in_FS_OFFSET = &uStack_20;
+16423	  FUN_00412cac(param_1,(int *)&local_8);
+16424	  FUN_00403580(local_8,param_2);
+16425	  if (!(bool)uVar2) {
+16426	    puVar1 = FUN_00403634((undefined *)param_2);
+16427	    FUN_00412c88(param_1,puVar1);
+16428	  }
+16429	  *in_FS_OFFSET = uStack_20;
+16430	  puStack_18 = &LAB_00412d39;
+16431	  puStack_1c = (undefined1 *)0x412d31;
+16432	  FUN_004032fc((int *)&local_8);
+16433	  return;
+16434	}
+16435	
+16436
+17756	// ==== FUN_0041439c @ 0041439c ====
+17757	
+17758	void FUN_0041439c(int param_1,int param_2)
+17759	
+17760	{
+17761	  undefined4 *puVar1;
+17762	  int iVar2;
+17763	  
+17764	  puVar1 = *(undefined4 **)(param_1 + 0xb0);
+17765	  if (puVar1 == (undefined4 *)0x0) {
+17766	    iVar2 = 0;
+17767	  }
+17768	  else {
+17769	    iVar2 = puVar1[2];
+17770	  }
+17771	  if (param_2 < iVar2) {
+17772	    FUN_00408e1c(puVar1,param_2);
+17773	    return;
+17774	  }
+17775	  FUN_00408e1c(*(undefined4 **)(param_1 + 0xb4),param_2 - iVar2);
+17776	  return;
+17777	}
+17778	
+17779
+47671	// ==== FUN_00448fd8 @ 00448fd8 ====
+47672	
+47673	undefined4 FUN_00448fd8(undefined4 param_1,undefined4 param_2)
+47674	
+47675	{
+47676	  if ((short)param_1 <= (short)param_2) {
+47677	    param_1 = param_2;
+47678	  }
+47679	  return param_1;
+47680	}
+47681	
+47682
+27909	// ==== FUN_0042313c @ 0042313c ====
+27910	
+27911	void FUN_0042313c(int *param_1)
+27912	
+27913	{
+27914	  HWND hWnd;
+27915	  UINT Msg;
+27916	  WPARAM wParam;
+27917	  LPARAM lParam;
+27918	  
+27919	  lParam = 0;
+27920	  wParam = 0;
+27921	  Msg = 0xb021;
+27922	  hWnd = (HWND)FUN_00416360(param_1);
+27923	  PostMessageA(hWnd,Msg,wParam,lParam);
+27924	  return;
+27925	}
+27926	
+27927
+29918	// ==== FUN_00428d88 @ 00428d88 ====
+29919	
+29920	void FUN_00428d88(int *param_1)
+29921	
+29922	{
+29923	  HWND hWnd;
+29924	  UINT Msg;
+29925	  WPARAM wParam;
+29926	  LPARAM lParam;
+29927	  
+29928	  lParam = -1;
+29929	  wParam = 0;
+29930	  Msg = 0xb1;
+29931	  hWnd = (HWND)FUN_00416360(param_1);
+29932	  SendMessageA(hWnd,Msg,wParam,lParam);
+29933	  return;
+29934	}
+29935	
+29936
+27831	// ==== FUN_00422f40 @ 00422f40 ====
+27832	
+27833	void FUN_00422f40(int *param_1)
+27834	
+27835	{
+27836	  undefined4 uVar1;
+27837	  HWND pHVar2;
+27838	  undefined4 extraout_ECX;
+27839	  uint extraout_ECX_00;
+27840	  undefined4 extraout_EDX;
+27841	  undefined4 extraout_EDX_00;
+27842	  undefined4 *in_FS_OFFSET;
+27843	  undefined4 uStack_3c;
+27844	  undefined1 *puStack_38;
+27845	  undefined1 *puVar3;
+27846	  UINT UVar4;
+27847	  WPARAM WVar5;
+27848	  LPARAM LVar6;
+27849	  
+27850	  puVar3 = &stack0xfffffffc;
+27851	  FUN_004122a4();
+27852	  if ((((*(char *)((int)param_1 + 0x37) != '\0') || ((char)param_1[0xe] == '\0')) ||
+27853	      ((*(byte *)((int)param_1 + 0x119) & 8) != 0)) || (*(char *)((int)param_1 + 0x116) == '\x01'))
+27854	  {
+27855	    uVar1 = FUN_004067d0(0x4108c4,CONCAT31((int3)((uint)extraout_EDX >> 8),1),0xf032);
+27856	    FUN_00403018(uVar1);
+27857	  }
+27858	  pHVar2 = GetCapture();
+27859	  if (pHVar2 != (HWND)0x0) {
+27860	    LVar6 = 0;
+27861	    WVar5 = 0;
+27862	    UVar4 = 0x1f;
+27863	    pHVar2 = GetCapture();
+27864	    puStack_38 = (undefined1 *)0x422fae;
+27865	    SendMessageA(pHVar2,UVar4,WVar5,LVar6);
+27866	  }
+27867	  ReleaseCapture();
+27868	  *(byte *)((int)param_1 + 0x119) = *(byte *)((int)param_1 + 0x119) | 8;
+27869	  GetActiveWindow();
+27870	  *(int **)(DAT_0045e62c + 0x4c) = param_1;
+27871	  FUN_0042343c(DAT_0045e62c,0);
+27872	  FUN_0041ef24(0);
+27873	  *in_FS_OFFSET = &stack0xffffffd0;
+27874	  FUN_00422ef4(param_1,0,extraout_ECX);
+27875	  puStack_38 = &LAB_004230d3;
+27876	  uStack_3c = *in_FS_OFFSET;
+27877	  *in_FS_OFFSET = &uStack_3c;
+27878	  LVar6 = 0;
+27879	  WVar5 = 0;
+27880	  UVar4 = 0xb000;
+27881	  pHVar2 = (HWND)FUN_00416360(param_1);
+27882	  SendMessageA(pHVar2,UVar4,WVar5,LVar6);
+27883	  param_1[0x4a] = 0;
+27884	  do {
+27885	    FUN_0042450c(DAT_0045e628);
+27886	    if (*(char *)(DAT_0045e628 + 0x7c) == '\0') {
+27887	      if (param_1[0x4a] != 0) {
+27888	        FUN_00422e44(param_1,extraout_EDX_00,extraout_ECX_00);
+27889	      }
+27890	    }
+27891	    else {
+27892	      param_1[0x4a] = 2;
+27893	    }
+27894	  } while (param_1[0x4a] == 0);
+27895	  LVar6 = 0;
+27896	  WVar5 = 0;
+27897	  UVar4 = 0xb001;
+27898	  pHVar2 = (HWND)FUN_00416360(param_1);
+27899	  SendMessageA(pHVar2,UVar4,WVar5,LVar6);
+27900	  FUN_00416360(param_1);
+27901	  GetActiveWindow();
+27902	  *in_FS_OFFSET = uStack_3c;
+27903	  puStack_38 = (undefined1 *)0x4230d2;
+27904	  FUN_00422eec(param_1,uStack_3c,puVar3);
+27905	  return;
+27906	}
+27907	
+27908
+29013	// ==== FUN_00424608 @ 00424608 ====
+29014	
+29015	void FUN_00424608(int param_1,int param_2,undefined4 *param_3)
+29016	
+29017	{
+29018	  int *piVar1;
+29019	  undefined4 uVar2;
+29020	  undefined4 *in_FS_OFFSET;
+29021	  undefined4 uStack_24;
+29022	  undefined1 *puStack_20;
+29023	  undefined1 *puStack_1c;
+29024	  
+29025	  puStack_1c = (undefined1 *)0x42461d;
+29026	  piVar1 = (int *)(**(code **)(param_2 + -0xc))();
+29027	  *param_3 = piVar1;
+29028	  puStack_20 = &LAB_0042464c;
+29029	  uStack_24 = *in_FS_OFFSET;
+29030	  *in_FS_OFFSET = &uStack_24;
+29031	  puStack_1c = &stack0xfffffffc;
+29032	  (**(code **)(*piVar1 + 0x24))(piVar1,0,param_1);
+29033	  *in_FS_OFFSET = uStack_24;
+29034	  if (*(int *)(param_1 + 0x28) == 0) {
+29035	    puStack_1c = (undefined1 *)0x42467d;
+29036	    uVar2 = FUN_00402a9c(piVar1,0x41e4ec);
+29037	    if ((char)uVar2 != '\0') {
+29038	      puStack_1c = (undefined1 *)0x42468b;
+29039	      FUN_0041633c(piVar1);
+29040	      *(int **)(param_1 + 0x28) = piVar1;
+29041	    }
+29042	  }
+29043	  return;
+29044	}
+29045	
+29046
+16025	// ==== FUN_004127a0 @ 004127a0 ====
+16026	
+16027	void FUN_004127a0(int *param_1,undefined4 param_2)
+16028	
+16029	{
+16030	  (**(code **)(*param_1 + 0x4c))(param_1,param_2,param_1[10],param_1[0xc],param_1[0xb]);
+16031	  *(byte *)(param_1 + 0x17) = *(byte *)(param_1 + 0x17) | 1;
+16032	  return;
+16033	}
+16034	
+16035
+16036	// ==== FUN_004127c0 @ 004127c0 ====
+16037	
+16038	void FUN_004127c0(int *param_1,undefined4 param_2)
+16039	
+16040	{
+16041	  (**(code **)(*param_1 + 0x4c))(param_1,param_1[9],param_2,param_1[0xc],param_1[0xb]);
+16042	  *(byte *)(param_1 + 0x17) = *(byte *)(param_1 + 0x17) | 2;
+16043	  return;
+16044	}
+16045	
+16046
+26773	// ==== FUN_00420c58 @ 00420c58 ====
+26774	
+26775	void FUN_00420c58(int *param_1,int param_2)
+26776	
+26777	{
+26778	  if ((*(byte *)((int)param_1 + 0x36) & 8) != 0) {
+26779	    param_1[0x51] = param_2;
+26780	    *(byte *)(param_1 + 0x17) = DAT_00420c80 | *(byte *)(param_1 + 0x17);
+26781	    return;
+26782	  }
+26783	  FUN_00412898(param_1,param_2);
+26784	  return;
+26785	}
+26786	
+26787
+26788	// ==== FUN_00420c84 @ 00420c84 ====
+26789	
+26790	void FUN_00420c84(int *param_1,int param_2)
+26791	
+26792	{
+26793	  if ((*(byte *)((int)param_1 + 0x36) & 8) != 0) {
+26794	    param_1[0x52] = param_2;
+26795	    *(byte *)(param_1 + 0x17) = DAT_00420cac | *(byte *)(param_1 + 0x17);
+26796	    return;
+26797	  }
+26798	  FUN_004128dc(param_1,param_2);
+26799	  return;
+26800	}
+26801	
+26802
+4941	// ==== FUN_00405b00 @ 00405b00 ====
+4942	
+4943	char * FUN_00405b00(char *param_1,char *param_2)
+4944	
+4945	{
+4946	  char cVar1;
+4947	  uint uVar2;
+4948	  uint uVar3;
+4949	  char *pcVar4;
+4950	  
+4951	  uVar2 = 0xffffffff;
+4952	  pcVar4 = param_2;
+4953	  do {
+4954	    if (uVar2 == 0) break;
+4955	    uVar2 = uVar2 - 1;
+4956	    cVar1 = *pcVar4;
+4957	    pcVar4 = pcVar4 + 1;
+4958	  } while (cVar1 != '\0');
+4959	  pcVar4 = param_1;
+4960	  for (uVar3 = ~uVar2 >> 2; uVar3 != 0; uVar3 = uVar3 - 1) {
+4961	    *(undefined4 *)pcVar4 = *(undefined4 *)param_2;
+4962	    param_2 = param_2 + 4;
+4963	    pcVar4 = pcVar4 + 4;
+4964	  }
+4965	  for (uVar2 = ~uVar2 & 3; uVar2 != 0; uVar2 = uVar2 - 1) {
+4966	    *pcVar4 = *param_2;
+4967	    param_2 = param_2 + 1;
+4968	    pcVar4 = pcVar4 + 1;
+4969	  }
+4970	  return param_1;
+4971	}
+4972	
+4973
+2781	// ==== FUN_00403458 @ 00403458 ====
+2782	
+2783	void FUN_00403458(int *param_1,char *param_2,uint param_3)
+2784	
+2785	{
+2786	  uint uVar1;
+2787	  char *pcVar2;
+2788	  bool bVar3;
+2789	  
+2790	  bVar3 = true;
+2791	  uVar1 = param_3;
+2792	  pcVar2 = param_2;
+2793	  do {
+2794	    if (uVar1 == 0) break;
+2795	    uVar1 = uVar1 - 1;
+2796	    bVar3 = *pcVar2 == '\0';
+2797	    pcVar2 = pcVar2 + 1;
+2798	  } while (!bVar3);
+2799	  if (bVar3) {
+2800	    uVar1 = ~uVar1;
+2801	  }
+2802	  FUN_004033dc(param_1,(undefined4 *)param_2,uVar1 + param_3);
+2803	  return;
+2804	}
+2805	
+2806
+# FILE news_log_decomp.txt
+2	// FUNCTION FUN_00448aa4 @ 00448aa4
+3	// ==================================================
+4	
+5	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+6	
+7	void FUN_00448aa4(void)
+8	
+9	{
+10	  short sVar1;
+11	  int iVar2;
+12	  short *psVar3;
+13	  undefined2 *puVar4;
+14	  short sVar5;
+15	  undefined *puStack_20;
+16	  undefined *puStack_1c;
+17	  undefined1 auStack_18 [4];
+18	  short sStack_14;
+19	  
+20	  FUN_00402744();
+21	  sVar1 = FUN_00423290();
+22	  uRam004a0334 = 0;
+23	  DAT_004a0b7c = 0;
+24	  DAT_004a0b7d = 0;
+25	  DAT_004a032e = 0;
+26	  DAT_004a0330 = 1;
+27	  DAT_004a0332 = 0x10e;
+28	  DAT_0049f008 = 0xffff;
+29	  DAT_004a031c = 0xffff;
+30	  DAT_004a031e = 0x1a;
+31	  FUN_00449130();
+32	  FUN_00451304();
+33	  sVar5 = 0;
+34	  puStack_20 = &DAT_00474670;
+35	  puStack_1c = &DAT_0049dc68;
+36	  do {
+37	    iVar2 = FUN_0040284c(0xc);
+38	    FUN_00405b00(puStack_20 + 0xb,puStack_1c + iVar2 * 0x1a);
+39	    puStack_20[0x490] = 0;
+40	    puStack_20[0x46b] = 1;
+41	    puStack_20[0x46c] = 1;
+42	    *(undefined2 *)(puStack_20 + 0x486) = 0x2d;
+43	    *(undefined2 *)(puStack_20 + 0x488) = 0x37;
+44	    *(short *)(puStack_20 + 0x48a) = sVar5;
+45	    *(undefined2 *)(puStack_20 + 0x48c) = 0x1e;
+46	    *(undefined2 *)(puStack_20 + 0x48e) = 0x14;
+47	    *(undefined2 *)(puStack_20 + 0x46e) = 2;
+48	    (**(code **)(*DAT_004a0bd0 + 0x28))(DAT_004a0bd0,auStack_18);
+49	    *(short *)(puStack_20 + 0x470) = sStack_14 + 0x1d;
+50	    *(undefined2 *)(puStack_20 + 0x474) = 0x140;
+51	    *(undefined2 *)(puStack_20 + 0x472) = 0xaa;
+52	    *(undefined2 *)(puStack_20 + 0x476) = 0x14c;
+53	    (**(code **)(*DAT_004a0bd0 + 0x28))(DAT_004a0bd0,auStack_18);
+54	    *(short *)(puStack_20 + 0x478) = sStack_14 + 0x1d;
+55	    if (sVar1 < 600) {
+56	      *(undefined2 *)(puStack_20 + 0x47c) = 0x12f;
+57	      *(undefined2 *)(puStack_20 + 0x47a) = 0x16d;
+58	    }
+59	    else {
+60	      *(undefined2 *)(puStack_20 + 0x47c) = 0x1af;
+61	      *(undefined2 *)(puStack_20 + 0x47a) = 0x1cd;
+62	    }
+63	    *(undefined2 *)(puStack_20 + 0x47e) = 2;
+64	    (**(code **)(*DAT_004a0bd0 + 0x28))(DAT_004a0bd0,auStack_18);
+65	    *(short *)(puStack_20 + 0x480) = sStack_14 + 0xe0;
+66	    *(undefined2 *)(puStack_20 + 0x484) = 0x140;
+67	    *(short *)(puStack_20 + 0x482) = sVar1 + -0x13c;
+68	    sVar5 = sVar5 + 1;
+69	    puStack_1c = puStack_1c + 0x138;
+70	    puStack_20 = puStack_20 + 0x494;
+71	  } while (sVar5 != 0x10);
+72	  sVar1 = 0;
+73	  psVar3 = (short *)&DAT_0049efe8;
+74	  do {
+75	    *psVar3 = sVar1;
+76	    sVar1 = sVar1 + 1;
+77	    psVar3 = psVar3 + 1;
+78	  } while (sVar1 != 0x10);
+79	  sVar1 = 0x10;
+80	  puVar4 = (undefined2 *)&DAT_0049efe8;
+81	  do {
+82	    iVar2 = FUN_0040284c(0x10);
+83	    FUN_00448fe0(puVar4,(undefined2 *)(&DAT_0049efe8 + iVar2 * 2));
+84	    puVar4 = puVar4 + 1;
+85	    sVar1 = sVar1 + -1;
+86	  } while (sVar1 != 0);
+87	  DAT_004a0322 = 0;
+88	  DAT_004a0320 = _DAT_0049efe8;
+89	  _DAT_00474a94 = 0x800080;
+90	  _DAT_00474a98 = 0xffffff;
+91	  _DAT_00474a9c = 0xff0000;
+92	  uRam00474f28 = 0xff;
+93	  uRam00474f2c = 0;
+94	  uRam00474f30 = 0xffffff;
+95	  uRam004753bc = 0x8080;
+96	  uRam004753c0 = 0xffffff;
+97	  uRam004753c4 = 0x80;
+98	  uRam00475850 = 0x800000;
+99	  uRam00475854 = 0xffffff;
+100	  uRam00475858 = 0xff00ff;
+101	  uRam00475ce4 = 0xffffff;
+102	  uRam00475ce8 = 0xff0000;
+103	  uRam00475cec = 0x808080;
+104	  uRam00476178 = 0xff00;
+105	  uRam0047617c = 0;
+106	  uRam00476180 = 0x808080;
+107	  uRam0047660c = 0x80;
+108	  uRam00476610 = 0xffff00;
+109	  uRam00476614 = 0x808080;
+110	  uRam00476aa0 = 0xffff00;
+111	  uRam00476aa4 = 0;
+112	  uRam00476aa8 = 0xff00ff;
+113	  uRam00476f34 = 0xffff;
+114	  uRam00476f38 = 0;
+115	  uRam00476f3c = 0xff;
+116	  uRam004773c8 = 0x800000;
+117	  uRam004773cc = 0x8080;
+118	  uRam004773d0 = 0xffff00;
+119	  uRam0047785c = 0x8000;
+120	  uRam00477860 = 0;
+121	  uRam00477864 = 0xffff;
+122	  uRam00477cf0 = 0x808000;
+123	  uRam00477cf4 = 0;
+124	  uRam00477cf8 = 0xff0000;
+125	  uRam00478184 = 0xff0000;
+126	  uRam00478188 = 0;
+127	  uRam0047818c = 0xffff00;
+128	  uRam00478618 = 0xff00ff;
+129	  uRam0047861c = 0;
+130	  uRam00478620 = 0xff;
+131	  uRam00478aac = 0xff;
+132	  uRam00478ab0 = 0xc0c0c0;
+133	  uRam00478ab4 = 0x800080;
+134	  uRam00478f40 = 0x808080;
+135	  uRam00478f44 = 0xffffff;
+136	  uRam00478f48 = 0;
+137	  return;
+138	}
+139	
+140	
+141	
+142	// ==================================================
+143	// FUNCTION FUN_004481a0 @ 004481a0
+144	// ==================================================
+145	
+146	void FUN_004481a0(void)
+147	
+148	{
+149	  undefined *puVar1;
+150	  int *piVar2;
+151	  undefined4 extraout_EDX;
+152	  undefined4 *puVar3;
+153	  undefined4 *in_FS_OFFSET;
+154	  ushort uVar4;
+155	  undefined4 uStack_28;
+156	  undefined *puStack_24;
+157	  undefined1 *puStack_20;
+158	  undefined *puStack_10;
+159	  undefined *puStack_c;
+160	  short sStack_6;
+161	  
+162	  puStack_20 = &stack0xfffffffc;
+163	  puStack_10 = (undefined *)0x0;
+164	  puStack_24 = &UNK_004484c1;
+165	  uStack_28 = *in_FS_OFFSET;
+166	  *in_FS_OFFSET = &uStack_28;
+167	  uVar4 = 0;
+168	  FUN_00403458((int *)&puStack_10,(char *)0x45e744,100);
+169	  piVar2 = (int *)FUN_0040a75c(0x4082a4,CONCAT31((int3)((uint)extraout_EDX >> 8),1),puStack_10,uVar4
+170	                              );
+171	  (**(code **)*piVar2)(piVar2,&DAT_0045e870,0x15e00);
+172	  (**(code **)*piVar2)(piVar2,&DAT_00479590,0x2c5c);
+173	  sStack_6 = 0xf;
+174	  puVar3 = &DAT_0047c1ec;
+175	  do {
+176	    (**(code **)*piVar2)(piVar2,puVar3,0x290);
+177	    puVar3 = puVar3 + 0xa4;
+178	    sStack_6 = sStack_6 + -1;
+179	  } while (sStack_6 != 0);
+180	  DAT_004a0324 = 0xf;
+181	  sStack_6 = 2;
+182	  puVar3 = &DAT_0049c26c;
+183	  do {
+184	    (**(code **)*piVar2)(piVar2,puVar3,0x1a);
+185	    puVar3 = (undefined4 *)((int)puVar3 + 0x1a);
+186	    sStack_6 = sStack_6 + -1;
+187	  } while (sStack_6 != 0);
+188	  DAT_004a0326 = 2;
+189	  sStack_6 = 0x10;
+190	  puStack_c = &DAT_00474670;
+191	  do {
+192	    puVar1 = puStack_c;
+193	    (**(code **)*piVar2)(piVar2,puStack_c,0xb);
+194	    (**(code **)*piVar2)(piVar2,puVar1 + 0x26,0x20);
+195	    (**(code **)*piVar2)(piVar2,puVar1 + 0x46,2);
+196	    (**(code **)*piVar2)(piVar2,puVar1 + 0x48,0x29c);
+197	    (**(code **)*piVar2)(piVar2,puVar1 + 0x2e4,0x140);
+198	    (**(code **)*piVar2)(piVar2,puVar1 + 0x430,4);
+199	    *(undefined4 *)(puVar1 + 0x434) = *(undefined4 *)(puVar1 + 0x430);
+200	    (**(code **)*piVar2)(piVar2,puVar1 + 0x438,4);
+201	    *(undefined4 *)(puVar1 + 0x43c) = *(undefined4 *)(puVar1 + 0x438);
+202	    (**(code **)*piVar2)(piVar2,puVar1 + 0x440,2);
+203	    (**(code **)*piVar2)(piVar2,puVar1 + 0x442,2);
+204	    (**(code **)*piVar2)(piVar2,puVar1 + 0x444,2);
+205	    (**(code **)*piVar2)(piVar2,puVar1 + 0x446,2);
+206	    *(undefined2 *)(puVar1 + 0x448) = *(undefined2 *)(puVar1 + 0x446);
+207	    (**(code **)*piVar2)(piVar2,puVar1 + 0x44a,2);
+208	    (**(code **)*piVar2)(piVar2,puVar1 + 0x44c,2);
+209	    (**(code **)*piVar2)(piVar2,puVar1 + 0x44e,2);
+210	    puStack_c = puStack_c + 0x494;
+211	    sStack_6 = sStack_6 + -1;
+212	  } while (sStack_6 != 0);
+213	  (**(code **)*piVar2)(piVar2,&DAT_00478fb0,200);
+214	  (**(code **)*piVar2)(piVar2,&DAT_00479078,0x28);
+215	  (**(code **)*piVar2)(piVar2,&DAT_004790a0,10);
+216	  (**(code **)*piVar2)(piVar2,&DAT_004790ac,0xe8);
+217	  (**(code **)*piVar2)(piVar2,&DAT_00479194,0x150);
+218	  (**(code **)*piVar2)(piVar2,&DAT_004792e4,0xa8);
+219	  (**(code **)*piVar2)(piVar2,&DAT_0047938c,0x6e);
+220	  (**(code **)*piVar2)(piVar2,&DAT_004793fc,0x6e);
+221	  (**(code **)*piVar2)(piVar2,&DAT_0047946c,0x32);
+222	  (**(code **)*piVar2)(piVar2,&DAT_004794a0,0x28);
+223	  (**(code **)*piVar2)(piVar2,&DAT_004794c8,0x1e);
+224	  (**(code **)*piVar2)(piVar2,&DAT_004794e8,0x40);
+225	  (**(code **)*piVar2)(piVar2,&DAT_00479528,0x18);
+226	  (**(code **)*piVar2)(piVar2,&DAT_00479540,0x50);
+227	  (**(code **)*piVar2)(piVar2,&DAT_0049cc94,0x410);
+228	  (**(code **)*piVar2)(piVar2,&DAT_0049d0a4,0xbc4);
+229	  (**(code **)*piVar2)(piVar2,&DAT_0049dc68,0x1380);
+230	  (**(code **)*piVar2)(piVar2,&DAT_0049f994,0x988);
+231	  (**(code **)(*piVar2 + -4))(piVar2,1);
+232	  *in_FS_OFFSET = uStack_28;
+233	  puStack_20 = &UNK_004484c8;
+234	  puStack_24 = &UNK_004484c0;
+235	  FUN_004032fc((int *)&puStack_10);
+236	  return;
+237	}
+238	
+239	
+240	
+241
