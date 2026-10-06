@@ -288,6 +288,7 @@ def self_test():
          "minimax": {"status": "exhausted", "available_in": "4h", "windows": []}}
     lunafull = dict(q, openai=dict(q["openai"], windows=[{"name": "gpt-5.6-luna:7d", "used_pct": 96, "resets_in": "3d"}]))
     qpeak = dict(q, zai={"status": "ok", "windows": [], "pricing": {"peak_now": True, "next_change_at": 1791330000}})
+    qoffpeak = dict(q, zai={"status": "ok", "windows": [], "pricing": {"peak_now": False, "next_change_at": 1791330000}})
     for name, model, data, skip in (
             ("quota: exhausted provider skipped", "zai-coding-plan/glm-5.3#low", q, True),
             ("quota: ok provider used", "opencode-go/deepseek-v4.1-flash#high", q, False),
@@ -304,7 +305,7 @@ def self_test():
         n += 1
     for name, model, data, want in (
             ("pricing: alibaba night discount noted", "alibaba-token-plan/qwen3.8-max#low", q, "60% off"),
-            ("pricing: no note while zai is off-peak", "zai-coding-plan/glm-5.3#low", q, None),
+            ("pricing: no note while zai is off-peak", "zai-coding-plan/glm-5.3#low", qoffpeak, None),
             ("pricing: zai peak noted", "zai-coding-plan/glm-5.3#low", qpeak, "3x quota"),
             ("pricing: nothing for a provider without pricing", "opencode-go/deepseek-v4.1-flash#high", q, None)):
         got = pricing_note(model, fetch=lambda p, d=data: d.get(p))

@@ -96,7 +96,6 @@ OFFERS = {
 }
 DEFAULT_VARIANT = {
     "minimax/MiniMax-M3": "thinking",
-    "minimax/MiniMax-M2.7": None,
     "alibaba-token-plan/deepseek-v4-pro-0813": "high",
     "alibaba-token-plan/qwen3.8-max": "low",
     "alibaba-token-plan/qwen3.8-flash": "medium",
@@ -114,7 +113,8 @@ def effort(model):
     """'provider/model[#variant]' with its effort made explicit. A light model: no variant means high, and max is lowered to high
     (overkill and slower; decision 2026-10-02). A heavy model: no variant means low, and high or max is lowered to medium (the player,
     2026-10-05: low, or medium when needed, never high). A model in OFFERS never gets a variant it does not offer: an unoffered
-    result becomes its DEFAULT_VARIANT, and a model with no variants at all keeps no suffix."""
+    result becomes its DEFAULT_VARIANT (every DEFAULT_VARIANT value is one of its model's OFFERS), and a model with no variants
+    at all keeps no suffix."""
     base, variant = split_model(model)
     if is_heavy(base):
         variant = 'low' if variant is None else 'medium' if variant in ('high', 'max') else variant
