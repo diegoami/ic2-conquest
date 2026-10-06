@@ -528,7 +528,7 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     BRANCH_CLAIMS = collections.defaultdict(list)                  # (function, line, arm) -> [row id]
     ROWITEMS = {}                                                  # row id -> the check items of the row (for the checks that look at their own row)
     LEX = [(r'\bat least\b', {'floor'}), (r'\blarger\b|\bgreater\b|\bhigher\b|\bmaximum\b|\braised\b', {'floor', 'maxfn'}), (r'\bat most\b', {'getlimit'}), (r'\bsmaller\b|\blower\b|\bminimum\b|\bless\b|\bfewer\b', {'minfn'}),
-           (r'\blowest\b', {'scanmin'}), (r'\bhighest\b', {'scanmax'}), (r'\bsame\b', {'same'}), (r'\bdiffer\w*\b|\bdifferent\b', {'differ'}), (r'\bbefore\b|\bafter\b', {'seq', 'order'}), (r'\bnegative\b', {'lt0'}), (r'\bEscape\b|\bReturn\b', {'same', 'value'})]
+           (r'\blowest\b', {'scanmin'}), (r'\bhighest\b', {'scanmax'}), (r'\bsame\b', {'same'}), (r'\bdiffer\w*\b|\bdifferent\b', {'differ'}), (r'\bbefore\b|\bafter\b', {'seq', 'order'}), (r'\bthen\b', {'seq', 'order'}), (r'\bnegative\b', {'lt0'}), (r'\bEscape\b|\bReturn\b', {'same', 'value'})]
     def plain(prose, lit=None):
         """the prose as the phrases are matched against it: a quoted literal (a backtick span with letters and a space) blanked, markup removed"""
         def span(m):
@@ -569,6 +569,10 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             good = mm is not None and passes and int(mm.group(1), 0) == int(mx, 0)
             check(name, good, 'the call passes %s as the count; the function sends WM_GETTEXT with its third parameter: %s' % (mm.group(1) if mm else None, passes))
             LAST.update(kind='getlimit', nums=spell(int(mx, 0))); return True
+        m = re.fullmatch(r'code order ((?:nl:)?\d+) < ((?:nl:)?\d+)', item)
+        if m:
+            ka, kb = code_key(m.group(1)), code_key(m.group(2))
+            check(name, ka in EXT and kb in EXT and ka[0] == kb[0] and ka[1] < kb[1] and FNOF.get(ka) == FNOF.get(kb), 'the lines %s and %s must be in one function, the first before the second' % (m.group(1), m.group(2))); LAST.update(kind='order', nums=set()); return True
         m = re.fullmatch(r'dfm (\w+) (\w+) < (\w+)', item)
         if m:
             prop, a, b = m.groups()
@@ -725,7 +729,7 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             cov = [sy for sa, sb, sy in spans_ if sa <= mm.start() and mm.end() <= sb]
             check('%s: the spelled number "%s" ("...%s...") lies in a phrase of a passing says check that derives it' % (label, mm.group(1), pt[max(0, mm.start() - 18):mm.end() + 12]), any(sp in sy['nums'] for sy in cov), 'phrases covering it: %s' % [sy['phrase'] for sy in cov])
         for rx, kinds in (LEX if words else []):
-            if rx.startswith(r'\bbefore') and not derived: continue
+            if (rx.startswith(r'\bbefore') or rx.startswith(r'\bthen')) and not derived: continue
             for mm in re.finditer(rx, pt, re.I):
                 cov = [sy for sa, sb, sy in spans_ if sa <= mm.start() and mm.end() <= sb]
                 check('%s: the word %r ("...%s...") lies in a phrase of a passing says check of kind %s' % (label, mm.group(0), pt[max(0, mm.start() - 18):mm.end() + 18], sorted(kinds)), any(sy['kind'] in kinds for sy in cov), 'phrases covering it: %s' % [(sy['phrase'], sy['kind']) for sy in cov])

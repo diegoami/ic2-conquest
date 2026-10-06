@@ -139,6 +139,15 @@ class Prose(Base):
         self.edit_finding("Six humans and sixteen humans are accepted too", "Seven humans and sixteen humans are accepted too"); self.fails('T06')
         self.setUp(); self.edit_finding("Two humans (Carthage, Ptolemaic): the flags", "Three humans (Carthage, Ptolemaic): the flags"); self.fails('T05', 'spelled number')
 
+    def test_the_order_of_two_steps_swapped_in_the_prose_fails(self):
+        self.edit_finding("New Game calls the DAT loader, then the setup", "New Game calls the setup, then the DAT loader"); self.fails('D01')
+    def test_a_code_order_claim_with_the_lines_in_the_wrong_order_fails(self):
+        self.edit_finding('code order nl:20 < nl:37', 'code order nl:37 < nl:20'); self.fails('W03', 'must be in one function, the first before the second')
+    def test_a_floor_claimed_for_another_field_fails(self):
+        self.edit_finding('says "+0x440 word becomes at least 450" :: code floor 56949-56951 field 0x440 min 450', 'says "+0x440 word becomes at least 450" :: code floor 56949-56951 field 0x442 min 450'); self.fails('O03')
+    def test_a_then_word_not_covered_by_an_order_check_fails(self):
+        self.edit_finding('says "then, when no human is left" :: code order 47790 < 47792', 'says "then, when no human is left" :: code 47790 has FUN_0040284c(0xc)'); self.fails('W04', 'says an operation')
+
 class ExtractLines(Base):
     def mutate(self, old, new): p = self.latest('code_extract_leaders.txt'); self.edit_file(p, old, new)
     def test_a_doctored_extract_line_fails(self):
