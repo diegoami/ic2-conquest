@@ -213,3 +213,21 @@
 09:31:48 [D06] control save REF_D06_b8_ctl.v3.SAV 0391e64d32edb38c47820af89aa46622d24b28eaad590d8f46093ed506db67d8
 09:32:04 [D06] boxes after the order: [('Information', '6 This unit is too small to split.')]
 09:32:22 [D06] after save REF_D06_b8_after.SAV 45db23d024c6c938a4de2f794f0bd34127c834accbd50c4cac03409c2ea35507; vs control: {"equal": false, "n_bytes": 2, "ranges": [[111354, 111354], [111356, 111356]]}
+09:33:05 [TD01] loaded REF_TD01_b8_staged.v2.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+09:33:14 [TD01] control save REF_TD01_b8_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+09:33:27 [TD01] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+09:33:33 [TD01] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+09:33:50 [TD01] after save REF_TD01_b8_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:34:15 [TD02] loaded REF_TD02_b8_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+09:34:24 [TD02] control save REF_TD02_b8_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+09:34:37 [TD02] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+09:34:43 [TD02] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+09:35:00 [TD02] after save REF_TD02_b8_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:35:22 [TR3] loaded REF_TR3_b8_staged.SAV (STAGED); popups at load: []
+09:35:32 [TR3] control save REF_TR3_b8_ctl.SAV 742a9f20b380995f036a5ffb6269bdf43fcdd7aa195eaf33e0109e6fd99a63e7
+09:35:52 [TR3] boxes after the order: []
+09:36:07 [TR3] after save REF_TR3_b8_after.SAV 742a9f20b380995f036a5ffb6269bdf43fcdd7aa195eaf33e0109e6fd99a63e7; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:36:29 [TR3b] loaded REF_TR3b_b8_staged.SAV (STAGED); popups at load: []
+09:36:38 [TR3b] control save REF_TR3b_b8_ctl.SAV ba0c5a7aeec47e25a1a8d77e82119e7131c361b4b4c0649905896f3543471be4
+09:36:52 [TR3b] boxes after the order: [('Information', '6 This fleet can not carry any more troops.')]
+09:37:10 [TR3b] after save REF_TR3b_b8_after.SAV ba0c5a7aeec47e25a1a8d77e82119e7131c361b4b4c0649905896f3543471be4; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
