@@ -10,7 +10,7 @@ import play_lib as P
 import eog
 import cg
 from cg import (record_title, file_open, boxes, end_turn, area_window, area_panel, sb_rect, click_sb, toggle_byte,
-                snap_win, move_window, win_geo, sav_window_words, main_wid, window_name)
+                snap_win, move_window, win_geo, sav_window_words, main_wid, window_name, army_button, fleet_button)
 from lib import fixture, SAVEDIR, DATA, ART
 
 FIX_START = 'run0-start-AUTO0720-seed12345.SAV'        # Rome human, army 0 at (100,37) adjacent Arretium (99,36), owner Rome
