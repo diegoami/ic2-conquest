@@ -92,20 +92,3 @@ def _screen_words(g, region):
 
 MENU_REGION = (240, 40, 420, 190)       # the strip under the menu bar in which the Unit map menu and its Army submenu open (1280x1024 screen)
 
-def menu_step(g, click_word, expect_words, tries=3):
-    """One calibrated menu transition: find `click_word` in the OCR of the menu region, click its centre, then verify that every word of `expect_words` is
-    in the region afterwards (the next menu level). The click is repeated at most twice (3 attempts in all); DriverError if the transition never shows."""
-    for attempt in range(tries):
-        hit = [w for w in _screen_words(g, MENU_REGION) if w[0] == click_word]
-        if hit:
-            g.click(hit[0][1], hit[0][2], pause=1.0)
-            seen = {w[0] for w in _screen_words(g, MENU_REGION)}
-            if all(e in seen for e in expect_words): return True
-    raise _drv.DriverError('menu transition %r -> %r did not show after %d attempts' % (click_word, expect_words, tries))
-
-def _region_hash(g, c):
-    """SHA-256 of the raw pixels of a control's rectangle on a fresh screenshot (to see whether a click changed it)."""
-    full = os.path.join(TMP, 'ic2_ref_screen.png')
-    _orig_sh('import', '-window', 'root', full)
-    px = subprocess.run(['convert', full, '-crop', '%dx%d+%d+%d' % (c['w'], c['h'], c['x'], c['y']), '+repage', 'rgb:-'], capture_output=True, check=True).stdout
-    return hashlib.sha256(px).hexdigest()

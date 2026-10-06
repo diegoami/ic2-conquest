@@ -4,16 +4,16 @@ from eog import _screen_words, _drv
 import play_lib as P
 import eog
 
+MENU_EXPECT = {'file': 'save', 'game': 'abdicate'}     # a word of the dropdown, seen in every earlier probe of the menu (greyed or not)
+
 def menu_probe(g, tag, rec, step, word):
-    """Open the menu `word` (OCR on the menu bar) and keep a screenshot of it (the grey / black state of its items), then close it with Escape (a key)"""
-    CTX['why'] = 'reset menus (Escape, Escape, a click on the bare root window)'; g.reset_ui(); CTX['why'] = 'menu bar word %s (OCR)' % word
-    f = ocr_word(g, (0, 26, 650, 24), word)
-    if not f: rec.setdefault('menu_probe', {})[step] = 'word %s not seen' % word; return
-    g.click(f[0], f[1], pause=1.0)
-    snap(g, '%s_%s_menu_%s.png' % (tag, step, word))
-    words = [w[0] for w in _screen_words(g, (0, 40, 260, 140))]
+    """Open the menu `word` (verified: its dropdown word must be seen), keep a screenshot of it (the grey / black state of its items) and the OCR words, then close it with Escape and prove it closed. Every transition is a recorded step;
+    a menu that does not open stops the play."""
+    hit, attempts = menu_open(g, word, MENU_EXPECT[word], [DROP])
+    p = snap_rec(g, rec, 'menu_%s_%s' % (step, word), '%s_%s_menu_%s.png' % (tag, step, word))
+    words = [w[0] for w in _screen_words(g, DROP)]
     rec.setdefault('menu_probe', {})[step + '_' + word] = words
-    g.key('Escape'); g.key('Escape')
+    menu_close(g, word, MENU_EXPECT[word], [DROP])
 
 def ticks(g, rows):
     for n in rows: set_tick(g, n, True)
@@ -23,7 +23,7 @@ def p01(g, tag, rec):
     open_form(g, tag, rec); fs = record_form(g, tag, 'default', rec)
     rec['tab_walk'] = tab_walk(g, 8); record_form(g, tag, 'after_tabs', rec)
     press_button(g, 'Cancel'); rec['humans_ticked'] = []
-    time.sleep(2); rec['state'] = game_state(g); snap(g, '%s_after_cancel_screen.png' % tag)
+    time.sleep(2); rec['state'] = game_state(g); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
     rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_cancel')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
 
 # ---- P02: zero humans, OK
@@ -38,7 +38,7 @@ def p03(g, tag, rec):
     open_form(g, tag, rec); record_form(g, tag, 'default', rec)
     ticks(g, [1, 3]); edit_text(g, 1, 'Zed Cancelled'); record_form(g, tag, 'before_cancel', rec)
     press_button(g, 'Cancel'); rec['humans_ticked'] = [1, 3]
-    time.sleep(2); rec['state'] = game_state(g); snap(g, '%s_after_cancel_screen.png' % tag)
+    time.sleep(2); rec['state'] = game_state(g); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
     rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_cancel')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
     menu_probe(g, tag, rec, 'after_cancel', 'file'); menu_probe(g, tag, rec, 'after_cancel', 'game')
 
@@ -82,7 +82,7 @@ def p07(g, tag, rec):
 def p08(g, tag, rec):
     open_form(g, tag, rec); record_form(g, tag, 'default', rec)
     press_button(g, 'Cancel'); rec['humans_ticked'] = []
-    time.sleep(2); rec['state'] = game_state(g); snap(g, '%s_after_cancel_screen.png' % tag)
+    time.sleep(2); rec['state'] = game_state(g); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
     rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_cancel')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
 
 # ---- P09: a second New Game in the same process, with another seed, after a game with a human; Cancel; then New Game again
@@ -92,8 +92,8 @@ def p09(g, tag, rec):
     after_ok(g, tag, rec, [1])
     rec['state_first_game'] = rec['state']
     g.set_seed(SEED2)
-    open_form(g, tag, rec, answer='Yes'); snap(g, '%s_second_confirm_done.png' % tag); record_form(g, tag, 'second_default', rec)
-    press_button(g, 'Cancel'); time.sleep(2); rec['state_after_cancel'] = game_state(g); snap(g, '%s_after_cancel_screen.png' % tag)
+    open_form(g, tag, rec, answer='Yes'); snap_rec(g, rec, 'second_confirm_done', '%s_second_confirm_done.png' % tag); record_form(g, tag, 'second_default', rec)
+    press_button(g, 'Cancel'); time.sleep(2); rec['state_after_cancel'] = game_state(g); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
     rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_cancel')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
     open_form(g, tag, rec); record_form(g, tag, 'third_default', rec)
     press_button(g, 'Cancel'); time.sleep(2); rec['state'] = game_state(g)
@@ -105,7 +105,7 @@ def p10(g, tag, rec):
     open_form(g, tag, rec); set_tick(g, 1, True); press_button(g, 'OK'); rec['humans_ticked'] = [1]
     after_ok(g, tag, rec, [1])
     rec['state_before_new'] = rec['state']
-    open_form(g, tag, rec, answer='No'); snap(g, '%s_after_no.png' % tag)
+    open_form(g, tag, rec, answer='No'); snap_rec(g, rec, 'after_no', '%s_after_no.png' % tag)
     time.sleep(2); rec['state_after_no'] = game_state(g)
     if form_wid(g): raise _drv.DriverError('the form opened after No')
 
@@ -113,7 +113,7 @@ def p10(g, tag, rec):
 def p11(g, tag, rec):
     open_form(g, tag, rec); set_tick(g, 1, True); edit_text(g, 1, 'Zed Escape'); record_form(g, tag, 'before_escape', rec)
     press_key_close(g, 'Escape'); rec['humans_ticked'] = [1]
-    time.sleep(2); rec['state'] = game_state(g); snap(g, '%s_after_escape_screen.png' % tag)
+    time.sleep(2); rec['state'] = game_state(g); snap_rec(g, rec, 'after_escape', '%s_after_escape_screen.png' % tag)
     rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_escape')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
 
 # ---- P12: the Return key closes the form like OK (the default button): one human ticked, focus in its name box
@@ -147,7 +147,7 @@ SC = {'P01': dict(seed=12345, fn=p01, note='the form as it opens, tab order, Can
 def run(pid, batch):
     sc = SC[pid]; tag = 'LF_%s_%s' % (pid, batch); eog._ATTEMPTS.clear(); del CLICKS[:]; del KEYS[:]; del VERIFIED[:]
     g = start_game(sc['seed']); rec = new_rec(pid, batch, sc['seed'], sc['note']); rec['tag'] = tag
-    CTX.update(tag=tag, why=None)
+    CTX.update(tag=tag, why=None, target=None)
     try:
         sc['fn'](g, tag, rec); rec['status'] = 'ok'
     except Exception as e:

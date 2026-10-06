@@ -118,34 +118,6 @@ def close_boxes(g, tries=3):
         else: raise _drv.DriverError('box %d (%r) did not close after %d attempts' % (wid, texts[-1], tries))
     return texts
 
-def poll_dialogs(g):
-    """One poll: the End turn ? confirmation (answered End turn, bounded) and information boxes. Returns the texts."""
-    texts = []
-    if g.find_windows(r'^End turn \?$'): texts.append('CONFIRM ' + answer_confirm(g, 'End turn ?', 'End turn'))
-    return texts + close_boxes(g)
-
-def wait_window(g, pattern, timeout, what):
-    """Wait for a visible window; between polls dialogs are handled by poll_dialogs (bounded per window id)."""
-    t0 = time.time(); texts = []
-    while time.time() - t0 < timeout:
-        w = g.find_windows(pattern)
-        if w: return w[0], texts
-        texts += poll_dialogs(g); time.sleep(1)
-    raise _drv.DriverError('timeout waiting for ' + what)
-
-def click_ok(g, title, tries=3):
-    """Press OK of the named window, located by Game.controls (not a fixed point); verified by THAT window (its X id) disappearing (a second window with the same
-    title may open at once, as with two human seats falling in a row); at most two retries. Returns the number of clicks used."""
-    w0 = g.find_windows('^%s$' % re.escape(title))[0][0]
-    for attempt in range(tries):
-        cs = g.controls(title)
-        g.click_control(g.control(cs, text='OK'), pause=1.5)
-        try:
-            g.wait(lambda: w0 not in [w[0] for w in g.find_windows('^%s$' % re.escape(title))], 6, title + ' closed'); return attempt + 1
-        except _drv.DriverError:
-            log('eog', 'OK click %d on %s (window %d) did not close it' % (attempt + 1, title, w0))
-    raise _drv.DriverError('%s did not close' % title)
-
 def harvest(tag):
     """Copy every AUTO*.SAV of the game folder not yet kept into the artifacts (named <tag>_AUTOnnnn.SAV, hashed in SAVES.sha256). Returns the kept names."""
     out = []
@@ -168,35 +140,6 @@ def _geo(i):
     m = re.search(r'Position: (\d+),(\d+).*Geometry: (\d+)x(\d+)', _drv.sh('xdotool', 'getwindowgeometry', i, check=False), re.S)
     return tuple(int(x) for x in m.groups()) if m else None
 
-def menu_pick(g, bar_word, item_word, expect=None, new_window=False, tries=3):
-    """Open a top-level menu and pick an item, both located by OCR (no fixed point). Every transition is verified, at most `tries` attempts in all:
-    (1) the menu bar word is clicked and the dropdown must show as a new unnamed top-level window (its id and rectangle are kept);
-    (2) the item word is found by OCR inside that rectangle and clicked;
-    (3) the click must have had an effect: with `expect` (a window title regex) that window appears; with `new_window` a top-level window that is neither in the
-        baseline taken before the menu was opened nor the dropdown appears AND the dropdown is gone; otherwise the dropdown must be gone.
-    Returns (attempt number, ids of the new windows)."""
-    for attempt in range(tries):
-        g.reset_ui()
-        bar = [w for w in _screen_words(g, (0, 26, 650, 24)) if w[0] == bar_word]
-        if not bar: continue
-        base = _ids()
-        g.click(bar[0][1], bar[0][2], pause=1.0)
-        drop = [(i, _geo(i)) for i in _ids() - base if _drv.sh('xdotool', 'getwindowname', i, check=False).strip() == '' and _geo(i)]
-        if len(drop) != 1: continue
-        did, pop = drop[0]
-        hit = [w for w in _screen_words(g, pop) if w[0] == item_word]
-        if not hit: continue
-        g.click(hit[0][1], hit[0][2], pause=1.5)
-        now = _ids(); dropdown_gone = did not in now
-        if expect is not None:
-            if g.find_windows(expect): return attempt + 1, set()
-        elif new_window:
-            new = now - base - {did}
-            if dropdown_gone and new: return attempt + 1, new
-        elif dropdown_gone: return attempt + 1, set()
-        log('eog', 'menu %s > %s: attempt %d had no verified effect' % (bar_word, item_word, attempt + 1))
-    raise _drv.DriverError('menu %s > %s had no verified effect after %d attempts' % (bar_word, item_word, tries))
-
 def main_title(g):
     return [w[1] for w in g.find_windows('^Imperial Conquest 2')]
 
@@ -205,40 +148,6 @@ def all_windows(g):
 
 def proc_alive(g):
     return os.path.exists('/proc/%d' % g.pid)
-
-def save_as_ocr(g, name, timeout=20):
-    """File > Save as: the menu word 'as' is picked by OCR with every transition verified (menu_pick, new_window=True: the dropdown is gone and a distinct window
-    exists); that window must be a file dialog, proven by its OCR containing the word 'name' (File name) and by being larger than the dropdown, BEFORE
-    anything is typed; then the name is typed and the file proven written. Returns the path in the game folder."""
-    target = _drv.G / name; target.unlink(missing_ok=True)
-    _, new = menu_pick(g, 'file', 'as', new_window=True)
-    dlg = [(i, _geo(i)) for i in new if _geo(i) and _geo(i)[2] > 200 and _geo(i)[3] > 150]
-    if len(dlg) != 1: raise _drv.DriverError('Save as: no single file-dialog-sized window among the new ones: %s' % [(i, _geo(i)) for i in new])
-    words = [w[0] for w in _screen_words(g, dlg[0][1])]
-    log('eog', 'Save as dialog %s: words %s' % (dlg[0], words[:12]))
-    if not any('name' in w for w in words): raise _drv.DriverError('Save as: the new window does not read as a file dialog (OCR %s)' % words[:12])
-    g.replace_field(name); g.key('Return')
-    g.wait(lambda: target.exists() and target.stat().st_size > 100000, timeout, 'save ' + name)
-    time.sleep(0.5)
-    return target
-
-def keep_save_ocr(g, name):
-    """save_as_ocr, then a copy under the next free name in the artifacts, hashed in SAVES.sha256. Returns the artifact path."""
-    t = save_as_ocr(g, name)
-    dst = new_path(SAVEDIR + name); shutil.copy(t, dst)
-    with open(DATA + 'SAVES.sha256', 'a') as f: f.write('%s  %s\n' % (sha(dst), os.path.basename(dst)))
-    return dst
-
-def wait_turn_of(g, nation, timeout, L, not_before_log=0):
-    """Wait until it is `nation`'s turn (current nation, an autosave line written since `not_before_log`), handling dialogs with poll_dialogs (bounded per
-    window id). Never touches an End of Game window (a caller handles it)."""
-    logf = _drv.G / 'AUTOSAVE.LOG'; t0 = time.time(); texts = []
-    while time.time() - t0 < timeout:
-        if g.find_windows(r'^End of Game$'): return 'window', texts
-        if g.i16(_drv.CUR_NATION) == nation and logf.exists() and len(logf.read_text().splitlines()) > not_before_log:
-            time.sleep(2); texts += close_boxes(g); return 'turn', texts
-        texts += poll_dialogs(g); time.sleep(1)
-    raise _drv.DriverError('timeout waiting for the turn of %d' % nation)
 
 def autosave_lines():
     f = _drv.G / 'AUTOSAVE.LOG'
