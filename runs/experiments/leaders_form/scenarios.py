@@ -23,7 +23,7 @@ def p01(g, tag, rec):
     open_form(g, tag, rec); fs = record_form(g, tag, 'default', rec)
     rec['tab_walk'] = tab_walk(g, 8); record_form(g, tag, 'after_tabs', rec)
     press_button(g, 'Cancel'); rec['humans_ticked'] = []
-    time.sleep(2); capture(g, tag, rec, 'state', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
+    time.sleep(6); capture(g, tag, rec, 'state', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
 
 # ---- P02: zero humans, OK
 def p02(g, tag, rec):
@@ -37,7 +37,7 @@ def p03(g, tag, rec):
     open_form(g, tag, rec); record_form(g, tag, 'default', rec)
     ticks(g, [1, 3]); edit_text(g, 1, 'Zed Cancelled'); record_form(g, tag, 'before_cancel', rec)
     press_button(g, 'Cancel'); rec['humans_ticked'] = [1, 3]
-    time.sleep(2); capture(g, tag, rec, 'state', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
+    time.sleep(6); capture(g, tag, rec, 'state', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
     menu_probe(g, tag, rec, 'after_cancel', 'file'); menu_probe(g, tag, rec, 'after_cancel', 'game')
 
 # ---- P04: two humans (Carthage, Ptolemaic), one name edited, OK
@@ -80,7 +80,7 @@ def p07(g, tag, rec):
 def p08(g, tag, rec):
     open_form(g, tag, rec); record_form(g, tag, 'default', rec)
     press_button(g, 'Cancel'); rec['humans_ticked'] = []
-    time.sleep(2); capture(g, tag, rec, 'state', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
+    time.sleep(6); capture(g, tag, rec, 'state', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
 
 # ---- P09: a second New Game in the same process, with another seed, after a game with a human; Cancel; then New Game again
 def p09(g, tag, rec):
@@ -90,9 +90,9 @@ def p09(g, tag, rec):
     rec['state_first_game'] = rec['state']; rec['dumps']['state_first_game'] = dict(rec['dumps']['state'])      # the first game's memory dump is the one after_ok kept
     g.set_seed(SEED2)
     open_form(g, tag, rec, answer='Yes'); snap_rec(g, rec, 'second_confirm_done', '%s_second_confirm_done.png' % tag); record_form(g, tag, 'second_default', rec)
-    press_button(g, 'Cancel'); time.sleep(2); capture(g, tag, rec, 'state_after_cancel', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
+    press_button(g, 'Cancel'); time.sleep(6); capture(g, tag, rec, 'state_after_cancel', 'after_cancel'); snap_rec(g, rec, 'after_cancel', '%s_after_cancel_screen.png' % tag)
     open_form(g, tag, rec); record_form(g, tag, 'third_default', rec)
-    press_button(g, 'Cancel'); time.sleep(2); capture(g, tag, rec, 'state', 'third_cancel')
+    press_button(g, 'Cancel'); time.sleep(6); capture(g, tag, rec, 'state', 'third_cancel')
 
 SEED2 = 777
 
@@ -102,14 +102,14 @@ def p10(g, tag, rec):
     after_ok(g, tag, rec, [1])
     rec['state_before_new'] = rec['state']; rec['dumps']['state_before_new'] = dict(rec['dumps']['state'])
     open_form(g, tag, rec, answer='No'); snap_rec(g, rec, 'after_no', '%s_after_no.png' % tag)
-    time.sleep(2); capture(g, tag, rec, 'state_after_no', 'after_no')
+    time.sleep(6); capture(g, tag, rec, 'state_after_no', 'after_no')
     if form_wid(g): raise _drv.DriverError('the form opened after No')
 
 # ---- P11: the Escape key closes the form like Cancel (ticks and edits discarded)
 def p11(g, tag, rec):
     open_form(g, tag, rec); set_tick(g, 1, True); edit_text(g, 1, 'Zed Escape'); record_form(g, tag, 'before_escape', rec)
     press_key_close(g, 'Escape'); rec['humans_ticked'] = [1]
-    time.sleep(2); capture(g, tag, rec, 'state', 'after_escape'); snap_rec(g, rec, 'after_escape', '%s_after_escape_screen.png' % tag)
+    time.sleep(6); capture(g, tag, rec, 'state', 'after_escape'); snap_rec(g, rec, 'after_escape', '%s_after_escape_screen.png' % tag)
 
 # ---- P12: the Return key closes the form like OK (the default button): one human ticked, focus in its name box
 def p12(g, tag, rec):
