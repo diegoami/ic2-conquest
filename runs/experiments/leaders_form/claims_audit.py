@@ -520,7 +520,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     BRANCH_CLAIMS = collections.defaultdict(list)                  # (function, line, arm) -> [row id]
     ROWITEMS = {}                                                  # row id -> the check items of the row (for the checks that look at their own row)
     LEX = [(r'\bat least\b', {'floor'}), (r'\blarger\b|\bgreater\b|\bhigher\b|\bmaximum\b|\braised\b', {'floor', 'maxfn'}), (r'\bat most\b', {'getlimit'}), (r'\bsmaller\b|\blower\b|\bminimum\b|\bless\b|\bfewer\b', {'minfn'}),
-           (r'\blowest\b', {'scanmin'}), (r'\bhighest\b', {'scanmax'}), (r'\bsame\b', {'same'}), (r'\bdiffer\w*\b|\bdifferent\b', {'differ'}), (r'\bbefore\b|\bafter\b', {'seq', 'order'}), (r'\bnegative\b', {'lt0'})]
+           (r'\blowest\b', {'scanmin'}), (r'\bhighest\b', {'scanmax'}), (r'\bsame\b', {'same'}), (r'\bdiffer\w*\b|\bdifferent\b', {'differ'}), (r'\bbefore\b|\bafter\b', {'seq', 'order'}), (r'\bnegative\b', {'lt0'}), (r'\bEscape\b|\bReturn\b', {'same', 'value'})]
     def plain(prose, lit=None):
         """the prose as the phrases are matched against it: a quoted literal (a backtick span with letters and a space) blanked, markup removed"""
         def span(m):
@@ -945,7 +945,11 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if r['status'] != 'ok': continue
         what = 'recording %s (play %s)' % (tag, r['play']); v2 = r.get('runner') in (2, 3)
         check('%s has a form record or a recorded New Game' % what, bool(r['forms']) or bool(r.get('new_games')) or any(v['step'] == 'File > New' for v in r['verified']), '')
-        for step, f in r['forms'].items(): file_ok(f['png'] if v2 else '%s_%s_form.png' % (tag, step), what, f.get('png_sha') if v2 else None)
+        for step, f in r['forms'].items():
+            file_ok(f['png'] if v2 else '%s_%s_form.png' % (tag, step), what, f.get('png_sha') if v2 else None)
+            if tag in EVID:
+                cs_ = parse_raw(f['raw']); rr_ = rows_of(cs_, NAT)
+                check('%s: form %s: the recorded rows and focus equal the audit\'s own parse of the retained helper output (16 rows found)' % (what, step), len(rr_) == 16 and f['rows'] == summary_of(rr_) and f['focus'] == [c['cls'] + ':' + c['text'] for c in cs_ if c['focus']], 'recorded summary differs from the raw output')
         for key, sc in r.get('screens', {}).items(): file_ok(sc['png'], what, sc['png_sha'])
         if r.get('autosave'):
             p = file_ok(r['autosave'], what)

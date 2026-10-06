@@ -151,10 +151,10 @@ class Inventory(Base):
         self.remove_rows(['N02']); n, bad = self.audit(); self.assertIn('the over-long', '\n'.join(bad))
     def test_the_sixteen_humans_claim_removed_from_the_rules_and_the_clone_table_still_fails(self):
         self.remove_rows(['T06']); n, bad = self.audit()
-        text = '\n'.join(bad); self.assertIn('play P05: a recording of runner 2 is cited by a rule row', text); self.assertIn('16 human(s) ticked: the flags in the save are the ticked nations', text)
+        text = '\n'.join(bad); self.assertIn('play P05: a recording of runner 3 is cited by a rule row', text); self.assertIn('16 human(s) ticked: the flags in the save are the ticked nations', text)
     def test_the_escape_and_return_claim_removed_consistently_still_fails(self):
         self.remove_rows(['C04']); n, bad = self.audit(); text = '\n'.join(bad)
-        self.assertIn('play P11: a recording of runner 2 is cited', text); self.assertIn('Escape discards the ticks', text)
+        self.assertIn('play P11: a recording of runner 3 is cited', text); self.assertIn('Escape discards the ticks', text)
     def test_the_cancel_handler_removed_from_every_derived_row_fails(self):
         s = open(self.finding, encoding='utf-8').read(); s = re.sub(r'(, )?TPickLeaders_Cancel:\d+', '', s); open(self.finding, 'w', encoding='utf-8').write(s)
         n, bad = self.audit(); self.assertIn('handler TPickLeaders_Cancel of the task is read by a derived rule', '\n'.join(bad))
@@ -164,7 +164,7 @@ class Inventory(Base):
     def test_a_play_with_a_doctored_seed_in_the_plays_table_fails(self):
         self.edit_finding('| 12345 then 777 | ok |', '| 12345 then 778 | ok |'); self.fails('plays table: P09 seed')
     def test_a_confirmed_row_without_a_screenshot_fails(self):
-        self.edit_finding('P06; LF_P06_b6_before_ok_form.png; LF_P06_b6_AUTO0720.SAV | P06 form.before_ok.Carthage.text', 'P06; LF_P06_b6_AUTO0720.SAV | P06 form.before_ok.Carthage.text'); self.fails('N04 evidence files are exactly', 'N04 confirmed rows cite a screenshot')
+        self.edit_finding('P06; LF_P06_b8_before_ok_form.png; LF_P06_b8_AUTO0720.SAV | P06 form.before_ok.Carthage.text', 'P06; LF_P06_b8_AUTO0720.SAV | P06 form.before_ok.Carthage.text'); self.fails('N04 evidence files are exactly', 'N04 confirmed rows cite a screenshot')
     def test_a_derived_row_that_cites_a_play_fails(self):
         self.edit_finding('| [derived] | - | dfm PickLeaders.Caption', '| [derived] | P01 | dfm PickLeaders.Caption'); self.fails('derived rows cite no play')
     def test_a_derived_row_that_reads_a_play_fails(self):
@@ -173,32 +173,32 @@ class Inventory(Base):
 class Evidence(Base):
     """a screenshot is bound to the state the check reads; an earlier runner's recording is not evidence"""
     def test_the_before_ok_screenshot_replaced_by_the_default_one_fails(self):
-        self.edit_finding('LF_P06_b6_before_ok_form.png', 'LF_P06_b6_default_form.png', count=1)
+        self.edit_finding('LF_P06_b8_before_ok_form.png', 'LF_P06_b8_default_form.png', count=1)
         n, bad = self.audit(); self.assertTrue(any('evidence files are exactly the files the checks read' in b for b in bad))
     def test_a_screenshot_of_another_play_fails(self):
-        self.edit_finding('LF_P06_b6_before_ok_form.png', 'LF_P05_b6_before_ok_form.png', count=1); self.fails('belongs to a cited play')
+        self.edit_finding('LF_P06_b8_before_ok_form.png', 'LF_P05_b8_before_ok_form.png', count=1); self.fails('belongs to a cited play')
     def test_a_cited_recording_of_an_earlier_runner_fails(self):
-        self.edit_finding('LF_P04_b6_AUTO0720.SAV', 'LF_P04_b2_AUTO0720.SAV', count=1)
+        self.edit_finding('LF_P04_b8_AUTO0720.SAV', 'LF_P04_b2_AUTO0720.SAV', count=1)
         n, bad = self.audit(); self.assertTrue(any('earlier recordings are kept but are not evidence' in b or 'exactly one recording' in b for b in bad))
     def test_an_unused_file_cited_fails(self):
-        self.edit_finding('LF_P06_b6_AUTO0720.SAV', 'LF_P06_b6_AUTO0720.SAV; LF_P06_b6_after_ok_screen.png', count=1); self.fails('evidence files are exactly the files the checks read')
+        self.edit_finding('LF_P06_b8_AUTO0720.SAV', 'LF_P06_b8_AUTO0720.SAV; LF_P06_b8_after_ok_screen.png', count=1); self.fails('evidence files are exactly the files the checks read')
     def test_a_missing_screenshot_fails(self):
-        os.remove(self.art + 'LF_P04_b6_before_ok_form.png'); self.fails('LF_P04_b6_before_ok_form.png exists')
+        os.remove(self.art + 'LF_P04_b8_before_ok_form.png'); self.fails('LF_P04_b8_before_ok_form.png exists')
     def test_a_missing_memory_dump_fails(self):
-        os.remove(self.art + 'saves/LF_P02_b6_after_ok_nations.bin'); self.fails('LF_P02_b6_after_ok_nations.bin exists')
+        os.remove(self.art + 'saves/LF_P02_b8_after_ok_nations.bin'); self.fails('LF_P02_b8_after_ok_nations.bin exists')
     def test_a_replaced_screenshot_fails_its_hash(self):
-        p = self.art + 'LF_P04_b6_before_ok_form.png'; b = bytearray(open(p, 'rb').read()); b[-20] ^= 0xFF; open(p, 'wb').write(bytes(b)); self.fails('SHA-256 is recorded')
+        p = self.art + 'LF_P04_b8_before_ok_form.png'; b = bytearray(open(p, 'rb').read()); b[-20] ^= 0xFF; open(p, 'wb').write(bytes(b)); self.fails('SHA-256 is recorded')
     def test_the_immediate_post_tick_state_doctored_fails(self):
         def f(r):
-            if r['tag'] == 'LF_P07_b6':
+            if r['tag'] == 'LF_P07_b8':
                 for v in r['verified']:
                     if v['step'] == 'tick Carthage on': v['post']['sel1'] = 2
-        rewrite(self.data + 'plays_b6.jsonl', f); self.fails('H04', 'name box woke at once')
+        rewrite(self.data + 'plays_b8.jsonl', f); self.fails('H04', 'name box woke at once')
     def test_the_immediate_post_tick_screenshot_missing_fails(self):
-        for fn in glob.glob(self.art + 'LF_P07_b6_tick_Carthage_on_post*.png') + glob.glob(self.art + 'saves/LF_P07_b6_tick_Carthage_on_post*.png'): os.remove(fn)
-        self.fails('LF_P07_b6_tick_Carthage_on_post.png exists')
+        for fn in glob.glob(self.art + 'LF_P07_b8_tick_Carthage_on_post*.png') + glob.glob(self.art + 'saves/LF_P07_b8_tick_Carthage_on_post*.png'): os.remove(fn)
+        self.fails('LF_P07_b8_tick_Carthage_on_post.png exists')
     def test_the_post_tick_screenshot_dropped_from_h04_fails(self):
-        self.edit_finding('LF_P07_b6_tick_Carthage_on_post.png; ', '', count=1); self.fails('H04 evidence files are exactly')
+        self.edit_finding('LF_P07_b8_tick_Carthage_on_post.png; ', '', count=1); self.fails('H04 evidence files are exactly')
 
 class Saves(Base):
     def rec(self, play='P04'):
@@ -221,21 +221,21 @@ class Saves(Base):
         for m in glob.glob(self.data + 'MANIFEST-*.txt'):
             t = open(m).read()
             if 'member:saves/' + name in t: open(m, 'w').write(re.sub(r'[0-9a-f]{64}(  member:saves/%s)' % re.escape(name), h + r'\1', t))
-        for rr in glob.glob(self.data + 'plays_b6.jsonl'): rewrite(rr, lambda x: x.update(autosave_sha=h) if x.get('autosave') == name else None)
+        for rr in glob.glob(self.data + 'plays_b8.jsonl'): rewrite(rr, lambda x: x.update(autosave_sha=h) if x.get('autosave') == name else None)
         bad = self.fails('P04 save.humans', 'the save and the game memory agree')
     def test_a_doctored_play_record_fails(self):
         def f(r):
-            if r['tag'] == 'LF_P04_b6': r['state']['nations'][1]['human'] = 0
-        rewrite(self.data + 'plays_b6.jsonl', f); self.fails('P04')
+            if r['tag'] == 'LF_P04_b8': r['state']['nations'][1]['human'] = 0
+        rewrite(self.data + 'plays_b8.jsonl', f); self.fails('P04')
 
 class Recordings(Base):
-    """every recording is kept by its unique tag and audited; the clicks of runner 2 carry an independent pointer and target, and every click and key belongs to a verified step"""
+    """every recording is kept by its unique tag and audited; the clicks of runner 3 carry an independent pointer and target, and every click and key belongs to a verified step"""
     def edit(self, tag, fn):
         for f in glob.glob(self.data + 'plays_*.jsonl'):
             if tag in open(f).read(): rewrite(f, lambda r: fn(r) if r.get('tag') == tag else None); return
         raise AssertionError(tag)
     def test_a_duplicated_recording_fails(self):
-        f = self.data + 'plays_b6.jsonl'; lines = open(f).read().splitlines(); open(f, 'w').write('\n'.join(lines + [lines[0]]) + '\n'); self.fails('is unique')
+        f = self.data + 'plays_b8.jsonl'; lines = open(f).read().splitlines(); open(f, 'w').write('\n'.join(lines + [lines[0]]) + '\n'); self.fails('is unique')
     def test_a_recording_removed_changes_the_counts_and_fails(self):
         f = self.data + 'plays_b1.jsonl'; lines = open(f).read().splitlines(); open(f, 'w').write('\n'.join(lines[:-1]) + '\n'); self.fails('count ')
     def test_a_doctored_count_fails(self):
@@ -244,72 +244,72 @@ class Recordings(Base):
         self.edit_finding('| unique play ids recorded ok | 15 |', '| unique play ids recorded ok | 34 |'); self.fails('count unique play ids recorded ok')
     def test_a_click_without_a_reason_fails(self):
         def f(r): r['clicks'][0]['why'] = None
-        self.edit('LF_P04_b6', f); self.fails('every click has a recorded reason')
+        self.edit('LF_P04_b8', f); self.fails('every click has a recorded reason')
     def test_a_click_and_its_reason_moved_together_still_fails_against_the_helpers_own_line(self):
         def f(r):
             c = [c for c in r['clicks'] if c['why'].startswith('control TCheckBox')][0]
             c['x'] += 400; c['pointer']['x'] += 400; c['why'] = c['why'].replace(' at %d,' % (c['x'] - 400), ' at %d,' % (c['x'] - 400))     # the click leaves the control; the reason and the pointer follow
             m = re.match(r"control (\w+) '(.*)' at (\d+),(\d+) (\d+)x(\d+)$", c['why']); c['why'] = "control %s '%s' at %d,%s %sx%s" % (m.group(1), m.group(2), int(m.group(3)) + 400, m.group(4), m.group(5), m.group(6)); c['target']['x'] += 400
-        self.edit('LF_P04_b6', f); self.fails('lies inside the rectangle of the helper')
+        self.edit('LF_P04_b8', f); self.fails('lies inside the rectangle of the helper')
     def test_a_reset_step_removed_before_a_menu_opening_fails(self):
         def f(r):
             i = [k for k, v in enumerate(r['verified']) if v['step'] == 'reset'][0]; r['verified'][i]['step'] = 'tab walk'
-        self.edit('LF_P04_b6', f); n, bad = self.audit(); self.assertTrue(any('is directly preceded by a verified reset' in b for b in bad))
+        self.edit('LF_P04_b8', f); n, bad = self.audit(); self.assertTrue(any('is directly preceded by a verified reset' in b for b in bad))
     def test_a_reset_point_inside_a_window_fails(self):
         def f(r):
             v = [v for v in r['verified'] if v['step'] == 'reset'][0]; v['windows'].append([5, 'x', v['point'][0] - 1, v['point'][1] - 1, 10, 10])
-        self.edit('LF_P04_b6', f); self.fails('clicked a point no window covers')
+        self.edit('LF_P04_b8', f); self.fails('clicked a point no window covers')
     def test_a_menu_item_click_without_the_menu_proven_open_fails(self):
         def f(r):
             for v in r['verified']:
                 if v['step'] == 'menu open file': v['ok'] = False; v['hit'] = None; break
-        self.edit('LF_P04_b6', f); n, bad = self.audit(); self.assertTrue(any('follows an opened menu' in b for b in bad))
+        self.edit('LF_P04_b8', f); n, bad = self.audit(); self.assertTrue(any('follows an opened menu' in b for b in bad))
     def test_a_pointer_that_differs_from_the_click_fails(self):
         def f(r): r['clicks'][1]['pointer']['x'] += 5
-        self.edit('LF_P04_b6', f); self.fails('went where the pointer was read')
+        self.edit('LF_P04_b8', f); self.fails('went where the pointer was read')
     def test_a_click_without_a_pointer_record_fails(self):
         def f(r): del r['clicks'][2]['pointer']
-        self.edit('LF_P04_b6', f); self.fails('records the pointer read back')
+        self.edit('LF_P04_b8', f); self.fails('records the pointer read back')
     def test_a_reset_click_not_on_the_root_window_fails(self):
         def f(r):
             c = r['clicks'][0]; c['pointer']['window'] = c['pointer']['window'] + 1
-        self.edit('LF_P04_b6', f); self.fails('bare root window')
+        self.edit('LF_P04_b8', f); self.fails('bare root window')
     def test_a_click_outside_every_step_fails(self):
         def f(r): r['verified'] = [v for v in r['verified'] if not v['step'].startswith('tick Ptolemaic')]
-        self.edit('LF_P04_b6', f); self.fails('every click belongs to exactly one verified step')
+        self.edit('LF_P04_b8', f); self.fails('every click belongs to exactly one verified step')
     def test_a_key_outside_every_step_fails(self):
         def f(r): r['keys'].append({'keys': ['space'], 'why': 'x'})
-        self.edit('LF_P04_b6', f); self.fails('every key and typed text belongs to exactly one verified step')
+        self.edit('LF_P04_b8', f); self.fails('every key and typed text belongs to exactly one verified step')
     def test_a_step_with_more_clicks_than_attempts_fails(self):
         def f(r):
             for v in r['verified']:
                 if v['step'].startswith('tick '): v['attempts'] = 2; break
-        self.edit('LF_P04_b6', f); self.fails('clicks equal the attempts')
+        self.edit('LF_P04_b8', f); self.fails('clicks equal the attempts')
     def test_a_step_without_the_other_rows_unchanged_field_fails(self):
         def f(r):
             for v in r['verified']:
                 if v['step'].startswith('tick '): del v['others_unchanged']; break
-        self.edit('LF_P04_b6', f); self.fails('records that the other 15 rows are unchanged')
+        self.edit('LF_P04_b8', f); self.fails('records that the other 15 rows are unchanged')
     def test_a_step_that_reports_the_other_rows_changed_fails(self):
         def f(r):
             for v in r['verified']:
                 if v['step'].startswith('name '): v['others_unchanged'] = False; break
-        self.edit('LF_P04_b6', f); self.fails('records that the other 15 rows are unchanged')
+        self.edit('LF_P04_b8', f); self.fails('records that the other 15 rows are unchanged')
     def test_a_failed_non_menu_step_fails(self):
         def f(r):
             for v in r['verified']:
                 if v['step'].startswith('press '): v['ok'] = False; break
-        self.edit('LF_P04_b6', f); self.fails('failed attempt of a retried transition')
+        self.edit('LF_P04_b8', f); self.fails('failed attempt of a retried transition')
     def test_a_tick_step_without_the_post_state_fails(self):
         def f(r):
             for v in r['verified']:
                 if v['step'].startswith('tick ') and v['step'].endswith(' on'): del v['post']; break
-        try: self.edit('LF_P04_b6', f)
+        try: self.edit('LF_P04_b8', f)
         except Exception: pass
         n, bad = self.audit(); self.assertTrue(bad)
     def test_a_seed_recorded_for_a_new_game_that_differs_from_the_form_fails(self):
         def f(r): r['new_games'][0]['seed'] = 999
-        self.edit('LF_P01_b6', f); self.fails('the New Games it started each record their seed', 'the first New Game used the seed')
+        self.edit('LF_P01_b8', f); self.fails('the New Games it started each record their seed', 'the first New Game used the seed')
     def test_the_draws_table_seed_doctored_fails_for_every_row_even_the_second_new_game(self):
         self.edit_finding('| 777 | P09 |', '| 778 | P09 |'); self.fails('draws row P09: the seed 778')
         self.setUp(); self.edit_finding('| 111 | P08a |', '| 112 | P08a |'); self.fails('draws row P08a: the seed 112')
@@ -317,16 +317,16 @@ class Recordings(Base):
         self.edit_finding('`3; 6; 10; 5; 5; 2; 6; 11; 8; 7; 11; 2; 10; 3; 8; 6`', '`3; 6; 10; 5; 5; 2; 6; 11; 8; 7; 11; 2; 10; 3; 8; 7`'); self.fails('draws row P01')
     def test_the_turn_order_of_a_recording_doctored_fails_the_fact_and_the_rule(self):
         def f(r): r['state']['turn_order'] = list(reversed(r['state']['turn_order']))
-        self.edit('LF_P04_b6', f); self.fails('W07', 'V02')
+        self.edit('LF_P04_b8', f); self.fails('W07', 'V02')
     def test_a_nation_score_below_the_floor_in_a_record_fails_the_fact(self):
         def f(r): r['state']['nations'][7]['score_0x440'] = 400
-        self.edit('LF_P02_b6', f); self.fails('V01')
+        self.edit('LF_P02_b8', f); self.fails('V01')
     def test_a_default_form_that_is_not_greyed_fails_the_fact(self):
         def f(r):
             r['forms']['default']['rows'][3][4] = 1
-        self.edit('LF_P08a_b6', f); self.fails('V04')
+        self.edit('LF_P08a_b8', f); self.fails('V04')
     def test_an_initial_current_nation_that_is_not_first_in_the_order_fails_the_fact(self):
         def f(r): r['state']['cur_nation'] = (r['state']['turn_order'][0] + 1) % 16
-        self.edit('LF_P01_b6', f); self.fails('V03')
+        self.edit('LF_P01_b8', f); self.fails('V03')
 
 if __name__ == '__main__': unittest.main()
