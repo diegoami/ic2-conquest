@@ -1227,6 +1227,15 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             for i_ in ids_: check('section "%s", item "%s...": the cited id %s exists in a table of the finding' % (sec, it[:30], i_), i_ in ALLIDS)
             txt = re.sub(r'\([A-Z]\d{2}[^)]*\)', '', it); txt = re.sub(r'`?\b[A-Z]{1,3}\d{2}\b`?', '', txt); txt = re.sub(r'^\d+\. ', '', txt)
             coverage('section "%s", item "%s..."' % (sec, txt.strip()[:40]), txt, [sy for i_ in ids_ for sy in SAYS.get(i_, [])], derived=False, words=(sec == 'Answer'))
+    # ---- lost qualifications (round-3 R4): a summary line (an Answer item, a rule, a fact, a clone row) that states a rule which has a branch in OK's human-to-computer arm must name that arm (O02) or the New Game scope
+    QUAL = [(r'\bunticked row\b', r'\bO02\b', 'a statement about an unticked row names the human-to-computer branch of OK (O02)'),
+            (r'\bdo(?:es)? not draw\b|\bnever draws\b', r'\bO02\b|human back into a computer', 'a "does not draw" statement names OK\'s human-to-computer branch (O02)'),
+            (r'leave the same world', r'in a New Game', 'a "same world" statement is scoped to a New Game'),
+            (r'\bOK with no tick\b', r'\bNew Game\b|\bO0[12]\b|\bT0[12]\b|\bC03\b|\bX0[28]\b', 'a statement about OK with no tick is scoped to a New Game')]
+    for ln_ in open(finding, encoding='utf-8').read().split('\n'):
+        if not (ln_.startswith('|') or re.match(r'\d+\. ', ln_)) or ln_.startswith('| id ') or ln_.startswith('|---'): continue
+        for rx, req, why in QUAL:
+            if re.search(rx, ln_, re.I): check('qualification: %s (line "%s...")' % (why, re.sub(r'\s+', ' ', ln_)[:50]), re.search(req, ln_) is not None, 'the line says %r but not %r' % (re.search(rx, ln_, re.I).group(0), req))
     if os.environ.get('AUDIT_SUGGEST'): json.dump(SUGGEST, open(os.environ['AUDIT_SUGGEST'], 'w'), indent=1)
     return checks[0], bad
 

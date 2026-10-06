@@ -158,6 +158,14 @@ class Prose(Base):
         for w, v in (('zero', 0), ('one human', 1), ('seven', 7), ('nine', 9), ('eleven', 11), ('thirteen', 13), ('fourteen', 14), ('fifteen', 15), ('seventeen', 17), ('twenty', 20), ('a dozen', 12), ('Sixty', 60)):
             self.assertIn(('d', v), claims_audit.spelled(w), w)
         self.assertEqual(claims_audit.spelled('one OK, when one matches'), set())
+    def test_r4_the_unticked_row_qualification_removed_from_answer_3_fails(self):
+        """round-3 R4: 'an unticked row is left alone' without the human-to-computer branch of OK"""
+        s = open(self.finding, encoding='utf-8').read(); i = s.index('an unticked row that was a computer nation'); j = s.index('(O02, O04).', i) + len('(O02, O04).')
+        open(self.finding, 'w', encoding='utf-8').write(s[:i] + 'an unticked row is left alone.' + s[j:]); self.fails('qualification', 'unticked row')
+    def test_r4_the_exception_dropped_from_the_clone_fragment_fails(self):
+        self.edit_finding("do not draw: the names on the form are those the setup drew; the only draw outside the setup is OK's human-to-computer branch (O02); Every", "do not draw; Every"); self.fails('qualification', 'does not draw')
+    def test_r4_the_new_game_scope_removed_from_the_same_world_statement_fails(self):
+        self.edit_finding("leave the same world in a New Game: the 16", "leave the same world: the 16"); self.fails('qualification', 'same world')
     def test_the_order_of_two_steps_swapped_in_the_prose_fails(self):
         self.edit_finding("New Game calls the DAT loader, then the setup", "New Game calls the setup, then the DAT loader"); self.fails('D01')
     def test_a_code_order_claim_with_the_lines_in_the_wrong_order_fails(self):
