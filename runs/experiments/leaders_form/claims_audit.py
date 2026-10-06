@@ -54,16 +54,25 @@ def fmtn(t):
 
 def norm(s): return re.sub(r'\s+', ' ', s).strip()
 
-def in_order(body, txt):
-    """every part of `txt` (separated by ' ~~ ') occurs in `body`, in that order (whitespace normalised)"""
-    pos = 0
+def in_order(body, txt, exact=False):
+    """every part of `txt` (separated by ' ~~ ') occurs in `body`, in that order (whitespace normalised); with `exact` (a seq over a range of lines) nothing but braces may lie before the first part, between two parts and after the last:
+    every statement of the range must be among the parts, so a statement added to the range fails"""
+    pos = 0; first = True
     for part in [norm(x) for x in txt.split(' ~~ ')]:
         i = body.find(part, pos)
         if i < 0: return False
-        pos = i + len(part)
+        if exact and re.sub(r'[\s{}]', '', body[pos:i]): return False
+        pos = i + len(part); first = False
+    if exact and re.sub(r'[\s{}]', '', body[pos:]): return False
     return True
 
 def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
+    """the audit; an exception inside it (a source so damaged that a check cannot even be read) is itself a mismatch, never a crash and never a pass"""
+    import traceback
+    try: return _run(finding, data, art, exe, dat, quiet, task)
+    except Exception as e_: return 0, ['the audit could not complete (a damaged or missing source): %s' % traceback.format_exc().strip().splitlines()[-1]]
+
+def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     data = data.rstrip('/') + '/'; art = art.rstrip('/') + '/'
     task = task or os.path.join(ROOT, 'docs', 'tasks', 'leaders-form.md')
     checks = [0]; bad = []
@@ -264,8 +273,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if (tag, key) in DS: return DS[(tag, key)]
         r = REC[tag]; d = r['dumps'][key]; js = r[key]
         pn = art_path(d['nations_bin']); pg = art_path(d['globals_bin'])
-        if pn is None or pg is None: DS[(tag, key)] = None; return None
-        b = open(pn, 'rb').read(); gb = open(pg, 'rb').read()
+        b = open(pn, 'rb').read() if pn else b'\0' * (16 * 1172); gb = open(pg, 'rb').read() if pg else b'\0' * 42          # a missing dump decodes to zeros: every claim fails and the file check names the missing file
         nations = decode_nations(b); to = list(struct.unpack('<16h', gb[:32])); cur, seat, season, week, year = struct.unpack('<5h', gb[32:42])
         st = {'nations': nations, 'turn_order': to, 'cur_nation': cur, 'seat_0x4a032c': seat, 'calendar': {'season': season, 'week': week, 'year_bc': year}, 'windows': js['windows'],
               'nations_bin_leader': [n_['leader'] for n_ in nations]}
@@ -433,7 +441,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             a, b, op, txt = m.groups(); txt = lit if txt == '@literal' else txt
             if not check(name + ' line exists', code_key(a) in EXT and (b is None or code_key(b) in EXT), '%s-%s' % (a, b)): return
             body = code_text(a, b)
-            good = (norm(txt) in body) if op == 'has' else in_order(body, txt)
+            good = (norm(txt) in body) if op == 'has' else in_order(body, txt, exact=True)
             check(name, good, 'lines %s%s are %r' % (a, '-' + b if b else '', body[:200])); return
         m = re.fullmatch(r'dfm (\w+)\.(\w+(?:\.\w+)?) (==|absent) ?(.*)', item)
         if m and m.group(1) in DFM:
@@ -842,10 +850,10 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     # ---- the claims every recorded play makes must be in the rules (obligations from the recordings and the task, not from the finding)
     allp = [(rid, p) for rid, pcs in ROW_OBL.items() for p in pcs if RULE[rid]['tag'] == '[confirmed]']
     task_text = open(task, encoding='utf-8').read().lower() if os.path.exists(task) else ''
-    def obliged(name, tag, regex, want=None, op='==', phrase=None):
+    def obliged(name, tag, regex, want=None, op='==', phrase=None, in_task=True):
         """the finding must have a passing check `<play> <path> <op> <value>` of this play whose path matches `regex` and whose value is `want` (None: any); with `phrase` (a phrase of the task's own questions) the check
         must be in a [confirmed] row whose rule text contains that phrase, so a claim cannot be carried only by an aggregate row after its own row is removed"""
-        if phrase is not None: check('the task asks about "%s" (the phrase is in %s)' % (phrase, os.path.basename(task)), phrase in task_text)
+        if phrase is not None and in_task: check('the task asks about "%s" (the phrase is in %s)' % (phrase, os.path.basename(task)), phrase in task_text)
         ok = False
         for rid, (pid, path, op2, w) in allp:
             if REC[tag]['play'] != pid or not re.fullmatch(regex, path) or op2 != op: continue
@@ -883,6 +891,16 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         for v in REC[tp]['verified']:
             if v['step'].startswith('name ') and len(v.get('typed', '')) > 25:
                 i = NAT.index(v['step'][5:]); obliged('the over-long text typed is on record (%s)' % v['step'], tp, r'rec\.verified\{step=%s\}\.typed' % re.escape(v['step']), v['typed'], phrase='long'); obliged('the over-long name is saved cut to the limit (%s)' % v['step'], tp, r'save\.nations\[%d\]\.leader' % i, v['typed'][:25], phrase='long')
+    tp = need('a name edited and kept by OK', newest(lambda r: r['play'] == 'P04' and r.get('autosave') and any(v['step'].startswith('name ') and 0 < len(v.get('typed', '')) <= 25 for v in r['verified'])))
+    check('the task asks where the name lands (memory and save)', 'where the name lands' in task_text)
+    if tp:
+        for v in REC[tp]['verified']:
+            if v['step'].startswith('name ') and 0 < len(v.get('typed', '')) <= 25:
+                i = NAT.index(v['step'][5:]); obliged('the name lands in the nation record in game memory (%s)' % v['step'], tp, r'mem\.nations\[%d\]\.leader' % i, v['typed'], phrase='name lands', in_task=False); obliged('the name lands in the saved nation record (%s)' % v['step'], tp, r'save\.nations\[%d\]\.leader' % i, v['typed'], phrase='name lands', in_task=False)
+    check('the task asks for the defaults when the form opens from New Game', 'defaults when it opens from new game' in task_text)
+    tp = need('the form as it opens (the default form)', newest(lambda r: 'default' in r['forms'] and r['play'] == 'P01'))
+    if tp:
+        obliged('the default form has every tick clear', tp, r'form\.default\.checks', [0] * 16, phrase='ticks clear', in_task=False); obliged('the default form has every name box greyed', tp, r'form\.default\.edit_enabled', [0] * 16, phrase='greyed', in_task=False)
     tp = need('an edit attempted on a computer nation\'s box', newest(lambda r: 'greyed_edit' in r))
     if tp:
         for v in REC[tp]['verified']:

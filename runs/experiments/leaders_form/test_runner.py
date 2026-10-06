@@ -69,7 +69,7 @@ class FakeForm:
                        'ed': {'cls': 'TEdit', 'text': self.texts[i], 'x': 171, 'y': 100 + 20 * i, 'w': 148, 'h': 16, 'enabled': self.ed_enabled[i], 'check': -1, 'limit': 25, 'focus': int(self.focus == ('ed', i)),
                               'sel0': self.sel[0] if self.focus == ('ed', i) else 0, 'sel1': self.sel[1] if self.focus == ('ed', i) else 0}}
         if not self.complete: del rows[15]
-        cs = [{'raw': '', 'focus': 0, 'cls': 'TPanel', 'text': ''}] + [{'raw': '', 'cls': r['cb']['cls'], 'text': r['cb']['text'], 'focus': r['cb']['focus']} for r in rows.values()] \
+        cs = [{'raw': 'checks=%s texts=%s focus=%s ed=%s' % (self.checks, self.texts, self.focus, self.ed_enabled), 'focus': 0, 'cls': 'TPanel', 'text': ''}] + [{'raw': '', 'cls': r['cb']['cls'], 'text': r['cb']['text'], 'focus': r['cb']['focus']} for r in rows.values()] \
              + [{'cls': r['ed']['cls'], 'text': r['ed']['text'], 'focus': r['ed']['focus']} for r in rows.values()]
         btn = lambda t, y: {'cls': 'TButton', 'text': t, 'x': 342, 'y': y, 'w': 61, 'h': 22, 'enabled': 1, 'focus': int(self.focus == ('btn', t))}
         return {'rows': rows, 'buttons': {'OK': btn('OK', 193), 'Cancel': btn('Cancel', 345)}, 'cs': cs, 'complete': self.complete}
@@ -351,6 +351,41 @@ class Game3Tests(Base):
         P.form_wid = lambda g_: 77; P.read_controls = lambda g_, title=P.TITLE: [{'cls': 'TButton', 'text': 'OK', 'x': 1, 'y': 1, 'w': 6, 'h': 4, 'line': 'TButton\tOK\t1\t1\t6\t4'}]
         P.pointer_at = lambda x, y: {'x': x, 'y': y, 'window': 5}; self.g.click_control({'cls': 'TButton', 'text': 'OK', 'x': 1, 'y': 1, 'w': 6, 'h': 4})
         self.assertEqual(self.sent, [(4, 3)]); self.assertEqual(P.CLICKS[-1]['target']['line'], 'TButton\tOK\t1\t1\t6\t4')
+
+
+class RecordedStateTests(Base):
+    """runner 3: every form step keeps the full 16-row state and the helper's raw output before and after it (the audit recomputes the step's postconditions and the unchanged other rows from them), and every state read keeps the raw
+    memory dumps and the autosave files the game folder held"""
+    def test_a_tick_keeps_the_rows_and_the_raw_output_before_and_after(self):
+        g = self.G(); P.set_tick(g, 3, True); v = self.step('tick Ptolemaic on')
+        self.assertEqual(len(v['rows_before']), 16); self.assertEqual(len(v['rows_after']), 16); self.assertNotEqual(v['raw_before'], v['raw_after'])
+        self.assertEqual(v['rows_before'][3][1], 0); self.assertEqual(v['rows_after'][3][1], 1)
+        self.assertTrue(all(v['rows_before'][i] == v['rows_after'][i] for i in range(16) if i != 3))
+    def test_an_edit_keeps_the_raw_output_of_every_stage(self):
+        g = self.G(); P.set_tick(g, 1, True); P.edit_text(g, 1, 'Zed'); v = self.step('name Carthage')
+        self.assertEqual(sorted(v['stages']), ['deleted', 'focus', 'selected']); self.assertTrue(all('raw' in st for st in v['stages'].values()))
+        self.assertIn('raw_before', v); self.assertIn('raw_after', v)
+    def test_a_space_key_and_a_greyed_box_try_keep_the_raw_output(self):
+        g = self.G(); P.focus_checkbox_by_tab(g, 1) if False else None
+        g2 = self.G(); g2.form.focus = ('cb', 1); P.key_toggle(g2, 1); v = self.step('space on tick Carthage'); self.assertIn('raw_before', v); self.assertEqual(len(v['rows_after']), 16)
+        g3 = self.G(); P.try_edit_disabled(g3, 0, 'Xyz'); v = self.step('greyed name box Rome refuses typing'); self.assertEqual(v['rows_before'], v['rows_after']); self.assertIn('raw_after', v)
+    def test_capture_keeps_both_dumps_and_the_autosave_files_seen(self):
+        import tempfile, pathlib
+        tmp = pathlib.Path(tempfile.mkdtemp()); (tmp / 'AUTO0720.SAV').write_bytes(b'x'); (tmp / 'AUTOSAVE.LOG').write_text('0720 AUTO0720.SAV OK  \n')
+        saved = (P.game_state, P.keep_memory, P.keep_globals, P._drv.G, P.sha)
+        try:
+            P.game_state = lambda g: {'nations': []}; P.keep_memory = lambda g, tag, step: '/x/%s_%s_nations.bin' % (tag, step); P.keep_globals = lambda g, tag, step: '/x/%s_%s_globals.bin' % (tag, step); P._drv.G = tmp; P.sha = lambda p: 'h'
+            rec = {}; P.capture(None, 'T', rec, 'state_after_cancel', 'after_cancel')
+        finally: P.game_state, P.keep_memory, P.keep_globals, P._drv.G, P.sha = saved
+        self.assertEqual(rec['dumps']['state_after_cancel'], {'nations_bin': 'T_after_cancel_nations.bin', 'nations_bin_sha': 'h', 'globals_bin': 'T_after_cancel_globals.bin', 'globals_bin_sha': 'h'})
+        self.assertEqual(rec['autosave_seen']['state_after_cancel'], {'files': ['AUTO0720.SAV'], 'log': '0720 AUTO0720.SAV OK  \n'})
+    def test_without_a_human_after_ok_waits_long_enough_for_an_autosave_to_show(self):
+        sleeps = []; saved = (P.time.sleep, P.capture, P.snap_rec)
+        try:
+            P.time.sleep = lambda x: sleeps.append(x); P.capture = lambda g, tag, rec, key, step: None; P.snap_rec = lambda *a, **k: None
+            rec = {}; P.after_ok(None, 'T', rec, [])
+        finally: P.time.sleep, P.capture, P.snap_rec = saved
+        self.assertGreaterEqual(sum(sleeps), 8); self.assertEqual(rec['boxes_at_start'], [])
 
 class GuessedCoordinateTests(unittest.TestCase):
     """no runner path may click an inherited guessed or fixed coordinate (Game.new_game, Game.menu, dismiss_popups ...), and every click site of the runner is accounted for"""
