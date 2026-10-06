@@ -18,7 +18,7 @@ CLICKS = []                                           # every click of the play:
 VERIFIED = []                                         # every verified transition: {step, how, attempts, clicks: [first, end), keys: [first, end), ...}
 CTX = {'why': None, 'tag': None, 'target': None}
 KEYS = []                                             # every key / text sent (xdotool), with its reason
-RUNNER = 2                                            # the runner version recorded in every play: 2 = pointer-verified clicks, verified resets and menus, immediate post-tick state
+RUNNER = 3                                            # the runner version recorded in every play: 2 = pointer-verified clicks, verified resets and menus, immediate post-tick state; 3 = also the full 16-row state and the helper's raw output before and after every form step, and a memory dump (nation records + turn order, current nation, calendar words) for every state read
 
 def note_verified(**kw): VERIFIED.append(kw)
 def step_begin(): return (len(CLICKS), len(KEYS))
@@ -286,7 +286,8 @@ def set_tick(g, n, want, tries=3):
         if ok:
             png = snap(g, '%s_tick_%s_%s_post.png' % (CTX.get('tag') or 'LF', row['nation'], 'on' if want else 'off'))
             note_step(b, step='tick %s %s' % (row['nation'], 'on' if want else 'off'), ok=True, how='check state (BM_GETCHECK), name box enabled / focus / selection / restored text read right after the click', attempts=k + 1,
-                      before=summary(before)[n], after=summary(fs)[n], post=row_post(fs, n), stored=stored, post_png=os.path.basename(png), post_png_sha=sha(png), others_unchanged=others_unchanged(before, fs, n))
+                      before=summary(before)[n], after=summary(fs)[n], post=row_post(fs, n), stored=stored, post_png=os.path.basename(png), post_png_sha=sha(png), others_unchanged=others_unchanged(before, fs, n),
+                      rows_before=summary(before), rows_after=summary(fs), raw_after=fs['cs'][0]['raw'])
             return fs
     raise _drv.DriverError('%s: the tick did not reach the wanted state (%s, name box woke / greyed with %r) after %d clicks' % (row['nation'], want, stored, tries))
 
@@ -320,7 +321,8 @@ def edit_text(g, n, text, tries=3, expect=None):
         fs = need_form(g); guard(fs)
         if fs['rows'][n]['ed']['text'] == want:
             note_step(b, step='name %s' % row['nation'], ok=True, how='focus, selection of the whole text, deletion and typing each read back (WM_GETTEXT, EM_GETSEL); other rows unchanged', attempts=k + 1, typed=text, read=fs['rows'][n]['ed']['text'],
-                      limit=fs['rows'][n]['ed']['limit'], stages=stages, others_unchanged=others_unchanged(before, fs, n))
+                      limit=fs['rows'][n]['ed']['limit'], stages=stages, others_unchanged=others_unchanged(before, fs, n),
+                      rows_before=summary(before), rows_after=summary(fs), raw_after=fs['cs'][0]['raw'])
             return fs
     raise _drv.DriverError('%s: the name box did not read %r after %d rounds (read %r)' % (row['nation'], want, tries, form_state(g)['rows'].get(n, {}).get('ed', {}).get('text')))
 
@@ -334,7 +336,7 @@ def try_edit_disabled(g, n, text):
     after = need_form(g)
     same = summary(before) == summary(after)
     note_step(b, step='greyed name box %s refuses typing' % row['nation'], ok=same, how='all 16 rows read before and after', typed=text, unchanged=same, attempts=1, focus_after=[c['cls'] for c in after['cs'] if c['focus']],
-              before=summary(before)[n], after=summary(after)[n])
+              before=summary(before)[n], after=summary(after)[n], rows_before=summary(before), rows_after=summary(after), raw_after=after['cs'][0]['raw'])
     if not same: raise _drv.DriverError('the greyed name box changed: %s' % (summary(after)[n],))
     return summary(before)[n], summary(after)[n]
 
@@ -374,7 +376,7 @@ def key_toggle(g, n, tries=2):
         after = need_form(g)
         if not others_unchanged(before, after, n): raise _drv.DriverError('the space bar changed another row than %s' % NATIONS[n])
         if after['rows'][n]['cb']['check'] != before['rows'][n]['cb']['check']:
-            note_step(b, step='space on tick %s' % NATIONS[n], ok=True, how='checkbox state read after the key; other rows unchanged', attempts=k + 1, before=summary(before)[n], after=summary(after)[n], post=row_post(after, n), others_unchanged=True)
+            note_step(b, step='space on tick %s' % NATIONS[n], ok=True, how='checkbox state read after the key; other rows unchanged', attempts=k + 1, before=summary(before)[n], after=summary(after)[n], post=row_post(after, n), others_unchanged=True, rows_before=summary(before), rows_after=summary(after), raw_after=after['cs'][0]['raw'])
             return summary(before)[n], summary(after)[n]
     raise _drv.DriverError('the space bar did not change the %s tick box' % NATIONS[n])
 
@@ -424,6 +426,21 @@ def keep_memory(g, tag, step):
     with open(DATA + 'SAVES.sha256', 'a') as f: f.write('%s  %s\n' % (sha(p), os.path.basename(p)))
     return p
 
+def keep_globals(g, tag, step):
+    """The game words outside the nation records that the finding reads, as raw bytes (artifact, hashed): the turn order (DAT_0049efe8, 16 shorts), the current nation, the seat word 0x4A032C, season, week and year BC (little-endian shorts, in that order)"""
+    p = new_path(SAVEDIR + '%s_%s_globals.bin' % (tag, step))
+    open(p, 'wb').write(g.mem(TURN_ORDER, 32) + b''.join(g.mem(a, 2) for a in (_drv.CUR_NATION, 0x4A032C, _drv.SEASON, _drv.WEEK, _drv.YEAR_BC)))
+    with open(DATA + 'SAVES.sha256', 'a') as f: f.write('%s  %s\n' % (sha(p), os.path.basename(p)))
+    return p
+
+def capture(g, tag, rec, key, step):
+    """Read the game state now into rec[key] (JSON, as before) AND keep the raw bytes it comes from (the 16 nation records and the globals words) as hashed artifacts, recorded in rec['dumps'][key]: the audit decodes every nation field
+    and every global from these bytes, never from the JSON."""
+    rec[key] = game_state(g)
+    n = keep_memory(g, tag, step); gl = keep_globals(g, tag, step)
+    rec.setdefault('dumps', {})[key] = {'nations_bin': os.path.basename(n), 'nations_bin_sha': sha(n), 'globals_bin': os.path.basename(gl), 'globals_bin_sha': sha(gl)}
+    return rec[key]
+
 def after_ok(g, tag, rec, humans, timeout=150):
     """After OK: with at least one human, wait for the first autosave line (the game's own save at the first human turn), clear the start-of-turn boxes through their OK controls (eog.close_boxes:
     a box without an OK control stops the run) and keep the autosave; with none, wait for the form to be gone and settle. Records the memory state and the screen."""
@@ -444,10 +461,8 @@ def after_ok(g, tag, rec, humans, timeout=150):
     else:
         time.sleep(3)
         rec['boxes_at_start'] = []
-    rec['state'] = game_state(g)
+    capture(g, tag, rec, 'state', 'after_ok')
     snap_rec(g, rec, 'after_ok', '%s_after_ok_screen.png' % tag)
-    rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_ok'))
-    rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
 
 def jlog(name, obj):
     with open(DATA + name, 'a') as f: f.write(json.dumps(obj) + '\n')
