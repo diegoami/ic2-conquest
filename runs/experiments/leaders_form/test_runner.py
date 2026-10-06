@@ -200,6 +200,24 @@ class EditTests(Base):
         with self.assertRaises(_drv.DriverError): P.try_edit_disabled(g, 0, 'XYZ')
         self.assertEqual(g.clicks, [])
 
+class IncompleteFormTests(Base):
+    def test_a_button_press_on_an_incomplete_form_clicks_nothing(self):
+        g = self.G(complete=False); P.form_wid = lambda g_: 77
+        with self.assertRaises(_drv.DriverError): P.press_button(g, 'OK')
+        self.assertEqual(g.clicks, [])
+    def test_a_space_on_an_incomplete_form_sends_nothing(self):
+        g = self.G(complete=False); g.form.focus = ('cb', 1)
+        with self.assertRaises(_drv.DriverError): P.key_toggle(g, 1)
+        self.assertEqual(g.keys, [])
+    def test_a_greyed_box_try_on_an_incomplete_form_clicks_nothing(self):
+        g = self.G(complete=False)
+        with self.assertRaises(_drv.DriverError): P.try_edit_disabled(g, 0, 'x')
+        self.assertEqual(g.clicks, [])
+    def test_a_tab_walk_to_a_row_of_an_incomplete_form_sends_nothing(self):
+        g = self.G(complete=False)
+        with self.assertRaises(_drv.DriverError): P.focus_checkbox_by_tab(g, 1)
+        self.assertEqual(g.keys, [])
+
 class ButtonTests(Base):
     def test_button_missing_clicks_nothing(self):
         g = self.G(); P.form_wid = lambda g_: 77; g.form.fs = (lambda f: (lambda: {**f(), 'buttons': {}})) (g.form.fs)

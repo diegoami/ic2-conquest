@@ -26,7 +26,7 @@ sys.path.insert(0, ROOT)
 from state import sav as SAV
 
 PLAY_ID = r'P\d+[a-z]?'
-NUM_RE = re.compile(r'(?<![\w])(0x[0-9a-fA-F]+|\d[\d,]*)(?![\w])')
+NUM_RE = re.compile(r'(?<![\w])(0x[0-9a-fA-F]+|\d{1,3}(?:,\d{3})+|\d+)(?![\w])')
 
 def numbers(text):
     """The numbers in a piece of text, each with its SPELLING: ('d', n) for a decimal (thousands commas allowed), ('x', n) for a hexadecimal or the address in DAT_xxxxxxxx; so a prose "26" is not bound by a check that says
@@ -42,7 +42,9 @@ def numbers(text):
 
 def item_numbers(item):
     """the numbers a check item states: its addressing (`code 56939-56941`, `code fn F`) is not a claim"""
-    return numbers(re.sub(r'^code (?:fn \w+ |(?:nl:)?\d+(?:-(?:nl:)?\d+)? )', 'code ', item.strip()))
+    out = numbers(re.sub(r'^code (?:fn \w+ |(?:nl:)?\d+(?:-(?:nl:)?\d+)? )', 'code ', item.strip()))
+    for m in re.finditer(r'turn_order\[(\d+)\]', item): out.add(('d', int(m.group(1))))              # a position in the turn order is a claim of the row
+    return out
 
 def fmtn(t):
     """a number as it was spelled"""
@@ -693,14 +695,14 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     for tag, r in REC.items():
         if r['status'] != 'ok': continue
         what = 'recording %s (play %s)' % (tag, r['play']); v2 = r.get('runner') == 2
-        check('%s has a form record' % what, bool(r['forms']) or r['play'] in ('P10',), '')
+        check('%s has a form record or a recorded New Game' % what, bool(r['forms']) or bool(r.get('new_games')) or any(v['step'] == 'File > New' for v in r['verified']), '')
         for step, f in r['forms'].items(): file_ok(f['png'] if v2 else '%s_%s_form.png' % (tag, step), what, f.get('png_sha') if v2 else None)
         for key, sc in r.get('screens', {}).items(): file_ok(sc['png'], what, sc['png_sha'])
         if r.get('autosave'):
             p = file_ok(r['autosave'], what)
             if p: check('%s autosave hash equals the one in the record' % what, sha(p) == r['autosave_sha'])
             s = save_view(tag); mem = r['state']
-            if s and r['play'] not in ('P09', 'P10'): check('%s: the save and the game memory agree on every human flag and leader' % what, [(n['leader'], bool(n['human'])) for n in s['nations']] == [(n['leader'], bool(n['human'])) for n in mem['nations']], 'save vs memory')
+            if s and len(r.get('new_games', [])) == 1: check('%s: the save and the game memory agree on every human flag and leader (the state is of the one game that wrote the autosave)' % what, [(n['leader'], bool(n['human'])) for n in s['nations']] == [(n['leader'], bool(n['human'])) for n in mem['nations']], 'save vs memory')
         if r.get('nations_bin'):
             p = file_ok(r['nations_bin'], what)
             if p: check('%s memory dump hash equals the one in the record' % what, sha(p) == r['nations_bin_sha'])
@@ -767,6 +769,14 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
 
             except (KeyError, IndexError, TypeError, ValueError) as e_:
                 check(nm + ' is well-formed (its record lacks a field the audit reads)', False, repr(e_))
+        for i, v in enumerate(ver):                      # order of the transitions: a reset before every menu opening, the dropdown seen before the item is clicked, the reset's point bare
+            try:
+                if kind_of(v['step']) == 'menu open': check('%s: step %d (%s) is directly preceded by a verified reset' % (what, i, v['step']), i > 0 and ver[i - 1]['step'] == 'reset' and ver[i - 1]['ok'] is True, str(ver[i - 1]['step'] if i else None))
+                if kind_of(v['step']) == 'menu item': check('%s: step %d (%s) follows an opened menu' % (what, i, v['step']), i > 0 and ver[i - 1]['step'] == 'menu open file' and ver[i - 1]['ok'] is True, str(ver[i - 1]['step'] if i else None))
+                if v['step'] == 'reset':
+                    px, py = v['point']; check('%s: step %d (reset) clicked a point no window covers (%d,%d)' % (what, i, px, py), not any(w[2] <= px < w[2] + w[4] and w[3] <= py < w[3] + w[5] for w in v['windows']) and v['pointer']['window'] == v['root'] and [px, py] == [v['pointer']['x'], v['pointer']['y']], str(v['windows'])[:100])
+            except (KeyError, IndexError, TypeError, ValueError) as e_:
+                check('%s: step %d is well-formed for the order checks' % (what, i), False, repr(e_))
         check('%s: every click belongs to exactly one verified step' % what, sorted(covered_c) == list(range(len(cl))), '%s vs %d clicks' % (covered_c, len(cl)))
         check('%s: every key and typed text belongs to exactly one verified step' % what, sorted(covered_k) == list(range(len(ks))), '%s vs %d keys' % (covered_k, len(ks)))
         failed_menu = collections.Counter(kind_of(v['step']) for v in ver if not v['ok'])

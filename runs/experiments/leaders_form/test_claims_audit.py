@@ -251,6 +251,19 @@ class Recordings(Base):
             c['x'] += 400; c['pointer']['x'] += 400; c['why'] = c['why'].replace(' at %d,' % (c['x'] - 400), ' at %d,' % (c['x'] - 400))     # the click leaves the control; the reason and the pointer follow
             m = re.match(r"control (\w+) '(.*)' at (\d+),(\d+) (\d+)x(\d+)$", c['why']); c['why'] = "control %s '%s' at %d,%s %sx%s" % (m.group(1), m.group(2), int(m.group(3)) + 400, m.group(4), m.group(5), m.group(6)); c['target']['x'] += 400
         self.edit('LF_P04_b6', f); self.fails('lies inside the rectangle of the helper')
+    def test_a_reset_step_removed_before_a_menu_opening_fails(self):
+        def f(r):
+            i = [k for k, v in enumerate(r['verified']) if v['step'] == 'reset'][0]; r['verified'][i]['step'] = 'tab walk'
+        self.edit('LF_P04_b6', f); n, bad = self.audit(); self.assertTrue(any('is directly preceded by a verified reset' in b for b in bad))
+    def test_a_reset_point_inside_a_window_fails(self):
+        def f(r):
+            v = [v for v in r['verified'] if v['step'] == 'reset'][0]; v['windows'].append([5, 'x', v['point'][0] - 1, v['point'][1] - 1, 10, 10])
+        self.edit('LF_P04_b6', f); self.fails('clicked a point no window covers')
+    def test_a_menu_item_click_without_the_menu_proven_open_fails(self):
+        def f(r):
+            for v in r['verified']:
+                if v['step'] == 'menu open file': v['ok'] = False; v['hit'] = None; break
+        self.edit('LF_P04_b6', f); n, bad = self.audit(); self.assertTrue(any('follows an opened menu' in b for b in bad))
     def test_a_pointer_that_differs_from_the_click_fails(self):
         def f(r): r['clicks'][1]['pointer']['x'] += 5
         self.edit('LF_P04_b6', f); self.fails('went where the pointer was read')
