@@ -1,0 +1,121 @@
+test_button_closes_second_click (test_runner.ButtonTests.test_button_closes_second_click) ... ok
+test_button_missing_clicks_nothing (test_runner.ButtonTests.test_button_missing_clicks_nothing) ... ok
+test_button_that_never_closes_the_form_fails_closed_after_three_clicks (test_runner.ButtonTests.test_button_that_never_closes_the_form_fails_closed_after_three_clicks) ... ok
+test_disabled_button_clicks_nothing (test_runner.ButtonTests.test_disabled_button_clicks_nothing) ... ok
+test_key_close_bounded_and_fails_closed (test_runner.ButtonTests.test_key_close_bounded_and_fails_closed) ... ok
+test_no_form_means_no_click (test_runner.ButtonTests.test_no_form_means_no_click) ... ok
+test_an_empty_name_is_typed_as_nothing (test_runner.EditTests.test_an_empty_name_is_typed_as_nothing) ... ok
+test_an_incomplete_form_is_refused_by_the_edit (test_runner.EditTests.test_an_incomplete_form_is_refused_by_the_edit) ... ok
+test_deleting_the_backspace_makes_the_edit_fail (test_runner.EditTests.test_deleting_the_backspace_makes_the_edit_fail) ... ok
+test_deleting_the_select_step_makes_the_edit_fail (test_runner.EditTests.test_deleting_the_select_step_makes_the_edit_fail) ... ok
+test_deleting_the_typing_makes_the_edit_fail (test_runner.EditTests.test_deleting_the_typing_makes_the_edit_fail) ... ok
+test_edit_cut_to_the_limit_is_the_expected_text (test_runner.EditTests.test_edit_cut_to_the_limit_is_the_expected_text) ... ok
+test_edit_of_a_greyed_box_clicks_nothing (test_runner.EditTests.test_edit_of_a_greyed_box_clicks_nothing) ... ok
+test_edit_sends_select_delete_and_the_typed_text_and_the_box_reads_it_back (test_runner.EditTests.test_edit_sends_select_delete_and_the_typed_text_and_the_box_reads_it_back) ... ok
+test_edit_without_focus_is_retried_then_fails_closed_and_nothing_is_typed (test_runner.EditTests.test_edit_without_focus_is_retried_then_fails_closed_and_nothing_is_typed) ... ok
+test_try_edit_disabled_refuses_an_enabled_box (test_runner.EditTests.test_try_edit_disabled_refuses_an_enabled_box) ... ok
+test_typing_into_a_greyed_box_that_changes_is_an_error (test_runner.EditTests.test_typing_into_a_greyed_box_that_changes_is_an_error) ... ok
+test_typing_into_a_greyed_box_that_does_not_change_is_recorded (test_runner.EditTests.test_typing_into_a_greyed_box_that_does_not_change_is_recorded) ... ok
+test_typing_that_changes_another_row_raises_at_once (test_runner.EditTests.test_typing_that_changes_another_row_raises_at_once) ... ok
+test_a_click_is_recorded_with_the_pointer_read_back (test_runner.Game3Tests.test_a_click_is_recorded_with_the_pointer_read_back) ... ok
+test_a_click_whose_pointer_is_elsewhere_is_not_sent (test_runner.Game3Tests.test_a_click_whose_pointer_is_elsewhere_is_not_sent) ... ok
+test_a_control_in_a_fresh_read_is_clicked_with_its_verbatim_line_recorded (test_runner.Game3Tests.test_a_control_in_a_fresh_read_is_clicked_with_its_verbatim_line_recorded) ... ok
+test_a_control_that_is_not_in_a_fresh_read_is_not_clicked (test_runner.Game3Tests.test_a_control_that_is_not_in_a_fresh_read_is_not_clicked) ... ok
+test_every_click_site_is_accounted_for (test_runner.GuessedCoordinateTests.test_every_click_site_is_accounted_for) ... /home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/archive_batch.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/branches.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/claims_audit.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/common.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/dump_dfm.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/dump_dfm_check.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/eog.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/extract_dat_pool.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/fetch_archive.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/lib.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/loader_offsets.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/make_extract.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/paths.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/play_lib.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/play_meta.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/play_plans.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/run_play.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-leaders/runs/experiments/leaders_form/test_runner.py:399: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-leaders/runs/experiments/leaders_form/scenarios.py' mode='r' encoding='UTF-8'>
+  yield os.path.basename(p), ast.parse(open(p).read(), p)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_no_forbidden_driver_call_and_no_constant_coordinate (test_runner.GuessedCoordinateTests.test_no_forbidden_driver_call_and_no_constant_coordinate) ... ok
+test_the_guard_catches_each_way_back (test_runner.GuessedCoordinateTests.test_the_guard_catches_each_way_back) ... ok
+test_a_button_press_on_an_incomplete_form_clicks_nothing (test_runner.IncompleteFormTests.test_a_button_press_on_an_incomplete_form_clicks_nothing) ... ok
+test_a_greyed_box_try_on_an_incomplete_form_clicks_nothing (test_runner.IncompleteFormTests.test_a_greyed_box_try_on_an_incomplete_form_clicks_nothing) ... ok
+test_a_space_on_an_incomplete_form_sends_nothing (test_runner.IncompleteFormTests.test_a_space_on_an_incomplete_form_sends_nothing) ... ok
+test_a_tab_walk_to_a_row_of_an_incomplete_form_sends_nothing (test_runner.IncompleteFormTests.test_a_tab_walk_to_a_row_of_an_incomplete_form_sends_nothing) ... ok
+test_form_text_is_read_as_latin1_not_utf8 (test_runner.KeyboardTests.test_form_text_is_read_as_latin1_not_utf8) ... ok
+test_space_on_the_focused_tick_box_ticks_it_and_leaves_the_name_box_as_it_is (test_runner.KeyboardTests.test_space_on_the_focused_tick_box_ticks_it_and_leaves_the_name_box_as_it_is) ... ok
+test_space_that_changes_another_row_raises_at_once (test_runner.KeyboardTests.test_space_that_changes_another_row_raises_at_once) ... ok
+test_space_that_changes_nothing_fails_closed_after_two_presses (test_runner.KeyboardTests.test_space_that_changes_nothing_fails_closed_after_two_presses) ... ok
+test_space_without_focus_on_the_tick_box_sends_nothing (test_runner.KeyboardTests.test_space_without_focus_on_the_tick_box_sends_nothing) ... ok
+test_tab_walk_is_bounded (test_runner.KeyboardTests.test_tab_walk_is_bounded) ... ok
+test_a_space_key_and_a_greyed_box_try_keep_the_raw_output (test_runner.RecordedStateTests.test_a_space_key_and_a_greyed_box_try_keep_the_raw_output) ... ok
+test_a_tick_keeps_the_rows_and_the_raw_output_before_and_after (test_runner.RecordedStateTests.test_a_tick_keeps_the_rows_and_the_raw_output_before_and_after) ... ok
+test_an_edit_keeps_the_raw_output_of_every_stage (test_runner.RecordedStateTests.test_an_edit_keeps_the_raw_output_of_every_stage) ... ok
+test_capture_keeps_both_dumps_and_the_autosave_files_seen (test_runner.RecordedStateTests.test_capture_keeps_both_dumps_and_the_autosave_files_seen) ... ok
+test_without_a_human_after_ok_waits_long_enough_for_an_autosave_to_show (test_runner.RecordedStateTests.test_without_a_human_after_ok_waits_long_enough_for_an_autosave_to_show) ... ok
+test_menu_close_that_leaves_the_dropdown_open_fails (test_runner.ResetAndMenuTests.test_menu_close_that_leaves_the_dropdown_open_fails) ... ok
+test_menu_new_requires_the_form_after_the_item_click (test_runner.ResetAndMenuTests.test_menu_new_requires_the_form_after_the_item_click) ... ok
+test_menu_new_succeeds_when_the_form_appears (test_runner.ResetAndMenuTests.test_menu_new_succeeds_when_the_form_appears) ... ok
+test_menu_open_activation_only_first_click_is_retried_and_both_attempts_are_recorded (test_runner.ResetAndMenuTests.test_menu_open_activation_only_first_click_is_retried_and_both_attempts_are_recorded) ... ok
+test_menu_open_that_never_opens_fails_after_three_attempts_with_bounded_clicks (test_runner.ResetAndMenuTests.test_menu_open_that_never_opens_fails_after_three_attempts_with_bounded_clicks) ... ok
+test_menu_open_with_the_bar_word_missing_clicks_no_bar_word (test_runner.ResetAndMenuTests.test_menu_open_with_the_bar_word_missing_clicks_no_bar_word) ... ok
+test_reset_clicks_a_located_point_whose_pointer_window_is_the_root (test_runner.ResetAndMenuTests.test_reset_clicks_a_located_point_whose_pointer_window_is_the_root) ... ok
+test_reset_skips_a_candidate_a_window_covers (test_runner.ResetAndMenuTests.test_reset_skips_a_candidate_a_window_covers) ... ok
+test_reset_with_no_bare_point_clicks_nothing (test_runner.ResetAndMenuTests.test_reset_with_no_bare_point_clicks_nothing) ... ok
+test_a_disabled_tick_box_is_refused_before_any_click (test_runner.TickTests.test_a_disabled_tick_box_is_refused_before_any_click) ... ok
+test_a_tick_that_does_not_wake_the_name_box_is_not_accepted (test_runner.TickTests.test_a_tick_that_does_not_wake_the_name_box_is_not_accepted) ... ok
+test_a_tick_without_focus_on_the_name_box_is_not_accepted (test_runner.TickTests.test_a_tick_without_focus_on_the_name_box_is_not_accepted) ... ok
+test_a_tick_without_the_whole_text_selected_is_not_accepted (test_runner.TickTests.test_a_tick_without_the_whole_text_selected_is_not_accepted) ... ok
+test_an_incomplete_form_is_refused_before_any_click (test_runner.TickTests.test_an_incomplete_form_is_refused_before_any_click) ... ok
+test_an_untick_that_keeps_the_typed_text_is_not_accepted (test_runner.TickTests.test_an_untick_that_keeps_the_typed_text_is_not_accepted) ... ok
+test_first_click_only_activates_second_registers (test_runner.TickTests.test_first_click_only_activates_second_registers) ... ok
+test_tick_already_in_the_wanted_state_proves_nothing_and_clicks_nothing (test_runner.TickTests.test_tick_already_in_the_wanted_state_proves_nothing_and_clicks_nothing) ... ok
+test_tick_registers_first_click_and_records_the_state_right_after (test_runner.TickTests.test_tick_registers_first_click_and_records_the_state_right_after) ... ok
+test_tick_that_changes_another_row_raises_at_once (test_runner.TickTests.test_tick_that_changes_another_row_raises_at_once) ... ok
+test_tick_that_never_registers_fails_closed_after_three_clicks (test_runner.TickTests.test_tick_that_never_registers_fails_closed_after_three_clicks) ... ok
+test_untick_restores_the_drawn_leader_and_greys_the_box (test_runner.TickTests.test_untick_restores_the_drawn_leader_and_greys_the_box) ... ok
+
+----------------------------------------------------------------------
+Ran 62 tests in 0.154s
+
+OK
