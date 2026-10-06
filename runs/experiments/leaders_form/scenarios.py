@@ -145,7 +145,12 @@ SC = {'P01': dict(seed=12345, fn=p01, note='the form as it opens, tab order, Can
       'P10': dict(seed=12345, fn=p10, note='File > New with a game running, Confirm answered No')}
 
 def run(pid, batch):
-    sc = SC[pid]; tag = 'LF_%s_%s' % (pid, batch); eog._ATTEMPTS.clear(); del CLICKS[:]; del KEYS[:]; del VERIFIED[:]
+    sc = SC[pid]; tag = 'LF_%s_%s' % (pid, batch)
+    import glob, json as _json
+    for f in glob.glob(DATA + 'plays_*.jsonl'):          # a recording is never replaced: a tag already recorded is refused (a re-run uses a new batch name)
+        for l in open(f):
+            if l.strip() and (_json.loads(l).get('tag') or 'LF_%s_%s' % (_json.loads(l)['play'], _json.loads(l)['batch'])) == tag: raise _drv.DriverError('the tag %s is already recorded in %s: use a new batch name' % (tag, f))
+    eog._ATTEMPTS.clear(); del CLICKS[:]; del KEYS[:]; del VERIFIED[:]
     g = start_game(sc['seed']); rec = new_rec(pid, batch, sc['seed'], sc['note']); rec['tag'] = tag
     CTX.update(tag=tag, why=None, target=None)
     try:

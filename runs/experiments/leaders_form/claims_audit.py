@@ -29,15 +29,24 @@ PLAY_ID = r'P\d+[a-z]?'
 NUM_RE = re.compile(r'(?<![\w])(0x[0-9a-fA-F]+|\d[\d,]*)(?![\w])')
 
 def numbers(text):
-    """The integers in a piece of text: decimals (thousands commas allowed), hexadecimals and the address in DAT_xxxxxxxx; identifiers such as F31, P06 or AUTO0720 and array indices `[3]` are not numbers."""
+    """The numbers in a piece of text, each with its SPELLING: ('d', n) for a decimal (thousands commas allowed), ('x', n) for a hexadecimal or the address in DAT_xxxxxxxx; so a prose "26" is not bound by a check that says
+    0x1a. Identifiers such as F31, P06 or AUTO0720 and array indices `[3]` are not numbers."""
     text = re.sub(r'\[(?:\*|-?\d+)\]', '', text)
     text = re.sub(r'DAT_([0-9a-fA-F]{8})', r' 0x\1 ', text)
     out = set()
     for m in NUM_RE.finditer(text):
         t = m.group(1).replace(',', '')
-        try: out.add(int(t, 16) if t.lower().startswith('0x') else int(t))
+        try: out.add(('x', int(t, 16)) if t.lower().startswith('0x') else ('d', int(t)))
         except ValueError: pass
     return out
+
+def item_numbers(item):
+    """the numbers a check item states: its addressing (`code 56939-56941`, `code fn F`) is not a claim"""
+    return numbers(re.sub(r'^code (?:fn \w+ |(?:nl:)?\d+(?:-(?:nl:)?\d+)? )', 'code ', item.strip()))
+
+def fmtn(t):
+    """a number as it was spelled"""
+    return ('0x%x' % t[1]) if t[0] == 'x' else str(t[1])
 
 def norm(s): return re.sub(r'\s+', ' ', s).strip()
 
@@ -283,7 +292,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if tok == '@dfmorder': return list(DFM_ORDER)
         if tok == '@limits': return [int(lit)] * 16
         if tok == '@duplicates': return dups_text
-        m = re.fullmatch(r'(%s) (\S+)' % PLAY_ID, tok)
+        m = re.fullmatch(r'(%s) ((?:[^\s{]|\{[^}]*\})+)' % PLAY_ID, tok)
         if m:
             ok, v = evaluate(m.group(1), m.group(2))
             if not ok: raise KeyError('rhs %s' % tok)
@@ -301,7 +310,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             by = collections.defaultdict(set)
             for r in recs:
                 st = r.get('state')
-                if st: by[r['seed']].add(tuple(st['turn_order']))
+                if st: by[r['new_games'][-1]['seed']].add(tuple(st['turn_order']))      # the seed of the New Game that drew the state
             if not by: return False, 'no states'
             return True, {'one_per_seed': all(len(v) == 1 for v in by.values()), 'differs_between_seeds': len({next(iter(v)) for v in by.values()}) == len(by), 'seeds': len(by)}[what]
         if kind == 'initial_nation':                                 # every state read where no turn has started: the current nation is the first entry of the order
@@ -310,11 +319,13 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             return True, {'is_first_in_order': all(st['cur_nation'] == st['turn_order'][0] for st in sts), 'states': len(sts)}[what]
         if kind == 'default_forms':                                  # the form of every recording that opened it, before any edit
             fvs = [f for r in recs for step, f in form_view(r['_tag']).items() if step == 'default']
+            fvs0 = [f for r in recs if not r.get('autosave') for step, f in form_view(r['_tag']).items() if step == 'default']          # no human started afterwards: the records still hold the drawn names
             if not fvs: return False, 'no forms'
-            return True, {'count': len(fvs), 'rows_match': all(f.get('rows_match_nations', True) for f in fvs), 'all_unticked': all(not any(f['checks']) for f in fvs),
+            return True, {'count': len(fvs), 'count_unedited': len(fvs0), 'rows_match': bool(fvs0) and all(f.get('rows_match_nations') is True for f in fvs0), 'all_unticked': all(not any(f['checks']) for f in fvs),
                           'all_greyed': all(not any(f['edit_enabled']) for f in fvs), 'in_pool': all(f['names_in_pool'] for f in fvs), 'all_ticks_enabled': all(all(f['cb_enabled']) for f in fvs)}[what]
         return False, 'unknown scan %s' % kind
-    PCHECKS = []                                                   # every passing play check of the current row: (pid, path, op, want)
+    PCHECKS = []                                                   # every passing play check of the current row: (pid, path, op, want); the play paths on the right of a comparison are listed too (op 'rhs')
+    PLAY_PATH = r'(%s) ((?:[^\s{]|\{[^}]*\})+)' % PLAY_ID
     def reads_line(items, k, fn):
         """a check of the row reads the extract's line k (a `code` check naming it or a range holding it, or a `code fn` check of its function)"""
         for it in items:
@@ -327,6 +338,11 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     def run_check(rid, item, lit, row):
         item = item.strip()
         name = '%s check [%s]' % (rid, item[:110])
+        m = re.fullmatch(r'code fn (\w+) count (\w+) == (\d+)', item)
+        if m:
+            fn, word, n_ = m.groups()
+            if not check(name + ' function in the extract', fn in FNLINES, fn): return
+            got = len(re.findall(r'\b%s\b' % re.escape(word), code_text(fn=fn))); check(name, got == int(n_), 'function %s has %d' % (fn, got)); return
         m = re.fullmatch(r'code fn (\w+) (has|lacks|seq) (.+)', item)
         if m:
             fn, op, txt = m.groups()
@@ -351,7 +367,9 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             check(name, prop in DFM[o]['props'] and DFM[o]['props'][prop] == want, 'resource has %r' % (DFM[o]['props'].get(prop),)); return
         m = re.fullmatch(r'dfm order == (%s) (\S+)' % PLAY_ID, item)
         if m:
-            ok, v = evaluate(m.group(1), m.group(2)); check(name, ok and v == DFM_ORDER, 'resource order %s vs memory %s' % (DFM_ORDER, v)); return
+            ok, v = evaluate(m.group(1), m.group(2))
+            if check(name, ok and v == DFM_ORDER, 'resource order %s vs memory %s' % (DFM_ORDER, v)): PCHECKS.append((m.group(1), m.group(2), 'rhs', None))
+            return
         m = re.fullmatch(r'dfm count (\w+) == (\d+)', item)
         if m: check(name, sum(1 for o in allobjs if o['class'] == m.group(1)) == int(m.group(2)), str(sum(1 for o in allobjs if o['class'] == m.group(1)))); return
         m = re.fullmatch(r'dfm all (\w+) (\w+) == (.+)', item)
@@ -367,6 +385,11 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             what, nat, rhs = m.groups(); got = {'size': sum(len(v) for v in POOL.values()), 'nations': len(POOL), 'bytes_per_name': pool_len // (len(POOL) * 12) if POOL else None, 'read_length': pool_len, 'offset': off_calc,
                                                  'duplicates_across_nations': dups_text}.get(what, len(POOL.get(nat, [])) if nat else None)
             want = lit if rhs == '@literal' else int(rhs); check(name, got == want, 'recomputed %r' % (got,)); return
+        m = re.fullmatch(r'calc ([0-9a-fA-Fx +*()-]+) == (0x[0-9a-fA-F]+|\d+)', item)
+        if m:
+            try: got = eval(m.group(1), {'__builtins__': {}}, {})
+            except Exception as e: got = repr(e)
+            check(name, got == int(m.group(2), 0), 'the expression is %r' % (got,)); return
         m = re.fullmatch(r'sav (\w+) == (\d+)', item)
         if m: check(name, getattr(SAV, m.group(1), None) == int(m.group(2)), 'state/sav.py has %r' % getattr(SAV, m.group(1), None)); return
         m = re.fullmatch(r'scan (\w+) (\w+) == (.+)', item)
@@ -389,7 +412,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             x0 = 10 if menu == 'file' else 41; y0 = 51 + 17 * int(idx)
             v = subprocess.run(['convert', p, '-crop', '70x12+%d+%d' % (x0, y0), '+repage', '-colorspace', 'Gray', '-format', '%[fx:minima*255]', 'info:'], capture_output=True, text=True).stdout
             check(name, (float(v) > 100) == (want == 'true'), 'darkest pixel %s' % v); return
-        m = re.fullmatch(r'(%s) ((?:[^\s{]|\{[^}]*\})+) ?(==|!=|has|startswith|absent|len==)? ?(.*)' % PLAY_ID, item)
+        m = re.fullmatch(r'(%s) ((?:[^\s{]|\{[^}]*\})+) ?(==|!=|has|startswith|absent|len==|list==|list!=)? ?(.*)' % PLAY_ID, item)
         if m:
             pid, path, op, rhs = m.groups()
             if not check(name + ' play is cited by tag in this row', pid in CUR['res'], pid): return
@@ -406,8 +429,12 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             elif op == 'has': good = all((want in x) for x in vals)
             elif op == 'startswith': good = all(isinstance(x, str) and x.startswith(want) for x in vals)
             elif op == 'len==': good = all(hasattr(x, '__len__') and len(x) == want for x in vals)
+            elif op == 'list==': good = list(vals) == want
+            elif op == 'list!=': good = list(vals) != want
             else: good = False
-            if check(name, good, 'source has %r, claim %r' % (v if len(repr(v)) < 160 else repr(v)[:160], want)): PCHECKS.append((pid, path, op, want))
+            if check(name, good, 'source has %r, claim %r' % (v if len(repr(v)) < 160 else repr(v)[:160], want)):
+                PCHECKS.append((pid, path, op, want)); m3 = re.fullmatch(PLAY_PATH, rhs.strip())
+                if m3: PCHECKS.append((m3.group(1), m3.group(2), 'rhs', None))
             return
         check(name + ' parses', False, 'unknown check form')
     # ------------------------------------------------------------ the finding's tables
@@ -433,6 +460,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         check('table present: ' + need, need in T and T[need], need)
     spans = lambda cell: re.findall(r'`([^`]*)`', cell)
     BOUND = set()                                                  # every number a claim of the finding is bound to by a passing check
+    ROWBOUND = {}                                                  # row id -> the numbers that row's checks bind
     # ---- controls: every object of the resource has a row; every property of it is compared
     SKIP_PROPS = ('Left', 'Top', 'Caption', 'TabOrder')
     for r in T.get('controls', []):
@@ -454,7 +482,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         for kv in [x.strip() for x in r['props'].split(';') if x.strip() and x.strip() != '-']:
             k, _, v = kv.partition('='); got[k.strip()] = v.strip()
         check('%s properties equal the resource\'s (every one listed, none invented): finding %s vs resource %s' % (rid, sorted(got.items()), sorted(want.items())), got == want)
-        BOUND |= numbers(' '.join([r['left'], r['top'], r['tab'], r['props'], r['literal']]))
+        BOUND |= numbers(' '.join([r['left'], r['top'], r['tab'], r['props'], r['literal']])); ROWBOUND[rid] = numbers(' '.join([r['left'], r['top'], r['tab'], r['props'], r['literal']]))
     ids = [r['id'] for r in T.get('controls', [])]
     check('controls ids are unique', len(ids) == len(set(ids)))
     listed = {r['object'] for r in T.get('controls', [])}
@@ -462,6 +490,10 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         check('the resource object %s (%s) has a row in the controls table (no control of the resource is left out)' % (name_, o['class']), name_ in listed)
     check('the resource has 16 panels, each holding one TCheckBox then one TEdit (the rows are panel children)', len(panels) == 16 and all([c['class'] for c in p['children']] == ['TCheckBox', 'TEdit'] for p in panels))
     for p in panels: check('panel %s caption is two spaces and the nation name' % p['name'], p['props'].get('Caption', '').startswith('  ') and p['props']['Caption'].strip() in NAT)
+    # ---- the draws table: which recording and form each row reads (needed by the `draws` checks of the rules)
+    for r in T.get('draws', []):
+        cand = [t for t, x in EVID.items() if x['play'] == r['play']]
+        if cand: DRAW_PLAYS.append((r['play'], cand[-1], 'default' if 'default' in REC[cand[-1]]['forms'] else 'second_default'))
     # ---- rules
     RULE = {}; ROW_OBL = {}
     LEX = (('at least', 'FUN_00448fd8'), ('raised', 'FUN_00448fd8'), ('maximum', 'FUN_00448fd8'))       # a word that claims an operation: the row must check that operation in the code
@@ -550,7 +582,6 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             for f in fl:
                 if re.match(r'LF_%s_b\d+_' % PLAY_ID, f): file_ok(f, rid)
             check('%s confirmed rows cite a screenshot' % rid, any(f.endswith('.png') for f in fl), r['evidence'])
-            check('%s confirmed rows cite a save (or, for a state that has none, the memory dump)' % rid, any(f.endswith('.SAV') for f in fl) or (any(f.endswith('.bin') for f in fl) and any(not REC[t].get('autosave') for t in res.values())), r['evidence'])
             check('%s confirmed rows have a play check' % rid, any(re.match(PLAY_ID + ' ', it) for it in items))
         for it in items: run_check(rid, it, lit, r)
         if tag == '[confirmed]':
@@ -564,23 +595,27 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             check('%s evidence files are exactly the files the checks read: cited %s, read %s' % (rid, sorted(fl), sorted(want_files)), set(fl) == want_files, 'missing %s, unused %s' % (sorted(want_files - set(fl)), sorted(set(fl) - want_files)))
         ROW_OBL[rid] = list(PCHECKS)
         # ---- every number of the prose is bound to a passing check of the row (or to the row's literal); an operation a word claims is checked in the code
-        bound = numbers(' '.join(items) + ' ' + (r['literal'] if r['literal'] != '-' else ''))
+        bound = set().union(*[item_numbers(it) for it in items]) | numbers(r['literal'] if r['literal'] != '-' else '')
         for p_, path_, op_, wnt_ in PCHECKS:
             if isinstance(wnt_, (int, list)) and not isinstance(wnt_, bool): bound |= numbers(json.dumps(wnt_))
-        BOUND |= bound
-        for nmb in sorted(numbers(r['rule'])):
-            check('%s prose number %s is bound to a check of the row (the checks mention %s)' % (rid, nmb, sorted(bound)[:12]), nmb in bound)
+        BOUND |= bound; ROWBOUND[rid] = bound
+        for nmb in sorted(numbers(re.sub(r'`[^`]*[A-Za-z]{3,}[^`]* [^`]*`', '', r['rule']))):          # a literal quoted in the prose (a caption, a name) is checked byte for byte by the literal's own check
+            check('%s prose number %s is bound to a check of the row (the checks mention %s)' % (rid, fmtn(nmb), [fmtn(x) for x in sorted(bound)][:14]), nmb in bound)
         for word, fn in LEX:
             if word in r['rule'].lower(): check('%s prose says %r: the row must check the operation of %s in the code' % (rid, word, fn), any(it.startswith('code fn %s seq' % fn) for it in items))
     # ---- the claims every recorded play makes must be in the rules (obligations from the recordings and the task, not from the finding)
     allp = [(rid, p) for rid, pcs in ROW_OBL.items() for p in pcs if RULE[rid]['tag'] == '[confirmed]']
-    def obliged(name, tag, regex, want=None, op='=='):
-        """the finding must have a passing check `<play> <path> <op> <value>` of this play whose path matches `regex` and whose value is `want` (None: any)"""
+    task_text = open(task, encoding='utf-8').read().lower() if os.path.exists(task) else ''
+    def obliged(name, tag, regex, want=None, op='==', phrase=None):
+        """the finding must have a passing check `<play> <path> <op> <value>` of this play whose path matches `regex` and whose value is `want` (None: any); with `phrase` (a phrase of the task's own questions) the check
+        must be in a [confirmed] row whose rule text contains that phrase, so a claim cannot be carried only by an aggregate row after its own row is removed"""
+        if phrase is not None: check('the task asks about "%s" (the phrase is in %s)' % (phrase, os.path.basename(task)), phrase in task_text)
         ok = False
         for rid, (pid, path, op2, w) in allp:
             if REC[tag]['play'] != pid or not re.fullmatch(regex, path) or op2 != op: continue
+            if phrase is not None and phrase not in RULE[rid]['rule'].lower(): continue
             if want is None or w == want: ok = True
-        check('required claim in the finding: ' + name + ' (a passing check of play %s: %s %s %r)' % (REC[tag]['play'], regex, op, want), ok)
+        check('required claim in the finding: ' + name + ' (a passing check of play %s: %s %s %r%s)' % (REC[tag]['play'], regex, op, want, ' in a row whose rule says "%s"' % phrase if phrase else ''), ok)
     def newest(pred):
         c = [t for t, r in EVID.items() if pred(r)]
         return c[-1] if c else None
@@ -597,25 +632,25 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
     tp = need('an empty name ticked and accepted', newest(lambda r: r.get('autosave') and any(row[1] == 1 and row[3] == '' for row in forms_text(r))))
     if tp:
         for i, row in enumerate(forms_text(REC[tp])):
-            if row[1] == 1 and row[3] == '': obliged('an empty name is saved as typed (nation %d)' % i, tp, r'save\.nations\[%d\]\.leader' % i, '')
+            if row[1] == 1 and row[3] == '': obliged('an empty name is saved as typed (nation %d)' % i, tp, r'save\.nations\[%d\]\.leader' % i, '', phrase='empty name')
     tp = need('a name of spaces ticked and accepted', newest(lambda r: r.get('autosave') and any(row[1] == 1 and row[3] != '' and row[3].strip() == '' for row in forms_text(r))))
     if tp:
         for i, row in enumerate(forms_text(REC[tp])):
-            if row[1] == 1 and row[3] != '' and row[3].strip() == '': obliged('a name of spaces is saved as typed (nation %d)' % i, tp, r'save\.nations\[%d\]\.leader' % i, row[3])
+            if row[1] == 1 and row[3] != '' and row[3].strip() == '': obliged('a name of spaces is saved as typed (nation %d)' % i, tp, r'save\.nations\[%d\]\.leader' % i, row[3], phrase='name of spaces')
     tp = need('a duplicate name ticked and accepted', newest(lambda r: r.get('autosave') and len([row[3] for row in forms_text(r) if row[1] == 1 and row[3]]) != len({row[3] for row in forms_text(r) if row[1] == 1 and row[3]})))
     if tp:
         names_ = [row[3] for row in forms_text(REC[tp]) if row[1] == 1 and row[3]]
         for i, row in enumerate(forms_text(REC[tp])):
-            if row[1] == 1 and row[3] and names_.count(row[3]) > 1: obliged('a duplicate name is saved as typed (nation %d)' % i, tp, r'save\.nations\[%d\]\.leader' % i, row[3])
+            if row[1] == 1 and row[3] and names_.count(row[3]) > 1: obliged('a duplicate name is saved as typed (nation %d)' % i, tp, r'save\.nations\[%d\]\.leader' % i, row[3], phrase='duplicate name')
     tp = need('an over-long name typed', newest(lambda r: r.get('autosave') and any(v['step'].startswith('name ') and len(v.get('typed', '')) > 25 for v in r['verified'])))
     if tp:
         for v in REC[tp]['verified']:
             if v['step'].startswith('name ') and len(v.get('typed', '')) > 25:
-                i = NAT.index(v['step'][5:]); obliged('the over-long text typed is on record (%s)' % v['step'], tp, r'rec\.verified\{step=%s\}\.typed' % re.escape(v['step']), v['typed']); obliged('the over-long name is saved cut to the limit (%s)' % v['step'], tp, r'save\.nations\[%d\]\.leader' % i, v['typed'][:25])
+                i = NAT.index(v['step'][5:]); obliged('the over-long text typed is on record (%s)' % v['step'], tp, r'rec\.verified\{step=%s\}\.typed' % re.escape(v['step']), v['typed'], phrase='long'); obliged('the over-long name is saved cut to the limit (%s)' % v['step'], tp, r'save\.nations\[%d\]\.leader' % i, v['typed'][:25], phrase='long')
     tp = need('an edit attempted on a computer nation\'s box', newest(lambda r: 'greyed_edit' in r))
     if tp:
         for v in REC[tp]['verified']:
-            if v['step'].startswith('greyed name box'): obliged('the greyed computer box refuses typing (%s)' % v['step'], tp, r'rec\.verified\{step=%s\}\.unchanged' % re.escape(v['step']), True)
+            if v['step'].startswith('greyed name box'): obliged('the greyed computer box refuses typing (%s)' % v['step'], tp, r'rec\.verified\{step=%s\}\.unchanged' % re.escape(v['step']), True, phrase='computer')
     tp = need('a name edited then the nation unticked', newest(lambda r: any(v['step'].startswith('tick ') and v['step'].endswith(' off') for v in r['verified'])))
     if tp:
         for v in REC[tp]['verified']:
@@ -675,55 +710,63 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             b = open(art_path(r['nations_bin']), 'rb').read() if art_path(r['nations_bin']) else b''
             if b: check('%s memory dump equals the nation hashes of the record' % what, [hashlib.sha256(b[n * 1172:(n + 1) * 1172]).hexdigest() for n in range(16)] == [n['sha'] for n in r['state']['nations']])
         cl = r['clicks']; ver = r['verified']; ks = r['keys']
-        check('%s: every click has a recorded reason' % what, all(c.get('why') for c in cl), str([c for c in cl if not c.get('why')]))
+        if v2: check('%s: every click has a recorded reason' % what, all(c.get('why') for c in cl), str([c for c in cl if not c.get('why')]))
         if not v2:
             for c in cl:
                 m = re.match(r"control (\w+) '.*' at (\d+),(\d+) (\d+)x(\d+)$", c['why'] or '')
-                if m: check('%s: click %s,%s lies inside the control its reason names (an earlier runner: the rectangle is in the reason only, no pointer record)' % (what, c['x'], c['y'], c['why'][:40]), int(m.group(2)) <= c['x'] < int(m.group(2)) + int(m.group(4)) and int(m.group(3)) <= c['y'] < int(m.group(3)) + int(m.group(5)))
+                if m: check('%s: click %s,%s lies inside the control its reason names (%s; an earlier runner: the rectangle is in the reason only, no pointer record)' % (what, c['x'], c['y'], c['why'][:40]), int(m.group(2)) <= c['x'] < int(m.group(2)) + int(m.group(4)) and int(m.group(3)) <= c['y'] < int(m.group(3)) + int(m.group(5)))
             continue
         # ---- runner 2: pointer, target and step of every click; postconditions recomputed from the recorded states
         for i, c in enumerate(cl):
             nm = '%s: click %d' % (what, i)
-            if not check(nm + ' records the pointer read back from the X server and a target', isinstance(c.get('pointer'), dict) and isinstance(c.get('target'), dict), str(sorted(c))): continue
-            check(nm + ' went where the pointer was read (%s,%s)' % (c['x'], c['y']), (c['pointer'].get('x'), c['pointer'].get('y')) == (c['x'], c['y']), str(c['pointer']))
-            t = c['target']
-            if t.get('src') in ('win_state', 'win_controls'):
-                f = t['line'].split('\t'); n_f = 14 if t['src'] == 'win_state' else 6
-                if not check(nm + ' target line has %d fields' % n_f, len(f) == n_f, str(f[:3])): continue
-                cls_, x_, y_, w_, h_ = f[0], int(f[2]), int(f[3]), int(f[4]), int(f[5])
-                check(nm + ' lies inside the rectangle of the helper\'s own line for the control (%d,%d %dx%d)' % (x_, y_, w_, h_), x_ <= c['x'] < x_ + w_ and y_ <= c['y'] < y_ + h_, t['line'][:60])
-                check(nm + ' target geometry equals the helper\'s line', (t['cls'], t['x'], t['y'], t['w'], t['h']) == (cls_, x_, y_, w_, h_))
-                mm = re.match(r"control (\w+) '.*' at (\d+),(\d+) (\d+)x(\d+)$", c['why'] or '')
-                check(nm + ' reason names the same control as the helper\'s line', bool(mm) and (mm.group(1), int(mm.group(2)), int(mm.group(3)), int(mm.group(4)), int(mm.group(5))) == (cls_, x_, y_, w_, h_), c['why'][:60])
-            elif t.get('src') == 'ocr': check(nm + ' is the OCR word %r at the hit' % t.get('word'), (t['x'], t['y']) == (c['x'], c['y']) and t.get('word') in ('file', 'new', 'game'), str(t)[:80])
-            elif t.get('src') == 'xdotool getmouselocation': check(nm + ' is a click on the bare root window: the pointer window is the root id', t.get('pointer', {}).get('window') == t.get('root') == c['pointer'].get('window'), str(t)[:80])
-            else: check(nm + ' has a known target source', False, str(t)[:80])
+            try:
+                if not check(nm + ' records the pointer read back from the X server and a target', isinstance(c.get('pointer'), dict) and isinstance(c.get('target'), dict), str(sorted(c))): continue
+                check(nm + ' went where the pointer was read (%s,%s)' % (c['x'], c['y']), (c['pointer'].get('x'), c['pointer'].get('y')) == (c['x'], c['y']), str(c['pointer']))
+                t = c['target']
+                if t.get('src') in ('win_state', 'win_controls'):
+                    f = t['line'].split('\t'); n_f = 14 if t['src'] == 'win_state' else 6
+                    if not check(nm + ' target line has %d fields' % n_f, len(f) == n_f, str(f[:3])): continue
+                    cls_, x_, y_, w_, h_ = f[0], int(f[2]), int(f[3]), int(f[4]), int(f[5])
+                    check(nm + ' lies inside the rectangle of the helper\'s own line for the control (%d,%d %dx%d)' % (x_, y_, w_, h_), x_ <= c['x'] < x_ + w_ and y_ <= c['y'] < y_ + h_, t['line'][:60])
+                    check(nm + ' target geometry equals the helper\'s line', (t['cls'], t['x'], t['y'], t['w'], t['h']) == (cls_, x_, y_, w_, h_))
+                    mm = re.match(r"control (\w+) '.*' at (\d+),(\d+) (\d+)x(\d+)$", c['why'] or '')
+                    check(nm + ' reason names the same control as the helper\'s line', bool(mm) and (mm.group(1), int(mm.group(2)), int(mm.group(3)), int(mm.group(4)), int(mm.group(5))) == (cls_, x_, y_, w_, h_), c['why'][:60])
+                elif t.get('src') == 'ocr': check(nm + ' is the OCR word %r at the hit' % t.get('word'), (t['x'], t['y']) == (c['x'], c['y']) and t.get('word') in ('file', 'new', 'game'), str(t)[:80])
+                elif t.get('src') == 'xdotool getmouselocation': check(nm + ' is a click on the bare root window: the pointer window is the root id', t.get('pointer', {}).get('window') == t.get('root') == c['pointer'].get('window'), str(t)[:80])
+                else: check(nm + ' has a known target source', False, str(t)[:80])
+            except (KeyError, IndexError, TypeError, ValueError) as e_:
+                check(nm + ' is well-formed (its record lacks a field the audit reads)', False, repr(e_))
         covered_c = []; covered_k = []
         for i, v in enumerate(ver):
             nm = '%s: step %d (%s)' % (what, i, v.get('step'))
-            if not check(nm + ' records ok, attempts and its clicks and keys', all(k in v for k in ('ok', 'attempts', 'clicks', 'keys')), str(sorted(v))): continue
-            c0, c1 = v['clicks']; k0, k1 = v['keys']
-            covered_c += list(range(c0, c1)); covered_k += list(range(k0, k1))
-            kd = kind_of(v['step']); sc = cl[c0:c1]; sk = ks[k0:k1]
-            check(nm + ' attempts is a bounded integer', isinstance(v['attempts'], int) and 0 <= v['attempts'] <= 3, str(v['attempts']))
-            if kd in ('tick ', 'press ', 'greyed name box', 'name '):
-                want_cls = {'tick ': 'TCheckBox', 'press ': 'TButton', 'greyed name box': 'TEdit', 'name ': 'TEdit'}[kd]
-                check(nm + ' every click is a click on a %s' % want_cls, len(sc) >= 1 and all(c['target'].get('cls') == want_cls for c in sc), str([c['target'].get('cls') for c in sc]))
-            if kd in ('tick ', 'press ', 'name '): check(nm + ' clicks equal the attempts', len(sc) == v['attempts'], '%d clicks, %d attempts' % (len(sc), v['attempts']))
-            if kd == 'reset': check(nm + ' is one click and Escape, Escape', len(sc) == 1 and [k.get('keys') for k in sk] == [['Escape'], ['Escape']], str(len(sc)))
-            if kd in ('tick ', 'name ', 'space on tick'): check(nm + ' records that the other 15 rows are unchanged', v.get('others_unchanged') is True, str(v.get('others_unchanged')))
-            if not v['ok']: check(nm + ' is a failed attempt of a retried transition (only menu transitions may retry)', kd in ('menu open', 'menu item', 'menu close'), kd)
-            if kd == 'tick ' and v['step'].endswith(' on'):
-                p = v['post']; check(nm + ' name box woke at once: enabled, focused, whole text selected (selection 0 to its length %d)' % len(p['text']), (p['check'], p['edit_enabled'], p['edit_focus'], p['sel0'], p['sel1']) == (1, 1, 1, 0, len(p['text'])) and p['textlen'] == len(p['text']), str(p))
-                file_ok(v['post_png'], what, v['post_png_sha'])
-            if kd == 'tick ' and v['step'].endswith(' off'):
-                p = v['post']; check(nm + ' name box greyed, unfocused, the stored leader back', (p['check'], p['edit_enabled'], p['edit_focus']) == (0, 0, 0) and p['text'] == v['stored'], str(p))
-                file_ok(v['post_png'], what, v['post_png_sha'])
-            if kd == 'name ':
-                st = v['stages']; check(nm + ' focus, whole text selected, deleted, typed: each read back', st['focus']['edit_focus'] == 1 and st['selected']['sel0'] == 0 and st['selected']['sel1'] == len(st['focus']['text']) and st['deleted']['text'] == '' and v['read'] == v['typed'][:25], str(st)[:200])
-            if kd == 'space on tick': check(nm + ' recorded the name box state after the key', 'post' in v and v['before'][1] != v['after'][1], str(v.get('post')))
-            if kd == 'menu open': check(nm + ' one click on the bar word and the dropdown word seen (or a failed attempt without it)', (v['hit'] is not None) == bool(v['ok']) and len(sc) <= 1, str(v.get('hit')))
-            if kd == 'menu item': check(nm + ' is one click on the dropdown word', len(sc) == 1 and sc[0]['target'].get('word') == 'new', str(len(sc)))
+            try:
+                if not check(nm + ' records ok, attempts and its clicks and keys', all(k in v for k in ('ok', 'attempts', 'clicks', 'keys')), str(sorted(v))): continue
+                c0, c1 = v['clicks']; k0, k1 = v['keys']
+                covered_c += list(range(c0, c1)); covered_k += list(range(k0, k1))
+                kd = kind_of(v['step']); sc = cl[c0:c1]; sk = ks[k0:k1]
+                if kd in ('tab walk', 'tab to'): check(nm + ' attempts is the number of Tab keys sent (and the walk is bounded)', v['attempts'] == len([k for k in sk if k.get('keys') == ['Tab']]) and v['attempts'] <= 24 and not sc, '%s vs %d keys' % (v['attempts'], len(sk)))
+                else: check(nm + ' attempts is a bounded integer', isinstance(v['attempts'], int) and 0 <= v['attempts'] <= 3, str(v['attempts']))
+                if kd in ('tick ', 'press ', 'greyed name box', 'name '):
+                    want_cls = {'tick ': 'TCheckBox', 'press ': 'TButton', 'greyed name box': 'TEdit', 'name ': 'TEdit'}[kd]
+                    check(nm + ' every click is a click on a %s' % want_cls, len(sc) >= 1 and all(c['target'].get('cls') == want_cls for c in sc), str([c['target'].get('cls') for c in sc]))
+                if kd in ('tick ', 'press ', 'name '): check(nm + ' clicks equal the attempts', len(sc) == v['attempts'], '%d clicks, %d attempts' % (len(sc), v['attempts']))
+                if kd == 'reset': check(nm + ' is one click and Escape, Escape', len(sc) == 1 and [k.get('keys') for k in sk] == [['Escape'], ['Escape']], str(len(sc)))
+                if kd in ('tick ', 'name ', 'space on tick'): check(nm + ' records that the other 15 rows are unchanged', v.get('others_unchanged') is True, str(v.get('others_unchanged')))
+                if not v['ok']: check(nm + ' is a failed attempt of a retried transition (only menu transitions may retry)', kd in ('menu open', 'menu item', 'menu close'), kd)
+                if kd == 'tick ' and v['step'].endswith(' on'):
+                    p = v['post']; check(nm + ' name box woke at once: enabled, focused, whole text selected (selection 0 to its length %d)' % len(p['text']), (p['check'], p['edit_enabled'], p['edit_focus'], p['sel0'], p['sel1']) == (1, 1, 1, 0, len(p['text'])) and p['textlen'] == len(p['text']), str(p))
+                    file_ok(v['post_png'], what, v['post_png_sha'])
+                if kd == 'tick ' and v['step'].endswith(' off'):
+                    p = v['post']; check(nm + ' name box greyed, unfocused, the stored leader back', (p['check'], p['edit_enabled'], p['edit_focus']) == (0, 0, 0) and p['text'] == v['stored'], str(p))
+                    file_ok(v['post_png'], what, v['post_png_sha'])
+                if kd == 'name ':
+                    st = v['stages']; check(nm + ' focus, whole text selected, deleted, typed: each read back', st['focus']['edit_focus'] == 1 and st['selected']['sel0'] == 0 and st['selected']['sel1'] == len(st['focus']['text']) and st['deleted']['text'] == '' and v['read'] == v['typed'][:25], str(st)[:200])
+                if kd == 'space on tick': check(nm + ' recorded the name box state after the key', 'post' in v and v['before'][1] != v['after'][1], str(v.get('post')))
+                if kd == 'menu open': check(nm + ' one click on the bar word and the dropdown word seen (or a failed attempt without it)', (v['hit'] is not None) == bool(v['ok']) and len(sc) <= 1, str(v.get('hit')))
+                if kd == 'menu item': check(nm + ' is one click on the dropdown word', len(sc) == 1 and sc[0]['target'].get('word') == 'new', str(len(sc)))
+
+            except (KeyError, IndexError, TypeError, ValueError) as e_:
+                check(nm + ' is well-formed (its record lacks a field the audit reads)', False, repr(e_))
         check('%s: every click belongs to exactly one verified step' % what, sorted(covered_c) == list(range(len(cl))), '%s vs %d clicks' % (covered_c, len(cl)))
         check('%s: every key and typed text belongs to exactly one verified step' % what, sorted(covered_k) == list(range(len(ks))), '%s vs %d keys' % (covered_k, len(ks)))
         failed_menu = collections.Counter(kind_of(v['step']) for v in ver if not v['ok'])
@@ -743,7 +786,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         cb_ = set()
         for x in cites:
             if x in RULE: cb_ |= numbers(RULE[x]['rule'] + ' ' + RULE[x]['check'] + ' ' + RULE[x]['literal'])
-        for nmb in sorted(numbers(r['the original'])): check('clone row %s: the number %s in "the original" is in a rule it cites' % (r['id'], nmb), nmb in cb_)
+        for nmb in sorted(numbers(r['the original'])): check('clone row %s: the number %s in "the original" is in a rule it cites' % (r['id'], fmtn(nmb)), nmb in cb_)
     ps = {r['play']: r for r in T.get('plays', [])}
     check('plays table lists exactly the play ids recorded ok', set(ps) == set(PIDS_OK), '%s' % sorted(set(ps) ^ set(PIDS_OK)))
     for pid, r in ps.items():
@@ -760,7 +803,7 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         cand = [t for t, x in EVID.items() if x['play'] == pid]
         if not check('draws row %s: a recording of runner 2 exists' % pid, bool(cand)): continue
         tg = cand[-1]; step = 'default' if 'default' in REC[tg]['forms'] else 'second_default'
-        DRAW_PLAYS.append((pid, tg, step)); f = form_view(tg)[step]; drawn_seeds.add(str(f['seed']))
+        f = form_view(tg)[step]; drawn_seeds.add(str(f['seed']))
         check('draws row %s: the 16 names equal the names the form showed' % pid, names == f['names'], '%s vs %s' % (names[:3], f['names'][:3]))
         check('draws row %s: the seed %s is the seed the New Game that opened that form recorded (%s)' % (pid, r['seed'], f['seed']), str(f['seed']) == r['seed'], '%s vs %s' % (f['seed'], r['seed']))
         calc = [POOL[NAT[i]].index(n) if n in POOL[NAT[i]] else None for i, n in enumerate(names)]
@@ -772,8 +815,8 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         rid = r['id']; items = [x for x in r['check'].split(' ;; ') if x.strip()]; check('%s has checks' % rid, bool(items))
         PCHECKS[:] = []; CUR['res'] = {}
         for it in items: run_check(rid, it, None, r)
-        bound = numbers(' '.join(items)); BOUND |= bound
-        for nmb in sorted(numbers(r['statement'])): check('%s statement number %s is bound to a check of the row' % (rid, nmb), nmb in bound)
+        bound = set().union(*[item_numbers(it) for it in items]); BOUND |= bound; ROWBOUND[rid] = bound
+        for nmb in sorted(numbers(r['statement'])): check('%s statement number %s is bound to a check of the row' % (rid, fmtn(nmb)), nmb in bound)
     # ---- counts (each recomputed from a source, never from the finding)
     cnt = {r['item']: r for r in T.get('counts', [])}
     def count_check(item, value):
@@ -787,10 +830,23 @@ def run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         m = re.search(r'^## %s\n(.*?)(?=^## |\Z)' % re.escape(title), TEXT, re.S | re.M); return m.group(1) if m else ''
     BOUND |= numbers(' '.join(r['seed'] for r in T.get('draws', [])) + ' ' + ' '.join(r['seed'] for r in T.get('plays', [])))
     for r in T.get('counts', []): BOUND |= numbers(r['count'])
-    for sec in ('Answer', 'What this does not establish'):
-        txt = re.sub(r'\([A-Z]\d{2}(?:[-, ]+[A-Z]?\d{2})*\)', '', section(sec))
-        txt = re.sub(r'`?\b[A-Z]{1,3}\d{2}\b`?', '', txt)
-        for nmb in sorted(numbers(txt)): check('section "%s": the number %s is bound to a passing check of a table row' % (sec, nmb), nmb in BOUND)
+    def expand(text):
+        """the row ids a paragraph cites: single ids and ranges such as H01-H04"""
+        out = set()
+        for m in re.finditer(r'\b([A-Z])(\d{2})(?:-(?:([A-Z])?(\d{2})))?\b', text):
+            a_, n0, b_, n1 = m.groups()
+            if n1: out |= {'%s%02d' % (a_, k) for k in range(int(n0), int(n1) + 1)}
+            else: out.add(a_ + n0)
+        return {i for i in out if i in ROWBOUND}
+    for sec, item_re in (('Answer', r'^\d+\. '), ('What this does not establish', r'^- ')):
+        items_ = []
+        for l in section(sec).split('\n'):
+            if re.match(item_re, l): items_.append(l)
+            elif l.strip() and items_: items_[-1] += ' ' + l
+        for it in items_:
+            ids_ = expand(it); allowed = set().union(*[ROWBOUND[i] for i in ids_]) if ids_ else set()
+            txt = re.sub(r'\([A-Z]\d{2}[^)]*\)', '', it); txt = re.sub(r'`?\b[A-Z]{1,3}\d{2}\b`?', '', txt); txt = re.sub(r'^\d+\. ', '', txt)
+            for nmb in sorted(numbers(txt)): check('section "%s", item "%s...": the number %s is bound by a row the item cites (%s)' % (sec, txt.strip()[:40], fmtn(nmb), sorted(ids_)), nmb in allowed)
     return checks[0], bad
 
 def main():
