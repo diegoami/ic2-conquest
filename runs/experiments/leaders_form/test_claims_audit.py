@@ -332,6 +332,14 @@ class RawDumps(Base):
         b = bytearray(open(p, 'rb').read()); i = 1 * 1172 + 0x0B; b[i] = ord('Q'); open(p, 'wb').write(bytes(b)); self.rehash(p)
         def f(rr): rr['dumps']['state']['nations_bin_sha'] = hashlib.sha256(bytes(b)).hexdigest()
         self.edit('LF_P04_b8', f); self.fails('P04', 'the recorded JSON equals what the raw dumps decode to')
+    def test_r3_one_byte_after_the_nul_changed_in_the_dump_with_every_hash_and_the_json_rewritten_fails_the_same_bytes_claim(self):
+        """round-3 R3: the leader strings still agree, the 26-byte fields no longer do"""
+        r = [x for x in self.recs() if x.get('tag') == 'LF_P04_b8'][0]; name = r['dumps']['state']['nations_bin']; p = self.art + 'saves/' + name
+        b = bytearray(open(p, 'rb').read()); i = 1 * 1172 + 0x0B + 20; old = b[i]; b[i] = old ^ 0x55; open(p, 'wb').write(bytes(b)); self.rehash(p)
+        def f(rr):
+            rr['dumps']['state']['nations_bin_sha'] = hashlib.sha256(bytes(b)).hexdigest(); n = rr['state']['nations'][1]
+            n['leader_hex'] = bytes(b[1172 + 0x0B:1172 + 0x0B + 26]).hex(); n['sha'] = hashlib.sha256(bytes(b[1172:2 * 1172])).hexdigest()
+        self.edit('LF_P04_b8', f); self.fails('N09', 'the same bytes in both')
     def test_a_form_summary_that_differs_from_the_retained_output_fails(self):
         def f(r): r['forms']['default']['rows'][3][4] = 1
         self.edit('LF_P08a_b8', f); self.fails('the recorded rows and focus equal the audit')

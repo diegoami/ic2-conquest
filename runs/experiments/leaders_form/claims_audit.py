@@ -992,6 +992,7 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             if p: check('%s autosave hash equals the one in the record' % what, sha(p) == r['autosave_sha'])
             s = save_view(tag); mem = dump_state(tag, 'state') if tag in EVID else r['state']
             if s and len(r.get('new_games', [])) == 1: check('%s: the save and the game memory agree on every human flag and leader (the state is of the one game that wrote the autosave)' % what, [(n['leader'], bool(n['human'])) for n in s['nations']] == [(n['leader'], bool(n['human'])) for n in mem['nations']], 'save vs memory')
+            if s and tag in EVID and len(r.get('new_games', [])) == 1: check('%s: the save and the game memory hold the same 26 bytes of every leader field (extracted independently from the autosave and from the raw dump, past the NUL as well)' % what, [n['leader_raw_hex'] for n in s['nations']] == [n['leader_hex'] for n in mem['nations']], 'save vs memory bytes')
         if r.get('dumps'):
             for key, d in r['dumps'].items():
                 for fk in ('nations_bin', 'globals_bin'):
