@@ -154,10 +154,11 @@ class T(unittest.TestCase):
         tmp = tempfile.mkdtemp()
         try:
             d = copy_data(tmp)
-            for f in glob.glob(d + '/plays_b8.jsonl'):
+            for f in glob.glob(d + '/plays_b*.jsonl'):
                 rows = [json.loads(l) for l in open(f)]
+                if not any(r['play'] == 'T01' for r in rows): continue
                 for r in rows:
-                    if r['play'] == 'T01': r['clicks'] = []
+                    if r['play'] == 'T01': r['clicks'] = []                      # (every record of T01, so the latest one is emptied whichever batch holds it)
                 open(f, 'w').write('\n'.join(json.dumps(r) for r in rows) + '\n')
             n, bad = self.audit(data=d)
             self.assertTrue(any('T01' in b and ('clicks' in b or 'belongs to a handler' in b) for b in bad), bad[:4])
@@ -172,4 +173,80 @@ class T(unittest.TestCase):
         self.assertIn('| UA05c | R03 |', self.text)
         n, bad = self.audit(self.text.replace('| UA05c | R03 |', '| UA05c | R04 |', 1))
         self.assertTrue(any('combined case UA05c' in b for b in bad), bad[:5])
+
+    # ---- R4 / R5 (round 3): required confirmations enforced from the task and the recorded plays; the plays table complete; every screenshot present
+    def table_header(self, lines, i):
+        j = i
+        while not lines[j - 1].startswith('|---'): j -= 1
+        return [c.strip() for c in lines[j - 2].strip().strip('|').split('|')]
+    def set_cell(self, lines, prefix, col, value):
+        hit = [i for i, l in enumerate(lines) if l.startswith(prefix)]
+        self.assertEqual(len(hit), 1, (prefix, hit)); i = hit[0]
+        hdr = self.table_header(lines, i); cs = re.split(r'(?<!\\)\|', lines[i].strip())[1:-1]
+        self.assertEqual(len(cs), len(hdr)); cs[hdr.index(col)] = ' %s ' % value
+        lines[i] = '|' + '|'.join(cs) + '|'
+    def test_required_confirmations_removed_consistently_from_both_tables(self):
+        # for each of the seven rows the task requires confirmed (UA04, UA05 x2, UF05, D05, D06 x2): empty the catalogue's play cell AND drop the row from every play's `rows` cell
+        for rid, label in (('R01', 'UA04'), ('R03', 'UA05'), ('R04', 'UA05'), ('R16', 'UF05'), ('R41', 'D05'), ('R36', 'D06'), ('R37', 'D06')):
+            lines = self.text.split('\n')
+            self.set_cell(lines, '| %s |' % rid, 'play [confirmed]', '-')
+            for i, l in enumerate(lines):
+                m = re.match(r'\| (\w+) \| ([\w,]*) \|', l)
+                if m and rid in m.group(2).split(',') and self.table_header(lines, i)[:2] == ['play', 'rows']:
+                    self.set_cell(lines, '| %s | %s |' % (m.group(1), m.group(2)), 'rows', ','.join(x for x in m.group(2).split(',') if x != rid))
+            n, bad = self.audit('\n'.join(lines))
+            self.assertTrue(any(b.startswith('required %s' % label) and rid in b for b in bad), (rid, bad[:4]))
+    def test_combined_case_removed_from_the_orderings_table(self):
+        for pid in ('UA05c', 'UF05c'):
+            lines = self.text.split('\n'); i = [k for k, l in enumerate(lines) if re.match(r'\| \w+ \| .* \| %s \| R\d+ \|$' % pid, l)]
+            self.assertEqual(len(i), 1, pid); fn = lines[i[0]].split('|')[1].strip()
+            self.set_cell(lines, '| %s |' % fn, 'combined case played', '-'); self.set_cell(lines, '| %s |' % fn, 'row whose line appeared', '-')
+            n, bad = self.audit('\n'.join(lines))
+            self.assertTrue(any(b.startswith('required: combined play %s' % pid) for b in bad), (pid, bad[:4]))
+    def test_a_play_missing_from_the_plays_table(self):
+        lines = [l for l in self.text.split('\n') if not l.startswith('| SEL01 |')]
+        self.assertEqual(len(lines), len(self.text.split('\n')) - 1)
+        n, bad = self.audit('\n'.join(lines))
+        self.assertTrue(any('plays table: every recorded play' in b and 'SEL01' in b for b in bad), bad[:4])
+    def art_without(self, tmp, skip=(), change=()):
+        """a symlinked copy of the artifacts folder without the files in `skip`, and with a one-byte change in the files in `change` (copied)"""
+        a = os.path.join(tmp, 'art')
+        for root, dirs, files in os.walk(paths.ART):
+            rel = os.path.relpath(root, paths.ART); os.makedirs(os.path.join(a, rel), exist_ok=True)
+            for f in files:
+                if f in skip or f.endswith('.tar.gz'): continue
+                src, dst = os.path.join(root, f), os.path.join(a, rel, f)
+                if f in change:
+                    b = bytearray(open(src, 'rb').read()); b[-5] ^= 1; open(dst, 'wb').write(bytes(b))
+                else: os.symlink(src, dst)
+        return a
+    def play_pngs(self, pid):
+        rows = [json.loads(l) for f in sorted(glob.glob(paths.DATA + 'plays_b*.jsonl')) for l in open(f) if json.loads(l)['play'] == pid]
+        return [b['png'] for b in rows[-1]['boxes']], rows[-1]
+    def test_missing_screenshot_of_the_last_box(self):
+        pngs, _ = self.play_pngs('UA04'); tmp = tempfile.mkdtemp()
+        try:
+            n, bad = self.audit(art=self.art_without(tmp, skip=[pngs[-1]]))
+            self.assertTrue(any('UA04: screenshot %s exists' % pngs[-1] in b for b in bad), bad[:4])
+        finally: shutil.rmtree(tmp)
+    def test_missing_screenshot_of_the_earlier_confirm_box_of_a_multi_box_play(self):
+        for pid in ('TD01', 'CU07'):
+            pngs, rec = self.play_pngs(pid); self.assertEqual([b['title'] for b in rec['boxes']][0], 'Confirm'); tmp = tempfile.mkdtemp()
+            try:
+                n, bad = self.audit(art=self.art_without(tmp, skip=[pngs[0]]))
+                self.assertTrue(any('%s: screenshot %s exists' % (pid, pngs[0]) in b for b in bad), (pid, bad[:4]))
+            finally: shutil.rmtree(tmp)
+    def test_missing_whole_screen_screenshot(self):
+        pngs, rec = self.play_pngs('UA04'); screen = pngs[-1].split('_box_box')[0] + '_box_screen.png'; tmp = tempfile.mkdtemp()
+        try:
+            self.assertTrue(os.path.exists(paths.ART + screen), screen)
+            n, bad = self.audit(art=self.art_without(tmp, skip=[screen]))
+            self.assertTrue(any('UA04: screenshot %s exists' % screen in b for b in bad), bad[:4])
+        finally: shutil.rmtree(tmp)
+    def test_changed_screenshot_does_not_match_its_hash(self):
+        pngs, _ = self.play_pngs('TD01'); tmp = tempfile.mkdtemp()
+        try:
+            n, bad = self.audit(art=self.art_without(tmp, change=[pngs[0]]))
+            self.assertTrue(any('TD01: screenshot %s has a hash' % pngs[0] in b for b in bad), bad[:4])
+        finally: shutil.rmtree(tmp)
 if __name__ == '__main__': unittest.main()

@@ -91,12 +91,16 @@ class TransitionTests(Patched):
         with self.assertRaises(IndexError): play_lib.press(g, 'D', 'Missing')
         self.assertEqual(g.clicks, 0)
     def test_select_verified_registers(self):
-        g = FakeDlg([]); states = iter([False, True])
-        self.assertEqual(play_lib.select_verified(g, 'D', 'Go', lambda cs: next(states), 'radio'), 2); self.assertEqual(g.clicks, 2)
+        g = FakeDlg([]); states = iter([False, False, True])
+        self.assertEqual(play_lib.select_verified(g, 'D', 'Go', lambda g_: None, lambda o: next(states), 'radio'), 2); self.assertEqual(g.clicks, 2)
     def test_select_verified_unregistered_selection_fails_closed_after_three_clicks(self):
         g = FakeDlg([])
-        with self.assertRaises(_drv.DriverError): play_lib.select_verified(g, 'D', 'Go', lambda cs: False, 'radio')
+        with self.assertRaises(_drv.DriverError): play_lib.select_verified(g, 'D', 'Go', lambda g_: None, lambda o: False, 'radio')
         self.assertEqual(g.clicks, 3)
+    def test_select_verified_already_selected_before_proves_nothing_and_clicks_nothing(self):
+        g = FakeDlg([])
+        with self.assertRaises(_drv.DriverError): play_lib.select_verified(g, 'D', 'Go', lambda g_: ['litinf'], lambda o: 'litinf' in o, 'radio')
+        self.assertEqual(g.clicks, 0)
     def test_expectations(self):
         ce = play_lib.check_expectation
         ce('box', True); ce('nobox', False); ce('state', False, 1, 2)

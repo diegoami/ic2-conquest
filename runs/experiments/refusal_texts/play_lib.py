@@ -325,16 +325,22 @@ def press(g, title, text, expect='box', tries=3):
     """press_control on the control `text` of dialog `title` (located by Game.controls)"""
     cs = g.controls(title); return press_control(g, title, g.control(cs, text=text), '%s > %s' % (title, text), expect, tries)
 
-def select_verified(g, title, text, check, what, tries=3):
-    """Click the control `text` of dialog `title` and prove the selection registered: `check(controls re-read after the click)` must hold; at most `tries` clicks, DriverError otherwise.
-    The controls before and after are recorded."""
+def select_verified(g, title, text, observe, check, what, tries=3):
+    """Click the control `text` of dialog `title` and prove the selection registered. `observe(g)` reads the state the selection changes (controls, or the OCR words of the dialog); `check(observed)` must
+    hold after the click. If it already held BEFORE the first click the click proves nothing: DriverError (nothing clicked). At most `tries` clicks, DriverError otherwise. The observations are recorded."""
+    first = observe(g)
+    if check(first): raise _drv.DriverError('%s: the selection already shows before the click (%s): the click would prove nothing' % (what, first))
     for k in range(tries):
-        cs = g.controls(title); c = g.control(cs, text=text)
+        c = g.control(g.controls(title), text=text)
         g.click_control(c, pause=0.6)
-        after = g.controls(title)
-        if check(after):
-            note_verified(step=what, how='control state', attempts=k + 1, controls_after=[x['text'] for x in after if x['text']]); return k + 1
-    raise _drv.DriverError('%s: the selection did not register after %d clicks (controls %s)' % (what, tries, [x['text'] for x in after if x['text']]))
+        seen = observe(g)
+        if check(seen):
+            note_verified(step=what, how='state read after the click', attempts=k + 1, before=first, after=seen); return k + 1
+    raise _drv.DriverError('%s: the selection did not register after %d clicks (before %s, after %s)' % (what, tries, first, seen))
+
+def dialog_words(g, title):
+    """The OCR words (lower case) of the dialog `title`'s rectangle on a fresh screenshot: state that Wine paints but does not expose as a control (a label's text)"""
+    r = dialog_rect(g, title); return [w[0] for w in _screen_words(g, (r['x'], r['y'], r['w'], r['h']))]
 
 def check_expectation(expect, boxes_seen, before=None, after=None):
     """What the order itself must have done: 'box' = a box appeared; 'nobox' = no box (and the dialog transition was verified by press_control); 'state' = no box AND the watched

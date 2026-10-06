@@ -136,7 +136,7 @@ def recruit_act(g):
     CTX['dialog'] = 'Army recruits'; main_tool(g, 'recruit'); g.wait(lambda: g.find_windows('^Army recruits$'), 10, 'Army recruits dialog'); cs = g.controls('Army recruits')
     cities = g.control(cs, cls='TListBox', index=0)
     click_row(g, cities, 0)
-    select_verified(g, 'Army recruits', 'Light infantry', lambda cs_: any(c['text'].startswith('Lit inf') for c in cs_), 'Army recruits > Light infantry (the New unit field must read Lit inf)')
+    select_verified(g, 'Army recruits', 'Light infantry', lambda g_: dialog_words(g_, 'Army recruits'), lambda ws: any(w.startswith('litinf') for w in ws), 'Army recruits > Light infantry (the New unit field must read Litinf)')
     press(g, 'Army recruits', 'Recruit unit')
 recruit_post = lambda g: close_dialog_cancel(g, 'Army recruits', button='OK')
 SC['RC01'] = dict(src=TB, ops=[('nation', 0, 0x420, 1)], act=recruit_act, post=recruit_post, note='Recruit unit with the 40th recruitment slot occupied (nation 0 +0x420 staged to 1)')

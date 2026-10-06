@@ -241,15 +241,8 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
         for l in open(m):
             p = l.split()
             if len(p) == 2 and p[1].startswith('member:'): mem[os.path.basename(p[1][7:])] = p[0]
-    for r in T.get('plays', []):
-        pid = r['play']
-        if not check('play %s has a record' % pid, pid in PL): continue
-        q = PL[pid][-1]
-        check('%s: source save column %r vs record %r' % (pid, r['source save'], q['src']), r['source save'] == q['src'])
-        check('%s: order-issued column vs the record' % pid, r['order issued'] == q['note'], '%r vs %r' % (r['order issued'], q['note']))
-        citing = sorted(c['id'] for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', '')))
-        check('%s: rows column %r vs the rows whose play cell names it %r' % (pid, r['rows'], citing), sorted([x for x in r['rows'].split(',') if x]) == citing)
-        # the order the play issued, as recorded at play time (play_lib.CLICKS), mapped to the handler it reaches; every row cited for the play must belong to that handler
+    # the order a play issued, as recorded at play time (play_lib.CLICKS), mapped to the handler it reaches (used by the per-play checks and by the required-confirmation checks)
+    def handlers_of(q):
         TOOL = {('army', 'split'): 'TUnitMap_SplitArmy', ('army', 'join'): 'TUnitMap_JoinArmies', ('army', 'mercs'): 'TUnitMap_RecruitMercenaries', ('army', 'disband'): 'TUnitMap_DisbandArmy',
                 ('fleet', 'repair'): 'TUnitMap_RepairFlt', ('fleet', 'split'): 'TUnitMap_SplitFleet', ('fleet', 'join'): 'TUnitMap_JoinFleets', ('fleet', 'scuttle'): 'TUnitMap_ScuttleFleet',
                 ('city', 'fortify'): 'TUnitMap_Fortify', ('main', 'build_fleet'): 'TPremierForm_BuildNewFleet'}
@@ -273,6 +266,16 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
             elif c['kind'] == 'transfer-dialog':
                 handlers.add(side_handler('Transfer' if c['button'] == 'Transfer' else 'Disband', c['side']))
                 if c['button'] == 'Transfer': xfer = c
+        return handlers, xfer
+    for r in T.get('plays', []):
+        pid = r['play']
+        if not check('play %s has a record' % pid, pid in PL): continue
+        q = PL[pid][-1]
+        check('%s: source save column %r vs record %r' % (pid, r['source save'], q['src']), r['source save'] == q['src'])
+        check('%s: order-issued column vs the record' % pid, r['order issued'] == q['note'], '%r vs %r' % (r['order issued'], q['note']))
+        citing = sorted(c['id'] for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', '')))
+        check('%s: rows column %r vs the rows whose play cell names it %r' % (pid, r['rows'], citing), sorted([x for x in r['rows'].split(',') if x]) == citing)
+        handlers, xfer = handlers_of(q)
         cited_rows = [c for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', ''))]
         for c in cited_rows:
             check('%s: row %s (%s) belongs to a handler the play\'s recorded clicks reach %s' % (pid, c['id'], fn_of_cell(c), sorted(handlers)), fn_of_cell(c) in handlers)
@@ -336,6 +339,61 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
         ip = art + 'saves/inputs/' + q['input']
         if os.path.exists(ip): check('%s: the input save %s hashes as recorded' % (pid, q['input']), sha(ip) == q['input_sha'])
         check('%s: the input save is in SAVES.sha256' % pid, hashes.get(q['input']) == q['input_sha'])
+    # ------------------------------------------------------------ the plays table is complete against the recorded plays
+    tbl = [r['play'] for r in T.get('plays', [])]
+    check('plays table: no play listed twice', len(tbl) == len(set(tbl)), str(sorted(x for x in set(tbl) if tbl.count(x) > 1)))
+    check('plays table: every recorded play (plays_*.jsonl) is listed: missing %s' % sorted(set(PL) - set(tbl)), set(PL) <= set(tbl))
+    check('plays table: every listed play has a record: unknown %s' % sorted(set(tbl) - set(PL)), set(tbl) <= set(PL))
+    # ------------------------------------------------------------ required confirmations: enforced from the TASK (docs/tasks/refusal-texts.md) and the recorded plays, not from the finding's own cells
+    TASK = open(os.path.join(paths.ROOT, 'docs', 'tasks', 'refusal-texts.md'), encoding='utf-8').read()
+    REQUIRED = [('UA04 split of a one-unit army', 'TUnitMap_SplitArmy', 'only 1 unit'),
+                ('UA05 join over 20 units and over 100,000 troops', 'TUnitMap_JoinArmies', 'more than 20 units'),
+                ('UA05 join over 20 units and over 100,000 troops', 'TUnitMap_JoinArmies', 'more than 100,000 troops'),
+                ('UF05 join fleets while one carries an army', 'TUnitMap_JoinFleets', 'carrying an army'),
+                ('D05 a unit too small to split', 'TChangeArmyUnits_SplitUnit', 'too small to split'),
+                ('D06 rename more than one unit or a mercenary unit', 'TChangeArmyUnits_RenameUnit', 'rename 1 unit'),
+                ('D06 rename more than one unit or a mercenary unit', 'TChangeArmyUnits_RenameUnit', 'regular units')]
+    row_at = {int(re.fullmatch(r'\w+:(\d+)', r_['function:call line']).group(1)): rid_ for rid_, r_ in CAT.items()}
+    for phrase, fn_req, kw in REQUIRED:
+        check('required: the task names %r' % phrase, phrase in TASK)
+        lines_ = [ln for ln in all_call_lines if FN.get(ln) == fn_req and kw in (site(ln)[0] or '')]
+        if not check('required %s / %r: exactly one call site of %s in the extract has that literal (found %s)' % (phrase[:4], kw, fn_req, lines_), len(lines_) == 1): continue
+        rid_ = row_at.get(lines_[0])
+        if not check('required %s / %r: the call site (line %d) is catalogued' % (phrase[:4], kw, lines_[0]), rid_ is not None): continue
+        ev = []                                          # the recorded plays that reached this handler and whose box reads as this row's literal
+        for pid_, qs in PL.items():
+            q_ = qs[-1]
+            if fn_req in handlers_of(q_)[0] and TITLE.get(site(lines_[0])[1]) in [b['title'] for b in q_['boxes']] and max(best_ratio(e, q_) for e in expected_text(CAT[rid_])) >= THR: ev.append(pid_)
+        if not check('required %s: row %s has a recorded play whose clicks reach %s and whose box reads as it (%s)' % (phrase[:4], rid_, fn_req, ev), bool(ev)): continue
+        cell_ = CAT[rid_].get('play [confirmed]', '-')
+        check('required %s: row %s is confirmed in the catalogue by a recorded play of %s (cell %r)' % (phrase[:4], rid_, ev, cell_[:40]), cell_.startswith('[confirmed]') and any(p_ in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', cell_) for p_ in ev))
+        check('required %s: the plays table lists a play of %s with row %s' % (phrase[:4], ev, rid_), any(r_['play'] in ev and rid_ in r_['rows'].split(',') for r_ in T.get('plays', [])))
+    combined = sorted(pid_ for pid_, qs in PL.items() if 'combined case' in qs[-1]['note'])
+    check('required: the task asks for a combined case (play one combined case)', 'play one combined case' in TASK)
+    check('required: at least one combined-case play is recorded (%s)' % combined, bool(combined))
+    for pid_ in combined:
+        hs = handlers_of(PL[pid_][-1])[0]
+        check('required: combined play %s (handlers %s) is listed in the orderings table with the row whose line appeared' % (pid_, sorted(hs)),
+              any(o_['function'] in hs and o_['combined case played'] == pid_ and o_['row whose line appeared'] != '-' for o_ in T.get('orderings', [])))
+    # ------------------------------------------------------------ every screenshot of every box of a recorded play exists and matches its record, SAVES.sha256 and the manifest (a missing file is a mismatch)
+    OCRREC = {}
+    for f_ in sorted(glob.glob(data + 'ocr_b*.jsonl')):
+        for l_ in open(f_, encoding='utf-8'): r_ = json.loads(l_); OCRREC.setdefault(r_['png'], []).append(r_)
+    for r in T.get('plays', []):
+        pid = r['play']
+        if pid not in PL: continue
+        q = PL[pid][-1]; tag_ = 'REF_%s_%s' % (pid, q['batch'])
+        shots = []
+        for b in q['boxes']:
+            png = b['png']; shots.append(png)
+            recs_ = [x for x in OCRREC.get(png, []) if x['play'] == pid and x['wid'] == b['wid']]
+            check('%s: box screenshot %s has its OCR record (ocr_b*.jsonl) with the same box text' % (pid, png), any(x['text'] == b['text'] for x in recs_))
+            m_ = re.search(r'_(box|confirm)_box\d+', png)
+            if m_: shots += sorted(n for n in hashes if re.fullmatch(re.escape('%s_%s_screen' % (tag_, m_.group(1))) + r'(\.v\d+)?\.png', n))
+        for png in dict.fromkeys(shots):
+            p = art + png
+            if not check('%s: screenshot %s exists in the artifacts' % (pid, png), os.path.exists(p), 'missing: a cited screenshot is evidence'): continue
+            check('%s: screenshot %s has a hash in SAVES.sha256 and in a manifest, and the file matches both' % (pid, png), hashes.get(png) is not None and mem.get(png) == hashes[png] and sha(p) == hashes[png], '%s / %s / %s' % (hashes.get(png), mem.get(png), sha(p)))
     # ------------------------------------------------------------ order of tests: recomputed from the control flow of the extract
     refus = [r for r in CAT.values() if r['table'] == 'catalogue']
     line_of = lambda r: int(re.fullmatch(r'\w+:(\d+)', r['function:call line']).group(1))

@@ -49,6 +49,9 @@ def main():
     ts = latest(os.path.join(DATA, 'test_claims_audit_output.txt')); tests = '?'
     if os.path.exists(ts):
         m = re.search(r'Ran (\d+) tests', open(ts).read()); tests = m.group(1) if m else '?'
+    rt = latest(os.path.join(DATA, 'test_runner_output.txt')); rtests = '?'
+    if os.path.exists(rt):
+        m = re.search(r'Ran (\d+) tests', open(rt).read()); rtests = m.group(1) if m else '?'
     rr = sorted(glob.glob(os.path.join(DATA, 'rerun_summary*.txt')), key=lambda p: (len(p), p)); rerun = ' | '.join(open(p).read().strip() for p in rr)
     P = read_plays(); fired = {}
     for f in sorted(glob.glob(os.path.join(DATA, 'play_b*.log'))):
@@ -65,7 +68,7 @@ def main():
            'N_DROPPED': str(sum(1 for r in ref if r['effect'].startswith('dropped'))), 'N_PLAYED': str(sum(1 for r in ref if r['plays'])),
            'N_PROMPTS_PLAYED': str(sum(1 for r in CS.ROWS if r['kind'] == 'prompt' and r['plays'])), 'N_PLAYS': str(len(P)), 'N_STAGED': str(sum(1 for v in P.values() if v[-1]['staged'])),
            'NO_PLAY': ', '.join(r['id'] for r in ref if not r['plays']), 'PRE': ', '.join(sorted(p for p, v in P.items() if v[-1].get('pre'))),
-           'FIRED': fired_txt, 'BOXES_WITH_CONTROLS': '%d of %d' % (nb, nbt), 'AUDIT_CHECKS': aud[0], 'AUDIT_BAD': aud[1], 'TESTS': tests, 'RERUN': rerun,
+           'FIRED': fired_txt, 'BOXES_WITH_CONTROLS': '%d of %d' % (nb, nbt), 'AUDIT_CHECKS': aud[0], 'AUDIT_BAD': aud[1], 'TESTS': tests, 'RTESTS': rtests, 'RERUN': rerun,
            'UNEDITED': ', '.join(sorted(p for p, v in P.items() if not v[-1]['staged']))}
     out = re.sub(r'\{\{TABLE:(\w+)\}\}', lambda m: tabs[m.group(1)], tpl)
     out = re.sub(r'\{\{(\w+)\}\}', lambda m: sub[m.group(1)], out)
