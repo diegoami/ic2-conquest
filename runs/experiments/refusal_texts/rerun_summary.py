@@ -17,7 +17,8 @@ def cmp(a, b):
     if open(sv(a), 'rb').read() == open(sv(b), 'rb').read(): return 'identical'
     return 'ui' if SF.ui_only(sv(a), sv(b)) else 'differs'
 for pid in sorted(P):
-    rs = P[pid]; new = [r for r in rs if r['batch'] == BATCH]; old = [r for r in rs if r['batch'] < BATCH]
+    rs = P[pid]; new = [r for r in rs if r['batch'].startswith(BATCH)]; old = [r for r in rs if r['batch'] < BATCH]
+    if not new and BATCH != 'b8': continue                  # a partial re-run (b9): the plays it did not touch are not listed
     if not new or not old: notes.append('%s: %s' % (pid, ('no %s record' % BATCH) if not new else 'no earlier record')); continue
     n, o = new[-1], old[-1]; ids += 1
     same_box = [b['title'] for b in n['boxes']] == [b['title'] for b in o['boxes']]
