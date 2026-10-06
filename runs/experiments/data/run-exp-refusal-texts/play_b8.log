@@ -247,3 +247,17 @@
 09:40:56 [UA05c] control save REF_UA05c_b8_ctl.SAV bce57c078576af769590cb6e3ecca0aa14ffbdb3fff9d760623e63a509057234
 09:41:07 [UA05c] boxes after the order: [('Information', '6 These 2 armies combined contain more than 20 units.')]
 09:41:20 [UA05c] after save REF_UA05c_b8_after.SAV bce57c078576af769590cb6e3ecca0aa14ffbdb3fff9d760623e63a509057234; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:41:59 [UF05] loaded REF_UF05_b8_staged.SAV (STAGED); popups at load: []
+09:42:02 [UF05] pre-order step done (a normal game order, before the control save)
+09:42:11 [UF05] control save REF_UF05_b8_ctl.SAV 4b27b2534a692ef98d01508c704eed2c322ecc5dac8a97b961e48eb01357b6c0
+09:42:22 [UF05] boxes after the order: [('Information', '6 ‘You cannot join fleets if one is carrying an army,')]
+09:42:35 [UF05] after save REF_UF05_b8_after.SAV 4b27b2534a692ef98d01508c704eed2c322ecc5dac8a97b961e48eb01357b6c0; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:42:57 [UF05b] loaded REF_UF05b_b8_staged.SAV (STAGED); popups at load: []
+09:43:06 [UF05b] control save REF_UF05b_b8_ctl.SAV 9678f09264dc68c2dabb98c7dca611f88ecb783cbc9ed8569297adbac26885a9
+09:43:17 [UF05b] boxes after the order: [('Information', '6 There are more than 100 ships in these fleets combined.')]
+09:43:30 [UF05b] after save REF_UF05b_b8_after.SAV 9678f09264dc68c2dabb98c7dca611f88ecb783cbc9ed8569297adbac26885a9; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+09:43:52 [UF05c] loaded REF_UF05c_b8_staged.SAV (STAGED); popups at load: []
+09:43:55 [UF05c] pre-order step done (a normal game order, before the control save)
+09:44:04 [UF05c] control save REF_UF05c_b8_ctl.SAV 0e6b96c90a5a419a04433085c801c9138cccd4a13dd9b6fe0803f192c18c5bea
+09:44:15 [UF05c] boxes after the order: [('Information', '6 There are more than 100 ships in these fleets combined.')]
+09:44:28 [UF05c] after save REF_UF05c_b8_after.SAV 0e6b96c90a5a419a04433085c801c9138cccd4a13dd9b6fe0803f192c18c5bea; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
