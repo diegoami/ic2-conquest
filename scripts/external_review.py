@@ -24,6 +24,7 @@ import re
 import secrets
 import shutil
 import subprocess
+import time
 import urllib.request
 import sys
 from pathlib import Path
@@ -56,7 +57,8 @@ def label_of(model):
 
 
 QUOTA_URL = os.environ.get("IC2_QUOTA_URL", "http://localhost:8765")     # quota-tracker (docs/environment.md)
-PROVIDERS = (("openai/", "openai"), ("zai-coding-plan/", "zai"), ("opencode-go/", "opencode_go"), ("openrouter/", "openrouter"))
+PROVIDERS = (("openai/", "openai"), ("zai-coding-plan/", "zai"), ("opencode-go/", "opencode_go"), ("openrouter/", "openrouter"),
+             ("alibaba-token-plan/", "alibaba"), ("minimax/", "minimax"))
 LUNA_WINDOW = ("openai/gpt-5.6-luna", "gpt-5.6-luna:7d")                # GPT-5.6 Luna has its own weekly pool
 
 
@@ -84,6 +86,28 @@ def quota_skip(model, fetch=fetch_quota):
             return None if w.get("used_pct", 0) < 95 else f"quota exhausted ({LUNA_WINDOW[1]}, resets in {w.get('resets_in')})"
     if q.get("status") == "exhausted":
         return f"quota exhausted ({prov}, usable in {q.get('available_in')})"
+    return None
+
+
+def pricing_note(model, fetch=fetch_quota):
+    """One line about time-of-day pricing for a model about to be used (docs/environment.md), or None. Alibaba's night discount
+    (22:00-08:00 UTC+8: qwen3.8-max/flash 60% off, deepseek-v4-pro-0813 and deepseek-v4.1-flash 50% off, glm-5.3 none) and Z.ai's
+    weekday peak (Mon-Fri 14:00-18:00 UTC+8 from 8 Oct 2026: glm-5.3 3x quota, glm-5.3-flash 1.2x), both from quota-tracker's
+    `pricing` block."""
+    mid = ow.split_model(model)[0]
+    prov = next((name for prefix, name in PROVIDERS if mid.startswith(prefix)), None)
+    if prov not in ("alibaba", "zai"):
+        return None
+    q = fetch(prov)
+    if not q:
+        return None
+    p = q.get("pricing") or {}
+    until = p.get("next_change_at")
+    until = time.strftime("%H:%M", time.localtime(until)) if until else "?"
+    if prov == "alibaba" and p.get("discount_now"):
+        return f"pricing: alibaba night discount until {until} (qwen3.8-max/flash 60% off, deepseek-v4-pro-0813 and v4.1-flash 50% off, glm-5.3 none)"
+    if prov == "zai" and p.get("peak_now"):
+        return f"pricing: zai peak until {until} (glm-5.3 3x quota, glm-5.3-flash 1.2x)"
     return None
 
 
@@ -259,24 +283,56 @@ def self_test():
     q = {"openai": {"status": "exhausted", "available_in": "2h",
                     "windows": [{"name": "7d", "used_pct": 99}, {"name": "gpt-5.6-luna:7d", "used_pct": 10, "resets_in": "3d"}]},
          "zai": {"status": "exhausted", "available_in": "1h", "windows": []},
-         "opencode_go": {"status": "ok", "windows": []}}
+         "opencode_go": {"status": "ok", "windows": []},
+         "alibaba": {"status": "ok", "windows": [], "pricing": {"discount_now": True, "next_change_at": 1791330000}},
+         "minimax": {"status": "exhausted", "available_in": "4h", "windows": []}}
     lunafull = dict(q, openai=dict(q["openai"], windows=[{"name": "gpt-5.6-luna:7d", "used_pct": 96, "resets_in": "3d"}]))
+    qpeak = dict(q, zai={"status": "ok", "windows": [], "pricing": {"peak_now": True, "next_change_at": 1791330000}})
     for name, model, data, skip in (
             ("quota: exhausted provider skipped", "zai-coding-plan/glm-5.3#low", q, True),
             ("quota: ok provider used", "opencode-go/deepseek-v4.1-flash#high", q, False),
             ("quota: Luna on its own pool though openai is exhausted", "openai/gpt-5.6-luna#high", q, False),
             ("quota: Sol skipped when openai is exhausted", "openai/gpt-6.1-sol#low", q, True),
             ("quota: Luna skipped when its own window is full", "openai/gpt-5.6-luna#high", lunafull, True),
+            ("quota: alibaba model used while alibaba has quota", "alibaba-token-plan/qwen3.8-max#low", q, False),
+            ("quota: minimax model skipped when minimax is exhausted", "minimax/MiniMax-M3#thinking", q, True),
             ("quota: no service, nothing skipped", "zai-coding-plan/glm-5.3#low", {}, False)):
         got = quota_skip(model, fetch=lambda p, d=data: d.get(p))
         ok = bool(got) == skip
         print(f"{'PASS' if ok else 'FAIL'} {name}: {got}")
         bad += 0 if ok else 1
         n += 1
+    for name, model, data, want in (
+            ("pricing: alibaba night discount noted", "alibaba-token-plan/qwen3.8-max#low", q, "60% off"),
+            ("pricing: no note while zai is off-peak", "zai-coding-plan/glm-5.3#low", q, None),
+            ("pricing: zai peak noted", "zai-coding-plan/glm-5.3#low", qpeak, "3x quota"),
+            ("pricing: nothing for a provider without pricing", "opencode-go/deepseek-v4.1-flash#high", q, None)):
+        got = pricing_note(model, fetch=lambda p, d=data: d.get(p))
+        ok = (got or "") .count(want or "") > 0 if want else got is None
+        print(f"{'PASS' if ok else 'FAIL'} {name}: {got}")
+        bad += 0 if ok else 1
+        n += 1
     for model, want in (("openai/gpt-6.1-sol", "openai/gpt-6.1-sol#low"), ("openai/gpt-6.1-sol#high", "openai/gpt-6.1-sol#medium"),
                         ("zai-coding-plan/glm-5.3#max", "zai-coding-plan/glm-5.3#medium"), ("openai/gpt-6.1-sol#medium", "openai/gpt-6.1-sol#medium"),
                         ("openai/gpt-6.1-sol-fast", "openai/gpt-6.1-sol-fast#low"), ("zai-coding-plan/glm-5.3-flash", "zai-coding-plan/glm-5.3-flash#high"),
-                        ("openai/gpt-5.6-luna", "openai/gpt-5.6-luna#high"), ("opencode-go/deepseek-v4.1-flash#max", "opencode-go/deepseek-v4.1-flash#high")):
+                        ("openai/gpt-5.6-luna", "openai/gpt-5.6-luna#high"), ("opencode-go/deepseek-v4.1-flash#max", "opencode-go/deepseek-v4.1-flash#high"),
+                        ("minimax/MiniMax-M3", "minimax/MiniMax-M3#thinking"),
+                        ("minimax/MiniMax-M3#high", "minimax/MiniMax-M3#thinking"),
+                        ("minimax/MiniMax-M3#none", "minimax/MiniMax-M3#none"),
+                        ("minimax/MiniMax-M3#thinking", "minimax/MiniMax-M3#thinking"),
+                        ("minimax/MiniMax-M2.7", "minimax/MiniMax-M2.7"),
+                        ("minimax/MiniMax-M2.7#high", "minimax/MiniMax-M2.7"),
+                        ("alibaba-token-plan/deepseek-v4-pro-0813", "alibaba-token-plan/deepseek-v4-pro-0813#high"),
+                        ("alibaba-token-plan/deepseek-v4-pro-0813#max", "alibaba-token-plan/deepseek-v4-pro-0813#high"),
+                        ("alibaba-token-plan/deepseek-v4-pro-0813#low", "alibaba-token-plan/deepseek-v4-pro-0813#high"),
+                        ("alibaba-token-plan/qwen3.8-max", "alibaba-token-plan/qwen3.8-max#low"),
+                        ("alibaba-token-plan/qwen3.8-max#high", "alibaba-token-plan/qwen3.8-max#medium"),
+                        ("alibaba-token-plan/qwen3.8-flash", "alibaba-token-plan/qwen3.8-flash#medium"),
+                        ("alibaba-token-plan/qwen3.8-flash#high", "alibaba-token-plan/qwen3.8-flash#medium"),
+                        ("alibaba-token-plan/qwen3.8-flash#low", "alibaba-token-plan/qwen3.8-flash#low"),
+                        ("alibaba-token-plan/deepseek-v4.1-flash", "alibaba-token-plan/deepseek-v4.1-flash#high"),
+                        ("alibaba-token-plan/deepseek-v4.1-flash#medium", "alibaba-token-plan/deepseek-v4.1-flash#high"),
+                        ("alibaba-token-plan/glm-5.3", "alibaba-token-plan/glm-5.3#low")):
         got = ow.effort(model)
         ok = got == want
         print(f"{'PASS' if ok else 'FAIL'} effort {model}: {got}")
@@ -377,6 +433,10 @@ def main():
             print(f"skipping {m}: {why}", flush=True)
             skipped.append((m, why))
             models.remove(m)
+        else:
+            note = pricing_note(m)
+            if note:
+                print(f"{m}: {note}", flush=True)
     if not models:
         if skipped:
             if kind == "pr":

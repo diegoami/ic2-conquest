@@ -6,7 +6,8 @@ for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51; t
 ## Model quota availability: quota-tracker
 
 A local service, quota-tracker, reports how much subscription quota is left on these providers: claude, openai (ChatGPT plan, used
-via OpenCode), zai (GLM Coding Plan), opencode_go (OpenCode Go), openrouter (prepaid credit) and alibaba (Alibaba Token Plan). Check it whenever you need to know
+via OpenCode), zai (GLM Coding Plan), opencode_go (OpenCode Go), openrouter (prepaid credit), alibaba (Alibaba Token Plan) and
+minimax (MiniMax Token Plan, minimax.io). Check it whenever you need to know
 whether a provider can be used right now, before choosing, recommending or delegating to a model.
 
 ### Querying (read-only, localhost, no auth, results cached 60 s)
@@ -39,12 +40,20 @@ Each provider has:
 | zai         | `opencode -m zai-coding-plan/glm-5.3`             | `opencode -m zai-coding-plan/glm-5.3-flash`           |
 | opencode_go | `opencode -m opencode-go/deepseek-v4-pro`         | `opencode -m opencode-go/deepseek-v4.1-flash`         |
 | openrouter  | `opencode -m openrouter/deepseek/deepseek-v4-pro` | `opencode -m openrouter/deepseek/deepseek-v4.1-flash` |
-| alibaba: DeepSeek | `opencode -m alibaba-token-plan/deepseek-v4-pro` | `opencode -m alibaba-token-plan/deepseek-v4.1-flash` |
-| alibaba: Qwen     | `opencode -m alibaba-token-plan/qwen3.8-max`     | `opencode -m alibaba-token-plan/qwen3.8-flash`       |
+| alibaba: DeepSeek | `opencode -m alibaba-token-plan/deepseek-v4-pro-0813` (variants high/max only: use `#high`) | `opencode -m alibaba-token-plan/deepseek-v4.1-flash` |
+| alibaba: Qwen     | `opencode -m alibaba-token-plan/qwen3.8-max` (variants low/medium only) | `opencode -m alibaba-token-plan/qwen3.8-flash` (no plain high: use `#medium`) |
 | alibaba: GLM      | `opencode -m alibaba-token-plan/glm-5.3`         | none on alibaba (zai has `glm-5.3-flash`)            |
+| minimax     | `opencode -m minimax/MiniMax-M3` (variants none/thinking only: use `#thinking`) | `opencode -m minimax/MiniMax-M2.7` (offers no variant: pass none) |
+
+Use the dated `deepseek-v4-pro-0813` on alibaba, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
+discount. Not Alibaba's Kimi or MiniMax models (Team edition only, they fail on this plan); MiniMax lives on its own
+`minimax/` provider.
 
 With `scripts/external_review.py` a model is passed as `--model <id>#<effort>`. Use effort `low` or `medium` for a heavy model and
-`high` for a light one (`CLAUDE.md`, "Effort").
+`high` for a light one (`CLAUDE.md`, "Effort"). Where a model does not offer the ladder's variant
+(`deepseek-v4-pro-0813` has no low; `qwen3.8-max`/`qwen3.8-flash` no high; `MiniMax-M3` offers none/thinking; `MiniMax-M2.7`
+none at all), `scripts/opencode_watched.py`'s `OFFERS`/`DEFAULT_VARIANT` tables clamp the effort to one the model offers — never
+an invented variant.
 
 Facts that affect availability:
 - `gpt-5.6-luna` has its own weekly limit: for light tasks openai is usable while the `gpt-5.6-luna:7d` window in `/quota/openai`
@@ -59,8 +68,22 @@ Facts that affect availability:
     the provider for that folder. Never print, copy or edit the key or any `auth.json`.
   - A session started before the variable existed doesn't have it: start OpenCode (and `scripts/external_review.py`) through
     `bash -ic '…'`, or open a new shell.
-  - The owner's plan is Personal edition: the Kimi and MiniMax models OpenCode lists are Team-only and fail.
-  - Night discount, 22:00-08:00 UTC+8: DeepSeek uses 50% fewer credits, Qwen 60% fewer.
+  - The owner's plan is Personal edition: the Kimi and MiniMax models OpenCode lists under `alibaba-token-plan/` are Team-only
+    and fail (MiniMax lives on its own provider, below).
+  - Night discount, 22:00-08:00 UTC+8 (16:00-02:00 Europe summer time, 15:00-01:00 winter time): `qwen3.8-max` and
+    `qwen3.8-flash` use 60% fewer credits, `deepseek-v4-pro-0813` and `deepseek-v4.1-flash` 50% fewer, `glm-5.3` none.
+    quota-tracker's `pricing` block (`curl -s localhost:8765/quota/alibaba | jq .pricing`) gives `discount_now` and
+    `next_change_at`; `scripts/external_review.py` prints a pricing line for an alibaba model it is about to use.
+- **minimax in OpenCode** (usable since 2026-10-06): the MiniMax Token Plan (minimax.io), key `MINIMAX_API_KEY` from
+  `~/.config/ai-keys.env` (same handling as alibaba's key: never read, print or edit it; a session started without it says
+  "Provider not found" — restart the shell). Quota windows: a 5-hour and a weekly one (`/quota/minimax`).
+  - Heavy: `minimax/MiniMax-M3`, variants none/thinking only, use `#thinking`. Light: `minimax/MiniMax-M2.7`, offers no
+    variant at all. `MiniMax-M2.7-highspeed` and the `minimax-coding-plan/`, `minimax-cn/` providers are other plans — not used.
+  - A new model family, independent of GLM, DeepSeek, Qwen, OpenAI and Claude: usable as an independent reviewer of those
+    models' work (the owner, 2026-10-06).
+- **zai time-of-day pricing** (from 8 Oct 2026): on weekdays 14:00-18:00 UTC+8 (08:00-12:00 Europe summer time) `glm-5.3`
+  costs 3x quota (1x off-peak) and `glm-5.3-flash` 1.2x (0.4x). quota-tracker's `pricing` block
+  (`curl -s localhost:8765/quota/zai | jq .pricing`) gives `peak_now` and `next_change_at`.
   - Quick check: `opencode run -m alibaba-token-plan/qwen3.8-flash "Reply with just: ok"`.
   - **"Invalid API-key":** a stale Alibaba entry in that folder's `auth.json` overrides the variable. Tell the owner which
     `XDG_DATA_HOME` was used.
