@@ -139,6 +139,25 @@ class Prose(Base):
         self.edit_finding("Six humans and sixteen humans are accepted too", "Seven humans and sixteen humans are accepted too"); self.fails('T06')
         self.setUp(); self.edit_finding("Two humans (Carthage, Ptolemaic): the flags", "Three humans (Carthage, Ptolemaic): the flags"); self.fails('T05', 'spelled number')
 
+    def test_r1_the_minimum_changed_to_the_field_address_in_prose_and_phrase_together_fails(self):
+        """round-3 R1: 450 -> 1088 (= 0x440, the field address read as a decimal) in the prose and the phrase; the check still verifies a floor of 450"""
+        self.edit_finding("word becomes at least 450 (the larger", "word becomes at least 1088 (the larger")
+        self.edit_finding('says "+0x440 word becomes at least 450" :: code floor', 'says "+0x440 word becomes at least 1088" :: code floor')
+        self.fails('O03', 'is in the role min of the floor')
+    def test_r1_the_field_address_replaced_by_the_minimum_in_the_phrase_fails(self):
+        self.edit_finding("the nation's `+0x440` word becomes at least 450", "the nation's `+0x1c2` word becomes at least 450")
+        self.edit_finding('says "+0x440 word becomes at least 450" :: code floor', 'says "+0x1c2 word becomes at least 450" :: code floor'); self.fails('O03', 'is in the role field of the floor')
+    def test_r1_a_calc_operand_claimed_in_place_of_its_result_fails(self):
+        """the check calc {0x1a} - 1 == 25 vouches for the result 25, not for the operand 0x1a"""
+        self.edit_finding("so 25 characters and a NUL", "so 0x1a characters and a NUL"); self.edit_finding('says "25 characters" :: calc {0x1a@56954} - 1 == 25', 'says "0x1a characters" :: calc {0x1a@56954} - 1 == 25'); self.fails('O03', 'every number of the phrase is vouched for')
+    def test_r2_six_humans_changed_to_seven_in_the_prose_the_phrase_and_the_clone_fragment_together_fails(self):
+        """round-3 R2: 'Seven' was not a number to the audit"""
+        self.edit_finding("Six humans and sixteen humans are accepted too", "Seven humans and sixteen humans are accepted too", count=2)
+        self.edit_finding('says "Six humans" ::', 'says "Seven humans" ::'); self.fails('T06', 'every number of the phrase is vouched for')
+    def test_r2_every_spelled_number_is_a_number(self):
+        for w, v in (('zero', 0), ('one human', 1), ('seven', 7), ('nine', 9), ('eleven', 11), ('thirteen', 13), ('fourteen', 14), ('fifteen', 15), ('seventeen', 17), ('twenty', 20), ('a dozen', 12), ('Sixty', 60)):
+            self.assertIn(('d', v), claims_audit.spelled(w), w)
+        self.assertEqual(claims_audit.spelled('one OK, when one matches'), set())
     def test_the_order_of_two_steps_swapped_in_the_prose_fails(self):
         self.edit_finding("New Game calls the DAT loader, then the setup", "New Game calls the setup, then the DAT loader"); self.fails('D01')
     def test_a_code_order_claim_with_the_lines_in_the_wrong_order_fails(self):

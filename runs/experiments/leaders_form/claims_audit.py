@@ -42,6 +42,15 @@ def numbers(text):
         except ValueError: pass
     return out
 
+SPELL_VAL = {w: i for i, w in enumerate('zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split())}
+SPELL_VAL.update({'dozen': 12, 'thirty': 30, 'forty': 40, 'fifty': 50, 'sixty': 60, 'hundred': 100})
+ONE_COUNTS = r'one(?= (?:human|flag|byte|character|panel|row|tick|leader|box)(?:s|es)?\b)'                  # "one" is a number only before a counted noun; elsewhere it is a pronoun ("one OK", "when one matches")
+SPELLED = re.compile(r'\b(%s|%s)\b' % (ONE_COUNTS, '|'.join(sorted((w for w in SPELL_VAL if w != 'one'), key=len, reverse=True))), re.I)
+
+def spelled(text):
+    """the spelled numbers (zero ... twenty, a dozen, thirty ... hundred) of a piece of text, as ('d', n)"""
+    return {('d', SPELL_VAL[m.group(1).lower()]) for m in SPELLED.finditer(text)}
+
 def item_numbers(item):
     """the numbers a check item states: its addressing (`code 56939-56941`, `code fn F`) is not a claim"""
     out = numbers(re.sub(r'^code (?:fn \w+ |(?:nl:)?\d+(?:-(?:nl:)?\d+)? )', 'code ', item.strip()))
@@ -559,7 +568,7 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             k_ = int(mm.group(2), 0); off_r, off_w = int(mm.group(4), 0), int(mm.group(5), 0)
             good = off_r == off_w == int(field, 0) and k_ == int(mn, 0) and fn_semantics(fn) == 'max'
             check(name, good, 'the code floors field %#x at %d (read at %#x, written at %#x) with a function that is a %s; the claim is field %s min %s' % (off_w, k_, off_r, off_w, fn_semantics(fn), field, mn))
-            LAST.update(kind='floor', nums=spell(k_) | spell(off_w)); return True
+            LAST.update(kind='floor', nums=spell(k_) | {('x', off_w)}, roles={'field': {('x', off_w)}, 'min': spell(k_)}); return True            # the field address is a hexadecimal after a plus; the minimum is any other number
         m = re.fullmatch(r'code getlimit ((?:nl:)?\d+) fn (\w+) max (0x[0-9a-fA-F]+|\d+)', item)
         if m:
             a, fn, mx = m.groups()
@@ -611,7 +620,9 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             try: got = eval(e2, {'__builtins__': {}}, {})
             except Exception as e_: got = repr(e_)
             check(name, got == int(rhs, 0), 'the expression is %r' % (got,))
-            nums_.add(('x', int(rhs, 0)) if rhs.lower().startswith('0x') else ('d', int(rhs, 0)))
+            rhs_sp = ('x', int(rhs, 0)) if rhs.lower().startswith('0x') else ('d', int(rhs, 0))
+            if not re.fullmatch(r'\s*\{[^}]+\}\s*', expr): nums_ = set()               # an expression with an operator: a phrase states its RESULT, never one of its operands (0x1a - 1 == 25 vouches for "25", not for "0x1a")
+            nums_.add(rhs_sp)
             LAST.update(kind='calc', nums=nums_); return True
         return False
     def default_kind(item):
@@ -642,9 +653,14 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
             prose = row.get('rule', row.get('statement', ''))
             check(name + ' the phrase is in the prose of the row', plain(prose).lower().find(phrase.lower()) >= 0, 'phrase %r not found in %r' % (phrase, plain(prose)[:120]))
             run_check(rid, inner, lit, row)
-            kind, nums = LAST['kind'], set(LAST['nums'])
-            pn = numbers(phrase); wrong = sorted(fmtn(x) for x in pn if x not in nums)
+            kind, nums, roles = LAST['kind'], set(LAST['nums']), LAST.pop('roles', None)
+            pn = numbers(phrase) | spelled(phrase); wrong = sorted(fmtn(x) for x in pn if x not in nums)
             check(name + ' every number of the phrase is vouched for by the source its check derives (%s)' % sorted(fmtn(x) for x in nums)[:12], not wrong, 'not derived: %s' % wrong)
+            if kind == 'floor' and roles:                                    # operand roles: a number after '+' is the field address, every other number is the minimum, never the other way round
+                for mm in NUM_RE.finditer(phrase):
+                    t = mm.group(1).replace(',', ''); sp = ('x', int(t, 16)) if t.lower().startswith('0x') else ('d', int(t))
+                    role = 'field' if phrase[:mm.start()].rstrip().endswith('+') else 'min'
+                    check(name + ' the number %s of the phrase is in the role %s of the floor (field %s, minimum %s)' % (mm.group(1), role, sorted(fmtn(x) for x in roles['field']), sorted(fmtn(x) for x in roles['min'])), sp in roles[role])
             for rx, kinds in LEX:
                 if re.search(rx, phrase, re.I): check(name + ' the word %r says an operation: the check must be one of %s (it is a %s check)' % (rx, sorted(kinds), kind), kind in kinds)
             SAYS[rid].append({'phrase': phrase, 'ok': len(bad) == n0, 'kind': kind, 'nums': nums})
@@ -711,8 +727,6 @@ def _run(finding, data, art, exe=None, dat=None, quiet=True, task=None):
         if cand: DRAW_PLAYS.append((r['play'], cand[-1], 'default' if 'default' in REC[cand[-1]]['forms'] else 'second_default'))
     # ---- rules
     RULE = {}; ROW_OBL = {}; SUGGEST = {}
-    SPELL_VAL = {'two': 2, 'three': 3, 'four': 4, 'five': 5, 'six': 6, 'eight': 8, 'ten': 10, 'twelve': 12, 'sixteen': 16}
-    SPELLED = re.compile(r'\b(%s)\b' % '|'.join(SPELL_VAL), re.I)
     def coverage(label, text, sayslist, derived=True, words=True):
         """every number and every operation word (LEX) of `text` lies inside an occurrence of a phrase of a passing `says` item (in `sayslist`) whose check derives that number, or is of the kind the word requires"""
         pt = plain(text); spans_ = []
