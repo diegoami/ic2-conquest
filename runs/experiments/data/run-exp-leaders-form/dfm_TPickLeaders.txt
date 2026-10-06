@@ -1,0 +1,693 @@
+# TPF0 resource of TPickLeaders from Imperial Conquest 2.exe (sha-independent dump; offset in the exe file given)
+# offset 0xe5e50 end 0xe8155
+object PickLeaders: TPickLeaders
+  Left = 200
+  Top = 98
+  BorderIcons = {'set': []}
+  BorderStyle = {'ident': 'bsDialog'}
+  Caption = 'Human and computer leaders'
+  ClientHeight = 430
+  ClientWidth = 460
+  Font.Color = {'ident': 'clBlack'}
+  Font.Height = -11
+  Font.Name = 'Book Antiqua'
+  Font.Style = {'set': []}
+  Visible = True
+  OnCreate = {'ident': 'InitializeForm'}
+  PixelsPerInch = 96
+  TextHeight = 15
+  object Label2: TLabel
+    Left = 15
+    Top = 0
+    Width = 49
+    Height = 20
+    Caption = 'Nation'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -16
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 95
+    Top = 0
+    Width = 50
+    Height = 20
+    Caption = 'human'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -16
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 185
+    Top = 0
+    Width = 103
+    Height = 20
+    Caption = "Leader's name"
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -16
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object btn_ok: TButton
+    Left = 380
+    Top = 120
+    Width = 70
+    Height = 25
+    Caption = 'OK'
+    Default = True
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 0
+    OnClick = {'ident': 'OK'}
+  end
+  object btn_cancel: TButton
+    Left = 380
+    Top = 295
+    Width = 70
+    Height = 25
+    Cancel = True
+    Caption = 'Cancel'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 1
+    OnClick = {'ident': 'Cancel'}
+  end
+  object pnl_rome: TPanel
+    Left = 10
+    Top = 20
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Rome'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 2
+    object cbx_rome: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_rome: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_carthage: TPanel
+    Left = 10
+    Top = 45
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Carthage'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 3
+    object cbx_carthage: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_carthage: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_seleucid: TPanel
+    Left = 10
+    Top = 70
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Seleucid'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 4
+    object cbx_seleucid: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_seleucid: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_ptolemaic: TPanel
+    Left = 10
+    Top = 95
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Ptolemaic'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 5
+    object cbx_ptolemaic: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_ptolemaic: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_macedonia: TPanel
+    Left = 10
+    Top = 120
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Macedonia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 6
+    object cbx_macedonia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_macedonia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_numidia: TPanel
+    Left = 10
+    Top = 145
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Numidia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 7
+    object cbx_numidia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_numidia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_gaul: TPanel
+    Left = 10
+    Top = 170
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Gaul'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 8
+    object cbx_gaul: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_gaul: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_greece: TPanel
+    Left = 10
+    Top = 195
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Greece'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 9
+    object cbx_greece: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_greece: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_celtiberia: TPanel
+    Left = 10
+    Top = 220
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Celtiberia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 10
+    object cbx_celtiberia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_celtiberia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_illyria: TPanel
+    Left = 10
+    Top = 245
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Illyria'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 11
+    object cbx_illyria: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_illyria: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_dacia: TPanel
+    Left = 10
+    Top = 270
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Dacia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 12
+    object cbx_dacia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_dacia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_bithynia: TPanel
+    Left = 10
+    Top = 295
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Bithynia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 13
+    object cbx_bithynia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_bithynia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_galatia: TPanel
+    Left = 10
+    Top = 320
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Galatia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 14
+    object cbx_galatia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_galatia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_armenia: TPanel
+    Left = 10
+    Top = 345
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Armenia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 15
+    object cbx_armenia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_armenia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_media: TPanel
+    Left = 10
+    Top = 371
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Media'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 16
+    object cbx_media: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_media: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+  object pnl_thracia: TPanel
+    Left = 10
+    Top = 395
+    Width = 350
+    Height = 25
+    Alignment = {'ident': 'taLeftJustify'}
+    BevelOuter = {'ident': 'bvNone'}
+    BorderStyle = {'ident': 'bsSingle'}
+    Caption = '  Thracia'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 17
+    object cbx_thracia: TCheckBox
+      Left = 100
+      Top = 3
+      Width = 20
+      Height = 17
+      TabOrder = 0
+      OnMouseDown = {'ident': 'HumanOrComputer'}
+    end
+    object ed_thracia: TEdit
+      Left = 170
+      Top = 1
+      Width = 170
+      Height = 19
+      AutoSize = False
+      Font.Color = {'ident': 'clBlack'}
+      Font.Height = -12
+      Font.Name = 'Book Antiqua'
+      Font.Style = {'set': []}
+      MaxLength = 25
+      ParentFont = False
+      TabOrder = 1
+    end
+  end
+end
