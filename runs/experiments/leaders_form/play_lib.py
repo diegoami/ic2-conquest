@@ -287,7 +287,7 @@ def set_tick(g, n, want, tries=3):
             png = snap(g, '%s_tick_%s_%s_post.png' % (CTX.get('tag') or 'LF', row['nation'], 'on' if want else 'off'))
             note_step(b, step='tick %s %s' % (row['nation'], 'on' if want else 'off'), ok=True, how='check state (BM_GETCHECK), name box enabled / focus / selection / restored text read right after the click', attempts=k + 1,
                       before=summary(before)[n], after=summary(fs)[n], post=row_post(fs, n), stored=stored, post_png=os.path.basename(png), post_png_sha=sha(png), others_unchanged=others_unchanged(before, fs, n),
-                      rows_before=summary(before), rows_after=summary(fs), raw_after=fs['cs'][0]['raw'])
+                      rows_before=summary(before), rows_after=summary(fs), raw_before=before['cs'][0]['raw'], raw_after=fs['cs'][0]['raw'])
             return fs
     raise _drv.DriverError('%s: the tick did not reach the wanted state (%s, name box woke / greyed with %r) after %d clicks' % (row['nation'], want, stored, tries))
 
@@ -307,14 +307,14 @@ def edit_text(g, n, text, tries=3, expect=None):
         g.click_control(c, pause=0.5)
         fs, ok = settle_state(g, lambda f: f['rows'][n]['ed']['focus'] == 1, 2.0)
         if not ok: continue
-        guard(fs); stages['focus'] = row_post(fs, n); length = len(fs['rows'][n]['ed']['text'])
+        guard(fs); stages['focus'] = dict(row_post(fs, n), raw=fs['cs'][0]['raw']); length = len(fs['rows'][n]['ed']['text'])
         CTX['why'] = 'select all in the %s name box' % row['nation']
         g.key('End'); g.key('shift+Home'); time.sleep(0.3)
-        fs = need_form(g); guard(fs); stages['selected'] = row_post(fs, n)
+        fs = need_form(g); guard(fs); stages['selected'] = dict(row_post(fs, n), raw=fs['cs'][0]['raw'])
         if not (fs['rows'][n]['ed']['sel0'] == 0 and fs['rows'][n]['ed']['sel1'] == length and fs['rows'][n]['ed']['text'] == stages['focus']['text']): continue
         CTX['why'] = 'delete the selection in the %s name box' % row['nation']
         g.key('BackSpace'); time.sleep(0.3)
-        fs = need_form(g); guard(fs); stages['deleted'] = row_post(fs, n)
+        fs = need_form(g); guard(fs); stages['deleted'] = dict(row_post(fs, n), raw=fs['cs'][0]['raw'])
         if fs['rows'][n]['ed']['text'] != '': continue
         if text:
             CTX['why'] = 'type the %s name' % row['nation']; g.type(text); time.sleep(0.6)
@@ -322,7 +322,7 @@ def edit_text(g, n, text, tries=3, expect=None):
         if fs['rows'][n]['ed']['text'] == want:
             note_step(b, step='name %s' % row['nation'], ok=True, how='focus, selection of the whole text, deletion and typing each read back (WM_GETTEXT, EM_GETSEL); other rows unchanged', attempts=k + 1, typed=text, read=fs['rows'][n]['ed']['text'],
                       limit=fs['rows'][n]['ed']['limit'], stages=stages, others_unchanged=others_unchanged(before, fs, n),
-                      rows_before=summary(before), rows_after=summary(fs), raw_after=fs['cs'][0]['raw'])
+                      rows_before=summary(before), rows_after=summary(fs), raw_before=before['cs'][0]['raw'], raw_after=fs['cs'][0]['raw'])
             return fs
     raise _drv.DriverError('%s: the name box did not read %r after %d rounds (read %r)' % (row['nation'], want, tries, form_state(g)['rows'].get(n, {}).get('ed', {}).get('text')))
 
@@ -336,7 +336,7 @@ def try_edit_disabled(g, n, text):
     after = need_form(g)
     same = summary(before) == summary(after)
     note_step(b, step='greyed name box %s refuses typing' % row['nation'], ok=same, how='all 16 rows read before and after', typed=text, unchanged=same, attempts=1, focus_after=[c['cls'] for c in after['cs'] if c['focus']],
-              before=summary(before)[n], after=summary(after)[n], rows_before=summary(before), rows_after=summary(after), raw_after=after['cs'][0]['raw'])
+              before=summary(before)[n], after=summary(after)[n], rows_before=summary(before), rows_after=summary(after), raw_before=before['cs'][0]['raw'], raw_after=after['cs'][0]['raw'])
     if not same: raise _drv.DriverError('the greyed name box changed: %s' % (summary(after)[n],))
     return summary(before)[n], summary(after)[n]
 
@@ -376,7 +376,7 @@ def key_toggle(g, n, tries=2):
         after = need_form(g)
         if not others_unchanged(before, after, n): raise _drv.DriverError('the space bar changed another row than %s' % NATIONS[n])
         if after['rows'][n]['cb']['check'] != before['rows'][n]['cb']['check']:
-            note_step(b, step='space on tick %s' % NATIONS[n], ok=True, how='checkbox state read after the key; other rows unchanged', attempts=k + 1, before=summary(before)[n], after=summary(after)[n], post=row_post(after, n), others_unchanged=True, rows_before=summary(before), rows_after=summary(after), raw_after=after['cs'][0]['raw'])
+            note_step(b, step='space on tick %s' % NATIONS[n], ok=True, how='checkbox state read after the key; other rows unchanged', attempts=k + 1, before=summary(before)[n], after=summary(after)[n], post=row_post(after, n), others_unchanged=True, rows_before=summary(before), rows_after=summary(after), raw_before=before['cs'][0]['raw'], raw_after=after['cs'][0]['raw'])
             return summary(before)[n], summary(after)[n]
     raise _drv.DriverError('the space bar did not change the %s tick box' % NATIONS[n])
 
@@ -438,6 +438,8 @@ def capture(g, tag, rec, key, step):
     and every global from these bytes, never from the JSON."""
     rec[key] = game_state(g)
     n = keep_memory(g, tag, step); gl = keep_globals(g, tag, step)
+    log = _drv.G / 'AUTOSAVE.LOG'
+    rec.setdefault('autosave_seen', {})[key] = {'files': sorted(f.name for f in _drv.G.glob('AUTO*.SAV')), 'log': log.read_text() if log.exists() else None}      # what the game folder holds when the state is read: an absent autosave is observed, not assumed
     rec.setdefault('dumps', {})[key] = {'nations_bin': os.path.basename(n), 'nations_bin_sha': sha(n), 'globals_bin': os.path.basename(gl), 'globals_bin_sha': sha(gl)}
     return rec[key]
 
@@ -459,7 +461,7 @@ def after_ok(g, tag, rec, humans, timeout=150):
         rec['autosave'] = os.path.basename(keep_binary(src, '%s_%s' % (tag, src.name)))
         rec['autosave_sha'] = sha(SAVEDIR + rec['autosave'])
     else:
-        time.sleep(3)
+        time.sleep(8)                                       # no human: wait long enough for an autosave to show if the game wrote one
         rec['boxes_at_start'] = []
     capture(g, tag, rec, 'state', 'after_ok')
     snap_rec(g, rec, 'after_ok', '%s_after_ok_screen.png' % tag)
