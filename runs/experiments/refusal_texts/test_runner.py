@@ -117,7 +117,7 @@ class GuessedCoordinateTests(unittest.TestCase):
     HERE = os.path.dirname(os.path.abspath(__file__))
     FORBID = {'save_as', 'tool', 'dismiss_popups', 'calibrate_toolbar', 'calibrate_army_toolbar', 'calibrate_fleet_toolbar', 'calibrate_battle_toolbar', 'open_dialog', 'close_dialog',
               'new_game', 'army_tool', 'fleet_tool', 'menu', 'recruit', 'hire_mercs', 'end_turn', 'end_turn_proven', 'play_battle', 'split_army', 'disband_army', 'embark', 'press_end_turn_once',
-              'keep_save', 'open_tool'}
+              'keep_save', 'open_tool', 'reset_ui', 'neutral_point'}
     def sources(self):
         import ast, glob
         for p in sorted(glob.glob(os.path.join(self.HERE, '*.py'))):
@@ -160,7 +160,8 @@ class GuessedCoordinateTests(unittest.TestCase):
         import ast
         for snippet in ('g.save_as("x")', 'g.tool("end_turn")', 'g.dismiss_popups()', 'g.click(640, 500)', 'g.click_control(c); g.click(10, y)', 'Game.open(self, s)', 'g.calibrate_army_toolbar()',
                         'def keep_save(g, n): pass', 'def open_tool(g): pass', 'def press_end_turn_once(g): pass',
-                        'x = 640; y = 500; g.click(x, y)', 'x, y = 640, 500; g.click(x, y)', 'def f(g):\n    y = 500\n    g.click(xx, y)'):
+                        'x = 640; y = 500; g.click(x, y)', 'x, y = 640, 500; g.click(x, y)', 'def f(g):\n    y = 500\n    g.click(xx, y)',
+                        'g.reset_ui()', 'x, y = g.neutral_point()'):
             self.assertTrue(self.violations('snippet.py', ast.parse(snippet)), snippet)
         self.assertEqual(self.violations('snippet.py', ast.parse('g.click(x, ARMY_Y)')), [])
     def test_every_click_site_is_accounted_for_and_none_has_a_constant_coordinate(self):
@@ -181,6 +182,7 @@ class GuessedCoordinateTests(unittest.TestCase):
         ('eog.py', 'close_boxes', 'click_control', 'ok'),
         ('eog.py', 'menu_pick', 'click', 'bar[0][1], bar[0][2]'),
         ('eog.py', 'menu_pick', 'click', 'hit[0][1], hit[0][2]'),
+        ('eog.py', 'verified_reset', 'click', 'x, y'),
         ('lib.py', 'menu_step', 'click', 'hit[0][1], hit[0][2]'),
         ('play_lib.py', 'army_button', 'click', 'x, ARMY_Y'),
         ('play_lib.py', 'city_button', 'click', "found['fortify'], ARMY_Y"),
@@ -203,5 +205,40 @@ class GuessedCoordinateTests(unittest.TestCase):
         ('scenarios.py', 'rel_act', 'click_control', 'tgt'),
         ('scenarios.py', 'sail_pre', 'click_tile', 'x, y'),
     ]
+
+class RG:
+    """a fake game for the reset: keys and clicks recorded, one 1143x903 window on a 1280x1024 screen, the root window showing under the pointer only outside it"""
+    def __init__(self): self.clicks = []; self.keys = []
+    def key(self, *k): self.keys.append(k)
+    def click(self, x, y, pause=0.4): self.clicks.append((x, y))
+    def screen_size(self): return 1280, 1024
+    def find_windows(self, pat='.', visible=True): return [(5, 'Imperial Conquest 2', 0, 0, 1143, 903)]
+
+class VerifiedResetTests(unittest.TestCase):
+    """the R5 class from #60: menus are reset by Escape x2 and a click on a point located now and proven bare (no window covers it, the X server reports the root window
+    under the pointer), never the fixed NEUTRAL point of Game.reset_ui; a screen with no bare point raises and nothing is clicked"""
+    def setUp(self):
+        self._o = (eog.pointer_at, eog.ROOT_ID[0], eog.log)
+        eog.ROOT_ID[0] = 99
+        eog.pointer_at = lambda x, y: {'x': x, 'y': y, 'window': 99 if (x > 1143 or y > 903) else 5}
+        eog.log = lambda *a, **k: None
+    def tearDown(self): eog.pointer_at, eog.log = self._o[0], self._o[2]; eog.ROOT_ID[0] = self._o[1]
+    def test_reset_clicks_a_located_point_whose_pointer_window_is_the_root(self):
+        g = RG(); notes = []
+        x, y = eog.verified_reset(g, note=lambda **kw: notes.append(kw))
+        (cx, cy), = g.clicks
+        self.assertEqual((cx, cy), (x, y)); self.assertNotEqual((cx, cy), (1000, 900))
+        self.assertEqual(g.keys, [('Escape',), ('Escape',)])
+        n, = notes
+        self.assertEqual(n['pointer']['window'], n['root']); self.assertEqual(n['point'], [x, y])
+        self.assertEqual([tuple(w) for w in n['windows']], [(5, 'Imperial Conquest 2', 0, 0, 1143, 903)])
+    def test_reset_with_no_bare_point_clicks_nothing(self):
+        g = RG(); eog.pointer_at = lambda x, y: {'x': x, 'y': y, 'window': 5}
+        with self.assertRaises(_drv.DriverError): eog.verified_reset(g)
+        self.assertEqual(g.clicks, [])
+    def test_reset_skips_a_candidate_a_window_covers(self):
+        g = RG(); g.find_windows = lambda pat='.', visible=True: [(5, 'big', 0, 0, 1280, 1000)]
+        eog.verified_reset(g); (x, y), = g.clicks
+        self.assertGreaterEqual(y, 1000)
 
 if __name__ == '__main__': unittest.main()
