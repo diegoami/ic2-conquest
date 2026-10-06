@@ -55,6 +55,11 @@ With `scripts/external_review.py` a model is passed as `--model <id>#<effort>`. 
 none at all), `scripts/opencode_watched.py`'s `OFFERS`/`DEFAULT_VARIANT` tables clamp the effort to one the model offers — never
 an invented variant.
 
+Placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain is
+`opencode-go/deepseek-v4.1-flash#high, openai/gpt-5.6-luna#high, alibaba-token-plan/qwen3.8-flash#medium` (then exit 3);
+and `minimax/MiniMax-M3#thinking` is the **independent second-opinion reviewer** — a family independent of
+GLM/DeepSeek/Qwen/OpenAI/Claude, used to review those models' work when a second opinion is wanted.
+
 Facts that affect availability:
 - `gpt-5.6-luna` has its own weekly limit: for light tasks openai is usable while the `gpt-5.6-luna:7d` window in `/quota/openai`
   is under 95%, even if openai is exhausted.
