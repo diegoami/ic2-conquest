@@ -57,7 +57,7 @@ def p05(g, tag, rec):
     after_ok(g, tag, rec, list(range(16)))
 
 LONG = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdef'
-ODD = 'Ünal-Ö "Q" |;,'
+ODD = 'ünal-ö "Q" |;,'
 
 # ---- P06: the odd names in one OK: empty (Rome), spaces (Carthage), the same name twice (Seleucid, Ptolemaic), over-long (Macedonia), odd characters (Numidia)
 def p06(g, tag, rec):
@@ -108,6 +108,19 @@ def p10(g, tag, rec):
     time.sleep(2); rec['state_after_no'] = game_state(g)
     if form_wid(g): raise _drv.DriverError('the form opened after No')
 
+# ---- P11: the Escape key closes the form like Cancel (ticks and edits discarded)
+def p11(g, tag, rec):
+    open_form(g, tag, rec); set_tick(g, 1, True); edit_text(g, 1, 'Zed Escape'); record_form(g, tag, 'before_escape', rec)
+    press_key_close(g, 'Escape'); rec['humans_ticked'] = [1]
+    time.sleep(2); rec['state'] = game_state(g); snap(g, '%s_after_escape_screen.png' % tag)
+    rec['nations_bin'] = os.path.basename(keep_memory(g, tag, 'after_escape')); rec['nations_bin_sha'] = sha(SAVEDIR + rec['nations_bin'])
+
+# ---- P12: the Return key closes the form like OK (the default button): one human ticked, focus in its name box
+def p12(g, tag, rec):
+    open_form(g, tag, rec); set_tick(g, 3, True); record_form(g, tag, 'before_return', rec)
+    press_key_close(g, 'Return'); rec['humans_ticked'] = [3]
+    after_ok(g, tag, rec, [3])
+
 SC = {'P01': dict(seed=12345, fn=p01, note='the form as it opens, tab order, Cancel with nothing ticked'),
       'P02': dict(seed=12345, fn=p02, note='zero humans, OK'),
       'P03': dict(seed=12345, fn=p03, note='Cancel after ticking Carthage and Ptolemaic and editing Carthage'),
@@ -117,6 +130,8 @@ SC = {'P01': dict(seed=12345, fn=p01, note='the form as it opens, tab order, Can
       'P07': dict(seed=12345, fn=p07, note='greyed computer name box; tick, edit, untick restores; one human with an edited name'),
       'P08a': dict(seed=111, fn=p08, note='draw, seed 111'), 'P08b': dict(seed=222, fn=p08, note='draw, seed 222'), 'P08c': dict(seed=333, fn=p08, note='draw, seed 333'),
       'P09': dict(seed=12345, fn=p09, note='second New Game with another seed, Cancel, New Game again'),
+      'P11': dict(seed=12345, fn=p11, note='Escape closes the form like Cancel'),
+      'P12': dict(seed=12345, fn=p12, note='Return closes the form like OK'),
       'P10': dict(seed=12345, fn=p10, note='File > New with a game running, Confirm answered No')}
 
 def run(pid, batch):

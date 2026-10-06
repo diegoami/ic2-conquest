@@ -39,7 +39,7 @@ STATE_EXE = lambda: _drv.WORK / 'win_state.exe'
 
 def read_controls(g, title=TITLE):
     """win_state.exe on the visible window `title`: [{cls, text, x, y, w, h, enabled, visible, check, limit, sel0, sel1, focus, style}] (raw text kept in the first element's 'raw')"""
-    out = _drv.sh(_drv.WINE, str(STATE_EXE()), title, check=False)
+    out = subprocess.run([_drv.WINE, str(STATE_EXE()), title], env=_drv.ENV, capture_output=True).stdout.decode('latin1')   # the game's ANSI text (Windows-1252 / Latin-1 bytes), never utf-8
     cs = []
     for line in out.splitlines():
         p = line.split('\t')
@@ -83,17 +83,20 @@ def record_form(g, tag, step, rec):
     return fs
 
 # ---------------------------------------------------------------- menus
-def ocr_word(g, region, word, tries=3):
-    """The centre (x, y) of the OCR word `word` inside `region` of a fresh screenshot: psm 11 on the region, then psm 7 and 6 on a tighter 400% crop; None when no pass sees it"""
-    for psm in (11, 7, 6):
-        full = os.path.join(lib.TMP, 'ic2_lead_screen.png'); crop = os.path.join(lib.TMP, 'ic2_lead_crop.png')
-        _orig_sh('import', '-window', 'root', full)
-        x, y, w, h = region
-        subprocess.run(['convert', full, '-crop', '%dx%d+%d+%d' % (w, h, x, y), '+repage', '-resize', '400%', '-colorspace', 'Gray', crop], check=True)
-        out = subprocess.run(['tesseract', crop, 'stdout', '--psm', str(psm), 'tsv'], capture_output=True, text=True).stdout
-        for l in out.splitlines()[1:]:
-            f = l.split('\t')
-            if len(f) == 12 and f[11].strip().lower() == word: return (x + (int(f[6]) + int(f[8]) // 2) // 4, y + (int(f[7]) + int(f[9]) // 2) // 4, psm)
+def ocr_word(g, regions, word, tries=3):
+    """The centre (x, y, psm) of the OCR word `word` inside one of `regions` ((x, y, w, h), or a list of them, tried in order) of a fresh screenshot: for each region psm 11, 7 and 6 on a 400% grey crop;
+    None when no pass sees it. A found word is only ever clicked by the caller after its own verification of the effect."""
+    if isinstance(regions[0], int): regions = [regions]
+    for region in regions:
+        for psm in (11, 7, 6):
+            full = os.path.join(lib.TMP, 'ic2_lead_screen.png'); crop = os.path.join(lib.TMP, 'ic2_lead_crop.png')
+            _orig_sh('import', '-window', 'root', full)
+            x, y, w, h = region
+            subprocess.run(['convert', full, '-crop', '%dx%d+%d+%d' % (w, h, x, y), '+repage', '-resize', '400%', '-colorspace', 'Gray', crop], check=True)
+            out = subprocess.run(['tesseract', crop, 'stdout', '--psm', str(psm), 'tsv'], capture_output=True, text=True).stdout
+            for l in out.splitlines()[1:]:
+                f = l.split('\t')
+                if len(f) == 12 and f[11].strip().lower() == word: return (x + (int(f[6]) + int(f[8]) // 2) // 4, y + (int(f[7]) + int(f[9]) // 2) // 4, psm)
     return None
 
 def menu_new(g, tries=3):
@@ -107,7 +110,7 @@ def menu_new(g, tries=3):
         if not f: continue
         g.click(f[0], f[1], pause=1.0)
         CTX['why'] = 'dropdown word New (OCR)'
-        n = ocr_word(g, (0, 44, 120, 24), 'new')
+        n = ocr_word(g, [(0, 47, 100, 20), (0, 44, 120, 24), (0, 46, 78, 90)], 'new')
         if not n: continue
         g.click(n[0], n[1], pause=2.0)
         t0 = time.time()
@@ -212,6 +215,17 @@ def press_button(g, text, tries=3):
         if eog.gone(g, wid, timeout=5):
             note_verified(step='press %s' % text, how='form window (X id %d) gone' % wid, attempts=k + 1); return k + 1
     raise _drv.DriverError('the form did not close after %d clicks on %s' % (tries, text))
+
+def press_key_close(g, key, tries=2):
+    """Close the form with a key (Escape = the Cancel button, Return = the default OK button, as the DFM declares): the key is sent to the form, its X id must be gone; at most `tries` sends"""
+    wid = form_wid(g)
+    if not wid: raise _drv.DriverError('no form')
+    for k in range(tries):
+        eog.spend(wid, 'leaders form', tries)
+        CTX['why'] = 'key %s to close the form' % key; g.key(key)
+        if eog.gone(g, wid, timeout=5):
+            note_verified(step='key %s' % key, how='form window (X id %d) gone' % wid, attempts=k + 1); return k + 1
+    raise _drv.DriverError('the form did not close after %d sends of %s' % (tries, key))
 
 def tab_walk(g, n):
     """Press Tab n times (a key, no click) and record which control has the focus after each press (the form's tab order as the running form has it)"""
