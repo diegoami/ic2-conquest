@@ -78,7 +78,7 @@ def tr_act(army, row):
         click_row(g, lists[0], row)
         tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[0]
         note_click(kind='transfer-dialog', button='Transfer', side='left', first_army=army, row=row)
-        g.click_control(tb, pause=1.5)
+        press_control(g, 'Army to army transfer', tb, 'Army to army transfer > Transfer (left)', expect='box_or_change')
     return act
 tr_post = lambda g: close_dialog_cancel(g, 'Army to army transfer')
 SC['T01'] = dict(src=TT, ops=[('units', 0, named([U('li', 3000)] * 3)), ('units', 1, named([U('li', 1000)] * 20))], act=tr_act(0, 0), post=tr_post,
@@ -101,7 +101,7 @@ SC['CU08'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 400
 def e01_act(g):
     g.select_army(0, *g.army_pos(0)); note_click(kind='tile', target='own fleet 2 with army 0 selected'); g.click_tile(*g.fleet_pos(2), pause=1.5)
 SC['E01'] = dict(src=TE, act=e01_act, note='embark army 0 (10,700 troops, 3 moves) on fleet 2 (20 ships): the click on the fleet')
-SC['A01'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3)], act=lambda g: army_button(g, 12, 'join'),
+SC['A01'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3)], act=lambda g: army_button(g, 12, 'join'), expect='state', watch=lambda g: (g.army_rec(12), g.army_rec(0)),
                  note='Join armies from army 12 (moves staged to 3) next to army 0, which is aboard fleet 2')
 
 def rel_act(nation, col):
@@ -136,8 +136,8 @@ def recruit_act(g):
     CTX['dialog'] = 'Army recruits'; main_tool(g, 'recruit'); g.wait(lambda: g.find_windows('^Army recruits$'), 10, 'Army recruits dialog'); cs = g.controls('Army recruits')
     cities = g.control(cs, cls='TListBox', index=0)
     click_row(g, cities, 0)
-    g.click_control(g.control(cs, text='Light infantry'), pause=0.6)
-    g.click_control(g.control(cs, text='Recruit unit'), pause=1.2)
+    select_verified(g, 'Army recruits', 'Light infantry', lambda cs_: any(c['text'].startswith('Lit inf') for c in cs_), 'Army recruits > Light infantry (the New unit field must read Lit inf)')
+    press(g, 'Army recruits', 'Recruit unit')
 recruit_post = lambda g: close_dialog_cancel(g, 'Army recruits', button='OK')
 SC['RC01'] = dict(src=TB, ops=[('nation', 0, 0x420, 1)], act=recruit_act, post=recruit_post, note='Recruit unit with the 40th recruitment slot occupied (nation 0 +0x420 staged to 1)')
 SC['RC02'] = dict(src=TB, ops=[('nation', 0, 0x442, 100)], act=recruit_act, post=recruit_post, note='Recruit unit with the mobilisation rate at 100 (nation 0 +0x442 staged)')
@@ -153,7 +153,7 @@ SC['F04b'] = dict(src=TE, pre=sail_pre(2, 97, 48), act=lambda g: fleet_button(g,
 
 def sel_act(g):
     ax, ay = g.army_pos(0); g.select_army(0, ax, ay)
-SC['SEL01'] = dict(src=GF('T_BASE.SAV'), act=sel_act, note='control for the UI bytes: army 0 only SELECTED (no order, no box), then the after save')
+SC['SEL01'] = dict(src=GF('T_BASE.SAV'), act=sel_act, note='control for the UI bytes: army 0 only SELECTED (no order, no box), then the after save', expect='nobox')
 
 # ---------------------------------------------------------------- batch b4: more rows
 SC['M04'] = dict(src=TB, ops=[('city', 120, {'owner': 6})], act=lambda g: army_button(g, 1, 'mercs'),
@@ -164,7 +164,7 @@ def merc_act(g):
     army_button(g, 1, 'mercs'); open_dialog_tracked(g, 'Recruit mercenary unit', lambda: None, tries=1)
     cs = g.controls('Recruit mercenary unit'); lst = g.control(cs, cls='TListBox', index=0)
     click_row(g, lst, 0)
-    g.click_control(g.control(cs, text='Recruit unit'), pause=1.5)
+    press(g, 'Recruit mercenary unit', 'Recruit unit')
 def merc_post(g):
     cs = g.controls('Recruit mercenary unit')
     names = [c['text'] for c in cs]
@@ -188,14 +188,14 @@ def td_act(side):
         db = sorted((c for c in cs if c['text'] == 'Disband'), key=lambda c: c['x'])
         if len(db) != 2: raise _drv.DriverError('expected two Disband buttons, found %d' % len(db))
         note_click(kind='transfer-dialog', button='Disband', side=('left', 'right')[side], first_army=0, row=0)
-        g.click_control(db[side], pause=1.2)
+        press_control(g, 'Army to army transfer', db[side], 'Army to army transfer > Disband (%s)' % ('left', 'right')[side], expect='box')
         confirm_step(g, 'Yes')
     return act
 SC['TD01'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6)])), ('units', 1, named([U('hi', 3000, 7), U('li', 2000, 6)]))], act=td_act(0), post=tr_post,
                   note='Army to army transfer dialog: Disband (left button) the first unit of army 0 at (103,36), far from a city; Confirm answered Yes')
 SC['TD02'] = dict(src=TT, ops=[('units', 0, named([U('hi', 5000, 7), U('li', 4000, 6)])), ('units', 1, named([U('hi', 3000, 7), U('li', 2000, 6)]))], act=td_act(1), post=tr_post,
                   note='Army to army transfer dialog: Disband (right button) the first unit of army 1, far from a city; Confirm answered Yes')
-SC['TR3'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1), ('units', 12, named([U('li', 6000), U('li', 1100)]))], act=tr_act(12, 0), post=tr_post,
+SC['TR3'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1), ('units', 12, named([U('li', 6000), U('li', 1100)]))], act=tr_act(12, 0), post=tr_post, expect='nobox',
                  note='Army to army transfer from army 12 (moves staged to 3; units staged to 6,000 + 1,100) into army 0, aboard fleet 2 (30 ships, 15,000 troops of room; army 0 holds 10,700); army 13 is staged to nation 1 so that army 0 is the partner')
 SC['TR3b'] = dict(src=GF('T_EMBARK.SAV'), ops=[('moves', 12, 3), ('owner', 13, 1), ('units', 12, named([U('li', 6000), U('li', 6000)]))], act=tr_act(12, 0), post=tr_post,
                   note='Army to army transfer from army 12 (moves staged to 3; units staged to 6,000 + 6,000) into army 0, aboard fleet 2 (30 ships = room for 15,000 troops; army 0 holds 10,700); army 13 is staged to nation 1 so that army 0 is the partner')
@@ -209,7 +209,7 @@ def tr_act_side(army, row, side):
         click_row(g, lists[side], row)
         tb = sorted((c for c in cs if c['text'] == 'Transfer'), key=lambda c: c['x'])[side]
         note_click(kind='transfer-dialog', button='Transfer', side=('left', 'right')[side], first_army=army, row=row)
-        g.click_control(tb, pause=1.5)
+        press_control(g, 'Army to army transfer', tb, 'Army to army transfer > Transfer (%s)' % ('left', 'right')[side], expect='box_or_change')
     return act
 SC['T01r'] = dict(src=TT, ops=[('units', 0, named([U('li', 1000)] * 20)), ('units', 1, named([U('li', 3000)] * 3))], act=tr_act_side(0, 0, 1), post=tr_post,
                   note='Army to army transfer, RIGHT Transfer button: one unit of army 1 (3 units) into army 0 (20 units)')

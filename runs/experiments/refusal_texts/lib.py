@@ -61,15 +61,6 @@ class MyGame(Game):
 
 def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 
-def keep_save(g, name):
-    """Save the running game as `name` (File > Save as) and copy it to the artifacts folder under the next free name; log its hash.
-    Returns the artifact path."""
-    t = g.save_as(name)
-    dst = new_path(SAVEDIR + name)
-    shutil.copy(t, dst)
-    with open(DATA + 'SAVES.sha256', 'a') as f: f.write('%s  %s\n' % (sha(dst), os.path.basename(dst)))
-    return dst
-
 def snap(g, name):
     p = new_path(ART + name); g.shot(p)
     with open(DATA + 'SAVES.sha256', 'a') as f: f.write('%s  %s\n' % (sha(p), os.path.basename(p)))
@@ -78,16 +69,6 @@ def snap(g, name):
 def fixture(name):
     """A repo fixture save (read-only source)."""
     return ROOT + '/saves/' + name
-
-def open_tool(g, name, title, tries=3, wait=6):
-    """Open a toolbar dialog, retrying: the first click into an inactive window may only activate it (driver pitfall)."""
-    import re as _re
-    for _ in range(tries):
-        g.tool(name)
-        try:
-            g.wait(lambda: g.find_windows('^%s$' % _re.escape(title)), wait, title); return
-        except _drv.DriverError: pass
-    raise _drv.DriverError('%s did not open' % title)
 
 def ocr_text(path, crop=None, scale=3):
     tmp = os.path.join(TMP, 'ic2_ref_ocr_tmp.png')

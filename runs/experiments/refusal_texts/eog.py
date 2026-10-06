@@ -197,17 +197,6 @@ def wait_window(g, pattern, timeout, what):
         texts += poll_dialogs(g); time.sleep(1)
     raise _drv.DriverError('timeout waiting for ' + what)
 
-def press_end_turn_once(g, timeout=10):
-    """One End turn click, with proof that it registered (calendar, current nation, an autosave line, a window or a battle changed). No second click is made
-    here: if no sign shows in `timeout` s a DriverError is raised and the caller decides (the click may be queued)."""
-    logf = _drv.G / 'AUTOSAVE.LOG'
-    n = len(logf.read_text().splitlines()) if logf.exists() else 0
-    cal, me = g.calendar(), g.i16(_drv.CUR_NATION)
-    started = lambda: (g.i16(_drv.CUR_NATION) != me or g.calendar() != cal or (logf.exists() and len(logf.read_text().splitlines()) > n)
-                       or g.popups() or g.in_battle() or g.find_windows(r'^End of Game$'))
-    g.tool('end_turn')
-    g.wait(started, timeout, 'sign that End turn registered', step=0.25)
-
 def click_ok(g, title, tries=3):
     """Press OK of the named window, located by Game.controls (not a fixed point); verified by THAT window (its X id) disappearing (a second window with the same
     title may open at once, as with two human seats falling in a row); at most two retries. Returns the number of clicks used."""

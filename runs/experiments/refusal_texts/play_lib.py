@@ -229,7 +229,7 @@ LOAD_POPUPS = []
 
 def note_click(**kw): CLICKS.append(kw)
 
-def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=None, fixture_note='', pre=None, post=None):
+def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect='box', fixture_note='', pre=None, post=None, watch=None):
     """One play. `act(g)` issues the order (no dismissal of boxes). Records everything; returns the record."""
     tag = 'REF_%s_%s' % (play_id, batch)
     eog._ATTEMPTS.clear()                              # X window ids are reused by a new game process: the click budget is per play
@@ -248,11 +248,13 @@ def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=No
     ctl = keep_save_ocr(g, '%s_ctl.SAV' % tag)
     L('control save %s %s' % (os.path.basename(ctl), sha(ctl)))
     if boxes(g): raise _drv.DriverError('a box is open before the order')
-    CTX.update(tag=tag, play=play_id, batch=batch, log=L, dialog=None); del CLICKS[:]
+    CTX.update(tag=tag, play=play_id, batch=batch, log=L, dialog=None); del CLICKS[:]; del VERIFIED[:]
+    w0 = watch(g) if watch else None
     act(g)
-    clicks = [dict(c) for c in CLICKS]
+    clicks = [dict(c) for c in CLICKS]; verified = [dict(v) for v in VERIFIED]
     bx = wait_boxes(g)
     recs = capture(g, tag, play_id, batch, 'box')
+    check_expectation(expect, bool(bx), w0, watch(g) if watch else None)
     recs = STEPS[:] + recs; del STEPS[:]
     L('boxes after the order: %s' % [(r['title'], r['text']) for r in recs])
     closed = close_all(g, tag)
@@ -264,7 +266,7 @@ def play(play_id, batch, src, ops, act, note, seed=12345, staged=True, expect=No
     rec = {'play': play_id, 'batch': batch, 'note': note, 'staged': bool(ops), 'ops': ops, 'src': os.path.basename(str(src)), 'src_sha': sha(src), 'input': os.path.basename(inp),
            'input_sha': sha(inp), 'control': os.path.basename(ctl), 'control_sha': sha(ctl), 'after': os.path.basename(after), 'after_sha': sha(after),
            'boxes': [{'title': r['title'], 'text': r['text'], 'text_crop': r['text_crop'], 'wid': r['wid'], 'png': r['png'], 'controls': r['controls']} for r in recs], 'closed': closed, 'diff_ctl_after': d,
-           'fixture_note': fixture_note, 'clicks': clicks, 'load_popups': list(LOAD_POPUPS), 'pre': bool(pre), 'time': time.strftime('%F %T')}
+           'fixture_note': fixture_note, 'clicks': clicks, 'verified': verified, 'expect': expect, 'load_popups': list(LOAD_POPUPS), 'pre': bool(pre), 'time': time.strftime('%F %T')}
     jlog('plays_%s.jsonl' % batch, rec)
     g.kill()
     return rec
@@ -288,8 +290,63 @@ def select_rows(g, title, rows, cls_index=0):
         if k: _drv.sh('xdotool', 'keyup', 'ctrl')
     return cs
 
-def press(g, title, text, wait_new_box=True):
-    cs = g.controls(title); g.click_control(g.control(cs, text=text), pause=1.2)
+VERIFIED = []                                         # the verified transitions of the order itself, recorded at play time (the record's `verified`)
+
+def note_verified(**kw): VERIFIED.append(kw)
+
+def dialog_rect(g, title):
+    """The screen rectangle of the (single) window titled `title`, as the control dicts have it"""
+    w = g.find_windows('^%s$' % re.escape(title))
+    if len(w) != 1: raise _drv.DriverError('%s: expected one window, found %d' % (title, len(w)))
+    return {'x': w[0][2], 'y': w[0][3], 'w': w[0][4], 'h': w[0][5]}
+
+def press_control(g, title, c, what, expect='box', tries=3, settle=3.0):
+    """Click the control `c` of dialog `title` and VERIFY the transition the order is expected to make, at most `tries` clicks (the first click into an inactive window may only activate it):
+    expect 'box'            a message box must appear (a refusal or a Confirm); pixels of the dialog changing WITHOUT a box means the order was accepted: DriverError at once (no retry of an order that acted)
+    expect 'box_or_change'  a box, or a change of the dialog's pixels (a unit moved between its lists); the result says which
+    No box and no change after a click = the click did not register: it is repeated, and after `tries` clicks DriverError (fail closed). Returns 'box' or 'change'."""
+    if expect not in ('box', 'box_or_change'): raise ValueError(expect)
+    rect = dialog_rect(g, title)
+    for k in range(tries):
+        before = _region_hash(g, rect); g.click_control(c, pause=0.6)
+        t0 = time.time()
+        while True:
+            if boxes(g):
+                note_verified(step=what, how='box', attempts=k + 1); return 'box'
+            if time.time() - t0 >= settle: break
+            time.sleep(0.3)
+        if _region_hash(g, rect) != before:
+            if expect == 'box_or_change':
+                note_verified(step=what, how='change', attempts=k + 1); return 'change'
+            raise _drv.DriverError('%s: the dialog changed but no box appeared (the order was accepted, not refused): not a refusal play' % what)
+    raise _drv.DriverError('%s: neither a box nor a change after %d clicks' % (what, tries))
+
+def press(g, title, text, expect='box', tries=3):
+    """press_control on the control `text` of dialog `title` (located by Game.controls)"""
+    cs = g.controls(title); return press_control(g, title, g.control(cs, text=text), '%s > %s' % (title, text), expect, tries)
+
+def select_verified(g, title, text, check, what, tries=3):
+    """Click the control `text` of dialog `title` and prove the selection registered: `check(controls re-read after the click)` must hold; at most `tries` clicks, DriverError otherwise.
+    The controls before and after are recorded."""
+    for k in range(tries):
+        cs = g.controls(title); c = g.control(cs, text=text)
+        g.click_control(c, pause=0.6)
+        after = g.controls(title)
+        if check(after):
+            note_verified(step=what, how='control state', attempts=k + 1, controls_after=[x['text'] for x in after if x['text']]); return k + 1
+    raise _drv.DriverError('%s: the selection did not register after %d clicks (controls %s)' % (what, tries, [x['text'] for x in after if x['text']]))
+
+def check_expectation(expect, boxes_seen, before=None, after=None):
+    """What the order itself must have done: 'box' = a box appeared; 'nobox' = no box (and the dialog transition was verified by press_control); 'state' = no box AND the watched
+    game state changed (before != after). DriverError otherwise (a play whose order produced neither the expected box nor the expected state change is not a play)."""
+    if expect == 'box':
+        if not boxes_seen: raise _drv.DriverError('the order produced no box (expected a refusal box)')
+    elif expect == 'nobox':
+        if boxes_seen: raise _drv.DriverError('a box appeared, none expected')
+    elif expect == 'state':
+        if boxes_seen: raise _drv.DriverError('a box appeared, none expected')
+        if before is None or before == after: raise _drv.DriverError('the order changed no watched state')
+    else: raise ValueError(expect)
 
 def close_dialog_cancel(g, title, button='Cancel', tries=3):
     """Close the dialog `title` with its Cancel (or `button`) tracked by its X id, at most `tries` attempts."""
