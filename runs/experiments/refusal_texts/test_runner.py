@@ -123,15 +123,35 @@ class GuessedCoordinateTests(unittest.TestCase):
         for p in sorted(glob.glob(os.path.join(self.HERE, '*.py'))):
             if os.path.basename(p).startswith('test_'): continue
             yield os.path.basename(p), ast.parse(open(p).read())
+    @staticmethod
+    def constant(a, consts):
+        import ast
+        return (isinstance(a, ast.Constant) and isinstance(a.value, (int, float))) or (isinstance(a, ast.Name) and a.id in consts)
+    @staticmethod
+    def constant_names(tree):
+        """Names bound anywhere in the file to a number literal (x = 640; x, y = 640, 500; x: int = 640): a click through such a name is a click at a constant coordinate"""
+        import ast
+        names = set()
+        for n in ast.walk(tree):
+            pairs = []
+            if isinstance(n, ast.Assign):
+                for t in n.targets:
+                    if isinstance(t, ast.Tuple) and isinstance(n.value, ast.Tuple): pairs += list(zip(t.elts, n.value.elts))
+                    else: pairs.append((t, n.value))
+            elif isinstance(n, (ast.AnnAssign, ast.AugAssign)) and n.value is not None: pairs.append((n.target, n.value))
+            for t, v in pairs:
+                if isinstance(t, ast.Name) and isinstance(v, ast.Constant) and isinstance(v.value, (int, float)) and not isinstance(v.value, bool): names.add(t.id)
+        return names
     def violations(self, name, tree):
         import ast
         out = []
+        consts = self.constant_names(tree)
         for n in ast.walk(tree):
             if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr in self.FORBID: out.append('%s:%d calls .%s(): an inherited path with guessed or fixed coordinates' % (name, n.lineno, n.func.attr))
             if isinstance(n, ast.FunctionDef) and n.name in ('keep_save', 'open_tool', 'press_end_turn_once'): out.append('%s:%d defines %s: an unused helper that clicks inherited coordinates' % (name, n.lineno, n.name))
             if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and isinstance(n.func.value, ast.Name) and n.func.value.id == 'Game' and n.func.attr in ('open', 'load', 'save_as') and name != 'play_lib.py':
                 out.append('%s:%d calls Game.%s directly' % (name, n.lineno, n.func.attr))
-            if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr in ('click', 'click_control', 'click_tile', 'mousemove') and any(isinstance(a, ast.Constant) and isinstance(a.value, (int, float)) for a in n.args[:2]):
+            if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and n.func.attr in ('click', 'click_control', 'click_tile', 'mousemove') and any(self.constant(a, consts) for a in n.args[:2]):
                 out.append('%s:%d: a click at a constant coordinate' % (name, n.lineno))
         return out
     def test_no_forbidden_driver_call_and_no_unsafe_helper(self):
@@ -139,7 +159,8 @@ class GuessedCoordinateTests(unittest.TestCase):
     def test_the_guard_catches_each_way_back(self):
         import ast
         for snippet in ('g.save_as("x")', 'g.tool("end_turn")', 'g.dismiss_popups()', 'g.click(640, 500)', 'g.click_control(c); g.click(10, y)', 'Game.open(self, s)', 'g.calibrate_army_toolbar()',
-                        'def keep_save(g, n): pass', 'def open_tool(g): pass', 'def press_end_turn_once(g): pass'):
+                        'def keep_save(g, n): pass', 'def open_tool(g): pass', 'def press_end_turn_once(g): pass',
+                        'x = 640; y = 500; g.click(x, y)', 'x, y = 640, 500; g.click(x, y)', 'def f(g):\n    y = 500\n    g.click(xx, y)'):
             self.assertTrue(self.violations('snippet.py', ast.parse(snippet)), snippet)
         self.assertEqual(self.violations('snippet.py', ast.parse('g.click(x, ARMY_Y)')), [])
     def test_every_click_site_is_accounted_for_and_none_has_a_constant_coordinate(self):
