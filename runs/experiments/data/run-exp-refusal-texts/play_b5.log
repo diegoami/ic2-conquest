@@ -1,0 +1,10 @@
+21:06:42 [TD01] loaded REF_TD01_b5_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+21:06:52 [TD01] control save REF_TD01_b5_ctl.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04
+21:06:59 [TD01] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+21:07:05 [TD01] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+21:07:23 [TD01] after save REF_TD01_b5_after.SAV 02f2b5dd659e0f06a3d2701d8a2fb176921a1d4eaea341c11a2ca7aedb785e04; vs control: {"equal": true, "n_bytes": 0, "ranges": []}
+21:07:46 [TD02] loaded REF_TD02_b5_staged.SAV (STAGED); popups at load: ['@ Celtiberia wants to trade with Rome.']
+21:07:55 [TD02] control save REF_TD02_b5_ctl.SAV 8c652528a69ac00adb8da445e7c098cd26fb78a7ed7b322a5d8d31654f2bbaef
+21:08:05 [TD02] Confirm box ['@ Are you sure you want to disband 1 unit. no | co'] answered Yes
+21:08:11 [TD02] boxes after the order: [('Confirm', '@ Are you sure you want to disband 1 unit. no | co'), ('Information', '6 An army must be near its own city to disband a regular unit.')]
+21:08:29 [TD02] after save REF_TD02_b5_after.SAV bc9b0c1aaf66595db7a5e90fac2da1c91e99f360e3166ee58258c96744bb5252; vs control: {"equal": false, "n_bytes": 1, "ranges": [[111356, 111356]]}

@@ -1,0 +1,319 @@
+function	line	literal	category
+TBattleDelays_PrintNumbers	37320	  secs	other
+TBattleDelays_PrintNumbers	37325	  secs	other
+TBattleMap_MyUnitDetails	37790	's units	other
+TBattleMap_MyUnitDetails	37801	   	other
+TBattleMap_MyUnitDetails	37805	    	other
+TBattleMap_MyUnitDetails	37809	    Q 	other
+TBattleMap_MyUnitDetails	37811	  M 	other
+TBattleMap_Surrender	37891	Are you sure you want to surrender ?	message-box literal
+TInformation_PaintForm	40517	Unit moves	other
+TInformation_PaintForm	40547	   (	other
+TInformation_ShowNationStatus	40815	Nation -	other
+TInformation_ShowNationStatus	40817	Leader -	other
+TInformation_ShowNationStatus	40819	Capital -	other
+TInformation_ShowNationStatus	40823	Cities -	other
+TInformation_ShowNationStatus	40826	Population -	other
+TInformation_ShowNationStatus	40828	Unity -	other
+TInformation_ShowNationStatus	40834	Tax rate -	other
+TInformation_ShowNationStatus	40840	Mobilized -	other
+TInformation_ShowNationStatus	40843	Treasury -	other
+TInformation_ShowNationStatus	40845	 talents	other
+TInformation_ShowNationStatus	40848	  	other
+TInformation_ShowNationStatus	40849	  	other
+TInformation_ShowNationStatus	40852	      INTERNATIONAL RELATIONS	other
+TInformation_ShowNationStatus	40858	   ( 	other
+TInformation_ShowNationStatus	40860	 conquerred by 	other
+TInformation_ShowNationStatus	40862	 )	other
+TInformation_ShowNationStatus	40865	  	other
+TInformation_ShowNationStatus	40869	  -	other
+TInformation_ShowCityDetails	40903	City -	other
+TInformation_ShowCityDetails	40908	  (capital of 	other
+TInformation_ShowCityDetails	40912	Controlled by -	other
+TInformation_ShowCityDetails	40914	Allegiance to -	other
+TInformation_ShowCityDetails	40917	Population -	other
+TInformation_ShowCityDetails	40924	%)	other
+TInformation_ShowCityDetails	40925	Loyalty -	other
+TInformation_ShowCityDetails	40928	Fortification -	other
+TInformation_ShowCityDetails	40941	  (under construction)	other
+TInformation_ShowCityDetails	40955	   (	other
+TInformation_ShowCityDetails	40963	Tribute -	other
+TInformation_ShowCityDetails	40966	  talents	other
+TInformation_ShowCityDetails	40971	poor	other
+TInformation_ShowCityDetails	40974	moderate	other
+TInformation_ShowCityDetails	40977	rich	other
+TInformation_ShowCityDetails	40980	very rich	other
+TInformation_ShowCityDetails	40987	Supply -	other
+TInformation_ShowCityDetails	40989	  tons	other
+TInformation_ShowArmyDetails	41033	Army of 	other
+TInformation_ShowArmyDetails	41037	Moves -	other
+TInformation_ShowArmyDetails	41043	Supply -	other
+TInformation_ShowArmyDetails	41046	 tons  (	other
+TInformation_ShowArmyDetails	41050	%)	other
+TInformation_ShowArmyDetails	41052	Morale -	other
+TInformation_ShowArmyDetails	41062	Money -	other
+TInformation_ShowArmyDetails	41065	 talents	other
+TInformation_ShowArmyDetails	41071	Terrain -	other
+TInformation_ShowArmyDetails	41075	  	other
+TInformation_ShowArmyDetails	41107	Total troops -	other
+TInformation_ShowArmyDetails	41111	No. of units-	other
+TInformation_ShowArmyDetails	41116	  	other
+TInformation_ShowArmyDetails	41117	Regulars cost-	other
+TInformation_ShowArmyDetails	41121	  talents per quarter	other
+TInformation_ShowArmyDetails	41122	Mercenary pay-	other
+TInformation_ShowArmyDetails	41126	  talents per quarter	other
+TInformation_ShowFleetDetails	41173	  	other
+TInformation_ShowFleetDetails	41174	Army	other
+TInformation_ShowFleetDetails	41177	Fleet of 	other
+TInformation_ShowFleetDetails	41181	Moves -	other
+TInformation_ShowFleetDetails	41187	Ships -	other
+TInformation_ShowFleetDetails	41191	Repair -	other
+TInformation_ShowFleetDetails	41198	Supply -	other
+TInformation_ShowFleetDetails	41201	 tons  (	other
+TInformation_ShowFleetDetails	41206	%)	other
+TInformation_ShowFleetDetails	41210	Money -	other
+TInformation_ShowFleetDetails	41213	 talents	other
+TInformation_ShowFleetDetails	41216	Capacity -	other
+TInformation_ShowFleetDetails	41218	 troops	other
+TInformation_ShowFleetDetails	41219	Sea-	other
+TInformation_ShowFleetDetails	41221	calm	other
+TInformation_ShowFleetDetails	41224	rough	other
+TInformation_ShowCityUnits	41253	    	other
+TInformation_ShowCityUnits	41265	Mercenaries at 	other
+TInformation_ShowCityUnits	41268	There are no mercenaries at 	other
+TInformation_ShowArmyUnits	41290	Army of 	other
+TInformation_ShowArmyUnits	41297	   	other
+TInformation_ShowArmyUnits	41301	   	other
+TInformation_BattleUnitMoves	41347	Unit moves of 	other
+TInformation_BattleUnitMoves	41349	's army.	other
+TInformation_BattleUnitMoves	41350	                            	other
+TInformation_BattleUnitMoves	41351	mv  sh	other
+TInformation_BattleUnitMoves	41352	unit set to attack	other
+TInformation_BattleUnitMoves	41361	                                                          	other
+TInformation_BattleUnitMoves	41383	        	other
+TInformation_PrintCoordinates	41469	   	other
+TAFSupply_InitializeForm	42298	Supply fleet	other
+TAFSupply_CityOrFleet	42446	Supplies on	other
+TAFSupply_CityOrFleet	42447	fleet	other
+TAFSupply_CityOrFleet	42449	money	other
+TAFSupply_CityOrFleet	42455	National	other
+TAFSupply_CityOrFleet	42456	balance	other
+TAFSupply_CityOrFleet	42457	Supplies at	other
+TAFSupply_FindProviders	42731	fleet	other
+TFortifyCity_InitializeForm	43214	Fortify 	other
+TFortifyCity_InitializeForm	43220	 %	other
+TFortifyCity_PrintNumbers	43262	 %	other
+TRepairFleet_InitializeForm	43368	 %	other
+TRepairFleet_PrintNumbers	43410	 %	other
+TRecruitMercs_InitializeForm	43520	Units at 	other
+TRecruitMercs_InitializeForm	43556	  	other
+TRecruitMercs_InitializeForm	43558	  	other
+TRecruitMercs_InitializeForm	43561	  	other
+TRecruitMercs_RecruitMercUnit	43637	Your army has too little money to pay these mercenaries.	message-box literal
+TRecruitMercs_RecruitMercUnit	43652	This fleet has too little space for these mercenaries.	message-box literal
+TRecruitMercs_RecruitMercUnit	43691	An army can not contain more than 100,000 troops.	message-box literal
+TArmyToArmy_InitializeForm	43783	Split army	other
+TArmyToArmy_AddToListBox	43897	  	other
+TArmyToArmy_AddToListBox	43901	  	other
+TArmyToArmy_PrintNumbers	43959	 unit    	other
+TArmyToArmy_PrintNumbers	43962	 units    	other
+TArmyToArmy_PrintNumbers	43967	 troops	other
+TArmyToArmy_PrintNumbers	43980	 unit    	other
+TArmyToArmy_PrintNumbers	43983	 units    	other
+TArmyToArmy_PrintNumbers	43988	 troops	other
+TArmyToArmy_Army1Transfer	44155	This army already has 20 units.	message-box literal
+TArmyToArmy_Army1Transfer	44159	An army can not hold more than 100,000 troops.	message-box literal
+TArmyToArmy_Army1Transfer	44164	This fleet can not carry any more troops.	message-box literal
+TArmyToArmy_Army2Transfer	44236	This army already has 20 units.	message-box literal
+TArmyToArmy_Army2Transfer	44240	An army can not hold more than 100,000 troops.	message-box literal
+TArmyToArmy_Army2Transfer	44245	This fleet can not carry any more troops.	message-box literal
+TArmyToArmy_Army1Disband	44287	Are you sure you want to disband 	fragment of a built message
+TArmyToArmy_Army1Disband	44292	 unit	fragment of a built message
+TArmyToArmy_Army1Disband	44326	An army must be near its own city to disband a regular unit.	message-box literal
+TArmyToArmy_Army2Disband	44373	Are you sure you want to disband 	fragment of a built message
+TArmyToArmy_Army2Disband	44378	 unit	fragment of a built message
+TArmyToArmy_Army2Disband	44412	An army must be near its own city to disband a regular unit.	message-box literal
+TFleetToFleet_InitializeForm	44729	Split fleet	other
+TSplitArmyUnit_OK	45344	st 	other
+TSplitArmyUnit_OK	45347	nd 	other
+TSplitArmyUnit_OK	45350	rd 	other
+TSplitArmyUnit_OK	45353	th 	other
+TSplitArmyUnit_OK	45357	Foot 	other
+TSplitArmyUnit_OK	45360	Guards 	other
+TSplitArmyUnit_OK	45363	Bowmen 	other
+TSplitArmyUnit_OK	45366	Lancers 	other
+TSplitArmyUnit_OK	45369	Dragoons 	other
+TSplitArmyUnit_OK	45371	 Battalion	other
+TChangeArmyUnits_FillListBox	45452	  	other
+TChangeArmyUnits_FillListBox	45456	  	other
+TChangeArmyUnits_RenameUnit	45507	You can only rename regular units.	message-box literal
+TChangeArmyUnits_RenameUnit	45513	You can only rename 1 unit at a time.	message-box literal
+TChangeArmyUnits_SplitUnit	45559	This unit is too small to split.	message-box literal
+TChangeArmyUnits_SplitUnit	45568	This army already has 20 units.	message-box literal
+TChangeArmyUnits_SplitUnit	45572	You can only split regular units.	message-box literal
+TChangeArmyUnits_SplitUnit	45577	You can only split 1 unit at a time.	message-box literal
+TChangeArmyUnits_JoinUnits	45642	You can only join regular units together.	message-box literal
+TChangeArmyUnits_JoinUnits	45647	These units are too large to be combined.	message-box literal
+TChangeArmyUnits_JoinUnits	45678	You can only combine units of the same type.	message-box literal
+TChangeArmyUnits_Disband	45719	Are you sure you want to disband 	fragment of a built message
+TChangeArmyUnits_Disband	45724	 unit	fragment of a built message
+TChangeArmyUnits_Disband	45756	An army must be near its own city to disband a regular unit.	message-box literal
+TUnitMap_InitializeForm	45892	sb_supplyarmy	other
+TUnitMap_InitializeForm	45898	sb_supplyfleet	other
+TUnitMap_InitializeForm	45904	sb_fortifycity	other
+TUnitMap_SelectUnit	46541	Are you sure you want to attack this city ?	message-box literal
+TUnitMap_SelectUnit	46566	Are you sure you want to attack this army ?	message-box literal
+TUnitMap_SelectUnit	46595	The army is too large for this fleet ?	message-box literal
+TUnitMap_SelectUnit	46623	Are you sure you want to attack this fleet ?	message-box literal
+TUnitMap_SelectUnit	46637	You cannot attack a fleet docked at its own city !	message-box literal
+TUnitMap_RecruitMercenaries	46888	You cannot recruit from an enemy city.	message-box literal
+TUnitMap_RecruitMercenaries	46894	No mercenaries will join an army with so few supplies.	message-box literal
+TUnitMap_RecruitMercenaries	46904	Your fleet cannot carry any more troops.	message-box literal
+TUnitMap_RecruitMercenaries	46910	This army cannot get any bigger.	message-box literal
+TUnitMap_RecruitMercenaries	46914	This army already has 20 units.	message-box literal
+TUnitMap_JoinArmies	46978	An army on a fleet cannot be combined with another.	message-box literal
+TUnitMap_JoinArmies	47006	These 2 armies combined contain more than 100,000 troops.	message-box literal
+TUnitMap_JoinArmies	47011	These 2 armies combined contain more than 20 units.	message-box literal
+TUnitMap_SplitArmy	47042	You can not split an army containing only 1 unit.	message-box literal
+TUnitMap_DisbandArmy	47102	An army must be near its own city to disband.	message-box literal
+TUnitMap_DisbandArmy	47106	Are you sure you want to disband this army ?	message-box literal
+TUnitMap_RepairFlt	47179	The fleet can only be repaired at one of your cities.	message-box literal
+TUnitMap_RepairFlt	47187	A fleet cannot be repaired while it is carrying an army.	message-box literal
+TUnitMap_JoinFleets	47237	You cannot join fleets if one is carrying an army.	message-box literal
+TUnitMap_JoinFleets	47260	There are more than 100 ships in these fleets combined.	message-box literal
+TUnitMap_SplitFleet	47293	You can not split a fleet containing less than 20 ships.	message-box literal
+TUnitMap_SplitFleet	47300	You can not make any more fleets at this time.	message-box literal
+TUnitMap_SplitFleet	47309	You can not split a fleet carrying an army.	message-box literal
+TUnitMap_ScuttleFleet	47341	To scuttle a fleet it must be near one of your cities.	message-box literal
+TUnitMap_ScuttleFleet	47345	Are you sure you want to scuttle this fleet ?	message-box literal
+TUnitMap_ScuttleFleet	47362	A fleet cannot be scuttled while it is carrying an army.	message-box literal
+TUnitMap_Fortify	47388	This city cannot be fortified any further.	message-box literal
+TUnitMap_Fortify	47396	This city is already being fortified.	message-box literal
+TUnitMap_Fortify	47401	You cannot fortify a city which is under siege.	message-box literal
+TPolitics_MakePeace	55174	 does not want to make peace at this time.	fragment of a built message
+TPolitics_MakeTrade	55237	You can only trade with 3 nations.	message-box literal
+TPolitics_MakeTrade	55245	 does not want to trade with you.	fragment of a built message
+TPolitics_MakeTrade	55252	You cannot trade with 	fragment of a built message
+TPolitics_MakeAlliance	55318	 does not want to ally with your nation.	fragment of a built message
+TArmyRecruits_SetCityRecruits	55741	Create unit at 	other
+TArmyRecruits_SetCityRecruits	55750	Units at 	other
+TArmyRecruits_SetCityRecruits	55752	all cities	other
+TArmyRecruits_SetCityRecruits	55768	  	other
+TArmyRecruits_SetCityRecruits	55771	  	other
+TArmyRecruits_SetCityRecruits	55778	  	other
+TArmyRecruits_RecruitUnit	55952	Your mobilisation rate is already 100%.	message-box literal
+TArmyRecruits_RecruitUnit	55983	  	other
+TArmyRecruits_RecruitUnit	55986	  	other
+TArmyRecruits_RecruitUnit	55987	not ready	other
+TArmyRecruits_RecruitUnit	55989	  	other
+TArmyRecruits_RecruitUnit	56010	All cities	other
+TArmyRecruits_RecruitUnit	56026	This city's fortification has fallen below 75%.	message-box literal
+TArmyRecruits_RecruitUnit	56033	You have reached your limit of 40 units.	message-box literal
+TArmyRecruits_MobilizeUnits	56092	You cannot mobilise a unit at this time.	message-box literal
+TArmyRecruits_DisbandUnits	56133	Are you sure you want to disband 	fragment of a built message
+TArmyRecruits_DisbandUnits	56138	 unit	fragment of a built message
+TBuildFleet_OK	56322	The fleet will be built at 	fragment of a built message
+THumanFalls_InitializeForm	56383	The game is over for 	other
+THumanFalls_InitializeForm	56385	 the leader of 	other
+THumanFalls_InitializeForm	56393	You have reached the end of your allotted 20 years.	other
+THumanFalls_InitializeForm	56398	Your unpopularity has forced the army to overthrow you.	other
+THumanFalls_InitializeForm	56402	Your army have deposed you because they have not been paid.	other
+THumanFalls_InitializeForm	56406	Your nation has been conquerred by 	other
+THumanFalls_InitializeForm	56415	You have conquerred the Mediterranean, a unique achievement.	other
+THumanFalls_InitializeForm	56417	Your 	other
+THumanFalls_InitializeForm	56422	 years 	other
+THumanFalls_InitializeForm	56425	 short time 	other
+THumanFalls_InitializeForm	56427	in power in 	other
+THumanFalls_InitializeForm	56429	 produced these changes.	other
+THumanFalls_InitializeForm	56433	 in 270 BC.	other
+THumanFalls_InitializeForm	56436	Population	other
+THumanFalls_InitializeForm	56441	Cities   	other
+THumanFalls_InitializeForm	56447	Treasury 	other
+THumanFalls_InitializeForm	56450	 talents	other
+THumanFalls_InitializeForm	56454	 in 	other
+THumanFalls_InitializeForm	56458	 BC.	other
+THumanFalls_InitializeForm	56461	Population	other
+THumanFalls_InitializeForm	56466	Cities   	other
+THumanFalls_InitializeForm	56472	Treasury 	other
+THumanFalls_InitializeForm	56475	 talents	other
+TCellAuto_SaveBMP	56684	ca	other
+TCellAuto_SaveBMP	56693	.BMP	other
+TBattlePols_InitializeForm	57023	After defeating you in battle 	other
+TBattlePols_InitializeForm	57025	 are willing to end	other
+TBattlePols_InitializeForm	57028	After losing to you in battle 	other
+TBattlePols_InitializeForm	57030	 are willing to end	other
+TBattlePols_InitializeForm	57067	You 	other
+TBattlePols_InitializeForm	57070	They 	other
+TBattlePols_InitializeForm	57074	An honourable peace with no reparations or penalties.	other
+TBattlePols_InitializeForm	57078	will end all current trading agreements.	other
+TBattlePols_InitializeForm	57082	will end all current alliances.	other
+TBattlePols_InitializeForm	57086	will pay reparations of	other
+TBattlePols_InitializeForm	57089	 talents.	other
+THVHBatPols_InitializeForm	57174	 has defeated 	other
+THVHBatPols_InitializeForm	57176	 in battle.	other
+THVHBatPols_InitializeForm	57213	An honourable peace with no reparations or penalties.	other
+THVHBatPols_InitializeForm	57218	 will end all current trading agreements.	other
+THVHBatPols_InitializeForm	57222	 will end all current alliances.	other
+THVHBatPols_InitializeForm	57226	 will pay reparations of 	other
+THVHBatPols_InitializeForm	57229	 talents.	other
+THVHBatPols_PrintNumbers	57274	will pay	other
+THVHBatPols_PrintNumbers	57275	will receive	other
+THVHBatPols_PrintNumbers	57279	will receive	other
+THVHBatPols_PrintNumbers	57280	will pay	other
+THVHBatPols_PrintNumbers	57285	 talents	other
+TBattleOver_InitializeForm	57419	's  army	other
+TBattleOver_InitializeForm	57420	  defeats  	other
+TBattleOver_InitializeForm	57422	's  army.	other
+TBattleOver_InitializeForm	57426	's army	other
+TBattleOver_InitializeForm	57494	's army	other
+TBattleOver_InitializeForm	57529	The army of 	other
+TBattleOver_InitializeForm	57531	 captured 	other
+TBattleOver_InitializeForm	57533	no money.	other
+TBattleOver_InitializeForm	57539	 talents.	other
+TBattleOver_InitializeForm	57543	The army of 	other
+TBattleOver_InitializeForm	57545	 captured 	other
+TBattleOver_InitializeForm	57547	no suuplies.	other
+TBattleOver_InitializeForm	57553	 tons of supplies.	other
+TBattleOver_OK	57634	 destroys army of 	other
+TToEndTurn_InitializeForm	57783	An army of yours needs supplies.	other
+TToEndTurn_InitializeForm	57788	An army of yours cannot afford to pay its mercenary units.	other
+TToEndTurn_InitializeForm	57807	A fleet of yours needs repairing.	other
+TToEndTurn_InitializeForm	57814	One of your fleets is not docked at its own city.	other
+TToEndTurn_InitializeForm	57820	A fleet of yours needs supplies.	other
+TToEndTurn_InitializeForm	57829	An army of yours needs supplies.	other
+TToEndTurn_InitializeForm	57834	An army of yours cannot afford to pay its mercenary units.	other
+TPremierForm_InitialiseForm	57951	sb_Open	other
+TPremierForm_InitialiseForm	57957	sb_Rome	other
+TPremierForm_InitialiseForm	57963	sb_Allnations	other
+TPremierForm_InitialiseForm	57977	Imperial Conquest 2.DAT	other
+TPremierForm_InitialiseForm	57981	Imperial Conquest 2.HLP	other
+TPremierForm_InitialiseForm	57986	1.wav	other
+TPremierForm_InitialiseForm	57993	\WAVS\	other
+TPremierForm_NewGame	58018	Are you sure you want to start a new game ?	message-box literal
+TPremierForm_CheckQuit	58150	Are you sure you want to quit ?	message-box literal
+TPremierForm_StartTurn	58215	trade	fragment of a built message
+TPremierForm_StartTurn	58218	form an alliance	fragment of a built message
+TPremierForm_StartTurn	58221	 wants to 	fragment of a built message
+TPremierForm_StartTurn	58223	 with 	fragment of a built message
+TPremierForm_NewNation	58398	Are you sure you want to lead a different nation ?	message-box literal
+TPremierForm_Abdicate	58425	Are you sure you want to abdicate ?	message-box literal
+TPremierForm_BuildNewFleet	58504	A fleet of 	fragment of a built message
+TPremierForm_BuildNewFleet	58508	 ships will be ready in 	fragment of a built message
+TPremierForm_BuildNewFleet	58512	 weeks at 	fragment of a built message
+TPremierForm_BuildNewFleet	58528	Only nations with coastal cities can build fleets.	message-box literal
+TPremierForm_BuildNewFleet	58532	You do not have a free coastal city at this time.	message-box literal
+TPremierForm_BuildNewFleet	58537	You cannot build a fleet at this time.	message-box literal
+TPremierForm_MakeSound	59018	Sound1	other
+TPremierForm_MakeSound	59021	Sound2	other
+TPremierForm_MakeSound	59024	Sound3	other
+TPremierForm_MakeSound	59027	Sound4	other
+TPremierForm_MakeSound	59030	Sound5	other
+TPremierForm_MakeSound	59033	Sound6	other
+TPremierForm_MakeSound	59036	Sound7	other
+TPremierForm_MakeSound	59039	Sound8	other
+TPremierForm_MakeSound	59042	Sound9	other
+TPremierForm_MakeSound	59045	Sound10	other
+TPremierForm_MakeSound	59047	.WAV	other
+TPremierForm_SetTurnTitle	59070	Imperial Conquest 2    	other
+TPremierForm_SetTurnTitle	59072	's turn	other
+TPremierForm_SetTurnTitle	59073	   (	other
