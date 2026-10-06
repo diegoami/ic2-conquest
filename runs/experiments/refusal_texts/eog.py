@@ -232,6 +232,48 @@ def _geo(i):
     m = re.search(r'Position: (\d+),(\d+).*Geometry: (\d+)x(\d+)', _drv.sh('xdotool', 'getwindowgeometry', i, check=False), re.S)
     return tuple(int(x) for x in m.groups()) if m else None
 
+ROOT_ID = [None]
+def root_window_id():
+    """The X id of the root window (xwininfo -root): what the pointer reports as the window under it when it is over bare screen."""
+    if ROOT_ID[0] is None:
+        m = re.search(r'Window id: (\d+)', _drv.sh('xwininfo', '-root', '-int'))
+        if not m: raise _drv.DriverError('the root window id could not be read')
+        ROOT_ID[0] = int(m.group(1))
+    return ROOT_ID[0]
+
+def pointer_at(x, y):
+    """Move the pointer to (x, y) and read it back from the X server (xdotool getmouselocation): {x, y, window}, window = the X id of the top-level window under the pointer (the root id over bare screen)."""
+    _drv.sh('xdotool', 'mousemove', str(x), str(y)); time.sleep(0.2)
+    d = dict(p.split('=') for p in _drv.sh('xdotool', 'getmouselocation', '--shell').split() if '=' in p)
+    return {'x': int(d['X']), 'y': int(d['Y']), 'window': int(d['WINDOW'])}
+
+def locate_bare_root(g):
+    """A point of the screen proven bare: candidates are derived from the screen's size (corners and edge midpoints of the bottom and right strips), skipped when a visible
+    window's rectangle covers them, and accepted only when, with the pointer moved there, the X server reports the ROOT window as the window under the pointer.
+    Returns (x, y, pointer record, windows); DriverError when no candidate is bare. The pointer is left on the point, so a caller can also use it to move the pointer
+    away from a tooltip (a move, not a click)."""
+    sw, sh_ = g.screen_size()
+    wins = [w for w in g.find_windows('.') if w[4] > 1 and w[5] > 1]
+    covered = lambda x, y: any(w[2] <= x < w[2] + w[4] and w[3] <= y < w[3] + w[5] for w in wins)
+    cands = [(sw - 8, sh_ - 8), (sw // 2, sh_ - 8), (8, sh_ - 8), (sw - 8, sh_ // 2), (sw - 8, sh_ // 4), (8, sh_ // 2)]
+    for x, y in cands:
+        if covered(x, y): continue
+        p = pointer_at(x, y)
+        if (p['x'], p['y']) == (x, y) and p['window'] == root_window_id(): return x, y, p, [(w[0], w[1], w[2], w[3], w[4], w[5]) for w in wins]
+    raise _drv.DriverError('no point of the screen is bare root window (%d windows): nothing clicked' % len(wins))
+
+def verified_reset(g, note=None):
+    """Close any open menu without a click at a fixed point: Escape twice (keys), then a click on a point located now and verified bare (locate_bare_root: no window
+    covers it and the X server reports the root window under the pointer there). Replaces the driver's reset_ui, whose click goes to the fixed point NEUTRAL once it
+    has checked that no named window covers it. The point, the pointer read back, the root id and the windows are written to the tracked log, and through `note`
+    (the runner's note_click) into the play's click record."""
+    g.key('Escape'); g.key('Escape')
+    x, y, p, wins = locate_bare_root(g)
+    g.click(x, y, pause=0.2)
+    log('reset', 'Escape x2, then a click on the located bare point %d,%d: the pointer window %d is the root window %d, no window covers it (%d windows)' % (x, y, p['window'], root_window_id(), len(wins)))
+    if note is not None: note(kind='reset', point=[x, y], pointer=p, root=root_window_id(), windows=[list(w) for w in wins])
+    return x, y
+
 def menu_pick(g, bar_word, item_word, expect=None, new_window=False, tries=3):
     """Open a top-level menu and pick an item, both located by OCR (no fixed point). Every transition is verified, at most `tries` attempts in all:
     (1) the menu bar word is clicked and the dropdown must show as a new unnamed top-level window (its id and rectangle are kept);
@@ -240,7 +282,7 @@ def menu_pick(g, bar_word, item_word, expect=None, new_window=False, tries=3):
         baseline taken before the menu was opened nor the dropdown appears AND the dropdown is gone; otherwise the dropdown must be gone.
     Returns (attempt number, ids of the new windows)."""
     for attempt in range(tries):
-        g.reset_ui()
+        verified_reset(g)
         bar = [w for w in _screen_words(g, (0, 26, 650, 24)) if w[0] == bar_word]
         if not bar: continue
         base = _ids()

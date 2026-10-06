@@ -101,7 +101,7 @@ def fleet_button(g, i, tool):
 
 def main_tool(g, name, pause=1.5):
     """A button of the main toolbar (relations, build_fleet, recruit ...) at the x a tooltip proved"""
-    g.reset_ui()
+    verified_reset(g, note=note_click)
     x = verified_x(g, 'main', name)
     g.click(x, _drv.TOOLBAR_Y, pause=pause)
 
@@ -134,12 +134,12 @@ class Game2(MyGame):
             try: return Game.controls(self, title)
             except _drv.DriverError:
                 if k == 7: raise
-                if k == 1:                               # the button's own tooltip (same title, visible while the pointer rests on the button) can hide the dialog from win_controls: move the pointer away (a move, not a click)
-                    x, y = self.neutral_point(); _drv.sh('xdotool', 'mousemove', str(x), str(y))
+                if k == 1:                               # the button's own tooltip (same title, visible while the pointer rests on the button) can hide the dialog from win_controls: move the pointer to a point located now and proven bare (locate_bare_root leaves the pointer there; a move, not a click)
+                    locate_bare_root(self)
                 time.sleep(1)
 
     def open_file_dialog(self, name):
-        base = _ids(); self.reset_ui()
+        base = _ids(); verified_reset(self, note=note_click)
         x = verified_x(self, 'main', 'open'); self.click(x, _drv.TOOLBAR_Y, pause=1.0)
         try: self.wait(lambda: [i for i in _ids() - base if _geo(i) and _geo(i)[2] > 200 and _geo(i)[3] > 150], 8, 'Open dialog window')
         except _drv.DriverError: raise _drv.DriverError('the Open button opened no file-dialog-sized window (nothing typed)')
@@ -152,7 +152,7 @@ class Game2(MyGame):
         self.replace_field(name); self.key('Return')
 
 def city_button(g, x, y, tool_label='Fortify city'):
-    g.reset_ui(); g.click_tile(x, y, pause=1.0)
+    verified_reset(g, note=note_click); g.click_tile(x, y, pause=1.0)
     found = g._scan_bar(ARMY_Y, {'fortify': tool_label}, 336, 420, 0.5)
     if 'fortify' not in found: raise _drv.DriverError('city toolbar: no %s tooltip: nothing clicked' % tool_label)
     note_click(kind='toolbar', bar='city', tool='fortify', tooltip=tool_label, x=found['fortify']); g.click(found['fortify'], ARMY_Y, pause=1.5)
