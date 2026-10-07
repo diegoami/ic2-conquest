@@ -6,8 +6,9 @@ batch; feature-inventory rows M04, M05, M06, A01, UA01). Task `docs/tasks/cosmet
 `batch-b4.tar.gz`, which also carries the b5, b6 and close-probe binaries — 16 members).
 
 **Tags.** `[derived]` = read from the decompile (function, address, line of `all_app_functions.txt`; the cited lines are kept with
-their dump line numbers in `runs/experiments/data/run-exp-cosmetic-gaps/code_extract_cosmetic.v3.txt` — **v3**: v1/v2's CALLSITES
-enclosing-function column is wrong, a lookup bug fixed before v3). `[confirmed]` = seen in play with the verified runner: every
+their dump line numbers in `runs/experiments/data/run-exp-cosmetic-gaps/code_extract_cosmetic.v5.txt` — **v5**: v1/v2's CALLSITES
+enclosing-function column is wrong (a lookup bug fixed from v3 on); v3 lacks the `TAFSupply` and sound-event function bodies
+(added in v4) and the entry and the two size getters (added in v5)). `[confirmed]` = seen in play with the verified runner: every
 click located and proved (tooltip-proved toolbar x, `win_state` control lines, the driver's tile targeting), the save/screenshot
 hashed in `SAVES.sha256`. The two tags are never mixed. The non-hostile-city play runs on a **staged** save, labelled as such
 below and in the play record; every other play is a repo fixture.
@@ -31,6 +32,8 @@ Seen in play `[confirmed]` (the X window name read with `xdotool getwindowname`,
 | after loading a save with a named leader | `Imperial Conquest 2    Rome's turn   (Appius Claudius)` | `CG_T2_b1c` |
 | after End turn (same seat again) | unchanged from the row above | `CG_T2_b1c` |
 
+the bare start caption itself is `[derived]` from the entry code; each table row is only the `[confirmed]` observation of it.
+
 **When it is set** `[derived]`: `SetTurnTitle` is called from three places — `FUN_0044fa20` (line 53216, the seat-advance path after
 End turn), `TPremierForm_OpenGameFile` (58091, after a load) and `TPremierForm_StartTurn` (58201). At process start the caption is
 **not** built by it: the entry code (`0x0045c300`, line 59217) sets the bare `Imperial Conquest 2` through `FUN_00424324`, which is
@@ -44,16 +47,17 @@ default `WAVS\`) and `.WAV`, then `PlaySoundA(path, 0, 0)` — case *N* plays `S
 
 | case | WAV | event | call site(s): dump line, in function | evidence |
 |---|---|---|---|---|
-| 1 | Sound1 | an army marches (main map) | 51503 in `FUN_0044d420` (the army-move executor: terrain cost check, record swap, movement-point deduction) | `[confirmed]` `CG_S1_b2`: the move window opened `WAVS/SOUND1.WAV` |
+| 1 | Sound1 | an army marches (main map) | 51503 in `FUN_0044d420` (the army-move executor: terrain cost check, record swap, movement-point deduction) | `[confirmed]` `CG_S1_b7`: the move window opened `WAVS/SOUND1.WAV` (first seen in `CG_S1_b2`) |
 | 1 | Sound1 | a unit moves on the battle map | 37735 in `TBattleMap_PlaceUnit`; 38236 in `FUN_004381a4`; 38694 in `FUN_00438a6c` (the second battle move path, same pick-the-cheaper-tile shape) | `[derived]` |
-| 2 | Sound2 | a fleet sails | 51985 in `FUN_0044dd70` (the fleet-move executor, same shape) | `[confirmed]` `CG_S2_b2`: `WAVS/SOUND2.WAV` |
+| 2 | Sound2 | a fleet sails | 51985 in `FUN_0044dd70` (the fleet-move executor, same shape) | `[confirmed]` `CG_S2_b7`: `WAVS/SOUND2.WAV` (first seen in `CG_S2_b2`) |
 | 3 | Sound3 | battle ranged attack, firing unit's type byte = 2 | 38975 in `FUN_0043910c` | `[derived]` |
 | 4 | Sound4 | battle ranged attack, any other unit type | 38978 in `FUN_0043910c` (the `else` of the same test) | `[derived]` |
 | 5 | Sound5 | a battle attack order / melee | 37682 in `TBattleMap_SelectUnit` (the hostile-target click); 39077 in `FUN_004393ec` (melee resolution, the 0x47946c matrix) | `[derived]` |
 | 6 | Sound6 | a city assault is repelled | 49828 in `FUN_0044b27c`, the `else` of the message `"<nation> fails to capture <city>"` | `[derived]` |
 | 7 | Sound7 | a city falls | 49817 in `FUN_0044b27c`, with the message `"<city>   (<owner>)  falls to <nation>."` | `[derived]` |
-| 8 | Sound8 | a fleet is lost — scuttled, lost at sea, or destroyed in battle | 47348 in `TUnitMap_ScuttleFleet`; 54594 in `FUN_004514ec`, with the message `"A fleet belonging to <nation> is lost at sea."`; 49902 in `FUN_0044b5d0` (fleet-vs-fleet resolution) | `[confirmed]` `CG_S3_b3`: the scuttle's Confirm→Yes window opened `WAVS/SOUND8.WAV` |
-| 9 | Sound9 | an army battle whose BOTH sides are non-local nations | 49639 in `FUN_0044aee4` (guard: both owners' local-seat byte = 0) | `[confirmed]` `CG_S4_b3`: during the computer nations' phase after End turn, `WAVS/SOUND9.WAV` |
+| 8 | Sound8 | a fleet is lost — scuttled | 47348 in `TUnitMap_ScuttleFleet` | `[confirmed]` `CG_S3_b7`: the scuttle's Confirm→Yes window opened `WAVS/SOUND8.WAV` |
+| 8 | Sound8 | a fleet is lost at sea, or destroyed in a fleet battle | 54594 in `FUN_004514ec`, with the message `"A fleet belonging to <nation> is lost at sea."`; 49902 in `FUN_0044b5d0` (fleet-vs-fleet resolution) | `[derived]` (no play provoked these two paths) |
+| 9 | Sound9 | an army battle whose BOTH sides are non-local nations | 49639 in `FUN_0044aee4` (guard: both owners' local-seat byte = 0) | `[confirmed]` `CG_S4_b7`: during the computer nations' phase after End turn, `WAVS/SOUND9.WAV` (first seen in `CG_S4_b3`) |
 | 10 | Sound10 | a nation is eliminated: every one of its cities is transferred to the conqueror | 50627 in `FUN_0044c528` (iterates all 334 cities, transfers, merges the visibility bitmaps) | `[derived]` |
 
 Two guards shape what is audible `[derived]`: the move sounds (cases 1, 2) play only when the byte at
@@ -61,17 +65,28 @@ Two guards shape what is audible `[derived]`: the move sounds (cases 1, 2) play 
 played on this machine; case 9 is the complement (both sides non-local, a "distant battle" cue).
 
 **No sound device: the file still opens** `[confirmed]`: this rig has no audio output (Wine under Xvfb), and the WAV open happens
-anyway (`PlaySoundA` opens the file before playback fails silently) — every `[confirmed]` row above is the `openat` of the WAV in
-the play's strace log (`wav_opens_CG_*_*.txt`, attributed to the play step whose log-offset mark it follows).
+anyway — every `[confirmed]` row above is the `openat` of the WAV in the play's strace log (`wav_opens_CG_*_*.txt`, attributed to
+the play step whose log-offset mark it follows). Nothing here says the audio backend plays anything (or fails): with no device on
+the rig, the file open is the whole of what is established (see *What this does not establish*).
 
 ### 3. The area-map colour toggle (A01)
 
 `TAreaMap_ToggleMap` @ `0043dfd4` (41725-41733) is two lines: XOR the byte at nation-record +0x46C with 1, then repaint
 (`TAreaMap_PaintForm` @ `0043de0c`) `[derived]`. There is one palette byte, no separate mono/terrain path.
 
+**What the byte switches** `[derived]`: `TAreaMap_PaintForm` (0x0043de0c) draws the map background through `FUN_00417200` with
+the flag **1** when the byte is 0 and **0** when it is 1 (the only two-way use of the byte in the function) — the same tile
+bitmaps, two draw modes. Which mode the inventory called "mono" and which "terrain" is NOT established here: what is
+established is two visibly different renders and the byte that selects between them.
+
+**The button's own appearance** `[derived]` from the form resource (`forms.json` of the feature-inventory data): `sb_areatog` is
+a `TSpeedButton` with one `Glyph.Data` (362 bytes), `ShowHint`, and **no** `GroupIndex`/`AllowAllUp`/second glyph — it has no
+latched-down look, so the button looks the same in both palette states; the state shows in the map face, not on the button (its
+tooltip `Toggle colour` was seen before each click `[confirmed]`).
+
 Played `[confirmed]` (`CG_T3_b1c`, button located from the live Panel1 rectangle plus the form resource's declared offset, its
 tooltip `Toggle colour` seen before each click): byte `1 → 0 → 1` over two clicks; the map face's grey mean moved
-`109.402 → 82.368 → 111.385` (the palette really changes and returns); screenshots of all three states
+`109.402 → 82.368 → 111.385` (the render really changes and returns); screenshots of all three states
 (`CG_T3_b1c_area_before/after_one/after_two.png`). The byte after two clicks returns to its start; the region hash returns to
 within 2 of it, not byte-identically — the map is repainted, and the screenshots, not the hash, are the evidence of what the eye
 sees. Before the repaint the toggle resets the map's own selected-cell word (form field +0x2B8 to 0xFFFF) and a byte (+0x1EE);
@@ -83,14 +98,20 @@ there is no path that clears drawn markers — the claim "two clicks clear the m
 TAFSupply`, `Caption = 'Supply army'`, ClientWidth 470, ClientHeight 335 — and the live window is exactly 470x335 `[confirmed]`
 (`CG_U1_b6`). The paid-path button is `btn_buy: TButton`, `Caption = 'Buy supplies'`, at resource Left 320 Top 136 100x26, its
 OnClick is `TransferSupply`; `btn_ok` (Left 200 Top 300 70x25) runs `TAFSupply_OK`, which sets the form's confirmed flag and posts
-`CM_RELEASE` (`FUN_0042313c`, message 0xB021) — the form frees itself **about four seconds after** the OK click on this rig
-`[confirmed]` (`probe_close_b5.txt`: closed at t+4.0 s after a plain click).
+`CM_RELEASE` (`FUN_0042313c`, message 0xB021) — the form frees itself **seconds after** the OK click on this rig
+`[confirmed]` (`CG_CLOSE_PROBE2`, a fully verified click with its `win_state` line, pointer read-back and target: closed at
+t+4.75 s; the first raw-click probe `probe_close_b5.txt` measured t+4.0 s).
 
 **Who may provide supplies** `[derived]` (`TAFSupply_FindProviders` @ `0043f468`): a 3×3 scan around the army; tiles with a city
 terrain code (20-99) whose owner's relation to the current nation is **not 3 (war)** become providers (two slots); own fleets in
 range are providers too (three slots). A hostile city is never a provider.
 
-**What the button does in each case** — `TAFSupply_CityOrFleet` @ `0043efac` toggles **Visible**, not Enabled
+**Money and stock are not part of the enablement** `[derived]`: `CityOrFleet`'s two branches read only the provider slot and the
+city's owner — no treasury, army-purse or supplies value enters the Visible decisions (the paid path's money check, if any, is in
+`TransferSupply`, the click handler, which this task did not play). The staged-neutral dialog showed `Buy supplies` enabled with
+army 0's purse and supplies as the fixture held them `[confirmed]`.
+
+**What the button does in each case** — `TAFSupply_CityOrFleet` @ `0043efac` (42337-42564) toggles **Visible**, not Enabled
 (`FUN_00412c08` posts `CM_VISIBLECHANGED`, message 0xB00B; the M04-era note "the buy controls are disabled" is wrong) `[derived]`,
 and every row below is `[confirmed]` from the live control list (`win_state` enumerates a control only when it has a window: a
 VCL control hidden before it is ever shown has no HWND):
@@ -110,11 +131,18 @@ the code says (own: the four supply updowns; staged-neutral: the two buy updowns
 
 ### 5. Window positions kept in the save (M05)
 
-`TPremierForm_StoreFormPositions` @ `0045bb1c` (58798-59002) writes, into the **current nation's** record, the four shorts of each
-secondary window — Left, Top, then Height and Width (the decompile writes the height word at the lower offset: Area map
-L+0x46E T+0x470 **H+0x474 W+0x472**; Unit map +0x476/+0x478/+0x47C/+0x47A; Information +0x47E/+0x480/+0x484/+0x482) `[derived]`.
-The main window's four shorts do not go there: the save tail carries them (`FUN_004484d0` @ `004484d0`, 47516-47522). The function
-runs from `TPremierForm_SaveGameFile` (58108), `SaveGameFileAs` (58127) and `CloseAllForms` (58786) `[derived]`.
+`TPremierForm_StoreFormPositions` @ `0045bb1c` (58796-59007) writes, into the **current nation's** record, the four shorts of each
+secondary window, in memory order **Left, Top, Height, Width** — Area map L+0x46E T+0x470 **H+0x472 W+0x474**; Unit map
+L+0x476 T+0x478 **H+0x47A W+0x47C**; Information L+0x47E T+0x480 **H+0x482 W+0x484** `[derived]`. The assignment is read from the
+write pairing, not guessed: `DAT_0045e718[9]/[10]` (the form's Left/Top) go to +0x46E/+0x470, `FUN_00412880(form)` to +0x474 and
+`FUN_004128c4(form)` to +0x472 — and `FUN_00412880` returns the RECT's **Right** of the form's client area (**client Width**:
+it calls the form's virtual at VMT+0x2C, a `GetClientRect`-style fill, and reads the word at offset 8), `FUN_004128c4` the
+**Bottom** (**client Height**, offset 12) `[derived]`. The recorded words decide the order beyond dispute: `CG_T4_b1c`'s save
+holds `[42, 104, 170, 320]` consecutively from +0x46E — a client 170 high and 320 wide under an X window of 328x196
+(~26 px Wine title bar) — so +0x472 is Height and +0x474 Width `[confirmed]`. The main window's four shorts do not go there: the
+save tail carries them as L, T, H, W at +0, +2, +4, +6 (`FUN_004484d0` @ `004484d0`, 47516-47522: the main form's [9]/[10], then
+`FUN_00412880` at +6 and `FUN_004128c4` at +4) `[derived]`. The function runs from `TPremierForm_SaveGameFile` (58108),
+`SaveGameFileAs` (58127) and `CloseAllForms` (58786) `[derived]`.
 
 Played `[confirmed]` (`CG_T4_b1c`): the Area map moved by (40,30) (`xdotool windowmove`, verified by the X geometry), End turn,
 autosave `CG_T4_b1c_AUTO0721.SAV` — its nation-0 Area-map words read `[42, 104, 170, 320]` (L, T, H, W: the **client** size; the X
@@ -133,17 +161,21 @@ nothing but its own title; for the record, a save restores per-nation geometry a
   proved toolbar clicks, `win_state` control lines, the driver's tile targeting, the X window name for the title. Own display
   (:744) and game folder (`~/ic2-work-cosmetic`), build `Imperial Conquest 2 fast rollingsave seed.exe`, fixtures from `saves/`.
   Batches: b1 (T1-T4), b2 (S1-S3; S3 crashed on a runner import bug, re-run in b3), b3 (S3, S4, U1, U2 — the U plays hit two
-  runner bugs: the tooltip window hijacked the dialog search, and the close step polled 1 s short of the form's 4 s release),
+  runner bugs: the tooltip window hijacked the dialog search, and the close step polled 1 s short of the form's ~4 s release),
   b5/b6 (U1, U2B with the fixes; b5's evidence is complete but both plays are marked FAILED because the close gave up early —
-  `probe_close_b5.txt` is the probe that measured the 4 s). Sound plays run under `strace -f -e trace=openat,open`
-  (`IC2_STRACE`); the WAV opens are harvested per step mark into `wav_opens_CG_<play>_<batch>.txt`.
+  `probe_close_b5.txt` measured the release), and **b7** (S1, S2, S3, S4, T2 re-run under the review-hardened runner: every
+  click of a recording carries its target proof — the tooltip for toolbar buttons, the driver's view geometry for tile clicks,
+  the control's verbatim `win_state` line for dialog buttons — and every cited event keeps its post-event autosave, harvested
+  and hashed; the sound rows cite b7). The close probes: `probe_close_b5.txt` (raw xdotool, superseded) and `CG_CLOSE_PROBE2`
+  (verified clicks, `probe_close2.txt`). Sound plays run under `strace -f -e trace=openat,open` (`IC2_STRACE`); the WAV opens
+  are harvested per step mark into `wav_opens_CG_<play>_<batch>.txt`.
 - **Staging.** One staged save, described in §4.
-- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v3.txt`: **172 checks, 0 mismatches**) re-reads every claim from its
+- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v6.txt`: **277 checks, 0 mismatches**) re-reads every claim from its
   source — the v4 code extract (the CALLSITES table, the function bodies, the offsets as the dump spells them, the DFM), the
-  recordings (every cited tag must exist; every click's pointer read back), the WAV harvests, the artifacts' hashes — and binds
+  recordings (every cited tag must exist; every click's pointer read back; every sound row's case, WAV name and cited play bound together), the WAV harvests, the SAV decoded from its hashed file, the artifacts' hashes — and binds
   the finding's *own* quoted values (the title strings, the toggle triple, the caption, the SAV words, the cited tags) to them;
-  its bent-claim tests (`test_claims_audit.py`, 8 tests OK: one bent claim each — a caption byte, a case line, a play tag, a
-  toggle value, an offset, a title spacing — each must produce mismatches) and the runner tests (`test_runner.py`, 6 tests OK:
+  its bent-claim tests (`test_claims_audit.py`: one bent claim at a time — a caption byte, a case line, a play tag, a toggle value, an offset, a
+  title spacing, a swapped offset pair, a wrong-but-existing tag — each must produce mismatches) and the runner tests (`test_runner.py`, 6 tests OK:
   unique tags, pointer read-backs on every click of every recording, verified steps, hashed screenshots, harvests) are tracked
   with their outputs (`test_claims_audit_out.txt`, `test_runner_out.txt`).
 
@@ -158,3 +190,8 @@ nothing but its own title; for the record, a save restores per-nation geometry a
 - The non-hostile-city dialog row rests on the STAGED save; a naturally-occurring neutral neighbour was not played.
 - The 0x474b00/0x474696 relation tables are cited as the decompile addresses them; the save-file layout (`state/sav.py`, record
   +0x26) is a different, serialized arrangement — the two were cross-checked only through the staged save taking effect in play.
+- Which of the two area-map render modes the inventory's "mono" and "terrain" names refer to is not established (two distinct
+  renders and the selecting byte are); the `Buy supplies` **click** path (`TransferSupply`) was not played, so whether it refuses
+  on insufficient money is not established; no audio device exists on the rig, so nothing is claimed about audible playback.
+- The battle-screen sound sites (cases 3, 4, 5 and the battle-map case-1 sites) were not provoked by plays; their event names
+  come from the enclosing functions' own code (highlight, counter decrement, the melee matrix), not from a recording.

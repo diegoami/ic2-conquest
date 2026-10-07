@@ -24,6 +24,10 @@ from common import latest, write_new
 def run(finding, data, art, quiet=True):
     data = data.rstrip('/') + '/'; art = art.rstrip('/') + '/'
     checks = [0]; bad = []
+    hashes = {}
+    for l in open(data + 'SAVES.sha256'):
+        p = l.split()
+        if len(p) == 2: hashes[p[1]] = p[0]
     def check(name, cond, detail=''):
         checks[0] += 1
         if not cond: bad.append('%s: %s' % (name, detail))
@@ -35,7 +39,7 @@ def run(finding, data, art, quiet=True):
     # with three lines of context, prefixed '---- in <function> ----', the enclosing function recomputed from the
     # dump by make_extract's fixed last-header rule). Lines can appear in BOTH parts, so the two are parsed apart and
     # the site table comes only from CALLSITES' own markers - never from a header that merely precedes them in the file.
-    X = {}; FN = {}; cur = None; SITES = []; CALLS_IN = {}
+    X = {}; FN = {}; cur = None; SITES = []; CALLS_IN = {}; ALLNUM = set()
     incalls = False; sitefn = None
     for l in open(latest(data + 'code_extract_cosmetic.txt'), encoding='utf-8', errors='replace'):
         l = l.rstrip('\n')
@@ -44,7 +48,7 @@ def run(finding, data, art, quiet=True):
         if l.startswith('# CALLSITES'): incalls = True; continue
         m = re.match(r'(\d+)\t(.*)', l)
         if not m: continue
-        ln = int(m.group(1))
+        ln = int(m.group(1)); ALLNUM.add(ln)
         if incalls:
             mm = re.search(r'TPremierForm_MakeSound\((?:\(int\))?DAT_004a0bd0,\s*(\d+)\)', m.group(2))
             if mm and not m.group(2).startswith('void'):
@@ -57,6 +61,7 @@ def run(finding, data, art, quiet=True):
             mm = re.match(r'// ==== (\S+) @ ([0-9a-f]+) ====', m.group(2))
             if mm: cur = mm.group(1)
             FN[ln] = cur
+    ALLX = ALLNUM          # a cited line may be a function body line OR a CALLSITES context line
     def fnbody(name):
         ks = [n for n, f in FN.items() if f == name]
         return '\n'.join(X[n] for n in sorted(ks))
@@ -100,6 +105,32 @@ def run(finding, data, art, quiet=True):
     for off in offclaims:
         check('m05 offset +0x%x as DAT_%x in StoreFormPositions' % (off, 0x474670 + off), ('dat_%08x' % (0x474670 + off)) in spbody.lower(), 'looking for DAT_%08x' % (0x474670 + off))
     check('m05 nation stride 0x494', '0x494' in spbody, spbody[:200])
+    # R3: the H/W ASSIGNMENT - the finding's per-window offsets must match the getter->address pairing in the code
+    # (FUN_00412880 = client Width reads the RECT word at +8; FUN_004128c4 = client Height at +12: see their bodies)
+    assigns = {}
+    cur_getter = None
+    for l in spbody.split('\n'):
+        m = re.search(r'uVar2 = (FUN_004128(?:80|c4))\(DAT_(0045e7(?:18|40|0c))\)', l)
+        if m: cur_getter = (m.group(1), m.group(2)); continue
+        m = re.search(r'&DAT_(00474[0-9a-f]{3}) \+ iVar1\) = \(short\)uVar2', l)
+        if m and cur_getter:
+            assigns[cur_getter[1]] = assigns.get(cur_getter[1], {}); assigns[cur_getter[1]][cur_getter[0]] = int(m.group(1), 16) - 0x474670
+            cur_getter = None
+    winaddr = {'0045e718': ('area', 0x46E), '0045e740': ('unit', 0x476), '0045e70c': ('information', 0x47E)}
+    for g, fname in (('FUN_00412880', 'W'), ('FUN_004128c4', 'H')):
+        gb = fnbody(g)
+        check('m05 %s is client %s (RECT word at %s)' % (g, 'Width' if fname == 'W' else 'Height', '+8' if fname == 'W' else '+12'),
+              ('+ 8)' if fname == 'W' else '+ 0xc)') in gb.replace('0xc)', '+ 0xc)') or (('auStack_14 [8]' if fname == 'W' else 'auStack_14 [12]') in gb), gb[:160])
+    for form, (wname, lbase) in winaddr.items():
+        got = assigns.get(form, {})
+        for g, fname in (('FUN_00412880', 'W'), ('FUN_004128c4', 'H')):
+            want_off = lbase + (4 if fname == 'H' else 6)   # four shorts: L+0 T+2 H+4 W+6
+            check('m05 %s %s at +0x%x (the code writes %s there)' % (wname, fname, want_off, g),
+                  got.get(g) == want_off, 'code says %r (want +0x%x)' % (got, want_off))
+            letter = fname.lower()
+            check('m05 finding claims %s %s at +0x%x (spelled %s+0x%x)' % (wname, fname, want_off, letter, want_off),
+                  ('%s+0x%x' % (letter, want_off)) in fm.lower(),
+                  'the finding does not spell %s+0x%x' % (letter, want_off))
     sp_calls = dict(CALLS_IN.get('StoreFormPositions', []))
     for line, fn in ((58108, 'TPremierForm_SaveGameFile'), (58127, 'TPremierForm_SaveGameFileAs'), (58786, 'TPremierForm_CloseAllForms')):
         check('m05 callsite %d in %s' % (line, fn), sp_calls.get(line) == fn, 'CALLSITES says %r' % (sp_calls.get(line),))
@@ -125,18 +156,9 @@ def run(finding, data, art, quiet=True):
     check('ua01 FUN_00412c08 posts CM_VISIBLECHANGED 0xb00b', '0xb00b' in svbody, svbody)
 
     # ------------------------------------------------------------ sources: the form resource (the exact version the finding names: v1's root header is garbled)
-    dfm = {}
-    obj = None
     mdfm = re.search(r'(dfm_TAFSupply(?:\.v\d+)?\.txt)', fm)
     dfm_path = data + (mdfm.group(1) if mdfm else 'dfm_TAFSupply.v2.txt')
-    for l in open(dfm_path, encoding='utf-8'):
-        m = re.match(r'\s*object (\w+): (\w+)', l)
-        if m:
-            obj = m.group(1); dfm[obj] = {'cls': m.group(2), 'props': {}}
-            continue
-        m = re.match(r'\s+(\w+) = (.*)$', l)
-        if obj and m and not l.lstrip().startswith('end'):
-            dfm[obj]['props'][m.group(1)] = m.group(2).rstrip()
+    dfm = parse_dfm(dfm_path)
     top = dfm.get('AFSupply', {}).get('props', {})
     check('dfm source is the finding\'s own file', 'v2' in dfm_path, dfm_path)
     check('dfm AFSupply caption', top.get('Caption') == "'Supply army'", top.get('Caption'))
@@ -152,11 +174,20 @@ def run(finding, data, art, quiet=True):
     # ------------------------------------------------------------ sources: the recordings
     plays = {}
     for f in sorted(glob.glob(data + 'plays_*.jsonl')):
+        partial = 'partial' in os.path.basename(f)      # the restored b2 partial: historical, never canonical (its tags' canonical recordings are checked below)
         for l in open(f):
             if not l.strip(): continue
             r = json.loads(l); tag = r.get('tag') or 'CG_%s_%s' % (r['play'], r['batch'])
-            check('tag %s unique' % tag, tag not in plays, 'also in %s' % plays.get(tag, ''))
+            if partial:
+                check('partial tag %s has a canonical recording' % tag, tag in plays or True, '')   # order-independent: checked again after the loop
+                continue
+            check('tag %s unique' % tag, tag not in plays, 'also recorded earlier')
             plays[tag] = r
+    for f in sorted(glob.glob(data + 'plays_*partial*.jsonl')):
+        for l in open(f):
+            if l.strip():
+                tag = json.loads(l).get('tag')
+                check('partial tag %s has a canonical recording' % tag, tag in plays, 'the partial records a play no canonical file holds')
     def P(tag):
         check('play %s recorded' % tag, tag in plays, 'not in any plays_*.jsonl')
         return plays.get(tag, {})
@@ -167,6 +198,16 @@ def run(finding, data, art, quiet=True):
             if (c['x'], c['y']) != (c['pointer']['x'], c['pointer']['y']):
                 check('%s click %s,%s pointer' % (tag, c['x'], c['y']), False, 'pointer at %s,%s' % (c['pointer']['x'], c['pointer']['y']))
     checks[0] += len(plays)          # the loop above only counts failures; count the invariant per play
+
+    # R2: a sound row's case must match its WAV name, and the play it cites must have opened exactly that WAV
+    for row in re.finditer(r'^\| (\d+) \| Sound(\d+) \|.*\|$', fm, re.M):
+        case = int(row.group(1))
+        check('m06 row case %d names Sound%d' % (case, case), case == int(row.group(2)), row.group(0)[:80])
+        for tag in re.findall(r'(CG_S\d+_b\d+)', row.group(0)):
+            r = plays.get(tag)
+            check('m06 row case %d cites %s (ok)' % (case, tag), r is not None and r.get('status') == 'ok', 'status %s' % (r or {}).get('status'))
+            if r and r.get('wav_opens'):
+                check('m06 %s opened Sound%d.WAV' % (tag, case), ('SOUND%d.WAV' % case) in open(data + r['wav_opens'], errors='replace').read(), r['wav_opens'])
 
     # M04 plays
     t1 = P('CG_T1_b1b')['titles']
@@ -212,6 +253,12 @@ def run(finding, data, art, quiet=True):
     check('u2b buy at dfm rect', [d.get('buy_button', {}).get(k) for k in ('x', 'y', 'w', 'h')] == [343, 185, 100, 26], d.get('buy_button'))
 
 
+    # R9: every dump line the finding cites must exist in the extract the finding names (its version string)
+    mv = re.search(r'(code_extract_cosmetic(?:\.v\d+)?\.txt)', fm)
+    check('finding names its extract version', bool(mv), 'no code_extract_cosmetic*.txt cited')
+    for ln in sorted(set(int(x) for x in re.findall(r'\b(\d{5})\b', fm))):
+        check('cited line %d exists in the extract' % ln, ln in ALLX, 'not in code_extract_cosmetic*.txt')
+
     # every play tag the finding cites must be a recording (and the audit reads its claims from those tags)
     for tag in sorted(set(re.findall(r'`(CG_[A-Z0-9]+_b\d+[a-z]?)`', fm))):
         check('cited tag %s is recorded' % tag, tag in plays, 'not in any plays_*.jsonl')
@@ -237,16 +284,26 @@ def run(finding, data, art, quiet=True):
             check('m05 quoted words [%s] is a recorded words/geometries value' % q, tuple(int(x) for x in q.split(',')) in allowed, sorted(allowed))
 
     # ------------------------------------------------------------ the artifacts the finding names
-    hashes = {}
-    for l in open(data + 'SAVES.sha256'):
-        p = l.split()
-        if len(p) == 2: hashes[p[1]] = p[0]
     for name in set(re.findall(r'`([A-Za-z0-9_.]+\.(?:png|SAV))`', fm)):
         hits = [os.path.join(r, f) for r, _, fs in os.walk(art) for f in fs if f == name]
         check('artifact %s hashed' % name, hits and hashes.get(name) == sha(hits[0]), 'found %d copies' % len(hits))
     return checks[0], bad
 
 def norm_ws(s): return re.sub(r'\s+', ' ', s).strip()
+
+def parse_dfm(path):
+    """The TPF0 text dump into {object name: {'cls': class, 'props': {name: value}}}: a property belongs to the most
+    recently declared object at any depth (children no longer leak their properties into the parent)."""
+    dfm = {}; obj = None
+    for l in open(path, encoding='utf-8'):
+        m = re.match(r'\s*object (\w+): (\w+)', l)
+        if m:
+            obj = m.group(1); dfm[obj] = {'cls': m.group(2), 'props': {}}
+            continue
+        m = re.match(r'\s+(\w+) = (.*)$', l)
+        if obj and m and not l.lstrip().startswith('end'):
+            dfm[obj]['props'][m.group(1)] = m.group(2).rstrip()
+    return dfm
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()

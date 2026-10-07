@@ -123,6 +123,7 @@ def verified_x(g, bar, tool):
         if tool in found:
             log('toolbar', '%s button %s: tooltip %r seen, x=%d (hint %s)' % (bar, tool, labels[tool], found[tool], hint))
             VERIFIED.append({'step': 'toolbar %s %s' % (bar, tool), 'ok': True, 'how': 'the tooltip %r was seen while the pointer was over x' % labels[tool], 'x': found[tool], 'y': y, 'hint': hint, 'clicks': [len(CLICKS), len(CLICKS)]})
+            CTX['target'] = {'src': 'tooltip', 'how': 'the tooltip %r was seen while the pointer was over x' % labels[tool], 'tool': tool, 'x': found[tool], 'y': y}
             return found[tool]
     raise _drv.DriverError('%s toolbar: the tooltip %r of %s was not seen: nothing clicked' % (bar, labels[tool], tool))
 
@@ -135,16 +136,44 @@ def main_tool(g, name, pause=1.5):
 
 def army_button(g, i, tool):
     """Select army i (verified through the game's selection word) and click the army-toolbar button `tool` at the tooltip-proved x."""
-    ax, ay = g.army_pos(i); g.select_army(i, ax, ay)
+    select_army(g, i)
     x = verified_x(g, 'army', tool)
     CTX['why'] = 'army toolbar button %s (tooltip-proved x)' % tool
     g.click(x, _drv.ARMY_TOOLBAR_Y, pause=1.5)
 
 def fleet_button(g, i, tool):
-    g.select_fleet(i)
+    select_fleet(g, i)
     x = verified_x(g, 'fleet', tool)
     CTX['why'] = 'fleet toolbar button %s (tooltip-proved x)' % tool
     g.click(x, _drv.ARMY_TOOLBAR_Y, pause=1.5)
+
+# ---------------------------------------------------------------- tile clicks: the driver's own targeting, recorded as the target proof
+def select_army(g, i):
+    """g.select_army with the recorded proof: the click goes at army i's tile through the driver's own view geometry
+    (Game.show), its effect verified by the game's selection word (the driver raises when the army is not selected);
+    the driver's up-to-3 activation retries all carry the same target."""
+    ax, ay = g.army_pos(i)
+    CTX['why'] = 'select army %d at tile (%d,%d): the driver\'s tile targeting (its own view geometry)' % (i, ax, ay)
+    CTX['target'] = {'src': 'driver tile targeting', 'kind': 'select army', 'army': i, 'tile': [ax, ay]}
+    CTX['target_multi'] = 3
+    g.select_army(i, ax, ay)
+    CTX.pop('target_multi', None)
+
+def select_fleet(g, i):
+    """The fleet counterpart of select_army (the driver's own selection path)."""
+    fx, fy = g.fleet_pos(i)
+    CTX['why'] = 'select fleet %d at tile (%d,%d): the driver\'s tile targeting (its own view geometry)' % (i, fx, fy)
+    CTX['target'] = {'src': 'driver tile targeting', 'kind': 'select fleet', 'fleet': i, 'tile': [fx, fy]}
+    CTX['target_multi'] = 3
+    g.select_fleet(i)
+    CTX.pop('target_multi', None)
+
+def click_tile(g, tx, ty, pause=2.0, why=None):
+    """g.click_tile with the recorded proof: the tile's screen point comes from the driver's own view geometry
+    (Game.show); the caller's `why` names the order. The effect is proved by the caller (a position wait)."""
+    CTX['why'] = why or 'tile (%d,%d) through the driver\'s own view geometry (Game.show)' % (tx, ty)
+    CTX['target'] = {'src': 'driver tile targeting', 'tile': [tx, ty]}
+    g.click_tile(tx, ty, pause=pause)
 
 def end_turn(g):
     """End turn: the toolbar button at the tooltip-proved x; the 'End turn ?' Confirm box (if any) is answered through its own

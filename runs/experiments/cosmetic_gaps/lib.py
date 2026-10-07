@@ -59,8 +59,10 @@ class MyGame(Game):
         cmd = [_drv.WINE, self.exe]
         logp = os.environ.get('IC2_STRACE')
         if logp:
+            if os.path.exists(logp):                     # never truncate a measured output (rule 6): version instead
+                logp = new_path(logp); os.environ['IC2_STRACE'] = logp
             cmd = ['strace', '-f', '-e', 'trace=openat,open', '-o', logp, '-s', '256'] + cmd
-            open(logp, 'w').close()                      # a fresh log per start (the previous one was harvested)
+            open(logp, 'w').close()                      # a fresh log per start (a restart gets its own versioned name)
         subprocess.Popen(['setsid'] + cmd, cwd=G, env=_drv.ENV, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         self.wait(lambda: self.find_windows('^Imperial Conquest 2$'), 40, 'main window')
         time.sleep(3)

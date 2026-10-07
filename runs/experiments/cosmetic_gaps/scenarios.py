@@ -10,7 +10,8 @@ import play_lib as P
 import eog
 import cg
 from cg import (record_title, file_open, boxes, end_turn, area_window, area_panel, sb_rect, click_sb, toggle_byte,
-                snap_win, move_window, win_geo, sav_window_words, main_wid, window_name, army_button, fleet_button)
+                snap_win, move_window, win_geo, sav_window_words, main_wid, window_name, army_button, fleet_button,
+                select_army, select_fleet, click_tile)
 from lib import fixture, SAVEDIR, DATA, ART
 
 FIX_START = 'run0-start-AUTO0720-seed12345.SAV'        # Rome human, army 0 at (100,37) adjacent Arretium (99,36), owner Rome
@@ -24,6 +25,15 @@ def load_fixture(g, rec, name, key):
     if not dst.exists(): shutil.copy(src, dst)
     rec.setdefault('loads', {})[key] = {'fixture': name, 'sha': sha(src)}
     return file_open(g, name)
+
+def keep_event_save(g, rec, tag):
+    """End the turn after the event and keep the autosave (hashed, artifacts) as the post-event state's save; the
+    sounds the End turn itself plays fall after the event's marks in the strace log, so the WAV harvest stays
+    attributable (review R6: the cited events keep their saves)."""
+    rec['end_turn_boxes'] = end_turn(g)
+    mark(g, rec, 'end_turn_done')
+    rec['autosaves'] = eog.harvest(tag)
+    if not rec['autosaves']: raise _drv.DriverError('no autosave was written after End turn')
 
 def mark(g, rec, key):
     """The strace log's size now: the WAV opens after this offset belong to the step named `key`."""
@@ -76,6 +86,8 @@ def t2(g, tag, rec):
     capture(g, tag, rec, 'state', 'after_load')
     rec['end_turn_boxes'] = end_turn(g)
     record_title(g, rec, 'after_end_turn', 'after End turn in the loaded game')
+    rec['autosaves'] = eog.harvest(tag)   # the post-End-turn state kept as a save (review R6)
+    if not rec['autosaves']: raise _drv.DriverError('no autosave was written after End turn')
     capture(g, tag, rec, 'state_after', 'after_end_turn'); snap_rec(g, rec, 'after_end_turn', '%s_after_end_turn.png' % tag)
 
 # ---- T3: the Area map colour toggle: byte, panel, button rect, region hash and screenshot before / after one / after two clicks
@@ -136,14 +148,14 @@ def s1(g, tag, rec):
     rec['load_boxes'] = load_fixture(g, rec, FIX_START, 'start')
     mark(g, rec, 'loaded')
     ax, ay = g.army_pos(0); rec['army0_before'] = [ax, ay]
-    g.select_army(0, ax, ay)
+    cg.select_army(g, 0)
     mark(g, rec, 'selected')
-    CTX['why'] = 'move army 0 one tile west (the driver\'s tile targeting, its own view geometry)'
-    g.click_tile(ax - 1, ay, pause=2.0)
+    cg.click_tile(g, ax - 1, ay, pause=2.0, why='move army 0 one tile west (the driver\'s tile targeting, its own view geometry)')
     g.wait(lambda: g.army_pos(0) != (ax, ay), 20, 'army 0 to move west')
     rec['army0_after'] = list(g.army_pos(0))
     mark(g, rec, 'moved')
     snap_rec(g, rec, 'after_move', '%s_after_move.png' % tag)
+    keep_event_save(g, rec, tag)          # the post-event state as a save (review R6): End turn, harvest the autosave
     harvest_wavs(tag, rec)
 
 # ---- S2: a fleet move (strace on)
@@ -151,14 +163,14 @@ def s2(g, tag, rec):
     rec['load_boxes'] = load_fixture(g, rec, FIX_FLEET, 'fleet')
     mark(g, rec, 'loaded')
     fx, fy = g.fleet_pos(2); rec['fleet2_before'] = [fx, fy]
-    g.select_fleet(2)
+    cg.select_fleet(g, 2)
     mark(g, rec, 'selected')
-    CTX['why'] = 'move fleet 2 one tile west (the driver\'s tile targeting)'
-    g.click_tile(fx - 1, fy, pause=2.0)
+    cg.click_tile(g, fx - 1, fy, pause=2.0, why='move fleet 2 one tile west (the driver\'s tile targeting)')
     g.wait(lambda: g.fleet_pos(2) != (fx, fy), 20, 'fleet 2 to move west')
     rec['fleet2_after'] = list(g.fleet_pos(2))
     mark(g, rec, 'moved')
     snap_rec(g, rec, 'after_move', '%s_after_move.png' % tag)
+    keep_event_save(g, rec, tag)
     harvest_wavs(tag, rec)
 
 # ---- S3: scuttle a fleet (strace on; the Confirm box is answered through its own Yes control)
@@ -175,6 +187,7 @@ def s3(g, tag, rec):
     mark(g, rec, 'confirmed')
     rec['fleet2_after'] = safe_fleet_pos(g, 2)
     snap_rec(g, rec, 'after_scuttle', '%s_after_scuttle.png' % tag)
+    keep_event_save(g, rec, tag)
     harvest_wavs(tag, rec)
 
 def safe_fleet_pos(g, i):
@@ -188,6 +201,8 @@ def s4(g, tag, rec):
     rec['end_turn_boxes'] = end_turn(g)
     mark(g, rec, 'end_turn_done')
     snap_rec(g, rec, 'after_end_turn', '%s_after_end_turn.png' % tag)
+    rec['autosaves'] = eog.harvest(tag)   # the End-turn autosave kept (review R6): the state the sounds played over
+    if not rec['autosaves']: raise _drv.DriverError('no autosave was written after End turn')
     harvest_wavs(tag, rec)
 
 # ---- U1a / U2a / U2b: the Supply army dialog at an own city, a hostile foreign city and a STAGED non-hostile foreign city
@@ -216,22 +231,27 @@ def read_controls_retry(g, tries=4):
 def close_supply_dialog(g, wid):
     """Close the dialog with its own OK control: each attempt clicks the OK of a FRESH win_state read (its verbatim
     line is the recorded target; b3's failure was click_control proving through win_controls, which cannot read a
-    VCL form). DriverError when the dialog is still there after 5 attempts."""
+    VCL form). At most THREE clicks total (CLAUDE.md: retry at most twice), tracked separately from the read-only
+    polling between them; the disappearance timeout stays long (the form frees itself ~4 s after the click).
+    DriverError when the dialog is still there after the third click."""
     b = step_begin()
     CTX['why'] = 'close the Supply army dialog with its own OK control (fresh win_state read per attempt)'
-    for k in range(5):
+    clicked = 0
+    for k in range(8):
         try: cs = read_controls(g, 'Supply army')
         except _drv.DriverError: time.sleep(1.0); continue
         oks = [c for c in cs if c['cls'] == 'TButton' and c['text'].replace('&', '').lower() == 'ok']
         if not oks: time.sleep(1.0); continue
         ok = oks[0]
         CTX['target'] = {'src': 'win_state', 'window': 'Supply army', 'line': ok['line'], 'cls': 'TButton', 'x': ok['x'], 'y': ok['y'], 'w': ok['w'], 'h': ok['h']}
+        if clicked >= 3: break               # CLAUDE.md: at most two retries; the polling rounds above are read-only
+        clicked += 1
         g.click(ok['x'] + ok['w'] // 2, ok['y'] + ok['h'] // 2, pause=0.8)
         if eog.gone(g, wid, timeout=9):      # probe_close_b5: the form frees itself ~4 s after the OK click (CM_RELEASE); 3 s gave up too early
             note_step(b, step='close supply dialog', ok=True, how='dialog window (X id %s) gone' % wid, attempts=k + 1)
             return
         time.sleep(1.0)
-    note_step(b, step='close supply dialog', ok=False, how='dialog gone after clicking its OK (5 attempts, each on a fresh win_state read)', attempts=5)
+    note_step(b, step='close supply dialog', ok=False, how='dialog gone after clicking its OK (3 clicks, each on a fresh win_state read)', attempts=clicked)
     raise _drv.DriverError('the Supply army dialog did not close')
 
 def load_staged(g, rec, name):

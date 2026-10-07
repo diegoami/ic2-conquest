@@ -1,0 +1,4 @@
+# WAV opens of CG_S2_b7 (strace -f -e trace=openat,open; each line is preceded by the play step whose mark the read had passed)
+[selected] 86496 openat(AT_FDCWD, "/home/diego/ic2-work-cosmetic/prefix/dosdevices/c:/IC2/WAVS/SOUND2.WAV", O_RDONLY|O_NONBLOCK) = 76
+[moved] 86496 openat(AT_FDCWD, "/home/diego/ic2-work-cosmetic/prefix/dosdevices/c:/IC2/WAVS/SOUND8.WAV", O_RDONLY|O_NONBLOCK) = 76
+# marks: {'loaded': 1762262, 'selected': 1762262, 'moved': 1775418, 'end_turn_done': 1776952}

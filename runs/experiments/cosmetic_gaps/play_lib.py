@@ -47,7 +47,13 @@ class Game3(MyGame):
     def click(self, x, y, pause=0.4):
         p = pointer_at(x, y)
         if (p['x'], p['y']) != (x, y): raise _drv.DriverError('the pointer is at %d,%d, not at %d,%d: nothing clicked' % (p['x'], p['y'], x, y))
-        CLICKS.append({'x': x, 'y': y, 'why': CTX.get('why'), 'pointer': p, 'target': CTX.get('target')}); CTX['target'] = None
+        if not CTX.get('why'): raise _drv.DriverError('click at %d,%d without a reason: nothing clicked' % (x, y))
+        if CTX.get('target') is None: raise _drv.DriverError('click at %d,%d (%s) without a target proof: nothing clicked' % (x, y, CTX['why']))
+        CLICKS.append({'x': x, 'y': y, 'why': CTX.get('why'), 'pointer': p, 'target': CTX.get('target')})
+        if CTX.get('target_multi', 1) > 1:
+            CTX['target_multi'] -= 1          # a helper whose driver retries (select_army clicks up to 3x) keeps proving the same target
+        else:
+            CTX['target'] = None; CTX['why'] = None; CTX.pop('target_multi', None)
         return MyGame.click(self, x, y, pause)
     def fresh_target(self, c):
         """Prove, by a fresh read of the running game, that control c (cls, text, x, y, w, h) is where the caller says: the form's controls by win_state, a message box's by win_controls. Returns the record of the target."""

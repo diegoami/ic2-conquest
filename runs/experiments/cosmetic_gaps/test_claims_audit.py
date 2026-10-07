@@ -38,24 +38,28 @@ class TestOneBentClaim(unittest.TestCase):
     def check_bent(self, old, new, needles):
         n, bad = audit_text(self.bent(old, new))
         self.assertTrue(bad, 'no mismatch after bending %r' % old)
-        self.assertTrue(any(all(s in b for s in needles) for b in bad), bad)
+        self.assertTrue(all(any(s in b for b in bad) for s in needles), bad)   # each needle in some mismatch
 
     def test_caption_byte(self):
         self.check_bent("`Caption = 'Buy supplies'`", "`Caption = 'Buy supplys'`", ['quotes the buy caption'])
     def test_case_number(self):
         self.check_bent('| 2 | Sound2 | a fleet sails | 51985', '| 2 | Sound2 | a fleet sails | 51986', ['site 51985'])
     def test_play_tag(self):
-        self.check_bent('`CG_S3_b3`: the scuttle', '`CG_S3_b4`: the scuttle', ['CG_S3_b4 is recorded'])
+        self.check_bent('`CG_S3_b7`: the scuttle', '`CG_S3_b4`: the scuttle', ['CG_S3_b4'])
     def test_toggle_values(self):
         self.check_bent('byte `1 → 0 → 1`', 'byte `1 → 0 → 0`', ['quoted triple'])
     def test_offset(self):
-        self.check_bent('**H+0x474 W+0x472**', '**H+0x475 W+0x472**', ['offset +0x475'])
+        self.check_bent('**H+0x472 W+0x474**', '**H+0x475 W+0x474**', ['offset +0x475'])
+    def test_wrong_but_existing_tag(self):
+        self.check_bent('`CG_S3_b7`: the scuttle', '`CG_S1_b7`: the scuttle', ['m06 CG_S1_b7 opened Sound8'])
+    def test_swapped_offsets(self):
+        self.check_bent('**H+0x472 W+0x474**', '**H+0x474 W+0x472**', ['finding claims area H at +0x472', 'finding claims area W at +0x474'])
     def test_title_claim(self):
         self.check_bent("`Imperial Conquest 2    Rome's turn   ()`", "`Imperial Conquest 2   Rome's turn   ()`",
                         ['quoted title'])
 
-class TestDfmParser(unittest.TestCase):
-    """nested children must not leak their properties into the parent (the bug the first version had)"""
+class TestProductionDfmParser(unittest.TestCase):
+    """the parser claims_audit.py itself uses (review R10: a copied parser could pass while production broke)"""
     DFM = """# header
 object AFSupply: TAFSupply
   Caption = 'Supply army'
@@ -66,6 +70,10 @@ object AFSupply: TAFSupply
   object btn_buy: TButton
     Left = 320
     Caption = 'Buy supplies'
+    object nested: TBevel
+      Caption = 'never leaks'
+    end
+    Top = 136
   end
 end
 """
@@ -73,21 +81,15 @@ end
         with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False) as f:
             f.write(self.DFM); p = f.name
         try:
-            dfm = {}; obj = None
-            for l in open(p):
-                m = re.match(r'\s*object (\w+): (\w+)', l)
-                if m:
-                    obj = m.group(1); dfm[obj] = {'cls': m.group(2), 'props': {}}
-                    continue
-                m = re.match(r'\s+(\w+) = (.*)$', l)
-                if obj and m and not l.lstrip().startswith('end'):
-                    dfm[obj]['props'][m.group(1)] = m.group(2).rstrip()
+            dfm = CA.parse_dfm(p)
         finally:
             os.unlink(p)
         self.assertEqual(dfm['AFSupply']['props']['Caption'], "'Supply army'")
-        self.assertEqual(dfm['AFSupply']['props']['ClientWidth'], '470')
+        self.assertEqual(dfam := dfm['AFSupply']['props'], dfam)  # noqa: F841 (readability)
+        self.assertNotIn('Left', dfm['AFSupply']['props'])
         self.assertEqual(dfm['btn_buy']['props']['Caption'], "'Buy supplies'")
-        self.assertNotIn('Caption', dfm.get('AFSupply', {}))
+        self.assertEqual(dfm['nested']['props']['Caption'], "'never leaks'")
+        self.assertNotIn('Caption', dfm['nested']['props'].get('Top', {}))
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

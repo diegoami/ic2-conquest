@@ -41,10 +41,17 @@ class TestRecordings(unittest.TestCase):
 
     def test_tags_unique(self):
         seen = {}
+        canon = {}
         for f, r in RECS:
             tag = r.get('tag') or 'CG_%s_%s' % (r['play'], r['batch'])
+            if 'partial' in f:
+                continue          # the restored b2 partial is historical: its tags must exist canonically, checked below
             self.assertNotIn(tag, seen, '%s also recorded in %s' % (tag, seen.get(tag)))
-            seen[tag] = f
+            seen[tag] = f; canon[tag] = f
+        for f, r in RECS:
+            if 'partial' in f:
+                tag = r.get('tag') or 'CG_%s_%s' % (r['play'], r['batch'])
+                self.assertIn(tag, canon, '%s: the partial records a play no canonical file holds' % tag)
 
     def test_clicks_pointer_read_back(self):
         for f, r in RECS:
