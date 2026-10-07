@@ -1,16 +1,16 @@
 test_accepts_when_archive_matches (__main__.TestClearAutosRefuses.test_accepts_when_archive_matches)
-A same-name archived copy with matching content - must accept. ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmplvitztb6/CG_S2_b7_AUTO0721.SAV'>
+A same-name archived copy with matching content - must accept. ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmpnwyy_2jf/CG_S2_b7_AUTO0721.SAV'>
   def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmplvitztb6/G/AUTO0721.SAV'>
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmpnwyy_2jf/G/AUTO0721.SAV'>
   def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
 ok
 test_refuses_when_archive_stale (__main__.TestClearAutosRefuses.test_refuses_when_archive_stale)
-A same-name archived copy whose contents DIFFER from the live save - must refuse. ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmpsrwohfb6/CG_S2_b7_AUTO0721.SAV'>
+A same-name archived copy whose contents DIFFER from the live save - must refuse. ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmp54ucm4gq/CG_S2_b7_AUTO0721.SAV'>
   def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmpsrwohfb6/G/AUTO0721.SAV'>
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/lib.py:71: ResourceWarning: unclosed file <_io.BufferedReader name='/tmp/tmp54ucm4gq/G/AUTO0721.SAV'>
   def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
 ok
@@ -148,7 +148,7 @@ test_tags_unique (__main__.TestRecordings.test_tags_unique) ... ok
 test_there_are_recordings (__main__.TestRecordings.test_there_are_recordings) ... ok
 
 ----------------------------------------------------------------------
-Ran 17 tests in 1.030s
+Ran 17 tests in 1.041s
 
 OK
 exit=0
