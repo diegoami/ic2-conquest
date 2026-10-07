@@ -18,14 +18,18 @@ import glob, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from paths import DATA
-from common import write_new
+from common import write_new, latest
 
 HUMAN = 'Rome'
 
 
 def load_turns():
     out = {}
-    for p in sorted(glob.glob(DATA + 'turns/AUTO*.json')):
+    turns = set(int(m.group(1)) for m in
+                (re.search(r'AUTO(\d+)\.SAV', p) for p in glob.glob(DATA + 'turns/AUTO*'))
+                if m)
+    for t in sorted(turns):
+        p = latest('%sturns/AUTO%04d.SAV.json' % (DATA, t))
         with open(p) as f:
             d = json.load(f)
         out[d['turn']] = d
