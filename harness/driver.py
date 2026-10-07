@@ -124,7 +124,17 @@ class Game:
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         self.wait(lambda: self.find_windows("^Imperial Conquest 2$"), 40, "main window")
         time.sleep(3)
-        self.pid = int(subprocess.check_output(["pgrep", "-f", "^Imperial Conquest"]).split()[0])
+        # Several sessions run their own game in their own prefix: pick OUR pid by its working
+        # directory (the game folder inside this session's prefix), not just the first pgrep match.
+        for pid in subprocess.check_output(["pgrep", "-f", "^Imperial Conquest"]).split():
+            try:
+                if Path(os.readlink(f"/proc/{int(pid)}/cwd")) == Path(G):
+                    self.pid = int(pid)
+                    break
+            except OSError:
+                continue
+        if self.pid is None:
+            raise DriverError("started game not found by working directory " + str(G))
 
     def wait(self, cond, timeout, what, step=0.5):
         t = time.time()
