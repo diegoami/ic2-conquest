@@ -295,3 +295,14 @@ already tracked there.
   `harness/driver.py` (rule 1).
 - Whether to keep `experiment/cosmetic-gaps` as the resume branch or fold the runner
   into `experiment/leaders-form` is the owner's call.
+## STOPPED 2026-10-07 evening: zai 5h window 93% (resets ~3h). PR #66 ROUND 3 = REWORK, 6 findings NOT YET APPLIED. Resume:
+
+The round-3 comment is on the PR (also rendered/pr66-fb3919/run-1/stdout.log). Triage:
+- **R2 (text fix)**: the markers paragraph in the finding credits CG_T3_b8; the markers play is CG_T3B_b8 (b8's T3 has no Show-armies click). One-line fix + audit tag-binding (R1b).
+- **R6 (answered, not yet written in)**: measured on the b8 screenshots (run length of identical grey pixels across the map face): byte 1 = mean run 45 px (long uniform regions: the political/mono-STYLE image set), byte 0 = mean 17.5 px (short per-tile variation: terrain-STYLE). The byte selects the ImageList index (FUN_00417550 = ImageList_DrawEx, the flag is the image index). Write this into the finding [confirmed by measurement, via a small tracked script], say which set is which by THESE properties, not the inventory's names.
+- **R1 (audit)**: bind the finding's per-row triggers/literals (e.g. case-3's 'type byte = 2' vs the extract line's == 2 condition), UA01 table rows' tags to THEIR dialog records (own-city tag swapped for staged tag must fail), and use the extract version the finding NAMES (not latest()).
+- **R3 (test_runner)**: per-kind required proof fields (win_state needs line+x+y+w+h; tooltip needs x; ocr needs word+region; tile needs tile; panel needs panel_line+rect; root needs root id), fabricated/missing-field negative tests per kind; extract Game3.click's guard into a testable function.
+- **R4 (cg.end_turn)**: raise DriverError on the 60s timeout (completion condition unmet), record the failed verification; no second click. Test via a refactored wait loop with a stub.
+- **R5 (scenarios/clear_autos)**: harvest every play's autosaves (T1's second end turn was lost to the next start_game's clear_autos); make clear_autos refuse when unharvested AUTO files remain (harvest under a _prestart tag); re-run T1 as b9, keep b8.
+
+After the rework: audit + tests green, archive b9, commit, round 4. Then merge on approve + green CI. Then the AI-TURN CORROBORATION (owner-routed; task file docs/tasks/ai-turn-corroboration.md is on this branch; corrected research report = commit 7d7b613): week-11 tax on +0x44A first (sav.py tax/unity/treasury/wealth diffs per End turn, fixed seed), then the free merc hire. THE OWNER SAID: STOP AFTER FINISHING THAT TASK (no #722, nothing after).
