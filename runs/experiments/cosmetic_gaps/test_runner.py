@@ -201,29 +201,96 @@ class TestEndTurnTimeout(unittest.TestCase):
             eog.autosave_lines = orig_aal; cg.boxes = orig_boxes
 
 class TestClearAutosRefuses(unittest.TestCase):
-    """R5: clear_autos must REFUSE to delete an AUTO*.SAV that hasn't been harvested (no copy under SAVEDIR) - so
-    an unharvested measured output cannot be silently deleted. The check raises DriverError."""
-    def test_refuses_unharvested(self):
+    """R5/R1: clear_autos must refuse to delete a live autosave unless a same-name archived copy exists AND
+    the live save's content (sha256) matches that archived copy (review R1/R5)."""
+    def test_refuses_when_no_archive(self):
         import eog, lib, os, tempfile
-        import tempfile
         with tempfile.TemporaryDirectory() as td:
             from lib import _drv as ld
-            orig_g, orig_savedir = ld.G, eog.SAVEDIR
-            ld.G = type('P', (), {'glob': lambda self, pat: [type('F', (), {'name': 'AUTO0721.SAV', 'suffix': '.SAV', 'unlink': lambda *a, **kw: None})]})()
-            eog.SAVEDIR = td
+            orig_g, orig_savedir = ld.G, lib.SAVEDIR
+            if not td.endswith('/'): td += '/'
+            class FakeF:
+                def __init__(self, path): self._path = path; self.name = path.split('/')[-1]
+                def __str__(self): return self._path
+                def __fspath__(self): return self._path
+                @property
+                def suffix(self): return '.' + self.name.split('.', 1)[1] if '.' in self.name else ''
+                def unlink(self, *a, **kw): pass
+            class FakeG:
+                def __init__(self, live): self._live = live
+                def glob(self, pat): return [FakeF(self._live)]
+            live_file = td + 'G/AUTO0721.SAV'
+            os.makedirs(os.path.dirname(live_file))
+            with open(live_file, 'wb') as f: f.write(b'X')
+            ld.G = FakeG(live_file); lib.SAVEDIR = td; eog.SAVEDIR = td
             try:
-                eog.clear_autos(); self.fail('clear_autos should have raised when nothing harvested')
+                eog.clear_autos(); self.fail('clear_autos should raise when nothing harvested')
             except Exception as e:
                 self.assertIn('not harvested', repr(e))
-            # write a tag-prefixed harvested copy of the same name and confirm clear_autos accepts
-            open(td + '/CG_S2_b7_AUTO0721.SAV', 'wb').close()
-            try:
-                eog.clear_autos()             # the unlink() is a no-op; the file MUST be GLOB-able to be iterated
-            except Exception as e:
-                self.fail('clear_autos rejected a harvested (tag-prefixed) save: %s' % e)
             finally:
-                ld.G = orig_g; eog.SAVEDIR = orig_savedir
+                ld.G = orig_g; eog.SAVEDIR = td; lib.SAVEDIR = orig_savedir
 
+    def test_refuses_when_archive_stale(self):
+        """A same-name archived copy whose contents DIFFER from the live save - must refuse."""
+        import eog, lib, os, tempfile
+        with tempfile.TemporaryDirectory() as td:
+            from lib import _drv as ld
+            orig_g, orig_savedir = ld.G, lib.SAVEDIR
+            if not td.endswith('/'): td += '/'
+            live_file = td + 'G/AUTO0721.SAV'
+            os.makedirs(os.path.dirname(live_file))
+            with open(live_file, 'wb') as f:
+                f.write(b'LIVE-FRESH'); f.flush(); os.fsync(f.fileno())
+            with open(td + 'CG_S2_b7_AUTO0721.SAV', 'wb') as f:
+                f.write(b'OLD-ARCHIVE'); f.flush(); os.fsync(f.fileno())
+            class FakeF:
+                def __init__(self, path): self._path = path; self.name = path.split('/')[-1]
+                def __str__(self): return self._path
+                def __fspath__(self): return self._path
+                @property
+                def suffix(self): return '.' + self.name.split('.', 1)[1] if '.' in self.name else ''
+                def unlink(self, *a, **kw): pass
+            class FakeG:
+                def __init__(self, live): self._live = live
+                def glob(self, pat): return [FakeF(self._live)]
+            ld.G = FakeG(live_file); lib.SAVEDIR = td; eog.SAVEDIR = td
+            try:
+                eog.clear_autos(); self.fail('clear_autos should raise when archive is stale (different content)')
+            except Exception as e:
+                self.assertIn('differs from its harvested copy', repr(e))
+            finally:
+                ld.G = orig_g; eog.SAVEDIR = td; lib.SAVEDIR = orig_savedir
 
+    def test_accepts_when_archive_matches(self):
+        """A same-name archived copy with matching content - must accept."""
+        import eog, lib, os, tempfile
+        with tempfile.TemporaryDirectory() as td:
+            from lib import _drv as ld
+            orig_g, orig_savedir = ld.G, lib.SAVEDIR
+            if not td.endswith('/'): td += '/'
+            live_file = td + 'G/AUTO0721.SAV'
+            os.makedirs(os.path.dirname(live_file))
+            content = b'MATCHING-CONTENT-1234'
+            with open(live_file, 'wb') as f:
+                f.write(content); f.flush(); os.fsync(f.fileno())
+            with open(td + 'CG_S2_b7_AUTO0721.SAV', 'wb') as f:
+                f.write(content); f.flush(); os.fsync(f.fileno())
+            class FakeF:
+                def __init__(self, path): self._path = path; self.name = path.split('/')[-1]
+                def __str__(self): return self._path
+                def __fspath__(self): return self._path
+                @property
+                def suffix(self): return '.' + self.name.split('.', 1)[1] if '.' in self.name else ''
+                def unlink(self, *a, **kw): pass
+            class FakeG:
+                def __init__(self, live): self._live = live
+                def glob(self, pat): return [FakeF(self._live)]
+            ld.G = FakeG(live_file); lib.SAVEDIR = td; eog.SAVEDIR = td
+            try:
+                eog.clear_autos()                 # must not raise
+            except Exception as e:
+                self.fail('clear_autos refused an identical-content archive: %s' % e)
+            finally:
+                ld.G = orig_g; eog.SAVEDIR = td; lib.SAVEDIR = orig_savedir
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -129,30 +129,40 @@ def harvest(tag):
         out.append(os.path.basename(dst))
     return out
 
-def _harvested_save_set():
-    """Every save currently kept in SAVEDIR, keyed by the live AUTO*.SAV name it shadows (a kept save
-    `<tag>_AUTO0721.SAV` shadows the live `AUTO0721.SAV`). Used by clear_autos (R7)."""
-    out = set()
+def _harvested_save_index():
+    """Every keep in SAVEDIR: a dict {live_auto_name -> sha256 of the harvested copy}. Used by clear_autos
+    (review R1/R5 - by-content match; an older same-name copy whose contents differ does not authorise
+    deletion of a freshly measured save)."""
+    out = {}
     for f in sorted(os.listdir(SAVEDIR)):
         if not f.endswith('.SAV'): continue
-        # extract the trailing AUTOnnnn.SAV if the file was prefixed
         i = f.rfind('_AUTO')
-        if i >= 0:
-            out.add(f[i + 1:])
-        elif f.startswith('AUTO'):
-            out.add(f)
+        if i >= 0: key = f[i + 1:]
+        elif f.startswith('AUTO'): key = f
+        else: continue
+        try:
+            out[key] = sha(SAVEDIR + f)
+        except OSError: pass
     return out
 
 def clear_autos():
     """Remove the AUTO*.SAV and AUTOSAVE.LOG of MY game folder before a scenario - only when every live
-    AUTO*.SAV has been HARVESTED (some <tag>_<autoname> copy exists in SAVEDIR; the harvest prefix is
-    stripped when checking, R7): refuses to delete an autosave the runner has not copied first."""
-    harvested_basenames = _harvested_save_set()
+    AUTO*.SAV has been HARVESTED (a <tag>_<autoname> copy in SAVEDIR) AND the harvested copy's sha256
+    matches the live save's sha256 (review R1/R5: the same basename alone is not sufficient - a fresh
+    measurement differs from an old archive and would be silently deleted)."""
+    harvested = _harvested_save_index()
     for f in list(_drv.G.glob('AUTO*')):
         if f.suffix != '.SAV':
             f.unlink(); continue
-        if f.name not in harvested_basenames:
+        kept = harvested.get(f.name)
+        if not kept:
             raise _drv.DriverError('clear_autos: %s was not harvested (no <tag>_%s in %s); harvest it first or rename this plays tag' % (f.name, f.name, SAVEDIR))
+        try:
+            live_sha = sha(str(f))
+        except OSError:
+            raise _drv.DriverError('clear_autos: cannot read live %s to compare' % f.name)
+        if kept != live_sha:
+            raise _drv.DriverError('clear_autos: %s differs from its harvested copy (kept sha %s, live sha %s); the archive is stale - harvest again before deleting' % (f.name, kept, live_sha))
         f.unlink()
 
 def _ids():

@@ -51,8 +51,8 @@ def _decode_png(path):
                 a = row[x - bpp] if x >= bpp else 0     # left (reconstructed: same row, bpp bytes to the left)
                 b = prev[x]                              # above (already reconstructed: previous row's byte)
                 c = prev[x - bpp] if x >= bpp else 0     # upper-left (previous row, bpp to the left)
-                p = a + b - c                            # initial prediction
-                pa, pb, pc = abs(p - a), abs(p - b), abs(p - c)
+                pp = a + b - c                           # initial prediction (NOT the cursor `p`)
+                pa, pb, pc = abs(pp - a), abs(pp - b), abs(pp - c)
                 if pa <= pb and pa <= pc: pr = a
                 elif pb <= pc: pr = b
                 else: pr = c                            # Paeth's SELECTOR is the predictor value a/b/c
@@ -76,13 +76,12 @@ def _decode_png(path):
                 out[y * W + x] = plte[row[x] * 3]
         return W, H, bytes(out)
     if ctype == 4:
-        grey = bytearray(W * H)
+        # ctype 4 = grayscale + alpha, 2 bytes/pixel; we only need the grey channel
+        out = bytearray(W * H)
         for y, row in enumerate(rows):
-            o = y * W
             for x in range(W):
-                r, g, b = row[4 * x], row[4 * x + 1], row[4 * x + 2]
-                grey[o + x] = (r * 299 + g * 587 + b * 114) // 1000
-        return W, H, bytes(grey)
+                out[y * W + x] = row[2 * x]
+        return W, H, bytes(out)
     raise ValueError('unsupported color type %d' % ctype)
 
 # ----- measure the map-face crop's identical-grey-pixel runs -----

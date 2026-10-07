@@ -28,16 +28,49 @@ def _paeth(a, b, c):
     if pb <= pc: return b
     return c
 
-def encode_paeth(W, bpp, raw):
-    """raw = W * bpp bytes (one scanline). Returns the encoded scanline (filter type 4 + filter bytes)."""
+def encode_filter(W, bpp, raw, prev):
+    """Generic encoder: encode `raw` (W*bpp) given the previous reconstructed row `prev` (bytes, W*bpp)."""
+    # Paeth encodes using: a = raw[x-bpp] (this row, left), b = prev[x] (above), c = prev[x-bpp] (upper-left).
+    # Per PNG spec: encoder uses raw (not reconstructed) for a and c. b is the previously reconstructed byte.
     enc = bytearray()
     for i in range(len(raw)):
         if i < bpp:
             enc.append(raw[i])
         else:
-            a = raw[i - bpp]; b = 0; c = 0       # single-row image: no prev row
+            a = raw[i - bpp]; b = prev[i]; c = prev[i - bpp]
             enc.append((raw[i] - _paeth(a, b, c)) & 0xFF)
     return b'\x04' + bytes(enc)
+
+def encode_sub(W, bpp, raw, prev):
+    enc = bytearray()
+    for i in range(len(raw)):
+        if i < bpp: enc.append(raw[i])
+        else: enc.append((raw[i] - raw[i - bpp]) & 0xFF)
+    return b'\x01' + bytes(enc)
+
+def encode_up(W, bpp, raw, prev):
+    return b'\x02' + bytes([(raw[i] - prev[i]) & 0xFF for i in range(len(raw))])
+
+def encode_avg(W, bpp, raw, prev):
+    enc = bytearray()
+    for i in range(len(raw)):
+        if i < bpp: enc.append((raw[i] - 0) & 0xFF)
+        else:
+            a = raw[i - bpp]; b = prev[i]
+            enc.append((raw[i] - ((a + b) >> 1)) & 0xFF)
+    return b'\x03' + bytes(enc)
+
+def encode_filter0(W, bpp, raw, prev):
+    return b'\x00' + bytes(raw)
+
+def encode_multi_row(W, bpp, rows, fn):
+    """Apply `fn(W, bpp, raw, prev)` per row. prev starts as all-zeros (the implicit row above the first)."""
+    prev = bytes(W * bpp)
+    out = []
+    for r in rows:
+        out.append(fn(W, bpp, r, prev))
+        prev = r                              # for the NEXT row's encoding, prev is THIS row's reconstructed values
+    return out
 
 def encode_sub(W, bpp, raw):
     enc = bytearray()
@@ -85,7 +118,7 @@ _ENC_1ROW = {
     'sub':      lambda W, bpp, raw: encode_sub(W, bpp, raw),
     'up':       lambda W, bpp, raw: encode_up(W, bpp, raw),
     'average':  lambda W, bpp, raw: encode_avg(W, bpp, raw),
-    'paeth':    lambda W, bpp, raw: encode_paeth(W, bpp, raw),
+    'paeth':    lambda W, bpp, raw: encode_filter(W, bpp, raw, bytes(W*bpp)),
 }
 
 def main():
