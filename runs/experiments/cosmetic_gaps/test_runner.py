@@ -7,6 +7,10 @@ recording is evidence only if its clicks were verified. For EVERY recording, eve
    line proved a click target), and FAILED plays carry an error plus a failure screenshot;
  * every screenshot the recordings name exists under artifacts/ and is hashed in SAVES.sha256;
  * the strace-tagged plays recorded their strace log name, and its harvested wav_opens file exists.
+usage: python3 test_runner.py * for every recording of a HARDENED batch (the runner that rejects unproved clicks): every click carries a target proof
+   whose `src` is one of the known kinds, and a control-line or tooltip target's rectangle contains the click's point;
+   a play without any such proof cannot be cited.
+Negative tests forge records with a missing, a null and an inconsistent target and require each to fail the same validator.
 usage: python3 test_runner.py"""
 import os, sys, json, glob, hashlib, unittest
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -25,6 +29,29 @@ def recordings():
     return out
 
 RECS = recordings()
+HARDENED = {'b7', 'b8', 'close-probe2'}          # batches recorded after the runner began rejecting unproved clicks
+PROOF_SRCS = {'tooltip', 'win_state', 'win_controls', 'ocr', 'driver tile targeting', 'xdotool getmouselocation', 'panel + form resource'}
+
+def click_proofs_ok(rec, strict):
+    """(ok, problems): every click carries why + (strict: a target whose src is a known proof kind, and a control
+    line's rectangle or a tooltip's x covers the click point)"""
+    probs = []
+    for i, c in enumerate(rec.get('clicks', [])):
+        if not c.get('why'): probs.append('click %d without a reason' % i)
+        t = c.get('target')
+        if not strict: continue
+        if not t or t.get('src') not in PROOF_SRCS:
+            probs.append('click %d (%s) without a valid target proof: %r' % (i, c.get('why'), t)); continue
+        if t['src'] in ('win_state', 'win_controls') and 'line' in t:
+            if not (t.get('x', -1) <= c['x'] <= t.get('x', -1) + t.get('w', 0) and t.get('y', -1) <= c['y'] <= t.get('y', -1) + t.get('h', 0)):
+                probs.append('click %d outside its control rectangle %r' % (i, t))
+        if t['src'] == 'tooltip' and abs(t.get('x', c['x']) - c['x']) > 3:
+            probs.append('click %d not at its tooltip-proved x %r' % (i, t))
+        if t['src'] == 'panel + form resource' and 'rect' in t:
+            rx, ry, rw, rh = t['rect']
+            if not (rx <= c['x'] < rx + rw and ry <= c['y'] < ry + rh):
+                probs.append('click %d outside its speed-button rectangle %r' % (i, t))
+    return not probs, probs
 HASHES = {}
 for l in open(DATA + 'SAVES.sha256'):
     p = l.split()
@@ -52,6 +79,15 @@ class TestRecordings(unittest.TestCase):
             if 'partial' in f:
                 tag = r.get('tag') or 'CG_%s_%s' % (r['play'], r['batch'])
                 self.assertIn(tag, canon, '%s: the partial records a play no canonical file holds' % tag)
+
+    def test_clicks_carry_target_proofs(self):
+        seen = 0
+        for f, r in RECS:
+            if r.get('batch') not in HARDENED: continue
+            seen += 1
+            ok, probs = click_proofs_ok(r, strict=True)
+            self.assertTrue(ok, '%s %s: %s' % (f, r.get('tag'), probs))
+        self.assertGreater(seen, 5, 'no hardened recordings found to check')
 
     def test_clicks_pointer_read_back(self):
         for f, r in RECS:
@@ -86,6 +122,26 @@ class TestRecordings(unittest.TestCase):
                 self.assertTrue(r.get('wav_opens'), '%s %s: strace play without a harvest' % (f, r.get('tag')))
                 self.assertTrue(os.path.exists(DATA + r['wav_opens']), r['wav_opens'])
                 self.assertTrue(find_art(r['strace_log']), r['strace_log'])
+
+class TestForgedRecords(unittest.TestCase):
+    """negative tests: the validator must REJECT a missing, a null and an inconsistent target (review R3)"""
+    BASE = {'batch': 'b8', 'status': 'ok', 'verified': [{'step': 'x', 'ok': True}],
+            'clicks': [{'x': 10, 'y': 20, 'why': 'control X', 'pointer': {'x': 10, 'y': 20, 'window': 1},
+                        'target': {'src': 'win_state', 'x': 0, 'y': 0, 'w': 30, 'h': 40, 'line': 'X'}}]}
+    def test_valid_passes(self):
+        ok, probs = click_proofs_ok(self.BASE, strict=True); self.assertEqual(probs, [])
+    def test_missing_target(self):
+        r = json.loads(json.dumps(self.BASE)); del r['clicks'][0]['target']
+        ok, probs = click_proofs_ok(r, strict=True); self.assertTrue(probs)
+    def test_null_target(self):
+        r = json.loads(json.dumps(self.BASE)); r['clicks'][0]['target'] = None
+        ok, probs = click_proofs_ok(r, strict=True); self.assertTrue(probs)
+    def test_inconsistent_target(self):
+        r = json.loads(json.dumps(self.BASE)); r['clicks'][0]['x'] = 500
+        ok, probs = click_proofs_ok(r, strict=True); self.assertTrue(probs)
+    def test_unknown_proof_src(self):
+        r = json.loads(json.dumps(self.BASE)); r['clicks'][0]['target'] = {'src': 'guessed'}
+        ok, probs = click_proofs_ok(r, strict=True); self.assertTrue(probs)
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

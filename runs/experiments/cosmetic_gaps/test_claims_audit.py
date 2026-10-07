@@ -54,6 +54,10 @@ class TestOneBentClaim(unittest.TestCase):
         self.check_bent('`CG_S3_b7`: the scuttle', '`CG_S1_b7`: the scuttle', ['m06 CG_S1_b7 opened Sound8'])
     def test_swapped_offsets(self):
         self.check_bent('**H+0x472 W+0x474**', '**H+0x474 W+0x472**', ['finding claims area H at +0x472', 'finding claims area W at +0x474'])
+    def test_derived_flipped_to_confirmed(self):
+        self.check_bent('| 3 | Sound3 | battle ranged attack, firing unit\'s type byte = 2 | 38975 in `FUN_0043910c` | `[derived]` |',
+                        '| 3 | Sound3 | battle ranged attack, firing unit\'s type byte = 2 | 38975 in `FUN_0043910c` | `[confirmed]` |',
+                        ['confirmed row cites a recording'])
     def test_title_claim(self):
         self.check_bent("`Imperial Conquest 2    Rome's turn   ()`", "`Imperial Conquest 2   Rome's turn   ()`",
                         ['quoted title'])
@@ -70,9 +74,9 @@ object AFSupply: TAFSupply
   object btn_buy: TButton
     Left = 320
     Caption = 'Buy supplies'
-    object nested: TBevel
-      Caption = 'never leaks'
-    end
+      object nested: TBevel
+        Caption = 'never leaks'
+      end
     Top = 136
   end
 end
@@ -89,7 +93,7 @@ end
         self.assertNotIn('Left', dfm['AFSupply']['props'])
         self.assertEqual(dfm['btn_buy']['props']['Caption'], "'Buy supplies'")
         self.assertEqual(dfm['nested']['props']['Caption'], "'never leaks'")
-        self.assertNotIn('Caption', dfm['nested']['props'].get('Top', {}))
-
+        self.assertEqual(dfm['btn_buy']['props']['Top'], '136')      # a property AFTER a nested child's end returns to the parent
+        self.assertEqual(dfm['nested']['props'], {'Caption': "'never leaks'"})
 if __name__ == '__main__':
     unittest.main(verbosity=2)

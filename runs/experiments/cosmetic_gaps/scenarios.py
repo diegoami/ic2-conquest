@@ -40,24 +40,30 @@ def mark(g, rec, key):
     if os.environ.get('IC2_STRACE'):
         rec.setdefault('strace_marks', {})[key] = os.path.getsize(os.environ['IC2_STRACE'])
 
-def harvest_wavs(tag, rec):
-    """Every WAV open in this play's strace log, with the step marks (log byte offsets) it falls between, into a tracked
-    file (rule 6). strace prefixes each line with the write offset only with -yy/-qq; instead the log is read in order and
-    each match is attributed to the step whose marked offset the file pointer has passed."""
-    logp = os.environ.get('IC2_STRACE')
-    if not logp: return None
-    marks = sorted(rec.get('strace_marks', {}).items(), key=lambda kv: kv[1])
-    out = ['# WAV opens of %s (strace -f -e trace=openat,open; each line is preceded by the play step whose mark the read had passed)' % tag]
+def attribute_wavs(logp, marks, tag):
+    """Every WAV open in a strace log, attributed to the play step whose mark precedes the line's START byte offset
+    (a line that ENDS exactly at a mark belongs to the earlier step: attribution by the start offset, so a line is
+    never pulled into a step whose mark was taken while the line was still being written)."""
+    marks = sorted(marks.items(), key=lambda kv: kv[1])
+    out = ['# WAV opens of %s (strace -f -e trace=openat,open; each line is attributed by its start offset to the step whose mark it follows)' % tag]
     step = 'before_load'
     pos = 0
     with open(logp, errors='replace') as f:
         for l in f:
+            start = pos
             pos += len(l.encode('utf-8', 'replace'))
-            while marks and pos >= marks[0][1]:
+            while marks and start >= marks[0][1]:
                 step = marks.pop(0)[0]
             if '.WAV' in l.upper() and 'SOUND' in l.upper():
                 out.append('[%s] %s' % (step, l.rstrip()))
-    out.append('# marks: ' + repr(rec.get('strace_marks', {})))
+    out.append('# marks remaining unconsumed: ' + repr(dict(marks)))
+    return out
+
+def harvest_wavs(tag, rec):
+    """The play's own strace log (IC2_STRACE), harvested into a tracked file (rule 6: versioned, never overwritten)."""
+    logp = os.environ.get('IC2_STRACE')
+    if not logp: return None
+    out = attribute_wavs(logp, rec.get('strace_marks', {}), tag)
     p = write_new(os.path.join(DATA, 'wav_opens_%s.txt' % tag), '\n'.join(out) + '\n')
     rec['wav_opens'] = os.path.basename(p)
     return p
@@ -142,6 +148,31 @@ def t4(g, tag, rec):
     snap_rec(g2, rec, 'after_reload', '%s_after_reload.png' % tag)
     capture(g2, tag, rec, 'state', 'after_reload')
     g2.kill()
+
+
+# ---- T3B: markers drawn BEFORE the toggle (review R1): do army markers survive the repaint?
+def t3b(g, tag, rec):
+    rec['load_boxes'] = load_fixture(g, rec, FIX_START, 'start')
+    aw = area_window(g)
+    if not aw: raise _drv.DriverError('no Area map window after the load')
+    wid = aw[0]; rec['area_wid'] = wid; rec['area_geo'] = list(win_geo(g, wid))
+    x, y, w, h = rec['area_geo']
+    maprect = (x + 8, y + 34, w - 16, h - 44)
+    n0, b0 = toggle_byte(g); rec['toggle_before'] = {'nation': n0, 'byte': b0}
+    rec['hash_markers'] = cg.region_hash(g, maprect)
+    snap_win(g, rec, 'markers', wid, '%s_area_markers.png' % tag)
+    rec['hint_markers'] = click_sb(g, 'sb_areaarms', 'show armies markers (draw markers before the toggle)')
+    rec['hash_markers_on'] = cg.region_hash(g, maprect)
+    snap_win(g, rec, 'markers_on', wid, '%s_area_markers_on.png' % tag)
+    rec['hint_tog1'] = click_sb(g, 'sb_areatog', 'toggle colour (first click, markers drawn)')
+    rec['hash_toggled'] = cg.region_hash(g, maprect)
+    snap_win(g, rec, 'toggled', wid, '%s_area_toggled.png' % tag)
+    n1, b1 = toggle_byte(g); rec['toggle_after_one'] = {'nation': n1, 'byte': b1}
+    rec['hint_tog2'] = click_sb(g, 'sb_areatog', 'toggle colour (second click, markers drawn)')
+    rec['hash_back'] = cg.region_hash(g, maprect)
+    snap_win(g, rec, 'back', wid, '%s_area_back.png' % tag)
+    n2, b2 = toggle_byte(g); rec['toggle_after_two'] = {'nation': n2, 'byte': b2}
+    capture(g, tag, rec, 'state', 'after_markers_toggle')
 
 # ---- S1: an army move (strace on: which WAV opens)
 def s1(g, tag, rec):
@@ -300,6 +331,7 @@ SC = {'T1': dict(seed=12345, fn=t1, note='title at start / form open / first tur
       'T2': dict(seed=12345, fn=t2, note='title after loading a save with a named leader, and after End turn'),
       'T3': dict(seed=12345, fn=t3, note='Area map colour toggle: byte, hashes and screenshots before / one / two clicks'),
       'T4': dict(seed=12345, fn=t4, note='move the Area map, End turn, the SAV words, reload: position restored'),
+      'T3B': dict(seed=12345, fn=t3b, note='army markers drawn before the colour toggle: do they survive the repaint?'),
       'S1': dict(seed=12345, fn=s1, note='army move under strace', strace=True),
       'S2': dict(seed=12345, fn=s2, note='fleet move under strace', strace=True),
       'S3': dict(seed=12345, fn=s3, note='scuttle a fleet under strace', strace=True),

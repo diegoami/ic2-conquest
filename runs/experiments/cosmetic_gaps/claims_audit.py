@@ -19,6 +19,7 @@ Exit status 0 only with 0 mismatches."""
 import sys, os, re, json, glob, hashlib, argparse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths
+sys.path.insert(0, paths.ROOT)      # state/sav.py for the SAV decodes
 from common import latest, write_new
 
 def run(finding, data, art, quiet=True):
@@ -206,31 +207,86 @@ def run(finding, data, art, quiet=True):
         for tag in re.findall(r'(CG_S\d+_b\d+)', row.group(0)):
             r = plays.get(tag)
             check('m06 row case %d cites %s (ok)' % (case, tag), r is not None and r.get('status') == 'ok', 'status %s' % (r or {}).get('status'))
+            check('m06 %s recorded a wav harvest' % tag, bool((r or {}).get('wav_opens')), 'no wav_opens in the recording')
             if r and r.get('wav_opens'):
-                check('m06 %s opened Sound%d.WAV' % (tag, case), ('SOUND%d.WAV' % case) in open(data + r['wav_opens'], errors='replace').read(), r['wav_opens'])
+                stem = r['wav_opens'].rsplit('.txt', 1)[0]
+                vs = sorted(glob.glob(data + stem + '*.txt'))
+                hp = vs[-1] if vs else data + r['wav_opens']         # the LATEST versioned harvest (re-harvests sit beside the first)
+                body = open(hp, errors='replace').read()
+                hit = [m2 for m2 in re.finditer(r'\[(\w+)\].*SOUND%d\.WAV' % case, body)]
+                EVENT_STEPS = {'S1': {'selected', 'moved'}, 'S2': {'selected', 'moved'}, 'S3': {'dialog', 'confirmed'}, 'S4': {'loaded', 'end_turn_done'}}
+                steps = EVENT_STEPS.get(tag.split('_')[1], None)
+                check('m06 %s opened Sound%d.WAV inside the event interval %s' % (tag, case, sorted(steps) if steps else None),
+                      bool(hit) and (steps is None or any(m2.group(1) in steps for m2 in hit)), hp)
 
     # M04 plays
-    t1 = P('CG_T1_b1b')['titles']
+    t1 = P('CG_T1_b8')['titles']
     check('t1 at_start bare', t1.get('at_start', {}).get('name') == 'Imperial Conquest 2', t1.get('at_start'))
     check('t1 form_open bare', t1.get('form_open', {}).get('name') == 'Imperial Conquest 2', t1.get('form_open'))
     check('t1 after_ok empty leader', t1.get('after_ok', {}).get('name') == "Imperial Conquest 2    Rome's turn   ()", repr(t1.get('after_ok', {}).get('name')))
-    t2 = P('CG_T2_b1c')['titles']
+    t2 = P('CG_T2_b7')['titles']
     check('t2 after_load leader', t2.get('after_load', {}).get('name') == "Imperial Conquest 2    Rome's turn   (Appius Claudius)", repr(t2.get('after_load', {}).get('name')))
 
     # A01 play
-    t3 = P('CG_T3_b1c')
+    t3 = P('CG_T3_b8')
     check('t3 toggle 1->0->1', (t3.get('toggle_before', {}).get('byte'), t3.get('toggle_after_one', {}).get('byte'), t3.get('toggle_after_two', {}).get('byte')) == (1, 0, 1),
           (t3.get('toggle_before'), t3.get('toggle_after_one'), t3.get('toggle_after_two')))
     check('t3 hashes in the finding', set(re.findall(r'\d+\.\d{3}', fm)) >= {str(t3.get('hash_before')), str(t3.get('hash_after_one')), str(t3.get('hash_after_two'))},
           (t3.get('hash_before'), t3.get('hash_after_one'), t3.get('hash_after_two')))
     check('t3 tooltips seen', t3.get('hint_seen_1') and t3.get('hint_seen_2'), (t3.get('hint_seen_1'), t3.get('hint_seen_2')))
+    t3b = P('CG_T3B_b8')
+    check('t3b markers play ok', t3b.get('status') == 'ok', t3b.get('status'))
+    check('t3b first toggle equals the no-markers first toggle (the markers are gone)',
+          t3b.get('hash_toggled') == t3.get('hash_after_one') == 82.368, (t3b.get('hash_toggled'), t3.get('hash_after_one')))
+    check('t3b two toggles return to the NO-markers mean, not the with-markers one',
+          abs(t3b.get('hash_back', 0) - t3.get('hash_after_two', 0)) < 0.05 and t3b.get('hash_back') != t3b.get('hash_markers_on'),
+          (t3b.get('hash_back'), t3.get('hash_after_two'), t3b.get('hash_markers_on')))
+    check('t3b finding quotes the markers means', str(t3b.get('hash_markers_on')) in fm and str(t3b.get('hash_back')) in fm,
+          (t3b.get('hash_markers_on'), t3b.get('hash_back')))
 
     # M05 play
-    t4 = P('CG_T4_b1c')
+    t4 = P('CG_T4_b8')
     w = t4.get('sav_words', {}).get('words', {})
     check('t4 nation0 area words', w.get('nations', {}).get('0', {}).get('area') == [42, 104, 170, 320], w.get('nations', {}).get('0', {}).get('area'))
     check('t4 main words', w.get('main') == [-4, -4, 281, 650], w.get('main'))
     check('t4 moved == restored', t4.get('geo_moved') == t4.get('geo_restored') == [42, 104, 328, 196], (t4.get('geo_moved'), t4.get('geo_restored')))
+
+    # R5: the T4 words decoded from the hashed SAV itself (not the jsonl), and the staged save's only edit verified
+    import struct as _st
+    t4sav = t4.get('sav_words', {}).get('file')
+    hits4 = [os.path.join(r2, f) for r2, _, fs in os.walk(art) for f in fs if f == t4sav] if t4sav else []
+    if check('t4 save found under artifacts', bool(hits4), t4sav):
+        from state.sav import ARMY_OFF, ARMY_LEN, FLEET_LEN, NATION_LEN, NATIONS
+        b = open(hits4[0], 'rb').read()
+        check('t4 save hash matches SAVES.sha256', hashes.get(t4sav) == sha(hits4[0]), t4sav)
+        na = _st.unpack_from('<h', b, ARMY_OFF)[0]; o = ARMY_OFF + 2 + na * ARMY_LEN
+        nf = _st.unpack_from('<h', b, o)[0]; o += 2 + nf * FLEET_LEN
+        area = list(_st.unpack_from('<4h', b, o + 0 * NATION_LEN + 0x46E))
+        mainw = t4.get('sav_words', {}).get('words', {}).get('main')
+        check('t4 decoded area words == the recording == the finding', area == w.get('nations', {}).get('0', {}).get('area') == [42, 104, 170, 320], 'decoded %r' % (area,))
+        tail = o + 16 * NATION_LEN + 600
+        ni = _st.unpack_from('<h', b, tail)[0]; tail8 = tail + 2 + (ni + 1) * 61
+        dec_main = list(_st.unpack_from('<4h', b, tail8 + 46))
+        check('t4 decoded main words == the recording', dec_main == mainw == [-4, -4, 281, 650], 'decoded %r' % (dec_main,))
+    u2b_staged = [os.path.join(r2, f) for r2, _, fs in os.walk(art) for f in fs if f == 'STAGED-felsina-neutral-0721.SAV']
+    src_fix = os.path.join(paths.ROOT, 'saves', 'siege-felsina-failed-0721.SAV')
+    if check('staged save found under artifacts', bool(u2b_staged), 'STAGED-felsina-neutral-0721.SAV'):
+        from state.sav import ARMY_OFF, ARMY_LEN, FLEET_LEN, NATION_LEN, NATIONS
+        b0 = open(src_fix, 'rb').read(); b1 = open(u2b_staged[0], 'rb').read()
+        na = _st.unpack_from('<h', b0, ARMY_OFF)[0]; o = ARMY_OFF + 2 + na * ARMY_LEN
+        nf = _st.unpack_from('<h', b0, o)[0]; o += 2 + nf * FLEET_LEN
+        rome, gaul = NATIONS.index('Rome'), NATIONS.index('Gaul')
+        off1 = o + rome * NATION_LEN + 0x26 + 2 * gaul
+        off2 = o + gaul * NATION_LEN + 0x26 + 2 * rome
+        diff = {i for i in range(len(b0)) if b0[i] != b1[i]}
+        allowed = set()
+        for off in (off1, off2):
+            allowed |= {off, off + 1}
+        check('staged save differs from its source ONLY inside the two Rome<->Gaul relation words (3 -> 0 both ways)',
+              diff and diff <= allowed and _st.unpack_from('<h', b0, off1)[0] == 3 and _st.unpack_from('<h', b1, off1)[0] == 0
+              and _st.unpack_from('<h', b0, off2)[0] == 3 and _st.unpack_from('<h', b1, off2)[0] == 0,
+              'diff at %s (allowed %s)' % (sorted(diff), sorted(allowed)))
+
 
     # M06 plays: the WAV each opened
     for tag, wav in (('CG_S1_b2', 'SOUND1.WAV'), ('CG_S2_b2', 'SOUND2.WAV'), ('CG_S3_b3', 'SOUND8.WAV'), ('CG_S4_b3', 'SOUND9.WAV')):
@@ -240,13 +296,13 @@ def run(finding, data, art, quiet=True):
         check('%s opened %s' % (tag, wav), okk, p)
 
     # UA01 plays
-    u1 = P('CG_U1_b6').get('dialog', {}).get('own_city', {})
+    u1 = P('CG_U1_b8').get('dialog', {}).get('own_city', {})
     check('u1 dialog open', u1.get('open') is True, u1.get('open'))
     check('u1 no buy button', u1.get('buy_button') is None, u1.get('buy_button'))
     check('u1 buttons only OK', [b['text'] for b in u1.get('buttons', [])] == ['OK'], u1.get('buttons'))
-    u2 = P('CG_U2_b4').get('dialog', {}).get('hostile_city', {})
+    u2 = P('CG_U2_b8').get('dialog', {}).get('hostile_city', {})
     check('u2 hostile: no dialog', u2.get('open') is False, u2.get('open'))
-    u2b = P('CG_U2B_b6')
+    u2b = P('CG_U2B_b8')
     d = u2b.get('dialog', {}).get('staged_neutral_city', {})
     check('u2b staged record', 'STAGED' in (u2b.get('staged') or {}).get('note', ''), u2b.get('staged'))
     check('u2b buy visible enabled', (d.get('buy_button') or {}).get('text') == 'Buy supplies' and (d.get('buy_button') or {}).get('enabled') == 1 and (d.get('buy_button') or {}).get('visible') == 1, d.get('buy_button'))
@@ -258,6 +314,29 @@ def run(finding, data, art, quiet=True):
     check('finding names its extract version', bool(mv), 'no code_extract_cosmetic*.txt cited')
     for ln in sorted(set(int(x) for x in re.findall(r'\b(\d{5})\b', fm))):
         check('cited line %d exists in the extract' % ln, ln in ALLX, 'not in code_extract_cosmetic*.txt')
+
+    # R4: the finding's own literals and numbers, bound to the sources
+    check('m04 finding spells four trailing spaces and the dump literal has exactly four',
+          'four** trailing spaces' in fm.replace('**four**', 'four**') or '(**four** trailing spaces)' in fm,
+          'the finding does not claim the spacing')
+    raw_st_lits = re.findall(r'"Imperial Conquest 2(\s*)"', fnbody('TPremierForm_SetTurnTitle'))
+    check('m04 the dump literal has exactly four trailing spaces', raw_st_lits and all(len(s) == 4 for s in raw_st_lits), repr(raw_st_lits))
+    check('m04 finding spells the 91-byte truncation and the dump 0x5b equals 91', 'truncated to 91 bytes' in fm and '0x5b' in fnbody('TPremierForm_SetTurnTitle') and 0x5b == 91, '')
+    mrect = re.search(r'btn_buy: TButton`, `Caption = \'Buy supplies\'`, at resource Left (\d+) Top (\d+) (\d+)x(\d+)', fm)
+    if check('ua01 finding quotes the resource rectangle', bool(mrect), 'pattern missing'):
+        bp = dfm['btn_buy']['props']
+        check('ua01 quoted rectangle equals the resource', (bp.get('Left'), bp.get('Top'), bp.get('Width'), bp.get('Height')) ==
+              (mrect.group(1), mrect.group(2), mrect.group(3), mrect.group(4)), (bp, mrect.groups()))
+    # each M04 table row's title must appear in THAT row's cited recording
+    for row in re.finditer(r'^\| [^|]+\| `([^`]+)` \| `(CG_[A-Za-z0-9_]+)` \|$', fm, re.M):
+        title, tag = row.group(1), row.group(2)
+        r = plays.get(tag, {})
+        got = {t.get('name') for t in (r.get('titles') or {}).values()}
+        okrow = title in got or 'unchanged from the row above' in title
+        check('m04 row title %r is a title of %s' % (title[:40], tag), okrow, sorted(got))
+    # a [confirmed] claim must cite a recording: every M06/UA01 table row carrying [confirmed] names a CG_ tag
+    for row in re.finditer(r'^\|.*\[confirmed\].*\|$', fm, re.M):
+        check('confirmed row cites a recording (%s...)' % row.group(0)[:50], 'CG_' in row.group(0), row.group(0)[:80])
 
     # every play tag the finding cites must be a recording (and the audit reads its claims from those tags)
     for tag in sorted(set(re.findall(r'`(CG_[A-Z0-9]+_b\d+[a-z]?)`', fm))):
@@ -279,7 +358,7 @@ def run(finding, data, art, quiet=True):
     m05p = re.search(r'### 5\. Window positions.*?(?=\n## )', fm, re.S)
     if m05p:
         allowed = {tuple(v) for v in (w.get('nations', {}).get('0', {}).get('area'), w.get('main'),
-                                      P('CG_T4_b1c').get('geo_moved'), P('CG_T4_b1c').get('geo_restored'), P('CG_T4_b1c').get('geo_loaded')) if v}
+                                      P('CG_T4_b8').get('geo_moved'), P('CG_T4_b8').get('geo_restored'), P('CG_T4_b8').get('geo_loaded')) if v}
         for q in re.findall(r'\[(-?\d+, -?\d+, -?\d+, -?\d+)\]', m05p.group(0)):
             check('m05 quoted words [%s] is a recorded words/geometries value' % q, tuple(int(x) for x in q.split(',')) in allowed, sorted(allowed))
 
@@ -292,17 +371,25 @@ def run(finding, data, art, quiet=True):
 def norm_ws(s): return re.sub(r'\s+', ' ', s).strip()
 
 def parse_dfm(path):
-    """The TPF0 text dump into {object name: {'cls': class, 'props': {name: value}}}: a property belongs to the most
-    recently declared object at any depth (children no longer leak their properties into the parent)."""
-    dfm = {}; obj = None
+    """The TPF0 text dump into {object name: {'cls': class, 'props': {name: value}}}. A property belongs to the object
+    declared most recently AT ITS DEPTH: an object stack keyed by indentation, so a property that follows a nested
+    child's `end` lands on the child's parent, and children never leak into the parent."""
+    dfm = {}; stack = []           # [(indent, name)]
     for l in open(path, encoding='utf-8'):
-        m = re.match(r'\s*object (\w+): (\w+)', l)
+        m = re.match(r'(\s*)object (\w+): (\w+)', l)
         if m:
-            obj = m.group(1); dfm[obj] = {'cls': m.group(2), 'props': {}}
+            ind = len(m.group(1)) // 2
+            while stack and stack[-1][0] >= ind: stack.pop()
+            name = m.group(2); stack.append((ind, name))
+            dfm[name] = {'cls': m.group(3), 'props': {}}
             continue
-        m = re.match(r'\s+(\w+) = (.*)$', l)
-        if obj and m and not l.lstrip().startswith('end'):
-            dfm[obj]['props'][m.group(1)] = m.group(2).rstrip()
+        s = l.strip()
+        if s == 'end':
+            if stack: stack.pop()
+            continue
+        m = re.match(r'(\w+) = (.*)$', s)
+        if stack and m and s.startswith(m.group(1)):
+            dfm[stack[-1][1]]['props'][m.group(1)] = m.group(2).rstrip()
     return dfm
 
 if __name__ == '__main__':

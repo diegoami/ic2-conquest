@@ -3,7 +3,8 @@
 **Status:** draft finding from `ic2-conquest`, awaiting promotion. For clone issue `imperial_conquest_2` #723 (post-0.5.0 cosmetic
 batch; feature-inventory rows M04, M05, M06, A01, UA01). Task `docs/tasks/cosmetic-gaps.md`, experiment
 `runs/experiments/data/run-exp-cosmetic-gaps/` (release `run-exp-cosmetic-gaps`: `batch-b1.tar.gz`, `batch-b3.tar.gz`,
-`batch-b4.tar.gz`, which also carries the b5, b6 and close-probe binaries — 16 members).
+`batch-b4.tar.gz` — which also carries the b5, b6 and first-probe binaries — `batch-b7.tar.gz`, `batch-b8.tar.gz`;
+`ARTIFACTS.md` beside the data tells a reviewer how to fetch and verify them all and then run the audit and the tests).
 
 **Tags.** `[derived]` = read from the decompile (function, address, line of `all_app_functions.txt`; the cited lines are kept with
 their dump line numbers in `runs/experiments/data/run-exp-cosmetic-gaps/code_extract_cosmetic.v5.txt` — **v5**: v1/v2's CALLSITES
@@ -26,11 +27,11 @@ Seen in play `[confirmed]` (the X window name read with `xdotool getwindowname`,
 
 | moment | title | play |
 |---|---|---|
-| process start, before the leaders form | `Imperial Conquest 2` | `CG_T1_b1b` |
-| leaders form open, no game yet | `Imperial Conquest 2` | `CG_T1_b1b` |
-| first human turn, EMPTY leader name | `Imperial Conquest 2    Rome's turn   ()` | `CG_T1_b1b` |
-| after loading a save with a named leader | `Imperial Conquest 2    Rome's turn   (Appius Claudius)` | `CG_T2_b1c` |
-| after End turn (same seat again) | unchanged from the row above | `CG_T2_b1c` |
+| process start, before the leaders form | `Imperial Conquest 2` | `CG_T1_b8` |
+| leaders form open, no game yet | `Imperial Conquest 2` | `CG_T1_b8` |
+| first human turn, EMPTY leader name | `Imperial Conquest 2    Rome's turn   ()` | `CG_T1_b8` |
+| after loading a save with a named leader | `Imperial Conquest 2    Rome's turn   (Appius Claudius)` | `CG_T2_b7` |
+| after End turn (same seat again) | unchanged from the row above | `CG_T2_b7` |
 
 the bare start caption itself is `[derived]` from the entry code; each table row is only the `[confirmed]` observation of it.
 
@@ -47,9 +48,9 @@ default `WAVS\`) and `.WAV`, then `PlaySoundA(path, 0, 0)` — case *N* plays `S
 
 | case | WAV | event | call site(s): dump line, in function | evidence |
 |---|---|---|---|---|
-| 1 | Sound1 | an army marches (main map) | 51503 in `FUN_0044d420` (the army-move executor: terrain cost check, record swap, movement-point deduction) | `[confirmed]` `CG_S1_b7`: the move window opened `WAVS/SOUND1.WAV` (first seen in `CG_S1_b2`) |
+| 1 | Sound1 | an army marches (main map) | 51503 in `FUN_0044d420` (the army-move executor: terrain cost check, record swap, movement-point deduction) | `[confirmed]` `CG_S1_b7`: the move window opened `WAVS/SOUND1.WAV` (first seen, unhardened, in `CG_S1_b2`) |
 | 1 | Sound1 | a unit moves on the battle map | 37735 in `TBattleMap_PlaceUnit`; 38236 in `FUN_004381a4`; 38694 in `FUN_00438a6c` (the second battle move path, same pick-the-cheaper-tile shape) | `[derived]` |
-| 2 | Sound2 | a fleet sails | 51985 in `FUN_0044dd70` (the fleet-move executor, same shape) | `[confirmed]` `CG_S2_b7`: `WAVS/SOUND2.WAV` (first seen in `CG_S2_b2`) |
+| 2 | Sound2 | a fleet sails | 51985 in `FUN_0044dd70` (the fleet-move executor, same shape) | `[confirmed]` `CG_S2_b7`: `WAVS/SOUND2.WAV` (first seen, unhardened, in `CG_S2_b2`) |
 | 3 | Sound3 | battle ranged attack, firing unit's type byte = 2 | 38975 in `FUN_0043910c` | `[derived]` |
 | 4 | Sound4 | battle ranged attack, any other unit type | 38978 in `FUN_0043910c` (the `else` of the same test) | `[derived]` |
 | 5 | Sound5 | a battle attack order / melee | 37682 in `TBattleMap_SelectUnit` (the hostile-target click); 39077 in `FUN_004393ec` (melee resolution, the 0x47946c matrix) | `[derived]` |
@@ -57,7 +58,7 @@ default `WAVS\`) and `.WAV`, then `PlaySoundA(path, 0, 0)` — case *N* plays `S
 | 7 | Sound7 | a city falls | 49817 in `FUN_0044b27c`, with the message `"<city>   (<owner>)  falls to <nation>."` | `[derived]` |
 | 8 | Sound8 | a fleet is lost — scuttled | 47348 in `TUnitMap_ScuttleFleet` | `[confirmed]` `CG_S3_b7`: the scuttle's Confirm→Yes window opened `WAVS/SOUND8.WAV` |
 | 8 | Sound8 | a fleet is lost at sea, or destroyed in a fleet battle | 54594 in `FUN_004514ec`, with the message `"A fleet belonging to <nation> is lost at sea."`; 49902 in `FUN_0044b5d0` (fleet-vs-fleet resolution) | `[derived]` (no play provoked these two paths) |
-| 9 | Sound9 | an army battle whose BOTH sides are non-local nations | 49639 in `FUN_0044aee4` (guard: both owners' local-seat byte = 0) | `[confirmed]` `CG_S4_b7`: during the computer nations' phase after End turn, `WAVS/SOUND9.WAV` (first seen in `CG_S4_b3`) |
+| 9 | Sound9 | an army battle whose BOTH sides are non-local nations | 49639 in `FUN_0044aee4` (guard: both owners' local-seat byte = 0) | `[confirmed]` `CG_S4_b7`: during the computer nations' phase after End turn, `WAVS/SOUND9.WAV` (first seen, unhardened, in `CG_S4_b3`) |
 | 10 | Sound10 | a nation is eliminated: every one of its cities is transferred to the conqueror | 50627 in `FUN_0044c528` (iterates all 334 cities, transfers, merges the visibility bitmaps) | `[derived]` |
 
 Two guards shape what is audible `[derived]`: the move sounds (cases 1, 2) play only when the byte at
@@ -84,19 +85,26 @@ a `TSpeedButton` with one `Glyph.Data` (362 bytes), `ShowHint`, and **no** `Grou
 latched-down look, so the button looks the same in both palette states; the state shows in the map face, not on the button (its
 tooltip `Toggle colour` was seen before each click `[confirmed]`).
 
-Played `[confirmed]` (`CG_T3_b1c`, button located from the live Panel1 rectangle plus the form resource's declared offset, its
+**The toggle clears the drawn markers** `[derived]`, and the claim "two clicks clear the markers" is TRUE with this code
+behind it: `TAreaMap_PaintForm` draws the background, then replays the form's accumulated marker-command list (kinds: cities,
+capital, armies, fleets, mercenaries, find-city; dump lines 41674-41723) — but only while the command count at form field
++0x2B8 is not -1, and `ToggleMap` sets exactly that word to 0xFFFF before repainting. So the repaint after a toggle draws the
+background with NO markers, and the command list stays empty until a Show button adds commands again.
+
+Played `[confirmed]` (`CG_T3_b8`, button located from the live Panel1 rectangle plus the form resource's declared offset, its
 tooltip `Toggle colour` seen before each click): byte `1 → 0 → 1` over two clicks; the map face's grey mean moved
-`109.402 → 82.368 → 111.385` (the render really changes and returns); screenshots of all three states
-(`CG_T3_b1c_area_before/after_one/after_two.png`). The byte after two clicks returns to its start; the region hash returns to
-within 2 of it, not byte-identically — the map is repainted, and the screenshots, not the hash, are the evidence of what the eye
-sees. Before the repaint the toggle resets the map's own selected-cell word (form field +0x2B8 to 0xFFFF) and a byte (+0x1EE);
-there is no path that clears drawn markers — the claim "two clicks clear the markers" has no code behind it `[derived]`.
+`109.402 → 82.368 → 111.385` (the render really changes and returns); screenshots of all three states (`CG_T3_b8_area_*`). With markers drawn
+first (`CG_T3_b8`: the `Show armies` button, its tooltip seen, then two toggles): the mean with markers was `111.577`; after
+the first toggle `82.368` — **exactly** the value the first toggle gives without prior markers, so the repaint's result does
+not depend on the markers that were there (they are gone); after the second toggle `111.385`, the no-markers value, not the
+with-markers one — the markers stay cleared. The screenshots of both plays are the evidence; the byte after two clicks returns
+to its start while the markers do not return.
 
 ### 4. The Supply army dialog and its Buy button (UA01)
 
 **The form** `[derived]` from its TPF0 resource (`dfm_TAFSupply.v2.txt`, dumped read-only from the exe): `object AFSupply:
 TAFSupply`, `Caption = 'Supply army'`, ClientWidth 470, ClientHeight 335 — and the live window is exactly 470x335 `[confirmed]`
-(`CG_U1_b6`). The paid-path button is `btn_buy: TButton`, `Caption = 'Buy supplies'`, at resource Left 320 Top 136 100x26, its
+(`CG_U1_b8`). The paid-path button is `btn_buy: TButton`, `Caption = 'Buy supplies'`, at resource Left 320 Top 136 100x26, its
 OnClick is `TransferSupply`; `btn_ok` (Left 200 Top 300 70x25) runs `TAFSupply_OK`, which sets the form's confirmed flag and posts
 `CM_RELEASE` (`FUN_0042313c`, message 0xB021) — the form frees itself **seconds after** the OK click on this rig
 `[confirmed]` (`CG_CLOSE_PROBE2`, a fully verified click with its `win_state` line, pointer read-back and target: closed at
@@ -118,9 +126,9 @@ VCL control hidden before it is ever shown has no HWND):
 
 | case | dialog | `Buy supplies` | controls seen | play |
 |---|---|---|---|---|
-| own city (Arretium) | opens 470x335 | **absent** (hidden) | OK + 4 updowns + the provider listbox (itself invisible) | `CG_U1_b6` (b3/b5 runs read the same list) |
-| hostile foreign city (Felsina, relation 3) | **does not open at all** | — | no window ≥200px named `Supply army` within 10 s | `CG_U2_b4` |
-| foreign non-hostile city — **STAGED** | opens 470x335 | **present, enabled, visible** at screen (343,185) 100x26 — the resource's declared rectangle | OK + Buy supplies + 2 buy updowns + listbox | `CG_U2B_b6` |
+| own city (Arretium) | opens 470x335 | **absent** (hidden) | OK + 4 updowns + the provider listbox (itself invisible) | `CG_U1_b8` (b3/b5 runs read the same list) |
+| hostile foreign city (Felsina, relation 3) | **does not open at all** | — | no window ≥200px named `Supply army` within 10 s | `CG_U2_b8` |
+| foreign non-hostile city — **STAGED** | opens 470x335 | **present, enabled, visible** at screen (343,185) 100x26 — the resource's declared rectangle | OK + Buy supplies + 2 buy updowns + listbox | `CG_U2B_b8` |
 
 The staged row is `STAGED-felsina-neutral-0721.SAV`: a copy of `saves/siege-felsina-failed-0721.SAV` whose ONLY edit is
 Rome↔Gaul relations 3→0 (both directions, nation-record offset +0x26; the change and its assert are in
@@ -137,15 +145,15 @@ L+0x476 T+0x478 **H+0x47A W+0x47C**; Information L+0x47E T+0x480 **H+0x482 W+0x4
 write pairing, not guessed: `DAT_0045e718[9]/[10]` (the form's Left/Top) go to +0x46E/+0x470, `FUN_00412880(form)` to +0x474 and
 `FUN_004128c4(form)` to +0x472 — and `FUN_00412880` returns the RECT's **Right** of the form's client area (**client Width**:
 it calls the form's virtual at VMT+0x2C, a `GetClientRect`-style fill, and reads the word at offset 8), `FUN_004128c4` the
-**Bottom** (**client Height**, offset 12) `[derived]`. The recorded words decide the order beyond dispute: `CG_T4_b1c`'s save
+**Bottom** (**client Height**, offset 12) `[derived]`. The recorded words decide the order beyond dispute: `CG_T4_b8`'s save
 holds `[42, 104, 170, 320]` consecutively from +0x46E — a client 170 high and 320 wide under an X window of 328x196
 (~26 px Wine title bar) — so +0x472 is Height and +0x474 Width `[confirmed]`. The main window's four shorts do not go there: the
 save tail carries them as L, T, H, W at +0, +2, +4, +6 (`FUN_004484d0` @ `004484d0`, 47516-47522: the main form's [9]/[10], then
 `FUN_00412880` at +6 and `FUN_004128c4` at +4) `[derived]`. The function runs from `TPremierForm_SaveGameFile` (58108),
 `SaveGameFileAs` (58127) and `CloseAllForms` (58786) `[derived]`.
 
-Played `[confirmed]` (`CG_T4_b1c`): the Area map moved by (40,30) (`xdotool windowmove`, verified by the X geometry), End turn,
-autosave `CG_T4_b1c_AUTO0721.SAV` — its nation-0 Area-map words read `[42, 104, 170, 320]` (L, T, H, W: the **client** size; the X
+Played `[confirmed]` (`CG_T4_b8`): the Area map moved by (40,30) (`xdotool windowmove`, verified by the X geometry), End turn,
+autosave `CG_T4_b8_AUTO0721.SAV` — its nation-0 Area-map words read `[42, 104, 170, 320]` (L, T, H, W: the **client** size; the X
 window measures 328x196 with the ~26 px Wine title bar), and the main-window tail words `[-4, -4, 281, 650]` (client 650x281);
 after a restart and reload of that save the Area map is back at (42,104) with the same X geometry. The clone (one window) needs
 nothing but its own title; for the record, a save restores per-nation geometry and the tail's main-window rect.
@@ -163,14 +171,18 @@ nothing but its own title; for the record, a save restores per-nation geometry a
   Batches: b1 (T1-T4), b2 (S1-S3; S3 crashed on a runner import bug, re-run in b3), b3 (S3, S4, U1, U2 — the U plays hit two
   runner bugs: the tooltip window hijacked the dialog search, and the close step polled 1 s short of the form's ~4 s release),
   b5/b6 (U1, U2B with the fixes; b5's evidence is complete but both plays are marked FAILED because the close gave up early —
-  `probe_close_b5.txt` measured the release), and **b7** (S1, S2, S3, S4, T2 re-run under the review-hardened runner: every
-  click of a recording carries its target proof — the tooltip for toolbar buttons, the driver's view geometry for tile clicks,
-  the control's verbatim `win_state` line for dialog buttons — and every cited event keeps its post-event autosave, harvested
-  and hashed; the sound rows cite b7). The close probes: `probe_close_b5.txt` (raw xdotool, superseded) and `CG_CLOSE_PROBE2`
+  `probe_close_b5.txt` measured the release), **b7** (S1, S2, S3, S4, T2) and **b8** (T1, T3, T3B, T4, U1, U2, U2B) — every play the finding
+  cites re-run under the review-hardened runner: each click of a recording carries its target proof (the tooltip for toolbar
+  buttons, the driver's view geometry for tile clicks, the control's verbatim `win_state` line for dialog buttons, the live
+  Panel1 rectangle plus the resource's declared offset for the Area map's speed buttons), and every cited event keeps its
+  post-event autosave, harvested and hashed; the finding cites only b7/b8 recordings (the earlier batches remain as history).
+  The WAV harvests were re-attributed by the line's START offset (`reharvest_wavs.py`; the `wav_opens_*_b7.v2.txt` files —
+  the first harvest's end-offset rule could pull a line into a step whose mark was taken while the line was still being
+  written; for the plays cited here the attribution is unchanged). The close probes: `probe_close_b5.txt` (raw xdotool, superseded) and `CG_CLOSE_PROBE2`
   (verified clicks, `probe_close2.txt`). Sound plays run under `strace -f -e trace=openat,open` (`IC2_STRACE`); the WAV opens
   are harvested per step mark into `wav_opens_CG_<play>_<batch>.txt`.
 - **Staging.** One staged save, described in §4.
-- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v6.txt`: **277 checks, 0 mismatches**) re-reads every claim from its
+- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v7.txt`: **324 checks, 0 mismatches**) re-reads every claim from its
   source — the v4 code extract (the CALLSITES table, the function bodies, the offsets as the dump spells them, the DFM), the
   recordings (every cited tag must exist; every click's pointer read back; every sound row's case, WAV name and cited play bound together), the WAV harvests, the SAV decoded from its hashed file, the artifacts' hashes — and binds
   the finding's *own* quoted values (the title strings, the toggle triple, the caption, the SAV words, the cited tags) to them;
