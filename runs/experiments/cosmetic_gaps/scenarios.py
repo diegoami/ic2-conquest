@@ -227,7 +227,7 @@ def close_supply_dialog(g, wid):
         ok = oks[0]
         CTX['target'] = {'src': 'win_state', 'window': 'Supply army', 'line': ok['line'], 'cls': 'TButton', 'x': ok['x'], 'y': ok['y'], 'w': ok['w'], 'h': ok['h']}
         g.click(ok['x'] + ok['w'] // 2, ok['y'] + ok['h'] // 2, pause=0.8)
-        if eog.gone(g, wid, timeout=3):
+        if eog.gone(g, wid, timeout=9):      # probe_close_b5: the form frees itself ~4 s after the OK click (CM_RELEASE); 3 s gave up too early
             note_step(b, step='close supply dialog', ok=True, how='dialog window (X id %s) gone' % wid, attempts=k + 1)
             return
         time.sleep(1.0)
