@@ -12,7 +12,16 @@ FILE = 'all_app_functions.txt'
 FUNCS = ['0043ddac',                                    # TAreaMap_InitializeForm
          '0043de0c',                                    # TAreaMap_PaintForm
          '0043dfd4',                                    # TAreaMap_ToggleMap
+         '0043efac',                                    # TAFSupply_CityOrFleet
+         '0043f468',                                    # TAFSupply_FindProviders
          '0043ff98',                                    # TAFSupply_TransferSupply
+         '00440234',                                    # TAFSupply_OK
+         '00412c08',                                    # TControl.SetVisible (CM_VISIBLECHANGED 0xB00B)
+         '0042313c',                                    # the CM_RELEASE post of TAFSupply_OK
+         '004381a4', '0043910c', '004393ec',            # battle-map sound events
+         '0044aee4', '0044b27c', '0044b5d0', '0044c528', # main-map sound events (battle, city falls/repelled, fleet lost, elimination)
+         '0044d420', '0044dd70',                        # the army- and fleet-move executors
+         '004514ec',                                    # lost at sea
          '004484d0',                                    # the save writer's trailer
          '0045aad4',                                    # TPremierForm_OpenGameFile
          '0045ab84',                                    # TPremierForm_SaveGameFile
