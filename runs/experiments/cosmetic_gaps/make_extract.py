@@ -38,7 +38,7 @@ out.append('# CALLSITES (enclosing function, call line and three lines before it
 for i, l in enumerate(lines):
     if any('TPremierForm_%s(' % c in l for c in CALLS):
         s = max(0, i - 3)
-        f = next((nm for j, nm, ad in heads if j <= i), '?')
+        f = next((nm for j, nm, ad in reversed(heads) if j <= i), '?')   # the LAST header before the line (the first match was always the file's first function)
         out.append('---- in %s ----' % f)
         out.append('\n'.join('%d\t%s' % (j + 1, lines[j]) for j in range(s, i + 1)).rstrip())
 print(write_new(os.path.join(DATA, 'code_extract_cosmetic.txt'), '\n'.join(out) + '\n'))

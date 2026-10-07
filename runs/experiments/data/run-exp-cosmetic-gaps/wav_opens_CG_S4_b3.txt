@@ -1,0 +1,3 @@
+# WAV opens of CG_S4_b3 (strace -f -e trace=openat,open; each line is preceded by the play step whose mark the read had passed)
+[loaded] 9101  openat(AT_FDCWD, "/home/diego/ic2-work-cosmetic/prefix/dosdevices/c:/IC2/WAVS/SOUND9.WAV", O_RDONLY|O_NONBLOCK) = 77
+# marks: {'loaded': 1768272, 'end_turn_done': 1780493}
