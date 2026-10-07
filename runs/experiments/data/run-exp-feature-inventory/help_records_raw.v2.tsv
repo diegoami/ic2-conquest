@@ -1,0 +1,250 @@
+000000	02	New
+000033	20	|New||
+00005b	20	|Start a new game. |Click in the HUMAN check box for each nation which is to be lead by a human player.  Players may enter their leader's name by clicking in the space provided and typing the desired name.  When finished click OK.||
+00010f	02	Open
+000142	20	|Open||Loads a previously saved game.||
+000190	02	Save
+0001c3	20	|Save||
+0001eb	20	|Saves the current game. |Back-ups are not made, if a file is re-saved with its name unchanged the old file is over-written.||
+000272	02	Save as
+0002a8	20	|Save as||
+0002d3	20	|Saves the current game after prompting for a new file name.||
+000320	02	Close
+000353	20	|Close||
+00037b	20	|Quit the game.||
+0003ae	02	End turn
+0003e3	20	|End turn||
+00040d	20	|Ends the current player's turn.  The following nations will then take their turns until the next (or only) human player's turn. |The order of play is set at random at the beginning of every game.||
+0004af	02	New player
+0004e5	20	|New player||
+000510	20	|Lets a new player enter the game.  Upto 16 players can play (or as many players as countries remain). |||
+000579	02	New nation
+0005ae	20	|New nation||
+0005d8	20	|Allows a leader to desert their nation in favour of another. |||
+000623	02	Abdicate
+000656	20	|Abdicate||
+00067e	20	|Resign the leadership of your nation. |If only 1 person is playing then this ends the current game. |||
+0006de	02	News
+000711	20	|News||
+000739	20	|Shows a list of the most important events in the region over the past 2 years or so. |(Short cut key   Shift+W)||
+0007a5	02	International relations
+0007da	20	|International relations||
+000804	20	|This produces the dialog where a nation's international relations is set. There are only 4 different political relations that may exist between 2 nations; |PEACE  -  no diplomatic relations. |TRADE  -  two nations trade with each other.  Nations can have up to 3 trading partners. |ALLY   -  two nat
+000984	20	|On opening the politics dialog a nation's current political relations are shown.  To change any relationship click on the relevant radio buttons.  If the other nation agrees the new relationship will be shown by the corresponding button.  If you change your mind exit the dialog using CANCEL.||
+000a48	02	Taxation
+000a7b	20	|Tax||
+000aa5	20	|Lets the leader alter the tax rate that their nation pays, between 0 and 40%.  The quarterly income from different tax levels is dependent more on the wealth of a nations's cities than its total population.  10% is an average level of taxation, more than this will harm your popularity, a lower figu
+000b8b	02	Balance sheet
+000bc1	20	|Balance sheet||
+000bec	20	|Shows the leader the main sources of income and expenditure for their nation each quarter.  The army recruits total is the money new army units that have not yet been mobilised are payed.  The regular units cost is for all the regular units in a nation's armies.  The mercenary units cost is for all
+000d6a	20	|(Short cut key   Shift+B)||
+000da0	02	Recruit unit
+000dd5	20	|Recruit unit||
+000dff	20	|This is where a leader gathers recruits from the population into units for training and eventual transfer to armies.  The troops already recruited are shown along with their quality in the UNITS list box.  Each unit takes 16 weeks to train before they are ready for combat, but it takes a little lon
+000f5a	20	|New units can be recruited at your capital or any city which has a fortification level of at least 75%.  To see which cities have recruits based there click on the relevant city in the list box.  When you click RECRUIT the new unit will be placed in the city currently selected.  If you select ALL C
+0010e7	20	|If your nation is very short of money you can disband a unit by selecting it and clicking the DISBAND button.  This will reduce future quarterly wage bills but will waste the money already invested in the unit. |See also; ||Unit costs| ||Unit details| ||Unit type v type|||
+0011b5	02	Build fleet
+0011ea	20	|Build fleet||
+001214	20	|If sufficient resources are available this starts the building of a new fleet and takes 24 weeks.  A new fleet can only be constructed if your nation has at least one coastal city.  You can check on a new fleet's progress by choosing BUILD FLEET from the menu then clicking CANCEL in the dialog box.
+0012e3	02	Nations
+001316	20	|Nations||
+00133e	20	|This menu or set of speed buttons are used to select which nation's details are shown on the map when options from the AREA MAP menu are selected.  Each time a new nation is chosen that nation's details are shown in the Information window, if it is not your nation some details will be omitted.  For
+00145e	20	|Tribute is money paid to the government by the cities it controls, it is different from taxation and is a good sign of a nation's wealth.  Trade income is derived from all trading relationships and alliances, the richer the trading partner the greater the amount earned.  | (the short cut key to see
+00157a	02	Toggle colour
+0015b0	20	|Toggle colour||
+0015db	20	|The TOGGLE COLOUR speed button on the area map switches between mono and terrain modes.  The mono mode makes it easier to see the information displayed on the map, the terrain mode shows the kinds of terrain.||
+001668	02	Show cities
+00169c	20	|Show cities||
+0016c5	20	|Shows the position of cities belonging to the nation selected in the NATIONS menu. |(Short cut key   Shift+C) |(Short cut key   Ctrl+C   for the leader's nation)||
+001739	02	Show capital
+00176d	20	|Show capital||
+001796	20	|Shows the position of the capital city of the nation selected in the NATIONS menu. |(Short cut key   Shift+P) |(Short cut key   Ctrl+P   for the leader's nation)||
+00180b	02	Show armies
+00183f	20	|Show armies||
+001868	20	|Shows the position of armies belonging to the nation selected in the NATIONS menu. |(Short cut key   Shift+A) |(Short cut key   Ctrl+A   for the leader's nation)||
+0018dc	02	Show fleets
+001910	20	|Show fleets||
+001939	20	|Shows the position of fleets belonging to the nation selected in the NATIONS menu. |(Short cut key   Shift+F) |(Short cut key   Ctrl+F   for the leader's nation)||
+0019ad	02	Show all
+0019e1	20	|Show all||
+001a0a	20	|Shows the position of cities, armies, fleets and the capital of the nation selected in the NATIONS menu. |(Short cut key   Shift+L) |(Short cut key   Ctrl+L   for the leader's nation)||
+001a87	02	Find city
+001abc	20	|Find city||
+001ae6	20	|Brings up a dialog which lets the user select a city from the list of a particular nation's cities, so the geographical position of this city can be shown on the area map.  Click on a  nation button to produce that nation's list of cities, then click on the cities whose postions you want to see. |C
+001bee	02	Show mercenaries
+001c22	20	|Show mercenaries||
+001c4b	20	|Shows the position on the area map of cities at which mercenary units of the selected type are available.   ALL TYPES shows all the cities where any type of mercenary unit is available. |(Short cut key   Shift+1  for light infantry) |(Short cut key   Shift+2  for heavy infantry) |(Short cut key   S
+001d4e	02	Supply army
+001d83	20	|Supply army||
+001dad	20	|To supply an army it must be adjacent to a city or one of your fleets or armies.  Select the army, then choose SUPPLY ARMY from the UNIT MAP menu or click the speed button, and a dialog will appear.  If the city is one of yours you can transfer supplies from the city, if it has any, and up to 1000 
+001ee2	20	|You cannot supply an army at a city with which your nation is at war. |If your army is adjacent to one of your fleets you can transfer supply and money between the two.  If you wish to transfer supply from one army to another use the TRANSFER UNITS option in the UNIT MAP menu or click the speed but
+001f90	02	Recruit mercenaries
+001fc5	20	|Recruit mercenaries||
+001fef	20	|To recruit a mercenary unit an army must be adjacent to the city where the mercenaries are situated, the army must have at least 15% of supplies, and the army must have enough money to pay this unit for at least one quarter.  Select the army, then choose RECRUIT MERCENARIES from the UNIT MAP menu o
+002100	20	|You cannot recruit mercenaries at a city with which your nation is at war. |See also; ||Unit costs| ||Unit details| ||Unit type v type|||
+00217c	02	Transfer units
+0021b1	20	|Transfer units||
+0021db	20	|This option is used to transfer units, supply, or money between 2 adjacent armies.  Move the 2 armies together, select one, then choose TRANSFER UNITS from the UNIT MAP menu or click the speed button and the dialog will appear.  To transfer a unit click on one in the list box then click on TRANSFER
+0022cd	02	Split army
+002302	20	|Split army||
+00232c	20	|This lets you split an army into 2 smaller armies, or to disband certain units from the army.  Select the army by clicking on it, then choose SPLIT ARMY from the UNIT MAP menu or click the speed button.  On the dialog, to transfer units to the new army (or to disband them), click on the relevant un
+0023fc	02	Join armies
+002431	20	|Join armies||
+00245b	20	|To join 2 armies they must be adjacent, their combined total of units must be 20 or lower, their combined number of troops must be less than 100,000, and neither must be on a fleet.  Select one of the armies then choose JOIN ARMIES from the UNIT MAP menu or click the speed button.||
+002506	02	Change units
+00253b	20	|Change units||
+002565	20	|Certain details of regular units can be altered, and all units can be disbanded.  Regular units can be renamed, split (if they are large enough), or combined with other regular units (if their combined size is small enough).  Regular units can be disbanded if the army is near one of its own cities,
+002677	02	Disband army
+0026ac	20	|Disband army||
+0026d6	20	|For an army to disband it must be next to one of its own cities.  When an army disbands all its units are lost (regular units return to civilian life), the army's money is returned to its government and its supply is left with the nearby city.  Select the army then choose DISBAND ARMY from the UNIT
+0027ac	02	Supply fleet
+0027e1	20	|Supply fleet||
+00280b	20	|To supply a fleet it must be adjacent to a city or one of your fleets or armies.  Select the fleet, then choose SUPPLY FLEET from the UNIT MAP menu or click the speed button, and a dialog will appear.  If the city is one of yours you can transfer supplies from the city, if it has any, and up to 100
+00291d	20	|If your fleet is adjacent to one of your armies you can transfer supply and money between the two, but to do so you must select SUPPLY ARMY.  If you wish to transfer supply from one fleet to another use the TRANSFER SHIPS option in the UNIT MAP menu or click the speed button.||
+0029bf	02	Repair fleet
+0029f4	20	|Repair fleet||
+002a1e	20	|For a fleet to be repaired it must be next to one of its cities and it must not be carrying an army.  Select the fleet then choose REPAIR FLEET from the UNIT MAP menu or click the speed button.  The dialog will show how much the repairs will cost.  The repairs will be done immediately but the fleet
+002af0	02	Transfer ships
+002b25	20	|Transfer ships||
+002b4f	20	|This option is used to transfer ships, supply, or money between 2 adjacent fleets.  Move the 2 fleets together, select one, then choose TRANSFER SHIPS from the UNIT MAP menu or click the speed button, and the dialog will appear.||
+002bd7	02	Split fleet
+002c0c	20	|Split fleet||
+002c36	20	|This lets you split a fleet into 2 smaller fleets.  To be split a fleet must contain at least 20 ships and must not be carrying an army.  To split a fleet select it then choose SPLIT FLEET from the UNIT MAP menu or click the speed button.||
+002ccf	02	Join fleets
+002d04	20	|Join fleets||
+002d2e	20	|To combine 2 fleets into 1 larger fleet they must be adjacent, the total number of ships must not be larger than 100, and only one (or neither) fleet must be carrying an army.  To join 2 fleets move them together, select one, then choose JOIN FLEETS from the UNIT MAP menu or click the speed button.
+002dee	02	Scuttle fleet
+002e23	20	|Scuttle fleet||
+002e4d	20	|If your nation cannot afford a fleet, or one of your fleets is too small to be useful you may scuttle it.  To scuttle a fleet it must be near one of your cities and it must not be carrying an army. Select the fleet then choose SCUTTLE FLEET from the UNIT MAP menu or click the speed button, any mone
+002f33	02	Fortify city
+002f68	20	|Fortify city||
+002f92	20	|A city cannot be fortified while it is besieged, ie if there is an enemy army standing next to it.  To fortify a city select it then choose FORTIFY CITY from the UNIT MAP menu or click the speed button.  The dialog will show how much various levels of strengthening will cost, the larger a city's po
+0030e3	20	|A city's level of fortification can be important because you can only recruit new army units at your capital and at cities with fortification levels of at least 75%.  If your nation covers a large area you can fortify cities on the edges of your empire so armies can then be created on the spot rath
+0031b8	02	Cancel selection
+0031ee	20	|Cancel selection||
+003219	20	|This menu option and speed button cancels the currently selected object on the unit map.  This is only needed when an army or fleet is selected and you want to ensure that it is not moved by mistake or performs an unwanted attack. |(Short cut key   Shift+X)||
+0032d4	02	Army move
+003309	20	|Army move||
+003333	20	|To move an army first select it by clicking on it.  Now either click on every square on the path you want the army to take, or click on the destination square and the computer will try to move the army there in the smallest number of moves.  The computer will sometimes make mistakes in the path it 
+0034b4	20	|To make an army disembark from a fleet move the fleet to a square of sea adjacent to the land then click on the square of land (move the fleet upto the land then onto the land).||
+003534	02	Army attack
+003569	20	|Army attack||
+003593	20	|An army can attack another army or a city, the procedure for both is the same, providing it is adjacent to the target and it has at least one move left.  First move the army to a square adjacent to the target, and while it is still selected click on the target.  By attacking an army or city you aut
+0036bd	20	|If the target is a city and the attack is successful the city will fall under your control.  If the city you are attacking is the capital of a country it will be far harder to capture.||
+00374d	02	Fleet move
+003782	20	|Fleet move||
+0037ac	20	|To move a fleet first select it by clicking on it.  Now either click on every square on the path you want the fleet to take, or click on the destination square and the computer will try to move the fleet there in the smallest number of moves.  The computer will sometimes make mistakes in the path i
+0038eb	02	Fleet attack
+003920	20	|Fleet attack||
+00394a	20	|A fleet can only attack another fleet.  To do so move the fleet to a square adjacent to the target, and while it is still selected click on the target.  By attacking a fleet you automatically declare war on the controlling nation and any of its allies. |A fleet cannot be attacked if it is docked at
+003ae3	02	Introduction
+003b16	20	|Introduction||
+003b3e	20	|Imperial Conquest 2 is based in the ancient Mediterranean, starting in 270 BC.  There are 16 nations to be lead by human or computer players.  The 5 major powers; Rome, Carthage, the Seleucid Empire, the Ptolemaic Empire, and Macedonia, have certain qualities or advantages that gives them a realist
+003cdf	20	|This is the full/freeware version of Imperial Conquest 2, feel free to copy and distribute it.||
+003d52	02	Improvements
+003d85	20	|Improvements||
+003dad	20	|The main changes between Imperial Conquest (for Windows 3) and Imperial Conquest 2 (for Windows 95) are listed below. ||The computer thinking is substantially better in terms of political relations, army/fleet movement, and battlefield tactics. |The interface is simplified by the use of several but
+003f22	20	|Each nation can now have 40 conscript units (up from 20) and they can be trained at other cities, not just the capital. |Regular army units have distinctive names which can be changed, and regular units can be split or joined together. |Income from trade has been greatly increased so that trade is 
+004063	20	|During a battle a player can now see all the enemy and their own units' details in one list, as well as all their own units' moves/attacks. |Sea storms occur so sea travel is more problematic. |Players are warned if their armies/fleets need supplies etc. |The populations of cities gradually recover
+004158	02	Fonts
+00418b	20	|Fonts||
+0041b3	20	|The font most used by Imperial Conquest 2 is BOOK ANTIQUA, which is a standard Windows 95 font.  If you have removed this font from your hard disk the game will load the next font it finds, this may be readable or it may not. |If you have Windows 95 set to use LARGE FONTS the layout of many of the 
+004355	20	|||
+00437a	02	Speed buttons
+0043af	20	|Speed butons||
+0043da	20	|Many of the most frequently used menu commands are available by clicking on various speed buttons.  There are sets of speed buttons on the main game window, the area map window, and the unit map window.  There are also speed buttons on the Battlefield window. |See - ||Main speed buttons| ||Area map
+0044d1	02	Main speed buttons
+004508	20	|Main speed butons||
+004535	20	|On the main game window the speed buttons available are; ||Open| ||Save| ||End turn| ||News| ||International relations| ||Taxation| ||Balance sheet| ||Recruit unit| ||Build fleet| ||It is also possible to change the currently selected nation by clicking one of the coloured nation speed buttons. |||
+00461d	02	Area map speed buttons
+004656	20	|Area map speed butons||
+004685	20	|All of the commands in the AREA MAP menu are available via the speed buttons just above the area map, these are; ||Toggle colour| ||Show cities| ||Show capital| ||Show armies| ||Show fleets| ||Show all| ||Light infantry| ||Heavy infantry| ||Archers| ||Light cavalry| ||Heavy cavalry| ||All types| ||
+004791	02	Unit map speed buttons
+0047c9	20	|Unit map speed butons||
+0047f7	20	|All of the commands in the UNIT MAP menu are available via the speed buttons just above the unit map.  Only those buttons needed are shown depending on whether an army, fleet or city is selected. |The army options are; ||Supply army| ||Recruit mercenaries| ||Transfer units| ||Split army| ||Join arm
+004924	20	||Split fleet| ||Join fleets| ||Scuttle fleet| |The only city action available is ||Fortify city| |||
+004995	02	Area map
+0049ca	20	|Area map||
+0049f4	20	|The area map window shows the entire playing area included in Imperial Conquest.  If you click the TOGGLE COLOUR button on the area map the map will switch between mono and terrain modes.  The mono mode makes it easier to see the information displayed on the map, the terrain mode shows the kinds of
+004b46	20	|If you click with the left mouse button on the area map the position on the unit map will be adjusted accordingly.  The differently coloured rectangle on the area map shows the current position of the unit map (this shows up best in mono mode).||
+004bfb	02	Unit map
+004c2f	20	|Unit map||
+004c58	20	|The unit map window shows a section of the Mediterranean region shown in the area map, magnified many times.  You can move the unit map to different places by means of the window's scroll controls or by left-clicking on the area map. |The unit map is where leaders interact with their armies, fleets
+004d8c	20	|If you left-click an army/fleet/city you will be shown certain details about it.  If it is one of your armies/fleets/cities you will see more information and the unit will be selected. |If you right-click one of your armies (or fleets carrying an army) you will be shown a list of the units in that 
+004e98	20	||Fleet symbols| ||National colours| |||
+004eda	02	Terrain
+004f0d	20	|Terrain||
+004f35	20	||     sea calm |fleet moves - 1 ||     sea rough |fleet moves - 3 ||     plain ||army moves - 1 ||     desert ||army moves - 1 ||     forest ||army moves - 2 ||     river ||army moves - 4 ||     mountains |army moves - 4 ||||
+00503b	02	City symbols
+005070	20	|City symbols||
+00509a	20	|| |city of population 0..25,000 || |city of population 25,000..50,000 || |city of population 50,000..100,000 || |city of population 100,000+ || |capital  |||
+00513a	02	Army symbols
+00516f	20	|Army symbols||
+005199	20	|| |0..25,000 troops || |25,000..50,000 troops || |50,000..100,000 troops |||
+005203	02	Fleet symbols
+005238	20	|Fleet symbols||
+005262	20	|| |10..25 ships || |26..50 ships || |51..100 ships |||
+0052ce	02	National colours
+005304	20	|National colours||
+00532f	20	||   Rome |||   Carthage ||   Seleucid ||   Ptolemaic ||   Macedonia ||   Numidia ||   Gaul |||   Greece ||   Celtiberia ||   Illyria ||   Dacia |||   Bithynia ||   Galatia |||   Armenia ||   Media |||   Thracia |||
+00544a	02	Short cut keys
+005481	20	|Short cut keys||
+0054ad	20	| |News| |||Shift+W | |Balance sheet| ||Shift+B | |Show cities| ||Shift+C | |Show capital| ||Shift+P | |Show armies| ||Shift+A | |Show fleets| ||Shift+F | |Show all| ||Shift+L | |Find city| ||Shift+D | |Light infantry| ||Shift+1 | |Heavy infantry| ||Shift+2 | |Archers| ||Shift+3 | |Light cavalry| ||
+00562a	20	| |Cancel selection| |Shift+X ||Show status of current nation |Shift+N |Show status of leader's nation |Ctrl+N |Show leader's cities ||Ctrl+C |Show leader's capital ||Ctrl+P |Show leader's armies ||Ctrl+A |Show leader's fleets ||Ctrl+F |Show all leader's possessions |Ctrl+L |||
+0056fb	02	Cities
+00572e	20	|Cities||
+005756	20	|Cities are primarily what determine a nation's power and wealth.  Cities provide the population which are mobilised into armies and pay tax to the government, and they provide the bulk of most nations' incomes in the form of their tribute. |When you left-click on one of your cities on the unit map 
+0058d3	20	|The number after the population figure is the percentage of a city's maximum population size, if the number in brackets is under 100% then this city's population will increase under favourable circumstances.  A city's population only falls when it is attacked, and it will eventually recover if the 
+005a4e	20	|City loyalty is likely to fall if the tax rate is over 10%, or if the city is left with no supply in winter.  City loyalty will usually rise if the tax rate is under 10%. |See also; ||Fortify city| |||
+005af3	02	Armies
+005b26	20	|Armies||
+005b4e	20	|Armies are the only means for a nation to conquer new territory and to defend its existing territory against aggressors.  To be fully effective an army must maintain a reasonable level of supply.  When an army's supply falls below 10% its morale starts to drop, so that if it is involved in a battle
+005ca5	20	|(See  |Army move|  and  |Army attack|) |To create an army a leader must recruit and then mobilise regular units.  Regular units are those units recruited from a nation's own population and must be trained before they can be mobilised. (Regular units can be recognised because they are initially all 
+005de8	20	|There are only 5 types of unit in Imperial Conquest; light infantry, heavy infantry, archers, light cavalry, and heavy cavalry.  As can be seen from the tables below, in battle heavy infantry and heavy cavalry are by far the most powerfull types.  However when it comes to attacking cities or being 
+005f01	20	||Unit details| ||Unit type v type| ||
+005f44	02	Unit costs
+005f79	20	|Unit costs||
+005fa3	20	|||    initial cost |    quarterly costs |||   per 200 men |     per 200 men |light infantry || 2 ||1 |heavy infantry ||20 ||2 |archers ||| 4 ||1 |light cavalry ||15 ||3 |heavy cavalry ||30 ||4 ||This table shows the initial cost of recruiting regular units, and the quarterly cost of regular units. 
+0060f0	20	|See also; ||Unit details| ||Unit type v type|||
+00613a	02	Unit details
+00616e	20	|Unit details||
+006197	20	||| no of   no of    shot      shot       max |||moves  shots  range   damage    size |light infantry |   4         7         1         18        15,000 |heavy infantry |   2         0         0          2          6,000 |archers        |   4        25        2         18         3,500 |light cavalr
+0062d7	20	|See also; ||Unit costs| ||Unit type v type|||
+006322	02	Unit type v type
+00635b	20	|Unit type v type||
+006389	20	|||  light     heavy   archers  light     heavy |||infantry  infantry            cavalry  cavalry |light infantry |   15          4         20        5          3 |heavy infantry |   60          5         65       15         8   |archers        |   10          3         18        5          3  |ligh
+0064f9	20	|For example a light infantry unit inflicts damage of 4 on a heavy infantry unit, whereas a heavy infantry inflicts damage of 60 on a light infantry unit.  These figures take no account of the other unit attributes; unit size, quality and morale, which have a significant effect on conflict resolutio
+0065f2	02	Fleets
+006625	20	|Fleets||
+00664d	20	|Any leader who has plans to create a substantial empire is going to need at least one fleet.  Not only can an army on a fleet cover large distances far quicker than an army travelling over land, but to get from Europe to Africa or Asia (or from Africa and Asia to Europe) then a fleet is essential. 
+006867	20	|Fleets with no supply will suffer more wear and tear, that is their level of repair will drop.  Fleets are much more likely to be damaged by the weather in winter, especially on the open seas.  So it is safer to 'park' a fleet near one of its own cities at the end of every turn.  Fleets do not suff
+0069f1	20	|(See |Fleet move| and |Fleet attack|)||
+006a3a	02	Battle
+006a6c	20	|Battle||
+006a93	20	|The battle section of Imperial Conquest takes place when a human player attacks another army, or when a human player's army is itself attacked.  This part of the game starts with the placing of the army units on the battle field.  Initially the units are placed at random, the leaders may then posit
+006bae	20	||Battle speed buttons| |The attacking army starts with a slight advantage as its leader places its units on the battle-field last but moves first.  The defender must first position their units within the bottom three rows of the battle field, the attacker can then position their units within the to
+006ce0	20	|It is the turn of the attacking army to move its units first, followed by the defender.  In each battle turn units may move, attack, and shoot. ||Move |Moving units is exactly the same as moving armies.  First select the unit by clicking on it.  Now either click on every square on the path you want
+006eb4	20	|Shoot |A unit can only shoot at an enemy unit if it is a missile firing type, it has at least one move and one shot remaining, and the target is within shooting distance.  Select the firing unit by left-clicking on it, then right-click on the target unit.  The shots are fired immediately, multiple 
+007041	20	||The difference between attacking a unit and shooting at it is that the former inflicts losses on both sides, while shooting inflicts losses only on the defending unit.  If multiple units are used to attack a single unit in one turn the losses of the defending unit will be increased while the losse
+00714f	20	|Perhaps the most important factor in deciding the outcome of battles is morale.  Units are not only destroyed by having all their men killed, they will fall if their morale falls too low.  When a unit falls it will cause the morale of its fellow units to drop and the morale of the enemy units to ri
+0072c9	20	|When a battle is finished you will be shown how many troops were lost on each side.  Whether or not you won the enemy may offer you peace terms, but often they will want to continue the war.||
+007371	02	Battle unit symbols
+0073a7	20	|Battle unit symbols||
+0073d2	20	||  |  |  Light infantry ||  |  |  Heavy infantry ||  |  |  Archers ||  |  |  Light cavalry ||  |  |  Heavy cavalry||These symbols distinguish between the number of troops in units.  The first symbol is for units containing upto 1/3 of the maximum number of troops for that unit type, the second symb
+007545	20	|For a light infantry unit the maximum number of troops is 15,000.  Therefore the  first symbol is for units with less than 5,000 troops, the second symbol denotes a unit with between 5,000 and 10,000 troops, and the third symbol is for a unit containing more than 10,000 troops. |See also; ||Unit co
+007629	02	Battle speed buttons
+00765f	20	|Battle speed buttons||
+00768a	20	|During a battle there are 5 extra speed buttons available just above the battle field map. ||UNIT MOVES - shows the remaining moves and shots for all your units, and which units have been selected to attack enemy units.  You can use this to check that all your units have been moved. |FRIENDLY UNITS
+0077d4	20	|CHANGE DELAYS - alters the delays after units shoot or attack each other, while the messages about units/losses are displayed. |COMPUTER GENERAL - is used to make the computer fight the battle for a human player.  After this option is chosen the computer makes the human player's remaining moves and
+007938	20	|SURRENDER - accept defeat in the battle.  All your army units are lost and any money or supplies your army was carrying will be captured by the victorious army.||
+0079ba	02	Time
+0079ed	20	|Time||
+007a15	20	|Imperial Conquest starts in 270 BC and must end by 250 BC when the leaders die of old age.  A year in Imperial Conquest consists of four seasons, and each season lasts six turns.  With regards to timing the training of mobilised troops or the building of a fleet, one turn lasts two weeks so that on
+007c7b	20	|Storms at sea are most common and more likely to cover a larger area in winter, they become rarer and smaller the closer it is to summer.||
+007cfb	02	Victory
+007d2e	20	|Victory||
+007d5f	20	|There is only one certain way of winning Imperial Conquest, by building an empire that totally dominates the Mediterranean.  This is obviously easier to do with some countries than with others, for example the Seleucid leader can mobilise enormous numbers of troops while the Dacian leader will stru
+007f12	20	|Some players may prefer to set themselves the target of leading their nations in a more civilised way, only fighting defensive wars and relying on diplomacy and peace to build up their nation's wealth.  For these the ultimate goal is obviously not one of conquering the Mediterranean but of maintain
+00815e	02	
+00818f	20	||
+0081b2	02	

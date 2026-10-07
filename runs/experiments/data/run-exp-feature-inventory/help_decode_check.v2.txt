@@ -1,0 +1,5 @@
+records: 250 compressed: 247 exact length: 247 not exact: 0 uncompressed: 3
+Reading: with the Wine HLPFILE_Uncompress3 port every compressed record decodes to its declared length exactly,
+so the topic text is byte-complete. The remaining non-text bytes are structural (NUL table-cell separators,
+literal-run escaped bytes), not lost characters; the RTF-level structure itself is out of scope here.
+cmd: python3 hlp_check.py 'Imperial Conquest 2.hlp' (sha256 f240739d5e0073106b65254446dd887da50e7677d1788d7e5065461149d4249d)
