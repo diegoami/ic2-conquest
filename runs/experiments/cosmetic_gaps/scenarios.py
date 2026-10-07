@@ -263,8 +263,8 @@ def supply_dialog(g, tag, rec, fix, city_note, staged=False):
     d['buttons'] = [{k: c[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled', 'visible')} for c in cs if c['cls'] == 'TButton']
     d['buy_button'] = next(({k: c[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled', 'visible')} for c in cs
                             if c['cls'] == 'TButton' and 'buy' in c['text'].replace('&', '').lower()), None)
-    snap_win(g, rec, 'dialog_' + city_note, wid, '%s_supply_%s.png' % (tag, city_note))
-    close_supply_dialog(g, wid)
+    snap_win(g, rec, 'dialog_' + city_note, wid[0], '%s_supply_%s.png' % (tag, city_note))
+    close_supply_dialog(g, wid[0])
     capture(g, tag, rec, 'state', 'after_' + city_note)
 
 def u1a(g, tag, rec):
