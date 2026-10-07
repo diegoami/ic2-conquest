@@ -219,11 +219,14 @@ def sb_rect(g, name):
 
 def click_sb(g, name, why):
     """Click an Area map speed button at its located rectangle, with the button's tooltip as a second proof of the point
-    (the pointer rests there before the click and the hint window 'Toggle colour' / 'Show armies' must be up)."""
+    (the pointer rests there before the click and the hint window 'Toggle colour' / 'Show armies' must be up).
+    The tooltip is MANDATORY (review R7): a click_sb whose tooltip hint window never came is rejected."""
     x, y, w, h = sb_rect(g, name)
     hint = {'sb_areatog': 'Toggle colour', 'sb_areaarms': 'Show armies'}[name]
     _drv.sh('xdotool', 'mousemove', str(x + w // 2), str(y + h // 2)); time.sleep(1.0)
     seen = hint in {wn[1] for wn in g.find_windows('.')}
+    if not seen:
+        raise _drv.DriverError('click_sb: tooltip %r was not seen over %s at (%d,%d); the click would be unproved' % (hint, name, x + w // 2, y + h // 2))
     CTX['why'] = why; CTX['target'] = {'src': 'panel + form resource', 'button': name, 'panel_line': area_panel(g)['line'],
                                        'rect': [x, y, w, h], 'hint_seen': seen, 'hint': hint}
     g.click(x + w // 2, y + h // 2, pause=1.0)

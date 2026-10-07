@@ -207,7 +207,7 @@ nothing but its own title; for the record, a save restores per-nation geometry a
   (verified clicks, `probe_close2.txt`). Sound plays run under `strace -f -e trace=openat,open` (`IC2_STRACE`); the WAV opens
   are harvested per step mark into `wav_opens_CG_<play>_<batch>.txt`.
 - **Staging.** One staged save, described in §4.
-- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v10.txt`: **348 checks, 0 mismatches**) re-reads every claim from its
+- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v13.txt`: **348 checks, 0 mismatches**) re-reads every claim from its
   source — the v4 code extract (the CALLSITES table, the function bodies, the offsets as the dump spells them, the DFM), the
   recordings (every cited tag must exist; every click's pointer read back; every sound row's case, WAV name and cited play bound together), the WAV harvests, the SAV decoded from its hashed file, the artifacts' hashes — and binds
   the finding's *own* quoted values (the title strings, the toggle triple, the caption, the SAV words, the cited tags) to them;

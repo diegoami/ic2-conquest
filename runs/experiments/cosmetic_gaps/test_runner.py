@@ -115,7 +115,47 @@ class TestRecordings(unittest.TestCase):
                 self.assertTrue(os.path.exists(DATA + r['wav_opens']), r['wav_opens'])
                 self.assertTrue(find_art(r['strace_log']), r['strace_log'])
 
-class TestForgedRecords(unittest.TestCase):
+class TestProductionClickGuard(unittest.TestCase):
+    """R6: the production Game3.click uses the same check_guard_ok the tests call; we exercise the
+    production path with a mocked pointer and underlying MyGame.click to ensure removing any check from
+    production will break the tests."""
+    def test_click_without_target_proofs_never_reaches_underlying_click(self):
+        import play_lib
+        from play_lib import Game3, CLICKS, CTX, MyGame
+        seen = []
+        # Game3.click calls MyGame.click(self, ...) explicitly - subclass Monkey-patching our override.
+        # Monkey-patch MyGame.click instead, on the class. This exercises the production path: the guard
+        # runs first (check_guard_ok), then MyGame.click is invoked only on a passing click.
+        seen_underlying = []
+        original_my_click = MyGame.click
+        MyGame.click = lambda self, x, y, pause=0.4: seen_underlying.append((x, y, pause))
+        play_lib.pointer_at = lambda x, y: {'x': x, 'y': y, 'window': 1}
+        try:
+            CTX.update(why=None, target=None)
+            g = type('G', (), {})()          # no-op object; the patched MyGame.click handles the call
+            # 1. no reason -> guard rejects, no underlying click
+            try:
+                Game3.click(g, 10, 20); self.fail('click without why must raise')
+            except Exception as e:
+                self.assertIn('no reason', repr(e))
+            self.assertEqual(seen_underlying, [], 'underlying click must NOT be called when the guard rejects')
+            # 2. reason but no target -> guard rejects
+            CTX['why'] = 'test'
+            try:
+                Game3.click(g, 10, 20); self.fail('click without target must raise')
+            except Exception as e:
+                self.assertIn('no target proof', repr(e))
+            self.assertEqual(seen_underlying, [], 'underlying click must NOT be called when the guard rejects (no target)')
+            # 3. reason + valid tooltip target -> guard accepts, underlying click runs
+            CTX['target'] = {'src': 'tooltip', 'x': 10, 'y': 20}
+            Game3.click(g, 10, 20)
+            self.assertEqual(seen_underlying, [(10, 20, 0.4)], 'underlying click reached exactly once for a valid click')
+        finally:
+            MyGame.click = original_my_click
+            CTX.update(why=None, target=None)
+
+
+
     """negative tests: the validator must REJECT a missing, a null and an inconsistent target (review R3)"""
     BASE = {'batch': 'b8', 'status': 'ok', 'verified': [{'step': 'x', 'ok': True}],
             'clicks': [{'x': 10, 'y': 20, 'why': 'control X', 'pointer': {'x': 10, 'y': 20, 'window': 1},

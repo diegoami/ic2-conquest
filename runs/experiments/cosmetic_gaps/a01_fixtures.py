@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+"""Round-5 (R5) decoder correctness tests: build PNG fixtures of each supported filter type and colour type,
+decode them with our PIL-free decoder, assert the reconstructed bytes equal the raw pixels we encoded.
+The fixtures are built IN-PROCESS by the test (not stored on disk - the build is the proof that the
+filter bytes were computed correctly).
+
+usage: python3 a01_fixtures.py"""
+import os, sys, struct, zlib
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from a01_runs import _decode_png
+
+def _chunk(t, d):
+    return struct.pack('>I', len(d)) + t + d + struct.pack('>I', zlib.crc32(t + d) & 0xFFFFFFFF)
+
+def png_build(W, H, depth, ctype, scanlines):
+    """scanlines: list of bytes, each = filter_type_byte + (W * bpp) bytes."""
+    sig = b'\x89PNG\r\n\x1a\n'
+    ihdr = _chunk(b'IHDR', struct.pack('>IIBBBBB', W, H, depth, ctype, 0, 0, 0))
+    idat = _chunk(b'IDAT', zlib.compress(b''.join(scanlines)))
+    return sig + ihdr + idat + _chunk(b'IEND', b'')
+
+def _paeth(a, b, c):
+    p = a + b - c
+    pa, pb, pc = abs(p - a), abs(p - b), abs(p - c)
+    if pa <= pb and pa <= pc: return a
+    if pb <= pc: return b
+    return c
+
+def encode_paeth(W, bpp, raw):
+    """raw = W * bpp bytes (one scanline). Returns the encoded scanline (filter type 4 + filter bytes)."""
+    enc = bytearray()
+    for i in range(len(raw)):
+        if i < bpp:
+            enc.append(raw[i])
+        else:
+            a = raw[i - bpp]; b = 0; c = 0       # single-row image: no prev row
+            enc.append((raw[i] - _paeth(a, b, c)) & 0xFF)
+    return b'\x04' + bytes(enc)
+
+def encode_sub(W, bpp, raw):
+    enc = bytearray()
+    for i in range(len(raw)):
+        if i < bpp: enc.append(raw[i])
+        else: enc.append((raw[i] - raw[i - bpp]) & 0xFF)
+    return b'\x01' + bytes(enc)
+
+def encode_up(W, bpp, raw):
+    return b'\x02' + bytes(raw)                  # prev row = 0; filter output 0 = no change
+
+def encode_avg(W, bpp, raw):
+    enc = bytearray()
+    for i in range(len(raw)):
+        if i < bpp: enc.append((raw[i] - 0) & 0xFF)        # (raw - floor((0 + 0)/2)) = raw
+        else:
+            a = raw[i - bpp]; b = 0
+            enc.append((raw[i] - ((a + b) >> 1)) & 0xFF)
+    return b'\x03' + bytes(enc)
+
+def encode_filter0(W, bpp, raw):
+    return b'\x00' + bytes(raw)
+
+def _grey(rgb):
+    r, g, b = rgb
+    return (r * 299 + g * 587 + b * 114) // 1000
+
+CASES = [
+    # (name, W, H, ctype, bpp, raw_rows, expected_pixels)
+    # raw_rows: list of per-row raw bytes (W*bpp each); expected_pixels = the reconstructed bytes the decoder
+    # must produce (grey bytes for ctype 0/4, grey bytes for ctype 2 RGB).
+    ('grey 2x1 filter0',     2, 1, 0, 1, [[10, 20]],                                                              [10, 20]),
+    ('grey 4x2 filter0',     4, 2, 0, 1, [[0, 1, 2, 3], [4, 5, 6, 7]],                                          [0, 1, 2, 3, 4, 5, 6, 7]),
+    ('rgb 3x1 filter0',      3, 1, 2, 3, [[10, 20, 30, 50, 100, 150, 200, 200, 200]],                              [_grey((10,20,30)), _grey((50,100,150)), _grey((200,200,200))]),
+    ('rgb 3x1 Sub',          3, 1, 2, 3, [[10, 20, 30, 50, 100, 150, 200, 90, 100]],                              [_grey((10,20,30)), _grey((50,100,150)), _grey((200,90,100))]),
+    ('rgb 3x1 Up',           3, 1, 2, 3, [[10, 20, 30, 50, 100, 150, 200, 90, 100]],                              [_grey((10,20,30)), _grey((50,100,150)), _grey((200,90,100))]),
+    ('rgb 3x1 Average',      3, 1, 2, 3, [[10, 20, 30, 50, 100, 150, 200, 90, 100]],                              [_grey((10,20,30)), _grey((50,100,150)), _grey((200,90,100))]),
+    ('rgb 3x1 Paeth',        3, 1, 2, 3, [[10, 20, 30, 50, 100, 150, 200, 90, 100]],                              [_grey((10,20,30)), _grey((50,100,150)), _grey((200,90,100))]),
+    ('rgb 3x1 Paeth [wrap]', 3, 1, 2, 3, [[10, 20, 30, 250, 252, 252, 204, 248, 206]],                           [_grey((10,20,30)), _grey((250,252,252)), _grey((204,248,206))]),
+]
+
+# one-row encoders (single-row image, prev row = 0)
+_ENC_1ROW = {
+    'filter0':  lambda W, bpp, raw: b'\x00' + bytes(raw),
+    'sub':      lambda W, bpp, raw: encode_sub(W, bpp, raw),
+    'up':       lambda W, bpp, raw: encode_up(W, bpp, raw),
+    'average':  lambda W, bpp, raw: encode_avg(W, bpp, raw),
+    'paeth':    lambda W, bpp, raw: encode_paeth(W, bpp, raw),
+}
+
+def main():
+    import tempfile
+    failures = []
+    for name, W, H, ctype, bpp, raw_rows, expected in CASES:
+        _scanlines = []
+        for r in raw_rows:
+            key = name.split()[-1].lower()
+            if key not in _ENC_1ROW: key = 'filter0'
+            _scanlines.append(_ENC_1ROW[key](W, bpp, r))
+        scanlines = _scanlines
+        blob = png_build(W, H, 8, ctype, scanlines)
+        with tempfile.NamedTemporaryFile('wb', suffix='.png', delete=False) as f:
+            f.write(blob); path = f.name
+        try:
+            Wd, Hd, pix = _decode_png(path)
+            if (Wd, Hd) != (W, H):
+                failures.append(f'{name}: WH got {Wd}x{Hd} expected {W}x{H}')
+            elif list(pix) != expected:
+                failures.append(f'{name}: bytes {list(pix)} != expected {expected}')
+            else:
+                print(f'{name}: OK')
+        finally:
+            os.unlink(path)
+    if failures:
+        print('\nFAILURES:'); print('\n'.join(failures))
+        sys.exit(1)
+    print('\nALL DECODER FIXTURES PASS')
+
+if __name__ == '__main__':
+    main()

@@ -1,10 +1,11 @@
 test_refuses_unharvested (__main__.TestClearAutosRefuses.test_refuses_unharvested) ... ok
 test_end_turn_raises_on_no_advance (__main__.TestEndTurnTimeout.test_end_turn_raises_on_no_advance) ... ok
-test_inconsistent_target (__main__.TestForgedRecords.test_inconsistent_target) ... ok
-test_missing_target (__main__.TestForgedRecords.test_missing_target) ... ok
-test_null_target (__main__.TestForgedRecords.test_null_target) ... ok
-test_unknown_proof_src (__main__.TestForgedRecords.test_unknown_proof_src) ... ok
-test_valid_passes (__main__.TestForgedRecords.test_valid_passes) ... ok
+test_click_without_target_proofs_never_reaches_underlying_click (__main__.TestProductionClickGuard.test_click_without_target_proofs_never_reaches_underlying_click) ... ok
+test_inconsistent_target (__main__.TestProductionClickGuard.test_inconsistent_target) ... ok
+test_missing_target (__main__.TestProductionClickGuard.test_missing_target) ... ok
+test_null_target (__main__.TestProductionClickGuard.test_null_target) ... ok
+test_unknown_proof_src (__main__.TestProductionClickGuard.test_unknown_proof_src) ... ok
+test_valid_passes (__main__.TestProductionClickGuard.test_valid_passes) ... ok
 test_clicks_carry_target_proofs (__main__.TestRecordings.test_clicks_carry_target_proofs) ... ok
 test_clicks_pointer_read_back (__main__.TestRecordings.test_clicks_pointer_read_back) ... ok
 test_screenshots_exist_and_hashed (__main__.TestRecordings.test_screenshots_exist_and_hashed) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b1a_after_ok.png'>
@@ -131,7 +132,7 @@ test_tags_unique (__main__.TestRecordings.test_tags_unique) ... ok
 test_there_are_recordings (__main__.TestRecordings.test_there_are_recordings) ... ok
 
 ----------------------------------------------------------------------
-Ran 14 tests in 1.014s
+Ran 15 tests in 1.008s
 
 OK
 exit=0

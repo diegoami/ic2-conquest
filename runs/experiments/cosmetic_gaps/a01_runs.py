@@ -48,15 +48,15 @@ def _decode_png(path):
                 row[x] = (row[x] + (a + b) // 2) & 0xFF
         elif ftype == 4:
             for x in range(len(row)):
-                a = row[x - bpp] if x >= bpp else 0
-                b = prev[x]
-                c = prev[x - bpp] if x >= bpp else 0
-                pp = a + b - c
-                pa, pb, pc = abs(pp - a), abs(pp - b), abs(pp - c)
-                if pa <= pb and pa <= pc: pr = 0
-                elif pb <= pc: pr = pb
-                else: pr = pc
-                row[x] = (row[x] + a + b - c + pr) & 0xFF
+                a = row[x - bpp] if x >= bpp else 0     # left (reconstructed: same row, bpp bytes to the left)
+                b = prev[x]                              # above (already reconstructed: previous row's byte)
+                c = prev[x - bpp] if x >= bpp else 0     # upper-left (previous row, bpp to the left)
+                p = a + b - c                            # initial prediction
+                pa, pb, pc = abs(p - a), abs(p - b), abs(p - c)
+                if pa <= pb and pa <= pc: pr = a
+                elif pb <= pc: pr = b
+                else: pr = c                            # Paeth's SELECTOR is the predictor value a/b/c
+                row[x] = (row[x] + pr) & 0xFF
         rows.append(bytes(row)); prev = rows[-1]
     if ctype == 0:
         return W, H, b''.join(rows)
