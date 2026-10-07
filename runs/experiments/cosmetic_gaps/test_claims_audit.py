@@ -54,6 +54,16 @@ class TestOneBentClaim(unittest.TestCase):
         self.check_bent('`CG_S3_b7`: the scuttle', '`CG_S1_b7`: the scuttle', ['m06 CG_S1_b7 opened Sound8'])
     def test_swapped_offsets(self):
         self.check_bent('**H+0x472 W+0x474**', '**H+0x474 W+0x472**', ['finding claims area H at +0x472', 'finding claims area W at +0x474'])
+    def test_wrong_but_existing_tag_for_sound(self):
+        # R4: a sound row attributed to the wrong existing tag must fail (event-step mismatch).
+        # The S3 row opens SOUND8; reusing the S2 tag (which also opens SOUND8 during its End turn) must NOT satisfy.
+        bent = self.base.replace('| 8 | Sound8 | a fleet is lost — scuttled | 47348 in `TUnitMap_ScuttleFleet` | `[confirmed]` `CG_S3_b7`',
+                                  '| 8 | Sound8 | a fleet is lost — scuttled | 47348 in `TUnitMap_ScuttleFleet` | `[confirmed]` `CG_S2_b7`')
+        self.assertIn('| 8 | Sound8 | a fleet is lost — scuttled | 47348 in `TUnitMap_ScuttleFleet` | `[confirmed]` `CG_S3_b7`', self.base)
+        n, bad = audit_text(bent)
+        self.assertTrue(bad, 'no mismatch after attributing the scuttle row to CG_S2_b7')
+        self.assertTrue(any('CG_S2_b7' in b for b in bad), bad)
+
     def test_derived_flipped_to_confirmed(self):
         self.check_bent('| 3 | Sound3 | battle ranged attack, firing unit\'s type byte = 2 | 38975 in `FUN_0043910c` | `[derived]` |',
                         '| 3 | Sound3 | battle ranged attack, firing unit\'s type byte = 2 | 38975 in `FUN_0043910c` | `[confirmed]` |',

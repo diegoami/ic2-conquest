@@ -86,22 +86,29 @@ a `TSpeedButton` with one `Glyph.Data` (362 bytes), `ShowHint`, and **no** `Grou
 latched-down look, so the button looks the same in both palette states; the state shows in the map face, not on the button (its
 tooltip `Toggle colour` was seen before each click `[confirmed]`).
 
-**What the toggle flips between** `[confirmed by measurement]`: the flag is an ImageList index
-(`FUN_00417550` at 0x00417550, dump lines 20465-20494: `ImageList_DrawEx(himl, param_4, ...)` with `param_4` being
-the toggle byte), so the two states are TWO image sets of the same tile bitmap. The two sets are not the same image:
-a run-length measurement of identical-grey pixels on horizontal lines of the map face (the bitmap region
-`+8+34 304x150`, every 4th row) of the b8 screenshots gives:
-byte 1 (`CG_T3_b8_area_before.png`): mean run **45.14 px**, median 9, max 304 (n=9 rows) — long uniform runs
-of identical grey, characteristic of a **political/mono-style** set (large regions of the same terrain colour
-without per-tile shading);
-byte 0 (`CG_T3_b8_area_after_one.png`): mean run **17.54 px**, median 6, max 304 (n=24 rows) — short per-tile runs,
-characteristic of a **terrain-style** set (each tile shaded differently from its neighbours).
-Which of the two is "mono" and which is "terrain" in the inventory's vocabulary is **not established** by the dump
-or the resource; the byte-1 set's long uniform runs match the inventory's description of "mono" (the political map
-without per-tile shading), and the byte-0 set's short runs match "terrain", but the finding does not name them
-that way — the clone should pick the two sets and label them, not copy the inventory's labels.
-The measurement is reproducible: `runs/experiments/cosmetic_gaps/a01_runs.py` reads the b8 screenshots, prints
-the per-row means, and exits non-zero on a measurement that no longer distinguishes the two states.
+**What the toggle flips between** — the rendering is different from each other; the ImageList claim is derived from the
+decompile:
+
+**byte 1** `[confirmed]` / **byte 0** `[confirmed]` are the two toggle states, the byte reads as 1 then 0 then 1 across two
+clicks (`CG_T3_b8`). A run-length measurement of identical-grey pixels on horizontal lines of the bitmap region
+`+8+34 304x150`, every 4th row, of the b8 screenshots gives:
+
+| state | mean run | median | max | n runs | property |
+|---|---|---|---|---|---|
+| byte 1 (`CG_T3_b8_area_before.png`) | **18.19 px** | 4 | 304 | 635 (over 38 sampled rows) | long uniform runs of identical grey; large regions of the same terrain colour without per-tile shading — characteristic of a **political/mono-style** set |
+| byte 0 (`CG_T3_b8_area_after_one.png`) | **9.05 px** | 2 | 304 | 1276 (over 38 sampled rows) | short per-tile runs; each tile shaded differently from its neighbours — characteristic of a **terrain-style** set |
+
+Ratio byte-1 / byte-0 = **2.01x** (the script `runs/experiments/cosmetic_gaps/a01_runs.py` fails if this drops below 1.5x,
+the threshold chosen so that the political/terrain distinction still holds).
+The measurement does NOT identify which of the two byte values the inventory calls "mono" and which "terrain"; the byte-1 set's
+long uniform runs match the inventory's description of "mono", the byte-0 set's short runs match "terrain", but the
+finding names them by their property and lets the clone pick the labels.
+
+**The flag is an ImageList index** `[derived]`: `FUN_00417200` (dump lines 20168-20188) is the toggle's drawing wrapper,
+called from `PaintForm` with the byte as a literal `1` / `0` (the byte selects between two branches that call `FUN_00417200`
+with opposite constants); `FUN_00417550` (dump lines 20465-20494) is the actual draw, an
+`ImageList_DrawEx(himl, param_4, ...)` where `param_4` is the byte. The measurement above confirms the rendering differs;
+the ImageList claim is read from the decompile, NOT from the measurement.
 
 **The toggle clears the drawn markers** `[derived]`, and the claim "two clicks clear the markers" is TRUE with this code
 behind it: `TAreaMap_PaintForm` draws the background, then replays the form's accumulated marker-command list (kinds: cities,
@@ -200,7 +207,7 @@ nothing but its own title; for the record, a save restores per-nation geometry a
   (verified clicks, `probe_close2.txt`). Sound plays run under `strace -f -e trace=openat,open` (`IC2_STRACE`); the WAV opens
   are harvested per step mark into `wav_opens_CG_<play>_<batch>.txt`.
 - **Staging.** One staged save, described in §4.
-- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v8.txt`: **341 checks, 0 mismatches**) re-reads every claim from its
+- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v10.txt`: **348 checks, 0 mismatches**) re-reads every claim from its
   source — the v4 code extract (the CALLSITES table, the function bodies, the offsets as the dump spells them, the DFM), the
   recordings (every cited tag must exist; every click's pointer read back; every sound row's case, WAV name and cited play bound together), the WAV harvests, the SAV decoded from its hashed file, the artifacts' hashes — and binds
   the finding's *own* quoted values (the title strings, the toggle triple, the caption, the SAV words, the cited tags) to them;

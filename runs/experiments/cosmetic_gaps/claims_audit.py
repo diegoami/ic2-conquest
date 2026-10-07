@@ -218,7 +218,21 @@ def run(finding, data, art, quiet=True):
                 hp = vs[-1] if vs else data + r['wav_opens']         # the LATEST versioned harvest (re-harvests sit beside the first)
                 body = open(hp, errors='replace').read()
                 hit = [m2 for m2 in re.finditer(r'\[(\w+)\].*SOUND%d\.WAV' % case, body)]
+                # R4: a sound row's citation must match its OWN scenario (the play id in the tag's first play-name
+                # token), not just any step that happens to contain the WAV (S2's post-End-turn SOUND8 is from the
+                # AI phase, not from the fleet-saved move the S1 event wants).
                 EVENT_STEPS = {'S1': {'selected', 'moved'}, 'S2': {'selected', 'moved'}, 'S3': {'dialog', 'confirmed'}, 'S4': {'loaded', 'end_turn_done'}}
+                # R4: the citation's tag must carry the same SCENARIO the row's event describes. Each sound row's
+                # event column carries a unique event keyword; the citation's CG_<S-id>_ must match.
+                SCENARIO_KEYS = {'march': 'S1', 'moves on the battle map': 'S1', 'sails': 'S2', 'scuttle': 'S3',
+                                   'is lost at sea': 'S3', 'naval battle': 'S3', 'destroyed in a fleet battle': 'S3',
+                                   'both sides non-local': 'S4', "AI nations' phase": 'S4'}
+                rtxt = row.group(0).lower()
+                expected = next((s for kw, s in SCENARIO_KEYS.items() if kw in rtxt), None)
+                if expected:
+                    check('m06 row case %d citation %s has scenario %s (event keyword in row)' % (case, tag, expected),
+                          tag.startswith('CG_' + expected + '_'),
+                          'the row describes the %s event but the citation is %s' % (expected, tag))
                 steps = EVENT_STEPS.get(tag.split('_')[1], None)
                 check('m06 %s opened Sound%d.WAV inside the event interval %s' % (tag, case, sorted(steps) if steps else None),
                       bool(hit) and (steps is None or any(m2.group(1) in steps for m2 in hit)), hp)

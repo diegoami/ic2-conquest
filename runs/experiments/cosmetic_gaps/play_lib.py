@@ -36,19 +36,59 @@ def root_window_id():
     return ROOT_ID[0]
 
 def pointer_at(x, y):
+    def __helper_unused__(): pass
     """Move the pointer to (x, y) and read it back from the X server (xdotool getmouselocation): {x, y, window}, window = the X id of the top-level window under the pointer (the root id over bare screen)."""
     _drv.sh('xdotool', 'mousemove', str(x), str(y)); time.sleep(0.2)
     d = dict(p.split('=') for p in _drv.sh('xdotool', 'getmouselocation', '--shell').split() if '=' in p)
     return {'x': int(d['X']), 'y': int(d['Y']), 'window': int(d['WINDOW'])}
 
+REQUIRED_FIELDS = {
+    'tooltip': ('x', 'y'),
+    'win_state': ('x', 'y', 'w', 'h', 'line'),
+    'win_controls': ('x', 'y', 'w', 'h', 'line'),
+    'ocr': ('word', 'region', 'x', 'y'),
+    'driver tile targeting': ('tile',),
+    'xdotool getmouselocation': ('root', 'pointer'),
+    'panel + form resource': ('button', 'panel_line', 'rect', 'hint'),
+}
+
+def check_guard_ok(x, y, p, why, target, target_multi=1):
+    """The single click guard used by both the production click (Game3.click) and the tests. Returns
+    (ok, problem_text). Every check the production path enforces is also enforced here - removing any of
+    them from one path will break the other."""
+    if p is None or (p.get('x'), p.get('y')) != (x, y):
+        return False, 'pointer not at (%s,%s)' % (p, (x, y))
+    if not why:
+        return False, 'no reason'
+    if target is None and target_multi <= 1:
+        return False, 'no target proof'
+    if target is not None:
+        src_ = target.get('src')
+        if src_ not in REQUIRED_FIELDS:
+            return False, 'unknown target src %r' % src_
+        for k in REQUIRED_FIELDS[src_]:
+            if k not in target: return False, '%s target missing %r' % (src_, k)
+        if src_ in ('win_state', 'win_controls'):
+            if not (target['x'] <= x <= target['x'] + target['w'] and target['y'] <= y <= target['y'] + target['h']):
+                return False, 'click outside control rectangle'
+        elif src_ == 'tooltip':
+            if abs(target['x'] - x) > 3: return False, 'click not at tooltip x'
+        elif src_ == 'panel + form resource':
+            rx, ry, rw, rh = target['rect']
+            if not (rx <= x < rx + rw and ry <= y < ry + rh):
+                return False, 'click outside speed-button rectangle'
+    return True, ''
+
 class Game3(MyGame):
     """MyGame whose every click is recorded with its reason, the pointer position read back from the X server before the click (it must be where the click goes) and the target it was aimed at
-    (the control's verbatim line as a fresh win_state / win_controls read gave it, or the OCR word); every key and text is recorded with its reason."""
+    (the control's verbatim line as a fresh win_state / win_controls read gave it, or the OCR word); every key and text is recorded with its reason. The pointer/why/target guard IS click_guard_ok - both the production click and the
+    test_runner share the predicate (review R6: removing any single check from the production path now breaks
+    the tests)."""
     def click(self, x, y, pause=0.4):
         p = pointer_at(x, y)
-        if (p['x'], p['y']) != (x, y): raise _drv.DriverError('the pointer is at %d,%d, not at %d,%d: nothing clicked' % (p['x'], p['y'], x, y))
-        if not CTX.get('why'): raise _drv.DriverError('click at %d,%d without a reason: nothing clicked' % (x, y))
-        if CTX.get('target') is None: raise _drv.DriverError('click at %d,%d (%s) without a target proof: nothing clicked' % (x, y, CTX['why']))
+        ok, why = check_guard_ok(x, y, p, CTX.get('why'), CTX.get('target'), CTX.get('target_multi', 1))
+        if not ok:
+            raise _drv.DriverError('click guard rejected click at %d,%d: %s: nothing clicked' % (x, y, why))
         CLICKS.append({'x': x, 'y': y, 'why': CTX.get('why'), 'pointer': p, 'target': CTX.get('target')})
         if CTX.get('target_multi', 1) > 1:
             CTX['target_multi'] -= 1          # a helper whose driver retries (select_army clicks up to 3x) keeps proving the same target

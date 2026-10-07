@@ -129,15 +129,30 @@ def harvest(tag):
         out.append(os.path.basename(dst))
     return out
 
+def _harvested_save_set():
+    """Every save currently kept in SAVEDIR, keyed by the live AUTO*.SAV name it shadows (a kept save
+    `<tag>_AUTO0721.SAV` shadows the live `AUTO0721.SAV`). Used by clear_autos (R7)."""
+    out = set()
+    for f in sorted(os.listdir(SAVEDIR)):
+        if not f.endswith('.SAV'): continue
+        # extract the trailing AUTOnnnn.SAV if the file was prefixed
+        i = f.rfind('_AUTO')
+        if i >= 0:
+            out.add(f[i + 1:])
+        elif f.startswith('AUTO'):
+            out.add(f)
+    return out
+
 def clear_autos():
-    """Remove the AUTO*.SAV and AUTOSAVE.LOG of MY game folder before a scenario - only when every AUTO*.SAV has
-    been HARVESTED (an older copy exists in the artifacts SAVEDIR): refuses to delete an AUTO the runner has not
-    copied first, so an unharvested autosave cannot be lost (review R5)."""
+    """Remove the AUTO*.SAV and AUTOSAVE.LOG of MY game folder before a scenario - only when every live
+    AUTO*.SAV has been HARVESTED (some <tag>_<autoname> copy exists in SAVEDIR; the harvest prefix is
+    stripped when checking, R7): refuses to delete an autosave the runner has not copied first."""
+    harvested_basenames = _harvested_save_set()
     for f in list(_drv.G.glob('AUTO*')):
         if f.suffix != '.SAV':
             f.unlink(); continue
-        if not os.path.exists(SAVEDIR + f.name):
-            raise _drv.DriverError('clear_autos: %s was not harvested (no copy in %s); harvest it first or rename this plays tag' % (f.name, SAVEDIR))
+        if f.name not in harvested_basenames:
+            raise _drv.DriverError('clear_autos: %s was not harvested (no <tag>_%s in %s); harvest it first or rename this plays tag' % (f.name, f.name, SAVEDIR))
         f.unlink()
 
 def _ids():

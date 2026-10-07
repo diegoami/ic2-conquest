@@ -32,56 +32,17 @@ RECS = recordings()
 HARDENED = {'b7', 'b8', 'close-probe2'}          # batches recorded after the runner began rejecting unproved clicks
 PROOF_SRCS = {'tooltip', 'win_state', 'win_controls', 'ocr', 'driver tile targeting', 'xdotool getmouselocation', 'panel + form resource'}
 
-REQUIRED_FIELDS = {
-    'tooltip':                 ('x', 'y'),                                # tooltip-proved x at known y; how added to the writes post-R3
-    'win_state':               ('x', 'y', 'w', 'h', 'line'),            # the verbatim line of the control; window added to the writes post-R3
-    'win_controls':            ('x', 'y', 'w', 'h', 'line'),            # ditto from win_controls for popups; window added to the writes post-R3
-    'ocr':                     ('word', 'region', 'x', 'y'),               # the OCR'd word's centre and the region it was looked in
-    'driver tile targeting':   ('tile',),                                  # the tile the driver is targeting (the kind, not just the kind)
-    'xdotool getmouselocation':('root', 'pointer'),                        # the root id + a pointer read-back for the bare-root click
-    'panel + form resource':   ('button', 'panel_line', 'rect', 'hint'),   # the speed button's resource decl + its own rect + the tooltip's text
-}
-
-def prove_one(t, c):
-    """validate one click's target; return (ok, problems)"""
-    probs = []
-    if not t or t.get('src') not in REQUIRED_FIELDS:
-        return False, ['target %r unknown or missing' % t]
-    for k in REQUIRED_FIELDS[t['src']]:
-        if k not in t: probs.append('%s target missing %r' % (t['src'], k))
-    if not probs:
-        if t['src'] in ('win_state', 'win_controls'):
-            if not (t['x'] <= c['x'] <= t['x'] + t['w'] and t['y'] <= c['y'] <= t['y'] + t['h']):
-                probs.append('click %d outside its control rectangle' % c['x'])
-        elif t['src'] == 'tooltip':
-            if abs(t['x'] - c['x']) > 3: probs.append('click %d not at tooltip x %d' % (c['x'], t['x']))
-        elif t['src'] == 'panel + form resource':
-            rx, ry, rw, rh = t['rect']
-            if not (rx <= c['x'] < rx + rw and ry <= c['y'] < ry + rh):
-                probs.append('click %d outside speed-button rectangle' % c['x'])
-        elif t['src'] == 'xdotool getmouselocation':
-            if t.get('pointer', {}).get('window') != t.get('root'):
-                probs.append('bare-root click: pointer window %r != root %r' % (t.get('pointer'), t.get('root')))
-    return not probs, probs
+from play_lib import check_guard_ok
 
 def click_proofs_ok(rec, strict):
-    """every click carries why + (strict: a target whose src has all the fields the proof needs, and the
-    rect/x/pointer matches the click point)"""
+    """every click passes the SAME check_guard_ok predicate Game3.click uses (single source of truth, R6)."""
     probs = []
     for i, c in enumerate(rec.get('clicks', [])):
-        if not c.get('why'): probs.append('click %d without a reason' % i)
+        if not c.get('why'):
+            probs.append('click %d: no reason' % i); continue
         if not strict: continue
-        ok, sub = prove_one(c.get('target'), c)
-        probs.extend('%d: %s' % (i, s) for s in sub)
-    return not probs, probs
-
-def click_guard_active(rec, strict):
-    """the production click guard (Game3.click in play_lib.py) - reject a click that arrives without a
-    reason or a target. Tested by reconstructing the guard's predicate against the same fields the runner reads."""
-    probs = []
-    for i, c in enumerate(rec.get('clicks', [])):
-        if not c.get('why'): probs.append('click %d: no reason' % i)
-        if not c.get('target'): probs.append('click %d: no target' % i)
+        ok, why = check_guard_ok(c['x'], c['y'], c.get('pointer'), c['why'], c.get('target'))
+        if not ok: probs.append('click %d: %s' % (i, why))
     return not probs, probs
 HASHES = {}
 for l in open(DATA + 'SAVES.sha256'):
@@ -204,17 +165,24 @@ class TestClearAutosRefuses(unittest.TestCase):
     an unharvested measured output cannot be silently deleted. The check raises DriverError."""
     def test_refuses_unharvested(self):
         import eog, lib, os, tempfile
-        from lib import _drv as ld
-        orig_g, orig_savedir = ld.G, eog.SAVEDIR
-        ld.G = type('P', (), {'glob': lambda self, pat: [type('F', (), {'name': 'AUTO0721.SAV', 'suffix': '.SAV', 'unlink': lambda self: None})]})()
-        eog.SAVEDIR = '/nonexistent-zen-of-the-discovery'
-        try:
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            from lib import _drv as ld
+            orig_g, orig_savedir = ld.G, eog.SAVEDIR
+            ld.G = type('P', (), {'glob': lambda self, pat: [type('F', (), {'name': 'AUTO0721.SAV', 'suffix': '.SAV', 'unlink': lambda *a, **kw: None})]})()
+            eog.SAVEDIR = td
             try:
-                eog.clear_autos(); self.fail('clear_autos should have raised')
+                eog.clear_autos(); self.fail('clear_autos should have raised when nothing harvested')
             except Exception as e:
                 self.assertIn('not harvested', repr(e))
-        finally:
-            ld.G = orig_g; eog.SAVEDIR = orig_savedir
+            # write a tag-prefixed harvested copy of the same name and confirm clear_autos accepts
+            open(td + '/CG_S2_b7_AUTO0721.SAV', 'wb').close()
+            try:
+                eog.clear_autos()             # the unlink() is a no-op; the file MUST be GLOB-able to be iterated
+            except Exception as e:
+                self.fail('clear_autos rejected a harvested (tag-prefixed) save: %s' % e)
+            finally:
+                ld.G = orig_g; eog.SAVEDIR = orig_savedir
 
 
 if __name__ == '__main__':
