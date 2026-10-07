@@ -1,8 +1,12 @@
 # Cosmetic gaps (#723): hand-back, 2026-10-07 (GLM-5.3 session; supersedes the 2026-10-06 MiniMax-M3 hand-back below)
 
-**Implemented by GLM-5.3 via Claude Code** (Sonnet skipped: Claude 7d exhausted until ~2026-10-08 14:00 UTC). The player
-called a stop mid-session ("do not start new processes, we need to restart claude"); everything measured is committed and
-pushed. Branch `experiment/cosmetic-gaps`, commits from `1f94515` (b3) to the last push.
+**Implemented by GLM-5.3 via Claude Code** (Sonnet skipped: Claude 7d exhausted until ~2026-10-08 14:00 UTC).
+
+**STATE: PR #66 OPEN, review round 1 (openai/gpt-6.1-sol #low, brief docs/review-briefs/pr66.md) RUNNING.** The finding
+(`findings/2026-10-06-cosmetic-gaps.md`), the experiment (b1-b6 + close probe, release `run-exp-cosmetic-gaps`), the claims
+audit (**172 checks, 0 mismatches**, `claims_audit_cosmetic.v3.txt`) and the tests (`test_claims_audit.py` 8 OK,
+`test_runner.py` 6 OK) are all pushed on `experiment/cosmetic-gaps`. After the review: fix what it lists, re-audit, round 2
+or the narrow-approve path per the usual flow; merge on approve + green CI; then #722 help tables is next in the queue.
 
 ## New since the M3 hand-back
 
