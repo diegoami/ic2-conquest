@@ -1,6 +1,82 @@
-# Cosmetic gaps (#723): hand-back, 2026-10-06
+# Cosmetic gaps (#723): hand-back, 2026-10-07 (GLM-5.3 session; supersedes the 2026-10-06 MiniMax-M3 hand-back below)
 
-**Implemented by MiniMax-M3 via Claude Code (Sonnet skipped: Claude exhausted until Thu 2026-10-08 13:59 UTC).**
+**Implemented by GLM-5.3 via Claude Code** (Sonnet skipped: Claude 7d exhausted until ~2026-10-08 14:00 UTC). The player
+called a stop mid-session ("do not start new processes, we need to restart claude"); everything measured is committed and
+pushed. Branch `experiment/cosmetic-gaps`, commits from `1f94515` (b3) to the last push.
+
+## New since the M3 hand-back
+
+- **b3 (all four plays recorded, `plays_b3.jsonl`, archive `batch-b3.tar.gz` uploaded, `MANIFEST-b3.txt` tracked):**
+  - **S3 scuttle ok**: `wav_opens_CG_S3_b3.txt` — **SOUND8.WAV** opened between the scuttle Confirm and its Yes
+    (matches `TUnitMap_ScuttleFleet` line 47348, case 8).
+  - **S4 End turn ok**: `wav_opens_CG_S4_b3.txt` — **SOUND9.WAV** during the AI phase after End turn
+    (`FUN_0044aee4` line 49639, case 9: an army battle whose BOTH sides are non-local seats).
+  - U1/U2 failed on runner bugs (below), evidence kept in the record.
+- **Correction to the M3 hand-back**: `wav_opens_CG_S2_b2.txt` is NOT empty — the fleet move opened **SOUND2.WAV**
+  (`FUN_0044dd70` line 51985, case 2, the fleet-move executor). The M3 claim "harvest empty, re-run S2" is void.
+- **`make_extract.py` was broken and is fixed** (commit with `code_extract_cosmetic.v3.txt`): the CALLSITES
+  enclosing-function lookup took the FIRST header ≤ the line (always `FUN_00401338`), not the last. v1/v2's CALLSITES
+  "in <function>" column is wrong; **cite v3 only**.
+- **`dfm_TAFSupply.v2.txt`** (dump_dfm_supply.py): the form resource, byte-exact. `object AFSupply: TAFSupply`,
+  `Caption = 'Supply army'`, ClientWidth 470, ClientHeight 335 (matches the live dialog exactly).
+  **`btn_buy: TButton`, `Caption = 'Buy supplies'`** — UA01's caption is settled from the resource.
+  (v1 exists with a garbled root header from a parser off-by-one, kept per rule 6, do not cite.)
+- **M06 mapping complete [derived], four cases [confirmed]** — every call site re-read by line number in
+  `all_app_functions.txt` (the M3 hand-back's address↔event mapping was unreliable; do not reuse it):
+  | case | WAV | event | enclosing (line) | play |
+  |---|---|---|---|---|
+  | 1 | Sound1 | an army marches (main map; battle map too) | FUN_0044d420 (51503), TBattleMap_PlaceUnit (37735), FUN_004381a4 (38236) | S1 ✓ |
+  | 2 | Sound2 | a fleet sails | FUN_0044dd70 (51985) | S2 ✓ |
+  | 3 | Sound3 | battle ranged attack, unit type byte == 2 | FUN_0043910c (38975) | — |
+  | 4 | Sound4 | battle ranged attack, any other type | FUN_0043910c (38978) | — |
+  | 5 | Sound5 | battle attack order / melee | TBattleMap_SelectUnit (37682), FUN_004393ec (39077) | — |
+  | 6 | Sound6 | city assault repelled ("fails to capture") | FUN_0044b27c (49828) | — |
+  | 7 | Sound7 | a city falls ("<city> (<owner>) falls to <nation>.") | FUN_0044b27c (49817) | — |
+  | 8 | Sound8 | a fleet is lost: scuttle / "is lost at sea" / naval battle | TUnitMap_ScuttleFleet (47348), FUN_004514ec (54594), FUN_0044b5d0 (49902) | S3 ✓ |
+  | 9 | Sound9 | army battle between two NON-local nations | FUN_0044aee4 (49639) | S4 ✓ |
+  | 10 | Sound10 | a nation is eliminated (all its cities transferred to the conqueror) | FUN_0044c528 (50627) | — |
+  Move sounds (1, 2) play only when the byte at `DAT_00474b00 + <current nation>*0x494` is non-zero (the local-seat
+  flag; see FUN_0044d420/FUN_0044dd70); case 9 only when NEITHER side is local.
+- **UA01 enablement [derived, corrected]**: `TAFSupply_CityOrFleet` toggles **Visible** (`FUN_00412c08` posts
+  CM_VISIBLECHANGED 0xB00B), not Enabled. Own city or own fleet → the 16 buy-side controls (incl. 0x1b0 = btn_buy)
+  are HIDDEN, the 14 free-supply controls shown; foreign non-hostile city → the reverse. `TAFSupply_FindProviders`
+  scans the 3×3 around the army: city terrain codes 20..99, **skips owners whose relation byte to the current nation
+  is 3 (war)**; own fleets in range are also providers. A hidden, never-shown VCL control has no HWND → win_state
+  cannot list btn_buy at an own city (that is what U1 b3's sparse read was).
+- **`stage_neutral.py`** crafted `STAGED-felsina-neutral-0721.SAV` (artifacts, hashed, in `SAVES.sha256`;
+  note `STAGED-felsina-neutral.txt`): the ONLY change is Rome↔Gaul relations 3→0 in a copy of the felsina fixture
+  (asserted before writing). Labelled STAGED everywhere.
+- **b4 (`plays_b4.jsonl`)**: **U2 ok — at the hostile foreign city (Felsina, war 3) the Supply army dialog does NOT
+  open** [confirmed, matches FindProviders]. U1 (own city) and U2B (staged neutral) both reached an OPEN dialog
+  (470×335, the error tuples prove it) but died on MY one-line bug — `win_geo(g, wid)` got the window TUPLE, not
+  `wid[0]` — before reading controls. **Fixed in scenarios.py after the run** (commit message says so); re-run both
+  as batch b5: `python3 run_play.py b5 U1 U2B` (U2 must NOT be re-run with that batch name... it can: a new batch
+  name makes new tags; but U2's answer is already recorded — no need).
+
+## Resume here (for the next session)
+
+1. `python3 run_play.py b5 U1 U2B` in `runs/experiments/cosmetic_gaps/` (the wid[0] fix is committed; expect U1 =
+   dialog with btn_ok only, btn_buy absent [own city hides the buy controls]; U2B = dialog WITH a visible
+   `Buy supplies` TButton — the DFM says btn_buy, the finding cites the exact bytes). Archive (`archive_batch.py b5`),
+   commit, push.
+2. Write `findings/2026-10-06-cosmetic-gaps.md` (name per the task's done-when; date it 2026-10-07 if preferred):
+   M04 (title format + when set — v3 extract's SetTurnTitle CALLSITES), M05 (StoreFormPositions layout + T4),
+   M06 (the table above; "what this does not establish": cases 3,4,5,6,7,10 stayed [derived]; no audio device, the
+   WAV open is the evidence), A01 (toggle byte + hashes/screenshots from b1 T3; PaintForm shows no marker clearing —
+   say what the hashes show), UA01 (caption 'Buy supplies' byte-exact; Visible-not-Enabled; hostile → no dialog
+   [confirmed U2 b4]; own city [confirmed b5 U1]; staged neutral [confirmed b5 U2B] — cite the STAGED label).
+3. `claims_audit.py` + `test_runner.py` + `test_claims_audit.py` in the leaders_form style (model:
+   `runs/experiments/leaders_form/claims_audit.py`; the audit re-dumps the DFM via `dump_dfm_supply.py`'s parser and
+   checks every cited line against `code_extract_cosmetic.v3.txt`).
+4. PR, review rounds (reviewer from another family via OpenCode; quota-tracker first — L50/L51), merge on approve.
+
+Batches: b1 ✓ uploaded; b2 (partial, superseded evidence kept); b3 ✓ uploaded (`batch-b3.tar.gz`); b4 not yet
+archived — `archive_batch.py b4` will pick up its screenshots; **b4's plays jsonl is committed** (or will be with the
+hand-back commit). Release `run-exp-cosmetic-gaps` holds b1+b3.
+
+---
+
+# (superseded) MiniMax-M3 hand-back, 2026-10-06
 
 The player called for a wind-down at the start of this session. The work I did before that call was
 read-only: I read HANDBACK.md, `scenarios.py`, `cg.py`, `play_lib.py`, `lib.py`, the leaders-form

@@ -190,38 +190,91 @@ def s4(g, tag, rec):
     snap_rec(g, rec, 'after_end_turn', '%s_after_end_turn.png' % tag)
     harvest_wavs(tag, rec)
 
-# ---- U1 / U2: the Supply army dialog at an own city and at a foreign city
-def supply_dialog(g, tag, rec, fix, city_note):
-    rec['load_boxes'] = load_fixture(g, rec, fix, 'fix')
+# ---- U1a / U2a / U2b: the Supply army dialog at an own city, a hostile foreign city and a STAGED non-hostile foreign city
+def wait_supply_dialog(g, timeout=10):
+    """Wait for the REAL Supply army dialog: a window at least 200 px wide. The toolbar button's tooltip is also
+    named 'Supply army' (63x15) and lingers after the tooltip-proving hover (U2 b3 grabbed it); it is ignored here.
+    Returns (window_tuple_or_None, {wid: [name, x, y, w, h]}) - every 'Supply army' window seen meanwhile."""
+    t0 = time.time(); seen = {}
+    while time.time() - t0 < timeout:
+        for w in g.find_windows('^Supply army$'):
+            seen[w[0]] = [w[1], w[2], w[3], w[4], w[5]]
+        big = [w for w in g.find_windows('^Supply army$') if w[4] >= 200]
+        if len(big) > 1: raise _drv.DriverError('%d wide Supply army windows: %s' % (len(big), big))
+        if big: return big[0], seen
+        time.sleep(0.5)
+    return None, seen
+
+def read_controls_retry(g, tries=4):
+    """read_controls with retries: win_state intermittently returns nothing for a window that is there (U1/U2 b3)."""
+    last = None
+    for k in range(tries):
+        try: return read_controls(g, 'Supply army')
+        except _drv.DriverError as e: last = e; time.sleep(1.0)
+    raise last
+
+def close_supply_dialog(g, wid):
+    """Close the dialog with its own OK control: each attempt clicks the OK of a FRESH win_state read (its verbatim
+    line is the recorded target; b3's failure was click_control proving through win_controls, which cannot read a
+    VCL form). DriverError when the dialog is still there after 5 attempts."""
+    b = step_begin()
+    CTX['why'] = 'close the Supply army dialog with its own OK control (fresh win_state read per attempt)'
+    for k in range(5):
+        try: cs = read_controls(g, 'Supply army')
+        except _drv.DriverError: time.sleep(1.0); continue
+        oks = [c for c in cs if c['cls'] == 'TButton' and c['text'].replace('&', '').lower() == 'ok']
+        if not oks: time.sleep(1.0); continue
+        ok = oks[0]
+        CTX['target'] = {'src': 'win_state', 'window': 'Supply army', 'line': ok['line'], 'cls': 'TButton', 'x': ok['x'], 'y': ok['y'], 'w': ok['w'], 'h': ok['h']}
+        g.click(ok['x'] + ok['w'] // 2, ok['y'] + ok['h'] // 2, pause=0.8)
+        if eog.gone(g, wid, timeout=3):
+            note_step(b, step='close supply dialog', ok=True, how='dialog window (X id %s) gone' % wid, attempts=k + 1)
+            return
+        time.sleep(1.0)
+    note_step(b, step='close supply dialog', ok=False, how='dialog gone after clicking its OK (5 attempts, each on a fresh win_state read)', attempts=5)
+    raise _drv.DriverError('the Supply army dialog did not close')
+
+def load_staged(g, rec, name):
+    """Copy the STAGED save from the artifacts dir into the game folder (hashed) and open it through cg.file_open.
+    The staging note (what was changed and why) is tracked beside the data; the record says STAGED."""
+    src = ART + name; dst = _drv.G / name
+    if not dst.exists(): shutil.copy(src, dst)
+    rec['staged'] = {'fixture': name, 'sha': sha(src), 'note': 'STAGED: Rome<->Gaul relation 3->0 in a copy of ' + FIX_FELSINA + ' (see STAGED-felsina-neutral.txt)'}
+    return file_open(g, name)
+
+def supply_dialog(g, tag, rec, fix, city_note, staged=False):
+    """Open the Supply army dialog at army 0's tile and record everything about it: whether it opened at all
+    (a hostile city has no provider - FindProviders skips relation-3 owners - and may not open one), every
+    'Supply army' window seen meanwhile (tooltip included, labelled by size), the full win_state control list,
+    every TButton (btn_buy 'Buy supplies' vs btn_ok 'OK'), its screenshot; then close it through its own OK."""
+    rec['load_boxes'] = load_staged(g, rec, fix) if staged else load_fixture(g, rec, fix, 'fix')
     ax, ay = g.army_pos(0); rec['army0'] = [ax, ay]
     army_button(g, 0, 'supply')
-    ws = g.find_windows('^Supply army$')
-    if not ws: raise _drv.DriverError('the Supply army dialog did not open (%s)' % city_note)
-    wid = ws[0][0]; rec.setdefault('dialog', {})[city_note] = {'wid': wid, 'geo': list(win_geo(g, wid))}
-    cs = read_controls(g, 'Supply army')
-    rec['dialog'][city_note]['controls'] = [{k: c[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled', 'visible', 'line')} for c in cs]
-    btn = next((c for c in cs if c['cls'] == 'TButton'), None)
-    rec['dialog'][city_note]['buy_button'] = {k: btn[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled')} if btn else None
+    wid, seen = wait_supply_dialog(g)
+    d = rec.setdefault('dialog', {})[city_note] = {'windows_seen': {str(k): v for k, v in seen.items()}}
+    if wid is None:
+        d['open'] = False
+        snap_rec(g, rec, 'no_dialog_' + city_note, '%s_no_dialog_%s.png' % (tag, city_note))
+        capture(g, tag, rec, 'state', 'no_dialog_' + city_note)
+        return
+    d['open'] = True; d['wid'] = wid[0]; d['geo'] = list(win_geo(g, wid[0]))
+    cs = read_controls_retry(g)
+    d['controls'] = [{k: c[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled', 'visible', 'line')} for c in cs]
+    d['buttons'] = [{k: c[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled', 'visible')} for c in cs if c['cls'] == 'TButton']
+    d['buy_button'] = next(({k: c[k] for k in ('cls', 'text', 'x', 'y', 'w', 'h', 'enabled', 'visible')} for c in cs
+                            if c['cls'] == 'TButton' and 'buy' in c['text'].replace('&', '').lower()), None)
     snap_win(g, rec, 'dialog_' + city_note, wid, '%s_supply_%s.png' % (tag, city_note))
-    cancel = next((c for c in cs if c['text'].replace('&', '').lower() in ('cancel', 'done', 'ok')), None)
-    if cancel: click_cancel(g, cancel, wid)
+    close_supply_dialog(g, wid)
     capture(g, tag, rec, 'state', 'after_' + city_note)
 
-def click_cancel(g, c, wid):
-    b = step_begin()
-    CTX['why'] = 'close the Supply army dialog with its own %s control' % c['text']
-    for k in range(3):
-        eog.spend(wid, 'Supply army dialog', 3)
-        g.click_control(c, pause=0.8)
-        if eog.gone(g, wid, timeout=3): break
-    else: raise _drv.DriverError('the Supply army dialog did not close')
-    note_step(b, step='close supply dialog', ok=True, how='dialog window (X id %d) gone' % wid, attempts=k + 1)
-
-def u1(g, tag, rec):
+def u1a(g, tag, rec):
     supply_dialog(g, tag, rec, FIX_START, 'own_city')
 
-def u2(g, tag, rec):
-    supply_dialog(g, tag, rec, FIX_FELSINA, 'foreign_city')
+def u2a(g, tag, rec):
+    supply_dialog(g, tag, rec, FIX_FELSINA, 'hostile_city')
+
+def u2b(g, tag, rec):
+    supply_dialog(g, tag, rec, 'STAGED-felsina-neutral-0721.SAV', 'staged_neutral_city', staged=True)
 
 SC = {'T1': dict(seed=12345, fn=t1, note='title at start / form open / first turn with an empty leader / after End turn'),
       'T2': dict(seed=12345, fn=t2, note='title after loading a save with a named leader, and after End turn'),
@@ -231,8 +284,9 @@ SC = {'T1': dict(seed=12345, fn=t1, note='title at start / form open / first tur
       'S2': dict(seed=12345, fn=s2, note='fleet move under strace', strace=True),
       'S3': dict(seed=12345, fn=s3, note='scuttle a fleet under strace', strace=True),
       'S4': dict(seed=12345, fn=s4, note='End turn under strace (computer nations\' events)', strace=True),
-      'U1': dict(seed=12345, fn=u1, note='Supply army dialog at an own city'),
-      'U2': dict(seed=12345, fn=u2, note='Supply army dialog at a foreign city')}
+      'U1': dict(seed=12345, fn=u1a, note='Supply army dialog at an own city'),
+      'U2': dict(seed=12345, fn=u2a, note='Supply army dialog at a hostile foreign city (no provider expected)'),
+      'U2B': dict(seed=12345, fn=u2b, note='Supply army dialog at a STAGED non-hostile foreign city (Rome<->Gaul relation 3->0)')}
 
 def run(pid, batch):
     sc = SC[pid]; tag = 'CG_%s_%s' % (pid, batch)
