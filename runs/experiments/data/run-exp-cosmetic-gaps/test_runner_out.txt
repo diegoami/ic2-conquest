@@ -1,0 +1,135 @@
+test_inconsistent_target (__main__.TestForgedRecords.test_inconsistent_target) ... ok
+test_missing_target (__main__.TestForgedRecords.test_missing_target) ... ok
+test_null_target (__main__.TestForgedRecords.test_null_target) ... ok
+test_unknown_proof_src (__main__.TestForgedRecords.test_unknown_proof_src) ... ok
+test_valid_passes (__main__.TestForgedRecords.test_valid_passes) ... ok
+test_clicks_carry_target_proofs (__main__.TestRecordings.test_clicks_carry_target_proofs) ... ok
+test_clicks_pointer_read_back (__main__.TestRecordings.test_clicks_pointer_read_back) ... ok
+test_screenshots_exist_and_hashed (__main__.TestRecordings.test_screenshots_exist_and_hashed) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b1a_after_ok.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b1a_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b1b_after_ok.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b1b_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T2_b1c_after_load.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T2_b1c_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3_b1c_area_before.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3_b1c_area_after_one.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3_b1c_area_after_two.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T4_b1c_after_reload.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S1_b2_after_move.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S2_b2_after_move.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S3_b3_after_scuttle.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S4_b3_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U1_b3_supply_own_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U2_b4_no_dialog_hostile_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U1_b5_supply_own_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U2B_b5_supply_staged_neutral_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U1_b6_supply_own_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U2B_b6_supply_staged_neutral_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S1_b7_after_move.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S2_b7_after_move.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S3_b7_after_scuttle.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_S4_b7_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T2_b7_after_load.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T2_b7_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b8_after_ok.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T1_b8_after_end_turn.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3_b8_area_before.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3_b8_area_after_one.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3_b8_area_after_two.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T4_b8_after_reload.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U1_b8_supply_own_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U2_b8_no_dialog_hostile_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_U2B_b8_supply_staged_neutral_city.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3B_b8_area_markers.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3B_b8_area_markers_on.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3B_b8_area_toggled.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_runner.py:22: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/CG_T3B_b8_area_back.png'>
+  def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_status_and_evidence (__main__.TestRecordings.test_status_and_evidence) ... ok
+test_strace_plays_kept_their_harvest (__main__.TestRecordings.test_strace_plays_kept_their_harvest) ... ok
+test_tags_unique (__main__.TestRecordings.test_tags_unique) ... ok
+test_there_are_recordings (__main__.TestRecordings.test_there_are_recordings) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK
+exit=0

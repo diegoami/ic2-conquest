@@ -1,0 +1,152 @@
+test_caption_byte (__main__.TestOneBentClaim.test_caption_byte) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/test_claims_audit.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/findings/2026-10-06-cosmetic-gaps.md' mode='r' encoding='utf-8'>
+  self.base = open(FINDING, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:29: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/SAVES.sha256' mode='r' encoding='UTF-8'>
+  for l in open(data + 'SAVES.sha256'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:45: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/code_extract_cosmetic.v5.txt' mode='r' encoding='utf-8'>
+  for l in open(latest(data + 'code_extract_cosmetic.txt'), encoding='utf-8', errors='replace'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmph7ecuwsn.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:378: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/dfm_TAFSupply.v2.txt' mode='r' encoding='utf-8'>
+  for l in open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b1.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b1a.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b1b.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b1c.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b2.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b2_partial.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b3.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b4.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b5.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b6.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b7.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b8.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_close-probe.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_close-probe2.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:188: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/plays_b2_partial.jsonl' mode='r' encoding='UTF-8'>
+  for l in open(f):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S1_b7.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S1_b2.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S2_b7.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S2_b2.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S3_b7.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S4_b7.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:215: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S4_b3.v2.txt' mode='r' encoding='UTF-8'>
+  body = open(hp, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:260: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/saves/CG_T4_b8_AUTO0721.SAV'>
+  b = open(hits4[0], 'rb').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:36: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/saves/CG_T4_b8_AUTO0721.SAV'>
+  sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:275: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/saves/siege-felsina-failed-0721.SAV'>
+  b0 = open(src_fix, 'rb').read(); b1 = open(u2b_staged[0], 'rb').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:275: ResourceWarning: unclosed file <_io.BufferedReader name='/home/diego/projects/wt-cosmetic/artifacts/run-exp-cosmetic-gaps/STAGED-felsina-neutral-0721.SAV'>
+  b0 = open(src_fix, 'rb').read(); b1 = open(u2b_staged[0], 'rb').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:295: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S1_b2.txt' mode='r' encoding='UTF-8'>
+  okk = r.get('wav_opens') and os.path.exists(p) and wav in open(p, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:295: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S2_b2.txt' mode='r' encoding='UTF-8'>
+  okk = r.get('wav_opens') and os.path.exists(p) and wav in open(p, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:295: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S3_b3.txt' mode='r' encoding='UTF-8'>
+  okk = r.get('wav_opens') and os.path.exists(p) and wav in open(p, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:295: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/runs/experiments/data/run-exp-cosmetic-gaps/wav_opens_CG_S4_b3.txt' mode='r' encoding='UTF-8'>
+  okk = r.get('wav_opens') and os.path.exists(p) and wav in open(p, errors='replace').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_case_number (__main__.TestOneBentClaim.test_case_number) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp_x7uy7il.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_derived_flipped_to_confirmed (__main__.TestOneBentClaim.test_derived_flipped_to_confirmed) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmppgpfzk4a.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_offset (__main__.TestOneBentClaim.test_offset) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp4nsmqs4j.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_play_tag (__main__.TestOneBentClaim.test_play_tag) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpmmm90vsz.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_swapped_offsets (__main__.TestOneBentClaim.test_swapped_offsets) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpronb5t9t.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_title_claim (__main__.TestOneBentClaim.test_title_claim) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpqndlr1l0.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_toggle_values (__main__.TestOneBentClaim.test_toggle_values) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpx9dvevsl.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_wrong_but_existing_tag (__main__.TestOneBentClaim.test_wrong_but_existing_tag) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpvavqi6lz.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_parse (__main__.TestProductionDfmParser.test_parse) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:378: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpng7yq552.txt' mode='r' encoding='utf-8'>
+  for l in open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_zero_mismatches (__main__.TestTheRealFinding.test_zero_mismatches) ... /home/diego/projects/wt-cosmetic/runs/experiments/cosmetic_gaps/claims_audit.py:85: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/diego/projects/wt-cosmetic/findings/2026-10-06-cosmetic-gaps.md' mode='r' encoding='utf-8'>
+  fm = open(finding, encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.153s
+
+OK
+exit=0
