@@ -175,18 +175,24 @@ def click_tile(g, tx, ty, pause=2.0, why=None):
     CTX['target'] = {'src': 'driver tile targeting', 'tile': [tx, ty]}
     g.click_tile(tx, ty, pause=pause)
 
-def end_turn(g):
+def end_turn(g, timeout=60):
     """End turn: the toolbar button at the tooltip-proved x; the 'End turn ?' Confirm box (if any) is answered through its own
-    End turn control; every information box through its OK. Returns the box texts."""
+    End turn control; every information box through its OK. Returns the box texts. On a True completion (autosave line count
+    advanced past `before`) returns normally; on a timeout (60 s, no second End turn click) raises DriverError - the End turn
+    click did not take effect, and the caller must NOT proceed."""
     before = eog.autosave_lines()
     main_tool(g, 'end_turn', pause=2.0)
     texts = []
     t0 = time.time()
-    while time.time() - t0 < 60:
+    completed = False
+    while time.time() - t0 < timeout:
         if g.find_windows(r'^End turn \?$'): texts.append('CONFIRM ' + eog.answer_confirm(g, 'End turn ?', 'End turn'))
         texts += [t for _, t in close_all_boxes(g, 'end_turn')]
-        if not boxes(g) and not g.find_windows(r'^End turn \?$') and eog.autosave_lines() > before: break
+        if not boxes(g) and not g.find_windows(r'^End turn \?$') and eog.autosave_lines() > before:
+            completed = True; break
         time.sleep(1)
+    if not completed:
+        raise _drv.DriverError('end_turn: autosave did not advance within %ds; the End turn click did not take effect' % timeout)
     return texts
 
 # ---------------------------------------------------------------- the Area map's speed buttons (no HWND of their own)

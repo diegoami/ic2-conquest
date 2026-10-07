@@ -7,9 +7,10 @@ batch; feature-inventory rows M04, M05, M06, A01, UA01). Task `docs/tasks/cosmet
 `ARTIFACTS.md` beside the data tells a reviewer how to fetch and verify them all and then run the audit and the tests).
 
 **Tags.** `[derived]` = read from the decompile (function, address, line of `all_app_functions.txt`; the cited lines are kept with
-their dump line numbers in `runs/experiments/data/run-exp-cosmetic-gaps/code_extract_cosmetic.v5.txt` — **v5**: v1/v2's CALLSITES
+their dump line numbers in `runs/experiments/data/run-exp-cosmetic-gaps/code_extract_cosmetic.v6.txt` — **v6**: v1/v2's CALLSITES
 enclosing-function column is wrong (a lookup bug fixed from v3 on); v3 lacks the `TAFSupply` and sound-event function bodies
-(added in v4) and the entry and the two size getters (added in v5)). `[confirmed]` = seen in play with the verified runner: every
+(added in v4) and the entry, the two size getters, and the toggle draw helpers `FUN_00417200`/`FUN_00417550` (added in v6).
+`[confirmed]` = seen in play with the verified runner: every
 click located and proved (tooltip-proved toolbar x, `win_state` control lines, the driver's tile targeting), the save/screenshot
 hashed in `SAVES.sha256`. The two tags are never mixed. The non-hostile-city play runs on a **staged** save, labelled as such
 below and in the play record; every other play is a repo fixture.
@@ -85,6 +86,23 @@ a `TSpeedButton` with one `Glyph.Data` (362 bytes), `ShowHint`, and **no** `Grou
 latched-down look, so the button looks the same in both palette states; the state shows in the map face, not on the button (its
 tooltip `Toggle colour` was seen before each click `[confirmed]`).
 
+**What the toggle flips between** `[confirmed by measurement]`: the flag is an ImageList index
+(`FUN_00417550` at 0x00417550, dump lines 20465-20494: `ImageList_DrawEx(himl, param_4, ...)` with `param_4` being
+the toggle byte), so the two states are TWO image sets of the same tile bitmap. The two sets are not the same image:
+a run-length measurement of identical-grey pixels on horizontal lines of the map face (the bitmap region
+`+8+34 304x150`, every 4th row) of the b8 screenshots gives:
+byte 1 (`CG_T3_b8_area_before.png`): mean run **45.14 px**, median 9, max 304 (n=9 rows) — long uniform runs
+of identical grey, characteristic of a **political/mono-style** set (large regions of the same terrain colour
+without per-tile shading);
+byte 0 (`CG_T3_b8_area_after_one.png`): mean run **17.54 px**, median 6, max 304 (n=24 rows) — short per-tile runs,
+characteristic of a **terrain-style** set (each tile shaded differently from its neighbours).
+Which of the two is "mono" and which is "terrain" in the inventory's vocabulary is **not established** by the dump
+or the resource; the byte-1 set's long uniform runs match the inventory's description of "mono" (the political map
+without per-tile shading), and the byte-0 set's short runs match "terrain", but the finding does not name them
+that way — the clone should pick the two sets and label them, not copy the inventory's labels.
+The measurement is reproducible: `runs/experiments/cosmetic_gaps/a01_runs.py` reads the b8 screenshots, prints
+the per-row means, and exits non-zero on a measurement that no longer distinguishes the two states.
+
 **The toggle clears the drawn markers** `[derived]`, and the claim "two clicks clear the markers" is TRUE with this code
 behind it: `TAreaMap_PaintForm` draws the background, then replays the form's accumulated marker-command list (kinds: cities,
 capital, armies, fleets, mercenaries, find-city; dump lines 41674-41723) — but only while the command count at form field
@@ -94,7 +112,7 @@ background with NO markers, and the command list stays empty until a Show button
 Played `[confirmed]` (`CG_T3_b8`, button located from the live Panel1 rectangle plus the form resource's declared offset, its
 tooltip `Toggle colour` seen before each click): byte `1 → 0 → 1` over two clicks; the map face's grey mean moved
 `109.402 → 82.368 → 111.385` (the render really changes and returns); screenshots of all three states (`CG_T3_b8_area_*`). With markers drawn
-first (`CG_T3_b8`: the `Show armies` button, its tooltip seen, then two toggles): the mean with markers was `111.577`; after
+first (`CG_T3B_b8` — the markers play, which clicks `Show armies` THEN toggles): the mean with markers was `111.577`; after
 the first toggle `82.368` — **exactly** the value the first toggle gives without prior markers, so the repaint's result does
 not depend on the markers that were there (they are gone); after the second toggle `111.385`, the no-markers value, not the
 with-markers one — the markers stay cleared. The screenshots of both plays are the evidence; the byte after two clicks returns
@@ -182,7 +200,7 @@ nothing but its own title; for the record, a save restores per-nation geometry a
   (verified clicks, `probe_close2.txt`). Sound plays run under `strace -f -e trace=openat,open` (`IC2_STRACE`); the WAV opens
   are harvested per step mark into `wav_opens_CG_<play>_<batch>.txt`.
 - **Staging.** One staged save, described in §4.
-- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v7.txt`: **324 checks, 0 mismatches**) re-reads every claim from its
+- **Audit.** `claims_audit.py` (`claims_audit_cosmetic.v8.txt`: **341 checks, 0 mismatches**) re-reads every claim from its
   source — the v4 code extract (the CALLSITES table, the function bodies, the offsets as the dump spells them, the DFM), the
   recordings (every cited tag must exist; every click's pointer read back; every sound row's case, WAV name and cited play bound together), the WAV harvests, the SAV decoded from its hashed file, the artifacts' hashes — and binds
   the finding's *own* quoted values (the title strings, the toggle triple, the caption, the SAV words, the cited tags) to them;

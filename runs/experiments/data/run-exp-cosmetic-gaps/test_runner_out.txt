@@ -1,3 +1,5 @@
+test_refuses_unharvested (__main__.TestClearAutosRefuses.test_refuses_unharvested) ... ok
+test_end_turn_raises_on_no_advance (__main__.TestEndTurnTimeout.test_end_turn_raises_on_no_advance) ... ok
 test_inconsistent_target (__main__.TestForgedRecords.test_inconsistent_target) ... ok
 test_missing_target (__main__.TestForgedRecords.test_missing_target) ... ok
 test_null_target (__main__.TestForgedRecords.test_null_target) ... ok
@@ -129,7 +131,7 @@ test_tags_unique (__main__.TestRecordings.test_tags_unique) ... ok
 test_there_are_recordings (__main__.TestRecordings.test_there_are_recordings) ... ok
 
 ----------------------------------------------------------------------
-Ran 12 tests in 0.007s
+Ran 14 tests in 1.014s
 
 OK
 exit=0

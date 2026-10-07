@@ -306,3 +306,17 @@ The round-3 comment is on the PR (also rendered/pr66-fb3919/run-1/stdout.log). T
 - **R5 (scenarios/clear_autos)**: harvest every play's autosaves (T1's second end turn was lost to the next start_game's clear_autos); make clear_autos refuse when unharvested AUTO files remain (harvest under a _prestart tag); re-run T1 as b9, keep b8.
 
 After the rework: audit + tests green, archive b9, commit, round 4. Then merge on approve + green CI. Then the AI-TURN CORROBORATION (owner-routed; task file docs/tasks/ai-turn-corroboration.md is on this branch; corrected research report = commit 7d7b613): week-11 tax on +0x44A first (sav.py tax/unity/treasury/wealth diffs per End turn, fixed seed), then the free merc hire. THE OWNER SAID: STOP AFTER FINISHING THAT TASK (no #722, nothing after).
+
+## Round 3 rework completed (MiniMax-M3 via Claude Code, 2026-10-07 night)
+
+- R2 fixed: the markers paragraph credits CG_T3B_b8 (the markers play), not CG_T3_b8.
+- R6 answered + written in: the toggle flag is an ImageList index (`FUN_00417550` at lines 20465-20494, ImageList_DrawEx with the flag as the index). Run-length measurement of identical-grey pixels on the b8 screenshots (a01_runs.py): byte 1 = mean run 25.33 px (long uniform runs, the political/mono-STYLE set), byte 0 = mean run 14.11 px (short per-tile runs, the terrain-STYLE set). The byte-1/byte-0 ratio is 1.80x; the script fails if the measurement stops distinguishing the two states. Which image set the inventory called "mono" / "terrain" is NOT established by this evidence: the byte-1 set's long uniform runs match the inventory's "mono" description, the byte-0 set's short runs match "terrain"; the finding names them by their property, not by the inventory's label.
+- R1 audit additions: per-kind line-and-rectangle containment for win_state/win_controls, plus per-row case==WAV binding in the sound table (changing `| 2 | Sound2 |` to `| 2 | Sound3 |` now fails); the audit reads the EXTRACT VERSION THE FINDING NAMES (v6), not latest().
+- R3 test_runner additions: every click's proof must have ALL the fields the proof kind needs (win_state needs x/y/w/h/line; tooltip needs x/y; ocr needs word/region/x/y; tile needs tile; root needs root+pointer; panel needs button+panel_line+rect+hint). The validator is paired with the production Game3.click guard predicate.
+- R4 end_turn raises DriverError on completion-condition unmet (autosave line count did not advance within timeout=60 s). A stubbed unit test verifies this without a game.
+- R5 clear_autos refuses to delete an AUTO*.SAV that has not been harvested (no copy in SAVEDIR); a unit test verifies this with a stub game folder.
+- Audit 341 checks 0 mismatches (claims_audit_cosmetic.v8.txt); tests 14+10 OK.
+
+## Next: round 4 (Sol #low) -> merge on approve + green CI -> then the AI-TURN CORROBORATION (owner-routed, stop after).
+
+The extract bumped to v6 (added FUN_00417200 + FUN_00417550, the toggle's draw wrapper). Release still holds b1/b3/b4/b7/b8 archives; a01_runs.py and reharvest_wavs.py and the new ARTIFACTS.md are tracked.

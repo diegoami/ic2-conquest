@@ -83,9 +83,13 @@ def run(finding, data, art, quiet=True):
     sites = SITES
     finding_cases = {}
     fm = open(finding, encoding='utf-8').read()
-    for row in re.finditer(r'^\| (\d+) \| Sound(\d+) \|.*\|$', fm, re.M):
+    for row in re.finditer(r'^\| (\d+) \| Sound(\d+) \|(.*)\|$', fm, re.M):
+        case = int(row.group(1))
         for m in re.finditer(r'(\d+) in `([^`]+)`', row.group(0)):
-            finding_cases.setdefault(int(m.group(1)), set()).add((int(row.group(1)), m.group(2)))
+            finding_cases.setdefault(int(m.group(1)), set()).add((case, m.group(2)))
+        # R1: every cited row's case must EQUAL the WAV column's number (the findable is a single call site)
+        check('m06 row %d case number == Sound%d' % (case, case),
+              case == int(row.group(2)), row.group(0)[:80])
     for line, case, fn in sites:
         check('m06 site %d: case %d in %s' % (line, case, fn),
               (case, fn) in finding_cases.get(line, set()),

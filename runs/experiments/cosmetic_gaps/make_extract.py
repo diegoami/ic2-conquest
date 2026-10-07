@@ -22,6 +22,8 @@ FUNCS = ['0043ddac',                                    # TAreaMap_InitializeFor
          '0044aee4', '0044b27c', '0044b5d0', '0044c528', # main-map sound events (battle, city falls/repelled, fleet lost, elimination)
          '0044d420', '0044dd70',                        # the army- and fleet-move executors
          '004514ec',                                    # lost at sea
+         '00417200',                                    # FUN_00417200: the toggled draw wrapper
+         '00417550',                                    # FUN_00417550: the ImageList_DrawEx whose index is the toggle byte
          '00412880', '004128c4',                    # the size getters: client Width (RECT.Right), client Height (RECT.Bottom)
          '0045c300',                                    # the entry: the bare start caption
          '004484d0',                                    # the save writer's trailer

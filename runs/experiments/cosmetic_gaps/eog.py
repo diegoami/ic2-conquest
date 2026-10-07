@@ -130,8 +130,15 @@ def harvest(tag):
     return out
 
 def clear_autos():
-    """Remove the AUTO*.SAV and AUTOSAVE.LOG of MY game folder before a scenario (copies of them were harvested after earlier scenarios)."""
-    for f in list(_drv.G.glob('AUTO*')): f.unlink()
+    """Remove the AUTO*.SAV and AUTOSAVE.LOG of MY game folder before a scenario - only when every AUTO*.SAV has
+    been HARVESTED (an older copy exists in the artifacts SAVEDIR): refuses to delete an AUTO the runner has not
+    copied first, so an unharvested autosave cannot be lost (review R5)."""
+    for f in list(_drv.G.glob('AUTO*')):
+        if f.suffix != '.SAV':
+            f.unlink(); continue
+        if not os.path.exists(SAVEDIR + f.name):
+            raise _drv.DriverError('clear_autos: %s was not harvested (no copy in %s); harvest it first or rename this plays tag' % (f.name, SAVEDIR))
+        f.unlink()
 
 def _ids():
     return set(_drv.sh('xdotool', 'search', '--onlyvisible', '--name', '', check=False).split())
