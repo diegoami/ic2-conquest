@@ -1,6 +1,6 @@
 # Recruit unit: the 40-recruited-units cap in play (row L11, 40 recruited units)
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. Companion to `findings/2026-10-05-player-facing-feature-inventory.md` row L11 and to `findings/2026-10-05-refusal-texts-and-conditions.md` R46 / RC01. RC01 staged only the 40th slot (nation 0 +0x420 = 1); this run fills **all 40 slots** and checks that the queue does not grow.
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `f1d5b21` (by ic2-research); this draft is kept for history, the research repo is canonical. Companion to `findings/2026-10-05-player-facing-feature-inventory.md` row L11 and to `findings/2026-10-05-refusal-texts-and-conditions.md` R46 / RC01. RC01 staged only the 40th slot (nation 0 +0x420 = 1); this run fills **all 40 slots** and checks that the queue does not grow.
 
 **Tag:** `[confirmed, partial]` for the "40 recruited units" bullet of L11 (Recruit unit at one city; mercenary hire and other cities not run).
 
