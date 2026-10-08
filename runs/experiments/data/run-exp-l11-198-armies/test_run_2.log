@@ -1,0 +1,3 @@
+PASS split_army_197_armies (26s): 197 armies: Split army opened, army count 197 -> 198
+PASS split_army_198_armies_cap (36s): 198 armies: Split army REFUSED silently (no dialog), count 198 -> 198; windows ['Area map 328x196', 'Unit map 439x487', 'Information 328x730', 'Split army 51x15']
+PASS split_army (38s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18700), (1, 120, 53, 22000), (14, 101, 38, 5000)]

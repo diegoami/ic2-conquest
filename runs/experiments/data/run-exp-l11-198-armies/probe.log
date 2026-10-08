@@ -1,0 +1,6 @@
+# probe198.py <total> <png>: BASE padded to <total> armies, select army 0, one click on Split army
+## 198
+SAV count 198 ; memory count (0x4A0324) 198 ; records 14..197 = (305,130,0,..) dummies, record 198 = zeros
+count after click 198 ; windows after: ... 'Split army' (tooltip; no dialog in probe-198-after-split-click.png)
+## 197
+memory count 197 ; count after click 198 ; 'Split army' window 610x430 (the dialog)
