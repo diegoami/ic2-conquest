@@ -76,3 +76,20 @@ python3 -m tests.test_orders        # expect 13 PASS
 ## Files worth knowing
 
 `docs/intent-and-approaches.md` (the direction) · `docs/wsl-setup.md` (the environment) · `coverage.md` §1 (the order checklist, now with the new orders ticked) · `tests/results.md` (the last run) · `harness/driver.py` (`tool`, `army_tool`, `controls`, `attack`, `play_battle`, `taxation`, `transfer_units`) · `harness/win_controls.c` · `state/sav.py` · `planner/path.py` · `runs/experiments/gallic-army/` · `runs/0/proposal.md`.
+
+## Open threads (added 2026-10-07)
+
+- **Sitting recorder (idea, not yet a task).** goal2-archaeology's "human
+  playthrough as a behavioural record" method, adapted to ic2-conquest, would
+  answer the §3.1 intercept dispatch and §4 fleet hunt-vs-port checks (saves
+  alone) and the §2.1 threat-budget / `+0x274` / fleet-destination questions
+  (RAM snapshots). The proposal is at
+  `~/projects/imperial-conquest-2-research/docs/ideas/2026-10-07-sitting-recorder.md`;
+  the only open decision before it becomes a task is **desktop-Wine as the
+  confirmation standard, or native-Windows watcher required?** (item (e) of
+  the idea file).
+- **AI-mover contact-resolution experiment** routed to `ic2-research`
+  (2026-10-07); awaiting draft from that session.
+- **`experiment/ai-turn`** is pushed (`bab12f5`), promoted, and not merged —
+  its runner pattern (`runs/experiments/ai_turn/{watch,snapshot,common,paths,archive_batch}.py`)
+  is the verified template to copy for any new `run-exp-*` experiment.
