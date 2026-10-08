@@ -1,0 +1,120 @@
+[
+  {
+    "trial": 99,
+    "pre_fleet_2_ships": 50,
+    "pre_fleet_5_ships": 49,
+    "pre_path": "artifacts/run-exp-join-fleets-cap-in-play/trial-099-pre.SAV",
+    "post_path": "artifacts/run-exp-join-fleets-cap-in-play/trial-099-post.SAV",
+    "pre_rome_fleets": [
+      [
+        2,
+        50,
+        101,
+        46,
+        29
+      ],
+      [
+        5,
+        49,
+        101,
+        47,
+        0
+      ]
+    ],
+    "post_rome_fleets": [
+      [
+        2,
+        99,
+        101,
+        46,
+        0
+      ]
+    ],
+    "accepted": true,
+    "survivor_ships": 99,
+    "driver_rc": 0,
+    "driver_stderr_tail": [],
+    "elapsed_s": 30.9
+  },
+  {
+    "trial": 100,
+    "pre_fleet_2_ships": 50,
+    "pre_fleet_5_ships": 50,
+    "pre_path": "artifacts/run-exp-join-fleets-cap-in-play/trial-100-pre.SAV",
+    "post_path": "artifacts/run-exp-join-fleets-cap-in-play/trial-100-post.SAV",
+    "pre_rome_fleets": [
+      [
+        2,
+        50,
+        101,
+        46,
+        29
+      ],
+      [
+        5,
+        50,
+        101,
+        47,
+        0
+      ]
+    ],
+    "post_rome_fleets": [
+      [
+        2,
+        100,
+        101,
+        46,
+        0
+      ]
+    ],
+    "accepted": true,
+    "survivor_ships": 100,
+    "driver_rc": 0,
+    "driver_stderr_tail": [],
+    "elapsed_s": 30.4
+  },
+  {
+    "trial": 101,
+    "pre_fleet_2_ships": 50,
+    "pre_fleet_5_ships": 51,
+    "pre_path": "artifacts/run-exp-join-fleets-cap-in-play/trial-101-pre.SAV",
+    "post_path": "artifacts/run-exp-join-fleets-cap-in-play/trial-101-post.SAV",
+    "pre_rome_fleets": [
+      [
+        2,
+        50,
+        101,
+        46,
+        29
+      ],
+      [
+        5,
+        51,
+        101,
+        47,
+        0
+      ]
+    ],
+    "post_rome_fleets": [
+      [
+        2,
+        50,
+        101,
+        46,
+        29
+      ],
+      [
+        5,
+        51,
+        101,
+        47,
+        0
+      ]
+    ],
+    "accepted": false,
+    "survivor_ships": null,
+    "driver_rc": 0,
+    "driver_stderr_tail": [],
+    "elapsed_s": 33.5
+  }
+]
