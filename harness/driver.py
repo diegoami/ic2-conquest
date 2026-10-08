@@ -450,6 +450,37 @@ class Game:
         self.click_control(c, pause=0.8)
         return True
 
+    def _popup_gone(self, wid, timeout=3.0):
+        """True once window `wid` is no longer listed. After a box's button is pressed the game destroys it at
+        once, but its X window stays listed for about 1-2 s (win_controls already finds no visible window)."""
+        end = time.time() + timeout
+        while time.time() < end:
+            if wid not in [p[0] for p in self.popups()]:
+                return True
+            time.sleep(0.3)
+        return False
+
+    def _answer_confirm(self, wid, yes=True):
+        """Answer the Confirm box `wid` Yes or No and wait until it is gone; True when it closed. controls() can
+        come back empty for two reasons: just after the box appears (not settled yet: wait and retry) or just
+        after our click (the box is already destroyed and only its X window lingers: done, wait for it to go).
+        Re-answering a lingering box was the disband_army failure (2026-10-08, run-exp-disband-confirm-flake).
+        A box without the wanted button raises answer()'s DriverError."""
+        clicked = False
+        for _ in range(3):      # the first click into an inactive window may only activate it
+            try:
+                self.answer("Confirm", yes=yes)
+            except DriverError as e:
+                if "no controls found" not in str(e):
+                    raise           # no such button (an OK-only box): the caller decides
+                if self._popup_gone(wid, 0.6 if not clicked else 3.0):
+                    return True     # already answered (by us, or by a caller such as scuttle_fleet): only its X window lingered
+                continue            # not settled yet: retry
+            clicked = True
+            if self._popup_gone(wid):
+                return True
+        return self._popup_gone(wid)
+
     def _refuse_confirm(self):
         """Strict mode: if a Confirm box is open, answer it No and raise (dismiss_popups(strict=True) does both); other boxes are left alone."""
         if any(p[1] == "Confirm" and p[4] < 600 and p[5] < 300 for p in self.popups()):      # the box set dismiss_popups acts on
@@ -469,20 +500,16 @@ class Game:
             wid, name = ps[0][0], ps[0][1]
             texts.append(self.read_popup(ps[0]))
             if name == "Confirm" and strict:
-                for _ in range(3):      # the first click into an inactive window may only activate it
-                    try:
-                        self.answer("Confirm", yes=False)
-                    except DriverError:     # an OK-only box has no No button: say so in the documented message, never press OK
-                        raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (no No button)")
-                    if wid not in [p[0] for p in self.popups()]:
-                        break
-                if wid in [p[0] for p in self.popups()]:
+                try:
+                    closed = self._answer_confirm(wid, yes=False)
+                except DriverError:     # an OK-only box has no No button: say so in the documented message, never press OK
+                    raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (no No button)")
+                if not closed:
                     raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (still open after No)")
                 raise DriverError("end turn: unexpected Confirm: " + texts[-1])
             if name == "Confirm":
-                self.answer("Confirm", yes=True)
-                if wid in [p[0] for p in self.popups()]:
-                    self.answer("Confirm", yes=True)
+                if not self._answer_confirm(wid, yes=True):
+                    raise DriverError("Confirm still open after Yes: " + texts[-1])
             else:
                 x, y, wd, ht = ps[0][2], ps[0][3], ps[0][4], ps[0][5]
                 for _ in range(3):  # no window manager: the first click only activates the box
@@ -1093,9 +1120,10 @@ class Game:
         """Scuttle fleet: next to one of your cities, not carrying an army; answered through its Confirm."""
         self.fleet_tool(i, "scuttle")
         texts = []
-        if self.find_windows("^Confirm$"):
-            texts.append(self.read_popup(self.find_windows("^Confirm$")[0]))
-            self.answer("Confirm", yes=yes)
+        ws = self.find_windows("^Confirm$")
+        if ws:
+            texts.append(self.read_popup(ws[0]))
+            self._answer_confirm(ws[0][0], yes=yes)     # waits until the box (and its lingering X window) is gone
         return texts + self.dismiss_popups()
 
     def split_fleet(self, i, ships):

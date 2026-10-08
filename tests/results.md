@@ -121,3 +121,9 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   PASS split_army_197_armies (26s): 197 armies: Split army opened, army count 197 -> 198
   PASS split_army_198_armies_cap (36s): 198 armies: Split army REFUSED silently (no dialog), count 198 -> 198; windows ['Area map 328x196', 'Unit map 439x487', 'Information 328x730', 'Split army 51x15']
   ```
+
+**2026-10-08, disband_army Confirm fix (`run-exp-disband-confirm-flake`)**: the failure was deterministic (0 of 6 at `43deebe`, `DriverError: no controls found for window 'Confirm'`), not a flake. After Yes the game destroys the box at once, but its X window stays listed for about 1-2 s. `dismiss_popups` saw it still open, called `answer` again, and `controls()` found nothing. New `Game._answer_confirm(wid, yes)` / `_popup_gone(wid)`: answer, wait for the window to go, and count "no controls" plus a vanished window as closed. Used by `dismiss_popups` (Yes and strict No) and `scuttle_fleet`. After the fix: `disband_army` 6 of 6 (then 4 more), and `scuttle_fleet embark disembark end_turn disband_unit change_units_disband join recruit_40_slots_cap split_army` all PASS; `tests.test_end_turn_reclick` 14 of 14 PASS. Logs: `baseline.log`, `after_fix.log`, `regression.log`, `probe.log`.
+  ```text
+  PASS disband_army (36s): Roman armies 2 -> 1, treasury 2300
+  PASS scuttle_fleet (30s): Rome fleets 1 -> 0; box ['(7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel']
+  ```
