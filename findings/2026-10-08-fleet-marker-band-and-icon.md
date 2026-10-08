@@ -1,6 +1,6 @@
 # Fleets: the map marker's ship band, and the three fleet icons
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It closes the fleet half of the open item in `2026-10-08-army-icon-follows-the-size-band.md` (research `e18eaad`), and tests in play the research reading of `FUN_0044a878` (decompiled-unit-map-orders-and-record-fields.md Part 3).
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `bff6bff` (by ic2-research); this draft is kept for history, the research repo is canonical. It closes the fleet half of the open item in `2026-10-08-army-icon-follows-the-size-band.md` (research `e18eaad`), and tests in play the research reading of `FUN_0044a878` (decompiled-unit-map-orders-and-record-fields.md Part 3).
 
 **Tag:** `[confirmed]`.
 
