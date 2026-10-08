@@ -237,6 +237,9 @@ def test_split_army():
     troops = sum(a["troops"] for a in arm)
     assert len(arm) == before + 1, [(a["id"], a["x"], a["y"], a["troops"]) for a in arm]
     assert troops == troops0, (troops, troops0)
+    first = next(a for a in live_armies(s0, 0) if a["id"] == 0)["units"][0]["troops"]
+    new = [a for a in arm if a["id"] not in {b["id"] for b in live_armies(s0, 0)}][0]
+    assert new["troops"] == first, ("the new army must hold row 0's unit", new["troops"], first)   # 12 px rows moved row 1 (5,000) until 2026-10-08
     return f"Roman armies {before} -> {len(arm)} (troops {troops0} -> {troops}); " \
            f"{[(a['id'], a['x'], a['y'], a['troops']) for a in arm]}"
 
@@ -273,6 +276,8 @@ def test_transfer_units():
 
     u0, t0 = mem(0)
     u1, t1 = mem(1)
+    first = next(struct.unpack_from("<4h", g.army_rec(0), 16 + 32 * k)[2] for k in range(20)
+                 if struct.unpack_from("<4h", g.army_rec(0), 16 + 32 * k)[2] > 0)
     g.transfer_units(0, unit_row=0)
     p = keep(g.save_as("T_TRANSFER.SAV"), "T_TRANSFER.SAV")
     s = load(p)
@@ -281,6 +286,7 @@ def test_transfer_units():
     assert len(a0["units"]) == u0 - 1 and len(a1["units"]) == u1 + 1, \
         (u0, len(a0["units"]), u1, len(a1["units"]))
     assert a0["troops"] + a1["troops"] == t0 + t1, (a0["troops"], a1["troops"], t0, t1)
+    assert t0 - a0["troops"] == first, ("row 0's unit must move", t0 - a0["troops"], first)   # 12 px rows moved row 1 until 2026-10-08
     return f"army0 {t0}t/{u0}u -> {a0['troops']}t/{len(a0['units'])}u; " \
            f"army1 {t1}t/{u1}u -> {a1['troops']}t/{len(a1['units'])}u"
 

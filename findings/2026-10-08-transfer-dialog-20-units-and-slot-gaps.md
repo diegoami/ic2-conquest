@@ -1,6 +1,6 @@
 # Army to army transfer: the 20-unit check per unit, and what gaps in a target army do
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. The research session asked for it on 2026-10-08. It is the transfer-dialog path of L11's "20 units per army" bullet (R28 / R31 in `2026-10-05-refusal-texts-and-conditions.md`) and extends `2026-10-08-join-armies-20-unit-gate-counts-last-slot.md` (research `6466d56`).
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `dc00754` (by ic2-research); this draft is kept for history, the research repo is canonical. The research session asked for it on 2026-10-08. It is the transfer-dialog path of L11's "20 units per army" bullet (R28 / R31 in `2026-10-05-refusal-texts-and-conditions.md`) and extends `2026-10-08-join-armies-20-unit-gate-counts-last-slot.md` (research `6466d56`).
 
 **Tag:** `[confirmed]` for cases c1, c3, c4 and c5. `[confirmed]` for the observations in c2, c2b and c6; their cause is `[derived]` or open (see below).
 

@@ -1,6 +1,7 @@
 /* Enumerate a window's controls and print one per line:
  *
  *     <class> TAB <text> TAB <x> TAB <y> TAB <width> TAB <height>
+ *     [TAB <item height> TAB <top index> TAB <client x> TAB <client y>]   (list boxes only)
  *
  * x, y are screen coordinates (GetWindowRect). Wine draws a dialog's controls
  * itself and does not make them X windows, and their positions depend on the
@@ -20,9 +21,21 @@ static BOOL CALLBACK dump(HWND h, LPARAM lp)
     RECT r;
     GetClassNameA(h, cls, sizeof cls);
     GetWindowTextA(h, txt, sizeof txt);
-    if (GetWindowRect(h, &r))
-        printf("%s\t%s\t%ld\t%ld\t%ld\t%ld\n", cls, txt,
+    if (GetWindowRect(h, &r)) {
+        printf("%s\t%s\t%ld\t%ld\t%ld\t%ld", cls, txt,
                (long)r.left, (long)r.top, (long)(r.right - r.left), (long)(r.bottom - r.top));
+        /* A list box also gets its row height, first visible row and client-area origin (screen), so a row is
+         * clicked at its real place: the rows are 10 px in the army-to-army transfer dialog, not the 12 the
+         * driver assumed (2026-10-08, run-exp-transfer-20-units). */
+        if (strstr(cls, "ListBox")) {
+            POINT o = {0, 0};
+            LRESULT ih = SendMessageA(h, LB_GETITEMHEIGHT, 0, 0);
+            LRESULT top = SendMessageA(h, LB_GETTOPINDEX, 0, 0);
+            ClientToScreen(h, &o);
+            printf("\t%ld\t%ld\t%ld\t%ld", (long)ih, (long)top, (long)o.x, (long)o.y);
+        }
+        printf("\n");
+    }
     return TRUE;
 }
 

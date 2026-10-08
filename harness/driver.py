@@ -385,15 +385,19 @@ class Game:
         windows) and their positions depend on the font and DPI, so they are read
         from the running game with the win_controls helper, not hardcoded."""
         exe = WORK / "win_controls.exe"
-        if not exe.exists():
+        src = Path(__file__).resolve().parent / "win_controls.c"
+        if not exe.exists() or exe.stat().st_mtime < src.stat().st_mtime:
             self.build_win_controls(exe)
         out = sh(WINE, str(exe), title, check=False)
         cs = []
         for line in out.splitlines():
             p = line.split("\t")
-            if len(p) == 6:
-                cls, text, x, y, w, h = p
-                cs.append({"cls": cls, "text": text, "x": int(x), "y": int(y), "w": int(w), "h": int(h)})
+            if len(p) in (6, 10):
+                cls, text, x, y, w, h = p[:6]
+                c = {"cls": cls, "text": text, "x": int(x), "y": int(y), "w": int(w), "h": int(h)}
+                if len(p) == 10:        # a list box: row height, first visible row, client origin
+                    c.update(item_h=int(p[6]), top=int(p[7]), cx=int(p[8]), cy=int(p[9]))
+                cs.append(c)
         if not cs:
             raise DriverError("no controls found for window %r" % title)
         return cs
@@ -405,6 +409,19 @@ class Game:
         except (OSError, subprocess.CalledProcessError) as e:
             raise DriverError("win_controls.exe is missing and could not be built "
                               "(install gcc-mingw-w64-i686): %s" % e)
+
+    def click_list_row(self, c, r, pause=0.4):
+        """Click row r of the list box control c at its real place: the row height, first visible row and client
+        origin come from win_controls. Rows were assumed 12 px from the control's top + 12; they are 10 px in the
+        army-to-army transfer dialog, so that put row 0 on the 0/1 boundary and row r>0 one row low
+        (run-exp-transfer-20-units, run-exp-list-row-height). A row scrolled out of view raises DriverError."""
+        if "item_h" not in c:
+            raise DriverError("no row geometry for %s (rebuild win_controls.exe)" % c["cls"])
+        ih = c["item_h"]
+        y = c["cy"] + (r - c["top"]) * ih + ih // 2
+        if r < c["top"] or y > c["y"] + c["h"] - 3:
+            raise DriverError("list row %d is not visible (top %d, %d px rows, list %d px high)" % (r, c["top"], ih, c["h"]))
+        self.click(c["x"] + c["w"] // 2, y, pause=pause)
 
     def control(self, cs, text=None, cls=None, index=0):
         got = [c for c in cs if (text is None or c["text"] == text)
@@ -762,7 +779,7 @@ class Game:
         self.open_recruit()
         cs = self.controls("Army recruits")
         cities = self.control(cs, cls="TListBox", index=0)
-        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click_list_row(cities, city_row, pause=0.6)
         self.click_control(self.control(cs, text=TYPES[unit_type]), pause=0.6)
         spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
         for _ in range(hundreds):
@@ -781,8 +798,8 @@ class Game:
         cs = self.controls("Army recruits")
         cities = self.control(cs, cls="TListBox", index=0)
         units = self.control(cs, cls="TListBox", index=1)
-        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
-        self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * unit_row, pause=0.4)
+        self.click_list_row(cities, city_row, pause=0.6)
+        self.click_list_row(units, unit_row, pause=0.4)
         self.click_control(self.control(cs, text="Disband"), pause=1.0)
         texts = self.dismiss_popups()
         self.close_controls("Army recruits", cs)
@@ -913,7 +930,7 @@ class Game:
         left = self.control(cs, cls="TListBox", index=0)
         transfer = sorted((c for c in cs if c["text"] == "Transfer"), key=lambda c: c["x"])[0]
         for r in unit_rows:
-            self.click(left["x"] + left["w"] // 2, left["y"] + 12 + 12 * r, pause=0.4)
+            self.click_list_row(left, r, pause=0.4)
             self.click_control(transfer, pause=0.6)
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
@@ -929,7 +946,7 @@ class Game:
         cs = self.controls("Army to army transfer")
         src = sorted((c for c in cs if c["cls"] == "TListBox"), key=lambda c: c["x"])[0]
         transfer = sorted((c for c in cs if c["text"] == "Transfer"), key=lambda c: c["x"])[0]
-        self.click(src["x"] + src["w"] // 2, src["y"] + 12 + 12 * unit_row, pause=0.4)
+        self.click_list_row(src, unit_row, pause=0.4)
         self.click_control(transfer, pause=0.6)
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
@@ -943,7 +960,7 @@ class Game:
         self.open_dialog("Change units", (self.army_x["change"], ARMY_TOOLBAR_Y))
         cs = self.controls("Change units")
         lst = self.control(cs, cls="TListBox")
-        self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * unit_row, pause=0.5)
+        self.click_list_row(lst, unit_row, pause=0.5)
         self.click_control(self.control(cs, text="Disband"), pause=0.8)
         texts = self.dismiss_popups()
         self._close_change_units(cs)
@@ -962,7 +979,7 @@ class Game:
         for k, r in enumerate(unit_rows):
             if k:
                 sh("xdotool", "keydown", "ctrl")
-            self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * r, pause=0.4)
+            self.click_list_row(lst, r, pause=0.4)
             if k:
                 sh("xdotool", "keyup", "ctrl")
         self.click_control(self.control(cs, text=button), pause=1.2)
@@ -1232,11 +1249,11 @@ class Game:
         cs = self.controls("Army recruits")
         cities = self.control(cs, cls="TListBox", index=0)
         units = self.control(cs, cls="TListBox", index=1)
-        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click_list_row(cities, city_row, pause=0.6)
         for k, r in enumerate(unit_rows):
             if k:
                 sh("xdotool", "keydown", "ctrl")
-            self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * r, pause=0.4)
+            self.click_list_row(units, r, pause=0.4)
             if k:
                 sh("xdotool", "keyup", "ctrl")
         self.click_control(self.control(cs, text="Mobilize"), pause=1.5)
