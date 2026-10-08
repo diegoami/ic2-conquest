@@ -1,0 +1,11 @@
+# after hire_mercs reads its controls (14 px rows, Recruit unit and OK from the dialog)
+FAIL hire_mercs (27s): DriverError: no controls found for window 'Recruit mercenary unit'
+FAIL hire_mercs (28s): DriverError: no controls found for window 'Recruit mercenary unit'
+# v2: still_open() waits out the lingering window after the dialog closes itself
+FAIL hire_mercs (32s): DriverError: no controls found for window 'Recruit mercenary unit'
+FAIL hire_mercs (32s): DriverError: no controls found for window 'Recruit mercenary unit'
+# v3: open = controls readable (the X window lingers > 2 s after the dialog closes itself)
+PASS hire_mercs (37s): army 1 +Samnite li 3868 q8 at slot 6; purse 100, popups []
+PASS hire_mercs (38s): army 1 +Samnite li 3868 q8 at slot 6; purse 100, popups []
+rows=() -> (0, [])
+dialog still open: False

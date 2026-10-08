@@ -1,0 +1,5 @@
+# 2026-10-08 late, probe_merc_controls.py (saves/run0-start-AUTO0720-seed12345.SAV, seed 12345, Xvfb :99): the Recruit mercenary unit dialog controls read by win_controls. Old fixed clicks: row (103, 86 + 12 r), Recruit unit (410,104), OK (248,174)
+window ('Recruit mercenary unit', 23, 49, 490, 165)
+{'cls': 'TButton', 'text': 'Recruit unit', 'x': 398, 'y': 99, 'w': 90, 'h': 25}
+{'cls': 'TListBox', 'text': '', 'x': 43, 'y': 79, 'w': 250, 'h': 70, 'item_h': 14, 'top': 0, 'cx': 45, 'cy': 81}
+{'cls': 'TButton', 'text': 'OK', 'x': 233, 'y': 174, 'w': 70, 'h': 25}
