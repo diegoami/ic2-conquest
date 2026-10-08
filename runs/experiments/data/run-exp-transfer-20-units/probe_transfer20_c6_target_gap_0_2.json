@@ -1,0 +1,92 @@
+{
+ "c6_target_gap_0_2": {
+  "dialog_title": "Army to army transfer",
+  "army_count_dialog_open": 14,
+  "army_count_after": 14,
+  "windows_after_transfer": [
+   [
+    "Imperial Conquest 2",
+    1,
+    1
+   ],
+   [
+    "Imperial Conquest 2    Rome's turn   (Appius Claudius)",
+    650,
+    300
+   ],
+   [
+    "Unit map",
+    439,
+    487
+   ],
+   [
+    "Area map",
+    328,
+    196
+   ],
+   [
+    "Information",
+    328,
+    730
+   ],
+   [
+    "Army to army transfer",
+    610,
+    430
+   ]
+  ],
+  "army0_slots": [
+   0
+  ],
+  "partner_slots": [
+   0,
+   2
+  ],
+  "side": "left",
+  "rows": [
+   0
+  ],
+  "finish": "OK",
+  "popups": [],
+  "dialog_still_open": false,
+  "before": {
+   "0": {
+    "troops": 1000,
+    "slots": {
+     "0": "S0-0"
+    }
+   },
+   "12": {
+    "troops": 2000,
+    "slots": {
+     "0": "S12-0",
+     "2": "S12-2"
+    }
+   },
+   "13": {
+    "troops": 2000,
+    "slots": {
+     "0": "S13-0",
+     "2": "S13-2"
+    }
+   }
+  },
+  "after": {
+   "12": {
+    "troops": 2000,
+    "slots": {
+     "0": "S12-0",
+     "2": "S12-2"
+    }
+   },
+   "13": {
+    "troops": 2000,
+    "slots": {
+     "0": "S13-0",
+     "2": "S0-0"
+    }
+   }
+  },
+  "army_table_identical": false
+ }
+}
