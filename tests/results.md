@@ -109,3 +109,9 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   ```text
   PASS new_nation_yes (57-58s): G03 Yes: texts = []; rome.human = False; current_nation = 1
   ```
+
+**2026-10-08, L11 40-recruited-units gate regression**:
+- `test_recruit_40_slots_cap` (51s) — Patcher `_make_patched_save_full_slots(nation_index=0, city_id=85, n_slots=40)` fills all 40 recruit-slot records at offset 0x2E4 in nation 0's record (each slot is `<4h>` state/type/troops/city). After `fresh_save(pre)`, the test confirms 40 slots at city 85 (Rome), then issues a 41st recruit order at Rome and asserts (a) the slot count stays at 40 (the gate held) and (b) a refusal popup was captured (the OCR text is mangled but contains "40" — `You have reached your lint of 40 units aK`). The 40-recruited-units bullet is now `[confirmed, partial]`. The 20-units-per-army gate stays deferred (uncacheable in 21 units); the 198-armies gate stays queued.
+  ```text
+  PASS recruit_40_slots_cap (51s): L11 40 slots: 40 in, 40 out (gate held); refusal text = 'e ‘You have reached your lint of 40 units aK'; popups = ['e ‘You have reached your lint of 40 units aK']
+  ```

@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from harness.driver import G, SEL_ARMY, SEL_FLEET, WORK, Game  # noqa: E402
+from harness.driver import G, SEL_ARMY, SEL_FLEET, WORK, DriverError, Game  # noqa: E402
 from state.sav import load, live_armies  # noqa: E402
 
 BASE = WORK / "fixtures" / "BASE.SAV"
@@ -457,6 +457,45 @@ def _make_patched_base_save(army_patches=None, nation_patches=None):
     return _make_patched_save(BASE, army_patches=army_patches, nation_patches=nation_patches)
 
 
+def _make_patched_save_full_slots(source, nation_index, city_id, n_slots=40,
+                                  state=12, typ=1, troops=3200):
+    """Copy `source`, fill Rome (or any nation_index)'s recruit slots with `n_slots`
+    queued units at `city_id`. Each slot: (state i16, type i16, troops i16, city i16).
+    Slots start at 0x2E4 in the nation record (40 slots, 8 bytes each).
+
+    Used for the L11 '40 recruited units' gate test: with all 40 slots filled,
+    one more recruit order must be refused.
+    """
+    NATION_LEN = 1172
+    SLOT_BASE = 0x2E4        # inside the nation record
+    SLOTS_MAX = 40
+    if n_slots > SLOTS_MAX:
+        raise ValueError(f"n_slots={n_slots} > {SLOTS_MAX} (the recruitment queue cap)")
+    ARMY_COUNT_OFF = 100956
+    ARMY_LEN = 656
+    FLEET_LEN = 26
+
+    fd, name = tempfile.mkstemp(suffix='.SAV', prefix='tmp_l11_slots_')
+    os.close(fd)
+    shutil.copy(source, name)
+    path = Path(name)
+    data = bytearray(path.read_bytes())
+
+    na = struct.unpack_from('<h', data, ARMY_COUNT_OFF)[0]
+    nf = struct.unpack_from('<h', data, ARMY_COUNT_OFF + 2 + na * ARMY_LEN)[0]
+    nation_base = ARMY_COUNT_OFF + 2 + na * ARMY_LEN + 2 + nf * FLEET_LEN
+    slot_off = nation_base + nation_index * NATION_LEN + SLOT_BASE
+
+    # Clear all 40 slots first (so any leftover slot memory is zeroed).
+    for k in range(SLOTS_MAX):
+        struct.pack_into('<4h', data, slot_off + 8 * k, 0, 0, 0, 0)
+    for k in range(n_slots):
+        struct.pack_into('<4h', data, slot_off + 8 * k, state, typ, troops, city_id)
+
+    path.write_bytes(bytes(data))
+    return path
+
+
 def _snap(g, name):
     p = keep(g.save_as(name), name)
     return load(p)
@@ -777,6 +816,57 @@ def test_recruit_100pct_mobilization():
         pre.unlink(missing_ok=True)
 
 
+def test_recruit_40_slots_cap():
+    """L11 '40 recruited units' gate. Pre-state: Rome's recruit queue is full
+    (40 queued slots, all at city id 85 = Rome). The recruit order at the
+    same city must be refused -- no new slot is created. Patcher:
+    `_make_patched_save_full_slots(nation_index=0, city_id=85, n_slots=40)`
+    fills the slots at offset 0x2E4 in nation 0's record; each slot is a
+    `<4h>` (state, type, troops, city). The 41st recruit at the same city
+    is the boundary that exercises the cap.
+    """
+    pre = _make_patched_save_full_slots(BASE, nation_index=0, city_id=85, n_slots=40,
+                                        state=12, typ=1, troops=3200)
+    try:
+        g = fresh_save(pre)
+        s_before = load(g.save_as("dummy_before.SAV"))
+        r0_before = s_before["nations"][0]
+        filled_before = [sl for sl in r0_before["recruit_slots"] if sl["troops"] > 0 and sl["city"] == 85]
+        assert len(filled_before) == 40, (len(filled_before), "expected 40 slots at city 85")
+        # Open Army recruits dialog at Rome (city_row=1 selects Rome per
+        # test_recruit assertion new[0]['city'] == 85). The recruit() helper
+        # drives the 'Recruit unit' click + dismiss_popups + close, so any
+        # refusal fires through dismiss_popups; a refusal box (Information)
+        # is captured in `texts` rather than raising. dismiss_popups's
+        # Confirm-auto-Yes path (controls("Confirm") → no controls found)
+        # may flake on this no-WM Xvfb build -- catch and report instead.
+        try:
+            texts = g.recruit(city_row=1, unit_type="hi", thousands=2)
+        except DriverError as e:
+            raise AssertionError(f"recruit() raised on the gate; the dismissed-popups race likely: {e}")
+        # Inspect the post-state: no new slot for Rome at city 85 (the cap
+        # refused).
+        p = keep(g.save_as("T_RECRUIT_40SLOTS.SAV"), "T_RECRUIT_40SLOTS.SAV")
+        s_after = load(p)
+        r0_after = s_after["nations"][0]
+        filled_after = [sl for sl in r0_after["recruit_slots"] if sl["troops"] > 0 and sl["city"] == 85]
+        cap_held = len(filled_after) == 40
+        # Assert: cap holds (40 in, 0 out) AND a refusal popup was captured
+        # (the L11 row's "refusals" requirement).
+        refusal_keywords = ("already", "40", "recruit", "queue")
+        refused_text = next((t for t in texts if any(k in t.lower() for k in refusal_keywords)), None)
+        assert cap_held, (
+            f"L11 40-slot cap let a 41st recruit through: filled_after = "
+            f"{len(filled_after)} ({len(filled_after) - 40:+d}); popups = {texts}"
+        )
+        assert refused_text is not None, (
+            f"L11 40-slot cap held but no refusal text was captured; popups = {texts}"
+        )
+        return f"L11 40 slots: 40 in, 40 out (gate held); refusal text = {refused_text!r}; popups = {texts}"
+    finally:
+        pre.unlink(missing_ok=True)
+
+
 def test_transfer_ships():
     """Transfer ships ("Fleet to fleet transfer"): five ships go from fleet 2 to fleet 5 (20/10 -> 15/15)."""
     g = fresh_save(FLEET_SPLIT)
@@ -815,7 +905,7 @@ TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join
          "embark_refused", "embark", "disembark", "supply_fleet", "repair_fleet", "scuttle_fleet", "split_fleet",
          "join_fleets", "join_fleets_99", "join_fleets_100", "join_fleets_101",
          "embark_over_500_per_ship",
-         "join_armies_over_100k_troops", "recruit_100pct_mobilization",
+         "join_armies_over_100k_troops", "recruit_100pct_mobilization", "recruit_40_slots_cap",
          "transfer_ships", "transfer_ships_back", "move_fleet",
          "new_nation_yes"]
 
