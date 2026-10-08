@@ -1,0 +1,17 @@
+# after the find_windows tooltip filter: dialog-opening orders (batch 1)
+PASS split_army (37s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18700), (1, 120, 53, 22000), (14, 101, 38, 5000)]
+PASS split_army_197_armies (25s): 197 armies: Split army opened, army count 197 -> 198
+PASS split_army_198_armies_cap (35s): 198 armies: Split army REFUSED silently (no dialog), count 198 -> 198; windows ['Area map 328x196', 'Unit map 439x487', 'Information 328x730']
+PASS split_fleet (34s): Rome fleets 1 -> 2: [(2, 101, 46, 20, 29), (5, 101, 47, 10, 0)]
+PASS supply_fleet (33s): fleet supplies 0 -> 100; Antium 330 -> 230
+PASS repair_fleet (34s): condition 97 -> 100, moves 29 -> 0, treasury 1730 -> 1712 (cost 18)
+PASS transfer_ships (38s): fleet 2: 20 -> 15, fleet 5: 10 -> 15
+# batch 2
+PASS build_fleet (39s): Rome fleets 0 -> 1 (ships 10, building True, countdown 24); treasury 2200 -> 2100
+PASS taxation (33s): Rome tax -> 20%, treasury 2200, unity 821
+PASS transfer_units (62s): army0 23700t/6u -> 18700t/5u; army1 22000t/6u -> 27000t/7u
+PASS change_units_rename (47s): '1st Foot  Battalion' -> 'Legio Test'
+PASS recruit (46s): slot {'slot': 4, 'state': 0, 'type': 'hi', 'troops': 3200, 'city': 85}, treasury 2200 -> 1880 (cost 320), mobilization 30 -> 32, popups []
+PASS disband_army (36s): Roman armies 2 -> 1, treasury 2300
+PASS scuttle_fleet (30s): Rome fleets 1 -> 0; box ['(7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel']
+PASS join_fleets (30s): Rome fleets 2 -> 1: ship 30, moves 0
