@@ -1,0 +1,12 @@
+# 2026-10-08 late, probe_fleet_band.py (saves/fleet-split-antium-0734.SAV, seed 12345, Xvfb :99). A: Join fleets 2+5 with ships patched; word_101_46 = map word in [PRE, BEFORE, AFTER]; mem_word after the join. B: tile/screen RGB hashes after an Area map click on (101,46) (pinned scroll), pointer parked, nothing selected
+A s24 {"ships": [12, 12], "popups": [], "rome_fleets_after": [[2, 101, 46, 24]], "word_101_46": [300, 300, 300], "mem_word": 300}
+A s25 {"ships": [12, 13], "popups": [], "rome_fleets_after": [[2, 101, 46, 25]], "word_101_46": [300, 300, 316], "mem_word": 316}
+A s49 {"ships": [24, 25], "popups": [], "rome_fleets_after": [[2, 101, 46, 49]], "word_101_46": [300, 300, 316], "mem_word": 316}
+A s50 {"ships": [25, 25], "popups": [], "rome_fleets_after": [[2, 101, 46, 50]], "word_101_46": [300, 300, 332], "mem_word": 332}
+B w300_s24 {"word": 300, "mem_word": 300, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "ded897e0bb450a22", "screen_rgb_sha256": "5251ba54cdeb5c38"}
+B w316_s25 {"word": 316, "mem_word": 316, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "4c94b1ddeb2d5f1b", "screen_rgb_sha256": "3605330b18a033a1"}
+B w316_s49 {"word": 316, "mem_word": 316, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "4c94b1ddeb2d5f1b", "screen_rgb_sha256": "3605330b18a033a1"}
+B w332_s50 {"word": 332, "mem_word": 332, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "2965e2efa15363d8", "screen_rgb_sha256": "2bde47f146a42b48"}
+B w316_s24 {"word": 316, "mem_word": 316, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "4c94b1ddeb2d5f1b", "screen_rgb_sha256": "3605330b18a033a1"}
+B w332_s24 {"word": 332, "mem_word": 332, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "2965e2efa15363d8", "screen_rgb_sha256": "2bde47f146a42b48"}
+B w300_s50 {"word": 300, "mem_word": 300, "view_origin": [95, 39], "tile_xy": [545, 366], "tile_rgb_sha256": "ded897e0bb450a22", "screen_rgb_sha256": "5251ba54cdeb5c38"}
