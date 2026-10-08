@@ -1,6 +1,6 @@
 # The unit-map army icon has three sizes, chosen by the stored marker band
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It closes the open item "whether the on-screen icon differs by band" in `2026-10-08-army-marker-size-band-on-the-map.md` (research `be0691a`).
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `e18eaad` (by ic2-research); this draft is kept for history, the research repo is canonical. It closes the open item "whether the on-screen icon differs by band" in `2026-10-08-army-marker-size-band-on-the-map.md` (research `be0691a`).
 
 **Tag:** `[confirmed]`.
 
