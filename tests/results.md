@@ -115,3 +115,9 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   ```text
   PASS recruit_40_slots_cap (51s): L11 40 slots: 40 in, 40 out (gate held); refusal text = 'e ‘You have reached your lint of 40 units aK'; popups = ['e ‘You have reached your lint of 40 units aK']
   ```
+
+**2026-10-08, L11 198-armies gate (`run-exp-l11-198-armies`)**: `python3 tests/test_orders.py split_army_197_armies split_army_198_armies_cap`. BASE padded to 197 / 198 armies in total (the cap is the game-wide count at 0x4A0324, `< 0xc6` in `FUN_00449f08`, which Split army calls before it opens its dialog). At 197 the dialog opens and the count goes to 198. At 198 there is no dialog and no box, the count stays at 198 and army 0 keeps its 6 units. The dialog is detected by size because the button's tooltip is a Wine window also titled "Split army" (51×15); that tooltip was the earlier session's false "opened". Two runs, both PASS; `split_army` still passes. Finding: `findings/2026-10-08-split-army-198-armies-cap-in-play.md`.
+  ```text
+  PASS split_army_197_armies (26s): 197 armies: Split army opened, army count 197 -> 198
+  PASS split_army_198_armies_cap (36s): 198 armies: Split army REFUSED silently (no dialog), count 198 -> 198; windows ['Area map 328x196', 'Unit map 439x487', 'Information 328x730', 'Split army 51x15']
+  ```

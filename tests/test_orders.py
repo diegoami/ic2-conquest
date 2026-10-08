@@ -16,7 +16,7 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from harness.driver import G, SEL_ARMY, SEL_FLEET, WORK, DriverError, Game  # noqa: E402
+from harness.driver import ARMY_TOOLBAR_Y, G, SEL_ARMY, SEL_FLEET, WORK, DriverError, Game  # noqa: E402
 from state.sav import load, live_armies  # noqa: E402
 
 BASE = WORK / "fixtures" / "BASE.SAV"
@@ -919,17 +919,70 @@ def test_recruit_40_slots_cap():
         pre.unlink(missing_ok=True)
 
 
-# --- L11 198-armies gate (DEFERRED) ------------------------------------------
-# The patcher below (`_make_patched_save_with_n_armies`) extends BASE.SAV
-# to N Rome-owned records and the SAV parses cleanly (verified at
-# target=50/188/200: parses, 12 AI + N Rome records). On load in this
-# Wine build the game clamps Rome's in-memory army count to 188 records
-# regardless of the SAV (n_rome_target=200 → live=188, n_rome_target=188
-# → live=188). The Split army toolbar click then produces no
-# controls("Split army") enumeration — gate fires before the dialog opens
-# or the click simply misses — so the test path could not be confirmed
-# end-to-end. The patcher is kept here for the next iteration; the test
-# body is parked with a clear comment so a future session can resume.
+# --- L11 198-armies gate ----------------------------------------------------
+# The cap is on the game's TOTAL army count (DAT_004a0324, all nations), not
+# Rome's: TUnitMap_SplitArmy (code_extract_rework_extra.txt :47046) calls
+# FUN_00449f08 *before* it opens the dialog, and FUN_00449f08 only creates the
+# new record when `DAT_004a0324 < 0xc6` (:48725). At 198 it returns -1 and the
+# Split army dialog never opens, with no box. (The earlier "Rome clamped to 188"
+# reading was the 198-record memory table holding 12 AI + 186 Rome records of a
+# 200-army SAV; the table has room for exactly 198.) So the test is a boundary
+# pair on the same click path: 197 armies -> the dialog opens and the count goes
+# to 198; 198 armies -> no dialog, count and army 0 unchanged. The selection is
+# checked in memory (select_army), so "no dialog" is not a missed click.
+
+ARMY_COUNT = 0x4A0324   # i16: armies in use, all nations (the save's army count)
+
+
+def _split_at_total(total):
+    """Load BASE padded to `total` armies; select army 0 (6 units) and click
+    Split army. Returns (count_before, count_after, dialog_opened, g)."""
+    s0 = load(BASE)
+    n_other = sum(1 for a in s0["armies"] if a["owner"] != 0)
+    pre = _make_patched_save_with_n_armies(BASE, n_rome_target=total - n_other)
+    try:
+        g = fresh_save(pre)
+        before = g.i16(ARMY_COUNT)
+        assert before == total, (before, total)
+        ax, ay = g.army_pos(0)
+        g.select_army(0, ax, ay)          # raises unless SEL_ARMY == 0
+        if not g.army_x:
+            g.calibrate_army_toolbar()
+        # Not open_dialog(): the button's tooltip is a Wine window also named
+        # "Split army" (about 60x15), so a title match alone is a false
+        # positive; the dialog is 610x430.
+        opened = False
+        for _ in range(2):  # the first click may only activate the window
+            g.click(g.army_x["split"], ARMY_TOOLBAR_Y, pause=1.5)
+            opened = any(w[4] > 200 for w in g.find_windows("^Split army$"))
+            if opened:
+                break
+        return before, g.i16(ARMY_COUNT), opened, g
+    finally:
+        pre.unlink(missing_ok=True)
+
+
+def test_split_army_197_armies():
+    """Control for the 198 gate: with 197 armies the Split army dialog opens and
+    FUN_00449f08 has already taken record 197 (count 197 -> 198)."""
+    before, after, opened, g = _split_at_total(197)
+    assert opened, "Split army did not open at 197 armies"
+    assert after == 198, after
+    return f"197 armies: Split army opened, army count {before} -> {after}"
+
+
+def test_split_army_198_armies_cap():
+    """L11 '198 armies' gate: with 198 armies the Split army dialog does not
+    open, no box, the army count stays 198 and army 0 keeps its 6 units."""
+    before, after, opened, g = _split_at_total(198)
+    boxes = [f"{w[1]} {w[4]}x{w[5]}" for w in g.find_windows(".") if not w[1].startswith("Imperial Conquest 2")]
+    assert not opened, "Split army opened at 198 armies"
+    assert after == 198, after
+    s = _snap(g, "T_SPLIT_198_ARMIES.SAV")
+    assert len(s["armies"]) == 198, len(s["armies"])
+    assert len(_army(s, 0)["units"]) == 6, _army(s, 0)["units"]
+    return f"198 armies: Split army REFUSED silently (no dialog), count {before} -> {after}; windows {boxes}"
+
 
 def test_transfer_ships():
     """Transfer ships ("Fleet to fleet transfer"): five ships go from fleet 2 to fleet 5 (20/10 -> 15/15)."""
@@ -970,6 +1023,7 @@ TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join
          "join_fleets", "join_fleets_99", "join_fleets_100", "join_fleets_101",
          "embark_over_500_per_ship",
          "join_armies_over_100k_troops", "recruit_100pct_mobilization", "recruit_40_slots_cap",
+         "split_army_197_armies", "split_army_198_armies_cap",
          "transfer_ships", "transfer_ships_back", "move_fleet",
          "new_nation_yes"]
 
