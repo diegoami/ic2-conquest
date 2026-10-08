@@ -1,4 +1,4 @@
-# A removed army restores the terrain under it (disband, join, battle loss); only a sunk fleet writes 0
+# A removed army restores the terrain under it (disband, join, battle loss), unlike a sunk fleet
 
 **Status:** a draft from `ic2-conquest`, awaiting promotion. It answers research's follow-up to `2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md` (research `4495fc6`): does an army's removal also write 0, which would leave calm sea on a land tile for good?
 
