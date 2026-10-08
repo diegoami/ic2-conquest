@@ -1,6 +1,6 @@
 # A sunk fleet's tile becomes plain sea (0), even on rough sea; a fleet that sails away restores its tile
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It settles the open item of `2026-10-08-naval-battle-loser-clears-its-tile.md` (research `0389684`): "cleared to 0" or "covered terrain restored".
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `4495fc6` (by ic2-research); this draft is kept for history, the research repo is canonical. **Correction (research review):** the consequence below is not permanent. Rough sea (code 1) is a weekly weather overlay that `FUN_00451304` clears and re-rolls every week (decompiled-map-code1-overlay.md), so a sunk fleet only ends that tile's rough sea for the rest of the week. It settles the open item of `2026-10-08-naval-battle-loser-clears-its-tile.md` (research `0389684`): "cleared to 0" or "covered terrain restored".
 
 **Tag:** `[confirmed]` for the observed behaviour. `[derived]` for its consequence on the map.
 
