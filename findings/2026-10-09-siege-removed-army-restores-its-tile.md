@@ -1,6 +1,8 @@
 # Siege: attrition can remove a small attacking army, and its tile gets its terrain back
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It covers the siege path left open in `2026-10-08-removed-army-restores-its-tile.md` (research `6be3778`).
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `99899ac` (by ic2-research); this draft is kept for history, the research repo is canonical. **The code items are answered there** (decompiled-defection-and-siege-attrition.md):
+- `FUN_0044ae20` removes troops / (Random(15) + 105) × ratio from every unit, then deletes national units below standard size / 10 (heavy infantry: 600) and mercenaries below standard / 5.
+- `FUN_0044a930` gives an attack strength of 0 for one man, which hits an unguarded division by zero (0x0044B249); the silent no-siege fits a faulted order (`[derived]`). It covers the siege path left open in `2026-10-08-removed-army-restores-its-tile.md` (research `6be3778`).
 
 **Tag:** `[confirmed]` for the observations. `[derived]` for the code path behind them (`FUN_0044ae20` is not in our extracts).
 
