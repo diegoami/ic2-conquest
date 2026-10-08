@@ -1,6 +1,6 @@
 # Mercenary hire: the recruitment queue does not block it, and R08 keeps it off slot 20
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. The research session asked for it on 2026-10-08 (ask B). It extends `2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md`, R08 in `2026-10-05-refusal-texts-and-conditions.md`, and `2026-10-08-join-armies-20-unit-gate-counts-last-slot.md` (research `6466d56`).
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `b72cfae` (by ic2-research); this draft is kept for history, the research repo is canonical. The research session asked for it on 2026-10-08 (ask B). It extends `2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md`, R08 in `2026-10-05-refusal-texts-and-conditions.md`, and `2026-10-08-join-armies-20-unit-gate-counts-last-slot.md` (research `6466d56`).
 
 **Tag:** `[confirmed]`.
 
