@@ -787,6 +787,16 @@ class Game:
         self.click(self.army_x.get("disband", self.ARMY_TOOLS["disband"]), ARMY_TOOLBAR_Y, pause=1.5)
         return self.dismiss_popups()
 
+    def new_nation(self):
+        """Game menu > New nation; the harness's dismiss_popups auto-answers Yes
+        on the Confirm box ('Are you sure you want to lead a different nation ?').
+        Per inventory G03: Yes calls FUN_00449078 + EndTurn -- the current human
+        seat (Rome by default) drops to AI and the new seat_index points at
+        whatever nation becomes human."""
+        self.click(MENU["game"], 56, pause=0.4)
+        self.click(MENU["game"], MENU_ITEM_Y(GAME_ITEMS["new_nation"]), pause=1.0)
+        return self.dismiss_popups()
+
     def split_army(self, i, unit_rows=(0,)):
         """Select army i and split the given unit rows (indices in its unit list)
         into a new army. One observation (from (100,37)): the new army appeared at (101,38),
