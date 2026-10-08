@@ -1037,8 +1037,10 @@ class Game:
         return self.dismiss_popups()
 
     def join_fleets(self, i):
-        """Join fleets: no dialog; fleet i and the adjacent own fleet become one (ships add up, fewer than 100 combined,
-        neither carrying an army) and the joined fleet's moves become 0."""
+        """Join fleets: no dialog; fleet i and the adjacent own fleet become one (ships add up, fewer than 101 combined,
+        neither carrying an army) and the joined fleet's moves become 0. The < 101 gate is set by TUnitMap_JoinFleets and was
+        pinned live at run-exp-join-fleets-cap-in-play: 99 ships (50+49) and 100 ships (50+50) are accepted; 101 ships (50+51)
+        refused. See findings/2026-10-08-join-fleets-cap-in-play.md for the three-trial evidence."""
         self.fleet_tool(i, "join")
         return self.dismiss_popups()
 

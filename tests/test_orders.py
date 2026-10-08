@@ -7,8 +7,11 @@ Needs setup/setup.sh done and a start save: $IC2_WORK/fixtures/BASE.SAV
 (270 BC Spring week 1, Rome human; tests/make_base.sh makes it). Each test
 prints its result line; tests/results.md records the last full run.
 """
+import os
 import shutil
+import struct
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -352,6 +355,39 @@ def fresh_save(path):
     return g
 
 
+def _make_patched_fleet_split_save(f2_ships, f5_ships):
+    """Copy FLEET_SPLIT, patch Rome fleet 2 + fleet 5 ships fields to (f2, f5).
+
+    Layout-independent content scan (matches the run-exp-join-fleets-cap-in-play
+    patcher); looks for the 26-byte record matching (x, y, owner=0) + army == -1
+    (not carrying) + countdown < 0 (not building), then overwrites +18 (ships).
+    Returns a temp path the caller should clean up with Path.unlink(missing_ok=True).
+    """
+    SHIPS_OFFSET = 18  # +18 shorts within the 26-byte fleet record = `ships`
+
+    def find_fleet_off(data, x, y, owner):
+        for off in range(0, len(data) - 26):
+            f = struct.unpack_from('<13h', data, off)
+            if f[0] == x and f[1] == y and f[4] == owner and f[11] == -1 and f[5] < 0:
+                return off
+        return None
+
+    fd, name = tempfile.mkstemp(suffix='.SAV', prefix='tmp_join_')
+    os.close(fd)
+    shutil.copy(FLEET_SPLIT, name)
+    path = Path(name)
+    data = bytearray(path.read_bytes())
+    off2 = find_fleet_off(data, 101, 46, 0)
+    off5 = find_fleet_off(data, 101, 47, 0)
+    if off2 is None or off5 is None:
+        path.unlink(missing_ok=True)
+        raise RuntimeError(f'cannot find Rome fleets 2/5 in {path}')
+    struct.pack_into('<h', data, off2 + SHIPS_OFFSET, f2_ships)
+    struct.pack_into('<h', data, off5 + SHIPS_OFFSET, f5_ships)
+    path.write_bytes(bytes(data))
+    return path
+
+
 def _snap(g, name):
     p = keep(g.save_as(name), name)
     return load(p)
@@ -465,6 +501,69 @@ def test_join_fleets():
     return f"Rome fleets 2 -> 1: ship 30, moves {fl[0]['moves']}"
 
 
+def test_join_fleets_99():
+    """Join fleets at the < 101 boundary: 50 + 49 = 99 (under) -> ACCEPTED.
+
+    Live-pinned at run-exp-join-fleets-cap-in-play (trial 99). Saving the patched
+    pre-state alongside the post-state under run-exp-join-fleets-cap-in-play is
+    not done here (this is a regression, not an artifact run); the patch is
+    temp-file and unlinked at end of test.
+    """
+    pre = _make_patched_fleet_split_save(50, 49)
+    try:
+        g = fresh_save(pre)
+        g.join_fleets(2)
+        s = _snap(g, "T_JOIN_FLEETS_99.SAV")
+        fl = [f for f in s["fleets"] if f["owner"] == 0]
+        assert len(fl) == 1 and fl[0]["ships"] == 99 and fl[0]["moves"] == 0, \
+            [(f["id"], f["ships"], f["moves"]) for f in fl]
+        return f"50+49=99 -> ACCEPTED (survivor ships=99, moves={fl[0]['moves']})"
+    finally:
+        pre.unlink(missing_ok=True)
+
+
+def test_join_fleets_100():
+    """Join fleets at the < 101 boundary: 50 + 50 = 100 (off-by-one) -> ACCEPTED.
+
+    The harness's docstring says 'fewer than 100 combined' but the actual gate
+    is < 101 (decompile < 0x65; live-pinned at run-exp-join-fleets-cap-in-play
+    trial 100). This test is the regression: if the harness/docstring drifts
+    back to '< 100' this assertion flips to FAIL.
+    """
+    pre = _make_patched_fleet_split_save(50, 50)
+    try:
+        g = fresh_save(pre)
+        g.join_fleets(2)
+        s = _snap(g, "T_JOIN_FLEETS_100.SAV")
+        fl = [f for f in s["fleets"] if f["owner"] == 0]
+        assert len(fl) == 1 and fl[0]["ships"] == 100 and fl[0]["moves"] == 0, \
+            [(f["id"], f["ships"], f["moves"]) for f in fl]
+        return f"50+50=100 -> ACCEPTED (survivor ships=100, moves={fl[0]['moves']})"
+    finally:
+        pre.unlink(missing_ok=True)
+
+
+def test_join_fleets_101():
+    """Join fleets at the < 101 boundary: 50 + 51 = 101 -> REFUSED (byte-identical no-op).
+
+    Live-pinned at run-exp-join-fleets-cap-in-play trial 101. Both fleets retain
+    pre-state ship counts and the gate fires before any in-game handler runs.
+    """
+    pre = _make_patched_fleet_split_save(50, 51)
+    try:
+        g = fresh_save(pre)
+        g.join_fleets(2)
+        s = _snap(g, "T_JOIN_FLEETS_101.SAV")
+        fl = [f for f in s["fleets"] if f["owner"] == 0]
+        # Two fleets still: gate refused, no merge, no news line.
+        assert len(fl) == 2, [f["ships"] for f in fl]
+        assert sorted(f["ships"] for f in fl) == [50, 51], \
+            [f["ships"] for f in fl]
+        return f"50+51=101 -> REFUSED (no merge; {[f['ships'] for f in fl]} preserved)"
+    finally:
+        pre.unlink(missing_ok=True)
+
+
 def test_transfer_ships():
     """Transfer ships ("Fleet to fleet transfer"): five ships go from fleet 2 to fleet 5 (20/10 -> 15/15)."""
     g = fresh_save(FLEET_SPLIT)
@@ -501,7 +600,8 @@ TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join
          "change_units_disband", "transfer_units", "change_units_rename",
          "change_units_split", "change_units_join", "change_units_refusals",
          "embark_refused", "embark", "disembark", "supply_fleet", "repair_fleet", "scuttle_fleet", "split_fleet",
-         "join_fleets", "transfer_ships", "transfer_ships_back", "move_fleet"]
+         "join_fleets", "join_fleets_99", "join_fleets_100", "join_fleets_101",
+         "transfer_ships", "transfer_ships_back", "move_fleet"]
 
 if __name__ == "__main__":
     names = sys.argv[1:] or TESTS
