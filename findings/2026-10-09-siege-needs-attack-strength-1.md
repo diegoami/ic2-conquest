@@ -1,6 +1,6 @@
 # Siege: an army needs an attack strength of at least 1 (80 men, or 27 archers) to besiege
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It is an addendum to `2026-10-09-siege-removed-army-restores-its-tile.md` (research `99899ac`) and checks research's reading of `FUN_0044a930`: atk = Σ troops (archers × 3) div 80 × morale.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `067b5de` (by ic2-research); this draft is kept for history, the research repo is canonical. It is an addendum to `2026-10-09-siege-removed-army-restores-its-tile.md` (research `99899ac`) and checks research's reading of `FUN_0044a930`: atk = Σ troops (archers × 3) div 80 × morale.
 
 **Tag:** `[confirmed]` for the boundary. `[derived]` for the cause (the division by zero at 0x0044B249 per research).
 
