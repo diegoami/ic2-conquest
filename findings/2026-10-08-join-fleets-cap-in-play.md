@@ -65,7 +65,7 @@ python3 -c "import json; d=json.load(open('runs/experiments/data/run-exp-join-fl
 #   artifacts/run-exp-join-fleets-cap-in-play/trial-101-post.SAV
 ```
 
-Per CLAUDE.md rule 6, the per-trial driver + results + SHA-256 live in the tracked path `runs/experiments/data/run-exp-join-fleets-cap-in-play/`. The SAV binaries live in the gitignored `artifacts/run-exp-join-fleets-cap-in-play/` (clause 1 of CLAUDE.md rule 1 — too new for `saves/README.md`, would be uploaded to a `run-exp-join-fleets-cap-in-play` release if promoted).
+Per CLAUDE.md rule 6, the per-trial driver + results + SHA-256 live in the tracked path `runs/experiments/data/run-exp-join-fleets-cap-in-play/`. The SAV binaries live in the gitignored `artifacts/run-exp-join-fleets-cap-in-play/` (clause 1 of CLAUDE.md rule 1 — too new for `saves/README.md`) **and are uploaded to the GitHub release [`run-exp-join-fleets-cap-in-play`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-join-fleets-cap-in-play)**, tagged 2026-10-08T10:22:52Z, six binary assets totalling 793 KB.
 
 **Tracked files written this draft:**
 - `findings/2026-10-08-join-fleets-cap-in-play.md` (this file)
@@ -74,5 +74,5 @@ Per CLAUDE.md rule 6, the per-trial driver + results + SHA-256 live in the track
 - `runs/experiments/data/run-exp-join-fleets-cap-in-play/results.json` (per-trial summaries)
 - `runs/experiments/data/run-exp-join-fleets-cap-in-play/SAVES.sha256` (six SAVs)
 
-**Artifact files (gitignored):**
-- `artifacts/run-exp-join-fleets-cap-in-play/trial-{099,100,101}-{pre,post}.SAV` × 6.
+**Artifact files (gitignored, uploaded to release):**
+- `artifacts/run-exp-join-fleets-cap-in-play/trial-{099,100,101}-{pre,post}.SAV` × 6 → released as `run-exp-join-fleets-cap-in-play` on the GitHub side; cited by `trial-NNN-{pre,post}.SAV` per CLAUDE.md rule 1 (bare filename).
