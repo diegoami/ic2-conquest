@@ -1,6 +1,6 @@
 # Split fleet and Transfer ships re-band the fleets they change
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It answers "which orders besides Join fleets re-band a fleet" from `2026-10-08-fleet-marker-band-and-icon.md` (research `bff6bff`).
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `f9d061a` (by ic2-research); this draft is kept for history, the research repo is canonical. The code sites are in the research reports (2026-10-07-city-marker-variants.md: `FUN_0044a878` is called from TFleetToFleet_OK :44994 and :45004, TUnitMap_JoinFleets :47250, construction completion FUN_0044a050 :48795, the storm and battle-winner loss FUN_0044b4f8 :49880, and the AI merge FUN_00450b30 :54034). It answers "which orders besides Join fleets re-band a fleet" from `2026-10-08-fleet-marker-band-and-icon.md` (research `bff6bff`).
 
 **Tag:** `[confirmed]` for Split fleet and Transfer ships. Storms and battle losses were not run.
 
