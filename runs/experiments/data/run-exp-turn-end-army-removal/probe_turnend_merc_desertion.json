@@ -1,0 +1,62 @@
+{
+ "case": "merc_desertion",
+ "action": "end_turn",
+ "autosave": "AUTO0744.SAV",
+ "popups": [
+  "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved",
+  "BATTLE Gaul  v  Rome          Rome to place units."
+ ],
+ "tiles": {
+  "93,28": {
+   "word_before": 216,
+   "word_after": 200,
+   "mem_word": 200,
+   "armies_before": [
+    [
+     13,
+     0,
+     38455,
+     0,
+     4
+    ]
+   ],
+   "armies_after": [
+    [
+     0,
+     0,
+     22191
+    ]
+   ]
+  }
+ },
+ "calendar_after": 744,
+ "news_tail": [
+  "Rome destroys army of Gaul.",
+  "A fleet belonging to Carthage is lost at sea.",
+  " ",
+  "Week  9      Winter      270BC",
+  "Naupactus   (Greece)  falls to Illyria.",
+  " ",
+  "Week  11      Winter      270BC",
+  "Greece finishes a new fleet at Athens.",
+  " ",
+  "Week  1      Spring      269BC",
+  "Messene   (Greece)  falls to Illyria.",
+  "Gaul destroys army of Rome."
+ ],
+ "compaction_after": {
+  "live_armies": 13,
+  "records": 13,
+  "marker_mismatches": [
+   [
+    9,
+    2,
+    205,
+    58,
+    37821,
+    234,
+    218
+   ]
+  ]
+ }
+}
