@@ -1,6 +1,6 @@
 # Join armies: the 20-unit gate counts slots up to the last occupied one (row L11, 20 units per army)
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. Row L11's last `[derived]` bullet; refusal R03 in `2026-10-05-refusal-texts-and-conditions.md`. The research session asked for it on 2026-10-08 (ask A).
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `6466d56` (by ic2-research); this draft is kept for history, the research repo is canonical. Row L11's last `[derived]` bullet; refusal R03 in `2026-10-05-refusal-texts-and-conditions.md`. The research session asked for it on 2026-10-08 (ask A).
 
 **Tag:** `[confirmed, partial]` for "20 units per army" (Join armies; the transfer-dialog path `TArmyToArmy_Army1Transfer` was not run). `[confirmed]` for the reading of `FUN_0044a66c`.
 
