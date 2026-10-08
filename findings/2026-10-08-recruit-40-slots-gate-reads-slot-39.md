@@ -1,6 +1,6 @@
 # Recruit unit: the 40-unit gate reads only slot 39 (addendum to the 40-slot finding)
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It is an addendum to `2026-10-08-recruit-40-slots-cap-in-play.md` (promoted at research `f1d5b21`) and to R46 / RC01 in `2026-10-05-refusal-texts-and-conditions.md`. The research session asked for it on 2026-10-08.
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `02303d0` (by ic2-research); this draft is kept for history, the research repo is canonical. It is an addendum to `2026-10-08-recruit-40-slots-cap-in-play.md` (promoted at research `f1d5b21`) and to R46 / RC01 in `2026-10-05-refusal-texts-and-conditions.md`. The research session asked for it on 2026-10-08.
 
 **Tag:** `[confirmed]` for "the R46 gate tests the 40th slot only, not a count of the queue" (Recruit unit only; the mercenary path was not run).
 
