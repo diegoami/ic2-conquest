@@ -196,7 +196,14 @@ class Game:
         return struct.unpack("<H", self.mem(MAP + (x * 140 + y) * 2, 2))[0]
 
     # ---- X ----------------------------------------------------------------
-    def find_windows(self, pattern=".", visible=True):
+    TOOLTIP_MAX_H = 24      # a tooltip window is ~15 px high (Split army: 51x15); the smallest dialog (Confirm) is 97
+
+    def find_windows(self, pattern=".", visible=True, tooltips=False):
+        """Visible X windows whose name matches `pattern`: [(id, name, x, y, w, h)]. Wine shows a toolbar button's
+        tooltip as a window named with the button's caption, which is often also the title of the dialog it opens
+        (Split army, Split fleet, Supply fleet, Repair fleet, Build fleet, Taxation...), so tooltip-sized windows
+        (1 < h < TOOLTIP_MAX_H) are left out unless `tooltips` is set (the toolbar calibration reads them).
+        Before 2026-10-08 a title lookup could take a tooltip for its dialog (run-exp-l11-198-armies)."""
         args = ["xdotool", "search"] + (["--onlyvisible"] if visible else []) + ["--name", pattern]
         out = []
         for w in sh(*args, check=False).split():
@@ -204,7 +211,10 @@ class Game:
             geo = sh("xdotool", "getwindowgeometry", w, check=False)
             m = re.search(r"Position: (\d+),(\d+).*Geometry: (\d+)x(\d+)", geo, re.S)
             if m:
-                out.append((int(w), name, *map(int, m.groups())))
+                x, y, wd, ht = map(int, m.groups())
+                if not tooltips and 1 < ht < self.TOOLTIP_MAX_H:
+                    continue
+                out.append((int(w), name, x, y, wd, ht))
         return out
 
     def click(self, x, y, pause=0.4):
@@ -287,7 +297,7 @@ class Game:
         for x in range(x0, x1, 3):
             sh("xdotool", "mousemove", str(x), str(y))
             time.sleep(pause)
-            names = {w[1] for w in self.find_windows(".")}
+            names = {w[1] for w in self.find_windows(".", tooltips=True)}
             for label in seen:
                 if label in names:
                     seen[label].append(x)

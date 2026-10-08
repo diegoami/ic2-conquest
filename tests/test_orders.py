@@ -948,15 +948,13 @@ def _split_at_total(total):
         g.select_army(0, ax, ay)          # raises unless SEL_ARMY == 0
         if not g.army_x:
             g.calibrate_army_toolbar()
-        # Not open_dialog(): the button's tooltip is a Wine window also named
-        # "Split army" (about 60x15), so a title match alone is a false
-        # positive; the dialog is 610x430.
-        opened = False
-        for _ in range(2):  # the first click may only activate the window
-            g.click(g.army_x["split"], ARMY_TOOLBAR_Y, pause=1.5)
-            opened = any(w[4] > 200 for w in g.find_windows("^Split army$"))
-            if opened:
-                break
+        # open_dialog() through find_windows, which leaves out the button's
+        # tooltip (a 51x15 window also named "Split army"); the dialog is 610x430.
+        try:
+            g.open_dialog("Split army", (g.army_x["split"], ARMY_TOOLBAR_Y), tries=2)
+            opened = True
+        except DriverError:
+            opened = False
         return before, g.i16(ARMY_COUNT), opened, g
     finally:
         pre.unlink(missing_ok=True)
