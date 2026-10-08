@@ -1,6 +1,6 @@
 # Recruit unit: an accepted order takes the first free queue slot
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It closes the `[derived]` "filled from the front" note in `2026-10-08-recruit-40-slots-gate-reads-slot-39.md` (research `02303d0`). The research session asked for it on 2026-10-08.
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `cd9a9c7` (by ic2-research); this draft is kept for history, the research repo is canonical. It closes the `[derived]` "filled from the front" note in `2026-10-08-recruit-40-slots-gate-reads-slot-39.md` (research `02303d0`). The research session asked for it on 2026-10-08.
 
 **Tag:** `[confirmed]` (Recruit unit at the capital).
 
