@@ -787,34 +787,79 @@ class Game:
         self.click(self.army_x.get("disband", self.ARMY_TOOLS["disband"]), ARMY_TOOLBAR_Y, pause=1.5)
         return self.dismiss_popups()
 
-    def new_nation(self):
-        """Game menu > New nation; the harness's dismiss_popups auto-answers Yes
-        on the Confirm box ('Are you sure you want to lead a different nation ?').
-        Per inventory G03: Yes calls FUN_00449078 + EndTurn -- the current human
-        seat (Rome by default) drops to AI and the new seat_index points at
-        whatever nation becomes human.
-
-        The Game menubar header is at y=14 (per coverage.md 'Area map (y=14)');
-        the dropdown items are at y=56+ at x = MENU[name] + 20. The harness's
-        dismiss_popups auto-Yes on a 'Confirm' box errors when the box's
-        win_controls title isn't found; bypass it by clicking the OK button
-        directly. Per the inventory, the Yes path on New-nation opens the
-        leaders form ('Human and computer leaders') -- we don't need to dismiss
-        it; the test inspects the post-state for the seat change instead.
-        """
-        # Open Game menu (menubar at y=14), then click the New nation item.
-        self.click(MENU["game"], 14, pause=0.6)
-        self.click(MENU["game"] + 20, MENU_ITEM_Y(GAME_ITEMS["new_nation"]), pause=1.0)
-        # Click the OK button on whatever popup is open (Confirm or Information).
-        # The OK button is at the bottom-centre of the box.
-        ps = [p for p in self.popups() if p[1] in ("Information", "Confirm", "Warning", "Error", "")
-              and p[4] < 600 and p[5] < 300]
-        if ps:
-            wid, name, x, y, w, h = ps[0]
-            for _ in range(3):
-                self.click(x + w // 2, y + h - 24, pause=0.6)
-                if wid not in [p[0] for p in self.popups()]:
+    def new_nation(self, new_nation_name="Carthage"):
+        """Game menu > New nation. The harness answers the resulting Confirm
+        box with Yes (the seat-change path: Rome drops to AI, current_nation
+        points at the next human). After Yes, the leaders form (TPickLeaders,
+        'Human and computer leaders') opens; tick the human checkbox of the
+        row named `new_nation_name` (sorted alphabetically: Rome, Carthage,
+        Seleucid, ...) and click OK. Returns the open popups for the test."""
+        # Open Game menu (menubar y=36 per coverage.md) and pick the item.
+        self.reset_ui()
+        self.click(MENU["game"], 36, pause=0.8)
+        self.click(MENU["game"] + 20, MENU_ITEM_Y(GAME_ITEMS["new_nation"]), pause=1.2)
+        # The Confirm box may take > 1 s to appear. Wait for it.
+        self.wait(lambda: self.find_windows("^Confirm$"), 5, "Confirm box")
+        # Click Yes on the Confirm. win_controls.exe is racy right after the
+        # menu click; retry the enumeration a few times before falling back to
+        # the measured Yes centre (558, 549) on this build. The click is
+        # sent with `xdotool click --window <wid>` so the event targets the
+        # Confirm directly on this no-WM Xvfb build.
+        time.sleep(0.6)
+        cs = None
+        for _ in range(3):
+            try:
+                cs = self.controls("Confirm")
+            except DriverError:
+                cs = None
+            if cs:
+                break
+            time.sleep(0.6)
+        if cs:
+            yc = next((c for c in cs if c["text"].replace("&", "").strip().lower() == "yes"), None)
+            yes_xy = (yc["x"] + yc["w"] // 2, yc["y"] + yc["h"] // 2) if yc else (558, 549)
+        else:
+            yes_xy = (558, 549)
+        for _ in range(3):
+            ps = self.find_windows("^Confirm$")
+            if not ps:
+                break
+            wid = ps[0][0]
+            sh("xdotool", "mousemove", "--sync", str(yes_xy[0]), str(yes_xy[1]), check=False)
+            sh("xdotool", "click", "--window", str(wid), "1", check=False)
+            time.sleep(1.0)
+            if not self.find_windows("^Confirm$"):
+                break
+        # The leaders form (TPickLeaders) opens after Yes. Read its controls
+        # by title ('Human and computer leaders') and tick the new nation's
+        # human checkbox, then click OK. TPanel text is space-padded.
+        self.wait(lambda: self.find_windows("^Human and computer leaders$"), 5, "leaders form")
+        fcs = None
+        for _ in range(3):
+            try:
+                fcs = self.controls("Human and computer leaders")
+            except DriverError:
+                fcs = None
+            if fcs:
+                break
+            time.sleep(0.5)
+        if fcs:
+            want = new_nation_name.strip().lower()
+            for nation_panel in [c for c in fcs if c["cls"] == "TPanel" and c["text"].strip().lower() == want]:
+                cb = next((c for c in fcs if c["cls"] == "TCheckBox"
+                           and abs(c["y"] - (nation_panel["y"] + 5)) < 5), None)
+                if cb is not None:
+                    self.click_control(cb, pause=0.5)
                     break
+            ok = next((c for c in fcs if c["cls"] == "TButton" and c["text"].strip().lower() == "ok"), None)
+            if ok is not None:
+                # Retry the OK click — first hit may only raise the form.
+                for _ in range(3):
+                    self.click_control(ok, pause=1.5)
+                    if not self.find_windows("^Human and computer leaders$"):
+                        break
+            else:
+                self.click(372, 204, pause=1.5)        # measured OK centre on this build
         return self.popups()
 
     def split_army(self, i, unit_rows=(0,)):
