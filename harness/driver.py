@@ -792,10 +792,30 @@ class Game:
         on the Confirm box ('Are you sure you want to lead a different nation ?').
         Per inventory G03: Yes calls FUN_00449078 + EndTurn -- the current human
         seat (Rome by default) drops to AI and the new seat_index points at
-        whatever nation becomes human."""
-        self.click(MENU["game"], 56, pause=0.4)
-        self.click(MENU["game"], MENU_ITEM_Y(GAME_ITEMS["new_nation"]), pause=1.0)
-        return self.dismiss_popups()
+        whatever nation becomes human.
+
+        The Game menubar header is at y=14 (per coverage.md 'Area map (y=14)');
+        the dropdown items are at y=56+ at x = MENU[name] + 20. The harness's
+        dismiss_popups auto-Yes on a 'Confirm' box errors when the box's
+        win_controls title isn't found; bypass it by clicking the OK button
+        directly. Per the inventory, the Yes path on New-nation opens the
+        leaders form ('Human and computer leaders') -- we don't need to dismiss
+        it; the test inspects the post-state for the seat change instead.
+        """
+        # Open Game menu (menubar at y=14), then click the New nation item.
+        self.click(MENU["game"], 14, pause=0.6)
+        self.click(MENU["game"] + 20, MENU_ITEM_Y(GAME_ITEMS["new_nation"]), pause=1.0)
+        # Click the OK button on whatever popup is open (Confirm or Information).
+        # The OK button is at the bottom-centre of the box.
+        ps = [p for p in self.popups() if p[1] in ("Information", "Confirm", "Warning", "Error", "")
+              and p[4] < 600 and p[5] < 300]
+        if ps:
+            wid, name, x, y, w, h = ps[0]
+            for _ in range(3):
+                self.click(x + w // 2, y + h - 24, pause=0.6)
+                if wid not in [p[0] for p in self.popups()]:
+                    break
+        return self.popups()
 
     def split_army(self, i, unit_rows=(0,)):
         """Select army i and split the given unit rows (indices in its unit list)
