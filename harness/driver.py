@@ -1209,7 +1209,8 @@ class Game:
 
     def hire_mercs(self, i, rows=(0,)):
         """Recruit mercenary unit dialog (490x165 at 23,49): the offers of the
-        adjacent city; pick a row, Recruit unit, OK. The button does nothing (no
+        adjacent city; pick a row, Recruit unit, OK. Rows, buttons and OK come from the dialog's controls
+        (14 px rows; fixed coordinates with a 12 px step until 2026-10-08, run-exp-hire-mercs-controls). The button does nothing (no
         dialog) when no live offer is adjacent."""
         before = len([k for k in range(20) if struct.unpack_from("<h", self.army_rec(i), 16 + 32 * k + 4)[0] > 0])
         try:
@@ -1217,11 +1218,30 @@ class Game:
         except DriverError:
             return 0, ["no mercenary offer adjacent"]
         texts = []
+        title = "Recruit mercenary unit"
+        def open_controls():
+            # The dialog closes itself after the last offer or once the army's slot 19 is filled (:43686), and its X
+            # window can stay listed for over 2 s after that, so "open" means "its controls can be read". Retry a
+            # little: right after a dialog appears, controls() can also come back empty (memory: Confirm handling).
+            for _ in range(3):
+                if not self.find_windows("^%s$" % title):
+                    return None
+                try:
+                    return self.controls(title)
+                except DriverError:
+                    time.sleep(0.6)
+            return None
         for r in sorted(rows, reverse=True):          # hired rows leave the list: go bottom-up
-            self.click(103, 86 + 12 * r, pause=0.5)
-            self.click(410, 104, pause=1.0)
+            cs = open_controls()                       # re-read: the list's rows and top index change after a hire
+            if cs is None:
+                break
+            self.click_list_row(self.control(cs, cls="TListBox"), r, pause=0.5)
+            self.click_control(self.control(cs, text="Recruit unit"), pause=1.0)
             texts += [t for t in self.dismiss_popups()]
-        self.close_dialog("Recruit mercenary unit", (248, 174))
+        cs = open_controls()
+        if cs is not None:
+            ok = self.control(cs, text="OK")           # was fixed (248,174): the button's top edge
+            self.click_control(ok, pause=1.0)
         after = len([k for k in range(20) if struct.unpack_from("<h", self.army_rec(i), 16 + 32 * k + 4)[0] > 0])
         return after - before, texts
 

@@ -135,3 +135,8 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   PASS split_army (35s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18900), (1, 120, 53, 22000), (14, 101, 38, 4800)]
   PASS transfer_units (62s): army0 23700t/6u -> 18900t/5u; army1 22000t/6u -> 26800t/7u
   ```
+
+**2026-10-08, hire_mercs from the dialog's controls (`run-exp-hire-mercs-controls`)**: the Recruit mercenary unit dialog's list has **14 px rows** at client origin (45,81), so the old fixed row step `(103, 86 + 12 r)` hit the row above from row 3 on, and the fixed OK click `(248,174)` sat on the button's top edge (OK is at 233,174, 70×25). `hire_mercs` now clicks the row with `click_list_row` and presses Recruit unit and OK from `controls()`. The dialog closes itself after the last offer (or once slot 19 is filled, :43686), and its X window then stays listed for over 2 s without controls, so "open" now means "controls readable" (two failed runs, v1 and v2 in `regression.log`, came from that). New test `hire_mercs`: the Samnite (li 3,868, q8, label 38) joins army 1 in slot 6, purse and treasury unchanged. PASS twice; `hire_mercs(1, rows=())` closes through OK.
+  ```text
+  PASS hire_mercs (37s): army 1 +Samnite li 3868 q8 at slot 6; purse 100, popups []
+  ```

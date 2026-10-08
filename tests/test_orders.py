@@ -988,6 +988,30 @@ def test_split_army_198_armies_cap():
     return f"198 armies: Split army REFUSED silently (no dialog), count {before} -> {after}; windows {boxes}"
 
 
+def test_hire_mercs():
+    """Hire the Samnite offer (li 3,868, quality 8) at Heraclea with army 1 of the run-0 start save: it joins in slot 6 as a
+    mercenary unit (label 38) and nothing is charged (the price is only a minimum purse,
+    findings/2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md). The dialog is driven through its controls."""
+    src = Path(__file__).resolve().parent.parent / "saves" / "run0-start-AUTO0720-seed12345.SAV"
+    g = fresh_save(src)
+    s0 = load(src)
+    gained, texts = g.hire_mercs(1, rows=(0,))
+    s = _snap(g, "T_HIRE_MERCS.SAV")
+    a0, a1 = _army(s0, 1), _army(s, 1)
+    new = [u for u in a1["units"] if u["slot"] not in {v["slot"] for v in a0["units"]}]
+    assert gained == 1 and len(new) == 1, (gained, new, texts)
+    u = new[0]
+    assert (u["slot"], u["type"], u["troops"], u["quality"], u["merc"]) == (6, "li", 3868, 8, 38), u
+    assert a1["money"] == a0["money"] and s["nations"][0]["treasury"] == s0["nations"][0]["treasury"], \
+        (a0["money"], a1["money"], s0["nations"][0]["treasury"], s["nations"][0]["treasury"])
+    try:
+        g.controls("Recruit mercenary unit"); still = True
+    except DriverError:
+        still = False                       # closed (its X window may linger, without controls)
+    assert not still, "dialog still open"
+    return f"army 1 +{u['name']} {u['type']} {u['troops']} q{u['quality']} at slot {u['slot']}; purse {a1['money']}, popups {texts}"
+
+
 def test_transfer_ships():
     """Transfer ships ("Fleet to fleet transfer"): five ships go from fleet 2 to fleet 5 (20/10 -> 15/15)."""
     g = fresh_save(FLEET_SPLIT)
@@ -1028,7 +1052,7 @@ TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join
          "embark_over_500_per_ship",
          "join_armies_over_100k_troops", "recruit_100pct_mobilization", "recruit_40_slots_cap",
          "split_army_197_armies", "split_army_198_armies_cap",
-         "transfer_ships", "transfer_ships_back", "move_fleet",
+         "transfer_ships", "transfer_ships_back", "move_fleet", "hire_mercs",
          "new_nation_yes"]
 
 if __name__ == "__main__":
