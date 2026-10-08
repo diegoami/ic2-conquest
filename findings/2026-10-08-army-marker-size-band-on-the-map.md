@@ -1,6 +1,6 @@
 # The army marker on the map carries a troop-size band (the "0x10 bit" of the mercenary run)
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It explains the open item in `2026-10-08-merc-hire-ignores-queue-r08-guards-slot-20.md` (research `b72cfae`): army 1's map word went 200 → 216 in c1.
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `be0691a` (by ic2-research); this draft is kept for history, the research repo is canonical. The body of `FUN_0044a80c` is decompiled in the research reports (decompiled-unit-map-orders-and-record-fields.md Part 3: band = troops div 1000; owner + (band < 25 ? 200 : band < 50 ? 216 : 232), not written while aboard a fleet). It explains the open item in `2026-10-08-merc-hire-ignores-queue-r08-guards-slot-20.md` (research `b72cfae`): army 1's map word went 200 → 216 in c1.
 
 **Tag:** `[confirmed]` for the boundaries 25,000 and 50,000. `[confirmed]` for "a load does not recompute the marker".
 
