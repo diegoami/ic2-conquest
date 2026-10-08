@@ -20,7 +20,7 @@
 | cover1 | 1 | attack, Ptolemaic sunk | **0** | yes |
 | move_cover1 | 1 | Ptolemaic sails to (111,74) | **1** (marker 335 now at (111,74)) | yes |
 
-Evidence: run-exp-naval-loser-rough-sea, `cover0_{PRE,BEFORE,AFTER}.SAV`, `cover1_*`, `move_cover1_*` (release `run-exp-naval-loser-rough-sea`; SHA-256 in `runs/experiments/data/run-exp-naval-loser-rough-sea/SAVES.sha256`); `probe_rough.py`, `probe_rough.log`, `probe_rough_*.json`. One control attempt that targeted a land tile ((112,73), word 2, so the fleet did not move) is kept in `attempt_move_to_land/` and not cited.
+Evidence: run-exp-naval-loser-rough-sea, `cover0_{PRE,BEFORE,AFTER}.SAV`, `cover1_*`, `move_cover1_*` (release `run-exp-naval-loser-rough-sea`; SHA-256 in `runs/experiments/data/run-exp-naval-loser-rough-sea/SAVES.sha256`); `probe_rough.py`, `probe_rough.log`, `probe_rough_*.json`. One control attempt that targeted a land tile ((112,73), word 2, so the fleet did not move) is kept in `attempt_move_to_land.tar.gz` (release) and not cited.
 
 ## Method
 
