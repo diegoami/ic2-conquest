@@ -1,0 +1,11 @@
+# 2026-10-08 late, read_naval_words.py on the saves of release run-exp-naval-battle (fixture saves/fleets-adjacent-at-sea-0723.SAV); no new play
+fleets-adjacent-at-sea-0723.SAV f0 owner 1 (110,73) ships 90 word 333 expect 333 cover 0 | f1 owner 3 (111,73) ships 70 word 335 expect 335 cover 0
+PROBE_AFTER.SAV f0 owner 1 (110,73) ships 80 word 333 expect 333 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0
+NB_C50_seed1.SAV f0 owner -1 (110,73) ships 50 word 0 expect tombstone cover 0 | f1 owner 3 (111,73) ships 48 word 319 expect 319 cover 0 | f2 owner 1 (111,74) ships 40 word 317 expect 317 cover 0
+NB_C55_seed1.SAV f0 owner 1 (110,73) ships 40 word 317 expect 317 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0 | f2 owner 1 (111,74) ships 35 word 317 expect 317 cover 0
+NB_C60_seed1.SAV f0 owner 1 (110,73) ships 46 word 317 expect 317 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0 | f2 owner 1 (111,74) ships 30 word 317 expect 317 cover 0
+NB_C65_seed1.SAV f0 owner 1 (110,73) ships 53 word 333 expect 333 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0 | f2 owner 1 (111,74) ships 25 word 317 expect 317 cover 0
+NB_C70_seed1.SAV f0 owner 1 (110,73) ships 59 word 333 expect 333 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0 | f2 owner 1 (111,74) ships 20 word 301 expect 301 cover 0
+NB_C_seed1.SAV f0 owner 1 (110,73) ships 81 word 333 expect 333 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0
+NB_P60_seed1.SAV f0 owner -1 (110,73) ships 60 word 0 expect tombstone cover 0 | f1 owner 3 (111,73) ships 54 word 335 expect 335 cover 0 | f2 owner 1 (111,74) ships 30 word 317 expect 317 cover 0
+NB_P_seed1.SAV f0 owner 1 (110,73) ships 72 word 333 expect 333 cover 0 | f1 owner -1 (111,73) ships 70 word 0 expect tombstone cover 0
