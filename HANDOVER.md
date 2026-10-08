@@ -225,3 +225,95 @@ side's findings drafts; L11's 4 of 7 gates are `[confirmed, partial]` on
 ic2-research's ledger (commit `f6d4bed` on their `main`). The G03 Yes
 path and the remaining 3 L11 gates are queued for further iteration.
 
+## Handover: 2026-10-08 evening (ic2-conquest session, MiniMax-M3 via Claude Code)
+
+A continuation of the morning session — picked up after the AI-mover intake + L11
+partial regressions + G03 WIP. This entry documents what *this* session added (the
+morning session's section above is still the canonical env + tool description; the
+section below is **state of `main` and the work queue as of 2026-10-08 evening,
+session end**).
+
+### TL;DR (this session)
+
+**Three closures pushed to `main`: G03 Yes-path (WIP→PASS), L11 40-recruited-units
+gate (PASS, [confirmed, partial]), L11 198-armies patcher kept (test deferred —
+game's per-player Rome army cap is 188 in this Wine build, not the decompile's 198).
+L11 is now 5 of 7 gates `[confirmed, partial]` on this side and on ic2-research's
+ledger. Two new harness gotchas surfaced (`controls()` race after focus change;
+bare cursor click misroutes under no-WM Xvfb) — captured in the new
+`memory/confirm-box-handling.md`. The morning's open note *"[code, Yes not run]"*
+on G03 is closed; the disband_army flake stays (same root cause, not patched).**
+
+### Commits on `main` this session (in order)
+
+| # | SHA | Section | What |
+|---|---|---|---|
+| 1 | `beda43a` | harness + tests | **G03 Yes-path**: `Game.new_nation()` rewritten — menubar y=36 (coverage.md, not 14), `xdotool click --window` on Confirm-Yes, leaders-form by title `Human and computer leaders`, TPanel text stripped before match, OK 3-iteration retry. PASS test_new_nation_yes (57-58s): texts=[], rome.human=False, current_nation=1 (Carthage). |
+| 2 | `6bddb39` | tests | **L11 40-recruited-units gate**: `_make_patched_save_full_slots(nation_index, city_id, n_slots)` — clears+refills the 40 slots at offset 0x2E4 in the nation record. PASS recruit_40_slots_cap (51s): 40 slots full at city 85 (Rome), 41st recruit refused with "You have reached your limit of 40 units…" (OCR mangled). |
+| 3 | `c69fcb9` | tests | **L11 198-armies patcher kept, test deferred**: `_make_patched_save_with_n_armies(source, n_rome_target=...)` rewrites layout (map + cities + new army count + N Rome dummies + post-army tail). SAV parses cleanly. Game clamps Rome live armies to 188 in this Wine build regardless of n_rome_target. Split-army toolbar click produces no `controls("Split army")` enumeration — gate fires before dialog opens. Test body parked at the deferred comment for the next iteration. |
+
+Three commits total, + ~165 lines, three closures (one final pass + two intermediates
+on the third).
+
+### Standby queue (per session end)
+
+1. **L11 198-armies test body** (`.claude/...:` row L11, `n_rome_target=188`). The
+   patcher's in (`_make_patched_save_with_n_armies`); the test split fails because
+   the Split-army dialog never opens OR `controls("Split army")` returns 0 lines.
+   Two failure modes — gate fires before dialog, OR dialog enumeration is racy
+   right after focus change (same root cause that bit New-nation's Confirm).
+   `controls()` retries (the new_nation helper) might do it; OCR of the screen
+   right after the toolbar click is the cheapest probe.
+
+2. **disband_army flake** (pre-existing). `controls("Confirm") → no controls
+   found` after the toolbar click — same race as the G03 Confirm box, dodged by
+   `Game.new_nation()`'s retry loop. `dismiss_popups()`/`answer()` could take the
+   same retry loop and likely clear the recruit / scuttle / build_fleet flakes too
+   (each drives a Confirm box with a message that dismiss_popups gets called on).
+
+3. **20-units-per-army L11 gate** ([derived] carry-over — uncacheable in 21 units
+   due to the 20-slot army-record cap; cannot be cache-tested, only inferable
+   from the decompile).
+
+### Engine
+
+- **Backend**: `minimax` (MiniMax-M3 via Claude Code). NOT `claude`. Don't ask
+  about `claude` quota; check `minimax` quota only.
+- **Quota**: started at 80%, ended near 70% (5h window at 30%; 7d at 21%). Game
+  cycles were local CPU only (Wine) — no model burn.
+- **Cross-OS session messaging**: `SendMessage` between PowerShell (main
+  session) and WSL (this session) is unreliable. The user is the carrier
+  for paste-ready prompts. `SendMessage` between WSL sessions (this side
+  and `ic2-research` at `70286.sock`) works.
+
+### Files worth knowing (this session's additions)
+
+- `harness/driver.py` — `Game.new_nation()` rewrite (commit beda43a).
+- `tests/test_orders.py` — `_make_patched_save_full_slots`,
+  `_make_patched_save_with_n_armies`, `test_recruit_40_slots_cap`,
+  deferred comment for `test_split_army_over_198_armies_cap`. `DriverError`
+  added to the harness import.
+- `tests/results.md` — G03 closure + L11 40-slot PASS entries appended.
+- `~/.claude/projects/-home-diego-projects-ic2-conquest/memory/confirm-box-handling.md`
+  — new harness gotcha (controls() race, no-WM cursor click). Three rules + why
+  + how-to-apply, with cross-links to [[measurements-kept-rule]] and
+  [[read-before-retry]].
+
+### Resumption
+
+Next session opens with:
+
+```bash
+git log --oneline -25            # see the 3 commits this session added on top of the 24 from the morning
+git log -1 --format=%B HEAD~2    # beda43a (G03 rewrite) for the new_nation() shape and the docs
+git log -1 --format=%B HEAD~1    # 6bddb39 (L11 40-slot)
+git log -1 --format=%B HEAD      # c69fcb9 (L11 198-armies patcher, deferred)
+```
+
+The G03 Yes-path is closed (morning's open note resolved); L11 is 5 of 7
+gates `[confirmed, partial]` on this side. Two open test work items: (1) the
+198-armies gate test body (patcher is in, gate path needs UI work); (2) the
+`disband_army` Confirm-flake (same root cause as the G03 fix, fixed in
+`new_nation` but not in `dismiss_popups`/`answer`). The 20-units-per-army
+gate stays uncacheable.
+
