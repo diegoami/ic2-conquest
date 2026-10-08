@@ -1,57 +1,140 @@
-# Note for the main session — decompile skills the ic2-conquest session can take
+# Note for the main session — decompile and exploration work the ic2-conquest session can take
 
-The **ic2-conquest session** (this VM; discoverable via `ListAgents` as `ic2-conquest`) is staffed this run with decompile skills the main session does not have to do itself. Send the work here; the session will hand back cited evidence and a tracked file.
+> A note the main session can read in one pass. It tells the main session to **write a paste-ready prompt and hand it to the user**, who relays it to the `ic2-conquest` session, instead of doing the work itself. The user is the carrier because PowerShell (main) ↔ WSL (ic2-conquest) session messaging isn't reliable yet.
 
-## Capabilities
+## How shipping works right now
 
-| Skill | When to use it |
-|---|---|
-| **capstone x86 disassembly** | Walk any byte range of `Imperial Conquest 2.exe` (or `.dat`); output `mnemonic / op_str` lines. |
-| **Ghidra headless** (`analyzeHeadless`) | Drive the full decompiler API in a Jython post-script. Needs Ghidra installed (see `setup/setup.sh`). |
-| **`struct` / PE / fixed-offset parsing** | The same shape `state/sav.py` uses on SAVs, applied to the EXE for fixed addresses the decompile reports name. |
-| **Re-run the project extractors** | `runs/experiments/feature_inventory/extract_*.py` → `function_list.tsv`, `dump_string_literals.v2.tsv`, `form_xrefs.tsv`, `forms.json`, `form_controls.tsv`, `help_topics.v2.tsv`. Deterministic. |
-| **Live harness** | Wine/Xvfb on a dedicated prefix (`~/ic2-work-<exp>`); the AI-mover contact work used `:601` and prefix `ic2-work-contact`. |
+When you want `ic2-conquest` to do something, **write a paste-ready prompt in the template below and hand it to the user**. The user relays it to the `ic2-conquest` session, the session does the work and commits a draft, the `ic2-research` session picks it up for intake review and promotion. Don't try `SendMessage` — the harness between PowerShell and WSL is not yet reliable. The user relay is the path until we fix the cross-OS link.
 
-Past work using these skills is visible in `findings/2026-10-04-battle-exchange-hook.md` (capstone + unicorn on `tests/test_battle_hook_build.py`) and in `state/sav.py` / `state/battle.py` / `state/battle_block.py` (the constants are decompile-shaped Python).
+## Where you (the main session) read the result
 
-## When to send a request vs. do it yourself
+You don't follow the draft on `ic2-conquest`'s `main` and you don't get a "reply" back through the user. The thing you actually look at is the **processed/canonical version in `imperial-conquest-2-research`** — the same repo the main session reads from today. Concretely:
 
-- **Send here** when: the EXE has bytes not yet in any tracked artifact; the function bodies of named functions need re-reading; a saved field needs re-parsing under a new schema; the harness needs a new live-driver test; an open note in a finding needs a re-look at a specific byte range.
-- **Do yourself** when: the question is answered by `Read` of an existing artifact; the question is "cite an existing finding"; the work is front-end coordination (queue next item, intake triage, write up a review).
+- **Findings** the session writes on `main` are drafts. `ic2-research` does an intake review (same shape as the ai-mover intake this session produced last night) and, on promote, the canonical version moves to `imperial-conquest-2-research/docs/reports/<date>-<topic>.md`. Until that point the version is at `imperial-conquest-2-research/findings/<date>-<topic>.md` (provisional).
+- **Exploration runs** land at `run-exp-<name>` on the conquest repo for the binaries, and at `runs/experiments/data/run-exp-<name>/…` for the tracked text outputs. Findings drafts produced by a run follow the same intake/promote pipeline.
+- **`ic2-conquest`'s `main` is not a source of truth**. It's the draft side. When you want the authoritative result, query `imperial-conquest-2-research` — the file you're after is the one with the same topic and the most recent date.
 
-## Request template (SendMessage body)
+Don't ask the main session to read intermediate commits on `ic2-conquest`'s `main`, and don't expect the user to bring anything back other than "your prompt was relayed". The user knows when the canonical version has landed in the research repo.
+
+## What `ic2-conquest` can do
+
+**Decompile:**
+
+- **capstone** x86 disassembly on any byte range of `Imperial Conquest 2.exe` / `Imperial Conquest 2.dat` — `mnemonic / op_str` lines.
+- **Ghidra headless** via `analyzeHeadless` + Jython post-script; full decompiler API. Needs Ghidra installed at the path `setup/setup.sh` documents.
+- **`struct` / PE / fixed-offset parsing** — the same shape `state/sav.py` uses on `.sav` files, applied to the EXE.
+- **Re-run the project extractors** — `runs/experiments/feature_inventory/extract_*.py` produces `function_list.tsv`, `dump_string_literals.v2.tsv`, `form_xrefs.tsv`, `forms.json`, `form_controls.tsv`, `help_topics.v2.tsv`. Deterministic, runs off the EXE + dump.
+
+**Exploration runs of the game** (live driver under Wine/Xvfb):
+
+- Drives the actual `.exe` through `harness/driver.py` (`Game.load`, `Game.move`, `Game.attack`, the battles `stage.py`, the recruit / merc dialogs, etc.) to capture saves and screenshots against a known seed.
+- Runs on a dedicated prefix (`~/ic2-work-<exp>`) with its own Xvfb display. The player designates which prefix/display; opening a new one needs an owner `ok`.
+- Produces `(prefix + release-<id>)` for the captures: `runs/experiments/data/run-exp-<name>/` for the tracked text outputs, `artifacts/run-exp-<name>/` for the binaries that ship in releases.
+
+## When to ask vs. do it yourself
+
+- **Hand the user a prompt for `ic2-conquest`** when: the EXE has bytes not yet in any tracked artifact; a function body of a named function needs re-reading; a saved field needs re-parsing under a new schema; the harness needs a new live-driver test; an open note in a finding needs a re-look at a specific byte range; or you need a fresh exploration run against a known seed.
+- **Do it yourself** when: the question is answered by reading an existing artifact (including `imperial-conquest-2-research`); the question is "cite an existing finding"; the work is front-end coordination (queue next item, intake triage, write up a review).
+
+## Prompt body (paste-ready for the user to relay)
 
 ```
 To: ic2-conquest
 [function / byte range / form / save]: <addr | bytes | form-name | save-name>
 [goal]: <what to look for; the cell name; the field; the discriminator>
-[evidence form]: <literal text + addresses | opcode mnemonics | tsv/csv | control list | JSON>
-[land at]: <tracked path; commit+push per rule 6; or main for findings drafts>
-[deadline / size]: <how long is OK; small focused ask vs run-the-whole-experiment>
+[evidence form]: <literal text + addresses | opcode mnemonics | tsv/csv | control list | JSON |
+                 (alternatively) capture plan: which dialog/seed/steps + saves expected>
+[land at]: <tracked path on the agreed branch; commit + push per rule 6; or main for findings drafts;
+            (alternatively) release tag run-exp-<name> for an exploration run>
+[deadline / size]: <small focused ask vs run-the-whole-experiment>
 ```
 
-## Example asks
+One focused ask per relay — the user hand-carries each one; don't bundle a multi-step plan into a single prompt unless the plan is one round-trip with a single deliverable.
 
-- *"Capstone-walk `FUN_00456ca0` (TAboutIC_Cancell); show the construction call to TCellAuto and any guard, so H04's reproduction path is anchored byte-exact. Land at `findings/2026-10-08-…-decompile.md` on main."*
-- *"Re-run `runs/experiments/feature_inventory/extract_dump_strings.py` with a selector for `dword ptr` references in FUN_0044d420 — emit a tracked tsv of the readback so I can cite the river-cost readback in the next finding."*
-- *"Pull a 5×5 melee-matrix candidate from DAT offset `0x1F7A6` with capstone, decode the `[short][short][short][short][short]` records per type, and emit JSON so I can cross-check against the existing `combat-type-effectiveness-matrix.md`."*
-- *"Disassemble the per-type combat value field at offset `+0x26` of the unit-type-stat table; decode the 5 words and tell me which function reads them (DAT `0x1F2F0`-derived constants vs in-memory `DAT_00478FD6`)."*
+## Example asks — decompile
 
-## Do not ask for
+Each is a paste-ready prompt body.
 
-- **Writes to other repos** (rule 2: the conquest repo creates drafts the research repo promotes).
+**Walk a function's basic blocks and caller set:**
+
+```
+To: ic2-conquest
+[function / byte range]: <addr> (<named function>)
+[goal]: capstone-walk the function; list the basic blocks and any calls to other named functions.
+[evidence form]: opcode mnemonic list with addresses + a list of named-function call sites.
+[land at]: a new findings draft under findings/<date>-<topic>.md on the agreed branch; commit + push per rule 6.
+```
+
+**Re-run an extractor with a tighter selector:**
+
+```
+To: ic2-conquest
+[function / byte range]: the string-literal table at runs/experiments/data/run-exp-feature-inventory/dump_string_literals.v2.tsv
+[goal]: re-run extract_dump_strings.py with a selector that keeps only literals whose address falls inside <addr-range>; emit a tracked tsv.
+[evidence form]: tsv columns = addr, function_name, literal_text, dump_line.
+[land at]: runs/experiments/data/run-exp-feature-inventory/dump_string_literals.<slice>.tsv on the agreed branch.
+```
+
+**Decode a DAT fixed-offset table:**
+
+```
+To: ic2-conquest
+[function / byte range]: DAT offset <hex> (a 5x5 short matrix, 25 words, each row 5 shorts)
+[goal]: walk the 25 words with capstone / struct; emit a JSON object indexed by row/column.
+[evidence form]: JSON array of row objects; one field per column.
+[land at]: a new findings draft under findings/<date>-<dat-table-decoded>.md on the agreed branch.
+```
+
+**Find which function reads a constant:**
+
+```
+To: ic2-conquest
+[function / byte range]: in-memory address DAT_<hex>; in-DAT address <hex>
+[goal]: tell me which function(s) read each side (in-memory copy / DAT-copy); disassemble the readers and report.
+[evidence form]: per-side: function name + addr + a short disassembly snippet (5-10 lines) that touches the constant.
+[land at]: a new findings draft under findings/<date>-<const-readers>.md on the agreed branch.
+```
+
+## Example asks — exploration runs
+
+**Drive a dialog with capture:**
+
+```
+To: ic2-conquest
+[form / save]: form <Name>; seed <int>; (optional) starting save <SAV-name>
+[goal]: drive the dialog via Game.*; capture the saves before/after, the driver's per-step log, and the dialog's quoted literals as captured from the live window.
+[evidence form]: tracked SAVs (rule 1: SHA-256 in SAVES.sha256; binaries in artifacts/run-exp-<name>/) + a tracked per-step log under runs/experiments/data/run-exp-<name>/.
+[land at]: release tag run-exp-<name> for the binaries + an experiment branch for the text outputs + a findings draft on main.
+```
+
+**Stage a custom sequence:**
+
+```
+To: ic2-conquest
+[save / prefix / steps]: starting from <save>; prefix <path>; run steps <N1, N2, N3>
+[goal]: stage the sequence and capture the SAVs before/after each step, plus the driver's tile-by-tile log.
+[evidence form]: tracked SAVs + a per-step JSON log; both kept under runs/experiments/data/run-exp-<name>/.
+[land at]: release tag run-exp-<name> + an experiment branch for the text outputs.
+```
+
+**Drive a refusal-text sequence:**
+
+```
+To: ic2-conquest
+[form / save]: form <name>; starting from <save> on prefix <path>
+[goal]: trigger every refusal branch of the form's OK-side handler; capture the rejection literals and the SAV diff at each step.
+[evidence form]: a list of (step → literal → SAV diff) tuples, in a tracked tsv under runs/experiments/data/run-exp-<name>/.
+[land at]: release tag run-exp-<name> + a findings draft on main.
+```
+
+## Do not ask `ic2-conquest` for
+
+- **Writes to other repos** — the conquest repo creates drafts the research repo promotes (rule 2 of CLAUDE.md).
 - **EXE patches** without first SHA-256-saving the input file (rule 1).
-- **Live harness work on the player's display**; use a dedicated `ic2-work-<exp>` prefix (the existing `:601` is fine; opening a new one needs an owner `ok`).
-- **A re-derivation of facts already captured in a committed artifact** — `Read` is faster than re-running.
-- **Multi-step plans** in a single message — the session will ask for one focused ask at a time.
+- **Live harness on the player's display** — use a dedicated `ic2-work-<exp>` prefix; opening a new one needs an owner `ok`.
+- **A re-derivation of facts already captured** — reading an existing artifact (research repo, `function_list.tsv`, etc.) is faster than re-running.
+- **Multi-step plans in a single relay** — the user hand-carries each one. Bundle only when one round-trip produces one deliverable.
 
-## Reply shape
+---
 
-Each request gets:
-
-1. The cited addresses / literals / opcode snippets (verbatim, with byte offsets where they apply).
-2. A tracked file path + commit hash on the agreed branch (rule 6 measurements-kept).
-3. The decompile vehicle used (capstone / Ghidra headless / extractor / harness / Sav-parse).
-4. Any **open notes** the work turned up — so the next ask lands cleanly.
-
-Anything that needs a multi-step plan, a feature-branch side-effect, or a prefix change gets a clarification round first.
+This doc is the durable in-repo version of the note. The user carries the same content to the main session as a paste-ready prompt. Both forms should agree on examples, do-not-asks and where-to-look framing. If they drift, the version pasted into the main session is the source of truth for that conversation; this file is the durable artifact for future runs.
