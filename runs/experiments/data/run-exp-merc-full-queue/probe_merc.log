@@ -1,0 +1,10 @@
+# 2026-10-08 late, probe_merc.py (saves/run0-start-AUTO0720-seed12345.SAV, seed 12345, Xvfb :99); hire_mercs(1, rows=(0,)) then dismiss_popups; "no mercenary offer adjacent" = the driver found no dialog (the R08 box opened instead)
+c1_full_queue {"gained": 1, "popups": [], "driver_error": null, "new_army1_slots": {"6": [38, "li", 3868, 8, "Samnite"]}, "queue_unchanged": true, "purse": [100, 100], "treasury": [2200, 2200], "byte_identical": false} army2 [47, 62, 1] -> [47, 62, 1] n_armies 14 -> 14
+c2_empty_queue {"gained": 1, "popups": [], "driver_error": null, "new_army1_slots": {"6": [38, "li", 3868, 8, "Samnite"]}, "queue_unchanged": true, "purse": [100, 100], "treasury": [2200, 2200], "byte_identical": false} army2 [47, 62, 1] -> [47, 62, 1] n_armies 14 -> 14
+c3_army_20_slots {"gained": 0, "popups": ["no mercenary offer adjacent", "@ This army already has 20 units."], "driver_error": null, "new_army1_slots": {}, "queue_unchanged": true, "purse": [100, 100], "treasury": [2200, 2200], "byte_identical": false} army2 [47, 62, 1] -> [47, 62, 1] n_armies 14 -> 14
+c4_army_gap_0_18 {"gained": 1, "popups": [], "driver_error": null, "new_army1_slots": {"19": [38, "li", 3868, 8, "Samnite"]}, "queue_unchanged": true, "purse": [100, 100], "treasury": [2200, 2200], "byte_identical": false} army2 [47, 62, 1] -> [47, 62, 1] n_armies 14 -> 14
+Traceback (most recent call last):
+KeyError: 'c5_army_only_slot19'
+c5_army_only_slot19 {"gained": 0, "popups": ["no mercenary offer adjacent", "@ This army already has 20 units."], "driver_error": null, "new_army1_slots": {}, "queue_unchanged": true, "purse": [100, 100], "treasury": [2200, 2200], "byte_identical": false} army2 [47, 62, 1] -> [47, 62, 1] n_armies 14 -> 14
+# byte diffs BEFORE -> AFTER (outside army 1): c1 map(120,53) 200->216 (unexplained), nation0 +0x486/+0x488 (view origin), merc pool record 25 troops 3868 -> -1 (offer used up, :43672);
+# c3 and c5: only nation0 +0x486/+0x488; c4: view origin + pool record 25 -> -1; army 2 header and army count unchanged in every case
