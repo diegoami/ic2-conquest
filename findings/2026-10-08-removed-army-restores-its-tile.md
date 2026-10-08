@@ -1,6 +1,6 @@
 # A removed army restores the terrain under it (disband, join, battle loss), unlike a sunk fleet
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It answers research's follow-up to `2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md` (research `4495fc6`): does an army's removal also write 0, which would leave calm sea on a land tile for good?
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `6be3778` (by ic2-research); this draft is kept for history, the research repo is canonical. Research corrected decompiled-map-code1-overlay.md to "writes 0 (fleet removal)". It answers research's follow-up to `2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md` (research `4495fc6`): does an army's removal also write 0, which would leave calm sea on a land tile for good?
 
 **Tag:** `[confirmed]` for the three paths run.
 
