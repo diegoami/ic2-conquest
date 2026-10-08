@@ -496,6 +496,58 @@ def _make_patched_save_full_slots(source, nation_index, city_id, n_slots=40,
     return path
 
 
+def _make_patched_save_with_n_armies(source, n_rome_target=198):
+    """Copy `source`, append army records owned by Rome (owner=0, x=305,
+    y=130 — corner of the map to avoid the game's city supply logic; one
+    minimal unit slot at slot 0 (label=0, type=1=heavy inf, troops=3200,
+    q=7) so the record reads as a normal army to the parser) so that
+    Rome's record count reaches `n_rome_target`. The game may clamp
+    Rome's in-memory count to a per-player cap on load (observed: 188
+    records even when the SAV carries 198), so the caller reads the
+    in-memory count rather than trusting n_rome_target as the live value.
+    """
+    ARMY_COUNT_OFF = 100956
+    ARMY_LEN = 656
+
+    fd, name = tempfile.mkstemp(suffix='.SAV', prefix='tmp_l11_armies_')
+    os.close(fd)
+    shutil.copy(source, name)
+    path = Path(name)
+    orig = path.read_bytes()
+
+    n_orig = struct.unpack_from('<h', orig, ARMY_COUNT_OFF)[0]
+    n_orig_rome = sum(1 for o in range(n_orig)
+                      if struct.unpack_from('<h', orig,
+                                             ARMY_COUNT_OFF + 2 + o * ARMY_LEN + 4)[0] == 0)
+    if n_rome_target < n_orig_rome:
+        path.unlink(missing_ok=True)
+        raise ValueError(f"source has {n_orig_rome} Rome armies; cannot shrink below that")
+    n_added_rome = n_rome_target - n_orig_rome
+    n_total = n_orig + n_added_rome
+
+    armies_orig = orig[ARMY_COUNT_OFF + 2: ARMY_COUNT_OFF + 2 + n_orig * ARMY_LEN]
+    post_armies = orig[ARMY_COUNT_OFF + 2 + n_orig * ARMY_LEN:]
+
+    # Build n_added_rome Rome-owned dummy army records.
+    dummy = bytearray(ARMY_LEN)
+    # header (16 bytes): x, y, owner, moves, cell, sup, money, morale
+    struct.pack_into('<8h', dummy, 0, 305, 130, 0, 0, 0, 0, 0, 0)
+    # first unit slot (32 bytes at offset 16): label=0, type=1 (heavy inf),
+    # troops=3200, q=7; rest of name zeroed.
+    struct.pack_into('<4h', dummy, 16, 0, 1, 3200, 7)
+    dummies = bytes(dummy) * n_added_rome
+
+    out = bytearray()
+    out += orig[:ARMY_COUNT_OFF]
+    out += struct.pack('<h', n_total)
+    out += armies_orig
+    out += dummies
+    out += post_armies
+
+    path.write_bytes(bytes(out))
+    return path
+
+
 def _snap(g, name):
     p = keep(g.save_as(name), name)
     return load(p)
@@ -866,6 +918,18 @@ def test_recruit_40_slots_cap():
     finally:
         pre.unlink(missing_ok=True)
 
+
+# --- L11 198-armies gate (DEFERRED) ------------------------------------------
+# The patcher below (`_make_patched_save_with_n_armies`) extends BASE.SAV
+# to N Rome-owned records and the SAV parses cleanly (verified at
+# target=50/188/200: parses, 12 AI + N Rome records). On load in this
+# Wine build the game clamps Rome's in-memory army count to 188 records
+# regardless of the SAV (n_rome_target=200 → live=188, n_rome_target=188
+# → live=188). The Split army toolbar click then produces no
+# controls("Split army") enumeration — gate fires before the dialog opens
+# or the click simply misses — so the test path could not be confirmed
+# end-to-end. The patcher is kept here for the next iteration; the test
+# body is parked with a clear comment so a future session can resume.
 
 def test_transfer_ships():
     """Transfer ships ("Fleet to fleet transfer"): five ships go from fleet 2 to fleet 5 (20/10 -> 15/15)."""
