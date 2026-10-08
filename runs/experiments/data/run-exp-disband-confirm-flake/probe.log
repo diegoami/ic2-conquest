@@ -1,0 +1,8 @@
+# probe_disband.py: after the Disband army click, popups + raw win_controls "Confirm" every 0.8 s
+0..4: [(8388623, 'Confirm', 281, 97)]  win_controls: Cancel/&No/&Yes TButtons (684/603/522, 538) -- found every time
+# probe_disband2.py: same, but answer("Confirm", yes=True) first
+before [(8388623, 'Confirm', 281, 97)]
+0: [(8388623, 'Confirm', 281, 97)]  win_controls: ''   <- box destroyed, X window still listed
+1: [(8388623, 'Confirm', 281, 97)]  win_controls: ''
+2..4: []                             win_controls: ''
+=> dismiss_popups re-answered the lingering window and controls() raised "no controls found for window 'Confirm'"
