@@ -6,7 +6,7 @@
 
 ## Answer
 
-- **The loser's tile word becomes 0.** The losing fleet is tombstoned (owner −1), keeping its pre-battle ships field. All ten losing fleets (PROBE_AFTER and the NB_* cells: Ptolemaic fleet 1 in eight saves, Carthage fleet 0 in C50 and P60) had word 335 or 333 at their tile before the battle and **0** after.
+- **The loser's tile word becomes 0.** The losing fleet is tombstoned (owner −1), keeping its pre-battle ships field. All nine losing fleets (PROBE_AFTER and the NB_* cells: Ptolemaic fleet 1 in seven saves, Carthage fleet 0 in C50 and P60) had word 335 or 333 at their tile before the battle and **0** after.
 - **The survivors are re-banded.** Every surviving fleet's word equals owner + band of its ships after the battle, for example:
   - Carthage fleet 0 at 81 ships: 333; at 40 ships: 317.
   - Ptolemaic fleet 1 at 54 ships: 335; at 48 ships: 319.
