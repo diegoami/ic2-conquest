@@ -1,6 +1,6 @@
 # Naval battle: the loser's tile word goes to 0, and the survivors are re-banded
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It answers the piece left open in research `f9d061a`: whether tombstoning a losing fleet (`FUN_0044ad38`) clears its map word. No new play: these are the saves of release `run-exp-naval-battle` (`findings/2026-10-02-naval-battles.md`) read again.
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `0389684` (by ic2-research); this draft is kept for history, the research repo is canonical. It answers the piece left open in research `f9d061a`: whether tombstoning a losing fleet (`FUN_0044ad38`) clears its map word. No new play: these are the saves of release `run-exp-naval-battle` (`findings/2026-10-02-naval-battles.md`) read again.
 
 **Tag:** `[confirmed]` for "the word goes to 0 at the loser's tile" and for the survivors' bands, on sea tiles.
 
