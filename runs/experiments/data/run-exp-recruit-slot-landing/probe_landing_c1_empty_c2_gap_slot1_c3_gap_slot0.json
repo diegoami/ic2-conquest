@@ -1,0 +1,172 @@
+{
+ "c1_empty": {
+  "occupied_pre": [],
+  "steps": [
+   {
+    "order": 1,
+    "popups": [],
+    "driver_error": null,
+    "new_slots": {
+     "0": [
+      0,
+      "hi",
+      3200,
+      85
+     ]
+    },
+    "changed_slots": {},
+    "treasury": [
+     2200,
+     1880
+    ],
+    "mob": [
+     30,
+     32
+    ],
+    "byte_identical": false
+   }
+  ]
+ },
+ "c2_gap_slot1": {
+  "occupied_pre": [
+   0,
+   2,
+   3,
+   4,
+   5
+  ],
+  "steps": [
+   {
+    "order": 1,
+    "popups": [],
+    "driver_error": null,
+    "new_slots": {
+     "1": [
+      0,
+      "hi",
+      3200,
+      85
+     ]
+    },
+    "changed_slots": {},
+    "treasury": [
+     2200,
+     1880
+    ],
+    "mob": [
+     30,
+     32
+    ],
+    "byte_identical": false
+   }
+  ]
+ },
+ "c3_gap_slot0": {
+  "occupied_pre": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38
+  ],
+  "steps": [
+   {
+    "order": 1,
+    "popups": [],
+    "driver_error": null,
+    "new_slots": {
+     "0": [
+      0,
+      "hi",
+      3200,
+      85
+     ]
+    },
+    "changed_slots": {},
+    "treasury": [
+     2200,
+     1880
+    ],
+    "mob": [
+     30,
+     32
+    ],
+    "byte_identical": false
+   },
+   {
+    "order": 2,
+    "popups": [],
+    "driver_error": null,
+    "new_slots": {
+     "39": [
+      0,
+      "hi",
+      3200,
+      85
+     ]
+    },
+    "changed_slots": {},
+    "treasury": [
+     1880,
+     1560
+    ],
+    "mob": [
+     32,
+     34
+    ],
+    "byte_identical": false
+   },
+   {
+    "order": 3,
+    "popups": [
+     "e \u2018You have reached your lint of 40 units aK"
+    ],
+    "driver_error": null,
+    "new_slots": {},
+    "changed_slots": {},
+    "treasury": [
+     1560,
+     1560
+    ],
+    "mob": [
+     34,
+     34
+    ],
+    "byte_identical": true
+   }
+  ]
+ }
+}
