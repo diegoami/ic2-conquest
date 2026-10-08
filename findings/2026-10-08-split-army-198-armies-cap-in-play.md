@@ -1,6 +1,6 @@
 # Split army: the 198-army cap in play (row L11, 198 armies)
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. Companion to `findings/2026-10-05-player-facing-feature-inventory.md` rows L11 and UA04, and to `findings/2026-10-05-refusal-texts-and-conditions.md` R01 (which reads the gate from the code and says "nothing happens, no box").
+**Status:** promoted 2026-10-08 into imperial-conquest-2-research at `11157ca` (by ic2-research); this draft is kept for history, the research repo is canonical. Companion to `findings/2026-10-05-player-facing-feature-inventory.md` rows L11 and UA04, and to `findings/2026-10-05-refusal-texts-and-conditions.md` R01 (which reads the gate from the code and says "nothing happens, no box").
 
 **Tag:** `[confirmed, partial]` for the 198-armies bullet of L11, tested on Split army only (the same helper `FUN_00449f08` also gates Mobilize (R49) and new armies from recruitment; those paths were not run).
 
