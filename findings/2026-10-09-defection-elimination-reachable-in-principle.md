@@ -1,6 +1,6 @@
 # Defection elimination (FUN_0044BED8): reachable in principle through rebirth, not tested; its army loop is settled by code
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. It records why the defection elimination path, the last army-removal path open after `2026-10-09-turn-end-and-ai-army-removals-restore-their-tile.md` (research `e6b4643`), was not run. The player chose to record it without a test (2026-10-09). The reachability chains below were worked out by ic2-research from its reports, at our request.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `0492e81` (by ic2-research); this draft is kept for history, the research repo is canonical. It records why the defection elimination path, the last army-removal path open after `2026-10-09-turn-end-and-ai-army-removals-restore-their-tile.md` (research `e6b4643`), was not run. The player chose to record it without a test (2026-10-09). The reachability chains below were worked out by ic2-research from its reports, at our request.
 
 **Tag:** `[derived]` for the reachability chains (no save shows them). `[confirmed: decompile]` for the army loop (research's report).
 
