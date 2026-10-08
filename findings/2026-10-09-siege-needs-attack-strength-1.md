@@ -17,7 +17,7 @@
 - The armies that besieged were then removed by attrition (units under 600 men are deleted, per research). Their tiles read **5**, the patched covered cell, as in the 99/100/150 cases.
 - The armies that did not besiege kept their moves (8), so the order left no trace: no siege, no move spent, no box.
 
-Evidence: run-exp-siege-army-removal, `u79_*`, `u80_*`, `ar26_*`, `ar27_*` `{PRE,BEFORE,AFTER}.SAV` (release `run-exp-siege-army-removal`; SHA-256 in `runs/experiments/data/run-exp-siege-army-removal/SAVES.sha256`); `probe_siege.v2.py`, `probe_siege.log` (batch 2), `probe_siege_u79_u80_ar26_ar27.json`.
+Evidence: run-exp-siege-army-removal, `u79_*`, `u80_*`, `ar26_*`, `ar27_*` `{PRE,BEFORE,AFTER}.SAV` (release `run-exp-siege-army-removal`; SHA-256 in `runs/experiments/data/run-exp-siege-army-removal/SAVES.sha256`); `probe_siege.v2.py`, `probe_siege.v2.log` (batch 2), `probe_siege_u79_u80_ar26_ar27.json`.
 
 ## Method
 
