@@ -1,6 +1,6 @@
 # Turn-end and AI-side army removals also restore the tile; record compaction keeps markers right
 
-**Status:** a draft from `ic2-conquest`, awaiting promotion. The player asked for it through ic2-research on 2026-10-09: the four paths named in `decompiled-elimination-cleanup.md` and `upkeep-payment-and-desertion.md`, after `2026-10-09-siege-removed-army-restores-its-tile.md` (research `99899ac`).
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `e6b4643` (by ic2-research); this draft is kept for history, the research repo is canonical. The desertion rule is confirmed there (upkeep-payment-and-desertion.md): an unpaid all-mercenary army of n units loses ceil(n/2) per quarter. The player asked for it through ic2-research on 2026-10-09: the four paths named in `decompiled-elimination-cleanup.md` and `upkeep-payment-and-desertion.md`, after `2026-10-09-siege-removed-army-restores-its-tile.md` (research `99899ac`).
 
 **Tag:** `[confirmed]` for each path below. All four could be forced.
 
