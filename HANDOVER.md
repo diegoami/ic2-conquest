@@ -317,3 +317,74 @@ gates `[confirmed, partial]` on this side. Two open test work items: (1) the
 `new_nation` but not in `dismiss_popups`/`answer`). The 20-units-per-army
 gate stays uncacheable.
 
+
+## Handover: 2026-10-09 (ic2-conquest session, Opus 5.5 via Claude Code)
+
+Continues the 2026-10-08 evening section. The 2026-10-08 morning section is still the environment and tool reference. This section is **the state of `main` and the work queue at the end of 2026-10-09**: 92 commits from `3ecc306` to `486f0d2`, all pushed, no open PRs, no branches.
+
+### TL;DR
+
+- **L11 is closed.** All 7 gates are pinned on the research side (the 198-armies cap, the 40-slot cap that reads only slot 39, recruit landing, the Join 20-unit gate, merc vs a full queue, the transfer dialog's 20 units).
+- **The marker and removal series is closed.**
+  - Army and fleet markers: band (owner + 200/216/232, 300/316/332), icons and re-banding orders.
+  - Army removals restore the covered tile on every path (disband, join, battle loss, siege, turn end, AI side, merc desertion, conquest); defection is reachable in code only.
+  - Fleets that are sunk (battle, storm) or removed by conquest write 0.
+  - Conquest removes a fleet's cargo army too.
+- **The colour series is closed under Wine.** Every owner's army, fleet and city icons were drawn and read.
+  - Unit icons are 3 + 3 Rome-coloured templates recoloured from nation-record dwords +0x424/+0x428/+0x42C, set in code by `FUN_00448aa4`.
+  - City, capital and toolbar images are stored per owner.
+  - Numidia's unit fill is grey in code and teal in the art.
+- **The harness is sturdier:**
+  - `_answer_confirm`; tooltips filtered out of `find_windows`; `click_list_row` at real row heights; `hire_mercs` by controls;
+  - `end_turn` answers the post-battle **Offer of peace** (No) and raises **`GameOver`** on the End of Game window.
+- **The natural AI conquest with an army aboard was not found:** 11 idle seeds, 334 end turns. The idle Rome is conquered at end 29-50, and only Carthage, Ptolemaic and Greece ever load fleets.
+
+### Harness changes (`harness/driver.py`, `harness/win_controls.c`; each in `tests/results.md`)
+
+| SHA | Change |
+|---|---|
+| `1362def` | `_popup_gone`, `_answer_confirm`: a closed box lingers 1-2 s in X; never answer it twice (disband_army 0/6 → pass; scuttle_fleet uses it too) |
+| `e1ed7f2` | `find_windows(..., tooltips=False)` skips 1 < h < 24 windows (a tooltip has its button's title); `_scan_bar` passes `tooltips=True` |
+| `5404b62` | `win_controls` prints list-box item height, top index and client origin; `click_list_row(c, r)`; rows are 14, 13 or 10 px, not 12 |
+| `2f557b9` | `hire_mercs` uses the dialog's controls, with an `open_controls()` retry |
+| `2ad4ebb` | `end_turn(peace=False)` answers "Offer of peace" via `answer_battle_peace` (it blocked AI-attack turns until the timeout) |
+| `cee96e0` | `GameOver(DriverError)`: `end_turn` raises it on "End of Game" (seen live in 6 seeds) |
+| `335aeb4` | tests `split_army_197_armies`, `split_army_198_armies_cap`, `hire_mercs`; `split_army` and `transfer_units` assert that row 0 moved |
+
+### Findings this session (all promoted by ic2-research unless noted; research SHA in each draft's Status line)
+
+- **L11 and dialogs:** `2026-10-08-split-army-198-armies-cap-in-play`, `-recruit-40-slots-gate-reads-slot-39`, `-recruit-lands-in-first-free-slot`, `-join-armies-20-unit-gate-counts-last-slot`, `-merc-hire-ignores-queue-r08-guards-slot-20`, `-transfer-dialog-20-units-and-slot-gaps`.
+- **Markers:** `2026-10-08-army-marker-size-band-on-the-map`, `-army-icon-follows-the-size-band`, `-fleet-marker-band-and-icon`, `-split-and-transfer-reband-fleets`.
+- **Removals:**
+  - `2026-10-08-naval-battle-loser-clears-its-tile`, `-sunk-fleet-sets-its-tile-to-plain-sea`, `-removed-army-restores-its-tile`;
+  - `2026-10-09-siege-removed-army-restores-its-tile`, `-siege-needs-attack-strength-1`, `-turn-end-and-ai-army-removals-restore-their-tile`, `-defection-elimination-reachable-in-principle` (no test, the player's choice), `-storm-sunk-fleet-clears-its-tile`, `-elimination-removes-fleet-and-army-aboard`.
+- **Colours:** `2026-10-09-owner-colours-by-band`, `-city-marker-colours`, `-unit-icon-recolour-and-nation-glyphs`.
+- **Awaiting intake:** `2026-10-09-no-natural-ai-conquest-with-army-aboard` (negative result, `486f0d2`).
+
+Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in releases `run-exp-<name>`.
+
+### Open items (for the player to choose; none started)
+
+1. **Desktop palette check (needs the player on Windows):** `runs/experiments/data/run-exp-desktop-palette/STEPS.md`.
+   - Load `colours_PRE.SAV` and `cities_PRE.SAV`, screenshot them, and give the colour depth.
+   - Screenshot the toolbar's nation buttons.
+   - Say what the 2026-09-29 strip was cropped from. Hypothesis: the raw glyph bitmaps, since the white transparent margin explains Gaul and Illyria.
+2. **A natural AI conquest with an army aboard (research request).** It needs a game in which the human survives long enough, for example by playing Rome or by starting a stronger nation, and a loser among Carthage, Ptolemaic or Greece, the only nations that load fleets. Fallback offered by research: an edited pre-state in which only the embark is natural and the AI does the conquest.
+3. **Numidian units grey in battle too** (research `[derived]`): a cheap check whenever a Numidian battle is on screen.
+4. **From before:** the army-transfer handler and the `TArmyToArmy_UnitsTotal` code need the researcher's machine (Ghidra dump). Capstone is enough for small reads: see `runs/experiments/data/run-exp-unit-icon-resources/disasm_note.md`, which shows how to disassemble.
+5. **Paused by the player since 2026-10-05:** battles and bots; the focus is v0.5.0 research.
+
+### Gotchas learned (also in memory `confirm-box-handling.md`)
+
+- **Wine draws tiles 1 px left of `UNIT_PAINT + 32·c`.** Crops taken at that formula are shifted by (−1, 0); compare against stored images at offset (−1, 0).
+- **`pkill -f "<pattern>"` kills its own shell** when the pattern appears in the bash command line (exit 144). Use `pgrep` with a narrower pattern or by PID.
+- **An idle human Rome is conquered within 29-50 end turns** from `run0-start`, so long idle runs need a human who survives.
+- **The background-run cadence that worked:**
+  - `timeout 7200 bash -c 'for s in …; do python3 idle_watch.py $s 240 >> out 2>&1; done'` with `run_in_background`;
+  - a `Monitor` on `tail -F out | grep -E "conquers|STUCK|GAMEOVER|Traceback"`, re-armed every 30 min;
+  - a log commit at each re-arm (rule 6).
+- **The relay to ic2-research works by `SendMessage` to `ic2-research`** (skill `.claude/skills/relay-to-research`). They promote, then reply with the research SHA, and our draft gets a "promoted … at `<sha>`" Status line. Memory `research-intake-relay.md` holds the last relay.
+
+### State of memory
+
+`MEMORY.md` index; `research-intake-relay.md` (last relay `486f0d2`, the negative result, sent); `report-new-findings-on-main.md` (findings baseline); `confirm-box-handling.md` (harness gotchas, including the Offer of peace and `pkill`).
