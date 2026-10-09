@@ -390,3 +390,68 @@ Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in r
 ### State of memory
 
 `MEMORY.md` index; `research-intake-relay.md` (last relay `486f0d2`, promoted `017abed`; pending 0); `report-new-findings-on-main.md` (findings baseline); `confirm-box-handling.md` (harness gotchas, including the Offer of peace and `pkill`).
+
+## Handover: 2026-10-09 evening (ic2-conquest session, Opus 5.5 via Claude Code), continuing the session above
+
+### TL;DR
+
+`main` = `origin/main`, nothing open. **Ten findings were drafted and all promoted by ic2-research. Pending on the research side: 0.** The large one is the **v0.5.0 gap analysis** (research `1935df5`, review fixes `4ff65e8`). It is in the research repo as `docs/reports/2026-10-09-remake-v050-gap-analysis.md` and ready for the main session's `/process-evidence`. No background job is running.
+
+### What was done (draft → research promotion)
+
+| Finding | What it says | Draft | Research |
+|---|---|---|---|
+| `2026-10-09-battle-map-units-use-the-nation-recolour` | The battle sprites use the unit-map recolour (`FUN_0044a6c8` from 0x436fb4); 42/42 cells exact | `0faa66d` | `ef19e2c` |
+| `2026-10-09-numidian-battle-drawn-in-wine` | Rome v Numidia (L1 owner edit): Numidian sprites lime/black/grey, 14/14 cells exact | `b1a67d3` | `ca08a33` |
+| `2026-10-09-cellular-automata-rule-h04` | H04: a random 4-state totalistic 1D CA, 300 × 400 | `cba921e` | `8c46579` |
+| `2026-10-09-cellular-automata-savebmp-format` | SaveBMP: 24-bit BMP; nothing before the first N; run ends carry over; the seed build makes N repeatable | `a5c0ba2` | `1b559b1` |
+| `2026-10-09-ai-intercept-and-fleet-hunt-in-play` | AI checks 3+4 through an inert decision hook (`patches/ai_hook.py`): 457/457 decisions as decompiled; the hunt score adds the distance back; ferry calls; 4 corrections to the strategic-AI report | `4ede45f` | `b538a0d` |
+| `2026-10-09-remake-v050-gap-analysis` | The original vs remake v0.5.0: **171 items, 85 match / 75 differ / 11 missing**; 2 break play (the AI siege stall), 2 block a normal game | `d4f9d76` + `e823910` | `1935df5`, `4ff65e8` |
+| `2026-10-09-peace-radio-ends-trade-and-alliance` | Gap check 1: Peace ends a trade (−8) or an alliance (−24) at OK; Cancel discards | `e091835` | `75a30cd` |
+| `2026-10-09-fleet-build-city-nearest-capital` | Gap check: Build fleet uses the own coastal city nearest the capital, not already building | `d13eaca` | `c36b255` |
+
+### The v0.5.0 gap analysis, for whoever continues it
+
+- **The remake:** a read-only clone at `/home/diego/projects/ic2-remake-v050` (tag v0.5.0, `37f3062`, push URL set to DISABLED). **Never use `/home/diego/projects/imperial_conquest_2`:** it is another session's working copy.
+- **.NET 10 SDK:** installed user-only in `~/.dotnet`.
+- **The CLI:** run it only through `runs/experiments/data/run-exp-gap-v050/remake_cli.sh <tag> <seat> <seed> <script> [scenario]`. Transcripts go to `cli/`, saves to `artifacts/` and then release `run-exp-gap-v050`; run `hash_saves.sh` after.
+- **The rows:** g1/g2/g3 were drafted by Sonnet subagents, the AI rows here.
+  - `rows_*.md` each end with "Original-side checks needed": g1 10, g2 8, g3 6.
+  - **Done since:** the Peace radio (g1 1) and the fleet build city (g1 4, g2 8).
+  - **Still open:**
+    - g1: Balance-sheet totals and the Debt-limit rounding; exact trade refusal texts; Open/Save file names; quit prompt; start relations across seeds; the Recruit "All cities" list; the Mobilize refusal text; the news header format.
+    - g2: the Supply dialog's providers; Transfer ships with a carried army; selecting a 0-move army; an unreachable move target; Change units edge cases; the 100k / full-fleet transfer clamps; a storm with an army aboard.
+    - g3: staged rebellion, rebirth, desertion, famine and deposition in the original; a quarter-boundary pair; the order of treaty and destroy news lines; rough sea; offer frequency.
+- **The AI stall:**
+  - Remake: every nation has a null personality, so the siege gate needs 1550 ‰; 0 of 1,882 pairs reach it.
+  - Original: attacks at about 909 ‰.
+  - Probe: `siege_probe/` (a C# probe against the engine DLL, built outside the repo).
+- **Assembling:** `assemble.py` writes `combined_table.v3.md` and `combined_counts.v3.json`. g2's S05/S05a/S06 cross-checks are counted once.
+
+### Harness changes
+
+- `Game.build_fleet` reads and dismisses the N02 notices ("A fleet of N ships will be ready in W weeks at <city>.") before the dialog, waiting up to 20 s.
+- `patches/ai_hook.py` (v4, 'AIH4', 96-byte records) with `tests/test_ai_hook.py` (`python3 -m tests.test_ai_hook`, unicorn).
+
+### Open items
+
+1. **The gap analysis's remaining original-side checks** (the list above). The player picks the order; the Supply providers and the transfer clamps were offered next.
+2. **The desktop palette check (needs the player on Windows):** `run-exp-desktop-palette/STEPS.md` now also asks for a `ca*.BMP` from the Cellular Automata easter egg, with the colour depth.
+3. **Optional:**
+   - the intercept's threat-aboard branch (never seen in play);
+   - a natural Numidian battle;
+   - the CA in the original (clock) exe.
+4. **Still paused by the player:** battles and bots.
+
+### Gotchas learned
+
+- **Rule-6 slips by subagents:** saves were deleted and regenerated, and two scripts wrote the same file name, which left stale hashes. Brief subagents explicitly that a save name must be unique per script; re-check `SAVES.sha256` against the release before relaying.
+- **The original's AI never fortifies,** and the remake's AI almost never besieges. Idle-Rome samples: the original's Rome is conquered at End turn 28-49 (research `017abed`); the original's driver answers No to every post-battle peace offer.
+- **A pending N02 notice makes `build_fleet` time out** if not handled (fixed). The seventh consecutive order opened nothing within 20 s; unexplained.
+- **`pkill -f` matches its own shell:** never kill by pattern.
+
+### State of memory
+
+- `research-intake-relay.md`: last relay `d13eaca`, promoted `c36b255`, pending 0.
+- `report-new-findings-on-main.md`: the baseline includes all of today's findings.
+- `remake-cli-setup.md`: new, how to run the remake.
