@@ -26,10 +26,15 @@ def norm_cls(c):
     for k in ("missing", "differs", "matches"):
         if k in c: return k
     return c[:20]
+# research 1935df5: g2's S05, S05a and S06 are cross-checks of g1's rows of the same Id; they stay in the table, marked, and are counted once (as g1's)
+g1_ids = {c[0] for g, c in rows if g == "g1"}
+rows = [((g + " (cross-check)") if g == "g2" and c[0] in g1_ids else g, c) for g, c in rows]
+counted = [(g, c) for g, c in rows if not g.endswith("(cross-check)")]
 for g, _ in GROUPS:
-    R = [c for gg, c in rows if gg == g]
+    R = [c for gg, c in counted if gg == g]
     counts[g] = {"rows": len(R), "class": dict(Counter(norm_cls(c[4]) for c in R)), "severity": dict(Counter(norm_sev(c[5]) for c in R))}
-counts["total"] = {"rows": len(rows), "class": dict(Counter(norm_cls(c[4]) for _, c in rows)), "severity": dict(Counter(norm_sev(c[5]) for _, c in rows))}
+counts["total"] = {"rows": len(counted), "class": dict(Counter(norm_cls(c[4]) for _, c in counted)), "severity": dict(Counter(norm_sev(c[5]) for _, c in counted)),
+                   "cross_check_rows_not_counted": [c[0] for g, c in rows if g.endswith("(cross-check)")]}
 out = ["| Group | Id | Area | Original (evidence) | Remake v0.5.0 (evidence) | Class | Severity | Known | Notes |", "|---|---|---|---|---|---|---|---|---|"]
 out += ["| " + g + " | " + " | ".join(c) + " |" for g, c in rows]
 def new(name):
