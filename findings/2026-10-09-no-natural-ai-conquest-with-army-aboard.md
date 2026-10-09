@@ -1,4 +1,4 @@
-# No natural AI conquest of a nation with a loaded fleet in 11 idle seeds (325 end turns): only Carthage, Ptolemaic and Greece load fleets, and none of them falls; an idle Rome is conquered within 28-44 turns
+# No natural AI conquest of a nation with a loaded fleet in 11 idle seeds (334 end turns): only Carthage, Ptolemaic and Greece load fleets, and none of them falls; an idle Rome is conquered within 29-50 end turns
 
 **Status:** draft finding from `ic2-conquest`, awaiting promotion. Wine-only. A negative result for ic2-research's request (for the player), "natural AI conquest of a nation whose launched fleet carries an army", the open "natural pre-state" item of research `c288059`. The edited-pre-state result stands (`2026-10-09-elimination-removes-fleet-and-army-aboard.md`).
 
@@ -10,8 +10,8 @@
   - the only AI conquest in them is "Seleucid conquers Galatia." (Galatia owned no fleet), already part of the shared history of most fixtures;
   - the only launched fleets with an army aboard are Carthage's early ones and the experiments' own edits.
 - **Seeded idle runs:**
-  - From `saves/run0-start-AUTO0720-seed12345.SAV` (Rome human, only ending turns), seeds 1-3 and 10-17: 11 seeds, 325 end turns, 0721 to 0769.
-  - **Conquests seen in the news:** "Seleucid conquers Galatia." in 7 seeds, at 0731-0735 (Galatia had no army and no fleet in the save before), and, at the end of 8 seeds, **Rome itself** conquered (by Gaul ×4, Carthage ×2, Illyria ×2) after 28 to 44 end turns. Rome never had a loaded fleet.
+  - From `saves/run0-start-AUTO0720-seed12345.SAV` (Rome human, only ending turns), seeds 1-3 and 10-17: 11 seeds, 334 completed end turns, 0721 to 0769.
+  - **Conquests seen in the news:** "Seleucid conquers Galatia." in 7 seeds, at 0731-0735 (Galatia had no army and no fleet in the save before), and, at the end of 8 seeds, **Rome itself** conquered (by Gaul ×4, Carthage ×2, Illyria ×2) at end turn 29 to 50. Rome never had a loaded fleet.
   - **Launched fleets with an army aboard:** only **Carthage** (all 11 seeds), **Ptolemaic** (3 seeds, 0745-0759) and **Greece** (1 seed, 0759), each carrying its own army. None of the three lost a city count near conquest in these runs.
   - **No case of an army of another nation aboard** a fleet.
 - **For a natural case** one would need a nation that both launches a loaded fleet and is conquered: Carthage, Ptolemaic or Greece, or another nation late in the game. An idle human Rome ends the game too early for that. A longer game would need the human to survive, by playing it or by a stronger starting nation.
