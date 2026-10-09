@@ -1,6 +1,6 @@
 # Cellular Automata SaveBMP (H04 item 2): a 24-bit bottom-up BMP of 300 × 400 named `ca<rule>.BMP` in the game folder. Nothing is written before the first N, and run ends keep the previous pattern's pixels. The seed build makes N repeatable
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It settles the last open part of H04 item 2 (research `8c46579`, "Not established" of `2026-10-09-cellular-automata-rule-h04.md`), at ic2-research's request for the player. It also corrects two points of that draft (below).
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `1b559b1` (by ic2-research, from `a5c0ba2` + `8bd12dc`); this draft is kept for history, the research repo is canonical. Research notes that the `20261009-134302` pair is a same-rule (trivial) carry-over check; the `20261009-134435` pair is the real test. It settles the last open part of H04 item 2 (research `8c46579`, "Not established" of `2026-10-09-cellular-automata-rule-h04.md`), at ic2-research's request for the player. It also corrects two points of that draft (below).
 
 **Tags:**
 - `[confirmed]` (Wine): read from the saved files, game memory and a Wine file trace.
