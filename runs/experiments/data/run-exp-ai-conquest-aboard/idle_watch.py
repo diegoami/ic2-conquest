@@ -38,7 +38,15 @@ try:
     seen_news = {n for n in s0["news"] if "conquers" in n}
     for i in range(max_ends):
         t0 = time.time()
-        name, texts = g.end_turn(timeout=400)
+        try:
+            name, texts = g.end_turn(timeout=400)
+        except Exception as e:          # record what blocks the turn, then stop this seed
+            wins = g.find_windows(".", tooltips=True)
+            g.shot(ART / f"STUCK_seed{seed}_{i + 1:03d}.png")
+            with log.open("a") as fh:
+                fh.write(json.dumps({"seed": seed, "end": i + 1, "error": repr(e), "windows": wins}, default=str) + "\n")
+            print("STUCK", seed, i + 1, repr(e), wins, flush=True)
+            raise
         p = G / name
         s, loaded, cities = scan(p)
         conq = [n for n in s["news"] if "conquers" in n and n not in seen_news]
