@@ -168,18 +168,16 @@ def transfer_ships_case(g, i, ships):
     pre = shot(g, "dialog_before_ok", window=str(w[0][0]))
     boxes_before_ok = g.dismiss_popups()
     clicks = 0
-    for _ in range(3):
-        g.click_control(g.control(cs, text="OK"), pause=1.5); clicks += 1
+    for _ in range(3):       # v2 (after the first batch): wait up to 4 s for the dialog to go; never press Cancel after an OK
+        g.click_control(g.control(cs, text="OK"), pause=1.0); clicks += 1
+        t0 = time.time()
+        while time.time() - t0 < 4 and g.find_windows("^Fleet to fleet transfer$"): time.sleep(0.3)
         if not g.find_windows("^Fleet to fleet transfer$"): break
-        if g.popups(): break
     seen = [(x[1], x[4], x[5]) for x in g.find_windows(".")]
     texts = g.dismiss_popups()
     still = bool(g.find_windows("^Fleet to fleet transfer$"))
     if still:
         log("dialog_still_open_after_ok", shot=shot(g, "still_open"))
-        for _ in range(3):
-            g.click_control(g.control(cs, text="Cancel"), pause=1.5)
-            if not g.find_windows("^Fleet to fleet transfer$"): break
     after = rome_fleets(g)
     log("transfer_ships", fleet=i, ships_requested=ships, controls_before_ok=labels, dialog_shot=pre, boxes_before_ok=boxes_before_ok,
         ok_clicks=clicks, windows_after_ok=seen, popups=texts, still_open_after_ok=still, fleets_after=after,
@@ -258,7 +256,7 @@ try:
         texts = g.embark(0, 2); log("embark", popups=texts, fleets=rome_fleets(g), army0=army(g, 0))
         if g.fleet_state(2)["army"] != 0: raise DriverError("army 0 not aboard fleet 2")
         {"Ta1": lambda: transfer_ships_case(g, 2, 5), "Ta2": lambda: transfer_ships_case(g, 2, 10),
-         "Ta3": lambda: transfer_ships_case(g, 5, 5)}[CASE]()
+         "Ta3": lambda: transfer_ships_case(g, 5, 5), "Ta4": lambda: transfer_ships_case(g, 2, 30)}[CASE]()   # Ta4: every ship of the carrying fleet
     elif CASE == "Tb1":     # combined over 100: fleet 2 staged 95, fleet 5 staged 10; 8 ships from 5 to 2 (103)
         g.load(staged(SPLIT, [], [(2, "ships", 95), (5, "ships", 10)]), seed=12345); log("loaded", seed_line=g.seed_line)
         transfer_ships_case(g, 5, 8)

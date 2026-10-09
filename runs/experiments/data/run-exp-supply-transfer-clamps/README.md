@@ -11,3 +11,5 @@ The original-side checks 1, 2 and 6 of the v0.5.0 gap analysis (`runs/experiment
   - `supply_transfer-P1-20261009-192610.jsonl` is a failed first start: the main window took more than 40 s to appear. Nothing was played.
   - `supply_transfer-P1-20261009-192723.jsonl` has no positive control. The control (the same army next to Arretium) was added before the later runs.
 - **Binaries:** saves and screenshots in release `run-exp-supply-transfer-clamps` (gitignored `artifacts/run-exp-supply-transfer-clamps/` while running); SHA-256 in `SAVES.sha256`.
+- **Transfer ships OK loop:** Ta1, Ta2 (193720), Ta3, Tb1, Tc1 and Tc2 ran with a first loop that pressed Cancel when the dialog was still on screen after the first OK. In each case OK had already applied (`*_dialog_before_ok.png`, then memory and the after-save). The loop was then changed to wait for the dialog to close and never press Cancel. Ta2 was re-run (194517) and Ta4 run with the new loop; both needed one OK.
+- **Finding:** `findings/2026-10-09-supply-providers-and-transfer-clamps.md`.
