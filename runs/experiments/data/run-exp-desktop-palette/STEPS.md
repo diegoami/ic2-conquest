@@ -26,3 +26,9 @@ Also, if you can:
 ## What to send back
 
 The PNG screenshots (they go to a release, not git) and the colour depth. The bot crops the tiles at the Wine coordinates, re-registered on the desktop window, compares the hashes and colour sets with the Wine tables, and writes the finding. The result is tagged `[confirmed]` for the desktop only where it was seen there.
+
+## Also, if you can: the Cellular Automata BMP (H04)
+
+Under Wine the easter egg's Save writes a 24-bit BMP (`findings/2026-10-09-cellular-automata-savebmp-format.md`); its depth may follow the display.
+1. In the original game: Help > About, click **CAncell** (the second button), then **N** (a pattern appears), then the **save icon**.
+2. A file `ca<10 digits>.BMP` appears in the game folder (the current directory). Send it back with the display's colour depth.
