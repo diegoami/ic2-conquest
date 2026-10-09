@@ -359,7 +359,9 @@ Continues the 2026-10-08 evening section. The 2026-10-08 morning section is stil
   - `2026-10-08-naval-battle-loser-clears-its-tile`, `-sunk-fleet-sets-its-tile-to-plain-sea`, `-removed-army-restores-its-tile`;
   - `2026-10-09-siege-removed-army-restores-its-tile`, `-siege-needs-attack-strength-1`, `-turn-end-and-ai-army-removals-restore-their-tile`, `-defection-elimination-reachable-in-principle` (no test, the player's choice), `-storm-sunk-fleet-clears-its-tile`, `-elimination-removes-fleet-and-army-aboard`.
 - **Colours:** `2026-10-09-owner-colours-by-band`, `-city-marker-colours`, `-unit-icon-recolour-and-nation-glyphs`.
-- **Awaiting intake:** `2026-10-09-no-natural-ai-conquest-with-army-aboard` (negative result, `486f0d2`).
+- **Negative result:** `2026-10-09-no-natural-ai-conquest-with-army-aboard` (`486f0d2`, promoted at research `017abed` as a sample). Galatia's conquest appears in 6 seeds, not 7. Research notes that the driver's always-No peace answer may bias how long the idle Rome survives.
+
+**Pending on the research side: 0** (ic2-research, end of session). The only open item with the player is the desktop palette check.
 
 Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in releases `run-exp-<name>`.
 
@@ -387,4 +389,4 @@ Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in r
 
 ### State of memory
 
-`MEMORY.md` index; `research-intake-relay.md` (last relay `486f0d2`, the negative result, sent); `report-new-findings-on-main.md` (findings baseline); `confirm-box-handling.md` (harness gotchas, including the Offer of peace and `pkill`).
+`MEMORY.md` index; `research-intake-relay.md` (last relay `486f0d2`, promoted `017abed`; pending 0); `report-new-findings-on-main.md` (findings baseline); `confirm-box-handling.md` (harness gotchas, including the Offer of peace and `pkill`).
