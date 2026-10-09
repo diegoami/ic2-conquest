@@ -395,7 +395,7 @@ Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in r
 
 ### TL;DR
 
-`main` = `origin/main`, nothing open. **Ten findings were drafted and all promoted by ic2-research. Pending on the research side: 0.** The large one is the **v0.5.0 gap analysis** (research `1935df5`, review fixes `4ff65e8`). It is in the research repo as `docs/reports/2026-10-09-remake-v050-gap-analysis.md` and ready for the main session's `/process-evidence`. No background job is running.
+`main` = `origin/main`, nothing open. **Eight findings were drafted and all promoted by ic2-research. Pending on the research side: 0.** The large one is the **v0.5.0 gap analysis** (research `1935df5`, review fixes `4ff65e8`). It is in the research repo as `docs/reports/2026-10-09-remake-v050-gap-analysis.md` and ready for the main session's `/process-evidence`. No background job is running.
 
 ### What was done (draft → research promotion)
 
