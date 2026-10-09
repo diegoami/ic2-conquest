@@ -30,6 +30,19 @@
 - **`FUN_00448aa4`** (new-game nation setup, edi = 0x474670; called from 0x45a93a and 0x45aa32) writes all 48 dwords as immediates (0x448c9b to 0x448e63) `[confirmed: decompile]`. Numidia's are at 0x448d2f to 0x448d41: `[edi+0x1b08] = 0xff00` (lime), `[edi+0x1b0c] = 0` (black), **`[edi+0x1b10] = 0x808080` (grey)**. They are also in the save: `saves/run0-start-AUTO0720-seed12345.SAV`, Numidia +0x424/+0x428/+0x42C = `00ff00`, `000000`, `808080`.
 - **So Numidia's unit fill is grey because the code's colour table says grey, while its city artwork is teal.** The other 15 owners' three dwords equal their city colours exactly (`compare_roles.json`). It is a data inconsistency inside the original, not a renderer or palette effect, and not something Wine introduces `[derived]`.
 
+### The stored images against the screen (capitals and all city words; armies and fleets through the recolour)
+
+- **The store:** `CapitalsList` (TImageList on `TUnitMap`, field 0x1D4), 16 images of 32×32 in a 128×160 8-bit BMP with the Windows 256-colour system palette (0 black, 1 maroon, 3 olive, 4 navy, 5 purple, 6 teal, 7 silver, 248 grey, 249 red, 250 lime, 252 blue, 254 aqua, 255 white), plus a mask BMP. Image index = owner, and word 84-99 = owner + 0x54. `Cities1List` to `Cities4List` (fields 0x1C4 to 0x1D0) are the same for words 20-83 `[confirmed: resources]` `[confirmed: decompile]`.
+- **Every one of the 80 stored city images equals the Wine drawing inside the 2 px border** (`city_store_compare.json`): 80 of 80 with 0 mismatching pixels, and 74 of 80 on the whole 32×32 tile; the other 6 differ only in border dots. Nothing is recoloured when a city is drawn `[confirmed]`.
+- **Pixel offset correction:** the drawn tile sits **1 px left** of the crops of `probe_colours.py` / `probe_cities.py` (`UNIT_PAINT + 32·c`): offset (−1, 0) for all 80 cities and all 96 unit icons. The hashes and colour sets of those findings compare crops among themselves, so they still hold. Anyone re-cropping against the stored images must shift by 1 px.
+- **Capital pixel counts for the five owners asked about** (full 32×32 stored image: background, outline, fill, black border):
+  - Macedonia: white 522, blue 334, grey 108, black 60;
+  - Numidia: lime 522, black 394 (outline and border are the same colour), teal 108;
+  - Gaul: maroon 522, cyan 334, grey 108, black 60;
+  - Illyria: navy 522, olive 334, cyan 108, black 60;
+  - Media: red 522, silver 334, purple 108, black 60.
+- **Armies and fleets:** applying `FUN_0044a6c8`'s mapping to the 3 + 3 stored templates, with each nation's three dwords from `colours_PRE.SAV`, reproduces **all 96 drawn unit icons with 0 mismatching pixels** inside the border (`recolour_check.json`). The 48 army and 48 fleet icons are those 6 templates recoloured, nothing else `[confirmed]`.
+
 ### The toolbar's 16 nation buttons
 
 - **Each is a `TSpeedButton`** `sb_<Nation>` on the main form: `OnClick = ChangeNation`, `NumGlyphs = 2`. `Glyph.Data` is a 40×20, **4-bit BMP with its own 16-colour palette**: a 20×20 up glyph, then a 20×20 second glyph (silver or white 348 px, black 52 px) `[confirmed: resources]`.
@@ -70,7 +83,7 @@
 
 - **Data:** `runs/experiments/data/run-exp-unit-icon-resources/`:
   - `extract_imagelists.py`, `decode_imagelists.py`, `imagelists.json`, `imagelists_decoded.json` (counts, sizes, colours per image);
-  - `extract_glyphs.py`, `glyphs.json`, `match_toolbar.py`, `toolbar_match.json`, `compare_roles.py`, `compare_roles.json`;
+  - `extract_glyphs.py`, `glyphs.json`, `match_toolbar.py`, `toolbar_match.json`, `compare_roles.py`, `compare_roles.json`, `compare_city_store.py`, `city_store_compare.json`, `check_recolour.py`, `recolour_check.json`;
   - `FUN_00448aa4.asm`, `FUN_0044a6c8.asm`, `unitmap_paint_445b.asm`, `disasm_note.md`;
   - `SAVES.sha256`.
 - **Exe:** `Imperial Conquest 2.exe` (SHA-256 in `imagelists.json`).
