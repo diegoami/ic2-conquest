@@ -1,6 +1,6 @@
 # The original's Peace radio ends a trade (−8) or an alliance (−24) on both sides at OK, with no box and no news; Cancel discards. The remake's engine does the same for a trade, but its app offers Make Peace only at war
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It does original-side check 1 of the v0.5.0 gap analysis (research `1935df5` / `4ff65e8`, row NEW-g1-2 and S02), at the player's request. NEW-g1-2's severity ("blocks a normal game") was conditional on this check, and the condition holds.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `06f5a5e` (by ic2-research, from `e091835`); this draft is kept for history, the research repo is canonical. Research notes it is the first in-play confirmation of `FUN_00449B40`'s cooldown table (trade → −8, alliance → −24, symmetric). It does original-side check 1 of the v0.5.0 gap analysis (research `1935df5` / `4ff65e8`, row NEW-g1-2 and S02), at the player's request. NEW-g1-2's severity ("blocks a normal game") was conditional on this check, and the condition holds.
 
 **Tags:**
 - `[confirmed]` (Wine): read from game memory and the saves.
