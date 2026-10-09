@@ -1,6 +1,6 @@
 # A Rome v Numidia battle drawn in Wine: Numidia's battle units are lime, black and grey, exactly the recoloured templates
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It closes the "Not established" item "a Numidian battle drawn in Wine" of `2026-10-09-battle-map-units-use-the-nation-recolour.md` (research `ef19e2c`), at the player's request. Numidia's battle sprites move from `[derived]` to `[confirmed]` (Wine).
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `ca08a33` (by ic2-research, from `b1a67d3`); this draft is kept for history, the research repo is canonical. It closes the "Not established" item "a Numidian battle drawn in Wine" of `2026-10-09-battle-map-units-use-the-nation-recolour.md` (research `ef19e2c`), at the player's request. Numidia's battle sprites move from `[derived]` to `[confirmed]` (Wine).
 
 **Tags:**
 - `[confirmed]` (Wine): read from the screenshot, the saves and game memory.
