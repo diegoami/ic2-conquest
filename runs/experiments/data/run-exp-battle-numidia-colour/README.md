@@ -12,3 +12,12 @@ against existing Wine screenshots; no new game run, no new saves or screenshots.
   `../run-exp-battle-sweep/SAVES.sha256`). `b2_placement_window.png` and `b2_after_end_turn_1_window.png` are byte-identical (same hash), so
   there are 2 distinct images for 3 saves.
 - Exe SHA-256 `9d753d5de78801f2…` (full hash in `../run-exp-unit-icon-resources/imagelists.json`).
+
+## A Rome v Numidia battle drawn in Wine (2026-10-09, the player's request)
+
+- `draw_numidia_battle.py` → `draw-20261009-141127.jsonl`: an L1 edit of `FLD-RG_0743_rome_army0_at_86_28.SAV` (`stage.edit`: army 10 owner → 5,
+  relation Rome-Numidia → 3, the Rome-Gaul value; positions and units untouched), lab build s1. Rome's army 0 attacks; at the placement phase
+  and after one End turn: a window screenshot, File > Save As and the live battle block. The process is then killed (the battle is not played out).
+- `check_battle_recolour.py` (now takes other pairs, and checks the empty cells against BatMapList image 15) → `numidia_draw_check.json`.
+- Binaries: release `run-exp-battle-numidia-colour` (`20261009-141127_*`), SHA-256 appended to `SAVES.sha256`. The two window screenshots
+  are byte-identical (the screen does not change across the first End turn), so this is one distinct image.

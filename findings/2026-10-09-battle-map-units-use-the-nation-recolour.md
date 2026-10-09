@@ -30,7 +30,7 @@
 
 ## Not established
 
-- **A Numidian battle drawn in Wine:** none was run. It would need a battle with a Numidian army, for example an L1 owner edit of the defender army, or a game played as Numidia.
+- **A Numidian battle drawn in Wine:** none was run. **Follow-up:** drawn in `2026-10-09-numidian-battle-drawn-in-wine.md` (L1 owner edit; 14 of 14 cells and 154 ground cells exact). It would need a battle with a Numidian army, for example an L1 owner edit of the defender army, or a game played as Numidia.
 - **The `+0x42C` word read at 0x456969** (`xrefs.txt`), open at promotion: it is `[ebx + i*2 + 0x42C]` with `i` from 0, inside a loop that first copies `[ebx + i*2 + 0x1D2]` to `[ebx + i*2 + 0x42E]` for i = −1 to 0x12C, then sums the three neighbouring words `+0x42C/+0x42E/+0x430` and indexes a table at `[ebx + sum*2 + 0x688]` (`word_array_456940.asm`). The base is an object holding a 300-word array (the loop above runs to 0x12C), not the nation table, and the access is a word, not a dword: not a read of the recolour colours `[derived]`.
 - **Images 15 and 16 of `BatMapList`** (lime, green, olive, white and black; white and black): not recoloured and not identified here.
 - **The desktop original:** Wine only, as for the unit map.
