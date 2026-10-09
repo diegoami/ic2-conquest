@@ -9,6 +9,7 @@ Hooked call sites (each `E8 rel32` is re-pointed to its own stub; the stub jumps
   intercept_army     0x44F2F9  FUN_0044efc8 -> FUN_0044dba8(army, threat army xy)    (threat at war, on land)
   fleet_hunt         0x44F69A  FUN_0044f608 -> FUN_0044e1fc(fleet, target fleet xy)  (hunt score > 100)
   fleet_port         0x44F6BE  FUN_0044f608 -> FUN_0044e1fc(fleet, port city xy)     (hunt score <= 100, a port was found)
+  fleet_stored_dest  0x44F667  FUN_0044f608 -> FUN_0044e1fc(fleet, stored destination) (the fleet's +4 destination is set: no hunt, no port)  [v4]
 
 A stub: pushfd; pushad; if count < CAP: write a 72-byte record at BUF + 72*count = (site id, EAX, EDX, current nation [0x4A0320] sign-extended,
 the caller's top 24 stack bytes, then at +40 the unit's own record at decision time (army table 0x47C1EC + 0x290*i: its first 16 bytes; fleet
@@ -34,11 +35,11 @@ CAVES = 0x564600
 CTL, BUF = 0x565000, 0x565100
 RAW_SIZE = 0x1200                       # caves + control block in the file; the buffer is zero-fill (virtual size only)
 REC, CAP = 96, 65536
-MAGIC = 0x33484941                      # 'AIH3'
+MAGIC = 0x34484941                      # 'AIH4' (v4 = v3 + the fleet_stored_dest site)
 ARMIES, ARMY_LEN, FLEETS, FLEET_LEN = 0x47C1EC, 0x290, 0x49C26C, 0x1A
 NATION = 0x4A0320
 SITES = (("intercept_capital", 1, 0x44F2E7, 0x44DBA8), ("intercept_army", 2, 0x44F2F9, 0x44DBA8),
-         ("fleet_hunt", 3, 0x44F69A, 0x44E1FC), ("fleet_port", 4, 0x44F6BE, 0x44E1FC))
+         ("fleet_hunt", 3, 0x44F69A, 0x44E1FC), ("fleet_port", 4, 0x44F6BE, 0x44E1FC), ("fleet_stored_dest", 5, 0x44F667, 0x44E1FC))
 SRC = "Imperial Conquest 2 fast rollingsave seed.exe"
 DST = "Imperial Conquest 2 fast rollingsave seed aihook.exe"
 

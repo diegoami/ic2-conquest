@@ -39,9 +39,13 @@ for l in run:
         if r["site"].startswith("intercept") and u:
             oxy = (ot["x"], ot["y"]); oown = pre["nations"][ot["owner"]]["name"] if 0 <= ot["owner"] < 16 else ot["owner"]
             rel = nat["relations"].get(oown)
+            declared = any(x in (f"{nat['name']} declares war on {oown}.", f"{oown} declares war on {nat['name']}.") for x in post["news"])
+            if rel != 3 and declared and post["nations"][n]["relations"].get(oown) == 3:
+                rel = 3                                         # war declared this turn (the diplomacy phase runs before the army phase)
             dcap = cheb(uxy, capxy)
             ex = lambda s, d: s > 100 and u["moves"] > d and dcap > 3 * u["moves"]
             c.update(capital=[cap["name"], capxy], threat_at_decision=oxy, threat_owner=oown, threat_aboard=ot["cell"] == -1, relation=rel,
+                     war_declared_this_turn=declared,
                      capital_to_threat=cheb(capxy, oxy), threat_radius_ok=cheb(capxy, oxy) < (20 if rel == 3 else 10),
                      dist_capital_ok=r["dist_capital"] == dcap, dist_threat_ok=r["dist_threat"] == cheb(uxy, oxy),
                      moves_positive=u["moves"] > 0, not_exempt=not (ex(r["army_target_score"], r["army_target_dist"]) or ex(r["city_target_score"], r["city_target_dist"])),

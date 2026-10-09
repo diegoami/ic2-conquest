@@ -4,7 +4,7 @@ back (0x44f5f4), so the returned score is my*100/their (not doubled) or 2*(my*10
 assault strength / 50, ignored here: only fleets with no army are compared) times a jitter factor 1 + Random(4)/10 in {1.0, 1.1, 1.2, 1.3} on each side?
 Ships and condition: from a v3 record (decision time) when present; otherwise from the save before the turn, trying also condition 100
 (a repair earlier in the same fleet's step).
-Integer arithmetic as in Delphi is approximated; a fit is reported when any jitter pair and condition choice gives the logged score within +-1.
+Integer arithmetic as in Delphi is approximated; a fit is reported when a jitter pair (and, without a v3 record, a condition choice) gives the logged score exactly.
 python3 hunt_bounds.py <variant> <seed>   -> printed and written to hunt_bounds_<variant>_s<seed>.json (new file, versioned)"""
 import json, sys
 from pathlib import Path
@@ -28,10 +28,12 @@ for l in L[st:]:
         d = cheb((u["x"], u["y"]), (o["x"], o["y"]))
         fits = []
         A = {a["id"]: a for a in pre["armies"]}
-        def armyval(f):                                       # FUN_0044a930 / 50: (sum troops, x3 for archers) / 80 * morale, then / 50
-            if f["army"] < 0 or f["army"] not in A: return 0
+        A1 = {a["id"]: a for a in sav.load(str(ART / l["copy"]))["armies"]}
+        def armyvals(f):                                      # FUN_0044a930 / 50: (sum troops, x3 for archers) div 80 * morale, then div 50;
+            if f["army"] < 0 or f["army"] not in A: return [(0, None)]   # morale from the save before AND after the turn (it can drop in the turn)
             a = A[f["army"]]; tr = sum(u["troops"] * (3 if u["type"] == "ar" else 1) for u in a["units"])
-            return tr // 80 * a["morale"] // 50
+            ms = {a["morale"]} | ({A1[f["army"]]["morale"]} if f["army"] in A1 else set())
+            return [(tr // 80 * m // 50, m) for m in sorted(ms)]
         v3 = "ships" in u                                     # v3 records carry the decision-time ships and condition
         if v3:
             me = dict(me or {}, ships=u["ships"], condition=u["condition"], army=u["army"])
@@ -39,14 +41,16 @@ for l in L[st:]:
         if me and him:
             for cm in ([me["condition"]] if v3 else sorted({me["condition"], 100})):
                 for ch in ([him["condition"]] if v3 else sorted({him["condition"], 100})):
-                    vm, vh = me["ships"] * cm // 10 + armyval(me), him["ships"] * ch // 10 + armyval(him)
+                  for am, mm in armyvals(me):
+                   for ah, mh in armyvals(him):
+                    vm, vh = me["ships"] * cm // 10 + am, him["ships"] * ch // 10 + ah
                     for jm in range(4):
                         for jh in range(4):
-                            sm, sh = vm + jm * vm // 10, vh + jh * vh // 10
+                            sm, sh = vm + jm * (vm // 10), vh + jh * (vh // 10)        # FUN_0044aa54: v + Random(4) * (v div 10)
                             sc = sm * 100 // sh - d
                             if sh < sm and d < 18: sc = 2 * sc
                             sc += d
-                            if abs(sc - r["hunt_score"]) <= 1: fits.append((cm, ch, jm, jh, sc))
+                            if sc == r["hunt_score"]: fits.append((cm, ch, jm, jh, sc, mm, mh))
         out.append({"end": l["end"], "nation": r["nation"], "fleet": r["unit"], "hunted": r["hunt_fleet"], "score": r["hunt_score"], "dist": d,
                     "me": me and (me["ships"], me["condition"], me["army"]), "him": him and (him["ships"], him["condition"], him["army"]),
                     "fits": fits[:6], "n_fits": len(fits), "decision_time_records": v3})
