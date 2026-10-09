@@ -18,7 +18,7 @@ from unicorn.x86_const import (UC_X86_REG_EAX, UC_X86_REG_EBP, UC_X86_REG_EBX, U
 
 REGS = (UC_X86_REG_EAX, UC_X86_REG_EBX, UC_X86_REG_ECX, UC_X86_REG_EDX, UC_X86_REG_ESI, UC_X86_REG_EDI, UC_X86_REG_EBP)
 ARITH = 0x8D5 | 0x400
-STACK_TOP = 0xA10000
+STACK_TOP = 0xC10000
 
 
 def image():
@@ -30,7 +30,7 @@ def image():
 
 def machine(b, count, nation):
     uc = Uc(UC_ARCH_X86, UC_MODE_32)
-    uc.mem_map(0x400000, 0x880000 - 0x400000)
+    uc.mem_map(0x400000, 0xA00000 - 0x400000)
     uc.mem_map(STACK_TOP - 0x10000, 0x11000)
     uc.mem_write(A.CODE_VA, bytes(b[A.CODE_RAW:A.CODE_RAW + 0x5B400]))
     uc.mem_write(A.PATCH_VA, bytes(b[A.PATCH_RAW:A.PATCH_RAW + A.RAW_SIZE]))
@@ -48,8 +48,13 @@ def test_stub(image, site, count):
         nation = rng.randrange(-1, 16)
         uc = machine(b, count, nation)
         regs = {r: rng.getrandbits(32) for r in REGS}
+        regs[UC_X86_REG_EAX] = (regs[UC_X86_REG_EAX] & 0xFFFF0000) | rng.randrange(0, 200)
+        uc.mem_write(A.ARMIES, rng.randbytes(A.ARMY_LEN * 200)); uc.mem_write(A.FLEETS, rng.randbytes(A.FLEET_LEN * 200))
         esp0 = STACK_TOP - 4 * rng.randrange(16, 0x200)
-        stack = rng.randbytes(0x80)
+        stack = bytearray(rng.randbytes(0x80))
+        o = 0xA if sid in (1, 2) else 2                      # the other unit's index: valid, or negative (no copy)
+        struct.pack_into("<h", stack, o, rng.choice([rng.randrange(0, 200), -1, -10000]))
+        stack = bytes(stack)
         uc.mem_write(esp0, stack)
         flags = 0x202 | (rng.getrandbits(32) & ARITH)
         for r, v in regs.items():
@@ -73,6 +78,16 @@ def test_stub(image, site, count):
         rec = bytes(uc.mem_read(A.BUF + A.REC * count, A.REC))
         assert struct.unpack_from("<IIIi", rec) == (sid, regs[UC_X86_REG_EAX], regs[UC_X86_REG_EDX], nation)
         assert rec[16:40] == stack[:24]
+        table, stride, other_off = (A.ARMIES, A.ARMY_LEN, 0xA) if sid in (1, 2) else (A.FLEETS, A.FLEET_LEN, 2)
+        unit = struct.unpack("<h", struct.pack("<I", regs[UC_X86_REG_EAX])[:2])[0]
+        exp_unit = bytes(uc.mem_read(table + stride * unit, 16)) if 0 <= table + stride * unit < 0xA00000 - 16 else None
+        if exp_unit is not None:
+            assert rec[40:56] == exp_unit
+        other = struct.unpack_from("<h", stack, other_off)[0]
+        if other < 0:
+            assert rec[56:68] == bytes(12)
+        else:
+            assert rec[56:68] == bytes(uc.mem_read(table + stride * other, 12))
 
 
 def main():

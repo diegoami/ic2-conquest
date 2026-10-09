@@ -27,7 +27,7 @@ if variant == "hook":
     magic, cap = struct.unpack("<II", g.mem(A.CTL + 4, 8))
     if magic != A.MAGIC: raise SystemExit("hook magic not found: %#x" % magic)
     n_seen = struct.unpack("<I", g.mem(A.CTL, 4))[0]
-write({"event": "start", "variant": variant, "exe": EXE, "seed": seed, "start": START.name, "start_sha256": sha(START),
+write({"event": "start", "variant": variant, "exe": EXE, "exe_sha256": sha(G / EXE), "hook_magic": A.MAGIC if variant == "hook" else None, "seed": seed, "start": START.name, "start_sha256": sha(START),
        "seed_line": g.seed_line, "hook_records_at_start": n_seen})
 for i in range(1, max_ends + 1):
     t0 = time.time()
