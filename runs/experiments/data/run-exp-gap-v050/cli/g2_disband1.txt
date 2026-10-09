@@ -1,0 +1,64 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:09:26+02:00
+# script:
+#   load ART/g2_embark3_aboard.sav
+#   save ART/g2_disband1_before.sav
+#   disband-army army-0
+#   save ART/g2_disband1_after.sav
+#   news
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_aboard.sav
+Loaded '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_aboard.sav': classical-mediterranean, turn 17 (turn 17). Active seat: Rome (rome).
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disband1_before.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disband1_before.sav'.
+
+> disband-army army-0
+armies.disband-army accepted.
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disband1_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disband1_after.sav'.
+
+> news
+News log:
+  Pisae   (Rome)  falls to Gaul.
+   
+  Week  5      Spring      270BC
+  Greece declares war on Illyria.
+   
+  Week  7      Spring      270BC
+  Helice   (Carthage)  falls to Celtiberia.
+  A fleet belonging to ptolemaic is damaged in a storm.
+   
+  Week  9      Spring      270BC
+  A fleet belonging to ptolemaic is lost at sea.
+   
+  Week  11      Spring      270BC
+   
+  Week  1      Summer      270BC
+   
+  Week  3      Summer      270BC
+   
+  Week  5      Summer      270BC
+   
+  Week  7      Summer      270BC
+  Macedonia declares war on Illyria.
+  A fleet belonging to carthage is lost at sea.
+   
+  Week  9      Summer      270BC
+   
+  Week  11      Summer      270BC
+  rome finishes a new fleet at Antium.
+   
+  Week  1      Autumn      270BC
+   
+  Week  3      Autumn      270BC
+   
+  Week  5      Autumn      270BC
+   
+  Week  7      Autumn      270BC
+   
+  Week  9      Autumn      270BC
+   
+  Week  11      Autumn      270BC
+

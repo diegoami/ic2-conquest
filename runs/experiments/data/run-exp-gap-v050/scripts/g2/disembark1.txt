@@ -1,0 +1,10 @@
+load ART/g2_embark3_sailed.sav
+disembark-army army-100 101 52
+disembark-army army-100 140 140
+disembark-army army-100
+status mine
+save ART/g2_disembark1_after.sav
+move army-100 101 49
+end
+move army-100 101 49
+armies

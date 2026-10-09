@@ -1,0 +1,42 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:07:48+02:00
+# script:
+#   load ART/g2_embark3_aboard.sav
+#   armies
+#   army-transfer army-0 army-100 units=0
+#   army-transfer army-0 army-100 units=0,1
+#   army-transfer army-100 army-0 units=0
+#   armies
+#   save ART/g2_xfer_aboard_after.sav
+#   join-armies army-0 army-100
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_aboard.sav
+Loaded '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_aboard.sav': classical-mediterranean, turn 17 (turn 17). Active seat: Rome (rome).
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (101,45): 12600 troops in 4 units, supply 126t (100%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-100 (Rome) @ (101,46): 11100 troops in 2 units, supply 74t (66%), morale 59, moves 0
+
+> army-transfer army-0 army-100 units=0
+armies.army-transfer accepted.
+
+> army-transfer army-0 army-100 units=0,1
+armies.army-transfer accepted.
+
+> army-transfer army-100 army-0 units=0
+armies.army-transfer accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (101,45): 7100 troops in 2 units, supply 34t (47%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-100 (Rome) @ (101,46): 16600 troops in 4 units, supply 166t (100%), morale 59, moves 0
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_xfer_aboard_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_xfer_aboard_after.sav'.
+
+> join-armies army-0 army-100
+armies.join-armies rejected (armies.army-embarked): An army on a fleet cannot be combined with another.
+

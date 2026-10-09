@@ -1,0 +1,104 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:02:49+02:00
+# script:
+#   load ART/g2_embark3_sailed.sav
+#   disembark-army army-100 101 52
+#   disembark-army army-100 140 140
+#   disembark-army army-100
+#   status mine
+#   save ART/g2_disembark1_after.sav
+#   move army-100 101 49
+#   end
+#   move army-100 101 49
+#   armies
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_sailed.sav
+Loaded '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_sailed.sav': classical-mediterranean, turn 18 (turn 18). Active seat: Rome (rome).
+
+> disembark-army army-100 101 52
+naval.disembark-army rejected (naval.landing-tile-too-far): (101, 52) is not adjacent to fleet 'f1' at (101, 50).
+
+> disembark-army army-100 140 140
+naval.disembark-army rejected (naval.landing-tile-too-far): (140, 140) is not adjacent to fleet 'f1' at (101, 50).
+
+> disembark-army army-100
+naval.disembark-army rejected (naval.landing-tile-required): A human seat must name a landing tile; the automatic branch is AI-only.
+
+> status mine
+Nation: Rome (rome, human): treasury 2379, unity 853, tax 10%
+
+Armies:
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-100 (Rome) @ (101,50): 11100 troops in 2 units, supply 19t (17%), morale 60, moves 10
+
+Fleets:
+  f1 (Rome) @ (101,50): 30 ships, condition 99%, supply 0t, moves 21
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 94, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 80, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 79, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 79, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 68, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 74, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 57, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 82, fortification 38%
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disembark1_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disembark1_after.sav'.
+
+> move army-100 101 49
+army-100 moved from (101,50) to (101,50), spending 0 of 10 moves.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 7 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 11 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 7 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 4 orders issued.
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Winter 270 BC. Active seat: Rome (rome).
+News:
+  Celtiberia destroys army of Carthage.
+  A fleet belonging to rome is damaged in a storm.
+   
+  Week  3      Winter      270BC
+
+> move army-100 101 49
+army-100 moved from (101,50) to (101,50), spending 0 of 9 moves.
+
+> armies
+Armies (Rome (rome)):
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-100 (Rome) @ (101,50): 5514 troops in 2 units, supply 0t (0%), morale 58, moves 9
+

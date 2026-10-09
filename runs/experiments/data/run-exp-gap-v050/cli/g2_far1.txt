@@ -1,0 +1,54 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:05:31+02:00
+# script:
+#   move army-0 98 32
+#   split-army army-0 army-100 0
+#   armies
+#   save ART/g2_far1_a.sav
+#   disband-unit army-0 0
+#   disband-army army-100
+#   disband-army army-0
+#   armies
+#   buy army-0 arretium 10
+#   fleet-transfer f1 f2 1 0 0
+#   save ART/g2_far1_b.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> move army-0 98 32
+army-0 moved from (100,37) to (98,32), spending 5 of 8 moves.
+
+> split-army army-0 army-100 0
+armies.split-army accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (98,32): 18900 troops in 5 units, supply 170t (89%), morale 70, moves 3
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (99,33): 4800 troops in 1 units, supply 0t (0%), morale 59, moves 0
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_far1_a.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_far1_a.sav'.
+
+> disband-unit army-0 0
+armies.disband-unit accepted.
+
+> disband-army army-100
+armies.disband-army rejected (armies.not-near-own-city): Army 'army-100' must be near one of its own nation's cities to disband.
+
+> disband-army army-0
+armies.disband-army rejected (armies.not-near-own-city): Army 'army-0' must be near one of its own nation's cities to disband.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (98,32): 13900 troops in 4 units, supply 170t (122%), morale 70, moves 3
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (99,33): 4800 troops in 1 units, supply 0t (0%), morale 59, moves 0
+
+> buy army-0 arretium 10
+Purchase rejected (supply.city-not-within-range): City 'arretium' is not within one tile of army 'army-0'.
+
+> fleet-transfer f1 f2 1 0 0
+naval.fleet-to-fleet-transfer rejected (naval.unknown-fleet): 'f1' is not a known fleet.
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_far1_b.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_far1_b.sav'.
+

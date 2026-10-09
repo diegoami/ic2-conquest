@@ -1,0 +1,11 @@
+move army-0 98 32
+split-army army-0 army-100 0
+armies
+save ART/g2_far1_a.sav
+disband-unit army-0 0
+disband-army army-100
+disband-army army-0
+armies
+buy army-0 arretium 10
+fleet-transfer f1 f2 1 0 0
+save ART/g2_far1_b.sav

@@ -1,0 +1,27 @@
+split-army army-0 army-100 0,1,2
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+armies
+save ART/g2_xfer20_before.sav
+army-transfer army-100 army-0 units=0,1,2
+army-transfer army-100 army-0 units=0,1
+armies
+save ART/g2_xfer20_after.sav
+join-armies army-0 army-100
+split-unit army-0 0 100
+split-unit army-0 0 100
+split-unit army-0 0 100
+armies

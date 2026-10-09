@@ -1,0 +1,121 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:09:56+02:00
+# script:
+#   split-army army-0 army-100 0,1,2
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   armies
+#   save ART/g2_xfer20_before.sav
+#   army-transfer army-100 army-0 units=0,1,2
+#   army-transfer army-100 army-0 units=0,1
+#   armies
+#   save ART/g2_xfer20_after.sav
+#   join-armies army-0 army-100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   split-unit army-0 0 100
+#   armies
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> split-army army-0 army-100 0,1,2
+armies.split-army accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 8700 troops in 18 units, supply 87t (100%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (101,38): 15000 troops in 3 units, supply 83t (55%), morale 59, moves 0
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_xfer20_before.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_xfer20_before.sav'.
+
+> army-transfer army-100 army-0 units=0,1,2
+armies.army-transfer rejected (armies.army-transfer-units-too-large): There would be more than 20 units in one of the armies.
+
+> army-transfer army-100 army-0 units=0,1
+armies.army-transfer accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 18500 troops in 20 units, supply 118t (63%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (101,38): 5200 troops in 1 units, supply 52t (100%), morale 59, moves 0
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_xfer20_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_xfer20_after.sav'.
+
+> join-armies army-0 army-100
+armies.join-armies rejected (armies.combined-units-too-large): There are more than 20 units in these armies combined.
+
+> split-unit army-0 0 100
+armies.split-unit rejected (armies.split-unit-units-too-large): Army 'army-0' already holds 20 units; it cannot take another.
+
+> split-unit army-0 0 100
+armies.split-unit rejected (armies.split-unit-units-too-large): Army 'army-0' already holds 20 units; it cannot take another.
+
+> split-unit army-0 0 100
+armies.split-unit rejected (armies.split-unit-units-too-large): Army 'army-0' already holds 20 units; it cannot take another.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 18500 troops in 20 units, supply 118t (63%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (101,38): 5200 troops in 1 units, supply 52t (100%), morale 59, moves 0
+
