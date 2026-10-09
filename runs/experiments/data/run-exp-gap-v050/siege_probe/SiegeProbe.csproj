@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Offline probe of the remake's AI siege gate (AiMilitaryPhase.ProposeSieges), built against the v0.5.0 engine DLL of the read-only clone.
+       Built outside the repository (see run.sh). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IC2.Engine">
+      <HintPath>/home/diego/projects/ic2-remake-v050/src/IC2.Cli/bin/Release/net10.0/IC2.Engine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
