@@ -1,6 +1,6 @@
 # Army and fleet icons are three Rome-coloured templates recoloured from three per-nation colour dwords set at new game; Numidia's fill there is grey (hard-coded), its artwork teal. The toolbar glyphs equal the capital icons
 
-**Status:** draft finding from `ic2-conquest`, awaiting promotion. Done at ic2-research's requests for the player: why Numidia's unit fill is grey; the toolbar nation-button glyphs; the Gaul, Illyria and Media question.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `4ef90ec` (by ic2-research, from `790c552`); this draft is kept for history, the research repo is canonical. Research added a `[derived]` consequence: battle-map units use the same recolour, so Numidia's units should be grey in battle too (not drawn). Done at ic2-research's requests for the player: why Numidia's unit fill is grey; the toolbar nation-button glyphs; the Gaul, Illyria and Media question.
 
 **Tags:**
 - `[confirmed: resources]`: the image lists and glyphs, read-only from `Imperial Conquest 2.exe`.
