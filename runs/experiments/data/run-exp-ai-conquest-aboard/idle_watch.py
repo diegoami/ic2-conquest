@@ -9,7 +9,7 @@ import json, shutil, struct, sys, time
 from pathlib import Path
 R = Path("/home/diego/projects/ic2-conquest")
 sys.path.insert(0, str(R))
-from harness.driver import G, Game
+from harness.driver import G, Game, GameOver
 from state import sav
 START = R / "saves/run0-start-AUTO0720-seed12345.SAV"
 ART = R / "artifacts/run-exp-ai-conquest-aboard"
@@ -40,6 +40,12 @@ try:
         t0 = time.time()
         try:
             name, texts = g.end_turn(timeout=400)
+        except GameOver as e:           # the idle human was conquered: this seed is over
+            g.shot(ART / f"GAMEOVER_seed{seed}_{i + 1:03d}.png")
+            with log.open("a") as fh:
+                fh.write(json.dumps({"seed": seed, "end": i + 1, "game_over": e.text}) + "\n")
+            print("GAMEOVER", seed, i + 1, e.text, flush=True)
+            break
         except Exception as e:          # record what blocks the turn, then stop this seed
             wins = g.find_windows(".", tooltips=True)
             g.shot(ART / f"STUCK_seed{seed}_{i + 1:03d}.png")

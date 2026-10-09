@@ -92,6 +92,13 @@ class DriverError(RuntimeError):
     pass
 
 
+class GameOver(DriverError):
+    """The "End of Game" window opened (the human nation was conquered, or another end of game); `text` is its OCR."""
+    def __init__(self, text):
+        super().__init__("game over: " + text)
+        self.text = text
+
+
 def sh(*args, check=True):
     return subprocess.run(args, env=ENV, capture_output=True, text=True, check=check).stdout
 
@@ -1386,7 +1393,8 @@ class Game:
         (the wait loop, inside `play_battle`, after the autosave line), and DriverError("end turn: unexpected Confirm: ...") is raised.
         `peace` (default False): the answer to a post-battle "Offer of peace" box (an AI army fought the human's during the AI seats);
         it is answered through `answer_battle_peace` (verified click, box closed) and recorded as "PEACE Yes|No: <text>". No is the
-        default because it changes no game state (findings/2026-10-05-battle-peace-offer.md); before this the box blocked until the timeout."""
+        default because it changes no game state (findings/2026-10-05-battle-peace-offer.md); before this the box blocked until the timeout.
+        An "End of Game" window (the human nation conquered) raises GameOver(text) at once instead of waiting for the timeout."""
         log = G / "AUTOSAVE.LOG"
         n = len(log.read_text().splitlines()) if log.exists() else 0
         cal, me = self.calendar(), self.i16(CUR_NATION)
@@ -1419,6 +1427,9 @@ class Game:
                 cs = self.controls("End turn ?")
                 self.click_control(self.control(cs, text="End turn"), pause=1.5)
                 continue
+            eog = self.find_windows("^End of Game$")
+            if eog:     # terminal: nothing more to answer, and no autosave line follows
+                raise GameOver(self.read_popup(eog[0]))
             if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
                 r = self.answer_battle_peace(peace)
                 texts.append("PEACE %s: %s" % (r["button"], r["text"]))

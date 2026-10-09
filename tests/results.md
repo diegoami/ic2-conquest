@@ -145,3 +145,5 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   ```text
   29 AUTO0749.SAV ['CONFIRM ‘An army of yours needs supplies. ...', 'BATTLE Gaul  v  Rome          Rome to place units.', 'PEACE No: After losing to you in battle Gaul are willing to end their war with you, ...']
   ```
+
+**2026-10-09, end_turn and the End of Game window (`run-exp-ai-conquest-aboard` seed 10)**: an idle run stopped at end 50 with `end turn timed out`. The windows at the stall were the "End of Game" box: "The game is over for Appius Claudius the leader of Rome. Your nation has been conquered by Illyria." (`STUCK_seed10_050.png`, release `run-exp-ai-conquest-aboard`). `end_turn` now raises `GameOver(text)` (a `DriverError`) as soon as that window is up, instead of waiting for the timeout; `idle_watch.py` records `game_over` and ends the seed. Not yet seen live after the change: the next seed that ends this way will show it.
