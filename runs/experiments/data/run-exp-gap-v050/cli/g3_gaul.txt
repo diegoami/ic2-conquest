@@ -1,0 +1,83 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=gaul seed=3 extra=[] 2026-10-09T17:07:35+02:00
+# script:
+#   status mine
+#   end
+#   save ART/g3_gaul_s3.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+Rome (rome) takes its turn: 1 order issued.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 16 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 17 orders issued.
+Macedonia (macedonia) takes its turn: 7 orders issued.
+Numidia (numidia) takes its turn: 13 orders issued.
+
+> status mine
+Nation: Gaul (gaul, human): treasury 315, unity 577, tax 10%
+
+Armies:
+  army-9 (Gaul) @ (93,28): 40500 troops in 8 units, supply 272t (67%), morale 63, moves 8
+
+Fleets:
+
+Cities:
+  rotomagus "Rotomagus" @ (51,3), owner Gaul: supply 65t, loyalty 79, fortification 28%
+  lemovicci "Lemovicci" @ (53,23), owner Gaul: supply 111t, loyalty 71, fortification 47%
+  avaricum "Avaricum" @ (56,16), owner Gaul: supply 90t, loyalty 81, fortification 34%
+  gergovia "Gergovia" @ (58,25), owner Gaul: supply 98t, loyalty 83, fortification 58%
+  alesia "Alesia" @ (60,15), owner Gaul: supply 84t, loyalty 82, fortification 18%
+  bibracte "Bibracte" @ (60,18), owner Gaul: supply 59t, loyalty 85, fortification 10%
+  lutetia "Lutetia" @ (62,7), owner Gaul: supply 47t, loyalty 82, fortification 31%
+  lyon "Lyon" @ (62,33), owner Gaul: supply 89t, loyalty 81, fortification 45%
+  nimes "Nimes" @ (67,33), owner Gaul: supply 185t, loyalty 84, fortification 60%
+  andematunum "Andematunum" @ (73,12), owner Gaul: supply 92t, loyalty 81, fortification 47%
+  tinurtium "Tinurtium" @ (73,23), owner Gaul: supply 75t, loyalty 70, fortification 35%
+  axima "Axima" @ (79,25), owner Gaul: supply 55t, loyalty 81, fortification 52%
+  rufiana "Rufiana" @ (81,2), owner Gaul: supply 38t, loyalty 87, fortification 19%
+  taurasia "Taurasia" @ (84,27), owner Gaul: supply 91t, loyalty 54, fortification 22%
+  vindonissa "Vindonissa" @ (87,17), owner Gaul: supply 63t, loyalty 71, fortification 42%
+  mediolanum "Mediolanum" @ (91,27), owner Gaul: supply 163t, loyalty 77, fortification 66%
+  loreh "Loreh" @ (92,4), owner Gaul: supply 42t, loyalty 78, fortification 23%
+  brixia "Brixia" @ (94,27), owner Gaul: supply 75t, loyalty 75, fortification 37%
+  modena "Modena" @ (95,30), owner Gaul: supply 83t, loyalty 63, fortification 51%
+  submuntorium "Submuntorium" @ (96,12), owner Gaul: supply 39t, loyalty 96, fortification 37%
+  verona "Verona" @ (97,27), owner Gaul: supply 81t, loyalty 70, fortification 45%
+  felsina "Felsina" @ (98,31), owner Gaul: supply 121t, loyalty 79, fortification 68%
+  veldidena "Veldidena" @ (100,19), owner Gaul: supply 63t, loyalty 85, fortification 46%
+  altinum "Altinum" @ (102,24), owner Gaul: supply 72t, loyalty 69, fortification 21%
+  virunum "Virunum" @ (106,21), owner Gaul: supply 82t, loyalty 78, fortification 55%
+  ovilava "Ovilava" @ (107,13), owner Gaul: supply 35t, loyalty 84, fortification 27%
+  vindobona "Vindobona" @ (119,8), owner Gaul: supply 34t, loyalty 65, fortification 10%
+  sala-2 "Sala" @ (120,17), owner Gaul: supply 48t, loyalty 80, fortification 20%
+
+> end
+Gaul (gaul) ends its turn.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 8 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 6 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+  Weather: storm-damages-fleet (week 1).
+Rome (rome) takes its turn: 1 order issued.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 3 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 2 orders issued.
+Now: Week 3, Spring 270 BC. Active seat: Gaul (gaul).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  3      Spring      270BC
+  Seleucid destroys army of Ptolemaic.
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_gaul_s3.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_gaul_s3.sav'.
+
