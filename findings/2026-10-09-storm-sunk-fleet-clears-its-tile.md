@@ -1,6 +1,6 @@
 # A fleet lost at sea in a storm leaves no marker: its tile reads plain sea (0), or rough sea (1) where the new week's weather paints it
 
-**Status:** draft finding from `ic2-conquest`, awaiting promotion. Wine-only. It closes the open item "a fleet sunk by a storm" of `2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md` (research `4495fc6`).
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `e0e1616` (by ic2-research), [confirmed]. Research settled the open question from code: the storm death check calls `FUN_0044ad38`, which writes 0, and the weekly re-roll `FUN_00451304` runs after the fleet loop of `FUN_004514ec`, so the three 1s are the new week's paint. This draft is kept for history; the research repo is canonical. Wine-only. It closes the open item "a fleet sunk by a storm" of `2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md` (research `4495fc6`).
 
 **Tag:** `[confirmed]` (44 storm losses: 43 in trials, 1 natural). No new game run: this reads the result saves already kept by `run-exp-storms` (`2026-10-03-storms-and-losses-at-sea.md`).
 

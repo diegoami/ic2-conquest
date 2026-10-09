@@ -1,6 +1,6 @@
 # When a nation is conquered, its fleet and the army aboard are removed with it; the fleet's tile is written 0, even over rough sea
 
-**Status:** draft finding from `ic2-conquest`, awaiting promotion. Wine-only. Pre-state edited (see Method). This answers the open item "armies aboard a fleet at elimination", left from the army-removal series (`2026-10-09-turn-end-and-ai-army-removals-restore-their-tile.md`, research `e6b4643`).
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `c288059` (by ic2-research), [confirmed] with a synthetic pre-state. Research settled the code path (decompiled-elimination-cleanup.md): `FUN_0044C528` runs the army loop first, where `FUN_0044AB90(10)` sees cell −1, clears the carrier's +22 without a map write and tombstones the army; the fleet loop then runs `FUN_0044AD38`, which writes 0 and finds +22 already −1. This draft is kept for history; the research repo is canonical. Wine-only. Pre-state edited (see Method). This answers the open item "armies aboard a fleet at elimination", left from the army-removal series (`2026-10-09-turn-end-and-ai-army-removals-restore-their-tile.md`, research `e6b4643`).
 
 **Tag:** `[confirmed]` (3 runs, one per case, seed 12345).
 
