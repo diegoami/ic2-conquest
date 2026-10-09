@@ -41,7 +41,7 @@ The pixels are the four state colours as RGB: `ffffff`, `ff0000`, `0000ff`, `008
 ### 4. The file name and the folder `[confirmed]` (Wine)
 
 - The name is exactly **`ca` + the 10 table digits + `.BMP`**: `ca1102211003.BMP` with the table read from memory as `1 1 0 2 2 1 1 0 0 3`.
-- It is opened as a relative name (`CreateFileW(L"ca1102211003.BMP")`, create-always), so it **lands in the current directory**. Under the harness that is the game folder `C:\IC2\`, even after a File > Open from another folder.
+- It is opened as a relative name (`CreateFileW(L"ca1102211003.BMP")`, create-always), so it **lands in the current directory**. Under the harness that is the game folder `C:\IC2\`. The driver copies saves into that folder before File > Open, so a desktop Open from another folder may move the current directory and the file with it (not tested).
 - A second save with the same rule overwrites the file.
 
 ## Corrections to `2026-10-09-cellular-automata-rule-h04.md` (research `8c46579`)
