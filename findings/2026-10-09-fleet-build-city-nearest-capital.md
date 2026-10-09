@@ -1,6 +1,6 @@
 # Build fleet in the original builds at the own coastal city nearest the capital that has no fleet under construction; the remake takes the first in world order
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It does the original-side check for the v0.5.0 gap analysis's rows NEW-g1-3 (`rows_g1.md`, "the Build fleet dialog uses the first free coastal city in world order; the original built Rome's fleet at Caere") and g2's check 8 ("is a coastal city with a fleet under construction still free?"). The player asked for it.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `c36b255` (by ic2-research, from `d13eaca`); this draft is kept for history, the research repo is canonical. It does the original-side check for the v0.5.0 gap analysis's rows NEW-g1-3 (`rows_g1.md`, "the Build fleet dialog uses the first free coastal city in world order; the original built Rome's fleet at Caere") and g2's check 8 ("is a coastal city with a fleet under construction still free?"). The player asked for it.
 
 **Tags:**
 - `[confirmed]` (Wine): read from game memory, the boxes and the saves.
