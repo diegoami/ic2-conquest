@@ -1343,8 +1343,21 @@ class Game:
         self.tool("build_fleet")
         # Either the dialog opens, or a box refuses ("Only nations with coastal cities can build fleets", seen for Dacia,
         # Galatia and Media; coverage.md also lists "You do not have a free coastal city at this time."): wait for one of them.
-        self.wait(lambda: self.find_windows("^Build fleet$") or [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")],
-                  8, "the Build fleet dialog or its refusal")
+        # Before the dialog, one N02 notice per own fleet still under construction ("A fleet of N ships will be ready in W weeks at
+        # <city>.", research refusal-texts N02): information only. Read and dismiss each, then keep waiting for the dialog.
+        self.build_fleet_notices = []
+        for _ in range(40):         # up to one notice per fleet under construction; each appears only after the last is dismissed
+            self.wait(lambda: self.find_windows("^Build fleet$") or [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")],
+                      20, "the Build fleet dialog or its refusal")
+            if self.find_windows("^Build fleet$"):
+                break
+            boxes = [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")]
+            texts = [self.read_popup(w) for w in boxes]
+            if not texts or not all("ready in" in t for t in texts):
+                break
+            self.build_fleet_notices += texts
+            self.dismiss_popups()
+            time.sleep(1.0)
         if not self.find_windows("^Build fleet$"):
             refusal = [self.read_popup(w) for w in self.popups() if w[1] in ("Information", "Warning", "Error")]
             self.dismiss_popups()
