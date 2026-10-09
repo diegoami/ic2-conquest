@@ -1,6 +1,6 @@
 # City markers for every owner: five fixed three-colour templates; their colours equal the unit icons' for 15 owners. Numidia's fill is teal on cities and grey on unit icons
 
-**Status:** draft finding from `ic2-conquest`, awaiting promotion. Wine-only (palette caveat below). Done at ic2-research's request for the player. It settles the five mismatches recorded at research `74fd9b5` / `ba103a0` (`2026-10-09-owner-colours-by-band.md`), as far as Wine shows them.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `cdffb27` (by ic2-research), `[confirmed]` (Wine); this draft is kept for history, the research repo is canonical. **Addition (research review, `[derived]`):** in the capital temple (variant 4) the 334-px "outline" role is most of the glyph (roof, columns, base) and the 108-px fill is the gaps between the columns, so a by-eye reading of the 2026-09-29 strip could swap the roles; that may be all Macedonia's swap is. Gaul, Illyria and Media remain real colour differences, left for the desktop check. Wine-only (palette caveat below). Done at ic2-research's request for the player. It settles the five mismatches recorded at research `74fd9b5` / `ba103a0` (`2026-10-09-owner-colours-by-band.md`), as far as Wine shows them.
 
 **Tag:** `[confirmed]` (Wine) for the drawing of each word. The words are written into the map, and real unpatched cities serve as controls (all match).
 
