@@ -1,6 +1,6 @@
 # Supply providers, Transfer ships and the Transfer unit clamps in the original: no army provider, silence when there is none, a fleet-scan quirk, no capacity test on Transfer ships, and an army lost with its emptied fleet
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It does the original-side checks 1, 2 and 6 of the v0.5.0 gap analysis (`runs/experiments/data/run-exp-gap-v050/rows_g2.md`, "Original-side checks needed"; research `docs/reports/2026-10-09-remake-v050-gap-analysis.md` rows UA01, UF01, UF03, UA03). The player picked these next.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `fcb0be0` (by ic2-research, from `48d59bd`; all 81 release files re-hashed, the figures re-read); this draft is kept for history, the research repo is canonical. It does the original-side checks 1, 2 and 6 of the v0.5.0 gap analysis (`runs/experiments/data/run-exp-gap-v050/rows_g2.md`, "Original-side checks needed"; research `docs/reports/2026-10-09-remake-v050-gap-analysis.md` rows UA01, UF01, UF03, UA03). The player picked these next.
 
 **Tags:**
 - `[confirmed]` (Wine): read from game memory, the boxes, the screenshots and the saves.
@@ -45,7 +45,7 @@
 | Ta1 | carrying fleet 2 gives 5 | 25 / 15; army 0 still aboard | none |
 | Ta2 (re-run 194517) | carrying fleet 2 gives 10 | **20 ships carrying 10,700 troops** (room 10,000) | none |
 | Ta3 | fleet 5 gives 5 to the carrying fleet | 35 / 5 | none |
-| **Ta4** | carrying fleet 2 gives **all 30** | **fleet 2 deleted, and army 0 with it** (owner −1, 10,700 troops lost); fleet 5 has 40 | **none, no prompt** |
+| **Ta4** | carrying fleet 2 gives **all 30** | **fleet 2 and army 0 tombstoned** (both owner −1, 10,700 troops lost; tile (101,46) 300 → 0); fleet 5 has 40 and is re-banded 300 → 316 (research's re-read) | **none, no prompt** |
 | Tb1 | fleet 5 gives 8 to a 95-ship fleet | **100 / 5**: the arrows stop at 100 (the dialog showed 5 and 100 before OK) | none |
 | Tc1 | fleet 5 gives all 10 | fleet 5 deleted; fleet 2 has 30 | none |
 | Tc2 | fleet 2 gives all 20 | fleet 2 deleted; fleet 5 has 30 | none |
