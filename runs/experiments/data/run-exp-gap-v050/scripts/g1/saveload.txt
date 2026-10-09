@@ -1,0 +1,11 @@
+set-tax 25
+save ART/g1_sl_a.sav
+set-tax 5
+save ART/g1_sl_a.sav
+load ART/g1_sl_a.sav
+status mine
+load /home/diego/projects/ic2-conquest/saves/det-AUTO0721-seed12345.SAV
+load ART/does_not_exist.sav
+load
+save
+quit

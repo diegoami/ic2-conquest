@@ -1,0 +1,36 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:04:22+02:00
+# script:
+#   order-fleet pisae 10 c1
+#   order-fleet tarquinii 10 c2
+#   order-fleet arretium 10 c3
+#   order-fleet caere 10 c4
+#   order-fleet rome 10 c5
+#   order-fleet ariminum 10 c6
+#   order-fleet carsioli 10 c7
+#   order-fleet antium 10 c8
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> order-fleet pisae 10 c1
+naval.order-fleet accepted.
+
+> order-fleet tarquinii 10 c2
+naval.order-fleet accepted.
+
+> order-fleet arretium 10 c3
+naval.order-fleet rejected (naval.city-not-coastal): City 'arretium' does not touch the sea.
+
+> order-fleet caere 10 c4
+naval.order-fleet accepted.
+
+> order-fleet rome 10 c5
+naval.order-fleet rejected (naval.city-not-coastal): City 'rome' does not touch the sea.
+
+> order-fleet ariminum 10 c6
+naval.order-fleet accepted.
+
+> order-fleet carsioli 10 c7
+naval.order-fleet rejected (naval.city-not-coastal): City 'carsioli' does not touch the sea.
+
+> order-fleet antium 10 c8
+naval.order-fleet accepted.
+

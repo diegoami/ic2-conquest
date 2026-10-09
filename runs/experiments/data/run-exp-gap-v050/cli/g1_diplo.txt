@@ -1,0 +1,123 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:01:36+02:00
+# script:
+#   make-peace illyria
+#   make-peace gaul
+#   propose-trade illyria
+#   propose-trade carthage
+#   propose-trade numidia
+#   propose-trade greece
+#   propose-trade ptolemaic
+#   propose-alliance carthage
+#   propose-alliance gaul
+#   accept-offer
+#   declare-war carthage
+#   propose-alliance seleucid
+#   propose-trade carthage
+#   make-peace carthage
+#   declare-war rome
+#   propose-trade rome
+#   balance
+#   news
+#   save ART/g1_diplo.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> make-peace illyria
+diplomacy.make-peace accepted.
+
+> make-peace gaul
+diplomacy.make-peace rejected (diplomacy.peace-refused): 'Gaul' does not want to make peace at this time.
+
+> propose-trade illyria
+diplomacy.propose-trade rejected (diplomacy.trade-cooldown): 'Illyria' does not want to trade with you.
+
+> propose-trade carthage
+diplomacy.propose-trade rejected (diplomacy.target-trade-cap-reached): 'Carthage' already trades with 3 nations.
+
+> propose-trade numidia
+diplomacy.propose-trade accepted.
+
+> propose-trade greece
+diplomacy.propose-trade rejected (diplomacy.target-trade-cap-reached): 'Greece' already trades with 3 nations.
+
+> propose-trade ptolemaic
+diplomacy.propose-trade accepted.
+
+> propose-alliance carthage
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Carthage' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance gaul
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Gaul' will not ally while you, or one of your allies, is at war.
+
+> accept-offer
+diplomacy.accept-pending-offer rejected (diplomacy.no-pending-offer): There is no pending offer to accept.
+
+> declare-war carthage
+diplomacy.declare-war accepted.
+
+> propose-alliance seleucid
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Seleucid' will not ally while you, or one of your allies, is at war.
+
+> propose-trade carthage
+diplomacy.propose-trade rejected (diplomacy.allied-or-at-war): You cannot trade with 'Carthage'.
+
+> make-peace carthage
+diplomacy.make-peace rejected (diplomacy.peace-refused): 'Carthage' does not want to make peace at this time.
+
+> declare-war rome
+diplomacy.declare-war rejected (diplomacy.self-target): A nation cannot declare war on itself.
+
+> propose-trade rome
+diplomacy.propose-trade rejected (diplomacy.self-target): A nation cannot propose trade with itself.
+
+> balance
+Balance sheet for Rome (rome):
+Income:
+  Tax income: 252
+  Tax base quarter share: 632
+  Trade income: 598
+  Income total: 1482
+Expenditure:
+  City and wealth upkeep: 303
+  Ship upkeep: 0
+  Recruitment slot upkeep: 0
+  Regulars' upkeep: 453
+  Mercenaries' pay: 0
+  Expenditure total (excludes mercenaries' pay): 756
+  Treasury: 2200
+  Debt limit: 5154
+
+> news
+News log:
+  272 BC
+  Tarrentum (Greece) falls to Rome.
+  Croton (Greece) falls to Rome.
+  Locri defects from Greece to Rome.
+  Rhegium defects from Greece to Rome.
+  Panormus defects from Greece to Carthage.
+  Mylae defects from Greece to Carthage.
+  Astacus (Seleucid) falls to Bithynia.
+  Heraclea (Greece) falls to Rome.
+  Thurii defects from Greece to Rome.
+  Rome destroys army of Greece.
+  Rome and Greece agree to end their war.
+   
+  271 BC
+  Zela (Seleucid) falls to Bithynia.
+  Synnada (Seleucid) falls to Galatia.
+  Laodicea defects from Seleucid to Media.
+  Helice (Celtiberia) falls to Carthage.
+  Chalcis defects from Greece to Macedonia.
+  Demetrias defects from Greece to Macedonia.
+  Marium defects from Greece to Ptolemaic.
+  Sidon (Seleucid) falls to Ptolemaic.
+  Marium defects from Greece to Ptolemaic.
+  Pontica (Seleucid) falls to Bithynia.
+  Damascus (Seleucid) falls to Ptolemaic.
+   
+  Week 1      Spring      270 BC
+  ROME DECLARES WAR ON CARTHAGE.
+  ROME DECLARES WAR ON NUMIDIA.
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g1_diplo.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g1_diplo.sav'.
+

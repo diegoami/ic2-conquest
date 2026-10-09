@@ -1,0 +1,161 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:02:19+02:00
+# script:
+#   propose-trade numidia
+#   propose-trade ptolemaic
+#   propose-trade macedonia
+#   propose-trade seleucid
+#   propose-trade celtiberia
+#   propose-trade dacia
+#   propose-trade bithynia
+#   propose-trade thracia
+#   propose-trade galatia
+#   balance
+#   propose-alliance numidia
+#   make-peace numidia
+#   make-peace numidia
+#   propose-trade numidia
+#   end
+#   news
+#   balance
+#   save ART/g1_trade_cap.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> propose-trade numidia
+diplomacy.propose-trade accepted.
+
+> propose-trade ptolemaic
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> propose-trade macedonia
+diplomacy.propose-trade rejected (diplomacy.already-trading): You are already trading with 'Macedonia'.
+
+> propose-trade seleucid
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> propose-trade celtiberia
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> propose-trade dacia
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> propose-trade bithynia
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> propose-trade thracia
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> propose-trade galatia
+diplomacy.propose-trade rejected (diplomacy.trade-cap-reached): You already trade with 3 nations.
+
+> balance
+Balance sheet for Rome (rome):
+Income:
+  Tax income: 252
+  Tax base quarter share: 632
+  Trade income: 151
+  Income total: 1035
+Expenditure:
+  City and wealth upkeep: 303
+  Ship upkeep: 0
+  Recruitment slot upkeep: 0
+  Regulars' upkeep: 453
+  Mercenaries' pay: 0
+  Expenditure total (excludes mercenaries' pay): 756
+  Treasury: 2200
+  Debt limit: 5154
+
+> propose-alliance numidia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Numidia' will not ally while you, or one of your allies, is at war.
+
+> make-peace numidia
+diplomacy.make-peace accepted.
+
+> make-peace numidia
+diplomacy.make-peace rejected (diplomacy.not-at-war): You have no trade, alliance or war with 'Numidia' to end.
+
+> propose-trade numidia
+diplomacy.propose-trade rejected (diplomacy.trade-cooldown): 'Numidia' does not want to trade with you.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 16 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 17 orders issued.
+Macedonia (macedonia) takes its turn: 7 orders issued.
+Numidia (numidia) takes its turn: 15 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 9 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 5 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  3      Spring      270BC
+
+> news
+News log:
+  272 BC
+  Tarrentum (Greece) falls to Rome.
+  Croton (Greece) falls to Rome.
+  Locri defects from Greece to Rome.
+  Rhegium defects from Greece to Rome.
+  Panormus defects from Greece to Carthage.
+  Mylae defects from Greece to Carthage.
+  Astacus (Seleucid) falls to Bithynia.
+  Heraclea (Greece) falls to Rome.
+  Thurii defects from Greece to Rome.
+  Rome destroys army of Greece.
+  Rome and Greece agree to end their war.
+   
+  271 BC
+  Zela (Seleucid) falls to Bithynia.
+  Synnada (Seleucid) falls to Galatia.
+  Laodicea defects from Seleucid to Media.
+  Helice (Celtiberia) falls to Carthage.
+  Chalcis defects from Greece to Macedonia.
+  Demetrias defects from Greece to Macedonia.
+  Marium defects from Greece to Ptolemaic.
+  Sidon (Seleucid) falls to Ptolemaic.
+  Marium defects from Greece to Ptolemaic.
+  Pontica (Seleucid) falls to Bithynia.
+  Damascus (Seleucid) falls to Ptolemaic.
+   
+  Week 1      Spring      270 BC
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  3      Spring      270BC
+
+> balance
+Balance sheet for Rome (rome):
+Income:
+  Tax income: 252
+  Tax base quarter share: 632
+  Trade income: 114
+  Income total: 998
+Expenditure:
+  City and wealth upkeep: 303
+  Ship upkeep: 0
+  Recruitment slot upkeep: 0
+  Regulars' upkeep: 453
+  Mercenaries' pay: 0
+  Expenditure total (excludes mercenaries' pay): 756
+  Treasury: 2200
+  Debt limit: 5154
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g1_trade_cap.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g1_trade_cap.sav'.
+
