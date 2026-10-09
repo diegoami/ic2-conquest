@@ -18,7 +18,7 @@ from unicorn.x86_const import (UC_X86_REG_EAX, UC_X86_REG_EBP, UC_X86_REG_EBX, U
 
 REGS = (UC_X86_REG_EAX, UC_X86_REG_EBX, UC_X86_REG_ECX, UC_X86_REG_EDX, UC_X86_REG_ESI, UC_X86_REG_EDI, UC_X86_REG_EBP)
 ARITH = 0x8D5 | 0x400
-STACK_TOP = 0xC10000
+STACK_TOP = 0xE10000
 
 
 def image():
@@ -30,7 +30,7 @@ def image():
 
 def machine(b, count, nation):
     uc = Uc(UC_ARCH_X86, UC_MODE_32)
-    uc.mem_map(0x400000, 0xA00000 - 0x400000)
+    uc.mem_map(0x400000, 0xC00000 - 0x400000)
     uc.mem_map(STACK_TOP - 0x10000, 0x11000)
     uc.mem_write(A.CODE_VA, bytes(b[A.CODE_RAW:A.CODE_RAW + 0x5B400]))
     uc.mem_write(A.PATCH_VA, bytes(b[A.PATCH_RAW:A.PATCH_RAW + A.RAW_SIZE]))
@@ -80,14 +80,13 @@ def test_stub(image, site, count):
         assert rec[16:40] == stack[:24]
         table, stride, other_off = (A.ARMIES, A.ARMY_LEN, 0xA) if sid in (1, 2) else (A.FLEETS, A.FLEET_LEN, 2)
         unit = struct.unpack("<h", struct.pack("<I", regs[UC_X86_REG_EAX])[:2])[0]
-        exp_unit = bytes(uc.mem_read(table + stride * unit, 16)) if 0 <= table + stride * unit < 0xA00000 - 16 else None
-        if exp_unit is not None:
-            assert rec[40:56] == exp_unit
+        nu, no = (16, 12) if sid in (1, 2) else (28, 28)
+        assert rec[40:40 + nu] == bytes(uc.mem_read(table + stride * unit, nu))
         other = struct.unpack_from("<h", stack, other_off)[0]
         if other < 0:
-            assert rec[56:68] == bytes(12)
+            assert rec[68:68 + no] == bytes(no)
         else:
-            assert rec[56:68] == bytes(uc.mem_read(table + stride * other, 12))
+            assert rec[68:68 + no] == bytes(uc.mem_read(table + stride * other, no))
 
 
 def main():
