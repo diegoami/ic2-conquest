@@ -35,6 +35,11 @@
 - **The seeds do not correspond** between the engines: four or six original games against eight remake games, and the original's samples are shorter (25-40 End turns) than the remake's (80).
 - **Only idle Rome was measured.** An active human may provoke sieges the idle one does not.
 - **AI-05 mixes the AI with the harness on the original side:** the original's idle Rome declines every peace offer, while the remake's idle Rome got none. The remake's Rome is barely attacked at all (2 of 8 games), so the peace answer cannot explain its survival there. It may still shorten the original's games.
-- **Why the remake's AI never besieges is now measured, for the ratio gate only** (AI-02: 0 of 1,882 pairs reach 1550 ‰). Not checked: whether a candidate that passed would win the score competition, and how the captures of turns 1-10 got through.
+- **Why the remake's AI never besieges is now measured, for the ratio gate only** (AI-02: 0 of 1,882 pairs reach 1550 ‰). Not checked: whether a candidate that passed would win the score competition.
+- **The captures of End turns 1-10 are consistent with the gate** (`early_captures.py` → `early_captures.json`; probe run over turns 0-10, `siege_gate_early_s<seed>.jsonl`). Of the 45 owner changes in the 8 games:
+  - **Where the capturer was adjacent the turn before, it passed:** in all 7 such captures (Helice at turn 4 in 4 seeds and at turn 10 in 3), the capturing army's ratio at save t−1 was 1583-2853 ‰, at or above 1550.
+  - **16 are defections** (Calpe and Pontica to Seleucid at turn 1, in every seed) after Astacus falls: the cascade, not a siege.
+  - **The other 22 had no capturer adjacent at t−1:** Astacus and Sidon to Seleucid at turn 1 in every seed (16), Pisae to Gaul at turn 2 (2 seeds), Helice to Celtiberia at turn 4 (4 seeds). The army most likely marched in and besieged in the same AI turn (the AI re-proposes after each action). End-of-turn saves cannot show the ratio at that moment.
+  - The turn-1 events are identical in all 8 seeds.
 - **The news-line counts are keyword counts** over the lines new since the previous save.
 - **The original side is Wine-only.**
