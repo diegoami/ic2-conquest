@@ -1,6 +1,6 @@
 # AI checks 3 and 4 in play: the homeland intercept and the fleet hunt-or-port decision fire as decompiled, logged by an inert hook over 144 End turns. The hunt score does not fall with distance, and a fleet called as a ferry skips the hunt
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It does the two in-play checks left open by `2026-10-07-ai-turn-corroboration.md` (research): check 3, the homeland intercept dispatch (report `2026-10-07-strategic-ai-turn.md` §3.1), and check 4, the fleet hunt-vs-port decision (§4). The player asked for it on 2026-10-09. It also corrects §3.1, §4 and §5 of the report on four points.
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `b538a0d` (by ic2-research, from `4ede45f`); this draft is kept for history, the research repo is canonical. It does the two in-play checks left open by `2026-10-07-ai-turn-corroboration.md` (research): check 3, the homeland intercept dispatch (report `2026-10-07-strategic-ai-turn.md` §3.1), and check 4, the fleet hunt-vs-port decision (§4). The player asked for it on 2026-10-09. It also corrects §3.1, §4 and §5 of the report on four points.
 
 **Tags:**
 - `[confirmed]` (Wine): logged by the hook in natural play, nothing edited, and checked against the decision-time state.
@@ -79,9 +79,9 @@
 - **It never hunted** (`staged_hunt.jsonl`):
   - In 3 seeds on v3, Carthage's fleet logged neither a hunt nor a port move.
   - The v4 run shows why: the fleet already had a **stored destination, (96,78), at decision time**, although it was −1 in the save. It sailed there, ending the round at (96,78).
-- **What set the destination** `[confirmed: decompile]`: only two places in the code write a fleet's +4 destination, and both are in the army movers.
-  - `FUN_0044d9a8`, called from 0x44db8b: an army whose target lies in another region box takes the nearest own launched, empty fleet with moves. If the fleet is adjacent, the army embarks; otherwise the fleet's destination is set to come to the army.
-  - 0x44dbc9: an army already aboard steers its fleet.
+- **What set the destination** `[confirmed: decompile]`: two places in the code compute the address of a fleet's +4 destination (`0x49C270 + 26·i`, the only absolute references to that field), both in the army movers. Each passes it to `FUN_0044cd08`, which stores a path point through it on return (0x44CEB4 through ECX, 0x44CEBC through its stack argument; `FUN_0044cd08.asm`). Writes through a fleet pointer held in a register (a human sail order, for example) were not scanned. (Corrected 2026-10-09 after promotion at research `b538a0d`: the draft said "only two places write" it.)
+  - `FUN_0044d9a8` (`FUN_0044d9a8.v2.asm`), called from 0x44db8b: an army whose target lies in another region box takes the nearest own launched, empty fleet with moves. If the fleet is adjacent, the army embarks (0x44b79c); otherwise 0x44da5a passes the fleet's +4 to `FUN_0044cd08` (stack argument).
+  - `FUN_0044dba8` (`FUN_0044dba8_head.asm`), 0x44dbc9-0x44dbf2: an army aboard (cell −1) finds its fleet and passes that fleet's +4 to `FUN_0044cd08` (ECX), so it steers its fleet.
 - **The link here** `[derived]`: Carthage's army 3 stood 3 tiles from (96,78) before the turn, so it most likely called the fleet. The army phase runs before the fleet phase, so **a fleet called as a ferry skips the hunt and the port choice that turn.**
 
 ## Evidence

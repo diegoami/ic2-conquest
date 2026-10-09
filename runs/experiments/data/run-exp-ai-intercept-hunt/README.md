@@ -28,7 +28,7 @@ player on 2026-10-09. Finding: `findings/2026-10-09-ai-intercept-and-fleet-hunt-
   - `analyze.py` → `analysis_hook_s<seed>*.json`. It checks each record against the decision-time state, versioned. Earlier versions are kept: `analysis_hook_s12345.json` is v1's run, before the decision-time checks; `analysis_hook_s2.v2.json` is empty, because it was written while the v3 run was the latest.
   - `hunt_bounds.py` → `hunt_bounds_hook_s<seed>*.json`. It recomputes each hunt score from the disassembled `FUN_0044f4f8` / `FUN_0044aa54` / `FUN_0044a930`. Its versions record the corrections: `hunt_bounds_hook_s2.json` used the report's formula; later versions add the distance back, then the decision-time records, the jitter rounding, the exact match and the morale. The last version, `.v7`, is the one cited.
   - `summarize.py` → `summary.json`.
-- **Disassembly** (capstone, read-only): `FUN_0044efc8.asm`, `FUN_0044f4f8_f608.asm`, `FUN_0044aa54.asm`, `FUN_0044a930.asm`, `FUN_0044e9a8.asm`, `FUN_0044e5dc.asm`, `FUN_0044d9a8.asm`, `around_44db8b.asm`.
+- **Disassembly** (capstone, read-only): `FUN_0044efc8.asm`, `FUN_0044f4f8_f608.asm`, `FUN_0044aa54.asm`, `FUN_0044a930.asm`, `FUN_0044e9a8.asm`, `FUN_0044e5dc.asm`, `FUN_0044d9a8.asm` (cut at 0x44da22) and `FUN_0044d9a8.v2.asm` (whole, to its `ret`), `around_44db8b.asm`, `FUN_0044dba8_head.asm` (the aboard-army branch), `FUN_0044cd08.asm` (whole: the two stores through its pointer arguments at 0x44ceb4 / 0x44cebc).
 - **Binaries:** release `run-exp-ai-intercept-hunt`, one `run-exp-ai-intercept-hunt-saves.tar.gz`.
   - Members: `MANIFEST-saves.txt`, whose last line is the tarball's SHA-256.
   - Every member's SHA-256: `SAVES.sha256`.
