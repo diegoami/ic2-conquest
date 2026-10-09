@@ -1,0 +1,1746 @@
+{
+ "origin": [
+  114,
+  46
+ ],
+ "control": {
+  "tile": [
+   120,
+   53
+  ],
+  "word": 200,
+  "png": "artifacts/run-exp-owner-colours/tiles/control_rome_army_200.png",
+  "sha": "d2ad33751e8b614d",
+  "bg": "707707"
+ },
+ "tiles": [
+  {
+   "tile": [
+    114,
+    46
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "347b29fc65a7e7b7",
+   "bg_rgb": "451451",
+   "png": "army_o00_b0_w200.png"
+  },
+  {
+   "tile": [
+    115,
+    46
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 1,
+   "word": 216,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 216,
+   "sha": "8d952a534782b236",
+   "bg_rgb": "451451",
+   "png": "army_o00_b1_w216.png"
+  },
+  {
+   "tile": [
+    116,
+    46
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 2,
+   "word": 232,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 232,
+   "sha": "598be6b884a0774d",
+   "bg_rgb": "707707",
+   "png": "army_o00_b2_w232.png"
+  },
+  {
+   "tile": [
+    117,
+    46
+   ],
+   "kind": "army",
+   "owner": 1,
+   "band": 0,
+   "word": 201,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 201,
+   "sha": "f17bc1f9f56a6a02",
+   "bg_rgb": "c30c30",
+   "png": "army_o01_b0_w201.png"
+  },
+  {
+   "tile": [
+    118,
+    46
+   ],
+   "kind": "army",
+   "owner": 1,
+   "band": 1,
+   "word": 217,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 217,
+   "sha": "8c91df6f070a43a3",
+   "bg_rgb": "c30c30",
+   "png": "army_o01_b1_w217.png"
+  },
+  {
+   "tile": [
+    119,
+    46
+   ],
+   "kind": "army",
+   "owner": 1,
+   "band": 2,
+   "word": 233,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 233,
+   "sha": "cff252ae764fdaa1",
+   "bg_rgb": "000000",
+   "png": "army_o01_b2_w233.png"
+  },
+  {
+   "tile": [
+    120,
+    46
+   ],
+   "kind": "army",
+   "owner": 2,
+   "band": 0,
+   "word": 202,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 202,
+   "sha": "fd98523393ebb5ef",
+   "bg_rgb": "514514",
+   "png": "army_o02_b0_w202.png"
+  },
+  {
+   "tile": [
+    121,
+    46
+   ],
+   "kind": "army",
+   "owner": 2,
+   "band": 1,
+   "word": 218,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 218,
+   "sha": "bc2e65807158f863",
+   "bg_rgb": "514514",
+   "png": "army_o02_b1_w218.png"
+  },
+  {
+   "tile": [
+    122,
+    46
+   ],
+   "kind": "army",
+   "owner": 2,
+   "band": 2,
+   "word": 234,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 234,
+   "sha": "25597d023daaffe8",
+   "bg_rgb": "770770",
+   "png": "army_o02_b2_w234.png"
+  },
+  {
+   "tile": [
+    123,
+    46
+   ],
+   "kind": "army",
+   "owner": 3,
+   "band": 0,
+   "word": 203,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 203,
+   "sha": "ec512035f440233d",
+   "bg_rgb": "041041",
+   "png": "army_o03_b0_w203.png"
+  },
+  {
+   "tile": [
+    124,
+    46
+   ],
+   "kind": "army",
+   "owner": 3,
+   "band": 1,
+   "word": 219,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 219,
+   "sha": "8a3d426bfd79e8ca",
+   "bg_rgb": "041041",
+   "png": "army_o03_b1_w219.png"
+  },
+  {
+   "tile": [
+    125,
+    46
+   ],
+   "kind": "army",
+   "owner": 3,
+   "band": 2,
+   "word": 235,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 235,
+   "sha": "db3109b43e6fdd32",
+   "bg_rgb": "ffffff",
+   "png": "army_o03_b2_w235.png"
+  },
+  {
+   "tile": [
+    126,
+    46
+   ],
+   "kind": "army",
+   "owner": 4,
+   "band": 0,
+   "word": 204,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 204,
+   "sha": "20f8963aa3f8a389",
+   "bg_rgb": "ffffff",
+   "png": "army_o04_b0_w204.png"
+  },
+  {
+   "tile": [
+    114,
+    47
+   ],
+   "kind": "army",
+   "owner": 4,
+   "band": 1,
+   "word": 220,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 220,
+   "sha": "ac8c05289a91d0ad",
+   "bg_rgb": "ffffff",
+   "png": "army_o04_b1_w220.png"
+  },
+  {
+   "tile": [
+    115,
+    47
+   ],
+   "kind": "army",
+   "owner": 4,
+   "band": 2,
+   "word": 236,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 236,
+   "sha": "efe7fba6f6a00ecb",
+   "bg_rgb": "ffffff",
+   "png": "army_o04_b2_w236.png"
+  },
+  {
+   "tile": [
+    116,
+    47
+   ],
+   "kind": "army",
+   "owner": 5,
+   "band": 0,
+   "word": 205,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 205,
+   "sha": "6716dd934268d4a1",
+   "bg_rgb": "30c30c",
+   "png": "army_o05_b0_w205.png"
+  },
+  {
+   "tile": [
+    117,
+    47
+   ],
+   "kind": "army",
+   "owner": 5,
+   "band": 1,
+   "word": 221,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 221,
+   "sha": "3fffcfa9ea91cf6e",
+   "bg_rgb": "30c30c",
+   "png": "army_o05_b1_w221.png"
+  },
+  {
+   "tile": [
+    118,
+    47
+   ],
+   "kind": "army",
+   "owner": 5,
+   "band": 2,
+   "word": 237,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 237,
+   "sha": "f7f67fcf63e67f40",
+   "bg_rgb": "0f00f0",
+   "png": "army_o05_b2_w237.png"
+  },
+  {
+   "tile": [
+    119,
+    47
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 0,
+   "word": 206,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 206,
+   "sha": "4d40f3779c206f05",
+   "bg_rgb": "700700",
+   "png": "army_o06_b0_w206.png"
+  },
+  {
+   "tile": [
+    120,
+    47
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 1,
+   "word": 222,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 222,
+   "sha": "ebcddac9bb9ea517",
+   "bg_rgb": "700700",
+   "png": "army_o06_b1_w222.png"
+  },
+  {
+   "tile": [
+    121,
+    47
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 238,
+   "sha": "c8d0506513c458bd",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238.png"
+  },
+  {
+   "tile": [
+    122,
+    47
+   ],
+   "kind": "army",
+   "owner": 7,
+   "band": 0,
+   "word": 207,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 207,
+   "sha": "c0583e29eb7aee73",
+   "bg_rgb": "3cf3cf",
+   "png": "army_o07_b0_w207.png"
+  },
+  {
+   "tile": [
+    123,
+    47
+   ],
+   "kind": "army",
+   "owner": 7,
+   "band": 1,
+   "word": 223,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 223,
+   "sha": "4edb27aab33459c9",
+   "bg_rgb": "3cf3cf",
+   "png": "army_o07_b1_w223.png"
+  },
+  {
+   "tile": [
+    124,
+    47
+   ],
+   "kind": "army",
+   "owner": 7,
+   "band": 2,
+   "word": 239,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 239,
+   "sha": "5a402fc1bcf20272",
+   "bg_rgb": "0ff0ff",
+   "png": "army_o07_b2_w239.png"
+  },
+  {
+   "tile": [
+    125,
+    47
+   ],
+   "kind": "army",
+   "owner": 8,
+   "band": 0,
+   "word": 208,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 208,
+   "sha": "6b04892969bb06a1",
+   "bg_rgb": "f3cf3c",
+   "png": "army_o08_b0_w208.png"
+  },
+  {
+   "tile": [
+    126,
+    47
+   ],
+   "kind": "army",
+   "owner": 8,
+   "band": 1,
+   "word": 224,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 224,
+   "sha": "643fb9b30a26f013",
+   "bg_rgb": "ff0ff0",
+   "png": "army_o08_b1_w224.png"
+  },
+  {
+   "tile": [
+    114,
+    48
+   ],
+   "kind": "army",
+   "owner": 8,
+   "band": 2,
+   "word": 240,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 240,
+   "sha": "aa0ba587479df3e4",
+   "bg_rgb": "ff0ff0",
+   "png": "army_o08_b2_w240.png"
+  },
+  {
+   "tile": [
+    115,
+    48
+   ],
+   "kind": "army",
+   "owner": 9,
+   "band": 0,
+   "word": 209,
+   "repeat": 0,
+   "terrain_under": 36,
+   "mem_word": 209,
+   "sha": "238d16f385b17646",
+   "bg_rgb": "007007",
+   "png": "army_o09_b0_w209.png"
+  },
+  {
+   "tile": [
+    116,
+    48
+   ],
+   "kind": "army",
+   "owner": 9,
+   "band": 1,
+   "word": 225,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 225,
+   "sha": "861008aee8598f63",
+   "bg_rgb": "007007",
+   "png": "army_o09_b1_w225.png"
+  },
+  {
+   "tile": [
+    117,
+    48
+   ],
+   "kind": "army",
+   "owner": 9,
+   "band": 2,
+   "word": 241,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 241,
+   "sha": "ac2a694c7a12aa89",
+   "bg_rgb": "007007",
+   "png": "army_o09_b2_w241.png"
+  },
+  {
+   "tile": [
+    118,
+    48
+   ],
+   "kind": "army",
+   "owner": 10,
+   "band": 0,
+   "word": 210,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 210,
+   "sha": "12e2e98a0db585be",
+   "bg_rgb": "104104",
+   "png": "army_o10_b0_w210.png"
+  },
+  {
+   "tile": [
+    119,
+    48
+   ],
+   "kind": "army",
+   "owner": 10,
+   "band": 1,
+   "word": 226,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 226,
+   "sha": "694edf81ec608a6e",
+   "bg_rgb": "104104",
+   "png": "army_o10_b1_w226.png"
+  },
+  {
+   "tile": [
+    120,
+    48
+   ],
+   "kind": "army",
+   "owner": 10,
+   "band": 2,
+   "word": 242,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 242,
+   "sha": "0a238c0faec39fcb",
+   "bg_rgb": "070070",
+   "png": "army_o10_b2_w242.png"
+  },
+  {
+   "tile": [
+    121,
+    48
+   ],
+   "kind": "army",
+   "owner": 11,
+   "band": 0,
+   "word": 211,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 211,
+   "sha": "26203b25258601ed",
+   "bg_rgb": "145145",
+   "png": "army_o11_b0_w211.png"
+  },
+  {
+   "tile": [
+    122,
+    48
+   ],
+   "kind": "army",
+   "owner": 11,
+   "band": 1,
+   "word": 227,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 227,
+   "sha": "8c63a171be32c299",
+   "bg_rgb": "145145",
+   "png": "army_o11_b1_w227.png"
+  },
+  {
+   "tile": [
+    123,
+    48
+   ],
+   "kind": "army",
+   "owner": 11,
+   "band": 2,
+   "word": 243,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 243,
+   "sha": "137c99264a82d4fe",
+   "bg_rgb": "000000",
+   "png": "army_o11_b2_w243.png"
+  },
+  {
+   "tile": [
+    124,
+    48
+   ],
+   "kind": "army",
+   "owner": 12,
+   "band": 0,
+   "word": 212,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 212,
+   "sha": "3e0348c12406a53b",
+   "bg_rgb": "0c30c3",
+   "png": "army_o12_b0_w212.png"
+  },
+  {
+   "tile": [
+    125,
+    48
+   ],
+   "kind": "army",
+   "owner": 12,
+   "band": 1,
+   "word": 228,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 228,
+   "sha": "c959b127615e0aa6",
+   "bg_rgb": "0c30c3",
+   "png": "army_o12_b1_w228.png"
+  },
+  {
+   "tile": [
+    126,
+    48
+   ],
+   "kind": "army",
+   "owner": 12,
+   "band": 2,
+   "word": 244,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 244,
+   "sha": "4a71271905449ceb",
+   "bg_rgb": "00f00f",
+   "png": "army_o12_b2_w244.png"
+  },
+  {
+   "tile": [
+    114,
+    49
+   ],
+   "kind": "army",
+   "owner": 13,
+   "band": 0,
+   "word": 213,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 213,
+   "sha": "4dc7656aedc6784a",
+   "bg_rgb": "cf3cf3",
+   "png": "army_o13_b0_w213.png"
+  },
+  {
+   "tile": [
+    115,
+    49
+   ],
+   "kind": "army",
+   "owner": 13,
+   "band": 1,
+   "word": 229,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 229,
+   "sha": "1fac755f6704a505",
+   "bg_rgb": "cf3cf3",
+   "png": "army_o13_b1_w229.png"
+  },
+  {
+   "tile": [
+    116,
+    49
+   ],
+   "kind": "army",
+   "owner": 13,
+   "band": 2,
+   "word": 245,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 245,
+   "sha": "a5b1590dc6654bb4",
+   "bg_rgb": "000000",
+   "png": "army_o13_b2_w245.png"
+  },
+  {
+   "tile": [
+    117,
+    49
+   ],
+   "kind": "army",
+   "owner": 14,
+   "band": 0,
+   "word": 214,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 214,
+   "sha": "b436ec2adf6b8062",
+   "bg_rgb": "f00f00",
+   "png": "army_o14_b0_w214.png"
+  },
+  {
+   "tile": [
+    118,
+    49
+   ],
+   "kind": "army",
+   "owner": 14,
+   "band": 1,
+   "word": 230,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 230,
+   "sha": "7055018b3891da09",
+   "bg_rgb": "f00f00",
+   "png": "army_o14_b1_w230.png"
+  },
+  {
+   "tile": [
+    119,
+    49
+   ],
+   "kind": "army",
+   "owner": 14,
+   "band": 2,
+   "word": 246,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 246,
+   "sha": "fbd77f5ce9f7f21e",
+   "bg_rgb": "f00f00",
+   "png": "army_o14_b2_w246.png"
+  },
+  {
+   "tile": [
+    120,
+    49
+   ],
+   "kind": "army",
+   "owner": 15,
+   "band": 0,
+   "word": 215,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 215,
+   "sha": "1f3fce1e7b351f22",
+   "bg_rgb": "808080",
+   "png": "army_o15_b0_w215.png"
+  },
+  {
+   "tile": [
+    121,
+    49
+   ],
+   "kind": "army",
+   "owner": 15,
+   "band": 1,
+   "word": 231,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 231,
+   "sha": "93da641fc6c78b48",
+   "bg_rgb": "808080",
+   "png": "army_o15_b1_w231.png"
+  },
+  {
+   "tile": [
+    122,
+    49
+   ],
+   "kind": "army",
+   "owner": 15,
+   "band": 2,
+   "word": 247,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 247,
+   "sha": "f69472b21eed006c",
+   "bg_rgb": "ffffff",
+   "png": "army_o15_b2_w247.png"
+  },
+  {
+   "tile": [
+    123,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 0,
+   "band": 0,
+   "word": 300,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 300,
+   "sha": "d1bbf09a0d2d99d7",
+   "bg_rgb": "451451",
+   "png": "fleet_o00_b0_w300.png"
+  },
+  {
+   "tile": [
+    124,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 0,
+   "band": 1,
+   "word": 316,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 316,
+   "sha": "a8b0ddac3a73339c",
+   "bg_rgb": "451451",
+   "png": "fleet_o00_b1_w316.png"
+  },
+  {
+   "tile": [
+    125,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 0,
+   "band": 2,
+   "word": 332,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 332,
+   "sha": "3ca656fe0c88b216",
+   "bg_rgb": "707fff",
+   "png": "fleet_o00_b2_w332.png"
+  },
+  {
+   "tile": [
+    126,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 0,
+   "word": 301,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 301,
+   "sha": "bdf1b5365a3d92ba",
+   "bg_rgb": "f00f00",
+   "png": "fleet_o01_b0_w301.png"
+  },
+  {
+   "tile": [
+    114,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 1,
+   "word": 317,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 317,
+   "sha": "b44b2643471ca612",
+   "bg_rgb": "c30c30",
+   "png": "fleet_o01_b1_w317.png"
+  },
+  {
+   "tile": [
+    115,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "8e4b41e232b42057",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333.png"
+  },
+  {
+   "tile": [
+    116,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 2,
+   "band": 0,
+   "word": 302,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 302,
+   "sha": "7c05b4e32686c4d5",
+   "bg_rgb": "514514",
+   "png": "fleet_o02_b0_w302.png"
+  },
+  {
+   "tile": [
+    117,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 2,
+   "band": 1,
+   "word": 318,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 318,
+   "sha": "1d04aafbc232f2ce",
+   "bg_rgb": "514514",
+   "png": "fleet_o02_b1_w318.png"
+  },
+  {
+   "tile": [
+    118,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 2,
+   "band": 2,
+   "word": 334,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 334,
+   "sha": "1401787042293713",
+   "bg_rgb": "770fff",
+   "png": "fleet_o02_b2_w334.png"
+  },
+  {
+   "tile": [
+    119,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 3,
+   "band": 0,
+   "word": 303,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 303,
+   "sha": "53040068a8906beb",
+   "bg_rgb": "041041",
+   "png": "fleet_o03_b0_w303.png"
+  },
+  {
+   "tile": [
+    120,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 3,
+   "band": 1,
+   "word": 319,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 319,
+   "sha": "922f6cdec9d9cffc",
+   "bg_rgb": "041041",
+   "png": "fleet_o03_b1_w319.png"
+  },
+  {
+   "tile": [
+    121,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 3,
+   "band": 2,
+   "word": 335,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 335,
+   "sha": "2038861d2506739e",
+   "bg_rgb": "cf3cf3",
+   "png": "fleet_o03_b2_w335.png"
+  },
+  {
+   "tile": [
+    122,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 4,
+   "band": 0,
+   "word": 304,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 304,
+   "sha": "0bb7cd833128992a",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o04_b0_w304.png"
+  },
+  {
+   "tile": [
+    123,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 4,
+   "band": 1,
+   "word": 320,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 320,
+   "sha": "67edb8c486428d7e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o04_b1_w320.png"
+  },
+  {
+   "tile": [
+    124,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 4,
+   "band": 2,
+   "word": 336,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 336,
+   "sha": "f4a35969b3d6fff5",
+   "bg_rgb": "fff00f",
+   "png": "fleet_o04_b2_w336.png"
+  },
+  {
+   "tile": [
+    125,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 5,
+   "band": 0,
+   "word": 305,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 305,
+   "sha": "19e62f050bf3261c",
+   "bg_rgb": "30c30c",
+   "png": "fleet_o05_b0_w305.png"
+  },
+  {
+   "tile": [
+    126,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 5,
+   "band": 1,
+   "word": 321,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 321,
+   "sha": "03cfdecb762db8b7",
+   "bg_rgb": "0f00f0",
+   "png": "fleet_o05_b1_w321.png"
+  },
+  {
+   "tile": [
+    114,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 5,
+   "band": 2,
+   "word": 337,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 337,
+   "sha": "e91910013369e208",
+   "bg_rgb": "0f0000",
+   "png": "fleet_o05_b2_w337.png"
+  },
+  {
+   "tile": [
+    115,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 6,
+   "band": 0,
+   "word": 306,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 306,
+   "sha": "7f46116a0162a88d",
+   "bg_rgb": "700700",
+   "png": "fleet_o06_b0_w306.png"
+  },
+  {
+   "tile": [
+    116,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 6,
+   "band": 1,
+   "word": 322,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 322,
+   "sha": "6f952fddabbbfecc",
+   "bg_rgb": "700700",
+   "png": "fleet_o06_b1_w322.png"
+  },
+  {
+   "tile": [
+    117,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 6,
+   "band": 2,
+   "word": 338,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 338,
+   "sha": "094a91246ee6ec98",
+   "bg_rgb": "7000ff",
+   "png": "fleet_o06_b2_w338.png"
+  },
+  {
+   "tile": [
+    118,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 7,
+   "band": 0,
+   "word": 307,
+   "repeat": 0,
+   "terrain_under": 36,
+   "mem_word": 307,
+   "sha": "f83f3c55cd016d8d",
+   "bg_rgb": "3cf3cf",
+   "png": "fleet_o07_b0_w307.png"
+  },
+  {
+   "tile": [
+    119,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 7,
+   "band": 1,
+   "word": 323,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 323,
+   "sha": "71fbd28274c0cc3b",
+   "bg_rgb": "3cf3cf",
+   "png": "fleet_o07_b1_w323.png"
+  },
+  {
+   "tile": [
+    120,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 7,
+   "band": 2,
+   "word": 339,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 339,
+   "sha": "e07e6ffd6f3889f3",
+   "bg_rgb": "0ff000",
+   "png": "fleet_o07_b2_w339.png"
+  },
+  {
+   "tile": [
+    121,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 8,
+   "band": 0,
+   "word": 308,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 308,
+   "sha": "0deb598fd8a1bc53",
+   "bg_rgb": "f3cf3c",
+   "png": "fleet_o08_b0_w308.png"
+  },
+  {
+   "tile": [
+    122,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 8,
+   "band": 1,
+   "word": 324,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 324,
+   "sha": "a1c92edd88289694",
+   "bg_rgb": "f3cf3c",
+   "png": "fleet_o08_b1_w324.png"
+  },
+  {
+   "tile": [
+    123,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 8,
+   "band": 2,
+   "word": 340,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 340,
+   "sha": "7e62fc42b45935cc",
+   "bg_rgb": "ff0000",
+   "png": "fleet_o08_b2_w340.png"
+  },
+  {
+   "tile": [
+    124,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 9,
+   "band": 0,
+   "word": 309,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 309,
+   "sha": "347940b85869fa43",
+   "bg_rgb": "007007",
+   "png": "fleet_o09_b0_w309.png"
+  },
+  {
+   "tile": [
+    125,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 9,
+   "band": 1,
+   "word": 325,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 325,
+   "sha": "6744cf33fd5f64cf",
+   "bg_rgb": "007007",
+   "png": "fleet_o09_b1_w325.png"
+  },
+  {
+   "tile": [
+    126,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 9,
+   "band": 2,
+   "word": 341,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 341,
+   "sha": "1b9a840aa552a153",
+   "bg_rgb": "007770",
+   "png": "fleet_o09_b2_w341.png"
+  },
+  {
+   "tile": [
+    114,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 10,
+   "band": 0,
+   "word": 310,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 310,
+   "sha": "af8729373321310d",
+   "bg_rgb": "104104",
+   "png": "fleet_o10_b0_w310.png"
+  },
+  {
+   "tile": [
+    115,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 10,
+   "band": 1,
+   "word": 326,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 326,
+   "sha": "d99641563deeb6ca",
+   "bg_rgb": "104104",
+   "png": "fleet_o10_b1_w326.png"
+  },
+  {
+   "tile": [
+    116,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 10,
+   "band": 2,
+   "word": 342,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 342,
+   "sha": "aa48f8717c6224fb",
+   "bg_rgb": "070000",
+   "png": "fleet_o10_b2_w342.png"
+  },
+  {
+   "tile": [
+    117,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 11,
+   "band": 0,
+   "word": 311,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 311,
+   "sha": "47d1707a7e548da1",
+   "bg_rgb": "145145",
+   "png": "fleet_o11_b0_w311.png"
+  },
+  {
+   "tile": [
+    118,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 11,
+   "band": 1,
+   "word": 327,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 327,
+   "sha": "e4073ba978b00788",
+   "bg_rgb": "145145",
+   "png": "fleet_o11_b1_w327.png"
+  },
+  {
+   "tile": [
+    119,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 11,
+   "band": 2,
+   "word": 343,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 343,
+   "sha": "47f3268ef4e5d4d1",
+   "bg_rgb": "0c30c3",
+   "png": "fleet_o11_b2_w343.png"
+  },
+  {
+   "tile": [
+    120,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 12,
+   "band": 0,
+   "word": 312,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 312,
+   "sha": "5ab697544801e735",
+   "bg_rgb": "0c30c3",
+   "png": "fleet_o12_b0_w312.png"
+  },
+  {
+   "tile": [
+    121,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 12,
+   "band": 1,
+   "word": 328,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 328,
+   "sha": "437596962235c5c2",
+   "bg_rgb": "0c30c3",
+   "png": "fleet_o12_b1_w328.png"
+  },
+  {
+   "tile": [
+    122,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 12,
+   "band": 2,
+   "word": 344,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 344,
+   "sha": "37417938c3f51643",
+   "bg_rgb": "00f000",
+   "png": "fleet_o12_b2_w344.png"
+  },
+  {
+   "tile": [
+    123,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 13,
+   "band": 0,
+   "word": 313,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 313,
+   "sha": "4802c8f5b1081bdd",
+   "bg_rgb": "cf3cf3",
+   "png": "fleet_o13_b0_w313.png"
+  },
+  {
+   "tile": [
+    124,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 13,
+   "band": 1,
+   "word": 329,
+   "repeat": 0,
+   "terrain_under": 36,
+   "mem_word": 329,
+   "sha": "73abe2278b205c99",
+   "bg_rgb": "cf3cf3",
+   "png": "fleet_o13_b1_w329.png"
+  },
+  {
+   "tile": [
+    125,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 13,
+   "band": 2,
+   "word": 345,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 345,
+   "sha": "ed0ce1f1ddc0923d",
+   "bg_rgb": "c30c30",
+   "png": "fleet_o13_b2_w345.png"
+  },
+  {
+   "tile": [
+    126,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 14,
+   "band": 0,
+   "word": 314,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 314,
+   "sha": "1f5ea14ce2eb515e",
+   "bg_rgb": "f00f00",
+   "png": "fleet_o14_b0_w314.png"
+  },
+  {
+   "tile": [
+    114,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 14,
+   "band": 1,
+   "word": 330,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 330,
+   "sha": "ed6ab2d9b5173d67",
+   "bg_rgb": "f00f00",
+   "png": "fleet_o14_b1_w330.png"
+  },
+  {
+   "tile": [
+    115,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 14,
+   "band": 2,
+   "word": 346,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 346,
+   "sha": "661e9ca081037a98",
+   "bg_rgb": "f00bbb",
+   "png": "fleet_o14_b2_w346.png"
+  },
+  {
+   "tile": [
+    116,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 15,
+   "band": 0,
+   "word": 315,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 315,
+   "sha": "16aac33700380452",
+   "bg_rgb": "808080",
+   "png": "fleet_o15_b0_w315.png"
+  },
+  {
+   "tile": [
+    117,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 15,
+   "band": 1,
+   "word": 331,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 331,
+   "sha": "6920e99fc99289cd",
+   "bg_rgb": "808080",
+   "png": "fleet_o15_b1_w331.png"
+  },
+  {
+   "tile": [
+    118,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 15,
+   "band": 2,
+   "word": 347,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 347,
+   "sha": "335c79f5d410d88a",
+   "bg_rgb": "000000",
+   "png": "fleet_o15_b2_w347.png"
+  },
+  {
+   "tile": [
+    119,
+    53
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 1,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "347b29fc65a7e7b7",
+   "bg_rgb": "451451",
+   "png": "army_o00_b0_w200_rep1.png"
+  },
+  {
+   "tile": [
+    121,
+    53
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 1,
+   "terrain_under": 36,
+   "mem_word": 238,
+   "sha": "b4d138f24a069000",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep1.png"
+  },
+  {
+   "tile": [
+    122,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 1,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "765fa758ed52800e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep1.png"
+  },
+  {
+   "tile": [
+    123,
+    53
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 2,
+   "terrain_under": 0,
+   "mem_word": 200,
+   "sha": "d2ad33751e8b614d",
+   "bg_rgb": "707707",
+   "png": "army_o00_b0_w200_rep2.png"
+  },
+  {
+   "tile": [
+    124,
+    53
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 2,
+   "terrain_under": 0,
+   "mem_word": 238,
+   "sha": "b4d138f24a069000",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep2.png"
+  },
+  {
+   "tile": [
+    125,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 2,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "765fa758ed52800e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep2.png"
+  },
+  {
+   "tile": [
+    126,
+    53
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 3,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "7704a43705331f7e",
+   "bg_rgb": "707707",
+   "png": "army_o00_b0_w200_rep3.png"
+  },
+  {
+   "tile": [
+    114,
+    54
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 3,
+   "terrain_under": 2,
+   "mem_word": 238,
+   "sha": "b4d138f24a069000",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep3.png"
+  },
+  {
+   "tile": [
+    115,
+    54
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 3,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "765fa758ed52800e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep3.png"
+  },
+  {
+   "tile": [
+    116,
+    54
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 4,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "d2ad33751e8b614d",
+   "bg_rgb": "707707",
+   "png": "army_o00_b0_w200_rep4.png"
+  },
+  {
+   "tile": [
+    117,
+    54
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 4,
+   "terrain_under": 2,
+   "mem_word": 238,
+   "sha": "b4d138f24a069000",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep4.png"
+  },
+  {
+   "tile": [
+    118,
+    54
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 4,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "be2cb8ee2c5ee36d",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep4.png"
+  }
+ ]
+}

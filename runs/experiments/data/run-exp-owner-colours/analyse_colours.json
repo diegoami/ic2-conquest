@@ -1,0 +1,3624 @@
+{
+ "origin": [
+  114,
+  46
+ ],
+ "control": {
+  "tile": [
+   120,
+   53
+  ],
+  "word": 200,
+  "png": "artifacts/run-exp-owner-colours/tiles/control_rome_army_200.png",
+  "sha": "9c392b455b464434",
+  "bg": "800080",
+  "sha_inset2": "e6129bbc48e5e3ee"
+ },
+ "tiles": [
+  {
+   "tile": [
+    114,
+    46
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "c79505783b50b978",
+   "bg_rgb": "451451",
+   "png": "army_o00_b0_w200.png",
+   "sha_inset2": "e6129bbc48e5e3ee",
+   "bg": "800080",
+   "top_colours": [
+    "800080",
+    "ffffff",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    46
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 1,
+   "word": 216,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 216,
+   "sha": "1dd83f2573cad04f",
+   "bg_rgb": "451451",
+   "png": "army_o00_b1_w216.png",
+   "sha_inset2": "e432c82e9ff082da",
+   "bg": "800080",
+   "top_colours": [
+    "800080",
+    "ffffff",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    46
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 2,
+   "word": 232,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 232,
+   "sha": "7b2e17a90aa9f8b9",
+   "bg_rgb": "707707",
+   "png": "army_o00_b2_w232.png",
+   "sha_inset2": "ff3e14f4d7a60fe2",
+   "bg": "800080",
+   "top_colours": [
+    "800080",
+    "ffffff",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    46
+   ],
+   "kind": "army",
+   "owner": 1,
+   "band": 0,
+   "word": 201,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 201,
+   "sha": "1d6172d759f267cc",
+   "bg_rgb": "c30c30",
+   "png": "army_o01_b0_w201.png",
+   "sha_inset2": "671cb130d0c60625",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "000000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    46
+   ],
+   "kind": "army",
+   "owner": 1,
+   "band": 1,
+   "word": 217,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 217,
+   "sha": "cb59b85af4321d72",
+   "bg_rgb": "c30c30",
+   "png": "army_o01_b1_w217.png",
+   "sha_inset2": "9af8fbf2350f59b5",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "000000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    46
+   ],
+   "kind": "army",
+   "owner": 1,
+   "band": 2,
+   "word": 233,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 233,
+   "sha": "51e39b9776453f5c",
+   "bg_rgb": "000000",
+   "png": "army_o01_b2_w233.png",
+   "sha_inset2": "896373223984d9f7",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "000000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    46
+   ],
+   "kind": "army",
+   "owner": 2,
+   "band": 0,
+   "word": 202,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 202,
+   "sha": "928010ae6decf956",
+   "bg_rgb": "514514",
+   "png": "army_o02_b0_w202.png",
+   "sha_inset2": "78d1b6b699ff01e9",
+   "bg": "808000",
+   "top_colours": [
+    "808000",
+    "ffffff",
+    "800000"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    46
+   ],
+   "kind": "army",
+   "owner": 2,
+   "band": 1,
+   "word": 218,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 218,
+   "sha": "5010cc73a518e905",
+   "bg_rgb": "514514",
+   "png": "army_o02_b1_w218.png",
+   "sha_inset2": "9c2816165fcb97d6",
+   "bg": "808000",
+   "top_colours": [
+    "808000",
+    "ffffff",
+    "800000"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    46
+   ],
+   "kind": "army",
+   "owner": 2,
+   "band": 2,
+   "word": 234,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 234,
+   "sha": "ab92d88169afd32c",
+   "bg_rgb": "770770",
+   "png": "army_o02_b2_w234.png",
+   "sha_inset2": "9aed777a6627bd24",
+   "bg": "808000",
+   "top_colours": [
+    "808000",
+    "ffffff",
+    "800000"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    46
+   ],
+   "kind": "army",
+   "owner": 3,
+   "band": 0,
+   "word": 203,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 203,
+   "sha": "c813a7c3b556c372",
+   "bg_rgb": "041041",
+   "png": "army_o03_b0_w203.png",
+   "sha_inset2": "fd7cef2e6a7705e6",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "ffffff",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    46
+   ],
+   "kind": "army",
+   "owner": 3,
+   "band": 1,
+   "word": 219,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 219,
+   "sha": "f8a8d9062fdbe884",
+   "bg_rgb": "041041",
+   "png": "army_o03_b1_w219.png",
+   "sha_inset2": "4ab1beceeeee64e2",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "ffffff",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    46
+   ],
+   "kind": "army",
+   "owner": 3,
+   "band": 2,
+   "word": 235,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 235,
+   "sha": "1875a751e6cb75d6",
+   "bg_rgb": "ffffff",
+   "png": "army_o03_b2_w235.png",
+   "sha_inset2": "465a27fc54597198",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "ffffff",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    46
+   ],
+   "kind": "army",
+   "owner": 4,
+   "band": 0,
+   "word": 204,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 204,
+   "sha": "9e3e11f14604b43a",
+   "bg_rgb": "ffffff",
+   "png": "army_o04_b0_w204.png",
+   "sha_inset2": "97f8e9fd3fc42615",
+   "bg": "ffffff",
+   "top_colours": [
+    "ffffff",
+    "0000ff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    47
+   ],
+   "kind": "army",
+   "owner": 4,
+   "band": 1,
+   "word": 220,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 220,
+   "sha": "84a3a99d9a8d936c",
+   "bg_rgb": "ffffff",
+   "png": "army_o04_b1_w220.png",
+   "sha_inset2": "3517708674de02a1",
+   "bg": "ffffff",
+   "top_colours": [
+    "ffffff",
+    "0000ff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    47
+   ],
+   "kind": "army",
+   "owner": 4,
+   "band": 2,
+   "word": 236,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 236,
+   "sha": "f691697084ac6399",
+   "bg_rgb": "ffffff",
+   "png": "army_o04_b2_w236.png",
+   "sha_inset2": "bea061f3851215bf",
+   "bg": "ffffff",
+   "top_colours": [
+    "ffffff",
+    "0000ff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    47
+   ],
+   "kind": "army",
+   "owner": 5,
+   "band": 0,
+   "word": 205,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 205,
+   "sha": "6b7b6195ac9e95bf",
+   "bg_rgb": "30c30c",
+   "png": "army_o05_b0_w205.png",
+   "sha_inset2": "1436da0a588a83ff",
+   "bg": "00ff00",
+   "top_colours": [
+    "00ff00",
+    "000000",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    47
+   ],
+   "kind": "army",
+   "owner": 5,
+   "band": 1,
+   "word": 221,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 221,
+   "sha": "a9c5b5c83d9f6a4a",
+   "bg_rgb": "30c30c",
+   "png": "army_o05_b1_w221.png",
+   "sha_inset2": "01a714f54d7df477",
+   "bg": "00ff00",
+   "top_colours": [
+    "00ff00",
+    "000000",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    47
+   ],
+   "kind": "army",
+   "owner": 5,
+   "band": 2,
+   "word": 237,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 237,
+   "sha": "df2ca5c2e479e532",
+   "bg_rgb": "0f00f0",
+   "png": "army_o05_b2_w237.png",
+   "sha_inset2": "b1ae386fb2917643",
+   "bg": "00ff00",
+   "top_colours": [
+    "00ff00",
+    "000000",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    47
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 0,
+   "word": 206,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 206,
+   "sha": "3ced0c1ee9497b98",
+   "bg_rgb": "700700",
+   "png": "army_o06_b0_w206.png",
+   "sha_inset2": "49d5bcdd3905afcf",
+   "bg": "800000",
+   "top_colours": [
+    "800000",
+    "00ffff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    47
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 1,
+   "word": 222,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 222,
+   "sha": "86fba7e19f55fd86",
+   "bg_rgb": "700700",
+   "png": "army_o06_b1_w222.png",
+   "sha_inset2": "71b00c173661ba42",
+   "bg": "800000",
+   "top_colours": [
+    "800000",
+    "00ffff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    47
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 238,
+   "sha": "5a5bb6a2505cec88",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238.png",
+   "sha_inset2": "219a4a72cbf88c0f",
+   "bg": "800000",
+   "top_colours": [
+    "800000",
+    "00ffff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    47
+   ],
+   "kind": "army",
+   "owner": 7,
+   "band": 0,
+   "word": 207,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 207,
+   "sha": "e4c98b5a797ac871",
+   "bg_rgb": "3cf3cf",
+   "png": "army_o07_b0_w207.png",
+   "sha_inset2": "d21ca7a6beabef17",
+   "bg": "00ffff",
+   "top_colours": [
+    "00ffff",
+    "000000",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    47
+   ],
+   "kind": "army",
+   "owner": 7,
+   "band": 1,
+   "word": 223,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 223,
+   "sha": "8f2d9571ef4d9e74",
+   "bg_rgb": "3cf3cf",
+   "png": "army_o07_b1_w223.png",
+   "sha_inset2": "1145afbd1fdf65b0",
+   "bg": "00ffff",
+   "top_colours": [
+    "00ffff",
+    "000000",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    47
+   ],
+   "kind": "army",
+   "owner": 7,
+   "band": 2,
+   "word": 239,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 239,
+   "sha": "81cd7b735cb2727e",
+   "bg_rgb": "0ff0ff",
+   "png": "army_o07_b2_w239.png",
+   "sha_inset2": "e3f3005247cc3498",
+   "bg": "00ffff",
+   "top_colours": [
+    "00ffff",
+    "000000",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    47
+   ],
+   "kind": "army",
+   "owner": 8,
+   "band": 0,
+   "word": 208,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 208,
+   "sha": "8ef4eb52a81c34cb",
+   "bg_rgb": "f3cf3c",
+   "png": "army_o08_b0_w208.png",
+   "sha_inset2": "e0e65c3f874056a7",
+   "bg": "ffff00",
+   "top_colours": [
+    "ffff00",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    47
+   ],
+   "kind": "army",
+   "owner": 8,
+   "band": 1,
+   "word": 224,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 224,
+   "sha": "a57fcbd1c0a90573",
+   "bg_rgb": "ff0ff0",
+   "png": "army_o08_b1_w224.png",
+   "sha_inset2": "2229190e9ba414d9",
+   "bg": "ffff00",
+   "top_colours": [
+    "ffff00",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    48
+   ],
+   "kind": "army",
+   "owner": 8,
+   "band": 2,
+   "word": 240,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 240,
+   "sha": "4248f7f9d9d2520f",
+   "bg_rgb": "ff0ff0",
+   "png": "army_o08_b2_w240.png",
+   "sha_inset2": "6918808a0cf2f09d",
+   "bg": "ffff00",
+   "top_colours": [
+    "ffff00",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    48
+   ],
+   "kind": "army",
+   "owner": 9,
+   "band": 0,
+   "word": 209,
+   "repeat": 0,
+   "terrain_under": 36,
+   "mem_word": 209,
+   "sha": "676ddc5829e98eaa",
+   "bg_rgb": "007007",
+   "png": "army_o09_b0_w209.png",
+   "sha_inset2": "af37a710264629a5",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "808000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    48
+   ],
+   "kind": "army",
+   "owner": 9,
+   "band": 1,
+   "word": 225,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 225,
+   "sha": "3eabb3f29b0eb266",
+   "bg_rgb": "007007",
+   "png": "army_o09_b1_w225.png",
+   "sha_inset2": "a022e7694cb29859",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "808000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    48
+   ],
+   "kind": "army",
+   "owner": 9,
+   "band": 2,
+   "word": 241,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 241,
+   "sha": "412a2ceb26929b5a",
+   "bg_rgb": "007007",
+   "png": "army_o09_b2_w241.png",
+   "sha_inset2": "12202e652ce426f4",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "808000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    48
+   ],
+   "kind": "army",
+   "owner": 10,
+   "band": 0,
+   "word": 210,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 210,
+   "sha": "50bab5de2c26fdae",
+   "bg_rgb": "104104",
+   "png": "army_o10_b0_w210.png",
+   "sha_inset2": "f8873959c7b5f3c2",
+   "bg": "008000",
+   "top_colours": [
+    "008000",
+    "000000",
+    "ffff00"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    48
+   ],
+   "kind": "army",
+   "owner": 10,
+   "band": 1,
+   "word": 226,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 226,
+   "sha": "f55d7e86e1839278",
+   "bg_rgb": "104104",
+   "png": "army_o10_b1_w226.png",
+   "sha_inset2": "a7c110a3094f0c18",
+   "bg": "008000",
+   "top_colours": [
+    "008000",
+    "000000",
+    "ffff00"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    48
+   ],
+   "kind": "army",
+   "owner": 10,
+   "band": 2,
+   "word": 242,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 242,
+   "sha": "ad4f9b14a4300dc4",
+   "bg_rgb": "070070",
+   "png": "army_o10_b2_w242.png",
+   "sha_inset2": "b7e85d16ead90730",
+   "bg": "008000",
+   "top_colours": [
+    "008000",
+    "000000",
+    "ffff00"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    48
+   ],
+   "kind": "army",
+   "owner": 11,
+   "band": 0,
+   "word": 211,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 211,
+   "sha": "b5a774684ec7d3d7",
+   "bg_rgb": "145145",
+   "png": "army_o11_b0_w211.png",
+   "sha_inset2": "dd30318e36bfc79b",
+   "bg": "008080",
+   "top_colours": [
+    "008080",
+    "000000",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    48
+   ],
+   "kind": "army",
+   "owner": 11,
+   "band": 1,
+   "word": 227,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 227,
+   "sha": "eb4b280e214a4703",
+   "bg_rgb": "145145",
+   "png": "army_o11_b1_w227.png",
+   "sha_inset2": "774776b8a6ab1084",
+   "bg": "008080",
+   "top_colours": [
+    "008080",
+    "000000",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    48
+   ],
+   "kind": "army",
+   "owner": 11,
+   "band": 2,
+   "word": 243,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 243,
+   "sha": "f879b51199180413",
+   "bg_rgb": "000000",
+   "png": "army_o11_b2_w243.png",
+   "sha_inset2": "a2bc2231e6032c0c",
+   "bg": "008080",
+   "top_colours": [
+    "008080",
+    "000000",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    48
+   ],
+   "kind": "army",
+   "owner": 12,
+   "band": 0,
+   "word": 212,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 212,
+   "sha": "3fa37dcd0026cfec",
+   "bg_rgb": "0c30c3",
+   "png": "army_o12_b0_w212.png",
+   "sha_inset2": "64a01e2c0f350d54",
+   "bg": "0000ff",
+   "top_colours": [
+    "0000ff",
+    "000000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    48
+   ],
+   "kind": "army",
+   "owner": 12,
+   "band": 1,
+   "word": 228,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 228,
+   "sha": "bb7eb143e185d5d4",
+   "bg_rgb": "0c30c3",
+   "png": "army_o12_b1_w228.png",
+   "sha_inset2": "6dc69a9ea3bf0219",
+   "bg": "0000ff",
+   "top_colours": [
+    "0000ff",
+    "000000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    48
+   ],
+   "kind": "army",
+   "owner": 12,
+   "band": 2,
+   "word": 244,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 244,
+   "sha": "31cde08810db00fc",
+   "bg_rgb": "00f00f",
+   "png": "army_o12_b2_w244.png",
+   "sha_inset2": "e34a788b26ef1d48",
+   "bg": "0000ff",
+   "top_colours": [
+    "0000ff",
+    "000000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    49
+   ],
+   "kind": "army",
+   "owner": 13,
+   "band": 0,
+   "word": 213,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 213,
+   "sha": "7278c55c321191b7",
+   "bg_rgb": "cf3cf3",
+   "png": "army_o13_b0_w213.png",
+   "sha_inset2": "eddd8e7f898019bd",
+   "bg": "ff00ff",
+   "top_colours": [
+    "ff00ff",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    49
+   ],
+   "kind": "army",
+   "owner": 13,
+   "band": 1,
+   "word": 229,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 229,
+   "sha": "229eaf062e247ee6",
+   "bg_rgb": "cf3cf3",
+   "png": "army_o13_b1_w229.png",
+   "sha_inset2": "9d06761cac99c5d3",
+   "bg": "ff00ff",
+   "top_colours": [
+    "ff00ff",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    49
+   ],
+   "kind": "army",
+   "owner": 13,
+   "band": 2,
+   "word": 245,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 245,
+   "sha": "40f7333a5b94f235",
+   "bg_rgb": "000000",
+   "png": "army_o13_b2_w245.png",
+   "sha_inset2": "e22ed84c79db8c69",
+   "bg": "ff00ff",
+   "top_colours": [
+    "ff00ff",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    49
+   ],
+   "kind": "army",
+   "owner": 14,
+   "band": 0,
+   "word": 214,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 214,
+   "sha": "582dff4cb60b3e5e",
+   "bg_rgb": "f00f00",
+   "png": "army_o14_b0_w214.png",
+   "sha_inset2": "776c5330e0fd35ce",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "c0c0c0",
+    "800080"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    49
+   ],
+   "kind": "army",
+   "owner": 14,
+   "band": 1,
+   "word": 230,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 230,
+   "sha": "973a13c85c1fde5b",
+   "bg_rgb": "f00f00",
+   "png": "army_o14_b1_w230.png",
+   "sha_inset2": "b4b0670c4c4cf426",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "c0c0c0",
+    "800080"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    49
+   ],
+   "kind": "army",
+   "owner": 14,
+   "band": 2,
+   "word": 246,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 246,
+   "sha": "5c9e9ad4497eac90",
+   "bg_rgb": "f00f00",
+   "png": "army_o14_b2_w246.png",
+   "sha_inset2": "deca35bc2b274b03",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "c0c0c0",
+    "800080"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    49
+   ],
+   "kind": "army",
+   "owner": 15,
+   "band": 0,
+   "word": 215,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 215,
+   "sha": "1f3fce1e7b351f22",
+   "bg_rgb": "808080",
+   "png": "army_o15_b0_w215.png",
+   "sha_inset2": "cac3f32fc0708dc7",
+   "bg": "808080",
+   "top_colours": [
+    "808080",
+    "ffffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    49
+   ],
+   "kind": "army",
+   "owner": 15,
+   "band": 1,
+   "word": 231,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 231,
+   "sha": "93da641fc6c78b48",
+   "bg_rgb": "808080",
+   "png": "army_o15_b1_w231.png",
+   "sha_inset2": "692a7b580922168b",
+   "bg": "808080",
+   "top_colours": [
+    "808080",
+    "ffffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    49
+   ],
+   "kind": "army",
+   "owner": 15,
+   "band": 2,
+   "word": 247,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 247,
+   "sha": "481340bb71399ed1",
+   "bg_rgb": "ffffff",
+   "png": "army_o15_b2_w247.png",
+   "sha_inset2": "5b8960ae86091821",
+   "bg": "808080",
+   "top_colours": [
+    "808080",
+    "ffffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 0,
+   "band": 0,
+   "word": 300,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 300,
+   "sha": "826141b1c311776b",
+   "bg_rgb": "451451",
+   "png": "fleet_o00_b0_w300.png",
+   "sha_inset2": "24c612e16f3b8e47",
+   "bg": "800080",
+   "top_colours": [
+    "800080",
+    "ffffff",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 0,
+   "band": 1,
+   "word": 316,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 316,
+   "sha": "a85b4f595a154ef4",
+   "bg_rgb": "451451",
+   "png": "fleet_o00_b1_w316.png",
+   "sha_inset2": "cf8131cef62b7141",
+   "bg": "800080",
+   "top_colours": [
+    "800080",
+    "0000ff",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 0,
+   "band": 2,
+   "word": 332,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 332,
+   "sha": "59e577f1aa40b2cc",
+   "bg_rgb": "707fff",
+   "png": "fleet_o00_b2_w332.png",
+   "sha_inset2": "51bb61847175a75b",
+   "bg": "ffffff",
+   "top_colours": [
+    "800080",
+    "0000ff",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    49
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 0,
+   "word": 301,
+   "repeat": 0,
+   "terrain_under": 0,
+   "mem_word": 301,
+   "sha": "3906876b8ca3b4a0",
+   "bg_rgb": "f00f00",
+   "png": "fleet_o01_b0_w301.png",
+   "sha_inset2": "e034fefe65893ba0",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "000000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 1,
+   "word": 317,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 317,
+   "sha": "997129b2509444ce",
+   "bg_rgb": "c30c30",
+   "png": "fleet_o01_b1_w317.png",
+   "sha_inset2": "5368e8f458b120ad",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "ffffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "0a71f55e7afc8160",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333.png",
+   "sha_inset2": "d9e7a33a4f4b363a",
+   "bg": "000000",
+   "top_colours": [
+    "ff0000",
+    "ffffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 2,
+   "band": 0,
+   "word": 302,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 302,
+   "sha": "7fe521bbdd9f462a",
+   "bg_rgb": "514514",
+   "png": "fleet_o02_b0_w302.png",
+   "sha_inset2": "c827151a9d18619b",
+   "bg": "808000",
+   "top_colours": [
+    "808000",
+    "ffffff",
+    "800000"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 2,
+   "band": 1,
+   "word": 318,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 318,
+   "sha": "f7f6f28cd89412e3",
+   "bg_rgb": "514514",
+   "png": "fleet_o02_b1_w318.png",
+   "sha_inset2": "a208c72838582dd1",
+   "bg": "808000",
+   "top_colours": [
+    "808000",
+    "800000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 2,
+   "band": 2,
+   "word": 334,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 334,
+   "sha": "e497551b5923fc47",
+   "bg_rgb": "770fff",
+   "png": "fleet_o02_b2_w334.png",
+   "sha_inset2": "1dc6507269b9ab08",
+   "bg": "ffffff",
+   "top_colours": [
+    "808000",
+    "800000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 3,
+   "band": 0,
+   "word": 303,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 303,
+   "sha": "d12abcdaf8ca323c",
+   "bg_rgb": "041041",
+   "png": "fleet_o03_b0_w303.png",
+   "sha_inset2": "235a6cd6bf8e5601",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "ffffff",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 3,
+   "band": 1,
+   "word": 319,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 319,
+   "sha": "e6a656abd8c3a45e",
+   "bg_rgb": "041041",
+   "png": "fleet_o03_b1_w319.png",
+   "sha_inset2": "8a9ca432eea26433",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "ff00ff",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 3,
+   "band": 2,
+   "word": 335,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 335,
+   "sha": "def27ad3011d00a0",
+   "bg_rgb": "cf3cf3",
+   "png": "fleet_o03_b2_w335.png",
+   "sha_inset2": "faf82825c985b185",
+   "bg": "ffffff",
+   "top_colours": [
+    "000080",
+    "ff00ff",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 4,
+   "band": 0,
+   "word": 304,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 304,
+   "sha": "bf91482fb7851aa8",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o04_b0_w304.png",
+   "sha_inset2": "06d35fabdaa1bff6",
+   "bg": "ffffff",
+   "top_colours": [
+    "ffffff",
+    "0000ff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 4,
+   "band": 1,
+   "word": 320,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 320,
+   "sha": "729b27d53ef461fc",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o04_b1_w320.png",
+   "sha_inset2": "91d4ccade5285664",
+   "bg": "ffffff",
+   "top_colours": [
+    "ffffff",
+    "808080",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 4,
+   "band": 2,
+   "word": 336,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 336,
+   "sha": "e9b25920feae8203",
+   "bg_rgb": "fff00f",
+   "png": "fleet_o04_b2_w336.png",
+   "sha_inset2": "21b9612828f66646",
+   "bg": "0000ff",
+   "top_colours": [
+    "ffffff",
+    "808080",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 5,
+   "band": 0,
+   "word": 305,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 305,
+   "sha": "d255a97b5eb2b6f7",
+   "bg_rgb": "30c30c",
+   "png": "fleet_o05_b0_w305.png",
+   "sha_inset2": "d9fcd6ea196260d1",
+   "bg": "00ff00",
+   "top_colours": [
+    "00ff00",
+    "000000",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    50
+   ],
+   "kind": "fleet",
+   "owner": 5,
+   "band": 1,
+   "word": 321,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 321,
+   "sha": "84f33a5d587b44a0",
+   "bg_rgb": "0f00f0",
+   "png": "fleet_o05_b1_w321.png",
+   "sha_inset2": "e8b4cd3b4cd99c05",
+   "bg": "00ff00",
+   "top_colours": [
+    "00ff00",
+    "808080",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 5,
+   "band": 2,
+   "word": 337,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 337,
+   "sha": "2b1e634edd765cb3",
+   "bg_rgb": "0f0000",
+   "png": "fleet_o05_b2_w337.png",
+   "sha_inset2": "52635ced754bb3a4",
+   "bg": "000000",
+   "top_colours": [
+    "00ff00",
+    "808080",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 6,
+   "band": 0,
+   "word": 306,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 306,
+   "sha": "00dd19857b650290",
+   "bg_rgb": "700700",
+   "png": "fleet_o06_b0_w306.png",
+   "sha_inset2": "16a4f2853232145a",
+   "bg": "800000",
+   "top_colours": [
+    "800000",
+    "00ffff",
+    "808080"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 6,
+   "band": 1,
+   "word": 322,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 322,
+   "sha": "155195b1f655dc23",
+   "bg_rgb": "700700",
+   "png": "fleet_o06_b1_w322.png",
+   "sha_inset2": "3870da40f05cd5fc",
+   "bg": "800000",
+   "top_colours": [
+    "800000",
+    "808080",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 6,
+   "band": 2,
+   "word": 338,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 338,
+   "sha": "f819e04cb5b7590c",
+   "bg_rgb": "7000ff",
+   "png": "fleet_o06_b2_w338.png",
+   "sha_inset2": "c023178aa5f64d15",
+   "bg": "00ffff",
+   "top_colours": [
+    "800000",
+    "808080",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 7,
+   "band": 0,
+   "word": 307,
+   "repeat": 0,
+   "terrain_under": 36,
+   "mem_word": 307,
+   "sha": "1e39f412c240b585",
+   "bg_rgb": "3cf3cf",
+   "png": "fleet_o07_b0_w307.png",
+   "sha_inset2": "f1cc8b6c7560540f",
+   "bg": "00ffff",
+   "top_colours": [
+    "00ffff",
+    "000000",
+    "ff00ff"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 7,
+   "band": 1,
+   "word": 323,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 323,
+   "sha": "af62aab17d382d8b",
+   "bg_rgb": "3cf3cf",
+   "png": "fleet_o07_b1_w323.png",
+   "sha_inset2": "0b8075cababe9abd",
+   "bg": "00ffff",
+   "top_colours": [
+    "00ffff",
+    "ff00ff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 7,
+   "band": 2,
+   "word": 339,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 339,
+   "sha": "49bae10cc586e519",
+   "bg_rgb": "0ff000",
+   "png": "fleet_o07_b2_w339.png",
+   "sha_inset2": "1d23eeadb336d6bd",
+   "bg": "000000",
+   "top_colours": [
+    "00ffff",
+    "ff00ff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 8,
+   "band": 0,
+   "word": 308,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 308,
+   "sha": "14efd8ffdf29b3e2",
+   "bg_rgb": "f3cf3c",
+   "png": "fleet_o08_b0_w308.png",
+   "sha_inset2": "c142641e3f904f12",
+   "bg": "ffff00",
+   "top_colours": [
+    "ffff00",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 8,
+   "band": 1,
+   "word": 324,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 324,
+   "sha": "103cb63fe0854828",
+   "bg_rgb": "f3cf3c",
+   "png": "fleet_o08_b1_w324.png",
+   "sha_inset2": "06a1729c5a13bfd7",
+   "bg": "ffff00",
+   "top_colours": [
+    "ffff00",
+    "ff0000",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 8,
+   "band": 2,
+   "word": 340,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 340,
+   "sha": "b563721a556e9281",
+   "bg_rgb": "ff0000",
+   "png": "fleet_o08_b2_w340.png",
+   "sha_inset2": "ab72a004eaae1a30",
+   "bg": "000000",
+   "top_colours": [
+    "ffff00",
+    "ff0000",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 9,
+   "band": 0,
+   "word": 309,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 309,
+   "sha": "cc2b6f395abbaab2",
+   "bg_rgb": "007007",
+   "png": "fleet_o09_b0_w309.png",
+   "sha_inset2": "2e9ae57041e16a74",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "808000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 9,
+   "band": 1,
+   "word": 325,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 325,
+   "sha": "0e0d02de3873eaf3",
+   "bg_rgb": "007007",
+   "png": "fleet_o09_b1_w325.png",
+   "sha_inset2": "fb8df5ffabeb2a18",
+   "bg": "000080",
+   "top_colours": [
+    "000080",
+    "00ffff",
+    "808000"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    51
+   ],
+   "kind": "fleet",
+   "owner": 9,
+   "band": 2,
+   "word": 341,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 341,
+   "sha": "be9626e1c1668284",
+   "bg_rgb": "007770",
+   "png": "fleet_o09_b2_w341.png",
+   "sha_inset2": "47f688b023d540a9",
+   "bg": "808000",
+   "top_colours": [
+    "000080",
+    "00ffff",
+    "808000"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 10,
+   "band": 0,
+   "word": 310,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 310,
+   "sha": "7b7fc55a775a635e",
+   "bg_rgb": "104104",
+   "png": "fleet_o10_b0_w310.png",
+   "sha_inset2": "c7cfa9624074836f",
+   "bg": "008000",
+   "top_colours": [
+    "008000",
+    "000000",
+    "ffff00"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 10,
+   "band": 1,
+   "word": 326,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 326,
+   "sha": "477af8202dd03144",
+   "bg_rgb": "104104",
+   "png": "fleet_o10_b1_w326.png",
+   "sha_inset2": "d67b4173c75250b5",
+   "bg": "008000",
+   "top_colours": [
+    "008000",
+    "ffff00",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 10,
+   "band": 2,
+   "word": 342,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 342,
+   "sha": "bceafb744e20ae3d",
+   "bg_rgb": "070000",
+   "png": "fleet_o10_b2_w342.png",
+   "sha_inset2": "2105de5acb80bbb5",
+   "bg": "000000",
+   "top_colours": [
+    "008000",
+    "ffff00",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 11,
+   "band": 0,
+   "word": 311,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 311,
+   "sha": "75deb72b54f0bb73",
+   "bg_rgb": "145145",
+   "png": "fleet_o11_b0_w311.png",
+   "sha_inset2": "d336a0328bf7fb9e",
+   "bg": "008080",
+   "top_colours": [
+    "008080",
+    "000000",
+    "0000ff"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 11,
+   "band": 1,
+   "word": 327,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 327,
+   "sha": "f60171fa4a168db7",
+   "bg_rgb": "145145",
+   "png": "fleet_o11_b1_w327.png",
+   "sha_inset2": "98dfe51c8cd71fa5",
+   "bg": "008080",
+   "top_colours": [
+    "008080",
+    "0000ff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 11,
+   "band": 2,
+   "word": 343,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 343,
+   "sha": "762682df0eb07f5d",
+   "bg_rgb": "0c30c3",
+   "png": "fleet_o11_b2_w343.png",
+   "sha_inset2": "05bf5ef5a6accbbf",
+   "bg": "000000",
+   "top_colours": [
+    "008080",
+    "0000ff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    120,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 12,
+   "band": 0,
+   "word": 312,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 312,
+   "sha": "8a2432eebdbbf897",
+   "bg_rgb": "0c30c3",
+   "png": "fleet_o12_b0_w312.png",
+   "sha_inset2": "552de49010f5d579",
+   "bg": "0000ff",
+   "top_colours": [
+    "0000ff",
+    "000000",
+    "00ffff"
+   ]
+  },
+  {
+   "tile": [
+    121,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 12,
+   "band": 1,
+   "word": 328,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 328,
+   "sha": "0b9bbd1de3ba0d04",
+   "bg_rgb": "0c30c3",
+   "png": "fleet_o12_b1_w328.png",
+   "sha_inset2": "4853c8cd56e40081",
+   "bg": "0000ff",
+   "top_colours": [
+    "0000ff",
+    "00ffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    122,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 12,
+   "band": 2,
+   "word": 344,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 344,
+   "sha": "8ccae569b9c0ba34",
+   "bg_rgb": "00f000",
+   "png": "fleet_o12_b2_w344.png",
+   "sha_inset2": "4568090f7e7d818e",
+   "bg": "000000",
+   "top_colours": [
+    "0000ff",
+    "00ffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    123,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 13,
+   "band": 0,
+   "word": 313,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 313,
+   "sha": "518e3964255d3ae0",
+   "bg_rgb": "cf3cf3",
+   "png": "fleet_o13_b0_w313.png",
+   "sha_inset2": "623277f1a5aa8335",
+   "bg": "ff00ff",
+   "top_colours": [
+    "ff00ff",
+    "000000",
+    "ff0000"
+   ]
+  },
+  {
+   "tile": [
+    124,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 13,
+   "band": 1,
+   "word": 329,
+   "repeat": 0,
+   "terrain_under": 36,
+   "mem_word": 329,
+   "sha": "62d4854534427a8e",
+   "bg_rgb": "cf3cf3",
+   "png": "fleet_o13_b1_w329.png",
+   "sha_inset2": "3d6cf0d5d780b1e6",
+   "bg": "ff00ff",
+   "top_colours": [
+    "ff00ff",
+    "ff0000",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    125,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 13,
+   "band": 2,
+   "word": 345,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 345,
+   "sha": "417112a157e36531",
+   "bg_rgb": "c30c30",
+   "png": "fleet_o13_b2_w345.png",
+   "sha_inset2": "34d79f15be714e88",
+   "bg": "000000",
+   "top_colours": [
+    "ff00ff",
+    "ff0000",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    126,
+    52
+   ],
+   "kind": "fleet",
+   "owner": 14,
+   "band": 0,
+   "word": 314,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 314,
+   "sha": "69ad4f747c0cdbef",
+   "bg_rgb": "f00f00",
+   "png": "fleet_o14_b0_w314.png",
+   "sha_inset2": "75363496c45987ff",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "c0c0c0",
+    "800080"
+   ]
+  },
+  {
+   "tile": [
+    114,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 14,
+   "band": 1,
+   "word": 330,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 330,
+   "sha": "b8b42bf8b5f2ef8b",
+   "bg_rgb": "f00f00",
+   "png": "fleet_o14_b1_w330.png",
+   "sha_inset2": "2b954642a3a2dcc1",
+   "bg": "ff0000",
+   "top_colours": [
+    "ff0000",
+    "800080",
+    "c0c0c0"
+   ]
+  },
+  {
+   "tile": [
+    115,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 14,
+   "band": 2,
+   "word": 346,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 346,
+   "sha": "d8a625767c7587db",
+   "bg_rgb": "f00bbb",
+   "png": "fleet_o14_b2_w346.png",
+   "sha_inset2": "44f5444b0d09ff5c",
+   "bg": "c0c0c0",
+   "top_colours": [
+    "ff0000",
+    "800080",
+    "c0c0c0"
+   ]
+  },
+  {
+   "tile": [
+    116,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 15,
+   "band": 0,
+   "word": 315,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 315,
+   "sha": "16aac33700380452",
+   "bg_rgb": "808080",
+   "png": "fleet_o15_b0_w315.png",
+   "sha_inset2": "19397828dcd543d1",
+   "bg": "808080",
+   "top_colours": [
+    "808080",
+    "ffffff",
+    "000000"
+   ]
+  },
+  {
+   "tile": [
+    117,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 15,
+   "band": 1,
+   "word": 331,
+   "repeat": 0,
+   "terrain_under": 2,
+   "mem_word": 331,
+   "sha": "6920e99fc99289cd",
+   "bg_rgb": "808080",
+   "png": "fleet_o15_b1_w331.png",
+   "sha_inset2": "e0b330cd3975fe0e",
+   "bg": "808080",
+   "top_colours": [
+    "808080",
+    "000000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    118,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 15,
+   "band": 2,
+   "word": 347,
+   "repeat": 0,
+   "terrain_under": 4,
+   "mem_word": 347,
+   "sha": "f6991e1346e8d511",
+   "bg_rgb": "000000",
+   "png": "fleet_o15_b2_w347.png",
+   "sha_inset2": "aff7cb910d4ba96d",
+   "bg": "ffffff",
+   "top_colours": [
+    "808080",
+    "000000",
+    "ffffff"
+   ]
+  },
+  {
+   "tile": [
+    119,
+    53
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 1,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "c79505783b50b978",
+   "bg_rgb": "451451",
+   "png": "army_o00_b0_w200_rep1.png",
+   "sha_inset2": "e6129bbc48e5e3ee",
+   "bg": "800080"
+  },
+  {
+   "tile": [
+    121,
+    53
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 1,
+   "terrain_under": 36,
+   "mem_word": 238,
+   "sha": "c2c9a20637087f12",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep1.png",
+   "sha_inset2": "219a4a72cbf88c0f",
+   "bg": "800000"
+  },
+  {
+   "tile": [
+    122,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 1,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "25a68252cbc11a8e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep1.png",
+   "sha_inset2": "d9e7a33a4f4b363a",
+   "bg": "000000"
+  },
+  {
+   "tile": [
+    123,
+    53
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 2,
+   "terrain_under": 0,
+   "mem_word": 200,
+   "sha": "9c392b455b464434",
+   "bg_rgb": "707707",
+   "png": "army_o00_b0_w200_rep2.png",
+   "sha_inset2": "e6129bbc48e5e3ee",
+   "bg": "800080"
+  },
+  {
+   "tile": [
+    124,
+    53
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 2,
+   "terrain_under": 0,
+   "mem_word": 238,
+   "sha": "c2c9a20637087f12",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep2.png",
+   "sha_inset2": "219a4a72cbf88c0f",
+   "bg": "800000"
+  },
+  {
+   "tile": [
+    125,
+    53
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 2,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "25a68252cbc11a8e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep2.png",
+   "sha_inset2": "d9e7a33a4f4b363a",
+   "bg": "000000"
+  },
+  {
+   "tile": [
+    126,
+    53
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 3,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "547c98a6ff269ea9",
+   "bg_rgb": "707707",
+   "png": "army_o00_b0_w200_rep3.png",
+   "sha_inset2": "e6129bbc48e5e3ee",
+   "bg": "800080"
+  },
+  {
+   "tile": [
+    114,
+    54
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 3,
+   "terrain_under": 2,
+   "mem_word": 238,
+   "sha": "c2c9a20637087f12",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep3.png",
+   "sha_inset2": "219a4a72cbf88c0f",
+   "bg": "800000"
+  },
+  {
+   "tile": [
+    115,
+    54
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 3,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "25a68252cbc11a8e",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep3.png",
+   "sha_inset2": "d9e7a33a4f4b363a",
+   "bg": "000000"
+  },
+  {
+   "tile": [
+    116,
+    54
+   ],
+   "kind": "army",
+   "owner": 0,
+   "band": 0,
+   "word": 200,
+   "repeat": 4,
+   "terrain_under": 2,
+   "mem_word": 200,
+   "sha": "9c392b455b464434",
+   "bg_rgb": "707707",
+   "png": "army_o00_b0_w200_rep4.png",
+   "sha_inset2": "e6129bbc48e5e3ee",
+   "bg": "800080"
+  },
+  {
+   "tile": [
+    117,
+    54
+   ],
+   "kind": "army",
+   "owner": 6,
+   "band": 2,
+   "word": 238,
+   "repeat": 4,
+   "terrain_under": 2,
+   "mem_word": 238,
+   "sha": "c2c9a20637087f12",
+   "bg_rgb": "700700",
+   "png": "army_o06_b2_w238_rep4.png",
+   "sha_inset2": "219a4a72cbf88c0f",
+   "bg": "800000"
+  },
+  {
+   "tile": [
+    118,
+    54
+   ],
+   "kind": "fleet",
+   "owner": 1,
+   "band": 2,
+   "word": 333,
+   "repeat": 4,
+   "terrain_under": 2,
+   "mem_word": 333,
+   "sha": "d1be805a0104b430",
+   "bg_rgb": "ffffff",
+   "png": "fleet_o01_b2_w333_rep4.png",
+   "sha_inset2": "d9e7a33a4f4b363a",
+   "bg": "000000"
+  }
+ ],
+ "earlier_rome": {
+  "w200_t24999": {
+   "sha": "c79505783b50b978",
+   "sha_inset2": "e6129bbc48e5e3ee",
+   "bg": "800080"
+  },
+  "w216_t25000": {
+   "sha": "1dd83f2573cad04f",
+   "sha_inset2": "e432c82e9ff082da",
+   "bg": "800080"
+  },
+  "w232_t50000": {
+   "sha": "219068c77f6b1a51",
+   "sha_inset2": "ff3e14f4d7a60fe2",
+   "bg": "800080"
+  }
+ },
+ "repeats": [
+  {
+   "word": 200,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": true
+  },
+  {
+   "word": 238,
+   "terrain_under": [
+    0,
+    36
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 333,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 200,
+   "terrain_under": [
+    2,
+    0
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 238,
+   "terrain_under": [
+    0,
+    0
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 333,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 200,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 238,
+   "terrain_under": [
+    0,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 333,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 200,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 238,
+   "terrain_under": [
+    0,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  },
+  {
+   "word": 333,
+   "terrain_under": [
+    2,
+    2
+   ],
+   "same_inset": true,
+   "same_full": false
+  }
+ ],
+ "bg_per_owner": {
+  "0": [
+   "800080",
+   "ffffff"
+  ],
+  "1": [
+   "000000",
+   "ff0000"
+  ],
+  "2": [
+   "808000",
+   "ffffff"
+  ],
+  "3": [
+   "000080",
+   "ffffff"
+  ],
+  "4": [
+   "0000ff",
+   "ffffff"
+  ],
+  "5": [
+   "000000",
+   "00ff00"
+  ],
+  "6": [
+   "00ffff",
+   "800000"
+  ],
+  "7": [
+   "000000",
+   "00ffff"
+  ],
+  "8": [
+   "000000",
+   "ffff00"
+  ],
+  "9": [
+   "000080",
+   "808000"
+  ],
+  "10": [
+   "000000",
+   "008000"
+  ],
+  "11": [
+   "000000",
+   "008080"
+  ],
+  "12": [
+   "000000",
+   "0000ff"
+  ],
+  "13": [
+   "000000",
+   "ff00ff"
+  ],
+  "14": [
+   "c0c0c0",
+   "ff0000"
+  ],
+  "15": [
+   "808080",
+   "ffffff"
+  ]
+ },
+ "distinct_bg": 0,
+ "distinct_sha_per_kind_band": {
+  "army_0": 16,
+  "army_1": 16,
+  "army_2": 16,
+  "fleet_0": 16,
+  "fleet_1": 16,
+  "fleet_2": 16
+ },
+ "distinct_sha_all": 96,
+ "owner_colours": {
+  "0": {
+   "background": [
+    "800080"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "800080",
+      "ffffff",
+      "0000ff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "800080",
+      "ffffff",
+      "0000ff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "800080",
+      "ffffff",
+      "0000ff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "800080",
+      "ffffff",
+      "0000ff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "800080",
+      "0000ff",
+      "ffffff"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "800080",
+      "0000ff",
+      "ffffff"
+     ]
+    ]
+   ]
+  },
+  "1": {
+   "background": [
+    "ff0000"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "ff0000",
+      "000000",
+      "ffffff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "ff0000",
+      "000000",
+      "ffffff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "ff0000",
+      "000000",
+      "ffffff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "ff0000",
+      "000000",
+      "ffffff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "ff0000",
+      "ffffff",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "ff0000",
+      "ffffff",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "2": {
+   "background": [
+    "808000"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "808000",
+      "ffffff",
+      "800000"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "808000",
+      "ffffff",
+      "800000"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "808000",
+      "ffffff",
+      "800000"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "808000",
+      "ffffff",
+      "800000"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "808000",
+      "800000",
+      "ffffff"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "808000",
+      "800000",
+      "ffffff"
+     ]
+    ]
+   ]
+  },
+  "3": {
+   "background": [
+    "000080"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "000080",
+      "ffffff",
+      "ff00ff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "000080",
+      "ffffff",
+      "ff00ff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "000080",
+      "ffffff",
+      "ff00ff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "000080",
+      "ffffff",
+      "ff00ff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "000080",
+      "ff00ff",
+      "ffffff"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "000080",
+      "ff00ff",
+      "ffffff"
+     ]
+    ]
+   ]
+  },
+  "4": {
+   "background": [
+    "ffffff"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "ffffff",
+      "0000ff",
+      "808080"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "ffffff",
+      "0000ff",
+      "808080"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "ffffff",
+      "0000ff",
+      "808080"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "ffffff",
+      "0000ff",
+      "808080"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "ffffff",
+      "808080",
+      "0000ff"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "ffffff",
+      "808080",
+      "0000ff"
+     ]
+    ]
+   ]
+  },
+  "5": {
+   "background": [
+    "00ff00"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "00ff00",
+      "000000",
+      "808080"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "00ff00",
+      "000000",
+      "808080"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "00ff00",
+      "000000",
+      "808080"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "00ff00",
+      "000000",
+      "808080"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "00ff00",
+      "808080",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "00ff00",
+      "808080",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "6": {
+   "background": [
+    "800000"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "800000",
+      "00ffff",
+      "808080"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "800000",
+      "00ffff",
+      "808080"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "800000",
+      "00ffff",
+      "808080"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "800000",
+      "00ffff",
+      "808080"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "800000",
+      "808080",
+      "00ffff"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "800000",
+      "808080",
+      "00ffff"
+     ]
+    ]
+   ]
+  },
+  "7": {
+   "background": [
+    "00ffff"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "00ffff",
+      "000000",
+      "ff00ff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "00ffff",
+      "000000",
+      "ff00ff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "00ffff",
+      "000000",
+      "ff00ff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "00ffff",
+      "000000",
+      "ff00ff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "00ffff",
+      "ff00ff",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "00ffff",
+      "ff00ff",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "8": {
+   "background": [
+    "ffff00"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "ffff00",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "ffff00",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "ffff00",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "ffff00",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "ffff00",
+      "ff0000",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "ffff00",
+      "ff0000",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "9": {
+   "background": [
+    "000080"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "000080",
+      "808000",
+      "00ffff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "000080",
+      "808000",
+      "00ffff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "000080",
+      "808000",
+      "00ffff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "000080",
+      "808000",
+      "00ffff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "000080",
+      "00ffff",
+      "808000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "000080",
+      "00ffff",
+      "808000"
+     ]
+    ]
+   ]
+  },
+  "10": {
+   "background": [
+    "008000"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "008000",
+      "000000",
+      "ffff00"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "008000",
+      "000000",
+      "ffff00"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "008000",
+      "000000",
+      "ffff00"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "008000",
+      "000000",
+      "ffff00"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "008000",
+      "ffff00",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "008000",
+      "ffff00",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "11": {
+   "background": [
+    "008080"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "008080",
+      "000000",
+      "0000ff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "008080",
+      "000000",
+      "0000ff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "008080",
+      "000000",
+      "0000ff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "008080",
+      "000000",
+      "0000ff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "008080",
+      "0000ff",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "008080",
+      "0000ff",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "12": {
+   "background": [
+    "0000ff"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "0000ff",
+      "000000",
+      "00ffff"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "0000ff",
+      "000000",
+      "00ffff"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "0000ff",
+      "000000",
+      "00ffff"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "0000ff",
+      "000000",
+      "00ffff"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "0000ff",
+      "00ffff",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "0000ff",
+      "00ffff",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "13": {
+   "background": [
+    "ff00ff"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "ff00ff",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "ff00ff",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "ff00ff",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "ff00ff",
+      "000000",
+      "ff0000"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "ff00ff",
+      "ff0000",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "ff00ff",
+      "ff0000",
+      "000000"
+     ]
+    ]
+   ]
+  },
+  "14": {
+   "background": [
+    "ff0000"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "ff0000",
+      "c0c0c0",
+      "800080"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "ff0000",
+      "c0c0c0",
+      "800080"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "ff0000",
+      "c0c0c0",
+      "800080"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "ff0000",
+      "c0c0c0",
+      "800080"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "ff0000",
+      "800080",
+      "c0c0c0"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "ff0000",
+      "800080",
+      "c0c0c0"
+     ]
+    ]
+   ]
+  },
+  "15": {
+   "background": [
+    "808080"
+   ],
+   "tiles": [
+    [
+     "army",
+     0,
+     [
+      "808080",
+      "ffffff",
+      "000000"
+     ]
+    ],
+    [
+     "army",
+     1,
+     [
+      "808080",
+      "ffffff",
+      "000000"
+     ]
+    ],
+    [
+     "army",
+     2,
+     [
+      "808080",
+      "ffffff",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     0,
+     [
+      "808080",
+      "ffffff",
+      "000000"
+     ]
+    ],
+    [
+     "fleet",
+     1,
+     [
+      "808080",
+      "000000",
+      "ffffff"
+     ]
+    ],
+    [
+     "fleet",
+     2,
+     [
+      "808080",
+      "000000",
+      "ffffff"
+     ]
+    ]
+   ]
+  }
+ }
+}
