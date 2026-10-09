@@ -140,3 +140,8 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   ```text
   PASS hire_mercs (37s): army 1 +Samnite li 3868 q8 at slot 6; purse 100, popups []
   ```
+
+**2026-10-09, end_turn and the post-battle Offer of peace (`run-exp-end-turn-timeout`)**: an idle run (`run-exp-ai-conquest-aboard` seed 2, start `saves/run0-start-AUTO0720-seed12345.SAV`) stopped at end 29 with `DriverError: end turn timed out`. It is deterministic (`repro.py 2 40 120`): during Gaul's seat, Gaul's army attacks Rome's, `end_turn` plays the battle, and the "Offer of peace" box (TBattlePols, Yes/No) opens after Battle ended. The wait loop's `dismiss_popups` only answers Information/Confirm/Warning/Error boxes, so the box blocked until the timeout (windows at the stall: `Battle ended` ghost 64x1, `Offer of peace` 406x360 with Yes/No). Fix: `end_turn(peace=False)` answers the box through `answer_battle_peace` (verified click, box closed). The default is No, which changes no game state (`findings/2026-10-05-battle-peace-offer.md`), and the answer is recorded in the returned texts as `PEACE No: <text>`. Rerun with the fix: 36 of 36 end turns, end 29 → `AUTO0749.SAV`.
+  ```text
+  29 AUTO0749.SAV ['CONFIRM ‘An army of yours needs supplies. ...', 'BATTLE Gaul  v  Rome          Rome to place units.', 'PEACE No: After losing to you in battle Gaul are willing to end their war with you, ...']
+  ```

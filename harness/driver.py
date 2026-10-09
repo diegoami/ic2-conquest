@@ -1373,7 +1373,7 @@ class Game:
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
 
-    def end_turn(self, timeout=300, battle_shot=None, reclick=True, strict_confirm=False):
+    def end_turn(self, timeout=300, battle_shot=None, reclick=True, strict_confirm=False, peace=False):
         """Game > End turn (it runs at once, unless an army needs supplies: then an
         "End turn ?" box asks, and is answered End turn), then
         play out any battle with Computer general and dismiss the AI's news and
@@ -1383,7 +1383,10 @@ class Game:
         appears within 8 s. With `reclick=False` that case raises DriverError("end turn: no sign of the turn starting")
         after the single click (the first click may have registered: the caller must not click again).
         `strict_confirm` (default False): a Confirm box other than "End turn ?" is answered No, never Yes, on every path
-        (the wait loop, inside `play_battle`, after the autosave line), and DriverError("end turn: unexpected Confirm: ...") is raised."""
+        (the wait loop, inside `play_battle`, after the autosave line), and DriverError("end turn: unexpected Confirm: ...") is raised.
+        `peace` (default False): the answer to a post-battle "Offer of peace" box (an AI army fought the human's during the AI seats);
+        it is answered through `answer_battle_peace` (verified click, box closed) and recorded as "PEACE Yes|No: <text>". No is the
+        default because it changes no game state (findings/2026-10-05-battle-peace-offer.md); before this the box blocked until the timeout."""
         log = G / "AUTOSAVE.LOG"
         n = len(log.read_text().splitlines()) if log.exists() else 0
         cal, me = self.calendar(), self.i16(CUR_NATION)
@@ -1415,6 +1418,10 @@ class Game:
                 texts.append("CONFIRM " + self.read_popup(self.find_windows(r"^End turn \?$")[0]))
                 cs = self.controls("End turn ?")
                 self.click_control(self.control(cs, text="End turn"), pause=1.5)
+                continue
+            if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
+                r = self.answer_battle_peace(peace)
+                texts.append("PEACE %s: %s" % (r["button"], r["text"]))
                 continue
             texts += self.dismiss_popups(strict=strict_confirm)
             time.sleep(1)
