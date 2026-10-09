@@ -35,6 +35,6 @@
 - **The seeds do not correspond** between the engines: four or six original games against eight remake games, and the original's samples are shorter (25-40 End turns) than the remake's (80).
 - **Only idle Rome was measured.** An active human may provoke sieges the idle one does not.
 - **AI-05 mixes the AI with the harness on the original side:** the original's idle Rome declines every peace offer, while the remake's idle Rome got none. The remake's Rome is barely attacked at all (2 of 8 games), so the peace answer cannot explain its survival there. It may still shorten the original's games.
-- **Why the remake's AI never besieges:** the siege gate (`AiSiegeGateTally.cs`, `AiMilitaryPhase.cs`) was not traced.
+- **Why the remake's AI never besieges is now measured, for the ratio gate only** (AI-02: 0 of 1,882 pairs reach 1550 ‰). Not checked: whether a candidate that passed would win the score competition, and how the captures of turns 1-10 got through.
 - **The news-line counts are keyword counts** over the lines new since the previous save.
 - **The original side is Wine-only.**
