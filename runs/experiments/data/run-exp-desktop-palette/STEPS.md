@@ -20,7 +20,8 @@ Copy both into the game folder on Windows.
 
 Also, if you can:
 - one screenshot of a natural Unit map with several owners' armies, fleets and cities in view (for example the `1_rome_270_summer_7_1` position);
-- whether you still have the 2026-09-29 strip of 16 temples, and whether it came from the desktop or from Wine.
+- whether you still have the 2026-09-29 strip of 16 temples, whether it came from the desktop or from Wine, and **what it was cropped from**: the toolbar's 16 nation buttons, the map's capital icons, or the raw button bitmaps (for example in a resource viewer, where the transparent margin shows white or yellow);
+- a screenshot of the **toolbar's 16 nation buttons** on the desktop (the row right of the £ button), at 100 % zoom.
 
 ## What to send back
 
