@@ -1,0 +1,38 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:00:27+02:00
+# script:
+#   save ART/g2_merc1_before.sav
+#   hire-mercenary army-1 0
+#   hire-mercenary army-1 5
+#   armies
+#   hire-mercenary army-1 5
+#   save ART/g2_merc1_after.sav
+#   move army-1 120 52
+#   hire-mercenary army-1 5
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_merc1_before.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_merc1_before.sav'.
+
+> hire-mercenary army-1 0
+recruitment.hire-mercenary rejected (mercenary.offer-not-on-adjacent-city): Mercenary pool slot 0 sits on (91,27), not on the chosen city 'heraclea' at (121,53).
+
+> hire-mercenary army-1 5
+recruitment.hire-mercenary accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 170t (71%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 26169 troops in 7 units, supply 176t (67%), morale 68, moves 8
+
+> hire-mercenary army-1 5
+recruitment.hire-mercenary rejected (mercenary.unknown-pool-slot): Mercenary pool slot 5 has no offer to hire.
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_merc1_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_merc1_after.sav'.
+
+> move army-1 120 52
+army-1 moved from (120,53) to (120,52), spending 1 of 8 moves.
+
+> hire-mercenary army-1 5
+recruitment.hire-mercenary rejected (mercenary.unknown-pool-slot): Mercenary pool slot 5 has no offer to hire.
+

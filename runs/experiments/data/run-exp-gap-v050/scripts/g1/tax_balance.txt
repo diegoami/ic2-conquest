@@ -1,0 +1,14 @@
+balance
+status mine
+set-tax 0
+balance
+set-tax 40
+balance
+set-tax 41
+set-tax -1
+set-tax abc
+set-tax 10
+set-tax 20
+balance
+set-tax 15
+save ART/g1_tax_balance.sav

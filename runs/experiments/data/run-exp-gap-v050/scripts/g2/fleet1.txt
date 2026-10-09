@@ -1,0 +1,13 @@
+status mine
+save ART/g2_fleet1_before.sav
+order-fleet rome 10 f1
+order-fleet antium 5 f1
+order-fleet antium 101 f1
+order-fleet antium 10 f1
+status mine
+save ART/g2_fleet1_ordered.sav
+order-fleet antium 20 f2
+order-fleet ostia 20 f2
+order-fleet arretium 20 f2
+status mine
+news

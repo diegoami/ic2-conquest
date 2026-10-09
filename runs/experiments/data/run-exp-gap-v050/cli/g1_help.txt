@@ -1,0 +1,50 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T16:58:53+02:00
+# script:
+#   help
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> help
+Commands:
+  status - show the calendar, nations, armies and cities
+  status mine - show only your own nation, armies, fleets and cities
+  armies [nation] - show one nation's armies (default: yours)
+  cities [nation] - show one nation's cities (default: yours)
+  map - show the 320x140 terrain map with city, army and fleet markers
+  move <army> <x> <y> - move an army toward (x, y)
+  buy <army> <city> <tons> - buy supply for an army at a city (free at your own city, paid abroad); buy <army> fleet <fleet> <tons> - buy supply from one of your own fleets (free)
+  attack-army <army> <target-army> - attack another nation's army (declares war first if needed)
+  besiege-city <army> <city> - besiege an adjacent enemy city (declares war first if needed)
+  attack-fleet <fleet> <target-fleet> - attack another nation's fleet (declares war first if needed)
+  disband-army <army> - disband an army near one of your own cities
+  join-armies <survivor-army> <absorbed-army> - merge one army into another
+  join-units <army> <unit-index> <unit-index> - merge two of an army's own unit slots
+  split-army <army> <new-army> <i,j,...> [supply=<tons>] [money=<talents>] - split units, supply and money off into a new army
+  order-city <city> <order-id> <points> - place a standing order on one of your own cities
+  declare-war <nation> - declare war on another nation
+  make-peace <nation> - propose peace with a nation you are at war with
+  propose-alliance <nation> - propose an alliance to another nation
+  propose-trade <nation> - propose a trade agreement to another nation
+  accept-offer - accept the pending trade or alliance offer made to you, if any
+  peace-yes - accept a pending post-battle peace treaty offer, if any
+  peace-no - decline a pending post-battle peace treaty offer, if any
+  mobilize <slot-index> <new-army> - mobilize a ready recruitment slot into an army unit
+  hire-mercenary <army> <pool-slot-index> - hire a mercenary unit from the mercenary pool
+  recruit-standing <city> <unit-type> <troops> - recruit a standing unit at one of your own cities
+  disband-slot <slot-index> - disband one of your recruitment slots (the price paid is lost; the mobilisation it added falls back)
+  move-fleet <fleet> <x> <y> - move a fleet toward (x, y)
+  order-fleet <city> <ships> <new-fleet> - order a new fleet built at a coastal city
+  repair-fleet <fleet> <points> - spend repair points on a fleet's condition
+  scuttle-fleet <fleet> - scuttle one of your own fleets
+  split-fleet <fleet> <new-fleet> <ships> [supply=<tons>] [money=<talents>] - split ships, supply and money off into a new fleet
+  join-fleets <survivor-fleet> <absorbed-fleet> - merge one fleet into another
+  embark-army <army> <fleet> - load an army aboard an adjacent fleet
+  disembark-army <army> [<x> <y>] - unload an embarked army onto an adjacent land tile
+  buy-fleet-supply <fleet> <city> <tons> - buy supply for a fleet at a city
+  fleet-transfer <from-fleet> <to-fleet> <ships> <supply-tons> <money> - transfer resources between two of your own fleets
+  end - end your turn
+  save <path> - save the current game to a file
+  load <path> - load a game from a file, replacing the current one
+  news - show the news log
+  help - show this help
+  quit - exit
+
