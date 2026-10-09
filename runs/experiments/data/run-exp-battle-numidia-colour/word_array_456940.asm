@@ -1,0 +1,19 @@
+0x456940 jne 0x45681d
+0x456946 or esi, 0xffffffff
+0x456949 movsx eax, si
+0x45694c mov dx, word ptr [ebx + eax*2 + 0x1d2]
+0x456954 mov word ptr [ebx + eax*2 + 0x42e], dx
+0x45695c inc esi
+0x45695d cmp si, 0x12d
+0x456962 jne 0x456949
+0x456964 xor esi, esi
+0x456966 movsx eax, si
+0x456969 movsx edx, word ptr [ebx + eax*2 + 0x42c]
+0x456971 movsx ecx, word ptr [ebx + eax*2 + 0x42e]
+0x456979 add edx, ecx
+0x45697b movsx ecx, word ptr [ebx + eax*2 + 0x430]
+0x456983 add edx, ecx
+0x456985 mov dx, word ptr [ebx + edx*2 + 0x688]
+0x45698d .byte 0x66
+0x45698e .byte 0x89
+0x45698f xchg esp, eax

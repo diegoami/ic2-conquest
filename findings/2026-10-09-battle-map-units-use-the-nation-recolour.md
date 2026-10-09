@@ -1,6 +1,6 @@
 # The battle map recolours its unit sprites with the same routine and nation dwords as the unit map: Numidia's units are grey-filled in battle, and their background is the battlefield's own lime
 
-**Status:** draft from `ic2-conquest`, awaiting promotion. It checks research's `[derived]` consequence added at `4ef90ec` to `2026-10-09-unit-icon-recolour-and-nation-glyphs.md` ("battle-map units use the same recolour, so Numidia's units should be grey in battle too").
+**Status:** promoted 2026-10-09 into imperial-conquest-2-research at `ef19e2c` (by ic2-research, from `0faa66d`); this draft is kept for history, the research repo is canonical. Corrected at promotion: the empty ground is not pure lime but one textured tile (lime 752, green 75, olive 73, white 64, black 60 px, the colours of `BatMapList` image 15, very likely the ground tile `[derived]`), so a Numidian sprite merges with the ground's lime base but lacks its grass pattern. It checks research's `[derived]` consequence added at `4ef90ec` to `2026-10-09-unit-icon-recolour-and-nation-glyphs.md` ("battle-map units use the same recolour, so Numidia's units should be grey in battle too").
 
 **Tags:**
 - `[confirmed: decompile]`: capstone disassembly; the excerpt is tracked.
@@ -25,11 +25,12 @@
 ## Evidence
 
 - **Data:** `runs/experiments/data/run-exp-battle-numidia-colour/`: `xrefs.py`, `xrefs.txt`, `disasm_range.py`, `battlemap_sprites_436fb4.asm`, `check_battle_recolour.py`, `battle_recolour_check.json`, `README.md`.
-- **Inputs:** `B2_placement.SAV`, `B2_after_end_turn_1.SAV`, `B2_after_end_turn_2.SAV` and `b2_placement_window.png`, `b2_after_end_turn_1_window.png`, `b2_after_end_turn_2_window.png` (release `run-exp-battle-sweep`, SHA-256 in `runs/experiments/data/run-exp-battle-sweep/SAVES.sha256`); `TBattleMap_BatMapList.bmp` (release `run-exp-unit-icon-resources`).
+- **Inputs:** `B2_placement.SAV`, `B2_after_end_turn_1.SAV`, `B2_after_end_turn_2.SAV` and `b2_placement_window.png`, `b2_after_end_turn_1_window.png`, `b2_after_end_turn_2_window.png` (release `run-exp-battle-sweep`, SHA-256 in `runs/experiments/data/run-exp-battle-sweep/SAVES.sha256`); `TBattleMap_BatMapList.bmp` (release `run-exp-unit-icon-resources`, uploaded 2026-10-09 after promotion with its mask and PNG; SHA-256 in `run-exp-battle-numidia-colour/SAVES.sha256`).
 - **Exe:** `Imperial Conquest 2.exe`, SHA-256 `9d753d5d…` (full hash in `run-exp-unit-icon-resources/imagelists.json`).
 
 ## Not established
 
 - **A Numidian battle drawn in Wine:** none was run. It would need a battle with a Numidian army, for example an L1 owner edit of the defender army, or a game played as Numidia.
+- **The `+0x42C` word read at 0x456969** (`xrefs.txt`), open at promotion: it is `[ebx + i*2 + 0x42C]` with `i` from 0, inside a loop that first copies `[ebx + i*2 + 0x1D2]` to `[ebx + i*2 + 0x42E]` for i = −1 to 0x12C, then sums the three neighbouring words `+0x42C/+0x42E/+0x430` and indexes a table at `[ebx + sum*2 + 0x688]` (`word_array_456940.asm`). The base is an object holding a 300-word array (the loop above runs to 0x12C), not the nation table, and the access is a word, not a dword: not a read of the recolour colours `[derived]`.
 - **Images 15 and 16 of `BatMapList`** (lime, green, olive, white and black; white and black): not recoloured and not identified here.
 - **The desktop original:** Wine only, as for the unit map.
