@@ -364,7 +364,7 @@ def test_only_stderr_is_api_evidence():
         final, stop, failures = chain(d)
         assert final and not stop and failures == [("provider/model", "nonzero-exit")], (final, stop, failures)
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
-        assert r1["kind"] == "api" and "statusCode" in r1["cause"], r1
+        assert r1["kind"] == "api" and "status 429" in r1["cause"], r1
         assert runs_started(d) == 2, "an api failure is not resumed: the next model took over"
     return "'429 rate limit' in the model's stdout stays process (resumed 2x, no fallback); OpenCode's `Error: {... 429}` on stderr is api"
 
@@ -590,9 +590,62 @@ def test_reused_run_dir_does_not_skip_new_errors():
         (rd / "stderr.log").write_text("old noise\n" * 500)
         (rd / "stdout.log").write_text("old text\n" * 500)
         r = ow.run(write_brief(d), ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None)
-        assert r["class"] == "nonzero-exit" and r["kind"] == "api" and "statusCode" in r["cause"], r
+        assert r["class"] == "nonzero-exit" and r["kind"] == "api" and "status 429" in r["cause"], r
         assert (rd / "stderr.prev-1.log").read_text().startswith("old noise") and (rd / "stdout.prev-1.log").exists()
     return "logs already in a reused run dir are archived and the new attempt's error output is still read from byte 0"
+
+
+def test_structured_errors_are_the_primary_evidence():
+    J = json.dumps
+    pretty = "Error: " + json.dumps({"name": "APIError", "data": {"message": "slow down", "statusCode": 429, "isRetryable": True}}, indent=2)
+    api = [
+        "Error: " + J({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}),
+        pretty,
+        "Error: " + J({"name": "APIError", "data": {"message": "x", "statusCode": 529, "isRetryable": False}}),     # any 5xx
+        "Error: " + J({"name": "APIError", "data": {"message": "bad key", "statusCode": 401, "isRetryable": False}}),
+        "Error: " + J({"name": "APIError", "data": {"message": "x", "isRetryable": True}}),
+        "Error: " + J({"name": "ProviderAuthError", "data": {"providerID": "openai", "message": "token expired"}}),
+        "Error: " + J({"name": "AI_APICallError", "statusCode": 502, "message": "bad gateway"}),
+        "Error: " + J({"name": "FetchTimeoutError", "data": {"message": "x"}}),
+        "info line\n" + J({"error": {"status": 500, "message": "oops"}}) + "\nmore",
+        "Error: " + J({"name": "UnknownError", "data": {"message": "provider returned 503", "ref": "err_1"}}),      # unstructured: the fallback
+    ]
+    process = [
+        "Error: " + J({"name": "APIError", "data": {"message": "bad request", "statusCode": 400, "isRetryable": False}}),
+        "Error: " + J({"name": "APIError", "data": {"message": "x", "isRetryable": False}}),
+        "Error: " + J({"name": "ContextOverflowError", "data": {"message": "prompt too long; the provider said 429 rate limit"}}),
+        "Error: " + J({"name": "ContentFilterError", "data": {"message": "blocked, status 503 in the text"}}),
+        "Error: " + J({"name": "MessageAbortedError", "data": {"message": "aborted"}}),
+        "Error: " + J({"name": "UnknownError", "data": {"message": "Unexpected server error. Check server logs for details.", "ref": "err_2"}}),
+        "Error: " + J({"name": "ProviderModelNotFoundError", "data": {"providerID": "x", "modelID": "y"}}),
+        "{broken json 503",
+    ]
+    for t in api:
+        assert ow.api_text(t), ("should be api", t)
+    for t in process:
+        got = ow.api_text(t)
+        assert got is None, ("should not be api", t, got)
+    assert ow.api_text("{broken json 503") is None
+    fallback = [("provider returned 503", True), ("the server returned 429", True), ("responded with 529", True), ("it replied with HTTP 502", True),
+                ("returned 503 lines", False), ("returned 550 bytes", False), ("see line 503", False), ("responded with 200", False)]
+    for line, want in fallback:
+        assert bool(ow.api_text(line)) == want, line
+    return "%d api and %d process JSON error shapes (OpenCode's APIError, ProviderAuthError, ContextOverflowError, ...) and %d text fallbacks classify as designed" % (
+        len(api), len(process), len(fallback))
+
+
+def test_models_listing_looks_only_at_its_own_stderr():
+    with fake_opencode("listing-own", []) as d:
+        rd = d / "run"
+        rd.mkdir()
+        (rd / "stderr.log").write_text("Error: 429 Too Many Requests from an earlier attempt\n")
+        (d / "models_err").write_text("Error: bad config file")
+        r = ow.run(write_brief(d), ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None)
+        assert r["class"] == "nonzero-exit" and r["kind"] == "process", (r["class"], r["kind"], r["cause"])
+        (d / "models_err").write_text("Error: " + json.dumps({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}))
+        r = ow.run(write_brief(d), ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None)
+        assert r["kind"] == "api", r
+    return "a listing that fails with a process-only error is process even when the run dir's old stderr holds a 429; a JSON 503 from the listing is api"
 
 
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
@@ -603,7 +656,8 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
-         "reused_run_dir_does_not_skip_new_errors"]
+         "reused_run_dir_does_not_skip_new_errors",
+         "structured_errors_are_the_primary_evidence", "models_listing_looks_only_at_its_own_stderr"]
 
 if __name__ == "__main__":
     bad = 0

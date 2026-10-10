@@ -222,24 +222,101 @@ API_RE = re.compile(
     # a bare number ("line 503", "x.py:503") never does
     r"\b429\b|rate[ _-]?limit|too many requests|\b(?:status(?:[ _-]?code)?|http(?:/[\d.]+)?|error)\W{0,3}5\d\d\b"
     r"|\b5\d\d\b\W{0,3}(?:\w+ ){0,3}(?:error|unavailable|gateway|overloaded|timeout)|\b5xx\b"
+    r"|\b(?:returned|responded with|replied with)\W{0,3}(?:(?:http|status)\W{0,3})*(?:429|5\d\d)\b(?!\s*(?:lines?|bytes|items?|rows?|files?|results?|entries|matches))"
     r"|internal server error|overloaded|service unavailable|bad gateway|gateway time-?out|quota|usage[ _-]limit|insufficient"
     r"|ECONNRESET|ETIMEDOUT|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|network error|fetch failed|socket hang up|connection (?:reset|refused|error)", re.I)
 
 
+# OpenCode 1.18.34's own error objects (read from its binary, 2026-10-10; MessageV2 named errors, printed on stderr as
+# `Error: {"name": ..., "data": {...}}`, pretty-printed over several lines):
+#   APIError            data {message, statusCode?, isRetryable, responseHeaders?, responseBody?, metadata?}   (the AI SDK's AI_APICallError has the
+#                       same statusCode/isRetryable; isRetryable defaults to status 408, 409, 429 or >= 500)
+#   ProviderAuthError   data {providerID, message}                       the provider refused our credentials
+#   ContextOverflowError, ContentFilterError, MessageAbortedError, MessageOutputLengthError, StructuredOutputError: about OUR request or run
+#   UnknownError        data {message, ref}                              no structure: only its message text can tell
+# So the JSON is the primary evidence; the text regex is only the fallback for what is not such an object.
+PROCESS_ERRORS = ("ContextOverflowError", "ContentFilterError", "MessageAbortedError", "MessageOutputLengthError", "StructuredOutputError")
+NETWORK_NAME = re.compile(r"timeout|timedout|econn|enotfound|eai_again|network|fetch|socket|rate.?limit", re.I)
+
+
+def error_status(o):
+    """The HTTP status of an error object (statusCode or status, at the top or under data / error), or None."""
+    for d in (o, o.get("data"), o.get("error")):
+        if isinstance(d, dict):
+            for k in ("statusCode", "status"):
+                v = d.get(k)
+                if isinstance(v, int) and not isinstance(v, bool) and 100 <= v < 600:
+                    return v
+    return None
+
+
+def classify_error_obj(o):
+    """(verdict, summary) for one JSON object: True = the provider did not answer (api), False = our request or process,
+    None = not an error object or no structure to judge by (the text fallback decides)."""
+    name = o.get("name") if isinstance(o.get("name"), str) else ""
+    data = o.get("data") if isinstance(o.get("data"), dict) else o
+    msg = str(data.get("message") or "")[:100]
+    if name in PROCESS_ERRORS:
+        return False, f"{name}: {msg}"
+    if name == "ProviderAuthError":
+        return True, f"{name}: {msg}"
+    status = error_status(o)
+    retry = o.get("isRetryable") is True or data.get("isRetryable") is True
+    if status is not None:
+        # 408/409/429/5xx (the SDK's retryable set) and 401/402/403 (credentials, billing, quota: the provider refused) are api;
+        # any other status (400, 404, 422, ...) is about what we sent
+        return (status in (401, 402, 403, 408, 409, 429) or status >= 500 or retry), f"{name or 'error'} status {status}: {msg}"
+    if retry:
+        return True, f"{name or 'error'} (retryable): {msg}"
+    if NETWORK_NAME.search(name):
+        return True, f"{name}: {msg}"
+    if name == "APIError":
+        return False, f"{name}: {msg}"
+    return None, ""
+
+
+def api_text(text, limit=200_000):
+    """A one-line evidence string if this stderr text says the provider did not answer, else None. First every JSON object in it
+    (classify_error_obj); a decided object (api or not) is blanked, so words inside it never reach the second step: the text
+    patterns, over the remaining lines."""
+    text = ANSI.sub("", text)[:limit]
+    dec, i, tries, spans, found = json.JSONDecoder(), 0, 0, [], None
+    while tries < 200:
+        j = text.find("{", i)
+        if j < 0:
+            break
+        tries += 1
+        try:
+            obj, end = dec.raw_decode(text, j)
+        except ValueError:
+            i = j + 1
+            continue
+        i = end
+        if isinstance(obj, dict):
+            verdict, summary = classify_error_obj(obj)
+            if verdict is not None:
+                spans.append((j, end))
+                found = found or (summary if verdict else None)
+    if found:
+        return found[:200]
+    for a, b in reversed(spans):
+        text = text[:a] + " " * (b - a) + text[b:]
+    for ln in text.splitlines():
+        if API_RE.search(ln):
+            return ln.strip()[:200]
+    return None
+
+
 def api_evidence(res, offsets=(0, 0)):
-    """The first provider-error line OpenCode wrote to STDERR in the current attempt (after the byte offset offsets[0]), or None.
+    """Evidence (api_text) from the STDERR OpenCode wrote in the current attempt (after the byte offset offsets[0]), or None.
     stdout is never read: it carries the model's own text and the tool output (a review of this very file says "429" and "rate
     limit"), so text there must never make a run look like an API failure. OpenCode 1.18.34 prints its errors to stderr and leaves
-    stdout empty (forced 2026-10-10 with an unknown provider in a throwaway data dir: stderr `Error: {"name": ..., "data":
-    {"message": ...}}`, stdout empty, exit 1)."""
+    stdout empty (forced 2026-10-10 with an unknown provider in a throwaway data dir)."""
     try:
         data = Path(res["stderr"]).read_bytes()[offsets[0]:].decode(errors="replace")
     except OSError:
         return None
-    for ln in ANSI.sub("", data).splitlines():
-        if API_RE.search(ln):
-            return ln.strip()[:200]
-    return None
+    return api_text(data)
 
 
 def keep_prev(path):
@@ -444,10 +521,10 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         ctx["read"][tag] = state["last_message"] = lm
         return lm
 
-    def done(cls, cause=None, evidence=None):
+    def done(cls, cause=None, evidence=None, scan_logs=True):
         res["class"], res["cause"] = cls, cause
         if cls != "ok":
-            ev = evidence or (None if cls in ALWAYS_PROCESS else api_evidence(res, offs))
+            ev = evidence or (api_evidence(res, offs) if scan_logs and cls not in ALWAYS_PROCESS else None)
             res["kind"] = "api" if (cls in ALWAYS_API or ev) else "process"
             if ev:
                 res["cause"] = f"{cause}; {ev}" if cause else ev
@@ -486,9 +563,9 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         r = oc(exe, env, worktree, "models", *args, timeout=timeout)
         if r.returncode == 0:
             return r.stdout.split(), None
-        ev = next((ln.strip()[:200] for ln in ANSI.sub("", r.stderr).splitlines() if API_RE.search(ln)), None)
+        ev = api_text(r.stderr)                           # THIS call's own stderr only, never the run dir's logs
         return None, done("nonzero-exit", f"`opencode models {' '.join(args)}` failed ({r.returncode}): {r.stderr.strip()[:120]}".replace("  ", " "),
-                          evidence=ev)
+                          evidence=ev, scan_logs=False)
 
     models, failed = listed()
     if failed:

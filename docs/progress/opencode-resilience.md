@@ -50,3 +50,8 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
 - [x] R1 every 5xx is api evidence as a status (status/status code/HTTP/Error before 5NN, 5NN before an error word, 5xx); a bare number such as "line 503" is not
 - [x] R2 evidence offsets computed after the logs are archived; test with a reused run dir
 - [x] R3 vacuous asserts replaced by real ones (export names, no run started on a listing failure); grep found no others
+
+## Review round 6 (PR #67), all fixed
+- [x] R1 structured OpenCode errors are the primary evidence (api_text / classify_error_obj; shapes read from the 1.18.34 binary); text regex only for unstructured lines, with `returned 5NN`, `responded with NNN`
+- [x] R2 the models-listing classification uses only that call's own stderr (done(scan_logs=False)); test with a reused run dir holding an old 429
+- [x] R3 docs/proposals/fleet-battles-and-storms.md:273 is the bot's own text (section 13, 'Author: Claude Sonnet 5.5'): updated with the date of the change
