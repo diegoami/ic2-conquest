@@ -13,7 +13,7 @@ Saves are copied to artifacts/run-exp-peace-radio/ (never overwritten); one JSON
 python3 peace_radio.py A|B|C|D"""
 import hashlib, json, shutil, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 import harness.driver as drv
 from harness.driver import Game, G, DriverError
 from state import sav

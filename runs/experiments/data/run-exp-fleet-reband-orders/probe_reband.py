@@ -4,9 +4,9 @@ patched ships, so a stale word cannot pass for a re-band. Then the order; then t
 python3 probe_reband.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load
-SAVES = Path("/home/diego/projects/ic2-conquest/saves")
+SAVES = (Path(__file__).resolve().parents[4] / "saves")
 PORT, SPLIT = SAVES / "fleet-port-antium-0734.SAV", SAVES / "fleet-split-antium-0734.SAV"
 band = lambda ships: 300 if ships < 25 else 316 if ships < 50 else 332
 CASES = {   # case: (fixture, {(x, y): ships}, order, arg)

@@ -8,7 +8,7 @@ Chebyshev distance to the capital and whether a water tile touches it (3x3), fro
 Saves to artifacts/run-exp-fleet-build-city/ (SHA-256 in SAVES.sha256); log build_city-<stamp>.jsonl (tracked). python3 build_city.py"""
 import hashlib, json, shutil, struct, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 import harness.driver as drv
 from harness.driver import Game, G
 from state import sav

@@ -3,7 +3,7 @@ Slot-39-only gate (R46 reading) -> refused; whole-queue gate -> accepted (into w
 python3 probe_mirror.py <out_dir>"""
 import json, struct, sys
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import BASE, fresh_save, load, _make_patched_save_full_slots
 from harness.driver import DriverError
 

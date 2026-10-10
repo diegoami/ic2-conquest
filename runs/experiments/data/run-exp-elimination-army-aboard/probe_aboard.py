@@ -8,10 +8,10 @@ still point at an army of its own after records shift?), news.
 python3 probe_aboard.py <out_dir> <case>    cases: sieges | sieges_end_turn | sieges_cover1 (the fleet's covered cell +24 set to 1, rough sea: 0 after = written, 1 = restored)"""
 import json, shutil, struct, sys
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from harness.driver import G, Game
 from state import sav
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 SIEGE = R / "saves/siege-felsina-failed-0721.SAV"
 ARMY_COUNT_OFF, ARMY_LEN, FLEET_LEN = 100956, 656, 26
 out = Path(sys.argv[1]); case = sys.argv[2]

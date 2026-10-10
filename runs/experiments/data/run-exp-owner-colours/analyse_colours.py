@@ -3,7 +3,7 @@
 run-exp-army-marker-icon for comparison. python3 analyse_colours.py <out_dir>"""
 import collections, hashlib, json, subprocess, sys
 from pathlib import Path
-out = Path(sys.argv[1]); R = Path("/home/diego/projects/ic2-conquest")
+out = Path(sys.argv[1]); R = Path(__file__).resolve().parents[4]
 def rgb(png, inset=0):
     a = ["convert", str(png)] + (["-crop", f"{32 - 2 * inset}x{32 - 2 * inset}+{inset}+{inset}", "+repage"] if inset else []) + ["-depth", "8", "rgb:-"]
     return subprocess.run(a, capture_output=True, check=True).stdout

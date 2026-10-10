@@ -6,11 +6,11 @@ quality 7, name "S<army>-<slot>"), so totals stay far below 100,000 and every un
 python3 probe_join20.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load
 from harness.driver import DriverError
 
-FLEET_PORT = Path("/home/diego/projects/ic2-conquest/saves/fleet-port-antium-0734.SAV")
+FLEET_PORT = (Path(__file__).resolve().parents[4] / "saves/fleet-port-antium-0734.SAV")
 CASES = {   # case: (kept army 0 slots, partner slots for armies 12 and 13)
     "c1_10_10": (list(range(10)), list(range(10))),
     "c2_10_11": (list(range(10)), list(range(11))),

@@ -140,3 +140,32 @@ Findings cite **line numbers** of `all_app_functions.txt`, so the files are pinn
 | `news_log_decomp.txt` | `274d60b2af6ed30dbc11ce59a189d86ce70b15b6f94112efbe2cfba6309622dd` |
 
 Lost and not recreated: `scratch/datload.txt` (listing of `FUN_004481a0`, the DAT loader; cited in `runs/experiments/info_window/`; its content is transcribed as `panel_model.LOADER`). `decompile.path('scratch/datload.txt')` fails naming it.
+
+## Environment fingerprint (2026-10-10)
+
+Every `Game.start()` logs one line, `environment {compact JSON}`, once per process (`Game.environment` holds the dict; code in `harness/environment.py`, stdlib only, about 20 ms, every probe best-effort: a failure is recorded as `{"error": ...}`, never raised). It records: the Wine version, the exe name and SHA-256, the Xvfb screen size, the host font that `fc-match` gives for "Book Antiqua" and "MS Sans Serif", the number of Liberation fonts in `fc-list`, whether the fonts-wine Tahoma is present, and a 12-hex SHA-256 (plus count) of the font names in the prefix's `user.reg` (`External Fonts` names and `Replacements` pairs; nothing else is read).
+
+Why: the Information panel asks for "Book Antiqua", which no computer has, so Wine draws the best host match. With `fonts-liberation` installed it drew Liberation Sans (about 15 wrong OCR lines per panel); with the old font set (`fonts-wine`, no Liberation) it draws DejaVu Sans, as on the old computer, and the pixels agree up to anti-aliasing. Screenshots, OCR and saves must say which environment made them (`runs/experiments/data/run-exp-machine-move/RESULTS.md`, sections 4-5).
+
+`python3 scripts/environment_check.py` prints the fingerprint and compares it with `docs/environment-baseline.json` (the 2026-10-10 computer: Wine 10.0, fonts-wine, no Liberation, "Book Antiqua" -> DejaVu Sans); exit 1 with a plain-words diff when it differs. `--write-baseline` re-records it on purpose. Tests: `python3 -m tests.test_environment`.
+
+Where it goes: `Game.record_environment()` runs whenever `Game.pid` is set to a live game process (a property: every start path, including overrides, `attach()` and a start replaced by assignment, ends by setting it) and appends one record (time, pid, runner `argv[0]`, cwd, fingerprint) to `$IC2_WORK/environment.jsonl`; `self.log` gets the line once per process. A runner that keeps its own log registers `environment.add_sink(fn)` (optionally with a `key`) and writes the record there; covered: `battles/common.py` `Log`, `feature_inventory/explore_lib.py`, the five `MyGame` libraries, `supply_transfer.py`, `smoke.py`, `shot_compare.py`. Probes run in parallel and are bounded (0.8 s each, 0.9 s in all) and error texts carry no absolute paths.
+
+Tracked copy (CLAUDE.md rule 6): `record_start` also appends the record to `environment.jsonl` in the runner's own tracked data folder, chosen from the script's location by `environment.data_folder()`: `runs/experiments/data/run-exp-<n>/x.py` -> that folder (so the finished one-off scripts are covered without edits); `runs/experiments/<dir>/x.py` -> `runs/experiments/data/run-exp-<dir>/` (`_` as `-`; exceptions in `DATA_FOLDERS`: battles -> run-exp-battle-sweep, fleet-battles -> run-exp-naval-battle, unit-map-mouse -> run-exp-unitmap-mouse); `runs/experiments/x.py` -> `runs/experiments/x/`; `runs/<id>/x.py` -> `runs/<id>/`. Scripts outside `runs/` get none (only `$IC2_WORK/environment.jsonl`, the machine-wide log). A runner whose data folder differs calls `environment.set_data_folder(folder)` with a tracked folder (the t3 cargo scripts and fleet-battles/peace_prompt.py do).
+
+Mapping table (audited against where each runner's own outputs live; the default is `environment.data_folder`, an exception is `PREFIX_FOLDERS`/`DATA_FOLDERS` in `harness/environment.py` or `set_data_folder`):
+
+| runner | tracked folder (`runs/experiments/data/...`) | own-log sink |
+|---|---|---|
+| `data/run-exp-<n>/*.py` | its own folder | smoke, supply_transfer |
+| `battles/b0_*.py` (b0_probe, b0_peace_capture) | `run-exp-battle-probe` (artifacts logs are archived there) | `b0_probe.Log` |
+| `battles/b11_*.py` | `run-exp-battle-hook` | `battles/common.py` `Log` |
+| `battles/b16_*.py` | `run-exp-battle-peace` | `battles/common.py` `Log` |
+| other `battles/*.py` (trials, b2, b3, b5, b8, ...) | `run-exp-battle-sweep` | `battles/common.py` `Log` |
+| `fleet-battles/*.py` | `run-exp-naval-battle`; t3_trials, t3_natural_embark: `run-exp-naval-battle-cargo`; peace_prompt: `run-exp-peace-prompt` (`set_data_folder`) | none |
+| `end_of_game`, `leaders_form`, `refusal_texts`, `v050_rules`, `split_aboard` | `run-exp-end-of-game`, `-leaders-form`, `-refusal-texts`, `-v050-rules`, `-split-aboard` | lib `log('environment', ...)` |
+| `feature_inventory`, `info_window`, `pair2`, `storms`, `two-humans`, `civ-sweep` | `run-exp-<dir>` | explore_lib (feature_inventory) |
+| `unit-map-mouse/*.py` | `run-exp-unitmap-mouse` | none |
+| `gallic-army.py` | `runs/experiments/gallic-army/` | none |
+
+The finished scripts under `data/run-exp-*/` no longer hard-code `/home/diego/projects/ic2-conquest`: the repo root comes from `__file__` (52 scripts), so a script runs against the checkout it is in. Two shell helpers in `run-exp-gap-v050` (`remake_cli.sh`, `hash_saves.sh`) still name the path.

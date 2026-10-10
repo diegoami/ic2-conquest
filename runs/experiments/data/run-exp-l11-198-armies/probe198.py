@@ -1,5 +1,5 @@
 import sys, struct, subprocess
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import *
 from tests.test_orders import _make_patched_save_with_n_armies
 from harness.driver import ARMIES

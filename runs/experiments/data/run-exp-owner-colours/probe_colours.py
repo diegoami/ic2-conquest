@@ -7,11 +7,11 @@ montage_<kind>.png lays them out owner x band.
 python3 probe_colours.py <out_dir>"""
 import hashlib, json, struct, subprocess, sys, time
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save
 from harness.driver import sh, UNIT_PAINT
 from state import sav
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 SRC = R / "artifacts/run-exp-army-marker-band/t24999_AFTER.SAV"
 out = Path(sys.argv[1])
 OX, OY, COLS, ROWS = 114, 46, 13, 12          # the view of the run-exp-army-marker-icon captures (tile (120,53) at (545,366))

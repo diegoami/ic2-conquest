@@ -6,11 +6,11 @@ more), press that list's Transfer, collect boxes, then OK or Cancel.
 python3 probe_transfer20.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load
 from harness.driver import ARMY_TOOLBAR_Y, DriverError, sh
 
-FLEET_PORT = Path("/home/diego/projects/ic2-conquest/saves/fleet-port-antium-0734.SAV")
+FLEET_PORT = (Path(__file__).resolve().parents[4] / "saves/fleet-port-antium-0734.SAV")
 CASES = {   # case: (army 0 slots, partner slots, list moved from ("left"=army 0 / "right"=partner), rows selected, finish)
     "c1_18_plus_3_left": (list(range(3)), list(range(18)), "left", [0, 1, 2], "OK"),
     "c2_target_only_slot19": ([0], [19], "left", [0], "OK"),

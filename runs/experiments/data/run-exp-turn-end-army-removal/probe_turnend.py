@@ -6,11 +6,11 @@ Every AFTER save is also checked for record compaction (path 4): each live, not-
 python3 probe_turnend.py <out_dir> <case>"""
 import json, shutil, struct, sys
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 import harness.driver as D
 from harness.driver import G, Game
 from state import sav
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 FLD = R / "artifacts/run-exp-battle-sweep/FLD-RG_0743_rome_army0_at_86_28.SAV"
 ARMY_COUNT_OFF, ARMY_LEN = 100956, 656
 out = Path(sys.argv[1]); case = sys.argv[2]

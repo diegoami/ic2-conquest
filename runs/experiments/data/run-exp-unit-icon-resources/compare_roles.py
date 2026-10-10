@@ -4,7 +4,7 @@ FUN_00448aa4 (nation record +0x424/+0x428/+0x42C, read from saves/run0-start-AUT
 python3 compare_roles.py <out_dir>"""
 import json, struct, collections, sys
 from pathlib import Path
-out = Path(sys.argv[1]); R = Path("/home/diego/projects/ic2-conquest")
+out = Path(sys.argv[1]); R = Path(__file__).resolve().parents[4]
 cities = json.loads((R / "runs/experiments/data/run-exp-city-marker-colours/analyse_cities.json").read_text())["comparison"]
 b = (R / "saves/run0-start-AUTO0720-seed12345.SAV").read_bytes()
 na = struct.unpack_from("<h", b, 100956)[0]; nf = struct.unpack_from("<h", b, 100956 + 2 + na * 656)[0]

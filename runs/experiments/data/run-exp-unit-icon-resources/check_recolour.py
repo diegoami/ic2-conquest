@@ -3,7 +3,7 @@ colours_PRE.SAV) and compare with the 96 drawn icons of run-exp-owner-colours/co
 python3 check_recolour.py <out_dir>"""
 import collections, json, struct, subprocess, sys
 from pathlib import Path
-out = Path(sys.argv[1]); R = Path("/home/diego/projects/ic2-conquest")
+out = Path(sys.argv[1]); R = Path(__file__).resolve().parents[4]
 SAVE = R / "artifacts/run-exp-owner-colours/colours_PRE.SAV"
 SHOT = R / "artifacts/run-exp-owner-colours/colours_screen.png"
 raw = subprocess.run(["convert", str(SHOT), "-depth", "8", "rgb:-"], capture_output=True, check=True).stdout

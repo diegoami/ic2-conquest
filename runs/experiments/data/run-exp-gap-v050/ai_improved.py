@@ -3,7 +3,7 @@ city owner changes by turn, cities under siege, AI armies next to an enemy city 
 AI fortification rises, Rome's cities. Writes ai_improved.json (versioned). python3 ai_improved.py"""
 import json
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); D = R / "runs/experiments/data/run-exp-gap-v050"
+R = Path(__file__).resolve().parents[4]; D = R / "runs/experiments/data/run-exp-gap-v050"
 out = {}
 for seed in (1, 2, 3):
     prev, ch, sieges, adj, forts = None, [], 0, 0, 0

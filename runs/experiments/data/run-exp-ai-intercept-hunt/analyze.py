@@ -13,7 +13,7 @@ the hunted fleet's position; port <= 100 toward the port city). `checks_ok` is t
 python3 analyze.py <variant> <seed>   -> analysis_<variant>_s<seed>.json (new file; an existing one is kept and a .vN written beside it)"""
 import json, sys
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from state import sav
 ART = R / "artifacts/run-exp-ai-intercept-hunt"; DATA = R / "runs/experiments/data/run-exp-ai-intercept-hunt"
 variant, seed = sys.argv[1], int(sys.argv[2])

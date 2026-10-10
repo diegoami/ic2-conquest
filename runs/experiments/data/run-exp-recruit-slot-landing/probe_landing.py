@@ -4,7 +4,7 @@ same order (Recruit unit, Rome = city_row 1, heavy infantry, thousands=2) `order
 python3 probe_landing.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import BASE, fresh_save, load
 from harness.driver import DriverError
 

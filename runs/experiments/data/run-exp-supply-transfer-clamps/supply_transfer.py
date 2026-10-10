@@ -16,7 +16,7 @@ edited (they are moved in play). Saves go to artifacts/run-exp-supply-transfer-c
 every case logs one JSON line per step to supply_transfer-<case>-<stamp>.jsonl beside this script (rule 6: never overwritten)."""
 import hashlib, json, shutil, struct, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "runs/experiments/battles"))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "runs/experiments/battles"))
 import harness.driver as drv
 from harness.driver import Game, G, DriverError, ARMY_TOOLBAR_Y, sh
 from state import sav
@@ -35,6 +35,10 @@ sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def log(step, **kw):
     kw.update(step=step, t=time.strftime("%H:%M:%S")); print(json.dumps(kw, default=str), flush=True)
     with LOG.open("a") as f: f.write(json.dumps(kw, default=str) + "\n")
+
+
+from harness import environment as _env   # every start records the Wine/font environment in this log (harness/environment.py)
+_env.add_sink(lambda rec: log("environment", **{k: v for k, v in rec.items() if k != "step"}))
 
 
 def keep(src, name):

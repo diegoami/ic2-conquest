@@ -1,5 +1,5 @@
 import sys, time, subprocess
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh
 from harness.driver import ARMY_TOOLBAR_Y, DriverError, WINE, WORK, sh
 g, _ = fresh("x")

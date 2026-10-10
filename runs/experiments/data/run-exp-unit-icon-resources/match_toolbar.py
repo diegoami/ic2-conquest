@@ -3,7 +3,7 @@
 pixel). Reports the best position and the number of mismatching non-transparent pixels. python3 match_toolbar.py <out_dir>"""
 import json, struct, subprocess, sys
 from pathlib import Path
-out = Path(sys.argv[1]); R = Path("/home/diego/projects/ic2-conquest")
+out = Path(sys.argv[1]); R = Path(__file__).resolve().parents[4]
 shot = R / "artifacts/run-exp-city-marker-colours/cities_screen1.png"
 W, H = 1280, 1024
 raw = subprocess.run(["convert", str(shot), "-depth", "8", "rgb:-"], capture_output=True, check=True).stdout
