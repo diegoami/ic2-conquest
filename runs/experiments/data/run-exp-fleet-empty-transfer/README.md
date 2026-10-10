@@ -10,3 +10,4 @@ Original-side check from ic2-research (`docs/pending-requests.md` ef0d3e2): when
 - **Table:** `table_from_saves.md`, made by `table_from_saves.py` from the before/after saves (read-only parse with `state/sav.py`).
 - **Binaries:** saves and the before-OK screenshots in release `run-exp-fleet-empty-transfer` (gitignored `artifacts/run-exp-fleet-empty-transfer/`); SHA-256 in `SAVES.sha256`.
 - **Finding:** `findings/2026-10-10-fleet-emptied-by-transfer-money-and-supplies.md`.
+- **Environment:** `environment-after-runs.json` is the output of `scripts/environment_check.py` (the tool also printed "Same environment as the baseline.", removed so the file is JSON). It was taken after the three runs (2026-10-10 ~21:3x), not during them, because the branch started before the environment record merged. Same machine; its font set and Wine had not changed since the 19:33 font experiment (`runs/experiments/data/run-exp-machine-move/RESULTS.md` §5). The cases were not re-run.

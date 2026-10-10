@@ -9,6 +9,8 @@
 
 ## Answer
 
+**Method and environment:** one fresh Wine process per case, fast rollingsave seed exe, seed 12345. Environment: Wine 10.0 (Ubuntu 10.0~repack-12ubuntu1), fonts-wine, Book Antiqua -> DejaVu Sans; recorded after the runs in `environment-after-runs.json` (same machine, fonts and Wine unchanged since the 19:33 font experiment, `run-exp-machine-move/RESULTS.md` §5).
+
 `saves/fleet-split-antium-0734.SAV` (turn 0734): fleet 2 at (101,46), fleet 5 at (101,47). Fleet records staged (L1, fleet records only, never x/y). Fleet 5 gives ships to fleet 2 with the ship arrows only; the supply and money arrows are untouched. Values are (owner, ships, supplies +14, money +16); Rome's treasury is 1730 in every save.
 
 | Case | Staging | Fleet 2 before | Fleet 5 before | Fleet 2 after | Fleet 5 after | Box |
