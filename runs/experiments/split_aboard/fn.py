@@ -3,7 +3,10 @@
 usage: fn.py 00446f50 [...]   |  fn.py -g REGEX"""
 import re,sys
 import os
-F=os.environ.get('IC2_DUMP', os.path.expanduser('~') + '/ic2-dump/all_app_functions.txt')
+sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..')))
+from harness import decompile
+decompile.check()  # this tool prints line numbers of the pinned dump
+F=decompile.DUMP
 lines=open(F,errors='replace').read().split('\n')
 idx={}
 for i,l in enumerate(lines):

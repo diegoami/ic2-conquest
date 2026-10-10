@@ -13,7 +13,7 @@ Forbidden results: a line not traced to its literal and call site; a condition w
 - `CLAUDE.md` (rules 1-6).
 - `findings/2026-10-05-player-facing-feature-inventory.md`: rows L09 and L11, and the rows that quote refusals (UA04, UA05, UF05, D05, D06, S05, and the build-fleet, scuttle and disband rows).
 - The clone issue: `gh issue view 721 --repo diegoami/imperial_conquest_2` (read only).
-- The decompile (read only): `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt` and `delphi_symbols.tsv`. The inventory's string dump `dump_string_literals.tsv` is in release `run-exp-feature-inventory` of this repository (`gh release download`).
+- The decompile (read only): `~/ic2-work/decompile/all_app_functions.txt` and `delphi_symbols.tsv`. The inventory's string dump `dump_string_literals.tsv` is in release `run-exp-feature-inventory` of this repository (`gh release download`).
 - Examples of the layout: `runs/experiments/end_of_game/` (code extract, claims audit reading claims from the finding) and `runs/experiments/split_aboard/lib.py` (verified clicks, `keep_save`, `snap`).
 
 ## Questions

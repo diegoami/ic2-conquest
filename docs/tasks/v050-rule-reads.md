@@ -32,7 +32,7 @@ Forbidden results (any one fails the task, and a reviewer will block on it):
    - If cheap, confirm in play: an attack that is refused (for example an army with 0 moves) on a nation at peace, and whether the relation changed.
 
 ## Sources (read-only)
-- `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt` and `delphi_symbols.tsv`.
+- `~/ic2-work/decompile/all_app_functions.txt` and `delphi_symbols.tsv`.
 - `~/ic2-work/build/Imperial Conquest 2.exe`.
 - The research reports, especially:
   - `upkeep-payment-and-desertion.md`;

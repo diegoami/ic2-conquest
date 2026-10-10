@@ -21,7 +21,7 @@ Forbidden results (any one fails the task, and a reviewer will block on it):
 
 ## Sources (in this order; all read-only)
 1. **The decompile.**
-   - The whole-application Ghidra dump: `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`, about 1,900 functions.
+   - The whole-application Ghidra dump: `~/ic2-work/decompile/all_app_functions.txt`, about 1,900 functions.
    - The recovered Delphi RTTI symbols: `delphi_symbols.tsv` / `.json`, 282 methods across 31 classes.
    - The topic dumps beside them: `news_log_decomp.txt`, `calendar_and_endturn.txt`, `army_recruits.txt`, `army_to_army.txt`, etc.
    - The exe itself, `~/ic2-work/build/Imperial Conquest 2.exe`. Read only. Its `TPF0` form resources, the `TMainMenu` stream and the
@@ -113,7 +113,7 @@ Measurements are kept, committed and pushed as they are made, and never deleted.
 - Saves, screenshots and exes are never in git: their SHA-256 go in `SAVES.sha256`, and the files go to the release.
 - If a release call is refused, keep the artifacts and report the exact command.
 - Never print `IC2_RELEASE_TOKEN`.
-- Never write to another repository; the research repo and the ReTools folder are read-only inputs.
+- Never write to another repository; the research repo and the decompile folder (`~/ic2-work/decompile/`) are read-only inputs.
 
 ## Deliverables
 One PR against main, "findings: player-facing feature inventory of the original (battle excluded)". Its body maps every Done-when line to

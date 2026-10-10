@@ -126,3 +126,17 @@ Check: `curl -sf localhost:8765/health`. If that fails:
 ### Don't
 - Don't read or edit `~/.config/quota-tracker/config.toml`; it holds account tokens.
 - If a provider shows `error` about an expired cookie or token, tell the owner; renewing it needs their browser or login.
+
+## Decompile (Ghidra output of the game)
+
+The decompile lives in **`~/ic2-work/decompile/`** (outside the repository on purpose: decompiled game code is never committed). Override the folder with `IC2_DECOMPILE` (the old `IC2_RETOOLS`, `IC2_DUMP` for the dump file and `IC2_SYMBOLS` for the symbols file still work). Scripts take the paths from `harness/decompile.py` (`DIR`, `DUMP`, `SYMBOLS`, `NEWS_LOG`, `path(name)`); nothing hardcodes a folder. The folder was copied from the old Windows-side ReTools folder after that was lost in the computer move (2026-10-10).
+
+Findings cite **line numbers** of `all_app_functions.txt`, so the files are pinned by SHA-256 (also in `harness/decompile.py`, `PINS`). A script that cites line numbers calls `decompile.check()` and stops on a different file.
+
+| file | SHA-256 |
+|---|---|
+| `all_app_functions.txt` (59,228 lines) | `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8` |
+| `delphi_symbols.tsv` | `c4dbf9bb6a1b4f2907bb9f9ef904d60150997a4f86d08e0dd3195ba87365f58f` |
+| `news_log_decomp.txt` | `274d60b2af6ed30dbc11ce59a189d86ce70b15b6f94112efbe2cfba6309622dd` |
+
+Lost and not recreated: `scratch/datload.txt` (listing of `FUN_004481a0`, the DAT loader; cited in `runs/experiments/info_window/`; its content is transcribed as `panel_model.LOADER`). `decompile.path('scratch/datload.txt')` fails naming it.
