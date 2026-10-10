@@ -28,3 +28,9 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
 - [x] R1 `opencode models` stderr with a provider/network shape -> kind api
 - [x] R2 read the session before any automatic resume (state.json last_message, log, export-attemptN.json); finish=stop with text -> stopped-with-report (process, text in result.json), else resume
 - [x] R3 api failure with a session: last message read into result.json, state.json and the log before the chain moves on
+
+## Review round 3 (PR #67), all fixed
+- [x] R1 unreadable session export -> process failure (`session-unreadable` before a resume; error in cause otherwise), no resume/fallback
+- [x] R2 one helper `read_last` called by done() for every failure with a session (permission-rejected looks the session up first)
+- [x] R3 per-attempt export-attemptN.json everywhere, final_text takes the name
+- [x] R4 tests run er.main() against the fake with git/gh stubbed: exit 6 (no post, one model), exit 3 (no post), fallback posts

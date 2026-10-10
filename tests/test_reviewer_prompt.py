@@ -52,7 +52,10 @@ elif a[:2] == ["session", "list"]:
 elif a[:1] == ["export"]:
     hdr = (d / "hdr.txt").read_text() if (d / "hdr.txt").exists() else "PR review (x)"
     last = (d / "lastmode").read_text() if (d / "lastmode").exists() else "ok"
-    if last in ("hang", "crash", "textcrash", "apicrash", "429") or last == "reportcrash":
+    if (d / "export_bad").exists():
+        print("{this is not json")
+        sys.exit(0)
+    if last in ("hang", "crash", "textcrash", "apicrash", "429", "perm") or last == "reportcrash":
         # a run that died: mid-work (finish tool-calls, partial text) or after a final message (reportcrash: stopped and reported)
         stop = last == "reportcrash"
         print(json.dumps({"info": {}, "messages": [{"info": {"role": "assistant", "agent": "external-reviewer",
@@ -89,6 +92,9 @@ elif a[:1] == ["run"]:
     if mode == "crash":
         sys.stderr.write("panic: something broke\\n")
         sys.exit(1)
+    if mode == "perm":           # OpenCode auto-rejects a permission: a line that STARTS with "!"
+        print("! permission requested: external_directory (/etc/x); auto-rejecting", flush=True)
+        time.sleep(30)
     if mode == "reportcrash":    # the model stops and reports, then the process dies
         sys.stderr.write("panic: after the report\\n")
         sys.exit(1)
@@ -275,6 +281,7 @@ def test_bad_format_is_a_process_failure():
         assert runs_started(d) == 1, "no fallback to another model"
         assert json.loads((d / "logs" / "run-1" / "result.json").read_text())["class"] == "bad-format"
         assert "bad-format" in (d / "logs" / "run-1" / "status.txt").read_text()
+        assert (d / "logs" / "run-1" / "export-attempt1.json").exists() and not (d / "logs" / "run-1" / "export.json").exists()
         prev = json.loads((d / "logs" / "run-1" / "result.prev-1.json").read_text())
         assert prev["class"] == "ok" and prev["text"], prev      # the ok result is kept, not overwritten (rule 6)
     return "no header line -> bad-format, kind process, chain stopped after one run, recorded in result.json and status.txt"
@@ -417,11 +424,86 @@ def test_api_failure_reads_the_session_first():
     return "an api failure with a session: its last message is in result.json, state.json and the log before the next model runs"
 
 
+def test_every_failure_reads_the_session_and_exports_are_per_attempt():
+    with fake_opencode("unreadable", ["crash", "ok"]) as d:
+        (d / "export_bad").write_text("1")
+        r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+        assert r["class"] == "session-unreadable" and r["kind"] == "process" and "unreadable" in r["cause"].lower(), r
+        assert runs_started(d) == 1, "an unreadable session is never resumed"
+    with fake_opencode("unreadable-api", ["apicrash", "ok"]) as d:
+        (d / "export_bad").write_text("1")
+        final, stop, failures = chain(d)
+        assert final is None and stop and not failures, (final, stop, failures)
+        assert stop[1]["kind"] == "process" and "export unreadable" in stop[1]["cause"] and runs_started(d) == 1, stop[1]
+    with fake_opencode("perm", ["perm", "ok"]) as d:
+        r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+        assert r["class"] == "permission-rejected" and r["kind"] == "process", r
+        assert r["last_message"]["text"] == "partial notes" and runs_started(d) == 1, r
+    with fake_opencode("exhausted", ["crash", "crash", "crash", "ok"]) as d:
+        r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+        assert r["class"] == "nonzero-exit" and r["last_message"]["tag"] == "attempt3", r
+        names = sorted(x.name for x in (d / "run").glob("export*.json"))
+        assert names == ["export-attempt1.json", "export-attempt2.json", "export-attempt3.json"], names
+    return "unreadable export -> session-unreadable/process (no resume, no fallback); permission-rejected and exhausted resumes read the session; one export file per attempt"
+
+
+@contextlib.contextmanager
+def main_env(d, plan, argv):
+    """er.main() against the fake opencode with git and gh stubbed: records every `gh ... comment` call. Yields (code, posted, stderr, out)."""
+    import io
+    import contextlib as cl
+    posted, calls = [], []
+
+    def fake_sh(*args, cwd=None, check=True, text=True):
+        calls.append(args)
+        if args[:2] == ("gh", "pr") and args[2] == "comment":
+            posted.append(args)
+        if args[:2] == ("git", "worktree") and args[2] == "add":
+            Path(args[-2]).mkdir(parents=True, exist_ok=True)
+        if "rev-parse" in args:
+            return HEAD
+        if "merge-base" in args:
+            return BASE
+        return ""
+
+    meta = {"title": "t", "body": "b", "headRefOid": HEAD, "baseRefName": "main", "commits": [], "labels": []}
+    saved = (er.sh, er.gh_json, er.quota_skip, er.pricing_note, er.REVIEW_ROOT, er.WORK, er.REPO, sys.argv)
+    er.sh, er.gh_json, er.quota_skip, er.pricing_note = fake_sh, (lambda *a, fields=None: meta), (lambda m: None), (lambda m: None)
+    er.REVIEW_ROOT, er.WORK, er.REPO = d / "review", d / "work", d / "repo"
+    sys.argv = ["external_review.py"] + argv
+    out, err = io.StringIO(), io.StringIO()
+    try:
+        with cl.redirect_stdout(out), cl.redirect_stderr(err):
+            code = er.main()
+        yield code, posted, err.getvalue(), out.getvalue()
+    finally:
+        er.sh, er.gh_json, er.quota_skip, er.pricing_note, er.REVIEW_ROOT, er.WORK, er.REPO, sys.argv = saved
+
+
+def test_main_exit_codes():
+    two = ["--pr", "5", "--model", "provider/model,provider/model"]
+    with fake_opencode("main-process", ["crash", "crash", "crash", "ok"]) as d:
+        with main_env(d, None, two) as (code, posted, err, out):
+            assert code == 6, (code, err)
+            assert not posted, "a process failure posts nothing"
+            assert "OpenCode process failure: provider/model#high: nonzero-exit" in err and "resume with --resume" in err, err
+            assert runs_started(d) == 3, "no second model after a process failure"
+    with fake_opencode("main-api", ["429", "429"]) as d:
+        with main_env(d, None, two) as (code, posted, err, out):
+            assert code == 3 and not posted and "OpenCode unavailable" in err, (code, err)
+            assert runs_started(d) == 2, "both models' APIs were tried"
+    with fake_opencode("main-fallback", ["429", "ok"]) as d:
+        with main_env(d, None, two) as (code, posted, err, out):
+            assert code == 0 and len(posted) == 1, (code, err, posted)
+    return "main(): process failure -> exit 6, no post, one model; every API failing -> exit 3, no post; api then ok -> posted, exit 0"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
-         "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first"]
+         "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes"]
 
 if __name__ == "__main__":
     bad = 0

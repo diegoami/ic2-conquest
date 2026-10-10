@@ -160,7 +160,7 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not sil
 - **Automatic resume.** After an `idle-timeout`, `total-timeout` or `nonzero-exit` with a known session (and no api evidence in that attempt's
   output), `opencode_watched.run` continues THE SAME session (`opencode run --session <id>`, the brief attached again, the fixed message
   "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for.") up to 2 times, logging
-  each. **Before any resume the session's last assistant message is read** (CLAUDE.md rule 7; `export-attemptN.json`, `state.json` `last_message`, the log): a final
+  each. **Every failed run with a session has its last assistant message read first** (one helper, `read_last`; also before any resume), and an unreadable export ends the run as a process failure (`session-unreadable`, or the original class with the read error in `cause`): never resumed, never handed on. Exports are per attempt (`export-attemptN.json`, never overwritten). Specifically, before any resume the last assistant message is read (CLAUDE.md rule 7; `export-attemptN.json`, `state.json` `last_message`, the log): a final
   message with finish `stop` means the model reported, so the run ends as `stopped-with-report` instead; the same read is recorded for an api failure with a session before the next
   model runs (`result.json` `last_message`). A failing `opencode models` listing with a network/429/5xx shape on stderr is an api failure too. Every attempt has its own idle and total timeout; the stdout/stderr logs are appended, not replaced.
   **The limit is kept in `state.json` (`resumes_used`)** and holds across invocations: a manual `--resume` counts as one. Past the limit

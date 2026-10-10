@@ -170,9 +170,10 @@ def kill_tree(proc):
             continue
 
 
-def final_text(exe, env, cwd, session, run_dir, fname="export.json"):
+def final_text(exe, env, cwd, session, run_dir, fname):
     """(text, finish, agent_seen) of the last assistant message, from `opencode export`. The export
-    goes to a file: through a pipe a large export arrives truncated."""
+    goes to a file: through a pipe a large export arrives truncated. fname is per attempt (export-attemptN.json): an export
+    is a measurement and is never overwritten (CLAUDE.md rule 6)."""
     path = Path(run_dir) / fname
     with open(path, "w") as f:
         subprocess.run([exe, "export", session], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
@@ -197,7 +198,8 @@ def final_text(exe, env, cwd, session, run_dir, fname="export.json"):
 #   process everything else (timeouts, cut-off, crash, unreadable output, permission refusal, wrong agent, our own setup):
 #           diagnose and fix it; never hand it to another model. The run is resumable (state.json, --session).
 ALWAYS_API = ("no-session", "exited-without-session")
-ALWAYS_PROCESS = ("unknown-model", "no-executable", "unknown-agent", "permission-rejected", "default-agent", "stopped-with-report")
+ALWAYS_PROCESS = ("unknown-model", "no-executable", "unknown-agent", "permission-rejected", "default-agent", "stopped-with-report",
+                  "session-unreadable")
 RESUMABLE = ("idle-timeout", "total-timeout", "nonzero-exit")      # continued in the SAME session, up to RESUMES times
 RESUMES = 2
 RESUME_MSG = "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for."
@@ -396,21 +398,29 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
 
     offs = [0, 0]                                             # byte offsets of this attempt in stderr.log, stdout.log
 
-    ctx = {}                                                  # exe and env, once known: read_last needs them
+    ctx = {"read": {}}                                        # exe and env once known (read_last needs them); the reads made per attempt
 
-    def read_last(tag):
-        """CLAUDE.md rule 7, read before you retry or re-route: the session's last assistant message (export to a file named by tag),
-        kept in state.json and logged. {finish, text} or None when there is no session or the export cannot be read."""
-        if not (res["session"] and ctx):
+    def export_name():
+        return f"export-attempt{state['attempt']}.json"
+
+    def read_last():
+        """CLAUDE.md rule 7, read before you retry, resume or re-route: the session's last assistant message of THIS attempt (export to
+        export-attemptN.json, once per attempt), kept in state.json and logged. The one helper every failure decision goes through
+        (done() calls it for every failed run with a session). {tag, finish, text}; {tag, error} when the export cannot be read;
+        None when there is no session."""
+        if not (res["session"] and "exe" in ctx):
             return None
+        tag = f"attempt{state['attempt']}"
+        if tag in ctx["read"]:
+            return ctx["read"][tag]
         try:
-            text, finish, _ = final_text(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, f"export-{tag}.json")
+            text, finish, _ = final_text(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, export_name())
+            lm = {"tag": tag, "finish": finish, "text": text[:4000]}
+            log(f"opencode session {res['session']}: last message ({tag}) finish={finish!r}: {text[:300]!r}")
         except (ValueError, OSError, subprocess.SubprocessError) as e:
-            log(f"opencode session {res['session']}: last message unreadable ({tag}): {e}")
-            return None
-        lm = {"tag": tag, "finish": finish, "text": text[:4000]}
-        state["last_message"] = lm
-        log(f"opencode session {res['session']}: last message ({tag}) finish={finish!r}: {text[:300]!r}")
+            lm = {"tag": tag, "error": f"{type(e).__name__}: {e}"[:200]}
+            log(f"opencode session {res['session']}: last message UNREADABLE ({tag}): {lm['error']}")
+        ctx["read"][tag] = state["last_message"] = lm
         return lm
 
     def done(cls, cause=None, evidence=None):
@@ -420,8 +430,11 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             res["kind"] = "api" if (cls in ALWAYS_API or ev) else "process"
             if ev:
                 res["cause"] = f"{cause}; {ev}" if cause else ev
-            if res["kind"] == "api" and res["session"]:
-                res["last_message"] = read_last(f"failed-attempt{state['attempt']}")     # nothing is rerouted unread
+            lm = read_last()                                  # every failure with a session is read before anything is decided
+            res["last_message"] = lm
+            if lm and lm.get("error"):                        # unread: never resumed, never handed to another model
+                res["kind"] = "process"
+                res["cause"] = f"{res['cause'] or cls}; session export unreadable: {lm['error']}"
         write_json(run_dir / "result.json", res)
         save(status=cls, session=res["session"])
         log(f"opencode run: {cls}" + (f" [{res['kind']}]" if res["kind"] else "") + (f" ({res['cause']})" if res["cause"] else "")
@@ -509,6 +522,9 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
                         m = PERM.match(ln)
                         if m:
                             kill_tree(proc)
+                            if session is None:               # the session may exist already: look once, so it can be read
+                                session = res["session"] = next((x["id"] for x in session_list(exe, env, worktree)
+                                                                 if x.get("title") == title), None)
                             return done("permission-rejected", m.group(1))
                 if session is None:
                     for s in session_list(exe, env, worktree):
@@ -553,8 +569,10 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         if cls in RESUMABLE and session and state.get("resumes_used", 0) < resumes and not api_evidence(res, offs):
             # Rule 7: read the session first. A model that ended its turn with text (finish stop) STOPPED AND REPORTED: that report is
             # answered by the caller, not resumed over. Only a run that died mid-work (no final stop message) is continued.
-            lm = read_last(f"attempt{state['attempt']}")
+            lm = read_last()
             save()
+            if lm and lm.get("error"):
+                return done("session-unreadable", f"the run ended ({cls}: {cause}) and its session could not be read, so it is not resumed")
             if lm and lm["finish"] == "stop" and lm["text"].strip():
                 res["text"] = lm["text"]
                 return done("stopped-with-report", f"the model ended its turn with a final message and then the run ended ({cls}: {cause}); "
@@ -565,7 +583,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             continue
         return done(cls, cause)
     try:
-        text, finish, seen = final_text(exe, env, worktree, session, run_dir)
+        text, finish, seen = final_text(exe, env, worktree, session, run_dir, export_name())
     except (ValueError, OSError, subprocess.SubprocessError) as e:
         return done("cut-off", f"the export could not be read: {e}")
     res["text"] = text
