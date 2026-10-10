@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Print functions from the whole-application dump by Delphi symbol or address. Read only. Usage: show_fn.py NAME_OR_ADDR..."""
-import sys, re
-DUMP = '/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt'
+import sys, re, os
+sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..')))
+from harness import decompile
+DUMP = decompile.DUMP
 txt = open(DUMP, encoding='latin-1').read()
 for a in sys.argv[1:]:
     pat = r'// ==== (\S*%s\S*) @ ([0-9a-f]+) ====\n(.*?)(?=\n// ==== |\Z)' % re.escape(a.lower().replace('0x', '').zfill(8) if re.match(r'(0x)?[0-9a-fA-F]{6,8}$', a) else a)

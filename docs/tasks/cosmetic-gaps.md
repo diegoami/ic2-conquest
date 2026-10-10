@@ -23,7 +23,7 @@ processes killed by pattern; a click at a guessed or fixed position.
 - `findings/2026-10-05-player-facing-feature-inventory.md` rows M04, M05, M06, A01, UA01, and the research report
   `docs/reports/2026-10-05-player-facing-feature-inventory.md` in `/home/diego/projects/imperial-conquest-2-research`
   (read only) — the same rows with their evidence columns.
-- The decompile (read only): `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt` and `delphi_symbols.tsv`.
+- The decompile (read only): `~/ic2-work/decompile/all_app_functions.txt` and `delphi_symbols.tsv`.
   The handlers: `TPremierForm_SetTurnTitle` (the title literals and their spacing), `TPremierForm_MakeSound` 0x0045bf28
   (cases 1-10 and their callers: which game event asks for which case), `TPremierForm_StoreFormPositions` 0x0045bb1c and
   its load-side counterpart, the `TAFSupply` form resource (the button's caption) with `TAFSupply_TransferSupply`

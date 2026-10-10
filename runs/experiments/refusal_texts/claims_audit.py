@@ -465,7 +465,7 @@ if __name__ == '__main__':
     ap.add_argument('--finding', default=os.path.join(paths.ROOT, 'findings', '2026-10-05-refusal-texts-and-conditions.md'))
     ap.add_argument('--data', default=paths.DATA); ap.add_argument('--artifacts', default=paths.ART)
     ap.add_argument('--exe', default=os.environ.get('IC2_ORIG_EXE', os.path.expanduser('~/ic2-work/build/Imperial Conquest 2.exe')))
-    ap.add_argument('--dump', default=os.environ.get('IC2_DUMP', '/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt'))
+    ap.add_argument('--dump', default=paths.DUMP)
     ap.add_argument('--out', default=None)
     a = ap.parse_args()
     n, bad = run(a.finding, a.data, a.artifacts, a.exe, a.dump)

@@ -6,7 +6,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import sites
 from common import write_new
 from paths import DATA
-SYM = os.environ.get('IC2_SYMBOLS', '/mnt/c/Users/diego/AppData/Local/ReTools/delphi_symbols.tsv')
+from harness import decompile  # repo root is on sys.path through paths
+SYM = decompile.SYMBOLS
 L = sites.load(); S = sites.sites(L)
 cls = {}
 for l in open(SYM, encoding='utf-8', errors='replace'):
