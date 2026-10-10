@@ -12,24 +12,43 @@ import json
 import os
 import re
 import subprocess
+import sys
+import time
 from pathlib import Path
 
 WINE = "/usr/lib/wine/wine"
 FONT_SECTIONS = ("Software\\\\Wine\\\\Fonts\\\\External Fonts", "Software\\\\Wine\\\\Fonts\\\\Replacements")
-_cache = {}          # per process: prefix -> fingerprint
+PROBE_TIMEOUT = 0.8  # s per command (a slow fc-list or xdpyinfo must not slow a start)
+BUDGET = 2.0         # s for the whole fingerprint: later probes get what is left, none when it is spent
+_cache = {}          # per process: (prefix, exe path, display) -> fingerprint
+_sinks = []          # runner callbacks: fn(record dict), called by record_start on every start
+_logged = set()      # keys whose line self.log already got (once per process)
+_deadline = [None]
 _exe_hashes = {}     # (path, mtime_ns, size) -> sha256 hex
 
 
-def _run(*args, env=None, timeout=10):
+def _run(*args, env=None, timeout=PROBE_TIMEOUT):
+    if _deadline[0] is not None:
+        left = _deadline[0] - time.monotonic()
+        if left <= 0:
+            raise TimeoutError("fingerprint time budget spent")
+        timeout = min(timeout, left)
     r = subprocess.run(args, capture_output=True, text=True, timeout=timeout, env=env, check=True)
     return r.stdout.strip()
+
+
+def sanitize(msg):
+    """An error text without absolute paths or the home directory (user.reg's location, the exe's): they say nothing about the
+    environment and must not reach logs."""
+    msg = msg.replace(str(Path.home()), "~")
+    return re.sub(r"(?<![\w.])/[^\s'\"]*", "<path>", msg)
 
 
 def _probe(fn):
     try:
         return fn()
     except Exception as e:          # best-effort: the error is the record
-        return {"error": f"{type(e).__name__}: {e}"[:200]}
+        return {"error": sanitize(f"{type(e).__name__}: {e}")[:200]}
 
 
 def exe_sha256(path):
@@ -96,20 +115,64 @@ def _xvfb_size(display):
     return m.group(1)
 
 
-def fingerprint(prefix, exe=None, display=None, refresh=False):
-    """The environment as a plain JSON-able dict. Cached per process and prefix unless `refresh`."""
+def fingerprint(prefix, exe=None, display=None, game_dir=None, refresh=False):
+    """The environment as a plain JSON-able dict. Cached per process by (prefix, exe path, display) unless `refresh`; the whole
+    probe set is bounded by BUDGET seconds (a probe that finds it spent records an error)."""
     prefix = Path(prefix)
-    if not refresh and str(prefix) in _cache:
-        return _cache[str(prefix)]
     exe = exe or os.environ.get("IC2_EXE", "Imperial Conquest 2 fast rollingsave seed.exe")
     display = display or os.environ.get("DISPLAY_IC2", ":99")
-    fp = {"wine": _probe(lambda: _run(WINE, "--version")),
-          "exe": {"name": exe, "sha256": _probe(lambda: exe_sha256(prefix / "drive_c" / "IC2" / exe))},
-          "xvfb_screen": _probe(lambda: _xvfb_size(display)),
-          "fonts": _fonts(),
-          "prefix_fonts": _probe(lambda: registry_fonts_hash(prefix / "user.reg"))}
-    _cache[str(prefix)] = fp
+    game_dir = Path(game_dir) if game_dir else prefix / "drive_c" / "IC2"
+    key = (str(prefix), str(game_dir / exe), display)
+    if not refresh and key in _cache:
+        return _cache[key]
+    _deadline[0] = time.monotonic() + BUDGET
+    try:
+        fp = {"wine": _probe(lambda: _run(WINE, "--version")),
+              "exe": {"name": exe, "sha256": _probe(lambda: exe_sha256(game_dir / exe))},
+              "xvfb_screen": _probe(lambda: _xvfb_size(display)),
+              "fonts": _fonts(),
+              "prefix_fonts": _probe(lambda: registry_fonts_hash(prefix / "user.reg"))}
+    finally:
+        _deadline[0] = None
+    _cache[key] = fp
     return fp
+
+
+def add_sink(fn):
+    """Register fn(record) to be called after every Game start with the environment record: how a runner puts it in its own log."""
+    if fn not in _sinks:
+        _sinks.append(fn)
+    return fn
+
+
+def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
+    """What Game.record_environment does: fingerprint, one log line per process, one jsonl line per start (append only), sinks."""
+    fp = fingerprint(prefix, exe, display, game_dir)
+    key = (str(prefix), str(exe), display)
+    if key not in _logged:
+        _logged.add(key)
+        try:
+            log(log_line(fp))
+        except Exception:
+            pass
+    rec = {"step": "environment", "at": time.strftime("%Y-%m-%dT%H:%M:%S"), "pid": pid, "argv0": sys.argv[0] if sys.argv else "",
+           "cwd": os.getcwd(), "environment": fp}
+    try:
+        with open(jsonl, "a") as f:
+            f.write(json.dumps(rec, sort_keys=True) + "\n")
+    except Exception:
+        pass
+    for sink in list(_sinks):
+        try:
+            sink(rec)
+        except Exception:
+            pass
+    return fp
+
+
+def sink_line(rec):
+    """The record as one `environment {json}` text line, for runners whose log is text."""
+    return "environment " + json.dumps({k: v for k, v in rec.items() if k != "step"}, separators=(",", ":"), sort_keys=True)
 
 
 def log_line(fp):

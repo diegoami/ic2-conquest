@@ -10,6 +10,7 @@ coverage.md ("Dialog layouts").
     g = Game(); g.load("BASE.SAV", seed=12345)
     g.recruit("Rome", "hi", 3200); g.move(3, 104, 40); g.end_turn()
 """
+import functools
 import json
 import os
 import re
@@ -103,10 +104,47 @@ def sh(*args, check=True):
     return subprocess.run(args, env=ENV, capture_output=True, text=True, check=check).stdout
 
 
+def _recorded(start):
+    """Wrap a `start` so that the outermost call, once the game runs, records the environment (harness/environment.py). Applied to
+    Game.start and, by __init_subclass__, to every override (the runner libraries' MyGame/PeaceGame start without super()), so no
+    start escapes the record. Nested calls (HookGame.start -> super().start()) record once."""
+    @functools.wraps(start)
+    def wrapper(self, *a, **k):
+        outer = not getattr(self, "_env_busy", False)
+        self._env_busy = True
+        try:
+            result = start(self, *a, **k)
+        finally:
+            if outer:
+                self._env_busy = False
+        if outer:
+            self.record_environment()
+        return result
+    wrapper._env_recorded = True
+    return wrapper
+
+
 class Game:
+    def __init_subclass__(cls, **kw):
+        super().__init_subclass__(**kw)
+        st = cls.__dict__.get("start")
+        if st is not None and not getattr(st, "_env_recorded", False):
+            cls.start = _recorded(st)
+
+    def record_environment(self):
+        """The environment fingerprint of this start: logged once per process through self.log, appended (with time, pid, the
+        runner's argv[0] and cwd) to $IC2_WORK/environment.jsonl on every start, and handed to every sink the runner registered
+        (environment.add_sink). Never raises: a failing record must not stop a run."""
+        try:
+            from harness import environment
+            self.environment = environment.record_start(
+                Path(ENV.get("WINEPREFIX", PREFIX)), self.exe, ENV.get("DISPLAY", DISPLAY), G, self.pid, WORK / "environment.jsonl", self.log)
+        except Exception as e:
+            self.environment = {"error": f"{type(e).__name__}"}
+
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
-        self.environment = None
+        self.environment = None       # set by record_environment() after each start
         self.toolbar_x = self._load_cache(TOOLBAR_CACHE)
         self.army_x = self._load_cache(ARMY_TOOLBAR_CACHE)
         self.battle_x = self._load_cache(BATTLE_TOOLBAR_CACHE)
@@ -125,12 +163,9 @@ class Game:
         time.sleep(1)
         self.pid = None
 
+    @_recorded
     def start(self):
         self.ensure_xvfb()
-        if self.environment is None:      # once per process (cached in harness.environment): evidence says what made it
-            from harness import environment
-            self.environment = environment.fingerprint(PREFIX, self.exe, DISPLAY)
-            self.log(environment.log_line(self.environment))
         self.kill()
         subprocess.Popen(["setsid", WINE, self.exe], cwd=G, env=ENV,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

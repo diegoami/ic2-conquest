@@ -69,9 +69,21 @@ def main():
         assert "never-read" not in json.dumps(f) and "usr" not in json.dumps(f["prefix_fonts"])
         ok += 1; print("PASS fields and registry font names")
 
-        assert E.fingerprint(prefix, exe="g.exe") is E._cache[str(prefix)]        # cached per process
-        assert fp(prefix) == f
-        ok += 1; print("PASS cached and stable")
+        calls = []
+        real = E._run
+        with mock.patch.object(E, "_run", lambda *x, **k: calls.append(x) or real(*x, **k)):
+            E._cache.clear()
+            first = E.fingerprint(prefix, exe="g.exe", display=":9")
+            n = len(calls)
+            assert n >= 4, n
+            assert E.fingerprint(prefix, exe="g.exe", display=":9") is first and len(calls) == n   # cached: no probe ran again
+            other = E.fingerprint(prefix, exe="g.exe", display=":10")                              # R5: another display, fresh
+            assert len(calls) > n and other is not first
+            n = len(calls)
+            (prefix / "drive_c" / "IC2" / "h.exe").write_bytes(b"other")
+            third = E.fingerprint(prefix, exe="h.exe", display=":9")                               # R5: another exe, fresh
+            assert len(calls) > n and third["exe"]["sha256"] != first["exe"]["sha256"]
+        ok += 1; print("PASS cached per (prefix, exe, display): no probe on a repeat, fresh for another exe or display")
 
         added = REG.replace(EXT, EXT + "\"Liberation Sans (TrueType)\"=\"Z:\\\\y.ttf\"\n")
         (prefix / "user.reg").write_text(added)
@@ -91,6 +103,67 @@ def main():
         assert "error" in f["fonts"]["liberation_count"], f
         assert f["wine"] == "wine-10.0 (fake)" and len(f["exe"]["sha256"]) == 64      # the other probes still ran
         ok += 1; print("PASS failing probes are recorded, not raised")
+
+    # R4: an error text carries no absolute path or home directory
+    with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
+        prefix = make_prefix(tmp)
+        (prefix / "user.reg").unlink()
+        err = fp(prefix)["prefix_fonts"]["error"]
+        assert tmp not in err and str(Path.home()) not in err and "<path>" in err, err
+        assert "/" not in E.sanitize(f"x {Path.home()}/a/b and /etc/y: z"), E.sanitize("x")
+        ok += 1; print("PASS error text sanitised:", err)
+
+    # R3: a slow probe is bounded and recorded as an error; the whole fingerprint stays under the budget
+    import os, stat, time
+    with tempfile.TemporaryDirectory() as tmp:
+        slow = Path(tmp) / "slowwine"
+        slow.write_text("#!/bin/sh\nsleep 5\n")
+        slow.chmod(slow.stat().st_mode | stat.S_IEXEC)
+        prefix = make_prefix(Path(tmp) / "p")
+        with mock.patch.object(E, "WINE", str(slow)), mock.patch.object(E, "PROBE_TIMEOUT", 0.3):
+            E._cache.clear()
+            t = time.time()
+            f = E.fingerprint(prefix, exe="g.exe", display=":9")
+            took = time.time() - t
+        assert took < 2.5 and "error" in f["wine"] and "Timeout" in f["wine"]["error"], (took, f["wine"])
+        assert tmp not in f["wine"]["error"]
+        with mock.patch.object(E, "BUDGET", 0.0):
+            f = fp(prefix)
+        assert "budget" in f["wine"]["error"] and "budget" in f["fonts"]["Book Antiqua"]["error"], f
+        ok += 1; print("PASS slow probe bounded (%.2f s) and recorded; spent budget skips probes" % took)
+
+    # R1: the record reaches environment.jsonl, a runner's sink (its own log), and self.log once per process
+    from harness import driver
+    with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
+        prefix = make_prefix(Path(tmp) / "p")
+        jsonl = Path(tmp) / "environment.jsonl"
+        got, logged = [], []
+        E._sinks.clear(); E._logged.clear(); E._cache.clear()
+        E.add_sink(got.append)
+        E.record_start(prefix, "g.exe", ":9", prefix / "drive_c" / "IC2", 4242, jsonl, logged.append)
+        E.record_start(prefix, "g.exe", ":9", prefix / "drive_c" / "IC2", 4243, jsonl, logged.append)
+        lines = [json.loads(x) for x in jsonl.read_text().splitlines()]
+        assert [r["pid"] for r in lines] == [4242, 4243] and lines[0]["step"] == "environment", lines     # every start, append only
+        assert lines[0]["argv0"] and lines[0]["cwd"] and lines[0]["environment"]["wine"] == "wine-10.0 (fake)", lines[0]
+        assert len(got) == 2 and len(logged) == 1 and logged[0].startswith("environment {"), (got, logged)
+        assert E.sink_line(got[0]).startswith("environment {") and '"step"' not in E.sink_line(got[0])
+        ok += 1; print("PASS record in environment.jsonl (each start), sink (runner log), self.log (once)")
+
+        # R2: every start override is wrapped, nested super().start() records once
+        class Plain(driver.Game):
+            def start(self):
+                self.pid = 1
+        class Hooked(Plain):
+            def start(self):
+                super().start()
+        for cls in (Plain, Hooked):
+            g = cls.__new__(cls)
+            g.exe, g.pid, g.log = "g.exe", None, logged.append
+            seen = []
+            g.record_environment = lambda: seen.append(g.pid)
+            g.start()
+            assert seen == [1], (cls, seen)
+        ok += 1; print("PASS Game subclasses' start() overrides record once, after the game runs")
 
     with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
         base = fp(make_prefix(tmp))
