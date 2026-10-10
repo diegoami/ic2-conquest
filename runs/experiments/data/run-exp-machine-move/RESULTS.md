@@ -40,3 +40,19 @@ first Wine 10 start) are in `artifacts/run-exp-machine-move/` and release `run-e
   Liberation**. The old panel's line "Macedonia declares war on Greece." measures **211 x 10 px**; rendered at the same size **DejaVu Sans is
   211 x 10** (Tahoma 192, Nimbus Sans 195, Ubuntu 192). The new panel's 195 x 9 equals Liberation Sans' 195 x 9. So the old computer drew the
   panel in **DejaVu Sans**, and the change comes from the host's fonts (`fonts-liberation` installed here), not from Wine 9 vs 10.
+
+## 5. The font experiment (2026-10-10): the old font set reproduces the old rendering
+
+The owner ran `font-experiment.sh remove` (removes `fonts-liberation`, `fonts-liberation-sans-narrow`; installs `fonts-wine`; `fc-list`: 0
+Liberation). The owner also confirmed the old computer has `fonts-wine` and no Liberation fonts (`fc-list`: 0).
+- **Font:** on a prefix copy whose registry is the pre-Wine-10 backup (`~/ic2-work-fonttest`), Wine 10 now maps "Book Antiqua" to **DejaVu
+  Sans** (trace: `Chosen: L"DejaVu Sans"`), and the test line measures 211 x 10, as on the old computer.
+- **Pixels** (`shot_compare.jsonl`, `shot-winter11-20261010-193356.png` against the old `b0-normal-20261004-081149-01-loaded.png`): 30,358 pixels
+  differ (was 53,375), all faint anti-aliasing: with a 5 % tolerance the area map and the unit map differ in 0 pixels, the menu/toolbar strip
+  in 12, the Information panel in 4 (with 20 %: 0 everywhere). Same glyphs, same positions; only edge shading differs (Wine 10 / FreeType).
+- **OCR** of the Information panel (`infoF.txt`): the same text as the old computer's except 2 characters (`lllyria` -> `tllyria`; `and:` ->
+  `and;`, the latter now correct). With Liberation it was about 15 wrong lines.
+- **The main prefix needs no copy:** `~/ic2-work/prefix` dropped its Liberation entries by itself at the next start and its screenshot is
+  pixel-identical (0 differing pixels) to the copy's (`shot-winter11-20261010-193538.png`).
+- **Conclusion:** with the old font set, Wine 10 renders like the old computer up to anti-aliasing. Pixel comparisons of text against old
+  screenshots need a small tolerance (5 % covers maps and menus; 20 % covers everything); exact-byte comparisons of text areas do not carry over.
