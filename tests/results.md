@@ -147,3 +147,9 @@ PASS join_fleets_101 (34s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
   ```
 
 **2026-10-09, end_turn and the End of Game window (`run-exp-ai-conquest-aboard` seed 10)**: an idle run stopped at end 50 with `end turn timed out`. The windows at the stall were the "End of Game" box: "The game is over for Appius Claudius the leader of Rome. Your nation has been conquered by Illyria." (`STUCK_seed10_050.png`, release `run-exp-ai-conquest-aboard`). `end_turn` now raises `GameOver(text)` (a `DriverError`) as soon as that window is up, instead of waiting for the timeout; `idle_watch.py` records `game_over` and ends the seed. Not yet seen live after the change: the next seed that ends this way will show it.
+
+## 2026-10-10, new computer (Wine 10.0, Ubuntu 26.04, fonts-wine, no Liberation)
+
+`python3 -m tests.test_orders`, all 39 tests in one run: **39 PASS, 0 FAIL** (log: `runs/experiments/data/run-exp-machine-move/test_orders-20261010.log`).
+`recruit_100pct_mobilization` again takes about half an hour (1820 s; 1920 s on the old computer). Environment checks behind it (Wine 10 smoke
+test, the font finding, the replay check): `runs/experiments/data/run-exp-machine-move/RESULTS.md`.

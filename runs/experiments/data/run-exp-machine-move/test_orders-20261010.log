@@ -1,0 +1,39 @@
+PASS move (33s): army 0 (100,37) -> (101,36), moves 8 -> 4, cell 2 -> 8, diff runs 8, popups []
+PASS recruit (36s): slot {'slot': 4, 'state': 0, 'type': 'hi', 'troops': 3200, 'city': 85}, treasury 2200 -> 1880 (cost 320), mobilization 30 -> 32, popups []
+PASS end_turn (28s): T_BASE.SAV turn 720 -> AUTO0721.SAV turn 721 (Spring week 3, 270 BC); popups ['@ Celtiberia wants to trade with Rome.']
+PASS scripted_turn_repeats (71s): T_SCRIPTED_a_AUTO0721.SAV == T_SCRIPTED_b_AUTO0721.SAV byte for byte (131679 B, seed S 0000012345); Spring week 3, 270 BC; army 0 at (101,36), Rome queue 5 slots
+PASS attack (56s): army 0 23700 -> 21765 troops; Felsina owner 6 -> 6, loyalty 79 -> 76, fort 68 -> 65, pop 26 -> 25; news tail [' ', 'Week  3      Spring      270BC', 'Rome fails to capture Felsina   (Gaul).']; popups []
+PASS join (46s): armies {0: 23700, 1: 22000} -> army 0 at (103,36), 45700 troops, 12 units; popups []
+PASS taxation (27s): Rome tax -> 20%, treasury 2200, unity 821
+PASS disband_unit (38s): Rome queue 4 -> 4 (recruit +1, disband -1), treasury 1880
+PASS disband_army (28s): Roman armies 2 -> 1, treasury 2300
+PASS build_fleet (28s): Rome fleets 0 -> 1 (ships 10, building True, countdown 24); treasury 2200 -> 2100
+PASS split_army (30s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18900), (1, 120, 53, 22000), (14, 101, 38, 4800)]
+PASS change_units_disband (32s): army 0 23700 t / 6 units -> 18900 t / 5 units
+PASS transfer_units (49s): army0 23700t/6u -> 18900t/5u; army1 22000t/6u -> 26800t/7u
+PASS change_units_rename (34s): '1st Foot  Battalion' -> 'Legio Test'
+PASS change_units_split (35s): units 6 -> 7; troops [4800, 5000, 5200, 5900, 900, 1900] -> [4800, 3000, 5200, 5900, 900, 1900, 2000]
+PASS change_units_join (40s): split then join: units 6 -> 6; troops [4800, 5000, 5200, 5900, 900, 1900]
+PASS change_units_refusals (41s): split row 0: '@ this unit is too small to split'; join rows 1+2: 'e these units ate too lage to be combined. ak'; units unchanged [4800, 5000, 5200, 5900, 900, 1900]
+PASS embark_refused (28s): army 0 10700 troops stays at (101,45), fleet 2 20 ships carries -1; box ['(?} The army is too large for this fleet ?']
+PASS embark (24s): army 0 (101,45) moves 3 -> aboard at (101,46) moves 0; fleet 2 moves 29 -> 0, carries 0
+PASS disembark (33s): army 0 landed at (101,45) moves 0; fleet 2 moves 0, carries -1
+PASS supply_fleet (26s): fleet supplies 0 -> 100; Antium 330 -> 230
+PASS repair_fleet (27s): condition 97 -> 100, moves 29 -> 0, treasury 1730 -> 1712 (cost 18)
+PASS scuttle_fleet (25s): Rome fleets 1 -> 0; box ['(7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel']
+PASS split_fleet (26s): Rome fleets 1 -> 2: [(2, 101, 46, 20, 29), (5, 101, 47, 10, 0)]
+PASS join_fleets (26s): Rome fleets 2 -> 1: ship 30, moves 0
+PASS join_fleets_99 (26s): 50+49=99 -> ACCEPTED (survivor ships=99, moves=0)
+PASS join_fleets_100 (27s): 50+50=100 -> ACCEPTED (survivor ships=100, moves=0)
+PASS join_fleets_101 (28s): 50+51=101 -> REFUSED (no merge; [50, 51] preserved)
+PASS embark_over_500_per_ship (24s): army 0 18001 troops REFUSED embark on fleet 2 30 ships (stayed ashore at (101,45))
+PASS join_armies_over_100k_troops (25s): join REFUSED (army 0 100,001 troops > 100,000); popups ['e These 2 armies combined contain more than 100,000 teops. aK']
+PASS recruit_100pct_mobilization (1820s): Rome mob=100, recruit hi 3200 REFUSED (army 0 unit count unchanged at 3)
+PASS recruit_40_slots_cap (38s): L11 40 slots: 40 in, 40 out (gate held); refusal text = 'e ‘You have reached your lint of 40 units aK'; popups = ['e ‘You have reached your lint of 40 units aK']
+PASS split_army_197_armies (21s): 197 armies: Split army opened, army count 197 -> 198
+PASS split_army_198_armies_cap (29s): 198 armies: Split army REFUSED silently (no dialog), count 198 -> 198; windows ['Area map 328x196', 'Unit map 439x487', 'Information 328x730']
+PASS transfer_ships (31s): fleet 2: 20 -> 15, fleet 5: 10 -> 15
+PASS transfer_ships_back (31s): fleet 2: 20 -> 25, fleet 5: 10 -> 5
+PASS move_fleet (24s): fleet 2 (101,46) -> (99,46), moves 29 -> 27; popups []
+PASS hire_mercs (30s): army 1 +Samnite li 3868 q8 at slot 6; purse 100, popups []
+PASS new_nation_yes (31s): G03 Yes: texts = []; rome.human = False; current_nation = 1

@@ -148,6 +148,8 @@ Base SHA: {base}
 Head SHA under review: {head}
 Your working directory IS that worktree: run git there as it is, WITHOUT -C, and never type the worktree's path
 (a retyped path that is one character off is an out-of-tree access: the run is auto-rejected and lost).
+File tools take paths RELATIVE to your working directory (checked in OpenCode 1.18.34: read, grep and glob resolve a relative path against
+it): `read runs/x.py`, `grep` with path `runs`. grep and glob PRINT absolute paths: cut the worktree prefix off before you give one to read.
 TREE PROOF, your first two tool calls, separate calls: `git rev-parse --show-toplevel HEAD` (the first line must be {wt}, the
 second {head}) and `git diff --name-only {base}...HEAD` ({"a release review has no diff by design: skip this one" if kind == "release" else "it must not be empty"}).
 If anything is wrong you are in the wrong tree: say so in a review whose verdict is `decision` and stop.
@@ -374,6 +376,13 @@ def ensure_labels():
     for lb in VERDICTS.values():
         if lb not in have:
             sh("gh", "label", "create", lb, "--description", "set by scripts/external_review.py")
+
+
+def review_worktree(token):
+    """$IC2_REVIEW_ROOT/<token>: the worktree is named by its 6-hex token alone. A name like `pr69-review-a6c69b` under a root that
+    also had a `pr69-review` directory invited a model to type `.../pr69-review/pr69-review-a6c69b/...` (a duplicated prefix, an
+    out-of-tree access, a lost run: PR #69, 2026-10-10). The kind and number stay in the logs' name (rendered/<kind><n>-<token>)."""
+    return REVIEW_ROOT / token
 
 
 def drop_worktree(wt, kind, n):
@@ -628,7 +637,7 @@ def main():
         return 3
 
     token = secrets.token_hex(3)
-    wt = REVIEW_ROOT / f"{kind}{n}-review-{token}"
+    wt = review_worktree(token)
     logs = REPO / "rendered" / f"{kind}{n}-{token}"
     try:
         REVIEW_ROOT.mkdir(parents=True, exist_ok=True)
