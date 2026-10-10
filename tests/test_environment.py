@@ -202,7 +202,6 @@ def main():
         E._sinks.clear(); E._keyed.clear(); E._logged.clear(); E._cache.clear()
         sunk, lines = [], []
         E.add_sink(sunk.append)
-        E.folder_sink(Path(tmp) / "out", "t")
         g = driver.Game.__new__(driver.Game)
         g.exe, g.log, g.environment = "g.exe", lines.append, None
         g.__dict__["_pid"] = None
@@ -211,10 +210,51 @@ def main():
         assert [r["pid"] for r in sunk] == [101, 102], sunk
         assert len([x for x in lines if x.startswith("environment {")]) == 2, lines
         assert [json.loads(x)["pid"] for x in (Path(tmp) / "environment.jsonl").read_text().splitlines()] == [101, 102]
-        outs = sorted((Path(tmp) / "out").glob("environment-*.json"))
-        assert len(outs) == 2 and json.loads(outs[0].read_text())["environment"]["wine"] == "wine-10.0 (fake)", outs
-        ok += 1; print("PASS two restarts in one process: self.log, sink, environment.jsonl and folder_sink each get both")
+        ok += 1; print("PASS two restarts in one process: self.log, sink, and environment.jsonl each get both")
         E._sinks.clear(); E._keyed.clear()
+
+    # round 5: the tracked data folder of a runner, by script location
+    repo = Path("/r")
+    cases = {"/r/runs/experiments/data/run-exp-peace-radio/peace_radio.py": "/r/runs/experiments/data/run-exp-peace-radio",
+             "/r/runs/experiments/pair2/trials.py": "/r/runs/experiments/data/run-exp-pair2",
+             "/r/runs/experiments/feature_inventory/explore_lib.py": "/r/runs/experiments/data/run-exp-feature-inventory",
+             "/r/runs/experiments/end_of_game/run_two.py": "/r/runs/experiments/data/run-exp-end-of-game",
+             "/r/runs/experiments/fleet-battles/trials.py": "/r/runs/experiments/data/run-exp-naval-battle",
+             "/r/runs/experiments/battles/b0_probe.py": "/r/runs/experiments/data/run-exp-battle-sweep",
+             "/r/runs/experiments/unit-map-mouse/common.py": "/r/runs/experiments/data/run-exp-unitmap-mouse",
+             "/r/runs/experiments/gallic-army.py": "/r/runs/experiments/gallic-army",
+             "/r/runs/run0/play.py": "/r/runs/run0",
+             "/r/tests/test_orders.py": None, "/r/scripts/x.py": None, "/elsewhere/runs/experiments/pair2/t.py": None,
+             "/r/runs/experiments/data/loose.py": None}
+    for script, want in cases.items():
+        got = E.data_folder(script, repo)
+        assert (str(got) if got else None) == want, (script, got, want)
+    ok += 1; print("PASS data_folder: tracked folder chosen by script location (%d cases)" % len(cases))
+
+    # the default sink: a record lands in the runner's tracked environment.jsonl (append only), the override wins, tests/ get none
+    with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
+        prefix = make_prefix(Path(tmp) / "p")
+        fake_repo = Path(tmp) / "repo"
+        script = fake_repo / "runs" / "experiments" / "pair2" / "trials.py"
+        script.parent.mkdir(parents=True)
+        script.write_text("")
+        E._sinks.clear(); E._keyed.clear(); E._logged.clear(); E._cache.clear()
+        args = (prefix, "g.exe", ":9", prefix / "drive_c" / "IC2")
+        with mock.patch.object(E, "REPO", fake_repo), mock.patch.object(sys, "argv", [str(script)]):
+            E.record_start(*args, 1, Path(tmp) / "m.jsonl", lambda x: None)
+            E.record_start(*args, 2, Path(tmp) / "m.jsonl", lambda x: None)
+            tracked = fake_repo / "runs" / "experiments" / "data" / "run-exp-pair2" / "environment.jsonl"
+            assert [json.loads(x)["pid"] for x in tracked.read_text().splitlines()] == [1, 2]
+            E.set_data_folder(fake_repo / "runs" / "experiments" / "data" / "run-exp-other")
+            E.record_start(*args, 3, Path(tmp) / "m.jsonl", lambda x: None)
+            E._override[0] = None
+            assert (fake_repo / "runs" / "experiments" / "data" / "run-exp-other" / "environment.jsonl").exists()
+            assert len(tracked.read_text().splitlines()) == 2
+        with mock.patch.object(E, "REPO", fake_repo), mock.patch.object(sys, "argv", [str(fake_repo / "tests" / "t.py")]):
+            before = sorted(fake_repo.rglob("environment.jsonl"))
+            E.record_start(*args, 4, Path(tmp) / "m.jsonl", lambda x: None)
+            assert sorted(fake_repo.rglob("environment.jsonl")) == before
+        ok += 1; print("PASS default sink: tracked environment.jsonl per runner (append), override honoured, tests/ none")
 
     # R1 (b): a runner library that owns a log gets the record there (battles.common.Log; keyed, so a new Log replaces the old sink)
     sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))

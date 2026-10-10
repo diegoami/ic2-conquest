@@ -21,8 +21,6 @@ from harness.driver import CUR_NATION, G, Game  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-two-humans"
-from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
-_env.folder_sink(OUT, 'two-humans/t0.py')
 OUT.mkdir(parents=True, exist_ok=True)
 res = {"steps": []}
 

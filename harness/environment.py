@@ -190,6 +190,14 @@ def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
             f.write(json.dumps(rec, sort_keys=True) + "\n")
     except Exception:
         pass
+    try:       # the tracked copy: environment.jsonl in the runner's own data folder, append only
+        folder = _override[0] or (data_folder(sys.argv[0]) if sys.argv and sys.argv[0] else None)
+        if folder is not None:
+            Path(folder).mkdir(parents=True, exist_ok=True)
+            with open(Path(folder) / "environment.jsonl", "a") as f:
+                f.write(json.dumps(rec, sort_keys=True) + "\n")
+    except Exception:
+        pass
     for sink in list(_sinks) + list(_keyed.values()):
         try:
             sink(rec)
@@ -198,25 +206,37 @@ def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
     return fp
 
 
-def folder_sink(folder, key):
-    """A sink for a runner that keeps no log file, only output files in `folder`: each start writes environment-<stamp>[-n].json
-    there (exclusive create: never overwrites, rule 6), beside the runner's other outputs. Replaces the earlier sink of `key`."""
-    folder = Path(folder)
+REPO = Path(__file__).resolve().parent.parent
+# runs/experiments/<dir> whose tracked data folder is not run-exp-<dir with _ as ->
+DATA_FOLDERS = {"battles": "run-exp-battle-sweep", "fleet-battles": "run-exp-naval-battle", "unit-map-mouse": "run-exp-unitmap-mouse"}
+_override = [None]
 
-    def write(rec):
-        folder.mkdir(parents=True, exist_ok=True)
-        stem = "environment-" + time.strftime("%Y%m%d-%H%M%S")
-        n = 0
-        while True:
-            path = folder / (stem + (f"-{n}" if n else "") + ".json")
-            try:
-                with open(path, "x") as f:
-                    json.dump(rec, f, indent=1, sort_keys=True)
-                    f.write("\n")
-                return
-            except FileExistsError:
-                n += 1
-    return add_sink(write, key=key)
+
+def data_folder(script, repo=None):
+    """The TRACKED folder where the runner `script` keeps its outputs (CLAUDE.md rule 6), or None when the script is not under runs/:
+    runs/experiments/data/run-exp-<n>/x.py -> that folder; runs/experiments/<dir>/x.py -> runs/experiments/data/run-exp-<dir>/
+    (`_` as `-`, exceptions in DATA_FOLDERS); runs/experiments/x.py -> runs/experiments/<x>/; runs/<id>/x.py -> runs/<id>/."""
+    repo = Path(repo) if repo else REPO
+    try:
+        parts = (Path(script).resolve().relative_to((repo / "runs").resolve())).parts
+    except (ValueError, OSError):
+        return None
+    if not parts or len(parts) < 2:
+        return None
+    base = repo / "runs"
+    if parts[0] != "experiments":
+        return base / parts[0]
+    rest = parts[1:]
+    if rest[0] == "data":
+        return base / "experiments" / "data" / rest[1] if len(rest) > 2 and rest[1].startswith("run-exp-") else None
+    if len(rest) == 1:
+        return base / "experiments" / Path(rest[0]).stem
+    return base / "experiments" / "data" / DATA_FOLDERS.get(rest[0], "run-exp-" + rest[0].replace("_", "-"))
+
+
+def set_data_folder(folder):
+    """A runner whose tracked data folder differs from data_folder()'s guess says so here (it must be a tracked folder, not artifacts/)."""
+    _override[0] = Path(folder)
 
 
 def sink_line(rec):

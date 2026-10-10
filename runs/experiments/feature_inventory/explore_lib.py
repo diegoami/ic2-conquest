@@ -3,7 +3,7 @@ gitignored artifacts folder, a tracked text log. Import before harness.driver.""
 import os, sys, time, subprocess
 os.environ.setdefault('IC2_WORK', '/home/diego/ic2-work-inv')
 os.environ.setdefault('DISPLAY_IC2', ':700')
-ROOT = '/home/diego/projects/wt-inventory'
+ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))   # this checkout (was a hard-coded other worktree)
 sys.path.insert(0, ROOT)
 sys.path.insert(0, ROOT + '/runs/experiments/feature_inventory')
 from common import new_path

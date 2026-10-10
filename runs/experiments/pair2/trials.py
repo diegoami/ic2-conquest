@@ -16,8 +16,6 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-pair2"
-from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
-_env.folder_sink(OUT, 'pair2/trials.py')
 FIX = {"S": (OUT / "FIX_S2_seleucid_seat_0735.SAV", 2, 1), "P": (OUT / "FIX_S2_ptolemaic_seat_0735.SAV", 1, 2)}   # fixture, attacker, defender
 OUT.mkdir(parents=True, exist_ok=True)
 

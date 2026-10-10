@@ -17,8 +17,6 @@ from harness.driver import Game, G, sh, ENV, WINE
 from state import sav
 DATA = ROOT + '/runs/experiments/data/run-exp-info-window/'
 ART = ROOT + '/artifacts/run-exp-info-window/'
-from harness import environment as _env   # every game start writes environment-<stamp>.json beside the tracked logs (harness/environment.py)
-_env.folder_sink(DATA, 'info_window')
 os.makedirs(DATA, exist_ok=True); os.makedirs(ART, exist_ok=True)
 
 def new_path(path):

@@ -18,8 +18,6 @@ from planner import sea  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-pair2"
-from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
-_env.folder_sink(OUT, 'pair2/phase1.py')
 OUT.mkdir(parents=True, exist_ok=True)
 NAMES = {2: "Seleucid", 3: "Ptolemaic"}
 SHIPS = 60

@@ -13,8 +13,6 @@ from harness import driver as d  # noqa: E402
 from harness.driver import Game, NATIONS, NATION_LEN, SEL_ARMY, SEL_FLEET, WORK, WINE, sh  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-unitmap-mouse"      # gitignored: saves and screenshots
-from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
-_env.folder_sink(OUT, 'unit-map-mouse/common.py')
 BASE = WORK / "fixtures" / "BASE.SAV"                    # = saves/run0-start-AUTO0720-seed12345.SAV
 SEED = 12345
 ROME = 0
