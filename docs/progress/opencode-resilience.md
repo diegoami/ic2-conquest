@@ -58,3 +58,6 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
 
 ## Owner's change: refused credentials are process
 - [x] 401, 403 and ProviderAuthError are kind process with cause `provider credentials refused (401/403): renew the login for <provider>`; no resume, no fallback, exit 6 (rule 8); 402 stays api; auth wins over api evidence in the same stderr; tests + docs
+
+## Round 7 note (docs only)
+- [x] classes session-unreadable, watcher-crash, stopped-with-report, resume-limit documented; export names; auth.json is copied, never read or printed
