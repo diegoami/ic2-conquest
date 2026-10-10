@@ -394,6 +394,7 @@ def judge(r, hdr, run_dir):
         if pr["status"] != "none":
             return pr, r
         r["class"], r["kind"], r["cause"] = "bad-format", "process", "no review in the final message (no header line)"
+        ow.keep_prev(Path(run_dir) / "result.json")           # the ok result is a measurement: kept as result.prev-N.json (rule 6)
         ow.write_json(Path(run_dir) / "result.json", r)
         st = ow.read_json(Path(run_dir) / "state.json") or {}
         st["status"] = "bad-format"
@@ -459,7 +460,7 @@ def post_review(kind, n, model, pr, logs, head, apply_label):
     return 0
 
 
-def resume_run(run_dir, apply_label):
+def resume_run(run_dir, apply_label, force=False):
     """--resume <run dir>: continue the recorded OpenCode session where it stopped. Recreates the worktree at the recorded head
     (exit 5 if the PR head, or origin/main for a release review, moved since), continues the SAME session, then parses and posts
     as usual. The run dir (and its earlier results, kept as result.prev-N.json) is never deleted."""
@@ -469,6 +470,10 @@ def resume_run(run_dir, apply_label):
         print(f"{rd}: no resumable state.json (needs kind, number, head and a session)", file=sys.stderr)
         return 2
     kind, n, head = st["kind"], st["number"], st["head"]
+    why = None if force else ow.resume_refusal(rd)
+    if why:                                                 # the limit holds across invocations (state.json resumes_used)
+        print(why, file=sys.stderr)
+        return 2
     if ow.pid_alive(st.get("pid")) and st.get("status") in ("starting", "running", "resuming"):
         print(f"{rd}: the run is still going (pid {st['pid']}); not resuming it twice", file=sys.stderr)
         return 2
@@ -496,7 +501,7 @@ def resume_run(run_dir, apply_label):
         raise
     try:
         r = ow.run(st["brief"], wt, st["model"], rd, agent=st["agent"], data_dir=st["data_dir"], log=lambda s: print(s, flush=True),
-                   resume_session=st["session"], startup=st.get("startup", 180), idle=st.get("idle", 600), total=st.get("total", 3600))
+                   resume_session=st["session"], force_resume=force, startup=st.get("startup", 180), idle=st.get("idle", 600), total=st.get("total", 3600))
         pr, r = judge(r, st["hdr"], rd)
     finally:
         drop_worktree(wt, kind, n)
@@ -525,12 +530,14 @@ def main():
                     "would be posted, its note line, the label and the exit code. No model runs, nothing is posted")
     ap.add_argument("--resume", metavar="RUN_DIR", help="continue a run that stopped (its run dir under rendered/<kind><n>-<token>/run-<k>), "
                     "in the same OpenCode session, then parse and post as usual; exit 5 if the PR head moved")
+    ap.add_argument("--force-resume", action="store_true", help="with --resume: continue even though the run used its 2 resumes "
+                    "(a human decision after a fix; logged in the run's state.json)")
     ap.add_argument("--self-test", action="store_true", help="run the review parser over sample outputs")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
     if a.resume:
-        return resume_run(a.resume, a.apply_label)
+        return resume_run(a.resume, a.apply_label, a.force_resume)
     if not (a.pr or a.issue):
         ap.error("one of --pr / --issue is required (or --self-test or --resume)")
     kind = a.kind or ("release" if a.issue else "pr")

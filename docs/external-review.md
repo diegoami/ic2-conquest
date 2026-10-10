@@ -153,7 +153,7 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not sil
 
 | kind | what | what happens |
 |---|---|---|
-| `api` | no session ever started (`no-session`, `exited-without-session`), or provider error text in stderr or in error-looking stdout lines: 429, rate limit, 5xx, overloaded, service unavailable, quota, usage limit, insufficient, ECONNRESET, ETIMEDOUT, network error. The matching line is stored in `cause` | the next model of the chain is tried; all failing: exit 3 |
+| `api` | no session ever started (`no-session`, `exited-without-session`), or provider error text on OpenCode's **stderr** (stdout is never read: it is the model's text, which may say "429" in a review of this very code; OpenCode 1.18.34 prints its errors as `Error: {json}` on stderr): 429, rate limit, 5xx, overloaded, service unavailable, quota, usage limit, insufficient, ECONNRESET, ETIMEDOUT, network error. The matching line is stored in `cause` | the next model of the chain is tried; all failing: exit 3 |
 | `process` | everything else: idle-timeout, total-timeout, cut-off, nonzero-exit, bad-format, permission-rejected, default-agent, and our own setup (`unknown-model`, `unknown-agent`, `no-executable`) | the chain stops, nothing is posted, exit 6 with the session id, the run dir and the resume command |
 | null | ok | |
 
@@ -161,6 +161,9 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not sil
   output), `opencode_watched.run` continues THE SAME session (`opencode run --session <id>`, the brief attached again, the fixed message
   "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for.") up to 2 times, logging
   each. Every attempt has its own idle and total timeout; the stdout/stderr logs are appended, not replaced.
+  **The limit is kept in `state.json` (`resumes_used`)** and holds across invocations: a manual `--resume` counts as one. Past the limit
+  `--resume` is refused (exit 2, nothing written) unless `--force-resume` is given, a human decision after a fix: it is logged in
+  `state.json` (`forced_resumes`) and the count restarts.
 - **state.json** in every run dir, written at the start and updated as the run goes: kind (`pr` or `release`), number, head and base SHA, title,
   header line, model, agent, session id, attempt, brief path, worktree path, data dir, timeouts, status, watcher pid.
 - **`external_review.py --resume <run dir>`**: recreates the worktree at the recorded path and head (**exit 5** if the PR head, or origin/main for

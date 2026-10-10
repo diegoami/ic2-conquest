@@ -207,20 +207,42 @@ API_RE = re.compile(
     r"\b429\b|rate[ _-]?limit|too many requests|status(?:Code)?\W{0,3}5\d\d|\bHTTP\W+5\d\d|\b50[0-4]\b.{0,20}(?:error|unavailable|gateway)"
     r"|internal server error|overloaded|service unavailable|bad gateway|gateway time-?out|quota|usage[ _-]limit|insufficient"
     r"|ECONNRESET|ETIMEDOUT|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|network error|fetch failed|socket hang up|connection (?:reset|refused|error)", re.I)
-# stdout also carries the model's own text and tool output, so only lines that look like an error line count there; stderr counts whole.
-STDOUT_ERR = re.compile(r"^\s*(?:\w*Error\b|error\b)|APICallError|statusCode", re.I)
 
 
 def api_evidence(res, offsets=(0, 0)):
-    """The first provider-error line written by the current attempt (after the given byte offsets of stderr, stdout), or None."""
-    for path, off, only_errors in ((res["stderr"], offsets[0], False), (res["stdout"], offsets[1], True)):
-        try:
-            data = Path(path).read_bytes()[off:].decode(errors="replace")
-        except OSError:
-            continue
-        for ln in ANSI.sub("", data).splitlines():
-            if (not only_errors or STDOUT_ERR.search(ln)) and API_RE.search(ln):
-                return ln.strip()[:200]
+    """The first provider-error line OpenCode wrote to STDERR in the current attempt (after the byte offset offsets[0]), or None.
+    stdout is never read: it carries the model's own text and the tool output (a review of this very file says "429" and "rate
+    limit"), so text there must never make a run look like an API failure. OpenCode 1.18.34 prints its errors to stderr and leaves
+    stdout empty (forced 2026-10-10 with an unknown provider in a throwaway data dir: stderr `Error: {"name": ..., "data":
+    {"message": ...}}`, stdout empty, exit 1)."""
+    try:
+        data = Path(res["stderr"]).read_bytes()[offsets[0]:].decode(errors="replace")
+    except OSError:
+        return None
+    for ln in ANSI.sub("", data).splitlines():
+        if API_RE.search(ln):
+            return ln.strip()[:200]
+    return None
+
+
+def keep_prev(path):
+    """Measurements are never overwritten (CLAUDE.md rule 6): move an existing file to <stem>.prev-N<ext> before it is rewritten."""
+    path = Path(path)
+    if path.exists():
+        k = 1
+        while path.with_name(f"{path.stem}.prev-{k}{path.suffix}").exists():
+            k += 1
+        path.rename(path.with_name(f"{path.stem}.prev-{k}{path.suffix}"))
+
+
+def resume_refusal(run_dir, resumes=None):
+    """None, or why a manual --resume is refused: the run already used its resumes (automatic ones and earlier manual ones, counted
+    in state.json), and another needs --force-resume (a human decision after a fix)."""
+    st = read_json(Path(run_dir) / "state.json") or {}
+    used, limit = st.get("resumes_used", 0), RESUMES if resumes is None else resumes
+    if used >= limit:
+        return (f"{run_dir}: this run already used {used} of {limit} resumes; find and fix the cause first (read the session's final message), "
+                "then resume once more with --force-resume (logged in state.json)")
     return None
 
 
@@ -341,20 +363,21 @@ def describe(run_dir, now=None):
 
 
 def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None, startup=180,
-        idle=600, total=3600, data_dir=None, log=print, meta=None, resume_session=None, resumes=RESUMES):
+        idle=600, total=3600, data_dir=None, log=print, meta=None, resume_session=None, resumes=RESUMES, force_resume=False):
     """One watched `opencode run`. result.json has `class` and `kind` (None when ok, else api or process, see above). With
     resume_session the run continues THAT session (opencode run --session) instead of starting one; after an idle-timeout,
     total-timeout or nonzero exit with a known session it continues the same session by itself, up to `resumes` times, each
-    attempt with its own idle and total timeout (not after an api failure: the provider is down, the next model takes over).
+    attempt with its own idle and total timeout (not after an api failure: the provider is down, the next model takes over). The
+    resumes used (automatic and manual) are kept in state.json["resumes_used"], so the limit holds across invocations: a resume
+    past it is refused (class resume-limit, nothing written) unless force_resume, which is logged in state.json["forced_resumes"]
+    and starts a fresh count.
     state.json, progress.jsonl and status.txt in run_dir say what it is doing."""
     run_dir = Path(run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
-    prev = run_dir / "result.json"
-    if prev.exists():                                         # measurements are never overwritten (CLAUDE.md rule 6)
-        k = 1
-        while (run_dir / f"result.prev-{k}.json").exists():
-            k += 1
-        prev.rename(run_dir / f"result.prev-{k}.json")
+    if resume_session and not force_resume and resume_refusal(run_dir, resumes):     # refused: nothing is touched
+        return {"class": "resume-limit", "kind": "process", "cause": resume_refusal(run_dir, resumes), "session": resume_session,
+                "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log"), "text": ""}
+    keep_prev(run_dir / "result.json")
     res = {"class": None, "kind": None, "model": model, "agent": agent, "session": resume_session, "text": "",
            "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log"), "cause": None}
     model = effort(model)
@@ -435,7 +458,14 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
 
     cmd = resume_cmd() if resume_session else [exe, "run", message or "Follow the attached brief exactly.", *tail,
                                                 "--title", title, "-f", str(brief)]
-    session, n_resumed, t_prog, first = resume_session, 0, 0.0, not resume_session
+    if resume_session:                                        # a manual resume is itself one resume of the budget
+        if force_resume and resume_refusal(run_dir, resumes):
+            state.setdefault("forced_resumes", []).append({"t": round(time.time()), "resumes_used": state.get("resumes_used", 0)})
+            state["resumes_used"] = 0
+            log("opencode run: --force-resume: the resume limit was lifted by a human decision (logged in state.json)")
+        state["resumes_used"] = state.get("resumes_used", 0) + 1
+        save()
+    session, t_prog, first = resume_session, 0.0, not resume_session
     while True:
         offs[:] = [Path(res["stderr"]).stat().st_size if Path(res["stderr"]).exists() else 0,
                    Path(res["stdout"]).stat().st_size if Path(res["stdout"]).exists() else 0]
@@ -497,11 +527,10 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             cls, cause = "nonzero-exit", f"exit {proc.returncode}"
         if cls is None:
             break
-        if cls in RESUMABLE and session and n_resumed < resumes and not api_evidence(res, offs):
-            n_resumed += 1
-            log(f"opencode run: {cls} ({cause}); resuming session {session} ({n_resumed}/{resumes})")
+        if cls in RESUMABLE and session and state.get("resumes_used", 0) < resumes and not api_evidence(res, offs):
             cmd = resume_cmd()
-            save(attempt=state["attempt"] + 1, status="resuming")
+            save(attempt=state["attempt"] + 1, status="resuming", resumes_used=state.get("resumes_used", 0) + 1)
+            log(f"opencode run: {cls} ({cause}); resuming session {session} ({state['resumes_used']}/{resumes})")
             continue
         return done(cls, cause)
     try:

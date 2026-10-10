@@ -17,3 +17,9 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
   stays as it is (the permission-rejection detector reads it), and the DB gives todo state, which JSON events do not.
 - An api-kind failure is not resumed (the provider is down; the next model takes over); process-kind ones are resumed 2x.
 - Each attempt (first run and each resume) gets its own idle and total timeout.
+
+## Review round 1 (PR #67, luna: rework), all fixed
+- [x] R1 bad-format keeps the ok result as result.prev-N.json (ow.keep_prev)
+- [x] R2 API evidence from stderr only (OpenCode prints errors as `Error: {json}` on stderr, stdout empty; forced with an unknown provider in a throwaway data dir); tests for stdout text vs stderr error
+- [x] R3 resumes_used in state.json, limit across --resume, --force-resume logged in forced_resumes; tests
+- [x] tests write to a tempfile dir only

@@ -11,11 +11,14 @@ No game, no network, no credentials (the watcher is pointed at a missing auth.js
 
     python3 -m tests.test_reviewer_prompt
 """
+import atexit
 import json
 import os
 import re
+import shutil
 import stat
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -26,7 +29,8 @@ import external_review as er  # noqa: E402
 import opencode_watched as ow  # noqa: E402
 
 AGENT = ROOT / ".opencode" / "agents" / "external-reviewer.md"
-SCRATCH = ROOT / "rendered" / "test-reviewer-prompt"        # git-ignored, inside the repository: never TEMP
+SCRATCH = Path(tempfile.mkdtemp(prefix="test-reviewer-prompt-"))     # a temp dir, removed at exit: no run dir is left in the repository
+atexit.register(shutil.rmtree, SCRATCH, True)
 WT, BASE, HEAD = "/home/user/ic2-work/review/pr5-review-0123456789ab", "b" * 40, "a" * 40
 GIT_C = re.compile(r"git\s+-C\b")
 
@@ -72,6 +76,12 @@ elif a[:1] == ["run"]:
         time.sleep(600)
     if mode == "crash":
         sys.stderr.write("panic: something broke\\n")
+        sys.exit(1)
+    if mode == "textcrash":      # the MODEL's text mentions a 429 on stdout, then the process dies: not an API failure
+        print("I saw a 429 rate limit in the log", flush=True)
+        sys.exit(1)
+    if mode == "apicrash":       # OpenCode's own error line on stderr, as 1.18.34 prints it
+        sys.stderr.write('Error: {"name": "APIError", "data": {"statusCode": 429, "message": "Too Many Requests"}}\\n')
         sys.exit(1)
     if mode == "slow":
         time.sleep(3)
@@ -147,7 +157,6 @@ def test_prompt_the_watcher_hands_to_opencode():
 
 # ---- OpenCode resilience (2026-10-10): failure kinds, resume, progress, status -------------------------------------------
 import contextlib  # noqa: E402
-import shutil  # noqa: E402
 import sqlite3  # noqa: E402
 import subprocess  # noqa: E402
 
@@ -251,6 +260,8 @@ def test_bad_format_is_a_process_failure():
         assert runs_started(d) == 1, "no fallback to another model"
         assert json.loads((d / "logs" / "run-1" / "result.json").read_text())["class"] == "bad-format"
         assert "bad-format" in (d / "logs" / "run-1" / "status.txt").read_text()
+        prev = json.loads((d / "logs" / "run-1" / "result.prev-1.json").read_text())
+        assert prev["class"] == "ok" and prev["text"], prev      # the ok result is kept, not overwritten (rule 6)
     return "no header line -> bad-format, kind process, chain stopped after one run, recorded in result.json and status.txt"
 
 
@@ -311,9 +322,46 @@ def test_progress_and_status():
     return "progress.jsonl got tool count, last tool and todo 1/3 from a read-only DB; opencode_status.py rendered running, STOPPED, DIED"
 
 
+def test_only_stderr_is_api_evidence():
+    with fake_opencode("text-429", ["textcrash"] * 3) as d:
+        final, stop, failures = chain(d)
+        assert final is None and stop and not failures, (final, stop)
+        r = stop[1]
+        assert r["kind"] == "process" and r["class"] == "nonzero-exit" and "429" not in (r["cause"] or ""), r
+        assert runs_started(d) == 3, "a model's text is not an API failure: it is resumed, not passed on"
+    with fake_opencode("err-429", ["apicrash", "ok"]) as d:
+        final, stop, failures = chain(d)
+        assert final and not stop and failures == [("provider/model", "nonzero-exit")], (final, stop, failures)
+        r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
+        assert r1["kind"] == "api" and "statusCode" in r1["cause"], r1
+        assert runs_started(d) == 2, "an api failure is not resumed: the next model took over"
+    return "'429 rate limit' in the model's stdout stays process (resumed 2x, no fallback); OpenCode's `Error: {... 429}` on stderr is api"
+
+
+def test_resume_limit_holds_across_invocations():
+    with fake_opencode("resume-limit", ["crash", "crash", "crash", "ok"]) as d:
+        final, stop, failures = chain(d)
+        assert stop, (final, stop)
+        rd = d / "logs" / "run-1"
+        assert json.loads((rd / "state.json").read_text())["resumes_used"] == 2
+        before = (rd / "result.json").read_text()
+        r = ow.run(rd.parent / "brief-1.md", ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None, resume_session="ses_fake")
+        assert r["class"] == "resume-limit" and "--force-resume" in r["cause"], r
+        assert runs_started(d) == 3 and (rd / "result.json").read_text() == before, "a refused resume must touch nothing"
+        assert er.resume_run(rd, False) == 2 and runs_started(d) == 3          # the CLI path refuses too, before any repository call
+        r = ow.run(rd.parent / "brief-1.md", ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None,
+                   resume_session="ses_fake", force_resume=True)
+        assert r["class"] == "ok", r
+        st = json.loads((rd / "state.json").read_text())
+        assert len(st["forced_resumes"]) == 1 and st["forced_resumes"][0]["resumes_used"] == 2 and st["resumes_used"] == 1, st
+        assert (rd / "result.prev-1.json").exists() and runs_started(d) == 4
+    return "after 2 resumes a manual resume is refused (nothing written, exit 2); --force-resume goes on, logged in state.json, count restarts"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
-         "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status"]
+         "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
+         "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations"]
 
 if __name__ == "__main__":
     bad = 0
