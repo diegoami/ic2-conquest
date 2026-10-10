@@ -21,13 +21,13 @@
 
 Saves: `Td0_20261010-213628_before.SAV` / `_after.SAV`, `Td1_20261010-213503_before.SAV` / `_after.SAV`, `Td2_20261010-213548_before.SAV` / `_after.SAV` (release `run-exp-fleet-empty-transfer`; table `table_from_saves.md`). The Td1 dialog just before OK (`Td1_20261010-213503_dialog_before_ok.png`) shows ships 0 / 30, supply 37 / 50, money 123 / 400.
 
-- **Money: the receiver gets the giver's money** `[P]` (Td1: 400 + 123 = 523; Td2: 400 + 123 = 523).
-- **Supplies: the receiver gets the giver's supplies** `[P]` (Td1: 50 + 37 = 87; Td2: 40 + 90 = 130).
+- **Money: the receiver gets the giver's money** `[P]` (Td1: 400 + 123 = 523, `Td1_20261010-213503_after.SAV`; Td2: 400 + 123 = 523, `Td2_20261010-213548_after.SAV`; turn 0734).
+- **Supplies: the receiver gets the giver's supplies** `[P]` (Td1: 50 + 37 = 87, `Td1_20261010-213503_after.SAV`; Td2: 40 + 90 = 130, `Td2_20261010-213548_after.SAV`).
 - **No cap** `[P]`: Td2's 130 supplies exceed the receiver's room, 15 ships x 8 = 120, and are kept whole. Nothing is clamped to the fleet's capacity.
-- **Rome's treasury does not change** `[P]` (1730 before and after in all three cases): nothing is refunded or taken.
-- **It happens only when the giver is emptied** `[P]`: a partial transfer (Td0) leaves +14 and +16 of both fleets unchanged, since the dialog's supply and money spinners were not touched.
-- **The deleted giver is a tombstone** `[P]`: its record keeps owner -1, 0 ships and its old supplies and money (Td1: 37, 123), so the values are copied to the receiver, not zeroed on the giver. Nothing is lost on the player's side; the money and supplies of the tombstone are dead data.
-- **No box appears** `[P]` before or after OK, in any case (`boxes_before_ok` and `popups` empty in the jsonl logs).
+- **Rome's treasury does not change** `[P]` (1730 before and after in all three cases: the six saves above): nothing is refunded or taken.
+- **It happens only when the giver is emptied** `[P]`: a partial transfer (Td0, `Td0_20261010-213628_after.SAV`) leaves +14 and +16 of both fleets unchanged, since the dialog's supply and money spinners were not touched.
+- **The deleted giver is a tombstone** `[P]`: its record keeps owner -1, 0 ships and its old supplies and money (`Td1_20261010-213503_after.SAV`: 37, 123), so the values are copied to the receiver, not zeroed on the giver. Nothing is lost on the player's side; the money and supplies of the tombstone are dead data.
+- **No box appears** `[P]` before or after OK, in any case (`boxes_before_ok` and `popups` empty in the three jsonl logs, which name the saves above).
 
 ## Code reading `[code]`
 

@@ -7,6 +7,7 @@ Original-side check from ic2-research (`docs/pending-requests.md` ef0d3e2): when
   - Td1: same values; fleet 5 gives all 10.
   - Td2: fleet 5 10 ships, 90, 123; fleet 2 5 ships, 40, 400; fleet 5 gives all 10 (room 15 x 8 = 120 < 40 + 90).
 - **Logs:** `fleet_empty_transfer-<case>-<stamp>.jsonl` (fleets and Rome's treasury before and after, controls, boxes, dialog screenshot name). One run per case, none failed.
+- **Results (all turn 0734, start `saves/fleet-split-antium-0734.SAV`):** Td1 `Td1_20261010-213503_before.SAV` / `_after.SAV`; Td2 `Td2_20261010-213548_before.SAV` / `_after.SAV`; Td0 `Td0_20261010-213628_before.SAV` / `_after.SAV`. Every claim in the finding is read from these.
 - **Table:** `table_from_saves.md`, made by `table_from_saves.py` from the before/after saves (read-only parse with `state/sav.py`).
 - **Binaries:** saves and the before-OK screenshots in release `run-exp-fleet-empty-transfer` (gitignored `artifacts/run-exp-fleet-empty-transfer/`); SHA-256 in `SAVES.sha256`.
 - **Finding:** `findings/2026-10-10-fleet-emptied-by-transfer-money-and-supplies.md`.
