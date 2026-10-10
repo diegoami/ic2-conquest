@@ -40,6 +40,9 @@ FAKE = '''#!/usr/bin/env python3
 import json, os, pathlib, re, sys, time
 d = pathlib.Path(os.environ["FAKE_OC_DIR"]); a = sys.argv[1:]
 if a[:1] == ["models"]:
+    if (d / "models_err").exists():
+        sys.stderr.write((d / "models_err").read_text() + "\\n")
+        sys.exit(1)
     print("provider/model")
 elif a[:2] == ["debug", "agent"]:
     print(json.dumps({"name": a[2]}))
@@ -48,6 +51,14 @@ elif a[:2] == ["session", "list"]:
     print(json.dumps([{"id": "ses_fake", "title": t, "updated": 1}] if t else []))
 elif a[:1] == ["export"]:
     hdr = (d / "hdr.txt").read_text() if (d / "hdr.txt").exists() else "PR review (x)"
+    last = (d / "lastmode").read_text() if (d / "lastmode").exists() else "ok"
+    if last in ("hang", "crash", "textcrash", "apicrash", "429") or last == "reportcrash":
+        # a run that died: mid-work (finish tool-calls, partial text) or after a final message (reportcrash: stopped and reported)
+        stop = last == "reportcrash"
+        print(json.dumps({"info": {}, "messages": [{"info": {"role": "assistant", "agent": "external-reviewer",
+                                                              "finish": "stop" if stop else "tool-calls"},
+                                                    "parts": [{"type": "text", "text": "BLOCKED: I need file X" if stop else "partial notes"}]}]}))
+        sys.exit(0)
     text = "tool chatter only" if (d / "badformat").exists() else hdr + "\\napprove\\nR1 a.py:1 non-blocking: x\\napprove"
     print(json.dumps({"info": {}, "messages": [{"info": {"role": "assistant", "agent": "external-reviewer", "finish": "stop"},
                                                  "parts": [{"type": "text", "text": text}]}]}))
@@ -56,6 +67,7 @@ elif a[:1] == ["run"]:
     (d / "count").write_text(str(n))
     plan = json.loads((d / "plan.json").read_text()) if (d / "plan.json").exists() else []
     mode = plan[n - 1] if n <= len(plan) else "ok"
+    (d / "lastmode").write_text(mode)
     (d / ("argv-%d.json" % n)).write_text(json.dumps(a))
     (d / "argv.json").write_text(json.dumps(a))
     brief = open(a[a.index("-f") + 1]).read()
@@ -76,6 +88,9 @@ elif a[:1] == ["run"]:
         time.sleep(600)
     if mode == "crash":
         sys.stderr.write("panic: something broke\\n")
+        sys.exit(1)
+    if mode == "reportcrash":    # the model stops and reports, then the process dies
+        sys.stderr.write("panic: after the report\\n")
         sys.exit(1)
     if mode == "textcrash":      # the MODEL's text mentions a 429 on stdout, then the process dies: not an API failure
         print("I saw a 429 rate limit in the log", flush=True)
@@ -358,10 +373,55 @@ def test_resume_limit_holds_across_invocations():
     return "after 2 resumes a manual resume is refused (nothing written, exit 2); --force-resume goes on, logged in state.json, count restarts"
 
 
+def test_models_listing_provider_error_is_api():
+    for err, kind in (("Error: connect ETIMEDOUT 1.2.3.4:443", "api"), ("Error: 429 Too Many Requests", "api"),
+                      ("Error: bad config file", "process")):
+        with fake_opencode("models-err", []) as d:
+            (d / "models_err").write_text(err)
+            r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "nonzero-exit" and r["kind"] == kind, (err, r["class"], r["kind"])
+            assert runs_started(d) if (d / "count").exists() else True
+    return "`opencode models` failing with a network/429 line is kind api, with any other stderr it is process"
+
+
+def test_stopped_and_reported_is_not_resumed():
+    with fake_opencode("report", ["reportcrash", "ok"]) as d:
+        final, stop, failures = chain(d)
+        assert final is None and stop and not failures, (final, stop)
+        r = stop[1]
+        assert r["class"] == "stopped-with-report" and r["kind"] == "process" and "BLOCKED: I need file X" in r["text"], r
+        assert runs_started(d) == 1, "a report is answered, not resumed over"
+        rd = d / "logs" / "run-1"
+        st = json.loads((rd / "state.json").read_text())
+        assert st["last_message"]["finish"] == "stop" and "BLOCKED" in st["last_message"]["text"] and st.get("resumes_used", 0) == 0, st
+        assert "BLOCKED" in json.loads((rd / "result.json").read_text())["text"] and (rd / "export-attempt1.json").exists()
+    with fake_opencode("midwork", ["crash", "ok"]) as d:
+        r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+        assert r["class"] == "ok" and runs_started(d) == 2, r
+        st = json.loads((d / "run" / "state.json").read_text())
+        assert st["last_message"]["finish"] == "tool-calls" and st["last_message"]["text"] == "partial notes", st
+    return "final message + death -> stopped-with-report (process, text kept, no resume); death mid-work -> last message read and recorded, then resumed"
+
+
+def test_api_failure_reads_the_session_first():
+    with fake_opencode("api-read", ["apicrash", "ok"]) as d:
+        lines = []
+        failures = []
+        final, stop = er.run_chain(["provider/model"] * 2, "pr", 5, "t", "body", BASE, HEAD, ROOT, d / "logs", "",
+                                   "external-reviewer", failures, d / "data", log=lines.append)
+        assert final and not stop, (final, stop)
+        r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
+        assert r1["kind"] == "api" and r1["last_message"]["text"] == "partial notes", r1
+        assert json.loads((d / "logs" / "run-1" / "state.json").read_text())["last_message"]["text"] == "partial notes"
+        assert any("last message" in x and "partial notes" in x for x in lines), lines
+    return "an api failure with a session: its last message is in result.json, state.json and the log before the next model runs"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
-         "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations"]
+         "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
+         "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first"]
 
 if __name__ == "__main__":
     bad = 0

@@ -23,3 +23,8 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
 - [x] R2 API evidence from stderr only (OpenCode prints errors as `Error: {json}` on stderr, stdout empty; forced with an unknown provider in a throwaway data dir); tests for stdout text vs stderr error
 - [x] R3 resumes_used in state.json, limit across --resume, --force-resume logged in forced_resumes; tests
 - [x] tests write to a tempfile dir only
+
+## Review round 2 (PR #67), all fixed
+- [x] R1 `opencode models` stderr with a provider/network shape -> kind api
+- [x] R2 read the session before any automatic resume (state.json last_message, log, export-attemptN.json); finish=stop with text -> stopped-with-report (process, text in result.json), else resume
+- [x] R3 api failure with a session: last message read into result.json, state.json and the log before the chain moves on

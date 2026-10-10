@@ -170,10 +170,10 @@ def kill_tree(proc):
             continue
 
 
-def final_text(exe, env, cwd, session, run_dir):
+def final_text(exe, env, cwd, session, run_dir, fname="export.json"):
     """(text, finish, agent_seen) of the last assistant message, from `opencode export`. The export
     goes to a file: through a pipe a large export arrives truncated."""
-    path = Path(run_dir) / "export.json"
+    path = Path(run_dir) / fname
     with open(path, "w") as f:
         subprocess.run([exe, "export", session], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                        stdout=f, stderr=subprocess.DEVNULL, timeout=120)
@@ -197,7 +197,7 @@ def final_text(exe, env, cwd, session, run_dir):
 #   process everything else (timeouts, cut-off, crash, unreadable output, permission refusal, wrong agent, our own setup):
 #           diagnose and fix it; never hand it to another model. The run is resumable (state.json, --session).
 ALWAYS_API = ("no-session", "exited-without-session")
-ALWAYS_PROCESS = ("unknown-model", "no-executable", "unknown-agent", "permission-rejected", "default-agent")
+ALWAYS_PROCESS = ("unknown-model", "no-executable", "unknown-agent", "permission-rejected", "default-agent", "stopped-with-report")
 RESUMABLE = ("idle-timeout", "total-timeout", "nonzero-exit")      # continued in the SAME session, up to RESUMES times
 RESUMES = 2
 RESUME_MSG = "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for."
@@ -396,13 +396,32 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
 
     offs = [0, 0]                                             # byte offsets of this attempt in stderr.log, stdout.log
 
-    def done(cls, cause=None):
+    ctx = {}                                                  # exe and env, once known: read_last needs them
+
+    def read_last(tag):
+        """CLAUDE.md rule 7, read before you retry or re-route: the session's last assistant message (export to a file named by tag),
+        kept in state.json and logged. {finish, text} or None when there is no session or the export cannot be read."""
+        if not (res["session"] and ctx):
+            return None
+        try:
+            text, finish, _ = final_text(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, f"export-{tag}.json")
+        except (ValueError, OSError, subprocess.SubprocessError) as e:
+            log(f"opencode session {res['session']}: last message unreadable ({tag}): {e}")
+            return None
+        lm = {"tag": tag, "finish": finish, "text": text[:4000]}
+        state["last_message"] = lm
+        log(f"opencode session {res['session']}: last message ({tag}) finish={finish!r}: {text[:300]!r}")
+        return lm
+
+    def done(cls, cause=None, evidence=None):
         res["class"], res["cause"] = cls, cause
         if cls != "ok":
-            ev = None if cls in ALWAYS_PROCESS else api_evidence(res, offs)
+            ev = evidence or (None if cls in ALWAYS_PROCESS else api_evidence(res, offs))
             res["kind"] = "api" if (cls in ALWAYS_API or ev) else "process"
             if ev:
                 res["cause"] = f"{cause}; {ev}" if cause else ev
+            if res["kind"] == "api" and res["session"]:
+                res["last_message"] = read_last(f"failed-attempt{state['attempt']}")     # nothing is rerouted unread
         write_json(run_dir / "result.json", res)
         save(status=cls, session=res["session"])
         log(f"opencode run: {cls}" + (f" [{res['kind']}]" if res["kind"] else "") + (f" ({res['cause']})" if res["cause"] else "")
@@ -415,6 +434,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         return done("no-executable", "no native opencode: set OPENCODE_EXE or install ~/.opencode/bin/opencode")
     env = dict(os.environ)
     env.update(data_home(state["data_dir"]))
+    ctx["exe"] = exe
     # The reviewer's agent (its permissions) comes from the trusted main checkout, never from the
     # worktree under review: a PR must not be able to change what its own reviewer may do.
     cfg = Path(__file__).resolve().parent.parent / ".opencode"
@@ -423,11 +443,14 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         # OpenCode MERGES the project's own .opencode/ (here: the PR's, in the worktree) with this one, and a
         # PR could add an allow rule to its own reviewer ("python3 *": allow). Ignore the project config.
         env["OPENCODE_DISABLE_PROJECT_CONFIG"] = "1"
+    ctx["env"] = env
     mid, variant = split_model(model)
     # Fail fast, before anything is billed.
     listing = oc(exe, env, worktree, "models")
     if listing.returncode != 0:
-        return done("nonzero-exit", f"`opencode models` failed ({listing.returncode}): {listing.stderr.strip()[:120]}")
+        # a provider/network error shape on stderr (429, 5xx, ETIMEDOUT, ...) means the provider did not answer: api, not our process
+        ev = next((ln.strip()[:200] for ln in ANSI.sub("", listing.stderr).splitlines() if API_RE.search(ln)), None)
+        return done("nonzero-exit", f"`opencode models` failed ({listing.returncode}): {listing.stderr.strip()[:120]}", evidence=ev)
     models = listing.stdout.split()
     if mid not in models and mid.startswith("opencode-go/"):
         oc(exe, env, worktree, "models", "--refresh", timeout=120)      # the catalog may be stale
@@ -528,6 +551,14 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         if cls is None:
             break
         if cls in RESUMABLE and session and state.get("resumes_used", 0) < resumes and not api_evidence(res, offs):
+            # Rule 7: read the session first. A model that ended its turn with text (finish stop) STOPPED AND REPORTED: that report is
+            # answered by the caller, not resumed over. Only a run that died mid-work (no final stop message) is continued.
+            lm = read_last(f"attempt{state['attempt']}")
+            save()
+            if lm and lm["finish"] == "stop" and lm["text"].strip():
+                res["text"] = lm["text"]
+                return done("stopped-with-report", f"the model ended its turn with a final message and then the run ended ({cls}: {cause}); "
+                            "read result.json text and answer it")
             cmd = resume_cmd()
             save(attempt=state["attempt"] + 1, status="resuming", resumes_used=state.get("resumes_used", 0) + 1)
             log(f"opencode run: {cls} ({cause}); resuming session {session} ({state['resumes_used']}/{resumes})")
