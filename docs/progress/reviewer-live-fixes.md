@@ -7,3 +7,5 @@ Live review of PR #69 (rendered/pr69-a6c69b/run-1) failed and fell through to Mi
 - [x] 2. final permission scan after exit; `Error: The user rejected permission ...` recognised; an external_directory rejection is resumed once with a corrective message after reading the session
 - [x] 3. with a session the export info.error is the authority; stderr counts only `Error: {json}` lines; ENOTFOUND now whole-word (FileNotFoundError matched it)
 - [ ] tests + fixture (tests/fixtures/pr69-run, lines prefixed "> " so a reviewer reading it does not echo a live permission line), PR
+
+- [x] tests (29 pass) + fixture; docs/external-review.md updated; PR opened next

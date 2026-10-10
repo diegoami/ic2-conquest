@@ -80,7 +80,7 @@ and accepts a review flattened onto one line. Then:
   cut-off, unknown-model, unknown-agent, no-executable, and gives each failure a **kind** (below). `result.json`, `state.json`,
   `progress.jsonl`, `status.txt` and the stdout/stderr logs are kept, never deleted.
 - `scripts/opencode_status.py`: one plain line per run (see "Failure kinds, resume, status").
-- `scripts/external_review.py`: unique detached worktree under `$IC2_REVIEW_ROOT` (default `$IC2_WORK/review`,
+- `scripts/external_review.py`: unique detached worktree `$IC2_REVIEW_ROOT/<6-hex token>` (default root `$IC2_WORK/review`; named by the token alone, since 2026-10-10, so nothing invites a duplicated `pr<n>-review/pr<n>-review-<token>` prefix, see Lessons; the kind and number stay in the logs' name `rendered/<kind><n>-<token>`) (default `$IC2_WORK/review`,
   outside the repo) removed in `finally`; the brief with the PR body pasted in; the tolerant parser above; the
   head-SHA re-check; one comment; optional label. `--self-test` runs the sample outputs through the parser.
   Logs go to the main checkout's git-ignored `rendered/`.
@@ -171,6 +171,11 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not sil
   **The limit is kept in `state.json` (`resumes_used`)** and holds across invocations: a manual `--resume` counts as one. Past the limit
   `--resume` is refused (exit 2, nothing written) unless `--force-resume` is given, a human decision after a fix: it is logged in
   `state.json` (`forced_resumes`) and the count restarts.
+- **Permission rejections, and what counts as evidence (2026-10-10, after PR #69's run fell through to MiniMax).**
+  - OpenCode ends a run when it auto-rejects a permission: a line `! permission requested: <what>; auto-rejecting`, or, in the newer wording, `Error: The user rejected permission to use this specific tool call.` (stderr only). The watcher scans for both in the loop **and once more after the process exits, before the export**, so a rejection that arrived between the last poll and the exit is `permission-rejected` (process), not `cut-off`.
+  - A rejection of a path **outside the worktree** (`external_directory`) is continued **once**, in the same session, after reading it (rule 7), with the message "That path is outside your working directory; use paths relative to it. Continue where you stopped; ...". It counts toward the 2 resumes; a second rejection, or any other permission (`bash`, ...), stays a process failure (exit 6).
+  - `opencode run` writes the model's **tool output** (diffs, file contents) to stderr, so text there is never evidence of a provider failure once a session exists. Then the authority is the last assistant message's `info.error` in the export (OpenCode's own record; kept in `state.json` / `result.json` as `last_message.provider_error`); only when that is null may OpenCode's own `Error: {json}` lines on stderr count (an `Error:` at the start of a line followed by a JSON object), an `UnknownError` by its message. Without a session, stderr is judged as before (JSON objects, then the text patterns; error codes such as ENOTFOUND match as whole words: `FileNotFoundError` is not one).
+  - `python3 scripts/opencode_watched.py --reclassify <run dir>` re-runs the current rules offline over a finished run dir (its `stderr.log` and newest `export-attemptN-read.json`) and prints class, kind, cause and whether the corrective resume applies.
 - **state.json** in every run dir, written at the start and updated as the run goes: kind (`pr` or `release`), number, head and base SHA, title,
   header line, model, agent, session id, attempt, brief path, worktree path, data dir, timeouts, status, watcher pid.
 - **`external_review.py --resume <run dir>`**: recreates the worktree at the recorded path and head (**exit 5** if the PR head, or origin/main for
@@ -214,6 +219,10 @@ posted on the task's PR or run issue. An earlier "model X ends runs early" verdi
 have been read.
 
 ## Lessons
+
+**2026-10-10: PR #69's live review lost its run on a duplicated path prefix, and fell through to MiniMax.**
+- **What happened:** the worktree was `$IC2_REVIEW_ROOT/pr69-review-a6c69b`; Luna read `.../review/pr69-review/pr69-review-a6c69b/runs/...` (a `pr69-review` directory that does not exist), `external_directory` was auto-rejected and the run ended. The class came out `cut-off` (no scan after the exit) and **api** (a diff line in stderr, `raise FileNotFoundError(args[0])`, matched the pattern ENOTFOUND, case-insensitively), so the chain moved to MiniMax, which rule 8 forbids for our own failures.
+- **Fixes:** the worktree is named by its token alone; the brief and the agent say file tools take paths relative to the working directory (`read`, `grep` and `glob` resolve a relative path against it, verified in the 1.18.34 binary; `grep` and `glob` print absolute paths, which must be cut before use); the final permission scan, the corrective resume, and the session-first evidence rule above; error-code patterns are whole words. Regression test: `tests/test_reviewer_prompt.py` with the trimmed run in `tests/fixtures/pr69-run/` (each stderr line prefixed `> ` so that reading the fixture does not echo a live permission line).
 
 **2026-10-02: never make the reviewer type its worktree's path (`git -C <worktree>`).**
 - **What happened (another project, harness_imperial#15):** its reviewer agent was told to pass `git -C <worktree>` on every git command. In

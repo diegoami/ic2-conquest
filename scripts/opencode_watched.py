@@ -36,6 +36,24 @@ from pathlib import Path
 WORK_DEFAULT = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 ANSI = re.compile(r"\x1b\[[0-9;?]*[ -/]*[@-~]")
 PERM = re.compile(r"^\s*!\s*permission requested: (.+?); auto-rejecting\s*$")
+# OpenCode's newer wording, on stderr only: the tool call was refused; the line before it (the `!` one) names the permission
+REJECTED = re.compile(r"^\s*Error:\s*The user rejected permission to use this specific tool call")
+CORRECTIVE_MSG = ("That path is outside your working directory; use paths relative to it. Continue where you stopped; finish the task "
+                  "in the attached brief and end with the final message it asks for.")
+
+
+def perm_scan(text, rejected=True):
+    """(what, outside) for the first permission rejection in text, or None. A `! permission requested: X; auto-rejecting` line wins
+    (what = X; outside = X is an external_directory, a path outside the working tree: the model typed a wrong or absolute path);
+    else, with rejected=True (stderr only), OpenCode's `Error: The user rejected permission ...` line (what is unknown: not outside)."""
+    lines = ANSI.sub("", text).splitlines()
+    for ln in lines:
+        m = PERM.match(ln)
+        if m:
+            return m.group(1), m.group(1).startswith("external_directory")
+    if rejected and any(REJECTED.match(ln) for ln in lines):
+        return "a tool call (the user rejected permission)", False
+    return None
 
 CLASSES = ("ok", "no-session", "idle-timeout", "total-timeout", "exited-without-session",
            "nonzero-exit", "permission-rejected", "default-agent", "cut-off", "unknown-model",
@@ -171,19 +189,24 @@ def kill_tree(proc):
             continue
 
 
-def final_text(exe, env, cwd, session, run_dir, fname):
-    """(text, finish, agent_seen) of the last assistant message, from `opencode export`. The export goes to a file (through a pipe a
-    large export arrives truncated), opened with "x": an export is a measurement and is never overwritten (CLAUDE.md rule 6), so
-    every call needs its own fname. ValueError when the export is empty, not JSON, or not shaped like an export (messages a list of
-    {info: {...}, parts: [...]}): the callers turn that into a process failure, never a crash."""
+def final_message(exe, env, cwd, session, run_dir, fname):
+    """(text, finish, agent_seen, error) of the last assistant message, from `opencode export`. `error` is that message's
+    info.error (OpenCode's own record of a provider failure: {"name": "APIError", "data": {...}}), None when there is none. The export
+    goes to a file (through a pipe a large export arrives truncated), opened with "x": an export is a measurement and is never
+    overwritten (CLAUDE.md rule 6), so every call needs its own fname. ValueError when the export is empty, not JSON, or not shaped
+    like an export (messages a list of {info: {...}, parts: [...]}): the callers turn that into a process failure, never a crash."""
     path = Path(run_dir) / fname
     with open(path, "x") as f:
         r = subprocess.run([exe, "export", session], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                            stdout=f, stderr=subprocess.DEVNULL, timeout=120)
-    out = path.read_text(errors="replace")
+    return parse_export(path.read_text(errors="replace"), r.returncode)
+
+
+def parse_export(out, returncode=None):
+    """final_message's parsing, on the export text (also used offline by reclassify)."""
     i = out.find("{")
     if i < 0:
-        raise ValueError(f"empty export (exit {r.returncode})")
+        raise ValueError(f"empty export (exit {returncode})")
     d = json.loads(out[i:])
     if not isinstance(d, dict) or not isinstance(d.get("messages"), list):
         raise ValueError("export has no messages list")
@@ -196,11 +219,17 @@ def final_text(exe, env, cwd, session, run_dir, fname):
                 raise ValueError("assistant message without a parts list")
             last = m
     if last is None:
-        return "", None, None
+        return "", None, None, None
     texts = [x.get("text", "") for x in last["parts"] if x.get("type") == "text"]
     if not all(isinstance(t, str) for t in texts):
         raise ValueError("text part is not a string")
-    return "".join(texts).strip(), last["info"].get("finish"), last["info"].get("agent")
+    err = last["info"].get("error")
+    return "".join(texts).strip(), last["info"].get("finish"), last["info"].get("agent"), err if isinstance(err, dict) else None
+
+
+def final_text(exe, env, cwd, session, run_dir, fname):
+    """(text, finish, agent_seen): final_message without the provider error."""
+    return final_message(exe, env, cwd, session, run_dir, fname)[:3]
 
 
 # ---- failure kinds, state, progress (opencode resilience, 2026-10-10) --------------------------------------------------
@@ -216,6 +245,7 @@ RESUMABLE = ("idle-timeout", "total-timeout", "nonzero-exit")      # continued i
 RESUMES = 2
 RESUME_MSG = "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for."
 TICK = 3                  # seconds between checks (the tests lower it)
+PERM_IN_LOOP = True       # the tests turn the in-loop permission scan off to force the final scan after the exit
 PROGRESS_EVERY = 30       # seconds between progress lines
 API_RE = re.compile(
     # every 5xx counts, but only as a status: after "status", "status code", "HTTP[/1.1]" or "Error", before an error word, or as "5xx";
@@ -224,7 +254,7 @@ API_RE = re.compile(
     r"|\b5\d\d\b\W{0,3}(?:\w+ ){0,3}(?:error|unavailable|gateway|overloaded|timeout)|\b5xx\b"
     r"|\b(?:returned|responded with|replied with)\W{0,3}(?:(?:http|status)\W{0,3})*(?:429|5\d\d)\b(?!\s*(?:lines?|bytes|items?|rows?|files?|results?|entries|matches))"
     r"|internal server error|overloaded|service unavailable|bad gateway|gateway time-?out|quota|usage[ _-]limit|insufficient"
-    r"|ECONNRESET|ETIMEDOUT|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|network error|fetch failed|socket hang up|connection (?:reset|refused|error)", re.I)
+    r"|\b(?:ECONNRESET|ETIMEDOUT|ECONNREFUSED|ENOTFOUND|EAI_AGAIN)\b|network error|fetch failed|socket hang up|connection (?:reset|refused|error)", re.I)
 
 
 # OpenCode 1.18.34's own error objects (read from its binary, 2026-10-10; MessageV2 named errors, printed on stderr as
@@ -324,6 +354,42 @@ def api_text(text, limit=200_000):
     """The evidence line when error_verdict says api (the provider did not answer), else None."""
     kind, summary = error_verdict(text, limit)
     return summary if kind == "api" else None
+
+
+def stderr_error_objects(text, limit=200_000):
+    """The JSON objects OpenCode itself printed as errors: those that follow `Error:` at the START of a stderr line. `opencode run`
+    also writes the model's tool output (diffs, file contents) to stderr, so nothing else in it is evidence."""
+    text, out = ANSI.sub("", text)[:limit], []
+    dec = json.JSONDecoder()
+    for m in re.finditer(r"(?m)^[ \t]*Error:[ \t]*(?=\{)", text):
+        try:
+            obj, _ = dec.raw_decode(text, m.end())
+        except ValueError:
+            continue
+        if isinstance(obj, dict):
+            out.append(obj)
+    return out
+
+
+def session_verdict(provider_error, stderr_text):
+    """(kind, summary) when the run HAS a session. The authoritative provider error is the last assistant message's info.error
+    from the export (provider_error); a decided one is final, an absent one means the provider did not fail that message. Then, and
+    only then, OpenCode's own `Error: {json}` lines on stderr (stderr_error_objects) may count, an UnknownError by its message text.
+    Free text on stderr is never evidence here: it is the model's tool output."""
+    objs = [provider_error] if isinstance(provider_error, dict) else stderr_error_objects(stderr_text)
+    found = {}
+    for o in objs:
+        verdict, summary = classify_error_obj(o)
+        if verdict is None and o.get("name") == "UnknownError":
+            msg = str((o.get("data") or {}).get("message") or "")
+            if API_RE.search(msg):
+                verdict, summary = True, f"UnknownError: {msg[:100]}"
+        if verdict:
+            found.setdefault("auth" if verdict == "auth" else "api", summary)
+    for kind in ("auth", "api"):
+        if kind in found:
+            return kind, found[kind][:200]
+    return None, None
 
 
 def stderr_verdict(res, offsets=(0, 0)):
@@ -531,8 +597,10 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         if tag in ctx["read"]:
             return ctx["read"][tag]
         try:
-            text, finish, _ = final_text(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, export_name("read"))
+            text, finish, _, perr = final_message(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, export_name("read"))
             lm = {"tag": tag, "finish": finish, "text": text[:4000]}
+            if perr:
+                lm["provider_error"] = {k: v for k, v in perr.items() if k != "responseBody"}
             log(f"opencode session {res['session']}: last message ({tag}) finish={finish!r}: {text[:300]!r}")
         except Exception as e:                            # a malformed or missing export is "unreadable", never a crash
             lm = {"tag": tag, "error": f"{type(e).__name__}: {e}"[:200]}
@@ -540,12 +608,29 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         ctx["read"][tag] = state["last_message"] = lm
         return lm
 
+    def attempt_stderr():
+        try:
+            return Path(res["stderr"]).read_bytes()[offs[0]:].decode(errors="replace")
+        except OSError:
+            return ""
+
+    def failure_verdict():
+        """(kind, summary), kind api | auth | None, from the best evidence there is. With a session: the last assistant message's
+        info.error (session_verdict), else OpenCode's own `Error: {json}` stderr lines; without one: the stderr text (error_verdict).
+        An unreadable session gives (None, None): the callers stop it as a process failure."""
+        if res["session"] and "exe" in ctx:
+            lm = read_last()
+            if lm and not lm.get("error"):
+                return session_verdict(lm.get("provider_error"), attempt_stderr())
+            return None, None
+        return error_verdict(attempt_stderr())
+
     def done(cls, cause=None, verdict=None, scan_logs=True):
         """Record the end. verdict = (kind, summary) from a stderr the caller already judged (the models listing's own); otherwise
         this attempt's stderr is judged when scan_logs."""
         res["class"], res["cause"] = cls, cause
         if cls != "ok":
-            ek, ev = verdict or (stderr_verdict(res, offs) if scan_logs and cls not in ALWAYS_PROCESS else (None, None))
+            ek, ev = verdict or (failure_verdict() if scan_logs and cls not in ALWAYS_PROCESS else (None, None))
             res["kind"] = "process" if ek == "auth" else "api" if (cls in ALWAYS_API or ek == "api") else "process"
             if ek == "auth":
                 prov = split_model(model)[0].split("/")[0]
@@ -622,8 +707,8 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     title = f"review-{uuid.uuid4().hex[:10]}"
     tail = ["--agent", agent, "--model", mid, "--dir", str(worktree)] + (["--variant", variant] if variant else [])
 
-    def resume_cmd():
-        return [exe, "run", RESUME_MSG, "--session", res["session"], *tail, "-f", str(brief)]
+    def resume_cmd(msg=RESUME_MSG):
+        return [exe, "run", msg, "--session", res["session"], *tail, "-f", str(brief)]
 
     cmd = resume_cmd() if resume_session else [exe, "run", message or "Follow the attached brief exactly.", *tail,
                                                 "--title", title, "-f", str(brief)]
@@ -662,22 +747,31 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         proc = subprocess.Popen(cmd, cwd=worktree, env=env, stdin=subprocess.DEVNULL, stdout=out, stderr=err, start_new_session=True)
         save(status="running" if session else "starting")
         t0 = last_move = time.time()
-        seen_updated, cls, cause = None, None, None
+        seen_updated, cls, cause, perm = None, None, None, None
+
+        def perm_found():
+            """A permission rejection in this attempt's output (stderr also for the newer `Error:` wording)."""
+            for f, off, rej in ((res["stdout"], offs[1], False), (res["stderr"], offs[0], True)):
+                try:
+                    hit = perm_scan(Path(f).read_bytes()[off:].decode(errors="replace"), rejected=rej)
+                except OSError:
+                    continue
+                if hit:
+                    return hit
+            return None
         try:
             while True:
                 time.sleep(TICK)
                 now = time.time()
                 # a permission auto-rejection: a line that STARTS with "!" (only this attempt's output)
-                for f, off in ((res["stdout"], offs[1]), (res["stderr"], offs[0])):
-                    data = Path(f).read_bytes()[off:].decode(errors="replace")
-                    for ln in ANSI.sub("", data).splitlines():
-                        m = PERM.match(ln)
-                        if m:
-                            kill_tree(proc)
-                            if session is None:               # the session may exist already: look once, so it can be read
-                                session = res["session"] = next((x["id"] for x in session_list(exe, env, worktree)
-                                                                 if x.get("title") == title), None)
-                            return done("permission-rejected", m.group(1))
+                perm = perm_found() if PERM_IN_LOOP else None
+                if perm:
+                    kill_tree(proc)
+                    if session is None:                       # the session may exist already: look once, so it can be read
+                        session = res["session"] = next((x["id"] for x in session_list(exe, env, worktree)
+                                                         if x.get("title") == title), None)
+                    cls, cause = "permission-rejected", perm[0]
+                    break
                 if session is None:
                     for s in session_list(exe, env, worktree):
                         if s.get("title") == title:
@@ -717,11 +811,20 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             err.close()
             if proc.poll() is None:
                 kill_tree(proc)
+        if cls is None:                                           # a last scan after the exit, before the export: the line may have
+            perm = perm_found()                                   # arrived between the last poll and the exit
+            if perm:
+                if session is None:
+                    session = res["session"] = next((x["id"] for x in session_list(exe, env, worktree) if x.get("title") == title), None)
+                cls, cause = "permission-rejected", perm[0]
         if cls is None and proc.returncode != 0:
             cls, cause = "nonzero-exit", f"exit {proc.returncode}"
         if cls is None:
             break
-        if cls in RESUMABLE and session and state.get("resumes_used", 0) < resumes and stderr_verdict(res, offs)[0] is None:
+        # a rejection of a path OUTSIDE the worktree is continued ONCE in the same session with a corrective message (any other
+        # permission rejection stays a process failure); it counts toward the resume limit like any resume
+        corrective = bool(cls == "permission-rejected" and perm and perm[1] and not state.get("perm_resumes"))
+        if (cls in RESUMABLE or corrective) and session and state.get("resumes_used", 0) < resumes and failure_verdict()[0] is None:
             # Rule 7: read the session first. A model that ended its turn with text (finish stop) STOPPED AND REPORTED: that report is
             # answered by the caller, not resumed over. Only a run that died mid-work (no final stop message) is continued.
             lm = read_last()
@@ -732,8 +835,9 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
                 res["text"] = lm["text"]
                 return done("stopped-with-report", f"the model ended its turn with a final message and then the run ended ({cls}: {cause}); "
                             "read result.json text and answer it")
-            cmd = resume_cmd()
-            save(attempt=state["attempt"] + 1, status="resuming", resumes_used=state.get("resumes_used", 0) + 1)
+            cmd = resume_cmd(CORRECTIVE_MSG if corrective else RESUME_MSG)
+            save(attempt=state["attempt"] + 1, status="resuming", resumes_used=state.get("resumes_used", 0) + 1,
+                 perm_resumes=state.get("perm_resumes", 0) + (1 if corrective else 0))
             log(f"opencode run: {cls} ({cause}); resuming session {session} ({state['resumes_used']}/{resumes})")
             continue
         return done(cls, cause)
@@ -749,7 +853,33 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     return done("ok")
 
 
+def reclassify(run_dir):
+    """Offline: what the CURRENT rules say about a finished run dir (its stderr.log and its newest export-attemptN-read.json),
+    without running anything: {class, kind, cause, corrective_resume}. For checking a past run against a fix."""
+    rd = Path(run_dir)
+    text = (rd / "stderr.log").read_text(errors="replace")
+    st = read_json(rd / "state.json")
+    st = st if isinstance(st, dict) else {}
+    old = read_json(rd / "result.json")
+    old = old if isinstance(old, dict) else {}
+    perr = None
+    exports = sorted(rd.glob("export-attempt*-read.json"))
+    if exports:
+        perr = parse_export(exports[-1].read_text(errors="replace"))[3]
+    perm = perm_scan(text)
+    kind, summary = session_verdict(perr, text) if st.get("session") else error_verdict(text)
+    out = {"class": "permission-rejected" if perm else old.get("class"), "was": {"class": old.get("class"), "kind": old.get("kind")},
+           "kind": "process" if perm or kind != "api" else "api", "cause": None, "corrective_resume": bool(perm and perm[1])}
+    out["cause"] = (perm[0] if perm else None) or summary
+    if kind == "auth":
+        out["cause"] = f"provider credentials refused (401/403): {summary}"
+    return out
+
+
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--reclassify":
+        print(json.dumps(reclassify(sys.argv[2]), indent=1))
+        return
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--brief", required=True)
     ap.add_argument("--worktree", required=True)
