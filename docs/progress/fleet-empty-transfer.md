@@ -6,4 +6,5 @@
 - [x] code reading of 0x443b48 (dump lines 44970-45028)
 - [x] README, finding draft
 - [x] archive + commit + push
-- [ ] release `run-exp-fleet-empty-transfer`, PR to main (do not merge)
+- [x] release run-exp-fleet-empty-transfer (12 files)
+- [x] PR to main (not merged)
