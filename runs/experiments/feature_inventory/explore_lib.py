@@ -25,6 +25,8 @@ def xvfb():
 def log(batch, msg):
     with open(LOGD + batch + '.log', 'a') as f: f.write(time.strftime('%H:%M:%S ') + msg + '\n')
     print(msg)
+from harness import environment as _env   # every start records the Wine/font environment in a log named `environment` (harness/environment.py)
+_env.add_sink(lambda rec: log('environment', _env.sink_line(rec)))
 def wins(g, batch, tag):
     ws = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows('.') if w[4] > 1 and w[5] > 1]
     log(batch, '%s windows: %s' % (tag, ws)); return ws

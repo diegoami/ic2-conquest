@@ -16,7 +16,7 @@ texts = g.load(G / "1_rome_270_winter_11.sav", seed=12345)
 png = ART / f"shot-winter11-{tag}.png"
 g.shot(png)
 import os, subprocess
-rec = {"at": tag, "ic2_work": os.environ.get("IC2_WORK", "~/ic2-work"), "wine": subprocess.run(["/usr/lib/wine/wine", "--version"], capture_output=True, text=True).stdout.strip(),
+rec = {"at": tag, "environment": g.environment, "ic2_work": os.environ.get("IC2_WORK", "~/ic2-work"), "wine": subprocess.run(["/usr/lib/wine/wine", "--version"], capture_output=True, text=True).stdout.strip(),
        "fc_liberation": subprocess.run("fc-list | grep -ci liberation", shell=True, capture_output=True, text=True).stdout.strip(), "secs": round(time.time() - t0, 1), "texts": texts, "seed_line": g.seed_line, "file": png.name,
        "windows": [w[1:] for w in g.find_windows()]}
 g.kill()

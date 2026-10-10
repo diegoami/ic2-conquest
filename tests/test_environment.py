@@ -138,7 +138,7 @@ def main():
         prefix = make_prefix(Path(tmp) / "p")
         jsonl = Path(tmp) / "environment.jsonl"
         got, logged = [], []
-        E._sinks.clear(); E._logged.clear(); E._cache.clear()
+        E._sinks.clear(); E._keyed.clear(); E._logged.clear(); E._cache.clear()
         E.add_sink(got.append)
         E.record_start(prefix, "g.exe", ":9", prefix / "drive_c" / "IC2", 4242, jsonl, logged.append)
         E.record_start(prefix, "g.exe", ":9", prefix / "drive_c" / "IC2", 4243, jsonl, logged.append)
@@ -164,6 +164,21 @@ def main():
             g.start()
             assert seen == [1], (cls, seen)
         ok += 1; print("PASS Game subclasses' start() overrides record once, after the game runs")
+
+    # R1 (b): a runner library that owns a log gets the record there (battles.common.Log; keyed, so a new Log replaces the old sink)
+    sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))
+    import common as BC
+    with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
+        prefix = make_prefix(Path(tmp) / "p")
+        E._sinks.clear(); E._keyed.clear(); E._logged.clear(); E._cache.clear()
+        old = BC.Log("t1", Path(tmp) / "d")
+        new = BC.Log("t2", Path(tmp) / "d")
+        E.record_start(prefix, "g.exe", ":9", prefix / "drive_c" / "IC2", 7, Path(tmp) / "e.jsonl", lambda x: None)
+        ev = [json.loads(x) for x in new.jl.read_text().splitlines()]
+        assert [e["event"] for e in ev] == ["environment"] and ev[0]["pid"] == 7 and "wine" in ev[0]["environment"], ev
+        assert old.jl.read_text() == "", "the replaced Log must not get the record"
+        ok += 1; print("PASS battles.common.Log gets the environment event (keyed sink)")
+        E._keyed.clear()
 
     with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
         base = fp(make_prefix(tmp))

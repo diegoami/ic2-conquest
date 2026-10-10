@@ -21,6 +21,7 @@ FONT_SECTIONS = ("Software\\\\Wine\\\\Fonts\\\\External Fonts", "Software\\\\Win
 PROBE_TIMEOUT = 0.8  # s per command (a slow fc-list or xdpyinfo must not slow a start)
 BUDGET = 2.0         # s for the whole fingerprint: later probes get what is left, none when it is spent
 _cache = {}          # per process: (prefix, exe path, display) -> fingerprint
+_keyed = {}          # sinks registered with a key (one per key)
 _sinks = []          # runner callbacks: fn(record dict), called by record_start on every start
 _logged = set()      # keys whose line self.log already got (once per process)
 _deadline = [None]
@@ -138,9 +139,13 @@ def fingerprint(prefix, exe=None, display=None, game_dir=None, refresh=False):
     return fp
 
 
-def add_sink(fn):
-    """Register fn(record) to be called after every Game start with the environment record: how a runner puts it in its own log."""
-    if fn not in _sinks:
+def add_sink(fn, key=None):
+    """Register fn(record) to be called after every Game start with the environment record: how a runner puts it in its own log.
+    With a `key` the sink replaces the earlier one of that key (a runner that opens a new log per run keeps one sink)."""
+    if key is not None:
+        _keyed.pop(key, None)
+        _keyed[key] = fn
+    elif fn not in _sinks:
         _sinks.append(fn)
     return fn
 
@@ -162,7 +167,7 @@ def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
             f.write(json.dumps(rec, sort_keys=True) + "\n")
     except Exception:
         pass
-    for sink in list(_sinks):
+    for sink in list(_sinks) + list(_keyed.values()):
         try:
             sink(rec)
         except Exception:

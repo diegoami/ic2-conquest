@@ -37,6 +37,10 @@ def log(step, **kw):
     with LOG.open("a") as f: f.write(json.dumps(kw, default=str) + "\n")
 
 
+from harness import environment as _env   # every start records the Wine/font environment in this log (harness/environment.py)
+_env.add_sink(lambda rec: log("environment", **{k: v for k, v in rec.items() if k != "step"}))
+
+
 def keep(src, name):
     dst = ART / f"{CASE}_{STAMP}_{name}"
     if dst.exists(): raise SystemExit(f"{dst} exists: names must be unique")
