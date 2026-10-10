@@ -385,6 +385,27 @@ def drop_worktree(wt, kind, n):
         sh("git", "worktree", "prune", check=False)
 
 
+def safe_run(*args, **kw):
+    """ow.run, but a crash of the watcher itself is a PROCESS failure record (class watcher-crash, exit 6 path, the traceback in cause),
+    never a traceback that hides the run dir and the session."""
+    try:
+        return ow.run(*args, **kw)
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        rd = Path(kw.get("run_dir") or args[3])
+        rd.mkdir(parents=True, exist_ok=True)
+        st = ow.read_json(rd / "state.json")
+        st = st if isinstance(st, dict) else {}
+        r = {"class": "watcher-crash", "kind": "process", "model": args[2], "session": st.get("session") or kw.get("resume_session"),
+             "text": "", "stdout": str(rd / "stdout.log"), "stderr": str(rd / "stderr.log"), "last_message": None,
+             "cause": f"{type(e).__name__}: {e}; " + traceback.format_exc().strip().splitlines()[-3].strip()[:200]}
+        ow.keep_prev(rd / "result.json")
+        ow.write_json(rd / "result.json", r)
+        st["status"] = "watcher-crash"
+        ow.write_json(rd / "state.json", st)
+        return r
+
+
 def judge(r, hdr, run_dir):
     """One finished ow.run -> (final review or None, r). Only a readable (or flagged) review is final. An ok run whose final message
     has no header line is a `bad-format` PROCESS failure (the class and kind are written back to result.json and state.json: the
@@ -394,6 +415,7 @@ def judge(r, hdr, run_dir):
         if pr["status"] != "none":
             return pr, r
         r["class"], r["kind"], r["cause"] = "bad-format", "process", "no review in the final message (no header line)"
+        r["last_message"] = {"tag": "final", "finish": "stop", "text": r["text"][:4000]}    # the session was read: this is its last message
         ow.keep_prev(Path(run_dir) / "result.json")           # the ok result is a measurement: kept as result.prev-N.json (rule 6)
         ow.write_json(Path(run_dir) / "result.json", r)
         st = ow.read_json(Path(run_dir) / "state.json") or {}
@@ -407,7 +429,8 @@ def process_message(model, r):
     """The line printed on exit 6: what failed, where its record is, how to continue it."""
     rd = Path(r["stdout"]).parent
     sid = r.get("session")
-    return (f"OpenCode process failure: {model}: {r['class']}: {r.get('cause')}; session {sid or 'none'}; run dir {rd}; "
+    said = f" (the model said: {r['text'][:300]!r})" if r.get("class") == "stopped-with-report" and r.get("text") else ""
+    return (f"OpenCode process failure: {model}: {r['class']}: {r.get('cause')}{said}; session {sid or 'none'}; run dir {rd}; "
             + (f"resume with --resume {rd}" if sid else "no session to resume: fix the cause and run again"))
 
 
@@ -422,7 +445,7 @@ def run_chain(models, kind, n, title, body, base, head, wt, logs, extra, agent, 
         brief.parent.mkdir(parents=True, exist_ok=True)
         brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
         meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr}
-        r = ow.run(brief, wt, m, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
+        r = safe_run(brief, wt, m, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
         pr, r = judge(r, hdr, logs / f"run-{k}")
         if pr:
             return (m, pr), None
@@ -443,6 +466,7 @@ def post_review(kind, n, model, pr, logs, head, apply_label):
         print("the PR head moved during the review; nothing posted", file=sys.stderr)
         return 5
     body = logs / "comment.md"
+    ow.keep_prev(body)                                     # a resumed run posts again: the earlier comment text is kept
     body.write_bytes((text + "\n").encode("utf-8"))        # UTF-8, no BOM
     noun = "issue" if kind == "release" else "pr"
     sh("gh", noun, "comment", str(n), "--body-file", str(body))
@@ -466,8 +490,9 @@ def resume_run(run_dir, apply_label, force=False):
     as usual. The run dir (and its earlier results, kept as result.prev-N.json) is never deleted."""
     rd = Path(run_dir).resolve()
     st = ow.read_json(rd / "state.json")
-    if not st or st.get("kind") not in ("pr", "release") or not st.get("session") or not st.get("head"):
-        print(f"{rd}: no resumable state.json (needs kind, number, head and a session)", file=sys.stderr)
+    need = ("kind", "number", "head", "session", "hdr", "brief", "model", "agent", "data_dir", "worktree")
+    if not isinstance(st, dict) or st.get("kind") not in ("pr", "release") or any(not st.get(k) for k in need):
+        print(f"{rd}: no resumable state.json (needs {', '.join(need)})", file=sys.stderr)
         return 2
     kind, n, head = st["kind"], st["number"], st["head"]
     why = None if force else ow.resume_refusal(rd)
@@ -500,7 +525,7 @@ def resume_run(run_dir, apply_label, force=False):
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         raise
     try:
-        r = ow.run(st["brief"], wt, st["model"], rd, agent=st["agent"], data_dir=st["data_dir"], log=lambda s: print(s, flush=True),
+        r = safe_run(st["brief"], wt, st["model"], rd, agent=st["agent"], data_dir=st["data_dir"], log=lambda s: print(s, flush=True),
                    resume_session=st["session"], force_resume=force, startup=st.get("startup", 180), idle=st.get("idle", 600), total=st.get("total", 3600))
         pr, r = judge(r, st["hdr"], rd)
     finally:

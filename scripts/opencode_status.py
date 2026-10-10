@@ -36,8 +36,12 @@ def main():
     now = time.time()
     rows = []
     for rd in runs(a.root):
-        line = ow.describe(rd, now)
-        st = ow.read_json(rd / "state.json") or {}
+        try:
+            line = ow.describe(rd, now)
+        except Exception as e:                             # one odd run dir must not hide the others
+            line = f"{rd.name} · unreadable run dir ({type(e).__name__}: {e})"
+        st = ow.read_json(rd / "state.json")
+        st = st if isinstance(st, dict) else {}
         if not line:
             continue
         running = " · running " in line

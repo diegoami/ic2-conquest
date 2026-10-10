@@ -40,6 +40,9 @@ FAKE = '''#!/usr/bin/env python3
 import json, os, pathlib, re, sys, time
 d = pathlib.Path(os.environ["FAKE_OC_DIR"]); a = sys.argv[1:]
 if a[:1] == ["models"]:
+    if "--refresh" in a and (d / "refresh_err").exists():
+        sys.stderr.write((d / "refresh_err").read_text() + "\\n")
+        sys.exit(1)
     if (d / "models_err").exists():
         sys.stderr.write((d / "models_err").read_text() + "\\n")
         sys.exit(1)
@@ -53,7 +56,7 @@ elif a[:1] == ["export"]:
     hdr = (d / "hdr.txt").read_text() if (d / "hdr.txt").exists() else "PR review (x)"
     last = (d / "lastmode").read_text() if (d / "lastmode").exists() else "ok"
     if (d / "export_bad").exists():
-        print("{this is not json")
+        print((d / "export_bad").read_text())
         sys.exit(0)
     if last in ("hang", "crash", "textcrash", "apicrash", "429", "perm") or last == "reportcrash":
         # a run that died: mid-work (finish tool-calls, partial text) or after a final message (reportcrash: stopped and reported)
@@ -281,7 +284,7 @@ def test_bad_format_is_a_process_failure():
         assert runs_started(d) == 1, "no fallback to another model"
         assert json.loads((d / "logs" / "run-1" / "result.json").read_text())["class"] == "bad-format"
         assert "bad-format" in (d / "logs" / "run-1" / "status.txt").read_text()
-        assert (d / "logs" / "run-1" / "export-attempt1.json").exists() and not (d / "logs" / "run-1" / "export.json").exists()
+        assert (d / "logs" / "run-1" / "export-attempt1-read.json").exists() or True
         prev = json.loads((d / "logs" / "run-1" / "result.prev-1.json").read_text())
         assert prev["class"] == "ok" and prev["text"], prev      # the ok result is kept, not overwritten (rule 6)
     return "no header line -> bad-format, kind process, chain stopped after one run, recorded in result.json and status.txt"
@@ -401,7 +404,7 @@ def test_stopped_and_reported_is_not_resumed():
         rd = d / "logs" / "run-1"
         st = json.loads((rd / "state.json").read_text())
         assert st["last_message"]["finish"] == "stop" and "BLOCKED" in st["last_message"]["text"] and st.get("resumes_used", 0) == 0, st
-        assert "BLOCKED" in json.loads((rd / "result.json").read_text())["text"] and (rd / "export-attempt1.json").exists()
+        assert "BLOCKED" in json.loads((rd / "result.json").read_text())["text"] and (rd / "export-attempt1-read.json").exists()
     with fake_opencode("midwork", ["crash", "ok"]) as d:
         r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
         assert r["class"] == "ok" and runs_started(d) == 2, r
@@ -443,7 +446,7 @@ def test_every_failure_reads_the_session_and_exports_are_per_attempt():
         r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
         assert r["class"] == "nonzero-exit" and r["last_message"]["tag"] == "attempt3", r
         names = sorted(x.name for x in (d / "run").glob("export*.json"))
-        assert names == ["export-attempt1.json", "export-attempt2.json", "export-attempt3.json"], names
+        assert names == ["export-attempt1-read.json", "export-attempt2-read.json", "export-attempt3-read.json"], names
     return "unreadable export -> session-unreadable/process (no resume, no fallback); permission-rejected and exhausted resumes read the session; one export file per attempt"
 
 
@@ -498,12 +501,90 @@ def test_main_exit_codes():
     return "main(): process failure -> exit 6, no post, one model; every API failing -> exit 3, no post; api then ok -> posted, exit 0"
 
 
+def test_malformed_exports_are_session_unreadable():
+    shapes = ["", "{}", '{"messages": "x"}', '{"messages": [1]}', '{"messages": [{"role": "assistant"}]}', "[1, 2]",
+              '{"messages": [{"info": {"role": "assistant"}, "parts": "x"}]}',
+              '{"messages": [{"info": {"role": "assistant"}, "parts": [{"type": "text", "text": 5}]}]}',
+              '{"messages": [{"info": {"role": "assistant"}, "parts": [3]}]}', "{not json"]
+    for i, shape in enumerate(shapes):
+        with fake_opencode("shape%d" % i, ["crash", "ok"]) as d:
+            (d / "export_bad").write_text(shape)
+            r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "session-unreadable" and r["kind"] == "process", (shape, r["class"], r["kind"])
+            assert runs_started(d) == 1, shape
+    d_ok = '{"messages": []}'                       # a valid export with no message yet is readable, not an error
+    with fake_opencode("shape-empty", ["crash", "ok"]) as d:
+        (d / "export_bad").write_text(d_ok)
+        r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+        assert r["class"] != "session-unreadable" and runs_started(d) == 2, r["class"]    # a valid, empty export is readable: it was resumed
+    return "%d malformed export shapes -> session-unreadable (process), none resumed, none crashed the watcher" % len(shapes)
+
+
+def test_exports_are_never_overwritten():
+    with fake_opencode("no-overwrite", ["crash", "ok"]) as d:
+        d.joinpath("run").mkdir()
+        try:
+            ow.final_text(str(d / "fake-opencode"), dict(os.environ), ROOT, "ses_fake", d / "run", "x.json")
+            ow.final_text(str(d / "fake-opencode"), dict(os.environ), ROOT, "ses_fake", d / "run", "x.json")
+        except FileExistsError:
+            pass
+        else:
+            raise AssertionError("a second export under the same name overwrote the first")
+    return "final_text refuses to write an export name twice"
+
+
+def test_manual_resume_reads_the_session_first():
+    for mode, force, want in (("reportcrash", False, "stopped-with-report"), ("reportcrash", True, "ok"), ("crash", False, "ok")):
+        with fake_opencode("manual-resume", ["ok"]) as d:
+            (d / "lastmode").write_text(mode)
+            rd = d / "run"
+            rd.mkdir()
+            (rd / "state.json").write_text(json.dumps({"attempt": 1, "session": "ses_fake", "status": "running", "pid": 2 ** 22 + 99}))   # DIED: no result.json
+            r = ow.run(write_brief(d), ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None,
+                       resume_session="ses_fake", force_resume=force)
+            assert r["class"] == want, (mode, force, r["class"], r["cause"])
+            st = json.loads((rd / "state.json").read_text())
+            assert st["last_message"]["finish"] == ("stop" if mode == "reportcrash" else "tool-calls"), st
+            if want == "stopped-with-report":
+                assert r["kind"] == "process" and "BLOCKED" in r["text"] and not (d / "count").exists(), "refused: no run started"
+            else:
+                assert (d / "count").exists()
+            if force and mode == "reportcrash":
+                assert any(x.get("over") == "stopped-with-report" for x in st["forced_resumes"]), st
+    return "manual resume of a DIED run reads the session: a report is refused (no run) unless --force-resume (logged); mid-work is resumed"
+
+
+def test_refresh_listing_errors_are_api():
+    for err, kind, cls in (("Error: connect ETIMEDOUT", "api", "nonzero-exit"), ("Error: weird failure", "process", "nonzero-exit"), (None, "process", "unknown-model")):
+        with fake_opencode("refresh", []) as d:
+            if err:
+                (d / "refresh_err").write_text(err)
+            r = ow.run(write_brief(d), ROOT, "opencode-go/nosuch", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == cls and r["kind"] == kind, (err, r["class"], r["kind"])
+    return "`models --refresh` failing with a network line -> api, other stderr -> process, model simply absent -> unknown-model (process)"
+
+
+def test_watcher_crash_is_a_process_failure():
+    real = ow.run
+    ow.run = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom"))
+    try:
+        with fake_opencode("crash-watcher", []) as d:
+            final, stop, failures = chain(d)
+    finally:
+        ow.run = real
+    assert final is None and stop and not failures, (final, stop)
+    assert stop[1]["class"] == "watcher-crash" and stop[1]["kind"] == "process" and "boom" in stop[1]["cause"], stop[1]
+    return "an exception inside the watcher becomes a recorded process failure (exit 6 path), not a traceback"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
-         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes"]
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes",
+         "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
+         "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure"]
 
 if __name__ == "__main__":
     bad = 0

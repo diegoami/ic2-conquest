@@ -160,7 +160,7 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not sil
 - **Automatic resume.** After an `idle-timeout`, `total-timeout` or `nonzero-exit` with a known session (and no api evidence in that attempt's
   output), `opencode_watched.run` continues THE SAME session (`opencode run --session <id>`, the brief attached again, the fixed message
   "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for.") up to 2 times, logging
-  each. **Every failed run with a session has its last assistant message read first** (one helper, `read_last`; also before any resume), and an unreadable export ends the run as a process failure (`session-unreadable`, or the original class with the read error in `cause`): never resumed, never handed on. Exports are per attempt (`export-attemptN.json`, never overwritten). Specifically, before any resume the last assistant message is read (CLAUDE.md rule 7; `export-attemptN.json`, `state.json` `last_message`, the log): a final
+  each. **Every failed run with a session has its last assistant message read first** (one helper, `read_last`; also before any resume), and an unreadable export ends the run as a process failure (`session-unreadable`, or the original class with the read error in `cause`): never resumed, never handed on. Every export has its own file (`export-attemptN-<purpose>[-k].json`, opened exclusively: never overwritten), and an export that is not shaped like an export (no messages list, messages without info or parts, non-string text) is unreadable too. Specifically, before any resume the last assistant message is read (CLAUDE.md rule 7; `export-attemptN.json`, `state.json` `last_message`, the log): a final
   message with finish `stop` means the model reported, so the run ends as `stopped-with-report` instead; the same read is recorded for an api failure with a session before the next
   model runs (`result.json` `last_message`). A failing `opencode models` listing with a network/429/5xx shape on stderr is an api failure too. Every attempt has its own idle and total timeout; the stdout/stderr logs are appended, not replaced.
   **The limit is kept in `state.json` (`resumes_used`)** and holds across invocations: a manual `--resume` counts as one. Past the limit
@@ -171,6 +171,9 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not sil
 - **`external_review.py --resume <run dir>`**: recreates the worktree at the recorded path and head (**exit 5** if the PR head, or origin/main for
   a release review, moved), continues the recorded session, then parses and posts as usual (`--apply-label` as for a normal run). A previous
   `result.json` is kept as `result.prev-N.json`; run dirs are never deleted (they live under the main checkout's git-ignored `rendered/`).
+  A manual `--resume` reads the session first too (also for a run that DIED with no `result.json`): if the model had ended its turn with a final message the
+  resume is refused as `stopped-with-report` (answer the report) unless `--force-resume`, which is logged. `opencode models` / `--refresh` failures with a
+  network or 429 shape are api failures; a crash of the watcher itself is recorded as `watcher-crash` (process, exit 6).
   Answer a process failure the way CLAUDE.md rule 7 says: read the session's final message first, then resume (or fix the cause and re-run).
 - **Progress.** While the run goes, about every 30 s the watcher appends a line to `progress.jsonl` (elapsed, tool calls so far, last tool call
   with a short argument, current todo item and done/total) and rewrites `status.txt`. Source: the session database of the run's data dir, opened

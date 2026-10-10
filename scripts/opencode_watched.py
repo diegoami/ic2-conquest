@@ -151,9 +151,10 @@ def session_list(exe, env, cwd):
     out = oc(exe, env, cwd, "session", "list", "--format", "json", "-n", "20").stdout
     i = out.find("[")
     try:
-        return json.loads(out[i:]) if i >= 0 else []
+        data = json.loads(out[i:]) if i >= 0 else []
     except ValueError:
         return []
+    return [x for x in data if isinstance(x, dict) and x.get("id")] if isinstance(data, list) else []
 
 
 def kill_tree(proc):
@@ -171,24 +172,35 @@ def kill_tree(proc):
 
 
 def final_text(exe, env, cwd, session, run_dir, fname):
-    """(text, finish, agent_seen) of the last assistant message, from `opencode export`. The export
-    goes to a file: through a pipe a large export arrives truncated. fname is per attempt (export-attemptN.json): an export
-    is a measurement and is never overwritten (CLAUDE.md rule 6)."""
+    """(text, finish, agent_seen) of the last assistant message, from `opencode export`. The export goes to a file (through a pipe a
+    large export arrives truncated), opened with "x": an export is a measurement and is never overwritten (CLAUDE.md rule 6), so
+    every call needs its own fname. ValueError when the export is empty, not JSON, or not shaped like an export (messages a list of
+    {info: {...}, parts: [...]}): the callers turn that into a process failure, never a crash."""
     path = Path(run_dir) / fname
-    with open(path, "w") as f:
-        subprocess.run([exe, "export", session], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
-                       stdout=f, stderr=subprocess.DEVNULL, timeout=120)
+    with open(path, "x") as f:
+        r = subprocess.run([exe, "export", session], cwd=cwd, env=env, stdin=subprocess.DEVNULL,
+                           stdout=f, stderr=subprocess.DEVNULL, timeout=120)
     out = path.read_text(errors="replace")
     i = out.find("{")
     if i < 0:
-        return "", None, None
+        raise ValueError(f"empty export (exit {r.returncode})")
     d = json.loads(out[i:])
-    msgs = [m for m in d.get("messages", []) if m.get("info", {}).get("role") == "assistant"]
-    if not msgs:
+    if not isinstance(d, dict) or not isinstance(d.get("messages"), list):
+        raise ValueError("export has no messages list")
+    last = None
+    for m in d["messages"]:
+        if not isinstance(m, dict) or not isinstance(m.get("info"), dict):
+            raise ValueError("export message without info")
+        if m["info"].get("role") == "assistant":
+            if not isinstance(m.get("parts"), list) or not all(isinstance(x, dict) for x in m["parts"]):
+                raise ValueError("assistant message without a parts list")
+            last = m
+    if last is None:
         return "", None, None
-    last = msgs[-1]
-    text = "".join(p.get("text", "") for p in last.get("parts", []) if p.get("type") == "text")
-    return text.strip(), last["info"].get("finish"), last["info"].get("agent")
+    texts = [x.get("text", "") for x in last["parts"] if x.get("type") == "text"]
+    if not all(isinstance(t, str) for t in texts):
+        raise ValueError("text part is not a string")
+    return "".join(texts).strip(), last["info"].get("finish"), last["info"].get("agent")
 
 
 # ---- failure kinds, state, progress (opencode resilience, 2026-10-10) --------------------------------------------------
@@ -293,7 +305,7 @@ def snapshot(data_home_dir, session, worktree=""):
             if worktree:
                 arg = arg.replace(str(worktree) + "/", "").replace(str(worktree), ".")
             snap["last_tool"] = (d.get("tool", "?") + (" " + arg.replace("\n", " ")[:60] if arg else "")).strip()
-        except ValueError:
+        except Exception:                                 # progress is best-effort: an odd row never stops the watcher
             pass
     return snap
 
@@ -383,7 +395,8 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     res = {"class": None, "kind": None, "model": model, "agent": agent, "session": resume_session, "text": "",
            "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log"), "cause": None}
     model = effort(model)
-    state = read_json(run_dir / "state.json") or {}
+    state = read_json(run_dir / "state.json")
+    state = state if isinstance(state, dict) else {}
     state.update(meta or {})
     state.update(model=model, agent=agent, brief=str(brief), worktree=str(worktree), session=resume_session, status="starting",
                  pid=os.getpid(), started=time.time(), attempt=state.get("attempt", 0) + 1, run_dir=str(run_dir),
@@ -400,8 +413,13 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
 
     ctx = {"read": {}}                                        # exe and env once known (read_last needs them); the reads made per attempt
 
-    def export_name():
-        return f"export-attempt{state['attempt']}.json"
+    def export_name(purpose):
+        """A name no earlier export has: export-attemptN-<purpose>[-k].json."""
+        base = f"export-attempt{state['attempt']}-{purpose}"
+        name, k = f"{base}.json", 2
+        while (run_dir / name).exists():
+            name, k = f"{base}-{k}.json", k + 1
+        return name
 
     def read_last():
         """CLAUDE.md rule 7, read before you retry, resume or re-route: the session's last assistant message of THIS attempt (export to
@@ -414,10 +432,10 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         if tag in ctx["read"]:
             return ctx["read"][tag]
         try:
-            text, finish, _ = final_text(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, export_name())
+            text, finish, _ = final_text(ctx["exe"], ctx["env"], worktree, res["session"], run_dir, export_name("read"))
             lm = {"tag": tag, "finish": finish, "text": text[:4000]}
             log(f"opencode session {res['session']}: last message ({tag}) finish={finish!r}: {text[:300]!r}")
-        except (ValueError, OSError, subprocess.SubprocessError) as e:
+        except Exception as e:                            # a malformed or missing export is "unreadable", never a crash
             lm = {"tag": tag, "error": f"{type(e).__name__}: {e}"[:200]}
             log(f"opencode session {res['session']}: last message UNREADABLE ({tag}): {lm['error']}")
         ctx["read"][tag] = state["last_message"] = lm
@@ -459,15 +477,26 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     ctx["env"] = env
     mid, variant = split_model(model)
     # Fail fast, before anything is billed.
-    listing = oc(exe, env, worktree, "models")
-    if listing.returncode != 0:
-        # a provider/network error shape on stderr (429, 5xx, ETIMEDOUT, ...) means the provider did not answer: api, not our process
-        ev = next((ln.strip()[:200] for ln in ANSI.sub("", listing.stderr).splitlines() if API_RE.search(ln)), None)
-        return done("nonzero-exit", f"`opencode models` failed ({listing.returncode}): {listing.stderr.strip()[:120]}", evidence=ev)
-    models = listing.stdout.split()
+    def listed(*args, timeout=60):
+        """`opencode models ...` -> (names, None) or (None, failed result). A provider/network error shape on stderr (429, 5xx,
+        ETIMEDOUT, ...) means the provider did not answer: api, not our process."""
+        r = oc(exe, env, worktree, "models", *args, timeout=timeout)
+        if r.returncode == 0:
+            return r.stdout.split(), None
+        ev = next((ln.strip()[:200] for ln in ANSI.sub("", r.stderr).splitlines() if API_RE.search(ln)), None)
+        return None, done("nonzero-exit", f"`opencode models {' '.join(args)}` failed ({r.returncode}): {r.stderr.strip()[:120]}".replace("  ", " "),
+                          evidence=ev)
+
+    models, failed = listed()
+    if failed:
+        return failed
     if mid not in models and mid.startswith("opencode-go/"):
-        oc(exe, env, worktree, "models", "--refresh", timeout=120)      # the catalog may be stale
-        models = oc(exe, env, worktree, "models").stdout.split()
+        _, failed = listed("--refresh", timeout=120)                   # the catalog may be stale
+        if failed:
+            return failed
+        models, failed = listed()
+        if failed:
+            return failed
     if mid not in models:
         hint = ""
         if mid.startswith("opencode-go/"):
@@ -483,7 +512,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     try:
         if json.loads(a.stdout[a.stdout.find("{"):]).get("name") != agent:
             return done("unknown-agent", f"`opencode debug agent {agent}` returned another agent")
-    except ValueError:
+    except (ValueError, AttributeError):
         return done("unknown-agent", "unreadable `opencode debug agent` output")
 
     title = f"review-{uuid.uuid4().hex[:10]}"
@@ -494,7 +523,21 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
 
     cmd = resume_cmd() if resume_session else [exe, "run", message or "Follow the attached brief exactly.", *tail,
                                                 "--title", title, "-f", str(brief)]
-    if resume_session:                                        # a manual resume is itself one resume of the budget
+    if resume_session:
+        # Rule 7 for a manual resume too (a DIED run has no result.json): read the session first. A model that stopped with a report
+        # is answered, not resumed over, unless a human says --force-resume after reading it.
+        lm = read_last()
+        save()
+        if lm and lm.get("error"):
+            return done("session-unreadable", f"the session could not be read before resuming: {lm['error']}")
+        if lm and lm.get("finish") == "stop" and lm.get("text", "").strip():
+            if not force_resume:
+                res["text"] = lm["text"]
+                return done("stopped-with-report", "the model had ended its turn with a final message (read result.json text, answer it); "
+                            "resume anyway only with --force-resume")
+            log("opencode run: --force-resume over a final message of the model (human decision)")
+            state.setdefault("forced_resumes", []).append({"t": round(time.time()), "over": "stopped-with-report"})
+        # a manual resume is itself one resume of the budget
         if force_resume and resume_refusal(run_dir, resumes):
             state.setdefault("forced_resumes", []).append({"t": round(time.time()), "resumes_used": state.get("resumes_used", 0)})
             state["resumes_used"] = 0
@@ -505,6 +548,9 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     while True:
         offs[:] = [Path(res["stderr"]).stat().st_size if Path(res["stderr"]).exists() else 0,
                    Path(res["stdout"]).stat().st_size if Path(res["stdout"]).exists() else 0]
+        if first:                                                 # never truncate a log that is already there
+            keep_prev(res["stdout"])
+            keep_prev(res["stderr"])
         out, err = open(res["stdout"], "w" if first else "a"), open(res["stderr"], "w" if first else "a")
         first = False
         proc = subprocess.Popen(cmd, cwd=worktree, env=env, stdin=subprocess.DEVNULL, stdout=out, stderr=err, start_new_session=True)
@@ -547,11 +593,14 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
                         cls, cause = "idle-timeout", f"no progress for {idle}s"
                 if cls is None and now - t_prog >= PROGRESS_EVERY:
                     t_prog = now
-                    snap = snapshot(state["data_dir"], session, worktree)
-                    with open(run_dir / "progress.jsonl", "a") as pf:
-                        pf.write(json.dumps({"t": round(now), "elapsed": round(now - state["started"]), "session": session,
-                                             "attempt": state["attempt"], **snap}) + "\n")
-                    save()
+                    try:                                          # best-effort: progress never stops the watcher
+                        snap = snapshot(state["data_dir"], session, worktree)
+                        with open(run_dir / "progress.jsonl", "a") as pf:
+                            pf.write(json.dumps({"t": round(now), "elapsed": round(now - state["started"]), "session": session,
+                                                 "attempt": state["attempt"], **snap}) + "\n")
+                        save()
+                    except Exception:
+                        pass
                 if cls is None and proc.poll() is None and now - t0 > total:
                     kill_tree(proc)
                     cls, cause = "total-timeout", f"over {total}s"
@@ -583,8 +632,8 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             continue
         return done(cls, cause)
     try:
-        text, finish, seen = final_text(exe, env, worktree, session, run_dir, export_name())
-    except (ValueError, OSError, subprocess.SubprocessError) as e:
+        text, finish, seen = final_text(exe, env, worktree, session, run_dir, export_name("final"))
+    except Exception as e:
         return done("cut-off", f"the export could not be read: {e}")
     res["text"] = text
     if seen and seen != agent:

@@ -34,3 +34,14 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
 - [x] R2 one helper `read_last` called by done() for every failure with a session (permission-rejected looks the session up first)
 - [x] R3 per-attempt export-attemptN.json everywhere, final_text takes the name
 - [x] R4 tests run er.main() against the fake with git/gh stubbed: exit 6 (no post, one model), exit 3 (no post), fallback posts
+
+## Review round 4 (PR #67), all fixed (main merged in, no conflict)
+- [x] R1 every export has its own name (export-attemptN-<purpose>[-k].json), opened with "x"
+- [x] R2 export shape validated -> ValueError -> session-unreadable; 10 malformed shapes tested
+- [x] R3 manual resume reads the session first (DIED runs too); report -> stopped-with-report unless --force-resume
+- [x] R4 `models --refresh` and the listing after it: provider errors are api
+- [x] Adversarial pass, found and fixed: session_list / debug-agent output of a wrong shape crashed the watcher; progress and snapshot errors could stop it (now best-effort);
+  first-run stdout/stderr logs were truncated if present (keep_prev); comment.md was overwritten on a second post (keep_prev); bad-format did not record the session's last message;
+  a watcher exception was a bare traceback (now `watcher-crash`, process, exit 6 path); resume_run did not check all state keys; opencode_status died on one bad run dir;
+  the exit-6 line now shows what a stopped-with-report model said.
+- Known limit: a watcher-crash record cannot read the session (the watcher is what died); the run dir and session id are still printed.
