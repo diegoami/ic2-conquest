@@ -240,7 +240,12 @@ def test_api_failure_falls_to_next_model():
     for line, api in (("Error: 429 Too Many Requests", True), ("rate limit exceeded", True), ("503 Service Unavailable", True),
                       ("statusCode: 502", True), ("Error: connect ECONNRESET", True), ("usage limit reached", True),
                       ("insufficient quota", True), ("model is overloaded", True), ("no progress for 600s", False),
-                      ("exit 1", False), ("panic: something broke", False)):
+                      ("exit 1", False), ("panic: something broke", False),
+                      ("Error: 500", True), ("HTTP 503", True), ("HTTP/1.1 505 HTTP Version Not Supported", True),
+                      ("status code 505", True), ("statusCode: 529", True), ("599 Network Connect Timeout Error", True),
+                      ("503 Service Unavailable", True), ("got a 5xx from the provider", True), ("status: 500", True),
+                      ("see line 503 of the file", False), ("at x.py:503", False), ("read 550 lines", False), ("port 5000 is in use", False),
+                      ("exit code 512", False), ("error handling lives at line 503", False)):
         assert bool(ow.API_RE.search(line)) == api, line
     return "429 on stderr -> kind api with the evidence in cause, the next model ran and posted; the provider-error patterns match"
 
@@ -284,7 +289,8 @@ def test_bad_format_is_a_process_failure():
         assert runs_started(d) == 1, "no fallback to another model"
         assert json.loads((d / "logs" / "run-1" / "result.json").read_text())["class"] == "bad-format"
         assert "bad-format" in (d / "logs" / "run-1" / "status.txt").read_text()
-        assert (d / "logs" / "run-1" / "export-attempt1-read.json").exists() or True
+        assert sorted(x.name for x in (d / "logs" / "run-1").glob("export*.json")) == ["export-attempt1-final.json"], \
+            "the final message was exported once, under its own name, and no export.json"
         prev = json.loads((d / "logs" / "run-1" / "result.prev-1.json").read_text())
         assert prev["class"] == "ok" and prev["text"], prev      # the ok result is kept, not overwritten (rule 6)
     return "no header line -> bad-format, kind process, chain stopped after one run, recorded in result.json and status.txt"
@@ -390,7 +396,7 @@ def test_models_listing_provider_error_is_api():
             (d / "models_err").write_text(err)
             r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
             assert r["class"] == "nonzero-exit" and r["kind"] == kind, (err, r["class"], r["kind"])
-            assert runs_started(d) if (d / "count").exists() else True
+            assert not (d / "count").exists(), "the listing failed before any run was started"
     return "`opencode models` failing with a network/429 line is kind api, with any other stderr it is process"
 
 
@@ -577,6 +583,18 @@ def test_watcher_crash_is_a_process_failure():
     return "an exception inside the watcher becomes a recorded process failure (exit 6 path), not a traceback"
 
 
+def test_reused_run_dir_does_not_skip_new_errors():
+    with fake_opencode("reuse", ["apicrash", "ok"]) as d:
+        rd = d / "run"
+        rd.mkdir()
+        (rd / "stderr.log").write_text("old noise\n" * 500)
+        (rd / "stdout.log").write_text("old text\n" * 500)
+        r = ow.run(write_brief(d), ROOT, "provider/model", rd, data_dir=d / "data", log=lambda s: None)
+        assert r["class"] == "nonzero-exit" and r["kind"] == "api" and "statusCode" in r["cause"], r
+        assert (rd / "stderr.prev-1.log").read_text().startswith("old noise") and (rd / "stdout.prev-1.log").exists()
+    return "logs already in a reused run dir are archived and the new attempt's error output is still read from byte 0"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
@@ -584,7 +602,8 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
          "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
-         "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure"]
+         "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
+         "reused_run_dir_does_not_skip_new_errors"]
 
 if __name__ == "__main__":
     bad = 0

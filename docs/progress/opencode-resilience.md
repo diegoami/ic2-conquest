@@ -45,3 +45,8 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
   a watcher exception was a bare traceback (now `watcher-crash`, process, exit 6 path); resume_run did not check all state keys; opencode_status died on one bad run dir;
   the exit-6 line now shows what a stopped-with-report model said.
 - Known limit: a watcher-crash record cannot read the session (the watcher is what died); the run dir and session id are still printed.
+
+## Review round 5 (PR #67), all fixed
+- [x] R1 every 5xx is api evidence as a status (status/status code/HTTP/Error before 5NN, 5NN before an error word, 5xx); a bare number such as "line 503" is not
+- [x] R2 evidence offsets computed after the logs are archived; test with a reused run dir
+- [x] R3 vacuous asserts replaced by real ones (export names, no run started on a listing failure); grep found no others

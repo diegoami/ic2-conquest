@@ -218,7 +218,10 @@ RESUME_MSG = "Continue where you stopped; finish the task in the attached brief 
 TICK = 3                  # seconds between checks (the tests lower it)
 PROGRESS_EVERY = 30       # seconds between progress lines
 API_RE = re.compile(
-    r"\b429\b|rate[ _-]?limit|too many requests|status(?:Code)?\W{0,3}5\d\d|\bHTTP\W+5\d\d|\b50[0-4]\b.{0,20}(?:error|unavailable|gateway)"
+    # every 5xx counts, but only as a status: after "status", "status code", "HTTP[/1.1]" or "Error", before an error word, or as "5xx";
+    # a bare number ("line 503", "x.py:503") never does
+    r"\b429\b|rate[ _-]?limit|too many requests|\b(?:status(?:[ _-]?code)?|http(?:/[\d.]+)?|error)\W{0,3}5\d\d\b"
+    r"|\b5\d\d\b\W{0,3}(?:\w+ ){0,3}(?:error|unavailable|gateway|overloaded|timeout)|\b5xx\b"
     r"|internal server error|overloaded|service unavailable|bad gateway|gateway time-?out|quota|usage[ _-]limit|insufficient"
     r"|ECONNRESET|ETIMEDOUT|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|network error|fetch failed|socket hang up|connection (?:reset|refused|error)", re.I)
 
@@ -546,11 +549,13 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         save()
     session, t_prog, first = resume_session, 0.0, not resume_session
     while True:
-        offs[:] = [Path(res["stderr"]).stat().st_size if Path(res["stderr"]).exists() else 0,
-                   Path(res["stdout"]).stat().st_size if Path(res["stdout"]).exists() else 0]
         if first:                                                 # never truncate a log that is already there
             keep_prev(res["stdout"])
             keep_prev(res["stderr"])
+        # AFTER the archiving: this attempt's output starts where the current files end (0 for a fresh file), so a reused run dir
+        # never skips new error output
+        offs[:] = [Path(res["stderr"]).stat().st_size if Path(res["stderr"]).exists() else 0,
+                   Path(res["stdout"]).stat().st_size if Path(res["stdout"]).exists() else 0]
         out, err = open(res["stdout"], "w" if first else "a"), open(res["stderr"], "w" if first else "a")
         first = False
         proc = subprocess.Popen(cmd, cwd=worktree, env=env, stdin=subprocess.DEVNULL, stdout=out, stderr=err, start_new_session=True)
