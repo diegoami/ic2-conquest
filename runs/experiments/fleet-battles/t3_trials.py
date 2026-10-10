@@ -28,6 +28,8 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle-cargo"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'fleet-battles/t3_trials.py')
 SRC = ROOT / "artifacts" / "run-exp-naval-battle" / "FIX_P_0723_ptolemaic_seat.SAV"
 ATT_ARMY, DEF_ARMY, ATT, DEF = 7, 2, 1, 0
 CELLS = {"L5": ([(0, 5000)], None), "L10": ([(0, 10000)], None), "L15": ([(0, 15000)], None), "A5": ([(2, 5000)], None),

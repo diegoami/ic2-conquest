@@ -14,6 +14,8 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle-cargo"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'fleet-battles/t3_natural_embark.py')
 OUT.mkdir(parents=True, exist_ok=True)
 START = ROOT / "artifacts" / "run-exp-fleet-battles" / "T1_0720_s13_Carthage.SAV"
 

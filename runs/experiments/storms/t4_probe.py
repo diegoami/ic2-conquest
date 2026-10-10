@@ -18,6 +18,8 @@ from planner import sea  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-storms"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'storms/t4_probe.py')
 OUT.mkdir(parents=True, exist_ok=True)
 START = ROOT / "artifacts" / "run-exp-fleet-battles" / "T1_0720_s13_Carthage.SAV"
 

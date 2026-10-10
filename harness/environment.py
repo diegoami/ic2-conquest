@@ -24,7 +24,7 @@ BUDGET = 0.9         # s for the whole fingerprint, enforced: probes run in para
 _cache = {}          # per process: (prefix, exe path, display) -> fingerprint
 _keyed = {}          # sinks registered with a key (one per key)
 _sinks = []          # runner callbacks: fn(record dict), called by record_start on every start
-_logged = set()      # keys whose line self.log already got (once per process)
+_logged = set()      # (prefix, exe, display, pid) whose line self.log already got: once per game process
 _deadline = [None]
 _exe_hashes = {}     # (path, mtime_ns, size) -> sha256 hex
 
@@ -176,7 +176,7 @@ def add_sink(fn, key=None):
 def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
     """What Game.record_environment does: fingerprint, one log line per process, one jsonl line per start (append only), sinks."""
     fp = fingerprint(prefix, exe, display, game_dir)
-    key = (str(prefix), str(exe), display)
+    key = (str(prefix), str(exe), display, pid)       # per game process: a restart in the same Python process logs again
     if key not in _logged:
         _logged.add(key)
         try:
@@ -196,6 +196,27 @@ def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
         except Exception:
             pass
     return fp
+
+
+def folder_sink(folder, key):
+    """A sink for a runner that keeps no log file, only output files in `folder`: each start writes environment-<stamp>[-n].json
+    there (exclusive create: never overwrites, rule 6), beside the runner's other outputs. Replaces the earlier sink of `key`."""
+    folder = Path(folder)
+
+    def write(rec):
+        folder.mkdir(parents=True, exist_ok=True)
+        stem = "environment-" + time.strftime("%Y%m%d-%H%M%S")
+        n = 0
+        while True:
+            path = folder / (stem + (f"-{n}" if n else "") + ".json")
+            try:
+                with open(path, "x") as f:
+                    json.dump(rec, f, indent=1, sort_keys=True)
+                    f.write("\n")
+                return
+            except FileExistsError:
+                n += 1
+    return add_sink(write, key=key)
 
 
 def sink_line(rec):

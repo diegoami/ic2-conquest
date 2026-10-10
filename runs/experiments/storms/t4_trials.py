@@ -30,6 +30,8 @@ from state import sav  # noqa: E402
 import t4_stage  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-storms"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'storms/t4_trials.py')
 OUT.mkdir(parents=True, exist_ok=True)
 START = ROOT / "artifacts" / "run-exp-fleet-battles" / "T1_0720_s13_Carthage.SAV"
 CARGO = (2, [(0, 4000), (1, 3000), (2, 2000), (3, 1000), (4, 1000)])      # the mixed army of T3's M15: 11,000 men, five unit types

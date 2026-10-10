@@ -23,6 +23,8 @@ from state.sav import UNIT_TYPES, live_armies, load  # noqa: E402
 
 BASE = WORK / "fixtures" / "BASE.SAV"
 OUT = ROOT / "runs" / "experiments" / "gallic-army"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'gallic-army.py')
 GAUL = 6
 
 

@@ -16,6 +16,8 @@ from harness.driver import CUR_NATION, G, SEL_FLEET, Game  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'fleet-battles/probe_attack.py')
 OUT.mkdir(parents=True, exist_ok=True)
 FIX = next(p for p in (ROOT / "saves" / "fleets-adjacent-at-sea-0723.SAV", ROOT / "artifacts" / "run-exp-fleet-battles" / "T1_FIXTURE_fleets_adjacent.SAV") if p.exists())
 res = {"windows": []}

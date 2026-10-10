@@ -19,6 +19,8 @@ from planner import sea  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-pair2"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'pair2/phase2.py')
 START = OUT / "P2_0732_s02_Ptolemaic.SAV"
 NAMES = {2: "Seleucid", 3: "Ptolemaic"}
 log = []

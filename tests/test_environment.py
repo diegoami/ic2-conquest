@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 from harness import environment as E  # noqa: E402
 import environment_check as C  # noqa: E402
+from harness import driver  # noqa: E402
 
 EXT = "[Software\\\\Wine\\\\Fonts\\\\External Fonts] 1\n"
 REG = ("WINE REGISTRY Version 2\n\n"
@@ -144,7 +145,6 @@ def main():
         ok += 1; print("PASS slow probe bounded (%.2f s) and recorded; spent budget skips probes" % took)
 
     # R1: the record reaches environment.jsonl, a runner's sink (its own log), and self.log once per process
-    from harness import driver
     with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):
         prefix = make_prefix(Path(tmp) / "p")
         jsonl = Path(tmp) / "environment.jsonl"
@@ -156,9 +156,9 @@ def main():
         lines = [json.loads(x) for x in jsonl.read_text().splitlines()]
         assert [r["pid"] for r in lines] == [4242, 4243] and lines[0]["step"] == "environment", lines     # every start, append only
         assert lines[0]["argv0"] and lines[0]["cwd"] and lines[0]["environment"]["wine"] == "wine-10.0 (fake)", lines[0]
-        assert len(got) == 2 and len(logged) == 1 and logged[0].startswith("environment {"), (got, logged)
+        assert len(got) == 2 and len(logged) == 2 and logged[0].startswith("environment {"), (got, logged)   # one line per game process
         assert E.sink_line(got[0]).startswith("environment {") and '"step"' not in E.sink_line(got[0])
-        ok += 1; print("PASS record in environment.jsonl (each start), sink (runner log), self.log (once)")
+        ok += 1; print("PASS record in environment.jsonl (each start), sink (runner log), self.log (once per game process)")
 
         # R2: any start records, by pid assignment: an override, a nested super().start(), a start replaced by assignment
         class Plain(driver.Game):
@@ -193,6 +193,28 @@ def main():
             g.start()
             assert seen == [], "a fake pid (no game process) must not write the durable record"
         ok += 1; print("PASS every start records (override, nested, monkeypatched by assignment); fake pids do not")
+
+    # R2 (round 3): two restarts in one Python process, through the real Game.pid hook: every game process logs and reaches the sinks
+
+    with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()), \
+            mock.patch.object(driver, "WORK", Path(tmp)), mock.patch.object(driver, "PREFIX", make_prefix(Path(tmp) / "p")), \
+            mock.patch.object(driver.Game, "_is_game_process", staticmethod(lambda pid: True)):
+        E._sinks.clear(); E._keyed.clear(); E._logged.clear(); E._cache.clear()
+        sunk, lines = [], []
+        E.add_sink(sunk.append)
+        E.folder_sink(Path(tmp) / "out", "t")
+        g = driver.Game.__new__(driver.Game)
+        g.exe, g.log, g.environment = "g.exe", lines.append, None
+        g.__dict__["_pid"] = None
+        for pid in (101, None, 102):
+            g.pid = pid
+        assert [r["pid"] for r in sunk] == [101, 102], sunk
+        assert len([x for x in lines if x.startswith("environment {")]) == 2, lines
+        assert [json.loads(x)["pid"] for x in (Path(tmp) / "environment.jsonl").read_text().splitlines()] == [101, 102]
+        outs = sorted((Path(tmp) / "out").glob("environment-*.json"))
+        assert len(outs) == 2 and json.loads(outs[0].read_text())["environment"]["wine"] == "wine-10.0 (fake)", outs
+        ok += 1; print("PASS two restarts in one process: self.log, sink, environment.jsonl and folder_sink each get both")
+        E._sinks.clear(); E._keyed.clear()
 
     # R1 (b): a runner library that owns a log gets the record there (battles.common.Log; keyed, so a new Log replaces the old sink)
     sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))

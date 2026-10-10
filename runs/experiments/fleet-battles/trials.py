@@ -26,6 +26,8 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'fleet-battles/trials.py')
 FIX = {"P": OUT / "FIX_P_0723_ptolemaic_seat.SAV", "C": OUT / "FIX_C_0723_carthage_seat.SAV",
        "P2": OUT / "FIX_P2_0724_ptolemaic_seat_c60.SAV"}
 CELLS = {"P": ("P", 1, 0, None), "C": ("C", 0, 1, None), "C70": ("C", 0, 1, 20),

@@ -16,6 +16,8 @@ from harness.driver import G, Game  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'fleet-battles/stage_p2.py')
 OUT.mkdir(parents=True, exist_ok=True)
 g = Game()
 g.load(OUT / "FIX_C_0723_carthage_seat.SAV", seed=12345)

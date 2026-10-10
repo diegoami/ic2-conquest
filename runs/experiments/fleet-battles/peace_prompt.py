@@ -20,6 +20,8 @@ from harness.driver import G, NATIONS, NATION_LEN, Game  # noqa: E402
 from state import sav  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-peace-prompt"
+from harness import environment as _env  # noqa: E402  every game start writes environment-<stamp>.json beside the outputs
+_env.folder_sink(OUT, 'fleet-battles/peace_prompt.py')
 FIX = OUT / "T1P_FIXTURE_fleets_adjacent.SAV"
 ATT, DEF = 1, 0           # Ptolemaic's fleet attacks Carthage's
 

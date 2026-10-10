@@ -12,3 +12,14 @@ Claims about the game cite a save; the others say plainly they are about code or
   - Wine run 3: same save, turn 0720, `smoke.jsonl` line 49 (`step: environment`, pid 1105684), load 15.4 s.
   - Launch paths found (all set `pid` after launching, so all covered): Game.start; MyGame x5 libs (attach); PeaceGame (b16_common); HookGame (super); iw_lib.launch (`g.pid = ps[0]`); trace_save_before_n.py (assigns pid). Not game launches: leaders_form/play_lib and unit-map-mouse/common run helper exes (state tool, slider) through Wine; tests/test_battle_hook_build emulates, no Wine. Only `Game.start =` assignment in the repo: trace_save_before_n.py:21.
 - [x] PR #69 open (not merged)
+- [x] Rework 3 (code and tests only, no game state; no Wine run, the Wine path did not change since run 3):
+  - `_logged` is keyed per game process (pid): two restarts in one Python process each log through self.log and the sinks (test, fake live-process check).
+  - `environment.folder_sink(folder, key)`: for runners with no log file, each start writes `environment-<stamp>[-n].json` (exclusive create) in the folder. Where each record lands:
+    - info_window (iw_lib and its batch scripts): tracked `runs/experiments/data/run-exp-info-window/` (its log is the CAPLOG tsv, so the json sits beside it).
+    - pair2/{phase1,phase2,trials}.py: `artifacts/run-exp-pair2/`.
+    - fleet-battles/{probe_attack,stage_p2,stage_cells,trials}.py: `artifacts/run-exp-naval-battle/`; t3_trials.py, t3_natural_embark.py: `artifacts/run-exp-naval-battle-cargo/`; peace_prompt.py: `artifacts/run-exp-peace-prompt/`.
+    - storms/{t4_natural,t4_probe,t4_trials}.py: `artifacts/run-exp-storms/`.
+    - two-humans/{t0,t0_phase2}.py: `artifacts/run-exp-two-humans/`.
+    - unit-map-mouse/common.py (all its scripts): `artifacts/run-exp-unitmap-mouse/`.
+    - gallic-army.py: tracked `runs/experiments/gallic-army/`.
+    - Scripts without Game (stage/analysis only: t4_stage, t3_stage, random_term, t4_analysis, ...) start no game. Finished `runs/experiments/data/run-exp-*/` scripts unchanged (environment.jsonl covers them).
