@@ -95,18 +95,19 @@ clicks (`CG_T3_b8`). A run-length measurement of identical-grey pixels on horizo
 
 | state | mean run | median | max | n runs | property |
 |---|---|---|---|---|---|
-| byte 1 (`CG_T3_b8_area_before.png`) | **18.19 px** | 4 | 304 | 635 (over 38 sampled rows) | short per-tile runs; each tile shaded differently from its neighbours — characteristic of a **terrain-style** set |
-| byte 0 (`CG_T3_b8_area_after_one.png`) | **9.05 px** | 2 | 304 | 1276 (over 38 sampled rows) | long uniform runs of identical grey; large regions of the same terrain colour without per-tile shading — characteristic of a **political/mono-style** set |
+| byte 1 (`CG_T3_b8_area_before.png`) | **18.19 px** | 4 | 304 | 635 (over 38 sampled rows) | **long uniform runs** of identical grey; large contiguous regions share the same pixel value — per-tile shading absent or minimal |
+| byte 0 (`CG_T3_b8_area_after_one.png`) | **9.05 px** | 2 | 304 | 1276 (over 38 sampled rows) | **short per-tile runs**; adjacent rows of identical-grey pixels are short, indicating neighbouring pixels differ frequently — per-tile variation visible |
 
 Ratio byte-1 / byte-0 = **2.01x** (the script `runs/experiments/cosmetic_gaps/a01_runs.py` fails if this drops below 1.5x,
 the threshold chosen so that the distinction still holds).
 
 **The byte is INVERTED to the ImageList index** `[derived, dump lines 41655-41658]`: `PaintForm` passes **literal `1` when
 the byte is `0`, and literal `0` when the byte is `1`** — the two branches of PaintForm's draw call select the OPPOSITE
-ImageList. So byte 1 → index 0 (the **terrain-style** set, long-uniform-run reading is the inverse of what the byte names
-suggest), and byte 0 → index 1 (the political/mono-style set). The measurement table is consistent with this:
-byte 1 (terrain-style) has longer runs than byte 0 (political/mono-style). The clone's code that does the toggle MUST
-preserve this inversion or the rendering will swap relative to the original.
+ImageList. So byte 1 → index 0, and byte 0 → index 1. The measurement table is consistent with this:
+byte 1 (image set 0) has **longer runs** than byte 0 (image set 1). The clone's code that does the toggle MUST
+preserve this inversion or the rendering will swap relative to the original. The names "terrain" and "political"/"mono"
+are NOT established by either the dump or the resource (see *What this does not establish*); the clone will need its
+own visual evidence to label them.
 
 **The flag is an ImageList index** `[derived]`: `FUN_00417200` (dump lines 20168-20188) is the toggle's drawing wrapper,
 called from `PaintForm` with the byte as a literal `1` / `0` (the byte selects between two branches that call `FUN_00417200`
