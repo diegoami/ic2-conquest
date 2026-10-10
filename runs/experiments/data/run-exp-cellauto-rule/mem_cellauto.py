@@ -3,7 +3,7 @@ fields +0x1C0..+0x1CC, rule table +0x688 (10 words), Image1 (+0x1BC) -> Picture 
 after a Save click before N, after N. Log: mem_cellauto-<stamp>.jsonl (tracked). python3 mem_cellauto.py"""
 import json, struct, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from harness.driver import Game
 STAMP = time.strftime("%Y%m%d-%H%M%S")
 LOG = R / f"runs/experiments/data/run-exp-cellauto-rule/mem_cellauto-{STAMP}.jsonl"

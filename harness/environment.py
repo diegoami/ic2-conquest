@@ -209,6 +209,8 @@ def record_start(prefix, exe, display, game_dir, pid, jsonl, log):
 REPO = Path(__file__).resolve().parent.parent
 # runs/experiments/<dir> whose tracked data folder is not run-exp-<dir with _ as ->
 DATA_FOLDERS = {"battles": "run-exp-battle-sweep", "fleet-battles": "run-exp-naval-battle", "unit-map-mouse": "run-exp-unitmap-mouse"}
+# per script-name prefix, checked first: the battle runners write to three more tracked folders (b0 logs are archived to battle-probe)
+PREFIX_FOLDERS = {"battles/b0_": "run-exp-battle-probe", "battles/b11_": "run-exp-battle-hook", "battles/b16_": "run-exp-battle-peace"}
 _override = [None]
 
 
@@ -231,6 +233,10 @@ def data_folder(script, repo=None):
         return base / "experiments" / "data" / rest[1] if len(rest) > 2 and rest[1].startswith("run-exp-") else None
     if len(rest) == 1:
         return base / "experiments" / Path(rest[0]).stem
+    rel = "/".join(rest)
+    for prefix, folder in PREFIX_FOLDERS.items():
+        if rel.startswith(prefix):
+            return base / "experiments" / "data" / folder
     return base / "experiments" / "data" / DATA_FOLDERS.get(rest[0], "run-exp-" + rest[0].replace("_", "-"))
 
 

@@ -8,7 +8,7 @@ real variant-0 Roman cities (20). Each 32x32 tile is cropped and hashed (8-bit R
 python3 probe_cities.py <out_dir>"""
 import json, shutil, struct, subprocess, sys, time, hashlib
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R))
 from tests.test_orders import fresh_save
 from harness.driver import sh, UNIT_PAINT, G

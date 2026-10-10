@@ -3,7 +3,7 @@ until it sticks; then dump the windows (with their controls) and a screenshot an
 python3 repro.py SEED MAX_ENDS [TIMEOUT]"""
 import json, sys
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R))
 from harness.driver import G, Game
 ART = R / "artifacts/run-exp-end-turn-timeout"; DATA = R / "runs/experiments/data/run-exp-end-turn-timeout"

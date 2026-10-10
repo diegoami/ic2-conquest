@@ -1,7 +1,7 @@
 """List-box row geometry per dialog, read by win_controls (LB_GETITEMHEIGHT, LB_GETTOPINDEX, ClientToScreen), 2026-10-08.
 Old assumption: row r centre at control y + 12 + 12 r. python3 probe_rows.py"""
 import sys
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh
 from harness.driver import ARMY_TOOLBAR_Y
 

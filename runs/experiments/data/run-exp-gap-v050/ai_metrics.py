@@ -15,7 +15,7 @@ python3 ai_metrics.py"""
 import json, re, sys
 from collections import Counter
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from state import sav
 DATA = R / "runs/experiments/data/run-exp-gap-v050"
 OA, RA = R / "artifacts/run-exp-ai-intercept-hunt", R / "artifacts/run-exp-gap-v050"

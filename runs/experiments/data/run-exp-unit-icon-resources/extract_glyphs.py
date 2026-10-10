@@ -3,7 +3,7 @@
 Writes glyph_<name>.bmp / .png and glyphs.json. python3 extract_glyphs.py <exe> <out_dir>"""
 import collections, hashlib, json, re, struct, subprocess, sys
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R / "runs/experiments/feature_inventory"))
 import extract_forms as EF
 _orig = EF.value

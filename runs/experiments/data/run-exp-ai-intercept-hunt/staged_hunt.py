@@ -5,7 +5,7 @@ fleet decisions. One fresh process per seed; the autosave of Ptolemaic's next tu
 python3 staged_hunt.py SEED [SEED ...]   -> staged_hunt.jsonl here (appended), saves in artifacts/run-exp-ai-intercept-hunt/"""
 import hashlib, json, shutil, struct, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "patches")); sys.path.insert(0, str(R / "runs/experiments/battles"))
 import ai_hook as A, stage
 from harness.driver import G, Game

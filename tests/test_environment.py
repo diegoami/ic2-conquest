@@ -220,7 +220,11 @@ def main():
              "/r/runs/experiments/feature_inventory/explore_lib.py": "/r/runs/experiments/data/run-exp-feature-inventory",
              "/r/runs/experiments/end_of_game/run_two.py": "/r/runs/experiments/data/run-exp-end-of-game",
              "/r/runs/experiments/fleet-battles/trials.py": "/r/runs/experiments/data/run-exp-naval-battle",
-             "/r/runs/experiments/battles/b0_probe.py": "/r/runs/experiments/data/run-exp-battle-sweep",
+             "/r/runs/experiments/battles/trials.py": "/r/runs/experiments/data/run-exp-battle-sweep",
+             "/r/runs/experiments/battles/b0_probe.py": "/r/runs/experiments/data/run-exp-battle-probe",
+             "/r/runs/experiments/battles/b0_peace_capture.py": "/r/runs/experiments/data/run-exp-battle-probe",
+             "/r/runs/experiments/battles/b11_run.py": "/r/runs/experiments/data/run-exp-battle-hook",
+             "/r/runs/experiments/battles/b16_run.py": "/r/runs/experiments/data/run-exp-battle-peace",
              "/r/runs/experiments/unit-map-mouse/common.py": "/r/runs/experiments/data/run-exp-unitmap-mouse",
              "/r/runs/experiments/gallic-army.py": "/r/runs/experiments/gallic-army",
              "/r/runs/run0/play.py": "/r/runs/run0",
@@ -269,6 +273,14 @@ def main():
         assert [e["event"] for e in ev] == ["environment"] and ev[0]["pid"] == 7 and "wine" in ev[0]["environment"], ev
         assert old.jl.read_text() == "", "the replaced Log must not get the record"
         ok += 1; print("PASS battles.common.Log gets the environment event (keyed sink)")
+        import b0_probe as B0                 # the b0 runners keep their own Log class (artifacts folder): it gets the event too
+        with mock.patch.object(B0, "OUT", Path(tmp) / "b0"):
+            lg = B0.Log("t")
+            E.record_start(prefix, "g.exe", ":9", prefix / "drive_c" / "IC2", 8, Path(tmp) / "e2.jsonl", lambda x: None)
+            ev = [json.loads(x) for x in lg.jl.read_text().splitlines()]
+            assert [e["event"] for e in ev] == ["environment"] and ev[0]["pid"] == 8, ev
+        ok += 1; print("PASS b0_probe.Log gets the environment event")
+        E._keyed.clear()
         E._keyed.clear()
 
     with tempfile.TemporaryDirectory() as tmp, mock.patch.object(E, "_run", fake_run()):

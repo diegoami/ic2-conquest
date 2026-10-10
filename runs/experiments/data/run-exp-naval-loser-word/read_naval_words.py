@@ -3,7 +3,7 @@ the map word at the tile, the band the ships imply (owner + 300 / 316 / 332 for 
 covered-cell field (+24). A loser is tombstoned (owner -1).
 python3 read_naval_words.py <dir with fleets-adjacent-at-sea-0723.SAV, PROBE_AFTER.SAV, NB_*_seed1.SAV>"""
 import sys, struct, glob, os
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from state.sav import load
 d = sys.argv[1]
 w = lambda b, x, y: struct.unpack_from('<h', b, x * 280 + y * 2)[0]

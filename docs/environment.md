@@ -152,3 +152,20 @@ Why: the Information panel asks for "Book Antiqua", which no computer has, so Wi
 Where it goes: `Game.record_environment()` runs whenever `Game.pid` is set to a live game process (a property: every start path, including overrides, `attach()` and a start replaced by assignment, ends by setting it) and appends one record (time, pid, runner `argv[0]`, cwd, fingerprint) to `$IC2_WORK/environment.jsonl`; `self.log` gets the line once per process. A runner that keeps its own log registers `environment.add_sink(fn)` (optionally with a `key`) and writes the record there; covered: `battles/common.py` `Log`, `feature_inventory/explore_lib.py`, the five `MyGame` libraries, `supply_transfer.py`, `smoke.py`, `shot_compare.py`. Probes run in parallel and are bounded (0.8 s each, 0.9 s in all) and error texts carry no absolute paths.
 
 Tracked copy (CLAUDE.md rule 6): `record_start` also appends the record to `environment.jsonl` in the runner's own tracked data folder, chosen from the script's location by `environment.data_folder()`: `runs/experiments/data/run-exp-<n>/x.py` -> that folder (so the finished one-off scripts are covered without edits); `runs/experiments/<dir>/x.py` -> `runs/experiments/data/run-exp-<dir>/` (`_` as `-`; exceptions in `DATA_FOLDERS`: battles -> run-exp-battle-sweep, fleet-battles -> run-exp-naval-battle, unit-map-mouse -> run-exp-unitmap-mouse); `runs/experiments/x.py` -> `runs/experiments/x/`; `runs/<id>/x.py` -> `runs/<id>/`. Scripts outside `runs/` get none (only `$IC2_WORK/environment.jsonl`, the machine-wide log). A runner whose data folder differs calls `environment.set_data_folder(folder)` with a tracked folder (the t3 cargo scripts and fleet-battles/peace_prompt.py do).
+
+Mapping table (audited against where each runner's own outputs live; the default is `environment.data_folder`, an exception is `PREFIX_FOLDERS`/`DATA_FOLDERS` in `harness/environment.py` or `set_data_folder`):
+
+| runner | tracked folder (`runs/experiments/data/...`) | own-log sink |
+|---|---|---|
+| `data/run-exp-<n>/*.py` | its own folder | smoke, supply_transfer |
+| `battles/b0_*.py` (b0_probe, b0_peace_capture) | `run-exp-battle-probe` (artifacts logs are archived there) | `b0_probe.Log` |
+| `battles/b11_*.py` | `run-exp-battle-hook` | `battles/common.py` `Log` |
+| `battles/b16_*.py` | `run-exp-battle-peace` | `battles/common.py` `Log` |
+| other `battles/*.py` (trials, b2, b3, b5, b8, ...) | `run-exp-battle-sweep` | `battles/common.py` `Log` |
+| `fleet-battles/*.py` | `run-exp-naval-battle`; t3_trials, t3_natural_embark: `run-exp-naval-battle-cargo`; peace_prompt: `run-exp-peace-prompt` (`set_data_folder`) | none |
+| `end_of_game`, `leaders_form`, `refusal_texts`, `v050_rules`, `split_aboard` | `run-exp-end-of-game`, `-leaders-form`, `-refusal-texts`, `-v050-rules`, `-split-aboard` | lib `log('environment', ...)` |
+| `feature_inventory`, `info_window`, `pair2`, `storms`, `two-humans`, `civ-sweep` | `run-exp-<dir>` | explore_lib (feature_inventory) |
+| `unit-map-mouse/*.py` | `run-exp-unitmap-mouse` | none |
+| `gallic-army.py` | `runs/experiments/gallic-army/` | none |
+
+The finished scripts under `data/run-exp-*/` no longer hard-code `/home/diego/projects/ic2-conquest`: the repo root comes from `__file__` (52 scripts), so a script runs against the checkout it is in. Two shell helpers in `run-exp-gap-v050` (`remake_cli.sh`, `hash_saves.sh`) still name the path.

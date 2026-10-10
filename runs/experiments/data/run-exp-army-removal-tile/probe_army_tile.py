@@ -9,10 +9,10 @@ removal in TBattleOver_OK (:57627), FUN_0044aee4 (:49679), Join armies (:46996) 
 python3 probe_army_tile.py <out_dir> [case ...]"""
 import json, shutil, struct, sys
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from harness.driver import G, Game
 from state import sav
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 CASES = {
     "disband": (R / "saves/run0-start-AUTO0720-seed12345.SAV", [(100, 37, 0)]),
     "join": (R / "saves/fleet-port-antium-0734.SAV", [(102, 44, 0)]),

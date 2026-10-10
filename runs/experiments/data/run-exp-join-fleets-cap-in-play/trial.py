@@ -29,7 +29,7 @@ import sys
 import time
 from pathlib import Path
 
-REPO = Path('/home/diego/projects/ic2-conquest')
+REPO = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(REPO))
 from state.sav import parse as parse_sav, ARMY_OFF, ARMY_LEN, FLEET_LEN
 

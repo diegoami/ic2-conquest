@@ -5,9 +5,9 @@ Army 1's 20 slots are replaced by regular heavy-infantry units summing to (targe
 python3 probe_band.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load
-SRC = Path("/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV")
+SRC = (Path(__file__).resolve().parents[4] / "saves/run0-start-AUTO0720-seed12345.SAV")
 SAMNITE = 3868
 CASES = {"t24999": 24999, "t25000": 25000, "t49999": 49999, "t50000": 50000}
 ARMY_COUNT_OFF, ARMY_LEN = 100956, 656

@@ -4,7 +4,7 @@ with binary properties kept as bytes. Each TImageList 'Bitmap' blob is written r
 python3 extract_imagelists.py <exe> <out_dir>"""
 import hashlib, json, re, struct, sys
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R / "runs/experiments/feature_inventory"))
 import extract_forms as EF
 _orig = EF.value

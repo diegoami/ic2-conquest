@@ -4,7 +4,7 @@ CreateFile / NtCreateFile calls, go to runs/experiments/data/run-exp-cellauto-ru
 python3 trace_save_before_n.py"""
 import re, subprocess, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 import harness.driver as drv
 from harness.driver import Game, G
 STAMP = time.strftime("%Y%m%d-%H%M%S")

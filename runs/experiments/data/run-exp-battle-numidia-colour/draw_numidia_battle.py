@@ -5,7 +5,7 @@ Outputs: artifacts/run-exp-battle-numidia-colour/ (saves, screenshots; never ove
 python3 draw_numidia_battle.py"""
 import hashlib, json, shutil, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "runs/experiments/battles"))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "runs/experiments/battles"))
 import common as C, stage, trials as T
 from harness.driver import Game
 from state import battle_block as BB

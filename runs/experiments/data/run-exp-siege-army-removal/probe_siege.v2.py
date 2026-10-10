@@ -6,10 +6,10 @@ Fixture saves/siege-felsina-failed-0721.SAV: Rome army 0 at (99,32), next to Fel
 python3 probe_siege.py <out_dir> [case ...]"""
 import json, shutil, struct, sys
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from harness.driver import G, Game
 from state import sav
-FIX = Path("/home/diego/projects/ic2-conquest/saves/siege-felsina-failed-0721.SAV")
+FIX = (Path(__file__).resolve().parents[4] / "saves/siege-felsina-failed-0721.SAV")
 CASES = {"one_man": [1], "spread": [1, 6, 7, 13, 100, 1000], "u99": [99], "u100": [100], "u150": [150],
          "u79": [79], "u80": [80], "ar26": [(26, 2)], "ar27": [(27, 2)]}   # 2026-10-09: atk = sum(troops, archers x3) div 80 x morale (research): 0 below 80
 TYPE_HI = 1
