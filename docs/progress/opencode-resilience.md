@@ -55,3 +55,6 @@ API failure falls through; a dying run is resumable; running jobs are visible. A
 - [x] R1 structured OpenCode errors are the primary evidence (api_text / classify_error_obj; shapes read from the 1.18.34 binary); text regex only for unstructured lines, with `returned 5NN`, `responded with NNN`
 - [x] R2 the models-listing classification uses only that call's own stderr (done(scan_logs=False)); test with a reused run dir holding an old 429
 - [x] R3 docs/proposals/fleet-battles-and-storms.md:273 is the bot's own text (section 13, 'Author: Claude Sonnet 5.5'): updated with the date of the change
+
+## Owner's change: refused credentials are process
+- [x] 401, 403 and ProviderAuthError are kind process with cause `provider credentials refused (401/403): renew the login for <provider>`; no resume, no fallback, exit 6 (rule 8); 402 stays api; auth wins over api evidence in the same stderr; tests + docs

@@ -58,7 +58,7 @@ elif a[:1] == ["export"]:
     if (d / "export_bad").exists():
         print((d / "export_bad").read_text())
         sys.exit(0)
-    if last in ("hang", "crash", "textcrash", "apicrash", "429", "perm") or last == "reportcrash":
+    if last in ("hang", "crash", "textcrash", "apicrash", "authcrash", "429", "perm") or last == "reportcrash":
         # a run that died: mid-work (finish tool-calls, partial text) or after a final message (reportcrash: stopped and reported)
         stop = last == "reportcrash"
         print(json.dumps({"info": {}, "messages": [{"info": {"role": "assistant", "agent": "external-reviewer",
@@ -88,6 +88,9 @@ elif a[:1] == ["run"]:
     if mode == "429":
         sys.stderr.write("Error: 429 Too Many Requests: rate limit exceeded\\n")
         sys.exit(1)
+    if mode == "auth-nosession":     # refused before any session: still our credentials, never a fallback
+        sys.stderr.write('Error: {"name": "ProviderAuthError", "data": {"providerID": "provider", "message": "token expired"}}\\n')
+        sys.exit(1)
     if "--title" in a:
         (d / "title").write_text(a[a.index("--title") + 1])
     if mode == "hang":
@@ -100,6 +103,9 @@ elif a[:1] == ["run"]:
         time.sleep(30)
     if mode == "reportcrash":    # the model stops and reports, then the process dies
         sys.stderr.write("panic: after the report\\n")
+        sys.exit(1)
+    if mode == "authcrash":      # a session started, then the provider refused the credentials
+        sys.stderr.write('Error: {"name": "APIError", "data": {"message": "invalid key", "statusCode": 401, "isRetryable": false}}\\n')
         sys.exit(1)
     if mode == "textcrash":      # the MODEL's text mentions a 429 on stdout, then the process dies: not an API failure
         print("I saw a 429 rate limit in the log", flush=True)
@@ -602,9 +608,8 @@ def test_structured_errors_are_the_primary_evidence():
         "Error: " + J({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}),
         pretty,
         "Error: " + J({"name": "APIError", "data": {"message": "x", "statusCode": 529, "isRetryable": False}}),     # any 5xx
-        "Error: " + J({"name": "APIError", "data": {"message": "bad key", "statusCode": 401, "isRetryable": False}}),
+        "Error: " + J({"name": "APIError", "data": {"message": "billing", "statusCode": 402, "isRetryable": False}}),      # payment/quota stays api
         "Error: " + J({"name": "APIError", "data": {"message": "x", "isRetryable": True}}),
-        "Error: " + J({"name": "ProviderAuthError", "data": {"providerID": "openai", "message": "token expired"}}),
         "Error: " + J({"name": "AI_APICallError", "statusCode": 502, "message": "bad gateway"}),
         "Error: " + J({"name": "FetchTimeoutError", "data": {"message": "x"}}),
         "info line\n" + J({"error": {"status": 500, "message": "oops"}}) + "\nmore",
@@ -620,6 +625,16 @@ def test_structured_errors_are_the_primary_evidence():
         "Error: " + J({"name": "ProviderModelNotFoundError", "data": {"providerID": "x", "modelID": "y"}}),
         "{broken json 503",
     ]
+    auth = [
+        "Error: " + J({"name": "APIError", "data": {"message": "bad key", "statusCode": 401, "isRetryable": False}}),
+        "Error: " + J({"name": "APIError", "data": {"message": "no access", "statusCode": 403}}),
+        "Error: " + J({"name": "ProviderAuthError", "data": {"providerID": "openai", "message": "token expired"}}),
+        "Error: 401 Unauthorized",
+        "HTTP 403 Forbidden",
+        "Error: " + J({"name": "APIError", "data": {"message": "x", "statusCode": 429}}) + "\nError: " + J({"name": "ProviderAuthError", "data": {"message": "m"}}),
+    ]
+    for t in auth:
+        assert ow.error_verdict(t)[0] == "auth" and ow.api_text(t) is None, ("should be auth (process), never api", t, ow.error_verdict(t))
     for t in api:
         assert ow.api_text(t), ("should be api", t)
     for t in process:
@@ -630,8 +645,8 @@ def test_structured_errors_are_the_primary_evidence():
                 ("returned 503 lines", False), ("returned 550 bytes", False), ("see line 503", False), ("responded with 200", False)]
     for line, want in fallback:
         assert bool(ow.api_text(line)) == want, line
-    return "%d api and %d process JSON error shapes (OpenCode's APIError, ProviderAuthError, ContextOverflowError, ...) and %d text fallbacks classify as designed" % (
-        len(api), len(process), len(fallback))
+    return "%d api, %d auth (401/403/ProviderAuthError: process) and %d process JSON error shapes, and %d text fallbacks classify as designed" % (
+        len(api), len(auth), len(process), len(fallback))
 
 
 def test_models_listing_looks_only_at_its_own_stderr():
@@ -648,6 +663,18 @@ def test_models_listing_looks_only_at_its_own_stderr():
     return "a listing that fails with a process-only error is process even when the run dir's old stderr holds a 429; a JSON 503 from the listing is api"
 
 
+def test_refused_credentials_are_a_process_failure():
+    for plan in (["authcrash", "ok"], ["auth-nosession", "ok"]):
+        with fake_opencode("auth-" + plan[0], plan) as d:
+            final, stop, failures = chain(d)
+            assert final is None and stop and not failures, (plan, final, stop, failures)
+            r = stop[1]
+            assert r["kind"] == "process", r
+            assert "provider credentials refused (401/403): renew the login for provider" in r["cause"], r["cause"]
+            assert runs_started(d) == 1, "no resume and no second model for refused credentials"
+    return "401 and ProviderAuthError (with or without a session) -> process, cause names the login to renew, no resume, no fallback"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
@@ -657,7 +684,8 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",
-         "structured_errors_are_the_primary_evidence", "models_listing_looks_only_at_its_own_stderr"]
+         "structured_errors_are_the_primary_evidence", "models_listing_looks_only_at_its_own_stderr",
+         "refused_credentials_are_a_process_failure"]
 
 if __name__ == "__main__":
     bad = 0

@@ -231,7 +231,8 @@ API_RE = re.compile(
 # `Error: {"name": ..., "data": {...}}`, pretty-printed over several lines):
 #   APIError            data {message, statusCode?, isRetryable, responseHeaders?, responseBody?, metadata?}   (the AI SDK's AI_APICallError has the
 #                       same statusCode/isRetryable; isRetryable defaults to status 408, 409, 429 or >= 500)
-#   ProviderAuthError   data {providerID, message}                       the provider refused our credentials
+#   ProviderAuthError   data {providerID, message}                       the provider refused our credentials: a flaw in OUR setup (kind
+#                       process, like a 401/403): the owner renews the login, nothing falls through to another model (CLAUDE.md rule 8)
 #   ContextOverflowError, ContentFilterError, MessageAbortedError, MessageOutputLengthError, StructuredOutputError: about OUR request or run
 #   UnknownError        data {message, ref}                              no structure: only its message text can tell
 # So the JSON is the primary evidence; the text regex is only the fallback for what is not such an object.
@@ -252,20 +253,23 @@ def error_status(o):
 
 def classify_error_obj(o):
     """(verdict, summary) for one JSON object: True = the provider did not answer (api), False = our request or process,
-    None = not an error object or no structure to judge by (the text fallback decides)."""
+    "auth" = the provider refused our credentials (process, with its own cause), None = not an error object or no structure to
+    judge by (the text fallback decides)."""
     name = o.get("name") if isinstance(o.get("name"), str) else ""
     data = o.get("data") if isinstance(o.get("data"), dict) else o
     msg = str(data.get("message") or "")[:100]
     if name in PROCESS_ERRORS:
         return False, f"{name}: {msg}"
     if name == "ProviderAuthError":
-        return True, f"{name}: {msg}"
+        return "auth", f"{name}: {msg}"
     status = error_status(o)
     retry = o.get("isRetryable") is True or data.get("isRetryable") is True
     if status is not None:
-        # 408/409/429/5xx (the SDK's retryable set) and 401/402/403 (credentials, billing, quota: the provider refused) are api;
-        # any other status (400, 404, 422, ...) is about what we sent
-        return (status in (401, 402, 403, 408, 409, 429) or status >= 500 or retry), f"{name or 'error'} status {status}: {msg}"
+        # 401/403: credentials refused ("auth": the owner renews the login, never a fallback). 402 (payment, quota), 408/409/429/5xx
+        # (the SDK's retryable set) are api. Any other status (400, 404, 422, ...) is about what we sent
+        if status in (401, 403):
+            return "auth", f"{name or 'error'} status {status}: {msg}"
+        return (status in (402, 408, 409, 429) or status >= 500 or retry), f"{name or 'error'} status {status}: {msg}"
     if retry:
         return True, f"{name or 'error'} (retryable): {msg}"
     if NETWORK_NAME.search(name):
@@ -275,12 +279,17 @@ def classify_error_obj(o):
     return None, ""
 
 
-def api_text(text, limit=200_000):
-    """A one-line evidence string if this stderr text says the provider did not answer, else None. First every JSON object in it
-    (classify_error_obj); a decided object (api or not) is blanked, so words inside it never reach the second step: the text
-    patterns, over the remaining lines."""
+AUTH_RE = re.compile(r"\b(?:status(?:[ _-]?code)?|http(?:/[\d.]+)?|error)\W{0,3}40[13]\b|\b40[13]\W{0,3}(?:\w+ ){0,2}(?:unauthorized|forbidden)"
+                     r"|\bunauthorized\b|invalid api key|incorrect api key|authentication (?:failed|error)", re.I)
+
+
+def error_verdict(text, limit=200_000):
+    """(kind, summary) for a stderr text: "auth" (the provider refused our credentials), "api" (the provider did not answer), or
+    (None, None). First every JSON object in it (classify_error_obj); a decided object (api, auth or process) is blanked, so words
+    inside it never reach the second step, the text patterns over the remaining lines. Credentials refused wins over api: it needs
+    the owner, a fallback would hide it."""
     text = ANSI.sub("", text)[:limit]
-    dec, i, tries, spans, found = json.JSONDecoder(), 0, 0, [], None
+    dec, i, tries, spans, found = json.JSONDecoder(), 0, 0, [], {}
     while tries < 200:
         j = text.find("{", i)
         if j < 0:
@@ -296,27 +305,37 @@ def api_text(text, limit=200_000):
             verdict, summary = classify_error_obj(obj)
             if verdict is not None:
                 spans.append((j, end))
-                found = found or (summary if verdict else None)
-    if found:
-        return found[:200]
+                if verdict:
+                    found.setdefault("auth" if verdict == "auth" else "api", summary)
     for a, b in reversed(spans):
         text = text[:a] + " " * (b - a) + text[b:]
-    for ln in text.splitlines():
-        if API_RE.search(ln):
-            return ln.strip()[:200]
-    return None
+    lines = text.splitlines()
+    for kind, rx in (("auth", AUTH_RE), ("api", API_RE)):
+        hit = next((ln.strip() for ln in lines if rx.search(ln)), None)
+        if hit:
+            found.setdefault(kind, hit)
+    for kind in ("auth", "api"):
+        if kind in found:
+            return kind, found[kind][:200]
+    return None, None
 
 
-def api_evidence(res, offsets=(0, 0)):
-    """Evidence (api_text) from the STDERR OpenCode wrote in the current attempt (after the byte offset offsets[0]), or None.
+def api_text(text, limit=200_000):
+    """The evidence line when error_verdict says api (the provider did not answer), else None."""
+    kind, summary = error_verdict(text, limit)
+    return summary if kind == "api" else None
+
+
+def stderr_verdict(res, offsets=(0, 0)):
+    """error_verdict of the STDERR OpenCode wrote in the current attempt (after the byte offset offsets[0]); (None, None) if unreadable.
     stdout is never read: it carries the model's own text and the tool output (a review of this very file says "429" and "rate
     limit"), so text there must never make a run look like an API failure. OpenCode 1.18.34 prints its errors to stderr and leaves
     stdout empty (forced 2026-10-10 with an unknown provider in a throwaway data dir)."""
     try:
         data = Path(res["stderr"]).read_bytes()[offsets[0]:].decode(errors="replace")
     except OSError:
-        return None
-    return api_text(data)
+        return None, None
+    return error_verdict(data)
 
 
 def keep_prev(path):
@@ -521,12 +540,17 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         ctx["read"][tag] = state["last_message"] = lm
         return lm
 
-    def done(cls, cause=None, evidence=None, scan_logs=True):
+    def done(cls, cause=None, verdict=None, scan_logs=True):
+        """Record the end. verdict = (kind, summary) from a stderr the caller already judged (the models listing's own); otherwise
+        this attempt's stderr is judged when scan_logs."""
         res["class"], res["cause"] = cls, cause
         if cls != "ok":
-            ev = evidence or (api_evidence(res, offs) if scan_logs and cls not in ALWAYS_PROCESS else None)
-            res["kind"] = "api" if (cls in ALWAYS_API or ev) else "process"
-            if ev:
+            ek, ev = verdict or (stderr_verdict(res, offs) if scan_logs and cls not in ALWAYS_PROCESS else (None, None))
+            res["kind"] = "process" if ek == "auth" else "api" if (cls in ALWAYS_API or ek == "api") else "process"
+            if ek == "auth":
+                prov = split_model(model)[0].split("/")[0]
+                res["cause"] = (f"{cause}; " if cause else "") + f"provider credentials refused (401/403): renew the login for {prov} [{ev}]"
+            elif ev:
                 res["cause"] = f"{cause}; {ev}" if cause else ev
             lm = read_last()                                  # every failure with a session is read before anything is decided
             res["last_message"] = lm
@@ -563,9 +587,9 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         r = oc(exe, env, worktree, "models", *args, timeout=timeout)
         if r.returncode == 0:
             return r.stdout.split(), None
-        ev = api_text(r.stderr)                           # THIS call's own stderr only, never the run dir's logs
+        verdict = error_verdict(r.stderr)                 # THIS call's own stderr only, never the run dir's logs
         return None, done("nonzero-exit", f"`opencode models {' '.join(args)}` failed ({r.returncode}): {r.stderr.strip()[:120]}".replace("  ", " "),
-                          evidence=ev, scan_logs=False)
+                          verdict=verdict, scan_logs=False)
 
     models, failed = listed()
     if failed:
@@ -697,7 +721,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             cls, cause = "nonzero-exit", f"exit {proc.returncode}"
         if cls is None:
             break
-        if cls in RESUMABLE and session and state.get("resumes_used", 0) < resumes and not api_evidence(res, offs):
+        if cls in RESUMABLE and session and state.get("resumes_used", 0) < resumes and stderr_verdict(res, offs)[0] is None:
             # Rule 7: read the session first. A model that ended its turn with text (finish stop) STOPPED AND REPORTED: that report is
             # answered by the caller, not resumed over. Only a run that died mid-work (no final stop message) is continued.
             lm = read_last()
