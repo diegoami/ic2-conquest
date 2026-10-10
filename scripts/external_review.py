@@ -4,18 +4,22 @@ posts the result. The model never writes to GitHub.
 
     external_review.py --pr 7 [--model a#variant,b,c] [--exclude-model x] [--apply-label] [--dry-run]
     external_review.py --issue 9 --kind release [--brief-file F]
+    external_review.py --resume <run dir>        # continue a run that stopped, in the same OpenCode session
 
-Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (nothing posted: the caller decides the
-fallback) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller reads it and
-decides) · 5 the PR head moved while the review ran (nothing posted).
+Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (every model's API did not answer or was skipped; nothing
+posted: the caller decides the fallback) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller
+reads it and decides) · 5 the PR head moved while the review ran (nothing posted) · 6 "OpenCode process failure: ..." (a
+failure of our own process: timeout after the automatic resumes, cut-off, crash, unreadable output, permission refusal, wrong
+agent, no review header; nothing posted, NO fallback to another model: diagnose it, then `--resume <run dir>`).
 
 Flow: unique detached worktree at the PR head (removed in `finally`) -> a brief per attempt, with the PR
 body pasted in -> scripts/opencode_watched.py -> validate the review's shape -> re-check the head SHA ->
-ONE comment (+ a status label with --apply-label). A review is never thrown away: only "no review at all" (no
-header line anywhere) falls to the next model or to exit 3; a readable review is normalised and acted on; one
-whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4.
+ONE comment (+ a status label with --apply-label). A review is never thrown away: a readable review is normalised and acted
+on; one whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4. Only an `api` failure
+(opencode_watched.py: the provider did not answer) moves the chain to the next model; a `process` failure, "no review at all"
+(no header line) included, stops it with exit 6.
 Default: the DEFAULT_MODELS chain, after the quota check (models whose provider is exhausted are skipped, L50). Effort: light models
-#high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). The caller falls back to Claude Opus on exit 3.
+#high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). The caller falls back to Claude Opus on exit 3; on exit 6 nobody falls back: the process failure is fixed.
 """
 import argparse
 import json
@@ -35,9 +39,9 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "opencode-go/deepseek-v4.1-flash#high,openai/gpt-5.6-luna#high,alibaba-token-plan/qwen3.8-flash#medium"     # then exit 3 -> the caller (qwen3.8-flash third: its own pool, 60% off at night; the owner, 2026-10-06)
+DEFAULT_MODELS = "openai/gpt-5.6-luna#high,minimax/MiniMax-M2.7"     # then exit 3 -> the caller (the owner, 2026-10-10: DeepSeek and Alibaba only when asked)
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
-FATAL = {"permission-rejected", "no-executable", "unknown-agent"}     # not retried on another model
+EXIT_PROCESS = 6                                                  # a failure of our own process: no fallback, resumable
 
 
 def sh(*args, cwd=REPO, check=True, text=True):
@@ -367,6 +371,139 @@ def ensure_labels():
             sh("gh", "label", "create", lb, "--description", "set by scripts/external_review.py")
 
 
+def drop_worktree(wt, kind, n):
+    sh("git", "worktree", "remove", "--force", str(wt), check=False)
+    if kind == "pr":
+        sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+    if Path(wt).exists():
+        shutil.rmtree(wt, ignore_errors=True)
+        sh("git", "worktree", "prune", check=False)
+
+
+def judge(r, hdr, run_dir):
+    """One finished ow.run -> (final review or None, r). Only a readable (or flagged) review is final. An ok run whose final message
+    has no header line is a `bad-format` PROCESS failure (the class and kind are written back to result.json and state.json: the
+    model ended its turn without the review, which is ours to diagnose, not another model's to redo)."""
+    if r["class"] == "ok":
+        pr = parse_review(r["text"], hdr)
+        if pr["status"] != "none":
+            return pr, r
+        r["class"], r["kind"], r["cause"] = "bad-format", "process", "no review in the final message (no header line)"
+        ow.write_json(Path(run_dir) / "result.json", r)
+        st = ow.read_json(Path(run_dir) / "state.json") or {}
+        st["status"] = "bad-format"
+        ow.write_json(Path(run_dir) / "state.json", st)
+        (Path(run_dir) / "status.txt").write_text((ow.describe(run_dir) or "") + "\n")
+    return None, r
+
+
+def process_message(model, r):
+    """The line printed on exit 6: what failed, where its record is, how to continue it."""
+    rd = Path(r["stdout"]).parent
+    sid = r.get("session")
+    return (f"OpenCode process failure: {model}: {r['class']}: {r.get('cause')}; session {sid or 'none'}; run dir {rd}; "
+            + (f"resume with --resume {rd}" if sid else "no session to resume: fix the cause and run again"))
+
+
+def run_chain(models, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print):
+    """Try the models in order. Returns (final, stop): final = (model, parsed review) or None; stop = (model, result) when a PROCESS
+    failure ended the chain (nothing falls through: that failure is diagnosed and resumed, not handed to another model). Only an
+    `api` failure (the provider did not answer) is appended to `failures` and moves to the next model."""
+    for m in models:
+        hdr = header(kind, m, failures)
+        k = len(failures) + 1
+        brief = logs / f"brief-{k}.md"
+        brief.parent.mkdir(parents=True, exist_ok=True)
+        brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
+        meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr}
+        r = ow.run(brief, wt, m, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
+        pr, r = judge(r, hdr, logs / f"run-{k}")
+        if pr:
+            return (m, pr), None
+        if r["kind"] != "api":
+            return None, (m, r)
+        failures.append((m, r["class"]))
+    return None, None
+
+
+def post_review(kind, n, model, pr, logs, head, apply_label):
+    """The posting half: head re-check, ONE comment, optional label. Exit code as documented at the top."""
+    flagged = pr["status"] in ("unreadable", "cutoff")
+    note = {"unreadable": "verdict unreadable", "cutoff": "review may be cut off"}.get(pr["status"])
+    text, verdict = (NOTE + note + "\n\n" if flagged else "") + pr["text"], pr["verdict"]
+    for c in pr["rewrites"]:
+        print(f"rewrote closing keyword: {c!r}", flush=True)
+    if kind == "pr" and gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"] != head:
+        print("the PR head moved during the review; nothing posted", file=sys.stderr)
+        return 5
+    body = logs / "comment.md"
+    body.write_bytes((text + "\n").encode("utf-8"))        # UTF-8, no BOM
+    noun = "issue" if kind == "release" else "pr"
+    sh("gh", noun, "comment", str(n), "--body-file", str(body))
+    if apply_label and not flagged:                      # a flagged review sets no label
+        ensure_labels()
+        for lb in VERDICTS.values():
+            if lb != VERDICTS[verdict]:
+                sh("gh", noun, "edit", str(n), "--remove-label", lb, check=False)
+        sh("gh", noun, "edit", str(n), "--add-label", VERDICTS[verdict])
+    if flagged:
+        print(f"posted one FLAGGED comment on {noun} #{n} ({note}; model {label_of(model)}); no label set; "
+              f"read it and decide; logs {logs}", file=sys.stderr)
+        return 4
+    print(f"posted one comment on {noun} #{n}: verdict {verdict} (model {label_of(model)}); logs {logs}")
+    return 0
+
+
+def resume_run(run_dir, apply_label):
+    """--resume <run dir>: continue the recorded OpenCode session where it stopped. Recreates the worktree at the recorded head
+    (exit 5 if the PR head, or origin/main for a release review, moved since), continues the SAME session, then parses and posts
+    as usual. The run dir (and its earlier results, kept as result.prev-N.json) is never deleted."""
+    rd = Path(run_dir).resolve()
+    st = ow.read_json(rd / "state.json")
+    if not st or st.get("kind") not in ("pr", "release") or not st.get("session") or not st.get("head"):
+        print(f"{rd}: no resumable state.json (needs kind, number, head and a session)", file=sys.stderr)
+        return 2
+    kind, n, head = st["kind"], st["number"], st["head"]
+    if ow.pid_alive(st.get("pid")) and st.get("status") in ("starting", "running", "resuming"):
+        print(f"{rd}: the run is still going (pid {st['pid']}); not resuming it twice", file=sys.stderr)
+        return 2
+    if kind == "release":
+        sh("git", "fetch", "-q", "origin", "+refs/heads/main:refs/remotes/origin/main")
+        cur = sh("git", "rev-parse", "refs/remotes/origin/main")
+    else:
+        cur = gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"]
+        sh("git", "fetch", "-q", "origin", f"+pull/{n}/head:refs/review/pr{n}")
+    if cur != head:
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+        print(f"the {'PR head' if kind == 'pr' else 'origin/main'} moved since the run ({head[:12]} -> {cur[:12]}); nothing resumed, nothing posted",
+              file=sys.stderr)
+        return 5
+    wt = Path(st["worktree"])
+    try:
+        REVIEW_ROOT.mkdir(parents=True, exist_ok=True)
+        if wt.exists():
+            drop_worktree(wt, "release", n)                 # a leftover tree: recreate it clean at the recorded head
+        sh("git", "worktree", "add", "--detach", str(wt), head)
+    except Exception:
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+        raise
+    try:
+        r = ow.run(st["brief"], wt, st["model"], rd, agent=st["agent"], data_dir=st["data_dir"], log=lambda s: print(s, flush=True),
+                   resume_session=st["session"], startup=st.get("startup", 180), idle=st.get("idle", 600), total=st.get("total", 3600))
+        pr, r = judge(r, st["hdr"], rd)
+    finally:
+        drop_worktree(wt, kind, n)
+    if pr:
+        return post_review(kind, n, st["model"], pr, rd.parent, head, apply_label)
+    if r["kind"] == "api":
+        print(f"OpenCode unavailable: {label_of(st['model'])}: {r['class']}: {r.get('cause')}; run dir {rd}", file=sys.stderr)
+        return 3
+    print(process_message(st["model"], r), file=sys.stderr)
+    return EXIT_PROCESS
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     g = ap.add_mutually_exclusive_group()
@@ -381,12 +518,16 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="print the arguments only; start no model; post nothing")
     ap.add_argument("--review-file", help="offline: parse this file as the model's final message and print what "
                     "would be posted, its note line, the label and the exit code. No model runs, nothing is posted")
+    ap.add_argument("--resume", metavar="RUN_DIR", help="continue a run that stopped (its run dir under rendered/<kind><n>-<token>/run-<k>), "
+                    "in the same OpenCode session, then parse and post as usual; exit 5 if the PR head moved")
     ap.add_argument("--self-test", action="store_true", help="run the review parser over sample outputs")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    if a.resume:
+        return resume_run(a.resume, a.apply_label)
     if not (a.pr or a.issue):
-        ap.error("one of --pr / --issue is required (or --self-test)")
+        ap.error("one of --pr / --issue is required (or --self-test or --resume)")
     kind = a.kind or ("release" if a.issue else "pr")
     n = a.pr or a.issue
     models = [effort(m.strip()) for m in a.model.split(",") if m.strip()]
@@ -459,73 +600,24 @@ def main():
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         raise
-    failures, final = list(skipped), None
+    failures, final, stop = list(skipped), None, None
     try:
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
-        streak = []
-        for m in models:
-            hdr = header(kind, m, failures)
-            brief = logs / f"brief-{len(failures) + 1}.md"
-            brief.parent.mkdir(parents=True, exist_ok=True)
-            brief.write_text(brief_text(kind, n, meta["title"], meta["body"], base, head, hdr, wt) + extra,
-                             encoding="utf-8")
-            r = ow.run(brief, wt, m, logs / f"run-{len(failures) + 1}", agent=a.agent,
-                       data_dir=WORK / "opencode-data", log=lambda s: print(s, flush=True))
-            cls = r["class"]
-            if cls == "ok":
-                pr = parse_review(r["text"], hdr)
-                if pr["status"] != "none":               # a readable (or flagged) review is never thrown away
-                    final = (m, pr)
-                    break
-                cls, r["cause"] = "bad-format", "no review in the final message (no header line)"
-            if cls in FATAL:
-                failures.append((m, cls))
-                if cls == "permission-rejected":
-                    print(f"permission-rejected: {r['cause']}; nothing posted", file=sys.stderr)
-                break
-            failures.append((m, cls))
-            streak.append(cls)
-            if len(streak) >= 2 and streak[-1] == streak[-2]:
-                break
+        final, stop = run_chain(models, kind, n, meta["title"], meta["body"], base, head, wt, logs, extra, a.agent, failures,
+                                WORK / "opencode-data", log=lambda s: print(s, flush=True))
     finally:
-        sh("git", "worktree", "remove", "--force", str(wt), check=False)
-        if kind == "pr":
-            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-        if wt.exists():
-            shutil.rmtree(wt, ignore_errors=True)
-            sh("git", "worktree", "prune", check=False)
+        drop_worktree(wt, kind, n)      # the run dirs under logs stay: they are the record a --resume continues
 
+    if stop:                            # our own process failed: nothing posted, no other model
+        print(process_message(*stop), file=sys.stderr)
+        return EXIT_PROCESS
     if not final:
         cause = "; ".join(f"{label_of(m)}: {c}" for m, c in failures) or "no model ran"
         print(f"OpenCode unavailable: {cause}", file=sys.stderr)
         return 3
-    model, pr = final
-    flagged = pr["status"] in ("unreadable", "cutoff")
-    note = {"unreadable": "verdict unreadable", "cutoff": "review may be cut off"}.get(pr["status"])
-    text, verdict = (NOTE + note + "\n\n" if flagged else "") + pr["text"], pr["verdict"]
-    for c in pr["rewrites"]:
-        print(f"rewrote closing keyword: {c!r}", flush=True)
-    if kind == "pr" and gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"] != head:
-        print("the PR head moved during the review; nothing posted", file=sys.stderr)
-        return 5
-    body = logs / "comment.md"
-    body.write_bytes((text + "\n").encode("utf-8"))        # UTF-8, no BOM
-    noun = "issue" if kind == "release" else "pr"
-    sh("gh", noun, "comment", str(n), "--body-file", str(body))
-    if a.apply_label and not flagged:                    # a flagged review sets no label
-        ensure_labels()
-        for lb in VERDICTS.values():
-            if lb != VERDICTS[verdict]:
-                sh("gh", noun, "edit", str(n), "--remove-label", lb, check=False)
-        sh("gh", noun, "edit", str(n), "--add-label", VERDICTS[verdict])
-    if flagged:
-        print(f"posted one FLAGGED comment on {noun} #{n} ({note}; model {label_of(model)}); no label set; "
-              f"read it and decide; logs {logs}", file=sys.stderr)
-        return 4
-    print(f"posted one comment on {noun} #{n}: verdict {verdict} (model {label_of(model)}); logs {logs}")
-    return 0
+    return post_review(kind, n, final[0], final[1], logs, head, a.apply_label)
 
 
 if __name__ == "__main__":

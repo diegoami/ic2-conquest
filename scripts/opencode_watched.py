@@ -3,7 +3,8 @@
 
     opencode_watched.py --brief B.md --worktree WT --model provider/model[#variant] --run-dir DIR
 
-The result is DIR/result.json: {"class": ..., "text": <final assistant message>, ...}. The model
+The result is DIR/result.json: {"class": ..., "kind": null|"api"|"process", "text": <final assistant message>, ...}; DIR also
+gets state.json, progress.jsonl and status.txt while it runs (resume and status: docs/external-review.md). The model
 only ever returns text; this script and external_review.py are the only writers to GitHub.
 
 Why a watcher (each of these cost time once):
@@ -189,26 +190,208 @@ def final_text(exe, env, cwd, session, run_dir):
     return text.strip(), last["info"].get("finish"), last["info"].get("agent")
 
 
+# ---- failure kinds, state, progress (opencode resilience, 2026-10-10) --------------------------------------------------
+# A failure of an OpenCode run is never normal. It has one of two kinds, and only the first may move a chain to another model:
+#   api     the provider did not answer: no session ever started, or provider error text (429, rate limit, 5xx/overloaded,
+#           quota/usage limit, network). The next model may be tried; nothing was wrong with our process.
+#   process everything else (timeouts, cut-off, crash, unreadable output, permission refusal, wrong agent, our own setup):
+#           diagnose and fix it; never hand it to another model. The run is resumable (state.json, --session).
+ALWAYS_API = ("no-session", "exited-without-session")
+ALWAYS_PROCESS = ("unknown-model", "no-executable", "unknown-agent", "permission-rejected", "default-agent")
+RESUMABLE = ("idle-timeout", "total-timeout", "nonzero-exit")      # continued in the SAME session, up to RESUMES times
+RESUMES = 2
+RESUME_MSG = "Continue where you stopped; finish the task in the attached brief and end with the final message it asks for."
+TICK = 3                  # seconds between checks (the tests lower it)
+PROGRESS_EVERY = 30       # seconds between progress lines
+API_RE = re.compile(
+    r"\b429\b|rate[ _-]?limit|too many requests|status(?:Code)?\W{0,3}5\d\d|\bHTTP\W+5\d\d|\b50[0-4]\b.{0,20}(?:error|unavailable|gateway)"
+    r"|internal server error|overloaded|service unavailable|bad gateway|gateway time-?out|quota|usage[ _-]limit|insufficient"
+    r"|ECONNRESET|ETIMEDOUT|ECONNREFUSED|ENOTFOUND|EAI_AGAIN|network error|fetch failed|socket hang up|connection (?:reset|refused|error)", re.I)
+# stdout also carries the model's own text and tool output, so only lines that look like an error line count there; stderr counts whole.
+STDOUT_ERR = re.compile(r"^\s*(?:\w*Error\b|error\b)|APICallError|statusCode", re.I)
+
+
+def api_evidence(res, offsets=(0, 0)):
+    """The first provider-error line written by the current attempt (after the given byte offsets of stderr, stdout), or None."""
+    for path, off, only_errors in ((res["stderr"], offsets[0], False), (res["stdout"], offsets[1], True)):
+        try:
+            data = Path(path).read_bytes()[off:].decode(errors="replace")
+        except OSError:
+            continue
+        for ln in ANSI.sub("", data).splitlines():
+            if (not only_errors or STDOUT_ERR.search(ln)) and API_RE.search(ln):
+                return ln.strip()[:200]
+    return None
+
+
+def write_json(path, obj):
+    """Atomic: a reader (opencode_status.py) never sees half a file."""
+    tmp = Path(str(path) + ".tmp")
+    tmp.write_text(json.dumps(obj, indent=1))
+    os.replace(tmp, path)
+
+
+def read_json(path):
+    try:
+        return json.loads(Path(path).read_text())
+    except (OSError, ValueError):
+        return None
+
+
+def snapshot(data_home_dir, session, worktree=""):
+    """Progress of a session from OpenCode's own database, opened READ-ONLY (never auth.json): tool calls so far, the last one
+    (name + short argument), and the todo list. Chosen over `--format json` events: the default output the permission-rejection
+    detector reads stays untouched, and only the database has the todo list. {} when the database or session is not readable yet."""
+    import sqlite3
+    db = Path(data_home_dir).expanduser() / "opencode" / "opencode.db"
+    if not session or not db.is_file():
+        return {}
+    try:
+        c = sqlite3.connect(f"file:{db}?mode=ro", uri=True, timeout=2)
+        try:
+            tools = c.execute("select count(*) from part where session_id=? and json_extract(data,'$.type')='tool'", (session,)).fetchone()[0]
+            last = c.execute("select data from part where session_id=? and json_extract(data,'$.type')='tool' "
+                             "order by time_created desc, rowid desc limit 1", (session,)).fetchone()
+            todos = c.execute("select content, status from todo where session_id=? order by position", (session,)).fetchall()
+        finally:
+            c.close()
+    except sqlite3.Error:
+        return {}
+    snap = {"tools": tools, "todo_total": len(todos), "todo_done": sum(1 for _, s in todos if s == "completed")}
+    now = next((t for t, s in todos if s == "in_progress"), None) or next((t for t, s in todos if s == "pending"), None)
+    if now:
+        snap["todo_now"] = now[:80]
+    if last:
+        try:
+            d = json.loads(last[0])
+            inp = (d.get("state") or {}).get("input") or {}
+            arg = next((str(inp[k]) for k in ("filePath", "path", "pattern", "command", "url", "query") if inp.get(k)), "")
+            if worktree:
+                arg = arg.replace(str(worktree) + "/", "").replace(str(worktree), ".")
+            snap["last_tool"] = (d.get("tool", "?") + (" " + arg.replace("\n", " ")[:60] if arg else "")).strip()
+        except ValueError:
+            pass
+    return snap
+
+
+def human(sec):
+    sec = int(sec)
+    return f"{sec}s" if sec < 60 else f"{sec // 60}m" if sec < 3600 else f"{sec // 3600}h{sec % 3600 // 60:02d}m"
+
+
+def pid_alive(pid):
+    try:
+        os.kill(int(pid), 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except (TypeError, ValueError):
+        return False
+    return True
+
+
+def model_short(model):
+    return split_model(model)[0].split("/")[-1]
+
+
+def describe(run_dir, now=None):
+    """One plain-words line for a run dir (state.json, progress.jsonl, result.json), or None when it is not a run dir. Used for
+    status.txt and by scripts/opencode_status.py."""
+    run_dir = Path(run_dir)
+    st = read_json(run_dir / "state.json")
+    if not st:
+        return None
+    now = now or time.time()
+    live = st.get("status") in ("starting", "running", "resuming")
+    res = None if live else read_json(run_dir / "result.json")
+    prog = None
+    try:
+        lines = (run_dir / "progress.jsonl").read_text().strip().splitlines()
+        prog = json.loads(lines[-1]) if lines else None
+    except (OSError, ValueError):
+        pass
+    n = st.get("number")
+    label = (f"PR {n} review" if st.get("kind") == "pr" else f"issue {n} release review" if st.get("kind") == "release"
+             else st.get("label") or run_dir.name)
+    head = f"{label} · {model_short(st.get('model', '?'))}"
+    sid = st.get("session") or "none"
+    resume = (f" · resume: python3 scripts/external_review.py --resume {run_dir}"
+              if st.get("kind") in ("pr", "release") and st.get("session") else "")
+    if live:
+        if not pid_alive(st.get("pid")):
+            return f"{head} · DIED (the watcher is gone; last status {st['status']}) · session {sid}{resume}"
+        parts = [f"running {human(now - st.get('started', now))}"]
+        if st.get("attempt", 1) > 1:
+            parts.append(f"attempt {st['attempt']}")
+        if prog:
+            parts.append(f"{prog.get('tools', 0)} steps")
+            if prog.get("last_tool"):
+                parts.append(f"now: {prog['last_tool']}")
+            if prog.get("todo_total"):
+                parts.append(f"todo {prog.get('todo_done', 0)}/{prog['todo_total']}" + (f" ({prog['todo_now']})" if prog.get("todo_now") else ""))
+        else:
+            parts.append("starting" if not st.get("session") else "no progress data yet")
+        return " · ".join([head] + parts)
+    res = res or {}
+    if res.get("class") == "ok":
+        return f"{head} · DONE (ok) · {human(st.get('updated', now) - st.get('started', now))} · session {sid}"
+    return (f"{head} · STOPPED ({res.get('kind') or '?'}: {res.get('class') or st.get('status')}) · "
+            f"{res.get('cause') or 'no cause recorded'} · session {sid}{resume}")
+
+
 def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None, startup=180,
-        idle=600, total=3600, data_dir=None, log=print):
+        idle=600, total=3600, data_dir=None, log=print, meta=None, resume_session=None, resumes=RESUMES):
+    """One watched `opencode run`. result.json has `class` and `kind` (None when ok, else api or process, see above). With
+    resume_session the run continues THAT session (opencode run --session) instead of starting one; after an idle-timeout,
+    total-timeout or nonzero exit with a known session it continues the same session by itself, up to `resumes` times, each
+    attempt with its own idle and total timeout (not after an api failure: the provider is down, the next model takes over).
+    state.json, progress.jsonl and status.txt in run_dir say what it is doing."""
     run_dir = Path(run_dir)
     run_dir.mkdir(parents=True, exist_ok=True)
-    res = {"class": None, "model": model, "agent": agent, "session": None, "text": "",
-           "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log"),
-           "cause": None}
+    prev = run_dir / "result.json"
+    if prev.exists():                                         # measurements are never overwritten (CLAUDE.md rule 6)
+        k = 1
+        while (run_dir / f"result.prev-{k}.json").exists():
+            k += 1
+        prev.rename(run_dir / f"result.prev-{k}.json")
+    res = {"class": None, "kind": None, "model": model, "agent": agent, "session": resume_session, "text": "",
+           "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log"), "cause": None}
+    model = effort(model)
+    state = read_json(run_dir / "state.json") or {}
+    state.update(meta or {})
+    state.update(model=model, agent=agent, brief=str(brief), worktree=str(worktree), session=resume_session, status="starting",
+                 pid=os.getpid(), started=time.time(), attempt=state.get("attempt", 0) + 1, run_dir=str(run_dir),
+                 data_dir=str(data_dir or WORK_DEFAULT / "opencode-data"), startup=startup, idle=idle, total=total)
+
+    def save(**kw):
+        state.update(kw, updated=time.time())
+        write_json(run_dir / "state.json", state)
+        line = describe(run_dir)
+        if line:
+            (run_dir / "status.txt").write_text(line + "\n")
+
+    offs = [0, 0]                                             # byte offsets of this attempt in stderr.log, stdout.log
 
     def done(cls, cause=None):
         res["class"], res["cause"] = cls, cause
-        (run_dir / "result.json").write_text(json.dumps(res, indent=1))
-        log(f"opencode run: {cls}" + (f" ({cause})" if cause else "")
+        if cls != "ok":
+            ev = None if cls in ALWAYS_PROCESS else api_evidence(res, offs)
+            res["kind"] = "api" if (cls in ALWAYS_API or ev) else "process"
+            if ev:
+                res["cause"] = f"{cause}; {ev}" if cause else ev
+        write_json(run_dir / "result.json", res)
+        save(status=cls, session=res["session"])
+        log(f"opencode run: {cls}" + (f" [{res['kind']}]" if res["kind"] else "") + (f" ({res['cause']})" if res["cause"] else "")
             + f"; stdout {res['stdout']}; stderr {res['stderr']}")
         return res
 
+    save()
     exe = find_exe()
     if not exe:
         return done("no-executable", "no native opencode: set OPENCODE_EXE or install ~/.opencode/bin/opencode")
     env = dict(os.environ)
-    env.update(data_home(data_dir or WORK_DEFAULT / "opencode-data"))
+    env.update(data_home(state["data_dir"]))
     # The reviewer's agent (its permissions) comes from the trusted main checkout, never from the
     # worktree under review: a PR must not be able to change what its own reviewer may do.
     cfg = Path(__file__).resolve().parent.parent / ".opencode"
@@ -217,7 +400,6 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         # OpenCode MERGES the project's own .opencode/ (here: the PR's, in the worktree) with this one, and a
         # PR could add an allow rule to its own reviewer ("python3 *": allow). Ignore the project config.
         env["OPENCODE_DISABLE_PROJECT_CONFIG"] = "1"
-    model = effort(model)
     mid, variant = split_model(model)
     # Fail fast, before anything is billed.
     listing = oc(exe, env, worktree, "models")
@@ -246,57 +428,82 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
         return done("unknown-agent", "unreadable `opencode debug agent` output")
 
     title = f"review-{uuid.uuid4().hex[:10]}"
-    cmd = [exe, "run", message or "Follow the attached brief exactly.", "--agent", agent,
-           "--model", mid, "--dir", str(worktree), "--title", title, "-f", str(brief)]
-    if variant:
-        cmd += ["--variant", variant]
-    out, err = open(res["stdout"], "w"), open(res["stderr"], "w")
-    proc = subprocess.Popen(cmd, cwd=worktree, env=env, stdin=subprocess.DEVNULL, stdout=out,
-                            stderr=err, start_new_session=True)
-    t0, last_move, seen_updated, session = time.time(), time.time(), None, None
-    try:
-        while True:
-            time.sleep(3)
-            now = time.time()
-            # a permission auto-rejection: a line that STARTS with "!"
-            for f in (res["stdout"], res["stderr"]):
-                lines = ANSI.sub("", Path(f).read_text(errors="replace")).splitlines()
-                for ln in lines:
-                    m = PERM.match(ln)
-                    if m:
+    tail = ["--agent", agent, "--model", mid, "--dir", str(worktree)] + (["--variant", variant] if variant else [])
+
+    def resume_cmd():
+        return [exe, "run", RESUME_MSG, "--session", res["session"], *tail, "-f", str(brief)]
+
+    cmd = resume_cmd() if resume_session else [exe, "run", message or "Follow the attached brief exactly.", *tail,
+                                                "--title", title, "-f", str(brief)]
+    session, n_resumed, t_prog, first = resume_session, 0, 0.0, not resume_session
+    while True:
+        offs[:] = [Path(res["stderr"]).stat().st_size if Path(res["stderr"]).exists() else 0,
+                   Path(res["stdout"]).stat().st_size if Path(res["stdout"]).exists() else 0]
+        out, err = open(res["stdout"], "w" if first else "a"), open(res["stderr"], "w" if first else "a")
+        first = False
+        proc = subprocess.Popen(cmd, cwd=worktree, env=env, stdin=subprocess.DEVNULL, stdout=out, stderr=err, start_new_session=True)
+        save(status="running" if session else "starting")
+        t0 = last_move = time.time()
+        seen_updated, cls, cause = None, None, None
+        try:
+            while True:
+                time.sleep(TICK)
+                now = time.time()
+                # a permission auto-rejection: a line that STARTS with "!" (only this attempt's output)
+                for f, off in ((res["stdout"], offs[1]), (res["stderr"], offs[0])):
+                    data = Path(f).read_bytes()[off:].decode(errors="replace")
+                    for ln in ANSI.sub("", data).splitlines():
+                        m = PERM.match(ln)
+                        if m:
+                            kill_tree(proc)
+                            return done("permission-rejected", m.group(1))
+                if session is None:
+                    for s in session_list(exe, env, worktree):
+                        if s.get("title") == title:
+                            session = res["session"] = s["id"]
+                            last_move = now
+                            log(f"opencode session started: {session} (model {model})")
+                            save(session=session, status="running")
+                    if session is None and proc.poll() is not None:
+                        return done("exited-without-session", f"exit {proc.returncode}")
+                    if session is None and now - t0 > startup:
                         kill_tree(proc)
-                        return done("permission-rejected", m.group(1))
-            if session is None:
-                for s in session_list(exe, env, worktree):
-                    if s.get("title") == title:
-                        session = s["id"]
-                        res["session"] = session
-                        last_move = now
-                        log(f"opencode session started: {session} (model {model})")
-                if session is None and proc.poll() is not None:
-                    return done("exited-without-session", f"exit {proc.returncode}")
-                if session is None and now - t0 > startup:
+                        return done("no-session", f"no session within {startup}s")
+                else:
+                    for s in session_list(exe, env, worktree):
+                        if s["id"] == session and s.get("updated") != seen_updated:
+                            seen_updated, last_move = s.get("updated"), now
+                    if proc.poll() is None and now - last_move > idle:
+                        kill_tree(proc)
+                        cls, cause = "idle-timeout", f"no progress for {idle}s"
+                if cls is None and now - t_prog >= PROGRESS_EVERY:
+                    t_prog = now
+                    snap = snapshot(state["data_dir"], session, worktree)
+                    with open(run_dir / "progress.jsonl", "a") as pf:
+                        pf.write(json.dumps({"t": round(now), "elapsed": round(now - state["started"]), "session": session,
+                                             "attempt": state["attempt"], **snap}) + "\n")
+                    save()
+                if cls is None and proc.poll() is None and now - t0 > total:
                     kill_tree(proc)
-                    return done("no-session", f"no session within {startup}s")
-            else:
-                for s in session_list(exe, env, worktree):
-                    if s["id"] == session and s.get("updated") != seen_updated:
-                        seen_updated, last_move = s.get("updated"), now
-                if proc.poll() is None and now - last_move > idle:
-                    kill_tree(proc)
-                    return done("idle-timeout", f"no progress for {idle}s")
-            if proc.poll() is not None:
-                break
-            if now - t0 > total:
+                    cls, cause = "total-timeout", f"over {total}s"
+                if cls or proc.poll() is not None:
+                    break
+        finally:
+            out.close()
+            err.close()
+            if proc.poll() is None:
                 kill_tree(proc)
-                return done("total-timeout", f"over {total}s")
-    finally:
-        out.close()
-        err.close()
-        if proc.poll() is None:
-            kill_tree(proc)
-    if proc.returncode != 0:
-        return done("nonzero-exit", f"exit {proc.returncode}")
+        if cls is None and proc.returncode != 0:
+            cls, cause = "nonzero-exit", f"exit {proc.returncode}"
+        if cls is None:
+            break
+        if cls in RESUMABLE and session and n_resumed < resumes and not api_evidence(res, offs):
+            n_resumed += 1
+            log(f"opencode run: {cls} ({cause}); resuming session {session} ({n_resumed}/{resumes})")
+            cmd = resume_cmd()
+            save(attempt=state["attempt"] + 1, status="resuming")
+            continue
+        return done(cls, cause)
     try:
         text, finish, seen = final_text(exe, env, worktree, session, run_dir)
     except (ValueError, OSError, subprocess.SubprocessError) as e:
