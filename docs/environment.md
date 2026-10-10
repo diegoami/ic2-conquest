@@ -140,3 +140,11 @@ Findings cite **line numbers** of `all_app_functions.txt`, so the files are pinn
 | `news_log_decomp.txt` | `274d60b2af6ed30dbc11ce59a189d86ce70b15b6f94112efbe2cfba6309622dd` |
 
 Lost and not recreated: `scratch/datload.txt` (listing of `FUN_004481a0`, the DAT loader; cited in `runs/experiments/info_window/`; its content is transcribed as `panel_model.LOADER`). `decompile.path('scratch/datload.txt')` fails naming it.
+
+## Environment fingerprint (2026-10-10)
+
+Every `Game.start()` logs one line, `environment {compact JSON}`, once per process (`Game.environment` holds the dict; code in `harness/environment.py`, stdlib only, about 20 ms, every probe best-effort: a failure is recorded as `{"error": ...}`, never raised). It records: the Wine version, the exe name and SHA-256, the Xvfb screen size, the host font that `fc-match` gives for "Book Antiqua" and "MS Sans Serif", the number of Liberation fonts in `fc-list`, whether the fonts-wine Tahoma is present, and a 12-hex SHA-256 (plus count) of the font names in the prefix's `user.reg` (`External Fonts` names and `Replacements` pairs; nothing else is read).
+
+Why: the Information panel asks for "Book Antiqua", which no computer has, so Wine draws the best host match. With `fonts-liberation` installed it drew Liberation Sans (about 15 wrong OCR lines per panel); with the old font set (`fonts-wine`, no Liberation) it draws DejaVu Sans, as on the old computer, and the pixels agree up to anti-aliasing. Screenshots, OCR and saves must say which environment made them (`runs/experiments/data/run-exp-machine-move/RESULTS.md`, sections 4-5).
+
+`python3 scripts/environment_check.py` prints the fingerprint and compares it with `docs/environment-baseline.json` (the 2026-10-10 computer: Wine 10.0, fonts-wine, no Liberation, "Book Antiqua" -> DejaVu Sans); exit 1 with a plain-words diff when it differs. `--write-baseline` re-records it on purpose. Tests: `python3 -m tests.test_environment`.

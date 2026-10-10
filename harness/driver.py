@@ -106,6 +106,7 @@ def sh(*args, check=True):
 class Game:
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
+        self.environment = None
         self.toolbar_x = self._load_cache(TOOLBAR_CACHE)
         self.army_x = self._load_cache(ARMY_TOOLBAR_CACHE)
         self.battle_x = self._load_cache(BATTLE_TOOLBAR_CACHE)
@@ -126,6 +127,10 @@ class Game:
 
     def start(self):
         self.ensure_xvfb()
+        if self.environment is None:      # once per process (cached in harness.environment): evidence says what made it
+            from harness import environment
+            self.environment = environment.fingerprint(PREFIX, self.exe, DISPLAY)
+            self.log(environment.log_line(self.environment))
         self.kill()
         subprocess.Popen(["setsid", WINE, self.exe], cwd=G, env=ENV,
                          stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
