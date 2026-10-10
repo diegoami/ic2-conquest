@@ -1,6 +1,6 @@
 """The table rows of the findings draft (one place: build_findings.py renders them, coverage_check.py checks them against the decompile).
 Row = dict(id, panel, line, caption, source, formula, fmt, cond, anchor, seen, covers). `anchor` is a text snippet found inside the panel's function in
-ReTools/all_app_functions.txt: its line number becomes the citation `F:<n>`. `covers` lists the string literals ('lit'), helpers ('call'), data symbols ('dat')
+all_app_functions.txt of the decompile folder: its line number becomes the citation `F:<n>`. `covers` lists the string literals ('lit'), helpers ('call'), data symbols ('dat')
 of the function that this row accounts for. `seen` = screenshots in the release (bare filenames)."""
 FN = {'N': 'TInformation_ShowNationStatus', 'C': 'TInformation_ShowCityDetails', 'A': 'TInformation_ShowArmyDetails', 'F': 'TInformation_ShowFleetDetails',
       'U1': 'TInformation_ShowCityUnits', 'U2': 'TInformation_ShowArmyUnits', 'U3': 'TInformation_ShowFleetUnits'}

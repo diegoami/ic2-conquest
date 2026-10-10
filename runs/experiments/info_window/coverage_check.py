@@ -1,11 +1,13 @@
-"""Coverage check: every string literal, every called helper and every data symbol of the seven TInformation_Show* functions (ReTools/all_app_functions.txt)
+"""Coverage check: every string literal, every called helper and every data symbol of the seven TInformation_Show* functions (all_app_functions.txt of the decompile folder)
 must be covered by a row of findings_rows.py (a table row of the findings draft) or excluded here with a reason. Prints and (with --write) writes a versioned report.
     python3 coverage_check.py [--write] [--selftest]     exit 1 when anything is unaccounted"""
 import re, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from iw_lib import DATA, write_new
 import findings_rows as FR
-DUMP = '/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt'
+from harness import decompile  # iw_lib puts the repo root on sys.path
+decompile.check()
+DUMP = decompile.DUMP
 FUNCS = ['TInformation_ShowNationStatus', 'TInformation_ShowCityDetails', 'TInformation_ShowArmyDetails', 'TInformation_ShowFleetDetails',
          'TInformation_ShowCityUnits', 'TInformation_ShowArmyUnits', 'TInformation_ShowFleetUnits']
 # exclusions: (kind, regex on the item) -> reason

@@ -25,7 +25,7 @@ processes killed by pattern; a click at a guessed or fixed position.
   `/home/diego/projects/imperial-conquest-2-research` (read only): names drawn per game from what looks like a per-nation pool,
   editable text boxes.
 - `findings/2026-10-05-player-facing-feature-inventory.md` row F02 (and G02-G04 for context only).
-- The decompile (read only): `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt` and `delphi_symbols.tsv`. The
+- The decompile (read only): `~/ic2-work/decompile/all_app_functions.txt` and `delphi_symbols.tsv`. The
   form's handlers: `TPickLeaders_InitializeForm` 0x004571a8, `TPickLeaders_HumanOrComputer` 0x0045730c, `TPickLeaders_OK`
   0x00457404, `TPickLeaders_Cancel` 0x00457590; follow their callers and callees (New Game, and where the draw happens).
 - Layout and method to copy: `runs/experiments/refusal_texts/` (code extract, claims audit, verified runner `Game2.open`,
