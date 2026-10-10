@@ -455,3 +455,61 @@ Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in r
 - `research-intake-relay.md`: last relay `d13eaca`, promoted `c36b255`, pending 0.
 - `report-new-findings-on-main.md`: the baseline includes all of today's findings.
 - `remake-cli-setup.md`: new, how to run the remake.
+
+## Handover: 2026-10-10 (ic2-conquest session, Opus 5.5 via Claude Code): the move to another computer
+
+### TL;DR
+
+`main` = `origin/main`, nothing open in this repo, no background job. The project is moving to another computer. A separate migration session does the copying; this section says what the target needs and where the work stands. **One finding this session, promoted:** the Supply providers and transfer clamps (gap checks g2 1, 2 and 6).
+
+### What was done
+
+| Finding | What it says | Draft | Research |
+|---|---|---|---|
+| `2026-10-09-supply-providers-and-transfer-clamps` | **Supply:** armies are never providers; with no provider the order is silent; an army supplies from an own fleet; fleet-from-fleet fails when the partner lies west (or north), a last-match scan quirk in `FUN_00449e50`. **Transfer ships:** no box ever; the arrows cap the receiver at 100; no army or capacity test; emptying a carrying fleet tombstones its army. **Transfer unit:** per-unit clamps; exactly 100,000 is allowed; the fleet test truncates (30 ships take 15,499) | `48d59bd` | `fcb0be0` |
+
+- **Data:** `runs/experiments/data/run-exp-supply-transfer-clamps/` (`supply_transfer.py <case>`, one Wine process per case). Release `run-exp-supply-transfer-clamps`: 81 files, hashes checked.
+- **The `wt-cosmetic` edit:** an uncommitted fix to `findings/2026-10-06-cosmetic-gaps.md` (the A01 run-length rows contradicted their numbers) was committed to `experiment/cosmetic-gaps` as `3c9f552`. PR #66 is still open.
+  - **Not delivered:** the research copy (`docs/reports/2026-10-06-cosmetic-gaps.md`, line ~129) still has the old wording. The relay failed because ic2-research was not running. The paste-ready message is in this session's transcript; it repeats the commit message of `3c9f552`. Relay it again when ic2-research runs.
+- **The sibling work folders:** the 19 `~/ic2-work-<name>` copies were moved whole to `~/ic2-work-archive/`, with a `README.txt` inside. About 40 staging or temp saves in them are in no `SAVES.sha256`, so they were archived, not deleted. Memory: `ic2-work-archive.md`.
+
+### The move: what the target needs
+
+| Item | State | On the target |
+|---|---|---|
+| This repo | pushed; all six `wt-*` worktrees clean and pushed | clone; recreate a worktree with `git worktree add` only when needed |
+| `artifacts/` (gitignored, 1.3 GB) | **copied** (9,594 files, checked by the migration session) | keep. Several experiments' releases are incomplete: `battle-sweep` has 6,292 files locally, 1,000 in its release; `gap-v050` 1,345 vs 4; `city-marker-colours`, `owner-colours`, `ai-intercept-hunt` too; three experiments have no release |
+| `rendered/` (gitignored, 90 MB) | left behind | PR-review renders, regenerable |
+| `~/ic2-work` (1.9 GB) | to copy whole (no Wine run was going at the time of writing) | `setup/setup.sh` rebuilds the exes and the prefix, but not the `T_*.SAV` fixtures in `prefix/drive_c/IC2` (the refusal-texts scenarios load them) nor `opencode-data` (rule 7's session records) |
+| `~/ic2-work-archive` (18 GB) | optional, not copied unless asked | |
+| Project memory (`~/.claude/projects/-home-diego-projects-ic2-conquest/memory/`) | copied; same project path on the target | as is |
+| `.claude/settings.local.json` | restored from the encrypted bundle | untracked by design |
+| `ic2-remake-v050` clone and `~/.dotnet` | not copied | recreate: memory `remake-cli-setup.md` |
+| quota-tracker | runs per machine | its OpenCode usage glob is `~/*/opencode-data`; check `localhost:8765/health` before choosing a model (L50) |
+
+- **First run on the target:**
+  - The first Wine start after a copy can be slow. Here a cold start missed the driver's 40 s main-window wait once, then worked on retry (`supply_transfer-P1-20261009-192610.jsonl`).
+  - `gh release` worked with the local `gh` login. `IC2_RELEASE_TOKEN` was not set in this shell.
+- **Not this repo:** `harness_imperial` (6 unpushed commits) and `goal2-archaeology` (13) were copied whole with `.git`; `imperial_conquest_2` is cloned fresh on the target's Windows side (the WSL copy here was 85 behind, nothing unpushed). This session writes to none of them (rule 2).
+
+### Open items
+
+1. **The gap analysis's remaining original-side checks** (the player picks the order):
+   - g2: selecting a 0-move army; an unreachable move target; Change units edge cases (Join of 3+, Rename with 2, Split at 100 troops and its spinner range); a storm with an army aboard.
+   - g1 and g3: the lists in the 2026-10-09 evening section.
+2. **Optional, from the supply finding:** the fleet quirk's north and diagonal tiles (only x−1 was played); a Supply dialog with several providers; a real foreign purchase.
+3. **The desktop palette check (the player, on Windows):** `run-exp-desktop-palette/STEPS.md`.
+4. **The cosmetic-gaps correction to research:** see above.
+5. **Still paused by the player:** battles and bots.
+
+### Gotchas learned
+
+- **A probe's OK loop must wait for the dialog to close**, never press Cancel because it is still on screen. A closed dialog lingers 1-2 s, and `popups()` lists the dialog itself. The finding records the slip; the fixed loop is in `supply_transfer.py`.
+- **A probe that expects "nothing happens" needs a positive control** in the same process (P1: the same army next to Arretium opened the dialog).
+- **The scratchpad does not survive a day change:** files a later comparison needs go under a tracked path or `artifacts/`.
+
+### State of memory
+
+- `research-intake-relay.md`: last relay `48d59bd`, promoted `fcb0be0`, pending 0. The cosmetic-gaps correction is not recorded there; it was never delivered.
+- `report-new-findings-on-main.md`: the baseline includes the supply finding.
+- `ic2-work-archive.md`: new.
