@@ -343,6 +343,11 @@ def self_test():
         print(f"{'PASS' if ok else 'FAIL'} effort {model}: {got}")
         bad += 0 if ok else 1
         n += 1
+    chain = [ow.split_model(m)[0] for m in DEFAULT_MODELS.split(",")]
+    ok = chain == ["openai/gpt-5.6-luna", "minimax/MiniMax-M2.7"]      # the owner's decision 2026-10-10: no DeepSeek, no Alibaba
+    print(f"{'PASS' if ok else 'FAIL'} default chain: {chain}")
+    bad += 0 if ok else 1
+    n += 1
     print(f"{n - bad}/{n} passed")
     return 1 if bad else 0
 
