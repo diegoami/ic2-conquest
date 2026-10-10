@@ -811,12 +811,13 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
             err.close()
             if proc.poll() is None:
                 kill_tree(proc)
-        if cls is None:                                           # a last scan after the exit, before the export: the line may have
-            perm = perm_found()                                   # arrived between the last poll and the exit
+        if cls != "permission-rejected":                          # a last scan after EVERY termination (exit, idle or total timeout kill),
+            perm = perm_found()                                   # before the export: the line may have arrived after the last poll
             if perm:
                 if session is None:
                     session = res["session"] = next((x["id"] for x in session_list(exe, env, worktree) if x.get("title") == title), None)
-                cls, cause = "permission-rejected", perm[0]
+                cause = f"{perm[0]}" + (f" (found after {cls}: {cause})" if cls else "")
+                cls = "permission-rejected"
         if cls is None and proc.returncode != 0:
             cls, cause = "nonzero-exit", f"exit {proc.returncode}"
         if cls is None:
@@ -863,7 +864,11 @@ def reclassify(run_dir):
     old = read_json(rd / "result.json")
     old = old if isinstance(old, dict) else {}
     perr = None
-    exports = sorted(rd.glob("export-attempt*-read.json"))
+    def order(path):                                          # numeric: attempt10 comes after attempt2
+        m = re.match(r"export-attempt(\d+)-read(?:-(\d+))?\.json$", path.name)
+        return (int(m.group(1)), int(m.group(2) or 1)) if m else (0, 0)
+
+    exports = sorted(rd.glob("export-attempt*-read*.json"), key=order)
     if exports:
         perr = parse_export(exports[-1].read_text(errors="replace"))[3]
     perm = perm_scan(text)

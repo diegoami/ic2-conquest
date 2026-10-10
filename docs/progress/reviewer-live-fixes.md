@@ -9,3 +9,7 @@ Live review of PR #69 (rendered/pr69-a6c69b/run-1) failed and fell through to Mi
 - [ ] tests + fixture (tests/fixtures/pr69-run, lines prefixed "> " so a reviewer reading it does not echo a live permission line), PR
 
 - [x] tests (29 pass) + fixture; docs/external-review.md updated; PR opened next
+
+## PR #70 review round 1
+- [x] R1 final permission scan after every termination (exit, idle and total kills); tested both
+- [x] R2 reclassify picks the newest export numerically (attempt10 after attempt2); tested

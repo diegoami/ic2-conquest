@@ -58,7 +58,7 @@ elif a[:1] == ["export"]:
     if (d / "export_bad").exists():
         print((d / "export_bad").read_text())
         sys.exit(0)
-    if last in ("hang", "crash", "textcrash", "apicrash", "authcrash", "429", "perm", "permlate", "permbash", "permbashexit0", "rejectedline", "diffcrash") or last == "reportcrash":
+    if last in ("hang", "crash", "textcrash", "apicrash", "authcrash", "429", "perm", "permlate", "permbash", "permbashexit0", "rejectedline", "diffcrash", "permbashhang") or last == "reportcrash":
         # a run that died: mid-work (finish tool-calls, partial text) or after a final message (reportcrash: stopped and reported)
         stop = last == "reportcrash"
         info = {"role": "assistant", "agent": "external-reviewer", "finish": "stop" if stop else "tool-calls"}
@@ -112,6 +112,10 @@ elif a[:1] == ["run"]:
         if mode == "permbash":
             time.sleep(30)
         sys.exit(0)
+    if mode == "permbashhang":   # a rejection line, then a hang: the watcher's own kill (idle or total timeout) ends it
+        sys.stderr.write("! permission requested: bash (git push origin main); auto-rejecting\\n")
+        sys.stderr.flush()
+        time.sleep(30)
     if mode == "rejectedline":
         sys.stderr.write("Error: The user rejected permission to use this specific tool call.\\n")
         sys.exit(1)
@@ -770,6 +774,40 @@ def test_pr69_run_is_classified_right_offline():
     return "PR #69's run (trimmed fixture): permission-rejected, process, resumable with the corrective message; the diff line is not api evidence"
 
 
+def test_final_scan_after_timeout_kills_too():
+    saved = ow.PERM_IN_LOOP
+    try:
+        ow.PERM_IN_LOOP = False                                   # only the final scan can see it
+        for name, kw, was in (("idle", {"idle": 1.5, "total": 60}, "idle-timeout"), ("total", {"idle": 60, "total": 1.5}, "total-timeout")):
+            with fake_opencode("scan-" + name, ["permbashhang", "ok"]) as d:
+                r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", startup=5, data_dir=d / "data", log=lambda s: None, **kw)
+                assert r["class"] == "permission-rejected" and r["kind"] == "process", (name, r["class"], r["kind"], r["cause"])
+                assert was in r["cause"] and runs_started(d) == 1, (name, r["cause"])
+    finally:
+        ow.PERM_IN_LOOP = saved
+    return "a rejection line written just before an idle-timeout or total-timeout kill is permission-rejected (process), not the timeout"
+
+
+def test_reclassify_picks_the_newest_export_numerically():
+    tmp = SCRATCH / "numeric-exports"
+    tmp.mkdir()
+    (tmp / "stderr.log").write_text("")
+    (tmp / "state.json").write_text(json.dumps({"session": "ses_x"}))
+    (tmp / "result.json").write_text(json.dumps({"class": "nonzero-exit", "kind": "process"}))
+
+    def export(err):
+        info = {"role": "assistant", "finish": "tool-calls"}
+        if err:
+            info["error"] = err
+        return json.dumps({"messages": [{"info": info, "parts": []}]})
+
+    (tmp / "export-attempt2-read.json").write_text(export(None))
+    (tmp / "export-attempt10-read.json").write_text(export({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}))
+    got = ow.reclassify(tmp)
+    assert got["kind"] == "api" and "503" in got["cause"], got       # attempt10 is the newest, although "attempt10" < "attempt2" as text
+    return "the newest export is chosen by attempt number (and k), not by file name order"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
@@ -782,7 +820,8 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "structured_errors_are_the_primary_evidence", "models_listing_looks_only_at_its_own_stderr",
          "refused_credentials_are_a_process_failure",
          "review_worktree_name_and_relative_paths_in_the_prompts", "permission_scan_and_corrective_resume",
-         "session_error_is_authoritative_and_tool_output_is_not_evidence", "pr69_run_is_classified_right_offline"]
+         "session_error_is_authoritative_and_tool_output_is_not_evidence", "pr69_run_is_classified_right_offline",
+         "final_scan_after_timeout_kills_too", "reclassify_picks_the_newest_export_numerically"]
 
 if __name__ == "__main__":
     bad = 0
