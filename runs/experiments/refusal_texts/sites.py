@@ -34,6 +34,7 @@ def unescape(s):
     return re.sub(r'\\(x[0-9a-fA-F]{2}|.)', lambda m: {'n': '\n', 't': '\t', "'": "'", '"': '"', '\\': '\\'}.get(m.group(1)) or chr(int(m.group(1)[1:], 16)), s)
 
 def load(dump=DUMP):
+    decompile.check(dump)   # the call lines are line numbers of the pinned dump
     return open(dump, errors='replace').read().split('\n')
 
 def functions(L):

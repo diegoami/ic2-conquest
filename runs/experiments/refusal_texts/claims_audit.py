@@ -13,6 +13,7 @@ Exit status 0 only with 0 mismatches."""
 import sys, os, re, json, glob, hashlib, difflib, argparse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths
+from harness import decompile  # repo root is on sys.path through paths
 from common import latest, write_new
 import savefacts as SF
 import construct as C
@@ -177,6 +178,7 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
     for ln in all_call_lines: by_cls[FN[ln].split('_')[0] if re.match(r'T[A-Z]\w*_', FN[ln]) else '(unnamed)'] = by_cls.get(FN[ln].split('_')[0] if re.match(r'T[A-Z]\w*_', FN[ln]) else '(unnamed)', 0) + 1
     check('classes table: the calls per class equal those recomputed from the extract', all(by_cls.get(r[0], 0) == int(r[2]) for r in cls), str(by_cls))
     if dump and os.path.exists(dump):
+        decompile.check(dump)
         n = sum(1 for l in open(dump, errors='replace') if 'FUN_0042d750(' in l and not l.startswith('void '))
         check('dump check: call sites in all_app_functions.txt (+ the definition line of the wrapper excluded) = %d' % len(all_call_lines), n == len(all_call_lines), str(n))
     fn_of_cell = lambda c: c['function:call line'].split(':')[0]

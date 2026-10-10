@@ -3,6 +3,7 @@
 import sys, re, os
 sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..')))
 from harness import decompile
+decompile.check()
 DUMP = decompile.DUMP
 txt = open(DUMP, encoding='latin-1').read()
 for a in sys.argv[1:]:
