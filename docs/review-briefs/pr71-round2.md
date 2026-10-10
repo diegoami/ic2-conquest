@@ -1,0 +1,20 @@
+
+## Scope
+This task protects one answer for ic2-research: when Transfer ships empties a fleet, are its money (+16) and supplies (+14) added to the
+other fleet, capped, or lost; and every claim of the finding must stand on a save (CLAUDE.md rule 5) and on the cited dump lines.
+
+## Blocking means (any one is enough; a blocking finding means rework, never approve)
+1. A number in the finding or table_from_saves.md does not follow from the saves' values as the script reads them (check offsets +14/+16/+18
+   against docs/sav-layout-notes.md and the fleet stride), or a claim cites no save.
+2. The staging could have changed something the finding then reports as a game effect (x/y edited, wrong fleet patched, supply or money
+   arrows touched before OK: check the spinner screenshots' description and the script).
+3. The code reading misquotes the dump lines or the addresses (0x49c26c table, 26-byte stride), or claims more than the lines show.
+4. A measured output is missing from the tracked folder or SAVES.sha256, or is overwritten (CLAUDE.md rule 6).
+5. Behaviour nobody asked for in harness or shared code.
+Not blocking: wording, style. When unsure, rate it blocking and say why.
+
+## Report every blocking finding in this one review
+Finish the whole diff, check every item above, say "Final pass done" as the last line before the verdict, number findings R1, R2, ….
+
+## Round 2
+Round 1 (gpt-5.6-luna) found R1: the progress file's played-run claim cited no save. Now every played claim in the progress file, README and finding names its before/after saves (turn 0734). Check that every claim has its save and the earlier blocking items still hold.
