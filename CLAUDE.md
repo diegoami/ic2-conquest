@@ -22,6 +22,10 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
    - Claude agents: read the agent's final report (its hand-back) in full before acting.
    - A run that stopped and reported gets an answer to its report: amend the task, decide, or escalate. Post the report on the task's PR (or its run issue) so it is kept.
    - Treat any earlier "model X ends runs early" verdict as unconfirmed until its runs' final messages have been read.
+8. **A failed subagent run is never normal: find its cause and fix it** (the owner's highest priority, 2026-10-10). This covers OpenCode runs, reviewers, implementers and Claude agents.
+   - **Fall back to another model only when the provider's API does not answer**: a rate limit, a 5xx error, a quota or usage limit, a network error, or no session ever started. A run that failed through a flaw in our process (a brief, permissions, timeouts, the watcher, an agent prompt) is fixed and run again on the same model, never handed down the chain.
+   - **No run may lose its progress when it dies.** Every run records what it is doing (its session id, its state, a progress file, commits pushed as it goes), so the job can be tracked and **resumed where it stopped**, not restarted.
+   - **Keep monitoring running subagents and tell the owner in plain words** what each one is doing and working on, while it runs.
 
 ## Environment
 
