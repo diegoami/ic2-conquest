@@ -4,7 +4,7 @@ s<seed>.jsonl, from siege_probe/run.sh <prefix> <out> 0 10) at save t-1 of the n
 against the required one. Writes early_captures.json (versioned). python3 early_captures.py"""
 import json
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); D = R / "runs/experiments/data/run-exp-gap-v050"; A = R / "artifacts/run-exp-gap-v050"
+R = Path(__file__).resolve().parents[4]; D = R / "runs/experiments/data/run-exp-gap-v050"; A = R / "artifacts/run-exp-gap-v050"
 def news(s):
     sl = s["newsLog"]["slots"]; k = s["newsLog"]["mostRecentSlot"]
     return [x["text"] for x in (sl[k + 1:] + sl[:k + 1] if len(sl) == 40 else sl)]

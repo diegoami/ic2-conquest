@@ -5,7 +5,7 @@ Also the ground: every empty cell against BatMapList image 15. Then print what t
 python3 check_battle_recolour.py <out_json> [<folder> <save> <png> ...]   (default: the B2 pairs)"""
 import collections, json, struct, subprocess, sys
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from state import sav, battle_block as BB
 A = R / "artifacts/run-exp-battle-sweep"
 PAIRS = [("B2_placement.SAV", "b2_placement_window.png"), ("B2_after_end_turn_1.SAV", "b2_after_end_turn_1_window.png"),

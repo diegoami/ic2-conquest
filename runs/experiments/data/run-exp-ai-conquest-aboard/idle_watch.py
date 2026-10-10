@@ -7,7 +7,7 @@ appended to idle_watch_seed<k>.jsonl in the tracked data folder (resumable runs 
 python3 idle_watch.py SEED MAX_END_TURNS"""
 import json, shutil, struct, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R))
 from harness.driver import G, Game, GameOver
 from state import sav

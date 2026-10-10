@@ -134,6 +134,8 @@ class Log:
         self.tag, self.t0 = tag, time.time()
         self.txt = write_new(self.folder, f"{tag}-{STAMP}.log", b"")        # exclusive create: a second run in the same second gets a new name, never appends to an old file
         self.jl = write_new(self.folder, f"{tag}-{STAMP}.jsonl", b"")
+        from harness import environment       # every game start of this run is recorded as an `environment` event (harness/environment.py)
+        environment.add_sink(lambda rec: self("environment", **{k: v for k, v in rec.items() if k != "step"}), key="battles.Log")
 
     def __call__(self, event, **kw):
         t = round(time.time() - self.t0, 2)

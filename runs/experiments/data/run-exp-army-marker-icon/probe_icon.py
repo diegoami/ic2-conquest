@@ -5,7 +5,7 @@ copies with only the map word patched (same troops), to tell whether the icon fo
 python3 probe_icon.py <band_dir> <out_dir>"""
 import hashlib, json, shutil, struct, subprocess, sys, time
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load
 from harness.driver import sh
 band, out = Path(sys.argv[1]), Path(sys.argv[2])

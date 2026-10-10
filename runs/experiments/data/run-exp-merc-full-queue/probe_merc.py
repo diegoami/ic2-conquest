@@ -9,11 +9,11 @@ Cases (Rome's 40 queue slots set first; then army 1's 20 unit slots if listed):
 python3 probe_merc.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load
 from harness.driver import DriverError
 
-SRC = Path("/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV")
+SRC = (Path(__file__).resolve().parents[4] / "saves/run0-start-AUTO0720-seed12345.SAV")
 CASES = {"c1_full_queue": (40, None), "c2_empty_queue": (0, None),
          "c3_army_20_slots": (None, list(range(20))), "c4_army_gap_0_18": (None, [0, 18]),
          "c5_army_only_slot19": (None, [19])}

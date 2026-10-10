@@ -32,6 +32,9 @@ def log(name, msg):
     with open(DATA + name + '.log', 'a') as f: f.write(time.strftime('%H:%M:%S ') + str(msg) + '\n')
     print(msg, flush=True)
 
+from harness import environment as _env   # every start records the Wine/font environment in this lib's own log (harness/environment.py)
+_env.add_sink(lambda rec: log('environment', _env.sink_line(rec)))
+
 def attach(g):
     """Set g.pid to MY game process (my DISPLAY and WINEPREFIX), never another session's."""
     for p in glob.glob('/proc/[0-9]*/environ'):

@@ -6,7 +6,7 @@ hashed into SAVES.sha256, and one JSON line per End turn is appended to <variant
 python3 watch.py hook|plain SEED MAX_END_TURNS"""
 import hashlib, json, shutil, struct, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest")
+R = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "patches"))
 import ai_hook as A
 from harness.driver import G, Game, GameOver

@@ -14,6 +14,8 @@ sys.path.insert(0, str(ROOT))
 from harness.driver import Game  # noqa: E402
 
 OUT = ROOT / "artifacts" / "run-exp-naval-battle-cargo"
+from harness import environment as _env  # noqa: E402  the game starts' record goes to the tracked data folder, not artifacts/
+_env.set_data_folder(ROOT / 'runs' / 'experiments' / 'data' / 'run-exp-naval-battle-cargo')
 OUT.mkdir(parents=True, exist_ok=True)
 START = ROOT / "artifacts" / "run-exp-fleet-battles" / "T1_0720_s13_Carthage.SAV"
 

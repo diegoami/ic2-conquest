@@ -4,7 +4,7 @@ Screenshots after each step. Log: runs/experiments/data/run-exp-cellauto-rule/sa
 python3 save_bmps.py"""
 import hashlib, json, os, shutil, sys, time
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from harness.driver import Game, G
 ART = R / "artifacts/run-exp-cellauto-rule"; ART.mkdir(parents=True, exist_ok=True)
 STAMP = time.strftime("%Y%m%d-%H%M%S")

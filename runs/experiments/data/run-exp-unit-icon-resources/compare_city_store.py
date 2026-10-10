@@ -3,7 +3,7 @@ run-exp-city-marker-colours (tiles/city_v<v>_o<oo>_w<word>.png), pixel for pixel
 Also per stored capital image: pixel counts per palette index and RGB. python3 compare_city_store.py <out_dir>"""
 import collections, hashlib, json, struct, subprocess, sys
 from pathlib import Path
-out = Path(sys.argv[1]); R = Path("/home/diego/projects/ic2-conquest")
+out = Path(sys.argv[1]); R = Path(__file__).resolve().parents[4]
 TILES = R / "artifacts/run-exp-city-marker-colours/tiles"
 LISTS = ["Cities1List", "Cities2List", "Cities3List", "Cities4List", "CapitalsList"]
 res = {"per_word": [], "capitals": []}

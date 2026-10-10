@@ -104,8 +104,46 @@ def sh(*args, check=True):
 
 
 class Game:
+    # The environment record (harness/environment.py) hangs on `pid`, the one thing every start sets once the game runs: Game.start,
+    # the runner libraries' own start() overrides and attach(), and a start monkeypatched by assignment (a finished data script does
+    # `Game.start = start`) all end by assigning it, so no start path can skip the record. Only a live game process of ours counts
+    # (cmdline "Imperial Conquest..."): unit tests that set a fake pid do not write the durable record.
+    @property
+    def pid(self):
+        return self.__dict__.get("_pid")
+
+    @pid.setter
+    def pid(self, value):
+        before = self.__dict__.get("_pid")
+        self.__dict__["_pid"] = value
+        if value and value != before and not self.__dict__.get("_env_busy") and self._is_game_process(value):
+            self.__dict__["_env_busy"] = True
+            try:
+                self.record_environment()
+            finally:
+                self.__dict__["_env_busy"] = False
+
+    @staticmethod
+    def _is_game_process(pid):
+        try:
+            return open(f"/proc/{int(pid)}/cmdline", "rb").read().startswith(b"Imperial Conquest")
+        except (OSError, ValueError, TypeError):
+            return False
+
+    def record_environment(self):
+        """The environment fingerprint of this start: logged once per process through self.log, appended (with time, pid, the
+        runner's argv[0] and cwd) to $IC2_WORK/environment.jsonl on every start, and handed to every sink the runner registered
+        (environment.add_sink). Never raises: a failing record must not stop a run."""
+        try:
+            from harness import environment
+            self.environment = environment.record_start(
+                Path(ENV.get("WINEPREFIX", PREFIX)), self.exe, ENV.get("DISPLAY", DISPLAY), G, self.pid, WORK / "environment.jsonl", self.log)
+        except Exception as e:
+            self.environment = {"error": f"{type(e).__name__}"}
+
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
+        self.environment = None       # set by record_environment() after each start
         self.toolbar_x = self._load_cache(TOOLBAR_CACHE)
         self.army_x = self._load_cache(ARMY_TOOLBAR_CACHE)
         self.battle_x = self._load_cache(BATTLE_TOOLBAR_CACHE)

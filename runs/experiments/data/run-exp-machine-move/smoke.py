@@ -24,6 +24,8 @@ def rec(**kw):
     print(json.dumps(kw), flush=True)
 
 
+from harness import environment as _env  # noqa: E402  every start records the Wine/font environment in smoke.jsonl
+_env.add_sink(lambda r: rec(**{k: v for k, v in r.items() if k != "at"}))
 g = Game()
 save = REPO / "saves" / "run0-start-AUTO0720-seed12345.SAV"
 for attempt in (1, 2):

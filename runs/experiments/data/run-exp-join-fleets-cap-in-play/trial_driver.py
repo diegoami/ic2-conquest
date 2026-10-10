@@ -7,7 +7,7 @@ import argparse
 import sys
 from pathlib import Path
 
-REPO = Path('/home/diego/projects/ic2-conquest')
+REPO = Path(__file__).resolve().parents[4]
 sys.path.insert(0, str(REPO))
 from harness.driver import Game
 

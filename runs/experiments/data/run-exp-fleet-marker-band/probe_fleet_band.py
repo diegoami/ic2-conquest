@@ -7,7 +7,7 @@ fixed origin by an Area map click on (101,46) (pinned scroll), the pointer parke
 python3 probe_fleet_band.py <out_dir>"""
 import hashlib, json, shutil, struct, subprocess, sys, time
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from tests.test_orders import fresh_save, load, _make_patched_fleet_split_save
 from harness.driver import sh, AREA_ORIGIN
 out = Path(sys.argv[1])

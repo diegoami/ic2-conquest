@@ -5,10 +5,10 @@ Case cover1: both fleets' covered-cell field set to 1 (rough sea); control cover
 python3 probe_rough.py <out_dir> [case ...]"""
 import json, shutil, struct, sys, tempfile, time
 from pathlib import Path
-sys.path.insert(0, "/home/diego/projects/ic2-conquest")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parents[4]))
 from harness.driver import G, SEL_FLEET, Game
 from state import sav
-FIX = Path("/home/diego/projects/ic2-conquest/saves/fleets-adjacent-at-sea-0723.SAV")
+FIX = (Path(__file__).resolve().parents[4] / "saves/fleets-adjacent-at-sea-0723.SAV")
 FLEETS = {(110, 73): 1, (111, 73): 3}          # tile: owner
 EXTRA = [(111, 74)]                              # the move target, word read too
 CASES = {"cover0": None, "cover1": 1, "move_cover1": 1}   # move_cover1: no battle, fleet 1 sails one tile to (111,74), empty sea

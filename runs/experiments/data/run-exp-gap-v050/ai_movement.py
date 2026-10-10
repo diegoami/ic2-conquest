@@ -3,7 +3,7 @@ of a nation they are at war with, and how many AI cities are under siege; the sa
 indices there, so 'moved' counts index-matched records of the same owner). Writes ai_movement.json (versioned). python3 ai_movement.py"""
 import json, sys
 from pathlib import Path
-R = Path("/home/diego/projects/ic2-conquest"); sys.path.insert(0, str(R))
+R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from state import sav
 D = R / "runs/experiments/data/run-exp-gap-v050"
 out = {}
