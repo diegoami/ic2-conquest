@@ -56,3 +56,17 @@ Liberation). The owner also confirmed the old computer has `fonts-wine` and no L
   pixel-identical (0 differing pixels) to the copy's (`shot-winter11-20261010-193538.png`).
 - **Conclusion:** with the old font set, Wine 10 renders like the old computer up to anti-aliasing. Pixel comparisons of text against old
   screenshots need a small tolerance (5 % covers maps and menus; 20 % covers everything); exact-byte comparisons of text areas do not carry over.
+
+## 6. Replay check (2026-10-10, Wine 10 with the old font set): game state identical
+
+- **Orders, no end of turn** (`run-exp-supply-transfer-clamps/supply_transfer.py P1`, log `supply_transfer-P1-20261010-193650.jsonl` there): the
+  two saves are **byte-identical** to the old computer's (`P1_*_alone.SAV` `bb848892b3aa7508…`, `P1_*_split.SAV` `f0921d93f353df78…`, both
+  equal to the two old runs), and so are its three screenshots (`62a33590f3d8…`, `dc8e1077e3cd…`, `119a8a57b6f6…`, each equal to one of the
+  old runs').
+- **New Game + two End turns with the AI** (`civ_sweep_replay.py 0`, a copy of `runs/experiments/civ-sweep/sweep.py` that writes to
+  `artifacts/run-exp-machine-move/civ-sweep-replay/`; Rome, seed 12345): `S00_Rome_AUTO0720/0721/0722.SAV` differ from the old
+  `run-exp-civ-sweep` saves in **4 bytes each, all in the trailer's main-window geometry** (UI state, `docs/sav-layout-notes.md` §8): old
+  `(-4, -4, 281, 650)`, new `(-4, -4, 979, 1280)`. Every game byte is the same. The sweep's record differs only in `view_origin_mem[0]`
+  (unit-map scroll column 107 old, 97 new), a consequence of the larger window. All sweep steps passed.
+- **Consequence:** Wine 10 opens the main window larger after New Game (1280 x 979 instead of 650 x 281). A save comparison across the two
+  computers must mask the trailer's 8 geometry bytes (offsets 46-53); the driver's targeting reads the view origin from memory and coped.

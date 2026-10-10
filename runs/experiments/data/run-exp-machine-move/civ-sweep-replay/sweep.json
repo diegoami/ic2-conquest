@@ -1,0 +1,325 @@
+{
+ "0": {
+  "row": 0,
+  "nation": "Rome",
+  "steps": [
+   {
+    "step": "new_game",
+    "ok": true,
+    "result": [
+     "/home/diego/ic2-work/prefix/drive_c/IC2/AUTO0720.SAV",
+     [
+      "@ Bithynia wants to trade with Rome."
+     ]
+    ],
+    "secs": 14.8
+   },
+   {
+    "step": "build_fleet",
+    "ok": true,
+    "result": [
+     "@ The fleet will be built at Caere."
+    ],
+    "secs": 6.3
+   },
+   {
+    "step": "recruit_dialog",
+    "ok": true,
+    "result": {
+     "controls": [
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Disband"
+      ],
+      [
+       "TButton",
+       "Mobilize"
+      ],
+      [
+       "TListBox",
+       ""
+      ],
+      [
+       "TButton",
+       "Recruit unit"
+      ],
+      [
+       "TButton",
+       "Light cavalry"
+      ],
+      [
+       "TButton",
+       "Archers"
+      ],
+      [
+       "TButton",
+       "Heavy infantry"
+      ],
+      [
+       "TButton",
+       "Light infantry"
+      ],
+      [
+       "TButton",
+       "Heavy cavalry"
+      ],
+      [
+       "TButton",
+       "OK"
+      ]
+     ]
+    },
+    "secs": 4.1
+   },
+   {
+    "step": "select_first_army",
+    "ok": true,
+    "result": {
+     "army": 0,
+     "sel": 0
+    },
+    "secs": 3.7
+   },
+   {
+    "step": "end_turn_1",
+    "ok": true,
+    "result": [
+     "AUTO0721.SAV",
+     []
+    ],
+    "secs": 5.6
+   },
+   {
+    "step": "move_first_army",
+    "ok": true,
+    "result": [
+     99,
+     37
+    ],
+    "secs": 2.5
+   },
+   {
+    "step": "end_turn_2",
+    "ok": true,
+    "result": [
+     "AUTO0722.SAV",
+     []
+    ],
+    "secs": 5.6
+   }
+  ],
+  "start_popups": [
+   "@ Bithynia wants to trade with Rome."
+  ],
+  "cur_nation": 0,
+  "cur_nation_matches_row": true,
+  "title": [
+   "Imperial Conquest 2    Rome's turn   (Appius Claudius)"
+  ],
+  "view_origin_mem": [
+   97,
+   39
+  ],
+  "start": {
+   "turn": 720,
+   "date": "Spring week 1, 270 BC",
+   "seat_index": 11,
+   "current_nation": 0,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    0
+   ],
+   "leader": "Appius Claudius",
+   "treasury": 2200,
+   "cities": 25,
+   "coastal_cities": 15,
+   "armies": [
+    [
+     0,
+     100,
+     37,
+     23700,
+     8
+    ],
+    [
+     1,
+     120,
+     53,
+     22000,
+     8
+    ]
+   ],
+   "fleets": [],
+   "wars": [
+    "Gaul"
+   ],
+   "tax": 10,
+   "mobilization": 30,
+   "view": [
+    97,
+    39
+   ],
+   "capital": 85
+  },
+  "after_turn_1": {
+   "autosave": "AUTO0721.SAV",
+   "popups": [],
+   "turn": 721,
+   "date": "Spring week 3, 270 BC",
+   "seat_index": 11,
+   "current_nation": 0,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    0
+   ],
+   "leader": "Appius Claudius",
+   "treasury": 2100,
+   "cities": 25,
+   "coastal_cities": 15,
+   "armies": [
+    [
+     0,
+     100,
+     37,
+     23700,
+     9
+    ],
+    [
+     1,
+     120,
+     53,
+     22000,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Gaul"
+   ],
+   "tax": 10,
+   "mobilization": 30,
+   "view": [
+    94,
+    30
+   ],
+   "capital": 85
+  },
+  "after_turn_2": {
+   "autosave": "AUTO0722.SAV",
+   "popups": [],
+   "turn": 722,
+   "date": "Spring week 5, 270 BC",
+   "seat_index": 11,
+   "current_nation": 0,
+   "turn_order": [
+    9,
+    5,
+    3,
+    12,
+    2,
+    15,
+    7,
+    10,
+    4,
+    14,
+    13,
+    0,
+    11,
+    1,
+    6,
+    8
+   ],
+   "human_flags": [
+    0
+   ],
+   "leader": "Appius Claudius",
+   "treasury": 2100,
+   "cities": 25,
+   "coastal_cities": 15,
+   "armies": [
+    [
+     0,
+     99,
+     37,
+     23700,
+     9
+    ],
+    [
+     1,
+     120,
+     53,
+     22000,
+     9
+    ]
+   ],
+   "fleets": [
+    [
+     2,
+     0,
+     0,
+     10,
+     null,
+     true
+    ]
+   ],
+   "wars": [
+    "Gaul"
+   ],
+   "tax": 10,
+   "mobilization": 30,
+   "view": [
+    94,
+    30
+   ],
+   "capital": 85
+  },
+  "secs": 44
+ }
+}
