@@ -58,11 +58,13 @@ elif a[:1] == ["export"]:
     if (d / "export_bad").exists():
         print((d / "export_bad").read_text())
         sys.exit(0)
-    if last in ("hang", "crash", "textcrash", "apicrash", "authcrash", "429", "perm") or last == "reportcrash":
+    if last in ("hang", "crash", "textcrash", "apicrash", "authcrash", "429", "perm", "permlate", "permbash", "permbashexit0", "rejectedline", "diffcrash", "permbashhang") or last == "reportcrash":
         # a run that died: mid-work (finish tool-calls, partial text) or after a final message (reportcrash: stopped and reported)
         stop = last == "reportcrash"
-        print(json.dumps({"info": {}, "messages": [{"info": {"role": "assistant", "agent": "external-reviewer",
-                                                              "finish": "stop" if stop else "tool-calls"},
+        info = {"role": "assistant", "agent": "external-reviewer", "finish": "stop" if stop else "tool-calls"}
+        if (d / "export_error").exists():
+            info["error"] = json.loads((d / "export_error").read_text())
+        print(json.dumps({"info": {}, "messages": [{"info": info,
                                                     "parts": [{"type": "text", "text": "BLOCKED: I need file X" if stop else "partial notes"}]}]}))
         sys.exit(0)
     text = "tool chatter only" if (d / "badformat").exists() else hdr + "\\napprove\\nR1 a.py:1 non-blocking: x\\napprove"
@@ -98,9 +100,28 @@ elif a[:1] == ["run"]:
     if mode == "crash":
         sys.stderr.write("panic: something broke\\n")
         sys.exit(1)
-    if mode == "perm":           # OpenCode auto-rejects a permission: a line that STARTS with "!"
-        print("! permission requested: external_directory (/etc/x); auto-rejecting", flush=True)
+    if mode in ("perm", "permlate"):      # OpenCode auto-rejects a path outside the worktree: a line that STARTS with "!"
+        sys.stderr.write("! permission requested: external_directory (/etc/x/*); auto-rejecting\\n")
+        sys.stderr.flush()
+        if mode == "perm":
+            time.sleep(30)
+        sys.exit(1)
+    if mode in ("permbash", "permbashexit0"):
+        sys.stderr.write("! permission requested: bash (git push origin main); auto-rejecting\\n")
+        sys.stderr.flush()
+        if mode == "permbash":
+            time.sleep(30)
+        sys.exit(0)
+    if mode == "permbashhang":   # a rejection line, then a hang: the watcher's own kill (idle or total timeout) ends it
+        sys.stderr.write("! permission requested: bash (git push origin main); auto-rejecting\\n")
+        sys.stderr.flush()
         time.sleep(30)
+    if mode == "rejectedline":
+        sys.stderr.write("Error: The user rejected permission to use this specific tool call.\\n")
+        sys.exit(1)
+    if mode == "diffcrash":      # the model's TOOL OUTPUT lands on stderr: a diff that mentions 429 and a FileNotFoundError
+        sys.stderr.write("+            raise FileNotFoundError(args[0])\\n+  # too many requests, rate limit 429, status code 503\\n")
+        sys.exit(1)
     if mode == "reportcrash":    # the model stops and reports, then the process dies
         sys.stderr.write("panic: after the report\\n")
         sys.exit(1)
@@ -450,7 +471,7 @@ def test_every_failure_reads_the_session_and_exports_are_per_attempt():
         final, stop, failures = chain(d)
         assert final is None and stop and not failures, (final, stop, failures)
         assert stop[1]["kind"] == "process" and "export unreadable" in stop[1]["cause"] and runs_started(d) == 1, stop[1]
-    with fake_opencode("perm", ["perm", "ok"]) as d:
+    with fake_opencode("perm", ["permbash", "ok"]) as d:
         r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
         assert r["class"] == "permission-rejected" and r["kind"] == "process", r
         assert r["last_message"]["text"] == "partial notes" and runs_started(d) == 1, r
@@ -675,6 +696,118 @@ def test_refused_credentials_are_a_process_failure():
     return "401 and ProviderAuthError (with or without a session) -> process, cause names the login to renew, no resume, no fallback"
 
 
+FIXTURE = ROOT / "tests" / "fixtures" / "pr69-run"
+
+
+def test_review_worktree_name_and_relative_paths_in_the_prompts():
+    wt = er.review_worktree("a6c69b")
+    assert wt == er.REVIEW_ROOT / "a6c69b" and "review" not in wt.name and "pr" not in wt.name, wt
+    brief = er.brief_text("pr", 5, "t", "b", BASE, HEAD, "h", str(wt))
+    assert "RELATIVE" in brief and "read runs/x.py" in brief and "PRINT absolute paths" in brief
+    _, body = agent_parts()
+    assert "relative paths" in body and "`grep` and `glob` PRINT absolute paths" in body and "`read`, `grep`, `glob`" in body
+    return "worktree = <root>/<token>; brief and agent say file tools take relative paths and grep/glob print absolute ones"
+
+
+def test_permission_scan_and_corrective_resume():
+    saved = ow.PERM_IN_LOOP
+    try:
+        with fake_opencode("perm-late", ["permlate", "ok"]) as d:           # final scan after the exit finds it, then ONE corrective resume
+            ow.PERM_IN_LOOP = False
+            r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "ok" and runs_started(d) == 2, (r["class"], r["cause"])
+            a2 = json.loads((d / "argv-2.json").read_text())
+            assert a2[a2.index("--session") + 1] == "ses_fake" and a2[1].startswith("That path is outside your working directory; use paths relative to it."), a2
+            st = json.loads((d / "run" / "state.json").read_text())
+            assert st["resumes_used"] == 1 and st["perm_resumes"] == 1 and st["last_message"]["finish"] == "tool-calls", st
+        with fake_opencode("perm-twice", ["perm", "perm", "ok"]) as d:      # the second rejection ends it
+            ow.PERM_IN_LOOP = True
+            r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "permission-rejected" and r["kind"] == "process" and runs_started(d) == 2, (r["class"], runs_started(d))
+        with fake_opencode("perm-bash", ["permbash", "ok"]) as d:           # any other permission: exit 6 path, no resume, no fallback
+            final, stop, failures = chain(d)
+            assert final is None and stop and not failures and stop[1]["class"] == "permission-rejected" and runs_started(d) == 1, (stop, failures)
+        with fake_opencode("perm-exit0", ["permbashexit0", "ok"]) as d:     # exit 0 after a rejection is not ok and not cut-off
+            ow.PERM_IN_LOOP = False
+            r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "permission-rejected" and r["kind"] == "process" and runs_started(d) == 1, (r["class"], r["kind"])
+        with fake_opencode("perm-newline", ["rejectedline", "ok"]) as d:    # the newer wording alone
+            ow.PERM_IN_LOOP = True
+            r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "permission-rejected" and r["kind"] == "process" and runs_started(d) == 1, (r["class"], r["kind"])
+    finally:
+        ow.PERM_IN_LOOP = saved
+    return "final scan after exit; `Error: The user rejected permission` recognised; an outside-path rejection resumed once with the corrective message, a second or any other one ends (process)"
+
+
+def test_session_error_is_authoritative_and_tool_output_is_not_evidence():
+    with fake_opencode("diff-stderr", ["diffcrash"] * 3) as d:              # free text on stderr (a diff) never makes an api failure
+        r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
+        assert r["kind"] == "process" and r["class"] == "nonzero-exit" and runs_started(d) == 3, (r["class"], r["kind"], r["cause"])
+    with fake_opencode("export-503", ["diffcrash", "ok"]) as d:             # the export's info.error decides
+        (d / "export_error").write_text(json.dumps({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}))
+        final, stop, failures = chain(d)
+        assert final and failures == [("provider/model", "nonzero-exit")] and runs_started(d) == 2, (stop, failures)
+        r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
+        assert r1["kind"] == "api" and "status 503" in r1["cause"] and r1["last_message"]["provider_error"]["name"] == "APIError", r1
+    with fake_opencode("export-400", ["diffcrash"] * 3) as d:             # a 4xx error in the export beats a 429 in stderr text
+        (d / "export_error").write_text(json.dumps({"name": "APIError", "data": {"message": "bad", "statusCode": 400, "isRetryable": False}}))
+        final, stop, failures = chain(d)
+        assert final is None and stop and stop[1]["kind"] == "process" and runs_started(d) == 3, (stop, failures)   # resumed twice, never handed on
+    assert not ow.API_RE.search("raise FileNotFoundError(args[0])"), "ENOTFOUND must be a whole word"
+    return "free text on stderr is never evidence when there is a session; the export's info.error is (api 503, process 400); FileNotFoundError is not ENOTFOUND"
+
+
+def test_pr69_run_is_classified_right_offline():
+    import shutil as sh
+    tmp = SCRATCH / "pr69-fixture"
+    tmp.mkdir()
+    (tmp / "stderr.log").write_text("".join(ln[2:] if ln.startswith("> ") else ln for ln in (FIXTURE / "stderr.log.txt").read_text().splitlines(True)))
+    for n in ("export-attempt1-read.json", "state.json"):
+        sh.copy(FIXTURE / n, tmp / n)
+    text = (tmp / "stderr.log").read_text()
+    assert "FileNotFoundError(args[0])" in text and "permission requested: external_directory" in text and "The user rejected permission" in text
+    assert ow.error_verdict(text) == (None, None) and ow.session_verdict(None, text) == (None, None), "the diff line is not evidence"
+    got = ow.reclassify(tmp)
+    assert got["class"] == "permission-rejected" and got["kind"] == "process" and got["corrective_resume"] is True, got
+    assert "external_directory" in got["cause"], got
+    return "PR #69's run (trimmed fixture): permission-rejected, process, resumable with the corrective message; the diff line is not api evidence"
+
+
+def test_final_scan_after_timeout_kills_too():
+    saved = ow.PERM_IN_LOOP
+    try:
+        ow.PERM_IN_LOOP = False                                   # only the final scan can see it
+        for name, kw, was in (("idle", {"idle": 1.5, "total": 60}, "idle-timeout"), ("total", {"idle": 60, "total": 1.5}, "total-timeout")):
+            with fake_opencode("scan-" + name, ["permbashhang", "ok"]) as d:
+                r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", startup=5, data_dir=d / "data", log=lambda s: None, **kw)
+                assert r["class"] == "permission-rejected" and r["kind"] == "process", (name, r["class"], r["kind"], r["cause"])
+                assert was in r["cause"] and runs_started(d) == 1, (name, r["cause"])
+    finally:
+        ow.PERM_IN_LOOP = saved
+    return "a rejection line written just before an idle-timeout or total-timeout kill is permission-rejected (process), not the timeout"
+
+
+def test_reclassify_picks_the_newest_export_numerically():
+    tmp = SCRATCH / "numeric-exports"
+    tmp.mkdir()
+    (tmp / "stderr.log").write_text("")
+    (tmp / "state.json").write_text(json.dumps({"session": "ses_x"}))
+    (tmp / "result.json").write_text(json.dumps({"class": "nonzero-exit", "kind": "process"}))
+
+    def export(err):
+        info = {"role": "assistant", "finish": "tool-calls"}
+        if err:
+            info["error"] = err
+        return json.dumps({"messages": [{"info": info, "parts": []}]})
+
+    (tmp / "export-attempt2-read.json").write_text(export(None))
+    (tmp / "export-attempt10-read.json").write_text(export({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}))
+    got = ow.reclassify(tmp)
+    assert got["kind"] == "api" and "503" in got["cause"], got       # attempt10 is the newest, although "attempt10" < "attempt2" as text
+    return "the newest export is chosen by attempt number (and k), not by file name order"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
@@ -685,7 +818,10 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",
          "structured_errors_are_the_primary_evidence", "models_listing_looks_only_at_its_own_stderr",
-         "refused_credentials_are_a_process_failure"]
+         "refused_credentials_are_a_process_failure",
+         "review_worktree_name_and_relative_paths_in_the_prompts", "permission_scan_and_corrective_resume",
+         "session_error_is_authoritative_and_tool_output_is_not_evidence", "pr69_run_is_classified_right_offline",
+         "final_scan_after_timeout_kills_too", "reclassify_picks_the_newest_export_numerically"]
 
 if __name__ == "__main__":
     bad = 0

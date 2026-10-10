@@ -1,0 +1,54 @@
+{
+ "info": {},
+ "messages": [
+  {
+   "info": {
+    "role": "user"
+   },
+   "parts": [
+    {
+     "type": "text",
+     "text": "(trimmed)"
+    }
+   ]
+  },
+  {
+   "info": {
+    "parentID": "msg_12727c2d5001M90WuEEBVd5FJ9",
+    "role": "assistant",
+    "mode": "external-reviewer",
+    "agent": "external-reviewer",
+    "variant": "high",
+    "path": {
+     "cwd": "/home/diego/ic2-work/review/pr69-review-a6c69b",
+     "root": "/home/diego/ic2-work/review/pr69-review-a6c69b"
+    },
+    "cost": 0,
+    "tokens": {
+     "total": 76735,
+     "input": 3086,
+     "output": 245,
+     "reasoning": 188,
+     "cache": {
+      "write": 0,
+      "read": 73216
+     }
+    },
+    "modelID": "gpt-5.6-luna",
+    "providerID": "openai",
+    "time": {
+     "created": 1791658536999,
+     "completed": 1791658540455
+    },
+    "finish": "tool-calls",
+    "id": "msg_1272bb027001w213ipXuB5Ze6k",
+    "sessionID": "ses_ed8d83db4ffeU8CD4aL718Scz2"
+   },
+   "parts": [
+    {
+     "type": "step-finish"
+    }
+   ]
+  }
+ ]
+}
