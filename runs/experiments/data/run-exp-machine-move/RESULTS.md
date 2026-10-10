@@ -29,3 +29,14 @@ first Wine 10 start) are in `artifacts/run-exp-machine-move/` and release `run-e
   32, `test_end_turn_reclick` 14, `test_sea_path` 6, `test_reviewer_prompt`, `external_review.py --self-test`: all pass. Nothing needs 3.12.
 - `tests/test_info_window.py`: 2 failures, not Python: `call_extraction` and `coverage_zero_unaccounted` read
   `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`, a Ghidra export on the old computer's Windows side that was not moved.
+
+## 4. Which fonts (2026-10-10, follow-up)
+
+- **What the game asks for** (`wine10_font_trace.txt`, `WINEDEBUG=+font`, game start only): "MS Sans Serif" (menus, dialogs: Wine replaces it with
+  its own Tahoma, the same `Replacements` entry in the old and the new prefix), "System" (Wine's `vgasys.fon`), and for the Information panel
+  **"Book Antiqua"**, height -13, a Windows serif font that neither computer has. Wine picks the best match from the fonts it knows.
+- **New computer:** "Book Antiqua" -> **Liberation Sans** (trace: `Chosen: L"Liberation Sans"`).
+- **Old computer:** the old prefix's `External Fonts` list (the fonts its host had) has DejaVu, URW (Nimbus), Ubuntu, Droid and Noto, **no
+  Liberation**. The old panel's line "Macedonia declares war on Greece." measures **211 x 10 px**; rendered at the same size **DejaVu Sans is
+  211 x 10** (Tahoma 192, Nimbus Sans 195, Ubuntu 192). The new panel's 195 x 9 equals Liberation Sans' 195 x 9. So the old computer drew the
+  panel in **DejaVu Sans**, and the change comes from the host's fonts (`fonts-liberation` installed here), not from Wine 9 vs 10.
