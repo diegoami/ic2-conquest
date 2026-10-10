@@ -10,7 +10,6 @@ coverage.md ("Dialog layouts").
     g = Game(); g.load("BASE.SAV", seed=12345)
     g.recruit("Rome", "hi", 3200); g.move(3, 104, 40); g.end_turn()
 """
-import functools
 import json
 import os
 import re
@@ -104,32 +103,32 @@ def sh(*args, check=True):
     return subprocess.run(args, env=ENV, capture_output=True, text=True, check=check).stdout
 
 
-def _recorded(start):
-    """Wrap a `start` so that the outermost call, once the game runs, records the environment (harness/environment.py). Applied to
-    Game.start and, by __init_subclass__, to every override (the runner libraries' MyGame/PeaceGame start without super()), so no
-    start escapes the record. Nested calls (HookGame.start -> super().start()) record once."""
-    @functools.wraps(start)
-    def wrapper(self, *a, **k):
-        outer = not getattr(self, "_env_busy", False)
-        self._env_busy = True
-        try:
-            result = start(self, *a, **k)
-        finally:
-            if outer:
-                self._env_busy = False
-        if outer:
-            self.record_environment()
-        return result
-    wrapper._env_recorded = True
-    return wrapper
-
-
 class Game:
-    def __init_subclass__(cls, **kw):
-        super().__init_subclass__(**kw)
-        st = cls.__dict__.get("start")
-        if st is not None and not getattr(st, "_env_recorded", False):
-            cls.start = _recorded(st)
+    # The environment record (harness/environment.py) hangs on `pid`, the one thing every start sets once the game runs: Game.start,
+    # the runner libraries' own start() overrides and attach(), and a start monkeypatched by assignment (a finished data script does
+    # `Game.start = start`) all end by assigning it, so no start path can skip the record. Only a live game process of ours counts
+    # (cmdline "Imperial Conquest..."): unit tests that set a fake pid do not write the durable record.
+    @property
+    def pid(self):
+        return self.__dict__.get("_pid")
+
+    @pid.setter
+    def pid(self, value):
+        before = self.__dict__.get("_pid")
+        self.__dict__["_pid"] = value
+        if value and value != before and not self.__dict__.get("_env_busy") and self._is_game_process(value):
+            self.__dict__["_env_busy"] = True
+            try:
+                self.record_environment()
+            finally:
+                self.__dict__["_env_busy"] = False
+
+    @staticmethod
+    def _is_game_process(pid):
+        try:
+            return open(f"/proc/{int(pid)}/cmdline", "rb").read().startswith(b"Imperial Conquest")
+        except (OSError, ValueError, TypeError):
+            return False
 
     def record_environment(self):
         """The environment fingerprint of this start: logged once per process through self.log, appended (with time, pid, the
@@ -163,7 +162,6 @@ class Game:
         time.sleep(1)
         self.pid = None
 
-    @_recorded
     def start(self):
         self.ensure_xvfb()
         self.kill()

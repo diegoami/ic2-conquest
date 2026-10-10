@@ -13,13 +13,14 @@ import os
 import re
 import subprocess
 import sys
+import threading
 import time
 from pathlib import Path
 
 WINE = "/usr/lib/wine/wine"
 FONT_SECTIONS = ("Software\\\\Wine\\\\Fonts\\\\External Fonts", "Software\\\\Wine\\\\Fonts\\\\Replacements")
 PROBE_TIMEOUT = 0.8  # s per command (a slow fc-list or xdpyinfo must not slow a start)
-BUDGET = 2.0         # s for the whole fingerprint: later probes get what is left, none when it is spent
+BUDGET = 0.9         # s for the whole fingerprint, enforced: probes run in parallel threads and a probe unfinished at the deadline is an error
 _cache = {}          # per process: (prefix, exe path, display) -> fingerprint
 _keyed = {}          # sinks registered with a key (one per key)
 _sinks = []          # runner callbacks: fn(record dict), called by record_start on every start
@@ -96,10 +97,10 @@ def _fc_match(family):
     return _run("fc-match", "-f", "%{family}", family).split(",")[0]       # "DejaVu Sans"
 
 
-def _fonts():
-    d = {"Book Antiqua": _probe(lambda: _fc_match("Book Antiqua")),
-         "MS Sans Serif": _probe(lambda: _fc_match("MS Sans Serif"))}
-    lst = _probe(lambda: _run("fc-list", "--format", "%{file}\n").splitlines())
+def _fonts(r):
+    """The fonts part, from the results of the parallel probes `r` (fc_book, fc_ms, fc_list: a value or {"error": ...})."""
+    d = {"Book Antiqua": r["fc_book"], "MS Sans Serif": r["fc_ms"]}
+    lst = r["fc_list"]
     if isinstance(lst, dict):
         d["liberation_count"] = d["tahoma_wine"] = lst
     else:
@@ -116,9 +117,30 @@ def _xvfb_size(display):
     return m.group(1)
 
 
+def _parallel(probes):
+    """Run every probe in its own daemon thread under one shared deadline (BUDGET s from now): the whole set returns by then
+    whatever the probes do, even when all hang or fail. A probe unfinished at the deadline is recorded as an error (its thread is
+    abandoned: it is a daemon and its subprocess has its own timeout)."""
+    deadline = time.monotonic() + BUDGET
+    _deadline[0] = deadline
+    out = {}
+
+    def work(name, fn):
+        out[name] = _probe(fn)
+
+    threads = {n: threading.Thread(target=work, args=(n, f), daemon=True) for n, f in probes.items()}
+    for t in threads.values():
+        t.start()
+    for t in threads.values():
+        t.join(max(0.0, deadline - time.monotonic()))
+    _deadline[0] = None
+    return {n: dict(out[n]) if isinstance(out.get(n), dict) else out[n] if n in out
+            else {"error": "TimeoutError: probe did not finish within the fingerprint budget"} for n in probes}
+
+
 def fingerprint(prefix, exe=None, display=None, game_dir=None, refresh=False):
     """The environment as a plain JSON-able dict. Cached per process by (prefix, exe path, display) unless `refresh`; the whole
-    probe set is bounded by BUDGET seconds (a probe that finds it spent records an error)."""
+    probe set is bounded by BUDGET seconds."""
     prefix = Path(prefix)
     exe = exe or os.environ.get("IC2_EXE", "Imperial Conquest 2 fast rollingsave seed.exe")
     display = display or os.environ.get("DISPLAY_IC2", ":99")
@@ -126,15 +148,16 @@ def fingerprint(prefix, exe=None, display=None, game_dir=None, refresh=False):
     key = (str(prefix), str(game_dir / exe), display)
     if not refresh and key in _cache:
         return _cache[key]
-    _deadline[0] = time.monotonic() + BUDGET
-    try:
-        fp = {"wine": _probe(lambda: _run(WINE, "--version")),
-              "exe": {"name": exe, "sha256": _probe(lambda: exe_sha256(game_dir / exe))},
-              "xvfb_screen": _probe(lambda: _xvfb_size(display)),
-              "fonts": _fonts(),
-              "prefix_fonts": _probe(lambda: registry_fonts_hash(prefix / "user.reg"))}
-    finally:
-        _deadline[0] = None
+    probes = {"wine": lambda: _run(WINE, "--version"),
+              "exe": lambda: exe_sha256(game_dir / exe),
+              "xvfb": lambda: _xvfb_size(display),
+              "fc_book": lambda: _fc_match("Book Antiqua"),
+              "fc_ms": lambda: _fc_match("MS Sans Serif"),
+              "fc_list": lambda: _run("fc-list", "--format", "%{file}\n").splitlines(),
+              "reg": lambda: registry_fonts_hash(prefix / "user.reg")}
+    r = _parallel(probes)
+    fp = {"wine": r["wine"], "exe": {"name": exe, "sha256": r["exe"]}, "xvfb_screen": r["xvfb"], "fonts": _fonts(r),
+          "prefix_fonts": r["reg"]}
     _cache[key] = fp
     return fp
 

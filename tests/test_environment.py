@@ -129,7 +129,18 @@ def main():
         assert tmp not in f["wine"]["error"]
         with mock.patch.object(E, "BUDGET", 0.0):
             f = fp(prefix)
-        assert "budget" in f["wine"]["error"] and "budget" in f["fonts"]["Book Antiqua"]["error"], f
+        assert "error" in f["wine"] and "error" in f["fonts"]["Book Antiqua"], f
+        # the worst case: every probe hangs (commands and file reads alike): the whole fingerprint is back under 1 s
+        def hang(*a, **k):
+            time.sleep(5)
+        with mock.patch.object(E, "_run", hang), mock.patch.object(E, "exe_sha256", hang), mock.patch.object(E, "registry_fonts_hash", hang):
+            E._cache.clear()
+            t = time.time()
+            f = E.fingerprint(prefix, exe="g.exe", display=":9")
+            worst = time.time() - t
+        assert worst < 1.0 and "error" in f["wine"] and "error" in f["exe"]["sha256"] and "error" in f["prefix_fonts"] \
+            and "error" in f["fonts"]["liberation_count"], (worst, f)
+        ok += 1; print("PASS all probes hanging: fingerprint back in %.2f s (< 1 s)" % worst)
         ok += 1; print("PASS slow probe bounded (%.2f s) and recorded; spent budget skips probes" % took)
 
     # R1: the record reaches environment.jsonl, a runner's sink (its own log), and self.log once per process
@@ -149,21 +160,39 @@ def main():
         assert E.sink_line(got[0]).startswith("environment {") and '"step"' not in E.sink_line(got[0])
         ok += 1; print("PASS record in environment.jsonl (each start), sink (runner log), self.log (once)")
 
-        # R2: every start override is wrapped, nested super().start() records once
+        # R2: any start records, by pid assignment: an override, a nested super().start(), a start replaced by assignment
         class Plain(driver.Game):
             def start(self):
                 self.pid = 1
         class Hooked(Plain):
             def start(self):
                 super().start()
-        for cls in (Plain, Hooked):
-            g = cls.__new__(cls)
-            g.exe, g.pid, g.log = "g.exe", None, logged.append
+        def patched(self):
+            self.pid = 1
+        for cls, start in ((driver.Game, patched), (Plain, None), (Hooked, None)):
+            saved = driver.Game.start
+            if start:
+                driver.Game.start = start            # what a finished data script does: `Game.start = start`
+            try:
+                with mock.patch.object(driver.Game, "_is_game_process", staticmethod(lambda pid: True)):
+                    g = cls.__new__(cls)
+                    g.exe, g.log = "g.exe", logged.append
+                    g.__dict__["_pid"] = None
+                    seen = []
+                    g.record_environment = lambda: seen.append(g.pid)
+                    g.start()
+                    assert seen == [1], (cls, seen)
+                    g.pid = None; g.start()
+                    assert seen == [1, 1], (cls, seen)          # a restart records again
+            finally:
+                driver.Game.start = saved
+        with mock.patch.object(driver.Game, "_is_game_process", staticmethod(lambda pid: False)):
+            g = Plain.__new__(Plain); g.__dict__["_pid"] = None
             seen = []
-            g.record_environment = lambda: seen.append(g.pid)
+            g.record_environment = lambda: seen.append(1)
             g.start()
-            assert seen == [1], (cls, seen)
-        ok += 1; print("PASS Game subclasses' start() overrides record once, after the game runs")
+            assert seen == [], "a fake pid (no game process) must not write the durable record"
+        ok += 1; print("PASS every start records (override, nested, monkeypatched by assignment); fake pids do not")
 
     # R1 (b): a runner library that owns a log gets the record there (battles.common.Log; keyed, so a new Log replaces the old sink)
     sys.path.insert(0, str(ROOT / "runs" / "experiments" / "battles"))
