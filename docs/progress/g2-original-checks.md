@@ -24,3 +24,6 @@ Data: `runs/experiments/data/run-exp-g2-original-checks/`; binaries in `artifact
 ## END
 All four checks answered; C7 from existing R85sA data (no new Wine). Nothing blocked.
 Review fixes R1, R2, R3 done (see above); no reviewer run, no merge.
+
+## Review round 2 fixes (PR #77, GPT-6.1 Sol review ses_ed3d9fca...; fixer: Sonnet subagent)
+- R1: `g2_checks.py save()` passes `<case>_<stamp>_<name>` to `save_as()`; `Game.save_as()` now raises DriverError on an existing destination (new `overwrite=False` parameter, explicit opt-in); `tests/test_save_as.py` offline test. Callers: `tests/test_orders.py`, `tests/make_fleet_fixture.py`, `tests/make_battle_fixtures.py` reuse fixed scratch names and now pass `overwrite=True` (the PR lists them).

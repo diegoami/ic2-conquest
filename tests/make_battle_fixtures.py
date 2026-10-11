@@ -47,7 +47,7 @@ def build_once(start, tag, log):
             raise DriverError("army 0 is at %s, not %s" % (g.army_pos(C.ROME_ARMY), C.STAGE_TILE))
         st = {"army0": g.army_state(0), "army10": g.army_state(10)}
         log("pre_attack_state", tag=tag, army0=st["army0"], army10=st["army10"])
-        p = g.save_as(f"FLD-RG_build_{tag}.SAV")
+        p = g.save_as(f"FLD-RG_build_{tag}.SAV", overwrite=True)
         return Path(p).read_bytes(), st
     finally:
         C.kill_stale(g)

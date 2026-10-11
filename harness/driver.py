@@ -706,9 +706,14 @@ class Game:
         p = G / "SEED.LOG"
         return len(p.read_text().splitlines()) if p.exists() else 0
 
-    def save_as(self, name):
+    def save_as(self, name, overwrite=False):
+        """File > Save as `name` in the game folder. Refuses an existing destination (rule 6: a rerun must never delete an earlier save);
+        pass overwrite=True only for a scratch file the caller itself wrote earlier in the same run."""
         target = G / name
-        target.unlink(missing_ok=True)
+        if target.exists():
+            if not overwrite:
+                raise DriverError(f"save_as: {target} already exists; use a unique name (run stamp) or overwrite=True for your own scratch file")
+            target.unlink()
         self.menu("file", FILE_ITEMS["save_as"])
         self.replace_field(name)
         self.key("Return")

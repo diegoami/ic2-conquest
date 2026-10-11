@@ -44,7 +44,7 @@ def keep(src, name):
 
 
 def save(g, name):
-    return keep(g.save_as(f"{CASE}_{name}"), name)
+    return keep(g.save_as(f"{CASE}_{STAMP}_{name}"), name)
 
 
 def shot(g, name, window="root"):
