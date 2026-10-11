@@ -15,3 +15,4 @@ minimax/MiniMax-M2.7 rank 1 spare reliability 0.99, heavy pick minimax/MiniMax-M
 5. Tests green; PR; ask the owner which external model reviews (rule 2); close #72 as superseded on merge.
 
 ## Progress
+- 50699d3 CLAUDE.md: the rules 1-13 in; L50/L51 kept as model facts + effort, marked superseded
