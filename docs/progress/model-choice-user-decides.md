@@ -51,3 +51,16 @@ All five findings fixed; sweep done. Next: the owner names the re-reviewer (rule
 
 ## END (round 2 fixes, 2026-10-11)
 All four findings fixed. Next: the owner names the re-reviewer (rule 2).
+
+## Review round 3 fixes
+- R2 (1b03fe2): external_review.py --resume runs model_error() on the recorded model (DeepSeek, exactly one model) and
+  the family check against the implementers recorded in state.json (new key "implementers", written by run_one; a legacy state.json
+  without it takes them from the PR's commits and labels); refuses with exit 2 and "refused: cannot resume". New test
+  resume_applies_the_rules_of_a_new_run (legacy DeepSeek, recorded family, legacy family, two models refused; valid resumes).
+- R1 (d741d91): HANDOVER.md: the two "Backend: minimax ... check minimax quota only" lines (188, 280) carry an inline superseded
+  2026-10-11 marker; the quota-tracker row says its /recommend is a suggestion only. Grep for L50, chain, fallback, use X found no
+  other active model-selection line (line 374 "Fallback" is a game-state experiment). Past sections not rewritten.
+- Checks: tests/test_reviewer_prompt.py 35/35, external_review.py --self-test 83/83.
+
+## END (round 3 fixes, 2026-10-11)
+Both findings fixed. Next: the owner names the re-reviewer (rule 2).
