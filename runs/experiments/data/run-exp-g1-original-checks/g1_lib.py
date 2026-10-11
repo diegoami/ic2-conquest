@@ -40,6 +40,19 @@ def keep(src, name):
     shutil.copy2(src, dst); _hash_line(dst); return dst.name
 
 
+AUTO_SEQ = [0]
+
+
+def keep_auto(name, turn=None, tag=""):
+    """Review fix R1(b): keep at once (copy, hash, log) the autosave `name` the game folder holds now, under a case/stamp/turn name, so a later
+    New Game or another run can never take the only copy. Returns the kept name."""
+    src = G / name
+    AUTO_SEQ[0] += 1       # several saves of one run can carry the same AUTO name (one per game opened in the process): a sequence number keeps them apart
+    kept = keep(src, f"autosave{AUTO_SEQ[0]:02d}_{tag + '_' if tag else ''}t{turn if turn is not None else 'x'}_{name}")
+    log("autosave_kept", autosave=name, turn=turn, seq=AUTO_SEQ[0], tag=tag, kept=kept, sha256=sha(src), size=src.stat().st_size)
+    return kept
+
+
 def save(g, name):
     """File > Save As under a unique name, then keep a copy (never overwrites: Game.save_as refuses an existing file)."""
     return keep(g.save_as(f"g1_{CASE.replace(':', '_')}_{STAMP}_{name}"), name)
@@ -73,8 +86,13 @@ def boxes(g):
 
 def staged(src, ops, tag, extra=None):
     """Copy of src with the L1 ops applied (stage.apply) and `extra(bytearray)` for edits stage.py has no op for; stamped unique name."""
-    b = bytearray(Path(src).read_bytes()); stage.apply(b, ops)
+    b = bytearray(Path(src).read_bytes()); n0 = len(b); stage.apply(b, ops)
     if extra: extra(b)
+    # review fix R3: every staging helper must preserve the save's length (an edit that inserts or drops bytes shifts every later field and
+    # corrupts the save; the first hc mercenary staging did exactly that). `extra.grows = True` marks a helper that adds whole records on purpose.
+    if len(b) != n0 and not getattr(extra, "grows", False):
+        raise SystemExit(f"staging {tag!r} changed the save length {n0} -> {len(b)}: a slice assignment of another size? refusing to write")
+    sav.parse(bytes(b))
     dst = ART / f"{CASE.replace(':', '_')}_{STAMP}_staged_{tag}_{Path(src).stem}.SAV"; dst.write_bytes(bytes(b)); _hash_line(dst)
     log("staged", src=Path(src).name, src_sha256=sha(src), dst=dst.name, ops=ops, extra=getattr(extra, "__doc__", None))
     return dst
@@ -95,7 +113,9 @@ def add_unit(army, label, typ, troops, quality, name):
         for k in range(20):
             o = base + 16 + 32 * k
             if struct.unpack_from("<h", b, o + 4)[0] <= 0:
-                struct.pack_into("<4h", b, o, label, stage.TYPES[typ], troops, quality); b[o + 8:o + 32] = name.encode("latin1").ljust(24, b"\0"); return
+                raw = name.encode("latin1")
+                if len(raw) > 23: raise ValueError(f"unit name {name!r} is {len(raw)} bytes: the field holds 23 bytes + NUL (24)")   # R3: ljust(24) of 28 bytes inserted 4
+                struct.pack_into("<4h", b, o, label, stage.TYPES[typ], troops, quality); b[o + 8:o + 32] = raw.ljust(24, b"\0"); return
         raise ValueError("army full")
     f.__doc__ = f"army {army}: first empty slot := label {label} {typ} {troops} q{quality} {name!r}"
     return f

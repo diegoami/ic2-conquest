@@ -23,7 +23,7 @@ try:
         log("loaded", save=START.name, seed_line=g.seed_line, army0=g.army_state(0))
         balance_sheet(g, "control_no_merc"); save(g, "control_loaded.SAV")
         variants = {"li": ("merc_li3000_q6", add_unit(0, 11, "li", 3000, 6, "Gallic Foot  Battalion")),
-                    "hc": ("merc_hc2400_q9", add_unit(0, 35, "hc", 2400, 9, "Egyptian Dragoons  Battalion")),
+                    "hc": ("merc_hc2400_q9", add_unit(0, 35, "hc", 2400, 9, "Egyptian Cav  Battalion")),
                     "hi": ("merc_hi4000_q8", add_unit(0, 11, "hi", 4000, 8, "Gallic Guards  Battalion"))}
         for tag, extra in [variants[sys.argv[2]]]:
             src = staged(START, [], tag, extra)
@@ -62,11 +62,45 @@ try:
         balance_sheet(g, tag + "_before")
         try:
             name, texts = g.end_turn()
+            keep_auto(name, g.turn_number())
             time.sleep(2); log("end_turn_ok", autosave=name, texts=texts, windows_after=windows(g), boxes_after=boxes(g), memory_after=balance_from_memory(g), turn=g.turn_number(), root=shot(g, tag + "_after_end_turn"))
         except drv.GameOver as e:
             log("game_over", text=e.text, windows=windows(g), root=shot(g, tag + "_game_over"), memory=balance_from_memory(g))
         except DriverError as e:
             log("end_turn_error", error=repr(e), boxes=boxes(g), windows=windows(g))
+    elif CASE == "G2_depose_pair":
+        # review fix R2: deposition cases with a deposition-triggering positive control in the SAME Wine process. Args: <tag>:<treasury> ... in order,
+        # e.g. `control:-5200 test:-5100`. Wealth 2,577,000 (unrounded line -5,154). Each save is staged (L1: treasury, wealth), opened in the one
+        # process (the first with Game.load), End turn once; a deposition ("End of Game" window) is read and closed with OK before the next open.
+        seq = [(a.split(":")[0], int(a.split(":")[1])) for a in sys.argv[2:]]
+        for i, (tag, treasury) in enumerate(seq):
+            src = staged(START, [("treasury", 0, treasury)], f"{tag}{abs(treasury)}", set_wealth(0, 2_577_000))
+            if i == 0: g.load(src, seed=12345)
+            else:
+                g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            log("loaded", tag=tag, order=i, treasury_staged=treasury, memory=balance_from_memory(g), pid=g.pid, turn=g.turn_number())
+            try:
+                name, texts = g.end_turn()
+                kept = keep_auto(name, g.turn_number(), tag)
+                time.sleep(2)
+                eog = bool(g.find_windows("^End of Game$"))     # the box can open after the autosave line (as in the first runs)
+                log("end_turn_ok", tag=tag, order=i, deposed=eog, autosave=name, kept=kept, texts=texts, windows_after=windows(g), boxes_after=boxes(g), memory_after=balance_from_memory(g),
+                    turn=g.turn_number(), root=shot(g, f"{tag}{abs(treasury)}_after_end_turn"))
+                if eog:
+                    cs = g.controls("End of Game"); log("end_of_game_controls", controls=[(c["cls"], c["text"]) for c in cs])
+                    for _ in range(3):
+                        g.click_control(g.control(cs, text="OK"), pause=1.5)
+                        if not g.find_windows("^End of Game$"): break
+                    log("end_of_game_closed", closed=not g.find_windows("^End of Game$"), windows=windows(g), pid_alive=Path(f"/proc/{g.pid}").exists())
+            except drv.GameOver as e:
+                log("game_over", tag=tag, order=i, deposed=True, text=e.text, windows=windows(g), root=shot(g, f"{tag}{abs(treasury)}_game_over"), memory=balance_from_memory(g))
+                cs = g.controls("End of Game"); log("end_of_game_controls", controls=[(c["cls"], c["text"]) for c in cs])
+                for _ in range(3):
+                    g.click_control(g.control(cs, text="OK"), pause=1.5)
+                    if not g.find_windows("^End of Game$"): break
+                log("end_of_game_closed", closed=not g.find_windows("^End of Game$"), windows=windows(g), pid_alive=Path(f"/proc/{g.pid}").exists())
+            except DriverError as e:
+                log("end_turn_error", tag=tag, order=i, error=repr(e), boxes=boxes(g), windows=windows(g))
     elif CASE == "G3_cap":
         variant = sys.argv[2]            # natural_target3 | own3
 
@@ -233,6 +267,7 @@ try:
         cnt, ln = news(); log("news_lines_start", count=cnt, lines=[(i, t) for i, t in ln], root=shot(g, "start"))
         for rnd in range(1, 7):
             name, texts = g.end_turn()
+            keep_auto(name, g.turn_number())
             cnt, ln = news()
             heads = [(i, t) for i, t in ln if "Week" in t]
             log("after_round", round=rnd, autosave=name, popups=texts, count=cnt, week_lines=[(i, repr(t), t.encode("latin1").hex()) for i, t in heads], all_lines=ln,
@@ -291,7 +326,7 @@ try:
                 dummy = bytearray(b[o + 2:o + 2 + 656]); struct.pack_into("<h", dummy, 4, 15)
                 for k in range(20): struct.pack_into("<h", dummy, 16 + 32 * k + 4, 0)
                 end = o + 2 + na * 656; b[end:end] = bytes(dummy) * (target - na); struct.pack_into("<h", b, o, target)
-            f.__doc__ = f"army table padded to {target} records (dummies: owner 15, every slot empty)"
+            f.__doc__ = f"army table padded to {target} records (dummies: owner 15, every slot empty)"; f.grows = True
             return f
         def mobilize(tag):
             g.open_recruit(); cs = g.controls("Army recruits"); w = g.find_windows("^Army recruits$")[0][0]; g.raise_window(w); time.sleep(0.5)

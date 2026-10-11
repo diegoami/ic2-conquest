@@ -19,3 +19,19 @@ Checks 2, 3, 5, 6, 7, 8, 9, 10 of `runs/experiments/data/run-exp-gap-v050/rows_g
 
 ## END
 All eight checks (2, 3, 5, 6, 7, 8, 9, 10) answered; nothing blocked. Not done: a real X-button click (SC_CLOSE posted instead), staged hc mercenary (crashed the process on load), G3 ally/war target. No reviewer, no merge.
+
+## Review fixes (PR #79; subagent Sonnet, wound down at the owner's request)
+
+- 485fb74 R1(a,c): `Game.new_game` moves AUTO* aside; offline test; G10 usable run's autosaves recovered (`g1_recover.py`).
+- next commit: R1(b) `keep_auto` in runner (G2_depose, G10, pair), R2 `G2_depose_pair` + 6 logs, R3 staging length assert and name check, finding "Review fixes" section.
+
+## END (review fixes)
+Done: R1 (a driver + test, c recovery; b runner keeps autosaves in G2_depose, G10 and the pair case); R2 (4 paired logs: control deposes, -5,100 and -4,990 do not, both orders); R3 code (assert + name validation) and text.
+Remaining, with the next step:
+- R1 G10 replacement not needed (usable run recovered); G2_depose first-run saves are lost (stated). Also list other deletion paths in the PR: `harness/driver.py` Xvfb lock (not a measurement), `set_seed(None)` unlinks SEED.TXT (input file, value in SEED.LOG), `save_as(overwrite=True)` caller-scratch only; `harness/new_game.sh` fixed to move aside; `Game.open` copies a save over a same-named file in the game folder (not fixed: decide).
+- R3: run `python3 g1_checks.py G2_merc hc` (name "Egyptian Cav  Battalion" already in `g1_checks.py`), verify Balance sheet, write it into the finding.
+- R4: text note added; still qualify the "agreed" sentence in the Data paragraph and cite `-232104` there.
+- R5: correct the `FUN_0044a120` text (last qualifying army kept, capacity checked after, troop gate includes the incoming unit); extend `make_code_extract.py` with the helper bodies (`FUN_0044a120`, `FUN_0044a4e0`, `FUN_00449f08`) or narrow the claim.
+- R6: extend `make_exe_strings.py` with "already trades with", "trades with 3" and variants (negative search kept), or narrow the claim to the observed refusal and `TPolitics_MakeTrade`.
+- R7: replace the raw clicks (117,117) and (344,194) in the G5 branch of `g1_checks.py` with control-derived targeting (inspect `g.controls("Imperial Conquest 2")` on the New Game form), verify Rome's human flag and the form's closing, re-run `G5 patched`.
+After each Wine run: `scripts/archive_measurements.py run-exp-g1-original-checks --commit` (it printed it did not commit because of an ignored __pycache__ path; commit by hand), `python3 runs/experiments/data/run-exp-g1-original-checks/release_sync.py`.
