@@ -15,9 +15,9 @@ agent, no review header; nothing posted, NO fallback to another model: diagnose 
 Flow: unique detached worktree at the PR head (removed in `finally`) -> a brief per attempt, with the PR
 body pasted in -> scripts/opencode_watched.py -> validate the review's shape -> re-check the head SHA ->
 ONE comment (+ a status label with --apply-label). A review is never thrown away: a readable review is normalised and acted
-on; one whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4. Only an `api` failure
-(opencode_watched.py: the provider did not answer) moves the chain to the next model; a `process` failure, "no review at all"
-(no header line) included, stops it with exit 6.
+on; one whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4. An `api` failure
+(opencode_watched.py: the provider did not answer) ends the call with exit 3 (no other model runs); a `process` failure, "no review
+at all" (no header line) included, ends it with exit 6.
 Model: exactly ONE, the one the user named (CLAUDE.md "Choosing models", the owner 2026-10-11): no default and no chain; a list
 is refused (exit 2). The quota check only reports: if the named model's provider is exhausted the script exits 3 and says so; it never
 picks another model. Effort: light models #high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). On exit 3
@@ -70,7 +70,7 @@ LUNA_WINDOW = ("openai/gpt-5.6-luna", "gpt-5.6-luna:7d")                # GPT-5.
 
 
 def fetch_quota(provider):
-    """quota-tracker's record for one provider, or None when the service cannot be reached (then the chain goes on: L50)."""
+    """quota-tracker's record for one provider, or None when the service cannot be reached (then nothing is reported as exhausted)."""
     try:
         with urllib.request.urlopen(f"{QUOTA_URL}/quota/{provider}", timeout=5) as r:
             return json.loads(r.read().decode())
@@ -79,7 +79,7 @@ def fetch_quota(provider):
 
 
 def quota_skip(model, fetch=fetch_quota):
-    """harness_imperial L50: the reason to skip this model now ("quota exhausted ..."), or None to use it. A provider whose status is
+    """The reason the named model cannot run now ("quota exhausted ..."), or None. Only reports: it never picks another model. A provider whose status is
     'exhausted' is skipped; GPT-5.6 Luna is judged on its own 'gpt-5.6-luna:7d' window instead (usable under 95 % even when openai is
     exhausted). An unknown provider, or no answer from quota-tracker, never skips."""
     mid = ow.split_model(model)[0]
@@ -125,7 +125,7 @@ def header(kind, model, failures):
 
 
 def implementer_names(pr):
-    """Names to exclude from the chain: Co-Authored-By trailers and model:<name> labels."""
+    """Names of the implementer(s), whose model family may not review: Co-Authored-By trailers and model:<name> labels."""
     names = set()
     for c in pr.get("commits", []):
         for m in re.finditer(r"Co-Authored-By:\s*([^<\n]+?)\s*(?:<|$)", c.get("messageBody", ""), re.I | re.M):
@@ -348,6 +348,18 @@ def self_test():
         print(f"{'PASS' if ok else 'FAIL'} effort {model}: {got}")
         bad += 0 if ok else 1
         n += 1
+    for impl, rev, want in (("Claude Sonnet 5.5", "anthropic/claude-opus-4", True), ("Claude Opus", "anthropic/claude-sonnet-5", True),
+                            ("openai/gpt-6.1-sol", "openai/gpt-5.6-luna#high", True), ("GPT-6.1 Sol", "openai/gpt-5.6-luna", True),
+                            ("minimax/MiniMax-M3", "minimax/MiniMax-M2.7", True), ("MiniMax-M3", "minimax/MiniMax-M2.7", True),
+                            ("zai-coding-plan/glm-5.3", "alibaba-token-plan/glm-5.3#low", True), ("GLM 5.3", "zai-coding-plan/glm-5.3-flash", True),
+                            ("mimo-v2.6-pro", "opencode-go/mimo-v2.6-flash", True), ("model:sonnet", "anthropic/claude-opus-4", True),
+                            ("Claude Sonnet 5.5", "openai/gpt-5.6-luna#high", False), ("openai/gpt-6.1-sol", "minimax/MiniMax-M2.7", False),
+                            ("minimax/MiniMax-M3", "zai-coding-plan/glm-5.3", False), ("Claude Opus", "opencode-go/mimo-v2.6-flash", False)):
+        got = excluded(rev, {impl.lower()})
+        ok = got == want
+        print(f"{'PASS' if ok else 'FAIL'} family {impl!r} vs {rev!r}: refused={got}")
+        bad += 0 if ok else 1
+        n += 1
     for spec, want in (("openai/gpt-5.6-luna#high", None), ("", "required"), ("a/b,c/d", "one model"), ("opencode-go/deepseek-v4.1-flash", "DeepSeek"),
                        ("alibaba-token-plan/qwen3.8-flash", None)):
         got = model_error(spec)
@@ -382,10 +394,41 @@ def effort(model):
     return out
 
 
+ROUTERS = {"opencode", "opencode-go", "openrouter", "alibaba-token-plan", "alibaba", "github-copilot"}   # a route, not a family
+FAMILIES = (("claude", ("claude", "anthropic", "opus", "sonnet", "haiku")),
+            ("openai", ("openai", "gpt", "codex", "luna", "sol", "chatgpt")),
+            ("minimax", ("minimax",)),
+            ("zai", ("zai", "glm", "zhipu", "z")),
+            ("mimo", ("mimo", "xiaomi")),
+            ("qwen", ("qwen", "qwq")),
+            ("deepseek", ("deepseek",)),
+            ("google", ("gemini", "gemma", "google")),
+            ("kimi", ("kimi", "moonshot")),
+            ("nvidia", ("nemotron", "nvidia")),
+            ("cohere", ("cohere", "north", "command")),
+            ("llama", ("llama", "meta")))
+
+
+def family(name):
+    """The model family of a model id or an implementer name ('Claude Sonnet 5.5', 'openai/gpt-6.1-sol', 'minimax/MiniMax-M3',
+    'zai-coding-plan/glm-5.3', 'opencode-go/mimo-v2.6-pro'), or None when it is not recognised. Routes (opencode-go, openrouter,
+    alibaba-token-plan) are not families; the model's own name decides. A provider prefix such as zai-coding-plan counts as its
+    family's name (token 'zai')."""
+    base = ow.split_model(name)[0] if "/" in name else name
+    tokens = [t for seg in base.lower().split("/") if seg not in ROUTERS for t in re.split(r"[^a-z0-9]+", seg) if t]
+    for fam, keys in FAMILIES:
+        if any(t in keys for t in tokens):
+            return fam
+    return None
+
+
 def excluded(model, excl):
-    """True if the model is one of the excluded names (the implementer's): compared without punctuation,
-    so the trailer 'DeepSeek V4.1 Flash' matches 'opencode-go/deepseek-v4.1-flash'."""
+    """True if the model is of the implementer's model FAMILY (CLAUDE.md, Choosing models rule 4), or one of the excluded names
+    compared without punctuation (so 'DeepSeek V4.1 Flash' matches 'opencode-go/deepseek-v4.1-flash')."""
     flat = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
+    fam = family(model)
+    if fam and any(family(e) == fam for e in excl if e):
+        return True
     return any(e and flat(e) in flat(ow.split_model(model)[0]) for e in excl)
 
 
@@ -461,24 +504,23 @@ def process_message(model, r):
             + (f"resume with --resume {rd}" if sid else "no session to resume: fix the cause and run again"))
 
 
-def run_chain(models, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print):
-    """Try the models in order. Returns (final, stop): final = (model, parsed review) or None; stop = (model, result) when a PROCESS
-    failure ended the chain (nothing falls through: that failure is diagnosed and resumed, not handed to another model). Only an
-    `api` failure (the provider did not answer) is appended to `failures` and moves to the next model."""
-    for m in models:
-        hdr = header(kind, m, failures)
-        k = len(failures) + 1
-        brief = logs / f"brief-{k}.md"
-        brief.parent.mkdir(parents=True, exist_ok=True)
-        brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
-        meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr}
-        r = safe_run(brief, wt, m, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
-        pr, r = judge(r, hdr, logs / f"run-{k}")
-        if pr:
-            return (m, pr), None
-        if r["kind"] != "api":
-            return None, (m, r)
-        failures.append((m, r["class"]))
+def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print):
+    """Run exactly ONE model (the one the user named). Returns (final, stop): final = (model, parsed review) or None; stop = (model,
+    result) when a PROCESS failure ended the run (diagnosed and resumed, not handed to another model). An `api` failure (the provider
+    did not answer) is appended to `failures` and ends the call: no other model runs; the user names the next one."""
+    hdr = header(kind, model, failures)
+    k = len(failures) + 1
+    brief = logs / f"brief-{k}.md"
+    brief.parent.mkdir(parents=True, exist_ok=True)
+    brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
+    meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr}
+    r = safe_run(brief, wt, model, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
+    pr, r = judge(r, hdr, logs / f"run-{k}")
+    if pr:
+        return (model, pr), None
+    if r["kind"] != "api":
+        return None, (model, r)
+    failures.append((model, r["class"]))
     return None, None
 
 
@@ -636,7 +678,7 @@ def main():
         base = sh("git", "merge-base", bref, head)
         excl |= implementer_names(meta)
     models = [m for m in models if not excluded(m, excl)]      # the implementer never reviews its own PR
-    skipped = []                                               # L50: a model whose provider is out of quota is skipped, and the header says so
+    skipped = []                                               # a named model whose provider is out of quota does not run (exit 3); no other model is picked
     for m in list(models):
         why = quota_skip(m)
         if why:
@@ -674,7 +716,7 @@ def main():
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
-        final, stop = run_chain(models, kind, n, meta["title"], meta["body"], base, head, wt, logs, extra, a.agent, failures,
+        final, stop = run_one(models[0], kind, n, meta["title"], meta["body"], base, head, wt, logs, extra, a.agent, failures,
                                 WORK / "opencode-data", log=lambda s: print(s, flush=True))
     finally:
         drop_worktree(wt, kind, n)      # the run dirs under logs stay: they are the record a --resume continues

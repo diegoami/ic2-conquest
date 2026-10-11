@@ -26,3 +26,7 @@ minimax/MiniMax-M2.7 rank 1 spare reliability 0.99, heavy pick minimax/MiniMax-M
 ## END (2026-10-11)
 Done: plan steps 1-4; tests: tests/test_reviewer_prompt.py 31/31, external_review.py --self-test 57/57. Next: the owner names the
 external reviewer (rule 2); on approval + green CI merge and close #72 as superseded. Memory notes that name old chains get a pointer.
+
+## Review round 1 fixes
+- R1+R2+R5: external_review.py: run_chain removed, run_one runs exactly one model (api failure -> exit 3, no other model); family()
+  maps ids and implementer names to a family, excluded() refuses a same-family reviewer (exit 2); tests 32/32, self-test 71/71.
