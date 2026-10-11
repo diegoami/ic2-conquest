@@ -15,5 +15,8 @@ Data: `runs/experiments/data/run-exp-g2-original-checks/`; binaries in `artifact
 - C3, C4, C4b, C5a, C5b run; C5c running (17/18 tests); C7 re-analysis done (no Wine); decompile reading of the move/select/storm code done. Batch commit now.
 - C5c done (18 tests), archived, released (132 files). Findings draft and README written; PR opened.
 
+## Review fixes (PR #77, GPT-6.1 Sol review ses_ed3f05ca...; fixer: Sonnet subagent)
+- R1 extract: `make_code_extract.py` -> `code_extract_g2.txt` (pinned dump SHA in header); `c7_storm_model.py` -> `c7_storm_model.txt` (exact enumeration of the army rule); `c7_storm_reanalysis.py` now writes next free version (R3 part; re-run gave `.v2` files, identical text); `g2_checks.py` `sizes()` writes unique images (R3 runner part).
+
 ## END
 All four checks answered; C7 from existing R85sA data (no new Wine). Nothing blocked.

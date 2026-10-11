@@ -251,15 +251,22 @@ try:
             tests = [(a.split(":")[0], int(a.split(":")[1]), a.split(":")[2] if a.count(":") > 1 else "default") for a in sys.argv[2:]]
         log("plan", tests=tests)
 
+        READINGS = []       # every sizes() reading: index, stamp, images, OCR text; attached to the split_test line as r["size_readings"]
+
         def sizes(wid, tag=None):
-            """(left, right) sizes shown in the Split unit dialog: the two number boxes, cropped, enlarged, OCR'd as digits."""
-            p = WORK / "shots" / "_split.png"; g.shot(p, window=str(wid)); out = []
-            for x in (8, 140):
-                c = WORK / "shots" / f"_split_{x}.png"
+            """(left, right) sizes shown in the Split unit dialog: the two number boxes, cropped, enlarged, OCR'd as digits.
+            Every reading writes its own uniquely named images (<case>_<stamp>_<test>_rd<NNN>_{full,left,right}.png), hashed into SAVES.sha256
+            and listed in READINGS (review fix R3: the earlier fixed names _split*.png were overwritten on every call)."""
+            n = len(READINGS); base = f"{CURTEST[0]}_rd{n:03d}"
+            full = shot(g, base + "_full", window=str(wid)); p = ART / full; out = []; rec = {"reading": n, "time": time.strftime("%H:%M:%S"), "full": full, "crops": {}}
+            for x, side in ((8, "left"), (140, "right")):
+                c = ART / f"{CASE}_{STAMP}_{base}_{side}.png"
                 subprocess.run(["convert", str(p), "-crop", "58x26+%d+115" % x, "+repage", "-resize", "400%", "-colorspace", "Gray", str(c)], check=True)
+                with (D / "SAVES.sha256").open("a") as f: f.write(f"{sha(c)}  {c.name}\n")
                 t = subprocess.run(["tesseract", str(c), "-", "--psm", "7", "-c", "tessedit_char_whitelist=0123456789,"], capture_output=True, text=True).stdout.strip()
-                out.append(int(t.replace(",", "")) if t.replace(",", "").isdigit() else t)
-            return tuple(out)
+                v = int(t.replace(",", "")) if t.replace(",", "").isdigit() else t
+                out.append(v); rec["crops"][side] = {"image": c.name, "ocr": t, "value": v}
+            READINGS.append(rec); return tuple(out)
 
         def run_to_end(wid, sp, fy, cap=40):
             """Press spinner `sp` (fy 0.25 = up arrow, 0.75 = down) until the sizes stop changing twice in a row; returns the readings."""
@@ -269,8 +276,9 @@ try:
                 if len(seq) >= 3 and seq[-1] == seq[-2] == seq[-3]: break
             return seq
 
+        CURTEST = [""]
         for n, (ty, tr, mode) in enumerate(tests):
-            tag = f"{ty}{tr}_{mode}"
+            tag = f"{ty}{tr}_{mode}"; CURTEST[0] = tag; READINGS.clear()
             src = staged(START, [("units", 0, [(ty, tr, 6), ("hi", 5000, 6)])], tag)
             g.open(src); g.wait(g.loaded, 20, "loaded")
             log("loaded", test=tag, army0=army(g, 0), file=save(g, tag + "_before.SAV"))
@@ -305,6 +313,7 @@ try:
             r["popups_after"] = g.dismiss_popups()          # a refusal box ("This unit is too small to split.") is closed before the Change units dialog
             g._close_change_units(cs)
             r["army0_after"] = army(g, 0); r["file"] = save(g, tag + "_after.SAV")
+            r["size_readings"] = list(READINGS)
             log("split_test", **r)
     else:
         raise SystemExit("unknown case " + CASE)

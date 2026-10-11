@@ -5,11 +5,14 @@ rough sea, Spring, army 2 aboard (a synthetic cargo), seeds 1-5, one storm each;
 This script re-reads, read-only: the fixture FIX_T4_R85sA.SAV (before) and ST_R85sA_seed1_AUTO0721.SAV (after, seed 1) from the main checkout's
 artifacts/run-exp-storms/ (hashes checked against run-exp-storms/SAVES.sha256), and the five seeds' after-state from t4_trials.json (the only
 record of seeds 2-5: those saves were not kept). It also recomputes the army-damage routine of the pinned decompile (FUN_0044b4f8 -> FUN_0044ae20)
-for the observed fleet losses. Writes c7_storm_reanalysis.json and c7_storm_reanalysis.txt beside it."""
+for the observed fleet losses. Writes c7_storm_reanalysis.json and c7_storm_reanalysis.txt beside it, each to the next free version (.v2, .v3 ...) if it exists: never overwrites.
+Note (review fix R1): the field random_whole_unit_removals below counts the 5 units before the under-limit removals; c7_storm_model.py has the exact rule order."""
 import hashlib, json, sys
 from pathlib import Path
 R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))
 from state import sav
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from versioned import write_new   # rule 6: outputs are written to the next free version, never over an earlier one
 SRC = Path("/home/diego/projects/ic2-conquest/artifacts/run-exp-storms")
 D = Path(__file__).resolve().parent
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
@@ -51,11 +54,11 @@ for dmg in range(6, 14):
         per[f"{ty}{tr}"] = (lo, hi, lo < lim[ty] // 10 or hi < lim[ty] // 10)
     sim.append({"storm_dmg": dmg, "d": d, "ships_after": ships, "units_after_troops_range_(rand=14..0)_and_below_limit/10": per, "random_whole_unit_removals": (len(per) * d) // 250 + 1 if d > 70 else 0})
 out["decompile_rule_recomputed"] = sim
-(D / "c7_storm_reanalysis.json").write_text(json.dumps(out, indent=1, default=str))
+jpath = write_new(D / "c7_storm_reanalysis.json", json.dumps(out, indent=1, default=str))
 lines = []
 lines.append("army 2 before (FIX_T4_R85sA.SAV, turn %s): %s troops, units %s" % (out["before_FIX_T4_R85sA"]["turn"], out["before_FIX_T4_R85sA"]["army2"]["troops"], out["before_FIX_T4_R85sA"]["army2"]["units"]))
 lines.append("fleet 0 before: %s" % out["before_FIX_T4_R85sA"]["fleet0"])
 lines.append("seed 1 after (ST_R85sA_seed1_AUTO0721.SAV, turn %s): army 2 %s ; fleet 0 %s" % (out["after_seed1"]["turn"], out["after_seed1"]["army2"], out["after_seed1"]["fleet0"]))
 for r in rows: lines.append("seed %(seed)d fleet (ships,condition,army) %(fleet_before)s -> %(fleet_after)s ; army 2 after: %(army2_after)s ; %(news)s" % r)
 for s in sim: lines.append(json.dumps(s))
-(D / "c7_storm_reanalysis.txt").write_text("\n".join(lines) + "\n"); print("\n".join(lines))
+tpath = write_new(D / "c7_storm_reanalysis.txt", "\n".join(lines) + "\n"); print("\n".join(lines)); print("wrote", jpath, tpath)
