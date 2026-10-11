@@ -17,3 +17,12 @@ minimax/MiniMax-M2.7 rank 1 spare reliability 0.99, heavy pick minimax/MiniMax-M
 ## Progress
 - 50699d3 CLAUDE.md: the rules 1-13 in; L50/L51 kept as model facts + effort, marked superseded
 - ed349e1 external_review.py: --model required, one model; tests 31/31, self-test 57/57
+- c76f7d9 docs/external-review.md (roles: the user's choice; history kept), docs/environment.md (placements superseded),
+  four proposals (a superseded note under the title), .claude/skills/review-pr (rule 2; no fixed model; never an automatic fallback)
+- Scripts, rule 13: `external_review.py --resume <run dir>` already continues the recorded session (`opencode run --session`) in a
+  worktree recreated at the recorded path and head (the reviewer writes no files, so nothing is lost); no change needed.
+  `opencode_watched.py` takes an explicit `--model` and never chose one.
+
+## END (2026-10-11)
+Done: plan steps 1-4; tests: tests/test_reviewer_prompt.py 31/31, external_review.py --self-test 57/57. Next: the owner names the
+external reviewer (rule 2); on approval + green CI merge and close #72 as superseded. Memory notes that name old chains get a pointer.
