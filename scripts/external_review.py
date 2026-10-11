@@ -514,7 +514,7 @@ def process_message(model, r):
             + (f"resume with --resume {rd}" if sid else "no session to resume: fix the cause and run again"))
 
 
-def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print):
+def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print, implementers=()):
     """Run exactly ONE model (the one the user named). Returns (final, stop): final = (model, parsed review) or None; stop = (model,
     result) when a PROCESS failure ended the run (diagnosed and resumed, not handed to another model). An `api` failure (the provider
     did not answer) is appended to `failures` and ends the call: no other model runs; the user names the next one."""
@@ -523,7 +523,8 @@ def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, fai
     brief = logs / f"brief-{k}.md"
     brief.parent.mkdir(parents=True, exist_ok=True)
     brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
-    meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr}
+    meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr,
+            "implementers": sorted(implementers)}   # recorded so --resume applies the same family rule
     r = safe_run(brief, wt, model, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
     pr, r = judge(r, hdr, logs / f"run-{k}")
     if pr:
@@ -574,6 +575,17 @@ def resume_run(run_dir, apply_label, force=False):
         print(f"{rd}: no resumable state.json (needs {', '.join(need)})", file=sys.stderr)
         return 2
     kind, n, head = st["kind"], st["number"], st["head"]
+    # resume is never a way around the rules: the recorded model faces the same checks as a new run's --model
+    bad = model_error(st["model"])
+    if not bad:
+        names = st.get("implementers")
+        if names is None:                                   # a legacy state.json: take the implementers from the PR as a new run does
+            names = sorted(implementer_names(gh_json("pr", "view", str(n), fields="title,body,headRefOid,baseRefName,commits,labels"))) if kind == "pr" else []
+        if names and excluded(st["model"], set(names)):
+            bad = f"the recorded model {st['model']} is of the implementer's model family (CLAUDE.md, Choosing models rule 4)"
+    if bad:
+        print(f"refused: cannot resume {rd}: {bad}", file=sys.stderr)
+        return 2
     why = None if force else ow.resume_refusal(rd)
     if why:                                                 # the limit holds across invocations (state.json resumes_used)
         print(why, file=sys.stderr)
@@ -655,6 +667,7 @@ def main():
         return 2
     models = [effort(m.strip()) for m in a.model.split(",") if m.strip()]
     excl = {e.strip().lower() for e in a.exclude_model.split(",") if e.strip()}
+    impl = set()
 
     if a.review_file:                                    # offline: parse a saved review, bill nothing
         hdr = header(kind, models[0], [])
@@ -729,7 +742,7 @@ def main():
             raise RuntimeError("worktree HEAD is not the head SHA")
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
         final, stop = run_one(models[0], kind, n, meta["title"], meta["body"], base, head, wt, logs, extra, a.agent, failures,
-                                WORK / "opencode-data", log=lambda s: print(s, flush=True))
+                                WORK / "opencode-data", log=lambda s: print(s, flush=True), implementers=impl)
     finally:
         drop_worktree(wt, kind, n)      # the run dirs under logs stay: they are the record a --resume continues
 

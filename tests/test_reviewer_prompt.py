@@ -536,6 +536,30 @@ def test_reviewer_of_the_implementers_family_is_refused():
     return "same-family reviewers (Claude/anthropic, gpt Sol/Luna, MiniMax M3/M2.7, GLM routes, mimo) are refused with exit 2; another family passes"
 
 
+def test_resume_applies_the_rules_of_a_new_run():
+    commits = [{"messageBody": "x\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>"}]
+    cases = (("legacy-deepseek", "opencode-go/deepseek-v4-pro", None, 2, "DeepSeek"),
+             ("recorded-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], 2, "family"),
+             ("legacy-family", "anthropic/claude-opus-4", None, 2, "family"),
+             ("two-models", "a/b,c/d", [], 2, "one model"),
+             ("valid", "provider/model", ["claude sonnet 5.5"], None, ""))
+    for tag, model, impl, want, word in cases:
+        with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
+            rd = d / "oldrun"
+            rd.mkdir()
+            st = {"kind": "pr", "number": 5, "head": HEAD, "session": "ses_fake", "hdr": "H", "brief": str(d / "brief.md"), "model": model,
+                  "agent": "external-reviewer", "data_dir": str(d / "data"), "worktree": str(d / "wt"), "status": "stopped", "pid": 2 ** 22 + 99}
+            if impl is not None:
+                st["implementers"] = impl
+            (rd / "state.json").write_text(json.dumps(st))
+            with main_env(d, None, ["--resume", str(rd)], commits=commits) as (got, posted, err, out):
+                if want == 2:
+                    assert got == 2 and word.lower() in err.lower() and "refused" in err and not posted and not (d / "count").exists(), (tag, got, err)
+                else:
+                    assert "refused: cannot resume" not in err, (tag, got, err)
+    return "--resume refuses a recorded DeepSeek / multi-model / implementer-family model (exit 2, nothing runs; a legacy state.json takes the implementers from the PR); a valid recorded model passes the checks"
+
+
 def test_main_exit_codes():
     one = ["--pr", "5", "--model", "provider/model"]
     with fake_opencode("main-process", ["crash", "crash", "crash", "ok"]) as d:
@@ -873,7 +897,7 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
-         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes", "resume_applies_the_rules_of_a_new_run", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",
