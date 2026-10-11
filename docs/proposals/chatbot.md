@@ -339,6 +339,10 @@ chatbot later needs its own repository (a web UI, heavy dependencies, a differen
 
 ## 13. How this proposal gets reviewed
 
+> **SUPERSEDED (2026-10-11).** Everything in this section below the line is history. The review plan now is: a PR with this file only; **one reviewer per review, named by the user** (`CLAUDE.md`, "Choosing models: the user decides", rule 2), run alone with `python3 scripts/external_review.py --pr <n> --model <the model the user named>`; the reviewer is never of the implementer's model family and never DeepSeek. No default chain, no quota-first order, and no fixed second opinion (a Claude pass only if the user names a Claude model for a review). The player decides, answers §12, and approves milestones; nothing is built before then.
+
+**History (superseded, do not follow):**
+
 1. A PR with this file only. 2. `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then OpenAI GPT-5.6
 Luna, the former default chain since 2026-10-05, superseded 2026-10-11; the quota check first, `CLAUDE.md` L50) for the first pass. 3. A Claude Opus pass with `/review-pr <n>` as the second opinion. 4. The player decides,
 answers §12, and approves milestones; nothing is built before then.
