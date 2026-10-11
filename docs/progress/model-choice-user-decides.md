@@ -37,3 +37,17 @@ external reviewer (rule 2); on approval + green CI merge and close #72 as supers
 
 ## END (round 1 fixes, 2026-10-11)
 All five findings fixed; sweep done. Next: the owner names the re-reviewer (rule 2).
+
+## Review round 2 fixes
+- R1: docs/progress/opencode-resilience.md: superseded marker at the top (DEFAULT_MODELS, chain, fallback); the other progress files
+  hold no model-choice rules (grep for DEFAULT_MODELS, chain, fallback, L50 found only this one).
+- R2: external_review.py: family() knows o1/o3/o4 (openai), grok/xai, Z.ai; the bare "z" token no longer means zai; with an
+  implementer, an unknown implementer alias or reviewer family is refused (exit 2) unless the user passes --confirm-family-differs
+  (chosen over --implementer-family: one flag, said after the user checked; it never lifts a proven same-family refusal). Tests.
+- R3: external_review.py: quota-tracker is information only; an exhausted provider prints a "quota note" and the named model runs;
+  a real refusal is an api failure (exit 3). Self-test/tests and docs/external-review.md updated.
+- R4: --model added to the release usage line of the docstring; every usage line in docs/external-review.md already had it.
+- Checks: tests/test_reviewer_prompt.py 34/34, external_review.py --self-test 83/83.
+
+## END (round 2 fixes, 2026-10-11)
+All four findings fixed. Next: the owner names the re-reviewer (rule 2).

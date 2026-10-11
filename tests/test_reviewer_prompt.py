@@ -46,7 +46,7 @@ if a[:1] == ["models"]:
     if (d / "models_err").exists():
         sys.stderr.write((d / "models_err").read_text() + "\\n")
         sys.exit(1)
-    print("provider/model")
+    print("provider/model"); print("openai/gpt-5.6-luna")
 elif a[:2] == ["debug", "agent"]:
     print(json.dumps({"name": a[2]}))
 elif a[:2] == ["session", "list"]:
@@ -484,7 +484,7 @@ def test_every_failure_reads_the_session_and_exports_are_per_attempt():
 
 
 @contextlib.contextmanager
-def main_env(d, plan, argv, commits=()):
+def main_env(d, plan, argv, commits=(), labels=(), quota=None):
     """er.main() against the fake opencode with git and gh stubbed: records every `gh ... comment` call. Yields (code, posted, stderr, out)."""
     import io
     import contextlib as cl
@@ -502,9 +502,9 @@ def main_env(d, plan, argv, commits=()):
             return BASE
         return ""
 
-    meta = {"title": "t", "body": "b", "headRefOid": HEAD, "baseRefName": "main", "commits": list(commits), "labels": []}
+    meta = {"title": "t", "body": "b", "headRefOid": HEAD, "baseRefName": "main", "commits": list(commits), "labels": [{"name": x} for x in labels]}
     saved = (er.sh, er.gh_json, er.quota_skip, er.pricing_note, er.REVIEW_ROOT, er.WORK, er.REPO, sys.argv)
-    er.sh, er.gh_json, er.quota_skip, er.pricing_note = fake_sh, (lambda *a, fields=None: meta), (lambda m: None), (lambda m: None)
+    er.sh, er.gh_json, er.quota_skip, er.pricing_note = fake_sh, (lambda *a, fields=None: meta), (lambda m: quota), (lambda m: None)
     er.REVIEW_ROOT, er.WORK, er.REPO = d / "review", d / "work", d / "repo"
     sys.argv = ["external_review.py"] + argv
     out, err = io.StringIO(), io.StringIO()
@@ -527,7 +527,7 @@ def test_reviewer_of_the_implementers_family_is_refused():
         assert er.excluded(rev, {impl.lower()}) == want, (impl, rev, want)
     # end to end: the trailer of a commit makes main() refuse a same-family reviewer with exit 2, nothing runs
     commits = [{"messageBody": "x\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>"}]
-    for rev, code in (("anthropic/claude-opus-4", 2), ("provider/model", 0)):
+    for rev, code in (("anthropic/claude-opus-4", 2), ("openai/gpt-5.6-luna", 0)):
         with fake_opencode("family-" + str(code), ["ok"]) as d:
             with main_env(d, None, ["--pr", "5", "--model", rev], commits=commits) as (got, posted, err, out):
                 assert got == code, (rev, got, err)
@@ -833,12 +833,47 @@ def test_reclassify_picks_the_newest_export_numerically():
     return "the newest export is chosen by attempt number (and k), not by file name order"
 
 
+def test_unknown_implementer_family_is_refused_unless_confirmed():
+    for name, fam in (("model:o3", "openai"), ("o3", "openai"), ("o4-mini", "openai"), ("GPT-5", "openai"), ("gemini-2.5-pro", "google"),
+                      ("grok-4", "xai"), ("Z.ai GLM 5.3", "zai"), ("z", None), ("z-something", None), ("zhipu", "zai"), ("zai-coding-plan/glm-5.3", "zai"),
+                      ("Some Human", None)):
+        assert er.family(name) == fam, (name, er.family(name), fam)
+    assert er.excluded("openai/gpt-5.6-luna", {"o3"}) and er.excluded("openai/gpt-5.6-luna", {"o4-mini"})
+    assert not er.excluded("zai-coding-plan/glm-5.3", {"z-something"})
+    rev = "openai/gpt-5.6-luna#high"
+    cases = (  # (labels, commits, extra argv, model, exit code)
+        (["model:o3"], (), [], rev, 2),                       # alias resolves to openai: same family
+        (["model:o4-mini"], (), ["--confirm-family-differs"], rev, 2),   # known family: the override does not lift a proven same-family review
+        (["model:mystery-llm"], (), [], rev, 2),              # unknown implementer alias: refused
+        (["model:mystery-llm"], (), ["--confirm-family-differs"], rev, 0),   # the user checked
+        (["model:sonnet"], (), [], "mystery/new-model", 2),   # unknown reviewer next to an implementer: refused
+        (["model:gemini"], (), [], rev, 0), (["model:sonnet"], (), [], rev, 0))
+    for i, (labels, commits, extra, model, code) in enumerate(cases):
+        with fake_opencode(f"unk-{i}", ["ok"]) as d:
+            with main_env(d, None, ["--pr", "5", "--model", model] + extra, commits=commits, labels=labels) as (got, posted, err, out):
+                assert got == code, (labels, extra, model, got, err)
+                if code == 2:
+                    assert not posted and not (d / "count").exists(), err
+    return "o3/o4-mini/gemini/grok aliases known; an unknown implementer alias or reviewer is refused (exit 2) unless --confirm-family-differs; bare 'z' is not zai"
+
+
+def test_quota_only_informs_the_named_model_runs():
+    with fake_opencode("quota-info", ["ok"]) as d:
+        with main_env(d, None, ["--pr", "5", "--model", "provider/model"], quota="quota exhausted (zai, usable in 1h)") as (code, posted, err, out):
+            assert code == 0 and len(posted) == 1 and runs_started(d) == 1, (code, err)
+            assert "quota note" in out and "exhausted" in out and "runs anyway" in out, out
+    with fake_opencode("quota-refused", ["429"]) as d:
+        with main_env(d, None, ["--pr", "5", "--model", "provider/model"], quota="quota exhausted (zai, usable in 1h)") as (code, posted, err, out):
+            assert code == 3 and not posted and runs_started(d) == 1, (code, err)
+    return "an exhausted provider only prints a note; the named model runs; a real refusal is an api failure (exit 3)"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
          "prompt_the_watcher_hands_to_opencode", "api_failure_ends_the_call_with_one_model", "reviewer_of_the_implementers_family_is_refused", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
-         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes",
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",

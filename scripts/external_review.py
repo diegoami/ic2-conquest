@@ -3,10 +3,10 @@
 posts the result. The model never writes to GitHub.
 
     external_review.py --pr 7 --model provider/model[#variant] [--apply-label] [--dry-run]
-    external_review.py --issue 9 --kind release [--brief-file F]
-    external_review.py --resume <run dir>        # continue a run that stopped, in the same OpenCode session
+    external_review.py --issue 9 --kind release --model provider/model[#variant] [--brief-file F]
+    external_review.py --resume <run dir>        # continue a run that stopped, in the same OpenCode session (the recorded model)
 
-Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (the named model's API did not answer, or its provider is exhausted;
+Exit: 0 posted · 2 usage (also: the family of an implementer or of the reviewer cannot be told, or is the same; --confirm-family-differs after the user checked) · 3 "OpenCode unavailable: <cause>" (the named model's API did not answer;
 nothing posted: ask the user which model next, CLAUDE.md "Choosing models" rule 7) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller
 reads it and decides) · 5 the PR head moved while the review ran (nothing posted) · 6 "OpenCode process failure: ..." (a
 failure of our own process: timeout after the automatic resumes, cut-off, crash, unreadable output, permission refusal, wrong
@@ -19,8 +19,8 @@ on; one whose verdict cannot be read or that looks cut off is posted with a note
 (opencode_watched.py: the provider did not answer) ends the call with exit 3 (no other model runs); a `process` failure, "no review
 at all" (no header line) included, ends it with exit 6.
 Model: exactly ONE, the one the user named (CLAUDE.md "Choosing models", the owner 2026-10-11): no default and no chain; a list
-is refused (exit 2). The quota check only reports: if the named model's provider is exhausted the script exits 3 and says so; it never
-picks another model. Effort: light models #high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). On exit 3
+is refused (exit 2). The quota check only informs (a note is printed, the named model runs anyway; a real refusal is an api failure, exit 3); it never
+blocks or picks a model. Effort: light models #high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). On exit 3
 the user names the next model; on exit 6 nobody falls back: the process failure is fixed and the run resumed.
 """
 import argparse
@@ -354,10 +354,18 @@ def self_test():
                             ("zai-coding-plan/glm-5.3", "alibaba-token-plan/glm-5.3#low", True), ("GLM 5.3", "zai-coding-plan/glm-5.3-flash", True),
                             ("mimo-v2.6-pro", "opencode-go/mimo-v2.6-flash", True), ("model:sonnet", "anthropic/claude-opus-4", True),
                             ("Claude Sonnet 5.5", "openai/gpt-5.6-luna#high", False), ("openai/gpt-6.1-sol", "minimax/MiniMax-M2.7", False),
-                            ("minimax/MiniMax-M3", "zai-coding-plan/glm-5.3", False), ("Claude Opus", "opencode-go/mimo-v2.6-flash", False)):
+                            ("minimax/MiniMax-M3", "zai-coding-plan/glm-5.3", False), ("Claude Opus", "opencode-go/mimo-v2.6-flash", False),
+                            ("model:o3", "openai/gpt-5.6-luna", True), ("o4-mini", "openai/gpt-5.6-luna", True), ("gemini", "google/gemini-2.5", True),
+                            ("grok", "xai/grok-4", True), ("Z.ai", "zai-coding-plan/glm-5.3", True)):
         got = excluded(rev, {impl.lower()})
         ok = got == want
         print(f"{'PASS' if ok else 'FAIL'} family {impl!r} vs {rev!r}: refused={got}")
+        bad += 0 if ok else 1
+        n += 1
+    for name, want in (("z", None), ("z-something", None), ("Z.ai", "zai"), ("zhipu", "zai"), ("model:o3", "openai"), ("grok", "xai"), ("mystery", None)):
+        got = family(name)
+        ok = got == want
+        print(f"{'PASS' if ok else 'FAIL'} family({name!r}) = {got}")
         bad += 0 if ok else 1
         n += 1
     for spec, want in (("openai/gpt-5.6-luna#high", None), ("", "required"), ("a/b,c/d", "one model"), ("opencode-go/deepseek-v4.1-flash", "DeepSeek"),
@@ -396,13 +404,14 @@ def effort(model):
 
 ROUTERS = {"opencode", "opencode-go", "openrouter", "alibaba-token-plan", "alibaba", "github-copilot"}   # a route, not a family
 FAMILIES = (("claude", ("claude", "anthropic", "opus", "sonnet", "haiku")),
-            ("openai", ("openai", "gpt", "codex", "luna", "sol", "chatgpt")),
+            ("openai", ("openai", "gpt", "codex", "luna", "sol", "chatgpt", "o1", "o3", "o4")),
             ("minimax", ("minimax",)),
-            ("zai", ("zai", "glm", "zhipu", "z")),
+            ("zai", ("zai", "glm", "zhipu")),     # explicit names only; "Z.ai" is normalised to zai in family()
             ("mimo", ("mimo", "xiaomi")),
             ("qwen", ("qwen", "qwq")),
             ("deepseek", ("deepseek",)),
             ("google", ("gemini", "gemma", "google")),
+            ("xai", ("grok", "xai")),
             ("kimi", ("kimi", "moonshot")),
             ("nvidia", ("nemotron", "nvidia")),
             ("cohere", ("cohere", "north", "command")),
@@ -415,7 +424,8 @@ def family(name):
     alibaba-token-plan) are not families; the model's own name decides. A provider prefix such as zai-coding-plan counts as its
     family's name (token 'zai')."""
     base = ow.split_model(name)[0] if "/" in name else name
-    tokens = [t for seg in base.lower().split("/") if seg not in ROUTERS for t in re.split(r"[^a-z0-9]+", seg) if t]
+    base = re.sub(r"\bz\.ai\b", "zai", base.lower())
+    tokens = [t for seg in base.split("/") if seg not in ROUTERS for t in re.split(r"[^a-z0-9]+", seg) if t]
     for fam, keys in FAMILIES:
         if any(t in keys for t in tokens):
             return fam
@@ -616,6 +626,9 @@ def main():
     ap.add_argument("--kind", choices=("pr", "release"), default=None)
     ap.add_argument("--brief-file", help="extra instructions appended to the generated brief")
     ap.add_argument("--model", default="", help="provider/model[#variant]: the ONE reviewer the user named (required for a review)")
+    ap.add_argument("--confirm-family-differs", action="store_true",
+                    help="the user has checked that the reviewer is of another model family than every implementer although family() "
+                         "cannot tell (an unknown implementer alias or reviewer); without it such a review is refused (exit 2)")
     ap.add_argument("--exclude-model", default="", help="comma-separated names to skip")
     ap.add_argument("--agent", default="external-reviewer")
     ap.add_argument("--apply-label", action="store_true", help="set status:* from the verdict")
@@ -676,25 +689,24 @@ def main():
            f"+refs/heads/{meta['baseRefName']}:{bref}")
         head = sh("git", "rev-parse", f"refs/review/pr{n}")
         base = sh("git", "merge-base", bref, head)
-        excl |= implementer_names(meta)
+        impl = implementer_names(meta)
+        excl |= impl
+        unknown = sorted(x for x in impl if family(x) is None) + ([m for m in models if family(m) is None] if impl else [])
+        if unknown and not a.confirm_family_differs:
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+            print("refused: cannot tell the model family of " + ", ".join(repr(u) for u in unknown) + ", so the reviewer may be of the "
+                  "implementer's family (CLAUDE.md, Choosing models rule 4). Check it, then rerun with --confirm-family-differs "
+                  "(or name a reviewer of a known other family)", file=sys.stderr)
+            return 2
     models = [m for m in models if not excluded(m, excl)]      # the implementer never reviews its own PR
-    skipped = []                                               # a named model whose provider is out of quota does not run (exit 3); no other model is picked
-    for m in list(models):
+    for m in models:             # quota-tracker only informs ("Choosing models" rule 6): the named model runs anyway
         why = quota_skip(m)
         if why:
-            print(f"skipping {m}: {why}", flush=True)
-            skipped.append((m, why))
-            models.remove(m)
-        else:
-            note = pricing_note(m)
-            if note:
-                print(f"{m}: {note}", flush=True)
+            print(f"quota note: {m}: {why} (information only; the named model runs anyway; if the provider refuses, that is an api failure, exit 3)", flush=True)
+        note = pricing_note(m)
+        if note:
+            print(f"{m}: {note}", flush=True)
     if not models:
-        if skipped:
-            if kind == "pr":
-                sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-            print("OpenCode unavailable: " + "; ".join(f"{label_of(m)}: {w}" for m, w in skipped), file=sys.stderr)
-            return 3
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         print("refused: the named reviewer is of the implementer's model family (CLAUDE.md, Choosing models rule 4); "
@@ -711,7 +723,7 @@ def main():
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         raise
-    failures, final, stop = list(skipped), None, None
+    failures, final, stop = [], None, None
     try:
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")

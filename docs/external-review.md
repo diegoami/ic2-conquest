@@ -4,8 +4,10 @@
 
 **Who implements and which model reviews are the user's choice, asked each time** (`CLAUDE.md`, "Choosing models", rules 1-7). The
 script runs exactly the ONE reviewer model the user named (`--model` is required; a list, no model or DeepSeek is refused with exit
-2; a reviewer of the implementer's model family is refused with exit 2). quota-tracker's `/recommend` is shown to the user as a
-suggestion only. On exit 3 (the named model's API did not answer, or its provider is exhausted) the user names the next model; on
+2; a reviewer of the implementer's model family is refused with exit 2, and so is a review where the family of an implementer or of
+the reviewer cannot be told: the user checks and reruns with `--confirm-family-differs`). quota-tracker is information only: an
+exhausted provider prints a `quota note` line and the named model runs anyway. On exit 3 (the named model's API did not answer; a
+provider that refuses because of its quota is such a failure) the user names the next model; on
 exit 6 the process failure is fixed and the run resumed. Nothing below picks a model any more.
 
 ### History (superseded 2026-10-11; kept for the reasons)
@@ -48,17 +50,17 @@ python3 scripts/external_review.py --pr 7 --model <named> --apply-label   # also
 python3 scripts/external_review.py --issue 9 --kind release --model <named>   # a gate issue; reviews origin/main
 python3 scripts/external_review.py --pr 7 --model <named> --dry-run   # prints the arguments, starts no model
 python3 scripts/external_review.py --pr 7 --model <named> --review-file R.md   # offline: what would be posted, its note, the exit code
-python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota skip, pricing, effort rule and the model-choice refusals
+python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota note, family detection, pricing, effort rule and the model-choice refusals
 python3 scripts/external_review.py --resume rendered/pr7-ab12cd/run-1   # continue a run that stopped, in the same OpenCode session
 python3 scripts/opencode_status.py                               # what is running / stopped, in plain words
 python3 tests/test_reviewer_prompt.py                            # fake-opencode tests (kinds, resume, progress, status)
 ```
 
-Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (the named model's API did not answer, or its provider is exhausted; nothing posted and
+Exit codes: **0** posted · **2** usage (a list, no model, DeepSeek, the implementer's family, or a family that cannot be told without `--confirm-family-differs`) · **3** `OpenCode unavailable: <cause>` (the named model's API did not answer, a quota refusal included; nothing posted and
 no other model runs: record the cause in one PR comment and ask the user whether to name another, CLAUDE.md "Choosing models" rule 7) · **4** posted **flagged** (the verdict could not be read or the
 review looks cut off: a note line on top, no label; read it and decide; no other review is started) · **5**
 the PR head moved during the review (nothing posted) · **6** `OpenCode process failure: <model>: <class>: <cause>; session <id>; run dir <dir>;
-resume with --resume <dir>` (our own process failed; nothing posted, **no fallback**: diagnose it, then resume). Exit 3 means only "the named model's API was unavailable, or its provider is exhausted".
+resume with --resume <dir>` (our own process failed; nothing posted, **no fallback**: diagnose it, then resume). Exit 3 means only "the named model's API was unavailable" (the quota state alone never blocks the run).
 
 **A review is never thrown away; only acting on what cannot be read is refused.** The parser
 (`parse_review`) finds the header case-insensitively, also wrapped in Markdown (`**…**`, a leading `#`,
