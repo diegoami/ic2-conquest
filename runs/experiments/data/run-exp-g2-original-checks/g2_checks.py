@@ -189,6 +189,25 @@ try:
             log("clicked_target", tag=tag, target=tgt, selection=t_sel, popups=texts, pos=g.army_pos(0), moves=army(g, 0)["moves"], shot=shot(g, tag + "_after_click"))
             time.sleep(2)
             log("after_wait", tag=tag, pos=g.army_pos(0), army0=army(g, 0), file=save(g, tag + "_after.SAV"))
+    elif CASE == "C4b":     # explains C4's cost: one click per tile north of (100,37) (terrain costs read from the save), then a stop at a river with too few moves
+        for tag in ("steps", "river_with_1_move_left"):
+            src = START if tag == "steps" else staged(START, [("moves", 0, 11)], "army0_moves11")
+            g.load(src, seed=12345) if tag == "steps" else g.open(src)
+            if tag != "steps": g.wait(g.loaded, 20, "loaded")
+            log("loaded", tag=tag, army0=army(g, 0), file=save(g, tag + "_before.SAV"))
+            ax, ay = g.army_pos(0); g.select_army(0, ax, ay)
+            if tag == "steps":
+                s0 = sav.parse(START.read_bytes())
+                for y in range(36, 28, -1):
+                    pos0, mv0 = g.army_pos(0), army(g, 0)["moves"]
+                    if g.i16(drv.SEL_ARMY) != 0: g.select_army(0, *pos0)
+                    g.click_tile(100, y, pause=1.0)
+                    log("step", to=(100, y), terrain=sav.terrain_name(sav.cell(s0, 100, y)), table_cost=sav.move_cost(sav.cell(s0, 100, y)),
+                        pos=g.army_pos(0), moves_before=mv0, moves_after=army(g, 0)["moves"], selection=sel(g), popups=g.dismiss_popups())
+            else:
+                g.click_tile(100, 25, pause=2.0)
+                log("clicked_target", target=(100, 25), pos=g.army_pos(0), army0=army(g, 0), selection=sel(g), popups=g.dismiss_popups(), shot=shot(g, tag + "_after_click"))
+            log("end", tag=tag, army0=army(g, 0), file=save(g, tag + "_after.SAV"))
     elif CASE == "C5a":     # Join units: three, then four units of one type (army 0 staged), then three of a type next to another unit
         for tag, units, rows in (("join3", [("li", 1000, 6), ("li", 1200, 6), ("li", 1500, 6), ("hi", 5000, 6)], [0, 1, 2]),
                                  ("join4", [("li", 1000, 6), ("li", 1200, 6), ("li", 1500, 6), ("li", 1700, 6), ("hi", 5000, 6)], [0, 1, 2, 3]),
@@ -217,53 +236,73 @@ try:
         log("rename_two_done", popups=texts, army0=army(g, 0), file=save(g, "after_two.SAV"))
         texts = g.rename_unit(0, 2, "Control")
         log("rename_one_control", popups=texts, army0=army(g, 0), file=save(g, "after_one.SAV"))
-    elif CASE == "C5c":     # Split unit: size table, thresholds, spinner range
+    elif CASE == "C5c":     # Split unit: size table, thresholds, spinner range (sizes read from the dialog's two number boxes by OCR)
         g.load(START, seed=12345)
         table = {t: struct.unpack("<h", g.mem(0x478fca + t * 40, 2))[0] for t in range(len(sav.UNIT_TYPES))}
         rows = {t: [struct.unpack_from("<h", g.mem(0x478fca - 10 + t * 40, 40), k * 2)[0] for k in range(20)] for t in table}
-        log("type_table", types=sav.UNIT_TYPES, size_limit_at_0x478fca=table, records=rows,
-            thresholds={sav.UNIT_TYPES[t]: (v * 2) // 5 for t, v in table.items()})
         thr = {sav.UNIT_TYPES[t]: (v * 2) // 5 for t, v in table.items()}
+        log("type_table", types=sav.UNIT_TYPES, size_limit_at_0x478fca=table, records=rows, thresholds=thr)
         tests = []
         for ty, th in thr.items():
             for tr in sorted({th - 1, th, 100}):
-                if 2 <= tr <= 32000: tests.append((ty, tr))
-        tests += [("hi", 5000), ("li", 4800)]
-        todo = [t for t in (sys.argv[2:] if len(sys.argv) > 2 else []) if t]       # optional: "ty:troops" to run only some
-        if todo: tests = [(a.split(":")[0], int(a.split(":")[1])) for a in todo]
+                tests.append((ty, tr, "default"))
+        tests += [("hi", 5000, "probe"), ("hi", 5000, "ext_A"), ("hi", 5000, "ext_B"), ("li", 4800, "probe")]
+        if len(sys.argv) > 2:
+            tests = [(a.split(":")[0], int(a.split(":")[1]), a.split(":")[2] if a.count(":") > 1 else "default") for a in sys.argv[2:]]
         log("plan", tests=tests)
-        for n, (ty, tr) in enumerate(tests):
-            tag = f"{ty}{tr}"
+
+        def sizes(wid, tag=None):
+            """(left, right) sizes shown in the Split unit dialog: the two number boxes, cropped, enlarged, OCR'd as digits."""
+            p = WORK / "shots" / "_split.png"; g.shot(p, window=str(wid)); out = []
+            for x in (8, 140):
+                c = WORK / "shots" / f"_split_{x}.png"
+                subprocess.run(["convert", str(p), "-crop", "58x26+%d+115" % x, "+repage", "-resize", "400%", "-colorspace", "Gray", str(c)], check=True)
+                t = subprocess.run(["tesseract", str(c), "-", "--psm", "7", "-c", "tessedit_char_whitelist=0123456789,"], capture_output=True, text=True).stdout.strip()
+                out.append(int(t.replace(",", "")) if t.replace(",", "").isdigit() else t)
+            return tuple(out)
+
+        def run_to_end(wid, sp, fy, cap=40):
+            """Press spinner `sp` (fy 0.25 = up arrow, 0.75 = down) until the sizes stop changing twice in a row; returns the readings."""
+            seq = [sizes(wid)]
+            for _ in range(cap):
+                g.click_control(sp, fy=fy, pause=0.25); seq.append(sizes(wid))
+                if len(seq) >= 3 and seq[-1] == seq[-2] == seq[-3]: break
+            return seq
+
+        for n, (ty, tr, mode) in enumerate(tests):
+            tag = f"{ty}{tr}_{mode}"
             src = staged(START, [("units", 0, [(ty, tr, 6), ("hi", 5000, 6)])], tag)
             g.open(src); g.wait(g.loaded, 20, "loaded")
             log("loaded", test=tag, army0=army(g, 0), file=save(g, tag + "_before.SAV"))
             cs = g._change_units(0, [0], "Split unit"); time.sleep(1.2)
             boxes = [(p[1], g.read_popup(p)) for p in g.popups()]
             w = g.find_windows("^Split unit$")
-            r = {"test": tag, "type": ty, "troops": tr, "threshold": thr[ty], "dialog_open": bool(w), "boxes": boxes, "windows": windows(g)}
+            r = {"test": tag, "type": ty, "troops": tr, "mode": mode, "threshold": thr[ty], "dialog_open": bool(w), "boxes": boxes, "windows": windows(g)}
             if w:
-                g.raise_window(w[0][0]); time.sleep(0.5)
-                r["dialog_shot"], r["dialog_ocr"] = ocr_window(g, tag + "_dialog", w[0][0])
+                wid = w[0][0]; g.raise_window(wid); time.sleep(0.5)
+                r["dialog_shot"], r["dialog_ocr"] = ocr_window(g, tag + "_dialog", wid)
                 sc = g.controls("Split unit"); r["controls"] = [(c["cls"], c["text"], c["x"], c["y"]) for c in sc]
-                def ups(): return subprocess.run([WINE, str(WORK / "win_updown.exe"), "Split unit"], capture_output=True, text=True, env=drv.ENV).stdout.strip().splitlines()
-                r["updowns_initial"] = ups()
-                spins = sorted((c for c in sc if c["cls"] == "TUpDown"), key=lambda c: c["x"])
-                r["spins"] = [(c["x"], c["y"], c["w"], c["h"]) for c in spins]
-                probe = {}
-                for si, sp in enumerate(spins):
-                    for direction, fy in (("up", 0.25), ("down", 0.75)):
-                        seq = []
-                        for k in range(130):
-                            g.click_control(sp, fy=fy, pause=0.15)
-                            seq.append(ups())
-                            if k >= 2 and seq[-1] == seq[-2] == seq[-3]: break
-                        probe[f"spin{si}_{direction}"] = {"presses": len(seq), "last": seq[-1], "first": seq[0]}
-                    r_texts = [(c["cls"], c["text"]) for c in g.controls("Split unit")]
-                    probe[f"spin{si}_texts_after"] = r_texts
-                r["probe"] = probe
-                r["updowns_final"] = ups(); r["final_shot"], r["final_ocr"] = ocr_window(g, tag + "_final", w[0][0])
-                g._ok_until_closed("Split unit", sc)
-                r["popups_after_ok"] = g.dismiss_popups()
+                r["updown_ranges"] = subprocess.run([WINE, str(WORK / "win_updown.exe"), "Split unit"], capture_output=True, text=True, env=drv.ENV).stdout.strip().splitlines()
+                s100, s1000 = sorted((c for c in sc if c["cls"] == "TUpDown"), key=lambda c: c["x"])
+                r["sizes_initial"] = sizes(wid)
+                if mode == "probe":
+                    r["runs"] = {}
+                    for name, sp in (("1000s", s1000), ("100s", s100)):
+                        for dname, fy in (("up", 0.25), ("down", 0.75)):
+                            r["runs"][f"{name}_{dname}"] = run_to_end(wid, sp, fy)
+                    r["final_shot"] = shot(g, tag + "_final", window=str(wid))
+                elif mode in ("ext_A", "ext_B"):
+                    fy = 0.75 if mode == "ext_A" else 0.25
+                    r["runs"] = {"1000s": run_to_end(wid, s1000, fy), "100s": run_to_end(wid, s100, fy)}
+                    r["sizes_before_ok"] = sizes(wid); r["final_shot"] = shot(g, tag + "_before_ok", window=str(wid))
+                if mode == "probe":      # a probe never applies: Cancel
+                    g.click_control(g.control(sc, text="Cancel"), pause=1.0)
+                    for _ in range(2):
+                        if g.find_windows("^Split unit$"): g.click_control(g.control(sc, text="Cancel"), pause=1.0)
+                else:
+                    g._ok_until_closed("Split unit", sc)
+                pass
+            r["popups_after"] = g.dismiss_popups()          # a refusal box ("This unit is too small to split.") is closed before the Change units dialog
             g._close_change_units(cs)
             r["army0_after"] = army(g, 0); r["file"] = save(g, tag + "_after.SAV")
             log("split_test", **r)

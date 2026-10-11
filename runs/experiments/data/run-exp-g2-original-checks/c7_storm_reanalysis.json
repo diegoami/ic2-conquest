@@ -1,0 +1,487 @@
+{
+ "files": {
+  "FIX_T4_R85sA.SAV": {
+   "sha256": "74ebc2d3ad575316b3ec7563edcf929ce7012b13833bbaf4d317affb5b903e33",
+   "matches_run_exp_storms_SAVES.sha256": true
+  },
+  "ST_R85sA_seed1_AUTO0721.SAV": {
+   "sha256": "90deea1f4dc75cbf5c1db73d234b0d9daea2a65697b2a6a6e24dd28afb829761",
+   "matches_run_exp_storms_SAVES.sha256": true
+  }
+ },
+ "before_FIX_T4_R85sA": {
+  "army2": {
+   "id": 2,
+   "owner": 1,
+   "troops": 11000,
+   "moves": 0,
+   "units": [
+    [
+     "li",
+     4000,
+     null
+    ],
+    [
+     "hi",
+     3000,
+     null
+    ],
+    [
+     "ar",
+     2000,
+     null
+    ],
+    [
+     "lc",
+     1000,
+     null
+    ],
+    [
+     "hc",
+     1000,
+     null
+    ]
+   ]
+  },
+  "fleet0": {
+   "id": 0,
+   "x": 49,
+   "y": 62,
+   "owner": 1,
+   "countdown": -1,
+   "building": false,
+   "moves": 25,
+   "supplies": 80,
+   "money": 1000,
+   "ships": 90,
+   "condition": 85,
+   "army": 2,
+   "cell": 0
+  },
+  "turn": 720
+ },
+ "after_seed1": {
+  "army2": {
+   "id": 2,
+   "owner": 1,
+   "troops": 678,
+   "moves": 10,
+   "units": [
+    [
+     "hi",
+     678,
+     null
+    ]
+   ]
+  },
+  "fleet0": {
+   "id": 0,
+   "x": 39,
+   "y": 77,
+   "owner": 1,
+   "countdown": -1,
+   "building": false,
+   "moves": 23,
+   "supplies": 0,
+   "money": 1000,
+   "ships": 65,
+   "condition": 60,
+   "army": 2,
+   "cell": 0
+  },
+  "turn": 721
+ },
+ "trials_R85sA": [
+  {
+   "seed": 1,
+   "fleet_before": [
+    90,
+    85,
+    2
+   ],
+   "fleet_after": [
+    65,
+    60,
+    2
+   ],
+   "news": [
+    "A fleet belonging to Carthage is damaged in a storm."
+   ],
+   "army2_after": [
+    2,
+    678,
+    -1,
+    [
+     [
+      "hi",
+      678
+     ]
+    ]
+   ]
+  },
+  {
+   "seed": 2,
+   "fleet_before": [
+    90,
+    85,
+    2
+   ],
+   "fleet_after": [
+    65,
+    60,
+    2
+   ],
+   "news": [
+    "A fleet belonging to Carthage is damaged in a storm."
+   ],
+   "army2_after": [
+    2,
+    312,
+    -1,
+    [
+     [
+      "hc",
+      312
+     ]
+    ]
+   ]
+  },
+  {
+   "seed": 3,
+   "fleet_before": [
+    90,
+    85,
+    2
+   ],
+   "fleet_after": [
+    65,
+    60,
+    2
+   ],
+   "news": [
+    "A fleet belonging to Carthage is damaged in a storm."
+   ],
+   "army2_after": [
+    2,
+    850,
+    -1,
+    [
+     [
+      "hi",
+      850
+     ]
+    ]
+   ]
+  },
+  {
+   "seed": 4,
+   "fleet_before": [
+    90,
+    85,
+    2
+   ],
+   "fleet_after": [
+    65,
+    61,
+    -1
+   ],
+   "news": [
+    "A fleet belonging to Carthage is damaged in a storm."
+   ],
+   "army2_after": null
+  },
+  {
+   "seed": 5,
+   "fleet_before": [
+    90,
+    85,
+    2
+   ],
+   "fleet_after": [
+    65,
+    60,
+    2
+   ],
+   "news": [
+    "A fleet belonging to Carthage is damaged in a storm."
+   ],
+   "army2_after": [
+    2,
+    312,
+    -1,
+    [
+     [
+      "hc",
+      312
+     ]
+    ]
+   ]
+  }
+ ],
+ "decompile_rule_recomputed": [
+  {
+   "storm_dmg": 6,
+   "d": 88,
+   "ships_after": 64,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1096,
+     656,
+     true
+    ],
+    "hi3000": [
+     800,
+     536,
+     true
+    ],
+    "ar2000": [
+     592,
+     328,
+     true
+    ],
+    "lc1000": [
+     296,
+     208,
+     true
+    ],
+    "hc1000": [
+     296,
+     208,
+     true
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 7,
+   "d": 86,
+   "ships_after": 65,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1162,
+     732,
+     true
+    ],
+    "hi3000": [
+     850,
+     592,
+     true
+    ],
+    "ar2000": [
+     624,
+     366,
+     false
+    ],
+    "lc1000": [
+     312,
+     226,
+     true
+    ],
+    "hc1000": [
+     312,
+     226,
+     true
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 8,
+   "d": 84,
+   "ships_after": 65,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1228,
+     808,
+     true
+    ],
+    "hi3000": [
+     900,
+     648,
+     false
+    ],
+    "ar2000": [
+     656,
+     404,
+     false
+    ],
+    "lc1000": [
+     328,
+     244,
+     true
+    ],
+    "hc1000": [
+     328,
+     244,
+     true
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 9,
+   "d": 82,
+   "ships_after": 66,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1294,
+     884,
+     true
+    ],
+    "hi3000": [
+     950,
+     704,
+     false
+    ],
+    "ar2000": [
+     688,
+     442,
+     false
+    ],
+    "lc1000": [
+     344,
+     262,
+     true
+    ],
+    "hc1000": [
+     344,
+     262,
+     false
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 10,
+   "d": 81,
+   "ships_after": 66,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1327,
+     922,
+     true
+    ],
+    "hi3000": [
+     975,
+     732,
+     false
+    ],
+    "ar2000": [
+     704,
+     461,
+     false
+    ],
+    "lc1000": [
+     352,
+     271,
+     true
+    ],
+    "hc1000": [
+     352,
+     271,
+     false
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 11,
+   "d": 81,
+   "ships_after": 66,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1327,
+     922,
+     true
+    ],
+    "hi3000": [
+     975,
+     732,
+     false
+    ],
+    "ar2000": [
+     704,
+     461,
+     false
+    ],
+    "lc1000": [
+     352,
+     271,
+     true
+    ],
+    "hc1000": [
+     352,
+     271,
+     false
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 12,
+   "d": 79,
+   "ships_after": 67,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1393,
+     998,
+     true
+    ],
+    "hi3000": [
+     1025,
+     788,
+     false
+    ],
+    "ar2000": [
+     736,
+     499,
+     false
+    ],
+    "lc1000": [
+     368,
+     289,
+     true
+    ],
+    "hc1000": [
+     368,
+     289,
+     false
+    ]
+   },
+   "random_whole_unit_removals": 2
+  },
+  {
+   "storm_dmg": 13,
+   "d": 77,
+   "ships_after": 67,
+   "units_after_troops_range_(rand=14..0)_and_below_limit/10": {
+    "li4000": [
+     1459,
+     1074,
+     true
+    ],
+    "hi3000": [
+     1075,
+     844,
+     false
+    ],
+    "ar2000": [
+     768,
+     537,
+     false
+    ],
+    "lc1000": [
+     384,
+     307,
+     true
+    ],
+    "hc1000": [
+     384,
+     307,
+     false
+    ]
+   },
+   "random_whole_unit_removals": 2
+  }
+ ]
+}
