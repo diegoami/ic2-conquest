@@ -54,12 +54,11 @@ python3 scripts/opencode_status.py                               # what is runni
 python3 tests/test_reviewer_prompt.py                            # fake-opencode tests (kinds, resume, progress, status)
 ```
 
-Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (nothing posted; record the cause in
-one PR comment and run the fallback you choose, e.g. Claude Opus) · **4** posted **flagged** (the verdict could not be read or the
-review looks cut off: a note line on top, no label; read it and decide; no fallback to another paid review) · **5**
+Exit codes: **0** posted · **2** usage · **3** `OpenCode unavailable: <cause>` (the named model's API did not answer, or its provider is exhausted; nothing posted and
+no other model runs: record the cause in one PR comment and ask the user whether to name another, CLAUDE.md "Choosing models" rule 7) · **4** posted **flagged** (the verdict could not be read or the
+review looks cut off: a note line on top, no label; read it and decide; no other review is started) · **5**
 the PR head moved during the review (nothing posted) · **6** `OpenCode process failure: <model>: <class>: <cause>; session <id>; run dir <dir>;
-resume with --resume <dir>` (our own process failed; nothing posted, **no fallback**: diagnose it, then resume). Exit 3 now means only "every
-model's API was unavailable, or skipped for quota".
+resume with --resume <dir>` (our own process failed; nothing posted, **no fallback**: diagnose it, then resume). Exit 3 means only "the named model's API was unavailable, or its provider is exhausted".
 
 **A review is never thrown away; only acting on what cannot be read is refused.** The parser
 (`parse_review`) finds the header case-insensitively, also wrapped in Markdown (`**…**`, a leading `#`,
@@ -153,20 +152,18 @@ whose final message has no review header), and four more, all kind `process`:
 `stopped-with-report` (the model ended its turn with a final message and then the run ended, or a manual resume found such a message: its text is in `result.json`; answer it, do not resume over it, unless a human says `--force-resume`),
 `session-unreadable` (the session's last message could not be read, or the export was empty or not shaped like an export: never resumed, never handed on),
 `watcher-crash` (an exception inside the watcher itself, recorded with the run dir and the session id; written by `external_review.py`, not by `opencode_watched.py`) and
-`resume-limit` (a `--resume` past the 2 resumes kept in `state.json`: returned without writing anything, answered with exit 2 unless `--force-resume`). With an explicit `--model a,b` list the next model is tried only after an **api** failure,
-never after a real or flagged review or a process failure. The posted header names the api failures:
-`PR review (minimax-m2.7; gpt-5.6-luna failed: exited-without-session)`. Verdicts differ between models and between runs of one
+`resume-limit` (a `--resume` past the 2 resumes kept in `state.json`: returned without writing anything, answered with exit 2 unless `--force-resume`). `--model` takes exactly one model (a list is refused, exit 2); an **api** failure ends the call with exit 3 and the user names any other model. Verdicts differ between models and between runs of one
 model (the same PR got `rework` and then `approve`): treat a verdict as one opinion, and read the findings.
 
 ### Failure kinds, resume, status (the owner's rule, 2026-10-10)
 
-A failure of an OpenCode run is never normal: it is diagnosed and fixed, not silently passed to another model. `result.json` has `kind`:
+A failure of an OpenCode run is never normal: it is diagnosed and fixed, not passed to another model. `result.json` has `kind`:
 
 | kind | what | what happens |
 |---|---|---|
-| `api` | no session ever started (`no-session`, `exited-without-session`), or stderr that says the provider did not answer. **Structured first**: OpenCode prints its errors as `Error: {"name": ..., "data": {...}}` (read from the 1.18.34 binary: `APIError` {message, statusCode, isRetryable, responseBody}, `ProviderAuthError`, `ContextOverflowError`, `ContentFilterError`, `MessageAbortedError`, `UnknownError` {message, ref}); every JSON object in stderr is classified: status 429, 5xx, 408, 409, 402 or `isRetryable` or a network-looking name = api; `ContextOverflowError`, `ContentFilterError`, `MessageAbortedError`, a 4xx `APIError` = process (words inside a decided object are ignored). Only what is not such an object falls back to text patterns (429, rate limit, 5xx as a status, `returned 503`, overloaded, quota, ECONNRESET ...; a bare number like `line 503` never counts). stdout is never read. The evidence line is stored in `cause` | the next model of the chain is tried; all failing: exit 3 |
-| `process` (credentials) | **401/403 or `ProviderAuthError`** (also as `Error: 401 Unauthorized` text), with or without a session, even next to api evidence | an expired or invalid login is a flaw in our setup the owner must fix: exit 6, cause `provider credentials refused (401/403): renew the login for <provider>`, no resume, never a fallback to another model (CLAUDE.md rule 8). 402 (payment/quota) stays api |
-| `process` | everything else: idle-timeout, total-timeout, cut-off, nonzero-exit, bad-format, permission-rejected, default-agent, and our own setup (`unknown-model`, `unknown-agent`, `no-executable`) | the chain stops, nothing is posted, exit 6 with the session id, the run dir and the resume command |
+| `api` | no session ever started (`no-session`, `exited-without-session`), or stderr that says the provider did not answer. **Structured first**: OpenCode prints its errors as `Error: {"name": ..., "data": {...}}` (read from the 1.18.34 binary: `APIError` {message, statusCode, isRetryable, responseBody}, `ProviderAuthError`, `ContextOverflowError`, `ContentFilterError`, `MessageAbortedError`, `UnknownError` {message, ref}); every JSON object in stderr is classified: status 429, 5xx, 408, 409, 402 or `isRetryable` or a network-looking name = api; `ContextOverflowError`, `ContentFilterError`, `MessageAbortedError`, a 4xx `APIError` = process (words inside a decided object are ignored). Only what is not such an object falls back to text patterns (429, rate limit, 5xx as a status, `returned 503`, overloaded, quota, ECONNRESET ...; a bare number like `line 503` never counts). stdout is never read. The evidence line is stored in `cause` | the call ends with exit 3, nothing posted, no other model runs; the user names the next one (CLAUDE.md rule 7) |
+| `process` (credentials) | **401/403 or `ProviderAuthError`** (also as `Error: 401 Unauthorized` text), with or without a session, even next to api evidence | an expired or invalid login is a flaw in our setup the owner must fix: exit 6, cause `provider credentials refused (401/403): renew the login for <provider>`, no resume, never another model (CLAUDE.md "Choosing models" rule 7). 402 (payment/quota) stays api |
+| `process` | everything else: idle-timeout, total-timeout, cut-off, nonzero-exit, bad-format, permission-rejected, default-agent, and our own setup (`unknown-model`, `unknown-agent`, `no-executable`) | nothing is posted, no other model runs, exit 6 with the session id, the run dir and the resume command |
 | null | ok | |
 
 - **Automatic resume.** After an `idle-timeout`, `total-timeout` or `nonzero-exit` with a known session (and no api evidence in that attempt's

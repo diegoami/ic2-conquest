@@ -34,6 +34,9 @@ Each provider has:
 - The tracker reports availability and history only; choosing a model is up to the session and the owner.
 
 ### Models per provider
+
+**DeepSeek is never used (the owner, 2026-10-11; `CLAUDE.md` "Choosing models" rule 4).** Every DeepSeek row and line below is history, superseded 2026-10-11: do not run it, not as a heavy or light model, not on any route. Alibaba runs only when the user asks for it. This table lists what exists; it picks nothing.
+
 | provider    | heavy                                             | light                                                 |
 |-------------|---------------------------------------------------|-------------------------------------------------------|
 | claude      | `claude --model opus`                             | `claude --model sonnet`                               |
@@ -46,7 +49,7 @@ Each provider has:
 | alibaba: GLM      | `opencode -m alibaba-token-plan/glm-5.3`         | none on alibaba (zai has `glm-5.3-flash`)            |
 | minimax     | `opencode -m minimax/MiniMax-M3` (variants none/thinking only: use `#thinking`) | `opencode -m minimax/MiniMax-M2.7` (offers no variant: pass none) |
 
-Use the dated `deepseek-v4-pro-0813` on alibaba, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
+History (superseded 2026-10-11, DeepSeek is never used): the dated `deepseek-v4-pro-0813` on alibaba was preferred over plain `deepseek-v4-pro`, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
 discount. Not Alibaba's Kimi or MiniMax models (Team edition only, they fail on this plan); MiniMax lives on its own
 `minimax/` provider.
 
@@ -112,7 +115,7 @@ Cautions:
 - **Privacy:** free providers may log and train on prompts. This repository is public, so its code and findings may be sent; never
   send secrets, keys, `auth.json` contents, private or client code, or anything under NDA. Never send other repositories' private
   material either.
-- **Failures:** on a 429, fall back to another model instead of retrying. Free models come and go.
+- **Failures:** on a 429, stop and tell the user (no retry, no automatic fallback; another model only when the user names it, `CLAUDE.md` "Choosing models" rule 7). Free models come and go.
 - **Trust:** a free model's review is a second opinion only. It never replaces the regular reviewer's verdict for a merge, and its
   output is checked like any unreviewed contribution.
 
