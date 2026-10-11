@@ -16,7 +16,7 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
    - Binaries (saves, screenshots, video) stay out of git (rule 1): their SHA-256 go in `SAVES.sha256` beside the data, and they are uploaded to the release `run-exp-<name>` / `run-<id>` as the batches finish.
    - Cadence: **commit and push after each batch of trials or probes and at least every 30 minutes**, so a stopped session loses nothing.
    - **Never delete or overwrite a measured output**: a re-run writes new files beside the old ones and the finding names the ones it cites (a resumable runner appends or versions; it does not rewrite history).
-   - Every brief for a task that measures (an experiment, a probe, a driver task that times things, a plan handed to an implementer) must carry this rule.
+   - Every brief for a task that measures (an experiment, a probe, a driver task that times things, a plan handed to an implementer) must carry this rule, and say: never delete a save (even to regenerate it), and give every script's saves unique names (two scripts writing the same name left stale hashes; lesson 2026-10-09, the gap analysis).
 7. **Read what a delegated run returned before you retry it, re-route it to another model, or call it a failure; never retry blind** (the owner, 2026-10-05).
    - OpenCode runs (`scripts/opencode_watched.py`, `scripts/external_review.py`): an exit or a class such as `nonzero-exit`, `cut-off` or `bad-format` looks the same for an early end and for a run that stopped and reported. The log's tail shows only the last tool output. Read the model's final message from the session record, read-only, with the session id from the run's log (`opencode session started: ses_…`): `docs/external-review.md`, "Failures and trust". Never read `auth.json` in that directory.
    - Claude agents: read the agent's final report (its hand-back) in full before acting.
@@ -56,6 +56,15 @@ This replaces every earlier model-choice rule of this project (L50/L51, the revi
 12. When a run ends, read its final message before doing anything else (rule 7 above). A run that stopped and reported a blocker gets an answer (fix the brief or the setup), not a retry on another model.
 13. A run interrupted by our own limits (an idle or total timeout) is RESUMED in its own session and worktree (`opencode run --session <ses_...>` with a short "continue where you stopped" message and a longer limit; for reviews `python3 scripts/external_review.py --resume <run dir>`), not restarted from scratch.
 
+## Working with the owner (moved from session memory, 2026-10-11)
+
+- **Ask, don't guess** (the owner, 2026-10-02): when a decision is the owner's or a request can be read two ways, ask with the question tool, concrete options, the recommended one first. Never fill the gap with an assumption and carry on.
+- **Merging** (the owner, 2026-10-04): merge a PR that has an approving review from another model family and green CI (`gh pr checks`) without asking. Read its non-blocking notes first: a proven way past what the brief's "Blocking means" names is rework, not a merge. Still ask about design decisions and escalations.
+- **After a merge** (the owner, 2026-10-11, replacing "start the next item at once"): propose the next queued item and ask who implements it and with which model ("Choosing models", rule 1). Never start it unasked.
+- **Current focus** (the owner, 2026-10-05): battles and bots are paused; the work is research and gap-finding for IMPERIAL CONQUEST MAIN's v0.5.0, then post-0.5.0 work not related to battles. The paused battle queue (B16, B7+B12, B6, B9, B10, B13-14, B15, then coverage gaps) resumes only when the owner says so; each paused item has resume notes in its data README.
+- **New findings** (the owner, 2026-10-02): at the start and at the end of each reply, compare `findings/` on `origin/main` with the list last reported and name every new file with one line on what it is (and a reviewer's findings when it posts on a PR). No background polling, no push notifications.
+- **Research** (the owner, 2026-10-05 and 2026-10-08): reading `~/projects/imperial-conquest-2-research/` is always fine (rule 2 limits writes only). Every finding that lands on main is relayed to the ic2-research session at once with the `/relay-to-research` skill, without asking. Message ic2-research otherwise only when the next step is theirs (re-running their extractors, refreshing a report, interpreting their data). The PowerShell main session (IMPERIAL CONQUEST MAIN) is reached through the owner: write a paste-ready prompt and the owner carries it (`docs/notes-for-main-session-decompile-skills.md`); it reads only promoted research reports.
+
 ## Environment
 
 - **Model quota:** quota-tracker on `localhost:8765` says which providers have quota left (`docs/environment.md`). Its `/recommend` is shown to the user as a **suggestion only** with each model question ("Choosing models" below); it never decides.
@@ -78,6 +87,8 @@ This replaces every earlier model-choice rule of this project (L50/L51, the revi
 ## Driver pitfalls (Wine, no window manager)
 
 Hover before clicking; prefer toolbar buttons to menus; reset menu state before a menu; the first click into an inactive window may only activate it, so verify every order's effect (memory or save) and retry at most twice; never click End turn twice unless the first click provably did nothing.
+
+Confirm boxes and dialogs (lessons 2026-10-08): `controls(title)` is racy for about a second after a focus change (retry, or use `_answer_confirm`); a bare cursor click can land on a sibling window, so click with `xdotool click --window`; the menu bar is at y = 36, not 14 (`coverage.md` §2); `find_windows` filters tooltips (`tooltips=True` to see them); a closed box lingers 1-2 s, so an OK loop waits for it to close and never presses Cancel; list rows go through `click_list_row`; `end_turn` answers the post-battle "Offer of peace" (`peace=False` is No).
 
 ## Runs
 
