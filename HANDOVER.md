@@ -513,3 +513,42 @@ Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in r
 - `research-intake-relay.md`: last relay `48d59bd`, promoted `fcb0be0`, pending 0. The cosmetic-gaps correction is not recorded there; it was never delivered.
 - `report-new-findings-on-main.md`: the baseline includes the supply finding.
 - `ic2-work-archive.md`: new.
+
+## Handover: 2026-10-12 (ic2-conquest session): new computer, the user decides models, g2 done, g1 in review
+
+### TL;DR
+
+Nothing is running. One PR is open: **#79** (g1 original-side checks), reviewed once by GPT-6.1 Sol (medium) with 7 findings; R1, R2 and the code side of R3 are fixed on `experiment/g1-original-checks` (head `2792eab`), R3's hc re-run and R4-R7 remain. Next after #79: **g3** (rows_g3.md checks 1, 2, 3, 5, 6) as its own PR. Battles and bots stay paused.
+
+### What changed in how we work (all in CLAUDE.md)
+
+- **Choosing models: the user decides** (PR #73): before implementing anything, ask the owner who implements (main session in its own worktree, or a subagent) and with which model; at every review ask which external model reviews; quota-tracker's `/recommend` is a suggestion only; never DeepSeek; the reviewer is never of the implementer's family. `scripts/external_review.py` runs exactly the one named model (no chain). Record each choice on the issue or PR.
+- **Monitoring** (rules 8-13): one change-only monitor per run; give every OpenCode run's `ses_…` id with `scripts/peek.sh ses_… -n 20` (PR #76); for a Claude subagent its agent id and transcript path; liveness with `kill -0`, never `pgrep -f`.
+- **Working with the owner** (PR #74): rules that lived only in session memory (ask, merging, after a merge propose the next item and ASK, the current focus, new findings each reply, the research relay).
+- **Failures are fixed, never re-routed** (rule 8; PRs #67, #70): the reviewer watcher classifies failures, resumes in the same session, reads the session before any decision.
+
+### The move to this computer (2026-10-10)
+
+Ubuntu 26.04 WSL, Wine 10.0. `runs/experiments/data/run-exp-machine-move/RESULTS.md`: 38/38 fixtures load; with **fonts-wine and no Liberation fonts** Wine 10 renders like the old computer (the Information panel asks for "Book Antiqua"); replays are byte-identical except the main-window geometry in the save trailer; `tests/test_orders.py` 39/39. The decompile is at `~/ic2-work/decompile/`, pinned by SHA-256 (`harness/decompile.py`, PR #68). Every Wine start records the Wine version and font set (`environment.jsonl`, PR #69).
+
+### Findings this session (all relayed; promoted unless noted)
+
+| Finding | Research |
+|---|---|
+| `2026-10-10-fleet-emptied-by-transfer-money-and-supplies` (PR #71) | promoted 6b96537 |
+| `2026-10-11-g2-original-checks` (PR #77: 0-move army, unreachable move, Join/Rename/Split, storm with cargo) | promoted 1ff54ab (their corrections: spinner clamp is in code at 45224-45268; R41 stands) |
+| `2026-10-11-g1-original-checks` (PR #79) | not yet merged |
+
+### Driver changes worth knowing
+
+- `Game.save_as(name, overwrite=False)` refuses an existing file (PR #77). Old experiment runners that reuse names now stop on a rerun instead of deleting saves; give them stamped names before rerunning.
+- `Game.new_game()` and `harness/new_game.sh` move old AUTO* files into `superseded-<stamp>/` instead of deleting them (on the #79 branch, not yet on main).
+- Open decision: `Game.open` copies a save into the game folder over a same-named file.
+
+### Open items
+
+1. **PR #79**: finish R3 (re-run `python3 g1_checks.py G2_merc hc`), R4 (edit the "agreed in every sheet read" sentence), R5 (FUN_0044a120 text + helper extracts, or narrow), R6 (negative exe search, or narrow), R7 (control-based New Game clicks, re-run G5 patched); the next step for each is in the END block of `docs/progress/g1-original-checks.md`. Then ask the owner who re-checks.
+2. **g3** after #79.
+3. Optional: research's open question on `2026-10-02-fleet-orders-live` ("split army cannot be selected"), now contradicted for 0-move armies.
+4. `scripts/archive_measurements.py --commit` stops on an ignored `__pycache__` path (commit by hand until fixed).
+5. The owner's desktop palette check (`run-exp-desktop-palette/STEPS.md`); PR #66 (cosmetic gaps) still open.
