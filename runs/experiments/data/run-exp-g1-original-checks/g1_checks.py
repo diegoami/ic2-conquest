@@ -62,7 +62,7 @@ try:
         balance_sheet(g, tag + "_before")
         try:
             name, texts = g.end_turn()
-            log("end_turn_ok", autosave=name, texts=texts, memory_after=balance_from_memory(g), turn=g.turn_number(), root=shot(g, tag + "_after_end_turn"))
+            time.sleep(2); log("end_turn_ok", autosave=name, texts=texts, windows_after=windows(g), boxes_after=boxes(g), memory_after=balance_from_memory(g), turn=g.turn_number(), root=shot(g, tag + "_after_end_turn"))
         except drv.GameOver as e:
             log("game_over", text=e.text, windows=windows(g), root=shot(g, tag + "_game_over"), memory=balance_from_memory(g))
         except DriverError as e:
@@ -205,6 +205,117 @@ try:
                 if variant == "nogame_menu": g.menu("file", drv.FILE_ITEMS["close"]); time.sleep(4)
                 else: sysclose(); time.sleep(1)
                 log("after_close_no_game", alive=alive(), boxes=boxes(g) if alive() else None, windows=windows(g) if alive() else None, root=shot(g, "no_game_after_close") if alive() else None)
+    elif CASE == "G7":
+        seed = int(sys.argv[2])
+        path, texts = g.new_game(row=0, seed=seed)
+        log("new_game", seed=seed, seed_line=g.seed_line, autosave=path.name, popups=texts, kept=keep(path, f"seed{seed}_AUTO0720.SAV"), sha256=sha(path))
+        me = g.i16(drv.CUR_NATION)
+        rel = lambda a, b: g.i16(drv.NATIONS + a * drv.NATION_LEN + 0x26 + 2 * b)
+        row = [rel(0, k) for k in range(16)]
+        s = sav.parse(path.read_bytes())
+        rd, mem = balance_sheet(g, f"seed{seed}")
+        log("rome_start", seed=seed, current_nation=me, rome_relations_memory=row, rome_relations_in_autosave=s["nations"][0]["relations"],
+            illyria=row[9], macedonia=row[4], gaul=row[6], trade_partners=[sav.NATIONS[k] for k in range(16) if row[k] == 1],
+            trade_income_ocr=rd["revenue"]["trade"]["value"], regular_units_ocr=rd["expenditure"]["regular_units"]["value"], regular_units_memory=mem["regular_units"],
+            army_recruit_ocr=rd["expenditure"]["army_recruit"]["value"], expenditure_total_ocr=rd["expenditure"]["total"]["value"],
+            rome_army_units=[(a["id"], [(u["type"], u["troops"], u["quality"]) for u in a["units"]]) for a in (g.army_state(i) for i in range(g.i16(0x4A0324))) if a["owner"] == 0])
+    elif CASE == "G10":
+        def news():
+            cnt = g.i16(0x4a031e); out = []
+            for i in range(40):
+                b = g.mem(0x49f994 + i * 0x3d, 0x3d); ln = b.find(b"\0")      # C strings (no length byte) at 0x49f994 + 61 i; the first two runs of this case read them as Pascal strings (first run) and from 0x49f993 (second run) and are not usable
+                if ln > 0: out.append((i, b[:ln].decode("latin1")))
+            return cnt, out
+        seasons = [g.mem(0x4794a0 + k * 10, 10) for k in range(4)] if False else None
+        g.load(START, seed=12345)
+        seasons = [g.mem(0x4794a0 + k * 10, 10) for k in range(4)]
+        log("seasons_raw", entries=[s_.hex() for s_ in seasons], texts=[s_[1:1 + s_[0]].decode("latin1") for s_ in seasons])
+        cnt, ln = news(); log("news_lines_start", count=cnt, lines=[(i, t) for i, t in ln], root=shot(g, "start"))
+        for rnd in range(1, 7):
+            name, texts = g.end_turn()
+            cnt, ln = news()
+            heads = [(i, t) for i, t in ln if "Week" in t]
+            log("after_round", round=rnd, autosave=name, popups=texts, count=cnt, week_lines=[(i, repr(t), t.encode("latin1").hex()) for i, t in heads], all_lines=ln,
+                calendar=g.calendar(), root=shot(g, f"round{rnd}"))
+        g.tool("news", pause=2.0)
+        w = g.find_windows("^News$|News")
+        log("news_dialog", windows=windows(g), shots=[ocr_window(g, "news_dialog", x[0]) for x in w[:1]])
+    elif CASE == "G8":
+        slots = lambda: [(k, struct.unpack_from("<4h", g.mem(drv.NATIONS + 0x2e4 + 8 * k, 8))) for k in range(40) if struct.unpack_from("<h", g.mem(drv.NATIONS + 0x2e6 + 8 * k, 2))[0] or struct.unpack_from("<h", g.mem(drv.NATIONS + 0x2e8 + 8 * k, 2))[0] > 0]
+        def open_dialog(tag):
+            g.open_recruit(); cs = g.controls("Army recruits")
+            w = g.find_windows("^Army recruits$")[0][0]; g.raise_window(w); time.sleep(0.5)
+            f, o = ocr_window(g, f"{tag}_dialog", w)
+            log("recruit_dialog", tag=tag, image=f, ocr=o, controls=[(c["cls"], c["text"], c["x"], c["y"], c["w"], c["h"], c.get("top"), c.get("item_h")) for c in cs])
+            return cs, w
+        def close(cs):
+            try: g.close_controls("Army recruits", cs)
+            except Exception as e: log("close_error", error=repr(e))
+        def try_rows(tag, cs, w, recruit=None):
+            """Click each city row in turn and OCR the dialog; with recruit=<name>, press Recruit unit on the row whose label names that city."""
+            cities = g.control(cs, cls="TListBox", index=0); found = {}
+            n = 6
+            for r in range(n):
+                try: g.click_list_row(cities, r, pause=0.6)
+                except DriverError as e: log("row_unreachable", tag=tag, row=r, error=str(e)); break
+                f, o = ocr_window(g, f"{tag}_row{r}", w); found[r] = (f, o)
+                log("row", tag=tag, row=r, image=f, ocr=o)
+                if recruit and ("at " + recruit).lower() in o.lower():
+                    g.click_control(g.control(cs, text="Light infantry"), pause=0.6)
+                    before = slots(); g.click_control(g.control(cs, text="Recruit unit"), pause=1.5)
+                    bx = boxes(g); f2, o2 = ocr_window(g, f"{tag}_after_recruit", w) if g.find_windows("^Army recruits$") else (None, None)
+                    texts = g.dismiss_popups()
+                    log("recruit_pressed", tag=tag, city=recruit, row=r, boxes=bx, dismissed=texts, slots_before=before, slots_after=slots(), image=f2, ocr=o2)
+                    return found
+            return found
+        variant = sys.argv[2]
+        if variant == "natural":
+            g.load(START, seed=12345)
+            log("loaded", slots=slots())
+            cs, w = open_dialog("natural"); try_rows("natural", cs, w, recruit="Luceria"); close(cs)
+            cs, w = open_dialog("natural_after_luceria"); try_rows("natural_after", cs, w); close(cs)
+            kept = save(g, "after_luceria_recruit.SAV")
+            log("kept_after_recruit", save=kept)
+        else:       # staged from the save made by `natural`: sys.argv[3] = file name of that save in artifacts, ops by variant
+            base = ART / sys.argv[3]
+            ops = {"low_luceria": [("city", 110, {"fort": 60})], "low_both": [("city", 110, {"fort": 60}), ("city", 85, {"fort": 50})]}[variant]
+            src = staged(base, ops, variant)
+            g.load(src, seed=12345)
+            log("loaded", variant=variant, slots=slots(), cities={c: g.i16(0x479590 + c * 34 + 26) for c in (110, 85, 81)})
+            cs, w = open_dialog(variant + "_a"); try_rows(variant + "_a", cs, w, recruit="Luceria"); close(cs)
+            cs, w = open_dialog(variant + "_b"); try_rows(variant + "_b", cs, w, recruit="Rome"); close(cs)
+    elif CASE == "G9":
+        def pad_armies(target):
+            def f(b):
+                o = sav.ARMY_OFF; na = struct.unpack_from("<h", b, o)[0]
+                dummy = bytearray(b[o + 2:o + 2 + 656]); struct.pack_into("<h", dummy, 4, 15)
+                for k in range(20): struct.pack_into("<h", dummy, 16 + 32 * k + 4, 0)
+                end = o + 2 + na * 656; b[end:end] = bytes(dummy) * (target - na); struct.pack_into("<h", b, o, target)
+            f.__doc__ = f"army table padded to {target} records (dummies: owner 15, every slot empty)"
+            return f
+        def mobilize(tag):
+            g.open_recruit(); cs = g.controls("Army recruits"); w = g.find_windows("^Army recruits$")[0][0]; g.raise_window(w); time.sleep(0.5)
+            cities = g.control(cs, cls="TListBox", index=0); units = g.control(cs, cls="TListBox", index=1)
+            rows_found = None
+            for r in range(3):          # the city row of ROME (the capital)
+                g.click_list_row(cities, r, pause=0.6); f, o = ocr_window(g, f"{tag}_cityrow{r}", w)
+                log("row", tag=tag, row=r, image=f, ocr=o)
+                if "units at rome" in o.lower(): rows_found = r; break
+            f, o = ocr_window(g, f"{tag}_units", w); log("units_list", tag=tag, image=f, ocr=o, city_row=rows_found)
+            g.click_list_row(units, 2, pause=0.5)
+            n_arm, sl = g.i16(0x4A0324), [g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)]
+            g.click_control(g.control(cs, text="Mobilize"), pause=2.0)
+            bx = boxes(g); texts = g.dismiss_popups()
+            log("mobilize_pressed", tag=tag, armies_before=n_arm, armies_after=g.i16(0x4A0324), slot_troops_before=sl, slot_troops_after=[g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)], boxes=bx, dismissed=texts)
+            close_dialog_try = g.find_windows("^Army recruits$")
+            if close_dialog_try:
+                try: g.close_controls("Army recruits", cs)
+                except Exception as e: log("close_error", error=repr(e))
+        src = staged(START, [], "padded198", pad_armies(198))
+        g.load(src, seed=12345); log("loaded_padded", armies=g.i16(0x4A0324), slots=[g.i16(drv.NATIONS + 0x2e4 + 8 * k) for k in range(8)])
+        mobilize("padded")
+        g.open(START); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+        log("loaded_control", armies=g.i16(0x4A0324)); mobilize("control")
     else:
         raise SystemExit("unknown case " + CASE)
     log("done")

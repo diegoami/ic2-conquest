@@ -13,3 +13,4 @@ Checks 2, 3, 5, 6, 7, 8, 9, 10 of `runs/experiments/data/run-exp-gap-v050/rows_g
 ## Progress
 - G2_merc, G2_fleet, G2_debt run (see logs). Notes: a staged mercenary `hc` (label 35, q9) save made the process unreadable (`PermissionError` on /proc/<pid>/mem, log `g1_checks-G2_merc-20261011-232227.jsonl` or the one holding that error); re-done with `hi` and `li` mercenaries.
 - G3_cap (natural_target3, own3), G5 (patched, original), G6 (patched game, nogame_menu, nogame_sysclose; original game) run. G6 original game: first attempt hung at A2 and was killed by the timeout (log kept, wineserver -k), second run complete. Batch committed and pushed.
+- G2_depose (3 runs), G7 (seeds 1-10, 12345), G10 (third run is the usable one: news lines are C strings at 0x49f994 + 61 i; first two logs read them wrongly, kept), G8 (natural, low_both), code extract v2, exe strings, g7_summary written. Batch committed and pushed.
