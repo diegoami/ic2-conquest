@@ -76,7 +76,7 @@ def stage():
         print("turn", name, flush=True)
     a = g.army_pos(0)
     assert max(abs(a[0] - 101), abs(a[1] - 46)) == 1, ("army not next to the fleet", a)
-    p = g.save_as("FLEET2_STAGE.SAV")
+    p = g.save_as("FLEET2_STAGE.SAV", overwrite=True)
     shutil.copy(p, OUT2)
     s2 = sav.load(str(OUT2))
     print("FLEET2:", [(f["id"], f["x"], f["y"], f["ships"], f["moves"]) for f in s2["fleets"] if f["owner"] == 0],

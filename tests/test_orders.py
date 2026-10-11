@@ -56,7 +56,7 @@ def diff(a, b):
 
 def baseline():
     g, _ = fresh("baseline")
-    p = keep(g.save_as("T_BASE.SAV"), "T_BASE.SAV")
+    p = keep(g.save_as("T_BASE.SAV", overwrite=True), "T_BASE.SAV")
     return g, p
 
 
@@ -65,7 +65,7 @@ def test_move():
     s0 = load(base)
     a0 = s0["armies"][0]
     pos, texts = g.move(0, a0["x"] + 1, a0["y"] - 1)
-    p = keep(g.save_as("T_MOVE.SAV"), "T_MOVE.SAV")
+    p = keep(g.save_as("T_MOVE.SAV", overwrite=True), "T_MOVE.SAV")
     s1 = load(p)
     a1 = s1["armies"][0]
     assert (a1["x"], a1["y"]) == pos != (a0["x"], a0["y"]), (a0, a1)
@@ -80,7 +80,7 @@ def test_recruit():
     g, base = baseline()
     s0 = load(base)
     texts = g.recruit(city_row=1, unit_type="hi", thousands=2)     # rows: Luceria, ROME
-    p = keep(g.save_as("T_RECRUIT.SAV"), "T_RECRUIT.SAV")
+    p = keep(g.save_as("T_RECRUIT.SAV", overwrite=True), "T_RECRUIT.SAV")
     s1 = load(p)
     r0, r1 = s0["nations"][0], s1["nations"][0]
     new = [q for q in r1["recruit_slots"] if q not in r0["recruit_slots"]]
@@ -136,7 +136,7 @@ def test_attack():
         g.move(0, *step)
         a = {"x": g.army_pos(0)[0], "y": g.army_pos(0)[1]}
     texts = g.attack(0, felsina["x"], felsina["y"])
-    p = keep(g.save_as("T_ATTACK.SAV"), "T_ATTACK.SAV")
+    p = keep(g.save_as("T_ATTACK.SAV", overwrite=True), "T_ATTACK.SAV")
     s2 = load(p)
     f1 = next(c for c in s1["cities"] if c["id"] == felsina["id"])
     f2 = next(c for c in s2["cities"] if c["id"] == felsina["id"])
@@ -161,7 +161,7 @@ def test_join():
     a0, a1 = g.army_pos(0), g.army_pos(1)
     assert max(abs(a0[0] - a1[0]), abs(a0[1] - a1[1])) == 1, ("not adjacent", a0, a1)
     texts = g.join(0)
-    p = keep(g.save_as("T_JOIN.SAV"), "T_JOIN.SAV")
+    p = keep(g.save_as("T_JOIN.SAV", overwrite=True), "T_JOIN.SAV")
     s2 = load(p)
     armies = live_armies(s2, 0)
     total = sum(a["troops"] for a in armies)
@@ -176,7 +176,7 @@ def test_taxation():
     """One turn: set Rome's tax to 20% through the Change tax level slider."""
     g, _ = fresh("tax")
     g.taxation(20)
-    p = keep(g.save_as("T_TAX.SAV"), "T_TAX.SAV")
+    p = keep(g.save_as("T_TAX.SAV", overwrite=True), "T_TAX.SAV")
     s = load(p)
     r = s["nations"][0]
     assert r["tax"] == 20, ("tax", r["tax"])
@@ -190,7 +190,7 @@ def test_disband_unit():
     before = len(load(BASE)["nations"][0]["recruit_slots"])
     g.recruit(city_row=1, unit_type="hi", thousands=2)      # 3,200 HI queued at Rome
     g.disband_unit(city_row=1, unit_row=0)                  # remove the first queued unit
-    p = keep(g.save_as("T_DISBAND.SAV"), "T_DISBAND.SAV")
+    p = keep(g.save_as("T_DISBAND.SAV", overwrite=True), "T_DISBAND.SAV")
     r = load(p)["nations"][0]
     assert len(r["recruit_slots"]) == before, (before, r["recruit_slots"])
     return f"Rome queue {before} -> {len(r['recruit_slots'])} (recruit +1, disband -1), treasury {r['treasury']}"
@@ -201,7 +201,7 @@ def test_disband_army():
     g, _ = fresh("disbandarmy")
     before = len(live_armies(load(BASE), 0))
     g.disband_army(0)
-    p = keep(g.save_as("T_DISBAND_ARMY.SAV"), "T_DISBAND_ARMY.SAV")
+    p = keep(g.save_as("T_DISBAND_ARMY.SAV", overwrite=True), "T_DISBAND_ARMY.SAV")
     s = load(p)
     after = len(live_armies(s, 0))
     assert after == before - 1, (before, after, [(a["id"], a["x"], a["y"]) for a in live_armies(s, 0)])
@@ -215,7 +215,7 @@ def test_build_fleet():
     s0 = load(BASE)
     before = len([f for f in s0["fleets"] if f["owner"] == 0])
     g.build_fleet(10)
-    p = keep(g.save_as("T_FLEET.SAV"), "T_FLEET.SAV")
+    p = keep(g.save_as("T_FLEET.SAV", overwrite=True), "T_FLEET.SAV")
     s = load(p)
     fl = [f for f in s["fleets"] if f["owner"] == 0]
     assert len(fl) == before + 1, [(f["id"], f["building"], f["countdown"], f["ships"]) for f in fl]
@@ -231,7 +231,7 @@ def test_split_army():
     before = len(live_armies(s0, 0))
     troops0 = sum(a["troops"] for a in live_armies(s0, 0))
     g.split_army(0, unit_rows=(0,))
-    p = keep(g.save_as("T_SPLIT.SAV"), "T_SPLIT.SAV")
+    p = keep(g.save_as("T_SPLIT.SAV", overwrite=True), "T_SPLIT.SAV")
     s = load(p)
     arm = live_armies(s, 0)
     troops = sum(a["troops"] for a in arm)
@@ -250,7 +250,7 @@ def test_change_units_disband():
     s0 = load(BASE)
     a0 = next(a for a in live_armies(s0, 0) if a["id"] == 0)
     g.change_units_disband(0, unit_row=0)
-    p = keep(g.save_as("T_CHUNITS.SAV"), "T_CHUNITS.SAV")
+    p = keep(g.save_as("T_CHUNITS.SAV", overwrite=True), "T_CHUNITS.SAV")
     s = load(p)
     a1 = next(a for a in live_armies(s, 0) if a["id"] == 0)
     assert len(a1["units"]) == len(a0["units"]) - 1, (len(a0["units"]), len(a1["units"]), a1["units"])
@@ -279,7 +279,7 @@ def test_transfer_units():
     first = next(struct.unpack_from("<4h", g.army_rec(0), 16 + 32 * k)[2] for k in range(20)
                  if struct.unpack_from("<4h", g.army_rec(0), 16 + 32 * k)[2] > 0)
     g.transfer_units(0, unit_row=0)
-    p = keep(g.save_as("T_TRANSFER.SAV"), "T_TRANSFER.SAV")
+    p = keep(g.save_as("T_TRANSFER.SAV", overwrite=True), "T_TRANSFER.SAV")
     s = load(p)
     a0 = next(a for a in live_armies(s, 0) if a["id"] == 0)
     a1 = next(a for a in live_armies(s, 0) if a["id"] == 1)
@@ -292,7 +292,7 @@ def test_transfer_units():
 
 
 def _army0_units(g, fname):
-    p = keep(g.save_as(fname), fname)
+    p = keep(g.save_as(fname, overwrite=True), fname)
     return next(a for a in live_armies(load(p), 0) if a["id"] == 0)["units"]
 
 
@@ -555,7 +555,7 @@ def _make_patched_save_with_n_armies(source, n_rome_target=198):
 
 
 def _snap(g, name):
-    p = keep(g.save_as(name), name)
+    p = keep(g.save_as(name, overwrite=True), name)
     return load(p)
 
 
@@ -601,7 +601,7 @@ def test_new_nation_yes():
     rome0 = next(n for n in s0["nations"] if n["id"] == 0)
     assert rome0["human"] is True, rome0
     texts = g.new_nation()
-    p = keep(g.save_as("T_NEWNATION_YES.SAV"), "T_NEWNATION_YES.SAV")
+    p = keep(g.save_as("T_NEWNATION_YES.SAV", overwrite=True), "T_NEWNATION_YES.SAV")
     s1 = load(p)
     rome1 = next(n for n in s1["nations"] if n["id"] == 0)
     # Per inventory row G03, the Yes path turns the seat AI. The post-state
@@ -862,7 +862,7 @@ def test_recruit_100pct_mobilization():
     })
     try:
         g = fresh_save(pre)
-        s_before = load(Path(g.save_as("dummy.SAV")))
+        s_before = load(Path(g.save_as("dummy.SAV", overwrite=True)))
         n_units_before = len(next(a for a in s_before["armies"] if a["id"] == 0)["units"])
         # Issue the recruit order via the existing recruit() helper.
         g.recruit(0, "hi", 3200)
@@ -887,7 +887,7 @@ def test_recruit_40_slots_cap():
                                         state=12, typ=1, troops=3200)
     try:
         g = fresh_save(pre)
-        s_before = load(g.save_as("dummy_before.SAV"))
+        s_before = load(g.save_as("dummy_before.SAV", overwrite=True))
         r0_before = s_before["nations"][0]
         filled_before = [sl for sl in r0_before["recruit_slots"] if sl["troops"] > 0 and sl["city"] == 85]
         assert len(filled_before) == 40, (len(filled_before), "expected 40 slots at city 85")
@@ -904,7 +904,7 @@ def test_recruit_40_slots_cap():
             raise AssertionError(f"recruit() raised on the gate; the dismissed-popups race likely: {e}")
         # Inspect the post-state: no new slot for Rome at city 85 (the cap
         # refused).
-        p = keep(g.save_as("T_RECRUIT_40SLOTS.SAV"), "T_RECRUIT_40SLOTS.SAV")
+        p = keep(g.save_as("T_RECRUIT_40SLOTS.SAV", overwrite=True), "T_RECRUIT_40SLOTS.SAV")
         s_after = load(p)
         r0_after = s_after["nations"][0]
         filled_after = [sl for sl in r0_after["recruit_slots"] if sl["troops"] > 0 and sl["city"] == 85]
