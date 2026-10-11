@@ -10,3 +10,7 @@ the current focus (battles and bots paused); report new findings on main each re
 the no-WM confirm-box traps (driver pitfalls); the research/relay workflow.
 
 ## Progress
+- 9c52a2c CLAUDE.md: the rules in (Working with the owner section; rule 6 lesson; driver pitfalls)
+
+## END (2026-10-11)
+Done: all planned rules in CLAUDE.md. Next: the owner names the reviewer (rule 2); merge on approval + green CI.
