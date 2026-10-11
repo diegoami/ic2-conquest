@@ -236,7 +236,7 @@ def fake_opencode(name, plan):
             os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
 
 
-def chain(d):
+def run_one_model(d):
     """er.run_one over the fake (exactly one model): (final, stop, failures)."""
     failures = []
     final, stop = er.run_one("provider/model", "pr", 5, "t", "body", BASE, HEAD, ROOT, d / "logs", "",
@@ -256,7 +256,7 @@ def write_brief(d):
 
 def test_api_failure_ends_the_call_with_one_model():
     with fake_opencode("kind-api", ["429", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop is None, (final, stop)
         assert failures == [("provider/model", "exited-without-session")], failures
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
@@ -291,7 +291,7 @@ def test_hang_then_resume():
 
 def test_crash_after_resumes_is_a_process_failure():
     with fake_opencode("resume-crash", ["crash", "crash", "crash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop, failures)
         m, r = stop
         assert r["class"] == "nonzero-exit" and r["kind"] == "process" and r["session"] == "ses_fake", r
@@ -308,7 +308,7 @@ def test_crash_after_resumes_is_a_process_failure():
 
 def test_bad_format_is_a_process_failure():
     with fake_opencode("bad-format", ["badformat", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop)
         r = stop[1]
         assert r["class"] == "bad-format" and r["kind"] == "process", r
@@ -319,7 +319,7 @@ def test_bad_format_is_a_process_failure():
             "the final message was exported once, under its own name, and no export.json"
         prev = json.loads((d / "logs" / "run-1" / "result.prev-1.json").read_text())
         assert prev["class"] == "ok" and prev["text"], prev      # the ok result is kept, not overwritten (rule 6)
-    return "no header line -> bad-format, kind process, chain stopped after one run, recorded in result.json and status.txt"
+    return "no header line -> bad-format, kind process, stopped after one run, recorded in result.json and status.txt"
 
 
 def make_db(path, session):
@@ -381,13 +381,13 @@ def test_progress_and_status():
 
 def test_only_stderr_is_api_evidence():
     with fake_opencode("text-429", ["textcrash"] * 3) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop)
         r = stop[1]
         assert r["kind"] == "process" and r["class"] == "nonzero-exit" and "429" not in (r["cause"] or ""), r
         assert runs_started(d) == 3, "a model's text is not an API failure: it is resumed, not passed on"
     with fake_opencode("err-429", ["apicrash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop is None and failures == [("provider/model", "nonzero-exit")], (final, stop, failures)
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
         assert r1["kind"] == "api" and "status 429" in r1["cause"], r1
@@ -397,7 +397,7 @@ def test_only_stderr_is_api_evidence():
 
 def test_resume_limit_holds_across_invocations():
     with fake_opencode("resume-limit", ["crash", "crash", "crash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert stop, (final, stop)
         rd = d / "logs" / "run-1"
         assert json.loads((rd / "state.json").read_text())["resumes_used"] == 2
@@ -428,7 +428,7 @@ def test_models_listing_provider_error_is_api():
 
 def test_stopped_and_reported_is_not_resumed():
     with fake_opencode("report", ["reportcrash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop)
         r = stop[1]
         assert r["class"] == "stopped-with-report" and r["kind"] == "process" and "BLOCKED: I need file X" in r["text"], r
@@ -468,7 +468,7 @@ def test_every_failure_reads_the_session_and_exports_are_per_attempt():
         assert runs_started(d) == 1, "an unreadable session is never resumed"
     with fake_opencode("unreadable-api", ["apicrash", "ok"]) as d:
         (d / "export_bad").write_text("1")
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop, failures)
         assert stop[1]["kind"] == "process" and "export unreadable" in stop[1]["cause"] and runs_started(d) == 1, stop[1]
     with fake_opencode("perm", ["permbash", "ok"]) as d:
@@ -627,7 +627,7 @@ def test_watcher_crash_is_a_process_failure():
     ow.run = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom"))
     try:
         with fake_opencode("crash-watcher", []) as d:
-            final, stop, failures = chain(d)
+            final, stop, failures = run_one_model(d)
     finally:
         ow.run = real
     assert final is None and stop and not failures, (final, stop)
@@ -712,7 +712,7 @@ def test_models_listing_looks_only_at_its_own_stderr():
 def test_refused_credentials_are_a_process_failure():
     for plan in (["authcrash", "ok"], ["auth-nosession", "ok"]):
         with fake_opencode("auth-" + plan[0], plan) as d:
-            final, stop, failures = chain(d)
+            final, stop, failures = run_one_model(d)
             assert final is None and stop and not failures, (plan, final, stop, failures)
             r = stop[1]
             assert r["kind"] == "process", r
@@ -750,7 +750,7 @@ def test_permission_scan_and_corrective_resume():
             r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
             assert r["class"] == "permission-rejected" and r["kind"] == "process" and runs_started(d) == 2, (r["class"], runs_started(d))
         with fake_opencode("perm-bash", ["permbash", "ok"]) as d:           # any other permission: exit 6 path, no resume, no fallback
-            final, stop, failures = chain(d)
+            final, stop, failures = run_one_model(d)
             assert final is None and stop and not failures and stop[1]["class"] == "permission-rejected" and runs_started(d) == 1, (stop, failures)
         with fake_opencode("perm-exit0", ["permbashexit0", "ok"]) as d:     # exit 0 after a rejection is not ok and not cut-off
             ow.PERM_IN_LOOP = False
@@ -771,13 +771,13 @@ def test_session_error_is_authoritative_and_tool_output_is_not_evidence():
         assert r["kind"] == "process" and r["class"] == "nonzero-exit" and runs_started(d) == 3, (r["class"], r["kind"], r["cause"])
     with fake_opencode("export-503", ["diffcrash", "ok"]) as d:             # the export's info.error decides
         (d / "export_error").write_text(json.dumps({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}))
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop is None and failures == [("provider/model", "nonzero-exit")] and runs_started(d) == 1, (stop, failures)
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
         assert r1["kind"] == "api" and "status 503" in r1["cause"] and r1["last_message"]["provider_error"]["name"] == "APIError", r1
     with fake_opencode("export-400", ["diffcrash"] * 3) as d:             # a 4xx error in the export beats a 429 in stderr text
         (d / "export_error").write_text(json.dumps({"name": "APIError", "data": {"message": "bad", "statusCode": 400, "isRetryable": False}}))
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and stop[1]["kind"] == "process" and runs_started(d) == 3, (stop, failures)   # resumed twice, never handed on
     assert not ow.API_RE.search("raise FileNotFoundError(args[0])"), "ENOTFOUND must be a whole word"
     return "free text on stderr is never evidence when there is a session; the export's info.error is (api 503, process 400); FileNotFoundError is not ENOTFOUND"

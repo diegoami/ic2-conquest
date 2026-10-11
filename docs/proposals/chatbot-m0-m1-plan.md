@@ -320,7 +320,7 @@ One PR, the tasks committed in this order. Every test below runs offline unless 
 
 ## 7. Review plan for each PR
 
-**The chain does not give two reviews in one call.** `scripts/external_review.py` moves to the next model in `--model a,b` only
+**History, superseded 2026-10-11 (the user names ONE reviewer per review; a list is refused; no default list). The chain did not give two reviews in one call.** `scripts/external_review.py` moves to the next model in `--model a,b` only
 after an *infrastructure* failure, never after a real review (docstring at lines 2-17; `docs/external-review.md` "Roles"). The
 default list is DeepSeek then **Luna** (`DEFAULT_MODELS`, line 35). So each chatbot PR gets **two separate calls**, and the model
 list is always passed as an argument:
@@ -333,7 +333,7 @@ python3 scripts/external_review.py --pr N --model openai/gpt-6.1-sol#medium --ap
 `#medium` survives the script: since 2026-10-05 `opencode_watched.effort` gives a heavy model with no variant `#low`, lowers `#high`
 and `#max` on one to `#medium` (so an operator's `#high` cannot reach Sol), keeps `#low`/`#medium`, and passes `--variant medium`.
 The PR template (below) still states the command.
-On exit 3 the fallback is `/review-pr N` on Opus. On exit 4, read the review and decide; do not pay for another review.
+(History.) Now: on exit 3 ask the user which model next; on exit 4, read the review and decide.
 
 **M0 tasks, before the first M1 PR:**
 1. **Check that the model id exists for the reviewer.** Run `opencode models openai`, with the reviewer's own `XDG_DATA_HOME`,

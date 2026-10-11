@@ -233,9 +233,9 @@ def final_text(exe, env, cwd, session, run_dir, fname):
 
 
 # ---- failure kinds, state, progress (opencode resilience, 2026-10-10) --------------------------------------------------
-# A failure of an OpenCode run is never normal. It has one of two kinds, and only the first may move a chain to another model:
+# A failure of an OpenCode run is never normal. It has one of two kinds, and only the first can mean that another model is possible (only when the user names it, CLAUDE.md "Choosing models" rule 7):
 #   api     the provider did not answer: no session ever started, or provider error text (429, rate limit, 5xx/overloaded,
-#           quota/usage limit, network). The next model may be tried; nothing was wrong with our process.
+#           quota/usage limit, network). Nothing was wrong with our process; the user may name another model.
 #   process everything else (timeouts, cut-off, crash, unreadable output, permission refusal, wrong agent, our own setup):
 #           diagnose and fix it; never hand it to another model. The run is resumable (state.json, --session).
 ALWAYS_API = ("no-session", "exited-without-session")
@@ -546,7 +546,7 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     """One watched `opencode run`. result.json has `class` and `kind` (None when ok, else api or process, see above). With
     resume_session the run continues THAT session (opencode run --session) instead of starting one; after an idle-timeout,
     total-timeout or nonzero exit with a known session it continues the same session by itself, up to `resumes` times, each
-    attempt with its own idle and total timeout (not after an api failure: the provider is down, the next model takes over). The
+    attempt with its own idle and total timeout (not after an api failure: the provider is down; the user names any other model). The
     resumes used (automatic and manual) are kept in state.json["resumes_used"], so the limit holds across invocations: a resume
     past it is refused (class resume-limit, nothing written) unless force_resume, which is logged in state.json["forced_resumes"]
     and starts a fresh count.

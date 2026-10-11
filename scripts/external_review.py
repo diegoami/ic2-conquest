@@ -212,7 +212,7 @@ def parse_review(text, hdr):
     """Read a model's final message. Returns a dict: status 'ok' | 'unreadable' | 'cutoff' | 'none',
     text (what to post, without the note), verdict, rewrites.
 
-    Only 'none' (no header line anywhere: tool chatter, or nothing) is a failure that falls to the next model.
+    Only 'none' (no header line anywhere: tool chatter, or nothing) is a failure (kind process: no other model runs).
     'ok' is normalised to header / verdict / findings / verdict. 'unreadable' (the verdict after the header
     cannot be read, or the two verdicts disagree) and 'cutoff' (no closing verdict among the last three
     non-empty lines) are posted anyway, flagged, with no label."""

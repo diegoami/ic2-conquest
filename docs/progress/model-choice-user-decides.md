@@ -30,3 +30,10 @@ external reviewer (rule 2); on approval + green CI merge and close #72 as supers
 ## Review round 1 fixes
 - R1+R2+R5: external_review.py: run_chain removed, run_one runs exactly one model (api failure -> exit 3, no other model); family()
   maps ids and implementer names to a family, excluded() refuses a same-family reviewer (exit 2); tests 32/32, self-test 71/71.
+- R3+R4: docs/external-review.md (exit 3/4 text, failure-kind table, --model list text) and docs/environment.md (DeepSeek rows and
+  the free-model 429 fallback) rewritten to the one-model rule; old chain text stays only under "History (superseded)".
+- Sweep: README, scripts comments (external_review, opencode_watched), five proposals (inline superseded markers), test helper
+  renamed chain -> run_one_model. Tests 32/32, self-test 71/71.
+
+## END (round 1 fixes, 2026-10-11)
+All five findings fixed; sweep done. Next: the owner names the re-reviewer (rule 2).
