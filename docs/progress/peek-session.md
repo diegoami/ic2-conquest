@@ -8,3 +8,7 @@ Source: isles-pro (isle-wars-archaeology) CLAUDE.md rule 6.7 and its tools/harne
 2. CLAUDE.md monitoring rules: give the session id with a peek line; repeat id and step in every update; agent id + transcript path for Claude subagents.
 
 ## Progress
+- 257b144 scripts/peek.sh + CLAUDE.md rule 10 sub-bullets; peek tested on ses_ed42b4c0effe1EfIhITEfIiSmb by id and by run log
+
+## END (2026-10-11)
+Done. Next: the owner names the reviewer (rule 2).
