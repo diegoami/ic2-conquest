@@ -583,6 +583,15 @@ def test_resume_applies_the_rules_of_a_new_run():
     return "--resume refuses a recorded DeepSeek / multi-model / implementer-family model (exit 2, nothing runs; a legacy state.json takes the implementers from the PR); a valid recorded model passes the checks"
 
 
+def test_watcher_refuses_deepseek_and_lists():
+    with fake_opencode("ow-refuse", ["ok"]) as d:
+        for m in ("opencode-go/deepseek-v4-pro", "x/DeepSeek-V4.1#high", "a/b,c/d", ""):
+            r = ow.run(write_brief(d), ROOT, m, d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "model-refused" and r["kind"] == "process", (m, r["class"])
+            assert not (d / "count").exists() and not (d / "run").exists(), m
+    return "opencode_watched.run (the door of every run, also its CLI) refuses DeepSeek, a list or no model before anything starts"
+
+
 def test_main_exit_codes():
     one = ["--pr", "5", "--model", "provider/model"]
     with fake_opencode("main-process", ["crash", "crash", "crash", "ok"]) as d:
@@ -920,7 +929,7 @@ TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_templa
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
-         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes", "resume_applies_the_rules_of_a_new_run", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "watcher_refuses_deepseek_and_lists", "main_exit_codes", "resume_applies_the_rules_of_a_new_run", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",

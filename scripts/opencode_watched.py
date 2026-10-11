@@ -541,6 +541,17 @@ def describe(run_dir, now=None):
             f"{res.get('cause') or 'no cause recorded'} · session {sid}{resume}")
 
 
+def model_refusal(model):
+    """Why this model may not run at all (CLAUDE.md, Choosing models rule 4 and 2): DeepSeek is never used, and exactly ONE model is run."""
+    if not str(model or "").strip():
+        return "no model named (the user names it)"
+    if "," in model:
+        return "one model only, the one the user named"
+    if "deepseek" in model.lower():
+        return "DeepSeek is never used (CLAUDE.md, Choosing models rule 4)"
+    return None
+
+
 def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None, startup=180,
         idle=600, total=3600, data_dir=None, log=print, meta=None, resume_session=None, resumes=RESUMES, force_resume=False):
     """One watched `opencode run`. result.json has `class` and `kind` (None when ok, else api or process, see above). With
@@ -552,6 +563,10 @@ def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None
     and starts a fresh count.
     state.json, progress.jsonl and status.txt in run_dir say what it is doing."""
     run_dir = Path(run_dir)
+    bad = model_refusal(model)
+    if bad:                                              # the one door every run goes through (new, resumed, or the CLI): nothing is touched
+        return {"class": "model-refused", "kind": "process", "cause": bad, "session": resume_session, "text": "",
+                "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log")}
     run_dir.mkdir(parents=True, exist_ok=True)
     if resume_session and not force_resume and resume_refusal(run_dir, resumes):     # refused: nothing is touched
         return {"class": "resume-limit", "kind": "process", "cause": resume_refusal(run_dir, resumes), "session": resume_session,

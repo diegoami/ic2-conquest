@@ -64,3 +64,20 @@ All four findings fixed. Next: the owner names the re-reviewer (rule 2).
 
 ## END (round 3 fixes, 2026-10-11)
 Both findings fixed. Next: the owner names the re-reviewer (rule 2).
+
+## Review round 4 fixes
+- R1 (e67fa44): external_review.py: one `family_refusal(model, implementers, confirmed)` used by a new run and by `--resume`
+  (proven same family always refused; unknown implementer alias or unknown reviewer refused unless `--confirm-family-differs`).
+  `--resume` takes `--confirm-family-differs` too and records `family_confirmed` in state.json (new runs record it as well).
+  Tests: legacy unknown implementer refused on resume, proceeds with the flag; same-family refused even with the flag.
+- R2: docs/proposals/chatbot.md section 13 marked SUPERSEDED 2026-10-11 (one reviewer named by the user); old text kept as history.
+- Adversarial pass: (a) opencode_watched.run, the door of every run and of its own CLI, accepted DeepSeek and a model list: now
+  `model_refusal()` refuses both (class model-refused, nothing touched); test added. (b) docs/external-review.md: the quota-skip
+  paragraph (skips an exhausted provider, exit 3) and "Today the implementer is Sonnet", "reviewer is not Claude" read as active:
+  marked history / corrected. (c) docs/environment.md free-model line: a free model reviews only when the user names it.
+  Swept CLAUDE.md, README.md, docs/ (not review-briefs, model-trials, findings, runs) for L50, chain, fallback, recommend, second opinion, Opus pass:
+  the rest is already marked superseded or is not a model choice. The only other run starter is the review-pr skill (user-named Claude model).
+- Checks: tests/test_reviewer_prompt.py 36/36, external_review.py --self-test 83/83.
+
+## END (round 4 fixes, 2026-10-11)
+Both findings fixed plus the sweep. Next: the owner names the re-reviewer (rule 2).

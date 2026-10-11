@@ -21,15 +21,15 @@ below is the history of the earlier chain.
 | Implementer | Claude Sonnet (no OpenCode implementer) | – |
 | Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
 
-**Superseded 2026-10-11. Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given. The script also checks itself: before the chain runs it asks quota-tracker (`IC2_QUOTA_URL`, default `http://localhost:8765`) about each model's provider, skips one whose provider is `exhausted` (GPT-5.6 Luna is judged on its own `gpt-5.6-luna:7d` window), names the skip in the posted header (`PR review (gpt-5.6-luna; glm-5.3 failed: quota exhausted (zai, usable in 1h))`) and exits 3 when every model is skipped; when quota-tracker does not answer it goes on unchanged.
+*Superseded 2026-10-11, history only (do not follow): the quota check before choosing (harness_imperial L50) and the script's own quota skip (it skipped a model whose provider was `exhausted`, named the skip in the posted header and exited 3 when every model was skipped). Now quota-tracker only informs: an exhausted provider prints a `quota note` and the named model runs.*
 
-- The chain moves to the next model only after an **api** failure (the provider did not answer, see "Failure kinds, resume, status"),
+- (History, superseded: no chain now; an api failure ends the call and the user names the next model.) The chain moved to the next model only after an **api** failure (the provider did not answer, see "Failure kinds, resume, status"),
   never after a real or flagged review and never after a **process** failure. When every model's API fails, `scripts/external_review.py` exits **3** and the caller decides
   what runs next. The Claude fallback is the `/review-pr <n>` skill (`.claude/skills/review-pr`, merged in #7), run
   in a session on Opus; nothing starts it automatically.
 - **The implementer's model never reviews its own PR** (`Co-Authored-By` trailers and `model:<name>` labels are
-  excluded, compared without punctuation; `--exclude-model` adds names). Today the implementer is Sonnet, which is
-  not in the chain, so nothing is excluded.
+  excluded, compared without punctuation; `--exclude-model` adds names). Under the former chain the implementer was Sonnet, which was
+  not in the chain, so nothing was excluded. Now the implementers recorded on the PR (and in `state.json` for `--resume`) are checked by the one `family_refusal()` of a new run and of `--resume`.
 - **History, so the reasons survive:** the earlier plan was DeepSeek then Sonnet as implementer, and GLM-5.3 Flash
   then Opus as reviewer. GLM-5.3 and GLM-5.3-Flash sometimes end their turn early in long implementer runs (a
   whole run of reading, then exit 0 with no commit); Go's `gpt-6-luna` returned "Bad Request" in long agent loops
@@ -41,7 +41,7 @@ below is the history of the earlier chain.
   when the PR needs it, never `#high`** (the player, 2026-10-05). `opencode_watched.effort` enforces it: a heavy model with no variant
   gets `#low`, and `#high` or `#max` on one is lowered to `#medium` with a log line.
 
-A second, independent reviewer that is not Claude: an OpenCode model reviews a PR in its own git worktree
+A second, independent reviewer of another model family than the implementer's (the one the user named): an OpenCode model reviews a PR in its own git worktree
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
 
 ```bash

@@ -102,7 +102,7 @@ Facts that affect availability:
     owner rather than retrying.
 
 ### Free models (OpenRouter): supplement only
-For smaller tasks and additional reviews (a second opinion next to a regular model), never as the main model for important work
+For smaller tasks and additional reviews (a second opinion next to a regular model; a free model reviews only when the user names it, `CLAUDE.md` "Choosing models" rule 2), never as the main model for important work
 (the owner, 2026-10-06):
 - `openrouter/nvidia/nemotron-3-ultra-550b-a55b:free`: the stronger one;
 - `openrouter/cohere/north-mini-code:free`: coding-focused, faster;
