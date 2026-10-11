@@ -1,0 +1,89 @@
+# Original-side checks of the v0.5.0 g1 gap analysis: the Expenditure Total includes mercenaries and fleets under construction, Debt limit is a display rounding (deposition uses the unrounded figure), trade refusals, File > Save, quit prompt, Rome's start per seed, recruit lists, mobilise refusal and the live news header
+
+**Status:** draft from ic2-conquest, awaiting promotion (issue #78). Does checks 2, 3, 5, 6, 7, 8, 9 and 10 of `runs/experiments/data/run-exp-gap-v050/rows_g1.md` ("Original-side checks needed"; rows S04, S02a, F04, F06, S05, S05a, S01, NEW-g1-5). Implemented by a Sonnet subagent at the owner's choice. Wine-only.
+
+**Tags:** `[P]` played in Wine, read from game memory, the saves and the screenshots; `[derived]` a rule stated from several readings; `[code]` the pinned decompile. Line numbers are those of `all_app_functions.txt` (SHA-256 `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`, `harness/decompile.py` PINS) and every function cited is in the tracked extract `code_extract_g1.v2.txt` (whole functions, line-numbered; `code_extract_g1.txt` is the first version without the news-header function). Byte-exact literals of the unpatched `Imperial Conquest 2.exe` (SHA-256 `9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31`) with their file offsets: `exe_strings_g1.txt`.
+
+**Data:** `runs/experiments/data/run-exp-g1-original-checks/` (runner `g1_checks.py` + `g1_lib.py`, logs `g1_checks-<case>-<stamp>.jsonl`, `SAVES.sha256`, `README.md`); saves and screenshots in release `run-exp-g1-original-checks` (names below are bare file names, each unique and hashed). Fast rollingsave seed exe (patched) unless a check says "unpatched", Wine 10.0, seed 12345, one fresh process per case; `environment.jsonl` records the Wine, font and exe fingerprint. Staging is L1 and named in each log's `staged` line: only named save fields are patched (mercenary unit in a free slot, wealth, treasury, relations, city fortification, army-table padding); armies' positions are never edited. Balance sheet figures are read by OCR of kept crops and cross-checked against a recomputation from game memory of the decompiled paint function (they agreed in every sheet read; both are in each `balance_sheet` log line); every OCR attempt is in the log.
+
+## Answer
+
+### G2 (S04): the Expenditure Total includes "Mercenary units" and "Fleet" `[P][code]`
+
+- Control, Rome 0720 (`g1_checks-G2_merc-20261011-231938.jsonl`, image `G2_merc_20261011-231938_balance_control_no_merc.png`): Administration 303, Fleet 0, Army recruits 121, Regular units 453, Mercenary units 0, Total 877; Revenue 252 + 632 + 29 = 913; Balance 2,200; Debt limit 5,000.
+- A mercenary unit on the payroll (L1: army 0 slot 6 := label 11, light infantry 3,000, quality 6; `g1_checks-G2_merc-20261011-232104.jsonl`, `G2_merc_20261011-232104_balance_merc_li3000_q6.png`): Mercenary units 18, Total 895 = 877 + 18. A second one (label 11, heavy infantry 4,000, quality 8; `g1_checks-G2_merc-20261011-232259.jsonl`): Mercenary units 64, Total 941 = 877 + 64. `[code]` `TBalanceSheet_PaintBalance` line 55516 computes the mercenary line `quality * ((troops div 200) * price) div 5` for labelled slots and line 55534 adds it to the same running total (`local_10 = local_10 + local_14`) as the regular units. The remake excludes it (rows_g1.md S04 note): the original includes it.
+- A fleet under construction (natural: Build fleet at Rome 0720, `g1_checks-G2_fleet-20261011-232354.jsonl`): the order made an 11-ship fleet record at (0,0) owned by Rome, the dialog said "@ The fleet will be built at Caere.", treasury 2,200 -> 2,090, Fleet line 0 -> 33 (= 3 per ship), Total 877 -> 910 (`G2_fleet_20261011-232354_balance_fleet_under_construction.png`). `[code]` lines 55471-55480 (55476): every fleet record owned by the nation adds `ships * 3`; no test for completion. A finished fleet counts the same way (`fleet-port-antium-0734.SAV`: 30 ships, Fleet 90, `G2_fleet_20261011-232354_balance_port_save_finished_fleets.png`).
+- The dialog's own caption is "Fleet" (singular) and "Mercenary unit" is cut by the label width on screen (`exe_strings_g1.txt` has the resource literals "Mercenary units", "Regular units").
+
+### G2 (S04, open question 2): Debt limit is rounded for display; deposition tests the unrounded `wealth / 500` `[P][code]`
+
+- Display, wealth -> unrounded `wealth div 500` -> shown (nine staged wealths, `g1_checks-G2_debt-20261011-232502.jsonl`): 2,577,000 -> 5,154 -> 5,000; 2,400,000 -> 4,800 -> 4,800; 2,499,999 -> 4,999 -> 4,900; 2,500,500 -> 5,001 -> 5,000; 3,000,000 -> 6,000 -> 6,000; 6,000,000 -> 12,000 -> 12,000; 9,999,999 -> 19,999 -> 19,000; 10,000,000 -> 20,000 -> 20,000; 12,000,000 -> 24,000 -> 20,000. `[derived]` rule (also `[code]` 55541-55556): cap 20,000; below 5,001 round down to 100; 5,001..10,000 down to 500; above, down to 1,000.
+- Deposition at the start of the human's turn, wealth 2,577,000 (unrounded line -5,154, displayed -5,000), treasury staged and End turn once (`g1_checks-G2_depose-20261011-234836.jsonl`, `-234911`, `-234946` for the three cases; the first three logs `-234640`, `-234713`, `-234745` are the same cases without the box check):
+  - treasury -4,990: no box; -5,100 (between the displayed and the unrounded line): no box, the turn goes on to Week 3; -5,200: the "End of Game" window opens, "The game is over for Appius Claudius the leader of Rome. Your army have deposed you because they have not been paid." with Treasury 2,200 -> -5,200 (`G2_depose_20261011-234713_below_after_end_turn.png`, the OCR of the box in the `-234911` log).
+  - `[code]` `FUN_00452034` lines 55030-55038: `treasury < wealth / -500 || treasury < -20000` (C division, unrounded), then `FUN_0044c8f0`; the dialog's rounding is display only.
+  - The treasury did not change during the End turn in these runs (Week 1 -> Week 3 is not a billing week), so the staged value is the tested one.
+
+### G3 (S02a): the refusal texts `[P][code]`
+
+- Own cap, Rome with three trade partners (Illyria natural, Carthage and Celtiberia staged L1) proposing Numidia (radio click, before OK): the box "You can only trade with 3 nations." (`g1_checks-G3_cap-20261011-233212.jsonl`, `G3_cap_20261011-233212_box_543546.png`); Cancel leaves the relation 0. Control in the same process (Rome with two partners, same proposal): no box, OK sets relation 1 (Rome-Numidia 0 -> 1).
+- Target already at three partners (natural, no staging, `g1_checks-G3_cap-20261011-233117.jsonl`): proposing Carthage (trades with Seleucid, Greece, Thracia) gives "You cannot trade with Carthage." (`G3_cap_20261011-233117_box_542996.png`); Greece (Carthage, Seleucid, Macedonia) gives "You cannot trade with Greece." The control in the same process, Numidia (one partner), accepts: OK sets Rome-Numidia 1 and no box. The text produced for a full target is the same one used for allied or war targets: `[code]` `TPolitics_MakeTrade` lines 55190-55268 (3 own partners in the dialog -> "You can only trade with 3 nations."; relation < 0 -> "<Name> does not want to trade with you."; target at 3 partners or relation > 1 -> "You cannot trade with <Name>."), `FUN_004499c0` counts the target's partners. There is no "already trades with 3 nations" wording in the exe (`exe_strings_g1.txt`).
+- The boxes appear at the radio click, not at OK.
+
+### G5 (F04): File > Save after Open overwrites the opened file; after File > New it asks for a name `[P][code]`
+
+- File > Open of X (a stamped copy of the start save), then File > Save: no dialog, X itself was rewritten in place (same size 131,557 bytes, SHA-256 `050bc354...` -> `0c8cf5d4...`; a single byte differs, offset 0x1b2f6 `c4` -> `c0`, everything parsed identical: `g5_diff.txt`). Runs: patched exe `g1_checks-G5-20261011-233302.jsonl`, unpatched exe `g1_checks-G5-20261011-233412.jsonl`; both give the same result and the same hash. The unmodified copy is kept as `G5_20261011-233302_X_original_before_anything.SAV` and the saved one as `G5_20261011-233302_X_after_save.SAV` (the repository's `saves/` file was never the target).
+- File > Save as (after Open): a "Save as" file dialog with an empty File name box (`G5_20261011-233302_save_as_default_name.png`), Cancelled.
+- File > New (Yes, then Rome human, OK), then File > Save: a Save dialog opens again with an empty File name (`G5_20261011-233302_after_save_after_new.png`); no file changed on disk, so there is no default name and no silent write. `[code]` `TPremierForm_SaveGameFile` (58103-58115): writes silently only when the flag at 0x4a0334 is set, which Open and Save as set (58077, 58130); otherwise calls Save as. Where New clears the flag is not visible in the decompile (the data loader it calls is not decompiled); the behaviour is observed.
+
+### G6 (F06): the quit prompt `[P][code]`
+
+- Posting WM_SYSCOMMAND SC_CLOSE to the main form (what the X button sends; Xvfb has no window manager so there is no button: `win_close.c`) with a game loaded: "Are you sure you want to quit ?" Confirm box with `Cancel`, `&No`, `&Yes` (`G6_20261011-233555_box_545767.png`, `g1_checks-G6-20261011-233555.jsonl`). No keeps the game; the same box shows for File > Close after the tax was changed to 25 (a modified game, `A2`), Cancel keeps the game; a second SC_CLOSE answered Yes ends the process. The unpatched exe behaves identically (`g1_checks-G6-20261011-234520.jsonl`).
+- Control, no game loaded (fresh start): File > Close and SC_CLOSE both end the process at once with no box (`g1_checks-G6-20261011-233705.jsonl`, `-233721`).
+- `[code]` `TPremierForm_CheckQuit` (58136-58162) asks whenever `FUN_00449050` is true, i.e. any nation has the human flag; the prompt does not depend on the game being modified. File > New asks "Are you sure you want to start a new game ?" under the same condition (`TPremierForm_NewGame`).
+- `g1_checks-G6-20261011-233735.jsonl` is the first unpatched-exe attempt: it hung after A2 (the runner was killed by its timeout, no game state was needed) and was re-run (`-234520`).
+
+### G7 (NEW-g1-5): Rome's start varies with the seed `[P]`
+
+`g7_summary.md` (one fresh `File > New` per seed, Rome human; relations from game memory and from the AUTO0720 save; Trade and Regular units from the Balance sheet):
+
+| seed | Illyria | Macedonia | Gaul | Trade partners | Trade | Regular units | Army recruits | Expenditure |
+|---|---|---|---|---|---|---|---|---|
+| 1-4, 6-10 | 1 | 1 | 3 | Macedonia, Illyria | 114 | 453 | 121 | 877 |
+| 5 | -8 | 1 | 3 | Macedonia | 85 | 453 | 121 | 877 |
+| 12345 | 1 | -8 | 3 | Illyria | 29 | 453 | 121 | 877 |
+
+So the original does start Rome trading with Macedonia in some seeds (ten of eleven tried, 12345 being the exception) and the remake's Trade 114 and Regular units 453 agree with seeds 1-4, 6-10. Seed 12345 (the BASE) has Macedonia -8. The roster is the same in all seeds (two armies, 453). Logs `g1_checks-G7-<stamp>.jsonl` (stamps in `g7_summary.md`); each `AUTO0720.SAV` kept as `G7_<stamp>_seed<N>_AUTO0720.SAV`.
+
+### G8 (S05): the city list hides cities below 75% fortification; "All cities" appears once a non-capital city holds a unit `[P][code]`
+
+- Start (`g1_checks-G8-20261012-000014.jsonl`, `G8_20261012-000014_natural_dialog.png`): Cities to recruit at lists Luceria (fort 77) and ROME (78, capital); Arretium (72) and the other 22 are absent. Recruiting a light infantry at Luceria succeeds (slot 4 {state 0, light infantry, 3,000, city 110}); afterwards the list is "All cities", Luceria, ROME (rows `natural_after_row0..2`), and "All cities" shows the queue with a city name on each line ("Units at all cities").
+- Refusal path (`g1_checks-G8-20261012-000108.jsonl`, staged from `G8_20261012-000014_after_luceria_recruit.SAV`, L1: city 110 fort 60 and city 85 fort 50): Luceria stays listed because it holds a queued unit; pressing Recruit unit there gives "This city's fortification has fallen below 75%." (box image `G8_20261012-000108_box_560938.png`, slots unchanged). Rome with fort 50 (the capital) still recruits (the Units list gains "Lit inf 3,000 not ready Rome"; the click was made with the "All cities" row selected, which creates the unit at the capital).
+- `[code]` `TArmyRecruits_RecruitUnit` 55920-56041: refuses (message at 56026) unless the city is "all cities", fortification >= 75 or the capital; `TArmyRecruits_SetCityRecruits` 55717-55795: "Create unit at", "Units at ... / all cities". The list fill itself is the code read in `findings/2026-09-29-recruiting-cities-need-fortification-75.md`.
+
+### G9 (S05a): the mobilise refusal, byte-exact `[P][code]`
+
+"You cannot mobilise a unit at this time." (`exe_strings_g1.txt`: file offset 0x54784 of the unpatched exe; the box `G9_20261012-000239_box_561853.png`). Reached in play with the army table padded to 198 records (L1: 184 empty dummy armies owned by Thracia; `g1_checks-G9-20261012-000239.jsonl`): Mobilize on a ready queued unit (Rome, state 17, heavy infantry 4,000) shows the box, armies stay 198, the queue unchanged. Control in the same process (unpadded start, 14 armies): Mobilize gives no box, armies 14 -> 15, the queue loses the unit. `[code]` `TArmyRecruits_MobilizeUnits` 56044-56099 shows the text when `FUN_0044a4e0` fails: it finds an own army within distance 1 with room (`FUN_0044a120`, 20 units or total troops over 100,000 refuse it) or creates one (`FUN_00449f08`), which fails at 198 armies (0xc6) or without a free tile.
+
+### G10 (S01): the live news header after the first round `[P]`
+
+Read from game memory (news lines are NUL-terminated strings at 0x49f994 + 61 * i, 40 lines; count at 0x4a031e; log `g1_checks-G10-20261011-235901.jsonl`, hex of each line in the log). The header lines are exactly `Week  3      Spring      270BC` (double space after "Week", six spaces between the fields, no space before "BC"; week 11: `Week  11      Spring      270BC`; Summer: `Week  1      Summer      270BC`); the first header, already in the news log of the loaded save, reads `Week 1      Spring      270 BC` (single space after "Week", space before "BC"). `[code]` `FUN_004514ec` 54679-54692 builds them (`"Week  "`, the week as `Str(x:0)`, six spaces, the season, six spaces, the year, `"BC"`), `FUN_00449240` stores the line. The first two logs of this case (`-235532`, `-235656`) read the lines with the wrong offset and are not used. The screen shows the same text (`G10_20261011-235901_round1.png`), but the memory is the evidence.
+
+## What the remake does (rows_g1.md)
+
+- S04: the remake's Expenditure Total excludes the mercenary line (rows_g1.md S04); the original includes it and the Fleet line counts fleets under construction at 3 per ship. The Debt limit rounding is display only; the remake's `Deposition.DebtLimit` should stay unrounded (open question 2 of rows_g1.md).
+- S02a: the remake says "You already trade with 3 nations." for the own cap and "'X' already trades with 3 nations." for a full target; the original says "You can only trade with 3 nations." and "You cannot trade with X.".
+- F04/F06: the remake writes `<scenario>-turn-<N>.json` and asks "The current game will be left ..." boxes instead of the original's silent overwrite, empty Save as after New, and "Are you sure you want to quit ?".
+- NEW-g1-5: the remake's Rome (Trade 114, Macedonia and Illyria) equals the original's start for most seeds, not the BASE seed 12345.
+- S05/S05a: see rows_g1.md; the original's refusal wordings are as above.
+- S01: the remake's `end` header `Week  3      Spring      270BC` is the original's live text.
+
+## What this does not establish
+
+- G2: the Balance sheet was read for Rome only, and the mercenary tests use staged slots (labels 11), not a mercenary hired in play; a staged `hc` (label 35, quality 9) save crashed the process on load and was not used (`g1_checks-G2_merc-20261011-231938.jsonl`, `-232204.jsonl`). The fleet under construction was ordered with whatever size the dialog's spinner gave (11 ships). Deposition was tested at three treasuries, one wealth, human Rome only.
+- G3: three partner states were tested (Illyria, staged ones); a target with relation > 1 (ally or war) was not run.
+- G5: the one differing byte (0x1b2f6) was not identified; the Save dialog's file name box was empty in the screenshots but the exact default of the underlying dialog was not read from controls.
+- G6: the X button was simulated by SC_CLOSE (no window manager); a real click was not made.
+- G7: ten seeds plus 12345; the seed's effect on other nations was not recorded. Relations were read after the start boxes were dismissed (an offer box such as "Bithynia wants to trade with Rome." appears at start in some seeds).
+- G8: recruiting at a city below 75% with a queued unit was shown with fort 60 only; the 40-unit and 100% refusals were not re-run.
+- G9: reached only through a padded army table (L1); whether other causes (no free tile around the city) give the same box was not run.
+- G10: only one start (seed 12345) and the first six rounds.

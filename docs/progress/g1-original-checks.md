@@ -15,3 +15,7 @@ Checks 2, 3, 5, 6, 7, 8, 9, 10 of `runs/experiments/data/run-exp-gap-v050/rows_g
 - G3_cap (natural_target3, own3), G5 (patched, original), G6 (patched game, nogame_menu, nogame_sysclose; original game) run. G6 original game: first attempt hung at A2 and was killed by the timeout (log kept, wineserver -k), second run complete. Batch committed and pushed.
 - G2_depose (3 runs), G7 (seeds 1-10, 12345), G10 (third run is the usable one: news lines are C strings at 0x49f994 + 61 i; first two logs read them wrongly, kept), G8 (natural, low_both), code extract v2, exe strings, g7_summary written. Batch committed and pushed.
 - G9 run (padded army table refusal + control); committed and pushed.
+- Finding `findings/2026-10-11-g1-original-checks.md`, README, g5_diff written; PR opened.
+
+## END
+All eight checks (2, 3, 5, 6, 7, 8, 9, 10) answered; nothing blocked. Not done: a real X-button click (SC_CLOSE posted instead), staged hc mercenary (crashed the process on load), G3 ally/war target. No reviewer, no merge.
