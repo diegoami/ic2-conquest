@@ -31,3 +31,16 @@ Review fixes R1, R2, R3 done (see above); no reviewer run, no merge.
 
 ## END (round 2)
 R1, R2, R3 done; no Wine run, no reviewer, no merge. Nothing blocked.
+
+## Review round 3 fixes (PR #77, GPT-6.1 Sol review ses_ed3cc322...; fixer: Sonnet subagent)
+- R1 (commit "R1: make_battle_fixtures ..."): `build_once` saves `FLD-RG_build_<tag>-<stamp>.SAV` without overwrite, then `C.keep` + `record_sha` (SAVES.sha256) at once and logs `build_kept`, before the next build starts; main passes the returned kept paths to the comparison; `FLD-RG.SAV` kept from build a's path; report lists `builds`.
+- R2 (commit "R2: release_sync ..."): refusal record holds the complete `cmd` list, `command_shell` (shlex.join), cwd; the same line is printed. No tokens involved.
+- `overwrite=True` calls, decided:
+  - `tests/make_battle_fixtures.py:50`: measured output -> FIXED (above), no overwrite.
+  - `tests/make_fleet_fixture.py:79` (`FLEET2_STAGE.SAV` in the game folder): scratch the script wrote itself in the same run, copied at once to `FLEET2.SAV` -> overwrite kept. Note: that `shutil.copy` to `FLEET2.SAV`/`FLEET.SAV` (`$IC2_WORK/fixtures`) replaces a regenerable fixture, not a measurement; unchanged.
+  - `tests/test_orders.py` lines 59, 68, 83, 139, 164, 179, 193, 204, 218, 234, 253, 282, 295, 558, 604, 907: scratch `T_*.SAV` in the game folder, each copied straight away by `keep()` to the test output folder -> overwrite kept (regression-test scratch, rerun regenerates; `keep()` there replaces the test's own copy).
+  - `tests/test_orders.py:865, 890` (`dummy.SAV`, `dummy_before.SAV`): scratch read back at once -> overwrite kept.
+- Checks (offline only, no Wine): py_compile of both scripts, import of `tests.make_battle_fixtures`, `tests/test_save_as.py`.
+
+## END (round 3)
+R1 and R2 done; no Wine run, no reviewer, no merge. Nothing blocked.
