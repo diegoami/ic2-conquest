@@ -186,7 +186,7 @@ the imperial-conquest-2-research main will carry the per-row reports.
 ### Engine
 
 - **Backend**: `minimax` (MiniMax-M3 via Claude Code). NOT `claude`. Don't
-  ask about `claude` quota; check `minimax` quota only.
+  ask about `claude` quota; check `minimax` quota only. *(superseded 2026-10-11: CLAUDE.md "Choosing models": the user names every implementer and reviewer; quota-tracker is a suggestion only)*
 - **Quota**: was 80% used at one point; reset since. The 5h window is
   shared. Don't burn the next session's quota on long Wine runs without
   the user explicitly routing it.
@@ -278,7 +278,7 @@ on the third).
 ### Engine
 
 - **Backend**: `minimax` (MiniMax-M3 via Claude Code). NOT `claude`. Don't ask
-  about `claude` quota; check `minimax` quota only.
+  about `claude` quota; check `minimax` quota only. *(superseded 2026-10-11: CLAUDE.md "Choosing models": the user names every implementer and reviewer; quota-tracker is a suggestion only)*
 - **Quota**: started at 80%, ended near 70% (5h window at 30%; 7d at 21%). Game
   cycles were local CPU only (Wine) — no model burn.
 - **Cross-OS session messaging**: `SendMessage` between PowerShell (main
@@ -485,7 +485,7 @@ Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in r
 | Project memory (`~/.claude/projects/-home-diego-projects-ic2-conquest/memory/`) | copied; same project path on the target | as is |
 | `.claude/settings.local.json` | restored from the encrypted bundle | untracked by design |
 | `ic2-remake-v050` clone and `~/.dotnet` | not copied | recreate: memory `remake-cli-setup.md` |
-| quota-tracker | runs per machine | its OpenCode usage glob is `~/*/opencode-data`; check `localhost:8765/health` before choosing a model (L50) |
+| quota-tracker | runs per machine | its OpenCode usage glob is `~/*/opencode-data`; `localhost:8765/health` tells whether it runs; its `/recommend` is a suggestion only, shown to the user with each model question (CLAUDE.md "Choosing models", 2026-10-11; the former L50 rule is superseded) |
 
 - **First run on the target:**
   - The first Wine start after a copy can be slow. Here a cold start missed the driver's 40 s main-window wait once, then worked on retry (`supply_transfer-P1-20261009-192610.jsonl`).

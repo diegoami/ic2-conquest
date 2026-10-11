@@ -1,5 +1,6 @@
 # Reviewer live fixes (branch `tooling/reviewer-live-fixes`)
 
+> History. The "fell through to MiniMax" fallback (rule 8) is superseded 2026-10-11 (CLAUDE.md "Choosing models"): no automatic fallback; the user names the next model.
 Live review of PR #69 (rendered/pr69-a6c69b/run-1) failed and fell through to MiniMax (rule 8). Three bugs.
 
 ## Checklist

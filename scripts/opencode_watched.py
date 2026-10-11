@@ -233,9 +233,9 @@ def final_text(exe, env, cwd, session, run_dir, fname):
 
 
 # ---- failure kinds, state, progress (opencode resilience, 2026-10-10) --------------------------------------------------
-# A failure of an OpenCode run is never normal. It has one of two kinds, and only the first may move a chain to another model:
+# A failure of an OpenCode run is never normal. It has one of two kinds, and only the first can mean that another model is possible (only when the user names it, CLAUDE.md "Choosing models" rule 7):
 #   api     the provider did not answer: no session ever started, or provider error text (429, rate limit, 5xx/overloaded,
-#           quota/usage limit, network). The next model may be tried; nothing was wrong with our process.
+#           quota/usage limit, network). Nothing was wrong with our process; the user may name another model.
 #   process everything else (timeouts, cut-off, crash, unreadable output, permission refusal, wrong agent, our own setup):
 #           diagnose and fix it; never hand it to another model. The run is resumable (state.json, --session).
 ALWAYS_API = ("no-session", "exited-without-session")
@@ -541,17 +541,32 @@ def describe(run_dir, now=None):
             f"{res.get('cause') or 'no cause recorded'} · session {sid}{resume}")
 
 
+def model_refusal(model):
+    """Why this model may not run at all (CLAUDE.md, Choosing models rule 4 and 2): DeepSeek is never used, and exactly ONE model is run."""
+    if not str(model or "").strip():
+        return "no model named (the user names it)"
+    if "," in model:
+        return "one model only, the one the user named"
+    if "deepseek" in model.lower():
+        return "DeepSeek is never used (CLAUDE.md, Choosing models rule 4)"
+    return None
+
+
 def run(brief, worktree, model, run_dir, agent="external-reviewer", message=None, startup=180,
         idle=600, total=3600, data_dir=None, log=print, meta=None, resume_session=None, resumes=RESUMES, force_resume=False):
     """One watched `opencode run`. result.json has `class` and `kind` (None when ok, else api or process, see above). With
     resume_session the run continues THAT session (opencode run --session) instead of starting one; after an idle-timeout,
     total-timeout or nonzero exit with a known session it continues the same session by itself, up to `resumes` times, each
-    attempt with its own idle and total timeout (not after an api failure: the provider is down, the next model takes over). The
+    attempt with its own idle and total timeout (not after an api failure: the provider is down; the user names any other model). The
     resumes used (automatic and manual) are kept in state.json["resumes_used"], so the limit holds across invocations: a resume
     past it is refused (class resume-limit, nothing written) unless force_resume, which is logged in state.json["forced_resumes"]
     and starts a fresh count.
     state.json, progress.jsonl and status.txt in run_dir say what it is doing."""
     run_dir = Path(run_dir)
+    bad = model_refusal(model)
+    if bad:                                              # the one door every run goes through (new, resumed, or the CLI): nothing is touched
+        return {"class": "model-refused", "kind": "process", "cause": bad, "session": resume_session, "text": "",
+                "stdout": str(run_dir / "stdout.log"), "stderr": str(run_dir / "stderr.log")}
     run_dir.mkdir(parents=True, exist_ok=True)
     if resume_session and not force_resume and resume_refusal(run_dir, resumes):     # refused: nothing is touched
         return {"class": "resume-limit", "kind": "process", "cause": resume_refusal(run_dir, resumes), "session": resume_session,

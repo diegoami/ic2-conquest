@@ -1,7 +1,8 @@
 # Environment: services a session relies on
 
 The game environment (Wine, Xvfb, the executables, `IC2_WORK`) is in `CLAUDE.md` "Environment" and `docs/wsl-setup.md`. This file is
-for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51; the rules themselves are in `CLAUDE.md`, Code map).
+for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51, superseded 2026-10-11 by `CLAUDE.md` "Choosing models": the user decides, and
+`/recommend` is a suggestion only).
 
 ## Model quota availability: quota-tracker
 
@@ -33,6 +34,9 @@ Each provider has:
 - The tracker reports availability and history only; choosing a model is up to the session and the owner.
 
 ### Models per provider
+
+**DeepSeek is never used (the owner, 2026-10-11; `CLAUDE.md` "Choosing models" rule 4).** Every DeepSeek row and line below is history, superseded 2026-10-11: do not run it, not as a heavy or light model, not on any route. Alibaba runs only when the user asks for it. This table lists what exists; it picks nothing.
+
 | provider    | heavy                                             | light                                                 |
 |-------------|---------------------------------------------------|-------------------------------------------------------|
 | claude      | `claude --model opus`                             | `claude --model sonnet`                               |
@@ -45,7 +49,7 @@ Each provider has:
 | alibaba: GLM      | `opencode -m alibaba-token-plan/glm-5.3`         | none on alibaba (zai has `glm-5.3-flash`)            |
 | minimax     | `opencode -m minimax/MiniMax-M3` (variants none/thinking only: use `#thinking`) | `opencode -m minimax/MiniMax-M2.7` (offers no variant: pass none) |
 
-Use the dated `deepseek-v4-pro-0813` on alibaba, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
+History (superseded 2026-10-11, DeepSeek is never used): the dated `deepseek-v4-pro-0813` on alibaba was preferred over plain `deepseek-v4-pro`, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
 discount. Not Alibaba's Kimi or MiniMax models (Team edition only, they fail on this plan); MiniMax lives on its own
 `minimax/` provider.
 
@@ -55,7 +59,8 @@ With `scripts/external_review.py` a model is passed as `--model <id>#<effort>`. 
 none at all), `scripts/opencode_watched.py`'s `OFFERS`/`DEFAULT_VARIANT` tables clamp the effort to one the model offers — never
 an invented variant.
 
-Placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain is
+**Superseded 2026-10-11** (the user names every implementer and reviewer: `CLAUDE.md`, "Choosing models"; quota-tracker is a
+suggestion only). History: placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain was
 `opencode-go/deepseek-v4.1-flash#high, openai/gpt-5.6-luna#high, alibaba-token-plan/qwen3.8-flash#medium` (then exit 3);
 and `minimax/MiniMax-M3#thinking` is the **independent second-opinion reviewer** — a family independent of
 GLM/DeepSeek/Qwen/OpenAI/Claude, used to review those models' work when a second opinion is wanted.
@@ -97,7 +102,7 @@ Facts that affect availability:
     owner rather than retrying.
 
 ### Free models (OpenRouter): supplement only
-For smaller tasks and additional reviews (a second opinion next to a regular model), never as the main model for important work
+For smaller tasks and additional reviews (a second opinion next to a regular model; a free model reviews only when the user names it, `CLAUDE.md` "Choosing models" rule 2), never as the main model for important work
 (the owner, 2026-10-06):
 - `openrouter/nvidia/nemotron-3-ultra-550b-a55b:free`: the stronger one;
 - `openrouter/cohere/north-mini-code:free`: coding-focused, faster;
@@ -110,7 +115,7 @@ Cautions:
 - **Privacy:** free providers may log and train on prompts. This repository is public, so its code and findings may be sent; never
   send secrets, keys, `auth.json` contents, private or client code, or anything under NDA. Never send other repositories' private
   material either.
-- **Failures:** on a 429, fall back to another model instead of retrying. Free models come and go.
+- **Failures:** on a 429, stop and tell the user (no retry, no automatic fallback; another model only when the user names it, `CLAUDE.md` "Choosing models" rule 7). Free models come and go.
 - **Trust:** a free model's review is a second opinion only. It never replaces the regular reviewer's verdict for a merge, and its
   output is checked like any unreviewed contribution.
 

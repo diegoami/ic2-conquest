@@ -1,13 +1,14 @@
 ---
 name: review-pr
-description: Review a pull request of this repo in a detached git worktree at the PR's head and post the review as one comment on the PR. The Claude fallback when the OpenCode reviewer (scripts/external_review.py) exits 3. Use when the user asks to review PR <n>. Never merges, approves, pushes or edits.
-model: opus
+description: Review a pull request of this repo in a detached git worktree at the PR's head and post the review as one comment on the PR. Used only when the user named a Claude model as this review's reviewer (CLAUDE.md "Choosing models", rule 2), never as an automatic fallback. Use when the user asks to review PR <n>. Never merges, approves, pushes or edits.
 allowed-tools: Read, Grep, Glob, Bash(git fetch:*), Bash(git worktree add:*), Bash(git worktree remove:*), Bash(git worktree list:*), Bash(git worktree prune:*), Bash(git update-ref:*), Bash(git rev-parse:*), Bash(git -C:*), Bash(git diff:*), Bash(git log:*), Bash(git show:*), Bash(git merge-base:*), Bash(git status:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr comment:*), Bash(python3 -m tests.test_orders:*), Bash(mkdir:*), Bash(test:*), Bash(echo:*)
 ---
 
-Review PR $ARGUMENTS of this repository and post the review as one comment on it. This is the Claude fallback
-for `scripts/external_review.py`; `docs/external-review.md` describes the OpenCode reviewer, and this skill uses
-the same comment shape.
+Review PR $ARGUMENTS of this repository and post the review as one comment on it. It runs only when the user named a
+Claude model as the reviewer of this review (`CLAUDE.md`, "Choosing models", rules 2 and 4: one review at a time, never the
+implementer's model family; the model is the one the user named, run as a subagent with that model if this session runs another).
+It is never started automatically after an OpenCode failure. `docs/external-review.md` describes the OpenCode reviewer, and this
+skill uses the same comment shape.
 
 ## Rules (read `CLAUDE.md` first and follow its hard rules)
 
@@ -64,7 +65,7 @@ failure honestly. If the environment is not set up, say so; do not claim tests p
 One comment, in the shape `scripts/external_review.py` uses (so it can be read by the same eye):
 
 ```text
-PR review (Claude Opus)
+PR review (Claude <the model the user named>)
 <approve | rework | decision>
 R1 <file:line> blocking|non-blocking: <what to change>
 R2 ...

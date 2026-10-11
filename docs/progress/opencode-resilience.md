@@ -1,5 +1,11 @@
 # OpenCode resilience (branch `tooling/opencode-resilience`)
 
+> **Superseded in part, 2026-10-11 (CLAUDE.md "Choosing models", rules 1-13).** The history below is kept as it was written. These
+> parts are NOT active rules: `DEFAULT_MODELS` (item D), "the chain" / "falls through" / "the next model takes over" / "fallback
+> posts" (items A and F, the Decisions, round 1 R3, round 2 R4): there is no default model, no chain and no automatic fallback. The
+> user names ONE reviewer per review; an `api` failure ends the call with exit 3 and the user names the next model. What still holds:
+> the failure kinds, `state.json`, resume, status files, and "a process failure is never passed to another model".
+
 Owner's brief 2026-10-10: an OpenCode failure caused by our own process is diagnosed, never passed to another model; only an
 API failure falls through; a dying run is resumable; running jobs are visible. A successor continues from this file and the branch.
 

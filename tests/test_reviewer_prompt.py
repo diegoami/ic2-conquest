@@ -46,7 +46,7 @@ if a[:1] == ["models"]:
     if (d / "models_err").exists():
         sys.stderr.write((d / "models_err").read_text() + "\\n")
         sys.exit(1)
-    print("provider/model")
+    print("provider/model"); print("openai/gpt-5.6-luna")
 elif a[:2] == ["debug", "agent"]:
     print(json.dumps({"name": a[2]}))
 elif a[:2] == ["session", "list"]:
@@ -236,11 +236,11 @@ def fake_opencode(name, plan):
             os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
 
 
-def chain(d, n_models=2):
-    """er.run_chain over the fake: (final, stop, failures)."""
+def run_one_model(d):
+    """er.run_one over the fake (exactly one model): (final, stop, failures)."""
     failures = []
-    final, stop = er.run_chain(["provider/model"] * n_models, "pr", 5, "t", "body", BASE, HEAD, ROOT, d / "logs", "",
-                               "external-reviewer", failures, d / "data", log=lambda s: None)
+    final, stop = er.run_one("provider/model", "pr", 5, "t", "body", BASE, HEAD, ROOT, d / "logs", "",
+                           "external-reviewer", failures, d / "data", log=lambda s: None)
     return final, stop, failures
 
 
@@ -254,16 +254,15 @@ def write_brief(d):
     return brief
 
 
-def test_api_failure_falls_to_next_model():
+def test_api_failure_ends_the_call_with_one_model():
     with fake_opencode("kind-api", ["429", "ok"]) as d:
-        final, stop, failures = chain(d)
-        assert final and not stop, (final, stop)
+        final, stop, failures = run_one_model(d)
+        assert final is None and stop is None, (final, stop)
         assert failures == [("provider/model", "exited-without-session")], failures
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
         assert r1["kind"] == "api" and "429" in r1["cause"], r1
-        r2 = json.loads((d / "logs" / "run-2" / "result.json").read_text())
-        assert r2["class"] == "ok" and r2["kind"] is None, r2
-        assert runs_started(d) == 2
+        assert not (d / "logs" / "run-2").exists()
+        assert runs_started(d) == 1, "no other model ran"
     for line, api in (("Error: 429 Too Many Requests", True), ("rate limit exceeded", True), ("503 Service Unavailable", True),
                       ("statusCode: 502", True), ("Error: connect ECONNRESET", True), ("usage limit reached", True),
                       ("insufficient quota", True), ("model is overloaded", True), ("no progress for 600s", False),
@@ -274,7 +273,7 @@ def test_api_failure_falls_to_next_model():
                       ("see line 503 of the file", False), ("at x.py:503", False), ("read 550 lines", False), ("port 5000 is in use", False),
                       ("exit code 512", False), ("error handling lives at line 503", False)):
         assert bool(ow.API_RE.search(line)) == api, line
-    return "429 on stderr -> kind api with the evidence in cause, the next model ran and posted; the provider-error patterns match"
+    return "429 on stderr -> kind api with the evidence in cause, the call ended after one run (no other model); the provider-error patterns match"
 
 
 def test_hang_then_resume():
@@ -292,7 +291,7 @@ def test_hang_then_resume():
 
 def test_crash_after_resumes_is_a_process_failure():
     with fake_opencode("resume-crash", ["crash", "crash", "crash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop, failures)
         m, r = stop
         assert r["class"] == "nonzero-exit" and r["kind"] == "process" and r["session"] == "ses_fake", r
@@ -309,7 +308,7 @@ def test_crash_after_resumes_is_a_process_failure():
 
 def test_bad_format_is_a_process_failure():
     with fake_opencode("bad-format", ["badformat", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop)
         r = stop[1]
         assert r["class"] == "bad-format" and r["kind"] == "process", r
@@ -320,7 +319,7 @@ def test_bad_format_is_a_process_failure():
             "the final message was exported once, under its own name, and no export.json"
         prev = json.loads((d / "logs" / "run-1" / "result.prev-1.json").read_text())
         assert prev["class"] == "ok" and prev["text"], prev      # the ok result is kept, not overwritten (rule 6)
-    return "no header line -> bad-format, kind process, chain stopped after one run, recorded in result.json and status.txt"
+    return "no header line -> bad-format, kind process, stopped after one run, recorded in result.json and status.txt"
 
 
 def make_db(path, session):
@@ -382,23 +381,23 @@ def test_progress_and_status():
 
 def test_only_stderr_is_api_evidence():
     with fake_opencode("text-429", ["textcrash"] * 3) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop)
         r = stop[1]
         assert r["kind"] == "process" and r["class"] == "nonzero-exit" and "429" not in (r["cause"] or ""), r
         assert runs_started(d) == 3, "a model's text is not an API failure: it is resumed, not passed on"
     with fake_opencode("err-429", ["apicrash", "ok"]) as d:
-        final, stop, failures = chain(d)
-        assert final and not stop and failures == [("provider/model", "nonzero-exit")], (final, stop, failures)
+        final, stop, failures = run_one_model(d)
+        assert final is None and stop is None and failures == [("provider/model", "nonzero-exit")], (final, stop, failures)
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
         assert r1["kind"] == "api" and "status 429" in r1["cause"], r1
-        assert runs_started(d) == 2, "an api failure is not resumed: the next model took over"
+        assert runs_started(d) == 1, "an api failure is not resumed and no other model runs"
     return "'429 rate limit' in the model's stdout stays process (resumed 2x, no fallback); OpenCode's `Error: {... 429}` on stderr is api"
 
 
 def test_resume_limit_holds_across_invocations():
     with fake_opencode("resume-limit", ["crash", "crash", "crash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert stop, (final, stop)
         rd = d / "logs" / "run-1"
         assert json.loads((rd / "state.json").read_text())["resumes_used"] == 2
@@ -429,7 +428,7 @@ def test_models_listing_provider_error_is_api():
 
 def test_stopped_and_reported_is_not_resumed():
     with fake_opencode("report", ["reportcrash", "ok"]) as d:
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop)
         r = stop[1]
         assert r["class"] == "stopped-with-report" and r["kind"] == "process" and "BLOCKED: I need file X" in r["text"], r
@@ -450,14 +449,15 @@ def test_api_failure_reads_the_session_first():
     with fake_opencode("api-read", ["apicrash", "ok"]) as d:
         lines = []
         failures = []
-        final, stop = er.run_chain(["provider/model"] * 2, "pr", 5, "t", "body", BASE, HEAD, ROOT, d / "logs", "",
-                                   "external-reviewer", failures, d / "data", log=lines.append)
-        assert final and not stop, (final, stop)
+        final, stop = er.run_one("provider/model", "pr", 5, "t", "body", BASE, HEAD, ROOT, d / "logs", "",
+                                 "external-reviewer", failures, d / "data", log=lines.append)
+        assert final is None and stop is None and failures, (final, stop)
+        assert runs_started(d) == 1
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
         assert r1["kind"] == "api" and r1["last_message"]["text"] == "partial notes", r1
         assert json.loads((d / "logs" / "run-1" / "state.json").read_text())["last_message"]["text"] == "partial notes"
         assert any("last message" in x and "partial notes" in x for x in lines), lines
-    return "an api failure with a session: its last message is in result.json, state.json and the log before the next model runs"
+    return "an api failure with a session: its last message is in result.json, state.json and the log and no other model runs"
 
 
 def test_every_failure_reads_the_session_and_exports_are_per_attempt():
@@ -468,7 +468,7 @@ def test_every_failure_reads_the_session_and_exports_are_per_attempt():
         assert runs_started(d) == 1, "an unreadable session is never resumed"
     with fake_opencode("unreadable-api", ["apicrash", "ok"]) as d:
         (d / "export_bad").write_text("1")
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and not failures, (final, stop, failures)
         assert stop[1]["kind"] == "process" and "export unreadable" in stop[1]["cause"] and runs_started(d) == 1, stop[1]
     with fake_opencode("perm", ["permbash", "ok"]) as d:
@@ -484,7 +484,7 @@ def test_every_failure_reads_the_session_and_exports_are_per_attempt():
 
 
 @contextlib.contextmanager
-def main_env(d, plan, argv):
+def main_env(d, plan, argv, commits=(), labels=(), quota=None):
     """er.main() against the fake opencode with git and gh stubbed: records every `gh ... comment` call. Yields (code, posted, stderr, out)."""
     import io
     import contextlib as cl
@@ -502,9 +502,9 @@ def main_env(d, plan, argv):
             return BASE
         return ""
 
-    meta = {"title": "t", "body": "b", "headRefOid": HEAD, "baseRefName": "main", "commits": [], "labels": []}
+    meta = {"title": "t", "body": "b", "headRefOid": HEAD, "baseRefName": "main", "commits": list(commits), "labels": [{"name": x} for x in labels]}
     saved = (er.sh, er.gh_json, er.quota_skip, er.pricing_note, er.REVIEW_ROOT, er.WORK, er.REPO, sys.argv)
-    er.sh, er.gh_json, er.quota_skip, er.pricing_note = fake_sh, (lambda *a, fields=None: meta), (lambda m: None), (lambda m: None)
+    er.sh, er.gh_json, er.quota_skip, er.pricing_note = fake_sh, (lambda *a, fields=None: meta), (lambda m: quota), (lambda m: None)
     er.REVIEW_ROOT, er.WORK, er.REPO = d / "review", d / "work", d / "repo"
     sys.argv = ["external_review.py"] + argv
     out, err = io.StringIO(), io.StringIO()
@@ -516,22 +516,103 @@ def main_env(d, plan, argv):
         er.sh, er.gh_json, er.quota_skip, er.pricing_note, er.REVIEW_ROOT, er.WORK, er.REPO, sys.argv = saved
 
 
+def test_reviewer_of_the_implementers_family_is_refused():
+    pairs = (("Claude Sonnet 5.5", "anthropic/claude-opus-4", True), ("Claude Opus", "anthropic/claude-sonnet-5", True),
+             ("openai/gpt-6.1-sol", "openai/gpt-5.6-luna#high", True), ("GPT-6.1 Sol", "openai/gpt-5.6-luna", True),
+             ("minimax/MiniMax-M3", "minimax/MiniMax-M2.7", True), ("zai-coding-plan/glm-5.3", "alibaba-token-plan/glm-5.3", True),
+             ("model:sonnet", "anthropic/claude-opus-4", True), ("mimo-v2.6-pro", "opencode-go/mimo-v2.6-flash", True),
+             ("Claude Sonnet 5.5", "openai/gpt-5.6-luna", False), ("openai/gpt-6.1-sol", "minimax/MiniMax-M2.7", False),
+             ("Claude Opus", "zai-coding-plan/glm-5.3", False))
+    for impl, rev, want in pairs:
+        assert er.excluded(rev, {impl.lower()}) == want, (impl, rev, want)
+    # end to end: the trailer of a commit makes main() refuse a same-family reviewer with exit 2, nothing runs
+    commits = [{"messageBody": "x\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>"}]
+    for rev, code in (("anthropic/claude-opus-4", 2), ("openai/gpt-5.6-luna", 0)):
+        with fake_opencode("family-" + str(code), ["ok"]) as d:
+            with main_env(d, None, ["--pr", "5", "--model", rev], commits=commits) as (got, posted, err, out):
+                assert got == code, (rev, got, err)
+                if code == 2:
+                    assert not posted and not (d / "count").exists() and "family" in err, err
+    return "same-family reviewers (Claude/anthropic, gpt Sol/Luna, MiniMax M3/M2.7, GLM routes, mimo) are refused with exit 2; another family passes"
+
+
+def test_resume_applies_the_rules_of_a_new_run():
+    commits = [{"messageBody": "x\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>"}]
+    cases = (("legacy-deepseek", "opencode-go/deepseek-v4-pro", None, 2, "DeepSeek"),
+             ("recorded-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], 2, "family"),
+             ("legacy-family", "anthropic/claude-opus-4", None, 2, "family"),
+             ("two-models", "a/b,c/d", [], 2, "one model"),
+             ("valid", "minimax/MiniMax-M3", ["claude sonnet 5.5"], None, ""),
+             ("legacy-unknown-implementer", "minimax/MiniMax-M3", ["mystery-llm"], 2, "cannot tell"),
+             ("unknown-reviewer", "provider/model", ["claude sonnet 5.5"], 2, "cannot tell"),
+             ("legacy-unknown-from-pr", "minimax/MiniMax-M3", None, None, ""))
+    for tag, model, impl, want, word in cases:
+        labels = ["model:mystery-llm"] if tag == "legacy-unknown-from-pr" else []
+        if tag == "legacy-unknown-from-pr":
+            want, word = 2, "cannot tell"
+        with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
+            rd = d / "oldrun"
+            rd.mkdir()
+            st = {"kind": "pr", "number": 5, "head": HEAD, "session": "ses_fake", "hdr": "H", "brief": str(d / "brief.md"), "model": model,
+                  "agent": "external-reviewer", "data_dir": str(d / "data"), "worktree": str(d / "wt"), "status": "stopped", "pid": 2 ** 22 + 99}
+            if impl is not None:
+                st["implementers"] = impl
+            (rd / "state.json").write_text(json.dumps(st))
+            with main_env(d, None, ["--resume", str(rd)], commits=commits, labels=labels) as (got, posted, err, out):
+                if want == 2:
+                    assert got == 2 and word.lower() in err.lower() and "refused" in err and not posted and not (d / "count").exists(), (tag, got, err)
+                else:
+                    assert "refused: cannot resume" not in err, (tag, got, err)
+    # the confirmation: an unknown family proceeds with --confirm-family-differs (and is recorded); a proven same family never does
+    for tag, model, impl, want in (("confirm-unknown", "minimax/MiniMax-M3", ["mystery-llm"], True),
+                                   ("confirm-unknown-reviewer", "provider/model", ["claude sonnet 5.5"], True),
+                                   ("confirm-same-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], False)):
+        with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
+            rd = d / "oldrun"
+            rd.mkdir()
+            st = {"kind": "pr", "number": 5, "head": HEAD, "session": "ses_fake", "hdr": "H", "brief": str(d / "brief.md"), "model": model,
+                  "agent": "external-reviewer", "data_dir": str(d / "data"), "worktree": str(d / "wt"), "status": "stopped", "pid": 2 ** 22 + 99,
+                  "implementers": impl}
+            (rd / "state.json").write_text(json.dumps(st))
+            with main_env(d, None, ["--resume", str(rd), "--confirm-family-differs"], commits=commits) as (got, posted, err, out):
+                if want:
+                    assert "refused: cannot resume" not in err, (tag, got, err)
+                    assert json.loads((rd / "state.json").read_text()).get("family_confirmed") is True, tag
+                else:
+                    assert got == 2 and "family" in err and not posted and not (d / "count").exists(), (tag, got, err)
+    return "--resume refuses a recorded DeepSeek / multi-model / implementer-family model (exit 2, nothing runs; a legacy state.json takes the implementers from the PR); a valid recorded model passes the checks"
+
+
+def test_watcher_refuses_deepseek_and_lists():
+    with fake_opencode("ow-refuse", ["ok"]) as d:
+        for m in ("opencode-go/deepseek-v4-pro", "x/DeepSeek-V4.1#high", "a/b,c/d", ""):
+            r = ow.run(write_brief(d), ROOT, m, d / "run", data_dir=d / "data", log=lambda s: None)
+            assert r["class"] == "model-refused" and r["kind"] == "process", (m, r["class"])
+            assert not (d / "count").exists() and not (d / "run").exists(), m
+    return "opencode_watched.run (the door of every run, also its CLI) refuses DeepSeek, a list or no model before anything starts"
+
+
 def test_main_exit_codes():
-    two = ["--pr", "5", "--model", "provider/model,provider/model"]
+    one = ["--pr", "5", "--model", "provider/model"]
     with fake_opencode("main-process", ["crash", "crash", "crash", "ok"]) as d:
-        with main_env(d, None, two) as (code, posted, err, out):
+        with main_env(d, None, one) as (code, posted, err, out):
             assert code == 6, (code, err)
             assert not posted, "a process failure posts nothing"
             assert "OpenCode process failure: provider/model#high: nonzero-exit" in err and "resume with --resume" in err, err
-            assert runs_started(d) == 3, "no second model after a process failure"
-    with fake_opencode("main-api", ["429", "429"]) as d:
-        with main_env(d, None, two) as (code, posted, err, out):
+            assert runs_started(d) == 3, "first run + 2 resumes, same model"
+    with fake_opencode("main-api", ["429", "ok"]) as d:
+        with main_env(d, None, one) as (code, posted, err, out):
             assert code == 3 and not posted and "OpenCode unavailable" in err, (code, err)
-            assert runs_started(d) == 2, "both models' APIs were tried"
-    with fake_opencode("main-fallback", ["429", "ok"]) as d:
-        with main_env(d, None, two) as (code, posted, err, out):
+            assert runs_started(d) == 1, "an API failure ends the review: the user names the next model (Choosing models rule 7)"
+    for bad in (["--pr", "5"], ["--pr", "5", "--model", "provider/model,provider/other"], ["--pr", "5", "--model", "opencode-go/deepseek-v4.1-flash"]):
+        with fake_opencode("main-usage", ["ok"]) as d:
+            with main_env(d, None, bad) as (code, posted, err, out):
+                assert code == 2 and not posted and not (d / "count").exists(), (bad, code, err)
+    with fake_opencode("main-ok", ["ok"]) as d:
+        with main_env(d, None, one) as (code, posted, err, out):
             assert code == 0 and len(posted) == 1, (code, err, posted)
-    return "main(): process failure -> exit 6, no post, one model; every API failing -> exit 3, no post; api then ok -> posted, exit 0"
+    return ("main(): one named model only; process failure -> exit 6, no post; API failure -> exit 3, no other model; no model, a list "
+            "or DeepSeek -> exit 2, nothing runs; ok -> posted, exit 0")
 
 
 def test_malformed_exports_are_session_unreadable():
@@ -602,7 +683,7 @@ def test_watcher_crash_is_a_process_failure():
     ow.run = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom"))
     try:
         with fake_opencode("crash-watcher", []) as d:
-            final, stop, failures = chain(d)
+            final, stop, failures = run_one_model(d)
     finally:
         ow.run = real
     assert final is None and stop and not failures, (final, stop)
@@ -687,7 +768,7 @@ def test_models_listing_looks_only_at_its_own_stderr():
 def test_refused_credentials_are_a_process_failure():
     for plan in (["authcrash", "ok"], ["auth-nosession", "ok"]):
         with fake_opencode("auth-" + plan[0], plan) as d:
-            final, stop, failures = chain(d)
+            final, stop, failures = run_one_model(d)
             assert final is None and stop and not failures, (plan, final, stop, failures)
             r = stop[1]
             assert r["kind"] == "process", r
@@ -725,7 +806,7 @@ def test_permission_scan_and_corrective_resume():
             r = ow.run(write_brief(d), ROOT, "provider/model", d / "run", data_dir=d / "data", log=lambda s: None)
             assert r["class"] == "permission-rejected" and r["kind"] == "process" and runs_started(d) == 2, (r["class"], runs_started(d))
         with fake_opencode("perm-bash", ["permbash", "ok"]) as d:           # any other permission: exit 6 path, no resume, no fallback
-            final, stop, failures = chain(d)
+            final, stop, failures = run_one_model(d)
             assert final is None and stop and not failures and stop[1]["class"] == "permission-rejected" and runs_started(d) == 1, (stop, failures)
         with fake_opencode("perm-exit0", ["permbashexit0", "ok"]) as d:     # exit 0 after a rejection is not ok and not cut-off
             ow.PERM_IN_LOOP = False
@@ -746,13 +827,13 @@ def test_session_error_is_authoritative_and_tool_output_is_not_evidence():
         assert r["kind"] == "process" and r["class"] == "nonzero-exit" and runs_started(d) == 3, (r["class"], r["kind"], r["cause"])
     with fake_opencode("export-503", ["diffcrash", "ok"]) as d:             # the export's info.error decides
         (d / "export_error").write_text(json.dumps({"name": "APIError", "data": {"message": "x", "statusCode": 503, "isRetryable": True}}))
-        final, stop, failures = chain(d)
-        assert final and failures == [("provider/model", "nonzero-exit")] and runs_started(d) == 2, (stop, failures)
+        final, stop, failures = run_one_model(d)
+        assert final is None and stop is None and failures == [("provider/model", "nonzero-exit")] and runs_started(d) == 1, (stop, failures)
         r1 = json.loads((d / "logs" / "run-1" / "result.json").read_text())
         assert r1["kind"] == "api" and "status 503" in r1["cause"] and r1["last_message"]["provider_error"]["name"] == "APIError", r1
     with fake_opencode("export-400", ["diffcrash"] * 3) as d:             # a 4xx error in the export beats a 429 in stderr text
         (d / "export_error").write_text(json.dumps({"name": "APIError", "data": {"message": "bad", "statusCode": 400, "isRetryable": False}}))
-        final, stop, failures = chain(d)
+        final, stop, failures = run_one_model(d)
         assert final is None and stop and stop[1]["kind"] == "process" and runs_started(d) == 3, (stop, failures)   # resumed twice, never handed on
     assert not ow.API_RE.search("raise FileNotFoundError(args[0])"), "ENOTFOUND must be a whole word"
     return "free text on stderr is never evidence when there is a session; the export's info.error is (api 503, process 400); FileNotFoundError is not ENOTFOUND"
@@ -808,12 +889,47 @@ def test_reclassify_picks_the_newest_export_numerically():
     return "the newest export is chosen by attempt number (and k), not by file name order"
 
 
+def test_unknown_implementer_family_is_refused_unless_confirmed():
+    for name, fam in (("model:o3", "openai"), ("o3", "openai"), ("o4-mini", "openai"), ("GPT-5", "openai"), ("gemini-2.5-pro", "google"),
+                      ("grok-4", "xai"), ("Z.ai GLM 5.3", "zai"), ("z", None), ("z-something", None), ("zhipu", "zai"), ("zai-coding-plan/glm-5.3", "zai"),
+                      ("Some Human", None)):
+        assert er.family(name) == fam, (name, er.family(name), fam)
+    assert er.excluded("openai/gpt-5.6-luna", {"o3"}) and er.excluded("openai/gpt-5.6-luna", {"o4-mini"})
+    assert not er.excluded("zai-coding-plan/glm-5.3", {"z-something"})
+    rev = "openai/gpt-5.6-luna#high"
+    cases = (  # (labels, commits, extra argv, model, exit code)
+        (["model:o3"], (), [], rev, 2),                       # alias resolves to openai: same family
+        (["model:o4-mini"], (), ["--confirm-family-differs"], rev, 2),   # known family: the override does not lift a proven same-family review
+        (["model:mystery-llm"], (), [], rev, 2),              # unknown implementer alias: refused
+        (["model:mystery-llm"], (), ["--confirm-family-differs"], rev, 0),   # the user checked
+        (["model:sonnet"], (), [], "mystery/new-model", 2),   # unknown reviewer next to an implementer: refused
+        (["model:gemini"], (), [], rev, 0), (["model:sonnet"], (), [], rev, 0))
+    for i, (labels, commits, extra, model, code) in enumerate(cases):
+        with fake_opencode(f"unk-{i}", ["ok"]) as d:
+            with main_env(d, None, ["--pr", "5", "--model", model] + extra, commits=commits, labels=labels) as (got, posted, err, out):
+                assert got == code, (labels, extra, model, got, err)
+                if code == 2:
+                    assert not posted and not (d / "count").exists(), err
+    return "o3/o4-mini/gemini/grok aliases known; an unknown implementer alias or reviewer is refused (exit 2) unless --confirm-family-differs; bare 'z' is not zai"
+
+
+def test_quota_only_informs_the_named_model_runs():
+    with fake_opencode("quota-info", ["ok"]) as d:
+        with main_env(d, None, ["--pr", "5", "--model", "provider/model"], quota="quota exhausted (zai, usable in 1h)") as (code, posted, err, out):
+            assert code == 0 and len(posted) == 1 and runs_started(d) == 1, (code, err)
+            assert "quota note" in out and "exhausted" in out and "runs anyway" in out, out
+    with fake_opencode("quota-refused", ["429"]) as d:
+        with main_env(d, None, ["--pr", "5", "--model", "provider/model"], quota="quota exhausted (zai, usable in 1h)") as (code, posted, err, out):
+            assert code == 3 and not posted and runs_started(d) == 1, (code, err)
+    return "an exhausted provider only prints a note; the named model runs; a real refusal is an api failure (exit 3)"
+
+
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
-         "prompt_the_watcher_hands_to_opencode", "api_failure_falls_to_next_model", "hang_then_resume",
+         "prompt_the_watcher_hands_to_opencode", "api_failure_ends_the_call_with_one_model", "reviewer_of_the_implementers_family_is_refused", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
-         "every_failure_reads_the_session_and_exports_are_per_attempt", "main_exit_codes",
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "watcher_refuses_deepseek_and_lists", "main_exit_codes", "resume_applies_the_rules_of_a_new_run", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",
