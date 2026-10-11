@@ -634,6 +634,24 @@ class Game:
         self.seed_line = (G / "SEED.LOG").read_text().splitlines()[-1].strip()
         return self.open(save)
 
+    def supersede_autosaves(self):
+        """Before File > New: move every AUTO* file (autosaves and AUTOSAVE.LOG) of the game folder into
+        `superseded-<stamp>/` beside them (rule 6: a measured autosave is never deleted). The new game must start without an
+        AUTOSAVE.LOG (the wait for it proves the new-game autosave), so the files cannot stay; the folder name is unique per call.
+        Returns the folder (None if there was nothing to move)."""
+        files = sorted(G.glob("AUTO*"))
+        if not files:
+            return None
+        dest = G / ("superseded-" + time.strftime("%Y%m%d-%H%M%S"))
+        n = 0
+        while dest.exists():
+            n += 1
+            dest = G / ("superseded-%s-%d" % (time.strftime("%Y%m%d-%H%M%S"), n))
+        dest.mkdir()
+        for f in files:
+            shutil.move(str(f), str(dest / f.name))
+        return dest
+
     NEWGAME_TICK = (117, 117, 21.67)     # x, y of Rome's "human" checkbox, row pitch (measured on the 16-row form)
 
     def new_game(self, row=0, seed=None, rows=None):
@@ -643,8 +661,7 @@ class Game:
         apart: the old `(109, 114 + 20 * row)` was off by 8 px in x and, by Thracia (row 15), about 28 px in y (414 against 442).
         The autosave hook fires at new-game start: returns `(path of AUTO0720.SAV, popup texts)`."""
         self.set_seed(seed)
-        for f in G.glob("AUTO*"):
-            f.unlink()
+        self.supersede_autosaves()
         self.start()
         self.seed_line = (G / "SEED.LOG").read_text().splitlines()[-1].strip() if (G / "SEED.LOG").exists() else ""
         self.menu("file", FILE_ITEMS["new"])

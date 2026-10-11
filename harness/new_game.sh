@@ -1,6 +1,6 @@
 # usage: newgame.sh <row 0..15> <out name>
 . "$(dirname "$0")/env.sh"
-/usr/lib/wine/wineserver -k 2>/dev/null; sleep 1; rm -f $G/AUTO*
+/usr/lib/wine/wineserver -k 2>/dev/null; sleep 1; d=$G/superseded-$(date +%Y%m%d-%H%M%S); ls $G/AUTO* >/dev/null 2>&1 && { mkdir -p "$d" && mv $G/AUTO* "$d"/; }  # rule 6: never delete a measured autosave
 cd $G && (setsid $W "${IC2_EXE:-Imperial Conquest 2 fast rollingsave.exe}" >/dev/null 2>&1 &)
 timeout 40 bash -c 'until xdotool search --name "^Imperial Conquest 2$" >/dev/null 2>&1; do sleep 1; done'; sleep 3
 xdotool mousemove 14 36 click 1; sleep 1; xdotool mousemove 30 56 click 1; sleep 3
