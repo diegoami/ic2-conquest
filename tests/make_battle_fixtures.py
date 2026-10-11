@@ -47,8 +47,11 @@ def build_once(start, tag, log):
             raise DriverError("army 0 is at %s, not %s" % (g.army_pos(C.ROME_ARMY), C.STAGE_TILE))
         st = {"army0": g.army_state(0), "army10": g.army_state(10)}
         log("pre_attack_state", tag=tag, army0=st["army0"], army10=st["army10"])
-        p = g.save_as(f"FLD-RG_build_{tag}.SAV", overwrite=True)
-        return Path(p).read_bytes(), st
+        # unique per-run name, no overwrite (rule 6); preserved and hashed at once, before the next build starts
+        p = g.save_as(f"FLD-RG_build_{tag}-{C.STAMP}.SAV")
+        kept = C.keep(p, folder=C.ART)
+        log("build_kept", tag=tag, file=kept.name, sha256=C.sha(kept))
+        return kept, st
     finally:
         C.kill_stale(g)
 
@@ -57,19 +60,19 @@ def main():
     log = C.Log("fixtures-build")
     start = start_save()
     log("start_save", file=start.name, sha256=C.sha(start))
-    blobs, states = [], []
+    paths, states = [], []
     for tag in ("a", "b"):
-        b, st = build_once(start, tag, log)
-        blobs.append(b)
+        pth, st = build_once(start, tag, log)
+        paths.append(pth)
         states.append(st)
+    blobs = [pth.read_bytes() for pth in paths]
     same = blobs[0] == blobs[1]
     diff = [i for i in range(min(map(len, blobs))) if blobs[0][i] != blobs[1][i]]
     final = C.ART / C.FLD_RG_NAME
     final.parent.mkdir(parents=True, exist_ok=True)
-    kept = C.keep(C.D.G / "FLD-RG_build_a.SAV", C.FLD_RG_NAME)
-    C.keep(C.D.G / "FLD-RG_build_b.SAV", "FLD-RG_build_b.SAV")
+    kept = C.keep(paths[0], C.FLD_RG_NAME)
     s = sav.load(str(kept))
-    rep = {"fixture": "FLD-RG", "file": kept.name, "sha256": C.sha(kept), "byte_identical_two_builds": same, "sizes": [len(x) for x in blobs],
+    rep = {"fixture": "FLD-RG", "file": kept.name, "builds": [pth.name for pth in paths], "sha256": C.sha(kept), "byte_identical_two_builds": same, "sizes": [len(x) for x in blobs],
            "differing_bytes": len(diff) + abs(len(blobs[0]) - len(blobs[1])), "first_differing_offsets": diff[:10],
            "turn": s["turn"], "battle_flag": s["battle_flag"], "current_nation": s["current_nation"],
            "army0": {k: v for k, v in states[0]["army0"].items() if k != "units"} | {"by_type": battle.by_type(states[0]["army0"])},
