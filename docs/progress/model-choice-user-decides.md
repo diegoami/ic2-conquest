@@ -16,3 +16,4 @@ minimax/MiniMax-M2.7 rank 1 spare reliability 0.99, heavy pick minimax/MiniMax-M
 
 ## Progress
 - 50699d3 CLAUDE.md: the rules 1-13 in; L50/L51 kept as model facts + effort, marked superseded
+- ed349e1 external_review.py: --model required, one model; tests 31/31, self-test 57/57
