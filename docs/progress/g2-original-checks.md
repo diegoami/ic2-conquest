@@ -17,6 +17,10 @@ Data: `runs/experiments/data/run-exp-g2-original-checks/`; binaries in `artifact
 
 ## Review fixes (PR #77, GPT-6.1 Sol review ses_ed3f05ca...; fixer: Sonnet subagent)
 - R1 extract: `make_code_extract.py` -> `code_extract_g2.txt` (pinned dump SHA in header); `c7_storm_model.py` -> `c7_storm_model.txt` (exact enumeration of the army rule); `c7_storm_reanalysis.py` now writes next free version (R3 part; re-run gave `.v2` files, identical text); `g2_checks.py` `sizes()` writes unique images (R3 runner part).
+- f06f938: R1 extract/model scripts, R3 versioned c7 writer and unique-image runner (pushed).
+- 07f16f9: new C5c spinner run `g2_checks-C5c-20261011-195827.jsonl` (hi:5000 probe, ext_A, ext_B; 90 readings, 285 binaries hashed in SAVES.sha256, release synced: first call hit a GitHub TLS handshake timeout after 240 uploads, the same idempotent sync was run once more and uploaded the remaining 45; release holds 417 assets).
+- next commit: finding narrowed and corrected (R1 citations to the extract and dump lines, C4 human/computer flag reading, R2 storm formulas and C7 numbers, R3 new run cited, earlier images stated overwritten); README.
 
 ## END
 All four checks answered; C7 from existing R85sA data (no new Wine). Nothing blocked.
+Review fixes R1, R2, R3 done (see above); no reviewer run, no merge.
