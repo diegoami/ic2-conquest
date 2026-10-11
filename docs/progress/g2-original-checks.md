@@ -13,3 +13,7 @@ Data: `runs/experiments/data/run-exp-g2-original-checks/`; binaries in `artifact
 ## Progress
 - (start) branch created, win_updown.c (spinner range reader) built, g2_checks.py written.
 - C3, C4, C4b, C5a, C5b run; C5c running (17/18 tests); C7 re-analysis done (no Wine); decompile reading of the move/select/storm code done. Batch commit now.
+- C5c done (18 tests), archived, released (132 files). Findings draft and README written; PR opened.
+
+## END
+All four checks answered; C7 from existing R85sA data (no new Wine). Nothing blocked.
