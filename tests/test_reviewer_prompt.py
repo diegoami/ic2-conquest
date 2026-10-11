@@ -542,8 +542,14 @@ def test_resume_applies_the_rules_of_a_new_run():
              ("recorded-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], 2, "family"),
              ("legacy-family", "anthropic/claude-opus-4", None, 2, "family"),
              ("two-models", "a/b,c/d", [], 2, "one model"),
-             ("valid", "provider/model", ["claude sonnet 5.5"], None, ""))
+             ("valid", "minimax/MiniMax-M3", ["claude sonnet 5.5"], None, ""),
+             ("legacy-unknown-implementer", "minimax/MiniMax-M3", ["mystery-llm"], 2, "cannot tell"),
+             ("unknown-reviewer", "provider/model", ["claude sonnet 5.5"], 2, "cannot tell"),
+             ("legacy-unknown-from-pr", "minimax/MiniMax-M3", None, None, ""))
     for tag, model, impl, want, word in cases:
+        labels = ["model:mystery-llm"] if tag == "legacy-unknown-from-pr" else []
+        if tag == "legacy-unknown-from-pr":
+            want, word = 2, "cannot tell"
         with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
             rd = d / "oldrun"
             rd.mkdir()
@@ -552,11 +558,28 @@ def test_resume_applies_the_rules_of_a_new_run():
             if impl is not None:
                 st["implementers"] = impl
             (rd / "state.json").write_text(json.dumps(st))
-            with main_env(d, None, ["--resume", str(rd)], commits=commits) as (got, posted, err, out):
+            with main_env(d, None, ["--resume", str(rd)], commits=commits, labels=labels) as (got, posted, err, out):
                 if want == 2:
                     assert got == 2 and word.lower() in err.lower() and "refused" in err and not posted and not (d / "count").exists(), (tag, got, err)
                 else:
                     assert "refused: cannot resume" not in err, (tag, got, err)
+    # the confirmation: an unknown family proceeds with --confirm-family-differs (and is recorded); a proven same family never does
+    for tag, model, impl, want in (("confirm-unknown", "minimax/MiniMax-M3", ["mystery-llm"], True),
+                                   ("confirm-unknown-reviewer", "provider/model", ["claude sonnet 5.5"], True),
+                                   ("confirm-same-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], False)):
+        with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
+            rd = d / "oldrun"
+            rd.mkdir()
+            st = {"kind": "pr", "number": 5, "head": HEAD, "session": "ses_fake", "hdr": "H", "brief": str(d / "brief.md"), "model": model,
+                  "agent": "external-reviewer", "data_dir": str(d / "data"), "worktree": str(d / "wt"), "status": "stopped", "pid": 2 ** 22 + 99,
+                  "implementers": impl}
+            (rd / "state.json").write_text(json.dumps(st))
+            with main_env(d, None, ["--resume", str(rd), "--confirm-family-differs"], commits=commits) as (got, posted, err, out):
+                if want:
+                    assert "refused: cannot resume" not in err, (tag, got, err)
+                    assert json.loads((rd / "state.json").read_text()).get("family_confirmed") is True, tag
+                else:
+                    assert got == 2 and "family" in err and not posted and not (d / "count").exists(), (tag, got, err)
     return "--resume refuses a recorded DeepSeek / multi-model / implementer-family model (exit 2, nothing runs; a legacy state.json takes the implementers from the PR); a valid recorded model passes the checks"
 
 

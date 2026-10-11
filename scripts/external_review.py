@@ -442,6 +442,23 @@ def excluded(model, excl):
     return any(e and flat(e) in flat(ow.split_model(model)[0]) for e in excl)
 
 
+def family_refusal(model, implementers, confirmed=False):
+    """THE family decision, used by a new run and by --resume alike (CLAUDE.md, Choosing models rule 4): why `model` may not review
+    work of `implementers`, or None. A proven same family is refused always; a family that cannot be told (an unknown implementer
+    alias, or an unknown reviewer next to an implementer) is refused unless the user checked it (--confirm-family-differs)."""
+    if not implementers:
+        return None
+    if excluded(model, set(implementers)):
+        return (f"the reviewer {model} is of the implementer's model family (CLAUDE.md, Choosing models rule 4); "
+                "ask the user for a reviewer of another family")
+    unknown = sorted(x for x in implementers if family(x) is None) + ([model] if family(model) is None else [])
+    if unknown and not confirmed:
+        return ("cannot tell the model family of " + ", ".join(repr(u) for u in unknown) + ", so the reviewer may be of the "
+                "implementer's family (CLAUDE.md, Choosing models rule 4). Check it, then rerun with --confirm-family-differs "
+                "(or name a reviewer of a known other family)")
+    return None
+
+
 def ensure_labels():
     have = {x["name"] for x in json.loads(sh("gh", "label", "list", "--json", "name", "-L", "200"))}
     for lb in VERDICTS.values():
@@ -514,7 +531,7 @@ def process_message(model, r):
             + (f"resume with --resume {rd}" if sid else "no session to resume: fix the cause and run again"))
 
 
-def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print, implementers=()):
+def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print, implementers=(), family_confirmed=False):
     """Run exactly ONE model (the one the user named). Returns (final, stop): final = (model, parsed review) or None; stop = (model,
     result) when a PROCESS failure ended the run (diagnosed and resumed, not handed to another model). An `api` failure (the provider
     did not answer) is appended to `failures` and ends the call: no other model runs; the user names the next one."""
@@ -524,7 +541,8 @@ def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, fai
     brief.parent.mkdir(parents=True, exist_ok=True)
     brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
     meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr,
-            "implementers": sorted(implementers)}   # recorded so --resume applies the same family rule
+            "implementers": sorted(implementers),   # recorded so --resume applies the same family rule
+            "family_confirmed": bool(family_confirmed)}
     r = safe_run(brief, wt, model, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
     pr, r = judge(r, hdr, logs / f"run-{k}")
     if pr:
@@ -564,7 +582,7 @@ def post_review(kind, n, model, pr, logs, head, apply_label):
     return 0
 
 
-def resume_run(run_dir, apply_label, force=False):
+def resume_run(run_dir, apply_label, force=False, confirm_family=False):
     """--resume <run dir>: continue the recorded OpenCode session where it stopped. Recreates the worktree at the recorded head
     (exit 5 if the PR head, or origin/main for a release review, moved since), continues the SAME session, then parses and posts
     as usual. The run dir (and its earlier results, kept as result.prev-N.json) is never deleted."""
@@ -575,17 +593,19 @@ def resume_run(run_dir, apply_label, force=False):
         print(f"{rd}: no resumable state.json (needs {', '.join(need)})", file=sys.stderr)
         return 2
     kind, n, head = st["kind"], st["number"], st["head"]
-    # resume is never a way around the rules: the recorded model faces the same checks as a new run's --model
+    # resume is never a way around the rules: the recorded model faces the same decision as a new run's --model
     bad = model_error(st["model"])
     if not bad:
         names = st.get("implementers")
         if names is None:                                   # a legacy state.json: take the implementers from the PR as a new run does
             names = sorted(implementer_names(gh_json("pr", "view", str(n), fields="title,body,headRefOid,baseRefName,commits,labels"))) if kind == "pr" else []
-        if names and excluded(st["model"], set(names)):
-            bad = f"the recorded model {st['model']} is of the implementer's model family (CLAUDE.md, Choosing models rule 4)"
+        bad = family_refusal(st["model"], names, confirm_family or bool(st.get("family_confirmed")))
     if bad:
         print(f"refused: cannot resume {rd}: {bad}", file=sys.stderr)
         return 2
+    if confirm_family and not st.get("family_confirmed"):  # the confirmation is part of the record
+        st["family_confirmed"] = True
+        ow.write_json(rd / "state.json", st)
     why = None if force else ow.resume_refusal(rd)
     if why:                                                 # the limit holds across invocations (state.json resumes_used)
         print(why, file=sys.stderr)
@@ -656,7 +676,7 @@ def main():
     if a.self_test:
         return self_test()
     if a.resume:
-        return resume_run(a.resume, a.apply_label, a.force_resume)
+        return resume_run(a.resume, a.apply_label, a.force_resume, a.confirm_family_differs)
     if not (a.pr or a.issue):
         ap.error("one of --pr / --issue is required (or --self-test or --resume)")
     kind = a.kind or ("release" if a.issue else "pr")
@@ -704,12 +724,10 @@ def main():
         base = sh("git", "merge-base", bref, head)
         impl = implementer_names(meta)
         excl |= impl
-        unknown = sorted(x for x in impl if family(x) is None) + ([m for m in models if family(m) is None] if impl else [])
-        if unknown and not a.confirm_family_differs:
+        bad = family_refusal(models[0], impl, a.confirm_family_differs)
+        if bad:
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-            print("refused: cannot tell the model family of " + ", ".join(repr(u) for u in unknown) + ", so the reviewer may be of the "
-                  "implementer's family (CLAUDE.md, Choosing models rule 4). Check it, then rerun with --confirm-family-differs "
-                  "(or name a reviewer of a known other family)", file=sys.stderr)
+            print("refused: " + bad, file=sys.stderr)
             return 2
     models = [m for m in models if not excluded(m, excl)]      # the implementer never reviews its own PR
     for m in models:             # quota-tracker only informs ("Choosing models" rule 6): the named model runs anyway
@@ -742,7 +760,7 @@ def main():
             raise RuntimeError("worktree HEAD is not the head SHA")
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
         final, stop = run_one(models[0], kind, n, meta["title"], meta["body"], base, head, wt, logs, extra, a.agent, failures,
-                                WORK / "opencode-data", log=lambda s: print(s, flush=True), implementers=impl)
+                                WORK / "opencode-data", log=lambda s: print(s, flush=True), implementers=impl, family_confirmed=a.confirm_family_differs)
     finally:
         drop_worktree(wt, kind, n)      # the run dirs under logs stay: they are the record a --resume continues
 

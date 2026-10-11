@@ -52,6 +52,7 @@ python3 scripts/external_review.py --pr 7 --model <named> --dry-run   # prints t
 python3 scripts/external_review.py --pr 7 --model <named> --review-file R.md   # offline: what would be posted, its note, the exit code
 python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota note, family detection, pricing, effort rule and the model-choice refusals
 python3 scripts/external_review.py --resume rendered/pr7-ab12cd/run-1   # continue a run that stopped, in the same OpenCode session
+#   (--resume applies the same family decision as a new run; add --confirm-family-differs once the user checked an unknown family: it is recorded in state.json as family_confirmed)
 python3 scripts/opencode_status.py                               # what is running / stopped, in plain words
 python3 tests/test_reviewer_prompt.py                            # fake-opencode tests (kinds, resume, progress, status)
 ```
