@@ -517,21 +517,26 @@ def main_env(d, plan, argv):
 
 
 def test_main_exit_codes():
-    two = ["--pr", "5", "--model", "provider/model,provider/model"]
+    one = ["--pr", "5", "--model", "provider/model"]
     with fake_opencode("main-process", ["crash", "crash", "crash", "ok"]) as d:
-        with main_env(d, None, two) as (code, posted, err, out):
+        with main_env(d, None, one) as (code, posted, err, out):
             assert code == 6, (code, err)
             assert not posted, "a process failure posts nothing"
             assert "OpenCode process failure: provider/model#high: nonzero-exit" in err and "resume with --resume" in err, err
-            assert runs_started(d) == 3, "no second model after a process failure"
-    with fake_opencode("main-api", ["429", "429"]) as d:
-        with main_env(d, None, two) as (code, posted, err, out):
+            assert runs_started(d) == 3, "first run + 2 resumes, same model"
+    with fake_opencode("main-api", ["429", "ok"]) as d:
+        with main_env(d, None, one) as (code, posted, err, out):
             assert code == 3 and not posted and "OpenCode unavailable" in err, (code, err)
-            assert runs_started(d) == 2, "both models' APIs were tried"
-    with fake_opencode("main-fallback", ["429", "ok"]) as d:
-        with main_env(d, None, two) as (code, posted, err, out):
+            assert runs_started(d) == 1, "an API failure ends the review: the user names the next model (Choosing models rule 7)"
+    for bad in (["--pr", "5"], ["--pr", "5", "--model", "provider/model,provider/other"], ["--pr", "5", "--model", "opencode-go/deepseek-v4.1-flash"]):
+        with fake_opencode("main-usage", ["ok"]) as d:
+            with main_env(d, None, bad) as (code, posted, err, out):
+                assert code == 2 and not posted and not (d / "count").exists(), (bad, code, err)
+    with fake_opencode("main-ok", ["ok"]) as d:
+        with main_env(d, None, one) as (code, posted, err, out):
             assert code == 0 and len(posted) == 1, (code, err, posted)
-    return "main(): process failure -> exit 6, no post, one model; every API failing -> exit 3, no post; api then ok -> posted, exit 0"
+    return ("main(): one named model only; process failure -> exit 6, no post; API failure -> exit 3, no other model; no model, a list "
+            "or DeepSeek -> exit 2, nothing runs; ok -> posted, exit 0")
 
 
 def test_malformed_exports_are_session_unreadable():

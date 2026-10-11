@@ -2,12 +2,12 @@
 """External PR reviewer: an OpenCode model reviews a PR in its own git worktree and THIS script
 posts the result. The model never writes to GitHub.
 
-    external_review.py --pr 7 [--model a#variant,b,c] [--exclude-model x] [--apply-label] [--dry-run]
+    external_review.py --pr 7 --model provider/model[#variant] [--apply-label] [--dry-run]
     external_review.py --issue 9 --kind release [--brief-file F]
     external_review.py --resume <run dir>        # continue a run that stopped, in the same OpenCode session
 
-Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (every model's API did not answer or was skipped; nothing
-posted: the caller decides the fallback) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller
+Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (the named model's API did not answer, or its provider is exhausted;
+nothing posted: ask the user which model next, CLAUDE.md "Choosing models" rule 7) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller
 reads it and decides) · 5 the PR head moved while the review ran (nothing posted) · 6 "OpenCode process failure: ..." (a
 failure of our own process: timeout after the automatic resumes, cut-off, crash, unreadable output, permission refusal, wrong
 agent, no review header; nothing posted, NO fallback to another model: diagnose it, then `--resume <run dir>`).
@@ -18,8 +18,10 @@ ONE comment (+ a status label with --apply-label). A review is never thrown away
 on; one whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4. Only an `api` failure
 (opencode_watched.py: the provider did not answer) moves the chain to the next model; a `process` failure, "no review at all"
 (no header line) included, stops it with exit 6.
-Default: the DEFAULT_MODELS chain, after the quota check (models whose provider is exhausted are skipped, L50). Effort: light models
-#high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). The caller falls back to Claude Opus on exit 3; on exit 6 nobody falls back: the process failure is fixed.
+Model: exactly ONE, the one the user named (CLAUDE.md "Choosing models", the owner 2026-10-11): no default and no chain; a list
+is refused (exit 2). The quota check only reports: if the named model's provider is exhausted the script exits 3 and says so; it never
+picks another model. Effort: light models #high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). On exit 3
+the user names the next model; on exit 6 nobody falls back: the process failure is fixed and the run resumed.
 """
 import argparse
 import json
@@ -39,7 +41,8 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "openai/gpt-5.6-luna#high,minimax/MiniMax-M2.7"     # then exit 3 -> the caller (the owner, 2026-10-10: DeepSeek and Alibaba only when asked)
+# No default model and no chain: the user names the reviewer for each review (CLAUDE.md "Choosing models", 2026-10-11). The former
+# DEFAULT_MODELS chain (Luna, then MiniMax-M2.7; 2026-10-10) is superseded.
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
 EXIT_PROCESS = 6                                                  # a failure of our own process: no fallback, resumable
 
@@ -345,13 +348,28 @@ def self_test():
         print(f"{'PASS' if ok else 'FAIL'} effort {model}: {got}")
         bad += 0 if ok else 1
         n += 1
-    chain = [ow.split_model(m)[0] for m in DEFAULT_MODELS.split(",")]
-    ok = chain == ["openai/gpt-5.6-luna", "minimax/MiniMax-M2.7"]      # the owner's decision 2026-10-10: no DeepSeek, no Alibaba
-    print(f"{'PASS' if ok else 'FAIL'} default chain: {chain}")
-    bad += 0 if ok else 1
-    n += 1
+    for spec, want in (("openai/gpt-5.6-luna#high", None), ("", "required"), ("a/b,c/d", "one model"), ("opencode-go/deepseek-v4.1-flash", "DeepSeek"),
+                       ("alibaba-token-plan/qwen3.8-flash", None)):
+        got = model_error(spec)
+        ok = (got is None) if want is None else (got is not None and want in got)
+        print(f"{'PASS' if ok else 'FAIL'} model choice {spec!r}: {got}")
+        bad += 0 if ok else 1
+        n += 1
     print(f"{n - bad}/{n} passed")
     return 1 if bad else 0
+
+
+def model_error(spec):
+    """Why `--model` cannot run, or None. The user names ONE model per review (CLAUDE.md "Choosing models" rules 2 and 4): no
+    default, no list, never DeepSeek. Alibaba runs only when the user names it, which naming it here is."""
+    names = [m.strip() for m in (spec or "").split(",") if m.strip()]
+    if not names:
+        return "--model is required: the user names the reviewer (CLAUDE.md, Choosing models rule 2)"
+    if len(names) > 1:
+        return "one model only, the one the user named; another model only after an API failure, when the user names it (rule 7)"
+    if "deepseek" in names[0].lower():
+        return "DeepSeek is never used (CLAUDE.md, Choosing models rule 4)"
+    return None
 
 
 def effort(model):
@@ -555,7 +573,7 @@ def main():
     g.add_argument("--issue", type=int)
     ap.add_argument("--kind", choices=("pr", "release"), default=None)
     ap.add_argument("--brief-file", help="extra instructions appended to the generated brief")
-    ap.add_argument("--model", default=DEFAULT_MODELS, help="provider/model[#variant],... (first is primary)")
+    ap.add_argument("--model", default="", help="provider/model[#variant]: the ONE reviewer the user named (required for a review)")
     ap.add_argument("--exclude-model", default="", help="comma-separated names to skip")
     ap.add_argument("--agent", default="external-reviewer")
     ap.add_argument("--apply-label", action="store_true", help="set status:* from the verdict")
@@ -576,6 +594,10 @@ def main():
         ap.error("one of --pr / --issue is required (or --self-test or --resume)")
     kind = a.kind or ("release" if a.issue else "pr")
     n = a.pr or a.issue
+    why = model_error(a.model)
+    if why:
+        print(f"usage: {why}", file=sys.stderr)
+        return 2
     models = [effort(m.strip()) for m in a.model.split(",") if m.strip()]
     excl = {e.strip().lower() for e in a.exclude_model.split(",") if e.strip()}
 
@@ -633,8 +655,9 @@ def main():
             return 3
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-        print("OpenCode unavailable: every model is excluded", file=sys.stderr)
-        return 3
+        print("refused: the named reviewer is of the implementer's model family (CLAUDE.md, Choosing models rule 4); "
+              "ask the user for a reviewer of another family", file=sys.stderr)
+        return 2
 
     token = secrets.token_hex(3)
     wt = review_worktree(token)
