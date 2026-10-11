@@ -27,3 +27,7 @@ Review fixes R1, R2, R3 done (see above); no reviewer run, no merge.
 
 ## Review round 2 fixes (PR #77, GPT-6.1 Sol review ses_ed3d9fca...; fixer: Sonnet subagent)
 - R1: `g2_checks.py save()` passes `<case>_<stamp>_<name>` to `save_as()`; `Game.save_as()` now raises DriverError on an existing destination (new `overwrite=False` parameter, explicit opt-in); `tests/test_save_as.py` offline test. Callers: `tests/test_orders.py`, `tests/make_fleet_fixture.py`, `tests/make_battle_fixtures.py` reuse fixed scratch names and now pass `overwrite=True` (the PR lists them).
+- R2 + R3: finding line 80 corrected (80 supplies after the move in all five R85sA trials; the weekly block's `max(0, supplies - ships)` at 54539-54542 zeroes them before the storm; zero-supply penalty 54618-54621 after it; 60/61 result kept). Both line ranges are already inside the whole-function `FUN_004514ec` of `code_extract_g2.txt` (verified by reading 54536-54545 and 54616-54623 there), so no new extract version was needed. Title and C3 heading narrowed to "stays selected, four tested toolbar dialogs open".
+
+## END (round 2)
+R1, R2, R3 done; no Wine run, no reviewer, no merge. Nothing blocked.
