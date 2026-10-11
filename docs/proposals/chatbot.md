@@ -1,5 +1,7 @@
 # Proposal: `ic2-chat`, a BYOK chatbot that plays the original game through the headless wrapper
 
+> **Model choice superseded (2026-10-11):** the implementer and reviewer models named in this file are history. Who implements and which model reviews are now the user's choice, asked each time (`CLAUDE.md`, "Choosing models").
+
 **Status:** proposal for review (2026-10-02). Nothing here is built. Author: Claude Sonnet 5.5, for the player.
 Reviewers: please answer the questions in §12 and flag anything in §3-§10 that you would change.
 

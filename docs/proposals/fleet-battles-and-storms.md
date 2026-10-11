@@ -1,5 +1,7 @@
 # Plan: fleet battles, armies aboard, and ships lost at sea
 
+> **Model choice superseded (2026-10-11):** the implementer and reviewer models named in this file are history. Who implements and which model reviews are now the user's choice, asked each time (`CLAUDE.md`, "Choosing models").
+
 **Status:** plan for review and for the player's approval (2026-10-02). Nothing here has been run. Author: Claude Sonnet 5.5.
 This plans three experiments that follow from the fleet orders now in `main` (`findings/2026-10-02-fleet-orders-live.md`),
 which left **naval battles, battles with an army aboard, and storms at sea** untested.

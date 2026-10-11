@@ -1,5 +1,7 @@
 # Plan: battles (the tactical screen half-round by half-round, sieges and the instant resolver, the post-battle peace)
 
+> **Model choice superseded (2026-10-11):** the implementer and reviewer models named in this file are history. Who implements and which model reviews are now the user's choice, asked each time (`CLAUDE.md`, "Choosing models").
+
 **Status:** plan for review (2026-10-04, revised the same day for the research request). Nothing here has been run.
 Author: Claude Opus 5.5 (planner). Implementation: Sonnet; review: DeepSeek V4.1 Flash, then GPT-6.1 Sol once per PR at low effort.
 These are **experiments, not runs**: no issue approval is needed (rule 4 concerns real runs). Battles come before the chatbot work.

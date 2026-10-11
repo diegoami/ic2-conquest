@@ -1,6 +1,14 @@
 # External PR reviewer (OpenCode)
 
-## Roles and models (player decisions, 2026-10-01; revised 2026-10-02, twice)
+## Roles and models: the user's choice (the owner, 2026-10-11)
+
+**Who implements and which model reviews are the user's choice, asked each time** (`CLAUDE.md`, "Choosing models", rules 1-7). The
+script runs exactly the ONE reviewer model the user named (`--model` is required; a list, no model or DeepSeek is refused with exit
+2; a reviewer of the implementer's model family is refused with exit 2). quota-tracker's `/recommend` is shown to the user as a
+suggestion only. On exit 3 (the named model's API did not answer, or its provider is exhausted) the user names the next model; on
+exit 6 the process failure is fixed and the run resumed. Nothing below picks a model any more.
+
+### History (superseded 2026-10-11; kept for the reasons)
 
 **Sonnet is the only implementer.** The reviewer is not a Claude model: a chain of two, then the caller decides. **Since 2026-10-10 the
 chain is `openai/gpt-5.6-luna#high` then `minimax/MiniMax-M2.7`** (the owner; DeepSeek and Alibaba are used only when asked). The table
@@ -11,7 +19,7 @@ below is the history of the earlier chain.
 | Implementer | Claude Sonnet (no OpenCode implementer) | – |
 | Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
 
-**Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given. The script also checks itself: before the chain runs it asks quota-tracker (`IC2_QUOTA_URL`, default `http://localhost:8765`) about each model's provider, skips one whose provider is `exhausted` (GPT-5.6 Luna is judged on its own `gpt-5.6-luna:7d` window), names the skip in the posted header (`PR review (gpt-5.6-luna; glm-5.3 failed: quota exhausted (zai, usable in 1h))`) and exits 3 when every model is skipped; when quota-tracker does not answer it goes on unchanged.
+**Superseded 2026-10-11. Before choosing a reviewer, check the quota (harness_imperial L50, `CLAUDE.md` Code map, `docs/environment.md`):** skip a model whose provider is `exhausted`, pass the next one with quota explicitly with `--model`, and say so in the PR comment or body. The default chain below is what runs when no `--model` is given. The script also checks itself: before the chain runs it asks quota-tracker (`IC2_QUOTA_URL`, default `http://localhost:8765`) about each model's provider, skips one whose provider is `exhausted` (GPT-5.6 Luna is judged on its own `gpt-5.6-luna:7d` window), names the skip in the posted header (`PR review (gpt-5.6-luna; glm-5.3 failed: quota exhausted (zai, usable in 1h))`) and exits 3 when every model is skipped; when quota-tracker does not answer it goes on unchanged.
 
 - The chain moves to the next model only after an **api** failure (the provider did not answer, see "Failure kinds, resume, status"),
   never after a real or flagged review and never after a **process** failure. When every model's API fails, `scripts/external_review.py` exits **3** and the caller decides
@@ -35,13 +43,12 @@ A second, independent reviewer that is not Claude: an OpenCode model reviews a P
 and `scripts/external_review.py` posts the result. The model never writes to GitHub.
 
 ```bash
-python3 scripts/external_review.py --pr 7                        # the default chain, posts one comment
-python3 scripts/external_review.py --pr 7 --model opencode-go/kimi-k3#high
-python3 scripts/external_review.py --pr 7 --apply-label          # also sets status:approved|rework|decision
-python3 scripts/external_review.py --issue 9 --kind release      # a gate issue; reviews origin/main
-python3 scripts/external_review.py --pr 7 --dry-run              # prints the arguments, starts no model
-python3 scripts/external_review.py --pr 7 --review-file R.md     # offline: what would be posted, its note, the exit code
-python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota skip, pricing, effort rule and default chain
+python3 scripts/external_review.py --pr 7 --model openai/gpt-5.6-luna#high   # the ONE reviewer the user named; posts one comment
+python3 scripts/external_review.py --pr 7 --model <named> --apply-label   # also sets status:approved|rework|decision
+python3 scripts/external_review.py --issue 9 --kind release --model <named>   # a gate issue; reviews origin/main
+python3 scripts/external_review.py --pr 7 --model <named> --dry-run   # prints the arguments, starts no model
+python3 scripts/external_review.py --pr 7 --model <named> --review-file R.md   # offline: what would be posted, its note, the exit code
+python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota skip, pricing, effort rule and the model-choice refusals
 python3 scripts/external_review.py --resume rendered/pr7-ab12cd/run-1   # continue a run that stopped, in the same OpenCode session
 python3 scripts/opencode_status.py                               # what is running / stopped, in plain words
 python3 tests/test_reviewer_prompt.py                            # fake-opencode tests (kinds, resume, progress, status)

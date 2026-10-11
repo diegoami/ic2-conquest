@@ -1,7 +1,8 @@
 # Environment: services a session relies on
 
 The game environment (Wine, Xvfb, the executables, `IC2_WORK`) is in `CLAUDE.md` "Environment" and `docs/wsl-setup.md`. This file is
-for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51; the rules themselves are in `CLAUDE.md`, Code map).
+for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51, superseded 2026-10-11 by `CLAUDE.md` "Choosing models": the user decides, and
+`/recommend` is a suggestion only).
 
 ## Model quota availability: quota-tracker
 
@@ -55,7 +56,8 @@ With `scripts/external_review.py` a model is passed as `--model <id>#<effort>`. 
 none at all), `scripts/opencode_watched.py`'s `OFFERS`/`DEFAULT_VARIANT` tables clamp the effort to one the model offers — never
 an invented variant.
 
-Placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain is
+**Superseded 2026-10-11** (the user names every implementer and reviewer: `CLAUDE.md`, "Choosing models"; quota-tracker is a
+suggestion only). History: placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain was
 `opencode-go/deepseek-v4.1-flash#high, openai/gpt-5.6-luna#high, alibaba-token-plan/qwen3.8-flash#medium` (then exit 3);
 and `minimax/MiniMax-M3#thinking` is the **independent second-opinion reviewer** — a family independent of
 GLM/DeepSeek/Qwen/OpenAI/Claude, used to review those models' work when a second opinion is wanted.

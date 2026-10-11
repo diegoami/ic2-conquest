@@ -1,5 +1,7 @@
 # Plan: `ic2-chat` M0 and M1, with outlines of M2 to M6
 
+> **Model choice superseded (2026-10-11):** the implementer and reviewer models named in this file are history. Who implements and which model reviews are now the user's choice, asked each time (`CLAUDE.md`, "Choosing models").
+
 **Status:** plan for review (2026-10-03). Author: Claude Opus 5.5 (planner). Builds on the merged proposal
 `docs/proposals/chatbot.md` (called "the proposal" below). Nothing here is built. Implementer: Sonnet; reviewers: DeepSeek V4.1
 Flash, then GPT-6.1 Sol at medium effort (§7).
