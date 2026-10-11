@@ -2,7 +2,7 @@
 """Upload to release run-exp-g2-original-checks what it does not hold yet from artifacts/run-exp-g2-original-checks/ (creates the release
 first if missing). Never deletes, never clobbers. If a release call is refused, prints the exact command and exits 3 (CLAUDE.md rule 1:
 report it, never retry another way). Writes release-sync-<stamp>.json beside this script (rule 6)."""
-import json, subprocess, sys, time
+import json, shlex, subprocess, sys, time
 from pathlib import Path
 R = Path(__file__).resolve().parents[4]
 TAG = "run-exp-g2-original-checks"
@@ -28,8 +28,8 @@ for i in range(0, len(pending), 40):
         cmd = ["gh", "release", "upload", TAG] + chunk
     r = run(*cmd)
     if r.returncode:
-        rec["refused"] = {"command": " ".join(cmd[:6]) + " ...", "stderr": r.stderr[-600:]}
-        print("REFUSED:", r.stderr[-600:], "\nexact command: gh release create/upload", TAG, "<files in artifacts/%s>" % TAG)
+        rec["refused"] = {"command": cmd, "command_shell": shlex.join(cmd), "cwd": str(R), "stderr": r.stderr[-600:]}
+        print("REFUSED:", r.stderr[-600:], "\nexact command (run from %s):\n%s" % (R, shlex.join(cmd)))
         break
     rec["uploaded"] += [Path(c).name for c in chunk]
 (D / f"release-sync-{time.strftime('%Y%m%d-%H%M%S')}.json").write_text(json.dumps(rec, indent=1))
