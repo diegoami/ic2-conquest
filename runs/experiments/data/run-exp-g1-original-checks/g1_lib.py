@@ -93,7 +93,16 @@ def staged(src, ops, tag, extra=None):
     if len(b) != n0 and not getattr(extra, "grows", False):
         raise SystemExit(f"staging {tag!r} changed the save length {n0} -> {len(b)}: a slice assignment of another size? refusing to write")
     sav.parse(bytes(b))
-    dst = ART / f"{CASE.replace(':', '_')}_{STAMP}_staged_{tag}_{Path(src).stem}.SAV"; dst.write_bytes(bytes(b)); _hash_line(dst)
+    # review fix R3 (round 3): exclusive creation, never replace: a name that exists (a repeated tag, or `test:-5100 test:5100` meeting in
+    # abs(treasury)) gets a `.vN` suffix before `.SAV`; the log's `dst` names the file actually written.
+    base = f"{CASE.replace(':', '_')}_{STAMP}_staged_{tag}_{Path(src).stem}"; n = 0
+    while True:
+        dst = ART / (f"{base}.SAV" if n == 0 else f"{base}.v{n}.SAV")
+        try:
+            with open(dst, "xb") as f: f.write(bytes(b))
+            break
+        except FileExistsError: n += 1
+    _hash_line(dst)
     log("staged", src=Path(src).name, src_sha256=sha(src), dst=dst.name, ops=ops, extra=getattr(extra, "__doc__", None))
     return dst
 
