@@ -49,6 +49,7 @@ WHY = [
     ("FUN_004499ec", "I: trade income of a nation (tax base of partners and allies / 12)"),
     ("FUN_004498b0", "I: a city's tribute contribution"),
     ("FUN_004494e4", "G: id of an own city marker in the 3 x 3 around a position, -1 when none"),
+    ("FUN_0044b4f8", "G: the storm damage fraction (condition and ships fall by a fraction of their current value; 86/300 was unsupported in the v1 extract, the v2 adds the function body so the calculation can be cited)"),
     ("FUN_00451304", "L: weather: clears and paints the rough-sea overlay around 20 fixed centres, zeroes every fleet's covered cell"),
     ("FUN_004511bc", "L: paints one overlay cell"),
     ("FUN_0044c204", "H: rebellion of one city"),

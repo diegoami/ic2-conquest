@@ -565,12 +565,19 @@ try:
             t = sh_x("xwininfo", "-id", str(wid), "-tree")
             import re as _re
             m = _re.search(r"Parent window id: (0x[0-9a-f]+)", t); return m.group(1) if m else None
+        E_SEQ = [0]                                                          # R2 round-2: every E direct image/log writer gets a unique name via this counter; a name collision is raised, never silently overwritten
+        def _e_png(kind, tag):
+            """return a fresh ART / E_{STAMP}_{tag}_{kind}_{seq:03d}.png (raises if the name already exists; the helper that calls it can change the tag to keep names unique)."""
+            E_SEQ[0] += 1; seq = E_SEQ[0]
+            p = ART / f"E_{STAMP}_{tag}_{kind}_{seq:03d}.png"
+            if p.exists(): raise SystemExit(f"{p} exists: E's direct image names must be unique (R2)")
+            return p, seq
         def click_x_button(tag):
             wid = main_win(); fr = frame_of(wid)
             fg = geom(fr) if fr else None; cg = geom(wid)
-            png = ART / f"E_{STAMP}_{tag}_titlebar.png"
+            png, seq = _e_png("titlebar", tag)
             sh_x("import", "-window", "root", "-crop", f"{fg['w']}x{max(40, cg['client_y'] - fg['client_y'] + 4)}+{fg['client_x']}+{fg['client_y']}", str(png)); _hash_line(png)
-            wm_log(tag=tag, frame=fr, frame_geom=fg, client_geom=cg, titlebar_image=png.name)
+            wm_log(tag=tag, frame=fr, frame_geom=fg, client_geom=cg, titlebar_image=png.name, seq=seq)
             return fg, cg, png
         g.set_seed(12345); g.start()
         wid = main_win(); cg0 = geom(wid); wm_log(step="started", main_window=wid, client=cg0, tree=sh_x("xwininfo", "-root", "-tree")[:1500], root=shot(g, "started"))
@@ -581,11 +588,12 @@ try:
         else:
             dx, dy = int(sys.argv[2]), int(sys.argv[3])
             def real_click(tag):
-                fg, cg, png = click_x_button(tag)
+                fg, cg, png = click_x_button(tag)                                # R2 round-2: each call now gets its own titlebar_<seq>.png; a repeated tag no longer overwrites
                 x, y = fg["client_x"] + fg["w"] - dx, fg["client_y"] + dy
                 sh_x("xdotool", "mousemove", str(x), str(y)); time.sleep(0.5)
-                snap_png = ART / f"E_{STAMP}_{tag}_before_click.png"; sh_x("import", "-window", "root", "-crop", f"{fg['w']}x{cg['client_y'] - fg['client_y'] + 4}+{fg['client_x']}+{fg['client_y']}", str(snap_png)); _hash_line(snap_png)
-                sh_x("xdotool", "click", "1"); wm_log(tag=tag, clicked_at=(x, y), image=snap_png.name)
+                snap_png, seq = _e_png("before_click", tag)
+                sh_x("import", "-window", "root", "-crop", f"{fg['w']}x{cg['client_y'] - fg['client_y'] + 4}+{fg['client_x']}+{fg['client_y']}", str(snap_png)); _hash_line(snap_png)
+                sh_x("xdotool", "click", "1"); wm_log(tag=tag, clicked_at=(x, y), image=snap_png.name, seq=seq)
                 return (x, y)
             # control: no game loaded -> the real click ends the process at once, no box
             real_click("nogame")
