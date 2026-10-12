@@ -6,7 +6,9 @@ Before = the staged week-11 save (its path in the `quarter_round` log line), aft
   T'' = tax_base x tax div 100 + T' + tax_base div 4 - 7 x cities - wealth div 20000 + trade, trade = sum over k with relation 1 or 2 of tax_base[k] div 12 (FUN_004499ec)
 with tax_base, wealth, cities, tax and the units, queues and fleets read from the AFTER state, and the relation row of the trade line chosen by SEAT (above).
 Unity: min(990, max(300, unity + 25 - tax div 2 - mobilisation' div 5)), mobilisation' = max(0, mobilisation - 3) (mobilisation read before; after the tick a seat can change it).
-Also the deposed set from the news. Output analysis_I.txt (next free version)."""
+Also the deposed set from the news. Output analysis_I.txt (next free version).
+
+Trade-row reconstruction caveat (round-4): the relation row used here is the AFTER-tick snapshot's row, not the matrix as it stood at the tick itself. `FUN_00449b40` writes both directions (lines 48502-48504) and a BEFORE-tick seat's diplomacy can change an AFTER-tick seat's row (the tracked J control, `analysis_J.v3.txt`, lines 32 and 52, shows Gaul seat 14 dropping Armenia seat 10 before the tick). The before-tick nations in this analysis are therefore matched by their seat-derived row, which approximates the row at the tick; the spend-adjusted matches and the inexact residuals are reported under this approximation. The seat-from-turn_order helper itself is verified by the selftest below — only the index lookup, not the row choice."""
 import json, struct, sys
 from pathlib import Path
 D = Path(__file__).resolve().parent; R = D.parents[3]; sys.path.insert(0, str(R)); sys.path.insert(0, str(R / "runs/experiments/battles")); sys.path.insert(0, str(D))
