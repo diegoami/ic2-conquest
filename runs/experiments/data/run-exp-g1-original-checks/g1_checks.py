@@ -184,6 +184,8 @@ try:
             g.key("Escape"); time.sleep(1)
             log("after_escape", new_windows=sorted(ids() - before_ids), windows=windows(g))
             # File > New, then File > Save
+            # review fix R2 (round 3): preserve every existing AUTO* file (and AUTOSAVE.LOG) before the new game can write AUTO0720.SAV (rule 6)
+            sup = g.supersede_autosaves(); log("autosaves_superseded", folder=str(sup) if sup else None, files=sorted(p.name for p in sup.iterdir()) if sup else [])
             s2 = snap()
             g.menu("file", drv.FILE_ITEMS["new"]); time.sleep(2)
             log("new_confirm", boxes=boxes(g), windows=windows(g))
@@ -207,6 +209,8 @@ try:
             else: time.sleep(10)
             time.sleep(3); texts = g.dismiss_popups()
             s3 = snap()
+            if which == "patched":      # R2: keep, hash (SAVES.sha256) and log the new game's autosave under a G5/stamp/turn name before anything else runs
+                for a in sorted(G.glob("AUTO*.SAV")): keep_auto(a.name, g.turn_number(), "newgame")
             humans = [k for k in range(16) if g.mem(drv.NATIONS + k * drv.NATION_LEN + 0x490, 1)[0] == 1]
             log("new_game_humans", human_nations=humans, rome_is_only_human=(humans == [0]))
             log("new_game_started", texts=texts, files_changed=changed(s2, s3), title=[w[1] for w in g.find_windows("^Imperial Conquest 2 ")], root=shot(g, "after_new_game"),
