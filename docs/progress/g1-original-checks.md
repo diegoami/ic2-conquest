@@ -46,3 +46,14 @@ Plan: Game.open, then R3 rerun, R4, R5, R6, R7, one commit each, push after each
 
 ## END (round 2)
 Done: all six items (commits above); offline tests `test_new_game_keeps_autosaves` and `test_open_keeps_same_name` pass. Not done / uncertain: `Game.new_game` in the driver still uses its calibrated fixed form coordinates (only the G5 branch was asked); the hc staging's price-4 reading of the formula is inferred from the 86 (not read from code); G5 original exe not re-run (only patched asked). Failed attempts `g1_checks-G5-20261012-065259.jsonl` and `-065348.jsonl` kept. No merge, no review requested.
+
+## Review fixes, round 3 (Sonnet subagent, 2026-10-12)
+Plan: R1+R4 (new_game.sh), R3, R5, R6+R7 (tests), R2 (G5 re-run), one commit each, push after each.
+- 8387021 R1, R4: `harness/preserve.sh` (unique superseded dir, `mv -n` + check, abort before launch; unique output name `.N`); `tests/test_new_game_sh_keeps_saves.py`.
+- 07c202b R3: `staged()` exclusive create with `.vN` suffix; `tests/test_g1_staged_unique.py`.
+- c2f0e3f R5: finding states `sVar1 == 1` and the conditional `< 6` branch.
+- 4b502ba R6, R7: copy spy + mtime check in `test_open_keeps_same_name`; frozen clock in `test_new_game_keeps_autosaves`. R6 guard-removal check: with `if not tgt.exists():` replaced by `if True:` in `Game.open`, the test FAILED ("identical file copied again"); restored with `git checkout`, passes.
+- 6131ae4 R2: G5 supersedes AUTO* before File > New and keeps its autosave; recovered `G5_20261012-065502_recovered_AUTO0720.SAV`; replacement trial `g1_checks-G5-20261012-071546.jsonl`; finding "Review fixes, round 3"; data archived (66 binaries hashed), release synced (11 files, no 403).
+
+## END (round 3)
+Done: R1-R7, all offline tests pass (`test_new_game_keeps_autosaves`, `test_open_keeps_same_name`, `test_new_game_sh_keeps_saves`, `test_g1_staged_unique`). Evidence per item above. Not done / limits: the G5 autosaves of `-233302`, `-065259`, `-065348` are not recoverable (stated in the finding; the one live `AUTO0720.SAV` is hash-identical to the start save, so its link to run `-065502` rests on the mtime window); `Game.new_game` keeps its fixed form coordinates; `new_game.sh` itself was not run under Wine (shell helpers tested offline). Next step: the owner's re-review. No merge, no review requested.
