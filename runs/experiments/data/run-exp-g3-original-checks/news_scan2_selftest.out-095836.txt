@@ -1,0 +1,4 @@
+reverse ['destroys AFTER block'] unmatched []
+forward ['destroys BEFORE block'] unmatched []
+unrelated [] unmatched [(2, 5, 'B', 'A')]
+OK
