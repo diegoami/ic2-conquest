@@ -120,6 +120,6 @@ Staging: Rome at peace (relation 0) with all 15 nations (L1: 15 relation pairs; 
 - **1f (independence):** the 312 trials are taken as independent, now labelled.
 - **3 (news blocks):** the 907 matched treaty blocks are 5 distinct block texts; the order rests on the code (`FUN_0044aee4` writes the destroys line, `FUN_00450c68` writes the peace block; sues and agreed are alternatives written by the same path). The draft's "907 of 907" overstated the evidence.
 - **5 (rough sea):** `local = min(8, 3 x local)` is applied BEFORE the own-city halving and the under-6 / sink branches (`FUN_004514ec` 54553-54591). One fleet, one fleet position; the cell was staged, not painted by the weather beside a fleet.
-- **Still open per research:** the deposition relation reset (−5..−1 -> 0) was not exercised; whether the remake's deposition handler has the unity-below-400 test was not checked here; the unhalved storm branch (`2 local + 1`, ship losses) was not run; the unity-0 receiver's revival (Gaul 0 -> 300) was observed once.
+- **Still open per research:** the deposition relation reset (−5..−1 -> 0) was not exercised; whether the remake's deposition handler has the unity-below-400 test, and whether it applies the +150 adjustment after the ordinary tick (not before, not as a flat addition), was not checked here; the unhalved storm branch (`2 local + 1`, ship losses) was not run; the unity-0 receiver's revival (Gaul 0 -> 300) was observed once.
 
 ## Review notes (to be filled by the review rounds)
