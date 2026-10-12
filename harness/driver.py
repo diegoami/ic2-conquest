@@ -634,6 +634,30 @@ class Game:
         self.seed_line = (G / "SEED.LOG").read_text().splitlines()[-1].strip()
         return self.open(save)
 
+    def supersede_autosaves(self):
+        """Before File > New: move every AUTO* file (autosaves and AUTOSAVE.LOG) of the game folder into
+        `superseded-<stamp>/` beside them (rule 6: a measured autosave is never deleted). The new game must start without an
+        AUTOSAVE.LOG (the wait for it proves the new-game autosave), so the files cannot stay; the folder name is unique per call.
+        Returns the folder (None if there was nothing to move)."""
+        return self.move_aside(sorted(G.glob("AUTO*")))
+
+    @staticmethod
+    def move_aside(files):
+        """Move the given files of the game folder into a new `superseded-<stamp>/` folder (unique per call); returns it
+        (None if the list is empty). Shared by `supersede_autosaves` and `open` (rule 6: nothing measured is overwritten)."""
+        files = list(files)
+        if not files:
+            return None
+        dest = G / ("superseded-" + time.strftime("%Y%m%d-%H%M%S"))
+        n = 0
+        while dest.exists():
+            n += 1
+            dest = G / ("superseded-%s-%d" % (time.strftime("%Y%m%d-%H%M%S"), n))
+        dest.mkdir()
+        for f in files:
+            shutil.move(str(f), str(dest / f.name))
+        return dest
+
     NEWGAME_TICK = (117, 117, 21.67)     # x, y of Rome's "human" checkbox, row pitch (measured on the 16-row form)
 
     def new_game(self, row=0, seed=None, rows=None):
@@ -643,8 +667,7 @@ class Game:
         apart: the old `(109, 114 + 20 * row)` was off by 8 px in x and, by Thracia (row 15), about 28 px in y (414 against 442).
         The autosave hook fires at new-game start: returns `(path of AUTO0720.SAV, popup texts)`."""
         self.set_seed(seed)
-        for f in G.glob("AUTO*"):
-            f.unlink()
+        self.supersede_autosaves()
         self.start()
         self.seed_line = (G / "SEED.LOG").read_text().splitlines()[-1].strip() if (G / "SEED.LOG").exists() else ""
         self.menu("file", FILE_ITEMS["new"])
@@ -686,13 +709,17 @@ class Game:
         return bool(self.find_windows("turn") or (self.find_windows("^Unit map$") and self.find_windows("^Area map$")))
 
     def open(self, save, strict=True):
-        """File > Open (the save is copied into the game folder first). A save can open with a modal box ("Bithynia wants to
+        """File > Open (the save is copied into the game folder first; a different file of the same name there is moved to `superseded-<stamp>/`, an identical one is left). A save can open with a modal box ("Bithynia wants to
         trade with Rome." with the research start save), and a box stays up until it is closed: the box's text is captured (OCR) and
         returned, an information box is closed with OK, and with `strict` (default) a Confirm box is answered No and raises
         DriverError("end turn: unexpected Confirm: ...") instead of Yes. Done when `loaded()`."""
         src = Path(save)
         if src.parent.resolve() != G.resolve():
-            shutil.copy(src, G / src.name)
+            tgt = G / src.name
+            if tgt.exists() and tgt.read_bytes() != src.read_bytes():
+                self.move_aside([tgt])       # rule 6: a same-named file of the game folder is moved aside, never overwritten
+            if not tgt.exists():
+                shutil.copy(src, tgt)
         self.open_file_dialog(src.name)
         self.wait(lambda: self.loaded() or self.message_boxes(), 30, "game window or a message box after load")
         time.sleep(3)
