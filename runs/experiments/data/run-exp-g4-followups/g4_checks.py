@@ -340,13 +340,17 @@ try:
         # the "away" arms; "near" arms use the port save itself. Four arms x pairs in ONE process: fleet 2 staged (L1: condition, supplies 500, covered-cell word 0 calm / 1 rough),
         # one End turn each, arms in a rotating order. Independent draws of one RNG stream (this configuration is run once; a rerun from the same start would replay a prefix).
         n_pairs = int(sys.argv[2]) if len(sys.argv) > 2 else 6; conds = [int(c) for c in sys.argv[3].split(",")] if len(sys.argv) > 3 else [80, 60]
-        g.load(PORT, seed=12345); log("loaded", save=PORT.name, fleet2=g.fleet_state(2), ring={f"{x},{y}": g.cell(x, y) for x in range(100, 103) for y in range(45, 48)})
+        # The first attempt (g4_checks-G-20261012-110607.jsonl, stopped by us, kept) lost every "away" trial: Rome is at war with Carthage and Gaul in this save and the news of each away round reads
+        # "Carthage sinks fleet of Rome." before the storm pass could act. The arms below stage peace (relation 0, L1, both directions) with Carthage (1) and Gaul (6) in the base save for ALL arms.
+        PEACE = [("relation", 0, 1, 0), ("relation", 0, 6, 0)]
+        PORTP = staged(PORT, PEACE, "g_port_peace")
+        g.load(PORTP, seed=12345); log("loaded", save=PORTP.name, fleet2=g.fleet_state(2), rome_row=[rel(g, 0, k) for k in range(16)], ring={f"{x},{y}": g.cell(x, y) for x in range(100, 103) for y in range(45, 48)})
         pos, texts = g.move_fleet(2, 97, 46)
         log("fleet_moved", pos=pos, texts=texts, fleet2=g.fleet_state(2), ring={f"{x},{y}": g.cell(x, y) for x in range(96, 99) for y in range(45, 48)}, root=shot(g, "fleet_away"))
         if tuple(pos) != (97, 46): raise SystemExit("fleet 2 did not reach (97,46): " + repr(pos))
         away_base = ART / save(g, "away_base.SAV")
         order = [("near", "calm"), ("near", "rough"), ("away", "calm"), ("away", "rough")]
-        base = {"near": PORT, "away": away_base}
+        base = {"near": PORTP, "away": away_base}
         for cond in conds:
             for k in range(n_pairs):
                 arms = order[k % 4:] + order[:k % 4]
@@ -529,6 +533,39 @@ try:
         f2 = g.fleet_state(2)
         log("centres", centres=cen, fleet2=f2, rows=[{"k": k, "x": x, "y": y, "dist_to_fleet2": max(abs(x - f2["x"]), abs(y - f2["y"])), "word": g.cell(x, y),
                                                       "ring": [g.cell(min(319, max(0, x + dx)), min(139, max(0, y + dy))) for dx in (-1, 0, 1) for dy in (-1, 0, 1)]} for k, (x, y) in enumerate(cen)])
+    elif CASE == "L":
+        # Check L: a rough-sea cell painted by the game's own weather (FUN_00451304: 20 fixed storm centres, one painted box per firing centre; a fleet standing in a painted box has its
+        # covered-cell word set to 1). Rome's fleet 2 of the Antium port save (supplies staged 500, L1, so the long run does not starve it; nothing else staged) is moved BY PLAY to the
+        # centre 5 at (100,56), then End turn rounds are played naturally (up to n). After every round the fleet record, the number of rough cells (map word 1 on sea), the rough cells
+        # within 1 tile of the fleet and the covered-cell word are logged and the autosave kept. When the covered word reads 1 at a turn start, the NEXT round's storm roll is the one the
+        # weather made rough (the covered word is read by the storm pass before the weather call rewrites it, FUN_004514ec). When a rough cell is adjacent to the fleet at a turn start, one
+        # move onto it is made and its cost and the Information window text are logged (once).
+        n = int(sys.argv[2]) if len(sys.argv) > 2 else 40; tx, ty = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (100, 56)
+        src = staged(PORT, [], "l_supplies500", set_fleet(2, supplies=500))
+        g.load(src, seed=12345)
+        def rough_cells():
+            mp = g.mem(drv.MAP, 320 * 140 * 2); return [(i // 140, i % 140) for i in range(320 * 140) if mp[2 * i] == 1 and mp[2 * i + 1] == 0]
+        def fstate():
+            r = g.fleet_rec(2); f = struct.unpack_from("<13h", r); return {"x": f[0], "y": f[1], "moves": f[6], "supplies": f[7], "ships": f[9], "cond": f[10], "cell": f[12], "raw": r.hex()}
+        log("start", fleet2=fstate(), rough=len(rough_cells()), cal=g.calendar())
+        pos, texts = g.move_fleet(2, tx, ty); log("fleet_moved", target=(tx, ty), pos=pos, texts=texts, fleet2=fstate(), root=shot(g, "fleet_at_centre"))
+        tested, covered_rounds = False, 0
+        for r in range(1, n + 1):
+            before = fstate(); cal0 = g.calendar()
+            name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), f"l_r{r:02d}")
+            after = fstate(); rc = rough_cells(); fx, fy = after["x"], after["y"]
+            near = [c for c in rc if max(abs(c[0] - fx), abs(c[1] - fy)) <= 1]
+            news = [t for t in sav.parse((ART / kept).read_bytes())["news"] if "fleet belonging" in t]
+            log("l_round", round=r, cal_before=cal0, cal_after=g.calendar(), before=before, after=after, rough_total=len(rc), rough_within1=near, covered_flag_now=after["cell"], storm_news=news, texts=texts, kept=kept)
+            if after["cell"] == 1: covered_rounds += 1
+            if near and not tested and after["cell"] == 0:
+                tx2, ty2 = near[0]; tested = True; mv0 = after["moves"]
+                info0 = [w for w in g.find_windows("^Information$")]
+                pos, texts = g.move_fleet(2, tx2, ty2); a2 = fstate()
+                info = [w for w in g.find_windows("^Information$")]; io = ocr_window(g, "rough_move_info", info[0][0]) if info else None
+                log("rough_move", target=(tx2, ty2), word_at_target_before=1, pos=pos, moves_before=mv0, moves_after=a2["moves"], cost=mv0 - a2["moves"], covered_after=a2["cell"], info_ocr=io, texts=texts, root=shot(g, "rough_move"))
+            if g.find_windows("^End of Game$") or after["ships"] <= 0: break
+            if covered_rounds >= 3 and tested: break
     elif CASE == "none":
         pass
     else:
