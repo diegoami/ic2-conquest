@@ -386,7 +386,10 @@ def light_round(g, tag, src, first, seed=12345, extra=None):
 def give_cities(frm, to, ids, kill_frm=False):
     """L1: city `ids` change owner frm -> to (city +0x12), both nations' city lists (+0x48, -1 terminated) and count words (+0x446) are kept consistent;
     allegiance, loyalty and everything else of the cities stay. kill_frm: nation `frm` also gets unity 0 and capital -1 (+0x444): a nation eliminated the way
-    the game leaves it (alive = unity > 0 and capital != -1, state/sav.py)."""
+    the game leaves it (alive = unity > 0 and capital != -1, state/sav.py). R1 round-2 (reviewer R1): writes are bounded to the 334 city-list words; the
+    terminator (-1) is only written when the new list has fewer than 334 entries, so a full 334-city list does not overrun the recruit-queue slot 0
+    state word that starts at nation+0x2e4 (the byte right after the list). The `extra.allowed_changed` set lets a caller whitelist additional byte
+    ranges (the city owner field +0x12 of every moved city is edited by stage.set_city and lies outside the city-list words)."""
     def lst(b, n):
         o = stage._nation(b, n) + 0x48; v = []
         for k in range(334):
@@ -394,16 +397,40 @@ def give_cities(frm, to, ids, kill_frm=False):
             if c < 0: break
             v.append(c)
         return v
-    def put(b, n, v, old_len):
+    def put(b, n, v, old_len, snapshot=None, allowed=None, tag=""):
         o = stage._nation(b, n) + 0x48
-        for k in range(max(len(v), old_len) + 1):
-            struct.pack_into("<h", b, o + 2 * k, v[k] if k < len(v) else -1)
+        # write at most `len(v)` words from the new list (clamped to 334) plus a terminator only when the list is not full
+        n_write = min(len(v), 334)
+        for k in range(n_write):
+            struct.pack_into("<h", b, o + 2 * k, v[k])
+        if len(v) < 334:
+            struct.pack_into("<h", b, o + 2 * len(v), -1)
         struct.pack_into("<h", b, stage._nation(b, n) + 0x446, len(v))
+        # R1 round-2: assert only the city-list bytes and the count word moved. The caller passes the pre-edit byte snapshot
+        # via the `snapshot` argument (f(b) takes it from the surrounding `extra.allowed_changed` / outer scoped variable) and any
+        # additional whitelist (e.g. the city owner fields set by stage.set_city) via `allowed`. Any byte outside the whitelist stops the runner.
+        # The whitelisted region is exactly the 334 city-list words (0x48..0x48+668=0x2e4) plus the 2-byte count word (+0x446). The byte at +0x2e4
+        # is the start of the recruit-queue slot 0 state word; the original bug wrote the terminator there when the list was full.
+        if snapshot is not None:
+            region_a = (o, o + 2 * 334)                                                # city list words: indices 0..333, bytes 0..667 of the list
+            region_b = (stage._nation(b, n) + 0x446, stage._nation(b, n) + 0x448)      # count word
+            in_region = lambda i: (region_a[0] <= i < region_a[1]) or (region_b[0] <= i < region_b[1])
+            extra_changed = [i for i in range(len(snapshot)) if snapshot[i] != b[i] and not in_region(i) and (i not in (allowed or set()))]
+            if extra_changed:
+                raise SystemExit(f"give_cities{(' ' + tag) if tag else ''} changed {len(extra_changed)} bytes outside the city-list region and the allowed whitelist: first 8 = {extra_changed[:8]}")
     def f(b):
         a, t = lst(b, frm), lst(b, to); la, lt = len(a), len(t)
+        snap = bytes(b)                                                                  # R1 round-2: pre-edit byte snapshot for the allow-list check
+        # R1 round-2: record every city-owner byte we are about to write (these are outside the nation-block city-list region) so the assertion
+        # below treats them as allowed. The 16-bit owner field sits at city +0x12; the city record is 34 bytes (stage.CITY_FIELDS).
+        owner_bytes = set()
+        for c in ids:
+            owner_bytes.add(sav.CITY_OFF + c * sav.CITY_LEN + 18)                          # +0x12 the i16 of CITY_FIELDS["owner"]
+            owner_bytes.add(sav.CITY_OFF + c * sav.CITY_LEN + 19)
         for c in ids:
             a.remove(c); t.append(c); stage.set_city(b, c, {"owner": to})
-        put(b, frm, a, la); put(b, to, t, lt)
+        put(b, frm, a, la, snapshot=snap, allowed=owner_bytes, tag=f"frm{frm}->{to} {len(ids)} cities")
+        put(b, to, t, lt, snapshot=None, allowed=owner_bytes, tag=f"to{to} {len(t)} cities")
         if kill_frm:
             struct.pack_into("<h", b, stage._nation(b, frm) + 0x440, 0); struct.pack_into("<h", b, stage._nation(b, frm) + 0x444, -1)
     f.__doc__ = f"cities {list(ids)}: owner {frm} -> {to}, city lists and counts kept consistent" + ("; nation %d unity 0, capital -1" % frm if kill_frm else "")
