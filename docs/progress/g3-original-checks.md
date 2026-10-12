@@ -36,3 +36,10 @@ Plan: fix R1-R9 of the gpt-6.1-sol review of PR #81 without a new Wine run (all 
 - R8 d88ccc9: replay disclosed; 20 independent pairs at condition 60 (means 2.15 / 0.30), the 32-pair pool withdrawn.
 - R9 1dddd87, d88ccc9: proposer-name check in `g3_report.py`, `analysis_g3.v2.txt`.
 Left: nothing known. No Wine run, so no archive_measurements or release sync was needed (no new binaries). Not merged, no label change.
+
+## Review fixes, round 2 (Sonnet subagent, 2026-10-12)
+Plan: R1 only: relabel 27.5 as conditional, keep 30 as the gate-independent bound; fix label in q6_gate_check.py; revised output beside the preserved one (no Wine run, no per-roll verification).
+- R1 (this commit): finding text, `q6_gate_check.py` label, new `q6_gate_check.v2.txt` (`q6_gate_check.txt` untouched).
+
+## END (review round 2)
+R1 fixed: 27.5 is now stated as a conditional calculation (assuming the initial eleven eligible non-neighbours stay the eligible set; unverified because AI seats change trade relations before the rolls); 30 is the gate-independent upper bound. Label corrected in `q6_gate_check.py`; revised output `q6_gate_check.v2.txt`; original preserved. No Wine run. Ready for re-check.

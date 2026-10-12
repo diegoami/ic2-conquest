@@ -21,5 +21,5 @@ for n in N[1:]:
     out.append(f"{n['name']}\ttax_base {n['tax_base']}\tgate1 {'pass' if g1 else 'FAIL'}\ttrade partners {pr}\tbelow Rome {below}\tgate2 {'pass' if below else 'FAIL'}")
     if n["name"] not in N[0]["neighbours"] and g1 and below: ok += 1
 nn = len([n for n in N[1:] if n["name"] not in N[0]["neighbours"]])
-out.append(f"non-neighbour candidates passing both gates: {ok} of {nn}; bound on trade offers in 120 turn starts: 120 x {ok}/16 x 1/3 = {120 * ok / 16 / 3:.1f} (without the second gate: 120 x {nn}/16 x 1/3 = {120 * nn / 16 / 3:.1f})")
+out.append(f"non-neighbour candidates passing both gates: {ok} of {nn}; conditional expectation of trade offers in 120 turn starts, ONLY if these {ok} start-save-eligible non-neighbours stay the eligible set at every roll (not verified: AI seats change trade relations before the rolls): 120 x {ok}/16 x 1/3 = {120 * ok / 16 / 3:.1f}; gate-independent upper bound (without the second gate): 120 x {nn}/16 x 1/3 = {120 * nn / 16 / 3:.1f}")
 print(write_new(D / "q6_gate_check.txt", "\n".join(out) + "\n")); print(out[-1])
