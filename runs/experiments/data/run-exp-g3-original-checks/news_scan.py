@@ -1,6 +1,7 @@
 """Check 3 (L05/L06): in every save under the given folders whose news holds both a "<A> destroys army of <B>." line and a treaty block
 ("... sues ... for peace and;" followed by the indented lines), print the index of each, so the order in the news log is read from the saves themselves.
-Usage: python3 news_scan.py <folder> ... > news_scan.txt   (read-only; the saves are not copied)."""
+Usage (v1, kept as it was run; DO NOT redirect into news_scan.txt again, that would truncate the measured output): superseded by news_scan2.py,
+which writes its own versioned outputs (review round 1, R2/R4). v1 only looked at lines at distance <= 1 and did not match nations."""
 import re, sys
 from pathlib import Path
 R = Path(__file__).resolve().parents[4]; sys.path.insert(0, str(R))

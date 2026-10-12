@@ -1,0 +1,9 @@
+inputs: ['/home/diego/ic2-work', '/home/diego/projects/ic2-conquest/saves', '.claude/../../../../saves']
+all .sav files read: 1232 (unparsable 2)
+files holding both a destroys line and a treaty block: 1204
+distinct by SHA-256 among them (first occurrence counted below): 883
+treaty blocks in the distinct files: 907; matched to a destroys line of the same nations (any distance): 907 pairs
+  destroys BEFORE the block (normal order): 907
+  destroys AFTER the block (reverse order): 0
+treaty blocks without a matching destroys line in the same 40-line list: 0
+per-file hash list: news_scan.v2.txt; duplicates (same SHA-256, several paths): 141 hashes shared by 462 files
