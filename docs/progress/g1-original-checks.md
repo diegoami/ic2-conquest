@@ -60,3 +60,5 @@ Done: R1-R7, all offline tests pass (`test_new_game_keeps_autosaves`, `test_open
 
 ## Review fixes, round 4 (Sonnet subagent, 2026-10-12)
 Plan: R1 (preserve.sh fails closed), R3 (injected mv failure + new_game.sh launch stub test), R2 (exclusive creation in the recovery script), one commit each, push after each.
+- 7cbc6d9 R1: `supersede_autos` lists the folder via `preserve_ls` and fails closed (non-zero, "cannot list") when it fails or the folder is missing; a successful empty listing is success. Test injects a failing `preserve_ls`. Mutation: listing failure ignored (`|| true`) -> test FAILED; restored.
+- (R3 commit below) failure to move injected by a stub `mv` on PATH (no UID dependence); `harness/new_game.sh` run for real with fake wine/xdotool/wineserver (`IC2_ENV_SH`, `WINESERVER` overrides, tests only) asserting no launch + non-zero when mv fails and launch + the file kept when it works. Mutations: propagation after `mv -n` removed -> FAILED; caller's abort replaced by `|| true` -> FAILED; both restored, all 4 offline tests pass.

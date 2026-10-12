@@ -1,7 +1,7 @@
 # usage: newgame.sh <row 0..15> <out name>
-. "$(dirname "$0")/env.sh"
+. "${IC2_ENV_SH:-$(dirname "$0")/env.sh}"   # IC2_ENV_SH: tests only
 . "$(dirname "$0")/preserve.sh"
-/usr/lib/wine/wineserver -k 2>/dev/null; sleep 1
+"${WINESERVER:-/usr/lib/wine/wineserver}" -k 2>/dev/null; sleep 1
 supersede_autos "$G" || { echo "abort: could not preserve the existing AUTO* files (rule 6); game not launched" >&2; exit 1; }  # never delete or overwrite a measured autosave
 cd $G && (setsid $W "${IC2_EXE:-Imperial Conquest 2 fast rollingsave.exe}" >/dev/null 2>&1 &)
 timeout 40 bash -c 'until xdotool search --name "^Imperial Conquest 2$" >/dev/null 2>&1; do sleep 1; done'; sleep 3
