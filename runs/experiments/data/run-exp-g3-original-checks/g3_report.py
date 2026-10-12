@@ -51,8 +51,8 @@ def section_ab():
             if r["step"] == "prediction": P(f"[{f.name}] prediction {r['tag']}: city {r['city']} {r['name']} predicted {r['predicted']} observed owner {r['observed_owner']} loyalty {r['observed_loyalty']}")
 
 def section_c():
-    P("== Q1 (c): rebirth, Greece unity 0 ==")
-    for r in rounds("Q1c"):
+    P("== Q1 (c): rebirth, Greece unity 0 (Q1c: Greece keeps its 21 cities; Q1c_dead: Greece eliminated, its cities given to Macedonia) ==")
+    for r in [x for case in ("Q1c", "Q1c_dead") for x in rounds(case)]:
         P(f"[{r['_file']}] {r['tag']} -> {r['cal']} kept={r['kept']}")
         moved = [c for c in r["diff"]["cities"] if c["before"]["owner"] != c["after"]["owner"]]
         P("   cities moved:", len(moved)); [P("     ", ch(c)) for c in moved]
@@ -87,8 +87,8 @@ def section_e():
                 clean = [x for x in z if x["loy_after"] - x["loy_before"] in (0, -1)]
                 dec = [x for x in clean if x["loy_after"] - x["loy_before"] == -1]
                 nz = [x for x in rs if x["stock_after"] > 0]
-                nzc = [x for x in nz if x["loy_after"] != x["loy_before"]]
-                P(f"   round {r['round']} {grp}: cities {len(rs)}, stock 0 after {len(z)} (loyalty delta 0 or -1: {len(clean)}, of which -1: {len(dec)}); stock>0 {len(nz)} with a loyalty change {len(nzc)}; other deltas among stock-0 cities: {[x['loy_after']-x['loy_before'] for x in z if x not in clean]}")
+                nzc = [x for x in nz if x["loy_after"] != x["loy_before"] and abs(x["loy_after"] - x["loy_before"]) <= 3]; nzbig = [(x['id'], x['loy_before'], x['loy_after']) for x in nz if abs(x["loy_after"] - x["loy_before"]) > 3]
+                P(f"   round {r['round']} {grp}: cities {len(rs)}, stock 0 after {len(z)} (loyalty delta 0 or -1: {len(clean)}, of which -1: {len(dec)}); stock>0 {len(nz)} with a loyalty change of 1..3: {len(nzc)}, with a change > 3 (a capture or a defection, not famine): {nzbig}; other deltas among stock-0 cities: {[x['loy_after']-x['loy_before'] for x in z if x not in clean]}")
                 tot[grp, "n"] += len(clean); tot[grp, "dec"] += len(dec); tot[grp, "nz"] += len(nz); tot[grp, "nzc"] += len(nzc)
         for grp in ("test", "ctl", "other"):
             n, d = tot[grp, "n"], tot[grp, "dec"]
@@ -196,17 +196,20 @@ def section_q5():
                 P(f"[{f.name}] move {r['tag']}: target cell (100,47) before {r['before']['target_cell']}, fleet moves {r['before']['moves']} -> {r['moves_after']}, pos {r['pos_after']}, covered cell field after (fleet +24) {r['state_after'][1][48:52]}, info panel OCR: {r['info_ocr'][1] if r['info_ocr'] else None}, image {r['info_ocr'][0] if r['info_ocr'] else None}")
         lr = [r for r in R if r["step"] == "light_round"]
         if lr:
+            import struct
+            def fl(h): b = bytes.fromhex(h); x, y, _, _, own, cd, mv, su, mo, sh, co, ar, ce = struct.unpack("<13h", b[:26]); return dict(x=x, y=y, cond=co, ships=sh, cell=ce, moves=mv, supplies=su, owner=own)
             res = collections.defaultdict(list)
             for r in lr:
                 kind = "rough" if "rough" in r["tag"] else "calm"
-                def fl(h): b = bytes.fromhex(h); import struct; x, y, _, _, own, cd, mv, su, mo, sh, co, ar, ce = struct.unpack("<13h", b[:26]); return dict(cond=co, ships=sh, cell=ce, moves=mv, supplies=su, owner=own)
-                b, a = fl(r["fleets_before"][2]), fl(r["fleets_after"][2]) if len(r["fleets_after"]) > 2 and r["fleets_after"][2] else None
-                res[kind].append((r["tag"], b["cond"], b["ships"], b["cell"], a["cond"] if a else None, a["ships"] if a else None, a["cell"] if a else None, [t for t in r["news_new"] if "fleet" in t.lower() or "storm" in t.lower()], r["rough_cells_after"], r["cal_before"]))
+                b = fl(r["fleets_before"][2])
+                aft = [fl(h) for h in r["fleets_after"]]
+                a = next((x for x in aft if x["owner"] == 0 and (x["x"], x["y"]) == (b["x"], b["y"])), None)
+                res[kind].append((r["tag"], r["save"], b["cond"], b["ships"], b["cell"], a["cond"] if a else None, a["ships"] if a else None, a["cell"] if a else None, [t for t in r["news_new"] if "fleet" in t.lower() or "storm" in t.lower()], r["rough_cells_after"], r["cal_before"]))
             for k, v in res.items():
                 P(f"   {k}: trials {len(v)}")
                 for x in v: P("     ", x)
-                ds = [x[1] - x[4] for x in v if x[4] is not None]; sl = [x[2] - x[5] for x in v if x[5] is not None]
-                P(f"   {k}: condition drop per trial {ds}, mean {sum(ds)/len(ds):.2f}; ships lost {sl}")
+                ds = [x[2] - x[5] for x in v if x[5] is not None]
+                P(f"   {k}: condition drop per surviving trial {collections.Counter(ds)}, ships {collections.Counter((x[3], x[6]) for x in v)}")
 
 def section_q6():
     P("== Q6: offers from a peace-only start (Rome at peace with all 15, spring week 1, one End turn per trial) ==")
@@ -225,8 +228,18 @@ def section_q6():
     for x in per:
         if x[2] and x[2]["from"] >= 0 or x[3]: P("   offer:", x)
 
+def section_q3():
+    P("== Q3: news order, 'destroys army of' vs the treaty block ==")
+    for f in logs("Q3"):
+        for r in rows(f):
+            if r["step"] == "news_start": P(f"[{f.name}] news memory lines 27-33: {[ (i, r['lines'][i]) for i in range(27, 34)]}; destroys at {r['destroys']}, treaty header ('sues ... for peace and;') at {r['sues']}; image {r['root']}")
+            if r["step"] == "information_window_ocr":
+                o = r["ocr"]; P(f"[{f.name}] Information window ({r['image']}) OCR: 'destroys army of Ptolemaic' at char {o.find('destroys army of Ptolemaic')}, 'sues Seleucid for peace' at char {o.find('sues Seleucid')}")
+    t = [l.split("\t") for l in open(D / "news_scan.txt")]
+    P(f"   news_scan.txt: {len(t)} save files with both a 'destroys army of' line and a treaty header ('sues ... for peace and;'); treaty-block-first adjacent pairs: {sum('treaty FIRST' in x[-1] for x in t)}; destroys-first: {sum('destroys FIRST' in x[-1] for x in t)}")
+
 if __name__ == "__main__":
-    which = [a for a in sys.argv[1:] if not a.startswith("--")] or ["ab", "c", "d", "e", "f", "q2", "q5", "q6"]
+    which = [a for a in sys.argv[1:] if not a.startswith("--")] or ["ab", "c", "d", "e", "f", "q2", "q3", "q5", "q6"]
     for w in which: globals()["section_" + w]()
     text = "\n".join(OUT) + "\n"
     if "--print" in which or True: print(text[:20000])

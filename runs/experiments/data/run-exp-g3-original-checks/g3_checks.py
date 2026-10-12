@@ -164,9 +164,9 @@ try:
                 log("fleet_move", tag=tag, before=before, pos_after=pos, texts=texts, state_after=fst(), moves_after=g.fleet_moves(2), target_cell_after=g.cell(100, 47),
                     origin_cell_after=g.cell(101, 46), info_ocr=io, root=shot(g, f"{tag}_after_move"))
         elif sub == "storm":
-            n = int(sys.argv[3])
-            srcs = {"rough": staged(PORT, [], "q5_storm_rough", set_fleet(2, cond=40, supplies=500, cell=1)),
-                    "calm": staged(PORT, [], "q5_storm_calm", set_fleet(2, cond=40, supplies=500, cell=0))}
+            n = int(sys.argv[3]); cond = int(sys.argv[4]) if len(sys.argv) > 4 else 80      # condition 40 is the lost-at-sea threshold (< 40 sinks the fleet): the first attempt with 40 lost the fleet at once and was aborted
+            srcs = {"rough": staged(PORT, [], f"q5_storm_rough_c{cond}", set_fleet(2, cond=cond, supplies=500, cell=1)),
+                    "calm": staged(PORT, [], f"q5_storm_calm_c{cond}", set_fleet(2, cond=cond, supplies=500, cell=0))}
             first = True
             for k in range(n):
                 for tag in (("rough", "calm") if k % 2 == 0 else ("calm", "rough")):
