@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Upload to release run-exp-g3-original-checks what it does not hold yet from artifacts/run-exp-g3-original-checks/ (creates the release
 first if missing). Never deletes, never clobbers. If a release call is refused, prints the exact command and exits 3 (CLAUDE.md rule 1:
-report it, never retry another way). Writes release-sync-<stamp>.json beside this script (rule 6)."""
+report it, never retry another way). Writes release-sync-<stamp>.json beside this script (rule 6), always as a NEW file (versioned.write_new: a same-second stamp gets a .v<N> suffix; also when nothing needs uploading)."""
 import json, shlex, subprocess, sys, time
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from versioned import write_new
 R = Path(__file__).resolve().parents[4]
 TAG = "run-exp-g3-original-checks"
 ART = R / "artifacts" / TAG
@@ -32,6 +34,6 @@ for i in range(0, len(pending), 40):
         print("REFUSED:", r.stderr[-600:], "\nexact command (run from %s):\n%s" % (R, shlex.join(cmd)))
         break
     rec["uploaded"] += [Path(c).name for c in chunk]
-(D / f"release-sync-{time.strftime('%Y%m%d-%H%M%S')}.json").write_text(json.dumps(rec, indent=1))
+write_new(D / f"release-sync-{time.strftime('%Y%m%d-%H%M%S')}.json", json.dumps(rec, indent=1))
 print(json.dumps({k: (len(v) if isinstance(v, list) else v) for k, v in rec.items()}))
 sys.exit(3 if rec["refused"] else 0)
