@@ -612,32 +612,42 @@ try:
             X = G / f"g4_E_{STAMP}_X.SAV"; X = _next_free(X); shutil.copy2(START, X); wm_log(step="X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
             g.open(X); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
             wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"), dismissed_before=close_info_boxes())      # the start save opens with the offer box "Bithynia wants to trade with Rome."
-            for k, answer in ((1, "No"), (2, "Yes")):
-                real_click(f"game_click{k}"); tl = []
-                for _ in range(30):      # watch 3 s at 0.1 s for a transient box or the exit
-                    tl.append((round(time.time() % 1000, 1), alive(), [p_[1] for p_ in g.popups()] if alive() else None)); time.sleep(0.1)
-                wm_log(step="click_timeline", click=k, timeline=tl[::3])
-                bx = boxes(g); conf = [p_ for p_ in g.popups() if p_[1] == "Confirm"]
-                wm_log(step="after_click_game", click=k, alive=alive(), boxes=bx, n_confirm=len(conf))
-                if conf:
-                    cs = g.controls("Confirm"); wm_log(step="box_controls", controls=[(c["cls"], c["text"]) for c in cs])
-                    for _ in range(3):
-                        g.click_control(next(c for c in cs if c["text"].replace("&", "") == answer), pause=1.5)
-                        if not [p_ for p_ in g.popups() if p_[1] == "Confirm"] or not alive(): break
-                    time.sleep(2)
-                    wm_log(step="after_answer", answer=answer, alive=alive(), windows=windows(g) if alive() else None, root=shot(g, f"game_after_{answer}") if alive() else None)
-        wm.terminate()
-        # R1 round-4: hash the xfwm4 log AFTER the process has stopped and its output file descriptor is closed (the previous inline hash
-        # at process start could read the file while xfwm4 was still appending). Wait, then hash from a closed-fd write.
-        try:
-            wm.wait(timeout=5)
-        except subprocess.TimeoutExpired:
-            wm.kill(); wm.wait(timeout=5)
-        try:
-            wm_out.close()      # closing before _hash_line ensures every buffered byte is flushed and the read sees the final contents
-        except Exception:
-            pass
-        _hash_line(wm_log_path)
+            try:
+                for k, answer in ((1, "No"), (2, "Yes")):
+                    real_click(f"game_click{k}"); tl = []
+                    for _ in range(30):      # watch 3 s at 0.1 s for a transient box or the exit
+                        tl.append((round(time.time() % 1000, 1), alive(), [p_[1] for p_ in g.popups()] if alive() else None)); time.sleep(0.1)
+                    wm_log(step="click_timeline", click=k, timeline=tl[::3])
+                    bx = boxes(g); conf = [p_ for p_ in g.popups() if p_[1] == "Confirm"]
+                    wm_log(step="after_click_game", click=k, alive=alive(), boxes=bx, n_confirm=len(conf))
+                    if conf:
+                        cs = g.controls("Confirm"); wm_log(step="box_controls", controls=[(c["cls"], c["text"]) for c in cs])
+                        for _ in range(3):
+                            g.click_control(next(c for c in cs if c["text"].replace("&", "") == answer), pause=1.5)
+                            if not [p_ for p_ in g.popups() if p_[1] == "Confirm"] or not alive(): break
+                        time.sleep(2)
+                        wm_log(step="after_answer", answer=answer, alive=alive(), windows=windows(g) if alive() else None, root=shot(g, f"game_after_{answer}") if alive() else None)
+                    # R3 round-5: stop the click loop when the game exits (e.g., real_click exited the process without a quit prompt — the
+                    # previous behaviour tried game_click2 against a nonexistent main window and bypassed cleanup).
+                    if not alive():
+                        wm_log(step="game_exit_after_click", click=k, note="game exited without quit prompt; breaking click loop")
+                        break
+            finally:
+                # R3 round-5: window-manager cleanup and final log hashing in a `finally` block so they run on every exit path
+                # (game exit, raise from click_x_button, etc.). The earlier code put this AFTER the else block; if the click loop raised,
+                # xfwm4 was left running and the log was never hashed.
+                wm.terminate()
+                # R1 round-4: hash the xfwm4 log AFTER the process has stopped and its output file descriptor is closed (the previous inline
+                # hash at process start could read the file while xfwm4 was still appending).
+                try:
+                    wm.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    wm.kill(); wm.wait(timeout=5)
+                try:
+                    wm_out.close()      # closing before _hash_line ensures every buffered byte is flushed and the read sees the final contents
+                except Exception:
+                    pass
+                _hash_line(wm_log_path)
     elif CASE == "none":
         pass
     else:
