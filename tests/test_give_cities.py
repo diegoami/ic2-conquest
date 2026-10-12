@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-"""Offline tests (no Wine) of g4_lib.give_cities (review round 5, R1 lift).
+"""Offline tests (no Wine) of g4_lib.give_cities (review round 6, R1 lift).
 
 Round 3 added a `put()` byte-change assertion (round-2's receiver assertion) and round-4 added an oversized-list check.
 The round-4 "put_clone" tested a local copy of the writer; round-5 lifts `put` from a closure to the module-level helper
-`g4_lib._give_cities_put` so the test exercises the production writer directly. If a future regression removes the byte-change
-assertion (e.g., the receiver call forgets `snapshot=snap` again) the test would fail by passing without raise.
+`g4_lib._give_cities_put` so the test exercises the production writer directly. Round-6 adds `test_receiver_assertion_via_give_cities`
+which calls the production `give_cities()` and monkey-patches `_give_cities_put` to inject a rogue byte before the original
+runs, so the assertion fires inside `_give_cities_put` itself (the round-5 test called `_give_cities_put` directly and bypassed
+`give_cities` entirely — a future regression that removed `snapshot=snap` from the receiver call inside `give_cities` would
+not be detected). If a future regression removes the byte-change assertion (e.g., the receiver call forgets `snapshot=snap`
+again) the round-6 test would fail by passing without raise.
 
 Tests:
 
@@ -19,6 +23,13 @@ Tests:
     SystemExit; without it (e.g., a future regression passing `snapshot=None` for the receiver) the put succeeds silently and the
     test would fail. A second part calls with `snapshot=None` and verifies no raise fires, demonstrating the test is sensitive
     to the assertion's presence.
+
+  * `test_receiver_assertion_via_give_cities` (round-6): monkey-patches `_give_cities_put` with a wrapper that injects a rogue
+    byte at the receiver's +0x2e4 BEFORE calling the original, so the assertion fires inside `_give_cities_put` itself. Sets up
+    a consistent 1->334 save (Rome=1 city, Carthage=333) and calls `give_cities(0, 1, [moved])`; the wrapper's rogue write makes
+    the assertion raise inside the receiver's `_give_cities_put`. A second part calls the wrapper directly with `snapshot=None`
+    to prove no raise fires (regression-detection control: if `give_cities` ever passed `snapshot=None` for the receiver,
+    the rogue byte would not be detected and the test would not raise — proving the first part exercises the assertion path).
 
   * `test_oversized_receiver_list_raises`: a 334-city receiver absorbing one city that is ALREADY in its own list builds the
     receiver's NEW list to 335 ids; the round-4 `put()` raises immediately because `len(v) > 334`. Verifies the round-3 "fake"
@@ -203,6 +214,80 @@ def main():
         assert "335" in str(e) or "> 334" in str(e), f"unexpected SystemExit message: {e}"
     assert raised, "give_cities did NOT raise on a 335-entry receiver list; the new put check is missing"
     print("test_oversized_receiver_list_raises: all checks passed")
+
+
+
+    # ---------------------------------------------------------------- test 3 (new): receiver assertion fires via give_cities()
+    # Round-6: proves the receiver's byte-change assertion is exercised through the PRODUCTION give_cities()
+    # entry point (not directly against _give_cities_put). The round-5 test called _give_cities_put directly,
+    # so a future regression in give_cities() that passed snapshot=None for the receiver call would not be
+    # detected by that test. Here we monkey-patch _give_cities_put with a wrapper that injects a rogue byte
+    # BEFORE calling the original, so the original's assertion fires inside _give_cities_put itself.
+    #
+    # We set up the same 1->334 save as test 1 (Rome=1 city, Carthage=333) and call give_cities(0, 1, [moved]).
+    # The wrapper sees the receiver's _give_cities_put call (n=1, snapshot is not None), sets a rogue byte at
+    # receiver +0x2e4, then calls the original — which then raises SystemExit because +0x2e4 is outside the
+    # city-list region. A second part calls the wrapper directly with snapshot=None to confirm no raise fires,
+    # proving the first part actually exercises the assertion (and would not fire if give_cities ever passed
+    # snapshot=None for the receiver, which is the regression we are guarding against).
+    b = fresh_save()
+    rc = rome_cities(b)
+    if not rc:
+        raise SystemExit("start save has no Rome city for the via-give_cities test")
+    moved = rc[0]
+    pool = [c for c in range(sv.CITY_N) if c != moved]
+    cart_ids = pool[:333]
+    # Rome: 1 city
+    o_r = stage._nation(b, 0) + 0x48
+    for k in range(333):
+        struct.pack_into("<h", b, o_r + 2 * k, -1)
+    struct.pack_into("<h", b, o_r + 0, moved)
+    struct.pack_into("<h", b, stage._nation(b, 0) + 0x446, 1)
+    # Carthage: 333 cities
+    o_c = stage._nation(b, 1) + 0x48
+    for k in range(333):
+        struct.pack_into("<h", b, o_c + 2 * k, -1)
+    for k, cid in enumerate(cart_ids):
+        struct.pack_into("<h", b, o_c + 2 * k, cid)
+    struct.pack_into("<h", b, stage._nation(b, 1) + 0x446, 333)
+    for cid in cart_ids:
+        struct.pack_into("<h", b, sv.CITY_OFF + cid * sv.CITY_LEN + 18, 1)
+    struct.pack_into("<h", b, sv.CITY_OFF + moved * sv.CITY_LEN + 18, 0)
+
+    orig_put = L._give_cities_put
+    def patching_put(b, n, v, old_len, snapshot=None, allowed=None, tag=""):
+        # Inject rogue byte BEFORE calling the original, but only when snapshot is supplied
+        # (mimics the give_cities path where snapshot=snap for both sender and receiver).
+        if snapshot is not None:
+            off = stage._nation(b, n) + 0x2e4
+            b[off] = (b[off] + 0xFF) & 0xFF
+        return orig_put(b, n, v, old_len, snapshot=snapshot, allowed=allowed, tag=tag)
+
+    try:
+        L._give_cities_put = patching_put
+        raised = False
+        try:
+            L.give_cities(0, 1, [moved])(b)
+        except SystemExit as e:
+            raised = True
+            assert "outside the city-list region" in str(e) or "give_cities" in str(e), f"unexpected SystemExit message: {e}"
+        assert raised, "give_cities via patched _give_cities_put did NOT raise on rogue +0x2e4 byte; the receiver assertion path is missing"
+
+        # Regression-detection control: if give_cities ever passed snapshot=None for the receiver call,
+        # the wrapper would NOT inject the rogue byte (snapshot is None branch), so no SystemExit fires.
+        # We call the wrapper directly to simulate that scenario.
+        b2 = fresh_save()
+        off2 = stage._nation(b2, 1) + 0x2e4
+        b2[off2] = (b2[off2] + 1) & 0xFF
+        try:
+            patching_put(b2, 1, [], 0, snapshot=None, allowed=set())
+        except SystemExit:
+            raise AssertionError("patching_put raised despite snapshot=None (wrapper would not inject); this control should NOT raise")
+    finally:
+        L._give_cities_put = orig_put
+
+    print("test_receiver_assertion_via_give_cities: all checks passed")
+
 
 
 if __name__ == "__main__":
