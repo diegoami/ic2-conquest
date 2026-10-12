@@ -1,7 +1,7 @@
 """Reads the g3_checks-*.jsonl logs of this folder and writes the tables the finding cites to analysis_g3.txt (next free version; never overwrites).
 Every number in the finding comes from a log line named in the table; the news lines are recomputed from the logged buffers (the first Q1 logs'
 `news_new` used an index comparison that fails once the 40-line buffer scrolls; `news_all` and `round_open.news` are complete)."""
-import collections, glob, json, math, re, sys
+import difflib, collections, glob, json, math, re, sys
 from pathlib import Path
 D = Path(__file__).resolve().parent
 ROOT = D.parents[3]; sys.path.insert(0, str(ROOT))
@@ -214,6 +214,7 @@ def section_q5():
 def section_q6():
     P("== Q6: offers from a peace-only start (Rome at peace with all 15, spring week 1, one End turn per trial; the offer is rolled at Rome's next turn start, FUN_00452034) ==")
     cnt = collections.Counter(); per = []; by = collections.Counter(); mism = []
+    name_ok = collections.Counter(); variants = collections.Counter(); name_bad = []
     for f in logs("Q6"):
         for r in rows(f):
             if r["step"] != "light_round": continue
@@ -223,13 +224,26 @@ def section_q6():
             cnt[kind] += 1
             boxk = "none" if not txt else ("alliance" if re.search(r"form|alli|aliance", " ".join(txt)) else "trade")
             if boxk != kind: mism.append((r["tag"], kind, txt))
+            # R9: proposer identity. OCR variants (e.g. 'liyia' for Illyria, 'ta' for 'to') are handled as follows: the word before 'wants' is
+            # compared with the autosave's proposer name: exact (case-insensitive) = 'exact'; otherwise 'variant' only if the closest of the 16
+            # nation names (difflib, cutoff 0.5) is that same proposer AND no other nation is as close; anything else is a disagreement.
+            if has and txt:
+                m = re.search(r"([A-Za-z]+)\s+wan", " ".join(txt)); w = m.group(1) if m else ""
+                exp = NAT[po["from"]]
+                if w.lower() == exp.lower(): name_ok["exact"] += 1
+                else:
+                    sc = sorted(((difflib.SequenceMatcher(None, w.lower(), n.lower()).ratio(), n) for n in NAT), reverse=True)
+                    if sc[0][1] == exp and sc[0][0] > sc[1][0] and sc[0][0] >= 0.5: name_ok["variant"] += 1; variants[(w, exp)] += 1
+                    else: name_bad.append((r["tag"], w, exp))
+            elif has and not txt: name_bad.append((r["tag"], "(no box text)", NAT[po["from"]]))
             if has: by[(kind, NAT[po["from"]])] += 1
             if any(v == 3 for v in r["rome_rel_after"]): cnt["rome_at_war_at_turn_start"] += 1
             per.append((r["tag"], po, txt))
     n = len(per)
     P(f"   turn starts: {n}; offers: trade {cnt['trade']}, alliance {cnt['alliance']}, none {cnt['none']}; Rome at war with someone at the turn start in {cnt['rome_at_war_at_turn_start']} of them")
     P(f"   offer kind by proposer (the offer in the kept autosave's tail, +16/+17 words): {sorted(by.items())}")
-    P(f"   box text (OCR) against the autosave's pending offer: disagreements {len(mism)}: {mism}")
+    P(f"   box text (OCR) KIND (trade/alliance) against the autosave's pending offer: disagreements {len(mism)}: {mism}")
+    P(f"   box text (OCR) PROPOSER NAME against the autosave's proposer: exact {name_ok['exact']}, OCR variant resolved to the same nation {name_ok['variant']} {dict(variants)}, disagreements {len(name_bad)}: {name_bad}")
     NEIGH = {"Carthage", "Gaul", "Illyria"}
     P(f"   alliance offers come from {sorted({k[1] for k in by if k[0]=='alliance'})}; trade offers from neighbours (Carthage, Gaul, Illyria): {sum(v for k, v in by.items() if k[0]=='trade' and k[1] in NEIGH)}; from other nations: {sum(v for k, v in by.items() if k[0]=='trade' and k[1] not in NEIGH)}")
     P(f"   expected from the roll if every neighbour pass: alliance {n * 3 / 16 / 3:.1f} (3 neighbours x 1/16 x 1/3 per turn start); upper bound for trade from the 12 non-neighbour AI nations: {n * 12 / 16 / 3:.1f}")

@@ -38,6 +38,7 @@ WHY = [
     ("FUN_004499ec", "Q2: trade income of a nation (the Balance sheet's Trade line)"),
     ("FUN_004498b0", "Q1/Q2: a city's tribute contribution (tax base share)"),
     ("FUN_004494e4", "Q5: id of an own city marker in the 3x3 around a position, -1 when none (the storm roll is halved next to an own city, doubled + 1 otherwise)"),
+    ("FUN_0044fa20", "Turn sequencing (review round 1, R7): the seat loop that calls the weekly block when the seat index wraps to 0 (lines 53208-53236)"),
     ("FUN_0044a98c", "Q1c: city strength used by the rebirth to choose the new capital"),
 ]
 out = ["# Code extract for findings/2026-10-11-g3-original-checks.md",
