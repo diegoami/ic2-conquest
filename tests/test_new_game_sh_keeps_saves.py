@@ -45,6 +45,15 @@ def main():
         if os.geteuid() != 0:
             assert r.returncode != 0 and (g / "AUTO0721.SAV").read_bytes() == b"live-C", r
             for d in g.glob("superseded-*"): d.chmod(0o755)
+        # round 4 R1: a listing that fails is NOT "nothing to preserve" (injected, so it does not depend on the UID)
+        (g / "AUTO0722.SAV").write_bytes(b"live-D")
+        r = bash(f"preserve_ls() {{ return 2; }}; supersede_autos '{g}'")
+        assert r.returncode != 0 and "cannot list" in r.stderr and (g / "AUTO0722.SAV").read_bytes() == b"live-D", r
+        # ... while a successful listing of an empty folder is success
+        e = t / "empty"; e.mkdir()
+        assert bash(f"supersede_autos '{e}'").returncode == 0
+        # a missing game folder is a failure too
+        assert bash(f"supersede_autos '{t / 'nope'}'").returncode != 0
         # new_game.sh aborts on that failure before launching (static check of the wiring)
         text = (ROOT / "harness" / "new_game.sh").read_text()
         assert text.index("supersede_autos") < text.index("$W ") and "exit 1" in text.split("supersede_autos")[1].split("\n")[0]

@@ -57,3 +57,6 @@ Plan: R1+R4 (new_game.sh), R3, R5, R6+R7 (tests), R2 (G5 re-run), one commit eac
 
 ## END (round 3)
 Done: R1-R7, all offline tests pass (`test_new_game_keeps_autosaves`, `test_open_keeps_same_name`, `test_new_game_sh_keeps_saves`, `test_g1_staged_unique`). Evidence per item above. Not done / limits: the G5 autosaves of `-233302`, `-065259`, `-065348` are not recoverable (stated in the finding; the one live `AUTO0720.SAV` is hash-identical to the start save, so its link to run `-065502` rests on the mtime window); `Game.new_game` keeps its fixed form coordinates; `new_game.sh` itself was not run under Wine (shell helpers tested offline). Next step: the owner's re-review. No merge, no review requested.
+
+## Review fixes, round 4 (Sonnet subagent, 2026-10-12)
+Plan: R1 (preserve.sh fails closed), R3 (injected mv failure + new_game.sh launch stub test), R2 (exclusive creation in the recovery script), one commit each, push after each.
