@@ -27,10 +27,11 @@ def main(files):
             d = json.loads(line)
             if d.get("step") != "storm_trial" or not d.get("fleet2_after"): continue
             b, a = d["fleet2_before"][0], d["fleet2_after"]
+            if a[4] != 0 or a[9] > b[9]: arms[(d["where"], d["cell"], d["cond"])].append(("record", 0, (), d["tag"], d["kept"])); continue      # index 2 no longer Rome's fleet 2 (the fleet table was re-numbered, e.g. a new fleet finished): not a reading
             news = [t for t in d["autosave_news"] if "fleet belonging" in t]
             arms[(d["where"], d["cell"], d["cond"])].append((b[10] - a[10], b[9] - a[9], tuple(news), d["tag"], d["kept"]))
     for key in sorted(arms, key=lambda k: (k[2], k[0], k[1])):
-        rows = arms[key]; where, cell, cond = key; cnt = collections.Counter((r[0], r[1], r[2]) for r in rows)
+        rows = arms[key]; where, cell, cond = key; cnt = collections.Counter((r[0], r[1], r[2]) for r in rows)  # rows with 'record' = fleet 2 replaced in the table, not a storm reading
         L.append(f"{where:5s} {cell:5s} cond {cond}: {len(rows)} trials; (condition lost, ships lost, news) -> count: {dict(sorted(cnt.items(), key=lambda kv: str(kv[0])))}")
         L.append(f"      code prediction (distribution of the final local value): {predicted(cond, cell == 'rough', where == 'near')}")
         L.append("      trials: " + ", ".join(r[3] for r in rows))
@@ -38,4 +39,4 @@ def main(files):
 
 
 if __name__ == "__main__":
-    print(write_new(D / "analysis_G.txt", "\n".join(main(sorted(D.glob("g4_checks-G-*.jsonl")))) + "\n"))
+    print(write_new(D / "analysis_G.txt", "\n".join(main([sorted(D.glob("g4_checks-G-*.jsonl"))[-1]])) + "\n"))

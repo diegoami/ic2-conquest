@@ -4,6 +4,7 @@ Cases: F  (save flag 0x4a0334 around Open / Save as / File > New, memory poller)
 import os, sys
 if len(sys.argv) > 1 and sys.argv[1] == "E": os.environ["DISPLAY_IC2"] = ":98"        # check E runs on its own display with a window manager (the default :99 has none)
 from g4_lib import *
+from g4_lib import _hash_line
 import g4_lib
 
 hook_environment()
@@ -514,7 +515,7 @@ try:
             after = fstate(); rc = rough_cells(); fx, fy = after["x"], after["y"]
             near = [c for c in rc if max(abs(c[0] - fx), abs(c[1] - fy)) <= 1]
             news = [t for t in sav.parse((ART / kept).read_bytes())["news"] if "fleet belonging" in t]
-            log("l_round", round=r, cal_before=cal0, cal_after=g.calendar(), before=before, after=after, rough_total=len(rc), rough_within1=near, covered_flag_now=after["cell"], storm_news=news, texts=texts, kept=kept)
+            log("l_round", round=r, cal_before=cal0, cal_after=g.calendar(), before=before, after=after, rough_total=len(rc), rough_within1=near, covered_flag_now=after["cell"], storm_news=news, texts=texts, kept=kept, rough_cells=(rc if r <= 3 else None), rough_cells_note="full list only for rounds 1-3: the weather world is the same whatever the fleet does (the two first runs had identical rough counts), so a later run can place the fleet where the weather will paint")
             if after["cell"] == 1: covered_rounds += 1
             if near and not tested and after["cell"] == 0:
                 tx2, ty2 = near[0]; tested = True; mv0 = after["moves"]
@@ -527,18 +528,19 @@ try:
         # Check E: a REAL X-button click on the main window's title bar, under xfwm4 (installed, no root needed) on a separate Xvfb display :98 (the other runs use :99 without a window manager).
         # The quit prompt is the one g1 G6 reached with a posted WM_SYSCOMMAND. Control in the same display: with no game loaded the click ends the process at once, no box.
         # Menu clicks of the driver use absolute coordinates with the client at (0,0): here the main window's client origin is read (xwininfo) and added to the menu clicks only.
-        wm_log = lambda **kw: log("wm", **kw)
+        wm_log = lambda **kw: log("e_" + str(kw.pop("step", "wm")), **kw)
         def alive(): return subprocess.run(["pgrep", "-f", "^Imperial Conquest"], capture_output=True).returncode == 0
         env98 = dict(os.environ, DISPLAY=":98")
         if subprocess.run(["pgrep", "-fx", "Xvfb :98 -screen 0 1280x1024x24"], capture_output=True).returncode:
             subprocess.Popen(["setsid", "Xvfb", ":98", "-screen", "0", "1280x1024x24"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL); time.sleep(2)
-        wm = subprocess.Popen(["setsid", "xfwm4", "--compositor=off"], env=env98, stdout=open(ART / f"E_{STAMP}_xfwm4.out", "w"), stderr=subprocess.STDOUT); time.sleep(3)
+        if subprocess.run(["pgrep", "-x", "xfwm4"], capture_output=True).returncode == 0: subprocess.run(["pkill", "-x", "xfwm4"]); time.sleep(1)
+        wm = subprocess.Popen(["setsid", "xfwm4", "--compositor=off"], env=env98, stdout=open(ART / f"E_{STAMP}_xfwm4.out", "w"), stderr=subprocess.STDOUT); time.sleep(10)      # a game started within a few seconds of the window manager was not decorated in the first attempts
         _hash_line(ART / f"E_{STAMP}_xfwm4.out")
         chk = subprocess.run(["xprop", "-root", "_NET_SUPPORTING_WM_CHECK"], env=env98, capture_output=True, text=True).stdout
         wm_log(display=":98", xfwm4_pid=wm.pid, xfwm4_alive=wm.poll() is None, supporting_wm_check=chk.strip())
         def xinfo(wid, *a): return subprocess.run(["xwininfo", "-id", str(wid)] + list(a), env=env98, capture_output=True, text=True).stdout
         def main_win():
-            w = g.find_windows("^Imperial Conquest 2")
+            w = [x for x in g.find_windows("^Imperial Conquest 2") if x[4] > 100]      # the 1 x 1 helper windows of Wine carry the same name
             return w[0][0] if w else None
         def geom(wid):
             t = xinfo(wid); import re as _re
@@ -550,7 +552,7 @@ try:
         OFF = [0, 0]
         def menu_wm(name, item):
             g.reset_ui(); g.click(OFF[0] + drv.MENU[name], OFF[1] + 36, pause=0.8); g.click(OFF[0] + drv.MENU[name] + 20, OFF[1] + drv.MENU_ITEM_Y(item), pause=1.2)
-        g.menu = menu_wm
+        g.menu = menu_wm; g.reset_ui = lambda: g.key("Escape")      # the maximised window leaves no bare root point for the driver's reset_ui
         def frame_of(wid):
             """the decorated frame: walk up xwininfo -tree parents until the child of root"""
             t = sh_x("xwininfo", "-id", str(wid), "-tree")
@@ -588,7 +590,7 @@ try:
             g.set_seed(12345); g.start(); wid = main_win(); cg1 = geom(wid); OFF[0], OFF[1] = cg1["client_x"], cg1["client_y"]
             X = G / f"g4_E_{STAMP}_X.SAV"; shutil.copy2(START, X); wm_log(step="X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
             g.open(X); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
-            wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"))
+            wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"), dismissed_before=g.dismiss_popups())      # the start save opens with the offer box "Bithynia wants to trade with Rome."
             for k, answer in ((1, "No"), (2, "Yes")):
                 real_click(f"game_click{k}"); time.sleep(2)
                 bx = boxes(g); conf = [p_ for p_ in g.popups() if p_[1] == "Confirm"]
