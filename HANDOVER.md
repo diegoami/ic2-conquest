@@ -552,3 +552,68 @@ Ubuntu 26.04 WSL, Wine 10.0. `runs/experiments/data/run-exp-machine-move/RESULTS
 3. Optional: research's open question on `2026-10-02-fleet-orders-live` ("split army cannot be selected"), now contradicted for 0-move armies.
 4. `scripts/archive_measurements.py --commit` stops on an ignored `__pycache__` path (commit by hand until fixed).
 5. The owner's desktop palette check (`run-exp-desktop-palette/STEPS.md`); PR #66 (cosmetic gaps) still open.
+
+## Handover: 2026-10-12 afternoon (ic2-conquest session, Opus 5.5 via Claude Code) → next session on MiniMax-M3
+
+### TL;DR
+
+Nothing is running (no subagent, no review, no Wine; only the shared `Xvfb :99` stays up). g1, g2 and g3 of the v0.5.0 gap analysis are **merged and promoted** by research. **One PR is open: #84** (g4 follow-ups, issue #83), implemented by a Claude Sonnet subagent, **not yet reviewed**. Next: review #84, mark g3 as promoted, relay g4 once merged. Battles and bots stay paused.
+
+### For a MiniMax session: read first
+
+- Load the `non-claude-backend` skill at start (`~/.claude/skills/non-claude-backend/SKILL.md`): check `$ANTHROPIC_BASE_URL` / `$ANTHROPIC_MODEL`; you are MiniMax-M3, not Claude. Record yourself as "MiniMax-M3 via Claude Code" in every PR, commit, notes file and hand-back.
+- On this backend, an Agent-tool subagent "on Sonnet/Opus" runs on **MiniMax** too (M2.7 / M3), so it is of the **MiniMax family**. A reviewer for work you or your subagents implement must not be MiniMax (CLAUDE.md "Choosing models" rule 4); external reviewers run through `scripts/external_review.py --model <provider/model>` (OpenCode).
+- Claude's quota is irrelevant to you; MiniMax's is (`curl -s localhost:8765/quota/minimax`; 46% headroom at 13:45).
+- **The owner's standing choice of this session ("Sonnet implements, Luna reviews, without asking") was for this session only.** In the new session ask again: rule 1 (who implements, which model) and rule 2 (which reviewer), with quota-tracker's `/recommend` as a suggestion. Only the merge rule (approve from another family + green CI → merge without asking) is standing.
+- Every reply: compare `findings/` on `origin/main` with the baseline in memory `report-new-findings-on-main.md` (it includes `2026-10-12-g3-original-checks.md`).
+
+### Done this session (all on main, all relayed)
+
+| Item | PR | Reviews | Research |
+|---|---|---|---|
+| g1 original-side checks: Balance sheet, debt rounding vs deposition, trade refusals, Save/Open, quit prompt, Rome's start per seed, recruit list, mobilise refusal, news header | #79 (`82151a5`) | gpt-6.1-sol: rework ×3, approve | promoted `442261d` (research PR #15) |
+| driver: `Game.new_game`, `harness/new_game.sh` (via `harness/preserve.sh`) and `Game.open` move files aside, never delete or overwrite (`Game.move_aside`); 5 offline tests | #79 | (same) | — |
+| g3 original-side checks: rebellion, rebirth, mercenary desertion, famine, AI deposition, quarter tick, news order, rough sea, offers | #81 (`069ea3a`) | gpt-6.1-sol: rework ×2; gpt-5.6-luna: approve | promoted `472fba8` (research PR #17) |
+| g1 and g2 drafts marked promoted, g1 intake corrections copied in | #82 (`d50a6a9`) | gpt-5.6-luna: approve (GitGuardian check ended "skipping"; the owner said merge) | — |
+
+Issues #78 and #80 closed.
+
+### Open items, in order
+
+1. **PR #84 (g4 follow-ups, issue #83), review.** Implementer: Claude Sonnet subagent (Claude family), so the reviewer must not be Claude; ask the owner which (this session's reviewer was gpt-5.6-luna; gpt-6.1-sol did the heavier g1/g3 reviews). Write `docs/review-briefs/pr84.md` from `docs/review-briefs/pr81.md` (same "Blocking means": saves kept/hashed/uploaded, no overwriting writer, same-process controls, L1 staging, every claim backed, conditional figures labelled, scans that can detect the opposite). Run alone: `python3 scripts/external_review.py --pr 84 --model '<provider/model#variant>' --brief-file docs/review-briefs/pr84.md --apply-label` in the background with stdin from an empty file, monitor it, give the owner its `ses_…` and `scripts/peek.sh ses_… -n 20`. Fixes go to whoever the owner names, in the existing worktree `.claude/worktrees/g4` (branch `experiment/g4-followups`, head `33f7677`).
+   - What g4 found (from the hand-back; the finding `findings/2026-10-12-g4-followups.md` has the evidence):
+     - **F:** the save flag 0x4a0334 is cleared only in the new-game initialiser.
+     - **C:** each of year 250, unity < 400 and cities > 333 deposes the human.
+     - **B:** ally/war targets get "You cannot trade with X."
+     - **A:** a hired mercenary adds 30.
+     - **D:** human merge only at distance 1, AI at 4 under war threat.
+     - **G:** the unhalved storm roll away from an own city.
+     - **H:** the highest army index wins.
+     - **I:** Rome's quarter is exact, 7 AI nations are not.
+     - **J:** the −8 is the AI's trade-partner swap.
+     - **K:** 0 offers outside the eligible sets in 180 rounds.
+     - **L:** the game painted rough sea, with a tripled storm and move cost 3.
+     - **E:** a real X click under xfwm4 quits with NO prompt, unlike g1's posted SC_CLOSE.
+   - Its own caveats: E's mechanism is inferred; human distance-0 mobilise is unreachable; 7 AI quarter residuals are unexplained; I's four openings are not independent.
+   - Its commits were late against the 30-minute cadence twice; both reminders were answered.
+2. **Mark g3 as promoted** (research asked, `472fba8`): a small PR like #82, changing the Status line of `findings/2026-10-12-g3-original-checks.md` and adding an "Intake corrections" section. Research's corrections, from their ack:
+   - **Rebirth economics:** wealth and tax base move with the cities at once inside the quarter loop. Greece +744,000 wealth, Rome −744,000. Dead staging: tax base ±548. Alive: Greece +176. The draft's "treasury, wealth and tax base of a nation that still holds its 21 cities" is withdrawn.
+   - **New capital:** the reborn nation's city with the greatest full strength (so the alive staging keeps Athens).
+   - **Rebellion:** Arretium and Ariminum don't separate the branches; Pisae with Gaul at unity 0 does.
+   - **Deposition unity:** max(unity, min(550, unity + 150)).
+   - **Rough sea:** local = min(8, 3 × local) before the own-city halving.
+   - **News order:** the 907 blocks are 5 distinct texts; the order is fixed by code (FUN_0044aee4, then FUN_00450c68); the agreed and sues blocks are alternatives.
+   - **Relations −8:** relabelled (dead: Greece–Illyria; alive: Rome–Illyria).
+   - **Wording:** the score distance is city to the candidate's capital; unity floor 250, cap 990; a unity-0 receiver is revived (Gaul 0 → 300).
+   - Still open per research: the deposition relation reset (−5..−1 → 0) not exercised; whether the remake's deposition has the unity < 400 test.
+3. **After #84 merges:** relay it with `/relay-to-research` (one message, all 12 cases). The session `imperial-conquest-research` asked about g4 intake and agreed to **wait for the relay from main** (no promotion from the branch); it will not write to this repo. Then update memory `research-intake-relay.md` and the findings baseline.
+4. Older, unchanged: `scripts/archive_measurements.py --commit` still stops on an ignored `__pycache__` path (subagents commit by hand); PR #66 (cosmetic gaps) still open; the owner's desktop palette check.
+
+### Lessons from this session
+
+- **Brief every implementer with the previous reviews' findings.** g3 started from g1's review list and needed 2 rework rounds instead of 3; g4 started from both.
+- **Tell a fixing subagent to read the full review comment**, not your summary (one round-3 fixer worked from the summary only).
+- **Long Wine experiments drift past the 30-minute commit cadence.** Watch the last commit time and remind; both reminders this session worked.
+- **A Claude subagent's transcript lives under the session that spawned it:** `~/.claude/projects/<project>/<session-id>/subagents/agent-<id>.jsonl`. Check the path before giving it to the owner (this session first gave a wrong one).
+- **A detached review started with `&` inside a foreground command** gives no completion notice: watch its pid with `kill -0` in the monitor, or start it with the tool's background mode.
+- **GitGuardian can hang "in progress" and then end "skipping".** The API cannot re-request it; ask the owner.
