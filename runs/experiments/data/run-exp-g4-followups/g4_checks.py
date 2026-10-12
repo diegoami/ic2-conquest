@@ -137,6 +137,159 @@ try:
             ops = [("unity", 0, 399)] if tag == "pos_unity399" else []
             src = staged(START, ops, tag, ex)
             depose_trial(tag, src, i == 0)
+    elif CASE == "B":
+        # Check B: the trade refusal for an allied or at-war target, from the International Relations dialog (radio click = TPolitics_MakeTrade, boxes appear at the click).
+        # Cases in ONE process (first the natural start save, then staged copies, File > Open): every case records the boxes at the radio click; the accepting
+        # controls press OK and read Rome's relation afterwards. Galatia (5 trade partners? no: 0 partners, Rome peace) isolates the Rome-side relation from the
+        # target's own partner count; Carthage (3 partners) with a pending trade offer from Carthage tests the offer exemption in the code (bVar1).
+        def propose(tag, nation, ok):
+            wid, cs, radios = relations_dialog(g)
+            before = shot(g, f"{tag}_dialog_before", window=str(wid))
+            res = []
+            for k in range(2):         # a click into an inactive window may only activate it; a radio click is idempotent
+                g.click_control(radios[nation * 4 + 1], pause=1.5)
+                bx = boxes(g); res.append({"click": k + 1, "boxes": bx})
+                if bx: break
+            dismissed = g.dismiss_popups()
+            after = shot(g, f"{tag}_dialog_after_click", window=str(wid))
+            if ok:
+                for _ in range(3):
+                    g.click_control(g.control(cs, text="OK"), pause=1.5)
+                    res.append({"ok_boxes": boxes(g)}); dismissed += g.dismiss_popups()
+                    if not g.find_windows("^International Relations$"): break
+            else:
+                for _ in range(3):
+                    g.click_control(g.control(cs, text="Cancel"), pause=1.0)
+                    if not g.find_windows("^International Relations$"): break
+            log("propose", tag=tag, nation=nation, press="OK" if ok else "Cancel", clicks=res, dismissed=dismissed, before=before, after=after, dialog_closed=not g.find_windows("^International Relations$"),
+                rome_rel_to_target=rel(g, 0, nation), target_partners=[k for k in range(16) if rel(g, nation, k) == 1], rome_partners=[k for k in range(16) if rel(g, 0, k) == 1], rome_row=[rel(g, 0, k) for k in range(16)])
+        g.load(START, seed=12345); log("loaded", save=START.name, seed_line=g.seed_line)
+        propose("natural_gaul_war_3partners", 6, False)
+        propose("natural_macedonia_cooldown_m8", 4, False)
+        cases = [("galatia_peace_ctl", 12, [], None, True), ("galatia_war3", 12, [("relation", 0, 12, 3)], None, False), ("galatia_ally2", 12, [("relation", 0, 12, 2)], None, False),
+                 ("galatia_cooldown_m8", 12, [("relation", 0, 12, -8)], None, False), ("carthage_full_no_offer", 1, [], None, False),
+                 ("carthage_full_offer_from_carthage", 1, [], set_offer(1, 1), True), ("carthage_full_offer_from_seleucid", 1, [], set_offer(2, 1), False)]
+        for tag, nat, ops, ex, ok in cases:
+            src = staged(START, ops, tag, ex)
+            g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            log("loaded", tag=tag, rome_row=[rel(g, 0, k) for k in range(16)], offer=(g.i16(0x49f008), g.i16(0x49f00a)), target=nat, target_partners=[k for k in range(16) if rel(g, nat, k) == 1])
+            propose(tag, nat, ok)
+    elif CASE == "A":
+        # Check A: a mercenary hired IN PLAY (army 1 beside Heraclea, the offers of that city), read on the Balance sheet. One process: Balance sheet before (control: no
+        # mercenary line), the hire dialog photographed and closed, then hire_mercs twice (each call picks the first row), Balance sheet after each, and the saved game.
+        g.load(START, seed=12345); log("loaded", save=START.name, seed_line=g.seed_line)
+        army = lambda: g.army_state(1)
+        slots = lambda: [(u["slot"], u["type"], u["troops"], u["quality"], u["merc"], u["name"]) for u in army()["units"]]
+        log("army1_before", state=army(), slots=slots(), treasury=struct.unpack("<i", g.mem(drv.NATIONS + 0x438, 4))[0])
+        balance_sheet(g, "before_hire_control")
+        w = g.army_tool(1, "mercs", "Recruit mercenary unit")
+        f, o = ocr_window(g, "hire_dialog", w[0]); cs = g.controls("Recruit mercenary unit")
+        log("hire_dialog", image=f, ocr=o, controls=[(c["cls"], c["text"], c["x"], c["y"], c["w"], c["h"]) for c in cs])
+        g.close_controls("Recruit mercenary unit", cs, text="OK")
+        for k in (1, 2):
+            n, texts = g.hire_mercs(1, rows=(0,))
+            log("hired", call=k, new_units=n, texts=texts, slots=slots(), state=army(), treasury=struct.unpack("<i", g.mem(drv.NATIONS + 0x438, 4))[0], root=shot(g, f"after_hire{k}"))
+            rd, mem = balance_sheet(g, f"after_hire{k}")
+            log("hire_summary", call=k, mercenary_line_ocr=rd["expenditure"]["mercenary_units"]["value"], mercenary_line_memory=mem["mercenary_units"], total_ocr=rd["expenditure"]["total"]["value"],
+                expenditure_memory=mem["expenditure_total_if_all_five"])
+            save(g, f"after_hire{k}.SAV")
+    elif CASE == "D":
+        # Check D: the other mobilise branches (FUN_0044a4e0 -> FUN_0044a120 / FUN_00449f08 / FUN_004492c0).
+        #  D1 no free tile: Rome's ready queued unit (state 17, heavy infantry 4000 at Rome) mobilised through Army recruits; the 8 map words around Rome (101,43) are
+        #     staged (L1) to sea (0) except the variant's free tiles (words 2..11 = free land, FUN_004492c0 keeps the LAST such tile in scan order x -1..1 outer, y -1..1 inner).
+        #     Variants: ctl (unstaged), none_free, one_free_100_42, two_free_100_42_and_102_44 (the later one must win), all in ONE process.
+        def pad_nothing(): return None
+        def mob(tag):
+            g.open_recruit(); cs = g.controls("Army recruits"); w = g.find_windows("^Army recruits$")[0][0]; g.raise_window(w); time.sleep(0.5)
+            cities = g.control(cs, cls="TListBox", index=0); units = g.control(cs, cls="TListBox", index=1)
+            rows_found = None
+            for r in range(3):
+                g.click_list_row(cities, r, pause=0.6); f, o = ocr_window(g, f"{tag}_cityrow{r}", w); log("row", tag=tag, row=r, image=f, ocr=o)
+                if "units at rome" in o.lower(): rows_found = r; break
+            f, o = ocr_window(g, f"{tag}_units", w); log("units_list", tag=tag, image=f, ocr=o, city_row=rows_found)
+            g.click_list_row(units, 2, pause=0.5)
+            n_arm = g.i16(0x4A0324); sl = [g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)]
+            old = {i: g.army_rec(i) for i in range(n_arm)}
+            g.click_control(g.control(cs, text="Mobilize"), pause=2.0)
+            bx = boxes(g); texts = g.dismiss_popups()
+            n2 = g.i16(0x4A0324); new = [g.army_state(i) for i in range(n_arm, n2)]
+            changed = [i for i in range(n_arm) if g.army_rec(i) != old[i]]
+            log("mobilize_pressed", tag=tag, armies_before=n_arm, armies_after=n2, new_armies=[(a["id"], a["x"], a["y"], a["owner"], [(u["type"], u["troops"], u["quality"], u["name"]) for u in a["units"]]) for a in new],
+                changed_old_armies=[(i, [(u["type"], u["troops"], u["name"]) for u in g.army_state(i)["units"]]) for i in changed], slot_troops_before=sl,
+                slot_troops_after=[g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)], boxes=bx, dismissed=texts, rome_armies=[(i, g.army_pos(i)) for i in range(n2) if g.army_state(i)["owner"] == 0])
+            if g.find_windows("^Army recruits$"):
+                try: g.close_controls("Army recruits", cs)
+                except Exception as e: log("close_error", error=repr(e))
+        RX, RY = 101, 43
+        ring = [(RX + dx, RY + dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if (dx, dy) != (0, 0)]
+        def sea_except(free):
+            fs = [set_map(x, y, 0) for x, y in ring if (x, y) not in free]
+            f = chain(*fs); f.__doc__ = f"map words of Rome's 8 neighbours := 0 (sea) except {sorted(free)} (kept as they are)"; return f
+        variants = [("ctl", None), ("none_free", sea_except(set())), ("one_free_100_42", sea_except({(100, 42)})), ("two_free_100_42_and_102_44", sea_except({(100, 42), (102, 44)}))]
+        for i, (tag, ex) in enumerate(variants):
+            src = staged(START, [], "d1_" + tag, ex)
+            if i == 0: g.load(src, seed=12345)
+            else: g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            log("loaded", tag=tag, armies=g.i16(0x4A0324), ring={f"{x},{y}": g.cell(x, y) for x, y in ring}, rome_slots=[tuple(struct.unpack("<4h", g.mem(drv.NATIONS + 0x2e4 + 8 * k, 8))) for k in range(4)])
+            mob("d1_" + tag)
+    elif CASE == "D2":
+        # Check D, the distance branches of FUN_0044a120: a HUMAN nation mobilises into an own army only at distance exactly 1 (sVar1 == 1); an AI nation (human flag 0,
+        # byte at 0x474b00 + nation * 0x494) also at distance < 6. Human arms (Rome, ready queued unit state 17 at Rome) with army 0 moved BY PLAY to a chosen distance; AI arms
+        # (Thracia: Byzantium (170,38) with its own army 6 at distance 4; Carthage: Carthago with army 3 at distance 1, the positive control that the AI path ran at all): the AI
+        # mobilises a queue unit whose state is 24 (FUN_004504f4), so the staged queue state (L1) is 24, one End turn, then the diff of the armies.
+        RX, RY = 101, 43
+        def mob(tag):
+            g.open_recruit(); cs = g.controls("Army recruits"); w = g.find_windows("^Army recruits$")[0][0]; g.raise_window(w); time.sleep(0.5)
+            cities = g.control(cs, cls="TListBox", index=0); units = g.control(cs, cls="TListBox", index=1)
+            rows_found = None
+            for r in range(3):
+                g.click_list_row(cities, r, pause=0.6); f, o = ocr_window(g, f"{tag}_cityrow{r}", w); log("row", tag=tag, row=r, image=f, ocr=o)
+                if "units at rome" in o.lower(): rows_found = r; break
+            f, o = ocr_window(g, f"{tag}_units", w); log("units_list", tag=tag, image=f, ocr=o, city_row=rows_found)
+            g.click_list_row(units, 2, pause=0.5)
+            n_arm = g.i16(0x4A0324); sl = [g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)]
+            old = {i: g.army_rec(i) for i in range(n_arm)}
+            g.click_control(g.control(cs, text="Mobilize"), pause=2.0)
+            bx = boxes(g); texts = g.dismiss_popups()
+            n2 = g.i16(0x4A0324); new = [g.army_state(i) for i in range(n_arm, n2)]
+            changed = [i for i in range(n_arm) if g.army_rec(i) != old[i]]
+            log("mobilize_pressed", tag=tag, armies_before=n_arm, armies_after=n2, new_armies=[(a["id"], a["x"], a["y"], a["owner"], [(u["type"], u["troops"], u["quality"], u["name"]) for u in a["units"]]) for a in new],
+                changed_old_armies=[(i, g.army_pos(i), [(u["type"], u["troops"], u["name"]) for u in g.army_state(i)["units"]]) for i in changed], slot_troops_before=sl,
+                slot_troops_after=[g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)], boxes=bx, dismissed=texts)
+            if g.find_windows("^Army recruits$"):
+                try: g.close_controls("Army recruits", cs)
+                except Exception as e: log("close_error", error=repr(e))
+        cheb = lambda x, y: max(abs(x - RX), abs(y - RY))
+        first = True
+        for tag, want in (("human_dist6_natural", None), ("human_dist4", 4), ("human_dist1", 1), ("human_dist0_city", 0)):
+            if first: g.load(START, seed=12345); first = False
+            else: g.open(START); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            moved = None
+            if want is not None:
+                cands = [(x, y) for x in range(RX - 5, RX + 6) for y in range(RY - 5, RY + 6) if cheb(x, y) == want and g.cell(x, y) in (2, 3, 4, 84)]
+                cands.sort(key=lambda c: max(abs(c[0] - 100), abs(c[1] - 37)))
+                for (x, y) in cands[:6]:
+                    pos, texts = g.move(0, x, y); log("move_try", tag=tag, target=(x, y), pos=pos, texts=texts)
+                    if cheb(*pos) == want: moved = pos; break
+                if moved is None: log("move_failed", tag=tag, want=want); continue
+            log("army0", tag=tag, pos=g.army_pos(0), cheb=cheb(*g.army_pos(0)), armies=g.i16(0x4A0324))
+            mob(tag)
+        # AI arms: staged queue state 24, one End turn each (the same process, File > Open between)
+        def ai_arm(tag, nation, slots, watch):
+            src = staged(START, [], tag, chain(*[set_queue(nation, s_, state=24) for s_ in slots]) if slots else None)
+            g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            before = snap(g)
+            name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), tag)
+            after = snap(g)
+            q = lambda sn: [tuple(struct.unpack_from("<4h", g.mem(drv.NATIONS + nation * drv.NATION_LEN + 0x2e4 + 8 * k, 8))) for k in range(8)]
+            log("ai_arm", tag=tag, nation=nation, staged_slots=slots, texts=texts, kept=kept, queue_after=q(after), armies_before=len(before["armies"]), armies_after=len(after["armies"]),
+                watch=[{"army": a, "before": [(u["type"], u["troops"], u["name"]) for u in before["armies"][a]["units"]], "after": [(u["type"], u["troops"], u["name"]) for u in after["armies"][a]["units"]],
+                        "pos_before": (before["armies"][a]["x"], before["armies"][a]["y"]), "pos_after": (after["armies"][a]["x"], after["armies"][a]["y"])} for a in watch],
+                new_armies=[(a["id"], a["owner"], a["x"], a["y"], [(u["type"], u["troops"]) for u in a["units"]]) for a in after["armies"][len(before["armies"]):]], diff_armies=diff(before, after)["armies"])
+        ai_arm("ai_carthage_dist1_state24", 1, [1], [3, 2])
+        ai_arm("ai_thracia_dist4_state24", 15, [1], [6])
+        ai_arm("ai_thracia_dist4_state24_allslots", 15, [0, 1, 2], [6])
+        ai_arm("ai_thracia_dist4_natural_ctl", 15, [], [6])
     elif CASE == "none":
         pass
     else:

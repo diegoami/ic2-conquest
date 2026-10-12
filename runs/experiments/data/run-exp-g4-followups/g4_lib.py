@@ -444,3 +444,40 @@ class Poller:
         except OSError: pass
         return {"samples": self.samples, "max_gap_s": round(self.max_gap, 4), "interval_s": self.dt,
                 "changes": [(round(t, 3), v) for t, v in self.changes], "marks": [(round(t, 3), l, v) for t, l, v in self.marks]}
+
+
+def set_offer(frm, typ):
+    """Staging helper (L1): the pending-offer words of the save tail (`from` = tail short 16 = DAT_0049f008, `type` = short 17 = DAT_0049f00a; state/sav.py `pending_offer`)."""
+    def f(b):
+        t = sav.parse(bytes(b))["tail_off"]
+        struct.pack_into("<h", b, t + 32, frm); struct.pack_into("<h", b, t + 34, typ)
+    f.__doc__ = f"pending offer: from {frm} type {typ} (save tail shorts 16/17)"
+    return f
+
+
+def relations_dialog(g):
+    """International Relations: open (toolbar), return (window id, controls, the 64 radio buttons sorted by row/column: nation * 4 + kind)."""
+    g.dismiss_popups()
+    for _ in range(3):
+        g.tool("relations", pause=1.5)
+        if g.find_windows("^International Relations$"): break
+    w = g.find_windows("^International Relations$"); g.raise_window(w[0][0])
+    for _ in range(8):
+        try: cs = g.controls("International Relations"); break
+        except DriverError: time.sleep(1)
+    radios = sorted((c for c in cs if c["cls"] == "TRadioButton"), key=lambda c: (c["y"], c["x"]))
+    if len(radios) != 64: raise DriverError("expected 64 radios, found %d" % len(radios))
+    return w[0][0], cs, radios
+
+
+def rel(g, a, b): return g.i16(drv.NATIONS + a * drv.NATION_LEN + 0x26 + 2 * b)
+
+
+def set_queue(n, slot, **kw):
+    """Staging helper (L1): nation n's recruit-queue slot (8-byte records at nation +0x2e4: state, type, troops, city; names as in the Balance sheet reader)."""
+    offs = {"state": 0, "type": 2, "troops": 4, "city": 6}
+    def f(b):
+        o = stage._nation(b, n) + 0x2e4 + 8 * slot
+        for k, v in kw.items(): struct.pack_into("<h", b, o + offs[k], v)
+    f.__doc__ = f"nation {n} queue slot {slot}: " + ", ".join(f"{k} := {v}" for k, v in kw.items())
+    return f
