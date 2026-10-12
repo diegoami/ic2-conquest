@@ -121,7 +121,7 @@ xfwm4 4.20 is installed (`xfwm4 --version`), so no package was needed. Check E r
 - A: one offer, one army; the quarterly payment of the hired unit was not run.
 - D: distance 0 for the human is not reachable with the driver; the AI's order of mobilisation and army movement inside its seat is not shown (Galatia case); no-free-tile was reached by staged map words, not by armies standing around the city.
 - H: army ownership words and their map markers were staged; three arms, one trial each.
-- I: exact for 8 of 15 AI nations; 7 residuals unexplained; the four openings are not independent.
+- I: exact for 9 of 15 AI nations, 6 inexact; of the 9 exact, 4 are unadjusted (Seleucid, Macedonia, Numidia, Illyria — no observable AI action between the tick and Rome's turn) and 5 are pulled in by the seat-based trade-row fix (Gaul seat 14 new-exact, Ptolemaic seat 2, Bithynia seat 12, Media seat 9, Thracia seat 5); the four openings are not independent.
 - J: the swap classification is necessary, not a unique prediction; the rebirth runs are one trial each.
 - G: six draws per cell; one reading per arm lost to fleet-table renumbering is excluded and listed.
 - K: 60 draws per variant, one run each.
