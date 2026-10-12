@@ -35,6 +35,8 @@ def archive(name):
     for f in sorted(src.rglob("*")):
         if not f.is_file():
             continue
+        if "__pycache__" in f.parts:
+            continue
         rel = f.relative_to(src)
         ext = f.suffix.lower()
         if ext in TEXT:
@@ -80,7 +82,11 @@ if __name__ == "__main__":
     d = archive(args[0])
     if "--commit" in sys.argv:
         subprocess.run(["git", "add", str(d)], cwd=ROOT, check=True)
-        files = [str(p) for p in d.rglob("*") if p.is_file()]
+        # __pycache__ artefacts under the destination (from running g*_lib.py in place before a
+        # previous archive created the folder) match `.gitignore`; skip them rather than refuse to
+        # commit. The script never archives __pycache__ (its extensions are not in TEXT/BINARY), so
+        # the check below only addresses stale destination content.
+        files = [str(p) for p in d.rglob("*") if p.is_file() and "__pycache__" not in p.parts]
         ignored = subprocess.run(["git", "check-ignore", *files], cwd=ROOT, capture_output=True, text=True).stdout.split()
         if ignored:
             sys.exit("git ignores these archived files, nothing committed: " + " ".join(ignored))
