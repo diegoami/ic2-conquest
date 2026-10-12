@@ -6,6 +6,7 @@ if len(sys.argv) > 1 and sys.argv[1] == "E": os.environ["DISPLAY_IC2"] = ":98"  
 from g4_lib import *
 from g4_lib import _hash_line
 import g4_lib
+from versioned import next_free as _next_free      # R1 round-4: save copies and the xfwm4 log use exclusive creation; a repeated stamp allocates the next free version instead of overwriting.
 
 hook_environment()
 g = Game()
@@ -112,7 +113,9 @@ try:
         # -> File > New, answer No (control: the flag must not change) -> File > New, answer Yes (the clear must show up BEFORE the leaders form is ticked)
         # -> tick Rome + OK -> game running (flag stays 0) -> File > Save (opens Save as: flag 0 means "no default file").
         FLAG = 0x4A0334
-        X = G / f"g4_F_{STAMP}_X.SAV"; shutil.copy2(START, X); log("X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
+        # R1 round-4: exclusive-creation save copy (next_free allocates a `.v2.SAV` etc. on collision, the previous file is preserved; the
+        # unconditional shutil.copy2 would truncate an existing destination). The ART name `..._X.SAV` is shared with the log's `X_original_before_anything.SAV` kept copy below.
+        X = G / f"g4_F_{STAMP}_X.SAV"; X = _next_free(X); shutil.copy2(START, X); log("X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
         g.set_seed(12345); g.start()
         P = Poller(g.pid, FLAG).start(); time.sleep(0.5)
         P.mark("fresh_start_no_game"); log("flag_fresh", flag=g.mem(FLAG, 1)[0], loaded=g.loaded())
@@ -534,8 +537,10 @@ try:
         if subprocess.run(["pgrep", "-fx", "Xvfb :98 -screen 0 1280x1024x24"], capture_output=True).returncode:
             subprocess.Popen(["setsid", "Xvfb", ":98", "-screen", "0", "1280x1024x24"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL); time.sleep(2)
         if subprocess.run(["pgrep", "-x", "xfwm4"], capture_output=True).returncode == 0: subprocess.run(["pkill", "-x", "xfwm4"]); time.sleep(1)
-        wm = subprocess.Popen(["setsid", "xfwm4", "--compositor=off"], env=env98, stdout=open(ART / f"E_{STAMP}_xfwm4.out", "w"), stderr=subprocess.STDOUT); time.sleep(10)      # a game started within a few seconds of the window manager was not decorated in the first attempts
-        _hash_line(ART / f"E_{STAMP}_xfwm4.out")
+        # R1 round-4: exclusive creation (the previous `open(path, "w")` truncated an existing file at the same second-resolution stamp); allocate the next free version first.
+        wm_log_path = _next_free(ART / f"E_{STAMP}_xfwm4.out")
+        wm_out = open(wm_log_path, "w")      # the "w" truncate is safe once _next_free has chosen the destination
+        wm = subprocess.Popen(["setsid", "xfwm4", "--compositor=off"], env=env98, stdout=wm_out, stderr=subprocess.STDOUT); time.sleep(10)      # a game started within a few seconds of the window manager was not decorated in the first attempts
         chk = subprocess.run(["xprop", "-root", "_NET_SUPPORTING_WM_CHECK"], env=env98, capture_output=True, text=True).stdout
         wm_log(display=":98", xfwm4_pid=wm.pid, xfwm4_alive=wm.poll() is None, supporting_wm_check=chk.strip())
         def xinfo(wid, *a): return subprocess.run(["xwininfo", "-id", str(wid)] + list(a), env=env98, capture_output=True, text=True).stdout
@@ -603,7 +608,8 @@ try:
             wm_log(step="after_click_nogame", alive=alive(), boxes=boxes(g) if alive() else None)
             # a game loaded -> the real click raises the quit prompt
             g.set_seed(12345); g.start(); wid = main_win(); cg1 = geom(wid); OFF[0], OFF[1] = cg1["client_x"], cg1["client_y"]
-            X = G / f"g4_E_{STAMP}_X.SAV"; shutil.copy2(START, X); wm_log(step="X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
+            # R1 round-4: exclusive-creation save copy (the unconditional shutil.copy2 would truncate an existing destination).
+            X = G / f"g4_E_{STAMP}_X.SAV"; X = _next_free(X); shutil.copy2(START, X); wm_log(step="X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
             g.open(X); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
             wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"), dismissed_before=close_info_boxes())      # the start save opens with the offer box "Bithynia wants to trade with Rome."
             for k, answer in ((1, "No"), (2, "Yes")):
@@ -621,6 +627,17 @@ try:
                     time.sleep(2)
                     wm_log(step="after_answer", answer=answer, alive=alive(), windows=windows(g) if alive() else None, root=shot(g, f"game_after_{answer}") if alive() else None)
         wm.terminate()
+        # R1 round-4: hash the xfwm4 log AFTER the process has stopped and its output file descriptor is closed (the previous inline hash
+        # at process start could read the file while xfwm4 was still appending). Wait, then hash from a closed-fd write.
+        try:
+            wm.wait(timeout=5)
+        except subprocess.TimeoutExpired:
+            wm.kill(); wm.wait(timeout=5)
+        try:
+            wm_out.close()      # closing before _hash_line ensures every buffered byte is flushed and the read sees the final contents
+        except Exception:
+            pass
+        _hash_line(wm_log_path)
     elif CASE == "none":
         pass
     else:
