@@ -298,16 +298,24 @@ def main():
 
         # Regression-detection control: if give_cities ever passed snapshot=None for the receiver call,
         # the wrapper would NOT inject the rogue byte (snapshot is None branch), so no SystemExit fires.
-        # We call the wrapper directly to simulate that scenario.
+        # We call the wrapper directly to simulate that scenario. Round-7 follow-up: the control must
+        # verify two distinct invariants: (a) the wrapper did not write to the receiver's +0x2e4 byte
+        # (capture `b2[off2]` before and assert it unchanged after), and (b) the `receiver_injected`
+        # flag stays at its starting value, which we now reset to False (the previous `before_injected =
+        # receiver_injected` capture was trivially `True is True` because the positive case had already
+        # flipped it, masking any subsequent flip in the control branch).
         b2 = fresh_save()
         off2 = stage._nation(b2, 1) + 0x2e4
-        before_injected = receiver_injected
+        b2_off2_before = b2[off2]
+        receiver_injected = False
         try:
             patching_put(b2, 1, [], 0, snapshot=None, allowed=set())
         except SystemExit:
             raise AssertionError("patching_put raised despite snapshot=None (wrapper would not inject); this control should NOT raise")
-        # Round-7: the snapshot=None branch must not have fired the gated injection.
-        assert receiver_injected is before_injected, "snapshot=None control should not flip receiver_injected; the gate did not hold"
+        # Round-7 follow-up: the snapshot=None branch must not have fired the gated injection. Two
+        # independent checks: the byte is unchanged (proves no write), and the flag is still False.
+        assert b2[off2] == b2_off2_before, f"snapshot=None control flipped the receiver +0x2e4 byte (before={b2_off2_before:#x}, after={b2[off2]:#x}); the gate did not hold"
+        assert receiver_injected is False, "snapshot=None control flipped receiver_injected; the gate did not hold"
     finally:
         L._give_cities_put = orig_put
 
