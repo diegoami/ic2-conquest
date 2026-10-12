@@ -35,3 +35,14 @@ Remaining, with the next step:
 - R6: extend `make_exe_strings.py` with "already trades with", "trades with 3" and variants (negative search kept), or narrow the claim to the observed refusal and `TPolitics_MakeTrade`.
 - R7: replace the raw clicks (117,117) and (344,194) in the G5 branch of `g1_checks.py` with control-derived targeting (inspect `g.controls("Imperial Conquest 2")` on the New Game form), verify Rome's human flag and the form's closing, re-run `G5 patched`.
 After each Wine run: `scripts/archive_measurements.py run-exp-g1-original-checks --commit` (it printed it did not commit because of an ignored __pycache__ path; commit by hand), `python3 runs/experiments/data/run-exp-g1-original-checks/release_sync.py`.
+
+## Review fixes, round 2 (Sonnet subagent, 2026-10-12)
+Plan: Game.open, then R3 rerun, R4, R5, R6, R7, one commit each, push after each.
+- 1a496dd Game.open moves a differing same-named file aside (`Game.move_aside`, shared with new_game); `tests/test_open_keeps_same_name.py`; finding note on other deletion paths.
+- 79515de R3: `G2_merc hc` run, `g1_checks-G2_merc-20261012-065006.jsonl`: Mercenary units 86, Total 963 = 877 + 86 (no crash); R4 text (qualified agreement, `-232104` cited); data archived, release synced (28 files).
+- 5264b2a R5: G9 code reading corrected; extract v3 (callees) and v4 (min/max helpers); interpretations marked.
+- 0909951 R6: `exe_strings_g1.v2.txt`: "already trades with", "trades with 3" etc. NOT FOUND (exact and case-insensitive).
+- 8166ff3 R7: G5 branch uses `g.controls("Human and computer leaders")`; `g1_checks-G5-20261012-065502.jsonl`: human [0], form closed, G5 result unchanged; release synced (27 files).
+
+## END (round 2)
+Done: all six items (commits above); offline tests `test_new_game_keeps_autosaves` and `test_open_keeps_same_name` pass. Not done / uncertain: `Game.new_game` in the driver still uses its calibrated fixed form coordinates (only the G5 branch was asked); the hc staging's price-4 reading of the formula is inferred from the 86 (not read from code); G5 original exe not re-run (only patched asked). Failed attempts `g1_checks-G5-20261012-065259.jsonl` and `-065348.jsonl` kept. No merge, no review requested.
