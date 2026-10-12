@@ -289,7 +289,7 @@ def main():
             # The receiver's _give_cities_put is called with `tag=f"to{to} {len(t)} cities"`; for our
             # 1->334 transfer that's "to1 334 cities". The sender's tag is "frm0 ...". We assert the
             # caught exception identifies the receiver AND rejects a sender-origin message.
-            assert "to1" in msg or "receiver" in msg.lower(), f"SystemExit message does not identify the receiver (expected 'to1' tag): {msg}"
+            assert "to1" in msg, f"SystemExit message does not identify the receiver (expected 'to1' tag in the message): {msg}"
             assert "frm0" not in msg, f"SystemExit came from the sender's _give_cities_put, not the receiver (sender tag found in message): {msg}"
         assert raised, "give_cities via patched _give_cities_put did NOT raise on rogue +0x2e4 byte; the receiver assertion path is missing"
         # Round-7: prove the receiver's wrapper call actually ran the injection. Without this guard,
