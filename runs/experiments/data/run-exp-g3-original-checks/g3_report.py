@@ -236,6 +236,16 @@ def section_q6():
     for x in per:
         if x[1] and x[1]["from"] >= 0: P("   offer:", x)
 
+def section_q3():
+    P("== Q3: news order, 'destroys army of' vs the treaty block ==")
+    for f in logs("Q3"):
+        for r in rows(f):
+            if r["step"] == "news_start": P(f"[{f.name}] news memory lines 27-31: {[ (i, r['lines'][i]) for i in range(27, 32)]}; destroys at {r['destroys']}, treaty header at {r['sues']}; image {r['root']}")
+            if r["step"] == "information_window_ocr":
+                o = r["ocr"]; P(f"[{f.name}] Information window ({r['image']}) OCR: 'destroys army of Ptolemaic' at char {o.find('destroys army of Ptolemaic')}, 'sues Seleucid for peace' at char {o.find('sues Seleucid')}")
+    t = [l.split("\t") for l in open(D / "news_scan.txt")]
+    P(f"   news_scan.txt: {len(t)} save files with both lines; treaty-block-first adjacent pairs: {sum('treaty FIRST' in x[-1] for x in t)}; destroys-first: {sum('destroys FIRST' in x[-1] for x in t)}")
+
 if __name__ == "__main__":
     which = [a for a in sys.argv[1:] if not a.startswith("--")] or ["ab", "c", "d", "e", "f", "q2", "q3", "q5", "q6"]
     for w in which: globals()["section_" + w]()
