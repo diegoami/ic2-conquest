@@ -19,8 +19,10 @@ def run(*a):
 have = run("gh", "release", "view", TAG, "--json", "assets", "--jq", ".assets[].name")
 exists = have.returncode == 0
 held = set(have.stdout.split()) if exists else set()
-pending = sorted(p for p in ART.iterdir() if p.is_file() and p.name not in held)
-rec = {"at": time.strftime("%Y-%m-%dT%H:%M:%S"), "release_existed": exists, "pending": [p.name for p in pending], "uploaded": [], "refused": None}
+now = time.time()
+recent = sorted(p.name for p in ART.iterdir() if p.is_file() and p.name not in held and now - p.stat().st_mtime < 90)      # a file still being written by a running case is not uploaded yet (it would be held by name afterwards)
+pending = sorted(p for p in ART.iterdir() if p.is_file() and p.name not in held and p.name not in recent)
+rec = {"at": time.strftime("%Y-%m-%dT%H:%M:%S"), "release_existed": exists, "pending": [p.name for p in pending], "skipped_modified_in_last_90s": recent, "uploaded": [], "refused": None}
 for i in range(0, len(pending), 40):
     chunk = [str(p) for p in pending[i:i + 40]]
     if not exists:

@@ -1,7 +1,8 @@
 """g4 follow-up original-side checks (issue #83), one case per check letter. Usage: python3 g4_checks.py <case> [args]. One fresh Wine process per case
 (seed 12345, fast rollingsave seed exe, Xvfb :99). Staging is L1 (named save fields; length asserted; exclusive creation) and named in each log's `staged` line.
 Cases: F  (save flag 0x4a0334 around Open / Save as / File > New, memory poller), C, B, A, D, G, H, I, K, J, L, E (see the finding)."""
-import sys
+import os, sys
+if len(sys.argv) > 1 and sys.argv[1] == "E": os.environ["DISPLAY_IC2"] = ":98"        # check E runs on its own display with a window manager (the default :99 has none)
 from g4_lib import *
 import g4_lib
 
@@ -27,6 +28,49 @@ def new_game_form_and_start(g, tag):
     if len(in_row) != 1: raise SystemExit("new game form: not exactly one tick in Rome's row")
     g.click_control(in_row[0], pause=0.5); g.click_control(oks[0])
     g.wait(lambda: not g.find_windows("Human and computer leaders"), 15, "new game form closed")
+
+
+def predict_rebel(b, c):
+    """The decompile's rule for a non-capital city at loyalty < 30 (FUN_0044c204): owner != allegiance -> (b) back to the allegiance nation when it has unity > 0, else (a) rebirth;
+    owner == allegiance: (c) the LAST army (highest index) within Chebyshev < 10 of the city whose owner is at war (relation 3) with the city's owner, else (d) the neighbour (mask)
+    with unity > 0 and the best cities - 2 x distance(capital), ties to the lowest index. `b` is a snap()."""
+    ct = b["cities"][c]; owner, alleg = ct[3], ct[4]; N = b["nations"]
+    if owner != alleg: return {"rule": "b" if N[alleg]["unity"] > 0 else "a", "to": alleg if N[alleg]["unity"] > 0 else None}
+    pick, cand = -1, []
+    for a in b["armies"]:
+        if a["owner"] >= 0 and max(abs(a["x"] - ct[1]), abs(a["y"] - ct[2])) < 10 and N[owner]["relations"].get(sav.NATIONS[a["owner"]]) == 3: pick = a["owner"]; cand.append((a["id"], a["owner"]))
+    if pick >= 0: return {"rule": "c", "to": pick, "war_armies_in_index_order": cand}
+    best, pick = -1000, -1
+    for n in range(16):
+        if sav.NATIONS[n] in N[owner]["neighbours"] and N[n]["unity"] > 0:
+            cap = b["cities"][N[n]["capital"]]; sc = N[n]["cities_count"] - 2 * max(abs(ct[1] - cap[1]), abs(ct[2] - cap[2]))
+            if sc > best: best, pick = sc, n
+    return {"rule": "d", "to": pick, "score": best}
+
+
+def mobilize_rome(tag, unit_row=2):
+    """Strategy > Recruit unit: pick the Rome row of the city list, click unit row `unit_row` (the ready state-17 heavy infantry of the start save), press Mobilize; log what changed
+    (new armies with positions, changed old armies, queue troops, boxes). Controls come from the dialog."""
+    g.open_recruit(); cs = g.controls("Army recruits"); w = g.find_windows("^Army recruits$")[0][0]; g.raise_window(w); time.sleep(0.5)
+    cities = g.control(cs, cls="TListBox", index=0); units = g.control(cs, cls="TListBox", index=1)
+    rows_found = None
+    for r in range(3):
+        g.click_list_row(cities, r, pause=0.6); f, o = ocr_window(g, f"{tag}_cityrow{r}", w); log("row", tag=tag, row=r, image=f, ocr=o)
+        if "units at rome" in o.lower(): rows_found = r; break
+    f, o = ocr_window(g, f"{tag}_units", w); log("units_list", tag=tag, image=f, ocr=o, city_row=rows_found)
+    g.click_list_row(units, unit_row, pause=0.5)
+    n_arm = g.i16(0x4A0324); sl = [g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)]
+    old = {i: g.army_rec(i) for i in range(n_arm)}
+    g.click_control(g.control(cs, text="Mobilize"), pause=2.0)
+    bx = boxes(g); texts = g.dismiss_popups()
+    n2 = g.i16(0x4A0324); new = [g.army_state(i) for i in range(n_arm, n2)]
+    changed = [i for i in range(n_arm) if g.army_rec(i) != old[i]]
+    log("mobilize_pressed", tag=tag, armies_before=n_arm, armies_after=n2, new_armies=[(a["id"], a["x"], a["y"], a["owner"], [(u["type"], u["troops"], u["quality"], u["name"]) for u in a["units"]]) for a in new],
+        changed_old_armies=[(i, g.army_pos(i), [(u["type"], u["troops"], u["name"]) for u in g.army_state(i)["units"]]) for i in changed], slot_troops_before=sl,
+        slot_troops_after=[g.i16(drv.NATIONS + 0x2e8 + 8 * k) for k in range(8)], boxes=bx, dismissed=texts)
+    if g.find_windows("^Army recruits$"):
+        try: g.close_controls("Army recruits", cs)
+        except Exception as e: log("close_error", error=repr(e))
 
 
 def depose_trial(tag, src, first, check_names=True):
@@ -290,6 +334,201 @@ try:
         ai_arm("ai_thracia_dist4_state24", 15, [1], [6])
         ai_arm("ai_thracia_dist4_state24_allslots", 15, [0, 1, 2], [6])
         ai_arm("ai_thracia_dist4_natural_ctl", 15, [], [6])
+    elif CASE == "G":
+        # Check G: the storm roll AWAY from an own city (FUN_004514ec 54553-54591: no own city marker in the 3x3 -> roll x 2 + 1, not halved). Rome's fleet 2 of the Antium
+        # port save stands next to Antium (the g3 arm: halved). Here it is first MOVED BY PLAY to open sea (97,46) (no city in its 3x3) and the game's own Save As is the base of
+        # the "away" arms; "near" arms use the port save itself. Four arms x pairs in ONE process: fleet 2 staged (L1: condition, supplies 500, covered-cell word 0 calm / 1 rough),
+        # one End turn each, arms in a rotating order. Independent draws of one RNG stream (this configuration is run once; a rerun from the same start would replay a prefix).
+        n_pairs = int(sys.argv[2]) if len(sys.argv) > 2 else 6; conds = [int(c) for c in sys.argv[3].split(",")] if len(sys.argv) > 3 else [80, 60]
+        g.load(PORT, seed=12345); log("loaded", save=PORT.name, fleet2=g.fleet_state(2), ring={f"{x},{y}": g.cell(x, y) for x in range(100, 103) for y in range(45, 48)})
+        pos, texts = g.move_fleet(2, 97, 46)
+        log("fleet_moved", pos=pos, texts=texts, fleet2=g.fleet_state(2), ring={f"{x},{y}": g.cell(x, y) for x in range(96, 99) for y in range(45, 48)}, root=shot(g, "fleet_away"))
+        if tuple(pos) != (97, 46): raise SystemExit("fleet 2 did not reach (97,46): " + repr(pos))
+        away_base = ART / save(g, "away_base.SAV")
+        order = [("near", "calm"), ("near", "rough"), ("away", "calm"), ("away", "rough")]
+        base = {"near": PORT, "away": away_base}
+        for cond in conds:
+            for k in range(n_pairs):
+                arms = order[k % 4:] + order[:k % 4]
+                for where, cell in arms:
+                    tag = f"g_{where}_{cell}_c{cond}_{k + 1:02d}"
+                    src = staged(base[where], [], tag, set_fleet(2, cond=cond, supplies=500, cell=1 if cell == "rough" else 0))
+                    rec = light_round(g, tag, src, False)
+                    kept = rec.get("kept")
+                    log("storm_trial", tag=tag, where=where, cell=cell, cond=cond, k=k + 1, fleet2_before=[struct.unpack_from("<13h", bytes.fromhex(rec["fleets_before"][2]))] if "fleets_before" in rec else None,
+                        fleet2_after=struct.unpack_from("<13h", bytes.fromhex(rec["fleets_after"][2])) if rec.get("fleets_after") else None, cal_before=rec.get("cal_before"),
+                        autosave_news=sav.parse((ART / kept).read_bytes())["news"] if kept else None, kept=kept)
+    elif CASE == "D3":
+        # Check D, human arms at distance 1 and 0 (the army cannot get there in one turn: army 0 has 8 moves): army 0 is moved BY PLAY to (100,40) in turn 1 (spring week 1), the turn
+        # is ended, and in turn 2 it is moved to a tile at the wanted distance from Rome (101,43) before Mobilize. Rome's ready unit (queue state 17) is still ready in turn 2.
+        RX, RY = 101, 43
+        cheb = lambda x, y: max(abs(x - RX), abs(y - RY))
+        first = True
+        for tag, want in (("human_dist1_turn2", 1), ("human_dist0_turn2", 0), ("human_dist2_turn2", 2)):
+            if first: g.load(START, seed=12345); first = False
+            else: g.open(START); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            pos, texts = g.move(0, 100, 40); log("turn1_move", tag=tag, pos=pos, texts=texts, moves_left=g.army_state(0)["moves"])
+            name, texts = g.end_turn(); time.sleep(2); keep_auto(name, g.turn_number(), tag + "_t1")
+            log("turn2_start", tag=tag, army0=g.army_state(0)["moves"], pos=g.army_pos(0), queue=[tuple(struct.unpack("<4h", g.mem(drv.NATIONS + 0x2e4 + 8 * k, 8))) for k in range(4)], cal=g.calendar(), texts=texts)
+            cands = [(x, y) for x in range(RX - 3, RX + 4) for y in range(RY - 3, RY + 4) if cheb(x, y) == want and g.cell(x, y) in (2, 3, 4, 84, 200)]
+            cands.sort(key=lambda c: max(abs(c[0] - 100), abs(c[1] - 40)))
+            reached = None
+            for (x, y) in cands[:5]:
+                pos, texts = g.move(0, x, y); log("move_try", tag=tag, target=(x, y), pos=pos, texts=texts)
+                if cheb(*pos) == want: reached = pos; break
+            if reached is None: log("move_failed", tag=tag, want=want, pos=g.army_pos(0)); continue
+            log("army0", tag=tag, pos=g.army_pos(0), cheb=cheb(*g.army_pos(0)), armies=g.i16(0x4A0324))
+            mobilize_rome(tag)
+    elif CASE == "H":
+        # Check H: rebellion of a Roman city (Arretium, 81, owner = allegiance = Rome, loyalty staged 2, week 11) with TWO armies of two different nations at war with Rome within
+        # 9 tiles. The start save has only Gaul's army 9 near a Roman city (Arretium: 8 tiles); Rome's own army 0 stands next to Arretium (distance 1). A second war nation is made by
+        # L1: army 0's owner word := Dacia (10) (or Gaul), army 9's owner word := Dacia in the other arm, the map marker words of the two tiles := 200 + owner (the engine's own marker
+        # rule, FUN_00449f08), and relation Rome-Dacia := 3 (both directions). The rule keeps the LAST qualifying army (highest index): arm "idx9_dacia" must give Dacia, arm "idx0_dacia" Gaul.
+        # The control (no army staged) is the g3 case: Gaul.
+        base = [("city", 81, {"loyalty": 2})]
+        arms = [("h_ctl_gaul_only", base, None),
+                ("h_idx0_gaul_idx9_dacia", base + [("owner", 9, 10), ("owner", 0, 6), ("relation", 0, 10, 3)], chain(set_map(93, 28, 210), set_map(100, 37, 206))),
+                ("h_idx0_dacia_idx9_gaul", base + [("owner", 0, 10), ("relation", 0, 10, 3)], set_map(100, 37, 210))]
+        for tag, ops, ex in arms:
+            src = staged(START, ops, tag, chain(W11, ex) if ex else W11)
+            before, afters, diffs = go(tag, src)
+            log("prediction", tag=tag, city=81, predicted=predict_rebel(before, 81), observed_owner=afters[0]["cities"][81][3], observed_loyalty=afters[0]["cities"][81][5],
+                new_news=[t for t in afters[0]["news"] if "defects" in t or "falls" in t][-3:])
+    elif CASE == "I":
+        # Check I: the AI nations' quarter income. The staged week-11 start save (no staging beyond the week) is opened n times in ONE process and one End turn each (independent
+        # RNG draws). The before state is the staged file, the after state the kept autosave (Rome's next turn start); analysis_I.py recomputes every nation's treasury from the code
+        # (FUN_00451b40 54741-54889) and compares. The unit price table is read from memory here.
+        n = int(sys.argv[2]) if len(sys.argv) > 2 else 4
+        src = staged(START, [], "i_week11", W11)
+        for i in range(n):
+            if i == 0: g.load(src, seed=12345)
+            else: g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            if i == 0: log("unit_prices", prices=[struct.unpack("<hh", g.mem(0x478fd2 + t * 40, 4)) for t in range(5)], note="(0x478fd2, 0x478fd4) + 40 t: short pair; 0x478fd4 is the regular-unit price the quarter upkeep uses")
+            b0 = snap(g); name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), f"i_{i + 1}")
+            b1 = snap(g)
+            log("quarter_round", opening=i + 1, staged=src.name, kept=kept, texts=texts, news_new=new_news(b0, b1), autosave_news=sav.parse((ART / kept).read_bytes())["news"],
+                nations_before={sav.NATIONS[k]: nat_brief(b0["nations"][k]) for k in range(16)}, nations_after={sav.NATIONS[k]: nat_brief(b1["nations"][k]) for k in range(16)})
+    elif CASE == "J":
+        # Check J: where do the -8 relations of a (re)born or dead Greece come from? The AI seat's partner swap (FUN_0044fb7c, last loop 53423-53444: a trade partner k of the AI nation
+        # whose tax base is below that of a candidate with relation 0 is dropped through the relation setter with 0, which turns a trade (1) into the cooldown -8, and the candidate
+        # becomes a partner) is the code-side candidate. Arms (one process, week 11, one End turn each): control (no staging), Greece dead with 0, 7, 9 disloyal Greek-allegiance
+        # Roman cities (rebirth needs more than 7), Greece alive at unity 0 with 9. The relation matrices of every nation before (the staged file) and after (the kept autosave) are compared
+        # by analysis_J.py against the swap rule.
+        b0s = sav.load(START); greek = list(b0s["nations"][7]["city_list"])
+        NINE = [111, 116, 119, 122, 120, 123, 97, 100, 101]
+        def arm(tag, ids, dead):
+            ops = []
+            for c in ids: ops += [("city", c, {"allegiance": 7, "loyalty": 5})]
+            if not dead and ids: ops += [("unity", 7, 0)]
+            return tag, ops, chain(W11, give_cities(7, 4, greek, kill_frm=True)) if dead else W11
+        arms = [arm("j_control_nostage", [], False), arm("j_dead_0", [], True), arm("j_dead_7", NINE[:7], True), arm("j_dead_9", NINE, True), arm("j_alive_unity0_9", NINE, False), arm("j_control_nostage_again", [], False)]
+        for tag, ops, ex in arms:
+            src = staged(START, ops, tag, ex)
+            before, afters, diffs = go(tag, src)
+            log("j_summary", tag=tag, greece_rel_before=before["nations"][7]["relations"], greece_rel_after=afters[0]["nations"][7]["relations"], tax_base_after={sav.NATIONS[k]: afters[0]["nations"][k]["tax_base"] for k in range(16)},
+                unity_after={sav.NATIONS[k]: afters[0]["nations"][k]["unity"] for k in range(16)})
+    elif CASE == "D4":
+        # Check D, AI branch with the AI's own gating satisfied. The AI mobilises queued state-24 units only when its war threat exceeds its strength (FUN_0044ffbc: +15000 per war
+        # relation, +armies of war nations ...; FUN_004504f4 is called with the deficit) and, inside it, only if a ready unit has an own army within distance < 6 of its city or at least 4
+        # units are ready. L1 staging: the AI nation at war (relation 3, both directions) with eight other nations, one queue slot's state := 24. Arms (one process, one End turn each):
+        #   thracia_dist4: Byzantium, own army 6 at distance 4 (the < 6 branch: merge into army 6 expected)   carthage_dist1: army 3 at distance 1 (positive control: merge by either branch)
+        #   galatia_dist8: Ancyra, own army 12 at distance 8 (>= 6: a NEW army at a free tile expected)       thracia_dist4_nowars: the same slot without the wars (gating control: nothing).
+        def wars(n, others): return [("relation", n, k, 3) for k in others]
+        def arm(tag, nation, slot, others, watch, city_name):
+            ops = wars(nation, others) if others else []
+            src = staged(START, ops, tag, set_queue(nation, slot, state=24))
+            g.open(src) if not FIRST[0] else g.load(src, seed=12345)
+            FIRST[0] = False
+            g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            before = snap(g)
+            name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), tag)
+            after = snap(g)
+            qrow = lambda: [tuple(struct.unpack_from("<4h", g.mem(drv.NATIONS + nation * drv.NATION_LEN + 0x2e4 + 8 * k, 8))) for k in range(6)]
+            log("ai_arm", tag=tag, nation=nation, city=city_name, staged_slot=slot, wars_with=others, texts=texts, kept=kept, queue_after=qrow(), armies_before=len(before["armies"]), armies_after=len(after["armies"]),
+                watch=[{"army": a, "owner": after["armies"][a]["owner"], "before": [(u["type"], u["troops"], u["name"]) for u in before["armies"][a]["units"]], "after": [(u["type"], u["troops"], u["name"]) for u in after["armies"][a]["units"]],
+                        "pos_before": (before["armies"][a]["x"], before["armies"][a]["y"]), "pos_after": (after["armies"][a]["x"], after["armies"][a]["y"])} for a in watch],
+                new_armies=[(a["id"], a["owner"], a["x"], a["y"], [(u["type"], u["troops"], u["name"]) for u in a["units"]]) for a in after["armies"][len(before["armies"]):]],
+                relations_after={sav.NATIONS[k]: after["nations"][nation]["relations"].get(sav.NATIONS[k]) for k in range(16) if k != nation})
+        everyone = lambda n: [k for k in range(16) if k != n][:8]
+        arm("d4_thracia_dist4_wars8", 15, 1, [k for k in range(16) if k != 15][:8], [6], "Byzantium (192)")
+        arm("d4_carthage_dist1_wars8", 1, 1, [k for k in range(16) if k != 1][:8], [3], "Carthago (72)")
+        arm("d4_galatia_dist8_wars8", 12, 1, [k for k in range(16) if k != 12][:8], [12], "Ancyra (218)")
+        arm("d4_thracia_dist4_nowars_ctl", 15, 1, [], [6], "Byzantium (192)")
+    elif CASE == "K":
+        # Check K: trade/alliance offer eligibility at each roll (FUN_00452034 54975-55030). n rounds, each = File > Open of the same staged save (same state, the RNG goes on: independent
+        # draws) + End turn, autosave kept; analysis_K.py recomputes, from each kept autosave (the state at the roll), which proposers were eligible for which offer and compares
+        # the observed proposer/type and the frequency. Variants: nat (start save unstaged: Rome trades with Illyria, at war with Gaul), p3 (Rome also trades with Carthage and Seleucid:
+        # three partners, so the tax-base threshold applies).
+        variant, n = sys.argv[2], int(sys.argv[3])
+        ops = {"nat": [], "p3": [("relation", 0, 1, 1), ("relation", 0, 2, 1)]}[variant]
+        src = staged(START, ops, "k_" + variant)
+        for i in range(n):
+            rec = light_round(g, f"k_{variant}_t{i + 1:03d}", src, i == 0)
+            if rec.get("game_over"): break
+    elif CASE == "D5":
+        # Check D, the AI's "four ready units" branch: Galatia (Ancyra (192,38), own army 12 at distance 8 >= 6) with FOUR queue slots at state 24 and eight wars: no army within 6,
+        # so FUN_0044a4e0 falls to FUN_00449f08 (a NEW army at a free tile) if the AI calls it at all (FUN_004504f4 calls it when >= 4 units are ready). Control (same process): the same with three.
+        def wars(n, others): return [("relation", n, k, 3) for k in others]
+        for i, (tag, slots) in enumerate((("d5_galatia_4ready", [0, 1, 2, 3]), ("d5_galatia_3ready_ctl", [0, 1, 2]))):
+            src = staged(START, wars(12, [k for k in range(16) if k != 12][:8]), tag, chain(*[set_queue(12, s_, state=24) for s_ in slots]))
+            if i == 0: g.load(src, seed=12345)
+            else: g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            before = snap(g); name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), tag); after = snap(g)
+            log("ai_arm", tag=tag, nation=12, staged_slots=slots, texts=texts, kept=kept, queue_after=[tuple(struct.unpack_from("<4h", g.mem(drv.NATIONS + 12 * drv.NATION_LEN + 0x2e4 + 8 * k, 8))) for k in range(10)],
+                armies_before=len(before["armies"]), armies_after=len(after["armies"]),
+                watch=[{"army": 12, "before": [(u["type"], u["troops"], u["name"]) for u in before["armies"][12]["units"]], "after": [(u["type"], u["troops"], u["name"]) for u in after["armies"][12]["units"]],
+                        "pos_before": (before["armies"][12]["x"], before["armies"][12]["y"]), "pos_after": (after["armies"][12]["x"], after["armies"][12]["y"])}],
+                new_armies=[(a["id"], a["owner"], a["x"], a["y"], [(u["type"], u["troops"], u["name"]) for u in a["units"]]) for a in after["armies"][len(before["armies"]):]])
+    elif CASE == "E":
+        # Check E: a REAL X-button click on the main window's title bar, under xfwm4 (installed, no root needed) on a separate Xvfb display :98 (the other runs use :99 without a window manager).
+        # The quit prompt is the one g1 G6 reached with a posted WM_SYSCOMMAND. Control in the same display: with no game loaded the click ends the process at once, no box.
+        # Menu clicks of the driver use absolute coordinates with the client at (0,0): here the main window's client origin is read (xwininfo) and added to the menu clicks only.
+        wm_log = lambda **kw: log("wm", **kw)
+        def alive(): return subprocess.run(["pgrep", "-f", "^Imperial Conquest"], capture_output=True).returncode == 0
+        env98 = dict(os.environ, DISPLAY=":98")
+        if subprocess.run(["pgrep", "-fx", "Xvfb :98 -screen 0 1280x1024x24"], capture_output=True).returncode:
+            subprocess.Popen(["setsid", "Xvfb", ":98", "-screen", "0", "1280x1024x24"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL); time.sleep(2)
+        wm = subprocess.Popen(["setsid", "xfwm4", "--compositor=off"], env=env98, stdout=open(ART / f"E_{STAMP}_xfwm4.out", "w"), stderr=subprocess.STDOUT); time.sleep(3)
+        _hash_line(ART / f"E_{STAMP}_xfwm4.out")
+        chk = subprocess.run(["xprop", "-root", "_NET_SUPPORTING_WM_CHECK"], env=env98, capture_output=True, text=True).stdout
+        wm_log(display=":98", xfwm4_pid=wm.pid, xfwm4_alive=wm.poll() is None, supporting_wm_check=chk.strip())
+        def xinfo(wid, *a): return subprocess.run(["xwininfo", "-id", str(wid)] + list(a), env=env98, capture_output=True, text=True).stdout
+        def main_win():
+            w = g.find_windows("^Imperial Conquest 2")
+            return w[0][0] if w else None
+        def geom(wid):
+            t = xinfo(wid); import re as _re
+            ax, ay = (int(_re.search(r"Absolute upper-left X:\s+(-?\d+)", t).group(1)), int(_re.search(r"Absolute upper-left Y:\s+(-?\d+)", t).group(1)))
+            wd, ht = (int(_re.search(r"Width: (\d+)", t).group(1)), int(_re.search(r"Height: (\d+)", t).group(1)))
+            ext = subprocess.run(["xprop", "-id", str(wid), "_NET_FRAME_EXTENTS"], env=env98, capture_output=True, text=True).stdout.strip()
+            return {"client_x": ax, "client_y": ay, "w": wd, "h": ht, "frame_extents": ext}
+        def sh_x(*a): return subprocess.run(list(a), env=env98, capture_output=True, text=True).stdout
+        OFF = [0, 0]
+        def menu_wm(name, item):
+            g.reset_ui(); g.click(OFF[0] + drv.MENU[name], OFF[1] + 36, pause=0.8); g.click(OFF[0] + drv.MENU[name] + 20, OFF[1] + drv.MENU_ITEM_Y(item), pause=1.2)
+        g.menu = menu_wm
+        def frame_of(wid):
+            """the decorated frame: walk up xwininfo -tree parents until the child of root"""
+            t = sh_x("xwininfo", "-id", str(wid), "-tree")
+            import re as _re
+            m = _re.search(r"Parent window id: (0x[0-9a-f]+)", t); return m.group(1) if m else None
+        def click_x_button(tag):
+            wid = main_win(); fr = frame_of(wid)
+            fg = geom(fr) if fr else None; cg = geom(wid)
+            png = ART / f"E_{STAMP}_{tag}_titlebar.png"
+            sh_x("import", "-window", "root", "-crop", f"{fg['w']}x{max(40, cg['client_y'] - fg['client_y'] + 4)}+{fg['client_x']}+{fg['client_y']}", str(png)); _hash_line(png)
+            wm_log(tag=tag, frame=fr, frame_geom=fg, client_geom=cg, titlebar_image=png.name)
+            return fg, cg, png
+        g.set_seed(12345); g.start()
+        wid = main_win(); cg0 = geom(wid); wm_log(step="started", main_window=wid, client=cg0, tree=sh_x("xwininfo", "-root", "-tree")[:1500], root=shot(g, "started"))
+    elif CASE == "L_probe":
+        # Check L, step 1: the 20 fixed storm centres of the weather (FUN_00451304: DAT_00479540, 20 x (x, y) shorts) read from memory after loading the Antium port save, with the
+        # distance of each to Rome's fleet 2 and the map words of the 3 x 3 around it (a cell is painted only with no city marker 20..99 in its 3 x 3).
+        g.load(PORT, seed=12345)
+        cen = [struct.unpack("<hh", g.mem(0x479540 + 4 * k, 4)) for k in range(20)]
+        f2 = g.fleet_state(2)
+        log("centres", centres=cen, fleet2=f2, rows=[{"k": k, "x": x, "y": y, "dist_to_fleet2": max(abs(x - f2["x"]), abs(y - f2["y"])), "word": g.cell(x, y),
+                                                      "ring": [g.cell(min(319, max(0, x + dx)), min(139, max(0, y + dy))) for dx in (-1, 0, 1) for dy in (-1, 0, 1)]} for k, (x, y) in enumerate(cen)])
     elif CASE == "none":
         pass
     else:
