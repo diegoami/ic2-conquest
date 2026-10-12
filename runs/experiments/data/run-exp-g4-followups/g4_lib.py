@@ -408,3 +408,39 @@ def give_cities(frm, to, ids, kill_frm=False):
             struct.pack_into("<h", b, stage._nation(b, frm) + 0x440, 0); struct.pack_into("<h", b, stage._nation(b, frm) + 0x444, -1)
     f.__doc__ = f"cities {list(ids)}: owner {frm} -> {to}, city lists and counts kept consistent" + ("; nation %d unity 0, capital -1" % frm if kill_frm else "")
     return f
+
+
+# ---- g4 additions -------------------------------------------------------------------------------------------------------------
+import os, threading
+
+
+class Poller:
+    """Check F: a thread that reads `size` bytes at `addr` of the game's memory (/proc/<pid>/mem, read only) every `dt` seconds and records every CHANGE with
+    the time (time.time()), plus the sample count and the largest gap between two samples; `mark(label)` records a UI event on the same clock."""
+    def __init__(self, pid, addr, size=1, dt=0.01):
+        self.fd = os.open(f"/proc/{pid}/mem", os.O_RDONLY); self.addr, self.size, self.dt = addr, size, dt
+        self.changes, self.marks, self.samples, self.max_gap = [], [], 0, 0.0
+        self._stop = threading.Event(); self.last = None; self._t = None
+        self.th = threading.Thread(target=self._run, daemon=True)
+
+    def read(self): return os.pread(self.fd, self.size, self.addr)
+
+    def _run(self):
+        prev_t = None
+        while not self._stop.is_set():
+            try: v = self.read()
+            except OSError: break
+            t = time.time(); self.samples += 1
+            if prev_t is not None: self.max_gap = max(self.max_gap, t - prev_t)
+            prev_t = t
+            if v != self.last: self.changes.append((t, v.hex())); self.last = v
+            time.sleep(self.dt)
+
+    def start(self): self.th.start(); return self
+    def mark(self, label): self.marks.append((time.time(), label, self.read().hex()))
+    def stop(self):
+        self._stop.set(); self.th.join(timeout=2)
+        try: os.close(self.fd)
+        except OSError: pass
+        return {"samples": self.samples, "max_gap_s": round(self.max_gap, 4), "interval_s": self.dt,
+                "changes": [(round(t, 3), v) for t, v in self.changes], "marks": [(round(t, 3), l, v) for t, l, v in self.marks]}

@@ -17,3 +17,4 @@ Order F, C, B, A, D, G, H, I, K, J, L, E (issue #83 letters), each its own case 
 - Rule 6: commit and push each batch; `scripts/archive_measurements.py run-exp-g4-followups --commit`; `release_sync.py` after every batch.
 
 ## Progress
+- F batch 1: static (`static_flag_xrefs.txt`: the only clear is `mov byte [0x4a0334],0` at 0x448ac3 in the new-game initialiser 0x448aa4, called from 0x45a93a (form create) and 0x45aa32 (`TPremierForm_NewGame`)) and dynamic (`g4_checks-F-20261012-103825.jsonl`, 10 ms poller, 4,678 samples: 0 at start, 1 during File>Open, still 1 through File>New+No, 0 at 0.43 s after the Yes click, before the leaders form is up, 0 afterwards and at File>Save). Release `run-exp-g4-followups` created (8 assets).
