@@ -39,6 +39,7 @@ Order F, C, B, A, D, G, H, I, K, J, L, E (issue #83 letters), each its own case 
 - PR #84 round-2 R11: G section now discloses that the two excluded G readings are Carthage-sinking exclusions (`g_away_calm_c80_06`, `g_away_rough_c60_05`).
 - PR #84 round-2 R12: H section's "prediction logged before each round" replaced with "after `go()` finishes, from the before-snapshot taken at the start of the round"; the existing `prediction` log lines are preserved unchanged.
 - PR #84 round-3 R1: case I in the finding reconciled with `analysis_I.v5.txt` — 9 of 15 AI exact (was 8/7); Gaul removed from residuals (now exact); Celtiberia seat 14 -> 15; sentence added distinguishing the 4 unadjusted exact nations (Seleucid, Macedonia, Numidia, Illyria) and the 5 R3-matched ones (Gaul new-exact; Ptolemaic, Bithynia, Media, Thracia; Armenia reduced +23 -> +2 still inexact).
+- PR #84 round-3 R2: `give_cities.put()` receiver now also gets `snapshot=snap` (was `snapshot=None`); snapshot is refreshed after the sender's put so the receiver's assertion compares against the post-sender state (the sender's writes change bytes in the sender's nation block, which the receiver must not be blamed for). New `tests/test_give_cities.py` builds a buffer where nation A (Carthage, the receiver) has a full 334-city list and absorbs one city from Rome; the receiver's +0x2e4 byte (recruit-queue slot 0 state) is unchanged after the call, the 334th list entry is intact. The finding line 33 claim is updated to also state the assertion runs for both nations.
 
 ## END
 
