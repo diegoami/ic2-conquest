@@ -25,3 +25,14 @@ Plan: fix R1-R9 of the gpt-6.1-sol review of PR #81 without a new Wine run (all 
 - 3656b18 R2/R4: `news_scan2.py` (nations matched, whole treaty blocks, any distance, per-file SHA-256, versioned outputs `news_scan.v2/v3.txt`, `news_scan_summary*.txt`); `news_scan_v1_hashes.txt` reproduces "870 distinct" from the v1 list; `news_scan.txt` untouched.
 - 1dddd87 R3/R7/R9 data: `q6_gate_check.txt` (both trade gates on the start save: 11 of 12 non-neighbours pass, Galatia has no trade partner), `code_extract_g3.v3.txt` (adds `FUN_0044fa20`, lines 53208-53234), `analysis_g3.v2.txt` (OCR proposer-name check: 32 exact + 4 `liyia` variants, 0 disagreements), `news_scan2_selftest.py` (reverse-order positive control).
 - next commit: finding text for R2-R9 (see END).
+
+## END (review round 1)
+- R1 e3bb864: versioned sync record + offline test (`release_sync_offline_test.py`, its output file beside it).
+- R2/R4 3656b18, 1dddd87: `news_scan2.py`, `news_scan.v3.txt`, `news_scan_summary.v2.txt` (1,246 saves read, 1,218 with both, 883 distinct, 907 blocks, 907 matched, 0 reverse, 0 unmatched); positive control `news_scan2_selftest.py`; `news_scan_v1_hashes.txt` (870 reproduced); finding section 3 rewritten.
+- R3 1dddd87 + d88ccc9: both gates, fewer-than-three branch, `q6_gate_check.txt`; 30 stated as a ceiling, 27.5 with the gates.
+- R5 d88ccc9: before-to-after vs capped increment (550, undeposed to 423); cooldowns -1..-5 only.
+- R6 d88ccc9: alive vs dead Greece differences listed (Athens 166 keeps capital; Tarrentum unchanged); "thaw only" removed.
+- R7 1dddd87, d88ccc9: `code_extract_g3.v3.txt` with FUN_0044fa20 (actual bounds 53208-53234, not 53236); line-5 reference fixed; v1, v2 kept.
+- R8 d88ccc9: replay disclosed; 20 independent pairs at condition 60 (means 2.15 / 0.30), the 32-pair pool withdrawn.
+- R9 1dddd87, d88ccc9: proposer-name check in `g3_report.py`, `analysis_g3.v2.txt`.
+Left: nothing known. No Wine run, so no archive_measurements or release sync was needed (no new binaries). Not merged, no label change.
