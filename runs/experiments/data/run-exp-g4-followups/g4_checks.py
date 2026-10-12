@@ -356,7 +356,7 @@ try:
                 arms = order[k % 4:] + order[:k % 4]
                 for where, cell in arms:
                     tag = f"g_{where}_{cell}_c{cond}_{k + 1:02d}"
-                    src = staged(base[where], [], tag, set_fleet(2, cond=cond, supplies=500, cell=1 if cell == "rough" else 0))
+                    src = staged(base[where], [], tag, set_fleet(2, cond=cond, supplies=500, cell=1 if cell == "rough" else 0), stem="b")
                     rec = light_round(g, tag, src, False)
                     kept = rec.get("kept")
                     log("storm_trial", tag=tag, where=where, cell=cell, cond=cond, k=k + 1, fleet2_before=[struct.unpack_from("<13h", bytes.fromhex(rec["fleets_before"][2]))] if "fleets_before" in rec else None,
@@ -462,9 +462,9 @@ try:
         # Check K: trade/alliance offer eligibility at each roll (FUN_00452034 54975-55030). n rounds, each = File > Open of the same staged save (same state, the RNG goes on: independent
         # draws) + End turn, autosave kept; analysis_K.py recomputes, from each kept autosave (the state at the roll), which proposers were eligible for which offer and compares
         # the observed proposer/type and the frequency. Variants: nat (start save unstaged: Rome trades with Illyria, at war with Gaul), p3 (Rome also trades with Carthage and Seleucid:
-        # three partners, so the tax-base threshold applies).
+        # three partners, so the tax-base threshold applies), nowar (peace with Gaul: Rome at war with nobody, so the alliance branch is open).
         variant, n = sys.argv[2], int(sys.argv[3])
-        ops = {"nat": [], "p3": [("relation", 0, 1, 1), ("relation", 0, 2, 1)]}[variant]
+        ops = {"nat": [], "p3": [("relation", 0, 1, 1), ("relation", 0, 2, 1)], "nowar": [("relation", 0, 6, 0)]}[variant]
         src = staged(START, ops, "k_" + variant)
         for i in range(n):
             rec = light_round(g, f"k_{variant}_t{i + 1:03d}", src, i == 0)
@@ -483,6 +483,46 @@ try:
                 watch=[{"army": 12, "before": [(u["type"], u["troops"], u["name"]) for u in before["armies"][12]["units"]], "after": [(u["type"], u["troops"], u["name"]) for u in after["armies"][12]["units"]],
                         "pos_before": (before["armies"][12]["x"], before["armies"][12]["y"]), "pos_after": (after["armies"][12]["x"], after["armies"][12]["y"])}],
                 new_armies=[(a["id"], a["owner"], a["x"], a["y"], [(u["type"], u["troops"], u["name"]) for u in a["units"]]) for a in after["armies"][len(before["armies"]):]])
+    elif CASE == "L_probe":
+        # Check L, step 1: the 20 fixed storm centres of the weather (FUN_00451304: DAT_00479540, 20 x (x, y) shorts) read from memory after loading the Antium port save, with the
+        # distance of each to Rome's fleet 2 and the map words of the 3 x 3 around it (a cell is painted only with no city marker 20..99 in its 3 x 3).
+        g.load(PORT, seed=12345)
+        cen = [struct.unpack("<hh", g.mem(0x479540 + 4 * k, 4)) for k in range(20)]
+        f2 = g.fleet_state(2)
+        log("centres", centres=cen, fleet2=f2, rows=[{"k": k, "x": x, "y": y, "dist_to_fleet2": max(abs(x - f2["x"]), abs(y - f2["y"])), "word": g.cell(x, y),
+                                                      "ring": [g.cell(min(319, max(0, x + dx)), min(139, max(0, y + dy))) for dx in (-1, 0, 1) for dy in (-1, 0, 1)]} for k, (x, y) in enumerate(cen)])
+    elif CASE == "L":
+        # Check L: a rough-sea cell painted by the game's own weather (FUN_00451304: 20 fixed storm centres, one painted box per firing centre; a fleet standing in a painted box has its
+        # covered-cell word set to 1). Rome's fleet 2 of the Antium port save (supplies staged 500, L1, so the long run does not starve it; peace staged with Carthage and Gaul as in G,
+        # because Carthage sinks fleets at sea) is moved BY PLAY to the centre 5 at (100,56), then End turn rounds are played naturally (up to n). After every round the fleet record, the
+        # number of rough cells (map word 1 on sea), the rough cells within 1 tile of the fleet and the covered-cell word are logged and the autosave kept. When the covered word reads 1
+        # at a turn start, the NEXT round's storm roll is the one the weather made rough (the covered word is read by the storm pass before the weather call rewrites it, FUN_004514ec).
+        # When a rough cell is adjacent to the fleet at a turn start, one move onto it is made and its cost and the Information window text are logged (once).
+        n = int(sys.argv[2]) if len(sys.argv) > 2 else 40; tx, ty = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (100, 56)
+        src = staged(PORT, [("relation", 0, 1, 0), ("relation", 0, 6, 0)], "l_peace_supplies500", set_fleet(2, supplies=500))
+        g.load(src, seed=12345)
+        def rough_cells():
+            mp = g.mem(drv.MAP, 320 * 140 * 2); return [(i // 140, i % 140) for i in range(320 * 140) if mp[2 * i] == 1 and mp[2 * i + 1] == 0]
+        def fstate():
+            r = g.fleet_rec(2); f = struct.unpack_from("<13h", r); return {"x": f[0], "y": f[1], "moves": f[6], "supplies": f[7], "ships": f[9], "cond": f[10], "cell": f[12], "raw": r.hex()}
+        log("start", fleet2=fstate(), rough=len(rough_cells()), cal=g.calendar())
+        pos, texts = g.move_fleet(2, tx, ty); log("fleet_moved", target=(tx, ty), pos=pos, texts=texts, fleet2=fstate(), root=shot(g, "fleet_at_centre"))
+        tested, covered_rounds = False, 0
+        for r in range(1, n + 1):
+            before = fstate(); cal0 = g.calendar()
+            name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), f"l_r{r:02d}")
+            after = fstate(); rc = rough_cells(); fx, fy = after["x"], after["y"]
+            near = [c for c in rc if max(abs(c[0] - fx), abs(c[1] - fy)) <= 1]
+            news = [t for t in sav.parse((ART / kept).read_bytes())["news"] if "fleet belonging" in t]
+            log("l_round", round=r, cal_before=cal0, cal_after=g.calendar(), before=before, after=after, rough_total=len(rc), rough_within1=near, covered_flag_now=after["cell"], storm_news=news, texts=texts, kept=kept)
+            if after["cell"] == 1: covered_rounds += 1
+            if near and not tested and after["cell"] == 0:
+                tx2, ty2 = near[0]; tested = True; mv0 = after["moves"]
+                pos, texts = g.move_fleet(2, tx2, ty2); a2 = fstate()
+                info = [w for w in g.find_windows("^Information$")]; io = ocr_window(g, "rough_move_info", info[0][0]) if info else None
+                log("rough_move", target=(tx2, ty2), word_at_target_before=1, pos=pos, moves_before=mv0, moves_after=a2["moves"], cost=mv0 - a2["moves"], covered_after=a2["cell"], info_ocr=io, texts=texts, root=shot(g, "rough_move"))
+            if g.find_windows("^End of Game$") or after["ships"] <= 0: break
+            if covered_rounds >= 3 and tested: break
     elif CASE == "E":
         # Check E: a REAL X-button click on the main window's title bar, under xfwm4 (installed, no root needed) on a separate Xvfb display :98 (the other runs use :99 without a window manager).
         # The quit prompt is the one g1 G6 reached with a posted WM_SYSCOMMAND. Control in the same display: with no game loaded the click ends the process at once, no box.
@@ -525,47 +565,42 @@ try:
             return fg, cg, png
         g.set_seed(12345); g.start()
         wid = main_win(); cg0 = geom(wid); wm_log(step="started", main_window=wid, client=cg0, tree=sh_x("xwininfo", "-root", "-tree")[:1500], root=shot(g, "started"))
-    elif CASE == "L_probe":
-        # Check L, step 1: the 20 fixed storm centres of the weather (FUN_00451304: DAT_00479540, 20 x (x, y) shorts) read from memory after loading the Antium port save, with the
-        # distance of each to Rome's fleet 2 and the map words of the 3 x 3 around it (a cell is painted only with no city marker 20..99 in its 3 x 3).
-        g.load(PORT, seed=12345)
-        cen = [struct.unpack("<hh", g.mem(0x479540 + 4 * k, 4)) for k in range(20)]
-        f2 = g.fleet_state(2)
-        log("centres", centres=cen, fleet2=f2, rows=[{"k": k, "x": x, "y": y, "dist_to_fleet2": max(abs(x - f2["x"]), abs(y - f2["y"])), "word": g.cell(x, y),
-                                                      "ring": [g.cell(min(319, max(0, x + dx)), min(139, max(0, y + dy))) for dx in (-1, 0, 1) for dy in (-1, 0, 1)]} for k, (x, y) in enumerate(cen)])
-    elif CASE == "L":
-        # Check L: a rough-sea cell painted by the game's own weather (FUN_00451304: 20 fixed storm centres, one painted box per firing centre; a fleet standing in a painted box has its
-        # covered-cell word set to 1). Rome's fleet 2 of the Antium port save (supplies staged 500, L1, so the long run does not starve it; nothing else staged) is moved BY PLAY to the
-        # centre 5 at (100,56), then End turn rounds are played naturally (up to n). After every round the fleet record, the number of rough cells (map word 1 on sea), the rough cells
-        # within 1 tile of the fleet and the covered-cell word are logged and the autosave kept. When the covered word reads 1 at a turn start, the NEXT round's storm roll is the one the
-        # weather made rough (the covered word is read by the storm pass before the weather call rewrites it, FUN_004514ec). When a rough cell is adjacent to the fleet at a turn start, one
-        # move onto it is made and its cost and the Information window text are logged (once).
-        n = int(sys.argv[2]) if len(sys.argv) > 2 else 40; tx, ty = (int(sys.argv[3]), int(sys.argv[4])) if len(sys.argv) > 4 else (100, 56)
-        src = staged(PORT, [], "l_supplies500", set_fleet(2, supplies=500))
-        g.load(src, seed=12345)
-        def rough_cells():
-            mp = g.mem(drv.MAP, 320 * 140 * 2); return [(i // 140, i % 140) for i in range(320 * 140) if mp[2 * i] == 1 and mp[2 * i + 1] == 0]
-        def fstate():
-            r = g.fleet_rec(2); f = struct.unpack_from("<13h", r); return {"x": f[0], "y": f[1], "moves": f[6], "supplies": f[7], "ships": f[9], "cond": f[10], "cell": f[12], "raw": r.hex()}
-        log("start", fleet2=fstate(), rough=len(rough_cells()), cal=g.calendar())
-        pos, texts = g.move_fleet(2, tx, ty); log("fleet_moved", target=(tx, ty), pos=pos, texts=texts, fleet2=fstate(), root=shot(g, "fleet_at_centre"))
-        tested, covered_rounds = False, 0
-        for r in range(1, n + 1):
-            before = fstate(); cal0 = g.calendar()
-            name, texts = g.end_turn(); time.sleep(2); kept = keep_auto(name, g.turn_number(), f"l_r{r:02d}")
-            after = fstate(); rc = rough_cells(); fx, fy = after["x"], after["y"]
-            near = [c for c in rc if max(abs(c[0] - fx), abs(c[1] - fy)) <= 1]
-            news = [t for t in sav.parse((ART / kept).read_bytes())["news"] if "fleet belonging" in t]
-            log("l_round", round=r, cal_before=cal0, cal_after=g.calendar(), before=before, after=after, rough_total=len(rc), rough_within1=near, covered_flag_now=after["cell"], storm_news=news, texts=texts, kept=kept)
-            if after["cell"] == 1: covered_rounds += 1
-            if near and not tested and after["cell"] == 0:
-                tx2, ty2 = near[0]; tested = True; mv0 = after["moves"]
-                info0 = [w for w in g.find_windows("^Information$")]
-                pos, texts = g.move_fleet(2, tx2, ty2); a2 = fstate()
-                info = [w for w in g.find_windows("^Information$")]; io = ocr_window(g, "rough_move_info", info[0][0]) if info else None
-                log("rough_move", target=(tx2, ty2), word_at_target_before=1, pos=pos, moves_before=mv0, moves_after=a2["moves"], cost=mv0 - a2["moves"], covered_after=a2["cell"], info_ocr=io, texts=texts, root=shot(g, "rough_move"))
-            if g.find_windows("^End of Game$") or after["ships"] <= 0: break
-            if covered_rounds >= 3 and tested: break
+        OFF[0], OFF[1] = cg0["client_x"], cg0["client_y"]
+        fg, cg, png = click_x_button("nogame")
+        if len(sys.argv) < 4:
+            wm_log(step="probe_only", note="pass <dx from the frame's right edge> <dy from the frame's top> of the close button to click it")
+        else:
+            dx, dy = int(sys.argv[2]), int(sys.argv[3])
+            def real_click(tag):
+                fg, cg, png = click_x_button(tag)
+                x, y = fg["client_x"] + fg["w"] - dx, fg["client_y"] + dy
+                sh_x("xdotool", "mousemove", str(x), str(y)); time.sleep(0.5)
+                snap_png = ART / f"E_{STAMP}_{tag}_before_click.png"; sh_x("import", "-window", "root", "-crop", f"{fg['w']}x{cg['client_y'] - fg['client_y'] + 4}+{fg['client_x']}+{fg['client_y']}", str(snap_png)); _hash_line(snap_png)
+                sh_x("xdotool", "click", "1"); wm_log(tag=tag, clicked_at=(x, y), image=snap_png.name)
+                return (x, y)
+            # control: no game loaded -> the real click ends the process at once, no box
+            real_click("nogame")
+            for _ in range(20):
+                if not alive(): break
+                time.sleep(0.5)
+            wm_log(step="after_click_nogame", alive=alive(), boxes=boxes(g) if alive() else None)
+            # a game loaded -> the real click raises the quit prompt
+            g.set_seed(12345); g.start(); wid = main_win(); cg1 = geom(wid); OFF[0], OFF[1] = cg1["client_x"], cg1["client_y"]
+            X = G / f"g4_E_{STAMP}_X.SAV"; shutil.copy2(START, X); wm_log(step="X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
+            g.open(X); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"))
+            for k, answer in ((1, "No"), (2, "Yes")):
+                real_click(f"game_click{k}"); time.sleep(2)
+                bx = boxes(g); conf = [p_ for p_ in g.popups() if p_[1] == "Confirm"]
+                wm_log(step="after_click_game", click=k, alive=alive(), boxes=bx, n_confirm=len(conf))
+                if conf:
+                    cs = g.controls("Confirm"); wm_log(step="box_controls", controls=[(c["cls"], c["text"]) for c in cs])
+                    for _ in range(3):
+                        g.click_control(next(c for c in cs if c["text"].replace("&", "") == answer), pause=1.5)
+                        if not [p_ for p_ in g.popups() if p_[1] == "Confirm"] or not alive(): break
+                    time.sleep(2)
+                    wm_log(step="after_answer", answer=answer, alive=alive(), windows=windows(g) if alive() else None, root=shot(g, f"game_after_{answer}") if alive() else None)
+        wm.terminate()
     elif CASE == "none":
         pass
     else:

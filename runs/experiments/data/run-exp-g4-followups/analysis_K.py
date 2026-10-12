@@ -48,19 +48,26 @@ def run(files):
     n_off = sum(1 for r in rounds if 0 <= r[4]["from"] < 16)
     L.append(f"observed offers: {n_off} of {len(rounds)} rounds (trade {obs.get(1, 0)}, alliance {obs.get(2, 0)}); violations (observed proposer/type not in the eligible set at that roll): {viol}")
     L.append(f"expected offers if the rule is exactly this: {exp_sum:.1f} of {len(rounds)} rounds (sum over rounds of eligible/48; the eligible set is read from each autosave)")
-    # self-test: the check must be able to fail. Shuffle the observed proposers among the rounds (positive control of the detector).
+    # self-test: the check must be able to fail. Replace every observed proposer by a uniformly drawn AI nation (a proposer the rule does not know) and count the failures.
     rnd = random.Random(1); bad = 0; tot = 0
-    ob = [(r[4]["from"], r[4]["type"]) for r in rounds if 0 <= r[4]["from"] < 16]
     for _ in range(200):
-        rnd.shuffle(ob); k = 0
         for r in rounds:
             if 0 <= r[4]["from"] < 16:
-                frm, typ = ob[k]; k += 1; tot += 1
+                frm = rnd.randint(1, 15); typ = r[4]["type"]; tot += 1
                 if eligible(r[3]).get(frm) != typ: bad += 1
-    L.append(f"detector self-test: with the proposers shuffled among rounds, {bad} of {tot} shuffled offer checks fail (a check that never failed would show 0)")
+    L.append(f"detector self-test: with each observed proposer replaced by a random AI nation, {bad} of {tot} offer checks fail ({100 * bad / max(1, tot):.0f}%); a check that never failed would show 0")
+    # binomial plausibility of the offer count: p = eligible/48 per round, n rounds (the eligible set differs a little between rounds)
+    import math
+    mean = exp_sum; var = sum((len(eligible(r[3])) / 48) * (1 - len(eligible(r[3])) / 48) for r in rounds)
+    L.append(f"observed {n_off} offers vs expected {mean:.1f}; standard deviation {math.sqrt(var):.2f}; z = {(n_off - mean) / math.sqrt(var):+.2f}")
+    byp = {}
+    for r in rounds:
+        if 0 <= r[4]["from"] < 16: byp[(sav.NATIONS[r[4]["from"]], r[4]["type"])] = byp.get((sav.NATIONS[r[4]["from"]], r[4]["type"]), 0) + 1
+    L.append(f"offers by proposer and type: {dict(sorted(byp.items()))}")
     return L
 
 
 if __name__ == "__main__":
-    files = sorted(D.glob("g4_checks-K-*.jsonl"))
-    print(write_new(D / "analysis_K.txt", "\n".join(run(files)) + "\n"))
+    out = []
+    for f in sorted(D.glob("g4_checks-K-*.jsonl")): out += run([f]) + [""]
+    print(write_new(D / "analysis_K.txt", "\n".join(out) + "\n"))

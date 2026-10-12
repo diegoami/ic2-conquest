@@ -84,7 +84,7 @@ def boxes(g):
     return out
 
 
-def staged(src, ops, tag, extra=None):
+def staged(src, ops, tag, extra=None, stem=None):
     """Copy of src with the L1 ops applied (stage.apply) and `extra(bytearray)` for edits stage.py has no op for; stamped unique name."""
     b = bytearray(Path(src).read_bytes()); n0 = len(b); stage.apply(b, ops)
     if extra: extra(b)
@@ -95,7 +95,7 @@ def staged(src, ops, tag, extra=None):
     sav.parse(bytes(b))
     # review fix R3 (round 3): exclusive creation, never replace: a name that exists (a repeated tag, or `test:-5100 test:5100` meeting in
     # abs(treasury)) gets a `.vN` suffix before `.SAV`; the log's `dst` names the file actually written.
-    base = f"{CASE.replace(':', '_')}_{STAMP}_staged_{tag}_{Path(src).stem}"; n = 0
+    base = f"{CASE.replace(':', '_')}_{STAMP}_staged_{tag}_{stem if stem is not None else Path(src).stem}"; n = 0      # g4: `stem` shortens the name of a save staged from a staged save (a 112-character name made File > Open hang in the first G rerun)
     while True:
         dst = ART / (f"{base}.SAV" if n == 0 else f"{base}.v{n}.SAV")
         try:
