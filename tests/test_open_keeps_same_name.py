@@ -37,8 +37,18 @@ def main():
             g = Stub()
             src.write_bytes(b"one"); g.open(src)
             assert (D.G / "X.SAV").read_bytes() == b"one" and not list(D.G.glob("superseded-*")), "plain copy"
-            g.open(src)
+            # identical file: no folder AND no copy/write at all (copy spy + metadata that a copy would change)
+            import os
+            tgt = D.G / "X.SAV"; os.utime(tgt, (1_000_000_000, 1_000_000_000))      # distinct mtime: shutil.copy would reset it to now
+            copies = []; real_copy = D.shutil.copy
+            D.shutil.copy = lambda *a, **k: (copies.append(a), real_copy(*a, **k))[1]
+            try:
+                g.open(src)
+            finally:
+                D.shutil.copy = real_copy
             assert not list(D.G.glob("superseded-*")), "identical file moved"
+            assert not copies, f"identical file copied again: {copies}"
+            assert int(tgt.stat().st_mtime) == 1_000_000_000, "identical file rewritten (mtime changed)"
             src.write_bytes(b"two"); g.open(src)
             assert (D.G / "X.SAV").read_bytes() == b"two"
             kept = [p.read_bytes() for d in D.G.glob("superseded-*") for p in d.iterdir()]

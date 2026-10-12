@@ -39,8 +39,9 @@ class Stub(D.Game):
 
 
 def main():
-    old_g, old_sleep = D.G, D.time.sleep
+    old_g, old_sleep, old_strftime = D.G, D.time.sleep, D.time.strftime
     D.time.sleep = lambda s: None
+    D.time.strftime = lambda fmt, *a: "20260101-000000"     # R7: frozen clock, so both calls really hit the same folder name
     with tempfile.TemporaryDirectory() as tmp:
         D.G = Path(tmp)
         try:
@@ -56,10 +57,10 @@ def main():
             # second new game: the first game's autosaves are kept too, in a distinct folder
             g.new_game(row=0, seed=1)
             folders = sorted(D.G.glob("superseded-*"))
-            assert len(folders) == 2, folders
+            assert len(folders) == 2 and {f.name for f in folders} == {"superseded-20260101-000000", "superseded-20260101-000000-1"}, folders
             assert any((f / "AUTO0720.SAV").read_bytes() == b"new" for f in folders if (f / "AUTO0720.SAV").exists())
         finally:
-            D.G, D.time.sleep = old_g, old_sleep
+            D.G, D.time.sleep, D.time.strftime = old_g, old_sleep, old_strftime
     print("test_new_game_keeps_autosaves: all checks passed")
 
 
