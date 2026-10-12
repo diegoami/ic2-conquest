@@ -552,6 +552,13 @@ try:
         OFF = [0, 0]
         def menu_wm(name, item):
             g.reset_ui(); g.click(OFF[0] + drv.MENU[name], OFF[1] + 36, pause=0.8); g.click(OFF[0] + drv.MENU[name] + 20, OFF[1] + drv.MENU_ITEM_Y(item), pause=1.2)
+        def close_info_boxes():
+            out = []
+            for _ in range(5):
+                bx = [p_ for p_ in g.popups() if p_[1] == "Information" and p_[4] < 600 and p_[5] < 300]
+                if not bx: break
+                sh_x("xdotool", "windowfocus", str(bx[0][0])); time.sleep(0.5); sh_x("xdotool", "key", "--window", str(bx[0][0]), "Return"); time.sleep(1.2); out.append((bx[0][0], bx[0][1]))
+            return out
         g.menu = menu_wm; g.reset_ui = lambda: g.key("Escape")      # the maximised window leaves no bare root point for the driver's reset_ui
         def frame_of(wid):
             """the decorated frame: walk up xwininfo -tree parents until the child of root"""
@@ -590,9 +597,12 @@ try:
             g.set_seed(12345); g.start(); wid = main_win(); cg1 = geom(wid); OFF[0], OFF[1] = cg1["client_x"], cg1["client_y"]
             X = G / f"g4_E_{STAMP}_X.SAV"; shutil.copy2(START, X); wm_log(step="X", file=X.name, sha256=sha(X), copy_kept=keep(X, "X_original_before_anything.SAV"))
             g.open(X); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
-            wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"), dismissed_before=g.dismiss_popups())      # the start save opens with the offer box "Bithynia wants to trade with Rome."
+            wm_log(step="loaded", loaded=g.loaded(), windows=windows(g), root=shot(g, "loaded"), dismissed_before=close_info_boxes())      # the start save opens with the offer box "Bithynia wants to trade with Rome."
             for k, answer in ((1, "No"), (2, "Yes")):
-                real_click(f"game_click{k}"); time.sleep(2)
+                real_click(f"game_click{k}"); tl = []
+                for _ in range(30):      # watch 3 s at 0.1 s for a transient box or the exit
+                    tl.append((round(time.time() % 1000, 1), alive(), [p_[1] for p_ in g.popups()] if alive() else None)); time.sleep(0.1)
+                wm_log(step="click_timeline", click=k, timeline=tl[::3])
                 bx = boxes(g); conf = [p_ for p_ in g.popups() if p_[1] == "Confirm"]
                 wm_log(step="after_click_game", click=k, alive=alive(), boxes=bx, n_confirm=len(conf))
                 if conf:
