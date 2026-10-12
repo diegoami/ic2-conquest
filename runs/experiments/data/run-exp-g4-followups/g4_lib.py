@@ -402,8 +402,12 @@ def give_cities(frm, to, ids, kill_frm=False):
         return v
     def put(b, n, v, old_len, snapshot=None, allowed=None, tag=""):
         o = stage._nation(b, n) + 0x48
-        # write at most `len(v)` words from the new list (clamped to 334) plus a terminator only when the list is not full
-        n_write = min(len(v), 334)
+        # R3 round-4: raise rather than silently truncate at 334. The previous `min(len(v), 334)` clamp hid a duplicate-entry
+        # caller (the round-3 test reported 335 cities written but 334 stored). Callers must hand in a list of at most 334
+        # city ids; the byte-change assertion below catches any other overrun and would still raise on duplicate ids.
+        if len(v) > 334:
+            raise SystemExit(f"give_cities{(' ' + tag) if tag else ''} {n}: receiver list has {len(v)} entries > 334: callers must keep lists at 334 or fewer")
+        n_write = len(v)
         for k in range(n_write):
             struct.pack_into("<h", b, o + 2 * k, v[k])
         if len(v) < 334:
