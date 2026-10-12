@@ -207,3 +207,132 @@ def balance_sheet(g, tag):
         if not g.find_windows("^Balance sheet$"): break
     log("balance_sheet", tag=tag, image=f, full_ocr=full_ocr, readings=rd, memory=mem, closed=not g.find_windows("^Balance sheet$"))
     return rd, mem
+
+
+# ---- g3 additions: calendar staging, memory snapshots, diffs, one End turn round ------------------------------------------------
+CITY_MEM, NEWS_MEM = 0x479590, 0x49f994
+CITY_FIELDS = ("x", "y", "owner", "allegiance", "loyalty", "stock", "fort", "pop", "max_pop", "tribute")
+
+
+def set_calendar(week=None, season=None, year=None):
+    """Staging helper (L1): the save tail's week (+40), year BC (+42) and season (+44) words (state/sav.py: tail 23 shorts from `tail_off`)."""
+    def f(b):
+        t = sav.parse(bytes(b))["tail_off"]
+        if week is not None: struct.pack_into("<h", b, t + 40, week)
+        if year is not None: struct.pack_into("<h", b, t + 42, year)
+        if season is not None: struct.pack_into("<h", b, t + 44, season)
+    f.__doc__ = f"calendar: week={week} season={season} year_bc={year} (save tail +40/+44/+42)"
+    return f
+
+
+def chain(*fs):
+    """Compose staging helpers into one `extra` (docstrings joined)."""
+    def f(b):
+        for x in fs: x(b)
+    f.__doc__ = "; ".join(x.__doc__ or "?" for x in fs)
+    f.grows = any(getattr(x, "grows", False) for x in fs)
+    return f
+
+
+def set_cities(ids, field, value):
+    """city records `ids` field := value (CITY_FIELDS of stage.py, one i16 each)."""
+    def f(b):
+        for c in ids: stage.set_city(b, c, {field: value})
+    f.__doc__ = f"cities {list(ids)}: {field} := {value}"
+    return f
+
+
+def set_city_stock_to_pop_cap(ids):
+    """city record `ids` stock (+0x18) := 10 x its population (the cap the round applies, FUN_004514ec: min(stock, pop*10))."""
+    def f(b):
+        for c in ids:
+            o = sav.CITY_OFF + c * sav.CITY_LEN
+            struct.pack_into("<h", b, o + 24, struct.unpack_from("<h", b, o + 28)[0] * 10)
+    f.__doc__ = f"cities {list(ids)}: stock := 10 x population"
+    return f
+
+
+def news_mem(g):
+    out = []
+    for i in range(40):
+        raw = g.mem(NEWS_MEM + i * 0x3d, 0x3d); ln = raw.find(b"\0")
+        out.append(raw[:ln].decode("latin1") if ln > 0 else "")
+    return out
+
+
+def snap(g):
+    cm = g.mem(CITY_MEM, 334 * 34)
+    cities = []
+    for c in range(334):
+        o = c * 34
+        cities.append((cm[o:o + 14].split(b"\0")[0].decode("latin1"),) + struct.unpack_from("<10h", cm, o + 14))
+    nations = [g.nation_state(n) for n in range(16)]
+    armies = [g.army_state(i) for i in range(g.i16(0x4A0324))]
+    fleets = [(i, g.fleet_rec(i).hex()) for i in range(g.i16(0x4A0326))]
+    return {"cal": g.calendar(), "cur": g.i16(drv.CUR_NATION), "cities": cities, "nations": nations, "armies": armies, "fleets": fleets, "news": news_mem(g), "news_count": g.i16(0x4a031e)}
+
+
+NATION_KEYS = ("unity", "treasury", "wealth", "mobilization", "capital", "cities_count", "tax", "tax_base", "conquered_by", "human", "leader", "alive")
+
+
+def nat_brief(n): return {k: n[k] for k in NATION_KEYS}
+
+
+def diff(a, b):
+    """What changed between two snaps: cities (any field), nations (NATION_KEYS, relations, city_list), armies (by index, compact), new news lines."""
+    d = {"cities": [], "nations": [], "armies": [], "fleets": []}
+    for c in range(334):
+        if a["cities"][c] != b["cities"][c]:
+            d["cities"].append({"id": c, "name": a["cities"][c][0], "before": dict(zip(CITY_FIELDS, a["cities"][c][1:])), "after": dict(zip(CITY_FIELDS, b["cities"][c][1:]))})
+    for n in range(16):
+        x, y = a["nations"][n], b["nations"][n]
+        ch = {k: (x[k], y[k]) for k in NATION_KEYS if x[k] != y[k]}
+        rel = {k: (x["relations"][k], y["relations"][k]) for k in x["relations"] if x["relations"].get(k) != y["relations"].get(k)}
+        if ch or rel or x["city_list"] != y["city_list"]:
+            d["nations"].append({"id": n, "name": sav.NATIONS[n], "changed": ch, "relations": rel, "cities_gained": sorted(set(y["city_list"]) - set(x["city_list"])), "cities_lost": sorted(set(x["city_list"]) - set(y["city_list"]))})
+    ab = lambda r: (r["owner"], r["x"], r["y"], r["moves"], r["supplies"], r["money"], r["morale"], tuple((u["slot"], u["type"], u["troops"], u["quality"], u["merc"], u["name"]) for u in r["units"]))
+    for i in range(max(len(a["armies"]), len(b["armies"]))):
+        x = ab(a["armies"][i]) if i < len(a["armies"]) else None; y = ab(b["armies"][i]) if i < len(b["armies"]) else None
+        if x != y: d["armies"].append({"id": i, "before": x, "after": y})
+    d["fleets"] = [{"id": i, "before": a["fleets"][i][1] if i < len(a["fleets"]) else None, "after": b["fleets"][i][1] if i < len(b["fleets"]) else None}
+                   for i in range(max(len(a["fleets"]), len(b["fleets"]))) if (a["fleets"][i] if i < len(a["fleets"]) else None) != (b["fleets"][i] if i < len(b["fleets"]) else None)]
+    return d
+
+
+def new_lines(before, after):
+    """New news lines between two buffer reads (lists of 40 strings, "" = unused slot). The buffer scrolls when full, so index comparison is wrong
+    (the first Q1ab..Q1d logs used it: their `news_new` is unreliable once the buffer holds 40 lines; `news_all` in the log is complete and the analysis
+    recomputes). Returns the lines of `after` that follow the longest overlap: smallest shift s with before[s:] == after[:len(before)-s]."""
+    b = [t for t in before if t != ""]; a = [t for t in after if t != ""]
+    for s_ in range(len(b) + 1):
+        k = len(b) - s_
+        if b[s_:] == a[:k]: return a[k:]
+    return a
+
+
+def new_news(a, b): return new_lines(a["news"], b["news"])
+
+
+def round_(g, tag, src, first, turns=1, seed=12345):
+    """Open the staged save `src` (first: Game.load with the seed in a fresh process; later: File > Open in the same process, the RNG goes on), snapshot,
+    End turn `turns` times keeping every autosave (keep_auto) and snapshotting after each. Returns (before, afters, diffs)."""
+    if first: texts_open = g.load(src, seed=seed)
+    else:
+        texts_open = g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+    before = snap(g)
+    log("round_open", tag=tag, save=Path(src).name, pid=g.pid, open_boxes=texts_open, cal=before["cal"], cur=before["cur"],
+        nations={sav.NATIONS[n["id"]]: nat_brief(n) for n in before["nations"]}, news=before["news"], root=shot(g, f"{tag}_opened"))
+    afters, diffs, prev = [], [], before
+    for t in range(turns):
+        rec = {"tag": tag, "turn_click": t + 1}
+        try:
+            name, texts = g.end_turn(); time.sleep(2)
+            rec.update(autosave=name, texts=texts, kept=keep_auto(name, g.turn_number(), tag), eog=bool(g.find_windows("^End of Game$")))
+        except drv.GameOver as e:
+            rec.update(game_over=e.text)
+        after = snap(g); d = diff(prev, after)
+        rec.update(cal=after["cal"], turn=g.turn_number(), news_new=new_news(prev, after), news_all=after["news"], diff=d, boxes=boxes(g), root=shot(g, f"{tag}_after{t + 1}"))
+        log("round_done", **rec)
+        afters.append(after); diffs.append(d); prev = after
+        if rec.get("game_over") or rec.get("eog"): break
+    return before, afters, diffs
