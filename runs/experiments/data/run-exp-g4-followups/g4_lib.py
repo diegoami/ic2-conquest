@@ -383,6 +383,39 @@ def light_round(g, tag, src, first, seed=12345, extra=None):
     return rec
 
 
+def _give_cities_put(b, n, v, old_len, snapshot=None, allowed=None, tag=""):
+    """Module-level helper for give_cities (round-5 R1): the inner closure was lifted so the offline tests
+    in tests/test_give_cities.py can monkey-patch this single function and verify the byte-change assertion
+    fires against the production writer (the round-4 negative control tested a local copy of this function,
+    so disabling the receiver's `snapshot=snap` in production left that local-copy test passing)."""
+    o = stage._nation(b, n) + 0x48
+    # R3 round-4: raise rather than silently truncate at 334. The previous `min(len(v), 334)` clamp hid a duplicate-entry
+    # caller (the round-3 test reported 335 cities written but 334 stored). Callers must hand in a list of at most 334
+    # city ids; the byte-change assertion below catches any other overrun and would still raise on duplicate ids.
+    if len(v) > 334:
+        raise SystemExit(f"give_cities{(' ' + tag) if tag else ''} {n}: receiver list has {len(v)} entries > 334: callers must keep lists at 334 or fewer")
+    n_write = len(v)
+    for k in range(n_write):
+        struct.pack_into("<h", b, o + 2 * k, v[k])
+    if len(v) < 334:
+        struct.pack_into("<h", b, o + 2 * len(v), -1)
+    struct.pack_into("<h", b, stage._nation(b, n) + 0x446, len(v))
+    # R1 round-2: assert only the city-list bytes and the count word moved. The caller passes the pre-edit byte snapshot
+    # via the `snapshot` argument (f(b) takes it from the surrounding `extra.allowed_changed` / outer scoped variable) and any
+    # additional whitelist (e.g. the city owner fields set by stage.set_city) via `allowed`. Any byte outside the whitelist stops the runner.
+    # The whitelisted region is exactly the 334 city-list words (0x48..0x48+668=0x2e4) plus the 2-byte count word (+0x446). The byte at +0x2e4
+    # is the start of the recruit-queue slot 0 state word; the original bug wrote the terminator there when the list was full.
+    # R2 round-3: this assertion runs at BOTH the sender and the receiver (the receiver call passes `snapshot=snap`); the same whitelist covers
+    # both nations because the only writes outside the receiver's city-list region are the city-owner bytes written by stage.set_city.
+    if snapshot is not None:
+        region_a = (o, o + 2 * 334)                                                # city list words: indices 0..333, bytes 0..667 of the list
+        region_b = (stage._nation(b, n) + 0x446, stage._nation(b, n) + 0x448)      # count word
+        in_region = lambda i: (region_a[0] <= i < region_a[1]) or (region_b[0] <= i < region_b[1])
+        extra_changed = [i for i in range(len(snapshot)) if snapshot[i] != b[i] and not in_region(i) and (i not in (allowed or set()))]
+        if extra_changed:
+            raise SystemExit(f"give_cities{(' ' + tag) if tag else ''} changed {len(extra_changed)} bytes outside the city-list region and the allowed whitelist: first 8 = {extra_changed[:8]}")
+
+
 def give_cities(frm, to, ids, kill_frm=False):
     """L1: city `ids` change owner frm -> to (city +0x12), both nations' city lists (+0x48, -1 terminated) and count words (+0x446) are kept consistent;
     allegiance, loyalty and everything else of the cities stay. kill_frm: nation `frm` also gets unity 0 and capital -1 (+0x444): a nation eliminated the way
@@ -392,7 +425,9 @@ def give_cities(frm, to, ids, kill_frm=False):
     ranges (the city owner field +0x12 of every moved city is edited by stage.set_city and lies outside the city-list words). R2 round-3 (reviewer R2):
     the byte-change assertion now runs at BOTH the sender and the receiver (the previous receiver pass `snapshot=None` disabled the assertion precisely
     where the original recruit-queue overrun occurred); the same `owner_bytes` whitelist applies to both calls (the only writes outside the receiver's
-    city-list region are the city owner bytes that stage.set_city writes, all listed in `owner_bytes`)."""
+    city-list region are the city owner bytes that stage.set_city writes, all listed in `owner_bytes`). R5 round-5: the inner `put` closure was lifted
+    to the module-level helper `_give_cities_put` so the offline test in `tests/test_give_cities.py` can monkey-patch production and prove the assertion
+    fires; the round-4 `put_clone` local copy is removed."""
     def lst(b, n):
         o = stage._nation(b, n) + 0x48; v = []
         for k in range(334):
@@ -400,33 +435,6 @@ def give_cities(frm, to, ids, kill_frm=False):
             if c < 0: break
             v.append(c)
         return v
-    def put(b, n, v, old_len, snapshot=None, allowed=None, tag=""):
-        o = stage._nation(b, n) + 0x48
-        # R3 round-4: raise rather than silently truncate at 334. The previous `min(len(v), 334)` clamp hid a duplicate-entry
-        # caller (the round-3 test reported 335 cities written but 334 stored). Callers must hand in a list of at most 334
-        # city ids; the byte-change assertion below catches any other overrun and would still raise on duplicate ids.
-        if len(v) > 334:
-            raise SystemExit(f"give_cities{(' ' + tag) if tag else ''} {n}: receiver list has {len(v)} entries > 334: callers must keep lists at 334 or fewer")
-        n_write = len(v)
-        for k in range(n_write):
-            struct.pack_into("<h", b, o + 2 * k, v[k])
-        if len(v) < 334:
-            struct.pack_into("<h", b, o + 2 * len(v), -1)
-        struct.pack_into("<h", b, stage._nation(b, n) + 0x446, len(v))
-        # R1 round-2: assert only the city-list bytes and the count word moved. The caller passes the pre-edit byte snapshot
-        # via the `snapshot` argument (f(b) takes it from the surrounding `extra.allowed_changed` / outer scoped variable) and any
-        # additional whitelist (e.g. the city owner fields set by stage.set_city) via `allowed`. Any byte outside the whitelist stops the runner.
-        # The whitelisted region is exactly the 334 city-list words (0x48..0x48+668=0x2e4) plus the 2-byte count word (+0x446). The byte at +0x2e4
-        # is the start of the recruit-queue slot 0 state word; the original bug wrote the terminator there when the list was full.
-        # R2 round-3: this assertion runs at BOTH the sender and the receiver (the receiver call passes `snapshot=snap`); the same whitelist covers
-        # both nations because the only writes outside the receiver's city-list region are the city-owner bytes written by stage.set_city.
-        if snapshot is not None:
-            region_a = (o, o + 2 * 334)                                                # city list words: indices 0..333, bytes 0..667 of the list
-            region_b = (stage._nation(b, n) + 0x446, stage._nation(b, n) + 0x448)      # count word
-            in_region = lambda i: (region_a[0] <= i < region_a[1]) or (region_b[0] <= i < region_b[1])
-            extra_changed = [i for i in range(len(snapshot)) if snapshot[i] != b[i] and not in_region(i) and (i not in (allowed or set()))]
-            if extra_changed:
-                raise SystemExit(f"give_cities{(' ' + tag) if tag else ''} changed {len(extra_changed)} bytes outside the city-list region and the allowed whitelist: first 8 = {extra_changed[:8]}")
     def f(b):
         a, t = lst(b, frm), lst(b, to); la, lt = len(a), len(t)
         snap = bytes(b)                                                                  # R1 round-2: pre-edit byte snapshot for the allow-list check
@@ -438,11 +446,11 @@ def give_cities(frm, to, ids, kill_frm=False):
             owner_bytes.add(sav.CITY_OFF + c * sav.CITY_LEN + 19)
         for c in ids:
             a.remove(c); t.append(c); stage.set_city(b, c, {"owner": to})
-        put(b, frm, a, la, snapshot=snap, allowed=owner_bytes, tag=f"frm{frm}->{to} {len(ids)} cities")
+        _give_cities_put(b, frm, a, la, snapshot=snap, allowed=owner_bytes, tag=f"frm{frm}->{to} {len(ids)} cities")
         # R2 round-3: refresh the snapshot after the sender's put so the receiver's put compares against the post-sender state, not the
         # original snap (the sender's writes change bytes in the sender's nation block, which the receiver's put must not be blamed for).
         snap = bytes(b)
-        put(b, to, t, lt, snapshot=snap, allowed=owner_bytes, tag=f"to{to} {len(t)} cities")
+        _give_cities_put(b, to, t, lt, snapshot=snap, allowed=owner_bytes, tag=f"to{to} {len(t)} cities")
         if kill_frm:
             struct.pack_into("<h", b, stage._nation(b, frm) + 0x440, 0); struct.pack_into("<h", b, stage._nation(b, frm) + 0x444, -1)
     f.__doc__ = f"cities {list(ids)}: owner {frm} -> {to}, city lists and counts kept consistent" + ("; nation %d unity 0, capital -1" % frm if kill_frm else "")

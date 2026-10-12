@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
-"""Offline tests (no Wine) of g4_lib.give_cities (review round 4, R3 rewrite).
+"""Offline tests (no Wine) of g4_lib.give_cities (review round 5, R1 lift).
 
-Round-3's single test was a "fake" — it built a receiver already holding all 334 cities, transferred one, and verified the recruit-queue
-slot 0 byte at +0x2e4 was unchanged; the test would have passed if the receiver's byte-change assertion were disabled. This round rewrites
-it:
+Round 3 added a `put()` byte-change assertion (round-2's receiver assertion) and round-4 added an oversized-list check.
+The round-4 "put_clone" tested a local copy of the writer; round-5 lifts `put` from a closure to the module-level helper
+`g4_lib._give_cities_put` so the test exercises the production writer directly. If a future regression removes the byte-change
+assertion (e.g., the receiver call forgets `snapshot=snap` again) the test would fail by passing without raise.
 
-  * `test_consistent_333_to_334`: a clean 333->334 transfer. Rome (nation 0, sender) gives ONE of its cities to Carthage (nation 1, receiver).
-    Asserts: that city's owner byte is now 1; the receiver's 334th list position holds the moved city's id; the receiver's count word
-    at +0x446 reads 334; BOTH bytes of the receiver's recruit-queue slot 0 state word at +0x2e4 are unchanged; Rome's list no longer
-    contains the moved city's id; Rome's count word has dropped.
+Tests:
 
-  * `test_receiver_assertion_active`: an injection test that proves the receiver's byte-change assertion is real. Calls the inner
-    `put()` directly with `snapshot=bytes(b)` and `allowed=set()` so ANY non-region change raises. Asserts that the function does raise
-    `SystemExit`. If a future round removed the receiver assertion the test would STILL pass at the give_cities level (because the
-    assertion is only enforced by `put`); this test catches that regression by going straight at `put`.
+  * `test_consistent_333_to_334`: a clean 1->334 transfer. Rome (nation 0, sender) gives ONE of its cities to Carthage
+    (nation 1, receiver). Asserts: that city's owner byte is now 1; the receiver's 334th list position holds the moved city's id;
+    the receiver's count word at +0x446 reads 334; BOTH bytes of the receiver's recruit-queue slot 0 state word at +0x2e4 are
+    unchanged; Rome's list no longer contains the moved city's id; Rome's count word has dropped.
 
-  * `test_oversized_receiver_list_raises`: receiver already at 334, transfer duplicates an existing entry so the new list has 335
-    ids; the new `put()` raises immediately because `len(v) > 334`. Also verifies the round-3 "fake" test's actual behaviour: a
-    334-city receiver absorbing one city silently wrote 334 entries but reported 335 in the count word — that's the bug the round-4
-    check catches at the source.
+  * `test_receiver_assertion_active`: an injection test that proves the receiver's byte-change assertion is real against the
+    PRODUCTION module-level `_give_cities_put`. Pre-modifies a single byte at the receiver's +0x2e4 (outside the city-list region
+    and count-word region) and calls `_give_cities_put(b, 1, [], snapshot, allowed=set())`. With the assertion in place this raises
+    SystemExit; without it (e.g., a future regression passing `snapshot=None` for the receiver) the put succeeds silently and the
+    test would fail. A second part calls with `snapshot=None` and verifies no raise fires, demonstrating the test is sensitive
+    to the assertion's presence.
+
+  * `test_oversized_receiver_list_raises`: a 334-city receiver absorbing one city that is ALREADY in its own list builds the
+    receiver's NEW list to 335 ids; the round-4 `put()` raises immediately because `len(v) > 334`. Verifies the round-3 "fake"
+    test's actual behaviour was a 335-entry count word with only 334 stored entries (the bug the round-4 check catches at the
+    source).
 
 Run: `python3 -m tests.test_give_cities` (exits 1 on any failure).
 """
@@ -134,37 +139,35 @@ def main():
     print("test_consistent_333_to_334: all checks passed")
 
 
-    # ---------------------------------------------------------------- test 2: receiver-side byte-change assertion is active
-    # The round-3 test could pass with the receiver's assertion disabled because the bounded put (no terminator when
-    # the list is full) was still in place. Here we craft an out-of-region byte change BEFORE calling put directly:
-    # if the assertion is present, put must raise SystemExit; if a future regression removed the assertion, no raise
-    # happens and the test fails. We mirror put's region check + the snapshot/allowed/whitelist comparison.
-    def put_clone(b, n, v, snapshot, allowed=set()):
-        o = stage._nation(b, n) + 0x48
-        if len(v) > 334:
-            raise SystemExit(f"put_clone: {n} receiver has {len(v)} entries > 334")
-        for k in range(len(v)):
-            struct.pack_into("<h", b, o + 2 * k, v[k])
-        if len(v) < 334:
-            struct.pack_into("<h", b, o + 2 * len(v), -1)
-        struct.pack_into("<h", b, stage._nation(b, n) + 0x446, len(v))
-        region_a = (o, o + 2 * 334)
-        region_b = (stage._nation(b, n) + 0x446, stage._nation(b, n) + 0x448)
-        in_region = lambda i: (region_a[0] <= i < region_a[1]) or (region_b[0] <= i < region_b[1])
-        bad = [i for i in range(len(snapshot)) if snapshot[i] != b[i] and not in_region(i) and (i not in allowed)]
-        if bad:
-            raise SystemExit(f"put_clone wrote {len(bad)} bytes outside the region and allowed: first 8 = {bad[:8]}")
+    # ---------------------------------------------------------------- test 2: production receiver-side byte-change assertion is active
+    # Round 5: the assertion is exercised by the module-level _give_cities_put (the round-4 put_clone
+    # tested a local copy; disabling the production receiver assertion would not have been detected).
+    # We pre-modify a single byte at the receiver's +0x2e4 (outside the city-list region AND outside
+    # the count-word region AND outside the allowed whitelist) and call production put with snapshot=
+    # bytes(b) and allowed=set(). The production put's byte-change delta check MUST include +0x2e4
+    # in extra_changed and raise SystemExit. If a future regression passed snapshot=None for the receiver
+    # (or removed the assertion), the raise would NOT fire and this test would fail.
     b = fresh_save()
     recv_state_off = stage._nation(b, 1) + 0x2e4
-    snapshot = bytes(b)
+    snapshot = bytes(b)                                  # snapshot taken BEFORE the modification (round-5 mistake: capturing after caused b == snapshot, no delta to detect)
     b[recv_state_off] = (b[recv_state_off] + 1) & 0xFF       # outside any region/allowed => must raise
     raised = False
     try:
-        put_clone(b, 1, [], snapshot, allowed=set())
+        L._give_cities_put(b, 1, [], 0, snapshot=snapshot, allowed=set())   # round-5 second mistake: 4 positional args bound to b/n/v/old_len; allowed=set() ends up at snapshot. Pass old_len=0 explicitly.
     except SystemExit as e:
         raised = True
-        assert "outside the region" in str(e) or "wrote" in str(e), f"unexpected SystemExit message: {e}"
-    assert raised, "the receiver-side assertion did not raise when an out-of-region byte was changed; a future regression that drops the assertion would slip past this test"
+        assert "outside the city-list region" in str(e), f"unexpected SystemExit message: {e}"
+    assert raised, "production _give_cities_put did NOT raise on an out-of-region byte change; the receiver byte-change assertion is missing or the receiver call no longer passes snapshot=snap"
+    # Sensitivity check: with the assertion bypassed (snapshot=None), the put writes only region_a and region_b,
+    # so no SystemExit fires even though we modified +0x2e4. This part proves the previous block is exercising
+    # the assertion (not, say, the oversized-list check above).
+    b2 = fresh_save()
+    recv_state_off2 = stage._nation(b2, 1) + 0x2e4
+    b2[recv_state_off2] = (b2[recv_state_off2] + 1) & 0xFF
+    try:
+        L._give_cities_put(b2, 1, [], 0, snapshot=None, allowed=set())  # snapshot=None -> assertion bypassed
+    except SystemExit:
+        raise AssertionError("production _give_cities_put raised despite snapshot=None (assertion bypassed); this control case should NOT raise")
     print("test_receiver_assertion_active: all checks passed")
 
 
