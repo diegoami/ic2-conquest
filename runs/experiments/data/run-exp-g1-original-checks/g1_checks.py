@@ -191,11 +191,24 @@ try:
             g.wait(lambda: g.find_windows("^Imperial Conquest 2$"), 10, "new game form"); time.sleep(1)
             log("new_game_form", root=shot(g, "new_game_form"))
             n_auto = len((G / "AUTOSAVE.LOG").read_text().splitlines()) if (G / "AUTOSAVE.LOG").exists() else 0
-            g.click(*[117, 117], pause=0.5); g.click(344, 194)
+            # R7: targets come from the form's controls (win_controls), not from fixed coordinates; Rome's human flag and the form's closing are verified
+            cs = g.controls("Human and computer leaders"); log("new_game_form_controls", controls=cs)
+            ticks = sorted((c for c in cs if "check" in c["cls"].lower()), key=lambda c: (c["y"], c["x"]))
+            oks = [c for c in cs if c["text"].replace("&", "").strip().upper() == "OK"]
+            if not ticks or len(oks) != 1: raise SystemExit("new game form: no tick boxes or not exactly one OK among the controls (see new_game_form_controls)")
+            panel = [c for c in cs if c["cls"] == "TPanel" and c["text"].strip() == "Rome"]
+            if len(panel) != 1: raise SystemExit("new game form: no single 'Rome' row panel")
+            in_row = [c for c in ticks if panel[0]["y"] <= c["y"] + c["h"] // 2 < panel[0]["y"] + panel[0]["h"]]
+            if len(in_row) != 1: raise SystemExit("new game form: not exactly one tick box in Rome's row")
+            rome_tick = in_row[0]; log("new_game_targets", rome_tick=rome_tick, ok=oks[0], n_ticks=len(ticks))
+            g.click_control(rome_tick, pause=0.5); g.click_control(oks[0])
+            g.wait(lambda: not g.find_windows("Human and computer leaders"), 15, "new game form closed"); log("new_game_form_closed", closed=True)
             if which == "patched": g.wait(lambda: (G / "AUTOSAVE.LOG").exists() and len((G / "AUTOSAVE.LOG").read_text().splitlines()) > n_auto, 120, "new-game autosave")
             else: time.sleep(10)
             time.sleep(3); texts = g.dismiss_popups()
             s3 = snap()
+            humans = [k for k in range(16) if g.mem(drv.NATIONS + k * drv.NATION_LEN + 0x490, 1)[0] == 1]
+            log("new_game_humans", human_nations=humans, rome_is_only_human=(humans == [0]))
             log("new_game_started", texts=texts, files_changed=changed(s2, s3), title=[w[1] for w in g.find_windows("^Imperial Conquest 2 ")], root=shot(g, "after_new_game"),
                 autosave_log_tail=(G / "AUTOSAVE.LOG").read_text().splitlines()[-2:] if (G / "AUTOSAVE.LOG").exists() else None)
             before_ids = ids(); g.menu("file", drv.FILE_ITEMS["save"]); time.sleep(4)
