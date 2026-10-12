@@ -29,6 +29,37 @@ def new_game_form_and_start(g, tag):
     g.wait(lambda: not g.find_windows("Human and computer leaders"), 15, "new game form closed")
 
 
+def depose_trial(tag, src, first, check_names=True):
+    """Open staged `src` (first: fresh process), End turn once; report whether the "End of Game" window (the human leader deposed) opened, keep the autosave and the
+    box image/OCR, close the box with OK from its controls. One trial = one log line `depose_trial`."""
+    if first: g.load(src, seed=12345)
+    else:
+        g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+    me = g.i16(drv.CUR_NATION); base = drv.NATIONS + me * drv.NATION_LEN
+    mem = lambda: {"unity": g.i16(base + 0x440), "cities_word": g.i16(base + 0x446), "treasury": struct.unpack("<i", g.mem(base + 0x438, 4))[0], "wealth": struct.unpack("<i", g.mem(base + 0x430, 4))[0],
+                   "year_bc": g.i16(0x4A0332), "season": g.i16(0x4A032E), "week": g.i16(0x4A0330), "list_len": len([c for c in range(334) if struct.unpack("<h", g.mem(0x479590 + c * 34 + 18, 2))[0] == me])}
+    rec = {"tag": tag, "save": Path(src).name, "pid": g.pid, "before": mem(), "turn_before": g.turn_number()}
+    deposed, text, kept = False, None, None
+    try:
+        name, texts = g.end_turn(); time.sleep(2)
+        kept = keep_auto(name, g.turn_number(), tag); rec["texts"] = texts
+        deposed = bool(g.find_windows("^End of Game$"))
+    except drv.GameOver as e:
+        deposed = True; text = e.text; rec["game_over_exception"] = True
+    if deposed:
+        w = g.find_windows("^End of Game$")
+        if w:
+            g.raise_window(w[0][0]); f, o = ocr_window(g, f"{tag}_end_of_game", w[0][0]); rec["end_of_game_image"] = f; rec["end_of_game_ocr"] = o
+            cs = g.controls("End of Game"); rec["end_of_game_controls"] = [(c["cls"], c["text"]) for c in cs]
+            for _ in range(3):
+                g.click_control(g.control(cs, text="OK"), pause=1.5)
+                if not g.find_windows("^End of Game$"): break
+            rec["end_of_game_closed"] = not g.find_windows("^End of Game$")
+    rec.update(deposed=deposed, game_over_text=text, kept=kept, after=mem() if Path(f"/proc/{g.pid}").exists() else None, cal_after=g.calendar(), boxes=boxes(g), pid_alive=Path(f"/proc/{g.pid}").exists())
+    log("depose_trial", **rec)
+    return deposed
+
+
 try:
     if CASE == "F":
         # Check F: where File > New clears the save flag (byte 0x4a0334). Static: static_flag_xrefs.txt. Dynamic: a 10 ms poller of the byte in ONE Wine process
@@ -72,6 +103,40 @@ try:
         for w in sorted(new_ids): sh("xdotool", "key", "--window", w, "Escape", check=False)
         time.sleep(1)
         log("poller", **P.stop())
+    elif CASE == "C":
+        # Check C: the three other deposition disjuncts of FUN_00452034 (lines 55030-55038), human Rome, one End turn each from a staged spring-week-1 start:
+        #   year 250 BC (0x4a0332 == 250), unity < 400, cities word > 333, with a control at the neighbouring value for each and a positive control (treasury -5200 at
+        #   wealth 2,577,000, the g1 case) in the same process. Order = argv[2:] (cases listed below), default the whole list.
+        WEALTH = set_wealth(0, 2_577_000)
+        everything = {
+            "pos_treasury_m5200": ([("treasury", 0, -5200)], WEALTH),
+            "unity399": ([("unity", 0, 399)], None), "unity400_ctl": ([("unity", 0, 400)], None),
+            "year250": ([], set_calendar(year=250)), "year251_ctl": ([], set_calendar(year=251)),
+            "year251_roll": ([], chain(set_calendar(year=251, season=3, week=11))), "year252_roll_ctl": ([], chain(set_calendar(year=252, season=3, week=11))),
+            "cities334_word": ([("ncities", 0, 334)], None), "cities333_word_ctl": ([("ncities", 0, 333)], None),
+        }
+        order = sys.argv[2:] or list(everything)
+        for i, tag in enumerate(order):
+            ops, ex = everything[tag]
+            src = staged(START, ops, tag, ex)
+            depose_trial(tag, src, i == 0)
+    elif CASE == "C_real":
+        # Check C, cities > 333 reached by an actual conquest staging: every other nation's cities go to Rome (L1 `give_cities`: owner words and both city lists and
+        # count words consistent; the nations given up are dead: unity 0, capital -1). Control in the same process: Numidia keeps its capital city (Rome owns 333).
+        b0 = sav.load(START)
+        def conquer(keep_nation=None):
+            fs = []
+            for n in range(1, 16):
+                ids = list(b0["nations"][n]["city_list"])
+                if n == keep_nation:
+                    cap = b0["nations"][n]["capital"]; ids = [c for c in ids if c != cap]
+                    fs.append(give_cities(n, 0, ids, kill_frm=False))
+                else: fs.append(give_cities(n, 0, ids, kill_frm=True))
+            return chain(*fs)
+        for i, (tag, ex) in enumerate((("pos_unity399", None), ("cities333_real_ctl", conquer(5)), ("cities334_real", conquer(None)))):
+            ops = [("unity", 0, 399)] if tag == "pos_unity399" else []
+            src = staged(START, ops, tag, ex)
+            depose_trial(tag, src, i == 0)
     elif CASE == "none":
         pass
     else:
