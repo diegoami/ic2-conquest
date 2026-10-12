@@ -639,7 +639,13 @@ class Game:
         `superseded-<stamp>/` beside them (rule 6: a measured autosave is never deleted). The new game must start without an
         AUTOSAVE.LOG (the wait for it proves the new-game autosave), so the files cannot stay; the folder name is unique per call.
         Returns the folder (None if there was nothing to move)."""
-        files = sorted(G.glob("AUTO*"))
+        return self.move_aside(sorted(G.glob("AUTO*")))
+
+    @staticmethod
+    def move_aside(files):
+        """Move the given files of the game folder into a new `superseded-<stamp>/` folder (unique per call); returns it
+        (None if the list is empty). Shared by `supersede_autosaves` and `open` (rule 6: nothing measured is overwritten)."""
+        files = list(files)
         if not files:
             return None
         dest = G / ("superseded-" + time.strftime("%Y%m%d-%H%M%S"))
@@ -703,13 +709,17 @@ class Game:
         return bool(self.find_windows("turn") or (self.find_windows("^Unit map$") and self.find_windows("^Area map$")))
 
     def open(self, save, strict=True):
-        """File > Open (the save is copied into the game folder first). A save can open with a modal box ("Bithynia wants to
+        """File > Open (the save is copied into the game folder first; a different file of the same name there is moved to `superseded-<stamp>/`, an identical one is left). A save can open with a modal box ("Bithynia wants to
         trade with Rome." with the research start save), and a box stays up until it is closed: the box's text is captured (OCR) and
         returned, an information box is closed with OK, and with `strict` (default) a Confirm box is answered No and raises
         DriverError("end turn: unexpected Confirm: ...") instead of Yes. Done when `loaded()`."""
         src = Path(save)
         if src.parent.resolve() != G.resolve():
-            shutil.copy(src, G / src.name)
+            tgt = G / src.name
+            if tgt.exists() and tgt.read_bytes() != src.read_bytes():
+                self.move_aside([tgt])       # rule 6: a same-named file of the game folder is moved aside, never overwritten
+            if not tgt.exists():
+                shutil.copy(src, tgt)
         self.open_file_dialog(src.name)
         self.wait(lambda: self.loaded() or self.message_boxes(), 30, "game window or a message box after load")
         time.sleep(3)
