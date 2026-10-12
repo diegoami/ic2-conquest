@@ -18,3 +18,10 @@ Checks 1 (a-f), 2, 3, 5, 6 of `runs/experiments/data/run-exp-gap-v050/rows_g3.md
 
 ## END
 Done: checks 1a-f, 2, 3, 5 (move cost 3 and storm roll x3 with staged cell/word), 6; all with in-process controls. Not done: a natural rough-sea tile beside a fleet (staged instead); unhalved storm branch; two war armies for rule (c); AI nations' quarter income; no review requested, not merged. Next step: owner picks the reviewer; fix findings in `findings/2026-10-12-g3-original-checks.md`.
+
+## Review fixes, round 1 (Sonnet subagent, 2026-10-12)
+Plan: fix R1-R9 of the gpt-6.1-sol review of PR #81 without a new Wine run (all are script, scan, report and text fixes); new outputs beside the old ones as versions.
+- e3bb864 R1: `release_sync.py` writes its record with `versioned.write_new` (also when nothing is uploaded); offline test `release_sync_offline_test.py` (three same-second records -> `.json`, `.v2.json`, `.v3.json`).
+- 3656b18 R2/R4: `news_scan2.py` (nations matched, whole treaty blocks, any distance, per-file SHA-256, versioned outputs `news_scan.v2/v3.txt`, `news_scan_summary*.txt`); `news_scan_v1_hashes.txt` reproduces "870 distinct" from the v1 list; `news_scan.txt` untouched.
+- 1dddd87 R3/R7/R9 data: `q6_gate_check.txt` (both trade gates on the start save: 11 of 12 non-neighbours pass, Galatia has no trade partner), `code_extract_g3.v3.txt` (adds `FUN_0044fa20`, lines 53208-53234), `analysis_g3.v2.txt` (OCR proposer-name check: 32 exact + 4 `liyia` variants, 0 disagreements), `news_scan2_selftest.py` (reverse-order positive control).
+- next commit: finding text for R2-R9 (see END).
