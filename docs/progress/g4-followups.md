@@ -38,6 +38,7 @@ Order F, C, B, A, D, G, H, I, K, J, L, E (issue #83 letters), each its own case 
 - PR #84 round-2 R10: I summary refreshed against `analysis_I.v5.txt` (the R3 fix changed Armenia 23->2, Celtiberia 42/42/42/-12 -> 11/11/11/-43, Bithynia new queue counts 5, 7, 6, 6).
 - PR #84 round-2 R11: G section now discloses that the two excluded G readings are Carthage-sinking exclusions (`g_away_calm_c80_06`, `g_away_rough_c60_05`).
 - PR #84 round-2 R12: H section's "prediction logged before each round" replaced with "after `go()` finishes, from the before-snapshot taken at the start of the round"; the existing `prediction` log lines are preserved unchanged.
+- PR #84 round-3 R1: case I in the finding reconciled with `analysis_I.v5.txt` — 9 of 15 AI exact (was 8/7); Gaul removed from residuals (now exact); Celtiberia seat 14 -> 15; sentence added distinguishing the 4 unadjusted exact nations (Seleucid, Macedonia, Numidia, Illyria) and the 5 R3-matched ones (Gaul new-exact; Ptolemaic, Bithynia, Media, Thracia; Armenia reduced +23 -> +2 still inexact).
 
 ## END
 
