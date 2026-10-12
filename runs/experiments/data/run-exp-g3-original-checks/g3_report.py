@@ -242,4 +242,5 @@ if __name__ == "__main__":
     which = [a for a in sys.argv[1:] if not a.startswith("--")] or ["ab", "c", "d", "e", "f", "q2", "q3", "q5", "q6"]
     for w in which: globals()["section_" + w]()
     text = "\n".join(OUT) + "\n"
-    if "--print" in which or True: print(text[:20000])
+    if "--write" in sys.argv: print(write_new(D / "analysis_g3.txt", text).name)
+    else: print(text[:30000])
