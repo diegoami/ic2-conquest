@@ -212,31 +212,29 @@ def section_q5():
                 P(f"   {k}: condition drop per surviving trial {collections.Counter(ds)}, ships {collections.Counter((x[3], x[6]) for x in v)}")
 
 def section_q6():
-    P("== Q6: offers from a peace-only start (Rome at peace with all 15, spring week 1, one End turn per trial) ==")
-    cnt = collections.Counter(); per = []
+    P("== Q6: offers from a peace-only start (Rome at peace with all 15, spring week 1, one End turn per trial; the offer is rolled at Rome's next turn start, FUN_00452034) ==")
+    cnt = collections.Counter(); per = []; by = collections.Counter(); mism = []
     for f in logs("Q6"):
         for r in rows(f):
             if r["step"] != "light_round": continue
-            po = r.get("pending_offer"); txt = [t for t in r.get("texts", []) if "wants" in t]
-            kind = {1: "trade", 2: "alliance"}.get(po["type"] if po and po["from"] >= 0 else None, "none")
-            boxk = ["alliance" if "alliance" in t else "trade" for t in txt]
-            atwar = any(v == 3 for v in r["rome_rel_after"])
-            cnt[kind] += 1; cnt["box_" + ("alliance" if "alliance" in " ".join(txt) else "trade" if txt else "none")] += 1
-            if atwar: cnt["rome_at_war_after"] += 1
-            per.append((r["tag"], r["autosave"] if "autosave" in r else None, po, txt, atwar))
-    P("   counts:", dict(cnt)); P("   trials:", len(per))
+            po = r.get("pending_offer"); txt = [t for t in r.get("texts", []) if "wants" in t or "alliance" in t or "form an" in t]
+            has = bool(po and po["from"] >= 0)
+            kind = {1: "trade", 2: "alliance"}.get(po["type"]) if has else "none"
+            cnt[kind] += 1
+            boxk = "none" if not txt else ("alliance" if re.search(r"form|alli|aliance", " ".join(txt)) else "trade")
+            if boxk != kind: mism.append((r["tag"], kind, txt))
+            if has: by[(kind, NAT[po["from"]])] += 1
+            if any(v == 3 for v in r["rome_rel_after"]): cnt["rome_at_war_at_turn_start"] += 1
+            per.append((r["tag"], po, txt))
+    n = len(per)
+    P(f"   turn starts: {n}; offers: trade {cnt['trade']}, alliance {cnt['alliance']}, none {cnt['none']}; Rome at war with someone at the turn start in {cnt['rome_at_war_at_turn_start']} of them")
+    P(f"   offer kind by proposer (the offer in the kept autosave's tail, +16/+17 words): {sorted(by.items())}")
+    P(f"   box text (OCR) against the autosave's pending offer: disagreements {len(mism)}: {mism}")
+    NEIGH = {"Carthage", "Gaul", "Illyria"}
+    P(f"   alliance offers come from {sorted({k[1] for k in by if k[0]=='alliance'})}; trade offers from neighbours (Carthage, Gaul, Illyria): {sum(v for k, v in by.items() if k[0]=='trade' and k[1] in NEIGH)}; from other nations: {sum(v for k, v in by.items() if k[0]=='trade' and k[1] not in NEIGH)}")
+    P(f"   expected from the roll if every neighbour pass: alliance {n * 3 / 16 / 3:.1f} (3 neighbours x 1/16 x 1/3 per turn start); upper bound for trade from the 12 non-neighbour AI nations: {n * 12 / 16 / 3:.1f}")
     for x in per:
-        if x[2] and x[2]["from"] >= 0 or x[3]: P("   offer:", x)
-
-def section_q3():
-    P("== Q3: news order, 'destroys army of' vs the treaty block ==")
-    for f in logs("Q3"):
-        for r in rows(f):
-            if r["step"] == "news_start": P(f"[{f.name}] news memory lines 27-33: {[ (i, r['lines'][i]) for i in range(27, 34)]}; destroys at {r['destroys']}, treaty header ('sues ... for peace and;') at {r['sues']}; image {r['root']}")
-            if r["step"] == "information_window_ocr":
-                o = r["ocr"]; P(f"[{f.name}] Information window ({r['image']}) OCR: 'destroys army of Ptolemaic' at char {o.find('destroys army of Ptolemaic')}, 'sues Seleucid for peace' at char {o.find('sues Seleucid')}")
-    t = [l.split("\t") for l in open(D / "news_scan.txt")]
-    P(f"   news_scan.txt: {len(t)} save files with both a 'destroys army of' line and a treaty header ('sues ... for peace and;'); treaty-block-first adjacent pairs: {sum('treaty FIRST' in x[-1] for x in t)}; destroys-first: {sum('destroys FIRST' in x[-1] for x in t)}")
+        if x[1] and x[1]["from"] >= 0: P("   offer:", x)
 
 if __name__ == "__main__":
     which = [a for a in sys.argv[1:] if not a.startswith("--")] or ["ab", "c", "d", "e", "f", "q2", "q3", "q5", "q6"]

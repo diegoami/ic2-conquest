@@ -80,7 +80,11 @@ What is not done: no natural rough-sea tile next to a fleet was waited for (a st
 
 ### 6. Offers at the start of a human turn from a peace-only start `[P][code]`
 
-OFFERS_PLACEHOLDER
+Staging: Rome at peace (relation 0) with all 15 nations (L1: 15 relation pairs; Rome starts at war with Gaul and trades with Illyria otherwise), everything else the start save (spring week 1). One trial = open the staged save in the same Wine process (the RNG goes on), End turn once, read the offer rolled at Rome's next turn start from the kept autosave's tail (the pending offer, `+16/+17` words: proposer and type 1 trade / 2 alliance) and the box text. 120 trials, `g3_checks-Q6-20261012-082004.jsonl` (`light_round`, autosaves `Q6_20261012-082004_autosaveNN_q6_tNNN_t721_AUTO0721.SAV`; the staged save `Q6_20261012-082004_staged_q6_peace_only_run0-start-AUTO0720-seed12345.SAV`).
+
+- **Result: 36 offers in 120 turn starts (30%): 27 trade, 9 alliance, 84 none.** Proposers of the alliance offers: Gaul 4, Illyria 4, Carthage 1, i.e. only the three nations that border Rome (the neighbour mask Rome holds: Carthage, Gaul, Illyria); trade offers: 27 from 11 of the 12 other AI nations (Galatia never; Bithynia 4, Celtiberia 3, Dacia 3, Macedonia 3, Thracia 3, Ptolemaic 4, Armenia 2, Greece 2, Seleucid, Media, Numidia once each; `analysis_g3.txt`), **none** from a neighbour. The box text read by OCR names the same nation and kind as the autosave in all 120 trials ("X wants to trade with Rome." / "X wants to form an alliance with Rome."). Rome was at war with nobody at any of the 120 turn starts.
+- `[code]` `FUN_00452034` 54979-55039: `r = Random(16)`; if Rome's relation to `r` is 0, `r` is alive and `Random(3) == 0` and `r` is not human: a trade offer if `r` outranks a partner of Rome's by tax base; **then, for a bordering `r` (mask bit) and Rome at war with nobody, the offer is overwritten with an alliance**. So a bordering nation that rolls always offers an alliance, never trade, and the others offer trade: expected alliance offers 120 x 3/16 x 1/3 = 7.5 (9 seen), and at most 120 x 12/16 x 1/3 = 30 trade offers (27 seen). With Rome at war with Gaul (the start save) the alliance branch is closed for all three neighbours at once (the war test is on Rome, not on the proposer), which is why the remake's 120 and 200 offers from the war start were all trade.
+- Positive control for "no alliance from a non-neighbour": the 27 trade offers in the same trials; for the alliance branch itself the 9 alliance offers.
 
 ## What the remake does (rows_g3.md)
 
@@ -102,6 +106,6 @@ OFFERS_PLACEHOLDER
 - 2: Rome only; the AI nations' quarter incomes were not recomputed.
 - 3: the order was read in saves and one live window; the tool that writes the lines (the peace process) was read in the research report, not retraced in the decompile here.
 - 5: one fleet, one fleet position (a region where the overlay is allowed), the cell staged rather than painted by the weather.
-- 6: see the paragraph.
+- 6: spring week 1 of 270 BC with Rome the only human, 120 trials from one staged save, one RNG stream; the AI-driven war declarations on Rome were absent (0 of 120), so the "at war" branch is shown only by the code and the start save, not by a trial. The trade-offer test (tax base against a partner's) is not separated from the roll.
 
 ## Review notes (to be filled by the review rounds)
