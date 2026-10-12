@@ -617,3 +617,60 @@ Issues #78 and #80 closed.
 - **A Claude subagent's transcript lives under the session that spawned it:** `~/.claude/projects/<project>/<session-id>/subagents/agent-<id>.jsonl`. Check the path before giving it to the owner (this session first gave a wrong one).
 - **A detached review started with `&` inside a foreground command** gives no completion notice: watch its pid with `kill -0` in the monitor, or start it with the tool's background mode.
 - **GitGuardian can hang "in progress" and then end "skipping".** The API cannot re-request it; ask the owner.
+
+## Handover: 2026-10-12 evening (ic2-conquest session, MiniMax-M3 via Claude Code on MiniMax backend, quota tight) → next session on a fresh provider (per non-claude-backend skill)
+
+### TL;DR
+
+PRs #85 (g3 mark) and #86 (archive `__pycache__/` filter) **merged** on `main` (`f799f8a`, `b3acf0c`). PR #84 (g4 follow-ups) is **open** at HEAD `8ffeadd` on `experiment/g4-followups`; round-5 review verdict = `rework` (1 new blocking finding, R1: my `test_receiver_assertion_active` still bypasses `give_cities()`). MiniMax quota window was at 90% (resets in ~25 min from session-end). A new finding-request from `imperial-conquest-research` (unit-map selection rendering for v0.5.3) is **queued**.
+
+### What this session did (2026-10-12, this Claude session id `92497d8f-f48d-4efa-b530-01e57427162d`, ~3h)
+
+- **Started PR #84 review** at the user's request. Branched review brief `docs/review-briefs/pr84.md`. The worktree branch is `experiment/g4-followups`.
+- **Launched PR #85 (g3 mark-promoted)** at `docs/mark-g3-promoted` (`2abe45a` → `5f4af77`). Went 4 review rounds on docs-only: fixed wording deps (3 rounds: "never above 550" wording; branch-separation wording; "so" relation explanations; the +150-after-tick ordering in Still-open). Final approve → merged `f799f8a`.
+- **Launched PR #86 (archive_measurements.py `__pycache__/` filter)** at `fix/archive-pycache` (`e78781f` → `51c988d`). One rework round (test re-implemented filters instead of exercising production; fix extracted production helper `_files_for_check_ignore(d)` and rewrote test to call it). Approve → merged `b3acf0c`.
+- **PR #84 round 1 review**: 10 blocking + 2 non-blocking findings posted.
+- **Launched 4 subagent rounds** for PR #84 fixes (each round produces HEAD on `experiment/g4-followups`):
+  - Round-1 rework (R1..R12): Sonnet subagent `ad1e1571dbd09d25d`, 8 commits `3833165..44cba83`. End-of-round commit `44cba83`.
+  - Round-2 review failed at format (`bad-format` instead of `stopped-with-report`): model output preserved in `/home/diego/projects/ic2-conquest/rendered/pr84-af464f/run-1/result.json`; treated as round-2 verdict per CLAUDE.md rule 7. Reviewer found 5 findings (2 blocking: case I numbers vs `analysis_I.v5.txt`; `give_cities.put()` receiver `snapshot=None`).
+  - Round-2 rework (R1..R5): subagent `ace3528066c40aa8e`, 6 commits `bf0bc1c..0f55c0d`.
+  - Round-3 review: 3 blocking + 2 non-blocking findings posted (full review content posted correctly this time).
+  - Round-3 rework (R1..R5): subagent `a036b21f55f2f5f9f`, 5 commits `c1b4e27..0f55c0d` plus release_sync commit `b592b74`.
+  - Round-4 review: 2 blocking + 3 non-blocking.
+- **Main-session ran round-5 fixes directly** (quota guard fired at 86% during this round; I did the edits myself instead of launching another subagent):
+  - Commit `beff625` (R1): lift `give_cities.put` from a closure inside `give_cities` to module-level helper `_give_cities_put` (g4_lib.py:386). Same signature, identical behaviour. Rewrite `tests/test_give_cities.py`: drop the round-4 `put_clone`; new `test_receiver_assertion_active` calls `_give_cities_put` directly. Caught a bug in my own test (positional args bound `snapshot=set()` to `snapshot`); pass `old_len=0`.
+  - Commit `e998937` (R2): `findings/2026-10-12-g4-followups.md:33` distinguishes the C_real autosave evidence, the 1→334 boundary test, the oversized-list rejection, and the production-assertion negative control.
+  - Commit `a480179` (R3): `g4_checks.py` E loop `if not alive(): break`, and the window-manager cleanup + final log hash in a `finally` block.
+  - Commit `8ffeadd` (R4): README — corrected entry points (`analysis_I.v2.py`, `analysis_J.v2.py`); script versions vs output versions allocated independently; remove "near-arm trials still valid" for `G-20261012-111026` (its File>Open hung; no completed trial).
+- **Launched PR #84 round-5 review** (task `bumrstn58`, OpenCode `ses_ecf1a205affeRSlaTIBE2xZdKk` on `openai/gpt-6.1-sol#medium`). Verdict: REWORK with 1 new blocking R1.
+
+### Open items, in order, for the next session
+
+1. **PR #84 round-6 fix** — implement the round-5 review's R1 then re-review. Heads-up:
+   - The new finding (`result.json` in `/home/diego/projects/ic2-conquest/rendered/pr84-868a26/run-1/result.json` if shape matches round-2, or wherever the round-5 review wrote its run record; the OpenCode session was `bumrstn58`): my `test_receiver_assertion_active` still bypasses `give_cities` because it calls `_give_cities_put` directly. The reviewer wants a receiver-only injection test that calls `give_cities()` end-to-end, monkey-patches `_give_cities_put` to inject a rogue write at the receiver's `+0x2e4` (only on the receiver-call branch, gated on `snapshot is not None`), and asserts the SystemExit fires. This proves give_cities actually passes `snapshot=snap` to the receiver put; a regression to `snapshot=None` would silently disable the assertion in this patched-put scenario and the test would fail. Keep `test_consistent_333_to_334` and `test_oversized_receiver_list_raises` unchanged.
+   - Round-5 commits already on `experiment/g4-followups`: `beff625` `e998937` `a480179` `8ffeadd`. Plus the round-4 release-sync record at `b592b74`.
+2. **PR #84 round-6 re-review** — `python3 scripts/external_review.py --pr 84 --model 'openai/gpt-6.1-sol#medium' --brief-file docs/review-briefs/pr84.md --apply-label` (the standing rule per session). Verify the test calls `_give_cities_put` AND that the regression-sensitivity case is exercised.
+3. **Merge PR #84** (only after approve + green CI). Use `gh pr merge 84 --merge --delete-branch`. The merge rule applies: approve from another model family (openai ≠ MiniMax), GitGuardian pass, no non-blocking notes.
+4. **`/relay-to-research` for the g4 finding** once PR #84 merges. The new file `findings/2026-10-12-g4-followups.md` will be on `origin/main`. Use the project skill `relay-to-research` (or the `.claude/worktrees/g4`-scoped variant). Memory `research-intake-relay.md` records the prior relay (research-intake-relay md has been updated this session to note `findings/2026-10-12-g3-original-checks.md` was marked at `f799f8a` per PR #85).
+5. **Unit-map selection-rendering experiment** (cross-session request from `imperial-conquest-research`): "How does the original draw a selected army, fleet and town on the unit map: what colour does the selected marker take, and what are the shape, size and colour of the selection frame (the user describes a rhombus around it)?" — for v0.5.3, issue diegoami/imperial_conquest_2#1010. Defer to a session with Wine + ample quota. The design: capture the map with nothing selected, left-click each object, capture, deselect. Report frame shape (diamond/square/corners), size in pixels relative to the cell, colours as RGB, whether it blinks, and the marker's colour before and after selection. Deliver: PNGs in a `run-<id>` release; findings draft with Method/Observations/Inferences kept apart; "What this does not establish"; tell the research intake the draft's file name and branch. Don't write to imperial_conquest_2 or the research repo (rule 2).
+
+### Cheat sheet for the next session
+
+- **Working tree**: HEAD is on `experiment/g4-followups` at `8ffeadd` (after the round-5 R1-R4 commits). Briefs for the round work live at `docs/review-briefs/pr84-r{1,3,4,5}-fixes.md` (untracked). PR #84's brief remains `docs/review-briefs/pr84.md`.
+- **Test sanity before launching**: `python3 -m tests.test_give_cities` should still pass (3 tests); `python3 -m tests.test_archive_pycache` from PR #86 may fail if you're on the g4 branch without PR #86's archive_measurements.py changes (PR #86 was merged into `main`, not yet into `experiment/g4-followups`; either back-merge main or commit by hand per the brief's path).
+- **Per-finding instruction in reviewer briefs**: `docs/review-briefs/README.md` (template). Reviews are deterministic and reproducible from the brief + branch HEAD.
+- **External review brief format**: include per-R findings verbatim from the reviewer's posted comment, a fix-by-fix guidance section, a "things NOT to do" list, and the END-block paragraph. Briefs the next session has: pr84-r5-fixes.md (round-5 fixes), and the prior round briefs.
+- **Handover ground rules** (project CLAUDE.md): "Failures are fixed, never re-routed" (rule 8); "Read delegated run final message in full before retrying" (rule 7); the round-3 `bad-format` was retried on the same model with a fresh session — never silently re-routed (this happened twice; the second time round-3's content was preserved as the verdict per CLAUDE.md rule 7).
+- **Quota-aware delegation**: prefer `external_review.py` to OpenCode/openai (not MiniMax budget). Subagent via the Agent tool on MiniMax budget; this session found that MiniMax 5h window was exhausted at 90% during round-5, so the next session should restart on `minimax` (window reset) or `glm`/`claude` if a fresh window matters.
+
+### State of branches
+
+- `main` (origin): `b3acf0c` (PR #86 merged; PR #85 also merged earlier, `f799f8a`).
+- `experiment/g4-followups`: HEAD `8ffeadd`. PR #84 head is `8ffeadd`.
+- Local-only (untracked, brief files): `docs/review-briefs/pr84-r{1,3,4,5}-fixes.md`, `docs/review-briefs/pr84.md` (pushed).
+
+### Older open items still untouched (from prior handovers)
+
+- **PR #66 cosmetic gaps** (open since 2026-10-07). Has design decisions; would need an owner ask before any work.
+- **Player's desktop palette check** (`run-exp-desktop-palette/STEPS.md`); player's task.
+- `scripts/archive_measurements.py --commit` no longer trips on `__pycache__/` on `main` (PR #86) but `experiment/g4-followups` doesn't yet have that fix — back-merge or cherry-pick before relying on the archive script there.
