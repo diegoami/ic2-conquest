@@ -62,6 +62,15 @@ try:
             for c in ids: ops += [("city", c, {"allegiance": 7, "loyalty": 5})]
             src = staged(START, ops, f"q1c_{v}", W11)
             go(f"q1c_{v}", src)
+    elif CASE == "Q1c_dead":
+        # Greece really eliminated (as the game leaves a dead nation: unity 0, capital -1, no city): its 21 cities go to Macedonia (owner + both city lists + counts, L1)
+        b0 = sav.load(START); greek = list(b0["nations"][7]["city_list"])
+        NINE = [111, 116, 119, 122, 120, 123, 97, 100, 101]
+        for v, ids in (("nine_dead", NINE), ("seven_dead_control", NINE[:7]), ("nine_dead_again", NINE)):
+            ops = []
+            for c in ids: ops += [("city", c, {"allegiance": 7, "loyalty": 5})]
+            src = staged(START, ops, f"q1c_{v}", chain(W11, give_cities(7, 4, greek, kill_frm=True)))
+            go(f"q1c_{v}", src)
     elif CASE == "Q1d":
         a = lambda t: add_unit(0, 11, "li", 3000, 6, "Gallic Foot  Battalion")
         two = chain(add_unit(0, 11, "li", 3000, 6, "Gallic Foot  Battalion"), add_unit(0, 14, "ar", 2000, 7, "Cretan Bowmen Battalion"))
@@ -82,6 +91,87 @@ try:
                 rows.append({"id": c, "group": "test" if c in test else "ctl" if c in ctl else "other", "owner_before": p[3], "stock_before": p[6], "stock_after": q[6], "loy_before": p[5], "loy_after": q[5]})
             log("famine_round", round=t + 1, rows=rows)
             prev = aft
+    elif CASE == "Q1f":
+        n_rounds = int(sys.argv[2]) if len(sys.argv) > 2 else 10
+        ctl = [1, 4]            # Carthage (treasury 11,000) and Macedonia (275) keep their natural treasuries: in-save controls (never below the debt line)
+        ops = [("treasury", n, -50000) for n in range(1, 16) if n not in ctl]
+        variant = sys.argv[3] if len(sys.argv) > 3 else "base"
+        if variant == "unity":      # all debtors at unity 400 (so a deposition's unity effect shows), Carthage solvent at unity 350 (< 400: the code deposes it with the same 1/9 although solvent), Macedonia solvent at unity 800
+            ops += [("unity", n, 400) for n in range(1, 16) if n not in ctl] + [("unity", 1, 350), ("unity", 4, 800)]
+        src = staged(START, ops, "q1f_debt50000" + ("_" + variant if variant != "base" else ""), W11)
+        for i in range(n_rounds): go(f"q1f_r{i + 1:02d}", src)        # the same staged save opened again in the same process: the RNG goes on, so each opening is an independent trial
+    elif CASE == "Q2":
+        g.load(START, seed=12345)
+        log("loaded", save=START.name, seed_line=g.seed_line)
+        prev = snap(g)
+        for t in range(6):
+            if t in (0, 5): balance_sheet(g, f"before_round{t + 1}")
+            prev = snap(g)
+            name, texts = g.end_turn(); time.sleep(2)
+            kept = keep_auto(name, g.turn_number(), f"round{t + 1}")
+            after = snap(g); d = diff(prev, after)
+            log("round_done", round=t + 1, tag=f"q2_round{t + 1}", autosave=name, kept=kept, texts=texts, cal=after["cal"], turn=g.turn_number(), news_new=new_news(prev, after), news_all=after["news"],
+                rome_before=nat_brief(prev["nations"][0]), rome_after=nat_brief(after["nations"][0]), diff=d, root=shot(g, f"q2_round{t + 1}"))
+            if t == 5: balance_sheet(g, "after_round6")
+    elif CASE == "Q2b":
+        # the quarter boundary on a staged week-11 save (no AI capture of a Roman city first, unlike the natural run): Balance sheet before, End turn, Balance sheet after; the same save opened again (RNG goes on)
+        src = staged(START, [], "q2b_week11", W11)
+        for i in range(int(sys.argv[2]) if len(sys.argv) > 2 else 3):
+            if i == 0: g.load(src, seed=12345)
+            else: g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+            balance_sheet(g, f"q2b_{i + 1}_before")
+            prev = snap(g)
+            name, texts = g.end_turn(); time.sleep(2)
+            kept = keep_auto(name, g.turn_number(), f"q2b_{i + 1}")
+            after = snap(g); d = diff(prev, after)
+            log("round_done", round=i + 1, tag=f"q2b_{i + 1}", autosave=name, kept=kept, texts=texts, cal=after["cal"], turn=g.turn_number(), news_new=new_news(prev, after), news_all=after["news"],
+                rome_before=nat_brief(prev["nations"][0]), rome_after=nat_brief(after["nations"][0]), diff=d, root=shot(g, f"q2b_{i + 1}_after"))
+            balance_sheet(g, f"q2b_{i + 1}_after")
+    elif CASE == "Q3":
+        g.load(START, seed=12345)
+        nm = news_mem(g)
+        log("news_start", lines=nm, destroys=[i for i, t in enumerate(nm) if " destroys army of " in t], sues=[i for i, t in enumerate(nm) if " sues " in t and "for peace" in t], windows=windows(g), root=shot(g, "start"))
+        g.dismiss_popups()
+        before = {w[0] for w in g.find_windows(".")}
+        g.tool("news", pause=2.5)
+        new = [w for w in g.find_windows(".") if w[0] not in before]
+        log("news_tool", new_windows=[(w[0], w[1], w[4], w[5]) for w in new], windows=windows(g), root=shot(g, "news_tool"))
+        for w in new[:2]:
+            if w[4] > 100:
+                f, o = ocr_window(g, "news_window", w[0]); log("news_window_ocr", title=w[1], image=f, ocr=o)
+        info = [w for w in g.find_windows("^Information$")]
+        for w in info[:1]:
+            f, o = ocr_window(g, "information_window", w[0]); log("information_window_ocr", image=f, ocr=o)
+    elif CASE == "Q6":
+        n = int(sys.argv[2]); ops = [("relation", 0, k, 0) for k in range(1, 16)]
+        src = staged(START, ops, "q6_peace_only")        # Rome at peace (0) with all 15 nations; everything else as the start save (spring week 1)
+        for i in range(n):
+            rec = light_round(g, f"q6_t{i + 1:03d}", src, i == 0)
+            if rec.get("game_over"): break
+    elif CASE == "Q5":
+        sub = sys.argv[2]
+        fst = lambda: (g.fleet_state(2), g.fleet_rec(2).hex())
+        if sub == "move":
+            first = True
+            for tag, ex in (("rough", set_map(100, 47, 1)), ("calm_control", None), ("rough_again", set_map(100, 47, 1))):
+                src = staged(PORT, [], f"q5_move_{tag}", ex)
+                if first: g.load(src, seed=12345); first = False
+                else: g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+                before = dict(state=fst(), moves=g.fleet_moves(2), target_cell=g.cell(100, 47), fleet_cell=g.cell(101, 46))
+                pos, texts = g.move_fleet(2, 100, 47)
+                info = [w for w in g.find_windows("^Information$")]
+                io = ocr_window(g, f"{tag}_info", info[0][0]) if info else None
+                log("fleet_move", tag=tag, before=before, pos_after=pos, texts=texts, state_after=fst(), moves_after=g.fleet_moves(2), target_cell_after=g.cell(100, 47),
+                    origin_cell_after=g.cell(101, 46), info_ocr=io, root=shot(g, f"{tag}_after_move"))
+        elif sub == "storm":
+            n = int(sys.argv[3])
+            srcs = {"rough": staged(PORT, [], "q5_storm_rough", set_fleet(2, cond=40, supplies=500, cell=1)),
+                    "calm": staged(PORT, [], "q5_storm_calm", set_fleet(2, cond=40, supplies=500, cell=0))}
+            first = True
+            for k in range(n):
+                for tag in (("rough", "calm") if k % 2 == 0 else ("calm", "rough")):
+                    light_round(g, f"q5_storm_{tag}_{k + 1:02d}", srcs[tag], first); first = False
+        else: raise SystemExit("sub")
     else:
         raise SystemExit("unknown case " + CASE)
     log("done")

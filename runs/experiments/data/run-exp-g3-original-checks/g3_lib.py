@@ -269,7 +269,8 @@ def snap(g):
     nations = [g.nation_state(n) for n in range(16)]
     armies = [g.army_state(i) for i in range(g.i16(0x4A0324))]
     fleets = [(i, g.fleet_rec(i).hex()) for i in range(g.i16(0x4A0326))]
-    return {"cal": g.calendar(), "cur": g.i16(drv.CUR_NATION), "cities": cities, "nations": nations, "armies": armies, "fleets": fleets, "news": news_mem(g), "news_count": g.i16(0x4a031e)}
+    mp = g.mem(drv.MAP, 320 * 140 * 2); rough = [(i // 140, i % 140) for i in range(320 * 140) if mp[2 * i] == 1 and mp[2 * i + 1] == 0]
+    return {"cal": g.calendar(), "cur": g.i16(drv.CUR_NATION), "rough_cells": len(rough), "rough_sample": rough[:40], "cities": cities, "nations": nations, "armies": armies, "fleets": fleets, "news": news_mem(g), "news_count": g.i16(0x4a031e)}
 
 
 NATION_KEYS = ("unity", "treasury", "wealth", "mobilization", "capital", "cities_count", "tax", "tax_base", "conquered_by", "human", "leader", "alive")
@@ -320,7 +321,8 @@ def round_(g, tag, src, first, turns=1, seed=12345):
     else:
         texts_open = g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
     before = snap(g)
-    log("round_open", tag=tag, save=Path(src).name, pid=g.pid, open_boxes=texts_open, cal=before["cal"], cur=before["cur"],
+    log("round_open", tag=tag, save=Path(src).name, saved_news=sav.parse(Path(src).read_bytes())["news"], note_news="`news` is the memory buffer right after File>Open (it can still hold the previous game's lines); `saved_news` is the opened save's own news list",
+        pid=g.pid, open_boxes=texts_open, cal=before["cal"], cur=before["cur"],
         nations={sav.NATIONS[n["id"]]: nat_brief(n) for n in before["nations"]}, news=before["news"], root=shot(g, f"{tag}_opened"))
     afters, diffs, prev = [], [], before
     for t in range(turns):
@@ -328,6 +330,7 @@ def round_(g, tag, src, first, turns=1, seed=12345):
         try:
             name, texts = g.end_turn(); time.sleep(2)
             rec.update(autosave=name, texts=texts, kept=keep_auto(name, g.turn_number(), tag), eog=bool(g.find_windows("^End of Game$")))
+            rec["autosave_news"] = sav.parse((ART / rec["kept"]).read_bytes())["news"]       # the autosave's own news list: the memory buffer can keep stale tail lines after a File>Open (seen in Q1c seven_control)
         except drv.GameOver as e:
             rec.update(game_over=e.text)
         after = snap(g); d = diff(prev, after)
@@ -336,3 +339,72 @@ def round_(g, tag, src, first, turns=1, seed=12345):
         afters.append(after); diffs.append(d); prev = after
         if rec.get("game_over") or rec.get("eog"): break
     return before, afters, diffs
+
+
+def set_map(x, y, v):
+    """map cell (x, y) := v (save offset (x*140+y)*2, u16): the overlay's own write (FUN_004511bc paints code 1 onto a code-0 cell)."""
+    def f(b):
+        struct.pack_into("<H", b, (x * 140 + y) * 2, v)
+    f.__doc__ = f"map cell ({x},{y}) := {v}"
+    return f
+
+
+def set_fleet(i, **kw):
+    """fleet record i fields (save fleet table, 26-byte records, docs/sav-layout-notes.md): cond (+20), supplies (+14), cell (+24, the covered map code)."""
+    offs = {"cond": 20, "supplies": 14, "cell": 24, "moves": 12}
+    def f(b):
+        na = struct.unpack_from("<h", b, sav.ARMY_OFF)[0]; o = sav.ARMY_OFF + 2 + na * sav.ARMY_LEN + 2 + i * sav.FLEET_LEN
+        for k, v in kw.items(): struct.pack_into("<h", b, o + offs[k], v)
+    f.__doc__ = f"fleet {i}: " + ", ".join(f"{k} := {v}" for k, v in kw.items())
+    return f
+
+
+def light_round(g, tag, src, first, seed=12345, extra=None):
+    """open `src` (first: fresh process load; later File > Open), End turn once keeping the autosave, return (autosave Path, texts, before-snapshot-lite, after).
+    Logs one `light_round` line: texts of the boxes, the kept autosave's pending offer / relations / news tail, Rome's relations, fleets (raw), rough-cell count."""
+    if first: g.load(src, seed=seed)
+    else:
+        g.open(src); g.wait(g.loaded, 20, "loaded"); time.sleep(2)
+    fl0 = [g.fleet_rec(i).hex() for i in range(g.i16(0x4A0326))]
+    rel0 = [g.i16(drv.NATIONS + 0x26 + 2 * k) for k in range(16)]
+    n0 = news_mem(g)
+    rec = {"tag": tag, "save": Path(src).name, "pid": g.pid, "cal_before": g.calendar(), "fleets_before": fl0, "rome_rel_before": rel0}
+    try:
+        name, texts = g.end_turn(); time.sleep(2)
+        kept = keep_auto(name, g.turn_number(), tag)
+        s_ = sav.parse((ART / kept).read_bytes())
+        rec.update(autosave=name, kept=kept, texts=texts, cal_after=g.calendar(), pending_offer=s_["pending_offer"], rome_rel_after=[g.i16(drv.NATIONS + 0x26 + 2 * k) for k in range(16)],
+                   fleets_after=[g.fleet_rec(i).hex() for i in range(g.i16(0x4A0326))], news_new=new_lines(n0, news_mem(g)), cur_after=g.i16(drv.CUR_NATION))
+        mp = g.mem(drv.MAP, 320 * 140 * 2); rec["rough_cells_after"] = sum(1 for i in range(320 * 140) if mp[2 * i] == 1 and mp[2 * i + 1] == 0)
+    except drv.GameOver as e:
+        rec.update(game_over=e.text)
+    if extra: rec.update(extra(g))
+    log("light_round", **rec)
+    return rec
+
+
+def give_cities(frm, to, ids, kill_frm=False):
+    """L1: city `ids` change owner frm -> to (city +0x12), both nations' city lists (+0x48, -1 terminated) and count words (+0x446) are kept consistent;
+    allegiance, loyalty and everything else of the cities stay. kill_frm: nation `frm` also gets unity 0 and capital -1 (+0x444): a nation eliminated the way
+    the game leaves it (alive = unity > 0 and capital != -1, state/sav.py)."""
+    def lst(b, n):
+        o = stage._nation(b, n) + 0x48; v = []
+        for k in range(334):
+            c = struct.unpack_from("<h", b, o + 2 * k)[0]
+            if c < 0: break
+            v.append(c)
+        return v
+    def put(b, n, v, old_len):
+        o = stage._nation(b, n) + 0x48
+        for k in range(max(len(v), old_len) + 1):
+            struct.pack_into("<h", b, o + 2 * k, v[k] if k < len(v) else -1)
+        struct.pack_into("<h", b, stage._nation(b, n) + 0x446, len(v))
+    def f(b):
+        a, t = lst(b, frm), lst(b, to); la, lt = len(a), len(t)
+        for c in ids:
+            a.remove(c); t.append(c); stage.set_city(b, c, {"owner": to})
+        put(b, frm, a, la); put(b, to, t, lt)
+        if kill_frm:
+            struct.pack_into("<h", b, stage._nation(b, frm) + 0x440, 0); struct.pack_into("<h", b, stage._nation(b, frm) + 0x444, -1)
+    f.__doc__ = f"cities {list(ids)}: owner {frm} -> {to}, city lists and counts kept consistent" + ("; nation %d unity 0, capital -1" % frm if kill_frm else "")
+    return f

@@ -11,3 +11,6 @@ Checks 1 (a-f), 2, 3, 5, 6 of `runs/experiments/data/run-exp-gap-v050/rows_g3.md
 - Rule 6: commit and push each batch; `scripts/archive_measurements.py run-exp-g3-original-checks --commit`; `release_sync.py` after every batch.
 
 ## Progress
+- 0fc0bef plan + library. 8574910 batch 1: Q1ab (rebellion: Capua/Venusia -> Carthage/Illyria by the neighbour score, Heraclea -> Greece loyalty 90, Ariminum/Arretium/Pisae(Gaul dead) -> Gaul by the war-army rule; Pisae natural was captured by Gaul first), Q1c rebirth (9 cities, 9 defect lines), Q1d mercenary desertion, Q1e winter famine. Release `run-exp-g3-original-checks` created with 66 files.
+- Batch 2 (this commit): Q1f (2 x 12 rounds: 32 of 312 debtor trials deposed; unity variant), Q2 natural and Q2b staged quarter pair, Q3 (news order), Q5 move (rough sea cost 3 vs 1), `g3_report.py`, `autosave_news.py`, `news_scan.py`. Findings so far: the Balance sheet before the tick does not predict the tick (tax base and wealth are rebuilt in it); the after-state sheet does (+21 = observed). Q1c_dead (Greece really eliminated), Q5 storm and Q6 running in a chain.
+- Lessons: the news memory buffer can keep stale tail lines after a File>Open (Q1c seven_control showed lines of the previous game), so new lines are taken from the autosave's own news list (`autosave_news-*.jsonl`).
