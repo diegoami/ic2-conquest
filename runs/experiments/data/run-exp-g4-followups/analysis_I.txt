@@ -1,0 +1,22 @@
+# analysis_I: AI and human quarter income, recomputed from the code (see the docstring)
+g4_checks-I-20261012-110121.jsonl: unit prices (regular, 0x478fd4 + 40 t) = [1, 2, 1, 3, 4]
+-- g4_checks-I-20261012-110121.jsonl opening 1 kept I_20261012-110121_autosave01_i_1_t726_AUTO0726.SAV news: ['Marium defects from Greece to Ptolemaic.', 'Sidon (Seleucid) falls to Ptolemaic.', 'Marium defects from Greece to Ptolemaic.', 'Pontica (Seleucid) falls to Bithynia.', 'Damascus (Seleucid) falls to Ptolemaic.', 'Week 1      Spring      270 BC', 'Seleucid destroys army of Ptolemaic.', 'Ptolemaic sues Seleucid for peace and;', '    Ptolemaic ends all current trading agreements.', '    Ptolemaic  ends all current alliances.', '    Ptolemaic pays reparations of 2,242 talents.', 'Week  1      Summer      270BC']
+   Rome        treasury     2200 ->     2221  predicted     2221  diff      0  | unity 821 -> 836 predicted 836 | upkeep 574 trade 28 | queue/units/ships changed: True | deposed: False
+   Carthage    treasury    11000 ->    12041  predicted    13311  diff  -1270  | unity 719 -> 740 predicted 740 | upkeep 420 trade 749 | queue/units/ships changed: True | deposed: False
+   Seleucid    treasury     1840 ->     2800  predicted     2800  diff      0  | unity 693 -> 705 predicted 705 | upkeep 1111 trade 950 | queue/units/ships changed: True | deposed: False
+   Ptolemaic   treasury       -9 ->      366  predicted      897  diff   -531  | unity 666 -> 682 predicted 682 | upkeep 760 trade 172 | queue/units/ships changed: True | deposed: False
+   Macedonia   treasury      275 ->      973  predicted      973  diff      0  | unity 838 -> 853 predicted 853 | upkeep 236 trade 740 | queue/units/ships changed: True | deposed: False
+   Numidia     treasury      410 ->     1149  predicted     1687  diff   -538  | unity 619 -> 642 predicted 642 | upkeep 69 trade 1304 | queue/units/ships changed: True | deposed: False
+   Gaul        treasury      315 ->    -1277  predicted     -111  diff  -1166  | unity 577 -> 586 predicted 591 | upkeep 504 trade 148 | queue/units/ships changed: True | deposed: False
+   Greece      treasury      920 ->     2546  predicted     2518  diff     28  | unity 532 -> 555 predicted 555 | upkeep 58 trade 1231 | queue/units/ships changed: True | deposed: False
+   Celtiberia  treasury      440 ->    -2187  predicted        4  diff  -2191  | unity 713 -> 716 predicted 723 | upkeep 668 trade 152 | queue/units/ships changed: True | deposed: False
+   Illyria     treasury      580 ->      820  predicted      820  diff      0  | unity 690 -> 713 predicted 713 | upkeep 82 trade 315 | queue/units/ships changed: True | deposed: False
+   Dacia       treasury      180 ->      671  predicted      197  diff    474  | unity 607 -> 630 predicted 630 | upkeep 66 trade 138 | queue/units/ships changed: True | deposed: False
+   Bithynia    treasury      550 ->    -1255  predicted      190  diff  -1445  | unity 654 -> 661 predicted 666 | upkeep 567 trade 99 | queue/units/ships changed: True | deposed: False
+   Galatia     treasury     -958 ->    -1556  predicted    -1522  diff    -34  | unity 728 -> 727 predicted 727 | upkeep 581 trade 48 | queue/units/ships changed: True | deposed: False
+   Armenia     treasury      530 ->      683  predicted      660  diff     23  | unity 660 -> 681 predicted 681 | upkeep 60 trade 171 | queue/units/ships changed: True | deposed: False
+   Media       treasury      260 ->      196  predicted      696  diff   -500  | unity 682 -> 698 predicted 698 | upkeep 248 trade 575 | queue/units/ships changed: True | deposed: False
+   Thracia     treasury      520 ->     1147  predicted     1647  diff   -500  | unity 703 -> 721 predicted 721 | upkeep 189 trade 1243 | queue/units/ships changed: True | deposed: False
+nation-quarters: 16; exact treasury match: 4; of the 0 without a changed queue/units/fleet and no deposition: exact 0
+unity: exact 13 of 16 (the after-tick seats can move mobilisation)
+AI only: 15; exact treasury 3; exact among unmoved 0 of 0

@@ -1,0 +1,185 @@
+# Imperial Conquest 2.exe, SHA-256 9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31 (CODE section: file 0x400, VA 0x401000, size 0x5b400); capstone 5.0.7
+# 1. every occurrence of the 4 bytes 34 03 4a 00 (the address 0x4a0334) in CODE, with the bytes around it
+  imm32 at VA 0x448ac5: bytes 24 c6 05 34 03 4a 00 00 c6
+  imm32 at VA 0x45ab26: bytes ff c6 05 34 03 4a 00 01 8b
+  imm32 at VA 0x45ab93: bytes 00 80 3d 34 03 4a 00 00 74
+  imm32 at VA 0x45abe3: bytes ff c6 05 34 03 4a 00 01 5b
+# 2. the function that holds the clear (start 0x448aa4, from the call sites below), disassembled to the first ret
+  0x448aa4	53                      	push ebx
+  0x448aa5	56                      	push esi
+  0x448aa6	57                      	push edi
+  0x448aa7	55                      	push ebp
+  0x448aa8	83 c4 ec                	add esp, -0x14
+  0x448aab	bf 70 46 47 00          	mov edi, 0x474670
+  0x448ab0	e8 8f 9c fb ff          	call 0x402744
+  0x448ab5	a1 2c e6 45 00          	mov eax, dword ptr [0x45e62c]
+  0x448aba	e8 d1 a7 fd ff          	call 0x423290
+  0x448abf	66 89 04 24             	mov word ptr [esp], ax
+  0x448ac3	c6 05 34 03 4a 00 00    	mov byte ptr [0x4a0334], 0
+  0x448aca	c6 05 7c 0b 4a 00 00    	mov byte ptr [0x4a0b7c], 0
+  0x448ad1	c6 05 7d 0b 4a 00 00    	mov byte ptr [0x4a0b7d], 0
+  0x448ad8	66 c7 05 2e 03 4a 00 00 00	mov word ptr [0x4a032e], 0
+  0x448ae1	66 c7 05 30 03 4a 00 01 00	mov word ptr [0x4a0330], 1
+  0x448aea	66 c7 05 32 03 4a 00 0e 01	mov word ptr [0x4a0332], 0x10e
+  0x448af3	66 c7 05 08 f0 49 00 ff ff	mov word ptr [0x49f008], 0xffff
+  0x448afc	66 c7 05 1c 03 4a 00 ff ff	mov word ptr [0x4a031c], 0xffff
+  0x448b05	66 c7 05 1e 03 4a 00 1a 00	mov word ptr [0x4a031e], 0x1a
+  0x448b0e	e8 1d 06 00 00          	call 0x449130
+  0x448b13	e8 ec 87 00 00          	call 0x451304
+  0x448b18	33 f6                   	xor esi, esi
+  0x448b1a	89 7c 24 04             	mov dword ptr [esp + 4], edi
+  0x448b1e	c7 44 24 08 68 dc 49 00 	mov dword ptr [esp + 8], 0x49dc68
+  0x448b26	8b 44 24 04             	mov eax, dword ptr [esp + 4]
+  0x448b2a	8b d8                   	mov ebx, eax
+  0x448b2c	b8 0c 00 00 00          	mov eax, 0xc
+  0x448b31	e8 16 9d fb ff          	call 0x40284c
+  0x448b36	6b c0 0d                	imul eax, eax, 0xd
+  0x448b39	8b 54 24 08             	mov edx, dword ptr [esp + 8]
+  0x448b3d	8d 14 42                	lea edx, [edx + eax*2]
+  0x448b40	8d 43 0b                	lea eax, [ebx + 0xb]
+  0x448b43	e8 b8 cf fb ff          	call 0x405b00
+  0x448b48	c6 83 90 04 00 00 00    	mov byte ptr [ebx + 0x490], 0
+  0x448b4f	8d 83 50 04 00 00       	lea eax, [ebx + 0x450]
+  0x448b55	8b d8                   	mov ebx, eax
+  0x448b57	c6 43 1b 01             	mov byte ptr [ebx + 0x1b], 1
+  0x448b5b	c6 43 1c 01             	mov byte ptr [ebx + 0x1c], 1
+  0x448b5f	66 c7 43 36 2d 00       	mov word ptr [ebx + 0x36], 0x2d
+  0x448b65	66 c7 43 38 37 00       	mov word ptr [ebx + 0x38], 0x37
+  0x448b6b	66 89 73 3a             	mov word ptr [ebx + 0x3a], si
+  0x448b6f	66 c7 43 3c 1e 00       	mov word ptr [ebx + 0x3c], 0x1e
+  0x448b75	66 c7 43 3e 14 00       	mov word ptr [ebx + 0x3e], 0x14
+  0x448b7b	8d 6b 1e                	lea ebp, [ebx + 0x1e]
+  0x448b7e	66 c7 45 00 02 00       	mov word ptr [ebp], 2
+  0x448b84	8d 54 24 0c             	lea edx, [esp + 0xc]
+  0x448b88	a1 d0 0b 4a 00          	mov eax, dword ptr [0x4a0bd0]
+  0x448b8d	8b 08                   	mov ecx, dword ptr [eax]
+  0x448b8f	ff 51 28                	call dword ptr [ecx + 0x28]
+  0x448b92	66 8b 44 24 10          	mov ax, word ptr [esp + 0x10]
+  0x448b97	66 83 c0 1e             	add ax, 0x1e
+  0x448b9b	48                      	dec eax
+  0x448b9c	66 89 45 02             	mov word ptr [ebp + 2], ax
+  0x448ba0	66 c7 45 06 40 01       	mov word ptr [ebp + 6], 0x140
+  0x448ba6	66 c7 45 04 aa 00       	mov word ptr [ebp + 4], 0xaa
+  0x448bac	8d 6b 26                	lea ebp, [ebx + 0x26]
+  0x448baf	66 c7 45 00 4c 01       	mov word ptr [ebp], 0x14c
+  0x448bb5	8d 54 24 0c             	lea edx, [esp + 0xc]
+  0x448bb9	a1 d0 0b 4a 00          	mov eax, dword ptr [0x4a0bd0]
+  0x448bbe	8b 08                   	mov ecx, dword ptr [eax]
+  0x448bc0	ff 51 28                	call dword ptr [ecx + 0x28]
+  0x448bc3	66 8b 44 24 10          	mov ax, word ptr [esp + 0x10]
+  0x448bc8	66 83 c0 1e             	add ax, 0x1e
+  0x448bcc	48                      	dec eax
+  0x448bcd	66 89 45 02             	mov word ptr [ebp + 2], ax
+  0x448bd1	66 81 3c 24 58 02       	cmp word ptr [esp], 0x258
+  0x448bd7	7c 0e                   	jl 0x448be7
+  0x448bd9	66 c7 45 06 af 01       	mov word ptr [ebp + 6], 0x1af
+  0x448bdf	66 c7 45 04 cd 01       	mov word ptr [ebp + 4], 0x1cd
+  0x448be5	eb 0c                   	jmp 0x448bf3
+  0x448be7	66 c7 45 06 2f 01       	mov word ptr [ebp + 6], 0x12f
+  0x448bed	66 c7 45 04 6d 01       	mov word ptr [ebp + 4], 0x16d
+  0x448bf3	8d 43 2e                	lea eax, [ebx + 0x2e]
+  0x448bf6	8b d8                   	mov ebx, eax
+  0x448bf8	66 c7 03 02 00          	mov word ptr [ebx], 2
+  0x448bfd	8d 54 24 0c             	lea edx, [esp + 0xc]
+  0x448c01	a1 d0 0b 4a 00          	mov eax, dword ptr [0x4a0bd0]
+  0x448c06	8b 08                   	mov ecx, dword ptr [eax]
+  0x448c08	ff 51 28                	call dword ptr [ecx + 0x28]
+  0x448c0b	66 8b 44 24 10          	mov ax, word ptr [esp + 0x10]
+  0x448c10	66 83 c0 1e             	add ax, 0x1e
+  0x448c14	66 05 c2 00             	add ax, 0xc2
+  0x448c18	66 89 43 02             	mov word ptr [ebx + 2], ax
+  0x448c1c	66 c7 43 06 40 01       	mov word ptr [ebx + 6], 0x140
+  0x448c22	66 8b 04 24             	mov ax, word ptr [esp]
+  0x448c26	66 2d 3c 01             	sub ax, 0x13c
+  0x448c2a	66 89 43 04             	mov word ptr [ebx + 4], ax
+  0x448c2e	46                      	inc esi
+  0x448c2f	81 44 24 08 38 01 00 00 	add dword ptr [esp + 8], 0x138
+  0x448c37	81 44 24 04 94 04 00 00 	add dword ptr [esp + 4], 0x494
+  0x448c3f	66 83 fe 10             	cmp si, 0x10
+  0x448c43	0f 85 dd fe ff ff       	jne 0x448b26
+  0x448c49	33 f6                   	xor esi, esi
+  0x448c4b	b8 e8 ef 49 00          	mov eax, 0x49efe8
+  0x448c50	66 89 30                	mov word ptr [eax], si
+  0x448c53	46                      	inc esi
+  0x448c54	83 c0 02                	add eax, 2
+  0x448c57	66 83 fe 10             	cmp si, 0x10
+  0x448c5b	75 f3                   	jne 0x448c50
+  0x448c5d	66 be 10 00             	mov si, 0x10
+  0x448c61	bb e8 ef 49 00          	mov ebx, 0x49efe8
+  0x448c66	b8 10 00 00 00          	mov eax, 0x10
+  0x448c6b	e8 dc 9b fb ff          	call 0x40284c
+  0x448c70	8d 14 45 e8 ef 49 00    	lea edx, [eax*2 + 0x49efe8]
+  0x448c77	8b c3                   	mov eax, ebx
+  0x448c79	e8 62 03 00 00          	call 0x448fe0
+  0x448c7e	83 c3 02                	add ebx, 2
+  0x448c81	66 ff ce                	dec si
+  0x448c84	75 e0                   	jne 0x448c66
+  0x448c86	66 c7 05 22 03 4a 00 00 00	mov word ptr [0x4a0322], 0
+  0x448c8f	66 a1 e8 ef 49 00       	mov ax, word ptr [0x49efe8]
+  0x448c95	66 a3 20 03 4a 00       	mov word ptr [0x4a0320], ax
+  0x448c9b	c7 87 24 04 00 00 80 00 80 00	mov dword ptr [edi + 0x424], 0x800080
+  0x448ca5	c7 87 28 04 00 00 ff ff ff 00	mov dword ptr [edi + 0x428], 0xffffff
+  0x448caf	c7 87 2c 04 00 00 00 00 ff 00	mov dword ptr [edi + 0x42c], 0xff0000
+  0x448cb9	c7 87 b8 08 00 00 ff 00 00 00	mov dword ptr [edi + 0x8b8], 0xff
+  0x448cc3	33 c0                   	xor eax, eax
+  0x448cc5	89 87 bc 08 00 00       	mov dword ptr [edi + 0x8bc], eax
+  0x448ccb	c7 87 c0 08 00 00 ff ff ff 00	mov dword ptr [edi + 0x8c0], 0xffffff
+  0x448cd5	c7 87 4c 0d 00 00 80 80 00 00	mov dword ptr [edi + 0xd4c], 0x8080
+  0x448cdf	c7 87 50 0d 00 00 ff ff ff 00	mov dword ptr [edi + 0xd50], 0xffffff
+  0x448ce9	c7 87 54 0d 00 00 80 00 00 00	mov dword ptr [edi + 0xd54], 0x80
+  0x448cf3	c7 87 e0 11 00 00 00 00 80 00	mov dword ptr [edi + 0x11e0], 0x800000
+  0x448cfd	c7 87 e4 11 00 00 ff ff ff 00	mov dword ptr [edi + 0x11e4], 0xffffff
+  0x448d07	c7 87 e8 11 00 00 ff 00 ff 00	mov dword ptr [edi + 0x11e8], 0xff00ff
+  0x448d11	c7 87 74 16 00 00 ff ff ff 00	mov dword ptr [edi + 0x1674], 0xffffff
+  0x448d1b	c7 87 78 16 00 00 00 00 ff 00	mov dword ptr [edi + 0x1678], 0xff0000
+  0x448d25	c7 87 7c 16 00 00 80 80 80 00	mov dword ptr [edi + 0x167c], 0x808080
+  0x448d2f	c7 87 08 1b 00 00 00 ff 00 00	mov dword ptr [edi + 0x1b08], 0xff00
+  0x448d39	33 c0                   	xor eax, eax
+  0x448d3b	89 87 0c 1b 00 00       	mov dword ptr [edi + 0x1b0c], eax
+  0x448d41	c7 87 10 1b 00 00 80 80 80 00	mov dword ptr [edi + 0x1b10], 0x808080
+  0x448d4b	c7 87 9c 1f 00 00 80 00 00 00	mov dword ptr [edi + 0x1f9c], 0x80
+  0x448d55	c7 87 a0 1f 00 00 00 ff ff 00	mov dword ptr [edi + 0x1fa0], 0xffff00
+  0x448d5f	c7 87 a4 1f 00 00 80 80 80 00	mov dword ptr [edi + 0x1fa4], 0x808080
+  0x448d69	c7 87 30 24 00 00 00 ff ff 00	mov dword ptr [edi + 0x2430], 0xffff00
+  0x448d73	33 c0                   	xor eax, eax
+  0x448d75	89 87 34 24 00 00       	mov dword ptr [edi + 0x2434], eax
+  0x448d7b	c7 87 38 24 00 00 ff 00 ff 00	mov dword ptr [edi + 0x2438], 0xff00ff
+  0x448d85	c7 87 c4 28 00 00 ff ff 00 00	mov dword ptr [edi + 0x28c4], 0xffff
+  0x448d8f	33 c0                   	xor eax, eax
+  0x448d91	89 87 c8 28 00 00       	mov dword ptr [edi + 0x28c8], eax
+  0x448d97	c7 87 cc 28 00 00 ff 00 00 00	mov dword ptr [edi + 0x28cc], 0xff
+  0x448da1	c7 87 58 2d 00 00 00 00 80 00	mov dword ptr [edi + 0x2d58], 0x800000
+  0x448dab	c7 87 5c 2d 00 00 80 80 00 00	mov dword ptr [edi + 0x2d5c], 0x8080
+  0x448db5	c7 87 60 2d 00 00 00 ff ff 00	mov dword ptr [edi + 0x2d60], 0xffff00
+  0x448dbf	c7 87 ec 31 00 00 00 80 00 00	mov dword ptr [edi + 0x31ec], 0x8000
+  0x448dc9	33 c0                   	xor eax, eax
+  0x448dcb	89 87 f0 31 00 00       	mov dword ptr [edi + 0x31f0], eax
+  0x448dd1	c7 87 f4 31 00 00 ff ff 00 00	mov dword ptr [edi + 0x31f4], 0xffff
+  0x448ddb	c7 87 80 36 00 00 00 80 80 00	mov dword ptr [edi + 0x3680], 0x808000
+  0x448de5	33 c0                   	xor eax, eax
+  0x448de7	89 87 84 36 00 00       	mov dword ptr [edi + 0x3684], eax
+  0x448ded	c7 87 88 36 00 00 00 00 ff 00	mov dword ptr [edi + 0x3688], 0xff0000
+  0x448df7	c7 87 14 3b 00 00 00 00 ff 00	mov dword ptr [edi + 0x3b14], 0xff0000
+  0x448e01	33 c0                   	xor eax, eax
+  0x448e03	89 87 18 3b 00 00       	mov dword ptr [edi + 0x3b18], eax
+  0x448e09	c7 87 1c 3b 00 00 00 ff ff 00	mov dword ptr [edi + 0x3b1c], 0xffff00
+  0x448e13	c7 87 a8 3f 00 00 ff 00 ff 00	mov dword ptr [edi + 0x3fa8], 0xff00ff
+  0x448e1d	33 c0                   	xor eax, eax
+  0x448e1f	89 87 ac 3f 00 00       	mov dword ptr [edi + 0x3fac], eax
+  0x448e25	c7 87 b0 3f 00 00 ff 00 00 00	mov dword ptr [edi + 0x3fb0], 0xff
+  0x448e2f	c7 87 3c 44 00 00 ff 00 00 00	mov dword ptr [edi + 0x443c], 0xff
+  0x448e39	c7 87 40 44 00 00 c0 c0 c0 00	mov dword ptr [edi + 0x4440], 0xc0c0c0
+  0x448e43	c7 87 44 44 00 00 80 00 80 00	mov dword ptr [edi + 0x4444], 0x800080
+  0x448e4d	c7 87 d0 48 00 00 80 80 80 00	mov dword ptr [edi + 0x48d0], 0x808080
+  0x448e57	c7 87 d4 48 00 00 ff ff ff 00	mov dword ptr [edi + 0x48d4], 0xffffff
+  0x448e61	33 c0                   	xor eax, eax
+  0x448e63	89 87 d8 48 00 00       	mov dword ptr [edi + 0x48d8], eax
+  0x448e69	83 c4 14                	add esp, 0x14
+  0x448e6c	5d                      	pop ebp
+  0x448e6d	5f                      	pop edi
+  0x448e6e	5e                      	pop esi
+  0x448e6f	5b                      	pop ebx
+  0x448e70	c3                      	ret 
+# 3. direct calls (E8 rel32) to 0x448aa4 in CODE
+  call at VA 0x45a93a
+  call at VA 0x45aa32

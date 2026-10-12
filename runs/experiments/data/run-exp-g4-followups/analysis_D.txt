@@ -1,0 +1,46 @@
+# analysis_D: mobilise arms
+== g4_checks-D-20261012-105131.jsonl
+  d1_ctl: armies 14 -> 15; new armies [[14, 102, 44, 0, [['hi', 4000, 4, '7th Guards Battalion']]]]; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+  d1_none_free: armies 14 -> 14; new armies []; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 4000, 1000]; refusal box ['@ ‘You cannot mobilise a unit at this time.']
+  d1_one_free_100_42: armies 14 -> 15; new armies [[14, 100, 42, 0, [['hi', 4000, 4, '8th Guards Battalion']]]]; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+  d1_two_free_100_42_and_102_44: armies 14 -> 15; new armies [[14, 102, 44, 0, [['hi', 4000, 4, '7th Guards Battalion']]]]; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+== g4_checks-D2-20261012-105329.jsonl
+  human_dist6_natural: army0 {"pos": [100, 37], "cheb": 6, "armies": 14}
+  human_dist6_natural: armies 14 -> 15; new armies [[14, 102, 44, 0, [['hi', 4000, 4, '7th Guards Battalion']]]]; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+  human_dist4: move_try {"target": [99, 39], "pos": [99, 39]}
+  human_dist4: army0 {"pos": [99, 39], "cheb": 4, "armies": 14}
+  human_dist4: armies 14 -> 15; new armies [[14, 102, 44, 0, [['hi', 4000, 4, '8th Guards Battalion']]]]; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+  human_dist1: move_try {"target": [102, 42], "pos": [100, 40]}
+  human_dist1: move_try {"target": [102, 43], "pos": [100, 40]}
+  human_dist1: move_try {"target": [101, 44], "pos": [100, 40]}
+  human_dist1: move_try {"target": [102, 44], "pos": [100, 40]}
+  human_dist1: move_failed {"want": 1}
+  human_dist0_city: move_try {"target": [101, 43], "pos": [100, 37]}
+  human_dist0_city: move_failed {"want": 0}
+  ai_carthage_dist1_state24: AI nation 1 (None) staged slot(s) [1]; wars with None; queue after [[13, 4, 1200, 72], [24, 1, 3000, 72], [2, 0, 0, 0], [2, 0, 0, 0], [2, 0, 0, 0]]; armies 14 -> 14; watched [(3, 'units 6 -> 7', [93, 79], '->', [88, 77]), (2, 'units 8 -> 8', [47, 62], '->', [42, 63])]; new armies []
+  ai_thracia_dist4_state24: AI nation 15 (None) staged slot(s) [1]; wars with None; queue after [[11, 0, 5300, 192], [24, 1, 4000, 192], [19, 4, 1000, 192], [2, 0, 0, 0], [2, 0, 0, 0]]; armies 14 -> 14; watched [(6, 'units 6 -> 6', [166, 35], '->', [169, 37])]; new armies []
+  ai_thracia_dist4_state24_allslots: AI nation 15 (None) staged slot(s) [0, 1, 2]; wars with None; queue after [[24, 0, 5300, 192], [24, 1, 4000, 192], [24, 4, 1000, 192], [2, 0, 0, 0], [2, 0, 0, 0]]; armies 14 -> 14; watched [(6, 'units 6 -> 6', [166, 35], '->', [169, 37])]; new armies []
+  ai_thracia_dist4_natural_ctl: AI nation 15 (None) staged slot(s) []; wars with None; queue after [[11, 0, 5300, 192], [19, 1, 4000, 192], [19, 4, 1000, 192], [2, 0, 0, 0], [2, 0, 0, 0]]; armies 14 -> 14; watched [(6, 'units 6 -> 6', [166, 35], '->', [169, 37])]; new armies []
+== g4_checks-D3-20261012-105648.jsonl
+  human_dist1_turn2: turn1_move {"pos": [100, 40], "moves_left": 4}
+  human_dist1_turn2: turn2_start {"army0": 9, "pos": [100, 40], "cal": {"season": 0, "week": 3, "year_bc": 270}}
+  human_dist1_turn2: move_try {"target": [102, 42], "pos": [102, 42]}
+  human_dist1_turn2: army0 {"pos": [102, 42], "cheb": 1, "armies": 14}
+  human_dist1_turn2: armies 14 -> 14; new armies []; old armies changed [(0, [102, 42], ['hi', 4000, '7th Guards Battalion'])]; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+  human_dist0_turn2: turn1_move {"pos": [100, 40], "moves_left": 4}
+  human_dist0_turn2: turn2_start {"army0": 9, "pos": [100, 40], "cal": {"season": 0, "week": 3, "year_bc": 270}}
+  human_dist0_turn2: move_try {"target": [101, 43], "pos": [100, 40]}
+  human_dist0_turn2: move_failed {"want": 0, "pos": [100, 40]}
+  human_dist2_turn2: turn1_move {"pos": [100, 40], "moves_left": 4}
+  human_dist2_turn2: turn2_start {"army0": 9, "pos": [100, 40], "cal": {"season": 0, "week": 3, "year_bc": 270}}
+  human_dist2_turn2: move_try {"target": [99, 41], "pos": [99, 41]}
+  human_dist2_turn2: army0 {"pos": [99, 41], "cheb": 2, "armies": 14}
+  human_dist2_turn2: armies 14 -> 15; new armies [[14, 102, 44, 0, [['hi', 4000, 4, '7th Guards Battalion']]]]; old armies changed []; queue troops before [5500, 3500, 4000, 1000] after [5500, 3500, 1000, 0]; refusal box None
+== g4_checks-D4-20261012-105843.jsonl
+  d4_thracia_dist4_wars8: AI nation 15 (Byzantium (192)) staged slot(s) 1; wars with [0, 1, 2, 3, 4, 5, 6, 7]; queue after [[11, 0, 5300, 192], [19, 4, 1000, 192], [0, 4, 1900, 192], [0, 4, 1800, 192], [0, 1, 3400, 192]]; armies 14 -> 14; watched [(6, 'units 6 -> 7', [166, 35], '->', [160, 32])]; new armies []
+  d4_carthage_dist1_wars8: AI nation 1 (Carthago (72)) staged slot(s) 1; wars with [0, 2, 3, 4, 5, 6, 7, 8]; queue after [[13, 4, 1200, 72], [2, 1, 3500, 30], [2, 4, 2100, 30], [2, 0, 6300, 30], [2, 1, 4500, 30]]; armies 14 -> 14; watched [(3, 'units 6 -> 8', [93, 79], '->', [88, 77])]; new armies []
+  d4_galatia_dist8_wars8: AI nation 12 (Ancyra (218)) staged slot(s) 1; wars with [0, 1, 2, 3, 4, 5, 6, 7]; queue after [[11, 3, 3100, 218], [24, 0, 4900, 218], [23, 0, 5100, 218], [2, 1, 5700, 218], [2, 0, 12000, 218]]; armies 14 -> 14; watched [(12, 'units 5 -> 5', [200, 45], '->', [194, 46])]; new armies []
+  d4_thracia_dist4_nowars_ctl: AI nation 15 (Byzantium (192)) staged slot(s) 1; wars with []; queue after [[11, 0, 5300, 192], [24, 1, 4000, 192], [19, 4, 1000, 192], [2, 0, 0, 0], [2, 0, 0, 0]]; armies 14 -> 14; watched [(6, 'units 6 -> 6', [166, 35], '->', [169, 37])]; new armies []
+== g4_checks-D5-20261012-110504.jsonl
+  d5_galatia_4ready: AI nation 12 (None) staged slot(s) [0, 1, 2, 3]; wars with None; queue after [[24, 0, 4900, 218], [24, 1, 5700, 218], [2, 0, 12000, 218], [2, 0, 7400, 218], [2, 0, 12500, 218]]; armies 14 -> 14; watched [(12, 'units 5 -> 7', [200, 45], '->', [192, 40])]; new armies []
+  d5_galatia_3ready_ctl: AI nation 12 (None) staged slot(s) [0, 1, 2]; wars with None; queue after [[24, 3, 3100, 218], [24, 0, 4900, 218], [24, 0, 5100, 218], [2, 1, 5700, 218], [2, 0, 12000, 218]]; armies 14 -> 14; watched [(12, 'units 5 -> 5', [200, 45], '->', [194, 46])]; new armies []
