@@ -17,3 +17,5 @@ Never delete saves or measured outputs. Use uniquely named outputs under runs/ex
 - Build branchtask/T175-tactical-general-control cf715e7 implements source-confirmedOR, recordedtoolbar timing and postshootstop. MiniMax approved contracts1148/1149/1153. Control code review/merge still pending; no official#25comparison yet.
 
 - T175 correction6208282: full Data248 and Engine7364pass/0fail,3Windowsplatformskips;147focusedpass;6mutationchecksallkilled/restoredclean. Contract1155 expressly allows6namedpreviouslymaskedstrictcases,633→94registry after545completecomparisonpasses. Canonicalvalidation/rawcasechangeoutputs retained under correction-6208282/. Code review/merge still pending; no official#25replay.
+
+- Read-only static preparation while T175 code review runs: archived pinned target routines and five source-level candidates (Pass2 weighted strength/eligibility, later-pass slot order, actor-archer threat condition, exact selection sort/dead slots, flank direction capture time). These are not yet first-divergence cause assignments; no production sweep or target correction started.
