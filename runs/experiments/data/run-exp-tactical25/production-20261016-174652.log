@@ -1,0 +1,24 @@
+Unhandled exception. System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> System.TypeInitializationException: The type initializer for 'IC2.Engine.Tests.Battle.Tactical.GoldenMaster.BattleFixtures' threw an exception.
+ ---> System.TypeInitializationException: The type initializer for 'IC2.Engine.Tests.Import.LocalOriginalAssets' threw an exception.
+ ---> System.InvalidOperationException: Could not find 'IC2.sln' above '/tmp/ic2-conquest-tactical25/rendered/tactical25-capture-20261016-174652/bin/Debug/net10.0/'.
+   at IC2.Engine.Tests.Import.LocalOriginalAssets.FindRepositoryRoot() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Import/LocalOriginalAssets.cs:line 109
+   at IC2.Engine.Tests.Import.LocalOriginalAssets..cctor() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Import/LocalOriginalAssets.cs:line 20
+   --- End of inner exception stack trace ---
+   at IC2.Engine.Tests.Import.LocalOriginalAssets.get_Settings() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Import/LocalOriginalAssets.cs:line 29
+   at IC2.Engine.Tests.Battle.Tactical.GoldenMaster.BattleFixtures..cctor() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Battle/Tactical/GoldenMaster/BattleFixtures.cs:line 16
+   --- End of inner exception stack trace ---
+   at IC2.Engine.Tests.Battle.Tactical.GoldenMaster.BattleFixtures.get_Root() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Battle/Tactical/GoldenMaster/BattleFixtures.cs:line 16
+   at IC2.Engine.Tests.Battle.Tactical.GoldenMaster.BattleFixtures.Path_(String relative) in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Battle/Tactical/GoldenMaster/BattleFixtures.cs:line 30
+   at IC2.Engine.Tests.Battle.Tactical.GoldenMaster.SeriesCatalogue.FindHookedTrials() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Battle/Tactical/GoldenMaster/SeriesCatalogue.cs:line 68
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at IC2.Engine.Tests.Battle.Tactical.GoldenMaster.SeriesCatalogue.HookedTrials() in /tmp/ic2-build-tactical25/tests/IC2.Engine.Tests/Battle/Tactical/GoldenMaster/SeriesCatalogue.cs:line 61
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Program.<<Main>$>g__S|0_1(String type, String method, Object[] a, <>c__DisplayClass0_0&) in /tmp/ic2-conquest-tactical25/runs/experiments/tactical25/Capture.cs:line 18
+   at Program.<Main>$(String[] args) in /tmp/ic2-conquest-tactical25/runs/experiments/tactical25/Capture.cs:line 115
