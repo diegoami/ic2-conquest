@@ -8,7 +8,7 @@ def get(b,va,n):
   if s<=va and va+n<=s+z:return b[r+va-s:r+va-s+n]
  raise ValueError(hex(va))
 rows=[]
-for label,start,end in [('threat body after displaced prologue',0x43a721,0x43aa60),('line and box pure helpers',0x439f00,0x43a160),('min max swaps distance helpers',0x448fd0,0x449030)]:
+for label,start,end in [('threat body after displaced prologue',0x43a721,0x43aa60),('line and box pure helpers',0x439f00,0x43a160),('min max swaps and full distance helper through ret',0x448fd0,0x44904e)]:
  bs=[get(b,start,end-start) for b in raw];assert bs[0]==bs[1]==bs[2];rows.append(dict(label=label,start=hex(start),end_exclusive=hex(end),sha256=hashlib.sha256(bs[0]).hexdigest(),all_three_equal=True))
 rec=dict(exe_sha256s=[dict(path=str(p),sha256=hashlib.sha256(b).hexdigest()) for p,b in zip(paths,raw)],ranges=rows,scope='Body equality for source/x86 attribution; entry detour/prologue preserved separately by inertness proof')
 out=ROOT/'runs/experiments/data/run-exp-tactical25-trace'/('byte-audit-'+time.strftime('%Y%m%d-%H%M%S',time.gmtime())+'.json')
