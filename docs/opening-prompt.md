@@ -1,3 +1,10 @@
+# Historical bootstrap prompt
+
+This prompt describes the project's initial setup. For current work, read
+`CLAUDE.md` (through `AGENTS.md` on Codex), `docs/agent-workflow.md`, the latest
+relevant dated handover and the current task brief. Do not restart setup, queued
+work or a game run from this historical prompt.
+
 # Opening prompt for the ic2-conquest session
 
 ---

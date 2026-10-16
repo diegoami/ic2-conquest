@@ -2,6 +2,10 @@
 
 A public repository: code, plans, logs and metrics as text, plus a few selected small saves. No EXE, DAT, screenshot or recording is committed (see the rules below).
 
+**Agent workflow:** Claude uses `CLAUDE.md`; Codex uses `AGENTS.md`, which directs
+it to the same project rules. See [the shared workflow](docs/agent-workflow.md)
+for startup, reviews, handoffs and checks that do not require Wine.
+
 **Primary goal:** find strategies that dominate the map in the original 1996 game, and **prove it** with a strip of per-turn saves, logs and plans.
 
 **Secondary goal:** exercise every mechanic the game has, and record what each one does.
@@ -41,7 +45,7 @@ The bot plays **the original game**, headless under Wine. It does not play the r
   - the same start save and seed, strategy vs baseline;
   - N turns;
   - metrics compared.
-- **The planner is a Claude agent, one decision per turn.** It reads the parsed state, the rules digest and the active strategy, writes a plan, issues orders through the driver, and after the turn writes expected vs actual. It can fork: "try both landings, keep the better".
+- **The planner is an agent, one decision per turn** (Claude or Codex, as chosen by the player). It reads the parsed state, the rules digest and the active strategy, writes a plan, issues orders through the driver, and after the turn writes expected vs actual. It can fork: "try both landings, keep the better".
 
 Coverage (the secondary goal) is a checklist, `coverage.md`, of every order type, dialog, event and mechanic: fleets, sieges, peace terms, rebellions, mercenaries, storms, defection and so on. Each entry records the save where it was first exercised and what happened. The bot schedules experiments for what is still unticked. Anything it learns about the rules goes back to the research repo as a report.
 
