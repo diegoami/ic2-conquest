@@ -26,6 +26,12 @@
 
 ## END
 
+Review update: the owner selected MiniMax on 2026-10-16. Use the configured
+MiniMax M3 thinking reviewer, independently of the OpenAI implementer, with
+`docs/review-briefs/pr87.md`. No fallback model is authorized. PR #87 is open
+as a draft. The earlier "reviewer still unchosen" statement below describes
+the implementation handoff, before that selection.
+
 Implementation and offline validation complete; ready for independent review.
 The PR records the final commit and publication state. The owner still chooses
 the reviewer model, from a different family than the OpenAI implementer; no
