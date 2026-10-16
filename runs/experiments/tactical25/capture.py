@@ -10,7 +10,7 @@ assert git(build,'status','--porcelain')=='', 'comparison source must be clean'
 assert git(fixtures,'rev-parse','HEAD')=='6319802a75067e7730e4f6a27dce3b4e296ddd9b'
 stamp=datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S')
 out=root/'runs/experiments/data/run-exp-tactical25'/('production-'+stamp);out_parent=out.parent
-runner=root/'rendered'/('tactical25-capture-'+stamp);runner.mkdir(parents=True)
+runner=build/'rendered'/('tactical25-capture-'+stamp);runner.mkdir(parents=True)
 project=runner/'Capture.csproj';code=Path(__file__).with_name('Capture.cs')
 project.write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup><ItemGroup><ProjectReference Include="'+escape(str(build/'tests/IC2.Engine.Tests/IC2.Engine.Tests.csproj'))+'"/><Compile Include="'+escape(str(code))+'"/></ItemGroup></Project>')
 env=dict(os.environ,IC2_FIXTURES_DIR=str(fixtures),PATH='/tmp/ic2-dotnet:/tmp/ic2-pwsh:'+os.environ['PATH'])
