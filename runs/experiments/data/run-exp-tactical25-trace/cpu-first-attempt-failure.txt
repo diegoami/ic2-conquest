@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/tmp/ic2-conquest-tactical25-trace/runs/experiments/tactical25-trace/test_observer.py", line 15, in <module>
+    sys.argv=[sys.argv[0],'--trials','100'];rc=T.main()
+                                               ~~~~~~^^
+  File "/tmp/ic2-conquest-tactical25-trace/tests/test_battle_hook_caves.py", line 372, in main
+    fails, n = fn(**kw)
+               ~~^^^^^^
+  File "/tmp/ic2-conquest-tactical25-trace/tests/test_battle_hook_caves.py", line 114, in test_random_cave
+    ucA, _ = fresh(state)
+             ~~~~~^^^^^^^
+  File "/tmp/ic2-conquest-tactical25-trace/tests/test_battle_hook_caves.py", line 104, in fresh
+    uc, caves = new_machine(state)
+                ~~~~~~~~~~~^^^^^^^
+  File "/tmp/ic2-conquest-tactical25-trace/runs/experiments/tactical25-trace/test_observer.py", line 11, in machine
+    uc,caves=old_new(state);uc.mem_write(O.SNAPSHOT,O.snapshot_code());return uc,caves
+             ~~~~~~~^^^^^^^
+  File "/tmp/ic2-conquest-tactical25-trace/tests/test_battle_hook_caves.py", line 45, in new_machine
+    uc.mem_map(STACK_TOP - STACK_SIZE, STACK_SIZE + 0x1000)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/unicorn/unicorn_py3/unicorn.py", line 745, in mem_map
+    raise UcError(status)
+unicorn.unicorn_py3.unicorn.UcError: Invalid memory mapping (UC_ERR_MAP)

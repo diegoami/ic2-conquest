@@ -1,0 +1,63 @@
+Build257f2d2; GeneralPassThree.cs SHA256 f7bdedcd087c9978cdb8679daed124a19cc0d57f4e90e83a045f83652b7a57bd
+129: 
+130:         var order = enemies.ToArray();
+131:         var keys = order.Select(e => Threat(board, slot, e)).ToArray();
+132:         for (var i = 0; i < order.Length - 1; i++)
+133:         {
+134:             for (var j = i + 1; j < order.Length; j++)
+135:             {
+136:                 if (keys[j] < keys[i])
+137:                 {
+138:                     (order[i], order[j]) = (order[j], order[i]);
+139:                     (keys[i], keys[j]) = (keys[j], keys[i]);
+140:                 }
+141:             }
+142:         }
+143: 
+144:         return order;
+145:     }
+146: 
+147:     private static void ThreatMoveUnit(TacticalBoard board, int slot, IList<GeneralDecision>? journal)
+148:     {
+149:         var unit = board.Slots[slot];
+150:         if (unit.Moves <= 0 || unit.Target >= 0)
+151:         {
+152:             return;
+153:         }
+154: 
+155:         foreach (var enemy in ThreatOrder(board, slot))
+156:         {
+157:             var aim = board.Slots[enemy];
+158:             if (GeneralLine.IsClear(board, slot, aim.X, aim.Y))
+159:             {
+160:                 journal?.Add(new GeneralDecision(slot, GeneralStep.ThreatLine, enemy, aim.X, aim.Y));
+161:                 TacticalMovement.Walk(board, slot, aim.X, aim.Y);
+162:                 return;
+163:             }
+164: 
+165:             if (GeneralLine.BoxCell(board, slot, enemy) is { } cell)
+166:             {
+167:                 journal?.Add(new GeneralDecision(slot, GeneralStep.ThreatBox, enemy, cell.X, cell.Y));
+168:                 TacticalMovement.Walk(board, slot, cell.X, cell.Y);
+169:                 return;
+170:             }
+171:         }
+172:     }
+173: 
+174:     private static void FlankUnit(TacticalBoard board, int slot, IList<GeneralDecision>? journal)
+175:     {
+176:         var rules = board.Rules;
+177:         var context = board.Context;
+178:         var unit = board.Slots[slot];
+179:         if (unit.Target >= 0 || unit.Moves <= 0)
+180:         {
+181:             return;
+182:         }
+183: 
+184:         // combat.tactical.slowAdvance also gates the flank exception for reduced moves.
+185:         var untouched = unit.Moves == context.MovesOf(unit.Type)
+186:                         || (rules.SlowAdvance && unit.Moves == rules.SlowAdvanceMoves
+187:                             && board.Counter < rules.SlowAdvanceHalfRounds
+188:                             && unit.Type != context.SlowAdvanceExemptType);
+189:         if (!untouched)
+190:         {

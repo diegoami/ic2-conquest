@@ -1,0 +1,40 @@
+{
+  "exe_sha256s": [
+    {
+      "path": "/home/diego/ic2-work/build/Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    {
+      "path": "/home/diego/ic2-work/build/Imperial Conquest 2 lab s1.exe",
+      "sha256": "06bc469dff70ae8c83438e82ef4266a584bab7796752024521d00f8d8d46ec40"
+    },
+    {
+      "path": "/tmp/ic2-conquest-tactical25-trace/artifacts/run-exp-tactical25-trace/state-observer-20261016-191329.exe",
+      "sha256": "dae453466e5fd61fe4376192ac669ae5f3703433c65e3e93d9398b45bc00c3ec"
+    }
+  ],
+  "ranges": [
+    {
+      "label": "threat body after displaced prologue",
+      "start": "0x43a721",
+      "end_exclusive": "0x43aa60",
+      "sha256": "b717f52c47926aea1c43b570ef13878a792bb528f178e543fc73c383489d5413",
+      "all_three_equal": true
+    },
+    {
+      "label": "line and box pure helpers",
+      "start": "0x439f00",
+      "end_exclusive": "0x43a160",
+      "sha256": "5ae9a5359e3148b6cc94172f24877b38aa66e684e0858a084e452b71cbaa78b4",
+      "all_three_equal": true
+    },
+    {
+      "label": "min max swaps and full distance helper through ret",
+      "start": "0x448fd0",
+      "end_exclusive": "0x44904e",
+      "sha256": "c1f445b792df0d3a812a5116ac6c41a4396ec8dee328fc0eb3f654c64288d19a",
+      "all_three_equal": true
+    }
+  ],
+  "scope": "Body equality for source/x86 attribution; entry detour/prologue preserved separately by inertness proof"
+}

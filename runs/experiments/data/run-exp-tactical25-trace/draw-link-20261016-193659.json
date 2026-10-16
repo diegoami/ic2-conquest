@@ -1,0 +1,42 @@
+{
+  "provenance": "Fresh Wine actor pair from two rout-entry AX words following four melee draws; model unchanged production typed event",
+  "fresh_log_sha256": "e2f870a5cbddfdef9424db9c58428a6c08d8a471313b7bc73771762a2230bbb6",
+  "model_draw_file_sha256": "525c32ca460821aaeecfbb6866b22cd6aafd016b6575f596c8a8a789a42e7c12",
+  "draw_index": 24,
+  "fresh_draw": {
+    "seq": "146",
+    "kind": "random",
+    "site": "0x439557",
+    "eax": "1085",
+    "edx": "5",
+    "ecx": "12",
+    "seed_before": "698472713",
+    "seed_after": "1415176494",
+    "result": "357",
+    "counter": "6",
+    "side": "0",
+    "flag": "1",
+    "ebp": "0x43d"
+  },
+  "fresh_exchange": {
+    "actor": 23,
+    "target": 2,
+    "rout_entry_seqs": [
+      150,
+      151
+    ]
+  },
+  "model_draw": {
+    "index": 24,
+    "bound": 172,
+    "value": 56,
+    "counter": 6,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  "source_sha256": "63fc851d2dc373eab513ba0c7e2e7bfc0f1ac37fdcec3fe06501bffa5bb43d34"
+}
