@@ -73,19 +73,21 @@ def prepare(b, kind, config):
                     all_other_city_stocks=0,ai_seat=0,current_seat=13,next_human=11,
                     source_army_units_replaced=True,subject_moves=0,other_rome_armies_removed=removed)
     for field,value in config.items():
-        if field in ('money','condition','supplies'):
+        if field in ('money','condition','supplies','ships'):
             fleet_set(b,2,**{field:value})
     # Army is full and purse normalized, so its visit cannot consume stock or money.
     stage.set_army_field(b,0,'supplies',300)
     if 'distance' in config:
         old = s['fleets'][2]
         struct.pack_into('<h',b,(old['x']*140+old['y'])*2,old['cell'])
-        x,y=102-config['distance'],46
+        x,y=(102,46+config['distance']) if config.get('axis')=='y' else (102-config['distance'],46)
         fleet_set(b,2,x=x,y=y,cell=0)
         struct.pack_into('<h',b,(x*140+y)*2,302)
     if config.get('hostile'):
         stage.set_city(b,89,{'owner':1})
         stage.set_relation(b,0,1,3)
+    if config.get('repeat'):
+        stage.set_city(b,85,{'supplies':50}) # Rome, city 85, distance 3, visited before Antium
     return dict(kind=kind,config=config,subject_fleet=2,city=89,ai_seat=0,
                 current_seat=13,next_human=11,army_supplies_at_capacity=True,subject_moves=0,
                 other_rome_armies_removed=removed)
@@ -111,6 +113,12 @@ CASES = {
     'f_hostile':('fleet',{'money':99,'treasury':101,'supplies':50,'hostile':True}),
     'f_cap':('fleet',{'money':100,'treasury':101,'supplies':700}),
     'f_empty':('fleet',{'money':100,'treasury':101,'supplies':50,'stock':0}),
+    'f_y3':('fleet',{'money':99,'treasury':101,'supplies':50,'distance':3,'axis':'y'}),
+    'f_y4':('fleet',{'money':99,'treasury':101,'supplies':50,'distance':4,'axis':'y'}),
+    'f94t101':('fleet',{'money':100,'treasury':101,'condition':94,'supplies':50}),
+    'f94grant':('fleet',{'money':99,'treasury':101,'condition':94,'supplies':50}),
+    'f94s91':('fleet',{'money':100,'treasury':1,'condition':94,'supplies':50,'ships':91}),
+    'f_repeat':('fleet',{'money':99,'treasury':101,'condition':94,'supplies':50,'stock':50,'repeat':True}),
 }
 
 
