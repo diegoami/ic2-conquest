@@ -1,7 +1,7 @@
 """Fresh original mix-rg trace; unique outputs, no fixture writes or save deletion."""
 import argparse,csv,hashlib,io,json,os,shutil,struct,subprocess,sys,time
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('--exe',required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--exe',required=True);p.add_argument('--observer',action='store_true');a=p.parse_args()
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'patches'))
 if not os.environ.get('IC2_WORK','').startswith('/tmp/ic2-tactical25-trace-') or os.environ.get('DISPLAY_IC2')!=':719':raise SystemExit('Private work/display required')
 from harness import driver as D,environment
@@ -9,6 +9,9 @@ from state import hook_log as L,sav
 # Same enlarged saved Unit-map layout as the immutable B11 runner (common.py:33).
 D.VIEW_COLS,D.VIEW_ROWS=29,27
 import battle_hook as H
+if a.observer:
+ import observer as O
+ O.configure();L.BUF=H.BUF
 DATA=ROOT/'runs/experiments/data/run-exp-tactical25-trace';ART=ROOT/'artifacts/run-exp-tactical25-trace';STAMP=time.strftime('%Y%m%d-%H%M%S',time.gmtime())+'-'+str(os.getpid());logpath=DATA/('run-'+STAMP+'.jsonl');logpath.touch(exist_ok=False)
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def log(event,**kw):
@@ -59,6 +62,16 @@ try:
  rawpath=ART/(STAMP+'-hookbuf.bin')
  with rawpath.open('xb') as f:f.write(g.mem(H.BUF,len(recs)*H.REC))
  with (DATA/'SAVES.sha256').open('a') as f:f.write(sha(rawpath)+'  '+rawpath.name+'\n')
+ if a.observer:
+  over=int.from_bytes(g.mem(O.OVERFLOW,4),'little');n=min(ctl['index'],O.STATE_CAP);statebytes=g.mem(O.STATE_BUF,n*O.STATE_REC)
+  rawstate=ART/(STAMP+'-statebuf.bin')
+  with rawstate.open('xb') as f:f.write(statebytes)
+  with (DATA/'SAVES.sha256').open('a') as f:f.write(sha(rawstate)+'  '+rawstate.name+'\n')
+  snapshots=[O.decode_snapshot(statebytes[r['seq']*O.STATE_REC:(r['seq']+1)*O.STATE_REC],r) for r in recs if r['counter']<=6 and r['seq']<O.STATE_CAP]
+  statepath=DATA/('states-'+STAMP+'.json')
+  with statepath.open('x') as f:json.dump(dict(provenance='Fresh original Wine pre-call snapshots; never legacy runtime backfill',overflow=over,records=snapshots),f);f.write('\n')
+  log('states',file=statepath.name,count=len(snapshots),overflow=over,raw=rawstate.name)
+  assert not over,'Original-state observer overflow; do not use trace for attribution'
  log('saves',files=[keep(p) for p in sorted(D.G.glob('BATTLE*.SAV'))]);kept=True
 except BaseException as e:
  log('failure',error=repr(e),windows=g.find_windows() if g.pid else [])
