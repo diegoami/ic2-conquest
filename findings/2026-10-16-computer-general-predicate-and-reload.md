@@ -13,7 +13,9 @@ explicitly staged human/AI flags. **No native Windows confirmation.**
 **Source:** `all_app_functions.txt`, SHA-256
 `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`;
 functions with original line numbers are retained in
-`runs/experiments/data/run-exp-ai-oct16/targeted-code-extract.txt`.
+`runs/experiments/data/run-exp-ai-oct16/targeted-code-extract.txt`; the second
+Information-window clear handler is retained separately in
+`runs/experiments/data/run-exp-ai-oct16/general-clear-handler-source.txt`.
 The fixed-seed-1 lab observer is built from the existing lab EXE; it records
 Random calls and entry markers at setup, control checks, general-on and Walk.
 Its reserved record word reads the four bytes at `0x45e6a4`: attacker general,
@@ -99,7 +101,7 @@ the observed-build human-off boundary.
 1; it is not a symmetric bit toggle. The general's targeting/movement passes
 poll mouse-down messages on the **Information** window. A human-side click
 there clears that side's general bit and sets interruption byte `0x45e6a7`.
-The relevant clear sites are in `FUN_0043a31c` / `FUN_0043a544` (39835-39838,
+The relevant clear sites are in `FUN_0043a31c` / `FUN_0043abb4` (39835-39838,
 40254-40257). AI-nation control remains true even with general off.
 
 `[Wine]` Queuing an Information-window click after general-on produced flags

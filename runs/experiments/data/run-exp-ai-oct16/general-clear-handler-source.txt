@@ -1,0 +1,109 @@
+Source: all_app_functions.txt
+SHA-256: 2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8
+Citation correction: source lines 40254-40257 belong to FUN_0043abb4. Existing extracts are unchanged.
+
+40192: // ==== FUN_0043abb4 @ 0043abb4 ====
+40193: 
+40194: void FUN_0043abb4(undefined4 param_1,undefined4 param_2)
+40195: 
+40196: {
+40197:   int iVar1;
+40198:   undefined4 uVar2;
+40199:   HWND hWnd;
+40200:   BOOL BVar3;
+40201:   undefined2 extraout_var;
+40202:   undefined4 extraout_EDX;
+40203:   undefined4 extraout_EDX_00;
+40204:   undefined4 extraout_EDX_01;
+40205:   short sVar4;
+40206:   short sVar5;
+40207:   undefined2 *puVar6;
+40208:   UINT wMsgFilterMin;
+40209:   UINT wMsgFilterMax;
+40210:   UINT wRemoveMsg;
+40211:   tagMSG local_2c;
+40212:   undefined4 local_e;
+40213:   short local_a;
+40214:   short local_8;
+40215:   undefined1 local_5;
+40216:   
+40217:   local_8 = 0xd;
+40218:   local_a = 0;
+40219:   if (DAT_0045e6ac <= (short)(DAT_0045e6ac + 0x13)) {
+40220:     sVar4 = ((DAT_0045e6ac + 0x13) - DAT_0045e6ac) + 1;
+40221:     iVar1 = DAT_0045e6ac * 0xb;
+40222:     puVar6 = &DAT_004a0344 + DAT_0045e6ac * 0x16;
+40223:     do {
+40224:       if (0 < (short)puVar6[4]) {
+40225:         uVar2 = FUN_00448fd0(CONCAT22((short)((uint)iVar1 >> 0x10),local_8),
+40226:                              CONCAT22((short)((uint)param_2 >> 0x10),*puVar6));
+40227:         local_8 = (short)uVar2;
+40228:         iVar1 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),local_a),
+40229:                              CONCAT22(extraout_var,*puVar6));
+40230:         local_a = (short)iVar1;
+40231:         param_2 = extraout_EDX;
+40232:       }
+40233:       puVar6 = puVar6 + 0x16;
+40234:       sVar4 = sVar4 + -1;
+40235:     } while (sVar4 != 0);
+40236:   }
+40237:   local_5 = (int)local_8 <= 0xd - local_a;
+40238:   if (DAT_0045e6ae <= (short)(DAT_0045e6ae + 0x13)) {
+40239:     sVar5 = ((DAT_0045e6ae + 0x13) - DAT_0045e6ae) + 1;
+40240:     puVar6 = &DAT_004a0344 + DAT_0045e6ae * 0x16;
+40241:     sVar4 = DAT_0045e6ae;
+40242:     do {
+40243:       if (((0 < (short)puVar6[4]) && (0 < (short)puVar6[7])) && (puVar6[9] == -1)) {
+40244:         FUN_0043a718(sVar4,(short *)&local_e);
+40245:         if ((&DAT_00474b00)[DAT_0045e6aa * 0x494] != '\0') {
+40246:           wRemoveMsg = 1;
+40247:           wMsgFilterMax = 0x209;
+40248:           wMsgFilterMin = 0x200;
+40249:           hWnd = (HWND)FUN_00416360(DAT_0045e70c);
+40250:           BVar3 = PeekMessageA(&local_2c,hWnd,wMsgFilterMin,wMsgFilterMax,wRemoveMsg);
+40251:           if ((BVar3 != 0) && (local_2c.message == 0x201)) {
+40252:             DAT_0045e6a7 = '\x01';
+40253:             if (DAT_004a0b78 == 0) {
+40254:               DAT_0045e6a4 = 0;
+40255:             }
+40256:             else {
+40257:               DAT_0045e6a5 = 0;
+40258:             }
+40259:           }
+40260:         }
+40261:         if ((DAT_0045e6a6 == '\0' && DAT_0045e6a7 == '\0') && (-1 < (short)local_e)) {
+40262:           FUN_00438d24(sVar4,local_e);
+40263:         }
+40264:       }
+40265:       sVar4 = sVar4 + 1;
+40266:       puVar6 = puVar6 + 0x16;
+40267:       sVar5 = sVar5 + -1;
+40268:     } while (sVar5 != 0);
+40269:   }
+40270:   if (DAT_0045e6a6 == '\0' && DAT_0045e6a7 == '\0') {
+40271:     FUN_0043a544();
+40272:     if (DAT_0045e6ae <= (short)(DAT_0045e6ae + 0x13)) {
+40273:       sVar5 = ((DAT_0045e6ae + 0x13) - DAT_0045e6ae) + 1;
+40274:       puVar6 = &DAT_004a0344 + DAT_0045e6ae * 0x16;
+40275:       uVar2 = extraout_EDX_00;
+40276:       sVar4 = DAT_0045e6ae;
+40277:       do {
+40278:         if ((0 < (short)puVar6[4]) && (puVar6[9] == -1)) {
+40279:           uVar2 = CONCAT22((short)((uint)uVar2 >> 0x10),puVar6[7]);
+40280:           if ((puVar6[7] == *(short *)(&DAT_00478fc8 + (short)puVar6[3] * 0x28)) ||
+40281:              (((puVar6[7] == 1 && (DAT_004a0b7a < 10)) && (puVar6[3] != 1)))) {
+40282:             FUN_0043aa60(sVar4,uVar2,(short)puVar6[3] * 5,(int)&stack0xfffffffc);
+40283:             uVar2 = extraout_EDX_01;
+40284:           }
+40285:         }
+40286:         sVar4 = sVar4 + 1;
+40287:         puVar6 = puVar6 + 0x16;
+40288:         sVar5 = sVar5 + -1;
+40289:       } while (sVar5 != 0);
+40290:     }
+40291:     FUN_0043a544();
+40292:   }
+40293:   return;
+40294: }
+40295: 
+40296: 
