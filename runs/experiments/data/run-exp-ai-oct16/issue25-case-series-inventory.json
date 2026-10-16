@@ -1,0 +1,716 @@
+{
+  "historical_series": [
+    "ar-ar-three_s2_r5_hook",
+    "ar-hc-three_s1_r5_hook",
+    "ar-hi-three_s2_r5_hook",
+    "ar-hi-three_s3_r5_hook",
+    "ar-lc-three_s2_r5_hook",
+    "ar-li-three_s1_r5_hook",
+    "ar-li-three_s2_r5_hook",
+    "ar-li-three_s3_r5_hook",
+    "hc-ar-three_s1_r5_hook",
+    "hc-ar-three_s3_r5_hook",
+    "hc-hc-three_s2_r5_hook",
+    "hc-hi-three_s3_r5_hook",
+    "hi-ar-three_s1_r5_hook",
+    "hi-ar-three_s2_r5_hook",
+    "hi-lc-three_s1_r5_hook",
+    "hi-li-three_s3_r5_hook",
+    "lc-ar-half-three_s3_r5_hook",
+    "lc-ar-one-three_s3_r5_hook",
+    "lc-ar-three_s1_r5_hook",
+    "lc-ar-three_s2_r5_hook",
+    "lc-ar-three_s3_r5_hook",
+    "lc-hi-three_s1_r5_hook",
+    "lc-hi-three_s2_r5_hook",
+    "lc-li-three_s2_r5_hook",
+    "lc-li-three_s3_r5_hook",
+    "li-ar-three_s1_r5_hook",
+    "li-ar-three_s2_r5_hook",
+    "li-ar-three_s3_r5_hook",
+    "li-hc-three_s1_r5_hook",
+    "li-hc-three_s3_r5_hook",
+    "li-hi-half-three_s1_r5_hook",
+    "li-hi-half-three_s3_r5_hook",
+    "li-hi-one-three_s1_r5_hook",
+    "li-hi-one-three_s3_r5_hook",
+    "li-hi-three_s2_r5_hook",
+    "li-lc-three_s1_r5_hook",
+    "li-lc-three_s2_r5_hook",
+    "li-lc-three_s3_r5_hook",
+    "mix-rg_s1_r5_hook",
+    "mix-rg_s2_r5_hook",
+    "mix-rg_s3_r5_hook"
+  ],
+  "current_series": [
+    "ar-ar-three_s2_r5_hook",
+    "ar-hc-three_s1_r5_hook",
+    "ar-hi-one_s1_r5_hook",
+    "ar-hi-one_s2_r5_hook",
+    "ar-hi-one_s3_r5_hook",
+    "ar-hi-three_s1_r5_hook",
+    "ar-hi-three_s2_r5_hook",
+    "ar-hi-three_s3_r5_hook",
+    "ar-lc-three_s2_r5_hook",
+    "ar-lc-three_s3_r5_hook",
+    "ar-li-three_s1_r5_hook",
+    "ar-li-three_s2_r5_hook",
+    "ar-li-three_s3_r5_hook",
+    "hc-ar-three_s1_r5_hook",
+    "hc-ar-three_s3_r5_hook",
+    "hc-hc-three_s2_r5_hook",
+    "hc-hi-three_s3_r5_hook",
+    "hi-ar-three_s1_r5_hook",
+    "hi-ar-three_s2_r5_hook",
+    "hi-lc-three_s1_r5_hook",
+    "hi-li-three_s3_r5_hook",
+    "lc-ar-half-three_s3_r5_hook",
+    "lc-ar-one-three_s3_r5_hook",
+    "lc-ar-three_s1_r5_hook",
+    "lc-ar-three_s2_r5_hook",
+    "lc-ar-three_s3_r5_hook",
+    "lc-hi-three_s1_r5_hook",
+    "lc-hi-three_s2_r5_hook",
+    "lc-li-three_s2_r5_hook",
+    "lc-li-three_s3_r5_hook",
+    "li-ar-three_s1_r5_hook",
+    "li-ar-three_s2_r5_hook",
+    "li-ar-three_s3_r5_hook",
+    "li-hc-three_s1_r5_hook",
+    "li-hc-three_s3_r5_hook",
+    "li-hi-half-three_s1_r5_hook",
+    "li-hi-half-three_s3_r5_hook",
+    "li-hi-one-three_s1_r5_hook",
+    "li-hi-one-three_s3_r5_hook",
+    "li-hi-three-half_s2_r5_hook",
+    "li-hi-three-one_s2_r5_hook",
+    "li-hi-three_s2_r5_hook",
+    "li-lc-three_s1_r5_hook",
+    "li-lc-three_s2_r5_hook",
+    "li-lc-three_s3_r5_hook",
+    "mix-rg_s1_r5_hook",
+    "mix-rg_s2_r5_hook",
+    "mix-rg_s3_r5_hook"
+  ],
+  "historical_cases": [
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-ar-three_s2_r5_hook",
+      "FirstDifference": "ar-ar-three_s2_r5_hook: the log has a record at the peace site, the port did not draw it",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-hc-three_s1_r5_hook",
+      "FirstDifference": "ar-hc-three_s1_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 4",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-hi-three_s2_r5_hook",
+      "FirstDifference": "ar-hi-three_s2_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 4",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-hi-three_s3_r5_hook",
+      "FirstDifference": "ar-hi-three_s3_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 4",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-lc-three_s2_r5_hook",
+      "FirstDifference": "ar-lc-three_s2_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-li-three_s2_r5_hook",
+      "FirstDifference": "ar-li-three_s2_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:hc-hi-three_s3_r5_hook",
+      "FirstDifference": "hc-hi-three_s3_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:lc-ar-one-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-one-three_s3_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:lc-hi-three_s1_r5_hook",
+      "FirstDifference": "lc-hi-three_s1_r5_hook: the port's peace draw is Random(5) = 4, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:lc-hi-three_s2_r5_hook",
+      "FirstDifference": "lc-hi-three_s2_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-hi-half-three_s3_r5_hook",
+      "FirstDifference": "li-hi-half-three_s3_r5_hook: the port's peace draw is Random(5) = 2, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-hi-three_s2_r5_hook",
+      "FirstDifference": "li-hi-three_s2_r5_hook: the port's peace draw is Random(5) = 4, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-lc-three_s2_r5_hook",
+      "FirstDifference": "li-lc-three_s2_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-lc-three_s3_r5_hook",
+      "FirstDifference": "li-lc-three_s3_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s3_r5_hook",
+      "FirstDifference": "mix-rg_s3_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-ar-three_s2_r5_hook",
+      "FirstDifference": "ar-ar-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(172) = 82, port Random(149) = 71",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hc-three_s1_r5_hook",
+      "FirstDifference": "ar-hc-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439557 Random(42) = 17, port Random(33) = 14",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-three_s2_r5_hook",
+      "FirstDifference": "ar-hi-three_s2_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(33) = 15, port Random(13) = 6",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-three_s3_r5_hook",
+      "FirstDifference": "ar-hi-three_s3_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(33) = 17, port Random(13) = 6",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-lc-three_s2_r5_hook",
+      "FirstDifference": "ar-lc-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(311) = 149, port Random(125) = 59",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-li-three_s1_r5_hook",
+      "FirstDifference": "ar-li-three_s1_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(533) = 226, port Random(3) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-li-three_s2_r5_hook",
+      "FirstDifference": "ar-li-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(548) = 262, port Random(149) = 71",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-li-three_s3_r5_hook",
+      "FirstDifference": "ar-li-three_s3_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(555) = 295, port Random(3) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-ar-three_s1_r5_hook",
+      "FirstDifference": "hc-ar-three_s1_r5_hook: draw 8: half-round counter 3 (port 4), original site 0x43AA88 Random(3) = 1, port Random(38) = 16",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-ar-three_s3_r5_hook",
+      "FirstDifference": "hc-ar-three_s3_r5_hook: draw 8: half-round counter 3 (port 4), original site 0x43AA88 Random(3) = 1, port Random(39) = 20",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-hc-three_s2_r5_hook",
+      "FirstDifference": "hc-hc-three_s2_r5_hook: draw 12: half-round counter 8 (port 4), original site 0x439557 Random(128) = 78, port Random(141) = 86",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-hi-three_s3_r5_hook",
+      "FirstDifference": "hc-hi-three_s3_r5_hook: draw 8: half-round counter 3 (port 4), original site 0x43AA88 Random(3) = 1, port Random(291) = 154",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-ar-three_s1_r5_hook",
+      "FirstDifference": "hi-ar-three_s1_r5_hook: draw 40: half-round counter 7 (port 7), original site 0x439557 Random(15) = 2, port Random(16) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-ar-three_s2_r5_hook",
+      "FirstDifference": "hi-ar-three_s2_r5_hook: draw 34: half-round counter 7 (port 7), original site 0x4395CE Random(11945) = 2152, port Random(11336) = 2042",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-lc-three_s1_r5_hook",
+      "FirstDifference": "hi-lc-three_s1_r5_hook: draw 44: half-round counter 7 (port 7), original site 0x439557 Random(316) = 3, port Random(322) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-li-three_s3_r5_hook",
+      "FirstDifference": "hi-li-three_s3_r5_hook: draw 29: half-round counter 7 (port 6), original site 0x439557 Random(53) = 47, port Random(7063) = 6266",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-half-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-half-three_s3_r5_hook: draw 6: half-round counter 10 (port 5), original site 0x439188 Random(151) = 128, port Random(152) = 128",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-one-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-one-three_s3_r5_hook: draw 6: half-round counter 10 (port 5), original site 0x439188 Random(151) = 128, port Random(274) = 232",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-three_s1_r5_hook",
+      "FirstDifference": "lc-ar-three_s1_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(140) = 59, port Random(279) = 118",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-three_s2_r5_hook",
+      "FirstDifference": "lc-ar-three_s2_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(143) = 68, port Random(285) = 136",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-three_s3_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(145) = 77, port Random(289) = 153",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-hi-three_s1_r5_hook",
+      "FirstDifference": "lc-hi-three_s1_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(30) = 12, port Random(291) = 123",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-hi-three_s2_r5_hook",
+      "FirstDifference": "lc-hi-three_s2_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(30) = 14, port Random(289) = 138",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-li-three_s2_r5_hook",
+      "FirstDifference": "lc-li-three_s2_r5_hook: draw 12: half-round counter 8 (port 4), original site 0x439188 Random(415) = 253, port Random(457) = 279",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-li-three_s3_r5_hook",
+      "FirstDifference": "lc-li-three_s3_r5_hook: draw 12: half-round counter 9 (port 4), original site 0x439188 Random(253) = 96, port Random(493) = 188",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-ar-three_s1_r5_hook",
+      "FirstDifference": "li-ar-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(167) = 71, port Random(469) = 199",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-ar-three_s2_r5_hook",
+      "FirstDifference": "li-ar-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(172) = 82, port Random(476) = 228",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-ar-three_s3_r5_hook",
+      "FirstDifference": "li-ar-three_s3_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(174) = 92, port Random(483) = 257",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hc-three_s1_r5_hook",
+      "FirstDifference": "li-hc-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439557 Random(195) = 83, port Random(105) = 44",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hc-three_s3_r5_hook",
+      "FirstDifference": "li-hc-three_s3_r5_hook: draw 8: half-round counter 3 (port 5), original site 0x43AA88 Random(3) = 1, port Random(108) = 57",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-half-three_s1_r5_hook",
+      "FirstDifference": "li-hi-half-three_s1_r5_hook: draw 6: half-round counter 7 (port 4), original site 0x439188 Random(32) = 5, port Random(36) = 5",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-half-three_s3_r5_hook",
+      "FirstDifference": "li-hi-half-three_s3_r5_hook: draw 6: half-round counter 7 (port 4), original site 0x439188 Random(33) = 27, port Random(39) = 33",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-one-three_s1_r5_hook",
+      "FirstDifference": "li-hi-one-three_s1_r5_hook: draw 6: half-round counter 7 (port 4), original site 0x439188 Random(53) = 8, port Random(71) = 11",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-one-three_s3_r5_hook",
+      "FirstDifference": "li-hi-one-three_s3_r5_hook: draw 6: half-round counter 7 (port 4), original site 0x439188 Random(54) = 45, port Random(76) = 64",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-three_s2_r5_hook",
+      "FirstDifference": "li-hi-three_s2_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(53) = 25, port Random(78) = 37",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-lc-three_s1_r5_hook",
+      "FirstDifference": "li-lc-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(303) = 128, port Random(391) = 166",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-lc-three_s2_r5_hook",
+      "FirstDifference": "li-lc-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(311) = 149, port Random(397) = 190",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-lc-three_s3_r5_hook",
+      "FirstDifference": "li-lc-three_s3_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(315) = 167, port Random(403) = 214",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s1_r5_hook",
+      "FirstDifference": "mix-rg_s1_r5_hook: draw 16: half-round counter 6 (port 4), original site 0x439557 Random(183) = 67, port Random(423) = 155",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: draw 16: half-round counter 4 (port 4), original site 0x43AA88 Random(3) = 2, port Random(259) = 211",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s3_r5_hook",
+      "FirstDifference": "mix-rg_s3_r5_hook: draw 16: half-round counter 5 (port 4), original site 0x43AA88 Random(3) = 0, port Random(395) = 106",
+      "Issue": 1107
+    }
+  ],
+  "current_cases": [
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-ar-three_s2_r5_hook",
+      "FirstDifference": "ar-ar-three_s2_r5_hook: the log has a record at the peace site, the port did not draw it",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-hc-three_s1_r5_hook",
+      "FirstDifference": "ar-hc-three_s1_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 4",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-hi-three_s3_r5_hook",
+      "FirstDifference": "ar-hi-three_s3_r5_hook: the port's peace draw is Random(5) = 2, the log's is Random(5) = 4",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-lc-three_s2_r5_hook",
+      "FirstDifference": "ar-lc-three_s2_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-lc-three_s3_r5_hook",
+      "FirstDifference": "ar-lc-three_s3_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-li-three_s2_r5_hook",
+      "FirstDifference": "ar-li-three_s2_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:hc-hi-three_s3_r5_hook",
+      "FirstDifference": "hc-hi-three_s3_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:lc-ar-one-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-one-three_s3_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:lc-hi-three_s1_r5_hook",
+      "FirstDifference": "lc-hi-three_s1_r5_hook: the port's peace draw is Random(5) = 4, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:lc-hi-three_s2_r5_hook",
+      "FirstDifference": "lc-hi-three_s2_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-hi-three-one_s2_r5_hook",
+      "FirstDifference": "li-hi-three-one_s2_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-hi-three_s2_r5_hook",
+      "FirstDifference": "li-hi-three_s2_r5_hook: the port's peace draw is Random(5) = 4, the log's is Random(5) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-lc-three_s2_r5_hook",
+      "FirstDifference": "li-lc-three_s2_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-lc-three_s3_r5_hook",
+      "FirstDifference": "li-lc-three_s3_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s3_r5_hook",
+      "FirstDifference": "mix-rg_s3_r5_hook: the port's peace draw is Random(5) = 1, the log's is Random(5) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-ar-three_s2_r5_hook",
+      "FirstDifference": "ar-ar-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(172) = 82, port Random(149) = 71",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hc-three_s1_r5_hook",
+      "FirstDifference": "ar-hc-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439557 Random(42) = 17, port Random(33) = 14",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-one_s1_r5_hook",
+      "FirstDifference": "ar-hi-one_s1_r5_hook: draw 78: half-round counter 19 (port 18), original site 0x439557 Random(10528) = 9103, port Random(1) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-one_s2_r5_hook",
+      "FirstDifference": "ar-hi-one_s2_r5_hook: draw 78: half-round counter 19 (port 18), original site 0x439557 Random(10230) = 1433, port Random(1) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-one_s3_r5_hook",
+      "FirstDifference": "ar-hi-one_s3_r5_hook: draw 78: half-round counter 19 (port 18), original site 0x439557 Random(9999) = 4155, port Random(1) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-three_s1_r5_hook",
+      "FirstDifference": "ar-hi-three_s1_r5_hook: draw 24: half-round counter 7 (port 5), original site 0x439188 Random(18) = 5, port Random(35) = 11",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-three_s2_r5_hook",
+      "FirstDifference": "ar-hi-three_s2_r5_hook: draw 196: half-round counter 19 (port 18), original site 0x439557 Random(9411) = 1285, port Random(1) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-hi-three_s3_r5_hook",
+      "FirstDifference": "ar-hi-three_s3_r5_hook: draw 24: half-round counter 7 (port 5), original site 0x439188 Random(22) = 14, port Random(43) = 28",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-lc-three_s2_r5_hook",
+      "FirstDifference": "ar-lc-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(311) = 149, port Random(125) = 59",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-li-three_s1_r5_hook",
+      "FirstDifference": "ar-li-three_s1_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(533) = 226, port Random(3) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-li-three_s2_r5_hook",
+      "FirstDifference": "ar-li-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(548) = 262, port Random(149) = 71",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:ar-li-three_s3_r5_hook",
+      "FirstDifference": "ar-li-three_s3_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(555) = 295, port Random(3) = 1",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-ar-three_s1_r5_hook",
+      "FirstDifference": "hc-ar-three_s1_r5_hook: draw 8: half-round counter 3 (port 4), original site 0x43AA88 Random(3) = 1, port Random(38) = 16",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-ar-three_s3_r5_hook",
+      "FirstDifference": "hc-ar-three_s3_r5_hook: draw 8: half-round counter 3 (port 4), original site 0x43AA88 Random(3) = 1, port Random(39) = 20",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-hc-three_s2_r5_hook",
+      "FirstDifference": "hc-hc-three_s2_r5_hook: draw 12: half-round counter 8 (port 4), original site 0x439557 Random(128) = 78, port Random(141) = 86",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hc-hi-three_s3_r5_hook",
+      "FirstDifference": "hc-hi-three_s3_r5_hook: draw 8: half-round counter 3 (port 4), original site 0x43AA88 Random(3) = 1, port Random(291) = 154",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-ar-three_s1_r5_hook",
+      "FirstDifference": "hi-ar-three_s1_r5_hook: draw 40: half-round counter 7 (port 7), original site 0x439557 Random(15) = 2, port Random(16) = 2",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-ar-three_s2_r5_hook",
+      "FirstDifference": "hi-ar-three_s2_r5_hook: draw 34: half-round counter 7 (port 7), original site 0x4395CE Random(11945) = 2152, port Random(11336) = 2042",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-lc-three_s1_r5_hook",
+      "FirstDifference": "hi-lc-three_s1_r5_hook: draw 44: half-round counter 7 (port 7), original site 0x439557 Random(316) = 3, port Random(322) = 3",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:hi-li-three_s3_r5_hook",
+      "FirstDifference": "hi-li-three_s3_r5_hook: draw 29: half-round counter 7 (port 6), original site 0x439557 Random(53) = 47, port Random(7063) = 6266",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-half-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-half-three_s3_r5_hook: draw 6: half-round counter 10 (port 5), original site 0x439188 Random(151) = 128, port Random(152) = 128",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-one-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-one-three_s3_r5_hook: draw 6: half-round counter 10 (port 5), original site 0x439188 Random(151) = 128, port Random(274) = 232",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-three_s1_r5_hook",
+      "FirstDifference": "lc-ar-three_s1_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(140) = 59, port Random(279) = 118",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-three_s2_r5_hook",
+      "FirstDifference": "lc-ar-three_s2_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(143) = 68, port Random(285) = 136",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-ar-three_s3_r5_hook",
+      "FirstDifference": "lc-ar-three_s3_r5_hook: draw 8: half-round counter 8 (port 4), original site 0x439188 Random(145) = 77, port Random(289) = 153",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-hi-three_s1_r5_hook",
+      "FirstDifference": "lc-hi-three_s1_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(30) = 12, port Random(291) = 123",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-hi-three_s2_r5_hook",
+      "FirstDifference": "lc-hi-three_s2_r5_hook: draw 8: half-round counter 7 (port 4), original site 0x439188 Random(30) = 14, port Random(289) = 138",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-li-three_s2_r5_hook",
+      "FirstDifference": "lc-li-three_s2_r5_hook: draw 12: half-round counter 8 (port 4), original site 0x439188 Random(415) = 253, port Random(457) = 279",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:lc-li-three_s3_r5_hook",
+      "FirstDifference": "lc-li-three_s3_r5_hook: draw 12: half-round counter 9 (port 4), original site 0x439188 Random(253) = 96, port Random(493) = 188",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-ar-three_s1_r5_hook",
+      "FirstDifference": "li-ar-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(167) = 71, port Random(469) = 199",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-ar-three_s2_r5_hook",
+      "FirstDifference": "li-ar-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(172) = 82, port Random(476) = 228",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-ar-three_s3_r5_hook",
+      "FirstDifference": "li-ar-three_s3_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(174) = 92, port Random(483) = 257",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hc-three_s1_r5_hook",
+      "FirstDifference": "li-hc-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439557 Random(195) = 83, port Random(105) = 44",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hc-three_s3_r5_hook",
+      "FirstDifference": "li-hc-three_s3_r5_hook: draw 8: half-round counter 3 (port 5), original site 0x43AA88 Random(3) = 1, port Random(108) = 57",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-half-three_s1_r5_hook",
+      "FirstDifference": "li-hi-half-three_s1_r5_hook: draw 12: half-round counter 8 (port 5), original site 0x439557 Random(36) = 30, port Random(8757) = 7363",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-half-three_s3_r5_hook",
+      "FirstDifference": "li-hi-half-three_s3_r5_hook: draw 12: half-round counter 8 (port 5), original site 0x439557 Random(39) = 14, port Random(8085) = 3083",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-one-three_s1_r5_hook",
+      "FirstDifference": "li-hi-one-three_s1_r5_hook: draw 12: half-round counter 8 (port 5), original site 0x439557 Random(71) = 59, port Random(8737) = 7346",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-one-three_s3_r5_hook",
+      "FirstDifference": "li-hi-one-three_s3_r5_hook: draw 12: half-round counter 8 (port 5), original site 0x439557 Random(76) = 28, port Random(8021) = 3059",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-three-half_s2_r5_hook",
+      "FirstDifference": "li-hi-three-half_s2_r5_hook: draw 16: half-round counter 7 (port 5), original site 0x439188 Random(63) = 51, port Random(65) = 53",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-three-one_s2_r5_hook",
+      "FirstDifference": "li-hi-three-one_s2_r5_hook: draw 16: half-round counter 7 (port 5), original site 0x439188 Random(63) = 51, port Random(65) = 53",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-hi-three_s2_r5_hook",
+      "FirstDifference": "li-hi-three_s2_r5_hook: draw 28: half-round counter 7 (port 5), original site 0x439557 Random(7169) = 5250, port Random(6850) = 5016",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-lc-three_s1_r5_hook",
+      "FirstDifference": "li-lc-three_s1_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(303) = 128, port Random(391) = 166",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-lc-three_s2_r5_hook",
+      "FirstDifference": "li-lc-three_s2_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(311) = 149, port Random(397) = 190",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:li-lc-three_s3_r5_hook",
+      "FirstDifference": "li-lc-three_s3_r5_hook: draw 8: half-round counter 8 (port 5), original site 0x439188 Random(315) = 167, port Random(403) = 214",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s1_r5_hook",
+      "FirstDifference": "mix-rg_s1_r5_hook: draw 16: half-round counter 6 (port 4), original site 0x439557 Random(183) = 67, port Random(423) = 155",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: draw 16: half-round counter 4 (port 4), original site 0x43AA88 Random(3) = 2, port Random(259) = 211",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s3_r5_hook",
+      "FirstDifference": "mix-rg_s3_r5_hook: draw 16: half-round counter 5 (port 4), original site 0x43AA88 Random(3) = 0, port Random(395) = 106",
+      "Issue": 1107
+    }
+  ],
+  "newly_linked_case_ids": [
+    "The_port_draws_the_peace_roll_when_the_original_did:ar-lc-three_s3_r5_hook",
+    "The_port_draws_the_peace_roll_when_the_original_did:li-hi-three-one_s2_r5_hook",
+    "The_port_draws_what_the_original_drew:ar-hi-one_s1_r5_hook",
+    "The_port_draws_what_the_original_drew:ar-hi-one_s2_r5_hook",
+    "The_port_draws_what_the_original_drew:ar-hi-one_s3_r5_hook",
+    "The_port_draws_what_the_original_drew:ar-hi-three_s1_r5_hook",
+    "The_port_draws_what_the_original_drew:li-hi-three-half_s2_r5_hook",
+    "The_port_draws_what_the_original_drew:li-hi-three-one_s2_r5_hook"
+  ],
+  "no_longer_linked_case_ids": [
+    "The_port_draws_the_peace_roll_when_the_original_did:ar-hi-three_s2_r5_hook",
+    "The_port_draws_the_peace_roll_when_the_original_did:li-hi-half-three_s3_r5_hook"
+  ],
+  "old_42_series_id_list": null,
+  "missing_survey_series_identified": false,
+  "replay_performed": false
+}

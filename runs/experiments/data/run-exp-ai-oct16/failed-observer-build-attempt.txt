@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/data/run-exp-ai-oct16/general_probe.py", line 63, in <module>
+    build()
+    ~~~~~^^
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/data/run-exp-ai-oct16/general_probe.py", line 20, in build
+    info=H.apply(b,1,lab)
+  File "/tmp/ic2-conquest-ai-research/patches/battle_hook.py", line 441, in apply
+    check_entries(b)
+    ~~~~~~~~~~~~~^^^
+  File "/tmp/ic2-conquest-ai-research/patches/battle_hook.py", line 195, in check_entries
+    raise HookBuildError("entry %s 0x%X: bytes %s, expected %s" % (name, va, bytes(b[off(va):off(va) + len(exp)]).hex(), exp.hex()))
+battle_hook.HookBuildError: entry walk 0x438D24: bytes 558bec83c4e853, expected 5356575583c4e8
