@@ -1,5 +1,10 @@
 # ic2-conquest: rules for Claude sessions
 
+These are the shared project rules for all agent backends. Claude continues to
+use this file and `.claude/skills/`; Codex enters through `AGENTS.md` and reads
+this file in full. See `docs/agent-workflow.md` for tool mappings and portable
+handoffs. Keep shared policy here so the two entry points cannot drift.
+
 Purpose: find strategies that dominate the map in the original *Imperial Conquest 2* (1996) and prove it with per-turn saves, logs and plans; secondarily, exercise every mechanic (`coverage.md`). Read `README.md`, then the active strategy in `strategies/`.
 
 ## Hard rules

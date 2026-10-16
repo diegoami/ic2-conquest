@@ -1,5 +1,11 @@
 # Prompt for the next ic2-conquest session
 
+Historical handoff: the tasks and environment counts below describe an early
+session. For current work, read `CLAUDE.md` (through `AGENTS.md` on Codex),
+`docs/agent-workflow.md`, the latest relevant dated entry in `HANDOVER.md`, and
+the current task brief. Check current issue/PR state before acting; do not rerun
+system setup or resume paused work solely because it appears below.
+
 ---
 
 You are continuing `diegoami/ic2-conquest`: a bot that plays the original 1996 *Imperial Conquest 2* headless under Wine, to find strategies that dominate the map and prove them with per-turn saves, plans and metrics.
