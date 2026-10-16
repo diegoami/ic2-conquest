@@ -1,0 +1,111 @@
+{
+  "captured_utc": "2026-10-16T16:53:51.689107+00:00",
+  "purpose": "T175 correction validation and historical inventory audit; not the gated official research25 replay",
+  "build_implementation_head": "6208282c50a5861f8bd8eb63df0bc896c82d194a",
+  "original_decompile_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "private_fixtures_head": "6319802a75067e7730e4f6a27dce3b4e296ddd9b",
+  "fixture_hash_audit": {
+    "payloads": 5859,
+    "all_pass": true,
+    "original_fixtures_or_draws_changed": false
+  },
+  "baseline_head": "5ca9c3f163140adf2923b53154b7edd62be11c7c",
+  "baseline_tests": {
+    "data_pass": 248,
+    "engine_pass": 7265,
+    "failed": 0,
+    "platform_skips": 3
+  },
+  "corrected_tests": {
+    "data_pass": 248,
+    "engine_pass": 7364,
+    "failed": 0,
+    "platform_skips": 3,
+    "focused_pass": 147
+  },
+  "platform_skips": [
+    "WorldTerrainSidecarTests.A_nul_dataFile_is_rejected_as_a_reserved_device_not_as_an_escape",
+    "WorldTerrainSidecarTests.A_dataFile_containing_another_invalid_path_character_is_a_typed_error",
+    "SaveFileIoTests.WriteFile_when_the_rename_fails_leaves_the_previous_save_intact"
+  ],
+  "registry": {
+    "before": 633,
+    "removed_after_complete_comparison_pass": 545,
+    "retained_old_ids": 88,
+    "changed_surviving_diagnostics_or_investigation": 81,
+    "unchanged": 7,
+    "explicit_new_ids": 6,
+    "after": 94,
+    "grid_investigation1106": 4,
+    "target_draw_investigation1107": 90
+  },
+  "contracts": [
+    "1148",
+    "1149",
+    "1153",
+    "1155"
+  ],
+  "reviewer": "owner-selected MiniMax M3 thinking; contracts approved, code review pending",
+  "tools": {
+    "dotnet": "10.0.402",
+    "powershell": "7.6.7",
+    "platform": "Linux/WSL; three Windows filesystem tests skipped"
+  },
+  "files": [
+    {
+      "file": "registry-changes.json",
+      "bytes": 276209,
+      "sha256": "f87a16240f1b492415ce758097029a856e839a3a79417b74bf274c70e64ec18b"
+    },
+    {
+      "file": "registry-removals.json",
+      "bytes": 36146,
+      "sha256": "394ba19de9f9f0c0270377731875e8c4937f4bc94bb80a1d2e3d34650cc99793"
+    },
+    {
+      "file": "raw-comparisons-before-registry-update.json",
+      "bytes": 169997,
+      "sha256": "582c3633d5b2782bd92db1ea46873548f1a7785052f77b5cca6761a21bc55ecf"
+    },
+    {
+      "file": "strict-registry-after.json",
+      "bytes": 22965,
+      "sha256": "a928f80dc81aaf94a0297742962c36cffe9ec655f2bf4cb350ae22b884141c16"
+    },
+    {
+      "file": "six-baseline-masked-residuals.json",
+      "bytes": 1515,
+      "sha256": "6bdae2ff6ccff39d1015c5c0b98155fa207d7340a97237133a97f065d6a423b3"
+    },
+    {
+      "file": "registry-diagnostic-program.cs",
+      "bytes": 5119,
+      "sha256": "2bb1711488414b2aae670f13e1b221363fe4d706fa49eda13a75cdc3bd3b225c"
+    },
+    {
+      "file": "full-tests.log",
+      "bytes": 868,
+      "sha256": "306a84c06c31b33a89a2eb3e4e18c820c0b6fd8d98e721687525de500c53f7b9"
+    },
+    {
+      "file": "build.log",
+      "bytes": 76,
+      "sha256": "6acce4207195992656cc9e3cb50ee75414cf88048365e8aeb2e402f1d9fc0ec0"
+    },
+    {
+      "file": "mutations.json",
+      "bytes": 415,
+      "sha256": "38dda8f9433ef34a5fab27ed0ebedb49cea2a3695fd8143e56fcbd202af46b39"
+    },
+    {
+      "file": "control-final-full_net10.0_20261016185104.trx",
+      "bytes": 10689751,
+      "sha256": "47381872295c3b7879ec109238030b24436e2edb916879a501df7dd8210e937f"
+    },
+    {
+      "file": "control-final-full_net10.0_20261016185016.trx",
+      "bytes": 277940,
+      "sha256": "bfc64f0be14d16990299c1f40967f5d1750762b84ea14eec1f686d93c94b26bd"
+    }
+  ]
+}

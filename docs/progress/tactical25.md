@@ -15,3 +15,5 @@ Never delete saves or measured outputs. Use uniquely named outputs under runs/ex
 - Baseline findings/last-delivered51ac45ebb596162fc6728be79bcb4bdbdb4db472. No new findings on conquestmain since that baseline.
 - Historical inventory recovery only: found localT129/rendered/survey-with-walk-order-experiment.tsv,636rows (318permode). True-mode276completed/42incomplete; exact41historicalissue1107series plus hi-ar-three_s3_r5_hook. All raw rows/hash retained; local-artifact provenance limits explicit. No replay or emulation ran for this recovery.
 - Build branchtask/T175-tactical-general-control cf715e7 implements source-confirmedOR, recordedtoolbar timing and postshootstop. MiniMax approved contracts1148/1149/1153. Control code review/merge still pending; no official#25comparison yet.
+
+- T175 correction6208282: full Data248 and Engine7364pass/0fail,3Windowsplatformskips;147focusedpass;6mutationchecksallkilled/restoredclean. Contract1155 expressly allows6namedpreviouslymaskedstrictcases,633→94registry after545completecomparisonpasses. Canonicalvalidation/rawcasechangeoutputs retained under correction-6208282/. Code review/merge still pending; no official#25replay.
