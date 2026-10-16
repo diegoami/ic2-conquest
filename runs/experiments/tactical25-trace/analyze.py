@@ -45,6 +45,7 @@ for counter in range(3,7):
  p3=next(x for x in r if x['site']=='0x43abb4');check('after first Pass2 / before Pass3',p3,model['stages'][1]['after'])
  for t in [x for x in r if x['site']=='0x43a718']:
   actor=t['eax']&65535;unit=next(u for u in model['stages'][2]['units'] if u['slot']==actor);before=check('before threat helper',t,unit['before'],allow=counter==6);probe=next(x for x in pure['rows'] if x['wine_input_seq']==t['seq']);d=unit['decisions'][0];assert d['step'] in [8,9]
+  w=next(x for x in rs if x['seq']==probe['wine_walk_seq']);check('before threat Walk',w,unit['before'],allow=counter==6)
   goal=probe['wine_goal'];goals.append(dict(counter=counter,actor=actor,original_seq=probe['wine_walk_seq'],stage='pass3-threat',wine_goal=goal,port_goal=[d['x'],d['y']],equal=goal==[d['x'],d['y']],shared_input=not before))
   n=len(unit['threat_order']);threats.append(dict(counter=counter,actor=actor,original_seq=t['seq'],shared_input=not before,original_wine_goal=goal,original_x86_chosen_enemy=probe['original_x86_chosen_enemy'],port_chosen_enemy=d['enemy'],original_x86_order=probe['original_x86_order'][:n],original_x86_sorted_keys=probe['original_x86_sorted_keys'][:n],port_order=unit['threat_order'],port_keys=unit['threat_keys'],same_order=probe['original_x86_order'][:n]==unit['threat_order']))
  check('after threat / before nested Pass2',p2[1],model['stages'][3]['before'],allow=counter==6)

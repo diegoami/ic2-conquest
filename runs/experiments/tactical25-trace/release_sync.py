@@ -1,4 +1,5 @@
 """Upload immutable probe artifacts; a refused release write stops, without fallback."""
+import hashlib
 import json
 import os
 import shlex
@@ -20,12 +21,21 @@ def run(args):
     return subprocess.run(args,cwd=ROOT,env=ENV,capture_output=True,text=True)
 
 
-have=run(['gh','release','view',TAG,'--json','assets','--jq','.assets[].name'])
+have=run(['gh','release','view',TAG,'--json','assets'])
 exists=have.returncode==0
 if not exists and 'not found' not in have.stderr.lower():
     raise SystemExit('Release inventory could not be read; no write attempted: '+have.stderr[-500:])
-held=set(have.stdout.split()) if exists else set()
-pending=sorted(p for p in ART.iterdir() if p.is_file() and p.name not in held)
+held={x['name']:x for x in json.loads(have.stdout)['assets']} if exists else {}
+pending=[]
+# GitHub normalized spaces to dots in the already published EXE names. Verify
+# matching bytes rather than retry those existing assets. No replacement/clobber.
+for path in sorted(p for p in ART.iterdir() if p.is_file()):
+    name=path.name.replace(' ','.')
+    if name not in held:pending.append(path);continue
+    expected='sha256:'+hashlib.sha256(path.read_bytes()).hexdigest()
+    if held[name].get('digest')!=expected:
+        raise SystemExit('Published asset has a different digest; no overwrite attempted: '+name)
+
 rec=dict(utc=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),pending=[p.name for p in pending],uploaded=[],refused=None)
 for index in range(0,len(pending),30):
     chunk=pending[index:index+30]

@@ -1,0 +1,65 @@
+Pinned original caller: local unit word stored at parent ESP+2; callee call pushes only return address, so saved original ESP+6 (stack_words[1] high word) is the actor.
+EXE SHA256 354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f
+0043a31c: 53                   push ebx
+0043a31d: 56                   push esi
+0043a31e: 57                   push edi
+0043a31f: 55                   push ebp
+0043a320: 83c4d8               add esp, -0x28
+0043a323: c605a7e6450000       mov byte ptr [0x45e6a7], 0
+0043a32a: 66c704240500         mov word ptr [esp], 5
+0043a330: c7442408a0904700     mov dword ptr [esp + 8], 0x4790a0
+0043a338: 8b442408             mov eax, dword ptr [esp + 8]
+0043a33c: 668b28               mov bp, word ptr [eax]
+0043a33f: 66a1aee64500         mov ax, word ptr [0x45e6ae]
+0043a345: 668b3daee64500       mov di, word ptr [0x45e6ae]
+0043a34c: 6683c713             add di, 0x13
+0043a350: 662bf8               sub di, ax
+0043a353: 0f8cbc010000         jl 0x43a515
+0043a359: 47                   inc edi
+0043a35a: 6689442402           mov word ptr [esp + 2], ax
+0043a35f: 0fbf442402           movsx eax, word ptr [esp + 2]
+0043a364: 6bc00b               imul eax, eax, 0xb
+0043a367: 8d1c854c034a00       lea ebx, [eax*4 + 0x4a034c]
+0043a36e: 0fbf442402           movsx eax, word ptr [esp + 2]
+0043a373: 8d3445b0e64500       lea esi, [eax*2 + 0x45e6b0]
+0043a37a: 66833b00             cmp word ptr [ebx], 0
+0043a37e: 0f8e7d010000         jle 0x43a501
+0043a384: 663b6bfe             cmp bp, word ptr [ebx - 2]
+0043a388: 0f8573010000         jne 0x43a501
+0043a38e: 803da7e6450000       cmp byte ptr [0x45e6a7], 0
+0043a395: 0f8566010000         jne 0x43a501
+0043a39b: 0fbfc5               movsx eax, bp
+0043a39e: 83f804               cmp eax, 4
+0043a3a1: 0f87d3000000         ja 0x43a47a
+0043a3a7: ff2485aea34300       jmp dword ptr [eax*4 + 0x43a3ae]
+0043a3ae: c2a343               ret 0x43a3
+0043a3b1: 0002                 add byte ptr [edx], al
+0043a3b3: a4                   movsb byte ptr es:[edi], byte ptr [esi]
+0043a3b4: 43                   inc ebx
+0043a3b5: 002da443003f         add byte ptr [0x3f0043a4], ch
+0043a3bb: a4                   movsb byte ptr es:[edi], byte ptr [esi]
+0043a3bc: 43                   inc ebx
+0043a3bd: 0051a4               add byte ptr [ecx - 0x5c], dl
+0043a3c0: 43                   inc ebx
+0043a3c1: 008d4c240466         add byte ptr [ebp + 0x6604244c], cl
+0043a3c7: ba020033c0           mov edx, 0xc0330002
+0043a3cc: e837faffff           call 0x439e08
+0043a3d1: 66837c2404ff         cmp word ptr [esp + 4], -1
+0043a3d7: 750d                 jne 0x43a3e6
+0043a3d9: 8d4c2404             lea ecx, [esp + 4]
+0043a3dd: 33d2                 xor edx, edx
+0043a3df: 33c0                 xor eax, eax
+0043a3e1: e822faffff           call 0x439e08
+0043a3e6: 66837c2404ff         cmp word ptr [esp + 4], -1
+0043a3ec: 0f8588000000         jne 0x43a47a
+0043a3f2: 8d4c2404             lea ecx, [esp + 4]
+0043a3f6: 83caff               or edx, 0xffffffff
+0043a3f9: 33c0                 xor eax, eax
+0043a3fb: e808faffff           call 0x439e08
+0043a400: eb78                 jmp 0x43a47a
+0043a402: 8d4c2404             lea ecx, [esp + 4]
+0043a406: 66ba0100             mov dx, 1
+0043a40a: 66b80100             mov ax, 1
+0043a40e: e8f5f9ffff           call 0x439e08
+0043a413: 66837c2404ff         cmp word ptr [esp + 4], -1
+0043a419: 755f                 jne 0x43a47a
