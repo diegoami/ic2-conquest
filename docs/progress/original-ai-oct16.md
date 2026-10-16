@@ -47,5 +47,34 @@ PR #87. This queue does not claim to have delivered any research relay.
 
 ## END / resumption
 
-Work in progress: continue preflight, then immutable experiments in queue order.
-No result is final or reviewed yet. Do not run #25 from issue status alone.
+All currently runnable original probes are collected; findings await MiniMax.
+No #25 comparison was run. Do not confuse its inventory audit with a rerun.
+
+- #5: promoted report commit `79c8fcc52d93532ae3c5edeec30b6988c525c76c`
+  already answers the shared-dispatch question; audit and source save hashes
+  retained, no duplicate run.
+- #22: Wine-read tables, full 334-city mapping, 482 original-x86 classifier
+  points, signed arithmetic slices, seven original Wine plain/observer pairs
+  with byte-identical output saves. Scorer returns 110 versus 57 at distance 3
+  in matched same/cross-component controls.
+- #23: boarded/land positive controls, distance 4/5, stock and hostile controls,
+  grant and repeated-city cases. Army supply changes independently of carrier.
+- #26: purse/treasury 100 boundaries, condition 95 boundary, 90/91 ship repair
+  arithmetic, repeated city, capacity/stock and isolated distance controls.
+  The old report's flat-100 repair alternative is contradicted by the code and
+  observed damage-based cost; 100 belongs to the purse increment.
+- #24: human off/on, AI-nation, UI Information-window interruption/re-enable,
+  and fresh/same-process reload. Setup runs before general flags are cleared
+  on reload. Raw draws and 109 boundary saves are retained, no rebaseline.
+- #25: build #1103 merged in PR #1117 (`6d2d2fee`), #1105 in PR #1124
+  (`269a826c`). The general-control correction still awaits this evidence and
+  integration. Historical issue-1107 registry subset is 57 cases / 41 series;
+  current subset is 63 / 48, not the totals of the whole registry. The old
+  combined-emulation survey reports 42 series but supplies no per-series list
+  in the issue: the unmatched survey ID is not identified or called fixed.
+
+Next: finish documented validation, publish evidence, open the intake PR and
+run the owner's MiniMax M3 review. Keep the owner-selected reviewer through
+any necessary fixes; do not silently choose another reviewer. After approval,
+relay the bounded findings to research; #25 remains pending the build session's
+independent correction and immutable comparison inputs.

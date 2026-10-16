@@ -87,7 +87,20 @@ if __name__=='__main__':
             g.start()
             open_battle(g,src)
             record(g,mode,'fresh_process_after_resume')
-            if mode in ('human_on','reload_on'):
+            if mode=='interrupt_on':
+                info=g.find_windows('^Information$')[0]
+                x=info[2]+info[4]//2;y=info[3]+info[5]//2
+                # The original polls WM_LBUTTONDOWN on the Information window
+                # to relinquish human-side general control. Queue that click
+                # immediately after General on, without writing game memory.
+                drv.sh('xdotool','mousemove',str(g.battle_x.get('computer',drv.BATTLE_TOOLS['computer'])),
+                       str(drv.BATTLE_TOOLBAR_Y),'click','1','mousemove',str(x),str(y),'click','1')
+                time.sleep(2)
+                record(g,mode,'after_general_then_information_click')
+                if g.in_battle() and not g.find_windows('Battle ended'):
+                    click_general(g)
+                    record(g,mode,'after_general_reenabled')
+            elif mode in ('human_on','reload_on'):
                 click_general(g)
                 record(g,mode,'after_general_on')
                 # General-driven movement remains user-stepped by End turn.
@@ -107,6 +120,10 @@ if __name__=='__main__':
                     record(g,mode,'finished_battle_before_reload')
                     open_battle(g,INPUT)
                     record(g,mode,'same_process_reload_after_general')
+                    # Preserve this setup's moves in the lab boundary save,
+                    # then observe the next setup with cleared general flags.
+                    g.end_turn_proven(lambda:g.click(g.battle_x.get('end_turn',drv.BATTLE_TOOLS['end_turn']),drv.BATTLE_TOOLBAR_Y,pause=2))
+                    record(g,mode,'same_process_reload_after_end_turn')
             elif mode in ('human_off','plain_off'):
                 g.end_turn_proven(lambda:g.click(g.battle_x.get('end_turn',drv.BATTLE_TOOLS['end_turn']),drv.BATTLE_TOOLBAR_Y,pause=2))
                 record(g,mode,'after_one_end_turn')

@@ -25,12 +25,22 @@ def edit(b,case):
         if a['id']>2:stage.set_army_field(b,a['id'],'owner',-1)
     if case=='boundary':
         positions=[(60,57),(58,57),(62,57)]
+    elif case=='same_only':
+        positions=[(59,57),(62,57),(56,57)]
+    elif case=='cross_only':
+        positions=[(59,57),(56,57),(62,57)]
+    elif case=='fallback_same':
+        positions=[(158,72),(161,72),(155,72)]
+    elif case=='fallback_cross':
+        positions=[(158,72),(155,72),(161,72)]
     elif case=='same_left':
         positions=[(59,57),(62,57),(56,57)]
     else:
         positions=[(59,57),(56,57),(62,57)]
-    for x in range(54,66):
-        for y in range(55,60):struct.pack_into('<h',b,(x*140+y)*2,2)
+    xmin,xmax=min(p[0] for p in positions)-2,max(p[0] for p in positions)+2
+    ymin,ymax=min(p[1] for p in positions)-2,max(p[1] for p in positions)+2
+    for x in range(xmin,xmax+1):
+        for y in range(ymin,ymax+1):struct.pack_into('<h',b,(x*140+y)*2,2)
     for i,(x,y) in enumerate(positions):
         stage.set_units(b,i,[('li',30000,6)])
         for field,value in dict(owner=0 if i==0 else 1,moves=1 if i==0 else 0,
@@ -39,10 +49,15 @@ def edit(b,case):
         struct.pack_into('<2h',b,stage._army(b,i),x,y)
         struct.pack_into('<h',b,stage._army(b,i)+8,2)
         struct.pack_into('<h',b,(x*140+y)*2,200+i)
+    if case in ('same_only','cross_only','fallback_same','fallback_cross'):
+        stage.set_army_field(b,2,'owner',-1)
+        x,y=positions[2]
+        struct.pack_into('<h',b,(x*140+y)*2,2)
     stage.set_relation(b,0,1,3)
-    description.update(case=case,positions=positions,synthetic_plain_corridor=[54,65,55,59],
+    description.update(case=case,positions=positions,synthetic_plain_corridor=[xmin,xmax,ymin,ymax],
                        armies_above_slot2_removed=True,army0_moves=1,enemy_stats='matched to army0',
-                       rome_queue_troops_zero=True,all_mercenary_pool_troops=-1)
+                       rome_queue_troops_zero=True,all_mercenary_pool_troops=-1,
+                       slot2_removed=case in ('same_only','cross_only','fallback_same','fallback_cross'))
     return description
 
 

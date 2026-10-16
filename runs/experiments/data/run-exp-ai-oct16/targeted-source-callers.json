@@ -1,0 +1,139 @@
+{
+  "source": "all_app_functions.txt",
+  "source_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "callers": {
+    "FUN_0044eb18": [
+      {
+        "function": "FUN_0044eb9c",
+        "address": "0x44eb9c",
+        "line": 52585,
+        "text": "FUN_0044eb18(param_1,&local_8,&local_4);"
+      },
+      {
+        "function": "FUN_0044eb9c",
+        "address": "0x44eb9c",
+        "line": 52586,
+        "text": "FUN_0044eb18(param_2,&local_6,local_3);"
+      }
+    ],
+    "FUN_0044eb9c": [
+      {
+        "function": "FUN_0044ece4",
+        "address": "0x44ece4",
+        "line": 52685,
+        "text": "uVar3 = FUN_0044eb9c(*(undefined4 *)(puVar5 + 0xe),(&DAT_0047c1ec)[param_1 * 0xa4]);"
+      },
+      {
+        "function": "FUN_0044ee60",
+        "address": "0x44ee60",
+        "line": 52745,
+        "text": "uVar3 = FUN_0044eb9c(*puVar6,(&DAT_0047c1ec)[param_1 * 0xa4]);"
+      },
+      {
+        "function": "FUN_0044efc8",
+        "address": "0x44efc8",
+        "line": 52817,
+        "text": "uVar5 = FUN_0044eb9c(*puVar8,*(undefined4 *)((int)&DAT_0047959e + sVar1 * 0x22));"
+      }
+    ],
+    "FUN_0044ca30": [
+      {
+        "function": "FUN_0044cab4",
+        "address": "0x44cab4",
+        "line": 50870,
+        "text": "FUN_0044ca30((&DAT_0047c1ec)[param_1 * 0xa4],&local_e,&local_10);"
+      },
+      {
+        "function": "FUN_0044cab4",
+        "address": "0x44cab4",
+        "line": 50871,
+        "text": "psVar2 = (short *)FUN_0044ca30(param_2,local_c,&local_f);"
+      }
+    ],
+    "FUN_0044da88": [
+      {
+        "function": "FUN_0044db38",
+        "address": "0x44db38",
+        "line": 51778,
+        "text": "FUN_0044da88(param_2,&local_14,&local_12,&local_e);"
+      },
+      {
+        "function": "FUN_0044db38",
+        "address": "0x44db38",
+        "line": 51779,
+        "text": "FUN_0044da88(local_8,&local_14,&local_10,&local_d);"
+      }
+    ],
+    "FUN_0044f6d8": [
+      {
+        "function": "FUN_0044d734",
+        "address": "0x44d734",
+        "line": 51655,
+        "text": "FUN_0044f6d8(sVar4,local_a);"
+      },
+      {
+        "function": "FUN_0044e41c",
+        "address": "0x44e41c",
+        "line": 52246,
+        "text": "FUN_0044f6d8(local_20,param_1);"
+      }
+    ],
+    "FUN_0044f7e4": [
+      {
+        "function": "FUN_0044e1fc",
+        "address": "0x44e1fc",
+        "line": 52193,
+        "text": "uVar6 = FUN_0044f7e4((short)uVar6,param_1);"
+      },
+      {
+        "function": "FUN_0044e5dc",
+        "address": "0x44e5dc",
+        "line": 52298,
+        "text": "FUN_0044f7e4(sVar4,param_1);"
+      }
+    ],
+    "FUN_00438378": [
+      {
+        "function": "FUN_00438a6c",
+        "address": "0x438a6c",
+        "line": 38621,
+        "text": "uVar5 = FUN_00438378();"
+      },
+      {
+        "function": "FUN_00438a6c",
+        "address": "0x438a6c",
+        "line": 38687,
+        "text": "(uVar5 = FUN_00438378(), puVar9 = extraout_ECX_01, (char)uVar5 != '\\0')) ||"
+      },
+      {
+        "function": "FUN_00438d24",
+        "address": "0x438d24",
+        "line": 38782,
+        "text": "uVar5 = FUN_00438378();"
+      },
+      {
+        "function": "FUN_0043910c",
+        "address": "0x43910c",
+        "line": 38969,
+        "text": "uVar1 = FUN_00438378();"
+      },
+      {
+        "function": "FUN_0043910c",
+        "address": "0x43910c",
+        "line": 39024,
+        "text": "uVar1 = FUN_00438378();"
+      },
+      {
+        "function": "FUN_00439968",
+        "address": "0x439968",
+        "line": 39264,
+        "text": "uVar1 = FUN_00438378();"
+      }
+    ]
+  },
+  "region_helper_duplicates": {
+    "first": "0x44ca30..0x44cab4",
+    "second": "0x44eb18..0x44eb9c",
+    "byte_identical": true
+  }
+}

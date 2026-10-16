@@ -1,4 +1,5 @@
 """Compare hooked/unhooked Delphi register-call ABI, outputs, flags and stack."""
+import os
 import random
 import struct
 from pathlib import Path
@@ -6,7 +7,7 @@ from unicorn import Uc,UC_ARCH_X86,UC_MODE_32
 from unicorn.x86_const import *
 import score_hook as H
 
-SOURCE=Path('/tmp/ic2-ai-oct16-work/prefix/drive_c/IC2/Imperial Conquest 2 fast rollingsave seed.exe')
+SOURCE=Path(os.environ.get('IC2_WORK',Path.home()/'ic2-work'))/'prefix/drive_c/IC2'/H.A.SRC
 REGS=(UC_X86_REG_EAX,UC_X86_REG_EBX,UC_X86_REG_ECX,UC_X86_REG_EDX,UC_X86_REG_ESI,
       UC_X86_REG_EDI,UC_X86_REG_EBP,UC_X86_REG_ESP,UC_X86_REG_EFLAGS)
 RNG=random.Random(1687)

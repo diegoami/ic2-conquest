@@ -20,7 +20,8 @@ from battle_hook import sections
 DATA=Path(__file__).resolve().parent
 STAMP=time.strftime('%Y%m%d-%H%M%S')
 records=[]
-for p in DATA.glob('probe-*.jsonl'):
+paths=[Path(sys.argv[2])] if len(sys.argv)>2 else DATA.glob('probe-*.jsonl')
+for p in paths:
     for line in p.read_text().splitlines():
         r=json.loads(line)
         if r['event']=='runtime_tables':records.append((p,r))

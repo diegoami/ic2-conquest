@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/data/run-exp-ai-oct16/supply_probe.py", line 119, in <module>
+    src=staged(SOURCE,name,lambda b:prepare(b,kind,config))
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/data/run-exp-ai-oct16/probe_common.py", line 61, in staged
+    edits = edit(b)
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/data/run-exp-ai-oct16/supply_probe.py", line 119, in <lambda>
+    src=staged(SOURCE,name,lambda b:prepare(b,kind,config))
+                                    ~~~~~~~^^^^^^^^^^^^^^^
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/data/run-exp-ai-oct16/supply_probe.py", line 30, in prepare
+    stage.set_units(b,0,[{'type':'li','troops':30000,'quality':6,'name':'Oct16 probe'}])
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/ic2-conquest-ai-research/runs/experiments/battles/stage.py", line 75, in set_units
+    typ, troops, q = u[0], u[1], u[2]
+                     ~^^^
+KeyError: 0
