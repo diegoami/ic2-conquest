@@ -50,11 +50,11 @@ python3 runs/experiments/data/run-exp-ai-oct16/general_probe.py plain_off human_
 `preflight.py`, `supply_probe.py` and `general_probe.py` record logs directly
 here and exclusively name artifacts. General probes build their task-local
 observer from the installed lab seed-1 EXE. For region probes first build the
-task-local score observer using `score_hook.build` from the seeded EXE and write
-its bytes to the private game's `score_hook.DST` (exclusive creation; verify
-equality before reusing an existing build), then run:
+task-local score observer from the seeded EXE (the builder preserves a copy and
+hashes, exclusively creates outputs and verifies an existing build), then run:
 
 ```bash
+python3 runs/experiments/data/run-exp-ai-oct16/score_hook.py "$IC2_WORK/prefix/drive_c/IC2"
 python3 runs/experiments/data/run-exp-ai-oct16/test_score_hook.py
 python3 runs/experiments/data/run-exp-ai-oct16/region_probe.py same_right same_left boundary same_only cross_only fallback_same fallback_cross
 ```

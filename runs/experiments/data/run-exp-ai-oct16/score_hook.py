@@ -7,6 +7,10 @@ to the original return address. No strategic game fields are written.
 """
 import struct
 import sys
+import hashlib
+import json
+import os
+import time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[4]
 sys.path.insert(0,str(ROOT/'patches'))
@@ -67,3 +71,24 @@ def read(g):
         out.append(dict(site=SITES[sid-1][0],army=army,nation=nation,target=target,score=score,distance=distance,
                         army_header=list(struct.unpack_from('<8h',r,24)),seed=struct.unpack_from('<I',r,40)[0]))
     return out
+
+
+if __name__=='__main__':
+    if len(sys.argv)!=2:raise SystemExit('usage: score_hook.py <private game folder>')
+    folder=Path(sys.argv[1]);source=folder/A.SRC
+    b,caves=build(source.read_bytes())
+    destination=folder/DST
+    if destination.exists():assert destination.read_bytes()==b,'existing observer differs; preserve it and choose a new workspace'
+    else:
+        with destination.open('xb') as out:out.write(b)
+    stamp=time.strftime('%Y%m%d-%H%M%S')+f'-{os.getpid()}'
+    art=ROOT/'artifacts/run-exp-ai-oct16';art.mkdir(parents=True,exist_ok=True)
+    kept=art/f'score-observer-{stamp}.exe'
+    with kept.open('xb') as out:out.write(b)
+    digest=hashlib.sha256(b).hexdigest()
+    data=Path(__file__).resolve().parent
+    with (data/'SAVES.sha256').open('a') as out:out.write(f'{digest}  {kept.name}\n')
+    record=dict(source=source.name,source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+                output=DST,output_sha256=digest,artifact=kept.name,caves=caves,sites=SITES)
+    with (data/f'score-hook-build-{stamp}.json').open('x') as out:json.dump(record,out,indent=2)
+    print(json.dumps(record))

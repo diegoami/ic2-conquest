@@ -19,7 +19,7 @@ weekly tick: Armenia human -> Rome AI -> Bithynia human.
 
 Source: `all_app_functions.txt`, SHA-256
 `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`.
-`targeted-code-extract.txt` retains the relevant functions with original source
+`targeted-code-extract.v2.txt` retains the relevant functions with original source
 line numbers; `targeted-source-callers.json` records their callers. Environment,
 EXE/DAT/input hashes and staging edits are tracked. The ordinary seeded EXE is
 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`.
@@ -77,6 +77,31 @@ caps at 1000, then adds 1000 for a weaker enemy within 7. Both choose by strict
 `>` (first equal candidate retained), store the winning score as a word, and
 add the winning distance back to the returned score. Initial strength division
 and later modifiers are not interchangeable with the region operation.
+
+The full relevant `[code]` order is:
+
+```text
+army strength = trunc(sum(trunc(typeValue * slotTroops / 100)) / 80) * morale
+assault strength = trunc(sum(slotTroops * (3 for archers, otherwise 1)) / 80) * morale
+city defense = loyalty*150 + (fortification mod 100 when >100)*250 + population*200
+if capital and loyalty>59: defense = trunc(defense*5/3)
+if owner != allegiance: defense = trunc(defense*4/5)
+then add each matching recruit slot's trunc(troops/2)
+
+enemy city: at war and FUN_0044cab4 reachable
+  D = city defense; if attacker owner == allegiance: D = trunc(D*9/10)
+  s = trunc(assaultStrength*110/D) - distance
+  apply region subtraction; then weak+near doubling; then capital doubling
+enemy army: live owner, covered-cell >= 0 (on land), at war, reachable
+  s = trunc(armyStrength*110/enemyArmyStrength) - distance
+  apply region subtraction; cap at 1000; then weaker+near bonus 1000
+```
+
+These strength/defense helpers are `0x44a8cc`, `0x44a930`, `0x44a98c`.
+`FUN_0044cab4` accepts matching classifier pairs or ownership of **any** fleet;
+that scan does not test launch state. The scorers' word-sized result storage
+and final word addition remain part of the original arithmetic; the probes do
+not generalize the half-score test to untested whole-scorer overflow cases.
 
 `[Wine, staged]` Equal 30,000-foot armies with morale 90 were placed on a declared
 synthetic plain corridor. Outstanding Roman queue troops and mercenary offers
