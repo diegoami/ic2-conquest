@@ -1,0 +1,44 @@
+{
+  "tag": "code-static source audit only; not yet attributed to any first divergence",
+  "original_source_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "extract": "target-routines-static-20261016-170424.txt",
+  "port_head": "6208282c50a5861f8bd8eb63df0bc896c82d194a",
+  "facts_to_reproduce": [
+    {
+      "id": "S1",
+      "original": "Pass2 computes S(actor,enemy) and S(enemy,actor), including quality, morale and matchup. Applies focus to enemy S, filters eligibility per candidate, then strict minimum.",
+      "source": "0043a544 original39899-39926",
+      "port": "GeneralPassTwo.MeleeKey uses enemy Troops and eligibility compares actor Troops",
+      "status": "source-level mismatch; needs minimal CPU/model reproduction and first-case attribution"
+    },
+    {
+      "id": "S2",
+      "original": "Pass1 type order, then own slot order. Pass2 and Pass3 threat/flank loops use ascending own slot order directly.",
+      "source": "0043a31c vs0043a544 and0043abb4",
+      "port": "GeneralOrders.InOrder(type then slot) reused in all passes",
+      "status": "source-level mismatch; not assumed cause when slots already follow type order"
+    },
+    {
+      "id": "S3",
+      "original": "Threat helper tests actor type==archer AND actor shots>0; then key=-shotBound(actor,enemy). This same actor condition selects radius2 instead of1.",
+      "source": "0043a718 original39940-40045",
+      "port": "GeneralPassThree.Threat tests enemy archer/shots and reverses shooter/target",
+      "status": "source-level mismatch; needs controlled goal/radius reproduction"
+    },
+    {
+      "id": "S4",
+      "original": "Threat array holds all20 enemy slot IDs with dead keys1000000. Each sort iteration finds strict minimum then swaps once.",
+      "source": "0043a718 original39980-40044",
+      "port": "Filters dead slots then exchanges immediately for each smaller key",
+      "status": "source-level mismatch in ties; needs equal-key and dead-slot controls"
+    },
+    {
+      "id": "S5",
+      "original": "Horizontal flank direction predicate from enemy min/max X is captured at Pass3 entry, before threat moves and nested Pass2.",
+      "source": "0043abb4 original40192-40235",
+      "port": "FlankUnit computes current live enemy bounds per actor after those stages",
+      "status": "candidate temporal difference; verify actual port and controlled casualty case"
+    }
+  ],
+  "gate": "No official production #25 sweep before T175 independent code approval/integration. No target rule correction selected or committed."
+}

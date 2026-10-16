@@ -1,0 +1,1424 @@
+[
+  {
+    "index": 0,
+    "bound": 24,
+    "value": 0,
+    "counter": 0,
+    "actor": null
+  },
+  {
+    "index": 1,
+    "bound": 24,
+    "value": 20,
+    "counter": 0,
+    "actor": null
+  },
+  {
+    "index": 2,
+    "bound": 24,
+    "value": 4,
+    "counter": 0,
+    "actor": null
+  },
+  {
+    "index": 3,
+    "bound": 24,
+    "value": 6,
+    "counter": 0,
+    "actor": null
+  },
+  {
+    "index": 4,
+    "bound": 24,
+    "value": 16,
+    "counter": 0,
+    "actor": null
+  },
+  {
+    "index": 5,
+    "bound": 24,
+    "value": 7,
+    "counter": 0,
+    "actor": null
+  },
+  {
+    "index": 6,
+    "bound": 5,
+    "value": 0,
+    "counter": 1,
+    "actor": null
+  },
+  {
+    "index": 7,
+    "bound": 5,
+    "value": 1,
+    "counter": 2,
+    "actor": null
+  },
+  {
+    "index": 8,
+    "bound": 119,
+    "value": 50,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 9,
+    "bound": 119,
+    "value": 9,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 10,
+    "bound": 119,
+    "value": 56,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 11,
+    "bound": 119,
+    "value": 8,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 12,
+    "bound": 135,
+    "value": 113,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 13,
+    "bound": 135,
+    "value": 8,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 14,
+    "bound": 135,
+    "value": 39,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 15,
+    "bound": 135,
+    "value": 123,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 16,
+    "bound": 135,
+    "value": 49,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 17,
+    "bound": 135,
+    "value": 104,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 18,
+    "bound": 121,
+    "value": 39,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 19,
+    "bound": 121,
+    "value": 84,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 20,
+    "bound": 121,
+    "value": 102,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 21,
+    "bound": 121,
+    "value": 86,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 22,
+    "bound": 871,
+    "value": 267,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 23,
+    "bound": 871,
+    "value": 141,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 24,
+    "bound": 279,
+    "value": 91,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 25,
+    "bound": 279,
+    "value": 130,
+    "counter": 8,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 26,
+    "bound": 629,
+    "value": 155,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 27,
+    "bound": 629,
+    "value": 519,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 28,
+    "bound": 307,
+    "value": 85,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 29,
+    "bound": 307,
+    "value": 147,
+    "counter": 8,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 30,
+    "bound": 1023,
+    "value": 152,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 31,
+    "bound": 1023,
+    "value": 894,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 32,
+    "bound": 268,
+    "value": 76,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 33,
+    "bound": 268,
+    "value": 207,
+    "counter": 8,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 34,
+    "bound": 243,
+    "value": 237,
+    "counter": 9,
+    "actor": {
+      "unit": 0,
+      "target": 20,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 35,
+    "bound": 243,
+    "value": 119,
+    "counter": 9,
+    "actor": {
+      "unit": 0,
+      "target": 20,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 36,
+    "bound": 570,
+    "value": 506,
+    "counter": 9,
+    "actor": {
+      "unit": 0,
+      "target": 20,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 37,
+    "bound": 570,
+    "value": 471,
+    "counter": 9,
+    "actor": {
+      "unit": 0,
+      "target": 20,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 38,
+    "bound": 186,
+    "value": 3,
+    "counter": 9,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 39,
+    "bound": 186,
+    "value": 26,
+    "counter": 9,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 40,
+    "bound": 1587,
+    "value": 227,
+    "counter": 9,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 41,
+    "bound": 1587,
+    "value": 794,
+    "counter": 9,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 42,
+    "bound": 187,
+    "value": 4,
+    "counter": 9,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 43,
+    "bound": 187,
+    "value": 110,
+    "counter": 9,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 44,
+    "bound": 988,
+    "value": 9,
+    "counter": 9,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 45,
+    "bound": 988,
+    "value": 765,
+    "counter": 9,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 46,
+    "bound": 116,
+    "value": 75,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 47,
+    "bound": 116,
+    "value": 89,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 48,
+    "bound": 116,
+    "value": 82,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 49,
+    "bound": 116,
+    "value": 64,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 50,
+    "bound": 116,
+    "value": 23,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 51,
+    "bound": 116,
+    "value": 79,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 52,
+    "bound": 136,
+    "value": 80,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 53,
+    "bound": 136,
+    "value": 129,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 54,
+    "bound": 39,
+    "value": 25,
+    "counter": 10,
+    "actor": null
+  },
+  {
+    "index": 55,
+    "bound": 39,
+    "value": 38,
+    "counter": 10,
+    "actor": null
+  },
+  {
+    "index": 56,
+    "bound": 110,
+    "value": 26,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 57,
+    "bound": 110,
+    "value": 74,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 0,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 58,
+    "bound": 36,
+    "value": 10,
+    "counter": 10,
+    "actor": null
+  },
+  {
+    "index": 59,
+    "bound": 36,
+    "value": 3,
+    "counter": 10,
+    "actor": null
+  },
+  {
+    "index": 60,
+    "bound": 98,
+    "value": 75,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 61,
+    "bound": 98,
+    "value": 48,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 62,
+    "bound": 98,
+    "value": 86,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 63,
+    "bound": 98,
+    "value": 49,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 64,
+    "bound": 98,
+    "value": 56,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 65,
+    "bound": 98,
+    "value": 93,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 66,
+    "bound": 123,
+    "value": 84,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 67,
+    "bound": 123,
+    "value": 41,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 68,
+    "bound": 143,
+    "value": 1,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 69,
+    "bound": 143,
+    "value": 100,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 70,
+    "bound": 143,
+    "value": 141,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 71,
+    "bound": 143,
+    "value": 110,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 72,
+    "bound": 1154,
+    "value": 865,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 73,
+    "bound": 1154,
+    "value": 228,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 74,
+    "bound": 228,
+    "value": 32,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 75,
+    "bound": 228,
+    "value": 208,
+    "counter": 10,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 76,
+    "bound": 875,
+    "value": 686,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 77,
+    "bound": 875,
+    "value": 515,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 78,
+    "bound": 268,
+    "value": 231,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 79,
+    "bound": 268,
+    "value": 184,
+    "counter": 10,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 80,
+    "bound": 383,
+    "value": 110,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 81,
+    "bound": 383,
+    "value": 35,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 82,
+    "bound": 230,
+    "value": 144,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 83,
+    "bound": 230,
+    "value": 64,
+    "counter": 10,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 84,
+    "bound": 155,
+    "value": 135,
+    "counter": 11,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 85,
+    "bound": 155,
+    "value": 24,
+    "counter": 11,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 86,
+    "bound": 688,
+    "value": 187,
+    "counter": 11,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 87,
+    "bound": 688,
+    "value": 374,
+    "counter": 11,
+    "actor": {
+      "unit": 1,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 88,
+    "bound": 175,
+    "value": 168,
+    "counter": 11,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 89,
+    "bound": 175,
+    "value": 30,
+    "counter": 11,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 90,
+    "bound": 315,
+    "value": 49,
+    "counter": 11,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 91,
+    "bound": 315,
+    "value": 84,
+    "counter": 11,
+    "actor": {
+      "unit": 2,
+      "target": 22,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 92,
+    "bound": 90,
+    "value": 15,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 93,
+    "bound": 90,
+    "value": 51,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 2,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 94,
+    "bound": 38,
+    "value": 18,
+    "counter": 12,
+    "actor": null
+  },
+  {
+    "index": 95,
+    "bound": 38,
+    "value": 10,
+    "counter": 12,
+    "actor": null
+  },
+  {
+    "index": 96,
+    "bound": 129,
+    "value": 20,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 97,
+    "bound": 129,
+    "value": 78,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 98,
+    "bound": 129,
+    "value": 95,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 99,
+    "bound": 129,
+    "value": 96,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 100,
+    "bound": 129,
+    "value": 10,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 101,
+    "bound": 129,
+    "value": 9,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 102,
+    "bound": 129,
+    "value": 7,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 103,
+    "bound": 129,
+    "value": 13,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 104,
+    "bound": 96,
+    "value": 76,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 105,
+    "bound": 96,
+    "value": 77,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 106,
+    "bound": 96,
+    "value": 36,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 107,
+    "bound": 96,
+    "value": 58,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 108,
+    "bound": 96,
+    "value": 41,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 109,
+    "bound": 96,
+    "value": 71,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "shooting; detailed pass trace pending",
+      "evidence": "production TacticalShotEvent after its two draws"
+    }
+  },
+  {
+    "index": 110,
+    "bound": 155,
+    "value": 76,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 111,
+    "bound": 155,
+    "value": 52,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 112,
+    "bound": 271,
+    "value": 221,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 113,
+    "bound": 271,
+    "value": 221,
+    "counter": 12,
+    "actor": {
+      "unit": 20,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 114,
+    "bound": 87,
+    "value": 12,
+    "counter": 12,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 115,
+    "bound": 87,
+    "value": 8,
+    "counter": 12,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 116,
+    "bound": 313,
+    "value": 21,
+    "counter": 12,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 117,
+    "bound": 313,
+    "value": 18,
+    "counter": 12,
+    "actor": {
+      "unit": 21,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 118,
+    "bound": 62,
+    "value": 12,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 119,
+    "bound": 62,
+    "value": 41,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 120,
+    "bound": 194,
+    "value": 44,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 121,
+    "bound": 194,
+    "value": 110,
+    "counter": 12,
+    "actor": {
+      "unit": 22,
+      "target": 1,
+      "pass": "melee after general movement",
+      "evidence": "production TacticalMeleeEvent after its four draws"
+    }
+  },
+  {
+    "index": 122,
+    "bound": 4,
+    "value": 1,
+    "counter": 12,
+    "actor": null
+  },
+  {
+    "index": 123,
+    "bound": 4,
+    "value": 1,
+    "counter": 12,
+    "actor": null
+  },
+  {
+    "index": 124,
+    "bound": 4,
+    "value": 3,
+    "counter": 12,
+    "actor": null
+  },
+  {
+    "index": 125,
+    "bound": 5,
+    "value": 1,
+    "counter": 12,
+    "actor": null
+  }
+]

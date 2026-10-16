@@ -1,0 +1,38 @@
+[
+  {
+    "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s1_r5_hook",
+    "FirstDifference": "mix-rg_s1_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 4",
+    "Issue": 1107,
+    "BaselineOutcome": "Passed"
+  },
+  {
+    "Case": "The_port_draws_the_peace_roll_when_the_original_did:ar-li-three_s3_r5_hook",
+    "FirstDifference": "ar-li-three_s3_r5_hook: the port's peace draw is Random(5) = 4, the log's is Random(5) = 3",
+    "Issue": 1107,
+    "BaselineOutcome": "Passed"
+  },
+  {
+    "Case": "The_treaty_is_offered_where_the_reports_observed_it:gate2_s2a",
+    "FirstDifference": "gate2_s2a: peace offered: port False, original True",
+    "Issue": 1107,
+    "BaselineOutcome": "Passed"
+  },
+  {
+    "Case": "The_port_draws_what_the_original_drew:hi-ar-three_s3_r5_hook",
+    "FirstDifference": "hi-ar-three_s3_r5_hook: draw 42: half-round counter 7 (port 7), original site 0x4395CE Random(13454) = 853, port Random(13169) = 835",
+    "Issue": 1107,
+    "BaselineOutcome": "Passed"
+  },
+  {
+    "Case": "The_port_draws_the_peace_roll_when_the_original_did:li-lc-three_s1_r5_hook",
+    "FirstDifference": "li-lc-three_s1_r5_hook: the port's peace draw is Random(5) = 3, the log's is Random(5) = 1",
+    "Issue": 1107,
+    "BaselineOutcome": "Passed"
+  },
+  {
+    "Case": "The_treaty_is_offered_where_the_reports_observed_it:gate2_a",
+    "FirstDifference": "gate2_a: peace offered: port True, original False",
+    "Issue": 1107,
+    "BaselineOutcome": "Passed"
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "summary": {
+    "trial": "ar-hi-three_s3_r5_hook",
+    "seed": 3,
+    "start": "starts/ar-hi-three_start.SAV",
+    "hook": "hook/hooklog-ar-hi-three_s3_r5_hook.csv",
+    "hook_sha256": "f1d9032c2739e9801a811899c2c9aab7e1d7eedfe23c1af7f20991d4583a919f",
+    "file_count": 22,
+    "pairing_error": null,
+    "exact": false,
+    "blocks_passed": false,
+    "post_and_conclusion_passed": false,
+    "draws_match": true,
+    "peace_match": true,
+    "original_draw_count": 218,
+    "model_draw_count": 218,
+    "block_difference": "ar-hi-three_s3_r5_hook: hook/ar-hi-three_s3_r5_hook_BATTLE19.SAV (file 19 of 22), slot 2, y: port 3, original 4",
+    "draw_difference": null,
+    "structural": null,
+    "first_divergence": null
+  },
+  "model_snapshot_after_movement": null,
+  "model_previous_snapshot": null,
+  "original_snapshot_before_melee": null,
+  "timing_note": "Snapshots are after movement/before melee, not necessarily the instant of a shot or flank draw."
+}
