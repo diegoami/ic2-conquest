@@ -9,3 +9,5 @@ Verified research PR32 MERGED at2ed46252e28a5ac48ff7aafccecced12b48ed090 and res
 Last successfully delivered relay/reported findings baseline: conquest27488fa4fe2a1918eff4a66f3f21fe886a67a58b, from prior task notes on research/foreign-resupply31 ataa7e83b. No new or changed findings at task start.
 
 Validation: primary GitHub PR/issue state and pinned report read. Only finding status/intake receipt changed; original source/arithmetic/measurements untouched. git diff --check and pinned-link checks next; no game tests needed for metadata.
+
+Progress4746801 pushed: status and independent-intake receipt only; PR94 opened. Added task-specific MiniMax review brief; canonical-report state/contents and full research review read. git diff --check passes.
