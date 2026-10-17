@@ -6,7 +6,7 @@
 
 Canonical report: [hostile-control recruitment treasury ledger](https://github.com/diegoami/imperial-conquest-2-research/blob/64adfb1aedb6a277bcf3fa41537f574d9448a905/docs/reports/2026-10-17-hostile-control-recruitment-treasury-ledger.md). Research #33 is closed. Independent intake verified 35 packet blobs unchanged in conquest merge `356171b0e27d6f188a9f45f60eceda277c5dbfd5`, 997 source-extract lines, 286 instructions, nine fresh plus nine selected legacy save/release digests and all three Wine endpoint identities; reran all three original-x86 controls and independently decoded the queue/DAT ledger with residuals 0/0/0. Research MiniMax M3 session `ses_eb6fd7a66ffeaRTTx2XUQxqFUI` approved intake. Research GitGuardian passed; the source PR96 size-skipped scan remained NEUTRAL and was merged with the owner's explicit authorization.
 
-The canonical report separately retains the input→loaded Armenia13 Information-form WORD708→704 at `+0x482`, distinct from the next-human Bithynia11 x86/Wine endpoint UI mismatch below. The historical measurements and limits remain unchanged. IC main reads the canonical research report through the owner-carried handoff; no direct main/build message is claimed.
+The canonical report separately retains the input→loaded Armenia13 Information-form WORD708→704 at `+0x482`, distinct from the next-human Bithynia11 x86/Wine endpoint UI mismatch below. The historical measurements and limits remain unchanged. IC main is reached through the owner-carried handoff to the canonical research report; no direct main/build message is claimed.
 
 ## Evidence and pins
 

@@ -32,7 +32,8 @@ Existing `.claude/skills/` and `.opencode/` files remain in place.
 5. Ask for the external reviewer model when that choice is missing. Use one
    reviewer at a time, a brief with "Blocking means", and a different model
    family. Read the complete returned report before fixing, resuming or escalating.
-   Merge only when the shared review and CI conditions are met.
+   Follow the shared "Merging" rule in `CLAUDE.md` for review and required checks;
+   optional CI need not delay an independently approved change.
 6. Leave an END handoff with branch, commit, tests, pending decisions and next
    steps. For findings, retain the reported and last-delivered baselines in
    tracked notes so another backend can continue without private session memory.
