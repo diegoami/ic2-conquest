@@ -9,8 +9,8 @@ functions=[];refs=[]
 for n,(start,name,addr) in enumerate(starts):
  end=starts[n+1][0] if n+1<len(starts) else len(lines);hits=[]
  for i in range(start,end):
-  for m in re.finditer(r'(?:DAT_|PTR_|UNK_)([0-9a-fA-F]{8})',lines[i]):
-   value=int(m.group(1),16)
+  for m in re.finditer(r'(?:DAT_|PTR_|UNK_)([0-9a-fA-F]{8})|0x([0-9a-fA-F]{6,8})',lines[i]):
+   value=int(m.group(1) or m.group(2),16)
    for lo,hi,label in ranges:
     if lo<=value<hi:hits.append(dict(line=i+1,address=hex(value),region=label,text=lines[i]))
  if hits:
