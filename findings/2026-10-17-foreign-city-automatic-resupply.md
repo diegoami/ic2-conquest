@@ -1,6 +1,6 @@
 # Foreign-city automatic resupply: entry-purse eligibility and live purchase arithmetic
 
-**Status:** draft for research [#31](https://github.com/diegoami/imperial-conquest-2-research/issues/31), conquest #92 / PR93. Original-side research; no build edits or T177 expansion. Build [#759](https://github.com/diegoami/imperial_conquest_2/issues/759) and [#823](https://github.com/diegoami/imperial_conquest_2/issues/823) require their own evaluation of any new evidence.
+**Status:** `[confirmed, partial]`, draft for research [#31](https://github.com/diegoami/imperial-conquest-2-research/issues/31), conquest #92 / PR93. Original-side research; no build edits or T177 expansion. Build [#759](https://github.com/diegoami/imperial_conquest_2/issues/759) and [#823](https://github.com/diegoami/imperial_conquest_2/issues/823) require their own evaluation of any new evidence.
 
 `[code]` means the pinned original listing; `[x86]` means the original complete city-loop instructions executed on the staged save records under Unicorn, without patches or stubs. `[Wine, staged]` means the original game played one AI seat with explicitly edited records. There is no native Windows confirmation. This extends the [October 16 support finding](2026-10-16-strategic-ai-regions-resupply.md); its embarked-army answer and own-city controls remain established.
 
@@ -60,7 +60,45 @@ Each subject has moves 0 at stored coordinates (102,49). Army capacity is 300 (3
 
 These are synthetic record controls. City relocation/ownership does not rebuild city lists or map overlays. They support the record-reading automatic loops, not natural movement, harbor reachability, or a remake coordinate-synchronization claim. Loaded city/army/fleet/nation records are checked against the staged input before advancing the AI seat.
 
-Binary evidence: [run-exp-resupply31](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31). Complete filenames and SHA256 are in `SAVES.sha256`; before/after fields and failures remain in the unique `wine-*.jsonl` files. Summary and final matrix follow after the active batch completes.
+Binary evidence: [run-exp-resupply31](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31). Complete filenames and SHA256 are in `SAVES.sha256`; before/after fields and failures remain in the unique `wine-*.jsonl` files. The [complete 56-row matrix](../runs/experiments/data/run-exp-resupply31/matrix-final.md) records every observed supply, purse, condition, city-stock and national-treasury delta with its exact post save. `summary-final-20261017.json` independently decodes all 56 before/after pairs using raw SAV offsets, verifies **227 complete save hashes**, and confirms **17 matched land/embarked pairs** have identical support inputs and outputs. The carrier-far result matches the embarked peace control despite its carrier record being at (150,90).
+
+`audit-final-20261017.json` runs both entire original city-loop callers on all **58 staged inputs**, including the two inputs whose original-game attempts were interrupted. All 58 match the transcribed signed arithmetic and helper visitation order. For the 56 completed Wine cases, **53** also match all 334 stocks, all 16 treasuries, subject supply/purse and fleet condition exactly. The three hostile cases match supply/purse/stock/condition and seller treasuries; only buyer treasury differs, as retained below. No failed attempt is counted as a completed Wine observation.
+
+Selected `[Wine, staged]` observations follow; every save is in run-exp-resupply31 at turn **0734**. The complete matrix includes own, peace, trade, alliance, war, empty stock, purse 0/1/500, distance boundaries, exact/above capacity, tiny stock, both provider orders and two foreign providers for each subject where applicable. The out-of-domain relation controls are land/fleet only, and carrier-far is embarked only.
+
+| Control | Supply | Purse | Stock/treasury consequence | Post save |
+|---|---:|---:|---|---|
+| land:peace | 50→150 | 500→480 | stock {'89': -100}; treasury {'1': 20} | `land-peace-20261017-082729-8913-post.SAV` |
+| fleet:peace | 50→150 | 500→480 | stock {'89': -100}; treasury {'1': 20} | `fleet-peace-20261017-083008-11228-post.SAV` |
+| land:above | 310→300 | 500→502 | stock {'89': 10}; treasury {'1': -2} | `land-above-20261017-084057-17118-post.SAV` |
+| fleet:above | 730→720 | 500→502 | stock {'89': 10}; treasury {'1': -2} | `fleet-above-20261017-084059-17272-post.SAV` |
+| land:tiny | 50→54 | 500→500 | stock {'89': -4}; treasury {} | `land-tiny-20261017-084057-17118-post.SAV` |
+| land:own_first_zero | 50→51 | 0→500 | stock {'88': -1}; treasury {'0': -500} | `land-own_first_zero-20261017-084057-17118-post.SAV` |
+| land:own_first_positive | 50→151 | 1→481 | stock {'88': -1, '89': -100}; treasury {'0': -500, '1': 20} | `land-own_first_positive-20261017-084057-17118-post.SAV` |
+| fleet:own_first_zero | 50→50 | 0→100 | stock {}; treasury {'0': -208} | `fleet-own_first_zero-20261017-084059-17272-post.SAV` |
+| fleet:own_first_positive | 50→70 | 1→97 | stock {'89': -20}; treasury {'0': -208, '1': 4} | `fleet-own_first_positive-20261017-084059-17272-post.SAV` |
+| land:two_foreign | 50→59 | 25→24 | stock {'88': -5, '89': -4}; treasury {'2': 1} | `land-two_foreign-20261017-084057-17118-post.SAV` |
+| aboard:carrier_far | 50→150 | 500→480 | stock {'89': -100}; treasury {'1': 20} | `aboard-carrier_far-20261017-084100-17426-post.SAV` |
+
+The two-foreign-provider inputs start purse25. City88, owned by nation2, supplies5 and receives cost1; city89 then supplies4 at zero cost using the live purse24. Both armies and fleets finish supply59/purse24. Their entry-purse snapshot remains25 for eligibility. The own-first-zero controls demonstrate the other direction: even after the own-city grant, the later foreign city is skipped because entry purse was0. Fleet own-first-zero also repairs at the empty own provider; the later foreign provider cannot grant or repair.
+
+The army and fleet distance boundary controls take100 supply at distances4 and3, respectively, and take none at5 and4. All other provider records are explicitly outside range, removing the old westward distance4 confound. Peace/trade/alliance produce the same foreign purchase; war preserves subject supply/purse and foreign stock. Synthetic relation4 permits army purchase but blocks fleet purchase; relation−1 permits both, matching the distinct source predicates. These values are out of the normal four-code diplomacy domain.
+
+The hostile observed buyer treasuries are land/embarked1000→−10 and fleet1000→−445, while support-only original-x86 execution leaves1000. These full-seat costs are not foreign supply cost or a grant/repair result. Subject supply50/purse500 and seller stock100/treasury1000 remain unchanged. Upstream `0044ffbc` executes before the city loops; no exact recruitment-cost decomposition is claimed here.
+
+### Reproduction
+
+From this task's isolated conquest worktree, `probe.py` takes explicit `--bot`, `--work`, `--display`, `--artifacts`, and `subject:variant` cases. Use a separate installed private Wine prefix, not an empty directory. Runs always create fresh UTC/process-named artifact files and refuse overwrites. For example, `aboard:peace`, `aboard:carrier_far`, `land:own_first_zero` and `fleet:two_foreign` are supported cases. Initial local timestamps in names are retained verbatim; JSONL observation times are UTC.
+
+Offline verification from the worktree (use fresh output filenames):
+
+```bash
+python3 runs/experiments/resupply31/audit.py --bot "$PWD" --exe '../wine-aboard/prefix/drive_c/IC2/Imperial Conquest 2 fast rollingsave seed.exe' --artifacts ../artifacts --output /tmp/resupply31-fresh-audit.json
+python3 runs/experiments/resupply31/summarize.py --artifacts ../artifacts --output /tmp/resupply31-fresh-summary.json
+```
+
+Current workspace: `/home/diego/projects/ic2-work/resupply31/conquest`; sibling `artifacts`, `wine-land`, `wine-aboard`, and `wine-fleet` hold the preserved saves/private runtimes. Workspaces were migrated only after all probes stopped, with symlinks preserved. The old `/tmp` prefix/archive copies are retained as additional copies, not dependencies.
+
 
 ## Limits and retained failures
 

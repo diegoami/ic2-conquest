@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 DATA=ROOT/'runs/experiments/data/run-exp-resupply31'
 TAG='run-exp-resupply31'
-ART=Path('/tmp/ic2r31-artifacts')
+ART=ROOT.parent/'artifacts'
 ENV=os.environ.copy()
 # The release-specific token is passed only to release commands, never printed.
 if ENV.get('IC2_RELEASE_TOKEN'):
