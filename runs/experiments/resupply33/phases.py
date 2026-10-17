@@ -34,6 +34,8 @@ assert hashlib.sha256(exe).hexdigest() == '354d8265cba1dac2a80a0a96ce76367a368e3
 assert hashlib.sha256(dat).hexdigest() == '94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd'
 b = a.loaded.read_bytes()
 s = sav.parse(b)
+assert s['turn_order'][s['seat_index'] + 1] == 0
+assert s['current_nation'] == 13
 u = Uc(UC_ARCH_X86, UC_MODE_32)
 u.mem_map(0x400000, 0x300000)
 u.mem_map(0x800000, 0x10000)
@@ -85,6 +87,8 @@ u.mem_write(0x478fb0, dat[0x1f2f0:0x1f2f0 + 200])
 u.mem_write(0x45e030, struct.pack('<I', a.seed & 0xffffffff))
 if a.runtime:
     runtime = json.loads(a.runtime.read_text())
+    assert runtime['seed'] == a.seed and runtime['current_nation'] == 13
+    assert bytes.fromhex(runtime['runtime_tables'][0]['hex']) == dat[0x1f2f0:0x1f2f0 + 200]
     for row in runtime['runtime_tables']:
         u.mem_write(int(row['address'], 16), bytes.fromhex(row['hex']))
 
@@ -148,19 +152,35 @@ for phase in phases:
     except Exception as exc:
         error = dict(phase=names[phase], exception=repr(exc), ip=hex(u.reg_read(UC_X86_REG_EIP)))
         break
-actual = sav.parse(a.post.read_bytes())['nations'][0]
+post_bytes = a.post.read_bytes()
+post_state = sav.parse(post_bytes)
+actual = post_state['nations'][0]
+post_na = sav.i16(post_bytes, sav.ARMY_OFF)
+post_army_start = sav.ARMY_OFF + 2
+post_fleet_count = post_army_start + post_na * 656
+post_nf = sav.i16(post_bytes, post_fleet_count)
+post_fleet_start = post_fleet_count + 2
+post_nation_start = post_fleet_start + post_nf * 26
+post_live_armies = [post_bytes[post_army_start+i*656:post_army_start+(i+1)*656].hex() for i in range(post_na) if sav.i16(post_bytes,post_army_start+i*656+4)>=0]
+post_live_fleets = [post_bytes[post_fleet_start+i*26:post_fleet_start+(i+1)*26].hex() for i in range(post_nf) if sav.i16(post_bytes,post_fleet_start+i*26+8)>=0]
 final = state()
 actual_queues = [[x['state'], sav.UNIT_TYPES.index(x['type']), x['troops'], x['city']]
                  for x in actual['recruit_slots']]
 live = [x for x in final['queues'] if x[2] > 0]
 record = dict(provenance='Original-x86 phase control, not observed legacy runtime seed or Wine phase trace.',
               supplied_seed=a.seed, runtime=str(a.runtime) if a.runtime else None,
+              runtime_sha256=hashlib.sha256(a.runtime.read_bytes()).hexdigest() if a.runtime else None,
               loaded=a.loaded.name, loaded_sha256=hashlib.sha256(b).hexdigest(),
               runner_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               initial=initial, final=final, phases=results, events=events, writes=writes, error=error,
               post_comparison=dict(queues_match=live == actual_queues,
                                    treasury_match=final['treasuries'][0] == actual['treasury'],
-                                   mobilization_match=final['mobilization'] == actual['mobilization']))
+                                   mobilization_match=final['mobilization'] == actual['mobilization'],
+                                   all_nation_bytes_match=bytes(u.mem_read(0x474670,16*1172)) == post_bytes[post_nation_start:post_nation_start+16*1172],
+                                   nation_byte_differences=[dict(nation=i//1172,offset=hex(i%1172),x86=x,wine=y) for i,(x,y) in enumerate(zip(bytes(u.mem_read(0x474670,16*1172)),post_bytes[post_nation_start:post_nation_start+16*1172])) if x!=y],
+                                   all_city_bytes_match=bytes(u.mem_read(0x479590,334*34)) == post_bytes[sav.CITY_OFF:sav.ARMY_OFF],
+                                   all_live_army_bytes_match=[x['record'] for x in final['armies']] == post_live_armies,
+                                   all_live_fleet_bytes_match=[x['record'] for x in final['fleets']] == post_live_fleets))
 with a.output.open('x') as out:
     json.dump(record, out, indent=2)
     out.write('\n')
