@@ -99,6 +99,29 @@ def copy_text():
  return dict(function='0x405b00',text='Hi',written_bytes=3,retained_synthetic_bytes=29,result='unbounded NUL copy leaves trailing residue')
 run('text-residue',copy_text)
 
+def finders():
+ u=setup();xy=0x00310066
+ for i in range(2):u.mem_write(0x47c1ec+656*i,struct.pack('<I',xy));word(u,0x47c1f0+656*i,0)
+ assert call(u,0x449920,xy)==0
+ word(u,0x47c1f0,-1);assert call(u,0x449920,xy)==1
+ for i in range(2):u.mem_write(0x49c26c+26*i,struct.pack('<I',xy));word(u,0x49c274+26*i,0)
+ assert call(u,0x449970,xy)==0
+ word(u,0x49c274,-1);assert call(u,0x449970,xy)==1
+ return dict(functions=['0x449920','0x449970'],first_live_match=0,after_first_tombstoned=1,result='strategic coordinate finders choose FIRST live match, not encoded map index; preserve order or reject ambiguous overlap')
+run('strategic-finder-order',finders)
+
+def markers():
+ u=setup();word(u,0x47c1f0,3);word(u,0x47c1f4,2);u.mem_write(0x47c1ec,struct.pack('<hh',100,50));army=[]
+ for troops in [24999,25000,49999,50000]:
+  for k in range(20):word(u,0x47c200+32*k,0)
+  word(u,0x47c200,min(25000,troops));word(u,0x47c220,max(0,troops-25000));call(u,0x44a80c,0)
+  value=read(u,0x45e870+100*280+50*2);assert value==3+(200 if troops<25000 else 216 if troops<50000 else 232);army.append(dict(troops=troops,marker=value))
+ u.mem_write(0x49c26c,struct.pack('<hh',101,50));word(u,0x49c274,3);fleet=[]
+ for ships in [24,25,49,50]:
+  word(u,0x49c27e,ships);call(u,0x44a878,0);value=read(u,0x45e870+101*280+50*2);assert value==3+(300 if ships<25 else 316 if ships<50 else 332);fleet.append(dict(ships=ships,marker=value))
+ return dict(functions=['0x44a80c','0x44a878'],army=army,fleet=fleet,result='map codes contain owner and size band, not pointer/index')
+run('map-marker-boundaries',markers)
+
 record=dict(provenance='Separate original-x86 controls, no code patches/stubs or live Wine/Windows execution. Synthetic 0xA5 residue is deliberately not an export prototype. No SAV files emitted.',exe_sha256=hashlib.sha256(exe).hexdigest(),input_save=save.name,input_sha256=hashlib.sha256(b).hexdigest(),runner_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),records=rows)
 with a.output.open('x') as out:json.dump(record,out,indent=2);out.write('\n')
 print(json.dumps(dict(passed=sum(r['status']=='pass' for r in rows),errors=[r for r in rows if r['status']!='pass'])))
