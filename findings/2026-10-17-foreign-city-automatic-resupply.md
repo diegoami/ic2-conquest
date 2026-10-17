@@ -1,8 +1,14 @@
 # Foreign-city automatic resupply: entry-purse eligibility and live purchase arithmetic
 
-**Status:** `[confirmed, partial]`, draft for research [#31](https://github.com/diegoami/imperial-conquest-2-research/issues/31), conquest #92 / PR93. Original-side research; no build edits or T177 expansion. Build [#759](https://github.com/diegoami/imperial_conquest_2/issues/759) and [#823](https://github.com/diegoami/imperial_conquest_2/issues/823) require their own evaluation of any new evidence.
+**Status:** `[confirmed, partial]`, promoted to the [canonical research report](https://github.com/diegoami/imperial-conquest-2-research/blob/2ed46252e28a5ac48ff7aafccecced12b48ed090/docs/reports/2026-10-17-foreign-city-automatic-resupply.md) in research [PR32](https://github.com/diegoami/imperial-conquest-2-research/pull/32), merge `2ed46252e28a5ac48ff7aafccecced12b48ed090` (2026-10-17). Research [#31](https://github.com/diegoami/imperial-conquest-2-research/issues/31) is closed; conquest #92 / PR93 supplied the packet. Original-side research; no build edits or T177 expansion. Build [#759](https://github.com/diegoami/imperial_conquest_2/issues/759) and [#823](https://github.com/diegoami/imperial_conquest_2/issues/823) require their own evaluation of any new evidence.
 
 `[code]` means the pinned original listing; `[x86]` means the original complete city-loop instructions executed on the staged save records under Unicorn, without patches or stubs. `[Wine, staged]` means the original game played one AI seat with explicitly edited records. There is no native Windows confirmation. This extends the [October 16 support finding](2026-10-16-strategic-ai-regions-resupply.md); its embarked-army answer and own-city controls remain established.
+
+## Research intake verification (2026-10-17)
+
+Research independently checked all **42** merged packet blobs, **1,055** numbered source-extract lines, **227** complete saves against live release digests, **56** raw loaded/post-save pairs, **17** land/embarked pairs and the separated-carrier control. Its fresh pinned original-x86 audit reproduced all **58** inputs: **53** complete-field Wine matches and **three** explicitly retained hostile buyer-treasury confounds. The independent raw-byte checker and recorded result are linked from the canonical report.
+
+Research MiniMax M3 session `ses_eb74d1d0fffeYqmbLPinuFuj6k` approved promotion with no blockers or requested changes; the complete report is preserved on [PR32](https://github.com/diegoami/imperial-conquest-2-research/pull/32#issuecomment-6231113755). Intake did not rerun Wine or native Windows, issue orders, or establish natural movement or remake coordinate synchronization. Those limits remain. Build #759/#823 evaluation is separate; this promotion makes no build change or T177 expansion.
 
 ## Original call paths and eligibility
 
