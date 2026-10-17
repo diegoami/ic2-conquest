@@ -104,6 +104,8 @@ def prepare(subject, variant):
     if variant=='trade': relation=1
     if variant=='alliance': relation=2
     if variant=='war': relation=3
+    if variant=='negative_relation': relation=-1
+    if variant=='relation4': relation=4
     if variant=='empty': stock=0
     if variant.startswith('purse'): money=int(variant[5:])
     if variant=='tiny': stock=4
@@ -192,7 +194,7 @@ def fields(s, subject):
 
 
 environment.add_sink(lambda r:log('environment',record=r),key='research31')
-log('provenance',source_sha256=sha(SOURCE),bot_head=subprocess.check_output(
+log('provenance',runner_sha256=sha(__file__),source_sha256=sha(SOURCE),bot_head=subprocess.check_output(
     ['git','-C',str(A.bot),'rev-parse','HEAD'],text=True).strip(),
     driver_sha256=sha(A.bot/'harness/driver.py'),stage_sha256=sha(A.bot/'runs/experiments/battles/stage.py'),
     exe_sha256=sha(drv.G/drv.EXE),work=str(A.work),display=A.display)
@@ -210,6 +212,10 @@ for index,case in enumerate(A.cases):
         before=sav.parse(loaded.read_bytes())
         log('before',case=case,loaded=loaded.name,fields=fields(before,subject))
         assert before['current_nation']==13
+        staged=sav.parse(b)
+        assert fields(staged,subject)==fields(before,subject), 'loaded support fields differ from staged input'
+        for key in ('cities','armies','fleets','nations'):
+            assert staged[key]==before[key], 'load changed '+key
         auto,texts=g.end_turn(timeout=180,reclick=False)
         autosave=keep(f'{case.replace(":","-")}-{STAMP}-{auto}',(drv.G/auto).read_bytes())
         post=keep(f'{case.replace(":","-")}-{STAMP}-post.SAV',
