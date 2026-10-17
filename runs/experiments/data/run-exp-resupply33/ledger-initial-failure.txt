@@ -1,0 +1,1 @@
+Initial raw guard required all40 queue records to be entirely zero. Original staging cleared each troop word only, retaining stale state/type/city fields in empty slots. Guard failed before output creation. Corrected guard checks troop words only; raw before/after queues remain available in immutable input/save records.
