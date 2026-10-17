@@ -1,0 +1,214 @@
+// ==================================================
+// FUNCTION FUN_004487c4 @ 004487c4
+// ==================================================
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_004487c4(void)
+
+{
+  int *piVar1;
+  undefined4 extraout_EDX;
+  short sVar2;
+  undefined4 *in_FS_OFFSET;
+  ushort uVar3;
+  undefined4 uStack_30;
+  undefined *puStack_2c;
+  undefined1 *puStack_28;
+  undefined *puStack_18;
+  undefined4 *puStack_14;
+  undefined2 *puStack_10;
+  undefined4 *puStack_c;
+  undefined4 *puStack_8;
+  
+  puStack_28 = &stack0xfffffffc;
+  puStack_18 = (undefined *)0x0;
+  puStack_2c = &UNK_00448a93;
+  uStack_30 = *in_FS_OFFSET;
+  *in_FS_OFFSET = &uStack_30;
+  uVar3 = 0;
+  FUN_00403458((int *)&puStack_18,&DAT_0045e7a8,100);
+  piVar1 = (int *)FUN_0040a75c(0x4082a4,CONCAT31((int3)((uint)extraout_EDX >> 8),1),puStack_18,uVar3
+                              );
+  (**(code **)*piVar1)(piVar1,&DAT_0045e870,0x15e00);
+  (**(code **)*piVar1)(piVar1,&DAT_00479590,0x2c5c);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0324,2);
+  if (-1 < (short)(DAT_004a0324 + -1)) {
+    puStack_8 = &DAT_0047c1ec;
+    sVar2 = DAT_004a0324;
+    do {
+      (**(code **)*piVar1)(piVar1,puStack_8,0x290);
+      puStack_8 = puStack_8 + 0xa4;
+      sVar2 = sVar2 + -1;
+    } while (sVar2 != 0);
+  }
+  (**(code **)*piVar1)(piVar1,&DAT_004a0326,2);
+  if (-1 < (short)(DAT_004a0326 + -1)) {
+    puStack_c = &DAT_0049c26c;
+    sVar2 = DAT_004a0326;
+    do {
+      (**(code **)*piVar1)(piVar1,puStack_c,0x1a);
+      puStack_c = (undefined4 *)((int)puStack_c + 0x1a);
+      sVar2 = sVar2 + -1;
+    } while (sVar2 != 0);
+  }
+  (**(code **)*piVar1)(piVar1,&DAT_00474670,0x4940);
+  sVar2 = 0x32;
+  puStack_10 = &DAT_0049da10;
+  do {
+    (**(code **)*piVar1)(piVar1,puStack_10,0xc);
+    puStack_10 = puStack_10 + 6;
+    sVar2 = sVar2 + -1;
+  } while (sVar2 != 0);
+  (**(code **)*piVar1)(piVar1,&DAT_004a031e,2);
+  if (-1 < DAT_004a031e) {
+    sVar2 = DAT_004a031e + 1;
+    puStack_14 = &DAT_0049f994;
+    do {
+      (**(code **)*piVar1)(piVar1,puStack_14,0x3d);
+      puStack_14 = (undefined4 *)((int)puStack_14 + 0x3d);
+      sVar2 = sVar2 + -1;
+    } while (sVar2 != 0);
+  }
+  (**(code **)*piVar1)(piVar1,&DAT_0049efe8,0x20);
+  (**(code **)*piVar1)(piVar1,&DAT_0049f008,4);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0320,2);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0322,2);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0330,2);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0332,2);
+  (**(code **)*piVar1)(piVar1,&DAT_004a032e,2);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0338,8);
+  FUN_004127a0(DAT_004a0bd0,(int)_DAT_004a0338);
+  FUN_004127c0(DAT_004a0bd0,(int)_DAT_004a033a);
+  FUN_00420c58(DAT_004a0bd0,(int)_DAT_004a033e);
+  FUN_00420c84(DAT_004a0bd0,(int)_DAT_004a033c);
+  (**(code **)*piVar1)(piVar1,&DAT_004a0b7c,1);
+  if (DAT_004a0b7c != '\0') {
+    (**(code **)*piVar1)(piVar1,&DAT_004a0b74,2);
+    (**(code **)*piVar1)(piVar1,&DAT_004a0b76,2);
+    (**(code **)*piVar1)(piVar1,&DAT_004a0b78,2);
+    (**(code **)*piVar1)(piVar1,&DAT_004a0b7d,1);
+    (**(code **)*piVar1)(piVar1,&DAT_004a0b7a,2);
+    (**(code **)*piVar1)(piVar1,&DAT_004a0344,0x6e0);
+    (**(code **)*piVar1)(piVar1,&DAT_004a0a24,0x150);
+  }
+  (**(code **)(*piVar1 + -4))(piVar1,1);
+  DAT_004a0328 = 0xffff;
+  DAT_004a032a = 0xffff;
+  *in_FS_OFFSET = uStack_30;
+  puStack_28 = &UNK_00448a9a;
+  puStack_2c = &UNK_00448a92;
+  FUN_004032fc((int *)&puStack_18);
+  return;
+}
+
+
+
+// ==================================================
+// FUNCTION FUN_004484d0 @ 004484d0
+// ==================================================
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_004484d0(void)
+
+{
+  int *piVar1;
+  undefined4 uVar2;
+  undefined4 extraout_EDX;
+  short sVar3;
+  undefined4 *in_FS_OFFSET;
+  ushort uVar4;
+  undefined4 uStack_30;
+  undefined1 *puStack_2c;
+  undefined1 *puStack_28;
+  undefined *local_18;
+  undefined4 *local_14;
+  undefined2 *local_10;
+  undefined4 *local_c;
+  undefined4 *local_8;
+  
+  puStack_28 = &stack0xfffffffc;
+  local_18 = (undefined *)0x0;
+  puStack_2c = &LAB_004487b6;
+  uStack_30 = *in_FS_OFFSET;
+  *in_FS_OFFSET = &uStack_30;
+  uVar4 = 0xffff;
+  FUN_00403458((int *)&local_18,&DAT_0045e7a8,100);
+  piVar1 = (int *)FUN_0040a75c(0x4082a4,CONCAT31((int3)((uint)extraout_EDX >> 8),1),local_18,uVar4);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0045e870,0x15e00);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_00479590,0x2c5c);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0324,2);
+  if (-1 < (short)(DAT_004a0324 + -1)) {
+    local_8 = &DAT_0047c1ec;
+    sVar3 = DAT_004a0324;
+    do {
+      (**(code **)(*piVar1 + 4))(piVar1,local_8,0x290);
+      local_8 = local_8 + 0xa4;
+      sVar3 = sVar3 + -1;
+    } while (sVar3 != 0);
+  }
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0326,2);
+  if (-1 < (short)(DAT_004a0326 + -1)) {
+    local_c = &DAT_0049c26c;
+    sVar3 = DAT_004a0326;
+    do {
+      (**(code **)(*piVar1 + 4))(piVar1,local_c,0x1a);
+      local_c = (undefined4 *)((int)local_c + 0x1a);
+      sVar3 = sVar3 + -1;
+    } while (sVar3 != 0);
+  }
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_00474670,0x4940);
+  sVar3 = 0x32;
+  local_10 = &DAT_0049da10;
+  do {
+    (**(code **)(*piVar1 + 4))(piVar1,local_10,0xc);
+    local_10 = local_10 + 6;
+    sVar3 = sVar3 + -1;
+  } while (sVar3 != 0);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a031e,2);
+  if (-1 < DAT_004a031e) {
+    sVar3 = DAT_004a031e + 1;
+    local_14 = &DAT_0049f994;
+    do {
+      (**(code **)(*piVar1 + 4))(piVar1,local_14,0x3d);
+      local_14 = (undefined4 *)((int)local_14 + 0x3d);
+      sVar3 = sVar3 + -1;
+    } while (sVar3 != 0);
+  }
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0049efe8,0x20);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0049f008,4);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0320,2);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0322,2);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0330,2);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0332,2);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a032e,2);
+  _DAT_004a0338 = (undefined2)DAT_004a0bd0[9];
+  _DAT_004a033a = (undefined2)DAT_004a0bd0[10];
+  uVar2 = FUN_00412880(DAT_004a0bd0);
+  _DAT_004a033e = (undefined2)uVar2;
+  uVar2 = FUN_004128c4(DAT_004a0bd0);
+  _DAT_004a033c = (undefined2)uVar2;
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0338,8);
+  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7c,1);
+  if (DAT_004a0b7c != '\0') {
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b74,2);
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b76,2);
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b78,2);
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7d,1);
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7a,2);
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0344,0x6e0);
+    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0a24,0x150);
+  }
+  (**(code **)(*piVar1 + -4))(piVar1,1);
+  DAT_004a0328 = 0xffff;
+  DAT_004a032a = 0xffff;
+  *in_FS_OFFSET = uStack_30;
+  puStack_28 = &LAB_004487bd;
+  puStack_2c = (undefined1 *)0x4487b5;
+  FUN_004032fc((int *)&local_18);
+  return;
+}
+
+
+

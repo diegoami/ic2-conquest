@@ -1,0 +1,144 @@
+// ==================================================
+// FUNCTION TPremierForm_NewGame @ 0045a9e0
+// ==================================================
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void TPremierForm_NewGame(int param_1)
+
+{
+  char cVar1;
+  int iVar2;
+  undefined4 extraout_EDX;
+  short sVar3;
+  
+  cVar1 = FUN_00449050();
+  if ((cVar1 != '\0') &&
+     (iVar2 = FUN_0042d750((uint *)"Are you sure you want to start a new game ?",
+                           CONCAT31((int3)((uint)extraout_EDX >> 8),3),_UNK_0045aa9c,0), iVar2 != 6)
+     ) {
+    return;
+  }
+  cVar1 = FUN_00449050();
+  if (cVar1 != '\0') {
+    if (DAT_004a0b7c == '\0') {
+      TPremierForm_CloseAllForms(param_1);
+    }
+    else {
+      TPremierForm_ResetBattle(param_1);
+    }
+  }
+  func_0x004481a0();
+  func_0x00448aa4();
+  FUN_00424608(DAT_0045e628,0x456d00,(undefined4 *)0x4a0ba4);
+  cVar1 = FUN_00449050();
+  if (cVar1 == '\0') {
+    TPremierForm_TurnMenusOff(param_1);
+  }
+  else {
+    TPremierForm_TurnMenusOn(param_1);
+    sVar3 = 0;
+    do {
+      TPremierForm_EnableNation(param_1,sVar3);
+      sVar3 = sVar3 + 1;
+    } while (sVar3 != 0x10);
+    if ((&DAT_00474b00)[DAT_004a0320 * 0x494] == '\0') {
+      FUN_00451fdc();
+    }
+    else {
+      FUN_00452034();
+    }
+  }
+  return;
+}
+
+
+
+// ==================================================
+// FUNCTION TPremierForm_OpenGameFile @ 0045aad4
+// ==================================================
+
+void TPremierForm_OpenGameFile(int *param_1)
+
+{
+  char cVar1;
+  short *psVar2;
+  short sVar3;
+  
+  cVar1 = (**(code **)(*(int *)param_1[0xbb] + 0x30))();
+  if (cVar1 != '\0') {
+    FUN_00405b88(&DAT_0045e7a8,*(undefined **)(param_1[0xbb] + 0x44));
+    cVar1 = FUN_00449050();
+    if (cVar1 != '\0') {
+      TPremierForm_CloseAllForms((int)param_1);
+    }
+    if (DAT_004a0b7c != '\0') {
+      TPremierForm_ResetBattle(param_1);
+    }
+    func_0x004487c4();
+    uRam004a0334 = 1;
+    TPremierForm_TurnMenusOn((int)param_1);
+    sVar3 = 0;
+    psVar2 = &DAT_00474ab0;
+    do {
+      if (*psVar2 == 0) {
+        TPremierForm_DisableNation((int)param_1,sVar3);
+      }
+      else {
+        TPremierForm_EnableNation((int)param_1,sVar3);
+      }
+      sVar3 = sVar3 + 1;
+      psVar2 = psVar2 + 0x24a;
+    } while (sVar3 != 0x10);
+    TPremierForm_SetTurnTitle(param_1);
+    if (DAT_004a0b7c == '\0') {
+      TPremierForm_StartTurn(param_1);
+    }
+    else {
+      TPremierForm_StartBattle((int)param_1);
+    }
+  }
+  return;
+}
+
+
+
+// ==================================================
+// FUNCTION TPremierForm_SaveGameFile @ 0045ab84
+// ==================================================
+
+void TPremierForm_SaveGameFile(undefined4 param_1,undefined4 param_2)
+
+{
+  TPremierForm_StoreFormPositions();
+  if (cRam004a0334 != '\0') {
+    FUN_004484d0();
+    return;
+  }
+  TPremierForm_SaveGameFileAs(param_1,param_2);
+  return;
+}
+
+
+
+// ==================================================
+// FUNCTION TPremierForm_SaveGameFileAs @ 0045abb0
+// ==================================================
+
+void TPremierForm_SaveGameFileAs(int param_1)
+
+{
+  char cVar1;
+  
+  cVar1 = (**(code **)(**(int **)(param_1 + 0x2f0) + 0x30))();
+  if (cVar1 != '\0') {
+    TPremierForm_StoreFormPositions();
+    FUN_00405b88(&DAT_0045e7a8,*(undefined **)(*(int *)(param_1 + 0x2f0) + 0x44));
+    FUN_004484d0();
+    uRam004a0334 = 1;
+  }
+  return;
+}
+
+
+
