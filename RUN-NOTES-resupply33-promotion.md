@@ -1,0 +1,7 @@
+# Research33 promotion receipt
+
+Plan: verify research PR34 merge and issue33 closure; mark finding promoted with pinned canonical link/intake receipt; owner-selected independent review; merge reviewed status-only PR under owner authorization to skip optional CI; relay completion and give owner-carried IC-main handoff. Implementer this Codex/OpenAI session. Reviewer model choice requested and pending; do not launch yet.
+
+Base origin/main356171b0e27d6f188a9f45f60eceda277c5dbfd5, isolated worktree /home/diego/projects/ic2-work/resupply33-promotion, branch docs/mark-resupply33-promoted. GH verified PR34 MERGED64adfb1aedb6a277bcf3fa41537f574d9448a905 and issue33 CLOSED. Read full canonical report from read-only research checkout. Verified source publication pin356171b/head41ca53d, independent35blobs/997lines/286instructions/9+9digests/3Wine identities/3x86 reruns/residual0, Armenia13 input-loaded and Bithynia11 endpoint UI differences, MiniMax ses_eb6fd7a66ffeaRTTx2XUQxqFUI approval. No research repo writes or runtime/matrix changes. Task25 complete corrected battles still unverified.
+
+Last reported/delivered main findings baseline356171b0e27d6f188a9f45f60eceda277c5dbfd5; no new findings since that baseline at start. Owner authorized merging reviewed work and skipping optional CI; no claim that the earlier NEUTRAL source scan passed. No extra CI or game execution needed for this status-only change.
