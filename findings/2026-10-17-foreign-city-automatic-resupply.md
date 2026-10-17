@@ -8,7 +8,7 @@
 
 The full `all_app_functions.txt` SHA256 is `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`, rechecked locally. The seeded original executable is `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`. Complete source extracts and caller inventories are in `runs/experiments/data/run-exp-resupply31/complete-source-audit.txt`, `complete-source-provenance.json`, and `upstream-seat-source.txt`; numbered lines refer to the full pinned listing.
 
-`[code]` AI-seat `FUN_0044fa20` calls diplomacy `0044fb7c`, recruitment `0044ffbc`, army handling `0044f31c`, then fleet handling `0044f608` (53213–53220). Army support therefore precedes fleet support when both compete for a stockpile. That order is source evidence; the new controls isolate the subject rather than measure a shared AI army/fleet stock race.
+`[code]` AI-seat `FUN_0044fa20` calls diplomacy `0044fb7c`, recruitment `0044ffbc`, army handling `0044f31c`, then fleet handling `0044f608` (53217–53220). Army support therefore precedes fleet support when both compete for a stockpile. That order is source evidence; the new controls isolate the subject rather than measure a shared AI army/fleet stock race.
 
 `FUN_0044f31c` calls army city loop `0044e41c` for each own army while no battle is active, **before** its positive-moves gate (52924–52928). The loop does not test embarked status, follow a carrier link, or check terrain/coast. Launched own fleets (`countdown == -1`) run `0044e5dc` before movement (53046–53049). Both loops visit all 334 cities in ascending table index and compute Chebyshev distance from the subject's stored coordinates using `00449018`.
 

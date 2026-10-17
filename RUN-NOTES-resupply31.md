@@ -22,3 +22,17 @@ All56 Wine controls completed. Owner explicitly requested message to ic2-researc
 Commits pushed so far: b634d7a recovery;368f686 first controls/failure retention;b69898a source/matrix checkpoint;4dc1d83 arithmetic/provider-order draft.
 
 Final canonical validation:58 complete original-x86/reference comparisons;56 completed Wine cases,53 exact all-field comparisons plus3 explicitly confounded hostile buyer treasuries;17 matched land/embarked support pairs;227 complete-save hashes match migrated archive and release digests, no extra release assets. One zero-byte interrupted copy retained/hashed separately. git diff --check passes. Canonical matrix/README and final finding complete. MiniMax review next; exact model live listing includes minimax/MiniMax-M3, preserving selected MiniMax reviewer.
+
+Review: MiniMax M3 session ses_eb75bc076ffeoud9f70t7CNsc5 approved c532ffc094d49fb6ad97b5eeda931586f1cef742. Full returned report read; one non-blocking R1 narrows source citation53213–53220 to53217–53220. Applied exactly that citation correction; no source/measurement/result changes. Runtime-stop receipt records task-owned Xvfb731/732/733 stopped after runner exits. No additional review launched under the one-review rule.
+
+Complete returned reviewer report:
+
+I have completed the review. The tree proof was correct (worktree, HEAD, base SHA, and non-empty diff all verified). All scripts compile. Source predicates, line numbers, helper arithmetic and helper callers match the pinned listing. The 56 completed Wine cases plus the 3 explicit hostile confounds are independently confirmed via raw-offset decoder (`summary-final`), Unicorn x86 replay (`audit-final`), and the driver parser (`wine-*.jsonl`). The 227-save SHA-256 manifest matches the GitHub release digests (`release-verified-final`, 227/227, 0 extras). The zero-byte interrupted save is excluded from upload and recorded separately (`incomplete-artifacts.json`); the audit's first failure on the first war case is documented (`audit-batch1-failure.txt`); the original batch1 output, the mid1/mid2 snapshots and the recovered subset are retained, not overwritten. Source `[code]`, `[x86]` and `[Wine, staged]` are consistently labelled; no native Windows claim is made; no build/fixture/T177 edits.
+
+One minor imprecision (non-blocking): the finding says the AI-seat calls occur at "(53213–53220)"; the four call statements are at 53217–53220 (53213 is a local-variable declaration and the function body runs to 53234). The callees and order are correct.
+
+PR review (MiniMax-M3)
+approve
+R1 findings/2026-10-17-foreign-city-automatic-resupply.md:13 non-blocking: cite the four FUN_0044fa20 call statements as 53217–53220 (the function body is 53213–53234, but 53213 is the `uint uVar1;` local; the diplomacy/recruitment/army/fleet calls are at 53217–53220 in upstream-seat-source.txt).
+Final pass done
+approve
