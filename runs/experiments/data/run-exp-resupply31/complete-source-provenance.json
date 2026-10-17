@@ -1,0 +1,1841 @@
+{
+  "source": "/home/diego/ic2-work/decompile/all_app_functions.txt",
+  "sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "sections": {
+    "FUN_0044f31c": [
+      52899,
+      52975
+    ],
+    "FUN_0044f608": [
+      53028,
+      53074
+    ],
+    "FUN_0044e41c": [
+      52218,
+      52277
+    ],
+    "FUN_0044e5dc": [
+      52278,
+      52306
+    ],
+    "FUN_0044f6d8": [
+      53075,
+      53117
+    ],
+    "FUN_0044f7e4": [
+      53118,
+      53160
+    ],
+    "FUN_0044d734": [
+      51517,
+      51662
+    ],
+    "FUN_0044e1fc": [
+      52115,
+      52217
+    ],
+    "FUN_0044efc8": [
+      52776,
+      52898
+    ],
+    "FUN_0044a698": [
+      49042,
+      49065
+    ],
+    "FUN_00448fd0": [
+      47659,
+      47670
+    ],
+    "FUN_00449018": [
+      47727,
+      47750
+    ],
+    "FUN_00448fd8": [
+      47671,
+      47682
+    ]
+  },
+  "callers": {
+    "FUN_0044f31c": [
+      {
+        "line": 53219,
+        "caller": "FUN_0044fa20",
+        "text": "FUN_0044f31c();"
+      }
+    ],
+    "FUN_0044f608": [
+      {
+        "line": 53220,
+        "caller": "FUN_0044fa20",
+        "text": "FUN_0044f608();"
+      }
+    ],
+    "FUN_0044e41c": [
+      {
+        "line": 52926,
+        "caller": "FUN_0044f31c",
+        "text": "FUN_0044e41c(sVar4);"
+      }
+    ],
+    "FUN_0044e5dc": [
+      {
+        "line": 53047,
+        "caller": "FUN_0044f608",
+        "text": "FUN_0044e5dc(iVar2);"
+      }
+    ],
+    "FUN_0044f6d8": [
+      {
+        "line": 51655,
+        "caller": "FUN_0044d734",
+        "text": "FUN_0044f6d8(sVar4,local_a);"
+      },
+      {
+        "line": 52246,
+        "caller": "FUN_0044e41c",
+        "text": "FUN_0044f6d8(local_20,param_1);"
+      }
+    ],
+    "FUN_0044f7e4": [
+      {
+        "line": 52193,
+        "caller": "FUN_0044e1fc",
+        "text": "uVar6 = FUN_0044f7e4((short)uVar6,param_1);"
+      },
+      {
+        "line": 52298,
+        "caller": "FUN_0044e5dc",
+        "text": "FUN_0044f7e4(sVar4,param_1);"
+      }
+    ],
+    "FUN_0044d734": [
+      {
+        "line": 46728,
+        "caller": "FUN_004465a8",
+        "text": "FUN_0044d734((short)param_1[0x88],param_2,param_3);"
+      },
+      {
+        "line": 46733,
+        "caller": "FUN_004465a8",
+        "text": "FUN_0044d734((short)param_1[0x88],param_2,extraout_ECX);"
+      },
+      {
+        "line": 51825,
+        "caller": "FUN_0044dba8",
+        "text": "FUN_0044d734(local_6,local_e,puVar6);"
+      },
+      {
+        "line": 51829,
+        "caller": "FUN_0044dba8",
+        "text": "FUN_0044d734(local_6,local_a,extraout_ECX);"
+      },
+      {
+        "line": 51835,
+        "caller": "FUN_0044dba8",
+        "text": "FUN_0044d734(local_6,local_e,extraout_ECX_00);"
+      }
+    ],
+    "FUN_0044e1fc": [
+      {
+        "line": 53054,
+        "caller": "FUN_0044f608",
+        "text": "FUN_0044e1fc(iVar2,*(undefined4 *)((int)&DAT_0047959e + local_14[0] * 0x22));"
+      },
+      {
+        "line": 53058,
+        "caller": "FUN_0044f608",
+        "text": "FUN_0044e1fc(iVar2,*(undefined4 *)((int)&DAT_0049c26c + local_16 * 0x1a));"
+      },
+      {
+        "line": 53063,
+        "caller": "FUN_0044f608",
+        "text": "FUN_0044e1fc(iVar2,puVar1[1]);"
+      }
+    ],
+    "FUN_0044efc8": [
+      {
+        "line": 52918,
+        "caller": "FUN_0044f31c",
+        "text": "FUN_0044efc8();"
+      }
+    ],
+    "FUN_0044a698": [
+      {
+        "line": 41024,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar6 = FUN_0044a698(sVar3);"
+      },
+      {
+        "line": 42956,
+        "caller": "FUN_0043e6dc",
+        "text": "iVar2 = FUN_0044a698(*(short *)(param_1 + 0x28c));"
+      },
+      {
+        "line": 43025,
+        "caller": "FUN_0043e6dc",
+        "text": "iVar2 = FUN_0044a698(*(short *)(param_1 + 0x28c));"
+      },
+      {
+        "line": 43641,
+        "caller": "FUN_0043e6dc",
+        "text": "iVar3 = FUN_0044a698(sVar4);"
+      },
+      {
+        "line": 43647,
+        "caller": "FUN_0043e6dc",
+        "text": "iVar3 = FUN_0044a698(*(short *)(param_1 + 0x1d4));"
+      },
+      {
+        "line": 44604,
+        "caller": "FUN_00441b50",
+        "text": "iVar2 = FUN_0044a698((short)param_1[0x1db]);"
+      },
+      {
+        "line": 44614,
+        "caller": "FUN_00441b50",
+        "text": "iVar2 = FUN_0044a698(*(short *)((int)param_1 + 0x76e));"
+      },
+      {
+        "line": 46593,
+        "caller": "FUN_004465a8",
+        "text": "iVar6 = FUN_0044a698(DAT_004a0328);"
+      },
+      {
+        "line": 46880,
+        "caller": "FUN_004465a8",
+        "text": "iVar2 = FUN_0044a698(sVar1);"
+      },
+      {
+        "line": 46985,
+        "caller": "FUN_004465a8",
+        "text": "iVar2 = FUN_0044a698(sVar1);"
+      },
+      {
+        "line": 46986,
+        "caller": "FUN_004465a8",
+        "text": "iVar3 = FUN_0044a698((short)uStack_10);"
+      },
+      {
+        "line": 48833,
+        "caller": "FUN_0044a120",
+        "text": "(iVar2 = FUN_0044a698(*param_1),"
+      },
+      {
+        "line": 49151,
+        "caller": "FUN_0044a80c",
+        "text": "iVar1 = FUN_0044a698(param_1);"
+      },
+      {
+        "line": 49325,
+        "caller": "FUN_0044aab4",
+        "text": "iVar1 = FUN_0044a698(param_1);"
+      },
+      {
+        "line": 49351,
+        "caller": "FUN_0044ab0c",
+        "text": "iVar3 = FUN_0044a698((&DAT_0049c282)[iVar2 * 0xd]);"
+      },
+      {
+        "line": 49647,
+        "caller": "FUN_0044aee4",
+        "text": "iVar3 = FUN_0044a698(param_1);"
+      },
+      {
+        "line": 49977,
+        "caller": "FUN_0044b79c",
+        "text": "iVar2 = FUN_0044a698(param_1);"
+      },
+      {
+        "line": 52332,
+        "caller": "FUN_0044e670",
+        "text": "iVar4 = FUN_0044a698(param_1);"
+      },
+      {
+        "line": 52938,
+        "caller": "FUN_0044f31c",
+        "text": "iVar1 = FUN_0044a698(sVar4);"
+      },
+      {
+        "line": 53086,
+        "caller": "FUN_0044f6d8",
+        "text": "iVar2 = FUN_0044a698(param_2);"
+      },
+      {
+        "line": 53966,
+        "caller": "FUN_004509f0",
+        "text": "iVar3 = FUN_0044a698(sVar7);"
+      },
+      {
+        "line": 53979,
+        "caller": "FUN_004509f0",
+        "text": "iVar3 = FUN_0044a698(sVar8);"
+      },
+      {
+        "line": 54498,
+        "caller": "FUN_004514ec",
+        "text": "iVar5 = FUN_0044a698(sVar11);"
+      },
+      {
+        "line": 54612,
+        "caller": "FUN_004514ec",
+        "text": "iVar5 = FUN_0044a698(*(short *)((int)puVar13 + 0x16));"
+      },
+      {
+        "line": 57620,
+        "caller": "FUN_00452034",
+        "text": "iVar5 = FUN_0044a698(sRam004a0bc0);"
+      },
+      {
+        "line": 57697,
+        "caller": "FUN_00459740",
+        "text": "iVar2 = FUN_0044a698(param_1);"
+      },
+      {
+        "line": 58247,
+        "caller": "FUN_0045ae68",
+        "text": "iVar2 = FUN_0044a698(param_1);"
+      }
+    ],
+    "FUN_00448fd0": [
+      {
+        "line": 37349,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(uVar2,0x1e),CONCAT22(uVar3,DAT_0045e69c) + 1);"
+      },
+      {
+        "line": 37359,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(uVar2,0x1e),CONCAT22(uVar3,DAT_0045e69c + 10));"
+      },
+      {
+        "line": 37369,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(uVar2,0x1e),CONCAT22(uVar3,DAT_0045e69a) + 1);"
+      },
+      {
+        "line": 37379,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(uVar2,0x1e),CONCAT22(uVar3,DAT_0045e69a + 10));"
+      },
+      {
+        "line": 37972,
+        "caller": "FUN_00437c40",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar3 >> 0x10),2),iVar3);"
+      },
+      {
+        "line": 38136,
+        "caller": "FUN_00437de4",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),0x5a),"
+      },
+      {
+        "line": 38163,
+        "caller": "FUN_00437de4",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),0x5a),"
+      },
+      {
+        "line": 38382,
+        "caller": "FUN_0043845c",
+        "text": "uVar4 = FUN_00448fd0((int)(short)(&DAT_004a034c)[iVar2 * 0x16] / 3,iVar6);"
+      },
+      {
+        "line": 38383,
+        "caller": "FUN_0043845c",
+        "text": "iVar2 = FUN_00448fd0(iVar3,uVar4);"
+      },
+      {
+        "line": 38558,
+        "caller": "FUN_004389ac",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)param_1 >> 0x10),0xd),"
+      },
+      {
+        "line": 38561,
+        "caller": "FUN_004389ac",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),0xb),"
+      },
+      {
+        "line": 38915,
+        "caller": "FUN_00438fb0",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),99),"
+      },
+      {
+        "line": 39010,
+        "caller": "FUN_0043910c",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)iVar3 >> 0x10),3),iVar3);"
+      },
+      {
+        "line": 39079,
+        "caller": "FUN_004393ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar3 >> 0x10),4),iVar3);"
+      },
+      {
+        "line": 39096,
+        "caller": "FUN_004393ec",
+        "text": "uVar9 = FUN_00448fd0(iVar7,((int)*(short *)(local_24 + 2) << 2) / 10);"
+      },
+      {
+        "line": 39106,
+        "caller": "FUN_004393ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar5 >> 0x10),(short)local_2c),iVar5);"
+      },
+      {
+        "line": 39138,
+        "caller": "FUN_004393ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar5 >> 0x10),99),"
+      },
+      {
+        "line": 39143,
+        "caller": "FUN_004393ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(sVar1 * 0xb) >> 0x10),99),"
+      },
+      {
+        "line": 39247,
+        "caller": "FUN_00439968",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)uVar1 >> 0x10),local_6),uVar1);"
+      },
+      {
+        "line": 39725,
+        "caller": "FUN_0043a160",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)(param_2 * 0xb) >> 0x10),0xd),"
+      },
+      {
+        "line": 39729,
+        "caller": "FUN_0043a160",
+        "text": "uVar6 = FUN_00448fd0(CONCAT22((short)((uint)(param_2 * 0xb) >> 0x10),0xb),"
+      },
+      {
+        "line": 40066,
+        "caller": "FUN_0043a718",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)(sVar10 * 0xb) >> 0x10),0xd),"
+      },
+      {
+        "line": 40071,
+        "caller": "FUN_0043a718",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)(sVar10 * 0xb) >> 0x10),0xb),"
+      },
+      {
+        "line": 40163,
+        "caller": "FUN_0043aa60",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(iVar3 * 0xb) >> 0x10),0xd),"
+      },
+      {
+        "line": 40167,
+        "caller": "FUN_0043aa60",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0xb),"
+      },
+      {
+        "line": 40173,
+        "caller": "FUN_0043aa60",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar5 >> 0x10),0xd),"
+      },
+      {
+        "line": 40225,
+        "caller": "FUN_0043abb4",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)iVar1 >> 0x10),local_8),"
+      },
+      {
+        "line": 42625,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar5 >> 0x10),0x13f),"
+      },
+      {
+        "line": 42629,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x8b),"
+      },
+      {
+        "line": 42658,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar5 >> 0x10),0x13f),"
+      },
+      {
+        "line": 42662,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x8b),"
+      },
+      {
+        "line": 42940,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22(uVar3,(&DAT_0049c27a)[*(short *)(param_1 + 0x28a) * 0xd]))"
+      },
+      {
+        "line": 42945,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22(sVar4 >> 0xf,(&DAT_004795a8)[sVar4 * 0x11]));"
+      },
+      {
+        "line": 42950,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22((short)((uint)iVar2 >> 0x10),"
+      },
+      {
+        "line": 42957,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22((short)((uint)(iVar2 / 100) >> 0x10),"
+      },
+      {
+        "line": 43013,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22(*(short *)(param_1 + 0x288) >> 0xf,"
+      },
+      {
+        "line": 43018,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22((short)((uint)iVar2 >> 0x10),"
+      },
+      {
+        "line": 43026,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(uVar1,CONCAT22((short)((uint)(iVar2 / 100) >> 0x10),"
+      },
+      {
+        "line": 43033,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)(*(short *)(param_1 + 0x28e) * 0xd) >> 0x10),"
+      },
+      {
+        "line": 43039,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)(*(short *)(param_1 + 0x28c) * 0x52) >> 0x10),"
+      },
+      {
+        "line": 43108,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22((short)((uint)(*(short *)(param_1 + 0x28e) * 0xd) >> 0x10)"
+      },
+      {
+        "line": 43118,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22((short)((uint)(*(short *)(param_1 + 0x28c) * 0x52) >> 0x10"
+      },
+      {
+        "line": 43129,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22((short)((uint)(sVar1 * 0xd) >> 0x10),"
+      },
+      {
+        "line": 43146,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22((short)((uint)(*(short *)(param_1 + 0x28e) * 0xd) >> 0x10)"
+      },
+      {
+        "line": 43154,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22((short)((uint)(*(short *)(param_1 + 0x28c) * 0x52) >> 0x10"
+      },
+      {
+        "line": 43162,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(extraout_var,"
+      },
+      {
+        "line": 43301,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)(sVar1 * 0x11) >> 0x10),"
+      },
+      {
+        "line": 43447,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)(*(short *)(param_1 + 0x204) * 0xd) >> 0x10),"
+      },
+      {
+        "line": 43545,
+        "caller": "FUN_0043e6dc",
+        "text": "iVar2 = FUN_00448fd0(CONCAT22((short)((uint)iVar2 >> 0x10),9),iVar2 + 1);"
+      },
+      {
+        "line": 44014,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(extraout_var,*(undefined2 *)(param_1 + 0x4e6)));"
+      },
+      {
+        "line": 44015,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44019,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(extraout_var,*(undefined2 *)(param_1 + 0x4e6)));"
+      },
+      {
+        "line": 44020,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44026,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar3,CONCAT22(extraout_var,*(undefined2 *)(param_1 + 0x256)));"
+      },
+      {
+        "line": 44027,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44031,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar3,CONCAT22(extraout_var,*(undefined2 *)(param_1 + 0x256)));"
+      },
+      {
+        "line": 44032,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44061,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x4e8)));"
+      },
+      {
+        "line": 44062,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44066,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x4e8)));"
+      },
+      {
+        "line": 44067,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44073,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 600)));"
+      },
+      {
+        "line": 44074,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44078,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(uVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 600)));"
+      },
+      {
+        "line": 44079,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44845,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x270)));"
+      },
+      {
+        "line": 44846,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),1),uVar2);"
+      },
+      {
+        "line": 44850,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x270)));"
+      },
+      {
+        "line": 44851,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44857,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x256)));"
+      },
+      {
+        "line": 44858,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),1),uVar2);"
+      },
+      {
+        "line": 44862,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x256)));"
+      },
+      {
+        "line": 44863,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44893,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(iVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x26c)));"
+      },
+      {
+        "line": 44894,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44898,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(iVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x26c)));"
+      },
+      {
+        "line": 44899,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44905,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(iVar5,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x252)));"
+      },
+      {
+        "line": 44906,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44910,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(iVar5,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x252)));"
+      },
+      {
+        "line": 44911,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44940,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x26e)));"
+      },
+      {
+        "line": 44941,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44945,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar2,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x26e)));"
+      },
+      {
+        "line": 44946,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 44952,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x254)));"
+      },
+      {
+        "line": 44953,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),10),uVar2);"
+      },
+      {
+        "line": 44957,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(uVar4,CONCAT22(uVar3,*(undefined2 *)(param_1 + 0x254)));"
+      },
+      {
+        "line": 44958,
+        "caller": "FUN_00443494",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),100),uVar2);"
+      },
+      {
+        "line": 45244,
+        "caller": "FUN_00443494",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(uVar4,100),CONCAT22(uVar5,*(short *)(param_1 + 500) - sVar1));"
+      },
+      {
+        "line": 45248,
+        "caller": "FUN_00443494",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(uVar4,1000),CONCAT22(uVar5,*(short *)(param_1 + 500) - sVar1));"
+      },
+      {
+        "line": 45254,
+        "caller": "FUN_00443494",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(uVar4,100),CONCAT22(uVar5,*(short *)(param_1 + 0x1f2) - sVar1));"
+      },
+      {
+        "line": 45258,
+        "caller": "FUN_00443494",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(uVar4,1000),CONCAT22(uVar5,*(short *)(param_1 + 0x1f2) - sVar1))"
+      },
+      {
+        "line": 46039,
+        "caller": "FUN_00443494",
+        "text": "uVar7 = FUN_00448fd0(CONCAT22(uVar10,uVar1),CONCAT22(extraout_var,0x140 - sVar3) + -1);"
+      },
+      {
+        "line": 46044,
+        "caller": "FUN_00443494",
+        "text": "uVar7 = FUN_00448fd0(CONCAT22(uVar10,uVar1),CONCAT22(extraout_var_00,0x8c - sVar4) + -1);"
+      },
+      {
+        "line": 46284,
+        "caller": "FUN_00443494",
+        "text": "uVar4 = FUN_00448fd0(param_2,CONCAT22(extraout_var,0x140 - (short)(iVar3 >> 5)));"
+      },
+      {
+        "line": 46291,
+        "caller": "FUN_00443494",
+        "text": "uVar4 = FUN_00448fd0(param_3,CONCAT22(extraout_var_00,0x8c - (short)(iVar3 >> 5)));"
+      },
+      {
+        "line": 47841,
+        "caller": "FUN_00449130",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)(*(short *)(&DAT_0049d0aa + sVar6 * 0xc) * 5) >>"
+      },
+      {
+        "line": 47852,
+        "caller": "FUN_00449130",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),9),uVar2);"
+      },
+      {
+        "line": 47899,
+        "caller": "FUN_00449240",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)pcVar1 >> 0x10),0x27),"
+      },
+      {
+        "line": 47951,
+        "caller": "FUN_004492c0",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)psVar5 >> 0x10),0x13f),"
+      },
+      {
+        "line": 47954,
+        "caller": "FUN_004492c0",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar3 >> 0x10),0x8b),"
+      },
+      {
+        "line": 48022,
+        "caller": "FUN_0044939c",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)psVar5 >> 0x10),0x13f),"
+      },
+      {
+        "line": 48027,
+        "caller": "FUN_0044939c",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x8b),"
+      },
+      {
+        "line": 48094,
+        "caller": "FUN_004494e4",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)param_1 >> 0x10),0x13f),"
+      },
+      {
+        "line": 48098,
+        "caller": "FUN_004494e4",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x8b),"
+      },
+      {
+        "line": 48156,
+        "caller": "FUN_004495c8",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)iVar5 >> 0x10),0x13f),"
+      },
+      {
+        "line": 48160,
+        "caller": "FUN_004495c8",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar3 >> 0x10),0x8b),"
+      },
+      {
+        "line": 48686,
+        "caller": "FUN_00449e50",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)(uVar3 >> 0x10),0x13f),"
+      },
+      {
+        "line": 48690,
+        "caller": "FUN_00449e50",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar1 >> 0x10),0x8b),"
+      },
+      {
+        "line": 49326,
+        "caller": "FUN_0044aab4",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)(iVar1 / 20000) >> 0x10),5),iVar1 / 20000);"
+      },
+      {
+        "line": 49652,
+        "caller": "FUN_0044aee4",
+        "text": "uVar6 = FUN_00448fd0(CONCAT22((short)((uint)(iVar3 / 100) >> 0x10),"
+      },
+      {
+        "line": 49669,
+        "caller": "FUN_0044aee4",
+        "text": "uVar6 = FUN_00448fd0(CONCAT22(uVar7,9),"
+      },
+      {
+        "line": 49705,
+        "caller": "FUN_0044aee4",
+        "text": "uVar6 = FUN_00448fd0(CONCAT22(uVar7,9),"
+      },
+      {
+        "line": 49720,
+        "caller": "FUN_0044aee4",
+        "text": "uVar6 = FUN_00448fd0(CONCAT22(local_5c >> 0xf,0x3de),"
+      },
+      {
+        "line": 49753,
+        "caller": "FUN_0044b230",
+        "text": "uVar1 = FUN_00448fd0((iVar2 * 0x13) / 0x14 + 1,"
+      },
+      {
+        "line": 49811,
+        "caller": "FUN_0044b27c",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)iVar2 >> 0x10),0xf),iVar2);"
+      },
+      {
+        "line": 49942,
+        "caller": "FUN_0044b5d0",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(sVar6 >> 0xf,0x3de),CONCAT22(uVar4,(&DAT_00474ab0)[iVar1 * 0x24a]));"
+      },
+      {
+        "line": 50171,
+        "caller": "FUN_0044bb18",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)(iVar2 * 0x125) >> 0x10),0x3de),"
+      },
+      {
+        "line": 50201,
+        "caller": "FUN_0044bb18",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(uVar5,0x5a),"
+      },
+      {
+        "line": 50206,
+        "caller": "FUN_0044bb18",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22(uVar5,0x3c),"
+      },
+      {
+        "line": 50287,
+        "caller": "FUN_0044bd2c",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22(extraout_var,99),"
+      },
+      {
+        "line": 50290,
+        "caller": "FUN_0044bd2c",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),99),"
+      },
+      {
+        "line": 50332,
+        "caller": "FUN_0044bed8",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(iVar3 * 0x125) >> 0x10),0x3de),"
+      },
+      {
+        "line": 50364,
+        "caller": "FUN_0044bed8",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22(uVar6,0x5a),CONCAT22(uVar7,0x8c - (&DAT_004795a6)[iVar2 * 0x11]));"
+      },
+      {
+        "line": 50369,
+        "caller": "FUN_0044bed8",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),0x41),uVar4);"
+      },
+      {
+        "line": 50582,
+        "caller": "FUN_0044c360",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(iVar3 * 0x11) >> 0x10),99),"
+      },
+      {
+        "line": 50585,
+        "caller": "FUN_0044c360",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),99),"
+      },
+      {
+        "line": 50638,
+        "caller": "FUN_0044c528",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(extraout_var,0x50),"
+      },
+      {
+        "line": 50645,
+        "caller": "FUN_0044c528",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)uVar1 >> 0x10),0x46),uVar1);"
+      },
+      {
+        "line": 50665,
+        "caller": "FUN_0044c528",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)(iVar3 * 0x125) >> 0x10),0x3de),"
+      },
+      {
+        "line": 50798,
+        "caller": "FUN_0044c8f0",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)pcVar5 >> 0x10),0x226),CONCAT22(uVar7,sVar6 + 0x96));"
+      },
+      {
+        "line": 51153,
+        "caller": "FUN_0044cec8",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)psVar5 >> 0x10),0x13f),"
+      },
+      {
+        "line": 51157,
+        "caller": "FUN_0044cec8",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar3 >> 0x10),0x8b),"
+      },
+      {
+        "line": 52831,
+        "caller": "FUN_0044efc8",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22(local_46 >> 0xf,9),CONCAT22(uVar7,local_46) + 1);"
+      },
+      {
+        "line": 53088,
+        "caller": "FUN_0044f6d8",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)(iVar2 / 100) >> 0x10),"
+      },
+      {
+        "line": 53106,
+        "caller": "FUN_0044f6d8",
+        "text": "uVar3 = FUN_00448fd0(uVar3,(int)(short)(&DAT_0047c1f8)[iVar1 * 0x148] / 5);"
+      },
+      {
+        "line": 53131,
+        "caller": "FUN_0044f7e4",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar3 >> 0x10),"
+      },
+      {
+        "line": 53149,
+        "caller": "FUN_0044f7e4",
+        "text": "uVar4 = FUN_00448fd0(uVar4,(int)(short)(&DAT_0049c27c)[iVar1 * 0xd] / 5);"
+      },
+      {
+        "line": 53563,
+        "caller": "FUN_0044ffbc",
+        "text": "uVar8 = FUN_00448fd0(CONCAT22((short)((uint)iVar7 >> 0x10),0x28),"
+      },
+      {
+        "line": 53615,
+        "caller": "FUN_004501f4",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)uVar2 >> 0x10),sVar4 - (short)iVar5),"
+      },
+      {
+        "line": 53827,
+        "caller": "FUN_004504f4",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)iVar6 >> 0x10),100),"
+      },
+      {
+        "line": 53874,
+        "caller": "FUN_00450768",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22(uVar3,100),"
+      },
+      {
+        "line": 54236,
+        "caller": "FUN_004511bc",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)iVar7 >> 0x10),0x13f),"
+      },
+      {
+        "line": 54239,
+        "caller": "FUN_004511bc",
+        "text": "uVar6 = FUN_00448fd0(CONCAT22((short)((uint)uVar5 >> 0x10),0x8b),"
+      },
+      {
+        "line": 54455,
+        "caller": "FUN_004514ec",
+        "text": "uVar3 = FUN_00448fd0(uVar4,0);"
+      },
+      {
+        "line": 54460,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar3 >> 0x10),*(undefined2 *)(puVar12 + 0x18)),"
+      },
+      {
+        "line": 54475,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)((int)*(short *)(puVar12 + 0x1a) / 100) >> 0x10)"
+      },
+      {
+        "line": 54479,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)iVar2 >> 0x10),1000),"
+      },
+      {
+        "line": 54499,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(iVar5 / 20000) >> 0x10),5),iVar5 / 20000);"
+      },
+      {
+        "line": 54558,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),5),"
+      },
+      {
+        "line": 54564,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)uVar4 >> 0x10),8),"
+      },
+      {
+        "line": 54651,
+        "caller": "FUN_004514ec",
+        "text": "psVar7 = (short *)FUN_00448fd0(CONCAT22((short)((uint)psVar7 >> 0x10),0x18),"
+      },
+      {
+        "line": 54826,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)iVar4 >> 0x10),*(undefined2 *)(puVar10 + 0x1c)),"
+      },
+      {
+        "line": 54888,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd0(CONCAT22((short)((uint)uVar3 >> 0x10),0x3de),uVar3);"
+      },
+      {
+        "line": 54922,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd0(0,(int)psVar11 + 3);"
+      },
+      {
+        "line": 55910,
+        "caller": "FUN_00452034",
+        "text": "uVar2 = FUN_00448fd0(CONCAT22((short)((uint)unaff_ESI >> 0x10),sVar1),"
+      },
+      {
+        "line": 56003,
+        "caller": "FUN_00452034",
+        "text": "uVar5 = FUN_00448fd0(CONCAT22((short)((uint)local_c >> 0x10),100),"
+      },
+      {
+        "line": 56288,
+        "caller": "FUN_00452034",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)param_1 >> 0x10),100),"
+      },
+      {
+        "line": 57311,
+        "caller": "FUN_00452034",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(uVar2,uRam004a0bb8),CONCAT22(uVar3,sRam004a0bb4 + 100));"
+      },
+      {
+        "line": 57320,
+        "caller": "FUN_00452034",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22(uVar2,uRam004a0bb8),CONCAT22(uVar3,sRam004a0bb4 + 1000));"
+      },
+      {
+        "line": 57608,
+        "caller": "FUN_00452034",
+        "text": "uVar4 = FUN_00448fd0(9,CONCAT22(extraout_var_00,psVar1[3]) + 1);"
+      },
+      {
+        "line": 57623,
+        "caller": "FUN_00452034",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(iVar5 / 100) >> 0x10),(&DAT_0047c1f6)[iVar2 * 0x148])"
+      },
+      {
+        "line": 57628,
+        "caller": "FUN_00452034",
+        "text": "uVar4 = FUN_00448fd0(CONCAT22((short)((uint)(sRam004a0bc6 * 0x125) >> 0x10),0x3de),"
+      },
+      {
+        "line": 57724,
+        "caller": "FUN_004597d8",
+        "text": "uVar1 = FUN_00448fd0(CONCAT22((short)((uint)*(int *)(param_4 + -4) >> 0x10),5),"
+      }
+    ],
+    "FUN_00449018": [
+      {
+        "line": 37630,
+        "caller": "FUN_00436434",
+        "text": "sVar3 = FUN_00449018(uVar1,*(undefined4 *)(&DAT_004a0344 + DAT_0045e6a8 * 0x16));"
+      },
+      {
+        "line": 37707,
+        "caller": "FUN_00436434",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)(&DAT_004a0344 + DAT_0045e6a8 * 0x16),param_2);"
+      },
+      {
+        "line": 38373,
+        "caller": "FUN_0043845c",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)(&DAT_004a0344 + iVar2 * 0x16),"
+      },
+      {
+        "line": 38785,
+        "caller": "FUN_00438d24",
+        "text": "sVar3 = FUN_00449018(*(undefined4 *)(&DAT_004a0344 + iVar6 * 0x16),local_e);"
+      },
+      {
+        "line": 38798,
+        "caller": "FUN_00438d24",
+        "text": "(sVar3 = FUN_00449018(*(undefined4 *)(&DAT_004a0344 + iVar6 * 0x16),local_e),"
+      },
+      {
+        "line": 39246,
+        "caller": "FUN_00439968",
+        "text": "uVar1 = FUN_00449018(*(undefined4 *)(psVar4 + -4),*(undefined4 *)(psVar3 + -4));"
+      },
+      {
+        "line": 39397,
+        "caller": "FUN_00439d0c",
+        "text": "sVar3 = FUN_00449018(*puVar5,*(undefined4 *)(&DAT_004a0344 + param_1 * 0x16));"
+      },
+      {
+        "line": 39699,
+        "caller": "FUN_0043a160",
+        "text": "(uVar5 = FUN_00449018(*puVar1,*(undefined4 *)(&DAT_004a0344 + param_2 * 0x16)),"
+      },
+      {
+        "line": 39737,
+        "caller": "FUN_0043a160",
+        "text": "(sVar3 = FUN_00449018(local_c,*(undefined4 *)(&DAT_004a0344 + param_1 * 0x16)),"
+      },
+      {
+        "line": 39739,
+        "caller": "FUN_0043a160",
+        "text": "local_16 = FUN_00449018(local_c,*puVar1);"
+      },
+      {
+        "line": 40078,
+        "caller": "FUN_0043a718",
+        "text": "sVar2 = FUN_00449018(local_18,*(undefined4 *)(&DAT_004a0344 + param_1 * 0x16));"
+      },
+      {
+        "line": 40084,
+        "caller": "FUN_0043a718",
+        "text": "local_14 = FUN_00449018(local_18,*(undefined4 *)(&DAT_004a0344 + param_1 * 0x16)"
+      },
+      {
+        "line": 46698,
+        "caller": "FUN_004465a8",
+        "text": "sVar2 = FUN_00449018(param_2,*(undefined4 *)((int)&DAT_0049c26c + iVar3 * 0x1a));"
+      },
+      {
+        "line": 46729,
+        "caller": "FUN_004465a8",
+        "text": "sVar1 = FUN_00449018((&DAT_0047c1ec)[(short)param_1[0x88] * 0xa4],param_2);"
+      },
+      {
+        "line": 46762,
+        "caller": "FUN_004465a8",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)((int)&DAT_0049c26c + (short)param_1[0x89] * 0x1a),param_2);"
+      },
+      {
+        "line": 47914,
+        "caller": "FUN_004492a0",
+        "text": "sVar1 = FUN_00449018(param_1,param_2);"
+      },
+      {
+        "line": 48226,
+        "caller": "FUN_004496e0",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)(puVar4 + 0xe),"
+      },
+      {
+        "line": 48818,
+        "caller": "FUN_0044a120",
+        "text": "((sVar1 = FUN_00449018(*puVar3,*(undefined4 *)"
+      },
+      {
+        "line": 50127,
+        "caller": "FUN_0044ba1c",
+        "text": "sVar2 = FUN_00449018(*(undefined4 *)(puVar6 + 0xe),(&DAT_0047c1ec)[param_2 * 0xa4]);"
+      },
+      {
+        "line": 50262,
+        "caller": "FUN_0044bd2c",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)(puVar5 + 0xe),"
+      },
+      {
+        "line": 50460,
+        "caller": "FUN_0044c204",
+        "text": "sVar3 = FUN_00449018(*(undefined4 *)(psVar6 + -2),"
+      },
+      {
+        "line": 50480,
+        "caller": "FUN_0044c204",
+        "text": "sVar3 = FUN_00449018(*(undefined4 *)((int)&DAT_0047959e + iVar4 * 0x22),"
+      },
+      {
+        "line": 51318,
+        "caller": "FUN_0044d174",
+        "text": "sVar1 = FUN_00449018(param_2,*puVar5);"
+      },
+      {
+        "line": 51629,
+        "caller": "FUN_0044d734",
+        "text": "sVar4 = FUN_00449018(local_e,(&DAT_0047c1ec)[iVar5 * 0xa4]);"
+      },
+      {
+        "line": 51685,
+        "caller": "FUN_0044d9a8",
+        "text": "sVar1 = FUN_00449018(param_1,*puVar3);"
+      },
+      {
+        "line": 51698,
+        "caller": "FUN_0044d9a8",
+        "text": "sVar4 = FUN_00449018(param_1,*(undefined4 *)((int)&DAT_0049c26c + iVar2 * 0x1a));"
+      },
+      {
+        "line": 51839,
+        "caller": "FUN_0044dba8",
+        "text": "sVar2 = FUN_00449018(*puVar1,local_a);"
+      },
+      {
+        "line": 52166,
+        "caller": "FUN_0044e1fc",
+        "text": "sVar2 = FUN_00449018(*puVar1,param_2);"
+      },
+      {
+        "line": 52171,
+        "caller": "FUN_0044e1fc",
+        "text": "uVar6 = FUN_00449018(param_2,*puVar1);"
+      },
+      {
+        "line": 52241,
+        "caller": "FUN_0044e41c",
+        "text": "sVar3 = FUN_00449018(*(undefined4 *)(puVar7 + 0xe),(&DAT_0047c1ec)[param_1 * 0xa4]);"
+      },
+      {
+        "line": 52292,
+        "caller": "FUN_0044e5dc",
+        "text": "sVar2 = FUN_00449018(*(undefined4 *)(puVar3 + 0xe),"
+      },
+      {
+        "line": 52343,
+        "caller": "FUN_0044e670",
+        "text": "local_16 = FUN_00449018(*(undefined4 *)(puVar3 + 0xe),(&DAT_0047c1ec)[param_1 * 0xa4]);"
+      },
+      {
+        "line": 52368,
+        "caller": "FUN_0044e670",
+        "text": "sVar2 = FUN_00449018(*(undefined4 *)(psVar7 + -2),(&DAT_0047c1ec)[param_1 * 0xa4]);"
+      },
+      {
+        "line": 52400,
+        "caller": "FUN_0044e84c",
+        "text": "sVar1 = FUN_00449018((&DAT_0047c1ec)[param_1 * 0xa4],*(undefined4 *)(psVar3 + -4));"
+      },
+      {
+        "line": 52405,
+        "caller": "FUN_0044e84c",
+        "text": "sVar1 = FUN_00449018((&DAT_0047c1ec)[param_1 * 0xa4],"
+      },
+      {
+        "line": 52492,
+        "caller": "FUN_0044e9a8",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)(puVar3 + 0xe),"
+      },
+      {
+        "line": 52520,
+        "caller": "FUN_0044e9a8",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)(puVar3 + 0xe),"
+      },
+      {
+        "line": 52617,
+        "caller": "FUN_0044ebe8",
+        "text": "sVar2 = FUN_00449018(*(undefined4 *)"
+      },
+      {
+        "line": 52634,
+        "caller": "FUN_0044ebe8",
+        "text": "sVar3 = FUN_00449018((&DAT_0047c1ec)[param_1 * 0xa4],*puVar5);"
+      },
+      {
+        "line": 52679,
+        "caller": "FUN_0044ece4",
+        "text": "sVar1 = FUN_00449018((&DAT_0047c1ec)[param_1 * 0xa4],*(undefined4 *)(puVar5 + 0xe));"
+      },
+      {
+        "line": 52742,
+        "caller": "FUN_0044ee60",
+        "text": "sVar1 = FUN_00449018((&DAT_0047c1ec)[param_1 * 0xa4],*puVar6);"
+      },
+      {
+        "line": 52820,
+        "caller": "FUN_0044efc8",
+        "text": "sVar3 = FUN_00449018(*puVar8,*(undefined4 *)((int)&DAT_0047959e + sVar1 * 0x22));"
+      },
+      {
+        "line": 52826,
+        "caller": "FUN_0044efc8",
+        "text": "sVar3 = FUN_00449018(*puVar8,*(undefined4 *)((int)&DAT_0047959e + sVar1 * 0x22));"
+      },
+      {
+        "line": 52849,
+        "caller": "FUN_0044efc8",
+        "text": "sVar3 = FUN_00449018(*local_2c,*(undefined4 *)((int)&DAT_0047959e + sVar1 * 0x22));"
+      },
+      {
+        "line": 52863,
+        "caller": "FUN_0044efc8",
+        "text": "sVar4 = FUN_00449018(*puVar8,(&DAT_0047c1ec)[sVar2 * 0xa4]);"
+      },
+      {
+        "line": 52868,
+        "caller": "FUN_0044efc8",
+        "text": "local_40 = FUN_00449018(*puVar8,(&DAT_0047c1ec)[sVar2 * 0xa4]);"
+      },
+      {
+        "line": 53005,
+        "caller": "FUN_0044f4f8",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)((int)&DAT_0049c26c + param_1 * 0x1a),*puVar5);"
+      },
+      {
+        "line": 53516,
+        "caller": "FUN_0044ffbc",
+        "text": "sVar1 = FUN_00449018(*(undefined4 *)"
+      },
+      {
+        "line": 53526,
+        "caller": "FUN_0044ffbc",
+        "text": "sVar2 = FUN_00449018(*(undefined4 *)"
+      },
+      {
+        "line": 53656,
+        "caller": "FUN_004502e0",
+        "text": "sVar4 = FUN_00449018(*puVar7,*(undefined4 *)"
+      },
+      {
+        "line": 53706,
+        "caller": "FUN_004502e0",
+        "text": "sVar5 = FUN_00449018(*(undefined4 *)"
+      },
+      {
+        "line": 53765,
+        "caller": "FUN_004504f4",
+        "text": "sVar2 = FUN_00449018(*puVar8,*(undefined4 *)((int)&DAT_0047959e + local_18[3] * 0x22));"
+      },
+      {
+        "line": 53974,
+        "caller": "FUN_004509f0",
+        "text": "sVar2 = FUN_00449018((&DAT_0047c1ec)[sVar7 * 0xa4],*(undefined4 *)(psVar5 + -2));"
+      },
+      {
+        "line": 54026,
+        "caller": "FUN_00450b30",
+        "text": "sVar2 = FUN_00449018(*(undefined4 *)((int)&DAT_0049c26c + sVar6 * 0x1a),"
+      }
+    ],
+    "FUN_00448fd8": [
+      {
+        "line": 37353,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd8(0,CONCAT22(uVar3,DAT_0045e69c) + -1);"
+      },
+      {
+        "line": 37363,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd8(0,CONCAT22(uVar3,DAT_0045e69c + -10));"
+      },
+      {
+        "line": 37373,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd8(0,CONCAT22(uVar3,DAT_0045e69a) + -1);"
+      },
+      {
+        "line": 37383,
+        "caller": "FUN_00436434",
+        "text": "uVar1 = FUN_00448fd8(0,CONCAT22(uVar3,DAT_0045e69a + -10));"
+      },
+      {
+        "line": 38138,
+        "caller": "FUN_00437de4",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),0x3c),uVar2);"
+      },
+      {
+        "line": 38165,
+        "caller": "FUN_00437de4",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),0x3c),uVar2);"
+      },
+      {
+        "line": 38560,
+        "caller": "FUN_004389ac",
+        "text": "uVar2 = FUN_00448fd8(0,uVar2);"
+      },
+      {
+        "line": 38563,
+        "caller": "FUN_004389ac",
+        "text": "uVar3 = FUN_00448fd8(0,uVar3);"
+      },
+      {
+        "line": 39728,
+        "caller": "FUN_0043a160",
+        "text": "uVar5 = FUN_00448fd8(0,uVar5);"
+      },
+      {
+        "line": 39732,
+        "caller": "FUN_0043a160",
+        "text": "uVar6 = FUN_00448fd8(0,uVar6);"
+      },
+      {
+        "line": 40069,
+        "caller": "FUN_0043a718",
+        "text": "uVar5 = FUN_00448fd8(0,uVar5);"
+      },
+      {
+        "line": 40074,
+        "caller": "FUN_0043a718",
+        "text": "uVar5 = FUN_00448fd8(0,uVar5);"
+      },
+      {
+        "line": 40166,
+        "caller": "FUN_0043aa60",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 40171,
+        "caller": "FUN_0043aa60",
+        "text": "uVar5 = FUN_00448fd8(0,uVar5);"
+      },
+      {
+        "line": 40176,
+        "caller": "FUN_0043aa60",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 40228,
+        "caller": "FUN_0043abb4",
+        "text": "iVar1 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),local_a),"
+      },
+      {
+        "line": 40351,
+        "caller": "FUN_0043abb4",
+        "text": "uVar5 = FUN_00448fd8(0,CONCAT22(extraout_var,DAT_004a031e - (short)(iVar4 >> 4)) + 1);"
+      },
+      {
+        "line": 40409,
+        "caller": "FUN_0043b1ac",
+        "text": "uVar3 = FUN_00448fd8(CONCAT22((short)((uint)*(int *)(param_4 + 8) >> 0x10),"
+      },
+      {
+        "line": 40581,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar5 = FUN_00448fd8(CONCAT22((short)((uint)LVar4 >> 0x10),local_e),LVar4);"
+      },
+      {
+        "line": 40602,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar5 = FUN_00448fd8(CONCAT22(uVar7,local_e),CONCAT22(uVar7,(short)LVar4 + 100));"
+      },
+      {
+        "line": 40614,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar5 = FUN_00448fd8(CONCAT22((short)((uint)LVar4 >> 0x10),local_e),LVar4);"
+      },
+      {
+        "line": 40753,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar2 = FUN_00448fd8(0,(uint)(ushort)((DAT_004a031e - (short)(iVar1 >> 4)) + 2));"
+      },
+      {
+        "line": 41583,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar3 = FUN_00448fd8(0,CONCAT22(sVar1 >> 0xf,"
+      },
+      {
+        "line": 41590,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar4 = FUN_00448fd8(0,CONCAT22(extraout_var,"
+      },
+      {
+        "line": 42154,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar2 = FUN_00448fd8(0,CONCAT22(extraout_var,param_5 - (short)(iVar1 >> 6)));"
+      },
+      {
+        "line": 42159,
+        "caller": "FUN_0043b2c0",
+        "text": "uVar3 = FUN_00448fd8(0,CONCAT22(extraout_var_00,(param_4 - (short)(iVar1 >> 6)) + -0x1e));"
+      },
+      {
+        "line": 42627,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 42631,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 42660,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 42664,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 42919,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd8(uVar1,CONCAT22(uVar3,-(&DAT_0049c27a)[*(short *)(param_1 + 0x28e) * 0xd])"
+      },
+      {
+        "line": 42923,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd8(uVar1,CONCAT22(uVar3,-(&DAT_0047c1f6)"
+      },
+      {
+        "line": 42928,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd8(uVar1,CONCAT22((short)((uint)iVar2 >> 0x10),"
+      },
+      {
+        "line": 43011,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd8(0,CONCAT22((short)((uint)param_2 >> 0x10),*(undefined2 *)(param_1 + 0x290)));"
+      },
+      {
+        "line": 43304,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar2 = FUN_00448fd8(0,uVar2);"
+      },
+      {
+        "line": 43451,
+        "caller": "FUN_0043e6dc",
+        "text": "uVar1 = FUN_00448fd8(0,uVar1);"
+      },
+      {
+        "line": 44487,
+        "caller": "FUN_00441b50",
+        "text": "uVar2 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),sVar5));"
+      },
+      {
+        "line": 45791,
+        "caller": "FUN_00443494",
+        "text": "uVar3 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),sVar5));"
+      },
+      {
+        "line": 46040,
+        "caller": "FUN_00443494",
+        "text": "uVar7 = FUN_00448fd8(0,uVar7);"
+      },
+      {
+        "line": 46045,
+        "caller": "FUN_00443494",
+        "text": "uVar7 = FUN_00448fd8(0,uVar7);"
+      },
+      {
+        "line": 47745,
+        "caller": "FUN_00449018",
+        "text": "FUN_00448fd8(((int)local_8 - (int)local_4 ^ uVar2) - uVar2,"
+      },
+      {
+        "line": 47850,
+        "caller": "FUN_00449130",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),5),"
+      },
+      {
+        "line": 47953,
+        "caller": "FUN_004492c0",
+        "text": "uVar3 = FUN_00448fd8(0,uVar3);"
+      },
+      {
+        "line": 47956,
+        "caller": "FUN_004492c0",
+        "text": "psVar5 = (short *)FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 48024,
+        "caller": "FUN_0044939c",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 48029,
+        "caller": "FUN_0044939c",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 48096,
+        "caller": "FUN_004494e4",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 48100,
+        "caller": "FUN_004494e4",
+        "text": "uVar5 = FUN_00448fd8(0,uVar5);"
+      },
+      {
+        "line": 48158,
+        "caller": "FUN_004495c8",
+        "text": "uVar3 = FUN_00448fd8(0,uVar3);"
+      },
+      {
+        "line": 48162,
+        "caller": "FUN_004495c8",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 48283,
+        "caller": "FUN_004497cc",
+        "text": "uVar5 = FUN_00448fd8(0,iVar4);"
+      },
+      {
+        "line": 48688,
+        "caller": "FUN_00449e50",
+        "text": "uVar1 = FUN_00448fd8(0,uVar1);"
+      },
+      {
+        "line": 48692,
+        "caller": "FUN_00449e50",
+        "text": "uVar2 = FUN_00448fd8(0,uVar2);"
+      },
+      {
+        "line": 49662,
+        "caller": "FUN_0044aee4",
+        "text": "uVar6 = FUN_00448fd8(CONCAT22(uVar7,6),"
+      },
+      {
+        "line": 49698,
+        "caller": "FUN_0044aee4",
+        "text": "uVar6 = FUN_00448fd8(CONCAT22(uVar7,6),"
+      },
+      {
+        "line": 49759,
+        "caller": "FUN_0044b230",
+        "text": "uVar1 = FUN_00448fd8(iVar2 >> 2,uVar1);"
+      },
+      {
+        "line": 49805,
+        "caller": "FUN_0044b27c",
+        "text": "uVar3 = FUN_00448fd8(CONCAT22((short)((uint)((int)(short)(&DAT_004795ae)[iVar2 * 0x11] / 6) >>"
+      },
+      {
+        "line": 49812,
+        "caller": "FUN_0044b27c",
+        "text": "uVar3 = FUN_00448fd8(CONCAT22((short)((uint)uVar3 >> 0x10),1),uVar3);"
+      },
+      {
+        "line": 49854,
+        "caller": "FUN_0044b4f8",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22((short)((uint)iVar1 >> 0x10),1),iVar1);"
+      },
+      {
+        "line": 50208,
+        "caller": "FUN_0044bb18",
+        "text": "uVar3 = FUN_00448fd8(CONCAT22((short)((uint)uVar3 >> 0x10),0x28),uVar3);"
+      },
+      {
+        "line": 50343,
+        "caller": "FUN_0044bed8",
+        "text": "uVar4 = FUN_00448fd8(CONCAT22((short)((uint)(iVar3 * 0x125) >> 0x10),0xfa),"
+      },
+      {
+        "line": 50368,
+        "caller": "FUN_0044bed8",
+        "text": "uVar4 = FUN_00448fd8(CONCAT22(uVar6,0x32),CONCAT22(uVar7,100 - (&DAT_004795a6)[iVar2 * 0x11]));"
+      },
+      {
+        "line": 50643,
+        "caller": "FUN_0044c528",
+        "text": "uVar1 = FUN_00448fd8(CONCAT22(extraout_var,0x28),"
+      },
+      {
+        "line": 50799,
+        "caller": "FUN_0044c8f0",
+        "text": "uVar3 = FUN_00448fd8(CONCAT22(uVar7,sVar6),uVar3);"
+      },
+      {
+        "line": 51155,
+        "caller": "FUN_0044cec8",
+        "text": "uVar3 = FUN_00448fd8(0,uVar3);"
+      },
+      {
+        "line": 51160,
+        "caller": "FUN_0044cec8",
+        "text": "psVar5 = (short *)FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 53347,
+        "caller": "FUN_0044fb7c",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22((short)((uint)(*(int *)(puVar9 + 0x430) / 20000) >> 0x10),1),"
+      },
+      {
+        "line": 53551,
+        "caller": "FUN_0044ffbc",
+        "text": "iVar7 = FUN_00448fd8(CONCAT22((short)((uint)iVar7 >> 0x10),5),"
+      },
+      {
+        "line": 54238,
+        "caller": "FUN_004511bc",
+        "text": "uVar5 = FUN_00448fd8(0,uVar5);"
+      },
+      {
+        "line": 54241,
+        "caller": "FUN_004511bc",
+        "text": "iVar7 = FUN_00448fd8(0,uVar6);"
+      },
+      {
+        "line": 54462,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd8(0,uVar4);"
+      },
+      {
+        "line": 54510,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd8(0,CONCAT22(uVar9,*(undefined2 *)((int)puVar13 + 10)));"
+      },
+      {
+        "line": 54517,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd8(CONCAT22((short)((uint)iVar6 >> 0x10),0x33),"
+      },
+      {
+        "line": 54539,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar2 >> 0x10),"
+      },
+      {
+        "line": 54554,
+        "caller": "FUN_004514ec",
+        "text": "uVar4 = FUN_00448fd8(CONCAT22((short)((uint)(iVar2 / 10) >> 0x10),1),iVar2 / 10);"
+      },
+      {
+        "line": 54772,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd8(0,CONCAT22((short)((uint)param_2 >> 0x10),psVar11[4]));"
+      },
+      {
+        "line": 54774,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd8(0,CONCAT22(extraout_var,psVar11[3]));"
+      },
+      {
+        "line": 54867,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar7 >> 0x10),*(short *)(puVar10 + 0x442) + -3)"
+      },
+      {
+        "line": 54884,
+        "caller": "FUN_00451b40",
+        "text": "uVar3 = FUN_00448fd8(CONCAT22((short)((uint)iVar7 >> 0x10),300),"
+      },
+      {
+        "line": 55067,
+        "caller": "FUN_00452034",
+        "text": "uVar2 = FUN_00448fd8(0,CONCAT22((short)((uint)puStack_14 >> 0x10),"
+      },
+      {
+        "line": 55912,
+        "caller": "FUN_00452034",
+        "text": "uVar2 = FUN_00448fd8((int)sVar1 / 5,uVar2);"
+      },
+      {
+        "line": 56164,
+        "caller": "FUN_00452034",
+        "text": "uVar5 = FUN_00448fd8(0,CONCAT22((short)((uint)iVar6 >> 0x10),"
+      },
+      {
+        "line": 56290,
+        "caller": "FUN_00452034",
+        "text": "uVar1 = FUN_00448fd8(CONCAT22((short)((uint)uVar1 >> 0x10),10),uVar1);"
+      },
+      {
+        "line": 56939,
+        "caller": "FUN_00452034",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22(uVar5,500),"
+      },
+      {
+        "line": 56949,
+        "caller": "FUN_00452034",
+        "text": "uVar2 = FUN_00448fd8(CONCAT22((short)((uint)uVar2 >> 0x10),0x1c2),"
+      },
+      {
+        "line": 57315,
+        "caller": "FUN_00452034",
+        "text": "uVar1 = FUN_00448fd8(CONCAT22(uVar2,-sRam004a0bb6),CONCAT22(uVar3,sRam004a0bb4 + -100));"
+      },
+      {
+        "line": 57324,
+        "caller": "FUN_00452034",
+        "text": "uVar1 = FUN_00448fd8(CONCAT22(uVar2,-sRam004a0bb6),CONCAT22(uVar3,sRam004a0bb4 + -1000));"
+      },
+      {
+        "line": 57603,
+        "caller": "FUN_00452034",
+        "text": "uVar4 = FUN_00448fd8(CONCAT22((short)((uint)pcVar3 >> 0x10),6),"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-17T06:40:43Z",
+  "pending": [
+    "fleet-peace-20261017-083008-11228-AUTO0734.SAV",
+    "fleet-peace-20261017-083008-11228-loaded.SAV",
+    "fleet-peace-20261017-083008-11228-post.SAV",
+    "fleet-war-20261017-083008-11228-AUTO0734.SAV",
+    "fleet-war-20261017-083008-11228-input.SAV",
+    "fleet-war-20261017-083008-11228-loaded.SAV",
+    "land-war-20261017-083008-11228-AUTO0734.SAV",
+    "land-war-20261017-083008-11228-input.SAV",
+    "land-war-20261017-083008-11228-loaded.SAV",
+    "land-war-20261017-083008-11228-post.SAV"
+  ],
+  "uploaded": [],
+  "refused": {
+    "command": "gh release upload run-exp-resupply31 /tmp/ic2r31-artifacts/fleet-peace-20261017-083008-11228-AUTO0734.SAV /tmp/ic2r31-artifacts/fleet-peace-20261017-083008-11228-loaded.SAV /tmp/ic2r31-artifacts/fleet-peace-20261017-083008-11228-post.SAV /tmp/ic2r31-artifacts/fleet-war-20261017-083008-11228-AUTO0734.SAV /tmp/ic2r31-artifacts/fleet-war-20261017-083008-11228-input.SAV /tmp/ic2r31-artifacts/fleet-war-20261017-083008-11228-loaded.SAV /tmp/ic2r31-artifacts/land-war-20261017-083008-11228-AUTO0734.SAV /tmp/ic2r31-artifacts/land-war-20261017-083008-11228-input.SAV /tmp/ic2r31-artifacts/land-war-20261017-083008-11228-loaded.SAV /tmp/ic2r31-artifacts/land-war-20261017-083008-11228-post.SAV",
+    "stderr": "HTTP 400: Bad Content-Length (https://uploads.github.com/repos/diegoami/ic2-conquest/releases/415628025/assets?label=&name=fleet-war-20261017-083008-11228-AUTO0734.SAV)\n"
+  }
+}

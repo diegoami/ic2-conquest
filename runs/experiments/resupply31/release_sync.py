@@ -29,7 +29,13 @@ held={x['name']:x for x in json.loads(have.stdout)['assets']} if exists else {}
 pending=[]
 # GitHub normalized spaces to dots in the already published EXE names. Verify
 # matching bytes rather than retry those existing assets. No replacement/clobber.
-for path in sorted(p for p in ART.iterdir() if p.is_file()):
+manifest={}
+for line in (DATA/'SAVES.sha256').read_text().splitlines():
+    digest,name=line.split(None,1)
+    assert name not in manifest or manifest[name]==digest
+    manifest[name]=digest
+for path in sorted(ART/name for name in manifest):
+    assert hashlib.sha256(path.read_bytes()).hexdigest()==manifest[path.name],path.name
     name=path.name.replace(' ','.')
     if name not in held:pending.append(path);continue
     expected='sha256:'+hashlib.sha256(path.read_bytes()).hexdigest()
