@@ -1,0 +1,15 @@
+# Research33: hostile resupply31 treasury ledger
+
+Implementer: this Codex session (OpenAI GPT-6 family), authorized by direct request to take original-game work. External reviewer choice requested from owner and pending; no reviewer launch/fallback/delegation authorized yet. Quota suggestion: MiniMax M3, rank1, spare, confidenceOK, 0% call errors, about47,139 spare7d calls.
+
+Plan: check unpublished work; pin immutable loaded/post inputs and source; decode exact raw record deltas; execute a bounded original-x86 phase/debit trace, validating complete relevant state and phase ordering; use a fresh bounded Wine trace only if required to resolve a precise missing input. Never rerun the whole support matrix. Produce narrow finding, owner-chosen independent review, publish and relay to research intake.
+
+Measurement policy: text outputs exclusively created under runs/experiments/data/run-exp-resupply33, preserve failed attempts and every save, use unique names, no overwrites/deletions. Existing binary inputs remain in run-exp-resupply31 and /home/diego/projects/ic2-work/resupply31/artifacts; new binary outputs, if any, use run-exp-resupply33 and unique names. Commit/push after each batch and within30minutes. No fixture/build edits, foreign-supply-cost reclassification, native/natural claims or T177 expansion.
+
+Research issue33 OPEN, full body read. Related research31 CLOSED and PR32 merged2ed46252e28a5ac48ff7aafccecced12b48ed090. Conquest base3f6f7d5fe46d00c15bf220de8c7d0765ae1aa928. Read prior original experiment/promotion running notes and latest relevant HANDOVER dated entry in this session. Main checkout preexisting untracked entries remain untouched.
+
+Unpublished-work check: research main clean apart from preexisting config/ideas; its linked worktrees are handover and completed issue31, no issue33 worktree. No attribution in prior task notes/intake receipt; no issue33/treasury-ledger filenames found in accessible task workspace paths. /tmp system-private directories were inaccessible and unrelated; not examined further.
+
+Initial read-only inspection: hostile loaded/post saves show4 fresh recruitment queues land/aboard and5 fleet; city records and live subject units unchanged apart from fleet-slot compaction. Army/fleet purse and support remain unchanged. Source FUN0044ffbc calls FUN004504f4 before support; that helper debits treasury per new queue. Exact attribution/phase trace is not yet established.
+
+Last reported and last delivered findings baseline:3f6f7d5fe46d00c15bf220de8c7d0765ae1aa928 (promotion notes at docs/mark-resupply31-promoted0f982e8). No new findings at task start.
