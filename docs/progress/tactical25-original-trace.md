@@ -1,5 +1,37 @@
 # Tactical25 original trace
 
+## Current continuation state — 2026-10-17
+
+Read this section before the chronological plan below. The earlier “pending review” and “intake next” lines are historical progress, superseded by this status and the END receipt.
+
+- Owner chose this Codex session to implement and MiniMax to review, with no implementation delegates or silent reviewer fallback. These choices were supplied explicitly; do not ask them again for the same authorized work.
+- Compatibility work shipped in conquest PR87; shared rules remain in CLAUDE.md with AGENTS.md as the Codex entry point. Do not restart compatibility setup, paused bots, or the old HANDOVER.md queues.
+- Build prerequisite T175 / issue1104 shipped in diegoami/imperial_conquest_2 PR1156 at `257f2d2cd7510451d229a983553a54b89065b06c` (GitHub MERGED rechecked today). Pinned post-merge validation was Data248/Engine7366 passing, zero failures, three Windows-platform skips. This is the baseline used by the attribution, not a target-rule correction.
+- Conquest PR90 published the 318-pair inventory: 282 complete exact matches, 36 residual battle paths; 283 draw sequences exact. Read `findings/2026-10-16-tactical-target-and-draw-attribution.md` and `docs/progress/tactical25.md` for the inventory and historical survey reconciliation. Treat old pending lines there as chronological records.
+- Conquest PR91 is MERGED at `f872057ed455e977c33fc9ca2439b73a3a6f3c91` (rechecked today). Final MiniMax approval and same-session audit confirmation are recorded in the END receipt below and PR91 comment6223553286. No reviewer is awaiting a response. The project had no substantive configured CI; GitGuardian skipping was not a test pass.
+- Research promotion is COMPLETE: diegoami/imperial-conquest-2-research PR29 MERGED at `0a51774445ddbdef587aa5c858354ab5828e4053` (rechecked today), with MiniMax approval. Canonical report: `docs/reports/2026-10-16-tactical25-original-decision-trace.md` in that repository. Its PR body independently records the hashes, raw-state/draw/save validation and limits. This supersedes “research intake/promotion next” below. Never write directly into that repository.
+- Last successfully delivered relay AND last reported findings baseline remains conquest `f872057ed455e977c33fc9ca2439b73a3a6f3c91`. No finding was added by this handoff. Future comparisons use this SHA, not the stale main checkout or private Claude memory.
+
+### Remaining scope and why it stops here
+
+Research25 / build1107 stay OPEN. The first differing chosen threat goal is proved on shared original inputs: HR6 Gaul22, original(5,3), port(6,4). Original threat scoring tests the moving actor's archer/shots condition; the port tests enemies. Ranking already differs at HR4 while the chosen goal agrees. The evidence does not prove that fixing this condition resolves a complete battle or all36 residuals. Other separately documented defects can become visible after correction.
+
+The latest research response explicitly requested no further original probe. Its intake supports a separately reviewed build evaluation/correction contract, sensitivity checks and full replay; it does not authorize gameplay, registry, fixture or expected-range edits. Propose that boundary to the owner before starting another task. This handover request authorizes recording state only. Paused battles/bots remain paused.
+
+### Recovery after temporary workspace cleanup
+
+Today's filesystem check found the old `/tmp/ic2-conquest-tactical25`, `/tmp/ic2-conquest-tactical25-trace`, build/fixtures clones, private Wine workspace and reviewer directories absent; git lists the linked worktrees as prunable. Prior notes describing those paths are historical locations, not available dependencies. Do not assume toolchains, private raw files or OpenCode session stores survived. Do not delete additional artifacts or regenerate measurements to fill these paths.
+
+Tracked source/evidence survives on origin/main and the pushed `research/tactical25` / `research/tactical25-original-trace` branches. The latter includes the post-merge END receipt (`264b2cc`). This continuation lives on pushed branch `docs/tactical25-session-continuity`, currently checked out at `/tmp/ic2-conquest-session-continuity`; recover that branch if this temporary worktree also disappears. Read this note and both findings before creating any new worktree or experiment.
+
+Binary recovery: https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tactical25-trace has40 assets (live count rechecked today); their previous full digest validation is recorded below and in tracked manifests. Re-download only if needed and verify hashes before use. The baseline is build `257f2d2cd7510451d229a983553a54b89065b06c`, fixtures `6319802a75067e7730e4f6a27dce3b4e296ddd9b`; recover in isolated clones only for newly authorized work. New Wine results must remain labelled Wine, x86 helper results separately, with no native Windows claim.
+
+The main checkout remains on51ac45e with five preexisting untracked entries: `.claude/settings.local.json`, `.claude/settings.local.json.clother-20261012-140918.bak`, `.claude/worktrees/`, `docs/review-briefs/pr69.md`, `h.tar`. Leave them alone. Do not reset or clean it. Auto-loaded project instructions already direct successors to task running notes; no new HANDOVER.md or private-memory copy is needed.
+
+### END — continuity update
+
+Documentation only: verified three merged PRs and release count, refreshed origin, preserved the original checkout and measured evidence. No new game, reviewer, build correction or research message launched. Validation: `git diff --check`; no tests needed for this status-only note. Commit and push this branch, then give the owner its path and resume instructions.
+
 Owner authorized all research25 in this Codex session, MiniMax reviewer. Research intake follow-up: promoted93bee896, task25 remains OPEN; recover fresh original runtime decisions without inventing legacy fields. Last relay/findings baseline586d3613d7cddbb4064084b809b81382a5b9697d.
 
 Plan: (1) fresh unmodified start/seed with standard observer, check draw/save prefix through HR6 against immutable mix-rg_s1_r5_hook; (2) add inert snapshots of pass/unit/claims/targets, validate CPU noninterference and original prefix identity; (3) locate earliest decision divergence on actual original inputs, or retain precise blocker; (4) MiniMax review, publish, relay through research intake.
