@@ -88,7 +88,7 @@ The hostile observed buyer treasuries are land/embarked1000→−10 and fleet100
 
 ### Reproduction
 
-From this task's isolated conquest worktree, `probe.py` takes explicit `--bot`, `--work`, `--display`, `--artifacts`, and `subject:variant` cases. Use a separate installed private Wine prefix, not an empty directory. Runs always create fresh UTC/process-named artifact files and refuse overwrites. For example, `aboard:peace`, `aboard:carrier_far`, `land:own_first_zero` and `fleet:two_foreign` are supported cases. Initial local timestamps in names are retained verbatim; JSONL observation times are UTC.
+From this task's isolated conquest worktree, `probe.py` takes explicit `--bot`, `--work`, `--display`, `--artifacts`, and `subject:variant` cases. Use a separate installed private Wine prefix, not an empty directory. Runs always create fresh timestamp/process-named artifact files and refuse overwrites. For example, `aboard:peace`, `aboard:carrier_far`, `land:own_first_zero` and `fleet:two_foreign` are supported cases. Initial local timestamps in names are retained verbatim; JSONL observation times are UTC.
 
 Offline verification from the worktree (use fresh output filenames):
 
