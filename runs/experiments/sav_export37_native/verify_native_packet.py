@@ -16,7 +16,7 @@ def main(out):
    item=digest(p);item.update(case=case,stage=s);files.append(item);layout(p.read_bytes())
   assert stage['I'].read_bytes()==stage['L'].read_bytes()==(CAND/c['candidate']).read_bytes()
   assert stage['E'].read_bytes()==stage['R'].read_bytes()
-  assert stage['L'].read_bytes()!=stage['O'].read_bytes()!=stage['E'].read_bytes()
+  assert len({stage[s].read_bytes() for s in ('L','O','E')})==3
   completion=json.loads((DATA/f'case{case}-completion-v1.json').read_text())
   status=completion.get('original_open_order_AND_endturn_newsave_normalclose_freshreopen_sequence',completion.get('case1_native_open_order_AND_endturn_newsave_close_freshreopen_sequence'));assert status=='PASS observed'
   assert completion.get('endturn_commands_issued',completion.get('end_turn',{}).get('commands_issued'))==1
