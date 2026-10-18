@@ -38,13 +38,14 @@ public class Native {
 '''
 def main():
  p=argparse.ArgumentParser();p.add_argument('--action',required=True,choices=['launch','enumerate','menu','command','text','click','capture','read','message','snapshot']);p.add_argument('--pid',type=int,default=0);p.add_argument('--hwnd',type=int,default=0);p.add_argument('--value',default='');p.add_argument('--address',type=lambda s:int(s,0));p.add_argument('--size',type=int,default=2);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+ if a.output.exists():raise FileExistsError(a.output)
  prefix="$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'; [Console]::OutputEncoding=New-Object System.Text.UTF8Encoding($false); Add-Type -TypeDefinition @'\n"+CS+"\n'@;\n"
  quoted=lambda s:"'"+s.replace("'","''")+"'"
  if a.action=='launch':
   body="if (@(Get-Process | Where-Object {$_.ProcessName -like '*Conquest*'}).Count -ne 0) {throw 'Existing Conquest process; no launch'}; $p=Start-Process -FilePath 'C:\\Users\\diego\\Documents\\imp_conq_original\\Imperial Conquest 2.exe' -WorkingDirectory 'C:\\Users\\diego\\Documents\\imp_conq_original' -PassThru; @{pid=$p.Id} | ConvertTo-Json -Compress"
  else:
   assert a.pid>0
-  body=f"$gamePid={a.pid}; $game=Get-Process -Id $gamePid; if ($game.Path -ne 'C:\\Users\\diego\\Documents\\imp_conq_original\\Imperial Conquest 2.exe') {{throw 'Wrong executable path'}}; $h=[IntPtr]{a.hwnd};\n"
+  body=f"$gamePid={a.pid}; $game=Get-Process -Id $gamePid; if (@(Get-Process | Where-Object {{$_.ProcessName -like '*Conquest*' -and $_.Id -ne $gamePid}}).Count -ne 0) {{throw 'Another Conquest process appeared; stop'}}; if ($game.Path -ne 'C:\\Users\\diego\\Documents\\imp_conq_original\\Imperial Conquest 2.exe') {{throw 'Wrong executable path'}}; $h=[IntPtr]{a.hwnd};\n"
   if a.action=='enumerate':body+='[Native]::Windows($gamePid,$true) | ConvertTo-Json -Depth 8 -Compress'
   elif a.action=='read':
    assert a.address is not None and a.address>0 and 0<a.size<=16
@@ -55,7 +56,7 @@ $p=[Native]::OpenProcess(0x410,$false,$gamePid);
 function ReadBytes([long]$at,[int]$size){$b=New-Object byte[] $size;$got=[IntPtr]::Zero;if(-not [Native]::ReadProcessMemory($p,[IntPtr]$at,$b,$size,[ref]$got)){throw 'RPM failed'};return ,$b}
 function W([long]$at){[BitConverter]::ToInt16((ReadBytes $at 2),0)}
 function D([long]$at){[BitConverter]::ToUInt32((ReadBytes $at 4),0)}
-try {$unit=D 0x45e740;$current=W 0x4a0320;$r=New-Object Native+Rect;[void][Native]::GetClientRect([IntPtr]1838558,[ref]$r);@{current=$current;selected_army=W 0x4a0328;selected_fleet=W 0x4a032a;selected_cell_x=W ($unit+0x21a);selected_cell_y=W ($unit+0x21c);unit_army=W ($unit+0x220);unit_fleet=W ($unit+0x224);tax=W (0x474670+$current*1172+0x44a);offer_source=W 0x49f008;offer_type=W 0x49f00a;armies=W 0x4a0324;fleets=W 0x4a0326;week=W 0x4a0330;year=W 0x4a0332;season=W 0x4a032e;viewport_x=W (0x474670+$current*1172+0x488);viewport_y=W (0x474670+$current*1172+0x486);client_width=$r.Right;client_height=$r.Bottom} | ConvertTo-Json -Compress}finally{[void][Native]::CloseHandle($p)}
+try {$unit=D 0x45e740;$current=W 0x4a0320;$r=New-Object Native+Rect; $um=@([Native]::Windows($gamePid,$false) | Where-Object {$_.cls -eq "TUnitMap"})[0];[void][Native]::GetClientRect([IntPtr]$um.handle,[ref]$r);@{current=$current;selected_army=W 0x4a0328;selected_fleet=W 0x4a032a;selected_cell_x=W ($unit+0x21a);selected_cell_y=W ($unit+0x21c);unit_army=W ($unit+0x220);unit_fleet=W ($unit+0x224);tax=W (0x474670+$current*1172+0x44a);offer_source=W 0x49f008;offer_type=W 0x49f00a;armies=W 0x4a0324;fleets=W 0x4a0326;week=W 0x4a0330;year=W 0x4a0332;season=W 0x4a032e;viewport_x=W (0x474670+$current*1172+0x488);viewport_y=W (0x474670+$current*1172+0x486);client_width=$r.Right;client_height=$r.Bottom} | ConvertTo-Json -Compress}finally{[void][Native]::CloseHandle($p)}
 '''
   else:
    body+='[Native]::Check($h,$gamePid);\n'
