@@ -1,0 +1,957 @@
+{
+  "method": "Read-only whole-file and complete serialized-span comparison of exact owner-created reference control1 before/after saves, immutable source and physical production candidate. Metadata/offsets/scalars only; no buffers/unit names/private JSON emitted; no file/process/UI action.",
+  "files": {
+    "source": {
+      "name": "1.sav",
+      "size": 131313,
+      "sha256": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "sha256_after_readonly_comparison": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "unchanged": true
+    },
+    "candidate": {
+      "name": "t184-tax-1-n0-0.SAV",
+      "size": 131313,
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "sha256_after_readonly_comparison": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "unchanged": true
+    },
+    "control_before": {
+      "name": "C1B68B2.SAV",
+      "size": 131313,
+      "sha256": "26c4cc3b6b963fb45ac1b41d4ad45bb741f0ed3d747f1338d8eec897379a2574",
+      "sha256_after_readonly_comparison": "26c4cc3b6b963fb45ac1b41d4ad45bb741f0ed3d747f1338d8eec897379a2574",
+      "unchanged": true
+    },
+    "control_after": {
+      "name": "C1T68B2.SAV",
+      "size": 131313,
+      "sha256": "27f2aaee278f836ae33747604800847943dd836a6865ec875c49d5f5181faa66",
+      "sha256_after_readonly_comparison": "27f2aaee278f836ae33747604800847943dd836a6865ec875c49d5f5181faa66",
+      "unchanged": true
+    }
+  },
+  "scalar_states": {
+    "source": {
+      "army_count": 14,
+      "fleet_count": 2,
+      "news_last_index": 27,
+      "current_nation": 0,
+      "seat": 7,
+      "week": 1,
+      "year": 270,
+      "season": 0,
+      "pending_offer_source": -1,
+      "pending_offer_type": 0,
+      "battle_flag": 0,
+      "current_nation_fields": {
+        "tax": 10,
+        "area_map_left": 2,
+        "area_map_top": 72,
+        "area_map_height": 170,
+        "area_map_width": 320,
+        "unit_map_left": 332,
+        "unit_map_top": 72,
+        "unit_map_height": 461,
+        "unit_map_width": 431,
+        "information_left": 2,
+        "information_top": 267,
+        "information_height": 1120,
+        "information_width": 320,
+        "viewport_y": 39,
+        "viewport_x": 97
+      },
+      "main_window_geometry": [
+        -8,
+        -8,
+        1349,
+        2560
+      ]
+    },
+    "candidate": {
+      "army_count": 14,
+      "fleet_count": 2,
+      "news_last_index": 27,
+      "current_nation": 0,
+      "seat": 7,
+      "week": 1,
+      "year": 270,
+      "season": 0,
+      "pending_offer_source": -1,
+      "pending_offer_type": 0,
+      "battle_flag": 0,
+      "current_nation_fields": {
+        "tax": 0,
+        "area_map_left": 2,
+        "area_map_top": 72,
+        "area_map_height": 170,
+        "area_map_width": 320,
+        "unit_map_left": 332,
+        "unit_map_top": 72,
+        "unit_map_height": 461,
+        "unit_map_width": 431,
+        "information_left": 2,
+        "information_top": 267,
+        "information_height": 1120,
+        "information_width": 320,
+        "viewport_y": 39,
+        "viewport_x": 97
+      },
+      "main_window_geometry": [
+        -8,
+        -8,
+        1349,
+        2560
+      ]
+    },
+    "control_before": {
+      "army_count": 14,
+      "fleet_count": 2,
+      "news_last_index": 27,
+      "current_nation": 0,
+      "seat": 7,
+      "week": 1,
+      "year": 270,
+      "season": 0,
+      "pending_offer_source": -1,
+      "pending_offer_type": 0,
+      "battle_flag": 0,
+      "current_nation_fields": {
+        "tax": 10,
+        "area_map_left": 2,
+        "area_map_top": 72,
+        "area_map_height": 170,
+        "area_map_width": 320,
+        "unit_map_left": 332,
+        "unit_map_top": 72,
+        "unit_map_height": 461,
+        "unit_map_width": 431,
+        "information_left": 1464,
+        "information_top": 744,
+        "information_height": 1120,
+        "information_width": 320,
+        "viewport_y": 39,
+        "viewport_x": 97
+      },
+      "main_window_geometry": [
+        -8,
+        -8,
+        1349,
+        2560
+      ]
+    },
+    "control_after": {
+      "army_count": 14,
+      "fleet_count": 2,
+      "news_last_index": 27,
+      "current_nation": 0,
+      "seat": 7,
+      "week": 1,
+      "year": 270,
+      "season": 0,
+      "pending_offer_source": -1,
+      "pending_offer_type": 0,
+      "battle_flag": 0,
+      "current_nation_fields": {
+        "tax": 0,
+        "area_map_left": 1168,
+        "area_map_top": 293,
+        "area_map_height": 170,
+        "area_map_width": 320,
+        "unit_map_left": 332,
+        "unit_map_top": 72,
+        "unit_map_height": 461,
+        "unit_map_width": 431,
+        "information_left": 1464,
+        "information_top": 744,
+        "information_height": 1120,
+        "information_width": 320,
+        "viewport_y": 39,
+        "viewport_x": 97
+      },
+      "main_window_geometry": [
+        -8,
+        -8,
+        1349,
+        2560
+      ]
+    }
+  },
+  "comparisons": [
+    {
+      "before": "source",
+      "after": "control_before",
+      "changed_byte_count": 4,
+      "changed_offsets_decimal": [
+        111346,
+        111347,
+        111348,
+        111349
+      ],
+      "classified_changes": [
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111346,
+          "nation": 0,
+          "nation_relative_offset": "0x47e",
+          "field": "information_left",
+          "field_WORD_offset_decimal": 111346
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111347,
+          "nation": 0,
+          "nation_relative_offset": "0x47f",
+          "field": "information_left",
+          "field_WORD_offset_decimal": 111346
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111348,
+          "nation": 0,
+          "nation_relative_offset": "0x480",
+          "field": "information_top",
+          "field_WORD_offset_decimal": 111348
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111349,
+          "nation": 0,
+          "nation_relative_offset": "0x481",
+          "field": "information_top",
+          "field_WORD_offset_decimal": 111348
+        }
+      ],
+      "scalar_WORD_changes": [
+        {
+          "field": "information_left",
+          "WORD_offset_decimal": 111346,
+          "before": 2,
+          "after": 1464
+        },
+        {
+          "field": "information_top",
+          "WORD_offset_decimal": 111348,
+          "before": 267,
+          "after": 744
+        }
+      ],
+      "all_serialized_regions": [
+        {
+          "region": "map",
+          "size": 89600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "cities",
+          "size": 11356,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "army_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "armies",
+          "size": 9184,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleet_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleets",
+          "size": 52,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "nations",
+          "size": 18752,
+          "changed_byte_count": 4,
+          "changed_offsets_decimal": [
+            111346,
+            111347,
+            111348,
+            111349
+          ]
+        },
+        {
+          "region": "mercenaries",
+          "size": 600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_last",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_slots",
+          "size": 1708,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "turn_order",
+          "size": 32,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "pending_offer",
+          "size": 4,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "current_nation",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "seat",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "week",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "year",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "season",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "main_geometry",
+          "size": 8,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "battle_flag",
+          "size": 1,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        }
+      ]
+    },
+    {
+      "before": "source",
+      "after": "candidate",
+      "changed_byte_count": 1,
+      "changed_offsets_decimal": [
+        111294
+      ],
+      "classified_changes": [
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111294,
+          "nation": 0,
+          "nation_relative_offset": "0x44a",
+          "field": "tax",
+          "field_WORD_offset_decimal": 111294
+        }
+      ],
+      "scalar_WORD_changes": [
+        {
+          "field": "tax",
+          "WORD_offset_decimal": 111294,
+          "before": 10,
+          "after": 0
+        }
+      ],
+      "all_serialized_regions": [
+        {
+          "region": "map",
+          "size": 89600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "cities",
+          "size": 11356,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "army_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "armies",
+          "size": 9184,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleet_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleets",
+          "size": 52,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "nations",
+          "size": 18752,
+          "changed_byte_count": 1,
+          "changed_offsets_decimal": [
+            111294
+          ]
+        },
+        {
+          "region": "mercenaries",
+          "size": 600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_last",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_slots",
+          "size": 1708,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "turn_order",
+          "size": 32,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "pending_offer",
+          "size": 4,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "current_nation",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "seat",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "week",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "year",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "season",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "main_geometry",
+          "size": 8,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "battle_flag",
+          "size": 1,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        }
+      ]
+    },
+    {
+      "before": "control_before",
+      "after": "control_after",
+      "changed_byte_count": 5,
+      "changed_offsets_decimal": [
+        111294,
+        111330,
+        111331,
+        111332,
+        111333
+      ],
+      "classified_changes": [
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111294,
+          "nation": 0,
+          "nation_relative_offset": "0x44a",
+          "field": "tax",
+          "field_WORD_offset_decimal": 111294
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111330,
+          "nation": 0,
+          "nation_relative_offset": "0x46e",
+          "field": "area_map_left",
+          "field_WORD_offset_decimal": 111330
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111331,
+          "nation": 0,
+          "nation_relative_offset": "0x46f",
+          "field": "area_map_left",
+          "field_WORD_offset_decimal": 111330
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111332,
+          "nation": 0,
+          "nation_relative_offset": "0x470",
+          "field": "area_map_top",
+          "field_WORD_offset_decimal": 111332
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111333,
+          "nation": 0,
+          "nation_relative_offset": "0x471",
+          "field": "area_map_top",
+          "field_WORD_offset_decimal": 111332
+        }
+      ],
+      "scalar_WORD_changes": [
+        {
+          "field": "tax",
+          "WORD_offset_decimal": 111294,
+          "before": 10,
+          "after": 0
+        },
+        {
+          "field": "area_map_left",
+          "WORD_offset_decimal": 111330,
+          "before": 2,
+          "after": 1168
+        },
+        {
+          "field": "area_map_top",
+          "WORD_offset_decimal": 111332,
+          "before": 72,
+          "after": 293
+        }
+      ],
+      "all_serialized_regions": [
+        {
+          "region": "map",
+          "size": 89600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "cities",
+          "size": 11356,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "army_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "armies",
+          "size": 9184,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleet_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleets",
+          "size": 52,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "nations",
+          "size": 18752,
+          "changed_byte_count": 5,
+          "changed_offsets_decimal": [
+            111294,
+            111330,
+            111331,
+            111332,
+            111333
+          ]
+        },
+        {
+          "region": "mercenaries",
+          "size": 600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_last",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_slots",
+          "size": 1708,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "turn_order",
+          "size": 32,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "pending_offer",
+          "size": 4,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "current_nation",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "seat",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "week",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "year",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "season",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "main_geometry",
+          "size": 8,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "battle_flag",
+          "size": 1,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        }
+      ]
+    },
+    {
+      "before": "candidate",
+      "after": "control_after",
+      "changed_byte_count": 8,
+      "changed_offsets_decimal": [
+        111330,
+        111331,
+        111332,
+        111333,
+        111346,
+        111347,
+        111348,
+        111349
+      ],
+      "classified_changes": [
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111330,
+          "nation": 0,
+          "nation_relative_offset": "0x46e",
+          "field": "area_map_left",
+          "field_WORD_offset_decimal": 111330
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111331,
+          "nation": 0,
+          "nation_relative_offset": "0x46f",
+          "field": "area_map_left",
+          "field_WORD_offset_decimal": 111330
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111332,
+          "nation": 0,
+          "nation_relative_offset": "0x470",
+          "field": "area_map_top",
+          "field_WORD_offset_decimal": 111332
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111333,
+          "nation": 0,
+          "nation_relative_offset": "0x471",
+          "field": "area_map_top",
+          "field_WORD_offset_decimal": 111332
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111346,
+          "nation": 0,
+          "nation_relative_offset": "0x47e",
+          "field": "information_left",
+          "field_WORD_offset_decimal": 111346
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111347,
+          "nation": 0,
+          "nation_relative_offset": "0x47f",
+          "field": "information_left",
+          "field_WORD_offset_decimal": 111346
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111348,
+          "nation": 0,
+          "nation_relative_offset": "0x480",
+          "field": "information_top",
+          "field_WORD_offset_decimal": 111348
+        },
+        {
+          "serialized_region": "nations",
+          "offset_decimal": 111349,
+          "nation": 0,
+          "nation_relative_offset": "0x481",
+          "field": "information_top",
+          "field_WORD_offset_decimal": 111348
+        }
+      ],
+      "scalar_WORD_changes": [
+        {
+          "field": "area_map_left",
+          "WORD_offset_decimal": 111330,
+          "before": 2,
+          "after": 1168
+        },
+        {
+          "field": "area_map_top",
+          "WORD_offset_decimal": 111332,
+          "before": 72,
+          "after": 293
+        },
+        {
+          "field": "information_left",
+          "WORD_offset_decimal": 111346,
+          "before": 2,
+          "after": 1464
+        },
+        {
+          "field": "information_top",
+          "WORD_offset_decimal": 111348,
+          "before": 267,
+          "after": 744
+        }
+      ],
+      "all_serialized_regions": [
+        {
+          "region": "map",
+          "size": 89600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "cities",
+          "size": 11356,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "army_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "armies",
+          "size": 9184,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleet_count",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "fleets",
+          "size": 52,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "nations",
+          "size": 18752,
+          "changed_byte_count": 8,
+          "changed_offsets_decimal": [
+            111330,
+            111331,
+            111332,
+            111333,
+            111346,
+            111347,
+            111348,
+            111349
+          ]
+        },
+        {
+          "region": "mercenaries",
+          "size": 600,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_last",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "news_slots",
+          "size": 1708,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "turn_order",
+          "size": 32,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "pending_offer",
+          "size": 4,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "current_nation",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "seat",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "week",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "year",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "season",
+          "size": 2,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "main_geometry",
+          "size": 8,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        },
+        {
+          "region": "battle_flag",
+          "size": 1,
+          "changed_byte_count": 0,
+          "changed_offsets_decimal": []
+        }
+      ]
+    }
+  ],
+  "control1_result": {
+    "expected_tax_change_observed_in_files": true,
+    "area_map_window_left_top_changed": true,
+    "area_map_before": [
+      2,
+      72
+    ],
+    "area_map_after": [
+      1168,
+      293
+    ],
+    "viewport_changed": false,
+    "viewport_x": 97,
+    "viewport_y": 39,
+    "extra_gameplay_byte_changes": false,
+    "all_other_serialized_bytes_equal_between_control_saves": true,
+    "exact_UI_geometry_identity": false
+  },
+  "owner_visual_dialog_or_window_movement_observation": "PENDING with parent",
+  "internal_GUI_callback_trace": "NOT_ESTABLISHED by saved files",
+  "Windows_candidate_cases_completed": 0,
+  "reference_control_is_completed_candidate_case": false,
+  "child_process_or_UI_actions": 0,
+  "child_save_writes": 0
+}

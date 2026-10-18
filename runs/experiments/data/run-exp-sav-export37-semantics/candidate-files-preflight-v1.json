@@ -1,0 +1,89 @@
+{
+  "method": "Read-only hashes/lengths/all-byte source-candidate comparison and existing strict tax-projection equality on exactly the three physical candidates. No candidate/source/save copy or write, no private JSON read, no original launch. Receipt existence only; private receipt bodies not copied.",
+  "research_checkpoint": "https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6247428351",
+  "writer_commit_reported_by_research": "8c31728bf4124cd87465568e4429d202ddaf2f8d",
+  "writer_PR": "https://github.com/diegoami/imperial_conquest_2/pull/1202",
+  "writer_PR_status_at_checkpoint": "DRAFT/unmerged; scoped Kimi approval reported by research, no new review here",
+  "research_PR43": "Already merged according to parent; no duplicate intake",
+  "physical_candidates_verified": 3,
+  "records": [
+    {
+      "source_name": "1.sav",
+      "candidate_name": "t184-tax-1-n0-0.SAV",
+      "current_nation_index": 0,
+      "source_tax": 10,
+      "expected_candidate_tax": 0,
+      "size": 131313,
+      "source_sha256": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "candidate_sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "actual_changed_offsets_decimal": [
+        111294
+      ],
+      "changes_confined_to_current_human_tax_WORD": true,
+      "matches_existing_tax_projection": true,
+      "source_hash_unchanged_after_readonly_check": true,
+      "candidate_hash_unchanged_after_readonly_check": true,
+      "native_open_observed": false,
+      "ordinary_order_observed": false,
+      "end_turn_observed": false,
+      "new_copy_save_and_reopen_observed": false
+    },
+    {
+      "source_name": "1_thracia_271_spring_1.sav",
+      "candidate_name": "t184-tax-thracia-n15-40.SAV",
+      "current_nation_index": 15,
+      "source_tax": 9,
+      "expected_candidate_tax": 40,
+      "size": 131557,
+      "source_sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+      "candidate_sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+      "actual_changed_offsets_decimal": [
+        128874
+      ],
+      "changes_confined_to_current_human_tax_WORD": true,
+      "matches_existing_tax_projection": true,
+      "source_hash_unchanged_after_readonly_check": true,
+      "candidate_hash_unchanged_after_readonly_check": true,
+      "native_open_observed": false,
+      "ordinary_order_observed": false,
+      "end_turn_observed": false,
+      "new_copy_save_and_reopen_observed": false
+    },
+    {
+      "source_name": "1_rome_270_winter_7.sav",
+      "candidate_name": "t184-tax-rome-n0-30.SAV",
+      "current_nation_index": 0,
+      "source_tax": 20,
+      "expected_candidate_tax": 30,
+      "size": 132149,
+      "source_sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+      "candidate_sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+      "actual_changed_offsets_decimal": [
+        111398
+      ],
+      "changes_confined_to_current_human_tax_WORD": true,
+      "matches_existing_tax_projection": true,
+      "source_hash_unchanged_after_readonly_check": true,
+      "candidate_hash_unchanged_after_readonly_check": true,
+      "native_open_observed": false,
+      "ordinary_order_observed": false,
+      "end_turn_observed": false,
+      "new_copy_save_and_reopen_observed": false
+    }
+  ],
+  "private_receipts_exist": {
+    "delivery-manifest.json": true,
+    "candidates-manifest.json": true,
+    "candidates-oracle.json": true,
+    "main-independent-oracle.json": true,
+    "KIMI-REVIEW.md": true
+  },
+  "original_EXE_runtime_identity": "UNVERIFIED/not launched",
+  "original_Windows_owner_coordination": "PENDING",
+  "full_tax_dialog_refresh_posted_close_save_composition": "UNPERFORMED",
+  "Windows_gate_completed_cases": 0,
+  "Windows_gate_required_cases": 3,
+  "twelve_native_JSON_conversion_target": "UNMET/separate from bound-original tax subset",
+  "candidate_or_other_save_files_written": 0,
+  "last_delivered_MAIN_findings_baseline": "c8f11fceaa5b414724e7925f025c2185fdbf1dcd"
+}

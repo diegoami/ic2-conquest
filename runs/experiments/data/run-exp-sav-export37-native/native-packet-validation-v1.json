@@ -1,0 +1,432 @@
+{
+  "method": "Read-only private hashes/whole-file identities, authentic full strategic framing, retained metadata parse and script compilation; no UI action/game launch/save creation",
+  "native_candidate_sequences_completed": 3,
+  "required": 3,
+  "checks": [
+    {
+      "case": 1,
+      "load_save_exact_candidate": true,
+      "order_changed_save": true,
+      "postturn_changed_save": true,
+      "fresh_reopen_exact_postturn": true,
+      "completion_record": "case1-completion-v1.json"
+    },
+    {
+      "case": 2,
+      "load_save_exact_candidate": true,
+      "order_changed_save": true,
+      "postturn_changed_save": true,
+      "fresh_reopen_exact_postturn": true,
+      "completion_record": "case2-completion-v1.json"
+    },
+    {
+      "case": 3,
+      "load_save_exact_candidate": true,
+      "order_changed_save": true,
+      "postturn_changed_save": true,
+      "fresh_reopen_exact_postturn": true,
+      "completion_record": "case3-completion-v1.json"
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "name": "1.sav",
+      "size": 131313,
+      "sha256": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "case": 1,
+      "role": "source",
+      "unchanged": true
+    },
+    {
+      "name": "t184-tax-1-n0-0.SAV",
+      "size": 131313,
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "case": 1,
+      "role": "candidate",
+      "unchanged": true
+    },
+    {
+      "name": "1_thracia_271_spring_1.sav",
+      "size": 131557,
+      "sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+      "case": 2,
+      "role": "source",
+      "unchanged": true
+    },
+    {
+      "name": "t184-tax-thracia-n15-40.SAV",
+      "size": 131557,
+      "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+      "case": 2,
+      "role": "candidate",
+      "unchanged": true
+    },
+    {
+      "name": "1_rome_270_winter_7.sav",
+      "size": 132149,
+      "sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+      "case": 3,
+      "role": "source",
+      "unchanged": true
+    },
+    {
+      "name": "t184-tax-rome-n0-30.SAV",
+      "size": 132149,
+      "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+      "case": 3,
+      "role": "candidate",
+      "unchanged": true
+    }
+  ],
+  "original_EXE": {
+    "name": "Imperial Conquest 2.exe",
+    "size": 1166336,
+    "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+  },
+  "private_files": [
+    {
+      "name": "N1I68B2.SAV",
+      "size": 131313,
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "case": 1,
+      "stage": "I"
+    },
+    {
+      "name": "N1L68B2.SAV",
+      "size": 131313,
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "case": 1,
+      "stage": "L"
+    },
+    {
+      "name": "N1O68B2.SAV",
+      "size": 131313,
+      "sha256": "0253f70e6405d18fd8cfed5dd000971811651cfe3dfd11597633c69376be3128",
+      "case": 1,
+      "stage": "O"
+    },
+    {
+      "name": "N1E68B2.SAV",
+      "size": 131496,
+      "sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c",
+      "case": 1,
+      "stage": "E"
+    },
+    {
+      "name": "N1R68B2.SAV",
+      "size": 131496,
+      "sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c",
+      "case": 1,
+      "stage": "R"
+    },
+    {
+      "case": 1,
+      "stage": "referenceB",
+      "name": "C1B68B2.SAV",
+      "size": 131313,
+      "sha256": "26c4cc3b6b963fb45ac1b41d4ad45bb741f0ed3d747f1338d8eec897379a2574"
+    },
+    {
+      "case": 1,
+      "stage": "referenceT",
+      "name": "C1T68B2.SAV",
+      "size": 131313,
+      "sha256": "27f2aaee278f836ae33747604800847943dd836a6865ec875c49d5f5181faa66"
+    },
+    {
+      "name": "N2I68B2.SAV",
+      "size": 131557,
+      "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+      "case": 2,
+      "stage": "I"
+    },
+    {
+      "name": "N2L68B2.SAV",
+      "size": 131557,
+      "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+      "case": 2,
+      "stage": "L"
+    },
+    {
+      "name": "N2O68B2.SAV",
+      "size": 131557,
+      "sha256": "ee905f94083312695fe0138e94c6f98dc0a7e45a9fc2158d45958d18c605e7be",
+      "case": 2,
+      "stage": "O"
+    },
+    {
+      "name": "N2E68B2.SAV",
+      "size": 131984,
+      "sha256": "13a64beae3e90d60ad4179e24b0d51e178698347725e567af3096a2887df4498",
+      "case": 2,
+      "stage": "E"
+    },
+    {
+      "name": "N2R68B2.SAV",
+      "size": 131984,
+      "sha256": "13a64beae3e90d60ad4179e24b0d51e178698347725e567af3096a2887df4498",
+      "case": 2,
+      "stage": "R"
+    },
+    {
+      "case": 2,
+      "stage": "referenceB",
+      "name": "C2B68B2.SAV",
+      "size": 131557,
+      "sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3"
+    },
+    {
+      "case": 2,
+      "stage": "referenceT",
+      "name": "C2T68B2.SAV",
+      "size": 131557,
+      "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f"
+    },
+    {
+      "name": "N3I68B2.SAV",
+      "size": 132149,
+      "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+      "case": 3,
+      "stage": "I"
+    },
+    {
+      "name": "N3L68B2.SAV",
+      "size": 132149,
+      "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+      "case": 3,
+      "stage": "L"
+    },
+    {
+      "name": "N3O68B2.SAV",
+      "size": 132149,
+      "sha256": "13e0e238298ed51ebf821d160d8e07aed3757c01e1ab64a5ab9027f07a7ec966",
+      "case": 3,
+      "stage": "O"
+    },
+    {
+      "name": "N3E68B2.SAV",
+      "size": 132149,
+      "sha256": "3e867d29fc18a69e6e9a9d6569f3246c1dff16b2062687952b143d362e703d3d",
+      "case": 3,
+      "stage": "E"
+    },
+    {
+      "name": "N3R68B2.SAV",
+      "size": 132149,
+      "sha256": "3e867d29fc18a69e6e9a9d6569f3246c1dff16b2062687952b143d362e703d3d",
+      "case": 3,
+      "stage": "R"
+    },
+    {
+      "case": 3,
+      "stage": "referenceB",
+      "name": "C3B68B2.SAV",
+      "size": 132149,
+      "sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a"
+    },
+    {
+      "case": 3,
+      "stage": "referenceT",
+      "name": "C3T68B2.SAV",
+      "size": 132149,
+      "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a"
+    }
+  ],
+  "private_captures": [
+    {
+      "name": "C2EX01.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "C2TX01.PNG",
+      "size": 7283,
+      "sha256": "e653139a3de4b075a726620f0553809f5e050e18c27e6dce803a688f036c25f9"
+    },
+    {
+      "name": "C2TX02.PNG",
+      "size": 7515,
+      "sha256": "ad999e1769be5a96240ccdd0e3fc336a571db5d455406b28778d975fef01970f"
+    },
+    {
+      "name": "C3EX01.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "C3TX01.PNG",
+      "size": 7343,
+      "sha256": "6a72d228dd37b9ffca2b2aed908fffcde6d206a64724a4a9b6c221d6418ce125"
+    },
+    {
+      "name": "C3TX02.PNG",
+      "size": 7595,
+      "sha256": "39452057b9749af9a5cb7bc17a46fbb0899574ba3a06c9a2d066f8ea18b7355e"
+    },
+    {
+      "name": "N1EXIT01.PNG",
+      "size": 4859,
+      "sha256": "e858a8417b4957bc24e9ce3de0fed93e3c262f642da6bf4d8bbc7397e4e64f95"
+    },
+    {
+      "name": "N1EXIT02.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "N1INF001.PNG",
+      "size": 26356,
+      "sha256": "5d45f18aaeec8ffc01807d1da4628139cbd7c512f0075acf67d10b0a08e43a36"
+    },
+    {
+      "name": "N1INF002.PNG",
+      "size": 28065,
+      "sha256": "4a09ee3e12859270263f5f87e6bd407ff8a2a20406cccbfa3050199fdca26f87"
+    },
+    {
+      "name": "N1INF003.PNG",
+      "size": 28382,
+      "sha256": "c22f34d2de8ca408050493ece930070bdbc4d2a07ebba877ffe8f2ae1e20b0a8"
+    },
+    {
+      "name": "N1INF004.PNG",
+      "size": 28382,
+      "sha256": "c22f34d2de8ca408050493ece930070bdbc4d2a07ebba877ffe8f2ae1e20b0a8"
+    },
+    {
+      "name": "N1MAP001.PNG",
+      "size": 28649,
+      "sha256": "ffa846205a2a4394511293e8049682be0b75c3d03ff1ce4493c658484efc2ca4"
+    },
+    {
+      "name": "N1REC001.PNG",
+      "size": 18990,
+      "sha256": "e8b8a8a2827c1ca19261cd470350642949d41125170eca051eed18170ba9cb9b"
+    },
+    {
+      "name": "N1REC002.PNG",
+      "size": 19164,
+      "sha256": "c54172ea99f71fdc4bd67317bcbf21928db29b3c2c281243a0923b6d73a1e315"
+    },
+    {
+      "name": "N1REC003.PNG",
+      "size": 19913,
+      "sha256": "2543ded8a595796bc5478dbf102ea3239fd42d66da66f3ecf7867b5919727334"
+    },
+    {
+      "name": "N1TAX001.PNG",
+      "size": 6523,
+      "sha256": "e394e252017716c5b5cb01d4699eab6b88f9873628dddbdf0839552c7f1b141b"
+    },
+    {
+      "name": "N2EX01.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "N2EX02.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "N2INF001.PNG",
+      "size": 29408,
+      "sha256": "0e0ce2b91b36ca95a6ce2a2a8e21ef850f9cebcbe4bc2f23dc672d360ab419aa"
+    },
+    {
+      "name": "N2INF002.PNG",
+      "size": 34054,
+      "sha256": "0564af7a485d563be08a2e84abb7082fbc6902dbcf8fbd9520a3a4c10b8a3d64"
+    },
+    {
+      "name": "N2INF003.PNG",
+      "size": 34054,
+      "sha256": "0564af7a485d563be08a2e84abb7082fbc6902dbcf8fbd9520a3a4c10b8a3d64"
+    },
+    {
+      "name": "N2MAP001.PNG",
+      "size": 26612,
+      "sha256": "28132b42656e24a5a25dbac3706c692c68180d082b110830eec50bed300c4a46"
+    },
+    {
+      "name": "N2REC001.PNG",
+      "size": 19736,
+      "sha256": "9fce7b005b985fcce66dcdb3250ad6b9c37f45733334d7f0f510a6dbb3fba6c5"
+    },
+    {
+      "name": "N2REC002.PNG",
+      "size": 19902,
+      "sha256": "57cd95b6a226ac5cf3f575496f23c96bdf0f109efbcdf8fdf2fc3526d8a29884"
+    },
+    {
+      "name": "N2REC003.PNG",
+      "size": 20648,
+      "sha256": "60de84edb5618913b69cad7a5631444da468d469fb862881d0fa00fdba43c8b5"
+    },
+    {
+      "name": "N2TAX001.PNG",
+      "size": 7328,
+      "sha256": "570d75fd9d7ef5229279c7e5bd22165ad3a22e136765c70daa9ccb54d4c7414c"
+    },
+    {
+      "name": "N3EX01.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "N3EX02.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "name": "N3INF001.PNG",
+      "size": 30257,
+      "sha256": "ab2570b69be9b5207d4d7e2ce6d8f22e2c2a031b534d93a3c38c1787b0e141c4"
+    },
+    {
+      "name": "N3INF002.PNG",
+      "size": 30182,
+      "sha256": "312bf738c0abb93e323d81517cfe178e13db624bcdda529d60f97735de8884c6"
+    },
+    {
+      "name": "N3INF003.PNG",
+      "size": 30182,
+      "sha256": "312bf738c0abb93e323d81517cfe178e13db624bcdda529d60f97735de8884c6"
+    },
+    {
+      "name": "N3MAP001.PNG",
+      "size": 122661,
+      "sha256": "6dbfb7662abb39c3616c6c3d6de0a5667d5e5e741588bc9646174ba26cc0e024"
+    },
+    {
+      "name": "N3REC001.PNG",
+      "size": 18166,
+      "sha256": "14d50d33502f2cdd1afd4499d28988b37c5c2b0df093f7bc843991cb3fd4d38b"
+    },
+    {
+      "name": "N3REC002.PNG",
+      "size": 18337,
+      "sha256": "37635c03b2ffd8fa4f07d795333496e8c3870c398409f5d5d4559bac6f616f61"
+    },
+    {
+      "name": "N3REC003.PNG",
+      "size": 19090,
+      "sha256": "71d9bc3e5f7aeedd32f544fae3f693f4c50b2e04161f53ec67d39bcaa173821b"
+    },
+    {
+      "name": "N3TAX001.PNG",
+      "size": 7383,
+      "sha256": "33686df33ab15ba05bc9aeb2388ed973dc1b849a951d623f778a7daf2cbc98e9"
+    },
+    {
+      "name": "N3TURN01.PNG",
+      "size": 8165,
+      "sha256": "dd388ec2372c91ca2c425c32d3830da7f577441250135e3d898c8327e8838b9a"
+    }
+  ],
+  "parsed_measurement_JSON_files": 333,
+  "active_original_processes": 0,
+  "internal_callback_instruction_trace": "UNVERIFIED",
+  "twelve_native_JSON_conversion_target": "UNMET/separate",
+  "full_exporter_or_issue_closure": false
+}

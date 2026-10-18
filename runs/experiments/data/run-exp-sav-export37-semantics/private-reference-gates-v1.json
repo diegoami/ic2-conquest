@@ -1,0 +1,193 @@
+{
+  "method": "Read-only finite private-reference gates using robust full original stream framing and existing tax_projection in memory. No save bytes/text/private JSON emitted; no candidate file generated. File gates do not prove authenticity/native binding/GUI composition/Windows compatibility.",
+  "issue_comment": "https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6246359205",
+  "profile": "bound-original-current-human-tax-v1 candidate",
+  "implementer": "gpt-6.1-sol medium (OpenAI)",
+  "last_delivered_MAIN_findings_baseline": "c8f11fceaa5b414724e7925f025c2185fdbf1dcd",
+  "records": [
+    {
+      "name": "1.sav",
+      "size": 131313,
+      "sha256_before": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "sha256_after": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "metadata": {
+        "army_count": 14,
+        "fleet_count": 2,
+        "news_last_index": 27,
+        "current_nation_index": 0,
+        "current_tax": 10,
+        "pending_offer_source": -1
+      },
+      "file_checkable_gates": {
+        "published_hash_matches": true,
+        "complete_original_framing": true,
+        "army_count_within0_198": true,
+        "fleet_count_within0_100": true,
+        "strategic_no_open_battle": true,
+        "current_nation_within0_15": true,
+        "turn_order_is_permutation": true,
+        "seat_matches_current_nation": true,
+        "current_controller_is_human1": true,
+        "current_tax_within0_40": true,
+        "pending_offer_source_is_minus1": true,
+        "bound_ui_dimensions_within_profile": true,
+        "bound_viewport_within_map_bounds": true,
+        "viewport_clamp_is_identity": true,
+        "source_hash_unchanged_after_assessment": true
+      },
+      "file_checkable_gate_pass": true,
+      "rejection_reasons": [],
+      "tax_targets": [
+        {
+          "proposed_tax": 0,
+          "differs_from_source": true,
+          "reference_helper_accepts": true,
+          "allowed_tax_word_change_only": true,
+          "candidate_file_written": false
+        },
+        {
+          "proposed_tax": 40,
+          "differs_from_source": true,
+          "reference_helper_accepts": true,
+          "allowed_tax_word_change_only": true,
+          "candidate_file_written": false
+        }
+      ],
+      "provenance_runtime_gates": {
+        "source_authentic_version_equivalence": "UNVERIFIED",
+        "published_original_exe_version_equivalence": "UNVERIFIED",
+        "complete_native_baseline_binding": "UNVERIFIED",
+        "trusted_import_tax_only_edit_journal": "UNVERIFIED",
+        "fresh_load_unselected_no_pending_movement": "UNVERIFIED",
+        "no_queued_modal_or_unrelated_events": "UNVERIFIED",
+        "stable_actual_runtime_getters_and_geometry": "UNVERIFIED",
+        "owner_Windows_runtime_coordination": "UNVERIFIED"
+      },
+      "full_candidate_approved": false
+    },
+    {
+      "name": "1_thracia_271_spring_1.sav",
+      "size": 131557,
+      "sha256_before": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+      "sha256_after": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+      "metadata": {
+        "army_count": 14,
+        "fleet_count": 2,
+        "news_last_index": 31,
+        "current_nation_index": 15,
+        "current_tax": 9,
+        "pending_offer_source": -1
+      },
+      "file_checkable_gates": {
+        "published_hash_matches": true,
+        "complete_original_framing": true,
+        "army_count_within0_198": true,
+        "fleet_count_within0_100": true,
+        "strategic_no_open_battle": true,
+        "current_nation_within0_15": true,
+        "turn_order_is_permutation": true,
+        "seat_matches_current_nation": true,
+        "current_controller_is_human1": true,
+        "current_tax_within0_40": true,
+        "pending_offer_source_is_minus1": true,
+        "bound_ui_dimensions_within_profile": true,
+        "bound_viewport_within_map_bounds": true,
+        "viewport_clamp_is_identity": true,
+        "source_hash_unchanged_after_assessment": true
+      },
+      "file_checkable_gate_pass": true,
+      "rejection_reasons": [],
+      "tax_targets": [
+        {
+          "proposed_tax": 0,
+          "differs_from_source": true,
+          "reference_helper_accepts": true,
+          "allowed_tax_word_change_only": true,
+          "candidate_file_written": false
+        },
+        {
+          "proposed_tax": 40,
+          "differs_from_source": true,
+          "reference_helper_accepts": true,
+          "allowed_tax_word_change_only": true,
+          "candidate_file_written": false
+        }
+      ],
+      "provenance_runtime_gates": {
+        "source_authentic_version_equivalence": "UNVERIFIED",
+        "published_original_exe_version_equivalence": "UNVERIFIED",
+        "complete_native_baseline_binding": "UNVERIFIED",
+        "trusted_import_tax_only_edit_journal": "UNVERIFIED",
+        "fresh_load_unselected_no_pending_movement": "UNVERIFIED",
+        "no_queued_modal_or_unrelated_events": "UNVERIFIED",
+        "stable_actual_runtime_getters_and_geometry": "UNVERIFIED",
+        "owner_Windows_runtime_coordination": "UNVERIFIED"
+      },
+      "full_candidate_approved": false
+    },
+    {
+      "name": "1_rome_270_winter_7.sav",
+      "size": 132149,
+      "sha256_before": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+      "sha256_after": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+      "metadata": {
+        "army_count": 14,
+        "fleet_count": 6,
+        "news_last_index": 39,
+        "current_nation_index": 0,
+        "current_tax": 20,
+        "pending_offer_source": -1
+      },
+      "file_checkable_gates": {
+        "published_hash_matches": true,
+        "complete_original_framing": true,
+        "army_count_within0_198": true,
+        "fleet_count_within0_100": true,
+        "strategic_no_open_battle": true,
+        "current_nation_within0_15": true,
+        "turn_order_is_permutation": true,
+        "seat_matches_current_nation": true,
+        "current_controller_is_human1": true,
+        "current_tax_within0_40": true,
+        "pending_offer_source_is_minus1": true,
+        "bound_ui_dimensions_within_profile": true,
+        "bound_viewport_within_map_bounds": true,
+        "viewport_clamp_is_identity": true,
+        "source_hash_unchanged_after_assessment": true
+      },
+      "file_checkable_gate_pass": true,
+      "rejection_reasons": [],
+      "tax_targets": [
+        {
+          "proposed_tax": 0,
+          "differs_from_source": true,
+          "reference_helper_accepts": true,
+          "allowed_tax_word_change_only": true,
+          "candidate_file_written": false
+        },
+        {
+          "proposed_tax": 40,
+          "differs_from_source": true,
+          "reference_helper_accepts": true,
+          "allowed_tax_word_change_only": true,
+          "candidate_file_written": false
+        }
+      ],
+      "provenance_runtime_gates": {
+        "source_authentic_version_equivalence": "UNVERIFIED",
+        "published_original_exe_version_equivalence": "UNVERIFIED",
+        "complete_native_baseline_binding": "UNVERIFIED",
+        "trusted_import_tax_only_edit_journal": "UNVERIFIED",
+        "fresh_load_unselected_no_pending_movement": "UNVERIFIED",
+        "no_queued_modal_or_unrelated_events": "UNVERIFIED",
+        "stable_actual_runtime_getters_and_geometry": "UNVERIFIED",
+        "owner_Windows_runtime_coordination": "UNVERIFIED"
+      },
+      "full_candidate_approved": false
+    }
+  ],
+  "parser_truncation_negative_checks": 3,
+  "changed_candidate_files_written": 0,
+  "private_JSON_files_read": 0,
+  "Windows_round_trips": 0
+}
