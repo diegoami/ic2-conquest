@@ -1,0 +1,22 @@
+# PR102 first independent review and dispositions
+
+Reviewer: `kimi-code-plan-global/k3#high` (Kimi K3), session `ses_eb2ef835affeuPzhG10OdKj8bX`. Verdict: **REWORK**. Reviewed head `de705f1df08d4ddfa5698d7a705a875b5cc99e78`; implementer remains gpt-6.1-sol medium (OpenAI). Full returned result and posted comment read before fixes; identical report text below. [Posted review](https://github.com/diegoami/ic2-conquest/pull/102#issuecomment-6246195899).
+
+## Full returned report
+
+```text
+PR review (k3)
+rework
+R1 RUN-NOTES-sav-export37-closure.md:15 blocking: the claim "git diff --check passes" (also in the PR body) is not true for this PR diff — `git diff --check 8904c162f1012e9ab1adfa7df32b897141f42f31...HEAD` reports 47 trailing-whitespace warnings, all in `runs/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt`. The whitespace is the pinned dump's own and must be kept (validate_packet.py asserts byte-exact dump-line equality, so stripping it would break the validator), so the fix is the wording, not the file: state that `git diff --check` flags only the pinned extract's original trailing whitespace, retained deliberately for the byte-exact line assertions, instead of claiming an unqualified pass.
+R2 runs/experiments/data/run-exp-sav-export37-closure/source-added-functions-v1.txt non-blocking: the empty file is named v1 but its content derives from the corrected v2 audit, which reads oddly next to the retention policy (a v1-named artifact holding v2 results). README and finding do explain it; a `-v2` filename (with the rejected v1 name list retained inside source-alias-leads-v1.json, as it already is) would be clearer. No content change needed.
+R3 runs/experiments/sav_export37_closure/controls.py non-blocking (review limitation, not a defect): the pinned source dump, EXE and DAT live outside the review worktree and no hashing/emulation tools are available in the reviewer sandbox, so I could not recompute the source/EXE/DAT/public-save pins or rerun the six Unicorn controls; verification was static and internal-consistency only: counts confirmed (156 functions/680 refs, v1's 17 spurious additions confined to addresses ≥0x478FB0, zero unknown-starts/relative-leads/additions in v2; 8 functions/468 extract lines; 6 passing controls with the exact positive read/write addresses the validator asserts), the 0044AC3C deletion source (49430–49462) and THumanFalls reads (56436–56448) match the finding's claims, prior supplemental loader/DAT attribution (004487C4, 004481A0 430→434/438→43C/446→448) checks out against the prior packet, all three scripts py_compile clean, the scripts use exclusive `open('x')` outputs, and no SAV/EXE/DAT/binary was added. Everything else in the finding stays within the measured paths: bounded conservation, patterned nonzero canaries, host-NUL disclosure for the positive control, rejection names as diagnostic vocabulary, research37/conquest99 left OPEN, Windows gate unperformed.
+rework
+```
+
+## Dispositions
+
+- **R1 blocking, fixed:** the earlier unqualified whitespace-pass claims were incorrect. Full base-to-reviewed-head `git diff --check` exits 2 solely on original trailing whitespace in the immutable source extract. Exact reproduction counts **41** trailing-whitespace diagnostics; the report says 47. The complete review is retained verbatim, and the raw reproduction is preserved in `whitespace-review-fix-v1.json`. All 468 extract lines and its hash remain unchanged. A separate base-to-working-tree check excludes only that precise measured source path to check authored content. Notes and PR body now state both results explicitly. No extract, measurement or Git whitespace policy was modified.
+- **R2 nonblocking, retained with explanation:** keep the empty `source-added-functions-v1.txt` at its original measurement path; renaming/deleting it would weaken immutable-path retention. README/finding already explain it comes from corrected v2, whose added-function list is empty. Rejected v1's apparent 17 additions remain in its original JSON. No content or filename change.
+- **R3 nonblocking review limitation, acknowledged:** Kimi performed static/internal-consistency review only; it could not rehash external pinned inputs or rerun Unicorn. The six control passes and external pin verification are implementer measurements, not independent rerun results. No game/Windows validation was performed by either party; native gate remains unmet.
+
+No new review or merge performed in this fix. Parent coordinates owner-selected re-review.

@@ -1,0 +1,36 @@
+{
+  "reviewed_head": "de705f1df08d4ddfa5698d7a705a875b5cc99e78",
+  "base": "8904c162f1012e9ab1adfa7df32b897141f42f31",
+  "method": "Full reviewed PR whitespace check plus authored-content check against base including staged fixes, excluding only exact immutable measured source path.",
+  "trailing_whitespace_diagnostics": 41,
+  "review_report_claimed_count": 47,
+  "immutable_extract_sha256": "c835dbc0e540d006d303016b2e91d9ebcfda6f226f08fb3c3010c2e004a7f48f",
+  "immutable_extract_unchanged_from_reviewed_head": true,
+  "checks": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "8904c162f1012e9ab1adfa7df32b897141f42f31...de705f1df08d4ddfa5698d7a705a875b5cc99e78"
+      ],
+      "returncode": 2,
+      "stdout": "runs/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:2: trailing whitespace.\n+4942: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:4: trailing whitespace.\n+4944: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:10: trailing whitespace.\n+4950:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:32: trailing whitespace.\n+4972: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:33: trailing whitespace.\n+4973: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:35: trailing whitespace.\n+47440: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:37: trailing whitespace.\n+47442: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:39: trailing whitespace.\n+47444: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:55: trailing whitespace.\n+47460:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:137: trailing whitespace.\n+47542: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:138: trailing whitespace.\n+47543: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:140: trailing whitespace.\n+48714: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:142: trailing whitespace.\n+48716: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:147: trailing whitespace.\n+48721:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:177: trailing whitespace.\n+48751: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:178: trailing whitespace.\n+48752: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:180: trailing whitespace.\n+49020: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:182: trailing whitespace.\n+49022: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:187: trailing whitespace.\n+49027:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:200: trailing whitespace.\n+49040: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:201: trailing whitespace.\n+49041: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:203: trailing whitespace.\n+49142: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:205: trailing whitespace.\n+49144: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:211: trailing whitespace.\n+49150:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:231: trailing whitespace.\n+49170: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:232: trailing whitespace.\n+49171: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:234: trailing whitespace.\n+49431: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:236: trailing whitespace.\n+49433: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:244: trailing whitespace.\n+49441:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:265: trailing whitespace.\n+49462: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:266: trailing whitespace.\n+49463: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:268: trailing whitespace.\n+50039: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:270: trailing whitespace.\n+50041: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:279: trailing whitespace.\n+50050:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:333: trailing whitespace.\n+50104: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:334: trailing whitespace.\n+50105: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:336: trailing whitespace.\n+56354: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:338: trailing whitespace.\n+56356: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:351: trailing whitespace.\n+56369:   \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:467: trailing whitespace.\n+56485: \nruns/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt:468: trailing whitespace.\n+56486: \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "8904c162f1012e9ab1adfa7df32b897141f42f31",
+        "--",
+        ".",
+        ":(exclude)runs/experiments/data/run-exp-sav-export37-closure/source-controls-and-history-v1.txt"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
