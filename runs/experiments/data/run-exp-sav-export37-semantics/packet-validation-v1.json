@@ -1,0 +1,34 @@
+{
+  "method": "Offline retained evidence/pin/source/profile consistency; no original GUI or Windows execution.",
+  "tax_instruction_cases": 656,
+  "viewport_cases": 4,
+  "rename_commit_cases": 4,
+  "public_in_memory_projections": 6,
+  "source_functions": 36,
+  "exact_source_lines": 1800,
+  "full_UI_callbacks_executed": false,
+  "Windows_round_trips": 0,
+  "export_readiness": false,
+  "whitespace_check": {
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "ed1a411ac3ac47fa07d3dc179511515bd6cdc04c",
+      "--",
+      "."
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "files": {
+    "README.md": "56093995c5175ecad6682ad3e75865d2f80c5bdc5c323c9650afdc788b07546c",
+    "source-command-consumers-v1.json": "9aac312b6cf7ea33e46139068ee073c54bdc60ec7fcc1a9ef2520e011a65418e",
+    "transition-projection-v1.json": "b0174b9bc7231d36d7b50fd0576348accd56d17f41cd57fa44998f5a839819ff",
+    "transition-projection-v2.json": "9d1c8d8bb46deb05a4cc349f6c3b014b684d5f2a3b4ad6bf013e13d849b1cc3f",
+    "transition-projection-v3.json": "acb7771020991efb1c5414cf8017e4cecffa2854dd514aec27957e560c6f8014",
+    "x86-cfg-alias-leads-v1.json": "eae91b0294c9d70f4b555854de379d0c5d2841d7cdbd9074d602352db632ffc8",
+    "x86-cfg-alias-leads-v2.json": "f657717800a4fdd3208596778bcac05dba953a6ecd54a42d16b06cbb204b0a8a"
+  }
+}

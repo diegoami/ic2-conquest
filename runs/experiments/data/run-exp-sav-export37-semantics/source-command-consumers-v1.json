@@ -1,0 +1,7494 @@
+{
+  "source_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "method": "Exact source lines as JSON string values; no stripping or source changes.",
+  "records": [
+    {
+      "name": "FUN_00403634",
+      "address": "00403634",
+      "first_line": 3071,
+      "last_line": 3082,
+      "lines": [
+        {
+          "number": 3071,
+          "text": "// ==== FUN_00403634 @ 00403634 ===="
+        },
+        {
+          "number": 3072,
+          "text": ""
+        },
+        {
+          "number": 3073,
+          "text": "undefined * FUN_00403634(undefined *param_1)"
+        },
+        {
+          "number": 3074,
+          "text": ""
+        },
+        {
+          "number": 3075,
+          "text": "{"
+        },
+        {
+          "number": 3076,
+          "text": "  if (param_1 != (undefined *)0x0) {"
+        },
+        {
+          "number": 3077,
+          "text": "    return param_1;"
+        },
+        {
+          "number": 3078,
+          "text": "  }"
+        },
+        {
+          "number": 3079,
+          "text": "  return &DAT_00403639;"
+        },
+        {
+          "number": 3080,
+          "text": "}"
+        },
+        {
+          "number": 3081,
+          "text": ""
+        },
+        {
+          "number": 3082,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_00405b54",
+      "address": "00405b54",
+      "first_line": 5006,
+      "last_line": 5045,
+      "lines": [
+        {
+          "number": 5006,
+          "text": "// ==== FUN_00405b54 @ 00405b54 ===="
+        },
+        {
+          "number": 5007,
+          "text": ""
+        },
+        {
+          "number": 5008,
+          "text": "char * FUN_00405b54(char *param_1,char *param_2,int param_3)"
+        },
+        {
+          "number": 5009,
+          "text": ""
+        },
+        {
+          "number": 5010,
+          "text": "{"
+        },
+        {
+          "number": 5011,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 5012,
+          "text": "  uint uVar2;"
+        },
+        {
+          "number": 5013,
+          "text": "  char *pcVar3;"
+        },
+        {
+          "number": 5014,
+          "text": "  bool bVar4;"
+        },
+        {
+          "number": 5015,
+          "text": "  "
+        },
+        {
+          "number": 5016,
+          "text": "  bVar4 = param_3 == 0;"
+        },
+        {
+          "number": 5017,
+          "text": "  iVar1 = param_3;"
+        },
+        {
+          "number": 5018,
+          "text": "  pcVar3 = param_2;"
+        },
+        {
+          "number": 5019,
+          "text": "  if (!bVar4) {"
+        },
+        {
+          "number": 5020,
+          "text": "    do {"
+        },
+        {
+          "number": 5021,
+          "text": "      if (iVar1 == 0) break;"
+        },
+        {
+          "number": 5022,
+          "text": "      iVar1 = iVar1 + -1;"
+        },
+        {
+          "number": 5023,
+          "text": "      bVar4 = *pcVar3 == '\\0';"
+        },
+        {
+          "number": 5024,
+          "text": "      pcVar3 = pcVar3 + 1;"
+        },
+        {
+          "number": 5025,
+          "text": "    } while (!bVar4);"
+        },
+        {
+          "number": 5026,
+          "text": "    if (bVar4) {"
+        },
+        {
+          "number": 5027,
+          "text": "      iVar1 = iVar1 + 1;"
+        },
+        {
+          "number": 5028,
+          "text": "    }"
+        },
+        {
+          "number": 5029,
+          "text": "  }"
+        },
+        {
+          "number": 5030,
+          "text": "  pcVar3 = param_1;"
+        },
+        {
+          "number": 5031,
+          "text": "  for (uVar2 = (uint)(param_3 - iVar1) >> 2; uVar2 != 0; uVar2 = uVar2 - 1) {"
+        },
+        {
+          "number": 5032,
+          "text": "    *(undefined4 *)pcVar3 = *(undefined4 *)param_2;"
+        },
+        {
+          "number": 5033,
+          "text": "    param_2 = param_2 + 4;"
+        },
+        {
+          "number": 5034,
+          "text": "    pcVar3 = pcVar3 + 4;"
+        },
+        {
+          "number": 5035,
+          "text": "  }"
+        },
+        {
+          "number": 5036,
+          "text": "  for (uVar2 = param_3 - iVar1 & 3; uVar2 != 0; uVar2 = uVar2 - 1) {"
+        },
+        {
+          "number": 5037,
+          "text": "    *pcVar3 = *param_2;"
+        },
+        {
+          "number": 5038,
+          "text": "    param_2 = param_2 + 1;"
+        },
+        {
+          "number": 5039,
+          "text": "    pcVar3 = pcVar3 + 1;"
+        },
+        {
+          "number": 5040,
+          "text": "  }"
+        },
+        {
+          "number": 5041,
+          "text": "  *pcVar3 = '\\0';"
+        },
+        {
+          "number": 5042,
+          "text": "  return param_1;"
+        },
+        {
+          "number": 5043,
+          "text": "}"
+        },
+        {
+          "number": 5044,
+          "text": ""
+        },
+        {
+          "number": 5045,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_00405b88",
+      "address": "00405b88",
+      "first_line": 5046,
+      "last_line": 5058,
+      "lines": [
+        {
+          "number": 5046,
+          "text": "// ==== FUN_00405b88 @ 00405b88 ===="
+        },
+        {
+          "number": 5047,
+          "text": ""
+        },
+        {
+          "number": 5048,
+          "text": "void FUN_00405b88(char *param_1,undefined *param_2)"
+        },
+        {
+          "number": 5049,
+          "text": ""
+        },
+        {
+          "number": 5050,
+          "text": "{"
+        },
+        {
+          "number": 5051,
+          "text": "  char *pcVar1;"
+        },
+        {
+          "number": 5052,
+          "text": "  "
+        },
+        {
+          "number": 5053,
+          "text": "  pcVar1 = FUN_00403634(param_2);"
+        },
+        {
+          "number": 5054,
+          "text": "  FUN_00405b54(param_1,pcVar1,0xff);"
+        },
+        {
+          "number": 5055,
+          "text": "  return;"
+        },
+        {
+          "number": 5056,
+          "text": "}"
+        },
+        {
+          "number": 5057,
+          "text": ""
+        },
+        {
+          "number": 5058,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0041633c",
+      "address": "0041633c",
+      "first_line": 19298,
+      "last_line": 19312,
+      "lines": [
+        {
+          "number": 19298,
+          "text": "// ==== FUN_0041633c @ 0041633c ===="
+        },
+        {
+          "number": 19299,
+          "text": ""
+        },
+        {
+          "number": 19300,
+          "text": "void FUN_0041633c(int *param_1)"
+        },
+        {
+          "number": 19301,
+          "text": ""
+        },
+        {
+          "number": 19302,
+          "text": "{"
+        },
+        {
+          "number": 19303,
+          "text": "  if (param_1[0x30] == 0) {"
+        },
+        {
+          "number": 19304,
+          "text": "    if ((int *)param_1[8] != (int *)0x0) {"
+        },
+        {
+          "number": 19305,
+          "text": "      FUN_0041633c((int *)param_1[8]);"
+        },
+        {
+          "number": 19306,
+          "text": "    }"
+        },
+        {
+          "number": 19307,
+          "text": "    (**(code **)(*param_1 + 0x58))();"
+        },
+        {
+          "number": 19308,
+          "text": "  }"
+        },
+        {
+          "number": 19309,
+          "text": "  return;"
+        },
+        {
+          "number": 19310,
+          "text": "}"
+        },
+        {
+          "number": 19311,
+          "text": ""
+        },
+        {
+          "number": 19312,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_00416360",
+      "address": "00416360",
+      "first_line": 19313,
+      "last_line": 19322,
+      "lines": [
+        {
+          "number": 19313,
+          "text": "// ==== FUN_00416360 @ 00416360 ===="
+        },
+        {
+          "number": 19314,
+          "text": ""
+        },
+        {
+          "number": 19315,
+          "text": "int FUN_00416360(int *param_1)"
+        },
+        {
+          "number": 19316,
+          "text": ""
+        },
+        {
+          "number": 19317,
+          "text": "{"
+        },
+        {
+          "number": 19318,
+          "text": "  FUN_0041633c(param_1);"
+        },
+        {
+          "number": 19319,
+          "text": "  return param_1[0x30];"
+        },
+        {
+          "number": 19320,
+          "text": "}"
+        },
+        {
+          "number": 19321,
+          "text": ""
+        },
+        {
+          "number": 19322,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0042313c",
+      "address": "0042313c",
+      "first_line": 27909,
+      "last_line": 27927,
+      "lines": [
+        {
+          "number": 27909,
+          "text": "// ==== FUN_0042313c @ 0042313c ===="
+        },
+        {
+          "number": 27910,
+          "text": ""
+        },
+        {
+          "number": 27911,
+          "text": "void FUN_0042313c(int *param_1)"
+        },
+        {
+          "number": 27912,
+          "text": ""
+        },
+        {
+          "number": 27913,
+          "text": "{"
+        },
+        {
+          "number": 27914,
+          "text": "  HWND hWnd;"
+        },
+        {
+          "number": 27915,
+          "text": "  UINT Msg;"
+        },
+        {
+          "number": 27916,
+          "text": "  WPARAM wParam;"
+        },
+        {
+          "number": 27917,
+          "text": "  LPARAM lParam;"
+        },
+        {
+          "number": 27918,
+          "text": "  "
+        },
+        {
+          "number": 27919,
+          "text": "  lParam = 0;"
+        },
+        {
+          "number": 27920,
+          "text": "  wParam = 0;"
+        },
+        {
+          "number": 27921,
+          "text": "  Msg = 0xb021;"
+        },
+        {
+          "number": 27922,
+          "text": "  hWnd = (HWND)FUN_00416360(param_1);"
+        },
+        {
+          "number": 27923,
+          "text": "  PostMessageA(hWnd,Msg,wParam,lParam);"
+        },
+        {
+          "number": 27924,
+          "text": "  return;"
+        },
+        {
+          "number": 27925,
+          "text": "}"
+        },
+        {
+          "number": 27926,
+          "text": ""
+        },
+        {
+          "number": 27927,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TInformation_PaintForm",
+      "address": "0043b394",
+      "first_line": 40466,
+      "last_line": 40689,
+      "lines": [
+        {
+          "number": 40466,
+          "text": "// ==== TInformation_PaintForm @ 0043b394 ===="
+        },
+        {
+          "number": 40467,
+          "text": ""
+        },
+        {
+          "number": 40468,
+          "text": "void TInformation_PaintForm(int *param_1,undefined4 param_2)"
+        },
+        {
+          "number": 40469,
+          "text": ""
+        },
+        {
+          "number": 40470,
+          "text": "{"
+        },
+        {
+          "number": 40471,
+          "text": "  bool bVar1;"
+        },
+        {
+          "number": 40472,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 40473,
+          "text": "  int *piVar3;"
+        },
+        {
+          "number": 40474,
+          "text": "  LONG LVar4;"
+        },
+        {
+          "number": 40475,
+          "text": "  undefined4 uVar5;"
+        },
+        {
+          "number": 40476,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 40477,
+          "text": "  undefined4 extraout_ECX_00;"
+        },
+        {
+          "number": 40478,
+          "text": "  undefined4 extraout_ECX_01;"
+        },
+        {
+          "number": 40479,
+          "text": "  undefined4 extraout_ECX_02;"
+        },
+        {
+          "number": 40480,
+          "text": "  undefined4 extraout_ECX_03;"
+        },
+        {
+          "number": 40481,
+          "text": "  undefined4 extraout_ECX_04;"
+        },
+        {
+          "number": 40482,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 40483,
+          "text": "  undefined4 extraout_EDX_00;"
+        },
+        {
+          "number": 40484,
+          "text": "  undefined4 uVar6;"
+        },
+        {
+          "number": 40485,
+          "text": "  undefined2 uVar7;"
+        },
+        {
+          "number": 40486,
+          "text": "  short sVar8;"
+        },
+        {
+          "number": 40487,
+          "text": "  char *pcVar9;"
+        },
+        {
+          "number": 40488,
+          "text": "  short sVar10;"
+        },
+        {
+          "number": 40489,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 40490,
+          "text": "  undefined *puVar11;"
+        },
+        {
+          "number": 40491,
+          "text": "  undefined4 uStack_7c;"
+        },
+        {
+          "number": 40492,
+          "text": "  undefined1 *puStack_78;"
+        },
+        {
+          "number": 40493,
+          "text": "  undefined1 *puStack_74;"
+        },
+        {
+          "number": 40494,
+          "text": "  undefined *local_64;"
+        },
+        {
+          "number": 40495,
+          "text": "  char local_5d [61];"
+        },
+        {
+          "number": 40496,
+          "text": "  char *local_20;"
+        },
+        {
+          "number": 40497,
+          "text": "  char local_19;"
+        },
+        {
+          "number": 40498,
+          "text": "  short local_18;"
+        },
+        {
+          "number": 40499,
+          "text": "  short local_16;"
+        },
+        {
+          "number": 40500,
+          "text": "  undefined4 local_14;"
+        },
+        {
+          "number": 40501,
+          "text": "  short local_e;"
+        },
+        {
+          "number": 40502,
+          "text": "  short local_c;"
+        },
+        {
+          "number": 40503,
+          "text": "  short local_a;"
+        },
+        {
+          "number": 40504,
+          "text": "  int *local_8;"
+        },
+        {
+          "number": 40505,
+          "text": "  "
+        },
+        {
+          "number": 40506,
+          "text": "  puStack_74 = &stack0xfffffffc;"
+        },
+        {
+          "number": 40507,
+          "text": "  local_64 = (undefined *)0x0;"
+        },
+        {
+          "number": 40508,
+          "text": "  puStack_78 = &LAB_0043b882;"
+        },
+        {
+          "number": 40509,
+          "text": "  uStack_7c = *in_FS_OFFSET;"
+        },
+        {
+          "number": 40510,
+          "text": "  *in_FS_OFFSET = &uStack_7c;"
+        },
+        {
+          "number": 40511,
+          "text": "  local_e = 0;"
+        },
+        {
+          "number": 40512,
+          "text": "  local_14 = param_2;"
+        },
+        {
+          "number": 40513,
+          "text": "  local_8 = param_1;"
+        },
+        {
+          "number": 40514,
+          "text": "  iVar2 = FUN_004211bc((int)param_1);"
+        },
+        {
+          "number": 40515,
+          "text": "  FUN_00419524(*(int **)(iVar2 + 0xc),&DAT_0043b890);"
+        },
+        {
+          "number": 40516,
+          "text": "  if (*(char *)((int)local_8 + 0x219) != '\\0') {"
+        },
+        {
+          "number": 40517,
+          "text": "    iVar2 = FUN_00405c2c(\"Unit moves\",&DAT_0049f00c,9);"
+        },
+        {
+          "number": 40518,
+          "text": "    if (iVar2 == 0) {"
+        },
+        {
+          "number": 40519,
+          "text": "      local_19 = '\\x01';"
+        },
+        {
+          "number": 40520,
+          "text": "      goto LAB_0043b3fb;"
+        },
+        {
+          "number": 40521,
+          "text": "    }"
+        },
+        {
+          "number": 40522,
+          "text": "  }"
+        },
+        {
+          "number": 40523,
+          "text": "  local_19 = '\\0';"
+        },
+        {
+          "number": 40524,
+          "text": "LAB_0043b3fb:"
+        },
+        {
+          "number": 40525,
+          "text": "  sVar10 = 0;"
+        },
+        {
+          "number": 40526,
+          "text": "  pcVar9 = &DAT_0049f00c;"
+        },
+        {
+          "number": 40527,
+          "text": "  local_20 = (char *)&DAT_0049f994;"
+        },
+        {
+          "number": 40528,
+          "text": "  do {"
+        },
+        {
+          "number": 40529,
+          "text": "    local_a = *(short *)(local_8[0x6c] + 0x100) * -8 + 3;"
+        },
+        {
+          "number": 40530,
+          "text": "    local_c = sVar10 * 0x10 + *(short *)(local_8[0x6b] + 0x100) * -0x10;"
+        },
+        {
+          "number": 40531,
+          "text": "    iVar2 = FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40532,
+          "text": "    FUN_00419584(*(int **)(iVar2 + 0xc),0xc);"
+        },
+        {
+          "number": 40533,
+          "text": "    FUN_00403458((int *)&local_64,(char *)(local_8 + 0x6d),0x65);"
+        },
+        {
+          "number": 40534,
+          "text": "    puVar11 = local_64;"
+        },
+        {
+          "number": 40535,
+          "text": "    piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40536,
+          "text": "    FUN_00419f58(piVar3,local_a + -3,(int)local_c,puVar11);"
+        },
+        {
+          "number": 40537,
+          "text": "    iVar2 = FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40538,
+          "text": "    FUN_00419584(*(int **)(iVar2 + 0xc),9);"
+        },
+        {
+          "number": 40539,
+          "text": "    if (*(char *)((int)local_8 + 0x219) == '\\0') {"
+        },
+        {
+          "number": 40540,
+          "text": "LAB_0043b4de:"
+        },
+        {
+          "number": 40541,
+          "text": "      iVar2 = FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40542,
+          "text": "      FUN_004193d8(*(int **)(iVar2 + 0xc),0,extraout_ECX_01);"
+        },
+        {
+          "number": 40543,
+          "text": "      uVar5 = extraout_ECX_02;"
+        },
+        {
+          "number": 40544,
+          "text": "      uVar6 = extraout_EDX_00;"
+        },
+        {
+          "number": 40545,
+          "text": "    }"
+        },
+        {
+          "number": 40546,
+          "text": "    else {"
+        },
+        {
+          "number": 40547,
+          "text": "      iVar2 = FUN_00405c2c(\"   (\",pcVar9,4);"
+        },
+        {
+          "number": 40548,
+          "text": "      if (iVar2 != 0) goto LAB_0043b4de;"
+        },
+        {
+          "number": 40549,
+          "text": "      iVar2 = FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40550,
+          "text": "      FUN_004193d8(*(int **)(iVar2 + 0xc),0xff,extraout_ECX);"
+        },
+        {
+          "number": 40551,
+          "text": "      uVar5 = extraout_ECX_00;"
+        },
+        {
+          "number": 40552,
+          "text": "      uVar6 = extraout_EDX;"
+        },
+        {
+          "number": 40553,
+          "text": "    }"
+        },
+        {
+          "number": 40554,
+          "text": "    if ((local_19 != '\\0') && (sVar10 <= DAT_004a031c)) {"
+        },
+        {
+          "number": 40555,
+          "text": "      FUN_0043b2c0(sVar10,uVar6,uVar5,(int)&stack0xfffffffc);"
+        },
+        {
+          "number": 40556,
+          "text": "    }"
+        },
+        {
+          "number": 40557,
+          "text": "    if (((*(char *)((int)local_8 + 0x219) != '\\0') && (sVar10 <= DAT_004a031c)) &&"
+        },
+        {
+          "number": 40558,
+          "text": "       (local_19 == '\\0')) {"
+        },
+        {
+          "number": 40559,
+          "text": "      sVar8 = 0;"
+        },
+        {
+          "number": 40560,
+          "text": "      local_18 = -1;"
+        },
+        {
+          "number": 40561,
+          "text": "      do {"
+        },
+        {
+          "number": 40562,
+          "text": "        local_5d[sVar8] = pcVar9[sVar8];"
+        },
+        {
+          "number": 40563,
+          "text": "        if (pcVar9[sVar8] == '\\0') {"
+        },
+        {
+          "number": 40564,
+          "text": "          sVar8 = 0x3c;"
+        },
+        {
+          "number": 40565,
+          "text": "        }"
+        },
+        {
+          "number": 40566,
+          "text": "        else if (pcVar9[sVar8] == '-') {"
+        },
+        {
+          "number": 40567,
+          "text": "          local_5d[sVar8] = '\\0';"
+        },
+        {
+          "number": 40568,
+          "text": "          local_18 = sVar8;"
+        },
+        {
+          "number": 40569,
+          "text": "        }"
+        },
+        {
+          "number": 40570,
+          "text": "        else {"
+        },
+        {
+          "number": 40571,
+          "text": "          sVar8 = sVar8 + 1;"
+        },
+        {
+          "number": 40572,
+          "text": "        }"
+        },
+        {
+          "number": 40573,
+          "text": "      } while ((sVar8 < 0x3c) && (local_18 < 0));"
+        },
+        {
+          "number": 40574,
+          "text": "      FUN_00403458((int *)&local_64,local_5d,0x3d);"
+        },
+        {
+          "number": 40575,
+          "text": "      puVar11 = local_64;"
+        },
+        {
+          "number": 40576,
+          "text": "      piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40577,
+          "text": "      FUN_00419f58(piVar3,(int)local_a,(int)local_c,puVar11);"
+        },
+        {
+          "number": 40578,
+          "text": "      piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40579,
+          "text": "      FUN_00403458((int *)&local_64,local_5d,0x3d);"
+        },
+        {
+          "number": 40580,
+          "text": "      LVar4 = FUN_00419fc8(piVar3,local_64);"
+        },
+        {
+          "number": 40581,
+          "text": "      uVar5 = FUN_00448fd8(CONCAT22((short)((uint)LVar4 >> 0x10),local_e),LVar4);"
+        },
+        {
+          "number": 40582,
+          "text": "      local_e = (short)uVar5;"
+        },
+        {
+          "number": 40583,
+          "text": "      if (-1 < local_18) {"
+        },
+        {
+          "number": 40584,
+          "text": "        sVar8 = 0;"
+        },
+        {
+          "number": 40585,
+          "text": "        do {"
+        },
+        {
+          "number": 40586,
+          "text": "          local_5d[sVar8] = pcVar9[(int)local_18 + (int)sVar8 + 1];"
+        },
+        {
+          "number": 40587,
+          "text": "          if (pcVar9[(int)local_18 + (int)sVar8 + 1] == '\\0') {"
+        },
+        {
+          "number": 40588,
+          "text": "            sVar8 = 0x3c;"
+        },
+        {
+          "number": 40589,
+          "text": "          }"
+        },
+        {
+          "number": 40590,
+          "text": "          else {"
+        },
+        {
+          "number": 40591,
+          "text": "            sVar8 = sVar8 + 1;"
+        },
+        {
+          "number": 40592,
+          "text": "          }"
+        },
+        {
+          "number": 40593,
+          "text": "        } while (sVar8 < 0x3c);"
+        },
+        {
+          "number": 40594,
+          "text": "        FUN_00403458((int *)&local_64,local_5d,0x3d);"
+        },
+        {
+          "number": 40595,
+          "text": "        puVar11 = local_64;"
+        },
+        {
+          "number": 40596,
+          "text": "        piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40597,
+          "text": "        FUN_00419f58(piVar3,local_a + 100,(int)local_c,puVar11);"
+        },
+        {
+          "number": 40598,
+          "text": "        piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40599,
+          "text": "        FUN_00403458((int *)&local_64,local_5d,0x3d);"
+        },
+        {
+          "number": 40600,
+          "text": "        LVar4 = FUN_00419fc8(piVar3,local_64);"
+        },
+        {
+          "number": 40601,
+          "text": "        uVar7 = (undefined2)((uint)LVar4 >> 0x10);"
+        },
+        {
+          "number": 40602,
+          "text": "        uVar5 = FUN_00448fd8(CONCAT22(uVar7,local_e),CONCAT22(uVar7,(short)LVar4 + 100));"
+        },
+        {
+          "number": 40603,
+          "text": "        local_e = (short)uVar5;"
+        },
+        {
+          "number": 40604,
+          "text": "      }"
+        },
+        {
+          "number": 40605,
+          "text": "    }"
+        },
+        {
+          "number": 40606,
+          "text": "    if ((*(char *)((int)local_8 + 0x219) == '\\0') && (sVar10 <= DAT_004a031e)) {"
+        },
+        {
+          "number": 40607,
+          "text": "      FUN_00403458((int *)&local_64,local_20,0x3d);"
+        },
+        {
+          "number": 40608,
+          "text": "      puVar11 = local_64;"
+        },
+        {
+          "number": 40609,
+          "text": "      piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40610,
+          "text": "      FUN_00419f58(piVar3,(int)local_a,(int)local_c,puVar11);"
+        },
+        {
+          "number": 40611,
+          "text": "      piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40612,
+          "text": "      FUN_00403458((int *)&local_64,local_20,0x3d);"
+        },
+        {
+          "number": 40613,
+          "text": "      LVar4 = FUN_00419fc8(piVar3,local_64);"
+        },
+        {
+          "number": 40614,
+          "text": "      uVar5 = FUN_00448fd8(CONCAT22((short)((uint)LVar4 >> 0x10),local_e),LVar4);"
+        },
+        {
+          "number": 40615,
+          "text": "      local_e = (short)uVar5;"
+        },
+        {
+          "number": 40616,
+          "text": "    }"
+        },
+        {
+          "number": 40617,
+          "text": "    sVar10 = sVar10 + 1;"
+        },
+        {
+          "number": 40618,
+          "text": "    local_20 = local_20 + 0x3d;"
+        },
+        {
+          "number": 40619,
+          "text": "    pcVar9 = pcVar9 + 0x3d;"
+        },
+        {
+          "number": 40620,
+          "text": "    if (sVar10 == 0x28) {"
+        },
+        {
+          "number": 40621,
+          "text": "      piVar3 = (int *)local_8[0x6c];"
+        },
+        {
+          "number": 40622,
+          "text": "      if ((*(char *)((int)piVar3 + 0x37) == '\\0') || (piVar3[0x40] < 1)) {"
+        },
+        {
+          "number": 40623,
+          "text": "        bVar1 = false;"
+        },
+        {
+          "number": 40624,
+          "text": "      }"
+        },
+        {
+          "number": 40625,
+          "text": "      else {"
+        },
+        {
+          "number": 40626,
+          "text": "        bVar1 = true;"
+        },
+        {
+          "number": 40627,
+          "text": "      }"
+        },
+        {
+          "number": 40628,
+          "text": "      if (*(char *)(local_8[0x6b] + 0x37) == '\\0') {"
+        },
+        {
+          "number": 40629,
+          "text": "        iVar2 = FUN_00412880(local_8);"
+        },
+        {
+          "number": 40630,
+          "text": "        FUN_00412c08(piVar3,CONCAT31((int3)(char)((ushort)local_e >> 8),iVar2 < local_e),"
+        },
+        {
+          "number": 40631,
+          "text": "                     extraout_ECX_04);"
+        },
+        {
+          "number": 40632,
+          "text": "      }"
+        },
+        {
+          "number": 40633,
+          "text": "      else {"
+        },
+        {
+          "number": 40634,
+          "text": "        iVar2 = FUN_00412880(local_8);"
+        },
+        {
+          "number": 40635,
+          "text": "        FUN_00412c08(piVar3,CONCAT31((int3)(char)((ushort)local_e >> 8),iVar2 + -0xf < (int)local_e)"
+        },
+        {
+          "number": 40636,
+          "text": "                     ,extraout_ECX_03);"
+        },
+        {
+          "number": 40637,
+          "text": "      }"
+        },
+        {
+          "number": 40638,
+          "text": "      if (*(char *)(local_8[0x6c] + 0x37) == '\\0') {"
+        },
+        {
+          "number": 40639,
+          "text": "        FUN_0042aa10((int *)local_8[0x6c],0);"
+        },
+        {
+          "number": 40640,
+          "text": "        if (bVar1) {"
+        },
+        {
+          "number": 40641,
+          "text": "          TInformation_PaintForm(local_8,local_14);"
+        },
+        {
+          "number": 40642,
+          "text": "        }"
+        },
+        {
+          "number": 40643,
+          "text": "      }"
+        },
+        {
+          "number": 40644,
+          "text": "      bVar1 = false;"
+        },
+        {
+          "number": 40645,
+          "text": "      if (*(char *)((int)local_8 + 0x219) != '\\0') {"
+        },
+        {
+          "number": 40646,
+          "text": "        iVar2 = FUN_004128c4(local_8);"
+        },
+        {
+          "number": 40647,
+          "text": "        if (((int)DAT_004a031c - *(int *)(local_8[0x6b] + 0x100)) * 0x10 < iVar2) {"
+        },
+        {
+          "number": 40648,
+          "text": "          bVar1 = true;"
+        },
+        {
+          "number": 40649,
+          "text": "          local_16 = DAT_004a031c + 1;"
+        },
+        {
+          "number": 40650,
+          "text": "        }"
+        },
+        {
+          "number": 40651,
+          "text": "      }"
+        },
+        {
+          "number": 40652,
+          "text": "      if (*(char *)((int)local_8 + 0x219) == '\\0') {"
+        },
+        {
+          "number": 40653,
+          "text": "        iVar2 = FUN_004128c4(local_8);"
+        },
+        {
+          "number": 40654,
+          "text": "        if (((int)DAT_004a031e - *(int *)(local_8[0x6b] + 0x100)) * 0x10 < iVar2) {"
+        },
+        {
+          "number": 40655,
+          "text": "          bVar1 = true;"
+        },
+        {
+          "number": 40656,
+          "text": "          local_16 = DAT_004a031e + 1;"
+        },
+        {
+          "number": 40657,
+          "text": "        }"
+        },
+        {
+          "number": 40658,
+          "text": "      }"
+        },
+        {
+          "number": 40659,
+          "text": "      if (bVar1) {"
+        },
+        {
+          "number": 40660,
+          "text": "        iVar2 = FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40661,
+          "text": "        FUN_00419584(*(int **)(iVar2 + 0xc),0xc);"
+        },
+        {
+          "number": 40662,
+          "text": "        sVar10 = local_16 - *(short *)(local_8[0x6b] + 0x100);"
+        },
+        {
+          "number": 40663,
+          "text": "        iVar2 = FUN_004128c4(local_8);"
+        },
+        {
+          "number": 40664,
+          "text": "        if (iVar2 < 0) {"
+        },
+        {
+          "number": 40665,
+          "text": "          iVar2 = iVar2 + 0xf;"
+        },
+        {
+          "number": 40666,
+          "text": "        }"
+        },
+        {
+          "number": 40667,
+          "text": "        sVar8 = (short)(iVar2 >> 4);"
+        },
+        {
+          "number": 40668,
+          "text": "        if (sVar10 <= sVar8) {"
+        },
+        {
+          "number": 40669,
+          "text": "          sVar8 = (sVar8 - sVar10) + 1;"
+        },
+        {
+          "number": 40670,
+          "text": "          do {"
+        },
+        {
+          "number": 40671,
+          "text": "            FUN_00403458((int *)&local_64,(char *)(local_8 + 0x6d),0x65);"
+        },
+        {
+          "number": 40672,
+          "text": "            puVar11 = local_64;"
+        },
+        {
+          "number": 40673,
+          "text": "            piVar3 = (int *)FUN_004211bc((int)local_8);"
+        },
+        {
+          "number": 40674,
+          "text": "            FUN_00419f58(piVar3,0,(int)sVar10 << 4,puVar11);"
+        },
+        {
+          "number": 40675,
+          "text": "            sVar10 = sVar10 + 1;"
+        },
+        {
+          "number": 40676,
+          "text": "            sVar8 = sVar8 + -1;"
+        },
+        {
+          "number": 40677,
+          "text": "          } while (sVar8 != 0);"
+        },
+        {
+          "number": 40678,
+          "text": "        }"
+        },
+        {
+          "number": 40679,
+          "text": "      }"
+        },
+        {
+          "number": 40680,
+          "text": "      *in_FS_OFFSET = uStack_7c;"
+        },
+        {
+          "number": 40681,
+          "text": "      puStack_74 = &LAB_0043b889;"
+        },
+        {
+          "number": 40682,
+          "text": "      puStack_78 = (undefined1 *)0x43b881;"
+        },
+        {
+          "number": 40683,
+          "text": "      FUN_004032fc((int *)&local_64);"
+        },
+        {
+          "number": 40684,
+          "text": "      return;"
+        },
+        {
+          "number": 40685,
+          "text": "    }"
+        },
+        {
+          "number": 40686,
+          "text": "  } while( true );"
+        },
+        {
+          "number": 40687,
+          "text": "}"
+        },
+        {
+          "number": 40688,
+          "text": ""
+        },
+        {
+          "number": 40689,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TInformation_PrintInfo",
+      "address": "0043b9f4",
+      "first_line": 40769,
+      "last_line": 40801,
+      "lines": [
+        {
+          "number": 40769,
+          "text": "// ==== TInformation_PrintInfo @ 0043b9f4 ===="
+        },
+        {
+          "number": 40770,
+          "text": ""
+        },
+        {
+          "number": 40771,
+          "text": "void TInformation_PrintInfo(int *param_1)"
+        },
+        {
+          "number": 40772,
+          "text": ""
+        },
+        {
+          "number": 40773,
+          "text": "{"
+        },
+        {
+          "number": 40774,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 40775,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 40776,
+          "text": "  short sVar2;"
+        },
+        {
+          "number": 40777,
+          "text": "  undefined4 unaff_EDI;"
+        },
+        {
+          "number": 40778,
+          "text": "  "
+        },
+        {
+          "number": 40779,
+          "text": "  if (*(char *)(param_1[0x6c] + 0x37) == '\\0') {"
+        },
+        {
+          "number": 40780,
+          "text": "    sVar2 = 0;"
+        },
+        {
+          "number": 40781,
+          "text": "  }"
+        },
+        {
+          "number": 40782,
+          "text": "  else {"
+        },
+        {
+          "number": 40783,
+          "text": "    sVar2 = 0xf;"
+        },
+        {
+          "number": 40784,
+          "text": "  }"
+        },
+        {
+          "number": 40785,
+          "text": "  if (*(char *)((int)param_1 + 0x219) == '\\0') {"
+        },
+        {
+          "number": 40786,
+          "text": "    FUN_0042aa10((int *)param_1[0x6c],0);"
+        },
+        {
+          "number": 40787,
+          "text": "    FUN_0042aa10((int *)param_1[0x6b],0);"
+        },
+        {
+          "number": 40788,
+          "text": "  }"
+        },
+        {
+          "number": 40789,
+          "text": "  iVar1 = FUN_004128c4(param_1);"
+        },
+        {
+          "number": 40790,
+          "text": "  FUN_00412c08((int *)param_1[0x6b],"
+        },
+        {
+          "number": 40791,
+          "text": "               CONCAT31((int3)((uint)(DAT_004a031c * 0x10) >> 8),"
+        },
+        {
+          "number": 40792,
+          "text": "                        (iVar1 - sVar2) + -0x10 < DAT_004a031c * 0x10),extraout_ECX);"
+        },
+        {
+          "number": 40793,
+          "text": "  if (*(char *)(param_1[0x6b] + 0x37) == '\\0') {"
+        },
+        {
+          "number": 40794,
+          "text": "    FUN_0042aa10((int *)param_1[0x6b],0);"
+        },
+        {
+          "number": 40795,
+          "text": "  }"
+        },
+        {
+          "number": 40796,
+          "text": "  *(undefined1 *)((int)param_1 + 0x219) = 1;"
+        },
+        {
+          "number": 40797,
+          "text": "  TInformation_PaintForm(param_1,unaff_EDI);"
+        },
+        {
+          "number": 40798,
+          "text": "  return;"
+        },
+        {
+          "number": 40799,
+          "text": "}"
+        },
+        {
+          "number": 40800,
+          "text": ""
+        },
+        {
+          "number": 40801,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TInformation_ShowNationStatus",
+      "address": "0043ba7c",
+      "first_line": 40802,
+      "last_line": 40883,
+      "lines": [
+        {
+          "number": 40802,
+          "text": "// ==== TInformation_ShowNationStatus @ 0043ba7c ===="
+        },
+        {
+          "number": 40803,
+          "text": ""
+        },
+        {
+          "number": 40804,
+          "text": "void TInformation_ShowNationStatus(int *param_1,short param_2)"
+        },
+        {
+          "number": 40805,
+          "text": ""
+        },
+        {
+          "number": 40806,
+          "text": "{"
+        },
+        {
+          "number": 40807,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 40808,
+          "text": "  char *pcVar2;"
+        },
+        {
+          "number": 40809,
+          "text": "  short *psVar3;"
+        },
+        {
+          "number": 40810,
+          "text": "  short sVar4;"
+        },
+        {
+          "number": 40811,
+          "text": "  byte local_122 [18];"
+        },
+        {
+          "number": 40812,
+          "text": "  byte local_110 [256];"
+        },
+        {
+          "number": 40813,
+          "text": "  "
+        },
+        {
+          "number": 40814,
+          "text": "  iVar1 = (int)param_2;"
+        },
+        {
+          "number": 40815,
+          "text": "  FUN_00405b00(&DAT_0049f00c,\"Nation -\");"
+        },
+        {
+          "number": 40816,
+          "text": "  FUN_00405bc8(&DAT_0049f00c,&DAT_00474670 + iVar1 * 0x494);"
+        },
+        {
+          "number": 40817,
+          "text": "  FUN_00405b00(&DAT_0049f049,\"Leader -\");"
+        },
+        {
+          "number": 40818,
+          "text": "  FUN_00405bc8(&DAT_0049f049,&DAT_0047467b + iVar1 * 0x494);"
+        },
+        {
+          "number": 40819,
+          "text": "  FUN_00405b00(&DAT_0049f086,\"Capital -\");"
+        },
+        {
+          "number": 40820,
+          "text": "  FUN_00405bc8(&DAT_0049f086,&DAT_00479590 + (short)(&DAT_00474ab4)[iVar1 * 0x24a] * 0x22);"
+        },
+        {
+          "number": 40821,
+          "text": "  FUN_004028c4((int)(short)(&DAT_00474ab6)[iVar1 * 0x24a],(char *)local_110);"
+        },
+        {
+          "number": 40822,
+          "text": "  FUN_00402978(local_110,local_122);"
+        },
+        {
+          "number": 40823,
+          "text": "  FUN_00405b00(&DAT_0049f0c3,\"Cities -\");"
+        },
+        {
+          "number": 40824,
+          "text": "  FUN_00405bc8(&DAT_0049f0c3,(char *)local_122);"
+        },
+        {
+          "number": 40825,
+          "text": "  FUN_00448f9c((&DAT_00474aa0)[iVar1 * 0x125],local_122);"
+        },
+        {
+          "number": 40826,
+          "text": "  FUN_00405b00(&DAT_0049f100,\"Population -\");"
+        },
+        {
+          "number": 40827,
+          "text": "  FUN_00405bc8(&DAT_0049f100,(char *)local_122);"
+        },
+        {
+          "number": 40828,
+          "text": "  FUN_00405b00(&DAT_0049f13d,\"Unity -\");"
+        },
+        {
+          "number": 40829,
+          "text": "  FUN_00405bc8(&DAT_0049f13d,"
+        },
+        {
+          "number": 40830,
+          "text": "               &DAT_004793fc + ((int)(short)(&DAT_00474ab0)[iVar1 * 0x24a] / 100) * 0xb);"
+        },
+        {
+          "number": 40831,
+          "text": "  FUN_004028c4((int)(short)(&DAT_00474aba)[iVar1 * 0x24a],(char *)local_110);"
+        },
+        {
+          "number": 40832,
+          "text": "  FUN_00402978(local_110,local_122);"
+        },
+        {
+          "number": 40833,
+          "text": "  FUN_00405bc8((char *)local_122,\"%\");"
+        },
+        {
+          "number": 40834,
+          "text": "  FUN_00405b00(&DAT_0049f17a,\"Tax rate -\");"
+        },
+        {
+          "number": 40835,
+          "text": "  FUN_00405bc8(&DAT_0049f17a,(char *)local_122);"
+        },
+        {
+          "number": 40836,
+          "text": "  if (param_2 == DAT_004a0320) {"
+        },
+        {
+          "number": 40837,
+          "text": "    FUN_004028c4((int)(short)(&DAT_00474ab2)[iVar1 * 0x24a],(char *)local_110);"
+        },
+        {
+          "number": 40838,
+          "text": "    FUN_00402978(local_110,local_122);"
+        },
+        {
+          "number": 40839,
+          "text": "    FUN_00405bc8((char *)local_122,\"%\");"
+        },
+        {
+          "number": 40840,
+          "text": "    FUN_00405b00(&DAT_0049f1b7,\"Mobilized -\");"
+        },
+        {
+          "number": 40841,
+          "text": "    FUN_00405bc8(&DAT_0049f1b7,(char *)local_122);"
+        },
+        {
+          "number": 40842,
+          "text": "    FUN_00448f3c((&DAT_00474aa8)[iVar1 * 0x125],(int)local_122);"
+        },
+        {
+          "number": 40843,
+          "text": "    FUN_00405b00(&DAT_0049f1f4,\"Treasury -\");"
+        },
+        {
+          "number": 40844,
+          "text": "    FUN_00405bc8(&DAT_0049f1f4,(char *)local_122);"
+        },
+        {
+          "number": 40845,
+          "text": "    FUN_00405bc8(&DAT_0049f1f4,\" talents\");"
+        },
+        {
+          "number": 40846,
+          "text": "  }"
+        },
+        {
+          "number": 40847,
+          "text": "  else {"
+        },
+        {
+          "number": 40848,
+          "text": "    FUN_00405b00(&DAT_0049f1b7,\"  \");"
+        },
+        {
+          "number": 40849,
+          "text": "    FUN_00405b00(&DAT_0049f1f4,\"  \");"
+        },
+        {
+          "number": 40850,
+          "text": "  }"
+        },
+        {
+          "number": 40851,
+          "text": "  FUN_00405b00(&DAT_0049f231,\" \");"
+        },
+        {
+          "number": 40852,
+          "text": "  FUN_00405b00(&DAT_0049f26e,\"      INTERNATIONAL RELATIONS\");"
+        },
+        {
+          "number": 40853,
+          "text": "  sVar4 = 0;"
+        },
+        {
+          "number": 40854,
+          "text": "  psVar3 = &DAT_00474ab0;"
+        },
+        {
+          "number": 40855,
+          "text": "  pcVar2 = &DAT_0049f2ab;"
+        },
+        {
+          "number": 40856,
+          "text": "  do {"
+        },
+        {
+          "number": 40857,
+          "text": "    if (*psVar3 == 0) {"
+        },
+        {
+          "number": 40858,
+          "text": "      FUN_00405b00(pcVar2,\"   ( \");"
+        },
+        {
+          "number": 40859,
+          "text": "      FUN_00405bc8(pcVar2,(char *)(psVar3 + -0x220));"
+        },
+        {
+          "number": 40860,
+          "text": "      FUN_00405bc8(pcVar2,\" conquerred by \");"
+        },
+        {
+          "number": 40861,
+          "text": "      FUN_00405bc8(pcVar2,&DAT_00474670 + psVar3[7] * 0x494);"
+        },
+        {
+          "number": 40862,
+          "text": "      FUN_00405bc8(pcVar2,\" )\");"
+        },
+        {
+          "number": 40863,
+          "text": "    }"
+        },
+        {
+          "number": 40864,
+          "text": "    else if (sVar4 == param_2) {"
+        },
+        {
+          "number": 40865,
+          "text": "      FUN_00405b00(pcVar2,\"  \");"
+        },
+        {
+          "number": 40866,
+          "text": "    }"
+        },
+        {
+          "number": 40867,
+          "text": "    else {"
+        },
+        {
+          "number": 40868,
+          "text": "      FUN_00405b00(pcVar2,(char *)(psVar3 + -0x220));"
+        },
+        {
+          "number": 40869,
+          "text": "      FUN_00405bc8(pcVar2,\"  -\");"
+        },
+        {
+          "number": 40870,
+          "text": "      if (0 < (short)(&DAT_00474696)[iVar1 * 0x24a + (int)sVar4]) {"
+        },
+        {
+          "number": 40871,
+          "text": "        FUN_00405bc8(pcVar2,&DAT_004794c8 + (short)(&DAT_00474696)[iVar1 * 0x24a + (int)sVar4] * 6);"
+        },
+        {
+          "number": 40872,
+          "text": "      }"
+        },
+        {
+          "number": 40873,
+          "text": "    }"
+        },
+        {
+          "number": 40874,
+          "text": "    sVar4 = sVar4 + 1;"
+        },
+        {
+          "number": 40875,
+          "text": "    pcVar2 = pcVar2 + 0x3d;"
+        },
+        {
+          "number": 40876,
+          "text": "    psVar3 = psVar3 + 0x24a;"
+        },
+        {
+          "number": 40877,
+          "text": "  } while (sVar4 != 0x10);"
+        },
+        {
+          "number": 40878,
+          "text": "  DAT_004a031c = 0x1a;"
+        },
+        {
+          "number": 40879,
+          "text": "  TInformation_PrintInfo(param_1);"
+        },
+        {
+          "number": 40880,
+          "text": "  return;"
+        },
+        {
+          "number": 40881,
+          "text": "}"
+        },
+        {
+          "number": 40882,
+          "text": ""
+        },
+        {
+          "number": 40883,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TAreaMap_UnitMapCursor",
+      "address": "0043e760",
+      "first_line": 42198,
+      "last_line": 42255,
+      "lines": [
+        {
+          "number": 42198,
+          "text": "// ==== TAreaMap_UnitMapCursor @ 0043e760 ===="
+        },
+        {
+          "number": 42199,
+          "text": ""
+        },
+        {
+          "number": 42200,
+          "text": "void TAreaMap_UnitMapCursor(int *param_1)"
+        },
+        {
+          "number": 42201,
+          "text": ""
+        },
+        {
+          "number": 42202,
+          "text": "{"
+        },
+        {
+          "number": 42203,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 42204,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 42205,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 42206,
+          "text": "  int *piVar3;"
+        },
+        {
+          "number": 42207,
+          "text": "  int *piVar4;"
+        },
+        {
+          "number": 42208,
+          "text": "  byte bVar5;"
+        },
+        {
+          "number": 42209,
+          "text": "  undefined1 *puVar6;"
+        },
+        {
+          "number": 42210,
+          "text": "  int local_18;"
+        },
+        {
+          "number": 42211,
+          "text": "  int local_14;"
+        },
+        {
+          "number": 42212,
+          "text": "  int local_10;"
+        },
+        {
+          "number": 42213,
+          "text": "  int local_c;"
+        },
+        {
+          "number": 42214,
+          "text": "  int *local_8;"
+        },
+        {
+          "number": 42215,
+          "text": "  "
+        },
+        {
+          "number": 42216,
+          "text": "  bVar5 = 0;"
+        },
+        {
+          "number": 42217,
+          "text": "  puVar6 = &stack0xfffffffc;"
+        },
+        {
+          "number": 42218,
+          "text": "  local_8 = param_1;"
+        },
+        {
+          "number": 42219,
+          "text": "  iVar1 = FUN_00412880(param_1);"
+        },
+        {
+          "number": 42220,
+          "text": "  local_18 = (int)(short)((iVar1 * *(short *)(&DAT_00474af8 + DAT_004a0320 * 0x494)) / 0x140);"
+        },
+        {
+          "number": 42221,
+          "text": "  iVar1 = FUN_004128c4(local_8);"
+        },
+        {
+          "number": 42222,
+          "text": "  local_14 = (short)(((iVar1 + -0x1e) * (int)*(short *)(&DAT_00474af6 + DAT_004a0320 * 0x494)) /"
+        },
+        {
+          "number": 42223,
+          "text": "                    0x8c) + 0x1e;"
+        },
+        {
+          "number": 42224,
+          "text": "  iVar1 = FUN_00412880(DAT_0045e740);"
+        },
+        {
+          "number": 42225,
+          "text": "  if (iVar1 < 0) {"
+        },
+        {
+          "number": 42226,
+          "text": "    iVar1 = iVar1 + 0x1f;"
+        },
+        {
+          "number": 42227,
+          "text": "  }"
+        },
+        {
+          "number": 42228,
+          "text": "  iVar2 = FUN_00412880(local_8);"
+        },
+        {
+          "number": 42229,
+          "text": "  local_10 = ((iVar1 >> 5) * iVar2) / 0x140 + local_18 + 1;"
+        },
+        {
+          "number": 42230,
+          "text": "  iVar1 = FUN_004128c4(DAT_0045e740);"
+        },
+        {
+          "number": 42231,
+          "text": "  if (iVar1 < 0) {"
+        },
+        {
+          "number": 42232,
+          "text": "    iVar1 = iVar1 + 0x1f;"
+        },
+        {
+          "number": 42233,
+          "text": "  }"
+        },
+        {
+          "number": 42234,
+          "text": "  iVar2 = FUN_004128c4(local_8);"
+        },
+        {
+          "number": 42235,
+          "text": "  iVar2 = (iVar1 >> 5) * (iVar2 + -0x1e);"
+        },
+        {
+          "number": 42236,
+          "text": "  iVar1 = iVar2 % 0x8c;"
+        },
+        {
+          "number": 42237,
+          "text": "  local_c = iVar2 / 0x8c + local_14;"
+        },
+        {
+          "number": 42238,
+          "text": "  if (local_8[0xaf] == -1) {"
+        },
+        {
+          "number": 42239,
+          "text": "    FUN_0043e6dc(&local_18,iVar1,0x8c,(int)&stack0xfffffffc);"
+        },
+        {
+          "number": 42240,
+          "text": "  }"
+        },
+        {
+          "number": 42241,
+          "text": "  else {"
+        },
+        {
+          "number": 42242,
+          "text": "    FUN_0043e6dc(local_8 + 0xaf,iVar1,0x8c,(int)&stack0xfffffffc);"
+        },
+        {
+          "number": 42243,
+          "text": "    FUN_0043e6dc(&local_18,extraout_EDX,puVar6,(int)&stack0xfffffffc);"
+        },
+        {
+          "number": 42244,
+          "text": "  }"
+        },
+        {
+          "number": 42245,
+          "text": "  piVar3 = &local_18;"
+        },
+        {
+          "number": 42246,
+          "text": "  piVar4 = local_8 + 0xaf;"
+        },
+        {
+          "number": 42247,
+          "text": "  for (iVar1 = 4; iVar1 != 0; iVar1 = iVar1 + -1) {"
+        },
+        {
+          "number": 42248,
+          "text": "    *piVar4 = *piVar3;"
+        },
+        {
+          "number": 42249,
+          "text": "    piVar3 = piVar3 + (uint)bVar5 * -2 + 1;"
+        },
+        {
+          "number": 42250,
+          "text": "    piVar4 = piVar4 + (uint)bVar5 * -2 + 1;"
+        },
+        {
+          "number": 42251,
+          "text": "  }"
+        },
+        {
+          "number": 42252,
+          "text": "  return;"
+        },
+        {
+          "number": 42253,
+          "text": "}"
+        },
+        {
+          "number": 42254,
+          "text": ""
+        },
+        {
+          "number": 42255,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TRenameArmyUnit_OK",
+      "address": "00443f50",
+      "first_line": 45090,
+      "last_line": 45117,
+      "lines": [
+        {
+          "number": 45090,
+          "text": "// ==== TRenameArmyUnit_OK @ 00443f50 ===="
+        },
+        {
+          "number": 45091,
+          "text": ""
+        },
+        {
+          "number": 45092,
+          "text": "void TRenameArmyUnit_OK(int *param_1)"
+        },
+        {
+          "number": 45093,
+          "text": ""
+        },
+        {
+          "number": 45094,
+          "text": "{"
+        },
+        {
+          "number": 45095,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 45096,
+          "text": "  undefined4 uStack_20;"
+        },
+        {
+          "number": 45097,
+          "text": "  undefined *puStack_1c;"
+        },
+        {
+          "number": 45098,
+          "text": "  undefined1 *puStack_18;"
+        },
+        {
+          "number": 45099,
+          "text": "  undefined *puStack_8;"
+        },
+        {
+          "number": 45100,
+          "text": "  "
+        },
+        {
+          "number": 45101,
+          "text": "  puStack_18 = &stack0xfffffffc;"
+        },
+        {
+          "number": 45102,
+          "text": "  puStack_8 = (undefined *)0x0;"
+        },
+        {
+          "number": 45103,
+          "text": "  puStack_1c = &UNK_00443fbc;"
+        },
+        {
+          "number": 45104,
+          "text": "  uStack_20 = *in_FS_OFFSET;"
+        },
+        {
+          "number": 45105,
+          "text": "  *in_FS_OFFSET = &uStack_20;"
+        },
+        {
+          "number": 45106,
+          "text": "  FUN_00412cac((int *)param_1[0x6e],(int *)&puStack_8);"
+        },
+        {
+          "number": 45107,
+          "text": "  FUN_00405b88((char *)(DAT_0045e73c + 0x1f2 + (short)param_1[0x74] * 0x20),puStack_8);"
+        },
+        {
+          "number": 45108,
+          "text": "  param_1[0x4a] = 1;"
+        },
+        {
+          "number": 45109,
+          "text": "  FUN_0042313c(param_1);"
+        },
+        {
+          "number": 45110,
+          "text": "  *in_FS_OFFSET = uStack_20;"
+        },
+        {
+          "number": 45111,
+          "text": "  puStack_18 = &UNK_00443fc3;"
+        },
+        {
+          "number": 45112,
+          "text": "  puStack_1c = &UNK_00443fbb;"
+        },
+        {
+          "number": 45113,
+          "text": "  FUN_004032fc((int *)&puStack_8);"
+        },
+        {
+          "number": 45114,
+          "text": "  return;"
+        },
+        {
+          "number": 45115,
+          "text": "}"
+        },
+        {
+          "number": 45116,
+          "text": ""
+        },
+        {
+          "number": 45117,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeArmyUnits_InitializeForm",
+      "address": "004449f4",
+      "first_line": 45389,
+      "last_line": 45424,
+      "lines": [
+        {
+          "number": 45389,
+          "text": "// ==== TChangeArmyUnits_InitializeForm @ 004449f4 ===="
+        },
+        {
+          "number": 45390,
+          "text": ""
+        },
+        {
+          "number": 45391,
+          "text": "void TChangeArmyUnits_InitializeForm(int *param_1)"
+        },
+        {
+          "number": 45392,
+          "text": ""
+        },
+        {
+          "number": 45393,
+          "text": "{"
+        },
+        {
+          "number": 45394,
+          "text": "  short sVar1;"
+        },
+        {
+          "number": 45395,
+          "text": "  undefined2 uVar2;"
+        },
+        {
+          "number": 45396,
+          "text": "  int iVar3;"
+        },
+        {
+          "number": 45397,
+          "text": "  undefined4 *puVar4;"
+        },
+        {
+          "number": 45398,
+          "text": "  undefined4 *puVar5;"
+        },
+        {
+          "number": 45399,
+          "text": "  byte bVar6;"
+        },
+        {
+          "number": 45400,
+          "text": "  "
+        },
+        {
+          "number": 45401,
+          "text": "  bVar6 = 0;"
+        },
+        {
+          "number": 45402,
+          "text": "  FUN_004127a0(param_1,0x14);"
+        },
+        {
+          "number": 45403,
+          "text": "  FUN_004127c0(param_1,0x14);"
+        },
+        {
+          "number": 45404,
+          "text": "  FUN_00420c58(param_1,0x1c2);"
+        },
+        {
+          "number": 45405,
+          "text": "  FUN_00420c84(param_1,0x136);"
+        },
+        {
+          "number": 45406,
+          "text": "  sVar1 = *(short *)(DAT_0045e740 + 0x220);"
+        },
+        {
+          "number": 45407,
+          "text": "  *(short *)(param_1 + 0x75) = sVar1;"
+        },
+        {
+          "number": 45408,
+          "text": "  uVar2 = FUN_004494e4((undefined *)CONCAT22((short)((uint)(sVar1 * 0x52) >> 0x10),DAT_004a0320),"
+        },
+        {
+          "number": 45409,
+          "text": "                       (undefined *)(&DAT_0047c1ec)[sVar1 * 0xa4]);"
+        },
+        {
+          "number": 45410,
+          "text": "  *(undefined2 *)((int)param_1 + 0x1d6) = uVar2;"
+        },
+        {
+          "number": 45411,
+          "text": "  puVar4 = &DAT_0047c1ec + (short)param_1[0x75] * 0xa4;"
+        },
+        {
+          "number": 45412,
+          "text": "  puVar5 = (undefined4 *)((int)param_1 + 0x1da);"
+        },
+        {
+          "number": 45413,
+          "text": "  for (iVar3 = 0xa4; iVar3 != 0; iVar3 = iVar3 + -1) {"
+        },
+        {
+          "number": 45414,
+          "text": "    *puVar5 = *puVar4;"
+        },
+        {
+          "number": 45415,
+          "text": "    puVar4 = puVar4 + (uint)bVar6 * -2 + 1;"
+        },
+        {
+          "number": 45416,
+          "text": "    puVar5 = puVar5 + (uint)bVar6 * -2 + 1;"
+        },
+        {
+          "number": 45417,
+          "text": "  }"
+        },
+        {
+          "number": 45418,
+          "text": "  *(undefined2 *)(param_1 + 0x76) = (&DAT_00474ab2)[DAT_004a0320 * 0x24a];"
+        },
+        {
+          "number": 45419,
+          "text": "  TChangeArmyUnits_FillListBox((int)param_1);"
+        },
+        {
+          "number": 45420,
+          "text": "  FUN_00422f40(param_1);"
+        },
+        {
+          "number": 45421,
+          "text": "  return;"
+        },
+        {
+          "number": 45422,
+          "text": "}"
+        },
+        {
+          "number": 45423,
+          "text": ""
+        },
+        {
+          "number": 45424,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeArmyUnits_RenameUnit",
+      "address": "00444bb0",
+      "first_line": 45472,
+      "last_line": 45519,
+      "lines": [
+        {
+          "number": 45472,
+          "text": "// ==== TChangeArmyUnits_RenameUnit @ 00444bb0 ===="
+        },
+        {
+          "number": 45473,
+          "text": ""
+        },
+        {
+          "number": 45474,
+          "text": "void TChangeArmyUnits_RenameUnit(int param_1)"
+        },
+        {
+          "number": 45475,
+          "text": ""
+        },
+        {
+          "number": 45476,
+          "text": "{"
+        },
+        {
+          "number": 45477,
+          "text": "  bool bVar1;"
+        },
+        {
+          "number": 45478,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 45479,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 45480,
+          "text": "  undefined4 extraout_EDX_00;"
+        },
+        {
+          "number": 45481,
+          "text": "  undefined4 extraout_EDX_01;"
+        },
+        {
+          "number": 45482,
+          "text": "  undefined4 uVar3;"
+        },
+        {
+          "number": 45483,
+          "text": "  short sVar4;"
+        },
+        {
+          "number": 45484,
+          "text": "  short unaff_BP;"
+        },
+        {
+          "number": 45485,
+          "text": "  "
+        },
+        {
+          "number": 45486,
+          "text": "  iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));"
+        },
+        {
+          "number": 45487,
+          "text": "  if (iVar2 < 2) {"
+        },
+        {
+          "number": 45488,
+          "text": "    iVar2 = FUN_00429eb8(*(int **)(param_1 + 0x1b8));"
+        },
+        {
+          "number": 45489,
+          "text": "    if (iVar2 == 1) {"
+        },
+        {
+          "number": 45490,
+          "text": "      sVar4 = 0;"
+        },
+        {
+          "number": 45491,
+          "text": "      uVar3 = extraout_EDX_00;"
+        },
+        {
+          "number": 45492,
+          "text": "      do {"
+        },
+        {
+          "number": 45493,
+          "text": "        if (0 < *(short *)(param_1 + 0x1ee + sVar4 * 0x20)) {"
+        },
+        {
+          "number": 45494,
+          "text": "          bVar1 = FUN_00429fb4(*(int **)(param_1 + 0x1b8),(int)sVar4);"
+        },
+        {
+          "number": 45495,
+          "text": "          uVar3 = extraout_EDX_01;"
+        },
+        {
+          "number": 45496,
+          "text": "          if (bVar1) {"
+        },
+        {
+          "number": 45497,
+          "text": "            unaff_BP = sVar4;"
+        },
+        {
+          "number": 45498,
+          "text": "          }"
+        },
+        {
+          "number": 45499,
+          "text": "        }"
+        },
+        {
+          "number": 45500,
+          "text": "        sVar4 = sVar4 + 1;"
+        },
+        {
+          "number": 45501,
+          "text": "      } while (sVar4 != 0x14);"
+        },
+        {
+          "number": 45502,
+          "text": "      if (*(short *)(param_1 + 0x1ea + unaff_BP * 0x20) == 0) {"
+        },
+        {
+          "number": 45503,
+          "text": "        FUN_00424608(DAT_0045e628,0x443cb8,(undefined4 *)&DAT_0045e734);"
+        },
+        {
+          "number": 45504,
+          "text": "        TChangeArmyUnits_FillListBox(param_1);"
+        },
+        {
+          "number": 45505,
+          "text": "      }"
+        },
+        {
+          "number": 45506,
+          "text": "      else {"
+        },
+        {
+          "number": 45507,
+          "text": "        FUN_0042d750((uint *)\"You can only rename regular units.\","
+        },
+        {
+          "number": 45508,
+          "text": "                     CONCAT31((int3)((uint)uVar3 >> 8),2),DAT_00444c64,0);"
+        },
+        {
+          "number": 45509,
+          "text": "      }"
+        },
+        {
+          "number": 45510,
+          "text": "    }"
+        },
+        {
+          "number": 45511,
+          "text": "  }"
+        },
+        {
+          "number": 45512,
+          "text": "  else {"
+        },
+        {
+          "number": 45513,
+          "text": "    FUN_0042d750((uint *)\"You can only rename 1 unit at a time.\","
+        },
+        {
+          "number": 45514,
+          "text": "                 CONCAT31((int3)((uint)extraout_EDX >> 8),2),DAT_00444c64,0);"
+        },
+        {
+          "number": 45515,
+          "text": "  }"
+        },
+        {
+          "number": 45516,
+          "text": "  return;"
+        },
+        {
+          "number": 45517,
+          "text": "}"
+        },
+        {
+          "number": 45518,
+          "text": ""
+        },
+        {
+          "number": 45519,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeArmyUnits_OK",
+      "address": "00445378",
+      "first_line": 45811,
+      "last_line": 45833,
+      "lines": [
+        {
+          "number": 45811,
+          "text": "// ==== TChangeArmyUnits_OK @ 00445378 ===="
+        },
+        {
+          "number": 45812,
+          "text": ""
+        },
+        {
+          "number": 45813,
+          "text": "void TChangeArmyUnits_OK(int *param_1)"
+        },
+        {
+          "number": 45814,
+          "text": ""
+        },
+        {
+          "number": 45815,
+          "text": "{"
+        },
+        {
+          "number": 45816,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 45817,
+          "text": "  undefined4 *puVar2;"
+        },
+        {
+          "number": 45818,
+          "text": "  undefined4 *puVar3;"
+        },
+        {
+          "number": 45819,
+          "text": "  "
+        },
+        {
+          "number": 45820,
+          "text": "  (&DAT_00474ab2)[DAT_004a0320 * 0x24a] = (short)param_1[0x76];"
+        },
+        {
+          "number": 45821,
+          "text": "  puVar2 = (undefined4 *)((int)param_1 + 0x1da);"
+        },
+        {
+          "number": 45822,
+          "text": "  puVar3 = &DAT_0047c1ec + (short)param_1[0x75] * 0xa4;"
+        },
+        {
+          "number": 45823,
+          "text": "  for (iVar1 = 0xa4; iVar1 != 0; iVar1 = iVar1 + -1) {"
+        },
+        {
+          "number": 45824,
+          "text": "    *puVar3 = *puVar2;"
+        },
+        {
+          "number": 45825,
+          "text": "    puVar2 = puVar2 + 1;"
+        },
+        {
+          "number": 45826,
+          "text": "    puVar3 = puVar3 + 1;"
+        },
+        {
+          "number": 45827,
+          "text": "  }"
+        },
+        {
+          "number": 45828,
+          "text": "  param_1[0x4a] = 1;"
+        },
+        {
+          "number": 45829,
+          "text": "  FUN_0042313c(param_1);"
+        },
+        {
+          "number": 45830,
+          "text": "  return;"
+        },
+        {
+          "number": 45831,
+          "text": "}"
+        },
+        {
+          "number": 45832,
+          "text": ""
+        },
+        {
+          "number": 45833,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_InitializeForm",
+      "address": "00445958",
+      "first_line": 45845,
+      "last_line": 45919,
+      "lines": [
+        {
+          "number": 45845,
+          "text": "// ==== TUnitMap_InitializeForm @ 00445958 ===="
+        },
+        {
+          "number": 45846,
+          "text": ""
+        },
+        {
+          "number": 45847,
+          "text": "void TUnitMap_InitializeForm(int *param_1)"
+        },
+        {
+          "number": 45848,
+          "text": ""
+        },
+        {
+          "number": 45849,
+          "text": "{"
+        },
+        {
+          "number": 45850,
+          "text": "  int *piVar1;"
+        },
+        {
+          "number": 45851,
+          "text": "  uint uVar2;"
+        },
+        {
+          "number": 45852,
+          "text": "  int iVar3;"
+        },
+        {
+          "number": 45853,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 45854,
+          "text": "  undefined4 extraout_ECX_00;"
+        },
+        {
+          "number": 45855,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 45856,
+          "text": "  undefined4 extraout_EDX_00;"
+        },
+        {
+          "number": 45857,
+          "text": "  int iVar4;"
+        },
+        {
+          "number": 45858,
+          "text": "  short sVar5;"
+        },
+        {
+          "number": 45859,
+          "text": "  ushort uVar6;"
+        },
+        {
+          "number": 45860,
+          "text": "  undefined1 uVar7;"
+        },
+        {
+          "number": 45861,
+          "text": "  "
+        },
+        {
+          "number": 45862,
+          "text": "  piVar1 = (int *)param_1[0x6f];"
+        },
+        {
+          "number": 45863,
+          "text": "  func_0x004126d0(piVar1,2);"
+        },
+        {
+          "number": 45864,
+          "text": "  FUN_0042aa10(piVar1,(int)*(short *)(&DAT_00474af8 + DAT_004a0320 * 0x494));"
+        },
+        {
+          "number": 45865,
+          "text": "  func_0x0042aa3c(piVar1,0x136);"
+        },
+        {
+          "number": 45866,
+          "text": "  func_0x0042aa24(piVar1,0);"
+        },
+        {
+          "number": 45867,
+          "text": "  *(undefined2 *)((int)piVar1 + 0x10e) = 10;"
+        },
+        {
+          "number": 45868,
+          "text": "  FUN_00412c08(piVar1,CONCAT31((int3)((uint)extraout_EDX >> 8),1),extraout_ECX);"
+        },
+        {
+          "number": 45869,
+          "text": "  piVar1 = (int *)param_1[0x70];"
+        },
+        {
+          "number": 45870,
+          "text": "  func_0x004126d0(piVar1,4);"
+        },
+        {
+          "number": 45871,
+          "text": "  FUN_0042aa10(piVar1,(int)*(short *)(&DAT_00474af6 + DAT_004a0320 * 0x494));"
+        },
+        {
+          "number": 45872,
+          "text": "  func_0x0042aa3c(piVar1,0x82);"
+        },
+        {
+          "number": 45873,
+          "text": "  func_0x0042aa24(piVar1,0);"
+        },
+        {
+          "number": 45874,
+          "text": "  *(undefined2 *)((int)piVar1 + 0x10e) = 10;"
+        },
+        {
+          "number": 45875,
+          "text": "  FUN_00412c08(piVar1,CONCAT31((int3)((uint)extraout_EDX_00 >> 8),1),extraout_ECX_00);"
+        },
+        {
+          "number": 45876,
+          "text": "  iVar3 = DAT_004a0320 * 0x494;"
+        },
+        {
+          "number": 45877,
+          "text": "  FUN_004127a0(param_1,(int)*(short *)(&DAT_00474ae6 + iVar3));"
+        },
+        {
+          "number": 45878,
+          "text": "  FUN_004127c0(param_1,(int)*(short *)(&DAT_00474ae8 + iVar3));"
+        },
+        {
+          "number": 45879,
+          "text": "  FUN_00420c58(param_1,(int)*(short *)(&DAT_00474aec + iVar3));"
+        },
+        {
+          "number": 45880,
+          "text": "  FUN_00420c84(param_1,(int)*(short *)(&DAT_00474aea + iVar3));"
+        },
+        {
+          "number": 45881,
+          "text": "  *(undefined2 *)((int)param_1 + 0x21a) = 0xffff;"
+        },
+        {
+          "number": 45882,
+          "text": "  *(undefined2 *)((int)param_1 + 0x222) = 0xffff;"
+        },
+        {
+          "number": 45883,
+          "text": "  *(undefined2 *)(param_1 + 0x88) = 0xffff;"
+        },
+        {
+          "number": 45884,
+          "text": "  *(undefined2 *)(param_1 + 0x89) = 0xffff;"
+        },
+        {
+          "number": 45885,
+          "text": "  uVar2 = FUN_004143cc(param_1[0x6b]);"
+        },
+        {
+          "number": 45886,
+          "text": "  if (-1 < (short)((short)uVar2 + -1)) {"
+        },
+        {
+          "number": 45887,
+          "text": "    sVar5 = 0;"
+        },
+        {
+          "number": 45888,
+          "text": "    uVar7 = true;"
+        },
+        {
+          "number": 45889,
+          "text": "    do {"
+        },
+        {
+          "number": 45890,
+          "text": "      iVar4 = (int)sVar5;"
+        },
+        {
+          "number": 45891,
+          "text": "      iVar3 = FUN_0041439c(param_1[0x6b],iVar4);"
+        },
+        {
+          "number": 45892,
+          "text": "      FUN_00403580(*(uint **)(iVar3 + 8),(uint *)\"sb_supplyarmy\");"
+        },
+        {
+          "number": 45893,
+          "text": "      if ((bool)uVar7) {"
+        },
+        {
+          "number": 45894,
+          "text": "        *(short *)(param_1 + 0x85) = sVar5;"
+        },
+        {
+          "number": 45895,
+          "text": "      }"
+        },
+        {
+          "number": 45896,
+          "text": "      else {"
+        },
+        {
+          "number": 45897,
+          "text": "        iVar3 = FUN_0041439c(param_1[0x6b],iVar4);"
+        },
+        {
+          "number": 45898,
+          "text": "        FUN_00403580(*(uint **)(iVar3 + 8),(uint *)\"sb_supplyfleet\");"
+        },
+        {
+          "number": 45899,
+          "text": "        if ((bool)uVar7) {"
+        },
+        {
+          "number": 45900,
+          "text": "          *(short *)((int)param_1 + 0x216) = sVar5;"
+        },
+        {
+          "number": 45901,
+          "text": "        }"
+        },
+        {
+          "number": 45902,
+          "text": "        else {"
+        },
+        {
+          "number": 45903,
+          "text": "          iVar3 = FUN_0041439c(param_1[0x6b],iVar4);"
+        },
+        {
+          "number": 45904,
+          "text": "          FUN_00403580(*(uint **)(iVar3 + 8),(uint *)\"sb_fortifycity\");"
+        },
+        {
+          "number": 45905,
+          "text": "          if ((bool)uVar7) {"
+        },
+        {
+          "number": 45906,
+          "text": "            *(short *)(param_1 + 0x86) = sVar5;"
+        },
+        {
+          "number": 45907,
+          "text": "          }"
+        },
+        {
+          "number": 45908,
+          "text": "        }"
+        },
+        {
+          "number": 45909,
+          "text": "      }"
+        },
+        {
+          "number": 45910,
+          "text": "      sVar5 = sVar5 + 1;"
+        },
+        {
+          "number": 45911,
+          "text": "      uVar6 = (short)uVar2 - 1;"
+        },
+        {
+          "number": 45912,
+          "text": "      uVar2 = (uint)uVar6;"
+        },
+        {
+          "number": 45913,
+          "text": "      uVar7 = uVar6 == 0;"
+        },
+        {
+          "number": 45914,
+          "text": "    } while (!(bool)uVar7);"
+        },
+        {
+          "number": 45915,
+          "text": "  }"
+        },
+        {
+          "number": 45916,
+          "text": "  return;"
+        },
+        {
+          "number": 45917,
+          "text": "}"
+        },
+        {
+          "number": 45918,
+          "text": ""
+        },
+        {
+          "number": 45919,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_PrintMapSquare",
+      "address": "00445b38",
+      "first_line": 45920,
+      "last_line": 45995,
+      "lines": [
+        {
+          "number": 45920,
+          "text": "// ==== TUnitMap_PrintMapSquare @ 00445b38 ===="
+        },
+        {
+          "number": 45921,
+          "text": ""
+        },
+        {
+          "number": 45922,
+          "text": "void TUnitMap_PrintMapSquare(int param_1,undefined4 param_2,undefined4 param_3)"
+        },
+        {
+          "number": 45923,
+          "text": ""
+        },
+        {
+          "number": 45924,
+          "text": "{"
+        },
+        {
+          "number": 45925,
+          "text": "  short sVar1;"
+        },
+        {
+          "number": 45926,
+          "text": "  short sVar2;"
+        },
+        {
+          "number": 45927,
+          "text": "  short sVar3;"
+        },
+        {
+          "number": 45928,
+          "text": "  uint uVar4;"
+        },
+        {
+          "number": 45929,
+          "text": "  int *piVar5;"
+        },
+        {
+          "number": 45930,
+          "text": "  int iVar6;"
+        },
+        {
+          "number": 45931,
+          "text": "  int *piVar7;"
+        },
+        {
+          "number": 45932,
+          "text": "  short local_18;"
+        },
+        {
+          "number": 45933,
+          "text": "  short sStack_16;"
+        },
+        {
+          "number": 45934,
+          "text": "  int *local_14;"
+        },
+        {
+          "number": 45935,
+          "text": "  "
+        },
+        {
+          "number": 45936,
+          "text": "  local_14 = (int *)FUN_0041cdd8(0x418b10,CONCAT31((int3)((uint)param_2 >> 8),1),param_3);"
+        },
+        {
+          "number": 45937,
+          "text": "  local_18 = (short)param_2;"
+        },
+        {
+          "number": 45938,
+          "text": "  sVar1 = *(short *)(&DAT_00474af8 + DAT_004a0320 * 0x494);"
+        },
+        {
+          "number": 45939,
+          "text": "  sStack_16 = (short)((uint)param_2 >> 0x10);"
+        },
+        {
+          "number": 45940,
+          "text": "  sVar2 = *(short *)(&DAT_00474af6 + DAT_004a0320 * 0x494);"
+        },
+        {
+          "number": 45941,
+          "text": "  sVar3 = *(short *)(&DAT_0045e870 + sStack_16 * 2 + local_18 * 0x118);"
+        },
+        {
+          "number": 45942,
+          "text": "  uVar4 = (uint)sVar3;"
+        },
+        {
+          "number": 45943,
+          "text": "  if ((int)uVar4 < 0x44) {"
+        },
+        {
+          "number": 45944,
+          "text": "    if (uVar4 < 0xc) {"
+        },
+        {
+          "number": 45945,
+          "text": "      FUN_00417200(*(int **)(param_1 + 0x1b0),(int)sVar3,local_14);"
+        },
+        {
+          "number": 45946,
+          "text": "    }"
+        },
+        {
+          "number": 45947,
+          "text": "    else if (uVar4 - 0x14 < 0x10) {"
+        },
+        {
+          "number": 45948,
+          "text": "      FUN_00417200(*(int **)(param_1 + 0x1c4),sVar3 + -0x14,local_14);"
+        },
+        {
+          "number": 45949,
+          "text": "    }"
+        },
+        {
+          "number": 45950,
+          "text": "    else if (uVar4 - 0x24 < 0x10) {"
+        },
+        {
+          "number": 45951,
+          "text": "      FUN_00417200(*(int **)(param_1 + 0x1c8),sVar3 + -0x24,local_14);"
+        },
+        {
+          "number": 45952,
+          "text": "    }"
+        },
+        {
+          "number": 45953,
+          "text": "    else if (uVar4 - 0x34 < 0x10) {"
+        },
+        {
+          "number": 45954,
+          "text": "      FUN_00417200(*(int **)(param_1 + 0x1cc),sVar3 + -0x34,local_14);"
+        },
+        {
+          "number": 45955,
+          "text": "    }"
+        },
+        {
+          "number": 45956,
+          "text": "  }"
+        },
+        {
+          "number": 45957,
+          "text": "  else if (uVar4 - 0x44 < 0x10) {"
+        },
+        {
+          "number": 45958,
+          "text": "    FUN_00417200(*(int **)(param_1 + 0x1d0),sVar3 + -0x44,local_14);"
+        },
+        {
+          "number": 45959,
+          "text": "  }"
+        },
+        {
+          "number": 45960,
+          "text": "  else if (uVar4 - 0x54 < 0x10) {"
+        },
+        {
+          "number": 45961,
+          "text": "    FUN_00417200(*(int **)(param_1 + 0x1d4),sVar3 + -0x54,local_14);"
+        },
+        {
+          "number": 45962,
+          "text": "  }"
+        },
+        {
+          "number": 45963,
+          "text": "  else if (uVar4 - 200 < 0x30) {"
+        },
+        {
+          "number": 45964,
+          "text": "    iVar6 = sVar3 + -200;"
+        },
+        {
+          "number": 45965,
+          "text": "    if (iVar6 < 0) {"
+        },
+        {
+          "number": 45966,
+          "text": "      iVar6 = sVar3 + -0xb9;"
+        },
+        {
+          "number": 45967,
+          "text": "    }"
+        },
+        {
+          "number": 45968,
+          "text": "    FUN_00417200(*(int **)(param_1 + 0x1b4),iVar6 >> 4,local_14);"
+        },
+        {
+          "number": 45969,
+          "text": "    uVar4 = (int)sVar3 - 200U & 0x8000000f;"
+        },
+        {
+          "number": 45970,
+          "text": "    if ((int)uVar4 < 0) {"
+        },
+        {
+          "number": 45971,
+          "text": "      uVar4 = (uVar4 - 1 | 0xfffffff0) + 1;"
+        },
+        {
+          "number": 45972,
+          "text": "    }"
+        },
+        {
+          "number": 45973,
+          "text": "    FUN_0044a6c8((short)uVar4,(int *)&local_14);"
+        },
+        {
+          "number": 45974,
+          "text": "  }"
+        },
+        {
+          "number": 45975,
+          "text": "  else if (uVar4 - 300 < 0x30) {"
+        },
+        {
+          "number": 45976,
+          "text": "    iVar6 = sVar3 + -300;"
+        },
+        {
+          "number": 45977,
+          "text": "    if (iVar6 < 0) {"
+        },
+        {
+          "number": 45978,
+          "text": "      iVar6 = sVar3 + -0x11d;"
+        },
+        {
+          "number": 45979,
+          "text": "    }"
+        },
+        {
+          "number": 45980,
+          "text": "    FUN_00417200(*(int **)(param_1 + 0x1b8),iVar6 >> 4,local_14);"
+        },
+        {
+          "number": 45981,
+          "text": "    uVar4 = (int)sVar3 - 300U & 0x8000000f;"
+        },
+        {
+          "number": 45982,
+          "text": "    if ((int)uVar4 < 0) {"
+        },
+        {
+          "number": 45983,
+          "text": "      uVar4 = (uVar4 - 1 | 0xfffffff0) + 1;"
+        },
+        {
+          "number": 45984,
+          "text": "    }"
+        },
+        {
+          "number": 45985,
+          "text": "    FUN_0044a6c8((short)uVar4,(int *)&local_14);"
+        },
+        {
+          "number": 45986,
+          "text": "  }"
+        },
+        {
+          "number": 45987,
+          "text": "  piVar7 = local_14;"
+        },
+        {
+          "number": 45988,
+          "text": "  piVar5 = (int *)FUN_004211bc(param_1);"
+        },
+        {
+          "number": 45989,
+          "text": "  FUN_00419d14(piVar5,(int)(short)(local_18 - sVar1) << 5,(short)(sStack_16 - sVar2) * 0x20 + 0x1e,"
+        },
+        {
+          "number": 45990,
+          "text": "               piVar7);"
+        },
+        {
+          "number": 45991,
+          "text": "  TObject_Free(local_14);"
+        },
+        {
+          "number": 45992,
+          "text": "  return;"
+        },
+        {
+          "number": 45993,
+          "text": "}"
+        },
+        {
+          "number": 45994,
+          "text": ""
+        },
+        {
+          "number": 45995,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_PaintForm",
+      "address": "00445d38",
+      "first_line": 45996,
+      "last_line": 46128,
+      "lines": [
+        {
+          "number": 45996,
+          "text": "// ==== TUnitMap_PaintForm @ 00445d38 ===="
+        },
+        {
+          "number": 45997,
+          "text": ""
+        },
+        {
+          "number": 45998,
+          "text": "void TUnitMap_PaintForm(int *param_1,undefined4 param_2,undefined4 param_3)"
+        },
+        {
+          "number": 45999,
+          "text": ""
+        },
+        {
+          "number": 46000,
+          "text": "{"
+        },
+        {
+          "number": 46001,
+          "text": "  undefined2 uVar1;"
+        },
+        {
+          "number": 46002,
+          "text": "  short sVar2;"
+        },
+        {
+          "number": 46003,
+          "text": "  short sVar3;"
+        },
+        {
+          "number": 46004,
+          "text": "  short sVar4;"
+        },
+        {
+          "number": 46005,
+          "text": "  int iVar5;"
+        },
+        {
+          "number": 46006,
+          "text": "  int iVar6;"
+        },
+        {
+          "number": 46007,
+          "text": "  undefined4 uVar7;"
+        },
+        {
+          "number": 46008,
+          "text": "  uint uVar8;"
+        },
+        {
+          "number": 46009,
+          "text": "  int *piVar9;"
+        },
+        {
+          "number": 46010,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 46011,
+          "text": "  undefined2 extraout_var;"
+        },
+        {
+          "number": 46012,
+          "text": "  undefined2 extraout_var_00;"
+        },
+        {
+          "number": 46013,
+          "text": "  undefined4 unaff_EBX;"
+        },
+        {
+          "number": 46014,
+          "text": "  undefined2 uVar10;"
+        },
+        {
+          "number": 46015,
+          "text": "  short sVar11;"
+        },
+        {
+          "number": 46016,
+          "text": "  short sVar12;"
+        },
+        {
+          "number": 46017,
+          "text": "  int *piVar13;"
+        },
+        {
+          "number": 46018,
+          "text": "  short local_1c;"
+        },
+        {
+          "number": 46019,
+          "text": "  int *local_18;"
+        },
+        {
+          "number": 46020,
+          "text": "  short local_14;"
+        },
+        {
+          "number": 46021,
+          "text": "  "
+        },
+        {
+          "number": 46022,
+          "text": "  local_18 = (int *)FUN_0041cdd8(0x418b10,CONCAT31((int3)((uint)param_2 >> 8),1),param_3);"
+        },
+        {
+          "number": 46023,
+          "text": "  iVar5 = FUN_00412880(param_1);"
+        },
+        {
+          "number": 46024,
+          "text": "  iVar6 = iVar5 + -0xf;"
+        },
+        {
+          "number": 46025,
+          "text": "  if (iVar6 < 0) {"
+        },
+        {
+          "number": 46026,
+          "text": "    iVar6 = iVar5 + 0x10;"
+        },
+        {
+          "number": 46027,
+          "text": "  }"
+        },
+        {
+          "number": 46028,
+          "text": "  sVar3 = (short)(iVar6 >> 5);"
+        },
+        {
+          "number": 46029,
+          "text": "  iVar5 = FUN_004128c4(param_1);"
+        },
+        {
+          "number": 46030,
+          "text": "  iVar6 = iVar5 + -0x2d;"
+        },
+        {
+          "number": 46031,
+          "text": "  if (iVar6 < 0) {"
+        },
+        {
+          "number": 46032,
+          "text": "    iVar6 = iVar5 + -0xe;"
+        },
+        {
+          "number": 46033,
+          "text": "  }"
+        },
+        {
+          "number": 46034,
+          "text": "  sVar4 = (short)(iVar6 >> 5);"
+        },
+        {
+          "number": 46035,
+          "text": "  iVar5 = DAT_004a0320 * 0x494;"
+        },
+        {
+          "number": 46036,
+          "text": "  uVar1 = *(undefined2 *)(param_1[0x6f] + 0x100);"
+        },
+        {
+          "number": 46037,
+          "text": "  uVar10 = (undefined2)((uint)unaff_EBX >> 0x10);"
+        },
+        {
+          "number": 46038,
+          "text": "  *(undefined2 *)(&DAT_00474af8 + iVar5) = uVar1;"
+        },
+        {
+          "number": 46039,
+          "text": "  uVar7 = FUN_00448fd0(CONCAT22(uVar10,uVar1),CONCAT22(extraout_var,0x140 - sVar3) + -1);"
+        },
+        {
+          "number": 46040,
+          "text": "  uVar7 = FUN_00448fd8(0,uVar7);"
+        },
+        {
+          "number": 46041,
+          "text": "  *(short *)(&DAT_00474af8 + iVar5) = (short)uVar7;"
+        },
+        {
+          "number": 46042,
+          "text": "  uVar1 = *(undefined2 *)(param_1[0x70] + 0x100);"
+        },
+        {
+          "number": 46043,
+          "text": "  *(undefined2 *)(&DAT_00474af6 + iVar5) = uVar1;"
+        },
+        {
+          "number": 46044,
+          "text": "  uVar7 = FUN_00448fd0(CONCAT22(uVar10,uVar1),CONCAT22(extraout_var_00,0x8c - sVar4) + -1);"
+        },
+        {
+          "number": 46045,
+          "text": "  uVar7 = FUN_00448fd8(0,uVar7);"
+        },
+        {
+          "number": 46046,
+          "text": "  *(short *)(&DAT_00474af6 + iVar5) = (short)uVar7;"
+        },
+        {
+          "number": 46047,
+          "text": "  if (-1 < sVar3) {"
+        },
+        {
+          "number": 46048,
+          "text": "    local_14 = sVar3 + 1;"
+        },
+        {
+          "number": 46049,
+          "text": "    local_1c = 0;"
+        },
+        {
+          "number": 46050,
+          "text": "    do {"
+        },
+        {
+          "number": 46051,
+          "text": "      if (-1 < sVar4) {"
+        },
+        {
+          "number": 46052,
+          "text": "        sVar11 = sVar4 + 1;"
+        },
+        {
+          "number": 46053,
+          "text": "        sVar12 = 0;"
+        },
+        {
+          "number": 46054,
+          "text": "        do {"
+        },
+        {
+          "number": 46055,
+          "text": "          sVar2 = *(short *)(&DAT_0045e870 +"
+        },
+        {
+          "number": 46056,
+          "text": "                            ((int)*(short *)(&DAT_00474af6 + iVar5) + (int)sVar12) * 2 +"
+        },
+        {
+          "number": 46057,
+          "text": "                            ((int)*(short *)(&DAT_00474af8 + iVar5) + (int)local_1c) * 0x118);"
+        },
+        {
+          "number": 46058,
+          "text": "          uVar8 = (uint)sVar2;"
+        },
+        {
+          "number": 46059,
+          "text": "          if ((int)uVar8 < 0x44) {"
+        },
+        {
+          "number": 46060,
+          "text": "            if (uVar8 < 0xc) {"
+        },
+        {
+          "number": 46061,
+          "text": "              FUN_00417200((int *)param_1[0x6c],(int)sVar2,local_18);"
+        },
+        {
+          "number": 46062,
+          "text": "            }"
+        },
+        {
+          "number": 46063,
+          "text": "            else if (uVar8 - 0x14 < 0x10) {"
+        },
+        {
+          "number": 46064,
+          "text": "              FUN_00417200((int *)param_1[0x71],sVar2 + -0x14,local_18);"
+        },
+        {
+          "number": 46065,
+          "text": "            }"
+        },
+        {
+          "number": 46066,
+          "text": "            else if (uVar8 - 0x24 < 0x10) {"
+        },
+        {
+          "number": 46067,
+          "text": "              FUN_00417200((int *)param_1[0x72],sVar2 + -0x24,local_18);"
+        },
+        {
+          "number": 46068,
+          "text": "            }"
+        },
+        {
+          "number": 46069,
+          "text": "            else if (uVar8 - 0x34 < 0x10) {"
+        },
+        {
+          "number": 46070,
+          "text": "              FUN_00417200((int *)param_1[0x73],sVar2 + -0x34,local_18);"
+        },
+        {
+          "number": 46071,
+          "text": "            }"
+        },
+        {
+          "number": 46072,
+          "text": "          }"
+        },
+        {
+          "number": 46073,
+          "text": "          else if (uVar8 - 0x44 < 0x10) {"
+        },
+        {
+          "number": 46074,
+          "text": "            FUN_00417200((int *)param_1[0x74],sVar2 + -0x44,local_18);"
+        },
+        {
+          "number": 46075,
+          "text": "          }"
+        },
+        {
+          "number": 46076,
+          "text": "          else if (uVar8 - 0x54 < 0x10) {"
+        },
+        {
+          "number": 46077,
+          "text": "            FUN_00417200((int *)param_1[0x75],sVar2 + -0x54,local_18);"
+        },
+        {
+          "number": 46078,
+          "text": "          }"
+        },
+        {
+          "number": 46079,
+          "text": "          else if (uVar8 - 200 < 0x30) {"
+        },
+        {
+          "number": 46080,
+          "text": "            iVar6 = sVar2 + -200;"
+        },
+        {
+          "number": 46081,
+          "text": "            if (iVar6 < 0) {"
+        },
+        {
+          "number": 46082,
+          "text": "              iVar6 = sVar2 + -0xb9;"
+        },
+        {
+          "number": 46083,
+          "text": "            }"
+        },
+        {
+          "number": 46084,
+          "text": "            FUN_00417200((int *)param_1[0x6d],iVar6 >> 4,local_18);"
+        },
+        {
+          "number": 46085,
+          "text": "            uVar8 = (int)sVar2 - 200U & 0x8000000f;"
+        },
+        {
+          "number": 46086,
+          "text": "            if ((int)uVar8 < 0) {"
+        },
+        {
+          "number": 46087,
+          "text": "              uVar8 = (uVar8 - 1 | 0xfffffff0) + 1;"
+        },
+        {
+          "number": 46088,
+          "text": "            }"
+        },
+        {
+          "number": 46089,
+          "text": "            FUN_0044a6c8((short)uVar8,(int *)&local_18);"
+        },
+        {
+          "number": 46090,
+          "text": "          }"
+        },
+        {
+          "number": 46091,
+          "text": "          else if (uVar8 - 300 < 0x30) {"
+        },
+        {
+          "number": 46092,
+          "text": "            iVar6 = sVar2 + -300;"
+        },
+        {
+          "number": 46093,
+          "text": "            if (iVar6 < 0) {"
+        },
+        {
+          "number": 46094,
+          "text": "              iVar6 = sVar2 + -0x11d;"
+        },
+        {
+          "number": 46095,
+          "text": "            }"
+        },
+        {
+          "number": 46096,
+          "text": "            FUN_00417200((int *)param_1[0x6e],iVar6 >> 4,local_18);"
+        },
+        {
+          "number": 46097,
+          "text": "            uVar8 = (int)sVar2 - 300U & 0x8000000f;"
+        },
+        {
+          "number": 46098,
+          "text": "            if ((int)uVar8 < 0) {"
+        },
+        {
+          "number": 46099,
+          "text": "              uVar8 = (uVar8 - 1 | 0xfffffff0) + 1;"
+        },
+        {
+          "number": 46100,
+          "text": "            }"
+        },
+        {
+          "number": 46101,
+          "text": "            FUN_0044a6c8((short)uVar8,(int *)&local_18);"
+        },
+        {
+          "number": 46102,
+          "text": "          }"
+        },
+        {
+          "number": 46103,
+          "text": "          piVar13 = local_18;"
+        },
+        {
+          "number": 46104,
+          "text": "          piVar9 = (int *)FUN_004211bc((int)param_1);"
+        },
+        {
+          "number": 46105,
+          "text": "          FUN_00419d14(piVar9,(int)local_1c << 5,sVar12 * 0x20 + 0x1e,piVar13);"
+        },
+        {
+          "number": 46106,
+          "text": "          sVar12 = sVar12 + 1;"
+        },
+        {
+          "number": 46107,
+          "text": "          sVar11 = sVar11 + -1;"
+        },
+        {
+          "number": 46108,
+          "text": "        } while (sVar11 != 0);"
+        },
+        {
+          "number": 46109,
+          "text": "      }"
+        },
+        {
+          "number": 46110,
+          "text": "      local_1c = local_1c + 1;"
+        },
+        {
+          "number": 46111,
+          "text": "      local_14 = local_14 + -1;"
+        },
+        {
+          "number": 46112,
+          "text": "    } while (local_14 != 0);"
+        },
+        {
+          "number": 46113,
+          "text": "  }"
+        },
+        {
+          "number": 46114,
+          "text": "  if (0x13f - sVar3 == (int)*(short *)(&DAT_00474af8 + iVar5)) {"
+        },
+        {
+          "number": 46115,
+          "text": "    FUN_0042aa10((int *)param_1[0x6f],((int *)param_1[0x6f])[0x42]);"
+        },
+        {
+          "number": 46116,
+          "text": "  }"
+        },
+        {
+          "number": 46117,
+          "text": "  if (0x8b - sVar4 == (int)*(short *)(&DAT_00474af6 + iVar5)) {"
+        },
+        {
+          "number": 46118,
+          "text": "    FUN_0042aa10((int *)param_1[0x70],((int *)param_1[0x70])[0x42]);"
+        },
+        {
+          "number": 46119,
+          "text": "  }"
+        },
+        {
+          "number": 46120,
+          "text": "  TObject_Free(local_18);"
+        },
+        {
+          "number": 46121,
+          "text": "  if (-1 < *(short *)((int)param_1 + 0x21a)) {"
+        },
+        {
+          "number": 46122,
+          "text": "    TUnitMap_SelectUnit((int)param_1,*(undefined **)((int)param_1 + 0x21a),extraout_ECX);"
+        },
+        {
+          "number": 46123,
+          "text": "  }"
+        },
+        {
+          "number": 46124,
+          "text": "  TAreaMap_UnitMapCursor(DAT_0045e718);"
+        },
+        {
+          "number": 46125,
+          "text": "  return;"
+        },
+        {
+          "number": 46126,
+          "text": "}"
+        },
+        {
+          "number": 46127,
+          "text": ""
+        },
+        {
+          "number": 46128,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_AreaMapClicked",
+      "address": "004462ac",
+      "first_line": 46265,
+      "last_line": 46299,
+      "lines": [
+        {
+          "number": 46265,
+          "text": "// ==== TUnitMap_AreaMapClicked @ 004462ac ===="
+        },
+        {
+          "number": 46266,
+          "text": ""
+        },
+        {
+          "number": 46267,
+          "text": "void TUnitMap_AreaMapClicked(int *param_1,undefined4 param_2,undefined4 param_3)"
+        },
+        {
+          "number": 46268,
+          "text": ""
+        },
+        {
+          "number": 46269,
+          "text": "{"
+        },
+        {
+          "number": 46270,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 46271,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 46272,
+          "text": "  int iVar3;"
+        },
+        {
+          "number": 46273,
+          "text": "  undefined4 uVar4;"
+        },
+        {
+          "number": 46274,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 46275,
+          "text": "  undefined2 extraout_var;"
+        },
+        {
+          "number": 46276,
+          "text": "  undefined2 extraout_var_00;"
+        },
+        {
+          "number": 46277,
+          "text": "  "
+        },
+        {
+          "number": 46278,
+          "text": "  iVar1 = DAT_004a0320 * 0x494;"
+        },
+        {
+          "number": 46279,
+          "text": "  iVar2 = FUN_00412880(param_1);"
+        },
+        {
+          "number": 46280,
+          "text": "  iVar3 = iVar2 + -0xf;"
+        },
+        {
+          "number": 46281,
+          "text": "  if (iVar3 < 0) {"
+        },
+        {
+          "number": 46282,
+          "text": "    iVar3 = iVar2 + 0x10;"
+        },
+        {
+          "number": 46283,
+          "text": "  }"
+        },
+        {
+          "number": 46284,
+          "text": "  uVar4 = FUN_00448fd0(param_2,CONCAT22(extraout_var,0x140 - (short)(iVar3 >> 5)));"
+        },
+        {
+          "number": 46285,
+          "text": "  *(short *)(&DAT_00474af8 + iVar1) = (short)uVar4;"
+        },
+        {
+          "number": 46286,
+          "text": "  iVar2 = FUN_004128c4(param_1);"
+        },
+        {
+          "number": 46287,
+          "text": "  iVar3 = iVar2 + -0x2d;"
+        },
+        {
+          "number": 46288,
+          "text": "  if (iVar3 < 0) {"
+        },
+        {
+          "number": 46289,
+          "text": "    iVar3 = iVar2 + -0xe;"
+        },
+        {
+          "number": 46290,
+          "text": "  }"
+        },
+        {
+          "number": 46291,
+          "text": "  uVar4 = FUN_00448fd0(param_3,CONCAT22(extraout_var_00,0x8c - (short)(iVar3 >> 5)));"
+        },
+        {
+          "number": 46292,
+          "text": "  *(short *)(&DAT_00474af6 + iVar1) = (short)uVar4;"
+        },
+        {
+          "number": 46293,
+          "text": "  FUN_0042aa10((int *)param_1[0x6f],(int)*(short *)(&DAT_00474af8 + iVar1));"
+        },
+        {
+          "number": 46294,
+          "text": "  FUN_0042aa10((int *)param_1[0x70],(int)*(short *)(&DAT_00474af6 + iVar1));"
+        },
+        {
+          "number": 46295,
+          "text": "  TUnitMap_PaintForm(param_1,param_3,extraout_ECX);"
+        },
+        {
+          "number": 46296,
+          "text": "  return;"
+        },
+        {
+          "number": 46297,
+          "text": "}"
+        },
+        {
+          "number": 46298,
+          "text": ""
+        },
+        {
+          "number": 46299,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_SelectUnit",
+      "address": "004466cc",
+      "first_line": 46487,
+      "last_line": 46666,
+      "lines": [
+        {
+          "number": 46487,
+          "text": "// ==== TUnitMap_SelectUnit @ 004466cc ===="
+        },
+        {
+          "number": 46488,
+          "text": ""
+        },
+        {
+          "number": 46489,
+          "text": "void TUnitMap_SelectUnit(int param_1,undefined *param_2,undefined4 param_3)"
+        },
+        {
+          "number": 46490,
+          "text": ""
+        },
+        {
+          "number": 46491,
+          "text": "{"
+        },
+        {
+          "number": 46492,
+          "text": "  short *psVar1;"
+        },
+        {
+          "number": 46493,
+          "text": "  ushort uVar2;"
+        },
+        {
+          "number": 46494,
+          "text": "  short sVar3;"
+        },
+        {
+          "number": 46495,
+          "text": "  bool bVar4;"
+        },
+        {
+          "number": 46496,
+          "text": "  short sVar5;"
+        },
+        {
+          "number": 46497,
+          "text": "  int iVar6;"
+        },
+        {
+          "number": 46498,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 46499,
+          "text": "  undefined4 extraout_ECX_00;"
+        },
+        {
+          "number": 46500,
+          "text": "  undefined4 extraout_ECX_01;"
+        },
+        {
+          "number": 46501,
+          "text": "  undefined4 extraout_ECX_02;"
+        },
+        {
+          "number": 46502,
+          "text": "  undefined4 extraout_ECX_03;"
+        },
+        {
+          "number": 46503,
+          "text": "  undefined4 extraout_ECX_04;"
+        },
+        {
+          "number": 46504,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 46505,
+          "text": "  undefined4 extraout_EDX_00;"
+        },
+        {
+          "number": 46506,
+          "text": "  undefined4 extraout_EDX_01;"
+        },
+        {
+          "number": 46507,
+          "text": "  undefined3 uVar7;"
+        },
+        {
+          "number": 46508,
+          "text": "  undefined4 extraout_EDX_02;"
+        },
+        {
+          "number": 46509,
+          "text": "  undefined *unaff_ESI;"
+        },
+        {
+          "number": 46510,
+          "text": "  undefined4 local_14;"
+        },
+        {
+          "number": 46511,
+          "text": "  short local_c;"
+        },
+        {
+          "number": 46512,
+          "text": "  short sStack_a;"
+        },
+        {
+          "number": 46513,
+          "text": "  "
+        },
+        {
+          "number": 46514,
+          "text": "  if (((DAT_004a0328 < 0) || ((short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1)) ||"
+        },
+        {
+          "number": 46515,
+          "text": "     (bVar4 = FUN_004492a0((&DAT_0047c1ec)[DAT_004a0328 * 0xa4],param_2), param_3 = extraout_ECX,"
+        },
+        {
+          "number": 46516,
+          "text": "     !bVar4)) {"
+        },
+        {
+          "number": 46517,
+          "text": "    bVar4 = false;"
+        },
+        {
+          "number": 46518,
+          "text": "  }"
+        },
+        {
+          "number": 46519,
+          "text": "  else {"
+        },
+        {
+          "number": 46520,
+          "text": "    bVar4 = true;"
+        },
+        {
+          "number": 46521,
+          "text": "  }"
+        },
+        {
+          "number": 46522,
+          "text": "  sStack_a = (short)((uint)param_2 >> 0x10);"
+        },
+        {
+          "number": 46523,
+          "text": "  local_c = (short)param_2;"
+        },
+        {
+          "number": 46524,
+          "text": "  sVar5 = *(short *)(&DAT_0045e870 + sStack_a * 2 + local_c * 0x118);"
+        },
+        {
+          "number": 46525,
+          "text": "  psVar1 = (short *)(param_1 + 0x21a);"
+        },
+        {
+          "number": 46526,
+          "text": "  if (-1 < *psVar1) {"
+        },
+        {
+          "number": 46527,
+          "text": "    TUnitMap_PrintMapSquare(param_1,*(undefined4 *)psVar1,param_3);"
+        },
+        {
+          "number": 46528,
+          "text": "  }"
+        },
+        {
+          "number": 46529,
+          "text": "  *(undefined **)psVar1 = param_2;"
+        },
+        {
+          "number": 46530,
+          "text": "  *(short *)(param_1 + 0x21e) = sVar5;"
+        },
+        {
+          "number": 46531,
+          "text": "  FUN_004465a8();"
+        },
+        {
+          "number": 46532,
+          "text": "  if ((ushort)(sVar5 - 0x14U) < 0x50) {"
+        },
+        {
+          "number": 46533,
+          "text": "    iVar6 = FUN_004498d8(param_2);"
+        },
+        {
+          "number": 46534,
+          "text": "    *(short *)(param_1 + 0x222) = (short)iVar6;"
+        },
+        {
+          "number": 46535,
+          "text": "    *(undefined2 *)(param_1 + 0x220) = 0xffff;"
+        },
+        {
+          "number": 46536,
+          "text": "    *(undefined2 *)(param_1 + 0x224) = 0xffff;"
+        },
+        {
+          "number": 46537,
+          "text": "    uVar2 = (&DAT_004795a2)[*(short *)(param_1 + 0x222) * 0x11];"
+        },
+        {
+          "number": 46538,
+          "text": "    unaff_ESI = (undefined *)(uint)uVar2;"
+        },
+        {
+          "number": 46539,
+          "text": "    if (((bVar4) && (uVar2 != DAT_004a0320)) &&"
+        },
+        {
+          "number": 46540,
+          "text": "       (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 ||"
+        },
+        {
+          "number": 46541,
+          "text": "        (iVar6 = FUN_0042d750((uint *)\"Are you sure you want to attack this city ?\","
+        },
+        {
+          "number": 46542,
+          "text": "                              CONCAT31((int3)((uint)(&DAT_00474670 + (short)DAT_004a0320 * 0x494) >>"
+        },
+        {
+          "number": 46543,
+          "text": "                                             8),3),DAT_00446b90,0), iVar6 == 6)))) {"
+        },
+        {
+          "number": 46544,
+          "text": "      if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {"
+        },
+        {
+          "number": 46545,
+          "text": "        FUN_00449b40(DAT_004a0320,uVar2,3);"
+        },
+        {
+          "number": 46546,
+          "text": "      }"
+        },
+        {
+          "number": 46547,
+          "text": "      FUN_0044b27c(DAT_004a0328,*(short *)(param_1 + 0x222));"
+        },
+        {
+          "number": 46548,
+          "text": "      TUnitMap_EndUMSelection(param_1,extraout_EDX,extraout_ECX_00);"
+        },
+        {
+          "number": 46549,
+          "text": "      TInformation_PrintNews(DAT_0045e70c);"
+        },
+        {
+          "number": 46550,
+          "text": "    }"
+        },
+        {
+          "number": 46551,
+          "text": "    DAT_004a0328 = -1;"
+        },
+        {
+          "number": 46552,
+          "text": "    DAT_004a032a = -1;"
+        },
+        {
+          "number": 46553,
+          "text": "    sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46554,
+          "text": "  }"
+        },
+        {
+          "number": 46555,
+          "text": "  else if ((ushort)(sVar5 - 200U) < 0x30) {"
+        },
+        {
+          "number": 46556,
+          "text": "    iVar6 = FUN_00449920(param_2);"
+        },
+        {
+          "number": 46557,
+          "text": "    *(short *)(param_1 + 0x220) = (short)iVar6;"
+        },
+        {
+          "number": 46558,
+          "text": "    *(undefined2 *)(param_1 + 0x222) = 0xffff;"
+        },
+        {
+          "number": 46559,
+          "text": "    *(undefined2 *)(param_1 + 0x224) = 0xffff;"
+        },
+        {
+          "number": 46560,
+          "text": "    uVar2 = (&DAT_0047c1f0)[*(short *)(param_1 + 0x220) * 0x148];"
+        },
+        {
+          "number": 46561,
+          "text": "    unaff_ESI = (undefined *)(uint)uVar2;"
+        },
+        {
+          "number": 46562,
+          "text": "    sVar3 = *(short *)(param_1 + 0x220);"
+        },
+        {
+          "number": 46563,
+          "text": "    if (uVar2 != DAT_004a0320) {"
+        },
+        {
+          "number": 46564,
+          "text": "      if ((bVar4) &&"
+        },
+        {
+          "number": 46565,
+          "text": "         (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 ||"
+        },
+        {
+          "number": 46566,
+          "text": "          (iVar6 = FUN_0042d750((uint *)\"Are you sure you want to attack this army ?\","
+        },
+        {
+          "number": 46567,
+          "text": "                                CONCAT31((int3)((uint)(&DAT_00474670 + (short)DAT_004a0320 * 0x494)"
+        },
+        {
+          "number": 46568,
+          "text": "                                               >> 8),3),DAT_00446b90,0), iVar6 == 6)))) {"
+        },
+        {
+          "number": 46569,
+          "text": "        if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {"
+        },
+        {
+          "number": 46570,
+          "text": "          FUN_00449b40(DAT_004a0320,uVar2,3);"
+        },
+        {
+          "number": 46571,
+          "text": "        }"
+        },
+        {
+          "number": 46572,
+          "text": "        FUN_0044aee4(DAT_004a0328,*(short *)(param_1 + 0x220));"
+        },
+        {
+          "number": 46573,
+          "text": "        TUnitMap_EndUMSelection(param_1,extraout_EDX_00,extraout_ECX_01);"
+        },
+        {
+          "number": 46574,
+          "text": "      }"
+        },
+        {
+          "number": 46575,
+          "text": "      DAT_004a0328 = -1;"
+        },
+        {
+          "number": 46576,
+          "text": "      DAT_004a032a = -1;"
+        },
+        {
+          "number": 46577,
+          "text": "      sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46578,
+          "text": "    }"
+        },
+        {
+          "number": 46579,
+          "text": "  }"
+        },
+        {
+          "number": 46580,
+          "text": "  else {"
+        },
+        {
+          "number": 46581,
+          "text": "    sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46582,
+          "text": "    if ((ushort)(sVar5 - 300U) < 0x30) {"
+        },
+        {
+          "number": 46583,
+          "text": "      iVar6 = FUN_00449970(param_2);"
+        },
+        {
+          "number": 46584,
+          "text": "      *(short *)(param_1 + 0x224) = (short)iVar6;"
+        },
+        {
+          "number": 46585,
+          "text": "      *(undefined2 *)(param_1 + 0x220) = 0xffff;"
+        },
+        {
+          "number": 46586,
+          "text": "      *(undefined2 *)(param_1 + 0x222) = 0xffff;"
+        },
+        {
+          "number": 46587,
+          "text": "      sVar5 = *(short *)(param_1 + 0x224);"
+        },
+        {
+          "number": 46588,
+          "text": "      uVar2 = (&DAT_0049c274)[sVar5 * 0xd];"
+        },
+        {
+          "number": 46589,
+          "text": "      unaff_ESI = (undefined *)CONCAT22((short)((uint)unaff_ESI >> 0x10),uVar2);"
+        },
+        {
+          "number": 46590,
+          "text": "      if (uVar2 == DAT_004a0320) {"
+        },
+        {
+          "number": 46591,
+          "text": "        DAT_004a032a = sVar5;"
+        },
+        {
+          "number": 46592,
+          "text": "        if ((bVar4) && ((&DAT_0049c282)[*(short *)(param_1 + 0x224) * 0xd] == -1)) {"
+        },
+        {
+          "number": 46593,
+          "text": "          iVar6 = FUN_0044a698(DAT_004a0328);"
+        },
+        {
+          "number": 46594,
+          "text": "          if ((int)(short)(&DAT_0049c27e)[*(short *)(param_1 + 0x224) * 0xd] < iVar6 / 500) {"
+        },
+        {
+          "number": 46595,
+          "text": "            FUN_0042d750((uint *)\"The army is too large for this fleet ?\","
+        },
+        {
+          "number": 46596,
+          "text": "                         CONCAT31((int3)(char)((ushort)(&DAT_0049c27e)"
+        },
+        {
+          "number": 46597,
+          "text": "                                                       [*(short *)(param_1 + 0x224) * 0xd] >> 8),3),"
+        },
+        {
+          "number": 46598,
+          "text": "                         DAT_00446bfc,0);"
+        },
+        {
+          "number": 46599,
+          "text": "          }"
+        },
+        {
+          "number": 46600,
+          "text": "          else {"
+        },
+        {
+          "number": 46601,
+          "text": "            FUN_0044b79c(DAT_004a0328,DAT_004a032a);"
+        },
+        {
+          "number": 46602,
+          "text": "            TUnitMap_FleetButtonsOn(param_1);"
+        },
+        {
+          "number": 46603,
+          "text": "            TUnitMap_PaintForm((int *)param_1,local_14,extraout_ECX_02);"
+        },
+        {
+          "number": 46604,
+          "text": "            TInformation_ShowFleetDetails"
+        },
+        {
+          "number": 46605,
+          "text": "                      (DAT_0045e70c,*(undefined4 *)((int)&DAT_0049c26c + DAT_004a032a * 0x1a));"
+        },
+        {
+          "number": 46606,
+          "text": "          }"
+        },
+        {
+          "number": 46607,
+          "text": "        }"
+        },
+        {
+          "number": 46608,
+          "text": "        DAT_004a0328 = -1;"
+        },
+        {
+          "number": 46609,
+          "text": "        sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46610,
+          "text": "      }"
+        },
+        {
+          "number": 46611,
+          "text": "      else if (((DAT_004a032a < 0) || ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) ||"
+        },
+        {
+          "number": 46612,
+          "text": "              (bVar4 = FUN_004492a0(*(undefined4 *)((int)&DAT_0049c26c + DAT_004a032a * 0x1a),"
+        },
+        {
+          "number": 46613,
+          "text": "                                    param_2), !bVar4)) {"
+        },
+        {
+          "number": 46614,
+          "text": "        DAT_004a0328 = -1;"
+        },
+        {
+          "number": 46615,
+          "text": "        DAT_004a032a = -1;"
+        },
+        {
+          "number": 46616,
+          "text": "        sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46617,
+          "text": "      }"
+        },
+        {
+          "number": 46618,
+          "text": "      else {"
+        },
+        {
+          "number": 46619,
+          "text": "        sVar5 = FUN_004494e4(unaff_ESI,param_2);"
+        },
+        {
+          "number": 46620,
+          "text": "        uVar7 = (undefined3)((uint)extraout_EDX_01 >> 8);"
+        },
+        {
+          "number": 46621,
+          "text": "        if (sVar5 < 0) {"
+        },
+        {
+          "number": 46622,
+          "text": "          if (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3) ||"
+        },
+        {
+          "number": 46623,
+          "text": "             (iVar6 = FUN_0042d750((uint *)\"Are you sure you want to attack this fleet ?\","
+        },
+        {
+          "number": 46624,
+          "text": "                                   CONCAT31(uVar7,3),DAT_00446b90,0), sVar3 = DAT_004a0328,"
+        },
+        {
+          "number": 46625,
+          "text": "             iVar6 == 6)) {"
+        },
+        {
+          "number": 46626,
+          "text": "            if ((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] != 3) {"
+        },
+        {
+          "number": 46627,
+          "text": "              FUN_00449b40(DAT_004a0320,uVar2,3);"
+        },
+        {
+          "number": 46628,
+          "text": "            }"
+        },
+        {
+          "number": 46629,
+          "text": "            FUN_0044b5d0(DAT_004a032a,*(short *)(param_1 + 0x224));"
+        },
+        {
+          "number": 46630,
+          "text": "            TUnitMap_EndUMSelection(param_1,extraout_EDX_02,extraout_ECX_03);"
+        },
+        {
+          "number": 46631,
+          "text": "            TUnitMap_PaintForm((int *)param_1,local_14,extraout_ECX_04);"
+        },
+        {
+          "number": 46632,
+          "text": "            TInformation_PrintNews(DAT_0045e70c);"
+        },
+        {
+          "number": 46633,
+          "text": "            sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46634,
+          "text": "          }"
+        },
+        {
+          "number": 46635,
+          "text": "        }"
+        },
+        {
+          "number": 46636,
+          "text": "        else {"
+        },
+        {
+          "number": 46637,
+          "text": "          FUN_0042d750((uint *)\"You cannot attack a fleet docked at its own city !\","
+        },
+        {
+          "number": 46638,
+          "text": "                       CONCAT31(uVar7,2),DAT_00446bfc,0);"
+        },
+        {
+          "number": 46639,
+          "text": "          sVar3 = DAT_004a0328;"
+        },
+        {
+          "number": 46640,
+          "text": "        }"
+        },
+        {
+          "number": 46641,
+          "text": "      }"
+        },
+        {
+          "number": 46642,
+          "text": "    }"
+        },
+        {
+          "number": 46643,
+          "text": "  }"
+        },
+        {
+          "number": 46644,
+          "text": "  DAT_004a0328 = sVar3;"
+        },
+        {
+          "number": 46645,
+          "text": "  if ((ushort)unaff_ESI == DAT_004a0320) {"
+        },
+        {
+          "number": 46646,
+          "text": "    if (*(short *)(param_1 + 0x222) < 0) {"
+        },
+        {
+          "number": 46647,
+          "text": "      if (*(short *)(param_1 + 0x220) < 0) {"
+        },
+        {
+          "number": 46648,
+          "text": "        if (-1 < *(short *)(param_1 + 0x224)) {"
+        },
+        {
+          "number": 46649,
+          "text": "          TUnitMap_FleetButtonsOn(param_1);"
+        },
+        {
+          "number": 46650,
+          "text": "        }"
+        },
+        {
+          "number": 46651,
+          "text": "      }"
+        },
+        {
+          "number": 46652,
+          "text": "      else {"
+        },
+        {
+          "number": 46653,
+          "text": "        TUnitMap_ArmyButtonsOn(param_1);"
+        },
+        {
+          "number": 46654,
+          "text": "      }"
+        },
+        {
+          "number": 46655,
+          "text": "    }"
+        },
+        {
+          "number": 46656,
+          "text": "    else {"
+        },
+        {
+          "number": 46657,
+          "text": "      TUnitMap_CityButtonsOn(param_1);"
+        },
+        {
+          "number": 46658,
+          "text": "    }"
+        },
+        {
+          "number": 46659,
+          "text": "  }"
+        },
+        {
+          "number": 46660,
+          "text": "  else {"
+        },
+        {
+          "number": 46661,
+          "text": "    TUnitMap_AllButtonsOff(param_1);"
+        },
+        {
+          "number": 46662,
+          "text": "  }"
+        },
+        {
+          "number": 46663,
+          "text": "  return;"
+        },
+        {
+          "number": 46664,
+          "text": "}"
+        },
+        {
+          "number": 46665,
+          "text": ""
+        },
+        {
+          "number": 46666,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_UpdateUMSelection",
+      "address": "00446ef4",
+      "first_line": 46797,
+      "last_line": 46826,
+      "lines": [
+        {
+          "number": 46797,
+          "text": "// ==== TUnitMap_UpdateUMSelection @ 00446ef4 ===="
+        },
+        {
+          "number": 46798,
+          "text": ""
+        },
+        {
+          "number": 46799,
+          "text": "void TUnitMap_UpdateUMSelection(int *param_1,undefined4 param_2,undefined4 param_3)"
+        },
+        {
+          "number": 46800,
+          "text": ""
+        },
+        {
+          "number": 46801,
+          "text": "{"
+        },
+        {
+          "number": 46802,
+          "text": "  undefined4 *puVar1;"
+        },
+        {
+          "number": 46803,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 46804,
+          "text": "  undefined4 extraout_ECX_00;"
+        },
+        {
+          "number": 46805,
+          "text": "  undefined4 extraout_ECX_01;"
+        },
+        {
+          "number": 46806,
+          "text": "  undefined4 unaff_EDI;"
+        },
+        {
+          "number": 46807,
+          "text": "  "
+        },
+        {
+          "number": 46808,
+          "text": "  puVar1 = (undefined4 *)((int)param_1 + 0x21a);"
+        },
+        {
+          "number": 46809,
+          "text": "  if (-1 < *(short *)((int)param_1 + 0x222)) {"
+        },
+        {
+          "number": 46810,
+          "text": "    TInformation_ShowCityDetails(DAT_0045e70c,*puVar1);"
+        },
+        {
+          "number": 46811,
+          "text": "    param_3 = extraout_ECX;"
+        },
+        {
+          "number": 46812,
+          "text": "  }"
+        },
+        {
+          "number": 46813,
+          "text": "  if (-1 < (short)param_1[0x88]) {"
+        },
+        {
+          "number": 46814,
+          "text": "    TInformation_ShowArmyDetails(DAT_0045e70c,*puVar1);"
+        },
+        {
+          "number": 46815,
+          "text": "    param_3 = extraout_ECX_00;"
+        },
+        {
+          "number": 46816,
+          "text": "  }"
+        },
+        {
+          "number": 46817,
+          "text": "  if (-1 < (short)param_1[0x89]) {"
+        },
+        {
+          "number": 46818,
+          "text": "    TInformation_ShowFleetDetails(DAT_0045e70c,*puVar1);"
+        },
+        {
+          "number": 46819,
+          "text": "    param_3 = extraout_ECX_01;"
+        },
+        {
+          "number": 46820,
+          "text": "  }"
+        },
+        {
+          "number": 46821,
+          "text": "  TUnitMap_PaintForm(param_1,unaff_EDI,param_3);"
+        },
+        {
+          "number": 46822,
+          "text": "  TInformation_PrintInfo(DAT_0045e70c);"
+        },
+        {
+          "number": 46823,
+          "text": "  return;"
+        },
+        {
+          "number": 46824,
+          "text": "}"
+        },
+        {
+          "number": 46825,
+          "text": ""
+        },
+        {
+          "number": 46826,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TUnitMap_ChangeUnitDetails",
+      "address": "00447644",
+      "first_line": 47057,
+      "last_line": 47080,
+      "lines": [
+        {
+          "number": 47057,
+          "text": "// ==== TUnitMap_ChangeUnitDetails @ 00447644 ===="
+        },
+        {
+          "number": 47058,
+          "text": ""
+        },
+        {
+          "number": 47059,
+          "text": "void TUnitMap_ChangeUnitDetails(int *param_1)"
+        },
+        {
+          "number": 47060,
+          "text": ""
+        },
+        {
+          "number": 47061,
+          "text": "{"
+        },
+        {
+          "number": 47062,
+          "text": "  short sVar1;"
+        },
+        {
+          "number": 47063,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 47064,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 47065,
+          "text": "  "
+        },
+        {
+          "number": 47066,
+          "text": "  if ((short)param_1[0x89] < 0) {"
+        },
+        {
+          "number": 47067,
+          "text": "    sVar1 = (short)param_1[0x88];"
+        },
+        {
+          "number": 47068,
+          "text": "  }"
+        },
+        {
+          "number": 47069,
+          "text": "  else {"
+        },
+        {
+          "number": 47070,
+          "text": "    sVar1 = (&DAT_0049c282)[(short)param_1[0x89] * 0xd];"
+        },
+        {
+          "number": 47071,
+          "text": "    *(short *)(param_1 + 0x88) = sVar1;"
+        },
+        {
+          "number": 47072,
+          "text": "  }"
+        },
+        {
+          "number": 47073,
+          "text": "  if ((-1 < sVar1) && ((&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320)) {"
+        },
+        {
+          "number": 47074,
+          "text": "    FUN_00424608(DAT_0045e628,0x4447f8,&DAT_0045e73c);"
+        },
+        {
+          "number": 47075,
+          "text": "    TUnitMap_UpdateUMSelection(param_1,extraout_EDX,extraout_ECX);"
+        },
+        {
+          "number": 47076,
+          "text": "  }"
+        },
+        {
+          "number": 47077,
+          "text": "  return;"
+        },
+        {
+          "number": 47078,
+          "text": "}"
+        },
+        {
+          "number": 47079,
+          "text": ""
+        },
+        {
+          "number": 47080,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_004484d0",
+      "address": "004484d0",
+      "first_line": 47439,
+      "last_line": 47543,
+      "lines": [
+        {
+          "number": 47439,
+          "text": "// ==== FUN_004484d0 @ 004484d0 ===="
+        },
+        {
+          "number": 47440,
+          "text": ""
+        },
+        {
+          "number": 47441,
+          "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+        },
+        {
+          "number": 47442,
+          "text": ""
+        },
+        {
+          "number": 47443,
+          "text": "void FUN_004484d0(void)"
+        },
+        {
+          "number": 47444,
+          "text": ""
+        },
+        {
+          "number": 47445,
+          "text": "{"
+        },
+        {
+          "number": 47446,
+          "text": "  int *piVar1;"
+        },
+        {
+          "number": 47447,
+          "text": "  undefined4 uVar2;"
+        },
+        {
+          "number": 47448,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 47449,
+          "text": "  short sVar3;"
+        },
+        {
+          "number": 47450,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 47451,
+          "text": "  ushort uVar4;"
+        },
+        {
+          "number": 47452,
+          "text": "  undefined4 uStack_30;"
+        },
+        {
+          "number": 47453,
+          "text": "  undefined1 *puStack_2c;"
+        },
+        {
+          "number": 47454,
+          "text": "  undefined1 *puStack_28;"
+        },
+        {
+          "number": 47455,
+          "text": "  undefined *local_18;"
+        },
+        {
+          "number": 47456,
+          "text": "  undefined4 *local_14;"
+        },
+        {
+          "number": 47457,
+          "text": "  undefined2 *local_10;"
+        },
+        {
+          "number": 47458,
+          "text": "  undefined4 *local_c;"
+        },
+        {
+          "number": 47459,
+          "text": "  undefined4 *local_8;"
+        },
+        {
+          "number": 47460,
+          "text": "  "
+        },
+        {
+          "number": 47461,
+          "text": "  puStack_28 = &stack0xfffffffc;"
+        },
+        {
+          "number": 47462,
+          "text": "  local_18 = (undefined *)0x0;"
+        },
+        {
+          "number": 47463,
+          "text": "  puStack_2c = &LAB_004487b6;"
+        },
+        {
+          "number": 47464,
+          "text": "  uStack_30 = *in_FS_OFFSET;"
+        },
+        {
+          "number": 47465,
+          "text": "  *in_FS_OFFSET = &uStack_30;"
+        },
+        {
+          "number": 47466,
+          "text": "  uVar4 = 0xffff;"
+        },
+        {
+          "number": 47467,
+          "text": "  FUN_00403458((int *)&local_18,&DAT_0045e7a8,100);"
+        },
+        {
+          "number": 47468,
+          "text": "  piVar1 = (int *)FUN_0040a75c(0x4082a4,CONCAT31((int3)((uint)extraout_EDX >> 8),1),local_18,uVar4);"
+        },
+        {
+          "number": 47469,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0045e870,0x15e00);"
+        },
+        {
+          "number": 47470,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_00479590,0x2c5c);"
+        },
+        {
+          "number": 47471,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0324,2);"
+        },
+        {
+          "number": 47472,
+          "text": "  if (-1 < (short)(DAT_004a0324 + -1)) {"
+        },
+        {
+          "number": 47473,
+          "text": "    local_8 = &DAT_0047c1ec;"
+        },
+        {
+          "number": 47474,
+          "text": "    sVar3 = DAT_004a0324;"
+        },
+        {
+          "number": 47475,
+          "text": "    do {"
+        },
+        {
+          "number": 47476,
+          "text": "      (**(code **)(*piVar1 + 4))(piVar1,local_8,0x290);"
+        },
+        {
+          "number": 47477,
+          "text": "      local_8 = local_8 + 0xa4;"
+        },
+        {
+          "number": 47478,
+          "text": "      sVar3 = sVar3 + -1;"
+        },
+        {
+          "number": 47479,
+          "text": "    } while (sVar3 != 0);"
+        },
+        {
+          "number": 47480,
+          "text": "  }"
+        },
+        {
+          "number": 47481,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0326,2);"
+        },
+        {
+          "number": 47482,
+          "text": "  if (-1 < (short)(DAT_004a0326 + -1)) {"
+        },
+        {
+          "number": 47483,
+          "text": "    local_c = &DAT_0049c26c;"
+        },
+        {
+          "number": 47484,
+          "text": "    sVar3 = DAT_004a0326;"
+        },
+        {
+          "number": 47485,
+          "text": "    do {"
+        },
+        {
+          "number": 47486,
+          "text": "      (**(code **)(*piVar1 + 4))(piVar1,local_c,0x1a);"
+        },
+        {
+          "number": 47487,
+          "text": "      local_c = (undefined4 *)((int)local_c + 0x1a);"
+        },
+        {
+          "number": 47488,
+          "text": "      sVar3 = sVar3 + -1;"
+        },
+        {
+          "number": 47489,
+          "text": "    } while (sVar3 != 0);"
+        },
+        {
+          "number": 47490,
+          "text": "  }"
+        },
+        {
+          "number": 47491,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_00474670,0x4940);"
+        },
+        {
+          "number": 47492,
+          "text": "  sVar3 = 0x32;"
+        },
+        {
+          "number": 47493,
+          "text": "  local_10 = &DAT_0049da10;"
+        },
+        {
+          "number": 47494,
+          "text": "  do {"
+        },
+        {
+          "number": 47495,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,local_10,0xc);"
+        },
+        {
+          "number": 47496,
+          "text": "    local_10 = local_10 + 6;"
+        },
+        {
+          "number": 47497,
+          "text": "    sVar3 = sVar3 + -1;"
+        },
+        {
+          "number": 47498,
+          "text": "  } while (sVar3 != 0);"
+        },
+        {
+          "number": 47499,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a031e,2);"
+        },
+        {
+          "number": 47500,
+          "text": "  if (-1 < DAT_004a031e) {"
+        },
+        {
+          "number": 47501,
+          "text": "    sVar3 = DAT_004a031e + 1;"
+        },
+        {
+          "number": 47502,
+          "text": "    local_14 = &DAT_0049f994;"
+        },
+        {
+          "number": 47503,
+          "text": "    do {"
+        },
+        {
+          "number": 47504,
+          "text": "      (**(code **)(*piVar1 + 4))(piVar1,local_14,0x3d);"
+        },
+        {
+          "number": 47505,
+          "text": "      local_14 = (undefined4 *)((int)local_14 + 0x3d);"
+        },
+        {
+          "number": 47506,
+          "text": "      sVar3 = sVar3 + -1;"
+        },
+        {
+          "number": 47507,
+          "text": "    } while (sVar3 != 0);"
+        },
+        {
+          "number": 47508,
+          "text": "  }"
+        },
+        {
+          "number": 47509,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0049efe8,0x20);"
+        },
+        {
+          "number": 47510,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0049f008,4);"
+        },
+        {
+          "number": 47511,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0320,2);"
+        },
+        {
+          "number": 47512,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0322,2);"
+        },
+        {
+          "number": 47513,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0330,2);"
+        },
+        {
+          "number": 47514,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0332,2);"
+        },
+        {
+          "number": 47515,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a032e,2);"
+        },
+        {
+          "number": 47516,
+          "text": "  _DAT_004a0338 = (undefined2)DAT_004a0bd0[9];"
+        },
+        {
+          "number": 47517,
+          "text": "  _DAT_004a033a = (undefined2)DAT_004a0bd0[10];"
+        },
+        {
+          "number": 47518,
+          "text": "  uVar2 = FUN_00412880(DAT_004a0bd0);"
+        },
+        {
+          "number": 47519,
+          "text": "  _DAT_004a033e = (undefined2)uVar2;"
+        },
+        {
+          "number": 47520,
+          "text": "  uVar2 = FUN_004128c4(DAT_004a0bd0);"
+        },
+        {
+          "number": 47521,
+          "text": "  _DAT_004a033c = (undefined2)uVar2;"
+        },
+        {
+          "number": 47522,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0338,8);"
+        },
+        {
+          "number": 47523,
+          "text": "  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7c,1);"
+        },
+        {
+          "number": 47524,
+          "text": "  if (DAT_004a0b7c != '\\0') {"
+        },
+        {
+          "number": 47525,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b74,2);"
+        },
+        {
+          "number": 47526,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b76,2);"
+        },
+        {
+          "number": 47527,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b78,2);"
+        },
+        {
+          "number": 47528,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7d,1);"
+        },
+        {
+          "number": 47529,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7a,2);"
+        },
+        {
+          "number": 47530,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0344,0x6e0);"
+        },
+        {
+          "number": 47531,
+          "text": "    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0a24,0x150);"
+        },
+        {
+          "number": 47532,
+          "text": "  }"
+        },
+        {
+          "number": 47533,
+          "text": "  (**(code **)(*piVar1 + -4))(piVar1,1);"
+        },
+        {
+          "number": 47534,
+          "text": "  DAT_004a0328 = 0xffff;"
+        },
+        {
+          "number": 47535,
+          "text": "  DAT_004a032a = 0xffff;"
+        },
+        {
+          "number": 47536,
+          "text": "  *in_FS_OFFSET = uStack_30;"
+        },
+        {
+          "number": 47537,
+          "text": "  puStack_28 = &LAB_004487bd;"
+        },
+        {
+          "number": 47538,
+          "text": "  puStack_2c = (undefined1 *)0x4487b5;"
+        },
+        {
+          "number": 47539,
+          "text": "  FUN_004032fc((int *)&local_18);"
+        },
+        {
+          "number": 47540,
+          "text": "  return;"
+        },
+        {
+          "number": 47541,
+          "text": "}"
+        },
+        {
+          "number": 47542,
+          "text": ""
+        },
+        {
+          "number": 47543,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_00449f08",
+      "address": "00449f08",
+      "first_line": 48713,
+      "last_line": 48752,
+      "lines": [
+        {
+          "number": 48713,
+          "text": "// ==== FUN_00449f08 @ 00449f08 ===="
+        },
+        {
+          "number": 48714,
+          "text": ""
+        },
+        {
+          "number": 48715,
+          "text": "void FUN_00449f08(short param_1,undefined4 param_2,short *param_3)"
+        },
+        {
+          "number": 48716,
+          "text": ""
+        },
+        {
+          "number": 48717,
+          "text": "{"
+        },
+        {
+          "number": 48718,
+          "text": "  short sVar1;"
+        },
+        {
+          "number": 48719,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 48720,
+          "text": "  undefined4 local_12;"
+        },
+        {
+          "number": 48721,
+          "text": "  "
+        },
+        {
+          "number": 48722,
+          "text": "  *param_3 = -1;"
+        },
+        {
+          "number": 48723,
+          "text": "  local_12 = param_2;"
+        },
+        {
+          "number": 48724,
+          "text": "  FUN_004492c0((short *)&local_12,CONCAT31((int3)((uint)param_2 >> 8),1));"
+        },
+        {
+          "number": 48725,
+          "text": "  if ((-1 < (short)local_12) && (DAT_004a0324 < 0xc6)) {"
+        },
+        {
+          "number": 48726,
+          "text": "    *param_3 = DAT_004a0324;"
+        },
+        {
+          "number": 48727,
+          "text": "    DAT_004a0324 = DAT_004a0324 + 1;"
+        },
+        {
+          "number": 48728,
+          "text": "    iVar2 = (int)*param_3;"
+        },
+        {
+          "number": 48729,
+          "text": "    *(short *)(&DAT_0047c1ec + iVar2 * 0xa4) = (short)local_12;"
+        },
+        {
+          "number": 48730,
+          "text": "    *(short *)((int)&DAT_0047c1ec + iVar2 * 0x290 + 2) = local_12._2_2_;"
+        },
+        {
+          "number": 48731,
+          "text": "    (&DAT_0047c1f0)[iVar2 * 0x148] = param_1;"
+        },
+        {
+          "number": 48732,
+          "text": "    (&DAT_0047c1f2)[iVar2 * 0x148] = 0;"
+        },
+        {
+          "number": 48733,
+          "text": "    if ((&DAT_00474b00)[param_1 * 0x494] == '\\0') {"
+        },
+        {
+          "number": 48734,
+          "text": "      (&DAT_0047c1f2)[iVar2 * 0x148] = 1;"
+        },
+        {
+          "number": 48735,
+          "text": "    }"
+        },
+        {
+          "number": 48736,
+          "text": "    (&DAT_0047c1f4)[iVar2 * 0x148] ="
+        },
+        {
+          "number": 48737,
+          "text": "         *(undefined2 *)(&DAT_0045e870 + local_12._2_2_ * 2 + (short)local_12 * 0x118);"
+        },
+        {
+          "number": 48738,
+          "text": "    (&DAT_0047c1f6)[iVar2 * 0x148] = 0;"
+        },
+        {
+          "number": 48739,
+          "text": "    (&DAT_0047c1fa)[iVar2 * 0x148] = 0x3b;"
+        },
+        {
+          "number": 48740,
+          "text": "    (&DAT_0047c1f8)[iVar2 * 0x148] = 0;"
+        },
+        {
+          "number": 48741,
+          "text": "    sVar1 = 0;"
+        },
+        {
+          "number": 48742,
+          "text": "    do {"
+        },
+        {
+          "number": 48743,
+          "text": "      (&DAT_0047c200)[iVar2 * 0x148 + sVar1 * 0x10] = 0;"
+        },
+        {
+          "number": 48744,
+          "text": "      (&DAT_0047c1fe)[iVar2 * 0x148 + sVar1 * 0x10] = 0;"
+        },
+        {
+          "number": 48745,
+          "text": "      sVar1 = sVar1 + 1;"
+        },
+        {
+          "number": 48746,
+          "text": "    } while (sVar1 != 0x14);"
+        },
+        {
+          "number": 48747,
+          "text": "    *(short *)(&DAT_0045e870 + local_12._2_2_ * 2 + (short)local_12 * 0x118) = param_1 + 200;"
+        },
+        {
+          "number": 48748,
+          "text": "  }"
+        },
+        {
+          "number": 48749,
+          "text": "  return;"
+        },
+        {
+          "number": 48750,
+          "text": "}"
+        },
+        {
+          "number": 48751,
+          "text": ""
+        },
+        {
+          "number": 48752,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0044a004",
+      "address": "0044a004",
+      "first_line": 48753,
+      "last_line": 48771,
+      "lines": [
+        {
+          "number": 48753,
+          "text": "// ==== FUN_0044a004 @ 0044a004 ===="
+        },
+        {
+          "number": 48754,
+          "text": ""
+        },
+        {
+          "number": 48755,
+          "text": "void FUN_0044a004(short param_1,undefined2 param_2,short param_3)"
+        },
+        {
+          "number": 48756,
+          "text": ""
+        },
+        {
+          "number": 48757,
+          "text": "{"
+        },
+        {
+          "number": 48758,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 48759,
+          "text": "  "
+        },
+        {
+          "number": 48760,
+          "text": "  DAT_004a0326 = DAT_004a0326 + 1;"
+        },
+        {
+          "number": 48761,
+          "text": "  iVar1 = DAT_004a0326 * 0x1a;"
+        },
+        {
+          "number": 48762,
+          "text": "  *(short *)(&DAT_0049c25a + iVar1) = param_1;"
+        },
+        {
+          "number": 48763,
+          "text": "  *(undefined2 *)(&DAT_0049c266 + iVar1) = param_2;"
+        },
+        {
+          "number": 48764,
+          "text": "  *(undefined2 *)(&DAT_0049c268 + iVar1) = 0xffff;"
+        },
+        {
+          "number": 48765,
+          "text": "  *(short *)(&DAT_0049c264 + iVar1) = param_3;"
+        },
+        {
+          "number": 48766,
+          "text": "  *(undefined2 *)(&DAT_0049c25c + iVar1) = 0x18;"
+        },
+        {
+          "number": 48767,
+          "text": "  (&DAT_00474aa8)[param_1 * 0x125] = (&DAT_00474aa8)[param_1 * 0x125] + param_3 * -10;"
+        },
+        {
+          "number": 48768,
+          "text": "  return;"
+        },
+        {
+          "number": 48769,
+          "text": "}"
+        },
+        {
+          "number": 48770,
+          "text": ""
+        },
+        {
+          "number": 48771,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0044a050",
+      "address": "0044a050",
+      "first_line": 48772,
+      "last_line": 48799,
+      "lines": [
+        {
+          "number": 48772,
+          "text": "// ==== FUN_0044a050 @ 0044a050 ===="
+        },
+        {
+          "number": 48773,
+          "text": ""
+        },
+        {
+          "number": 48774,
+          "text": "void FUN_0044a050(short param_1)"
+        },
+        {
+          "number": 48775,
+          "text": ""
+        },
+        {
+          "number": 48776,
+          "text": "{"
+        },
+        {
+          "number": 48777,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 48778,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 48779,
+          "text": "  char acStack_48 [64];"
+        },
+        {
+          "number": 48780,
+          "text": "  "
+        },
+        {
+          "number": 48781,
+          "text": "  iVar1 = (int)param_1;"
+        },
+        {
+          "number": 48782,
+          "text": "  FUN_00405b00(acStack_48,&DAT_00474670 + (short)(&DAT_0049c274)[iVar1 * 0xd] * 0x494);"
+        },
+        {
+          "number": 48783,
+          "text": "  FUN_00405bc8(acStack_48,\" finishes a new fleet at \");"
+        },
+        {
+          "number": 48784,
+          "text": "  FUN_00405bc8(acStack_48,&DAT_00479590 + (short)(&DAT_0049c280)[iVar1 * 0xd] * 0x22);"
+        },
+        {
+          "number": 48785,
+          "text": "  FUN_00405bc8(acStack_48,\".\");"
+        },
+        {
+          "number": 48786,
+          "text": "  FUN_00449240(acStack_48,extraout_EDX);"
+        },
+        {
+          "number": 48787,
+          "text": "  FUN_0044939c(*(undefined4 *)((int)&DAT_0047959e + (short)(&DAT_0049c280)[iVar1 * 0xd] * 0x22),"
+        },
+        {
+          "number": 48788,
+          "text": "               (undefined *)0x0,(short *)((int)&DAT_0049c26c + iVar1 * 0x1a));"
+        },
+        {
+          "number": 48789,
+          "text": "  (&DAT_0049c280)[iVar1 * 0xd] = 100;"
+        },
+        {
+          "number": 48790,
+          "text": "  (&DAT_0049c276)[iVar1 * 0xd] = 0xffff;"
+        },
+        {
+          "number": 48791,
+          "text": "  (&DAT_0049c282)[iVar1 * 0xd] = 0xffff;"
+        },
+        {
+          "number": 48792,
+          "text": "  (&DAT_0049c27a)[iVar1 * 0xd] = 0x32;"
+        },
+        {
+          "number": 48793,
+          "text": "  (&DAT_0049c27c)[iVar1 * 0xd] = 0;"
+        },
+        {
+          "number": 48794,
+          "text": "  (&DAT_0049c284)[iVar1 * 0xd] = 0;"
+        },
+        {
+          "number": 48795,
+          "text": "  FUN_0044a878(param_1);"
+        },
+        {
+          "number": 48796,
+          "text": "  return;"
+        },
+        {
+          "number": 48797,
+          "text": "}"
+        },
+        {
+          "number": 48798,
+          "text": ""
+        },
+        {
+          "number": 48799,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0044a218",
+      "address": "0044a218",
+      "first_line": 48845,
+      "last_line": 48950,
+      "lines": [
+        {
+          "number": 48845,
+          "text": "// ==== FUN_0044a218 @ 0044a218 ===="
+        },
+        {
+          "number": 48846,
+          "text": ""
+        },
+        {
+          "number": 48847,
+          "text": "void FUN_0044a218(short param_1,short param_2)"
+        },
+        {
+          "number": 48848,
+          "text": ""
+        },
+        {
+          "number": 48849,
+          "text": "{"
+        },
+        {
+          "number": 48850,
+          "text": "  short *psVar1;"
+        },
+        {
+          "number": 48851,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 48852,
+          "text": "  int iVar3;"
+        },
+        {
+          "number": 48853,
+          "text": "  short sVar4;"
+        },
+        {
+          "number": 48854,
+          "text": "  short sVar5;"
+        },
+        {
+          "number": 48855,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 48856,
+          "text": "  undefined4 uStack_130;"
+        },
+        {
+          "number": 48857,
+          "text": "  undefined1 *puStack_12c;"
+        },
+        {
+          "number": 48858,
+          "text": "  undefined1 *puStack_128;"
+        },
+        {
+          "number": 48859,
+          "text": "  byte local_118 [256];"
+        },
+        {
+          "number": 48860,
+          "text": "  byte *local_18;"
+        },
+        {
+          "number": 48861,
+          "text": "  char local_11;"
+        },
+        {
+          "number": 48862,
+          "text": "  int local_10;"
+        },
+        {
+          "number": 48863,
+          "text": "  short local_c;"
+        },
+        {
+          "number": 48864,
+          "text": "  short local_a;"
+        },
+        {
+          "number": 48865,
+          "text": "  short local_8;"
+        },
+        {
+          "number": 48866,
+          "text": "  short local_6;"
+        },
+        {
+          "number": 48867,
+          "text": "  "
+        },
+        {
+          "number": 48868,
+          "text": "  puStack_128 = &stack0xfffffffc;"
+        },
+        {
+          "number": 48869,
+          "text": "  local_18 = (byte *)0x0;"
+        },
+        {
+          "number": 48870,
+          "text": "  puStack_12c = &LAB_0044a48a;"
+        },
+        {
+          "number": 48871,
+          "text": "  uStack_130 = *in_FS_OFFSET;"
+        },
+        {
+          "number": 48872,
+          "text": "  *in_FS_OFFSET = &uStack_130;"
+        },
+        {
+          "number": 48873,
+          "text": "  local_a = 1;"
+        },
+        {
+          "number": 48874,
+          "text": "  local_c = -1;"
+        },
+        {
+          "number": 48875,
+          "text": "  local_8 = param_2;"
+        },
+        {
+          "number": 48876,
+          "text": "  local_6 = param_1;"
+        },
+        {
+          "number": 48877,
+          "text": "  do {"
+        },
+        {
+          "number": 48878,
+          "text": "    local_11 = '\\0';"
+        },
+        {
+          "number": 48879,
+          "text": "    sVar5 = 0;"
+        },
+        {
+          "number": 48880,
+          "text": "    do {"
+        },
+        {
+          "number": 48881,
+          "text": "      if ((&DAT_0047c1f0)[sVar5 * 0x148] == (&DAT_0047c1f0)[local_6 * 0x148]) {"
+        },
+        {
+          "number": 48882,
+          "text": "        sVar4 = 0;"
+        },
+        {
+          "number": 48883,
+          "text": "        do {"
+        },
+        {
+          "number": 48884,
+          "text": "          psVar1 = &DAT_0047c1fc + sVar5 * 0x148 + sVar4 * 0x10;"
+        },
+        {
+          "number": 48885,
+          "text": "          if (((0 < psVar1[2]) && (*psVar1 == 0)) &&"
+        },
+        {
+          "number": 48886,
+          "text": "             ((&DAT_0047c1fe)[local_6 * 0x148 + local_8 * 0x10] == psVar1[1])) {"
+        },
+        {
+          "number": 48887,
+          "text": "            FUN_00403458((int *)&local_18,(char *)(psVar1 + 4),0x18);"
+        },
+        {
+          "number": 48888,
+          "text": "            iVar2 = FUN_004028d0(local_18,&local_10);"
+        },
+        {
+          "number": 48889,
+          "text": "            if (iVar2 == local_a) {"
+        },
+        {
+          "number": 48890,
+          "text": "              local_11 = '\\x01';"
+        },
+        {
+          "number": 48891,
+          "text": "            }"
+        },
+        {
+          "number": 48892,
+          "text": "          }"
+        },
+        {
+          "number": 48893,
+          "text": "          sVar4 = sVar4 + 1;"
+        },
+        {
+          "number": 48894,
+          "text": "        } while (((sVar4 != 0x14) && ((&DAT_0047c200)[sVar5 * 0x148 + sVar4 * 0x10] != 0)) &&"
+        },
+        {
+          "number": 48895,
+          "text": "                (local_11 == '\\0'));"
+        },
+        {
+          "number": 48896,
+          "text": "      }"
+        },
+        {
+          "number": 48897,
+          "text": "      sVar5 = sVar5 + 1;"
+        },
+        {
+          "number": 48898,
+          "text": "    } while (sVar5 != DAT_004a0324 && local_11 == '\\0');"
+        },
+        {
+          "number": 48899,
+          "text": "    if (local_11 == '\\0') {"
+        },
+        {
+          "number": 48900,
+          "text": "      local_c = local_a;"
+        },
+        {
+          "number": 48901,
+          "text": "    }"
+        },
+        {
+          "number": 48902,
+          "text": "    else if (local_a == 99) {"
+        },
+        {
+          "number": 48903,
+          "text": "      local_c = 99;"
+        },
+        {
+          "number": 48904,
+          "text": "    }"
+        },
+        {
+          "number": 48905,
+          "text": "    local_a = local_a + 1;"
+        },
+        {
+          "number": 48906,
+          "text": "  } while (local_c == -1);"
+        },
+        {
+          "number": 48907,
+          "text": "  iVar2 = (int)local_8;"
+        },
+        {
+          "number": 48908,
+          "text": "  iVar3 = (int)local_6;"
+        },
+        {
+          "number": 48909,
+          "text": "  FUN_004028c4((int)local_c,(char *)local_118);"
+        },
+        {
+          "number": 48910,
+          "text": "  FUN_00402978(local_118,(byte *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4));"
+        },
+        {
+          "number": 48911,
+          "text": "  if (((int)local_c % 100 < 0xb) || (0xd < (int)local_c % 100)) {"
+        },
+        {
+          "number": 48912,
+          "text": "    local_c = local_c % 10;"
+        },
+        {
+          "number": 48913,
+          "text": "  }"
+        },
+        {
+          "number": 48914,
+          "text": "  if (local_c == 1) {"
+        },
+        {
+          "number": 48915,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"st \");"
+        },
+        {
+          "number": 48916,
+          "text": "  }"
+        },
+        {
+          "number": 48917,
+          "text": "  else if (local_c == 2) {"
+        },
+        {
+          "number": 48918,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"nd \");"
+        },
+        {
+          "number": 48919,
+          "text": "  }"
+        },
+        {
+          "number": 48920,
+          "text": "  else if (local_c == 3) {"
+        },
+        {
+          "number": 48921,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"rd \");"
+        },
+        {
+          "number": 48922,
+          "text": "  }"
+        },
+        {
+          "number": 48923,
+          "text": "  else {"
+        },
+        {
+          "number": 48924,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"th \");"
+        },
+        {
+          "number": 48925,
+          "text": "  }"
+        },
+        {
+          "number": 48926,
+          "text": "  switch((&DAT_0047c1fc)[iVar3 * 0x148 + iVar2 * 0x10 + 1]) {"
+        },
+        {
+          "number": 48927,
+          "text": "  case 0:"
+        },
+        {
+          "number": 48928,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"Foot\");"
+        },
+        {
+          "number": 48929,
+          "text": "    break;"
+        },
+        {
+          "number": 48930,
+          "text": "  case 1:"
+        },
+        {
+          "number": 48931,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"Guards\");"
+        },
+        {
+          "number": 48932,
+          "text": "    break;"
+        },
+        {
+          "number": 48933,
+          "text": "  case 2:"
+        },
+        {
+          "number": 48934,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"Bowmen\");"
+        },
+        {
+          "number": 48935,
+          "text": "    break;"
+        },
+        {
+          "number": 48936,
+          "text": "  case 3:"
+        },
+        {
+          "number": 48937,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"Lancers\");"
+        },
+        {
+          "number": 48938,
+          "text": "    break;"
+        },
+        {
+          "number": 48939,
+          "text": "  case 4:"
+        },
+        {
+          "number": 48940,
+          "text": "    FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\"Dragoons\");"
+        },
+        {
+          "number": 48941,
+          "text": "  }"
+        },
+        {
+          "number": 48942,
+          "text": "  FUN_00405bc8((char *)(&DAT_0047c1fc + iVar3 * 0x148 + iVar2 * 0x10 + 4),\" Battalion\");"
+        },
+        {
+          "number": 48943,
+          "text": "  *in_FS_OFFSET = uStack_130;"
+        },
+        {
+          "number": 48944,
+          "text": "  puStack_128 = &LAB_0044a491;"
+        },
+        {
+          "number": 48945,
+          "text": "  puStack_12c = (undefined1 *)0x44a489;"
+        },
+        {
+          "number": 48946,
+          "text": "  FUN_004032fc((int *)&local_18);"
+        },
+        {
+          "number": 48947,
+          "text": "  return;"
+        },
+        {
+          "number": 48948,
+          "text": "}"
+        },
+        {
+          "number": 48949,
+          "text": ""
+        },
+        {
+          "number": 48950,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0044a66c",
+      "address": "0044a66c",
+      "first_line": 49019,
+      "last_line": 49041,
+      "lines": [
+        {
+          "number": 49019,
+          "text": "// ==== FUN_0044a66c @ 0044a66c ===="
+        },
+        {
+          "number": 49020,
+          "text": ""
+        },
+        {
+          "number": 49021,
+          "text": "int FUN_0044a66c(short param_1)"
+        },
+        {
+          "number": 49022,
+          "text": ""
+        },
+        {
+          "number": 49023,
+          "text": "{"
+        },
+        {
+          "number": 49024,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 49025,
+          "text": "  undefined4 *puVar2;"
+        },
+        {
+          "number": 49026,
+          "text": "  int iVar3;"
+        },
+        {
+          "number": 49027,
+          "text": "  "
+        },
+        {
+          "number": 49028,
+          "text": "  iVar3 = -1;"
+        },
+        {
+          "number": 49029,
+          "text": "  iVar1 = 0;"
+        },
+        {
+          "number": 49030,
+          "text": "  puVar2 = &DAT_0047c1ec;"
+        },
+        {
+          "number": 49031,
+          "text": "  do {"
+        },
+        {
+          "number": 49032,
+          "text": "    if (0 < *(short *)(puVar2 + param_1 * 0xa4 + 5)) {"
+        },
+        {
+          "number": 49033,
+          "text": "      iVar3 = iVar1;"
+        },
+        {
+          "number": 49034,
+          "text": "    }"
+        },
+        {
+          "number": 49035,
+          "text": "    iVar1 = iVar1 + 1;"
+        },
+        {
+          "number": 49036,
+          "text": "    puVar2 = puVar2 + 8;"
+        },
+        {
+          "number": 49037,
+          "text": "  } while ((short)iVar1 != 0x14);"
+        },
+        {
+          "number": 49038,
+          "text": "  return iVar3 + 1;"
+        },
+        {
+          "number": 49039,
+          "text": "}"
+        },
+        {
+          "number": 49040,
+          "text": ""
+        },
+        {
+          "number": 49041,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0044a698",
+      "address": "0044a698",
+      "first_line": 49042,
+      "last_line": 49065,
+      "lines": [
+        {
+          "number": 49042,
+          "text": "// ==== FUN_0044a698 @ 0044a698 ===="
+        },
+        {
+          "number": 49043,
+          "text": ""
+        },
+        {
+          "number": 49044,
+          "text": "int FUN_0044a698(short param_1)"
+        },
+        {
+          "number": 49045,
+          "text": ""
+        },
+        {
+          "number": 49046,
+          "text": "{"
+        },
+        {
+          "number": 49047,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 49048,
+          "text": "  undefined4 *puVar2;"
+        },
+        {
+          "number": 49049,
+          "text": "  int iVar3;"
+        },
+        {
+          "number": 49050,
+          "text": "  "
+        },
+        {
+          "number": 49051,
+          "text": "  iVar3 = 0;"
+        },
+        {
+          "number": 49052,
+          "text": "  iVar1 = 0x14;"
+        },
+        {
+          "number": 49053,
+          "text": "  puVar2 = &DAT_0047c1ec;"
+        },
+        {
+          "number": 49054,
+          "text": "  do {"
+        },
+        {
+          "number": 49055,
+          "text": "    iVar3 = iVar3 + *(short *)(puVar2 + param_1 * 0xa4 + 5);"
+        },
+        {
+          "number": 49056,
+          "text": "    puVar2 = puVar2 + 8;"
+        },
+        {
+          "number": 49057,
+          "text": "    iVar1 = iVar1 + -1;"
+        },
+        {
+          "number": 49058,
+          "text": "  } while (iVar1 != 0);"
+        },
+        {
+          "number": 49059,
+          "text": "  if (iVar3 == 0) {"
+        },
+        {
+          "number": 49060,
+          "text": "    iVar3 = 1;"
+        },
+        {
+          "number": 49061,
+          "text": "  }"
+        },
+        {
+          "number": 49062,
+          "text": "  return iVar3;"
+        },
+        {
+          "number": 49063,
+          "text": "}"
+        },
+        {
+          "number": 49064,
+          "text": ""
+        },
+        {
+          "number": 49065,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "FUN_0044d9a8",
+      "address": "0044d9a8",
+      "first_line": 51663,
+      "last_line": 51712,
+      "lines": [
+        {
+          "number": 51663,
+          "text": "// ==== FUN_0044d9a8 @ 0044d9a8 ===="
+        },
+        {
+          "number": 51664,
+          "text": ""
+        },
+        {
+          "number": 51665,
+          "text": "void FUN_0044d9a8(undefined4 param_1,undefined4 *param_2,undefined4 param_3,int param_4)"
+        },
+        {
+          "number": 51666,
+          "text": ""
+        },
+        {
+          "number": 51667,
+          "text": "{"
+        },
+        {
+          "number": 51668,
+          "text": "  short sVar1;"
+        },
+        {
+          "number": 51669,
+          "text": "  int iVar2;"
+        },
+        {
+          "number": 51670,
+          "text": "  undefined4 *puVar3;"
+        },
+        {
+          "number": 51671,
+          "text": "  short sVar4;"
+        },
+        {
+          "number": 51672,
+          "text": "  short sVar5;"
+        },
+        {
+          "number": 51673,
+          "text": "  short local_10;"
+        },
+        {
+          "number": 51674,
+          "text": "  short local_e;"
+        },
+        {
+          "number": 51675,
+          "text": "  "
+        },
+        {
+          "number": 51676,
+          "text": "  local_e = -1;"
+        },
+        {
+          "number": 51677,
+          "text": "  local_10 = 1000;"
+        },
+        {
+          "number": 51678,
+          "text": "  if (-1 < (short)(DAT_004a0326 + -1)) {"
+        },
+        {
+          "number": 51679,
+          "text": "    sVar5 = 0;"
+        },
+        {
+          "number": 51680,
+          "text": "    puVar3 = &DAT_0049c26c;"
+        },
+        {
+          "number": 51681,
+          "text": "    sVar4 = DAT_004a0326;"
+        },
+        {
+          "number": 51682,
+          "text": "    do {"
+        },
+        {
+          "number": 51683,
+          "text": "      if ((((*(short *)(puVar3 + 2) == DAT_004a0320) && (*(short *)((int)puVar3 + 0x16) == -1)) &&"
+        },
+        {
+          "number": 51684,
+          "text": "          (*(short *)((int)puVar3 + 10) == -1)) && (0 < *(short *)(puVar3 + 3))) {"
+        },
+        {
+          "number": 51685,
+          "text": "        sVar1 = FUN_00449018(param_1,*puVar3);"
+        },
+        {
+          "number": 51686,
+          "text": "        if (sVar1 < local_10) {"
+        },
+        {
+          "number": 51687,
+          "text": "          local_10 = sVar1;"
+        },
+        {
+          "number": 51688,
+          "text": "          local_e = sVar5;"
+        },
+        {
+          "number": 51689,
+          "text": "        }"
+        },
+        {
+          "number": 51690,
+          "text": "      }"
+        },
+        {
+          "number": 51691,
+          "text": "      sVar5 = sVar5 + 1;"
+        },
+        {
+          "number": 51692,
+          "text": "      puVar3 = (undefined4 *)((int)puVar3 + 0x1a);"
+        },
+        {
+          "number": 51693,
+          "text": "      sVar4 = sVar4 + -1;"
+        },
+        {
+          "number": 51694,
+          "text": "    } while (sVar4 != 0);"
+        },
+        {
+          "number": 51695,
+          "text": "  }"
+        },
+        {
+          "number": 51696,
+          "text": "  if (-1 < local_e) {"
+        },
+        {
+          "number": 51697,
+          "text": "    iVar2 = (int)local_e;"
+        },
+        {
+          "number": 51698,
+          "text": "    sVar4 = FUN_00449018(param_1,*(undefined4 *)((int)&DAT_0049c26c + iVar2 * 0x1a));"
+        },
+        {
+          "number": 51699,
+          "text": "    if (sVar4 == 1) {"
+        },
+        {
+          "number": 51700,
+          "text": "      FUN_0044b79c(*(short *)(param_4 + -2),local_e);"
+        },
+        {
+          "number": 51701,
+          "text": "      *(undefined2 *)param_2 = 0xffff;"
+        },
+        {
+          "number": 51702,
+          "text": "    }"
+        },
+        {
+          "number": 51703,
+          "text": "    else {"
+        },
+        {
+          "number": 51704,
+          "text": "      FUN_0044cd08(param_1,*(undefined4 *)((int)&DAT_0049c26c + iVar2 * 0x1a),param_2,"
+        },
+        {
+          "number": 51705,
+          "text": "                   (undefined4 *)((int)&DAT_0049c270 + iVar2 * 0x1a));"
+        },
+        {
+          "number": 51706,
+          "text": "      *(undefined4 *)(param_4 + -6) = *param_2;"
+        },
+        {
+          "number": 51707,
+          "text": "    }"
+        },
+        {
+          "number": 51708,
+          "text": "  }"
+        },
+        {
+          "number": 51709,
+          "text": "  return;"
+        },
+        {
+          "number": 51710,
+          "text": "}"
+        },
+        {
+          "number": 51711,
+          "text": ""
+        },
+        {
+          "number": 51712,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeTax_InitializeForm",
+      "address": "00453e6c",
+      "first_line": 55576,
+      "last_line": 55619,
+      "lines": [
+        {
+          "number": 55576,
+          "text": "// ==== TChangeTax_InitializeForm @ 00453e6c ===="
+        },
+        {
+          "number": 55577,
+          "text": ""
+        },
+        {
+          "number": 55578,
+          "text": "void TChangeTax_InitializeForm(int *param_1)"
+        },
+        {
+          "number": 55579,
+          "text": ""
+        },
+        {
+          "number": 55580,
+          "text": "{"
+        },
+        {
+          "number": 55581,
+          "text": "  short sVar1;"
+        },
+        {
+          "number": 55582,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 55583,
+          "text": "  undefined4 uStack_130;"
+        },
+        {
+          "number": 55584,
+          "text": "  undefined *puStack_12c;"
+        },
+        {
+          "number": 55585,
+          "text": "  undefined1 *puStack_128;"
+        },
+        {
+          "number": 55586,
+          "text": "  uint *puStack_118;"
+        },
+        {
+          "number": 55587,
+          "text": "  byte abStack_114 [257];"
+        },
+        {
+          "number": 55588,
+          "text": "  byte abStack_13 [15];"
+        },
+        {
+          "number": 55589,
+          "text": "  "
+        },
+        {
+          "number": 55590,
+          "text": "  puStack_128 = &stack0xfffffffc;"
+        },
+        {
+          "number": 55591,
+          "text": "  puStack_118 = (uint *)0x0;"
+        },
+        {
+          "number": 55592,
+          "text": "  puStack_12c = &UNK_00453fa7;"
+        },
+        {
+          "number": 55593,
+          "text": "  uStack_130 = *in_FS_OFFSET;"
+        },
+        {
+          "number": 55594,
+          "text": "  *in_FS_OFFSET = &uStack_130;"
+        },
+        {
+          "number": 55595,
+          "text": "  FUN_004127a0(param_1,0x14);"
+        },
+        {
+          "number": 55596,
+          "text": "  FUN_004127c0(param_1,0x14);"
+        },
+        {
+          "number": 55597,
+          "text": "  FUN_00420c58(param_1,0x122);"
+        },
+        {
+          "number": 55598,
+          "text": "  FUN_00420c84(param_1,0x10e);"
+        },
+        {
+          "number": 55599,
+          "text": "  sVar1 = (&DAT_00474aba)[DAT_004a0320 * 0x24a];"
+        },
+        {
+          "number": 55600,
+          "text": "  *(short *)(param_1 + 0x7e) = sVar1;"
+        },
+        {
+          "number": 55601,
+          "text": "  func_0x004330dc(param_1[0x7d],(int)sVar1);"
+        },
+        {
+          "number": 55602,
+          "text": "  FUN_004028c4((int)(short)param_1[0x7e],(char *)abStack_114);"
+        },
+        {
+          "number": 55603,
+          "text": "  FUN_00402978(abStack_114,abStack_13);"
+        },
+        {
+          "number": 55604,
+          "text": "  FUN_00403458((int *)&puStack_118,(char *)abStack_13,0xf);"
+        },
+        {
+          "number": 55605,
+          "text": "  FUN_00412cdc((int *)param_1[0x79],puStack_118);"
+        },
+        {
+          "number": 55606,
+          "text": "  FUN_00448f3c(((int)(short)(&DAT_00474abc)[DAT_004a0320 * 0x24a] * (int)(short)param_1[0x7e]) / 100"
+        },
+        {
+          "number": 55607,
+          "text": "               ,(int)abStack_13);"
+        },
+        {
+          "number": 55608,
+          "text": "  FUN_00403458((int *)&puStack_118,(char *)abStack_13,0xf);"
+        },
+        {
+          "number": 55609,
+          "text": "  FUN_00412cdc((int *)param_1[0x7a],puStack_118);"
+        },
+        {
+          "number": 55610,
+          "text": "  TChangeTax_PrintNewNumbers(param_1);"
+        },
+        {
+          "number": 55611,
+          "text": "  FUN_00422f40(param_1);"
+        },
+        {
+          "number": 55612,
+          "text": "  *in_FS_OFFSET = uStack_130;"
+        },
+        {
+          "number": 55613,
+          "text": "  puStack_128 = &UNK_00453fae;"
+        },
+        {
+          "number": 55614,
+          "text": "  puStack_12c = &UNK_00453fa6;"
+        },
+        {
+          "number": 55615,
+          "text": "  FUN_004032fc((int *)&puStack_118);"
+        },
+        {
+          "number": 55616,
+          "text": "  return;"
+        },
+        {
+          "number": 55617,
+          "text": "}"
+        },
+        {
+          "number": 55618,
+          "text": ""
+        },
+        {
+          "number": 55619,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeTax_PrintNewNumbers",
+      "address": "00453fb8",
+      "first_line": 55620,
+      "last_line": 55653,
+      "lines": [
+        {
+          "number": 55620,
+          "text": "// ==== TChangeTax_PrintNewNumbers @ 00453fb8 ===="
+        },
+        {
+          "number": 55621,
+          "text": ""
+        },
+        {
+          "number": 55622,
+          "text": "void TChangeTax_PrintNewNumbers(int param_1)"
+        },
+        {
+          "number": 55623,
+          "text": ""
+        },
+        {
+          "number": 55624,
+          "text": "{"
+        },
+        {
+          "number": 55625,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 55626,
+          "text": "  undefined4 uStack_130;"
+        },
+        {
+          "number": 55627,
+          "text": "  undefined *puStack_12c;"
+        },
+        {
+          "number": 55628,
+          "text": "  undefined1 *puStack_128;"
+        },
+        {
+          "number": 55629,
+          "text": "  uint *puStack_118;"
+        },
+        {
+          "number": 55630,
+          "text": "  byte abStack_114 [257];"
+        },
+        {
+          "number": 55631,
+          "text": "  byte abStack_13 [15];"
+        },
+        {
+          "number": 55632,
+          "text": "  "
+        },
+        {
+          "number": 55633,
+          "text": "  puStack_128 = &stack0xfffffffc;"
+        },
+        {
+          "number": 55634,
+          "text": "  puStack_118 = (uint *)0x0;"
+        },
+        {
+          "number": 55635,
+          "text": "  puStack_12c = &UNK_0045408b;"
+        },
+        {
+          "number": 55636,
+          "text": "  uStack_130 = *in_FS_OFFSET;"
+        },
+        {
+          "number": 55637,
+          "text": "  *in_FS_OFFSET = &uStack_130;"
+        },
+        {
+          "number": 55638,
+          "text": "  FUN_004028c4((int)*(short *)(param_1 + 0x1f8),(char *)abStack_114);"
+        },
+        {
+          "number": 55639,
+          "text": "  FUN_00402978(abStack_114,abStack_13);"
+        },
+        {
+          "number": 55640,
+          "text": "  FUN_00403458((int *)&puStack_118,(char *)abStack_13,0xf);"
+        },
+        {
+          "number": 55641,
+          "text": "  FUN_00412cdc(*(int **)(param_1 + 0x1ec),puStack_118);"
+        },
+        {
+          "number": 55642,
+          "text": "  FUN_00448f3c(((int)(short)(&DAT_00474abc)[DAT_004a0320 * 0x24a] * (int)*(short *)(param_1 + 0x1f8)"
+        },
+        {
+          "number": 55643,
+          "text": "               ) / 100,(int)abStack_13);"
+        },
+        {
+          "number": 55644,
+          "text": "  FUN_00403458((int *)&puStack_118,(char *)abStack_13,0xf);"
+        },
+        {
+          "number": 55645,
+          "text": "  FUN_00412cdc(*(int **)(param_1 + 0x1f0),puStack_118);"
+        },
+        {
+          "number": 55646,
+          "text": "  *in_FS_OFFSET = uStack_130;"
+        },
+        {
+          "number": 55647,
+          "text": "  puStack_128 = &UNK_00454092;"
+        },
+        {
+          "number": 55648,
+          "text": "  puStack_12c = &UNK_0045408a;"
+        },
+        {
+          "number": 55649,
+          "text": "  FUN_004032fc((int *)&puStack_118);"
+        },
+        {
+          "number": 55650,
+          "text": "  return;"
+        },
+        {
+          "number": 55651,
+          "text": "}"
+        },
+        {
+          "number": 55652,
+          "text": ""
+        },
+        {
+          "number": 55653,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeTax_SetNewTax",
+      "address": "0045409c",
+      "first_line": 55654,
+      "last_line": 55664,
+      "lines": [
+        {
+          "number": 55654,
+          "text": "// ==== TChangeTax_SetNewTax @ 0045409c ===="
+        },
+        {
+          "number": 55655,
+          "text": ""
+        },
+        {
+          "number": 55656,
+          "text": "void TChangeTax_SetNewTax(int param_1)"
+        },
+        {
+          "number": 55657,
+          "text": ""
+        },
+        {
+          "number": 55658,
+          "text": "{"
+        },
+        {
+          "number": 55659,
+          "text": "  *(undefined2 *)(param_1 + 0x1f8) = *(undefined2 *)(*(int *)(param_1 + 500) + 0x114);"
+        },
+        {
+          "number": 55660,
+          "text": "  TChangeTax_PrintNewNumbers();"
+        },
+        {
+          "number": 55661,
+          "text": "  return;"
+        },
+        {
+          "number": 55662,
+          "text": "}"
+        },
+        {
+          "number": 55663,
+          "text": ""
+        },
+        {
+          "number": 55664,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TChangeTax_OK",
+      "address": "004540b8",
+      "first_line": 55665,
+      "last_line": 55677,
+      "lines": [
+        {
+          "number": 55665,
+          "text": "// ==== TChangeTax_OK @ 004540b8 ===="
+        },
+        {
+          "number": 55666,
+          "text": ""
+        },
+        {
+          "number": 55667,
+          "text": "void TChangeTax_OK(int *param_1)"
+        },
+        {
+          "number": 55668,
+          "text": ""
+        },
+        {
+          "number": 55669,
+          "text": "{"
+        },
+        {
+          "number": 55670,
+          "text": "  (&DAT_00474aba)[DAT_004a0320 * 0x24a] = (short)param_1[0x7e];"
+        },
+        {
+          "number": 55671,
+          "text": "  TPremierForm_RefreshForms(DAT_004a0bd0);"
+        },
+        {
+          "number": 55672,
+          "text": "  param_1[0x4a] = 1;"
+        },
+        {
+          "number": 55673,
+          "text": "  FUN_0042313c(param_1);"
+        },
+        {
+          "number": 55674,
+          "text": "  return;"
+        },
+        {
+          "number": 55675,
+          "text": "}"
+        },
+        {
+          "number": 55676,
+          "text": ""
+        },
+        {
+          "number": 55677,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TPremierForm_StartTurn",
+      "address": "0045ac5c",
+      "first_line": 58175,
+      "last_line": 58237,
+      "lines": [
+        {
+          "number": 58175,
+          "text": "// ==== TPremierForm_StartTurn @ 0045ac5c ===="
+        },
+        {
+          "number": 58176,
+          "text": ""
+        },
+        {
+          "number": 58177,
+          "text": "void TPremierForm_StartTurn(int *param_1)"
+        },
+        {
+          "number": 58178,
+          "text": ""
+        },
+        {
+          "number": 58179,
+          "text": "{"
+        },
+        {
+          "number": 58180,
+          "text": "  undefined4 extraout_ECX;"
+        },
+        {
+          "number": 58181,
+          "text": "  undefined4 extraout_EDX;"
+        },
+        {
+          "number": 58182,
+          "text": "  undefined4 extraout_EDX_00;"
+        },
+        {
+          "number": 58183,
+          "text": "  undefined4 *in_FS_OFFSET;"
+        },
+        {
+          "number": 58184,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 58185,
+          "text": "  undefined4 uStack_b0;"
+        },
+        {
+          "number": 58186,
+          "text": "  undefined1 *puStack_ac;"
+        },
+        {
+          "number": 58187,
+          "text": "  undefined1 *puStack_a8;"
+        },
+        {
+          "number": 58188,
+          "text": "  uint *local_98;"
+        },
+        {
+          "number": 58189,
+          "text": "  char local_92 [71];"
+        },
+        {
+          "number": 58190,
+          "text": "  char local_4b [71];"
+        },
+        {
+          "number": 58191,
+          "text": "  "
+        },
+        {
+          "number": 58192,
+          "text": "  puStack_a8 = &stack0xfffffffc;"
+        },
+        {
+          "number": 58193,
+          "text": "  local_98 = (uint *)0x0;"
+        },
+        {
+          "number": 58194,
+          "text": "  puStack_ac = &LAB_0045ae20;"
+        },
+        {
+          "number": 58195,
+          "text": "  uStack_b0 = *in_FS_OFFSET;"
+        },
+        {
+          "number": 58196,
+          "text": "  *in_FS_OFFSET = &uStack_b0;"
+        },
+        {
+          "number": 58197,
+          "text": "  FUN_00412e34(param_1,0);"
+        },
+        {
+          "number": 58198,
+          "text": "  TPremierForm_SelectNation((int)param_1,DAT_004a0320);"
+        },
+        {
+          "number": 58199,
+          "text": "  TInformation_PrintNews(DAT_0045e70c);"
+        },
+        {
+          "number": 58200,
+          "text": "  TPremierForm_OpenAllForms((int)param_1,extraout_EDX,extraout_ECX);"
+        },
+        {
+          "number": 58201,
+          "text": "  TPremierForm_SetTurnTitle(param_1);"
+        },
+        {
+          "number": 58202,
+          "text": "  if ((&DAT_00474adb)[DAT_004a0320 * 0x494] == '\\0') {"
+        },
+        {
+          "number": 58203,
+          "text": "    FUN_00424950(DAT_0045e628,'\\0');"
+        },
+        {
+          "number": 58204,
+          "text": "    FUN_0040fa38(param_1[0xb9],0);"
+        },
+        {
+          "number": 58205,
+          "text": "  }"
+        },
+        {
+          "number": 58206,
+          "text": "  else {"
+        },
+        {
+          "number": 58207,
+          "text": "    FUN_00424950(DAT_0045e628,'\\x01');"
+        },
+        {
+          "number": 58208,
+          "text": "    FUN_0040fa38(param_1[0xb9],1);"
+        },
+        {
+          "number": 58209,
+          "text": "  }"
+        },
+        {
+          "number": 58210,
+          "text": "  DAT_004a0328 = 0xffff;"
+        },
+        {
+          "number": 58211,
+          "text": "  DAT_004a032a = 0xffff;"
+        },
+        {
+          "number": 58212,
+          "text": "  if ((-1 < DAT_0049f008) &&"
+        },
+        {
+          "number": 58213,
+          "text": "     ((&DAT_00474696)[DAT_004a0320 * 0x24a + (int)DAT_0049f008] != DAT_0049f00a)) {"
+        },
+        {
+          "number": 58214,
+          "text": "    if (DAT_0049f00a == 1) {"
+        },
+        {
+          "number": 58215,
+          "text": "      FUN_00405b00(local_92,\"trade\");"
+        },
+        {
+          "number": 58216,
+          "text": "    }"
+        },
+        {
+          "number": 58217,
+          "text": "    else {"
+        },
+        {
+          "number": 58218,
+          "text": "      FUN_00405b00(local_92,\"form an alliance\");"
+        },
+        {
+          "number": 58219,
+          "text": "    }"
+        },
+        {
+          "number": 58220,
+          "text": "    FUN_00405b00(local_4b,&DAT_00474670 + DAT_0049f008 * 0x494);"
+        },
+        {
+          "number": 58221,
+          "text": "    FUN_00405bc8(local_4b,\" wants to \");"
+        },
+        {
+          "number": 58222,
+          "text": "    FUN_00405bc8(local_4b,local_92);"
+        },
+        {
+          "number": 58223,
+          "text": "    FUN_00405bc8(local_4b,\" with \");"
+        },
+        {
+          "number": 58224,
+          "text": "    FUN_00405bc8(local_4b,&DAT_00474670 + DAT_004a0320 * 0x494);"
+        },
+        {
+          "number": 58225,
+          "text": "    FUN_00405bc8(local_4b,\".\");"
+        },
+        {
+          "number": 58226,
+          "text": "    iVar1 = 0;"
+        },
+        {
+          "number": 58227,
+          "text": "    FUN_00403458((int *)&local_98,local_4b,0x47);"
+        },
+        {
+          "number": 58228,
+          "text": "    FUN_0042d750(local_98,CONCAT31((int3)((uint)extraout_EDX_00 >> 8),2),DAT_0045ae64,iVar1);"
+        },
+        {
+          "number": 58229,
+          "text": "  }"
+        },
+        {
+          "number": 58230,
+          "text": "  *in_FS_OFFSET = uStack_b0;"
+        },
+        {
+          "number": 58231,
+          "text": "  puStack_a8 = &LAB_0045ae27;"
+        },
+        {
+          "number": 58232,
+          "text": "  puStack_ac = (undefined1 *)0x45ae1f;"
+        },
+        {
+          "number": 58233,
+          "text": "  FUN_004032fc((int *)&local_98);"
+        },
+        {
+          "number": 58234,
+          "text": "  return;"
+        },
+        {
+          "number": 58235,
+          "text": "}"
+        },
+        {
+          "number": 58236,
+          "text": ""
+        },
+        {
+          "number": 58237,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TPremierForm_RefreshForms",
+      "address": "0045ba6c",
+      "first_line": 58739,
+      "last_line": 58751,
+      "lines": [
+        {
+          "number": 58739,
+          "text": "// ==== TPremierForm_RefreshForms @ 0045ba6c ===="
+        },
+        {
+          "number": 58740,
+          "text": ""
+        },
+        {
+          "number": 58741,
+          "text": "void TPremierForm_RefreshForms(undefined4 param_1)"
+        },
+        {
+          "number": 58742,
+          "text": ""
+        },
+        {
+          "number": 58743,
+          "text": "{"
+        },
+        {
+          "number": 58744,
+          "text": "  undefined4 in_ECX;"
+        },
+        {
+          "number": 58745,
+          "text": "  "
+        },
+        {
+          "number": 58746,
+          "text": "  TUnitMap_PaintForm(DAT_0045e740,param_1,in_ECX);"
+        },
+        {
+          "number": 58747,
+          "text": "  TInformation_ShowNationStatus(DAT_0045e70c,DAT_004a0320);"
+        },
+        {
+          "number": 58748,
+          "text": "  return;"
+        },
+        {
+          "number": 58749,
+          "text": "}"
+        },
+        {
+          "number": 58750,
+          "text": ""
+        },
+        {
+          "number": 58751,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "TPremierForm_StoreFormPositions",
+      "address": "0045bb1c",
+      "first_line": 58796,
+      "last_line": 58828,
+      "lines": [
+        {
+          "number": 58796,
+          "text": "// ==== TPremierForm_StoreFormPositions @ 0045bb1c ===="
+        },
+        {
+          "number": 58797,
+          "text": ""
+        },
+        {
+          "number": 58798,
+          "text": "void TPremierForm_StoreFormPositions(void)"
+        },
+        {
+          "number": 58799,
+          "text": ""
+        },
+        {
+          "number": 58800,
+          "text": "{"
+        },
+        {
+          "number": 58801,
+          "text": "  int iVar1;"
+        },
+        {
+          "number": 58802,
+          "text": "  undefined4 uVar2;"
+        },
+        {
+          "number": 58803,
+          "text": "  "
+        },
+        {
+          "number": 58804,
+          "text": "  iVar1 = DAT_004a0320 * 0x494;"
+        },
+        {
+          "number": 58805,
+          "text": "  *(short *)(&DAT_00474ade + iVar1) = (short)DAT_0045e718[9];"
+        },
+        {
+          "number": 58806,
+          "text": "  *(short *)(&DAT_00474ae0 + iVar1) = (short)DAT_0045e718[10];"
+        },
+        {
+          "number": 58807,
+          "text": "  uVar2 = FUN_00412880(DAT_0045e718);"
+        },
+        {
+          "number": 58808,
+          "text": "  *(short *)(&DAT_00474ae4 + iVar1) = (short)uVar2;"
+        },
+        {
+          "number": 58809,
+          "text": "  uVar2 = FUN_004128c4(DAT_0045e718);"
+        },
+        {
+          "number": 58810,
+          "text": "  *(short *)(&DAT_00474ae2 + iVar1) = (short)uVar2;"
+        },
+        {
+          "number": 58811,
+          "text": "  iVar1 = DAT_004a0320 * 0x494;"
+        },
+        {
+          "number": 58812,
+          "text": "  *(short *)(&DAT_00474ae6 + iVar1) = (short)DAT_0045e740[9];"
+        },
+        {
+          "number": 58813,
+          "text": "  *(short *)(&DAT_00474ae8 + iVar1) = (short)DAT_0045e740[10];"
+        },
+        {
+          "number": 58814,
+          "text": "  uVar2 = FUN_00412880(DAT_0045e740);"
+        },
+        {
+          "number": 58815,
+          "text": "  *(short *)(&DAT_00474aec + iVar1) = (short)uVar2;"
+        },
+        {
+          "number": 58816,
+          "text": "  uVar2 = FUN_004128c4(DAT_0045e740);"
+        },
+        {
+          "number": 58817,
+          "text": "  *(short *)(&DAT_00474aea + iVar1) = (short)uVar2;"
+        },
+        {
+          "number": 58818,
+          "text": "  iVar1 = DAT_004a0320 * 0x494;"
+        },
+        {
+          "number": 58819,
+          "text": "  *(short *)(&DAT_00474aee + iVar1) = (short)DAT_0045e70c[9];"
+        },
+        {
+          "number": 58820,
+          "text": "  *(short *)(&DAT_00474af0 + iVar1) = (short)DAT_0045e70c[10];"
+        },
+        {
+          "number": 58821,
+          "text": "  uVar2 = FUN_00412880(DAT_0045e70c);"
+        },
+        {
+          "number": 58822,
+          "text": "  *(short *)(&DAT_00474af4 + iVar1) = (short)uVar2;"
+        },
+        {
+          "number": 58823,
+          "text": "  uVar2 = FUN_004128c4(DAT_0045e70c);"
+        },
+        {
+          "number": 58824,
+          "text": "  *(short *)(&DAT_00474af2 + iVar1) = (short)uVar2;"
+        },
+        {
+          "number": 58825,
+          "text": "  return;"
+        },
+        {
+          "number": 58826,
+          "text": "}"
+        },
+        {
+          "number": 58827,
+          "text": ""
+        },
+        {
+          "number": 58828,
+          "text": ""
+        }
+      ]
+    }
+  ]
+}
