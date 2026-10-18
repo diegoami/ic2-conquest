@@ -37,7 +37,7 @@ public class Native {
 }
 '''
 def main():
- p=argparse.ArgumentParser();p.add_argument('--action',required=True,choices=['launch','enumerate','menu','command','text','click','capture','read','message','snapshot']);p.add_argument('--pid',type=int,default=0);p.add_argument('--hwnd',type=int,default=0);p.add_argument('--value',default='');p.add_argument('--address',type=lambda s:int(s,0));p.add_argument('--size',type=int,default=2);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+ p=argparse.ArgumentParser();p.add_argument('--action',required=True,choices=['launch','enumerate','menu','command','text','click','capture','read','message','snapshot','query']);p.add_argument('--pid',type=int,default=0);p.add_argument('--hwnd',type=int,default=0);p.add_argument('--value',default='');p.add_argument('--address',type=lambda s:int(s,0));p.add_argument('--size',type=int,default=2);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
  if a.output.exists():raise FileExistsError(a.output)
  prefix="$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'; [Console]::OutputEncoding=New-Object System.Text.UTF8Encoding($false); Add-Type -TypeDefinition @'\n"+CS+"\n'@;\n"
  quoted=lambda s:"'"+s.replace("'","''")+"'"
@@ -60,7 +60,10 @@ try {$unit=D 0x45e740;$current=W 0x4a0320;$r=New-Object Native+Rect; $um=@([Nati
 '''
   else:
    body+='[Native]::Check($h,$gamePid);\n'
-   if a.action=='menu':body+='[Native]::Menus($h)|ConvertTo-Json -Depth 6 -Compress'
+   if a.action=='query':
+    assert int(a.value,0)==0x400
+    body+="@{value=[Native]::SendMessage($h,0x400,[IntPtr]::Zero,[IntPtr]::Zero).ToInt64()}|ConvertTo-Json -Compress"
+   elif a.action=='menu':body+='[Native]::Menus($h)|ConvertTo-Json -Depth 6 -Compress'
    elif a.action=='command':body+=f"[void][Native]::PostMessage($h,0x111,[IntPtr]{int(a.value)},[IntPtr]::Zero); @{{posted=$true}}|ConvertTo-Json -Compress"
    elif a.action=='text':body+=f"[void][Native]::SendMessage($h,0xC,[IntPtr]::Zero,{quoted(a.value)}); @{{set=$true}}|ConvertTo-Json -Compress"
    elif a.action=='click':body+="[void][Native]::PostMessage($h,0xF5,[IntPtr]::Zero,[IntPtr]::Zero); @{posted=$true}|ConvertTo-Json -Compress"
