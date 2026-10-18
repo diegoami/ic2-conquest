@@ -78,6 +78,10 @@ def candidate_finish(case,c):
  action(pid,'command',prefix+'-endturn-once-v1',main,8);w=rows(pid,prefix+'-endturn-windows-v1');sc=action(pid,'snapshot',prefix+'-endturn-scalars-v1');event=[r for r in w if r['visible'] and r['cls'] not in ('TInformation','TUnitMap','TAreaMap','TPremierForm','TApplication','TPanel','TScrollBar','MSCTFIME UI','IME')]
  if event or sc['current']!=n:
   record(prefix+'-event-pending-v1',dict(pid=pid,main=main,events=event,scalars=sc,endturn_commands_issued=1,sequence_complete=False));print('EVENT PENDING '+str(case),flush=True);return
+ finish_after_turn(case,c,pid,main,w,sc,changes,economy)
+
+def finish_after_turn(case,c,pid,main,w,sc,changes,economy):
+ prefix=f'case{case}';n=c['nation']
  capture(pid,top(w,'TInformation'),f'N{case}INF002.PNG',prefix+'-endturn-info-capture-v1');end_file=save_as(pid,main,f'N{case}E68B2.SAV',prefix+'-endturn-save-v1');record(prefix+'-endturn-effect-v1',dict(file=end_file,scalars=sc,endturn_commands_issued=1,blocking_event_dialogs_observed=0));close(pid,main,prefix+'-first-normal-close-v1',f'N{case}EX01.PNG')
  fresh=launch(prefix+'-reopen-launch-v1');newmain,w=open_file(fresh,f'N{case}E68B2.SAV',prefix+'-reopen-v1');freshsc=action(fresh,'snapshot',prefix+'-reopen-scalars-v1');assert freshsc['current']==n and all(freshsc[k]==sc[k] for k in ['tax','year','season','week','armies','fleets','offer_source']);capture(fresh,top(w,'TInformation'),f'N{case}INF003.PNG',prefix+'-reopen-info-capture-v1');reopen_file=save_as(fresh,newmain,f'N{case}R68B2.SAV',prefix+'-reopen-save-v1');a=(PRIVATE/f'N{case}E68B2.SAV').read_bytes();b=(PRIVATE/f'N{case}R68B2.SAV').read_bytes();na,nf,no,last,tail=layout(a);assert len(a)==len(b);diffs=[i for i,(x,y) in enumerate(zip(a,b)) if x!=y];allowed=set(range(no+n*1172+0x46e,no+n*1172+0x486))|set(range(tail+46,tail+54));assert set(diffs)<=allowed
  close(fresh,newmain,prefix+'-final-normal-close-v1',f'N{case}EX02.PNG');source_hash=hashlib.sha256((SOURCE/c['source']).read_bytes()).hexdigest();candidate_hash=hashlib.sha256((CAND/c['candidate']).read_bytes()).hexdigest();assert source_hash==c['source_sha'] and candidate_hash==c['candidate_sha']

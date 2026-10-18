@@ -1,0 +1,102 @@
+{
+  "case": 3,
+  "original_open_order_AND_endturn_newsave_normalclose_freshreopen_sequence": "PASS observed",
+  "initial_pid": 21404,
+  "fresh_reopen_pid": 16148,
+  "order": [
+    {
+      "slot": 1,
+      "before": [
+        24,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        0,
+        0,
+        3000,
+        85
+      ]
+    }
+  ],
+  "economy": {
+    "treasury": [
+      -818,
+      -848
+    ],
+    "mobilization": [
+      59,
+      61
+    ]
+  },
+  "endturn_commands_issued": 1,
+  "original_endturn_confirmation": {
+    "observed": "An army of yours needs supplies.",
+    "button": "End turn",
+    "confirmations": 1
+  },
+  "postturn_scalars": {
+    "unit_fleet": -1,
+    "selected_cell_y": 0,
+    "offer_source": -1,
+    "offer_type": 1,
+    "armies": 14,
+    "season": 3,
+    "viewport_y": 17,
+    "week": 9,
+    "client_width": 1135,
+    "client_height": 781,
+    "selected_army": -1,
+    "viewport_x": 69,
+    "selected_fleet": -1,
+    "current": 0,
+    "tax": 30,
+    "fleets": 6,
+    "selected_cell_x": -1,
+    "year": 270,
+    "unit_army": -1
+  },
+  "fresh_reopen_scalars": {
+    "unit_fleet": -1,
+    "selected_cell_y": 0,
+    "offer_source": -1,
+    "offer_type": 1,
+    "armies": 14,
+    "season": 3,
+    "viewport_y": 17,
+    "week": 9,
+    "client_width": 1135,
+    "client_height": 781,
+    "selected_army": -1,
+    "viewport_x": 69,
+    "selected_fleet": -1,
+    "current": 0,
+    "tax": 30,
+    "fleets": 6,
+    "selected_cell_x": -1,
+    "year": 270,
+    "unit_army": -1
+  },
+  "reopen_file": {
+    "private_name": "N3R68B2.SAV",
+    "size": 132149,
+    "sha256": "3e867d29fc18a69e6e9a9d6569f3246c1dff16b2062687952b143d362e703d3d",
+    "saved_by_original_UI": true,
+    "exclusive_new_destination": true
+  },
+  "reopen_exact_postturn_byte_identity": true,
+  "reopen_only_geometry_changed_offsets": [],
+  "source_sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+  "candidate_sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+  "source_candidate_unchanged": true,
+  "final_active_original_processes": 0,
+  "internal_callback_instruction_trace": "UNVERIFIED",
+  "twelve_native_JSON_conversion_target": "UNMET/separate",
+  "automation_failure_recovered": {
+    "error": "NameError: n was not defined in extracted finish_after_turn",
+    "stage": "after fresh reopen scalar read, before new save",
+    "game_error": false,
+    "retained_action_logs": true
+  }
+}
