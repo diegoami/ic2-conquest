@@ -1,0 +1,27 @@
+{
+  "method": "Offline pinned-artifact integrity and bounded-control result consistency, not a game/export test.",
+  "source_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "source_functions": 156,
+  "absolute_lexical_references": 680,
+  "additional_functions": 0,
+  "source_extract_functions": 8,
+  "source_extract_lines": 468,
+  "original_x86_controls": 6,
+  "negative_unknown_paths": 4,
+  "unknown_canaries_per_path": 496,
+  "positive_guest_access_types": [
+    16,
+    17
+  ],
+  "Windows_round_trips": 0,
+  "changed_state_export_readiness": false,
+  "files": {
+    "README.md": "83e239fcb4aa2bcb3d19fb23d688d0b556679abe7c336476c39dda0db6eb6a51",
+    "source-added-functions-v1.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source-alias-leads-v1.json": "b756b3342ca86978c5e657e94789f179b616cc8a0eb5087e7a1553b62f8af760",
+    "source-alias-leads-v2.json": "abbdc52759ecea2f29f7edfb9f5dd9385a45842caf332ed5aa74a7c88f030be7",
+    "source-controls-and-history-v1.txt": "c835dbc0e540d006d303016b2e91d9ebcfda6f226f08fb3c3010c2e004a7f48f",
+    "x86-path-controls-v1.json": "3adde538f5110bf1933055444eaa3bd77b4c5fe008572130ef7a20b2450c56ef",
+    "x86-path-controls-v2.json": "3c70115bfb6e56f067df38d582a96eb5f4d0fef7b64aec51f8b3ea288ea22279"
+  }
+}
