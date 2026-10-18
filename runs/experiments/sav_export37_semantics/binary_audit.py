@@ -17,6 +17,13 @@ def code(at):
 seeds={int(m.group(1),16) for m in re.finditer(rb'// ==== .+? @ ([0-9a-fA-F]+) ====',source)}
 # Full dump omits some save/DAT/NewGame functions; supplemental originals supply these entry points.
 seeds|={0x4481a0,0x4487c4,0x448aa4,base+pe.OPTIONAL_HEADER.AddressOfEntryPoint}
+relocated_code_seeds=set()
+for block in getattr(pe,'DIRECTORY_ENTRY_BASERELOC',[]):
+ for entry in block.entries:
+  if entry.type==3:
+   target=int.from_bytes(pe.get_data(entry.rva,4),'little')
+   if code(target):relocated_code_seeds.add(target)
+seeds|=relocated_code_seeds
 cs=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_32);cs.detail=True
 pending=list(seeds);decoded={};covered={};overlap=[];fail=[];indirect=[];calls=[];refs=[]
 unknown=set(range(0x450,0x46b))|{0x46d,0x491,0x492,0x493}
@@ -66,6 +73,6 @@ for typ in pe.DIRECTORY_ENTRY_RESOURCE.entries:
    assert b.count(prop)==1
    i=b.index(prop)+len(prop)
    resources.append(dict(resource=label,property='Max' if label=='TCHANGETAX' else 'MaxLength',encoded_integer_type=2,value=b[i],resource_sha256=hashlib.sha256(b).hexdigest(),size=len(b),RVA=hex(s.OffsetToData)))
-result=dict(method='Recursive disassembly from pinned decompiler function entries, missing supplemental entries and PE entry; follow direct calls/branches and fallthrough. All indirect edges retained unresolved. Does not prove all executable bytes/code entry points or computed-pointer dataflow. Operand starts/displacements are leads, not effective-address/width proof.',exe_sha256=hashlib.sha256(raw).hexdigest(),source_sha256=hashlib.sha256(source).hexdigest(),capstone_version=capstone.__version__,pefile_version=pefile.__version__,seed_count=len(seeds),decoded_instructions=len(decoded),covered_code_bytes=len(covered),executable_virtual_bytes=sum(hi-lo for lo,hi,b in sections),decode_failures=fail,overlapping_targets=overlap,direct_calls=len(calls),indirect_edges=indirect,nation_operand_leads=refs,unknown_operand_starts=[r for r in refs if r['starts_in_unknown']],nation_relocations=relocs,unknown_relocations=[r for r in relocs if r['starts_in_unknown']],resources=resources)
+result=dict(method='Recursive disassembly from pinned decompiler function entries, missing supplemental entries, PE entry and ALL executable targets of PE HIGHLOW relocations; follow direct calls/branches and fallthrough. All indirect edges retained unresolved. Does not prove all executable bytes/code entry points or computed-pointer dataflow. Operand starts/displacements are leads, not effective-address/width proof.',exe_sha256=hashlib.sha256(raw).hexdigest(),source_sha256=hashlib.sha256(source).hexdigest(),capstone_version=capstone.__version__,pefile_version=pefile.__version__,seed_count=len(seeds),relocated_code_seeds=len(relocated_code_seeds),decoded_instructions=len(decoded),covered_code_bytes=len(covered),executable_virtual_bytes=sum(hi-lo for lo,hi,b in sections),decode_failures=fail,overlapping_targets=overlap,direct_calls=len(calls),indirect_edges=indirect,nation_operand_leads=refs,unknown_operand_starts=[r for r in refs if r['starts_in_unknown']],nation_relocations=relocs,unknown_relocations=[r for r in relocs if r['starts_in_unknown']],resources=resources)
 with a.output.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
 print(json.dumps({k:len(v) if isinstance(v,list) else v for k,v in result.items() if k not in {'method'}}))
