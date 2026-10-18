@@ -55,5 +55,34 @@ def control(case,c):
  s=action(pid,'snapshot',prefix+'-after-scalars-v1');assert s['current']==c['nation'] and s['tax']==c['target'];save_as(pid,main,f'C{case}T68B2.SAV',prefix+'-tax-save-v1');compare_control(case,c);close(pid,main,prefix+'-normal-close-v1',f'C{case}EX01.PNG')
  record(prefix+'-result-v1',dict(case=case,reference_control_UI_tax_change_observed=True,ordinary_original_tax_control=True,source_unchanged=hashlib.sha256((SOURCE/c['source']).read_bytes()).hexdigest()==c['source_sha'],candidate_sequence_completed=False,original_process_closed_normally=True))
  print('CONTROL COMPLETE '+str(case),flush=True)
+
+def candidate_start(case,c):
+ prefix=f'case{case}';transport(CAND/c['candidate'],f'N{case}I68B2.SAV',c['candidate_sha'],prefix+'-input-transport-v1');pid=launch(prefix+'-launch-v1');main,w=open_file(pid,f'N{case}I68B2.SAV',prefix+'-load-v1');sc=action(pid,'snapshot',prefix+'-loaded-scalars-v1');assert sc['current']==c['nation'] and sc['tax']==c['target'] and sc['offer_source']==-1 and sc['selected_army']==sc['selected_fleet']==sc['selected_cell_x']==-1
+ capture(pid,top(w,'TUnitMap'),f'N{case}MAP001.PNG',prefix+'-loaded-map-capture-v1');capture(pid,top(w,'TInformation'),f'N{case}INF001.PNG',prefix+'-loaded-info-capture-v1')
+ action(pid,'command',prefix+'-tax-inspect-command-v1',main,15);w=rows(pid,prefix+'-tax-inspect-dialog-v1');capture(pid,top(w,'TChangeTax'),f'N{case}TAX001.PNG',prefix+'-tax-inspect-capture-v1');action(pid,'click',prefix+'-tax-inspect-cancel-v1',button(w,'Cancel'))
+ saved=save_as(pid,main,f'N{case}L68B2.SAV',prefix+'-load-save-v1');original=(CAND/c['candidate']).read_bytes();loaded=(PRIVATE/f'N{case}L68B2.SAV').read_bytes();assert len(original)==len(loaded);na,nf,no,last,tail=layout(loaded);diffs=[i for i,(a,b) in enumerate(zip(original,loaded)) if a!=b];allowed=set(range(no+c['nation']*1172+0x46e,no+c['nation']*1172+0x486))|set(range(tail+46,tail+54));assert set(diffs)<=allowed
+ record(prefix+'-load-result-v1',dict(case=case,original_load_save_exact_candidate_identity=original==loaded,all_non_geometry_bytes_equal=True,geometry_changed_offsets=diffs,file=saved))
+ action(pid,'command',prefix+'-recruit-command-v1',main,17);w=rows(pid,prefix+'-recruit-dialog-v1');capture(pid,top(w,'TArmyRecruits'),f'N{case}REC001.PNG',prefix+'-recruit-before-capture-v1');record(prefix+'-active-context-v1',dict(case=case,pid=pid,main=main,recruit_dialog=top(w,'TArmyRecruits'),recruit_windows=w))
+ print(json.dumps(dict(case=case,pid=pid,main=main,candidate_opened=True,load_save=saved,waiting_for_order_selection=True)),flush=True)
+
+
+def candidate_finish(case,c):
+ prefix=f'case{case}';ctx=json.loads((DATA/(prefix+'-active-context-v1.json')).read_text());pid=ctx['pid'];main=ctx['main'];w=rows(pid,prefix+'-recruit-ready-windows-v1');action(pid,'click',prefix+'-recruit-execute-v1',button(w,'Recruit unit'));w=rows(pid,prefix+'-recruit-executed-windows-v1');capture(pid,top(w,'TArmyRecruits'),f'N{case}REC003.PNG',prefix+'-recruit-after-capture-v1');action(pid,'click',prefix+'-recruit-close-v1',button(w,'OK'));order_file=save_as(pid,main,f'N{case}O68B2.SAV',prefix+'-order-save-v1')
+ before=(PRIVATE/f'N{case}L68B2.SAV').read_bytes();after=(PRIVATE/f'N{case}O68B2.SAV').read_bytes();na,nf,no,last,tail=layout(after);n=c['nation'];changes=[]
+ for i in range(40):
+  off=no+n*1172+0x2e4+i*8;a=list(struct.unpack_from('<4h',before,off));b=list(struct.unpack_from('<4h',after,off))
+  if a!=b:changes.append(dict(slot=i,before=a,after=b))
+ assert len(changes)==1 and changes[0]['after'][1]==0 and changes[0]['after'][2]==3000
+ economy={name:[struct.unpack_from(fmt,b,no+n*1172+off)[0] for b in (before,after)] for name,fmt,off in [('treasury','<i',0x438),('mobilization','<h',0x442)]}
+ record(prefix+'-order-effect-v1',dict(order='Recruit3000regularlightinfantry',nation=n,queue_changes=changes,economy=economy,file=order_file,verified_non_noop_order=True))
+ action(pid,'command',prefix+'-endturn-once-v1',main,8);w=rows(pid,prefix+'-endturn-windows-v1');sc=action(pid,'snapshot',prefix+'-endturn-scalars-v1');event=[r for r in w if r['visible'] and r['cls'] not in ('TInformation','TUnitMap','TAreaMap','TPremierForm','TApplication','TPanel','TScrollBar','MSCTFIME UI','IME')]
+ if event or sc['current']!=n:
+  record(prefix+'-event-pending-v1',dict(pid=pid,main=main,events=event,scalars=sc,endturn_commands_issued=1,sequence_complete=False));print('EVENT PENDING '+str(case),flush=True);return
+ capture(pid,top(w,'TInformation'),f'N{case}INF002.PNG',prefix+'-endturn-info-capture-v1');end_file=save_as(pid,main,f'N{case}E68B2.SAV',prefix+'-endturn-save-v1');record(prefix+'-endturn-effect-v1',dict(file=end_file,scalars=sc,endturn_commands_issued=1,blocking_event_dialogs_observed=0));close(pid,main,prefix+'-first-normal-close-v1',f'N{case}EX01.PNG')
+ fresh=launch(prefix+'-reopen-launch-v1');newmain,w=open_file(fresh,f'N{case}E68B2.SAV',prefix+'-reopen-v1');freshsc=action(fresh,'snapshot',prefix+'-reopen-scalars-v1');assert freshsc['current']==n and all(freshsc[k]==sc[k] for k in ['tax','year','season','week','armies','fleets','offer_source']);capture(fresh,top(w,'TInformation'),f'N{case}INF003.PNG',prefix+'-reopen-info-capture-v1');reopen_file=save_as(fresh,newmain,f'N{case}R68B2.SAV',prefix+'-reopen-save-v1');a=(PRIVATE/f'N{case}E68B2.SAV').read_bytes();b=(PRIVATE/f'N{case}R68B2.SAV').read_bytes();na,nf,no,last,tail=layout(a);assert len(a)==len(b);diffs=[i for i,(x,y) in enumerate(zip(a,b)) if x!=y];allowed=set(range(no+n*1172+0x46e,no+n*1172+0x486))|set(range(tail+46,tail+54));assert set(diffs)<=allowed
+ close(fresh,newmain,prefix+'-final-normal-close-v1',f'N{case}EX02.PNG');source_hash=hashlib.sha256((SOURCE/c['source']).read_bytes()).hexdigest();candidate_hash=hashlib.sha256((CAND/c['candidate']).read_bytes()).hexdigest();assert source_hash==c['source_sha'] and candidate_hash==c['candidate_sha']
+ result=dict(case=case,original_open_order_AND_endturn_newsave_normalclose_freshreopen_sequence='PASS observed',initial_pid=pid,fresh_reopen_pid=fresh,order=changes,economy=economy,endturn_commands_issued=1,postturn_scalars=sc,fresh_reopen_scalars=freshsc,reopen_file=reopen_file,reopen_exact_postturn_byte_identity=a==b,reopen_only_geometry_changed_offsets=diffs,source_sha256=source_hash,candidate_sha256=candidate_hash,source_candidate_unchanged=True,final_active_original_processes=0,internal_callback_instruction_trace='UNVERIFIED',twelve_native_JSON_conversion_target='UNMET/separate')
+ record(prefix+'-completion-v1',result);print(json.dumps(result),flush=True)
+
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--case',type=int,choices=(2,3),required=True);p.add_argument('--phase',choices=('control',),required=True);a=p.parse_args();control(a.case,CASES[a.case])
+ p=argparse.ArgumentParser();p.add_argument('--case',type=int,choices=(2,3),required=True);p.add_argument('--phase',choices=('control','candidate-start','candidate-finish'),required=True);a=p.parse_args();({'control':control,'candidate-start':candidate_start,'candidate-finish':candidate_finish}[a.phase])(a.case,CASES[a.case])
