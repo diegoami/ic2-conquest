@@ -17,7 +17,14 @@ def main(out):
   assert stage['I'].read_bytes()==stage['L'].read_bytes()==(CAND/c['candidate']).read_bytes()
   assert stage['E'].read_bytes()==stage['R'].read_bytes()
   assert stage['L'].read_bytes()!=stage['O'].read_bytes()!=stage['E'].read_bytes()
-  completion=json.loads((DATA/f'case{case}-completion-v1.json').read_text());assert completion.get('final_active_original_processes',0)==0
+  completion=json.loads((DATA/f'case{case}-completion-v1.json').read_text())
+  status=completion.get('original_open_order_AND_endturn_newsave_normalclose_freshreopen_sequence',completion.get('case1_native_open_order_AND_endturn_newsave_close_freshreopen_sequence'));assert status=='PASS observed'
+  assert completion.get('endturn_commands_issued',completion.get('end_turn',{}).get('commands_issued'))==1
+  assert completion.get('final_active_original_processes',0)==0
+  order=json.loads((DATA/f'case{case}-order-effect-v1.json').read_text());assert order['verified_non_noop_order']
+  q=order['queue_changes'];assert len(q)==1 and q[0]['before']!=q[0]['after'] and q[0]['after'][1:3]==[0,3000]
+  for stage in ['order','endturn','reopen']:
+   receipt=json.loads((DATA/f'case{case}-{stage}-save-v1-file.json').read_text());actual=digest(PRIVATE/receipt['private_name']);assert all(actual[k]==receipt[k] for k in ['size','sha256'])
   for s in 'BT':files.append(dict(case=case,stage='reference'+s,**digest(PRIVATE/f'C{case}{s}68B2.SAV')))
   if case>1:assert (PRIVATE/f'C{case}T68B2.SAV').read_bytes()==(CAND/c['candidate']).read_bytes()
   checks.append(dict(case=case,load_save_exact_candidate=True,order_changed_save=True,postturn_changed_save=True,fresh_reopen_exact_postturn=True,completion_record=f'case{case}-completion-v1.json'))
