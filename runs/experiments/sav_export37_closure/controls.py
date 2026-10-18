@@ -32,7 +32,7 @@ def call(u,at,eax=0,edx=0,ecx=0):
  assert u.reg_read(UC_X86_REG_EIP)==0x600000 and u.reg_read(UC_X86_REG_ESP)==0x80f004
 
 def observe(u,operation,positive=False):
- # Every unknown byte in every nation gets a distinct nonzero synthetic canary.
+ # Every unknown byte gets a nonzero patterned synthetic canary (255-value cycle).
  expected={0x474670+n*1172+o:bytes([(n*31+k)%255+1]) for n in range(16) for k,o in enumerate(UNKNOWN)}
  for at,value in expected.items():u.mem_write(at,value)
  events=[]
