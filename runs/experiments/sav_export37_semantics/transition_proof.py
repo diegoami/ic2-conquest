@@ -12,7 +12,7 @@ def word(u,o,v):u.mem_write(o,struct.pack('<h',v))
 def dword(u,o,v):u.mem_write(o,struct.pack('<I',v))
 def layout(b):
  na=i16(b,100956);assert 0<=na<=198
- fo=100958+656*na;nf=i16(b,fo);assert 0<=nf<=200
+ fo=100958+656*na;nf=i16(b,fo);assert 0<=nf<=100
  no=fo+2+26*nf;news=no+16*1172+600;last=i16(b,news);assert -1<=last<=39
  tail=news+2+61*(last+1);assert tail+55==len(b) and b[tail+54]==0
  return na,fo,nf,no,news,last,tail
@@ -28,9 +28,15 @@ def tax_projection(b,n,t,width,height,scroll_x,scroll_y):
  """Reference typed projection ONLY; caller must establish bound-native/stable-UI contract."""
  if type(n)!=int or not 0<=n<16 or type(t)!=int or not 0<=t<=40:raise ValueError('tax/nation outside original minimal profile')
  if not (271<=width<=1295 and 269<=height<=1005 and 0<=scroll_x<=319 and 0<=scroll_y<=139):raise ValueError('UI profile outside bounded projection')
- na,fo,nf,no,news,last,tail=layout(b);out=bytearray(b)
+ na,fo,nf,no,news,last,tail=layout(b)
+ if n!=i16(b,tail+36) or b[no+n*1172+0x490]!=1:raise ValueError('not the saved current human nation')
+ if i16(b,tail+32)!=-1:raise ValueError('pending offer not supported by minimal profile')
+ saved=(i16(b,no+n*1172+0x47c),i16(b,no+n*1172+0x47a),i16(b,no+n*1172+0x488),i16(b,no+n*1172+0x486))
+ if (width,height,scroll_x,scroll_y)!=saved:raise ValueError('UI inputs are not the bound saved profile')
+ out=bytearray(b)
  s3=(width-15)//32;s4=(height-45)//32
  x=max(0,min(scroll_x,319-s3));y=max(0,min(scroll_y,139-s4))
+ if (x,y)!=(scroll_x,scroll_y):raise ValueError('viewport clamp would change bound profile')
  for off,value in [(0x44a,t),(0x488,x),(0x486,y)]:struct.pack_into('<h',out,no+n*1172+off,value)
  return bytes(out)
 
@@ -97,7 +103,20 @@ def main():
  scratch=[('information_strings',0x49f00c,0x988),('information_last',0x4a031c,2)]
  for name,lo,length in scratch:
   assert all(not(lo<at+size and at<lo+length) for _,at,size,*_ in blocks+extra)
- result=dict(method='Original instruction slices, not full dialog/game execution. Tax prefix stops before RefreshForms; viewport slice executes original min/max callees with explicit getter/scroll inputs; rename converter executes whole, parent commit stops before PostMessage wrapper. Serialized stream snapshots assert every byte outside typed effects unchanged; no source/SAV written.',exe_sha256=hashlib.sha256(exe).hexdigest(),public_save_sha256=hashlib.sha256(original).hexdigest(),unicorn_version=unicorn.__version__,tax_cases=len(rows),tax_records=rows,viewport_cases=viewport,rename_cases=renames,strategic_spans=[dict(name=n,address=hex(at),size=s,file_offset=o) for n,at,s,o in blocks],conditional_tactical_spans=[dict(name=n,address=hex(at),size=s) for n,at,s in extra],scratch_outside_all_serialized_spans=[dict(name=n,address=hex(at),size=s) for n,at,s in scratch],full_UI_callbacks_executed=False,Windows_round_trips=0)
+ profile_cases=[]
+ for filename in ['det-AUTO0721-clock.SAV','fleet-port-antium-0734.SAV','fleet-split-antium-0734.SAV']:
+  raw=(ROOT/'saves'/filename).read_bytes();*_,nn,news_index,news_last,tt=layout(raw);n=i16(raw,tt+36)
+  ui=tuple(i16(raw,nn+n*1172+o) for o in [0x47c,0x47a,0x488,0x486])
+  for tax in [0,40]:
+   out=tax_projection(raw,n,tax,*ui);delta=[i for i,(x,y) in enumerate(zip(raw,out)) if x!=y]
+   assert set(delta)<=set(range(nn+n*1172+0x44a,nn+n*1172+0x44c))
+   profile_cases.append(dict(file=filename,source_sha256=hashlib.sha256(raw).hexdigest(),nation=n,tax=tax,changed_byte_offsets=delta,output_sha256=hashlib.sha256(out).hexdigest(),save_written=False))
+ rejected=[]
+ for label,args in [('foreign-nation',(original,1,20,431,461,97,39)),('pending-offer',(original,0,20,431,461,97,39)),('tax41',(original,0,41,431,461,97,39))]:
+  try:tax_projection(*args)
+  except ValueError as exc:rejected.append(dict(case=label,reason=str(exc)))
+  else:raise AssertionError(label)
+ result=dict(profile_cases=profile_cases,rejected_profile_cases=rejected,method='Original instruction slices, not full dialog/game execution. Tax prefix stops before RefreshForms; viewport slice executes original min/max callees with explicit getter/scroll inputs; rename converter executes whole, parent commit stops before PostMessage wrapper. Serialized stream snapshots assert every byte outside typed effects unchanged; no source/SAV written.',exe_sha256=hashlib.sha256(exe).hexdigest(),public_save_sha256=hashlib.sha256(original).hexdigest(),unicorn_version=unicorn.__version__,tax_cases=len(rows),tax_records=rows,viewport_cases=viewport,rename_cases=renames,strategic_spans=[dict(name=n,address=hex(at),size=s,file_offset=o) for n,at,s,o in blocks],conditional_tactical_spans=[dict(name=n,address=hex(at),size=s) for n,at,s in extra],scratch_outside_all_serialized_spans=[dict(name=n,address=hex(at),size=s) for n,at,s in scratch],full_UI_callbacks_executed=False,Windows_round_trips=0)
  with a.output.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
  print(json.dumps(dict(tax_cases=len(rows),viewport_cases=len(viewport),rename_cases=len(renames),all_assertions_passed=True)))
 def read_word(u,at):return i16(u.mem_read(at,2),0)

@@ -1,0 +1,14 @@
+# Research37 semantic-subset evidence
+
+Finding: [bound tax subset and binary aliases](../../../../findings/2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md). Actual implementer gpt-6.1-sol medium (OpenAI); parent coordinates selected Kimi review. No game/Windows/SAV file output/private input access.
+
+Authoritative:
+
+- `x86-cfg-alias-leads-v1.json`: known-entry recursive original instruction traversal; 1884 roots,74750instructions,232148/375252executablevirtualbytes,812indirectedges unresolved. 408nationoperandleads,411nationrelocations, three450pointeranchors whose actualviewportuses are486/488. Zero decodeerrors/overlap for this traversal; no wholeprogram alias claim.
+- `transition-projection-v3.json`:656taxprefix/4viewport/4renameconversion+parentcommit cases, complete serializedstream comparisons and write logs, alloptional tacticalspans for scratch-exclusion; six in-memory taxprojections onthreepublicSAVs with exacthashes, plus three rejectedprofilecases. FullGUIcallbackexecution=false,Windows=0. Taxprojection requires currenthuman,tax0..40,pendingoffer=-1,boundsavedUIprofile,identityclamp. Caller must prove authentic source/nativebaseline and stablefreshUI composition; this is not a production exporter.
+- `source-command-consumers-v1.json`:36fullfunctions/1800exactnumberedsource lines, JSON strings retain originalspaces. Supplemental loader remains prior `run-exp-sav-export37/original-save_load_impl.txt`, DAT loader prior `original-news_log_decomp.txt`.
+- `packet-validation-v1.json`: integrity/profile/scopedwhitespace checks, not a game/export compatibility test.
+
+Retained: `transition-projection-v1.json` failedbufferAPI measurement; v2 successful lowlevelcases before adding strictcandidateprofilechecks, not authoritativeprofileoutput. `x86-cfg-alias-leads-v2.json` REJECTED as coverageproof: naive allrelocationtargets includeCODEmetadata/data,266decodefailures/2514overlappingtargets; apparent353893coveredbytes is NOT validcoverage. No outputs renamed/deleted/overwritten.
+
+Scripts `runs/experiments/sav_export37_semantics/` use unique `--output` and exclusive creation. Never overwrite an output/save or run on private inputs. Existing Capstone5.0.7,pefile2024.8.26,Unicorn2.1.4; no package installs. Source/EXE/DAT pins same as priorpacket. No binary copied into git; source/public saves unchanged. Broader runtime/canonical-residue proof remains incomplete. Research37/conquest99 and nativegate remainopen.

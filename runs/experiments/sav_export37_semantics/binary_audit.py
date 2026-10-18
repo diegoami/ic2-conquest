@@ -3,7 +3,7 @@ import argparse, collections, hashlib, json, re
 from pathlib import Path
 import capstone, pefile
 from capstone.x86 import X86_OP_IMM, X86_OP_MEM
-p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--output',type=Path,required=True);p.add_argument('--include-relocated-code-seeds',action='store_true',help='Rejected exploratory variant: may decode metadata/data as instructions');a=p.parse_args()
 source=Path('/home/diego/ic2-work/decompile/all_app_functions.txt').read_bytes()
 assert hashlib.sha256(source).hexdigest()=='2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8'
 exe_path=Path('/home/diego/projects/ic2-work/resupply31/wine-aboard/prefix/drive_c/IC2/Imperial Conquest 2 fast rollingsave seed.exe');raw=exe_path.read_bytes()
@@ -23,7 +23,7 @@ for block in getattr(pe,'DIRECTORY_ENTRY_BASERELOC',[]):
   if entry.type==3:
    target=int.from_bytes(pe.get_data(entry.rva,4),'little')
    if code(target):relocated_code_seeds.add(target)
-seeds|=relocated_code_seeds
+if a.include_relocated_code_seeds:seeds|=relocated_code_seeds
 cs=capstone.Cs(capstone.CS_ARCH_X86,capstone.CS_MODE_32);cs.detail=True
 pending=list(seeds);decoded={};covered={};overlap=[];fail=[];indirect=[];calls=[];refs=[]
 unknown=set(range(0x450,0x46b))|{0x46d,0x491,0x492,0x493}
@@ -73,6 +73,6 @@ for typ in pe.DIRECTORY_ENTRY_RESOURCE.entries:
    assert b.count(prop)==1
    i=b.index(prop)+len(prop)
    resources.append(dict(resource=label,property='Max' if label=='TCHANGETAX' else 'MaxLength',encoded_integer_type=2,value=b[i],resource_sha256=hashlib.sha256(b).hexdigest(),size=len(b),RVA=hex(s.OffsetToData)))
-result=dict(method='Recursive disassembly from pinned decompiler function entries, missing supplemental entries, PE entry and ALL executable targets of PE HIGHLOW relocations; follow direct calls/branches and fallthrough. All indirect edges retained unresolved. Does not prove all executable bytes/code entry points or computed-pointer dataflow. Operand starts/displacements are leads, not effective-address/width proof.',exe_sha256=hashlib.sha256(raw).hexdigest(),source_sha256=hashlib.sha256(source).hexdigest(),capstone_version=capstone.__version__,pefile_version=pefile.__version__,seed_count=len(seeds),relocated_code_seeds=len(relocated_code_seeds),decoded_instructions=len(decoded),covered_code_bytes=len(covered),executable_virtual_bytes=sum(hi-lo for lo,hi,b in sections),decode_failures=fail,overlapping_targets=overlap,direct_calls=len(calls),indirect_edges=indirect,nation_operand_leads=refs,unknown_operand_starts=[r for r in refs if r['starts_in_unknown']],nation_relocations=relocs,unknown_relocations=[r for r in relocs if r['starts_in_unknown']],resources=resources)
+result=dict(method='Recursive disassembly from pinned decompiler function entries, missing supplemental entries and PE entry; optional --include-relocated-code-seeds adds executable HIGHLOW targets in rejected exploratory mode; follow direct calls/branches and fallthrough. All indirect edges retained unresolved. Does not prove all executable bytes/code entry points or computed-pointer dataflow. Operand starts/displacements are leads, not effective-address/width proof.',exe_sha256=hashlib.sha256(raw).hexdigest(),source_sha256=hashlib.sha256(source).hexdigest(),capstone_version=capstone.__version__,pefile_version=pefile.__version__,seed_count=len(seeds),relocated_code_seeds=len(relocated_code_seeds) if a.include_relocated_code_seeds else 0,decoded_instructions=len(decoded),covered_code_bytes=len(covered),executable_virtual_bytes=sum(hi-lo for lo,hi,b in sections),decode_failures=fail,overlapping_targets=overlap,direct_calls=len(calls),indirect_edges=indirect,nation_operand_leads=refs,unknown_operand_starts=[r for r in refs if r['starts_in_unknown']],nation_relocations=relocs,unknown_relocations=[r for r in relocs if r['starts_in_unknown']],resources=resources)
 with a.output.open('x') as f:json.dump(result,f,indent=2);f.write('\n')
 print(json.dumps({k:len(v) if isinstance(v,list) else v for k,v in result.items() if k not in {'method'}}))
