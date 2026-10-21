@@ -28,6 +28,16 @@ Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107)
   Paths are relative to the bundle root. No bytes or values are copied, only
   sizes, SHA-256 hashes, counts and metric totals.
 
+- `access-index-v1.csv`, `access-refs-v1.jsonl`, `access-summary-v1.json`: the
+  static reader/writer index from `scripts/sav_atlas_access.py`, run on the
+  pinned `all_app_functions.txt` (SHA-256 `2018c205…87d8`). It holds one row per leaf
+  field with its writers, readers and escapes (`function@address`), one JSON line
+  per hit (function, address, source line number, kind, form and fields; no
+  source text), and a summary with the escape (seed/arg) and pointer frontiers.
+  It is literal-address resolution only, so it does not close alias, escape or
+  indirect-call paths. `access-index-v1.csv` has CRLF line ends (Python csv default at
+  the time), kept as measured; `.gitattributes` exempts it from `git diff --check`.
+
 Reproduce (`field-map-v1.csv` SHA-256
 `a09a5b5b5f5efcae54cce671f4ae7ece1e952a87ab9deff60c68b8e5a8f66e22`):
 
@@ -36,6 +46,8 @@ python3 scripts/sav_atlas_coverage.py --root . saves --out runs/experiments/data
 B=$HOME/ic2-inputs/ic2-research-inputs-20261021
 python3 -I scripts/sav_atlas_coverage.py --root $B $B/source-saves $B/native-evidence $B/research40-saves --out runs/experiments/data/run-exp-sav-atlas107/<new-name>.json
 python3 -m tests.test_sav_atlas_coverage
+python3 scripts/sav_atlas_access.py --source $B/decompile/all_app_functions.txt --out-dir runs/experiments/data/run-exp-sav-atlas107 --tag <new-tag>
+python3 -m tests.test_sav_atlas_access
 ```
 
 `--out` refuses an existing file. A re-run gets a new name, and the old

@@ -117,12 +117,70 @@ New frontier rows found while consolidating:
   file 1 after a resume, which is still unexplained, so it is PARTIAL.
 - **Non-serialized state:** both save and load set the words 0x4A0328 and
   0x4A032A to −1 after the transfer. The file can therefore never carry them;
-  their meaning (probably the current army/fleet selection, matching the "sampled
-  army/fleet selections = −1" observation of the tax cases) is not established here.
+  increment 2 below identifies them as the selected army and the selected fleet.
 - The parser summary [`docs/sav-layout-notes.md`](../docs/sav-layout-notes.md)
   still carries superseded labels: fleet +4/+6 "unknown", nation +0x424 "unknown",
   +0x486/+0x488 "meaning unknown" and "battle block never present in a normal
   save". The ledger supersedes them, and the notes now point to it.
+
+## Increment 2: static reader/writer index (2026-10-21)
+
+[`scripts/sav_atlas_access.py`](../scripts/sav_atlas_access.py) resolves every
+literal address in the pinned decompilation that falls in a serialized runtime
+table to a ledger field. The field offset is (address − base) mod stride, plus
+any constant inside a following `[...]`, scaled by stride ÷ index multiplier.
+Two ambiguity rules apply:
+
+- A label just below a table base counts as that table's record −1 only when
+  the expression is indexed. This is Ghidra's `F − 1` form; a constant label there is
+  the previous table's.
+- An index multiplier selects the table whose stride it divides.
+
+Each hit is classed write, read or escape. An escape is an address that is
+taken: a **seed** stores it in a pointer variable, and an **arg** passes it to
+a call. Offline test: `python3 -m tests.test_sav_atlas_access`, 16 synthetic
+cases. Outputs: [access-index-v1.csv](../runs/experiments/data/run-exp-sav-atlas107/access-index-v1.csv),
+[summary](../runs/experiments/data/run-exp-sav-atlas107/access-summary-v1.json) and per-hit
+refs, which hold function, address, line and class only, never source text.
+
+- **Controls:** the index reproduces three writer sets from the reviewed
+  reports exactly.
+  - `FUN_0044A004` (fleet order) writes fleet +8/+10/+18/+20/+22, F++ and the treasury.
+  - `FUN_0044A050` (launch) writes +10/+14/+16/+20/+22/+24.
+  - `FUN_00437DE4` (battle copy-in) writes army morale +14, both pause settings, the battle flag, the side and the counter.
+
+  A first version misattributed `0x4A031C` and the `F − 1` labels. Those
+  faults were fixed before the recorded run and are what the two ambiguity
+  rules address.
+- **Totals:** 2,632 literal hits (350 write, 1,847 read, 435 escape), 0
+  unresolved offsets, and 114 multi-field accesses (for example x,y read as
+  one dword). 82 of the 111 leaf fields have a literal writer.
+- **The 29 fields with no literal writer** are written by paths this scan
+  cannot attribute:
+  - string copies (city, nation, leader, unit and news text);
+  - whole-slot or whole-record moves (unit label and quality, battle-slot copy-in through pointer seeds);
+  - DAT load and NewGame (colours, the 270 BC baselines, turn order, mercenary fill);
+  - pointer seeds (fleet x).
+
+  These are the next per-field step, not dead fields.
+- **Fleet +4/+6 (PARTIAL):**
+  - `FUN_0044D9A8` passes `&fleet[i]+4` as the out-pointer `param_4` of `FUN_0044CD08`, which ends with a 4-byte store `*param_4 = …`. That is the route target written as one x,y dword.
+  - `FUN_0044DBA8` passes the same address as `param_3`, which is a read.
+  - +6 has no literal access of its own because it is reached only through this dword.
+
+  The per-turn −1 reset reported earlier is still not located; it is in the pointer frontier.
+- **UNKNOWN31:** there is still **no** literal access to +450..46A, +46D or
+  +491..493 in any of the 16 nation records, including indexed forms. The
+  earlier inventory covered nation 0 only. This scan is not closure: 36
+  functions seed a nation-record pointer, 44 pass a nation address on, and 35
+  functions index army, city, fleet or nation strides through pointer
+  variables (57 lines). Research #47's whole-program pass has to clear those
+  before any dead-field claim.
+- **Runtime-only globals:** `0x4A0328` holds the selected army and `0x4A032A`
+  the selected fleet ([fleet-orders-live](https://github.com/diegoami/imperial-conquest-2-research/blob/16f019397e65ba521bbcee7acea2a7d2c9bd7c93/docs/reports/2026-10-02-fleet-orders-live.md)).
+  Save and load reset both to −1, which matches the tax cases' "selections −1"
+  observation. `0x4A031C` is a further unserialized global next to the news
+  index; it is not identified here.
 
 ## Field identity and alias corrections already supported
 

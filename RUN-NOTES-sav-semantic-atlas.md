@@ -67,3 +67,19 @@ the finding to research only once it is on main.
 Findings baseline: last delivered/reported main-source baseline
 `7fe20bedba0b9cdbb012b1b348c96507f6a65768`. This branch changes only
 `findings/2026-10-21-original-sav-semantic-atlas.md` (not on main yet).
+
+## 2026-10-21 increment 2: static reader/writer index
+
+The owner asked to watch PR108 (subscribed) and to continue with the
+reader/writer columns. Resolver `scripts/sav_atlas_access.py` and test
+`tests/test_sav_atlas_access.py` (16 cases). The scratch iterations it1-it4
+(outside git, not cited) found and fixed two faults: writes to plain globals
+were missed, and below-base labels were ambiguous (`0x4A031C`, fleet `F-1`).
+The recorded run is `access-*-v1` (source `2018c205…`). Its controls
+44A004/44A050/437DE4 match the reports exactly. Results: 2,632 hits, 82/111
+fields with a literal writer, UNKNOWN31 with no literal access, the fleet route
+dword written by FUN_0044CD08 param_4, and 0x4A0328/032A = the selected army and fleet.
+
+Next: work through the 29 no-literal-writer fields via the escape and pointer
+frontiers (names, slot copies, DAT/NewGame), then a ledger v2 with
+reader/writer columns joined from the access index.
