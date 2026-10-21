@@ -183,7 +183,9 @@ refs, which hold function, address, line and class only, never source text.
   the selected fleet ([fleet-orders-live](https://github.com/diegoami/imperial-conquest-2-research/blob/16f019397e65ba521bbcee7acea2a7d2c9bd7c93/docs/reports/2026-10-02-fleet-orders-live.md)).
   Save and load reset both to −1, which matches the tax cases' "selections −1"
   observation. `0x4A031C` is a further unserialized global next to the news
-  index; it is not identified here.
+  index; it is not identified here (identified in increment 3: the last-line
+  index of the information panel's text buffer, 61-byte lines at `0x49F00C`;
+  `TInformation.PrintInfo` scales it by 16 pixels; −1 = empty; NewGame sets −1).
 
 ## Increment 3: machine-code index, initialisation provenance and ledger v2 (2026-10-21)
 
