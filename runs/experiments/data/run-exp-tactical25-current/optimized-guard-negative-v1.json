@@ -1,0 +1,9 @@
+{
+  "mode": "python3 -O",
+  "mutation": "in-memory csv.DictReader changes random-row result +1; original CSV untouched",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "original raw draw does not match pinned registry boundary: mix-rg_s1_r5_hook\n",
+  "candidate_output_created": false,
+  "runner_sha256": "f1c13561cdc055c40c8fb3789594cd63fcb19ebc0d812f819e33e24ecd4de809"
+}

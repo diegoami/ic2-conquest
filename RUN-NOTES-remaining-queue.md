@@ -41,3 +41,9 @@ selection-rendering branch pinned without invented review. Agy35 existing
 Sonnet static/rework evidence and intent-only denied-command trials retained,
 PR36stilldraft; no new agy/config/credential work. All remaining queue items
 have bounded evidence/status or explicit blockers; independent review next.
+
+GLM review complete APPROVE/no blockers,3nonblocking notes, full native final and limits read. Exact reviewed0e9457e90a51094f8909cf9811b56105d63905a2/base16a0f6e; modelzai-coding-plan/glm-5.3-flash#high/session ses_ea01a76daffeCJBw3AkRQS9UMT. Research42 next review slot released; no furtherreviewlaunch authorized here beforecoordination. R1citation/R2hostnameclarified;R3explicitguards normal+optimized outputs exactv1, mismatched raw result rejects under-O before output. Full review and receipts preserved; originalmeasurements unchanged.
+
+## END
+
+All requested queue items received bounded evidence/proposals/status and explicit remaining gates.25fullcurrentcausality/replay needs comparisonpacket;37inputmanifest+generalnativewriter/migration/nativeoutputgate remain;39date/roster/settlementaudit/neutral/barbarianchoices remain.20ledgerpromotion and35commandpolicy stayresearchowned. No research/remake/fixture/owner-save writes, game/Wine/native launch or unauthorized review. Private37metadata remainslocaluntracked, no privateJSONbytesGit. Final syntax/relativelinks/whitespace and requiredCI checked before normal merge. Parent receives exact finalhead/merge/diffscope; canonicalintake belongsresearch.

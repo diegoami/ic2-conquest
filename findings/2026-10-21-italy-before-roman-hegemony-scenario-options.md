@@ -24,7 +24,7 @@ culture, language and a playable political controller are different things.
 |---|---|---|
 |circa500BCE|Stronger emphasis on Etruscan and Greek networks; Iron Age Veneti are appropriate [S1,S2].|Do not reuse the later Samnite/Lucanian/Celtic political roster without period-specific proof. More original settlement/political reconstruction is needed.|
 |circa400BCE, preferred DESIGN starting point|Regional Rome still faces independent Etruscan neighbors; Veii's traditional fall396 is imminent [S3]. The405 Sicilian settlement offers a dated textual anchor [S4].|The scene cannot be a timeless blend of500/343. Date-sensitive city autonomy and Celtic settlement need review; use no automatic Bruttian state.|
-|343BCE|Livy7.29–37 supplies a concrete Rome/Samnite/Campanian conflict frame [S5]. Fourth-century Samnite archaeology and Tarentine material are available [S6,S7].|Rome is already a more active expanding power. This may feel less like the owner's desired early contest; literal Livian army numbers and surrender narratives are not neutral balance data.|
+|343BCE|Livy 7.29–42 supplies a concrete Rome/Samnite/Campanian conflict frame [S5]. Fourth-century Samnite archaeology and Tarentine material are available [S6,S7].|Rome is already a more active expanding power. This may feel less like the owner's desired early contest; literal Livian army numbers and surrender narratives are not neutral balance data.|
 
 The circa400 preference is a design recommendation conditional on owner
 approval, not a claim that every proposed faction already had a unified state.

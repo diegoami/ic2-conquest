@@ -71,7 +71,7 @@ Aggregate observations:
 
 These are properties of the available mounted directory at this check, not
 proof that this is the authoritative twelve-source selection described earlier
-on it13. Same count/format split is insufficient to bind the set; neither a
+on the owner's machine named `it13`. Same count/format split is insufficient to bind the set; neither a
 duplicate nor a renamed file is removed/substituted by this inspection.
 
 Exact private paths, lengths and hashes are retained only in local

@@ -14,6 +14,12 @@ import re
 import subprocess
 
 
+def require(condition, message):
+    """Evidence guards remain active under python -O."""
+    if not condition:
+        raise SystemExit(message)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--build-revision', required=True)
@@ -38,14 +44,16 @@ def main():
             continue
         series = row['Case'].split(':', 1)[1]
         m = re.search(r'draw (\d+): half-round counter (\d+) .*original site (\S+) Random\((\d+)\) = (\d+), port Random\((\d+)\) = (\d+)', row['FirstDifference'])
-        assert m, row
+        require(m is not None, f'cannot parse registered draw boundary: {row}')
         idx, hr, site, bound, value, port_bound, port_value = m.groups()
         raw_path = hooks / f'hooklog-{series}.csv'
         raw = raw_path.read_bytes()
         rows = list(csv.DictReader(raw.decode().splitlines()))
         draws = [r for r in rows if r['kind'] == 'random']
         selected = draws[int(idx)]
-        assert (int(selected['counter']), selected['site'], int(selected['eax']), int(selected['result'])) == (int(hr), site, int(bound), int(value))
+        require((int(selected['counter']), selected['site'], int(selected['eax']), int(selected['result']))
+                == (int(hr), site, int(bound), int(value)),
+                f'original raw draw does not match pinned registry boundary: {series}')
         before = rows[:rows.index(selected)]
         marker = next(r for r in reversed(before) if r['kind'] == 'marker' and r['site'] == '0x43910c')
         actor, target = int(marker['eax']) & 65535, int(marker['edx']) & 65535
@@ -53,7 +61,8 @@ def main():
         exchanges = exchanges_path.read_bytes()
         prior = next(r for r in map(json.loads, exchanges.decode().splitlines())
                      if r.get('kind') == 'shot' and r.get('seq') == int(marker['seq']))
-        assert (prior['actor'], prior['target']) == (actor, target)
+        require((prior['actor'], prior['target']) == (actor, target),
+                f'existing exchange disagrees with raw shot marker: {series}')
         out['attributions'].append({'series': series, 'zero_based_draw': int(idx),
             'original_raw_random': selected, 'original_shot_marker': marker,
             'actor': actor, 'target': target, 'existing_exchange': prior,
