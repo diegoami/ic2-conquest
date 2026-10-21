@@ -131,3 +131,21 @@ copy-in (new battles only), FUN_00439C20 (half-round end) and the loader; the
 resume only reads it, so the 2026-10-04 "memory 0, file 1" can only follow a
 completed half-round. Ledger v3 (v2 + readers column + BATTLE.side): 0 PARTIAL,
 0 UNKNOWN. The coverage checker defaults to v3; corpus v3 receipts 56/56.
+
+PR #110 merged at main `c5cf759` (validation: 4 atlas tests, 3 repo tests,
+diff check, links; GitGuardian green; no separate review). Relay: the atlas
+finding was delivered with send_message (status "delivered") to the cloud
+session "IC2 Research" (`session_01FEmvQUyuHYp4iXbTmBeY85`) at main
+`c5cf759`. A cloud session cannot reply by message; read its transcript.
+**Last delivered findings baseline: `c5cf75906c151bbccda32e90bdca95f142dec8a5`**
+(the previous one was 7fe20bed…). Follow-up: the runtime global 0x4A031C is
+identified (the info-panel line index).
+
+## END: increment 3 delivered
+
+Branch `claude/eager-sagan-po9v87`. Ledger v3 is authoritative: 0 UNKNOWN,
+0 PARTIAL. Open:
+- domains and invariants for the CONTEXTUAL rows (static);
+- the INERT claim and the route timing, which can be confirmed natively or
+  under an emulator only with the owner's authorisation;
+- research #47 to confirm INERT.
