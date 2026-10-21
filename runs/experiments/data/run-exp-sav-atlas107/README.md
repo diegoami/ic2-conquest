@@ -3,14 +3,17 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v2.csv` (**authoritative**, increment 3): v1's rows and columns
+- `field-map-v3.csv` (**authoritative**, increment 3): v2 plus a `readers`
+  column (from `asm-index-v2.csv`, saver excluded) and `BATTLE.side` resolved
+  as the side to move. Classes: 79 CONFIRMED, 31 CONTEXTUAL, 3 INERT, 0 PARTIAL,
+  0 UNKNOWN. `scripts/sav_atlas_coverage.py` defaults to v3 (`--field-map`
+  selects v1 or v2).
+- `field-map-v2.csv` (increment 3, superseded by v3): v1's rows and columns
   plus `start_value` (DAT, NewGame or BSS zero), `writers` (from
   `asm-index-v2.csv`, loaders excluded) and `uncertainty`. It adds the class
   `INERT`: no instruction reads or writes the bytes except the SAV
   loader/saver; they are not initialised and are carried from the loaded file.
   Classes: 78 CONFIRMED, 31 CONTEXTUAL, 3 INERT, 1 PARTIAL, 0 UNKNOWN.
-  `scripts/sav_atlas_coverage.py` now defaults to v2 (`--field-map` selects
-  v1).
 - `field-map-v1.csv`: the first ledger, kept unchanged. 113 rows over 14 record
   types: map cell, city, army count, army, army unit slot, fleet count, fleet,
   nation, mercenary, news index, news slot, trailer, battle block and battle
@@ -64,8 +67,8 @@ Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107)
   - The 48 NewGame colour constants are extracted.
   - Per group, the receipt has per-check equal/total counts against the DAT
     and NewGame values, with contrast fields. It holds counts only.
-- `corpus-public-v2.json`, `corpus-private-bundle-v2.json`: the coverage
-  checker with ledger v2.
+- `corpus-public-v2.json`, `corpus-private-bundle-v2.json`, `corpus-public-v3.json`,
+  `corpus-private-bundle-v3.json`: the coverage checker with ledgers v2 and v3.
 
 Reproduce (`field-map-v1.csv` SHA-256
 `a09a5b5b5f5efcae54cce671f4ae7ece1e952a87ab9deff60c68b8e5a8f66e22`):

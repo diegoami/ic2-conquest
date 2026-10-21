@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v2.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v2.csv) (increment 3). New evidence should update its
+[`field-map-v3.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v3.csv) (increment 3). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -188,12 +188,13 @@ refs, which hold function, address, line and class only, never source text.
 ## Increment 3: machine-code index, initialisation provenance and ledger v2 (2026-10-21)
 
 **The authoritative ledger is now
-[`field-map-v2.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v2.csv)**
-(v1 kept beside it, unchanged). It adds three columns to every row:
-`start_value` (DAT, NewGame or BSS zero), `writers` (every writing function
-the machine-code index found, loaders excluded) and `uncertainty`. Classes:
-78 CONFIRMED, 31 CONTEXTUAL, 3 INERT, 1 PARTIAL, **0 UNKNOWN**. No game was
-run and no SAV was written; no review was run on this increment.
+[`field-map-v3.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v3.csv)**.
+v1 and v2 are kept beside it, unchanged. v2 added three columns to every
+row: `start_value` (DAT, NewGame or BSS zero), `writers` (every writing
+function the machine-code index found, loaders excluded) and `uncertainty`.
+v3 adds `readers` (saver excluded) and resolves `BATTLE.side`. Classes: 79
+CONFIRMED, 31 CONTEXTUAL, 3 INERT, **0 PARTIAL, 0 UNKNOWN**. No game was run
+and no SAV was written; no review was run on this increment.
 
 **The 29 fields without a literal writer, verified.** `access-index-v1.csv`
 has 111 leaf rows and 29 with `n_write = 0`, as reported. They were not
@@ -323,19 +324,36 @@ dead: most of their writers are in code the decompilation does not contain.
   reads. Army records 15..197 and fleet records 2.. keep their old bytes
   beyond the new counts, and are therefore not saved. The battle block is
   dropped by clearing the flag (`0x448ACA`).
-- **Byte metrics with v2** ([public](../runs/experiments/data/run-exp-sav-atlas107/corpus-public-v2.json),
-  [private](../runs/experiments/data/run-exp-sav-atlas107/corpus-private-bundle-v2.json)):
-  56/56 framed to EOF. Private bundle: CONFIRMED 7.75 %, CONTEXTUAL 91.87 %,
-  PARTIAL 0.001 % (battle side), INERT 0.374 %, UNKNOWN 0.
+- **Battle header +4 (PARTIAL → CONFIRMED): the side to move**, 0 for the
+  attacker and 1 for the defender.
+  - **Placement order:** the copy-in `FUN_00437DE4` sets it to 1 with
+    `placed` = 0, so the defender places first. At the end of each half-round
+    (`TBattleMap.EndTurn` and the AI half-round `FUN_00439CE8`),
+    `FUN_00439C20` turns 1 into 0 while the sides are placing. It then sets
+    `placed` = 1 with side 0, so the attacker moves first, and toggles the
+    side from then on. `FUN_00439968` reads it to pick the acting nation.
+  - **The 2026-10-04 resume observation is explained statically.** The sweep
+    read memory 0 against file 1. Save and load copy the word unchanged,
+    and the resume path (`TBattleMap.StartBattle` → `FUN_00439968`) only reads
+    it. The copy-in runs only when the battle flag is 0, which is never the
+    case on a resume. So the only thing that can turn it to 0 is a
+    `FUN_00439C20` call (a completed half-round) before the read; it was not
+    a reset or a wrong address. This was not re-observed.
+- **Byte metrics** ([v2 public](../runs/experiments/data/run-exp-sav-atlas107/corpus-public-v2.json),
+  [v2 private](../runs/experiments/data/run-exp-sav-atlas107/corpus-private-bundle-v2.json),
+  [v3 public](../runs/experiments/data/run-exp-sav-atlas107/corpus-public-v3.json),
+  [v3 private](../runs/experiments/data/run-exp-sav-atlas107/corpus-private-bundle-v3.json)):
+  56/56 framed to EOF. Private bundle with v3: CONFIRMED 7.75 %, CONTEXTUAL
+  91.87 %, INERT 0.374 %, PARTIAL 0, UNKNOWN 0.
 
 **Remaining gaps.**
 
-- `BATTLE.side` stays PARTIAL. Memory 0 against file 1 after a resume is
-  still unexplained; its writers are `FUN_00437DE4` and `FUN_00439C20`.
-- The CONTEXTUAL rows have their writer sets now, but their per-writer
-  formulas and domains are restated only where they were in question.
-- Reader sets are in the index (`reader_functions`), but they are not yet
-  joined into the ledger.
+- **CONTEXTUAL rows:** each has its writer and reader sets now, but the
+  formulas and domains per writer are restated only where they were in
+  question. **Physical identification is complete** (0 PARTIAL, 0
+  UNKNOWN). Semantic completion for the declared profile still needs the
+  dictionary-row items below per field: domains, sentinels and cross-record
+  invariants. The value-policy column is unchanged from v1.
 - Native or emulator confirmation of the INERT claim and of the route
   lifecycle needs a game run, which the owner must authorise.
 

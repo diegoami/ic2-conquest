@@ -125,3 +125,9 @@ No game run, no SAV written, no private bytes or source text in git.
 Next: BATTLE.side, joining the readers into the ledger, and per-writer
 formulas for the CONTEXTUAL rows. The INERT confirmation goes to research #47
 (relay). Any native control needs the owner's authorisation.
+
+Increment 3, continued: BATTLE.side resolved statically. The writers are the
+copy-in (new battles only), FUN_00439C20 (half-round end) and the loader; the
+resume only reads it, so the 2026-10-04 "memory 0, file 1" can only follow a
+completed half-round. Ledger v3 (v2 + readers column + BATTLE.side): 0 PARTIAL,
+0 UNKNOWN. The coverage checker defaults to v3; corpus v3 receipts 56/56.

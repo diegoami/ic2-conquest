@@ -61,8 +61,8 @@ def main():
         check(f["physical_coverage"] and f["battle_flag"] == (1 if kw.get("battle") else 0),
               f"synthetic SAV {kw or 'default'} frames to EOF with full coverage")
     inert = f["bytes_by_semantic"]["INERT"]
-    check(inert == 16 * 31 and f["bytes_by_semantic"]["UNKNOWN"] == 0,
-          "v2: the 31 bytes per nation record are INERT (496), none UNKNOWN")
+    check(inert == 16 * 31 and f["bytes_by_semantic"]["UNKNOWN"] == 0 and f["bytes_by_semantic"]["PARTIAL"] == 0,
+          "v3: the 31 bytes per nation record are INERT (496), none UNKNOWN or PARTIAL")
     v1 = m.load_map(m.FIELD_MAP.with_name("field-map-v1.csv"))
     check(m.static_check(v1) == [], "field-map-v1 still tiles every record")
     f1 = m.scan(synthetic(m), v1)
