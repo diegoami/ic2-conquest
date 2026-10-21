@@ -1,5 +1,12 @@
 # SAV layout notes (for the Python parser)
 
+> **Superseded in places (2026-10-21):** the field ledger of issue #107,
+> `runs/experiments/data/run-exp-sav-atlas107/field-map-v1.csv`, replaces this
+> summary where they differ. It covers fleet +4/+6 (route target), nation
+> +0x424 (colours), +0x486/+0x488 (viewport), trailer +46..53 (main-form
+> geometry) and the battle block, which original Save As can write. See
+> `findings/2026-10-21-original-sav-semantic-atlas.md`.
+
 Condensed from the research repo `diegoami/imperial-conquest-2-research` at commit `60475a30`. Sources, all in `docs/reports/`:
 
 - decompiled-sav-file-layout.md
