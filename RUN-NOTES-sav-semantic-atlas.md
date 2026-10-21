@@ -187,3 +187,6 @@ Ledger v4 is authoritative. Open:
   allegiance drives gameplay and needs a historical profile.
 - Ledger v5 is authoritative; tests pass. One correction found while checking
   the draft: FUN_0044B27C scales the siege defence, not losses.
+
+PR #115 merged at main `ad0af2d`. Increment 5 relayed to "IC2 Research" (status "delivered").
+**Last delivered findings baseline: `ad0af2d8f4afd8485ae48368146febf23548e4b9`.**
