@@ -163,3 +163,16 @@ There was no release token, so the 12 saves went to
 `gdrive:IC2/artifacts/run-exp-sav-inert107/` (12 matching) plus the local
 `artifacts/`. Ledger v4 is authoritative and the checker defaults to it.
 Next: relay to IC2 Research and ask it to consolidate (owner request).
+
+The PR #112 merge is at main `29cc3a8`. A consolidation request, as the owner
+asked, was delivered to the cloud session "IC2 Research"
+(`session_01FEmvQUyuHYp4iXbTmBeY85`; status "delivered").
+**Last delivered findings baseline: `29cc3a8770caf394bde2967c5c0a3cfd746d315a`.**
+
+## END: increment 4 delivered
+
+Ledger v4 is authoritative. Open:
+- domains and invariants for the CONTEXTUAL rows;
+- native observation of AI-set waypoints;
+- research #47 to review INERT;
+- an optional release of the run's saves (no token here; they are on Drive).
