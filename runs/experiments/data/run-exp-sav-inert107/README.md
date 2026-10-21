@@ -49,8 +49,7 @@ Receipts are `analysis-T1-*.json`, `analysis-T2-*.json` and `analysis-T3-*.json`
   the marked copy is byte-identical to the seed build's (SHA-256
   `3f38a391…`), with the markers intact.
 
-**Binaries.** The release token is not set in this cloud container, so no
-release was made. The 12 saves are in the environment's Drive artifact store,
-`gdrive:IC2/artifacts/run-exp-sav-inert107/` (`rclone check`: 12 matching),
-and in the git-ignored `artifacts/run-exp-sav-inert107/`. To publish them:
-`gh release create run-exp-sav-inert107 artifacts/run-exp-sav-inert107/*/*.SAV`.
+**Binaries.** The owner published the 12 saves as the release
+[`run-exp-sav-inert107`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-sav-inert107)
+on 2026-10-21. Every release digest equals `SAVES.sha256.v2` (12/12, checked
+the same day). A copy stays in `gdrive:IC2/artifacts/run-exp-sav-inert107/`.
