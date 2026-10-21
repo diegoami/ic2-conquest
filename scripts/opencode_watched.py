@@ -233,7 +233,7 @@ def final_text(exe, env, cwd, session, run_dir, fname):
 
 
 # ---- failure kinds, state, progress (opencode resilience, 2026-10-10) --------------------------------------------------
-# A failure of an OpenCode run is never normal. It has one of two kinds, and only the first can mean that another model is possible (only when the user names it, CLAUDE.md "Choosing models" rule 7):
+# Classify failures to help the calling session decide whether to fix, resume or change approach:
 #   api     the provider did not answer: no session ever started, or provider error text (429, rate limit, 5xx/overloaded,
 #           quota/usage limit, network). Nothing was wrong with our process; the user may name another model.
 #   process everything else (timeouts, cut-off, crash, unreadable output, permission refusal, wrong agent, our own setup):
@@ -542,13 +542,11 @@ def describe(run_dir, now=None):
 
 
 def model_refusal(model):
-    """Why this model may not run at all (CLAUDE.md, Choosing models rule 4 and 2): DeepSeek is never used, and exactly ONE model is run."""
+    """Validate one explicit model per invocation; no provider restrictions."""
     if not str(model or "").strip():
-        return "no model named (the user names it)"
+        return "no model selected"
     if "," in model:
-        return "one model only, the one the user named"
-    if "deepseek" in model.lower():
-        return "DeepSeek is never used (CLAUDE.md, Choosing models rule 4)"
+        return "one model only per invocation"
     return None
 
 

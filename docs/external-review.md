@@ -1,48 +1,20 @@
 # External PR reviewer (OpenCode)
 
-## Roles and models: the user's choice (the owner, 2026-10-11)
+## Optional session-selected review (owner, 2026-10-21)
 
-**Who implements and which model reviews are the user's choice, asked each time** (`CLAUDE.md`, "Choosing models", rules 1-7). The
-script runs exactly the ONE reviewer model the user named (`--model` is required; a list, no model or DeepSeek is refused with exit
-2; a reviewer of the implementer's model family is refused with exit 2, and so is a review where the family of an implementer or of
-the reviewer cannot be told: the user checks and reruns with `--confirm-family-differs`). quota-tracker is information only: an
-exhausted provider prints a `quota note` line and the named model runs anyway. On exit 3 (the named model's API did not answer; a
-provider that refuses because of its quota is such a failure) the user names the next model; on
-exit 6 the process failure is fixed and the run resumed. Nothing below picks a model any more.
+The session chooses whether review is useful, which available model to use, and
+whether to use this CLI or the harness. No model-family or provider restriction
+applies. A review is not required for merging; repository-enforced requirements
+and appropriate validation still apply. Historical reviews and model notes
+remain evidence of their own runs, not policy.
 
-### History (superseded 2026-10-11; kept for the reasons)
-
-**Sonnet is the only implementer.** The reviewer is not a Claude model: a chain of two, then the caller decides. **Since 2026-10-10 the
-chain is `openai/gpt-5.6-luna#high` then `minimax/MiniMax-M2.7`** (the owner; DeepSeek and Alibaba are used only when asked). The table
-below is the history of the earlier chain.
-
-| Role | First | Then |
-|---|---|---|
-| Implementer | Claude Sonnet (no OpenCode implementer) | – |
-| Reviewer | DeepSeek V4.1 Flash (`opencode-go/deepseek-v4.1-flash#high`) | OpenAI GPT-5.6 Luna (`openai/gpt-5.6-luna#high`, the OpenAI OAuth credential, on its own weekly pool; not the Go copy, and not GPT-6 Luna, which draws on the main pool with Sol: harness_imperial L51, 2026-10-05) |
-
-*Superseded 2026-10-11, history only (do not follow): the quota check before choosing (harness_imperial L50) and the script's own quota skip (it skipped a model whose provider was `exhausted`, named the skip in the posted header and exited 3 when every model was skipped). Now quota-tracker only informs: an exhausted provider prints a `quota note` and the named model runs.*
-
-- (History, superseded: no chain now; an api failure ends the call and the user names the next model.) The chain moved to the next model only after an **api** failure (the provider did not answer, see "Failure kinds, resume, status"),
-  never after a real or flagged review and never after a **process** failure. When every model's API fails, `scripts/external_review.py` exits **3** and the caller decides
-  what runs next. The Claude fallback is the `/review-pr <n>` skill (`.claude/skills/review-pr`, merged in #7), run
-  in a session on Opus; nothing starts it automatically.
-- **The implementer's model never reviews its own PR** (`Co-Authored-By` trailers and `model:<name>` labels are
-  excluded, compared without punctuation; `--exclude-model` adds names). Under the former chain the implementer was Sonnet, which was
-  not in the chain, so nothing was excluded. Now the implementers recorded on the PR (and in `state.json` for `--resume`) are checked by the one `family_refusal()` of a new run and of `--resume`.
-- **History, so the reasons survive:** the earlier plan was DeepSeek then Sonnet as implementer, and GLM-5.3 Flash
-  then Opus as reviewer. GLM-5.3 and GLM-5.3-Flash sometimes end their turn early in long implementer runs (a
-  whole run of reading, then exit 0 with no commit); Go's `gpt-6-luna` returned "Bad Request" in long agent loops
-  (a third-party upstream rejecting assistant messages with empty content), which is why the Luna in the chain is
-  the **direct OpenAI** one. Both are untested as long runs here; reviews are short.
-- **Effort is `high`, never `max`** (Go lists low/high/max; max is overkill and slower). A model without a
-  variant gets `#high`; an explicit `#max` is lowered to `#high` with a log line. That suits the light models in
-  the chain. **A heavy model (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`) is passed with `#low`, or `#medium`
-  when the PR needs it, never `#high`** (the player, 2026-10-05). `opencode_watched.effort` enforces it: a heavy model with no variant
-  gets `#low`, and `#high` or `#max` on one is lowered to `#medium` with a log line.
-
-A second, independent reviewer of another model family than the implementer's (the one the user named): an OpenCode model reviews a PR in its own git worktree
-and `scripts/external_review.py` posts the result. The model never writes to GitHub.
+This optional CLI takes one explicit `--model` per invocation. It still uses a
+detached worktree internally to inspect a pinned commit read-only; implementing
+sessions may work in their supplied checkout. `--confirm-family-differs` remains
+a compatibility flag and is unnecessary. `--exclude-model` is an explicit caller
+filter only; commit authors and PR model labels do not exclude reviewers.
+Quota notes are informational. On failure, read the full final report before
+deciding whether to fix, resume or change the approach/model.
 
 ```bash
 python3 scripts/external_review.py --pr 7 --model openai/gpt-5.6-luna#high   # the ONE reviewer the user named; posts one comment
@@ -52,13 +24,13 @@ python3 scripts/external_review.py --pr 7 --model <named> --dry-run   # prints t
 python3 scripts/external_review.py --pr 7 --model <named> --review-file R.md   # offline: what would be posted, its note, the exit code
 python3 scripts/external_review.py --self-test                   # the review parser (15 sample outputs), the quota note, family detection, pricing, effort rule and the model-choice refusals
 python3 scripts/external_review.py --resume rendered/pr7-ab12cd/run-1   # continue a run that stopped, in the same OpenCode session
-#   (--resume applies the same family decision as a new run; add --confirm-family-differs once the user checked an unknown family: it is recorded in state.json as family_confirmed)
+#   (resume retains the recorded model; no family confirmation is required)
 python3 scripts/opencode_status.py                               # what is running / stopped, in plain words
 python3 tests/test_reviewer_prompt.py                            # fake-opencode tests (kinds, resume, progress, status)
 ```
 
-Exit codes: **0** posted · **2** usage (a list, no model, DeepSeek, the implementer's family, or a family that cannot be told without `--confirm-family-differs`) · **3** `OpenCode unavailable: <cause>` (the named model's API did not answer, a quota refusal included; nothing posted and
-no other model runs: record the cause in one PR comment and ask the user whether to name another, CLAUDE.md "Choosing models" rule 7) · **4** posted **flagged** (the verdict could not be read or the
+Exit codes: **0** posted · **2** usage (a list or no model) · **3** `OpenCode unavailable: <cause>` (the named model's API did not answer, a quota refusal included; nothing posted and
+no other model runs in this invocation; the caller decides the next step) · **4** posted **flagged** (the verdict could not be read or the
 review looks cut off: a note line on top, no label; read it and decide; no other review is started) · **5**
 the PR head moved during the review (nothing posted) · **6** `OpenCode process failure: <model>: <class>: <cause>; session <id>; run dir <dir>;
 resume with --resume <dir>` (our own process failed; nothing posted, **no fallback**: diagnose it, then resume). Exit 3 means only "the named model's API was unavailable" (the quota state alone never blocks the run).
@@ -165,7 +137,7 @@ A failure of an OpenCode run is never normal: it is diagnosed and fixed, not pas
 | kind | what | what happens |
 |---|---|---|
 | `api` | no session ever started (`no-session`, `exited-without-session`), or stderr that says the provider did not answer. **Structured first**: OpenCode prints its errors as `Error: {"name": ..., "data": {...}}` (read from the 1.18.34 binary: `APIError` {message, statusCode, isRetryable, responseBody}, `ProviderAuthError`, `ContextOverflowError`, `ContentFilterError`, `MessageAbortedError`, `UnknownError` {message, ref}); every JSON object in stderr is classified: status 429, 5xx, 408, 409, 402 or `isRetryable` or a network-looking name = api; `ContextOverflowError`, `ContentFilterError`, `MessageAbortedError`, a 4xx `APIError` = process (words inside a decided object are ignored). Only what is not such an object falls back to text patterns (429, rate limit, 5xx as a status, `returned 503`, overloaded, quota, ECONNRESET ...; a bare number like `line 503` never counts). stdout is never read. The evidence line is stored in `cause` | the call ends with exit 3, nothing posted, no other model runs; the user names the next one (CLAUDE.md rule 7) |
-| `process` (credentials) | **401/403 or `ProviderAuthError`** (also as `Error: 401 Unauthorized` text), with or without a session, even next to api evidence | an expired or invalid login is a flaw in our setup the owner must fix: exit 6, cause `provider credentials refused (401/403): renew the login for <provider>`, no resume, never another model (CLAUDE.md "Choosing models" rule 7). 402 (payment/quota) stays api |
+| `process` (credentials) | **401/403 or `ProviderAuthError`** (also as `Error: 401 Unauthorized` text), with or without a session, even next to api evidence | an expired or invalid login is a flaw in our setup the owner must fix: exit 6, cause `provider credentials refused (401/403): renew the login for <provider>`, no automatic resume; the caller decides how to restore access or change approach. 402 (payment/quota) stays api |
 | `process` | everything else: idle-timeout, total-timeout, cut-off, nonzero-exit, bad-format, permission-rejected, default-agent, and our own setup (`unknown-model`, `unknown-agent`, `no-executable`) | nothing is posted, no other model runs, exit 6 with the session id, the run dir and the resume command |
 | null | ok | |
 
