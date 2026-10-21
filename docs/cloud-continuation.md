@@ -40,7 +40,15 @@ Use the existing Windows IC2 rclone remote `gdrive:`. Its config is
 `/mnt/c/Users/diego/AppData/Roaming/rclone/rclone.conf`. The WSL default config
 has different remotes. Never print or commit configs/tokens. Configure Drive
 credentials separately in the cloud's secret facility; OAuth tokens must match
-their client. The bundle contains no credentials or Wine prefix.
+their client. A file-free rclone remote can use these environment variables:
+
+- `RCLONE_CONFIG_GDRIVE_TYPE=drive`
+- `RCLONE_CONFIG_GDRIVE_TOKEN`: the full OAuth token JSON, set as a secret
+- `RCLONE_CONFIG_GDRIVE_CLIENT_ID` and `RCLONE_CONFIG_GDRIVE_CLIENT_SECRET`:
+  set these when the token was issued to a custom OAuth client
+
+Set `IC2_DRIVE_REMOTE=gdrive:IC2/conquest/cloud-migration-20261021` for the
+restore commands below. Do not paste token values into chat or shell history. The bundle contains no credentials or Wine prefix.
 
 Destination: `gdrive:IC2/conquest/cloud-migration-20261021`.
 Archive: `ic2-research-inputs-20261021.tar.gz`, 2,290,243 bytes.
