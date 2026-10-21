@@ -5,33 +5,30 @@ Codex, Claude and other backends, despite its historical filename. Keep that
 single source of rules; do not copy it here or replace the Claude entry point.
 Then read `README.md` and `docs/agent-workflow.md` for backend mappings and checks.
 
-For continuing work, read the task's brief, its worktree's running notes and the
+For continuing work, read the task's brief, its running notes and the
 latest relevant dated entry in `HANDOVER.md`. Its opening section and the two
 old session prompts describe earlier stages, not a current task queue. Verify
 branch, PR and issue state before acting on them. Battles and bots remain paused
 until the owner resumes them (`CLAUDE.md`, "Working with the owner").
+
+For cloud migration or SAV research continuation, read `docs/cloud-continuation.md`.
 
 ## Codex mappings
 
 - Use the tools this session actually exposes. Claude's `Agent`, `ListAgents`,
   `SendMessage`, transcript paths and `$ARGUMENTS` are not Codex APIs. Do not
   invent a command or assume a Claude skill is automatically loaded by Codex.
-- Preserve the user's implementer and reviewer choices. A request addressed to
-  this session to do the work authorizes this session to implement it; do not
-  ask again for an already supplied choice. Ask about choices still missing.
-  Never silently select a delegate, reviewer or fallback model.
-- Work in an isolated git worktree. Use an allowed writable location, such as
-  `/tmp`, if the default sibling or home directory is outside the sandbox.
-  A linked worktree also needs access to the original repository's git metadata.
-- Record plans, progress, commits, validation and an END handoff in the worktree's
+- Follow the session-led workflow in `CLAUDE.md`: worktrees and separate reviews
+  are optional, with no model-family restriction. Honor explicit owner choices
+  and use the available harness/tools. Preserve others' work in the checkout.
+- Record plans, progress, commits, validation and an END handoff in the task's
   running-notes file. Claude session memory is not a cross-backend handoff.
   Record relay and reported-findings baselines in task-owned tracked notes,
   including the commit SHA. If no trustworthy baseline is available, say so and
   recover it from repository history or the owner; never guess it.
-- For an external review, use `scripts/external_review.py` with the ONE model the
-  user named and a task-specific brief (`docs/external-review.md`). Record the
-  implementer's actual model in PR metadata or pass `--exclude-model <model>`.
-  Codex/OpenAI is the OpenAI family; another OpenAI model is not independent.
+- `scripts/external_review.py` is an optional external-review route; supply a
+  task-specific brief when using it. Describe the actual reviewer accurately;
+  a same-model review is not independent evidence.
 - `.claude/skills/review-pr/SKILL.md` remains the Claude-only review route when
   the user chooses a Claude reviewer. Do not run its instructions as a Codex
   reviewer or attribute a Codex review to Claude.

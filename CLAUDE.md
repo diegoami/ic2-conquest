@@ -28,24 +28,32 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
    - A run that stopped and reported gets an answer to its report: amend the task, decide, or escalate. Post the report on the task's PR (or its run issue) so it is kept.
    - Treat any earlier "model X ends runs early" verdict as unconfirmed until its runs' final messages have been read.
 8. **A failed subagent run is never normal: find its cause and fix it** (the owner's highest priority, 2026-10-10). This covers OpenCode runs, reviewers, implementers and Claude agents.
-   - **Another model only when the provider's API does not answer** (a rate limit, a 5xx error, a quota or usage limit, a network error, or no session ever started), **and only the model the user then names** ("Choosing models", rule 7). A run that failed through a flaw in our process (a brief, permissions, timeouts, the watcher, an agent prompt) is fixed and run again on the same model, never re-routed.
+   - Diagnose failures before choosing whether to fix, resume or change the model. Preserve the report and progress; model changes follow the session-led workflow below.
    - **No run may lose its progress when it dies.** Every run records what it is doing (its session id, its state, a progress file, commits pushed as it goes), so the job can be tracked and **resumed where it stopped**, not restarted.
    - **Keep monitoring running subagents and tell the owner in plain words** what each one is doing and working on, while it runs.
 
-## Choosing models: the user decides (the owner, 2026-10-11)
+## Session-led workflow (owner, 2026-10-21)
 
-This replaces every earlier model-choice rule of this project (L50/L51, the reviewer chains and placements, issue #72 "follow quota-tracker's /recommend and nothing else"); those are kept as history in the docs, marked superseded. It holds whatever model the orchestrating session itself runs on.
+This replaces the previous compulsory worktree, automatic external review,
+model-choice questions and model-family/provider restrictions throughout the
+project. Older briefs, receipts and process descriptions retain their historical
+meaning; they do not reinstate those requirements.
 
-1. **Before implementing anything** (a task, a fix, a plan change), ask the user ONE question with the question tool: does the main session implement it, or a subagent, and which model?
-   - The main session: it implements itself, in its own git worktree (never the main checkout).
-   - A subagent: the Agent tool with the model the user names (any model this session's backend offers), or an external run (e.g. OpenCode) with the model the user names.
-   - Whoever implements works in its own worktree, keeps a short running-notes file there (plan, a progress line per commit, an END block before stopping), pushes after every commit, and opens the PR. When a subagent ends, the main session reads its final report before acting and posts its notes on the issue.
-2. **At every review** (first review, re-review, re-check of named fixes), ask the user ONE question: which external model reviews? Run that review alone (one at a time), and relay its findings to the user in full. A PR gets one review unless the user asks for more.
-3. With each question, show quota-tracker's recommendation as a **suggestion only** (`curl -s "http://localhost:8765/recommend?tier=heavy"` for heavy work, `tier=light` for small work: its `pick`/`pair` with rank, outlook and reliability). If it does not answer, ask without the suggestion.
-4. The only fixed rules: the reviewer is never of the implementer's model family; DeepSeek is never used; Alibaba only when the user asks.
-5. Record each choice (who, which model, the suggestion's reasons) on the issue or PR.
-6. These rules never name the orchestrator's own model; they work the same on any backend.
-7. A failed run is diagnosed and fixed, not silently re-routed: another model only when the provider does not answer, and the user names it (rule 8 above).
+- Work in the supplied checkout. Use a branch; a separate worktree is optional
+  when it helps isolate concurrent work. Preserve others' changes.
+- The session decides how to implement, validate and review the task using the
+  tools and models available to it. Review is optional: use the harness, an
+  available reviewer, or no separate review according to the task's risk.
+- No required reviewer family, provider exclusion, quota recommendation or
+  repeated model-choice question. Honor explicit owner choices while they apply;
+  explain material workflow or model changes.
+- Commit and push useful progress, open a PR, and honor repository-enforced
+  checks. A posted external verdict is not a prerequisite for merging.
+- Keep durable task notes and evidence so another session can resume. Read a
+  delegated run's complete report before deciding whether to fix, resume or
+  change approach. Never describe a self-review as independent review.
+- The external-review CLI is optional tooling. It retains a detached worktree
+  internally for reproducible read-only inspection; sessions need not use it.
 
 ### Monitoring OpenCode sessions (and any other background agent)
 
@@ -67,15 +75,15 @@ This replaces every earlier model-choice rule of this project (L50/L51, the revi
 ## Working with the owner (moved from session memory, 2026-10-11)
 
 - **Ask, don't guess** (the owner, 2026-10-02): when a decision is the owner's or a request can be read two ways, ask with the question tool, concrete options, the recommended one first. Never fill the gap with an assumption and carry on.
-- **Merging** (the owner, 2026-10-04, amended 2026-10-17): merge a PR that has an approving review from another model family without asking. Skip optional CI where possible; reviewed work need not wait for optional CI or a size-skipped scan. Check repository-enforced requirements and honor any required checks; never report a skipped check as passed. Run validation appropriate to the change, without redundant CI reruns. Read non-blocking review notes first: a proven way past what the brief's "Blocking means" names is rework, not a merge. Still ask about design decisions and escalations.
-- **After a merge** (the owner, 2026-10-11, replacing "start the next item at once"): propose the next queued item and ask who implements it and with which model ("Choosing models", rule 1). Never start it unasked.
+- **Merging** (owner, 2026-10-21): the session decides whether separate review is useful and may merge completed work once appropriate validation and repository-enforced requirements pass. Read any existing review notes and resolve material findings. Never report skipped checks as passed.
+- **After a merge**: continue within the owner's authorized scope and explain the next useful step; ask only for missing owner decisions.
 - **Current focus** (the owner, 2026-10-05): battles and bots are paused; the work is research and gap-finding for IMPERIAL CONQUEST MAIN's v0.5.0, then post-0.5.0 work not related to battles. The paused battle queue (B16, B7+B12, B6, B9, B10, B13-14, B15, then coverage gaps) resumes only when the owner says so; each paused item has resume notes in its data README.
 - **New findings** (the owner, 2026-10-02): at the start and at the end of each reply, compare `findings/` on `origin/main` with the list last reported and name every new file with one line on what it is (and a reviewer's findings when it posts on a PR). No background polling, no push notifications.
 - **Research** (the owner, 2026-10-05 and 2026-10-08): reading `~/projects/imperial-conquest-2-research/` is always fine (rule 2 limits writes only). Every finding that lands on main is relayed to the ic2-research session at once with the `/relay-to-research` skill, without asking. Message ic2-research otherwise only when the next step is theirs (re-running their extractors, refreshing a report, interpreting their data). The PowerShell main session (IMPERIAL CONQUEST MAIN) is reached through the owner: write a paste-ready prompt and the owner carries it (`docs/notes-for-main-session-decompile-skills.md`); it reads only promoted research reports.
 
 ## Environment
 
-- **Model quota:** quota-tracker on `localhost:8765` says which providers have quota left (`docs/environment.md`). Its `/recommend` is shown to the user as a **suggestion only** with each model question ("Choosing models" below); it never decides.
+- **Model quota:** use quota information when available to inform session choices; it is not a mandatory service or model-selection gate.
 
 - `setup/setup.sh` (root, Ubuntu 24.04): installs Wine (32-bit prefix), Xvfb, xdotool, imagemagick, ffmpeg, tesseract; clones the pinned research and fixtures repos (`setup/pins.txt`) under `/home/user/diegoami`; builds the executables into `$IC2_WORK/build` and the game folder `$IC2_WORK/prefix/drive_c/IC2` (`IC2_WORK` defaults to `~/ic2-work`, outside git).
 - The bot plays **`Imperial Conquest 2 fast rollingsave seed.exe`**: instant battles; every human turn writes `AUTOnnnn.SAV` + an `AUTOSAVE.LOG` line; `RandSeed` comes from `SEED.TXT` beside the exe at **program start and New Game only** (loading does not reseed: `findings/2026-09-29-loading-a-save-does-not-reseed.md`). So a repeatable turn = restart the game with the seed, open the save, issue the orders (`Game.load`).
@@ -88,8 +96,8 @@ This replaces every earlier model-choice rule of this project (L50/L51, the revi
 - `planner/path.py`: army paths (DAT terrain costs).
 - `patches/seed_patch.py`: the seed option on top of the fixtures' `patch_exe.py`.
 - `tests/test_orders.py`: each order issued headless and checked on the save diff; `tests/results.md`.
-- `scripts/external_review.py`, `scripts/opencode_watched.py`, `.opencode/agents/external-reviewer.md`: the OpenCode PR reviewer in its own worktree (`docs/external-review.md`); `.claude/skills/review-pr`: a review run in a Claude session, used only when the user names a Claude model as the reviewer ("Choosing models", rule 2). **Every review brief carries a "Blocking means" section written for its task** (`docs/review-briefs/README.md`: template, one `pr<n>.md` per review passed with `--brief-file`; reviewer verdicts worth remembering go to `docs/model-trials.md`).
-- **Model facts** (not a choice rule; the choice is the user's, see "Choosing models" above): model ids come from the provider's live list (`opencode models <provider>`), never from memory. The light OpenAI model is GPT-5.6 Luna on the direct route, `openai/gpt-5.6-luna`, not GPT-6 Luna (`openai/gpt-6-luna`, which draws on the main pool with Sol); never a Luna on OpenCode Go (`opencode-go/…`: a proxy returns `Bad Request` in long agent loops). **Effort** (the player, 2026-10-05): heavy models (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`, Opus) at `low`, or `medium` when the task needs it, never `high`; light models (GPT-5.6 Luna, the Flash models) at `high`. The former L50/L51 choice rules (2026-10-05) are superseded by "Choosing models" (2026-10-11).
+- `scripts/external_review.py`, `scripts/opencode_watched.py`, `.opencode/agents/external-reviewer.md`: the OpenCode PR reviewer in its own worktree (`docs/external-review.md`); `.claude/skills/review-pr`: a review run in a Claude session, available when a Claude review is chosen. **Every review brief carries a "Blocking means" section written for its task** (`docs/review-briefs/README.md`: template, one `pr<n>.md` per review passed with `--brief-file`; reviewer verdicts worth remembering go to `docs/model-trials.md`).
+- **Model availability:** verify identifiers against the chosen provider when launching a run. Historical model and effort notes are observations, not restrictions on session choices.
 - `docs/rules-digest.md`: the researched rules, with sources. `findings/`: drafts for the research repo.
 
 ## Driver pitfalls (Wine, no window manager)

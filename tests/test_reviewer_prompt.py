@@ -46,7 +46,7 @@ if a[:1] == ["models"]:
     if (d / "models_err").exists():
         sys.stderr.write((d / "models_err").read_text() + "\\n")
         sys.exit(1)
-    print("provider/model"); print("openai/gpt-5.6-luna")
+    print("provider/model"); print("openai/gpt-5.6-luna"); print("anthropic/claude-opus-4"); print("opencode-go/deepseek-v4-pro"); print("mystery/new-model")
 elif a[:2] == ["debug", "agent"]:
     print(json.dumps({"name": a[2]}))
 elif a[:2] == ["session", "list"]:
@@ -516,7 +516,7 @@ def main_env(d, plan, argv, commits=(), labels=(), quota=None):
         er.sh, er.gh_json, er.quota_skip, er.pricing_note, er.REVIEW_ROOT, er.WORK, er.REPO, sys.argv = saved
 
 
-def test_reviewer_of_the_implementers_family_is_refused():
+def test_reviewer_of_the_implementers_family_is_allowed():
     pairs = (("Claude Sonnet 5.5", "anthropic/claude-opus-4", True), ("Claude Opus", "anthropic/claude-sonnet-5", True),
              ("openai/gpt-6.1-sol", "openai/gpt-5.6-luna#high", True), ("GPT-6.1 Sol", "openai/gpt-5.6-luna", True),
              ("minimax/MiniMax-M3", "minimax/MiniMax-M2.7", True), ("zai-coding-plan/glm-5.3", "alibaba-token-plan/glm-5.3", True),
@@ -525,31 +525,31 @@ def test_reviewer_of_the_implementers_family_is_refused():
              ("Claude Opus", "zai-coding-plan/glm-5.3", False))
     for impl, rev, want in pairs:
         assert er.excluded(rev, {impl.lower()}) == want, (impl, rev, want)
-    # end to end: the trailer of a commit makes main() refuse a same-family reviewer with exit 2, nothing runs
+    # End to end: author metadata does not prevent same-family review.
     commits = [{"messageBody": "x\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>"}]
-    for rev, code in (("anthropic/claude-opus-4", 2), ("openai/gpt-5.6-luna", 0)):
+    for rev, code in (("anthropic/claude-opus-4", 0), ("openai/gpt-5.6-luna", 0)):
         with fake_opencode("family-" + str(code), ["ok"]) as d:
             with main_env(d, None, ["--pr", "5", "--model", rev], commits=commits) as (got, posted, err, out):
                 assert got == code, (rev, got, err)
                 if code == 2:
                     assert not posted and not (d / "count").exists() and "family" in err, err
-    return "same-family reviewers (Claude/anthropic, gpt Sol/Luna, MiniMax M3/M2.7, GLM routes, mimo) are refused with exit 2; another family passes"
+    return "same-family reviewers proceed; family metadata remains informational"
 
 
 def test_resume_applies_the_rules_of_a_new_run():
     commits = [{"messageBody": "x\n\nCo-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>"}]
-    cases = (("legacy-deepseek", "opencode-go/deepseek-v4-pro", None, 2, "DeepSeek"),
-             ("recorded-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], 2, "family"),
-             ("legacy-family", "anthropic/claude-opus-4", None, 2, "family"),
+    cases = (("legacy-deepseek", "opencode-go/deepseek-v4-pro", None, None, ""),
+             ("recorded-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], None, ""),
+             ("legacy-family", "anthropic/claude-opus-4", None, None, ""),
              ("two-models", "a/b,c/d", [], 2, "one model"),
              ("valid", "minimax/MiniMax-M3", ["claude sonnet 5.5"], None, ""),
-             ("legacy-unknown-implementer", "minimax/MiniMax-M3", ["mystery-llm"], 2, "cannot tell"),
-             ("unknown-reviewer", "provider/model", ["claude sonnet 5.5"], 2, "cannot tell"),
+             ("legacy-unknown-implementer", "minimax/MiniMax-M3", ["mystery-llm"], None, ""),
+             ("unknown-reviewer", "provider/model", ["claude sonnet 5.5"], None, ""),
              ("legacy-unknown-from-pr", "minimax/MiniMax-M3", None, None, ""))
     for tag, model, impl, want, word in cases:
         labels = ["model:mystery-llm"] if tag == "legacy-unknown-from-pr" else []
         if tag == "legacy-unknown-from-pr":
-            want, word = 2, "cannot tell"
+            want, word = None, ""
         with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
             rd = d / "oldrun"
             rd.mkdir()
@@ -563,10 +563,10 @@ def test_resume_applies_the_rules_of_a_new_run():
                     assert got == 2 and word.lower() in err.lower() and "refused" in err and not posted and not (d / "count").exists(), (tag, got, err)
                 else:
                     assert "refused: cannot resume" not in err, (tag, got, err)
-    # the confirmation: an unknown family proceeds with --confirm-family-differs (and is recorded); a proven same family never does
+    # Old confirmation flags remain compatible but are no longer required.
     for tag, model, impl, want in (("confirm-unknown", "minimax/MiniMax-M3", ["mystery-llm"], True),
                                    ("confirm-unknown-reviewer", "provider/model", ["claude sonnet 5.5"], True),
-                                   ("confirm-same-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], False)):
+                                   ("confirm-same-family", "anthropic/claude-opus-4", ["claude sonnet 5.5"], True)):
         with fake_opencode("resume-rules-" + tag, ["ok"]) as d:
             rd = d / "oldrun"
             rd.mkdir()
@@ -580,16 +580,16 @@ def test_resume_applies_the_rules_of_a_new_run():
                     assert json.loads((rd / "state.json").read_text()).get("family_confirmed") is True, tag
                 else:
                     assert got == 2 and "family" in err and not posted and not (d / "count").exists(), (tag, got, err)
-    return "--resume refuses a recorded DeepSeek / multi-model / implementer-family model (exit 2, nothing runs; a legacy state.json takes the implementers from the PR); a valid recorded model passes the checks"
+    return "resume permits all model families and providers, retaining single-model validation"
 
 
-def test_watcher_refuses_deepseek_and_lists():
+def test_watcher_validates_single_model():
     with fake_opencode("ow-refuse", ["ok"]) as d:
-        for m in ("opencode-go/deepseek-v4-pro", "x/DeepSeek-V4.1#high", "a/b,c/d", ""):
+        for m in ("a/b,c/d", ""):
             r = ow.run(write_brief(d), ROOT, m, d / "run", data_dir=d / "data", log=lambda s: None)
             assert r["class"] == "model-refused" and r["kind"] == "process", (m, r["class"])
             assert not (d / "count").exists() and not (d / "run").exists(), m
-    return "opencode_watched.run (the door of every run, also its CLI) refuses DeepSeek, a list or no model before anything starts"
+    return "opencode_watched.run (the door of every run, also its CLI) refuses a list or no model before anything starts; all providers are allowed"
 
 
 def test_main_exit_codes():
@@ -604,7 +604,7 @@ def test_main_exit_codes():
         with main_env(d, None, one) as (code, posted, err, out):
             assert code == 3 and not posted and "OpenCode unavailable" in err, (code, err)
             assert runs_started(d) == 1, "an API failure ends the review: the user names the next model (Choosing models rule 7)"
-    for bad in (["--pr", "5"], ["--pr", "5", "--model", "provider/model,provider/other"], ["--pr", "5", "--model", "opencode-go/deepseek-v4.1-flash"]):
+    for bad in (["--pr", "5"], ["--pr", "5", "--model", "provider/model,provider/other"]):
         with fake_opencode("main-usage", ["ok"]) as d:
             with main_env(d, None, bad) as (code, posted, err, out):
                 assert code == 2 and not posted and not (d / "count").exists(), (bad, code, err)
@@ -612,7 +612,7 @@ def test_main_exit_codes():
         with main_env(d, None, one) as (code, posted, err, out):
             assert code == 0 and len(posted) == 1, (code, err, posted)
     return ("main(): one named model only; process failure -> exit 6, no post; API failure -> exit 3, no other model; no model, a list "
-            "or DeepSeek -> exit 2, nothing runs; ok -> posted, exit 0")
+            "-> exit 2, nothing runs; ok -> posted, exit 0")
 
 
 def test_malformed_exports_are_session_unreadable():
@@ -889,7 +889,7 @@ def test_reclassify_picks_the_newest_export_numerically():
     return "the newest export is chosen by attempt number (and k), not by file name order"
 
 
-def test_unknown_implementer_family_is_refused_unless_confirmed():
+def test_unknown_model_family_is_allowed():
     for name, fam in (("model:o3", "openai"), ("o3", "openai"), ("o4-mini", "openai"), ("GPT-5", "openai"), ("gemini-2.5-pro", "google"),
                       ("grok-4", "xai"), ("Z.ai GLM 5.3", "zai"), ("z", None), ("z-something", None), ("zhipu", "zai"), ("zai-coding-plan/glm-5.3", "zai"),
                       ("Some Human", None)):
@@ -898,11 +898,11 @@ def test_unknown_implementer_family_is_refused_unless_confirmed():
     assert not er.excluded("zai-coding-plan/glm-5.3", {"z-something"})
     rev = "openai/gpt-5.6-luna#high"
     cases = (  # (labels, commits, extra argv, model, exit code)
-        (["model:o3"], (), [], rev, 2),                       # alias resolves to openai: same family
-        (["model:o4-mini"], (), ["--confirm-family-differs"], rev, 2),   # known family: the override does not lift a proven same-family review
-        (["model:mystery-llm"], (), [], rev, 2),              # unknown implementer alias: refused
+        (["model:o3"], (), [], rev, 0),                       # alias resolves to openai: same family
+        (["model:o4-mini"], (), ["--confirm-family-differs"], rev, 0),   # legacy flag remains compatible
+        (["model:mystery-llm"], (), [], rev, 0),              # unknown implementer alias allowed
         (["model:mystery-llm"], (), ["--confirm-family-differs"], rev, 0),   # the user checked
-        (["model:sonnet"], (), [], "mystery/new-model", 2),   # unknown reviewer next to an implementer: refused
+        (["model:sonnet"], (), [], "mystery/new-model", 0),   # unknown reviewer allowed
         (["model:gemini"], (), [], rev, 0), (["model:sonnet"], (), [], rev, 0))
     for i, (labels, commits, extra, model, code) in enumerate(cases):
         with fake_opencode(f"unk-{i}", ["ok"]) as d:
@@ -910,7 +910,7 @@ def test_unknown_implementer_family_is_refused_unless_confirmed():
                 assert got == code, (labels, extra, model, got, err)
                 if code == 2:
                     assert not posted and not (d / "count").exists(), err
-    return "o3/o4-mini/gemini/grok aliases known; an unknown implementer alias or reviewer is refused (exit 2) unless --confirm-family-differs; bare 'z' is not zai"
+    return "known and unknown model families proceed without confirmation"
 
 
 def test_quota_only_informs_the_named_model_runs():
@@ -925,11 +925,11 @@ def test_quota_only_informs_the_named_model_runs():
 
 
 TESTS = ["agent_body_has_no_git_c", "agent_rules_only_deny_git_c", "brief_template_has_no_git_c",
-         "prompt_the_watcher_hands_to_opencode", "api_failure_ends_the_call_with_one_model", "reviewer_of_the_implementers_family_is_refused", "hang_then_resume",
+         "prompt_the_watcher_hands_to_opencode", "api_failure_ends_the_call_with_one_model", "reviewer_of_the_implementers_family_is_allowed", "hang_then_resume",
          "crash_after_resumes_is_a_process_failure", "bad_format_is_a_process_failure", "progress_and_status",
          "only_stderr_is_api_evidence", "resume_limit_holds_across_invocations",
          "models_listing_provider_error_is_api", "stopped_and_reported_is_not_resumed", "api_failure_reads_the_session_first",
-         "every_failure_reads_the_session_and_exports_are_per_attempt", "watcher_refuses_deepseek_and_lists", "main_exit_codes", "resume_applies_the_rules_of_a_new_run", "unknown_implementer_family_is_refused_unless_confirmed", "quota_only_informs_the_named_model_runs",
+         "every_failure_reads_the_session_and_exports_are_per_attempt", "watcher_validates_single_model", "main_exit_codes", "resume_applies_the_rules_of_a_new_run", "unknown_model_family_is_allowed", "quota_only_informs_the_named_model_runs",
          "malformed_exports_are_session_unreadable", "exports_are_never_overwritten", "manual_resume_reads_the_session_first",
          "refresh_listing_errors_are_api", "watcher_crash_is_a_process_failure",
          "reused_run_dir_does_not_skip_new_errors",
