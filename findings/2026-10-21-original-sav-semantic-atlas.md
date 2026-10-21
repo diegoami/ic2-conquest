@@ -4,7 +4,8 @@
 SAV meaning is solved.** Owner requested one broad issue to establish exactly
 what is stored in original-game SAV files and record the results in findings.
 Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107).
-Main session implements; owner-selected GLM 5.3 Flash independently reviews.
+Under the session-led workflow (owner, 2026-10-21) review is optional and
+chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue. New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
@@ -66,6 +67,62 @@ The trailer offset is computed from preceding counts/news. It is not generally
 File → Save As can produce battle saves; older “never present in normal saves”
 prose must not erase that reviewed correction. This task includes the conditional
 block rather than declaring the strategic subset to be the whole format.
+
+## Increment 1: ledger v1 and physical coverage (2026-10-21)
+
+The ledger now exists as [`field-map-v1.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v1.csv).
+It has 113 rows over 14 record types, and each row has a stable ID, offsets,
+width/type, a semantic class, a value policy, a runtime address formula and
+evidence. The checker is
+[`scripts/sav_atlas_coverage.py`](../scripts/sav_atlas_coverage.py), with the offline test
+`python3 -m tests.test_sav_atlas_coverage`. Data:
+[run-exp-sav-atlas107](../runs/experiments/data/run-exp-sav-atlas107/README.md).
+
+- **Static tiling:** every record type's rows cover its stride exactly, with
+  no gap or overlap; the unit-slot and battle-slot arrays nest. Nation rows
+  equal the research37 nation-matrix-v2 ranges exactly.
+- **Serializer order re-read** from the pinned source (`FUN_004484D0` save,
+  `FUN_004487C4` load). Trailer = turn order 32 + offer 4 + current nation,
+  seat, week, year, season (serialized from 0x4A0320, 0x4A0322, 0x4A0330,
+  0x4A0332, 0x4A032E: season after year) + 8 bytes of main-form geometry + the
+  battle flag = 55 bytes. The geometry words are left/top (form fields 9/10)
+  and then rect[3]/rect[2] of the form's vtable+0x2C call. That call is read
+  here as client height/width, but this is a Delphi-VMT inference, so the
+  ledger marks it PARTIAL. The battle block is a 9-byte header serialized in
+  the order 0x4A0B74, B76, B78, B7D (byte), B7A, followed by 40 × 44 slots and
+  a 14 × 12 icon grid.
+- **Corpus framing:** all 56 SAVs walk to exactly EOF ([public](../runs/experiments/data/run-exp-sav-atlas107/corpus-public-v1.json):
+  14 tracked saves; [private bundle](../runs/experiments/data/run-exp-sav-atlas107/corpus-private-bundle-v1.json):
+  3 source, 23 owner-retained Windows tax-case and 16 research40 battle saves).
+  The 16 battle saves carry the 2,105-byte block. No file needed `len − 55`.
+- **Byte metrics (private bundle, 5,573,142 bytes):** CONFIRMED 7.75 %,
+  CONTEXTUAL 91.86 % (mostly map words and text-with-tail fields whose rule is
+  known), PARTIAL 0.017 %, UNKNOWN 0.374 % (31 per nation record). Physical
+  coverage is 100 %. **Semantic completion is not:** the CONTEXTUAL and
+  CONFIRMED rows still need the per-field reader/writer/lifecycle columns of
+  the dictionary row below. The class records the established meaning, not
+  closure.
+- **UNKNOWN31 samples:** no nation record of the 56 files has a non-zero byte
+  in +450..46A, +46D or +491..493. This extends the earlier 224-record sample;
+  it is not a dead-field proof (research #47 owns that).
+
+New frontier rows found while consolidating:
+
+- Fleet +4/+6 are named "route target" by the
+  [transport lifecycle report](https://github.com/diegoami/imperial-conquest-2-research/blob/3a349c25f77f1c8816d1410cb2931dcd4b7e9426/docs/reports/2026-10-21-transported-army-coordinate-lifecycle.md)
+  and are reset to −1 each fleet turn. Their writer set and their value while
+  a fleet is building are not consolidated, so they are PARTIAL with
+  value policy UNRESOLVED_REFUSE.
+- Battle header +4 (side to move): the tactical sweep saw memory 0 against
+  file 1 after a resume, which is still unexplained, so it is PARTIAL.
+- **Non-serialized state:** both save and load set the words 0x4A0328 and
+  0x4A032A to −1 after the transfer. The file can therefore never carry them;
+  their meaning (probably the current army/fleet selection, matching the "sampled
+  army/fleet selections = −1" observation of the tax cases) is not established here.
+- The parser summary [`docs/sav-layout-notes.md`](../docs/sav-layout-notes.md)
+  still carries superseded labels: fleet +4/+6 "unknown", nation +0x424 "unknown",
+  +0x486/+0x488 "meaning unknown" and "battle block never present in a normal
+  save". The ledger supersedes them, and the notes now point to it.
 
 ## Field identity and alias corrections already supported
 
