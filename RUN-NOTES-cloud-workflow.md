@@ -27,5 +27,9 @@ slot is occupied. Last source findings delivered: 7fe20bed; atlas not yet on mai
 
 END: Cloud target/secret injection not yet selected. Original writer folder and
 manifests remain missing; retained-copy provenance is documented. Private bundle
-upload is being verified; record the final receipt in docs/cloud-continuation.md.
+upload completed and readback verified: zero differences, two matching files
+(archive + checksum), 2026-10-21 23:14:54 local. Receipt and hash are in
+docs/cloud-continuation.md. Policy/handoff PR109 merged at
+04e9808dce2ca18ab3f51742f0c924ea8238782f; this final documentation commit records
+the completed transfer.
 No unrelated backups, proprietary inputs or tokens are staged with this change.

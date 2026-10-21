@@ -48,13 +48,16 @@ their client. A file-free rclone remote can use these environment variables:
   set these when the token was issued to a custom OAuth client
 
 Set `IC2_DRIVE_REMOTE=gdrive:IC2/conquest/cloud-migration-20261021` for the
-restore commands below. Do not paste token values into chat or shell history. The bundle contains no credentials or Wine prefix.
+restore commands below. Do not paste token values into chat or shell history.
+The bundle contains no credentials or Wine prefix.
 
 Destination: `gdrive:IC2/conquest/cloud-migration-20261021`.
 Archive: `ic2-research-inputs-20261021.tar.gz`, 2,290,243 bytes.
 SHA256: `2bea418bca6de330b2776c61581cf767d6b2829d4ac15dc03a728acdb693008e`.
-The owner explicitly approved this payload and destination. Confirm the upload
-receipt before relying on remote availability.
+The owner explicitly approved this payload and destination. Upload completed;
+`rclone check --download` at 2026-10-21 23:14:54 local time reported
+**0 differences, 2 matching files** (archive and checksum). All 128 extracted
+input files also matched the local per-file SHA256 manifest.
 
 The archive holds 128 files (12,310,415 input bytes), a manifest and SHA256SUMS:
 original EXE/DAT, top-level ReTools source extracts/symbols if present, 3 source
