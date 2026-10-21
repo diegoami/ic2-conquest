@@ -44,6 +44,24 @@ have bounded evidence/status or explicit blockers; independent review next.
 
 GLM review complete APPROVE/no blockers,3nonblocking notes, full native final and limits read. Exact reviewed0e9457e90a51094f8909cf9811b56105d63905a2/base16a0f6e; modelzai-coding-plan/glm-5.3-flash#high/session ses_ea01a76daffeCJBw3AkRQS9UMT. Research42 next review slot released; no furtherreviewlaunch authorized here beforecoordination. R1citation/R2hostnameclarified;R3explicitguards normal+optimized outputs exactv1, mismatched raw result rejects under-O before output. Full review and receipts preserved; originalmeasurements unchanged.
 
+## Post-merge delivery receipt
+
+- PR105 merged16a0f6e50063a090b509e230cdd7fa44913496f5; final reviewed-result
+  head002fffba0a164d48e5ccbd73447f72236c246595, GitGuardian SUCCESS.
+- PR106 merged7fe20bedba0b9cdbb012b1b348c96507f6a65768; final source/receipt
+  head631d105e5d9a402be1f1da277fc6435e6c9b30ff, GitGuardian SUCCESS.
+- Complete final/merge/diff-scope handoffs delivered successfully to ic2-research
+  thread01a15f9a-0ba9-7471-8061-d83cef8c7088. Standing user authorization
+  permits messages to that session. No canonical promotion is claimed here.
+- This task's reported-findings and last-delivered SOURCE baseline is now
+  conquest origin/main7fe20bedba0b9cdbb012b1b348c96507f6a65768,2026-10-21:
+  terrain42 rules, tactical25 current boundaries, SAV37 current gates/input
+  preflight, and Italy scenario options. Both hash/version receipts and limits
+  were delivered; private37inventory remains local and untracked.
+- This post-merge notes-only commit does not alter either merged source packet
+  or claim an additional review. ResearchPR46 has the next coordinated review
+  slot; no new reviewer or next implementation was dispatched by this session.
+
 ## END
 
 All requested queue items received bounded evidence/proposals/status and explicit remaining gates.25fullcurrentcausality/replay needs comparisonpacket;37inputmanifest+generalnativewriter/migration/nativeoutputgate remain;39date/roster/settlementaudit/neutral/barbarianchoices remain.20ledgerpromotion and35commandpolicy stayresearchowned. No research/remake/fixture/owner-save writes, game/Wine/native launch or unauthorized review. Private37metadata remainslocaluntracked, no privateJSONbytesGit. Final syntax/relativelinks/whitespace and requiredCI checked before normal merge. Parent receives exact finalhead/merge/diffscope; canonicalintake belongsresearch.
