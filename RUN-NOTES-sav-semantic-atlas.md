@@ -149,3 +149,17 @@ Branch `claude/eager-sagan-po9v87`. Ledger v3 is authoritative: 0 UNKNOWN,
 - the INERT claim and the route timing, which can be confirmed natively or
   under an emulator only with the owner's authorisation;
 - research #47 to confirm INERT.
+
+## 2026-10-21 increment 4: native run run-exp-sav-inert107 (owner-approved)
+
+The owner approved it in the session; the proposal is on #107.
+`setup/setup.sh` ran in the container (apt Wine). The fixtures were cloned
+public at `d3cfa91`, and the seed build hash matches. T1, T2 and T3 each ran
+once, with no retries:
+- T1/T3: INERT is carried, unread and kept across File > New.
+- T2: the route_x reset and route_y retention are confirmed.
+
+There was no release token, so the 12 saves went to
+`gdrive:IC2/artifacts/run-exp-sav-inert107/` (12 matching) plus the local
+`artifacts/`. Ledger v4 is authoritative and the checker defaults to it.
+Next: relay to IC2 Research and ask it to consolidate (owner request).

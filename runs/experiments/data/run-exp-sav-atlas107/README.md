@@ -3,7 +3,12 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v3.csv` (**authoritative**, increment 3): v2 plus a `readers`
+- `field-map-v4.csv` (**authoritative**, increment 4): v3 with the native
+  evidence of [run-exp-sav-inert107](../run-exp-sav-inert107/README.md) added
+  to the INERT and fleet-route rows (evidence and uncertainty only; classes
+  unchanged, so the v3 corpus receipts still apply). The checker defaults to
+  v4.
+- `field-map-v3.csv` (increment 3): v2 plus a `readers`
   column (from `asm-index-v2.csv`, saver excluded) and `BATTLE.side` resolved
   as the side to move. Classes: 79 CONFIRMED, 31 CONTEXTUAL, 3 INERT, 0 PARTIAL,
   0 UNKNOWN. `scripts/sav_atlas_coverage.py` defaults to v3 (`--field-map`

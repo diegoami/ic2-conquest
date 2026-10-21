@@ -1,0 +1,181 @@
+{
+ "art": "20261021-225534",
+ "files": {
+  "T2A_plain_autosave_after_end_turn.SAV": "6fc3b7913d8ae4e7ea66d6850bcc2f9dda54705b760213673f04a87480cd657a",
+  "T2A_plain_saveas.SAV": "20f38b88cb06a2fdc333a574016f63858f0289ab551e61c46182ef2c7ea41609",
+  "T2B_sentinel_autosave_after_end_turn.SAV": "2333326fae2029cf29d9c3ef1d10c3c1a68f7cb8cb1ad4e5c190132e0dbd1da4",
+  "T2B_sentinel_saveas.SAV": "c8899250d6acdbbc3b2a3b12448a203f9013f13636cd8216bb772ab2565ae4d3"
+ },
+ "T2": {
+  "T2A_plain_saveas.SAV": [
+   {
+    "f": 0,
+    "owner": 1,
+    "route_x": -1,
+    "route_y": 55
+   },
+   {
+    "f": 1,
+    "owner": 3,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 2,
+    "owner": 0,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 3,
+    "owner": 2,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 4,
+    "owner": 7,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 5,
+    "owner": 0,
+    "route_x": 0,
+    "route_y": 0
+   }
+  ],
+  "T2A_plain_autosave_after_end_turn.SAV": [
+   {
+    "f": 0,
+    "owner": 1,
+    "route_x": -1,
+    "route_y": 55
+   },
+   {
+    "f": 1,
+    "owner": 3,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 2,
+    "owner": 0,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 3,
+    "owner": 2,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 4,
+    "owner": 7,
+    "route_x": -1,
+    "route_y": 0
+   },
+   {
+    "f": 5,
+    "owner": 0,
+    "route_x": -1,
+    "route_y": 0
+   }
+  ],
+  "T2B_sentinel_saveas.SAV": [
+   {
+    "f": 0,
+    "owner": 1,
+    "route_x": -1,
+    "route_y": 1000
+   },
+   {
+    "f": 1,
+    "owner": 3,
+    "route_x": -1,
+    "route_y": 1001
+   },
+   {
+    "f": 2,
+    "owner": 0,
+    "route_x": -1,
+    "route_y": 1002
+   },
+   {
+    "f": 3,
+    "owner": 2,
+    "route_x": -1,
+    "route_y": 1003
+   },
+   {
+    "f": 4,
+    "owner": 7,
+    "route_x": -1,
+    "route_y": 1004
+   },
+   {
+    "f": 5,
+    "owner": 0,
+    "route_x": 0,
+    "route_y": 0
+   }
+  ],
+  "T2B_sentinel_autosave_after_end_turn.SAV": [
+   {
+    "f": 0,
+    "owner": 1,
+    "route_x": -1,
+    "route_y": 1000
+   },
+   {
+    "f": 1,
+    "owner": 3,
+    "route_x": -1,
+    "route_y": 1001
+   },
+   {
+    "f": 2,
+    "owner": 0,
+    "route_x": -1,
+    "route_y": 1002
+   },
+   {
+    "f": 3,
+    "owner": 2,
+    "route_x": -1,
+    "route_y": 1003
+   },
+   {
+    "f": 4,
+    "owner": 7,
+    "route_x": -1,
+    "route_y": 1004
+   },
+   {
+    "f": 5,
+    "owner": 0,
+    "route_x": -1,
+    "route_y": 0
+   }
+  ],
+  "plain_vs_sentinel_after_end_turn": {
+   "same_length": true,
+   "differing": 10,
+   "inside_inert": 0,
+   "outside_inert": 10,
+   "outside_first": [
+    "0x1ae46",
+    "0x1ae47",
+    "0x1ae60",
+    "0x1ae61",
+    "0x1ae7a",
+    "0x1ae7b",
+    "0x1ae94",
+    "0x1ae95",
+    "0x1aeae",
+    "0x1aeaf"
+   ]
+  }
+ }
+}

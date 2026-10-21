@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v3.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v3.csv) (increment 3). New evidence should update its
+[`field-map-v4.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv) (increment 4: v3 + native evidence). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -358,6 +358,33 @@ dead: most of their writers are in code the decompilation does not contain.
   invariants. The value-policy column is unchanged from v1.
 - Native or emulator confirmation of the INERT claim and of the route
   lifecycle needs a game run, which the owner must authorise.
+
+## Increment 4: native checks (run-exp-sav-inert107, 2026-10-21)
+
+The owner approved the run in the session. The proposal is in the
+[#107 comment](https://github.com/diegoami/ic2-conquest/issues/107#issuecomment-6328308006).
+Headless Wine ran the seed build (seed 12345) and, for T3, the unpatched
+original EXE. Data and receipts are in
+[run-exp-sav-inert107](../runs/experiments/data/run-exp-sav-inert107/README.md).
+[`field-map-v4.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv)
+is v3 with this evidence added; its classes are unchanged.
+
+- **INERT bytes (T1, T3).** A marker was written in all 16 nations' INERT
+  ranges.
+  - It survives Save As and End turn.
+  - After a full 16-seat round, the plain and marked autosaves differ in
+    exactly those 496 bytes. No reader influenced that round.
+  - File > New in the same process keeps the markers. Otherwise, the
+    new-game autosave is byte-identical to the reference start save
+    `saves/run0-start-AUTO0720-seed12345.SAV`.
+  - The unpatched original's Save As is byte-identical to the seed build's.
+  - **Scope:** one round from one start; this is not every code path.
+- **Fleet waypoint (T2).**
+  - The split fleet's (0;0) route became x = −1 at the round tick, and y was
+    kept.
+  - route_y sentinels on 5 fleets survived and changed nothing else.
+  - No AI army set a waypoint in this round, so that writer path was not
+    observed.
 
 ## Field identity and alias corrections already supported
 
