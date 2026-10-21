@@ -1,0 +1,604 @@
+{
+ "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+ "dat_sha256": "94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd",
+ "dat_size": 140706,
+ "dat_layout_sum": 140706,
+ "dat_fully_consumed": true,
+ "dat_layout": [
+  {
+   "block": "map",
+   "dest": "0x45e870",
+   "length": 89600,
+   "repeat": 1,
+   "dest_instr": "0x4481e1",
+   "len_instr": "0x4481e6",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "city",
+   "dest": "0x479590",
+   "length": 11356,
+   "repeat": 1,
+   "dest_instr": "0x4481f1",
+   "len_instr": "0x4481f6",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "army",
+   "dest": "0x47c1ec",
+   "length": 656,
+   "repeat": 15,
+   "dest_instr": "0x448207",
+   "len_instr": "0x44820e",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "fleet",
+   "dest": "0x49c26c",
+   "length": 26,
+   "repeat": 2,
+   "dest_instr": "0x448234",
+   "len_instr": "0x44823b",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.name",
+   "dest": "0x0",
+   "length": 11,
+   "repeat": 16,
+   "dest_instr": null,
+   "len_instr": "0x44826a",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.relations",
+   "dest": "0x26",
+   "length": 32,
+   "repeat": 16,
+   "dest_instr": "0x448277",
+   "len_instr": "0x44827a",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.neighbours",
+   "dest": "0x46",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x448285",
+   "len_instr": "0x448288",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.city_list",
+   "dest": "0x48",
+   "length": 668,
+   "repeat": 16,
+   "dest_instr": "0x448293",
+   "len_instr": "0x448296",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.recruit",
+   "dest": "0x2e4",
+   "length": 320,
+   "repeat": 16,
+   "dest_instr": "0x4482a1",
+   "len_instr": "0x4482a7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.wealth",
+   "dest": "0x430",
+   "length": 4,
+   "repeat": 16,
+   "dest_instr": "0x4482b2",
+   "len_instr": "0x4482b8",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.treasury",
+   "dest": "0x438",
+   "length": 4,
+   "repeat": 16,
+   "dest_instr": "0x4482cf",
+   "len_instr": "0x4482d5",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.unity",
+   "dest": "0x440",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x4482ec",
+   "len_instr": "0x4482f2",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.mobilization",
+   "dest": "0x442",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x4482fd",
+   "len_instr": "0x448303",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.capital",
+   "dest": "0x444",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x44830e",
+   "len_instr": "0x448314",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.cities",
+   "dest": "0x446",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x44831f",
+   "len_instr": "0x448325",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.tax",
+   "dest": "0x44a",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x44833e",
+   "len_instr": "0x448344",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.tax_base",
+   "dest": "0x44c",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x44834f",
+   "len_instr": "0x448355",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "nation.conqueror",
+   "dest": "0x44e",
+   "length": 2,
+   "repeat": 16,
+   "dest_instr": "0x448360",
+   "len_instr": "0x448366",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.478FB0",
+   "dest": "0x478fb0",
+   "length": 200,
+   "repeat": 1,
+   "dest_instr": "0x448382",
+   "len_instr": "0x448387",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.479078",
+   "dest": "0x479078",
+   "length": 40,
+   "repeat": 1,
+   "dest_instr": "0x448392",
+   "len_instr": "0x448397",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4790A0",
+   "dest": "0x4790a0",
+   "length": 10,
+   "repeat": 1,
+   "dest_instr": "0x4483a2",
+   "len_instr": "0x4483a7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4790AC",
+   "dest": "0x4790ac",
+   "length": 232,
+   "repeat": 1,
+   "dest_instr": "0x4483b2",
+   "len_instr": "0x4483b7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.479194",
+   "dest": "0x479194",
+   "length": 336,
+   "repeat": 1,
+   "dest_instr": "0x4483c2",
+   "len_instr": "0x4483c7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4792E4",
+   "dest": "0x4792e4",
+   "length": 168,
+   "repeat": 1,
+   "dest_instr": "0x4483d2",
+   "len_instr": "0x4483d7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.47938C",
+   "dest": "0x47938c",
+   "length": 110,
+   "repeat": 1,
+   "dest_instr": "0x4483e2",
+   "len_instr": "0x4483e7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4793FC",
+   "dest": "0x4793fc",
+   "length": 110,
+   "repeat": 1,
+   "dest_instr": "0x4483f2",
+   "len_instr": "0x4483f7",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.47946C",
+   "dest": "0x47946c",
+   "length": 50,
+   "repeat": 1,
+   "dest_instr": "0x448402",
+   "len_instr": "0x448407",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4794A0",
+   "dest": "0x4794a0",
+   "length": 40,
+   "repeat": 1,
+   "dest_instr": "0x448412",
+   "len_instr": "0x448417",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4794C8",
+   "dest": "0x4794c8",
+   "length": 30,
+   "repeat": 1,
+   "dest_instr": "0x448422",
+   "len_instr": "0x448427",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.4794E8",
+   "dest": "0x4794e8",
+   "length": 64,
+   "repeat": 1,
+   "dest_instr": "0x448432",
+   "len_instr": "0x448437",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.479528",
+   "dest": "0x479528",
+   "length": 24,
+   "repeat": 1,
+   "dest_instr": "0x448442",
+   "len_instr": "0x448447",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "const.479540",
+   "dest": "0x479540",
+   "length": 80,
+   "repeat": 1,
+   "dest_instr": "0x448452",
+   "len_instr": "0x448457",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "merc_label_names",
+   "dest": "0x49cc94",
+   "length": 1040,
+   "repeat": 1,
+   "dest_instr": "0x448462",
+   "len_instr": "0x448467",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "merc_pool",
+   "dest": "0x49d0a4",
+   "length": 3012,
+   "repeat": 1,
+   "dest_instr": "0x448472",
+   "len_instr": "0x448477",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "leader_names",
+   "dest": "0x49dc68",
+   "length": 4992,
+   "repeat": 1,
+   "dest_instr": "0x448482",
+   "len_instr": "0x448487",
+   "instr_bytes_match": true
+  },
+  {
+   "block": "news",
+   "dest": "0x49f994",
+   "length": 2440,
+   "repeat": 1,
+   "dest_instr": "0x448492",
+   "len_instr": "0x448497",
+   "instr_bytes_match": true
+  }
+ ],
+ "dat_copies": [
+  {
+   "field": "NATION.wealth0",
+   "from_off": "0x430",
+   "to_off": "0x434",
+   "instr": "0x4482c3",
+   "instr_bytes_match": true
+  },
+  {
+   "field": "NATION.treasury0",
+   "from_off": "0x438",
+   "to_off": "0x43c",
+   "instr": "0x4482e0",
+   "instr_bytes_match": true
+  },
+  {
+   "field": "NATION.cities0",
+   "from_off": "0x446",
+   "to_off": "0x448",
+   "instr": "0x448330",
+   "instr_bytes_match": true
+  }
+ ],
+ "newgame_colours_found": 48,
+ "newgame_colours_complete": true,
+ "dat_offsets": {
+  "map": 0,
+  "city": 89600,
+  "army": 100956,
+  "fleet": 110796,
+  "nation.name": 110848,
+  "nation.relations": 110859,
+  "nation.neighbours": 110891,
+  "nation.city_list": 110893,
+  "nation.recruit": 111561,
+  "nation.wealth": 111881,
+  "nation.treasury": 111885,
+  "nation.unity": 111889,
+  "nation.mobilization": 111891,
+  "nation.capital": 111893,
+  "nation.cities": 111895,
+  "nation.tax": 111897,
+  "nation.tax_base": 111899,
+  "nation.conqueror": 111901,
+  "const.478FB0": 127728,
+  "const.479078": 127928,
+  "const.4790A0": 127968,
+  "const.4790AC": 127978,
+  "const.479194": 128210,
+  "const.4792E4": 128546,
+  "const.47938C": 128714,
+  "const.4793FC": 128824,
+  "const.47946C": 128934,
+  "const.4794A0": 128984,
+  "const.4794C8": 129024,
+  "const.4794E8": 129054,
+  "const.479528": 129118,
+  "const.479540": 129142,
+  "merc_label_names": 129222,
+  "merc_pool": 130262,
+  "leader_names": 133274,
+  "news": 138266
+ },
+ "groups": {
+  "saves": {
+   "files": 14,
+   "equal_of_total": {
+    "CITY.allegiance": [
+     4676,
+     4676
+    ],
+    "CITY.name(14 bytes)": [
+     4676,
+     4676
+    ],
+    "CITY.x": [
+     4676,
+     4676
+    ],
+    "CITY.y": [
+     4676,
+     4676
+    ],
+    "MERC (x,y) equals a template's": [
+     652,
+     652
+    ],
+    "MERC (x,y,label,type) equals a template's": [
+     652,
+     652
+    ],
+    "MERC never-filled slot": [
+     48,
+     48
+    ],
+    "NATION.cities0==DAT": [
+     224,
+     224
+    ],
+    "NATION.colours==NewGame constants": [
+     224,
+     224
+    ],
+    "NATION.leader in DAT leader list of its nation": [
+     224,
+     224
+    ],
+    "NATION.name(11 bytes)": [
+     224,
+     224
+    ],
+    "NATION.treasury0==DAT": [
+     224,
+     224
+    ],
+    "NATION.unknown1 zero": [
+     224,
+     224
+    ],
+    "NATION.unknown27 all zero": [
+     224,
+     224
+    ],
+    "NATION.unknown3 all zero": [
+     224,
+     224
+    ],
+    "NATION.wealth0==DAT": [
+     224,
+     224
+    ],
+    "TRAILER.turn_order is a permutation of 0..15": [
+     14,
+     14
+    ],
+    "contrast:CITY.owner": [
+     4656,
+     4676
+    ],
+    "contrast:CITY.pop": [
+     4479,
+     4676
+    ],
+    "contrast:NATION.cities==DAT": [
+     216,
+     224
+    ],
+    "contrast:NATION.treasury==DAT": [
+     93,
+     224
+    ],
+    "contrast:NATION.wealth==DAT": [
+     192,
+     224
+    ]
+   },
+   "per_file": [
+    {
+     "file": "saves/det-AUTO0721-clock.SAV",
+     "sha256": "ee4550c1094847310fe3eafaa8077481474d0ef3b4a5259acd397f4a74b862eb",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 11
+     }
+    },
+    {
+     "file": "saves/det-AUTO0721-seed12345.SAV",
+     "sha256": "48857fdd89c22f1260682318dc42083c73967c8dd3a926064a1103734cec1a1e",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 11
+     }
+    },
+    {
+     "file": "saves/det-AUTO0721-seed999.SAV",
+     "sha256": "5dc52eab947479332af48acc2edd87d3eecdf0d6550369ddb03e729650f99816",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 11
+     }
+    },
+    {
+     "file": "saves/fleet-port-antium-0734.SAV",
+     "sha256": "34d31d8f84710867e589e5265712e2076b2cc824108b47822620aef9e4421d89",
+     "mismatches": {
+      "contrast:CITY.owner": 9,
+      "contrast:CITY.pop": 97,
+      "contrast:NATION.cities==DAT": 2,
+      "contrast:NATION.treasury==DAT": 16,
+      "contrast:NATION.wealth==DAT": 14
+     }
+    },
+    {
+     "file": "saves/fleet-split-antium-0734.SAV",
+     "sha256": "20f38b88cb06a2fdc333a574016f63858f0289ab551e61c46182ef2c7ea41609",
+     "mismatches": {
+      "contrast:CITY.owner": 9,
+      "contrast:CITY.pop": 97,
+      "contrast:NATION.cities==DAT": 2,
+      "contrast:NATION.treasury==DAT": 16,
+      "contrast:NATION.wealth==DAT": 14
+     }
+    },
+    {
+     "file": "saves/fleets-adjacent-at-sea-0723.SAV",
+     "sha256": "bd0a3ed2e2ac4fc32c9ce874da1cee367e1eb24c353f08f21a30ef15529841d4",
+     "mismatches": {
+      "contrast:CITY.owner": 2,
+      "contrast:CITY.pop": 2,
+      "contrast:NATION.cities==DAT": 4,
+      "contrast:NATION.treasury==DAT": 10,
+      "contrast:NATION.wealth==DAT": 4
+     }
+    },
+    {
+     "file": "saves/fortify-arretium-0720.SAV",
+     "sha256": "7308ff9a64acd853f6ceecd35a7b6059978b3a5f7d2eeda9ad234dcda2bdb10a",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 6
+     }
+    },
+    {
+     "file": "saves/merc-hire-free-0720.SAV",
+     "sha256": "1cea9463f302c19c5b0b028427e25b5919779933b88f33769083384c4f02d026",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 5
+     }
+    },
+    {
+     "file": "saves/mobilize-new-army-0720.SAV",
+     "sha256": "8339c154dee25097f5aeb0ae7f691fc18016ab0d7f30fa9dfd274ddf4391a74b",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 6
+     }
+    },
+    {
+     "file": "saves/phase0-scripted-turn-AUTO0721.SAV",
+     "sha256": "6bfd9da2fef85e996d4105a9bd3452192fe98f7034eb4b4e7d262c03ae2f9ff8",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 12
+     }
+    },
+    {
+     "file": "saves/recruit-hi3200-0720.SAV",
+     "sha256": "6e8a76d3b05e6604e705b8ea178f20727476bf18638e1375ba00ca41c420909f",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 6
+     }
+    },
+    {
+     "file": "saves/run0-start-AUTO0720-seed12345.SAV",
+     "sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 5
+     }
+    },
+    {
+     "file": "saves/siege-felsina-failed-0721.SAV",
+     "sha256": "5473a8a0a77e03482e81ca29878a34106ff8efefb376d2ba4dbfb66ebc29a99a",
+     "mismatches": {
+      "contrast:CITY.pop": 1,
+      "contrast:NATION.treasury==DAT": 11
+     }
+    },
+    {
+     "file": "saves/trade-numidia-0720.SAV",
+     "sha256": "0da7a47918d83a742c46566d52fa1073dae0cb802763985a257ab9500eabe517",
+     "mismatches": {
+      "contrast:NATION.treasury==DAT": 5
+     }
+    }
+   ]
+  }
+ }
+}

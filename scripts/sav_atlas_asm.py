@@ -373,6 +373,36 @@ def scan(code_va, code, starts, scal, lo=0, hi=None):
     return hits
 
 
+def displacement_scan(code_va, code, starts, rec, spans, app_lo):
+    """Every memory operand of the application code whose displacement, read as an offset
+    into one `rec` record (or as an absolute address inside the table), falls in `spans`,
+    whatever its base register. The callee-side complement of the pointer tracking."""
+    from capstone import CS_ARCH_X86, CS_MODE_32, Cs
+    from capstone.x86 import X86_OP_MEM
+    md = Cs(CS_ARCH_X86, CS_MODE_32)
+    md.detail = True
+    md.skipdata = True
+    name, base, stride, count, _ = next(t for t in TABLES if t[4] == rec)
+    want = {b for lo, hi in spans for b in range(lo, hi + 1)}
+    bounds = sorted(x for x in starts if x >= app_lo) + [code_va + len(code)]
+    out, seen = [], set()
+    for a, b in zip(bounds, bounds[1:]):
+        for ins in md.disasm(code[a - code_va:b - code_va], a):
+            if ins.mnemonic == ".byte" or ins.address in seen:
+                continue
+            for op in ins.operands:
+                if op.type != X86_OP_MEM:
+                    continue
+                d = op.mem.disp & 0xFFFFFFFF
+                rel = d if d < stride else (d - base) % stride if base <= d < base + stride * count else None
+                if rel in want:
+                    seen.add(ins.address)
+                    out.append(dict(function=hex(a), va=hex(ins.address), offset=hex(rel),
+                                    base=md.reg_name(op.mem.base) if op.mem.base else None,
+                                    absolute=d >= stride, write=bool(op.access & 2)))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--exe", type=Path, required=True)
@@ -380,6 +410,8 @@ def main():
     ap.add_argument("--field-map", type=Path, default=cov.FIELD_MAP)
     ap.add_argument("--out-dir", type=Path, required=True)
     ap.add_argument("--tag", required=True)
+    ap.add_argument("--disp-scan", nargs="+", metavar="FIELD",
+                    help="only write asm-dispscan-<tag>.json: the displacement scan of these fields")
     ap.add_argument("--app-lo", type=lambda x: int(x, 0), default=APP_LO,
                     help="hits below this address (runtime library/VCL) are listed, not indexed")
     a = ap.parse_args()
@@ -392,6 +424,20 @@ def main():
             scal[addr + k] = (r["field_id"], k)
     code_va, code, exe = pe_code(a.exe)
     starts = function_starts(code_va, code, a.decompile)
+    if a.disp_scan:
+        rows = {r["field_id"]: r for r in _ROWS}
+        res = {}
+        for fid in a.disp_scan:
+            r = rows[fid]
+            res[fid] = displacement_scan(code_va, code, starts, r["record"], [(r["first"], r["last"])], a.app_lo)
+        out = dict(exe_sha256=hashlib.sha256(exe).hexdigest(), app_lo=hex(a.app_lo),
+                   method="every memory operand of the application code whose displacement is an offset "
+                          "inside the field (any base register) or an absolute address inside it",
+                   fields={k: dict(n=len(v), operands=v) for k, v in res.items()})
+        with open(a.out_dir / f"asm-dispscan-{a.tag}.json", "x") as fh:
+            json.dump(out, fh, indent=1); fh.write("\n")
+        print({k: len(v) for k, v in res.items()})
+        return 0
     allhits = scan(code_va, code, starts, scal)
     hits = [h for h in allhits if int(h["va"], 16) >= a.app_lo]
     library = [h for h in allhits if int(h["va"], 16) < a.app_lo]
