@@ -20,9 +20,9 @@ Wine run and not native Windows confirmation.
 
 ## Method and exact inputs
 
-Source: all_app_functions.txt SHA-256 
+Source: all_app_functions.txt SHA-256
 2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8.
-Static instruction checks used original EXE SHA-256 
+Static instruction checks used original EXE SHA-256
 9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31.
 DAT SHA-256 94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd;
 the actual12 terrain records atDAT 1F622 are loaded into runtime0x4792E4.
@@ -106,7 +106,7 @@ branches; they do not prove complete strategic AI, routing or every edge cell.
 
 ## Existing source-save routes reproduced under original instructions
 
-Unchanged saves/run0-start-AUTO0720-seed12345.SAV SHA-256 
+Unchanged saves/run0-start-AUTO0720-seed12345.SAV SHA-256
 050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c,
 turn 0720, army 0 (100,37), 8 moves. The harness copies its exact map and army0
 record into the emulator; no file write or original UI order occurs.
