@@ -3,7 +3,18 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v1.csv`: the machine-readable ledger. 113 rows over 14 record
+- `field-map-v3.csv` (**authoritative**, increment 3): v2 plus a `readers`
+  column (from `asm-index-v2.csv`, saver excluded) and `BATTLE.side` resolved
+  as the side to move. Classes: 79 CONFIRMED, 31 CONTEXTUAL, 3 INERT, 0 PARTIAL,
+  0 UNKNOWN. `scripts/sav_atlas_coverage.py` defaults to v3 (`--field-map`
+  selects v1 or v2).
+- `field-map-v2.csv` (increment 3, superseded by v3): v1's rows and columns
+  plus `start_value` (DAT, NewGame or BSS zero), `writers` (from
+  `asm-index-v2.csv`, loaders excluded) and `uncertainty`. It adds the class
+  `INERT`: no instruction reads or writes the bytes except the SAV
+  loader/saver; they are not initialised and are carried from the loaded file.
+  Classes: 78 CONFIRMED, 31 CONTEXTUAL, 3 INERT, 1 PARTIAL, 0 UNKNOWN.
+- `field-map-v1.csv`: the first ledger, kept unchanged. 113 rows over 14 record
   types: map cell, city, army count, army, army unit slot, fleet count, fleet,
   nation, mercenary, news index, news slot, trailer, battle block and battle
   unit slot. Offsets are relative to the record. `rec:<type>` rows nest a
@@ -38,6 +49,27 @@ Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107)
   indirect-call paths. `access-index-v1.csv` has CRLF line ends (Python csv default at
   the time), kept as measured; `.gitattributes` exempts it from `git diff --check`.
 
+- `asm-index-v1.csv` / `-v2.csv`, `asm-refs-*.jsonl`, `asm-summary-*.json`: the
+  machine-code index from `scripts/sav_atlas_asm.py` (capstone) on the pinned
+  EXE (SHA-256 `9d753d5d…ba31`). It covers the 10 functions that are absent
+  from the decompilation, among them the DAT loader `0x4481A0`, the SAV
+  loader `0x4487C4` and the NewGame initialiser `0x448AA4`. v2 fixes one
+  thing: v1 credited a block transfer that spans several scalar fields to
+  the first field only. The refs hold addresses, classes and field ids, never
+  code bytes. Hits below `0x436000` (library code) are listed in the summary,
+  not indexed.
+- `asm-dispscan-v1.json`: every memory operand whose displacement falls in
+  the inert nation ranges (and two control fields), with any base register.
+- `init-provenance-private-bundle-v1.json`, `init-provenance-public-v1.json`:
+  from `scripts/sav_atlas_init.py`.
+  - The DAT layout is checked against the loader's instruction bytes, and the
+    36 reads sum to the 140,706-byte DAT.
+  - The 48 NewGame colour constants are extracted.
+  - Per group, the receipt has per-check equal/total counts against the DAT
+    and NewGame values, with contrast fields. It holds counts only.
+- `corpus-public-v2.json`, `corpus-private-bundle-v2.json`, `corpus-public-v3.json`,
+  `corpus-private-bundle-v3.json`: the coverage checker with ledgers v2 and v3.
+
 Reproduce (`field-map-v1.csv` SHA-256
 `a09a5b5b5f5efcae54cce671f4ae7ece1e952a87ab9deff60c68b8e5a8f66e22`):
 
@@ -48,7 +80,15 @@ python3 -I scripts/sav_atlas_coverage.py --root $B $B/source-saves $B/native-evi
 python3 -m tests.test_sav_atlas_coverage
 python3 scripts/sav_atlas_access.py --source $B/decompile/all_app_functions.txt --out-dir runs/experiments/data/run-exp-sav-atlas107 --tag <new-tag>
 python3 -m tests.test_sav_atlas_access
+pip install capstone
+python3 scripts/sav_atlas_asm.py --exe "$B/original/Imperial Conquest 2.exe" --decompile $B/decompile/all_app_functions.txt --out-dir runs/experiments/data/run-exp-sav-atlas107 --tag <new-tag> [--field-map ...v1.csv]
+python3 scripts/sav_atlas_asm.py ... --tag <new-tag> --disp-scan NATION.unknown27 NATION.unknown1 NATION.unknown3 NATION.hints NATION.human
+python3 -I scripts/sav_atlas_init.py --exe "$B/original/Imperial Conquest 2.exe" --dat "$B/original/Imperial Conquest 2.dat" --root $B $B/source-saves $B/native-evidence $B/research40-saves --out runs/experiments/data/run-exp-sav-atlas107/<new-name>.json
+python3 -m tests.test_sav_atlas_asm; python3 -m tests.test_sav_atlas_init
 ```
+
+Note: `asm-*-v1` ran with ledger v1 as its field map, and `asm-*-v2` with v1 as
+well (the v2 ledger was built from it). The offsets are identical in v1 and v2.
 
 `--out` refuses an existing file. A re-run gets a new name, and the old
 receipts are kept. No game was started and no SAV was written. There are no

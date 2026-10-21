@@ -4,7 +4,8 @@
     python3 scripts/sav_atlas_coverage.py                       # static check only
     python3 scripts/sav_atlas_coverage.py --root DIR SAV... --out runs/experiments/data/run-exp-sav-atlas107/<name>.json
 
-Static check: every record type's rows in field-map-v1.csv tile its stride
+Static check: every record type's rows in the field map (default field-map-v3.csv;
+`--field-map` selects another, e.g. v1) tile its stride
 exactly (no gap, no overlap; `rec:<type>` rows nest a sub-record array), every
 row has a known semantic class, and the nation rows have exactly the ranges of
 the research37 nation-matrix-v2.csv.
@@ -13,7 +14,7 @@ Corpus check: frames each SAV in the order of the original serializer
 (save FUN_004484D0 / load FUN_004487C4), requires the walk to end exactly at
 the file end (battle block included when the trailer flag is set), and counts
 every byte of the file by its field's semantic class. It also counts, per
-UNKNOWN nation range, how many of the 16 records hold a non-zero byte.
+UNKNOWN or INERT nation range, how many of the 16 records hold a non-zero byte.
 
 Output is scalar only (sizes, counts, hashes, metric totals): no SAV bytes,
 names or values are written. Inputs are opened read-only. The output file is
@@ -29,13 +30,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "runs" / "experiments" / "data"
-FIELD_MAP = DATA / "run-exp-sav-atlas107" / "field-map-v1.csv"
+FIELD_MAP = DATA / "run-exp-sav-atlas107" / "field-map-v3.csv"  # v1 and v2 kept beside it
 NATION_MATRIX = DATA / "run-exp-sav-export37" / "nation-matrix-v2.csv"
 
 RECORD_LEN = {"map_cell": 2, "city": 34, "army_count": 2, "army": 656, "army_slot": 32,
               "fleet_count": 2, "fleet": 26, "nation": 1172, "merc": 12, "news_index": 2,
               "news_slot": 61, "trailer": 55, "battle": 2105, "battle_slot": 44}
-SEMANTIC = ("CONFIRMED", "CONTEXTUAL", "PARTIAL", "UNKNOWN")
+SEMANTIC = ("CONFIRMED", "CONTEXTUAL", "PARTIAL", "UNKNOWN", "INERT")
 MAP_CELLS, CITIES, NATIONS, MERCS, ARMY_CAP, NEWS_MAX = 320 * 140, 334, 16, 50, 198, 39
 
 
@@ -149,7 +150,7 @@ def scan(b, rows):
             counts[c] += n
     unknown = {}
     for r in rows:
-        if r["record"] == "nation" and r["semantic"] == "UNKNOWN":
+        if r["record"] == "nation" and r["semantic"] in ("UNKNOWN", "INERT"):
             span = range(r["first"], r["last"] + 1)
             unknown[r["field_id"]] = sum(any(b[facts["nation_off"] + 1172 * n + k] for k in span)
                                          for n in range(NATIONS))
@@ -165,12 +166,14 @@ def main():
     ap.add_argument("saves", nargs="*", type=Path, help="SAV files or directories (searched for *.sav, any case)")
     ap.add_argument("--root", type=Path, help="report paths relative to this directory")
     ap.add_argument("--out", type=Path, help="write the JSON receipt here (created exclusively)")
+    ap.add_argument("--field-map", type=Path, default=FIELD_MAP)
     args = ap.parse_args()
-    rows = load_map()
+    rows = load_map(args.field_map)
     errs = static_check(rows)
     rec_bytes = {rec: dict((c, byte_classes(rows, rec).count(c)) for c in SEMANTIC) for rec in RECORD_LEN}
-    report = {"field_map": str(FIELD_MAP.relative_to(ROOT)),
-              "field_map_sha256": hashlib.sha256(FIELD_MAP.read_bytes()).hexdigest(),
+    fmap = args.field_map.resolve()
+    report = {"field_map": str(fmap.relative_to(ROOT)) if fmap.is_relative_to(ROOT) else str(fmap),
+              "field_map_sha256": hashlib.sha256(fmap.read_bytes()).hexdigest(),
               "rows": len(rows), "static_errors": errs, "record_bytes_by_semantic": rec_bytes, "files": []}
     files = []
     for p in args.saves:

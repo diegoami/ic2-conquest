@@ -6,7 +6,8 @@ what is stored in original-game SAV files and record the results in findings.
 Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107).
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
-This entry is the living index for that issue. New evidence should update its
+This entry is the living index for that issue; its authoritative ledger is
+[`field-map-v3.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v3.csv) (increment 3). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -165,10 +166,12 @@ refs, which hold function, address, line and class only, never source text.
   These are the next per-field step, not dead fields.
 - **Fleet +4/+6 (PARTIAL):**
   - `FUN_0044D9A8` passes `&fleet[i]+4` as the out-pointer `param_4` of `FUN_0044CD08`, which ends with a 4-byte store `*param_4 = …`. That is the route target written as one x,y dword.
-  - `FUN_0044DBA8` passes the same address as `param_3`, which is a read.
+  - `FUN_0044DBA8` passes the same address as `param_3`, which is a read
+    (corrected in increment 3: `param_3` is written too).
   - +6 has no literal access of its own because it is reached only through this dword.
 
-  The per-turn −1 reset reported earlier is still not located; it is in the pointer frontier.
+  The per-turn −1 reset reported earlier is still not located; it is in the pointer frontier
+  (located in increment 3: the round tick at `0x451723`).
 - **UNKNOWN31:** there is still **no** literal access to +450..46A, +46D or
   +491..493 in any of the 16 nation records, including indexed forms. The
   earlier inventory covered nation 0 only. This scan is not closure: 36
@@ -181,6 +184,178 @@ refs, which hold function, address, line and class only, never source text.
   Save and load reset both to −1, which matches the tax cases' "selections −1"
   observation. `0x4A031C` is a further unserialized global next to the news
   index; it is not identified here.
+
+## Increment 3: machine-code index, initialisation provenance and ledger v2 (2026-10-21)
+
+**The authoritative ledger is now
+[`field-map-v3.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v3.csv)**.
+v1 and v2 are kept beside it, unchanged. v2 added three columns to every
+row: `start_value` (DAT, NewGame or BSS zero), `writers` (every writing
+function the machine-code index found, loaders excluded) and `uncertainty`.
+v3 adds `readers` (saver excluded) and resolves `BATTLE.side`. Classes: 79
+CONFIRMED, 31 CONTEXTUAL, 3 INERT, **0 PARTIAL, 0 UNKNOWN**. No game was run
+and no SAV was written; no review was run on this increment.
+
+**The 29 fields without a literal writer, verified.** `access-index-v1.csv`
+has 111 leaf rows and 29 with `n_write = 0`, as reported. They were not
+dead: most of their writers are in code the decompilation does not contain.
+
+- **Decompilation gap.** Of the application's direct call targets, 7 have no
+  decompiled body, and 3 class methods are missing as well. Three of the
+  missing functions write the SAV tables wholesale: the DAT loader
+  `0x4481A0`, the SAV loader `0x4487C4` and the NewGame initialiser
+  `0x448AA4`. Both `TPremierForm.InitialiseForm` (program start, `0x45A935`)
+  and `TPremierForm.NewGame` (`0x45AA2D`) call the DAT loader and then the
+  initialiser. The split-fleet creator `0x447C04` is also undecompiled.
+- **Machine-code index.**
+  [`scripts/sav_atlas_asm.py`](../scripts/sav_atlas_asm.py) disassembles the
+  pinned EXE (capstone) function by function. It follows literal
+  displacements, registers and stack slots holding a table address, push/pop,
+  forward branches, StrCopy/StrCat/Move/FillChar/word-swap helpers (each
+  identified from its own code), TStream `Read`/`Write` (VMT slots 0/4) and
+  `rep movs/stos`. Test: `python3 -m tests.test_sav_atlas_asm`, 9 hand-encoded
+  cases. Run [`asm-index-v2.csv`](../runs/experiments/data/run-exp-sav-atlas107/asm-index-v2.csv)
+  (v1 attributed a multi-field scalar block to its first field only; v2
+  fixes that, and both are kept): 3,414 hits, every one of the 111 leaf fields
+  has a writer.
+  - **Control:** the index reproduces 250 of the 252 v1 decompile writer
+    pairs. The other 2 are v1 false positives found by reading the lines:
+    `TAreaMap.ToggleMap` toggles `NATION.areamap_toggle`, not the current
+    nation, and `0x43CF3C` writes the info-text buffer at `0x49F00C + 61k`, not a
+    battle slot.
+  - **Heuristics, stated:** facts flow in linear order, forward branches
+    carry them, and after a `jmp` only callee-saved registers and stack slots
+    are kept (loop bodies entered from the bottom). An index term scaled by the
+    stride is taken as a whole number of records. Register-argument escapes are
+    over-approximate (a stale `ecx` passed to a scalar function is listed), so
+    an escape is a lead, not a write. Hits below `0x436000` (System/VCL, where
+    only inline data decoded as code matched) are listed, not indexed.
+- **DAT layout, complete.** The DAT loader's 36 TStream reads consume the
+  140,706-byte DAT exactly.
+  [`scripts/sav_atlas_init.py`](../scripts/sav_atlas_init.py) checks each read's
+  destination and length against the EXE's instruction bytes; test
+  `python3 -m tests.test_sav_atlas_init`. The DAT holds the map, the 334 cities,
+  15 armies, 2 fleets and 16 nation records of 1,055 bytes from DAT 0x1B100
+  (the offset research found independently). Each nation record holds name,
+  relations, neighbours, city list, recruitment, wealth, treasury, unity,
+  mobilisation, capital, cities, tax, tax base and conqueror. They are followed
+  by 14 constant tables that are not saved, the 52 × 20-byte mercenary
+  label-name table, the 251-record mercenary pool (templates 0–200, live slots
+  201–250), the 16 × 12 × 26-byte leader-name table and the 40 news slots (27
+  texts).
+- **Corpus provenance** ([private](../runs/experiments/data/run-exp-sav-atlas107/init-provenance-private-bundle-v1.json),
+  [public](../runs/experiments/data/run-exp-sav-atlas107/init-provenance-public-v1.json); 56 saves,
+  counts only). Every check holds in every file, and the contrast fields
+  that change in play (city owner and population, current wealth,
+  treasury and cities) differ in many files. The checks:
+  - city name (all 14 bytes), x, y and allegiance equal the DAT;
+  - nation name equals the DAT;
+  - wealth0/treasury0/cities0 equal the DAT value;
+  - the leader is one of its nation's 12 DAT names;
+  - the colours equal the 48 NewGame constants;
+  - the turn order is a permutation;
+  - every filled merc slot's (x, y, label, type) equals a template's;
+  - fresh saves reproduce the 27 DAT news texts byte for byte.
+
+**What each of the 29 is.** The full text is in the ledger; in short:
+
+| Fields | Writers and lifecycle | Class |
+|---|---|---|
+| CITY.name, x, y, allegiance; NATION.name | Static: only the DAT and SAV loaders write them. | unchanged |
+| NATION.wealth0, treasury0, cities0 | Start-of-game values. The DAT loader copies the just-read current value (`0x4482C3`, `0x4482E0`, `0x448330`); there is no other writer. | CONFIRMED |
+| NATION.leader | NewGame copies one of the nation's 12 DAT names (Random(12)). It is rewritten by `FUN_00449078`, `FUN_0044C360`, deposition `FUN_0044C8F0` (it draws until the name differs) and `TPickLeaders.OK`. | CONTEXTUAL |
+| NATION.colours | 3 fixed dwords per nation, set only by NewGame (`0x448C9B`–`0x448E63`). | CONFIRMED |
+| TRAILER.turn_order | NewGame fills 0..15 and swaps each position with Random(16), which is not a uniform shuffle. Seat 0 starts; current = order[0]. Nothing else writes it. | CONFIRMED |
+| SLOT.label, quality, name | Recruit arrival `FUN_0044A4E0` sets label 0, quality = recruit state div 4 and the name from `FUN_0044A218` ("Nth Foot/Guards/Bowmen/Lancers/Dragoons Battalion"). Merc hires set the pool label, quality and ethnic name. Whole-slot moves (`FUN_00437CAC`, `FUN_0044AC3C`, `FUN_0044ACB4`), army copies (`TArmyToArmy.OK`, `TChangeArmyUnits.OK`, which commits Rename, `TBattleOver.OK`) and army compaction also write them. | unchanged |
+| FLEET.x | The pointer writes of the AI step `FUN_0044DD70`, split `0x447C04`, `TFleetToFleet.OK` and compaction `FUN_0044AD7C`. | unchanged |
+| FLEET.route_x / route_y | The AI fleet waypoint (below). | PARTIAL → CONTEXTUAL |
+| MERC.x, y, label, type, quality | From the DAT, then only the restock `FUN_00449130` (NewGame runs it too), copying a template. | unchanged |
+| NEWS.text | DAT texts 0–26; appended by `FUN_00449240`, which shifts when full. | unchanged |
+| BSLOT.label, type, quality | Only the battle copy-in `FUN_00437DE4`, from the army slot. | unchanged |
+| NATION.unknown27, unknown1, unknown3 | Inert (below). | UNKNOWN → INERT |
+
+- **Trailer client size (PARTIAL → CONFIRMED).** The saver stores
+  `GetClientWidth` (`0x412880`: rect[2] of VMT+0x2C GetClientRect) at
+  `0x4A033E` and `GetClientHeight` (`0x4128C4`: rect[3]) at `0x4A033C`. The
+  loader passes them to `SetClientWidth` (`0x420C58`, which calls
+  `0x412898` = SetClientSize(Point(value, ClientHeight))) and to
+  `SetClientHeight` (`0x420C84`). So the file holds +0x32 ClientHeight and
+  +0x34 ClientWidth, as the ledger had named them.
+- **Fleet +4/+6 (now CONTEXTUAL).** This is the tile the owner's AI fleet
+  phase `FUN_0044F608` steers the fleet to (through `FUN_0044E1FC`); x = −1
+  means none.
+  - **Writers:** `FUN_0044CD08` walks a Bresenham line until the tile class
+    changes. It writes its `param_3` (the last tile before the change) and
+    its stack `param_4` (the first tile after it).
+    - `FUN_0044D9A8` (rendezvous) passes `&fleet.route` as `param_4`.
+    - `FUN_0044DBA8` (aboard army) passes it as `param_3`, which is
+      **written**. Increment 2 called that pass a read; this corrects it.
+  - **Reset:** the round tick `FUN_004514EC` sets route_x = −1 for every live
+    fleet (`0x451723`); route_y is never reset.
+  - **New records:** the fleet order (`FUN_0044A004`) and the split
+    (`0x447C04`) do not set it, so a new record keeps the slot's old bytes
+    until the next tick. This explains the only non-−1 route among the 219
+    live fleets of the corpus: the just-split fleet of
+    `saves/fleet-split-antium-0734.SAV` holds (0;0).
+- **NATION +0x450..0x46A, +0x46D, +0x491..0x493 (UNKNOWN → INERT).** In the
+  machine-code index, the only instructions that touch these bytes are the SAV
+  loader's whole-table read (`0x4488B2`) and the saver's write.
+  - **Displacement scan** ([`asm-dispscan-v1.json`](../runs/experiments/data/run-exp-sav-atlas107/asm-dispscan-v1.json)):
+    across all application code, every memory operand whose displacement lies
+    in these ranges, with any base register, was listed. There are 5, all
+    `lea` of nation+0x450, the base of the sub-record that holds hints to
+    shoot_delay; it is dereferenced only at +0x1B and beyond. The pad bytes
+    have 0 operands.
+  - **Initialisation:** the DAT does not hold them, NewGame does not set them
+    (it sets every other non-DAT nation field), and the tables are in BSS, so
+    they are zero at program start.
+  - **File > New does not clear them.** They carry whatever the last loaded
+    SAV in that process held, and they are zero in every original lineage
+    begun by New Game (56/56 sampled).
+  - **Layout:** +0x46D and +0x491..0x493 are exactly the natural-alignment
+    holes of an unpacked Delphi record (+0x46D before the i16 array at
+    +0x46E; +0x491 to +0x493 pad 1,169 used bytes to 1,172). +0x450..0x46A
+    are the first 27 bytes of the settings sub-record.
+  - **Proof scope:** this is static, at the scope of the stated index
+    heuristics. It is not a formal alias proof, and whether the source declared
+    a field there cannot be known from the binary. Research #47 owns
+    confirmation; the ledger states the scope in `uncertainty`.
+- **File > New leaves other state too.** The DAT loader rewrites only what it
+  reads. Army records 15..197 and fleet records 2.. keep their old bytes
+  beyond the new counts, and are therefore not saved. The battle block is
+  dropped by clearing the flag (`0x448ACA`).
+- **Battle header +4 (PARTIAL → CONFIRMED): the side to move**, 0 for the
+  attacker and 1 for the defender.
+  - **Placement order:** the copy-in `FUN_00437DE4` sets it to 1 with
+    `placed` = 0, so the defender places first. At the end of each half-round
+    (`TBattleMap.EndTurn` and the AI half-round `FUN_00439CE8`),
+    `FUN_00439C20` turns 1 into 0 while the sides are placing. It then sets
+    `placed` = 1 with side 0, so the attacker moves first, and toggles the
+    side from then on. `FUN_00439968` reads it to pick the acting nation.
+  - **The 2026-10-04 resume observation is explained statically.** The sweep
+    read memory 0 against file 1. Save and load copy the word unchanged,
+    and the resume path (`TBattleMap.StartBattle` → `FUN_00439968`) only reads
+    it. The copy-in runs only when the battle flag is 0, which is never the
+    case on a resume. So the only thing that can turn it to 0 is a
+    `FUN_00439C20` call (a completed half-round) before the read; it was not
+    a reset or a wrong address. This was not re-observed.
+- **Byte metrics** ([v2 public](../runs/experiments/data/run-exp-sav-atlas107/corpus-public-v2.json),
+  [v2 private](../runs/experiments/data/run-exp-sav-atlas107/corpus-private-bundle-v2.json),
+  [v3 public](../runs/experiments/data/run-exp-sav-atlas107/corpus-public-v3.json),
+  [v3 private](../runs/experiments/data/run-exp-sav-atlas107/corpus-private-bundle-v3.json)):
+  56/56 framed to EOF. Private bundle with v3: CONFIRMED 7.75 %, CONTEXTUAL
+  91.87 %, INERT 0.374 %, PARTIAL 0, UNKNOWN 0.
+
+**Remaining gaps.**
+
+- **CONTEXTUAL rows:** each has its writer and reader sets now, but the
+  formulas and domains per writer are restated only where they were in
+  question. **Physical identification is complete** (0 PARTIAL, 0
+  UNKNOWN). Semantic completion for the declared profile still needs the
+  dictionary-row items below per field: domains, sentinels and cross-record
+  invariants. The value-policy column is unchanged from v1.
+- Native or emulator confirmation of the INERT claim and of the route
+  lifecycle needs a game run, which the owner must authorise.
 
 ## Field identity and alias corrections already supported
 
@@ -208,10 +383,13 @@ fresh-state initializer, historic applicability or complete reader set.
 ## Unresolved register: what is actually still open
 
 1. **31 UNKNOWN positions per nation record:** +450..46A (27), +46D (1),
-   +491..493 (3). Across 16 nation records these repeat over 496 stored bytes.
+   +491..493 (3). *Increment 3: classed INERT on static machine-code
+   evidence with a stated proof scope; research #47 to confirm.* Across 16 nation records these repeat over 496 stored bytes.
    Do not call them the only unknown bytes of the entire SAV. Current samples
    and bounded non-access controls do not prove global padding/dead semantics.
-2. **Whole-program access frontier:** computed pointers, wide/overlapping loads,
+2. **Whole-program access frontier** (*increment 3: the machine-code index
+   covers the 10 undecompiled functions and register/slot pointers; escapes
+   and indirect calls remain leads*): computed pointers, wide/overlapping loads,
    indirect calls/vtables and relevant callers. A negative literal-offset search
    is a lead, not reader/writer closure. Track unresolved edges explicitly.
 3. **Construction and inactive records:** new-army constructor writes 96/656
@@ -316,5 +494,7 @@ Use actual hashes/profile evidence rather than infer a product version from a
 filename. Patched/lab builds and other originals need explicit applicability.
 
 This entry consolidates reviewed evidence and specifies the broad research
-deliverable. It does not supply new whole-program analysis, resolve UNKNOWN31,
-perform native validation, enable a general writer or change another repo.
+deliverable. Increment 3 adds static whole-program evidence (machine-code
+index, DAT layout, initialisation provenance) and the INERT classification
+with its proof scope. It does not perform native validation, enable a general
+writer or change another repo.
