@@ -83,3 +83,45 @@ dword written by FUN_0044CD08 param_4, and 0x4A0328/032A = the selected army and
 Next: work through the 29 no-literal-writer fields via the escape and pointer
 frontiers (names, slot copies, DAT/NewGame), then a ledger v2 with
 reader/writer columns joined from the access index.
+
+## 2026-10-21 increment 3 (Claude Code cloud session, session-led workflow)
+
+Start state: PR108 was already merged by the owner (merge `a5051a3`, 22:02);
+no review comments; issue #107 open. This session did not subscribe to PR108
+(the previous session's watch stays with it). Working branch
+`claude/eager-sagan-po9v87` from main `a5051a3`. Private bundle restored from
+`gdrive:IC2/conquest/cloud-migration-20261021` (the container's
+`IC2_DRIVE_REMOTE` again pointed elsewhere); archive SHA-256 OK, SHA256SUMS
+128/128. Research cloned read-only at `22ec86e`.
+
+Verified count: access-index-v1 has 111 leaf rows, 29 with no literal writer.
+
+Findings:
+- The decompilation lacks 7 called functions and 3 methods. Among them are the
+  DAT loader 0x4481A0, the SAV loader 0x4487C4, the NewGame initialiser
+  0x448AA4 and split fleet 0x447C04, which is where most of the 29 writers were.
+- New `scripts/sav_atlas_asm.py` (capstone machine-code index; test 9/9).
+  Scratch iterations it1-it6 were outside git and are not cited. They fixed:
+  - false function starts from raw E8 bytes;
+  - desync on inline strings (now disassembled per function);
+  - a `jmp` dropping facts;
+  - ebp used as a general register;
+  - the record -1 label rule;
+  - push/pop;
+  - library-region decodes.
+  Recorded runs: asm v1, and asm v2 (multi-field scalar blocks). Control:
+  250/252 v1 writer pairs reproduced; the other 2 are v1 false positives.
+- New `scripts/sav_atlas_init.py` (test 8/8). The DAT layout is verified
+  against the instruction bytes and the reads sum to the DAT size. NewGame
+  constants are extracted. The provenance checks hold in all 56 saves.
+- The ledger `field-map-v2.csv` is now authoritative: 0 UNKNOWN, 3 INERT
+  (with a stated proof scope), 1 PARTIAL (BATTLE.side). The trailer client
+  size and fleet route are resolved. The coverage checker accepts INERT and
+  defaults to v2. Corpus v2 receipts: 56/56 framed.
+
+Validation: tests coverage, access, asm and init pass; `git diff --check`.
+No game run, no SAV written, no private bytes or source text in git.
+
+Next: BATTLE.side, joining the readers into the ledger, and per-writer
+formulas for the CONTEXTUAL rows. The INERT confirmation goes to research #47
+(relay). Any native control needs the owner's authorisation.

@@ -1,0 +1,1213 @@
+{
+ "field_map": "runs/experiments/data/run-exp-sav-atlas107/field-map-v2.csv",
+ "field_map_sha256": "2098e52c2dbdd8a0fdaeddcb05c83e4e89cf3a09718981d9637f9f15c175104d",
+ "rows": 113,
+ "static_errors": [],
+ "record_bytes_by_semantic": {
+  "map_cell": {
+   "CONFIRMED": 0,
+   "CONTEXTUAL": 2,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "city": {
+   "CONFIRMED": 18,
+   "CONTEXTUAL": 16,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "army_count": {
+   "CONFIRMED": 2,
+   "CONTEXTUAL": 0,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "army": {
+   "CONFIRMED": 132,
+   "CONTEXTUAL": 524,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "army_slot": {
+   "CONFIRMED": 6,
+   "CONTEXTUAL": 26,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "fleet_count": {
+   "CONFIRMED": 2,
+   "CONTEXTUAL": 0,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "fleet": {
+   "CONFIRMED": 10,
+   "CONTEXTUAL": 16,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "nation": {
+   "CONFIRMED": 111,
+   "CONTEXTUAL": 1030,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 31
+  },
+  "merc": {
+   "CONFIRMED": 6,
+   "CONTEXTUAL": 6,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "news_index": {
+   "CONFIRMED": 2,
+   "CONTEXTUAL": 0,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "news_slot": {
+   "CONFIRMED": 0,
+   "CONTEXTUAL": 61,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "trailer": {
+   "CONFIRMED": 55,
+   "CONTEXTUAL": 0,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "battle": {
+   "CONFIRMED": 647,
+   "CONTEXTUAL": 1456,
+   "PARTIAL": 2,
+   "UNKNOWN": 0,
+   "INERT": 0
+  },
+  "battle_slot": {
+   "CONFIRMED": 16,
+   "CONTEXTUAL": 28,
+   "PARTIAL": 0,
+   "UNKNOWN": 0,
+   "INERT": 0
+  }
+ },
+ "files": [
+  {
+   "path": "source-saves/1.sav",
+   "bytes": 131313,
+   "sha256": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 27,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120800,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "source-saves/1_rome_270_winter_7.sav",
+   "bytes": 132149,
+   "sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "source-saves/1_thracia_271_spring_1.sav",
+   "bytes": 131557,
+   "sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C1B68B2.sav",
+   "bytes": 131313,
+   "sha256": "26c4cc3b6b963fb45ac1b41d4ad45bb741f0ed3d747f1338d8eec897379a2574",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 27,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120800,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C1T68B2.sav",
+   "bytes": 131313,
+   "sha256": "27f2aaee278f836ae33747604800847943dd836a6865ec875c49d5f5181faa66",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 27,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120800,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C2B68B2.SAV",
+   "bytes": 131557,
+   "sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C2I68B2.SAV",
+   "bytes": 131557,
+   "sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C2T68B2.SAV",
+   "bytes": 131557,
+   "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C3B68B2.SAV",
+   "bytes": 132149,
+   "sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C3I68B2.SAV",
+   "bytes": 132149,
+   "sha256": "7979e22ac6971eedd36c889da08b9b1af27fd4661945f1ce58eaa9b72029bf9a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/C3T68B2.SAV",
+   "bytes": 132149,
+   "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N1E68B2.SAV",
+   "bytes": 131496,
+   "sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 30,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120983,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N1I68B2.SAV",
+   "bytes": 131313,
+   "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 27,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120800,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N1L68B2.SAV",
+   "bytes": 131313,
+   "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 27,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120800,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N1O68B2.SAV",
+   "bytes": 131313,
+   "sha256": "0253f70e6405d18fd8cfed5dd000971811651cfe3dfd11597633c69376be3128",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 27,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120800,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N1R68B2.SAV",
+   "bytes": 131496,
+   "sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 30,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 120983,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N2E68B2.SAV",
+   "bytes": 131984,
+   "sha256": "13a64beae3e90d60ad4179e24b0d51e178698347725e567af3096a2887df4498",
+   "armies": 14,
+   "army_tombstones": 1,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 38,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121471,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N2I68B2.SAV",
+   "bytes": 131557,
+   "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N2L68B2.SAV",
+   "bytes": 131557,
+   "sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N2O68B2.SAV",
+   "bytes": 131557,
+   "sha256": "ee905f94083312695fe0138e94c6f98dc0a7e45a9fc2158d45958d18c605e7be",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 31,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121044,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N2R68B2.SAV",
+   "bytes": 131984,
+   "sha256": "13a64beae3e90d60ad4179e24b0d51e178698347725e567af3096a2887df4498",
+   "armies": 14,
+   "army_tombstones": 1,
+   "army_count_within_runtime_cap": true,
+   "fleets": 2,
+   "fleet_tombstones": 0,
+   "news_index": 38,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10017,
+    "CONTEXTUAL": 121471,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N3E68B2.SAV",
+   "bytes": 132149,
+   "sha256": "3e867d29fc18a69e6e9a9d6569f3246c1dff16b2062687952b143d362e703d3d",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N3I68B2.SAV",
+   "bytes": 132149,
+   "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N3L68B2.SAV",
+   "bytes": 132149,
+   "sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N3O68B2.SAV",
+   "bytes": 132149,
+   "sha256": "13e0e238298ed51ebf821d160d8e07aed3757c01e1ab64a5ab9027f07a7ec966",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "native-evidence/20261018T085043Z/N3R68B2.SAV",
+   "bytes": 132149,
+   "sha256": "3e867d29fc18a69e6e9a9d6569f3246c1dff16b2062687952b143d362e703d3d",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 0,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10057,
+    "CONTEXTUAL": 121596,
+    "PARTIAL": 0,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/CRAFT_c5_stale_grid.SAV",
+   "bytes": 134254,
+   "sha256": "3d7ca51cba266f86b1f73f770a8313b9692c70bf17005f42302227e6f113a581",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/CRAFT_c6_same_cell.SAV",
+   "bytes": 134254,
+   "sha256": "9f2d7eecc91b855789ee78bfaad9c02722bd4a8f2dd3cd3301961f07a54ef7fd",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/CRAFT_d5_stale_grid.SAV",
+   "bytes": 134254,
+   "sha256": "eb5c62e4ee4bb7305df6b3e9bf034a0f2360013ab16c88590ef360745e2d3e9d",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/CRAFT_d6_same_cell.SAV",
+   "bytes": 134254,
+   "sha256": "8e59b4c86357a7698260de0beb83c17ef9b96be13c2062309bff227b0a355f78",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_c5_stale_grid_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "a5fe05569fd1bba272360135447e45e68d3f376beb38f608b583358d525f88ee",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_c5_stale_grid_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "dd1d39b8114798c6b9d1dccdb16c26659ddb1a079fc6c661c28b6a94e24f78e1",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_c5_stale_grid_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "03abdfd0f70f558e36b97f14e8cc169aae83e14447821027478472819647257b",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_c6_same_cell_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "a5fe05569fd1bba272360135447e45e68d3f376beb38f608b583358d525f88ee",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_c6_same_cell_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "dd1d39b8114798c6b9d1dccdb16c26659ddb1a079fc6c661c28b6a94e24f78e1",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_c6_same_cell_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "03abdfd0f70f558e36b97f14e8cc169aae83e14447821027478472819647257b",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_d5_stale_grid_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "3eff485f9dac5a6d41b2d0c583e81b87e2f4b37d0dd8220d53d74ca43f7e6d8a",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_d5_stale_grid_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "51e4ea05d6603a9ac0b7637e6f9b9c44cb90a640875981f8052a5ba4d2605bc2",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_d5_stale_grid_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "130c5c529c755d15851946c554ccba42d8e0cb49c50cfeae72df683429759f0b",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_d6_same_cell_BATTLE01.SAV",
+   "bytes": 134254,
+   "sha256": "75adb49e39936e0442fa21924d30bcba937cff242ab7074c40c067679754b301",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_d6_same_cell_BATTLE02.SAV",
+   "bytes": 134254,
+   "sha256": "7afe72e9c8b2e7349720d3326a1ea0e0101c863ccf23548bedfd137d2bb53024",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  },
+  {
+   "path": "research40-saves/b3_d6_same_cell_BATTLE03.SAV",
+   "bytes": 134254,
+   "sha256": "aca683ab8b8da0463c608e333544f9228eb09dc6508d0e0c66b7f5d29d6ba49c",
+   "armies": 14,
+   "army_tombstones": 0,
+   "army_count_within_runtime_cap": true,
+   "fleets": 6,
+   "fleet_tombstones": 0,
+   "news_index": 39,
+   "battle_flag": 1,
+   "bytes_by_semantic": {
+    "CONFIRMED": 10704,
+    "CONTEXTUAL": 123052,
+    "PARTIAL": 2,
+    "UNKNOWN": 0,
+    "INERT": 496
+   },
+   "physical_coverage": true,
+   "unknown_nation_ranges_nonzero_records": {
+    "NATION.unknown27": 0,
+    "NATION.unknown1": 0,
+    "NATION.unknown3": 0
+   },
+   "framed": true
+  }
+ ],
+ "summary": {
+  "files": 42,
+  "framed_to_eof": 42,
+  "with_battle_block": 16,
+  "total_bytes_by_semantic": {
+   "CONFIRMED": 432066,
+   "CONTEXTUAL": 5120212,
+   "PARTIAL": 32,
+   "UNKNOWN": 0,
+   "INERT": 20832
+  },
+  "unknown_ranges_nonzero_in_any_file": []
+ }
+}

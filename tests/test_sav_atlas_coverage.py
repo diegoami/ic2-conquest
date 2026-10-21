@@ -60,8 +60,13 @@ def main():
         f = m.scan(synthetic(m, **kw), rows)
         check(f["physical_coverage"] and f["battle_flag"] == (1 if kw.get("battle") else 0),
               f"synthetic SAV {kw or 'default'} frames to EOF with full coverage")
-    unknown = sum(f["bytes_by_semantic"].values()) and f["bytes_by_semantic"]["UNKNOWN"]
-    check(unknown == 16 * 31, "UNKNOWN bytes counted as 31 per nation record (496)")
+    inert = f["bytes_by_semantic"]["INERT"]
+    check(inert == 16 * 31 and f["bytes_by_semantic"]["UNKNOWN"] == 0,
+          "v2: the 31 bytes per nation record are INERT (496), none UNKNOWN")
+    v1 = m.load_map(m.FIELD_MAP.with_name("field-map-v1.csv"))
+    check(m.static_check(v1) == [], "field-map-v1 still tiles every record")
+    f1 = m.scan(synthetic(m), v1)
+    check(f1["bytes_by_semantic"]["UNKNOWN"] == 16 * 31, "v1: UNKNOWN bytes counted as 31 per nation record (496)")
     good = synthetic(m)
     for bad, what in ((good[:-1], "truncated"), (good + b"\0", "trailing byte")):
         try:

@@ -23,8 +23,10 @@ Each hit is classed write, read or escape, with the instruction address.
 Heuristic limits, kept explicit: register facts flow only along the linear
 order (dropped after jmp/ret, kept across a fall-through loop head); an index
 term is assumed to be a multiple of the record stride when it is scaled by the
-stride, otherwise the hit is `unresolved`; indirect calls other than the
-stream slots are escapes. It is a lead index, not alias closure. Output holds
+stride; a block whose length is not a known immediate (a computed `ecx`, a
+string copy) is credited to the field at its first byte only; any
+`call [reg]` / `call [reg+4]` with a tracked edx is taken as a TStream
+Read / Write; other indirect calls are escapes. It is a lead index, not alias closure. Output holds
 addresses, classes and field ids only, never code bytes or listings. Files are
 created exclusively (CLAUDE.md rule 6).
 """
@@ -115,7 +117,11 @@ def resolve(fact_or_addr, disp=0, width=1, scal=None, indexed=False):
         a = fact_or_addr
         t = table_of(a, indexed)
         if scal and a in scal and not (t and t[0] != "scalar"):
-            return [scal[a][0]], "scalar", None
+            fids = []
+            for k in range(max(width or 1, 1)):  # a block transfer can span several scalar fields
+                if a + k in scal and scal[a + k][0] not in fids:
+                    fids.append(scal[a + k][0])
+            return fids, "scalar", None
         if not t:
             return None
         name, base, stride, rec = t
@@ -123,6 +129,10 @@ def resolve(fact_or_addr, disp=0, width=1, scal=None, indexed=False):
     if rec is None:
         return ["BATTLE.grid"], name, rec
     if isinstance(rec, tuple):
+        if scal:
+            a = base + off
+            fids = [scal[a + k][0] for k in range(max(width or 1, 1)) if a + k in scal]
+            return list(dict.fromkeys(fids)) or [rec[1]], name, None
         return [rec[1]], name, None
     return fields_over(cov_rows(), rec, off, width), name, rec
 
