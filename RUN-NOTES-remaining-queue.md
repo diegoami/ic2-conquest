@@ -34,3 +34,10 @@ inference and balance separated.14institutional/primary source refs/access
 limits retained. No finaldate/ownership, invented troop totals or implicit
 barbarian mechanics. Point-page access challenged, not bypassed; coordinates
 and site-by-site selected-date audit remain required before content authoring.
+
+20/35 status handoff prepared: exact main touch/source pins distinguish
+promotion receipts/canonical corrections from new experiment data; unmerged
+selection-rendering branch pinned without invented review. Agy35 existing
+Sonnet static/rework evidence and intent-only denied-command trials retained,
+PR36stilldraft; no new agy/config/credential work. All remaining queue items
+have bounded evidence/status or explicit blockers; independent review next.
