@@ -27,3 +27,10 @@ provenance, but11uniquehashes/turns0..6/no save78; actualformat7saveyb. Exact
 private paths/hashes kept only untracked local inventory, no privateJSONcopied.
 No conversion authorized past unresolved mapping/lineage/manifest gates.
 Proceeding39 last; tax3/3 not repeated, no old0/3 or draftPR1202 assertion.
+
+39 public-source proposal prepared:500/400/343date options; explicit16slot
+design budget; substantial48–64city/Italy+Sicily map acquisition plan; source,
+inference and balance separated.14institutional/primary source refs/access
+limits retained. No finaldate/ownership, invented troop totals or implicit
+barbarian mechanics. Point-page access challenged, not bypassed; coordinates
+and site-by-site selected-date audit remain required before content authoring.
