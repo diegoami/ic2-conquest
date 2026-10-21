@@ -20,3 +20,10 @@ match and original shot marker attribution for both surviving hook streams.
 Both original actors5->24 atHR7; current port actor/pass capture missing, not
 guessed. Original claims/general-pass absent. Draft and immutable JSON retained.
 Proceeding to37 available evidence; no native sequence repeat or fixture write.
+
+37 preflight: livePR1202 merged e5f1bd7 on2026-10-20;T184/T185 remainblocked.
+Private local12JSON set retains11format4/1format7, all16nations334cities/null
+provenance, but11uniquehashes/turns0..6/no save78; actualformat7saveyb. Exact
+private paths/hashes kept only untracked local inventory, no privateJSONcopied.
+No conversion authorized past unresolved mapping/lineage/manifest gates.
+Proceeding39 last; tax3/3 not repeated, no old0/3 or draftPR1202 assertion.
