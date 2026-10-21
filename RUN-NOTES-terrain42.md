@@ -12,8 +12,12 @@ Pinned source and EXE reverified. Existing Unicorn available, no installation.
 Prepared original_steps.py; only two presentation calls intercepted, all
 movement/selection helpers execute original bytes. No game/Wine/model launched.
 
-11 original-step controls and2 actual-save walker controls passed. Actual
-coordinate stores reveal eastward forest detour101,33; old Wine endpoints
+11 original-step controls and 2 actual-save walker controls passed. Actual
+coordinate stores reveal eastward detour to (101,33) around the forest at (100,33); old Wine endpoints
 reproduced, but no historical path is reattributed as observed. Draft and
-immutable v1JSON prepared. Source includes final-destination lateral bypass,
+immutable v1 JSON prepared. Source includes final-destination lateral bypass,
 first-after-swap ties and separate army/fleet caller matrix. No remake changes.
+
+GLM5.3Flash APPROVE at 9e139abb5fc9c265c0a289abb414fc447f21a77b; complete report read before edits. Actual provider/model zai-coding-plan/glm-5.3-flash#high, session ses_ea028d384ffe3oqFMXDCF7I7WU. Four nonblocking notes addressed in prose only; runner and v1 measurements unchanged. Static review did not execute private original inputs.
+
+Process diagnosis: first run selected incompatible native OpenCode2.0.28 and reported unknown-model before session creation. Second run fixed CLI to native1.18.32 but reused a data directory initialized by2.x, failing schema checks before session creation. Both full result records retained. Third run uses native1.18.32 plus a fresh version-compatible data directory and the SAME provider/model; no config/permission bypass or fallback.

@@ -1,6 +1,6 @@
 # Strategic lateral steps: exact ties, endpoint exception and callers
 
-**Status:** draft for research42/build1012, source and bounded original-x86
+**Status:** draft for research #42/build #1012, source and bounded original-x86
 controls; no new Wine/native Windows execution or remake/fixture changes.
 
 ## Answer
@@ -14,33 +14,33 @@ the army walker/step; fleets have a separate walker/step with parallel selection
 and sea-only costs. Caller wrappers and destination interactions differ.
 
 The original-instruction controls reproduce the old far/near endpoint totals
-and reveal the corresponding emulator path through(101,33). This is new x86
+and reveal the corresponding emulator path through (101,33). This is new x86
 evidence on the existing source save, not an observed path in the historical
 Wine run and not native Windows confirmation.
 
 ## Method and exact inputs
 
-Source: all_app_functions.txt SHA256
+Source: all_app_functions.txt SHA-256 
 2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8.
-Static instruction checks used original EXE SHA256
+Static instruction checks used original EXE SHA-256 
 9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31.
-DAT SHA25694d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd;
-the actual12 terrain records atDAT1F622 are loaded into runtime4792E4.
+DAT SHA-256 94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd;
+the actual12 terrain records atDAT 1F622 are loaded into runtime0x4792E4.
 Cost vector is1,3,1,1,2,4,4,4,4,4,4,4.
 
 [Runner](../runs/experiments/terrain42/original_steps.py) executes original
 instructions under installed Unicorn, mapping original PE sections without
 patching their bytes. It intercepts ONLY map redraw445B38 and sound45BF28
 as presentation no-ops; every movement/selection/cost/distance/swap helper
-executes original code. Human-success cases and full walks use these explicit
+executes original code. The current-nation WORD at 0x4A0320 is set to 0; fleet carried-army index (+0x16) is set to -1 for the isolated fleet controls. Presentation hooks preserve general registers, including EAX, and emulate a no-result register-convention return by advancing ESP/EIP only; they assume no caller-used result or stack-argument cleanup and do not reproduce painting/event timing. Human-success cases and full walks use these explicit
 presentation stubs. This is not unstubbed whole-program execution. Synthetic
 step inputs include an explicit parent frame and all-land/all-sea maps.
 
 [Retained output](../runs/experiments/data/run-exp-terrain42/original-controls-v1.json)
-records11 successful bounded step assertions and2 complete army-walker
+records 11 successful bounded step assertions and 2 complete army-walker
 assertions, actual instruction-coordinate stores, helper-entry states, input
 hashes and runner hash. No measured output, source save or original input was
-overwritten. Existing Wine evidence remains the canonical g2 report at1ff54ab.
+overwritten. Existing Wine evidence remains the canonical g2 report at 1ff54ab.
 
 ## Exact candidate and cost rules
 
@@ -57,8 +57,8 @@ after a detour; neither may be replaced with the other in the cost checks.
 
 IfP==destination, chooseP without this table. Otherwise compute costs cP,cA,cB:
 if neither alternative is strictly below cP, chooseP; otherwise chooseB only
-when cB<cA, and chooseA on equality. Source0044D420 lines51425–51476;
-instructions44D429–44D45B encode endpoint bypass;44D56D–44D575 strict
+when cB<cA, and chooseA on equality. Source 0044D420 lines 51425–51476;
+instructions 44D429–44D45B encode endpoint bypass;44D56D–44D575 strict
 improvement checks;44D58B–44D59E compare alternatives with first-on-tie.
 
 Army helper0044D31C lines51368–51396 starts at blocked cost10. It requires
@@ -82,9 +82,9 @@ It is not safe to generalize the through-forest detour to a one-tile forest clic
 
 ## Bounded original-instruction controls
 
-All synthetic controls start atU(10,10),moves8 unless specified. A northward
-nonterminal cursor isP(10,9),goal(10,5). Ordinary army map is plain2 and its
-marker200; fleet map is calm sea0 and marker300. The named changed cells are
+All synthetic controls start at U(10,10), moves 8 unless specified. A northward
+nonterminal cursor is P(10,9),goal (10,5). Ordinary army map is plain 2 and its
+marker 200; fleet map is calm sea 0 and marker 300. The named changed cells are
 explicit in the runner; no fixtures are altered.
 
 | Control | Original result XY/moves |
@@ -106,20 +106,20 @@ branches; they do not prove complete strategic AI, routing or every edge cell.
 
 ## Existing source-save routes reproduced under original instructions
 
-Unchanged saves/run0-start-AUTO0720-seed12345.SAV SHA256
+Unchanged saves/run0-start-AUTO0720-seed12345.SAV SHA-256 
 050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c,
-turn0720, army0(100,37),8moves. The harness copies its exact map and army0
+turn 0720, army 0 (100,37), 8 moves. The harness copies its exact map and army0
 record into the emulator; no file write or original UI order occurs.
 
 Both walks execute0044D734 with human flag1 and intercept its display/sound:
 
 - Target(100,25): coordinate stores trace(100,36),(100,35),(100,34),
-  (101,33),(100,32),(100,31),(100,30),(100,29), ending0moves.
-- Target(100,32): same first5 steps, ending3moves at the target.
+  (101,33),(100,32),(100,31),(100,30),(100,29), ending 0 moves.
+- Target(100,32): same first 5 steps,  ending 3 moves at the target.
 
-The endpoints/moves agree with old Wine C4/MM03. The stepped path is this
+The endpoints/moves agree with the retained [Wine C4 endpoint log](../runs/experiments/data/run-exp-g2-original-checks/g2_checks-C4-20261011-185907.jsonl): far12 ends at (100,29)/0 and near5 at (100,32)/3. The stepped path is this
 emulator run's evidence only. River affordability was isolated synthetically;
-the historical staged11move river case was not rerun here. No new save-backed
+the historical staged 11-move river case was not rerun here. No new save-backed
 gameplay progress or native compatibility claim follows.
 
 ## Caller and termination matrix
@@ -145,7 +145,7 @@ Afterward, at distance1 from the requested destination, lines51629–51657:
 terrain2..11 can recurse only when cost<remaining moves (strict); army-marker
 codes200..247 and city-marker codes20..99 enter their own hostility/contact
 branches, with positive-move gates for attacks and own/nonwar city supply.
-This tail is not proof of a middle-path interaction or research5 contact-rule
+This tail is not proof of a middle-path interaction or research #5 contact-rule
 reopening. Human caller's second walk and AI routing wrapper are separate
 from the step's own return; endpoint agreement alone cannot identify the path.
 
@@ -153,9 +153,9 @@ from the step's own return; endpoint agreement alone cannot identify the path.
 
 No current remake behavior was changed, fixtures normalized or expectations
 rebaselined. A bounded correction contract should own strategic step/cost
-selection and named callers explicitly, preserve contact research5, and test
+selection and named callers explicitly, preserve contact research #5, and test
 normal paths plus the endpoint exception, swapped lateral ties and controller
 affordability. Whole human/AI routing and native Windows paths still need their
 own acceptance evidence; these synthetic controls do not establish natural
-frequency or full original/remake parity. Research42 remains open pending
+frequency or full original/remake parity. Research #42 remains open pending
 independent review/intake and its remaining required validation.
