@@ -19,8 +19,8 @@ static review/private paths unavailable is not a native replay. Internal
 callback trace remains unverified; case1 geometry/blank-capture limits remain.
 No repeat of those three sequences is needed merely to clear stale status.
 
-GitHub now reports build **PR1202 MERGED**, no longer draft, on2026-10-20,
-mergee5f1bd76802ef583cf48a63c7582ee87b80a586a, original author head
+GitHub now reports build **PR1202 MERGED**, no longer draft, on 2026-10-20,
+merge e5f1bd76802ef583cf48a63c7582ee87b80a586a, original author head
 8c31728bf4124cd87465568e4429d202ddaf2f8d. Old comments saying draft/unmerged
 are historical. However T184/1193 and T185/1194 remain OPEN/status:blocked,
 release:v0.7.x. A merged strict identity/tax-subset writer does not complete
@@ -32,7 +32,7 @@ Do not redo the settled original layout or supply matrix. Canonical reports:
 
 -2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md: city list is
  live; baselines434/43C/448 are historical; conqueror44E is live/history;
-31bytes450..46A,46D,491..493 remain UNKNOWN. New-army constructor writes96
+31 bytes450..46A,46D,491..493 remain UNKNOWN. New-army constructor writes96
  of656bytes, fleet construction10of26, retaining560/16bytes respectively.
 -2026-10-18-sav-export-unknown-access-and-record-lineage-boundaries.md: bounded
  negative accesses are not global alias closure;32byte unit slot copies and
@@ -61,11 +61,11 @@ Aggregate observations:
 | Property | Actual available local set |
 |---|---|
 |File count / unique whole-file hashes|12 /11 (two byte-identical files)|
-|Save formats|11format4,1format7|
+|Save formats|11 format 4,1 format 7|
 |Observed turnIndex values|0,1,2,3,4,5,6|
 |Nations / cities|16 /334 in every file|
 |Scenario/world/rules|classical-mediterranean / classical-mediterranean / classical-faithful|
-|Source provenance|null in all12 envelopes|
+|Source provenance|null in all 12 envelopes|
 |Issue's expected save78 basename|ABSENT|
 |Actual format7 basename|classical-mediterranean-saveyb.json|
 
@@ -85,15 +85,15 @@ equivalence before treating this directory as the accepted12 inputs.
 
 1. Resolve the exact twelve-input manifest; preserve original paths/hashes and
    explicit file identities, even if two contents duplicate. Do not silently
-   replace save78 with another format7 file or count eleven unique hashes as
+   replace save78 with another format 7 file or count eleven unique hashes as
    permission to convert only eleven files.
 2. Complete applicable UNKNOWN/dependency analysis or an evidence-backed
    supported-state refusal policy, historical-profile applicability and complete
    new-record/inactive/text/relocation/carrier representation. Current baseline
    names/counts or all-zero samples do not prove arbitrary inheritance safe.
-3. Independently review T185's format4 migration and native export bridge before
+3. Independently review T185's format 4 migration and native export bridge before
    candidate production; checked capacities/encoding/indices and exclusive
-   publication remain required. The12current null-provenance inputs cannot use
+   publication remain required. The12 current null-provenance inputs cannot use
    a tax-only authenticated-original envelope as an identity shortcut.
 4. After supported outputs exist, independently decode actual exports and run
    the required deterministic/rejection/full-suite checks. Original-Windows

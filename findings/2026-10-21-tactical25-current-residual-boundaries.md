@@ -51,7 +51,7 @@ Gaul slot24 light infantry**:
   EAX3211269 (lowWORD5),EDX24; source RNG before368896245. Existing exchange
   row says actor troops3317,target4557,bound153,draws118/75,loss193.
 - s2 original hook seq113 is draw67; preceding shot markerseq112,
-  EAX3211269 (lowWORD5),EDX24; source RNG before1788744665. Existing exchange
+  EAX3211269 (lowWORD5),EDX24; source RNG before 1788744665. Existing exchange
   row says actor troops3317,target6238,bound175,draws173/118,loss291.
 
 The richer exchange troop/loss figures are retained prior attribution, not a

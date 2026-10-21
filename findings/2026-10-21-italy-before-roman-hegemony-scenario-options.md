@@ -50,7 +50,7 @@ trait or an objective ethnographic description.
   “Samnites.” Use an Oscan language/cultural tag and named regional political
   abstractions such as Samnite communities and Campanian communities. The
   Molise museum distinguishes Pentrian public cult/administration and earlier
-  occupation from much later monumental buildings [S6]; do not give400BCE
+  occupation from much later monumental buildings [S6]; do not give400 BCE
   armies a second-century theatre-temple as an existing state capital.
 - **Greek colonies:** Taras, Croton, Locri/Rhegion and Syracuse must not be
   automatically one “Greeks” nation. The Tarentine object record establishes
@@ -85,7 +85,7 @@ exceptions; no row grants ownership of every city in its modern region.
 |15|Sicilian indigenous communities|Sicel/Sican diversity must not disappear; a shared controller is a declared abstraction.|
 |16|Carthage/Punic network|Western Sicilian interests and African anchor; tributary/autonomous statuses are not simple annexation facts.|
 
-This uses all16 slots. Ligurian, Sardinian and other omitted communities cannot
+This uses all 16 slots. Ligurian, Sardinian and other omitted communities cannot
 be silently assigned to neighboring states, erased, or tagged “barbarian.” The
 owner must choose between different coalitions, a narrower playable footprint,
 or a supported neutral/community representation. That representation decision
@@ -111,7 +111,7 @@ Strait of Messina as real campaign choices; cities must connect via navigable
 routes and supplies, not sit on a tiny demonstration map.
 
 Target roughly48–64 dated settlements for the first complete campaign. The
-following48-name pool is a **verification backlog**, not approved400BCE city
+following48-name pool is a **verification backlog**, not approved400 BCE city
 ownership/population or tile coordinates:
 
 |Region/purpose|Six candidate names to verify at selected date|
@@ -140,7 +140,7 @@ precision; archaeological/museum citation; proposed controller with separate
 evidence/design tag; tile projection recipe and source attribution. Settlement
 location is not a territory boundary or a garrison-size estimate. One checked
 Taras cross-reference is the university Tabula Peutingeriana record [S12]; its
-later map context is a geographic crosswalk, not evidence of400BCE ownership.
+later map context is a geographic crosswalk, not evidence of400 BCE ownership.
 
 ## Geographic provenance and reuse
 
@@ -173,7 +173,7 @@ must be tagged with date/source and adapted only through a reviewed design.
 Use relative capacity bands before tuning numbers: port trade/naval logistics,
 fertile plains food/tax potential, inland supply/movement constraints. None of
 these supports an exact treasury, population, regiment count or unit stat in
-this draft. Do not back-project Polybius's much later levy figures into400BCE.
+this draft. Do not back-project Polybius's much later levy figures into400 BCE.
 
 Candidate victory options, explicitly DESIGN: hold a coherent regional base
 plus strategic routes/ports for a sustained period; survive a stronger rival
@@ -191,7 +191,7 @@ contains no approved special barbarian mechanic.
 ## Minimum next research, later detail and owner choices
 
 Before a substantial playable authoring contract: choose date and map/neutral
-scope; approve the16slot abstractions; audit48–64contemporary settlements and
+scope; approve the16-slot abstractions; audit48–64contemporary settlements and
 their ownership uncertainty; create licensed geographic manifest and projected
 route graph; source date-specific relationships; agree designed forces/economy
 and objectives; validate human/AI routes, supply and multiple viable starts.
