@@ -21,3 +21,36 @@ The scripts are in `runs/experiments/sav-inert107/`: `craft.py` (inputs),
 Files here: per-test step logs (`T*-<stamp>.jsonl`), the analysis receipts and
 `SAVES.sha256`. The saves are in `artifacts/run-exp-sav-inert107/` and the
 release `run-exp-sav-inert107`.
+
+## Results (2026-10-21, stamps 20261021-225237 / -225534 / -225657)
+
+Receipts are `analysis-T1-*.json`, `analysis-T2-*.json` and `analysis-T3-*.json`.
+`SAVES.sha256` holds T1 only; `SAVES.sha256.v2` holds all 12 saves.
+
+- **T1: every prediction held.**
+  - The markers survive Save As and End turn.
+  - After one full round (16 seats, AI moves, an offer box), the plain
+    `AUTO0721` and the marked one differ in exactly the 496 marker bytes and
+    nowhere else. No reader changed any gameplay outcome in that round.
+  - After File > New (Rome, seed 12345) in the marked process, the
+    new-game autosave keeps every marker. Outside them it equals the reference
+    `run0-start-AUTO0720-seed12345.SAV` byte for byte: its hash equals the
+    marked input's. So File > New does not clear the bytes.
+  - Save As also changed 2 bytes outside the INERT ranges (`0x1B2F6`,
+    `0x1B2FC`). Research saw `0x1B2F6` change the same way on a plain re-save
+    (G5, 2026-10-11).
+- **T2: as predicted.**
+  - The split fleet 5's route went from (0;0) to x = −1 at the round tick,
+    and its y stayed 0.
+  - All 5 route_y sentinels survived. The plain and sentinel autosaves differ
+    only in those 10 bytes.
+  - No AI army set a waypoint in this round.
+- **T3: the unpatched original EXE gives the same result.** Its Save As of
+  the marked copy is byte-identical to the seed build's (SHA-256
+  `3f38a391…`), with the markers intact.
+
+**Binaries.** The release token is not set in this cloud container, so no
+release was made. The 12 saves are in the environment's Drive artifact store,
+`gdrive:IC2/artifacts/run-exp-sav-inert107/` (`rclone check`: 12 matching),
+and in the git-ignored `artifacts/run-exp-sav-inert107/`. To publish them:
+`gh release create run-exp-sav-inert107 artifacts/run-exp-sav-inert107/*/*.SAV`.
