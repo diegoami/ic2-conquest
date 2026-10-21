@@ -176,3 +176,14 @@ Ledger v4 is authoritative. Open:
 - native observation of AI-set waypoints;
 - research #47 to review INERT;
 - an optional release of the run's saves (no token here; they are on Drive).
+
+## 2026-10-21 increment 5: research #47 residue items (static)
+
+- New-record residue: the army keeps 560 unwritten bytes, but no reader can
+  see them (guards and troops = 0). The fleet's leftover `moves` survive
+  launch until the next tick; that is a candidate effect.
+- Deleted slots and text tails are never read.
+- History: wealth0/treasury0/cities0/conqueror are presentation only;
+  allegiance drives gameplay and needs a historical profile.
+- Ledger v5 is authoritative; tests pass. One correction found while checking
+  the draft: FUN_0044B27C scales the siege defence, not losses.

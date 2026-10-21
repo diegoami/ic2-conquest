@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v4.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv) (increment 4: v3 + native evidence). New evidence should update its
+[`field-map-v5.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v5.csv) (increment 5: residue, text tails and history). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -385,6 +385,98 @@ is v3 with this evidence added; its classes are unchanged.
   - route_y sentinels on 5 fleets survived and changed nothing else.
   - No AI army set a waypoint in this round, so that writer path was not
     observed.
+
+## Increment 5: new-record residue, deleted slots, text tails and history (2026-10-21)
+
+This increment addresses the three research #47 items that increment 4
+narrowed but did not close. It is static only (decompile + `asm-index-v2`),
+plus corpus counts. [`field-map-v5.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v5.csv)
+is v4 with these notes, evidence, uncertainty and value policies; no class
+changed.
+
+**1. Bytes a new army or fleet record does not write.**
+
+- **Army constructor `FUN_00449F08`.** It writes the 16-byte header and, in
+  each of the 20 slots, only type and troops (= 0): 96 of 656 bytes.
+  - **Where the other 560 come from.** Label, quality and name keep the bytes
+    already at that table index. That is a duplicate, because army compaction
+    `FUN_0044ABE0` copies the last record into the hole and does not clear
+    the source; or a record from before File > New (the DAT reload rewrites
+    only 15 armies); or BSS zero.
+  - **Why they cannot be observed.** Every path that makes a slot live writes
+    all five slot fields: recruit arrival `FUN_0044A4E0`, merc hires,
+    `TBattleOver.OK` and whole-slot moves. Every reader is guarded by
+    troops > 0 or by the packed count (`FUN_0044A66C`), with one exception:
+    `TInformation.ShowArmyDetails`. Its terms are `(troops div 200) × …`,
+    which is 0 for an empty slot.
+  - **Troops never go negative.** The attrition `FUN_0044AE20` subtracts
+    `(troops div (105..119)) × p`, and every caller passes p ≤ 100:
+    - battles: 40 × smaller div larger;
+    - siege: 1..15;
+    - naval battle and storm: `(loser, winner)` strengths, so r ≤ 100.
+
+    Corpus: 56 saves, 6,102 live and 9,498 empty slots. None has negative
+    troops, and no live slot follows an empty one.
+- **Fleet order `FUN_0044A004`.** It writes 10 of 26 bytes.
+  - **Launch writes most of the rest.** `FUN_0044A050` sets x,y (through
+    `FUN_0044939C`: x = −1, then the found tile as a dword), supplies 50,
+    money 0, condition 100, army −1, cell 0 and countdown −1.
+  - **Supplies while building.** Under construction, the round tick applies
+    `max(0, supplies − ships)` to the leftover supplies.
+  - **One leftover stays visible: `moves`.** The tick sets moves only for
+    launched fleets (countdown −1), and it is the same tick that launches a
+    fleet (countdown 0). So a new fleet keeps the leftover moves of its table
+    index until the next tick. That is zero for a never-used index; after
+    compaction `FUN_0044AD7C`, it is the value of the fleet that was moved.
+    This is a candidate observable effect, not observed natively.
+  - Corpus: all 120 fleets under construction hold 0 in the leftover words.
+- **Split fleet `0x447C04`.** It writes everything except +4/+6 (increment 3).
+
+**2. Deleted unit slots and old text.**
+
+- **Unit removal `FUN_0044AC3C`.** It copies the last live slot over the
+  removed one and zeroes only the last slot's troops. The empty slot
+  therefore holds a duplicate of a live unit, and nothing reads it (point 1).
+- **Text tails.** Every text reader goes through a NUL-terminated helper:
+  StrCopy `0x405B00`, StrCat `0x405BC8`, StrComp `0x405C08`, or `0x403458`,
+  which builds a string from `min(strlen, max)` bytes. The index's six direct
+  byte reads of text fields are artefacts: `0x43CE6D` reads the slot type, and
+  `0x44A415` is a jump table decoded as code. So the bytes after the NUL are
+  never interpreted. They change only through whole-buffer moves and the
+  serializer.
+
+**3. Historical fields for a campaign that did not start from the original.**
+
+- **`wealth0`, `treasury0`, `cities0` and `conqueror` are presentation
+  only.** The start-of-game copies have one reader, `THumanFalls.InitializeForm`,
+  which formats them for the leader-falls screen. `conqueror` is also read by
+  `TInformation.ShowNationStatus`. A campaign that did not come from the DAT
+  may hold its own values, with no effect on the simulation.
+- **`CITY.allegiance` drives gameplay.**
+  - The city's defence value (`FUN_0044A98C`: loyalty × 150 + fort × 250 +
+    pop × 200, …) is scaled × 4/5 when the owner is not the allegiance
+    nation, and × 9/10 again in a siege by the allegiance nation
+    (`FUN_0044B27C`).
+  - Capture caps loyalty at 90 for the allegiance nation and lower
+    otherwise (`FUN_0044BB18`, `FUN_0044BED8`).
+  - The rebellion logic `FUN_0044C204` compares it with the owner.
+  - It cannot be derived from the current owner. A campaign that did not
+    start from the DAT must supply it, so its value policy is
+    `HISTORICAL_PROFILE`.
+
+**Value policies changed in v5:**
+
+| Rows | Old | New |
+|---|---|---|
+| route_x / route_y | `UNRESOLVED_REFUSE` | `LIVE_AND_RESIDUE` |
+| the 3 INERT rows | `UNKNOWN_REJECT_CHANGED_STATE` | `PRESERVE_OR_ZERO` (carry as loaded; zero matches every original New Game lineage) |
+| `CITY.allegiance` | `LIVE` | `HISTORICAL_PROFILE` |
+
+**Still open:**
+
+- The first-turn moves effect of a reused fleet index, which needs a game run.
+- The full rebellion rule.
+- Independent review of increments 3–5.
 
 ## Field identity and alias corrections already supported
 
