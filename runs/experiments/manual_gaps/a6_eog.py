@@ -8,7 +8,8 @@ import json
 import sys
 import time
 
-from harness.driver import GameOver
+import mg  # noqa: F401  (sets sys.path)
+from harness.driver import GameOver  # noqa: E402
 from mg import SAVES, DATA, start, snap, log, GAME_AREA, keep_save, G
 
 CASES = {
@@ -25,12 +26,19 @@ if __name__ == "__main__":
     rec = {"case": k, "save": name, "why": why, "load_boxes": texts}
     try:
         rec["end_turn"] = g.end_turn()
-        rec["result"] = "no End of Game window"
     except GameOver as e:
+        rec["gameover_ocr"] = str(e)
+    for _ in range(20):         # the window can open after the autosave line (the autosave is written before the test)
+        if g.find_windows("^End of Game$"):
+            break
+        time.sleep(0.5)
+    if not g.find_windows("^End of Game$"):
+        rec["result"] = "no End of Game window"
+    else:
         rec["result"] = "End of Game"
-        rec["ocr"] = str(e)
         time.sleep(1.5)
         w = g.find_windows("^End of Game$")[0]
+        rec["ocr"] = g.read_popup(w)
         rec["geometry"] = list(w[2:])
         snap(g, f"MG_A6{k}_end_of_game_window.png", "A6", f"End of Game window: {why}", window=w)
         snap(g, f"MG_A6{k}_end_of_game_context.png", "A6", f"Context: the End of Game window over the game screen ({why})",
