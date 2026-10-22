@@ -13,12 +13,14 @@ It took 8 Gallic cities (two by defection; peak 33 on `AUTO0736.SAV`) and lost 5
 
 ## Run 1 vs run 0 (same seeds, same start)
 
+*(Queue column corrected 2026-10-22 in review against `runs/1/metrics.csv` and `runs/0/metrics.csv`, `queue_troops`.)*
+
 | Save | Run 1 cities | Run 0 cities | Run 1 field + queue | Run 0 field + queue | Run 1 treasury (floor) | Run 0 treasury | Run 1 unity / mob | Run 0 unity / mob |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | `run0-start-AUTO0720-seed12345.SAV` | 25 | 25 | 45,700 + 14,000 | same | 2,200 (−4,154) | 2,200 | 821 / 30 | 821 / 30 |
-| `AUTO0726.SAV` | 28 | 28 | 33,752 + 107,000 | 33,752 + 15,500 | −3,376 (−4,544) | 941 | 866 / 71 | 880 / 35 |
-| `AUTO0732.SAV` | 30 | 30 | 40,493 + 107,000 | 55,192 + 10,000 | −4,262 (−4,724) | 596 | 882 / 79 | 911 / 38 |
-| `AUTO0738.SAV` | 32 | 32 | 53,038 + 79,500 | 14,877 + 0 | −4,655 (−5,066) | 1,171 | 886 / 77 | 961 / ~35 |
+| `AUTO0726.SAV` | 28 | 28 | 33,752 + 96,500 | 33,752 + 24,500 | −3,376 (−4,544) | 941 | 866 / 71 | 880 / 35 |
+| `AUTO0732.SAV` | 30 | 30 | 40,493 + 107,500 | 55,192 + 10,000 | −4,262 (−4,724) | 596 | 882 / 79 | 911 / 38 |
+| `AUTO0738.SAV` | 32 | 32 | 53,038 + 94,500 | 14,877 + 3,000 | −4,655 (−5,066) | 1,171 | 886 / 77 | 961 / ~35 |
 | `AUTO0744.SAV` | 28 | 31 | 44,032 + 70,500 | 17,877 + 13,000 | −4,499 (−4,556) | 838 | 875 / 74 | 959 / 38 |
 
 The two runs were identical to 0725, because the AI moves did not change. They diverge from 0726, when run 0 joined its armies north and run 1 kept a southern army, and above all on 0737. That turn run 0 attacked Gaul's 88,800 at ratio 3.13 and lost 73 %. Run 1 declined at 3.28, gathered the reserve, and fought Gaul's army six turns later, starving, at 5.84.
