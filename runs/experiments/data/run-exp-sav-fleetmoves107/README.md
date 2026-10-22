@@ -31,7 +31,7 @@ compaction copies before the tick refreshes moves. A non-zero leftover needs
 the moved fleet to have had moves at compaction time. Whether the owner can
 spend leftover moves on the launch turn was not exercised.
 
-Saves: `gdrive:IC2/artifacts/run-exp-sav-fleetmoves107/` (`rclone check`: 7
-matching). No release token is set in this container. To publish them:
-`gh release create run-exp-sav-fleetmoves107 artifacts/run-exp-sav-fleetmoves107/*/*.SAV`
-(copy them from Drive first).
+Saves: the owner published the release
+[`run-exp-sav-fleetmoves107`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-sav-fleetmoves107)
+on 2026-10-22. Every release digest equals `SAVES.sha256` (7/7, checked the same day). A copy stays in
+`gdrive:IC2/artifacts/run-exp-sav-fleetmoves107/`.
