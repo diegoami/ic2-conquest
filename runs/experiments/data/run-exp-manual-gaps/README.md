@@ -31,6 +31,7 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
 | B9 buy supplies from a foreign city | **done**, matches the code (two cases) | `B9-buy-supplies-diff.txt`, `MG_B9_*.png`, `MG_B9b_*.png`; finding `2026-10-22-buying-supplies-from-a-foreign-city.md` |
 
 | A6 End of Game | **done**: (a) 250 BC, (b) deposition for debt, (c) victory | `MG_A6{a,b,c}_end_of_game_window.png`, `..._context.png`, `..._after_ok_screen.png`; `a6-eog.jsonl` |
+| B11 AI declares war on the human | **done** (seed 12345, turn 0733->0734; news line only, no box) | `b11-war.jsonl`, `B11-0733-0734-diff.txt`, `MG_B11_seed12345_after_declaration_screen.png`; finding `2026-10-22-ai-declares-war-on-a-human-seat.md` |
 | B10 Winter storm spike | **done**: 4 spikes in 72 fleet-turns, every loss as the code says | `b10-storms.jsonl`, `b10-table.v1.md`; finding `2026-10-22-winter-storm-spike-on-own-fleets.md` |
 
 ### A1 attack-army box (turn 0720)
@@ -116,3 +117,11 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
 - End turn box texts seen (the "End turn ?" box, not shot): "One of your fleets is not docked at its own city" (one line per
   fleet), "A fleet of yours needs repairing.", "An army of yours needs supplies."; turn-start offers ("Greece wants to trade with
   Rome.", shot `MG_B10_seed1_t0742_box001.png`).
+
+### B11 AI declares war on the human (`b11_war.py`)
+- Staged save `MG_B11_staged_carthage_celtiberia_-18.SAV`: run0 start with Carthage-Celtiberia 3 -> -18 (one edit), so
+  Carthage is at war with nobody and Rome is its only eligible neighbour (8 x P ratio 13.1).
+- Seed 12345, End turn only: Carthage declared on Rome in its seat after turn 0733 (Week 3 Autumn 270 BC), the 14th turn with
+  the conditions met; seen in `MG_B11_seed12345_AUTO0734.SAV` (relation 3 both ways). **No box**: the human sees only the news
+  line "CARTHAGE DECLARES WAR ON ROME." (`MG_B11_seed12345_after_declaration_screen.png`). Meanwhile Gaul took 9 Roman cities
+  (25 -> 16), lowering Rome's P from 1,058 to 634. Finding `2026-10-22-ai-declares-war-on-a-human-seat.md`.
