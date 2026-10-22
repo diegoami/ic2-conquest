@@ -1,0 +1,568 @@
+# TPF0 resource of TAFSupply from Imperial Conquest 2 fast rollingsave seed.exe (read-only dump; offset in the exe file given)
+# offset 0x6a0f8 end 0x6bafd
+object AFSupply: TAFSupply
+  Left = 197
+  Top = 98
+  HelpContext = 11
+  BorderIcons = {'set': []}
+  BorderStyle = {'ident': 'bsDialog'}
+  Caption = 'Supply army'
+  ClientHeight = 335
+  ClientWidth = 470
+  Font.Color = {'ident': 'clWindowText'}
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = {'set': []}
+  Visible = True
+  OnCreate = {'ident': 'InitializeForm'}
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Bevel1: TBevel
+    Left = 10
+    Top = 10
+    Width = 295
+    Height = 86
+  end
+  object Bevel18: TBevel
+    Left = 225
+    Top = 20
+    Width = 70
+    Height = 66
+  end
+  object Bevel3: TBevel
+    Left = 40
+    Top = 106
+    Width = 390
+    Height = 86
+  end
+  object bvl_buyno3: TBevel
+    Left = 230
+    Top = 116
+    Width = 80
+    Height = 66
+  end
+  object bvl_buyno2: TBevel
+    Left = 140
+    Top = 116
+    Width = 80
+    Height = 66
+  end
+  object Bevel2: TBevel
+    Left = 20
+    Top = 20
+    Width = 105
+    Height = 66
+  end
+  object lbl_onat: TLabel
+    Left = 22
+    Top = 21
+    Width = 100
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Caption = 'Supplies at'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_prvname: TLabel
+    Left = 23
+    Top = 37
+    Width = 100
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Caption = 'Teanum Apulum'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Bevel5: TBevel
+    Left = 45
+    Top = 55
+    Width = 50
+    Height = 21
+    Shape = {'ident': 'bsFrame'}
+  end
+  object lbl_prvsupps: TLabel
+    Left = 51
+    Top = 57
+    Width = 40
+    Height = 14
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_armyfleet: TLabel
+    Left = 235
+    Top = 21
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Caption = "Army's"
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 235
+    Top = 37
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = 'supplies'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Bevel6: TBevel
+    Left = 235
+    Top = 55
+    Width = 50
+    Height = 21
+    Shape = {'ident': 'bsFrame'}
+  end
+  object lbl_afsupps: TLabel
+    Left = 240
+    Top = 57
+    Width = 40
+    Height = 14
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_buyno1: TLabel
+    Left = 155
+    Top = 117
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = 'Supplies'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_buyno2: TLabel
+    Left = 155
+    Top = 133
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = 'amount'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_buyno3: TLabel
+    Left = 245
+    Top = 117
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = 'Supplies'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_buyno4: TLabel
+    Left = 245
+    Top = 133
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = 'cost'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object bvl_buyno4: TBevel
+    Left = 155
+    Top = 151
+    Width = 50
+    Height = 21
+    Shape = {'ident': 'bsFrame'}
+  end
+  object bvl_buyno5: TBevel
+    Left = 245
+    Top = 151
+    Width = 50
+    Height = 21
+    Shape = {'ident': 'bsFrame'}
+  end
+  object lbl_buysupplies: TLabel
+    Left = 160
+    Top = 153
+    Width = 40
+    Height = 14
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_buycost: TLabel
+    Left = 250
+    Top = 153
+    Width = 40
+    Height = 14
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Bevel9: TBevel
+    Left = 80
+    Top = 202
+    Width = 310
+    Height = 86
+  end
+  object bvl_nfno1: TBevel
+    Left = 100
+    Top = 212
+    Width = 80
+    Height = 66
+  end
+  object bvl_nfno2: TBevel
+    Left = 200
+    Top = 212
+    Width = 80
+    Height = 66
+  end
+  object bvl_nfno3: TBevel
+    Left = 300
+    Top = 212
+    Width = 70
+    Height = 66
+  end
+  object lbl_natfltno2: TLabel
+    Left = 110
+    Top = 229
+    Width = 60
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Caption = 'balance'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_afmoney: TLabel
+    Left = 311
+    Top = 213
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Caption = "Army's"
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object bvl_nfno4: TBevel
+    Left = 110
+    Top = 247
+    Width = 60
+    Height = 21
+    Shape = {'ident': 'bsFrame'}
+  end
+  object bvl_nfno5: TBevel
+    Left = 311
+    Top = 247
+    Width = 50
+    Height = 21
+    Shape = {'ident': 'bsFrame'}
+  end
+  object lbl_natbal: TLabel
+    Left = 112
+    Top = 249
+    Width = 55
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_money: TLabel
+    Left = 316
+    Top = 249
+    Width = 40
+    Height = 14
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_natfltno1: TLabel
+    Left = 111
+    Top = 213
+    Width = 60
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    AutoSize = False
+    Caption = 'National'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_natfltno6: TLabel
+    Left = 311
+    Top = 229
+    Width = 50
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = 'money'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object bev_listbox: TBevel
+    Left = 320
+    Top = 10
+    Width = 140
+    Height = 86
+  end
+  object lbl_natfltno4: TLabel
+    Left = 246
+    Top = 215
+    Width = 23
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = '100s'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_natfltno3: TLabel
+    Left = 214
+    Top = 215
+    Width = 17
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = '10s'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object bvl_buyno1: TBevel
+    Left = 50
+    Top = 116
+    Width = 80
+    Height = 66
+  end
+  object lbl_buyno5: TLabel
+    Left = 64
+    Top = 118
+    Width = 17
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = '10s'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_buyno6: TLabel
+    Left = 97
+    Top = 118
+    Width = 23
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = '100s'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object Bevel15: TBevel
+    Left = 135
+    Top = 20
+    Width = 80
+    Height = 66
+  end
+  object lbl_suppno1: TLabel
+    Left = 149
+    Top = 22
+    Width = 17
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = '10s'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object lbl_suppno2: TLabel
+    Left = 181
+    Top = 22
+    Width = 23
+    Height = 16
+    Alignment = {'ident': 'taCenter'}
+    Caption = '100s'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+  end
+  object btn_ok: TButton
+    Left = 200
+    Top = 300
+    Width = 70
+    Height = 25
+    Caption = 'OK'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 0
+    OnClick = {'ident': 'OK'}
+  end
+  object ud_buy100: TUpDown
+    Left = 95
+    Top = 135
+    Width = 25
+    Height = 40
+    Min = 0
+    Position = 0
+    TabOrder = 1
+    Wrap = False
+    OnClick = {'ident': 'ChangeBuyAmount'}
+  end
+  object ud_buy10: TUpDown
+    Left = 60
+    Top = 135
+    Width = 25
+    Height = 40
+    Min = 0
+    Position = 0
+    TabOrder = 2
+    Wrap = False
+    OnClick = {'ident': 'ChangeBuyAmount'}
+  end
+  object ud_mon10: TUpDown
+    Left = 210
+    Top = 232
+    Width = 25
+    Height = 40
+    Min = 0
+    Position = 0
+    TabOrder = 3
+    Wrap = False
+    OnClick = {'ident': 'ChangeMoney'}
+  end
+  object ud_mon100: TUpDown
+    Left = 245
+    Top = 232
+    Width = 25
+    Height = 40
+    Min = 0
+    Position = 0
+    TabOrder = 4
+    Wrap = False
+    OnClick = {'ident': 'ChangeMoney'}
+  end
+  object lbx_providers: TListBox
+    Left = 330
+    Top = 21
+    Width = 120
+    Height = 66
+    ExtendedSelect = False
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -12
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ItemHeight = 16
+    ParentFont = False
+    TabOrder = 5
+    Visible = False
+    OnClick = {'ident': 'ChangeProvider'}
+  end
+  object btn_buy: TButton
+    Left = 320
+    Top = 136
+    Width = 100
+    Height = 26
+    Caption = 'Buy supplies'
+    Font.Color = {'ident': 'clBlack'}
+    Font.Height = -13
+    Font.Name = 'Book Antiqua'
+    Font.Style = {'set': []}
+    ParentFont = False
+    TabOrder = 6
+    OnClick = {'ident': 'TransferSupply'}
+  end
+  object ud_supp10: TUpDown
+    Left = 145
+    Top = 39
+    Width = 25
+    Height = 40
+    Min = 0
+    Position = 0
+    TabOrder = 7
+    Wrap = False
+    OnClick = {'ident': 'ChangeSupply'}
+  end
+  object ud_supp100: TUpDown
+    Left = 180
+    Top = 39
+    Width = 25
+    Height = 40
+    Min = 0
+    Position = 0
+    TabOrder = 8
+    Wrap = False
+    OnClick = {'ident': 'ChangeSupply'}
+  end
+end

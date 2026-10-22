@@ -1,0 +1,664 @@
+# Code extract of the cosmetic-gaps finding. Sections: FUNCS then CALLSITES; the first column is all_app_functions.txt's line number
+# FILE all_app_functions.txt
+41611	// ==== TAreaMap_InitializeForm @ 0043ddac ====
+41612	
+41613	void TAreaMap_InitializeForm(int *param_1)
+41614	
+41615	{
+41616	  int iVar1;
+41617	  
+41618	  *(undefined1 *)((int)param_1 + 0x1ed) = 1;
+41619	  iVar1 = DAT_004a0320 * 0x494;
+41620	  FUN_004127a0(param_1,(int)*(short *)(&DAT_00474ade + iVar1));
+41621	  FUN_004127c0(param_1,(int)*(short *)(&DAT_00474ae0 + iVar1));
+41622	  FUN_00420c84(param_1,(int)*(short *)(&DAT_00474ae2 + iVar1));
+41623	  FUN_00420c58(param_1,(int)*(short *)(&DAT_00474ae4 + iVar1));
+41624	  *(undefined2 *)(param_1 + 0xae) = 0xffff;
+41625	  *(undefined1 *)(param_1 + 0x7b) = 1;
+41626	  return;
+41627	}
+41628	
+41629
+41630	// ==== TAreaMap_PaintForm @ 0043de0c ====
+41631	
+41632	void TAreaMap_PaintForm(int *param_1,undefined4 param_2,undefined4 param_3)
+41633	
+41634	{
+41635	  undefined2 uVar1;
+41636	  int *piVar2;
+41637	  int *piVar3;
+41638	  int iVar4;
+41639	  int extraout_ECX;
+41640	  int extraout_ECX_00;
+41641	  int iVar5;
+41642	  int extraout_ECX_01;
+41643	  int extraout_ECX_02;
+41644	  int extraout_ECX_03;
+41645	  int extraout_ECX_04;
+41646	  int extraout_ECX_05;
+41647	  int extraout_ECX_06;
+41648	  short sVar6;
+41649	  short sVar7;
+41650	  undefined1 auStack_20 [4];
+41651	  int iStack_1c;
+41652	  
+41653	  piVar2 = (int *)FUN_0041cdd8(0x418b10,CONCAT31((int3)((uint)param_2 >> 8),1),param_3);
+41654	  if (*(char *)(DAT_004a0320 * 0x494 + 0x474adc) == '\0') {
+41655	    FUN_00417200((int *)param_1[0x78],1,piVar2);
+41656	  }
+41657	  else {
+41658	    FUN_00417200((int *)param_1[0x78],0,piVar2);
+41659	  }
+41660	  (**(code **)(*param_1 + 0x2c))(param_1,auStack_20);
+41661	  iStack_1c = iStack_1c + 0x1e;
+41662	  piVar3 = (int *)FUN_004211bc((int)param_1);
+41663	  FUN_00419f1c(piVar3,auStack_20,piVar2);
+41664	  TObject_Free(piVar2);
+41665	  param_1[0xaf] = -1;
+41666	  iVar5 = extraout_ECX;
+41667	  if (DAT_0045e740 != 0) {
+41668	    TAreaMap_UnitMapCursor(param_1);
+41669	    iVar5 = extraout_ECX_00;
+41670	  }
+41671	  uVar1 = *(undefined2 *)(&DAT_00474afa + DAT_004a0320 * 0x494);
+41672	  *(undefined1 *)((int)param_1 + 0x1ee) = 0;
+41673	  *(undefined1 *)(param_1 + 0x7b) = 0;
+41674	  if (-1 < (short)param_1[0xae]) {
+41675	    sVar7 = (short)param_1[0xae] + 1;
+41676	    sVar6 = 0;
+41677	    do {
+41678	      iVar4 = (int)sVar6;
+41679	      if ((short)param_1[iVar4 + 0x7c] < 5) {
+41680	        iVar5 = DAT_004a0320 * 0x125;
+41681	        *(undefined2 *)(&DAT_00474afa + DAT_004a0320 * 0x494) =
+41682	             *(undefined2 *)((int)param_1 + iVar4 * 4 + 0x1f2);
+41683	      }
+41684	      switch((short)param_1[sVar6 + 0x7c]) {
+41685	      case 0:
+41686	        TAreaMap_ShowCities(param_1);
+41687	        iVar5 = extraout_ECX_01;
+41688	        break;
+41689	      case 1:
+41690	        TAreaMap_ShowCapital(param_1,param_2,iVar5);
+41691	        iVar5 = extraout_ECX_02;
+41692	        break;
+41693	      case 2:
+41694	        TAreaMap_ShowArmies(param_1,param_2,iVar5);
+41695	        iVar5 = extraout_ECX_03;
+41696	        break;
+41697	      case 3:
+41698	        TAreaMap_ShowFleets(param_1,param_2,iVar5);
+41699	        iVar5 = extraout_ECX_04;
+41700	        break;
+41701	      case 4:
+41702	      case 5:
+41703	      case 6:
+41704	      case 7:
+41705	      case 8:
+41706	      case 9:
+41707	        TAreaMap_ShowMercs(param_1,CONCAT22((short)param_1[sVar6 + 0x7c] >> 0xf,
+41708	                                            (short)param_1[sVar6 + 0x7c] + -4));
+41709	        iVar5 = extraout_ECX_05;
+41710	        break;
+41711	      case 10:
+41712	        TAreaMap_ShowFindCity(param_1,*(short *)((int)param_1 + iVar4 * 4 + 0x1f2));
+41713	        iVar5 = extraout_ECX_06;
+41714	      }
+41715	      sVar6 = sVar6 + 1;
+41716	      sVar7 = sVar7 + -1;
+41717	    } while (sVar7 != 0);
+41718	  }
+41719	  *(undefined2 *)(&DAT_00474afa + DAT_004a0320 * 0x494) = uVar1;
+41720	  *(undefined1 *)(param_1 + 0x7b) = 1;
+41721	  return;
+41722	}
+41723	
+41724
+41725	// ==== TAreaMap_ToggleMap @ 0043dfd4 ====
+41726	
+41727	void TAreaMap_ToggleMap(int param_1)
+41728	
+41729	{
+41730	  *(byte *)(DAT_004a0320 * 0x494 + 0x474adc) = *(byte *)(DAT_004a0320 * 0x494 + 0x474adc) ^ 1;
+41731	  *(undefined2 *)(param_1 + 0x2b8) = 0xffff;
+41732	  *(undefined1 *)(param_1 + 0x1ee) = 0;
+41733	  TAreaMap_PaintForm();
+41734	  return;
+41735	}
+41736	
+41737
+43049	// ==== TAFSupply_TransferSupply @ 0043ff98 ====
+43050	
+43051	void TAFSupply_TransferSupply(int param_1)
+43052	
+43053	{
+43054	  char cVar1;
+43055	  short sVar2;
+43056	  int iVar3;
+43057	  short sVar4;
+43058	  
+43059	  cVar1 = *(char *)(param_1 + 0x27c);
+43060	  if (cVar1 == '\0') {
+43061	    (&DAT_0049c27a)[*(short *)(param_1 + 0x28e) * 0xd] =
+43062	         (&DAT_0049c27a)[*(short *)(param_1 + 0x28e) * 0xd] + *(short *)(param_1 + 0x290);
+43063	  }
+43064	  else {
+43065	    (&DAT_0047c1f6)[*(short *)(param_1 + 0x28c) * 0x148] =
+43066	         (&DAT_0047c1f6)[*(short *)(param_1 + 0x28c) * 0x148] + *(short *)(param_1 + 0x290);
+43067	  }
+43068	  sVar4 = *(short *)(param_1 + 0x288);
+43069	  sVar2 = *(short *)(param_1 + 0x290);
+43070	  (&DAT_004795a8)[sVar4 * 0x11] = (&DAT_004795a8)[sVar4 * 0x11] - sVar2;
+43071	  iVar3 = (int)sVar2 / 5;
+43072	  (&DAT_00474aa8)[(short)(&DAT_004795a2)[sVar4 * 0x11] * 0x125] =
+43073	       (&DAT_00474aa8)[(short)(&DAT_004795a2)[sVar4 * 0x11] * 0x125] + iVar3;
+43074	  sVar4 = (short)iVar3;
+43075	  if (cVar1 == '\0') {
+43076	    (&DAT_0049c27c)[*(short *)(param_1 + 0x28e) * 0xd] =
+43077	         (&DAT_0049c27c)[*(short *)(param_1 + 0x28e) * 0xd] - sVar4;
+43078	  }
+43079	  else {
+43080	    (&DAT_0047c1f8)[*(short *)(param_1 + 0x28c) * 0x148] =
+43081	         (&DAT_0047c1f8)[*(short *)(param_1 + 0x28c) * 0x148] - sVar4;
+43082	  }
+43083	  *(undefined2 *)(param_1 + 0x290) = 0;
+43084	  TAFSupply_PrintNumbers(param_1);
+43085	  return;
+43086	}
+43087	
+43088
+47439	// ==== FUN_004484d0 @ 004484d0 ====
+47440	
+47441	/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+47442	
+47443	void FUN_004484d0(void)
+47444	
+47445	{
+47446	  int *piVar1;
+47447	  undefined4 uVar2;
+47448	  undefined4 extraout_EDX;
+47449	  short sVar3;
+47450	  undefined4 *in_FS_OFFSET;
+47451	  ushort uVar4;
+47452	  undefined4 uStack_30;
+47453	  undefined1 *puStack_2c;
+47454	  undefined1 *puStack_28;
+47455	  undefined *local_18;
+47456	  undefined4 *local_14;
+47457	  undefined2 *local_10;
+47458	  undefined4 *local_c;
+47459	  undefined4 *local_8;
+47460	  
+47461	  puStack_28 = &stack0xfffffffc;
+47462	  local_18 = (undefined *)0x0;
+47463	  puStack_2c = &LAB_004487b6;
+47464	  uStack_30 = *in_FS_OFFSET;
+47465	  *in_FS_OFFSET = &uStack_30;
+47466	  uVar4 = 0xffff;
+47467	  FUN_00403458((int *)&local_18,&DAT_0045e7a8,100);
+47468	  piVar1 = (int *)FUN_0040a75c(0x4082a4,CONCAT31((int3)((uint)extraout_EDX >> 8),1),local_18,uVar4);
+47469	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0045e870,0x15e00);
+47470	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_00479590,0x2c5c);
+47471	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0324,2);
+47472	  if (-1 < (short)(DAT_004a0324 + -1)) {
+47473	    local_8 = &DAT_0047c1ec;
+47474	    sVar3 = DAT_004a0324;
+47475	    do {
+47476	      (**(code **)(*piVar1 + 4))(piVar1,local_8,0x290);
+47477	      local_8 = local_8 + 0xa4;
+47478	      sVar3 = sVar3 + -1;
+47479	    } while (sVar3 != 0);
+47480	  }
+47481	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0326,2);
+47482	  if (-1 < (short)(DAT_004a0326 + -1)) {
+47483	    local_c = &DAT_0049c26c;
+47484	    sVar3 = DAT_004a0326;
+47485	    do {
+47486	      (**(code **)(*piVar1 + 4))(piVar1,local_c,0x1a);
+47487	      local_c = (undefined4 *)((int)local_c + 0x1a);
+47488	      sVar3 = sVar3 + -1;
+47489	    } while (sVar3 != 0);
+47490	  }
+47491	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_00474670,0x4940);
+47492	  sVar3 = 0x32;
+47493	  local_10 = &DAT_0049da10;
+47494	  do {
+47495	    (**(code **)(*piVar1 + 4))(piVar1,local_10,0xc);
+47496	    local_10 = local_10 + 6;
+47497	    sVar3 = sVar3 + -1;
+47498	  } while (sVar3 != 0);
+47499	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a031e,2);
+47500	  if (-1 < DAT_004a031e) {
+47501	    sVar3 = DAT_004a031e + 1;
+47502	    local_14 = &DAT_0049f994;
+47503	    do {
+47504	      (**(code **)(*piVar1 + 4))(piVar1,local_14,0x3d);
+47505	      local_14 = (undefined4 *)((int)local_14 + 0x3d);
+47506	      sVar3 = sVar3 + -1;
+47507	    } while (sVar3 != 0);
+47508	  }
+47509	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0049efe8,0x20);
+47510	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_0049f008,4);
+47511	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0320,2);
+47512	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0322,2);
+47513	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0330,2);
+47514	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0332,2);
+47515	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a032e,2);
+47516	  _DAT_004a0338 = (undefined2)DAT_004a0bd0[9];
+47517	  _DAT_004a033a = (undefined2)DAT_004a0bd0[10];
+47518	  uVar2 = FUN_00412880(DAT_004a0bd0);
+47519	  _DAT_004a033e = (undefined2)uVar2;
+47520	  uVar2 = FUN_004128c4(DAT_004a0bd0);
+47521	  _DAT_004a033c = (undefined2)uVar2;
+47522	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0338,8);
+47523	  (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7c,1);
+47524	  if (DAT_004a0b7c != '\0') {
+47525	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b74,2);
+47526	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b76,2);
+47527	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b78,2);
+47528	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7d,1);
+47529	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0b7a,2);
+47530	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0344,0x6e0);
+47531	    (**(code **)(*piVar1 + 4))(piVar1,&DAT_004a0a24,0x150);
+47532	  }
+47533	  (**(code **)(*piVar1 + -4))(piVar1,1);
+47534	  DAT_004a0328 = 0xffff;
+47535	  DAT_004a032a = 0xffff;
+47536	  *in_FS_OFFSET = uStack_30;
+47537	  puStack_28 = &LAB_004487bd;
+47538	  puStack_2c = (undefined1 *)0x4487b5;
+47539	  FUN_004032fc((int *)&local_18);
+47540	  return;
+47541	}
+47542	
+47543
+58057	// ==== TPremierForm_OpenGameFile @ 0045aad4 ====
+58058	
+58059	void TPremierForm_OpenGameFile(int *param_1)
+58060	
+58061	{
+58062	  char cVar1;
+58063	  short *psVar2;
+58064	  short sVar3;
+58065	  
+58066	  cVar1 = (**(code **)(*(int *)param_1[0xbb] + 0x30))();
+58067	  if (cVar1 != '\0') {
+58068	    FUN_00405b88(&DAT_0045e7a8,*(undefined **)(param_1[0xbb] + 0x44));
+58069	    cVar1 = FUN_00449050();
+58070	    if (cVar1 != '\0') {
+58071	      TPremierForm_CloseAllForms((int)param_1);
+58072	    }
+58073	    if (DAT_004a0b7c != '\0') {
+58074	      TPremierForm_ResetBattle(param_1);
+58075	    }
+58076	    func_0x004487c4();
+58077	    uRam004a0334 = 1;
+58078	    TPremierForm_TurnMenusOn((int)param_1);
+58079	    sVar3 = 0;
+58080	    psVar2 = &DAT_00474ab0;
+58081	    do {
+58082	      if (*psVar2 == 0) {
+58083	        TPremierForm_DisableNation((int)param_1,sVar3);
+58084	      }
+58085	      else {
+58086	        TPremierForm_EnableNation((int)param_1,sVar3);
+58087	      }
+58088	      sVar3 = sVar3 + 1;
+58089	      psVar2 = psVar2 + 0x24a;
+58090	    } while (sVar3 != 0x10);
+58091	    TPremierForm_SetTurnTitle(param_1);
+58092	    if (DAT_004a0b7c == '\0') {
+58093	      TPremierForm_StartTurn(param_1);
+58094	    }
+58095	    else {
+58096	      TPremierForm_StartBattle((int)param_1);
+58097	    }
+58098	  }
+58099	  return;
+58100	}
+58101	
+58102
+58103	// ==== TPremierForm_SaveGameFile @ 0045ab84 ====
+58104	
+58105	void TPremierForm_SaveGameFile(undefined4 param_1,undefined4 param_2)
+58106	
+58107	{
+58108	  TPremierForm_StoreFormPositions();
+58109	  if (cRam004a0334 != '\0') {
+58110	    FUN_004484d0();
+58111	    return;
+58112	  }
+58113	  TPremierForm_SaveGameFileAs(param_1,param_2);
+58114	  return;
+58115	}
+58116	
+58117
+58175	// ==== TPremierForm_StartTurn @ 0045ac5c ====
+58176	
+58177	void TPremierForm_StartTurn(int *param_1)
+58178	
+58179	{
+58180	  undefined4 extraout_ECX;
+58181	  undefined4 extraout_EDX;
+58182	  undefined4 extraout_EDX_00;
+58183	  undefined4 *in_FS_OFFSET;
+58184	  int iVar1;
+58185	  undefined4 uStack_b0;
+58186	  undefined1 *puStack_ac;
+58187	  undefined1 *puStack_a8;
+58188	  uint *local_98;
+58189	  char local_92 [71];
+58190	  char local_4b [71];
+58191	  
+58192	  puStack_a8 = &stack0xfffffffc;
+58193	  local_98 = (uint *)0x0;
+58194	  puStack_ac = &LAB_0045ae20;
+58195	  uStack_b0 = *in_FS_OFFSET;
+58196	  *in_FS_OFFSET = &uStack_b0;
+58197	  FUN_00412e34(param_1,0);
+58198	  TPremierForm_SelectNation((int)param_1,DAT_004a0320);
+58199	  TInformation_PrintNews(DAT_0045e70c);
+58200	  TPremierForm_OpenAllForms((int)param_1,extraout_EDX,extraout_ECX);
+58201	  TPremierForm_SetTurnTitle(param_1);
+58202	  if ((&DAT_00474adb)[DAT_004a0320 * 0x494] == '\0') {
+58203	    FUN_00424950(DAT_0045e628,'\0');
+58204	    FUN_0040fa38(param_1[0xb9],0);
+58205	  }
+58206	  else {
+58207	    FUN_00424950(DAT_0045e628,'\x01');
+58208	    FUN_0040fa38(param_1[0xb9],1);
+58209	  }
+58210	  DAT_004a0328 = 0xffff;
+58211	  DAT_004a032a = 0xffff;
+58212	  if ((-1 < DAT_0049f008) &&
+58213	     ((&DAT_00474696)[DAT_004a0320 * 0x24a + (int)DAT_0049f008] != DAT_0049f00a)) {
+58214	    if (DAT_0049f00a == 1) {
+58215	      FUN_00405b00(local_92,"trade");
+58216	    }
+58217	    else {
+58218	      FUN_00405b00(local_92,"form an alliance");
+58219	    }
+58220	    FUN_00405b00(local_4b,&DAT_00474670 + DAT_0049f008 * 0x494);
+58221	    FUN_00405bc8(local_4b," wants to ");
+58222	    FUN_00405bc8(local_4b,local_92);
+58223	    FUN_00405bc8(local_4b," with ");
+58224	    FUN_00405bc8(local_4b,&DAT_00474670 + DAT_004a0320 * 0x494);
+58225	    FUN_00405bc8(local_4b,".");
+58226	    iVar1 = 0;
+58227	    FUN_00403458((int *)&local_98,local_4b,0x47);
+58228	    FUN_0042d750(local_98,CONCAT31((int3)((uint)extraout_EDX_00 >> 8),2),DAT_0045ae64,iVar1);
+58229	  }
+58230	  *in_FS_OFFSET = uStack_b0;
+58231	  puStack_a8 = &LAB_0045ae27;
+58232	  puStack_ac = (undefined1 *)0x45ae1f;
+58233	  FUN_004032fc((int *)&local_98);
+58234	  return;
+58235	}
+58236	
+58237
+58796	// ==== TPremierForm_StoreFormPositions @ 0045bb1c ====
+58797	
+58798	void TPremierForm_StoreFormPositions(void)
+58799	
+58800	{
+58801	  int iVar1;
+58802	  undefined4 uVar2;
+58803	  
+58804	  iVar1 = DAT_004a0320 * 0x494;
+58805	  *(short *)(&DAT_00474ade + iVar1) = (short)DAT_0045e718[9];
+58806	  *(short *)(&DAT_00474ae0 + iVar1) = (short)DAT_0045e718[10];
+58807	  uVar2 = FUN_00412880(DAT_0045e718);
+58808	  *(short *)(&DAT_00474ae4 + iVar1) = (short)uVar2;
+58809	  uVar2 = FUN_004128c4(DAT_0045e718);
+58810	  *(short *)(&DAT_00474ae2 + iVar1) = (short)uVar2;
+58811	  iVar1 = DAT_004a0320 * 0x494;
+58812	  *(short *)(&DAT_00474ae6 + iVar1) = (short)DAT_0045e740[9];
+58813	  *(short *)(&DAT_00474ae8 + iVar1) = (short)DAT_0045e740[10];
+58814	  uVar2 = FUN_00412880(DAT_0045e740);
+58815	  *(short *)(&DAT_00474aec + iVar1) = (short)uVar2;
+58816	  uVar2 = FUN_004128c4(DAT_0045e740);
+58817	  *(short *)(&DAT_00474aea + iVar1) = (short)uVar2;
+58818	  iVar1 = DAT_004a0320 * 0x494;
+58819	  *(short *)(&DAT_00474aee + iVar1) = (short)DAT_0045e70c[9];
+58820	  *(short *)(&DAT_00474af0 + iVar1) = (short)DAT_0045e70c[10];
+58821	  uVar2 = FUN_00412880(DAT_0045e70c);
+58822	  *(short *)(&DAT_00474af4 + iVar1) = (short)uVar2;
+58823	  uVar2 = FUN_004128c4(DAT_0045e70c);
+58824	  *(short *)(&DAT_00474af2 + iVar1) = (short)uVar2;
+58825	  return;
+58826	}
+58827	
+58828
+59008	// ==== TPremierForm_MakeSound @ 0045bf28 ====
+59009	
+59010	void TPremierForm_MakeSound(int param_1,undefined2 param_2)
+59011	
+59012	{
+59013	  char local_d0 [204];
+59014	  
+59015	  FUN_00405b00(local_d0,(char *)(param_1 + 0x36a));
+59016	  switch(param_2) {
+59017	  case 1:
+59018	    FUN_00405bc8(local_d0,"Sound1");
+59019	    break;
+59020	  case 2:
+59021	    FUN_00405bc8(local_d0,"Sound2");
+59022	    break;
+59023	  case 3:
+59024	    FUN_00405bc8(local_d0,"Sound3");
+59025	    break;
+59026	  case 4:
+59027	    FUN_00405bc8(local_d0,"Sound4");
+59028	    break;
+59029	  case 5:
+59030	    FUN_00405bc8(local_d0,"Sound5");
+59031	    break;
+59032	  case 6:
+59033	    FUN_00405bc8(local_d0,"Sound6");
+59034	    break;
+59035	  case 7:
+59036	    FUN_00405bc8(local_d0,"Sound7");
+59037	    break;
+59038	  case 8:
+59039	    FUN_00405bc8(local_d0,"Sound8");
+59040	    break;
+59041	  case 9:
+59042	    FUN_00405bc8(local_d0,"Sound9");
+59043	    break;
+59044	  case 10:
+59045	    FUN_00405bc8(local_d0,"Sound10");
+59046	  }
+59047	  FUN_00405bc8(local_d0,".WAV");
+59048	  PlaySoundA(local_d0,(HMODULE)0x0,0);
+59049	  return;
+59050	}
+59051	
+59052
+59053	// ==== TPremierForm_SetTurnTitle @ 0045c084 ====
+59054	
+59055	void TPremierForm_SetTurnTitle(int *param_1)
+59056	
+59057	{
+59058	  undefined4 *in_FS_OFFSET;
+59059	  undefined4 uStack_7c;
+59060	  undefined1 *puStack_78;
+59061	  undefined1 *puStack_74;
+59062	  uint *local_64;
+59063	  char local_5f [91];
+59064	  
+59065	  puStack_74 = &stack0xfffffffc;
+59066	  local_64 = (uint *)0x0;
+59067	  puStack_78 = &LAB_0045c13e;
+59068	  uStack_7c = *in_FS_OFFSET;
+59069	  *in_FS_OFFSET = &uStack_7c;
+59070	  FUN_00405b00(local_5f,"Imperial Conquest 2    ");
+59071	  FUN_00405bc8(local_5f,&DAT_00474670 + DAT_004a0320 * 0x494);
+59072	  FUN_00405bc8(local_5f,"\'s turn");
+59073	  FUN_00405bc8(local_5f,"   (");
+59074	  FUN_00405bc8(local_5f,&DAT_0047467b + DAT_004a0320 * 0x494);
+59075	  FUN_00405bc8(local_5f,")");
+59076	  FUN_00403458((int *)&local_64,local_5f,0x5b);
+59077	  FUN_00412cdc(param_1,local_64);
+59078	  *in_FS_OFFSET = uStack_7c;
+59079	  puStack_74 = &LAB_0045c145;
+59080	  puStack_78 = (undefined1 *)0x45c13d;
+59081	  FUN_004032fc((int *)&local_64);
+59082	  return;
+59083	}
+59084	
+59085
+53208	// ==== FUN_0044fa20 @ 0044fa20 ====
+53209	
+53210	void FUN_0044fa20(void)
+53211	
+53212	{
+53213	  uint uVar1;
+53214	  
+53215	  if (0 < (short)(&DAT_00474ab0)[DAT_004a0320 * 0x24a]) {
+53216	    TPremierForm_SetTurnTitle(DAT_004a0bd0);
+53217	    FUN_0044fb7c();
+53218	    FUN_0044ffbc();
+53219	    FUN_0044f31c();
+53220	    FUN_0044f608();
+53221	  }
+53222	  if (DAT_004a0b7c == '\0') {
+53223	    uVar1 = (int)DAT_004a0322 + 1U & 0x8000000f;
+53224	    if ((int)uVar1 < 0) {
+53225	      uVar1 = (uVar1 - 1 | 0xfffffff0) + 1;
+53226	    }
+53227	    DAT_004a0322 = (short)uVar1;
+53228	    DAT_004a0320 = *(short *)(&DAT_0049efe8 + DAT_004a0322 * 2);
+53229	    if (DAT_004a0322 == 0) {
+53230	      FUN_004514ec();
+53231	    }
+53232	  }
+53233	  return;
+53234	}
+53235	
+53236
+# CALLSITES (enclosing function, call line and three lines before it)
+---- in TBattleMap_SelectUnit ----
+37679	      sVar2 = DAT_0045e6a8;
+37680	    }
+37681	    else {
+37682	      TPremierForm_MakeSound(DAT_004a0bd0,5);
+---- in TBattleMap_PlaceUnit ----
+37732	  
+37733	  sStack_a = (short)((uint)param_2 >> 0x10);
+37734	  if (((DAT_004a0b78 == 0) && (sStack_a < 3)) || ((DAT_004a0b78 == 1 && (8 < sStack_a)))) {
+37735	    TPremierForm_MakeSound(DAT_004a0bd0,1);
+---- in FUN_004381a4 ----
+38233	      psVar3 = &DAT_004a0344 + DAT_0045e6ae * 0x16;
+38234	      do {
+38235	        if ((0 < psVar3[4]) && (psVar3[3] == local_16)) {
+38236	          TPremierForm_MakeSound(DAT_004a0bd0,1);
+---- in FUN_00438a6c ----
+38691	    *(undefined2 *)(in_stack_00000004 + -0x14) = 1000;
+38692	  }
+38693	  else {
+38694	    TPremierForm_MakeSound(DAT_004a0bd0,1);
+---- in FUN_0043910c ----
+38972	  }
+38973	  iVar2 = (int)param_1;
+38974	  if ((&DAT_004a034a)[iVar2 * 0x16] == 2) {
+38975	    TPremierForm_MakeSound(DAT_004a0bd0,3);
+---- in FUN_0043910c ----
+38975	    TPremierForm_MakeSound(DAT_004a0bd0,3);
+38976	  }
+38977	  else {
+38978	    TPremierForm_MakeSound(DAT_004a0bd0,4);
+---- in FUN_004393ec ----
+39074	        sVar1 = *(short *)((int)local_24 + 0x12);
+39075	        unaff_ESI = CONCAT22((short)((uint)unaff_ESI >> 0x10),sVar1);
+39076	        TBattleMap_HighlightUnits(DAT_0045e6a0,local_40,unaff_ESI);
+39077	        TPremierForm_MakeSound(DAT_004a0bd0,5);
+---- in TUnitMap_ScuttleFleet ----
+47345	        iVar4 = FUN_0042d750((uint *)"Are you sure you want to scuttle this fleet ?",
+47346	                             CONCAT31(uVar5,3),_UNK_00447fc8,0);
+47347	        if (iVar4 == 6) {
+47348	          TPremierForm_MakeSound(DAT_004a0bd0,8);
+---- in FUN_0044aee4 ----
+49636	  iVar2 = (int)param_1;
+49637	  if (((&DAT_00474b00)[(short)(&DAT_0047c1f0)[iVar2 * 0x148] * 0x494] == '\0') &&
+49638	     ((&DAT_00474b00)[(short)(&DAT_0047c1f0)[param_2 * 0x148] * 0x494] == '\0')) {
+49639	    TPremierForm_MakeSound(DAT_004a0bd0,9);
+---- in FUN_0044b27c ----
+49814	  FUN_0044ae20(param_1,(short)uVar3);
+49815	  (&DAT_0047c1f2)[param_1 * 0x148] = 0;
+49816	  if (local_8 < local_c) {
+49817	    TPremierForm_MakeSound(DAT_004a0bd0,7);
+---- in FUN_0044b27c ----
+49825	    FUN_0044bb18(param_2,param_1);
+49826	  }
+49827	  else {
+49828	    TPremierForm_MakeSound(DAT_004a0bd0,6);
+---- in FUN_0044b5d0 ----
+49899	  short local_54;
+49900	  char local_50 [64];
+49901	  
+49902	  TPremierForm_MakeSound(DAT_004a0bd0,8);
+---- in FUN_0044c528 ----
+50624	  undefined *local_54;
+50625	  char local_50 [64];
+50626	  
+50627	  TPremierForm_MakeSound((int)DAT_004a0bd0,10);
+---- in FUN_0044d420 ----
+51500	    }
+51501	    TUnitMap_PrintMapSquare
+51502	              (DAT_0045e740,*(undefined4 *)psVar1,CONCAT22((short)((uint)uVar8 >> 0x10),uVar2));
+51503	    TPremierForm_MakeSound(DAT_004a0bd0,1);
+---- in FUN_0044dd70 ----
+51982	      TUnitMap_PrintMapSquare
+51983	                (DAT_0045e740,*(undefined4 *)psVar2,
+51984	                 CONCAT22((short)((uint)(&DAT_0045e870 + sVar5 * 0x118) >> 0x10),uVar3));
+51985	      TPremierForm_MakeSound(DAT_004a0bd0,2);
+---- in FUN_0044fa20 ----
+53213	  uint uVar1;
+53214	  
+53215	  if (0 < (short)(&DAT_00474ab0)[DAT_004a0320 * 0x24a]) {
+53216	    TPremierForm_SetTurnTitle(DAT_004a0bd0);
+---- in FUN_004514ec ----
+54591	              FUN_0044b4f8(sVar11,100,local_166 + 100);
+54592	            }
+54593	            if (*(short *)(puVar13 + 5) < 0x28) {
+54594	              TPremierForm_MakeSound(DAT_004a0bd0,8);
+---- in TPremierForm_OpenGameFile ----
+58088	      sVar3 = sVar3 + 1;
+58089	      psVar2 = psVar2 + 0x24a;
+58090	    } while (sVar3 != 0x10);
+58091	    TPremierForm_SetTurnTitle(param_1);
+---- in TPremierForm_SaveGameFile ----
+58105	void TPremierForm_SaveGameFile(undefined4 param_1,undefined4 param_2)
+58106	
+58107	{
+58108	  TPremierForm_StoreFormPositions();
+---- in TPremierForm_SaveGameFileAs ----
+58124	  
+58125	  cVar1 = (**(code **)(**(int **)(param_1 + 0x2f0) + 0x30))();
+58126	  if (cVar1 != '\0') {
+58127	    TPremierForm_StoreFormPositions();
+---- in TPremierForm_StartTurn ----
+58198	  TPremierForm_SelectNation((int)param_1,DAT_004a0320);
+58199	  TInformation_PrintNews(DAT_0045e70c);
+58200	  TPremierForm_OpenAllForms((int)param_1,extraout_EDX,extraout_ECX);
+58201	  TPremierForm_SetTurnTitle(param_1);
+---- in TPremierForm_CloseAllForms ----
+58783	  undefined4 extraout_EDX_00;
+58784	  undefined4 extraout_EDX_01;
+58785	  
+58786	  TPremierForm_StoreFormPositions();
+---- in TPremierForm_StoreFormPositions ----
+58795	
+58796	// ==== TPremierForm_StoreFormPositions @ 0045bb1c ====
+58797	
+58798	void TPremierForm_StoreFormPositions(void)
+---- in TPremierForm_MakeSound ----
+59007	
+59008	// ==== TPremierForm_MakeSound @ 0045bf28 ====
+59009	
+59010	void TPremierForm_MakeSound(int param_1,undefined2 param_2)
+---- in TPremierForm_SetTurnTitle ----
+59052	
+59053	// ==== TPremierForm_SetTurnTitle @ 0045c084 ====
+59054	
+59055	void TPremierForm_SetTurnTitle(int *param_1)

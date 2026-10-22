@@ -1,0 +1,6 @@
+main button open: tooltip 'Open saved game' seen, x=11 (hint 8)
+army button supply: tooltip 'Supply army' seen, x=346 (hint 346)
+dialog: (8388623, 'Supply army', 23, 49, 470, 335) seen meanwhile: {8388623: ['Supply army', 23, 49, 470, 335]}
+OK centre 258 361 line TButton	OK	223	349	70	25	1	1	-1	-1	0	0	1	54010001
+--- a) plain click, then poll 5 s
+CLOSED after plain click at t+4.0s

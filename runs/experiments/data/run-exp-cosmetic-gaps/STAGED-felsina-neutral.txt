@@ -1,0 +1,6 @@
+# Staged save STAGED-felsina-neutral-0721.SAV
+# source siege-felsina-failed-0721.SAV (sha256 5473a8a0a77e03482e81ca29878a34106ff8efefb376d2ba4dbfb66ebc29a99a)
+# staged sha256 1045f6e6870136081430e5a217b8e606a8a45244c6ca161bfacf40bf79aa06e8
+# the ONLY change: Rome->Gaul relation 3->0 and Gaul->Rome 3->0 (nation records +0x26, 16 shorts)
+# purpose: the U2b play needs a foreign NON-hostile city (Felsina) next to army 0; every repo fixture has Rome at war with Gaul
+# labelled STAGED in the play record and the finding
