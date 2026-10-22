@@ -275,3 +275,12 @@ PR #126 merged at main `b3cf8dc`. Increment 11 relayed to "IC2 Research" (status
 Lesson: findings/2026-10-12-g4-followups.md (H, J) had already observed the at-war rebellion branch and the rebirth relations in Wine. Increment 11 reproduced part of it without citing it first. Ledger v12 corrects the uncertainty. Next time: grep findings/ for the mechanic before proposing a run.
 
 PR #128 merged at main `e055201`, relayed to "IC2 Research" (status "delivered"). **Last delivered findings baseline: `e055201e9b1c185e1ffd8f73e427ed49fc9f1b12`.**
+
+## 2026-10-22: #99 gate 2
+
+- `findings/2026-10-22-sav-export-gate2-policy.md` + `scripts/sav_export_policy_check.py` (test
+  `tests/test_sav_export_policy_check.py`); receipts `run-exp-sav-atlas107/export-policy-v1/` (first checker,
+  kept) and `export-policy-v2/` (current).
+- Increment 5 slot counts corrected in the atlas finding (6,102/9,498 owner-held; 6,118/9,522 with 2 tombstoned
+  armies), recounted over the same 56 saves.
+- Gates 1 (manifest), 3 (T185 review, remake repo) and 4 (native Windows) need the owner.

@@ -1,0 +1,219 @@
+{
+ "note": "each SAV checked as an identity export (candidate = source); counts and names only",
+ "checker_sha256": "bad8477a947c8b7039ea70ab42ec188d3369ef63daa48cf2036842f2292a8cf5",
+ "groups": {
+  "source-saves": {
+   "files": 3,
+   "rejected": 0,
+   "invariant_failures": {},
+   "rule_failures": {},
+   "reported_only": {
+    "text_tails_canonical": 3,
+    "empty_slots_zero": 3
+   },
+   "rejected_files": []
+  },
+  "native-evidence": {
+   "files": 23,
+   "rejected": 2,
+   "invariant_failures": {},
+   "rule_failures": {
+    "no_army_tombstones": 2
+   },
+   "reported_only": {
+    "text_tails_canonical": 23,
+    "empty_slots_zero": 23
+   },
+   "rejected_files": [
+    [
+     "native-evidence/20261018T085043Z/N2E68B2.SAV",
+     "13a64beae3e90d60",
+     [],
+     [
+      "no_army_tombstones"
+     ]
+    ],
+    [
+     "native-evidence/20261018T085043Z/N2R68B2.SAV",
+     "13a64beae3e90d60",
+     [],
+     [
+      "no_army_tombstones"
+     ]
+    ]
+   ]
+  },
+  "research40-saves": {
+   "files": 16,
+   "rejected": 16,
+   "invariant_failures": {
+    "battle_grid_count": 14
+   },
+   "rule_failures": {
+    "no_battle_block": 16
+   },
+   "reported_only": {
+    "text_tails_canonical": 16,
+    "empty_slots_zero": 16
+   },
+   "rejected_files": [
+    [
+     "research40-saves/CRAFT_c5_stale_grid.SAV",
+     "3d7ca51cba266f86",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/CRAFT_c6_same_cell.SAV",
+     "9f2d7eecc91b8557",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/CRAFT_d5_stale_grid.SAV",
+     "eb5c62e4ee4bb730",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/CRAFT_d6_same_cell.SAV",
+     "8e59b4c86357a769",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_c5_stale_grid_BATTLE01.SAV",
+     "a5fe05569fd1bba2",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_c5_stale_grid_BATTLE02.SAV",
+     "dd1d39b8114798c6",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_c5_stale_grid_BATTLE03.SAV",
+     "03abdfd0f70f558e",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_c6_same_cell_BATTLE01.SAV",
+     "a5fe05569fd1bba2",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_c6_same_cell_BATTLE02.SAV",
+     "dd1d39b8114798c6",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_c6_same_cell_BATTLE03.SAV",
+     "03abdfd0f70f558e",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_d5_stale_grid_BATTLE01.SAV",
+     "3eff485f9dac5a6d",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_d5_stale_grid_BATTLE02.SAV",
+     "51e4ea05d6603a9a",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_d5_stale_grid_BATTLE03.SAV",
+     "130c5c529c755d15",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_d6_same_cell_BATTLE01.SAV",
+     "75adb49e39936e04",
+     [
+      "battle_grid_count"
+     ],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_d6_same_cell_BATTLE02.SAV",
+     "7afe72e9c8b2e734",
+     [],
+     [
+      "no_battle_block"
+     ]
+    ],
+    [
+     "research40-saves/b3_d6_same_cell_BATTLE03.SAV",
+     "aca683ab8b8da046",
+     [],
+     [
+      "no_battle_block"
+     ]
+    ]
+   ]
+  }
+ }
+}

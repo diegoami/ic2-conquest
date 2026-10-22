@@ -134,3 +134,28 @@ What the receipts do **not** show:
 - Physical coverage (every byte belongs to a ledger row, and the serializer walk ends at EOF) is not semantic completion.
 - That the UNKNOWN ranges are zero in every sampled file is not a default or a dead-field proof.
 - Framing a crafted file shows that it frames. It does not show that the original accepts the file.
+
+## Export policy check (gate 2 of research #37, conquest #99; 2026-10-22)
+
+`scripts/sav_export_policy_check.py` checks a candidate SAV against
+[`findings/2026-10-22-sav-export-gate2-policy.md`](../../../../findings/2026-10-22-sav-export-gate2-policy.md)
+(test: `python3 -m tests.test_sav_export_policy_check`).
+
+- `export-policy-v1/`: the first checker version, kept. Every residue rule was
+  required in both modes.
+- `export-policy-v2/` (current): the leftovers of a fleet under construction
+  became "reported only" with `--source`, like the other residue rules.
+  - `<save>.with-source.json`: each of the 14 public saves in `saves/`
+    checked as an identity export (candidate = source): 14/14 accepted.
+  - `<save>.no-source.json`: the same file checked as a from-scratch export:
+    14/14 refused, only for post-NUL text tails and empty-slot residue, which
+    the original keeps and a from-scratch export must zero.
+  - `corpus-identity-export-v2.json`: the private bundle (42 saves) as
+    identity exports: the 3 source saves pass; 2 native-evidence saves are
+    refused for army tombstones; the 16 research40 saves are refused for an
+    open battle block (14 of them are also research's crafted stale-grid
+    cases).
+
+```
+python3 scripts/sav_export_policy_check.py CANDIDATE.SAV [--source ORIGINAL.SAV] --out <new-name>.json
+```
