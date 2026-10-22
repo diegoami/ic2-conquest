@@ -532,7 +532,7 @@ def receipt(res, finding, predicates, extract, dump):
            'mismatches by kind: ' + (', '.join('%s %d' % (k, v) for k, v in sorted(kinds.items())) or 'none'), '']
     out += ['TABLE %s' % e for e in res['table_errors']]
     out += ['MISMATCH [%s] %s: %s' % (k, rid, msg) for k, rid, msg in res['mismatches']]
-    return '\n'.join(out) + '\n'
+    return '\n'.join(out).rstrip('\n') + '\n'
 
 
 def main():

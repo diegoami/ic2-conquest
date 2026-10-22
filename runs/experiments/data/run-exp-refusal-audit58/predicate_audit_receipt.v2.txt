@@ -1,0 +1,10 @@
+predicate audit (issue #58) of findings/2026-10-05-refusal-texts-and-conditions.md
+predicates runs/experiments/data/run-exp-refusal-audit58/predicates.json sha256 e9e107ce78ee130fd432b8a7a74395e6af32b39b565c3ceee213e06e8fe81a5d
+extract runs/experiments/data/run-exp-refusal-texts/code_extract_refusals.v2.txt sha256 529cd964a667e964750cca50c28198e6fa5f05234b0cdbf4bc6d04ff339a4630
+finding sha256 909281b1f271b087ee56104d6866ae134437d4e088ad819add7e3992dbb9de3b
+dump all_app_functions.txt sha256 2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8
+rows audited: 73 (catalogue 57, prompts 13, notices 3)
+table checks: 2106, table errors: 0
+catalogue checks: 743, mismatches: 0
+mismatches by kind: none
+
