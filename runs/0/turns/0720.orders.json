@@ -1,0 +1,10 @@
+[
+ {"op": "recruit", "row": 1, "city": 85, "type": "hi", "troops": 6000},
+ {"op": "recruit", "row": 1, "city": 85, "type": "ar", "troops": 3500},
+ {"op": "fortify", "name": "Arretium", "x": 99, "y": 36, "points": 3},
+ {"op": "mercs", "army": 1, "rows": [0]},
+ {"op": "supply", "army": 0},
+ {"op": "supply", "army": 1},
+ {"op": "relation", "nation": 5, "kind": "trade"},
+ {"op": "move", "army": 1, "x": 113, "y": 45}
+]
