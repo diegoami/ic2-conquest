@@ -1,0 +1,83 @@
+predicate audit (issue #58) of findings/2026-10-05-refusal-texts-and-conditions.md
+predicates runs/experiments/data/run-exp-refusal-audit58/predicates.json sha256 e9e107ce78ee130fd432b8a7a74395e6af32b39b565c3ceee213e06e8fe81a5d
+extract runs/experiments/data/run-exp-refusal-texts/code_extract_refusals.v2.txt sha256 529cd964a667e964750cca50c28198e6fa5f05234b0cdbf4bc6d04ff339a4630
+finding sha256 45f9af1fb47e5d7f83bcb81f2112080fe1cecf01918c698fbe33c3b0e7139eaf
+dump all_app_functions.txt sha256 2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8
+rows audited: 73 (catalogue 57, prompts 13, notices 3)
+table checks: 2106, table errors: 0
+catalogue checks: 652, mismatches: 73
+mismatches by kind: answer 6, branch direction 7, condition 2, missing citation 58
+
+MISMATCH [missing citation] R06: condition [derived] does not cite the test L46590 (an own fleet, true on the way to the box)
+MISMATCH [branch direction] R06: L46514 «(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1» is cited as holding but the box needs it false
+MISMATCH [missing citation] R07: condition [derived] does not cite the test L46590 (the clicked fleet is not own, false on the way to the box)
+MISMATCH [branch direction] R07: L46611 «else if (((DAT_004a032a < 0) || ((short)(&DAT_0049c278)[DAT_» is cited as holding but the box needs it false
+MISMATCH [missing citation] R27: condition [derived] does not cite the test L43646 (the fleet the army is aboard (dialog +0x1d8), true on the way to the box; not the test of an earlier box)
+MISMATCH [missing citation] R30: condition [derived] does not cite the test L44130 (the target army is aboard a fleet (dialog +0x776), true on the way to the box; not the test of an earlier box)
+MISMATCH [branch direction] R30: L44133 «if (iVar6 < (iVar7 + *(short *)(param_1 + 0x260 + sVar9 * 0x» is cited as failing (else / pass test / not) but the box needs it true
+MISMATCH [missing citation] R33: condition [derived] does not cite the test L44211 (the target army is aboard a fleet (dialog +0x774), true on the way to the box; not the test of an earlier box)
+MISMATCH [branch direction] R33: L44214 «if (iVar6 < (iVar7 + *(short *)(param_1 + 0x4f0 + sVar9 * 0x» is cited as failing (else / pass test / not) but the box needs it true
+MISMATCH [missing citation] R49: condition [derived] does not cite the test L56079 (an earlier unit already failed; FUN_0044a4e0 reported no place for the unit, true on the way to the box; not the test of an earlier box)
+MISMATCH [missing citation] R49: condition [derived] does not cite the test L48973 (no army found (FUN_0044a120) and none made (FUN_00449f08), true on the way to the box; not the test of an earlier box)
+MISMATCH [branch direction] R49: L48725 «(-1 < (short)local_12) && (DAT_004a0324 < 0xc6)» is cited as holding but the box needs it false
+MISMATCH [missing citation] R54: condition [derived] does not cite the test L55304 (a form entry is 2 (a pending alliance), true on the way to the box; not the test of an earlier box)
+MISMATCH [missing citation] R54: condition [derived] does not cite the test L55306 (FUN_00449cd8: that nation is at war with someone, true on the way to the box; not the test of an earlier box)
+MISMATCH [branch direction] R54: L55313 «if (((char)uVar2 == '\0') &&» is cited as holding but the box needs it false
+MISMATCH [branch direction] R54: L55314 «(-1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)loc» is cited as holding but the box needs it false
+MISMATCH [missing citation] R56: condition [derived] does not cite the test L58526 (a free coastal own city (FUN_004496e0; -1 = none), true on the way to the box; not the test of an earlier box)
+MISMATCH [missing citation] R56: condition [derived] does not cite the test L58503 (fleet owner (fleet +8); construction countdown (fleet +10; >= 0 = under construction), true on the way to the box; not the test of an earlier box)
+MISMATCH [missing citation] P01: raised when [derived] cites no line
+MISMATCH [missing citation] P01: raised when [derived] does not cite the test L47101 (own city within one tile, false on the way to the box)
+MISMATCH [answer] P01: Yes: the cell does not say treasury (L47110: the army's money (army +0xc) is added to the nation's treasury (nation +0x438))
+MISMATCH [missing citation] P02: raised when [derived] cites no line
+MISMATCH [missing citation] P02: raised when [derived] does not cite the test L47336 (fleet carried army, true on the way to the box)
+MISMATCH [missing citation] P02: raised when [derived] does not cite the test L47340 (own city within one tile, false on the way to the box)
+MISMATCH [missing citation] P02: answers [derived] does not cite the answer test L47347
+MISMATCH [answer] P02: Yes: the cell does not say treasury (L47350: the fleet's money (fleet +0x10) is added to the nation's treasury)
+MISMATCH [missing citation] P03: raised when [derived] cites no line
+MISMATCH [missing citation] P03: raised when [derived] does not cite the test L46514 (bVar4 = an army is selected, has 1 or more moves and is one tile from the clicked tile, false on the way to the box)
+MISMATCH [missing citation] P03: raised when [derived] does not cite the test L46539 (an army with 1 or more moves is selected one tile away (L46514), true on the way to the box)
+MISMATCH [missing citation] P03: answers [derived] does not cite the answer test L46543
+MISMATCH [answer] P03: whatever the answer: the cell does not say deselect (L46551: the army selection is cleared (DAT_004a0328 = -1) whatever the answer)
+MISMATCH [answer] P03: No or Cancel: the cell says nothing happens; the code does L46551 the army selection is cleared (DAT_004a0328 = -1) whatever the answer
+MISMATCH [missing citation] P04: raised when [derived] cites no line
+MISMATCH [missing citation] P04: raised when [derived] does not cite the test L46514 (bVar4 = an army is selected, has 1 or more moves and is one tile from the clicked tile, false on the way to the box)
+MISMATCH [missing citation] P04: raised when [derived] does not cite the test L46563 (the army belongs to another nation, true on the way to the box)
+MISMATCH [missing citation] P04: raised when [derived] does not cite the test L46564 (an army with moves one tile away, true on the way to the box)
+MISMATCH [missing citation] P04: answers [derived] does not cite the answer test L46568
+MISMATCH [answer] P04: whatever the answer: the cell does not say deselect (L46575: the army selection is cleared whatever the answer)
+MISMATCH [missing citation] P05: raised when [derived] cites no line
+MISMATCH [missing citation] P05: raised when [derived] does not cite the test L46590 (the fleet is not own, false on the way to the box)
+MISMATCH [missing citation] P05: raised when [derived] does not cite the test L46611 (own fleet selected; its moves; one tile apart, false on the way to the box)
+MISMATCH [missing citation] P05: raised when [derived] does not cite the test L46621 (a city of the fleet's owner within one tile, true on the way to the box)
+MISMATCH [missing citation] P05: raised when [derived] does not cite the test L46622 (relation (3 = war), false on the way to the box)
+MISMATCH [missing citation] P05: answers [derived] does not cite the answer test L46625
+MISMATCH [missing citation] P06: raised when [derived] cites no line
+MISMATCH [missing citation] P06: raised when [derived] does not cite the test L44286 (number of selected units, true on the way to the box)
+MISMATCH [missing citation] P06: answers [derived] does not cite the answer test L44302
+MISMATCH [missing citation] P07: raised when [derived] cites no line
+MISMATCH [missing citation] P07: raised when [derived] does not cite the test L44372 (number of selected units, true on the way to the box)
+MISMATCH [missing citation] P07: answers [derived] does not cite the answer test L44388
+MISMATCH [missing citation] P08: raised when [derived] cites no line
+MISMATCH [missing citation] P08: raised when [derived] does not cite the test L45718 (number of selected units, true on the way to the box)
+MISMATCH [missing citation] P08: answers [derived] does not cite the answer test L45734
+MISMATCH [missing citation] P09: raised when [derived] cites no line
+MISMATCH [missing citation] P09: raised when [derived] does not cite the test L56132 (number of selected queue rows, true on the way to the box)
+MISMATCH [missing citation] P09: answers [derived] does not cite the answer test L56148
+MISMATCH [answer] P09: Yes: the cell does not say mobilisation (L56160: the mobilisation rate (nation +0x442) drops by troops x 1000 / wealth + 1, not below 0: what queueing added (L56000-L56002))
+MISMATCH [missing citation] P10: raised when [derived] cites no line
+MISMATCH [missing citation] P10: raised when [derived] does not cite the test L58017 (FUN_00449050: some nation's human flag is set (all_app_functions.txt L47764), true on the way to the box)
+MISMATCH [condition] P10: raised when [derived] does not state human_exists is True (/human/) (test L58017)
+MISMATCH [missing citation] P10: answers [derived] does not cite the answer test L58019
+MISMATCH [missing citation] P11: raised when [derived] cites no line
+MISMATCH [missing citation] P11: raised when [derived] does not cite the test L58149 (FUN_00449050: a human nation exists, true on the way to the box)
+MISMATCH [condition] P11: raised when [derived] does not state human_exists is True (/human/) (test L58149)
+MISMATCH [missing citation] P11: answers [derived] does not cite the answer test L58152
+MISMATCH [missing citation] P12: answers [derived] does not cite the answer test L58400
+MISMATCH [missing citation] P13: answers [derived] does not cite the answer test L58427
+MISMATCH [missing citation] N01: raised when cites no line
+MISMATCH [missing citation] N01: raised when does not cite the test L56320 (the ordered fleet size, true on the way to the box)
+MISMATCH [missing citation] N02: raised when cites no line
+MISMATCH [missing citation] N02: raised when does not cite the test L58503 (fleet owner == current; construction countdown, true on the way to the box)
+MISMATCH [missing citation] N03: raised when cites no line
+MISMATCH [missing citation] N03: raised when does not cite the test L58212 (a nation proposed trade or an alliance (DAT_0049f008 = that nation); the relation is not the proposed one (DAT_0049f00a), true on the way to the box)
