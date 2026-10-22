@@ -3,10 +3,13 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v5.csv` (**authoritative**, increment 5): v4 plus residue,
+- `field-map-v6.csv` (**authoritative**, increment 6): v5 plus the native
+  fleet-leftover evidence of [run-exp-sav-fleetmoves107](../run-exp-sav-fleetmoves107/README.md).
+  The checker defaults to v6.
+- `field-map-v5.csv` (increment 5): v4 plus residue,
   text-tail and history notes. Value policies changed: route → `LIVE_AND_RESIDUE`,
   INERT → `PRESERVE_OR_ZERO`, `CITY.allegiance` → `HISTORICAL_PROFILE`. Classes
-  are unchanged. The checker defaults to v5.
+  are unchanged.
 - `field-map-v4.csv` (increment 4): v3 with the native
   evidence of [run-exp-sav-inert107](../run-exp-sav-inert107/README.md) added
   to the INERT and fleet-route rows (evidence and uncertainty only; classes
