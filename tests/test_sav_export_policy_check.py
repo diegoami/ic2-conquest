@@ -30,13 +30,15 @@ def main():
     tail = bytearray(good); tail[89600 + 6] = 0x41                    # "Alba\0\0A": a byte after the NUL
     slot = bytearray(good); slot[89600 + 34 * 334 + 2 + 16 + 32 * 3 + 10] = 7   # residue in empty slot 3
     inert = bytearray(good); inert[NATION0 + 0x450] = 1
+    alleg = bytearray(good); struct.pack_into("<h", alleg, 89600 + 0x14, -1)  # city 0 without allegiance
     cases = [("clean save passes every rule", all(ok for ok, _ in res(good).values())),
              ("dirty tail fails a from-scratch export", res(bytes(tail))["text_tails_canonical"] == (False, True)),
              ("dirty tail with a source is reported only", res(bytes(tail), good)["text_tails_canonical"] == (False, False)),
              ("empty-slot residue fails a from-scratch export", res(bytes(slot))["empty_slots_zero"] == (False, True)),
              ("INERT byte set without a source fails", not res(bytes(inert))["inert_bytes_carried_or_zero"][0]),
              ("INERT byte carried from the source passes", res(bytes(inert), bytes(inert))["inert_bytes_carried_or_zero"][0]),
-             ("INERT byte differing from the source fails", not res(bytes(inert), good)["inert_bytes_carried_or_zero"][0])]
+             ("INERT byte differing from the source fails", not res(bytes(inert), good)["inert_bytes_carried_or_zero"][0]),
+             ("allegiance -1 fails, with a source too", res(bytes(alleg), bytes(alleg))["city_allegiance_in_range"] == (False, True))]
     fails = 0
     for name, ok in cases:
         print(("ok   " if ok else "FAIL ") + name)

@@ -51,6 +51,10 @@ def policy(b, src=None):
     A, F = facts["armies"], facts["fleets"]
     rule("no_army_tombstones", facts["army_tombstones"] == 0, facts["army_tombstones"])
     rule("no_fleet_tombstones", facts["fleet_tombstones"] == 0, facts["fleet_tombstones"])
+    # every city has a historical allegiance nation 0..15 (policy points 8 and 10; it drives play and cannot be
+    # derived from the owner, so a missing or out-of-range value is refused)
+    al = [c for c in range(334) if not 0 <= i16(b, pos["city"] + 34 * c + 0x14) <= 15]
+    rule("city_allegiance_in_range", not al, {"count": len(al), "first": al[:8]})
     # INERT bytes: carried from the source when there is one, else zero (the program's own initial value)
     n0 = pos["nation"]
     s_n0 = {r: o for r, o, _ in cov.frame(src)[0]}["nation"] if src else None

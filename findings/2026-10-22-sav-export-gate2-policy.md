@@ -74,7 +74,10 @@ past it (increment 6, T4).
 - **Write:** no tombstones. Write only live records, and the count to match.
 - **Refuse:** a source state with tombstones that would be carried over. Two
   native-evidence saves hold tombstoned armies that still have troops
-  (increment 5's correction); the policy does not represent them.
+  (increment 5's correction); the policy does not represent them. Research's
+  intake notes that these are the native tax case 2 post-turn/reopen saves, so
+  the original wrote that state on native Windows: the refusal is a policy
+  limit, not a claim that the state is invalid.
 - **Checker:** rules `no_army_tombstones`, `no_fleet_tombstones`.
 
 ### 5. Record order and relocation
@@ -118,7 +121,8 @@ increment 5). The bytes after it are never interpreted.
   natively with research's g4 follow-ups). It cannot be derived from the
   owner. **Write:** the campaign's own allegiance; for a campaign from the
   DAT scenario, the DAT value. **Refuse** a save that has no allegiance for
-  its cities.
+  its cities. **Checker:** rule `city_allegiance_in_range` (0..15 for all 334
+  cities; added after research's intake found it missing, see Corrections).
 - **`wealth0`, `treasury0`, `cities0`, `conqueror` are shown only** (the
   leader-falls screen and the nation status; increment 5). **Write:** the
   campaign's own values, or the DAT profile. They change no play.
@@ -160,9 +164,9 @@ python3 scripts/sav_export_policy_check.py CANDIDATE.SAV [--source ORIGINAL.SAV]
 - The receipt holds rule results, counts and indices, never field values.
   Exit 1 when the candidate is refused.
 
-Test: `python3 -m tests.test_sav_export_policy_check` (7 cases, no saves).
+Test: `python3 -m tests.test_sav_export_policy_check` (8 cases, no saves).
 
-**Receipts** ([`export-policy-v2/`](../runs/experiments/data/run-exp-sav-atlas107/export-policy-v2/)):
+**Receipts** ([`export-policy-v3/`](../runs/experiments/data/run-exp-sav-atlas107/export-policy-v3/); v1 and v2 kept, same verdicts):
 
 | Input | Mode | Result |
 |---|---|---|
@@ -174,6 +178,15 @@ Test: `python3 -m tests.test_sav_export_policy_check` (7 cases, no saves).
 
 So the policy accepts every original-written save without a battle or a
 tombstone, and refuses exactly the states it does not represent.
+
+## Corrections
+
+- 2026-10-22, from research's intake (research PR #55, controls
+  `scripts/gate2-policy-adversarial.py` there): the first checker did not
+  enforce the allegiance refusal; a candidate with `CITY.allegiance` −1 or 99
+  was accepted. Rule `city_allegiance_in_range` added (required in both
+  modes). All 18,704 allegiance values of the 56 corpus saves are in range, so
+  no original save is newly refused (receipts v3 = v2 verdicts).
 
 ## What gate 2 does not settle
 
