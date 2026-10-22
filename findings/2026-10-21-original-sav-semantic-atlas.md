@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v9.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v9.csv) (increment 9: aboard links and battle grid). New evidence should update its
+[`field-map-v10.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v10.csv) (increment 10: review corrections). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -517,7 +517,8 @@ adds the results to the context-dependent rows.
   - city markers ((m − 20) mod 16 = owner);
   - fleet markers (owner + 300/316/332 by ships < 25/< 50/else, `FUN_0044A878`);
   - army marker owner;
-  - army cell = the terrain or city under the army;
+  - army cell = the terrain or city under the army (*v1 checked only
+    0..99; strengthened in increment 10*);
   - each city list equals the set of owned cities;
   - capital owned;
   - cities count = list length for live nations;
@@ -526,7 +527,8 @@ adds the results to the context-dependent rows.
   - slot troops ≥ 0 and packed (15,600 slot checks);
   - recruit city index;
   - live merc on a city tile;
-  - fort encoding;
+  - fort encoding (*the v1 check was empty and read the population word;
+    corrected in increment 10*);
   - news index.
 - **Correction: `NATION.city_list` is ordered by city name.** It is in byte
   order of the city names, not of the indices. `FUN_0044B8F4` removes the
@@ -573,7 +575,9 @@ runs through `FUN_0044C204`.
 - The revived nation gets unity 450, treasury 0, tax base 0, cities 0, tax
   20 and mobilisation 50. All its recruit entries are emptied, it is at
   peace with everyone, conqueror is set to −1, and a new leader is drawn
-  from its 12 DAT names.
+  from its 12 DAT names. *(Corrected in increment 10: only its own
+  relations row is zeroed, and a −8 cooldown is set both ways with each
+  previous owner of a returned city.)*
 - Those cities return to it.
 - The returned city with the highest defence value becomes the capital. It
   gets loyalty +8 and fort +10 (each capped at 99), population +10, max
@@ -609,6 +613,79 @@ adds this evidence; no class changed.
   - Research's cargo saves (`run-exp-naval-battle-cargo`) pass as well
     (18/18), but they are synthetic edits, so they don't count as evidence of
     game behaviour.
+
+## Increment 10: review of increments 3–8, and corrections (2026-10-22)
+
+A separate Claude agent reviewed increments 3–8 at the owner's request. It is
+the same model family, so this is a second look, not independent review. It
+re-ran the tests and scripts and tried to falsify the main claims against the
+decompilation, a disassembly and the saves.
+
+**Upheld:**
+
+- the INERT classification (its extra scans found no overlap, no interior
+  pointer and no other whole-table copy);
+- the DAT layout and the start-of-game copies;
+- the trailer client size;
+- the fleet-route parameter roles and the tick reset;
+- launch not setting moves;
+- the battle-side logic;
+- the residue argument;
+- the StrComp city-list order and the marker formulas;
+- every rebellion constant except one (below);
+- the native-run results.
+
+**Corrections**, in [`field-map-v10.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v10.csv)
+and in receipts v2:
+
+1. **The `fort_encoding` invariant was empty.** It tested
+   `fort mod 100 ≤ 100`, which always holds. Writing a negative test then
+   showed that it also read the **population** word. The fix requires
+   fort ≥ 0 and pending + current ≤ 100. On the new receipts it shows 0
+   violations everywhere ([private](../runs/experiments/data/run-exp-sav-atlas107/invariants-private-bundle-v2.json),
+   [public](../runs/experiments/data/run-exp-sav-atlas107/invariants-public-v2.json),
+   [battle releases](../runs/experiments/data/run-exp-sav-atlas107/invariants-battle-releases-v2.json),
+   [aboard](../runs/experiments/data/run-exp-sav-aboard107/invariants-aboard-20261022-071303.v2.json)).
+   The v1 receipts are kept as measured. Their fort line is invalid; their
+   other counts are unchanged.
+2. **A revival does not bring peace with everyone.** `FUN_0044C360` zeroes
+   only the revived nation's own relations row. For each returned city it
+   then sets a −8 cooldown both ways with the previous owner
+   (`FUN_00449B40`). Rows of other nations toward it keep their values.
+3. **The army-cell invariant is now as strong as stated.** v1 checked only
+   0..99. v2 requires a terrain code 0..11 off a city, and on a city tile a
+   city marker of that city's owner. 0 violations.
+4. **`NATION.neighbours` lost a writer.** `FUN_0044B8F4` was credited
+   because its city-list terminator `[nation + count×2 + 0x46]` reaches
+   +0x46 only at count 0. This is a lead-index artefact of an
+   element-scaled index, now documented in `sav_atlas_asm.py`. Writer
+   lists built from such forms remain leads.
+5. **A route can hold x = −1 with residue in y.** `FUN_0044CD08` sets only
+   the low word of its last-tile local but stores the whole dword. A walk
+   that ends at once therefore writes x = −1 with y left from the stack. The
+   round tick is not the only writer of route_x = −1.
+6. **Smaller corrections:**
+   - The battle copy-in sets side 1 and half_round 0, and does not write
+     `placed` (FinishBattle, ResetBattle and NewGame clear it).
+   - The text helpers also include StrLCopy `0x405B54` and StrLCat
+     `0x405BE4`; both stop at the NUL.
+   - The "never negative troops" argument assumes army strengths ≥ 0 and
+     fleet strengths that fit in 16 bits.
+   - Two allegiance effects were missing: a city whose allegiance is the
+     capturer defects at defence ÷ 3 (`FUN_0044BA1C`). On a nation's
+     elimination, a city of matching allegiance gets loyalty
+     min(80, 120 − L) (`FUN_0044C528`).
+   - Rebellion details: the last qualifying army in table order wins. With
+     no candidate nothing happens. A revival leaves wealth unchanged and
+     draws the leader once, so the old name can repeat.
+   - Increment 7's counts:
+     - the script has 22 checks, not 20;
+     - "17 of 362" covers the private bundle's natural saves (the public
+       saves add 194 armies with 0 stale bands);
+     - of the 25 stale eliminated counts, 9 are in natural saves and 16 in
+       crafted ones.
+7. **Test coverage.** The invariants test now has 11 cases, including
+   negative fort and army-cell cases.
 
 ## Field identity and alias corrections already supported
 
