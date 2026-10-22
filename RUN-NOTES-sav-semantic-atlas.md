@@ -197,3 +197,6 @@ PR #115 merged at main `ad0af2d`. Increment 5 relayed to "IC2 Research" (status 
   leftovers (x,y (101,47) in a fleet under construction).
 - T5: launch keeps the leftover moves (17 against 0).
 - 7 saves on Drive (no release token). Ledger v6 is authoritative; tests pass.
+
+PR #117 merged at main `22b450d`. Increment 6 relayed to "IC2 Research" (status "delivered"), with a proposal to close research #47.
+**Last delivered findings baseline: `22b450d0d52de146fc7b1f623565fdcd65c66769`.**
