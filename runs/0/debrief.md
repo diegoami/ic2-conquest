@@ -34,7 +34,7 @@ All 24 turns were played, each in a fresh game process from its own autosave wit
 | P1b | HI first against Gaul | Right against LI; but Gaul's late armies brought archers (7,000) and cavalry, and the big 0737 battle was still a near-pyrrhic win. |
 | P2 | Supply keeps morale | Morale stayed 60-70 all run; no army fell below 10 %. Joining recruits (morale 59-62) into the veterans (70) dropped the field army's morale to 61-63 (`AUTO0730.SAV`), which costs siege strength in proportion. |
 | P3 | Winter: several cities feed an army | The 0737 plan counted 2,520 t in North Italy. In practice **winter emptied Taurasia and Mediolanum by 0742** (`AUTO0743.SAV`: stocks 0, 0, others 10-36 t) while an army of only 11,377 drew from them; a 53,000 army would have starved. The fix used on 0743 (walk past three cities and draw from each) worked. |
-| P4 | Recruit from day one | The queue was never empty; 7 recruit orders, 6 mobilizations. Recruits reach quality 4 only after 8 turns (state 16) and average after 12. |
+| P4 | Recruit from day one | The queue was never empty; 9 recruit orders, 7 mobilizations. Recruits reach quality 4 only after 8 turns (state 16) and average after 12. |
 | P6 | Mercenaries cost the purse | The Samnite LI (0720) took nothing from the purse and died in the first battle before any pay was due. |
 
 ## k calibration (P1), from the logged battles
