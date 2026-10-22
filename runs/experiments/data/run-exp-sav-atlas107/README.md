@@ -3,9 +3,15 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v6.csv` (**authoritative**, increment 6): v5 plus the native
+- `field-map-v7.csv` (**authoritative**, increment 7): v6 plus the
+  invariant results on the context-dependent rows, and the city-list order
+  (by name). The checker defaults to v7.
+- `invariants-private-bundle-v1.json`, `invariants-public-v1.json`: from
+  `scripts/sav_atlas_invariants.py`. Per group, each invariant's checked and
+  violation counts (with the first violating file and record indices), plus
+  observed per-field domains (min, max, distinct count).
+- `field-map-v6.csv` (increment 6): v5 plus the native
   fleet-leftover evidence of [run-exp-sav-fleetmoves107](../run-exp-sav-fleetmoves107/README.md).
-  The checker defaults to v6.
 - `field-map-v5.csv` (increment 5): v4 plus residue,
   text-tail and history notes. Value policies changed: route → `LIVE_AND_RESIDUE`,
   INERT → `PRESERVE_OR_ZERO`, `CITY.allegiance` → `HISTORICAL_PROFILE`. Classes

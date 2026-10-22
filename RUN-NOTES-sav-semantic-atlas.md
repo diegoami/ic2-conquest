@@ -200,3 +200,13 @@ PR #115 merged at main `ad0af2d`. Increment 5 relayed to "IC2 Research" (status 
 
 PR #117 merged at main `22b450d`. Increment 6 relayed to "IC2 Research" (status "delivered"), with a proposal to close research #47.
 **Last delivered findings baseline: `22b450d0d52de146fc7b1f623565fdcd65c66769`.**
+
+## 2026-10-22 increment 7: invariants and domains (static, corpus)
+
+- `scripts/sav_atlas_invariants.py` (test 6/6) checks 20 code-derived
+  invariants.
+- City lists are ordered by name.
+- 17 of 362 army marker bands are stale in natural saves.
+- Eliminated nations keep a stale `cities` count.
+- The aboard links and the battle grid can't be tested on this corpus.
+- Ledger v7 is authoritative.

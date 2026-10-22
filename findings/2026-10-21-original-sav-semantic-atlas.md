@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v6.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v6.csv) (increment 6: fleet leftovers confirmed natively). New evidence should update its
+[`field-map-v7.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v7.csv) (increment 7: cross-record invariants). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -501,6 +501,49 @@ adds this evidence; no class or value policy changed.
 - **Not exercised:** whether the owner can spend those moves on the launch
   turn.
 
+## Increment 7: cross-record invariants and observed domains (2026-10-22)
+
+[`scripts/sav_atlas_invariants.py`](../scripts/sav_atlas_invariants.py) (test
+`python3 -m tests.test_sav_atlas_invariants`) checks 20 invariants, each derived
+from the code, in every save. It also records each field's observed domain:
+min, max and number of distinct values, which are samples, not legal
+domains. Receipts:
+[private bundle](../runs/experiments/data/run-exp-sav-atlas107/invariants-private-bundle-v1.json),
+[public](../runs/experiments/data/run-exp-sav-atlas107/invariants-public-v1.json).
+[`field-map-v7.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v7.csv)
+adds the results to the context-dependent rows.
+
+- **0 violations in 56 saves:**
+  - city markers ((m − 20) mod 16 = owner);
+  - fleet markers (owner + 300/316/332 by ships < 25/< 50/else, `FUN_0044A878`);
+  - army marker owner;
+  - army cell = the terrain or city under the army;
+  - each city list equals the set of owned cities;
+  - capital owned;
+  - cities count = list length for live nations;
+  - fleet countdown −1 or an even 0..24;
+  - building city 0..333 and condition 0..100;
+  - slot troops ≥ 0 and packed (15,600 slot checks);
+  - recruit city index;
+  - live merc on a city tile;
+  - fort encoding;
+  - news index.
+- **Correction: `NATION.city_list` is ordered by city name.** It is in byte
+  order of the city names, not of the indices. `FUN_0044B8F4` removes the
+  city from the old owner's list and inserts it into the new owner's with
+  StrComp. The earlier alias "sorted" was right, but the key is the name.
+- **Army marker bands can be stale.** The band (owner + 200/216/232 by total
+  troops div 1000 < 25/< 50/else, `FUN_0044A80C`) is refreshed only when that
+  function runs. 17 of 362 armies in natural saves showed a stale band. The
+  owner part is always right. A writer should recompute the band; an
+  exporter must not treat a stale band as an error.
+- **Eliminated nations keep a stale `cities` count** (25 of 25 cases).
+- **Not testable on this corpus:**
+  - The aboard links: no army is aboard in any save (`FLEET.army` is always
+    −1).
+  - The battle-grid icon count: all 16 battle saves are research's crafted
+    stale-grid / same-cell cases, which violate it by design.
+
 ## Field identity and alias corrections already supported
 
 Use stable IDs and retain the old name/correction record so future readers do
@@ -513,7 +556,7 @@ not rediscover or mix these meanings:
 | Fleet +0/+2 versus +4/+6 | Current XY versus route/destination XY. | Same record report; [transport lifecycle](https://github.com/diegoami/imperial-conquest-2-research/blob/3a349c25f77f1c8816d1410cb2931dcd4b7e9426/docs/reports/2026-10-21-transported-army-coordinate-lifecycle.md). |
 | Fleet +20 | Build-city index while building versus condition after launch; not one timeless field label. | Same record report; SAV safety report below. |
 | Fleet +22 / army +8 | Carried-army index versus embarked sentinel; an army-side fleet pointer must not be invented. | Transport lifecycle and SAV safety report. |
-| Nation +048..2E3 | Live sorted owned-city index list, not an unnamed static block. | [SAV safety finding](2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md). |
+| Nation +048..2E3 | Live owned-city index list sorted by city name (increment 7), not an unnamed static block. | [SAV safety finding](2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md). |
 | Nation +434/+43C/+448 | Historical starting comparison values, not current-value duplicates. | Same safety finding. |
 | Nation +44E..44F | Two-byte conqueror nation field; “conqueror byte” is an imprecise description. | Nation matrix and original record layout. |
 | Nation +486/+488 | Viewport Y/X, not unknown selected-army coordinates. | Nation matrix and [tax/alias evidence](2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md). |
