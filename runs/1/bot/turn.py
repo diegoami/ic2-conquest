@@ -113,7 +113,17 @@ class RunGame(Game):
         if self.shot_dir:
             shot = self.shot_dir / ("battle-%04d-%d-%s.png" % (self.turn_no, len(self.battles) + 1, time.strftime("%H%M%S")))
             rec["shot"] = str(shot)
-        res = super().play_battle(shot, **kw)
+        # run 1: wait for the "Battle ended" box so its screenshot and text are kept (run 0 never caught it);
+        # "no" declines a post-battle peace offer, as end_turn(peace=False) does
+        kw.setdefault("on_dialog", "no")
+        try:
+            res = super().play_battle(shot, **kw)
+        except DriverError as e:
+            if "Battle ended box" not in str(e):
+                raise
+            rec["on_dialog_error"] = repr(e)
+            kw["on_dialog"] = None
+            res = super().play_battle(shot, **kw)
         try:
             rec["after"] = {k: self.army_state(int(k)) for k in rec.get("before", {})}
             rec["result"] = res
