@@ -1,0 +1,12 @@
+15:49:54 turn 0742: load /home/user/ic2-conquest/artifacts/run-1/270BC-winter/AUTO0742.SAV (sha 3abbf8fb2aea4439) seed 12367
+15:49:59 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":117,"sha256_12":"341f52f00b6d"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+15:50:10 seed line S 0000012367; popups at load []
+15:50:30 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (411, 525), 'money': (656, 656)}
+15:50:36 order goto -> ok=partial (moves ran out) {'attempts': 1, 'ok': 'partial (moves ran out)', 'texts': [], 'from': (94, 35), 'path': [(94, 35), (93, 34), (94, 33), (95, 32), (96, 31)], 'path_cost': 8, 'reach_this_turn': (95, 32), 'to': (95, 32), 'moves_left': 3}
+15:50:42 order supply attempt 1: DriverError('Supply army did not open')
+15:50:49 order supply attempt 2: DriverError('Supply army did not open')
+15:50:56 order supply attempt 3: DriverError('Supply army did not open')
+15:50:57 order supply -> ok=False {'attempts': 3, 'ok': False, 'texts': [], 'errors': ["DriverError('Supply army did not open')", "DriverError('Supply army did not open')", "DriverError('Supply army did not open')"]}
+15:50:59 end turn
+15:51:09 autosave AUTO0743.SAV; texts []; battles 0
+15:51:10 done: /home/user/ic2-conquest/artifacts/run-1/270BC-winter/AUTO0743.SAV sha 23d7fa32790a7348
