@@ -274,7 +274,9 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
         if not check('play %s has a record' % pid, pid in PL): continue
         q = PL[pid][-1]
         check('%s: source save column %r vs record %r' % (pid, r['source save'], q['src']), r['source save'] == q['src'])
-        check('%s: order-issued column vs the record' % pid, r['order issued'] == q['note'], '%r vs %r' % (r['order issued'], q['note']))
+        # a dated correction note added to the finding later, *(YYYY-MM-DD: ...)*, is not part of the recorded order
+        issued = re.sub(r'\s*\*\(\d{4}-\d{2}-\d{2}: .*?\)\*', '', r['order issued'])
+        check('%s: order-issued column vs the record' % pid, issued == q['note'], '%r vs %r' % (issued, q['note']))
         citing = sorted(c['id'] for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', '')))
         check('%s: rows column %r vs the rows whose play cell names it %r' % (pid, r['rows'], citing), sorted([x for x in r['rows'].split(',') if x]) == citing)
         handlers, xfer = handlers_of(q)
