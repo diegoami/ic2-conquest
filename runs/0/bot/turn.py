@@ -89,6 +89,7 @@ class RunGame(Game):
         super().__init__(*a, **k)
         self.battles = []
         self.shot_dir, self.turn_no = None, 0
+        self.last_new = None
 
     def all_armies(self, n_max=200):
         out = {}
@@ -121,6 +122,47 @@ class RunGame(Game):
         self.battles.append(rec)
         return res
 
+    def list_rows_ocr(self, c):
+        """The visible rows of list box control c, read by OCR (the list's items are not readable through win_controls).
+        Returns [(row index, text)]."""
+        import subprocess
+        png = Path(G).parent.parent.parent / "shots" / "_list.png"
+        png.parent.mkdir(parents=True, exist_ok=True)
+        self.shot(png)
+        big = png.with_name("_list_big.png")
+        subprocess.run(["convert", str(png), "-crop", "%dx%d+%d+%d" % (c["w"] - 4, c["h"] - 4, c["cx"], c["cy"]),
+                        "-scale", "400%", "-colorspace", "Gray", "-negate", "-threshold", "50%", "-negate", str(big)], check=True)
+        out = subprocess.run(["tesseract", str(big), "-", "--psm", "6"], capture_output=True, text=True).stdout
+        lines = [ln.strip() for ln in out.splitlines() if ln.strip()]
+        return [(c["top"] + k, t) for k, t in enumerate(lines)]
+
+    def city_row(self, name):
+        """Row of city `name` in the Army recruits dialog's city list (the dialog must be open). The list starts with
+        "All cities" once more than one city holds queued units, so a fixed row index is not safe."""
+        import subprocess
+        cs = self.controls("Army recruits")
+        lb = self.control(cs, cls="TListBox", index=0)
+        ul = self.control(cs, cls="TListBox", index=1)
+        n_vis = (lb["h"] - 4) // lb["item_h"]
+        seen = []
+        key = name.lower().replace(" ", "")[:5]
+        png = Path(G).parent.parent.parent / "shots" / "_caption.png"
+        png.parent.mkdir(parents=True, exist_ok=True)
+        for r in range(lb["top"], lb["top"] + n_vis):
+            self.click_list_row(lb, r, pause=0.6)
+            self.shot(png)
+            big = png.with_name("_caption_big.png")
+            # the group box caption "Units at <City>" sits just above the units list ("All cities" shows the capital in the
+            # "Create unit at" caption, so that one cannot tell the two rows apart)
+            subprocess.run(["convert", str(png), "-crop", "%dx%d+%d+%d" % (ul["w"], 18, ul["x"], ul["y"] - 20),
+                            "-scale", "400%", str(big)], check=True)
+            txt = " ".join(subprocess.run(["tesseract", str(big), "-", "--psm", "7"], capture_output=True, text=True).stdout.split())
+            seen.append((r, txt))
+            city = txt.lower().split(" at ")[-1].replace(" ", "")
+            if city.startswith(key):
+                return r, seen
+        raise DriverError("city %r not found in the recruit list (captions %s)" % (name, seen))
+
     # ---- memory helpers ----
     def rome(self):
         return self.nation_state(0)
@@ -131,7 +173,28 @@ class RunGame(Game):
 
 def do_order(g, o, log):
     op = o["op"]
+    if o.get("army") == "new":
+        o = dict(o, army=g.last_new)
     r = {"order": o, "attempts": 0, "ok": False, "texts": []}
+    if o.get("army", 0) is None:
+        r["skipped"] = "no army (the order that should have made it failed)"
+        log("order %s skipped: %s" % (op, r["skipped"]))
+        return r
+    if "city_name" in o and op in ("recruit", "mobilize"):
+        try:
+            g.open_recruit()
+            o = dict(o, row=g.city_row(o["city_name"])[0])
+            g.close_controls("Army recruits", g.controls("Army recruits"))
+            r["order"] = o
+        except Exception as e:
+            r["errors"] = [repr(e)]
+            log("order %s: city row lookup failed: %r" % (op, e))
+            try:
+                g.dismiss_popups()
+                g.close_controls("Army recruits", g.controls("Army recruits"))
+            except Exception:
+                pass
+            return r
     for attempt in range(3):
         r["attempts"] += 1
         try:
@@ -211,7 +274,7 @@ def do_order(g, o, log):
                 if not pth:
                     r["error"] = "no path"
                     break
-                reach, spent = P.turn_legs(m, pth, a["moves"])
+                reach, spent = P.turn_legs(m, pth, a["moves"] - o.get("keep_moves", 0))
                 r["path"], r["path_cost"], r["reach_this_turn"] = pth, cost, reach[-1]
                 wps = []
                 for k in range(1, len(reach)):
@@ -249,6 +312,7 @@ def do_order(g, o, log):
                 new = sorted(set(after) - before)
                 r["new_armies"] = {i: after[i] for i in new}
                 if new:
+                    g.last_new = new[-1]
                     r["ok"] = True
                     break
                 if r["texts"]:
@@ -277,10 +341,18 @@ def do_order(g, o, log):
             elif op == "attack":
                 nb = len(g.battles)
                 before = g.army_state(o["army"])
+                if before["moves"] <= 0:
+                    r["skipped"] = "army has 0 moves: an attack with 0 moves does nothing (0725)"
+                    r["ok"] = False
+                    break
                 r["texts"] += g.attack(o["army"], o["x"], o["y"])
-                r["army_before"], r["army_after"] = before, g.army_state(o["army"])
+                after = g.army_state(o["army"])
+                r["army_before"], r["army_after"] = before, after
                 r["battles"] = len(g.battles) - nb
-                r["ok"] = True
+                r["troops"] = (before["troops"], after["troops"])
+                r["moves"] = (before["moves"], after["moves"])
+                r["ok"] = bool(r["battles"] or after["moves"] != before["moves"] or after["troops"] != before["troops"]
+                               or after["owner"] != before["owner"])
                 break           # an attack is never retried
             elif op == "split":
                 before = set(g.roman_armies())
@@ -292,7 +364,7 @@ def do_order(g, o, log):
                     break
             else:
                 raise DriverError("unknown op " + op)
-        except DriverError as e:
+        except Exception as e:
             r.setdefault("errors", []).append(repr(e))
             log("order %s attempt %d: %r" % (op, attempt + 1, e))
             try:
