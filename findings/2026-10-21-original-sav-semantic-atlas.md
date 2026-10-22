@@ -415,8 +415,12 @@ changed.
     - siege: 1..15;
     - naval battle and storm: `(loser, winner)` strengths, so r ≤ 100.
 
-    Corpus: 56 saves, 6,102 live and 9,498 empty slots. None has negative
-    troops, and no live slot follows an empty one.
+    Corpus: 56 saves, 6,102 live and 9,498 empty slots in armies with an
+    owner. None has negative troops, and no live slot follows an empty one.
+    *(Correction, 2026-10-22, from research's intake: counting every stored
+    army, tombstones included, gives 6,118 live and 9,522 empty slots; the
+    difference is 2 tombstoned armies that still hold live troops. Recounted
+    over the same 56 saves.)*
 - **Fleet order `FUN_0044A004`.** It writes 10 of 26 bytes.
   - **Launch writes most of the rest.** `FUN_0044A050` sets x,y (through
     `FUN_0044939C`: x = −1, then the found tile as a dword), supplies 50,
