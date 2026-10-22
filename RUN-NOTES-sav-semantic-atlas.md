@@ -190,3 +190,10 @@ Ledger v4 is authoritative. Open:
 
 PR #115 merged at main `ad0af2d`. Increment 5 relayed to "IC2 Research" (status "delivered").
 **Last delivered findings baseline: `ad0af2d8f4afd8485ae48368146febf23548e4b9`.**
+
+## 2026-10-22 increment 6: run-exp-sav-fleetmoves107 (owner-approved)
+
+- T4: the natural path confirms the compaction copy and the order's
+  leftovers (x,y (101,47) in a fleet under construction).
+- T5: launch keeps the leftover moves (17 against 0).
+- 7 saves on Drive (no release token). Ledger v6 is authoritative; tests pass.

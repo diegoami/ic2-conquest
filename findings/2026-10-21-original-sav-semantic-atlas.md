@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v5.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v5.csv) (increment 5: residue, text tails and history). New evidence should update its
+[`field-map-v6.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v6.csv) (increment 6: fleet leftovers confirmed natively). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -474,9 +474,32 @@ changed.
 
 **Still open:**
 
-- The first-turn moves effect of a reused fleet index, which needs a game run.
+- The first-turn moves effect of a reused fleet index, which needs a game run
+  (*confirmed in increment 6*).
 - The full rebellion rule.
 - Independent review of increments 3–5.
+
+## Increment 6: fleet leftovers confirmed natively (run-exp-sav-fleetmoves107, 2026-10-22)
+
+The owner approved the run. Data:
+[run-exp-sav-fleetmoves107](../runs/experiments/data/run-exp-sav-fleetmoves107/README.md).
+[`field-map-v6.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v6.csv)
+adds this evidence; no class or value policy changed.
+
+- **T4, natural path.**
+  - Scuttle fleet 2, then End turn. Compaction moves the last fleet into the
+    hole and leaves a full copy of it at the old last index, past the
+    count. The copy was taken before the round tick refreshed moves.
+  - Build fleet then orders the new fleet at that index. The order's 10 bytes
+    are written; the copy's x,y (101,47), route, moves, supplies, money and
+    cell remain and are saved.
+  - This is the first observation of non-zero leftovers in a fleet under
+    construction; the 120 in the corpus all held 0.
+- **T5, direct effect.** A fleet launched at the round tick keeps a crafted
+  leftover moves value of 17 (control 0) at its owner's next turn. Increment
+  5's candidate is confirmed: launch does not set moves.
+- **Not exercised:** whether the owner can spend those moves on the launch
+  turn.
 
 ## Field identity and alias corrections already supported
 
