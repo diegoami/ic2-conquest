@@ -24,7 +24,7 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
 | A1 attack-army box | **done** | `MG_A1_attack_army_confirm.png`, `..._context_v2.png` (the first context crop cut the box's right edge) |
 | A2 attack-fleet box | **done** | `MG_A2_attack_fleet_confirm.png`, `..._context.png` |
 | A3 army too large for fleet | **done** | `MG_A3_army_too_large_for_fleet.png`, `..._context.png` |
-| A4 Cellular Automata | **done** (seed build: every N gives the same pattern, see below) | `MG_A4_about_box_cancell_button.png`, `MG_A4_cellular_automata_blank.png`, `..._after_N.png` (+ `_v2`..`_v6`, identical), `..._context.png` |
+| A4 Cellular Automata | **done** (seed build: every N gives the same pattern, see below) | `MG_A4_about_box_cancell_button.png`, `MG_A4_cellular_automata_blank.png`, `..._after_N.png` (+ `_v2`..`_v6`, identical), `..._context.png`; varied patterns from the original exe: `MG_A4_orig_cellular_automata_N1..N4.png` |
 | A5 Offer of peace | **done** (seed 2; seed 1 gave no box) | `MG_A5_offer_of_peace_seed2.png`, `..._context.png`; `a5-trials.jsonl` |
 | B7 disband army | **done**, matches the code | `B7-disband-diff.txt`; finding `2026-10-22-disband-and-scuttle-return-money-and-supplies.md` |
 | B8 scuttle fleet | **done**, matches the code | `B8-scuttle-diff.txt`; same finding |
@@ -58,7 +58,9 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
   (300 x 235), buttons **OK** and **CAncell**. CAncell opens **Cellular Automata** (300 x 428, centred), canvas blank; N draws.
 - In the seed build all six N presses drew a **pixel-identical** pattern (blue field with a red central band): the patch sends
   the CA's `Randomize` through SEED.TXT (as `findings/2026-10-09-cellular-automata-savebmp-format.md` says), so with seed 12345
-  every N gives this one rule. A more varied picture needs the original exe (clock seed); see "Re-takes".
+  every N gives this one rule. Re-take with the original `Imperial Conquest 2.exe` (clock seed, no game loaded: Help > About
+  works before a game is opened): four N clicks, four different patterns (`MG_A4_orig_cellular_automata_N1..N4.png`); use these
+  for the manual.
 - X closes the window (at (754,341) here); the About box's OK then needed a second click.
 
 ### A5 Offer of peace
@@ -125,3 +127,20 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
   the conditions met; seen in `MG_B11_seed12345_AUTO0734.SAV` (relation 3 both ways). **No box**: the human sees only the news
   line "CARTHAGE DECLARES WAR ON ROME." (`MG_B11_seed12345_after_declaration_screen.png`). Meanwhile Gaul took 9 Roman cities
   (25 -> 16), lowering Rome's P from 1,058 to 634. Finding `2026-10-22-ai-declares-war-on-a-human-seat.md`.
+
+## Re-takes and shots to ignore
+
+| Shot | Why | Use instead |
+|---|---|---|
+| `MG_A1_attack_army_confirm_context.png` | crop 772 px wide cut the Confirm box (it reaches x 782) | `..._context_v2.png` |
+| `MG_A4_cellular_automata_after_N*.png` | seed build: the same pattern at every N | `MG_A4_orig_cellular_automata_N1..N4.png` |
+| `MG_A5_offer_of_peace_seed2_context.png` | the maps behind the box were not yet repainted (only the main window strip) | the crop `MG_A5_offer_of_peace_seed2.png` |
+
+## Not done / open
+
+- **Release `run-exp-manual-gaps`**: not created: `IC2_RELEASE_TOKEN` is not set in this session. All binaries are on Drive
+  (`gdrive:IC2/artifacts/run-exp-manual-gaps`) and hashed in `SAVES.sha256` / `shots.csv`. For the player:
+  `cd /home/user/ic2-conquest/artifacts/run-exp-manual-gaps && gh release create run-exp-manual-gaps --repo diegoami/ic2-conquest --title run-exp-manual-gaps --notes "Saves and screenshots of run-exp-manual-gaps" saves/*.SAV shots/*.png`
+- A5 used the seed build only; the box is drawn by the same form in both exes (not re-shot in the original).
+- A6c victory is the window only (staged city-count word); a real 334-city conquest was not staged.
+- B10/B11 are staged positions with natural play after; their limits are listed in the findings.
