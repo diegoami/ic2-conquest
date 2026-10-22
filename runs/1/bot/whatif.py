@@ -24,9 +24,12 @@ def combine(parts):
 
 def main(argv):
     s = sav.load(T.save_path(int(argv[0])))
-    a = s["armies"][int(argv[1])]
     e = s["armies"][int(argv[2])]
-    parts = [(a["units"], a["morale"])]
+    if argv[1] == "new":            # a new army made by mobilisation only
+        parts = []
+    else:
+        a = s["armies"][int(argv[1])]
+        parts = [(a["units"], a["morale"])]
     k = 3
     while k < len(argv):
         if argv[k] == "+army":
