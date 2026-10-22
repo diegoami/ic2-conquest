@@ -1,0 +1,8896 @@
+{
+ "schema": "refusal-predicates/1",
+ "issue": 58,
+ "source": {
+  "extract": "runs/experiments/data/run-exp-refusal-texts/code_extract_refusals.v2.txt",
+  "extract_sha256": "529cd964a667e964750cca50c28198e6fa5f05234b0cdbf4bc6d04ff339a4630",
+  "dump": "all_app_functions.txt",
+  "dump_sha256_pinned": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "layout": "docs/sav-layout-notes.md"
+ },
+ "excluded": [
+  {
+   "id": "X01",
+   "why": "the battle screen (TBattleMap_Surrender): excluded by the task"
+  }
+ ],
+ "fields": [
+  {
+   "address": "0x0047c1ec",
+   "meaning": "army record base, stride 0x290",
+   "doc_line": 127,
+   "doc_quote": "In memory it is at `0x0047C1EC`, stride `0x290`"
+  },
+  {
+   "address": "0x0047c1f0",
+   "meaning": "army +4 owner",
+   "doc_line": 133,
+   "doc_quote": "owner nation code"
+  },
+  {
+   "address": "0x0047c1f2",
+   "meaning": "army +6 moves",
+   "doc_line": 134,
+   "doc_quote": "moves remaining this turn"
+  },
+  {
+   "address": "0x0047c1f4",
+   "meaning": "army +8 covered cell, -1 = aboard a fleet",
+   "doc_line": 135,
+   "doc_quote": "−1 = aboard a fleet"
+  },
+  {
+   "address": "0x0047c1f6",
+   "meaning": "army +0xa supplies",
+   "doc_line": 136,
+   "doc_quote": "supplies, tons"
+  },
+  {
+   "address": "0x0047c1f8",
+   "meaning": "army +0xc money",
+   "doc_line": 137,
+   "doc_quote": "money (the army purse)"
+  },
+  {
+   "address": "0x0047c1fc",
+   "meaning": "army +0x10 unit slots, 32 bytes each",
+   "doc_line": 139,
+   "doc_quote": "unit slots; slot `k` is at `16 + 32*k`"
+  },
+  {
+   "address": "unit +0",
+   "meaning": "origin label, 0 = regular",
+   "doc_line": 156,
+   "doc_quote": "origin label: **0 = regular**"
+  },
+  {
+   "address": "unit +2",
+   "meaning": "unit type",
+   "doc_line": 157,
+   "doc_quote": "unit type"
+  },
+  {
+   "address": "unit +4",
+   "meaning": "troops, <= 0 = empty",
+   "doc_line": 158,
+   "doc_quote": "troops. **≤ 0 = empty slot**"
+  },
+  {
+   "address": "0x0049c26c",
+   "meaning": "fleet record base, stride 0x1a",
+   "doc_line": 178,
+   "doc_quote": "In memory it is at `0x0049C26C`, stride `0x1A`"
+  },
+  {
+   "address": "0x0049c274",
+   "meaning": "fleet +8 owner",
+   "doc_line": 186,
+   "doc_quote": "owner nation code"
+  },
+  {
+   "address": "0x0049c276",
+   "meaning": "fleet +10 construction countdown",
+   "doc_line": 187,
+   "doc_quote": "construction countdown"
+  },
+  {
+   "address": "0x0049c278",
+   "meaning": "fleet +0xc moves",
+   "doc_line": 188,
+   "doc_quote": "moves"
+  },
+  {
+   "address": "0x0049c27a",
+   "meaning": "fleet +0xe supplies",
+   "doc_line": 189,
+   "doc_quote": "supplies, tons"
+  },
+  {
+   "address": "0x0049c27c",
+   "meaning": "fleet +0x10 money",
+   "doc_line": 190,
+   "doc_quote": "money (purse)"
+  },
+  {
+   "address": "0x0049c27e",
+   "meaning": "fleet +0x12 ships",
+   "doc_line": 191,
+   "doc_quote": "ships"
+  },
+  {
+   "address": "0x0049c282",
+   "meaning": "fleet +0x16 carried army, -1 = none",
+   "doc_line": 193,
+   "doc_quote": "index of the carried army. **−1 = none**"
+  },
+  {
+   "address": "0x00479590",
+   "meaning": "city record base, stride 0x22",
+   "doc_line": 101,
+   "doc_quote": "in memory at `0x00479590`, stride `0x22`"
+  },
+  {
+   "address": "0x004795a2",
+   "meaning": "city +0x12 owner",
+   "doc_line": 108,
+   "doc_quote": "owner (nation code)"
+  },
+  {
+   "address": "0x004795a8",
+   "meaning": "city +0x18 supplies",
+   "doc_line": 111,
+   "doc_quote": "supplies, tons"
+  },
+  {
+   "address": "0x004795aa",
+   "meaning": "city +0x1a fortification",
+   "doc_line": 112,
+   "doc_quote": "fortification"
+  },
+  {
+   "address": "0x00474670",
+   "meaning": "nation record base, stride 0x494",
+   "doc_line": 206,
+   "doc_quote": "`0x00474670`, stride `0x494`"
+  },
+  {
+   "address": "0x00474696",
+   "meaning": "nation +0x26 relation to nation j (0 peace, 1 trade, 2 alliance, 3 war, < 0 cooldown)",
+   "doc_line": 227,
+   "doc_quote": "relation to nation `j`"
+  },
+  {
+   "address": "relation values",
+   "meaning": "0 peace, 1 trade, 2 alliance, 3 war; negative = cooldown",
+   "doc_line": 253,
+   "doc_quote": "0 peace, 1 trade, 2 alliance, 3 war"
+  },
+  {
+   "address": "0x00474954",
+   "meaning": "nation +0x2e4 recruitment slots {state, type, troops, city}",
+   "doc_line": 230,
+   "doc_quote": "recruitment slots"
+  },
+  {
+   "address": "0x00474aa8",
+   "meaning": "nation +0x438 treasury",
+   "doc_line": 234,
+   "doc_quote": "treasury, talents"
+  },
+  {
+   "address": "0x00474ab2",
+   "meaning": "nation +0x442 mobilisation %",
+   "doc_line": 237,
+   "doc_quote": "mobilization %"
+  },
+  {
+   "address": "0x00474ab4",
+   "meaning": "nation +0x444 capital city",
+   "doc_line": 238,
+   "doc_quote": "capital city index"
+  },
+  {
+   "address": "0x00474b00",
+   "meaning": "nation +0x490 human flag (0 = computer)",
+   "doc_line": 248,
+   "doc_quote": "human flag: **1 = human, 0 = computer**"
+  }
+ ],
+ "rows": [
+  {
+   "id": "R01",
+   "table": "catalogue",
+   "function": "TUnitMap_SplitArmy",
+   "call": 47042,
+   "paths": [
+    [
+     {
+      "line": 47039,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitArmy",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_0047c1f0)[sVar1 * 0x148] == DAT_004a0320",
+        "var": "army.owner == current nation",
+        "op": "==",
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "an own army is selected",
+      "cite": [
+       47039
+      ]
+     },
+     {
+      "line": 47041,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SplitArmy",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_0047c220)[sVar1 * 0x148] == 0",
+        "var": "army slot 1 troops (army +0x34)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:slot1_empty",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "the second unit slot is empty: the army has one unit",
+      "cite": [
+       47041
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47046,
+     47048
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": "with 2+ units FUN_00449f08 makes the new army and the Split army dialog opens"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R02",
+   "table": "catalogue",
+   "function": "TUnitMap_JoinArmies",
+   "call": 46978,
+   "paths": [
+    [
+     {
+      "line": 46972,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected",
+      "cite": [
+       46972
+      ]
+     },
+     {
+      "line": 46975,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a partner exists: the last own army one tile away (FUN_00449d64); none = nothing happens",
+      "cite": [
+       46975
+      ]
+     },
+     {
+      "line": 46976,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "(&DAT_0047c1f4)[(short)uStack_10 * 0x148] == -1",
+        "var": "partner covered cell (army +8; -1 = aboard)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:aboard",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(&DAT_0047c1f4)[sVar1 * 0x148] == -1",
+        "var": "army covered cell (army +8)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:aboard",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "either army is aboard a fleet",
+      "cite": [
+       46976,
+       46977
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46989,
+     46996
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R03",
+   "table": "catalogue",
+   "function": "TUnitMap_JoinArmies",
+   "call": 47011,
+   "paths": [
+    [
+     {
+      "line": 46972,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected",
+      "cite": [
+       46972
+      ]
+     },
+     {
+      "line": 46975,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a partner exists",
+      "cite": [
+       46975
+      ]
+     },
+     {
+      "line": 46976,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "(&DAT_0047c1f4)[(short)uStack_10 * 0x148] == -1",
+        "var": "partner aboard",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:aboard",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(&DAT_0047c1f4)[sVar1 * 0x148] == -1",
+        "var": "army aboard",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:aboard",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "neither is aboard",
+      "cite": [
+       46976,
+       46977
+      ]
+     },
+     {
+      "line": 46984,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(int)(short)iVar2 + (int)(short)iVar3 < 0x15",
+        "var": "units(army) + units(partner) (FUN_0044a66c: last occupied slot + 1)",
+        "op": "<",
+        "const": 21,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46984
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46989,
+     46996
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R04",
+   "table": "catalogue",
+   "function": "TUnitMap_JoinArmies",
+   "call": 47006,
+   "paths": [
+    [
+     {
+      "line": 46972,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected",
+      "cite": [
+       46972
+      ]
+     },
+     {
+      "line": 46975,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a partner exists",
+      "cite": [
+       46975
+      ]
+     },
+     {
+      "line": 46976,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "(&DAT_0047c1f4)[(short)uStack_10 * 0x148] == -1",
+        "var": "partner aboard",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:aboard",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(&DAT_0047c1f4)[sVar1 * 0x148] == -1",
+        "var": "army aboard",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:aboard",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46976,
+       46977
+      ]
+     },
+     {
+      "line": 46984,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(int)(short)iVar2 + (int)(short)iVar3 < 0x15",
+        "var": "units together",
+        "op": "<",
+        "const": 21,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46984
+      ]
+     },
+     {
+      "line": 46987,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_JoinArmies",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 + iVar3 < 0x186a1",
+        "var": "troops(army) + troops(partner) (FUN_0044a698)",
+        "op": "<",
+        "const": 100001,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46987
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46989,
+     46996
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R05",
+   "table": "catalogue",
+   "function": "TUnitMap_DisbandArmy",
+   "call": 47102,
+   "paths": [
+    [
+     {
+      "line": 47096,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_DisbandArmy",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected",
+      "cite": [
+       47096
+      ]
+     },
+     {
+      "line": 47101,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_DisbandArmy",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar2 == -1",
+        "var": "own city within one tile of the army (FUN_004494e4; -1 = none)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47101
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47106
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": "with a city near, the prompt P01 is the next step"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R06",
+   "table": "catalogue",
+   "function": "TUnitMap_SelectUnit",
+   "call": 46595,
+   "paths": [
+    [
+     {
+      "line": 46514,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 46520,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "DAT_004a0328 < 0",
+        "var": "an army is selected for a move",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1",
+        "var": "that army's moves (army +6)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:no_moves",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "!bVar4",
+        "var": "FUN_004492a0: the clicked tile is one tile from the army",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "bVar4 = an army is selected, has 1 or more moves and is one tile from the clicked tile",
+      "cite": [
+       46514,
+       46516
+      ]
+     },
+     {
+      "line": 46532,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the clicked tile is not a city",
+      "cite": [
+       46532
+      ]
+     },
+     {
+      "line": 46555,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "nor an army",
+      "cite": [
+       46555
+      ]
+     },
+     {
+      "line": 46582,
+      "out": true,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "it is a fleet",
+      "cite": [
+       46582
+      ]
+     },
+     {
+      "line": 46590,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "uVar2 == DAT_004a0320",
+        "var": "fleet owner == current nation",
+        "op": "==",
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "an own fleet",
+      "cite": [
+       46590
+      ]
+     },
+     {
+      "line": 46592,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "bVar4",
+        "var": "the selected army can board (see 46514)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(&DAT_0049c282)[*(short *)(param_1 + 0x224) * 0xd] == -1",
+        "var": "fleet carried army (fleet +0x16; -1 = none)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46592
+      ]
+     },
+     {
+      "line": 46594,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(int)(short)(&DAT_0049c27e)[*(short *)(param_1 + 0x224) * 0xd] < iVar6 / 500",
+        "var": "fleet ships (fleet +0x12) vs army troops / 500",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "ships",
+         "<",
+         "troops / 500"
+        ],
+        "tokens": [
+         "500"
+        ],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46594
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46601
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": "the click leaves the fleet selected (L46591) and the army unselected (L46608), as on the boarding path"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R07",
+   "table": "catalogue",
+   "function": "TUnitMap_SelectUnit",
+   "call": 46637,
+   "paths": [
+    [
+     {
+      "line": 46532,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "not a city",
+      "cite": [
+       46532
+      ]
+     },
+     {
+      "line": 46555,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "not an army",
+      "cite": [
+       46555
+      ]
+     },
+     {
+      "line": 46582,
+      "out": true,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a fleet",
+      "cite": [
+       46582
+      ]
+     },
+     {
+      "line": 46590,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "uVar2 == DAT_004a0320",
+        "var": "fleet owner == current nation",
+        "op": "==",
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "the clicked fleet is not own",
+      "cite": [
+       46590
+      ]
+     },
+     {
+      "line": 46611,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "DAT_004a032a < 0",
+        "var": "an own fleet is selected",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1",
+        "var": "selected fleet moves (fleet +0xc)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:no_moves",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "!bVar4",
+        "var": "FUN_004492a0: one tile apart",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "an own fleet with moves is selected one tile away",
+      "cite": [
+       46611,
+       46613
+      ]
+     },
+     {
+      "line": 46621,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar5 < 0",
+        "var": "a city of the clicked fleet's owner within one tile (FUN_004494e4)",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:no_owner_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46621
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46627,
+     46629
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R08",
+   "table": "catalogue",
+   "function": "TUnitMap_RecruitMercenaries",
+   "call": 46914,
+   "paths": [
+    [
+     {
+      "line": 46878,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected (or the army aboard the selected fleet)",
+      "cite": [
+       46878
+      ]
+     },
+     {
+      "line": 46882,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a mercenary offer is one tile away (FUN_00449d08); none = nothing happens",
+      "cite": [
+       46882
+      ]
+     },
+     {
+      "line": 46884,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_0047c460 + sVar1 * 0x290) < 1",
+        "var": "army slot 19 troops (army +0x274)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46884
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46900
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R09",
+   "table": "catalogue",
+   "function": "TUnitMap_RecruitMercenaries",
+   "call": 46910,
+   "paths": [
+    [
+     {
+      "line": 46878,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected (or the army aboard the selected fleet)",
+      "cite": [
+       46878
+      ]
+     },
+     {
+      "line": 46882,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a mercenary offer is one tile away (FUN_00449d08); none = nothing happens",
+      "cite": [
+       46882
+      ]
+     },
+     {
+      "line": 46884,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_0047c460 + sVar1 * 0x290) < 1",
+        "var": "army slot 19 troops (army +0x274)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46884
+      ]
+     },
+     {
+      "line": 46885,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 < 0x186a1",
+        "var": "army troops (FUN_0044a698)",
+        "op": "<",
+        "const": 100001,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46885
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46900
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R10",
+   "table": "catalogue",
+   "function": "TUnitMap_RecruitMercenaries",
+   "call": 46888,
+   "paths": [
+    [
+     {
+      "line": 46878,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected (or the army aboard the selected fleet)",
+      "cite": [
+       46878
+      ]
+     },
+     {
+      "line": 46882,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a mercenary offer is one tile away (FUN_00449d08); none = nothing happens",
+      "cite": [
+       46882
+      ]
+     },
+     {
+      "line": 46884,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_0047c460 + sVar1 * 0x290) < 1",
+        "var": "army slot 19 troops (army +0x274)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46884
+      ]
+     },
+     {
+      "line": 46885,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 < 0x186a1",
+        "var": "army troops",
+        "op": "<",
+        "const": 100001,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46885
+      ]
+     },
+     {
+      "line": 46886,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "[(short)(&DAT_004795a2)[(short)local_14 * 0x11] * 0x24a + (int)DAT_004a0320] == 3",
+        "var": "relation of the offer city's owner to the current nation (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": true,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46886,
+       46887
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46900
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R11",
+   "table": "catalogue",
+   "function": "TUnitMap_RecruitMercenaries",
+   "call": 46894,
+   "paths": [
+    [
+     {
+      "line": 46878,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected (or the army aboard the selected fleet)",
+      "cite": [
+       46878
+      ]
+     },
+     {
+      "line": 46882,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a mercenary offer is one tile away (FUN_00449d08); none = nothing happens",
+      "cite": [
+       46882
+      ]
+     },
+     {
+      "line": 46884,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_0047c460 + sVar1 * 0x290) < 1",
+        "var": "army slot 19 troops (army +0x274)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46884
+      ]
+     },
+     {
+      "line": 46885,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 < 0x186a1",
+        "var": "army troops",
+        "op": "<",
+        "const": 100001,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46885
+      ]
+     },
+     {
+      "line": 46886,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "[(short)(&DAT_004795a2)[(short)local_14 * 0x11] * 0x24a + (int)DAT_004a0320] == 3",
+        "var": "relation of the offer city's owner to the current nation (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46886,
+       46887
+      ]
+     },
+     {
+      "line": 46893,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "((short)(&DAT_0047c1f6)[sVar1 * 0x148] * 10000) / iVar2 < 0xf",
+        "var": "army supplies (army +0xa) x 10000 / troops",
+        "op": "<",
+        "const": 15,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46893
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46900
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R12",
+   "table": "catalogue",
+   "function": "TUnitMap_RecruitMercenaries",
+   "call": 46904,
+   "paths": [
+    [
+     {
+      "line": 46878,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected (or the army aboard the selected fleet)",
+      "cite": [
+       46878
+      ]
+     },
+     {
+      "line": 46882,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a mercenary offer is one tile away (FUN_00449d08); none = nothing happens",
+      "cite": [
+       46882
+      ]
+     },
+     {
+      "line": 46884,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_0047c460 + sVar1 * 0x290) < 1",
+        "var": "army slot 19 troops (army +0x274)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46884
+      ]
+     },
+     {
+      "line": 46885,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 < 0x186a1",
+        "var": "army troops",
+        "op": "<",
+        "const": 100001,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46885
+      ]
+     },
+     {
+      "line": 46886,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "[(short)(&DAT_004795a2)[(short)local_14 * 0x11] * 0x24a + (int)DAT_004a0320] == 3",
+        "var": "relation of the offer city's owner to the current nation (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46886,
+       46887
+      ]
+     },
+     {
+      "line": 46893,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "((short)(&DAT_0047c1f6)[sVar1 * 0x148] * 10000) / iVar2 < 0xf",
+        "var": "army supplies (army +0xa) x 10000 / troops",
+        "op": "<",
+        "const": 15,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46893
+      ]
+     },
+     {
+      "line": 46898,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RecruitMercenaries",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "(short)param_1[0x89] < 0",
+        "var": "a fleet is selected (the army is aboard it)",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:not_aboard_fleet",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "iVar2 / 500 <= (int)(short)(&DAT_0049c27e)[(short)param_1[0x89] * 0xd]",
+        "var": "troops / 500 vs the fleet's ships",
+        "op": "<=",
+        "const": null,
+        "value": false,
+        "check": "rel",
+        "rel": [
+         "ships",
+         "<",
+         "troops / 500"
+        ],
+        "tokens": [
+         "500"
+        ],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46898,
+       46899
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     46900
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R13",
+   "table": "catalogue",
+   "function": "TUnitMap_RepairFlt",
+   "call": 47179,
+   "paths": [
+    [
+     {
+      "line": 47174,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RepairFlt",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47174
+      ]
+     },
+     {
+      "line": 47178,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RepairFlt",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar2 == -1",
+        "var": "own city within one tile of the fleet (FUN_004494e4)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47178
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47183
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R14",
+   "table": "catalogue",
+   "function": "TUnitMap_RepairFlt",
+   "call": 47187,
+   "paths": [
+    [
+     {
+      "line": 47174,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RepairFlt",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47174
+      ]
+     },
+     {
+      "line": 47178,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_RepairFlt",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar2 == -1",
+        "var": "own city near",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47178
+      ]
+     },
+     {
+      "line": 47182,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_RepairFlt",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c282)[sVar1 * 0xd] < 0",
+        "var": "fleet carried army (fleet +0x16)",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47182
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47183
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R15",
+   "table": "catalogue",
+   "function": "TUnitMap_JoinFleets",
+   "call": 47260,
+   "paths": [
+    [
+     {
+      "line": 47229,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47229
+      ]
+     },
+     {
+      "line": 47232,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a partner fleet exists: same owner, launched, one tile away (FUN_00449dd8); none = nothing happens",
+      "cite": [
+       47232
+      ]
+     },
+     {
+      "line": 47234,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c27e)[sVar1 * 0xd] + iVar2 < 0x65",
+        "var": "ships(fleet) + ships(partner)",
+        "op": "<",
+        "const": 101,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47234
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47242,
+     47249
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R16",
+   "table": "catalogue",
+   "function": "TUnitMap_JoinFleets",
+   "call": 47237,
+   "paths": [
+    [
+     {
+      "line": 47229,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47229
+      ]
+     },
+     {
+      "line": 47232,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a partner fleet exists",
+      "cite": [
+       47232
+      ]
+     },
+     {
+      "line": 47234,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c27e)[sVar1 * 0xd] + iVar2 < 0x65",
+        "var": "ships together",
+        "op": "<",
+        "const": 101,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47234
+      ]
+     },
+     {
+      "line": 47235,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_JoinFleets",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "(ushort)(&DAT_0049c282)[(short)local_10 * 0xd] < 0x8000",
+        "var": "partner carried army read unsigned (< 0x8000 = an index >= 0)",
+        "op": "<",
+        "const": 32768,
+        "value": true,
+        "check": "concept:fleet_has_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "-1 < (short)(&DAT_0049c282)[sVar1 * 0xd]",
+        "var": "this fleet's carried army",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": "concept:fleet_has_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47235,
+       47236
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47242,
+     47249
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R17",
+   "table": "catalogue",
+   "function": "TUnitMap_SplitFleet",
+   "call": 47293,
+   "paths": [
+    [
+     {
+      "line": 47289,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47289
+      ]
+     },
+     {
+      "line": 47292,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c27e)[iVar2 * 0xd] < 0x14",
+        "var": "fleet ships",
+        "op": "<",
+        "const": 20,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47292
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47297,
+     47304
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R18",
+   "table": "catalogue",
+   "function": "TUnitMap_SplitFleet",
+   "call": 47309,
+   "paths": [
+    [
+     {
+      "line": 47289,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47289
+      ]
+     },
+     {
+      "line": 47292,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c27e)[iVar2 * 0xd] < 0x14",
+        "var": "fleet ships",
+        "op": "<",
+        "const": 20,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47292
+      ]
+     },
+     {
+      "line": 47296,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c282)[iVar2 * 0xd] < 0",
+        "var": "fleet carried army",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47296
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47297,
+     47304
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R19",
+   "table": "catalogue",
+   "function": "TUnitMap_SplitFleet",
+   "call": 47300,
+   "paths": [
+    [
+     {
+      "line": 47289,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47289
+      ]
+     },
+     {
+      "line": 47292,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c27e)[iVar2 * 0xd] < 0x14",
+        "var": "fleet ships",
+        "op": "<",
+        "const": 20,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47292
+      ]
+     },
+     {
+      "line": 47296,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c282)[iVar2 * 0xd] < 0",
+        "var": "fleet carried army",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47296
+      ]
+     },
+     {
+      "line": 47297,
+      "out": null,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "dataflow",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "func_0x00447c04 writes the new fleet index into sStack_8, -1 when it cannot make one",
+      "cite": [
+       47297
+      ]
+     },
+     {
+      "line": 47299,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SplitFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sStack_8 == -1",
+        "var": "the new fleet index",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_new_fleet",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47299
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47304
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R20",
+   "table": "catalogue",
+   "function": "TUnitMap_ScuttleFleet",
+   "call": 47341,
+   "paths": [
+    [
+     {
+      "line": 47334,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47334
+      ]
+     },
+     {
+      "line": 47336,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c282)[iVar3 * 0xd] < 0",
+        "var": "fleet carried army",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47336
+      ]
+     },
+     {
+      "line": 47340,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar2 == -1",
+        "var": "own city within one tile of the fleet",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47340
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47345
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R21",
+   "table": "catalogue",
+   "function": "TUnitMap_ScuttleFleet",
+   "call": 47362,
+   "paths": [
+    [
+     {
+      "line": 47334,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47334
+      ]
+     },
+     {
+      "line": 47336,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c282)[iVar3 * 0xd] < 0",
+        "var": "fleet carried army",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47336
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47345
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R22",
+   "table": "catalogue",
+   "function": "TUnitMap_Fortify",
+   "call": 47401,
+   "paths": [
+    [
+     {
+      "line": 47384,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own city is selected",
+      "cite": [
+       47384
+      ]
+     },
+     {
+      "line": 47386,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(char)uVar2 == '\\0'",
+        "var": "FUN_004497cc: an army at war with the city's owner is next to it (returns 1)",
+        "op": "==",
+        "const": 0,
+        "value": false,
+        "check": "concept:not_besieged",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47386
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47392
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R23",
+   "table": "catalogue",
+   "function": "TUnitMap_Fortify",
+   "call": 47388,
+   "paths": [
+    [
+     {
+      "line": 47384,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own city is selected",
+      "cite": [
+       47384
+      ]
+     },
+     {
+      "line": 47386,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(char)uVar2 == '\\0'",
+        "var": "FUN_004497cc: an army at war with the city's owner is next to it (returns 1)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:not_besieged",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47386
+      ]
+     },
+     {
+      "line": 47387,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_004795aa)[sVar1 * 0x11] == 100",
+        "var": "city fortification word (city +0x1a)",
+        "op": "==",
+        "const": 100,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47387
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47392
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R24",
+   "table": "catalogue",
+   "function": "TUnitMap_Fortify",
+   "call": 47396,
+   "paths": [
+    [
+     {
+      "line": 47384,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own city is selected",
+      "cite": [
+       47384
+      ]
+     },
+     {
+      "line": 47386,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(char)uVar2 == '\\0'",
+        "var": "FUN_004497cc: an army at war with the city's owner is next to it (returns 1)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:not_besieged",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47386
+      ]
+     },
+     {
+      "line": 47387,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_004795aa)[sVar1 * 0x11] == 100",
+        "var": "fortification word",
+        "op": "==",
+        "const": 100,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47387
+      ]
+     },
+     {
+      "line": 47391,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_Fortify",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_004795aa)[sVar1 * 0x11] < 0x65",
+        "var": "fortification word",
+        "op": "<",
+        "const": 101,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47391
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     47392
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R25",
+   "table": "catalogue",
+   "function": "TRecruitMercs_RecruitMercUnit",
+   "call": 43637,
+   "paths": [
+    [
+     {
+      "line": 43630,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an offer row is chosen in the dialog",
+      "cite": [
+       43630
+      ]
+     },
+     {
+      "line": 43633,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0047c1f8)[sVar4 * 0x148] <",
+        "var": "army money (army +0xc) vs the hire price",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "purse",
+         "<",
+         "price"
+        ],
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43633
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     43662
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R26",
+   "table": "catalogue",
+   "function": "TRecruitMercs_RecruitMercUnit",
+   "call": 43691,
+   "paths": [
+    [
+     {
+      "line": 43630,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an offer row is chosen in the dialog",
+      "cite": [
+       43630
+      ]
+     },
+     {
+      "line": 43633,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0047c1f8)[sVar4 * 0x148] <",
+        "var": "purse vs price",
+        "op": "<",
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43633
+      ]
+     },
+     {
+      "line": 43642,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 + *(short *)(&DAT_0049d0ac + *(short *)(param_1 + 0x1dc + *(short *)(param_1 + 0x1da) * 2) * 0xc) < 0x186a1",
+        "var": "army troops + the unit's troops",
+        "op": "<",
+        "const": 100001,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43642,
+       43644
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     43662
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R27",
+   "table": "catalogue",
+   "function": "TRecruitMercs_RecruitMercUnit",
+   "call": 43652,
+   "paths": [
+    [
+     {
+      "line": 43630,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an offer row is chosen in the dialog",
+      "cite": [
+       43630
+      ]
+     },
+     {
+      "line": 43633,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0047c1f8)[sVar4 * 0x148] <",
+        "var": "purse vs price",
+        "op": "<",
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43633
+      ]
+     },
+     {
+      "line": 43642,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "< 0x186a1",
+        "var": "troops together",
+        "op": "<",
+        "const": 100001,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43642,
+       43644
+      ]
+     },
+     {
+      "line": 43646,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "-1 < sVar4",
+        "var": "the fleet the army is aboard (dialog +0x1d8)",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": "concept:aboard_fleet",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43646
+      ]
+     },
+     {
+      "line": 43648,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TRecruitMercs_RecruitMercUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(int)(short)(&DAT_0049c27e)[sVar4 * 0xd] <",
+        "var": "fleet ships vs (troops + the unit) / 500",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "ships",
+         "<",
+         "(troops + unit) / 500"
+        ],
+        "tokens": [
+         "500"
+        ],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       43648
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     43662
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": "the box branch returns (L43655)"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R28",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army1Transfer",
+   "call": 44155,
+   "paths": [
+    [
+     {
+      "line": 44114,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44114
+      ]
+     },
+     {
+      "line": 44154,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar2",
+        "var": "some unit met a full target (20 units)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar2",
+       "set": 44146,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44154
+      ]
+     },
+     {
+      "line": 44121,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44146,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44121
+      ]
+     },
+     {
+      "line": 44124,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44146,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44124
+      ]
+     },
+     {
+      "line": 44125,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44146,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x750) < 1",
+        "var": "target army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44125
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44138
+    ],
+    "reports_failure": null,
+    "loop": 44120,
+    "flag_set": 44146,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R29",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army1Transfer",
+   "call": 44159,
+   "paths": [
+    [
+     {
+      "line": 44114,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44114
+      ]
+     },
+     {
+      "line": 44154,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar2",
+        "var": "no unit met a full target",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar2",
+       "set": 44146,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44154
+      ]
+     },
+     {
+      "line": 44158,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar3",
+        "var": "some unit would take the target over 100,000 troops",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar3",
+       "set": 44142,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44158
+      ]
+     },
+     {
+      "line": 44121,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44142,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44121
+      ]
+     },
+     {
+      "line": 44124,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44142,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44124
+      ]
+     },
+     {
+      "line": 44125,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44142,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x750) < 1",
+        "var": "target army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44125
+      ]
+     },
+     {
+      "line": 44128,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44142,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar7 + iVar6 < 0x186a1",
+        "var": "target troops + the unit's troops",
+        "op": "<",
+        "const": 100001,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44128
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44138
+    ],
+    "reports_failure": null,
+    "loop": 44120,
+    "flag_set": 44142,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R30",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army1Transfer",
+   "call": 44164,
+   "paths": [
+    [
+     {
+      "line": 44114,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44114
+      ]
+     },
+     {
+      "line": 44163,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar4",
+        "var": "some unit would overload the target's fleet",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar4",
+       "set": 44134,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44163
+      ]
+     },
+     {
+      "line": 44121,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44134,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44121
+      ]
+     },
+     {
+      "line": 44124,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44134,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44124
+      ]
+     },
+     {
+      "line": 44125,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44134,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x750) < 1",
+        "var": "target army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44125
+      ]
+     },
+     {
+      "line": 44128,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44134,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar7 + iVar6 < 0x186a1",
+        "var": "troops together",
+        "op": "<",
+        "const": 100001,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44128
+      ]
+     },
+     {
+      "line": 44130,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44134,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "-1 < sVar1",
+        "var": "the target army is aboard a fleet (dialog +0x776)",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": "concept:aboard_fleet",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44130
+      ]
+     },
+     {
+      "line": 44133,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44134,
+      "fn": "TArmyToArmy_Army1Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar6 < (iVar7 + *(short *)(param_1 + 0x260 + sVar9 * 0x20)) / 500",
+        "var": "target fleet ships vs (target troops + the unit) / 500",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "ships",
+         "<",
+         "(troops + unit) / 500"
+        ],
+        "tokens": [
+         "500"
+        ],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44133
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44138
+    ],
+    "reports_failure": null,
+    "loop": 44120,
+    "flag_set": 44134,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R31",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army2Transfer",
+   "call": 44236,
+   "paths": [
+    [
+     {
+      "line": 44195,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44195
+      ]
+     },
+     {
+      "line": 44235,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar2",
+        "var": "some unit met a full target (20 units)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar2",
+       "set": 44227,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44235
+      ]
+     },
+     {
+      "line": 44202,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44227,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44202
+      ]
+     },
+     {
+      "line": 44205,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44227,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44205
+      ]
+     },
+     {
+      "line": 44206,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44227,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x4c0) < 1",
+        "var": "target army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44206
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44219
+    ],
+    "reports_failure": null,
+    "loop": 44201,
+    "flag_set": 44227,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R32",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army2Transfer",
+   "call": 44240,
+   "paths": [
+    [
+     {
+      "line": 44195,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44195
+      ]
+     },
+     {
+      "line": 44235,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar2",
+        "var": "no unit met a full target",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar2",
+       "set": 44227,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44235
+      ]
+     },
+     {
+      "line": 44239,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar3",
+        "var": "some unit would take the target over 100,000 troops",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar3",
+       "set": 44223,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44239
+      ]
+     },
+     {
+      "line": 44202,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44223,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44202
+      ]
+     },
+     {
+      "line": 44205,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44223,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44205
+      ]
+     },
+     {
+      "line": 44206,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44223,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x4c0) < 1",
+        "var": "target army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44206
+      ]
+     },
+     {
+      "line": 44209,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44223,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar7 + iVar6 < 0x186a1",
+        "var": "target troops + the unit's troops",
+        "op": "<",
+        "const": 100001,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44209
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44219
+    ],
+    "reports_failure": null,
+    "loop": 44201,
+    "flag_set": 44223,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R33",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army2Transfer",
+   "call": 44245,
+   "paths": [
+    [
+     {
+      "line": 44195,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44195
+      ]
+     },
+     {
+      "line": 44244,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar4",
+        "var": "some unit would overload the target's fleet",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar4",
+       "set": 44215,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44244
+      ]
+     },
+     {
+      "line": 44202,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44215,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44202
+      ]
+     },
+     {
+      "line": 44205,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44215,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44205
+      ]
+     },
+     {
+      "line": 44206,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44215,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x4c0) < 1",
+        "var": "target army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44206
+      ]
+     },
+     {
+      "line": 44209,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44215,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar7 + iVar6 < 0x186a1",
+        "var": "troops together",
+        "op": "<",
+        "const": 100001,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44209
+      ]
+     },
+     {
+      "line": 44211,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 44215,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "-1 < sVar1",
+        "var": "the target army is aboard a fleet (dialog +0x774)",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": "concept:aboard_fleet",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44211
+      ]
+     },
+     {
+      "line": 44214,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44215,
+      "fn": "TArmyToArmy_Army2Transfer",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar6 < (iVar7 + *(short *)(param_1 + 0x4f0 + sVar9 * 0x20)) / 500",
+        "var": "target fleet ships vs (target troops + the unit) / 500",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "ships",
+         "<",
+         "(troops + unit) / 500"
+        ],
+        "tokens": [
+         "500"
+        ],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44214
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44219
+    ],
+    "reports_failure": null,
+    "loop": 44201,
+    "flag_set": 44215,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R34",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army1Disband",
+   "call": 44326,
+   "paths": [
+    [
+     {
+      "line": 44286,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44286
+      ]
+     },
+     {
+      "line": 44302,
+      "out": true,
+      "role": "answer",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "== 6",
+        "var": "the prompt's result",
+        "op": "==",
+        "const": 6,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "the prompt P06 was answered Yes (result 6)",
+      "cite": [
+       44302
+      ]
+     },
+     {
+      "line": 44325,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cStack_b != '\\0'",
+        "var": "some selected regular unit was kept",
+        "op": "!=",
+        "const": 0,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "cStack_b",
+       "set": 44313,
+       "value": "'\\x01'",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44325
+      ]
+     },
+     {
+      "line": 44307,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44313,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44307
+      ]
+     },
+     {
+      "line": 44310,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44313,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44310
+      ]
+     },
+     {
+      "line": 44311,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44313,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x770) == -1",
+        "var": "the own city next to the dialog's FIRST army (set in the form's InitializeForm by FUN_004494e4)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "*(short *)(param_1 + 0x25c + sVar6 * 0x20) == 0",
+        "var": "the unit's origin label (0 = regular)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44311,
+       44312
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44316
+    ],
+    "reports_failure": null,
+    "loop": 44306,
+    "flag_set": 44313,
+    "note": "units failing the test are kept; the others are removed in the loop"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R35",
+   "table": "catalogue",
+   "function": "TArmyToArmy_Army2Disband",
+   "call": 44412,
+   "paths": [
+    [
+     {
+      "line": 44372,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       44372
+      ]
+     },
+     {
+      "line": 44388,
+      "out": true,
+      "role": "answer",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "== 6",
+        "var": "the prompt's result",
+        "op": "==",
+        "const": 6,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "the prompt P07 was answered Yes (result 6)",
+      "cite": [
+       44388
+      ]
+     },
+     {
+      "line": 44411,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cStack_b != '\\0'",
+        "var": "some selected regular unit was kept",
+        "op": "!=",
+        "const": 0,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "cStack_b",
+       "set": 44399,
+       "value": "'\\x01'",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       44411
+      ]
+     },
+     {
+      "line": 44393,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44399,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       44393
+      ]
+     },
+     {
+      "line": 44396,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 44399,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       44396
+      ]
+     },
+     {
+      "line": 44397,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 44399,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x770) == -1",
+        "var": "the own city next to the dialog's FIRST army (set in the form's InitializeForm by FUN_004494e4)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "*(short *)(param_1 + 0x4ec + sVar6 * 0x20) == 0",
+        "var": "the unit's origin label (0 = regular)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44397,
+       44398
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     44402
+    ],
+    "reports_failure": null,
+    "loop": 44392,
+    "flag_set": 44399,
+    "note": "units failing the test are kept; the others are removed in the loop"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R36",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_RenameUnit",
+   "call": 45513,
+   "paths": [
+    [
+     {
+      "line": 45487,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_RenameUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 < 2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 2,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45487
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45503
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R37",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_RenameUnit",
+   "call": 45507,
+   "paths": [
+    [
+     {
+      "line": 45487,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_RenameUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 < 2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 2,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45487
+      ]
+     },
+     {
+      "line": 45489,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_RenameUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 == 1",
+        "var": "selected count",
+        "op": "==",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "exactly one unit is selected (none = nothing happens)",
+      "cite": [
+       45489
+      ]
+     },
+     {
+      "line": 45502,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_RenameUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x1ea + unaff_BP * 0x20) == 0",
+        "var": "the selected unit's origin label (0 = regular)",
+        "op": "==",
+        "const": 0,
+        "value": false,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45502
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45503
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R38",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_SplitUnit",
+   "call": 45577,
+   "paths": [
+    [
+     {
+      "line": 45539,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 < 2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 2,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45539
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45563
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R39",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_SplitUnit",
+   "call": 45572,
+   "paths": [
+    [
+     {
+      "line": 45539,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 < 2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 2,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45539
+      ]
+     },
+     {
+      "line": 45541,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 == 1",
+        "var": "selected count",
+        "op": "==",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "exactly one unit is selected",
+      "cite": [
+       45541
+      ]
+     },
+     {
+      "line": 45556,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*psVar1 == 0",
+        "var": "the unit's origin label",
+        "op": "==",
+        "const": 0,
+        "value": false,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45556
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45563
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R40",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_SplitUnit",
+   "call": 45568,
+   "paths": [
+    [
+     {
+      "line": 45539,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 < 2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 2,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45539
+      ]
+     },
+     {
+      "line": 45541,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 == 1",
+        "var": "selected count",
+        "op": "==",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "exactly one unit is selected",
+      "cite": [
+       45541
+      ]
+     },
+     {
+      "line": 45556,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*psVar1 == 0",
+        "var": "the unit's origin label",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45556
+      ]
+     },
+     {
+      "line": 45557,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x44e) < 1",
+        "var": "army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45557
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45563
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R41",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_SplitUnit",
+   "call": 45559,
+   "paths": [
+    [
+     {
+      "line": 45539,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 < 2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 2,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45539
+      ]
+     },
+     {
+      "line": 45541,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar3 == 1",
+        "var": "selected count",
+        "op": "==",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "exactly one unit is selected",
+      "cite": [
+       45541
+      ]
+     },
+     {
+      "line": 45556,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*psVar1 == 0",
+        "var": "the unit's origin label",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45556
+      ]
+     },
+     {
+      "line": 45557,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x44e) < 1",
+        "var": "army slot 19 troops (the dialog copy)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot19_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45557
+      ]
+     },
+     {
+      "line": 45558,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_SplitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(int)psVar1[2] < ((short)(&DAT_00478fca)[psVar1[1] * 0x14] * 2) / 5",
+        "var": "unit troops vs 2/5 of the type's size limit",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "troops",
+         "<",
+         "two fifths of the size limit"
+        ],
+        "tokens": [
+         "two fifths|2/5|2 / 5"
+        ],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45558
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45563
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R42",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_JoinUnits",
+   "call": 45642,
+   "paths": [
+    [
+     {
+      "line": 45609,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "1 < iVar6",
+        "var": "selected count",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "two or more units are selected (fewer = nothing happens)",
+      "cite": [
+       45609
+      ]
+     },
+     {
+      "line": 45641,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar5",
+        "var": "a selected unit is a mercenary",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar5",
+       "set": 45634,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       45641
+      ]
+     },
+     {
+      "line": 45619,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 45634,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       45619
+      ]
+     },
+     {
+      "line": 45622,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 45634,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       45622
+      ]
+     },
+     {
+      "line": 45623,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 45634,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*psVar1 == 0",
+        "var": "the unit's origin label",
+        "op": "==",
+        "const": 0,
+        "value": false,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45623
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45665
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R43",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_JoinUnits",
+   "call": 45678,
+   "paths": [
+    [
+     {
+      "line": 45609,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "1 < iVar6",
+        "var": "selected count",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "two or more units are selected (fewer = nothing happens)",
+      "cite": [
+       45609
+      ]
+     },
+     {
+      "line": 45641,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar5",
+        "var": "no selected unit is a mercenary",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar5",
+       "set": 45634,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       45641
+      ]
+     },
+     {
+      "line": 45645,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar3",
+        "var": "all selected units have one type",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar3",
+       "set": 45630,
+       "value": "false",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       45645
+      ]
+     },
+     {
+      "line": 45619,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 45630,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       45619
+      ]
+     },
+     {
+      "line": 45622,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 45630,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       45622
+      ]
+     },
+     {
+      "line": 45623,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 45630,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*psVar1 == 0",
+        "var": "origin label",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45623
+      ]
+     },
+     {
+      "line": 45629,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 45630,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar10 != psVar1[1]",
+        "var": "the unit's type vs the first selected regular unit's type",
+        "op": "!=",
+        "const": null,
+        "value": true,
+        "check": "concept:types_differ",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45629
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45665
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R44",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_JoinUnits",
+   "call": 45647,
+   "paths": [
+    [
+     {
+      "line": 45609,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "1 < iVar6",
+        "var": "selected count",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "two or more units are selected (fewer = nothing happens)",
+      "cite": [
+       45609
+      ]
+     },
+     {
+      "line": 45641,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar5",
+        "var": "no mercenary selected",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar5",
+       "set": 45634,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       45641
+      ]
+     },
+     {
+      "line": 45645,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar3",
+        "var": "one type",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar3",
+       "set": 45630,
+       "value": "false",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       45645
+      ]
+     },
+     {
+      "line": 45646,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_JoinUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_00478fca)[sVar10 * 0x14] < iStack_18",
+        "var": "the type's size limit vs the selected troops in total",
+        "op": "<",
+        "const": null,
+        "value": true,
+        "check": "rel",
+        "rel": [
+         "total",
+         ">",
+         "size limit"
+        ],
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45646
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     45665
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R45",
+   "table": "catalogue",
+   "function": "TChangeArmyUnits_Disband",
+   "call": 45756,
+   "paths": [
+    [
+     {
+      "line": 45718,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       45718
+      ]
+     },
+     {
+      "line": 45734,
+      "out": true,
+      "role": "answer",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "iVar2 == 6",
+        "var": "the prompt's result",
+        "op": "==",
+        "const": 6,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "the prompt P08 was answered Yes (result 6)",
+      "cite": [
+       45734
+      ]
+     },
+     {
+      "line": 45755,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cStack_b != '\\0'",
+        "var": "some selected regular unit was kept",
+        "op": "!=",
+        "const": 0,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "cStack_b",
+       "set": 45745,
+       "value": "'\\x01'",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       45755
+      ]
+     },
+     {
+      "line": 45739,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 45745,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the slot holds a unit",
+      "cite": [
+       45739
+      ]
+     },
+     {
+      "line": 45742,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 45745,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the unit is selected",
+      "cite": [
+       45742
+      ]
+     },
+     {
+      "line": 45743,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 45745,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 0x1d6) == -1",
+        "var": "the own city next to the army (set in TChangeArmyUnits_InitializeForm)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "*(short *)(param_1 + 0x1ea + sVar5 * 0x20) == 0",
+        "var": "origin label",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:regular",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45743,
+       45744
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     45748
+    ],
+    "reports_failure": null,
+    "loop": 45738,
+    "flag_set": 45745,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R46",
+   "table": "catalogue",
+   "function": "TArmyRecruits_RecruitUnit",
+   "call": 56033,
+   "paths": [
+    [
+     {
+      "line": 55949,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TArmyRecruits_RecruitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_00474a90 + DAT_004a0320 * 0x494) < 1",
+        "var": "recruitment slot 39 troops (nation +0x420)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:slot39_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55949
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55973
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R47",
+   "table": "catalogue",
+   "function": "TArmyRecruits_RecruitUnit",
+   "call": 55952,
+   "paths": [
+    [
+     {
+      "line": 55949,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyRecruits_RecruitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_00474a90 + DAT_004a0320 * 0x494) < 1",
+        "var": "recruitment slot 39 troops (nation +0x420)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot39_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55949
+      ]
+     },
+     {
+      "line": 55950,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TArmyRecruits_RecruitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474ab2)[DAT_004a0320 * 0x24a] == 100",
+        "var": "mobilisation rate (nation +0x442)",
+        "op": "==",
+        "const": 100,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55950
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55973
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R48",
+   "table": "catalogue",
+   "function": "TArmyRecruits_RecruitUnit",
+   "call": 56026,
+   "paths": [
+    [
+     {
+      "line": 55949,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyRecruits_RecruitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(&DAT_00474a90 + DAT_004a0320 * 0x494) < 1",
+        "var": "recruitment slot 39 troops (nation +0x420)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "concept:slot39_free",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55949
+      ]
+     },
+     {
+      "line": 55950,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyRecruits_RecruitUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474ab2)[DAT_004a0320 * 0x24a] == 100",
+        "var": "mobilisation rate (nation +0x442)",
+        "op": "==",
+        "const": 100,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55950
+      ]
+     },
+     {
+      "line": 55957,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TArmyRecruits_RecruitUnit",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "sVar8 < 0",
+        "var": "the chosen city (-1 = \"All cities\")",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:all_cities",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "0x4a < (short)(&DAT_004795aa)[sVar8 * 0x11]",
+        "var": "the city's fortification",
+        "op": "<",
+        "const": 74,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "sVar8 == (&DAT_00474ab4)[DAT_004a0320 * 0x24a]",
+        "var": "the city is the capital (nation +0x444)",
+        "op": "==",
+        "const": null,
+        "value": false,
+        "check": "concept:capital",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55957,
+       55958
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55973
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R49",
+   "table": "catalogue",
+   "function": "TArmyRecruits_MobilizeUnits",
+   "call": 56092,
+   "paths": [
+    [
+     {
+      "line": 56063,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyRecruits_MobilizeUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "one or more units are selected",
+      "cite": [
+       56063
+      ]
+     },
+     {
+      "line": 56091,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TArmyRecruits_MobilizeUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar3",
+        "var": "bVar2 after the loop (L56088)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar3",
+       "set": 56088,
+       "value": "bVar2",
+       "via": 56080
+      },
+      "means": "",
+      "cite": [
+       56091
+      ]
+     },
+     {
+      "line": 56069,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 56080,
+      "fn": "TArmyRecruits_MobilizeUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the list has rows",
+      "cite": [
+       56069
+      ]
+     },
+     {
+      "line": 56073,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 56080,
+      "fn": "TArmyRecruits_MobilizeUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the row is selected",
+      "cite": [
+       56073
+      ]
+     },
+     {
+      "line": 56076,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 56080,
+      "fn": "TArmyRecruits_MobilizeUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "0xf < (short)(&DAT_00474954)[DAT_004a0320 * 0x24a + iVar5 * 4]",
+        "var": "the recruitment slot's state",
+        "op": "<",
+        "const": 15,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       56076
+      ]
+     },
+     {
+      "line": 56079,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 56080,
+      "fn": "TArmyRecruits_MobilizeUnits",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "bVar2",
+        "var": "an earlier unit already failed",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(char)uStack_14 == '\\0'",
+        "var": "FUN_0044a4e0 reported no place for the unit",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:no_place",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       56079
+      ]
+     },
+     {
+      "line": 48973,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 48974,
+      "fn": "FUN_0044a4e0",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "local_c == -1",
+        "var": "no army found (FUN_0044a120) and none made (FUN_00449f08)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       48973
+      ]
+     },
+     {
+      "line": 48969,
+      "out": null,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "FUN_0044a4e0",
+      "kind": "dataflow",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "FUN_0044a120 finds no own army on the city tile with < 20 units and room for the troops; then FUN_00449f08 is tried",
+      "cite": [
+       48969
+      ]
+     },
+     {
+      "line": 48725,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "FUN_00449f08",
+      "kind": "dataflow",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(-1 < (short)local_12) && (DAT_004a0324 < 0xc6)",
+        "var": "a free tile next to the city and fewer than 198 armies",
+        "op": "<",
+        "const": 198,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "FUN_00449f08 leaves the index at -1 unless a free tile is found and fewer than 198 armies exist",
+      "cite": [
+       48725
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "clamp",
+    "action": [
+     56077
+    ],
+    "reports_failure": null,
+    "loop": 56070,
+    "flag_set": 56080,
+    "note": "each ready selected unit is mobilised by FUN_0044a4e0 when it finds a place"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R50",
+   "table": "catalogue",
+   "function": "TPolitics_MakePeace",
+   "call": 55177,
+   "paths": [
+    [
+     {
+      "line": 55170,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakePeace",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "(&DAT_00474b00)[iVar1 * 0x494] == '\\0'",
+        "var": "the other nation's human flag (nation +0x490; 0 = computer)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:computer",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(&DAT_00474696)[DAT_004a0320 * 0x24a + iVar1] == 3",
+        "var": "relation current -> other (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": true,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55170,
+       55171
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55180
+    ],
+    "reports_failure": 55172,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R51",
+   "table": "catalogue",
+   "function": "TPolitics_MakeTrade",
+   "call": 55237,
+   "paths": [
+    [
+     {
+      "line": 55216,
+      "out": null,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "dataflow",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "sVar4 counts the form's entries equal to 1 (marked for trade), L55217",
+      "cite": [
+       55216
+      ]
+     },
+     {
+      "line": 55235,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar4 == 3",
+        "var": "nations marked for trade in the form",
+        "op": "==",
+        "const": 3,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55235
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55260
+    ],
+    "reports_failure": 55236,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R52",
+   "table": "catalogue",
+   "function": "TPolitics_MakeTrade",
+   "call": 55248,
+   "paths": [
+    [
+     {
+      "line": 55235,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar4 == 3",
+        "var": "nations marked",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55235
+      ]
+     },
+     {
+      "line": 55242,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_00474696)[DAT_004a0320 * 0x24a + iVar3] < 0",
+        "var": "relation current -> target (negative = cooldown)",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "concept:relation_negative",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55242
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55260
+    ],
+    "reports_failure": 55243,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R53",
+   "table": "catalogue",
+   "function": "TPolitics_MakeTrade",
+   "call": 55257,
+   "paths": [
+    [
+     {
+      "line": 55235,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar4 == 3",
+        "var": "nations marked",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55235
+      ]
+     },
+     {
+      "line": 55242,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_00474696)[DAT_004a0320 * 0x24a + iVar3] < 0",
+        "var": "relation current -> target (negative = cooldown)",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": "concept:relation_negative",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55242
+      ]
+     },
+     {
+      "line": 55250,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "bVar1",
+        "var": "the target trades with 3 nations already (L55229)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)param_2]",
+        "var": "relation current -> target (2 alliance, 3 war)",
+        "op": "<",
+        "const": 1,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55250
+      ]
+     },
+     {
+      "line": 55229,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 55230,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "sVar2 == 3",
+        "var": "the target's trade partners (FUN_004499c0), less 1 when the current nation trades with it and the form cancels that (L55225)",
+        "op": "==",
+        "const": 3,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(DAT_0049f00a != 1 || (param_2 != DAT_0049f008))",
+        "var": "unless the target is the nation whose pending trade proposal N03 reports (DAT_0049f008 proposer, DAT_0049f00a 1 = trade)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55229
+      ]
+     },
+     {
+      "line": 55225,
+      "out": null,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeTrade",
+      "kind": "dataflow",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "sVar2 = FUN_004499c0(target) - 1 when relation == 1 and the form value is not 1",
+      "cite": [
+       55225,
+       55226
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55260
+    ],
+    "reports_failure": 55251,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R54",
+   "table": "catalogue",
+   "function": "TPolitics_MakeAlliance",
+   "call": 55321,
+   "paths": [
+    [
+     {
+      "line": 55310,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474b00)[local_6 * 0x494] == '\\0'",
+        "var": "the target's human flag (0 = computer)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:computer",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55310
+      ]
+     },
+     {
+      "line": 55311,
+      "out": false,
+      "role": "structure",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "pre",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "!bVar1",
+        "var": "bVar1 = a pending war or a pending alliance with a nation at war",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55311
+      ]
+     },
+     {
+      "line": 55300,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 55302,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 900 + sVar3 * 2) == 3",
+        "var": "a form entry is 3 (a pending declaration of war)",
+        "op": "==",
+        "const": 3,
+        "value": true,
+        "check": "concept:pending_war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55300
+      ]
+     }
+    ],
+    [
+     {
+      "line": 55310,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474b00)[local_6 * 0x494] == '\\0'",
+        "var": "the target's human flag (0 = computer)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:computer",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55310
+      ]
+     },
+     {
+      "line": 55311,
+      "out": false,
+      "role": "structure",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "pre",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "!bVar1",
+        "var": "bVar1",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55311
+      ]
+     },
+     {
+      "line": 55300,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 55306,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 900 + sVar3 * 2) == 3",
+        "var": "form entry",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55300
+      ]
+     },
+     {
+      "line": 55304,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": 55306,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "*(short *)(param_1 + 900 + sVar3 * 2) == 2",
+        "var": "a form entry is 2 (a pending alliance)",
+        "op": "==",
+        "const": 2,
+        "value": true,
+        "check": "concept:pending_alliance",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55304
+      ]
+     },
+     {
+      "line": 55306,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "goto",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(char)uVar2 != '\\0'",
+        "var": "FUN_00449cd8: that nation is at war with someone",
+        "op": "!=",
+        "const": 0,
+        "value": true,
+        "check": "concept:ally_at_war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "bVar1",
+       "set": 55302,
+       "value": "true",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       55306
+      ]
+     }
+    ],
+    [
+     {
+      "line": 55310,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474b00)[local_6 * 0x494] == '\\0'",
+        "var": "the target's human flag (0 = computer)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:computer",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55310
+      ]
+     },
+     {
+      "line": 55311,
+      "out": true,
+      "role": "structure",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "pre",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "!bVar1",
+        "var": "no pending war or warlike alliance",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55311
+      ]
+     },
+     {
+      "line": 55313,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPolitics_MakeAlliance",
+      "kind": "goto",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "(char)uVar2 == '\\0'",
+        "var": "FUN_00449cd8(current nation): at war with anyone",
+        "op": "==",
+        "const": 0,
+        "value": false,
+        "check": "concept:not_at_war_any",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "-1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)local_6]",
+        "var": "relation current -> target",
+        "op": "<",
+        "const": -1,
+        "value": false,
+        "check": "concept:relation_nonneg",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       55313,
+       55314
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     55325
+    ],
+    "reports_failure": 55316,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R55",
+   "table": "catalogue",
+   "function": "TPremierForm_BuildNewFleet",
+   "call": 58528,
+   "paths": [
+    [
+     {
+      "line": 58526,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar3 == -1",
+        "var": "a free coastal own city (FUN_004496e0; -1 = none)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_coastal",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58526
+      ]
+     },
+     {
+      "line": 58527,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cStack_5 == '\\0'",
+        "var": "no own fleet under construction (cStack_5 is set by the N02 loop)",
+        "op": "==",
+        "const": 0,
+        "value": true,
+        "check": "concept:none_building",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "cStack_5",
+       "set": 58518,
+       "value": "'\\x01'",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       58527
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     58541
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R56",
+   "table": "catalogue",
+   "function": "TPremierForm_BuildNewFleet",
+   "call": 58532,
+   "paths": [
+    [
+     {
+      "line": 58526,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar3 == -1",
+        "var": "a free coastal own city (FUN_004496e0; -1 = none)",
+        "op": "==",
+        "const": -1,
+        "value": true,
+        "check": "concept:no_coastal",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58526
+      ]
+     },
+     {
+      "line": 58527,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cStack_5 == '\\0'",
+        "var": "own fleet under construction",
+        "op": "==",
+        "const": 0,
+        "value": false,
+        "check": "concept:none_building",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": {
+       "name": "cStack_5",
+       "set": 58518,
+       "value": "'\\x01'",
+       "via": null
+      },
+      "means": "",
+      "cite": [
+       58527
+      ]
+     },
+     {
+      "line": 58498,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": 58518,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "fleets exist",
+      "cite": [
+       58498
+      ]
+     },
+     {
+      "line": 58503,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 58518,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "*(short *)(puVar2 + 2) == DAT_004a0320",
+        "var": "fleet owner (fleet +8)",
+        "op": "==",
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "-1 < *(short *)((int)puVar2 + 10)",
+        "var": "construction countdown (fleet +10; >= 0 = under construction)",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58503
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     58541
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "R57",
+   "table": "catalogue",
+   "function": "TPremierForm_BuildNewFleet",
+   "call": 58537,
+   "paths": [
+    [
+     {
+      "line": 58526,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar3 == -1",
+        "var": "a free coastal own city (FUN_004496e0; -1 = none)",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:no_coastal",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58526
+      ]
+     },
+     {
+      "line": 58536,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "DAT_004a0326 == 99",
+        "var": "the fleet count",
+        "op": "==",
+        "const": 99,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58536
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "drop",
+    "action": [
+     58541
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "P01",
+   "table": "prompts",
+   "function": "TUnitMap_DisbandArmy",
+   "call": 47106,
+   "paths": [
+    [
+     {
+      "line": 47096,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_DisbandArmy",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own army is selected",
+      "cite": [
+       47096
+      ]
+     },
+     {
+      "line": 47101,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_DisbandArmy",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar2 == -1",
+        "var": "own city within one tile",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47101
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 47108,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 47110,
+      "what": "the army's money (army +0xc) is added to the nation's treasury (nation +0x438)",
+      "concept": "treasury"
+     },
+     {
+      "line": 47113,
+      "what": "its supplies (army +0xa) are added to that city's supplies (city +0x18)",
+      "concept": "city_supplies"
+     },
+     {
+      "line": 47115,
+      "what": "the army is deleted (FUN_0044ab90)",
+      "concept": "army_deleted"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P02",
+   "table": "prompts",
+   "function": "TUnitMap_ScuttleFleet",
+   "call": 47345,
+   "paths": [
+    [
+     {
+      "line": 47334,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an own fleet is selected",
+      "cite": [
+       47334
+      ]
+     },
+     {
+      "line": 47336,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(short)(&DAT_0049c282)[iVar3 * 0xd] < 0",
+        "var": "fleet carried army",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "concept:fleet_no_army",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47336
+      ]
+     },
+     {
+      "line": 47340,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_ScuttleFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar2 == -1",
+        "var": "own city within one tile",
+        "op": "==",
+        "const": -1,
+        "value": false,
+        "check": "concept:no_own_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       47340
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 47347,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 47350,
+      "what": "the fleet's money (fleet +0x10) is added to the nation's treasury",
+      "concept": "treasury"
+     },
+     {
+      "line": 47354,
+      "what": "its supplies (fleet +0xe) are added to the city's supplies",
+      "concept": "city_supplies"
+     },
+     {
+      "line": 47356,
+      "what": "the fleet is deleted (FUN_0044ad38)",
+      "concept": "fleet_deleted"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P03",
+   "table": "prompts",
+   "function": "TUnitMap_SelectUnit",
+   "call": 46541,
+   "paths": [
+    [
+     {
+      "line": 46514,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 46520,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "DAT_004a0328 < 0",
+        "var": "an army is selected for a move",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1",
+        "var": "that army's moves (army +6)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:no_moves",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "!bVar4",
+        "var": "FUN_004492a0: the clicked tile is one tile from the army",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "bVar4 = an army is selected, has 1 or more moves and is one tile from the clicked tile",
+      "cite": [
+       46514,
+       46516
+      ]
+     },
+     {
+      "line": 46532,
+      "out": true,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "the clicked tile is a city",
+      "cite": [
+       46532
+      ]
+     },
+     {
+      "line": 46539,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar4",
+        "var": "an army with 1 or more moves is selected one tile away (L46514)",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46539
+      ]
+     },
+     {
+      "line": 46539,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "uVar2 != DAT_004a0320",
+        "var": "the city belongs to another nation",
+        "op": "!=",
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46539
+      ]
+     },
+     {
+      "line": 46539,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3",
+        "var": "relation current -> owner (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46540
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 46543,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 46545,
+      "what": "FUN_00449b40(current, owner, 3): the relation becomes 3 (war) both ways",
+      "concept": "war"
+     },
+     {
+      "line": 46547,
+      "what": "FUN_0044b27c: the siege",
+      "concept": "attack"
+     }
+    ],
+    "other_actions": [],
+    "after": [
+     {
+      "line": 46551,
+      "what": "the army selection is cleared (DAT_004a0328 = -1) whatever the answer",
+      "concept": "deselect"
+     }
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "P04",
+   "table": "prompts",
+   "function": "TUnitMap_SelectUnit",
+   "call": 46566,
+   "paths": [
+    [
+     {
+      "line": 46514,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": 46520,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "DAT_004a0328 < 0",
+        "var": "an army is selected for a move",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1",
+        "var": "that army's moves (army +6)",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:no_moves",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "!bVar4",
+        "var": "FUN_004492a0: the clicked tile is one tile from the army",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "bVar4 = an army is selected, has 1 or more moves and is one tile from the clicked tile",
+      "cite": [
+       46514,
+       46516
+      ]
+     },
+     {
+      "line": 46532,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "not a city",
+      "cite": [
+       46532
+      ]
+     },
+     {
+      "line": 46555,
+      "out": true,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "an army",
+      "cite": [
+       46555
+      ]
+     },
+     {
+      "line": 46563,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "uVar2 != DAT_004a0320",
+        "var": "the army belongs to another nation",
+        "op": "!=",
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46563
+      ]
+     },
+     {
+      "line": 46564,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "bVar4",
+        "var": "an army with moves one tile away",
+        "op": null,
+        "const": null,
+        "value": true,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46564
+      ]
+     },
+     {
+      "line": 46564,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3",
+        "var": "relation (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46565
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 46568,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 46570,
+      "what": "FUN_00449b40(..., 3): war",
+      "concept": "war"
+     },
+     {
+      "line": 46572,
+      "what": "FUN_0044aee4: the field battle",
+      "concept": "attack"
+     }
+    ],
+    "other_actions": [],
+    "after": [
+     {
+      "line": 46575,
+      "what": "the army selection is cleared whatever the answer",
+      "concept": "deselect"
+     }
+    ]
+   },
+   "note": ""
+  },
+  {
+   "id": "P05",
+   "table": "prompts",
+   "function": "TUnitMap_SelectUnit",
+   "call": 46623,
+   "paths": [
+    [
+     {
+      "line": 46532,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "not a city",
+      "cite": [
+       46532
+      ]
+     },
+     {
+      "line": 46555,
+      "out": false,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "not an army",
+      "cite": [
+       46555
+      ]
+     },
+     {
+      "line": 46582,
+      "out": true,
+      "role": "target",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "a fleet",
+      "cite": [
+       46582
+      ]
+     },
+     {
+      "line": 46590,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "uVar2 == DAT_004a0320",
+        "var": "the fleet is not own",
+        "op": "==",
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46590
+      ]
+     },
+     {
+      "line": 46611,
+      "out": false,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": "or",
+      "atoms": [
+       {
+        "code": "DAT_004a032a < 0",
+        "var": "own fleet selected",
+        "op": "<",
+        "const": 0,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1",
+        "var": "its moves",
+        "op": "<",
+        "const": 1,
+        "value": false,
+        "check": "concept:no_moves",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "!bVar4",
+        "var": "one tile apart",
+        "op": null,
+        "const": null,
+        "value": false,
+        "check": null,
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46611,
+       46613
+      ]
+     },
+     {
+      "line": 46621,
+      "out": true,
+      "role": "decisive",
+      "deciding": false,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "sVar5 < 0",
+        "var": "a city of the fleet's owner within one tile",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "concept:no_owner_city",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46621
+      ]
+     },
+     {
+      "line": 46622,
+      "out": false,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TUnitMap_SelectUnit",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "(&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3",
+        "var": "relation (3 = war)",
+        "op": "==",
+        "const": 3,
+        "value": false,
+        "check": "concept:war",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       46622
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 46625,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 46627,
+      "what": "FUN_00449b40(..., 3): war",
+      "concept": "war"
+     },
+     {
+      "line": 46629,
+      "what": "FUN_0044b5d0: the sea battle",
+      "concept": "attack"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P06",
+   "table": "prompts",
+   "function": "TArmyToArmy_Army1Disband",
+   "call": 44300,
+   "paths": [
+    [
+     {
+      "line": 44286,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TArmyToArmy_Army1Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "0 < iVar3",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44286
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 44302,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 44316,
+      "what": "the selected units are removed (subject to R34)",
+      "concept": "units_removed"
+     },
+     {
+      "line": 44316,
+      "what": "see R34",
+      "concept": "cite:R34"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P07",
+   "table": "prompts",
+   "function": "TArmyToArmy_Army2Disband",
+   "call": 44386,
+   "paths": [
+    [
+     {
+      "line": 44372,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TArmyToArmy_Army2Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "0 < iVar3",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       44372
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 44388,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 44402,
+      "what": "the selected units are removed (subject to R35)",
+      "concept": "units_removed"
+     },
+     {
+      "line": 44402,
+      "what": "see R35",
+      "concept": "cite:R35"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P08",
+   "table": "prompts",
+   "function": "TChangeArmyUnits_Disband",
+   "call": 45732,
+   "paths": [
+    [
+     {
+      "line": 45718,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TChangeArmyUnits_Disband",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "0 < iVar2",
+        "var": "number of selected units",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       45718
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 45734,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 45748,
+      "what": "the selected units are removed (subject to R45)",
+      "concept": "units_removed"
+     },
+     {
+      "line": 45748,
+      "what": "see R45",
+      "concept": "cite:R45"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P09",
+   "table": "prompts",
+   "function": "TArmyRecruits_DisbandUnits",
+   "call": 56146,
+   "paths": [
+    [
+     {
+      "line": 56132,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TArmyRecruits_DisbandUnits",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "0 < iVar3",
+        "var": "number of selected queue rows",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       56132
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 56148,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 56160,
+      "what": "the mobilisation rate (nation +0x442) drops by troops x 1000 / wealth + 1, not below 0: what queueing added (L56000-L56002)",
+      "concept": "mobilisation"
+     },
+     {
+      "line": 56167,
+      "what": "the queue slot is deleted (FUN_0044a610); no treasury write: no refund",
+      "concept": "queue_deleted"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P10",
+   "table": "prompts",
+   "function": "TPremierForm_NewGame",
+   "call": 58018,
+   "paths": [
+    [
+     {
+      "line": 58017,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_NewGame",
+      "kind": "sc",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cVar1 != '\\0'",
+        "var": "FUN_00449050: some nation's human flag is set (all_app_functions.txt L47764)",
+        "op": "!=",
+        "const": 0,
+        "value": true,
+        "check": "concept:human_exists",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58017
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 58019,
+    "yes": 6,
+    "op": "!=",
+    "yes_kind": "after_return",
+    "yes_actions": [
+     {
+      "line": 58034,
+      "what": "the forms are closed and the new-game form opens (FUN_00424608 with 0x456d00)",
+      "concept": "new_game_form"
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": "with no human nation the new-game form opens without the prompt"
+  },
+  {
+   "id": "P11",
+   "table": "prompts",
+   "function": "TPremierForm_CheckQuit",
+   "call": 58150,
+   "paths": [
+    [
+     {
+      "line": 58149,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_CheckQuit",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "cVar1 != '\\0'",
+        "var": "FUN_00449050: a human nation exists",
+        "op": "!=",
+        "const": 0,
+        "value": true,
+        "check": "concept:human_exists",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58149
+      ]
+     }
+    ]
+   ],
+   "effect": null,
+   "answers": {
+    "test": 58152,
+    "yes": 6,
+    "op": "!=",
+    "yes_kind": "after_return",
+    "yes_actions": [
+     {
+      "line": 58157,
+      "what": "CanClose = 1: the program quits",
+      "concept": "quit"
+     }
+    ],
+    "other_actions": [
+     {
+      "line": 58153,
+      "what": "CanClose = 0: the window stays",
+      "concept": null
+     }
+    ],
+    "after": []
+   },
+   "note": "with no human nation the window closes without the prompt"
+  },
+  {
+   "id": "P12",
+   "table": "prompts",
+   "function": "TPremierForm_NewNation",
+   "call": 58398,
+   "paths": [
+    []
+   ],
+   "effect": null,
+   "answers": {
+    "test": 58400,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 58401,
+      "what": "FUN_00449078(current): the current nation's human flag is cleared (all_app_functions.txt L47789)",
+      "concept": "seat_to_computer"
+     },
+     {
+      "line": 58402,
+      "what": "the new-game form opens (0x456d00), to pick a nation",
+      "concept": null
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "P13",
+   "table": "prompts",
+   "function": "TPremierForm_Abdicate",
+   "call": 58425,
+   "paths": [
+    []
+   ],
+   "effect": null,
+   "answers": {
+    "test": 58427,
+    "yes": 6,
+    "op": "==",
+    "yes_kind": "then",
+    "yes_actions": [
+     {
+      "line": 58428,
+      "what": "FUN_00449078(current): the current nation goes to the computer",
+      "concept": "seat_to_computer"
+     },
+     {
+      "line": 58431,
+      "what": "the turn ends when a human nation remains",
+      "concept": null
+     }
+    ],
+    "other_actions": [],
+    "after": []
+   },
+   "note": ""
+  },
+  {
+   "id": "N01",
+   "table": "notices",
+   "function": "TBuildFleet_OK",
+   "call": 56327,
+   "paths": [
+    [
+     {
+      "line": 56320,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TBuildFleet_OK",
+      "kind": "if",
+      "combine": null,
+      "atoms": [
+       {
+        "code": "0 < (short)param_1[0x7f]",
+        "var": "the ordered fleet size",
+        "op": "<",
+        "const": 0,
+        "value": true,
+        "check": "number",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       56320
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "notice_after_action",
+    "action": [
+     56321
+    ],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": "FUN_0044a004 places the order before the notice"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "N02",
+   "table": "notices",
+   "function": "TPremierForm_BuildNewFleet",
+   "call": 58517,
+   "paths": [
+    [
+     {
+      "line": 58498,
+      "out": true,
+      "role": "context",
+      "deciding": false,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": null,
+      "atoms": [],
+      "flag": null,
+      "means": "fleets exist",
+      "cite": [
+       58498
+      ]
+     },
+     {
+      "line": 58503,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_BuildNewFleet",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "*(short *)(puVar2 + 2) == DAT_004a0320",
+        "var": "fleet owner == current",
+        "op": "==",
+        "const": null,
+        "value": true,
+        "check": "concept:own_fleet",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "-1 < *(short *)((int)puVar2 + 10)",
+        "var": "construction countdown",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": "concept:under_construction",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58503
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "info",
+    "action": [],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": "one box per own fleet under construction; the loop sets cStack_5 (read by R55/R56)"
+   },
+   "answers": null,
+   "note": ""
+  },
+  {
+   "id": "N03",
+   "table": "notices",
+   "function": "TPremierForm_StartTurn",
+   "call": 58228,
+   "paths": [
+    [
+     {
+      "line": 58212,
+      "out": true,
+      "role": "decisive",
+      "deciding": true,
+      "reached": null,
+      "fn": "TPremierForm_StartTurn",
+      "kind": "if",
+      "combine": "and",
+      "atoms": [
+       {
+        "code": "-1 < DAT_0049f008",
+        "var": "a nation proposed trade or an alliance (DAT_0049f008 = that nation)",
+        "op": "<",
+        "const": -1,
+        "value": true,
+        "check": "concept:proposal",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       },
+       {
+        "code": "(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)DAT_0049f008] != DAT_0049f00a",
+        "var": "the relation is not the proposed one (DAT_0049f00a)",
+        "op": "!=",
+        "const": null,
+        "value": true,
+        "check": "concept:not_granted",
+        "rel": null,
+        "tokens": [],
+        "line": null
+       }
+      ],
+      "flag": null,
+      "means": "",
+      "cite": [
+       58212,
+       58213
+      ]
+     }
+    ]
+   ],
+   "effect": {
+    "kind": "info",
+    "action": [],
+    "reports_failure": null,
+    "loop": null,
+    "flag_set": null,
+    "note": ""
+   },
+   "answers": null,
+   "note": ""
+  }
+ ]
+}

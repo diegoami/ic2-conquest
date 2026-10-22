@@ -1,0 +1,369 @@
+{
+ "issue": 58,
+ "finding": "findings/2026-10-05-refusal-texts-and-conditions.md",
+ "receipt_before": "predicate_audit_receipt.txt",
+ "corrections": [
+  {
+   "id": "R06",
+   "column": "condition [derived]",
+   "old": "the fleet is one tile away (bVar4, L46514 «(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1»), the fleet carries no army",
+   "new": "the fleet is one tile away (bVar4: not (L46514 «(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1»)), the fleet is the player's own (L46590 «if (uVar2 == DAT_004a0320) {»), the fleet carries no army",
+   "answers": [
+    "branch direction",
+    "missing citation"
+   ],
+   "why": "L46514 is the test that makes bVar4 false; the box needs it false. The own-fleet test L46590 was not stated."
+  },
+  {
+   "id": "R07",
+   "column": "condition [derived]",
+   "old": "is one tile from an enemy fleet (L46611 «else if (((DAT_004a032a < 0) \\|\\| ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) \\|\\|»)",
+   "new": "is one tile from an enemy fleet (the clicked fleet is not own: L46590 «if (uVar2 == DAT_004a0320) {» fails; the selected fleet exists, has moves and is one tile away: not (L46611 «else if (((DAT_004a032a < 0) \\|\\| ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) \\|\\|»))",
+   "answers": [
+    "branch direction",
+    "missing citation"
+   ],
+   "why": "L46611 lists the failing cases (no fleet, no moves, not adjacent); the box is on its else-branch. L46590 (not own) was not cited."
+  },
+  {
+   "id": "R27",
+   "column": "condition [derived]",
+   "old": "the army is aboard a fleet (fleet index >= 0)",
+   "new": "the army is aboard a fleet (fleet index >= 0: L43646 «if (-1 < sVar4) {»)",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the aboard-a-fleet test was stated but not cited"
+  },
+  {
+   "id": "R30",
+   "column": "condition [derived]",
+   "old": "the target army is aboard a fleet whose ships are fewer than (troops + the unit) / 500: the pass test is L44133",
+   "new": "the target army is aboard a fleet (L44130 «if (-1 < sVar1) {») whose ships are fewer than (troops + the unit) / 500: L44133",
+   "answers": [
+    "branch direction",
+    "missing citation"
+   ],
+   "why": "L44133 is the failing test (its then-branch sets bVar4 and skips the move), not the pass test; the aboard test L44130 was not cited"
+  },
+  {
+   "id": "R33",
+   "column": "condition [derived]",
+   "old": "the target army is aboard a fleet whose ships are fewer than (troops + the unit) / 500: the pass test is L44214",
+   "new": "the target army is aboard a fleet (L44211 «if (-1 < sVar1) {») whose ships are fewer than (troops + the unit) / 500: L44214",
+   "answers": [
+    "branch direction",
+    "missing citation"
+   ],
+   "why": "as R30, in the second transfer handler"
+  },
+  {
+   "id": "R49",
+   "column": "condition [derived]",
+   "old": "(FUN_00449f08 needs a free tile and fewer than 198 armies, L48725 «(-1 < (short)local_12) && (DAT_004a0324 < 0xc6)»)",
+   "new": "(FUN_0044a4e0 reports 0 when L48973 «if (local_c == -1) {» holds: FUN_0044a120 found no army to join and FUN_00449f08 made none; FUN_00449f08 needs a free tile and fewer than 198 armies: the pass test is L48725 «(-1 < (short)local_12) && (DAT_004a0324 < 0xc6)»; the loop then sets the flag of the box: L56079 «if ((bVar2) \\|\\| ((char)uStack_14 == '\\0')) {»)",
+   "answers": [
+    "branch direction",
+    "missing citation"
+   ],
+   "why": "L48725 is the pass test of FUN_00449f08 (the box needs it false); the failure report L48973 and the flag test L56079 were not cited"
+  },
+  {
+   "id": "R54",
+   "column": "condition [derived]",
+   "old": "a pending war or a pending alliance with a nation at war (L55300 «if (*(short *)(param_1 + 900 + sVar3 * 2) == 3) {»), the current nation is at war with anyone (L55313 «if (((char)uVar2 == '\\0') &&»), or the relation is negative (L55314 «(-1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)local_6])) goto LAB_004531cd;»)",
+   "new": "a pending war (L55300 «if (*(short *)(param_1 + 900 + sVar3 * 2) == 3) {») or a pending alliance (L55304 «else if (*(short *)(param_1 + 900 + sVar3 * 2) == 2) {») with a nation at war (L55306 «if ((char)uVar2 != '\\0') goto LAB_00453128;»), the current nation is at war with anyone (not (L55313 «if (((char)uVar2 == '\\0') &&»)), or the relation is negative (not (L55314 «(-1 < (short)(&DAT_00474696)[DAT_004a0320 * 0x24a + (int)local_6])) goto LAB_004531cd;»): either failing skips the goto past the box)",
+   "answers": [
+    "branch direction",
+    "missing citation"
+   ],
+   "why": "L55313 and L55314 are the two halves of the goto that jumps past the box: the box needs one of them false; the pending-alliance tests L55304/L55306 were not cited"
+  },
+  {
+   "id": "R56",
+   "column": "condition [derived]",
+   "old": "no free coastal city and at least one own fleet is under construction: the else of L58527",
+   "new": "no free coastal city (L58526 «if (sVar3 == -1) {») and at least one own fleet is under construction (L58503 «if ((*(short *)(puVar2 + 2) == DAT_004a0320) && (-1 < *(short *)((int)puVar2 + 10))) {» sets the flag): the else of L58527",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the coastal-city test and the loop test that sets cStack_5 were not cited"
+  },
+  {
+   "id": "P01",
+   "column": "raised when [derived]",
+   "old": "the army is near an own city (the else of the test of R05)",
+   "new": "the army is near an own city: the else of L47101 «if (sVar2 == -1) {» (the test of R05)",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P02",
+   "column": "raised when [derived]",
+   "old": "no army aboard and an own city is next to the fleet",
+   "new": "no army aboard (L47336 «if ((short)(&DAT_0049c282)[iVar3 * 0xd] < 0) {») and an own city is next to the fleet: the else of L47340 «if (sVar2 == -1) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P03",
+   "column": "raised when [derived]",
+   "old": "an own army with moves is next to a city of another nation that is not already at war with the current nation",
+   "new": "an own army with moves is next to a city of another nation (bVar4: not (L46514 «(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1»); L46539 «if (((bVar4) && (uVar2 != DAT_004a0320)) &&») that is not already at war with the current nation (not (L46540 «(((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 \\|\\|»): at war, the siege starts without the prompt)",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited; the prompt is the right operand of an || whose left operand is the war test"
+  },
+  {
+   "id": "P04",
+   "column": "raised when [derived]",
+   "old": "an own army with moves is next to an army of another nation that is not at war",
+   "new": "an own army with moves (bVar4: not (L46514 «(short)(&DAT_0047c1f2)[DAT_004a0328 * 0x148] < 1»)) is next to an army of another nation (L46563 «if (uVar2 != DAT_004a0320) {»; L46564 «if ((bVar4) &&») that is not at war (not (L46565 «(((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3 \\|\\|»))",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P05",
+   "column": "raised when [derived]",
+   "old": "an own fleet with moves is next to an enemy fleet not docked at its city (see R07) and not at war",
+   "new": "an own fleet with moves is next to an enemy fleet (L46590 «if (uVar2 == DAT_004a0320) {» fails; not (L46611 «else if (((DAT_004a032a < 0) \\|\\| ((short)(&DAT_0049c278)[DAT_004a032a * 0xd] < 1)) \\|\\|»)) not docked at its city (L46621 «if (sVar5 < 0) {», see R07) and not at war (not (L46622 «if (((&DAT_00474696)[(short)DAT_004a0320 * 0x24a + (int)(short)uVar2] == 3) \\|\\|»))",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P06",
+   "column": "raised when [derived]",
+   "old": "one or more units selected",
+   "new": "one or more units selected: L44286 «if (0 < iVar3) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P07",
+   "column": "raised when [derived]",
+   "old": "one or more units selected",
+   "new": "one or more units selected: L44372 «if (0 < iVar3) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P08",
+   "column": "raised when [derived]",
+   "old": "one or more units selected",
+   "new": "one or more units selected: L45718 «if (0 < iVar2) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P09",
+   "column": "raised when [derived]",
+   "old": "one or more queued units selected",
+   "new": "one or more queued units selected: L56132 «if (0 < iVar3) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "P10",
+   "column": "raised when [derived]",
+   "old": "the New game command",
+   "new": "the New game command while some nation is human-controlled: L58017 «if ((cVar1 != '\\0') &&» (FUN_00449050 is true when any nation's human flag is set, all_app_functions.txt line 47764); with no human nation the new-game form opens without the prompt",
+   "answers": [
+    "missing citation",
+    "condition"
+   ],
+   "why": "the prompt is guarded by FUN_00449050 (a human nation exists); no line was cited"
+  },
+  {
+   "id": "P11",
+   "column": "raised when [derived]",
+   "old": "closing the main window",
+   "new": "closing the main window while some nation is human-controlled: L58149 «if (cVar1 != '\\0') {» (FUN_00449050); with none the window closes without the prompt",
+   "answers": [
+    "missing citation",
+    "condition"
+   ],
+   "why": "the prompt is guarded by FUN_00449050; no line was cited"
+  },
+  {
+   "id": "P01",
+   "column": "answers [derived]",
+   "old": "Yes (result 6) disbands the army and returns its money and supplies to the nearest city: L47108 «if (iVar4 == 6) {»; No or Cancel: nothing",
+   "new": "Yes (result 6) disbands the army: L47108 «if (iVar4 == 6) {»; its money goes to the nation's treasury (L47110 «(&DAT_00474aa8)[DAT_004a0320 * 0x125] = (&DAT_00474aa8)[DAT_004a0320 * 0x125] + (int)sVar2;», nation +0x438) and its supplies to the own city next to it (L47113 «(&DAT_004795a8)[sVar2 * 0x11] =», city +0x18), then the army is deleted (L47115 «FUN_0044ab90(sVar1);»); No or Cancel: nothing",
+   "answers": [
+    "answer"
+   ],
+   "why": "the money is added to the nation's treasury, not to the city; FUN_004494e4 returns the own city next to the army (a 3 x 3 scan), not the nearest one"
+  },
+  {
+   "id": "P02",
+   "column": "answers [derived]",
+   "old": "Yes (6) deletes the fleet and returns money and supplies to the city; No or Cancel: nothing",
+   "new": "Yes (6) scuttles: L47347 «if (iVar4 == 6) {»; the fleet's money goes to the nation's treasury (L47350 «(&DAT_00474aa8)[DAT_004a0320 * 0x125] = (&DAT_00474aa8)[DAT_004a0320 * 0x125] + (int)sVar2», nation +0x438) and its supplies to the city (L47354 «(&DAT_004795a8)[sVar2 * 0x11] =», city +0x18), then the fleet is deleted (L47356 «FUN_0044ad38(sVar1);»); No or Cancel: nothing",
+   "answers": [
+    "answer",
+    "missing citation"
+   ],
+   "why": "the money is added to the nation's treasury, not to the city; the answer test was not cited"
+  },
+  {
+   "id": "P03",
+   "column": "answers [derived]",
+   "old": "Yes (6) sets the relation to 3 (war) and starts the attack; No or Cancel: nothing happens",
+   "new": "Yes (6) sets the relation to 3 (war) both ways (FUN_00449b40) and starts the siege (FUN_0044b27c): L46543 «iVar6 == 6)))) {»; whatever the answer, the army's move selection is then cleared (L46551 «DAT_004a0328 = -1;»), so No or Cancel declares and attacks nothing but leaves no army selected",
+   "answers": [
+    "answer",
+    "missing citation"
+   ],
+   "why": "\"nothing happens\" was not exact: the army selection is cleared on every answer"
+  },
+  {
+   "id": "P04",
+   "column": "answers [derived]",
+   "old": "Yes (6) declares war and attacks; No or Cancel: nothing",
+   "new": "Yes (6) declares war (FUN_00449b40, relation 3) and attacks the army (FUN_0044aee4): L46568 «iVar6 == 6)))) {»; whatever the answer, the army's move selection is then cleared (L46575 «DAT_004a0328 = -1;»), so No or Cancel only leaves no army selected",
+   "answers": [
+    "answer",
+    "missing citation"
+   ],
+   "why": "as P03"
+  },
+  {
+   "id": "P05",
+   "column": "answers [derived]",
+   "old": "Yes (6) declares war and attacks; No or Cancel: nothing",
+   "new": "Yes (6) declares war and attacks: L46625 «iVar6 == 6)) {»; No or Cancel: nothing",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P06",
+   "column": "answers [derived]",
+   "old": "Yes (6) removes the units, subject to R34; text built from the count",
+   "new": "Yes (6) removes the units, subject to R34: L44302 «if (iVar3 == 6) {»; text built from the count",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P07",
+   "column": "answers [derived]",
+   "old": "Yes (6) removes the units, subject to R35; text built from the count",
+   "new": "Yes (6) removes the units, subject to R35: L44388 «if (iVar3 == 6) {»; text built from the count",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P08",
+   "column": "answers [derived]",
+   "old": "Yes (6) removes the units, subject to R45; text built from the count",
+   "new": "Yes (6) removes the units, subject to R45: L45734 «if (iVar2 == 6) {»; text built from the count",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P09",
+   "column": "answers [derived]",
+   "old": "Yes (6) deletes them, no refund; text built from the count",
+   "new": "Yes (6) deletes them: L56148 «if (iVar3 == 6) {»; each one lowers the mobilisation rate by what queueing it added (L56160 «(&DAT_00474ab2)[iVar3 * 0x24a] =», not below 0); no money is refunded (the branch writes no treasury); text built from the count",
+   "answers": [
+    "answer",
+    "missing citation"
+   ],
+   "why": "the mobilisation decrease was not stated"
+  },
+  {
+   "id": "P10",
+   "column": "answers [derived]",
+   "old": "Yes (6) starts the new-game form",
+   "new": "Yes (6) closes the running game and opens the new-game form; any other answer returns: L58019 «iVar2 != 6)»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P11",
+   "column": "answers [derived]",
+   "old": "Yes (6) quits",
+   "new": "Yes (6) quits; any other answer keeps the window open: L58152 «if (iVar3 != 6) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P12",
+   "column": "answers [derived]",
+   "old": "Yes (6) hands the seat to another nation",
+   "new": "Yes (6) hands the seat to another nation: L58400 «if (iVar2 == 6) {» (FUN_00449078 clears the current nation's human flag, then the new-game form opens to pick a nation)",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "P13",
+   "column": "answers [derived]",
+   "old": "Yes (6) abdicates (see findings/2026-10-05-end-of-game-screens.md)",
+   "new": "Yes (6) abdicates: L58427 «if (iVar2 == 6) {» (FUN_00449078 hands the current nation to the computer; the turn ends if a human nation remains; see findings/2026-10-05-end-of-game-screens.md)",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "the answer test was not cited"
+  },
+  {
+   "id": "N01",
+   "column": "raised when",
+   "old": "a fleet size above 0 was ordered",
+   "new": "a fleet size above 0 was ordered: L56320 «if (0 < (short)param_1[0x7f]) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "N02",
+   "column": "raised when",
+   "old": "one box per own fleet still under construction, before the refusals R55-R57",
+   "new": "one box per own fleet still under construction (L58503 «if ((*(short *)(puVar2 + 2) == DAT_004a0320) && (-1 < *(short *)((int)puVar2 + 10))) {»), before the refusals R55-R57",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  },
+  {
+   "id": "N03",
+   "column": "raised when",
+   "old": "a nation that proposed trade or an alliance last turn has not got it",
+   "new": "a nation that proposed trade or an alliance last turn has not got it: L58212 «if ((-1 < DAT_0049f008) &&» and L58213 «((&DAT_00474696)[DAT_004a0320 * 0x24a + (int)DAT_0049f008] != DAT_0049f00a)) {»",
+   "answers": [
+    "missing citation"
+   ],
+   "why": "no line was cited"
+  }
+ ]
+}
