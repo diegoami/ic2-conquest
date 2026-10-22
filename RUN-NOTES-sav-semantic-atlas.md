@@ -273,3 +273,5 @@ PR #126 merged at main `b3cf8dc`. Increment 11 relayed to "IC2 Research" (status
 ## 2026-10-22 g4 cross-reference
 
 Lesson: findings/2026-10-12-g4-followups.md (H, J) had already observed the at-war rebellion branch and the rebirth relations in Wine. Increment 11 reproduced part of it without citing it first. Ledger v12 corrects the uncertainty. Next time: grep findings/ for the mechanic before proposing a run.
+
+PR #128 merged at main `e055201`, relayed to "IC2 Research" (status "delivered"). **Last delivered findings baseline: `e055201e9b1c185e1ffd8f73e427ed49fc9f1b12`.**
