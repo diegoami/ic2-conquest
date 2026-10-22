@@ -262,3 +262,7 @@ Ledger v10 is authoritative. Open:
 - a native rebellion/revival observation;
 - independent (other-family) review if wanted;
 - an optional release of run-exp-sav-aboard107 (2 saves on Drive).
+
+## 2026-10-22 increment 11: rebellion run (owner-approved)
+
+run-exp-sav-rebellion107 confirms the revival (and the review correction on relations), the return home, the neighbour branch and that capitals do not rebel. The at-war branch was not exercised. Ledger v11.
