@@ -30,6 +30,9 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
 | B8 scuttle fleet | **done**, matches the code | `B8-scuttle-diff.txt`; same finding |
 | B9 buy supplies from a foreign city | **done**, matches the code (two cases) | `B9-buy-supplies-diff.txt`, `MG_B9_*.png`, `MG_B9b_*.png`; finding `2026-10-22-buying-supplies-from-a-foreign-city.md` |
 
+| A6 End of Game | **done**: (a) 250 BC, (b) deposition for debt, (c) victory | `MG_A6{a,b,c}_end_of_game_window.png`, `..._context.png`, `..._after_ok_screen.png`; `a6-eog.jsonl` |
+| B10 Winter storm spike | **done**: 4 spikes in 72 fleet-turns, every loss as the code says | `b10-storms.jsonl`, `b10-table.v1.md`; finding `2026-10-22-winter-storm-spike-on-own-fleets.md` |
+
 ### A1 attack-army box (turn 0720)
 - Staged save `MG_A1_staged_carthage_army3_at_101_37.SAV`: run0 start with Carthage's army 3 (peace with Rome) moved by a save
   edit to (101,37), next to Rome's army 0 at (100,37) (map markers moved with it).
@@ -87,3 +90,29 @@ user manual; items B7-B11 observe rules that were known only from the decompiled
   91, **Carthage's treasury 11,000 -> 11,009**, Agrigentum 197 -> 152; Rome's treasury unchanged. No box.
 - Purse cap (`MG_B9b_staged_army1_purse5_supplies0.SAV`, purse 5, supplies 0): amount 25, cost 5; purse 5 -> 0, Carthage
   11,000 -> 11,005, Agrigentum 197 -> 172.
+
+### A6 End of Game (`a6_eog.py`)
+- Each from a staged run0-start save, one End turn, the window **End of Game** (450 x 347 at (13,89), one button **OK**)
+  opens at the next human turn start, **after** the autosave line (`end_turn` returns first; the script then waits for it).
+  - (a) `MG_A6a_staged_251bc_winter_w11.SAV` -> turn 1200 (`MG_A6a_AUTO1200.SAV`): "The game is over for Appius Claudius the
+    leader of Rome." / "You have reached the end of your allotted 20 years." / "Your 20 years in power in Rome produced these
+    changes." / Rome in 270 BC: Population 2,577,000, Cities 25, Treasury 2,200 talents; Rome in 250 BC: 2,601,000, 25, 2,221.
+  - (b) `MG_A6b_staged_rome_treasury_-30000.SAV` -> turn 0721: "Your army have deposed you because they have not been paid." /
+    "Your  short time in power in Rome produced these changes." / Treasury "- 30,000 talents".
+  - (c) `MG_A6c_staged_rome_cities_count_334.SAV` -> turn 0721: "You have conquerred the Mediterranean, a unique achievement."
+    (sic); Cities 25 -> 334. **Staged by the city-count word only** (as `EOG_victory_b1` of
+    `findings/2026-10-05-end-of-game-screens.md`): the map still shows 25 Roman cities, so this is the window, not a won game.
+- After OK the maps close; only the main window ("Imperial Conquest 2") stays (`MG_A6*_after_ok_screen.png`).
+- **Differs from the 2026-10-05 finding:** there the reason line was clipped in Wine ("...have not been pa",
+  "...a unique achievem"); here both lines are shown in full (`MG_A6b_end_of_game_window.png`, `MG_A6c_end_of_game_window.png`).
+  The font environment of this machine differs; the clipping is not a property of the game.
+
+### B10 Winter storms (`b10_storms.py`, `b10_analyse.py`)
+- Staged save `MG_B10_staged_6_rome_fleets_at_sea_winter_270.SAV` (from `saves/fleet-split-antium-0734.SAV`): fleet records 0-5
+  all made Rome's, launched, 50 ships, condition 100, supplies 400, money 0, on calm sea at (80,44) (80,48) (80,52) (83,42)
+  (83,46) (84,44) (every neighbour sea, nearest city 6-9 tiles; map markers 332 written), calendar Winter week 1, 270 BC.
+- Six End turns, seeds 12345 and 1 (autosaves `MG_B10_seed<s>_AUTO0739..0744.SAV`). 72 fleet-turns: 61 x (0 ships, -5
+  condition), 7 x the dmg-9 step, **4 x the spike** (-9 ships and -15..-17 condition, d = 57). See the finding.
+- End turn box texts seen (the "End turn ?" box, not shot): "One of your fleets is not docked at its own city" (one line per
+  fleet), "A fleet of yours needs repairing.", "An army of yours needs supplies."; turn-start offers ("Greece wants to trade with
+  Rome.", shot `MG_B10_seed1_t0742_box001.png`).
