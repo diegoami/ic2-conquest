@@ -1,8 +1,6 @@
 # Run 1 progress
 
-- **Status: running.** Rome, `strategies/rome-v2.md` (k = 3), approved on issue #144 (2026-10-22). Branch `run/1`.
-- **Last turn done:** 0720 → `AUTO0721.SAV` (`/home/user/ic2-conquest/artifacts/run-1/270BC-spring/`).
-- **Next plan:** 0721 recruit HI ×2 at Arretium; armies 0 and 1 join at (103,36); 0722 attack Gaul's army 9 if the joined ratio is ≥ 3; mobilise the southern army at Rome from the starting queue by 0724–0726 (P12).
-- **Playing a turn:** `python3 runs/1/bot/turn.py <turn> runs/1/turns/<turn>.orders.json` (loads `AUTO<turn>.SAV` from `artifacts/run-1/<season>/`, seed `12345 + turn − 720`; never overwrites). Turn files: `runs/1/bot/turnmd.py <turn> <notes>`. Planning: `look.py`, `reach.py`, `budget.py` (debt floor and next quarter's bill).
+- **Status: finished.** All 24 turns played (0720–0743); the last save is `AUTO0744.SAV` (269 BC Spring week 1) in `/home/user/ic2-conquest/artifacts/run-1/269BC-spring/`, copied to `gdrive:IC2/artifacts/run-1`. Debrief: `runs/1/debrief.md`. Checkpoints (all posted on issue #144): `runs/1/checkpoints/0726.md`, `0732.md`, `0737-0738.md`, `0744.md`.
+- **Replaying a turn:** `python3 runs/1/bot/turn.py <turn> runs/1/turns/<turn>.orders.json` plays turn `<turn>` from `AUTO<turn>.SAV` with seed `12345 + turn − 720` (new artifact names, never overwrites). Turn files: `runs/1/bot/batchmd.py <notes>` (sections `=== <turn>`). Planning: `view.py <turn>`, `whatif.py`, `dist.py`, `reach.py`, `budget.py`.
 - **Old game-folder autosaves** (run 0) were moved to `~/ic2-work/prefix/drive_c/IC2/superseded-20261022-145602/` before turn 1.
-- **Problems:** none yet.
+- **Open problems:** the supply order does not check for an adjacent own city first (0742, three futile attempts); `goto` sometimes stops a tile short (0742) or needs a second attempt (0730). No release (artifacts are local and on Drive).
