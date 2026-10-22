@@ -31,6 +31,17 @@ measured. Run `run-exp-manual-gaps`, item B11. The rule (`docs/rules-digest.md` 
     Seleucid's conquest of Galatia the same turn).
   - Carthage's mobilisation rose 9 → 13 at the declaration turn.
 
+## Addendum (2026-10-22, from research's intake, PR diegoami/imperial-conquest-2-research#59)
+
+**Carthage's was not the first AI war on Rome in this run.** Illyria declared war first, between turns 0721 and 0722,
+through an alliance. Rome–Illyria went from trade (1) to war (3) on both sides, and Gaul–Illyria from −8 to alliance (2),
+checked in `MG_B11_seed12345_AUTO0721.SAV` → `MG_B11_seed12345_AUTO0722.SAV`. Research's news read is
+"Illyria forms an alliance with Gaul." then "ILLYRIA DECLARES WAR ON ROME.". This is the AI alliance rule plus the
+relation setter's one-step cascade: allying with Gaul, which is at war with Rome, puts Illyria at war with Rome.
+
+So a human can be dragged into war in two ways: by an AI's own war rule (Carthage, above) or by an AI allying with one
+of the human's enemies (Illyria). In both cases the human sees only news lines.
+
 ## What this does not establish
 
 - One seed, one declaration: the 1-in-10 chance and the target choice by best ratio are consistent, not measured.
