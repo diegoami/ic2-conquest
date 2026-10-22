@@ -1,0 +1,73 @@
+{
+ "g1": {
+  "rows": 44,
+  "class": {
+   "matches": 13,
+   "differs": 22,
+   "missing": 9
+  },
+  "severity": {
+   "-": 16,
+   "cosmetic": 11,
+   "fidelity only": 15,
+   "blocks a normal game": 2
+  }
+ },
+ "g2": {
+  "rows": 58,
+  "class": {
+   "missing": 2,
+   "matches": 33,
+   "differs": 23
+  },
+  "severity": {
+   "cosmetic": 8,
+   "-": 33,
+   "fidelity only": 17
+  }
+ },
+ "g3": {
+  "rows": 59,
+  "class": {
+   "differs": 22,
+   "matches": 37
+  },
+  "severity": {
+   "fidelity only": 13,
+   "-": 37,
+   "cosmetic": 9
+  }
+ },
+ "ai": {
+  "rows": 10,
+  "class": {
+   "differs": 8,
+   "matches": 2
+  },
+  "severity": {
+   "breaks play": 2,
+   "fidelity only": 6,
+   "-": 2
+  }
+ },
+ "total": {
+  "rows": 171,
+  "class": {
+   "matches": 85,
+   "differs": 75,
+   "missing": 11
+  },
+  "severity": {
+   "-": 88,
+   "cosmetic": 28,
+   "fidelity only": 51,
+   "blocks a normal game": 2,
+   "breaks play": 2
+  },
+  "cross_check_rows_not_counted": [
+   "S05",
+   "S05a",
+   "S06"
+  ]
+ }
+}

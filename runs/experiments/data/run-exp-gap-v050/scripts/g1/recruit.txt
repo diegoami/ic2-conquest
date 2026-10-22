@@ -1,0 +1,13 @@
+recruit-standing rome light_infantry 1000
+recruit-standing rome light_infantry 100
+recruit-standing rome light_infantry 15000
+recruit-standing rome light_infantry 99999
+recruit-standing pisae heavy_infantry 1000
+recruit-standing carthage-city archers 1000
+recruit-standing locri archers 1000
+balance
+mobilize 0 newarmy
+disband-slot 0
+disband-slot 5
+status mine
+save ART/g1_recruit.sav

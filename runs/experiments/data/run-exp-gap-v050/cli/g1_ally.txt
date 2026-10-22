@@ -1,0 +1,78 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=armenia seed=1 extra=[] 2026-10-09T17:03:49+02:00
+# script:
+#   propose-alliance rome
+#   propose-alliance carthage
+#   propose-alliance seleucid
+#   propose-alliance ptolemaic
+#   propose-alliance macedonia
+#   propose-alliance numidia
+#   propose-alliance gaul
+#   propose-alliance greece
+#   propose-alliance celtiberia
+#   propose-alliance illyria
+#   propose-alliance dacia
+#   propose-alliance bithynia
+#   propose-alliance galatia
+#   propose-alliance media
+#   propose-alliance thracia
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+Rome (rome) takes its turn: 2 orders issued.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 17 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 19 orders issued.
+Macedonia (macedonia) takes its turn: 8 orders issued.
+Numidia (numidia) takes its turn: 13 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 5 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+
+> propose-alliance rome
+diplomacy.propose-alliance accepted.
+
+> propose-alliance carthage
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Carthage' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance seleucid
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Seleucid' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance ptolemaic
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Ptolemaic' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance macedonia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Macedonia' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance numidia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Numidia' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance gaul
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Gaul' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance greece
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Greece' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance celtiberia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Celtiberia' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance illyria
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Illyria' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance dacia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Dacia' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance bithynia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Bithynia' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance galatia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Galatia' will not ally while you, or one of your allies, is at war.
+
+> propose-alliance media
+diplomacy.propose-alliance rejected (diplomacy.already-allied): You are already allied with 'Media'.
+
+> propose-alliance thracia
+diplomacy.propose-alliance rejected (diplomacy.side-at-war): 'Thracia' will not ally while you, or one of your allies, is at war.
+

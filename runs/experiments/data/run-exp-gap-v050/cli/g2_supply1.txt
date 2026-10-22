@@ -1,0 +1,75 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:05:41+02:00
+# script:
+#   move army-0 91 43
+#   end
+#   move army-0 91 43
+#   armies
+#   save ART/g2_supply1_a.sav
+#   buy army-0 aleria 50
+#   buy army-0 aleria 500
+#   armies
+#   save ART/g2_supply1_b.sav
+#   declare-war carthage
+#   buy army-0 aleria 10
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> move army-0 91 43
+army-0 moved from (100,37) to (97,39), spending 3 of 8 moves.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 15 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 18 orders issued.
+Macedonia (macedonia) takes its turn: 7 orders issued.
+Numidia (numidia) takes its turn: 14 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 5 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+Now: Week 3, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  3      Spring      270BC
+
+> move army-0 91 43
+army-0 moved from (97,39) to (97,39), spending 0 of 9 moves.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (97,39): 23700 troops in 6 units, supply 123t (51%), morale 70, moves 9
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 132t (60%), morale 69, moves 9
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_supply1_a.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_supply1_a.sav'.
+
+> buy army-0 aleria 50
+Purchase rejected (supply.city-not-within-range): City 'aleria' is not within one tile of army 'army-0'.
+
+> buy army-0 aleria 500
+Purchase rejected (supply.city-not-within-range): City 'aleria' is not within one tile of army 'army-0'.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (97,39): 23700 troops in 6 units, supply 123t (51%), morale 70, moves 9
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 132t (60%), morale 69, moves 9
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_supply1_b.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_supply1_b.sav'.
+
+> declare-war carthage
+diplomacy.declare-war accepted.
+
+> buy army-0 aleria 10
+Purchase rejected (supply.city-not-within-range): City 'aleria' is not within one tile of army 'army-0'.
+

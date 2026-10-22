@@ -1,0 +1,5 @@
+# 2026-10-08 late, probe_tooltip.py (BASE + saves/fleet-split-antium-0734.SAV, seed 12345, Xvfb :99), after the find_windows tooltip filter
+hover Split army: default [] | tooltips=True [('Split army', 51, 15)]
+army toolbar: cached {'supply': 346, 'mercs': 367, 'transfer': 391, 'split': 415, 'join': 439, 'change': 463, 'disband': 487, 'cancel': 516} | recalibrated {'supply': 346, 'mercs': 367, 'transfer': 391, 'split': 415, 'join': 439, 'change': 463, 'disband': 487, 'cancel': 517} | same False
+hover Split fleet: default [] | tooltips=True [('Split fleet', 49, 15)]
+fleet toolbar: cached {'supply': 346, 'repair': 367, 'transfer': 391, 'split': 415, 'join': 439, 'scuttle': 463, 'cancel': 493} | recalibrated {'supply': 346, 'repair': 367, 'transfer': 391, 'split': 415, 'join': 439, 'scuttle': 463, 'cancel': 493} | same True

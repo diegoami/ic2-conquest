@@ -1,0 +1,68 @@
+{
+ "g1": {
+  "rows": 44,
+  "class": {
+   "matches": 13,
+   "differs": 22,
+   "missing": 9
+  },
+  "severity": {
+   "-": 16,
+   "cosmetic": 11,
+   "fidelity only": 15,
+   "blocks a normal game": 2
+  }
+ },
+ "g2": {
+  "rows": 61,
+  "class": {
+   "missing": 2,
+   "matches": 35,
+   "differs": 24
+  },
+  "severity": {
+   "cosmetic": 8,
+   "-": 35,
+   "fidelity only": 18
+  }
+ },
+ "g3": {
+  "rows": 59,
+  "class": {
+   "differs": 22,
+   "matches": 37
+  },
+  "severity": {
+   "fidelity only": 13,
+   "-": 37,
+   "cosmetic": 9
+  }
+ },
+ "ai": {
+  "rows": 10,
+  "class": {
+   "differs": 8,
+   "matches": 2
+  },
+  "severity": {
+   "breaks play": 2,
+   "fidelity only": 6,
+   "-": 2
+  }
+ },
+ "total": {
+  "rows": 174,
+  "class": {
+   "matches": 87,
+   "differs": 76,
+   "missing": 11
+  },
+  "severity": {
+   "-": 90,
+   "cosmetic": 28,
+   "fidelity only": 52,
+   "blocks a normal game": 2,
+   "breaks play": 2
+  }
+ }
+}

@@ -1,0 +1,10 @@
+d = 86; army of FIX_T4_R85sA.SAV; exact enumeration of 759375 roll combinations
+units surviving step 2 (before the random removals), by roll combination count: 32 distinct states
+always removed in step 2 (below limit/10 at every roll): li, lc
+never removed in step 2: ar
+probability of the final army by unit type kept:
+  ar       0.3822  (86/225)
+  hi       0.3289  (74/225)
+  hc       0.1956  (44/225)
+  gone     0.0933  (7/75)
+final single-unit troops range by type: {'hc': (312, 312), 'ar': (366, 624), 'hi': (678, 850)}

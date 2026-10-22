@@ -1,5 +1,7 @@
 # Proposal: `ic2-chat`, a BYOK chatbot that plays the original game through the headless wrapper
 
+> **Model choice superseded (2026-10-11):** the implementer and reviewer models named in this file are history. Who implements and which model reviews are now the user's choice, asked each time (`CLAUDE.md`, "Choosing models").
+
 **Status:** proposal for review (2026-10-02). Nothing here is built. Author: Claude Sonnet 5.5, for the player.
 Reviewers: please answer the questions in §12 and flag anything in §3-§10 that you would change.
 
@@ -337,6 +339,10 @@ chatbot later needs its own repository (a web UI, heavy dependencies, a differen
 
 ## 13. How this proposal gets reviewed
 
+> **SUPERSEDED (2026-10-11).** Everything below this note is history. The review plan now is: a PR with this file only; **one reviewer per review, named by the user** (`CLAUDE.md`, "Choosing models: the user decides", rule 2), run alone with `python3 scripts/external_review.py --pr <n> --model <the model the user named>`; the reviewer is never of the implementer's model family and never DeepSeek. No default chain, no quota-first order, and no fixed second opinion (a Claude pass only if the user names a Claude model for a review). The player decides, answers §12, and approves milestones; nothing is built before then.
+
+**History (superseded, do not follow):**
+
 1. A PR with this file only. 2. `python3 scripts/external_review.py --pr <n>` (DeepSeek V4.1 Flash, then OpenAI GPT-5.6
-Luna, the default chain since 2026-10-05; the quota check first, `CLAUDE.md` L50) for the first pass. 3. A Claude Opus pass with `/review-pr <n>` as the second opinion. 4. The player decides,
+Luna, the former default chain since 2026-10-05, superseded 2026-10-11; the quota check first, `CLAUDE.md` L50) for the first pass. 3. A Claude Opus pass with `/review-pr <n>` as the second opinion. 4. The player decides,
 answers §12, and approves milestones; nothing is built before then.

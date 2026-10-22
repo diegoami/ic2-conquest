@@ -1,0 +1,8 @@
+load ART/g2_embark3_aboard.sav
+armies
+army-transfer army-0 army-100 units=0
+army-transfer army-0 army-100 units=0,1
+army-transfer army-100 army-0 units=0
+armies
+save ART/g2_xfer_aboard_after.sav
+join-armies army-0 army-100

@@ -1,0 +1,1678 @@
+{
+ "turn": 720,
+ "seed": 12345,
+ "save": "run0-start-AUTO0720-seed12345.SAV",
+ "save_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+ "stamp": "20261022-145755",
+ "orders": [
+  {
+   "order": {
+    "op": "taxation",
+    "percent": 25
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "tax": 25
+  },
+  {
+   "order": {
+    "op": "fortify",
+    "name": "Arretium",
+    "x": 99,
+    "y": 36,
+    "points": 3
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "cost": 99
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "hi",
+    "troops": 6000,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 4,
+     "state": 0,
+     "type": "hi",
+     "troops": 6000,
+     "city": 85
+    }
+   ],
+   "treasury": 1501
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "hi",
+    "troops": 6000,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 5,
+     "state": 0,
+     "type": "hi",
+     "troops": 6000,
+     "city": 85
+    }
+   ],
+   "treasury": 901
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "hi",
+    "troops": 6000,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 6,
+     "state": 0,
+     "type": "hi",
+     "troops": 6000,
+     "city": 85
+    }
+   ],
+   "treasury": 301
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "ar",
+    "troops": 3500,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 7,
+     "state": 0,
+     "type": "ar",
+     "troops": 3500,
+     "city": 85
+    }
+   ],
+   "treasury": 233
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "ar",
+    "troops": 3500,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 8,
+     "state": 0,
+     "type": "ar",
+     "troops": 3500,
+     "city": 85
+    }
+   ],
+   "treasury": 165
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "ar",
+    "troops": 3500,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 9,
+     "state": 0,
+     "type": "ar",
+     "troops": 3500,
+     "city": 85
+    }
+   ],
+   "treasury": 97
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Rome",
+    "city": 85,
+    "type": "li",
+    "troops": 15000,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 10,
+     "state": 0,
+     "type": "li",
+     "troops": 15000,
+     "city": 85
+    }
+   ],
+   "treasury": -53
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Luceria",
+    "city": 110,
+    "type": "hi",
+    "troops": 6000,
+    "row": 0
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 11,
+     "state": 0,
+     "type": "hi",
+     "troops": 6000,
+     "city": 110
+    }
+   ],
+   "treasury": -653
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Luceria",
+    "city": 110,
+    "type": "hi",
+    "troops": 6000,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 12,
+     "state": 0,
+     "type": "hi",
+     "troops": 6000,
+     "city": 110
+    }
+   ],
+   "treasury": -1253
+  },
+  {
+   "order": {
+    "op": "recruit",
+    "city_name": "Luceria",
+    "city": 110,
+    "type": "ar",
+    "troops": 3500,
+    "row": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "new_slots": [
+    {
+     "slot": 13,
+     "state": 0,
+     "type": "ar",
+     "troops": 3500,
+     "city": 110
+    }
+   ],
+   "treasury": -1321
+  },
+  {
+   "order": {
+    "op": "mercs",
+    "army": 1,
+    "rows": [
+     0
+    ]
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "gained": 1
+  },
+  {
+   "order": {
+    "op": "supply",
+    "army": 0
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "supplies": [
+    170,
+    238
+   ],
+   "money": [
+    100,
+    100
+   ]
+  },
+  {
+   "order": {
+    "op": "supply",
+    "army": 1
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "supplies": [
+    176,
+    259
+   ],
+   "money": [
+    100,
+    100
+   ]
+  },
+  {
+   "order": {
+    "op": "relation",
+    "nation": 5,
+    "kind": "trade",
+    "only_if_free_trade_slot": true
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "value": 1
+  },
+  {
+   "order": {
+    "op": "relation",
+    "nation": 11,
+    "kind": "trade",
+    "only_if_free_trade_slot": true
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "value": 1
+  },
+  {
+   "order": {
+    "op": "relation",
+    "nation": 12,
+    "kind": "trade",
+    "only_if_free_trade_slot": true
+   },
+   "attempts": 1,
+   "ok": "skipped",
+   "texts": [],
+   "skipped": "3 trade slots already filled"
+  },
+  {
+   "order": {
+    "op": "move",
+    "army": 1,
+    "x": 113,
+    "y": 45
+   },
+   "attempts": 1,
+   "ok": true,
+   "texts": [],
+   "from": [
+    120,
+    53
+   ],
+   "to": [
+    113,
+    45
+   ],
+   "moves_left": 0
+  }
+ ],
+ "load_popups": [
+  "e Bithynia wamts to trade with Rone oe"
+ ],
+ "seed_line": "S 0000012345",
+ "rome_before_end": {
+  "id": 0,
+  "name": "Rome",
+  "leader": "Appius Claudius",
+  "relations": {
+   "Carthage": 0,
+   "Seleucid": 0,
+   "Ptolemaic": 0,
+   "Macedonia": -8,
+   "Numidia": 1,
+   "Gaul": 3,
+   "Greece": 0,
+   "Celtiberia": 0,
+   "Illyria": 1,
+   "Dacia": 0,
+   "Bithynia": 1,
+   "Galatia": 0,
+   "Armenia": 0,
+   "Media": 0,
+   "Thracia": 0
+  },
+  "neighbours": [
+   "Carthage",
+   "Gaul",
+   "Illyria"
+  ],
+  "recruit_slots": [
+   {
+    "slot": 0,
+    "state": 9,
+    "type": "li",
+    "troops": 5500,
+    "city": 85
+   },
+   {
+    "slot": 1,
+    "state": 13,
+    "type": "hi",
+    "troops": 3500,
+    "city": 85
+   },
+   {
+    "slot": 2,
+    "state": 17,
+    "type": "hi",
+    "troops": 4000,
+    "city": 85
+   },
+   {
+    "slot": 3,
+    "state": 17,
+    "type": "hc",
+    "troops": 1000,
+    "city": 85
+   },
+   {
+    "slot": 4,
+    "state": 0,
+    "type": "hi",
+    "troops": 6000,
+    "city": 85
+   },
+   {
+    "slot": 5,
+    "state": 0,
+    "type": "hi",
+    "troops": 6000,
+    "city": 85
+   },
+   {
+    "slot": 6,
+    "state": 0,
+    "type": "hi",
+    "troops": 6000,
+    "city": 85
+   },
+   {
+    "slot": 7,
+    "state": 0,
+    "type": "ar",
+    "troops": 3500,
+    "city": 85
+   },
+   {
+    "slot": 8,
+    "state": 0,
+    "type": "ar",
+    "troops": 3500,
+    "city": 85
+   },
+   {
+    "slot": 9,
+    "state": 0,
+    "type": "ar",
+    "troops": 3500,
+    "city": 85
+   },
+   {
+    "slot": 10,
+    "state": 0,
+    "type": "li",
+    "troops": 15000,
+    "city": 85
+   },
+   {
+    "slot": 11,
+    "state": 0,
+    "type": "hi",
+    "troops": 6000,
+    "city": 110
+   },
+   {
+    "slot": 12,
+    "state": 0,
+    "type": "hi",
+    "troops": 6000,
+    "city": 110
+   },
+   {
+    "slot": 13,
+    "state": 0,
+    "type": "ar",
+    "troops": 3500,
+    "city": 110
+   }
+  ],
+  "wealth": 2577000,
+  "treasury": -1321,
+  "unity": 821,
+  "mobilization": 59,
+  "capital": 85,
+  "cities_count": 25,
+  "tax": 25,
+  "tax_base": 2528,
+  "conquered_by": -1,
+  "view": [
+   107,
+   38
+  ],
+  "human": true,
+  "alive": true
+ },
+ "armies_before_end": {
+  "0": {
+   "id": 0,
+   "x": 100,
+   "y": 37,
+   "owner": 0,
+   "moves": 8,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 238,
+   "money": 100,
+   "morale": 70,
+   "troops": 23700,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 4800,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "hi",
+     "troops": 5000,
+     "quality": 8,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 5200,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Guards  Battalion"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 5900,
+     "quality": 7,
+     "merc": 0,
+     "name": "3rd Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "lc",
+     "troops": 900,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "hc",
+     "troops": 1900,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 100
+  },
+  "1": {
+   "id": 1,
+   "x": 113,
+   "y": 45,
+   "owner": 0,
+   "moves": 0,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 259,
+   "money": 100,
+   "morale": 68,
+   "troops": 25868,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 4100,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "hi",
+     "troops": 5500,
+     "quality": 8,
+     "merc": 0,
+     "name": "4th Guards  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 4000,
+     "quality": 7,
+     "merc": 0,
+     "name": "5th Guards  Battalion"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 5100,
+     "quality": 7,
+     "merc": 0,
+     "name": "6th Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "lc",
+     "troops": 1500,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Lancers  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "hc",
+     "troops": 1800,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Dragoons  Battalion"
+    },
+    {
+     "slot": 6,
+     "type": "li",
+     "troops": 3868,
+     "quality": 8,
+     "merc": 38,
+     "name": "Samnite"
+    }
+   ],
+   "supply_pct": 100
+  },
+  "2": {
+   "id": 2,
+   "x": 47,
+   "y": 62,
+   "owner": 1,
+   "moves": 8,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 231,
+   "money": 100,
+   "morale": 65,
+   "troops": 33900,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 7800,
+     "quality": 7,
+     "merc": 1,
+     "name": "Numidian"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 9000,
+     "quality": 5,
+     "merc": 3,
+     "name": "Celtiberian"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 3500,
+     "quality": 8,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 5200,
+     "quality": 7,
+     "merc": 3,
+     "name": "Celtiberian"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 4000,
+     "quality": 6,
+     "merc": 3,
+     "name": "Celtiberian"
+    },
+    {
+     "slot": 5,
+     "type": "lc",
+     "troops": 1200,
+     "quality": 6,
+     "merc": 1,
+     "name": "Numidian"
+    },
+    {
+     "slot": 6,
+     "type": "hc",
+     "troops": 1100,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    },
+    {
+     "slot": 7,
+     "type": "hc",
+     "troops": 2100,
+     "quality": 8,
+     "merc": 1,
+     "name": "Numidian"
+    }
+   ],
+   "supply_pct": 68
+  },
+  "3": {
+   "id": 3,
+   "x": 93,
+   "y": 79,
+   "owner": 1,
+   "moves": 8,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 90,
+   "money": 100,
+   "morale": 68,
+   "troops": 18600,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 4800,
+     "quality": 7,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 1,
+     "type": "hi",
+     "troops": 2300,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Guards  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 5700,
+     "quality": 7,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 3,
+     "type": "ar",
+     "troops": 2700,
+     "quality": 6,
+     "merc": 4,
+     "name": "Moor"
+    },
+    {
+     "slot": 4,
+     "type": "hc",
+     "troops": 1100,
+     "quality": 5,
+     "merc": 0,
+     "name": "2nd Dragoons  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "hc",
+     "troops": 2000,
+     "quality": 7,
+     "merc": 1,
+     "name": "Numidian"
+    }
+   ],
+   "supply_pct": 48
+  },
+  "4": {
+   "id": 4,
+   "x": 225,
+   "y": 72,
+   "owner": 2,
+   "moves": 0,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 372,
+   "money": 700,
+   "morale": 64,
+   "troops": 37200,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 5720,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 6220,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 4180,
+     "quality": 8,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 3,
+     "type": "li",
+     "troops": 6420,
+     "quality": 6,
+     "merc": 5,
+     "name": "Persian"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 2680,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "hi",
+     "troops": 4220,
+     "quality": 8,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 6,
+     "type": "ar",
+     "troops": 2140,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Bowmen  Battalion"
+    },
+    {
+     "slot": 7,
+     "type": "hc",
+     "troops": 2000,
+     "quality": 8,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    },
+    {
+     "slot": 8,
+     "type": "ar",
+     "troops": 2140,
+     "quality": 7,
+     "merc": 6,
+     "name": "Mysian"
+    },
+    {
+     "slot": 9,
+     "type": "lc",
+     "troops": 1480,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    }
+   ],
+   "supply_pct": 100
+  },
+  "5": {
+   "id": 5,
+   "x": 178,
+   "y": 47,
+   "owner": 2,
+   "moves": 0,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 373,
+   "money": 600,
+   "morale": 66,
+   "troops": 37300,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 8700,
+     "quality": 5,
+     "merc": 0,
+     "name": "3rd Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 7800,
+     "quality": 5,
+     "merc": 0,
+     "name": "4th Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 6500,
+     "quality": 7,
+     "merc": 7,
+     "name": "Cilician"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 5000,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 4300,
+     "quality": 7,
+     "merc": 0,
+     "name": "3rd Guards  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "ar",
+     "troops": 1200,
+     "quality": 6,
+     "merc": 0,
+     "name": "3rd Bowmen  Battalion"
+    },
+    {
+     "slot": 6,
+     "type": "lc",
+     "troops": 900,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Lancers  Battalion"
+    },
+    {
+     "slot": 7,
+     "type": "lc",
+     "troops": 1500,
+     "quality": 7,
+     "merc": 7,
+     "name": "Cilician"
+    },
+    {
+     "slot": 8,
+     "type": "hc",
+     "troops": 1400,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 100
+  },
+  "6": {
+   "id": 6,
+   "x": 166,
+   "y": 35,
+   "owner": 15,
+   "moves": 0,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 142,
+   "money": 100,
+   "morale": 65,
+   "troops": 22000,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 6300,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 6300,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 4200,
+     "quality": 6,
+     "merc": 13,
+     "name": "Bactrian"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 2700,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "lc",
+     "troops": 1100,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "lc",
+     "troops": 1400,
+     "quality": 7,
+     "merc": 17,
+     "name": "Thessalian"
+    }
+   ],
+   "supply_pct": 64
+  },
+  "7": {
+   "id": 7,
+   "x": 189,
+   "y": 104,
+   "owner": 3,
+   "moves": 0,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 640,
+   "money": 600,
+   "morale": 64,
+   "troops": 64030,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 8600,
+     "quality": 5,
+     "merc": 0,
+     "name": "3rd Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 10000,
+     "quality": 5,
+     "merc": 0,
+     "name": "4th Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 9000,
+     "quality": 7,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 3,
+     "type": "li",
+     "troops": 13500,
+     "quality": 6,
+     "merc": 9,
+     "name": "Elymaian"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 3500,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Guards  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "hi",
+     "troops": 6000,
+     "quality": 8,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 6,
+     "type": "ar",
+     "troops": 1200,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Bowmen  Battalion"
+    },
+    {
+     "slot": 7,
+     "type": "lc",
+     "troops": 1700,
+     "quality": 6,
+     "merc": 9,
+     "name": "Elymaian"
+    },
+    {
+     "slot": 8,
+     "type": "hc",
+     "troops": 1800,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Dragoons  Battalion"
+    },
+    {
+     "slot": 9,
+     "type": "hc",
+     "troops": 1100,
+     "quality": 7,
+     "merc": 9,
+     "name": "Elymaian"
+    },
+    {
+     "slot": 10,
+     "type": "li",
+     "troops": 7630,
+     "quality": 7,
+     "merc": 35,
+     "name": "Egyptian"
+    }
+   ],
+   "supply_pct": 99
+  },
+  "8": {
+   "id": 8,
+   "x": 144,
+   "y": 41,
+   "owner": 4,
+   "moves": 7,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 298,
+   "money": 600,
+   "morale": 70,
+   "troops": 29800,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 7900,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 4400,
+     "quality": 6,
+     "merc": 9,
+     "name": "Elymaian"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 5700,
+     "quality": 9,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 6000,
+     "quality": 9,
+     "merc": 0,
+     "name": "2nd Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 3700,
+     "quality": 7,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 5,
+     "type": "lc",
+     "troops": 1300,
+     "quality": 6,
+     "merc": 9,
+     "name": "Elymaian"
+    },
+    {
+     "slot": 6,
+     "type": "hc",
+     "troops": 800,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 100
+  },
+  "9": {
+   "id": 9,
+   "x": 93,
+   "y": 28,
+   "owner": 6,
+   "moves": 8,
+   "cell": 5,
+   "embarked": false,
+   "supplies": 272,
+   "money": 100,
+   "morale": 63,
+   "troops": 40500,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 8000,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 9200,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 7800,
+     "quality": 5,
+     "merc": 21,
+     "name": "Ligurian"
+    },
+    {
+     "slot": 3,
+     "type": "li",
+     "troops": 8600,
+     "quality": 6,
+     "merc": 0,
+     "name": "3rd Foot  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 2200,
+     "quality": 6,
+     "merc": 41,
+     "name": "Spanish"
+    },
+    {
+     "slot": 5,
+     "type": "hi",
+     "troops": 2700,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 6,
+     "type": "lc",
+     "troops": 1400,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 7,
+     "type": "hc",
+     "troops": 600,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 67
+  },
+  "10": {
+   "id": 10,
+   "x": 34,
+   "y": 63,
+   "owner": 8,
+   "moves": 8,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 249,
+   "money": 100,
+   "morale": 65,
+   "troops": 33900,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 7800,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 5900,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 6000,
+     "quality": 6,
+     "merc": 11,
+     "name": "Gallic"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 5700,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 5400,
+     "quality": 7,
+     "merc": 2,
+     "name": "Greek"
+    },
+    {
+     "slot": 5,
+     "type": "lc",
+     "troops": 1400,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 6,
+     "type": "hc",
+     "troops": 1700,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 73
+  },
+  "11": {
+   "id": 11,
+   "x": 190,
+   "y": 30,
+   "owner": 11,
+   "moves": 8,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 225,
+   "money": 100,
+   "morale": 63,
+   "troops": 33600,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 8700,
+     "quality": 6,
+     "merc": 20,
+     "name": "Sarmatian"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 8400,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 4800,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 6000,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "ar",
+     "troops": 2100,
+     "quality": 6,
+     "merc": 32,
+     "name": "Rhodian"
+    },
+    {
+     "slot": 5,
+     "type": "lc",
+     "troops": 1000,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 6,
+     "type": "lc",
+     "troops": 800,
+     "quality": 7,
+     "merc": 48,
+     "name": "Rhoxolani"
+    },
+    {
+     "slot": 7,
+     "type": "hc",
+     "troops": 1800,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 66
+  },
+  "12": {
+   "id": 12,
+   "x": 200,
+   "y": 45,
+   "owner": 12,
+   "moves": 8,
+   "cell": 5,
+   "embarked": false,
+   "supplies": 141,
+   "money": 100,
+   "morale": 65,
+   "troops": 19300,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 5800,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 6400,
+     "quality": 7,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "hi",
+     "troops": 3500,
+     "quality": 7,
+     "merc": 10,
+     "name": "Galatian"
+    },
+    {
+     "slot": 3,
+     "type": "lc",
+     "troops": 2800,
+     "quality": 6,
+     "merc": 46,
+     "name": "Getai"
+    },
+    {
+     "slot": 4,
+     "type": "hc",
+     "troops": 800,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 73
+  },
+  "13": {
+   "id": 13,
+   "x": 305,
+   "y": 57,
+   "owner": 14,
+   "moves": 2,
+   "cell": 2,
+   "embarked": false,
+   "supplies": 377,
+   "money": 600,
+   "morale": 66,
+   "troops": 37700,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 7500,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 6900,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 8100,
+     "quality": 7,
+     "merc": 30,
+     "name": "Kardackian"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 1900,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "hi",
+     "troops": 3400,
+     "quality": 6,
+     "merc": 5,
+     "name": "Persian"
+    },
+    {
+     "slot": 5,
+     "type": "ar",
+     "troops": 800,
+     "quality": 7,
+     "merc": 20,
+     "name": "Sarmatian"
+    },
+    {
+     "slot": 6,
+     "type": "lc",
+     "troops": 2400,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 7,
+     "type": "lc",
+     "troops": 5800,
+     "quality": 7,
+     "merc": 19,
+     "name": "Scythian"
+    },
+    {
+     "slot": 8,
+     "type": "hc",
+     "troops": 900,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Dragoons  Battalion"
+    }
+   ],
+   "supply_pct": 100
+  },
+  "14": {
+   "id": 14,
+   "x": 160,
+   "y": 30,
+   "owner": 15,
+   "moves": 8,
+   "cell": 4,
+   "embarked": false,
+   "supplies": 142,
+   "money": 100,
+   "morale": 65,
+   "troops": 22000,
+   "units": [
+    {
+     "slot": 0,
+     "type": "li",
+     "troops": 5600,
+     "quality": 7,
+     "merc": 0,
+     "name": "1st Foot  Battalion"
+    },
+    {
+     "slot": 1,
+     "type": "li",
+     "troops": 6300,
+     "quality": 6,
+     "merc": 0,
+     "name": "2nd Foot  Battalion"
+    },
+    {
+     "slot": 2,
+     "type": "li",
+     "troops": 4200,
+     "quality": 6,
+     "merc": 13,
+     "name": "Bactrian"
+    },
+    {
+     "slot": 3,
+     "type": "hi",
+     "troops": 2700,
+     "quality": 6,
+     "merc": 0,
+     "name": "1st Guards  Battalion"
+    },
+    {
+     "slot": 4,
+     "type": "lc",
+     "troops": 1100,
+     "quality": 5,
+     "merc": 0,
+     "name": "1st Lancers  Battalion"
+    },
+    {
+     "slot": 5,
+     "type": "lc",
+     "troops": 1400,
+     "quality": 7,
+     "merc": 17,
+     "name": "Thessalian"
+    },
+    {
+     "slot": 6,
+     "type": "li",
+     "troops": 700,
+     "quality": 5,
+     "merc": 0,
+     "name": "3rd Foot  Battalion"
+    }
+   ],
+   "supply_pct": 64
+  }
+ },
+ "end_turn_texts": [
+  "e Cetiberia wants to trade with Rome. oe"
+ ],
+ "autosave": "AUTO0721.SAV",
+ "battles": [],
+ "artifacts": [
+  "270BC-spring/AUTO0721.SAV",
+  "270BC-spring/AUTOSAVE-after-0720-20261022-145755.LOG",
+  "270BC-spring/SEED-after-0720-20261022-145755.LOG",
+  "270BC-spring/shot-0720-start-20261022-145755.png",
+  "270BC-spring/shot-0720-orders-20261022-145755.png"
+ ],
+ "autosave_sha256": "cdc80ec0e09c628112a161a70b49cc39baa338560d88e1a5efd7f74b988bc6af"
+}

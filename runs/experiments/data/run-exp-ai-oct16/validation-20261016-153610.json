@@ -1,0 +1,40 @@
+[
+  {
+    "command": [
+      "python3",
+      "runs/experiments/data/run-exp-ai-oct16/test_score_hook.py"
+    ],
+    "returncode": 0,
+    "stdout": "PASS 160 hooked/unhooked target-call comparisons; ABI, flags, outputs and full-buffer behavior\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python3",
+      "-c",
+      "import sys;sys.path.insert(0,'runs/experiments/data/run-exp-ai-oct16');import general_hook;import tests.test_battle_hook_caves as T;raise SystemExit(T.main())"
+    ],
+    "returncode": 0,
+    "stdout": "test_random_cave       300 machine states: all equal\ntest_marker_caves     2100 machine states: all equal\ntest_flag_caves        400 machine states: all equal\ntest_reseed_caves      400 machine states: all equal\ntest_reentry_when_busy    60 machine states: all equal\ntest_seed_cave       ok\ntest_overflow_never_wraps ok\ntest_real_nested_entry_inside_the_recorder ok\ntest_a_broken_cave_is_detected ok\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "python3",
+      "runs/experiments/data/run-exp-ai-oct16/summarize.py"
+    ],
+    "returncode": 0,
+    "stdout": "{\"output\": \"observations-20261016-153620.json\", \"table\": \"observations-20261016-153620.md\", \"supply_cases\": 28, \"region_pairs\": 7, \"general_boundaries\": 109, \"hashes\": 257}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,732 @@
+[
+ {
+  "owner": 0,
+  "name": "sb_Rome",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 229,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Rome",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "a1dd37d847f82c8f63ec669f10eb6c70f24f8b60423a59c79f814706ca99ea68",
+  "transparent_bottom_left": {
+   "index": 11,
+   "rgb": "ffff00"
+  },
+  "pixels": {
+   "c0c0c0": 348,
+   "800080": 180,
+   "ffffff": 104,
+   "ffff00": 76,
+   "000000": 52,
+   "0000ff": 40
+  },
+  "pixels_by_index": {
+   "7": 348,
+   "5": 180,
+   "15": 104,
+   "11": 76,
+   "0": 52,
+   "12": 40
+  }
+ },
+ {
+  "owner": 1,
+  "name": "sb_Carthage",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 253,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Carthage",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "b24acc39f67a1028bd1892d8b9db17ff00a95d857fed8e27592961bf79a29a57",
+  "transparent_bottom_left": {
+   "index": 11,
+   "rgb": "ffff00"
+  },
+  "pixels": {
+   "c0c0c0": 348,
+   "ff0000": 180,
+   "000000": 156,
+   "ffff00": 76,
+   "ffffff": 40
+  },
+  "pixels_by_index": {
+   "7": 348,
+   "9": 180,
+   "0": 156,
+   "11": 76,
+   "15": 40
+  }
+ },
+ {
+  "owner": 2,
+  "name": "sb_Seleucid",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 277,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Seleucid",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "fb2afc38efbe15947a5614efb2e8a53c323048b85f30bb9acf2963004cad811a",
+  "transparent_bottom_left": {
+   "index": 11,
+   "rgb": "ffff00"
+  },
+  "pixels": {
+   "c0c0c0": 348,
+   "808000": 180,
+   "ffffff": 104,
+   "ffff00": 76,
+   "000000": 52,
+   "800000": 40
+  },
+  "pixels_by_index": {
+   "7": 348,
+   "3": 180,
+   "15": 104,
+   "11": 76,
+   "0": 52,
+   "1": 40
+  }
+ },
+ {
+  "owner": 3,
+  "name": "sb_Ptolemaic",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 301,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Ptolemaic",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "7a766371891de596609ace90876ba9a879717bf96482d1aed6b4479738d74a92",
+  "transparent_bottom_left": {
+   "index": 11,
+   "rgb": "ffff00"
+  },
+  "pixels": {
+   "c0c0c0": 348,
+   "000080": 180,
+   "ffffff": 104,
+   "ffff00": 76,
+   "000000": 52,
+   "ff00ff": 40
+  },
+  "pixels_by_index": {
+   "7": 348,
+   "4": 180,
+   "15": 104,
+   "11": 76,
+   "0": 52,
+   "13": 40
+  }
+ },
+ {
+  "owner": 4,
+  "name": "sb_Macedonia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 325,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Macedonia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "2c39242c0944bd70f42dd579f5a3f65a03873d2cb4a5b8aaecdddfd10e1296f8",
+  "transparent_bottom_left": {
+   "index": 11,
+   "rgb": "ffff00"
+  },
+  "pixels": {
+   "c0c0c0": 348,
+   "ffffff": 180,
+   "0000ff": 104,
+   "ffff00": 76,
+   "000000": 52,
+   "808080": 40
+  },
+  "pixels_by_index": {
+   "7": 348,
+   "15": 180,
+   "12": 104,
+   "11": 76,
+   "0": 52,
+   "8": 40
+  }
+ },
+ {
+  "owner": 5,
+  "name": "sb_Numidia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 349,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Numidia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "8fac5bd6613da6f6a8b6766b403fafa686c14beff9188a4026f99e36e52c3182",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "00ff00": 180,
+   "000000": 156,
+   "008080": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "10": 180,
+   "0": 156,
+   "6": 40
+  }
+ },
+ {
+  "owner": 6,
+  "name": "sb_Gaul",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 373,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Gaul",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "7d55217dc8f4fd08881e198d52685e20e2c9407d0f72de855bb5416a7c5f62db",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "800000": 180,
+   "00ffff": 104,
+   "000000": 52,
+   "808080": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "1": 180,
+   "14": 104,
+   "0": 52,
+   "8": 40
+  }
+ },
+ {
+  "owner": 7,
+  "name": "sb_Greece",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 397,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Greece",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "cbe3e1287b8eb6b4215e0f58bca5db9b5fc750d535db0997e924cf30050252c3",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "00ffff": 180,
+   "000000": 156,
+   "ff00ff": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "14": 180,
+   "0": 156,
+   "13": 40
+  }
+ },
+ {
+  "owner": 8,
+  "name": "sb_Celtiberia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 421,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Celtiberia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "7e494950652568a41571b1bf23c715e6daf1ab570a24703b8797cdf99d1e46c7",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "ffff00": 180,
+   "000000": 156,
+   "ff0000": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "11": 180,
+   "0": 156,
+   "9": 40
+  }
+ },
+ {
+  "owner": 9,
+  "name": "sb_Illyria",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 445,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Illyria",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "37cad2e1e6c61963764db10adf14d1faf5f121324f7075695c45215f0645d6cd",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "000080": 180,
+   "808000": 104,
+   "000000": 52,
+   "00ffff": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "4": 180,
+   "3": 104,
+   "0": 52,
+   "14": 40
+  }
+ },
+ {
+  "owner": 10,
+  "name": "sb_Dacia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 469,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Dacia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "b1a21515e5881903b0a272622c4b9e4b2c26e5cba2f88d5729a99f6524b923ba",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "008000": 180,
+   "000000": 156,
+   "ffff00": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "2": 180,
+   "0": 156,
+   "11": 40
+  }
+ },
+ {
+  "owner": 11,
+  "name": "sb_Bithynia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 493,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Bithynia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "33b6ff95c7f5d52fe0d47c6fee9ac755d0f85f5584c6ee618d6103a956c46562",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "008080": 180,
+   "000000": 156,
+   "0000ff": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "6": 180,
+   "0": 156,
+   "12": 40
+  }
+ },
+ {
+  "owner": 12,
+  "name": "sb_Galatia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 517,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Galatia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "bbc3a810d67d73e86fae5978bce54da8d5bea8ab2f469216c705971404afe975",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "0000ff": 180,
+   "000000": 156,
+   "00ffff": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "12": 180,
+   "0": 156,
+   "14": 40
+  }
+ },
+ {
+  "owner": 13,
+  "name": "sb_Armenia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 541,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Armenia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "4e29dba1d8f39daa4f2a6c8ca85f5b37a25acf80bc59fec72adfe92f90879afb",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "ff00ff": 180,
+   "000000": 156,
+   "ff0000": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "13": 180,
+   "0": 156,
+   "9": 40
+  }
+ },
+ {
+  "owner": 14,
+  "name": "sb_Media",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 565,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Media",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "9d219e6856d306e9dc6e5970451562b5c07c792c9023df90f644e14c3bcda17c",
+  "transparent_bottom_left": {
+   "index": 15,
+   "rgb": "ffffff"
+  },
+  "pixels": {
+   "ffffff": 424,
+   "ff0000": 180,
+   "c0c0c0": 104,
+   "000000": 52,
+   "800080": 40
+  },
+  "pixels_by_index": {
+   "15": 424,
+   "9": 180,
+   "7": 104,
+   "0": 52,
+   "5": 40
+  }
+ },
+ {
+  "owner": 15,
+  "name": "sb_Thracia",
+  "class": "TSpeedButton",
+  "form": "TPremierForm",
+  "props": {
+   "Left": 589,
+   "Top": 3,
+   "Width": 22,
+   "Height": 22,
+   "Hint": "Thracia",
+   "AllowAllUp": true,
+   "GroupIndex": 1,
+   "NumGlyphs": 2,
+   "ParentShowHint": false,
+   "ShowHint": true,
+   "OnClick": {
+    "ident": "ChangeNation"
+   }
+  },
+  "bmp": {
+   "w": 40,
+   "h": 20,
+   "bpp": 4,
+   "palette_size": 16
+  },
+  "sha256": "5cd6a60de2fad0dbb7e6943fa25fad7992cb4b40e6a27deec6b0b28bffd2ecf1",
+  "transparent_bottom_left": {
+   "index": 11,
+   "rgb": "ffff00"
+  },
+  "pixels": {
+   "c0c0c0": 348,
+   "808080": 180,
+   "ffffff": 104,
+   "000000": 92,
+   "ffff00": 76
+  },
+  "pixels_by_index": {
+   "7": 348,
+   "8": 180,
+   "15": 104,
+   "0": 92,
+   "11": 76
+  }
+ }
+]

@@ -1,0 +1,90 @@
+n	level	path	title	context	raw_target
+0	1	Game aspects	Game aspects		
+1	2	Game aspects > Introduction	Introduction	Describe_game	Describe_game>ProcWin
+2	2	Game aspects > Improvements	Improvements	Improvements_	Improvements_
+3	2	Game aspects > Cities	Cities	Cities_	Cities_
+4	2	Game aspects > Armies	Armies	Armies_	Armies_
+5	2	Game aspects > Fleets	Fleets	Fleets_	Fleets_
+6	2	Game aspects > Battle	Battle	Battle_	Battle_
+7	2	Game aspects > Time	Time	Time_	Time_
+8	2	Game aspects > Victory	Victory	Victory_	Victory_
+9	2	Game aspects > Fonts	Fonts	Fonts_	Fonts_
+10	1	Menu Commands	Menu Commands		
+11	2	Menu Commands > File	File		
+12	3	Menu Commands > File > New	New	New_game	New_game
+13	3	Menu Commands > File > Open	Open	Open_file	Open_file
+14	3	Menu Commands > File > Save	Save	Save_file	Save_file
+15	3	Menu Commands > File > Save As	Save As	SaveAs_file	SaveAs_file
+16	2	Menu Commands > Game	Game		
+17	3	Menu Commands > Game > End turn	End turn	End_turn	End_turn
+18	3	Menu Commands > Game > New player	New player	New_player	New_player
+19	3	Menu Commands > Game > New nation	New nation	New_nation	New_nation
+20	3	Menu Commands > Game > Abdicate	Abdicate	Abdicate_nat	Abdicate_nat
+21	2	Menu Commands > Strategy	Strategy		
+22	3	Menu Commands > Strategy > News	News	News_last	News_last
+23	3	Menu Commands > Strategy > International relations	International relations	Pols	Pols
+24	3	Menu Commands > Strategy > Taxation	Taxation	Tax	Tax
+25	3	Menu Commands > Strategy > Balance sheet	Balance sheet	Balance_sheet	Balance_sheet
+26	3	Menu Commands > Strategy > Recruit unit	Recruit unit	New_unit	New_unit
+27	3	Menu Commands > Strategy > Build fleet	Build fleet	New_fleet	New_fleet
+28	2	Menu Commands > Nations	Nations		
+29	3	Menu Commands > Nations > Nations	Nations	Nations_cur	Nations_cur
+30	2	Menu Commands > Area map	Area map		
+31	3	Menu Commands > Area map > Show cities	Show cities	Show_cities	Show_cities
+32	3	Menu Commands > Area map > Show capital	Show capital	Show_capital	Show_capital
+33	3	Menu Commands > Area map > Show armies	Show armies	Show_armies	Show_armies
+34	3	Menu Commands > Area map > Show fleets	Show fleets	Show_fleets	Show_fleets
+35	3	Menu Commands > Area map > Show all	Show all	Show_all	Show_all
+36	3	Menu Commands > Area map > Show mercenaries	Show mercenaries	Show_mercs	Show_mercs
+37	3	Menu Commands > Area map > Find city	Find city	Find_city	Find_city
+38	2	Menu Commands > Unit map	Unit map		
+39	3	Menu Commands > Unit map > Supply army	Supply army	Supply_army	Supply_army
+40	3	Menu Commands > Unit map > Recruit mercenaries	Recruit mercenaries	Recruit_mercenaries	Recruit_mercenaries
+41	3	Menu Commands > Unit map > Transfer units	Transfer units	Transfer_units	Transfer_units
+42	3	Menu Commands > Unit map > Split army	Split army	Split_army	Split_army
+43	3	Menu Commands > Unit map > Join armies	Join armies	Join_armies	Join_armies
+44	3	Menu Commands > Unit map > Change units	Change units	Change_units	Change_units
+45	3	Menu Commands > Unit map > Disband army	Disband army	Disband_army	Disband_army
+46	3	Menu Commands > Unit map > Supply fleet	Supply fleet	Supply_fleet	Supply_fleet
+47	3	Menu Commands > Unit map > Repair fleet	Repair fleet	Repair_fleet	Repair_fleet
+48	3	Menu Commands > Unit map > Transfer ships	Transfer ships	Transfer_ships	Transfer_ships
+49	3	Menu Commands > Unit map > Split fleet	Split fleet	Split_fleet	Split_fleet
+50	3	Menu Commands > Unit map > Join fleets	Join fleets	Join_fleets	Join_fleets
+51	3	Menu Commands > Unit map > Scuttle fleet	Scuttle fleet	Scuttle_fleet	Scuttle_fleet
+52	3	Menu Commands > Unit map > Fortify city	Fortify city	Fortify_city	Fortify_city
+53	3	Menu Commands > Unit map > Cancel selection	Cancel selection	Cancel_selection	Cancel_selection
+54	1	Short cut keys	Short cut keys	Short_cuts	Short_cuts
+55	1	Speed buttons	Speed buttons	Speed_buttons	Speed_buttons
+56	1	Area map	Area map		
+57	2	Area map > Area map	Area map	Area_map	Area_map>ProcWin
+58	2	Area map > Show cities	Show cities	Show_cities	Show_cities>ProcWin
+59	2	Area map > Show capital	Show capital	Show_capital	Show_capital>ProcWin
+60	2	Area map > Show armies	Show armies	Show_armies	Show_armies>ProcWin
+61	2	Area map > Show fleets	Show fleets	Show_fleets	Show_fleets>ProcWin
+62	2	Area map > Show all	Show all	Show_all	Show_all>ProcWin
+63	2	Area map > Show mercenaries	Show mercenaries	Show_mercs	Show_mercs>ProcWin
+64	2	Area map > Find city	Find city	Find_city	Find_city>ProcWin
+65	1	Unit map	Unit map		
+66	2	Unit map > Unit map	Unit map	Unit_map	Unit_map>ProcWin
+67	2	Unit map > Army actions	Army actions		
+68	3	Unit map > Army actions > Army move	Army move	Army_move	Army_move>ProcWin
+69	3	Unit map > Army actions > Army attack	Army attack	Army_attack	Army_attack>ProcWin
+70	3	Unit map > Army actions > Supply army	Supply army	Supply_army	Supply_army>ProcWin
+71	3	Unit map > Army actions > Recruit mercenaries	Recruit mercenaries	Recruit_mercenaries	Recruit_mercenaries>ProcWin
+72	3	Unit map > Army actions > Transfer units	Transfer units	Transfer_units	Transfer_units>ProcWin
+73	3	Unit map > Army actions > Split army	Split army	Split_army	Split_army>ProcWin
+74	3	Unit map > Army actions > Join armies	Join armies	Join_armies	Join_armies>ProcWin
+75	3	Unit map > Army actions > Change units	Change units	Change_units	Change_units
+76	3	Unit map > Army actions > Disband army	Disband army	Disband_army	Disband_army>ProcWin
+77	2	Unit map > Fleet actions	Fleet actions		
+78	3	Unit map > Fleet actions > Fleet move	Fleet move	Fleet_move	Fleet_move>ProcWin
+79	3	Unit map > Fleet actions > Fleet attack	Fleet attack	Fleet_attack	Fleet_attack>ProcWin
+80	3	Unit map > Fleet actions > Supply fleet	Supply fleet	Supply_fleet	Supply_fleet>ProcWin
+81	3	Unit map > Fleet actions > Repair fleet	Repair fleet	Repair_fleet	Repair_fleet>ProcWin
+82	3	Unit map > Fleet actions > Transfer ships	Transfer ships	Transfer_ships	Transfer_ships>ProcWin
+83	3	Unit map > Fleet actions > Split fleet	Split fleet	Split_fleet	Split_fleet>ProcWin
+84	3	Unit map > Fleet actions > Join fleets	Join fleets	Join_fleets	Join_fleets>ProcWin
+85	3	Unit map > Fleet actions > Scuttle fleet	Scuttle fleet	Scuttle_fleet	Scuttle_fleet>ProcWin
+86	2	Unit map > City actions	City actions		
+87	3	Unit map > City actions > Fortify city	Fortify city	Fortify_city	Fortify_city>ProcWin
+88	1	Cancel selection	Cancel selection	Cancel_selection	Cancel_selection>ProcWin

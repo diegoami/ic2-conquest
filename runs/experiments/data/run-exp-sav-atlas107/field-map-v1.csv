@@ -1,0 +1,114 @@
+record,field_id,first,last,type,repeat,name,semantic,value_policy,runtime,evidence,notes
+map_cell,MAP.cell,0x00,0x01,i16,1,map cell word,CONTEXTUAL,LIVE,0x45E870+2*(x*140+y),save/load 4484D0/4487C4; map-layout; decompiled-map-code1-overlay; decompiled-unit-map-orders-and-record-fields,"terrain 0-11 (1 = weekly rough-sea overlay) | city marker 20+owner+16*variant (20-99) | army marker 200-247 | fleet marker 300-347; terrain under a unit marker lives in army+8 / fleet+24"
+city,CITY.name,0x00,0x0D,char[14],1,city name,CONTEXTUAL,LIVE_OR_VERIFIED_CLASSIC,0x479590+34*i,news-log-format-and-messages; lineage finding 2026-10-18,"NUL-terminated (longest name 13 chars); bytes after NUL are retained residue, not another field"
+city,CITY.x,0x0E,0x0F,i16,1,x,CONFIRMED,LIVE,,decompiled-quarterly-rebellion,
+city,CITY.y,0x10,0x11,i16,1,y,CONFIRMED,LIVE,,decompiled-quarterly-rebellion,
+city,CITY.owner,0x12,0x13,i16,1,owner nation,CONFIRMED,LIVE,,rome-city-recruitment-and-nations,
+city,CITY.allegiance,0x14,0x15,i16,1,allegiance nation,CONFIRMED,LIVE,,rome-city-recruitment-and-nations,changes only via the loaders
+city,CITY.loyalty,0x16,0x17,i16,1,loyalty 0-99,CONFIRMED,LIVE,,decompiled-unit-map-orders-and-record-fields,
+city,CITY.supplies,0x18,0x19,i16,1,supplies (tons; cap pop*10),CONFIRMED,LIVE,,controlled-army-supply-transfer; city-population-growth,
+city,CITY.fort,0x1A,0x1B,i16,1,fortification,CONTEXTUAL,LIVE,,decompiled-unit-map-orders-and-record-fields; fortification-orders-cost-rate-and-the-100-bug,<=100 percentage; >100 pendingPoints*100+current
+city,CITY.pop,0x1C,0x1D,i16,1,population (thousands),CONFIRMED,LIVE,,nation-tax-base-and-city-economy-fields,
+city,CITY.max_pop,0x1E,0x1F,i16,1,maximum population (thousands),CONFIRMED,LIVE,,nation-tax-base-and-city-economy-fields,
+city,CITY.tribute,0x20,0x21,i16,1,tribute (talents),CONFIRMED,LIVE,,nation-tax-base-and-city-economy-fields,
+army_count,ARMYCOUNT.A,0x00,0x01,i16,1,army record count A,CONFIRMED,DERIVE,0x4A0324,save/load 4484D0/4487C4,counts tombstones; runtime table holds at most 198 (< 0xC6)
+army,ARMY.x,0x00,0x01,i16,1,x,CONFIRMED,LIVE,0x47C1EC+656*a,army-records-and-roman-roster,
+army,ARMY.y,0x02,0x03,i16,1,y,CONFIRMED,LIVE,,army-records-and-roman-roster,
+army,ARMY.owner,0x04,0x05,i16,1,owner nation,CONTEXTUAL,LIVE,,army-records-and-roman-roster; decompiled-elimination-cleanup,-1 = tombstone (counted in A; compacted by moving the last record into the hole)
+army,ARMY.moves,0x06,0x07,i16,1,moves remaining (signed),CONFIRMED,LIVE,,army-moves-field-signed-and-the-ffff-underflow,-1 is an original underflow value not a sentinel
+army,ARMY.cell,0x08,0x09,i16,1,covered map cell,CONTEXTUAL,LIVE,,decompiled-unit-map-orders-and-record-fields; transported-army-coordinate-lifecycle,terrain under the marker; -1 = aboard a fleet (old alias 'morale' corrected)
+army,ARMY.supplies,0x0A,0x0B,i16,1,supplies (tons),CONFIRMED,LIVE,,controlled-army-supply-transfer,
+army,ARMY.money,0x0C,0x0D,i16,1,purse (talents),CONFIRMED,LIVE,,army-records-and-roman-roster,dialogs cap 1000
+army,ARMY.morale,0x0E,0x0F,i16,1,strategic morale,CONFIRMED,LIVE,,supply-driven-morale-and-fleet-attrition; decompiled-tactical-battle-rules,new army 59; +3 persisted on AI battle entry; distinct from battle-slot morale
+army,ARMY.slots,0x10,0x28F,rec:army_slot,20,unit slots,CONTEXTUAL,LIVE_AND_RESIDUE,army+16+32*k,army-records-and-roman-roster; upkeep-payment-and-desertion,packed; troops>0 = occupied; whole 32-byte slots move on removal/sort
+army_slot,SLOT.label,0x00,0x01,i16,1,origin label,CONFIRMED,LIVE,,decompiled-mobilization-and-mercenary-restock,0 regular; 1-51 mercenary ethnic-name index (DAT 0x1F8C6)
+army_slot,SLOT.type,0x02,0x03,i16,1,unit type 0-4,CONFIRMED,LIVE,,army-records-and-roman-roster,
+army_slot,SLOT.troops,0x04,0x05,i16,1,troops,CONTEXTUAL,LIVE,,army-records-and-roman-roster; upkeep-payment-and-desertion,<=0 = logically empty slot; the slot's other bytes are then retained residue
+army_slot,SLOT.quality,0x06,0x07,i16,1,quality 4-9,CONFIRMED,LIVE,,army-records-and-roman-roster,
+army_slot,SLOT.name,0x08,0x1F,char[24],1,unit name,CONTEXTUAL,LIVE_AND_RESIDUE,,army-records-and-roman-roster; lineage finding 2026-10-18,NUL-terminated; post-NUL bytes are retained history not a field
+fleet_count,FLEETCOUNT.F,0x00,0x01,i16,1,fleet record count F,CONFIRMED,DERIVE,0x4A0326,save/load 4484D0/4487C4,counts tombstones
+fleet,FLEET.x,0x00,0x01,i16,1,current x,CONTEXTUAL,LIVE,0x49C26C+26*f,fleet-order-at-caere; decompiled-unit-map-orders-and-record-fields,(0;0) while under construction
+fleet,FLEET.y,0x02,0x03,i16,1,current y,CONTEXTUAL,LIVE,,fleet-order-at-caere,
+fleet,FLEET.route_x,0x04,0x05,i16,1,route target x,PARTIAL,UNRESOLVED_REFUSE,,transported-army-coordinate-lifecycle (2026-10-21); supply-driven-morale-and-fleet-attrition,named route target by the transport lifecycle report; reset to -1 at the top of each fleet turn; value while building and full writer set not consolidated (old label 'unknown')
+fleet,FLEET.route_y,0x06,0x07,i16,1,route target y,PARTIAL,UNRESOLVED_REFUSE,,transported-army-coordinate-lifecycle (2026-10-21); fleet-owner-field-confirmed,as route_x
+fleet,FLEET.owner,0x08,0x09,i16,1,owner nation,CONTEXTUAL,LIVE,,fleet-owner-field-confirmed; decompiled-elimination-cleanup,-1 = tombstone
+fleet,FLEET.countdown,0x0A,0x0B,i16,1,construction countdown,CONTEXTUAL,LIVE,,decompiled-unit-map-orders-and-record-fields (44A004/44A050),24 at order; -2 per turn; -1 = launched/on map
+fleet,FLEET.moves,0x0C,0x0D,i16,1,moves,CONFIRMED,LIVE,,decompiled-unit-map-orders-and-record-fields,
+fleet,FLEET.supplies,0x0E,0x0F,i16,1,supplies (tons; cap ships*8),CONFIRMED,LIVE,,supply-capacity-rounding,
+fleet,FLEET.money,0x10,0x11,i16,1,purse,CONFIRMED,LIVE,,decompiled-unit-map-orders-and-record-fields,
+fleet,FLEET.ships,0x12,0x13,i16,1,ships,CONFIRMED,LIVE,,fleet-order-at-caere,
+fleet,FLEET.city_or_condition,0x14,0x15,i16,1,build city / condition,CONTEXTUAL,LIVE,,decompiled-unit-map-orders-and-record-fields,countdown>=0: build-city index; launched: condition % 0-100 (set 100 at launch)
+fleet,FLEET.army,0x16,0x17,i16,1,carried army index,CONTEXTUAL,LIVE,,decompiled-unit-map-orders-and-record-fields; transported-army-coordinate-lifecycle,-1 none; must follow army compaction; the army side holds only cell=-1
+fleet,FLEET.cell,0x18,0x19,i16,1,covered map cell,CONFIRMED,LIVE,,decompiled-map-code1-overlay,1 = rough sea (storm damage tripled); 0 at launch
+nation,NATION.name,0x000,0x00A,char[11],1,nation name,CONTEXTUAL,LIVE_OR_VERIFIED_CLASSIC,0x474670+1172*n,nation-matrix-v2,
+nation,NATION.leader,0x00B,0x025,char[27],1,leader name,CONTEXTUAL,LIVE,,nation-matrix-v2,post-NUL bytes are residue
+nation,NATION.relations,0x026,0x045,i16[16],1,diplomacy row,CONFIRMED,LIVE,,nation-matrix-v2,0 peace 1 trade 2 alliance 3 war; negative = cooldown
+nation,NATION.neighbours,0x046,0x047,u16,1,neighbour mask,CONFIRMED,VERIFIED_CLASSIC,,nation-matrix-v2; dat-neighbour-mask,
+nation,NATION.city_list,0x048,0x2E3,i16[334],1,owned-city index list,CONTEXTUAL,DERIVE_WITH_PROFILE,,nation-matrix-v2; SAV safety finding 2026-10-17,-1 terminated / inactive entries -1 (old alias 'unnamed static block' corrected)
+nation,NATION.recruit,0x2E4,0x423,8-byte[40],1,recruitment queue,CONTEXTUAL,LIVE_AND_RESIDUE,,nation-matrix-v2,state/type/troops/city; troops<=0 logically empty with residue
+nation,NATION.colours,0x424,0x42F,u32[3],1,three nation colours,CONFIRMED,VERIFIED_CLASSIC_OR_PRESERVE_UI,,nation-matrix-v2 (NewGame 448AA4; recolour 44A6C8),old parser-note label 'unknown [?]' superseded
+nation,NATION.wealth,0x430,0x433,i32,1,current population/wealth,CONFIRMED,LIVE,,nation-matrix-v2,
+nation,NATION.wealth0,0x434,0x437,i32,1,270 BC population baseline,CONFIRMED,HISTORICAL_PROFILE_OR_LIVE_HISTORY,,nation-matrix-v2,not a current-value duplicate
+nation,NATION.treasury,0x438,0x43B,i32,1,treasury (signed),CONFIRMED,LIVE,,nation-matrix-v2,
+nation,NATION.treasury0,0x43C,0x43F,i32,1,270 BC treasury baseline,CONFIRMED,HISTORICAL_PROFILE_OR_LIVE_HISTORY,,nation-matrix-v2,
+nation,NATION.unity,0x440,0x441,i16,1,unity,CONFIRMED,LIVE,,nation-matrix-v2,<=0 dead
+nation,NATION.mobilization,0x442,0x443,i16,1,mobilization %,CONFIRMED,LIVE,,nation-matrix-v2,
+nation,NATION.capital,0x444,0x445,i16,1,capital city index,CONTEXTUAL,LIVE_OR_DERIVE_PROVEN,,nation-matrix-v2,-1 eliminated
+nation,NATION.cities,0x446,0x447,i16,1,owned city count,CONFIRMED,DERIVE,,nation-matrix-v2,can be stale after elimination
+nation,NATION.cities0,0x448,0x449,i16,1,270 BC city-count baseline,CONFIRMED,HISTORICAL_PROFILE_OR_LIVE_HISTORY,,nation-matrix-v2,
+nation,NATION.tax,0x44A,0x44B,i16,1,tax rate %,CONFIRMED,LIVE,,nation-matrix-v2,
+nation,NATION.tax_base,0x44C,0x44D,i16,1,tax base aggregate,CONFIRMED,LIVE_OR_DERIVE_PROVEN,,nation-matrix-v2; nation-tax-base-and-city-economy-fields,
+nation,NATION.conqueror,0x44E,0x44F,i16,1,conqueror nation,CONTEXTUAL,LIVE_HISTORY,,nation-matrix-v2,-1 none; two-byte field
+nation,NATION.unknown27,0x450,0x46A,bytes[27],1,UNKNOWN 27 bytes,UNKNOWN,UNKNOWN_REJECT_CHANGED_STATE,,nation-matrix-v2; research #47,no explicit DAT/NewGame initializer found; zero samples are not a default
+nation,NATION.hints,0x46B,0x46B,u8,1,hints preference,CONFIRMED,PRESERVE_VALIDATED_UI_OR_CANONICAL,,nation-matrix-v2,
+nation,NATION.areamap_toggle,0x46C,0x46C,u8,1,area-map display toggle,CONFIRMED,PRESERVE_VALIDATED_UI_OR_CANONICAL,,nation-matrix-v2,
+nation,NATION.unknown1,0x46D,0x46D,u8,1,UNKNOWN byte,UNKNOWN,UNKNOWN_REJECT_CHANGED_STATE,,nation-matrix-v2; research #47,
+nation,NATION.areawin,0x46E,0x475,i16[4],1,area-window geometry,CONFIRMED,PRESERVE_VALIDATED_UI,,nation-matrix-v2,left/top/height/width
+nation,NATION.unitwin,0x476,0x47D,i16[4],1,unit-window geometry,CONFIRMED,PRESERVE_VALIDATED_UI,,nation-matrix-v2,
+nation,NATION.infowin,0x47E,0x485,i16[4],1,information-window geometry,CONFIRMED,PRESERVE_VALIDATED_UI,,nation-matrix-v2,
+nation,NATION.view_y,0x486,0x487,i16,1,unit-map viewport y,CONFIRMED,PRESERVE_BOUNDED_UI,,nation-matrix-v2,old label 'meaning unknown' superseded
+nation,NATION.view_x,0x488,0x489,i16,1,unit-map viewport x,CONFIRMED,PRESERVE_BOUNDED_UI,,nation-matrix-v2,
+nation,NATION.map_filter,0x48A,0x48B,i16,1,selected nation/map filter,CONFIRMED,PRESERVE_VALIDATED_UI,,nation-matrix-v2,
+nation,NATION.melee_delay,0x48C,0x48D,i16,1,battle melee delay,CONFIRMED,PRESERVE_VALIDATED_TIMING,,nation-matrix-v2,
+nation,NATION.shoot_delay,0x48E,0x48F,i16,1,battle shooting delay,CONFIRMED,PRESERVE_VALIDATED_TIMING,,nation-matrix-v2,
+nation,NATION.human,0x490,0x490,u8,1,human controller,CONFIRMED,LIVE,,nation-matrix-v2,
+nation,NATION.unknown3,0x491,0x493,bytes[3],1,UNKNOWN 3 bytes,UNKNOWN,UNKNOWN_REJECT_CHANGED_STATE,,nation-matrix-v2; research #47,
+merc,MERC.x,0x00,0x01,i16,1,offer city x,CONTEXTUAL,LIVE_AND_RESIDUE,0x49DA10+12*s,mercenary-pool-record,stale after the slot empties
+merc,MERC.y,0x02,0x03,i16,1,offer city y,CONTEXTUAL,LIVE_AND_RESIDUE,,mercenary-pool-record,
+merc,MERC.label,0x04,0x05,i16,1,ethnic label 1-51,CONFIRMED,LIVE,,mercenary-pool-record,
+merc,MERC.type,0x06,0x07,i16,1,unit type 0-4,CONFIRMED,LIVE,,mercenary-pool-record,
+merc,MERC.troops,0x08,0x09,i16,1,troops,CONTEXTUAL,LIVE,,mercenary-pool-record,-1 = empty; never-filled slots (0;0;0;0;-1;0)
+merc,MERC.quality,0x0A,0x0B,i16,1,quality 5-9,CONFIRMED,LIVE,,mercenary-pool-record,
+news_index,NEWS.index,0x00,0x01,i16,1,newest news slot index,CONFIRMED,LIVE,0x4A031E,news-log-format-and-messages,-1 empty; 26 fresh game; 39 full; not a count
+news_slot,NEWS.text,0x00,0x3C,char[61],1,news line,CONTEXTUAL,LIVE_AND_RESIDUE,0x49F994+61*k,news-log-format-and-messages,NUL-terminated <=60 chars; stale tail after NUL retained; slot 0 oldest; full log shifts
+trailer,TRAILER.turn_order,0x00,0x1F,i16[16],1,seat turn order,CONFIRMED,LIVE,0x49EFE8,save/load 4484D0/4487C4; decompiled-turn-and-calendar-sequencing,nation code per seat; shuffled at New Game
+trailer,TRAILER.offer_from,0x20,0x21,i16,1,pending offer proposer,CONFIRMED,LIVE,0x49F008,pending-offer-block-army-split-and-naupactus,-1 none
+trailer,TRAILER.offer_type,0x22,0x23,i16,1,pending offer type,CONFIRMED,LIVE,0x49F00A,pending-offer-block-army-split-and-naupactus,1 trade 2 alliance
+trailer,TRAILER.current_nation,0x24,0x25,i16,1,current nation,CONFIRMED,LIVE,0x4A0320,decompiled-turn-and-calendar-sequencing,
+trailer,TRAILER.seat_index,0x26,0x27,i16,1,current seat index,CONFIRMED,LIVE,0x4A0322,decompiled-turn-and-calendar-sequencing,0-15
+trailer,TRAILER.week,0x28,0x29,i16,1,week,CONFIRMED,LIVE,0x4A0330,decompiled-turn-and-calendar-sequencing,1 3 5 7 9 11
+trailer,TRAILER.year_bc,0x2A,0x2B,i16,1,year BC,CONFIRMED,LIVE,0x4A0332,decompiled-turn-and-calendar-sequencing,
+trailer,TRAILER.season,0x2C,0x2D,i16,1,season,CONFIRMED,LIVE,0x4A032E,decompiled-turn-and-calendar-sequencing,0-3; serialized after year although it precedes it in memory
+trailer,TRAILER.main_left,0x2E,0x2F,i16,1,main form left,CONFIRMED,PRESERVE_VALIDATED_UI,0x4A0338,save 4484D0 (form[9]) / load 4127A0 on DAT_004A0BD0 (TPremierForm),
+trailer,TRAILER.main_top,0x30,0x31,i16,1,main form top,CONFIRMED,PRESERVE_VALIDATED_UI,0x4A033A,save 4484D0 (form[10]) / load 4127C0,
+trailer,TRAILER.main_client_h,0x32,0x33,i16,1,main form client height,PARTIAL,PRESERVE_VALIDATED_UI,0x4A033C,save 4128C4 / load 420C84,"value is rect[3] of vtable+0x2C (read here as GetClientRect: Delphi VMT inference, not yet checked against the class VMT)"
+trailer,TRAILER.main_client_w,0x34,0x35,i16,1,main form client width,PARTIAL,PRESERVE_VALIDATED_UI,0x4A033E,save 412880 / load 420C58,rect[2] of the same call
+trailer,TRAILER.battle_flag,0x36,0x36,u8,1,battle in progress,CONFIRMED,LIVE,0x4A0B7C,save/load 4484D0/4487C4; decompiled-tactical-battle-rules,non-zero => 2105-byte battle block follows (original Save As can write it)
+battle,BATTLE.attacker,0x00,0x01,i16,1,attacker army index,CONFIRMED,LIVE,0x4A0B74,decompiled-tactical-battle-rules; battle-map-units-use-the-nation-recolour,
+battle,BATTLE.defender,0x02,0x03,i16,1,defender army index,CONFIRMED,LIVE,0x4A0B76,decompiled-tactical-battle-rules,
+battle,BATTLE.side,0x04,0x05,i16,1,side to move,PARTIAL,LIVE,0x4A0B78,decompiled-tactical-battle-rules; tactical-battle-sweep,0 attacker 1 defender; sweep saw memory 0 vs file 1 after a resume (unexplained)
+battle,BATTLE.placed,0x06,0x06,u8,1,placement finished,CONFIRMED,LIVE,0x4A0B7D,decompiled-tactical-battle-rules; tactical-battle-sweep,
+battle,BATTLE.half_round,0x07,0x08,i16,1,half-round counter,CONFIRMED,LIVE,0x4A0B7A,decompiled-tactical-battle-rules,
+battle,BATTLE.slots,0x09,0x6E8,rec:battle_slot,40,battle unit slots,CONTEXTUAL,LIVE_AND_RESIDUE,0x4A0344+44*s,decompiled-tactical-battle-rules,0-19 attacker 20-39 defender
+battle,BATTLE.grid,0x6E9,0x838,i16[168],1,14x12 icon grid,CONTEXTUAL,LIVE,0x4A0A24+2*(x*12+y),decompiled-tactical-battle-rules; crafted-battle-grid-movement-and-line,icon code (50 empty; type*3+size [+20 defender]) not a slot id
+battle_slot,BSLOT.x,0x00,0x01,i16,1,x 0-13,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.y,0x02,0x03,i16,1,y 0-11,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.label,0x04,0x05,i16,1,origin label,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.type,0x06,0x07,i16,1,unit type,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.troops,0x08,0x09,i16,1,troops,CONTEXTUAL,LIVE,,decompiled-tactical-battle-rules,0 = not in the battle
+battle_slot,BSLOT.quality,0x0A,0x0B,i16,1,quality,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.morale,0x0C,0x0D,i16,1,battle morale,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.moves,0x0E,0x0F,i16,1,moves left this half-round,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.shots,0x10,0x11,i16,1,shots left,CONFIRMED,LIVE,,decompiled-tactical-battle-rules,
+battle_slot,BSLOT.target,0x12,0x13,i16,1,melee target slot,CONTEXTUAL,LIVE,,decompiled-tactical-battle-rules,-1 none
+battle_slot,BSLOT.name,0x14,0x2B,char[24],1,unit name,CONTEXTUAL,LIVE_AND_RESIDUE,,decompiled-tactical-battle-rules,

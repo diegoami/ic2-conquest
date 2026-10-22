@@ -5,12 +5,16 @@ usage: make_extract.py"""
 import os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import write_new, DATA
-RT = os.environ.get('IC2_RETOOLS', '/mnt/c/Users/diego/AppData/Local/ReTools')
+from paths import ROOT
+sys.path.insert(0, ROOT)
+from harness import decompile
+RT = str(decompile.DIR)
 FILES = {'all_app_functions.txt': ['004571a8', '0045730c', '00457404', '00457590', '0045a9e0', '0045b148', '0045b198', '00449050', '00449078', '0040284c', '00412c44', '00412c6c', '00412cdc',
                                    '0041439c', '00448fd8', '0042313c', '00428d88', '00422f40', '00424608', '004127a0', '004127c0', '00420c58', '00420c84', '00405b00', '00403458'],
          'news_log_decomp.txt': ['00448aa4', '004481a0']}
 out = ['# Code extract of the leaders-form finding. Sections: one per dump file; the first column is that file\'s line number']
 for fname, addrs in FILES.items():
+    decompile.check(fname)  # the extract carries this file's line numbers
     lines = open(os.path.join(RT, fname), errors='replace').read().split('\n')
     out.append('# FILE %s' % fname)
     heads = []

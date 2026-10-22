@@ -1,0 +1,26 @@
+armies
+save ART/g2_army1_before.sav
+split-army army-0 army-9 0
+split-army army-0 army-9 0,1,2 supply=20 money=50
+armies
+split-army army-0 army-9 0,1,2,3,4,5
+split-army army-9 army-10 0,1,2
+join-armies army-0 army-9
+armies
+join-armies army-0 army-9
+split-army army-0 army-9 0,1,2
+armies
+save ART/g2_army1_after.sav
+disband-army army-9
+armies
+rename-unit army-0 0 Legio Test
+split-unit army-0 0 100
+split-unit army-0 0 2500
+join-units army-0 0 1
+join-units army-0 0 99
+disband-unit army-0 5
+army-transfer army-0 army-1 units=0
+move army-0 100 38
+buy army-0 rome 500
+buy army-0 arretium 40
+armies

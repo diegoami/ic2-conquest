@@ -11,7 +11,10 @@ def va(o): return o - CODE_FILE0 + CODE_VA0   # valid for the CODE section only
 def off(v): return v - CODE_VA0 + CODE_FILE0
 CODE_END = 0x5b900
 def fmt(v): return '0x%08x' % v
-dump = open('/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt', encoding='latin-1').read()
+sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..')))
+from harness import decompile
+decompile.check()
+dump = open(decompile.DUMP, encoding='latin-1').read()
 heads = [(int(m.group(2), 16), m.group(1), m.start()) for m in re.finditer(r'// ==== (\S+) @ ([0-9a-f]+) ====', dump)]
 def owner(addr):
     best = None

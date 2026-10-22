@@ -1,0 +1,25 @@
+# after fix, regression of other Confirm-answering orders
+FAIL scuttle_fleet (23s): DriverError: Confirm still open after Yes: (7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel
+PASS embark (27s): army 0 (101,45) moves 3 -> aboard at (101,46) moves 0; fleet 2 moves 29 -> 0, carries 0
+PASS disembark (43s): army 0 landed at (101,45) moves 0; fleet 2 moves 0, carries -1
+PASS end_turn (42s): T_BASE.SAV turn 720 -> AUTO0721.SAV turn 721 (Spring week 3, 270 BC); popups ['@ Celtiberia wants to trade with Rome.']
+PASS disband_unit (52s): Rome queue 4 -> 4 (recruit +1, disband -1), treasury 1880
+PASS change_units_disband (44s): army 0 23700 t / 6 units -> 18900 t / 5 units
+PASS join (63s): armies {0: 23700, 1: 22000} -> army 0 at (103,36), 45700 troops, 12 units; popups []
+PASS recruit_40_slots_cap (51s): L11 40 slots: 40 in, 40 out (gate held); refusal text = 'e ‘You have reached your lint of 40 units aK'; popups = ['e ‘You have reached your lint of 40 units aK']
+# after fix v2 (lingering window counts as closed even when a caller answered)
+PASS scuttle_fleet (31s): Rome fleets 1 -> 0; box ['(7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel', '(7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel']
+PASS disband_army (37s): Roman armies 2 -> 1, treasury 2300
+PASS disband_army (36s): Roman armies 2 -> 1, treasury 2300
+PASS disband_army (36s): Roman armies 2 -> 1, treasury 2300
+# after fix v3 (scuttle_fleet uses _answer_confirm); full Confirm-path regression
+PASS scuttle_fleet (30s): Rome fleets 1 -> 0; box ['(7) ‘Ate you sure you want to scuttle this fleet ? Yes No Cancel']
+PASS disband_army (37s): Roman armies 2 -> 1, treasury 2300
+PASS embark (28s): army 0 (101,45) moves 3 -> aboard at (101,46) moves 0; fleet 2 moves 29 -> 0, carries 0
+PASS disembark (42s): army 0 landed at (101,45) moves 0; fleet 2 moves 0, carries -1
+PASS end_turn (42s): T_BASE.SAV turn 720 -> AUTO0721.SAV turn 721 (Spring week 3, 270 BC); popups ['@ Celtiberia wants to trade with Rome.']
+PASS disband_unit (53s): Rome queue 4 -> 4 (recruit +1, disband -1), treasury 1880
+PASS change_units_disband (44s): army 0 23700 t / 6 units -> 18900 t / 5 units
+PASS join (61s): armies {0: 23700, 1: 22000} -> army 0 at (103,36), 45700 troops, 12 units; popups []
+PASS recruit_40_slots_cap (50s): L11 40 slots: 40 in, 40 out (gate held); refusal text = 'e ‘You have reached your lint of 40 units aK'; popups = ['e ‘You have reached your lint of 40 units aK']
+PASS split_army (36s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18700), (1, 120, 53, 22000), (14, 101, 38, 5000)]

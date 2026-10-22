@@ -1,8 +1,8 @@
 """The Information window's panels as the decompile writes them: an executable model of TInformation_Show* (0x0043ba7c..0x0043cf0c).
 
-Every function cites the decompile line range in /mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt
+Every function cites the decompile line range in all_app_functions.txt of the decompile folder (~/ic2-work/decompile, pinned in harness/decompile.py)
 (`F:<line>`; TInformation_ShowNationStatus starts at line 40802). The word tables are NOT in the exe: they are BSS filled from
-`Imperial Conquest 2.DAT` by FUN_004481a0 (ReTools/scratch/datload.txt), sequentially; `MEM` rebuilds that memory image from the DAT (the
+`Imperial Conquest 2.DAT` by FUN_004481a0 (the old ReTools `scratch/datload.txt`, LOST in the computer move and not in ~/ic2-work/decompile; nothing here reads it: LOADER below is the transcription), sequentially; `MEM` rebuilds that memory image from the DAT (the
 read order and sizes are those of the loader, so DAT offsets are derived, not searched: DAT_0047938c <- 0x1F6CA is the cumulative sum).
 Unfilled bytes are zero (BSS), which is what the game reads when an index runs past a table.
 

@@ -1,0 +1,90 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:10:21+02:00
+# script:
+#   order-fleet rome 20 f1
+#   order-fleet antium 5 f1
+#   split-army army-0 army-9 0
+#   join-armies army-0 army-1
+#   move army-1 300 300
+#   besiege-city army-0 tarentum
+#   buy army-0 rome 99999
+#   recruit-standing antium heavy_infantry 99999
+#   hire-mercenary army-0 3
+#   scuttle-fleet fleet-x
+#   declare-war rome
+#   make-peace greece
+#   propose-trade greece
+#   disband-army army-0
+#   end
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> order-fleet rome 20 f1
+naval.order-fleet rejected (naval.city-not-coastal): City 'rome' does not touch the sea.
+
+> order-fleet antium 5 f1
+naval.order-fleet rejected (naval.ships-out-of-range): A fleet order must be 10..100 ships, not 5.
+
+> split-army army-0 army-9 0
+armies.split-army rejected (armies.duplicate-army-id): Army id 'army-9' is already in use.
+
+> join-armies army-0 army-1
+armies.join-armies rejected (armies.not-adjacent): Armies 'army-0' and 'army-1' must be exactly one tile apart.
+
+> move army-1 300 300
+Move rejected (movement.out-of-bounds): (300, 300) is outside the 320x140 map.
+
+> besiege-city army-0 tarentum
+battle.besiege-city rejected (battle.unknown-city): 'tarentum' is not a known city.
+
+> buy army-0 rome 99999
+Purchase rejected (supply.city-not-within-range): City 'rome' is not within one tile of army 'army-0'.
+
+> recruit-standing antium heavy_infantry 99999
+recruitment.recruit-standing-unit accepted.
+
+> hire-mercenary army-0 3
+recruitment.hire-mercenary rejected (mercenary.unknown-pool-slot): Mercenary pool slot 3 has no offer to hire.
+
+> scuttle-fleet fleet-x
+naval.scuttle-fleet rejected (naval.unknown-fleet): 'fleet-x' is not a known fleet.
+
+> declare-war rome
+diplomacy.declare-war rejected (diplomacy.self-target): A nation cannot declare war on itself.
+
+> make-peace greece
+diplomacy.make-peace rejected (diplomacy.not-at-war): You have no trade, alliance or war with 'Greece' to end.
+
+> propose-trade greece
+diplomacy.propose-trade rejected (diplomacy.target-trade-cap-reached): 'Greece' already trades with 3 nations.
+
+> disband-army army-0
+armies.disband-army accepted.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 16 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 17 orders issued.
+Macedonia (macedonia) takes its turn: 7 orders issued.
+Numidia (numidia) takes its turn: 15 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 9 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 5 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+  Weather: storm-damages-fleet (week 1).
+Your army have deposed you because they have not been paid.
+Rome (rome) has been deposed and handed to the AI. Watch mode from here on: one round per end, no orders.
+Now: Week 3, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  3      Spring      270BC
+

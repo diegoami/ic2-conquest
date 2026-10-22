@@ -1,0 +1,79 @@
+{
+ "12345": {
+  "file": "analysis_hook_s12345.v3.json",
+  "records": 58,
+  "by_site": {
+   "fleet_port": 46,
+   "intercept_army": 8,
+   "intercept_capital": 4
+  },
+  "checks_ok": 58,
+  "checks_failed": 0,
+  "war_declared_this_turn": 0,
+  "intercept_capital_reasons": {
+   "not at war": 4
+  },
+  "moved_closer": 21,
+  "gone_or_unmatched_after": 3,
+  "end_turns": 25
+ },
+ "2": {
+  "file": "analysis_hook_s2.v3.json",
+  "records": 138,
+  "by_site": {
+   "fleet_port": 82,
+   "intercept_army": 50,
+   "fleet_hunt": 6
+  },
+  "checks_ok": 138,
+  "checks_failed": 0,
+  "war_declared_this_turn": 0,
+  "intercept_capital_reasons": {},
+  "moved_closer": 62,
+  "gone_or_unmatched_after": 16,
+  "end_turns": 40
+ },
+ "10": {
+  "file": "analysis_hook_s10.v2.json",
+  "records": 144,
+  "by_site": {
+   "fleet_port": 120,
+   "intercept_army": 21,
+   "intercept_capital": 3
+  },
+  "checks_ok": 144,
+  "checks_failed": 0,
+  "war_declared_this_turn": 0,
+  "intercept_capital_reasons": {
+   "not at war": 3
+  },
+  "moved_closer": 31,
+  "gone_or_unmatched_after": 7,
+  "end_turns": 40
+ },
+ "14": {
+  "file": "analysis_hook_s14.v2.json",
+  "records": 117,
+  "by_site": {
+   "fleet_port": 93,
+   "intercept_army": 23,
+   "fleet_hunt": 1
+  },
+  "checks_ok": 117,
+  "checks_failed": 0,
+  "war_declared_this_turn": 7,
+  "intercept_capital_reasons": {},
+  "moved_closer": 42,
+  "gone_or_unmatched_after": 6,
+  "end_turns": 39
+ },
+ "total": {
+  "fleet_port": 341,
+  "intercept_army": 102,
+  "intercept_capital": 7,
+  "checks_ok": 457,
+  "checks_failed": 0,
+  "records": 457,
+  "fleet_hunt": 7
+ }
+}

@@ -1,0 +1,51 @@
+{
+  "provenance": "Offline assertions over retained raw logs, phase controls and canonical summary; no new game execution.",
+  "cases": [
+    {
+      "case": "land",
+      "debit": 1010,
+      "residual": 0,
+      "phase": "recruitment",
+      "whole_Wine_loaded_post_identity": true,
+      "x86_nation_UI_exception_retained": [
+        {
+          "nation": 11,
+          "offset": "0x482",
+          "x86": 196,
+          "wine": 192
+        }
+      ]
+    },
+    {
+      "case": "aboard",
+      "debit": 1010,
+      "residual": 0,
+      "phase": "recruitment",
+      "whole_Wine_loaded_post_identity": true,
+      "x86_nation_UI_exception_retained": [
+        {
+          "nation": 11,
+          "offset": "0x482",
+          "x86": 196,
+          "wine": 192
+        }
+      ]
+    },
+    {
+      "case": "fleet",
+      "debit": 1445,
+      "residual": 0,
+      "phase": "recruitment",
+      "whole_Wine_loaded_post_identity": true,
+      "x86_nation_UI_exception_retained": [
+        {
+          "nation": 11,
+          "offset": "0x482",
+          "x86": 196,
+          "wine": 192
+        }
+      ]
+    }
+  ],
+  "manifest_saves": 9
+}

@@ -3,6 +3,9 @@
 tracked text logs. Never overwrites (rule 6): every write goes to the next free versioned name.
 Import before harness.driver."""
 import os, sys, time, subprocess, hashlib, glob, struct, shutil
+ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))
+sys.path.insert(0, ROOT)
+from harness import decompile   # first: it reads IC2_WORK, which is set to the private game folder just below
 os.environ['IC2_WORK'] = '/home/diego/ic2-work-info'
 os.environ['DISPLAY_IC2'] = ':730'
 os.environ['IC2_EXE'] = 'Imperial Conquest 2.exe'

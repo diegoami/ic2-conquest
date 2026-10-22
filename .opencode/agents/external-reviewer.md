@@ -97,7 +97,10 @@ post anything: the calling script posts your final message.
 
 - **Your working directory IS the worktree**, a detached git worktree at the exact commit under review. Run git there
   as it is, **without `-C`, and never type the worktree's path** (not in a command, not in a `cd`): a retyped path that
-  is one character off is an out-of-tree access, which is auto-rejected and ends the whole run. Use relative paths.
+  is one character off is an out-of-tree access, which is auto-rejected and ends the whole run. **Use relative paths**: the file tools
+  resolve a relative path against the working directory (checked in OpenCode 1.18.34: `read`, `grep`, `glob`), so call `read runs/x.py`, or
+  `grep` with path `runs`. `grep` and `glob` PRINT absolute paths: cut the worktree prefix off before you give one to `read` (a prefix typed
+  wrongly, e.g. a duplicated directory name, is the out-of-tree access that lost the run on PR #69).
 - **Tree proof, your first two tool calls** (separate calls: `;` and `&&` are denied): `git rev-parse --show-toplevel HEAD`
   (prints two lines) and `git diff --name-only <base>...HEAD` with the base SHA from the brief. The first line must be the
   worktree path the brief names, the second the head SHA it names, and for a pull request the diff must not be empty
@@ -107,7 +110,8 @@ post anything: the calling script posts your final message.
 - After the proof, in your tool commentary (never in your final message), say where you reviewed: the printed top level,
   the HEAD you saw, and the base SHA from the brief.
 - Never touch a path outside the worktree. A read outside it is auto-rejected and the run is reported as
-  permission-rejected; do not try to work around it.
+  permission-rejected; do not try to work around it. (The script continues such a run once, in the same session, with a reminder to use
+  relative paths; a second rejection ends it.)
 - Your shell is a read-only allowlist (git read commands, `gh pr view|diff`, rg, grep, ls, cat, head, tail,
   find, `python3 -m py_compile`). Redirections, `tee`, `;`, `&&`, `$(...)`, backticks and anything touching
   credentials are denied. You write no files: your findings go in your final message.

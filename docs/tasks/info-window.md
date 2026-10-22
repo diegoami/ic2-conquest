@@ -16,7 +16,7 @@ Forbidden results (any one fails the task, and a reviewer will block on it):
 - a measured output overwritten or deleted, a binary in git, a write to another repository, a blind second End turn.
 
 ## Sources (all read-only)
-- The decompile, `/mnt/c/Users/diego/AppData/Local/ReTools/`:
+- The decompile, `~/ic2-work/decompile/`:
   - `all_app_functions.txt`, with `delphi_symbols.tsv`;
   - the panel routines `TInformation_ShowNationStatus` 0x0043ba7c, `ShowCityDetails` 0x0043be5c, `ShowArmyDetails` 0x0043c33c, `ShowFleetDetails` 0x0043c890, `ShowCityUnits` 0x0043cc40, `ShowArmyUnits` 0x0043cdd8 and `ShowFleetUnits` 0x0043cf0c;
   - the helpers they call: word-band functions, number formatters such as `FUN_00448e74`, and string tables.
@@ -78,7 +78,7 @@ Measurements are kept, committed and pushed as they are made, and never deleted.
 - Saves, screenshots and exes never go in git: their SHA-256 go in `SAVES.sha256`, and the files go to the release.
 - If a release call is refused, keep the artifacts and report the exact command.
 - Never print `IC2_RELEASE_TOKEN`.
-- Never write to another repository: the research repository, the ReTools folder and `~/ic2-work/build` are read-only inputs.
+- Never write to another repository: the research repository, the decompile folder (`~/ic2-work/decompile/`) and `~/ic2-work/build` are read-only inputs.
 
 Driver pitfalls: hover before clicking, verify every click's effect, retry at most twice, use your own Xvfb display and game folder, and kill only your own pids.
 

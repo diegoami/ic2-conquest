@@ -1,0 +1,25 @@
+load ART/g2_fleet2_built.sav
+status mine
+repair-fleet f1 5
+repair-fleet f1 0
+buy-fleet-supply f1 antium 5000
+buy-fleet-supply f1 antium 100
+buy-fleet-supply f1 rome 10
+status mine
+split-fleet f1 f2 5
+split-fleet f1 f2 30
+split-fleet f1 f2 10 supply=10 money=0
+status mine
+save ART/g2_fleet3_split.sav
+fleet-transfer f1 f2 5 10 0
+fleet-transfer f2 f1 20 0 0
+fleet-transfer f1 f2 0 0 50
+status mine
+join-fleets f1 f2
+status mine
+save ART/g2_fleet3_joined.sav
+move-fleet f1 101 48
+status mine
+scuttle-fleet f1
+status mine
+save ART/g2_fleet3_scuttled.sav

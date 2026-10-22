@@ -1,0 +1,91 @@
+{
+  "case": 2,
+  "original_open_order_AND_endturn_newsave_normalclose_freshreopen_sequence": "PASS observed",
+  "initial_pid": 36120,
+  "fresh_reopen_pid": 23232,
+  "order": [
+    {
+      "slot": 3,
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        0,
+        0,
+        3000,
+        192
+      ]
+    }
+  ],
+  "economy": {
+    "treasury": [
+      520,
+      490
+    ],
+    "mobilization": [
+      22,
+      25
+    ]
+  },
+  "endturn_commands_issued": 1,
+  "postturn_scalars": {
+    "unit_fleet": -1,
+    "selected_cell_y": 0,
+    "offer_source": -1,
+    "offer_type": 0,
+    "armies": 14,
+    "season": 0,
+    "viewport_y": 20,
+    "week": 3,
+    "client_width": 431,
+    "client_height": 461,
+    "selected_army": -1,
+    "viewport_x": 157,
+    "selected_fleet": -1,
+    "current": 15,
+    "tax": 40,
+    "fleets": 2,
+    "selected_cell_x": -1,
+    "year": 270,
+    "unit_army": -1
+  },
+  "fresh_reopen_scalars": {
+    "unit_fleet": -1,
+    "selected_cell_y": 0,
+    "offer_source": -1,
+    "offer_type": 0,
+    "armies": 14,
+    "season": 0,
+    "viewport_y": 20,
+    "week": 3,
+    "client_width": 431,
+    "client_height": 461,
+    "selected_army": -1,
+    "viewport_x": 157,
+    "selected_fleet": -1,
+    "current": 15,
+    "tax": 40,
+    "fleets": 2,
+    "selected_cell_x": -1,
+    "year": 270,
+    "unit_army": -1
+  },
+  "reopen_file": {
+    "private_name": "N2R68B2.SAV",
+    "size": 131984,
+    "sha256": "13a64beae3e90d60ad4179e24b0d51e178698347725e567af3096a2887df4498",
+    "saved_by_original_UI": true,
+    "exclusive_new_destination": true
+  },
+  "reopen_exact_postturn_byte_identity": true,
+  "reopen_only_geometry_changed_offsets": [],
+  "source_sha256": "c548b724b2d9988af42d0595436548cd6b29a4021e942f4e61238339f0dc63e3",
+  "candidate_sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+  "source_candidate_unchanged": true,
+  "final_active_original_processes": 0,
+  "internal_callback_instruction_trace": "UNVERIFIED",
+  "twelve_native_JSON_conversion_target": "UNMET/separate"
+}

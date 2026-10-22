@@ -64,7 +64,7 @@ reachable from this machine; nothing had to be retrieved.
 
 Split in two. **Static discovery** — Ghidra decompilation, save parsing,
 report writing — already runs natively on Windows: Ghidra 12.1.3 + JDK 21 and
-the IC2 project are under `%LOCALAPPDATA%\ReTools`, and `patch_exe.py` is
+the IC2 project were under `%LOCALAPPDATA%\ReTools` (the decompile output now lives in `~/ic2-work/decompile/`, see `docs/environment.md`), and `patch_exe.py` is
 Python. **Dynamic discovery** — driving the running game — is the Linux
 harness; the player chose WSL2, so it stays as it is and is now built (see
 §3.5 and `docs/wsl-setup.md`).

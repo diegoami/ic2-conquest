@@ -3,7 +3,7 @@ gitignored artifacts folder, a tracked text log. Import before harness.driver.""
 import os, sys, time, subprocess
 os.environ.setdefault('IC2_WORK', '/home/diego/ic2-work-inv')
 os.environ.setdefault('DISPLAY_IC2', ':700')
-ROOT = '/home/diego/projects/wt-inventory'
+ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))   # this checkout (was a hard-coded other worktree)
 sys.path.insert(0, ROOT)
 sys.path.insert(0, ROOT + '/runs/experiments/feature_inventory')
 from common import new_path
@@ -25,6 +25,8 @@ def xvfb():
 def log(batch, msg):
     with open(LOGD + batch + '.log', 'a') as f: f.write(time.strftime('%H:%M:%S ') + msg + '\n')
     print(msg)
+from harness import environment as _env   # every start records the Wine/font environment in a log named `environment` (harness/environment.py)
+_env.add_sink(lambda rec: log('environment', _env.sink_line(rec)))
 def wins(g, batch, tag):
     ws = [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows('.') if w[4] > 1 and w[5] > 1]
     log(batch, '%s windows: %s' % (tag, ws)); return ws

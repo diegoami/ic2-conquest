@@ -1,0 +1,55 @@
+{
+  "inputs": [
+    {
+      "source": "/home/diego/ic2-work/decompile/news_log_decomp.txt",
+      "sha256": "274d60b2af6ed30dbc11ce59a189d86ce70b15b6f94112efbe2cfba6309622dd",
+      "copy": "original-news_log_decomp.txt"
+    },
+    {
+      "source": "/home/diego/ic2-work/decompile/save_load_impl.txt",
+      "sha256": "784a826eae47c7f7d8382ddd68dd2f16ddcfd85fc2bab5c5336ae9625aaf0305",
+      "copy": "original-save_load_impl.txt"
+    },
+    {
+      "source": "/home/diego/ic2-work/decompile/save_load.txt",
+      "sha256": "dbf0299e394c0a65f23911b362eb0a04ea4c4b10dc1a025ee0879cd61e5c1f99",
+      "copy": "original-save_load.txt"
+    },
+    {
+      "source": "/home/diego/projects/ic2-work/resupply31/wine-aboard/prefix/drive_c/IC2/Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f",
+      "size": 1167872,
+      "copy": null
+    },
+    {
+      "source": "/home/diego/projects/ic2-work/resupply31/wine-aboard/prefix/drive_c/IC2/Imperial Conquest 2.dat",
+      "sha256": "94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd",
+      "size": 140706,
+      "copy": null
+    },
+    {
+      "source": "docs/reports/decompiled-sav-file-layout.md",
+      "repository": "diegoami/imperial-conquest-2-research",
+      "commit": "64adfb1aedb6a277bcf3fa41537f574d9448a905",
+      "sha256": "b8391797b24816792f9c8525598b9c9b8b4cf597776f213afc3b10e91b83de08"
+    },
+    {
+      "source": "docs/reports/news-log-format-and-messages.md",
+      "repository": "diegoami/imperial-conquest-2-research",
+      "commit": "64adfb1aedb6a277bcf3fa41537f574d9448a905",
+      "sha256": "c1b3bad9c4723afd5d32fe6db4e7589800f0a0d81f91e590b53d87fac378c8d3"
+    },
+    {
+      "source": "docs/reports/2026-10-04-decompiled-tactical-battle-rules.md",
+      "repository": "diegoami/imperial-conquest-2-research",
+      "commit": "64adfb1aedb6a277bcf3fa41537f574d9448a905",
+      "sha256": "7e2ff4376638da31ca2a93c927a0b0411a7c038fa8fe5fa6f851ce3892b9207c"
+    },
+    {
+      "source": "docs/reports/2026-09-29-loading-a-save-does-not-reseed.md",
+      "repository": "diegoami/imperial-conquest-2-research",
+      "commit": "64adfb1aedb6a277bcf3fa41537f574d9448a905",
+      "sha256": "6f641065c0c0517a4468a6aad2c55601fb01609d2cc7497b659d706cfd81aeee"
+    }
+  ]
+}

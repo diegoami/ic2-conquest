@@ -1,0 +1,138 @@
+{
+  "exe_path": "/home/diego/projects/ic2-work/resupply31/wine-aboard/prefix/drive_c/IC2/Imperial Conquest 2 fast rollingsave seed.exe",
+  "exe_sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f",
+  "public_save": "run0-start-AUTO0720-seed12345.SAV",
+  "public_save_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+  "unicorn_version": "2.1.4",
+  "method": "Unmodified original x86 helpers, synthetic memory only, with read/write hooks over all 496 unknown nation bytes. No game/Wine/Windows or SAV output. No universal alias inference.",
+  "records": [
+    {
+      "case": "city-list-helper-unknown-and-history",
+      "status": "pass",
+      "function": "0044b8f4",
+      "city": 90,
+      "old_owner": 0,
+      "new_owner": 1,
+      "historical_baselines_preserved": true,
+      "scope": "list helper only; not complete transfer or gameplay",
+      "unknown_canaries": 496,
+      "unknown_reads_writes": [],
+      "all_canaries_preserved": true
+    },
+    {
+      "case": "army-constructor-unknown",
+      "status": "pass",
+      "function": "00449f08",
+      "scope": "one successful army constructor at public start city85",
+      "unknown_canaries": 496,
+      "unknown_reads_writes": [],
+      "all_canaries_preserved": true
+    },
+    {
+      "case": "remove-last-unit-retains-residue",
+      "status": "pass",
+      "function": "0044ac3c",
+      "removed_slot": 1,
+      "remaining_slot_full_copy": false,
+      "inactive_last_retains_origin_type_quality_and_text": true,
+      "inactive_last_changed_offsets": [
+        4,
+        5
+      ],
+      "scope": "two contiguous live slots, remove one; no assertion on every gameplay caller",
+      "unknown_canaries": 496,
+      "unknown_reads_writes": [],
+      "all_canaries_preserved": true
+    },
+    {
+      "case": "remove-first-unit-moves-residue",
+      "status": "pass",
+      "function": "0044ac3c",
+      "removed_slot": 0,
+      "remaining_slot_full_copy": true,
+      "inactive_last_retains_origin_type_quality_and_text": true,
+      "inactive_last_changed_offsets": [
+        4,
+        5
+      ],
+      "scope": "two contiguous live slots, remove one; no assertion on every gameplay caller",
+      "unknown_canaries": 496,
+      "unknown_reads_writes": [],
+      "all_canaries_preserved": true
+    },
+    {
+      "case": "normalized-text-cannot-recover-lineage",
+      "status": "pass",
+      "function": "00405b00",
+      "same_visible_input": "old",
+      "same_visible_output": "Hi",
+      "buffers_differ_after_same_rename": true,
+      "trailing_bytes_retained": 21,
+      "scope": "24-byte synthetic buffers; no universal field/message safety proof"
+    },
+    {
+      "case": "unknown-read-write-hook-positive-control",
+      "status": "pass",
+      "function": "00405b00",
+      "scope": "deliberately routed synthetic pointer alias into unknown bytes; instrumentation positive control only",
+      "unknown_canaries": 496,
+      "unknown_reads_writes": [
+        {
+          "pc": "0x405b0d",
+          "access": 16,
+          "address": "0x474ac0",
+          "size": 1,
+          "unknown_bytes": [
+            "0x474ac0"
+          ]
+        },
+        {
+          "pc": "0x405b0d",
+          "access": 16,
+          "address": "0x474ac1",
+          "size": 1,
+          "unknown_bytes": [
+            "0x474ac1"
+          ]
+        },
+        {
+          "pc": "0x405b23",
+          "access": 16,
+          "address": "0x474ac0",
+          "size": 1,
+          "unknown_bytes": [
+            "0x474ac0"
+          ]
+        },
+        {
+          "pc": "0x405b23",
+          "access": 17,
+          "address": "0x474f54",
+          "size": 1,
+          "unknown_bytes": [
+            "0x474f54"
+          ]
+        },
+        {
+          "pc": "0x405b23",
+          "access": 16,
+          "address": "0x474ac1",
+          "size": 1,
+          "unknown_bytes": [
+            "0x474ac1"
+          ]
+        },
+        {
+          "pc": "0x405b23",
+          "access": 17,
+          "address": "0x474f55",
+          "size": 1,
+          "unknown_bytes": [
+            "0x474f55"
+          ]
+        }
+      ],
+      "all_canaries_preserved": false
+    }
+  ]
+}

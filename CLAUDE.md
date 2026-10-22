@@ -1,5 +1,10 @@
 # ic2-conquest: rules for Claude sessions
 
+These are the shared project rules for all agent backends. Claude continues to
+use this file and `.claude/skills/`; Codex enters through `AGENTS.md` and reads
+this file in full. See `docs/agent-workflow.md` for tool mappings and portable
+handoffs. Keep shared policy here so the two entry points cannot drift.
+
 Purpose: find strategies that dominate the map in the original *Imperial Conquest 2* (1996) and prove it with per-turn saves, logs and plans; secondarily, exercise every mechanic (`coverage.md`). Read `README.md`, then the active strategy in `strategies/`.
 
 ## Hard rules
@@ -16,16 +21,69 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
    - Binaries (saves, screenshots, video) stay out of git (rule 1): their SHA-256 go in `SAVES.sha256` beside the data, and they are uploaded to the release `run-exp-<name>` / `run-<id>` as the batches finish.
    - Cadence: **commit and push after each batch of trials or probes and at least every 30 minutes**, so a stopped session loses nothing.
    - **Never delete or overwrite a measured output**: a re-run writes new files beside the old ones and the finding names the ones it cites (a resumable runner appends or versions; it does not rewrite history).
-   - Every brief for a task that measures (an experiment, a probe, a driver task that times things, a plan handed to an implementer) must carry this rule.
+   - Every brief for a task that measures (an experiment, a probe, a driver task that times things, a plan handed to an implementer) must carry this rule, and say: never delete a save (even to regenerate it), and give every script's saves unique names (two scripts writing the same name left stale hashes; lesson 2026-10-09, the gap analysis).
 7. **Read what a delegated run returned before you retry it, re-route it to another model, or call it a failure; never retry blind** (the owner, 2026-10-05).
    - OpenCode runs (`scripts/opencode_watched.py`, `scripts/external_review.py`): an exit or a class such as `nonzero-exit`, `cut-off` or `bad-format` looks the same for an early end and for a run that stopped and reported. The log's tail shows only the last tool output. Read the model's final message from the session record, read-only, with the session id from the run's log (`opencode session started: ses_…`): `docs/external-review.md`, "Failures and trust". Never read `auth.json` in that directory.
    - Claude agents: read the agent's final report (its hand-back) in full before acting.
    - A run that stopped and reported gets an answer to its report: amend the task, decide, or escalate. Post the report on the task's PR (or its run issue) so it is kept.
    - Treat any earlier "model X ends runs early" verdict as unconfirmed until its runs' final messages have been read.
+8. **A failed subagent run is never normal: find its cause and fix it** (the owner's highest priority, 2026-10-10). This covers OpenCode runs, reviewers, implementers and Claude agents.
+   - Diagnose failures before choosing whether to fix, resume or change the model. Preserve the report and progress; model changes follow the session-led workflow below.
+   - **No run may lose its progress when it dies.** Every run records what it is doing (its session id, its state, a progress file, commits pushed as it goes), so the job can be tracked and **resumed where it stopped**, not restarted.
+   - **Keep monitoring running subagents and tell the owner in plain words** what each one is doing and working on, while it runs.
+
+## Session-led workflow (owner, 2026-10-21)
+
+This replaces the previous compulsory worktree, automatic external review,
+model-choice questions and model-family/provider restrictions throughout the
+project. Older briefs, receipts and process descriptions retain their historical
+meaning; they do not reinstate those requirements.
+
+- Work in the supplied checkout. Use a branch; a separate worktree is optional
+  when it helps isolate concurrent work. Preserve others' changes.
+- The session decides how to implement, validate and review the task using the
+  tools and models available to it. Review is optional: use the harness, an
+  available reviewer, or no separate review according to the task's risk.
+- No required reviewer family, provider exclusion, quota recommendation or
+  repeated model-choice question. Honor explicit owner choices while they apply;
+  explain material workflow or model changes.
+- Commit and push useful progress, open a PR, and honor repository-enforced
+  checks. A posted external verdict is not a prerequisite for merging.
+- Keep durable task notes and evidence so another session can resume. Read a
+  delegated run's complete report before deciding whether to fix, resume or
+  change approach. Never describe a self-review as independent review.
+- The external-review CLI is optional tooling. It retains a detached worktree
+  internally for reproducible read-only inspection; sessions need not use it.
+
+### Monitoring OpenCode sessions (and any other background agent)
+
+8. Start every OpenCode run in the background, with stdin from a file (never an inherited pipe: `opencode run` waits for stdin's end-of-file before it creates a session). Never wait on it blind.
+9. Watch it with one monitor that checks every 1-2 minutes and reports only changes:
+   - the session started (`opencode session list` in the run's directory, or the run's "session ses_... started" line), and the run's exit;
+   - progress: the OpenCode log's size and the session's `updated` time, the worktree's changed files, new lines in the running-notes file, and new commits pushed to the branch (`scripts/opencode_status.py` reads the reviewer runs' progress);
+   - "possibly stuck" after ~10 minutes with no change; "unpushed" when a commit sits on the branch but not on origin for ~15 minutes (push it for the run and record it);
+   - free memory, if the machine is short of it: run reviews and builds one at a time.
+   For a Claude subagent, the progress signal is its transcript file's size plus its worktree.
+10. Tell the user, in plain language, what each running agent is doing: the step it is on, what it committed, what it found (from its notes, commits and latest session messages). Never raw log lines or byte counts.
+    - **Session ids, so the owner can follow every run** (the owner, 2026-10-11, from isle-wars-archaeology rule 6.7): as soon as an OpenCode run's log shows its session (`opencode session started: ses_…`; with `--format json`, each event's `sessionID`), give the owner the id together with the line `scripts/peek.sh ses_… -n 20` (the run's newest steps, read-only: tool calls with their status and the start of each model message; it also accepts the run log in place of the id). Repeat the id in every progress update, with the step the run is on ("todo 2 of 4"), so the owner never scrolls back for it; the last log line alone misleads when two steps print the same text.
+    - For a Claude subagent, give its agent id and its transcript path (`~/.claude/projects/<project>/<session>/subagents/agent-<id>.jsonl`) the same way.
+    - Watch liveness with `kill -0 <pid>`, never `pgrep -f <pattern>`: the pattern also matches the watcher's own command line, so the run's exit is never seen (it cost 1.5 h in isle-wars-archaeology and an endless waiter here, 2026-10-10).
+11. On a "possibly stuck" flag: check the process is alive, read its newest session messages (`opencode export <ses_...>`, or the read-only session reader in `docs/external-review.md`); a long build or test step is not stuck. A dead or 20-minute-silent run is stuck: record the cause, fix it if it is ours.
+12. When a run ends, read its final message before doing anything else (rule 7 above). A run that stopped and reported a blocker gets an answer (fix the brief or the setup), not a retry on another model.
+13. A run interrupted by our own limits (an idle or total timeout) is RESUMED in its own session and worktree (`opencode run --session <ses_...>` with a short "continue where you stopped" message and a longer limit; for reviews `python3 scripts/external_review.py --resume <run dir>`), not restarted from scratch.
+
+## Working with the owner (moved from session memory, 2026-10-11)
+
+- **Ask, don't guess** (the owner, 2026-10-02): when a decision is the owner's or a request can be read two ways, ask with the question tool, concrete options, the recommended one first. Never fill the gap with an assumption and carry on.
+- **Merging** (owner, 2026-10-21): the session decides whether separate review is useful and may merge completed work once appropriate validation and repository-enforced requirements pass. Read any existing review notes and resolve material findings. Never report skipped checks as passed.
+- **After a merge**: continue within the owner's authorized scope and explain the next useful step; ask only for missing owner decisions.
+- **Current focus** (the owner, 2026-10-05): battles and bots are paused; the work is research and gap-finding for IMPERIAL CONQUEST MAIN's v0.5.0, then post-0.5.0 work not related to battles. The paused battle queue (B16, B7+B12, B6, B9, B10, B13-14, B15, then coverage gaps) resumes only when the owner says so; each paused item has resume notes in its data README.
+- **New findings** (the owner, 2026-10-02): at the start and at the end of each reply, compare `findings/` on `origin/main` with the list last reported and name every new file with one line on what it is (and a reviewer's findings when it posts on a PR). No background polling, no push notifications.
+- **Research** (the owner, 2026-10-05 and 2026-10-08): reading `~/projects/imperial-conquest-2-research/` is always fine (rule 2 limits writes only). Every finding that lands on main is relayed to the ic2-research session at once with the `/relay-to-research` skill, without asking. Message ic2-research otherwise only when the next step is theirs (re-running their extractors, refreshing a report, interpreting their data). The PowerShell main session (IMPERIAL CONQUEST MAIN) is reached through the owner: write a paste-ready prompt and the owner carries it (`docs/notes-for-main-session-decompile-skills.md`); it reads only promoted research reports.
 
 ## Environment
 
-- **Model quota:** quota-tracker on `localhost:8765` says which providers have quota left (`docs/environment.md`); check it before choosing a model (L50 under Code map).
+- **Model quota:** use quota information when available to inform session choices; it is not a mandatory service or model-selection gate.
 
 - `setup/setup.sh` (root, Ubuntu 24.04): installs Wine (32-bit prefix), Xvfb, xdotool, imagemagick, ffmpeg, tesseract; clones the pinned research and fixtures repos (`setup/pins.txt`) under `/home/user/diegoami`; builds the executables into `$IC2_WORK/build` and the game folder `$IC2_WORK/prefix/drive_c/IC2` (`IC2_WORK` defaults to `~/ic2-work`, outside git).
 - The bot plays **`Imperial Conquest 2 fast rollingsave seed.exe`**: instant battles; every human turn writes `AUTOnnnn.SAV` + an `AUTOSAVE.LOG` line; `RandSeed` comes from `SEED.TXT` beside the exe at **program start and New Game only** (loading does not reseed: `findings/2026-09-29-loading-a-save-does-not-reseed.md`). So a repeatable turn = restart the game with the seed, open the save, issue the orders (`Game.load`).
@@ -38,16 +96,15 @@ Purpose: find strategies that dominate the map in the original *Imperial Conques
 - `planner/path.py`: army paths (DAT terrain costs).
 - `patches/seed_patch.py`: the seed option on top of the fixtures' `patch_exe.py`.
 - `tests/test_orders.py`: each order issued headless and checked on the save diff; `tests/results.md`.
-- `scripts/external_review.py`, `scripts/opencode_watched.py`, `.opencode/agents/external-reviewer.md`: the OpenCode PR reviewer in its own worktree (`docs/external-review.md`); `.claude/skills/review-pr`: the Claude-side review (the fallback when the OpenCode reviewer exits 3). **Every review brief carries a "Blocking means" section written for its task** (`docs/review-briefs/README.md`: template, one `pr<n>.md` per review passed with `--brief-file`; reviewer verdicts worth remembering go to `docs/model-trials.md`).
-- **Choosing a model** (harness_imperial L50/L51, adopted 2026-10-05):
-  - **L50, check the quota first.** Before choosing, recommending or delegating to a model (an OpenCode reviewer, a Claude agent or subagent, an OpenRouter model), check how much quota its provider has left with quota-tracker (`docs/environment.md`). A provider whose status is `exhausted` is not used until it is usable again: take the next model of the chain whose provider has quota, pass it explicitly (`--model` for `scripts/external_review.py`, the model of an Agent call or of `opencode -m`), and say so in the run's report or the PR body ("GLM skipped: zai exhausted until 21:40; reviewed by Luna"). Where the service is not installed, go on without it and count a usage-limit error as `exhausted`. Model ids come from the provider's live list (`opencode models <provider>`), never from memory.
-  - **L51, the light OpenAI model is GPT-5.6 Luna.** The light OpenAI model, and the default Luna reviewer, is GPT-5.6 Luna on the direct OpenAI route: `openai/gpt-5.6-luna`, effort `high`. It is not GPT-6 Luna (`openai/gpt-6-luna`), which draws on OpenAI's main pool with Sol; GPT-6 Luna is never the reviewer. Never use a Luna on OpenCode Go (`opencode-go/…`): a proxy behind it returns `Bad Request` in long agent loops.
-  - **Effort.** Heavy models (`openai/gpt-6.1-sol`, `zai-coding-plan/glm-5.3`, Opus) run at effort `low`, or `medium` when the task needs it, never `high` (the player, 2026-10-05). Light models (GPT-5.6 Luna, the Flash models) run at `high`.
+- `scripts/external_review.py`, `scripts/opencode_watched.py`, `.opencode/agents/external-reviewer.md`: the OpenCode PR reviewer in its own worktree (`docs/external-review.md`); `.claude/skills/review-pr`: a review run in a Claude session, available when a Claude review is chosen. **Every review brief carries a "Blocking means" section written for its task** (`docs/review-briefs/README.md`: template, one `pr<n>.md` per review passed with `--brief-file`; reviewer verdicts worth remembering go to `docs/model-trials.md`).
+- **Model availability:** verify identifiers against the chosen provider when launching a run. Historical model and effort notes are observations, not restrictions on session choices.
 - `docs/rules-digest.md`: the researched rules, with sources. `findings/`: drafts for the research repo.
 
 ## Driver pitfalls (Wine, no window manager)
 
 Hover before clicking; prefer toolbar buttons to menus; reset menu state before a menu; the first click into an inactive window may only activate it, so verify every order's effect (memory or save) and retry at most twice; never click End turn twice unless the first click provably did nothing.
+
+Confirm boxes and dialogs (lessons 2026-10-08): `controls(title)` is racy for about a second after a focus change (retry, or use `_answer_confirm`); a bare cursor click can land on a sibling window, so click with `xdotool click --window`; the menu bar is at y = 36, not 14 (`coverage.md` §2); `find_windows` filters tooltips (`tooltips=True` to see them); a closed box lingers 1-2 s, so an OK loop waits for it to close and never presses Cancel; list rows go through `click_list_row`; `end_turn` answers the post-battle "Offer of peace" (`peace=False` is No).
 
 ## Runs
 

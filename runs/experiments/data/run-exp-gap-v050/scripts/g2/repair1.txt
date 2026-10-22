@@ -1,0 +1,6 @@
+load ART/g2_disembark2_after.sav
+status mine
+save ART/g2_repair1_before.sav
+repair-fleet f1 5
+status mine
+save ART/g2_repair1_after.sav

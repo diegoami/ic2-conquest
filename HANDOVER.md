@@ -76,3 +76,601 @@ python3 -m tests.test_orders        # expect 13 PASS
 ## Files worth knowing
 
 `docs/intent-and-approaches.md` (the direction) · `docs/wsl-setup.md` (the environment) · `coverage.md` §1 (the order checklist, now with the new orders ticked) · `tests/results.md` (the last run) · `harness/driver.py` (`tool`, `army_tool`, `controls`, `attack`, `play_battle`, `taxation`, `transfer_units`) · `harness/win_controls.c` · `state/sav.py` · `planner/path.py` · `runs/experiments/gallic-army/` · `runs/0/proposal.md`.
+
+## Open threads (added 2026-10-07)
+
+- **Sitting recorder (idea, not yet a task).** goal2-archaeology's "human
+  playthrough as a behavioural record" method, adapted to ic2-conquest, would
+  answer the §3.1 intercept dispatch and §4 fleet hunt-vs-port checks (saves
+  alone) and the §2.1 threat-budget / `+0x274` / fleet-destination questions
+  (RAM snapshots). The proposal is at
+  `~/projects/imperial-conquest-2-research/docs/ideas/2026-10-07-sitting-recorder.md`;
+  the only open decision before it becomes a task is **desktop-Wine as the
+  confirmation standard, or native-Windows watcher required?** (item (e) of
+  the idea file).
+- **AI-mover contact-resolution experiment** routed to `ic2-research`
+  (2026-10-07); awaiting draft from that session.
+- **`experiment/ai-turn`** is pushed (`bab12f5`), promoted, and not merged —
+  its runner pattern (`runs/experiments/ai_turn/{watch,snapshot,common,paths,archive_batch}.py`)
+  is the verified template to copy for any new `run-exp-*` experiment.
+
+## Handover: 2026-10-08 (ic2-conquest session, MiniMax-M3 via Claude Code)
+
+A different session picked up after the 2026-10-01 handover + the AI-mover intake. This entry
+documents what that session did and what's left. The earlier sections (above) are still
+the canonical env + tool description; the section below is the **state of `main` and
+the work queue as of 2026-10-08 evening** (minimax, ~80% quota at one point, reset since).
+
+### TL;DR (this session)
+
+**`main` carries 24 new commits since 2026-10-01.** The **146-row player-facing feature
+inventory is fully cell-verified on this side** and relayed to ic2-research; the
+**Join-fleets 100-ship boundary** has a live in-play reproduction on disk and a
+release tag; the L11 row's gates 100-ships / 500-ships / 100k-troops / 100%-mob
+are now `[confirmed, partial]`. G03 (New-nation Yes path) is WIP — harness helper
+in, test fails, to be re-iterated. **Standing by for the next route.**
+
+### Commits on `main` this session (in order)
+
+| # | SHA | Section | What |
+|---|---|---|---|
+| 1 | `f4b061f` | H04 | Cellular Automata form/callsite extraction (H04 = easter-egg) |
+| 2 | `85be932` | H05 | Help reference tables cell-verified (terrain/sizes/colours/costs/details/matrix) |
+| 3 | `2b02b8a` | H01–H03 | Help-topics / Show-hints / About-Imperial-Conquest cell-verified |
+| 4 | `0735121` | MM01–MM10 | Map mouse actions (10 rows, TUnitMap_SelectUnit dispatcher + 5 literals) |
+| 5 | `d5ccf24` | D01–D11 | Dialogs-reached-from-other-dialogs (11 forms, 4 sub-rows of S02) |
+| 6 | `58b86a2` | K01–K03 | Keyboard shortcuts (15 menu ShortCuts + TPremierForm_KeyPressed + Ctrl-P) |
+| 7 | `bc980f1` | M01–M06 | Main window + menu bar (7 menu parents + 26 speed buttons + 4 windows) |
+| 8 | `a2d1e6c` | F01–F06 | File menu (5 items + TPickLeaders form) |
+| 9 | `ce71f92` | G01–G04 | Game menu (End turn, New player, New nation, Abdicate) |
+| 10 | `e2b0828` | S01–S12 | Strategy menu (12 rows, TPolitics + 5 form functions + 5 Armies-Recruits functions) |
+| 11 | `357d031` | N01–N03 | Nations (16-nation dual surface, 0x10 sentinel) |
+| 12 | `d192980` | A01–A10 | Area map (10 rows, TAreaMap_* functions, TFindCity form) |
+| 13 | `68d2924` | UA01–UA07 | Unit map > Army (7 actions, including 2 sub-rows of S05) |
+| 14 | `05ffc0b` | UF01–UF06 | Unit map > Fleet (6 actions; UF01+UA01 share TAFSupply, UF03+UF04 share TFleetToFleet) |
+| 15 | `db4323f` | UC01 + UM01–UM09 | Unit map > City + view/selection (1 + 9 = 10 rows; TInformation has 8 sibling Show-handlers) |
+| 16 | `11c4446` | E01–E29 | Turn-start and turn-end events (29 rows; shared FUN_00451b40 + FUN_0044b27c dispatchers) |
+| 17 | `1a784a9` | L01–L14 | News and messages (14 rows; 4 outcome-panel literals pinned at dump_string_literals.v2.tsv rows 379/380/381/382/384) |
+| 18 | `6aa10fd` | V01–V05 + EG01 | Victory/defeat + End-of-Game screen (6 rows; THumanFalls_InitializeForm @ 0x00455e38) |
+| 19 | `af58e05` | `findings/2026-10-08-join-fleets-cap-in-play.md` + run-exp-join-fleets-cap-in-play | Join-fleets 100-ship boundary: 3 trials (50+49/50+50/50+51); gate is **< 101** (100 ships accepted, 101 refused); harness docstring tightened |
+| 20 | `1e10c5d` | join-fleets-cap-in-play draft | Cited release tag in the draft |
+| 21 | `6ce961a` | harness docstring fix + 3 regression tests | `Game.join_fleets` docstring off-by-one; `test_join_fleets_{99,100,101}` register, run, pass |
+| 22 | `189226a` | L11 regressions WIP + G03 helper | `_make_patched_save` / `_make_patched_base_save` helpers; 4 L11 tests + 1 G03 test; pass on 100k/100%-mob/500-ship after bumps; G03 Yes-path test fails (post-state unchanged), WIP |
+| 23 | `062aa3d` | `Game.new_nation` rewrite + 500/ship bump | 18,001 troops/30 ships PASS; the auto-Yes Confirm path errors on missing controls, replaced with manual OK click; menubar at y=14 (was y=36 — wrong) |
+| 24 | `7b94118` | `tests/results.md` 2026-10-08 entry | L11 (3 of 7) + G03 (WIP) regression log |
+
+The 146-row inventory is now cell-verified on this side; each row cites its source.
+ic2-research's intake ledger is the canonical side — when they process these,
+the imperial-conquest-2-research main will carry the per-row reports.
+
+### Side artifacts
+
+| Path | What |
+|---|---|
+| `docs/notes-for-main-session-decompile-skills.md` | The in-repo note that tells the main session what ic2-conquest can do (capstone, Ghidra headless, struct parsing, the project extractors, live harness). The user's main session can't read this repo; this is the document they look up. |
+| `findings/2026-10-08-join-fleets-cap-in-play.md` | Three trials (50+49/50+50/50+51) at the L11 join-fleets 100-ship boundary. Cites `2026-10-07-join-fleets-100-ships-boundary.md` (research, decompile side). |
+| `runs/experiments/data/run-exp-join-fleets-cap-in-play/` | `trial.py` (orchestrator + SAV patcher), `trial_driver.py` (per-trial `Game()` sub-process), `results.json` (per-trial summaries), `SAVES.sha256` (rule-6 measurement keeps). |
+| `artifacts/run-exp-join-fleets-cap-in-play/trial-{099,100,101}-{pre,post}.SAV` | Six SAV binaries (132 KB each). Pushed to release `run-exp-join-fleets-cap-in-play` on imperial-conquest-2-research via the `IC2_RELEASE_TOKEN` Bearer header. URL: `https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-join-fleets-cap-in-play` (tag 2026-10-08T10:22:52Z). |
+| `artifacts/run-exp-feature-inventory/` | 60-screen feature-inventory batch (FI_b1_01..60 + the .hlp + the .dat). SHA-256 in `SAVES.sha256`. |
+
+### Open items (with route)
+
+1. **G03 New-nation Yes path** (row G03 in the player-facing inventory, `[confirmed]`
+   currently; the morning AI-mover intake's open note *"[code, Yes not run]"* stays
+   open). Harness helper `Game.new_nation()` in `harness/driver.py:806` (manubar y=14,
+   New-nation item at y=88, manual OK click on the resulting popup). Test
+   `test_new_nation_yes` in `tests/test_orders.py:687`; registered in TESTS.
+   The test's post-state assertion fails (current_nation stays 0, rome.human
+   stays True) — likely a menubar-geometry drift on this Wine build or the
+   Yes-path effect is different from the inventory's prose. Iterate the test
+   next session (or take a screenshot during the test to see what's on
+   screen) and either fix the assertion or update the inventory's
+   `[code, Yes not run]` note.
+2. **L11 row remaining 3 gates** (`[derived]` carry-over):
+   - 20 units per army (Join armies): uncacheable in 21 units due to the
+     20-slot army-record cap.
+   - 40 recruit slots: needs a 40-slot recruit-state pre-state.
+   - 198 armies: needs 198 armies in pre-state.
+   Each needs a fresh multi-step pre-state setup. The 4 of 7 already
+   `[confirmed, partial]` are 100-ships (`6ce961a`), 500/ship (`062aa3d`),
+   100k-troops (earlier batch), 100%-mob (earlier batch).
+3. **Harness docstring "fewer than 100 combined" off-by-one** is fixed at
+   `6ce961a` (now "fewer than 101 combined"). The imperial-conquest-2-research
+   ledger's L11 row open note 1 was cross-linked in `f6d4bed`; nothing more
+   here.
+4. **`experiment/ai-mover-contact` branch** is clean (commits `3d9490c`,
+   `6a535d8`, `2d2251d`, all pushed). Intake was 2d2251d (the morning's
+   deliverable). The branch is the route for any further AI-mover work; the
+   session after the morning's session intake was the ic2-research one.
+
+### Engine
+
+- **Backend**: `minimax` (MiniMax-M3 via Claude Code). NOT `claude`. Don't
+  ask about `claude` quota; check `minimax` quota only. *(superseded 2026-10-11: CLAUDE.md "Choosing models": the user names every implementer and reviewer; quota-tracker is a suggestion only)*
+- **Quota**: was 80% used at one point; reset since. The 5h window is
+  shared. Don't burn the next session's quota on long Wine runs without
+  the user explicitly routing it.
+- **Cross-OS session messaging**: `SendMessage` between PowerShell (main
+  session) and WSL (this session) is unreliable. The user is the carrier
+  for paste-ready prompts. `SendMessage` between WSL sessions (this side
+  and `ic2-research` at `70286.sock`) works.
+- **Worktree path** for the AI-mover branch: `/home/diego/projects/wt-ai-mover/`
+  on branch `experiment/ai-mover-contact`. Commits in this session stayed
+  on `main` (no AI-mover work in this session; the morning's commits are
+  the latest on that branch).
+
+### Files worth knowing (this session's additions)
+
+- The 24 new findings drafts (listed in the table above).
+- `findings/2026-10-05-player-facing-feature-inventory.md` (the 146-row
+  inventory — unchanged, all row evidence columns now cite this side's
+  cell-level extractions).
+- `harness/driver.py` (Game.new_nation added, Game.join_fleets docstring
+  tightened).
+- `tests/test_orders.py` (`_make_patched_save` + `_make_patched_base_save`
+  helpers; tests: `test_join_fleets_{99,100,101}`,
+  `test_embark_over_500_per_ship`, `test_join_armies_over_100k_troops`,
+  `test_recruit_100pct_mobilization`, `test_new_nation_yes`).
+- `tests/results.md` (the 2026-10-08 entry at the bottom — three
+  regression PASS, two WIP, one G03).
+- `runs/experiments/data/run-exp-join-fleets-cap-in-play/` (rule-6 tracked).
+- `docs/notes-for-main-session-decompile-skills.md` (the cross-OS note
+  the main session looks at).
+
+### Resumption
+
+Next session opens with: `git log --oneline -25` on `main` to see this session's
+24 commits; the inventory's evidence column is now cross-linked with this
+side's findings drafts; L11's 4 of 7 gates are `[confirmed, partial]` on
+ic2-research's ledger (commit `f6d4bed` on their `main`). The G03 Yes
+path and the remaining 3 L11 gates are queued for further iteration.
+
+## Handover: 2026-10-08 evening (ic2-conquest session, MiniMax-M3 via Claude Code)
+
+A continuation of the morning session — picked up after the AI-mover intake + L11
+partial regressions + G03 WIP. This entry documents what *this* session added (the
+morning session's section above is still the canonical env + tool description; the
+section below is **state of `main` and the work queue as of 2026-10-08 evening,
+session end**).
+
+### TL;DR (this session)
+
+**Three closures pushed to `main`: G03 Yes-path (WIP→PASS), L11 40-recruited-units
+gate (PASS, [confirmed, partial]), L11 198-armies patcher kept (test deferred —
+game's per-player Rome army cap is 188 in this Wine build, not the decompile's 198).
+L11 is now 5 of 7 gates `[confirmed, partial]` on this side and on ic2-research's
+ledger. Two new harness gotchas surfaced (`controls()` race after focus change;
+bare cursor click misroutes under no-WM Xvfb) — captured in the new
+`memory/confirm-box-handling.md`. The morning's open note *"[code, Yes not run]"*
+on G03 is closed; the disband_army flake stays (same root cause, not patched).**
+
+### Commits on `main` this session (in order)
+
+| # | SHA | Section | What |
+|---|---|---|---|
+| 1 | `beda43a` | harness + tests | **G03 Yes-path**: `Game.new_nation()` rewritten — menubar y=36 (coverage.md, not 14), `xdotool click --window` on Confirm-Yes, leaders-form by title `Human and computer leaders`, TPanel text stripped before match, OK 3-iteration retry. PASS test_new_nation_yes (57-58s): texts=[], rome.human=False, current_nation=1 (Carthage). |
+| 2 | `6bddb39` | tests | **L11 40-recruited-units gate**: `_make_patched_save_full_slots(nation_index, city_id, n_slots)` — clears+refills the 40 slots at offset 0x2E4 in the nation record. PASS recruit_40_slots_cap (51s): 40 slots full at city 85 (Rome), 41st recruit refused with "You have reached your limit of 40 units…" (OCR mangled). |
+| 3 | `c69fcb9` | tests | **L11 198-armies patcher kept, test deferred**: `_make_patched_save_with_n_armies(source, n_rome_target=...)` rewrites layout (map + cities + new army count + N Rome dummies + post-army tail). SAV parses cleanly. Game clamps Rome live armies to 188 in this Wine build regardless of n_rome_target. Split-army toolbar click produces no `controls("Split army")` enumeration — gate fires before dialog opens. Test body parked at the deferred comment for the next iteration. |
+
+Three commits total, + ~165 lines, three closures (one final pass + two intermediates
+on the third).
+
+### Standby queue (per session end)
+
+1. **L11 198-armies test body** (`.claude/...:` row L11, `n_rome_target=188`). The
+   patcher's in (`_make_patched_save_with_n_armies`); the test split fails because
+   the Split-army dialog never opens OR `controls("Split army")` returns 0 lines.
+   Two failure modes — gate fires before dialog, OR dialog enumeration is racy
+   right after focus change (same root cause that bit New-nation's Confirm).
+   `controls()` retries (the new_nation helper) might do it; OCR of the screen
+   right after the toolbar click is the cheapest probe.
+
+2. **disband_army flake** (pre-existing). `controls("Confirm") → no controls
+   found` after the toolbar click — same race as the G03 Confirm box, dodged by
+   `Game.new_nation()`'s retry loop. `dismiss_popups()`/`answer()` could take the
+   same retry loop and likely clear the recruit / scuttle / build_fleet flakes too
+   (each drives a Confirm box with a message that dismiss_popups gets called on).
+
+3. **20-units-per-army L11 gate** ([derived] carry-over — uncacheable in 21 units
+   due to the 20-slot army-record cap; cannot be cache-tested, only inferable
+   from the decompile).
+
+### Engine
+
+- **Backend**: `minimax` (MiniMax-M3 via Claude Code). NOT `claude`. Don't ask
+  about `claude` quota; check `minimax` quota only. *(superseded 2026-10-11: CLAUDE.md "Choosing models": the user names every implementer and reviewer; quota-tracker is a suggestion only)*
+- **Quota**: started at 80%, ended near 70% (5h window at 30%; 7d at 21%). Game
+  cycles were local CPU only (Wine) — no model burn.
+- **Cross-OS session messaging**: `SendMessage` between PowerShell (main
+  session) and WSL (this session) is unreliable. The user is the carrier
+  for paste-ready prompts. `SendMessage` between WSL sessions (this side
+  and `ic2-research` at `70286.sock`) works.
+
+### Files worth knowing (this session's additions)
+
+- `harness/driver.py` — `Game.new_nation()` rewrite (commit beda43a).
+- `tests/test_orders.py` — `_make_patched_save_full_slots`,
+  `_make_patched_save_with_n_armies`, `test_recruit_40_slots_cap`,
+  deferred comment for `test_split_army_over_198_armies_cap`. `DriverError`
+  added to the harness import.
+- `tests/results.md` — G03 closure + L11 40-slot PASS entries appended.
+- `~/.claude/projects/-home-diego-projects-ic2-conquest/memory/confirm-box-handling.md`
+  — new harness gotcha (controls() race, no-WM cursor click). Three rules + why
+  + how-to-apply, with cross-links to [[measurements-kept-rule]] and
+  [[read-before-retry]].
+
+### Resumption
+
+Next session opens with:
+
+```bash
+git log --oneline -25            # see the 3 commits this session added on top of the 24 from the morning
+git log -1 --format=%B HEAD~2    # beda43a (G03 rewrite) for the new_nation() shape and the docs
+git log -1 --format=%B HEAD~1    # 6bddb39 (L11 40-slot)
+git log -1 --format=%B HEAD      # c69fcb9 (L11 198-armies patcher, deferred)
+```
+
+The G03 Yes-path is closed (morning's open note resolved); L11 is 5 of 7
+gates `[confirmed, partial]` on this side. Two open test work items: (1) the
+198-armies gate test body (patcher is in, gate path needs UI work); (2) the
+`disband_army` Confirm-flake (same root cause as the G03 fix, fixed in
+`new_nation` but not in `dismiss_popups`/`answer`). The 20-units-per-army
+gate stays uncacheable.
+
+
+## Handover: 2026-10-09 (ic2-conquest session, Opus 5.5 via Claude Code)
+
+Continues the 2026-10-08 evening section. The 2026-10-08 morning section is still the environment and tool reference. This section is **the state of `main` and the work queue at the end of 2026-10-09**: 92 commits from `3ecc306` to `486f0d2`, all pushed, no open PRs, no branches.
+
+### TL;DR
+
+- **L11 is closed.** All 7 gates are pinned on the research side (the 198-armies cap, the 40-slot cap that reads only slot 39, recruit landing, the Join 20-unit gate, merc vs a full queue, the transfer dialog's 20 units).
+- **The marker and removal series is closed.**
+  - Army and fleet markers: band (owner + 200/216/232, 300/316/332), icons and re-banding orders.
+  - Army removals restore the covered tile on every path (disband, join, battle loss, siege, turn end, AI side, merc desertion, conquest); defection is reachable in code only.
+  - Fleets that are sunk (battle, storm) or removed by conquest write 0.
+  - Conquest removes a fleet's cargo army too.
+- **The colour series is closed under Wine.** Every owner's army, fleet and city icons were drawn and read.
+  - Unit icons are 3 + 3 Rome-coloured templates recoloured from nation-record dwords +0x424/+0x428/+0x42C, set in code by `FUN_00448aa4`.
+  - City, capital and toolbar images are stored per owner.
+  - Numidia's unit fill is grey in code and teal in the art.
+- **The harness is sturdier:**
+  - `_answer_confirm`; tooltips filtered out of `find_windows`; `click_list_row` at real row heights; `hire_mercs` by controls;
+  - `end_turn` answers the post-battle **Offer of peace** (No) and raises **`GameOver`** on the End of Game window.
+- **The natural AI conquest with an army aboard was not found:** 11 idle seeds, 334 end turns. The idle Rome is conquered at end 29-50, and only Carthage, Ptolemaic and Greece ever load fleets.
+
+### Harness changes (`harness/driver.py`, `harness/win_controls.c`; each in `tests/results.md`)
+
+| SHA | Change |
+|---|---|
+| `1362def` | `_popup_gone`, `_answer_confirm`: a closed box lingers 1-2 s in X; never answer it twice (disband_army 0/6 → pass; scuttle_fleet uses it too) |
+| `e1ed7f2` | `find_windows(..., tooltips=False)` skips 1 < h < 24 windows (a tooltip has its button's title); `_scan_bar` passes `tooltips=True` |
+| `5404b62` | `win_controls` prints list-box item height, top index and client origin; `click_list_row(c, r)`; rows are 14, 13 or 10 px, not 12 |
+| `2f557b9` | `hire_mercs` uses the dialog's controls, with an `open_controls()` retry |
+| `2ad4ebb` | `end_turn(peace=False)` answers "Offer of peace" via `answer_battle_peace` (it blocked AI-attack turns until the timeout) |
+| `cee96e0` | `GameOver(DriverError)`: `end_turn` raises it on "End of Game" (seen live in 6 seeds) |
+| `335aeb4` | tests `split_army_197_armies`, `split_army_198_armies_cap`, `hire_mercs`; `split_army` and `transfer_units` assert that row 0 moved |
+
+### Findings this session (all promoted by ic2-research unless noted; research SHA in each draft's Status line)
+
+- **L11 and dialogs:** `2026-10-08-split-army-198-armies-cap-in-play`, `-recruit-40-slots-gate-reads-slot-39`, `-recruit-lands-in-first-free-slot`, `-join-armies-20-unit-gate-counts-last-slot`, `-merc-hire-ignores-queue-r08-guards-slot-20`, `-transfer-dialog-20-units-and-slot-gaps`.
+- **Markers:** `2026-10-08-army-marker-size-band-on-the-map`, `-army-icon-follows-the-size-band`, `-fleet-marker-band-and-icon`, `-split-and-transfer-reband-fleets`.
+- **Removals:**
+  - `2026-10-08-naval-battle-loser-clears-its-tile`, `-sunk-fleet-sets-its-tile-to-plain-sea`, `-removed-army-restores-its-tile`;
+  - `2026-10-09-siege-removed-army-restores-its-tile`, `-siege-needs-attack-strength-1`, `-turn-end-and-ai-army-removals-restore-their-tile`, `-defection-elimination-reachable-in-principle` (no test, the player's choice), `-storm-sunk-fleet-clears-its-tile`, `-elimination-removes-fleet-and-army-aboard`.
+- **Colours:** `2026-10-09-owner-colours-by-band`, `-city-marker-colours`, `-unit-icon-recolour-and-nation-glyphs`.
+- **Negative result:** `2026-10-09-no-natural-ai-conquest-with-army-aboard` (`486f0d2`, promoted at research `017abed` as a sample). Galatia's conquest appears in 6 seeds, not 7. Research notes that the driver's always-No peace answer may bias how long the idle Rome survives.
+
+**Pending on the research side: 0** (ic2-research, end of session). The only open item with the player is the desktop palette check.
+
+Experiment data: `runs/experiments/data/run-exp-<name>/` for each; binaries in releases `run-exp-<name>`.
+
+### Open items (for the player to choose; none started)
+
+1. **Desktop palette check (needs the player on Windows):** `runs/experiments/data/run-exp-desktop-palette/STEPS.md`.
+   - Load `colours_PRE.SAV` and `cities_PRE.SAV`, screenshot them, and give the colour depth.
+   - Screenshot the toolbar's nation buttons.
+   - Say what the 2026-09-29 strip was cropped from. Hypothesis: the raw glyph bitmaps, since the white transparent margin explains Gaul and Illyria.
+2. **A natural AI conquest with an army aboard (research request).** It needs a game in which the human survives long enough, for example by playing Rome or by starting a stronger nation, and a loser among Carthage, Ptolemaic or Greece, the only nations that load fleets. Fallback offered by research: an edited pre-state in which only the embark is natural and the AI does the conquest.
+3. **Numidian units grey in battle too** (research `[derived]`): a cheap check whenever a Numidian battle is on screen.
+4. **From before:** the army-transfer handler and the `TArmyToArmy_UnitsTotal` code need the researcher's machine (Ghidra dump). Capstone is enough for small reads: see `runs/experiments/data/run-exp-unit-icon-resources/disasm_note.md`, which shows how to disassemble.
+5. **Paused by the player since 2026-10-05:** battles and bots; the focus is v0.5.0 research.
+
+### Gotchas learned (also in memory `confirm-box-handling.md`)
+
+- **Wine draws tiles 1 px left of `UNIT_PAINT + 32·c`.** Crops taken at that formula are shifted by (−1, 0); compare against stored images at offset (−1, 0).
+- **`pkill -f "<pattern>"` kills its own shell** when the pattern appears in the bash command line (exit 144). Use `pgrep` with a narrower pattern or by PID.
+- **An idle human Rome is conquered within 29-50 end turns** from `run0-start`, so long idle runs need a human who survives.
+- **The background-run cadence that worked:**
+  - `timeout 7200 bash -c 'for s in …; do python3 idle_watch.py $s 240 >> out 2>&1; done'` with `run_in_background`;
+  - a `Monitor` on `tail -F out | grep -E "conquers|STUCK|GAMEOVER|Traceback"`, re-armed every 30 min;
+  - a log commit at each re-arm (rule 6).
+- **The relay to ic2-research works by `SendMessage` to `ic2-research`** (skill `.claude/skills/relay-to-research`). They promote, then reply with the research SHA, and our draft gets a "promoted … at `<sha>`" Status line. Memory `research-intake-relay.md` holds the last relay.
+
+### State of memory
+
+`MEMORY.md` index; `research-intake-relay.md` (last relay `486f0d2`, promoted `017abed`; pending 0); `report-new-findings-on-main.md` (findings baseline); `confirm-box-handling.md` (harness gotchas, including the Offer of peace and `pkill`).
+
+## Handover: 2026-10-09 evening (ic2-conquest session, Opus 5.5 via Claude Code), continuing the session above
+
+### TL;DR
+
+`main` = `origin/main`, nothing open. **Eight findings were drafted and all promoted by ic2-research. Pending on the research side: 0.** The large one is the **v0.5.0 gap analysis** (research `1935df5`, review fixes `4ff65e8`). It is in the research repo as `docs/reports/2026-10-09-remake-v050-gap-analysis.md` and ready for the main session's `/process-evidence`. No background job is running.
+
+### What was done (draft → research promotion)
+
+| Finding | What it says | Draft | Research |
+|---|---|---|---|
+| `2026-10-09-battle-map-units-use-the-nation-recolour` | The battle sprites use the unit-map recolour (`FUN_0044a6c8` from 0x436fb4); 42/42 cells exact | `0faa66d` | `ef19e2c` |
+| `2026-10-09-numidian-battle-drawn-in-wine` | Rome v Numidia (L1 owner edit): Numidian sprites lime/black/grey, 14/14 cells exact | `b1a67d3` | `ca08a33` |
+| `2026-10-09-cellular-automata-rule-h04` | H04: a random 4-state totalistic 1D CA, 300 × 400 | `cba921e` | `8c46579` |
+| `2026-10-09-cellular-automata-savebmp-format` | SaveBMP: 24-bit BMP; nothing before the first N; run ends carry over; the seed build makes N repeatable | `a5c0ba2` | `1b559b1` |
+| `2026-10-09-ai-intercept-and-fleet-hunt-in-play` | AI checks 3+4 through an inert decision hook (`patches/ai_hook.py`): 457/457 decisions as decompiled; the hunt score adds the distance back; ferry calls; 4 corrections to the strategic-AI report | `4ede45f` | `b538a0d` |
+| `2026-10-09-remake-v050-gap-analysis` | The original vs remake v0.5.0: **171 items, 85 match / 75 differ / 11 missing**; 2 break play (the AI siege stall), 2 block a normal game | `d4f9d76` + `e823910` | `1935df5`, `4ff65e8` |
+| `2026-10-09-peace-radio-ends-trade-and-alliance` | Gap check 1: Peace ends a trade (−8) or an alliance (−24) at OK; Cancel discards | `e091835` | `75a30cd` |
+| `2026-10-09-fleet-build-city-nearest-capital` | Gap check: Build fleet uses the own coastal city nearest the capital, not already building | `d13eaca` | `c36b255` |
+
+### The v0.5.0 gap analysis, for whoever continues it
+
+- **The remake:** a read-only clone at `/home/diego/projects/ic2-remake-v050` (tag v0.5.0, `37f3062`, push URL set to DISABLED). **Never use `/home/diego/projects/imperial_conquest_2`:** it is another session's working copy.
+- **.NET 10 SDK:** installed user-only in `~/.dotnet`.
+- **The CLI:** run it only through `runs/experiments/data/run-exp-gap-v050/remake_cli.sh <tag> <seat> <seed> <script> [scenario]`. Transcripts go to `cli/`, saves to `artifacts/` and then release `run-exp-gap-v050`; run `hash_saves.sh` after.
+- **The rows:** g1/g2/g3 were drafted by Sonnet subagents, the AI rows here.
+  - `rows_*.md` each end with "Original-side checks needed": g1 10, g2 8, g3 6.
+  - **Done since:** the Peace radio (g1 1) and the fleet build city (g1 4, g2 8).
+  - **Still open:**
+    - g1: Balance-sheet totals and the Debt-limit rounding; exact trade refusal texts; Open/Save file names; quit prompt; start relations across seeds; the Recruit "All cities" list; the Mobilize refusal text; the news header format.
+    - g2: the Supply dialog's providers; Transfer ships with a carried army; selecting a 0-move army; an unreachable move target; Change units edge cases; the 100k / full-fleet transfer clamps; a storm with an army aboard.
+    - g3: staged rebellion, rebirth, desertion, famine and deposition in the original; a quarter-boundary pair; the order of treaty and destroy news lines; rough sea; offer frequency.
+- **The AI stall:**
+  - Remake: every nation has a null personality, so the siege gate needs 1550 ‰; 0 of 1,882 pairs reach it.
+  - Original: attacks at about 909 ‰.
+  - Probe: `siege_probe/` (a C# probe against the engine DLL, built outside the repo).
+- **Assembling:** `assemble.py` writes `combined_table.v3.md` and `combined_counts.v3.json`. g2's S05/S05a/S06 cross-checks are counted once.
+
+### Harness changes
+
+- `Game.build_fleet` reads and dismisses the N02 notices ("A fleet of N ships will be ready in W weeks at <city>.") before the dialog, waiting up to 20 s.
+- `patches/ai_hook.py` (v4, 'AIH4', 96-byte records) with `tests/test_ai_hook.py` (`python3 -m tests.test_ai_hook`, unicorn).
+
+### Open items
+
+1. **The gap analysis's remaining original-side checks** (the list above). The player picks the order; the Supply providers and the transfer clamps were offered next.
+2. **The desktop palette check (needs the player on Windows):** `run-exp-desktop-palette/STEPS.md` now also asks for a `ca*.BMP` from the Cellular Automata easter egg, with the colour depth.
+3. **Optional:**
+   - the intercept's threat-aboard branch (never seen in play);
+   - a natural Numidian battle;
+   - the CA in the original (clock) exe.
+4. **Still paused by the player:** battles and bots.
+
+### Gotchas learned
+
+- **Rule-6 slips by subagents:** saves were deleted and regenerated, and two scripts wrote the same file name, which left stale hashes. Brief subagents explicitly that a save name must be unique per script; re-check `SAVES.sha256` against the release before relaying.
+- **The original's AI never fortifies,** and the remake's AI almost never besieges. Idle-Rome samples: the original's Rome is conquered at End turn 28-49 (research `017abed`); the original's driver answers No to every post-battle peace offer.
+- **A pending N02 notice makes `build_fleet` time out** if not handled (fixed). The seventh consecutive order opened nothing within 20 s; unexplained.
+- **`pkill -f` matches its own shell:** never kill by pattern.
+
+### State of memory
+
+- `research-intake-relay.md`: last relay `d13eaca`, promoted `c36b255`, pending 0.
+- `report-new-findings-on-main.md`: the baseline includes all of today's findings.
+- `remake-cli-setup.md`: new, how to run the remake.
+
+## Handover: 2026-10-10 (ic2-conquest session, Opus 5.5 via Claude Code): the move to another computer
+
+### TL;DR
+
+`main` = `origin/main`, nothing open in this repo, no background job. The project is moving to another computer. A separate migration session does the copying; this section says what the target needs and where the work stands. **One finding this session, promoted:** the Supply providers and transfer clamps (gap checks g2 1, 2 and 6).
+
+### What was done
+
+| Finding | What it says | Draft | Research |
+|---|---|---|---|
+| `2026-10-09-supply-providers-and-transfer-clamps` | **Supply:** armies are never providers; with no provider the order is silent; an army supplies from an own fleet; fleet-from-fleet fails when the partner lies west (or north), a last-match scan quirk in `FUN_00449e50`. **Transfer ships:** no box ever; the arrows cap the receiver at 100; no army or capacity test; emptying a carrying fleet tombstones its army. **Transfer unit:** per-unit clamps; exactly 100,000 is allowed; the fleet test truncates (30 ships take 15,499) | `48d59bd` | `fcb0be0` |
+
+- **Data:** `runs/experiments/data/run-exp-supply-transfer-clamps/` (`supply_transfer.py <case>`, one Wine process per case). Release `run-exp-supply-transfer-clamps`: 81 files, hashes checked.
+- **The `wt-cosmetic` edit:** an uncommitted fix to `findings/2026-10-06-cosmetic-gaps.md` (the A01 run-length rows contradicted their numbers) was committed to `experiment/cosmetic-gaps` as `3c9f552`. PR #66 is still open.
+  - **Not delivered:** the research copy (`docs/reports/2026-10-06-cosmetic-gaps.md`, line ~129) still has the old wording. The relay failed because ic2-research was not running. The paste-ready message is in this session's transcript; it repeats the commit message of `3c9f552`. Relay it again when ic2-research runs.
+- **The sibling work folders:** the 19 `~/ic2-work-<name>` copies were moved whole to `~/ic2-work-archive/`, with a `README.txt` inside. About 40 staging or temp saves in them are in no `SAVES.sha256`, so they were archived, not deleted. Memory: `ic2-work-archive.md`.
+
+### The move: what the target needs
+
+| Item | State | On the target |
+|---|---|---|
+| This repo | pushed; all six `wt-*` worktrees clean and pushed | clone; recreate a worktree with `git worktree add` only when needed |
+| `artifacts/` (gitignored, 1.3 GB) | **copied** (9,594 files, checked by the migration session) | keep. Several experiments' releases are incomplete: `battle-sweep` has 6,292 files locally, 1,000 in its release; `gap-v050` 1,345 vs 4; `city-marker-colours`, `owner-colours`, `ai-intercept-hunt` too; three experiments have no release |
+| `rendered/` (gitignored, 90 MB) | left behind | PR-review renders, regenerable |
+| `~/ic2-work` (1.9 GB) | to copy whole (no Wine run was going at the time of writing) | `setup/setup.sh` rebuilds the exes and the prefix, but not the `T_*.SAV` fixtures in `prefix/drive_c/IC2` (the refusal-texts scenarios load them) nor `opencode-data` (rule 7's session records) |
+| `~/ic2-work-archive` (18 GB) | optional, not copied unless asked | |
+| Project memory (`~/.claude/projects/-home-diego-projects-ic2-conquest/memory/`) | copied; same project path on the target | as is |
+| `.claude/settings.local.json` | restored from the encrypted bundle | untracked by design |
+| `ic2-remake-v050` clone and `~/.dotnet` | not copied | recreate: memory `remake-cli-setup.md` |
+| quota-tracker | runs per machine | its OpenCode usage glob is `~/*/opencode-data`; `localhost:8765/health` tells whether it runs; its `/recommend` is a suggestion only, shown to the user with each model question (CLAUDE.md "Choosing models", 2026-10-11; the former L50 rule is superseded) |
+
+- **First run on the target:**
+  - The first Wine start after a copy can be slow. Here a cold start missed the driver's 40 s main-window wait once, then worked on retry (`supply_transfer-P1-20261009-192610.jsonl`).
+  - `gh release` worked with the local `gh` login. `IC2_RELEASE_TOKEN` was not set in this shell.
+- **Not this repo:** `harness_imperial` (6 unpushed commits) and `goal2-archaeology` (13) were copied whole with `.git`; `imperial_conquest_2` is cloned fresh on the target's Windows side (the WSL copy here was 85 behind, nothing unpushed). This session writes to none of them (rule 2).
+
+### Open items
+
+1. **The gap analysis's remaining original-side checks** (the player picks the order):
+   - g2: selecting a 0-move army; an unreachable move target; Change units edge cases (Join of 3+, Rename with 2, Split at 100 troops and its spinner range); a storm with an army aboard.
+   - g1 and g3: the lists in the 2026-10-09 evening section.
+2. **Optional, from the supply finding:** the fleet quirk's north and diagonal tiles (only x−1 was played); a Supply dialog with several providers; a real foreign purchase.
+3. **The desktop palette check (the player, on Windows):** `run-exp-desktop-palette/STEPS.md`.
+4. **The cosmetic-gaps correction to research:** see above.
+5. **Still paused by the player:** battles and bots.
+
+### Gotchas learned
+
+- **A probe's OK loop must wait for the dialog to close**, never press Cancel because it is still on screen. A closed dialog lingers 1-2 s, and `popups()` lists the dialog itself. The finding records the slip; the fixed loop is in `supply_transfer.py`.
+- **A probe that expects "nothing happens" needs a positive control** in the same process (P1: the same army next to Arretium opened the dialog).
+- **The scratchpad does not survive a day change:** files a later comparison needs go under a tracked path or `artifacts/`.
+
+### State of memory
+
+- `research-intake-relay.md`: last relay `48d59bd`, promoted `fcb0be0`, pending 0. The cosmetic-gaps correction is not recorded there; it was never delivered.
+- `report-new-findings-on-main.md`: the baseline includes the supply finding.
+- `ic2-work-archive.md`: new.
+
+## Handover: 2026-10-12 (ic2-conquest session): new computer, the user decides models, g2 done, g1 in review
+
+### TL;DR
+
+Nothing is running. One PR is open: **#79** (g1 original-side checks), reviewed once by GPT-6.1 Sol (medium) with 7 findings; R1, R2 and the code side of R3 are fixed on `experiment/g1-original-checks` (head `2792eab`), R3's hc re-run and R4-R7 remain. Next after #79: **g3** (rows_g3.md checks 1, 2, 3, 5, 6) as its own PR. Battles and bots stay paused.
+
+### What changed in how we work (all in CLAUDE.md)
+
+- **Choosing models: the user decides** (PR #73): before implementing anything, ask the owner who implements (main session in its own worktree, or a subagent) and with which model; at every review ask which external model reviews; quota-tracker's `/recommend` is a suggestion only; never DeepSeek; the reviewer is never of the implementer's family. `scripts/external_review.py` runs exactly the one named model (no chain). Record each choice on the issue or PR.
+- **Monitoring** (rules 8-13): one change-only monitor per run; give every OpenCode run's `ses_…` id with `scripts/peek.sh ses_… -n 20` (PR #76); for a Claude subagent its agent id and transcript path; liveness with `kill -0`, never `pgrep -f`.
+- **Working with the owner** (PR #74): rules that lived only in session memory (ask, merging, after a merge propose the next item and ASK, the current focus, new findings each reply, the research relay).
+- **Failures are fixed, never re-routed** (rule 8; PRs #67, #70): the reviewer watcher classifies failures, resumes in the same session, reads the session before any decision.
+
+### The move to this computer (2026-10-10)
+
+Ubuntu 26.04 WSL, Wine 10.0. `runs/experiments/data/run-exp-machine-move/RESULTS.md`: 38/38 fixtures load; with **fonts-wine and no Liberation fonts** Wine 10 renders like the old computer (the Information panel asks for "Book Antiqua"); replays are byte-identical except the main-window geometry in the save trailer; `tests/test_orders.py` 39/39. The decompile is at `~/ic2-work/decompile/`, pinned by SHA-256 (`harness/decompile.py`, PR #68). Every Wine start records the Wine version and font set (`environment.jsonl`, PR #69).
+
+### Findings this session (all relayed; promoted unless noted)
+
+| Finding | Research |
+|---|---|
+| `2026-10-10-fleet-emptied-by-transfer-money-and-supplies` (PR #71) | promoted 6b96537 |
+| `2026-10-11-g2-original-checks` (PR #77: 0-move army, unreachable move, Join/Rename/Split, storm with cargo) | promoted 1ff54ab (their corrections: spinner clamp is in code at 45224-45268; R41 stands) |
+| `2026-10-11-g1-original-checks` (PR #79) | not yet merged |
+
+### Driver changes worth knowing
+
+- `Game.save_as(name, overwrite=False)` refuses an existing file (PR #77). Old experiment runners that reuse names now stop on a rerun instead of deleting saves; give them stamped names before rerunning.
+- `Game.new_game()` and `harness/new_game.sh` move old AUTO* files into `superseded-<stamp>/` instead of deleting them (on the #79 branch, not yet on main).
+- Open decision: `Game.open` copies a save into the game folder over a same-named file.
+
+### Open items
+
+1. **PR #79**: finish R3 (re-run `python3 g1_checks.py G2_merc hc`), R4 (edit the "agreed in every sheet read" sentence), R5 (FUN_0044a120 text + helper extracts, or narrow), R6 (negative exe search, or narrow), R7 (control-based New Game clicks, re-run G5 patched); the next step for each is in the END block of `docs/progress/g1-original-checks.md`. Then ask the owner who re-checks.
+2. **g3** after #79.
+3. Optional: research's open question on `2026-10-02-fleet-orders-live` ("split army cannot be selected"), now contradicted for 0-move armies.
+4. `scripts/archive_measurements.py --commit` stops on an ignored `__pycache__` path (commit by hand until fixed).
+5. The owner's desktop palette check (`run-exp-desktop-palette/STEPS.md`); PR #66 (cosmetic gaps) still open.
+
+## Handover: 2026-10-12 afternoon (ic2-conquest session, Opus 5.5 via Claude Code) → next session on MiniMax-M3
+
+### TL;DR
+
+Nothing is running (no subagent, no review, no Wine; only the shared `Xvfb :99` stays up). g1, g2 and g3 of the v0.5.0 gap analysis are **merged and promoted** by research. **One PR is open: #84** (g4 follow-ups, issue #83), implemented by a Claude Sonnet subagent, **not yet reviewed**. Next: review #84, mark g3 as promoted, relay g4 once merged. Battles and bots stay paused.
+
+### For a MiniMax session: read first
+
+- Load the `non-claude-backend` skill at start (`~/.claude/skills/non-claude-backend/SKILL.md`): check `$ANTHROPIC_BASE_URL` / `$ANTHROPIC_MODEL`; you are MiniMax-M3, not Claude. Record yourself as "MiniMax-M3 via Claude Code" in every PR, commit, notes file and hand-back.
+- On this backend, an Agent-tool subagent "on Sonnet/Opus" runs on **MiniMax** too (M2.7 / M3), so it is of the **MiniMax family**. A reviewer for work you or your subagents implement must not be MiniMax (CLAUDE.md "Choosing models" rule 4); external reviewers run through `scripts/external_review.py --model <provider/model>` (OpenCode).
+- Claude's quota is irrelevant to you; MiniMax's is (`curl -s localhost:8765/quota/minimax`; 46% headroom at 13:45).
+- **The owner's standing choice of this session ("Sonnet implements, Luna reviews, without asking") was for this session only.** In the new session ask again: rule 1 (who implements, which model) and rule 2 (which reviewer), with quota-tracker's `/recommend` as a suggestion. Only the merge rule (approve from another family + green CI → merge without asking) is standing.
+- Every reply: compare `findings/` on `origin/main` with the baseline in memory `report-new-findings-on-main.md` (it includes `2026-10-12-g3-original-checks.md`).
+
+### Done this session (all on main, all relayed)
+
+| Item | PR | Reviews | Research |
+|---|---|---|---|
+| g1 original-side checks: Balance sheet, debt rounding vs deposition, trade refusals, Save/Open, quit prompt, Rome's start per seed, recruit list, mobilise refusal, news header | #79 (`82151a5`) | gpt-6.1-sol: rework ×3, approve | promoted `442261d` (research PR #15) |
+| driver: `Game.new_game`, `harness/new_game.sh` (via `harness/preserve.sh`) and `Game.open` move files aside, never delete or overwrite (`Game.move_aside`); 5 offline tests | #79 | (same) | — |
+| g3 original-side checks: rebellion, rebirth, mercenary desertion, famine, AI deposition, quarter tick, news order, rough sea, offers | #81 (`069ea3a`) | gpt-6.1-sol: rework ×2; gpt-5.6-luna: approve | promoted `472fba8` (research PR #17) |
+| g1 and g2 drafts marked promoted, g1 intake corrections copied in | #82 (`d50a6a9`) | gpt-5.6-luna: approve (GitGuardian check ended "skipping"; the owner said merge) | — |
+
+Issues #78 and #80 closed.
+
+### Open items, in order
+
+1. **PR #84 (g4 follow-ups, issue #83), review.** Implementer: Claude Sonnet subagent (Claude family), so the reviewer must not be Claude; ask the owner which (this session's reviewer was gpt-5.6-luna; gpt-6.1-sol did the heavier g1/g3 reviews). Write `docs/review-briefs/pr84.md` from `docs/review-briefs/pr81.md` (same "Blocking means": saves kept/hashed/uploaded, no overwriting writer, same-process controls, L1 staging, every claim backed, conditional figures labelled, scans that can detect the opposite). Run alone: `python3 scripts/external_review.py --pr 84 --model '<provider/model#variant>' --brief-file docs/review-briefs/pr84.md --apply-label` in the background with stdin from an empty file, monitor it, give the owner its `ses_…` and `scripts/peek.sh ses_… -n 20`. Fixes go to whoever the owner names, in the existing worktree `.claude/worktrees/g4` (branch `experiment/g4-followups`, head `33f7677`).
+   - What g4 found (from the hand-back; the finding `findings/2026-10-12-g4-followups.md` has the evidence):
+     - **F:** the save flag 0x4a0334 is cleared only in the new-game initialiser.
+     - **C:** each of year 250, unity < 400 and cities > 333 deposes the human.
+     - **B:** ally/war targets get "You cannot trade with X."
+     - **A:** a hired mercenary adds 30.
+     - **D:** human merge only at distance 1, AI at 4 under war threat.
+     - **G:** the unhalved storm roll away from an own city.
+     - **H:** the highest army index wins.
+     - **I:** Rome's quarter is exact, 7 AI nations are not.
+     - **J:** the −8 is the AI's trade-partner swap.
+     - **K:** 0 offers outside the eligible sets in 180 rounds.
+     - **L:** the game painted rough sea, with a tripled storm and move cost 3.
+     - **E:** a real X click under xfwm4 quits with NO prompt, unlike g1's posted SC_CLOSE.
+   - Its own caveats: E's mechanism is inferred; human distance-0 mobilise is unreachable; 7 AI quarter residuals are unexplained; I's four openings are not independent.
+   - Its commits were late against the 30-minute cadence twice; both reminders were answered.
+2. **Mark g3 as promoted** (research asked, `472fba8`): a small PR like #82, changing the Status line of `findings/2026-10-12-g3-original-checks.md` and adding an "Intake corrections" section. Research's corrections, from their ack:
+   - **Rebirth economics:** wealth and tax base move with the cities at once inside the quarter loop. Greece +744,000 wealth, Rome −744,000. Dead staging: tax base ±548. Alive: Greece +176. The draft's "treasury, wealth and tax base of a nation that still holds its 21 cities" is withdrawn.
+   - **New capital:** the reborn nation's city with the greatest full strength (so the alive staging keeps Athens).
+   - **Rebellion:** Arretium and Ariminum don't separate the branches; Pisae with Gaul at unity 0 does.
+   - **Deposition unity:** max(unity, min(550, unity + 150)).
+   - **Rough sea:** local = min(8, 3 × local) before the own-city halving.
+   - **News order:** the 907 blocks are 5 distinct texts; the order is fixed by code (FUN_0044aee4, then FUN_00450c68); the agreed and sues blocks are alternatives.
+   - **Relations −8:** relabelled (dead: Greece–Illyria; alive: Rome–Illyria).
+   - **Wording:** the score distance is city to the candidate's capital; unity floor 250, cap 990; a unity-0 receiver is revived (Gaul 0 → 300).
+   - Still open per research: the deposition relation reset (−5..−1 → 0) not exercised; whether the remake's deposition has the unity < 400 test.
+3. **After #84 merges:** relay it with `/relay-to-research` (one message, all 12 cases). The session `imperial-conquest-research` asked about g4 intake and agreed to **wait for the relay from main** (no promotion from the branch); it will not write to this repo. Then update memory `research-intake-relay.md` and the findings baseline.
+4. Older, unchanged: `scripts/archive_measurements.py --commit` still stops on an ignored `__pycache__` path (subagents commit by hand); PR #66 (cosmetic gaps) still open; the owner's desktop palette check.
+
+### Lessons from this session
+
+- **Brief every implementer with the previous reviews' findings.** g3 started from g1's review list and needed 2 rework rounds instead of 3; g4 started from both.
+- **Tell a fixing subagent to read the full review comment**, not your summary (one round-3 fixer worked from the summary only).
+- **Long Wine experiments drift past the 30-minute commit cadence.** Watch the last commit time and remind; both reminders this session worked.
+- **A Claude subagent's transcript lives under the session that spawned it:** `~/.claude/projects/<project>/<session-id>/subagents/agent-<id>.jsonl`. Check the path before giving it to the owner (this session first gave a wrong one).
+- **A detached review started with `&` inside a foreground command** gives no completion notice: watch its pid with `kill -0` in the monitor, or start it with the tool's background mode.
+- **GitGuardian can hang "in progress" and then end "skipping".** The API cannot re-request it; ask the owner.
+
+## Handover: 2026-10-12 evening (ic2-conquest session, MiniMax-M3 via Claude Code on MiniMax backend, quota tight) → next session on a fresh provider (per non-claude-backend skill)
+
+### TL;DR
+
+PRs #85 (g3 mark) and #86 (archive `__pycache__/` filter) **merged** on `main` (`f799f8a`, `b3acf0c`). PR #84 (g4 follow-ups) is **open** at HEAD `8ffeadd` on `experiment/g4-followups`; round-5 review verdict = `rework` (1 new blocking finding, R1: my `test_receiver_assertion_active` still bypasses `give_cities()`). MiniMax quota window was at 90% (resets in ~25 min from session-end). A new finding-request from `imperial-conquest-research` (unit-map selection rendering for v0.5.3) is **queued**.
+
+### What this session did (2026-10-12, this Claude session id `92497d8f-f48d-4efa-b530-01e57427162d`, ~3h)
+
+- **Started PR #84 review** at the user's request. Branched review brief `docs/review-briefs/pr84.md`. The worktree branch is `experiment/g4-followups`.
+- **Launched PR #85 (g3 mark-promoted)** at `docs/mark-g3-promoted` (`2abe45a` → `5f4af77`). Went 4 review rounds on docs-only: fixed wording deps (3 rounds: "never above 550" wording; branch-separation wording; "so" relation explanations; the +150-after-tick ordering in Still-open). Final approve → merged `f799f8a`.
+- **Launched PR #86 (archive_measurements.py `__pycache__/` filter)** at `fix/archive-pycache` (`e78781f` → `51c988d`). One rework round (test re-implemented filters instead of exercising production; fix extracted production helper `_files_for_check_ignore(d)` and rewrote test to call it). Approve → merged `b3acf0c`.
+- **PR #84 round 1 review**: 10 blocking + 2 non-blocking findings posted.
+- **Launched 4 subagent rounds** for PR #84 fixes (each round produces HEAD on `experiment/g4-followups`):
+  - Round-1 rework (R1..R12): Sonnet subagent `ad1e1571dbd09d25d`, 8 commits `3833165..44cba83`. End-of-round commit `44cba83`.
+  - Round-2 review failed at format (`bad-format` instead of `stopped-with-report`): model output preserved in `/home/diego/projects/ic2-conquest/rendered/pr84-af464f/run-1/result.json`; treated as round-2 verdict per CLAUDE.md rule 7. Reviewer found 5 findings (2 blocking: case I numbers vs `analysis_I.v5.txt`; `give_cities.put()` receiver `snapshot=None`).
+  - Round-2 rework (R1..R5): subagent `ace3528066c40aa8e`, 6 commits `bf0bc1c..0f55c0d`.
+  - Round-3 review: 3 blocking + 2 non-blocking findings posted (full review content posted correctly this time).
+  - Round-3 rework (R1..R5): subagent `a036b21f55f2f5f9f`, 5 commits `c1b4e27..0f55c0d` plus release_sync commit `b592b74`.
+  - Round-4 review: 2 blocking + 3 non-blocking.
+- **Main-session ran round-5 fixes directly** (quota guard fired at 86% during this round; I did the edits myself instead of launching another subagent):
+  - Commit `beff625` (R1): lift `give_cities.put` from a closure inside `give_cities` to module-level helper `_give_cities_put` (g4_lib.py:386). Same signature, identical behaviour. Rewrite `tests/test_give_cities.py`: drop the round-4 `put_clone`; new `test_receiver_assertion_active` calls `_give_cities_put` directly. Caught a bug in my own test (positional args bound `snapshot=set()` to `snapshot`); pass `old_len=0`.
+  - Commit `e998937` (R2): `findings/2026-10-12-g4-followups.md:33` distinguishes the C_real autosave evidence, the 1→334 boundary test, the oversized-list rejection, and the production-assertion negative control.
+  - Commit `a480179` (R3): `g4_checks.py` E loop `if not alive(): break`, and the window-manager cleanup + final log hash in a `finally` block.
+  - Commit `8ffeadd` (R4): README — corrected entry points (`analysis_I.v2.py`, `analysis_J.v2.py`); script versions vs output versions allocated independently; remove "near-arm trials still valid" for `G-20261012-111026` (its File>Open hung; no completed trial).
+- **Launched PR #84 round-5 review** (task `bumrstn58`, OpenCode `ses_ecf1a205affeRSlaTIBE2xZdKk` on `openai/gpt-6.1-sol#medium`). Verdict: REWORK with 1 new blocking R1.
+
+### Open items, in order, for the next session
+
+1. **PR #84 round-6 fix** — implement the round-5 review's R1 then re-review. Heads-up:
+   - The new finding (`result.json` in `/home/diego/projects/ic2-conquest/rendered/pr84-868a26/run-1/result.json` if shape matches round-2, or wherever the round-5 review wrote its run record; the OpenCode session was `bumrstn58`): my `test_receiver_assertion_active` still bypasses `give_cities` because it calls `_give_cities_put` directly. The reviewer wants a receiver-only injection test that calls `give_cities()` end-to-end, monkey-patches `_give_cities_put` to inject a rogue write at the receiver's `+0x2e4` (only on the receiver-call branch, gated on `snapshot is not None`), and asserts the SystemExit fires. This proves give_cities actually passes `snapshot=snap` to the receiver put; a regression to `snapshot=None` would silently disable the assertion in this patched-put scenario and the test would fail. Keep `test_consistent_333_to_334` and `test_oversized_receiver_list_raises` unchanged.
+   - Round-5 commits already on `experiment/g4-followups`: `beff625` `e998937` `a480179` `8ffeadd`. Plus the round-4 release-sync record at `b592b74`.
+2. **PR #84 round-6 re-review** — `python3 scripts/external_review.py --pr 84 --model 'openai/gpt-6.1-sol#medium' --brief-file docs/review-briefs/pr84.md --apply-label` (the standing rule per session). Verify the test calls `_give_cities_put` AND that the regression-sensitivity case is exercised.
+3. **Merge PR #84** (only after approve + green CI). Use `gh pr merge 84 --merge --delete-branch`. The merge rule applies: approve from another model family (openai ≠ MiniMax), GitGuardian pass, no non-blocking notes.
+4. **`/relay-to-research` for the g4 finding** once PR #84 merges. The new file `findings/2026-10-12-g4-followups.md` will be on `origin/main`. Use the project skill `relay-to-research` (or the `.claude/worktrees/g4`-scoped variant). Memory `research-intake-relay.md` records the prior relay (research-intake-relay md has been updated this session to note `findings/2026-10-12-g3-original-checks.md` was marked at `f799f8a` per PR #85).
+5. **Unit-map selection-rendering experiment** (cross-session request from `imperial-conquest-research`): "How does the original draw a selected army, fleet and town on the unit map: what colour does the selected marker take, and what are the shape, size and colour of the selection frame (the user describes a rhombus around it)?" — for v0.5.3, issue diegoami/imperial_conquest_2#1010. Defer to a session with Wine + ample quota. The design: capture the map with nothing selected, left-click each object, capture, deselect. Report frame shape (diamond/square/corners), size in pixels relative to the cell, colours as RGB, whether it blinks, and the marker's colour before and after selection. Deliver: PNGs in a `run-<id>` release; findings draft with Method/Observations/Inferences kept apart; "What this does not establish"; tell the research intake the draft's file name and branch. Don't write to imperial_conquest_2 or the research repo (rule 2).
+
+### Cheat sheet for the next session
+
+- **Working tree**: HEAD is on `experiment/g4-followups` at `8ffeadd` (after the round-5 R1-R4 commits). Briefs for the round work live at `docs/review-briefs/pr84-r{1,3,4,5}-fixes.md` (untracked). PR #84's brief remains `docs/review-briefs/pr84.md`.
+- **Test sanity before launching**: `python3 -m tests.test_give_cities` should still pass (3 tests); `python3 -m tests.test_archive_pycache` from PR #86 may fail if you're on the g4 branch without PR #86's archive_measurements.py changes (PR #86 was merged into `main`, not yet into `experiment/g4-followups`; either back-merge main or commit by hand per the brief's path).
+- **Per-finding instruction in reviewer briefs**: `docs/review-briefs/README.md` (template). Reviews are deterministic and reproducible from the brief + branch HEAD.
+- **External review brief format**: include per-R findings verbatim from the reviewer's posted comment, a fix-by-fix guidance section, a "things NOT to do" list, and the END-block paragraph. Briefs the next session has: pr84-r5-fixes.md (round-5 fixes), and the prior round briefs.
+- **Handover ground rules** (project CLAUDE.md): "Failures are fixed, never re-routed" (rule 8); "Read delegated run final message in full before retrying" (rule 7); the round-3 `bad-format` was retried on the same model with a fresh session — never silently re-routed (this happened twice; the second time round-3's content was preserved as the verdict per CLAUDE.md rule 7).
+- **Quota-aware delegation**: prefer `external_review.py` to OpenCode/openai (not MiniMax budget). Subagent via the Agent tool on MiniMax budget; this session found that MiniMax 5h window was exhausted at 90% during round-5, so the next session should restart on `minimax` (window reset) or `glm`/`claude` if a fresh window matters.
+
+### State of branches
+
+- `main` (origin): `b3acf0c` (PR #86 merged; PR #85 also merged earlier, `f799f8a`).
+- `experiment/g4-followups`: HEAD `8ffeadd`. PR #84 head is `8ffeadd`.
+- Local-only (untracked, brief files): `docs/review-briefs/pr84-r{1,3,4,5}-fixes.md`, `docs/review-briefs/pr84.md` (pushed).
+
+### Older open items still untouched (from prior handovers)
+
+- **PR #66 cosmetic gaps** (open since 2026-10-07). Has design decisions; would need an owner ask before any work.
+- **Player's desktop palette check** (`run-exp-desktop-palette/STEPS.md`); player's task.
+- `scripts/archive_measurements.py --commit` no longer trips on `__pycache__/` on `main` (PR #86) but `experiment/g4-followups` doesn't yet have that fix — back-merge or cherry-pick before relying on the archive script there.

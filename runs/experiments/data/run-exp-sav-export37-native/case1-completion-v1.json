@@ -1,0 +1,170 @@
+{
+  "case": 1,
+  "physical_candidate": "t184-tax-1-n0-0.SAV",
+  "original_EXE_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "Windows": "Microsoft Windows NT10.0.26200.0 x64",
+  "fresh_initial_process": 8252,
+  "fresh_reopen_process": 12860,
+  "original_open_via_identical_short_private_transport_copy": true,
+  "original_load_save_exact_candidate_byte_identity": true,
+  "initial_runtime_scalars": "case1-loaded-scalars-v1.json",
+  "UI_observations": [
+    "OwnedUnitMap/Informationforms inspected privately",
+    "OriginalChangeTaxdialog currenttax0/currentincome0 inspected thenCancel",
+    "Originalrecruitdialog new3000lightinfantryqueue inspected",
+    "PostEndturnInformation showedSpring270week3news"
+  ],
+  "ordinary_order": {
+    "type": "Recruit regular light infantry",
+    "troops": 3000,
+    "city_id": 85,
+    "queue_slot": 4,
+    "treasury": [
+      2200,
+      2170
+    ],
+    "mobilization": [
+      30,
+      32
+    ],
+    "verified_by_original_save": true
+  },
+  "end_turn": {
+    "commands_issued": 1,
+    "week": [
+      1,
+      3
+    ],
+    "year": 270,
+    "season": 0,
+    "current_nation": 0,
+    "tax": 0,
+    "pending_offer_source": -1,
+    "blocking_event_dialogs_observed": 0
+  },
+  "fresh_reopen_save_exact_postturn_byte_identity": true,
+  "UI_capture_limitations": [
+    "Fresh-reopen Information PrintWindow captures N1INF003 and004 are blank; runtime/save equality supplies reopened-state evidence, not a visual news-text assertion for those captures."
+  ],
+  "internal_GUI_callback_instruction_trace": "UNVERIFIED/not instrumented",
+  "complete_queued_event_absence": "not proven; no pending movement/modal observed; recorded selectors -1",
+  "case1_native_open_order_AND_endturn_newsave_close_freshreopen_sequence": "PASS observed",
+  "Windows_candidate_sequences_completed": 1,
+  "Windows_candidate_sequences_required": 3,
+  "full_three_case_gate_complete": false,
+  "reference_controls2_3": "UNPERFORMED",
+  "twelve_native_JSON_conversion_target": "UNMET/separate",
+  "files": [
+    {
+      "private_name": "N1I68B2.SAV",
+      "size": 131313,
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c"
+    },
+    {
+      "private_name": "N1L68B2.SAV",
+      "size": 131313,
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c"
+    },
+    {
+      "private_name": "N1O68B2.SAV",
+      "size": 131313,
+      "sha256": "0253f70e6405d18fd8cfed5dd000971811651cfe3dfd11597633c69376be3128"
+    },
+    {
+      "private_name": "N1E68B2.SAV",
+      "size": 131496,
+      "sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c"
+    },
+    {
+      "private_name": "N1R68B2.SAV",
+      "size": 131496,
+      "sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c"
+    },
+    {
+      "private_name": "C1B68B2.SAV",
+      "size": 131313,
+      "sha256": "26c4cc3b6b963fb45ac1b41d4ad45bb741f0ed3d747f1338d8eec897379a2574"
+    },
+    {
+      "private_name": "C1T68B2.SAV",
+      "size": 131313,
+      "sha256": "27f2aaee278f836ae33747604800847943dd836a6865ec875c49d5f5181faa66"
+    },
+    {
+      "role": "source1",
+      "sha256": "d20971d5c73a39c82bb9a6c76413394d1d6fc8174bf5ae857a8161eaba5d7c10",
+      "unchanged": true
+    },
+    {
+      "role": "physical_candidate1",
+      "sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "unchanged": true
+    },
+    {
+      "role": "original_EXE",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+      "unchanged": true
+    }
+  ],
+  "private_captures": [
+    {
+      "private_name": "N1EXIT01.PNG",
+      "size": 4859,
+      "sha256": "e858a8417b4957bc24e9ce3de0fed93e3c262f642da6bf4d8bbc7397e4e64f95"
+    },
+    {
+      "private_name": "N1EXIT02.PNG",
+      "size": 5134,
+      "sha256": "2fddacd8b1a59132c90ea908310025b1e3f4d7f537b51c34f394f4adad8a4996"
+    },
+    {
+      "private_name": "N1INF001.PNG",
+      "size": 26356,
+      "sha256": "5d45f18aaeec8ffc01807d1da4628139cbd7c512f0075acf67d10b0a08e43a36"
+    },
+    {
+      "private_name": "N1INF002.PNG",
+      "size": 28065,
+      "sha256": "4a09ee3e12859270263f5f87e6bd407ff8a2a20406cccbfa3050199fdca26f87"
+    },
+    {
+      "private_name": "N1INF003.PNG",
+      "size": 28382,
+      "sha256": "c22f34d2de8ca408050493ece930070bdbc4d2a07ebba877ffe8f2ae1e20b0a8"
+    },
+    {
+      "private_name": "N1INF004.PNG",
+      "size": 28382,
+      "sha256": "c22f34d2de8ca408050493ece930070bdbc4d2a07ebba877ffe8f2ae1e20b0a8"
+    },
+    {
+      "private_name": "N1MAP001.PNG",
+      "size": 28649,
+      "sha256": "ffa846205a2a4394511293e8049682be0b75c3d03ff1ce4493c658484efc2ca4"
+    },
+    {
+      "private_name": "N1REC001.PNG",
+      "size": 18990,
+      "sha256": "e8b8a8a2827c1ca19261cd470350642949d41125170eca051eed18170ba9cb9b"
+    },
+    {
+      "private_name": "N1REC002.PNG",
+      "size": 19164,
+      "sha256": "c54172ea99f71fdc4bd67317bcbf21928db29b3c2c281243a0923b6d73a1e315"
+    },
+    {
+      "private_name": "N1REC003.PNG",
+      "size": 19913,
+      "sha256": "2543ded8a595796bc5478dbf102ea3239fd42d66da66f3ecf7867b5919727334"
+    },
+    {
+      "private_name": "N1TAX001.PNG",
+      "size": 6523,
+      "sha256": "e394e252017716c5b5cb01d4699eab6b88f9873628dddbdf0839552c7f1b141b"
+    }
+  ],
+  "final_active_original_process_count": 0,
+  "normal_quit_confirmations_used": true,
+  "forced_termination": false,
+  "last_delivered_MAIN_findings_baseline": "c8f11fceaa5b414724e7925f025c2185fdbf1dcd"
+}

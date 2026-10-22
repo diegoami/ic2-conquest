@@ -1,0 +1,273 @@
+{
+  "created_utc": "2026-10-16T19:50:24.321490+00:00",
+  "sources": {
+    "runs/experiments/tactical25-trace/PortPhases.cs": "1175a320a9f217a1cb920cbdfd425fd90ff5f3f967623f153ac974618a5f206e",
+    "runs/experiments/tactical25-trace/analyze.py": "c5a0647ab7ffd3505f91068fa6f85d8ec2ca458629525ef4bbd92f2ff7428310",
+    "runs/experiments/tactical25-trace/build.py": "d05b0cfa280ea5565a6c810193d3e6e338e78d6e417c801a71ea99cfcc796a96",
+    "runs/experiments/tactical25-trace/byte_audit.py": "ba5a7a184cddfa46d240fb52b2f958127abeef5f08fee5f08c225f102f64163a",
+    "runs/experiments/tactical25-trace/link_draw.py": "63fc851d2dc373eab513ba0c7e2e7bfc0f1ac37fdcec3fe06501bffa5bb43d34",
+    "runs/experiments/tactical25-trace/minimal.py": "a04e62cdcf13e4150fa5bbc286e50b7928c1cf408e82b986512cb67abbf6e2c2",
+    "runs/experiments/tactical25-trace/observer.py": "82e77db23daf3ef68c34fbe3430405cac462d3c8b7cb60618b91eeb66c0e6b23",
+    "runs/experiments/tactical25-trace/port_phases.py": "89fa558f7f5deef012194f773072f223ae92e8b9285d4497ce45c6899607c791",
+    "runs/experiments/tactical25-trace/prepare.py": "1210ca1184fa32482bc2ccdae57fa7363fc153e1e9d1d147fbd62d01572f25c1",
+    "runs/experiments/tactical25-trace/probe_original.py": "78106b0d459d5c88d45b6f94edc0f22a2dc8ac33cf8766304a1694ec24022826",
+    "runs/experiments/tactical25-trace/release_sync.py": "29dbbe05ce37c235be7be36ca0280fa9d339aa347ee0fc0f04fb7ce4c87e46e6",
+    "runs/experiments/tactical25-trace/run.py": "2c22263f1cc918cf9442f1079726115da7d5044ea171f2022e08d52824a58919",
+    "runs/experiments/tactical25-trace/test_observer.py": "88400260c096b155a1336b811b4deb31ae7d3a07c06a58c4349c3d502a36c6e0",
+    "runs/experiments/tactical25-trace/validate.py": "21ddc4e07612a08f50fb18aa1d8599c4c79556b86686ef4ea5d921e4958ebc2d"
+  },
+  "files": {
+    "PortPhases-initial-source.txt": "2275e333c81ee0b9bf305ed6a244e91d984197bfea7e8ad618b285f91ccb2f46",
+    "SAVES.sha256": "f36d67258e2ccc249b8cad6b323c6c8a8fcdeea257c3c910d158a8773fc02c8c",
+    "actor-stack-decode-20261016-1933.txt": "9ff5e6a1133b8c6cf045ebd07d7537ac38d01e56e5ea93a974d778990af5b5be",
+    "analyze-initial-source.txt": "2a31be5a527617bdef274c603f681a8e053ff7bdfe5e81a4226a0446b6081b18",
+    "attribution-20261016-192409.json": "2eddcbb0742ce8a575ad78fb77567c28ef88a5951dfbd5737023f016b52dab49",
+    "attribution-20261016-192641.json": "33e1220514fba72c87f5fa4e0a931d4dcb91267dbaa15d10c5a87a8f5c75e834",
+    "build-20261016-191329.json": "64fc1714f6f8feef7cfb0fa20cd0fc00b49c8b171a4f48b605823f0d13977276",
+    "byte-audit-20261016-193117.json": "a3ac84f0a1abfc9228227ea5541c2ad9e1ea34abd72ab435059b60803b9015db",
+    "byte-audit-20261016-194904.json": "3b36095a2353d205c3e9b1b8aa82bd457e493f82cfe72d1b11d43c23401ea8e0",
+    "cpu-20261016-191210.json": "5b7c82e7bbcd12199d8d095a7e904a2b2094e4ca7925bb4cc18ac668d1b9012d",
+    "cpu-first-attempt-failure.txt": "db3e06c6db1d358b18841e7b5d330951478048cec254ebc28ad7ab850f68f365",
+    "draw-link-20261016-193659.json": "e17a8b69a8d573f681e2303d37b529a122179fab04d65af6e59c9fa1675b6d80",
+    "environment.jsonl": "719ebf5e59a4686a3d522a3074da870712cb77d6b1de94c5bb81c8ff2cea1653",
+    "evidence-manifest-20261016-final.json": "78510c2c06be23bd2287f0356025b9df60fd5f81c482bd02213502b42e2f4132",
+    "hook-20261016-190528-1258374.csv": "1db9b1ffe36c4e43905fba9d0b34fe8e89a12f3002ed9a0551fbf2e5cca7bdfb",
+    "hook-20261016-191329-1302174.csv": "e2f870a5cbddfdef9424db9c58428a6c08d8a471313b7bc73771762a2230bbb6",
+    "minimal-20261016-193117.json": "cdba5c474129b3b63ce7df6727402673bb371c392e4445800017b7f9f923284a",
+    "model-phases-20261016-191547-manifest.json": "5db514f8237ef8a5b71be2f286ec2b957534a2c7cbe9ac3576baeaf48067631c",
+    "model-phases-20261016-191547.log": "f1743bd69957ee9ee2a4155702c432e30d09299c5fe4f15558593fe9b55d83e8",
+    "model-phases-20261016-192217-manifest.json": "0b3d7e5407c025af335555d04416b9fe9c8f9471595b352f30c37ecef78b3fbe",
+    "model-phases-20261016-192217.log": "f1743bd69957ee9ee2a4155702c432e30d09299c5fe4f15558593fe9b55d83e8",
+    "observer-first-build-failure.txt": "6d6354b4989d6bcf0c64829587bd955e50490a085e520d9ffe72ea0939fc106f",
+    "observer-first-build-source.txt": "39ab02ba701dbbf2da72fb2e7bdf0bd25b17df396aa2516d2a2ced4b5569b93f",
+    "port-threat-source-257f2d2.txt": "81cf6c1646f4698c3eb053d38012c50ee2b308a857964b66ae893368845a8891",
+    "prepare-20261016-210318.json": "db79bfd5eea5afe1cd3216125306b343eefe21c220c6ea9ccd04b626cd45cd45",
+    "pure-original-20261016-192034.json": "eda8651bdab9b3a300dbab0feb465a6365eb2b9de440adf3d13c8447c70d6630",
+    "release-inventory-20261016-final.json": "1e5974f9efd7f451f12f06cbb35bdd325761d8c2408334ab265538a28b789976",
+    "release-sync-20261016-210844-1283416.json": "93ec5c78d458a99bf3ca2bf185ac6a7ebb51a56fac6de8956e42c08a1d346ada",
+    "release-sync-20261016-212641-1310466.json": "4746131b81204bdb3346a9f1d29dd51607abb2da4621a887b848cd384990f0d9",
+    "release-sync-20261016-213011-1311896.json": "b82e2451065b093b4de009f3c5b924c97f3587cbfb588809bf0a9be6196d6c23",
+    "run-20261016-190528-1258374.jsonl": "03daca50cc7483cb0c855f575bf51fc72dc908a77d978a9b47e9f6241c6fe0e6",
+    "run-20261016-191329-1302174.jsonl": "a2e7fd6c53c0a7535dff6bf614fedd28e40017e7a8cb2447dc150614c85a6ee7",
+    "run-20261016-210410-1249075.jsonl": "1201695d431c58e8d3eae2fc615e298ea06de77a52ded17a2815a311e2cff65a",
+    "states-20261016-191329-1302174.json": "c04d76a05c250d9bfdaab282a63a0feb4af3ee914db5b1af04de86126c34f31b",
+    "validation-20261016-190814.json": "67f514eb888db90b0731add76705c0d995abda241c2ac68a298df1703ff82bea",
+    "validation-20261016-191525.json": "cc1c8d5cf82e3311dd6981d86819469b1c7d6fb5cc4df6945b444858abd65a3c"
+  },
+  "model_files": {
+    "model-phases-20261016-191547/mix-rg_s1_r5_hook-hr3.json": "7a7d3a84281e975c27ad1a7372534cb166eba5e95643632a0f410e0a3ef04d82",
+    "model-phases-20261016-191547/mix-rg_s1_r5_hook-hr4.json": "c852c9d27a52840a1d5f42dbda4125ee01614ed9335fca00235c2a48a4dada6c",
+    "model-phases-20261016-191547/mix-rg_s1_r5_hook-hr5.json": "232a50c2b322734c9f5673c635a6ecbeac4e398866063941aa594a084563ad3a",
+    "model-phases-20261016-191547/mix-rg_s1_r5_hook-hr6.json": "601a25589bbe50af92b5d4cdad334c1c5ad1742c3043fe14da1e8de0b0d254ca",
+    "model-phases-20261016-191547/summary.json": "e3533f570425de770d01fa03b11da67b93577ca99350cd710fa6f06c02763096",
+    "model-phases-20261016-192217/mix-rg_s1_r5_hook-hr3.json": "913c95dc122eb0f4d9a722c9f91200c803b2f567f57e848f8e5b658a0f67d108",
+    "model-phases-20261016-192217/mix-rg_s1_r5_hook-hr4.json": "b96844db3b171585e31bd4705cadfa7f475f3c1b8ce4aff5ccba3d0e7ccceb30",
+    "model-phases-20261016-192217/mix-rg_s1_r5_hook-hr5.json": "1e5bb3bf2a7478028a1493e6f363a5dac4bba85497c1d3e8eebf3e58fba0109d",
+    "model-phases-20261016-192217/mix-rg_s1_r5_hook-hr6.json": "f3be077bf83bbb051ebe72b8567c852a32c984e9aef08a0fcf4653bd0241191a",
+    "model-phases-20261016-192217/summary.json": "e3533f570425de770d01fa03b11da67b93577ca99350cd710fa6f06c02763096"
+  },
+  "release_checks": [
+    {
+      "local": "20261016-190528-1258374-BATTLE01.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE01.SAV",
+      "sha256": "3f1c5ed7690c8026e9556c9e4840b6956d63feb4ae23169bcfb0d6ac71787eb9"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE02.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE02.SAV",
+      "sha256": "4254fad6cf83a1da4d406cf0dd1f81c662a599fae03b3f38e441a7749a8e2e70"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE03.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE03.SAV",
+      "sha256": "06c0fa8daa03d4b027995a2af5a61a3635809287cb8f3838e691854e501cacb0"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE04.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE04.SAV",
+      "sha256": "0edc944009e54520ba6bad8185a2a992767c0cbe70765ef551e713241091ca35"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE05.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE05.SAV",
+      "sha256": "458a1c60f80c71a10b8bd397b468fe895589cb49ea2970e59943389e61e0593d"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE06.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE06.SAV",
+      "sha256": "de69151203cd4bb20c34a136b32a1ce68110ddc9fb2e0e685940a06eeb082ae9"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE07.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE07.SAV",
+      "sha256": "c8dbc44e4610d26e5ff1514d021248225b32953fbc3d76153cea86c63393990b"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE08.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE08.SAV",
+      "sha256": "7a29e11eeb78ea1589d2efbcbeb2ac35b188461aab142cf72832286dde3c0a2e"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE09.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE09.SAV",
+      "sha256": "6e13e6e38eedd583476ec60789a2555612642e4f6be6a81c6d7119ee1269efcd"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE10.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE10.SAV",
+      "sha256": "a2dc29d1b47e85990a5bceff553883533768ef19b08f2776292ecefe5fec0f79"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE11.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE11.SAV",
+      "sha256": "19f7f110b8787c618318248a65b3e8a7a3815901dcb60ff4aa37e05c33f5e479"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE12.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE12.SAV",
+      "sha256": "3ec2765b983e3ab62198a60ee9176b2585bf62ad38c80934784862a52e2d1e92"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE13.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE13.SAV",
+      "sha256": "0157d9b47b4d85390ae7de1bb29ee63f9758dbc7e447e8411e3ff49aa42afce1"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE14.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE14.SAV",
+      "sha256": "debd9b3ca54ffb3e4123a801cea7f0c75ca89fe6013a52aeb4e584c71ec77d20"
+    },
+    {
+      "local": "20261016-190528-1258374-BATTLE15.SAV",
+      "release_name": "20261016-190528-1258374-BATTLE15.SAV",
+      "sha256": "b9462af8df491805b5ae960d044a424f0391bd6b16959b36ff91b60b9a1e1f14"
+    },
+    {
+      "local": "20261016-190528-1258374-Imperial Conquest 2 tactical25 standard.exe",
+      "release_name": "20261016-190528-1258374-Imperial.Conquest.2.tactical25.standard.exe",
+      "sha256": "58c683daf7dd25a10d6c3467d85c4ccc903a21f0364768cbf975fc575ac234db"
+    },
+    {
+      "local": "20261016-190528-1258374-MIX-RG_start.SAV",
+      "release_name": "20261016-190528-1258374-MIX-RG_start.SAV",
+      "sha256": "39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad"
+    },
+    {
+      "local": "20261016-190528-1258374-hookbuf.bin",
+      "release_name": "20261016-190528-1258374-hookbuf.bin",
+      "sha256": "847799a0b2e53a7b0752171ecef36d68672a2b306817f074c6a9b00916e0a513"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE01.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE01.SAV",
+      "sha256": "3f1c5ed7690c8026e9556c9e4840b6956d63feb4ae23169bcfb0d6ac71787eb9"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE02.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE02.SAV",
+      "sha256": "4254fad6cf83a1da4d406cf0dd1f81c662a599fae03b3f38e441a7749a8e2e70"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE03.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE03.SAV",
+      "sha256": "06c0fa8daa03d4b027995a2af5a61a3635809287cb8f3838e691854e501cacb0"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE04.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE04.SAV",
+      "sha256": "0edc944009e54520ba6bad8185a2a992767c0cbe70765ef551e713241091ca35"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE05.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE05.SAV",
+      "sha256": "458a1c60f80c71a10b8bd397b468fe895589cb49ea2970e59943389e61e0593d"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE06.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE06.SAV",
+      "sha256": "de69151203cd4bb20c34a136b32a1ce68110ddc9fb2e0e685940a06eeb082ae9"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE07.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE07.SAV",
+      "sha256": "c8dbc44e4610d26e5ff1514d021248225b32953fbc3d76153cea86c63393990b"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE08.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE08.SAV",
+      "sha256": "7a29e11eeb78ea1589d2efbcbeb2ac35b188461aab142cf72832286dde3c0a2e"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE09.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE09.SAV",
+      "sha256": "6e13e6e38eedd583476ec60789a2555612642e4f6be6a81c6d7119ee1269efcd"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE10.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE10.SAV",
+      "sha256": "a2dc29d1b47e85990a5bceff553883533768ef19b08f2776292ecefe5fec0f79"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE11.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE11.SAV",
+      "sha256": "19f7f110b8787c618318248a65b3e8a7a3815901dcb60ff4aa37e05c33f5e479"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE12.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE12.SAV",
+      "sha256": "3ec2765b983e3ab62198a60ee9176b2585bf62ad38c80934784862a52e2d1e92"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE13.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE13.SAV",
+      "sha256": "0157d9b47b4d85390ae7de1bb29ee63f9758dbc7e447e8411e3ff49aa42afce1"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE14.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE14.SAV",
+      "sha256": "debd9b3ca54ffb3e4123a801cea7f0c75ca89fe6013a52aeb4e584c71ec77d20"
+    },
+    {
+      "local": "20261016-191329-1302174-BATTLE15.SAV",
+      "release_name": "20261016-191329-1302174-BATTLE15.SAV",
+      "sha256": "b9462af8df491805b5ae960d044a424f0391bd6b16959b36ff91b60b9a1e1f14"
+    },
+    {
+      "local": "20261016-191329-1302174-Imperial Conquest 2 tactical25 state.exe",
+      "release_name": "20261016-191329-1302174-Imperial.Conquest.2.tactical25.state.exe",
+      "sha256": "dae453466e5fd61fe4376192ac669ae5f3703433c65e3e93d9398b45bc00c3ec"
+    },
+    {
+      "local": "20261016-191329-1302174-MIX-RG_start.SAV",
+      "release_name": "20261016-191329-1302174-MIX-RG_start.SAV",
+      "sha256": "39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad"
+    },
+    {
+      "local": "20261016-191329-1302174-hookbuf.bin",
+      "release_name": "20261016-191329-1302174-hookbuf.bin",
+      "sha256": "2c62d00cf951524fabff87c51faf698c0e23ca31089903a6759393173f726350"
+    },
+    {
+      "local": "20261016-191329-1302174-statebuf.bin",
+      "release_name": "20261016-191329-1302174-statebuf.bin",
+      "sha256": "a7b11b0cdabc39dd1c6e193525dfe7c5d0ea2f08dfccac01f0678447405fffbb"
+    },
+    {
+      "local": "20261016-210410-1249075-Imperial Conquest 2 tactical25 standard.exe",
+      "release_name": "20261016-210410-1249075-Imperial.Conquest.2.tactical25.standard.exe",
+      "sha256": "58c683daf7dd25a10d6c3467d85c4ccc903a21f0364768cbf975fc575ac234db"
+    },
+    {
+      "local": "20261016-210410-1249075-MIX-RG_start.SAV",
+      "release_name": "20261016-210410-1249075-MIX-RG_start.SAV",
+      "sha256": "39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad"
+    },
+    {
+      "local": "state-observer-20261016-191329.exe",
+      "release_name": "state-observer-20261016-191329.exe",
+      "sha256": "dae453466e5fd61fe4376192ac669ae5f3703433c65e3e93d9398b45bc00c3ec"
+    }
+  ],
+  "checks": "CPU/build source hashes current;115comparisons,28choices,23Pass1goals; all40release assets digest-identical; original full draw/save identity gate passed",
+  "extension": "Distance byte comparison now includes entire449018..44904d routine; prior measurements retained; no original/port behavior changes"
+}

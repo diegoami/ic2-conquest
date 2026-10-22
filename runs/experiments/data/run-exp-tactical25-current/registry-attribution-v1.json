@@ -1,0 +1,256 @@
+{
+  "build_revision": "a39bdfc2e2d7e39653360641a9fcee3d57c2b775",
+  "registry_path": "tests/IC2.Engine.Tests/Battle/Tactical/GoldenMaster/KnownFailures.json",
+  "registry_git_blob": "665c79eca4b2223fea01faff7e225b9ca053e110",
+  "registry_sha256": "5c7f29d8030fd1c58b41f21ae6271af92e40fe23a719ed7ab1336ed4b5e5f8d1",
+  "registry": [
+    {
+      "Case": "Stale_or_doubled_cells_are_not_repaired:CRAFT_c5_stale_grid",
+      "FirstDifference": "CRAFT_c5_stale_grid: crafted/b3_c5_stale_grid_BATTLE03.SAV (file 3 of 16), cell (4, 7), icon code: port 25, original 50",
+      "Issue": 1106
+    },
+    {
+      "Case": "Stale_or_doubled_cells_are_not_repaired:CRAFT_c6_same_cell",
+      "FirstDifference": "CRAFT_c6_same_cell: crafted/b3_c6_same_cell_BATTLE03.SAV (file 3 of 16), cell (4, 7), icon code: port 25, original 50",
+      "Issue": 1106
+    },
+    {
+      "Case": "Stale_or_doubled_cells_are_not_repaired:CRAFT_d5_stale_grid",
+      "FirstDifference": "CRAFT_d5_stale_grid: crafted/b3_d5_stale_grid_BATTLE02.SAV (file 2 of 13), cell (4, 7), icon code: port 25, original 50",
+      "Issue": 1106
+    },
+    {
+      "Case": "Stale_or_doubled_cells_are_not_repaired:CRAFT_d6_same_cell",
+      "FirstDifference": "CRAFT_d6_same_cell: crafted/b3_d6_same_cell_BATTLE01.SAV (file 1 of 11), slot 0, x: port 6, original 3",
+      "Issue": 1106
+    },
+    {
+      "Case": "The_hooked_series_replays_exactly:mix-rg_s1_r5_hook",
+      "FirstDifference": "mix-rg_s1_r5_hook: hook/mix-rg_s1_r5_hook_BATTLE07.SAV (file 7 of 15), slot 24, troops: port 3910, original 3822",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_hooked_series_replays_exactly:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: hook/mix-rg_s2_r5_hook_BATTLE07.SAV (file 7 of 18), slot 23, troops: port 10614, original 10785",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s1_r5_hook",
+      "FirstDifference": "mix-rg_s1_r5_hook: the port's peace draw is Random(5) = 0, the log's is Random(5) = 4",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_the_peace_roll_when_the_original_did:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: the port's peace draw is Random(5) = 2, the log's is Random(5) = 0",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s1_r5_hook",
+      "FirstDifference": "mix-rg_s1_r5_hook: draw 60: half-round counter 7 (port 7), original site 0x439188 Random(153) = 118, port Random(58) = 44",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_port_draws_what_the_original_drew:mix-rg_s2_r5_hook",
+      "FirstDifference": "mix-rg_s2_r5_hook: draw 67: half-round counter 7 (port 7), original site 0x439188 Random(175) = 173, port Random(481) = 477",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_recorded_series_replays_exactly:gate2_a",
+      "FirstDifference": "gate2_a: probe/gate2_a_BATTLE07.SAV (file 7 of 15), slot 24, troops: port 3910, original 3822",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_recorded_series_replays_exactly:gate2_s2a",
+      "FirstDifference": "gate2_s2a: probe/gate2_s2a_BATTLE07.SAV (file 7 of 18), slot 23, troops: port 10614, original 10785",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_treaty_is_offered_where_the_reports_observed_it:gate2_a",
+      "FirstDifference": "gate2_a: peace offered: port True, original False",
+      "Issue": 1107
+    },
+    {
+      "Case": "The_treaty_is_offered_where_the_reports_observed_it:gate2_s2a",
+      "FirstDifference": "gate2_s2a: peace offered: port False, original True",
+      "Issue": 1107
+    }
+  ],
+  "assertion_count": 14,
+  "note": "Current registry read plus original-hook attribution; NOT a fresh replay or causal closure",
+  "attributions": [
+    {
+      "series": "mix-rg_s1_r5_hook",
+      "zero_based_draw": 60,
+      "original_raw_random": {
+        "seq": "106",
+        "kind": "random",
+        "site": "0x439188",
+        "eax": "153",
+        "edx": "1105",
+        "ecx": "3",
+        "seed_before": "368896245",
+        "seed_after": "3317096650",
+        "result": "118",
+        "counter": "7",
+        "side": "0",
+        "flag": "1",
+        "ebp": "0x49f00c"
+      },
+      "original_shot_marker": {
+        "seq": "105",
+        "kind": "marker",
+        "site": "0x43910c",
+        "eax": "3211269",
+        "edx": "24",
+        "ecx": "191",
+        "seed_before": "368896245",
+        "seed_after": "368896245",
+        "result": "0",
+        "counter": "7",
+        "side": "0",
+        "flag": "1",
+        "ebp": "0x310000"
+      },
+      "actor": 5,
+      "target": 24,
+      "existing_exchange": {
+        "half_round": 7,
+        "kind": "shot",
+        "actor": 5,
+        "target": 24,
+        "seq": 105,
+        "draws": [
+          118,
+          75
+        ],
+        "ranges": [
+          153,
+          153
+        ],
+        "actor_type": "ar",
+        "target_type": "li",
+        "troops_before": [
+          3317,
+          4557
+        ],
+        "n_observed": 153,
+        "n_pred": 153,
+        "n_pred_doubled": 305,
+        "n_ok": true,
+        "doubled": false,
+        "attribution": "confirmed",
+        "loss": 193,
+        "morale_delta_target": -1,
+        "rout": {
+          "half_round": 7,
+          "kind": "rout_test",
+          "unit": 24,
+          "ctx": "after_shot",
+          "troops": 4364,
+          "morale": 51,
+          "type": "li",
+          "draws": [],
+          "ranges": [],
+          "pred_draws": 0,
+          "removed": false
+        }
+      },
+      "port_registered_bound": 58,
+      "port_registered_result": 44,
+      "raw_hook_path": "runs/experiments/data/run-exp-battle-hook/hooklog-mix-rg_s1_r5_hook.csv",
+      "raw_hook_sha256": "0b040aa210012bb1fcdc6126ff61a13e441a02aa78380fe646823ef3a3c1d47f",
+      "exchange_path": "runs/experiments/data/run-exp-battle-hook/exchanges-mix-rg_s1_r5_hook.jsonl",
+      "exchange_sha256": "4dbcf72b694d806030a344b867d28876aa72b7b1475160dff82e268d6d8e477f",
+      "original_claims": "not recorded",
+      "original_general_pass": "not recorded",
+      "current_port_actor_target_and_phase": "not available in this registry"
+    },
+    {
+      "series": "mix-rg_s2_r5_hook",
+      "zero_based_draw": 67,
+      "original_raw_random": {
+        "seq": "113",
+        "kind": "random",
+        "site": "0x439188",
+        "eax": "175",
+        "edx": "1105",
+        "ecx": "3",
+        "seed_before": "1788744665",
+        "seed_after": "4263135038",
+        "result": "173",
+        "counter": "7",
+        "side": "0",
+        "flag": "1",
+        "ebp": "0x49f00c"
+      },
+      "original_shot_marker": {
+        "seq": "112",
+        "kind": "marker",
+        "site": "0x43910c",
+        "eax": "3211269",
+        "edx": "24",
+        "ecx": "218",
+        "seed_before": "1788744665",
+        "seed_after": "1788744665",
+        "result": "0",
+        "counter": "7",
+        "side": "0",
+        "flag": "1",
+        "ebp": "0x310000"
+      },
+      "actor": 5,
+      "target": 24,
+      "existing_exchange": {
+        "half_round": 7,
+        "kind": "shot",
+        "actor": 5,
+        "target": 24,
+        "seq": 112,
+        "draws": [
+          173,
+          118
+        ],
+        "ranges": [
+          175,
+          175
+        ],
+        "actor_type": "ar",
+        "target_type": "li",
+        "troops_before": [
+          3317,
+          6238
+        ],
+        "n_observed": 175,
+        "n_pred": 175,
+        "n_pred_doubled": 349,
+        "n_ok": true,
+        "doubled": false,
+        "attribution": "confirmed",
+        "loss": 291,
+        "morale_delta_target": -1,
+        "rout": {
+          "half_round": 7,
+          "kind": "rout_test",
+          "unit": 24,
+          "ctx": "after_shot",
+          "troops": 5947,
+          "morale": 69,
+          "type": "li",
+          "draws": [],
+          "ranges": [],
+          "pred_draws": 0,
+          "removed": false
+        }
+      },
+      "port_registered_bound": 481,
+      "port_registered_result": 477,
+      "raw_hook_path": "runs/experiments/data/run-exp-battle-hook/hooklog-mix-rg_s2_r5_hook.csv",
+      "raw_hook_sha256": "db9ee73f99a2259f09091e108eb79a6cf770e49bb81839f3f081fb2ec1f10433",
+      "exchange_path": "runs/experiments/data/run-exp-battle-hook/exchanges-mix-rg_s2_r5_hook.jsonl",
+      "exchange_sha256": "f23d36ceb16d45f8cb8b8462a6d4f5d9385394c2f908c62cab3ee27cf9c95855",
+      "original_claims": "not recorded",
+      "original_general_pass": "not recorded",
+      "current_port_actor_target_and_phase": "not available in this registry"
+    }
+  ]
+}

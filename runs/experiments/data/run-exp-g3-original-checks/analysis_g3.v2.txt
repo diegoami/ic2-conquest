@@ -1,0 +1,366 @@
+== Q1 (a)(b): quarterly rebellion, staged week 11 ==
+[g3_checks-Q1ab-20261012-074558.jsonl] q1ab_ctl -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074558_autosave01_q1ab_ctl_t726_AUTO0726.SAV
+   news: [' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 836], 'treasury': [2200, 2221], 'wealth': [2577000, 2601000], 'tax_base': [2528, 2492]} gained [] lost []
+   (no city changed owner)
+[g3_checks-Q1ab-20261012-074558.jsonl] q1ab_capua -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074558_autosave02_q1ab_capua_t726_AUTO0726.SAV
+   city: Capua owner 0->1 alleg 0 loyalty 2->65 fort 57->57 pop 27->27 maxpop 27->27 tribute 6->6
+   news: ['Capua defects from Rome to Carthage.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 816], 'treasury': [2200, 2223], 'wealth': [2577000, 2520000], 'cities_count': [25, 24], 'tax_base': [2528, 2468]} gained [] lost [100]
+   nation Carthage {'unity': [719, 743], 'treasury': [11000, 12073], 'wealth': [4821000, 4947000], 'cities_count': [34, 35], 'tax_base': [8264, 8236]} gained [100] lost []
+[g3_checks-Q1ab-20261012-074558.jsonl] q1ab_venusia -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074558_autosave03_q1ab_venusia_t726_AUTO0726.SAV
+   city: Venusia owner 0->9 alleg 0 loyalty 2->65 fort 61->61 pop 31->31 maxpop 31->31 tribute 7->7
+   news: ['Venusia defects from Rome to Illyria.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 816], 'treasury': [2200, 2225], 'wealth': [2577000, 2508000], 'cities_count': [25, 24], 'tax_base': [2528, 2464]} gained [] lost [115]
+   nation Illyria {'unity': [690, 716], 'treasury': [580, 856], 'wealth': [627000, 744000], 'cities_count': [9, 10], 'tax_base': [356, 368]} gained [115] lost []
+[g3_checks-Q1ab-20261012-074558.jsonl] q1ab_pisae -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074558_autosave04_q1ab_pisae_t726_AUTO0726.SAV
+   city: Pisae owner 0->6 alleg 0 loyalty 2->60 fort 69->51 pop 23->19 maxpop 23->23 tribute 7->7
+   news: ['Pisae   (Rome)  falls to Gaul.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'treasury': [2200, 2222], 'wealth': [2577000, 2532000], 'cities_count': [25, 24], 'tax_base': [2528, 2464]} gained [] lost [71]
+   nation Gaul {'unity': [577, 593], 'treasury': [315, -2221], 'wealth': [1512000, 1644000], 'cities_count': [28, 29], 'tax_base': [584, 548]} gained [71] lost []
+[g3_checks-Q1ab-20261012-074558.jsonl] q1ab_heraclea -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074558_autosave05_q1ab_heraclea_t726_AUTO0726.SAV
+   city: Heraclea owner 0->7 alleg 7 loyalty 2->90 fort 46->46 pop 31->33 maxpop 35->35 tribute 16->16
+   news: ['Heraclea defects from Rome to Greece.', ' ', 'Week  1      Summer      270BC', 'Greece declares war on Illyria.']
+   nation Rome {'unity': [821, 816], 'treasury': [2200, 2212], 'wealth': [2577000, 2502000], 'cities_count': [25, 24], 'tax_base': [2528, 2432]} gained [] lost [120]
+   nation Greece {'unity': [532, 558], 'treasury': [920, 1772], 'wealth': [2550000, 2667000], 'cities_count': [21, 22], 'tax_base': [2352, 2396]} gained [120] lost []
+[g3_checks-Q1ab-20261012-074808.jsonl] q1ab_ariminum -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074808_autosave01_q1ab_ariminum_t726_AUTO0726.SAV
+   city: Ariminum owner 0->6 alleg 0 loyalty 2->65 fort 52->52 pop 24->24 maxpop 24->24 tribute 7->7
+   news: ['Ariminum defects from Rome to Gaul.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 816], 'treasury': [2200, 2222], 'wealth': [2577000, 2529000], 'cities_count': [25, 24], 'tax_base': [2528, 2464]} gained [] lost [87]
+   nation Gaul {'unity': [577, 589], 'treasury': [315, -1234], 'wealth': [1512000, 1659000], 'cities_count': [28, 29], 'tax_base': [584, 556]} gained [87] lost []
+[g3_checks-Q1ab-20261012-074808.jsonl] q1ab_arretium -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074808_autosave02_q1ab_arretium_t726_AUTO0726.SAV
+   city: Arretium owner 0->6 alleg 0 loyalty 2->65 fort 72->72 pop 33->33 maxpop 33->33 tribute 19->19
+   news: ['Arretium defects from Rome to Gaul.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 816], 'treasury': [2200, 2206], 'wealth': [2577000, 2502000], 'cities_count': [25, 24], 'tax_base': [2528, 2416]} gained [] lost [81]
+   nation Gaul {'unity': [577, 587], 'treasury': [315, -1549], 'wealth': [1512000, 1686000], 'cities_count': [28, 29], 'tax_base': [584, 604]} gained [81] lost []
+[g3_checks-Q1ab-20261012-074808.jsonl] q1ab_pisae_gaul_dead -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1ab_20261012-074808_autosave03_q1ab_pisae_gaul_dead_t726_AUTO0726.SAV
+   city: Pisae owner 0->6 alleg 0 loyalty 2->65 fort 69->69 pop 23->23 maxpop 23->23 tribute 7->7
+   news: ['Pisae defects from Rome to Gaul.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 816], 'treasury': [2200, 2222], 'wealth': [2577000, 2532000], 'cities_count': [25, 24], 'tax_base': [2528, 2464]} gained [] lost [71]
+   nation Gaul {'unity': [0, 300], 'treasury': [315, 68], 'wealth': [1512000, 1656000], 'cities_count': [28, 29], 'tax_base': [584, 556]} gained [71] lost []
+[g3_checks-Q1ab-20261012-074558.jsonl] prediction capua: city 100 Capua predicted {'rule': 'd', 'to': 1, 'score': -24} observed owner 1 loyalty 65
+[g3_checks-Q1ab-20261012-074558.jsonl] prediction venusia: city 115 Venusia predicted {'rule': 'd', 'to': 9, 'score': -15} observed owner 9 loyalty 65
+[g3_checks-Q1ab-20261012-074558.jsonl] prediction pisae: city 71 Pisae predicted {'rule': 'c', 'to': 6} observed owner 6 loyalty 60
+[g3_checks-Q1ab-20261012-074558.jsonl] prediction heraclea: city 120 Heraclea predicted {'rule': 'b', 'to': 7} observed owner 7 loyalty 90
+[g3_checks-Q1ab-20261012-074808.jsonl] prediction ariminum: city 87 Ariminum predicted {'rule': 'c', 'to': 6} observed owner 6 loyalty 65
+[g3_checks-Q1ab-20261012-074808.jsonl] prediction arretium: city 81 Arretium predicted {'rule': 'c', 'to': 6} observed owner 6 loyalty 65
+[g3_checks-Q1ab-20261012-074808.jsonl] prediction pisae_gaul_dead: city 71 Pisae predicted {'rule': 'c', 'to': 6} observed owner 6 loyalty 65
+== Q1 (c): rebirth, Greece unity 0 (Q1c: Greece keeps its 21 cities; Q1c_dead: Greece eliminated, its cities given to Macedonia) ==
+[g3_checks-Q1c-20261012-074922.jsonl] q1c_nine -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1c_20261012-074922_autosave01_q1c_nine_t726_AUTO0726.SAV
+   cities moved: 9
+      Cales owner 0->7 alleg 7 loyalty 5->90 fort 51->51 pop 28->28 maxpop 28->28 tribute 11->11
+      Capua owner 0->7 alleg 7 loyalty 5->90 fort 57->57 pop 27->27 maxpop 27->27 tribute 6->6
+      Neapolis owner 0->7 alleg 7 loyalty 5->90 fort 40->40 pop 34->34 maxpop 34->34 tribute 16->16
+      Rhegium owner 0->7 alleg 7 loyalty 5->90 fort 44->44 pop 27->27 maxpop 27->27 tribute 11->11
+      Locri owner 0->7 alleg 7 loyalty 5->90 fort 30->30 pop 22->22 maxpop 22->22 tribute 8->8
+      Thurii owner 0->7 alleg 7 loyalty 5->90 fort 51->51 pop 27->27 maxpop 27->27 tribute 14->14
+      Heraclea owner 0->7 alleg 7 loyalty 5->89 fort 46->46 pop 31->33 maxpop 35->35 tribute 16->16
+      Croton owner 0->7 alleg 7 loyalty 5->90 fort 45->45 pop 33->33 maxpop 33->33 tribute 15->15
+      Tarrentum owner 0->7 alleg 7 loyalty 5->90 fort 62->62 pop 47->50 maxpop 56->56 tribute 64->64
+   news (new): ['Cales defects from Rome to Greece.', 'Capua defects from Rome to Greece.', 'Neapolis defects from Rome to Greece.', 'Rhegium defects from Rome to Greece.', 'Locri defects from Rome to Greece.', 'Thurii defects from Rome to Greece.', 'Heraclea defects from Rome to Greece.', 'Croton defects from Rome to Greece.', 'Tarrentum defects from Rome to Greece.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 656], 'treasury': [2200, 1958], 'wealth': [2577000, 1014000], 'mobilization': [30, 27], 'cities_count': [25, 16], 'tax_base': [2528, 1332]} rel changes {'Macedonia': [-8, -4], 'Greece': [0, -4], 'Illyria': [1, -8]} gained [] lost [97, 100, 101, 111, 116, 119, 120, 122, 123]
+   nation Greece {'unity': [0, 483], 'treasury': [920, 2054], 'wealth': [2550000, 4194000], 'mobilization': [0, 47], 'cities_count': [21, 9], 'tax': [5, 20], 'tax_base': [2352, 3196], 'leader': ['Pergamus', 'Hippias'], 'alive': [False, True]} rel changes {'Rome': [0, -4], 'Carthage': [1, 0], 'Seleucid': [1, 0], 'Ptolemaic': [-10, -6], 'Macedonia': [1, 0], 'Numidia': [0, 1], 'Illyria': [0, 1], 'Galatia': [0, 1]} gained [97, 100, 101, 111, 116, 119, 120, 122, 123] lost [29, 43, 63, 134, 149, 155, 158, 166, 175]
+   cities not moved with loyalty change > 8: []
+[g3_checks-Q1c-20261012-074922.jsonl] q1c_seven_control -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1c_20261012-074922_autosave02_q1c_seven_control_t726_AUTO0726.SAV
+   cities moved: 0
+   news (new): [' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 836], 'treasury': [2200, 2221], 'wealth': [2577000, 2601000], 'mobilization': [30, 27], 'tax_base': [2528, 2492]} rel changes {'Macedonia': [-8, -6]} gained [] lost []
+   nation Greece {'treasury': [920, 890], 'wealth': [2550000, 2568000], 'tax_base': [2352, 2336]} rel changes {'Ptolemaic': [-10, -8]} gained [] lost []
+   cities not moved with loyalty change > 8: []
+[g3_checks-Q1c_dead-20261012-081033.jsonl] q1c_nine_dead -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1c_dead_20261012-081033_autosave01_q1c_nine_dead_t726_AUTO0726.SAV
+   cities moved: 9
+      Cales owner 0->7 alleg 7 loyalty 5->90 fort 51->51 pop 28->28 maxpop 28->28 tribute 11->11
+      Capua owner 0->7 alleg 7 loyalty 5->90 fort 57->57 pop 27->27 maxpop 27->27 tribute 6->6
+      Neapolis owner 0->7 alleg 7 loyalty 5->90 fort 40->40 pop 34->34 maxpop 34->34 tribute 16->16
+      Rhegium owner 0->7 alleg 7 loyalty 5->90 fort 44->44 pop 27->27 maxpop 27->27 tribute 11->11
+      Locri owner 0->7 alleg 7 loyalty 5->90 fort 30->30 pop 22->22 maxpop 22->22 tribute 8->8
+      Thurii owner 0->7 alleg 7 loyalty 5->90 fort 51->51 pop 27->27 maxpop 27->27 tribute 14->14
+      Heraclea owner 0->7 alleg 7 loyalty 5->89 fort 46->46 pop 31->33 maxpop 35->35 tribute 16->16
+      Croton owner 0->7 alleg 7 loyalty 5->90 fort 45->45 pop 33->33 maxpop 33->33 tribute 15->15
+      Tarrentum owner 0->7 alleg 7 loyalty 5->98 fort 62->72 pop 47->62 maxpop 56->76 tribute 64->89
+   news (new): ['Cales defects from Rome to Greece.', 'Capua defects from Rome to Greece.', 'Neapolis defects from Rome to Greece.', 'Rhegium defects from Rome to Greece.', 'Locri defects from Rome to Greece.', 'Thurii defects from Rome to Greece.', 'Heraclea defects from Rome to Greece.', 'Croton defects from Rome to Greece.', 'Tarrentum defects from Rome to Greece.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 656], 'treasury': [2200, 1958], 'wealth': [2577000, 1014000], 'mobilization': [30, 27], 'cities_count': [25, 16], 'tax_base': [2528, 1332]} rel changes {'Macedonia': [-8, -4], 'Greece': [0, -4]} gained [] lost [97, 100, 101, 111, 116, 119, 120, 122, 123]
+   nation Greece {'unity': [0, 483], 'treasury': [920, 943], 'wealth': [2550000, 1623000], 'mobilization': [0, 55], 'capital': [-1, 123], 'cities_count': [0, 9], 'tax': [5, 20], 'tax_base': [2352, 1220], 'leader': ['Pergamus', 'Hippias'], 'alive': [False, True]} rel changes {'Rome': [0, -4], 'Carthage': [1, 0], 'Seleucid': [1, 0], 'Ptolemaic': [-10, -6], 'Macedonia': [1, 0], 'Numidia': [0, 1], 'Illyria': [0, -8], 'Galatia': [0, 1], 'Armenia': [0, 1]} gained [97, 100, 101, 111, 116, 119, 120, 122, 123] lost []
+   cities not moved with loyalty change > 8: []
+[g3_checks-Q1c_dead-20261012-081033.jsonl] q1c_seven_dead_control -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1c_dead_20261012-081033_autosave02_q1c_seven_dead_control_t726_AUTO0726.SAV
+   cities moved: 0
+   news (new): [' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 836], 'treasury': [2200, 2221], 'wealth': [2577000, 2601000], 'mobilization': [30, 27], 'tax_base': [2528, 2492]} rel changes {'Macedonia': [-8, -6]} gained [] lost []
+   nation Greece {'treasury': [920, 862], 'wealth': [2550000, 0], 'tax_base': [2352, 0]} rel changes {'Seleucid': [1, -8], 'Ptolemaic': [-10, -8], 'Macedonia': [1, -8]} gained [] lost []
+   cities not moved with loyalty change > 8: []
+[g3_checks-Q1c_dead-20261012-081033.jsonl] q1c_nine_dead_again -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1c_dead_20261012-081033_autosave03_q1c_nine_dead_again_t726_AUTO0726.SAV
+   cities moved: 9
+      Cales owner 0->7 alleg 7 loyalty 5->90 fort 51->51 pop 28->28 maxpop 28->28 tribute 11->11
+      Capua owner 0->7 alleg 7 loyalty 5->89 fort 57->57 pop 27->27 maxpop 27->27 tribute 6->6
+      Neapolis owner 0->7 alleg 7 loyalty 5->90 fort 40->40 pop 34->34 maxpop 34->34 tribute 16->16
+      Rhegium owner 0->7 alleg 7 loyalty 5->90 fort 44->44 pop 27->27 maxpop 27->27 tribute 11->11
+      Locri owner 0->7 alleg 7 loyalty 5->90 fort 30->30 pop 22->22 maxpop 22->22 tribute 8->8
+      Thurii owner 0->7 alleg 7 loyalty 5->88 fort 51->51 pop 27->27 maxpop 27->27 tribute 14->14
+      Heraclea owner 0->7 alleg 7 loyalty 5->90 fort 46->46 pop 31->33 maxpop 35->35 tribute 16->16
+      Croton owner 0->7 alleg 7 loyalty 5->90 fort 45->45 pop 33->33 maxpop 33->33 tribute 15->15
+      Tarrentum owner 0->7 alleg 7 loyalty 5->98 fort 62->72 pop 47->62 maxpop 56->76 tribute 64->89
+   news (new): ['Cales defects from Rome to Greece.', 'Capua defects from Rome to Greece.', 'Neapolis defects from Rome to Greece.', 'Rhegium defects from Rome to Greece.', 'Locri defects from Rome to Greece.', 'Thurii defects from Rome to Greece.', 'Heraclea defects from Rome to Greece.', 'Croton defects from Rome to Greece.', 'Tarrentum defects from Rome to Greece.', ' ', 'Week  1      Summer      270BC']
+   nation Rome {'unity': [821, 656], 'treasury': [2200, 1958], 'wealth': [2577000, 1014000], 'mobilization': [30, 27], 'cities_count': [25, 16], 'tax_base': [2528, 1332]} rel changes {'Macedonia': [-8, -4], 'Greece': [0, -4]} gained [] lost [97, 100, 101, 111, 116, 119, 120, 122, 123]
+   nation Greece {'unity': [0, 483], 'treasury': [920, 1019], 'wealth': [2550000, 1623000], 'mobilization': [0, 66], 'capital': [-1, 123], 'cities_count': [0, 9], 'tax': [5, 20], 'tax_base': [2352, 1220], 'leader': ['Pergamus', 'Hippias'], 'alive': [False, True]} rel changes {'Rome': [0, -4], 'Carthage': [1, 0], 'Seleucid': [1, 0], 'Ptolemaic': [-10, -8], 'Macedonia': [1, 0], 'Numidia': [0, 1], 'Illyria': [0, -8], 'Galatia': [0, 1], 'Armenia': [0, 1]} gained [97, 100, 101, 111, 116, 119, 120, 122, 123] lost []
+   cities not moved with loyalty change > 8: []
+== Q1 (d): mercenary desertion, staged week 11 ==
+[g3_checks-Q1d-20261012-075010.jsonl] q1d_one_purse100_control -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1d_20261012-075010_autosave01_q1d_one_purse100_control_t726_AUTO0726.SAV
+   army 0 before: moves 8 supplies 170 purse 100 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'li', 3000, 6, 11)]
+   army 0 after : moves 9 supplies 117 purse 82 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'li', 3000, 6, 11)]
+   news (new): [' ', 'Week  1      Summer      270BC']
+[g3_checks-Q1d-20261012-075010.jsonl] q1d_one_purse0 -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1d_20261012-075010_autosave02_q1d_one_purse0_t726_AUTO0726.SAV
+   army 0 before: moves 8 supplies 170 purse 0 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'li', 3000, 6, 11)]
+   army 0 after : moves 9 supplies 87 purse 0 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0)]
+   news (new): [' ', 'Week  1      Summer      270BC']
+[g3_checks-Q1d-20261012-075010.jsonl] q1d_two_purse100_control -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1d_20261012-075010_autosave03_q1d_two_purse100_control_t726_AUTO0726.SAV
+   army 0 before: moves 8 supplies 170 purse 100 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'li', 3000, 6, 11), (7, 'ar', 2000, 7, 14)]
+   army 0 after : moves 9 supplies 113 purse 68 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'li', 3000, 6, 11), (7, 'ar', 2000, 7, 14)]
+   news (new): [' ', 'Week  1      Summer      270BC']
+[g3_checks-Q1d-20261012-075010.jsonl] q1d_two_purse0 -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q1d_20261012-075010_autosave04_q1d_two_purse0_t726_AUTO0726.SAV
+   army 0 before: moves 8 supplies 170 purse 0 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'li', 3000, 6, 11), (7, 'ar', 2000, 7, 14)]
+   army 0 after : moves 9 supplies 83 purse 0 morale 70 units [(0, 'li', 4800, 6, 0), (1, 'hi', 5000, 8, 0), (2, 'hi', 5200, 7, 0), (3, 'hi', 5900, 7, 0), (4, 'lc', 900, 6, 0), (5, 'hc', 1900, 7, 0), (6, 'ar', 2000, 7, 14)]
+   news (new): [' ', 'Week  1      Summer      270BC']
+== Q1 (e): winter famine loyalty (Random(3)==0 -> loyalty -1 when stock is 0 after the round, season 3) ==
+groups: {'n_test': 15, 'n_control': 10} test ids [80, 82, 85, 88, 90, 91, 97, 101, 106, 111, 115, 116, 120, 123, 125] control ids [71, 81, 87, 89, 96, 100, 110, 113, 119, 122]
+   round 1 test: cities 15, stock 0 after 15 (loyalty delta 0 or -1: 15, of which -1: 1); stock>0 0 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 1 ctl: cities 10, stock 0 after 0 (loyalty delta 0 or -1: 0, of which -1: 0); stock>0 10 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 1 other: cities 309, stock 0 after 13 (loyalty delta 0 or -1: 13, of which -1: 4); stock>0 296 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 2 test: cities 15, stock 0 after 15 (loyalty delta 0 or -1: 15, of which -1: 4); stock>0 0 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 2 ctl: cities 10, stock 0 after 0 (loyalty delta 0 or -1: 0, of which -1: 0); stock>0 10 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 2 other: cities 309, stock 0 after 74 (loyalty delta 0 or -1: 74, of which -1: 23); stock>0 235 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 3 test: cities 15, stock 0 after 15 (loyalty delta 0 or -1: 15, of which -1: 6); stock>0 0 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 3 ctl: cities 10, stock 0 after 0 (loyalty delta 0 or -1: 0, of which -1: 0); stock>0 10 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): [(87, 77, 40)]; other deltas among stock-0 cities: []
+   round 3 other: cities 309, stock 0 after 260 (loyalty delta 0 or -1: 257, of which -1: 86); stock>0 49 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: [-3, 29, 22]
+   round 4 test: cities 15, stock 0 after 15 (loyalty delta 0 or -1: 14, of which -1: 4); stock>0 0 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: [-38]
+   round 4 ctl: cities 10, stock 0 after 1 (loyalty delta 0 or -1: 1, of which -1: 0); stock>0 9 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: []
+   round 4 other: cities 309, stock 0 after 303 (loyalty delta 0 or -1: 302, of which -1: 87); stock>0 6 with a loyalty change of 1..3: 0, with a change > 3 (a capture or a defection, not famine): []; other deltas among stock-0 cities: [-3]
+   TOTAL test: stock-0 city-rounds (delta 0/-1) 59, loyalty -1: 15 = 0.254 ; stock>0 city-rounds 0, with loyalty change 0
+   TOTAL ctl: stock-0 city-rounds (delta 0/-1) 1, loyalty -1: 0 = 0.000 ; stock>0 city-rounds 39, with loyalty change 0
+   TOTAL other: stock-0 city-rounds (delta 0/-1) 646, loyalty -1: 200 = 0.310 ; stock>0 city-rounds 586, with loyalty change 0
+== Q1 (f): AI nations at treasury -50,000, week 11 quarter round, same staged save opened again in one process ==
+[g3_checks-Q1f-20261012-075413.jsonl] staged: Q1f_20261012-075413_staged_q1f_debt50000_run0-start-AUTO0720-seed12345.SAV ops [['treasury', 2, -50000], ['treasury', 3, -50000], ['treasury', 5, -50000], ['treasury', 6, -50000], ['treasury', 7, -50000], ['treasury', 8, -50000], ['treasury', 9, -50000], ['treasury', 10, -50000], ['treasury', 11, -50000], ['treasury', 12, -50000], ['treasury', 13, -50000], ['treasury', 14, -50000], ['treasury', 15, -50000]]
+   per round deposed: [('q1f_r01', ['Armenia', 'Celtiberia']), ('q1f_r02', ['Bithynia', 'Illyria', 'Numidia']), ('q1f_r03', []), ('q1f_r04', ['Illyria']), ('q1f_r05', []), ('q1f_r06', ['Armenia', 'Celtiberia', 'Dacia']), ('q1f_r07', []), ('q1f_r08', []), ('q1f_r09', ['Greece', 'Ptolemaic']), ('q1f_r10', ['Galatia', 'Media', 'Numidia']), ('q1f_r11', ['Thracia']), ('q1f_r12', [])]
+   debtor: trials 156, deposed 15 = 0.096  (1/9 = 0.111)
+   solvent_u719: trials 12, deposed 0 = 0.000  (1/9 = 0.111)
+   solvent_u838: trials 12, deposed 0 = 0.000  (1/9 = 0.111)
+   (key, nation, unity before, unity after, treasury after) DEPOSED: [('debtor', 'Celtiberia', 713, 720, 0), ('debtor', 'Armenia', 660, 681, 0), ('debtor', 'Numidia', 619, 642, 0), ('debtor', 'Illyria', 690, 713, 0), ('debtor', 'Bithynia', 654, 663, 0), ('debtor', 'Illyria', 690, 713, 0), ('debtor', 'Celtiberia', 713, 720, 0), ('debtor', 'Dacia', 607, 630, 0), ('debtor', 'Armenia', 660, 681, 0), ('debtor', 'Ptolemaic', 666, 682, 0), ('debtor', 'Greece', 532, 555, 0), ('debtor', 'Numidia', 619, 642, 0), ('debtor', 'Galatia', 728, 727, -36), ('debtor', 'Media', 682, 698, 0), ('debtor', 'Thracia', 703, 721, 0)]
+   unity change (n,min,max,mean) debtor: deposed (15, -1, 23, 16.8); not deposed (141, -1, 23, 15.26241134751773)
+   unity change (n,min,max,mean) solvent_u719: deposed None; not deposed (12, 21, 21, 21.0)
+   unity change (n,min,max,mean) solvent_u838: deposed None; not deposed (12, 15, 15, 15.0)
+   treasury after, deposed: [(-36, 1), (0, 14)]  not deposed debtors: [(-51657, 1), (-51534, 1), (-51433, 1), (-51431, 1), (-51379, 1), (-51321, 1), (-51311, 1), (-51260, 1), (-51226, 1), (-51118, 1), (-51030, 1), (-51010, 1)]
+[g3_checks-Q1f-20261012-080534.jsonl] staged: Q1f_20261012-080534_staged_q1f_debt50000_unity_run0-start-AUTO0720-seed12345.SAV ops [['treasury', 2, -50000], ['treasury', 3, -50000], ['treasury', 5, -50000], ['treasury', 6, -50000], ['treasury', 7, -50000], ['treasury', 8, -50000], ['treasury', 9, -50000], ['treasury', 10, -50000], ['treasury', 11, -50000], ['treasury', 12, -50000], ['treasury', 13, -50000], ['treasury', 14, -50000], ['treasury', 15, -50000], ['unity', 2, 400], ['unity', 3, 400], ['unity', 5, 400], ['unity', 6, 400], ['unity', 7, 400], ['unity', 8, 400], ['unity', 9, 400], ['unity', 10, 400], ['unity', 11, 400], ['unity', 12, 400], ['unity', 13, 400], ['unity', 14, 400], ['unity', 15, 400], ['unity', 1, 350], ['unity', 4, 800]]
+   per round deposed: [('q1f_r01', ['Armenia', 'Celtiberia']), ('q1f_r02', ['Galatia', 'Greece']), ('q1f_r03', ['Carthage', 'Thracia']), ('q1f_r04', ['Illyria']), ('q1f_r05', []), ('q1f_r06', ['Gaul']), ('q1f_r07', ['Bithynia', 'Galatia', 'Numidia', 'Ptolemaic']), ('q1f_r08', ['Gaul']), ('q1f_r09', ['Carthage', 'Dacia', 'Galatia']), ('q1f_r10', ['Seleucid']), ('q1f_r11', []), ('q1f_r12', ['Bithynia', 'Greece'])]
+   debtor: trials 156, deposed 17 = 0.109  (1/9 = 0.111)
+   solvent_u350: trials 12, deposed 2 = 0.167  (1/9 = 0.111)
+   solvent_u800: trials 12, deposed 0 = 0.000  (1/9 = 0.111)
+   (key, nation, unity before, unity after, treasury after) DEPOSED: [('debtor', 'Celtiberia', 400, 550, 0), ('debtor', 'Armenia', 400, 550, 0), ('debtor', 'Greece', 400, 550, 0), ('debtor', 'Galatia', 400, 549, -300), ('solvent_u350', 'Carthage', 350, 523, 12631), ('debtor', 'Thracia', 400, 550, 0), ('debtor', 'Illyria', 400, 550, 0), ('debtor', 'Gaul', 400, 550, 0), ('debtor', 'Ptolemaic', 400, 550, 0), ('debtor', 'Numidia', 400, 550, 0), ('debtor', 'Bithynia', 400, 550, 0), ('debtor', 'Galatia', 400, 549, -600), ('debtor', 'Gaul', 400, 550, 0), ('solvent_u350', 'Carthage', 350, 523, 12631), ('debtor', 'Dacia', 400, 550, 0), ('debtor', 'Galatia', 400, 549, -210), ('debtor', 'Seleucid', 400, 550, 0), ('debtor', 'Greece', 400, 550, 0), ('debtor', 'Bithynia', 400, 550, 0)]
+   unity change (n,min,max,mean) debtor: deposed (17, 149, 150, 149.8235294117647); not deposed (139, -1, 23, 16.071942446043167)
+   unity change (n,min,max,mean) solvent_u350: deposed (2, 173, 173, 173.0); not deposed (10, 23, 23, 23.0)
+   unity change (n,min,max,mean) solvent_u800: deposed None; not deposed (12, 15, 15, 15.0)
+   treasury after, deposed: [(-600, 1), (-300, 1), (-210, 1), (0, 14), (12631, 2)]  not deposed debtors: [(-51559, 1), (-51459, 1), (-51458, 1), (-51419, 1), (-51404, 1), (-51379, 1), (-51363, 1), (-51339, 1), (-51267, 1), (-51129, 1), (-51115, 1), (-51111, 1)]
+== Q2: quarter boundary, Rome (natural run Q2: six rounds from the start save; staged run Q2b: week-11 save, no AI capture first) ==
+[g3_checks-Q2-20261012-075845.jsonl]
+   sheet before_round1: revenue OCR [('taxes', 252), ('tribute', 632), ('trade', 29), ('total', 913)] expenditure OCR [('administration', 303), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 877)] balance(treasury) 2200 debt limit 5000; memory taxes 252 tribute 632 admin 303 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2577000 tax_base 2528 image Q2_20261012-075845_balance_before_round1.png
+   round 1 q2_round1 -> {'season': 0, 'week': 3, 'year_bc': 270} kept=Q2_20261012-075845_autosave01_round1_t721_AUTO0721.SAV: Rome treasury 2200->2200 (+0) unity 821->821 mobilization 30->30 wealth 2577000->2577000 tax_base 2528->2528 cities 25->25 tax 10
+      news: [' ', 'Week  3      Spring      270BC']
+   round 2 q2_round2 -> {'season': 0, 'week': 5, 'year_bc': 270} kept=Q2_20261012-075845_autosave02_round2_t722_AUTO0722.SAV: Rome treasury 2200->2200 (+0) unity 821->821 mobilization 30->30 wealth 2577000->2577000 tax_base 2528->2528 cities 25->25 tax 10
+      news: ['Carthage destroys army of Celtiberia.', 'Celtiberia sues Carthage for peace and;', '    Celtiberia ends all current trading agreements.', '    Celtiberia  ends all current alliances.', '    Celtiberia pays reparations of 384 talents.', ' ', 'Week  5      Spring      270BC']
+   round 3 q2_round3 -> {'season': 0, 'week': 7, 'year_bc': 270} kept=Q2_20261012-075845_autosave03_round3_t723_AUTO0723.SAV: Rome treasury 2200->2200 (+0) unity 821->806 mobilization 30->30 wealth 2577000->2520000 tax_base 2528->2508 cities 25->24 tax 10
+      news: ['Seleucid destroys army of Bithynia.', 'Bithynia sues Seleucid for peace and;', '    Bithynia ends all current trading agreements.', '    Bithynia  ends all current alliances.', '    Bithynia pays reparations of 339 talents.', 'Ariminum   (Rome)  falls to Gaul.', ' ', 'Week  7      Spring      270BC', 'Seleucid destroys army of Galatia.', 'Galatia sues Seleucid for peace and;', '    Galatia ends all current trading agreements.', '    Galatia  ends all current alliances.', '    Galatia pays reparations of 159 talents.']
+   round 4 q2_round4 -> {'season': 0, 'week': 9, 'year_bc': 270} kept=Q2_20261012-075845_autosave04_round4_t724_AUTO0724.SAV: Rome treasury 2200->2200 (+0) unity 806->791 mobilization 30->30 wealth 2520000->2451000 tax_base 2508->2472 cities 24->23 tax 10
+      news: ['Tarquinii   (Rome)  falls to Gaul.', ' ', 'Week  9      Spring      270BC', 'Greece declares war on Illyria.']
+   round 5 q2_round5 -> {'season': 0, 'week': 11, 'year_bc': 270} kept=Q2_20261012-075845_autosave05_round5_t725_AUTO0725.SAV: Rome treasury 2200->2200 (+0) unity 791->776 mobilization 30->30 wealth 2451000->2361000 tax_base 2472->2412 cities 23->22 tax 10
+      news: ['Caere   (Rome)  falls to Gaul.', ' ', 'Week  11      Spring      270BC']
+   sheet before_round6: revenue OCR [('taxes', 241), ('tribute', 603), ('trade', 29), ('total', 873)] expenditure OCR [('administration', 272), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 846)] balance(treasury) 2200 debt limit 4700; memory taxes 241 tribute 603 admin 272 fleet 0 recruit 121 regular 453 merc 0 ncities 22 wealth 2361000 tax_base 2412 image Q2_20261012-075845_balance_before_round6.png
+   round 6 q2_round6 -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q2_20261012-075845_autosave06_round6_t726_AUTO0726.SAV: Rome treasury 2200->2203 (+3) unity 776->776 mobilization 30->27 wealth 2361000->2280000 tax_base 2412->2316 cities 22->21 tax 10
+      news: ['Carsioli   (Rome)  falls to Gaul.', ' ', 'Week  1      Summer      270BC']
+      balance-sheet balance before tick +27 (revenue - expenditure), after tick +3; observed treasury change +3
+      income terms from the after state: tax_base*tax/100 = 231, tax_base/4 = 579, -7*cities = -147, -wealth/20000 = -114
+      mobilization: max(0, 30-3) = 27, observed 27
+      unity formula min(990, max(300, 25 - tax/2 + unity - mob'/5)) with unity before the nation loop unknown when cities changed hands; without events: 791, observed 776
+   sheet after_round6: revenue OCR [('taxes', 231), ('tribute', 579), ('trade', 28), ('total', 838)] expenditure OCR [('administration', 261), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 835)] balance(treasury) 2203 debt limit 4500; memory taxes 231 tribute 579 admin 261 fleet 0 recruit 121 regular 453 merc 0 ncities 21 wealth 2280000 tax_base 2316 image Q2_20261012-075845_balance_after_round6.png
+[g3_checks-Q2b-20261012-080344.jsonl]
+   sheet q2b_1_before: revenue OCR [('taxes', 252), ('tribute', 632), ('trade', 29), ('total', 913)] expenditure OCR [('administration', 303), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 877)] balance(treasury) 2200 debt limit 5000; memory taxes 252 tribute 632 admin 303 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2577000 tax_base 2528 image Q2b_20261012-080344_balance_q2b_1_before.png
+   round 1 q2b_1 -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q2b_20261012-080344_autosave01_q2b_1_t726_AUTO0726.SAV: Rome treasury 2200->2221 (+21) unity 821->836 mobilization 30->27 wealth 2577000->2601000 tax_base 2528->2492 cities 25->25 tax 10
+      news: [' ', 'Week  1      Summer      270BC']
+      balance-sheet balance before tick +36 (revenue - expenditure), after tick +21; observed treasury change +21
+      income terms from the after state: tax_base*tax/100 = 249, tax_base/4 = 623, -7*cities = -175, -wealth/20000 = -130
+      mobilization: max(0, 30-3) = 27, observed 27
+      unity formula min(990, max(300, 25 - tax/2 + unity - mob'/5)) with unity before the nation loop unknown when cities changed hands; without events: 836, observed 836
+      per-city population, formula of FUN_00451b40 vs observed, all 334 cities: match 334, differ 0: []
+      Rome's cities (name, pop before, pop after): [('Pisae', 23, 23), ('Tarquinii', 27, 27), ('Arretium', 33, 33), ('Caere', 34, 34), ('Rome', 181, 181), ('Ariminum', 24, 24), ('Carsioli', 22, 22), ('Antium', 33, 33), ('Alba Fucens', 23, 23), ('Fregellae', 23, 23), ('Hadria', 18, 20), ('Cales', 28, 28), ('Capua', 27, 27), ('Neapolis', 34, 34), ('Paestum', 19, 20), ('Luceria', 39, 39), ('Rhegium', 27, 27), ('Teanum Apulum', 24, 24), ('Venusia', 31, 31), ('Locri', 22, 22), ('Thurii', 27, 27), ('Heraclea', 31, 33), ('Croton', 33, 33), ('Tarrentum', 47, 50), ('Brundisium', 29, 29)]
+   sheet q2b_1_after: revenue OCR [('taxes', 249), ('tribute', 623), ('trade', 28), ('total', 900)] expenditure OCR [('administration', 305), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 879)] balance(treasury) 2221 debt limit 5000; memory taxes 249 tribute 623 admin 305 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2601000 tax_base 2492 image Q2b_20261012-080344_balance_q2b_1_after.png
+   sheet q2b_2_before: revenue OCR [('taxes', 252), ('tribute', 632), ('trade', 29), ('total', 913)] expenditure OCR [('administration', 303), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 877)] balance(treasury) 2200 debt limit 5000; memory taxes 252 tribute 632 admin 303 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2577000 tax_base 2528 image Q2b_20261012-080344_balance_q2b_2_before.png
+   round 2 q2b_2 -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q2b_20261012-080344_autosave02_q2b_2_t726_AUTO0726.SAV: Rome treasury 2200->2221 (+21) unity 821->836 mobilization 30->27 wealth 2577000->2601000 tax_base 2528->2492 cities 25->25 tax 10
+      news: None
+      balance-sheet balance before tick +36 (revenue - expenditure), after tick +21; observed treasury change +21
+      income terms from the after state: tax_base*tax/100 = 249, tax_base/4 = 623, -7*cities = -175, -wealth/20000 = -130
+      mobilization: max(0, 30-3) = 27, observed 27
+      unity formula min(990, max(300, 25 - tax/2 + unity - mob'/5)) with unity before the nation loop unknown when cities changed hands; without events: 836, observed 836
+      per-city population, formula of FUN_00451b40 vs observed, all 334 cities: match 334, differ 0: []
+      Rome's cities (name, pop before, pop after): [('Pisae', 23, 23), ('Tarquinii', 27, 27), ('Arretium', 33, 33), ('Caere', 34, 34), ('Rome', 181, 181), ('Ariminum', 24, 24), ('Carsioli', 22, 22), ('Antium', 33, 33), ('Alba Fucens', 23, 23), ('Fregellae', 23, 23), ('Hadria', 18, 20), ('Cales', 28, 28), ('Capua', 27, 27), ('Neapolis', 34, 34), ('Paestum', 19, 20), ('Luceria', 39, 39), ('Rhegium', 27, 27), ('Teanum Apulum', 24, 24), ('Venusia', 31, 31), ('Locri', 22, 22), ('Thurii', 27, 27), ('Heraclea', 31, 33), ('Croton', 33, 33), ('Tarrentum', 47, 50), ('Brundisium', 29, 29)]
+   sheet q2b_2_after: revenue OCR [('taxes', 249), ('tribute', 623), ('trade', 28), ('total', 900)] expenditure OCR [('administration', 305), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 879)] balance(treasury) 2221 debt limit 5000; memory taxes 249 tribute 623 admin 305 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2601000 tax_base 2492 image Q2b_20261012-080344_balance_q2b_2_after.png
+   sheet q2b_3_before: revenue OCR [('taxes', 252), ('tribute', 632), ('trade', 29), ('total', 913)] expenditure OCR [('administration', 303), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 877)] balance(treasury) 2200 debt limit 5000; memory taxes 252 tribute 632 admin 303 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2577000 tax_base 2528 image Q2b_20261012-080344_balance_q2b_3_before.png
+   round 3 q2b_3 -> {'season': 1, 'week': 1, 'year_bc': 270} kept=Q2b_20261012-080344_autosave03_q2b_3_t726_AUTO0726.SAV: Rome treasury 2200->2221 (+21) unity 821->836 mobilization 30->27 wealth 2577000->2601000 tax_base 2528->2492 cities 25->25 tax 10
+      news: None
+      balance-sheet balance before tick +36 (revenue - expenditure), after tick +21; observed treasury change +21
+      income terms from the after state: tax_base*tax/100 = 249, tax_base/4 = 623, -7*cities = -175, -wealth/20000 = -130
+      mobilization: max(0, 30-3) = 27, observed 27
+      unity formula min(990, max(300, 25 - tax/2 + unity - mob'/5)) with unity before the nation loop unknown when cities changed hands; without events: 836, observed 836
+      per-city population, formula of FUN_00451b40 vs observed, all 334 cities: match 334, differ 0: []
+      Rome's cities (name, pop before, pop after): [('Pisae', 23, 23), ('Tarquinii', 27, 27), ('Arretium', 33, 33), ('Caere', 34, 34), ('Rome', 181, 181), ('Ariminum', 24, 24), ('Carsioli', 22, 22), ('Antium', 33, 33), ('Alba Fucens', 23, 23), ('Fregellae', 23, 23), ('Hadria', 18, 20), ('Cales', 28, 28), ('Capua', 27, 27), ('Neapolis', 34, 34), ('Paestum', 19, 20), ('Luceria', 39, 39), ('Rhegium', 27, 27), ('Teanum Apulum', 24, 24), ('Venusia', 31, 31), ('Locri', 22, 22), ('Thurii', 27, 27), ('Heraclea', 31, 33), ('Croton', 33, 33), ('Tarrentum', 47, 50), ('Brundisium', 29, 29)]
+   sheet q2b_3_after: revenue OCR [('taxes', 249), ('tribute', 623), ('trade', 28), ('total', 900)] expenditure OCR [('administration', 305), ('fleet', 0), ('army_recruit', 121), ('regular_units', 453), ('mercenary_units', 0), ('total', 879)] balance(treasury) 2221 debt limit 5000; memory taxes 249 tribute 623 admin 305 fleet 0 recruit 121 regular 453 merc 0 ncities 25 wealth 2601000 tax_base 2492 image Q2b_20261012-080344_balance_q2b_3_after.png
+== Q3: news order, 'destroys army of' vs the treaty block ==
+[g3_checks-Q3-20261012-075346.jsonl] news memory lines 27-31: [(27, 'Seleucid destroys army of Ptolemaic.'), (28, 'Ptolemaic sues Seleucid for peace and;'), (29, '    Ptolemaic ends all current trading agreements.'), (30, '    Ptolemaic  ends all current alliances.'), (31, '    Ptolemaic pays reparations of 2,242 talents.')]; destroys at [10, 27], treaty header at [28]; image Q3_20261012-075346_start.png
+[g3_checks-Q3-20261012-075346.jsonl] Information window (Q3_20261012-075346_information_window.png) OCR: 'destroys army of Ptolemaic' at char 881, 'sues Seleucid for peace' at char 919
+   news_scan.txt: 1195 save files with both lines; treaty-block-first adjacent pairs: 0; destroys-first: 1195
+== Q5: rough sea ==
+[g3_checks-Q5-20261012-080017.jsonl] move rough: target cell (100,47) before 1, fleet moves 29 -> 26, pos [100, 47], covered cell field after (fleet +24) 0100, info panel OCR: [informatio | Fleet of Rome Moves 26 Ships 30 Repair 97% Supply O tons (0%) Money 0 talents Capacity 15,000 troops Sea rough, image Q5_20261012-080017_rough_info.png
+[g3_checks-Q5-20261012-080017.jsonl] move calm_control: target cell (100,47) before 0, fleet moves 29 -> 28, pos [100, 47], covered cell field after (fleet +24) 0000, info panel OCR: [informatio | Fleet of Rome Moves 28 Ships 30 Repair 97% Supply O tons (0%) Money 0 talents Capacity 15,000 troops Sea calm, image Q5_20261012-080017_calm_control_info.png
+[g3_checks-Q5-20261012-080017.jsonl] move rough_again: target cell (100,47) before 1, fleet moves 29 -> 26, pos [100, 47], covered cell field after (fleet +24) 0100, info panel OCR: [informatio | Fleet of Rome Moves 26 Ships 30 Repair 97% Supply O tons (0%) Money 0 talents Capacity 15,000 troops Sea rough, image Q5_20261012-080017_rough_again_info.png
+   rough: trials 1
+      ('q5_storm_rough_01', 'Q5_20261012-081141_staged_q5_storm_rough_fleet-port-antium-0734.SAV', 40, 30, 1, None, None, None, ['A fleet belonging to Rome is lost at sea.'], 209, {'season': 2, 'week': 5, 'year_bc': 270})
+   rough: condition drop per surviving trial Counter(), ships Counter({(30, None): 1})
+   calm: trials 2
+      ('q5_storm_calm_01', 'Q5_20261012-081141_staged_q5_storm_calm_fleet-port-antium-0734.SAV', 40, 30, 0, 40, 30, 0, [], 335, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_02', 'Q5_20261012-081141_staged_q5_storm_calm_fleet-port-antium-0734.SAV', 40, 30, 0, 40, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+   calm: condition drop per surviving trial Counter({0: 2}), ships Counter({(30, 30): 2})
+   rough: trials 10
+      ('q5_storm_rough_01', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 209, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_02', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_03', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_04', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_05', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_06', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_07', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 212, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_08', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_09', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 193, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_10', 'Q5_20261012-081320_staged_q5_storm_rough_c80_fleet-port-antium-0734.SAV', 80, 30, 1, 79, 30, 0, [], 213, {'season': 2, 'week': 5, 'year_bc': 270})
+   rough: condition drop per surviving trial Counter({1: 10}), ships Counter({(30, 30): 10})
+   calm: trials 10
+      ('q5_storm_calm_01', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 335, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_02', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_03', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 215, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_04', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 108, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_05', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_06', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_07', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_08', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_09', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_10', 'Q5_20261012-081320_staged_q5_storm_calm_c80_fleet-port-antium-0734.SAV', 80, 30, 0, 80, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+   calm: condition drop per surviving trial Counter({0: 10}), ships Counter({(30, 30): 10})
+   rough: trials 12
+      ('q5_storm_rough_01', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 209, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_02', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_03', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_04', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_05', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_06', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_07', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 57, 30, 0, [], 212, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_08', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_09', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 57, 30, 0, [], 193, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_10', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 213, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_11', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_12', 'Q5_20261012-090225_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 110, {'season': 2, 'week': 5, 'year_bc': 270})
+   rough: condition drop per surviving trial Counter({1: 8, 4: 2, 3: 2}), ships Counter({(30, 30): 12})
+   calm: trials 12
+      ('q5_storm_calm_01', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 335, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_02', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_03', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 215, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_04', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 108, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_05', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_06', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_07', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_08', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_09', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_10', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_11', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_12', 'Q5_20261012-090225_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+   calm: condition drop per surviving trial Counter({0: 9, 1: 3}), ships Counter({(30, 30): 12})
+   rough: trials 20
+      ('q5_storm_rough_01', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 209, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_02', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_03', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_04', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_05', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_06', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_07', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 57, 30, 0, [], 212, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_08', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_09', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 57, 30, 0, [], 193, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_10', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 213, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_11', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_12', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 110, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_13', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_14', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 57, 30, 0, [], 176, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_15', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_16', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_17', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 106, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_18', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_19', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 57, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_rough_20', 'Q5_20261012-091054_staged_q5_storm_rough_c60_fleet-port-antium-0734.SAV', 60, 30, 1, 56, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+   rough: condition drop per surviving trial Counter({1: 11, 4: 5, 3: 4}), ships Counter({(30, 30): 20})
+   calm: trials 20
+      ('q5_storm_calm_01', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 335, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_02', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_03', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 215, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_04', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 108, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_05', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_06', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_07', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_08', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_09', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_10', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_11', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_12', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_13', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_14', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_15', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_16', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_17', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_18', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 199, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_19', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 60, 30, 0, [], 107, {'season': 2, 'week': 5, 'year_bc': 270})
+      ('q5_storm_calm_20', 'Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV', 60, 30, 0, 59, 30, 0, [], 0, {'season': 2, 'week': 5, 'year_bc': 270})
+   calm: condition drop per surviving trial Counter({0: 14, 1: 6}), ships Counter({(30, 30): 20})
+== Q6: offers from a peace-only start (Rome at peace with all 15, spring week 1, one End turn per trial; the offer is rolled at Rome's next turn start, FUN_00452034) ==
+   turn starts: 120; offers: trade 27, alliance 9, none 84; Rome at war with someone at the turn start in 0 of them
+   offer kind by proposer (the offer in the kept autosave's tail, +16/+17 words): [(('alliance', 'Carthage'), 1), (('alliance', 'Gaul'), 4), (('alliance', 'Illyria'), 4), (('trade', 'Armenia'), 2), (('trade', 'Bithynia'), 4), (('trade', 'Celtiberia'), 3), (('trade', 'Dacia'), 3), (('trade', 'Greece'), 2), (('trade', 'Macedonia'), 3), (('trade', 'Media'), 1), (('trade', 'Numidia'), 1), (('trade', 'Ptolemaic'), 4), (('trade', 'Seleucid'), 1), (('trade', 'Thracia'), 3)]
+   box text (OCR) KIND (trade/alliance) against the autosave's pending offer: disagreements 0: []
+   box text (OCR) PROPOSER NAME against the autosave's proposer: exact 32, OCR variant resolved to the same nation 4 {('liyia', 'Illyria'): 4}, disagreements 0: []
+   alliance offers come from ['Carthage', 'Gaul', 'Illyria']; trade offers from neighbours (Carthage, Gaul, Illyria): 0; from other nations: 27
+   expected from the roll if every neighbour pass: alliance 7.5 (3 neighbours x 1/16 x 1/3 per turn start); upper bound for trade from the 12 non-neighbour AI nations: 30.0
+   offer: ('q6_t002', {'from': 11, 'type': 1}, ['@ Bithynia wants to trade with Rome.'])
+   offer: ('q6_t004', {'from': 3, 'type': 1}, ['@ Ptolemaic wants to trade with Rome.'])
+   offer: ('q6_t006', {'from': 8, 'type': 1}, ['@ Celtiberia wants to trade with Rome.'])
+   offer: ('q6_t011', {'from': 9, 'type': 2}, ['e liyia wants to form an alliance with Rome. aK'])
+   offer: ('q6_t014', {'from': 4, 'type': 1}, ['e Macedonia wants to trade with Rome. aK'])
+   offer: ('q6_t017', {'from': 2, 'type': 1}, ['@ Seleucid wants to trade with Rome.'])
+   offer: ('q6_t019', {'from': 11, 'type': 1}, ['@ Bithynia wants to trade with Rome.'])
+   offer: ('q6_t026', {'from': 15, 'type': 1}, ['@ Thracia wants to trade with Rome.'])
+   offer: ('q6_t028', {'from': 9, 'type': 2}, ['e liyia wants to form an alliance with Rome. aK'])
+   offer: ('q6_t032', {'from': 7, 'type': 1}, ['@ Greece wants to trade with Rome.'])
+   offer: ('q6_t035', {'from': 13, 'type': 1}, ['@ Armenia wants to trade with Rome.'])
+   offer: ('q6_t037', {'from': 3, 'type': 1}, ['@ Ptolemaic wants to trade with Rome.'])
+   offer: ('q6_t050', {'from': 6, 'type': 2}, ['e Gaul wants ta form an alliance with Rome. aK'])
+   offer: ('q6_t051', {'from': 11, 'type': 1}, ['@ Bithynia wants to trade with Rome.'])
+   offer: ('q6_t052', {'from': 13, 'type': 1}, ['@ Armenia wants to trade with Rome.'])
+   offer: ('q6_t056', {'from': 1, 'type': 2}, ['e Carthage wants to form an aliance with Rome. aK'])
+   offer: ('q6_t061', {'from': 6, 'type': 2}, ['e Gaul wants ta form an alliance with Rome. aK'])
+   offer: ('q6_t067', {'from': 8, 'type': 1}, ['@ Celtiberia wants to trade with Rome.'])
+   offer: ('q6_t069', {'from': 5, 'type': 1}, ['@ Numidia wants to trade with Rome.'])
+   offer: ('q6_t075', {'from': 6, 'type': 2}, ['e Gaul wants ta form an alliance with Rome. aK'])
+   offer: ('q6_t077', {'from': 15, 'type': 1}, ['@ Thracia wants to trade with Rome.'])
+   offer: ('q6_t078', {'from': 10, 'type': 1}, ['@ Dacia wants to trade with Rome.'])
+   offer: ('q6_t079', {'from': 14, 'type': 1}, ['@ Media wants to trade with Rome.'])
+   offer: ('q6_t084', {'from': 9, 'type': 2}, ['e liyia wants to form an alliance with Rome. aK'])
+   offer: ('q6_t085', {'from': 3, 'type': 1}, ['@ Ptolemaic wants to trade with Rome.'])
+   offer: ('q6_t086', {'from': 10, 'type': 1}, ['@ Dacia wants to trade with Rome.'])
+   offer: ('q6_t089', {'from': 3, 'type': 1}, ['@ Ptolemaic wants to trade with Rome.'])
+   offer: ('q6_t091', {'from': 4, 'type': 1}, ['e Macedonia wants to trade with Rome. aK'])
+   offer: ('q6_t092', {'from': 11, 'type': 1}, ['@ Bithynia wants to trade with Rome.'])
+   offer: ('q6_t093', {'from': 15, 'type': 1}, ['@ Thracia wants to trade with Rome.'])
+   offer: ('q6_t096', {'from': 6, 'type': 2}, ['e Gaul wants ta form an alliance with Rome. aK'])
+   offer: ('q6_t097', {'from': 10, 'type': 1}, ['@ Dacia wants to trade with Rome.'])
+   offer: ('q6_t102', {'from': 4, 'type': 1}, ['e Macedonia wants to trade with Rome. aK'])
+   offer: ('q6_t104', {'from': 9, 'type': 2}, ['e liyia wants to form an alliance with Rome. aK'])
+   offer: ('q6_t107', {'from': 8, 'type': 1}, ['@ Celtiberia wants to trade with Rome.'])
+   offer: ('q6_t113', {'from': 7, 'type': 1}, ['@ Greece wants to trade with Rome.'])

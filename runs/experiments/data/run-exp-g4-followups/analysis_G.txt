@@ -1,0 +1,25 @@
+# analysis_G: storm outcomes per arm
+away  calm  cond 60: 6 trials; (condition lost, ships lost, news) -> count: {(17, 8, ('A fleet belonging to Rome is damaged in a storm.',)): 3, (3, 0, ()): 3}
+      code prediction (distribution of the final local value): {'loss3': 0.5, 'loss5': 0.25, 'ships(local=7)': 0.25}
+      trials: g_away_calm_c60_01, g_away_calm_c60_02, g_away_calm_c60_03, g_away_calm_c60_04, g_away_calm_c60_05, g_away_calm_c60_06
+away  rough cond 60: 6 trials; (condition lost, ships lost, news) -> count: {(-106, -41, ()): 1, (15, 7, ('A fleet belonging to Rome is damaged in a storm.',)): 1, (17, 8, ('A fleet belonging to Rome is damaged in a storm.',)): 4}
+      code prediction (distribution of the final local value): {'ships(local=13)': 0.25, 'ships(local=17)': 0.25, 'ships(local=7)': 0.5}
+      trials: g_away_rough_c60_01, g_away_rough_c60_02, g_away_rough_c60_03, g_away_rough_c60_04, g_away_rough_c60_05, g_away_rough_c60_06
+near  calm  cond 60: 6 trials; (condition lost, ships lost, news) -> count: {(0, 0, ()): 2, (1, 0, ()): 4}
+      code prediction (distribution of the final local value): {'loss0': 0.5, 'loss1': 0.5}
+      trials: g_near_calm_c60_01, g_near_calm_c60_02, g_near_calm_c60_03, g_near_calm_c60_04, g_near_calm_c60_05, g_near_calm_c60_06
+near  rough cond 60: 6 trials; (condition lost, ships lost, news) -> count: {(1, 0, ()): 2, (3, 0, ()): 2, (4, 0, ()): 2}
+      code prediction (distribution of the final local value): {'loss1': 0.5, 'loss3': 0.25, 'loss4': 0.25}
+      trials: g_near_rough_c60_01, g_near_rough_c60_02, g_near_rough_c60_03, g_near_rough_c60_04, g_near_rough_c60_05, g_near_rough_c60_06
+away  calm  cond 80: 9 trials; (condition lost, ships lost, news) -> count: {(-86, -41, ()): 4, (3, 0, ()): 5}
+      code prediction (distribution of the final local value): {'loss3': 1.0}
+      trials: g_away_calm_c80_01, g_away_calm_c80_02, g_away_calm_c80_03, g_away_calm_c80_01, g_away_calm_c80_02, g_away_calm_c80_03, g_away_calm_c80_04, g_away_calm_c80_05, g_away_calm_c80_06
+away  rough cond 80: 9 trials; (condition lost, ships lost, news) -> count: {(-86, -41, ()): 3, (22, 8, ('A fleet belonging to Rome is damaged in a storm.',)): 6}
+      code prediction (distribution of the final local value): {'ships(local=7)': 1.0}
+      trials: g_away_rough_c80_01, g_away_rough_c80_02, g_away_rough_c80_03, g_away_rough_c80_01, g_away_rough_c80_02, g_away_rough_c80_03, g_away_rough_c80_04, g_away_rough_c80_05, g_away_rough_c80_06
+near  calm  cond 80: 9 trials; (condition lost, ships lost, news) -> count: {(0, 0, ()): 9}
+      code prediction (distribution of the final local value): {'loss0': 1.0}
+      trials: g_near_calm_c80_01, g_near_calm_c80_02, g_near_calm_c80_03, g_near_calm_c80_01, g_near_calm_c80_02, g_near_calm_c80_03, g_near_calm_c80_04, g_near_calm_c80_05, g_near_calm_c80_06
+near  rough cond 80: 8 trials; (condition lost, ships lost, news) -> count: {(1, 0, ()): 8}
+      code prediction (distribution of the final local value): {'loss1': 1.0}
+      trials: g_near_rough_c80_01, g_near_rough_c80_02, g_near_rough_c80_01, g_near_rough_c80_02, g_near_rough_c80_03, g_near_rough_c80_04, g_near_rough_c80_05, g_near_rough_c80_06

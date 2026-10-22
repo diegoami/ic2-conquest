@@ -1,0 +1,8 @@
+# analysis_K: offer eligibility per roll (see the docstring of analysis_K.py)
+files: ['g4_checks-K-20261012-111608.jsonl']; rounds read: 3
+  k_nat_t001 | K_20261012-111608_autosave01_k_nat_t001_t721_AUTO0721.SAV | offer from Celtiberia type 1 | eligible {'Carthage': 1, 'Seleucid': 1, 'Ptolemaic': 1, 'Numidia': 1, 'Greece': 1, 'Celtiberia': 1, 'Dacia': 1, 'Bithynia': 1, 'Armenia': 1, 'Media': 1, 'Thracia': 1} | OK
+  k_nat_t002 | K_20261012-111608_autosave02_k_nat_t002_t721_AUTO0721.SAV | offer from None type None | eligible {'Carthage': 1, 'Seleucid': 1, 'Ptolemaic': 1, 'Numidia': 1, 'Greece': 1, 'Celtiberia': 1, 'Dacia': 1, 'Bithynia': 1, 'Armenia': 1, 'Media': 1, 'Thracia': 1} | OK
+  k_nat_t003 | K_20261012-111608_autosave03_k_nat_t003_t721_AUTO0721.SAV | offer from None type None | eligible {'Carthage': 1, 'Seleucid': 1, 'Ptolemaic': 1, 'Numidia': 1, 'Greece': 1, 'Celtiberia': 1, 'Dacia': 1, 'Bithynia': 1, 'Armenia': 1, 'Media': 1, 'Thracia': 1} | OK
+observed offers: 1 of 3 rounds (trade 1, alliance 0); violations (observed proposer/type not in the eligible set at that roll): 0
+expected offers if the rule is exactly this: 0.7 of 3 rounds (sum over rounds of eligible/48; the eligible set is read from each autosave)
+detector self-test: with the proposers shuffled among rounds, 0 of 200 shuffled offer checks fail (a check that never failed would show 0)

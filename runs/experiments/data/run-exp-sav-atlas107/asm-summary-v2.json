@@ -1,0 +1,89 @@
+{
+ "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+ "decompile_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+ "field_map": "field-map-v1.csv",
+ "field_map_sha256": "a09a5b5b5f5efcae54cce671f4ae7ece1e952a87ab9deff60c68b8e5a8f66e22",
+ "method": "linear capstone sweep of CODE; per-function register/stack-slot table-pointer tracking; helper and TStream call classing; not alias closure",
+ "function_starts": 2257,
+ "hits": 3414,
+ "app_lo": "0x436000",
+ "library_region_hits": [
+  {
+   "va": "0x41e7b9",
+   "kind": "write",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x41e7b9",
+   "kind": "read",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x425dc9",
+   "kind": "write",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x425dc9",
+   "kind": "read",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x426c11",
+   "kind": "write",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x426c11",
+   "kind": "read",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x42717a",
+   "kind": "write",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x42717a",
+   "kind": "read",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x427840",
+   "kind": "write",
+   "fields": [
+    "SLOT.troops"
+   ]
+  },
+  {
+   "va": "0x427840",
+   "kind": "read",
+   "fields": [
+    "SLOT.troops"
+   ]
+  }
+ ],
+ "by_kind": {
+  "write": 689,
+  "read": 2635,
+  "escape": 90
+ },
+ "fields_without_write": [],
+ "fields_without_any_access": []
+}

@@ -1,0 +1,10 @@
+{"src": "run0-start-AUTO0720-seed12345.SAV", "src_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c", "dst": "P2_20261009-193103_staged_run0-start-AUTO0720-seed12345.SAV", "ops": [["relation", 0, 6, 0]], "fleet_ops": [], "step": "staged", "t": "19:31:03"}
+{"save": "P2_20261009-193103_staged_run0-start-AUTO0720-seed12345.SAV", "seed_line": "S 0000012345", "rome_gaul": 0, "gaul_rome": 0, "step": "loaded", "t": "19:31:23"}
+{"army": 0, "to": [100, 36], "pos": [100, 36], "popups": [], "moves": 7, "step": "army_step", "t": "19:31:28"}
+{"army": 0, "to": [100, 35], "pos": [100, 35], "popups": [], "moves": 6, "step": "army_step", "t": "19:31:30"}
+{"army": 0, "to": [100, 34], "pos": [100, 34], "popups": [], "moves": 5, "step": "army_step", "t": "19:31:33"}
+{"army": 0, "to": [100, 33], "pos": [100, 33], "popups": [], "moves": 3, "step": "army_step", "t": "19:31:35"}
+{"army": 0, "to": [99, 32], "pos": [99, 32], "popups": [], "moves": 1, "step": "army_step", "t": "19:31:38"}
+{"file": "P2_20261009-193103_at_felsina.SAV", "armies": {"0": {"id": 0, "x": 99, "y": 32, "owner": 0, "moves": 1, "cell": 4, "embarked": false, "supplies": 170, "money": 100, "morale": 70, "troops": 23700, "units": 6, "supply_pct": 71}, "1": {"id": 1, "x": 120, "y": 53, "owner": 0, "moves": 8, "cell": 2, "embarked": false, "supplies": 176, "money": 100, "morale": 68, "troops": 22000, "units": 6, "supply_pct": 80}}, "step": "saved", "t": "19:31:46"}
+{"label": "army_next_to_felsina_peace", "kind": "army", "id": 0, "pos": [99, 32], "clicks": 1, "selected_army": 0, "selected_fleet": -1, "windows": [["Imperial Conquest 2", 1, 1], ["Imperial Conquest 2    Rome's turn   (Appius Claudius)", 650, 300], ["Unit map", 439, 487], ["Area map", 328, 196], ["Information", 328, 730], ["Supply army", 470, 335]], "dialog_shot": "P2_20261009-193103_army_next_to_felsina_peace_dialog.png", "controls": [["TButton", "Buy supplies", 343, 185], ["TListBox", "", 353, 70], ["TUpDown", "", 83, 184], ["TUpDown", "", 118, 184], ["TButton", "OK", 223, 349]], "opened": true, "popups": [], "step": "supply_press", "t": "19:31:54"}
+{"step": "done", "t": "19:31:54"}

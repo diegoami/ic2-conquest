@@ -1,0 +1,14 @@
+12:34:58 turn 0720: load /home/user/ic2-conquest/.claude/worktrees/agent-a51d429b2b81e4ee2/saves/run0-start-AUTO0720-seed12345.SAV (sha 050bc354f1cbbe37) seed 12345
+12:35:03 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":118,"sha256_12":"fd66da6d7781"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+12:35:18 seed line S 0000012345; popups at load ['e Bithynia wamts to trade with Rone oe']
+12:35:36 order recruit -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'new_slots': [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 6000, 'city': 85}], 'treasury': 1600}
+12:35:52 order recruit -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'new_slots': [{'slot': 5, 'state': 0, 'type': 'ar', 'troops': 3500, 'city': 85}], 'treasury': 1532}
+12:36:06 order fortify -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'cost': 99}
+12:36:16 order mercs -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'gained': 1}
+12:36:30 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (170, 238), 'money': (100, 100)}
+12:36:45 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (176, 259), 'money': (100, 100)}
+12:36:57 order relation -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'value': 1}
+12:37:04 order move -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (120, 53), 'to': (113, 45), 'moves_left': 0}
+12:37:05 end turn
+12:37:19 autosave AUTO0721.SAV; texts ['e Cetiberia wants to trade with Rome. oe']; battles 0
+12:37:20 done: /home/user/ic2-conquest/artifacts/run-0/270BC-spring/AUTO0721.SAV sha c35c0467763150ff

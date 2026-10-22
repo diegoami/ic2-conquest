@@ -6,7 +6,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from iw_lib import DATA, ROOT
 import findings_rows as FR
 import panel_model as M
-DUMP = '/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt'
+from harness import decompile  # iw_lib puts the repo root on sys.path
+decompile.check()
+DUMP = decompile.DUMP
 lines = open(DUMP, encoding='latin-1').read().split('\n')
 start = {}
 for i, l in enumerate(lines):

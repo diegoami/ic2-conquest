@@ -1,0 +1,225 @@
+{
+  "provenance": "pinned original x86 under Unicorn, not Wine/native",
+  "exe_sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f",
+  "control_function": "0x438378",
+  "predicate": [
+    {
+      "human": 0,
+      "side": 0,
+      "general_attacker": 0,
+      "general_defender": 0,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 0,
+      "general_attacker": 0,
+      "general_defender": 1,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 0,
+      "general_attacker": 1,
+      "general_defender": 0,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 0,
+      "general_attacker": 1,
+      "general_defender": 1,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 1,
+      "general_attacker": 0,
+      "general_defender": 0,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 1,
+      "general_attacker": 0,
+      "general_defender": 1,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 1,
+      "general_attacker": 1,
+      "general_defender": 0,
+      "original_predicate": 1
+    },
+    {
+      "human": 0,
+      "side": 1,
+      "general_attacker": 1,
+      "general_defender": 1,
+      "original_predicate": 1
+    },
+    {
+      "human": 1,
+      "side": 0,
+      "general_attacker": 0,
+      "general_defender": 0,
+      "original_predicate": 0
+    },
+    {
+      "human": 1,
+      "side": 0,
+      "general_attacker": 0,
+      "general_defender": 1,
+      "original_predicate": 0
+    },
+    {
+      "human": 1,
+      "side": 0,
+      "general_attacker": 1,
+      "general_defender": 0,
+      "original_predicate": 1
+    },
+    {
+      "human": 1,
+      "side": 0,
+      "general_attacker": 1,
+      "general_defender": 1,
+      "original_predicate": 1
+    },
+    {
+      "human": 1,
+      "side": 1,
+      "general_attacker": 0,
+      "general_defender": 0,
+      "original_predicate": 0
+    },
+    {
+      "human": 1,
+      "side": 1,
+      "general_attacker": 0,
+      "general_defender": 1,
+      "original_predicate": 1
+    },
+    {
+      "human": 1,
+      "side": 1,
+      "general_attacker": 1,
+      "general_defender": 0,
+      "original_predicate": 0
+    },
+    {
+      "human": 1,
+      "side": 1,
+      "general_attacker": 1,
+      "general_defender": 1,
+      "original_predicate": 1
+    }
+  ],
+  "score_slices": [
+    "0x44edd1..0x44edde",
+    "0x44ef4d..0x44ef58"
+  ],
+  "rounding": [
+    {
+      "input": -2147483647,
+      "city_original": -1073741824,
+      "army_original": -1073741824
+    },
+    {
+      "input": -1001,
+      "city_original": -501,
+      "army_original": -501
+    },
+    {
+      "input": -1000,
+      "city_original": -500,
+      "army_original": -500
+    },
+    {
+      "input": -9,
+      "city_original": -5,
+      "army_original": -5
+    },
+    {
+      "input": -8,
+      "city_original": -4,
+      "army_original": -4
+    },
+    {
+      "input": -7,
+      "city_original": -4,
+      "army_original": -4
+    },
+    {
+      "input": -3,
+      "city_original": -2,
+      "army_original": -2
+    },
+    {
+      "input": -2,
+      "city_original": -1,
+      "army_original": -1
+    },
+    {
+      "input": -1,
+      "city_original": -1,
+      "army_original": -1
+    },
+    {
+      "input": 0,
+      "city_original": 0,
+      "army_original": 0
+    },
+    {
+      "input": 1,
+      "city_original": 1,
+      "army_original": 1
+    },
+    {
+      "input": 2,
+      "city_original": 1,
+      "army_original": 1
+    },
+    {
+      "input": 3,
+      "city_original": 2,
+      "army_original": 2
+    },
+    {
+      "input": 7,
+      "city_original": 4,
+      "army_original": 4
+    },
+    {
+      "input": 8,
+      "city_original": 4,
+      "army_original": 4
+    },
+    {
+      "input": 9,
+      "city_original": 5,
+      "army_original": 5
+    },
+    {
+      "input": 999,
+      "city_original": 500,
+      "army_original": 500
+    },
+    {
+      "input": 1000,
+      "city_original": 500,
+      "army_original": 500
+    },
+    {
+      "input": 1001,
+      "city_original": 501,
+      "army_original": 501
+    },
+    {
+      "input": 2147483647,
+      "city_original": 1073741824,
+      "army_original": 1073741824
+    }
+  ]
+}

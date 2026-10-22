@@ -1,0 +1,199 @@
+# analysis_J: relation changes per round and the swap-rule explanation (see the docstring)
+-- g4_checks-J-20261012-110249.jsonl j_control_nostage: staged J_20261012-110249_staged_j_control_nostage_run0-start-AUTO0720-seed12345.SAV kept J_20261012-110249_autosave01_j_control_nostage_t726_AUTO0726.SAV; unity before/after Greece 532 -> 555; defect lines 10
+   Rome       - Macedonia    -8 ->   -4  thaw
+   Carthage   - Ptolemaic   -10 ->   -8  thaw
+   Seleucid   - Ptolemaic   -18 ->  -14  thaw
+   Ptolemaic  - Numidia       0 ->    1  UNEXPLAINED
+   Ptolemaic  - Gaul        -10 ->   -6  thaw
+   Ptolemaic  - Greece      -10 ->   -8  thaw
+   Ptolemaic  - Illyria      -8 ->   -5  thaw
+   Ptolemaic  - Dacia         1 ->   -8  swap: Ptolemaic dropped Dacia (tax base 68) for [('Numidia', 440)]
+   Macedonia  - Illyria      -8 ->   -5  thaw
+   Macedonia  - Thracia      -8 ->   -5  thaw
+   Numidia    - Gaul         -8 ->   -6  thaw
+   Numidia    - Celtiberia   -8 ->   -5  thaw
+   Numidia    - Illyria       0 ->    1  UNEXPLAINED
+   Numidia    - Dacia        -8 ->   -7  thaw
+   Numidia    - Bithynia     -8 ->   -7  thaw
+   Numidia    - Galatia      -8 ->   -7  thaw
+   Numidia    - Armenia      -8 ->   -5  thaw
+   Numidia    - Media        -8 ->   -5  thaw
+   Numidia    - Thracia      -8 ->   -5  thaw
+   Gaul       - Illyria      -8 ->   -7  thaw
+   Gaul       - Dacia        -8 ->   -7  thaw
+   Gaul       - Bithynia      0 ->    1  UNEXPLAINED
+   Gaul       - Armenia       1 ->   -5  UNEXPLAINED
+   Gaul       - Media        -8 ->   -7  thaw
+   Celtiberia - Dacia         1 ->   -8  swap: Celtiberia dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Celtiberia - Armenia       0 ->    1  UNEXPLAINED
+   Illyria    - Armenia       1 ->   -8  swap: Illyria dropped Armenia (tax base 432) for [('Numidia', 440)]
+   Dacia      - Armenia       0 ->    1  UNEXPLAINED
+-- g4_checks-J-20261012-110249.jsonl j_dead_0: staged J_20261012-110249_staged_j_dead_0_run0-start-AUTO0720-seed12345.SAV kept J_20261012-110249_autosave02_j_dead_0_t726_AUTO0726.SAV; unity before/after Greece 0 -> 0; defect lines 10
+   Rome       - Macedonia    -8 ->   -6  thaw
+   Carthage   - Ptolemaic   -10 ->   -8  thaw
+   Seleucid   - Ptolemaic   -18 ->  -14  thaw
+   Seleucid   - Greece        1 ->   -8  swap: Seleucid dropped Greece (tax base 0) for [('Armenia', 432)]
+   Seleucid   - Dacia         0 ->   -8  swap: Seleucid dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Seleucid   - Armenia       0 ->    1  UNEXPLAINED
+   Ptolemaic  - Numidia       0 ->    1  UNEXPLAINED
+   Ptolemaic  - Gaul        -10 ->   -6  thaw
+   Ptolemaic  - Greece      -10 ->   -8  thaw
+   Ptolemaic  - Illyria      -8 ->   -7  thaw
+   Ptolemaic  - Dacia         1 ->   -8  swap: Ptolemaic dropped Dacia (tax base 68) for [('Numidia', 440)]
+   Macedonia  - Greece        1 ->   -8  swap: Macedonia dropped Greece (tax base 0) for [('Galatia', 172)]
+   Macedonia  - Illyria      -8 ->   -7  thaw
+   Macedonia  - Dacia         0 ->   -8  swap: Macedonia dropped Dacia (tax base 68) for [('Galatia', 172)]
+   Macedonia  - Galatia       0 ->    1  UNEXPLAINED
+   Macedonia  - Thracia      -8 ->   -7  thaw
+   Numidia    - Gaul         -8 ->   -6  thaw
+   Numidia    - Celtiberia   -8 ->   -5  thaw
+   Numidia    - Illyria       0 ->    1  UNEXPLAINED
+   Numidia    - Dacia        -8 ->   -7  thaw
+   Numidia    - Bithynia     -8 ->   -7  thaw
+   Numidia    - Galatia      -8 ->   -7  thaw
+   Numidia    - Armenia      -8 ->   -5  thaw
+   Numidia    - Media        -8 ->   -5  thaw
+   Numidia    - Thracia      -8 ->   -5  thaw
+   Gaul       - Illyria      -8 ->   -7  thaw
+   Gaul       - Dacia        -8 ->   -7  thaw
+   Gaul       - Bithynia      0 ->    1  UNEXPLAINED
+   Gaul       - Armenia       1 ->   -7  UNEXPLAINED
+   Gaul       - Media        -8 ->   -5  thaw
+   Celtiberia - Dacia         1 ->   -8  swap: Celtiberia dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Celtiberia - Armenia       0 ->    1  UNEXPLAINED
+   Illyria    - Armenia       1 ->   -8  swap: Illyria dropped Armenia (tax base 432) for [('Numidia', 440)]
+-- g4_checks-J-20261012-110249.jsonl j_dead_7: staged J_20261012-110249_staged_j_dead_7_run0-start-AUTO0720-seed12345.SAV kept J_20261012-110249_autosave03_j_dead_7_t726_AUTO0726.SAV; unity before/after Greece 0 -> 0; defect lines 10
+   Rome       - Macedonia    -8 ->   -4  thaw
+   Carthage   - Ptolemaic   -10 ->   -8  thaw
+   Seleucid   - Ptolemaic   -18 ->  -14  thaw
+   Seleucid   - Greece        1 ->   -8  swap: Seleucid dropped Greece (tax base 0) for [('Armenia', 432)]
+   Seleucid   - Dacia         0 ->   -8  swap: Seleucid dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Seleucid   - Armenia       0 ->    1  UNEXPLAINED
+   Ptolemaic  - Numidia       0 ->    1  UNEXPLAINED
+   Ptolemaic  - Gaul        -10 ->   -6  thaw
+   Ptolemaic  - Greece      -10 ->   -8  thaw
+   Ptolemaic  - Illyria      -8 ->   -5  thaw
+   Ptolemaic  - Dacia         1 ->   -8  swap: Ptolemaic dropped Dacia (tax base 68) for [('Numidia', 440)]
+   Macedonia  - Greece        1 ->   -8  swap: Macedonia dropped Greece (tax base 0) for [('Galatia', 172)]
+   Macedonia  - Illyria      -8 ->   -7  thaw
+   Macedonia  - Dacia         0 ->   -8  swap: Macedonia dropped Dacia (tax base 68) for [('Galatia', 172)]
+   Macedonia  - Galatia       0 ->    1  UNEXPLAINED
+   Macedonia  - Thracia      -8 ->   -7  thaw
+   Numidia    - Gaul         -8 ->   -4  thaw
+   Numidia    - Celtiberia   -8 ->   -7  thaw
+   Numidia    - Illyria       0 ->    1  UNEXPLAINED
+   Numidia    - Dacia        -8 ->   -7  thaw
+   Numidia    - Bithynia     -8 ->   -7  thaw
+   Numidia    - Galatia      -8 ->   -5  thaw
+   Numidia    - Armenia      -8 ->   -5  thaw
+   Numidia    - Media        -8 ->   -5  thaw
+   Numidia    - Thracia      -8 ->   -7  thaw
+   Gaul       - Illyria      -8 ->   -7  thaw
+   Gaul       - Dacia        -8 ->   -7  thaw
+   Gaul       - Bithynia      0 ->    1  UNEXPLAINED
+   Gaul       - Armenia       1 ->   -5  UNEXPLAINED
+   Gaul       - Media        -8 ->   -7  thaw
+   Celtiberia - Dacia         1 ->   -8  swap: Celtiberia dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Celtiberia - Armenia       0 ->    1  UNEXPLAINED
+   Illyria    - Armenia       1 ->   -8  swap: Illyria dropped Armenia (tax base 432) for [('Numidia', 440)]
+-- g4_checks-J-20261012-110249.jsonl j_dead_9: staged J_20261012-110249_staged_j_dead_9_run0-start-AUTO0720-seed12345.SAV kept J_20261012-110249_autosave04_j_dead_9_t726_AUTO0726.SAV; unity before/after Greece 0 -> 483; defect lines 19
+   Rome       - Macedonia    -8 ->   -4  thaw
+   Rome       - Greece        0 ->   -6  rebirth/transfer cooldown (defect lines present)
+   Carthage   - Ptolemaic   -10 ->   -4  thaw
+   Seleucid   - Ptolemaic   -18 ->  -14  thaw
+   Ptolemaic  - Gaul        -10 ->   -6  thaw
+   Ptolemaic  - Greece      -10 ->   -8  thaw
+   Ptolemaic  - Illyria      -8 ->   -5  thaw
+   Ptolemaic  - Dacia         1 ->   -8  swap: Ptolemaic dropped Dacia (tax base 68) for [('Media', 864)]
+   Ptolemaic  - Galatia       0 ->   -8  swap: Ptolemaic dropped Galatia (tax base 172) for [('Media', 864)]
+   Ptolemaic  - Armenia       0 ->   -8  swap: Ptolemaic dropped Armenia (tax base 432) for [('Media', 864)]
+   Ptolemaic  - Media         0 ->    1  UNEXPLAINED
+   Macedonia  - Illyria      -8 ->   -7  thaw
+   Macedonia  - Thracia      -8 ->   -7  thaw
+   Numidia    - Gaul         -8 ->   -6  thaw
+   Numidia    - Greece        0 ->    1  UNEXPLAINED
+   Numidia    - Celtiberia   -8 ->   -7  thaw
+   Numidia    - Illyria       0 ->    1  UNEXPLAINED
+   Numidia    - Dacia        -8 ->   -5  thaw
+   Numidia    - Bithynia     -8 ->   -7  thaw
+   Numidia    - Galatia      -8 ->   -7  thaw
+   Numidia    - Armenia      -8 ->   -7  thaw
+   Numidia    - Media        -8 ->   -7  thaw
+   Numidia    - Thracia      -8 ->   -7  thaw
+   Gaul       - Illyria      -8 ->   -7  thaw
+   Gaul       - Dacia        -8 ->   -5  thaw
+   Gaul       - Bithynia      0 ->    1  UNEXPLAINED
+   Gaul       - Armenia       1 ->   -5  UNEXPLAINED
+   Gaul       - Media        -8 ->   -7  thaw
+   Greece     - Illyria       0 ->   -8  swap: Greece dropped Illyria (tax base 340) for [('Numidia', 440), ('Armenia', 432)]
+   Greece     - Galatia       0 ->    1  UNEXPLAINED
+   Greece     - Armenia       0 ->    1  UNEXPLAINED
+   Celtiberia - Dacia         1 ->   -8  swap: Celtiberia dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Celtiberia - Armenia       0 ->    1  UNEXPLAINED
+   Illyria    - Dacia         0 ->    1  UNEXPLAINED
+   Illyria    - Armenia       1 ->   -8  swap: Illyria dropped Armenia (tax base 432) for [('Numidia', 440)]
+   Illyria    - Media         1 ->   -8  swap: Media dropped Illyria (tax base 340) for [('Ptolemaic', 6124)]
+-- g4_checks-J-20261012-110249.jsonl j_alive_unity0_9: staged J_20261012-110249_staged_j_alive_unity0_9_run0-start-AUTO0720-seed12345.SAV kept J_20261012-110249_autosave05_j_alive_unity0_9_t726_AUTO0726.SAV; unity before/after Greece 0 -> 483; defect lines 19
+   Rome       - Macedonia    -8 ->   -4  thaw
+   Rome       - Greece        0 ->   -4  rebirth/transfer cooldown (defect lines present)
+   Rome       - Illyria       1 ->   -8  swap: Illyria dropped Rome (tax base 1332) for [('Greece', 3196)]
+   Carthage   - Ptolemaic   -10 ->   -6  thaw
+   Seleucid   - Ptolemaic   -18 ->  -14  thaw
+   Ptolemaic  - Gaul        -10 ->   -6  thaw
+   Ptolemaic  - Greece      -10 ->   -8  thaw
+   Ptolemaic  - Illyria      -8 ->   -5  thaw
+   Ptolemaic  - Dacia         1 ->   -8  swap: Ptolemaic dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Ptolemaic  - Galatia       0 ->   -8  swap: Ptolemaic dropped Galatia (tax base 172) for [('Armenia', 432)]
+   Ptolemaic  - Armenia       0 ->    1  UNEXPLAINED
+   Macedonia  - Illyria      -8 ->   -7  thaw
+   Macedonia  - Thracia      -8 ->   -7  thaw
+   Numidia    - Gaul         -8 ->   -6  thaw
+   Numidia    - Greece        0 ->    1  UNEXPLAINED
+   Numidia    - Celtiberia   -8 ->   -7  thaw
+   Numidia    - Illyria       0 ->    1  UNEXPLAINED
+   Numidia    - Dacia        -8 ->   -7  thaw
+   Numidia    - Bithynia     -8 ->   -7  thaw
+   Numidia    - Galatia      -8 ->   -5  thaw
+   Numidia    - Armenia      -8 ->   -5  thaw
+   Numidia    - Media        -8 ->   -7  thaw
+   Numidia    - Thracia      -8 ->   -7  thaw
+   Gaul       - Illyria      -8 ->   -7  thaw
+   Gaul       - Dacia        -8 ->   -7  thaw
+   Gaul       - Bithynia      0 ->    1  UNEXPLAINED
+   Gaul       - Armenia       1 ->   -7  UNEXPLAINED
+   Gaul       - Media        -8 ->   -5  thaw
+   Greece     - Illyria       0 ->    1  UNEXPLAINED
+   Greece     - Galatia       0 ->    1  UNEXPLAINED
+   Celtiberia - Dacia         1 ->   -8  swap: Celtiberia dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Celtiberia - Armenia       0 ->    1  UNEXPLAINED
+   Illyria    - Armenia       1 ->   -8  swap: Illyria dropped Armenia (tax base 432) for [('Numidia', 440), ('Greece', 3196)]
+-- g4_checks-J-20261012-110249.jsonl j_control_nostage_again: staged J_20261012-110249_staged_j_control_nostage_again_run0-start-AUTO0720-seed12345.SAV kept J_20261012-110249_autosave06_j_control_nostage_again_t726_AUTO0726.SAV; unity before/after Greece 532 -> 555; defect lines 10
+   Rome       - Macedonia    -8 ->   -6  thaw
+   Carthage   - Ptolemaic   -10 ->   -6  thaw
+   Seleucid   - Ptolemaic   -18 ->  -14  thaw
+   Ptolemaic  - Numidia       0 ->    1  UNEXPLAINED
+   Ptolemaic  - Gaul        -10 ->   -8  thaw
+   Ptolemaic  - Greece      -10 ->   -6  thaw
+   Ptolemaic  - Illyria      -8 ->   -7  thaw
+   Ptolemaic  - Dacia         1 ->   -8  swap: Ptolemaic dropped Dacia (tax base 68) for [('Numidia', 440)]
+   Macedonia  - Illyria      -8 ->   -7  thaw
+   Macedonia  - Thracia      -8 ->   -7  thaw
+   Numidia    - Gaul         -8 ->   -4  thaw
+   Numidia    - Celtiberia   -8 ->   -7  thaw
+   Numidia    - Illyria       0 ->    1  UNEXPLAINED
+   Numidia    - Dacia        -8 ->   -7  thaw
+   Numidia    - Bithynia     -8 ->   -5  thaw
+   Numidia    - Galatia      -8 ->   -5  thaw
+   Numidia    - Armenia      -8 ->   -5  thaw
+   Numidia    - Media        -8 ->   -5  thaw
+   Numidia    - Thracia      -8 ->   -7  thaw
+   Gaul       - Illyria      -8 ->   -7  thaw
+   Gaul       - Dacia        -8 ->   -7  thaw
+   Gaul       - Bithynia      0 ->    1  UNEXPLAINED
+   Gaul       - Armenia       1 ->   -7  UNEXPLAINED
+   Gaul       - Media        -8 ->   -7  thaw
+   Celtiberia - Dacia         1 ->   -8  swap: Celtiberia dropped Dacia (tax base 68) for [('Armenia', 432)]
+   Celtiberia - Armenia       0 ->    1  UNEXPLAINED
+   Illyria    - Armenia       1 ->   -8  swap: Illyria dropped Armenia (tax base 432) for [('Numidia', 440)]
+   Dacia      - Armenia       0 ->    1  UNEXPLAINED
+totals: {'swap': 32, 'rebirth': 2, 'thaw': 114, 'unexplained': 43}

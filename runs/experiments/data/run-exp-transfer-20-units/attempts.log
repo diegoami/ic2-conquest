@@ -1,0 +1,4 @@
+# attempts kept in artifacts/run-exp-transfer-20-units/attempt1..3 (not cited as results):
+# attempt1: open_dialog gave up before the dialog appeared (c2); c1 moved 2 units, no R28 box
+# attempt2: plain first click lost; dbg_c1_selection.png shows rows 1-2 selected, row 0 not -> rows are 10 px, the 12 px step hit the row 0/1 boundary
+# attempt3: c2 dialog is captioned "Split army" (not "Army to army transfer"): find_windows found 'Split army' 610x430; army count unchanged by the click (14 -> 14)

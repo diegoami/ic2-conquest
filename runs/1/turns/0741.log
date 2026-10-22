@@ -1,0 +1,8 @@
+15:48:39 turn 0741: load /home/user/ic2-conquest/artifacts/run-1/270BC-winter/AUTO0741.SAV (sha d37e9a300f7b72fd) seed 12366
+15:48:44 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":118,"sha256_12":"fd66da6d7781"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+15:48:55 seed line S 0000012366; popups at load []
+15:49:15 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (411, 632), 'money': (656, 656)}
+15:49:20 order goto -> ok=partial (moves ran out) {'attempts': 1, 'ok': 'partial (moves ran out)', 'texts': [], 'from': (100, 42), 'path': [(100, 42), (99, 41), (98, 40), (97, 39), (96, 38), (95, 37), (94, 36), (94, 35), (93, 34), (92, 33), (91, 32), (90, 31), (90, 30), (91, 29), (92, 28)], 'path_cost': 14, 'reach_this_turn': (94, 35), 'to': (94, 35), 'moves_left': 0}
+15:49:21 end turn
+15:49:32 autosave AUTO0742.SAV; texts []; battles 0
+15:49:33 done: /home/user/ic2-conquest/artifacts/run-1/270BC-winter/AUTO0742.SAV sha 3abbf8fb2aea4439

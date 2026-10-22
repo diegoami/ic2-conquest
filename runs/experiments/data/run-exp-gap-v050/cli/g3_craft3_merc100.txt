@@ -1,0 +1,78 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:04:12+02:00
+# script:
+#   load ART/g3_c_merc100.sav
+#   end
+#   save ART/g3_cafter_merc100.sav
+#   news
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_c_merc100.sav
+Loaded '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_c_merc100.sav': classical-mediterranean, turn 0 (turn 0). Active seat: Rome (rome).
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 15 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 17 orders issued.
+Macedonia (macedonia) takes its turn: 7 orders issued.
+Numidia (numidia) takes its turn: 15 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 9 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 5 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+  Weather: storm-damages-fleet (week 11).
+  Weather: drought-reduces-supply (week 11).
+Now: Week 1, Summer 270 BC. Active seat: Rome (rome).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  1      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_cafter_merc100.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_cafter_merc100.sav'.
+
+> news
+News log:
+  272 BC
+  Tarrentum (Greece) falls to Rome.
+  Croton (Greece) falls to Rome.
+  Locri defects from Greece to Rome.
+  Rhegium defects from Greece to Rome.
+  Panormus defects from Greece to Carthage.
+  Mylae defects from Greece to Carthage.
+  Astacus (Seleucid) falls to Bithynia.
+  Heraclea (Greece) falls to Rome.
+  Thurii defects from Greece to Rome.
+  Rome destroys army of Greece.
+  Rome and Greece agree to end their war.
+   
+  271 BC
+  Zela (Seleucid) falls to Bithynia.
+  Synnada (Seleucid) falls to Galatia.
+  Laodicea defects from Seleucid to Media.
+  Helice (Celtiberia) falls to Carthage.
+  Chalcis defects from Greece to Macedonia.
+  Demetrias defects from Greece to Macedonia.
+  Marium defects from Greece to Ptolemaic.
+  Sidon (Seleucid) falls to Ptolemaic.
+  Marium defects from Greece to Ptolemaic.
+  Pontica (Seleucid) falls to Bithynia.
+  Damascus (Seleucid) falls to Ptolemaic.
+   
+  Week 1      Spring      270 BC
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  1      Summer      270BC
+

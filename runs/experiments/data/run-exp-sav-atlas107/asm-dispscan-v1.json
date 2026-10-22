@@ -1,0 +1,510 @@
+{
+ "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+ "app_lo": "0x436000",
+ "method": "every memory operand of the application code whose displacement is an offset inside the field (any base register) or an absolute address inside it",
+ "fields": {
+  "NATION.unknown27": {
+   "n": 5,
+   "operands": [
+    {
+     "function": "0x445b38",
+     "va": "0x445b61",
+     "offset": "0x450",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x445d38",
+     "va": "0x445d96",
+     "offset": "0x450",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x4462ac",
+     "va": "0x4462c4",
+     "offset": "0x450",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x448aa4",
+     "va": "0x448b4f",
+     "offset": "0x450",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x457404",
+     "va": "0x4574a1",
+     "offset": "0x450",
+     "base": "esi",
+     "absolute": false,
+     "write": false
+    }
+   ]
+  },
+  "NATION.unknown1": {
+   "n": 0,
+   "operands": []
+  },
+  "NATION.unknown3": {
+   "n": 0,
+   "operands": []
+  },
+  "NATION.hints": {
+   "n": 3,
+   "operands": [
+    {
+     "function": "0x45ac5c",
+     "va": "0x45acbc",
+     "offset": "0x46b",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45c294",
+     "va": "0x45c2d3",
+     "offset": "0x46b",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45c294",
+     "va": "0x45c2dd",
+     "offset": "0x46b",
+     "base": null,
+     "absolute": true,
+     "write": true
+    }
+   ]
+  },
+  "NATION.human": {
+   "n": 52,
+   "operands": [
+    {
+     "function": "0x436b64",
+     "va": "0x436bb2",
+     "offset": "0x490",
+     "base": "esi",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x436b64",
+     "va": "0x436c24",
+     "offset": "0x490",
+     "base": "esi",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x436fb4",
+     "va": "0x437018",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x437b8c",
+     "va": "0x437bb2",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x437de4",
+     "va": "0x437e05",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x437de4",
+     "va": "0x437e9f",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x438378",
+     "va": "0x438385",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x439c84",
+     "va": "0x439c9e",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x43a31c",
+     "va": "0x43a4a7",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x43abb4",
+     "va": "0x43ac97",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x43b014",
+     "va": "0x43b074",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x448aa4",
+     "va": "0x448b48",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": true
+    },
+    {
+     "function": "0x449078",
+     "va": "0x44908b",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x449078",
+     "va": "0x44909b",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": true
+    },
+    {
+     "function": "0x449a44",
+     "va": "0x449acc",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x449a44",
+     "va": "0x449adf",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x449f08",
+     "va": "0x449f87",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44a120",
+     "va": "0x44a18a",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44aee4",
+     "va": "0x44af13",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44aee4",
+     "va": "0x44af31",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44b79c",
+     "va": "0x44b81a",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44b840",
+     "va": "0x44b854",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44bed8",
+     "va": "0x44c131",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x44bed8",
+     "va": "0x44c1cb",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44c528",
+     "va": "0x44c813",
+     "offset": "0x490",
+     "base": "eax",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x44c8f0",
+     "va": "0x44c909",
+     "offset": "0x490",
+     "base": "esi",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x44d420",
+     "va": "0x44d652",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44d420",
+     "va": "0x44d6b3",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44d420",
+     "va": "0x44d6e6",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44dd70",
+     "va": "0x44df8b",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44dd70",
+     "va": "0x44e016",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44dd70",
+     "va": "0x44e049",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x44fb7c",
+     "va": "0x44fcf7",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x451b40",
+     "va": "0x451f1c",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x451fdc",
+     "va": "0x452003",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x451fdc",
+     "va": "0x452023",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x452034",
+     "va": "0x45209c",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x452d94",
+     "va": "0x452dbc",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x4530d8",
+     "va": "0x45313b",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x457404",
+     "va": "0x45744b",
+     "offset": "0x490",
+     "base": "esi",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x457404",
+     "va": "0x457480",
+     "offset": "0x490",
+     "base": "esi",
+     "absolute": false,
+     "write": true
+    },
+    {
+     "function": "0x457404",
+     "va": "0x4574e5",
+     "offset": "0x490",
+     "base": "ebx",
+     "absolute": false,
+     "write": false
+    },
+    {
+     "function": "0x457404",
+     "va": "0x4574ee",
+     "offset": "0x490",
+     "base": "esi",
+     "absolute": false,
+     "write": true
+    },
+    {
+     "function": "0x4577ec",
+     "va": "0x457861",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x4577ec",
+     "va": "0x457a0f",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x459220",
+     "va": "0x45946e",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x459220",
+     "va": "0x459485",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45a9e0",
+     "va": "0x45aa83",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45af00",
+     "va": "0x45b087",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45b148",
+     "va": "0x45b180",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45b198",
+     "va": "0x45b1f4",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    },
+    {
+     "function": "0x45c1c8",
+     "va": "0x45c1ec",
+     "offset": "0x490",
+     "base": null,
+     "absolute": true,
+     "write": false
+    }
+   ]
+  }
+ }
+}

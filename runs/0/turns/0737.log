@@ -1,0 +1,13 @@
+13:16:38 turn 0737: load /home/user/ic2-conquest/artifacts/run-0/270BC-autumn/AUTO0737.SAV (sha 6f096f629290f970) seed 12362
+13:16:43 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":118,"sha256_12":"fd66da6d7781"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+13:16:54 seed line S 0000012362; popups at load []
+13:17:04 order goto -> ok=True {'attempts': 2, 'ok': True, 'texts': [], 'from': (81, 29), 'path': [(81, 27), (80, 26), (79, 27), (78, 28)], 'path_cost': 4, 'reach_this_turn': (78, 28), 'to': (78, 28), 'moves_left': 2}
+13:17:23 order attack -> ok=True {'attempts': 1, 'ok': True, 'texts': ['BATTLE Rome  v  Gaul          Gaul to place units.'], 'battles': 1, 'troops': (53228, 14450), 'moves': (2, 0)}
+13:17:25 order supply attempt 1: DriverError('tile 94,29 not visible from origin 75,22')
+13:17:37 order supply -> ok=True {'attempts': 2, 'ok': True, 'texts': [], 'errors': ["DriverError('tile 94,29 not visible from origin 75,22')"], 'supplies': (34, 36), 'money': (0, 0)}
+13:17:40 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (94, 29), 'path': [(94, 29), (93, 28)], 'path_cost': 4, 'reach_this_turn': (93, 28), 'to': (93, 28), 'moves_left': 6}
+13:17:51 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (34, 36), 'money': (0, 0)}
+13:17:58 order goto -> ok=partial (moves ran out) {'attempts': 1, 'ok': 'partial (moves ran out)', 'texts': [], 'from': (98, 38), 'path': [(98, 38), (97, 37), (96, 36), (95, 35), (94, 34), (93, 33), (92, 32), (91, 31), (92, 30), (93, 29)], 'path_cost': 12, 'reach_this_turn': (92, 30), 'to': (92, 30), 'moves_left': 2}
+13:18:00 end turn
+13:18:31 autosave AUTO0738.SAV; texts ['BATTLE Carthage  v  Rome          Rome to place units.', 'BATTLE Gaul  v  Rome          Rome to place units.']; battles 3
+13:18:32 done: /home/user/ic2-conquest/artifacts/run-0/270BC-winter/AUTO0738.SAV sha e93b2cc4a423617b

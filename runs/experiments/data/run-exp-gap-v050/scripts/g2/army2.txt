@@ -1,0 +1,21 @@
+armies
+save ART/g2_army2_before.sav
+split-army army-0 army-100 0
+armies
+split-army army-0 army-101 0,1,2,3,4,5
+split-army army-0 army-101 1,2 supply=500 money=5000
+split-army army-0 army-101 1,2 supply=20 money=50
+armies
+join-armies army-0 army-100
+join-armies army-0 army-101
+armies
+save ART/g2_army2_mid.sav
+split-army army-0 army-102 0
+army-transfer army-0 army-101 units=0
+army-transfer army-0 army-101 supply=10 money=10
+armies
+buy army-0 arretium 40
+buy army-0 pisae 40
+disband-army army-101
+armies
+save ART/g2_army2_after.sav

@@ -1,0 +1,39 @@
+{
+  "order": "Recruit3000regularlightinfantry",
+  "nation": 15,
+  "queue_changes": [
+    {
+      "slot": 3,
+      "before": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        0,
+        0,
+        3000,
+        192
+      ]
+    }
+  ],
+  "economy": {
+    "treasury": [
+      520,
+      490
+    ],
+    "mobilization": [
+      22,
+      25
+    ]
+  },
+  "file": {
+    "private_name": "N2O68B2.SAV",
+    "size": 131557,
+    "sha256": "ee905f94083312695fe0138e94c6f98dc0a7e45a9fc2158d45958d18c605e7be",
+    "saved_by_original_UI": true,
+    "exclusive_new_destination": true
+  },
+  "verified_non_noop_order": true
+}

@@ -1,0 +1,194 @@
+{
+ "sp1_split_30_by_10": {
+  "order": "split_fleet(2, 10)",
+  "popups": [],
+  "before": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 30,
+    "word": 316,
+    "band_of_ships": 316
+   }
+  ],
+  "after": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 20,
+    "word": 300,
+    "band_of_ships": 300
+   },
+   {
+    "id": 5,
+    "xy": [
+     101,
+     47
+    ],
+    "ships": 10,
+    "word": 300,
+    "band_of_ships": 300
+   }
+  ],
+  "mem_words_after": {
+   "101,46": 300,
+   "101,47": 300
+  },
+  "all_rebanded": true
+ },
+ "sp2_split_50_by_1": {
+  "order": "split_fleet(2, 1)",
+  "popups": [],
+  "before": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 50,
+    "word": 332,
+    "band_of_ships": 332
+   }
+  ],
+  "after": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 49,
+    "word": 316,
+    "band_of_ships": 316
+   },
+   {
+    "id": 5,
+    "xy": [
+     101,
+     47
+    ],
+    "ships": 1,
+    "word": 300,
+    "band_of_ships": 300
+   }
+  ],
+  "mem_words_after": {
+   "101,46": 316,
+   "101,47": 300
+  },
+  "all_rebanded": true
+ },
+ "tr1_transfer_25_24_by_1": {
+  "order": "transfer_ships(2, 1)",
+  "popups": [],
+  "before": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 25,
+    "word": 316,
+    "band_of_ships": 316
+   },
+   {
+    "id": 5,
+    "xy": [
+     101,
+     47
+    ],
+    "ships": 24,
+    "word": 300,
+    "band_of_ships": 300
+   }
+  ],
+  "after": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 24,
+    "word": 300,
+    "band_of_ships": 300
+   },
+   {
+    "id": 5,
+    "xy": [
+     101,
+     47
+    ],
+    "ships": 25,
+    "word": 316,
+    "band_of_ships": 316
+   }
+  ],
+  "mem_words_after": {
+   "101,46": 300,
+   "101,47": 316
+  },
+  "all_rebanded": true
+ },
+ "tr2_transfer_50_10_by_1": {
+  "order": "transfer_ships(2, 1)",
+  "popups": [],
+  "before": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 50,
+    "word": 332,
+    "band_of_ships": 332
+   },
+   {
+    "id": 5,
+    "xy": [
+     101,
+     47
+    ],
+    "ships": 10,
+    "word": 300,
+    "band_of_ships": 300
+   }
+  ],
+  "after": [
+   {
+    "id": 2,
+    "xy": [
+     101,
+     46
+    ],
+    "ships": 49,
+    "word": 316,
+    "band_of_ships": 316
+   },
+   {
+    "id": 5,
+    "xy": [
+     101,
+     47
+    ],
+    "ships": 11,
+    "word": 300,
+    "band_of_ships": 300
+   }
+  ],
+  "mem_words_after": {
+   "101,46": 316,
+   "101,47": 300
+  },
+  "all_rebanded": true
+ }
+}

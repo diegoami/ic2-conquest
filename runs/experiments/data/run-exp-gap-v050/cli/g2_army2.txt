@@ -1,0 +1,105 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T16:59:31+02:00
+# script:
+#   armies
+#   save ART/g2_army2_before.sav
+#   split-army army-0 army-100 0
+#   armies
+#   split-army army-0 army-101 0,1,2,3,4,5
+#   split-army army-0 army-101 1,2 supply=500 money=5000
+#   split-army army-0 army-101 1,2 supply=20 money=50
+#   armies
+#   join-armies army-0 army-100
+#   join-armies army-0 army-101
+#   armies
+#   save ART/g2_army2_mid.sav
+#   split-army army-0 army-102 0
+#   army-transfer army-0 army-101 units=0
+#   army-transfer army-0 army-101 supply=10 money=10
+#   armies
+#   buy army-0 arretium 40
+#   buy army-0 pisae 40
+#   disband-army army-101
+#   armies
+#   save ART/g2_army2_after.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 170t (71%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army2_before.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army2_before.sav'.
+
+> split-army army-0 army-100 0
+armies.split-army accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 18900 troops in 5 units, supply 170t (89%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (101,38): 4800 troops in 1 units, supply 0t (0%), morale 59, moves 0
+
+> split-army army-0 army-101 0,1,2,3,4,5
+armies.split-army rejected (armies.invalid-unit-selection): Must select between 1 and 4 distinct, in-range unit indices to move to the new army.
+
+> split-army army-0 army-101 1,2 supply=500 money=5000
+armies.split-army rejected (armies.invalid-money-allocation): Cannot move 5000 money to the new army; army 'army-0' holds 100.
+
+> split-army army-0 army-101 1,2 supply=20 money=50
+armies.split-army accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 7800 troops in 3 units, supply 78t (100%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-100 (Rome) @ (101,38): 4800 troops in 1 units, supply 0t (0%), morale 59, moves 0
+  army-101 (Rome) @ (101,37): 11100 troops in 2 units, supply 92t (82%), morale 59, moves 0
+
+> join-armies army-0 army-100
+armies.join-armies accepted.
+
+> join-armies army-0 army-101
+armies.join-armies accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 170t (71%), morale 70, moves 0
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army2_mid.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army2_mid.sav'.
+
+> split-army army-0 army-102 0
+armies.split-army accepted.
+
+> army-transfer army-0 army-101 units=0
+armies.army-transfer rejected (armies.army-transfer-unknown-army): 'army-101' is not a known army.
+
+> army-transfer army-0 army-101 supply=10 money=10
+armies.army-transfer rejected (armies.army-transfer-unknown-army): 'army-101' is not a known army.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 18700 troops in 5 units, supply 170t (90%), morale 70, moves 0
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-102 (Rome) @ (101,38): 5000 troops in 1 units, supply 0t (0%), morale 59, moves 0
+
+> buy army-0 arretium 40
+army-0 bought 18 tons of supply at arretium, free at your own city.
+
+> buy army-0 pisae 40
+Purchase rejected (supply.city-not-within-range): City 'pisae' is not within one tile of army 'army-0'.
+
+> disband-army army-101
+armies.disband-army rejected (armies.unknown-army): 'army-101' is not a known army.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 18700 troops in 5 units, supply 188t (100%), morale 70, moves 0
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-102 (Rome) @ (101,38): 5000 troops in 1 units, supply 0t (0%), morale 59, moves 0
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army2_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army2_after.sav'.
+

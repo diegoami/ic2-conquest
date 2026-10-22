@@ -1,0 +1,14 @@
+# after click_list_row (row geometry from win_controls), batch 1
+PASS recruit (46s): slot {'slot': 4, 'state': 0, 'type': 'hi', 'troops': 3200, 'city': 85}, treasury 2200 -> 1880 (cost 320), mobilization 30 -> 32, popups []
+PASS disband_unit (52s): Rome queue 4 -> 4 (recruit +1, disband -1), treasury 1880
+PASS split_army (36s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18900), (1, 120, 53, 22000), (14, 101, 38, 4800)]
+PASS transfer_units (63s): army0 23700t/6u -> 18900t/5u; army1 22000t/6u -> 26800t/7u
+PASS change_units_disband (43s): army 0 23700 t / 6 units -> 18900 t / 5 units
+PASS change_units_rename (47s): '1st Foot  Battalion' -> 'Legio Test'
+PASS change_units_split (48s): units 6 -> 7; troops [4800, 5000, 5200, 5900, 900, 1900] -> [4800, 3000, 5200, 5900, 900, 1900, 2000]
+# batch 2 (split_army and transfer_units now assert that row 0's unit moved)
+PASS split_army (35s): Roman armies 2 -> 3 (troops 45700 -> 45700); [(0, 100, 37, 18900), (1, 120, 53, 22000), (14, 101, 38, 4800)]
+PASS transfer_units (62s): army0 23700t/6u -> 18900t/5u; army1 22000t/6u -> 26800t/7u
+PASS change_units_join (57s): split then join: units 6 -> 6; troops [4800, 5000, 5200, 5900, 900, 1900]
+PASS change_units_refusals (59s): split row 0: '@ this unit is too small to split'; join rows 1+2: 'e these units ate too lage to be combined. ak'; units unchanged [4800, 5000, 5200, 5900, 900, 1900]
+PASS recruit_40_slots_cap (50s): L11 40 slots: 40 in, 40 out (gate held); refusal text = 'e ‘You have reached your lint of 40 units aK'; popups = ['e ‘You have reached your lint of 40 units aK']

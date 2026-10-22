@@ -1,0 +1,19 @@
+> +
+> +def fake_run(files=FILES, match="DejaVu Sans", fail=()):
+> +    def run(*args, env=None, timeout=10):
+> +        if args[0] in fail:
+> +            raise FileNotFoundError(args[0])
+> +        if args[0] == "fc-match":
+> +            return match
+> +        if args[0] == "fc-list":
+> [...]
+> [0m✱ [0mGrep "environment.jsonl"[90m in . · 7 matches[0m
+> [0m✱ [0mGrep "^class Log|^class .*Log|def __init__\(self,.*log|log ="[90m in runs/experiments · 34 matches[0m
+> [0m✱ [0mGrep "g\.log|Game\([^\n]*log|Game\(.*log="[90m in runs/experiments · 3 matches[0m
+> [0m✱ [0mGrep "self\.log\s*=|super\(\).*log|super\(\*a"[90m in runs/experiments · 1 match[0m
+> [93m[1m! [0mpermission requested: external_directory (/home/diego/ic2-work/review/pr69-review/pr69-review-a6c69b/runs/experiments/data/run-exp-ai-conquest-aboard/*); auto-rejecting
+> [0m→ [0mRead runs/experiments/data/run-exp-end-turn-timeout/repro.py[90m [offset=1, limit=100][0m
+> [0m→ [0mRead runs/experiments/data/run-exp-machine-move/civ_sweep_replay.py[90m [offset=1, limit=90][0m
+> [0m→ [0mRead runs/experiments/data/run-exp-cellauto-rule/trace_save_before_n.py[90m [offset=1, limit=45][0m
+> [0m✗ [0mRead /home/diego/ic2-work/review/pr69-review/pr69-review-a6c69b/runs/experiments/data/run-exp-ai-conquest-aboard/idle_watch.py failed[90m [offset=1, limit=90][0m
+> [91m[1mError: [0mThe user rejected permission to use this specific tool call.

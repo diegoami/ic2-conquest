@@ -1,0 +1,63 @@
+40297: // ==== TInformation_InitializeForm @ 0043b014 ====
+40298: 
+40299: void TInformation_InitializeForm(int *param_1)
+40300: 
+40301: {
+40302:   int *piVar1;
+40303:   short sVar2;
+40304:   uint uVar3;
+40305:   int iVar4;
+40306:   undefined4 uVar5;
+40307:   undefined4 extraout_ECX;
+40308:   undefined2 extraout_var;
+40309:   
+40310:   FUN_00412df0(param_1,0xffffff);
+40311:   sVar2 = 0;
+40312:   do {
+40313:     *(undefined1 *)((int)param_1 + sVar2 + 0x1b4) = 0x20;
+40314:     sVar2 = sVar2 + 1;
+40315:   } while (sVar2 != 100);
+40316:   *(undefined1 *)(param_1 + 0x86) = 0;
+40317:   *(char *)((int)param_1 + 0x219) = DAT_004a0b7c;
+40318:   sVar2 = DAT_004a0320;
+40319:   if ((DAT_004a0b7c != '\0') &&
+40320:      (sVar2 = (&DAT_0047c1f0)[DAT_004a0b74 * 0x148], (&DAT_00474b00)[sVar2 * 0x494] == '\0')) {
+40321:     sVar2 = (&DAT_0047c1f0)[DAT_004a0b76 * 0x148];
+40322:   }
+40323:   iVar4 = sVar2 * 0x494;
+40324:   FUN_004127a0(param_1,(int)*(short *)(&DAT_00474aee + iVar4));
+40325:   FUN_004127c0(param_1,(int)*(short *)(&DAT_00474af0 + iVar4));
+40326:   FUN_00420c58(param_1,(int)*(short *)(&DAT_00474af4 + iVar4));
+40327:   uVar3 = (int)*(short *)(&DAT_00474af2 + iVar4) & 0x8000000f;
+40328:   if ((int)uVar3 < 0) {
+40329:     uVar3 = (uVar3 - 1 | 0xfffffff0) + 1;
+40330:   }
+40331:   *(short *)(&DAT_00474af2 + iVar4) = *(short *)(&DAT_00474af2 + iVar4) - (short)uVar3;
+40332:   FUN_00420c84(param_1,(int)*(short *)(&DAT_00474af2 + iVar4));
+40333:   iVar4 = param_1[0x6c];
+40334:   func_0x004126d0(iVar4,2);
+40335:   func_0x0042aa3c(iVar4,0x14);
+40336:   func_0x0042aa24(iVar4,0);
+40337:   *(undefined2 *)(iVar4 + 0x10e) = 10;
+40338:   piVar1 = (int *)param_1[0x6b];
+40339:   func_0x004126d0(piVar1,4);
+40340:   func_0x0042aa3c(piVar1,0x1e);
+40341:   func_0x0042aa24(piVar1,0);
+40342:   *(undefined2 *)((int)piVar1 + 0x10e) = 10;
+40343:   iVar4 = FUN_004128c4(piVar1);
+40344:   FUN_00412c08(piVar1,CONCAT31((int3)((uint)(DAT_004a031e * 0x10) >> 8),
+40345:                                iVar4 + -0xf < DAT_004a031e * 0x10),extraout_ECX);
+40346:   if (*(char *)((int)param_1 + 0x219) == '\0') {
+40347:     iVar4 = FUN_004128c4(piVar1);
+40348:     if (iVar4 < 0) {
+40349:       iVar4 = iVar4 + 0xf;
+40350:     }
+40351:     uVar5 = FUN_00448fd8(0,CONCAT22(extraout_var,DAT_004a031e - (short)(iVar4 >> 4)) + 1);
+40352:     FUN_0042aa10(piVar1,(int)(short)uVar5);
+40353:     return;
+40354:   }
+40355:   FUN_0042aa10(piVar1,0);
+40356:   return;
+40357: }
+40358: 
+40359: 

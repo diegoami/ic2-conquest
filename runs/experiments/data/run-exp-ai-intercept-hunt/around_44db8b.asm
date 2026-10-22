@@ -1,0 +1,52 @@
+0x44db20 mov word ptr [eax], 1
+0x44db25 jmp 0x44db2f
+0x44db27 mov eax, dword ptr [ebp - 8]
+0x44db2a mov word ptr [eax], 2
+0x44db2f pop edi
+0x44db30 pop esi
+0x44db31 pop ebx
+0x44db32 mov esp, ebp
+0x44db34 pop ebp
+0x44db35 ret 4
+0x44db38 push ebp
+0x44db39 mov ebp, esp
+0x44db3b add esp, -0x10
+0x44db3e push ebx
+0x44db3f mov ebx, ecx
+0x44db41 mov dword ptr [ebp - 8], edx
+0x44db44 mov dword ptr [ebp - 4], eax
+0x44db47 mov word ptr [ebx], 0xffff
+0x44db4c lea eax, [ebp - 0xa]
+0x44db4f push eax
+0x44db50 lea ecx, [ebp - 0xe]
+0x44db53 lea edx, [ebp - 0x10]
+0x44db56 mov eax, dword ptr [ebp - 8]
+0x44db59 call 0x44da88
+0x44db5e lea eax, [ebp - 9]
+0x44db61 push eax
+0x44db62 lea ecx, [ebp - 0xc]
+0x44db65 lea edx, [ebp - 0x10]
+0x44db68 mov eax, dword ptr [ebp - 4]
+0x44db6b call 0x44da88
+0x44db70 mov al, byte ptr [ebp - 9]
+0x44db73 cmp al, byte ptr [ebp - 0xa]
+0x44db76 jne 0x44db82
+0x44db78 mov ax, word ptr [ebp - 0xc]
+0x44db7c cmp ax, word ptr [ebp - 0xe]
+0x44db80 je 0x44db93
+0x44db82 mov eax, dword ptr [ebp + 8]
+0x44db85 push eax
+0x44db86 mov edx, ebx
+0x44db88 mov eax, dword ptr [ebp - 4]
+0x44db8b call 0x44d9a8
+0x44db90 pop ecx
+0x44db91 jmp 0x44dba3
+0x44db93 push ebx
+0x44db94 mov ecx, dword ptr [ebp - 8]
+0x44db97 mov edx, dword ptr [ebp - 4]
+0x44db9a mov ax, word ptr [ebp - 0x10]
+0x44db9e call 0x44d174
+0x44dba3 pop ebx
+0x44dba4 mov esp, ebp
+0x44dba6 pop ebp
+0x44dba7 ret 

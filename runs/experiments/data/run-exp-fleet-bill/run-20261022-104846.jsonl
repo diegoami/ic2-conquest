@@ -1,0 +1,9 @@
+{"t": "10:48:46", "step": "start", "exe": "Imperial Conquest 2 fast rollingsave seed.exe", "src": "M133_session1_AUTO0725.SAV", "src_sha256": "7d20dcf44dfbfbeea1f6f0c82f0c3e35cbcbf1c69e5edc03f654af62dbf2406b", "src_rome": {"treasury": 1781, "fleets": [], "calendar": {"week": null, "year_bc": null, "season": null}}}
+{"t": "10:49:05", "step": "loaded", "tag": "A_nofleet", "seed_line": "S 0000012345", "treasury": 1781}
+{"t": "10:49:20", "step": "end_turn", "tag": "A_nofleet", "texts": "('AUTO0726.SAV', ['CONFIRM \u2018An army of yours needs supplies 7 An army of yours needs supplies. i Hyou have notfinished yourtum click MAKE MORE MOVES. Hyou are finished moving this turn click END TURN. End turn Make more moves:'])"}
+{"t": "10:49:20", "step": "kept", "tag": "A_nofleet", "file": "FB_A_nofleet_after_quarter.SAV", "sha256": "adf4988e58cd64a105f1968af56ef5fe716c7bb4dae04667e2a5448e461b466a", "rome": {"treasury": 1804, "fleets": [], "calendar": {"week": null, "year_bc": null, "season": null}}}
+{"t": "10:49:37", "step": "loaded", "tag": "B_fleet50", "seed_line": "S 0000012345", "treasury": 1781}
+{"t": "10:49:52", "step": "build_fleet", "tag": "B_fleet50", "ships": 50, "texts": ["(7) teeomeenaese"], "treasury": 1281}
+{"t": "10:50:07", "step": "end_turn", "tag": "B_fleet50", "texts": "('AUTO0726.SAV', ['CONFIRM \u2018An army of yours needs supplies 7 An army of yours needs supplies. i Hyou have notfinished yourtum click MAKE MORE MOVES. Hyou are finished moving this turn click END TURN. End turn Make more moves:'])"}
+{"t": "10:50:07", "step": "kept", "tag": "B_fleet50", "file": "FB_B_fleet50_after_quarter.SAV", "sha256": "483287fcd1168c034095ce3d106c7cc13bdf8d6204ce49d65a72a752234f99ba", "rome": {"treasury": 1304, "fleets": [{"ships": 50, "countdown": 22}], "calendar": {"week": null, "year_bc": null, "season": null}}}
+{"t": "10:50:08", "step": "done"}

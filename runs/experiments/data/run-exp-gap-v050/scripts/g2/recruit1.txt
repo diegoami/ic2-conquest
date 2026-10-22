@@ -1,0 +1,18 @@
+status mine
+save ART/g2_recruit1_before.sav
+recruit-standing rome heavy_infantry 3000
+recruit-standing rome heavy_infantry 3200
+recruit-standing rome hi 3200
+recruit-standing caere heavy_infantry 3000
+recruit-standing pisae heavy_infantry 3000
+recruit-standing arretium heavy_infantry 3000
+recruit-standing arretium heavy_infantry 50
+recruit-standing arretium heavy_infantry 99999
+recruit-standing arretium archers 2000
+status mine
+save ART/g2_recruit1_after.sav
+disband-slot 0
+disband-slot 39
+mobilize 0 army-200
+end
+mobilize 0 army-200

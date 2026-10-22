@@ -1,0 +1,875 @@
+{
+  "cases": 56,
+  "records": [
+    {
+      "case": "land:peace",
+      "before": "land-peace-20261017-082729-8913-loaded.SAV",
+      "after": "land-peace-20261017-082729-8913-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "aboard:peace",
+      "before": "aboard-peace-20261017-083008-11228-loaded.SAV",
+      "after": "aboard-peace-20261017-083008-11228-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "fleet:peace",
+      "before": "fleet-peace-20261017-083008-11228-loaded.SAV",
+      "after": "fleet-peace-20261017-083008-11228-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "land:war",
+      "before": "land-war-20261017-083008-11228-loaded.SAV",
+      "after": "land-war-20261017-083008-11228-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {
+          "0": -1010
+        }
+      }
+    },
+    {
+      "case": "land:own",
+      "before": "land-own-20261017-084057-17118-loaded.SAV",
+      "after": "land-own-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": 0,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {}
+      }
+    },
+    {
+      "case": "land:empty",
+      "before": "land-empty-20261017-084057-17118-loaded.SAV",
+      "after": "land-empty-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "land:purse0",
+      "before": "land-purse0-20261017-084057-17118-loaded.SAV",
+      "after": "land-purse0-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "land:inside",
+      "before": "land-inside-20261017-084057-17118-loaded.SAV",
+      "after": "land-inside-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "land:outside",
+      "before": "land-outside-20261017-084057-17118-loaded.SAV",
+      "after": "land-outside-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "land:exact",
+      "before": "land-exact-20261017-084057-17118-loaded.SAV",
+      "after": "land-exact-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "land:above",
+      "before": "land-above-20261017-084057-17118-loaded.SAV",
+      "after": "land-above-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": -10,
+        "purse": 2,
+        "stock": {
+          "89": 10
+        },
+        "treasury": {
+          "1": -2
+        }
+      }
+    },
+    {
+      "case": "land:tiny",
+      "before": "land-tiny-20261017-084057-17118-loaded.SAV",
+      "after": "land-tiny-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 4,
+        "purse": 0,
+        "stock": {
+          "89": -4
+        },
+        "treasury": {}
+      }
+    },
+    {
+      "case": "land:own_first_zero",
+      "before": "land-own_first_zero-20261017-084057-17118-loaded.SAV",
+      "after": "land-own_first_zero-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 1,
+        "purse": 500,
+        "stock": {
+          "88": -1
+        },
+        "treasury": {
+          "0": -500
+        }
+      }
+    },
+    {
+      "case": "land:own_first_positive",
+      "before": "land-own_first_positive-20261017-084057-17118-loaded.SAV",
+      "after": "land-own_first_positive-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 101,
+        "purse": 480,
+        "stock": {
+          "88": -1,
+          "89": -100
+        },
+        "treasury": {
+          "0": -500,
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "land:foreign_first_zero",
+      "before": "land-foreign_first_zero-20261017-084057-17118-loaded.SAV",
+      "after": "land-foreign_first_zero-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 1,
+        "purse": 500,
+        "stock": {
+          "90": -1
+        },
+        "treasury": {
+          "0": -500
+        }
+      }
+    },
+    {
+      "case": "land:two_foreign",
+      "before": "land-two_foreign-20261017-084057-17118-loaded.SAV",
+      "after": "land-two_foreign-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 9,
+        "purse": -1,
+        "stock": {
+          "88": -5,
+          "89": -4
+        },
+        "treasury": {
+          "2": 1
+        }
+      }
+    },
+    {
+      "case": "land:trade",
+      "before": "land-trade-20261017-084057-17118-loaded.SAV",
+      "after": "land-trade-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "land:alliance",
+      "before": "land-alliance-20261017-084057-17118-loaded.SAV",
+      "after": "land-alliance-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "land:negative_relation",
+      "before": "land-negative_relation-20261017-084057-17118-loaded.SAV",
+      "after": "land-negative_relation-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "land:relation4",
+      "before": "land-relation4-20261017-084057-17118-loaded.SAV",
+      "after": "land-relation4-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "land:purse1",
+      "before": "land-purse1-20261017-084057-17118-loaded.SAV",
+      "after": "land-purse1-20261017-084057-17118-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "fleet:war",
+      "before": "fleet-war-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-war-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {
+          "0": -1445
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:own",
+      "before": "fleet-own-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-own-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": 0,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "0": -108
+        },
+        "condition": 6
+      }
+    },
+    {
+      "case": "fleet:empty",
+      "before": "fleet-empty-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-empty-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:purse0",
+      "before": "fleet-purse0-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-purse0-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:inside",
+      "before": "fleet-inside-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-inside-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:outside",
+      "before": "fleet-outside-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-outside-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:exact",
+      "before": "fleet-exact-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-exact-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:above",
+      "before": "fleet-above-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-above-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": -10,
+        "purse": 2,
+        "stock": {
+          "89": 10
+        },
+        "treasury": {
+          "1": -2
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:tiny",
+      "before": "fleet-tiny-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-tiny-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 4,
+        "purse": 0,
+        "stock": {
+          "89": -4
+        },
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:own_first_zero",
+      "before": "fleet-own_first_zero-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-own_first_zero-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 100,
+        "stock": {},
+        "treasury": {
+          "0": -208
+        },
+        "condition": 6
+      }
+    },
+    {
+      "case": "fleet:own_first_positive",
+      "before": "fleet-own_first_positive-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-own_first_positive-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 20,
+        "purse": 96,
+        "stock": {
+          "89": -20
+        },
+        "treasury": {
+          "0": -208,
+          "1": 4
+        },
+        "condition": 6
+      }
+    },
+    {
+      "case": "fleet:foreign_first_zero",
+      "before": "fleet-foreign_first_zero-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-foreign_first_zero-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 100,
+        "stock": {},
+        "treasury": {
+          "0": -208
+        },
+        "condition": 6
+      }
+    },
+    {
+      "case": "fleet:two_foreign",
+      "before": "fleet-two_foreign-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-two_foreign-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 9,
+        "purse": -1,
+        "stock": {
+          "88": -5,
+          "89": -4
+        },
+        "treasury": {
+          "2": 1
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:trade",
+      "before": "fleet-trade-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-trade-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:alliance",
+      "before": "fleet-alliance-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-alliance-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:negative_relation",
+      "before": "fleet-negative_relation-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-negative_relation-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        },
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:relation4",
+      "before": "fleet-relation4-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-relation4-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "fleet:purse1",
+      "before": "fleet-purse1-20261017-084059-17272-loaded.SAV",
+      "after": "fleet-purse1-20261017-084059-17272-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {},
+        "condition": 0
+      }
+    },
+    {
+      "case": "aboard:war",
+      "before": "aboard-war-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-war-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {
+          "0": -1010
+        }
+      }
+    },
+    {
+      "case": "aboard:own",
+      "before": "aboard-own-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-own-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": 0,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {}
+      }
+    },
+    {
+      "case": "aboard:empty",
+      "before": "aboard-empty-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-empty-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "aboard:purse0",
+      "before": "aboard-purse0-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-purse0-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "aboard:inside",
+      "before": "aboard-inside-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-inside-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "aboard:outside",
+      "before": "aboard-outside-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-outside-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "aboard:exact",
+      "before": "aboard-exact-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-exact-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    },
+    {
+      "case": "aboard:above",
+      "before": "aboard-above-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-above-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": -10,
+        "purse": 2,
+        "stock": {
+          "89": 10
+        },
+        "treasury": {
+          "1": -2
+        }
+      }
+    },
+    {
+      "case": "aboard:tiny",
+      "before": "aboard-tiny-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-tiny-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 4,
+        "purse": 0,
+        "stock": {
+          "89": -4
+        },
+        "treasury": {}
+      }
+    },
+    {
+      "case": "aboard:own_first_zero",
+      "before": "aboard-own_first_zero-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-own_first_zero-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 1,
+        "purse": 500,
+        "stock": {
+          "88": -1
+        },
+        "treasury": {
+          "0": -500
+        }
+      }
+    },
+    {
+      "case": "aboard:own_first_positive",
+      "before": "aboard-own_first_positive-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-own_first_positive-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 101,
+        "purse": 480,
+        "stock": {
+          "88": -1,
+          "89": -100
+        },
+        "treasury": {
+          "0": -500,
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "aboard:foreign_first_zero",
+      "before": "aboard-foreign_first_zero-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-foreign_first_zero-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 1,
+        "purse": 500,
+        "stock": {
+          "90": -1
+        },
+        "treasury": {
+          "0": -500
+        }
+      }
+    },
+    {
+      "case": "aboard:two_foreign",
+      "before": "aboard-two_foreign-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-two_foreign-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 9,
+        "purse": -1,
+        "stock": {
+          "88": -5,
+          "89": -4
+        },
+        "treasury": {
+          "2": 1
+        }
+      }
+    },
+    {
+      "case": "aboard:trade",
+      "before": "aboard-trade-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-trade-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "aboard:alliance",
+      "before": "aboard-alliance-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-alliance-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "aboard:carrier_far",
+      "before": "aboard-carrier_far-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-carrier_far-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 100,
+        "purse": -20,
+        "stock": {
+          "89": -100
+        },
+        "treasury": {
+          "1": 20
+        }
+      }
+    },
+    {
+      "case": "aboard:purse1",
+      "before": "aboard-purse1-20261017-084100-17426-loaded.SAV",
+      "after": "aboard-purse1-20261017-084100-17426-post.SAV",
+      "turn": 734,
+      "delta": {
+        "supplies": 0,
+        "purse": 0,
+        "stock": {},
+        "treasury": {}
+      }
+    }
+  ],
+  "matched_land_aboard": [
+    "peace",
+    "war",
+    "own",
+    "empty",
+    "purse0",
+    "inside",
+    "outside",
+    "exact",
+    "above",
+    "tiny",
+    "own_first_zero",
+    "own_first_positive",
+    "foreign_first_zero",
+    "two_foreign",
+    "trade",
+    "alliance",
+    "purse1"
+  ],
+  "failures": [
+    {
+      "log": "wine-20261017-082729-8913.jsonl",
+      "case": "aboard:peace",
+      "exception": "KeyboardInterrupt()"
+    },
+    {
+      "log": "wine-20261017-083008-11228.jsonl",
+      "case": "fleet:war",
+      "exception": "OSError(28, 'No space left on device')"
+    }
+  ]
+}

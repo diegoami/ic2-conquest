@@ -1,0 +1,13 @@
+status mine
+save ART/g2_siege1_start.sav
+besiege-city army-0 felsina
+move army-0 98 32
+armies
+besiege-city army-0 felsina
+save ART/g2_siege1_a.sav
+end
+move army-0 98 32
+besiege-city army-0 felsina
+save ART/g2_siege1_b.sav
+armies
+news

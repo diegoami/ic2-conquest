@@ -1,0 +1,42 @@
+{
+ "art": "20261021-225237",
+ "files": {
+  "T1A_plain_autosave_after_end_turn.SAV": "bf7691dd643a3c9b57886a4231e8b987adebc3bb4932bfcac4728e31d87ff957",
+  "T1A_plain_saveas.SAV": "5310d2e068262bcac19d8f4090a8d0f6f08a97b371d4682e9724542338681916",
+  "T1B_marked_autosave_after_end_turn.SAV": "cbdaf2da9dcf96c524bc0ebf9d2f6ff1de870ef4fb8ffcf7281e23fdbfe5302b",
+  "T1B_marked_new_game_autosave.SAV": "e21619c3e9a889e10564877ae128386c3fe6198e1970fd1d5658d4d8f03068dc",
+  "T1B_marked_saveas.SAV": "3f38a391fef2e6893c6f883ce0785382fae73abe60981bd932908c42e58bcb41"
+ },
+ "T1": {
+  "marked_saveas_markers_intact": true,
+  "marked_saveas_vs_input": {
+   "same_length": true,
+   "differing": 2,
+   "inside_inert": 0,
+   "outside_inert": 2,
+   "outside_first": [
+    "0x1b2f6",
+    "0x1b2fc"
+   ]
+  },
+  "plain_saveas_inert_zero": true,
+  "after_end_turn_markers_intact": true,
+  "after_end_turn_plain_vs_marked": {
+   "same_length": true,
+   "differing": 496,
+   "inside_inert": 496,
+   "outside_inert": 0,
+   "outside_first": []
+  },
+  "plain_after_end_turn_inert_zero": true,
+  "new_game_markers_intact": true,
+  "new_game_inert_zero": false,
+  "new_game_vs_reference_start_save": {
+   "same_length": true,
+   "differing": 496,
+   "inside_inert": 496,
+   "outside_inert": 0,
+   "outside_first": []
+  }
+ }
+}

@@ -1,0 +1,15 @@
+order-fleet rome 20 f1
+order-fleet antium 5 f1
+split-army army-0 army-9 0
+join-armies army-0 army-1
+move army-1 300 300
+besiege-city army-0 tarentum
+buy army-0 rome 99999
+recruit-standing antium heavy_infantry 99999
+hire-mercenary army-0 3
+scuttle-fleet fleet-x
+declare-war rome
+make-peace greece
+propose-trade greece
+disband-army army-0
+end

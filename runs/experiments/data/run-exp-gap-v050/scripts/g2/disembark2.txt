@@ -1,0 +1,8 @@
+load ART/g2_embark3_aboard.sav
+disembark-army army-100 100 46
+disembark-army army-100 102 45
+status mine
+save ART/g2_disembark2_after.sav
+embark-army army-100 f1
+embark-army army-0 f1
+embark-army army-0 f1

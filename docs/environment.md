@@ -1,7 +1,8 @@
 # Environment: services a session relies on
 
 The game environment (Wine, Xvfb, the executables, `IC2_WORK`) is in `CLAUDE.md` "Environment" and `docs/wsl-setup.md`. This file is
-for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51; the rules themselves are in `CLAUDE.md`, Code map).
+for the services around it. Adopted 2026-10-05 from harness_imperial (L50/L51, superseded 2026-10-11 by `CLAUDE.md` "Choosing models": the user decides, and
+`/recommend` is a suggestion only).
 
 ## Model quota availability: quota-tracker
 
@@ -33,6 +34,9 @@ Each provider has:
 - The tracker reports availability and history only; choosing a model is up to the session and the owner.
 
 ### Models per provider
+
+**DeepSeek is never used (the owner, 2026-10-11; `CLAUDE.md` "Choosing models" rule 4).** Every DeepSeek row and line below is history, superseded 2026-10-11: do not run it, not as a heavy or light model, not on any route. Alibaba runs only when the user asks for it. This table lists what exists; it picks nothing.
+
 | provider    | heavy                                             | light                                                 |
 |-------------|---------------------------------------------------|-------------------------------------------------------|
 | claude      | `claude --model opus`                             | `claude --model sonnet`                               |
@@ -45,7 +49,7 @@ Each provider has:
 | alibaba: GLM      | `opencode -m alibaba-token-plan/glm-5.3`         | none on alibaba (zai has `glm-5.3-flash`)            |
 | minimax     | `opencode -m minimax/MiniMax-M3` (variants none/thinking only: use `#thinking`) | `opencode -m minimax/MiniMax-M2.7` (offers no variant: pass none) |
 
-Use the dated `deepseek-v4-pro-0813` on alibaba, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
+History (superseded 2026-10-11, DeepSeek is never used): the dated `deepseek-v4-pro-0813` on alibaba was preferred over plain `deepseek-v4-pro`, not the plain `deepseek-v4-pro`: only the dated id gets Alibaba's night
 discount. Not Alibaba's Kimi or MiniMax models (Team edition only, they fail on this plan); MiniMax lives on its own
 `minimax/` provider.
 
@@ -55,7 +59,8 @@ With `scripts/external_review.py` a model is passed as `--model <id>#<effort>`. 
 none at all), `scripts/opencode_watched.py`'s `OFFERS`/`DEFAULT_VARIANT` tables clamp the effort to one the model offers — never
 an invented variant.
 
-Placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain is
+**Superseded 2026-10-11** (the user names every implementer and reviewer: `CLAUDE.md`, "Choosing models"; quota-tracker is a
+suggestion only). History: placements (the owner, 2026-10-06): the DEFAULT_MODELS fallback chain was
 `opencode-go/deepseek-v4.1-flash#high, openai/gpt-5.6-luna#high, alibaba-token-plan/qwen3.8-flash#medium` (then exit 3);
 and `minimax/MiniMax-M3#thinking` is the **independent second-opinion reviewer** — a family independent of
 GLM/DeepSeek/Qwen/OpenAI/Claude, used to review those models' work when a second opinion is wanted.
@@ -97,7 +102,7 @@ Facts that affect availability:
     owner rather than retrying.
 
 ### Free models (OpenRouter): supplement only
-For smaller tasks and additional reviews (a second opinion next to a regular model), never as the main model for important work
+For smaller tasks and additional reviews (a second opinion next to a regular model; a free model reviews only when the user names it, `CLAUDE.md` "Choosing models" rule 2), never as the main model for important work
 (the owner, 2026-10-06):
 - `openrouter/nvidia/nemotron-3-ultra-550b-a55b:free`: the stronger one;
 - `openrouter/cohere/north-mini-code:free`: coding-focused, faster;
@@ -110,7 +115,7 @@ Cautions:
 - **Privacy:** free providers may log and train on prompts. This repository is public, so its code and findings may be sent; never
   send secrets, keys, `auth.json` contents, private or client code, or anything under NDA. Never send other repositories' private
   material either.
-- **Failures:** on a 429, fall back to another model instead of retrying. Free models come and go.
+- **Failures:** on a 429, stop and tell the user (no retry, no automatic fallback; another model only when the user names it, `CLAUDE.md` "Choosing models" rule 7). Free models come and go.
 - **Trust:** a free model's review is a second opinion only. It never replaces the regular reviewer's verdict for a merge, and its
   output is checked like any unreviewed contribution.
 
@@ -126,3 +131,46 @@ Check: `curl -sf localhost:8765/health`. If that fails:
 ### Don't
 - Don't read or edit `~/.config/quota-tracker/config.toml`; it holds account tokens.
 - If a provider shows `error` about an expired cookie or token, tell the owner; renewing it needs their browser or login.
+
+## Decompile (Ghidra output of the game)
+
+The decompile lives in **`~/ic2-work/decompile/`** (outside the repository on purpose: decompiled game code is never committed). Override the folder with `IC2_DECOMPILE` (the old `IC2_RETOOLS`, `IC2_DUMP` for the dump file and `IC2_SYMBOLS` for the symbols file still work). Scripts take the paths from `harness/decompile.py` (`DIR`, `DUMP`, `SYMBOLS`, `NEWS_LOG`, `path(name)`); nothing hardcodes a folder. The folder was copied from the old Windows-side ReTools folder after that was lost in the computer move (2026-10-10).
+
+Findings cite **line numbers** of `all_app_functions.txt`, so the files are pinned by SHA-256 (also in `harness/decompile.py`, `PINS`). A script that cites line numbers calls `decompile.check()` and stops on a different file.
+
+| file | SHA-256 |
+|---|---|
+| `all_app_functions.txt` (59,228 lines) | `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8` |
+| `delphi_symbols.tsv` | `c4dbf9bb6a1b4f2907bb9f9ef904d60150997a4f86d08e0dd3195ba87365f58f` |
+| `news_log_decomp.txt` | `274d60b2af6ed30dbc11ce59a189d86ce70b15b6f94112efbe2cfba6309622dd` |
+
+Lost and not recreated: `scratch/datload.txt` (listing of `FUN_004481a0`, the DAT loader; cited in `runs/experiments/info_window/`; its content is transcribed as `panel_model.LOADER`). `decompile.path('scratch/datload.txt')` fails naming it.
+
+## Environment fingerprint (2026-10-10)
+
+Every `Game.start()` logs one line, `environment {compact JSON}`, once per process (`Game.environment` holds the dict; code in `harness/environment.py`, stdlib only, about 20 ms, every probe best-effort: a failure is recorded as `{"error": ...}`, never raised). It records: the Wine version, the exe name and SHA-256, the Xvfb screen size, the host font that `fc-match` gives for "Book Antiqua" and "MS Sans Serif", the number of Liberation fonts in `fc-list`, whether the fonts-wine Tahoma is present, and a 12-hex SHA-256 (plus count) of the font names in the prefix's `user.reg` (`External Fonts` names and `Replacements` pairs; nothing else is read).
+
+Why: the Information panel asks for "Book Antiqua", which no computer has, so Wine draws the best host match. With `fonts-liberation` installed it drew Liberation Sans (about 15 wrong OCR lines per panel); with the old font set (`fonts-wine`, no Liberation) it draws DejaVu Sans, as on the old computer, and the pixels agree up to anti-aliasing. Screenshots, OCR and saves must say which environment made them (`runs/experiments/data/run-exp-machine-move/RESULTS.md`, sections 4-5).
+
+`python3 scripts/environment_check.py` prints the fingerprint and compares it with `docs/environment-baseline.json` (the 2026-10-10 computer: Wine 10.0, fonts-wine, no Liberation, "Book Antiqua" -> DejaVu Sans); exit 1 with a plain-words diff when it differs. `--write-baseline` re-records it on purpose. Tests: `python3 -m tests.test_environment`.
+
+Where it goes: `Game.record_environment()` runs whenever `Game.pid` is set to a live game process (a property: every start path, including overrides, `attach()` and a start replaced by assignment, ends by setting it) and appends one record (time, pid, runner `argv[0]`, cwd, fingerprint) to `$IC2_WORK/environment.jsonl`; `self.log` gets the line once per process. A runner that keeps its own log registers `environment.add_sink(fn)` (optionally with a `key`) and writes the record there; covered: `battles/common.py` `Log`, `feature_inventory/explore_lib.py`, the five `MyGame` libraries, `supply_transfer.py`, `smoke.py`, `shot_compare.py`. Probes run in parallel and are bounded (0.8 s each, 0.9 s in all) and error texts carry no absolute paths.
+
+Tracked copy (CLAUDE.md rule 6): `record_start` also appends the record to `environment.jsonl` in the runner's own tracked data folder, chosen from the script's location by `environment.data_folder()`: `runs/experiments/data/run-exp-<n>/x.py` -> that folder (so the finished one-off scripts are covered without edits); `runs/experiments/<dir>/x.py` -> `runs/experiments/data/run-exp-<dir>/` (`_` as `-`; exceptions in `DATA_FOLDERS`: battles -> run-exp-battle-sweep, fleet-battles -> run-exp-naval-battle, unit-map-mouse -> run-exp-unitmap-mouse); `runs/experiments/x.py` -> `runs/experiments/x/`; `runs/<id>/x.py` -> `runs/<id>/`. Scripts outside `runs/` get none (only `$IC2_WORK/environment.jsonl`, the machine-wide log). A runner whose data folder differs calls `environment.set_data_folder(folder)` with a tracked folder (the t3 cargo scripts and fleet-battles/peace_prompt.py do).
+
+Mapping table (audited against where each runner's own outputs live; the default is `environment.data_folder`, an exception is `PREFIX_FOLDERS`/`DATA_FOLDERS` in `harness/environment.py` or `set_data_folder`):
+
+| runner | tracked folder (`runs/experiments/data/...`) | own-log sink |
+|---|---|---|
+| `data/run-exp-<n>/*.py` | its own folder | smoke, supply_transfer |
+| `battles/b0_*.py` (b0_probe, b0_peace_capture) | `run-exp-battle-probe` (artifacts logs are archived there) | `b0_probe.Log` |
+| `battles/b11_*.py` | `run-exp-battle-hook` | `battles/common.py` `Log` |
+| `battles/b16_*.py` | `run-exp-battle-peace` | `battles/common.py` `Log` |
+| other `battles/*.py` (trials, b2, b3, b5, b8, ...) | `run-exp-battle-sweep` | `battles/common.py` `Log` |
+| `fleet-battles/*.py` | `run-exp-naval-battle`; t3_trials, t3_natural_embark: `run-exp-naval-battle-cargo`; peace_prompt: `run-exp-peace-prompt` (`set_data_folder`) | none |
+| `end_of_game`, `leaders_form`, `refusal_texts`, `v050_rules`, `split_aboard` | `run-exp-end-of-game`, `-leaders-form`, `-refusal-texts`, `-v050-rules`, `-split-aboard` | lib `log('environment', ...)` |
+| `feature_inventory`, `info_window`, `pair2`, `storms`, `two-humans`, `civ-sweep` | `run-exp-<dir>` | explore_lib (feature_inventory) |
+| `unit-map-mouse/*.py` | `run-exp-unitmap-mouse` | none |
+| `gallic-army.py` | `runs/experiments/gallic-army/` | none |
+
+The finished scripts under `data/run-exp-*/` no longer hard-code `/home/diego/projects/ic2-conquest`: the repo root comes from `__file__` (52 scripts), so a script runs against the checkout it is in. Two shell helpers in `run-exp-gap-v050` (`remake_cli.sh`, `hash_saves.sh`) still name the path.

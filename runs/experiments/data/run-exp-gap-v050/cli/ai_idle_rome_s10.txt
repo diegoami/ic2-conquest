@@ -1,0 +1,2370 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=10 extra=[] 2026-10-09T16:58:14+02:00
+# script:
+#   save ART/ai_rome_s10_t000.sav
+#   end
+#   save ART/ai_rome_s10_t001.sav
+#   end
+#   save ART/ai_rome_s10_t002.sav
+#   end
+#   save ART/ai_rome_s10_t003.sav
+#   end
+#   save ART/ai_rome_s10_t004.sav
+#   end
+#   save ART/ai_rome_s10_t005.sav
+#   end
+#   save ART/ai_rome_s10_t006.sav
+#   end
+#   save ART/ai_rome_s10_t007.sav
+#   end
+#   save ART/ai_rome_s10_t008.sav
+#   end
+#   save ART/ai_rome_s10_t009.sav
+#   end
+#   save ART/ai_rome_s10_t010.sav
+#   end
+#   save ART/ai_rome_s10_t011.sav
+#   end
+#   save ART/ai_rome_s10_t012.sav
+#   end
+#   save ART/ai_rome_s10_t013.sav
+#   end
+#   save ART/ai_rome_s10_t014.sav
+#   end
+#   save ART/ai_rome_s10_t015.sav
+#   end
+#   save ART/ai_rome_s10_t016.sav
+#   end
+#   save ART/ai_rome_s10_t017.sav
+#   end
+#   save ART/ai_rome_s10_t018.sav
+#   end
+#   save ART/ai_rome_s10_t019.sav
+#   end
+#   save ART/ai_rome_s10_t020.sav
+#   end
+#   save ART/ai_rome_s10_t021.sav
+#   end
+#   save ART/ai_rome_s10_t022.sav
+#   end
+#   save ART/ai_rome_s10_t023.sav
+#   end
+#   save ART/ai_rome_s10_t024.sav
+#   end
+#   save ART/ai_rome_s10_t025.sav
+#   end
+#   save ART/ai_rome_s10_t026.sav
+#   end
+#   save ART/ai_rome_s10_t027.sav
+#   end
+#   save ART/ai_rome_s10_t028.sav
+#   end
+#   save ART/ai_rome_s10_t029.sav
+#   end
+#   save ART/ai_rome_s10_t030.sav
+#   end
+#   save ART/ai_rome_s10_t031.sav
+#   end
+#   save ART/ai_rome_s10_t032.sav
+#   end
+#   save ART/ai_rome_s10_t033.sav
+#   end
+#   save ART/ai_rome_s10_t034.sav
+#   end
+#   save ART/ai_rome_s10_t035.sav
+#   end
+#   save ART/ai_rome_s10_t036.sav
+#   end
+#   save ART/ai_rome_s10_t037.sav
+#   end
+#   save ART/ai_rome_s10_t038.sav
+#   end
+#   save ART/ai_rome_s10_t039.sav
+#   end
+#   save ART/ai_rome_s10_t040.sav
+#   end
+#   save ART/ai_rome_s10_t041.sav
+#   end
+#   save ART/ai_rome_s10_t042.sav
+#   end
+#   save ART/ai_rome_s10_t043.sav
+#   end
+#   save ART/ai_rome_s10_t044.sav
+#   end
+#   save ART/ai_rome_s10_t045.sav
+#   end
+#   save ART/ai_rome_s10_t046.sav
+#   end
+#   save ART/ai_rome_s10_t047.sav
+#   end
+#   save ART/ai_rome_s10_t048.sav
+#   end
+#   save ART/ai_rome_s10_t049.sav
+#   end
+#   save ART/ai_rome_s10_t050.sav
+#   end
+#   save ART/ai_rome_s10_t051.sav
+#   end
+#   save ART/ai_rome_s10_t052.sav
+#   end
+#   save ART/ai_rome_s10_t053.sav
+#   end
+#   save ART/ai_rome_s10_t054.sav
+#   end
+#   save ART/ai_rome_s10_t055.sav
+#   end
+#   save ART/ai_rome_s10_t056.sav
+#   end
+#   save ART/ai_rome_s10_t057.sav
+#   end
+#   save ART/ai_rome_s10_t058.sav
+#   end
+#   save ART/ai_rome_s10_t059.sav
+#   end
+#   save ART/ai_rome_s10_t060.sav
+#   end
+#   save ART/ai_rome_s10_t061.sav
+#   end
+#   save ART/ai_rome_s10_t062.sav
+#   end
+#   save ART/ai_rome_s10_t063.sav
+#   end
+#   save ART/ai_rome_s10_t064.sav
+#   end
+#   save ART/ai_rome_s10_t065.sav
+#   end
+#   save ART/ai_rome_s10_t066.sav
+#   end
+#   save ART/ai_rome_s10_t067.sav
+#   end
+#   save ART/ai_rome_s10_t068.sav
+#   end
+#   save ART/ai_rome_s10_t069.sav
+#   end
+#   save ART/ai_rome_s10_t070.sav
+#   end
+#   save ART/ai_rome_s10_t071.sav
+#   end
+#   save ART/ai_rome_s10_t072.sav
+#   end
+#   save ART/ai_rome_s10_t073.sav
+#   end
+#   save ART/ai_rome_s10_t074.sav
+#   end
+#   save ART/ai_rome_s10_t075.sav
+#   end
+#   save ART/ai_rome_s10_t076.sav
+#   end
+#   save ART/ai_rome_s10_t077.sav
+#   end
+#   save ART/ai_rome_s10_t078.sav
+#   end
+#   save ART/ai_rome_s10_t079.sav
+#   end
+#   save ART/ai_rome_s10_t080.sav
+#   news
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t000.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t000.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 16 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 19 orders issued.
+Macedonia (macedonia) takes its turn: 8 orders issued.
+Numidia (numidia) takes its turn: 14 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 11 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 7 orders issued.
+Media (media) takes its turn: 6 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+  Macedonia declares war on Illyria.
+   
+  Week  3      Spring      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t001.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t001.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 3 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 4 orders issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 3 orders issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 3 orders issued.
+Illyria (illyria) takes its turn: 3 orders issued.
+Dacia (dacia) takes its turn: 1 order issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 3).
+Now: Week 5, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Ptolemaic sues Seleucid for peace and;
+      Ptolemaic ends all current trading agreements.
+      Ptolemaic  ends all current alliances.
+      Ptolemaic pays reparations of 3,162 talents.
+  Seleucid destroys army of Ptolemaic.
+   
+  Week  5      Spring      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t002.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t002.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 2 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 5).
+  Weather: drought-reduces-supply (week 5).
+Now: Week 7, Spring 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Spring      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t003.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t003.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 3 orders issued.
+Celtiberia (celtiberia) takes its turn: 2 orders issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 9, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Helice   (Carthage)  falls to Celtiberia.
+   
+  Week  9      Spring      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t004.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t004.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 9 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 11, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Greece declares war on Illyria.
+   
+  Week  11      Spring      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t005.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t005.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 11).
+Now: Week 1, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t006.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t006.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 16 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 12 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 13 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 4 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 1).
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Summer 270 BC. Active seat: Rome (rome).
+News:
+  A fleet belonging to carthage is damaged in a storm.
+   
+  Week  3      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t007.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t007.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 4 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 5, Summer 270 BC. Active seat: Rome (rome).
+News:
+  A fleet belonging to carthage is lost at sea.
+  A fleet belonging to ptolemaic is lost at sea.
+   
+  Week  5      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t008.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t008.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 7, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t009.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t009.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 9, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t010.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t010.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 11, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Summer      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t011.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t011.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 1, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Autumn      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t012.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t012.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 11 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 2 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Autumn      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t013.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t013.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 3).
+Now: Week 5, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Autumn      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t014.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t014.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 5).
+Now: Week 7, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Autumn      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t015.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t015.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 7).
+  Weather: storm-damages-fleet (week 7).
+Now: Week 9, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Autumn      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t016.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t016.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 9).
+  Weather: drought-reduces-supply (week 9).
+Now: Week 11, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Autumn      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t017.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t017.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 11).
+  Weather: storm-damages-fleet (week 11).
+  Weather: storm-damages-fleet (week 11).
+Now: Week 1, Winter 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Winter      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t018.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t018.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 7 orders issued.
+Macedonia (macedonia) takes its turn: 11 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 12 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 9 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 8 orders issued.
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Winter 270 BC. Active seat: Rome (rome).
+News:
+  Celtiberia destroys army of Carthage.
+   
+  Week  3      Winter      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t019.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t019.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 21 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 4 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 3 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 3).
+  Weather: drought-reduces-supply (week 3).
+  Weather: drought-reduces-supply (week 3).
+  Weather: storm-damages-fleet (week 3).
+Now: Week 5, Winter 270 BC. Active seat: Rome (rome).
+News:
+  Celtiberia destroys army of Carthage.
+   
+  Week  5      Winter      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t020.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t020.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: storm-damages-fleet (week 5).
+  Weather: storm-damages-fleet (week 5).
+Now: Week 7, Winter 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Winter      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t021.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t021.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: storm-damages-fleet (week 7).
+Now: Week 9, Winter 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Winter      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t022.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t022.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 9).
+  Weather: storm-damages-fleet (week 9).
+  Weather: storm-damages-fleet (week 9).
+Now: Week 11, Winter 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Winter      270BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t023.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t023.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 11).
+  Weather: storm-damages-fleet (week 11).
+  Weather: drought-reduces-supply (week 11).
+Now: Week 1, Spring 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Spring      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t024.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t024.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 17 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 11 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 12 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 7 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 2 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Spring 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Spring      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t025.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t025.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 2 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 3).
+  Weather: drought-reduces-supply (week 3).
+  Weather: storm-damages-fleet (week 3).
+  Weather: storm-damages-fleet (week 3).
+Now: Week 5, Spring 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Spring      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t026.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t026.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 2 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 5).
+Now: Week 7, Spring 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Spring      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t027.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t027.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 9, Spring 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Spring      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t028.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t028.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+Now: Week 11, Spring 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Spring      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t029.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t029.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 11).
+Now: Week 1, Summer 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Summer      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t030.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t030.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 11 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 13 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 5 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Summer 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Summer      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t031.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t031.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+Now: Week 5, Summer 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Summer      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t032.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t032.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 2 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 7, Summer 269 BC. Active seat: Rome (rome).
+News:
+  Ptolemaic declares war on Carthage.
+  Ptolemaic declares war on Numidia.
+   
+  Week  7      Summer      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t033.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t033.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 9, Summer 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Summer      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t034.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t034.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+Now: Week 11, Summer 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Summer      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t035.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t035.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 1, Autumn 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Autumn      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t036.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t036.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 18 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 11 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 7 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Autumn 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Autumn      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t037.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t037.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 5, Autumn 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Autumn      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t038.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t038.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 7, Autumn 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Autumn      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t039.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t039.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+Now: Week 9, Autumn 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Autumn      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t040.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t040.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 9).
+  Weather: storm-damages-fleet (week 9).
+Now: Week 11, Autumn 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Autumn      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t041.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t041.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 11).
+Now: Week 1, Winter 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Winter      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t042.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t042.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 7 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 11 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 7 orders issued.
+Dacia (dacia) takes its turn: 4 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+  Weather: drought-reduces-supply (week 1).
+  Weather: drought-reduces-supply (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Winter 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Winter      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t043.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t043.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 3).
+Now: Week 5, Winter 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Winter      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t044.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t044.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+Now: Week 7, Winter 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Winter      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t045.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t045.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: storm-damages-fleet (week 7).
+Now: Week 9, Winter 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Winter      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t046.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t046.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 9).
+  Weather: storm-damages-fleet (week 9).
+  Weather: drought-reduces-supply (week 9).
+  Weather: drought-reduces-supply (week 9).
+Now: Week 11, Winter 269 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Winter      269BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t047.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t047.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 11).
+Now: Week 1, Spring 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Spring      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t048.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t048.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 9 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 3 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+  Weather: drought-reduces-supply (week 1).
+  Weather: drought-reduces-supply (week 1).
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Spring 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Spring      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t049.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t049.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 3 orders issued.
+Numidia (numidia) takes its turn: 2 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 3).
+  Weather: storm-damages-fleet (week 3).
+  Weather: storm-damages-fleet (week 3).
+  Weather: drought-reduces-supply (week 3).
+Now: Week 5, Spring 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Spring      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t050.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t050.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 5).
+  Weather: storm-damages-fleet (week 5).
+Now: Week 7, Spring 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Spring      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t051.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t051.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 7).
+Now: Week 9, Spring 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Spring      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t052.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t052.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 9).
+Now: Week 11, Spring 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Spring      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t053.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t053.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 11).
+  Weather: storm-damages-fleet (week 11).
+Now: Week 1, Summer 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Summer      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t054.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t054.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 8 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 11 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 12 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 6 orders issued.
+  Weather: drought-reduces-supply (week 1).
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Summer 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Summer      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t055.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t055.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 1 order issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 3).
+Now: Week 5, Summer 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Summer      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t056.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t056.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 7, Summer 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Summer      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t057.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t057.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 9, Summer 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Summer      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t058.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t058.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 9).
+Now: Week 11, Summer 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Summer      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t059.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t059.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 11).
+  Weather: storm-damages-fleet (week 11).
+  Weather: storm-damages-fleet (week 11).
+  Weather: drought-reduces-supply (week 11).
+Now: Week 1, Autumn 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Autumn      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t060.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t060.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 8 orders issued.
+Macedonia (macedonia) takes its turn: 9 orders issued.
+Numidia (numidia) takes its turn: 4 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 13 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+Now: Week 3, Autumn 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Autumn      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t061.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t061.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 3 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 5, Autumn 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Autumn      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t062.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t062.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 7, Autumn 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Autumn      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t063.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t063.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+Now: Week 9, Autumn 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Autumn      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t064.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t064.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 9).
+  Weather: drought-reduces-supply (week 9).
+Now: Week 11, Autumn 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Autumn      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t065.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t065.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 11).
+Now: Week 1, Winter 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Winter      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t066.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t066.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 11 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 11 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 5 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 5 orders issued.
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Winter 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Winter      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t067.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t067.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 3).
+  Weather: storm-damages-fleet (week 3).
+  Weather: drought-reduces-supply (week 3).
+  Weather: drought-reduces-supply (week 3).
+  Weather: drought-reduces-supply (week 3).
+Now: Week 5, Winter 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Winter      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t068.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t068.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: storm-damages-fleet (week 5).
+Now: Week 7, Winter 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Winter      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t069.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t069.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: drought-reduces-supply (week 7).
+  Weather: storm-damages-fleet (week 7).
+  Weather: storm-damages-fleet (week 7).
+Now: Week 9, Winter 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Winter      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t070.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t070.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 9).
+  Weather: drought-reduces-supply (week 9).
+  Weather: storm-damages-fleet (week 9).
+  Weather: storm-damages-fleet (week 9).
+Now: Week 11, Winter 268 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Winter      268BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t071.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t071.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 11).
+  Weather: drought-reduces-supply (week 11).
+  Weather: drought-reduces-supply (week 11).
+  Weather: storm-damages-fleet (week 11).
+Now: Week 1, Spring 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Spring      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t072.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t072.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 2 orders issued.
+Illyria (illyria) takes its turn: 5 orders issued.
+Dacia (dacia) takes its turn: 4 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 4 orders issued.
+Thracia (thracia) takes its turn: 4 orders issued.
+  Weather: drought-reduces-supply (week 1).
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Spring 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Spring      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t073.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t073.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: drought-reduces-supply (week 3).
+Now: Week 5, Spring 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Spring      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t074.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t074.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+  Weather: drought-reduces-supply (week 5).
+Now: Week 7, Spring 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Spring      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t075.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t075.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+Now: Week 9, Spring 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  9      Spring      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t076.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t076.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 0 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 11, Spring 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Spring      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t077.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t077.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+Now: Week 1, Summer 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Summer      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t078.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t078.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 9 orders issued.
+Macedonia (macedonia) takes its turn: 8 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 8 orders issued.
+Celtiberia (celtiberia) takes its turn: 2 orders issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 4 orders issued.
+Now: Week 3, Summer 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Summer      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t079.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t079.sav'.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 3 orders issued.
+Numidia (numidia) takes its turn: 1 order issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 2 orders issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 3 orders issued.
+Now: Week 5, Summer 267 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Summer      267BC
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t080.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/ai_rome_s10_t080.sav'.
+
+> news
+News log:
+   
+  Week  3      Autumn      268BC
+   
+  Week  5      Autumn      268BC
+   
+  Week  7      Autumn      268BC
+   
+  Week  9      Autumn      268BC
+   
+  Week  11      Autumn      268BC
+   
+  Week  1      Winter      268BC
+   
+  Week  3      Winter      268BC
+   
+  Week  5      Winter      268BC
+   
+  Week  7      Winter      268BC
+   
+  Week  9      Winter      268BC
+   
+  Week  11      Winter      268BC
+   
+  Week  1      Spring      267BC
+   
+  Week  3      Spring      267BC
+   
+  Week  5      Spring      267BC
+   
+  Week  7      Spring      267BC
+   
+  Week  9      Spring      267BC
+   
+  Week  11      Spring      267BC
+   
+  Week  1      Summer      267BC
+   
+  Week  3      Summer      267BC
+   
+  Week  5      Summer      267BC
+

@@ -1,0 +1,120 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T16:59:43+02:00
+# script:
+#   split-army army-0 army-100 0
+#   split-army army-0 army-101 1
+#   army-transfer army-0 army-100 supply=10 money=10
+#   army-transfer army-100 army-0 units=0
+#   armies
+#   save ART/g2_army3_a.sav
+#   army-transfer army-0 army-100 units=0 supply=5
+#   army-transfer army-0 army-101 units=0
+#   army-transfer army-0 army-101 back-supply=3
+#   army-transfer army-0 army-100 supply=1000
+#   army-transfer army-0 army-100 money=1000
+#   army-transfer army-0 army-100 supply=-3
+#   armies
+#   split-unit army-0 0 1
+#   split-unit army-0 0 5000
+#   split-unit army-0 0 4000
+#   split-unit army-0 0 100
+#   armies
+#   join-units army-0 0 0
+#   join-units army-0 0 1
+#   rename-unit army-0 0 Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+#   disband-unit army-0 0
+#   armies
+#   hire-mercenary army-0 0
+#   hire-mercenary army-0 1
+#   save ART/g2_army3_b.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> split-army army-0 army-100 0
+armies.split-army accepted.
+
+> split-army army-0 army-101 1
+armies.split-army accepted.
+
+> army-transfer army-0 army-100 supply=10 money=10
+armies.army-transfer accepted.
+
+> army-transfer army-100 army-0 units=0
+armies.army-transfer accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 18500 troops in 5 units, supply 137t (74%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-101 (Rome) @ (101,37): 5200 troops in 1 units, supply 33t (63%), morale 59, moves 0
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army3_a.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army3_a.sav'.
+
+> army-transfer army-0 army-100 units=0 supply=5
+armies.army-transfer rejected (armies.army-transfer-unknown-army): 'army-100' is not a known army.
+
+> army-transfer army-0 army-101 units=0
+armies.army-transfer accepted.
+
+> army-transfer army-0 army-101 back-supply=3
+armies.army-transfer accepted.
+
+> army-transfer army-0 army-100 supply=1000
+armies.army-transfer rejected (armies.army-transfer-unknown-army): 'army-100' is not a known army.
+
+> army-transfer army-0 army-100 money=1000
+armies.army-transfer rejected (armies.army-transfer-unknown-army): 'army-100' is not a known army.
+
+> army-transfer army-0 army-100 supply=-3
+armies.army-transfer rejected (armies.army-transfer-unknown-army): 'army-100' is not a known army.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 13500 troops in 4 units, supply 135t (100%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-101 (Rome) @ (101,37): 10200 troops in 2 units, supply 35t (34%), morale 59, moves 0
+
+> split-unit army-0 0 1
+armies.split-unit accepted.
+
+> split-unit army-0 0 5000
+armies.split-unit accepted.
+
+> split-unit army-0 0 4000
+armies.split-unit rejected (armies.split-unit-invalid-troops): Must split between 1 and 898 troops off a unit of 899.
+
+> split-unit army-0 0 100
+armies.split-unit accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 13500 troops in 7 units, supply 135t (100%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-101 (Rome) @ (101,37): 10200 troops in 2 units, supply 35t (34%), morale 59, moves 0
+
+> join-units army-0 0 0
+armies.join-units rejected (armies.invalid-unit-index): Army 'army-0' has 7 units; both indices must be distinct and in range.
+
+> join-units army-0 0 1
+armies.join-units rejected (armies.different-unit-types): You can only combine units of the same type.
+
+> rename-unit army-0 0 Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+armies.rename-unit rejected (armies.rename-unit-invalid-name): A unit name must be 1 to 23 printable ASCII characters, with no leading or trailing space.
+
+> disband-unit army-0 0
+armies.disband-unit accepted.
+
+> armies
+Armies (Rome (rome)):
+  army-0 (Rome) @ (100,37): 12701 troops in 6 units, supply 135t (106%), morale 70, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 176t (80%), morale 68, moves 8
+  army-101 (Rome) @ (101,37): 10200 troops in 2 units, supply 35t (34%), morale 59, moves 0
+
+> hire-mercenary army-0 0
+recruitment.hire-mercenary rejected (mercenary.no-adjacent-offer): Army 'army-0' at (100,37) is not adjacent to any mercenary offer's city.
+
+> hire-mercenary army-0 1
+recruitment.hire-mercenary rejected (mercenary.no-adjacent-offer): Army 'army-0' at (100,37) is not adjacent to any mercenary offer's city.
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army3_b.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_army3_b.sav'.
+

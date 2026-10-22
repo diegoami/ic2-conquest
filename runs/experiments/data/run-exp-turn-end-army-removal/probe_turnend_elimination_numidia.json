@@ -1,0 +1,163 @@
+{
+ "case": "elimination_numidia",
+ "action": "sieges",
+ "popups": [],
+ "steps": [
+  {
+   "army": 0,
+   "city": 58,
+   "city_owner": 0,
+   "numidia_count": 7,
+   "numidia_owned": 7
+  },
+  {
+   "army": 1,
+   "city": 60,
+   "city_owner": 0,
+   "numidia_count": 6,
+   "numidia_owned": 6
+  },
+  {
+   "army": 3,
+   "city": 108,
+   "city_owner": 0,
+   "numidia_count": 5,
+   "numidia_owned": 0
+  }
+ ],
+ "tiles": {
+  "42,63": {
+   "word_before": 221,
+   "word_after": 4,
+   "mem_word": 4,
+   "armies_before": [
+    [
+     2,
+     5,
+     33900,
+     597,
+     4
+    ]
+   ],
+   "armies_after": [
+    [
+     2,
+     -1,
+     33900
+    ]
+   ]
+  },
+  "84,89": {
+   "word_before": 232,
+   "word_after": 232,
+   "mem_word": 232,
+   "armies_before": [
+    [
+     0,
+     0,
+     60000,
+     100,
+     2
+    ]
+   ],
+   "armies_after": [
+    [
+     0,
+     0,
+     58924
+    ]
+   ]
+  },
+  "86,118": {
+   "word_before": 232,
+   "word_after": 232,
+   "mem_word": 232,
+   "armies_before": [
+    [
+     1,
+     0,
+     60000,
+     100,
+     3
+    ]
+   ],
+   "armies_after": [
+    [
+     1,
+     0,
+     59448
+    ]
+   ]
+  },
+  "112,109": {
+   "word_before": 232,
+   "word_after": 232,
+   "mem_word": 232,
+   "armies_before": [
+    [
+     3,
+     0,
+     60000,
+     600,
+     3
+    ]
+   ],
+   "armies_after": [
+    [
+     3,
+     0,
+     58924
+    ]
+   ]
+  }
+ },
+ "calendar_after": 721,
+ "numidia_after": {
+  "cities_count": 5,
+  "owned": 0,
+  "army_rec2": [
+   [
+    2,
+    -1,
+    42,
+    63,
+    33900
+   ]
+  ]
+ },
+ "gaul_after": {
+  "cities_count": 28,
+  "unity": 577,
+  "armies": [
+   [
+    9,
+    6,
+    96,
+    30
+   ]
+  ]
+ },
+ "felsina_after": [
+  6,
+  65
+ ],
+ "news_tail": [
+  "    Ptolemaic ends all current trading agreements.",
+  "    Ptolemaic  ends all current alliances.",
+  "    Ptolemaic pays reparations of 2,242 talents.",
+  " ",
+  "Week  3      Spring      270BC",
+  "Rome fails to capture Felsina   (Gaul).",
+  "Capsa   (Numidia)  falls to Rome.",
+  "Ghadames   (Numidia)  falls to Rome.",
+  "Ghirza   (Numidia)  falls to Rome.",
+  "-----------------------------------------------------------",
+  "Rome conquers Numidia.",
+  "-----------------------------------------------------------"
+ ],
+ "compaction_after": {
+  "live_armies": 13,
+  "records": 14,
+  "marker_mismatches": []
+ }
+}

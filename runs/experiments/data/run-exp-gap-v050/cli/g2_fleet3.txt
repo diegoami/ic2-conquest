@@ -1,0 +1,336 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:01:32+02:00
+# script:
+#   load ART/g2_fleet2_built.sav
+#   status mine
+#   repair-fleet f1 5
+#   repair-fleet f1 0
+#   buy-fleet-supply f1 antium 5000
+#   buy-fleet-supply f1 antium 100
+#   buy-fleet-supply f1 rome 10
+#   status mine
+#   split-fleet f1 f2 5
+#   split-fleet f1 f2 30
+#   split-fleet f1 f2 10 supply=10 money=0
+#   status mine
+#   save ART/g2_fleet3_split.sav
+#   fleet-transfer f1 f2 5 10 0
+#   fleet-transfer f2 f1 20 0 0
+#   fleet-transfer f1 f2 0 0 50
+#   status mine
+#   join-fleets f1 f2
+#   status mine
+#   save ART/g2_fleet3_joined.sav
+#   move-fleet f1 101 48
+#   status mine
+#   scuttle-fleet f1
+#   status mine
+#   save ART/g2_fleet3_scuttled.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet2_built.sav
+Loaded '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet2_built.sav': classical-mediterranean, turn 13 (turn 13). Active seat: Rome (rome).
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  f1 (Rome) @ (101,46): 30 ships, condition 100%, supply 20t, moves 32
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> repair-fleet f1 5
+naval.repair-fleet accepted.
+
+> repair-fleet f1 0
+naval.repair-fleet rejected (naval.invalid-points): Must request a positive number of repair points.
+
+> buy-fleet-supply f1 antium 5000
+naval.buy-fleet-supply accepted.
+
+> buy-fleet-supply f1 antium 100
+naval.buy-fleet-supply accepted.
+
+> buy-fleet-supply f1 rome 10
+naval.buy-fleet-supply rejected (naval.city-not-within-range): City 'rome' is not within one tile of fleet 'f1'.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  f1 (Rome) @ (101,46): 30 ships, condition 100%, supply 240t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 110t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> split-fleet f1 f2 5
+naval.split-fleet accepted.
+
+> split-fleet f1 f2 30
+naval.split-fleet rejected (naval.invalid-ship-count): Must move between 1 and 24 ships to the new fleet, not 30.
+
+> split-fleet f1 f2 10 supply=10 money=0
+naval.split-fleet rejected (naval.duplicate-fleet-id): Fleet id 'f2' is already in use.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  f1 (Rome) @ (101,46): 25 ships, condition 100%, supply 240t, moves 0
+  f2 (Rome) @ (101,47): 5 ships, condition 100%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 110t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet3_split.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet3_split.sav'.
+
+> fleet-transfer f1 f2 5 10 0
+naval.fleet-to-fleet-transfer accepted.
+
+> fleet-transfer f2 f1 20 0 0
+naval.fleet-to-fleet-transfer rejected (naval.insufficient-ships): Fleet 'f2' has only 10 ships.
+
+> fleet-transfer f1 f2 0 0 50
+naval.fleet-to-fleet-transfer rejected (naval.insufficient-money): Fleet 'f1' has only 0 money.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  f1 (Rome) @ (101,46): 20 ships, condition 100%, supply 230t, moves 0
+  f2 (Rome) @ (101,47): 10 ships, condition 100%, supply 10t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 110t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> join-fleets f1 f2
+naval.join-fleets accepted.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  f1 (Rome) @ (101,46): 30 ships, condition 100%, supply 240t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 110t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet3_joined.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet3_joined.sav'.
+
+> move-fleet f1 101 48
+naval.move-fleet rejected (naval.no-moves-left): Fleet 'f1' has no moves left this turn.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  f1 (Rome) @ (101,46): 30 ships, condition 100%, supply 240t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 110t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> scuttle-fleet f1
+naval.scuttle-fleet accepted.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 350t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet3_scuttled.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_fleet3_scuttled.sav'.
+

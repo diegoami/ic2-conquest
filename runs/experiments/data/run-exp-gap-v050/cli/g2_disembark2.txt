@@ -1,0 +1,70 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:03:08+02:00
+# script:
+#   load ART/g2_embark3_aboard.sav
+#   disembark-army army-100 100 46
+#   disembark-army army-100 102 45
+#   status mine
+#   save ART/g2_disembark2_after.sav
+#   embark-army army-100 f1
+#   embark-army army-0 f1
+#   embark-army army-0 f1
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_aboard.sav
+Loaded '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_embark3_aboard.sav': classical-mediterranean, turn 17 (turn 17). Active seat: Rome (rome).
+
+> disembark-army army-100 100 46
+naval.disembark-army rejected (naval.landing-tile-not-passable): (100, 46) is not passable for an army.
+
+> disembark-army army-100 102 45
+naval.disembark-army accepted.
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (101,45): 12600 troops in 4 units, supply 126t (100%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-100 (Rome) @ (102,45): 11100 troops in 2 units, supply 74t (66%), morale 59, moves 0
+
+Fleets:
+  f1 (Rome) @ (101,46): 30 ships, condition 99%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 130t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disembark2_after.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g2_disembark2_after.sav'.
+
+> embark-army army-100 f1
+naval.embark-army accepted.
+
+> embark-army army-0 f1
+naval.embark-army rejected (naval.fleet-already-carrying): Fleet 'f1' is already carrying an army.
+
+> embark-army army-0 f1
+naval.embark-army rejected (naval.fleet-already-carrying): Fleet 'f1' is already carrying an army.
+

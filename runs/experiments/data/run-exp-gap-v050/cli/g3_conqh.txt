@@ -1,0 +1,202 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=greece seed=1 extra=[] 2026-10-09T17:08:43+02:00
+# script:
+#   load ART/g3_c_conqh.sav
+#   status mine
+#   end
+#   end
+#   end
+#   news
+#   status mine
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+Rome (rome) takes its turn: 2 orders issued.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 17 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 19 orders issued.
+Macedonia (macedonia) takes its turn: 8 orders issued.
+Numidia (numidia) takes its turn: 14 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+
+> load /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_c_conqh.sav
+Could not load '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_c_conqh.sav': '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g3_c_conqh.sav' carries unknown field 'state.armies[0].troops', which ArmyState does not declare.
+
+> status mine
+Nation: Greece (greece, human): treasury 948, unity 532, tax 5%
+
+Armies:
+
+Fleets:
+
+Cities:
+  hemeroscopium "Hemeroscopium" @ (47,59), owner Greece: supply 0t, loyalty 73, fortification 42%
+  emporiae "Emporiae" @ (63,39), owner Greece: supply 150t, loyalty 76, fortification 50%
+  massilia "Massilia" @ (71,36), owner Greece: supply 285t, loyalty 77, fortification 77%
+  nicaea "Nicaea" @ (80,34), owner Greece: supply 85t, loyalty 67, fortification 35%
+  genua "Genua" @ (89,30), owner Greece: supply 144t, loyalty 69, fortification 58%
+  syracusae "Syracusae" @ (111,69), owner Greece: supply 340t, loyalty 81, fortification 91%
+  messana "Messana" @ (113,63), owner Greece: supply 115t, loyalty 61, fortification 73%
+  phoenice "Phoenice" @ (135,52), owner Greece: supply 91t, loyalty 75, fortification 44%
+  ambracia "Ambracia" @ (138,55), owner Greece: supply 115t, loyalty 83, fortification 57%
+  naupactus "Naupactus" @ (143,59), owner Greece: supply 165t, loyalty 81, fortification 50%
+  aegium "Aegium" @ (144,62), owner Greece: supply 173t, loyalty 96, fortification 56%
+  messene "Messene" @ (144,67), owner Greece: supply 104t, loyalty 83, fortification 50%
+  argos "Argos" @ (147,65), owner Greece: supply 375t, loyalty 77, fortification 72%
+  sparta "Sparta" @ (147,69), owner Greece: supply 421t, loyalty 91, fortification 67%
+  corinth "Corinth" @ (148,62), owner Greece: supply 340t, loyalty 84, fortification 64%
+  thebes "Thebes" @ (149,59), owner Greece: supply 295t, loyalty 87, fortification 61%
+  athens "Athens" @ (152,62), owner Greece: supply 573t, loyalty 89, fortification 63%
+  cnossus "Cnossus" @ (158,78), owner Greece: supply 180t, loyalty 68, fortification 53%
+  pergamum "Pergamum" @ (162,54), owner Greece: supply 301t, loyalty 77, fortification 74%
+  rhodus "Rhodus" @ (166,67), owner Greece: supply 378t, loyalty 86, fortification 69%
+  paphos "Paphos" @ (192,77), owner Greece: supply 63t, loyalty 77, fortification 40%
+
+> end
+Greece (greece) ends its turn.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 9 orders issued.
+Dacia (dacia) takes its turn: 6 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 5 orders issued.
+Media (media) takes its turn: 5 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+  Weather: storm-damages-fleet (week 1).
+Rome (rome) takes its turn: 1 order issued.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 3 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 2 orders issued.
+Now: Week 3, Spring 270 BC. Active seat: Greece (greece).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+  Macedonia declares war on Illyria.
+   
+  Week  3      Spring      270BC
+  Seleucid destroys army of Ptolemaic.
+  Pisae   (Rome)  falls to Gaul.
+
+> end
+Greece (greece) ends its turn.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 2 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 1 order issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Rome (rome) takes its turn: 12 orders issued.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Now: Week 5, Spring 270 BC. Active seat: Greece (greece).
+News:
+   
+  Week  5      Spring      270BC
+
+> end
+Greece (greece) ends its turn.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+  Weather: storm-damages-fleet (week 5).
+  Weather: storm-damages-fleet (week 5).
+  Weather: drought-reduces-supply (week 5).
+Rome (rome) takes its turn: 2 orders issued.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Now: Week 7, Spring 270 BC. Active seat: Greece (greece).
+News:
+   
+  Week  7      Spring      270BC
+
+> news
+News log:
+  272 BC
+  Tarrentum (Greece) falls to Rome.
+  Croton (Greece) falls to Rome.
+  Locri defects from Greece to Rome.
+  Rhegium defects from Greece to Rome.
+  Panormus defects from Greece to Carthage.
+  Mylae defects from Greece to Carthage.
+  Astacus (Seleucid) falls to Bithynia.
+  Heraclea (Greece) falls to Rome.
+  Thurii defects from Greece to Rome.
+  Rome destroys army of Greece.
+  Rome and Greece agree to end their war.
+   
+  271 BC
+  Zela (Seleucid) falls to Bithynia.
+  Synnada (Seleucid) falls to Galatia.
+  Laodicea defects from Seleucid to Media.
+  Helice (Celtiberia) falls to Carthage.
+  Chalcis defects from Greece to Macedonia.
+  Demetrias defects from Greece to Macedonia.
+  Marium defects from Greece to Ptolemaic.
+  Sidon (Seleucid) falls to Ptolemaic.
+  Marium defects from Greece to Ptolemaic.
+  Pontica (Seleucid) falls to Bithynia.
+  Damascus (Seleucid) falls to Ptolemaic.
+   
+  Week 1      Spring      270 BC
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+  Macedonia declares war on Illyria.
+   
+  Week  3      Spring      270BC
+  Seleucid destroys army of Ptolemaic.
+  Pisae   (Rome)  falls to Gaul.
+   
+  Week  5      Spring      270BC
+   
+  Week  7      Spring      270BC
+
+> status mine
+Nation: Greece (greece, human): treasury 1028, unity 532, tax 5%
+
+Armies:
+
+Fleets:
+
+Cities:
+  hemeroscopium "Hemeroscopium" @ (47,59), owner Greece: supply 0t, loyalty 73, fortification 42%
+  emporiae "Emporiae" @ (63,39), owner Greece: supply 231t, loyalty 76, fortification 50%
+  massilia "Massilia" @ (71,36), owner Greece: supply 426t, loyalty 77, fortification 77%
+  nicaea "Nicaea" @ (80,34), owner Greece: supply 133t, loyalty 67, fortification 35%
+  genua "Genua" @ (89,30), owner Greece: supply 0t, loyalty 69, fortification 58%
+  syracusae "Syracusae" @ (111,69), owner Greece: supply 508t, loyalty 81, fortification 91%
+  messana "Messana" @ (113,63), owner Greece: supply 178t, loyalty 61, fortification 73%
+  phoenice "Phoenice" @ (135,52), owner Greece: supply 24t, loyalty 75, fortification 44%
+  ambracia "Ambracia" @ (138,55), owner Greece: supply 178t, loyalty 83, fortification 57%
+  naupactus "Naupactus" @ (143,59), owner Greece: supply 255t, loyalty 81, fortification 50%
+  aegium "Aegium" @ (144,62), owner Greece: supply 266t, loyalty 96, fortification 56%
+  messene "Messene" @ (144,67), owner Greece: supply 161t, loyalty 83, fortification 50%
+  argos "Argos" @ (147,65), owner Greece: supply 570t, loyalty 77, fortification 72%
+  sparta "Sparta" @ (147,69), owner Greece: supply 652t, loyalty 91, fortification 67%
+  corinth "Corinth" @ (148,62), owner Greece: supply 517t, loyalty 84, fortification 64%
+  thebes "Thebes" @ (149,59), owner Greece: supply 451t, loyalty 87, fortification 61%
+  athens "Athens" @ (152,62), owner Greece: supply 867t, loyalty 89, fortification 63%
+  cnossus "Cnossus" @ (158,78), owner Greece: supply 279t, loyalty 68, fortification 53%
+  pergamum "Pergamum" @ (162,54), owner Greece: supply 454t, loyalty 77, fortification 74%
+  rhodus "Rhodus" @ (166,67), owner Greece: supply 573t, loyalty 86, fortification 69%
+  paphos "Paphos" @ (192,77), owner Greece: supply 99t, loyalty 77, fortification 40%
+

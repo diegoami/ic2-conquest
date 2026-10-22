@@ -1,0 +1,16 @@
+=== save before N: 0 trace lines; kept:
+
+=== N: 20 trace lines; kept:
+0024:trace:file:CreateFileW L"C:\\IC2\\SEED.TXT" GENERIC_READ FILE_SHARE_READ  creation 3 attributes 0x80
+0024:trace:file:NtCreateFile handle=0x31e9a0 access=80100080 name=L"\\??\\C:\\IC2\\SEED.TXT" objattr=00000040 root=(nil) sec=(nil) io=0x31e9ac alloc_size=(nil) attr=00000080 sharing=00000001 disp=1 options=00000060 ea=(nil).0x00000000
+0024:trace:file:CreateFileW returning 000000C8
+0024:trace:file:CreateFileW L"C:\\IC2\\SEED.LOG" GENERIC_WRITE FILE_SHARE_READ  creation 4 attributes 0x80
+0024:trace:file:NtCreateFile handle=0x31e9a0 access=40100080 name=L"\\??\\C:\\IC2\\SEED.LOG" objattr=00000040 root=(nil) sec=(nil) io=0x31e9ac alloc_size=(nil) attr=00000080 sharing=00000001 disp=3 options=00000060 ea=(nil).0x00000000
+0024:trace:file:CreateFileW returning 000000C8
+=== save after N: 12 trace lines; kept:
+0024:trace:file:CreateFileW L"ca1102211003.BMP" GENERIC_READ GENERIC_WRITE  creation 2 attributes 0x80
+0024:trace:file:RtlDosPathNameToNtPathName_U_WithStatus (L"ca1102211003.BMP",0031EA80,00000000,00000000)
+0024:trace:file:RtlGetFullPathName_U (L"ca1102211003.BMP" 520 0031E7FC 00000000)
+0024:trace:file:NtCreateFile handle=0x31ea7c access=c0100080 name=L"\\??\\C:\\IC2\\ca1102211003.BMP" objattr=00000040 root=(nil) sec=(nil) io=0x31ea88 alloc_size=(nil) attr=00000080 sharing=00000000 disp=5 options=00000060 ea=(nil).0x00000000
+0024:trace:file:nt_to_unix_file_name_no_root L"\\??\\C:\\IC2\\ca1102211003.BMP" -> "/home/diego/ic2-work/prefix/dosdevices/c:/IC2/ca1102211003.BMP"
+0024:trace:file:CreateFileW returning 000000C8

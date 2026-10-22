@@ -1,0 +1,567 @@
+{
+ "source_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+ "field_map_sha256": "a09a5b5b5f5efcae54cce671f4ae7ece1e952a87ab9deff60c68b8e5a8f66e22",
+ "method": "literal-address resolution (offset mod stride + scaled bracket constant); not alias, escape or indirect-call closure",
+ "hits": 2632,
+ "by_kind": {
+  "write": 350,
+  "read": 1847,
+  "escape": 435
+ },
+ "unresolved_offsets": 0,
+ "multi_field_hits": 114,
+ "fields_without_literal_access": [
+  "FLEET.route_y",
+  "NATION.unknown27",
+  "NATION.unknown1",
+  "NATION.unknown3"
+ ],
+ "escape_frontier": {
+  "army": {
+   "seed": [
+    "FUN_00437cac@0x00437cac",
+    "FUN_00437de4@0x00437de4",
+    "FUN_00441b50@0x00441b50",
+    "FUN_004484d0@0x004484d0",
+    "FUN_00449d64@0x00449d64",
+    "FUN_0044a120@0x0044a120",
+    "FUN_0044a218@0x0044a218",
+    "FUN_0044a4e0@0x0044a4e0",
+    "FUN_0044a66c@0x0044a66c",
+    "FUN_0044a698@0x0044a698",
+    "FUN_0044a8cc@0x0044a8cc",
+    "FUN_0044a930@0x0044a930",
+    "FUN_0044abe0@0x0044abe0",
+    "FUN_0044ac3c@0x0044ac3c",
+    "FUN_0044acb4@0x0044acb4",
+    "FUN_0044ad7c@0x0044ad7c",
+    "FUN_0044adb0@0x0044adb0",
+    "FUN_0044ae20@0x0044ae20",
+    "FUN_0044aee4@0x0044aee4",
+    "FUN_0044bed8@0x0044bed8",
+    "FUN_0044c204@0x0044c204",
+    "FUN_0044c528@0x0044c528",
+    "FUN_0044d420@0x0044d420",
+    "FUN_0044dba8@0x0044dba8",
+    "FUN_0044e41c@0x0044e41c",
+    "FUN_0044ebe8@0x0044ebe8",
+    "FUN_0044ee60@0x0044ee60",
+    "FUN_0044efc8@0x0044efc8",
+    "FUN_0044f31c@0x0044f31c",
+    "FUN_0044f8fc@0x0044f8fc",
+    "FUN_0044ffbc@0x0044ffbc",
+    "FUN_004502e0@0x004502e0",
+    "FUN_004504f4@0x004504f4",
+    "FUN_00450858@0x00450858",
+    "FUN_004509f0@0x004509f0",
+    "FUN_00450c68@0x00450c68",
+    "FUN_004514ec@0x004514ec",
+    "FUN_00451b40@0x00451b40",
+    "FUN_00459740@0x00459740",
+    "FUN_0045ae68@0x0045ae68",
+    "FUN_0045af00@0x0045af00",
+    "TAreaMap_ShowArmies@0x0043e31c",
+    "TArmyToArmy_InitializeForm@0x00441c24",
+    "TArmyToArmy_OK@0x00442ef8",
+    "TBalanceSheet_PaintBalance@0x0045376c",
+    "TBattleOver_InitializeForm@0x00458bc8",
+    "TBattleOver_OK@0x00459220",
+    "TBattlePols_InitializeForm@0x004577ec",
+    "TChangeArmyUnits_InitializeForm@0x004449f4",
+    "TChangeArmyUnits_OK@0x00445378",
+    "THVHBatPols_InitializeForm@0x00457fa8",
+    "TInformation_ShowArmyDetails@0x0043c33c",
+    "TRecruitMercs_RecruitMercUnit@0x00441360",
+    "TSplitArmyUnit_OK@0x004444cc",
+    "TToEndTurn_InitializeForm@0x00459828"
+   ],
+   "arg": [
+    "FUN_0044a218@0x0044a218",
+    "TAFSupply_ChangeMoney@0x0044005c",
+    "TAFSupply_ChangeSupply@0x0043fc74"
+   ]
+  },
+  "battle_grid": {
+   "seed": [
+    "FUN_00437de4@0x00437de4",
+    "FUN_004389ac@0x004389ac",
+    "FUN_0043a718@0x0043a718",
+    "TBattleMap_PlaceUnit@0x004375ec",
+    "TBattleMap_PrintSquare@0x004371e4"
+   ],
+   "arg": [
+    "FUN_00437c40@0x00437c40",
+    "FUN_004381a4@0x004381a4",
+    "FUN_00438f78@0x00438f78",
+    "FUN_0043a718@0x0043a718",
+    "FUN_004484d0@0x004484d0",
+    "TBattleMap_PlaceUnit@0x004375ec",
+    "TBattleMap_PrintSquare@0x004371e4"
+   ]
+  },
+  "battle_slot": {
+   "seed": [
+    "FUN_00437de4@0x00437de4",
+    "FUN_004381a4@0x004381a4",
+    "FUN_004383bc@0x004383bc",
+    "FUN_00438420@0x00438420",
+    "FUN_00438a6c@0x00438a6c",
+    "FUN_00438fb0@0x00438fb0",
+    "FUN_004393ec@0x004393ec",
+    "FUN_00439968@0x00439968",
+    "FUN_00439d0c@0x00439d0c",
+    "FUN_00439e08@0x00439e08",
+    "FUN_0043a160@0x0043a160",
+    "FUN_0043a31c@0x0043a31c",
+    "FUN_0043a544@0x0043a544",
+    "FUN_0043a718@0x0043a718",
+    "FUN_0043aa60@0x0043aa60",
+    "FUN_0043abb4@0x0043abb4",
+    "TBattleMap_MyUnitDetails@0x00437724",
+    "TBattleMap_Surrender@0x00437ad8",
+    "TBattleOver_InitializeForm@0x00458bc8",
+    "TBattleOver_OK@0x00459220",
+    "TInformation_BattleUnitMoves@0x0043cf3c"
+   ],
+   "arg": [
+    "FUN_00438504@0x00438504",
+    "FUN_0043910c@0x0043910c",
+    "FUN_004393ec@0x004393ec",
+    "FUN_004484d0@0x004484d0",
+    "TInformation_BattleUnitMoves@0x0043cf3c"
+   ]
+  },
+  "city": {
+   "seed": [
+    "FUN_004496e0@0x004496e0",
+    "FUN_0044abe0@0x0044abe0",
+    "FUN_0044ba1c@0x0044ba1c",
+    "FUN_0044bd2c@0x0044bd2c",
+    "FUN_0044c360@0x0044c360",
+    "FUN_0044c528@0x0044c528",
+    "FUN_0044e41c@0x0044e41c",
+    "FUN_0044e5dc@0x0044e5dc",
+    "FUN_0044e670@0x0044e670",
+    "FUN_0044e9a8@0x0044e9a8",
+    "FUN_0044ebe8@0x0044ebe8",
+    "FUN_0044ece4@0x0044ece4",
+    "FUN_004514ec@0x004514ec",
+    "FUN_00451b40@0x00451b40",
+    "TAreaMap_ShowCities@0x0043e210"
+   ],
+   "arg": [
+    "FUN_004484d0@0x004484d0",
+    "FUN_004496e0@0x004496e0",
+    "FUN_0044a050@0x0044a050",
+    "FUN_0044a120@0x0044a120",
+    "FUN_0044b27c@0x0044b27c",
+    "FUN_0044b8f4@0x0044b8f4",
+    "FUN_0044bd2c@0x0044bd2c",
+    "FUN_0044bed8@0x0044bed8",
+    "FUN_0044c204@0x0044c204",
+    "FUN_0044ebe8@0x0044ebe8",
+    "FUN_0044ffbc@0x0044ffbc",
+    "FUN_004502e0@0x004502e0",
+    "TAFSupply_CityOrFleet@0x0043efac",
+    "TAFSupply_FindProviders@0x0043f468",
+    "TArmyRecruits_RecruitUnit@0x00454e78",
+    "TArmyRecruits_SetCityRecruits@0x0045495c",
+    "TBuildFleet_OK@0x00455a94",
+    "TFindCity_FillListBox@0x0043d7dc",
+    "TFortifyCity_InitializeForm@0x004404c0",
+    "TInformation_ShowCityDetails@0x0043be5c",
+    "TInformation_ShowCityUnits@0x0043cc40",
+    "TInformation_ShowNationStatus@0x0043ba7c",
+    "TPremierForm_BuildNewFleet@0x0045b3a8",
+    "TRecruitMercs_InitializeForm@0x00440fec"
+   ]
+  },
+  "fleet": {
+   "seed": [
+    "FUN_00443494@0x00443494",
+    "FUN_004484d0@0x004484d0",
+    "FUN_004496e0@0x004496e0",
+    "FUN_00449dd8@0x00449dd8",
+    "FUN_0044abe0@0x0044abe0",
+    "FUN_0044ad7c@0x0044ad7c",
+    "FUN_0044adb0@0x0044adb0",
+    "FUN_0044bed8@0x0044bed8",
+    "FUN_0044c528@0x0044c528",
+    "FUN_0044cab4@0x0044cab4",
+    "FUN_0044d9a8@0x0044d9a8",
+    "FUN_0044dd70@0x0044dd70",
+    "FUN_0044e1fc@0x0044e1fc",
+    "FUN_0044f4f8@0x0044f4f8",
+    "FUN_0044f608@0x0044f608",
+    "FUN_00450768@0x00450768",
+    "FUN_00450b30@0x00450b30",
+    "FUN_00451304@0x00451304",
+    "FUN_004514ec@0x004514ec",
+    "FUN_00451b40@0x00451b40",
+    "FUN_0045af00@0x0045af00",
+    "TAreaMap_ShowFleets@0x0043e3ac",
+    "TBalanceSheet_PaintBalance@0x0045376c",
+    "TFleetToFleet_InitializeForm@0x0044356c",
+    "TFleetToFleet_OK@0x00443b48",
+    "TPremierForm_BuildNewFleet@0x0045b3a8",
+    "TToEndTurn_InitializeForm@0x00459828"
+   ],
+   "arg": [
+    "FUN_0044a050@0x0044a050",
+    "FUN_0044d9a8@0x0044d9a8",
+    "FUN_0044dba8@0x0044dba8",
+    "TAFSupply_ChangeMoney@0x0044005c",
+    "TUnitMap_RepairFlt@0x004478c8",
+    "TUnitMap_ScuttleFleet@0x00447e34",
+    "TUnitMap_SelectUnit@0x004466cc",
+    "TUnitMap_SupplyFleet@0x004477fc"
+   ]
+  },
+  "map": {
+   "seed": [
+    "FUN_0044939c@0x0044939c",
+    "FUN_004494e4@0x004494e4",
+    "FUN_004495c8@0x004495c8",
+    "FUN_0044e920@0x0044e920",
+    "FUN_00451304@0x00451304",
+    "TAFSupply_FindProviders@0x0043f468"
+   ],
+   "arg": [
+    "FUN_004484d0@0x004484d0",
+    "FUN_0044ab90@0x0044ab90",
+    "FUN_0044ad38@0x0044ad38",
+    "FUN_0044b79c@0x0044b79c",
+    "FUN_0044b840@0x0044b840",
+    "FUN_0044dd70@0x0044dd70",
+    "TUnitMap_JoinArmies@0x004472fc",
+    "TUnitMap_JoinFleets@0x00447a48"
+   ]
+  },
+  "merc": {
+   "seed": [
+    "FUN_004484d0@0x004484d0",
+    "FUN_00449130@0x00449130",
+    "FUN_0044e41c@0x0044e41c",
+    "FUN_0044e84c@0x0044e84c",
+    "TAreaMap_ShowMercs@0x0043e470",
+    "TInformation_ShowCityUnits@0x0043cc40",
+    "TRecruitMercs_InitializeForm@0x00440fec"
+   ],
+   "arg": []
+  },
+  "nation": {
+   "seed": [
+    "FUN_00449050@0x00449050",
+    "FUN_004497cc@0x004497cc",
+    "FUN_004499c0@0x004499c0",
+    "FUN_004499ec@0x004499ec",
+    "FUN_00449b40@0x00449b40",
+    "FUN_00449cd8@0x00449cd8",
+    "FUN_0044a610@0x0044a610",
+    "FUN_0044a98c@0x0044a98c",
+    "FUN_0044b8d0@0x0044b8d0",
+    "FUN_0044c204@0x0044c204",
+    "FUN_0044c528@0x0044c528",
+    "FUN_0044e670@0x0044e670",
+    "FUN_0044faa0@0x0044faa0",
+    "FUN_0044fb50@0x0044fb50",
+    "FUN_0044fb7c@0x0044fb7c",
+    "FUN_004501f4@0x004501f4",
+    "FUN_004502e0@0x004502e0",
+    "FUN_004504f4@0x004504f4",
+    "FUN_00450c68@0x00450c68",
+    "FUN_004514ec@0x004514ec",
+    "FUN_00451b40@0x00451b40",
+    "FUN_00452034@0x00452034",
+    "TAreaMap_ShowCapital@0x0043e288",
+    "TArmyRecruits_RecruitUnit@0x00454e78",
+    "TArmyRecruits_SetCityRecruits@0x0045495c",
+    "TBalanceSheet_PaintBalance@0x0045376c",
+    "TFindCity_FillListBox@0x0043d7dc",
+    "THumanFalls_InitializeForm@0x00455e38",
+    "TInformation_ShowCityDetails@0x0043be5c",
+    "TInformation_ShowNationStatus@0x0043ba7c",
+    "TPickLeaders_InitializeForm@0x004571a8",
+    "TPickLeaders_OK@0x00457404",
+    "TPolitics_InitialiseForm@0x00452b48",
+    "TPolitics_OK@0x00453230",
+    "TPremierForm_OpenGameFile@0x0045aad4",
+    "TPremierForm_TurnMenusOn@0x0045bbfc"
+   ],
+   "arg": [
+    "FUN_00438504@0x00438504",
+    "FUN_00439968@0x00439968",
+    "FUN_004484d0@0x004484d0",
+    "FUN_00449078@0x00449078",
+    "FUN_004497cc@0x004497cc",
+    "FUN_00449a44@0x00449a44",
+    "FUN_00449b40@0x00449b40",
+    "FUN_0044a050@0x0044a050",
+    "FUN_0044a120@0x0044a120",
+    "FUN_0044aee4@0x0044aee4",
+    "FUN_0044b27c@0x0044b27c",
+    "FUN_0044b5d0@0x0044b5d0",
+    "FUN_0044bd2c@0x0044bd2c",
+    "FUN_0044bed8@0x0044bed8",
+    "FUN_0044c360@0x0044c360",
+    "FUN_0044c528@0x0044c528",
+    "FUN_0044c8f0@0x0044c8f0",
+    "FUN_0044d734@0x0044d734",
+    "FUN_0044e1fc@0x0044e1fc",
+    "FUN_0044e84c@0x0044e84c",
+    "FUN_0044efc8@0x0044efc8",
+    "FUN_00450c68@0x00450c68",
+    "FUN_004514ec@0x004514ec",
+    "TBattleMap_MyUnitDetails@0x00437724",
+    "TBattleOver_InitializeForm@0x00458bc8",
+    "TBattleOver_OK@0x00459220",
+    "TBattlePols_InitializeForm@0x004577ec",
+    "TFindCity_ChangeNation@0x0043d8b4",
+    "THVHBatPols_InitializeForm@0x00457fa8",
+    "THumanFalls_InitializeForm@0x00455e38",
+    "TInformation_BattleUnitMoves@0x0043cf3c",
+    "TInformation_ShowArmyDetails@0x0043c33c",
+    "TInformation_ShowArmyUnits@0x0043cdd8",
+    "TInformation_ShowCityDetails@0x0043be5c",
+    "TInformation_ShowFleetDetails@0x0043c890",
+    "TInformation_ShowNationStatus@0x0043ba7c",
+    "TPickLeaders_HumanOrComputer@0x0045730c",
+    "TPolitics_MakeAlliance@0x004530d8",
+    "TPolitics_MakePeace@0x00452d94",
+    "TPolitics_MakeTrade@0x00452e94",
+    "TPremierForm_SetTurnTitle@0x0045c084",
+    "TPremierForm_StartTurn@0x0045ac5c",
+    "TUnitMap_RecruitMercenaries@0x00446ff4",
+    "TUnitMap_SelectUnit@0x004466cc"
+   ]
+  },
+  "news": {
+   "seed": [
+    "FUN_004484d0@0x004484d0",
+    "FUN_00449240@0x00449240",
+    "TInformation_PaintForm@0x0043b394"
+   ],
+   "arg": [
+    "FUN_00449240@0x00449240"
+   ]
+  },
+  "scalar": {
+   "seed": [],
+   "arg": [
+    "FUN_004484d0@0x004484d0"
+   ]
+  }
+ },
+ "pointer_frontier": [
+  {
+   "function": "FUN_004499c0",
+   "address": "0x004499c0",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_00449b40",
+   "address": "0x00449b40",
+   "table": "nation",
+   "lines": 6
+  },
+  {
+   "function": "FUN_00449cd8",
+   "address": "0x00449cd8",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044a120",
+   "address": "0x0044a120",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044a610",
+   "address": "0x0044a610",
+   "table": "nation",
+   "lines": 4
+  },
+  {
+   "function": "FUN_0044a8cc",
+   "address": "0x0044a8cc",
+   "table": "army",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044a930",
+   "address": "0x0044a930",
+   "table": "army",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044ae20",
+   "address": "0x0044ae20",
+   "table": "army",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044b8f4",
+   "address": "0x0044b8f4",
+   "table": "nation",
+   "lines": 2
+  },
+  {
+   "function": "FUN_0044bb18",
+   "address": "0x0044bb18",
+   "table": "city",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044bd2c",
+   "address": "0x0044bd2c",
+   "table": "city",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044c360",
+   "address": "0x0044c360",
+   "table": "city",
+   "lines": 2
+  },
+  {
+   "function": "FUN_0044c8f0",
+   "address": "0x0044c8f0",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044d31c",
+   "address": "0x0044d31c",
+   "table": "army",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044dd70",
+   "address": "0x0044dd70",
+   "table": "fleet",
+   "lines": 1
+  },
+  {
+   "function": "FUN_0044fb50",
+   "address": "0x0044fb50",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_004502e0",
+   "address": "0x004502e0",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_00450c68",
+   "address": "0x00450c68",
+   "table": "nation",
+   "lines": 6
+  },
+  {
+   "function": "FUN_004511bc",
+   "address": "0x004511bc",
+   "table": "fleet",
+   "lines": 1
+  },
+  {
+   "function": "FUN_004514ec",
+   "address": "0x004514ec",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "FUN_00452034",
+   "address": "0x00452034",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "TAFSupply_ChangeBuyAmount",
+   "address": "0x0043fe4c",
+   "table": "fleet",
+   "lines": 1
+  },
+  {
+   "function": "TAFSupply_ChangeMoney",
+   "address": "0x0044005c",
+   "table": "army",
+   "lines": 1
+  },
+  {
+   "function": "TAFSupply_ChangeMoney",
+   "address": "0x0044005c",
+   "table": "fleet",
+   "lines": 5
+  },
+  {
+   "function": "TAFSupply_ChangeSupply",
+   "address": "0x0043fc74",
+   "table": "army",
+   "lines": 1
+  },
+  {
+   "function": "TAFSupply_FindProviders",
+   "address": "0x0043f468",
+   "table": "city",
+   "lines": 1
+  },
+  {
+   "function": "TBattleMap_StartBattle",
+   "address": "0x00436fb4",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "TBattleOver_InitializeForm",
+   "address": "0x00458bc8",
+   "table": "army",
+   "lines": 4
+  },
+  {
+   "function": "TFortifyCity_ChangeFortification",
+   "address": "0x0044076c",
+   "table": "city",
+   "lines": 1
+  },
+  {
+   "function": "THumanFalls_InitializeForm",
+   "address": "0x00455e38",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "TInformation_InitializeForm",
+   "address": "0x0043b014",
+   "table": "nation",
+   "lines": 1
+  },
+  {
+   "function": "TPickLeaders_OK",
+   "address": "0x00457404",
+   "table": "fleet",
+   "lines": 1
+  },
+  {
+   "function": "TRepairFleet_ChangeRepair",
+   "address": "0x00440d28",
+   "table": "fleet",
+   "lines": 1
+  },
+  {
+   "function": "TUnitMap_SelectUnit",
+   "address": "0x004466cc",
+   "table": "fleet",
+   "lines": 1
+  },
+  {
+   "function": "TUnitMap_SupplyFleet",
+   "address": "0x004477fc",
+   "table": "fleet",
+   "lines": 1
+  }
+ ]
+}

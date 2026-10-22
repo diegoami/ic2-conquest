@@ -1,0 +1,67 @@
+{
+  "work": "/tmp/ic2-tactical25-trace-work",
+  "source_prefix": "/tmp/ic2-ai-general-work/prefix",
+  "source_save_sha256": "39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad",
+  "plain_sha256": "06bc469dff70ae8c83438e82ef4266a584bab7796752024521d00f8d8d46ec40",
+  "hook_sha256": "58c683daf7dd25a10d6c3467d85c4ccc903a21f0364768cbf975fc575ac234db",
+  "info": {
+    "caves": {
+      "rec_body": 5654016,
+      "rec_end_body": 5654168,
+      "random": 5654204,
+      "marker_shot": 5654448,
+      "marker_melee": 5654592,
+      "marker_rout": 5654736,
+      "battle_over_clear": 5654876,
+      "after_battle_clear": 5655012,
+      "reseed_battlepols": 5655148,
+      "reseed_450c7b": 5655288,
+      "seed": 5655432
+    },
+    "hooked_sites": [
+      4423706,
+      4423983,
+      4424205,
+      4427771,
+      4427782,
+      4428168,
+      4428177,
+      4429143,
+      4429151,
+      4429262,
+      4429272,
+      4434568,
+      4559549,
+      4560156
+    ],
+    "scan_inside": [
+      4423706,
+      4423983,
+      4424205,
+      4427771,
+      4427782,
+      4428168,
+      4428177,
+      4429143,
+      4429151,
+      4429262,
+      4429272,
+      4434568,
+      4559549,
+      4560156
+    ],
+    "scan_outside_count": 39
+  },
+  "game_files": [
+    "Imperial Conquest 2 lab s1.exe",
+    "Imperial Conquest 2 tactical25 standard.exe",
+    "Imperial Conquest 2.cnt",
+    "Imperial Conquest 2.dat",
+    "Imperial Conquest 2.hlp",
+    "MIX-RG_start.SAV",
+    "SEED.TXT",
+    "WAVS",
+    "ca1102211003.BMP",
+    "ca1203011231.BMP"
+  ]
+}

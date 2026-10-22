@@ -1,0 +1,26 @@
+split-army army-0 army-100 0
+split-army army-0 army-101 1
+army-transfer army-0 army-100 supply=10 money=10
+army-transfer army-100 army-0 units=0
+armies
+save ART/g2_army3_a.sav
+army-transfer army-0 army-100 units=0 supply=5
+army-transfer army-0 army-101 units=0
+army-transfer army-0 army-101 back-supply=3
+army-transfer army-0 army-100 supply=1000
+army-transfer army-0 army-100 money=1000
+army-transfer army-0 army-100 supply=-3
+armies
+split-unit army-0 0 1
+split-unit army-0 0 5000
+split-unit army-0 0 4000
+split-unit army-0 0 100
+armies
+join-units army-0 0 0
+join-units army-0 0 1
+rename-unit army-0 0 Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+disband-unit army-0 0
+armies
+hire-mercenary army-0 0
+hire-mercenary army-0 1
+save ART/g2_army3_b.sav

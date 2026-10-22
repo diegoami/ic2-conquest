@@ -1,0 +1,17 @@
+Rome tax base 2528; Rome trade partners in the Q6 staging: none (all 15 relations 0); neighbour mask: ['Carthage', 'Gaul', 'Illyria']
+Carthage	tax_base 8264	gate1 pass	trade partners ['Seleucid', 'Greece', 'Thracia']	below Rome ['Greece', 'Thracia']	gate2 pass
+Seleucid	tax_base 5588	gate1 pass	trade partners ['Carthage', 'Greece', 'Media']	below Rome ['Greece', 'Media']	gate2 pass
+Ptolemaic	tax_base 6164	gate1 pass	trade partners ['Macedonia', 'Dacia', 'Thracia']	below Rome ['Macedonia', 'Dacia', 'Thracia']	gate2 pass
+Macedonia	tax_base 1028	gate1 pass	trade partners ['Ptolemaic', 'Numidia', 'Greece']	below Rome ['Numidia', 'Greece']	gate2 pass
+Numidia	tax_base 452	gate1 pass	trade partners ['Macedonia']	below Rome ['Macedonia']	gate2 pass
+Gaul	tax_base 584	gate1 pass	trade partners ['Celtiberia', 'Armenia', 'Thracia']	below Rome ['Celtiberia', 'Armenia', 'Thracia']	gate2 pass
+Greece	tax_base 2352	gate1 pass	trade partners ['Carthage', 'Seleucid', 'Macedonia']	below Rome ['Macedonia']	gate2 pass
+Celtiberia	tax_base 608	gate1 pass	trade partners ['Gaul', 'Dacia', 'Media']	below Rome ['Gaul', 'Dacia', 'Media']	gate2 pass
+Illyria	tax_base 356	gate1 pass	trade partners ['Armenia', 'Media']	below Rome ['Armenia', 'Media']	gate2 pass
+Dacia	tax_base 84	gate1 pass	trade partners ['Ptolemaic', 'Celtiberia', 'Bithynia']	below Rome ['Celtiberia', 'Bithynia']	gate2 pass
+Bithynia	tax_base 596	gate1 pass	trade partners ['Dacia', 'Armenia']	below Rome ['Dacia', 'Armenia']	gate2 pass
+Galatia	tax_base 192	gate1 pass	trade partners []	below Rome []	gate2 FAIL
+Armenia	tax_base 432	gate1 pass	trade partners ['Gaul', 'Illyria', 'Bithynia']	below Rome ['Gaul', 'Illyria', 'Bithynia']	gate2 pass
+Media	tax_base 872	gate1 pass	trade partners ['Seleucid', 'Celtiberia', 'Illyria']	below Rome ['Celtiberia', 'Illyria']	gate2 pass
+Thracia	tax_base 656	gate1 pass	trade partners ['Carthage', 'Ptolemaic', 'Gaul']	below Rome ['Gaul']	gate2 pass
+non-neighbour candidates passing both gates: 11 of 12; bound on trade offers in 120 turn starts: 120 x 11/16 x 1/3 = 27.5 (without the second gate: 120 x 12/16 x 1/3 = 30.0)

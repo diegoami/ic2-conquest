@@ -57,6 +57,8 @@ class Log:
         self.tag, self.t0 = tag, time.time()
         self.txt = OUT / f"{tag}-{STAMP}.log"
         self.jl = OUT / f"{tag}-{STAMP}.jsonl"
+        from harness import environment       # every game start of this run is recorded as an `environment` event (harness/environment.py)
+        environment.add_sink(lambda rec: self("environment", **{k: v for k, v in rec.items() if k != "step"}), key="b0_probe.Log")
 
     def __call__(self, event, **kw):
         t = round(time.time() - self.t0, 2)

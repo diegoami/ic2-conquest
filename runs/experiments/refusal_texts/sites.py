@@ -8,7 +8,9 @@ usage: sites.py [--exe PATH]"""
 import re, os, sys, struct, hashlib
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import write_new, DATA
-DUMP = os.environ.get('IC2_DUMP', '/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt')
+sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..')))
+from harness import decompile
+DUMP = decompile.DUMP
 EXE = os.environ.get('IC2_ORIG_EXE', os.path.expanduser('~/ic2-work/build/Imperial Conquest 2.exe'))
 WRAP = 'FUN_0042d750'
 DLG = {0: 'mtWarning', 1: 'mtError', 2: 'mtInformation', 3: 'mtConfirmation', 4: 'mtCustom'}
@@ -32,6 +34,7 @@ def unescape(s):
     return re.sub(r'\\(x[0-9a-fA-F]{2}|.)', lambda m: {'n': '\n', 't': '\t', "'": "'", '"': '"', '\\': '\\'}.get(m.group(1)) or chr(int(m.group(1)[1:], 16)), s)
 
 def load(dump=DUMP):
+    decompile.check(dump)   # the call lines are line numbers of the pinned dump
     return open(dump, errors='replace').read().split('\n')
 
 def functions(L):

@@ -1,0 +1,7 @@
+[
+ {"op": "mobilize", "city_name": "Rome", "city": 85, "units": [0, 1, 2]},
+ {"op": "supply", "army": "new"},
+ {"op": "goto", "army": 0, "x": 96, "y": 31},
+ {"op": "goto", "army": 10, "x": 97, "y": 33},
+ {"op": "join", "army": 10}
+]

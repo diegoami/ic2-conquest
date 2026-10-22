@@ -1,0 +1,180 @@
+{
+ "case": "sieges_cover1",
+ "tiles_watched": {
+  "fleet_tile": [
+   74,
+   71
+  ],
+  "land_army_tile": [
+   42,
+   63
+  ],
+  "old_cargo_tile": [
+   38,
+   64
+  ]
+ },
+ "before": {
+  "n_armies": 14,
+  "n_fleets": 2,
+  "fleets": [
+   {
+    "id": 0,
+    "x": 74,
+    "y": 71,
+    "owner": 5,
+    "ships": 90,
+    "army": 10,
+    "cell": 1,
+    "word": 337
+   },
+   {
+    "id": 1,
+    "x": 189,
+    "y": 93,
+    "owner": 3,
+    "ships": 70,
+    "army": -1,
+    "cell": 0,
+    "word": 335
+   }
+  ],
+  "numidian_or_dead_armies": [
+   {
+    "id": 2,
+    "x": 42,
+    "y": 63,
+    "owner": 5,
+    "moves": 9,
+    "cell": 2,
+    "troops": 33900
+   },
+   {
+    "id": 10,
+    "x": 74,
+    "y": 71,
+    "owner": 5,
+    "moves": 0,
+    "cell": -1,
+    "troops": 33900
+   }
+  ],
+  "numidia": {
+   "cities_count": 8,
+   "owned": 8
+  },
+  "news_tail": [
+   "Sidon (Seleucid) falls to Ptolemaic.",
+   "Marium defects from Greece to Ptolemaic.",
+   "Pontica (Seleucid) falls to Bithynia.",
+   "Damascus (Seleucid) falls to Ptolemaic.",
+   " ",
+   "Week 1      Spring      270 BC",
+   "Seleucid destroys army of Ptolemaic.",
+   "Ptolemaic sues Seleucid for peace and;",
+   "    Ptolemaic ends all current trading agreements.",
+   "    Ptolemaic  ends all current alliances.",
+   "    Ptolemaic pays reparations of 2,242 talents.",
+   " ",
+   "Week  3      Spring      270BC",
+   "Rome fails to capture Felsina   (Gaul)."
+  ]
+ },
+ "popups": [],
+ "steps": [
+  {
+   "army": 0,
+   "city": 58,
+   "city_owner": 0,
+   "numidia_count": 7
+  },
+  {
+   "army": 1,
+   "city": 60,
+   "city_owner": 0,
+   "numidia_count": 6
+  },
+  {
+   "army": 3,
+   "city": 108,
+   "city_owner": 0,
+   "numidia_count": 5
+  }
+ ],
+ "after": {
+  "n_armies": 14,
+  "n_fleets": 2,
+  "fleets": [
+   {
+    "id": 0,
+    "x": 74,
+    "y": 71,
+    "owner": -1,
+    "ships": 90,
+    "army": -1,
+    "cell": 1,
+    "word": 0
+   },
+   {
+    "id": 1,
+    "x": 189,
+    "y": 93,
+    "owner": 3,
+    "ships": 70,
+    "army": -1,
+    "cell": 0,
+    "word": 335
+   }
+  ],
+  "numidian_or_dead_armies": [
+   {
+    "id": 2,
+    "x": 42,
+    "y": 63,
+    "owner": -1,
+    "moves": 9,
+    "cell": 2,
+    "troops": 33900
+   },
+   {
+    "id": 10,
+    "x": 74,
+    "y": 71,
+    "owner": -1,
+    "moves": 0,
+    "cell": -1,
+    "troops": 33900
+   }
+  ],
+  "numidia": {
+   "cities_count": 5,
+   "owned": 0
+  },
+  "news_tail": [
+   "Seleucid destroys army of Ptolemaic.",
+   "Ptolemaic sues Seleucid for peace and;",
+   "    Ptolemaic ends all current trading agreements.",
+   "    Ptolemaic  ends all current alliances.",
+   "    Ptolemaic pays reparations of 2,242 talents.",
+   " ",
+   "Week  3      Spring      270BC",
+   "Rome fails to capture Felsina   (Gaul).",
+   "Capsa   (Numidia)  falls to Rome.",
+   "Ghadames   (Numidia)  falls to Rome.",
+   "Ghirza   (Numidia)  falls to Rome.",
+   "-----------------------------------------------------------",
+   "Rome conquers Numidia.",
+   "-----------------------------------------------------------"
+  ]
+ },
+ "mem_words": {
+  "74,71": 0,
+  "42,63": 2,
+  "38,64": 2
+ },
+ "save_words": {
+  "74,71": 0,
+  "42,63": 2,
+  "38,64": 2
+ }
+}

@@ -1,0 +1,34 @@
+first,last,bytes,field,policy,evidence,condition
+000,00A,11,nation name,LIVE_OR_VERIFIED_CLASSIC,DAT loader4481A0; ShowNationStatus43BA7C,11-byte ANSI/NUL buffer; supported ASCII max10; fixed classic identity must match DAT
+00B,025,27,leader name,LIVE,NewGame448AA4; new leader449078,"27-byte ANSI/NUL buffer max26; names after NUL are residue, not another field"
+026,045,32,diplomacy row,LIVE,449B40; Politics452C9C..453230,16 signed WORDs including negative cooldown; missing cooldown cannot silently become peace
+046,047,2,neighbour mask,VERIFIED_CLASSIC,DAT4481A0; peace450C68; offer452034,Use exact pinned original scenario mask; not inferred from current city ownership
+048,2E3,668,"owned-city IDs,334 WORDs",DERIVE_WITH_PROFILE,44B8F4; FindCity43D93C; recruitment4502E0; public224; x86city,Rebuild active owned IDs in original name order; -1 inactive invariant from DAT/transfer; validate count and ownership
+2E4,423,320,"recruit queues,40x8",LIVE_AND_RESIDUE,44A4E0;44A610;4504F4,Active state/type/troops/city must map exactly; troop=0 logical emptiness does not mean all other bytes zero
+424,42F,12,three nation colours,VERIFIED_CLASSIC_OR_PRESERVE_UI,NewGame448AA4; recolour44A6C8,3 DWORD colour values initialized explicitly per nation; no unit pointer or score
+430,433,4,current population/wealth,LIVE,quarter451B40; ownership44BED8,Map exact original units/tick semantics; not an arbitrary template constant
+434,437,4,270BC population baseline,HISTORICAL_PROFILE_OR_LIVE_HISTORY,DAT4481A0; HumanFalls455E38 lines56436-56437; DAT224,Use attested original270BC history/DAT baseline; do NOT overwrite from current population
+438,43B,4,current treasury,LIVE,quarter451B40; recruit4504F4,Signed DWORD; may legitimately be negative
+43C,43F,4,270BC treasury baseline,HISTORICAL_PROFILE_OR_LIVE_HISTORY,DAT4481A0; HumanFalls455E38 lines56447-56448; DAT224,Same history requirement; not current treasury or zero
+440,441,2,unity,LIVE,44C8F0;451B40,Current original scalar and defeated-state interpretation
+442,443,2,mobilization,LIVE,4504F4;451B40,Current percentage; do not reset to NewGame level
+444,445,2,capital city ID,LIVE_OR_DERIVE_PROVEN,44C360;44B8D0,Native stable city identity -> original city index; -1 only supported eliminated state
+446,447,2,current owned city count,DERIVE,44BED8;44B8F4,Exactly number of cities in owner map/list
+448,449,2,270BC city-count baseline,HISTORICAL_PROFILE_OR_LIVE_HISTORY,DAT4481A0; HumanFalls455E38 lines56441-56442; DAT224,Not current count; pinned history or reject
+44A,44B,2,tax rate,LIVE,quarter451B40; TChangeTax_OK4540B8,Original signed WORD percent; must map native taxation semantics
+44C,44D,2,tax-base/economy aggregate,LIVE_OR_DERIVE_PROVEN,451B40;4498B0;44BED8,"Exact original aggregate/tick/transfer semantics, not a name-based wealth guess"
+44E,44F,2,conqueror nation,LIVE_HISTORY,44BED8;44C360;44C528;HumanFalls455E38,Valid nation0..15 or original -1 sentinel; lost history rejects instead of unrelated-template value
+450,46A,27,unnamed27 bytes,UNKNOWN_REJECT_CHANGED_STATE,DAT/NewGame do not initialize explicitly; targeted source inventory; public224allzero,Meaning not proved. Observed zero is NOT a canonical default. Preserve only unchanged identity state; same-template provenance alone does not justify changed-state inheritance
+46B,46B,1,hints preference,PRESERVE_VALIDATED_UI_OR_CANONICAL,NewGame448AA4; StartTurn45AC5C; ToggleHints45C294,BYTE bool; original new-game1; changes toolbar/hints
+46C,46C,1,area-map display toggle,PRESERVE_VALIDATED_UI_OR_CANONICAL,NewGame448AA4; AreaMap43DFD4,BYTE bool; original new-game1; paint-mode preference
+46D,46D,1,unnamed byte,UNKNOWN_REJECT_CHANGED_STATE,public224zero; no meaning established,"No zero-fill blessing; unchanged identity only, changed gameplay rejects until semantic proof"
+46E,475,8,area-window geometry,PRESERVE_VALIDATED_UI,NewGame448AA4; StoreFormPositions45BB1C,"Four signed WORDs left/top/height/width; profile must fit runtime, not native gameplay"
+476,47D,8,unit-window geometry,PRESERVE_VALIDATED_UI,NewGame448AA4; StoreFormPositions45BB1C,Four signed WORDs left/top/height/width; not saved object pointers
+47E,485,8,information-window geometry,PRESERVE_VALIDATED_UI,NewGame448AA4; Info43B014; StoreFormPositions45BB1C,Four signed WORDs left/top/height/width; load may round height down modulo16
+486,487,2,unit-map viewport Y,PRESERVE_BOUNDED_UI,448AA4; UnitMapPaint445D38,WORD original new-game45; ensure valid map bounds
+488,489,2,unit-map viewport X,PRESERVE_BOUNDED_UI,448AA4; UnitMapPaint445D38,WORD original new-game55; ensure valid map bounds
+48A,48B,2,selected nation/map filter,PRESERVE_VALIDATED_UI,NewGame448AA4; SelectNation45B660; AreaMap,WORD0..15 or16 all; NewGame own nation index
+48C,48D,2,battle melee delay,PRESERVE_VALIDATED_TIMING,BattleDelays436B64;393EC;NewGame448AA4,"WORD default30, UI bounds0..30; timing preference not current controller"
+48E,48F,2,battle shooting delay,PRESERVE_VALIDATED_TIMING,BattleDelays436B64;3910C;NewGame448AA4,"WORD default20, UI bounds0..30; no future-RNG claim"
+490,490,1,human controller,LIVE,449050;451FDC;452034;37DE4,BYTE bool must match intended native controller mask; cannot copy arbitrary-template humans
+491,493,3,unnamed3 bytes,UNKNOWN_REJECT_CHANGED_STATE,public224zero; no meaning established,"Meaning not proved; unchanged identity only, changed gameplay rejects, not implicit zero"

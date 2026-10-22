@@ -1,0 +1,35 @@
+load ART/g2_fleet2_built.sav
+move army-0 101 45
+end
+move army-0 101 45
+end
+move army-0 101 45
+end
+move army-0 101 45
+end
+buy army-0 antium 200
+armies
+save ART/g2_embark2_before.sav
+embark-army army-0 f1
+status mine
+save ART/g2_embark2_aboard.sav
+repair-fleet f1 1
+scuttle-fleet f1
+split-fleet f1 f2 5
+fleet-transfer f1 f1 1 0 0
+buy-fleet-supply f1 antium 10
+disband-army army-0
+split-army army-0 army-100 0
+join-armies army-0 army-1
+hire-mercenary army-0 5
+move army-0 101 44
+disembark-army army-0 101 45
+status mine
+save ART/g2_embark2_disembarked.sav
+embark-army army-0 f1
+move-fleet f1 101 48
+status mine
+move-fleet f1 101 48
+save ART/g2_embark2_sailed.sav
+disembark-army army-0 101 48
+disembark-army army-0

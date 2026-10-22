@@ -31,10 +31,10 @@ python3 runs/experiments/v050_rules/fetch_archive.py     # downloads the release
 python3 runs/experiments/v050_rules/claims_audit.py      # inputs: the archived saves, the tracked code extracts, dat_unit_prices.tsv, the tracked screen readings, the logs
 python3 runs/experiments/v050_rules/row_source_audit.py  # row_source_audit.psv (rule, source line, quote, conditions) against the extracts and the findings
 python3 -m unittest runs/experiments/v050_rules/test_claims_audit.py   # a doctored expected value must fail
-IC2_DUMP=.../all_app_functions.txt python3 runs/experiments/v050_rules/check_dump_vs_extract.py   # optional: extracts against the Ghidra dump
+python3 runs/experiments/v050_rules/check_dump_vs_extract.py   # optional: extracts against the Ghidra dump
 ```
 
-Paths derive from the scripts' location (`paths.py`); `IC2_ARTIFACTS`, `IC2_DUMP`, `IC2_DAT`, `IC2_WORK_V050` override. `extract_dat_prices.py` reads the DAT file (SHA-256 recorded in `dat_unit_prices.tsv`), `q4_ocr_displayed_cost.py` and `q2_ocr_rows.py` read screenshots into the tracked tsv files, `archive_batch.py BATCH` packs the not yet archived binaries (saves/, inputs/, png) into `batch-BATCH.tar.gz`, writes `MANIFEST-BATCH.txt` and uploads. Plays (`q*.py`) need Wine, a private game folder copy and a free Xvfb display; they write only new versioned files.
+Paths derive from the scripts' location (`paths.py`); `IC2_ARTIFACTS`, `IC2_DUMP` (default: the pinned dump in `~/ic2-work/decompile`, `harness/decompile.py`), `IC2_DAT`, `IC2_WORK_V050` override. `extract_dat_prices.py` reads the DAT file (SHA-256 recorded in `dat_unit_prices.tsv`), `q4_ocr_displayed_cost.py` and `q2_ocr_rows.py` read screenshots into the tracked tsv files, `archive_batch.py BATCH` packs the not yet archived binaries (saves/, inputs/, png) into `batch-BATCH.tar.gz`, writes `MANIFEST-BATCH.txt` and uploads. Plays (`q*.py`) need Wine, a private game folder copy and a free Xvfb display; they write only new versioned files.
 
 ## PR #47 review rework (2026-10-05)
 

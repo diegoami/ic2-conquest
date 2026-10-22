@@ -1,0 +1,821 @@
+# remake v0.5.0 37f3062 scenario=classical-mediterranean seat=rome seed=1 extra=[] 2026-10-09T17:05:23+02:00
+# script:
+#   order-fleet caere 30 fl1
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   end
+#   status mine
+#   save ART/g1_fleet_launch.sav
+# ---- transcript
+Loaded scenario 'classical-mediterranean': world 'classical-mediterranean', ruleset 'classical-faithful'.
+> order-fleet caere 30 fl1
+naval.order-fleet accepted.
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 24 orders issued.
+Seleucid (seleucid) takes its turn: 15 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 18 orders issued.
+Macedonia (macedonia) takes its turn: 7 orders issued.
+Numidia (numidia) takes its turn: 14 orders issued.
+Gaul (gaul) takes its turn: 5 orders issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 6 orders issued.
+Illyria (illyria) takes its turn: 10 orders issued.
+Dacia (dacia) takes its turn: 7 orders issued.
+Bithynia (bithynia) takes its turn: 2 orders issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 5 orders issued.
+Thracia (thracia) takes its turn: 9 orders issued.
+Now: Week 3, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Sidon   (Ptolemaic)  falls to Seleucid.
+  Astacus   (Bithynia)  falls to Seleucid.
+  Calpe defects from Bithynia to Seleucid.
+  Pontica defects from Bithynia to Seleucid.
+   
+  Week  3      Spring      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 1900, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 123t (51%), morale 70, moves 9
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 132t (60%), morale 69, moves 9
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  pisae "Pisae" @ (93,35), owner Rome: supply 119t, loyalty 74, fortification 69%
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 142t, loyalty 78, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 179t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 182t, loyalty 77, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1144t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 125t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 117t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 175t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 119t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 125t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 95t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 147t, loyalty 78, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 138t, loyalty 73, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 181t, loyalty 75, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 99t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 203t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 142t, loyalty 65, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 127t, loyalty 76, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 159t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 116t, loyalty 62, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 145t, loyalty 61, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 166t, loyalty 50, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 175t, loyalty 69, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 283t, loyalty 52, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 152t, loyalty 75, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 3 orders issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 4 orders issued.
+Numidia (numidia) takes its turn: 4 orders issued.
+Gaul (gaul) takes its turn: 4 orders issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 3 orders issued.
+Illyria (illyria) takes its turn: 3 orders issued.
+Dacia (dacia) takes its turn: 2 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 3).
+  Weather: storm-damages-fleet (week 3).
+Now: Week 5, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Ptolemaic sues Seleucid for peace and;
+      Ptolemaic ends all current trading agreements.
+      Ptolemaic  ends all current alliances.
+      Ptolemaic pays reparations of 3,041 talents.
+  Seleucid destroys army of Ptolemaic.
+  Pisae   (Rome)  falls to Gaul.
+   
+  Week  5      Spring      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 1900, unity 806, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 76t (32%), morale 70, moves 9
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 88t (40%), morale 70, moves 9
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 165t, loyalty 78, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 208t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 211t, loyalty 77, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1298t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 146t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 136t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 204t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 139t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 145t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 111t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 171t, loyalty 78, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 161t, loyalty 73, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 210t, loyalty 75, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 116t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 237t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 165t, loyalty 65, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 148t, loyalty 76, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 186t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 135t, loyalty 62, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 168t, loyalty 61, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 193t, loyalty 50, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 204t, loyalty 69, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 323t, loyalty 52, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 177t, loyalty 75, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 1 order issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 3 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 2 orders issued.
+Now: Week 7, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Greece declares war on Illyria.
+   
+  Week  7      Spring      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 1900, unity 806, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 29t (12%), morale 70, moves 9
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 44t (20%), morale 70, moves 9
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 188t, loyalty 78, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 237t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 240t, loyalty 77, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1452t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 167t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 155t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 233t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 159t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 165t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 127t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 195t, loyalty 78, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 184t, loyalty 73, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 239t, loyalty 75, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 133t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 271t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 188t, loyalty 65, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 169t, loyalty 76, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 213t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 154t, loyalty 62, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 191t, loyalty 61, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 220t, loyalty 50, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 233t, loyalty 69, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 363t, loyalty 52, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 202t, loyalty 75, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 2 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 7).
+Now: Week 9, Spring 270 BC. Active seat: Rome (rome).
+News:
+  Helice   (Carthage)  falls to Celtiberia.
+  A fleet belonging to ptolemaic is damaged in a storm.
+   
+  Week  9      Spring      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 1900, unity 806, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 68, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 68, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 211t, loyalty 78, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 266t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 269t, loyalty 77, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1606t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 188t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 174t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 262t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 179t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 185t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 143t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 219t, loyalty 78, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 207t, loyalty 73, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 268t, loyalty 75, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 150t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 305t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 211t, loyalty 65, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 190t, loyalty 76, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 240t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 173t, loyalty 62, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 214t, loyalty 61, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 247t, loyalty 50, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 262t, loyalty 69, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 403t, loyalty 52, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 227t, loyalty 75, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 6 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 9).
+  Weather: drought-reduces-supply (week 9).
+Now: Week 11, Spring 270 BC. Active seat: Rome (rome).
+News:
+  A fleet belonging to ptolemaic is lost at sea.
+   
+  Week  11      Spring      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 1900, unity 806, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 66, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 66, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 234t, loyalty 78, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 295t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 298t, loyalty 77, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1760t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 209t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 193t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 291t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 199t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 205t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 159t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 243t, loyalty 78, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 230t, loyalty 73, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 297t, loyalty 75, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 167t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 339t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 234t, loyalty 65, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 211t, loyalty 76, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 267t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 192t, loyalty 62, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 237t, loyalty 61, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 274t, loyalty 50, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 291t, loyalty 69, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 443t, loyalty 52, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 252t, loyalty 75, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 3 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 1, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  1      Summer      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2043, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 64, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 64, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 257t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 324t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 327t, loyalty 78, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 230t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 212t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 320t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 219t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 225t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 175t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 267t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 253t, loyalty 75, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 326t, loyalty 76, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 184t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 373t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 257t, loyalty 66, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 232t, loyalty 79, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 294t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 211t, loyalty 64, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 260t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 301t, loyalty 53, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 320t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 470t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 277t, loyalty 77, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 17 orders issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 10 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 11 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 3 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 8 orders issued.
+Armenia (armenia) takes its turn: 4 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 1).
+Now: Week 3, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Summer      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2043, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 62, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 62, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 78, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 200t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 75, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 76, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 66, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 79, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 64, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 330t, loyalty 53, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 500t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 77, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 3 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 5, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  5      Summer      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2043, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 60, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 60, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 78, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 200t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 75, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 76, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 66, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 79, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 64, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 330t, loyalty 53, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 500t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 77, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 2 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 1 order issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: storm-damages-fleet (week 5).
+  Weather: storm-damages-fleet (week 5).
+Now: Week 7, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  7      Summer      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2043, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 58, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 58, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 78, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 200t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 75, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 76, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 66, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 79, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 64, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 330t, loyalty 53, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 500t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 77, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 2 orders issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 9, Summer 270 BC. Active seat: Rome (rome).
+News:
+  Macedonia declares war on Illyria.
+  A fleet belonging to carthage is lost at sea.
+   
+  Week  9      Summer      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2043, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 56, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 56, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 78, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 200t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 75, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 76, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 66, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 79, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 64, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 330t, loyalty 53, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 500t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 77, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 2 orders issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 9).
+  Weather: storm-damages-fleet (week 9).
+Now: Week 11, Summer 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  11      Summer      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2043, unity 821, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 54, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 54, moves 8
+
+Fleets:
+  fl1 (Rome) @ (0,0): 30 ships, condition 0%, supply 0t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 78, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 77, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 200t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 75, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 76, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 66, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 79, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 64, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 330t, loyalty 53, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 500t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 77, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 1 order issued.
+Numidia (numidia) takes its turn: 0 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 1 order issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 0 orders issued.
+Dacia (dacia) takes its turn: 0 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 1 order issued.
+Armenia (armenia) takes its turn: 0 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+Now: Week 1, Autumn 270 BC. Active seat: Rome (rome).
+News:
+  rome finishes a new fleet at Caere.
+   
+  Week  1      Autumn      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 52, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 52, moves 8
+
+Fleets:
+  fl1 (Rome) @ (98,43): 30 ships, condition 100%, supply 50t, moves 0
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 200t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 330t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 500t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> end
+Rome (rome) ends its turn.
+Carthage (carthage) takes its turn: 1 order issued.
+Seleucid (seleucid) takes its turn: 1 order issued.
+Ptolemaic (ptolemaic) takes its turn: 0 orders issued.
+Macedonia (macedonia) takes its turn: 11 orders issued.
+Numidia (numidia) takes its turn: 8 orders issued.
+Gaul (gaul) takes its turn: 1 order issued.
+Greece (greece) takes its turn: 10 orders issued.
+Celtiberia (celtiberia) takes its turn: 1 order issued.
+Illyria (illyria) takes its turn: 6 orders issued.
+Dacia (dacia) takes its turn: 2 orders issued.
+Bithynia (bithynia) takes its turn: 1 order issued.
+Galatia (galatia) takes its turn: 7 orders issued.
+Armenia (armenia) takes its turn: 6 orders issued.
+Media (media) takes its turn: 0 orders issued.
+Thracia (thracia) takes its turn: 1 order issued.
+  Weather: drought-reduces-supply (week 1).
+Now: Week 3, Autumn 270 BC. Active seat: Rome (rome).
+News:
+   
+  Week  3      Autumn      270BC
+
+> status mine
+Nation: Rome (rome, human): treasury 2098, unity 837, tax 10%
+
+Armies:
+  army-0 (Rome) @ (100,37): 23700 troops in 6 units, supply 0t (0%), morale 51, moves 8
+  army-1 (Rome) @ (120,53): 22000 troops in 6 units, supply 0t (0%), morale 51, moves 8
+
+Fleets:
+  fl1 (Rome) @ (98,43): 30 ships, condition 100%, supply 20t, moves 32
+
+Cities:
+  tarquinii "Tarquinii" @ (98,39), owner Rome: supply 270t, loyalty 80, fortification 56%
+  arretium "Arretium" @ (99,36), owner Rome: supply 330t, loyalty 95, fortification 72%
+  caere "Caere" @ (99,42), owner Rome: supply 340t, loyalty 79, fortification 50%
+  rome "Rome" @ (101,43), owner Rome: supply 1810t, loyalty 95, fortification 78%
+  ariminum "Ariminum" @ (102,33), owner Rome: supply 240t, loyalty 80, fortification 52%
+  carsioli "Carsioli" @ (102,41), owner Rome: supply 220t, loyalty 96, fortification 55%
+  antium "Antium" @ (102,46), owner Rome: supply 330t, loyalty 92, fortification 69%
+  alba-fucens "Alba Fucens" @ (104,42), owner Rome: supply 230t, loyalty 92, fortification 61%
+  fregellae "Fregellae" @ (104,44), owner Rome: supply 230t, loyalty 81, fortification 61%
+  hadria "Hadria" @ (106,39), owner Rome: supply 210t, loyalty 89, fortification 62%
+  cales "Cales" @ (106,46), owner Rome: supply 280t, loyalty 79, fortification 51%
+  capua "Capua" @ (108,49), owner Rome: supply 270t, loyalty 77, fortification 57%
+  neapolis "Neapolis" @ (109,52), owner Rome: supply 340t, loyalty 77, fortification 40%
+  paestum "Paestum" @ (113,54), owner Rome: supply 200t, loyalty 95, fortification 58%
+  luceria "Luceria" @ (115,48), owner Rome: supply 390t, loyalty 95, fortification 77%
+  rhegium "Rhegium" @ (115,63), owner Rome: supply 270t, loyalty 68, fortification 44%
+  teanum-apulum "Teanum Apulum" @ (116,45), owner Rome: supply 240t, loyalty 80, fortification 58%
+  venusia "Venusia" @ (118,51), owner Rome: supply 310t, loyalty 95, fortification 61%
+  locri "Locri" @ (118,63), owner Rome: supply 220t, loyalty 66, fortification 30%
+  thurii "Thurii" @ (120,56), owner Rome: supply 270t, loyalty 62, fortification 51%
+  heraclea "Heraclea" @ (121,53), owner Rome: supply 340t, loyalty 52, fortification 46%
+  croton "Croton" @ (122,60), owner Rome: supply 330t, loyalty 72, fortification 45%
+  tarrentum "Tarrentum" @ (124,52), owner Rome: supply 520t, loyalty 55, fortification 62%
+  brundisium "Brundisium" @ (127,52), owner Rome: supply 290t, loyalty 79, fortification 38%
+
+> save /home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g1_fleet_launch.sav
+Saved to '/home/diego/projects/ic2-conquest/artifacts/run-exp-gap-v050/g1_fleet_launch.sav'.
+

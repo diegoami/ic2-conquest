@@ -1,0 +1,8954 @@
+{
+  "profile_cases": [
+    {
+      "file": "det-AUTO0721-clock.SAV",
+      "source_sha256": "ee4550c1094847310fe3eafaa8077481474d0ef3b4a5259acd397f4a74b862eb",
+      "nation": 0,
+      "tax": 0,
+      "changed_byte_offsets": [
+        111294
+      ],
+      "output_sha256": "a7a324ee9c73f9c4d47b575999e9f7d64dc8328d54c26c71e36a0c556572aa51",
+      "save_written": false
+    },
+    {
+      "file": "det-AUTO0721-clock.SAV",
+      "source_sha256": "ee4550c1094847310fe3eafaa8077481474d0ef3b4a5259acd397f4a74b862eb",
+      "nation": 0,
+      "tax": 40,
+      "changed_byte_offsets": [
+        111294
+      ],
+      "output_sha256": "89e829cdddec18f3bfab61582ebf3d99147ec0d453d888a5023545ca604337a4",
+      "save_written": false
+    },
+    {
+      "file": "fleet-port-antium-0734.SAV",
+      "source_sha256": "34d31d8f84710867e589e5265712e2076b2cc824108b47822620aef9e4421d89",
+      "nation": 0,
+      "tax": 0,
+      "changed_byte_offsets": [
+        111372
+      ],
+      "output_sha256": "28ecd05500548508beae8570133b65b479a33466a54e72882610dd02f9c41db7",
+      "save_written": false
+    },
+    {
+      "file": "fleet-port-antium-0734.SAV",
+      "source_sha256": "34d31d8f84710867e589e5265712e2076b2cc824108b47822620aef9e4421d89",
+      "nation": 0,
+      "tax": 40,
+      "changed_byte_offsets": [
+        111372
+      ],
+      "output_sha256": "492f668a942e1a56c62de4b7b3775c1b695349b06e72e00e968eced10ec9f7e6",
+      "save_written": false
+    },
+    {
+      "file": "fleet-split-antium-0734.SAV",
+      "source_sha256": "20f38b88cb06a2fdc333a574016f63858f0289ab551e61c46182ef2c7ea41609",
+      "nation": 0,
+      "tax": 0,
+      "changed_byte_offsets": [
+        111398
+      ],
+      "output_sha256": "150554673b1acafe53ebd4fb5229c7e2fd0ef5f25ab408d3af8d4e94cd894f66",
+      "save_written": false
+    },
+    {
+      "file": "fleet-split-antium-0734.SAV",
+      "source_sha256": "20f38b88cb06a2fdc333a574016f63858f0289ab551e61c46182ef2c7ea41609",
+      "nation": 0,
+      "tax": 40,
+      "changed_byte_offsets": [
+        111398
+      ],
+      "output_sha256": "005ef213efcb838cabe39fc71461ba36e74853126e688ef5a5e58823ab1ea4d7",
+      "save_written": false
+    }
+  ],
+  "rejected_profile_cases": [
+    {
+      "case": "foreign-nation",
+      "reason": "not the saved current human nation"
+    },
+    {
+      "case": "pending-offer",
+      "reason": "pending offer not supported by minimal profile"
+    },
+    {
+      "case": "tax41",
+      "reason": "tax/nation outside original minimal profile"
+    }
+  ],
+  "method": "Original instruction slices, not full dialog/game execution. Tax prefix stops before RefreshForms; viewport slice executes original min/max callees with explicit getter/scroll inputs; rename converter executes whole, parent commit stops before PostMessage wrapper. Serialized stream snapshots assert every byte outside typed effects unchanged; no source/SAV written.",
+  "exe_sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f",
+  "public_save_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+  "unicorn_version": "2.1.4",
+  "tax_cases": 656,
+  "tax_records": [
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 0,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474aba",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 1,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x474f4e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 2,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4753e2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 3,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475876",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 4,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x475d0a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 5,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47619e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 6,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476632",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 7,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476ac6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 8,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x476f5a",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 9,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4773ee",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 10,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477882",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 11,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x477d16",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 12,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x4781aa",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 13,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x47863e",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 14,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478ad2",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 1,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 2,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 3,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 4,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 5,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 6,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 7,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 8,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 9,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 10,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 11,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 12,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 13,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 14,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 15,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 16,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 17,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 18,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 19,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 20,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 21,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 22,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 23,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 24,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 25,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 26,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 27,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 28,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 29,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 30,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 31,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 32,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 33,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 34,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 35,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 36,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 37,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 38,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 39,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "case": "tax-commit-prefix",
+      "nation": 15,
+      "tax": 40,
+      "serialized_write_events": [
+        {
+          "pc": "0x4540cf",
+          "block": "nations",
+          "address": "0x478f66",
+          "size": 2
+        }
+      ]
+    }
+  ],
+  "viewport_cases": [
+    {
+      "width": 559,
+      "height": 365,
+      "scroll_x": 55,
+      "scroll_y": 45,
+      "result_x": 55,
+      "result_y": 45,
+      "serialized_write_events": [
+        {
+          "pc": "0x445dad",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445dcb",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445ddf",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        },
+        {
+          "pc": "0x445dfd",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "width": 1295,
+      "height": 1005,
+      "scroll_x": 319,
+      "scroll_y": 139,
+      "result_x": 279,
+      "result_y": 109,
+      "serialized_write_events": [
+        {
+          "pc": "0x445dad",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445dcb",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445ddf",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        },
+        {
+          "pc": "0x445dfd",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "width": 271,
+      "height": 269,
+      "scroll_x": -3,
+      "scroll_y": -4,
+      "result_x": 0,
+      "result_y": 0,
+      "serialized_write_events": [
+        {
+          "pc": "0x445dad",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445dcb",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445ddf",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        },
+        {
+          "pc": "0x445dfd",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        }
+      ]
+    },
+    {
+      "width": 559,
+      "height": 365,
+      "scroll_x": 400,
+      "scroll_y": 200,
+      "result_x": 302,
+      "result_y": 129,
+      "serialized_write_events": [
+        {
+          "pc": "0x445dad",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445dcb",
+          "block": "nations",
+          "address": "0x474af8",
+          "size": 2
+        },
+        {
+          "pc": "0x445ddf",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        },
+        {
+          "pc": "0x445dfd",
+          "block": "nations",
+          "address": "0x474af6",
+          "size": 2
+        }
+      ]
+    }
+  ],
+  "rename_cases": [
+    {
+      "name_length": 0,
+      "serialized_write_events_count": 165,
+      "unchanged_mobilization_written_back": true,
+      "whole_army_copy_bytes": 656,
+      "changed_allowed_name_prefix_only": true
+    },
+    {
+      "name_length": 1,
+      "serialized_write_events_count": 165,
+      "unchanged_mobilization_written_back": true,
+      "whole_army_copy_bytes": 656,
+      "changed_allowed_name_prefix_only": true
+    },
+    {
+      "name_length": 10,
+      "serialized_write_events_count": 165,
+      "unchanged_mobilization_written_back": true,
+      "whole_army_copy_bytes": 656,
+      "changed_allowed_name_prefix_only": true
+    },
+    {
+      "name_length": 23,
+      "serialized_write_events_count": 165,
+      "unchanged_mobilization_written_back": true,
+      "whole_army_copy_bytes": 656,
+      "changed_allowed_name_prefix_only": true
+    }
+  ],
+  "strategic_spans": [
+    {
+      "name": "map",
+      "address": "0x45e870",
+      "size": 89600,
+      "file_offset": 0
+    },
+    {
+      "name": "cities",
+      "address": "0x479590",
+      "size": 11356,
+      "file_offset": 89600
+    },
+    {
+      "name": "army_count",
+      "address": "0x4a0324",
+      "size": 2,
+      "file_offset": 100956
+    },
+    {
+      "name": "armies",
+      "address": "0x47c1ec",
+      "size": 9184,
+      "file_offset": 100958
+    },
+    {
+      "name": "fleet_count",
+      "address": "0x4a0326",
+      "size": 2,
+      "file_offset": 110142
+    },
+    {
+      "name": "fleets",
+      "address": "0x49c26c",
+      "size": 52,
+      "file_offset": 110144
+    },
+    {
+      "name": "nations",
+      "address": "0x474670",
+      "size": 18752,
+      "file_offset": 110196
+    },
+    {
+      "name": "mercenaries",
+      "address": "0x49da10",
+      "size": 600,
+      "file_offset": 128948
+    },
+    {
+      "name": "news_last",
+      "address": "0x4a031e",
+      "size": 2,
+      "file_offset": 129548
+    },
+    {
+      "name": "news_slots",
+      "address": "0x49f994",
+      "size": 1952,
+      "file_offset": 129550
+    },
+    {
+      "name": "turn_order",
+      "address": "0x49efe8",
+      "size": 32,
+      "file_offset": 131502
+    },
+    {
+      "name": "pending_offer",
+      "address": "0x49f008",
+      "size": 4,
+      "file_offset": 131534
+    },
+    {
+      "name": "current_nation",
+      "address": "0x4a0320",
+      "size": 2,
+      "file_offset": 131538
+    },
+    {
+      "name": "seat",
+      "address": "0x4a0322",
+      "size": 2,
+      "file_offset": 131540
+    },
+    {
+      "name": "week",
+      "address": "0x4a0330",
+      "size": 2,
+      "file_offset": 131542
+    },
+    {
+      "name": "year",
+      "address": "0x4a0332",
+      "size": 2,
+      "file_offset": 131544
+    },
+    {
+      "name": "season",
+      "address": "0x4a032e",
+      "size": 2,
+      "file_offset": 131546
+    },
+    {
+      "name": "main_geometry",
+      "address": "0x4a0338",
+      "size": 8,
+      "file_offset": 131548
+    },
+    {
+      "name": "battle_flag",
+      "address": "0x4a0b7c",
+      "size": 1,
+      "file_offset": 131556
+    }
+  ],
+  "conditional_tactical_spans": [
+    {
+      "name": "attacker",
+      "address": "0x4a0b74",
+      "size": 2
+    },
+    {
+      "name": "defender",
+      "address": "0x4a0b76",
+      "size": 2
+    },
+    {
+      "name": "battle_aux",
+      "address": "0x4a0b78",
+      "size": 2
+    },
+    {
+      "name": "general",
+      "address": "0x4a0b7d",
+      "size": 1
+    },
+    {
+      "name": "battle_phase",
+      "address": "0x4a0b7a",
+      "size": 2
+    },
+    {
+      "name": "tactical_units",
+      "address": "0x4a0344",
+      "size": 1760
+    },
+    {
+      "name": "tactical_terrain",
+      "address": "0x4a0a24",
+      "size": 336
+    }
+  ],
+  "scratch_outside_all_serialized_spans": [
+    {
+      "name": "information_strings",
+      "address": "0x49f00c",
+      "size": 2440
+    },
+    {
+      "name": "information_last",
+      "address": "0x4a031c",
+      "size": 2
+    }
+  ],
+  "full_UI_callbacks_executed": false,
+  "Windows_round_trips": 0
+}

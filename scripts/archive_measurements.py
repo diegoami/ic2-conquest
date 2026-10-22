@@ -26,6 +26,16 @@ def sha(p):
     return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
+def _files_for_check_ignore(d):
+    """Files at the destination directory that the `--commit` gate should pass to `git check-ignore`.
+
+    Excludes `__pycache__/` paths: those are gitignored (per the project's `.gitignore`) and the script never
+    archives them (the source walk also drops them), so they should not block the commit when they exist at
+    the destination from a runner that imported g*_lib in place.
+    """
+    return [str(p) for p in d.rglob("*") if p.is_file() and "__pycache__" not in p.parts]
+
+
 def archive(name):
     src, dst = ROOT / "artifacts" / name, ROOT / "runs" / "experiments" / "data" / name
     if not src.is_dir():
@@ -34,6 +44,8 @@ def archive(name):
     copied, versioned, sums = 0, 0, []
     for f in sorted(src.rglob("*")):
         if not f.is_file():
+            continue
+        if "__pycache__" in f.parts:
             continue
         rel = f.relative_to(src)
         ext = f.suffix.lower()
@@ -80,7 +92,7 @@ if __name__ == "__main__":
     d = archive(args[0])
     if "--commit" in sys.argv:
         subprocess.run(["git", "add", str(d)], cwd=ROOT, check=True)
-        files = [str(p) for p in d.rglob("*") if p.is_file()]
+        files = _files_for_check_ignore(d)
         ignored = subprocess.run(["git", "check-ignore", *files], cwd=ROOT, capture_output=True, text=True).stdout.split()
         if ignored:
             sys.exit("git ignores these archived files, nothing committed: " + " ".join(ignored))

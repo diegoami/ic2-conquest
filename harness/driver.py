@@ -92,13 +92,58 @@ class DriverError(RuntimeError):
     pass
 
 
+class GameOver(DriverError):
+    """The "End of Game" window opened (the human nation was conquered, or another end of game); `text` is its OCR."""
+    def __init__(self, text):
+        super().__init__("game over: " + text)
+        self.text = text
+
+
 def sh(*args, check=True):
     return subprocess.run(args, env=ENV, capture_output=True, text=True, check=check).stdout
 
 
 class Game:
+    # The environment record (harness/environment.py) hangs on `pid`, the one thing every start sets once the game runs: Game.start,
+    # the runner libraries' own start() overrides and attach(), and a start monkeypatched by assignment (a finished data script does
+    # `Game.start = start`) all end by assigning it, so no start path can skip the record. Only a live game process of ours counts
+    # (cmdline "Imperial Conquest..."): unit tests that set a fake pid do not write the durable record.
+    @property
+    def pid(self):
+        return self.__dict__.get("_pid")
+
+    @pid.setter
+    def pid(self, value):
+        before = self.__dict__.get("_pid")
+        self.__dict__["_pid"] = value
+        if value and value != before and not self.__dict__.get("_env_busy") and self._is_game_process(value):
+            self.__dict__["_env_busy"] = True
+            try:
+                self.record_environment()
+            finally:
+                self.__dict__["_env_busy"] = False
+
+    @staticmethod
+    def _is_game_process(pid):
+        try:
+            return open(f"/proc/{int(pid)}/cmdline", "rb").read().startswith(b"Imperial Conquest")
+        except (OSError, ValueError, TypeError):
+            return False
+
+    def record_environment(self):
+        """The environment fingerprint of this start: logged once per process through self.log, appended (with time, pid, the
+        runner's argv[0] and cwd) to $IC2_WORK/environment.jsonl on every start, and handed to every sink the runner registered
+        (environment.add_sink). Never raises: a failing record must not stop a run."""
+        try:
+            from harness import environment
+            self.environment = environment.record_start(
+                Path(ENV.get("WINEPREFIX", PREFIX)), self.exe, ENV.get("DISPLAY", DISPLAY), G, self.pid, WORK / "environment.jsonl", self.log)
+        except Exception as e:
+            self.environment = {"error": f"{type(e).__name__}"}
+
     def __init__(self, exe=EXE, log=print):
         self.exe, self.log, self.pid = exe, log, None
+        self.environment = None       # set by record_environment() after each start
         self.toolbar_x = self._load_cache(TOOLBAR_CACHE)
         self.army_x = self._load_cache(ARMY_TOOLBAR_CACHE)
         self.battle_x = self._load_cache(BATTLE_TOOLBAR_CACHE)
@@ -196,7 +241,14 @@ class Game:
         return struct.unpack("<H", self.mem(MAP + (x * 140 + y) * 2, 2))[0]
 
     # ---- X ----------------------------------------------------------------
-    def find_windows(self, pattern=".", visible=True):
+    TOOLTIP_MAX_H = 24      # a tooltip window is ~15 px high (Split army: 51x15); the smallest dialog (Confirm) is 97
+
+    def find_windows(self, pattern=".", visible=True, tooltips=False):
+        """Visible X windows whose name matches `pattern`: [(id, name, x, y, w, h)]. Wine shows a toolbar button's
+        tooltip as a window named with the button's caption, which is often also the title of the dialog it opens
+        (Split army, Split fleet, Supply fleet, Repair fleet, Build fleet, Taxation...), so tooltip-sized windows
+        (1 < h < TOOLTIP_MAX_H) are left out unless `tooltips` is set (the toolbar calibration reads them).
+        Before 2026-10-08 a title lookup could take a tooltip for its dialog (run-exp-l11-198-armies)."""
         args = ["xdotool", "search"] + (["--onlyvisible"] if visible else []) + ["--name", pattern]
         out = []
         for w in sh(*args, check=False).split():
@@ -204,7 +256,10 @@ class Game:
             geo = sh("xdotool", "getwindowgeometry", w, check=False)
             m = re.search(r"Position: (\d+),(\d+).*Geometry: (\d+)x(\d+)", geo, re.S)
             if m:
-                out.append((int(w), name, *map(int, m.groups())))
+                x, y, wd, ht = map(int, m.groups())
+                if not tooltips and 1 < ht < self.TOOLTIP_MAX_H:
+                    continue
+                out.append((int(w), name, x, y, wd, ht))
         return out
 
     def click(self, x, y, pause=0.4):
@@ -287,7 +342,7 @@ class Game:
         for x in range(x0, x1, 3):
             sh("xdotool", "mousemove", str(x), str(y))
             time.sleep(pause)
-            names = {w[1] for w in self.find_windows(".")}
+            names = {w[1] for w in self.find_windows(".", tooltips=True)}
             for label in seen:
                 if label in names:
                     seen[label].append(x)
@@ -375,15 +430,19 @@ class Game:
         windows) and their positions depend on the font and DPI, so they are read
         from the running game with the win_controls helper, not hardcoded."""
         exe = WORK / "win_controls.exe"
-        if not exe.exists():
+        src = Path(__file__).resolve().parent / "win_controls.c"
+        if not exe.exists() or exe.stat().st_mtime < src.stat().st_mtime:
             self.build_win_controls(exe)
         out = sh(WINE, str(exe), title, check=False)
         cs = []
         for line in out.splitlines():
             p = line.split("\t")
-            if len(p) == 6:
-                cls, text, x, y, w, h = p
-                cs.append({"cls": cls, "text": text, "x": int(x), "y": int(y), "w": int(w), "h": int(h)})
+            if len(p) in (6, 10):
+                cls, text, x, y, w, h = p[:6]
+                c = {"cls": cls, "text": text, "x": int(x), "y": int(y), "w": int(w), "h": int(h)}
+                if len(p) == 10:        # a list box: row height, first visible row, client origin
+                    c.update(item_h=int(p[6]), top=int(p[7]), cx=int(p[8]), cy=int(p[9]))
+                cs.append(c)
         if not cs:
             raise DriverError("no controls found for window %r" % title)
         return cs
@@ -395,6 +454,19 @@ class Game:
         except (OSError, subprocess.CalledProcessError) as e:
             raise DriverError("win_controls.exe is missing and could not be built "
                               "(install gcc-mingw-w64-i686): %s" % e)
+
+    def click_list_row(self, c, r, pause=0.4):
+        """Click row r of the list box control c at its real place: the row height, first visible row and client
+        origin come from win_controls. Rows were assumed 12 px from the control's top + 12; they are 10 px in the
+        army-to-army transfer dialog, so that put row 0 on the 0/1 boundary and row r>0 one row low
+        (run-exp-transfer-20-units, run-exp-list-row-height). A row scrolled out of view raises DriverError."""
+        if "item_h" not in c:
+            raise DriverError("no row geometry for %s (rebuild win_controls.exe)" % c["cls"])
+        ih = c["item_h"]
+        y = c["cy"] + (r - c["top"]) * ih + ih // 2
+        if r < c["top"] or y > c["y"] + c["h"] - 3:
+            raise DriverError("list row %d is not visible (top %d, %d px rows, list %d px high)" % (r, c["top"], ih, c["h"]))
+        self.click(c["x"] + c["w"] // 2, y, pause=pause)
 
     def control(self, cs, text=None, cls=None, index=0):
         got = [c for c in cs if (text is None or c["text"] == text)
@@ -450,6 +522,37 @@ class Game:
         self.click_control(c, pause=0.8)
         return True
 
+    def _popup_gone(self, wid, timeout=3.0):
+        """True once window `wid` is no longer listed. After a box's button is pressed the game destroys it at
+        once, but its X window stays listed for about 1-2 s (win_controls already finds no visible window)."""
+        end = time.time() + timeout
+        while time.time() < end:
+            if wid not in [p[0] for p in self.popups()]:
+                return True
+            time.sleep(0.3)
+        return False
+
+    def _answer_confirm(self, wid, yes=True):
+        """Answer the Confirm box `wid` Yes or No and wait until it is gone; True when it closed. controls() can
+        come back empty for two reasons: just after the box appears (not settled yet: wait and retry) or just
+        after our click (the box is already destroyed and only its X window lingers: done, wait for it to go).
+        Re-answering a lingering box was the disband_army failure (2026-10-08, run-exp-disband-confirm-flake).
+        A box without the wanted button raises answer()'s DriverError."""
+        clicked = False
+        for _ in range(3):      # the first click into an inactive window may only activate it
+            try:
+                self.answer("Confirm", yes=yes)
+            except DriverError as e:
+                if "no controls found" not in str(e):
+                    raise           # no such button (an OK-only box): the caller decides
+                if self._popup_gone(wid, 0.6 if not clicked else 3.0):
+                    return True     # already answered (by us, or by a caller such as scuttle_fleet): only its X window lingered
+                continue            # not settled yet: retry
+            clicked = True
+            if self._popup_gone(wid):
+                return True
+        return self._popup_gone(wid)
+
     def _refuse_confirm(self):
         """Strict mode: if a Confirm box is open, answer it No and raise (dismiss_popups(strict=True) does both); other boxes are left alone."""
         if any(p[1] == "Confirm" and p[4] < 600 and p[5] < 300 for p in self.popups()):      # the box set dismiss_popups acts on
@@ -469,20 +572,16 @@ class Game:
             wid, name = ps[0][0], ps[0][1]
             texts.append(self.read_popup(ps[0]))
             if name == "Confirm" and strict:
-                for _ in range(3):      # the first click into an inactive window may only activate it
-                    try:
-                        self.answer("Confirm", yes=False)
-                    except DriverError:     # an OK-only box has no No button: say so in the documented message, never press OK
-                        raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (no No button)")
-                    if wid not in [p[0] for p in self.popups()]:
-                        break
-                if wid in [p[0] for p in self.popups()]:
+                try:
+                    closed = self._answer_confirm(wid, yes=False)
+                except DriverError:     # an OK-only box has no No button: say so in the documented message, never press OK
+                    raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (no No button)")
+                if not closed:
                     raise DriverError("end turn: unexpected Confirm: " + texts[-1] + " (still open after No)")
                 raise DriverError("end turn: unexpected Confirm: " + texts[-1])
             if name == "Confirm":
-                self.answer("Confirm", yes=True)
-                if wid in [p[0] for p in self.popups()]:
-                    self.answer("Confirm", yes=True)
+                if not self._answer_confirm(wid, yes=True):
+                    raise DriverError("Confirm still open after Yes: " + texts[-1])
             else:
                 x, y, wd, ht = ps[0][2], ps[0][3], ps[0][4], ps[0][5]
                 for _ in range(3):  # no window manager: the first click only activates the box
@@ -535,6 +634,30 @@ class Game:
         self.seed_line = (G / "SEED.LOG").read_text().splitlines()[-1].strip()
         return self.open(save)
 
+    def supersede_autosaves(self):
+        """Before File > New: move every AUTO* file (autosaves and AUTOSAVE.LOG) of the game folder into
+        `superseded-<stamp>/` beside them (rule 6: a measured autosave is never deleted). The new game must start without an
+        AUTOSAVE.LOG (the wait for it proves the new-game autosave), so the files cannot stay; the folder name is unique per call.
+        Returns the folder (None if there was nothing to move)."""
+        return self.move_aside(sorted(G.glob("AUTO*")))
+
+    @staticmethod
+    def move_aside(files):
+        """Move the given files of the game folder into a new `superseded-<stamp>/` folder (unique per call); returns it
+        (None if the list is empty). Shared by `supersede_autosaves` and `open` (rule 6: nothing measured is overwritten)."""
+        files = list(files)
+        if not files:
+            return None
+        dest = G / ("superseded-" + time.strftime("%Y%m%d-%H%M%S"))
+        n = 0
+        while dest.exists():
+            n += 1
+            dest = G / ("superseded-%s-%d" % (time.strftime("%Y%m%d-%H%M%S"), n))
+        dest.mkdir()
+        for f in files:
+            shutil.move(str(f), str(dest / f.name))
+        return dest
+
     NEWGAME_TICK = (117, 117, 21.67)     # x, y of Rome's "human" checkbox, row pitch (measured on the 16-row form)
 
     def new_game(self, row=0, seed=None, rows=None):
@@ -544,8 +667,7 @@ class Game:
         apart: the old `(109, 114 + 20 * row)` was off by 8 px in x and, by Thracia (row 15), about 28 px in y (414 against 442).
         The autosave hook fires at new-game start: returns `(path of AUTO0720.SAV, popup texts)`."""
         self.set_seed(seed)
-        for f in G.glob("AUTO*"):
-            f.unlink()
+        self.supersede_autosaves()
         self.start()
         self.seed_line = (G / "SEED.LOG").read_text().splitlines()[-1].strip() if (G / "SEED.LOG").exists() else ""
         self.menu("file", FILE_ITEMS["new"])
@@ -587,13 +709,17 @@ class Game:
         return bool(self.find_windows("turn") or (self.find_windows("^Unit map$") and self.find_windows("^Area map$")))
 
     def open(self, save, strict=True):
-        """File > Open (the save is copied into the game folder first). A save can open with a modal box ("Bithynia wants to
+        """File > Open (the save is copied into the game folder first; a different file of the same name there is moved to `superseded-<stamp>/`, an identical one is left). A save can open with a modal box ("Bithynia wants to
         trade with Rome." with the research start save), and a box stays up until it is closed: the box's text is captured (OCR) and
         returned, an information box is closed with OK, and with `strict` (default) a Confirm box is answered No and raises
         DriverError("end turn: unexpected Confirm: ...") instead of Yes. Done when `loaded()`."""
         src = Path(save)
         if src.parent.resolve() != G.resolve():
-            shutil.copy(src, G / src.name)
+            tgt = G / src.name
+            if tgt.exists() and tgt.read_bytes() != src.read_bytes():
+                self.move_aside([tgt])       # rule 6: a same-named file of the game folder is moved aside, never overwritten
+            if not tgt.exists():
+                shutil.copy(src, tgt)
         self.open_file_dialog(src.name)
         self.wait(lambda: self.loaded() or self.message_boxes(), 30, "game window or a message box after load")
         time.sleep(3)
@@ -607,9 +733,14 @@ class Game:
         p = G / "SEED.LOG"
         return len(p.read_text().splitlines()) if p.exists() else 0
 
-    def save_as(self, name):
+    def save_as(self, name, overwrite=False):
+        """File > Save as `name` in the game folder. Refuses an existing destination (rule 6: a rerun must never delete an earlier save);
+        pass overwrite=True only for a scratch file the caller itself wrote earlier in the same run."""
         target = G / name
-        target.unlink(missing_ok=True)
+        if target.exists():
+            if not overwrite:
+                raise DriverError(f"save_as: {target} already exists; use a unique name (run stamp) or overwrite=True for your own scratch file")
+            target.unlink()
         self.menu("file", FILE_ITEMS["save_as"])
         self.replace_field(name)
         self.key("Return")
@@ -725,7 +856,7 @@ class Game:
         self.open_recruit()
         cs = self.controls("Army recruits")
         cities = self.control(cs, cls="TListBox", index=0)
-        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click_list_row(cities, city_row, pause=0.6)
         self.click_control(self.control(cs, text=TYPES[unit_type]), pause=0.6)
         spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])
         for _ in range(hundreds):
@@ -744,8 +875,8 @@ class Game:
         cs = self.controls("Army recruits")
         cities = self.control(cs, cls="TListBox", index=0)
         units = self.control(cs, cls="TListBox", index=1)
-        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
-        self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * unit_row, pause=0.4)
+        self.click_list_row(cities, city_row, pause=0.6)
+        self.click_list_row(units, unit_row, pause=0.4)
         self.click_control(self.control(cs, text="Disband"), pause=1.0)
         texts = self.dismiss_popups()
         self.close_controls("Army recruits", cs)
@@ -787,6 +918,81 @@ class Game:
         self.click(self.army_x.get("disband", self.ARMY_TOOLS["disband"]), ARMY_TOOLBAR_Y, pause=1.5)
         return self.dismiss_popups()
 
+    def new_nation(self, new_nation_name="Carthage"):
+        """Game menu > New nation. The harness answers the resulting Confirm
+        box with Yes (the seat-change path: Rome drops to AI, current_nation
+        points at the next human). After Yes, the leaders form (TPickLeaders,
+        'Human and computer leaders') opens; tick the human checkbox of the
+        row named `new_nation_name` (sorted alphabetically: Rome, Carthage,
+        Seleucid, ...) and click OK. Returns the open popups for the test."""
+        # Open Game menu (menubar y=36 per coverage.md) and pick the item.
+        self.reset_ui()
+        self.click(MENU["game"], 36, pause=0.8)
+        self.click(MENU["game"] + 20, MENU_ITEM_Y(GAME_ITEMS["new_nation"]), pause=1.2)
+        # The Confirm box may take > 1 s to appear. Wait for it.
+        self.wait(lambda: self.find_windows("^Confirm$"), 5, "Confirm box")
+        # Click Yes on the Confirm. win_controls.exe is racy right after the
+        # menu click; retry the enumeration a few times before falling back to
+        # the measured Yes centre (558, 549) on this build. The click is
+        # sent with `xdotool click --window <wid>` so the event targets the
+        # Confirm directly on this no-WM Xvfb build.
+        time.sleep(0.6)
+        cs = None
+        for _ in range(3):
+            try:
+                cs = self.controls("Confirm")
+            except DriverError:
+                cs = None
+            if cs:
+                break
+            time.sleep(0.6)
+        if cs:
+            yc = next((c for c in cs if c["text"].replace("&", "").strip().lower() == "yes"), None)
+            yes_xy = (yc["x"] + yc["w"] // 2, yc["y"] + yc["h"] // 2) if yc else (558, 549)
+        else:
+            yes_xy = (558, 549)
+        for _ in range(3):
+            ps = self.find_windows("^Confirm$")
+            if not ps:
+                break
+            wid = ps[0][0]
+            sh("xdotool", "mousemove", "--sync", str(yes_xy[0]), str(yes_xy[1]), check=False)
+            sh("xdotool", "click", "--window", str(wid), "1", check=False)
+            time.sleep(1.0)
+            if not self.find_windows("^Confirm$"):
+                break
+        # The leaders form (TPickLeaders) opens after Yes. Read its controls
+        # by title ('Human and computer leaders') and tick the new nation's
+        # human checkbox, then click OK. TPanel text is space-padded.
+        self.wait(lambda: self.find_windows("^Human and computer leaders$"), 5, "leaders form")
+        fcs = None
+        for _ in range(3):
+            try:
+                fcs = self.controls("Human and computer leaders")
+            except DriverError:
+                fcs = None
+            if fcs:
+                break
+            time.sleep(0.5)
+        if fcs:
+            want = new_nation_name.strip().lower()
+            for nation_panel in [c for c in fcs if c["cls"] == "TPanel" and c["text"].strip().lower() == want]:
+                cb = next((c for c in fcs if c["cls"] == "TCheckBox"
+                           and abs(c["y"] - (nation_panel["y"] + 5)) < 5), None)
+                if cb is not None:
+                    self.click_control(cb, pause=0.5)
+                    break
+            ok = next((c for c in fcs if c["cls"] == "TButton" and c["text"].strip().lower() == "ok"), None)
+            if ok is not None:
+                # Retry the OK click — first hit may only raise the form.
+                for _ in range(3):
+                    self.click_control(ok, pause=1.5)
+                    if not self.find_windows("^Human and computer leaders$"):
+                        break
+            else:
+                self.click(372, 204, pause=1.5)        # measured OK centre on this build
+        return self.popups()
+
     def split_army(self, i, unit_rows=(0,)):
         """Select army i and split the given unit rows (indices in its unit list)
         into a new army. One observation (from (100,37)): the new army appeared at (101,38),
@@ -801,7 +1007,7 @@ class Game:
         left = self.control(cs, cls="TListBox", index=0)
         transfer = sorted((c for c in cs if c["text"] == "Transfer"), key=lambda c: c["x"])[0]
         for r in unit_rows:
-            self.click(left["x"] + left["w"] // 2, left["y"] + 12 + 12 * r, pause=0.4)
+            self.click_list_row(left, r, pause=0.4)
             self.click_control(transfer, pause=0.6)
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
@@ -817,7 +1023,7 @@ class Game:
         cs = self.controls("Army to army transfer")
         src = sorted((c for c in cs if c["cls"] == "TListBox"), key=lambda c: c["x"])[0]
         transfer = sorted((c for c in cs if c["text"] == "Transfer"), key=lambda c: c["x"])[0]
-        self.click(src["x"] + src["w"] // 2, src["y"] + 12 + 12 * unit_row, pause=0.4)
+        self.click_list_row(src, unit_row, pause=0.4)
         self.click_control(transfer, pause=0.6)
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
@@ -831,7 +1037,7 @@ class Game:
         self.open_dialog("Change units", (self.army_x["change"], ARMY_TOOLBAR_Y))
         cs = self.controls("Change units")
         lst = self.control(cs, cls="TListBox")
-        self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * unit_row, pause=0.5)
+        self.click_list_row(lst, unit_row, pause=0.5)
         self.click_control(self.control(cs, text="Disband"), pause=0.8)
         texts = self.dismiss_popups()
         self._close_change_units(cs)
@@ -850,7 +1056,7 @@ class Game:
         for k, r in enumerate(unit_rows):
             if k:
                 sh("xdotool", "keydown", "ctrl")
-            self.click(lst["x"] + lst["w"] // 2, lst["y"] + 12 + 12 * r, pause=0.4)
+            self.click_list_row(lst, r, pause=0.4)
             if k:
                 sh("xdotool", "keyup", "ctrl")
         self.click_control(self.control(cs, text=button), pause=1.2)
@@ -1018,9 +1224,10 @@ class Game:
         """Scuttle fleet: next to one of your cities, not carrying an army; answered through its Confirm."""
         self.fleet_tool(i, "scuttle")
         texts = []
-        if self.find_windows("^Confirm$"):
-            texts.append(self.read_popup(self.find_windows("^Confirm$")[0]))
-            self.answer("Confirm", yes=yes)
+        ws = self.find_windows("^Confirm$")
+        if ws:
+            texts.append(self.read_popup(ws[0]))
+            self._answer_confirm(ws[0][0], yes=yes)     # waits until the box (and its lingering X window) is gone
         return texts + self.dismiss_popups()
 
     def split_fleet(self, i, ships):
@@ -1037,8 +1244,10 @@ class Game:
         return self.dismiss_popups()
 
     def join_fleets(self, i):
-        """Join fleets: no dialog; fleet i and the adjacent own fleet become one (ships add up, fewer than 100 combined,
-        neither carrying an army) and the joined fleet's moves become 0."""
+        """Join fleets: no dialog; fleet i and the adjacent own fleet become one (ships add up, fewer than 101 combined,
+        neither carrying an army) and the joined fleet's moves become 0. The < 101 gate is set by TUnitMap_JoinFleets and was
+        pinned live at run-exp-join-fleets-cap-in-play: 99 ships (50+49) and 100 ships (50+50) are accepted; 101 ships (50+51)
+        refused. See findings/2026-10-08-join-fleets-cap-in-play.md for the three-trial evidence."""
         self.fleet_tool(i, "join")
         return self.dismiss_popups()
 
@@ -1077,7 +1286,8 @@ class Game:
 
     def hire_mercs(self, i, rows=(0,)):
         """Recruit mercenary unit dialog (490x165 at 23,49): the offers of the
-        adjacent city; pick a row, Recruit unit, OK. The button does nothing (no
+        adjacent city; pick a row, Recruit unit, OK. Rows, buttons and OK come from the dialog's controls
+        (14 px rows; fixed coordinates with a 12 px step until 2026-10-08, run-exp-hire-mercs-controls). The button does nothing (no
         dialog) when no live offer is adjacent."""
         before = len([k for k in range(20) if struct.unpack_from("<h", self.army_rec(i), 16 + 32 * k + 4)[0] > 0])
         try:
@@ -1085,11 +1295,30 @@ class Game:
         except DriverError:
             return 0, ["no mercenary offer adjacent"]
         texts = []
+        title = "Recruit mercenary unit"
+        def open_controls():
+            # The dialog closes itself after the last offer or once the army's slot 19 is filled (:43686), and its X
+            # window can stay listed for over 2 s after that, so "open" means "its controls can be read". Retry a
+            # little: right after a dialog appears, controls() can also come back empty (memory: Confirm handling).
+            for _ in range(3):
+                if not self.find_windows("^%s$" % title):
+                    return None
+                try:
+                    return self.controls(title)
+                except DriverError:
+                    time.sleep(0.6)
+            return None
         for r in sorted(rows, reverse=True):          # hired rows leave the list: go bottom-up
-            self.click(103, 86 + 12 * r, pause=0.5)
-            self.click(410, 104, pause=1.0)
+            cs = open_controls()                       # re-read: the list's rows and top index change after a hire
+            if cs is None:
+                break
+            self.click_list_row(self.control(cs, cls="TListBox"), r, pause=0.5)
+            self.click_control(self.control(cs, text="Recruit unit"), pause=1.0)
             texts += [t for t in self.dismiss_popups()]
-        self.close_dialog("Recruit mercenary unit", (248, 174))
+        cs = open_controls()
+        if cs is not None:
+            ok = self.control(cs, text="OK")           # was fixed (248,174): the button's top edge
+            self.click_control(ok, pause=1.0)
         after = len([k for k in range(20) if struct.unpack_from("<h", self.army_rec(i), 16 + 32 * k + 4)[0] > 0])
         return after - before, texts
 
@@ -1117,11 +1346,11 @@ class Game:
         cs = self.controls("Army recruits")
         cities = self.control(cs, cls="TListBox", index=0)
         units = self.control(cs, cls="TListBox", index=1)
-        self.click(cities["x"] + cities["w"] // 2, cities["y"] + 12 + 12 * city_row, pause=0.6)
+        self.click_list_row(cities, city_row, pause=0.6)
         for k, r in enumerate(unit_rows):
             if k:
                 sh("xdotool", "keydown", "ctrl")
-            self.click(units["x"] + units["w"] // 2, units["y"] + 12 + 12 * r, pause=0.4)
+            self.click_list_row(units, r, pause=0.4)
             if k:
                 sh("xdotool", "keyup", "ctrl")
         self.click_control(self.control(cs, text="Mobilize"), pause=1.5)
@@ -1184,8 +1413,21 @@ class Game:
         self.tool("build_fleet")
         # Either the dialog opens, or a box refuses ("Only nations with coastal cities can build fleets", seen for Dacia,
         # Galatia and Media; coverage.md also lists "You do not have a free coastal city at this time."): wait for one of them.
-        self.wait(lambda: self.find_windows("^Build fleet$") or [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")],
-                  8, "the Build fleet dialog or its refusal")
+        # Before the dialog, one N02 notice per own fleet still under construction ("A fleet of N ships will be ready in W weeks at
+        # <city>.", research refusal-texts N02): information only. Read and dismiss each, then keep waiting for the dialog.
+        self.build_fleet_notices = []
+        for _ in range(40):         # up to one notice per fleet under construction; each appears only after the last is dismissed
+            self.wait(lambda: self.find_windows("^Build fleet$") or [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")],
+                      20, "the Build fleet dialog or its refusal")
+            if self.find_windows("^Build fleet$"):
+                break
+            boxes = [w for w in self.popups() if w[1] in ("Information", "Warning", "Error")]
+            texts = [self.read_popup(w) for w in boxes]
+            if not texts or not all("ready in" in t for t in texts):
+                break
+            self.build_fleet_notices += texts
+            self.dismiss_popups()
+            time.sleep(1.0)
         if not self.find_windows("^Build fleet$"):
             refusal = [self.read_popup(w) for w in self.popups() if w[1] in ("Information", "Warning", "Error")]
             self.dismiss_popups()
@@ -1221,7 +1463,7 @@ class Game:
         self.click_control(self.control(cs, text="OK"), pause=1.5)
         return self.dismiss_popups()
 
-    def end_turn(self, timeout=300, battle_shot=None, reclick=True, strict_confirm=False):
+    def end_turn(self, timeout=300, battle_shot=None, reclick=True, strict_confirm=False, peace=False):
         """Game > End turn (it runs at once, unless an army needs supplies: then an
         "End turn ?" box asks, and is answered End turn), then
         play out any battle with Computer general and dismiss the AI's news and
@@ -1231,7 +1473,11 @@ class Game:
         appears within 8 s. With `reclick=False` that case raises DriverError("end turn: no sign of the turn starting")
         after the single click (the first click may have registered: the caller must not click again).
         `strict_confirm` (default False): a Confirm box other than "End turn ?" is answered No, never Yes, on every path
-        (the wait loop, inside `play_battle`, after the autosave line), and DriverError("end turn: unexpected Confirm: ...") is raised."""
+        (the wait loop, inside `play_battle`, after the autosave line), and DriverError("end turn: unexpected Confirm: ...") is raised.
+        `peace` (default False): the answer to a post-battle "Offer of peace" box (an AI army fought the human's during the AI seats);
+        it is answered through `answer_battle_peace` (verified click, box closed) and recorded as "PEACE Yes|No: <text>". No is the
+        default because it changes no game state (findings/2026-10-05-battle-peace-offer.md); before this the box blocked until the timeout.
+        An "End of Game" window (the human nation conquered) raises GameOver(text) at once instead of waiting for the timeout."""
         log = G / "AUTOSAVE.LOG"
         n = len(log.read_text().splitlines()) if log.exists() else 0
         cal, me = self.calendar(), self.i16(CUR_NATION)
@@ -1263,6 +1509,13 @@ class Game:
                 texts.append("CONFIRM " + self.read_popup(self.find_windows(r"^End turn \?$")[0]))
                 cs = self.controls("End turn ?")
                 self.click_control(self.control(cs, text="End turn"), pause=1.5)
+                continue
+            eog = self.find_windows("^End of Game$")
+            if eog:     # terminal: nothing more to answer, and no autosave line follows
+                raise GameOver(self.read_popup(eog[0]))
+            if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
+                r = self.answer_battle_peace(peace)
+                texts.append("PEACE %s: %s" % (r["button"], r["text"]))
                 continue
             texts += self.dismiss_popups(strict=strict_confirm)
             time.sleep(1)

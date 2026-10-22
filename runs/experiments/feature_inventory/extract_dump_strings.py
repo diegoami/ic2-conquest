@@ -4,7 +4,10 @@ string literals its decompilation contains. Read only. Usage: extract_dump_strin
 import sys, re, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import write_new
+sys.path.insert(0, os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..')))
+from harness import decompile
 dump, syms, out = sys.argv[1:4]
+decompile.check(dump, syms)   # dump_line citations are line numbers of the pinned dump
 sym = {}
 for l in open(syms):
     a, n = l.rstrip('\n').split('\t')[:2]

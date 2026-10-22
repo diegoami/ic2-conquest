@@ -1,0 +1,15 @@
+12:45:58 turn 0724: load /home/user/ic2-conquest/artifacts/run-0/270BC-spring/AUTO0724.SAV (sha 66f4c9a22d369c87) seed 12349
+12:46:03 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":118,"sha256_12":"fd66da6d7781"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+12:46:15 seed line S 0000012349; popups at load []
+12:46:50 order mobilize -> ok=False {'attempts': 3, 'ok': False, 'texts': []}
+12:48:38 turn 0724: load /home/user/ic2-conquest/artifacts/run-0/270BC-spring/AUTO0724.SAV (sha 66f4c9a22d369c87) seed 12349
+12:48:43 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":117,"sha256_12":"341f52f00b6d"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+12:48:55 seed line S 0000012349; popups at load []
+12:49:19 order mobilize -> ok=True {'attempts': 1, 'ok': True, 'texts': []}
+12:49:32 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (0, 51), 'money': (0, 0)}
+12:49:48 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (192, 233), 'money': (296, 296)}
+12:49:51 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (95, 26), 'path': [(95, 26), (96, 26)], 'path_cost': 1, 'reach_this_turn': (96, 26), 'to': (96, 26), 'moves_left': 8}
+12:50:09 order attack -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'battles': 0}
+12:50:10 end turn
+12:50:24 autosave AUTO0725.SAV; texts ['']; battles 0
+12:50:25 done: /home/user/ic2-conquest/artifacts/run-0/270BC-spring/AUTO0725.SAV sha 1adc3e6577a695f5

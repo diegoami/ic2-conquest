@@ -1,0 +1,8 @@
+# 2026-10-08 late, probe_army_tile.py (seed 12345, Xvfb :99): covered cell (+8) of the army(ies) that may be removed patched 2 -> 4; word_before/after at their tiles (save), mem_word after
+disband {"targets": [[100, 37, 0]], "cover_before": [4], "word_before": [200], "word_after": [4], "mem_word": [4], "armies_on_tiles_after": [[]], "news_tail": ["    Ptolemaic  ends all current alliances.", "    Ptolemaic pays reparations of 2,242 talents."], "popups": ["(7) \u2018Ate you sure you want to disband this amy ? Yes No Cancel"]}
+join {"targets": [[102, 44, 0]], "cover_before": [4], "word_before": [200], "word_after": [4], "mem_word": [4], "armies_on_tiles_after": [[]], "news_tail": [" ", "Week  5      Autumn      270BC"], "popups": []}
+Traceback (most recent call last):
+    raise DriverError(f"tile {x},{y} not visible from origin {ox},{oy}")
+harness.driver.DriverError: tile 86,28 not visible from origin 58,24
+# battle attempt 1: DriverError in show(): tile 86,28 not visible from origin 58,24 (driver view 13x13; this save shows 29x27); kept in attempt_battle_view/, not cited
+battle {"targets": [[86, 28, 0], [85, 28, 6]], "cover_before": [4, 4], "word_before": [216, 222], "word_after": [4, 206], "mem_word": [4, 206], "armies_on_tiles_after": [[], [[10, 6, 17239]]], "news_tail": ["Week  11      Winter      270BC", "Gaul destroys army of Rome."], "popups": ["BATTLE Rome  v  Gaul          Gaul to place units."], "popups_after": []}

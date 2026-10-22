@@ -1,0 +1,7 @@
+{
+  "status": "error",
+  "stage": "rename parent setup",
+  "error": "ctypes.ArgumentError: argument 3: TypeError: bytearray object cannot be interpreted as ctypes.c_char_p",
+  "cause": "Uc.mem_read returns bytearray; Uc.mem_write requires bytes. No SAV or prior measurement changed.",
+  "retained_failure": true
+}

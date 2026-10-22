@@ -13,6 +13,7 @@ Exit status 0 only with 0 mismatches."""
 import sys, os, re, json, glob, hashlib, difflib, argparse
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths
+from harness import decompile  # repo root is on sys.path through paths
 from common import latest, write_new
 import savefacts as SF
 import construct as C
@@ -177,6 +178,7 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
     for ln in all_call_lines: by_cls[FN[ln].split('_')[0] if re.match(r'T[A-Z]\w*_', FN[ln]) else '(unnamed)'] = by_cls.get(FN[ln].split('_')[0] if re.match(r'T[A-Z]\w*_', FN[ln]) else '(unnamed)', 0) + 1
     check('classes table: the calls per class equal those recomputed from the extract', all(by_cls.get(r[0], 0) == int(r[2]) for r in cls), str(by_cls))
     if dump and os.path.exists(dump):
+        decompile.check(dump)
         n = sum(1 for l in open(dump, errors='replace') if 'FUN_0042d750(' in l and not l.startswith('void '))
         check('dump check: call sites in all_app_functions.txt (+ the definition line of the wrapper excluded) = %d' % len(all_call_lines), n == len(all_call_lines), str(n))
     fn_of_cell = lambda c: c['function:call line'].split(':')[0]
@@ -272,7 +274,9 @@ def run(finding, data, art, exe=None, dump=None, quiet=True):
         if not check('play %s has a record' % pid, pid in PL): continue
         q = PL[pid][-1]
         check('%s: source save column %r vs record %r' % (pid, r['source save'], q['src']), r['source save'] == q['src'])
-        check('%s: order-issued column vs the record' % pid, r['order issued'] == q['note'], '%r vs %r' % (r['order issued'], q['note']))
+        # a dated correction note added to the finding later, *(YYYY-MM-DD: ...)*, is not part of the recorded order
+        issued = re.sub(r'\s*\*\(\d{4}-\d{2}-\d{2}: .*?\)\*', '', r['order issued'])
+        check('%s: order-issued column vs the record' % pid, issued == q['note'], '%r vs %r' % (issued, q['note']))
         citing = sorted(c['id'] for c in CAT.values() if pid in re.findall(r'(?:^|; |\[confirmed\] )(\w+)', c.get('play [confirmed]', '')))
         check('%s: rows column %r vs the rows whose play cell names it %r' % (pid, r['rows'], citing), sorted([x for x in r['rows'].split(',') if x]) == citing)
         handlers, xfer = handlers_of(q)
@@ -465,7 +469,7 @@ if __name__ == '__main__':
     ap.add_argument('--finding', default=os.path.join(paths.ROOT, 'findings', '2026-10-05-refusal-texts-and-conditions.md'))
     ap.add_argument('--data', default=paths.DATA); ap.add_argument('--artifacts', default=paths.ART)
     ap.add_argument('--exe', default=os.environ.get('IC2_ORIG_EXE', os.path.expanduser('~/ic2-work/build/Imperial Conquest 2.exe')))
-    ap.add_argument('--dump', default=os.environ.get('IC2_DUMP', '/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt'))
+    ap.add_argument('--dump', default=paths.DUMP)
     ap.add_argument('--out', default=None)
     a = ap.parse_args()
     n, bad = run(a.finding, a.data, a.artifacts, a.exe, a.dump)

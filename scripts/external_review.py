@@ -2,20 +2,21 @@
 """External PR reviewer: an OpenCode model reviews a PR in its own git worktree and THIS script
 posts the result. The model never writes to GitHub.
 
-    external_review.py --pr 7 [--model a#variant,b,c] [--exclude-model x] [--apply-label] [--dry-run]
-    external_review.py --issue 9 --kind release [--brief-file F]
+    external_review.py --pr 7 --model provider/model[#variant] [--apply-label] [--dry-run]
+    external_review.py --issue 9 --kind release --model provider/model[#variant] [--brief-file F]
+    external_review.py --resume <run dir>        # continue a run that stopped, in the same OpenCode session (the recorded model)
 
-Exit: 0 posted · 2 usage · 3 "OpenCode unavailable: <cause>" (nothing posted: the caller decides the
-fallback) · 4 posted FLAGGED (verdict unreadable or review cut off; no label; the caller reads it and
-decides) · 5 the PR head moved while the review ran (nothing posted).
+Exit: 0 posted · 2 usage · 3 provider unavailable · 4 flagged review · 5 head moved · 6 process failure.
+The caller reads the complete report and decides whether to fix, resume or change approach.
 
 Flow: unique detached worktree at the PR head (removed in `finally`) -> a brief per attempt, with the PR
 body pasted in -> scripts/opencode_watched.py -> validate the review's shape -> re-check the head SHA ->
-ONE comment (+ a status label with --apply-label). A review is never thrown away: only "no review at all" (no
-header line anywhere) falls to the next model or to exit 3; a readable review is normalised and acted on; one
-whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4.
-Default: the DEFAULT_MODELS chain, after the quota check (models whose provider is exhausted are skipped, L50). Effort: light models
-#high, heavy models #low (#high/#max lowered to #medium; opencode_watched.effort). The caller falls back to Claude Opus on exit 3.
+ONE comment (+ a status label with --apply-label). A review is never thrown away: a readable review is normalised and acted
+on; one whose verdict cannot be read or that looks cut off is posted with a note line, no label, exit 4. An `api` failure
+(opencode_watched.py: the provider did not answer) ends the call with exit 3 (no other model runs); a `process` failure, "no review
+at all" (no header line) included, ends it with exit 6.
+Model: one explicit model per invocation, chosen by the session or owner. No model-family or provider gate.
+Quota information does not block a run. The caller decides what to do after a failure.
 """
 import argparse
 import json
@@ -35,9 +36,9 @@ import opencode_watched as ow  # noqa: E402
 REPO = Path(__file__).resolve().parent.parent
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
 REVIEW_ROOT = Path(os.environ.get("IC2_REVIEW_ROOT", WORK / "review"))   # outside the repo
-DEFAULT_MODELS = "opencode-go/deepseek-v4.1-flash#high,openai/gpt-5.6-luna#high,alibaba-token-plan/qwen3.8-flash#medium"     # then exit 3 -> the caller (qwen3.8-flash third: its own pool, 60% off at night; the owner, 2026-10-06)
+# One explicitly selected model per invocation; workflow/model choice belongs to the session.
 VERDICTS = {"approve": "status:approved", "rework": "status:rework", "decision": "status:decision"}
-FATAL = {"permission-rejected", "no-executable", "unknown-agent"}     # not retried on another model
+EXIT_PROCESS = 6                                                  # a failure of our own process: no fallback, resumable
 
 
 def sh(*args, cwd=REPO, check=True, text=True):
@@ -63,7 +64,7 @@ LUNA_WINDOW = ("openai/gpt-5.6-luna", "gpt-5.6-luna:7d")                # GPT-5.
 
 
 def fetch_quota(provider):
-    """quota-tracker's record for one provider, or None when the service cannot be reached (then the chain goes on: L50)."""
+    """quota-tracker's record for one provider, or None when the service cannot be reached (then nothing is reported as exhausted)."""
     try:
         with urllib.request.urlopen(f"{QUOTA_URL}/quota/{provider}", timeout=5) as r:
             return json.loads(r.read().decode())
@@ -72,7 +73,7 @@ def fetch_quota(provider):
 
 
 def quota_skip(model, fetch=fetch_quota):
-    """harness_imperial L50: the reason to skip this model now ("quota exhausted ..."), or None to use it. A provider whose status is
+    """The reason the named model cannot run now ("quota exhausted ..."), or None. Only reports: it never picks another model. A provider whose status is
     'exhausted' is skipped; GPT-5.6 Luna is judged on its own 'gpt-5.6-luna:7d' window instead (usable under 95 % even when openai is
     exhausted). An unknown provider, or no answer from quota-tracker, never skips."""
     mid = ow.split_model(model)[0]
@@ -118,7 +119,7 @@ def header(kind, model, failures):
 
 
 def implementer_names(pr):
-    """Names to exclude from the chain: Co-Authored-By trailers and model:<name> labels."""
+    """Implementer metadata for provenance: Co-Authored-By trailers and model:<name> labels."""
     names = set()
     for c in pr.get("commits", []):
         for m in re.finditer(r"Co-Authored-By:\s*([^<\n]+?)\s*(?:<|$)", c.get("messageBody", ""), re.I | re.M):
@@ -144,6 +145,8 @@ Base SHA: {base}
 Head SHA under review: {head}
 Your working directory IS that worktree: run git there as it is, WITHOUT -C, and never type the worktree's path
 (a retyped path that is one character off is an out-of-tree access: the run is auto-rejected and lost).
+File tools take paths RELATIVE to your working directory (checked in OpenCode 1.18.34: read, grep and glob resolve a relative path against
+it): `read runs/x.py`, `grep` with path `runs`. grep and glob PRINT absolute paths: cut the worktree prefix off before you give one to read.
 TREE PROOF, your first two tool calls, separate calls: `git rev-parse --show-toplevel HEAD` (the first line must be {wt}, the
 second {head}) and `git diff --name-only {base}...HEAD` ({"a release review has no diff by design: skip this one" if kind == "release" else "it must not be empty"}).
 If anything is wrong you are in the wrong tree: say so in a review whose verdict is `decision` and stop.
@@ -203,7 +206,7 @@ def parse_review(text, hdr):
     """Read a model's final message. Returns a dict: status 'ok' | 'unreadable' | 'cutoff' | 'none',
     text (what to post, without the note), verdict, rewrites.
 
-    Only 'none' (no header line anywhere: tool chatter, or nothing) is a failure that falls to the next model.
+    Only 'none' (no header line anywhere: tool chatter, or nothing) is a failure (kind process: no other model runs).
     'ok' is normalised to header / verdict / findings / verdict. 'unreadable' (the verdict after the header
     cannot be read, or the two verdicts disagree) and 'cutoff' (no closing verdict among the last three
     non-empty lines) are posted anyway, flagged, with no label."""
@@ -339,8 +342,45 @@ def self_test():
         print(f"{'PASS' if ok else 'FAIL'} effort {model}: {got}")
         bad += 0 if ok else 1
         n += 1
+    for impl, rev, want in (("Claude Sonnet 5.5", "anthropic/claude-opus-4", True), ("Claude Opus", "anthropic/claude-sonnet-5", True),
+                            ("openai/gpt-6.1-sol", "openai/gpt-5.6-luna#high", True), ("GPT-6.1 Sol", "openai/gpt-5.6-luna", True),
+                            ("minimax/MiniMax-M3", "minimax/MiniMax-M2.7", True), ("MiniMax-M3", "minimax/MiniMax-M2.7", True),
+                            ("zai-coding-plan/glm-5.3", "alibaba-token-plan/glm-5.3#low", True), ("GLM 5.3", "zai-coding-plan/glm-5.3-flash", True),
+                            ("mimo-v2.6-pro", "opencode-go/mimo-v2.6-flash", True), ("model:sonnet", "anthropic/claude-opus-4", True),
+                            ("Claude Sonnet 5.5", "openai/gpt-5.6-luna#high", False), ("openai/gpt-6.1-sol", "minimax/MiniMax-M2.7", False),
+                            ("minimax/MiniMax-M3", "zai-coding-plan/glm-5.3", False), ("Claude Opus", "opencode-go/mimo-v2.6-flash", False),
+                            ("model:o3", "openai/gpt-5.6-luna", True), ("o4-mini", "openai/gpt-5.6-luna", True), ("gemini", "google/gemini-2.5", True),
+                            ("grok", "xai/grok-4", True), ("Z.ai", "zai-coding-plan/glm-5.3", True)):
+        got = excluded(rev, {impl.lower()})
+        ok = got == want
+        print(f"{'PASS' if ok else 'FAIL'} family {impl!r} vs {rev!r}: refused={got}")
+        bad += 0 if ok else 1
+        n += 1
+    for name, want in (("z", None), ("z-something", None), ("Z.ai", "zai"), ("zhipu", "zai"), ("model:o3", "openai"), ("grok", "xai"), ("mystery", None)):
+        got = family(name)
+        ok = got == want
+        print(f"{'PASS' if ok else 'FAIL'} family({name!r}) = {got}")
+        bad += 0 if ok else 1
+        n += 1
+    for spec, want in (("openai/gpt-5.6-luna#high", None), ("", "required"), ("a/b,c/d", "one model"), ("opencode-go/deepseek-v4.1-flash", None),
+                       ("alibaba-token-plan/qwen3.8-flash", None)):
+        got = model_error(spec)
+        ok = (got is None) if want is None else (got is not None and want in got)
+        print(f"{'PASS' if ok else 'FAIL'} model choice {spec!r}: {got}")
+        bad += 0 if ok else 1
+        n += 1
     print(f"{n - bad}/{n} passed")
     return 1 if bad else 0
+
+
+def model_error(spec):
+    """Require a single explicit model per CLI invocation, without provider restrictions."""
+    names = [m.strip() for m in (spec or "").split(",") if m.strip()]
+    if not names:
+        return "--model is required"
+    if len(names) > 1:
+        return "one model only per invocation"
+    return None
 
 
 def effort(model):
@@ -353,11 +393,49 @@ def effort(model):
     return out
 
 
+ROUTERS = {"opencode", "opencode-go", "openrouter", "alibaba-token-plan", "alibaba", "github-copilot"}   # a route, not a family
+FAMILIES = (("claude", ("claude", "anthropic", "opus", "sonnet", "haiku")),
+            ("openai", ("openai", "gpt", "codex", "luna", "sol", "chatgpt", "o1", "o3", "o4")),
+            ("minimax", ("minimax",)),
+            ("zai", ("zai", "glm", "zhipu")),     # explicit names only; "Z.ai" is normalised to zai in family()
+            ("mimo", ("mimo", "xiaomi")),
+            ("qwen", ("qwen", "qwq")),
+            ("deepseek", ("deepseek",)),
+            ("google", ("gemini", "gemma", "google")),
+            ("xai", ("grok", "xai")),
+            ("kimi", ("kimi", "moonshot")),
+            ("nvidia", ("nemotron", "nvidia")),
+            ("cohere", ("cohere", "north", "command")),
+            ("llama", ("llama", "meta")))
+
+
+def family(name):
+    """The model family of a model id or an implementer name ('Claude Sonnet 5.5', 'openai/gpt-6.1-sol', 'minimax/MiniMax-M3',
+    'zai-coding-plan/glm-5.3', 'opencode-go/mimo-v2.6-pro'), or None when it is not recognised. Routes (opencode-go, openrouter,
+    alibaba-token-plan) are not families; the model's own name decides. A provider prefix such as zai-coding-plan counts as its
+    family's name (token 'zai')."""
+    base = ow.split_model(name)[0] if "/" in name else name
+    base = re.sub(r"\bz\.ai\b", "zai", base.lower())
+    tokens = [t for seg in base.split("/") if seg not in ROUTERS for t in re.split(r"[^a-z0-9]+", seg) if t]
+    for fam, keys in FAMILIES:
+        if any(t in keys for t in tokens):
+            return fam
+    return None
+
+
 def excluded(model, excl):
-    """True if the model is one of the excluded names (the implementer's): compared without punctuation,
-    so the trailer 'DeepSeek V4.1 Flash' matches 'opencode-go/deepseek-v4.1-flash'."""
+    """True if the model matches an explicit caller exclusion (historical family matching), or an excluded name
+    compared without punctuation (so 'DeepSeek V4.1 Flash' matches 'opencode-go/deepseek-v4.1-flash')."""
     flat = lambda x: re.sub(r"[^a-z0-9]", "", x.lower())
+    fam = family(model)
+    if fam and any(family(e) == fam for e in excl if e):
+        return True
     return any(e and flat(e) in flat(ow.split_model(model)[0]) for e in excl)
+
+
+def family_refusal(model, implementers, confirmed=False):
+    """Compatibility hook for old callers and saved runs; family no longer gates review."""
+    return None
 
 
 def ensure_labels():
@@ -367,6 +445,190 @@ def ensure_labels():
             sh("gh", "label", "create", lb, "--description", "set by scripts/external_review.py")
 
 
+def review_worktree(token):
+    """$IC2_REVIEW_ROOT/<token>: the worktree is named by its 6-hex token alone. A name like `pr69-review-a6c69b` under a root that
+    also had a `pr69-review` directory invited a model to type `.../pr69-review/pr69-review-a6c69b/...` (a duplicated prefix, an
+    out-of-tree access, a lost run: PR #69, 2026-10-10). The kind and number stay in the logs' name (rendered/<kind><n>-<token>)."""
+    return REVIEW_ROOT / token
+
+
+def drop_worktree(wt, kind, n):
+    sh("git", "worktree", "remove", "--force", str(wt), check=False)
+    if kind == "pr":
+        sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+    if Path(wt).exists():
+        shutil.rmtree(wt, ignore_errors=True)
+        sh("git", "worktree", "prune", check=False)
+
+
+def safe_run(*args, **kw):
+    """ow.run, but a crash of the watcher itself is a PROCESS failure record (class watcher-crash, exit 6 path, the traceback in cause),
+    never a traceback that hides the run dir and the session."""
+    try:
+        return ow.run(*args, **kw)
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        rd = Path(kw.get("run_dir") or args[3])
+        rd.mkdir(parents=True, exist_ok=True)
+        st = ow.read_json(rd / "state.json")
+        st = st if isinstance(st, dict) else {}
+        r = {"class": "watcher-crash", "kind": "process", "model": args[2], "session": st.get("session") or kw.get("resume_session"),
+             "text": "", "stdout": str(rd / "stdout.log"), "stderr": str(rd / "stderr.log"), "last_message": None,
+             "cause": f"{type(e).__name__}: {e}; " + traceback.format_exc().strip().splitlines()[-3].strip()[:200]}
+        ow.keep_prev(rd / "result.json")
+        ow.write_json(rd / "result.json", r)
+        st["status"] = "watcher-crash"
+        ow.write_json(rd / "state.json", st)
+        return r
+
+
+def judge(r, hdr, run_dir):
+    """One finished ow.run -> (final review or None, r). Only a readable (or flagged) review is final. An ok run whose final message
+    has no header line is a `bad-format` PROCESS failure (the class and kind are written back to result.json and state.json: the
+    model ended its turn without the review, which is ours to diagnose, not another model's to redo)."""
+    if r["class"] == "ok":
+        pr = parse_review(r["text"], hdr)
+        if pr["status"] != "none":
+            return pr, r
+        r["class"], r["kind"], r["cause"] = "bad-format", "process", "no review in the final message (no header line)"
+        r["last_message"] = {"tag": "final", "finish": "stop", "text": r["text"][:4000]}    # the session was read: this is its last message
+        ow.keep_prev(Path(run_dir) / "result.json")           # the ok result is a measurement: kept as result.prev-N.json (rule 6)
+        ow.write_json(Path(run_dir) / "result.json", r)
+        st = ow.read_json(Path(run_dir) / "state.json") or {}
+        st["status"] = "bad-format"
+        ow.write_json(Path(run_dir) / "state.json", st)
+        (Path(run_dir) / "status.txt").write_text((ow.describe(run_dir) or "") + "\n")
+    return None, r
+
+
+def process_message(model, r):
+    """The line printed on exit 6: what failed, where its record is, how to continue it."""
+    rd = Path(r["stdout"]).parent
+    sid = r.get("session")
+    said = f" (the model said: {r['text'][:300]!r})" if r.get("class") == "stopped-with-report" and r.get("text") else ""
+    return (f"OpenCode process failure: {model}: {r['class']}: {r.get('cause')}{said}; session {sid or 'none'}; run dir {rd}; "
+            + (f"resume with --resume {rd}" if sid else "no session to resume: fix the cause and run again"))
+
+
+def run_one(model, kind, n, title, body, base, head, wt, logs, extra, agent, failures, data_dir, log=print, implementers=(), family_confirmed=False):
+    """Run exactly ONE model (the one the user named). Returns (final, stop): final = (model, parsed review) or None; stop = (model,
+    result) when a PROCESS failure ended the run (diagnosed and resumed, not handed to another model). An `api` failure (the provider
+    did not answer) is appended to `failures` and ends the call: no other model runs; the user names the next one."""
+    hdr = header(kind, model, failures)
+    k = len(failures) + 1
+    brief = logs / f"brief-{k}.md"
+    brief.parent.mkdir(parents=True, exist_ok=True)
+    brief.write_text(brief_text(kind, n, title, body, base, head, hdr, wt) + extra, encoding="utf-8")
+    meta = {"kind": kind, "number": n, "head": head, "base": base, "title": title, "hdr": hdr,
+            "implementers": sorted(implementers),   # provenance retained across resumes
+            "family_confirmed": bool(family_confirmed)}
+    r = safe_run(brief, wt, model, logs / f"run-{k}", agent=agent, data_dir=data_dir, log=log, meta=meta)
+    pr, r = judge(r, hdr, logs / f"run-{k}")
+    if pr:
+        return (model, pr), None
+    if r["kind"] != "api":
+        return None, (model, r)
+    failures.append((model, r["class"]))
+    return None, None
+
+
+def post_review(kind, n, model, pr, logs, head, apply_label):
+    """The posting half: head re-check, ONE comment, optional label. Exit code as documented at the top."""
+    flagged = pr["status"] in ("unreadable", "cutoff")
+    note = {"unreadable": "verdict unreadable", "cutoff": "review may be cut off"}.get(pr["status"])
+    text, verdict = (NOTE + note + "\n\n" if flagged else "") + pr["text"], pr["verdict"]
+    for c in pr["rewrites"]:
+        print(f"rewrote closing keyword: {c!r}", flush=True)
+    if kind == "pr" and gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"] != head:
+        print("the PR head moved during the review; nothing posted", file=sys.stderr)
+        return 5
+    body = logs / "comment.md"
+    ow.keep_prev(body)                                     # a resumed run posts again: the earlier comment text is kept
+    body.write_bytes((text + "\n").encode("utf-8"))        # UTF-8, no BOM
+    noun = "issue" if kind == "release" else "pr"
+    sh("gh", noun, "comment", str(n), "--body-file", str(body))
+    if apply_label and not flagged:                      # a flagged review sets no label
+        ensure_labels()
+        for lb in VERDICTS.values():
+            if lb != VERDICTS[verdict]:
+                sh("gh", noun, "edit", str(n), "--remove-label", lb, check=False)
+        sh("gh", noun, "edit", str(n), "--add-label", VERDICTS[verdict])
+    if flagged:
+        print(f"posted one FLAGGED comment on {noun} #{n} ({note}; model {label_of(model)}); no label set; "
+              f"read it and decide; logs {logs}", file=sys.stderr)
+        return 4
+    print(f"posted one comment on {noun} #{n}: verdict {verdict} (model {label_of(model)}); logs {logs}")
+    return 0
+
+
+def resume_run(run_dir, apply_label, force=False, confirm_family=False):
+    """--resume <run dir>: continue the recorded OpenCode session where it stopped. Recreates the worktree at the recorded head
+    (exit 5 if the PR head, or origin/main for a release review, moved since), continues the SAME session, then parses and posts
+    as usual. The run dir (and its earlier results, kept as result.prev-N.json) is never deleted."""
+    rd = Path(run_dir).resolve()
+    st = ow.read_json(rd / "state.json")
+    need = ("kind", "number", "head", "session", "hdr", "brief", "model", "agent", "data_dir", "worktree")
+    if not isinstance(st, dict) or st.get("kind") not in ("pr", "release") or any(not st.get(k) for k in need):
+        print(f"{rd}: no resumable state.json (needs {', '.join(need)})", file=sys.stderr)
+        return 2
+    kind, n, head = st["kind"], st["number"], st["head"]
+    # resume is never a way around the rules: the recorded model faces the same decision as a new run's --model
+    bad = model_error(st["model"])
+    if not bad:
+        names = st.get("implementers")
+        if names is None:                                   # a legacy state.json: take the implementers from the PR as a new run does
+            names = sorted(implementer_names(gh_json("pr", "view", str(n), fields="title,body,headRefOid,baseRefName,commits,labels"))) if kind == "pr" else []
+        bad = family_refusal(st["model"], names, confirm_family or bool(st.get("family_confirmed")))
+    if bad:
+        print(f"refused: cannot resume {rd}: {bad}", file=sys.stderr)
+        return 2
+    if confirm_family and not st.get("family_confirmed"):  # the confirmation is part of the record
+        st["family_confirmed"] = True
+        ow.write_json(rd / "state.json", st)
+    why = None if force else ow.resume_refusal(rd)
+    if why:                                                 # the limit holds across invocations (state.json resumes_used)
+        print(why, file=sys.stderr)
+        return 2
+    if ow.pid_alive(st.get("pid")) and st.get("status") in ("starting", "running", "resuming"):
+        print(f"{rd}: the run is still going (pid {st['pid']}); not resuming it twice", file=sys.stderr)
+        return 2
+    if kind == "release":
+        sh("git", "fetch", "-q", "origin", "+refs/heads/main:refs/remotes/origin/main")
+        cur = sh("git", "rev-parse", "refs/remotes/origin/main")
+    else:
+        cur = gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"]
+        sh("git", "fetch", "-q", "origin", f"+pull/{n}/head:refs/review/pr{n}")
+    if cur != head:
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+        print(f"the {'PR head' if kind == 'pr' else 'origin/main'} moved since the run ({head[:12]} -> {cur[:12]}); nothing resumed, nothing posted",
+              file=sys.stderr)
+        return 5
+    wt = Path(st["worktree"])
+    try:
+        REVIEW_ROOT.mkdir(parents=True, exist_ok=True)
+        if wt.exists():
+            drop_worktree(wt, "release", n)                 # a leftover tree: recreate it clean at the recorded head
+        sh("git", "worktree", "add", "--detach", str(wt), head)
+    except Exception:
+        if kind == "pr":
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+        raise
+    try:
+        r = safe_run(st["brief"], wt, st["model"], rd, agent=st["agent"], data_dir=st["data_dir"], log=lambda s: print(s, flush=True),
+                   resume_session=st["session"], force_resume=force, startup=st.get("startup", 180), idle=st.get("idle", 600), total=st.get("total", 3600))
+        pr, r = judge(r, st["hdr"], rd)
+    finally:
+        drop_worktree(wt, kind, n)
+    if pr:
+        return post_review(kind, n, st["model"], pr, rd.parent, head, apply_label)
+    if r["kind"] == "api":
+        print(f"OpenCode unavailable: {label_of(st['model'])}: {r['class']}: {r.get('cause')}; run dir {rd}", file=sys.stderr)
+        return 3
+    print(process_message(st["model"], r), file=sys.stderr)
+    return EXIT_PROCESS
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     g = ap.add_mutually_exclusive_group()
@@ -374,23 +636,36 @@ def main():
     g.add_argument("--issue", type=int)
     ap.add_argument("--kind", choices=("pr", "release"), default=None)
     ap.add_argument("--brief-file", help="extra instructions appended to the generated brief")
-    ap.add_argument("--model", default=DEFAULT_MODELS, help="provider/model[#variant],... (first is primary)")
+    ap.add_argument("--model", default="", help="provider/model[#variant]: one reviewer per invocation")
+    ap.add_argument("--confirm-family-differs", action="store_true",
+                    help="legacy compatibility flag; model families no longer restrict reviews")
     ap.add_argument("--exclude-model", default="", help="comma-separated names to skip")
     ap.add_argument("--agent", default="external-reviewer")
     ap.add_argument("--apply-label", action="store_true", help="set status:* from the verdict")
     ap.add_argument("--dry-run", action="store_true", help="print the arguments only; start no model; post nothing")
     ap.add_argument("--review-file", help="offline: parse this file as the model's final message and print what "
                     "would be posted, its note line, the label and the exit code. No model runs, nothing is posted")
+    ap.add_argument("--resume", metavar="RUN_DIR", help="continue a run that stopped (its run dir under rendered/<kind><n>-<token>/run-<k>), "
+                    "in the same OpenCode session, then parse and post as usual; exit 5 if the PR head moved")
+    ap.add_argument("--force-resume", action="store_true", help="with --resume: continue even though the run used its 2 resumes "
+                    "(a human decision after a fix; logged in the run's state.json)")
     ap.add_argument("--self-test", action="store_true", help="run the review parser over sample outputs")
     a = ap.parse_args()
     if a.self_test:
         return self_test()
+    if a.resume:
+        return resume_run(a.resume, a.apply_label, a.force_resume, a.confirm_family_differs)
     if not (a.pr or a.issue):
-        ap.error("one of --pr / --issue is required (or --self-test)")
+        ap.error("one of --pr / --issue is required (or --self-test or --resume)")
     kind = a.kind or ("release" if a.issue else "pr")
     n = a.pr or a.issue
+    why = model_error(a.model)
+    if why:
+        print(f"usage: {why}", file=sys.stderr)
+        return 2
     models = [effort(m.strip()) for m in a.model.split(",") if m.strip()]
     excl = {e.strip().lower() for e in a.exclude_model.split(",") if e.strip()}
+    impl = set()
 
     if a.review_file:                                    # offline: parse a saved review, bill nothing
         hdr = header(kind, models[0], [])
@@ -425,32 +700,28 @@ def main():
            f"+refs/heads/{meta['baseRefName']}:{bref}")
         head = sh("git", "rev-parse", f"refs/review/pr{n}")
         base = sh("git", "merge-base", bref, head)
-        excl |= implementer_names(meta)
-    models = [m for m in models if not excluded(m, excl)]      # the implementer never reviews its own PR
-    skipped = []                                               # L50: a model whose provider is out of quota is skipped, and the header says so
-    for m in list(models):
+        impl = implementer_names(meta)
+        bad = family_refusal(models[0], impl, a.confirm_family_differs)
+        if bad:
+            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
+            print("refused: " + bad, file=sys.stderr)
+            return 2
+    models = [m for m in models if not excluded(m, excl)]      # explicit caller exclusions only
+    for m in models:             # quota information does not block the selected model
         why = quota_skip(m)
         if why:
-            print(f"skipping {m}: {why}", flush=True)
-            skipped.append((m, why))
-            models.remove(m)
-        else:
-            note = pricing_note(m)
-            if note:
-                print(f"{m}: {note}", flush=True)
+            print(f"quota note: {m}: {why} (information only; the named model runs anyway; if the provider refuses, that is an api failure, exit 3)", flush=True)
+        note = pricing_note(m)
+        if note:
+            print(f"{m}: {note}", flush=True)
     if not models:
-        if skipped:
-            if kind == "pr":
-                sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-            print("OpenCode unavailable: " + "; ".join(f"{label_of(m)}: {w}" for m, w in skipped), file=sys.stderr)
-            return 3
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-        print("OpenCode unavailable: every model is excluded", file=sys.stderr)
-        return 3
+        print("refused: selected model matches --exclude-model", file=sys.stderr)
+        return 2
 
     token = secrets.token_hex(3)
-    wt = REVIEW_ROOT / f"{kind}{n}-review-{token}"
+    wt = review_worktree(token)
     logs = REPO / "rendered" / f"{kind}{n}-{token}"
     try:
         REVIEW_ROOT.mkdir(parents=True, exist_ok=True)
@@ -459,73 +730,24 @@ def main():
         if kind == "pr":
             sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
         raise
-    failures, final = list(skipped), None
+    failures, final, stop = [], None, None
     try:
         if sh("git", "-C", str(wt), "rev-parse", "HEAD") != head:
             raise RuntimeError("worktree HEAD is not the head SHA")
         extra = Path(a.brief_file).read_text() if a.brief_file else ""
-        streak = []
-        for m in models:
-            hdr = header(kind, m, failures)
-            brief = logs / f"brief-{len(failures) + 1}.md"
-            brief.parent.mkdir(parents=True, exist_ok=True)
-            brief.write_text(brief_text(kind, n, meta["title"], meta["body"], base, head, hdr, wt) + extra,
-                             encoding="utf-8")
-            r = ow.run(brief, wt, m, logs / f"run-{len(failures) + 1}", agent=a.agent,
-                       data_dir=WORK / "opencode-data", log=lambda s: print(s, flush=True))
-            cls = r["class"]
-            if cls == "ok":
-                pr = parse_review(r["text"], hdr)
-                if pr["status"] != "none":               # a readable (or flagged) review is never thrown away
-                    final = (m, pr)
-                    break
-                cls, r["cause"] = "bad-format", "no review in the final message (no header line)"
-            if cls in FATAL:
-                failures.append((m, cls))
-                if cls == "permission-rejected":
-                    print(f"permission-rejected: {r['cause']}; nothing posted", file=sys.stderr)
-                break
-            failures.append((m, cls))
-            streak.append(cls)
-            if len(streak) >= 2 and streak[-1] == streak[-2]:
-                break
+        final, stop = run_one(models[0], kind, n, meta["title"], meta["body"], base, head, wt, logs, extra, a.agent, failures,
+                                WORK / "opencode-data", log=lambda s: print(s, flush=True), implementers=impl, family_confirmed=a.confirm_family_differs)
     finally:
-        sh("git", "worktree", "remove", "--force", str(wt), check=False)
-        if kind == "pr":
-            sh("git", "update-ref", "-d", f"refs/review/pr{n}", check=False)
-        if wt.exists():
-            shutil.rmtree(wt, ignore_errors=True)
-            sh("git", "worktree", "prune", check=False)
+        drop_worktree(wt, kind, n)      # the run dirs under logs stay: they are the record a --resume continues
 
+    if stop:                            # our own process failed: nothing posted, no other model
+        print(process_message(*stop), file=sys.stderr)
+        return EXIT_PROCESS
     if not final:
         cause = "; ".join(f"{label_of(m)}: {c}" for m, c in failures) or "no model ran"
         print(f"OpenCode unavailable: {cause}", file=sys.stderr)
         return 3
-    model, pr = final
-    flagged = pr["status"] in ("unreadable", "cutoff")
-    note = {"unreadable": "verdict unreadable", "cutoff": "review may be cut off"}.get(pr["status"])
-    text, verdict = (NOTE + note + "\n\n" if flagged else "") + pr["text"], pr["verdict"]
-    for c in pr["rewrites"]:
-        print(f"rewrote closing keyword: {c!r}", flush=True)
-    if kind == "pr" and gh_json("pr", "view", str(n), fields="headRefOid")["headRefOid"] != head:
-        print("the PR head moved during the review; nothing posted", file=sys.stderr)
-        return 5
-    body = logs / "comment.md"
-    body.write_bytes((text + "\n").encode("utf-8"))        # UTF-8, no BOM
-    noun = "issue" if kind == "release" else "pr"
-    sh("gh", noun, "comment", str(n), "--body-file", str(body))
-    if a.apply_label and not flagged:                    # a flagged review sets no label
-        ensure_labels()
-        for lb in VERDICTS.values():
-            if lb != VERDICTS[verdict]:
-                sh("gh", noun, "edit", str(n), "--remove-label", lb, check=False)
-        sh("gh", noun, "edit", str(n), "--add-label", VERDICTS[verdict])
-    if flagged:
-        print(f"posted one FLAGGED comment on {noun} #{n} ({note}; model {label_of(model)}); no label set; "
-              f"read it and decide; logs {logs}", file=sys.stderr)
-        return 4
-    print(f"posted one comment on {noun} #{n}: verdict {verdict} (model {label_of(model)}); logs {logs}")
-    return 0
+    return post_review(kind, n, final[0], final[1], logs, head, a.apply_label)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,49 @@
+{
+  "issue": "diegoami/imperial-conquest-2-research#5",
+  "audit_only": true,
+  "rerun": false,
+  "promoted_report": "docs/reports/2026-10-07-ai-mover-contact.md",
+  "report_commit": "79c8fcc52d93532ae3c5edeec30b6988c525c76c",
+  "report_sha256": "59f1990533606a1fdcb26eb1d0ad2c2fb01fb7f50fc3b4115bf6b50f885c86ae",
+  "original_experiment_commits": [
+    "3d9490c",
+    "6a535d8",
+    "2d2251d"
+  ],
+  "release": "https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-ai-contact",
+  "answer": "Shared FUN_0044d734 contact dispatcher; both-computer contact instant, human-involved contact tactical; enemy-city contact siege.",
+  "provenance": "Existing promoted report: derived code plus Wine-only natural/staged observations, not new probe or native confirmation.",
+  "outstanding": "Native repeat, neutral-army contact, adjacent through-click, exact instant losses and long-walk refusal details remain bounded as in the report.",
+  "references": [
+    {
+      "save": "AUTO0720.SAV",
+      "manifest_lines": [
+        "286a82f68280aced696923c67c9792b7824fd7c7e38ef9ce166a64306b4d3ba0  AUTO0720.SAV"
+      ]
+    },
+    {
+      "save": "AUTO0721.SAV",
+      "manifest_lines": [
+        "a570584ae64e7108b7d65f8dfddea95067a92cb93c6d7a498871c9669c2c96aa  AUTO0721.SAV"
+      ]
+    },
+    {
+      "save": "AUTO0722.SAV",
+      "manifest_lines": [
+        "6ec21805ac5003495926bc56cf8bc81de163f6d261d7fae546c8f93185e3dbf6  AUTO0722.SAV"
+      ]
+    },
+    {
+      "save": "AUTO0725.SAV",
+      "manifest_lines": [
+        "9891cfaf2d6a1047f6cccc90b14ef0f5a55be80c8166ba4f7f50fbfd5c6e71b9  AUTO0725.SAV"
+      ]
+    },
+    {
+      "save": "AUTO0726.SAV",
+      "manifest_lines": [
+        "a455d3984bf8877b4772ba6988fe20247825dcd9ddcafda10656d0f742c9dbc1  AUTO0726.SAV"
+      ]
+    }
+  ]
+}

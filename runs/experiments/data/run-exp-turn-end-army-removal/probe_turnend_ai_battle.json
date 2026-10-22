@@ -1,0 +1,82 @@
+{
+ "case": "ai_battle",
+ "action": "end_turn",
+ "autosave": "AUTO0722.SAV",
+ "popups": [
+  "@ Carthage wants to trade with Rome."
+ ],
+ "tiles": {
+  "42,63": {
+   "word_before": 217,
+   "word_after": 4,
+   "mem_word": 4,
+   "armies_before": [
+    [
+     2,
+     1,
+     33900,
+     597,
+     4
+    ]
+   ],
+   "armies_after": []
+  },
+  "43,63": {
+   "word_before": 224,
+   "word_after": 4,
+   "mem_word": 4,
+   "armies_before": [
+    [
+     10,
+     8,
+     33900,
+     100,
+     4
+    ]
+   ],
+   "armies_after": []
+  }
+ },
+ "calendar_after": 722,
+ "numidia_after": {
+  "cities_count": 8,
+  "owned": 8,
+  "army_rec2": [
+   [
+    2,
+    14,
+    307,
+    58,
+    37700
+   ]
+  ]
+ },
+ "gaul_after": {
+  "cities_count": 28,
+  "unity": 577,
+  "armies": []
+ },
+ "felsina_after": [
+  6,
+  65
+ ],
+ "news_tail": [
+  "Week 1      Spring      270 BC",
+  "Seleucid destroys army of Ptolemaic.",
+  "Ptolemaic sues Seleucid for peace and;",
+  "    Ptolemaic ends all current trading agreements.",
+  "    Ptolemaic  ends all current alliances.",
+  "    Ptolemaic pays reparations of 2,242 talents.",
+  " ",
+  "Week  3      Spring      270BC",
+  "Rome fails to capture Felsina   (Gaul).",
+  "Celtiberia destroys army of Carthage.",
+  " ",
+  "Week  5      Spring      270BC"
+ ],
+ "compaction_after": {
+  "live_armies": 13,
+  "records": 13,
+  "marker_mismatches": []
+ }
+}
