@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from craft import Sav, ROOT  # noqa: E402
+from craft import Sav, ROOT, SAVES as SAVES_DIR  # noqa: E402
 
 DATA = ROOT / "runs/experiments/data/run-exp-manual-gaps"
 RUN0 = ROOT / "saves/run0-start-AUTO0720-seed12345.SAV"
@@ -95,6 +95,13 @@ def b9():
     s = Sav(RUN0)
     s.move_army(1, 107, 67)          # Rome's army 1 next to Agrigentum (Carthage, peace), no own city within one tile
     done(s, "MG_B9_staged_rome_army1_at_107_67_agrigentum.SAV", "B9: Rome's army 1 next to a foreign city at peace (Agrigentum, Carthage)")
+
+
+def b9b():
+    s = Sav(SAVES_DIR / "MG_B9_staged_rome_army1_at_107_67_agrigentum.SAV")
+    s.army_field(1, 12, 5, "money")       # purse 5 talents: the money cap (5 x 5 = 25 tons) below the capacity
+    s.army_field(1, 10, 0, "supplies")    # capacity 22000 div 100 + 1 = 221 tons
+    done(s, "MG_B9b_staged_army1_purse5_supplies0.SAV", "B9b: the purse cap: army 1 purse 5, supplies 0")
 
 
 STORM_TILES = [(80, 44), (80, 48), (80, 52), (83, 42), (83, 46), (84, 44)]   # calm sea, every neighbour sea, nearest city 6-9 tiles
