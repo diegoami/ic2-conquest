@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v7.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v7.csv) (increment 7: cross-record invariants). New evidence should update its
+[`field-map-v8.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v8.csv) (increment 8: rebellion rule). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -543,6 +543,47 @@ adds the results to the context-dependent rows.
     −1).
   - The battle-grid icon count: all 16 battle saves are research's crafted
     stale-grid / same-cell cases, which violate it by design.
+
+## Increment 8: the rebellion rule behind `CITY.allegiance` (2026-10-22)
+
+This is static (decompile). It closes increment 5's "full rebellion rule not
+restated".
+[`field-map-v8.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v8.csv)
+adds it to the allegiance, capital and map rows.
+
+**When a city rebels.** In the quarterly city loop, a city with loyalty < 30
+rebels unless it is some nation's capital (`FUN_0044B8D0`). The rebellion
+runs through `FUN_0044C204`.
+
+**Where it goes:**
+
+- **Owner = allegiance.** The city goes to a nation that the owner is at war
+  with (relation 3) and that has an army within Chebyshev distance < 10.
+  Otherwise it goes to the living nation that borders the owner (neighbour
+  bit) with the best score, where score = cities − 2 × distance to that
+  nation's capital.
+- **Owner ≠ allegiance, allegiance nation alive.** The city returns to its
+  allegiance nation (`FUN_0044BED8`).
+- **Owner ≠ allegiance, allegiance nation dead.** `FUN_0044C360` revives it
+  only when more than 7 cities of that allegiance have loyalty < 40.
+  Otherwise nothing happens.
+
+**What a revival does:**
+
+- The revived nation gets unity 450, treasury 0, tax base 0, cities 0, tax
+  20 and mobilisation 50. All its recruit entries are emptied, it is at
+  peace with everyone, conqueror is set to −1, and a new leader is drawn
+  from its 12 DAT names.
+- Those cities return to it.
+- The returned city with the highest defence value becomes the capital. It
+  gets loyalty +8 and fort +10 (each capped at 99), population +10, max
+  population +20 and tribute +25, and its map marker becomes owner + 84
+  (variant 4).
+
+**Why this matters.** `CITY.allegiance` decides whether a rebel city goes
+home and whether a dead nation can come back. A campaign that did not start
+from the DAT needs a real historical profile for it, not a copy of the
+current owner. The revival has not been observed in a game.
 
 ## Field identity and alias corrections already supported
 
