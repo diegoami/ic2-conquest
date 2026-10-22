@@ -266,3 +266,6 @@ Ledger v10 is authoritative. Open:
 ## 2026-10-22 increment 11: rebellion run (owner-approved)
 
 run-exp-sav-rebellion107 confirms the revival (and the review correction on relations), the return home, the neighbour branch and that capitals do not rebel. The at-war branch was not exercised. Ledger v11.
+
+PR #126 merged at main `b3cf8dc`. Increment 11 relayed to "IC2 Research" (status "delivered").
+**Last delivered findings baseline: `b3cf8dce1726a228d6ac3a9dc29f2e93daacf970`.**
