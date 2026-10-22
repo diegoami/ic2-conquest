@@ -17,7 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import paths
 DATA = os.path.join(paths.ROOT, 'runs', 'experiments', 'data', 'run-exp-cosmetic-gaps') + '/'
-ART = os.path.join(paths.ROOT, 'artifacts', 'run-exp-cosmetic-gaps')
+ART = paths.ART.rstrip('/')       # honours IC2_ARTIFACTS, like paths.py and claims_audit.py
 
 def sha(p): return hashlib.sha256(open(p, 'rb').read()).hexdigest()
 

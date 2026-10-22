@@ -10,7 +10,7 @@ import claims_audit as CA
 
 FINDING = os.path.join(paths.ROOT, 'findings', '2026-10-06-cosmetic-gaps.md')
 DATA = os.path.join(paths.ROOT, 'runs', 'experiments', 'data', 'run-exp-cosmetic-gaps')
-ART = os.path.join(paths.ROOT, 'artifacts', 'run-exp-cosmetic-gaps')
+ART = paths.ART.rstrip('/')       # honours IC2_ARTIFACTS, like paths.py and claims_audit.py
 
 def audit_text(text):
     """run() on a temp copy of `text`; returns (checks, mismatches)"""

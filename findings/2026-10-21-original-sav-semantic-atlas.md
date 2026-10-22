@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v12.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v12.csv) (increment 11 with the g4 cross-reference). New evidence should update its
+[`field-map-v13.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v13.csv) (v12, increment 11 with the g4 cross-reference, plus one corrected note on +0x46D, 2026-10-22). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
