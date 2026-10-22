@@ -44,3 +44,16 @@ Numbers from `saves/run0-start-AUTO0720-seed12345.SAV` (turn 0720) and run 0's `
 | P12 | Run 0: Carthage declared war between 0727 and 0728 and landed 28,800 troops by sea on 0737 | A second army of about 20,000 (HI + archers) mobilised at Rome by 0726 | Every army needs supplies: two armies in Winter need about twice the city stock (rules-digest §2) |
 
 **Proposed for the run (bot):** HI and archers for the field armies (they beat Gaul's LI: matrix HI→LI 60, archers ×3 in sieges), LI as cheap mass where the money runs short (150 talents per 15,000); recruit at Rome, Luceria and Arretium (fortified to 75 on turn 1 as in run 0).
+
+### Lessons from run 0 that the bot applies (bot's rules, from `runs/0/debrief.md`)
+
+| # | Lesson (run 0 evidence) | Rule in run 1 |
+|---|---|---|
+| L1 | 0737: attacking Gaul's 88,800 at ratio 3.13 destroyed Gaul's army but cost 73 % of Rome's (`AUTO0737.SAV` → `AUTO0738.SAV`) | P1′ k = 5; when short of it, wait for the next mobilisation or let the enemy come to Rome's cities (in Winter a starving enemy weakens on its own) |
+| L2 | 0736–0737: an archer army walking alone was destroyed by Carthage's landing | no army moves alone within an enemy army's reach (its moves + 1, or a fleet's reach along the coast); recruits mobilise where the field army can absorb them, or stay in the queue (queued troops add half to the city's siege defence) |
+| L3 | Joining armies averages morale by troops: fresh recruits pull veterans down | compute the strength ratio after the join, with the joined morale; join recruits a turn before a battle only if the ratio still passes |
+| L4 | Winter (0739–0743) emptied the captured cities' stocks; army 0 fell to 31 % supply | plan Winter by stock, not by city count: every city loses 2 × pop a turn from Winter week 1. Stop campaigning by Autumn week 9 and route each army past several stocked cities; two armies need two separate supply areas |
+| L5 | 0743: Taurasia (loyalty 50, defence about 12,000–20,000) fell to Carthage; new conquests have low loyalty and no garrison | accepted under P8 (towns may be lost). Where it is cheap, fortify one captured city near the front to 75 and queue units there: it then recruits and holds |
+| L6 | Carthage declared war in Summer week 3–5 (0727–0728; also the B11 staging) and landed 28,800 by sea | P12: the southern army stands near the coast south of Rome by Summer week 1; watch Carthaginian fleets each turn |
+| L7 | Harness: a 0-move attack does nothing (river steps cost one more than the planner said); the "All cities" row shifts the recruit list; army ids renumber after merges; relation refusals read as empty text | walks keep 2 moves spare and every attack's effect is checked on the save; list rows are found by caption; ids are re-read from every save; refusals are read from the relation value |
+| L8 | Trade: Ptolemaic refused twice; Illyria allied with Carthage (0731) and the trade ended | try every free slot each turn against the richest nation that has not refused this quarter; expect an AI that allies with an enemy to be at war with Rome at once (`findings/2026-10-22-ai-declares-war-on-a-human-seat.md`, addendum) |
