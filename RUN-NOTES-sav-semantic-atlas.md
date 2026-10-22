@@ -252,3 +252,13 @@ Fixed:
 
 Receipts invariants-*-v2 are recorded (v1 kept). Ledger v10 is authoritative.
 The invariants test has 11 cases.
+
+PRs #123/#124 merged at main `de952d1`. Increments 9-10 relayed to "IC2 Research" (status "delivered").
+**Last delivered findings baseline: `de952d113d75b3ccacbeb51b47b404777e3f76a2`.**
+
+## END: increments 9-10 delivered
+
+Ledger v10 is authoritative. Open:
+- a native rebellion/revival observation;
+- independent (other-family) review if wanted;
+- an optional release of run-exp-sav-aboard107 (2 saves on Drive).
