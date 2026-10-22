@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v10.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v10.csv) (increment 10: review corrections). New evidence should update its
+[`field-map-v11.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v11.csv) (increment 11: rebellion observed natively). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -686,6 +686,29 @@ and in receipts v2:
        crafted ones.
 7. **Test coverage.** The invariants test now has 11 cases, including
    negative fort and army-cell cases.
+
+## Increment 11: rebellion and revival observed natively (2026-10-22)
+
+[run-exp-sav-rebellion107](../runs/experiments/data/run-exp-sav-rebellion107/README.md)
+(owner-approved). Starting from research's natural week-11 save, only city
+loyalties were changed, and one End turn was played. One quarterly loop ran.
+
+- **Revival.** Dead Galatia came back with all 8 of its allegiance cities.
+  - Its capital is the strongest of them (Ancyra), with marker owner + 84;
+    conqueror is −1, tax is 20 and the leader is new.
+  - **Relations match increment 10's correction, not the earlier "peace with
+    everyone":** Seleucid ↔ Galatia is −8, thawed to −7 by the autosave, and
+    Media's −8 toward Galatia was kept.
+- **Return home.** A city held by a foreign owner whose allegiance nation is
+  alive went back to it (Agrigentum → Greece).
+- **Owner = allegiance.** Ebora went to the bordering nation with the best
+  `cities − 2 × distance` (Gaul, −83, against Carthage, −124). No
+  Carthaginian army was within 10 tiles, so the at-war branch did not apply.
+- **Capitals don't rebel.** A capital at loyalty 5 did not rebel.
+- **Not exercised:** the at-war branch (an enemy army within distance < 10).
+
+[`field-map-v11.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v11.csv)
+adds this evidence.
 
 ## Field identity and alias corrections already supported
 
