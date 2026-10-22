@@ -18,6 +18,12 @@
 - Nothing is lost and nothing is capped: the whole purse and the whole stock move (Arretium ends at 320, above its 150
   start; no city supply cap applied here). The troops and ships themselves are simply gone (no refund for them).
 
+## Addendum: two adjacent own cities (code only, from research's intake, PR #59)
+
+`FUN_004494e4` loops the x offset outside and the y offset inside, and overwrites its result on every own-city match. So
+when two own cities are adjacent, the **last** match receives the supplies: the largest dx, then the largest dy. Not tried
+in play.
+
 ## What this does not establish
 
 - One play each. A unit next to **two** own cities (which city receives the supplies) was not tried; the code takes the city
