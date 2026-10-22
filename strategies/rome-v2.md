@@ -23,7 +23,7 @@ rome-v1's P1–P7 stay, with run 0's corrections (P1 uses the real melee matrix,
 
 | # | Principle | How the bot checks it from the save |
 |---|---|---|
-| P1′ | Attack a field army only at matchup strength ≥ k × the defender's, **k = 5** (run 0 calibration; k = 3 only if the battle destroys the enemy's last army). Compute the ratio after any joins | every attack order logs both strengths and the ratio |
+| P1′ | Attack a field army only at matchup strength ≥ k × the defender's, **k = 3** (the owner's choice, 2026-10-22; the ratio is matrix-weighted, so 3 ≈ an HI-heavy Roman army at about 0.6 of the enemy's troops; run 0's 3.13 battle won but cost 73 %). Compute the ratio after any joins; log every battle and recalibrate k after the run | every attack order logs both strengths and the ratio |
 | P8 | **The armies come first, the towns second**: never trade an army for a town. A town may be left to the enemy if holding it would risk an army | every turn: no army is left where an enemy army of more than 1/k of its strength can reach it next turn, unless it is the planned battle |
 | P9 | **Recruit like there is no tomorrow from turn 1**: every recruiting city queues units every turn while money and mobilisation allow | the queue is never below what the treasury and mobilisation allow; the reason for every unused recruiting turn is logged |
 | P10 | **Spend into debt down to the debt line + 1,000**: the line is −(wealth div 500) talents, below which the game deposes the human leader | before every spending order: treasury after the order ≥ −(wealth div 500) + 1,000, with wealth read from the current save |
@@ -49,7 +49,7 @@ Numbers from `saves/run0-start-AUTO0720-seed12345.SAV` (turn 0720) and run 0's `
 
 | # | Lesson (run 0 evidence) | Rule in run 1 |
 |---|---|---|
-| L1 | 0737: attacking Gaul's 88,800 at ratio 3.13 destroyed Gaul's army but cost 73 % of Rome's (`AUTO0737.SAV` → `AUTO0738.SAV`) | P1′ k = 5; when short of it, wait for the next mobilisation or let the enemy come to Rome's cities (in Winter a starving enemy weakens on its own) |
+| L1 | 0737: attacking Gaul's 88,800 at ratio 3.13 destroyed Gaul's army but cost 73 % of Rome's (`AUTO0737.SAV` → `AUTO0738.SAV`) | P1′ k = 3 (owner); when short of it, wait for the next mobilisation or let the enemy come to Rome's cities (in Winter a starving enemy weakens on its own). Above k, prefer the battle that leaves Rome's army able to fight again before the next enemy arrives |
 | L2 | 0736–0737: an archer army walking alone was destroyed by Carthage's landing | no army moves alone within an enemy army's reach (its moves + 1, or a fleet's reach along the coast); recruits mobilise where the field army can absorb them, or stay in the queue (queued troops add half to the city's siege defence) |
 | L3 | Joining armies averages morale by troops: fresh recruits pull veterans down | compute the strength ratio after the join, with the joined morale; join recruits a turn before a battle only if the ratio still passes |
 | L4 | Winter (0739–0743) emptied the captured cities' stocks; army 0 fell to 31 % supply | plan Winter by stock, not by city count: every city loses 2 × pop a turn from Winter week 1. Stop campaigning by Autumn week 9 and route each army past several stocked cities; two armies need two separate supply areas |
