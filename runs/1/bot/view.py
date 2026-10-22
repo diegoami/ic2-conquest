@@ -44,6 +44,10 @@ def main(turn, nations, cities):
                 print("city %3d %-12s %-6s (%3d,%3d) loy %3d stock %4d fort %3d pop %3d def %6d" % (
                     c["id"], c["name"], sav.NATIONS[c["owner"]][:6], c["x"], c["y"], c["loyalty"], c["supplies"], c["fort"],
                     c["pop"], sav.siege_defence(s, c)))
+    if "--fleets" in sys.argv:
+        for f in s["fleets"]:
+            if f.get("owner") in nations:
+                print("fleet", {k: v for k, v in f.items() if k not in ("raw",)})
     print("news:", [n.strip() for n in s["news"]][-14:])
 
 

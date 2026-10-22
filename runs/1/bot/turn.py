@@ -317,13 +317,21 @@ def do_order(g, o, log):
                     break
             elif op == "mobilize":
                 before = set(g.roman_armies())
+                q0 = len(g.rome()["recruit_slots"])
                 r["texts"] += g.mobilize(o["row"], o["units"])
                 after = g.roman_armies()
+                q1 = len(g.rome()["recruit_slots"])
                 new = sorted(set(after) - before)
                 r["new_armies"] = {i: after[i] for i in new}
+                r["slots"] = (q0, q1)
                 if new:
                     g.last_new = new[-1]
                     r["ok"] = True
+                    break
+                if q1 < q0:
+                    # run 1, 0726: the units joined the army standing at Chebyshev 1 from the city (no new army);
+                    # never retry then (a retry would mobilise the next rows)
+                    r["ok"] = "joined an adjacent army"
                     break
                 if r["texts"]:
                     break

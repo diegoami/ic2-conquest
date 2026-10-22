@@ -1,0 +1,6 @@
+[
+ {"op": "recruit", "city_name": "Luceria", "city": 110, "type": "ar", "troops": 3500},
+ {"op": "supply", "army": 9},
+ {"op": "goto", "army": 9, "adjacent_to": [99, 36]},
+ {"op": "goto", "army": 0, "adjacent_to": [99, 36]}
+]
