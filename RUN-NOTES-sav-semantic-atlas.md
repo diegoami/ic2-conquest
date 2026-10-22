@@ -219,3 +219,13 @@ PR #120 merged at main `b4f17a4`. Increment 7 relayed to "IC2 Research" (status 
 FUN_0044C204, FUN_0044C360 and FUN_0044B8D0 are read: capitals never rebel,
 and the revival threshold is more than 7 cities with loyalty < 40. Ledger v8
 is authoritative.
+
+PR #121 merged at main `e8c8e5d`. Increment 8 relayed to "IC2 Research" (status "delivered").
+**Last delivered findings baseline: `e8c8e5d35ddd15ea51a6f71f693a52e70f58ad06`.**
+
+## END: increments 7-8 delivered
+
+Ledger v8 is authoritative. Open:
+- the aboard links and the battle-grid count (no natural cases in the corpus; a game run is needed);
+- native observation of a rebellion or revival;
+- independent review of increments 3-8.
