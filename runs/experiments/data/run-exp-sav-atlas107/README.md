@@ -159,3 +159,6 @@ What the receipts do **not** show:
 ```
 python3 scripts/sav_export_policy_check.py CANDIDATE.SAV [--source ORIGINAL.SAV] --out <new-name>.json
 ```
+- `export-policy-v3/` (current): adds the required rule `city_allegiance_in_range` (research's intake found the
+  allegiance refusal unenforced). Same inputs and the same verdicts as v2: 14/14 identity accepted, 14/14
+  from-scratch refused for residue only; private bundle 3 pass, 2 tombstone and 16 battle-block refusals.
