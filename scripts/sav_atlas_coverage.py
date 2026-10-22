@@ -4,7 +4,7 @@
     python3 scripts/sav_atlas_coverage.py                       # static check only
     python3 scripts/sav_atlas_coverage.py --root DIR SAV... --out runs/experiments/data/run-exp-sav-atlas107/<name>.json
 
-Static check: every record type's rows in the field map (default field-map-v11.csv;
+Static check: every record type's rows in the field map (default field-map-v12.csv;
 `--field-map` selects another, e.g. v1) tile its stride
 exactly (no gap, no overlap; `rec:<type>` rows nest a sub-record array), every
 row has a known semantic class, and the nation rows have exactly the ranges of
@@ -30,7 +30,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "runs" / "experiments" / "data"
-FIELD_MAP = DATA / "run-exp-sav-atlas107" / "field-map-v11.csv"  # v1-v10 kept beside it
+FIELD_MAP = DATA / "run-exp-sav-atlas107" / "field-map-v12.csv"  # v1-v11 kept beside it
 NATION_MATRIX = DATA / "run-exp-sav-export37" / "nation-matrix-v2.csv"
 
 RECORD_LEN = {"map_cell": 2, "city": 34, "army_count": 2, "army": 656, "army_slot": 32,

@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v11.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v11.csv) (increment 11: rebellion observed natively). New evidence should update its
+[`field-map-v12.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v12.csv) (increment 11 with the g4 cross-reference). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -705,10 +705,28 @@ loyalties were changed, and one End turn was played. One quarterly loop ran.
   `cities − 2 × distance` (Gaul, −83, against Carthage, −124). No
   Carthaginian army was within 10 tiles, so the at-war branch did not apply.
 - **Capitals don't rebel.** A capital at loyalty 5 did not rebel.
-- **Not exercised:** the at-war branch (an enemy army within distance < 10).
+- **Not exercised here:** the at-war branch (an enemy army within distance
+  < 10).
+
+**Cross-reference (added after the run).** Research's g4 follow-ups
+([`2026-10-12-g4-followups.md`](2026-10-12-g4-followups.md)) had already
+observed rebellion and rebirth in Wine on staged states:
+
+- **(H)** covers the at-war branch: the highest-index war army within
+  Chebyshev < 10 wins.
+- **(J)** documents the same one-sided relations reset of a rebirth
+  (`FUN_0044C360` writes the reborn row directly, then −8 with each previous
+  owner), and the AI trade-partner swap that produces other −8 values.
+
+Increment 11 therefore reproduces g4's rebirth and neighbour results
+independently; it should have cited them before running. With g4, every
+branch of the rule has been observed natively, though only on staged
+states.
 
 [`field-map-v11.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v11.csv)
-adds this evidence.
+adds this evidence, and
+[`field-map-v12.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v12.csv)
+the g4 cross-reference.
 
 ## Field identity and alias corrections already supported
 
