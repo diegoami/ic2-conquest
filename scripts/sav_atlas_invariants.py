@@ -29,7 +29,8 @@ INVARIANTS = {
                    "(marker - 200) mod 16 = owner",
     "army_marker_band_current": "the marker's band equals 200/216/232 by total troops div 1000 <25/<50/else "
                                 "(FUN_0044A80C over FUN_0044A698); a violation is a band not yet refreshed",
-    "army_cell_terrain_or_city": "a live army not aboard has cell = the terrain or city marker under it (0..99)",
+    "army_cell_terrain_or_city": "a live army not aboard stores what its marker covers: on a city tile a city marker of "
+                                 "that city's owner ((cell - 20) mod 16 = owner); elsewhere a terrain code 0..11",
     "aboard_link_army_side": "an army with cell = -1 is the cargo (fleet +22) of exactly one live fleet",
     "aboard_link_fleet_side": "a fleet's cargo index is a live army with cell = -1 and the fleet's owner",
     "fleet_marker": "a launched fleet (countdown -1) has map[x][y] = owner + 300/316/332 by ships <25/<50/else "
@@ -48,7 +49,8 @@ INVARIANTS = {
     "slot_troops_nonnegative": "slot troops >= 0 (increment 5)",
     "recruit_city_index": "a recruit entry with troops > 0 names a city index 0..333",
     "merc_live_on_city": "a live merc slot (troops >= 0) sits on a city tile (restock copies template positions)",
-    "fort_encoding": "fort <= 100, or pending*100 + current with current <= 100",
+    "fort_encoding": "fort >= 0, and either fort <= 100 or (pending = fort div 100 >= 1, current = fort mod 100) "
+                     "with pending + current <= 100 (hypothesis: pending points cannot lift the fort past 100)",
     "news_index": "news index in -1..39",
     "battle_grid_count": "with a battle block, the grid holds one non-50 icon per battle slot with troops > 0",
 }
@@ -74,16 +76,19 @@ def check(b):
     army = [struct.unpack_from("<8h", b, a0 + 656 * k) for k in range(A)]
     fleet = [struct.unpack_from("<13h", b, f0 + 26 * k) for k in range(F)]
     city = [struct.unpack_from("<10h", b, c0 + 34 * i + 14) for i in range(334)]   # x y owner alleg loyal sup fort pop max trib
+    city_at = {(c[0], c[1]): c[2] for c in city}                  # tile -> owning nation
     for k, (x, y, own, mv, cl, *_r) in enumerate(army):
         if own < 0:
             continue
         if cl != -1:
+            on_city = city_at.get((x, y))
+            t("army_cell_terrain_or_city", (20 <= cl <= 99 and (cl - 20) % 16 == on_city) if on_city is not None
+              else 0 <= cl <= 11, k)
             total = sum(i16(b, a0 + 656 * k + 16 + 32 * s + 4) for s in range(20)) or 1
             band = 200 if total // 1000 < 25 else 216 if total // 1000 < 50 else 232
             m = cell(x, y) if 0 <= x < W and 0 <= y < H else None
             t("army_marker", m is not None and 200 <= m <= 247 and (m - 200) % 16 == own, k)
             t("army_marker_band_current", m == own + band, k)
-            t("army_cell_terrain_or_city", 0 <= cl <= 99, k)
         else:
             carriers = [j for j, f in enumerate(fleet) if f[4] >= 0 and f[11] == k]
             t("aboard_link_army_side", len(carriers) == 1, k)
@@ -111,8 +116,8 @@ def check(b):
         owned[own].add(i)
         m = cell(x, y)
         t("city_marker", 20 <= m <= 99 and (m - 20) % 16 == own, i)
-        fort = _r[4]
-        t("fort_encoding", fort <= 100 or fort % 100 <= 100, i)
+        fort = _r[3]                                    # _r = allegiance, loyalty, supplies, fort, pop, ...
+        t("fort_encoding", fort >= 0 and (fort <= 100 or fort // 100 + fort % 100 <= 100), i)
     for n in range(16):
         o = n0 + 1172 * n
         lst = []

@@ -233,3 +233,22 @@ Ledger v8 is authoritative. Open:
 ## 2026-10-22 increment 9: aboard and battle grid (owner-approved run + releases)
 
 The battle grid holds on research natural saves (6/6, 15/15). Natural embark run-exp-sav-aboard107: links hold in 2/2. Saves on Drive. Ledger v9 is authoritative. A separate same-model review of increments 3-8 is running.
+
+## 2026-10-22 increment 10: review corrections
+
+A separate same-model review of increments 3-8 ran; the report is kept in the
+session scratchpad, and its findings are in the finding's increment 10.
+Upheld: INERT, DAT layout, route/moves, battle side, residue, city-list order,
+markers, rebellion constants.
+
+Fixed:
+- B1: the empty fort invariant; a negative test then showed it also read the
+  population word.
+- B2: the revival relations.
+- I1: the army-cell check.
+- I2: the neighbours writer artefact (documented in sav_atlas_asm.py).
+- I3: route residue.
+- M1-M7.
+
+Receipts invariants-*-v2 are recorded (v1 kept). Ledger v10 is authoritative.
+The invariants test has 11 cases.

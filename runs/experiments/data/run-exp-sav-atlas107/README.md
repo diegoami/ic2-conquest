@@ -3,8 +3,15 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v9.csv` (**authoritative**, increment 9): v8 plus the natural
-  aboard and battle-grid evidence. The checker defaults to v9.
+- `field-map-v10.csv` (**authoritative**, increment 10): v9 with the review
+  corrections (revival relations, fort and army-cell invariants, the
+  neighbours writer, route residue, battle copy-in, text helpers, allegiance
+  effects). The checker defaults to v10.
+- `invariants-*-v2.json`: the corrected checker. In v1 the fort check was
+  empty and read the population word, and the army-cell check was weaker;
+  v1 is kept as measured.
+- `field-map-v9.csv` (increment 9): v8 plus the natural aboard and
+  battle-grid evidence.
 - `invariants-battle-releases-v1.json` (+ `.sha256`): the invariant checker on
   research's natural battle saves (`SI_*`, `gate2_a_BATTLE*`, release
   `run-exp-battle-probe`), downloaded outside git.

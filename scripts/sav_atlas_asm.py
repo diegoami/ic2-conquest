@@ -23,7 +23,7 @@ Each hit is classed write, read or escape, with the instruction address.
 Heuristic limits, kept explicit: register facts flow only along the linear
 order (dropped after jmp/ret, kept across a fall-through loop head); an index
 term is assumed to be a multiple of the record stride when it is scaled by the
-stride; a block whose length is not a known immediate (a computed `ecx`, a
+stride (a known false positive: [record + i*2 + disp] with an element-sized scale is credited to the field at disp, e.g. FUN_0044B8F4's list terminator at +0x46; see increment 10); a block whose length is not a known immediate (a computed `ecx`, a
 string copy) is credited to the field at its first byte only; any
 `call [reg]` / `call [reg+4]` with a tracked edx is taken as a TStream
 Read / Write; other indirect calls are escapes. It is a lead index, not alias closure. Output holds
