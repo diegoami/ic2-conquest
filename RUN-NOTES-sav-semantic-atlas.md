@@ -269,3 +269,7 @@ run-exp-sav-rebellion107 confirms the revival (and the review correction on rela
 
 PR #126 merged at main `b3cf8dc`. Increment 11 relayed to "IC2 Research" (status "delivered").
 **Last delivered findings baseline: `b3cf8dce1726a228d6ac3a9dc29f2e93daacf970`.**
+
+## 2026-10-22 g4 cross-reference
+
+Lesson: findings/2026-10-12-g4-followups.md (H, J) had already observed the at-war rebellion branch and the rebirth relations in Wine. Increment 11 reproduced part of it without citing it first. Ledger v12 corrects the uncertainty. Next time: grep findings/ for the mechanic before proposing a run.

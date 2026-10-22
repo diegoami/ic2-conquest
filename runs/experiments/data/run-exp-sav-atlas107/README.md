@@ -3,9 +3,11 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v11.csv` (**authoritative**, increment 11): v10 plus the native
+- `field-map-v12.csv` (**authoritative**): v11 with the allegiance row's
+  uncertainty updated from research's g4 follow-ups (H: at-war branch; J:
+  rebirth relations). The checker defaults to v12.
+- `field-map-v11.csv` (increment 11): v10 plus the native
   rebellion and revival evidence of [run-exp-sav-rebellion107](../run-exp-sav-rebellion107/README.md).
-  The checker defaults to v11.
 - `field-map-v10.csv` (increment 10): v9 with the review
   corrections (revival relations, fort and army-cell invariants, the
   neighbours writer, route residue, battle copy-in, text helpers, allegiance
