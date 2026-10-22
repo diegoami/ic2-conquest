@@ -30,7 +30,7 @@ Approved by the owner on 2026-10-22 (issue #133).
 | M08_*, M09_*, M06_01..08 | the same game played on: End turn to 0721..0726 (autosaves kept as `M133_session1_AUTO07xx.SAV`); the tactical battle M06_01..08 happened during the AI turn after 0723 (Gaul attacked the new Roman army) |
 | M05_01..09 | `saves/fleet-port-antium-0734.SAV`; M05_10..12 `saves/fleet-split-antium-0734.SAV`; M05_13..16 run0 start |
 | M06_09..14 | new game as Seleucid (`M133_seleucid_new_0720.SAV`, seed 12345), then End turn (`M133_seleucid_AUTO0721.SAV`) |
-| M06_15..23 | `M133_session1_AUTO0722.SAV` in the original exe: Rome's army 0 attacks the Gaul army next to it |
+| M06_15..23 | `M133_session1_AUTO0722.SAV` in the original exe: Rome's army 0 moved next to the Gaul army 9 and attacked it; Rome won (23,700 -> 10,746 against 44,757 -> 0, captured 96 talents and 316 tons), news "Rome destroys army of Gaul.", no peace offer (the loser was destroyed). The battle took about 15 minutes with the default delays |
 
 ## Progress
 
