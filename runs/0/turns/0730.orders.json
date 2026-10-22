@@ -1,0 +1,9 @@
+[
+ {"op": "recruit", "city_name": "Rome", "city": 85, "type": "hi", "troops": 3000},
+ {"op": "supply", "army": 9},
+ {"op": "goto", "army": 9, "x": 97, "y": 33},
+ {"op": "supply", "army": 0},
+ {"op": "goto", "army": 0, "x": 96, "y": 33},
+ {"op": "join", "army": 9},
+ {"op": "join", "army": 0}
+]

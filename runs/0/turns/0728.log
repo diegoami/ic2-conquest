@@ -1,0 +1,11 @@
+12:59:51 turn 0728: load /home/user/ic2-conquest/artifacts/run-0/270BC-summer/AUTO0728.SAV (sha 5b20fbe6028f8cb6) seed 12353
+12:59:56 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":117,"sha256_12":"341f52f00b6d"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+13:00:07 seed line S 0000012353; popups at load []
+13:00:32 order mobilize -> ok=True {'attempts': 1, 'ok': True, 'texts': []}
+13:00:51 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (0, 151), 'money': (0, 0)}
+13:01:06 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (96, 26), 'path': [(96, 26), (95, 27), (94, 28), (94, 29), (94, 30), (95, 31), (96, 31)], 'path_cost': 9, 'reach_this_turn': (96, 31), 'to': (96, 31), 'moves_left': 0}
+13:01:13 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (101, 34), 'path': [(101, 34), (100, 34), (99, 34), (98, 33), (97, 33)], 'path_cost': 7, 'reach_this_turn': (97, 33), 'to': (97, 33), 'moves_left': 3}
+13:01:17 order join -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'armies': ({0: 27728, 9: 5000, 10: 3500, 11: 15000}, {0: 27728, 10: 8500, 11: 15000})}
+13:01:18 end turn
+13:01:30 autosave AUTO0729.SAV; texts []; battles 0
+13:01:31 done: /home/user/ic2-conquest/artifacts/run-0/270BC-summer/AUTO0729.SAV sha ab381767ba3f6c6d

@@ -1,0 +1,13 @@
+13:30:43 turn 0743: load /home/user/ic2-conquest/artifacts/run-0/270BC-winter/AUTO0743.SAV (sha ff87d559329dafa9) seed 12368
+13:30:48 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":118,"sha256_12":"fd66da6d7781"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+13:30:59 seed line S 0000012368; popups at load []
+13:31:14 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (90, 26), 'path': [(90, 26), (91, 26), (92, 27), (93, 27), (94, 28), (95, 28)], 'path_cost': 5, 'reach_this_turn': (95, 28), 'to': (95, 28), 'moves_left': 5}
+13:31:27 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (36, 62), 'money': (296, 296)}
+13:31:29 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (95, 28), 'path': [(95, 28), (96, 28)], 'path_cost': 1, 'reach_this_turn': (96, 28), 'to': (96, 28), 'moves_left': 4}
+13:31:40 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (62, 93), 'money': (296, 296)}
+13:31:43 order goto -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (96, 28), 'path': [(96, 28), (96, 29)], 'path_cost': 2, 'reach_this_turn': (96, 29), 'to': (96, 29), 'moves_left': 2}
+13:31:53 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (93, 114), 'money': (296, 296)}
+13:32:05 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (44, 66), 'money': (0, 0)}
+13:32:06 end turn
+13:32:20 autosave AUTO0744.SAV; texts ['e Greece wants to rade with Rome. oe']; battles 0
+13:32:21 done: /home/user/ic2-conquest/artifacts/run-0/269BC-spring/AUTO0744.SAV sha b44fce66f7b722b8

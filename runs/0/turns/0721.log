@@ -1,0 +1,14 @@
+12:37:52 turn 0721: load /home/user/ic2-conquest/artifacts/run-0/270BC-spring/AUTO0721.SAV (sha c35c0467763150ff) seed 12346
+12:37:57 environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"Inter","MS Sans Serif":"Inter","liberation_count":12,"tahoma_wine":false},"prefix_fonts":{"count":117,"sha256_12":"341f52f00b6d"},"wine":"wine-9.0 (Ubuntu 9.0~repack-4build3)","xvfb_screen":{"error":"FileNotFoundError: [Errno 2] No such file or directory: 'xdpyinfo'"}}
+12:38:11 seed line S 0000012346; popups at load ['e Cetiberia wants to trade with Rome. oe']
+12:38:23 order relation -> ok=False {'attempts': 1, 'ok': False, 'texts': [''], 'value': 0}
+12:38:38 order relation -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'value': 1}
+12:38:38 order relation -> ok=skipped {'attempts': 1, 'ok': 'skipped', 'texts': [], 'skipped': '3 trade slots already filled'}
+12:38:55 order recruit -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'new_slots': [{'slot': 6, 'state': 0, 'type': 'hi', 'troops': 6000, 'city': 81}], 'treasury': 833}
+12:39:08 order supply -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'supplies': (191, 238), 'money': (100, 100)}
+12:39:15 order move -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (113, 45), 'to': (104, 36), 'moves_left': 0}
+12:39:18 order move -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'from': (100, 37), 'to': (103, 36), 'moves_left': 2}
+12:39:21 order join -> ok=True {'attempts': 1, 'ok': True, 'texts': [], 'armies': ({0: 23700, 1: 25868}, {0: 49568})}
+12:39:22 end turn
+12:39:33 autosave AUTO0722.SAV; texts []; battles 0
+12:39:34 done: /home/user/ic2-conquest/artifacts/run-0/270BC-spring/AUTO0722.SAV sha 1bdd987f323cef88

@@ -1,0 +1,10 @@
+[
+ {"op": "relation", "nation": 3, "kind": "trade", "only_if_free_trade_slot": true},
+ {"op": "relation", "nation": 8, "kind": "trade", "only_if_free_trade_slot": true},
+ {"op": "relation", "nation": 11, "kind": "trade", "only_if_free_trade_slot": true},
+ {"op": "recruit", "row": 0, "city": 81, "type": "hi", "troops": 6000},
+ {"op": "supply", "army": 0},
+ {"op": "move", "army": 1, "x": 104, "y": 36},
+ {"op": "move", "army": 0, "x": 103, "y": 36},
+ {"op": "join", "army": 0}
+]

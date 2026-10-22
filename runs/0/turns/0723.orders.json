@@ -1,0 +1,7 @@
+[
+ {"op": "relation", "nation": 13, "kind": "trade", "only_if_free_trade_slot": true},
+ {"op": "relation", "nation": 12, "kind": "trade", "only_if_free_trade_slot": true},
+ {"op": "relation", "nation": 10, "kind": "trade", "only_if_free_trade_slot": true},
+ {"op": "goto", "army": 0, "adjacent_to": [94, 27]},
+ {"op": "attack", "army": 0, "x": 94, "y": 27}
+]
