@@ -3,9 +3,13 @@
 Task: [conquest issue #107](https://github.com/diegoami/ic2-conquest/issues/107). Finding:
 [original SAV semantic atlas](../../../../findings/2026-10-21-original-sav-semantic-atlas.md).
 
-- `field-map-v8.csv` (**authoritative**, increment 8): v7 plus the
-  rebellion and revival rule on the allegiance, capital and map rows. The
-  checker defaults to v8.
+- `field-map-v9.csv` (**authoritative**, increment 9): v8 plus the natural
+  aboard and battle-grid evidence. The checker defaults to v9.
+- `invariants-battle-releases-v1.json` (+ `.sha256`): the invariant checker on
+  research's natural battle saves (`SI_*`, `gate2_a_BATTLE*`, release
+  `run-exp-battle-probe`), downloaded outside git.
+- `field-map-v8.csv` (increment 8): v7 plus the rebellion and revival rule
+  on the allegiance, capital and map rows.
 - `field-map-v7.csv` (increment 7): v6 plus the invariant results on the
   context-dependent rows, and the city-list order (by name).
 - `invariants-private-bundle-v1.json`, `invariants-public-v1.json`: from

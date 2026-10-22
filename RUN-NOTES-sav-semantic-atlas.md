@@ -229,3 +229,7 @@ Ledger v8 is authoritative. Open:
 - the aboard links and the battle-grid count (no natural cases in the corpus; a game run is needed);
 - native observation of a rebellion or revival;
 - independent review of increments 3-8.
+
+## 2026-10-22 increment 9: aboard and battle grid (owner-approved run + releases)
+
+The battle grid holds on research natural saves (6/6, 15/15). Natural embark run-exp-sav-aboard107: links hold in 2/2. Saves on Drive. Ledger v9 is authoritative. A separate same-model review of increments 3-8 is running.

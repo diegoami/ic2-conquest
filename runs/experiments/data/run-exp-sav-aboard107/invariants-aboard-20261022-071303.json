@@ -1,0 +1,532 @@
+{
+ "field_map": "field-map-v8.csv",
+ "field_map_sha256": "277b46366cbf521c8c3444ef54bf5590d18ef6ad4e2b9cfc7f0bbb1bbe5ae920",
+ "invariants": {
+  "army_marker": "a live army not aboard (cell != -1) has an army marker of its owner at (x, y): 200..247 with (marker - 200) mod 16 = owner",
+  "army_marker_band_current": "the marker's band equals 200/216/232 by total troops div 1000 <25/<50/else (FUN_0044A80C over FUN_0044A698); a violation is a band not yet refreshed",
+  "army_cell_terrain_or_city": "a live army not aboard has cell = the terrain or city marker under it (0..99)",
+  "aboard_link_army_side": "an army with cell = -1 is the cargo (fleet +22) of exactly one live fleet",
+  "aboard_link_fleet_side": "a fleet's cargo index is a live army with cell = -1 and the fleet's owner",
+  "fleet_marker": "a launched fleet (countdown -1) has map[x][y] = owner + 300/316/332 by ships <25/<50/else (FUN_0044A878)",
+  "fleet_countdown": "countdown is -1 (launched) or an even 0..24 (24 at order, -2 per tick; FUN_0044A004, FUN_004514EC)",
+  "fleet_building_city": "under construction, +20 is a city index 0..333",
+  "fleet_condition": "launched, +20 (condition) is 0..100",
+  "city_marker": "map at a city tile is 20 + owner + 16 * variant, i.e. (marker - 20) mod 16 = owner",
+  "city_list_equals_owned": "a nation's city list up to the first -1 is the set of cities it owns",
+  "city_list_sorted": "the city list is in byte order of the city names (FUN_0044B8F4 inserts with StrComp)",
+  "city_count": "for a nation with a capital (not eliminated), NATION.cities equals the length of the city list",
+  "city_count_eliminated": "for an eliminated nation (capital -1), NATION.cities equals the length of the list (a violation is the documented stale count)",
+  "capital_owned": "a capital >= 0 is a city the nation owns",
+  "slots_packed": "in a live army no live slot (troops > 0) follows an empty one",
+  "slot_troops_nonnegative": "slot troops >= 0 (increment 5)",
+  "recruit_city_index": "a recruit entry with troops > 0 names a city index 0..333",
+  "merc_live_on_city": "a live merc slot (troops >= 0) sits on a city tile (restock copies template positions)",
+  "fort_encoding": "fort <= 100, or pending*100 + current with current <= 100",
+  "news_index": "news index in -1..39",
+  "battle_grid_count": "with a battle block, the grid holds one non-50 icon per battle slot with troops > 0"
+ },
+ "groups": {
+  "20261022-071303": {
+   "files": 2,
+   "invariants": {
+    "aboard_link_army_side": {
+     "checked": 2,
+     "violations": 0,
+     "first": []
+    },
+    "slot_troops_nonnegative": {
+     "checked": 560,
+     "violations": 0,
+     "first": []
+    },
+    "slots_packed": {
+     "checked": 560,
+     "violations": 0,
+     "first": []
+    },
+    "army_marker": {
+     "checked": 26,
+     "violations": 0,
+     "first": []
+    },
+    "army_marker_band_current": {
+     "checked": 26,
+     "violations": 0,
+     "first": []
+    },
+    "army_cell_terrain_or_city": {
+     "checked": 26,
+     "violations": 0,
+     "first": []
+    },
+    "fleet_countdown": {
+     "checked": 10,
+     "violations": 0,
+     "first": []
+    },
+    "fleet_condition": {
+     "checked": 6,
+     "violations": 0,
+     "first": []
+    },
+    "fleet_marker": {
+     "checked": 6,
+     "violations": 0,
+     "first": []
+    },
+    "aboard_link_fleet_side": {
+     "checked": 2,
+     "violations": 0,
+     "first": []
+    },
+    "fleet_building_city": {
+     "checked": 4,
+     "violations": 0,
+     "first": []
+    },
+    "city_marker": {
+     "checked": 668,
+     "violations": 0,
+     "first": []
+    },
+    "fort_encoding": {
+     "checked": 668,
+     "violations": 0,
+     "first": []
+    },
+    "city_list_equals_owned": {
+     "checked": 32,
+     "violations": 0,
+     "first": []
+    },
+    "city_list_sorted": {
+     "checked": 32,
+     "violations": 0,
+     "first": []
+    },
+    "city_count": {
+     "checked": 32,
+     "violations": 0,
+     "first": []
+    },
+    "capital_owned": {
+     "checked": 32,
+     "violations": 0,
+     "first": []
+    },
+    "recruit_city_index": {
+     "checked": 204,
+     "violations": 0,
+     "first": []
+    },
+    "merc_live_on_city": {
+     "checked": 100,
+     "violations": 0,
+     "first": []
+    },
+    "news_index": {
+     "checked": 2,
+     "violations": 0,
+     "first": []
+    }
+   }
+  }
+ },
+ "observed_domains": {
+  "ARMY.cell": {
+   "min": -1,
+   "max": 4,
+   "distinct": 3
+  },
+  "ARMY.money": {
+   "min": 0,
+   "max": 992,
+   "distinct": 11
+  },
+  "ARMY.morale": {
+   "min": 51,
+   "max": 73,
+   "distinct": 9
+  },
+  "ARMY.moves": {
+   "min": 0,
+   "max": 10,
+   "distinct": 5
+  },
+  "ARMY.owner": {
+   "min": 0,
+   "max": 15,
+   "distinct": 9
+  },
+  "ARMY.supplies": {
+   "min": 0,
+   "max": 640,
+   "distinct": 14
+  },
+  "ARMY.x": {
+   "min": 43,
+   "max": 307,
+   "distinct": 17
+  },
+  "ARMY.y": {
+   "min": 26,
+   "max": 95,
+   "distinct": 15
+  },
+  "ARMYCOUNT.A": {
+   "min": 14,
+   "max": 14,
+   "distinct": 1
+  },
+  "CITY.allegiance": {
+   "min": 0,
+   "max": 15,
+   "distinct": 16
+  },
+  "CITY.fort": {
+   "min": 10,
+   "max": 98,
+   "distinct": 71
+  },
+  "CITY.loyalty": {
+   "min": 38,
+   "max": 96,
+   "distinct": 49
+  },
+  "CITY.max_pop": {
+   "min": 9,
+   "max": 220,
+   "distinct": 111
+  },
+  "CITY.owner": {
+   "min": 0,
+   "max": 15,
+   "distinct": 16
+  },
+  "CITY.pop": {
+   "min": 9,
+   "max": 220,
+   "distinct": 111
+  },
+  "CITY.supplies": {
+   "min": 90,
+   "max": 2200,
+   "distinct": 117
+  },
+  "CITY.tribute": {
+   "min": 1,
+   "max": 610,
+   "distinct": 68
+  },
+  "CITY.x": {
+   "min": 9,
+   "max": 317,
+   "distinct": 199
+  },
+  "CITY.y": {
+   "min": 2,
+   "max": 136,
+   "distinct": 110
+  },
+  "FLEET.army": {
+   "min": -1,
+   "max": 0,
+   "distinct": 2
+  },
+  "FLEET.cell": {
+   "min": 0,
+   "max": 0,
+   "distinct": 1
+  },
+  "FLEET.city_or_condition": {
+   "min": 96,
+   "max": 258,
+   "distinct": 5
+  },
+  "FLEET.countdown": {
+   "min": -1,
+   "max": 20,
+   "distinct": 5
+  },
+  "FLEET.money": {
+   "min": 0,
+   "max": 979,
+   "distinct": 3
+  },
+  "FLEET.moves": {
+   "min": 0,
+   "max": 26,
+   "distinct": 4
+  },
+  "FLEET.owner": {
+   "min": 0,
+   "max": 7,
+   "distinct": 5
+  },
+  "FLEET.route_x": {
+   "min": -1,
+   "max": -1,
+   "distinct": 1
+  },
+  "FLEET.route_y": {
+   "min": 0,
+   "max": 55,
+   "distinct": 2
+  },
+  "FLEET.ships": {
+   "min": 30,
+   "max": 100,
+   "distinct": 5
+  },
+  "FLEET.supplies": {
+   "min": 0,
+   "max": 630,
+   "distinct": 3
+  },
+  "FLEET.x": {
+   "min": 0,
+   "max": 189,
+   "distinct": 4
+  },
+  "FLEET.y": {
+   "min": 0,
+   "max": 93,
+   "distinct": 5
+  },
+  "FLEETCOUNT.F": {
+   "min": 5,
+   "max": 5,
+   "distinct": 1
+  },
+  "MAP.cell": {
+   "min": 0,
+   "max": 335,
+   "distinct": 82
+  },
+  "MERC.label": {
+   "min": 2,
+   "max": 51,
+   "distinct": 28
+  },
+  "MERC.quality": {
+   "min": 5,
+   "max": 9,
+   "distinct": 5
+  },
+  "MERC.troops": {
+   "min": 960,
+   "max": 15000,
+   "distinct": 49
+  },
+  "MERC.type": {
+   "min": 0,
+   "max": 4,
+   "distinct": 5
+  },
+  "MERC.x": {
+   "min": 9,
+   "max": 317,
+   "distinct": 40
+  },
+  "MERC.y": {
+   "min": 3,
+   "max": 132,
+   "distinct": 38
+  },
+  "NATION.areamap_toggle": {
+   "min": 1,
+   "max": 1,
+   "distinct": 1
+  },
+  "NATION.capital": {
+   "min": 23,
+   "max": 330,
+   "distinct": 16
+  },
+  "NATION.cities": {
+   "min": 8,
+   "max": 62,
+   "distinct": 13
+  },
+  "NATION.cities0": {
+   "min": 8,
+   "max": 62,
+   "distinct": 14
+  },
+  "NATION.conqueror": {
+   "min": -1,
+   "max": -1,
+   "distinct": 1
+  },
+  "NATION.hints": {
+   "min": 1,
+   "max": 1,
+   "distinct": 1
+  },
+  "NATION.human": {
+   "min": 0,
+   "max": 1,
+   "distinct": 2
+  },
+  "NATION.map_filter": {
+   "min": 0,
+   "max": 15,
+   "distinct": 16
+  },
+  "NATION.melee_delay": {
+   "min": 30,
+   "max": 30,
+   "distinct": 1
+  },
+  "NATION.mobilization": {
+   "min": 0,
+   "max": 94,
+   "distinct": 13
+  },
+  "NATION.neighbours": {
+   "min": 2,
+   "max": 34432,
+   "distinct": 16
+  },
+  "NATION.shoot_delay": {
+   "min": 20,
+   "max": 20,
+   "distinct": 1
+  },
+  "NATION.tax": {
+   "min": 5,
+   "max": 33,
+   "distinct": 9
+  },
+  "NATION.tax_base": {
+   "min": 68,
+   "max": 8220,
+   "distinct": 16
+  },
+  "NATION.treasury": {
+   "min": -2509,
+   "max": 13474,
+   "distinct": 17
+  },
+  "NATION.treasury0": {
+   "min": 180,
+   "max": 11000,
+   "distinct": 15
+  },
+  "NATION.unity": {
+   "min": 570,
+   "max": 871,
+   "distinct": 16
+  },
+  "NATION.unknown1": {
+   "min": 0,
+   "max": 0,
+   "distinct": 1
+  },
+  "NATION.view_x": {
+   "min": 55,
+   "max": 92,
+   "distinct": 2
+  },
+  "NATION.view_y": {
+   "min": 35,
+   "max": 45,
+   "distinct": 2
+  },
+  "NATION.wealth": {
+   "min": 399000,
+   "max": 16944000,
+   "distinct": 16
+  },
+  "NATION.wealth0": {
+   "min": 357000,
+   "max": 16944000,
+   "distinct": 16
+  },
+  "NEWS.index": {
+   "min": 39,
+   "max": 39,
+   "distinct": 1
+  },
+  "SLOT.label": {
+   "min": -14848,
+   "max": 30049,
+   "distinct": 72
+  },
+  "SLOT.quality": {
+   "min": -1800,
+   "max": 30561,
+   "distinct": 44
+  },
+  "SLOT.troops": {
+   "min": 0,
+   "max": 13500,
+   "distinct": 74
+  },
+  "SLOT.type": {
+   "min": 0,
+   "max": 4,
+   "distinct": 5
+  },
+  "TRAILER.battle_flag": {
+   "min": 0,
+   "max": 0,
+   "distinct": 1
+  },
+  "TRAILER.current_nation": {
+   "min": 0,
+   "max": 0,
+   "distinct": 1
+  },
+  "TRAILER.main_client_h": {
+   "min": 281,
+   "max": 281,
+   "distinct": 1
+  },
+  "TRAILER.main_client_w": {
+   "min": 650,
+   "max": 650,
+   "distinct": 1
+  },
+  "TRAILER.main_left": {
+   "min": -4,
+   "max": -4,
+   "distinct": 1
+  },
+  "TRAILER.main_top": {
+   "min": -4,
+   "max": -4,
+   "distinct": 1
+  },
+  "TRAILER.offer_from": {
+   "min": -1,
+   "max": -1,
+   "distinct": 1
+  },
+  "TRAILER.offer_type": {
+   "min": 1,
+   "max": 1,
+   "distinct": 1
+  },
+  "TRAILER.season": {
+   "min": 2,
+   "max": 2,
+   "distinct": 1
+  },
+  "TRAILER.seat_index": {
+   "min": 11,
+   "max": 11,
+   "distinct": 1
+  },
+  "TRAILER.week": {
+   "min": 5,
+   "max": 7,
+   "distinct": 2
+  },
+  "TRAILER.year_bc": {
+   "min": 270,
+   "max": 270,
+   "distinct": 1
+  }
+ }
+}

@@ -7,7 +7,7 @@ Track the work in [conquest issue #107](https://github.com/diegoami/ic2-conquest
 Under the session-led workflow (owner, 2026-10-21) review is optional and
 chosen per increment; no review of this entry has been performed yet.
 This entry is the living index for that issue; its authoritative ledger is
-[`field-map-v8.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v8.csv) (increment 8: rebellion rule). New evidence should update its
+[`field-map-v9.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v9.csv) (increment 9: aboard links and battle grid). New evidence should update its
 field ledger and unresolved register, rather than restart overlapping probes.
 
 ## The question
@@ -584,6 +584,31 @@ runs through `FUN_0044C204`.
 home and whether a dead nation can come back. A campaign that did not start
 from the DAT needs a real historical profile for it, not a copy of the
 current owner. The revival has not been observed in a game.
+
+## Increment 9: aboard links and battle grid on natural saves (2026-10-22)
+
+[`field-map-v9.csv`](../runs/experiments/data/run-exp-sav-atlas107/field-map-v9.csv)
+adds this evidence; no class changed.
+
+- **Battle grid.** One icon per live battle slot holds in all of research's
+  natural battle saves in release `run-exp-battle-probe`:
+  - 6/6 Save-As-inside-a-battle saves (`SI_*`, normal and lab builds);
+  - 15/15 half-round lab saves (`gate2_a_BATTLE*`).
+
+  The 14 failures of increment 7 were research's crafted stale-grid /
+  same-cell cases. Receipt:
+  [`invariants-battle-releases-v1.json`](../runs/experiments/data/run-exp-sav-atlas107/invariants-battle-releases-v1.json),
+  with the input hashes beside it.
+- **Aboard links: natural embark** ([run-exp-sav-aboard107](../runs/experiments/data/run-exp-sav-aboard107/README.md),
+  owner-approved).
+  - Army 0 boarded fleet 2 by a click. The army took the fleet's tile, with
+    cell −1 and moves 0. The fleet holds cargo index 0 and has moves 0. The
+    army's old tile reverted to terrain.
+  - Both links hold after Save As and after End turn. The tick gives the
+    aboard army moves (9).
+  - Research's cargo saves (`run-exp-naval-battle-cargo`) pass as well
+    (18/18), but they are synthetic edits, so they don't count as evidence of
+    game behaviour.
 
 ## Field identity and alias corrections already supported
 
