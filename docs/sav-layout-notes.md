@@ -1,7 +1,7 @@
 # SAV layout notes (for the Python parser)
 
 > **Superseded in places (2026-10-21):** the field ledger of issue #107,
-> `runs/experiments/data/run-exp-sav-atlas107/field-map-v12.csv` (v1-v11 kept), replaces this
+> `runs/experiments/data/run-exp-sav-atlas107/field-map-v13.csv` (v1-v12 kept), replaces this
 > summary where they differ. It covers fleet +4/+6 (route target), nation
 > +0x424 (colours), +0x486/+0x488 (viewport), trailer +46..53 (main-form
 > geometry: left, top, ClientHeight, ClientWidth), nation +0x450..0x46A/+0x46D/
