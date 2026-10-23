@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build/bin/BroadProbe/debug/BroadProbe.dll",
+    "action",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/P06-rome-imported.json",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/P06-rome-predicted.json",
+    "end"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"action\",\"command\":\"end\",\"Lines\":[\"\\u003E end\",\"Rome (rome) ends its turn.\",\"Macedonia (macedonia) takes its turn: 1 order issued.\",\"Dacia (dacia) takes its turn: 0 orders issued.\",\"Galatia (galatia) takes its turn: 2 orders issued.\",\"Thracia (thracia) takes its turn: 1 order issued.\",\"Illyria (illyria) takes its turn: 0 orders issued.\",\"Numidia (numidia) takes its turn: 0 orders issued.\",\"Ptolemaic (ptolemaic) takes its turn: 1 order issued.\",\"Carthage (carthage) takes its turn: 2 orders issued.\",\"Greece (greece) takes its turn: 0 orders issued.\",\"Media (media) takes its turn: 1 order issued.\",\"Celtiberia (celtiberia) takes its turn: 2 orders issued.\",\"  Weather: rough-sea-painted (week 1).\",\"Gaul (gaul) takes its turn: 2 orders issued.\",\"Bithynia (bithynia) takes its turn: 0 orders issued.\",\"Seleucid (seleucid) takes its turn: 5 orders issued.\",\"Armenia (armenia) takes its turn: 0 orders issued.\",\"Now: Week 3, Summer 270 BC. Active seat: Rome (rome).\",\"News:\",\"  Celtiberia fails to capture Akra Leuke   (Carthage).\",\"  A fleet belonging to Ptolemaic is lost at sea.\",\"   \",\"  Week  3      Summer      270BC\",\"  Capua   (Rome)  falls to Gaul.\",\"  Zela   (Bithynia)  falls to Seleucid.\",\"\"],\"ShouldExit\":false,\"changed\":true,\"before\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":1,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"human\":[\"rome\"],\"armies\":13,\"fleets\":3,\"building\":1,\"cargo\":0,\"recruits\":122,\"eliminated\":[],\"pending\":null},\"after\":{\"turn\":1,\"calendar\":{\"Week\":3,\"SeasonIndex\":1,\"YearBc\":270,\"TurnIndex\":1},\"active\":\"rome\",\"human\":[\"rome\"],\"armies\":14,\"fleets\":2,\"building\":1,\"cargo\":0,\"recruits\":121,\"eliminated\":[],\"pending\":null},\"battleOpen\":false}\n",
+  "stderr": ""
+}

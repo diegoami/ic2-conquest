@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build/bin/BroadProbe/debug/BroadProbe.dll",
+    "action",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S08-celtiberia-imported.json",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S08-celtiberia-predicted.json",
+    "move army-8 35 63"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"action\",\"command\":\"move army-8 35 63\",\"Lines\":[\"\\u003E move army-8 35 63\",\"army-8 moved from (34,63) to (35,63), spending 4 of 8 moves.\",\"\"],\"ShouldExit\":false,\"changed\":true,\"before\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"celtiberia\",\"human\":[\"celtiberia\"],\"armies\":13,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":87,\"eliminated\":[],\"pending\":null},\"after\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"celtiberia\",\"human\":[\"celtiberia\"],\"armies\":13,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":87,\"eliminated\":[],\"pending\":null},\"battleOpen\":false}\n",
+  "stderr": ""
+}

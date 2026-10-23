@@ -1,0 +1,17 @@
+{
+  "remake_main": "ae614899d63ac721ee46d1e3213191fe1f43a676",
+  "read_only_local_base": "a510c33f0aaa2998ff1186127ff18eb13f489496",
+  "change": "PR1353 quality4 fix; compare API reports only these2 production sources and2 test files",
+  "compile_substitutions": [
+    {
+      "path": "src/IC2.Data/SaveArmyTable.cs",
+      "git_blob": "5ab7cb64d312b26339c14b703d6c949f78295334",
+      "sha256": "7aa846559e1dbf95a5a66a3ec9639310719b2dc357675f6d6a81919decb31ffe"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalSaveExporter.cs",
+      "git_blob": "18266d9efb0ef6af5a5eba1d153970a54be57312",
+      "sha256": "22a3571afc3ef36ca3540cb79ac4d00696caf310815930a20346a917e85bd927"
+    }
+  ]
+}

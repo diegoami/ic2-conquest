@@ -1,0 +1,12 @@
+<Project>
+  <Target Name="UsePinnedQualityFourSources" BeforeTargets="CoreCompile">
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'IC2.Data'">
+      <Compile Remove="SaveArmyTable.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/build-overlay/SaveArmyTable.cs" />
+    </ItemGroup>
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'IC2.Engine'">
+      <Compile Remove="Import/OriginalSaveExporter.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/build-overlay/OriginalSaveExporter.cs" />
+    </ItemGroup>
+  </Target>
+</Project>

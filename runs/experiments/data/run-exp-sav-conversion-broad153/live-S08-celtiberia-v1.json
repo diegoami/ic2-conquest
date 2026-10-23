@@ -1,0 +1,89 @@
+{
+  "name": "S08-celtiberia",
+  "case": {
+    "name": "S08-celtiberia",
+    "category": "nation-start",
+    "provenance": "gameplay: first human seat after constructor prelude",
+    "nation": "celtiberia",
+    "seed": 7,
+    "originalAction": {
+      "kind": "move",
+      "army": 8,
+      "x": 35,
+      "y": 63
+    },
+    "remakeCommand": "move army-8 35 63",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "celtiberia",
+      "human": [
+        "celtiberia"
+      ],
+      "armies": 13,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 87,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-S08-celtiberia-v1/Q15308I.SAV",
+      "sha256": "4f1def8f54dc935ec0ea5fba9465f1a8405edc420cfa33c4d09779dae60dba0b",
+      "bytes": 131145
+    },
+    "order": {
+      "file": "live-S08-celtiberia-v1/Q15308O.SAV",
+      "sha256": "69047ee7972c4b5ef65b8b3f00c740dc799692680b1f134557682deaa1b8252b",
+      "bytes": 131145
+    },
+    "reopen": {
+      "file": "live-S08-celtiberia-v1/Q15308R.SAV",
+      "sha256": "69047ee7972c4b5ef65b8b3f00c740dc799692680b1f134557682deaa1b8252b",
+      "bytes": 131145
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "d8f2d4a9cd9f6b974073e9c1ba1fe8126374616234343801dace29347f12a3b0",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 8,
+  "action_output": [
+    [
+      35,
+      63
+    ],
+    []
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

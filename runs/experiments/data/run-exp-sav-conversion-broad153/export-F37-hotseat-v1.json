@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/native-v1/F37-hotseat.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F37-hotseat.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "returncode": 0,
+  "stdout": "Exported '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/native-v1/F37-hotseat.json' (SHA-256 447B770FF01604058E6F493CEC49A41E0317CCBCB61299F4C3E4DFC18AD557D9) to '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F37-hotseat.SAV'.\n  output SHA-256 FDA9CA0AB46007869ABEFF747178208F30CE277BC6F4E79346072E1911405283, 131740 bytes, profile native-state-canonical-v1\n  template '/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV' SHA-256 050BC354F1CBBE374B6A627F06054F2043B9F91A268F6FBFBC18ED1E7E65574C (interface settings only)\n  14 armies, 2 fleets, 35 news lines, F37-hotseat, 270 BC\n  not in the original format: schema and envelope versions, save id and label, provenance\n  not in the original format: world, ruleset and scenario ids (an original save is always classical-mediterranean under classical-faithful)\n  not in the original format: Calendar.TurnIndex (the original keeps no elapsed-turn counter)\n  not in the original format: RandomSeed and draw positions: the original does not restore a random state on load, so future dice differ\n  not in the original format: AI personalities, seat colours and the leader-name pools\n  not in the original format: PopulationAtStart, TreasuryAtStart and CityCountAtStart (score baselines); the original's own start fields get the 270 BC values\n  not in the original format: the first-end news bookkeeping (FirstEndNewsOwed)\n  not in the original format: runtime settings: Computer general, battle speed, display pacing\n  not in the original format: army covered-tile codes, recomputed from the map rather than copied\n  not in the original format: recruitment slot positions (the native state keeps the entries in order; they are written packed from slot 0)\n  Opening the file in the original game is a separate check; this export does not claim it.\n",
+  "stderr": ""
+}
