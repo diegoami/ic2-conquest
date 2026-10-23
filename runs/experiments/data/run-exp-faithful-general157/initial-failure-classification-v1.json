@@ -1,0 +1,7 @@
+{
+  "preparation_v1_failed": true,
+  "reason": "contents API transcoded a legacy-encoded comment; raw local and upstream Git blobs are identical. Raw git/blobs bytes verified and used for v2.",
+  "subsequent_engine_build_v1": "Unchanged baseline build after preparer failure; no overlay existed. NOT a faithful candidate. Preserved for audit.",
+  "valid_candidate": "engine-build-v2 with verified source-pin-v2 and successful behavioral regressions",
+  "original_error": "AssertionError: Source differs from pinned main: src/IC2.Engine/Battle/Tactical/General/GeneralPassTwo.cs"
+}

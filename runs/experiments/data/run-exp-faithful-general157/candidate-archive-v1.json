@@ -1,0 +1,18 @@
+{
+  "archive": "faithful-engine-candidate-v1.tar.gz",
+  "bytes": 600501,
+  "sha256": "7811e54a7f5e1e425dbec0252a2a6266330f57be8d5c286cce023ad897b0c84b",
+  "members": [
+    "engine/IC2.Engine.dll",
+    "engine/IC2.Data.dll",
+    "replay/Replay.dll",
+    "replay/Replay.deps.json",
+    "replay/Replay.runtimeconfig.json",
+    "regression/Regression.dll",
+    "regression/Regression.deps.json",
+    "regression/Regression.runtimeconfig.json"
+  ],
+  "owner_files_included": false,
+  "original_game_exe_dat_included": false,
+  "scope": "Compiled remake engine and verification tools only; not a deployed game build"
+}

@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "run",
+    "--project",
+    "/home/diego/projects/ic2-conquest/runs/experiments/faithful-general157/Regression.csproj",
+    "--artifacts-path",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/regression-after-v1",
+    "-p:EnginePath=/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/engine-build-v2/bin/IC2.Engine/debug/IC2.Engine.dll",
+    "-p:DataPath=/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/engine-build-v2/bin/IC2.Engine/debug/IC2.Data.dll",
+    "--",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-faithful-general157/regression-after-v1.json"
+  ],
+  "returncode": 0,
+  "stdout": "6/6 regression checks pass\n",
+  "stderr": ""
+}

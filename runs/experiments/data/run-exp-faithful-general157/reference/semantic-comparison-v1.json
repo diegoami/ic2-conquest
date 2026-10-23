@@ -1,0 +1,46 @@
+{
+  "scope": "Actual movement steps, pre-rout shot/melee calculations and removal order. Other event families not asserted.",
+  "variants": [
+    {
+      "label": "production",
+      "checks": [
+        {
+          "kind": "move",
+          "original_count": 63,
+          "native_count": 63,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "shot",
+          "original_count": 78,
+          "native_count": 78,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "melee",
+          "original_count": 34,
+          "native_count": 34,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "removal_order",
+          "original_count": 10,
+          "native_count": 10,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "combined_action_order",
+          "original_count": 185,
+          "native_count": 185,
+          "equal": true,
+          "first_difference": null
+        }
+      ],
+      "all_equal": true
+    }
+  ]
+}

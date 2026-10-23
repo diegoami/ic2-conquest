@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "build",
+    "/home/diego/projects/imperial_conquest_2/src/IC2.Engine/IC2.Engine.csproj",
+    "--artifacts-path",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/engine-build-v1",
+    "--nologo",
+    "-v",
+    "q",
+    "-p:CustomAfterMicrosoftCommonTargets=/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-faithful-general157/overlay.targets"
+  ],
+  "returncode": 0,
+  "stdout": "/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n\nBuild succeeded.\n\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n    3 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:03.31\n",
+  "stderr": ""
+}
