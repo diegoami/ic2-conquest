@@ -41,3 +41,9 @@ text, private owner traces/hashes outsideGit, commit/push perbatch/30min.
 Next: publish plan/preflight, retain157open for execution, begin event schema
 and validated movement/decision recorder work. Exact original event logging
 does not exist yet merely because RNGhook tests pass.
+
+## END — plan and phase0preflight ready
+
+PR158publishes requested concrete plan and initial offline work;157remainsOPEN for execution, no claim exactlog/syntheticcampaign isdone. Hook15build/reader checks includingrealEXEscan pass;2060emulated register/flag/stack/seed preservation states match plus fouradditionalboundary/overflow/reentry/mutation tests. Sourcehash/capability andmetadata-onlyprivatecorpusaccess receipts tracked. No neworiginal/gamefixture created/launched, noownerinput/hash/fulltrace exposed. Plan asks phase1inert/completerecorder beforebroaderlivecampaign; no productionfix/rebalance authorized.
+
+Research session was sent plan and asked onlyfor EXISTINGcanonicaloriginal-runtimepass/claims/goal/movement observerpaths toavoidredoingvalidatedwork, no freshresearchrun/merge requested. Existingfindings reporteddeliveredmainbaseline12ae802 remains unchanged (this PR adds aplan, not findings). Nextsession starts phase1schema+originalmovement/decision observer with UIprotocol/hiddenstate/inertness validation; recoverauthenticated318corpusandpinactualcurrent counts, then ownerfirst-divergence and12fixturepilot. No modelagents/reviewers or unrelatedpausedbattlequeuedispatched. Preserveallmeasurements andprivateownerinputs.
