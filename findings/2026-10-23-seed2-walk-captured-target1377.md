@@ -32,6 +32,9 @@ not the KnownFailures registry. No expected-failure exemption, fixture change,
 range substitution or comparison tolerance is used. Fixture pairing is checked
 before every trial, and errors fail the result. State/post comparison means the
 fields checked by those upstream helpers, not every hidden original runtime field.
+The five fixed series also pass strict replay, including `gate2_s2a` explicitly;
+the baseline passes4/5 and fails that exact gate alias. All27 unmodified upstream
+movement/exhausted-movement tests pass on the complete candidate, with no skips.
 
 ## Three reported comparisons, one original trajectory
 
@@ -82,6 +85,10 @@ The guarded correction matches **49/49 Walk endpoints/RNG states** and the full
 **178-action interleaving**:67 movements,62 shots,38 melee exchanges and11 removals.
 It reproduces original Gaul23,431survivors/counter18; the baseline had Gaul23,667
 at counter16. Both sides' observed terminal slots/grid/counter/RNG are compared.
+The original post-rout snapshot at sequence890 also matches an actual native
+observer snapshot on all40 slots/names, grid, claim counts, counter/side and RNG
+before the different next action; see `causal-proof-v1.json`. GUI Selected and
+unobserved machine fields are not asserted equal.
 
 ## Why the earlier capture-only control conflicted
 

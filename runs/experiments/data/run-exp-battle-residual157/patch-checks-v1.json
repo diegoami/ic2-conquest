@@ -1,0 +1,19 @@
+{
+  "read_only": true,
+  "checks": [
+    {
+      "patch": "movement-cached-live.patch",
+      "sha256": "c12fbbd06a71a293d231844cd23d93dde324af5c19de707549b092688846aad0",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "patch": "movement-cached-only.patch",
+      "sha256": "e2c3e60be05b2bbd99ee9aab5b812d8c61b65cf42d736d97db4a8d6ec1b560d7",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

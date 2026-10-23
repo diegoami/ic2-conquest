@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "vstest",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-fixed-cached-live-v1/build/bin/IC2.Engine.Tests/debug/IC2.Engine.Tests.dll",
+    "--TestCaseFilter:FullyQualifiedName~Battle.Tactical.MovementTests|FullyQualifiedName~Battle.Tactical.ExhaustedMovementTests",
+    "--Logger:trx;LogFileName=movement-v1.trx",
+    "--ResultsDirectory:/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/movement-suite-v1"
+  ],
+  "returncode": 0,
+  "stdout": "VSTest version 18.7.0 (x64)\n\nStarting test execution, please wait...\nA total of 1 test files matched the specified pattern.\nResults File: /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/movement-suite-v1/movement-v1.trx\n\nPassed!  - Failed:     0, Passed:    27, Skipped:     0, Total:    27, Duration: 134 ms - IC2.Engine.Tests.dll (net10.0)\n",
+  "stderr": "",
+  "scope": "Unmodified upstream movement/exhausted-movement tests on complete candidate; not full solution/Godot suite"
+}
