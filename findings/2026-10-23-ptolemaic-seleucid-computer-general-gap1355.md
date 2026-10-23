@@ -3,6 +3,9 @@
 **Status:** [confirmed, partial], 2026-10-23. Outcome reproduction and bounded
 first-phase localization under Wine; no production fix or exact original
 instruction/draw attribution.
+Promoted 2026-10-23 into imperial-conquest-2-research at
+[`32f1e60`](https://github.com/diegoami/imperial-conquest-2-research/blob/32f1e605d5c60497f1e0815851c5e755b8157f8d/docs/reports/2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
+(research PR #66). Source measurements and limitations are retained.
 **Tasks:** [remake #1355](https://github.com/diegoami/imperial_conquest_2/issues/1355),
 [conquest #154](https://github.com/diegoami/ic2-conquest/issues/154).
 

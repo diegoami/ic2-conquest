@@ -11,10 +11,10 @@ Establish which battle behavior agrees, where it first diverges, which factors
 cause the difference, and how much each proved difference affects outcomes.
 Compare decisions and exchanges, not just winner/survivor totals.
 
-The owner case already gives original48969 versus native20946survivors, with a
-controlled native22090. First completed movement-half positions differ before
+The owner case already gives original 48,969 versus native 20,946survivors, with a
+controlled native 22,090. First completed movement-half positions differ before
 casualties. This prioritizes AI/movement investigation but does not exclude
-exchange, morale, control-protocol or observation defects. Original50mspolling
+exchange, morale, control-protocol or observation defects. Original 50 ms polling
 is approximate; the former clear-claims assumption is not exact-state proof.
 
 Freeze the ae614899 reproduction separately from current main8e5f0a3. The latter
@@ -28,7 +28,7 @@ separate. Never silently mix versions or call an earlier reported test a new run
 Deliverable: validated original/native recorder pair and capability manifest.
 
 - Reuse `patches/battle_hook.py`, `state/hook_log.py`, B11 exchange reconstruction
-  and tactical25 phase observers. Existing original hooks cover14 RNG sites,
+  and tactical25 phase observers. Existing original hooks cover 14 RNG sites,
   shot/melee/rout entry markers and start/clear/reseed boundaries. They do not
   currently promise every movement, CG pass, claim or complete exchange boundary.
 - Extend original observation only where needed: placement, target choice,
@@ -48,7 +48,7 @@ Deliverable: validated original/native recorder pair and capability manifest.
   broken RNG chain or unobserved boundary. Record a schema field as observed,
   derived/reconstructed, or unknown. Do not infer original decisions from port
   decisions and label them original observations.
-- Verify the UI protocol: CGon-only versus CGon+initialEnd, same starting state
+- Verify the UI protocol: CG-on-only versus CG-on plus initial End, same starting state
   and controlled seed. Record command timing/enabled state and whether End can
   interrupt an executing general. Use the protocol whose semantics are proved;
   no repeated End clicks or short idle watchdog during busy autoplay.
@@ -78,7 +78,7 @@ For each event, record:
 | Lifecycle | copy-in, placement, half-round setup, terminal state, promotions, captured resources and write-back |
 | Provenance | original site/hook where observed; any calculated formula terms labelled reconstructed rather than directly observed |
 
-Store full40-slot/grid snapshots at semantic boundaries and deltas between them.
+Store full 40-slot/grid snapshots at semantic boundaries and deltas between them.
 Screenshots are supporting evidence, not the event oracle. The remake uses its
 actual event log and general decision journal: presentation frames alone omit
 draw events. Never compare different actors/exchanges merely because draw
@@ -97,7 +97,7 @@ numbers happen to coincide.
    grid, target words and current flags. Use original-machine-code helper replay
    for rapid localization, labelled as emulator evidence, then confirm the
    discriminating case in the live original.
-4. Prioritize first movementhalf3/counter4 boundary and slots3/9/11/13/15/16.
+4. Prioritize first movement half 3 / counter 4 boundary and slots3/9/11/13/15/16.
    Add per-actor/pass checkpoints until a particular target/goal/path or draw
    call differs. Original/native inputs must still be equal immediately before
    that action, not only at battle start.
@@ -113,10 +113,10 @@ original result, exact port result, and an explicit uncertainty statement.
 | Theory | Discriminating experiment | Evidence supporting it |
 |---|---|---|
 | Computer general chooses differently | Same frozen state; compare target/goal/pass/order, then replay identical commands in both kernels | Identical-command exchanges match while autonomous decisions first diverge |
-| Movement/occupancy/control semantics differ | Same command, grid, claims and moves; compare each step, lookup and phase transition; CGprotocol control | Same requested move produces a different path/state, or UI/control transition changes execution |
+| Movement/occupancy/control semantics differ | Same command, grid, claims and moves; compare each step, lookup and phase transition; CG protocol control | Same requested move produces a different path/state, or UI/control transition changes execution |
 | Exchange formula or integer arithmetic differs | Identical actor/target inputs and recorded draws; manually scripted shot/melee without AI | Same exchange produces different bound, intermediate integer term or losses |
 | Morale is omitted/misapplied | Hold quality/troops/draws fixed; vary army morale and tactical unit morale separately; isolate rout checks | Different response/threshold/cascade on matched inputs |
-| Training/quality is omitted/mapped incorrectly | Hold tactical morale/troops/draws fixed; sweep raw quality4..9, then test readiness-to-quality initialization separately | Different quality sensitivity or copy-in despite equal other inputs |
+| Training/quality is omitted/mapped incorrectly | Hold tactical morale/troops/draws fixed; sweep raw quality 4–9, then test readiness-to-quality initialization separately | Different quality sensitivity or copy-in despite equal other inputs |
 | RNG stream/call ordering differs | Same algorithm/state; log every bound/result/site; inspect first different call/consumer | Different draw consumption/range before state changes, not merely different seed numbers |
 | Grid, iteration, stale data or write-back omitted | Stacks, ties, exhausted moves/shots, dead targets, permutations and final survivor/promotion checks | A small boundary case reproduces the discrepancy on otherwise equal inputs |
 
@@ -132,33 +132,33 @@ limitation rather than claiming a complete AI-quality experiment.
 
 ## 5. Synthetic campaign, expanding only after the recorder gates
 
-Start with a12-fixture pilot spanning melee, ranged, morale, quality, movement,
-multi-unit targeting and CGcontrol. Use strategic fixtures triggered normally
+Start with a 12-fixture pilot spanning melee, ranged, morale, quality, movement,
+multi-unit targeting and CG control. Use strategic fixtures triggered normally
 for end-to-end tests. For tactical-entry/kernel fixtures validate the ACTUAL
 post-load state: original battle reload may normalize/reset phase or placement.
 Do not route an open-battle fixture through an exporter that correctly refuses it.
 
 Then expand:
 
-- **Exchange kernels:**25 ordered melee type pairs across LI/HI/Ar/LC/HC;
- 15 ranged actor/target pairs for the3 shoot-capable types against all5 targets,
+- **Exchange kernels:** 25 ordered melee type pairs across LI/HI/Ar/LC/HC;
+ 15 ranged actor/target pairs for the 3 shoot-capable types against all 5 targets,
  with legal range/ammo. Symmetric conditions and mirrored roles.
 - **One-factor sensitivity:** two representative melee kernels and one ranged
- kernel, quality4..9; low/mid/high tactical morale; small/standard/large troop
+ kernel, quality 4–9; low/mid/high tactical morale; small/standard/large troop
  counts. Hold other inputs and draws fixed. Distinguish strategic morale,
  generated tactical morale, quality and recruitment readiness.
-- **Geometry/control:** initially12 focused cases for range/line/blockers,
+- **Geometry/control:** initially 12 focused cases for range/line/blockers,
  zero/exhausted moves and ammunition, rout boundary, stacked/stale cell,
  dead target, slot-order ties, mirrored/equal-X/Y flank and control toggle.
 - **General/full battles:** six small composition families (single-type infantry,
- ranged, cavalry and mixed formations), growing from1 to2/3battalions per type.
+ ranged, cavalry and mixed formations), growing from 1 to 2–3 battalions per type.
  Repeat attacker/defender roles and nation labels using at least Ptolemaic–
  Seleucid, Rome–Gaul and Carthage–Numidia. Keep the owner's large case as an anchor.
 - **Seeds:** one fixed matched seed per minimal fixture first. Then a declared
  five-seed set 1/7/11/12345/24680 for stable families; extend selected uncertain
- outcome-distribution cases to20 paired seeds only when useful. No full Cartesian
+ outcome-distribution cases to 20 paired seeds only when useful. No full Cartesian
  explosion or statistical claim from five seeds. Same number in two different
- RNGalgorithms is not a matched draw stream.
+ RNG algorithms is not a matched draw stream.
 
 Every fixture has expected representation/phase and exact assertions, not only
 survivor tolerance. Do not discard hard cases or increase tolerances to call
@@ -167,7 +167,7 @@ coverage columns. The paused B16/etc work list is not implicitly dispatched.
 
 ## 6. Reuse the historical corpus and report extent honestly
 
-The repository already has a318-series golden replay corpus and reported reviewed
+The repository already has a 318-series golden replay corpus and reported reviewed
 T188/T189 improvements; later T190/T191 corrections also exist. Historical
 42/36 residual counts are not current measurements. Re-establish state/draw/
 write-back counts on the pinned current build and authenticated fixture revision
@@ -191,20 +191,20 @@ Deliver:
    outcomes. Correction proposals identify exact method/behavior/regression.
 6. After a separately scoped correction, rerun minimal fixtures, owner anchor,
    relevant synthetic families and full corpus. Report newly cleared FIRST
-   divergences and whole-battle matches separately; upstream1355staysopen until
+   divergences and whole-battle matches separately; upstream #1355 stays open until
    its acceptance is actually met. No production source edit in another repo.
 
 ## Execution, preservation and first work
 
 Owner approval covers this investigation; routine gates do not require repeated
-permission. Implement phase0/1, publish the first exact-divergence report, then
+permission. Implement phases 0 and 1, publish the first exact-divergence report, then
 expand the matrix according to the evidence. Do not run a new large campaign
 before recorder validity is established. No model/subagent dispatch is implied.
 
 Every output is immutable/versioned. Never delete/overwrite a save, even to
 regenerate it; scripts use unique names. Track public-safe text under
 `runs/experiments/data/run-exp-battle-parity157/`, binaries in approved artifacts,
-owner inputs/full traces/private hashes outsideGit. Commit/push each batch and
+owner inputs/full traces/private hashes outside Git. Commit/push each batch and
 at least every 30 min; preserve complete error reports/checkpoints and resume
 completed work. Final synthetic artifacts go to Drive/release; EXE/DAT stay private.
 Relay published findings to ic2-research for consolidation.
@@ -213,6 +213,6 @@ Relay published findings to ic2-research for consolidation.
 tests. Results in `tracing-capability-v1.json`, `hook-build-reader-v1.json` and
 `hook-register-inertness-v1.json`; corpus access in `golden-corpus-access-v1.json`.
 Hook build/reader checks pass, including the
-real EXE site scan;2,060 emulated preservation states match plus boundary/overflow/
+real EXE site scan; 2,060 emulated preservation states match plus boundary/overflow/
 reentry/mutation-detection checks. This does not certify the proposed new
 movement/decision hooks or supply a new live exact battle log.
