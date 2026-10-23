@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "run",
+    "--project",
+    "/home/diego/projects/ic2-conquest/runs/experiments/battle-residual157/Corpus.csproj",
+    "--artifacts-path",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-fixed-cached-live-v1/build",
+    "-p:CustomAfterMicrosoftCommonTargets=/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/overlay-cached-live-v1.targets",
+    "--",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/fixed-cached-live-v1.jsonl",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/fixed-cached-live-v1.json",
+    "--fixed-only"
+  ],
+  "returncode": 0,
+  "stdout": "/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\ngate2_a True\ngate2_s2a True\nhi-hi-one_s1_r1 True\nhi-hi-one_s2_r1 True\nhi-hi-one_s3_r1 True\n",
+  "stderr": "",
+  "corpus_source_version": "fixed-mode addition only; same candidate source and strict helpers"
+}

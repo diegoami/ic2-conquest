@@ -1,0 +1,34 @@
+{
+  "conditional_walks": 49,
+  "baseline_differing_walks": 1,
+  "first_begin_seq": 874,
+  "first_end_seq": 891,
+  "counter": 10,
+  "actor": 24,
+  "goal": [
+    10,
+    3
+  ],
+  "rng_equal_at_endpoint": true,
+  "original_post_rout_seq": 890,
+  "native_post_rout_matching_snapshots": [
+    {
+      "index": 14,
+      "event": null,
+      "boundary": 10
+    }
+  ],
+  "matched_fields": "all40slot fields/names,168grid cells,40claim counts,counter,side,RNG; GUI Selected/unknown runtime fields not asserted",
+  "original_exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "source_guards": {
+    "capture_assignment": "0x438D66 mov EDI,EAX",
+    "positive_troops_and_jump": {
+      "site": "0x438ED1",
+      "bytes": "66833c854c034a00007e0d"
+    },
+    "shot_call": {
+      "site": "0x438EE2",
+      "bytes": "e825020000"
+    }
+  }
+}

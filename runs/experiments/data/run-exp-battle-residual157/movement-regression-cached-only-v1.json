@@ -1,0 +1,185 @@
+{
+  "passed": 4,
+  "failed": 1,
+  "rows": [
+    {
+      "name": "last move retains routed target",
+      "passed": true,
+      "mover": {
+        "X": 3,
+        "Y": 3,
+        "Origin": 0,
+        "Type": 0,
+        "Troops": 15000,
+        "Quality": 6,
+        "Morale": 75,
+        "Moves": 1,
+        "Shots": 1,
+        "Target": 20,
+        "Name": "Moving unit",
+        "IsLive": true
+      },
+      "IsOver": false,
+      "RandSeed": 3698175007,
+      "shots": 1,
+      "draws": [
+        {
+          "Bound": 57,
+          "Value": 1
+        },
+        {
+          "Bound": 57,
+          "Value": 49
+        }
+      ]
+    },
+    {
+      "name": "dead captured target is not shot again",
+      "passed": false,
+      "mover": {
+        "X": 3,
+        "Y": 3,
+        "Origin": 0,
+        "Type": 3,
+        "Troops": 7000,
+        "Quality": 6,
+        "Morale": 95,
+        "Moves": 1,
+        "Shots": 4,
+        "Target": 20,
+        "Name": "Moving unit",
+        "IsLive": true
+      },
+      "IsOver": false,
+      "RandSeed": 352239543,
+      "shots": 5,
+      "draws": [
+        {
+          "Bound": 76,
+          "Value": 2
+        },
+        {
+          "Bound": 76,
+          "Value": 65
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        },
+        {
+          "Bound": 1,
+          "Value": 0
+        }
+      ]
+    },
+    {
+      "name": "living adjacent target still engages",
+      "passed": true,
+      "mover": {
+        "X": 3,
+        "Y": 3,
+        "Origin": 0,
+        "Type": 0,
+        "Troops": 15000,
+        "Quality": 6,
+        "Morale": 70,
+        "Moves": 1,
+        "Shots": 1,
+        "Target": 20,
+        "Name": "Moving unit",
+        "IsLive": true
+      },
+      "IsOver": false,
+      "RandSeed": 3698175007,
+      "shots": 1,
+      "draws": [
+        {
+          "Bound": 57,
+          "Value": 1
+        },
+        {
+          "Bound": 57,
+          "Value": 49
+        }
+      ]
+    },
+    {
+      "name": "human move does not become computer shooting",
+      "passed": true,
+      "mover": {
+        "X": 3,
+        "Y": 3,
+        "Origin": 0,
+        "Type": 0,
+        "Troops": 15000,
+        "Quality": 6,
+        "Morale": 70,
+        "Moves": 2,
+        "Shots": 2,
+        "Target": -1,
+        "Name": "Moving unit",
+        "IsLive": true
+      },
+      "IsOver": false,
+      "RandSeed": 1,
+      "shots": 0,
+      "draws": []
+    },
+    {
+      "name": "defender capture lifetime is symmetric",
+      "passed": true,
+      "mover": {
+        "X": 3,
+        "Y": 3,
+        "Origin": 0,
+        "Type": 0,
+        "Troops": 15000,
+        "Quality": 6,
+        "Morale": 75,
+        "Moves": 1,
+        "Shots": 1,
+        "Target": 0,
+        "Name": "Moving unit",
+        "IsLive": true
+      },
+      "IsOver": false,
+      "RandSeed": 3698175007,
+      "shots": 1,
+      "draws": [
+        {
+          "Bound": 57,
+          "Value": 1
+        },
+        {
+          "Bound": 57,
+          "Value": 49
+        }
+      ]
+    }
+  ],
+  "scope": "Synthetic native regressions from original instruction/control-flow contract; not new original synthetic game runs"
+}

@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "run",
+    "--project",
+    "/home/diego/projects/ic2-conquest/runs/experiments/battle-residual157/MovementRegression.csproj",
+    "--artifacts-path",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/movement-regression-cached-live-v1",
+    "-p:EnginePath=/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-cached-live-v1/build/bin/Corpus/debug/IC2.Engine.dll",
+    "-p:DataPath=/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-cached-live-v1/build/bin/Corpus/debug/IC2.Data.dll",
+    "--",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/movement-regression-cached-live-v1.json"
+  ],
+  "returncode": 0,
+  "stdout": "5/5 movement controls pass\n",
+  "stderr": ""
+}

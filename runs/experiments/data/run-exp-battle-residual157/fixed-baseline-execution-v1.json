@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-fixed-baseline-v1/bin/Corpus.dll",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/fixed-baseline-v1.jsonl",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/fixed-baseline-v1.json",
+    "--fixed-only"
+  ],
+  "returncode": 1,
+  "stdout": "gate2_a True\ngate2_s2a False\nhi-hi-one_s1_r1 True\nhi-hi-one_s2_r1 True\nhi-hi-one_s3_r1 True\n",
+  "stderr": "",
+  "expected_residual": "gate2_s2a"
+}

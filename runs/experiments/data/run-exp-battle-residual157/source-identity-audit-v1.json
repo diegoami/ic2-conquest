@@ -1,0 +1,32 @@
+{
+  "main_pr1371_source_pin": "ea575e04e9d96f9e3dc6410c1b6edbb0f01b000b",
+  "general_source_blobs_verified": [
+    {
+      "file": "ComputerGeneral.cs",
+      "git_blob": "42758b7edad7e30448d790ebe7ff058990e706ed"
+    },
+    {
+      "file": "GeneralOrders.cs",
+      "git_blob": "5a4b344f3c750455f4823a99cf99698bc1b1bc96"
+    },
+    {
+      "file": "GeneralPassThree.cs",
+      "git_blob": "a6c065ec3cb3ab2582593f488c10f9653e572956"
+    },
+    {
+      "file": "GeneralPassTwo.cs",
+      "git_blob": "928ecb3c9bb401c98916f3100641de63b8866b91"
+    }
+  ],
+  "upstream_comparator_source_sha256": {
+    "GoldenReplay.cs": "5f0bc1df05fba8f8cdc33d9b3a96f67b9f133da1bee95440ac7dce886d501520",
+    "HookLog.cs": "d19a8f25658742c9750d6f65e493e199d79dbc1d151d002b2a4f2b24daa5a4c7",
+    "BattleFixtures.cs": "f275e755fe88d293f748f6804fe7d1a660ed262fe141061b18453b4acbdaef58",
+    "SeriesCatalogue.cs": "5a3df0b4ef6d878bbcfda49b861c33c2062f16e3b301b2874e1837592dab753a",
+    "BlockComparison.cs": "7dfc9f61773b2ef1b039624c34cdc72c9b40ac997a45129ab5c818bd56a19186"
+  },
+  "local_base": "a510c33f0aaa2998ff1186127ff18eb13f489496",
+  "source_candidate_sha256": "91d287d821a24fefacc6fdc3255d793bade9607be297c5cf97bf00bc1535be8f",
+  "other_checkout_source_unchanged": true,
+  "registry_exemptions": false
+}
