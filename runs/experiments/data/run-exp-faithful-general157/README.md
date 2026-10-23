@@ -60,6 +60,9 @@ not a deployed game. To execute extracted tools, place the shared engine DLLs
 beside their respective tool DLLs; their source builds already do that. No original
 EXE/DAT, owner input, full owner trace, Wine prefix or credentials are included.
 
-The source correction is ready for research intake and the remake's normal
-triage/branch/CI process. This checkout does not apply it to the remake repo.
+Research intake PR67 is merged at63b463cd51822690c5ad8d2aa4f77e0f0175d469;
+its same-named report is canonical. The source candidate is ready for the
+remake's normal triage/branch/CI process. Research reran retained tools/binaries,
+not an independent rebuild or new original/Wine run. This checkout does not
+apply the source correction to the remake repo.
 Do not close #1355 merely because this candidate reproduces these controls.
