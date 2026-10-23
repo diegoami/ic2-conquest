@@ -1,0 +1,90 @@
+{
+  "batch1": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9",
+      "title": "batch-01.tar.gz",
+      "file_name": "batch-01.tar.gz",
+      "mime_type": "application/gzip",
+      "url": "https://drive.google.com/file/d/1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9/view?usp=drivesdk",
+      "parent_id": "1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9",
+        "title": "batch-01.tar.gz",
+        "file_name": "batch-01.tar.gz",
+        "mime_type": "application/gzip",
+        "url": "https://drive.google.com/file/d/1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9/view?usp=drivesdk",
+        "parent_id": "1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn"
+      }
+    },
+    "isError": false
+  },
+  "batch1_metadata": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "id": "1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9",
+      "title": "batch-01.tar.gz",
+      "mime_type": null,
+      "size": "5601228",
+      "url": "https://drive.google.com/file/d/1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9/view?usp=drivesdk",
+      "display_url": "https://drive.google.com/file/d/1Jg55ivMaoYi5dNZVcaPHvlJpRAq9wAa9/view?usp=drivesdk",
+      "file_or_folder": null,
+      "created_time": null,
+      "modified_time": null,
+      "parent_ids": [
+        "1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn"
+      ],
+      "drive_id": null,
+      "current_user_can_share": null,
+      "has_augmented_permissions": null,
+      "shared": null,
+      "permissions": null,
+      "source_visibility_status": "access_not_verified"
+    },
+    "isError": false
+  },
+  "batch2": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "accepted_input": "file_uri",
+      "success": true,
+      "id": "1F9ciCakchY9LkfKydC9sfoN6DF34ARRy",
+      "title": "batch-02.tar.gz",
+      "file_name": "batch-02.tar.gz",
+      "mime_type": "application/gzip",
+      "url": "https://drive.google.com/file/d/1F9ciCakchY9LkfKydC9sfoN6DF34ARRy/view?usp=drivesdk",
+      "parent_id": "1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn",
+      "structuredContent": {
+        "accepted_input": "file_uri",
+        "success": true,
+        "id": "1F9ciCakchY9LkfKydC9sfoN6DF34ARRy",
+        "title": "batch-02.tar.gz",
+        "file_name": "batch-02.tar.gz",
+        "mime_type": "application/gzip",
+        "url": "https://drive.google.com/file/d/1F9ciCakchY9LkfKydC9sfoN6DF34ARRy/view?usp=drivesdk",
+        "parent_id": "1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn"
+      }
+    },
+    "isError": false
+  },
+  "note": "Connector uploads succeeded; local archive/member hashes pinned. Remote byte verification not claimed."
+}

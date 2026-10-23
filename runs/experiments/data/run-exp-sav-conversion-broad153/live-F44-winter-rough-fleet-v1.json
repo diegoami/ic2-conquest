@@ -1,0 +1,89 @@
+{
+  "name": "F44-winter-rough-fleet",
+  "case": {
+    "name": "F44-winter-rough-fleet",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "end-turn"
+    },
+    "remakeCommand": "end",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 11,
+        "SeasonIndex": 3,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F44-winter-rough-fleet-v1/Q15365I.SAV",
+      "sha256": "08b58ea4effa7f4b9c5fe9abacbb715285af197e490e1bffbc451f23269e8e04",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F44-winter-rough-fleet-v1/Q15365O.SAV",
+      "sha256": "bccff40f6adcdcf028cdff4df6cd61d6c6d66991936ca1d006e9cb18d621f93c",
+      "bytes": 132036
+    },
+    "autosave": {
+      "file": "live-F44-winter-rough-fleet-v1/AUTO0744.SAV",
+      "sha256": "bccff40f6adcdcf028cdff4df6cd61d6c6d66991936ca1d006e9cb18d621f93c",
+      "bytes": 132036
+    },
+    "reopen": {
+      "file": "live-F44-winter-rough-fleet-v1/Q15365R.SAV",
+      "sha256": "bccff40f6adcdcf028cdff4df6cd61d6c6d66991936ca1d006e9cb18d621f93c",
+      "bytes": 132036
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "20169dd651427ab465767876bbf0f08378fea381d5c944d2aa78e9d9311b056e",
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": {
+    "autosave": "AUTO0744.SAV",
+    "messages": []
+  },
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

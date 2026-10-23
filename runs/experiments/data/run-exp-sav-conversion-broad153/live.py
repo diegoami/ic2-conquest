@@ -40,6 +40,8 @@ def action(g,p):
         spins=sorted((c for c in cs if c['cls']=='TUpDown'),key=lambda c:(c['y'],c['x']))
         for _ in range((p.get('tons',10)+9)//10):g.click_control(spins[0],fy=.25,pause=.2)
         for _ in range(abs(p.get('money_100s',0))):g.click_control(spins[-1],fy=.25 if p['money_100s']>0 else .75,pause=.2)
+        buy=next((c for c in cs if c['text']=='Buy supplies'),None)
+        if buy is not None:g.click_control(buy,pause=.8)
         g.click_control(g.control(cs,text='OK'),pause=.6)
         g.wait(lambda:not g.find_windows('^Supply army$'),10,'Supply army closed')
         return {'control_based_supply':True,'controls':cs,'messages':g.dismiss_popups()}
@@ -152,6 +154,10 @@ def run_case(case,index,attempt='v1'):
         result['active_nation']=g.i16(CUR_NATION)
         original=sav.load(source)
         if result['active_nation']!=original['current_nation']:raise RuntimeError('Wrong human nation after load')
+        notice=case['originalAction'].get('load_notice')
+        if notice:
+            result['offer_notice_seen']=any(notice.casefold() in text.casefold() for text in result['load_messages'])
+            if not result['offer_notice_seen']:raise RuntimeError('Expected pending-offer notice absent')
         immediate=archive(g.save_as(save_prefix+'I.SAV'),'immediate')
         p=case['originalAction']
         if 'load_offer_nation' in p:

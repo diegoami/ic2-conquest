@@ -1,0 +1,89 @@
+{
+  "name": "F42-alliance",
+  "case": {
+    "name": "F42-alliance",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "relation",
+      "nation": 5,
+      "relation": "ally",
+      "expect_unchanged": true
+    },
+    "remakeCommand": "propose-alliance numidia",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F42-alliance-v1/Q15363I.SAV",
+      "sha256": "3935f1b5b00c8abb21022fc038561f596ff41d5e9318bbcad60402e3d8d88371",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F42-alliance-v1/Q15363O.SAV",
+      "sha256": "3935f1b5b00c8abb21022fc038561f596ff41d5e9318bbcad60402e3d8d88371",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F42-alliance-v1/Q15363R.SAV",
+      "sha256": "3935f1b5b00c8abb21022fc038561f596ff41d5e9318bbcad60402e3d8d88371",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "f5d9402084620a1f5446abb939b148469f0f28b398dedf32dcf1e7907b309d28",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [
+    1,
+    [
+      "e Numidia does nat want to ally with your nation, aK"
+    ]
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

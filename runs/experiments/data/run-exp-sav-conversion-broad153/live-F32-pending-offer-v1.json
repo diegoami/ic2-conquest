@@ -1,0 +1,80 @@
+{
+  "name": "F32-pending-offer",
+  "case": {
+    "name": "F32-pending-offer",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "observe",
+      "load_offer_nation": 5,
+      "load_offer_value": 1
+    },
+    "remakeCommand": "accept-offer",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": {
+        "ProposingNationId": "numidia",
+        "ProposedRelationCode": 1
+      }
+    }
+  },
+  "attempt": "v1",
+  "complete": false,
+  "files": {
+    "immediate": {
+      "file": "live-F32-pending-offer-v1/Q15352I.SAV",
+      "sha256": "74a4133e243bad5034df70c57804528781868055253238aa25be726c24345bdf",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "bc30bc7d006d5273551fa628b564b975e9f98dfb653a51a9e0936cd98211a809",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [
+    "@ Numidia wants to trade with Rome."
+  ],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "offer_processed_on_load": false,
+  "error": {
+    "type": "RuntimeError",
+    "message": "Pending offer not accepted on original load",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-sav-conversion-broad153/live.py\", line 161, in run_case\n    if not result['offer_processed_on_load']:raise RuntimeError('Pending offer not accepted on original load')\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Pending offer not accepted on original load\n"
+  },
+  "input_unchanged": true
+}

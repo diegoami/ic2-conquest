@@ -69,7 +69,10 @@ def compare():
             r=json.loads(live.read_text());row['original']=dict(complete=r['complete'],action_verified=r.get('action_verified'),
                 reopen_byte_equal=r.get('byte_stable_reopen'),error=r.get('error'),exe=r.get('exe'),
                 offer_processed_on_load=r.get('offer_processed_on_load'))
+            row['executed_original_action']=r['case']['originalAction']
             files=r['files'];source=ART/'exports-v1'/(name+'.SAV')
+            row['original_files']=files
+            if 'reopen' in files:row['original_saved_turn']=prior.sav.load(ART/files['reopen']['file'])['turn']
             row['original_comparisons']={}
             if 'immediate' in files:row['original_comparisons']['export_immediate']=prior.savcompare(source,ART/files['immediate']['file'])
             if 'order' in files:row['original_comparisons']['action']=prior.savcompare(ART/files['immediate']['file'],ART/files['order']['file'])
@@ -85,6 +88,11 @@ def compare():
                 a,_=native(predicted,True);b,_=native(returned,True)
                 row['action_differential_differences']=differences(a,b)
                 row['action_differential_random']=case['originalAction']['kind'] in ('end-turn','siege','attack-fleet','field-battle')
+                matched=ART/'exports-v1'/(name+'-matched-predicted.json')
+                if matched.exists():
+                    a,_=native(matched,True)
+                    row['input_aligned_differential_differences']=differences(a,b)
+                    row['input_alignment_receipt']='prediction-input-alignment-'+name+'-v1.json'
         else:row['original']={'complete':False,'not_run':True}
         rows.append(row)
     return rows
