@@ -1,0 +1,25 @@
+{
+  "case": "F29-fleet-build",
+  "original_prediction": "order-fleet neapolis 10 broad-built",
+  "matched_prediction": "order-fleet caere 10 broad-built",
+  "reason": "Compare the same GUI-selected quantity/port, not a different native order",
+  "evidence": {
+    "original_gui_selected_city": "caere",
+    "observed_fleet": {
+      "id": 2,
+      "x": 0,
+      "y": 0,
+      "owner": 0,
+      "countdown": 24,
+      "building": true,
+      "moves": 0,
+      "supplies": 0,
+      "money": 0,
+      "ships": 10,
+      "build_city": 82,
+      "army": -1,
+      "cell": 0
+    }
+  },
+  "returncode": 0
+}

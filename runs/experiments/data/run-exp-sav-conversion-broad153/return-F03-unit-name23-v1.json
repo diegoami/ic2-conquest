@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v6/bin/BroadProbe/debug/BroadProbe.dll",
+    "import",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-F03-unit-name23-v1/Q15323R.SAV",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-F03-unit-name23-v1/returned.json"
+  ],
+  "returncode": 1,
+  "stdout": "Possible reasons for this include:\n  * You misspelled a built-in dotnet command.\n  * You intended to execute a .NET program, but dotnet-/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v6/bin/BroadProbe/debug/BroadProbe.dll does not exist.\n  * You intended to run a global tool, but a dotnet-prefixed executable with this name could not be found on the PATH.\n",
+  "stderr": "Could not execute because the specified command or file was not found.\n"
+}

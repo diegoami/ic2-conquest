@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v5/bin/BroadProbe/debug/BroadProbe.dll",
+    "import",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-S05-numidia-v1/Q15305R.SAV",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-S05-numidia-v1/returned.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"import\",\"summary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"numidia\",\"human\":[\"numidia\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[],\"pending\":null},\"reloadEqual\":true,\"Report\":{\"UnmappedFields\":[],\"SkippedArmies\":[],\"SkippedFleets\":[],\"ArmiesWithClampedMoves\":[],\"NationsImported\":16,\"CitiesImported\":334,\"ArmiesImported\":14,\"FleetsImported\":2,\"RecruitmentSlotsImported\":79,\"MercenarySlotsImported\":34},\"resumeSummary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"numidia\",\"human\":[\"numidia\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[],\"pending\":null},\"status\":[\"\\u003E status mine\",\"Nation: Numidia (numidia, human): treasury 410, unity 619, tax 17%\",\"\",\"Armies:\",\"\",\"Fleets:\",\"\",\"Cities:\",\"  volubilis \\u0022Volubilis\\u0022 @ (22,90), owner Numidia: supply 98t, loyalty 53, fortification 54%\",\"  siga \\u0022Siga\\u0022 @ (37,84), owner Numidia: supply 296t, loyalty 71, fortification 58%\",\"  dimmidi \\u0022Dimmidi\\u0022 @ (63,96), owner Numidia: supply 94t, loyalty 59, fortification 55%\",\"  gemellae \\u0022Gemellae\\u0022 @ (69,89), owner Numidia: supply 162t, loyalty 62, fortification 46%\",\"  cirta \\u0022Cirta\\u0022 @ (79,82), owner Numidia: supply 323t, loyalty 75, fortification 56%\",\"  capsa \\u0022Capsa\\u0022 @ (85,89), owner Numidia: supply 159t, loyalty 66, fortification 36%\",\"  ghadames \\u0022Ghadames\\u0022 @ (87,119), owner Numidia: supply 49t, loyalty 68, fortification 10%\",\"  ghirza \\u0022Ghirza\\u0022 @ (113,110), owner Numidia: supply 57t, loyalty 79, fortification 26%\",\"\"]}\n",
+  "stderr": ""
+}

@@ -1,0 +1,78 @@
+case,category,nation,seed,provenance,original_action,export_policy,original_action_verified,original_fresh_reopen,return_import,return_order,return_export_policy,game_field_differences,differential_kind,notes
+S00-rome,nation-start,rome,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S01-carthage,nation-start,carthage,11,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S02-seleucid,nation-start,seleucid,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S03-ptolemaic,nation-start,ptolemaic,11,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S04-macedonia,nation-start,macedonia,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S05-numidia,nation-start,numidia,11,gameplay: first human seat after constructor prelude,tax,pass,True,True,True,True,True,0,same-input deterministic action,
+S06-gaul,nation-start,gaul,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S07-greece,nation-start,greece,11,gameplay: first human seat after constructor prelude,tax,pass,True,True,True,True,True,0,same-input deterministic action,
+S08-celtiberia,nation-start,celtiberia,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S09-illyria,nation-start,illyria,11,gameplay: first human seat after constructor prelude,tax,pass,True,True,True,True,True,0,same-input deterministic action,
+S10-dacia,nation-start,dacia,7,gameplay: first human seat after constructor prelude,tax,pass,True,True,True,True,True,0,same-input deterministic action,
+S11-bithynia,nation-start,bithynia,11,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S12-galatia,nation-start,galatia,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S13-armenia,nation-start,armenia,11,gameplay: first human seat after constructor prelude,tax,pass,True,True,True,True,True,0,same-input deterministic action,
+S14-media,nation-start,media,7,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+S15-thracia,nation-start,thracia,11,gameplay: first human seat after constructor prelude,move,pass,True,True,True,True,True,0,same-input deterministic action,
+P06-rome,progressed,rome,7,gameplay: repeated public end command; no orders,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+P12-carthage,progressed,carthage,11,gameplay: repeated public end command; no orders,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+P18-ptolemaic,progressed,ptolemaic,7,gameplay: repeated public end command; no orders,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+P24-macedonia,progressed,macedonia,11,gameplay: repeated public end command; no orders,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F00-army-split,feature,rome,7,gameplay-derived initial state,split-army,pass,True,True,True,True,True,0,same-input deterministic action,
+F01-army-join,feature,rome,7,synthetic native-model setup,join-armies,pass,True,True,True,True,True,0,same-input deterministic action,
+F02-army-transfer,feature,rome,7,synthetic native-model setup,transfer-units,pass,True,True,True,True,True,1,same-input deterministic action,
+F03-unit-name23,feature,rome,7,synthetic native-model setup,rename-unit,pass,True,True,True,True,True,0,same-input deterministic action,
+F04-unit-split,feature,rome,7,gameplay-derived initial state,split-unit,pass,True,True,True,True,True,1,same-input deterministic action,original refusal control; 2 attempts; earlier failures retained
+F05-unit-join,feature,rome,7,synthetic native-model setup,join-units,pass,True,True,True,True,True,0,same-input deterministic action,
+F06-army-disband,feature,rome,7,gameplay-derived initial state,disband-army,pass,True,True,True,True,True,0,same-input deterministic action,
+F07-army-supply,feature,rome,7,synthetic native-model setup,supply,pass,True,True,True,True,True,0,same-input deterministic action,2 attempts; earlier failures retained
+F08-army-money,feature,rome,7,gameplay-derived initial state,supply,pass,True,True,True,True,True,0,same-input deterministic action,2 attempts; earlier failures retained
+F09-mercenary-hire,feature,rome,7,synthetic native-model setup,mercenary,pass,True,True,True,True,True,1,same-input deterministic action,
+F10-mercenary-alias,feature,rome,7,synthetic native-model setup,tax,pass,True,True,True,True,True,0,same-input deterministic action,
+F11-recruit-li,feature,rome,7,synthetic native-model setup,recruit,pass,True,True,True,True,True,0,same-input deterministic action,inputs aligned; earlier prediction retained; 2 attempts; earlier failures retained
+F12-recruit-hi,feature,rome,7,synthetic native-model setup,recruit,pass,True,True,True,True,True,0,same-input deterministic action,inputs aligned; earlier prediction retained; 2 attempts; earlier failures retained
+F13-recruit-ar,feature,rome,7,synthetic native-model setup,recruit,pass,True,True,True,True,True,0,same-input deterministic action,inputs aligned; earlier prediction retained; 2 attempts; earlier failures retained
+F14-recruit-lc,feature,rome,7,synthetic native-model setup,recruit,pass,True,True,True,True,True,0,same-input deterministic action,inputs aligned; earlier prediction retained; 2 attempts; earlier failures retained
+F15-recruit-hc,feature,rome,7,synthetic native-model setup,recruit,pass,True,True,True,True,True,0,same-input deterministic action,inputs aligned; earlier prediction retained; 2 attempts; earlier failures retained
+F16-mobilize-quality4,feature,rome,7,synthetic native-model setup,mobilize,pass,True,True,True,True,True,0,same-input deterministic action,2 attempts; earlier failures retained
+F17-recruit-disband,feature,rome,7,synthetic native-model setup,disband-slot,pass,True,True,True,True,True,0,same-input deterministic action,2 attempts; earlier failures retained
+F18-recruit-cap40,feature,rome,7,synthetic native-model setup,recruit,pass,True,True,True,True,True,0,same-input deterministic action,original refusal control; 2 attempts; earlier failures retained
+F19-fleet-repair,feature,rome,7,synthetic native-model setup,repair-fleet,pass,True,True,True,True,True,0,same-input deterministic action,
+F20-fleet-supply,feature,rome,7,synthetic native-model setup,supply-fleet,pass,True,True,True,True,True,0,same-input deterministic action,
+F21-fleet-split,feature,rome,7,synthetic native-model setup,split-fleet,pass,True,True,True,True,True,0,same-input deterministic action,2 attempts; earlier failures retained
+F22-fleet-join,feature,rome,7,synthetic native-model setup,join-fleets,pass,True,True,True,True,True,0,same-input deterministic action,
+F23-fleet-transfer,feature,rome,7,synthetic native-model setup,transfer-ships,pass,True,True,True,True,True,0,same-input deterministic action,
+F24-fleet-cap101,feature,rome,7,synthetic native-model setup,join-fleets,pass,True,True,True,True,True,0,same-input deterministic action,original refusal control
+F25-fleet-scuttle,feature,rome,7,synthetic native-model setup,scuttle,pass,True,True,True,True,True,0,same-input deterministic action,
+F26-fleet-move,feature,rome,7,synthetic native-model setup,move-fleet,pass,True,True,False,False,False,0,same-input deterministic action,
+F27-embark,feature,rome,7,synthetic native-model setup,embark,pass,True,True,False,False,False,,same-input deterministic action,
+F28-disembark,feature,rome,7,synthetic native-model setup,disembark,pass,True,True,False,False,False,,same-input deterministic action,
+F29-fleet-build,feature,rome,7,gameplay-derived initial state; original chooses its own free port,build-fleet,pass,True,True,False,False,False,,same-input deterministic action,
+F30-declare-war,feature,rome,7,synthetic native-model setup,relation,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F31-trade,feature,rome,7,synthetic native-model setup,relation,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F32-pending-offer,feature,rome,7,synthetic native-model setup,observe,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F33-fortification,feature,rome,7,gameplay-derived initial state,fortify,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F34-debt-tax40,feature,rome,7,synthetic native-model setup,tax,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F35-quality4-and9,feature,rome,7,synthetic native-model setup,move,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F36-eliminated-conqueror,feature,rome,7,synthetic native-model setup,tax,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F37-hotseat,feature,carthage,7,gameplay: two human seats in constructor,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F38-winter-roughsea,feature,rome,7,synthetic native-model setup,tax,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F39-naval-combat,feature,rome,7,synthetic native-model setup,attack-fleet,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F40-siege-capture,feature,rome,7,synthetic native-model setup,siege,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F41-field-battle-aftermath,feature,rome,7,public native battle command from labelled synthetic adjacent armies; pending treaty declined,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+M00-format4,migration,rome,7,"synthetic v4-shaped JSON derived from S00, roughSeaCells removed and old underSiege fields added; actual SaveManager v4->v7 migration",move,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F42-alliance,feature,rome,7,synthetic native-model setup,relation,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original; original refusal control
+F43-peace,feature,rome,7,synthetic native-model setup,relation,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original; original refusal control
+F44-winter-rough-fleet,feature,rome,7,synthetic native-model setup,end-turn,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F45-regular-unit-disband,feature,rome,7,gameplay-derived initial state,disband-regular,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F46-foreign-city-supply,feature,rome,7,synthetic native-model setup,supply,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F47-fleet-money,feature,rome,7,synthetic native-model setup,supply-fleet,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F48-army100000,feature,rome,7,synthetic native-model setup,split-army,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F49-army-unit-cap21,feature,rome,7,synthetic native-model setup,join-armies,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original; original refusal control
+F50-fleet100,feature,rome,7,synthetic native-model setup,join-fleets,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F51-unit-split-hi5000,feature,rome,7,gameplay-derived initial state; HI5000 exceeds original2400 minimum; separate from LI4800 refusal,split-unit,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F52-alliance-peacetime,feature,rome,7,synthetic native-model setup,relation,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F53-peace-from-trade,feature,rome,7,synthetic native-model setup,relation,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F54-reordered-cargo,feature,rome,7,"synthetic native army/fleet arrays reversed, stable native IDs unchanged; cargo pointer must use last army/new carrier ordinal",disembark,pass,pending,pending,False,False,False,,same-input deterministic action,not yet run in original
+F55-compact-before-carrier,feature,rome,7,"synthetic reversed native arrays, empty fleet before the cargo carrier staged at own port; scuttle tests index compaction with live cargo",scuttle,FAIL,pending,pending,False,False,False,,same-input deterministic action,not yet run in original

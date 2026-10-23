@@ -1,0 +1,91 @@
+{
+  "name": "P06-rome",
+  "case": {
+    "name": "P06-rome",
+    "category": "progressed",
+    "provenance": "gameplay: repeated public end command; no orders",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "end-turn"
+    },
+    "remakeCommand": "end",
+    "summary": {
+      "turn": 6,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 1,
+        "YearBc": 270,
+        "TurnIndex": 6
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 13,
+      "fleets": 3,
+      "building": 1,
+      "cargo": 0,
+      "recruits": 122,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-P06-rome-v1/Q15316I.SAV",
+      "sha256": "23a2261ca9ecd9d41916ae33a96a490351553b77b450e1f07fc174ee50068430",
+      "bytes": 131415
+    },
+    "order": {
+      "file": "live-P06-rome-v1/Q15316O.SAV",
+      "sha256": "b4232c70df1551658112a7c4f9103c2707be06215dc99aad6effb4adccc55485",
+      "bytes": 132071
+    },
+    "autosave": {
+      "file": "live-P06-rome-v1/AUTO0727.SAV",
+      "sha256": "b4232c70df1551658112a7c4f9103c2707be06215dc99aad6effb4adccc55485",
+      "bytes": 132071
+    },
+    "reopen": {
+      "file": "live-P06-rome-v1/Q15316R.SAV",
+      "sha256": "b4232c70df1551658112a7c4f9103c2707be06215dc99aad6effb4adccc55485",
+      "bytes": 132071
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "9db06d024dd6440668365513ee1d2f24d0b61c61cb210017c2d0521a151adf86",
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": {
+    "autosave": "AUTO0727.SAV",
+    "messages": [
+      "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"
+    ]
+  },
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

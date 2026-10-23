@@ -1,0 +1,82 @@
+{
+  "name": "F20-fleet-supply",
+  "case": {
+    "name": "F20-fleet-supply",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "supply-fleet",
+      "fleet": 0,
+      "tons": 100
+    },
+    "remakeCommand": "buy-fleet-supply fleet-0 antium 100",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F20-fleet-supply-v1/Q15340I.SAV",
+      "sha256": "4b51bbc791bc777f56506e27a8e9ec589278aa9c298c97bdf270c44730e35c53",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F20-fleet-supply-v1/Q15340O.SAV",
+      "sha256": "5a0d006d3aa504b487b4a4c5217503618b975cb642e1b952c2c9dceb21cd2b9d",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F20-fleet-supply-v1/Q15340R.SAV",
+      "sha256": "5a0d006d3aa504b487b4a4c5217503618b975cb642e1b952c2c9dceb21cd2b9d",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "bcfef7d1416427c8feee3e5f5f985434578a176126bc4522a603bce454e2e1b7",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

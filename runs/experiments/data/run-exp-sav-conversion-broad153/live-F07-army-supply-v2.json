@@ -1,0 +1,141 @@
+{
+  "name": "F07-army-supply",
+  "case": {
+    "name": "F07-army-supply",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "supply",
+      "army": 0,
+      "tons": 10,
+      "money_100s": 0
+    },
+    "remakeCommand": "buy army-0 arretium 10",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v2",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F07-army-supply-v2/Q27V2I.SAV",
+      "sha256": "f9d9d540c4856b447462f86098904f207082b67847e4edaa2212177d86d81106",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F07-army-supply-v2/Q27V2O.SAV",
+      "sha256": "e23cbbf45a50649a360d686b65edee614798159153cac05db697700ac4757368",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F07-army-supply-v2/Q27V2R.SAV",
+      "sha256": "e23cbbf45a50649a360d686b65edee614798159153cac05db697700ac4757368",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "90e47f62fb9c7be9c6fb8eb3b04bd936bdff75a42104678c4b7bf777c9ad0ad6",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": {
+    "control_based_supply": true,
+    "controls": [
+      {
+        "cls": "TUpDown",
+        "text": "",
+        "x": 203,
+        "y": 88,
+        "w": 25,
+        "h": 40
+      },
+      {
+        "cls": "TUpDown",
+        "text": "",
+        "x": 168,
+        "y": 88,
+        "w": 25,
+        "h": 40
+      },
+      {
+        "cls": "TListBox",
+        "text": "",
+        "x": 353,
+        "y": 70,
+        "w": 120,
+        "h": 66,
+        "item_h": 14,
+        "top": 0,
+        "cx": 355,
+        "cy": 72
+      },
+      {
+        "cls": "TUpDown",
+        "text": "",
+        "x": 268,
+        "y": 281,
+        "w": 25,
+        "h": 40
+      },
+      {
+        "cls": "TUpDown",
+        "text": "",
+        "x": 233,
+        "y": 281,
+        "w": 25,
+        "h": 40
+      },
+      {
+        "cls": "TButton",
+        "text": "OK",
+        "x": 223,
+        "y": 349,
+        "w": 70,
+        "h": 25
+      }
+    ],
+    "messages": []
+  },
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

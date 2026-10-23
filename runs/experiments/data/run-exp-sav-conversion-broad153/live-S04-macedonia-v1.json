@@ -1,0 +1,89 @@
+{
+  "name": "S04-macedonia",
+  "case": {
+    "name": "S04-macedonia",
+    "category": "nation-start",
+    "provenance": "gameplay: first human seat after constructor prelude",
+    "nation": "macedonia",
+    "seed": 7,
+    "originalAction": {
+      "kind": "move",
+      "army": 7,
+      "x": 146,
+      "y": 40
+    },
+    "remakeCommand": "move army-7 146 40",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "macedonia",
+      "human": [
+        "macedonia"
+      ],
+      "armies": 13,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 77,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-S04-macedonia-v1/Q15304I.SAV",
+      "sha256": "e93da11d3a6f03d0d99fd7e4a3d42990c78a5ab5a4ac81af04c587af5ae9ed19",
+      "bytes": 131145
+    },
+    "order": {
+      "file": "live-S04-macedonia-v1/Q15304O.SAV",
+      "sha256": "44d7cb7210d53dddfb947857e81dfd8f9cc0803abd0f71a3aff14ec9b425b0aa",
+      "bytes": 131145
+    },
+    "reopen": {
+      "file": "live-S04-macedonia-v1/Q15304R.SAV",
+      "sha256": "44d7cb7210d53dddfb947857e81dfd8f9cc0803abd0f71a3aff14ec9b425b0aa",
+      "bytes": 131145
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "187c67d8214837d7fb53a08292da28235634e4c49a8f90ef27db7fc95fa43d32",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 4,
+  "action_output": [
+    [
+      146,
+      40
+    ],
+    []
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

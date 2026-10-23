@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N02-nonlatin.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N02-nonlatin.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "returncode": 2,
+  "stdout": "",
+  "stderr": "Refused: UNREPRESENTABLE army[0].unit[0].name: character U+D83D is not printable ASCII (no replacement)\n"
+}

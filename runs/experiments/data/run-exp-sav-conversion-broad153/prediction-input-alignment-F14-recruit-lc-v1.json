@@ -1,0 +1,22 @@
+{
+  "case": "F14-recruit-lc",
+  "original_prediction": "recruit-standing rome light_cavalry 1000",
+  "matched_prediction": "recruit-standing rome light_cavalry 2400",
+  "reason": "Compare the same GUI-selected quantity/port, not a different native order",
+  "evidence": {
+    "original_requested_increment": {
+      "kind": "recruit",
+      "city": "Rome",
+      "type": "lc",
+      "thousands": 1
+    },
+    "observed_new_slot": {
+      "slot": 0,
+      "state": 0,
+      "type": "lc",
+      "troops": 2400,
+      "city": 85
+    }
+  },
+  "returncode": 0
+}

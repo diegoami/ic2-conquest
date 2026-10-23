@@ -1,0 +1,83 @@
+{
+  "name": "F23-fleet-transfer",
+  "case": {
+    "name": "F23-fleet-transfer",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "transfer-ships",
+      "fleet": 0,
+      "ships": 5
+    },
+    "remakeCommand": "fleet-transfer fleet-0 fleet-2 5 0 0",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 3,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F23-fleet-transfer-v1/Q15343I.SAV",
+      "sha256": "a5f10ab753e07c2f1a064b8a7bad802049bfa7240e0ea7769c2110d1c7390c4a",
+      "bytes": 131766
+    },
+    "order": {
+      "file": "live-F23-fleet-transfer-v1/Q15343O.SAV",
+      "sha256": "29b27602c21d6d53a4c57f8a4c07c6eaa3506af1c6dd32613488e95516a59ec9",
+      "bytes": 131766
+    },
+    "reopen": {
+      "file": "live-F23-fleet-transfer-v1/Q15343R.SAV",
+      "sha256": "29b27602c21d6d53a4c57f8a4c07c6eaa3506af1c6dd32613488e95516a59ec9",
+      "bytes": 131766
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "a18011452706ca72a525330a62aab4f1e298c49d3a2365bb8975b857dbebe2e9",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

@@ -1,0 +1,45 @@
+{
+  "name": "F55-compact-before-carrier",
+  "case": {
+    "name": "F55-compact-before-carrier",
+    "category": "feature",
+    "provenance": "synthetic reversed native arrays, empty fleet before the cargo carrier staged at own port; scuttle tests index compaction with live cargo",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "scuttle",
+      "fleet": 0
+    },
+    "remakeCommand": "scuttle-fleet fleet-0",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 1,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": false,
+  "files": {},
+  "runtime": "Wine/Xvfb",
+  "error": {
+    "type": "FileNotFoundError",
+    "message": "[Errno 2] No such file or directory: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F55-compact-before-carrier.SAV'",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-sav-conversion-broad153/live.py\", line 147, in run_case\n    result['input_sha256']=hashlib.sha256(source.read_bytes()).hexdigest()\n                                          ~~~~~~~~~~~~~~~~~^^\n  File \"/usr/lib/python3.14/pathlib/__init__.py\", line 778, in read_bytes\n    with self.open(mode='rb', buffering=0) as f:\n         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.14/pathlib/__init__.py\", line 772, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F55-compact-before-carrier.SAV'\n"
+  },
+  "input_unchanged": false
+}

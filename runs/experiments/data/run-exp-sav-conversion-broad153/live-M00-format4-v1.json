@@ -1,0 +1,90 @@
+{
+  "name": "M00-format4",
+  "case": {
+    "name": "M00-format4",
+    "category": "migration",
+    "provenance": "synthetic v4-shaped JSON derived from S00, roughSeaCells removed and old underSiege fields added; actual SaveManager v4->v7 migration",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "move",
+      "army": 0,
+      "x": 101,
+      "y": 37
+    },
+    "remakeCommand": "move army-0 101 37",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-M00-format4-v1/Q15362I.SAV",
+      "sha256": "52de1cc37080b434839a13637d2e0d30740530550980800504b226be49973e3c",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-M00-format4-v1/Q15362O.SAV",
+      "sha256": "e7d4280b4472bd678a3be73d9b527bc83cbdcf19a3a689c859050f025e80ead9",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-M00-format4-v1/Q15362R.SAV",
+      "sha256": "e7d4280b4472bd678a3be73d9b527bc83cbdcf19a3a689c859050f025e80ead9",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "dd99c3a71005318509bad838ef51eb4e19d3e1ee67558ea4c7d0b77ff0090209",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [
+    [
+      101,
+      37
+    ],
+    []
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

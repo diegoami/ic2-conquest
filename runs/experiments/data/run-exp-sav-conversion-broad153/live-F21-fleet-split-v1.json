@@ -1,0 +1,42 @@
+{
+  "name": "F21-fleet-split",
+  "case": {
+    "name": "F21-fleet-split",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "split-fleet",
+      "fleet": 0,
+      "ships": 10
+    },
+    "remakeCommand": "split-fleet fleet-0 broad-fleet 10",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": false,
+  "files": {},
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "bcfef7d1416427c8feee3e5f5f985434578a176126bc4522a603bce454e2e1b7",
+  "exe": "Imperial Conquest 2.exe",
+  "input_unchanged": true
+}

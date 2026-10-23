@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v6/bin/BroadProbe/debug/BroadProbe.dll",
+    "action",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-F48-army100000-v1/returned.json",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-F48-army100000-v1/continued.json",
+    "set-tax 19"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"action\",\"command\":\"set-tax 19\",\"Lines\":[\"\\u003E set-tax 19\",\"economy.set-tax accepted.\",\"\"],\"ShouldExit\":false,\"changed\":true,\"before\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"human\":[\"rome\"],\"armies\":15,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[],\"pending\":null},\"after\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"human\":[\"rome\"],\"armies\":15,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[],\"pending\":null},\"battleOpen\":false}\n",
+  "stderr": ""
+}

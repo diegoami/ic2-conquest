@@ -1,0 +1,18 @@
+{
+  "reviewed_failures": {
+    "F04-unit-split": "Original R41 refuses LI4800 below6000; known findings/g2. Retest as refusal, preserve v1 wrong-expectation result.",
+    "F07-army-supply": "Outdated fixed OK coordinates. Control diagnostic-v2 proves actual OK control closes the dialog.",
+    "F08-army-money": "Same outdated supply dialog coordinates; actual spinner and OK geometry now derived from controls.",
+    "F21-fleet-split": "Session checkpoint interrupted before any saved/game order; restart only this case with a new attempt name.",
+    "F11-recruit-li": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F12-recruit-hi": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F13-recruit-ar": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F14-recruit-lc": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F15-recruit-hc": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F16-mobilize-quality4": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F17-recruit-disband": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption.",
+    "F18-recruit-cap40": "ANSI list-caption helper returned only first UTF16 character. Retained diagnostic; Unicode helper now verifies full ROME caption."
+  },
+  "diagnostic": "control-diagnostic-v2.json",
+  "unexecuted_relation_controls": "F42/F43 correctly expected to refuse based on native predicate and original R41/peace research; positive controls F52/F53 separate."
+}

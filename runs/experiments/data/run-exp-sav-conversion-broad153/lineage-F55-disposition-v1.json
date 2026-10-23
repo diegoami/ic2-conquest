@@ -1,0 +1,9 @@
+{
+  "case": "F55-compact-before-carrier",
+  "disposition": "converter refusal, original not executed",
+  "evidence": "export-F55-compact-before-carrier-v1.json: exit2 POLICY_VIOLATION city[89]:city_marker; no output",
+  "cause": "Synthetic fleet placed on Antium city tile; strict city-marker policy refuses that overlay",
+  "original_acceptance": "UNTESTED; do not assert native validity implies original support",
+  "replacement_control": "F56-compact-sea-before-carrier",
+  "orchestration_error": "Original runner tried missing input after failed asynchronous export; FileNotFound record retained; no original process started for F55"
+}

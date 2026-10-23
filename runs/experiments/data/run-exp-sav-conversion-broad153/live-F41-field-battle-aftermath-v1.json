@@ -1,0 +1,93 @@
+{
+  "name": "F41-field-battle-aftermath",
+  "case": {
+    "name": "F41-field-battle-aftermath",
+    "category": "feature",
+    "provenance": "public native battle command from labelled synthetic adjacent armies; pending treaty declined",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "end-turn"
+    },
+    "remakeCommand": "end",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 13,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F41-field-battle-aftermath-v1/Q15361I.SAV",
+      "sha256": "c5da536ba6a51b94bfdbe79b499a098334f11e522ae6bb455756c1d8b5cf1d0d",
+      "bytes": 131145
+    },
+    "order": {
+      "file": "live-F41-field-battle-aftermath-v1/Q15361O.SAV",
+      "sha256": "05d35f7939adbb55a7a30bf67c813ff06d384304eab1204f95cf7a188d8f9fed",
+      "bytes": 131293
+    },
+    "autosave": {
+      "file": "live-F41-field-battle-aftermath-v1/AUTO0721.SAV",
+      "sha256": "05d35f7939adbb55a7a30bf67c813ff06d384304eab1204f95cf7a188d8f9fed",
+      "bytes": 131293
+    },
+    "reopen": {
+      "file": "live-F41-field-battle-aftermath-v1/Q15361R.SAV",
+      "sha256": "05d35f7939adbb55a7a30bf67c813ff06d384304eab1204f95cf7a188d8f9fed",
+      "bytes": 131293
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "03058a0ad3465c879f0f910f714645b628aff11a1f7f92c164fe960d32d61269",
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": {
+    "autosave": "AUTO0721.SAV",
+    "messages": [
+      "@ Carthage wants to trade with Rome."
+    ]
+  },
+  "action_verified": true,
+  "reopen_messages": [
+    "@ Carthage wants to trade with Rome."
+  ],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "name": "N00-improved",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Refused: UNSUPPORTED_RULESET rulesetId: 'improved' is not classical-faithful\n"
+  },
+  {
+    "name": "N01-name24",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Refused: UNREPRESENTABLE army[0].unit[0].name: longer than 23 characters (no truncation)\n"
+  },
+  {
+    "name": "N02-nonlatin",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Refused: UNREPRESENTABLE army[0].unit[0].name: character U+D83D is not printable ASCII (no replacement)\n"
+  },
+  {
+    "name": "N03-int16-money",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Refused: UNREPRESENTABLE army[0].money: outside the signed 16-bit range\n"
+  },
+  {
+    "name": "N04-missing-allegiance",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Export failed, nothing written: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N04-missing-allegiance.json' is malformed: field 'state.cities[0].allegiance' is null, but String does not permit null there.\n"
+  },
+  {
+    "name": "N05-unknown-reference",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Export failed, nothing written: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N05-unknown-reference.json' references city 'atlantis', which is not present in the data set.\n"
+  },
+  {
+    "name": "N06-other-scenario",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Refused: UNSUPPORTED_SCENARIO scenarioId: 'other-scenario' is not classical-mediterranean\n"
+  },
+  {
+    "name": "N07-dangling-cargo",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Export failed, nothing written: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N07-dangling-cargo.json' references fleet 'absent-fleet', which is not present in the data set.\n"
+  },
+  {
+    "name": "N08-future-version",
+    "returncode": 2,
+    "output_written": false,
+    "input_unchanged": true,
+    "stderr": "Export failed, nothing written: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N08-future-version.json' was written by a newer build: it declares save format version 999, but this build reads up to version 7.\n"
+  },
+  {
+    "name": "N09-open-battle",
+    "returncode": 2,
+    "output_written": false,
+    "stderr": "Refused: OPEN_BATTLE battle: a tactical battle is open; finish it, then export\n"
+  },
+  {
+    "name": "N10-overwrite",
+    "returncode": 2,
+    "input_unchanged": true,
+    "stderr": "Export failed, nothing written: Destination already exists.\n"
+  }
+]

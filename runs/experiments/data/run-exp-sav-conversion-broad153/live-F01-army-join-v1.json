@@ -1,0 +1,81 @@
+{
+  "name": "F01-army-join",
+  "case": {
+    "name": "F01-army-join",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "join-armies",
+      "army": 0
+    },
+    "remakeCommand": "join-armies army-0 army-1",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F01-army-join-v1/Q15321I.SAV",
+      "sha256": "5c25a253ada67f25447291f1dceb74234674c1b684550a4b06709745c3c11a75",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F01-army-join-v1/Q15321O.SAV",
+      "sha256": "814b9c359cedfdeedaa8874c07533d89800532cb48c83ddaf6b7e51ea8058567",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F01-army-join-v1/Q15321R.SAV",
+      "sha256": "814b9c359cedfdeedaa8874c07533d89800532cb48c83ddaf6b7e51ea8058567",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "f56113df9164c2ed4851e98ef27c4174116172a2efaf7fae86ea0b4093935992",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

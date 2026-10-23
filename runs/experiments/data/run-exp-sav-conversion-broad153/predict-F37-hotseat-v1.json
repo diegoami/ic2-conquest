@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v2/bin/BroadProbe/debug/BroadProbe.dll",
+    "action",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F37-hotseat-imported.json",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F37-hotseat-predicted.json",
+    "end"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"action\",\"command\":\"end\",\"Lines\":[\"\\u003E end\",\"Carthage (carthage) ends its turn.\",\"Dacia (dacia) takes its turn: 5 orders issued.\",\"Armenia (armenia) takes its turn: 5 orders issued.\",\"Gaul (gaul) takes its turn: 14 orders issued.\",\"Macedonia (macedonia) takes its turn: 2 orders issued.\",\"Ptolemaic (ptolemaic) takes its turn: 5 orders issued.\",\"Galatia (galatia) takes its turn: 10 orders issued.\",\"Numidia (numidia) takes its turn: 3 orders issued.\",\"Illyria (illyria) takes its turn: 2 orders issued.\",\"Bithynia (bithynia) takes its turn: 8 orders issued.\",\"Thracia (thracia) takes its turn: 2 orders issued.\",\"Media (media) takes its turn: 1 order issued.\",\"Greece (greece) takes its turn: 0 orders issued.\",\"Celtiberia (celtiberia) takes its turn: 8 orders issued.\",\"Now: Week 1, Spring 270 BC. Active seat: Rome (rome).\",\"\"],\"ShouldExit\":false,\"changed\":true,\"before\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"carthage\",\"human\":[\"rome\",\"carthage\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":63,\"eliminated\":[],\"pending\":null},\"after\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"human\":[\"rome\",\"carthage\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":90,\"eliminated\":[],\"pending\":null},\"battleOpen\":false}\n",
+  "stderr": ""
+}

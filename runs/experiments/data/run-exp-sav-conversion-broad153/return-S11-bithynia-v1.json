@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v5/bin/BroadProbe/debug/BroadProbe.dll",
+    "import",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-S11-bithynia-v1/Q15311R.SAV",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-S11-bithynia-v1/returned.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"import\",\"summary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"bithynia\",\"human\":[\"bithynia\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":78,\"eliminated\":[],\"pending\":null},\"reloadEqual\":true,\"Report\":{\"UnmappedFields\":[],\"SkippedArmies\":[],\"SkippedFleets\":[],\"ArmiesWithClampedMoves\":[],\"NationsImported\":16,\"CitiesImported\":334,\"ArmiesImported\":14,\"FleetsImported\":2,\"RecruitmentSlotsImported\":78,\"MercenarySlotsImported\":34},\"resumeSummary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"bithynia\",\"human\":[\"bithynia\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":78,\"eliminated\":[],\"pending\":null},\"status\":[\"\\u003E status mine\",\"Nation: Bithynia (bithynia, human): treasury 550, unity 599, tax 12%\",\"\",\"Armies:\",\"  army-10 (Bithynia) @ (191,30): 33600 troops in 8 units, supply 225t (66%), morale 63, moves 7\",\"\",\"Fleets:\",\"\",\"Cities:\",\"  chalcedon \\u0022Chalcedon\\u0022 @ (173,39), owner Bithynia: supply 298t, loyalty 64, fortification 55%\",\"  cius \\u0022Cius\\u0022 @ (172,44), owner Bithynia: supply 212t, loyalty 78, fortification 41%\",\"  tieum \\u0022Tieum\\u0022 @ (188,28), owner Bithynia: supply 67t, loyalty 73, fortification 47%\",\"  amastris \\u0022Amastris\\u0022 @ (190,27), owner Bithynia: supply 153t, loyalty 70, fortification 58%\",\"  sesamus \\u0022Sesamus\\u0022 @ (196,25), owner Bithynia: supply 85t, loyalty 74, fortification 35%\",\"  cytorus \\u0022Cytorus\\u0022 @ (202,24), owner Bithynia: supply 143t, loyalty 87, fortification 54%\",\"  sinope \\u0022Sinope\\u0022 @ (209,22), owner Bithynia: supply 243t, loyalty 86, fortification 61%\",\"  amisus \\u0022Amisus\\u0022 @ (218,28), owner Bithynia: supply 155t, loyalty 74, fortification 44%\",\"  zela \\u0022Zela\\u0022 @ (220,35), owner Bithynia: supply 86t, loyalty 58, fortification 31%\",\"  cotyora \\u0022Cotyora\\u0022 @ (225,30), owner Bithynia: supply 126t, loyalty 72, fortification 30%\",\"\"]}\n",
+  "stderr": ""
+}

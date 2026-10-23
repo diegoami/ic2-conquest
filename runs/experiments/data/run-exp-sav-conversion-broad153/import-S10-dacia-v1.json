@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build/bin/BroadProbe/debug/BroadProbe.dll",
+    "import",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S10-dacia.SAV",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S10-dacia-imported.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"import\",\"summary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"dacia\",\"human\":[\"dacia\"],\"armies\":13,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[],\"pending\":null},\"reloadEqual\":true,\"Report\":{\"UnmappedFields\":[],\"SkippedArmies\":[],\"SkippedFleets\":[],\"ArmiesWithClampedMoves\":[],\"NationsImported\":16,\"CitiesImported\":334,\"ArmiesImported\":13,\"FleetsImported\":2,\"RecruitmentSlotsImported\":79,\"MercenarySlotsImported\":44},\"resumeSummary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"dacia\",\"human\":[\"dacia\"],\"armies\":13,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[],\"pending\":null},\"status\":[\"\\u003E status mine\",\"Nation: Dacia (dacia, human): treasury 180, unity 607, tax 5%\",\"\",\"Armies:\",\"\",\"Fleets:\",\"\",\"Cities:\",\"  solva \\u0022Solva\\u0022 @ (129,12), owner Dacia: supply 63t, loyalty 74, fortification 43%\",\"  mursa \\u0022Mursa\\u0022 @ (132,25), owner Dacia: supply 99t, loyalty 77, fortification 53%\",\"  sirmium \\u0022Sirmium\\u0022 @ (136,16), owner Dacia: supply 134t, loyalty 64, fortification 42%\",\"  singidunum \\u0022Singidunum\\u0022 @ (141,20), owner Dacia: supply 67t, loyalty 61, fortification 34%\",\"  porolissum \\u0022Porolissum\\u0022 @ (142,5), owner Dacia: supply 62t, loyalty 66, fortification 45%\",\"  viminacium \\u0022Viminacium\\u0022 @ (144,26), owner Dacia: supply 72t, loyalty 69, fortification 45%\",\"  ulpia-traiana \\u0022Ulpia Traiana\\u0022 @ (148,24), owner Dacia: supply 52t, loyalty 72, fortification 47%\",\"  salinae \\u0022Salinae\\u0022 @ (152,18), owner Dacia: supply 67t, loyalty 72, fortification 39%\",\"\"]}\n",
+  "stderr": ""
+}

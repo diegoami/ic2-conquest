@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build/bin/BroadProbe/debug/BroadProbe.dll",
+    "import",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S09-illyria.SAV",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S09-illyria-imported.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"import\",\"summary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"illyria\",\"human\":[\"illyria\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":78,\"eliminated\":[],\"pending\":null},\"reloadEqual\":true,\"Report\":{\"UnmappedFields\":[],\"SkippedArmies\":[],\"SkippedFleets\":[],\"ArmiesWithClampedMoves\":[],\"NationsImported\":16,\"CitiesImported\":334,\"ArmiesImported\":14,\"FleetsImported\":2,\"RecruitmentSlotsImported\":78,\"MercenarySlotsImported\":34},\"resumeSummary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"illyria\",\"human\":[\"illyria\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":78,\"eliminated\":[],\"pending\":null},\"status\":[\"\\u003E status mine\",\"Nation: Illyria (illyria, human): treasury 580, unity 690, tax 5%\",\"\",\"Armies:\",\"\",\"Fleets:\",\"\",\"Cities:\",\"  tergeste \\u0022Tergeste\\u0022 @ (106,25), owner Illyria: supply 111t, loyalty 72, fortification 44%\",\"  vegia \\u0022Vegia\\u0022 @ (113,31), owner Illyria: supply 68t, loyalty 85, fortification 57%\",\"  siscia \\u0022Siscia\\u0022 @ (116,26), owner Illyria: supply 72t, loyalty 75, fortification 33%\",\"  salona \\u0022Salona\\u0022 @ (117,34), owner Illyria: supply 145t, loyalty 87, fortification 78%\",\"  narona \\u0022Narona\\u0022 @ (122,36), owner Illyria: supply 86t, loyalty 86, fortification 52%\",\"  scodra \\u0022Scodra\\u0022 @ (128,39), owner Illyria: supply 280t, loyalty 87, fortification 73%\",\"  epidamnus \\u0022Epidamnus\\u0022 @ (129,43), owner Illyria: supply 237t, loyalty 69, fortification 66%\",\"  lissus \\u0022Lissus\\u0022 @ (130,46), owner Illyria: supply 83t, loyalty 63, fortification 46%\",\"  dimale \\u0022Dimale\\u0022 @ (131,50), owner Illyria: supply 52t, loyalty 76, fortification 39%\",\"\"]}\n",
+  "stderr": ""
+}

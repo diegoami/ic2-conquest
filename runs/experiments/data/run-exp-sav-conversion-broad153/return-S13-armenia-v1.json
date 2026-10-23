@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v5/bin/BroadProbe/debug/BroadProbe.dll",
+    "import",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-S13-armenia-v1/Q15313R.SAV",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-S13-armenia-v1/returned.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"import\",\"summary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"armenia\",\"human\":[\"armenia\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":63,\"eliminated\":[],\"pending\":null},\"reloadEqual\":true,\"Report\":{\"UnmappedFields\":[],\"SkippedArmies\":[],\"SkippedFleets\":[],\"ArmiesWithClampedMoves\":[],\"NationsImported\":16,\"CitiesImported\":334,\"ArmiesImported\":14,\"FleetsImported\":2,\"RecruitmentSlotsImported\":63,\"MercenarySlotsImported\":42},\"resumeSummary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"armenia\",\"human\":[\"armenia\"],\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":63,\"eliminated\":[],\"pending\":null},\"status\":[\"\\u003E status mine\",\"Nation: Armenia (armenia, human): treasury 530, unity 660, tax 17%\",\"\",\"Armies:\",\"\",\"Fleets:\",\"\",\"Cities:\",\"  phanagoria \\u0022Phanagoria\\u0022 @ (217,4), owner Armenia: supply 143t, loyalty 71, fortification 37%\",\"  pityus \\u0022Pityus\\u0022 @ (232,13), owner Armenia: supply 143t, loyalty 61, fortification 53%\",\"  erzerum \\u0022Erzerum\\u0022 @ (236,37), owner Armenia: supply 195t, loyalty 66, fortification 61%\",\"  trapezus \\u0022Trapezus\\u0022 @ (237,30), owner Armenia: supply 182t, loyalty 85, fortification 60%\",\"  gymnias \\u0022Gymnias\\u0022 @ (242,35), owner Armenia: supply 169t, loyalty 82, fortification 43%\",\"  dioscurias \\u0022Dioscurias\\u0022 @ (243,18), owner Armenia: supply 151t, loyalty 74, fortification 56%\",\"  carona \\u0022Carona\\u0022 @ (246,34), owner Armenia: supply 214t, loyalty 69, fortification 48%\",\"  phasis \\u0022Phasis\\u0022 @ (247,22), owner Armenia: supply 195t, loyalty 82, fortification 52%\",\"  mtskheta \\u0022Mtskheta\\u0022 @ (260,23), owner Armenia: supply 167t, loyalty 75, fortification 41%\",\"  erivan \\u0022Erivan\\u0022 @ (262,34), owner Armenia: supply 339t, loyalty 94, fortification 54%\",\"\"]}\n",
+  "stderr": ""
+}

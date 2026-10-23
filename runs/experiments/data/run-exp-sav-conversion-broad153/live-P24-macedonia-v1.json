@@ -1,0 +1,96 @@
+{
+  "name": "P24-macedonia",
+  "case": {
+    "name": "P24-macedonia",
+    "category": "progressed",
+    "provenance": "gameplay: repeated public end command; no orders",
+    "nation": "macedonia",
+    "seed": 11,
+    "originalAction": {
+      "kind": "end-turn"
+    },
+    "remakeCommand": "end",
+    "summary": {
+      "turn": 24,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 269,
+        "TurnIndex": 24
+      },
+      "active": "macedonia",
+      "human": [
+        "macedonia"
+      ],
+      "armies": 16,
+      "fleets": 6,
+      "building": 3,
+      "cargo": 0,
+      "recruits": 87,
+      "eliminated": [],
+      "pending": {
+        "ProposingNationId": "media",
+        "ProposedRelationCode": 1
+      }
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-P24-macedonia-v1/Q15319I.SAV",
+      "sha256": "61130e28cb73424369d7ecab9ba5a8fc135b92897f4e7916987c6ad79dd2b45c",
+      "bytes": 133461
+    },
+    "order": {
+      "file": "live-P24-macedonia-v1/Q15319O.SAV",
+      "sha256": "4c2130506de53ee31ac00c0ccbc3b000703bf5108bc0d0827e736237eeece543",
+      "bytes": 133461
+    },
+    "autosave": {
+      "file": "live-P24-macedonia-v1/AUTO0745.SAV",
+      "sha256": "4c2130506de53ee31ac00c0ccbc3b000703bf5108bc0d0827e736237eeece543",
+      "bytes": 133461
+    },
+    "reopen": {
+      "file": "live-P24-macedonia-v1/Q15319R.SAV",
+      "sha256": "4c2130506de53ee31ac00c0ccbc3b000703bf5108bc0d0827e736237eeece543",
+      "bytes": 133461
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "718dfcf05d04341a750a2e9db22e4e0e202678de92dbd9301381916ed3bc3324",
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "load_messages": [
+    "e Media wants ta trade with Macedonia, aK"
+  ],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 4,
+  "action_output": {
+    "autosave": "AUTO0745.SAV",
+    "messages": [
+      "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"
+    ]
+  },
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

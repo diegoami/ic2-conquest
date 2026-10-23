@@ -2,6 +2,10 @@
 
 **Status:** [confirmed, partial], 2026-10-23. Original-program observations under
 Wine/Xvfb; not native Windows acceptance or a lossless-conversion claim.
+Promoted 2026-10-23 into imperial-conquest-2-research at
+[`412f1f9b3bc1293aa67792c98207a7b7eaf44b16`](https://github.com/diegoami/imperial-conquest-2-research/blob/412f1f9b3bc1293aa67792c98207a7b7eaf44b16/docs/reports/2026-10-23-remake-original-save-conversion-roundtrips.md)
+(research PR #65). This source draft/evidence is retained; the research report
+adds the UI-height rounding explanation and independently rerun packet audit.
 **Task:** [conquest #151](https://github.com/diegoami/ic2-conquest/issues/151),
 explicitly approved by the owner in the desktop session.
 

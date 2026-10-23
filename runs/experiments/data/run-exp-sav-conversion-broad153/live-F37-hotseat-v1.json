@@ -1,0 +1,90 @@
+{
+  "name": "F37-hotseat",
+  "case": {
+    "name": "F37-hotseat",
+    "category": "feature",
+    "provenance": "gameplay: two human seats in constructor",
+    "nation": "carthage",
+    "seed": 7,
+    "originalAction": {
+      "kind": "end-turn"
+    },
+    "remakeCommand": "end",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "carthage",
+      "human": [
+        "rome",
+        "carthage"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 63,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F37-hotseat-v1/Q15357I.SAV",
+      "sha256": "fcd18e9df5041070d1baa0900cbbe0271ccd47319b4861999c439321a5416ac9",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F37-hotseat-v1/Q15357O.SAV",
+      "sha256": "31c68971fd022e9636817ced1bf59bfe30c51802fde4a3959c66ae44677285c4",
+      "bytes": 131740
+    },
+    "autosave": {
+      "file": "live-F37-hotseat-v1/AUTO0720.SAV",
+      "sha256": "c475b6cb330fd176e9a04fe568747d4b663cfad814b0286ddb4d89cfdd735c7d",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F37-hotseat-v1/Q15357R.SAV",
+      "sha256": "31c68971fd022e9636817ced1bf59bfe30c51802fde4a3959c66ae44677285c4",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "fda9ca0ab46007869abeff747178208f30ce277bc6f4e79346072e1911405283",
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 1,
+  "action_output": {
+    "autosave": "AUTO0720.SAV",
+    "messages": []
+  },
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

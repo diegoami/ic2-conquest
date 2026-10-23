@@ -1,0 +1,81 @@
+{
+  "name": "S09-illyria",
+  "case": {
+    "name": "S09-illyria",
+    "category": "nation-start",
+    "provenance": "gameplay: first human seat after constructor prelude",
+    "nation": "illyria",
+    "seed": 11,
+    "originalAction": {
+      "kind": "tax",
+      "value": 17
+    },
+    "remakeCommand": "set-tax 17",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "illyria",
+      "human": [
+        "illyria"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 78,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-S09-illyria-v1/Q15309I.SAV",
+      "sha256": "f7e089f885cccdcfed48cfa02a646c6a927f10b0e8064b9ec1455ad66ba12da5",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-S09-illyria-v1/Q15309O.SAV",
+      "sha256": "7f538d40c406847630d5501c01fec495ff8fc2b34818d0a8b4acf42aa04ff4d8",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-S09-illyria-v1/Q15309R.SAV",
+      "sha256": "7f538d40c406847630d5501c01fec495ff8fc2b34818d0a8b4acf42aa04ff4d8",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "7ce394be551e93db559a3aafe5f9cf56c66959c0fe0a139745c165c9028cf0c6",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 9,
+  "action_output": [],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

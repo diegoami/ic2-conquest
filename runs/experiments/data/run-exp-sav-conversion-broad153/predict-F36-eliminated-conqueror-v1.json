@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/probe-build-v2/bin/BroadProbe/debug/BroadProbe.dll",
+    "action",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F36-eliminated-conqueror-imported.json",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/F36-eliminated-conqueror-predicted.json",
+    "set-tax 18"
+  ],
+  "returncode": 0,
+  "stdout": "{\"kind\":\"action\",\"command\":\"set-tax 18\",\"Lines\":[\"\\u003E set-tax 18\",\"economy.set-tax accepted.\",\"\"],\"ShouldExit\":false,\"changed\":true,\"before\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"human\":[\"rome\"],\"armies\":13,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[\"media\"],\"pending\":null},\"after\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"human\":[\"rome\"],\"armies\":13,\"fleets\":2,\"building\":0,\"cargo\":0,\"recruits\":79,\"eliminated\":[\"media\"],\"pending\":null},\"battleOpen\":false}\n",
+  "stderr": ""
+}

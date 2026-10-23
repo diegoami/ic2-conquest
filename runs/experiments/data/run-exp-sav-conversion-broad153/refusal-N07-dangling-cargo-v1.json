@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N07-dangling-cargo.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N07-dangling-cargo.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "returncode": 2,
+  "stdout": "",
+  "stderr": "Export failed, nothing written: '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/negative-v1/N07-dangling-cargo.json' references fleet 'absent-fleet', which is not present in the data set.\n"
+}

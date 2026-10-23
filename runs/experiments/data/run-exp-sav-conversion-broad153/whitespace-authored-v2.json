@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "git",
+    "diff",
+    "--check",
+    "4ca3afa",
+    "HEAD",
+    "--",
+    ".",
+    ":!runs/experiments/data/run-exp-sav-conversion-broad153/*.csv",
+    ":!runs/experiments/data/run-exp-sav-conversion-broad153/live-*.txt"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "full_raw_check": "See whitespace-receipt-v1.json: expected CSV CRLF/raw traceback EOF diagnostics preserved"
+}

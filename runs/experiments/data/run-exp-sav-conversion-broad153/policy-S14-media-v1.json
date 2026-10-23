@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/diego/projects/ic2-conquest/scripts/sav_export_policy_check.py",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/exports-v1/S14-media.SAV",
+    "--out",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-sav-conversion-broad153/policy-result-S14-media-v1.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"accepted\": true, \"invariant_failures\": [], \"failed_rules\": [], \"reported_only\": []}\n",
+  "stderr": ""
+}

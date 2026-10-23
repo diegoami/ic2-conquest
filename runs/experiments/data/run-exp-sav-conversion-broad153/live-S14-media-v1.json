@@ -1,0 +1,89 @@
+{
+  "name": "S14-media",
+  "case": {
+    "name": "S14-media",
+    "category": "nation-start",
+    "provenance": "gameplay: first human seat after constructor prelude",
+    "nation": "media",
+    "seed": 7,
+    "originalAction": {
+      "kind": "move",
+      "army": 11,
+      "x": 300,
+      "y": 59
+    },
+    "remakeCommand": "move army-11 300 59",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "media",
+      "human": [
+        "media"
+      ],
+      "armies": 13,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 85,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-S14-media-v1/Q15314I.SAV",
+      "sha256": "8073813b663640b192d3f3089e29f2578c8bcc52c9a906a042ac71146ec295d7",
+      "bytes": 131145
+    },
+    "order": {
+      "file": "live-S14-media-v1/Q15314O.SAV",
+      "sha256": "1c7bab248016a6b145bf7cafb965a1ad7375361f8bab02515cafb8eee70403c1",
+      "bytes": 131145
+    },
+    "reopen": {
+      "file": "live-S14-media-v1/Q15314R.SAV",
+      "sha256": "1c7bab248016a6b145bf7cafb965a1ad7375361f8bab02515cafb8eee70403c1",
+      "bytes": 131145
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "b96c74d6fac2633076eb06b018ca7af57bc976addbd09aabd8b77a5806757eff",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 14,
+  "action_output": [
+    [
+      300,
+      59
+    ],
+    []
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

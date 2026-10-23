@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/diego/projects/ic2-conquest/scripts/sav_export_policy_check.py",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-broad153/live-F48-army100000-v1/REEXPORT.SAV",
+    "--out",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-sav-conversion-broad153/reexport-policy-result-F48-army100000-v1.json"
+  ],
+  "returncode": 0,
+  "stdout": "{\"accepted\": true, \"invariant_failures\": [], \"failed_rules\": [], \"reported_only\": []}\n",
+  "stderr": ""
+}
