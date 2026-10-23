@@ -118,7 +118,8 @@ try:
    g.wait(lambda:g.find_windows('Battle ended') or not g.in_battle(),900,'Computer general battle completion',step=.5)
    boxes=g.wait(lambda:g.find_windows('Battle ended'),30,'Battle ended result')
    record['battle_result']={'computer_general_clicks':1,'initial_end_turn_clicks':1,'battle_ended_text':g.read_popup(boxes[0])}
-   record['final_battle_before_writeback']=g.battle_state()
+   if g.in_battle():record['final_battle_before_writeback']=g.battle_state()
+   else:record['battle_flag_cleared_before_result']=True
    g.shot(out/'battle-ended.png')
    cs=g.controls('Battle ended');g.click_control(g.control(cs,text='OK'),pause=1.5)
    if g.find_windows('^Offer of peace$'):record['peace_declined']=g.answer_battle_peace(False)
