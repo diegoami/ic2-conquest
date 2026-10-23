@@ -62,3 +62,5 @@ also need a parent IC2.sln asset-locator marker and `data` pointing read-only to
 the pinned remake data; those are input-path adapters, not another checkout.
 For the checksum inventory's logical layout, extract the original bundle under
 `original/`, and tool bundles at the root beside their archives.
+
+Supplemental fixed-mode compiled tools: fixed-corpus-tools-batch03.tar.gz,3186327bytes,SHA256ba996c8328fecb9636f935278d71abee8f1c028c0f0454ddca03dbc2520bae3d, Drivefile12L6PukG6Xusn9FMu-JdOFnzMahCnB1pA in the same folder. The five-case mode is supported in this later reporter; batch02 retains the original strict318 reporter. Fixture aliasing denotes equal comparator inputs/states, not an assertion about whether legacy recordings used one or separate processes; see fixture-provenance-clarification-v1.json.
