@@ -15,9 +15,11 @@ diagnostic replacement controller. Packet on diegoami/ic2-conquest main:
 - `runs/experiments/faithful-general157/Regression.cs` and `Replay.cs`
 - Finding: `findings/2026-10-23-battle-general-later-pass-iteration1355.md`.
 
-Research consolidation is pending; follow the normal promoted-report intake
-before treating the finding as canonical. Check its live status rather than
-assuming the conquest relay means promotion or acceptance.
+Research PR #67 is merged at63b463cd51822690c5ad8d2aa4f77e0f0175d469.
+Use its promoted report as the canonical rule evidence:
+https://github.com/diegoami/imperial-conquest-2-research/blob/63b463cd51822690c5ad8d2aa4f77e0f0175d469/docs/reports/2026-10-23-battle-general-later-pass-iteration1355.md .
+It independently reruns retained binaries/tools; no independent rebuild or new
+Wine run is claimed. Research promotion does not mean the remake fix is merged.
 
 The patch is against remake main8e5f0a35c9dd45a8ec31b38154406843b131013a.
 It preserves pass one's type order, adds lazy live-slot iteration, and switches

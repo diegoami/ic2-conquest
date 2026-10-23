@@ -3,6 +3,13 @@
 **Status:** [confirmed, partial], 2026-10-23. Fresh original Wine execution,
 CPU/live recorder validation and diagnostic native controls. No production fix,
 native Windows acceptance or full-corpus clearance.
+Promoted 2026-10-23 in research PR #67 at
+[`63b463cd`](https://github.com/diegoami/imperial-conquest-2-research/blob/63b463cd51822690c5ad8d2aa4f77e0f0175d469/docs/reports/2026-10-23-battle-general-later-pass-iteration1355.md).
+Research independently reran the retained offline tools/binaries and validated
+the recorded controls; no independent rebuild or new original/Wine run was
+performed. The canonical report clarifies measured state versus hidden fields,
+three pilot Selected defaults and the historical assumptions. Source evidence
+is retained unchanged; a production remake fix is still pending.
 **Task:** [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157),
 following [the owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md).
 
