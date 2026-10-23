@@ -1,0 +1,16 @@
+{
+  "records": 1359,
+  "actions_by_kind": {
+    "move": 63,
+    "step_without_move": 25,
+    "walk": 50,
+    "melee": 34,
+    "rout_check": 146,
+    "shot": 78,
+    "remove": 10
+  },
+  "sequence_complete": true,
+  "boundaries_balanced": true,
+  "provenance": "Direct original semantic snapshots; melee actor/focus/powers decoded from guarded original stack layout, not port predictions",
+  "limits": "Full raw snapshots are authoritative. Placement is captured as routine/setup boundaries, not every individual placement write. Strategic writeback is a separate save."
+}

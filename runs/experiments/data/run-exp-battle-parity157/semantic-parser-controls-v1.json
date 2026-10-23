@@ -1,0 +1,53 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "case": "positive",
+      "returncode": 0,
+      "expected_success": true,
+      "passed": true,
+      "stdout": "{\"records\": 1359, \"actions_by_kind\": {\"move\": 63, \"step_without_move\": 25, \"walk\": 50, \"melee\": 34, \"rout_check\": 146, \"shot\": 78, \"remove\": 10}, \"sequence_complete\": true, \"boundaries_balanced\": true, \"provenance\": \"Direct original semantic snapshots; melee actor/focus/powers decoded from guarded original stack layout, not port predictions\", \"limits\": \"Full raw snapshots are authoritative. Placement is captured as routine/setup boundaries, not every individual placement write. Strategic writeback is a separate save.\"}\n",
+      "stderr": ""
+    },
+    {
+      "case": "sequence-gap",
+      "returncode": 1,
+      "expected_success": false,
+      "passed": true,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/semantic_log.py\", line 23, in <module>\n    assert not L.chain_check(hook['records'], sites=O.H.SITES) and not L.result_check(hook['records'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "case": "missing-snapshot",
+      "returncode": 1,
+      "expected_success": false,
+      "passed": true,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/semantic_log.py\", line 26, in <module>\n    assert len(states['records']) == len(hook['records'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "case": "wrong-draw-result",
+      "returncode": 1,
+      "expected_success": false,
+      "passed": true,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/semantic_log.py\", line 23, in <module>\n    assert not L.chain_check(hook['records'], sites=O.H.SITES) and not L.result_check(hook['records'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "case": "unknown-marker",
+      "returncode": 1,
+      "expected_success": false,
+      "passed": true,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/semantic_log.py\", line 55, in <module>\n    assert r['site'] in {entry for _,entry,_ in O.H.MARKERS}\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+    },
+    {
+      "case": "unbalanced-boundary",
+      "returncode": 1,
+      "expected_success": false,
+      "passed": true,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/semantic_log.py\", line 127, in <module>\n    assert stacks[kind], (r['seq'],kind,'unmatched exit')\n           ~~~~~~^^^^^^\nAssertionError: (32, 'step', 'unmatched exit')\n"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "source_sha256": "690724652c342bcca6270044164857ef52f97373b23fe4d67f67a88100b2e406",
+  "exe_sha256": "6aabd848bee59478afd29e96c6bf75c1b2af1f264de2aebf8939bb53fde58252",
+  "base_sha256": "06bc469dff70ae8c83438e82ef4266a584bab7796752024521d00f8d8d46ec40",
+  "cpu": "semantic-cpu-v1.json",
+  "info": {
+    "caves": {
+      "rec_body": 5654016,
+      "rec_end_body": 5654176,
+      "random": 5654212,
+      "marker_shot": 5654456,
+      "marker_melee": 5654600,
+      "marker_rout": 5654744,
+      "marker_target_best": 5654884,
+      "marker_engage": 5655028,
+      "marker_pass2": 5655172,
+      "marker_pass3": 5655316,
+      "marker_threat": 5655460,
+      "marker_walk": 5655608,
+      "marker_walk_step": 5655752,
+      "marker_walk_step_exit": 5655896,
+      "marker_walk_exit": 5656036,
+      "marker_shot_exit": 5656176,
+      "marker_melee_exit": 5656316,
+      "marker_rout_exit": 5656456,
+      "marker_remove": 5656596,
+      "marker_remove_after_state": 5656740,
+      "marker_place": 5656884,
+      "marker_setup": 5657028,
+      "marker_end_half": 5657172,
+      "battle_over_clear": 5657316,
+      "after_battle_clear": 5657452,
+      "reseed_battlepols": 5657588,
+      "reseed_450c7b": 5657728,
+      "seed": 5657872
+    },
+    "hooked_sites": [
+      4423706,
+      4423983,
+      4424205,
+      4427771,
+      4427782,
+      4428168,
+      4428177,
+      4429143,
+      4429151,
+      4429262,
+      4429272,
+      4434568,
+      4559549,
+      4560156
+    ],
+    "scan_inside": [
+      4423706,
+      4423983,
+      4424205,
+      4427771,
+      4427782,
+      4428168,
+      4428177,
+      4429143,
+      4429151,
+      4429262,
+      4429272,
+      4434568,
+      4559549,
+      4560156
+    ],
+    "scan_outside_count": 39,
+    "snapshot_va": 5665280,
+    "state_buf": 8814592,
+    "state_rec": 2304,
+    "state_cap": 8192,
+    "state_end": 27688960,
+    "state_overflow": 5665152,
+    "snapshot_max_counter": 65535,
+    "semantic_markers": [
+      {
+        "name": "walk_step",
+        "va": 4426348,
+        "expected_bytes": "558bec83c4f4"
+      },
+      {
+        "name": "walk_step_exit",
+        "va": 4427035,
+        "expected_bytes": "5f5e5b8be5"
+      },
+      {
+        "name": "walk_exit",
+        "va": 4427632,
+        "expected_bytes": "5f5e5b8be5"
+      },
+      {
+        "name": "shot_exit",
+        "va": 4428695,
+        "expected_bytes": "83c4145d5f"
+      },
+      {
+        "name": "melee_exit",
+        "va": 4430086,
+        "expected_bytes": "83c4305d5f"
+      },
+      {
+        "name": "rout_exit",
+        "va": 4428036,
+        "expected_bytes": "5a5d5f5e5b"
+      },
+      {
+        "name": "remove",
+        "va": 4427640,
+        "expected_bytes": "0fbfc06bc00b"
+      },
+      {
+        "name": "remove_after_state",
+        "va": 4427682,
+        "expected_bytes": "8b10a1a0e64500"
+      },
+      {
+        "name": "place",
+        "va": 4424100,
+        "expected_bytes": "5356575583c4f0"
+      },
+      {
+        "name": "setup",
+        "va": 4430184,
+        "expected_bytes": "558bec83c4b8"
+      },
+      {
+        "name": "end_half",
+        "va": 4430880,
+        "expected_bytes": "803d7d0b4a0000"
+      }
+    ]
+  }
+}

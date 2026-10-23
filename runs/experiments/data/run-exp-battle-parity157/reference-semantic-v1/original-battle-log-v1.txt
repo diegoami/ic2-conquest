@@ -1,0 +1,427 @@
+Original IC2 / fixed-seed1 lab / semantic observer
+Intervals use original sequence numbers. Walk summaries overlap their individual steps.
+Placement is a routine boundary capture; individual placement-write order is not asserted.
+
+Actual tactical entry: slot/type/troops/quality/morale/moves/ammunition
+ 0 hi   2094  6  64  2   0
+ 1 ar   3411  6  84  4  25
+ 2 hc   2337  6  68  5   0
+ 3 li   5895  9  73  4   7
+ 4 ar    789  6  80  4  25
+ 5 ar   3317  6  71  4  25
+ 6 lc   4421  6  67  6   9
+ 7 li  13697  6  72  4   7
+ 8 li   1120  6  74  4   7
+20 hi   5900  6  60  2   0
+21 hi   5000  6  69  2   0
+22 li  14500  6  60  1   7
+23 li  14400  6  78  1   7
+24 li   6900  6  60  1   7
+
+Actions (all input fields and draw values are in semantic-actions-v1.jsonl):
+HR03 seq0030..0037 walk              slot00 goal [5, 9], (7,2) -> (6,4)
+HR03 seq0031..0032 move              slot00 (7,2) -> (7,3), moves 2 -> 1
+HR03 seq0033..0034 move              slot00 (7,3) -> (6,4), moves 1 -> 0
+HR03 seq0035..0036 step_without_move slot00 (6,4) -> (6,4), moves 0 -> 0
+HR03 seq0040..0045 walk              slot02 goal [5, 9], (1,2) -> (2,3)
+HR03 seq0041..0042 move              slot02 (1,2) -> (2,3), moves 1 -> 0
+HR03 seq0043..0044 step_without_move slot02 (2,3) -> (2,3), moves 0 -> 0
+HR03 seq0048..0053 walk              slot06 goal [5, 9], (4,2) -> (4,3)
+HR03 seq0049..0050 move              slot06 (4,2) -> (4,3), moves 1 -> 0
+HR03 seq0051..0052 step_without_move slot06 (4,3) -> (4,3), moves 0 -> 0
+HR03 seq0057..0062 walk              slot03 goal [3, 9], (10,2) -> (9,3)
+HR03 seq0058..0059 move              slot03 (10,2) -> (9,3), moves 1 -> 0
+HR03 seq0060..0061 step_without_move slot03 (9,3) -> (9,3), moves 0 -> 0
+HR03 seq0066..0071 walk              slot07 goal [3, 9], (11,2) -> (10,3)
+HR03 seq0067..0068 move              slot07 (11,2) -> (10,3), moves 1 -> 0
+HR03 seq0069..0070 step_without_move slot07 (10,3) -> (10,3), moves 0 -> 0
+HR03 seq0075..0080 walk              slot08 goal [3, 9], (12,2) -> (11,3)
+HR03 seq0076..0077 move              slot08 (12,2) -> (11,3), moves 1 -> 0
+HR03 seq0078..0079 step_without_move slot08 (11,3) -> (11,3), moves 0 -> 0
+HR03 seq0083..0088 walk              slot01 goal [3, 9], (8,2) -> (7,3)
+HR03 seq0084..0085 move              slot01 (8,2) -> (7,3), moves 1 -> 0
+HR03 seq0086..0087 step_without_move slot01 (7,3) -> (7,3), moves 0 -> 0
+HR03 seq0091..0096 walk              slot04 goal [5, 9], (9,2) -> (8,3)
+HR03 seq0092..0093 move              slot04 (9,2) -> (8,3), moves 1 -> 0
+HR03 seq0094..0095 step_without_move slot04 (8,3) -> (8,3), moves 0 -> 0
+HR03 seq0099..0104 walk              slot05 goal [3, 9], (7,1) -> (6,2)
+HR03 seq0100..0101 move              slot05 (7,1) -> (6,2), moves 1 -> 0
+HR03 seq0102..0103 step_without_move slot05 (6,2) -> (6,2), moves 0 -> 0
+HR04 seq0115..0122 walk              slot20 goal [6, 4], (4,9) -> (5,7)
+HR04 seq0116..0117 move              slot20 (4,9) -> (4,8), moves 2 -> 1
+HR04 seq0118..0119 move              slot20 (4,8) -> (5,7), moves 1 -> 0
+HR04 seq0120..0121 step_without_move slot20 (5,7) -> (5,7), moves 0 -> 0
+HR04 seq0125..0132 walk              slot21 goal [6, 5], (5,9) -> (6,7)
+HR04 seq0126..0127 move              slot21 (5,9) -> (5,8), moves 2 -> 1
+HR04 seq0128..0129 move              slot21 (5,8) -> (6,7), moves 1 -> 0
+HR04 seq0130..0131 step_without_move slot21 (6,7) -> (6,7), moves 0 -> 0
+HR04 seq0135..0140 walk              slot22 goal [8, 3], (1,9) -> (2,8)
+HR04 seq0136..0137 move              slot22 (1,9) -> (2,8), moves 1 -> 0
+HR04 seq0138..0139 step_without_move slot22 (2,8) -> (2,8), moves 0 -> 0
+HR04 seq0143..0148 walk              slot23 goal [8, 3], (2,9) -> (3,8)
+HR04 seq0144..0145 move              slot23 (2,9) -> (3,8), moves 1 -> 0
+HR04 seq0146..0147 step_without_move slot23 (3,8) -> (3,8), moves 0 -> 0
+HR04 seq0154..0159 walk              slot24 goal [6, 4], (3,9) -> (4,8)
+HR04 seq0155..0156 move              slot24 (3,9) -> (4,8), moves 1 -> 0
+HR04 seq0157..0158 step_without_move slot24 (4,8) -> (4,8), moves 0 -> 0
+HR05 seq0168..0173 walk              slot00 goal [6, 7], (6,4) -> (6,5)
+HR05 seq0169..0170 move              slot00 (6,4) -> (6,5), moves 2 -> 1
+HR05 seq0171..0172 step_without_move slot00 (6,5) -> (6,5), moves 1 -> 0
+HR05 seq0176..0181 walk              slot02 goal [6, 7], (2,3) -> (3,4)
+HR05 seq0177..0178 move              slot02 (2,3) -> (3,4), moves 1 -> 0
+HR05 seq0179..0180 step_without_move slot02 (3,4) -> (3,4), moves 0 -> 0
+HR05 seq0184..0189 walk              slot06 goal [6, 7], (4,3) -> (5,4)
+HR05 seq0185..0186 move              slot06 (4,3) -> (5,4), moves 1 -> 0
+HR05 seq0187..0188 step_without_move slot06 (5,4) -> (5,4), moves 0 -> 0
+HR05 seq0196..0201 walk              slot07 goal [4, 7], (10,3) -> (9,4)
+HR05 seq0197..0198 move              slot07 (10,3) -> (9,4), moves 1 -> 0
+HR05 seq0199..0200 step_without_move slot07 (9,4) -> (9,4), moves 0 -> 0
+HR05 seq0205..0210 walk              slot08 goal [5, 9], (11,3) -> (10,4)
+HR05 seq0206..0207 move              slot08 (11,3) -> (10,4), moves 1 -> 0
+HR05 seq0208..0209 step_without_move slot08 (10,4) -> (10,4), moves 0 -> 0
+HR05 seq0213..0218 walk              slot01 goal [4, 6], (7,3) -> (6,4)
+HR05 seq0214..0215 move              slot01 (7,3) -> (6,4), moves 1 -> 0
+HR05 seq0216..0217 step_without_move slot01 (6,4) -> (6,4), moves 0 -> 0
+HR05 seq0221..0226 walk              slot04 goal [6, 7], (8,3) -> (7,4)
+HR05 seq0222..0223 move              slot04 (8,3) -> (7,4), moves 1 -> 0
+HR05 seq0224..0225 step_without_move slot04 (7,4) -> (7,4), moves 0 -> 0
+HR05 seq0229..0234 walk              slot05 goal [2, 6], (6,2) -> (5,3)
+HR05 seq0230..0231 move              slot05 (6,2) -> (5,3), moves 1 -> 0
+HR05 seq0232..0233 step_without_move slot05 (5,3) -> (5,3), moves 0 -> 0
+HR05 seq0238..0243 walk              slot03 goal [3, 8], (9,3) -> (8,4)
+HR05 seq0239..0240 move              slot03 (9,3) -> (8,4), moves 1 -> 0
+HR05 seq0241..0242 step_without_move slot03 (8,4) -> (8,4), moves 0 -> 0
+HR06 seq0252..0255 walk              slot20 goal [6, 5], (5,7) -> (6,6)
+HR06 seq0253..0254 move              slot20 (5,7) -> (6,6), moves 2 -> 1
+HR06 seq0258..0261 walk              slot21 goal [5, 6], (6,7) -> (5,6)
+HR06 seq0259..0260 move              slot21 (6,7) -> (5,6), moves 2 -> 1
+HR06 seq0271..0280 walk              slot22 goal [5, 3], (2,8) -> (4,5)
+HR06 seq0272..0273 move              slot22 (2,8) -> (3,7), moves 4 -> 3
+HR06 seq0274..0275 move              slot22 (3,7) -> (3,6), moves 3 -> 2
+HR06 seq0276..0277 move              slot22 (3,6) -> (4,5), moves 2 -> 1
+HR06 seq0278..0279 step_without_move slot22 (4,5) -> (4,5), moves 1 -> 0
+HR06 seq0282..0289 walk              slot23 goal [3, 4], (3,8) -> (3,5)
+HR06 seq0283..0284 move              slot23 (3,8) -> (3,7), moves 4 -> 3
+HR06 seq0285..0286 move              slot23 (3,7) -> (3,6), moves 3 -> 2
+HR06 seq0287..0288 move              slot23 (3,6) -> (3,5), moves 2 -> 1
+HR06 seq0291..0300 walk              slot24 goal [10, 4], (4,8) -> (7,6)
+HR06 seq0292..0293 move              slot24 (4,8) -> (5,7), moves 4 -> 3
+HR06 seq0294..0295 move              slot24 (5,7) -> (6,7), moves 3 -> 2
+HR06 seq0296..0297 move              slot24 (6,7) -> (7,6), moves 2 -> 1
+HR06 seq0298..0299 step_without_move slot24 (7,6) -> (7,6), moves 1 -> 0
+HR06 seq0305..0309 melee             slot20 -> slot00, focus 2, powers 1782/661, bounds 183/565, losses 125/838, remaining 5775/1256, morale 62/61
+HR06 seq0309..0310 rout_check        slot20 troops 5775 -> 5775, morale 62 -> 62
+HR06 seq0311..0312 rout_check        slot00 troops 1256 -> 1256, morale 61 -> 61
+HR06 seq0313..0317 melee             slot21 -> slot00, focus 2, powers 1624/391, bounds 101/522, losses 95/440, remaining 4905/816, morale 71/58
+HR06 seq0317..0318 rout_check        slot21 troops 4905 -> 4905, morale 71 -> 71
+HR06 seq0319..0320 rout_check        slot00 troops 816 -> 816, morale 58 -> 58
+HR06 seq0321..0325 melee             slot23 -> slot02, focus 1, powers 2992/2704, bounds 1085/259, losses 690/387, remaining 13710/1950, morale 80/65
+HR06 seq0325..0326 rout_check        slot23 troops 13710 -> 13710, morale 80 -> 80
+HR06 seq0327..0328 rout_check        slot02 troops 1950 -> 1950, morale 65 -> 65
+HR07 seq0337..0364 walk              slot06 goal [5, 6], (5,4) -> (5,5)
+HR07 seq0338..0339 move              slot06 (5,4) -> (5,5), moves 6 -> 5
+HR07 seq0340..0343 shot              slot06 -> slot21, bound 21, loss 15, morale loss 0, remaining 4890 morale 71
+HR07 seq0343..0344 rout_check        slot21 troops 4890 -> 4890, morale 71 -> 71
+HR07 seq0346..0349 shot              slot06 -> slot21, bound 21, loss 21, morale loss 0, remaining 4869 morale 71
+HR07 seq0349..0350 rout_check        slot21 troops 4869 -> 4869, morale 71 -> 71
+HR07 seq0352..0355 shot              slot06 -> slot21, bound 21, loss 22, morale loss 0, remaining 4847 morale 71
+HR07 seq0355..0356 rout_check        slot21 troops 4847 -> 4847, morale 71 -> 71
+HR07 seq0358..0361 shot              slot06 -> slot21, bound 21, loss 30, morale loss 0, remaining 4817 morale 71
+HR07 seq0361..0362 rout_check        slot21 troops 4817 -> 4817, morale 71 -> 71
+HR07 seq0368..0383 walk              slot03 goal [7, 6], (8,4) -> (7,5)
+HR07 seq0369..0370 move              slot03 (8,4) -> (7,5), moves 4 -> 3
+HR07 seq0371..0374 shot              slot03 -> slot24, bound 389, loss 666, morale loss 3, remaining 6234 morale 57
+HR07 seq0374..0375 rout_check        slot24 troops 6234 -> 6234, morale 57 -> 57
+HR07 seq0377..0380 shot              slot03 -> slot24, bound 389, loss 61, morale loss 0, remaining 6173 morale 57
+HR07 seq0380..0381 rout_check        slot24 troops 6173 -> 6173, morale 57 -> 57
+HR07 seq0387..0402 walk              slot07 goal [7, 6], (9,4) -> (8,5)
+HR07 seq0388..0389 move              slot07 (9,4) -> (8,5), moves 4 -> 3
+HR07 seq0390..0393 shot              slot07 -> slot24, bound 488, loss 314, morale loss 1, remaining 5859 morale 56
+HR07 seq0393..0394 rout_check        slot24 troops 5859 -> 5859, morale 56 -> 56
+HR07 seq0396..0399 shot              slot07 -> slot24, bound 488, loss 299, morale loss 1, remaining 5560 morale 55
+HR07 seq0399..0400 rout_check        slot24 troops 5560 -> 5560, morale 55 -> 55
+HR07 seq0406..0411 walk              slot08 goal [8, 6], (10,4) -> (8,6)
+HR07 seq0407..0408 move              slot08 (10,4) -> (9,5), moves 4 -> 3
+HR07 seq0409..0410 move              slot08 (9,5) -> (8,6), moves 3 -> 2
+HR07 seq0414..0417 shot              slot01 -> slot24, bound 186, loss 145, morale loss 0, remaining 5415 morale 55
+HR07 seq0417..0418 rout_check        slot24 troops 5415 -> 5415, morale 55 -> 55
+HR07 seq0420..0423 shot              slot01 -> slot24, bound 186, loss 264, morale loss 1, remaining 5151 morale 54
+HR07 seq0423..0424 rout_check        slot24 troops 5151 -> 5151, morale 54 -> 54
+HR07 seq0426..0429 shot              slot01 -> slot24, bound 186, loss 234, morale loss 1, remaining 4917 morale 53
+HR07 seq0429..0430 rout_check        slot24 troops 4917 -> 4917, morale 53 -> 53
+HR07 seq0432..0435 shot              slot01 -> slot24, bound 186, loss 164, morale loss 1, remaining 4753 morale 52
+HR07 seq0435..0436 rout_check        slot24 troops 4753 -> 4753, morale 52 -> 52
+HR07 seq0440..0443 shot              slot04 -> slot24, bound 45, loss 68, morale loss 0, remaining 4685 morale 52
+HR07 seq0443..0444 rout_check        slot24 troops 4685 -> 4685, morale 52 -> 52
+HR07 seq0446..0449 shot              slot04 -> slot24, bound 45, loss 72, morale loss 0, remaining 4613 morale 52
+HR07 seq0449..0450 rout_check        slot24 troops 4613 -> 4613, morale 52 -> 52
+HR07 seq0452..0455 shot              slot04 -> slot24, bound 45, loss 40, morale loss 0, remaining 4573 morale 52
+HR07 seq0455..0456 rout_check        slot24 troops 4573 -> 4573, morale 52 -> 52
+HR07 seq0458..0461 shot              slot04 -> slot24, bound 45, loss 16, morale loss 0, remaining 4557 morale 52
+HR07 seq0461..0462 rout_check        slot24 troops 4557 -> 4557, morale 52 -> 52
+HR07 seq0466..0469 walk              slot05 goal [5, 4], (5,3) -> (5,4)
+HR07 seq0467..0468 move              slot05 (5,3) -> (5,4), moves 4 -> 3
+HR07 seq0471..0474 shot              slot05 -> slot24, bound 153, loss 193, morale loss 1, remaining 4364 morale 51
+HR07 seq0474..0475 rout_check        slot24 troops 4364 -> 4364, morale 51 -> 51
+HR07 seq0477..0480 shot              slot05 -> slot24, bound 153, loss 212, morale loss 1, remaining 4152 morale 50
+HR07 seq0480..0481 rout_check        slot24 troops 4152 -> 4152, morale 50 -> 50
+HR07 seq0483..0486 shot              slot05 -> slot24, bound 153, loss 232, morale loss 1, remaining 3920 morale 49
+HR07 seq0486..0487 rout_check        slot24 troops 3920 -> 3920, morale 49 -> 49
+HR07 seq0489..0492 shot              slot08 -> slot24, bound 58, loss 58, morale loss 0, remaining 3862 morale 49
+HR07 seq0492..0493 rout_check        slot24 troops 3862 -> 3862, morale 49 -> 49
+HR07 seq0495..0498 shot              slot08 -> slot24, bound 58, loss 40, morale loss 0, remaining 3822 morale 49
+HR07 seq0498..0499 rout_check        slot24 troops 3822 -> 3822, morale 49 -> 49
+HR07 seq0506..0510 melee             slot00 -> slot21, focus 2, powers 252/1589, bounds 429/77, losses 327/130, remaining 489/4687, morale 55/73
+HR07 seq0510..0511 rout_check        slot00 troops 489 -> 489, morale 55 -> 55
+HR07 seq0512..0513 rout_check        slot21 troops 4687 -> 4687, morale 73 -> 73
+HR07 seq0514..0518 melee             slot02 -> slot22, focus 2, powers 2205/2622, bounds 194/1220, losses 123/3014, remaining 1827/11486, morale 67/57
+HR07 seq0518..0519 rout_check        slot02 troops 1827 -> 1827, morale 67 -> 67
+HR07 seq0520..0521 rout_check        slot22 troops 11486 -> 11486, morale 57 -> 57
+HR07 seq0522..0526 melee             slot03 -> slot24, focus 3, powers 7218/3136, bounds 214/880, losses 133/738, remaining 5762/3084, morale 75/46
+HR07 seq0526..0527 rout_check        slot03 troops 5762 -> 5762, morale 75 -> 75
+HR07 seq0528..0529 rout_check        slot24 troops 3084 -> 3084, morale 46 -> 46
+HR07 seq0530..0534 melee             slot05 -> slot22, focus 2, powers 2184/13450, bounds 1703/187, losses 929/350, remaining 2388/11136, morale 68/59
+HR07 seq0534..0535 rout_check        slot05 troops 2388 -> 2388, morale 68 -> 68
+HR07 seq0536..0537 rout_check        slot22 troops 11136 -> 11136, morale 59 -> 59
+HR07 seq0538..0542 melee             slot06 -> slot21, focus 2, powers 2257/4687, bounds 766/226, losses 376/461, remaining 4045/4226, morale 69/70
+HR07 seq0542..0543 rout_check        slot06 troops 4045 -> 4045, morale 69 -> 69
+HR07 seq0544..0545 rout_check        slot21 troops 4226 -> 4226, morale 70 -> 70
+HR07 seq0546..0550 melee             slot07 -> slot24, focus 3, powers 13572/2463, bounds 208/1700, losses 35/1234, remaining 13662/1850, morale 74/43
+HR07 seq0550..0551 rout_check        slot07 troops 13662 -> 13662, morale 74 -> 74
+HR07 seq0552..0553 rout_check        slot24 troops 1850 -> 1850, morale 43 -> 43
+HR07 seq0554..0558 melee             slot08 -> slot24, focus 3, powers 1137/1441, bounds 119/146, losses 37/245, remaining 1083/1605, morale 76/40
+HR07 seq0558..0559 rout_check        slot08 troops 1083 -> 1083, morale 76 -> 76
+HR07 seq0560..0561 rout_check        slot24 troops 1605 -> 1605, morale 40 -> 40
+HR08 seq0575..0578 shot              slot22 -> slot05, bound 345, loss 512, morale loss 3, remaining 1876 morale 65
+HR08 seq0578..0579 rout_check        slot05 troops 1876 -> 1876, morale 65 -> 65
+HR08 seq0581..0584 shot              slot22 -> slot05, bound 345, loss 53, morale loss 0, remaining 1823 morale 65
+HR08 seq0584..0585 rout_check        slot05 troops 1823 -> 1823, morale 65 -> 65
+HR08 seq0587..0590 shot              slot22 -> slot05, bound 345, loss 56, morale loss 1, remaining 1767 morale 64
+HR08 seq0590..0591 rout_check        slot05 troops 1767 -> 1767, morale 64 -> 64
+HR08 seq0593..0596 shot              slot22 -> slot05, bound 345, loss 552, morale loss 3, remaining 1215 morale 61
+HR08 seq0596..0597 rout_check        slot05 troops 1215 -> 1215, morale 61 -> 61
+HR08 seq0599..0602 shot              slot23 -> slot02, bound 121, loss 120, morale loss 2, remaining 1707 morale 65
+HR08 seq0602..0603 rout_check        slot02 troops 1707 -> 1707, morale 65 -> 65
+HR08 seq0605..0608 shot              slot23 -> slot02, bound 121, loss 141, morale loss 2, remaining 1566 morale 63
+HR08 seq0608..0609 rout_check        slot02 troops 1566 -> 1566, morale 63 -> 63
+HR08 seq0611..0614 shot              slot23 -> slot02, bound 121, loss 100, morale loss 2, remaining 1466 morale 61
+HR08 seq0614..0615 rout_check        slot02 troops 1466 -> 1466, morale 61 -> 61
+HR08 seq0617..0620 shot              slot23 -> slot02, bound 121, loss 197, morale loss 3, remaining 1269 morale 58
+HR08 seq0620..0621 rout_check        slot02 troops 1269 -> 1269, morale 58 -> 58
+HR08 seq0623..0626 shot              slot24 -> slot08, bound 44, loss 10, morale loss 0, remaining 1073 morale 76
+HR08 seq0626..0627 rout_check        slot08 troops 1073 -> 1073, morale 76 -> 76
+HR08 seq0629..0632 shot              slot24 -> slot08, bound 44, loss 4, morale loss 0, remaining 1069 morale 76
+HR08 seq0632..0633 rout_check        slot08 troops 1069 -> 1069, morale 76 -> 76
+HR08 seq0635..0638 shot              slot24 -> slot08, bound 44, loss 37, morale loss 1, remaining 1032 morale 75
+HR08 seq0638..0639 rout_check        slot08 troops 1032 -> 1032, morale 75 -> 75
+HR08 seq0641..0644 shot              slot24 -> slot08, bound 44, loss 35, morale loss 1, remaining 997 morale 74
+HR08 seq0644..0645 rout_check        slot08 troops 997 -> 997, morale 74 -> 74
+HR08 seq0652..0656 melee             slot20 -> slot00, focus 3, powers 1773/152, bounds 42/571, losses 11/196, remaining 5764/293, morale 64/52
+HR08 seq0656..0657 rout_check        slot20 troops 5764 -> 5764, morale 64 -> 64
+HR08 seq0658..0659 rout_check        slot00 troops 293 -> 293, morale 52 -> 52
+HR08 seq0660..0664 melee             slot21 -> slot00, focus 3, powers 1385/94, bounds 24/432, losses 9/118, remaining 4217/175, morale 72/49
+HR08 seq0664..0665 rout_check        slot21 troops 4217 -> 4217, morale 72 -> 72
+HR08 seq0666..0669 rout_check        slot00 troops 175 -> 0, morale 49 -> 49
+HR08 seq0667..0668 remove            slot00 removed
+HR08 seq0670..0674 melee             slot22 -> slot05, focus 1, powers 13820/710, bounds 48/2365, losses 30/487, remaining 11106/728, morale 66/52
+HR08 seq0674..0675 rout_check        slot22 troops 11106 -> 11106, morale 66 -> 66
+HR08 seq0676..0677 rout_check        slot05 troops 728 -> 728, morale 52 -> 52
+HR08 seq0678..0682 melee             slot23 -> slot02, focus 1, powers 2993/1291, bounds 493/295, losses 510/468, remaining 13200/801, morale 87/49
+HR08 seq0682..0683 rout_check        slot23 troops 13200 -> 13200, morale 87 -> 87
+HR08 seq0684..0685 rout_check        slot02 troops 801 -> 801, morale 49 -> 49
+HR09 seq0692..0695 walk              slot06 goal [6, 5], (5,5) -> (6,5)
+HR09 seq0693..0694 move              slot06 (5,5) -> (6,5), moves 6 -> 5
+HR09 seq0699..0702 shot              slot03 -> slot24, bound 361, loss 410, morale loss 3, remaining 1195 morale 42
+HR09 seq0702..0703 rout_check        slot24 troops 1195 -> 1195, morale 42 -> 42
+HR09 seq0705..0708 shot              slot03 -> slot24, bound 361, loss 558, morale loss 3, remaining 637 morale 39
+HR09 seq0708..0713 rout_check        slot24 troops 637 -> 0, morale 39 -> 39
+HR09 seq0711..0712 remove            slot24 removed
+HR09 seq0723..0726 shot              slot01 -> slot22, bound 184, loss 95, morale loss 0, remaining 11011 morale 60
+HR09 seq0726..0727 rout_check        slot22 troops 11011 -> 11011, morale 60 -> 60
+HR09 seq0729..0732 shot              slot01 -> slot22, bound 184, loss 109, morale loss 0, remaining 10902 morale 60
+HR09 seq0732..0733 rout_check        slot22 troops 10902 -> 10902, morale 60 -> 60
+HR09 seq0735..0738 shot              slot01 -> slot22, bound 184, loss 137, morale loss 0, remaining 10765 morale 60
+HR09 seq0738..0739 rout_check        slot22 troops 10765 -> 10765, morale 60 -> 60
+HR09 seq0741..0744 shot              slot01 -> slot22, bound 184, loss 323, morale loss 1, remaining 10442 morale 59
+HR09 seq0744..0745 rout_check        slot22 troops 10442 -> 10442, morale 59 -> 59
+HR09 seq0749..0752 walk              slot04 goal [6, 3], (7,4) -> (6,3)
+HR09 seq0750..0751 move              slot04 (7,4) -> (6,3), moves 4 -> 3
+HR09 seq0755..0758 shot              slot05 -> slot21, bound 4, loss 5, morale loss 0, remaining 4212 morale 71
+HR09 seq0758..0759 rout_check        slot21 troops 4212 -> 4212, morale 71 -> 71
+HR09 seq0761..0764 shot              slot05 -> slot21, bound 4, loss 3, morale loss 0, remaining 4209 morale 71
+HR09 seq0764..0765 rout_check        slot21 troops 4209 -> 4209, morale 71 -> 71
+HR09 seq0767..0770 shot              slot05 -> slot21, bound 4, loss 3, morale loss 0, remaining 4206 morale 71
+HR09 seq0770..0771 rout_check        slot21 troops 4206 -> 4206, morale 71 -> 71
+HR09 seq0773..0776 shot              slot05 -> slot21, bound 4, loss 2, morale loss 0, remaining 4204 morale 71
+HR09 seq0776..0777 rout_check        slot21 troops 4204 -> 4204, morale 71 -> 71
+HR09 seq0780..0783 shot              slot03 -> slot20, bound 43, loss 49, morale loss 0, remaining 5715 morale 63
+HR09 seq0783..0784 rout_check        slot20 troops 5715 -> 5715, morale 63 -> 63
+HR09 seq0786..0789 shot              slot03 -> slot20, bound 43, loss 20, morale loss 0, remaining 5695 morale 63
+HR09 seq0789..0790 rout_check        slot20 troops 5695 -> 5695, morale 63 -> 63
+HR09 seq0792..0795 shot              slot04 -> slot22, bound 44, loss 56, morale loss 0, remaining 10386 morale 59
+HR09 seq0795..0796 rout_check        slot22 troops 10386 -> 10386, morale 59 -> 59
+HR09 seq0798..0801 shot              slot04 -> slot22, bound 44, loss 6, morale loss 0, remaining 10380 morale 59
+HR09 seq0801..0802 rout_check        slot22 troops 10380 -> 10380, morale 59 -> 59
+HR09 seq0804..0807 shot              slot04 -> slot22, bound 44, loss 62, morale loss 0, remaining 10318 morale 59
+HR09 seq0807..0808 rout_check        slot22 troops 10318 -> 10318, morale 59 -> 59
+HR09 seq0810..0813 shot              slot06 -> slot21, bound 20, loss 15, morale loss 0, remaining 4189 morale 71
+HR09 seq0813..0814 rout_check        slot21 troops 4189 -> 4189, morale 71 -> 71
+HR09 seq0816..0819 shot              slot06 -> slot21, bound 20, loss 13, morale loss 0, remaining 4176 morale 71
+HR09 seq0819..0820 rout_check        slot21 troops 4176 -> 4176, morale 71 -> 71
+HR09 seq0822..0825 shot              slot06 -> slot21, bound 20, loss 24, morale loss 0, remaining 4152 morale 71
+HR09 seq0825..0826 rout_check        slot21 troops 4152 -> 4152, morale 71 -> 71
+HR09 seq0828..0831 shot              slot06 -> slot21, bound 20, loss 16, morale loss 0, remaining 4136 morale 71
+HR09 seq0831..0832 rout_check        slot21 troops 4136 -> 4136, morale 71 -> 71
+HR09 seq0834..0837 shot              slot06 -> slot21, bound 20, loss 26, morale loss 0, remaining 4110 morale 71
+HR09 seq0837..0838 rout_check        slot21 troops 4110 -> 4110, morale 71 -> 71
+HR09 seq0842..0843 walk              slot02 goal [4, 5], (3,4) -> (3,4)
+HR09 seq0845..0850 walk              slot07 goal [6, 7], (8,5) -> (6,7)
+HR09 seq0846..0847 move              slot07 (8,5) -> (7,6), moves 4 -> 3
+HR09 seq0848..0849 move              slot07 (7,6) -> (6,7), moves 3 -> 2
+HR09 seq0852..0867 walk              slot08 goal [6, 6], (8,6) -> (7,6)
+HR09 seq0853..0854 move              slot08 (8,6) -> (7,6), moves 4 -> 3
+HR09 seq0855..0858 shot              slot08 -> slot20, bound 6, loss 4, morale loss 0, remaining 5691 morale 63
+HR09 seq0858..0859 rout_check        slot20 troops 5691 -> 5691, morale 63 -> 63
+HR09 seq0861..0864 shot              slot08 -> slot20, bound 6, loss 2, morale loss 0, remaining 5689 morale 63
+HR09 seq0864..0865 rout_check        slot20 troops 5689 -> 5689, morale 63 -> 63
+HR09 seq0869..0872 shot              slot07 -> slot21, bound 55, loss 87, morale loss 0, remaining 4023 morale 71
+HR09 seq0872..0873 rout_check        slot21 troops 4023 -> 4023, morale 71 -> 71
+HR09 seq0875..0878 shot              slot07 -> slot21, bound 55, loss 59, morale loss 0, remaining 3964 morale 71
+HR09 seq0878..0879 rout_check        slot21 troops 3964 -> 3964, morale 71 -> 71
+HR09 seq0884..0888 melee             slot02 -> slot22, focus 1, powers 833/1853, bounds 149/464, losses 74/842, remaining 727/9476, morale 51/61
+HR09 seq0888..0889 rout_check        slot02 troops 727 -> 727, morale 51 -> 51
+HR09 seq0890..0891 rout_check        slot22 troops 9476 -> 9476, morale 61 -> 61
+HR09 seq0892..0896 melee             slot07 -> slot20, focus 2, powers 3646/21004, bounds 6559/99, losses 3993/123, remaining 9669/5566, morale 70/65
+HR09 seq0896..0897 rout_check        slot07 troops 9669 -> 9669, morale 70 -> 70
+HR09 seq0898..0899 rout_check        slot20 troops 5566 -> 5566, morale 65 -> 65
+HR09 seq0900..0904 melee             slot08 -> slot20, focus 2, powers 277/20884, bounds 6264/8, losses 399/11, remaining 598/5555, morale 70/67
+HR09 seq0904..0907 rout_check        slot08 troops 598 -> 0, morale 70 -> 70
+HR09 seq0905..0906 remove            slot08 removed
+HR09 seq0908..0909 rout_check        slot20 troops 5555 -> 5555, morale 72 -> 72
+HR10 seq0915..0918 walk              slot20 goal [5, 4], (6,6) -> (5,5)
+HR10 seq0916..0917 move              slot20 (6,6) -> (5,5), moves 2 -> 1
+HR10 seq0924..0927 shot              slot22 -> slot05, bound 343, loss 230, morale loss 3, remaining 498 morale 48
+HR10 seq0927..0928 rout_check        slot05 troops 498 -> 498, morale 48 -> 48
+HR10 seq0930..0933 shot              slot22 -> slot05, bound 250, loss 218, morale loss 3, remaining 280 morale 45
+HR10 seq0933..0934 rout_check        slot05 troops 280 -> 280, morale 45 -> 45
+HR10 seq0936..0939 shot              slot22 -> slot05, bound 141, loss 228, morale loss 3, remaining 52 morale 42
+HR10 seq0939..0942 rout_check        slot05 troops 52 -> 0, morale 42 -> 42
+HR10 seq0940..0941 remove            slot05 removed
+HR10 seq0946..0957 walk              slot23 goal [6, 3], (3,5) -> (5,4)
+HR10 seq0947..0948 move              slot23 (3,5) -> (4,4), moves 4 -> 3
+HR10 seq0949..0950 move              slot23 (4,4) -> (5,4), moves 3 -> 2
+HR10 seq0951..0954 shot              slot23 -> slot04, bound 395, loss 486, morale loss 3, remaining 303 morale 64
+HR10 seq0954..0955 rout_check        slot04 troops 303 -> 303, morale 64 -> 64
+HR10 seq0964..0968 melee             slot20 -> slot01, focus 1, powers 24745/682, bounds 13/12377, losses 9/1365, remaining 5546/2046, morale 79/68
+HR10 seq0968..0969 rout_check        slot20 troops 5546 -> 5546, morale 79 -> 79
+HR10 seq0970..0971 rout_check        slot01 troops 2046 -> 2046, morale 68 -> 68
+HR10 seq0972..0976 melee             slot21 -> slot06, focus 1, powers 4203/1888, bounds 149/901, losses 190/1619, remaining 3774/2426, morale 83/53
+HR10 seq0976..0977 rout_check        slot21 troops 3774 -> 3774, morale 83 -> 83
+HR10 seq0978..0979 rout_check        slot06 troops 2426 -> 2426, morale 53 -> 53
+HR10 seq0980..0984 melee             slot22 -> slot02, focus 1, powers 1874/659, bounds 278/207, losses 42/57, remaining 9434/670, morale 73/36
+HR10 seq0984..0985 rout_check        slot22 troops 9434 -> 9434, morale 73 -> 73
+HR10 seq0986..0991 rout_check        slot02 troops 670 -> 0, morale 36 -> 36
+HR10 seq0989..0990 remove            slot02 removed
+HR10 seq0992..0996 melee             slot23 -> slot04, focus 1, powers 20604/190, bounds 11/3286, losses 4/122, remaining 13196/181, morale 98/55
+HR10 seq0996..0997 rout_check        slot23 troops 13196 -> 13196, morale 98 -> 98
+HR10 seq0998..0999 rout_check        slot04 troops 181 -> 181, morale 55 -> 55
+HR11 seq1010..1017 walk              slot07 goal [3, 6], (6,7) -> (3,6)
+HR11 seq1011..1012 move              slot07 (6,7) -> (5,7), moves 4 -> 3
+HR11 seq1013..1014 move              slot07 (5,7) -> (4,6), moves 3 -> 2
+HR11 seq1015..1016 move              slot07 (4,6) -> (3,6), moves 2 -> 1
+HR11 seq1020..1023 shot              slot01 -> slot22, bound 86, loss 97, morale loss 0, remaining 9337 morale 78
+HR11 seq1023..1024 rout_check        slot22 troops 9337 -> 9337, morale 78 -> 78
+HR11 seq1026..1029 shot              slot01 -> slot22, bound 86, loss 118, morale loss 0, remaining 9219 morale 78
+HR11 seq1029..1030 rout_check        slot22 troops 9219 -> 9219, morale 78 -> 78
+HR11 seq1032..1035 shot              slot01 -> slot22, bound 86, loss 53, morale loss 0, remaining 9166 morale 78
+HR11 seq1035..1036 rout_check        slot22 troops 9166 -> 9166, morale 78 -> 78
+HR11 seq1038..1041 shot              slot01 -> slot22, bound 86, loss 125, morale loss 0, remaining 9041 morale 78
+HR11 seq1041..1042 rout_check        slot22 troops 9041 -> 9041, morale 78 -> 78
+HR11 seq1046..1049 walk              slot04 goal [7, 4], (6,3) -> (7,4)
+HR11 seq1047..1048 move              slot04 (6,3) -> (7,4), moves 4 -> 3
+HR11 seq1051..1054 shot              slot04 -> slot23, bound 8, loss 6, morale loss 0, remaining 13190 morale 98
+HR11 seq1054..1055 rout_check        slot23 troops 13190 -> 13190, morale 98 -> 98
+HR11 seq1057..1060 shot              slot04 -> slot23, bound 8, loss 9, morale loss 0, remaining 13181 morale 98
+HR11 seq1060..1061 rout_check        slot23 troops 13181 -> 13181, morale 98 -> 98
+HR11 seq1063..1066 shot              slot04 -> slot23, bound 8, loss 9, morale loss 0, remaining 13172 morale 98
+HR11 seq1066..1067 rout_check        slot23 troops 13172 -> 13172, morale 98 -> 98
+HR11 seq1069..1072 shot              slot07 -> slot22, bound 274, loss 269, morale loss 1, remaining 8772 morale 77
+HR11 seq1072..1073 rout_check        slot22 troops 8772 -> 8772, morale 77 -> 77
+HR11 seq1077..1086 walk              slot03 goal [5, 6], (7,5) -> (6,6)
+HR11 seq1078..1079 move              slot03 (7,5) -> (6,6), moves 4 -> 3
+HR11 seq1080..1083 shot              slot03 -> slot21, bound 33, loss 40, morale loss 0, remaining 3734 morale 88
+HR11 seq1083..1084 rout_check        slot21 troops 3734 -> 3734, morale 88 -> 88
+HR11 seq1088..1089 walk              slot06 goal [5, 6], (6,5) -> (6,5)
+HR11 seq1094..1098 melee             slot03 -> slot21, focus 2, powers 1694/16590, bounds 4703/39, losses 2305/110, remaining 3457/3624, morale 53/90
+HR11 seq1098..1099 rout_check        slot03 troops 3457 -> 3457, morale 53 -> 53
+HR11 seq1100..1101 rout_check        slot21 troops 3624 -> 3624, morale 90 -> 90
+HR11 seq1102..1106 melee             slot06 -> slot21, focus 2, powers 1050/4089, bounds 788/94, losses 514/175, remaining 1912/3449, morale 44/92
+HR11 seq1106..1107 rout_check        slot06 troops 1912 -> 1912, morale 44 -> 44
+HR11 seq1108..1109 rout_check        slot21 troops 3449 -> 3449, morale 92 -> 92
+HR11 seq1110..1114 melee             slot07 -> slot22, focus 1, powers 8133/9025, bounds 895/791, losses 715/1573, remaining 8954/7199, morale 54/74
+HR11 seq1114..1115 rout_check        slot07 troops 8954 -> 8954, morale 54 -> 54
+HR11 seq1116..1117 rout_check        slot22 troops 7199 -> 7199, morale 74 -> 74
+HR12 seq1130..1133 walk              slot23 goal [6, 3], (5,4) -> (6,3)
+HR12 seq1131..1132 move              slot23 (5,4) -> (6,3), moves 4 -> 3
+HR12 seq1135..1138 shot              slot23 -> slot04, bound 91, loss 18, morale loss 3, remaining 163 morale 52
+HR12 seq1138..1139 rout_check        slot04 troops 163 -> 163, morale 52 -> 52
+HR12 seq1141..1144 shot              slot23 -> slot04, bound 82, loss 91, morale loss 3, remaining 72 morale 49
+HR12 seq1144..1147 rout_check        slot04 troops 72 -> 0, morale 49 -> 49
+HR12 seq1145..1146 remove            slot04 removed
+HR12 seq1154..1158 melee             slot20 -> slot01, focus 2, powers 26868/368, bounds 7/14939, losses 5/819, remaining 5541/1227, morale 91/53
+HR12 seq1158..1159 rout_check        slot20 troops 5541 -> 5541, morale 91 -> 91
+HR12 seq1160..1161 rout_check        slot01 troops 1227 -> 1227, morale 53 -> 53
+HR12 seq1162..1166 melee             slot21 -> slot06, focus 1, powers 4073/761, bounds 54/1024, losses 29/765, remaining 3420/1147, morale 99/35
+HR12 seq1166..1167 rout_check        slot21 troops 3420 -> 3420, morale 99 -> 99
+HR12 seq1168..1173 rout_check        slot06 troops 1147 -> 0, morale 35 -> 35
+HR12 seq1171..1172 remove            slot06 removed
+HR12 seq1174..1178 melee             slot22 -> slot07, focus 1, powers 7786/6861, bounds 529/1017, losses 393/213, remaining 6806/8741, morale 81/44
+HR12 seq1178..1179 rout_check        slot22 troops 6806 -> 6806, morale 81 -> 81
+HR12 seq1180..1181 rout_check        slot07 troops 8741 -> 8741, morale 44 -> 44
+HR12 seq1182..1186 melee             slot23 -> slot01, focus 2, powers 20955/668, bounds 35/3850, losses 21/491, remaining 13151/736, morale 99/44
+HR12 seq1186..1187 rout_check        slot23 troops 13151 -> 13151, morale 99 -> 99
+HR12 seq1188..1189 rout_check        slot01 troops 736 -> 736, morale 44 -> 44
+HR13 seq1198..1201 shot              slot07 -> slot22, bound 215, loss 88, morale loss 0, remaining 6718 morale 81
+HR13 seq1201..1202 rout_check        slot22 troops 6718 -> 6718, morale 81 -> 81
+HR13 seq1204..1207 shot              slot07 -> slot22, bound 215, loss 78, morale loss 0, remaining 6640 morale 81
+HR13 seq1207..1208 rout_check        slot22 troops 6640 -> 6640, morale 81 -> 81
+HR13 seq1212..1215 shot              slot01 -> slot22, bound 23, loss 23, morale loss 0, remaining 6617 morale 81
+HR13 seq1215..1216 rout_check        slot22 troops 6617 -> 6617, morale 81 -> 81
+HR13 seq1218..1221 shot              slot01 -> slot22, bound 23, loss 33, morale loss 0, remaining 6584 morale 81
+HR13 seq1221..1222 rout_check        slot22 troops 6584 -> 6584, morale 81 -> 81
+HR13 seq1224..1227 shot              slot01 -> slot22, bound 23, loss 33, morale loss 0, remaining 6551 morale 81
+HR13 seq1227..1228 rout_check        slot22 troops 6551 -> 6551, morale 81 -> 81
+HR13 seq1230..1233 shot              slot01 -> slot22, bound 23, loss 5, morale loss 0, remaining 6546 morale 81
+HR13 seq1233..1234 rout_check        slot22 troops 6546 -> 6546, morale 81 -> 81
+HR13 seq1239..1244 walk              slot03 goal [7, 4], (6,6) -> (7,4)
+HR13 seq1240..1241 move              slot03 (6,6) -> (7,5), moves 4 -> 3
+HR13 seq1242..1243 move              slot03 (7,5) -> (7,4), moves 3 -> 2
+HR13 seq1249..1253 melee             slot07 -> slot22, focus 1, powers 6829/6934, bounds 740/645, losses 929/170, remaining 7812/6376, morale 41/83
+HR13 seq1253..1254 rout_check        slot07 troops 7812 -> 7812, morale 41 -> 41
+HR13 seq1255..1256 rout_check        slot22 troops 6376 -> 6376, morale 83 -> 83
+HR14 seq1265..1268 walk              slot21 goal [6, 4], (5,6) -> (6,5)
+HR14 seq1266..1267 move              slot21 (5,6) -> (6,5), moves 2 -> 1
+HR14 seq1271..1274 walk              slot22 goal [6, 4], (4,5) -> (5,4)
+HR14 seq1272..1273 move              slot22 (4,5) -> (5,4), moves 4 -> 3
+HR14 seq1283..1287 melee             slot20 -> slot01, focus 4, powers 28104/126, bounds 3/16417, losses 1/295, remaining 5540/441, morale 98/41
+HR14 seq1287..1288 rout_check        slot20 troops 5540 -> 5540, morale 98 -> 98
+HR14 seq1289..1290 rout_check        slot01 troops 441 -> 441, morale 41 -> 41
+HR14 seq1291..1295 melee             slot21 -> slot01, focus 4, powers 17684/78, bounds 2/9999, losses 1/177, remaining 3419/264, morale 99/38
+HR14 seq1295..1296 rout_check        slot21 troops 3419 -> 3419, morale 99 -> 99
+HR14 seq1297..1300 rout_check        slot01 troops 264 -> 264, morale 38 -> 38
+HR14 seq1301..1305 melee             slot22 -> slot01, focus 4, powers 9129/141, bounds 9/1710, losses 1/106, remaining 6375/158, morale 85/35
+HR14 seq1305..1306 rout_check        slot22 troops 6375 -> 6375, morale 85 -> 85
+HR14 seq1307..1310 rout_check        slot01 troops 158 -> 158, morale 35 -> 35
+HR14 seq1311..1315 melee             slot23 -> slot01, focus 4, powers 20922/87, bounds 5/3800, losses 2/64, remaining 13149/94, morale 99/32
+HR14 seq1315..1316 rout_check        slot23 troops 13149 -> 13149, morale 99 -> 99
+HR14 seq1317..1320 rout_check        slot01 troops 94 -> 0, morale 32 -> 32
+HR14 seq1318..1319 remove            slot01 removed
+HR15 seq1326..1329 walk              slot03 goal [5, 4], (7,4) -> (6,4)
+HR15 seq1327..1328 move              slot03 (7,4) -> (6,4), moves 4 -> 3
+HR15 seq1333..1336 walk              slot07 goal [5, 4], (3,6) -> (4,5)
+HR15 seq1334..1335 move              slot07 (3,6) -> (4,5), moves 4 -> 3
+HR15 seq1343..1347 melee             slot03 -> slot22, focus 2, powers 3252/7183, bounds 637/289, losses 440/55, remaining 3017/6320, morale 32/92
+HR15 seq1347..1354 rout_check        slot03 troops 3017 -> 0, morale 32 -> 32
+HR15 seq1350..1351 remove            slot03 removed
+HR15 seq1352..1353 remove            slot07 removed
+HR15 seq1355..1356 rout_check        slot22 troops 6320 -> 6320, morale 97 -> 97

@@ -1,0 +1,118 @@
+{
+  "exit": 0,
+  "checks": "test_random_cave       100 machine states: all equal\ntest_marker_caves      900 machine states: all equal\ntest_flag_caves        132 machine states: all equal\ntest_reseed_caves      132 machine states: all equal\ntest_reentry_when_busy    20 machine states: all equal\ntest_seed_cave       ok\ntest_overflow_never_wraps ok\ntest_real_nested_entry_inside_the_recorder ok\ntest_a_broken_cave_is_detected ok\n",
+  "snapshot_payload_cases": [
+    {
+      "df": 0,
+      "counter": 0,
+      "index": 0,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 0,
+      "index": 8191,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 0,
+      "index": 8192,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 6,
+      "index": 0,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 6,
+      "index": 8191,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 6,
+      "index": 8192,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 7,
+      "index": 0,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 7,
+      "index": 8191,
+      "pass_": true
+    },
+    {
+      "df": 0,
+      "counter": 7,
+      "index": 8192,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 0,
+      "index": 0,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 0,
+      "index": 8191,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 0,
+      "index": 8192,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 6,
+      "index": 0,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 6,
+      "index": 8191,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 6,
+      "index": 8192,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 7,
+      "index": 0,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 7,
+      "index": 8191,
+      "pass_": true
+    },
+    {
+      "df": 1,
+      "counter": 7,
+      "index": 8192,
+      "pass_": true
+    }
+  ],
+  "observer_sha256": "82e77db23daf3ef68c34fbe3430405cac462d3c8b7cb60618b91eeb66c0e6b23",
+  "test_sha256": "88400260c096b155a1336b811b4deb31ae7d3a07c06a58c4349c3d502a36c6e0",
+  "forced_counter": "seed%7 so every normal noninterference trial captures state",
+  "provenance": "Unicorn original-v-observer registers/EFLAGS/ESP/live stack and guest image; not Wine/native"
+}

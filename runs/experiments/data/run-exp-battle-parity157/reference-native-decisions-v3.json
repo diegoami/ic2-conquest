@@ -1,0 +1,1602 @@
+{
+  "provenance": "Unchanged native routines on independently observed original pre-call state; conditional function comparisons",
+  "results": [
+    {
+      "counter": 3,
+      "actor": 0,
+      "originalSeq": 20,
+      "choiceSeq": 19,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 0,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 2,
+      "originalSeq": 23,
+      "choiceSeq": 22,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 2,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 6,
+      "originalSeq": 26,
+      "choiceSeq": 25,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 6,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 3,
+      "originalSeq": 30,
+      "choiceSeq": 28,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 3,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 7,
+      "originalSeq": 34,
+      "choiceSeq": 32,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 7,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 8,
+      "originalSeq": 38,
+      "choiceSeq": 36,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 8,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 1,
+      "originalSeq": 41,
+      "choiceSeq": 40,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 1,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 4,
+      "originalSeq": 44,
+      "choiceSeq": 43,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 4,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 3,
+      "actor": 5,
+      "originalSeq": 47,
+      "choiceSeq": 46,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          3,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 5,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 4,
+      "actor": 20,
+      "originalSeq": 55,
+      "choiceSeq": 54,
+      "originalTarget": 0,
+      "nativeTarget": 0,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          4
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          4
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 20,
+          "Step": 4,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 4
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 4,
+      "actor": 21,
+      "originalSeq": 58,
+      "choiceSeq": 57,
+      "originalTarget": 0,
+      "nativeTarget": 0,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          5
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          5
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 21,
+          "Step": 5,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 4,
+      "actor": 22,
+      "originalSeq": 61,
+      "choiceSeq": 60,
+      "originalTarget": 4,
+      "nativeTarget": 4,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          8,
+          3
+        ]
+      ],
+      "nativeWalks": [
+        [
+          8,
+          3
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 22,
+          "Step": 4,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 4,
+      "actor": 23,
+      "originalSeq": 64,
+      "choiceSeq": 63,
+      "originalTarget": 4,
+      "nativeTarget": 4,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          8,
+          3
+        ]
+      ],
+      "nativeWalks": [
+        [
+          8,
+          3
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 23,
+          "Step": 4,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 4,
+      "actor": 24,
+      "originalSeq": 67,
+      "choiceSeq": 66,
+      "originalTarget": 4,
+      "nativeTarget": 4,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [],
+      "nativeWalks": [],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 0,
+      "originalSeq": 76,
+      "choiceSeq": 75,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 0,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 2,
+      "originalSeq": 79,
+      "choiceSeq": 78,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 2,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 6,
+      "originalSeq": 82,
+      "choiceSeq": 81,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 6,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 3,
+      "originalSeq": 86,
+      "choiceSeq": 84,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [],
+      "nativeWalks": [],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 7,
+      "originalSeq": 89,
+      "choiceSeq": 87,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          4,
+          7
+        ]
+      ],
+      "nativeWalks": [
+        [
+          4,
+          7
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 7,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 7
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 8,
+      "originalSeq": 93,
+      "choiceSeq": 91,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "nativeWalks": [
+        [
+          5,
+          9
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 8,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 5,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 1,
+      "originalSeq": 96,
+      "choiceSeq": 95,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          4,
+          6
+        ]
+      ],
+      "nativeWalks": [
+        [
+          4,
+          6
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 1,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 6
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 4,
+      "originalSeq": 99,
+      "choiceSeq": 98,
+      "originalTarget": 21,
+      "nativeTarget": 21,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          7
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 4,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 5,
+      "actor": 5,
+      "originalSeq": 102,
+      "choiceSeq": 101,
+      "originalTarget": 24,
+      "nativeTarget": 24,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          2,
+          6
+        ]
+      ],
+      "nativeWalks": [
+        [
+          2,
+          6
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 5,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 2,
+          "Y": 6
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 6,
+      "actor": 20,
+      "originalSeq": 112,
+      "choiceSeq": 111,
+      "originalTarget": 0,
+      "nativeTarget": 0,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          6,
+          5
+        ]
+      ],
+      "nativeWalks": [
+        [
+          6,
+          5
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 20,
+          "Step": 4,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 6,
+      "actor": 21,
+      "originalSeq": 115,
+      "choiceSeq": 114,
+      "originalTarget": 0,
+      "nativeTarget": 0,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [
+        [
+          5,
+          6
+        ]
+      ],
+      "nativeWalks": [
+        [
+          5,
+          6
+        ]
+      ],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [
+        {
+          "Slot": 21,
+          "Step": 5,
+          "Enemy": 0,
+          "X": 5,
+          "Y": 6
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 6,
+      "actor": 22,
+      "originalSeq": 118,
+      "choiceSeq": 117,
+      "originalTarget": 4,
+      "nativeTarget": 4,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [],
+      "nativeWalks": [],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 6,
+      "actor": 23,
+      "originalSeq": 120,
+      "choiceSeq": 119,
+      "originalTarget": 4,
+      "nativeTarget": 4,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [],
+      "nativeWalks": [],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    },
+    {
+      "counter": 6,
+      "actor": 24,
+      "originalSeq": 122,
+      "choiceSeq": 121,
+      "originalTarget": 4,
+      "nativeTarget": 4,
+      "targetEqual": true,
+      "choiceStateDifferences": [],
+      "originalWalks": [],
+      "nativeWalks": [],
+      "walksEqual": true,
+      "afterDifferences": [],
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "journal": [],
+      "nativeDrawState": 3939707825,
+      "originalAfterSeed": 3939707825
+    }
+  ],
+  "movePhases": [
+    {
+      "counter": 3,
+      "startSeq": 19,
+      "endSeq": 53,
+      "differences": [],
+      "journal": [
+        {
+          "Slot": 0,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 0,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 2,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 2,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 6,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 6,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 3,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 3,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 7,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 7,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 8,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 8,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 1,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 1,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 4,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 4,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 5,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        },
+        {
+          "Slot": 5,
+          "Step": 4,
+          "Enemy": 24,
+          "X": 3,
+          "Y": 9
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 4,
+      "startSeq": 54,
+      "endSeq": 74,
+      "differences": [],
+      "journal": [
+        {
+          "Slot": 20,
+          "Step": 1,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 4
+        },
+        {
+          "Slot": 20,
+          "Step": 4,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 4
+        },
+        {
+          "Slot": 21,
+          "Step": 1,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 4
+        },
+        {
+          "Slot": 21,
+          "Step": 5,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        },
+        {
+          "Slot": 22,
+          "Step": 1,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        },
+        {
+          "Slot": 22,
+          "Step": 4,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        },
+        {
+          "Slot": 23,
+          "Step": 1,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        },
+        {
+          "Slot": 23,
+          "Step": 4,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        },
+        {
+          "Slot": 24,
+          "Step": 1,
+          "Enemy": 4,
+          "X": 8,
+          "Y": 3
+        },
+        {
+          "Slot": 24,
+          "Step": 8,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 4
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 5,
+      "startSeq": 75,
+      "endSeq": 110,
+      "differences": [],
+      "journal": [
+        {
+          "Slot": 0,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 0,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 2,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 2,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 6,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 6,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 3,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "Slot": 7,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "Slot": 7,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 7
+        },
+        {
+          "Slot": 8,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "Slot": 8,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 5,
+          "Y": 9
+        },
+        {
+          "Slot": 1,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "Slot": 1,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 6
+        },
+        {
+          "Slot": 4,
+          "Step": 1,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 4,
+          "Step": 4,
+          "Enemy": 21,
+          "X": 6,
+          "Y": 7
+        },
+        {
+          "Slot": 5,
+          "Step": 1,
+          "Enemy": 24,
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "Slot": 5,
+          "Step": 5,
+          "Enemy": 24,
+          "X": 2,
+          "Y": 6
+        },
+        {
+          "Slot": 3,
+          "Step": 8,
+          "Enemy": 23,
+          "X": 3,
+          "Y": 8
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 6,
+      "startSeq": 111,
+      "endSeq": 133,
+      "differences": [],
+      "journal": [
+        {
+          "Slot": 20,
+          "Step": 1,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        },
+        {
+          "Slot": 20,
+          "Step": 4,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        },
+        {
+          "Slot": 21,
+          "Step": 1,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        },
+        {
+          "Slot": 21,
+          "Step": 5,
+          "Enemy": 0,
+          "X": 5,
+          "Y": 6
+        },
+        {
+          "Slot": 22,
+          "Step": 1,
+          "Enemy": 4,
+          "X": 7,
+          "Y": 4
+        },
+        {
+          "Slot": 23,
+          "Step": 1,
+          "Enemy": 4,
+          "X": 7,
+          "Y": 4
+        },
+        {
+          "Slot": 24,
+          "Step": 1,
+          "Enemy": 4,
+          "X": 7,
+          "Y": 4
+        },
+        {
+          "Slot": 21,
+          "Step": 7,
+          "Enemy": 0,
+          "X": 6,
+          "Y": 5
+        },
+        {
+          "Slot": 22,
+          "Step": 8,
+          "Enemy": 5,
+          "X": 5,
+          "Y": 3
+        },
+        {
+          "Slot": 23,
+          "Step": 8,
+          "Enemy": 2,
+          "X": 3,
+          "Y": 4
+        },
+        {
+          "Slot": 24,
+          "Step": 8,
+          "Enemy": 8,
+          "X": 10,
+          "Y": 4
+        }
+      ],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    }
+  ],
+  "passTwo": [
+    {
+      "counter": 3,
+      "seq": 49,
+      "endSeq": 50,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 3,
+      "seq": 51,
+      "endSeq": 52,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 3,
+      "seq": 52,
+      "endSeq": 53,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 4,
+      "seq": 68,
+      "endSeq": 69,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 4,
+      "seq": 72,
+      "endSeq": 73,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 4,
+      "seq": 73,
+      "endSeq": 74,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 5,
+      "seq": 104,
+      "endSeq": 105,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 5,
+      "seq": 108,
+      "endSeq": 109,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 5,
+      "seq": 109,
+      "endSeq": 110,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 6,
+      "seq": 123,
+      "endSeq": 124,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 6,
+      "seq": 131,
+      "endSeq": 132,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    },
+    {
+      "counter": 6,
+      "seq": 132,
+      "endSeq": 133,
+      "differences": [],
+      "nativeDrawState": 3939707825,
+      "originalDrawState": 3939707825
+    }
+  ]
+}

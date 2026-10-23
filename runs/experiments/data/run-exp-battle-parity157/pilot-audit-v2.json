@@ -1,0 +1,3497 @@
+{
+  "scope": "Synthetic strategic fixtures, fixed seed1; matched actual original tactical entry, full combat draws and boundary states. Not all features/seeds.",
+  "cases": [
+    {
+      "label": "P01-hi-duel",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 20,
+      "original_troops": [
+        0,
+        2727
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 20,
+          "troops": [
+            0,
+            2727
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 61,
+          "native_draws": 61,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 20,
+          "troops": [
+            0,
+            2727
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 61,
+          "native_draws": 61,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 20,
+          "troops": [
+            0,
+            2727
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 61,
+          "native_draws": 61,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P02-li-duel",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 21,
+      "original_troops": [
+        0,
+        4123
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 21,
+          "troops": [
+            0,
+            4123
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 87,
+          "native_draws": 87,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 21,
+          "troops": [
+            0,
+            4123
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 87,
+          "native_draws": 87,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 21,
+          "troops": [
+            0,
+            4123
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 87,
+          "native_draws": 87,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P03-ranged",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 19,
+      "original_troops": [
+        0,
+        5699
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 19,
+          "troops": [
+            0,
+            5699
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 79,
+          "native_draws": 79,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 19,
+          "troops": [
+            0,
+            5699
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 79,
+          "native_draws": 79,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 19,
+          "troops": [
+            0,
+            5699
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 79,
+          "native_draws": 79,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P04-heavy-cavalry-ps",
+      "status": "complete",
+      "nations": [
+        3,
+        2
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 16,
+      "original_troops": [
+        0,
+        11523
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 16,
+          "troops": [
+            0,
+            11523
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 55,
+          "native_draws": 55,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 16,
+          "troops": [
+            0,
+            11523
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 55,
+          "native_draws": 55,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 16,
+          "troops": [
+            0,
+            11523
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 55,
+          "native_draws": 55,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P05-light-cavalry-cn",
+      "status": "complete",
+      "nations": [
+        1,
+        5
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 11,
+      "original_troops": [
+        6070,
+        0
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 11,
+          "troops": [
+            6070,
+            0
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 43,
+          "native_draws": 43,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 11,
+          "troops": [
+            6070,
+            0
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 43,
+          "native_draws": 43,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 11,
+          "troops": [
+            6070,
+            0
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 43,
+          "native_draws": 43,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P06-mixed",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 18,
+      "original_troops": [
+        0,
+        13663
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 18,
+          "troops": [
+            0,
+            13663
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 149,
+          "native_draws": 149,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 18,
+          "troops": [
+            0,
+            13663
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 149,
+          "native_draws": 149,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 18,
+          "troops": [
+            0,
+            13663
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 149,
+          "native_draws": 149,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P07-permuted",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 21,
+      "original_troops": [
+        0,
+        7271
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 21,
+          "troops": [
+            0,
+            7271
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 21,
+          "troops": [
+            0,
+            7271
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 21,
+          "troops": [
+            0,
+            7271
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P08-quality4",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 4,
+      "army_morale": 70,
+      "original_counter": 20,
+      "original_troops": [
+        0,
+        10225
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 20,
+          "troops": [
+            0,
+            10225
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 20,
+          "troops": [
+            0,
+            10225
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 20,
+          "troops": [
+            0,
+            10225
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P09-quality9",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 9,
+      "army_morale": 70,
+      "original_counter": 26,
+      "original_troops": [
+        0,
+        3501
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 26,
+          "troops": [
+            0,
+            3501
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 193,
+          "native_draws": 193,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            },
+            {
+              "counter": 23,
+              "differences": 0
+            },
+            {
+              "counter": 24,
+              "differences": 0
+            },
+            {
+              "counter": 25,
+              "differences": 0
+            },
+            {
+              "counter": 26,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 26,
+          "troops": [
+            0,
+            3501
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 193,
+          "native_draws": 193,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            },
+            {
+              "counter": 23,
+              "differences": 0
+            },
+            {
+              "counter": 24,
+              "differences": 0
+            },
+            {
+              "counter": 25,
+              "differences": 0
+            },
+            {
+              "counter": 26,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 26,
+          "troops": [
+            0,
+            3501
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 193,
+          "native_draws": 193,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            },
+            {
+              "counter": 23,
+              "differences": 0
+            },
+            {
+              "counter": 24,
+              "differences": 0
+            },
+            {
+              "counter": 25,
+              "differences": 0
+            },
+            {
+              "counter": 26,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P10-morale50",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 50,
+      "original_counter": 16,
+      "original_troops": [
+        0,
+        15076
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 16,
+          "troops": [
+            0,
+            15076
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 149,
+          "native_draws": 149,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 16,
+          "troops": [
+            0,
+            15076
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 149,
+          "native_draws": 149,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 16,
+          "troops": [
+            0,
+            15076
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 149,
+          "native_draws": 149,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P11-morale90",
+      "status": "complete",
+      "nations": [
+        0,
+        6
+      ],
+      "quality": 6,
+      "army_morale": 90,
+      "original_counter": 22,
+      "original_troops": [
+        0,
+        6933
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 22,
+          "troops": [
+            0,
+            6933
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 22,
+          "troops": [
+            0,
+            6933
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 22,
+          "troops": [
+            0,
+            6933
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 173,
+          "native_draws": 173,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    },
+    {
+      "label": "P12-mixed-ps",
+      "status": "complete",
+      "nations": [
+        3,
+        2
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "original_counter": 27,
+      "original_troops": [
+        0,
+        2732
+      ],
+      "original_save_reopen": true,
+      "variants": [
+        {
+          "label": "production",
+          "counter": 27,
+          "troops": [
+            0,
+            2732
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 193,
+          "native_draws": 193,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            },
+            {
+              "counter": 23,
+              "differences": 0
+            },
+            {
+              "counter": 24,
+              "differences": 0
+            },
+            {
+              "counter": 25,
+              "differences": 0
+            },
+            {
+              "counter": 26,
+              "differences": 0
+            },
+            {
+              "counter": 27,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-pass3-only",
+          "counter": 27,
+          "troops": [
+            0,
+            2732
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 193,
+          "native_draws": 193,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            },
+            {
+              "counter": 23,
+              "differences": 0
+            },
+            {
+              "counter": 24,
+              "differences": 0
+            },
+            {
+              "counter": 25,
+              "differences": 0
+            },
+            {
+              "counter": 26,
+              "differences": 0
+            },
+            {
+              "counter": 27,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        },
+        {
+          "label": "slot-both-later-passes",
+          "counter": 27,
+          "troops": [
+            0,
+            2732
+          ],
+          "terminal_differences": 0,
+          "terminal_rng_equal": true,
+          "original_draws": 193,
+          "native_draws": 193,
+          "draws_equal": true,
+          "boundaries": [
+            {
+              "counter": 2,
+              "differences": 0
+            },
+            {
+              "counter": 3,
+              "differences": 0
+            },
+            {
+              "counter": 4,
+              "differences": 0
+            },
+            {
+              "counter": 5,
+              "differences": 0
+            },
+            {
+              "counter": 6,
+              "differences": 0
+            },
+            {
+              "counter": 7,
+              "differences": 0
+            },
+            {
+              "counter": 8,
+              "differences": 0
+            },
+            {
+              "counter": 9,
+              "differences": 0
+            },
+            {
+              "counter": 10,
+              "differences": 0
+            },
+            {
+              "counter": 11,
+              "differences": 0
+            },
+            {
+              "counter": 12,
+              "differences": 0
+            },
+            {
+              "counter": 13,
+              "differences": 0
+            },
+            {
+              "counter": 14,
+              "differences": 0
+            },
+            {
+              "counter": 15,
+              "differences": 0
+            },
+            {
+              "counter": 16,
+              "differences": 0
+            },
+            {
+              "counter": 17,
+              "differences": 0
+            },
+            {
+              "counter": 18,
+              "differences": 0
+            },
+            {
+              "counter": 19,
+              "differences": 0
+            },
+            {
+              "counter": 20,
+              "differences": 0
+            },
+            {
+              "counter": 21,
+              "differences": 0
+            },
+            {
+              "counter": 22,
+              "differences": 0
+            },
+            {
+              "counter": 23,
+              "differences": 0
+            },
+            {
+              "counter": 24,
+              "differences": 0
+            },
+            {
+              "counter": 25,
+              "differences": 0
+            },
+            {
+              "counter": 26,
+              "differences": 0
+            },
+            {
+              "counter": 27,
+              "differences": 0
+            }
+          ],
+          "exact_measured_match": true
+        }
+      ]
+    }
+  ]
+}

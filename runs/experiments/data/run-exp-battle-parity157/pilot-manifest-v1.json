@@ -1,0 +1,273 @@
+{
+  "cases": [
+    {
+      "label": "P01-hi-duel",
+      "attacker": [
+        "hi"
+      ],
+      "defender": [
+        "hi"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P01-hi-duel.SAV",
+      "sha256": "899481f3c50ab685c946d74c9d86555beca686a37b2ff4fca5c2a16a685b533d",
+      "synthetic": true
+    },
+    {
+      "label": "P02-li-duel",
+      "attacker": [
+        "li"
+      ],
+      "defender": [
+        "li"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P02-li-duel.SAV",
+      "sha256": "2350e71413b20e83ad2b119a06b1b720a8bc1441c06446d889009a87fcefb74f",
+      "synthetic": true
+    },
+    {
+      "label": "P03-ranged",
+      "attacker": [
+        "ar"
+      ],
+      "defender": [
+        "hi"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P03-ranged.SAV",
+      "sha256": "ff24d33f25d10d5d75d17ca15374e573aa75b16d25111abe1c2d12ca4a7c5456",
+      "synthetic": true
+    },
+    {
+      "label": "P04-heavy-cavalry-ps",
+      "attacker": [
+        "hc"
+      ],
+      "defender": [
+        "li"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        3,
+        2
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P04-heavy-cavalry-ps.SAV",
+      "sha256": "e6f7b956f5812cf53813892587d81aaadb939f9d47cca0b14771b09e7829b605",
+      "synthetic": true
+    },
+    {
+      "label": "P05-light-cavalry-cn",
+      "attacker": [
+        "lc"
+      ],
+      "defender": [
+        "ar"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        1,
+        5
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P05-light-cavalry-cn.SAV",
+      "sha256": "c1e6e5cff7522925036e9231be1e70788e3bca554d18d791ac9e6282fe1afab5",
+      "synthetic": true
+    },
+    {
+      "label": "P06-mixed",
+      "attacker": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "defender": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P06-mixed.SAV",
+      "sha256": "565f57b762a252970ca2be1fcb9b9000e6646c2cb068adf0dd14dbaf06840374",
+      "synthetic": true
+    },
+    {
+      "label": "P07-permuted",
+      "attacker": [
+        "ar",
+        "hi",
+        "li"
+      ],
+      "defender": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P07-permuted.SAV",
+      "sha256": "6d8da860055f0b7fa97b489f49f14175f28615814671d06a0fc3eef82fc0e461",
+      "synthetic": true
+    },
+    {
+      "label": "P08-quality4",
+      "attacker": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "defender": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "quality": 4,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P08-quality4.SAV",
+      "sha256": "0d48bcf873e8616dd0982c5b9cf4413cefc03b786ab08ab9ff7305e1fe21d92a",
+      "synthetic": true
+    },
+    {
+      "label": "P09-quality9",
+      "attacker": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "defender": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "quality": 9,
+      "army_morale": 70,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P09-quality9.SAV",
+      "sha256": "676b7dc43a711996a5bc28ecca5f0e4e303efadd02a838fc4a67861ce8542342",
+      "synthetic": true
+    },
+    {
+      "label": "P10-morale50",
+      "attacker": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "defender": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "quality": 6,
+      "army_morale": 50,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P10-morale50.SAV",
+      "sha256": "e5454eee720a8eb3c4eff1c0f472cd6503a3febe1db957afa3c327871f2de4f4",
+      "synthetic": true
+    },
+    {
+      "label": "P11-morale90",
+      "attacker": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "defender": [
+        "hi",
+        "li",
+        "ar"
+      ],
+      "quality": 6,
+      "army_morale": 90,
+      "nations": [
+        0,
+        6
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P11-morale90.SAV",
+      "sha256": "a9aaa560ffb7672e5e4adc14a6c85b5bb9e88e5a8ee5a72359430fc50f358130",
+      "synthetic": true
+    },
+    {
+      "label": "P12-mixed-ps",
+      "attacker": [
+        "lc",
+        "hi",
+        "ar"
+      ],
+      "defender": [
+        "hi",
+        "ar",
+        "li"
+      ],
+      "quality": 6,
+      "army_morale": 70,
+      "nations": [
+        3,
+        2
+      ],
+      "seed": 1,
+      "source_turn": 743,
+      "filename": "P12-mixed-ps.SAV",
+      "sha256": "908ec692ea6dfc5f57f532dbc751595127d86d246a48479643143fe6368a3257",
+      "synthetic": true
+    }
+  ],
+  "scope": "Synthetic strategic edits; actual original copy-in/placement, then matched native entry. Not a fresh new-game or conversion-export test."
+}
