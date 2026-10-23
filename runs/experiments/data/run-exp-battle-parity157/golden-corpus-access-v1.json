@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "gh",
+    "api",
+    "repos/diegoami/ic2-test-fixtures/git/commits/6319802a75067e7730e4f6a27dce3b4e296ddd9b",
+    "--jq",
+    "{sha:.sha,tree:.tree.sha}"
+  ],
+  "returncode": 0,
+  "stdout": "{\"sha\":\"6319802a75067e7730e4f6a27dce3b4e296ddd9b\",\"tree\":\"9b826e31107fbe5e6886651ff3d69867cd91527b\"}\n",
+  "stderr": "",
+  "note": "Metadata-only availability check, no private fixture downloaded"
+}

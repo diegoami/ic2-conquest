@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-23T15:22:57.834348+00:00",
+  "python": "3.14.4",
+  "unicorn": true,
+  "source_hashes": {
+    "patches/battle_hook.py": "30d295cfb1f2017cae580443d3bb7ab059de8a57ee71acd719e889da8e0b6f70",
+    "patches/battle_lab.py": "05090d8854c41b9925cc0ac4154b46c359228fe7acb998a7b3d168736ea22ef8",
+    "state/hook_log.py": "23f709e6224e2d14ec06da102e6f6e53e633b1df3ebcfe29a14a96486e35eb60",
+    "runs/experiments/tactical25/original_phase.py": "fc340c82918440076260c4b319085331f3de3f2593eb59671b8c7b6a476f33cc",
+    "runs/experiments/data/run-exp-battle1355/audit_private.py": "3366289fb611eea07fbb19f51993fdac0dd55f0a8b53c3ce1363210e84991544"
+  },
+  "fixture_env_configured": false,
+  "standard_golden_fixture_checkout_exists": false,
+  "old_hook_covers": "RNG14sites + shot/melee/rout entry markers + start/clear/reseed boundaries",
+  "missing_exact_log_fields": [
+    "all movement/placement entry-exit state",
+    "original chosen AI aim/pass/claims at each decision",
+    "atomic complete before/after grid for each exchange"
+  ],
+  "owner_baseline": "Existing private1355 inputs/traces preserved; no private hashes included",
+  "latest_remake_main": "8e5f0a35c9dd45a8ec31b38154406843b131013a",
+  "previous_battle_engine": "ae614899d63ac721ee46d1e3213191fe1f43a676",
+  "change_since": "PR1356 presentation/readability only; production tactical sources unchanged in compareAPI"
+}
