@@ -32,6 +32,10 @@ is available, but no golden hook corpus found in inspected locations. Corpus
 recovery is phase0work; do not fabricate availability or restart legacy runners
 that write into another repo or assert obsolete source commits.
 
+Additional metadata-only GitHub access check succeeds for private fixture
+commit6319802a75067e7730e4f6a27dce3b4e296ddd9b/tree9b826e31.
+Recovery is available; no fixture downloaded and no318series test run yet.
+
 Never delete/overwrite saves/measurements; unique names, tracked public-safe
 text, private owner traces/hashes outsideGit, commit/push perbatch/30min.
 Next: publish plan/preflight, retain157open for execution, begin event schema

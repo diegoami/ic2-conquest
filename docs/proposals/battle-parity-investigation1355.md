@@ -173,6 +173,9 @@ T188/T189 improvements; later T190/T191 corrections also exist. Historical
 write-back counts on the pinned current build and authenticated fixture revision
 before adding new cases. Standard local fixture checkout/environment currently
 is not configured; locate retained artifacts or recover the approved corpus.
+Metadata access to the pinned private fixture commit was verified during this
+preflight, so recovery is available without asking the owner to rediscover it.
+No fixture bytes were downloaded or replayed by this planning step.
 Do not rerun old scripts that write projects into another checkout or hardcode
 obsolete commits; adapt a task-owned runner with outputs redirected here.
 
@@ -208,7 +211,8 @@ Relay published findings to ic2-research for consolidation.
 
 **Started now:** read-only tracer/corpus/source audit and existing offline hook
 tests. Results in `tracing-capability-v1.json`, `hook-build-reader-v1.json` and
-`hook-register-inertness-v1.json`. Hook build/reader checks pass, including the
+`hook-register-inertness-v1.json`; corpus access in `golden-corpus-access-v1.json`.
+Hook build/reader checks pass, including the
 real EXE site scan;2,060 emulated preservation states match plus boundary/overflow/
 reentry/mutation-detection checks. This does not certify the proposed new
 movement/decision hooks or supply a new live exact battle log.
