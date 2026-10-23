@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/native-v1/native-progress-6.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/exports-v1/native-progress-6.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "cwd": "/home/diego/projects/imperial_conquest_2",
+  "returncode": -6,
+  "stdout": "",
+  "stderr": "Unhandled exception. System.InvalidOperationException: Could not find 'IC2.sln' above '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/build/bin/IC2.Cli/debug/'.\n   at IC2.Cli.Program.FindRepositoryRoot() in /home/diego/projects/imperial_conquest_2/src/IC2.Cli/Program.cs:line 479\n   at IC2.Cli.Program.ExportSav(String[] args) in /home/diego/projects/imperial_conquest_2/src/IC2.Cli/Program.cs:line 362\n   at IC2.Cli.Program.Main(String[] args) in /home/diego/projects/imperial_conquest_2/src/IC2.Cli/Program.cs:line 89\n"
+}
