@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "run",
+    "--project",
+    "runs/experiments/battle-parity157/DecisionProbe.csproj",
+    "--artifacts-path",
+    "artifacts/run-exp-battle-parity157/native-build-v4",
+    "--",
+    "runs/experiments/data/run-exp-battle-parity157/reference-cgonly-v2/states.json",
+    "/home/diego/projects/imperial_conquest_2",
+    "runs/experiments/data/run-exp-battle-parity157/reference-native-decisions-v4.json"
+  ],
+  "returncode": 0,
+  "stdout": "Compared 28 original pass1 engagements\n",
+  "stderr": ""
+}

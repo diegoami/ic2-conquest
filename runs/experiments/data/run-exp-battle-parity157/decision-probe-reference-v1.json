@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "run",
+    "--project",
+    "runs/experiments/battle-parity157/DecisionProbe.csproj",
+    "--artifacts-path",
+    "artifacts/run-exp-battle-parity157/native-build-v1",
+    "--",
+    "runs/experiments/data/run-exp-battle-parity157/reference-cgonly-v2/states.json",
+    "/home/diego/projects/imperial_conquest_2",
+    "runs/experiments/data/run-exp-battle-parity157/reference-native-decisions-v1.json"
+  ],
+  "returncode": 1,
+  "stdout": "/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/DecisionProbe.cs(11,18): error CS0103: The name 'GameDataRepository' does not exist in the current context [/home/diego/projects/ic2-conquest/runs/experiments/battle-parity157/DecisionProbe.csproj]\n",
+  "stderr": "\nThe build failed. Fix the build errors and run again.\n"
+}
