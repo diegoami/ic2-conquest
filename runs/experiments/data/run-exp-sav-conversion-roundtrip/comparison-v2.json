@@ -1,0 +1,1053 @@
+{
+  "native_export_import": {
+    "native-initial": {
+      "differences": [
+        {
+          "path": "/nations/2/cityCountAtStart",
+          "before": 62,
+          "after": 65
+        },
+        {
+          "path": "/nations/2/population",
+          "before": 5648,
+          "after": 5726
+        },
+        {
+          "path": "/nations/2/populationAtStart",
+          "before": 5648,
+          "after": 5726
+        },
+        {
+          "path": "/nations/2/treasuryAtStart",
+          "before": 2700,
+          "after": 3172
+        },
+        {
+          "path": "/nations/3/treasuryAtStart",
+          "before": 4900,
+          "after": 1640
+        },
+        {
+          "path": "/nations/6/treasuryAtStart",
+          "before": 315,
+          "after": -1190
+        },
+        {
+          "path": "/nations/7/treasuryAtStart",
+          "before": 920,
+          "after": 924
+        },
+        {
+          "path": "/nations/11/cityCountAtStart",
+          "before": 13,
+          "after": 10
+        },
+        {
+          "path": "/nations/11/population",
+          "before": 444,
+          "after": 361
+        },
+        {
+          "path": "/nations/11/populationAtStart",
+          "before": 444,
+          "after": 361
+        },
+        {
+          "path": "/nations/11/treasuryAtStart",
+          "before": 550,
+          "after": -1220
+        }
+      ],
+      "source_seed": 16633418754873375777,
+      "imported_seed": 270,
+      "excluded": [
+        "record ids normalized by index",
+        "randomSeed (not stored in original)",
+        "launched fleet build-city metadata",
+        "documented mercenary-name alias"
+      ]
+    },
+    "native-orders": {
+      "differences": [
+        {
+          "path": "/nations/0/treasuryAtStart",
+          "before": 2200,
+          "after": 2000
+        },
+        {
+          "path": "/nations/2/cityCountAtStart",
+          "before": 62,
+          "after": 65
+        },
+        {
+          "path": "/nations/2/population",
+          "before": 5648,
+          "after": 5726
+        },
+        {
+          "path": "/nations/2/populationAtStart",
+          "before": 5648,
+          "after": 5726
+        },
+        {
+          "path": "/nations/2/treasuryAtStart",
+          "before": 2700,
+          "after": 3172
+        },
+        {
+          "path": "/nations/3/treasuryAtStart",
+          "before": 4900,
+          "after": 1640
+        },
+        {
+          "path": "/nations/6/treasuryAtStart",
+          "before": 315,
+          "after": -1190
+        },
+        {
+          "path": "/nations/7/treasuryAtStart",
+          "before": 920,
+          "after": 924
+        },
+        {
+          "path": "/nations/11/cityCountAtStart",
+          "before": 13,
+          "after": 10
+        },
+        {
+          "path": "/nations/11/population",
+          "before": 444,
+          "after": 361
+        },
+        {
+          "path": "/nations/11/populationAtStart",
+          "before": 444,
+          "after": 361
+        },
+        {
+          "path": "/nations/11/treasuryAtStart",
+          "before": 550,
+          "after": -1220
+        }
+      ],
+      "source_seed": 13942075065423868000,
+      "imported_seed": 270,
+      "excluded": [
+        "record ids normalized by index",
+        "randomSeed (not stored in original)",
+        "launched fleet build-city metadata",
+        "documented mercenary-name alias"
+      ]
+    },
+    "native-progress-12": {
+      "differences": [
+        {
+          "path": "/calendar/turnIndex",
+          "before": 12,
+          "after": 0
+        },
+        {
+          "path": "/fleets/1/coveredTileCode",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/nations/0/cityCountAtStart",
+          "before": 25,
+          "after": 16
+        },
+        {
+          "path": "/nations/0/population",
+          "before": 859,
+          "after": 621
+        },
+        {
+          "path": "/nations/0/populationAtStart",
+          "before": 859,
+          "after": 621
+        },
+        {
+          "path": "/nations/0/treasuryAtStart",
+          "before": 2200,
+          "after": 2597
+        },
+        {
+          "path": "/nations/1/cityCountAtStart",
+          "before": 34,
+          "after": 35
+        },
+        {
+          "path": "/nations/1/population",
+          "before": 1607,
+          "after": 1642
+        },
+        {
+          "path": "/nations/1/populationAtStart",
+          "before": 1607,
+          "after": 1642
+        },
+        {
+          "path": "/nations/1/treasuryAtStart",
+          "before": 11000,
+          "after": 12849
+        },
+        {
+          "path": "/nations/2/cityCountAtStart",
+          "before": 62,
+          "after": 69
+        },
+        {
+          "path": "/nations/2/population",
+          "before": 5648,
+          "after": 5817
+        },
+        {
+          "path": "/nations/2/populationAtStart",
+          "before": 5648,
+          "after": 5817
+        },
+        {
+          "path": "/nations/2/treasuryAtStart",
+          "before": 2700,
+          "after": 2394
+        },
+        {
+          "path": "/nations/3/population",
+          "before": 3397,
+          "after": 3422
+        },
+        {
+          "path": "/nations/3/populationAtStart",
+          "before": 3397,
+          "after": 3422
+        },
+        {
+          "path": "/nations/3/treasuryAtStart",
+          "before": 4900,
+          "after": 3083
+        },
+        {
+          "path": "/nations/4/population",
+          "before": 596,
+          "after": 612
+        },
+        {
+          "path": "/nations/4/populationAtStart",
+          "before": 596,
+          "after": 612
+        },
+        {
+          "path": "/nations/4/treasuryAtStart",
+          "before": 775,
+          "after": 1415
+        },
+        {
+          "path": "/nations/5/population",
+          "before": 225,
+          "after": 233
+        },
+        {
+          "path": "/nations/5/populationAtStart",
+          "before": 225,
+          "after": 233
+        },
+        {
+          "path": "/nations/5/treasuryAtStart",
+          "before": 410,
+          "after": 2962
+        },
+        {
+          "path": "/nations/6/cityCountAtStart",
+          "before": 28,
+          "after": 37
+        },
+        {
+          "path": "/nations/6/population",
+          "before": 504,
+          "after": 754
+        },
+        {
+          "path": "/nations/6/populationAtStart",
+          "before": 504,
+          "after": 754
+        },
+        {
+          "path": "/nations/6/treasuryAtStart",
+          "before": 315,
+          "after": -3931
+        },
+        {
+          "path": "/nations/7/population",
+          "before": 850,
+          "after": 859
+        },
+        {
+          "path": "/nations/7/populationAtStart",
+          "before": 850,
+          "after": 859
+        },
+        {
+          "path": "/nations/7/treasuryAtStart",
+          "before": 920,
+          "after": 4481
+        },
+        {
+          "path": "/nations/8/cityCountAtStart",
+          "before": 19,
+          "after": 18
+        },
+        {
+          "path": "/nations/8/population",
+          "before": 372,
+          "after": 388
+        },
+        {
+          "path": "/nations/8/populationAtStart",
+          "before": 372,
+          "after": 388
+        },
+        {
+          "path": "/nations/8/treasuryAtStart",
+          "before": 440,
+          "after": -5519
+        },
+        {
+          "path": "/nations/9/population",
+          "before": 209,
+          "after": 221
+        },
+        {
+          "path": "/nations/9/populationAtStart",
+          "before": 209,
+          "after": 221
+        },
+        {
+          "path": "/nations/9/treasuryAtStart",
+          "before": 580,
+          "after": -1125
+        },
+        {
+          "path": "/nations/10/population",
+          "before": 119,
+          "after": 133
+        },
+        {
+          "path": "/nations/10/populationAtStart",
+          "before": 119,
+          "after": 133
+        },
+        {
+          "path": "/nations/10/treasuryAtStart",
+          "before": 180,
+          "after": 261
+        },
+        {
+          "path": "/nations/11/cityCountAtStart",
+          "before": 13,
+          "after": 7
+        },
+        {
+          "path": "/nations/11/population",
+          "before": 444,
+          "after": 278
+        },
+        {
+          "path": "/nations/11/populationAtStart",
+          "before": 444,
+          "after": 278
+        },
+        {
+          "path": "/nations/11/treasuryAtStart",
+          "before": 550,
+          "after": -5436
+        },
+        {
+          "path": "/nations/12/cityCountAtStart",
+          "before": 9,
+          "after": 8
+        },
+        {
+          "path": "/nations/12/population",
+          "before": 228,
+          "after": 224
+        },
+        {
+          "path": "/nations/12/populationAtStart",
+          "before": 228,
+          "after": 224
+        },
+        {
+          "path": "/nations/12/treasuryAtStart",
+          "before": 440,
+          "after": -633
+        },
+        {
+          "path": "/nations/13/treasuryAtStart",
+          "before": 530,
+          "after": 2760
+        },
+        {
+          "path": "/nations/14/population",
+          "before": 631,
+          "after": 639
+        },
+        {
+          "path": "/nations/14/populationAtStart",
+          "before": 631,
+          "after": 639
+        },
+        {
+          "path": "/nations/14/treasuryAtStart",
+          "before": 760,
+          "after": 705
+        },
+        {
+          "path": "/nations/15/population",
+          "before": 426,
+          "after": 430
+        },
+        {
+          "path": "/nations/15/populationAtStart",
+          "before": 426,
+          "after": 430
+        },
+        {
+          "path": "/nations/15/treasuryAtStart",
+          "before": 520,
+          "after": 165
+        }
+      ],
+      "source_seed": 14648227703208663979,
+      "imported_seed": 270,
+      "excluded": [
+        "record ids normalized by index",
+        "randomSeed (not stored in original)",
+        "launched fleet build-city metadata",
+        "documented mercenary-name alias"
+      ]
+    },
+    "native-progress-24": {
+      "differences": [
+        {
+          "path": "/calendar/turnIndex",
+          "before": 24,
+          "after": 0
+        },
+        {
+          "path": "/fleets/1/coveredTileCode",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/fleets/2/coveredTileCode",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/fleets/3/coveredTileCode",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/fleets/4/coveredTileCode",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/nations/0/cityCountAtStart",
+          "before": 25,
+          "after": 14
+        },
+        {
+          "path": "/nations/0/population",
+          "before": 859,
+          "after": 542
+        },
+        {
+          "path": "/nations/0/populationAtStart",
+          "before": 859,
+          "after": 542
+        },
+        {
+          "path": "/nations/0/treasuryAtStart",
+          "before": 2200,
+          "after": 2906
+        },
+        {
+          "path": "/nations/1/cityCountAtStart",
+          "before": 34,
+          "after": 33
+        },
+        {
+          "path": "/nations/1/population",
+          "before": 1607,
+          "after": 1613
+        },
+        {
+          "path": "/nations/1/populationAtStart",
+          "before": 1607,
+          "after": 1613
+        },
+        {
+          "path": "/nations/1/treasuryAtStart",
+          "before": 11000,
+          "after": 8678
+        },
+        {
+          "path": "/nations/2/cityCountAtStart",
+          "before": 62,
+          "after": 68
+        },
+        {
+          "path": "/nations/2/population",
+          "before": 5648,
+          "after": 5809
+        },
+        {
+          "path": "/nations/2/populationAtStart",
+          "before": 5648,
+          "after": 5809
+        },
+        {
+          "path": "/nations/2/treasuryAtStart",
+          "before": 2700,
+          "after": 1706
+        },
+        {
+          "path": "/nations/3/population",
+          "before": 3397,
+          "after": 3433
+        },
+        {
+          "path": "/nations/3/populationAtStart",
+          "before": 3397,
+          "after": 3433
+        },
+        {
+          "path": "/nations/3/treasuryAtStart",
+          "before": 4900,
+          "after": 4199
+        },
+        {
+          "path": "/nations/4/population",
+          "before": 596,
+          "after": 603
+        },
+        {
+          "path": "/nations/4/populationAtStart",
+          "before": 596,
+          "after": 603
+        },
+        {
+          "path": "/nations/4/treasuryAtStart",
+          "before": 775,
+          "after": 0
+        },
+        {
+          "path": "/nations/5/population",
+          "before": 225,
+          "after": 234
+        },
+        {
+          "path": "/nations/5/populationAtStart",
+          "before": 225,
+          "after": 234
+        },
+        {
+          "path": "/nations/5/treasuryAtStart",
+          "before": 410,
+          "after": 4431
+        },
+        {
+          "path": "/nations/6/cityCountAtStart",
+          "before": 28,
+          "after": 39
+        },
+        {
+          "path": "/nations/6/population",
+          "before": 504,
+          "after": 872
+        },
+        {
+          "path": "/nations/6/populationAtStart",
+          "before": 504,
+          "after": 872
+        },
+        {
+          "path": "/nations/6/treasuryAtStart",
+          "before": 315,
+          "after": -5419
+        },
+        {
+          "path": "/nations/7/population",
+          "before": 850,
+          "after": 863
+        },
+        {
+          "path": "/nations/7/populationAtStart",
+          "before": 850,
+          "after": 863
+        },
+        {
+          "path": "/nations/7/treasuryAtStart",
+          "before": 920,
+          "after": -1326
+        },
+        {
+          "path": "/nations/8/cityCountAtStart",
+          "before": 19,
+          "after": 20
+        },
+        {
+          "path": "/nations/8/population",
+          "before": 372,
+          "after": 440
+        },
+        {
+          "path": "/nations/8/populationAtStart",
+          "before": 372,
+          "after": 440
+        },
+        {
+          "path": "/nations/8/treasuryAtStart",
+          "before": 440,
+          "after": -5833
+        },
+        {
+          "path": "/nations/9/population",
+          "before": 209,
+          "after": 235
+        },
+        {
+          "path": "/nations/9/populationAtStart",
+          "before": 209,
+          "after": 235
+        },
+        {
+          "path": "/nations/9/treasuryAtStart",
+          "before": 580,
+          "after": -1658
+        },
+        {
+          "path": "/nations/10/population",
+          "before": 119,
+          "after": 138
+        },
+        {
+          "path": "/nations/10/populationAtStart",
+          "before": 119,
+          "after": 138
+        },
+        {
+          "path": "/nations/10/treasuryAtStart",
+          "before": 180,
+          "after": -2133
+        },
+        {
+          "path": "/nations/11/cityCountAtStart",
+          "before": 13,
+          "after": 7
+        },
+        {
+          "path": "/nations/11/population",
+          "before": 444,
+          "after": 279
+        },
+        {
+          "path": "/nations/11/populationAtStart",
+          "before": 444,
+          "after": 279
+        },
+        {
+          "path": "/nations/11/treasuryAtStart",
+          "before": 550,
+          "after": -6193
+        },
+        {
+          "path": "/nations/12/population",
+          "before": 228,
+          "after": 247
+        },
+        {
+          "path": "/nations/12/populationAtStart",
+          "before": 228,
+          "after": 247
+        },
+        {
+          "path": "/nations/12/treasuryAtStart",
+          "before": 440,
+          "after": -443
+        },
+        {
+          "path": "/nations/13/treasuryAtStart",
+          "before": 530,
+          "after": 5010
+        },
+        {
+          "path": "/nations/14/population",
+          "before": 631,
+          "after": 641
+        },
+        {
+          "path": "/nations/14/populationAtStart",
+          "before": 631,
+          "after": 641
+        },
+        {
+          "path": "/nations/14/treasuryAtStart",
+          "before": 760,
+          "after": 1230
+        },
+        {
+          "path": "/nations/15/population",
+          "before": 426,
+          "after": 432
+        },
+        {
+          "path": "/nations/15/populationAtStart",
+          "before": 426,
+          "after": 432
+        },
+        {
+          "path": "/nations/15/treasuryAtStart",
+          "before": 520,
+          "after": -1885
+        }
+      ],
+      "source_seed": 1355016697960079981,
+      "imported_seed": 270,
+      "excluded": [
+        "record ids normalized by index",
+        "randomSeed (not stored in original)",
+        "launched fleet build-city metadata",
+        "documented mercenary-name alias"
+      ]
+    },
+    "native-progress-6": {
+      "differences": [
+        {
+          "path": "/calendar/turnIndex",
+          "before": 6,
+          "after": 0
+        },
+        {
+          "path": "/nations/0/cityCountAtStart",
+          "before": 25,
+          "after": 20
+        },
+        {
+          "path": "/nations/0/population",
+          "before": 859,
+          "after": 731
+        },
+        {
+          "path": "/nations/0/populationAtStart",
+          "before": 859,
+          "after": 731
+        },
+        {
+          "path": "/nations/0/treasuryAtStart",
+          "before": 2200,
+          "after": 2328
+        },
+        {
+          "path": "/nations/1/population",
+          "before": 1607,
+          "after": 1608
+        },
+        {
+          "path": "/nations/1/populationAtStart",
+          "before": 1607,
+          "after": 1608
+        },
+        {
+          "path": "/nations/1/treasuryAtStart",
+          "before": 11000,
+          "after": 11817
+        },
+        {
+          "path": "/nations/2/cityCountAtStart",
+          "before": 62,
+          "after": 66
+        },
+        {
+          "path": "/nations/2/population",
+          "before": 5648,
+          "after": 5739
+        },
+        {
+          "path": "/nations/2/populationAtStart",
+          "before": 5648,
+          "after": 5739
+        },
+        {
+          "path": "/nations/2/treasuryAtStart",
+          "before": 2700,
+          "after": 2814
+        },
+        {
+          "path": "/nations/3/population",
+          "before": 3397,
+          "after": 3411
+        },
+        {
+          "path": "/nations/3/populationAtStart",
+          "before": 3397,
+          "after": 3411
+        },
+        {
+          "path": "/nations/3/treasuryAtStart",
+          "before": 4900,
+          "after": 2257
+        },
+        {
+          "path": "/nations/4/population",
+          "before": 596,
+          "after": 605
+        },
+        {
+          "path": "/nations/4/populationAtStart",
+          "before": 596,
+          "after": 605
+        },
+        {
+          "path": "/nations/4/treasuryAtStart",
+          "before": 775,
+          "after": 843
+        },
+        {
+          "path": "/nations/5/population",
+          "before": 225,
+          "after": 230
+        },
+        {
+          "path": "/nations/5/populationAtStart",
+          "before": 225,
+          "after": 230
+        },
+        {
+          "path": "/nations/5/treasuryAtStart",
+          "before": 410,
+          "after": 1686
+        },
+        {
+          "path": "/nations/6/cityCountAtStart",
+          "before": 28,
+          "after": 33
+        },
+        {
+          "path": "/nations/6/population",
+          "before": 504,
+          "after": 637
+        },
+        {
+          "path": "/nations/6/populationAtStart",
+          "before": 504,
+          "after": 637
+        },
+        {
+          "path": "/nations/6/treasuryAtStart",
+          "before": 315,
+          "after": -3097
+        },
+        {
+          "path": "/nations/7/population",
+          "before": 850,
+          "after": 856
+        },
+        {
+          "path": "/nations/7/populationAtStart",
+          "before": 850,
+          "after": 856
+        },
+        {
+          "path": "/nations/7/treasuryAtStart",
+          "before": 920,
+          "after": 2742
+        },
+        {
+          "path": "/nations/8/population",
+          "before": 372,
+          "after": 401
+        },
+        {
+          "path": "/nations/8/populationAtStart",
+          "before": 372,
+          "after": 401
+        },
+        {
+          "path": "/nations/8/treasuryAtStart",
+          "before": 440,
+          "after": -4820
+        },
+        {
+          "path": "/nations/9/population",
+          "before": 209,
+          "after": 217
+        },
+        {
+          "path": "/nations/9/populationAtStart",
+          "before": 209,
+          "after": 217
+        },
+        {
+          "path": "/nations/9/treasuryAtStart",
+          "before": 580,
+          "after": -819
+        },
+        {
+          "path": "/nations/10/population",
+          "before": 119,
+          "after": 129
+        },
+        {
+          "path": "/nations/10/populationAtStart",
+          "before": 119,
+          "after": 129
+        },
+        {
+          "path": "/nations/10/treasuryAtStart",
+          "before": 180,
+          "after": 212
+        },
+        {
+          "path": "/nations/11/cityCountAtStart",
+          "before": 13,
+          "after": 10
+        },
+        {
+          "path": "/nations/11/population",
+          "before": 444,
+          "after": 363
+        },
+        {
+          "path": "/nations/11/populationAtStart",
+          "before": 444,
+          "after": 363
+        },
+        {
+          "path": "/nations/11/treasuryAtStart",
+          "before": 550,
+          "after": -3787
+        },
+        {
+          "path": "/nations/12/cityCountAtStart",
+          "before": 9,
+          "after": 8
+        },
+        {
+          "path": "/nations/12/population",
+          "before": 228,
+          "after": 220
+        },
+        {
+          "path": "/nations/12/populationAtStart",
+          "before": 228,
+          "after": 220
+        },
+        {
+          "path": "/nations/12/treasuryAtStart",
+          "before": 440,
+          "after": 0
+        },
+        {
+          "path": "/nations/13/treasuryAtStart",
+          "before": 530,
+          "after": 1948
+        },
+        {
+          "path": "/nations/14/population",
+          "before": 631,
+          "after": 637
+        },
+        {
+          "path": "/nations/14/populationAtStart",
+          "before": 631,
+          "after": 637
+        },
+        {
+          "path": "/nations/14/treasuryAtStart",
+          "before": 760,
+          "after": 727
+        },
+        {
+          "path": "/nations/15/population",
+          "before": 426,
+          "after": 429
+        },
+        {
+          "path": "/nations/15/populationAtStart",
+          "before": 426,
+          "after": 429
+        },
+        {
+          "path": "/nations/15/treasuryAtStart",
+          "before": 520,
+          "after": 84
+        }
+      ],
+      "source_seed": 520762906306143416,
+      "imported_seed": 270,
+      "excluded": [
+        "record ids normalized by index",
+        "randomSeed (not stored in original)",
+        "launched fleet build-city metadata",
+        "documented mercenary-name alias"
+      ]
+    }
+  },
+  "original_sessions": {
+    "live-native-initial-v1": {
+      "complete": true,
+      "error": null,
+      "comparisons": {
+        "export_vs_original_immediate": {
+          "semantic_differences": [],
+          "byte_equal": false,
+          "lengths": [
+            131740,
+            131740
+          ],
+          "differing_byte_count": 1,
+          "differing_offsets": [
+            111350
+          ],
+          "before_sha256": "955c6fa42165171644a31b4beaf8b59feb049585541a2829da8b81ca65a64903",
+          "after_sha256": "c862ee2c12587872c186cd7e1561bbee11a72a2e3d9b28446e337fecc32551e6"
+        },
+        "immediate_vs_tax_order": {
+          "semantic_differences": [
+            {
+              "path": "/nations/0/tax",
+              "before": 10,
+              "after": 26
+            }
+          ],
+          "byte_equal": false,
+          "lengths": [
+            131740,
+            131740
+          ],
+          "differing_byte_count": 1,
+          "differing_offsets": [
+            111294
+          ],
+          "before_sha256": "c862ee2c12587872c186cd7e1561bbee11a72a2e3d9b28446e337fecc32551e6",
+          "after_sha256": "40cfab4b160e2e5222a16ceb93f191d134be2a7dcb523525511268070af49a38"
+        },
+        "original_save_vs_reopen_resave": {
+          "semantic_differences": [],
+          "byte_equal": true,
+          "lengths": [
+            131740,
+            131740
+          ],
+          "differing_byte_count": 0,
+          "differing_offsets": [],
+          "before_sha256": "40cfab4b160e2e5222a16ceb93f191d134be2a7dcb523525511268070af49a38",
+          "after_sha256": "40cfab4b160e2e5222a16ceb93f191d134be2a7dcb523525511268070af49a38"
+        }
+      }
+    }
+  }
+}

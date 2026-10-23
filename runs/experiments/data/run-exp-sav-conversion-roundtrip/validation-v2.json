@@ -1,0 +1,118 @@
+{
+  "passed": true,
+  "checks": [
+    "batch1-conversions: archive and every listed artifact SHA256 match",
+    "batch2-complete: archive and every listed artifact SHA256 match",
+    "7 original sessions: UI-only immediate change; tax-only order; byte-identical fresh reopen; unchanged input",
+    "7 returned remake sessions: reload/resume succeeds; tax27 is the only normalized state change; reexport policy passes",
+    "6 source exports: policy passes; all native differences explicitly classified (not claimed equal)",
+    "2 refusal controls: unsupported ruleset writes no SAV; overwrite refusal preserves SHA256",
+    "Synthetic cargo: reciprocal index, owner, coordinates and off-map army sentinel survive original reopen",
+    "Instrumented-original continuation: exactly one calendar tick 0720 -> 0721, autosave/SaveAs/reopen identical"
+  ],
+  "manifest_file_checks": 164,
+  "original_sessions": 7,
+  "distinct_native_scenarios": 6,
+  "refusal_controls": 2,
+  "ui_adjustments": [
+    {
+      "case": "live-native-cargo-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    },
+    {
+      "case": "live-native-initial-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    },
+    {
+      "case": "live-native-orders-seed-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    },
+    {
+      "case": "live-native-orders-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    },
+    {
+      "case": "live-native-progress-12-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    },
+    {
+      "case": "live-native-progress-24-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    },
+    {
+      "case": "live-native-progress-6-v1",
+      "nation_relative_offset": "0x482",
+      "before": 708,
+      "after": 704
+    }
+  ],
+  "native_difference_counts": {
+    "native-cargo": {
+      "cityCountAtStart": 2,
+      "population": 2,
+      "populationAtStart": 2,
+      "treasuryAtStart": 5
+    },
+    "native-initial": {
+      "cityCountAtStart": 2,
+      "population": 2,
+      "populationAtStart": 2,
+      "treasuryAtStart": 5
+    },
+    "native-orders": {
+      "treasuryAtStart": 6,
+      "cityCountAtStart": 2,
+      "population": 2,
+      "populationAtStart": 2
+    },
+    "native-progress-12": {
+      "turnIndex": 1,
+      "coveredTileCode": 1,
+      "cityCountAtStart": 7,
+      "population": 15,
+      "populationAtStart": 15,
+      "treasuryAtStart": 16
+    },
+    "native-progress-24": {
+      "turnIndex": 1,
+      "coveredTileCode": 4,
+      "cityCountAtStart": 6,
+      "population": 15,
+      "populationAtStart": 15,
+      "treasuryAtStart": 16
+    },
+    "native-progress-6": {
+      "turnIndex": 1,
+      "cityCountAtStart": 5,
+      "population": 15,
+      "populationAtStart": 15,
+      "treasuryAtStart": 16
+    }
+  },
+  "assembly_sha256": {
+    "build/bin/IC2.Cli/debug/IC2.Cli.dll": "554bbc3376a5b2915055f5fdd73562af12b55d25d91f4953076b8ff4ac7922d8",
+    "build/bin/IC2.Cli/debug/IC2.Engine.dll": "ef354679b7889bee6dc83bf883f6caa8c2da5e865cc116a102b8b42108ee43b3",
+    "build/bin/IC2.Cli/debug/IC2.Data.dll": "86fbe8c957da4c3fe87e2408dc2176fcd2797d596161643e9c06ed9128824090",
+    "probe-build/bin/ConversionProbe/debug/ConversionProbe.dll": "4c37a0888ebc330d2ffb1c8357709c7dfc9f8130238bd576c6dbfffa73915eb5",
+    "probe-build-v2/bin/ConversionProbe/debug/ConversionProbe.dll": "2b814f304059ac121b8c51768775277cf2d019d620ec0e83c17cb2394fd23f7a"
+  },
+  "not_proved": [
+    "native Windows acceptance",
+    "the owner twelve-save manifest",
+    "RNG equivalence or full fidelity",
+    "all unsupported-state refusals",
+    "independent model review"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "scenario": "native-progress-24",
+  "case": "E",
+  "attempt": "v1",
+  "exe": "Imperial Conquest 2.exe",
+  "steps": [
+    {
+      "label": "immediate-native-save",
+      "file": "live-native-progress-24-v1/P151EI.SAV",
+      "sha256": "81314215b71e09485e62f29098d470cd63aed3f8b0d2a60f801fe991079adb3c",
+      "bytes": 132805,
+      "turn": 744,
+      "current_nation": 0,
+      "army_count": 15,
+      "fleet_count": 6,
+      "tax": 25
+    },
+    {
+      "label": "after-tax-order",
+      "file": "live-native-progress-24-v1/P151EO.SAV",
+      "sha256": "5dd824090c37e7eacce2bb282a24bcda70a338f301a3eb7a7f0220c515ec3458",
+      "bytes": 132805,
+      "turn": 744,
+      "current_nation": 0,
+      "army_count": 15,
+      "fleet_count": 6,
+      "tax": 26
+    },
+    {
+      "label": "fresh-reopen-resave",
+      "file": "live-native-progress-24-v1/P151ER.SAV",
+      "sha256": "5dd824090c37e7eacce2bb282a24bcda70a338f301a3eb7a7f0220c515ec3458",
+      "bytes": 132805,
+      "turn": 744,
+      "current_nation": 0,
+      "army_count": 15,
+      "fleet_count": 6,
+      "tax": 26
+    }
+  ],
+  "complete": true,
+  "runtime": "Wine/Xvfb, not native Windows",
+  "input": {
+    "file": "exports-v2/native-progress-24.SAV",
+    "sha256": "c12556c2dbc800478df92792a1822f5c694679a6e2f645522fcaa36608e9dd30"
+  },
+  "load_messages": [],
+  "loaded": true,
+  "calendar_loaded": {
+    "season": 0,
+    "week": 1,
+    "year_bc": 269
+  },
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "screenshots": [
+    {
+      "file": "live-native-progress-24-v1/loaded.png",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "live-native-progress-24-v1/after-order.png",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "live-native-progress-24-v1/reopened.png",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ],
+  "order": {
+    "type": "taxation",
+    "before": 25,
+    "requested": 26,
+    "messages": [],
+    "verified": true
+  },
+  "reopen_messages": [],
+  "input_unchanged": true
+}

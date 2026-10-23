@@ -63,6 +63,22 @@ if (args[0] == "generate")
     SaveNew(Path.Combine(dir, "negative-improved.json"), Wrap(negative.State, "negative-improved"));
     Emit(new { kind = "negative", name = "negative-improved", summary = Summary(negative.State) });
 }
+else if (args[0] == "cargo")
+{
+    // Explicit synthetic native-model test, not a claim of reaching it by play.
+    var source = SaveManager.LoadFile(args[2], world, rules);
+    var s = source.State;
+    var army = s.Armies.First(a => a.Nation == "rome");
+    var fleet = s.Fleets.First(f => !f.IsUnderConstruction && f.CarriedArmyId is null);
+    var cargo = army with { X = fleet.X, Y = fleet.Y, CoveredTileCode = null, AboardFleetId = fleet.Id };
+    var carrier = fleet with { Nation = army.Nation, CarriedArmyId = army.Id };
+    var changed = s with { Armies = ValueList.From(s.Armies.Select(a => a.Id == army.Id ? cargo : a)),
+        Fleets = ValueList.From(s.Fleets.Select(f => f.Id == fleet.Id ? carrier : f)) };
+    SaveNew(args[3], Wrap(changed, "native-cargo-synthetic"));
+    var loaded = SaveManager.LoadFile(args[3], world, rules);
+    Emit(new { kind = "synthetic-native-cargo", summary = Summary(loaded.State),
+        construction = "One native army embarked in an existing launched fleet; carrier reassigned to army owner, coordinates and reciprocal references set through public model records. Not a gameplay-derived snapshot." });
+}
 else if (args[0] == "import")
 {
     var imported = OriginalSaveImporter.Import(File.ReadAllBytes(args[2]), Path.GetFileName(args[2]), world, rules, scenario, "converted", "converted");
@@ -73,5 +89,14 @@ else if (args[0] == "import")
     var status = session.Submit("status mine");
     Emit(new { kind = "import", input = Path.GetFileName(args[2]), summary = Summary(loaded.State),
         reloadEqual = loaded.State == imported.Save.State, imported.Report, status.Lines });
+    if (args.Length > 4)
+    {
+        var output = session.Submit("set-tax 27");
+        if (session.State.NationById(session.State.ActiveNationId)!.TaxRatePercent != 27)
+            throw new Exception("Returned native session rejected the tax continuation");
+        SaveNew(args[4], Wrap(session.State, "returned-native-continuation"));
+        Emit(new { kind = "returned-session-order", command = "set-tax 27", verified = true, output.Lines,
+            summary = Summary(session.State) });
+    }
 }
 else throw new ArgumentException("generate or import required");

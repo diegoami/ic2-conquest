@@ -1,0 +1,99 @@
+{
+  "scenario": "native-orders",
+  "case": "B",
+  "attempt": "v1",
+  "exe": "Imperial Conquest 2.exe",
+  "steps": [
+    {
+      "label": "immediate-native-save",
+      "file": "live-native-orders-v1/P151BI.SAV",
+      "sha256": "568a18cf6edc3e392fd111b861f9097f6ca9e86cc6247dd3bd3832dd430416f6",
+      "bytes": 131766,
+      "turn": 720,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 3,
+      "tax": 25
+    },
+    {
+      "label": "after-tax-order",
+      "file": "live-native-orders-v1/P151BO.SAV",
+      "sha256": "aec0a07c6811986ac2384b9b0992258ab290c1edd2162e1bd2c99dfba3ec1e2b",
+      "bytes": 131766,
+      "turn": 720,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 3,
+      "tax": 26
+    },
+    {
+      "label": "fresh-reopen-resave",
+      "file": "live-native-orders-v1/P151BR.SAV",
+      "sha256": "aec0a07c6811986ac2384b9b0992258ab290c1edd2162e1bd2c99dfba3ec1e2b",
+      "bytes": 131766,
+      "turn": 720,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 3,
+      "tax": 26
+    }
+  ],
+  "complete": true,
+  "runtime": "Wine/Xvfb, not native Windows",
+  "input": {
+    "file": "exports-v2/native-orders.SAV",
+    "sha256": "9570a8266c8b71b47be6ce0f367618c6e589da306f655de754ea0e7a09e8b5e4"
+  },
+  "load_messages": [],
+  "loaded": true,
+  "calendar_loaded": {
+    "season": 0,
+    "week": 1,
+    "year_bc": 270
+  },
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "screenshots": [
+    {
+      "file": "live-native-orders-v1/loaded.png",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "live-native-orders-v1/after-order.png",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "live-native-orders-v1/reopened.png",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ],
+  "order": {
+    "type": "taxation",
+    "before": 25,
+    "requested": 26,
+    "messages": [],
+    "verified": true
+  },
+  "reopen_messages": [],
+  "input_unchanged": true
+}

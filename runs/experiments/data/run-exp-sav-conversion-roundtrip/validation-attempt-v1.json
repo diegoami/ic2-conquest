@@ -1,0 +1,5 @@
+{
+  "passed": false,
+  "assertion": "continued[rng_unchanged_by_tax_order]",
+  "cause": "Incorrect experiment expectation: accepted commands advance the remake root RNG even when the handler draws nothing. CommandDispatcher.cs:201 advances once with GoldenGamma from RngStreams.cs:37. All seven observed 270 -> 11400714819323198755. Earlier comparison-v5 retains rng_unchanged_by_tax_order false; final comparison-v6 verifies exactly one advance, not unchanged. No game result changed and no save regenerated."
+}

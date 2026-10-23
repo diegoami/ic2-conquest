@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/native-v1/native-cargo.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/exports-v2/native-cargo.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "cwd": "/home/diego/projects/imperial_conquest_2",
+  "returncode": 0,
+  "stdout": "Exported '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/native-v1/native-cargo.json' (SHA-256 9BDB43D3E029D920BE5161DF19F347914FCA052997A363A4E3723BF7F884119C) to '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/exports-v2/native-cargo.SAV'.\n  output SHA-256 2CF034B6D6E5837DC9036E8B3AD9C283B270055FED611FE057E10A25B75AE154, 131740 bytes, profile native-state-canonical-v1\n  template '/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV' SHA-256 050BC354F1CBBE374B6A627F06054F2043B9F91A268F6FBFBC18ED1E7E65574C (interface settings only)\n  14 armies, 2 fleets, 35 news lines, native-cargo-synthetic, 270 BC\n  alias: army-9 slot 8 'Mercenary unit (label 11)' written as 'Mercenary (label 11)'\n  alias: army-9 slot 9 'Mercenary unit (label 45)' written as 'Mercenary (label 45)'\n  not in the original format: schema and envelope versions, save id and label, provenance\n  not in the original format: world, ruleset and scenario ids (an original save is always classical-mediterranean under classical-faithful)\n  not in the original format: Calendar.TurnIndex (the original keeps no elapsed-turn counter)\n  not in the original format: RandomSeed and draw positions: the original does not restore a random state on load, so future dice differ\n  not in the original format: AI personalities, seat colours and the leader-name pools\n  not in the original format: PopulationAtStart, TreasuryAtStart and CityCountAtStart (score baselines); the original's own start fields get the 270 BC values\n  not in the original format: the first-end news bookkeeping (FirstEndNewsOwed)\n  not in the original format: runtime settings: Computer general, battle speed, display pacing\n  not in the original format: army covered-tile codes, recomputed from the map rather than copied\n  not in the original format: recruitment slot positions (the native state keeps the entries in order; they are written packed from slot 0)\n  Opening the file in the original game is a separate check; this export does not claim it.\n",
+  "stderr": ""
+}

@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/probe-build-v2/bin/ConversionProbe/debug/ConversionProbe.dll",
+    "cargo",
+    "/home/diego/projects/imperial_conquest_2",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/native-v1/native-initial.json",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/native-v1/native-cargo.json"
+  ],
+  "cwd": "/home/diego/projects/imperial_conquest_2",
+  "returncode": 0,
+  "stdout": "{\"kind\":\"synthetic-native-cargo\",\"summary\":{\"turn\":0,\"calendar\":{\"Week\":1,\"SeasonIndex\":0,\"YearBc\":270,\"TurnIndex\":0},\"active\":\"rome\",\"armies\":14,\"fleets\":2,\"building\":0,\"cargo\":1,\"recruits\":79,\"cities\":334,\"human\":[\"rome\"]},\"construction\":\"One native army embarked in an existing launched fleet; carrier reassigned to army owner, coordinates and reciprocal references set through public model records. Not a gameplay-derived snapshot.\"}\n",
+  "stderr": ""
+}
