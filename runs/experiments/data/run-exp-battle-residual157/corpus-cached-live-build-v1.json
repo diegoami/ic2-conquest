@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "build",
+    "/home/diego/projects/ic2-conquest/runs/experiments/battle-residual157/Corpus.csproj",
+    "--artifacts-path",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-cached-live-v1/build",
+    "-p:CustomAfterMicrosoftCommonTargets=/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/overlay-cached-live-v1.targets",
+    "--nologo",
+    "-v",
+    "q"
+  ],
+  "returncode": 0,
+  "stdout": "/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n\nBuild succeeded.\n\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n/home/diego/projects/imperial_conquest_2/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/imperial_conquest_2/src/IC2.Data/IC2.Data.csproj]\n    3 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:01:09.02\n",
+  "stderr": "",
+  "asset_locator": "Task-local IC2.sln marker and read-only data symlink; no sibling checkout/source generated"
+}

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-cached-only-v1/bin/Corpus.dll",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/corpus-cached-only-v1.jsonl",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/corpus-cached-only-v1.json"
+  ],
+  "returncode": 1,
+  "stdout": "lc-ar-three-half_s1_r5_hook DIFF {\"trial\":\"lc-ar-three-half_s1_r5_hook\",\"stateEqual\":false,\"drawsEqual\":false,\"stateDescription\":\"lc-ar-three-half_s1_r5_hook: hook/lc-ar-three-half_s1_r5_hook_BATTLE09.SAV (file 9 of 9), slot 0, morale: port 75, original 70\",\"structural\":null,\"firstDrawDifference\":\"draw 29: half-round counter 9 (port 9), original site 0x4592BD Random(4) = 1, port Random(1) = 0\",\"filesMatched\":8,\"portDraws\":34,\"originalDraws\":32}\nlc-ar-three_s2_r5_hook DIFF {\"trial\":\"lc-ar-three_s2_r5_hook\",\"stateEqual\":false,\"drawsEqual\":false,\"stateDescription\":\"lc-ar-three_s2_r5_hook: hook/lc-ar-three_s2_r5_hook_BATTLE11.SAV (file 11 of 13), slot 0, morale: port 80, original 65\",\"structural\":null,\"firstDrawDifference\":\"draw 108: half-round counter 11 (port 11), original site 0x439188 Random(366) = 95, port Random(1) = 0\",\"filesMatched\":10,\"portDraws\":167,\"originalDraws\":145}\n318 trials: state=316, draws=316, failed=2\n",
+  "stderr": "",
+  "engine_dependencies": [
+    {
+      "file": "IC2.Engine.dll",
+      "before": "f490d37626180adc8b1a38657dd17506c603680a515a83a5c3ce69ea058a74ae",
+      "after": "598aed0980de9421854fff4a5dd4cffcd84efa09e9c1e20b764ad3c19f9d61b1"
+    },
+    {
+      "file": "IC2.Data.dll",
+      "before": "a7d04297141c671c3948381273778d03ebe4cc73c49183d2e82e3eb473c6b9df",
+      "after": "43d85b4b0bf47a3cb36d7f0eac32c98db67f74ad929bfbc104093b694ad7fa73"
+    }
+  ],
+  "helper_assembly_unchanged": true,
+  "registry_exemptions": false
+}

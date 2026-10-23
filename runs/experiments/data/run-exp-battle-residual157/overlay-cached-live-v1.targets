@@ -1,0 +1,9 @@
+<Project>
+  <Import Project="/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-faithful-general157/overlay-v2.targets" />
+  <Target Name="UseResidualMovementSource" BeforeTargets="CoreCompile">
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'IC2.Engine'">
+      <Compile Remove="Battle/Tactical/TacticalMovement.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/source-cached-live-v1/TacticalMovement.cs" />
+    </ItemGroup>
+  </Target>
+</Project>

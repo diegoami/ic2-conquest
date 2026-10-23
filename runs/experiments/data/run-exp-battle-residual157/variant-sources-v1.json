@@ -1,0 +1,20 @@
+{
+  "main_pr_source_pin": "ea575e04e9d96f9e3dc6410c1b6edbb0f01b000b",
+  "original_git_blob": "fbca84b68ae785125bd5045198153c7a155296a0",
+  "original_sha256": "7da433df210f4e4a7fc9668af51267ec73f7b69e2eb29e2f0876a136ce68fe0b",
+  "variants": [
+    {
+      "variant": "cached-only",
+      "source_sha256": "54cfcac2dd18b912b23f2b11e8a048b85ffc89a3763644e4df3427066d74867f",
+      "capture_once_per_walk": true,
+      "explicit_live_guard": false
+    },
+    {
+      "variant": "cached-live",
+      "source_sha256": "91d287d821a24fefacc6fdc3255d793bade9607be297c5cf97bf00bc1535be8f",
+      "capture_once_per_walk": true,
+      "explicit_live_guard": true
+    }
+  ],
+  "other_checkout_written": false
+}

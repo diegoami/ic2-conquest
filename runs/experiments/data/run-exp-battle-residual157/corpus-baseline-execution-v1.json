@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-residual157/corpus-baseline-v1/bin/Corpus.dll",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/corpus-baseline-v1.jsonl",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-battle-residual157/corpus-baseline-v1.json"
+  ],
+  "returncode": 1,
+  "stdout": "mix-rg_s2_r5_hook DIFF {\"trial\":\"mix-rg_s2_r5_hook\",\"stateEqual\":false,\"drawsEqual\":false,\"stateDescription\":\"mix-rg_s2_r5_hook: hook/mix-rg_s2_r5_hook_BATTLE10.SAV (file 10 of 18), slot 24, x: port 10, original 11\",\"structural\":null,\"firstDrawDifference\":\"draw 217: half-round counter 11 (port 11), original site 0x439557 Random(361) = 333, port Random(113) = 104\",\"filesMatched\":9,\"portDraws\":292,\"originalDraws\":325}\n318 trials: state=317, draws=317, failed=1\n",
+  "stderr": "",
+  "engine_dependencies": [
+    {
+      "file": "IC2.Engine.dll",
+      "before": "f490d37626180adc8b1a38657dd17506c603680a515a83a5c3ce69ea058a74ae",
+      "after": "05572a10b3b8d94fdf2ddd3bd1cc0c50de2cb5a1f2690733f4b74c54cf294771"
+    },
+    {
+      "file": "IC2.Data.dll",
+      "before": "a7d04297141c671c3948381273778d03ebe4cc73c49183d2e82e3eb473c6b9df",
+      "after": "68ce1930040d8180a4430606f659e4c13d425e20b01f2454f91666cd7bc67be3"
+    }
+  ],
+  "helper_assembly_unchanged": true,
+  "registry_exemptions": false
+}
