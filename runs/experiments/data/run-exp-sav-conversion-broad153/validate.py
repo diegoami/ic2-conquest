@@ -5,13 +5,18 @@ from pathlib import Path
 from offline import HERE,ART,entries
 from compare import native,prior
 
-rows=json.loads((HERE/sys.argv[1]).read_text());assert len(rows)==77
+rows=json.loads((HERE/sys.argv[1]).read_text());assert len(rows)==78
 groups=Counter(r['case']['category'] for r in rows)
-assert groups=={'nation-start':16,'progressed':4,'feature':56,'migration':1},groups
+assert groups=={'nation-start':16,'progressed':4,'feature':57,'migration':1},groups
 assert len({r['case']['nation'] for r in rows if r['case']['category']=='nation-start'})==16
 checks=[];hash_checks=0;unique_sources=set();ui_changes={};mismatches={};random_cases=[]
 for row in rows:
  name=row['case']['name']
+ if name=='F55-compact-before-carrier':
+  refused=json.loads((HERE/'export-F55-compact-before-carrier-v1.json').read_text())
+  assert refused['returncode']==2 and 'POLICY_VIOLATION' in refused['stderr'] and 'city_marker' in refused['stderr']
+  assert not (ART/'exports-v1'/(name+'.SAV')).exists()
+  continue
  assert row['export_success'] and row['policy_pass'] and row['import_success'],name
  assert row['original']['complete'] and row['original']['action_verified'],(name,row['original'])
  assert row['original']['reopen_byte_equal'],name
@@ -62,11 +67,13 @@ checks.append('All selected artifact hashes and all retained archive/member hash
 conq=next(r for r in rows if r['case']['name']=='F36-eliminated-conqueror')
 assert any(d['path']=='/nations/14/conqueredBy' and d['before']=='rome' and d['after'] is None for d in conq['source_import_differences'])
 checks.append('Known conqueredBy importer loss reproduced explicitly, never counted as full-fidelity equality')
-out=dict(passed=True,checks=checks,cases=len(rows),categories=dict(groups),distinct_exported_SAV_hashes=len(unique_sources),
+accepted_groups=dict(groups);accepted_groups['feature']-=1
+out=dict(passed=True,checks=checks,cases=len(rows)-1,planned_inputs=len(rows),additional_refused_case='F55-compact-before-carrier',
+ total_refusal_controls=len(negative)+1,categories=accepted_groups,planned_categories=dict(groups),distinct_exported_SAV_hashes=len(unique_sources),
  artifact_hash_checks=hash_checks,archives=archives,immediate_ui_changed_bytes=ui_changes,
  deterministic_action_differences=mismatches,random_continuation_cases=random_cases,
  limits=['Wine, not native Windows','one selected startup seed per nation; no full seed cross product',
  'synthetic boundary/state cases labelled; not all naturally reached','not owner twelve-save set','not exhaustive gameplay/UI/campaign coverage',
  'not independent model review','native metadata/RNG reset is not full-state equality'])
 with (HERE/sys.argv[2]).open('x') as f:json.dump(out,f,indent=2);f.write('\n')
-print('PASS',len(rows),'cases;',hash_checks,'hash checks;',len(mismatches),'explicit deterministic mismatch cases')
+print('PASS',len(rows)-1,'roundtrip cases +12 refusal controls;',hash_checks,'hash checks;',len(mismatches),'explicit deterministic mismatch cases')

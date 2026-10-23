@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "checks": [
+    "77 case inputs export/check/import; 16 nations represented; all planned categories present",
+    "Every selected original case verifies its action/refusal and byte-identical fresh reopen",
+    "Every original immediate save differs only in explicitly bounded UI byte regions, no parsed gameplay change",
+    "Every selected original result returns/resumes/orders/reexports with policy pass",
+    "11 converter/input refusal controls refuse safely; actual saved tactical battle reaches OPEN_BATTLE refusal",
+    "All selected artifact hashes and all retained archive/member hashes match",
+    "Known conqueredBy importer loss reproduced explicitly, never counted as full-fidelity equality"
+  ],
+  "cases": 77,
+  "planned_inputs": 78,
+  "additional_refused_case": "F55-compact-before-carrier",
+  "total_refusal_controls": 12,
+  "categories": {
+    "nation-start": 16,
+    "progressed": 4,
+    "feature": 56,
+    "migration": 1
+  },
+  "planned_categories": {
+    "nation-start": 16,
+    "progressed": 4,
+    "feature": 57,
+    "migration": 1
+  },
+  "distinct_exported_SAV_hashes": 53,
+  "artifact_hash_checks": 1854,
+  "archives": [
+    {
+      "archive": "batch-01.tar.gz",
+      "files": 288,
+      "sha256": "4d5c49321f0f175b9f2f4d641282be8b4ac73f4f11d3f0fce217706e4e20f129"
+    },
+    {
+      "archive": "batch-02.tar.gz",
+      "files": 547,
+      "sha256": "bb96d31658d89723649715bf71bfc580d6243a616f93c49d0338e4d2e197af34"
+    },
+    {
+      "archive": "batch-03.tar.gz",
+      "files": 781,
+      "sha256": "6c3001fa3fbe10fc9fcab5efcc2105fd311747dc41369220a61445a5ec3336a6"
+    }
+  ],
+  "immediate_ui_changed_bytes": {
+    "S00-rome": 1,
+    "S01-carthage": 1,
+    "S02-seleucid": 1,
+    "S03-ptolemaic": 1,
+    "S04-macedonia": 1,
+    "S05-numidia": 1,
+    "S06-gaul": 1,
+    "S07-greece": 1,
+    "S08-celtiberia": 1,
+    "S09-illyria": 1,
+    "S10-dacia": 1,
+    "S11-bithynia": 1,
+    "S12-galatia": 1,
+    "S13-armenia": 1,
+    "S14-media": 1,
+    "S15-thracia": 1,
+    "P06-rome": 1,
+    "P12-carthage": 1,
+    "P18-ptolemaic": 1,
+    "P24-macedonia": 1,
+    "F00-army-split": 1,
+    "F01-army-join": 1,
+    "F02-army-transfer": 1,
+    "F03-unit-name23": 1,
+    "F04-unit-split": 1,
+    "F05-unit-join": 1,
+    "F06-army-disband": 1,
+    "F07-army-supply": 1,
+    "F08-army-money": 1,
+    "F09-mercenary-hire": 1,
+    "F10-mercenary-alias": 1,
+    "F11-recruit-li": 1,
+    "F12-recruit-hi": 1,
+    "F13-recruit-ar": 1,
+    "F14-recruit-lc": 1,
+    "F15-recruit-hc": 1,
+    "F16-mobilize-quality4": 1,
+    "F17-recruit-disband": 1,
+    "F18-recruit-cap40": 1,
+    "F19-fleet-repair": 1,
+    "F20-fleet-supply": 1,
+    "F21-fleet-split": 1,
+    "F22-fleet-join": 1,
+    "F23-fleet-transfer": 1,
+    "F24-fleet-cap101": 1,
+    "F25-fleet-scuttle": 1,
+    "F26-fleet-move": 1,
+    "F27-embark": 1,
+    "F28-disembark": 1,
+    "F29-fleet-build": 1,
+    "F30-declare-war": 1,
+    "F31-trade": 1,
+    "F32-pending-offer": 1,
+    "F33-fortification": 1,
+    "F34-debt-tax40": 1,
+    "F35-quality4-and9": 1,
+    "F36-eliminated-conqueror": 1,
+    "F37-hotseat": 1,
+    "F38-winter-roughsea": 1,
+    "F39-naval-combat": 1,
+    "F40-siege-capture": 1,
+    "F41-field-battle-aftermath": 1,
+    "M00-format4": 1,
+    "F42-alliance": 1,
+    "F43-peace": 1,
+    "F44-winter-rough-fleet": 1,
+    "F45-regular-unit-disband": 1,
+    "F46-foreign-city-supply": 1,
+    "F47-fleet-money": 1,
+    "F48-army100000": 1,
+    "F49-army-unit-cap21": 1,
+    "F50-fleet100": 1,
+    "F51-unit-split-hi5000": 1,
+    "F52-alliance-peacetime": 1,
+    "F53-peace-from-trade": 1,
+    "F54-reordered-cargo": 1,
+    "F56-compact-sea-before-carrier": 1
+  },
+  "deterministic_action_differences": {
+    "F02-army-transfer": [
+      {
+        "path": "/armies/10/moves",
+        "before": 8,
+        "after": 0
+      }
+    ],
+    "F04-unit-split": [
+      {
+        "path": "/armies/9/units/length",
+        "before": 7,
+        "after": 6
+      }
+    ],
+    "F09-mercenary-hire": [
+      {
+        "path": "/armies/9/units/6/name",
+        "before": "Mercenary (label 1)",
+        "after": "Numidian"
+      }
+    ],
+    "F51-unit-split-hi5000": [
+      {
+        "path": "/armies/9/units/6/name",
+        "before": "7th Guards Battalion",
+        "after": "7th Guards  Battalion"
+      }
+    ]
+  },
+  "random_continuation_cases": [
+    "P06-rome",
+    "P12-carthage",
+    "P18-ptolemaic",
+    "P24-macedonia",
+    "F37-hotseat",
+    "F39-naval-combat",
+    "F40-siege-capture",
+    "F41-field-battle-aftermath",
+    "F44-winter-rough-fleet"
+  ],
+  "limits": [
+    "Wine, not native Windows",
+    "one selected startup seed per nation; no full seed cross product",
+    "synthetic boundary/state cases labelled; not all naturally reached",
+    "not owner twelve-save set",
+    "not exhaustive gameplay/UI/campaign coverage",
+    "not independent model review",
+    "native metadata/RNG reset is not full-state equality"
+  ]
+}

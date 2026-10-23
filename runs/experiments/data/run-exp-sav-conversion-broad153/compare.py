@@ -88,6 +88,18 @@ def compare():
                 a,_=native(predicted,True);b,_=native(returned,True)
                 row['action_differential_differences']=differences(a,b)
                 row['action_differential_random']=case['originalAction']['kind'] in ('end-turn','siege','attack-fleet','field-battle')
+                # Do not hide table-order differences behind identity canonicalization.
+                pstate=json.loads(predicted.read_text())['save']['state']
+                rstate=json.loads(returned.read_text())['save']['state']
+                row['record_order_comparison']={}
+                for table in ('armies','fleets'):
+                    def keys(s):return [(x['nation'],x['x'],x['y'],bool(x.get('aboardFleetId')),
+                        x.get('buildCityId') if x.get('constructionTicksRemaining') is not None else None) for x in s[table]]
+                    pk,rk=keys(pstate),keys(rstate)
+                    from collections import Counter
+                    same_set=Counter(pk)==Counter(rk)
+                    row['record_order_comparison'][table]=dict(equal=pk==rk,same_entity_keys=same_set,
+                        pure_permutation=same_set and pk!=rk,predicted=pk,original=rk)
                 matched=ART/'exports-v1'/(name+'-matched-predicted.json')
                 if matched.exists():
                     a,_=native(matched,True)

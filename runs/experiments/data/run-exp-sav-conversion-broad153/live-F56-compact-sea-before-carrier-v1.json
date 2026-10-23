@@ -1,0 +1,84 @@
+{
+  "name": "F56-compact-sea-before-carrier",
+  "case": {
+    "name": "F56-compact-sea-before-carrier",
+    "category": "feature",
+    "provenance": "synthetic reverse-array cargo compaction: empty fleet moved to SEA101,47 adjacent Antium102,46; original city-tile overlap retained as refused F55",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "scuttle",
+      "fleet": 0
+    },
+    "remakeCommand": "scuttle-fleet fleet-0",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 1,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v1",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F56-compact-sea-before-carrier-v1/Q15377I.SAV",
+      "sha256": "2bd61fbb42395de958f6265b247af92dd12b515dbb29a191d263d4dc724b27dd",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F56-compact-sea-before-carrier-v1/Q15377O.SAV",
+      "sha256": "250a20d1558dbe790ae940a10b63a7cc3e48a7d1178b5b7271244a316c46e58d",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F56-compact-sea-before-carrier-v1/Q15377R.SAV",
+      "sha256": "250a20d1558dbe790ae940a10b63a7cc3e48a7d1178b5b7271244a316c46e58d",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "1d7ebf2ba85d9f16980a00112bfb3ef8533bb87c467f0aaee4281d7a15e8d1cb",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [
+    "(7) \u2018Ate you sure you want to scuttle this fleet ? Yes No Cancel"
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

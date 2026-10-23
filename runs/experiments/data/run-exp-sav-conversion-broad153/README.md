@@ -66,3 +66,5 @@ measurement commits/pushes after each batch and at least every30min. Original
 Windows acceptance, the owner's twelve saves, exhaustive state combinations,
 full-length campaigns and all graphics/UI features remain separate from this
 Wine-based conversion experiment. The paused battle queue is not resumed.
+
+Final authoritative files: `comparison-final.json`, `coverage-final.csv`, `validation-final.json`. Audit:77roundtrips from78scenario inputs,12safe refusals total,53distinct exported input hashes,2754hash checks. Complete900-file archive: batch-final.tar.gz, SHA35db99998eb18955469200eb3af755d0abc6cf980cc5f9dd38a13f43905688c1; Drive file16xF3L8qDSFcotMLhA5yOon2Rqm56gJXc. The valid complete third archive is named batch-03-complete.tar.gz on Drive (local manifest names batch-03.tar.gz); the earlier partial upload is explicitly INCOMPLETE-do-not-use. No owner #1355 files are in these archives.

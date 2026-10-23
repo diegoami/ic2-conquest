@@ -1,0 +1,93 @@
+{
+  "name": "F32-pending-offer",
+  "case": {
+    "name": "F32-pending-offer",
+    "category": "feature",
+    "provenance": "synthetic native-model setup",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "relation",
+      "nation": 5,
+      "relation": "trade",
+      "load_notice": "Numidia wants to trade with Rome"
+    },
+    "remakeCommand": "accept-offer",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": {
+        "ProposingNationId": "numidia",
+        "ProposedRelationCode": 1
+      }
+    }
+  },
+  "attempt": "v2",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F32-pending-offer-v2/Q52V2I.SAV",
+      "sha256": "74a4133e243bad5034df70c57804528781868055253238aa25be726c24345bdf",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F32-pending-offer-v2/Q52V2O.SAV",
+      "sha256": "ea690ed59d56b8d9804b7bd954043c0817f9ca2404bbb62cab114ef7ac00e143",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F32-pending-offer-v2/Q52V2R.SAV",
+      "sha256": "ea690ed59d56b8d9804b7bd954043c0817f9ca2404bbb62cab114ef7ac00e143",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "bc30bc7d006d5273551fa628b564b975e9f98dfb653a51a9e0936cd98211a809",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [
+    "@ Numidia wants to trade with Rome."
+  ],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "offer_notice_seen": true,
+  "action_output": [
+    1,
+    []
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

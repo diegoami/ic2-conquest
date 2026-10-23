@@ -19,7 +19,7 @@ with dest.open('x',newline='') as f:
   attempts=row.get('original_attempts',[])
   if len(attempts)>1:notes.append(str(len(attempts))+' attempts; earlier failures retained')
   w.writerow(dict(case=case['name'],category=case['category'],nation=case['nation'],seed=case['seed'],provenance=case['provenance'],
-   original_action=row.get('executed_original_action',case['originalAction'])['kind'],export_policy='pass' if row['export_success'] and row['policy_pass'] else 'FAIL',
+   original_action=row.get('executed_original_action',case['originalAction'])['kind'],export_policy='pass' if row['export_success'] and row['policy_pass'] else 'REFUSED' if case['name']=='F55-compact-before-carrier' else 'FAIL',
    original_action_verified=original.get('action_verified','pending'),original_fresh_reopen=original.get('reopen_byte_equal','pending'),
    original_save=row.get('original_files',{}).get('reopen',{}).get('file',''),original_turn=row.get('original_saved_turn',''),
    return_import=row.get('return_success',False),return_order=bool(payload and payload.get('changed')),return_export_policy=row.get('return_policy_pass',False),
