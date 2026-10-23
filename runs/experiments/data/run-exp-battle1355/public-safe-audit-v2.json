@@ -1,0 +1,123 @@
+{
+  "owner_originals_preserved": true,
+  "fresh_export_byte_equal": true,
+  "production_pin": "ae614899d63ac721ee46d1e3213191fe1f43a676",
+  "original_runtime": "unmodified original under Wine10.0; suppliedEXE/DAT match",
+  "army_start_totals": [
+    73564,
+    78857
+  ],
+  "original_survivors": 48969,
+  "native_survivors": 20946,
+  "matched_native_survivors": 22090,
+  "native_repeat_with_journal_equal": true,
+  "original_terminal_counter": 21,
+  "matched_native_terminal_counter": 29,
+  "earliest_completed_boundary": {
+    "counter": 4,
+    "side_to_move": 1,
+    "casualties_yet": false,
+    "differing_positions": [
+      {
+        "slot": 3,
+        "original": [
+          [
+            11,
+            2
+          ]
+        ],
+        "matched_native": [
+          [
+            12,
+            2
+          ]
+        ]
+      },
+      {
+        "slot": 9,
+        "original": [
+          [
+            9,
+            2
+          ]
+        ],
+        "matched_native": [
+          [
+            7,
+            2
+          ]
+        ]
+      },
+      {
+        "slot": 11,
+        "original": [
+          [
+            9,
+            0
+          ]
+        ],
+        "matched_native": [
+          [
+            11,
+            1
+          ]
+        ]
+      },
+      {
+        "slot": 13,
+        "original": [
+          [
+            8,
+            1
+          ]
+        ],
+        "matched_native": [
+          [
+            12,
+            3
+          ]
+        ]
+      },
+      {
+        "slot": 15,
+        "original": [
+          [
+            13,
+            3
+          ]
+        ],
+        "matched_native": [
+          [
+            11,
+            3
+          ]
+        ]
+      },
+      {
+        "slot": 16,
+        "original": [
+          [
+            8,
+            0
+          ]
+        ],
+        "matched_native": [
+          [
+            6,
+            1
+          ]
+        ]
+      }
+    ]
+  },
+  "original_memory_snapshots": 492,
+  "native_actual_frames": 1194,
+  "limits": [
+    "Original polling50ms, not instruction-atomic; exact first original instruction/draw not proved",
+    "Control assumes clear general claims at placement and computer flags inferred from human/AI ownership",
+    "Original battle completed but recorder failed AFTER result when flag cleared; no postbattleSAV/reopen claim",
+    "One full unmodified original result; no outcome distribution/seed sweep or productionfix",
+    "Initial tactical morale/defender formation differ in natural flows; controlled replay matches those measured inputs",
+    "No owner inputs/hashes/fulltraces public; private local aliases only"
+  ]
+}
