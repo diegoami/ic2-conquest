@@ -1,3 +1,46 @@
+# Handover: 2026-10-23 — cloud session → desktop (SAV atlas, export gate 2, manual, runs 0 and 1)
+
+Cloud session `session_01PShu3abz1TNQHX7YopiBbq` (2026-10-21 → 10-23). Everything is merged on `main`; no open PR;
+the only open issue is #99. The entry for 2026-10-01 below is history.
+
+## State on main
+
+| Area | Where | Status |
+|---|---|---|
+| SAV semantic atlas (#107, closed) | `findings/2026-10-21-original-sav-semantic-atlas.md`, ledger `runs/experiments/data/run-exp-sav-atlas107/field-map-v13.csv` (v1–v12 kept) | 79 CONFIRMED / 31 CONTEXTUAL / 3 INERT / 0 UNKNOWN; tools `scripts/sav_atlas_*.py` (+ tests) |
+| SAV export, gate 2 (#99) | `findings/2026-10-22-sav-export-gate2-policy.md`, checker `scripts/sav_export_policy_check.py` | done; **gates 1, 3, 4 wait on the owner** (twelve-input manifest; T185 review in the remake repo; native Windows round trips) |
+| Refusal texts (#58, closed) | `findings/2026-10-05-refusal-texts-and-conditions.md` (predicate audit section), `runs/experiments/refusal_texts/` | predicate audit 0 mismatches; claims audit v17 0 mismatches (with release artifacts) |
+| Rules digest | `docs/rules-digest.md` | stale claims corrected in place 2026-10-22 (melee matrix DAT `0x1F7A6`, no human auto-resupply, 0-move selection, …); newer findings win |
+| New findings 2026-10-22 | fleet under construction not billed; disband/scuttle return money+supplies; buying supplies from a foreign city; Winter storm spike; AI declares war on a human (+ alliance-cascade addendum) | all relayed to IC2 Research and intaken (research PRs #55, #57, #59, #61) |
+| Cosmetic gaps (PR #66, merged) | `findings/2026-10-06-cosmetic-gaps.md` | audit v14: 350 checks, 0 mismatches |
+| Run 0 (#1, closed) | `runs/0/` (`debrief.md`) | rome-v1, 24 turns; 31 cities, 17,877 troops at AUTO0744 |
+| Run 1 (#144, closed) | `runs/1/` (`debrief.md`) | rome-v2 (owner's 2026-10-22 direction: recruit without limit, debt to the line + 1,000, tax 25 %, k = 3, lessons L1–L8); 28 cities, 44,032 field + 70,500 queued at AUTO0744 |
+| Strategies | `strategies/rome-v1.md`, `strategies/rome-v2.md` | rome-v3 not written: the run-1 debrief lists the bot's proposals (k = 4, HI + HC field armies, debt paced over two bills, strike starving enemies in Winter) for the owner to decide |
+
+## Off-repo artifacts
+
+- **Google Drive** (rclone remote `gdrive:`; the shared client_id is being retired during 2026, the owner should create their own):
+  - `IC2/manual/`: the user manual (#133): `manual.pdf` (164 pages, 104 screenshots), `manual.html`, `chapters/`, `all-screenshots/`, and **`source/`** (chapters, `STYLE.md`, `build.sh`, `place_shots.py`, `shots-map.json`, `shots-extra.json`) — rebuild needs pandoc + chromium and the screenshot folders from `IC2/artifacts/run-exp-manual133` and `run-exp-manual-gaps` (fix the two paths at the top of `place_shots.py`).
+  - `IC2/artifacts/<run>/`: binaries of every run of this session.
+- **GitHub releases** (published by the owner, digests verified against the tracked `SAVES.sha256`): `run-0`, `run-1`, `run-exp-fleet-bill`, `run-exp-sav-aboard107`, `run-exp-sav-rebellion107`, `run-exp-manual-gaps` (assets of runs 0/1 are named `<season>_<file>`). `run-exp-manual133` exists on Drive only.
+
+## Open, by owner
+
+1. #99 gates 1, 3, 4 (see above). When the remake produces candidate SAVs: run `scripts/sav_export_policy_check.py` on each before the Windows test.
+2. Whether to write rome-v3 and run it (proposals in `runs/1/debrief.md`).
+3. Optional: six manual pictures still missing (map-symbol montage, rough sea in Winter, an army just landed, the city mercenary list, a capture with defections in the news, the three fleet icons side by side); the paused battle queue (B16, B7+B12, B6, B9, B10, B13-14, B15) stays paused.
+
+## Gotchas learned this session
+
+- Grep `findings/` for a mechanic before designing a run (increment 11 duplicated g4).
+- The seed build repeats the Cellular Automata pattern; the original exe does not.
+- Run drivers: recruit-list rows by caption (an "All cities" row appears once two cities hold queued units); keep 2 spare moves (river steps); check every attack's effect on the save; army ids renumber after joins; relation refusals read as empty text (use the relation value); `play_battle(on_dialog="no")` to catch "Battle ended".
+- Cloud checkouts are shallow: `git fetch --unshallow` before merging an old branch.
+- The driver writes `environment.jsonl` into a folder named after the runner's directory; keep it (rule 6).
+- Relay channel to IC2 Research: `send_message` to `session_01FEmvQUyuHYp4iXbTmBeY85` (a cloud session; from the desktop it may not be reachable — then write the paste-ready message for the owner).
+
+---
+
 # Handover: 2026-10-01 — WSL bootstrap, run-time UI derivation, order types, the Gallic-army experiment
 
 ## TL;DR
