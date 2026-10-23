@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/diego/projects/ic2-conquest/scripts/sav_export_policy_check.py",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/exports-v2/native-progress-12.SAV",
+    "--out",
+    "/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-sav-conversion-roundtrip/policy-result-native-progress-12-v3.json"
+  ],
+  "cwd": "/home/diego/projects/imperial_conquest_2",
+  "returncode": 0,
+  "stdout": "{\"accepted\": true, \"invariant_failures\": [], \"failed_rules\": [], \"reported_only\": []}\n",
+  "stderr": ""
+}

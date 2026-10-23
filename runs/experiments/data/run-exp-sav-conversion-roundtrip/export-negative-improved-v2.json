@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/native-v1/negative-improved.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/exports-v2/negative-improved.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "cwd": "/home/diego/projects/imperial_conquest_2",
+  "returncode": 2,
+  "stdout": "",
+  "stderr": "Refused: UNSUPPORTED_RULESET rulesetId: 'improved' is not classical-faithful\n"
+}

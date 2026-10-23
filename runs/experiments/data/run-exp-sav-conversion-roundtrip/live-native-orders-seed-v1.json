@@ -1,0 +1,131 @@
+{
+  "scenario": "native-orders",
+  "case": "G",
+  "attempt": "seed-v1",
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "steps": [
+    {
+      "label": "immediate-native-save",
+      "file": "live-native-orders-seed-v1/P151GI.SAV",
+      "sha256": "568a18cf6edc3e392fd111b861f9097f6ca9e86cc6247dd3bd3832dd430416f6",
+      "bytes": 131766,
+      "turn": 720,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 3,
+      "tax": 25
+    },
+    {
+      "label": "after-tax-order",
+      "file": "live-native-orders-seed-v1/P151GO.SAV",
+      "sha256": "aec0a07c6811986ac2384b9b0992258ab290c1edd2162e1bd2c99dfba3ec1e2b",
+      "bytes": 131766,
+      "turn": 720,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 3,
+      "tax": 26
+    },
+    {
+      "label": "autosave-after-one-turn",
+      "file": "live-native-orders-seed-v1/AUTO0721.SAV",
+      "sha256": "beaf8057c6d5bd922a2511e24752e88c1f7b328c650b45ce43e311a59adfd264",
+      "bytes": 131975,
+      "turn": 721,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 4,
+      "tax": 26
+    },
+    {
+      "label": "after-one-turn",
+      "file": "live-native-orders-seed-v1/P151GT.SAV",
+      "sha256": "beaf8057c6d5bd922a2511e24752e88c1f7b328c650b45ce43e311a59adfd264",
+      "bytes": 131975,
+      "turn": 721,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 4,
+      "tax": 26
+    },
+    {
+      "label": "fresh-reopen-resave",
+      "file": "live-native-orders-seed-v1/P151GR.SAV",
+      "sha256": "beaf8057c6d5bd922a2511e24752e88c1f7b328c650b45ce43e311a59adfd264",
+      "bytes": 131975,
+      "turn": 721,
+      "current_nation": 0,
+      "army_count": 14,
+      "fleet_count": 4,
+      "tax": 26
+    }
+  ],
+  "complete": true,
+  "runtime": "Wine/Xvfb, not native Windows",
+  "input": {
+    "file": "exports-v2/native-orders.SAV",
+    "sha256": "9570a8266c8b71b47be6ce0f367618c6e589da306f655de754ea0e7a09e8b5e4"
+  },
+  "load_messages": [],
+  "seed_line": "S 0000012345",
+  "loaded": true,
+  "calendar_loaded": {
+    "season": 0,
+    "week": 1,
+    "year_bc": 270
+  },
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2 fast rollingsave seed.exe",
+      "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "exe_sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f",
+  "screenshots": [
+    {
+      "file": "live-native-orders-seed-v1/loaded.png",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "live-native-orders-seed-v1/after-order.png",
+      "returncode": 0,
+      "stderr": ""
+    },
+    {
+      "file": "live-native-orders-seed-v1/reopened.png",
+      "returncode": 0,
+      "stderr": ""
+    }
+  ],
+  "order": {
+    "type": "taxation",
+    "before": 25,
+    "requested": 26,
+    "messages": [],
+    "verified": true
+  },
+  "end_turn": {
+    "autosave": "AUTO0721.SAV",
+    "messages": [],
+    "calendar": {
+      "season": 0,
+      "week": 3,
+      "year_bc": 270
+    }
+  },
+  "reopen_messages": [],
+  "input_unchanged": true
+}

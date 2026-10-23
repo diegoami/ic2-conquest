@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/build/bin/IC2.Cli/debug/IC2.Cli.dll",
+    "--export-sav",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/live-native-progress-24-v1/continued-v2.json",
+    "--output",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/live-native-progress-24-v1/RETURNE.SAV",
+    "--template",
+    "/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV"
+  ],
+  "cwd": "/home/diego/projects/imperial_conquest_2",
+  "returncode": 0,
+  "stdout": "Exported '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/live-native-progress-24-v1/continued-v2.json' (SHA-256 5A4F04E743C2155628AD5569EF6B2508169A17E79013EADA4F29DCE2D125B01D) to '/home/diego/projects/ic2-conquest/artifacts/run-exp-sav-conversion-roundtrip/live-native-progress-24-v1/RETURNE.SAV'.\n  output SHA-256 23BBEBE8E4ED7F2CA4B1CF92DF73B92081EEE3B914D43D26D43108E34FC97CD1, 132805 bytes, profile native-state-canonical-v1\n  template '/home/diego/projects/ic2-conquest/saves/run0-start-AUTO0720-seed12345.SAV' SHA-256 050BC354F1CBBE374B6A627F06054F2043B9F91A268F6FBFBC18ED1E7E65574C (interface settings only)\n  15 armies, 6 fleets, 40 news lines, returned-native-continuation, 269 BC\n  not in the original format: schema and envelope versions, save id and label, provenance\n  not in the original format: world, ruleset and scenario ids (an original save is always classical-mediterranean under classical-faithful)\n  not in the original format: Calendar.TurnIndex (the original keeps no elapsed-turn counter)\n  not in the original format: RandomSeed and draw positions: the original does not restore a random state on load, so future dice differ\n  not in the original format: AI personalities, seat colours and the leader-name pools\n  not in the original format: PopulationAtStart, TreasuryAtStart and CityCountAtStart (score baselines); the original's own start fields get the 270 BC values\n  not in the original format: the first-end news bookkeeping (FirstEndNewsOwed)\n  not in the original format: runtime settings: Computer general, battle speed, display pacing\n  not in the original format: army covered-tile codes, recomputed from the map rather than copied\n  not in the original format: recruitment slot positions (the native state keeps the entries in order; they are written packed from slot 0)\n  Opening the file in the original game is a separate check; this export does not claim it.\n",
+  "stderr": ""
+}
