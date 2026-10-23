@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "-m",
+    "tests.test_battle_hook_caves"
+  ],
+  "returncode": 0,
+  "stdout": "test_random_cave       300 machine states: all equal\ntest_marker_caves      900 machine states: all equal\ntest_flag_caves        400 machine states: all equal\ntest_reseed_caves      400 machine states: all equal\ntest_reentry_when_busy    60 machine states: all equal\ntest_seed_cave       ok\ntest_overflow_never_wraps ok\ntest_real_nested_entry_inside_the_recorder ok\ntest_a_broken_cave_is_detected ok\n",
+  "stderr": ""
+}

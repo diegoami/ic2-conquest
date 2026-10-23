@@ -2,6 +2,9 @@
 
 **Status:** [confirmed, partial], 2026-10-23. Wine observations and implementer
 audit; no independent model review or native Windows acceptance.
+Promoted 2026-10-23 into imperial-conquest-2-research at
+[`32f1e60`](https://github.com/diegoami/imperial-conquest-2-research/blob/32f1e605d5c60497f1e0815851c5e755b8157f8d/docs/reports/2026-10-23-broad-save-conversion-matrix.md)
+(research PR #66). Source measurements and limitations are retained.
 **Task:** [conquest #153](https://github.com/diegoami/ic2-conquest/issues/153),
 owner-authorized broad follow-up to the limited #151 experiment.
 
