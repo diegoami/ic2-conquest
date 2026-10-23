@@ -1,0 +1,174 @@
+{
+  "recruit_controls": [
+    {
+      "cls": "TListBox",
+      "text": "",
+      "x": 313,
+      "y": 70,
+      "w": 160,
+      "h": 70,
+      "item_h": 14,
+      "top": 0,
+      "cx": 315,
+      "cy": 72
+    },
+    {
+      "cls": "TButton",
+      "text": "Disband",
+      "x": 463,
+      "y": 369,
+      "w": 70,
+      "h": 20
+    },
+    {
+      "cls": "TButton",
+      "text": "Mobilize",
+      "x": 343,
+      "y": 369,
+      "w": 70,
+      "h": 20
+    },
+    {
+      "cls": "TListBox",
+      "text": "",
+      "x": 313,
+      "y": 179,
+      "w": 250,
+      "h": 180,
+      "item_h": 14,
+      "top": 0,
+      "cx": 315,
+      "cy": 181
+    },
+    {
+      "cls": "TUpDown",
+      "text": "",
+      "x": 233,
+      "y": 97,
+      "w": 30,
+      "h": 40
+    },
+    {
+      "cls": "TButton",
+      "text": "Recruit unit",
+      "x": 53,
+      "y": 286,
+      "w": 90,
+      "h": 25
+    },
+    {
+      "cls": "TUpDown",
+      "text": "",
+      "x": 183,
+      "y": 97,
+      "w": 30,
+      "h": 40
+    },
+    {
+      "cls": "TButton",
+      "text": "Light cavalry",
+      "x": 53,
+      "y": 194,
+      "w": 90,
+      "h": 25
+    },
+    {
+      "cls": "TButton",
+      "text": "Archers",
+      "x": 53,
+      "y": 159,
+      "w": 90,
+      "h": 25
+    },
+    {
+      "cls": "TButton",
+      "text": "Heavy infantry",
+      "x": 53,
+      "y": 124,
+      "w": 90,
+      "h": 25
+    },
+    {
+      "cls": "TButton",
+      "text": "Light infantry",
+      "x": 53,
+      "y": 89,
+      "w": 90,
+      "h": 25
+    },
+    {
+      "cls": "TButton",
+      "text": "Heavy cavalry",
+      "x": 53,
+      "y": 229,
+      "w": 90,
+      "h": 25
+    },
+    {
+      "cls": "TButton",
+      "text": "OK",
+      "x": 133,
+      "y": 359,
+      "w": 70,
+      "h": 25
+    }
+  ],
+  "captions": "0\tLuceria\n1\tROME\n",
+  "helper_diagnostic": "selected list top=70 count=2 style=54010141\n",
+  "supply_controls": [
+    {
+      "cls": "TUpDown",
+      "text": "",
+      "x": 203,
+      "y": 88,
+      "w": 25,
+      "h": 40
+    },
+    {
+      "cls": "TUpDown",
+      "text": "",
+      "x": 168,
+      "y": 88,
+      "w": 25,
+      "h": 40
+    },
+    {
+      "cls": "TListBox",
+      "text": "",
+      "x": 353,
+      "y": 70,
+      "w": 120,
+      "h": 66,
+      "item_h": 14,
+      "top": 0,
+      "cx": 355,
+      "cy": 72
+    },
+    {
+      "cls": "TUpDown",
+      "text": "",
+      "x": 268,
+      "y": 281,
+      "w": 25,
+      "h": 40
+    },
+    {
+      "cls": "TUpDown",
+      "text": "",
+      "x": 233,
+      "y": 281,
+      "w": 25,
+      "h": 40
+    },
+    {
+      "cls": "TButton",
+      "text": "OK",
+      "x": 223,
+      "y": 349,
+      "w": 70,
+      "h": 25
+    }
+  ],
+  "supply_control_close_passed": true,
+  "helper_sha256": "72b6646775833de9d34b5abbd118cfdfbb87bc664579ebbc44925b0a9afadb46"
+}

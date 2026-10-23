@@ -45,7 +45,7 @@ void Capture(string dir,string name,string category,string provenance,GameState 
 {
     Directory.CreateDirectory(dir);
     var path=Path.Combine(dir,name+".json");
-    if(args[0]=="features-extra" && File.Exists(path))
+    if(args[0].StartsWith("features-") && File.Exists(path))
     {
         Emit(new{kind="preserve-existing-source",name});return;
     }
@@ -82,9 +82,23 @@ else if(args[0]=="progress")
             new{kind="end-turn"},"end",seed);
     }
 }
-else if(args[0] is "features" or "features-extra")
+else if(args[0] is "features" or "features-extra" or "features-more" or "features-final")
 {
     FeatureCases.Generate(world,rules,scenario,(name,origin,s,plan,command)=>Capture(args[2],name,"feature",origin,s,plan,command),Emit);
+}
+else if(args[0]=="open-battle")
+{
+    var initial=new GameSession(world,rules,scenario,seedOverride:7,humanSeatNationId:"rome").State;
+    int enemy=Enumerable.Range(0,initial.Armies.Count).First(i=>initial.Armies[i].Nation=="gaul");
+    var a=initial.Armies[0];
+    var staged=initial with{Armies=initial.Armies.Replace(enemy,initial.Armies[enemy] with{X=a.X+1,Y=a.Y}),
+        Relations=initial.Relations.WithRelation("rome","gaul",3)};
+    var session=new GameSession(world,rules,scenario,Wrap(staged,"battle-input")){HumanBattles=HumanBattleMode.Tactical};
+    var output=session.Submit($"attack-army {a.Id} {initial.Armies[enemy].Id}");
+    if(session.OpenTacticalBattle is null)throw new Exception("Battle did not open: "+string.Join(";",output.Lines));
+    if(File.Exists(args[2]))throw new IOException("Refusing existing battle save");
+    var saved=session.Submit("save "+args[2]);
+    Emit(new{kind="actual-open-battle-save",output.Lines,saved=saved.Lines,battleOpen=session.OpenTacticalBattle!=null});
 }
 else if(args[0]=="import")
 {

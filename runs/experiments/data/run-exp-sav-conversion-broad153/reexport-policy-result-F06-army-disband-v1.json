@@ -1,0 +1,160 @@
+{
+ "candidate": "REEXPORT.SAV",
+ "sha256": "23142f4c1d54aaeff0cf089ddec3f80deeb94123f0ec33420684906360ab0bd4",
+ "source_sha256": null,
+ "policy": "findings/2026-10-22-sav-export-gate2-policy.md",
+ "accepted": true,
+ "invariant_failures": [],
+ "invariants": {
+  "army_cell_terrain_or_city": {
+   "checked": 13,
+   "violations": 0,
+   "first": []
+  },
+  "army_marker": {
+   "checked": 13,
+   "violations": 0,
+   "first": []
+  },
+  "army_marker_band_current": {
+   "checked": 13,
+   "violations": 0,
+   "first": []
+  },
+  "slot_troops_nonnegative": {
+   "checked": 260,
+   "violations": 0,
+   "first": []
+  },
+  "slots_packed": {
+   "checked": 260,
+   "violations": 0,
+   "first": []
+  },
+  "fleet_countdown": {
+   "checked": 2,
+   "violations": 0,
+   "first": []
+  },
+  "fleet_condition": {
+   "checked": 2,
+   "violations": 0,
+   "first": []
+  },
+  "fleet_marker": {
+   "checked": 2,
+   "violations": 0,
+   "first": []
+  },
+  "city_marker": {
+   "checked": 334,
+   "violations": 0,
+   "first": []
+  },
+  "fort_encoding": {
+   "checked": 334,
+   "violations": 0,
+   "first": []
+  },
+  "city_list_equals_owned": {
+   "checked": 16,
+   "violations": 0,
+   "first": []
+  },
+  "city_list_sorted": {
+   "checked": 16,
+   "violations": 0,
+   "first": []
+  },
+  "city_count": {
+   "checked": 16,
+   "violations": 0,
+   "first": []
+  },
+  "capital_owned": {
+   "checked": 16,
+   "violations": 0,
+   "first": []
+  },
+  "recruit_city_index": {
+   "checked": 79,
+   "violations": 0,
+   "first": []
+  },
+  "merc_live_on_city": {
+   "checked": 45,
+   "violations": 0,
+   "first": []
+  },
+  "news_index": {
+   "checked": 1,
+   "violations": 0,
+   "first": []
+  }
+ },
+ "rules": [
+  {
+   "rule": "no_battle_block",
+   "ok": true,
+   "required": true,
+   "detail": "an open tactical battle is outside the supported state"
+  },
+  {
+   "rule": "no_army_tombstones",
+   "ok": true,
+   "required": true,
+   "detail": 0
+  },
+  {
+   "rule": "no_fleet_tombstones",
+   "ok": true,
+   "required": true,
+   "detail": 0
+  },
+  {
+   "rule": "city_allegiance_in_range",
+   "ok": true,
+   "required": true,
+   "detail": {
+    "count": 0,
+    "first": []
+   }
+  },
+  {
+   "rule": "inert_bytes_carried_or_zero",
+   "ok": true,
+   "required": true,
+   "detail": []
+  },
+  {
+   "rule": "building_fleet_moves_0_route_x_minus1",
+   "ok": true,
+   "required": true,
+   "detail": []
+  },
+  {
+   "rule": "carried_army_on_fleet_tile",
+   "ok": true,
+   "required": true,
+   "detail": []
+  },
+  {
+   "rule": "text_tails_canonical",
+   "ok": true,
+   "required": true,
+   "detail": {
+    "count": 0,
+    "first": []
+   }
+  },
+  {
+   "rule": "empty_slots_zero",
+   "ok": true,
+   "required": true,
+   "detail": {
+    "count": 0,
+    "first": []
+   }
+  }
+ ]
+}

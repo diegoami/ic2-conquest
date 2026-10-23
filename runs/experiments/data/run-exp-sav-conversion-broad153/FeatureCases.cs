@@ -122,6 +122,35 @@ static class FeatureCases
         emit(new{kind="native-field-battle",battleOutput.Lines,battleOutput.Battles});
         if(fought.HasPendingPeaceOffers)emit(new{kind="decline-native-treaty",output=fought.Submit("peace-no").Lines});
         C("field-battle-aftermath",fought.State,new{kind="end-turn"},"end","public native battle command from labelled synthetic adjacent armies; pending treaty declined");
+        var alliance=b with{Relations=b.Relations.WithRelation("rome","numidia",1)};
+        C("alliance",alliance,new{kind="relation",nation=Index("numidia"),relation="ally"},"propose-alliance numidia");
+        var peace=b with{Relations=b.Relations.WithRelation("rome","numidia",3)};
+        C("peace",peace,new{kind="relation",nation=Index("numidia"),relation="peace"},"make-peace numidia");
+        var weather=port with{Calendar=port.Calendar with{SeasonIndex=3,Week=11},RoughSeaCells=ValueList.Of(new RoughSeaCell(fx,fy))};
+        C("winter-rough-fleet",weather,new{kind="end-turn"},"end");
+        C("regular-unit-disband",b,new{kind="disband-regular",army=0,unit=0},"disband-unit army-0 0","gameplay-derived initial state");
+        var foreign=low with{Cities=ValueList.From(low.Cities.Select(c=>c.Id==arretium.Id?c with{Owner="carthage"}:c)),
+            Relations=low.Relations.WithRelation("rome","carthage",0),Armies=low.Armies.Replace(0,low.Armies[0] with{Money=1000})};
+        C("foreign-city-supply",foreign,new{kind="supply",army=0,tons=10,money_100s=0},$"buy army-0 {arretium.Id} 10");
+        C("fleet-money",port,new{kind="supply-fleet",fleet=0,tons=0,money=100},"transfer-money fleet-0 100");
+        var hugeUnits=ValueList.From(Enumerable.Range(0,10).Select(i=>a.Units[i%a.Units.Count] with{Troops=10000,Name="Cap"+i}));
+        C("army100000",Army(b,0,a with{Units=hugeUnits}),new{kind="split-army",army=0,units=new[]{0}},"split-army army-0 cap-split 0");
+        var twenty=adjacent with{Armies=adjacent.Armies.Replace(0,a with{Units=ValueList.From(Enumerable.Range(0,11).Select(i=>a.Units[0] with{Troops=1000,Name="A"+i}))})
+            .Replace(second,adjacent.Armies[second] with{Units=ValueList.From(Enumerable.Range(0,10).Select(i=>a.Units[0] with{Troops=1000,Name="B"+i}))})};
+        C("army-unit-cap21",twenty,new{kind="join-armies",army=0,expect_unchanged=true},$"join-armies army-0 army-{second}");
+        var hundred=pair with{Fleets=pair.Fleets.Replace(partner,pair.Fleets[partner] with{Ships=40})};
+        C("fleet100",hundred,new{kind="join-fleets",fleet=0},$"join-fleets fleet-0 fleet-{partner}");
+        C("unit-split-hi5000",b,new{kind="split-unit",army=0,unit=1,hundreds=0},"split-unit army-0 1 2500","gameplay-derived initial state; HI5000 exceeds original2400 minimum; separate from LI4800 refusal");
+        var calm=b.Relations;
+        foreach(var n in w.Nations)
+        {
+            if(n.Id!="rome")calm=calm.WithRelation("rome",n.Id,0);
+            if(n.Id!="numidia")calm=calm.WithRelation("numidia",n.Id,0);
+        }
+        var calmAlliance=b with{Relations=calm.WithRelation("rome","numidia",1)};
+        C("alliance-peacetime",calmAlliance,new{kind="relation",nation=Index("numidia"),relation="ally"},"propose-alliance numidia");
+        var breakTrade=b with{Relations=b.Relations.WithRelation("rome","numidia",1)};
+        C("peace-from-trade",breakTrade,new{kind="relation",nation=Index("numidia"),relation="peace"},"make-peace numidia");
         emit(new{kind="feature-generation-complete",count=num});
     }
 }

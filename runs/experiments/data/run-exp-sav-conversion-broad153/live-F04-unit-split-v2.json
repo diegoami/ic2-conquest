@@ -1,0 +1,87 @@
+{
+  "name": "F04-unit-split",
+  "case": {
+    "name": "F04-unit-split",
+    "category": "feature",
+    "provenance": "gameplay-derived initial state",
+    "nation": "rome",
+    "seed": 7,
+    "originalAction": {
+      "kind": "split-unit",
+      "army": 0,
+      "unit": 0,
+      "hundreds": 0,
+      "expect_unchanged": true
+    },
+    "remakeCommand": "split-unit army-0 0 2400",
+    "summary": {
+      "turn": 0,
+      "calendar": {
+        "Week": 1,
+        "SeasonIndex": 0,
+        "YearBc": 270,
+        "TurnIndex": 0
+      },
+      "active": "rome",
+      "human": [
+        "rome"
+      ],
+      "armies": 14,
+      "fleets": 2,
+      "building": 0,
+      "cargo": 0,
+      "recruits": 79,
+      "eliminated": [],
+      "pending": null
+    }
+  },
+  "attempt": "v2",
+  "complete": true,
+  "files": {
+    "immediate": {
+      "file": "live-F04-unit-split-v2/Q24V2I.SAV",
+      "sha256": "c862ee2c12587872c186cd7e1561bbee11a72a2e3d9b28446e337fecc32551e6",
+      "bytes": 131740
+    },
+    "order": {
+      "file": "live-F04-unit-split-v2/Q24V2O.SAV",
+      "sha256": "753faba2b1dd94df66b5e1324b162205c82c2eb6cf97ee76448c3b4e4c341df8",
+      "bytes": 131740
+    },
+    "reopen": {
+      "file": "live-F04-unit-split-v2/Q24V2R.SAV",
+      "sha256": "753faba2b1dd94df66b5e1324b162205c82c2eb6cf97ee76448c3b4e4c341df8",
+      "bytes": 131740
+    }
+  },
+  "runtime": "Wine/Xvfb",
+  "input_sha256": "955c6fa42165171644a31b4beaf8b59feb049585541a2829da8b81ca65a64903",
+  "exe": "Imperial Conquest 2.exe",
+  "load_messages": [],
+  "environment": {
+    "wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)",
+    "exe": {
+      "name": "Imperial Conquest 2.exe",
+      "sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31"
+    },
+    "xvfb_screen": "1280x1024",
+    "fonts": {
+      "Book Antiqua": "DejaVu Sans",
+      "MS Sans Serif": "DejaVu Sans",
+      "liberation_count": 0,
+      "tahoma_wine": true
+    },
+    "prefix_fonts": {
+      "sha256_12": "483b99b8e1cf",
+      "count": 63
+    }
+  },
+  "active_nation": 0,
+  "action_output": [
+    "@ This unit is too small to split"
+  ],
+  "action_verified": true,
+  "reopen_messages": [],
+  "byte_stable_reopen": true,
+  "input_unchanged": true
+}

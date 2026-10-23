@@ -10,7 +10,7 @@ ART=ROOT/'artifacts/run-exp-sav-conversion-broad153'
 REMAKE=Path('/home/diego/projects/imperial_conquest_2')
 DOTNET='/home/diego/.dotnet/dotnet'
 CLI=ART/'build/bin/IC2.Cli/debug/IC2.Cli.dll'
-PROBE=ART/'probe-build-v3/bin/BroadProbe/debug/BroadProbe.dll'
+PROBE=ART/'probe-build-v6/bin/BroadProbe/debug/BroadProbe.dll'
 TEMPLATE=ROOT/'saves/run0-start-AUTO0720-seed12345.SAV'
 
 def run(name,argv):
@@ -41,7 +41,7 @@ def convert(case):
 
 if __name__=='__main__':
     mode=sys.argv[1]
-    if mode in ('starts','progress','features','features-extra'):
+    if mode in ('starts','progress','features','features-extra','features-more','features-final'):
         ART.mkdir(exist_ok=True,parents=True)
         for n in ('IC2.sln','data'):
             if not (ART/n).exists():(ART/n).symlink_to(REMAKE/n,target_is_directory=(REMAKE/n).is_dir())
@@ -50,16 +50,29 @@ if __name__=='__main__':
     elif mode=='convert':
         for case in entries():convert(case)
     elif mode=='return':
+        if not PROBE.exists():raise SystemExit('Build the selected adapter before running return imports')
+        completed={}
         for p in sorted(HERE.glob('live-*-v*.json')):
             r=json.loads(p.read_text());name=r['name']
-            if not r.get('complete') or (HERE/('return-'+name+'-v1.json')).exists():continue
+            if r.get('complete'):completed[name]=r
+        for name,r in completed.items():
+            version='v1'
+            prior=HERE/('return-'+name+'-v1.json')
+            if prior.exists():
+                old=json.loads(prior.read_text())
+                if old['returncode']==0:continue
+                if 'specified command or file was not found' not in old['stderr']:
+                    print('Review retained return failure before retry:',name,flush=True);continue
+                version='v2'
+                if (HERE/('return-'+name+'-v2.json')).exists():continue
             final=ART/r['files']['reopen']['file'];folder=final.parent
-            result=run('return-'+name+'-v1',[DOTNET,PROBE,'import',REMAKE,final,folder/'returned.json'])
+            suffix='' if version=='v1' else '-'+version
+            result=run('return-'+name+'-'+version,[DOTNET,PROBE,'import',REMAKE,final,folder/('returned'+suffix+'.json')])
             if result.returncode:continue
-            result=run('continue-'+name+'-v1',[DOTNET,PROBE,'action',REMAKE,folder/'returned.json',folder/'continued.json','set-tax 19'])
+            result=run('continue-'+name+'-'+version,[DOTNET,PROBE,'action',REMAKE,folder/('returned'+suffix+'.json'),folder/('continued'+suffix+'.json'),'set-tax 19'])
             if result.returncode:continue
-            target=folder/'REEXPORT.SAV'
-            result=run('reexport-'+name+'-v1',[DOTNET,CLI,'--export-sav',folder/'continued.json','--output',target,'--template',TEMPLATE])
+            target=folder/('REEXPORT'+suffix+'.SAV')
+            result=run('reexport-'+name+'-'+version,[DOTNET,CLI,'--export-sav',folder/('continued'+suffix+'.json'),'--output',target,'--template',TEMPLATE])
             if result.returncode==0:
-                run('reexport-policy-'+name+'-v1',[sys.executable,ROOT/'scripts/sav_export_policy_check.py',target,'--out',HERE/('reexport-policy-result-'+name+'-v1.json')])
+                run('reexport-policy-'+name+'-'+version,[sys.executable,ROOT/'scripts/sav_export_policy_check.py',target,'--out',HERE/('reexport-policy-result-'+name+'-'+version+'.json')])
     else:raise SystemExit('starts/progress/convert/return')
