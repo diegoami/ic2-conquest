@@ -23,12 +23,15 @@ p.add_argument('--exe', type=Path, required=True)
 p.add_argument('--attacker', type=int, required=True)
 p.add_argument('--defender', type=int, required=True)
 p.add_argument('--observer', action='store_true')
+p.add_argument('--semantic', action='store_true')
 p.add_argument('--protocol', choices=['cg-only', 'cg-end'], default='cg-end')
 p.add_argument('--private', action='store_true')
 p.add_argument('--display', default=':757')
 p.add_argument('--screen', default='1280x1024')
 p.add_argument('--waypoint', help='One explicit approach cell X,Y before attacking')
 a = p.parse_args()
+if a.semantic:
+    a.observer = True
 assert a.label.replace('-', '').replace('_', '').isalnum()
 BASE = ROOT / 'artifacts/run-exp-battle-parity157'
 OUT = BASE / ('private' if a.private else 'public') / a.label
@@ -56,9 +59,13 @@ sys.path.insert(0, str(ROOT))
 from harness import driver as D, environment
 from state import hook_log as L, sav
 if a.observer:
-    sys.path.insert(0, str(ROOT / 'runs/experiments/tactical25-trace'))
-    import observer as O
+    if a.semantic:
+        import semantic_observer as O
+    else:
+        sys.path.insert(0, str(ROOT / 'runs/experiments/tactical25-trace'))
+        import observer as O
     O.configure()
+    L.CTL = O.H.CTL
     L.BUF = O.H.BUF
 
 DATA = OUT if a.private else ROOT / 'runs/experiments/data/run-exp-battle-parity157' / a.label
@@ -135,6 +142,7 @@ try:
     rec['entry_seed'] = struct.unpack('<I', g.mem(D.RAND_SEED, 4))[0]
     rec['entry_flags'] = list(g.mem(0x45e6a4, 4))
     rec['entry_claims'] = list(struct.unpack('<40h', g.mem(0x45e6b0, 80)))
+    rec['entry_selected'] = g.i16(0x45e6a8)
     write('entry.json', rec)
     g.calibrate_battle_toolbar()
     rec['toolbar'] = g.battle_x
@@ -161,7 +169,7 @@ try:
         with (OUT / 'statebuf.bin').open('xb') as f:
             f.write(raw)
         snapshots = [O.decode_snapshot(raw[r['seq'] * O.STATE_REC:(r['seq'] + 1) * O.STATE_REC], r)
-                     for r in records if r['counter'] <= 6 and r['seq'] < O.STATE_CAP]
+                     for r in records if r['counter'] <= getattr(O, 'MAX_COUNTER', 6) and r['seq'] < O.STATE_CAP]
         write('states.json', dict(overflow=overflow, records=snapshots))
         assert not overflow and ctl['magic_ok']
         assert not any(ctl[k] for k in ['overflow', 'reentered', 'busy', 'truncated_reader'])

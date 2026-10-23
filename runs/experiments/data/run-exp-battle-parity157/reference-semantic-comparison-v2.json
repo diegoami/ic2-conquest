@@ -1,0 +1,328 @@
+{
+  "scope": "Actual movement steps, pre-rout shot/melee calculations and removal order. Other event families not asserted.",
+  "variants": [
+    {
+      "label": "production",
+      "checks": [
+        {
+          "kind": "move",
+          "original_count": 63,
+          "native_count": 62,
+          "equal": false,
+          "first_difference": {
+            "index": 50,
+            "original": {
+              "actor": 23,
+              "from_x": 4,
+              "from_y": 4,
+              "to_x": 5,
+              "to_y": 4,
+              "moves_left": 2
+            },
+            "native": {
+              "actor": 23,
+              "from_x": 4,
+              "from_y": 4,
+              "to_x": 5,
+              "to_y": 4,
+              "moves_left": 1
+            }
+          }
+        },
+        {
+          "kind": "shot",
+          "original_count": 78,
+          "native_count": 77,
+          "equal": false,
+          "first_difference": {
+            "index": 16,
+            "original": {
+              "actor": 5,
+              "target": 24,
+              "bound": 153,
+              "loss": 193,
+              "morale_loss": 1,
+              "target_troops": 4364,
+              "target_morale": 51
+            },
+            "native": {
+              "actor": 8,
+              "target": 24,
+              "bound": 58,
+              "loss": 72,
+              "morale_loss": 0,
+              "target_troops": 4485,
+              "target_morale": 52
+            }
+          }
+        },
+        {
+          "kind": "melee",
+          "original_count": 34,
+          "native_count": 28,
+          "equal": false,
+          "first_difference": {
+            "index": 5,
+            "original": {
+              "actor": 3,
+              "target": 24,
+              "focus": 3,
+              "attacker_power": 7218,
+              "defender_power": 3136,
+              "attacker_bound": 214,
+              "defender_bound": 880,
+              "attacker_loss": 133,
+              "defender_loss": 738,
+              "attacker_troops": 5762,
+              "defender_troops": 3084,
+              "attacker_morale": 75,
+              "defender_morale": 46
+            },
+            "native": {
+              "actor": 3,
+              "target": 24,
+              "focus": 3,
+              "attacker_power": 7218,
+              "defender_power": 3237,
+              "attacker_bound": 221,
+              "defender_bound": 872,
+              "attacker_loss": 138,
+              "defender_loss": 729,
+              "attacker_troops": 5757,
+              "defender_troops": 3181,
+              "attacker_morale": 75,
+              "defender_morale": 47
+            }
+          }
+        },
+        {
+          "kind": "removal_order",
+          "original_count": 10,
+          "native_count": 10,
+          "equal": false,
+          "first_difference": {
+            "index": 5,
+            "original": 4,
+            "native": 1
+          }
+        },
+        {
+          "kind": "combined_action_order",
+          "original_count": 185,
+          "native_count": 177,
+          "equal": false,
+          "first_difference": {
+            "index": 62,
+            "original": {
+              "kind": "shot",
+              "data": {
+                "actor": 5,
+                "target": 24,
+                "bound": 153,
+                "loss": 193,
+                "morale_loss": 1,
+                "target_troops": 4364,
+                "target_morale": 51
+              }
+            },
+            "native": {
+              "kind": "shot",
+              "data": {
+                "actor": 8,
+                "target": 24,
+                "bound": 58,
+                "loss": 72,
+                "morale_loss": 0,
+                "target_troops": 4485,
+                "target_morale": 52
+              }
+            }
+          }
+        }
+      ],
+      "all_equal": false
+    },
+    {
+      "label": "slot-pass3-only",
+      "checks": [
+        {
+          "kind": "move",
+          "original_count": 63,
+          "native_count": 62,
+          "equal": false,
+          "first_difference": {
+            "index": 50,
+            "original": {
+              "actor": 23,
+              "from_x": 4,
+              "from_y": 4,
+              "to_x": 5,
+              "to_y": 4,
+              "moves_left": 2
+            },
+            "native": {
+              "actor": 23,
+              "from_x": 4,
+              "from_y": 4,
+              "to_x": 5,
+              "to_y": 4,
+              "moves_left": 1
+            }
+          }
+        },
+        {
+          "kind": "shot",
+          "original_count": 78,
+          "native_count": 77,
+          "equal": false,
+          "first_difference": {
+            "index": 16,
+            "original": {
+              "actor": 5,
+              "target": 24,
+              "bound": 153,
+              "loss": 193,
+              "morale_loss": 1,
+              "target_troops": 4364,
+              "target_morale": 51
+            },
+            "native": {
+              "actor": 8,
+              "target": 24,
+              "bound": 58,
+              "loss": 72,
+              "morale_loss": 0,
+              "target_troops": 4485,
+              "target_morale": 52
+            }
+          }
+        },
+        {
+          "kind": "melee",
+          "original_count": 34,
+          "native_count": 28,
+          "equal": false,
+          "first_difference": {
+            "index": 5,
+            "original": {
+              "actor": 3,
+              "target": 24,
+              "focus": 3,
+              "attacker_power": 7218,
+              "defender_power": 3136,
+              "attacker_bound": 214,
+              "defender_bound": 880,
+              "attacker_loss": 133,
+              "defender_loss": 738,
+              "attacker_troops": 5762,
+              "defender_troops": 3084,
+              "attacker_morale": 75,
+              "defender_morale": 46
+            },
+            "native": {
+              "actor": 3,
+              "target": 24,
+              "focus": 3,
+              "attacker_power": 7218,
+              "defender_power": 3237,
+              "attacker_bound": 221,
+              "defender_bound": 872,
+              "attacker_loss": 138,
+              "defender_loss": 729,
+              "attacker_troops": 5757,
+              "defender_troops": 3181,
+              "attacker_morale": 75,
+              "defender_morale": 47
+            }
+          }
+        },
+        {
+          "kind": "removal_order",
+          "original_count": 10,
+          "native_count": 10,
+          "equal": false,
+          "first_difference": {
+            "index": 5,
+            "original": 4,
+            "native": 1
+          }
+        },
+        {
+          "kind": "combined_action_order",
+          "original_count": 185,
+          "native_count": 177,
+          "equal": false,
+          "first_difference": {
+            "index": 62,
+            "original": {
+              "kind": "shot",
+              "data": {
+                "actor": 5,
+                "target": 24,
+                "bound": 153,
+                "loss": 193,
+                "morale_loss": 1,
+                "target_troops": 4364,
+                "target_morale": 51
+              }
+            },
+            "native": {
+              "kind": "shot",
+              "data": {
+                "actor": 8,
+                "target": 24,
+                "bound": 58,
+                "loss": 72,
+                "morale_loss": 0,
+                "target_troops": 4485,
+                "target_morale": 52
+              }
+            }
+          }
+        }
+      ],
+      "all_equal": false
+    },
+    {
+      "label": "slot-both-later-passes",
+      "checks": [
+        {
+          "kind": "move",
+          "original_count": 63,
+          "native_count": 63,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "shot",
+          "original_count": 78,
+          "native_count": 78,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "melee",
+          "original_count": 34,
+          "native_count": 34,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "removal_order",
+          "original_count": 10,
+          "native_count": 10,
+          "equal": true,
+          "first_difference": null
+        },
+        {
+          "kind": "combined_action_order",
+          "original_count": 185,
+          "native_count": 185,
+          "equal": true,
+          "first_difference": null
+        }
+      ],
+      "all_equal": true
+    }
+  ]
+}

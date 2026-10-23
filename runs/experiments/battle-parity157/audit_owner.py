@@ -79,7 +79,45 @@ if __name__ == '__main__':
                           'Initial selected slot was not sampled; diagnostic native entry uses -1.',
                           'Iteration alternatives are task harness controls, not a production fix or full318-corpus acceptance.',
                           'Native Windows and other hypotheses outside measured controls remain open.'])
-    with (DATA / 'owner-iteration-audit-v1.json').open('x') as f:
+    semantic = BASE / 'owner-seed1-semantic-v1'
+    if (semantic / 'semantic-comparison-v1.json').exists():
+        current = read(semantic / 'result.json')
+        full = read(semantic / 'native-decisions-v1.json')
+        assert current['complete'] and current['entry_selected'] == -1
+        assert all(current[k] == plain[k] for k in ['terminal_slots_hex','terminal_seed','terminal_counter'])
+        assert all((game(semantic)/f'BATTLE{i:02d}.SAV').read_bytes() ==
+                   (game(PLAIN)/f'BATTLE{i:02d}.SAV').read_bytes() for i in range(1,16))
+        comparison = semantic / 'semantic-comparison-v2.json'
+        checks = read(comparison if comparison.exists() else semantic / 'semantic-comparison-v1.json')
+        corrected = next(v for v in checks['variants'] if v['label']=='slot-both-later-passes')
+        assert corrected['all_equal']
+        hooks = read(semantic / 'hook.json')['records']
+        combat = [r for r in hooks if r['kind']=='random' and r['site'] not in [0x4592bd,0x45951c]]
+        begin = next(i for i,r in enumerate(combat) if r['seed_before']==current['entry_seed'])
+        combat = combat[begin:]
+        fixed = next(v for v in full['fullBattles'] if v['label']=='slot-both-later-passes')
+        draws = [e['data'] for e in fixed['events'] if e['type']=='TacticalDrawEvent']
+        assert [(r['eax'],r['result']) for r in combat] == [(r['Bound'],r['Value']) for r in draws]
+        report['full_semantic_validation'] = dict(observer_inert=True, byte_identical_boundary_saves=15,
+            actual_initial_selected=current['entry_selected'],summary=read(semantic / 'semantic-summary-v1.json'),
+            combat_draws=len(combat),combat_draws_exact=True,
+            variants=[dict(label=v['label'],all_equal=v['all_equal'],checks=[dict(kind=c['kind'],original_count=c['original_count'],native_count=c['native_count'],equal=c['equal'],
+                first_difference_index=c['first_difference']['index'] if c['first_difference'] else None) for c in v['checks']]) for v in checks['variants']])
+        report['limits'] = ['Individual placement-write order and every silent target write are not asserted.',
+                            'Native strategic writeback and full318-corpus acceptance remain open.',
+                            'Native Windows and other hypotheses outside measured controls remain open.']
+    historical = BASE / 'historical-entry-assumption-control-v1/native-counterfactual-v1.json'
+    if historical.exists():
+        h = read(historical)['fullBattles']
+        assert h[0]['troops']==[22090,0] and h[2]['troops']==[48969,0] and h[2]['Counter']==21
+        report['historical_entry_assumption_control'] = dict(
+            provenance='Same earlier entry reconstruction, explicitly assumed clear flags/claims and selected=-1; missing original runtime fields not backfilled.',
+            variants=[dict(label=r['label'],counter=r['Counter'],troops=r['troops']) for r in h],
+            survivor_and_counter_match_original=True, exact_historical_event_equality_not_claimed=True)
+    version = 1
+    while (DATA / f'owner-iteration-audit-v{version}.json').exists():
+        version += 1
+    with (DATA / f'owner-iteration-audit-v{version}.json').open('x') as f:
         json.dump(report, f, indent=2)
         f.write('\n')
     print(json.dumps(report, indent=2))

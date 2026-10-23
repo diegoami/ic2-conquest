@@ -1,0 +1,152 @@
+{
+  "exit": 0,
+  "checks": "test_random_cave       100 machine states: all equal\ntest_marker_caves     2000 machine states: all equal\ntest_flag_caves        132 machine states: all equal\ntest_reseed_caves      132 machine states: all equal\ntest_reentry_when_busy    20 machine states: all equal\ntest_seed_cave       ok\ntest_overflow_never_wraps ok\ntest_real_nested_entry_inside_the_recorder ok\ntest_a_broken_cave_is_detected ok\n",
+  "active_payload_cases": [
+    {
+      "df": 0,
+      "counter": 0,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 0,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 0,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 6,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 6,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 6,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 15,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 15,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 15,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 100,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 100,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 0,
+      "counter": 100,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 0,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 0,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 0,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 6,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 6,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 6,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 15,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 15,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 15,
+      "index": 8192,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 100,
+      "index": 0,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 100,
+      "index": 8191,
+      "passed": true
+    },
+    {
+      "df": 1,
+      "counter": 100,
+      "index": 8192,
+      "passed": true
+    }
+  ],
+  "observer_sha256": "690724652c342bcca6270044164857ef52f97373b23fe4d67f67a88100b2e406",
+  "scope": "Expanded original-versus-hook CPU preservation, reentry/overflow/mutation controls. Wine inertness still required."
+}
