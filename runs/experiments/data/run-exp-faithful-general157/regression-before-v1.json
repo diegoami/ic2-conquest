@@ -1,0 +1,42 @@
+{
+  "failures": 5,
+  "passed": 1,
+  "results": [
+    {
+      "name": "pass one retains type ordering",
+      "passed": true,
+      "evidence": [
+        1,
+        3,
+        4,
+        0,
+        2
+      ]
+    },
+    {
+      "name": "later passes use live slot order",
+      "passed": false,
+      "error": "InSlotOrder"
+    },
+    {
+      "name": "defender slot order stays on defender side",
+      "passed": false,
+      "error": "InSlotOrder"
+    },
+    {
+      "name": "slot enumeration rechecks liveness and battle end",
+      "passed": false,
+      "error": "InSlotOrder"
+    },
+    {
+      "name": "actual threat pass visits slot zero before heavy infantry",
+      "passed": false,
+      "error": "Threat pass still uses type order: 1,0"
+    },
+    {
+      "name": "actual second pass fires archer slot zero before light infantry",
+      "passed": false,
+      "error": "Shot order differs: 1,0"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/diego/.dotnet/dotnet",
+    "build",
+    "/home/diego/projects/ic2-conquest/runs/experiments/faithful-general157/Replay.csproj",
+    "--artifacts-path",
+    "/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/replay-build-v2",
+    "-p:EnginePath=/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/engine-build-v2/bin/IC2.Engine/debug/IC2.Engine.dll",
+    "-p:DataPath=/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/engine-build-v2/bin/IC2.Engine/debug/IC2.Data.dll",
+    "--nologo",
+    "-v",
+    "q"
+  ],
+  "returncode": 0,
+  "stdout": "\nBuild succeeded.\n    0 Warning(s)\n    0 Error(s)\n\nTime Elapsed 00:00:01.73\n",
+  "stderr": ""
+}

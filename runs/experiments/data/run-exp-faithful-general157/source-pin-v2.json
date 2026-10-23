@@ -1,0 +1,31 @@
+{
+  "remake_main": "8e5f0a35c9dd45a8ec31b38154406843b131013a",
+  "files": [
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralOrders.cs",
+      "original_git_blob": "22de509c8e71059803e69e61056ee32923e381b7",
+      "original_sha256": "ecddda67c19e0ba05b09efce295c4353d07013e7797c3f2e369fd25bb74a4631",
+      "patched_sha256": "08fd581083a207761bc18e32082e2b18e4716a09e9b05de62dfa8928eefa832b"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPassTwo.cs",
+      "original_git_blob": "4e40f041afe10a426f4bd01d4cc1f793ea2ea597",
+      "original_sha256": "b17d4152cce3f4bff345ea1cbcb5f84a234385afa492341c0b8b99ffb293585b",
+      "patched_sha256": "97ebd80019f3249033f8ca19a987dd5202bb300c807c5c8fc2eb21f4c549241e"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPassThree.cs",
+      "original_git_blob": "ac2fc4db12a7cfc41568b35a36d3dbeffde1c2c4",
+      "original_sha256": "ce2f2de964e62f90f937a04d083eb00581f0c2d86a78a242fd98669ee330c5bc",
+      "patched_sha256": "0ce1e29c695928744e2a521d6acf44aceb4057ab2d4783e5bf6bdaecf684b518"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/ComputerGeneral.cs",
+      "original_git_blob": "e0b24de8a1d0fcb759a7de49e319e3f4ce453783",
+      "original_sha256": "adb11d845b8c27669142ad5bda5d3352f4f5a5b417831758ee882f11e14a6abf",
+      "patched_sha256": "b50fe981d970989a889a1a480f18fc8021a693418ff8384eeea35fba119340a3"
+    }
+  ],
+  "other_checkout_written": false,
+  "change": "First pass remains type order; later passes and their public helper entrypoints use live slot order. No combat rule or setting added."
+}

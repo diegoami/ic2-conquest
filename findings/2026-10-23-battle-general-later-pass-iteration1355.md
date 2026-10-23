@@ -165,6 +165,33 @@ and original RNG are held equal for each engine comparison. See
 
 ## Limits and next tests
 
+### Compiled source correction follow-up
+
+The owner subsequently chose faithful behavior first, with a separately
+selectable improved general investigated afterward. Remake #1355 remains the
+fidelity task; [#1362](https://github.com/diegoami/imperial_conquest_2/issues/1362)
+tracks the optional-controller investigation and waits on that baseline.
+
+A four-file source correction is now prepared in
+`runs/experiments/data/run-exp-faithful-general157/faithful-general-portable.patch`.
+It preserves pass one's type order and uses lazy live-slot order in pass two
+and all pass-three entrypoints. Original/patched source hashes are pinned to
+main8e5f0a3. The patch passes read-only application checks and was compiled as
+the actual engine through source overlays; no other checkout was modified.
+
+Six focused regressions pass after the patch; the unchanged engine fails the
+actual threat/shooting-order cases and lacks the new iterator. The real patched
+`ComputerGeneral`, without a diagnostic replacement controller, reproduces all
+14 recorded controls: **2,331 combat draw tuples, 253 available boundaries**,
+terminal tactical state/RNG, reference185 and owner346 combined actions.
+The historical assumption control also recovers48,969/counter21.
+See that folder's `verification-v1.json` and README for receipts, preserved
+preparation failures, scope and downstream acceptance still required.
+
+This is a tested source-correction candidate, not a merged/deployed remake fix.
+Full318-corpus, native Windows, independent copy-in and strategic writeback
+acceptance remain open. The proposed optional general is not implemented.
+
 This supports an **AI fidelity/order defect**. It does not measure whether the
 original AI is generally stronger. No morale/training/exchange-formula change
 is needed to recover this control, but independent kernels and parameter

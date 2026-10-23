@@ -1,0 +1,8 @@
+{
+  "raw_returncode": 2,
+  "raw_stdout": "runs/experiments/data/run-exp-faithful-general157/faithful-general-portable.patch:4: trailing whitespace.\n+ \nruns/experiments/data/run-exp-faithful-general157/faithful-general-portable.patch:64: trailing whitespace.\n+ \nruns/experiments/data/run-exp-faithful-general157/faithful-general.patch:6: trailing whitespace.\n+ \nruns/experiments/data/run-exp-faithful-general157/faithful-general.patch:47: trailing whitespace.\n+ \nruns/experiments/data/run-exp-faithful-general157/faithful-general.patch:85: trailing whitespace.\n+ \nruns/experiments/data/run-exp-faithful-general157/faithful-general.patch:93: trailing whitespace.\n+ \nruns/experiments/data/run-exp-faithful-general157/faithful-general.patch:95: trailing whitespace.\n+ \n",
+  "raw_stderr": "",
+  "reason": "Seven literal blank context lines required by standard unified patch format; not trailing whitespace in the applied source.",
+  "authored_code_and_docs_returncode": 0,
+  "patch_apply_checks_pass": true
+}

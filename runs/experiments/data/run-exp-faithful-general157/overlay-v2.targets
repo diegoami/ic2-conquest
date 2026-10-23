@@ -1,0 +1,15 @@
+<Project>
+  <Import Project="/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-sav-conversion-broad153/overlay.targets" />
+  <Target Name="UseFaithfulGeneralSources" BeforeTargets="CoreCompile">
+    <ItemGroup Condition="'$(MSBuildProjectName)' == 'IC2.Engine'">
+      <Compile Remove="Battle/Tactical/General/GeneralOrders.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/source-v2/GeneralOrders.cs" />
+      <Compile Remove="Battle/Tactical/General/GeneralPassTwo.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/source-v2/GeneralPassTwo.cs" />
+      <Compile Remove="Battle/Tactical/General/GeneralPassThree.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/source-v2/GeneralPassThree.cs" />
+      <Compile Remove="Battle/Tactical/General/ComputerGeneral.cs" />
+      <Compile Include="/home/diego/projects/ic2-conquest/artifacts/run-exp-faithful-general157/source-v2/ComputerGeneral.cs" />
+    </ItemGroup>
+  </Target>
+</Project>
