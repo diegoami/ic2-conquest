@@ -17,6 +17,12 @@ This was offline replay of retained builds, not an independent rebuild, new
 caller experiment, fresh game or Windows acceptance. The newer PR190
 continuation remains separately queued and unpromoted.
 
+Follow-up: the requested garrison/mercenary caller tests are now recorded in
+[the caller-history finding](2026-10-24-garrison-mercenary-caller-guards187.md),
+pending its own Research intake. It proves reachable zero and negative guards
+through F31C, so the earlier stop must not be replaced with universal zero.
+The historical tests and limits below retain their original packet scope.
+
 ## Reusable rule and navigation data
 
 [The implementation specification](../docs/navigation187-rule.md) and the
