@@ -88,7 +88,7 @@ int Gate(GameState state,JsonElement original)
 }
 int? CityIndex(CityState? city)=>city is null?null:resolved.World.Cities.ToList().FindIndex(c=>c.Id==city.Id);
 int? ArmyIndex(ArmyState? army)=>army is null?null:int.Parse(army.Id[5..],CultureInfo.InvariantCulture);
-if(args[0]=="decisions")
+if(args[0] is "decisions" or "eligibility" or "from-scores")
 {
     var directory=args[2];var output=args[3];Need(!File.Exists(output),"existing output");
     var rows=new List<object>();
@@ -101,6 +101,34 @@ if(args[0]=="decisions")
         var spec=manifest.RootElement.EnumerateArray().Single(r=>Int(r,"snapshot")==int.Parse(stem));
         var actor=state.ArmyById($"army-{Int(spec,"army")}")!;
         var view=new AiView(state,rules,resolved.World,actor.Nation);
+        if(args[0]=="from-scores")
+        {
+            var oldCity=spec.GetProperty("city");var oldEnemy=spec.GetProperty("enemy");
+            var cityIndex=oldCity.GetProperty("target");var enemyIndex=oldEnemy.GetProperty("target");
+            var cityTarget=cityIndex.ValueKind==JsonValueKind.Null?null:state.CityById(resolved.World.Cities[cityIndex.GetInt32()].Id);
+            var enemyTarget=enemyIndex.ValueKind==JsonValueKind.Null?null:state.ArmyById($"army-{enemyIndex.GetInt32()}");
+            int supplyIndex=spec.GetProperty("resupply").GetProperty("target").GetInt32();
+            var chosen=AiArmyTargetTree.DecideFromScores(rules.Ai,actor,
+                new AiArmyTargetTree.CityTarget(cityTarget,oldCity.GetProperty("score").GetInt64(),Int(oldCity,"distance")),
+                new AiArmyTargetTree.ArmyTarget(enemyTarget,oldEnemy.GetProperty("score").GetInt64(),Int(oldEnemy,"distance")),
+                new AiArmyTargetTree.ResupplyCity(supplyIndex<0?null:state.CityById(resolved.World.Cities[supplyIndex].Id),0,0));
+            rows.Add(new{snapshot=int.Parse(stem),gate=true,checkedFields=fields,
+                originalKind=spec.GetProperty("decision").GetProperty("kind").GetInt32(),nativeKind=(int)chosen.Selected});
+            manifest.Dispose();continue;
+        }
+        if(args[0]=="eligibility")
+        {
+            var oldCity=spec.GetProperty("city").GetProperty("target");
+            var oldEnemy=spec.GetProperty("enemy").GetProperty("target");
+            var cityTarget=oldCity.ValueKind==JsonValueKind.Null?null:state.CityById(resolved.World.Cities[oldCity.GetInt32()].Id);
+            var enemyTarget=oldEnemy.ValueKind==JsonValueKind.Null?null:state.ArmyById($"army-{oldEnemy.GetInt32()}");
+            rows.Add(new{snapshot=int.Parse(stem),gate=true,checkedFields=fields,
+                originalCity=oldCity.ValueKind==JsonValueKind.Null?(int?)null:oldCity.GetInt32(),
+                originalEnemy=oldEnemy.ValueKind==JsonValueKind.Null?(int?)null:oldEnemy.GetInt32(),
+                originalCityReachable=cityTarget is null?(bool?)null:AiArmyTargetTree.IsReachable(view,actor,cityTarget.X,cityTarget.Y),
+                originalEnemyReachable=enemyTarget is null?(bool?)null:AiArmyTargetTree.IsReachable(view,actor,enemyTarget.X,enemyTarget.Y)});
+            manifest.Dispose();continue;
+        }
         bool atWar=state.Nations.Any(n=>n.Id!=actor.Nation&&view.IsAtWar(actor.Nation,n.Id));
         var city=AiArmyTargetTree.ScoreCityTarget(view,actor);
         var enemy=AiArmyTargetTree.ScoreArmyTarget(view,actor);
