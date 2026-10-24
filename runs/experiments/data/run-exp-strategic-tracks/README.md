@@ -1,7 +1,10 @@
 # Approved #176 / #177 / #174 continuation — batch 1
 
 Finding: `findings/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md`.
-Main follow-up #1412: faithful AI embark overflow. Research intake pending.
+Main follow-up #1412: faithful AI embark overflow. Promoted by Research PR74
+at `16ec64575d85582378705c407e0f1b82df848328`; canonical report and safe receipt
+are linked from the finding. Research documents provider row-order/three added
+probe-counter qualifications; every existing field matches. No measurement changed.
 
 Authoritative ledgers: `summary-v1.json` / `audit-execution-v1.log`,
 `native-phases-v2.json`, `native-synthetic-v1.json`,

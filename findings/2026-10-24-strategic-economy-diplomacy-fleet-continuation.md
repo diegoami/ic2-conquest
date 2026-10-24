@@ -4,7 +4,15 @@
 conditional native comparisons and declared synthetic controls].
 **Issues:** conquest #176 (economy), #177 (diplomacy), #174 (fleets);
 [Main #1412](https://github.com/diegoami/imperial_conquest_2/issues/1412) tracks
-new embark-overflow evidence. Research intake pending. No production change.
+new embark-overflow evidence. Promoted by [Research PR74](https://github.com/diegoami/imperial-conquest-2-research/pull/74)
+at `16ec64575d85582378705c407e0f1b82df848328`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/16ec64575d85582378705c407e0f1b82df848328/docs/reports/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md)
+and [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/16ec64575d85582378705c407e0f1b82df848328/docs/data/strategic190-intake-v1.json).
+Research rechecked the original phases/synthetics, native comparisons and
+archive recovery offline. Provider row order and three newer probe counters
+are qualified in its receipt; every existing field agrees. Historical
+measurements remain unchanged. No fresh game, native rebuild, full diplomatic/
+global-RNG parity, production change or Windows acceptance is claimed.
 
 ## Result and attribution
 
@@ -173,4 +181,5 @@ caller context; the prior paused battle queue remains paused.
 
 Archive and recovery instructions are in the data README. The explicit generated
 archive excludes all original EXE/DAT, runtime/prefix trees and owner material.
-Research intake/promotion is required before Main uses these new rules.
+Research has promoted this bounded packet. Main still owns a reviewed
+production correction and its acceptance; the coverage limits remain.

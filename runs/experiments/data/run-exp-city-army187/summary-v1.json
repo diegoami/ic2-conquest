@@ -1,0 +1,24 @@
+{
+  "private_same_boundary": true,
+  "import_projection_and_relevant_input_gates_pass": true,
+  "native_import_fields": 2908,
+  "terrain_occupancy_cells": 44800,
+  "defense_candidate_matches": 40,
+  "assault_strength_equal": true,
+  "primary_cause": "designed city direct-walk eligibility rejects original winner and changes final city-versus-army branch",
+  "secondary": "empty geographic map changes5candidate scores, not the winning city after eligibility alignment in this state",
+  "branch_predicates_not_the_cause_of_private_case": true,
+  "independent_score100_controls": 32,
+  "independent_score100_mismatches": 7,
+  "followups": {
+    "city_policy": 1417,
+    "score100_boundary": 1418
+  },
+  "limits": [
+    "same-state conditional, not whole End turn or command acceptance",
+    "diagnostic eligibility-only formula model, not production patch",
+    "32 synthetic branch rows are score-fed, not naturally reached campaign states",
+    "no owner paths/hashes/full states/raw traces published",
+    "Research promotion and Main scope review before behavior changes"
+  ]
+}

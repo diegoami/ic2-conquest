@@ -23,7 +23,10 @@ budget discrepancy (1408); it is now promoted through Research PR71 and
 strengthened in PR72 at `c863a97cb1fc66206e23521c7bdd024548ba41dd`.
 Use the [accepted-movement report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-fleet-accepted-movement174.md).
 Main1408 is closed after T214; its old counterexample remains historical
-evidence. PR190's provider/overflow follow-up is separately queued/unpromoted. Faithful
+evidence. PR190's provider/overflow follow-up is now promoted by Research PR74
+at `16ec64575d85582378705c407e0f1b82df848328`:
+use the [continuation report](https://github.com/diegoami/imperial-conquest-2-research/blob/16ec64575d85582378705c407e0f1b82df848328/docs/reports/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md).
+Main1412 owns the reviewed overflow correction; promotion is not acceptance. Faithful
 policy/execution is scoped separately in1409. Retain route lifetime,
 movement/cargo/port/contact and appropriate CI checks.
 Do not infer global RNG or Windows acceptance from this report. Main is reached

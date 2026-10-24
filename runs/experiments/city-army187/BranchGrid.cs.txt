@@ -1,0 +1,16 @@
+using System.Text.Json;
+using IC2.Engine.Ai;
+using IC2.Engine.Import;
+using IC2.Engine.Model;
+using IC2.Engine.Serialization;
+var repo=GameDataRepository.Load(Path.Combine(args[0],"data"));var ctx=repo.Resolve("classical-mediterranean");var rules=repo.RulesetById("classical-faithful")!;
+var state=OriginalSaveImporter.Import(File.ReadAllBytes(args[1]),args[1],ctx.World,rules,ctx.Scenario,"synthetic-grid","synthetic-grid").Save.State;
+var actor=state.ArmyById("army-4")!;if(actor.Moves!=7||actor.SupplyTons!=0||actor.Morale!=80)throw new Exception("Synthetic actor gate");
+using var input=JsonDocument.Parse(File.ReadAllText(args[2]));var rows=new List<object>();
+foreach(var row in input.RootElement.EnumerateArray())
+{
+ int I(string n)=>row.GetProperty(n).GetInt32();var city=state.CityById(ctx.World.Cities[0].Id)! with{X=100+I("city_distance"),Y=40};
+ var d=AiArmyTargetTree.DecideFromScores(rules.Ai,actor,new(city,I("city_score"),I("city_distance")),new(state.ArmyById("army-6"),I("army_score"),I("army_distance")),new(state.CityById(ctx.World.Cities[1].Id),0,0));
+ var original=row.GetProperty("original_branch").GetString();rows.Add(new{army_score=I("army_score"),city_score=I("city_score"),city_distance=I("city_distance"),original_branch=original,native_branch=d.Selected.ToString(),equal=original==d.Selected.ToString()});
+}
+using(var f=new FileStream(args[3],FileMode.CreateNew))JsonSerializer.Serialize(f,rows,new JsonSerializerOptions{WriteIndented=true});Console.WriteLine("PASS32 synthetic native branch comparisons; no owner input or command execution");

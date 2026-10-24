@@ -12,7 +12,8 @@ RAM/stack identities and 20 input pairs, with no normalization. It rechecked
 the source writers/call sites; see the [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/2420f67295e39d3a37ce4ff4f7adf242822fe1cb/docs/data/navigation187-callers-intake-v1.json).
 No fresh game, native comparison, production change or task-label change here.
 Main T212 is in progress under a narrowed enemy-army contract; promotion alone
-does not expand it. The separate PR190 continuation remains unpromoted.
+does not expand it. The separate PR190 continuation is now promoted by
+Research PR74 at `16ec64575d85582378705c407e0f1b82df848328`; its limits remain separate.
 
 ## Answer
 
