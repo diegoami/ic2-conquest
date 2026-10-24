@@ -58,3 +58,23 @@ no output modified. Fixed audit v2 passes all80 scalar cases and16 exact paired
 input differences. Reruns every case without ANY observation hooks: all80 full
 game RAM and all64KiB stack bytes equal the observed run/write ledger. No helper
 replacement, no RNG calls. Raw/SAV/full traces and hashes remain private.
+
+Progress v1 adds8 full F31C histories. Negative guard suppresses recursive
+continuation after two successful steps:152,70/7moves. Zero guard recurses,
+ends152,71 with signed moves−1 from unconditional post-fallback decrement at
+44DC71. Preserve it; do not clamp measurement to0. Expanded verificationv3
+passes88 complete original RAM+stack observer/plain matches and20 single-WORD
+input pairs. Source proof/decision table and public-safe report now prepared;
+no native parity or universal caller claim. Source ledger includes exact
+S−18 vsS−42 aliasing and four observed writer addresses. Corrected plan's
+nearest/capital address labels; no measured row changed. Private hash manifests
+remain private per187; no raw public upload. Python compilation/diff check pass.
+
+END (publication pending): source/control batch commits78871b5,0aa2f90,dd9e9ee
+pushed. Publish the88-control rule package, keep187 open for Research review/
+remaining scope, notify Main1394 using the promoted-route context and draft
+follow-up limits. No external reviewer launched; self-review only. Last reported/
+delivered findings baseline remains94efa89aa7527ae8f55d1df0d2af6e3757e2e6e2.
+After landing, relay new caller finding plus changed navigation finding at once;
+record actual SHA/delivery receipt. No owner decision/save needed for this
+completed batch; do not auto-start homeland/combat/embarked experiments.

@@ -1,7 +1,7 @@
 # Approved #187 caller-context follow-up
 
 Owner, 2026-10-24: “ok do those tests tehn”. Test the previously stopped direct
-continuation branch at garrison nearest-city EC7D, garrison capital ECD6, and
+continuation branch at garrison nearest-city ECD6, garrison capital EC7D, and
 mercenary E913. Run complete original EBE8/E84C callers on a generated all-land
 fixture with three friendly blockers; retain clear-path controls. Observe DBA8
 entry ESP−14, byte-write provenance, direct-line result, movement and final

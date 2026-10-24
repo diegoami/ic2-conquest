@@ -1,0 +1,77 @@
+{
+  "original_exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "listing_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "functions": [
+    {
+      "function": "FUN_0044f31c",
+      "listing_header_line": 52899
+    },
+    {
+      "function": "FUN_0044ebe8",
+      "listing_header_line": 52599
+    },
+    {
+      "function": "FUN_0044e84c",
+      "listing_header_line": 52382
+    },
+    {
+      "function": "FUN_0044dba8",
+      "listing_header_line": 51790
+    },
+    {
+      "function": "FUN_0044db38",
+      "listing_header_line": 51761
+    },
+    {
+      "function": "FUN_0044d734",
+      "listing_header_line": 51517
+    },
+    {
+      "function": "FUN_0044ee60",
+      "listing_header_line": 52715
+    },
+    {
+      "function": "FUN_00449018",
+      "listing_header_line": 47727
+    },
+    {
+      "function": "FUN_004498d8",
+      "listing_header_line": 48312
+    },
+    {
+      "function": "FUN_0044aab4",
+      "listing_header_line": 49316
+    }
+  ],
+  "call_sites": {
+    "garrison_capital": "0044EC7D",
+    "garrison_nearest_city": "0044ECD6",
+    "mercenary": "0044E913",
+    "parent_mercenary": "0044F485",
+    "parent_garrison": "0044F4D9"
+  },
+  "guard_writers": [
+    {
+      "instruction": "0044EFA7",
+      "meaning": "decrement EE60 remaining-army loop word to zero; aliases nested caller guard S-42"
+    },
+    {
+      "instruction": "0044901F",
+      "meaning": "write packed current coordinate; upper WORD Y aliases S-42 after ordinary destination return"
+    },
+    {
+      "instruction": "0044DB47",
+      "meaning": "write no-intermediate X=-1 at caller-provided pointer; nested mercenary context aliases S-42"
+    },
+    {
+      "instruction": "0044D73D",
+      "meaning": "write walker goal; low WORD X reused by recursive wrapper guard"
+    }
+  ],
+  "width": "signed16 guards/moves;32bit pointers, packed16 X/Y",
+  "source_contract": "Caller and route histories in report; not universal stack initialization",
+  "stack_locations": [
+    "0080F000",
+    "7FE0F000"
+  ]
+}

@@ -36,3 +36,10 @@ new caller experiment. Four older branch call lists gain DBA8 observer entries
 under the current observer; only those added entries are normalized in its
 receipt. No endpoint/budget/contact result changed. PR190's newer strategic
 continuation is queued separately; its evidence is not promoted by this intake.
+
+The requested caller follow-up is now measured in
+`findings/2026-10-24-garrison-mercenary-caller-guards187.md` (separate intake
+pending). In full F31C, a refused mercenary route can pass −1 to garrison;
+without the offer it inherits zero. All other game input bytes match, and the
+blocked budget differs. Do not initialize those callers universally to zero.
+Main's existing approved scope/labels are not changed by these draft results.
