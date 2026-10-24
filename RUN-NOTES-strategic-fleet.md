@@ -114,3 +114,41 @@ accepted native commands/full AI trace, then guarded actual fleet boundary
 observer/plain gate. Keep phase/proposal/accepted-command levels distinct.
 Original fleet AI zeroes unaffordable sea-step moves while native handler
 currently returns remaining moves directly; test rather than assume a defect.
+
+## END — accepted movement batch measured
+
+23synthetic original controls:20complete/3stop before naval combat.21conditioned
+actual native requests19accept/2zero-budget reject; native full AiTurn23runs
+records10accepted moves/2attacks, no rejections/caps. Keep differing whole-seat
+versus fleet-only phase histories and declared harness stream explicit.
+Production observer33replays preserves all states. Paired low-level original
+inputs differ only in controller byte: AI changes onlyMoves at49c278from1to0,
+human RAM unchanged; actual native accepts/keeps1for both. Affordable3move and
+human controls match. Main1408created for faithful budget correction. Main1409
+separately scopes faithful fleet policy/execution alongside designed policy.
+Protected attack refusal preserves state; unprotected attack accepts; cargo sea
+positive/zero links/coordinates match. Stored-route+zero now covered synthetically.
+
+New original Wine observer/plain pair completed720→721; complete before/after
+SAVs identical. Entry/return wrapper120CPU states passed.15actual fleet phases
+(2moving) replay all captured exit RAM exactly without helper replacement.
+Original synthetic long detours are not assumed emulator bugs: the actual live
+Carfleet74,69 endpoint and complete phase state reproduce. No original naval
+combat, native Windows/Computer Use, other-repository edit or paused battle run.
+
+Native namespace/logging and analysis CSV/argument-shadow failures retained;
+v1partial native states remain, final native-v2has per-case journal. Analysisv3
+is authoritative; v1CSVpartial/CRLF and incorrect provisional combat count are
+preserved, not rewritten. Verifier missing-import attempt retained; v2passes.
+Bundle466members/8322493bytes/SHA3189e5084511e54e926c74222e766658f6e8c4d2aef0a3f12c1e93662deabecd,
+Drive folder19FVgahM2dSCOBxYyHV0ZR2P4TEyU2d5D/file1fFCIu5lKk3LuUO-ILGSI9FR8UYa7055d.
+Fresh recovery rehashes466members and reproduces33native rows byte-identically.
+Remote metadata size/parent readback verified, no remote digest download claim.
+Explicit generated allowlist excludes EXE/DAT/runtime/owner files/credentials.
+
+Finding2026-10-24-fleet-accepted-movement174.md ready for publication; old174
+source/Main handoff link follow-up without retroactively extending PR70scope.
+Source remains349runtime/data blobs55d96876, identical at livec22cbf69start.
+Next: final authored/privacy checks, PR/checks/merge, actual main-pinned relay
+to Research and1408/1409/174updates. No active original/native game or agent.
+Eleven unrelated untracked files preserved; no production fix claimed.

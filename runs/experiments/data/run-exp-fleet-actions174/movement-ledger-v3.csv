@@ -1,0 +1,24 @@
+case,original_status,original_destination,original_terminal,original_moves,original_steps,native_direct_present,native_direct_accepted,native_path_equal,native_terminal_equal,native_moves_equal,native_terminal,native_moves
+phase-actor-construction,complete,,"[49, 62]",25,0,False,,,,,,
+phase-alliance,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 64]",23
+phase-no-moves,complete,,"[49, 62]",0,0,False,,,,,,
+phase-peace,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 64]",23
+phase-same-owner,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 64]",23
+phase-score100,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 65]",22
+phase-score101,complete,"[41, 80]","[74, 69]",0,25,True,True,False,False,False,"[41, 79]",8
+phase-stored-a,complete,"[48, 66]","[48, 66]",21,4,True,True,False,False,False,"[48, 64]",23
+phase-stored-b,complete,"[47, 67]","[74, 69]",0,25,True,True,False,False,False,"[48, 64]",23
+phase-target-construction,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 65]",22
+phase-trade,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 64]",23
+phase-war,stopped-before-naval-combat,"[48, 65]","[48, 64]",23,2,True,True,True,True,True,"[48, 64]",23
+phase-war-stronger,complete,"[45, 68]","[74, 69]",0,25,True,True,False,False,False,"[48, 64]",23
+phase-war-weaker,stopped-before-naval-combat,"[48, 65]","[48, 64]",23,2,True,True,True,True,True,"[48, 64]",23
+stored-zero,complete,"[48, 66]","[49, 62]",0,0,True,False,True,True,True,"[49, 62]",0
+stored-one,complete,"[48, 66]","[49, 63]",0,1,True,True,True,True,True,"[49, 63]",0
+rough-ai-one,complete,"[49, 63]","[49, 62]",0,0,True,True,True,True,False,"[49, 62]",1
+rough-ai-three,complete,"[49, 63]","[49, 63]",0,1,True,True,True,True,True,"[49, 63]",0
+rough-human-one,complete,"[49, 63]","[49, 62]",1,0,True,True,True,True,True,"[49, 62]",1
+cargo-positive,complete,"[48, 66]","[48, 66]",21,4,True,True,True,True,True,"[48, 66]",21
+cargo-zero,complete,"[48, 66]","[49, 62]",0,0,True,False,True,True,True,"[49, 62]",0
+port-protected,complete,"[124, 105]","[161, 88]",0,25,True,True,False,False,True,"[161, 96]",0
+port-unprotected,stopped-before-naval-combat,"[188, 92]","[187, 91]",23,2,True,True,True,True,True,"[187, 91]",23

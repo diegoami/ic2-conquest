@@ -1,7 +1,7 @@
 """Accepted-action/movement analysis; preserve distinct comparison boundaries."""
 import argparse,collections,csv,json
 from common import *
-p=argparse.ArgumentParser();p.add_argument('--version',required=True);a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--version',required=True);options=p.parse_args()
 old={r['case']:r for r in json.loads((DATA/'original-actions-v1.json').read_text())}
 new={r['caseName']:r for r in json.loads((DATA/'native-actions-v2.json').read_text())}
 paths=json.loads((DATA/'native-paths-v1.json').read_text());directPaths={r['caseName']:r for r in paths if r['label']=='conditioned-direct'}
@@ -74,9 +74,9 @@ summary=dict(synthetic_original_cases=23,completed_original_phases_or_walks=sum(
  'Protected-port approach differs from protected-port attack; the latter is rejected by the native engine.',
  'Cargo checked at sea and at zero moves; disembarkation, capacity and combat losses remain outside this batch.',
  'One generated Roman-start observer/plain pair, not two independent campaigns or Windows acceptance.'])
-with (DATA/('summary-'+a.version+'.json')).open('x') as f:json.dump(summary,f,indent=2)
-with (DATA/('movement-ledger-'+a.version+'.json')).open('x') as f:json.dump(rows,f,indent=2)
-with (DATA/('accepted-fleet-ledger-'+a.version+'.json')).open('x') as f:json.dump(accepted,f,indent=2)
-with (DATA/('movement-ledger-'+a.version+'.csv')).open('x',newline='') as f:
- w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+with (DATA/('summary-'+options.version+'.json')).open('x') as f:json.dump(summary,f,indent=2)
+with (DATA/('movement-ledger-'+options.version+'.json')).open('x') as f:json.dump(rows,f,indent=2)
+with (DATA/('accepted-fleet-ledger-'+options.version+'.json')).open('x') as f:json.dump(accepted,f,indent=2)
+with (DATA/('movement-ledger-'+options.version+'.csv')).open('x',newline='') as f:
+ w=csv.DictWriter(f,fieldnames=list(rows[0]),lineterminator='\n');w.writeheader();w.writerows(rows)
 print(json.dumps({k:v for k,v in summary.items() if k in ['synthetic_original_cases','completed_original_phases_or_walks','stopped_before_naval_combat','accepted_native_fleet_moves','accepted_native_naval_attacks','conditioned_accepted','conditioned_paths_equal','conditioned_move_budgets_equal','observed_moving_phases']}))

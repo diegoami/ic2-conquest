@@ -1,0 +1,542 @@
+[
+  {
+    "case": "phase-actor-construction",
+    "original_status": "complete",
+    "original_destination": null,
+    "original_terminal": [
+      49,
+      62
+    ],
+    "original_moves": 25,
+    "original_steps": 0,
+    "native_direct_present": false,
+    "native_direct_accepted": null,
+    "native_path_equal": null,
+    "native_terminal_equal": null,
+    "native_moves_equal": null,
+    "native_terminal": null,
+    "native_moves": null
+  },
+  {
+    "case": "phase-alliance",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-no-moves",
+    "original_status": "complete",
+    "original_destination": null,
+    "original_terminal": [
+      49,
+      62
+    ],
+    "original_moves": 0,
+    "original_steps": 0,
+    "native_direct_present": false,
+    "native_direct_accepted": null,
+    "native_path_equal": null,
+    "native_terminal_equal": null,
+    "native_moves_equal": null,
+    "native_terminal": null,
+    "native_moves": null
+  },
+  {
+    "case": "phase-peace",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-same-owner",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-score100",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      65
+    ],
+    "native_moves": 22
+  },
+  {
+    "case": "phase-score101",
+    "original_status": "complete",
+    "original_destination": [
+      41,
+      80
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      41,
+      79
+    ],
+    "native_moves": 8
+  },
+  {
+    "case": "phase-stored-a",
+    "original_status": "complete",
+    "original_destination": [
+      48,
+      66
+    ],
+    "original_terminal": [
+      48,
+      66
+    ],
+    "original_moves": 21,
+    "original_steps": 4,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-stored-b",
+    "original_status": "complete",
+    "original_destination": [
+      47,
+      67
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-target-construction",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      65
+    ],
+    "native_moves": 22
+  },
+  {
+    "case": "phase-trade",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-war",
+    "original_status": "stopped-before-naval-combat",
+    "original_destination": [
+      48,
+      65
+    ],
+    "original_terminal": [
+      48,
+      64
+    ],
+    "original_moves": 23,
+    "original_steps": 2,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-war-stronger",
+    "original_status": "complete",
+    "original_destination": [
+      45,
+      68
+    ],
+    "original_terminal": [
+      74,
+      69
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": false,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "phase-war-weaker",
+    "original_status": "stopped-before-naval-combat",
+    "original_destination": [
+      48,
+      65
+    ],
+    "original_terminal": [
+      48,
+      64
+    ],
+    "original_moves": 23,
+    "original_steps": 2,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      48,
+      64
+    ],
+    "native_moves": 23
+  },
+  {
+    "case": "stored-zero",
+    "original_status": "complete",
+    "original_destination": [
+      48,
+      66
+    ],
+    "original_terminal": [
+      49,
+      62
+    ],
+    "original_moves": 0,
+    "original_steps": 0,
+    "native_direct_present": true,
+    "native_direct_accepted": false,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      49,
+      62
+    ],
+    "native_moves": 0
+  },
+  {
+    "case": "stored-one",
+    "original_status": "complete",
+    "original_destination": [
+      48,
+      66
+    ],
+    "original_terminal": [
+      49,
+      63
+    ],
+    "original_moves": 0,
+    "original_steps": 1,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      49,
+      63
+    ],
+    "native_moves": 0
+  },
+  {
+    "case": "rough-ai-one",
+    "original_status": "complete",
+    "original_destination": [
+      49,
+      63
+    ],
+    "original_terminal": [
+      49,
+      62
+    ],
+    "original_moves": 0,
+    "original_steps": 0,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": false,
+    "native_terminal": [
+      49,
+      62
+    ],
+    "native_moves": 1
+  },
+  {
+    "case": "rough-ai-three",
+    "original_status": "complete",
+    "original_destination": [
+      49,
+      63
+    ],
+    "original_terminal": [
+      49,
+      63
+    ],
+    "original_moves": 0,
+    "original_steps": 1,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      49,
+      63
+    ],
+    "native_moves": 0
+  },
+  {
+    "case": "rough-human-one",
+    "original_status": "complete",
+    "original_destination": [
+      49,
+      63
+    ],
+    "original_terminal": [
+      49,
+      62
+    ],
+    "original_moves": 1,
+    "original_steps": 0,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      49,
+      62
+    ],
+    "native_moves": 1
+  },
+  {
+    "case": "cargo-positive",
+    "original_status": "complete",
+    "original_destination": [
+      48,
+      66
+    ],
+    "original_terminal": [
+      48,
+      66
+    ],
+    "original_moves": 21,
+    "original_steps": 4,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      48,
+      66
+    ],
+    "native_moves": 21
+  },
+  {
+    "case": "cargo-zero",
+    "original_status": "complete",
+    "original_destination": [
+      48,
+      66
+    ],
+    "original_terminal": [
+      49,
+      62
+    ],
+    "original_moves": 0,
+    "original_steps": 0,
+    "native_direct_present": true,
+    "native_direct_accepted": false,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      49,
+      62
+    ],
+    "native_moves": 0
+  },
+  {
+    "case": "port-protected",
+    "original_status": "complete",
+    "original_destination": [
+      124,
+      105
+    ],
+    "original_terminal": [
+      161,
+      88
+    ],
+    "original_moves": 0,
+    "original_steps": 25,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": false,
+    "native_terminal_equal": false,
+    "native_moves_equal": true,
+    "native_terminal": [
+      161,
+      96
+    ],
+    "native_moves": 0
+  },
+  {
+    "case": "port-unprotected",
+    "original_status": "stopped-before-naval-combat",
+    "original_destination": [
+      188,
+      92
+    ],
+    "original_terminal": [
+      187,
+      91
+    ],
+    "original_moves": 23,
+    "original_steps": 2,
+    "native_direct_present": true,
+    "native_direct_accepted": true,
+    "native_path_equal": true,
+    "native_terminal_equal": true,
+    "native_moves_equal": true,
+    "native_terminal": [
+      187,
+      91
+    ],
+    "native_moves": 23
+  }
+]
