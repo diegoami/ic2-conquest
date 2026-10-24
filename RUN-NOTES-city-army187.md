@@ -100,3 +100,17 @@ faithful-city policy, exact100 correction and acceptance; Research owns new
 city intake. No further experiment auto-started. Raw owner material/full traces/
 private hash manifest remain local/private. No active process or owner-input
 request remains; all11 unrelated untracked files preserved.
+
+## Research75 promotion — 2026-10-24
+
+Verified PR75 MERGED at2c2a18370c4d9c6be49692fdc7f830fee6912323, exact
+head06d553b99895a779308be5111a9137f96ef6a03b. Read canonical city report and
+docs/data/city198-intake-v1.json at that pin. Fresh original scores/sequence,
+projection/private components, complete nativev3scalar,32original/native grid
+rows and summary reproduce without normalization. Research independently checks
+JLE100 and strict>100better-buy instructions; older research report/rules fixed.
+No fresh game/native rebuild/production/label or scope change/Windows claim.
+Live1394 is in-progress;1417/1418 open. Source finding/README/Main handoff updated
+for promotion only. Existing measurements unchanged. Baseline33c72eb9 remains
+until this metadata lands and mandatory relay succeeds. Main owns reviewed
+city-policy/exact100 corrections and acceptance, not conquest source edits.
