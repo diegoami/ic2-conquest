@@ -1,0 +1,5 @@
+Unhandled exception. System.IO.InvalidDataException: unit troop/quality/label
+   at Program.<<Main>$>g__Need|0_3(Boolean condition, String message) in /home/diego/projects/ic2-conquest/runs/experiments/strategic-fidelity/Probe.cs:line 23
+   at Program.<<Main>$>g__Equal|0_7(Boolean condition, String name, <>c__DisplayClass0_1&) in /home/diego/projects/ic2-conquest/runs/experiments/strategic-fidelity/Probe.cs:line 27
+   at Program.<<Main>$>g__Gate|0_4(GameState state, JsonElement original, <>c__DisplayClass0_0&) in /home/diego/projects/ic2-conquest/runs/experiments/strategic-fidelity/Probe.cs:line 42
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/runs/experiments/strategic-fidelity/Probe.cs:line 99

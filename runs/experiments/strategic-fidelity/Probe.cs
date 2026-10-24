@@ -52,6 +52,19 @@ int Gate(GameState state,JsonElement original)
         Equal(actual.FortificationCode==Int(c,"fort")+100*Int(c,"fort_pending"),"fortification");
         Equal(actual.PopulationThousands==Int(c,"pop")&&actual.MaxPopulationThousands==Int(c,"max_pop")&&actual.Tribute==Int(c,"tribute"),"city population/tribute");
     }
+    foreach(var f in original.GetProperty("fleets").EnumerateArray())
+    {
+        if(Int(f,"owner")<0||Int(f,"ships")<=0)continue;
+        var actual=state.FleetById($"fleet-{Int(f,"id")}")??throw new InvalidDataException("missing fleet lineage");
+        Equal(actual.Nation==resolved.World.Nations[Int(f,"owner")].Id,"fleet owner");
+        Equal(actual.X==Int(f,"x")&&actual.Y==Int(f,"y"),"fleet position");
+        Equal(actual.Ships==Int(f,"ships")&&actual.Moves==Int(f,"moves"),"fleet ships/moves");
+        Equal(actual.Money==Int(f,"money")&&actual.SupplyTons==Int(f,"supplies"),"fleet resources");
+        var building=f.GetProperty("building").GetBoolean();Equal(actual.IsUnderConstruction==building,"fleet construction");
+        if(building)Equal(actual.ConstructionTicksRemaining==Int(f,"countdown"),"construction countdown");
+        else Equal(actual.ConditionPercent==Int(f,"condition"),"fleet condition");
+        var carrier=Int(f,"army");Equal(actual.CarriedArmyId==(carrier<0?null:$"army-{carrier}"),"fleet cargo");
+    }
     var nations=original.GetProperty("nations").EnumerateArray().ToArray();
     for(int i=0;i<nations.Length;i++)
     {
@@ -60,6 +73,13 @@ int Gate(GameState state,JsonElement original)
         Equal((actual.Control==SeatControl.Human)==n.GetProperty("human").GetBoolean(),"controller");
         Equal(actual.Treasury==Int(n,"treasury")&&actual.Unity==Int(n,"unity")&&actual.Wealth==Int(n,"wealth"),"nation resources");
         Equal(actual.TaxBase==Int(n,"tax_base")&&actual.TaxRatePercent==Int(n,"tax")&&actual.MobilizedPercent==Int(n,"mobilization"),"nation tax/mobilization");
+        var recruits=n.GetProperty("recruit_slots").EnumerateArray().ToArray();Equal(actual.RecruitmentSlots.Count==recruits.Length,"recruit count");
+        for(int k=0;k<recruits.Length;k++)
+        {
+            var r=recruits[k];var ar=actual.RecruitmentSlots[k];
+            Equal(ar.TargetCityId==resolved.World.Cities[Int(r,"city")].Id,"recruit city/order");
+            Equal(ar.UnitTypeId==types[Array.IndexOf(shortTypes,r.GetProperty("type").GetString())]&&ar.Troops==Int(r,"troops")&&ar.StateCode==Int(r,"state"),"recruit type/troops/state");
+        }
         for(int j=0;j<nations.Length;j++)if(i!=j)
             Equal(state.Relations.Get(actual.Id,resolved.World.Nations[j].Id)==n.GetProperty("relations").GetProperty(nations[j].GetProperty("name").GetString()!).GetInt32(),"relation");
     }
@@ -103,7 +123,9 @@ else if(args[0]=="end")
     var state=Import(args[2]) with{RandomSeed=1UL};var output=args[3];Need(!Directory.Exists(output),"existing output");Directory.CreateDirectory(output);
     var saved=new SaveGame(GameDataSchema.CurrentVersion,"strategic171","strategic171",state.ScenarioId,state.WorldId,state.RulesetId,state);
     var session=new GameSession(resolved.World,rules,resolved.Scenario,saved){HumanBattles=HumanBattleMode.Tactical};
-    var decisions=AiArmyTargetTree.NewDecisionLog();
+    bool unobserved=args.Length>4&&args[4]=="unobserved";
+    if(unobserved)session.DisableStrategicObservations();
+    var decisions=unobserved?new List<AiArmyTargetTree.DecisionRecord>():AiArmyTargetTree.NewDecisionLog();
     try
     {
         Write(Path.Combine(output,"before.json"),session.State);
