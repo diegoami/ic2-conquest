@@ -128,3 +128,28 @@ locator adapter to the identical recovered data, not a fixture/rule change.
 Existing archives and successful/failed receipts preserved; no remote digest
 download claim. Recheck current PR head/checks after this addition, then merge
 and relay actual landed finding, preserving source/delivery baseline.
+
+## END — published and delivered
+
+PR172 merged at `363a9069089bd400c6905f3b93975162395031b3` after latest
+headc3fab287cd78f8bce40bddd2764b989cd66c3fff passed GitGuardian Security Checks.
+Authored source/docs whitespace and Python compilation passed; two raw measured
+disassembly operand spaces are preserved. Final text-only/owner-hash-canary
+audit passed301files. No separate reviewer/model agent was launched.
+
+Reported-findings and last successfully delivered findings baseline:
+`363a9069089bd400c6905f3b93975162395031b3`, new file
+`findings/2026-10-24-strategic-fidelity-pilot171.md`. Actual main-pinned packet
+delivered successfully to verified Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e,
+including requested canonical resupply correction, partial scope, evidence/save/
+turn and Drive references. Two local ASCII-length guards rejected1022/1004byte
+drafts before any send; shortened packet was acknowledged by the bridge.
+Research promotion remains pending; do not label successful delivery intake.
+
+Results posted on issue171. Main remains owner-carried through the handoff;
+no direct Main thread message or other-repository write. All thirteen original
+runs and native/diagnostic batches finished, no human battle orders, agent or
+unattended task pending. Four immutable Drive bundles and all failed/superseded
+results retained. Eleven unrelated untracked owner files preserved. Issue171
+stays open for the documented remaining research families, boundaries and short
+campaign coverage; no production fix or Windows acceptance is claimed.
