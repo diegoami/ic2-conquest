@@ -32,3 +32,21 @@ on176/177/174. Plans/build receipt committed/pushed before beginning187. Resume
 these tracks after187's bounded rule/control deliverable or explicit ambiguity
 stop condition. Do not substitute another owner battle reproduction for the
 required data layout, eligibility and direct/waypoint/fallback decision rule.
+
+## Resume — 2026-10-24 after navigation187 publication
+
+Owner: “ok continue with the other topic”. Resume all three approved tracks.
+#187 bounded package merged PR188 / main1525f398 and relay receipt PR189 /
+main60d1de8; last delivered/reported findings baseline1525f3985cc54834c5855055599188197c9ec4d4.
+Start fetch found no new findings, no open PR. Current remake195a588e includes
+T214 fleet move-budget correction; isolated source-v2 build passes. Only fleet
+MoveFleetCommandHandler differs from933a in the relevant AI/naval/economy/diplomacy/
+recruitment source. Pin v2 ledger records generated input and original hashes.
+
+Observer extended to diplomacy/economy/fleet boundaries, preserving original
+callee depth and entry/return CPU. All360 randomized/capacity checks pass.
+RNG will be logged by actual original-instruction replay of captured phases,
+then gated on complete captured exit RAM/seed identity; no claim of a live
+per-draw hook. Resume manifest declares generated ROM720 seed1 observer/plain
+one-End-turn pair before launching. No owner inputs, human battle orders or
+native Windows Computer Use. All prior measurements preserved.
