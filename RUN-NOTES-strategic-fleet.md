@@ -152,3 +152,26 @@ Source remains349runtime/data blobs55d96876, identical at livec22cbf69start.
 Next: final authored/privacy checks, PR/checks/merge, actual main-pinned relay
 to Research and1408/1409/174updates. No active original/native game or agent.
 Eleven unrelated untracked files preserved; no production fix claimed.
+
+## END — accepted-action publication and successful relay
+
+PR185 merged atb22b31bdc466a638d61ee3db173b8fd71a0e7d86 after latest head
+47265639b6d0c1c74f8edb52bdc369d6f35c9b55 passed GitGuardian. Authored code/docs
+whitespace and Python compilation pass; raw old partial CSV/CRLF preserved.
+Compiled Engine hash remains pinned source identity. No separate model review.
+
+Reported-findings and last successfully delivered baseline:
+`b22b31bdc466a638d61ee3db173b8fd71a0e7d86`. New finding
+`findings/2026-10-24-fleet-accepted-movement174.md`; old
+`findings/2026-10-24-strategic-fleet-controls174.md` only updates historical
+packet limit/follow-up link. Actual main packet and explicit old-file metadata
+detail delivered to verified Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e.
+Initial local1033byte draft guard sent nothing; shorter packet acknowledged.
+Research intake pending; do not retroactively extend PR70 or claim promotion.
+
+Published evidence linked on174and1408/1409/1405; Main thread not directly sent.
+466members and33recovered rows verified, remote metadata only. All outputs and
+owner files preserved; all live/native/CPU processes ended, no reviewer/agent.
+Next coverage is disembarkation/capacity, provider/port thresholds, route lifetime
+and phase/RNG-aligned decision tracing. Native Windows remains incomplete;
+no other-repository edit, production correction or paused battle-queue run.
