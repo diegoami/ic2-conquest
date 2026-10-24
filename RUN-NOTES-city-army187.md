@@ -51,3 +51,20 @@ head5c2b468c742e5ead18089b7526e31701cf34c43b. Read canonical report/receipt:
 PR190 now promoted; shared provider/cargo fields agree with row-order and three
 new counter qualifications; no old measurement overwritten. Mark status while
 publishing this independent city investigation. Current PR1415 head unchanged.
+
+Publication: Main1417 filed for faithful-city eligibility/geography policy;
+Main1418 for distinct exact100 branch inclusivity. The former explicitly
+recognizes the designed reachability/empty-region choices and current T212
+contract; no silent scope extension. Latter preserves >100 better-buy while
+correcting <=100 weak predicates; not the retained case's cause. Public audit
+summary-v1 passes. Source-ledger-v1 pins original helpers and branch instructions.
+Private relevant-byte projection gate and native map/occupancy44800cells pass;
+no owner hashes/paths/raw states published. Hash manifest is private only.
+
+END (publication pending): commit6ca3f92 ande48d1e4 preserve batches. Publish
+new city-army finding, and Research74 promotion metadata received while working;
+relay actual landed SHA/new+changed findings immediately, then record delivery
+baseline and issue checkpoints. Existing findings baseline remains9b205491.
+Native source0c494454 built only from archive here; no other-repo edit, game or
+native Windows, external reviewer or accepted corrected command. Main owns
+production/acceptance. No new owner save needed. All11 untracked files retained.

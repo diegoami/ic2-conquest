@@ -131,3 +131,15 @@ allocation failure and coincident arrived-route caller context. Do not infer
 these branches from positive local comparisons. No new owner save/screen is
 needed. No active game/reviewer process remains. All eleven unrelated untracked
 files were preserved. Drive archive and fresh recovery receipts are tracked.
+
+## Research74 promotion — 2026-10-24
+
+PR74 verified merged16ec64575d85582378705c407e0f1b82df848328, exacthead
+5c2b468c742e5ead18089b7526e31701cf34c43b. Read canonical continuation report
+and docs/data/strategic190-intake-v1.json. Fresh45phase exits/54draws,29synthetic
+originals,59native economy/diplomacy rows,35fleet controls and1130archivepayload
+hashes/lengths/exact1131inventory verified. Retained compiled recovery30phase+
+4mixed rows byte-identical. Provider order and3new counter fields are qualified;
+every existing field matches. No old output modified, native rebuild/freshgame/
+full diplomacy/global RNG/Windows claim. #1412 remains open, Main owns correction.
+Metadata recorded alongside city-army187 publication; no new study auto-started.

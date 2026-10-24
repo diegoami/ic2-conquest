@@ -16,7 +16,8 @@ documents four older branch rows with added DBA8 observer entries: removing only
 those entries restores the retained call lists; no game result was normalized.
 This was offline replay of retained builds, not an independent rebuild, new
 caller experiment, fresh game or Windows acceptance. The newer PR190
-continuation remains separately queued and unpromoted.
+continuation is separately promoted by Research PR74 at
+`16ec64575d85582378705c407e0f1b82df848328`; it does not widen this packet's scope.
 
 Follow-up: the requested garrison/mercenary caller tests are now recorded in
 [the caller-history finding](2026-10-24-garrison-mercenary-caller-guards187.md),

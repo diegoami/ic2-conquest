@@ -38,7 +38,12 @@ save or screen access.
 
 The older navigation packet's four observer-only DBA8 call additions remain
 documented separately; the new caller ledgers reproduce without normalization.
-PR190 economy/diplomacy/provider/embark-overflow evidence is still queued and
-unpromoted, including Main #1412. Keep that packet distinct from PR72/73.
+PR190 economy/diplomacy/provider/embark-overflow evidence is now promoted in
+Research PR74 at `16ec64575d85582378705c407e0f1b82df848328`, including evidence
+for Main #1412. Keep that packet distinct from PR72/73.
+The newer city-versus-army classification is in
+`findings/2026-10-24-city-army-selection187.md`, awaiting its own intake; Main
+#1417/#1418 track city policy and the independent exact-100 boundary. The
+retained branch difference comes from the unchanged city filter, not import.
 Main receives this handoff through the owner and issue1394; no unverified direct
 Main session channel is substituted.
