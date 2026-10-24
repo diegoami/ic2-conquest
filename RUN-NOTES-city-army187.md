@@ -68,3 +68,35 @@ baseline and issue checkpoints. Existing findings baseline remains9b205491.
 Native source0c494454 built only from archive here; no other-repo edit, game or
 native Windows, external reviewer or accepted corrected command. Main owns
 production/acceptance. No new owner save needed. All11 untracked files retained.
+
+## END — published and delivered, 2026-10-24
+
+PR198 merged at33c72eb9b53176a2b8feb04bfce95b41072dc1c3; exact publication
+head98ca27503c41d7ccbbae808fcb0e1f08d5f8ed4c passed GitGuardian, no other
+configured checks/reviews. Self-review only. Source batches6ca3f92/e48d1e4
+and final98ca275 were pushed. Native source stayed pinned0c494454; no other-
+repo write/game/Windows/accepted corrected command. Public audit/build/compile/
+diff gates pass, prior failed synthetic trailer and all versions retained.
+
+Diff from9b2054914ee5892630a0afa3d73ea73c0808ba1f adds
+findings/2026-10-24-city-army-selection187.md and modifies
+findings/2026-10-24-army-navigation-rule187.md,
+findings/2026-10-24-garrison-mercenary-caller-guards187.md,
+findings/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md.
+The three old finding edits record verified Research74 promotion; no old
+measurement changed. New city investigation remains separately unpromoted.
+Both finding and metadata messages delivered successfully to ic2-research
+thread01a167fa-9fb2-7570-bf21-b32682c79e6e through codex_tui bridge; both
+returned thread ID/isError=false. Delivery is not completed city intake.
+Last reported and last-delivered findings baseline:
+33c72eb9b53176a2b8feb04bfce95b41072dc1c3.
+
+City result checkpoints: conquest187/comment6388651055,
+Main1394/comment6388651344,1417/comment6388657953,1418/comment6388658321.
+Research74 canonical result: Main1412/comment6388658655 and conquest174/
+6388658934,176/6388659218,177/6388659506. No status/label/scope changed.
+No direct/unverified Main thread channel substituted. Main owns reviewed
+faithful-city policy, exact100 correction and acceptance; Research owns new
+city intake. No further experiment auto-started. Raw owner material/full traces/
+private hash manifest remain local/private. No active process or owner-input
+request remains; all11 unrelated untracked files preserved.
