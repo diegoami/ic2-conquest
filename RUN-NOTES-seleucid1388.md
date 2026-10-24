@@ -99,3 +99,11 @@ runs ended; no reviewer/delegate launched. Private evidence and source copies
 retained unchanged, no measured output/save deleted. Eleven unrelated untracked
 owner files preserved. Next production step belongs to Main's normal scoped
 implementation/CI workflow after Research promotion; no further run pending.
+
+## Research promotion — 2026-10-24
+
+Research PR69 verified merged atcdb355fde49b7047d6164de26b2922054fb120ee.
+Canonical1388 report read and linked from source finding/README/Main handoff.
+Owner audit/helpers independently reproduced without another original game.
+This is metadata promotion, not a production correction or Windows acceptance.
+Joint publication/relay receipts are recorded in RUN-NOTES-strategic-fidelity.md.
