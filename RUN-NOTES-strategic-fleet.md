@@ -54,3 +54,21 @@ and record actual delivered baseline. Newfinding174 remains draft until intake.
 Next174 work is actual fleet-boundary and accepted-native-action tracing, plus
 protected ports/cargo/providers/navigation. Other research issues are queued;
 campaign178 depends on reconciled core differences. No unattended run or agent.
+
+## END — publication/relay receipt
+
+PR179 merged at8d975efddd66fd81371991936a7fd0cbc58016be after latest head
+460cb9015207be2b0fa858b1300fa19e9235e45b passed GitGuardian Security Checks.
+Authored whitespace/Python compilation passed, no separate model review.
+Reported-findings and last successfully delivered baseline:
+`8d975efddd66fd81371991936a7fd0cbc58016be`, new file
+`findings/2026-10-24-strategic-fleet-controls174.md`. Actual main packet delivered
+successfully to verified Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e.
+Initial local1038byte guard rejected before sending; shorter ASCII packet
+acknowledged. Research promotion pending, not implied by delivery. Results
+linked on root174/171 and remake1405; Main thread not directly messaged.
+All issue creation URLs/bodies retained, including existing1394 and new1402/1405,
+root174–178. No other-repository source write, native Computer Use, new live
+game, accepted-action parity or production fix claimed. Eleven unrelated files
+preserved; no active process/reviewer/delegate. Continue174at actual fleet
+boundary/accepted-action coverage; keep intentional designed policies separate.
