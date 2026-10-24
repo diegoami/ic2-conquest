@@ -78,3 +78,27 @@ delivered findings baseline remains94efa89aa7527ae8f55d1df0d2af6e3757e2e6e2.
 After landing, relay new caller finding plus changed navigation finding at once;
 record actual SHA/delivery receipt. No owner decision/save needed for this
 completed batch; do not auto-start homeland/combat/embarked experiments.
+
+## END — published and delivered, 2026-10-24
+
+PR194 merged at0cda6c4417202d39e848ab00569a61f004d7c9ff after exact head
+5a53dbd894a424d15174e4961445367dbc20f3e8 passed GitGuardian; no configured
+other checks/reviews. Self-review only.88 original controls,64 full F31C,
+20 causal single-WORD pairs and88 observed/unobserved whole RAM+stack identities
+are complete; no production/native parity or universal caller claim.
+
+Diff from94efa89aa7527ae8f55d1df0d2af6e3757e2e6e2 modified
+findings/2026-10-24-army-navigation-rule187.md and added
+findings/2026-10-24-garrison-mercenary-caller-guards187.md. Delivered successfully
+via codex_tui.send_message_to_thread to reachable ic2-research thread
+01a167fa-9fb2-7570-bf21-b32682c79e6e (returned thread ID, isError=false).
+Intake/promotion pending; never claim it done from delivery. Last reported and
+last-delivered findings baseline:0cda6c4417202d39e848ab00569a61f004d7c9ff.
+
+Evidence/limits posted to conquest187/comment6387988921 and
+Main1394/comment6387989388. Scope/labels unchanged. No other caller experiment
+or production patch auto-started. All eleven unrelated untracked files remain.
+Raw generated artifacts/full stack traces/hash manifests remain private as187
+requires. No game/reviewer process or owner-input request remains. Main can
+review the source-shaped decision table after Research promotion; arbitrary
+standalone roots and other route/interception/combat histories remain qualified.
