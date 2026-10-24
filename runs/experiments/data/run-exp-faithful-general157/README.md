@@ -2,7 +2,8 @@
 
 Current status (2026-10-25): Main PR1371 and PR1387 are merged; #1377 is closed.
 Fresh b593c6e2 source/corpus audit is in
-`findings/2026-10-25-current-main-battle-replay157.md` (separate intake pending).
+`findings/2026-10-25-current-main-battle-replay157.md` (promoted by Research PR76 at
+`b90f6910493dbf3da5a333e45004e0b2e059270e`).
 The historical candidate/control data below is unchanged; do not apply a duplicate
 patch or treat it as proof of #1355/installed-Windows acceptance.
 

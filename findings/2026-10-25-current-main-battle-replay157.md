@@ -4,7 +4,14 @@
 strict recorded replay and native tactical tests].
 **Tasks:** [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157),
 [Main #1355](https://github.com/diegoami/imperial_conquest_2/issues/1355).
-Research intake pending. No production patch or issue-label change here.
+Promoted by [Research PR76](https://github.com/diegoami/imperial-conquest-2-research/pull/76)
+at `b90f6910493dbf3da5a333e45004e0b2e059270e`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/b90f6910493dbf3da5a333e45004e0b2e059270e/docs/reports/2026-10-25-current-main-battle-replay157.md)
+and [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/b90f6910493dbf3da5a333e45004e0b2e059270e/docs/data/current-main157-intake-v1.json).
+Research separately rebuilt pinned Main, verified 1,228 authoritative source
+blobs and reproduced the strict corpus, fixed/recorded controls, tactical suite
+and focused regressions. It retained all runtime/acceptance qualifications.
+No new Original game, production patch, issue-label or acceptance change here.
 
 ## Corrected status and result
 
@@ -67,6 +74,9 @@ terminal tactical RNG. Where semantic logs exist, observed movement/shot/melee/
 removal tuples agree, including the retained owner recording. The historical
 entry assumption control also retains its old expected result, with its missing
 runtime fields still explicitly assumed; it is not relabelled an observation.
+Three pilot selected-slot fields also remain unobserved and use the previously
+disclosed −1 default. The owner selected slot was observed. Research reproduced
+this qualification; no missing field was backfilled or result changed.
 
 The strict GoldenReplay.Passed result includes battle conclusion and comparison
 of recorded post-battle fields where the series supplies a post save. Fresh-mode

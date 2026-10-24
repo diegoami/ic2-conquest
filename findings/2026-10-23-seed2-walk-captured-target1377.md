@@ -15,7 +15,8 @@ candidate at that packet's publication, not native Windows acceptance.
 Current Main `b593c6e2` contains capture-once and the positive-troop shot guard.
 [Fresh current-Main verification](2026-10-25-current-main-battle-replay157.md)
 passes 318 strict recorded series for state and ordered draws with an empty
-expected-failure registry. That new audit has separate Research intake pending;
+expected-failure registry. That new audit is promoted by Research PR76 at
+`b90f6910493dbf3da5a333e45004e0b2e059270e`;
 it does not close #1355 or establish the installed Windows build's acceptance.
 **Tasks:** [remake #1377](https://github.com/diegoami/imperial_conquest_2/issues/1377),
 [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157), related #1324.

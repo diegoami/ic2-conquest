@@ -13,8 +13,11 @@ conquest163 remains separate and dependent on acceptance.
 
 New current-Main audit:
 `findings/2026-10-25-current-main-battle-replay157.md`, with public scalars under
-`runs/experiments/data/run-exp-battle-current157/`. It awaits its own Research
-intake; use the promoted version before changing acceptance claims.
+`runs/experiments/data/run-exp-battle-current157/`. Research PR76 merged at
+`b90f6910493dbf3da5a333e45004e0b2e059270e`:
+use the [promoted report](https://github.com/diegoami/imperial-conquest-2-research/blob/b90f6910493dbf3da5a333e45004e0b2e059270e/docs/reports/2026-10-25-current-main-battle-replay157.md)
+and its safe receipt before changing acceptance claims. Research independently
+rebuilt the verified source and reran these checks; no acceptance label changed.
 
 Audited pin b593c6e28939c1c7154f9a41d0436a8f14f352dc: fresh engine/test-helper
 build, no overlay/replacement general. All4 ordering source files equal the

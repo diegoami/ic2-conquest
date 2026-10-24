@@ -16,8 +16,9 @@ followed by captured-target/live-guard PR1387. The four ordering files in audite
 Main `b593c6e2` match the validated candidate bytes exactly. Fresh current-Main
 replay passes 318 strict state/draw series, 14 recorded entry controls including
 the owner case, and 2,420 tactical tests. See
-[the current-Main audit](2026-10-25-current-main-battle-replay157.md), pending its
-own Research intake. #1355/native acceptance remains separate. The pre-fix
+[the current-Main audit](2026-10-25-current-main-battle-replay157.md), promoted by
+Research PR76 at `b90f6910493dbf3da5a333e45004e0b2e059270e`.
+#1355/native acceptance remains separate. The pre-fix
 behavior described below is historical, not a claim against current Main.
 **Task:** [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157),
 following [the owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md).

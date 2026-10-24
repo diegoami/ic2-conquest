@@ -74,3 +74,17 @@ selected-slot fields were absent and used the preexisting−1default (already
 disclosed in Research67); owner selected-slot field was observed. Public
 recorded-runtime-assumptions-v1 and README clarify; no field backfilled or
 outcome changed. These remain conditional recorded-protocol comparisons.
+
+## Research76 promotion — 2026-10-25
+
+PR76 verified MERGED atb90f6910493dbf3da5a333e45004e0b2e059270e,
+head02b75cedd4175902ca4c5661da9f9eff24d1fa16. Read canonical current-Main
+report and docs/data/current-main157-intake-v1.json. Research independently
+rebuilt Mainb593, verified1228authoritative Git file blobs, strict318/fixed5/
+recorded14,2420tacticaltests/0failure/0skip, ordering6/movement5 and5862unchanged
+corpus files. Source/runtime qualifiers retained:3pilot selectedfields default−1,
+owner observed, historical assumptions not observations. No new Original game,
+label/production/installed-build/natural owner entry/Windows acceptance claim.
+CurrentMain source fixes merged;1355 stillopen/blocked,157open. Status metadata
+updated on current/historical findings and Main handoffs, no measurement changed.
+Baseline remainsfd62cb58 until metadata lands/relay succeeds. No new experiment.
