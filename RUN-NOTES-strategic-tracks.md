@@ -80,3 +80,25 @@ fix yet; source/control report and Main issue required. At-cap mixed control
 matches. Stored route is retained at arrival; next synthetic fresh-stack phase
 wanders while retaining route, but coincident CB40 stack behavior means this is
 not a universal after-arrival contract. Keep that limit explicit.
+
+Publication preparation: 94 native comparisons /227833 input-gate fields.
+35 economy matches,24 local diplomacy matches,23 provider matches,12 valid
+cargo comparisons (7matches/5whole-overflow discrepancies). Main issue1412
+filed with source/controls and derived-policy context. No production edits.
+Original overflow keeps whole units and preserves all troops in tested cases;
+receiver/no-slot/no-land and human UI remain untested. Existing1412 design-mode
+and safety decisions must be explicit; source report is a draft for intake.
+
+Artifact closure: explicit generated archive1131members /19787823bytes, SHA256
+d29926a6e430039072ec8e025f30ec0dcd8d412cabd775204aba429116649188.
+Drive file1SEmZSpSXU2l3VnPt-FkR8x7nEnnjTMN_, folder1Fzspq5V6nRtcDmxUpGlH6bh0hR0w5OvJ.
+Parent/size readback verified; no remote digest download claim. All1130payload
+hashes verified locally. Fresh recovery v1 started before bundle process exit
+and failed EOF without payload extraction; retained. After confirmed archive
+completion, recoveryv2 passes and compiled30phase+4mixed-unit JSON result rows
+match byte-for-byte. No original binary/owner input needed by native recovery.
+All prior logs/outputs retained, no generic private/runtime tree upload.
+
+Audit v1, Python compilation, diff checks and native builds pass. Self-review
+only, no external reviewer. Findings baseline remains1525f398 until merged and
+successfully relayed; final fetch/issue checkpoints and delivery receipt follow.

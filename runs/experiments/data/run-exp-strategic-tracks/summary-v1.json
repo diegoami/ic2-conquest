@@ -1,0 +1,23 @@
+{
+  "original_observed_phases": 45,
+  "exact_replayed_exits": 45,
+  "original_draws": 54,
+  "economy_comparisons": 35,
+  "economy_projection_matches": 35,
+  "diplomacy_busy_war_target_comparisons": 24,
+  "diplomacy_busy_war_target_matches": 24,
+  "fleet_provider_matches": 23,
+  "valid_cargo_comparisons": 12,
+  "cargo_matches": 7,
+  "embark_overflow_discrepancies": 5,
+  "all_native_input_gate_fields": 227833,
+  "main_followup": 1412,
+  "limits": [
+    "not whole-turn/native RNG parity",
+    "diplomacy alliance/trade candidate outputs are observations, not full parity assertions",
+    "eight invalid quality50 cargo v1 inputs retained and excluded; v2/v3 use valid quality7",
+    "provider rows recovered from persisted complete per-case output before v1 cargo import failure",
+    "route arrival retention proved; next fresh-stack phase is diagnostic, not universal coincident-line behavior",
+    "overflow no-land/no-free-slot/existing-receiver and human UI branches untested"
+  ]
+}

@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/runs/experiments/strategic-tracks/verify_bundle.py", line 6, in <module>
+    for item in tar.getmembers():
+                ~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.14/tarfile.py", line 2159, in getmembers
+    self._load()        # all members, we first have to
+    ~~~~~~~~~~^^
+  File "/usr/lib/python3.14/tarfile.py", line 2957, in _load
+    while self.next() is not None:
+          ~~~~~~~~~^^
+  File "/usr/lib/python3.14/tarfile.py", line 2860, in next
+    self.fileobj.seek(self.offset - 1)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/gzip.py", line 457, in seek
+    return self._buffer.seek(offset, whence)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/compression/_common/_streams.py", line 153, in seek
+    data = self.read(min(io.DEFAULT_BUFFER_SIZE, offset))
+  File "/usr/lib/python3.14/gzip.py", line 590, in read
+    raise EOFError("Compressed file ended before the "
+                   "end-of-stream marker was reached")
+EOFError: Compressed file ended before the end-of-stream marker was reached
