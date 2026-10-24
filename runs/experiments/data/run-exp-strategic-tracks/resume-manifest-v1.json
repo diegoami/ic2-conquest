@@ -1,0 +1,33 @@
+{
+  "authorization": "Owner: ok do all those; issue176/177/174 comments6386807039/6386807424/6386807798; resumed other topic after187",
+  "live_cases": [
+    {
+      "label": "ST-rom-hook-v1",
+      "observer": true,
+      "startup_seed": 1,
+      "input": "ROM720.SAV",
+      "orders": "one End turn 0720->0721, no human battle orders"
+    },
+    {
+      "label": "ST-rom-plain-v1",
+      "observer": false,
+      "startup_seed": 1,
+      "input": "ROM720.SAV",
+      "orders": "identical control"
+    }
+  ],
+  "gates": [
+    "360 CPU entry/return/capacity checks pass before live",
+    "exact complete before/after SAV observer/plain identity",
+    "capacity overflow fails closed",
+    "stop unexpected human battle",
+    "original phase replay with actual Random and exact exit RAM/seed comparison before attributing draws"
+  ],
+  "rng_scope": "Original draws logged during unmodified instruction replay of captured phases, conditional on whole captured RAM exit agreement; no claim of live per-draw hook",
+  "synthetic_next": [
+    "economy gates/city/order/type/amount/tax one-variable controls",
+    "diplomacy busy/protection/war/trade/alliance controls",
+    "fleet provider/disembark/route-lifetime boundaries"
+  ],
+  "preservation": "Exclusive unique outputs; never delete/overwrite saves or measurements, including failures. Text/hash tracked, approved generated binary archive only, per batch/30min commit/push. No owner1355/1388 or other-repo edits."
+}

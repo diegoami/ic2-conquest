@@ -1,0 +1,5 @@
+Unhandled exception. System.IO.InvalidDataException: Army 0, unit slot 0 has out-of-range quality code 50.
+   at IC2.Data.SaveArmyTable.Parse(Byte[] data) in /home/diego/projects/ic2-conquest/artifacts/run-exp-strategic-tracks/source-v2/src/IC2.Data/SaveArmyTable.cs:line 109
+   at IC2.Engine.Import.OriginalSaveImporter.Import(Byte[] data, String documentPath, World world, Ruleset ruleset, Scenario scenario, String saveId, String saveLabel) in /home/diego/projects/ic2-conquest/artifacts/run-exp-strategic-tracks/source-v2/src/IC2.Engine/Import/OriginalSaveImporter.cs:line 147
+   at Program.<<Main>$>g__Import|0_0(String path, <>c__DisplayClass0_0&) in /home/diego/projects/ic2-conquest/runs/experiments/strategic-tracks/FleetChecks.cs.txt:line 11
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/runs/experiments/strategic-tracks/FleetChecks.cs.txt:line 92
