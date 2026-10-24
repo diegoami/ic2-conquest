@@ -2,7 +2,11 @@
 
 **Tag:** [confirmed, partial: eleven generated strategic inputs, original Wine,
 matched decision-state original instructions and pinned production-native code].
-**Status:** draft for Research intake. [Conquest #171](https://github.com/diegoami/ic2-conquest/issues/171)
+**Status:** intaken by [Research PR69](https://github.com/diegoami/imperial-conquest-2-research/pull/69),
+main `cdb355fde49b7047d6164de26b2922054fb120ee`.
+[Canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/cdb355fde49b7047d6164de26b2922054fb120ee/docs/reports/2026-10-24-strategic-fidelity-pilot171.md).
+Promotion changes no measurement or production/Windows acceptance claim.
+[Conquest #171](https://github.com/diegoami/ic2-conquest/issues/171)
 tracks broader coverage; no production correction or complete strategic parity.
 Remake pin: `55d96876a98ba3bb7142ca7c1ecc0d1b61095c18`.
 
@@ -100,12 +104,12 @@ routine and preserve game RAM in these selectors. The swapped-capital pair
 isolates preference direction; the 29/30 and 297/298 boundaries isolate the
 stock/divisor differences and include positive agreement controls.
 
-**Research correction requested:**
-`docs/reports/2026-10-07-strategic-ai-turn.md` §3.3 currently describes the own-city
-rule as stock below `troops/100`. That statement is contradicted by this bounded
-x86/control evidence and should be corrected during intake. Describe the original
-capital term as a lower-is-better distance adjustment, rather than suggesting
-the native penalty is the same rule. The original's foreign +20 is likewise a
+**Research correction completed in PR69:**
+`docs/reports/2026-10-07-strategic-ai-turn.md` §3.3 previously described the own-city
+rule as stock below `troops/100`. Intake corrected it to the bounded x86/control
+result above, including the capital-favored lower-is-better distance adjustment.
+Automatic transfer capacity remains a separate `/100` rule.
+The original's foreign +20 is likewise a
 distance cost; its conversion into a maximized score needs sign care. Foreign
 preference was not independently isolated by these six controls.
 

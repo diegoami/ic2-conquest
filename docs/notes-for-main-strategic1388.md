@@ -3,9 +3,11 @@
 Conquest attributed the retained owner's End-turn boundary. Source finding:
 `findings/2026-10-24-seleucid-strategic-target-routing1388.md`; scalar evidence
 `runs/experiments/data/run-exp-seleucid1388/audit-v1.json`; runners in
-`runs/experiments/seleucid1388/`. Research intake/promotion is pending. Main
-should consume the promoted report when available; this note is the owner's
-paste-ready handoff, not a claim of canonical Research promotion.
+`runs/experiments/seleucid1388/`. Research PR69 is verified merged at
+`cdb355fde49b7047d6164de26b2922054fb120ee`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/cdb355fde49b7047d6164de26b2922054fb120ee/docs/reports/2026-10-24-seleucid-strategic-target-routing1388.md).
+Research independently reproduced retained controls; it did not launch another
+original/Wine game or implement a production correction.
 
 Original chooses enemy at191,95 (7000troops,score828), then its destination
 wrapper routes toward189,104. Remake3c186007 rejects the farther target using

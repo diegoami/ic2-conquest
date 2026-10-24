@@ -1,6 +1,10 @@
 # Strategic fidelity pilot #171
 
 Final finding: `findings/2026-10-24-strategic-fidelity-pilot171.md`.
+Intaken by Research PR69/main `cdb355fde49b7047d6164de26b2922054fb120ee`,
+canonical `docs/reports/2026-10-24-strategic-fidelity-pilot171.md`.
+Canonical section3.3/spec now correct destination thresholds/capital preference;
+automatic transfer capacity remains /100. Measurements unchanged.
 Final scalar result: `summary-v2.json`, `decision-ledger-v2.jsonl`,
 `case-summary-v2.csv`, `coverage-v1.csv`. Version1 results retain the first ten
 cases; v2 includes the separately declared isolated shortage case.

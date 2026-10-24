@@ -1,6 +1,9 @@
 # #1388: strategic target and routing boundary
 
 Finding: `findings/2026-10-24-seleucid-strategic-target-routing1388.md`.
+Intaken by Research PR69/main `cdb355fde49b7047d6164de26b2922054fb120ee`,
+canonical `docs/reports/2026-10-24-seleucid-strategic-target-routing1388.md`.
+This pointer update changes no evidence or production acceptance.
 `audit-v1.json` is the validated public scalar result; source blobs/build identity
 are in `source-pin-v1.json`. Scripts live in `runs/experiments/seleucid1388/`.
 All owner input/save/state/RAM/full-log hashes and binary evidence stay private
