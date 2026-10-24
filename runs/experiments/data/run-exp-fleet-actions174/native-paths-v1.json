@@ -1,0 +1,1245 @@
+[
+  {
+    "caseName": "cargo-positive",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": "army-3",
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 66
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          },
+          {
+            "X": 48,
+            "Y": 65
+          },
+          {
+            "X": 48,
+            "Y": 66
+          }
+        ],
+        "StopReason": 0,
+        "BlockedAt": null,
+        "MovesSpent": 4
+      }
+    ]
+  },
+  {
+    "caseName": "cargo-zero",
+    "label": "conditioned-direct",
+    "IsAccepted": false,
+    "canonical_state_equal": true,
+    "routes": []
+  },
+  {
+    "caseName": "phase-alliance",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 47,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-alliance",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-peace",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 47,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-peace",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-same-owner",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 47,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-score100",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 65
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          },
+          {
+            "X": 48,
+            "Y": 65
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 46,
+          "Y": 66
+        },
+        "MovesSpent": 3
+      }
+    ]
+  },
+  {
+    "caseName": "phase-score101",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 41,
+          "Y": 79
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          },
+          {
+            "X": 48,
+            "Y": 65
+          },
+          {
+            "X": 48,
+            "Y": 66
+          },
+          {
+            "X": 47,
+            "Y": 67
+          },
+          {
+            "X": 46,
+            "Y": 68
+          },
+          {
+            "X": 46,
+            "Y": 69
+          },
+          {
+            "X": 45,
+            "Y": 70
+          },
+          {
+            "X": 45,
+            "Y": 71
+          },
+          {
+            "X": 45,
+            "Y": 72
+          },
+          {
+            "X": 44,
+            "Y": 73
+          },
+          {
+            "X": 44,
+            "Y": 74
+          },
+          {
+            "X": 43,
+            "Y": 75
+          },
+          {
+            "X": 43,
+            "Y": 76
+          },
+          {
+            "X": 42,
+            "Y": 77
+          },
+          {
+            "X": 42,
+            "Y": 78
+          },
+          {
+            "X": 41,
+            "Y": 79
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 41,
+          "Y": 80
+        },
+        "MovesSpent": 17
+      }
+    ]
+  },
+  {
+    "caseName": "phase-stored-a",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-stored-a",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-stored-b",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-stored-b",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-target-construction",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 65
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          },
+          {
+            "X": 48,
+            "Y": 65
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 46,
+          "Y": 66
+        },
+        "MovesSpent": 3
+      }
+    ]
+  },
+  {
+    "caseName": "phase-trade",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 47,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-trade",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war-stronger",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 47,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war-stronger",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war-weaker",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war-weaker",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 48,
+          "Y": 64
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          },
+          {
+            "X": 48,
+            "Y": 64
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 48,
+          "Y": 65
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "phase-war-weaker",
+    "label": "full-ai-accepted:battle.attack-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": []
+  },
+  {
+    "caseName": "port-protected",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 186,
+          "Y": 90
+        },
+        "Destination": {
+          "X": 161,
+          "Y": 96
+        },
+        "EnteredCells": [
+          {
+            "X": 185,
+            "Y": 90
+          },
+          {
+            "X": 184,
+            "Y": 90
+          },
+          {
+            "X": 183,
+            "Y": 91
+          },
+          {
+            "X": 182,
+            "Y": 91
+          },
+          {
+            "X": 181,
+            "Y": 91
+          },
+          {
+            "X": 180,
+            "Y": 91
+          },
+          {
+            "X": 179,
+            "Y": 92
+          },
+          {
+            "X": 178,
+            "Y": 92
+          },
+          {
+            "X": 177,
+            "Y": 92
+          },
+          {
+            "X": 176,
+            "Y": 92
+          },
+          {
+            "X": 175,
+            "Y": 93
+          },
+          {
+            "X": 174,
+            "Y": 93
+          },
+          {
+            "X": 173,
+            "Y": 93
+          },
+          {
+            "X": 172,
+            "Y": 93
+          },
+          {
+            "X": 171,
+            "Y": 94
+          },
+          {
+            "X": 170,
+            "Y": 94
+          },
+          {
+            "X": 169,
+            "Y": 94
+          },
+          {
+            "X": 168,
+            "Y": 94
+          },
+          {
+            "X": 167,
+            "Y": 95
+          },
+          {
+            "X": 166,
+            "Y": 95
+          },
+          {
+            "X": 165,
+            "Y": 95
+          },
+          {
+            "X": 164,
+            "Y": 95
+          },
+          {
+            "X": 163,
+            "Y": 96
+          },
+          {
+            "X": 162,
+            "Y": 96
+          },
+          {
+            "X": 161,
+            "Y": 96
+          }
+        ],
+        "StopReason": 2,
+        "BlockedAt": null,
+        "MovesSpent": 25
+      }
+    ]
+  },
+  {
+    "caseName": "port-protected",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 186,
+          "Y": 90
+        },
+        "Destination": {
+          "X": 188,
+          "Y": 92
+        },
+        "EnteredCells": [
+          {
+            "X": 187,
+            "Y": 91
+          },
+          {
+            "X": 188,
+            "Y": 92
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 189,
+          "Y": 93
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "port-unprotected",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 185,
+          "Y": 89
+        },
+        "Destination": {
+          "X": 187,
+          "Y": 91
+        },
+        "EnteredCells": [
+          {
+            "X": 186,
+            "Y": 90
+          },
+          {
+            "X": 187,
+            "Y": 91
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 188,
+          "Y": 92
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "port-unprotected",
+    "label": "full-ai-accepted:naval.move-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 185,
+          "Y": 89
+        },
+        "Destination": {
+          "X": 187,
+          "Y": 91
+        },
+        "EnteredCells": [
+          {
+            "X": 186,
+            "Y": 90
+          },
+          {
+            "X": 187,
+            "Y": 91
+          }
+        ],
+        "StopReason": 1,
+        "BlockedAt": {
+          "X": 188,
+          "Y": 92
+        },
+        "MovesSpent": 2
+      }
+    ]
+  },
+  {
+    "caseName": "port-unprotected",
+    "label": "full-ai-accepted:battle.attack-fleet",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": []
+  },
+  {
+    "caseName": "rough-ai-one",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": []
+  },
+  {
+    "caseName": "rough-ai-three",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 49,
+          "Y": 63
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          }
+        ],
+        "StopReason": 0,
+        "BlockedAt": null,
+        "MovesSpent": 3
+      }
+    ]
+  },
+  {
+    "caseName": "rough-human-one",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": []
+  },
+  {
+    "caseName": "stored-one",
+    "label": "conditioned-direct",
+    "IsAccepted": true,
+    "canonical_state_equal": true,
+    "routes": [
+      {
+        "Kind": 1,
+        "EntityId": "fleet-0",
+        "OwnerId": "carthage",
+        "CarrierId": null,
+        "CargoId": null,
+        "Origin": {
+          "X": 49,
+          "Y": 62
+        },
+        "Destination": {
+          "X": 49,
+          "Y": 63
+        },
+        "EnteredCells": [
+          {
+            "X": 49,
+            "Y": 63
+          }
+        ],
+        "StopReason": 2,
+        "BlockedAt": null,
+        "MovesSpent": 1
+      }
+    ]
+  },
+  {
+    "caseName": "stored-zero",
+    "label": "conditioned-direct",
+    "IsAccepted": false,
+    "canonical_state_equal": true,
+    "routes": []
+  }
+]

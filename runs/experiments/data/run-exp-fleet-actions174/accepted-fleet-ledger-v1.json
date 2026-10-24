@@ -1,0 +1,116 @@
+[
+  {
+    "case": "phase-alliance",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 2,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-peace",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 0,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-stored-a",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 0,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-stored-b",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 0,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-trade",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 1,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-war",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-war-stronger",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-war-weaker",
+    "kind": "naval.move-fleet",
+    "goal": [
+      48,
+      65
+    ],
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "phase-war-weaker",
+    "kind": "battle.attack-fleet",
+    "goal": false,
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "port-protected",
+    "kind": "naval.move-fleet",
+    "goal": [
+      189,
+      93
+    ],
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "port-unprotected",
+    "kind": "naval.move-fleet",
+    "goal": [
+      188,
+      92
+    ],
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  },
+  {
+    "case": "port-unprotected",
+    "kind": "battle.attack-fleet",
+    "goal": false,
+    "relation_at_dispatch": 3,
+    "status": "actually accepted in full native AiTurn; phase history differs from original fleet-only run"
+  }
+]

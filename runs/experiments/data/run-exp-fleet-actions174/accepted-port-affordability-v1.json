@@ -1,0 +1,42 @@
+[
+  {
+    "caseName": "port-protected",
+    "adjacent": true,
+    "IsAccepted": false,
+    "rejection": "battle.target-docked-at-own-city: You cannot attack a fleet docked at its own city !",
+    "rejected_state_unchanged": true
+  },
+  {
+    "caseName": "port-unprotected",
+    "adjacent": true,
+    "IsAccepted": true,
+    "rejection": null,
+    "rejected_state_unchanged": false
+  },
+  {
+    "caseName": "ai-unaffordable",
+    "IsAccepted": true,
+    "moves_before": 1,
+    "moves_after": 1,
+    "human": false,
+    "rough": true,
+    "rough_cost": 3,
+    "position": [
+      49,
+      62
+    ]
+  },
+  {
+    "caseName": "human-unaffordable",
+    "IsAccepted": true,
+    "moves_before": 1,
+    "moves_after": 1,
+    "human": true,
+    "rough": true,
+    "rough_cost": 3,
+    "position": [
+      49,
+      62
+    ]
+  }
+]

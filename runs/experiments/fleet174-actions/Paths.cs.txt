@@ -1,0 +1,41 @@
+using System.Reflection;
+using System.Text.Json;
+using IC2.Engine.Core;
+using IC2.Engine.Model;
+using IC2.Engine.Serialization;
+using IC2.Engine.Presentation;
+using IC2.Engine.Naval.Commands;
+using IC2.Engine.Battle.Commands;
+var repo=GameDataRepository.Load(Path.Combine(args[0],"data"));var ctx=repo.Resolve("classical-mediterranean");var rules=repo.RulesetById("classical-faithful")!;
+var root=args[1];using var source=JsonDocument.Parse(File.ReadAllText(args[2]));var rows=new List<object>();
+var timelineType=typeof(GameSession).Assembly.GetType("IC2.Engine.Presentation.StrategicTravelTimeline")!;
+var observerProperty=typeof(CommandDispatcher).GetProperty("StrategicObserver",BindingFlags.Instance|BindingFlags.NonPublic)!;
+var complete=timelineType.GetMethod("Complete",BindingFlags.Instance|BindingFlags.NonPublic)!;
+GameState Load(string path)=>JsonSerializer.Deserialize<GameState>(File.ReadAllText(path))!;
+object Replay(string caseName,string label,GameState before,GameState expected,ICommand command,bool mustAccept)
+{
+ var dispatcher=new CommandDispatcher(SystemRegistry.FromEngineAssembly(),rules,ctx.World,NullEventSink.Instance);
+ var timeline=Activator.CreateInstance(timelineType,nonPublic:true)!;observerProperty.SetValue(dispatcher,timeline);
+ var result=dispatcher.Dispatch(before,command);var batch=(StrategicTravelBatch)complete.Invoke(timeline,new object[]{result.State,false,false})!;
+ if(result.IsAccepted!=mustAccept||JsonSerializer.Serialize(result.State)!=JsonSerializer.Serialize(expected))throw new Exception("Observed replay changed accepted state: "+caseName+label);
+ return new{caseName,label,result.IsAccepted,canonical_state_equal=true,routes=batch.Steps.SelectMany(s=>s.Routes).ToArray()};
+}
+foreach(var row in source.RootElement.EnumerateArray())
+{
+ var name=row.GetProperty("caseName").GetString()!;var folder=Path.Combine(root,"native-v2",name);var direct=row.GetProperty("direct");
+ if(direct.ValueKind!=JsonValueKind.Null)
+ {
+  var goal=direct.GetProperty("goal");rows.Add(Replay(name,"conditioned-direct",Load(Path.Combine(folder,"direct-before.json")),Load(Path.Combine(folder,"direct-after.json")),new MoveFleetCommand("carthage","fleet-0",goal[0].GetInt32(),goal[1].GetInt32()),direct.GetProperty("IsAccepted").GetBoolean()));
+ }
+ int counter=0;
+ foreach(var command in row.GetProperty("ai").GetProperty("commands").EnumerateArray())
+ {
+  string kind=command.GetProperty("Kind").GetString()!;
+  if(kind is not ("naval.move-fleet" or "battle.attack-fleet"))continue;
+  var prefix=Path.Combine(folder,$"accepted-fleet-{counter++:03}");
+  ICommand cmd=kind=="naval.move-fleet"?command.GetProperty("command").Deserialize<MoveFleetCommand>()!:command.GetProperty("command").Deserialize<AttackFleetCommand>()!;
+  rows.Add(Replay(name,"full-ai-accepted:"+kind,Load(prefix+"-before.json"),Load(prefix+"-after.json"),cmd,command.GetProperty("IsAccepted").GetBoolean()));
+ }
+}
+using(var f=new FileStream(args[3],FileMode.CreateNew))JsonSerializer.Serialize(f,rows,new JsonSerializerOptions{WriteIndented=true});
+Console.WriteLine(JsonSerializer.Serialize(new{replays=rows.Count,all_accepted_states_unchanged_with_production_path_observer=true}));

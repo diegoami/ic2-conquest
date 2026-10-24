@@ -1,0 +1,7 @@
+Unhandled exception. System.FormatException: Input string was not in a correct format. Failure to parse near offset 1. Expected an ASCII digit.
+   at System.Text.ValueStringBuilder.AppendFormatHelper(IFormatProvider provider, String format, ReadOnlySpan`1 args)
+   at System.IO.StreamWriter.WriteFormatHelper(String format, ReadOnlySpan`1 args, Boolean appendNewLine)
+   at System.IO.StreamWriter.WriteLine(String format, Object arg0)
+   at System.IO.TextWriter.SyncTextWriter.WriteLine(String format, Object arg0)
+   at System.Console.WriteLine(String format, Object arg0)
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/runs/experiments/fleet174-actions/Program.cs:line 45
