@@ -143,3 +143,9 @@ hashes/lengths/exact1131inventory verified. Retained compiled recovery30phase+
 every existing field matches. No old output modified, native rebuild/freshgame/
 full diplomacy/global RNG/Windows claim. #1412 remains open, Main owns correction.
 Metadata recorded alongside city-army187 publication; no new study auto-started.
+
+Research74 source promotion/status landed via conquest PR198/main33c72eb9,
+with successful metadata relay to the reachable Research thread. Canonical
+promotion posted on Main1412 and conquest174/176/177 (comment IDs in
+RUN-NOTES-city-army187.md). Last findings baseline now33c72eb9b53176a2b8feb04bfce95b41072dc1c3.
+Old measurements unchanged; the newer city-selector report remains pending.
