@@ -1,0 +1,13 @@
+family,comparison_level,observations,result,remaining
+enemy-city selection,same-input helper comparison,112,51 original winners rejected by native direct walker,boundary/terrain/fleet eligibility expansion
+enemy-army selection,same-input helper comparison,112,55 original winners rejected by native direct walker,boundary/terrain/fleet eligibility expansion
+resupply-city selection,same-input helper comparison plus six synthetic controls,112,14 raw matches; original divisor/stock/capital rules differ,faithful rule/provenance correction and foreign-city controls
+tree branch kind,same-input branch comparison plus original-score counterfactual,112,58 own-scorer matches;112 original-score matches,threshold boundaries and mercenary continuations
+army route and destination,observed call arguments and accepted native routes,111,102 first original destination calls replayed; no complete paired route comparator in this pilot,original destination-wrapper/route/contact control expansion
+homeland defence,observed original intercept destinations,26,Seleucid response observed in threat case,matched dispatch selection/order and threat-budget capture
+fleet destinations,observed original calls; native fleet orders,18,original destination arguments retained; native order counts retained separately,same-input hunt/port/ferry scoring and full movement
+automatic supply and money,staged inputs plus original post-prepass snapshots,2,nearby0/0 becomes500/564; isolated0/0 stays0/0,paired per-provider transfer and hire loop logs
+recruitment,accepted native commands and original resulting state,318,outcome observations only,original budget gates and exact recruitment decision/RNG tracing
+diplomacy,accepted native commands plus original notices/relations,209,outcome observations only; different RNG/order histories,exact original candidates/war/trade roll and execution-order tracing
+economy,resulting state snapshots,11,nation resources compared as different continuations,original phase boundary and treasury/budget/stock decisions
+multi-turn and all16starts,not run,0,six human starts and one End turn per eleven distinct inputs,after attribution/corrections add all16starts and3-5turn continuations

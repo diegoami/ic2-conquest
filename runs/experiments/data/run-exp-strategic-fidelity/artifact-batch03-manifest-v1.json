@@ -1,0 +1,20 @@
+{
+  "archive": "terrain-sidecars-batch03.tar.gz",
+  "bytes": 12551,
+  "sha256": "d52e297b3211890af5c51dc917c2cb0d7a3c9d71419cd2012e45ef1c84b2d620",
+  "members": [
+    {
+      "name": "data/worlds/classical-mediterranean.terrain.b64",
+      "bytes": 119469,
+      "sha256": "a358d65dbad5da5131d362b9e5515348aea830e62de60ea9e692bff05137c476"
+    },
+    {
+      "name": "data/worlds/italy-500bc.terrain.b64",
+      "bytes": 129861,
+      "sha256": "5bf6640b4d7cbe75184d6a9a5da733967e543e6079fe09d1c87fc8b252fa6fde"
+    }
+  ],
+  "member_count": 2,
+  "reason": "Required native terrain sidecars omitted by batch01 JSON-only selector; batch01/02 preserved.",
+  "source_pin": "55d96876a98ba3bb7142ca7c1ecc0d1b61095c18"
+}

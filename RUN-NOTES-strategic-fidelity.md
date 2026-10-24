@@ -73,3 +73,43 @@ live use; Probe compile failures retained (parenthesis and missing namespace).
 Raw disassembly has two trailing blank operand spaces; keep measurement bytes,
 check authored source/docs separately. Code/data batches committed and pushed.
 No external reviewer/delegate, package install or native Computer Use used.
+
+## END — expanded pilot complete, publication pending
+
+Isolated case completed0720→0721. Its Ptolemaic decision retains0money/0supply,
+56400troops,morale64,moves8; the nearby shortage case was correctly observed
+refilling to500/564. Final manifestv3 has11byte-distinct inputs. Final analysis
+summary-v2:112original states,290524input gate checks,58/112branch agreement,
+61/112city target agreement,57/112army target agreement,14/112raw resupply
+agreement,9/109branch+primary-destination agreement (3mercenary continuations
+unresolved),102replayed first calls observed equal. Original-score native
+counterfactual112/112branch kinds. All51city and55army target differences reject
+the original winner by native direct-walk reachability; overlaps are not separate
+bugs. Coverage-v1 explicitly distinguishes local comparisons, observed outcomes
+and future families. Original13runs (11observed+2plain), native12normal including
+one duplicate plus one unobserved control. All runs ended; no battle orders.
+
+Generated evidence supplement02:42members,1301860bytes, SHA
+e3dfd26a4607d20832790f6e139daec5c10543734971c560f79550e500c519cc,
+Drive1cF2nLkQPvkTMl98UIuG7lPm2VEqr3v1z. Fresh artifact recovery exposed missing
+native terrain sidecars from batch01's JSON-only allowlist. Full failure report
+read and retained; no blind retry. Added pinned sidecars in NEW batch03,
+2members,12551bytes,SHA d52e297b3211890af5c51dc917c2cb0d7a3c9d71419cd2012e45ef1c84b2d620,
+Drive1ICs45mHD4lvbV7Utol6H-AQAv5VDGw5D. Old bundles unchanged. All three remote
+sizes/parents read back. Recovery-smoke-v2 rehashes499members and executes latest
+retained tool on recovered data:11rows byte-identical. No remote digest download
+claimed. This recovery is a native diagnostic replay, not a fresh game run.
+
+Finding2026-10-24-strategic-fidelity-pilot171.md, evidence README and owner-carried
+Main handoff ready. Request correction to canonical strategic-ai-turn§3.3:
+original destination thresholdtroops/1000, own stock above it and capital-favored
+lower adjusted distance; automatic supply-transfer quantity is a separate rule.
+Original/new native greedy-loop, foreign resupply preference, full homeland/fleet/
+economy/diplomacy RNG and broadercampaign acceptance remain bounded/unresolved.
+No original-fidelity code correction or optional Improved policy implementation.
+
+Python compilation and authored code/docs whitespace pass. Two raw disassembly
+trailing operand spaces preserved as measurements. Failed compile/decoder/recovery
+attempts retained. Eleven unrelated owner files preserved. Next: publish PR/checks,
+post actual source on171, relay landed finding to Research, record final reported/
+delivered baseline. Issue171 remains open for the documented remaining coverage.
