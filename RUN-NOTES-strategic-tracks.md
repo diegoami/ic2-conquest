@@ -50,3 +50,14 @@ then gated on complete captured exit RAM/seed identity; no claim of a live
 per-draw hook. Resume manifest declares generated ROM720 seed1 observer/plain
 one-End-turn pair before launching. No owner inputs, human battle orders or
 native Windows Computer Use. All prior measurements preserved.
+
+First resumed batch: generated ROM720 seed1 observer/plain both complete0721.
+Complete before and after SAV byte identity passes (live-inertness-v1.json).
+90 snapshots form45 actual original phase boundaries (15 each diplomacy,
+economy,fleet). Unmodified original-instruction replays match all45 complete
+captured exit RAM blocks including RNG.54 actual draws recorded: diplomacy12,
+economy42, fleet0. These are replay draw logs gated by live phase exit identity,
+not live per-draw instrumentation. No game/RNG/presentation helper replacement.
+Generated saves ST176-ST-rom-{hook,plain}-v1-{before,after}.SAV; all binaries
+hashed in SAVES.sha256. No human battle orders/Windows restart. Native local
+comparisons and declared synthetic boundaries next; no parity finding yet.

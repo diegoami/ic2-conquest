@@ -1,0 +1,1722 @@
+[
+  {
+    "index": 0,
+    "phase": "diplomacy",
+    "nation": 4,
+    "draws": [
+      {
+        "bound": 10,
+        "seed_before": 2395332355,
+        "return_address": 4521268,
+        "result": 8,
+        "seed_after": 3774015248
+      },
+      {
+        "bound": 20,
+        "seed_before": 3774015248,
+        "return_address": 4521318,
+        "result": 7,
+        "seed_after": 1549976401
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x449b40",
+        "eax": 4,
+        "edx": 0,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653060,
+        "edx": 3,
+        "ecx": 4653057
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4,
+        "edx": 6,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653060,
+        "edx": 8,
+        "ecx": 4653057
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 2395332355,
+    "seed_after": 1549976401,
+    "expected_seed_after": 1549976401
+  },
+  {
+    "index": 2,
+    "phase": "economy",
+    "nation": 4,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 17150,
+        "edx": 1966240,
+        "ecx": 2687119
+      },
+      {
+        "function": "0x450858",
+        "eax": 1172,
+        "edx": 1966240,
+        "ecx": 2687119
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1549976401,
+    "seed_after": 1549976401,
+    "expected_seed_after": 1549976401
+  },
+  {
+    "index": 4,
+    "phase": "fleet",
+    "nation": 4,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1549976401,
+    "seed_after": 1549976401,
+    "expected_seed_after": 1549976401
+  },
+  {
+    "index": 6,
+    "phase": "diplomacy",
+    "nation": 10,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 1549976401,
+        "return_address": 4521318,
+        "result": 7,
+        "seed_after": 1563137174
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x449b40",
+        "eax": 10,
+        "edx": 3,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 10,
+        "edx": 5,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 10,
+        "edx": 8,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 10,
+        "edx": 5,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653066,
+        "edx": 11,
+        "ecx": 4653057
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1549976401,
+    "seed_after": 1563137174,
+    "expected_seed_after": 1563137174
+  },
+  {
+    "index": 8,
+    "phase": "economy",
+    "nation": 10,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 9055,
+        "edx": 1966240,
+        "ecx": 1048712
+      },
+      {
+        "function": "0x450858",
+        "eax": 2930,
+        "edx": 1966240,
+        "ecx": 1048712
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 14
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1563137174,
+    "seed_after": 1563137174,
+    "expected_seed_after": 1563137174
+  },
+  {
+    "index": 10,
+    "phase": "fleet",
+    "nation": 10,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1563137174,
+    "seed_after": 1563137174,
+    "expected_seed_after": 1563137174
+  },
+  {
+    "index": 12,
+    "phase": "diplomacy",
+    "nation": 12,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x449b40",
+        "eax": 12,
+        "edx": 5,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 12,
+        "edx": 6,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 12,
+        "edx": 8,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 12,
+        "edx": 5,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653068,
+        "edx": 15,
+        "ecx": 4653057
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1563137174,
+    "seed_after": 1563137174,
+    "expected_seed_after": 1563137174
+  },
+  {
+    "index": 14,
+    "phase": "economy",
+    "nation": 12,
+    "draws": [
+      {
+        "bound": 100,
+        "seed_before": 1563137174,
+        "return_address": 4522509,
+        "result": 62,
+        "seed_after": 2670149359
+      },
+      {
+        "bound": 2800,
+        "seed_before": 2670149359,
+        "return_address": 4522609,
+        "result": 2184,
+        "seed_after": 3350165164
+      },
+      {
+        "bound": 100,
+        "seed_before": 3350165164,
+        "return_address": 4522509,
+        "result": 45,
+        "seed_after": 1962803549
+      },
+      {
+        "bound": 4800,
+        "seed_before": 1962803549,
+        "return_address": 4522609,
+        "result": 985,
+        "seed_after": 881982162
+      },
+      {
+        "bound": 100,
+        "seed_before": 881982162,
+        "return_address": 4522509,
+        "result": 69,
+        "seed_after": 2998808091
+      },
+      {
+        "bound": 2800,
+        "seed_before": 2998808091,
+        "return_address": 4522609,
+        "result": 2344,
+        "seed_after": 3595883144
+      },
+      {
+        "bound": 100,
+        "seed_before": 3595883144,
+        "return_address": 4522509,
+        "result": 75,
+        "seed_after": 3228974249
+      },
+      {
+        "bound": 5600,
+        "seed_before": 3228974249,
+        "return_address": 4522609,
+        "result": 5050,
+        "seed_after": 3873329998
+      },
+      {
+        "bound": 100,
+        "seed_before": 3873329998,
+        "return_address": 4522509,
+        "result": 18,
+        "seed_after": 800839815
+      },
+      {
+        "bound": 12000,
+        "seed_before": 800839815,
+        "return_address": 4522609,
+        "result": 9306,
+        "seed_after": 3330856612
+      },
+      {
+        "bound": 100,
+        "seed_before": 3330856612,
+        "return_address": 4522509,
+        "result": 26,
+        "seed_after": 1148764469
+      },
+      {
+        "bound": 12000,
+        "seed_before": 1148764469,
+        "return_address": 4522609,
+        "result": 3545,
+        "seed_after": 1268980234
+      },
+      {
+        "bound": 100,
+        "seed_before": 1268980234,
+        "return_address": 4522509,
+        "result": 70,
+        "seed_after": 3018631731
+      },
+      {
+        "bound": 2800,
+        "seed_before": 3018631731,
+        "return_address": 4522609,
+        "result": 1279,
+        "seed_after": 1962516224
+      },
+      {
+        "bound": 100,
+        "seed_before": 1962516224,
+        "return_address": 4522509,
+        "result": 96,
+        "seed_after": 4141619969
+      },
+      {
+        "bound": 2000,
+        "seed_before": 4141619969,
+        "return_address": 4522609,
+        "result": 376,
+        "seed_after": 809569030
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x4504f4",
+        "eax": 32854,
+        "edx": 1966240,
+        "ecx": 2490560
+      },
+      {
+        "function": "0x4502e0",
+        "eax": 8449974,
+        "edx": 0,
+        "ecx": 4686204
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 3,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 4,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 5,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 6,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 7,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 8,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 9,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 10,
+        "edx": 218,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x450768",
+        "eax": 458839,
+        "edx": 458839,
+        "ecx": 200
+      },
+      {
+        "function": "0x450858",
+        "eax": 3516,
+        "edx": 458839,
+        "ecx": 200
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1563137174,
+    "seed_after": 809569030,
+    "expected_seed_after": 809569030
+  },
+  {
+    "index": 16,
+    "phase": "fleet",
+    "nation": 12,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 809569030,
+    "seed_after": 809569030,
+    "expected_seed_after": 809569030
+  },
+  {
+    "index": 18,
+    "phase": "diplomacy",
+    "nation": 15,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 809569030,
+        "return_address": 4521318,
+        "result": 0,
+        "seed_after": 52711199
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x449b40",
+        "eax": 15,
+        "edx": 11,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653071,
+        "edx": 6,
+        "ecx": 4653057
+      },
+      {
+        "function": "0x449b40",
+        "eax": 15,
+        "edx": 12,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653071,
+        "edx": 5,
+        "ecx": 4653057
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 809569030,
+    "seed_after": 52711199,
+    "expected_seed_after": 52711199
+  },
+  {
+    "index": 20,
+    "phase": "economy",
+    "nation": 15,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 12110,
+        "edx": 1966240,
+        "ecx": 2490538
+      },
+      {
+        "function": "0x450858",
+        "eax": 4395,
+        "edx": 1966240,
+        "ecx": 2490538
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 72,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 22000,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 52711199,
+    "seed_after": 52711199,
+    "expected_seed_after": 52711199
+  },
+  {
+    "index": 22,
+    "phase": "fleet",
+    "nation": 15,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 52711199,
+    "seed_after": 52711199,
+    "expected_seed_after": 52711199
+  },
+  {
+    "index": 24,
+    "phase": "diplomacy",
+    "nation": 9,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 52711199,
+        "return_address": 4521318,
+        "result": 4,
+        "seed_after": 964265884
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x449b40",
+        "eax": 9,
+        "edx": 5,
+        "ecx": 1
+      },
+      {
+        "function": "0x449b40",
+        "eax": 9,
+        "edx": 11,
+        "ecx": 1
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 52711199,
+    "seed_after": 964265884,
+    "expected_seed_after": 964265884
+  },
+  {
+    "index": 26,
+    "phase": "economy",
+    "nation": 9,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 0,
+        "edx": 2293926,
+        "ecx": 2556032
+      },
+      {
+        "function": "0x450858",
+        "eax": 2637,
+        "edx": 2293926,
+        "ecx": 2556032
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 14
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 964265884,
+    "seed_after": 964265884,
+    "expected_seed_after": 964265884
+  },
+  {
+    "index": 28,
+    "phase": "fleet",
+    "nation": 9,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 964265884,
+    "seed_after": 964265884,
+    "expected_seed_after": 964265884
+  },
+  {
+    "index": 30,
+    "phase": "diplomacy",
+    "nation": 5,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 964265884,
+        "return_address": 4521318,
+        "result": 17,
+        "seed_after": 3861648909
+      }
+    ],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 964265884,
+    "seed_after": 3861648909,
+    "expected_seed_after": 3861648909
+  },
+  {
+    "index": 32,
+    "phase": "economy",
+    "nation": 5,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 20200,
+        "edx": 2293926,
+        "ecx": 5832773
+      },
+      {
+        "function": "0x450858",
+        "eax": 1465,
+        "edx": 2293926,
+        "ecx": 5832773
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 14
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3861648909,
+    "seed_after": 3861648909,
+    "expected_seed_after": 3861648909
+  },
+  {
+    "index": 34,
+    "phase": "fleet",
+    "nation": 5,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3861648909,
+    "seed_after": 3861648909,
+    "expected_seed_after": 3861648909
+  },
+  {
+    "index": 36,
+    "phase": "diplomacy",
+    "nation": 3,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 3861648909,
+        "return_address": 4521318,
+        "result": 6,
+        "seed_after": 1386422850
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x449b40",
+        "eax": 3,
+        "edx": 10,
+        "ecx": 0
+      },
+      {
+        "function": "0x449b40",
+        "eax": 4653059,
+        "edx": 5,
+        "ecx": 4653057
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3861648909,
+    "seed_after": 1386422850,
+    "expected_seed_after": 1386422850
+  },
+  {
+    "index": 38,
+    "phase": "economy",
+    "nation": 3,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 18112,
+        "edx": 2293926,
+        "ecx": 6160574
+      },
+      {
+        "function": "0x450858",
+        "eax": 879,
+        "edx": 2293926,
+        "ecx": 6160574
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1386422850,
+    "seed_after": 1386422850,
+    "expected_seed_after": 1386422850
+  },
+  {
+    "index": 40,
+    "phase": "fleet",
+    "nation": 3,
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 1386422850,
+        "return_address": 4500125,
+        "result": 3,
+        "seed_after": 3706303307
+      }
+    ],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1386422850,
+    "seed_after": 3706303307,
+    "expected_seed_after": 3706303307
+  },
+  {
+    "index": 42,
+    "phase": "diplomacy",
+    "nation": 1,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3706303307,
+    "seed_after": 3706303307,
+    "expected_seed_after": 3706303307
+  },
+  {
+    "index": 44,
+    "phase": "economy",
+    "nation": 1,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 34401,
+        "edx": 2293926,
+        "ecx": 5111901
+      },
+      {
+        "function": "0x450858",
+        "eax": 293,
+        "edx": 4833926,
+        "ecx": 5111808
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 5177437
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3706303307,
+    "seed_after": 3706303307,
+    "expected_seed_after": 3706303307
+  },
+  {
+    "index": 46,
+    "phase": "fleet",
+    "nation": 1,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3706303307,
+    "seed_after": 3706303307,
+    "expected_seed_after": 3706303307
+  },
+  {
+    "index": 48,
+    "phase": "diplomacy",
+    "nation": 7,
+    "draws": [
+      {
+        "bound": 10,
+        "seed_before": 3706303307,
+        "return_address": 4521268,
+        "result": 7,
+        "seed_after": 3277532280
+      },
+      {
+        "bound": 20,
+        "seed_before": 3277532280,
+        "return_address": 4521318,
+        "result": 19,
+        "seed_after": 4151688793
+      }
+    ],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3706303307,
+    "seed_after": 4151688793,
+    "expected_seed_after": 4151688793
+  },
+  {
+    "index": 50,
+    "phase": "economy",
+    "nation": 7,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 0,
+        "edx": 2293926,
+        "ecx": 4063384
+      },
+      {
+        "function": "0x450858",
+        "eax": 2051,
+        "edx": 2293926,
+        "ecx": 4063384
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 14
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 4151688793,
+    "seed_after": 4151688793,
+    "expected_seed_after": 4151688793
+  },
+  {
+    "index": 52,
+    "phase": "fleet",
+    "nation": 7,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 4151688793,
+    "seed_after": 4151688793,
+    "expected_seed_after": 4151688793
+  },
+  {
+    "index": 54,
+    "phase": "diplomacy",
+    "nation": 14,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 4151688793,
+        "return_address": 4521318,
+        "result": 5,
+        "seed_after": 1178246078
+      }
+    ],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 4151688793,
+    "seed_after": 1178246078,
+    "expected_seed_after": 1178246078
+  },
+  {
+    "index": 56,
+    "phase": "economy",
+    "nation": 14,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 19266,
+        "edx": 2293926,
+        "ecx": 3735858
+      },
+      {
+        "function": "0x450858",
+        "eax": 4102,
+        "edx": 2293926,
+        "ecx": 3735858
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1178246078,
+    "seed_after": 1178246078,
+    "expected_seed_after": 1178246078
+  },
+  {
+    "index": 58,
+    "phase": "fleet",
+    "nation": 14,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1178246078,
+    "seed_after": 1178246078,
+    "expected_seed_after": 1178246078
+  },
+  {
+    "index": 60,
+    "phase": "diplomacy",
+    "nation": 8,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1178246078,
+    "seed_after": 1178246078,
+    "expected_seed_after": 1178246078
+  },
+  {
+    "index": 62,
+    "phase": "economy",
+    "nation": 8,
+    "draws": [
+      {
+        "bound": 100,
+        "seed_before": 1178246078,
+        "return_address": 4522509,
+        "result": 39,
+        "seed_after": 1700987575
+      },
+      {
+        "bound": 4800,
+        "seed_before": 1700987575,
+        "return_address": 4522609,
+        "result": 4013,
+        "seed_after": 3591203220
+      },
+      {
+        "bound": 100,
+        "seed_before": 3591203220,
+        "return_address": 4522509,
+        "result": 2,
+        "seed_after": 89350117
+      },
+      {
+        "bound": 12000,
+        "seed_before": 89350117,
+        "return_address": 4522609,
+        "result": 2963,
+        "seed_after": 1060828026
+      },
+      {
+        "bound": 100,
+        "seed_before": 1060828026,
+        "return_address": 4522509,
+        "result": 5,
+        "seed_after": 226601315
+      },
+      {
+        "bound": 12000,
+        "seed_before": 226601315,
+        "return_address": 4522609,
+        "result": 6092,
+        "seed_after": 2180471536
+      },
+      {
+        "bound": 100,
+        "seed_before": 2180471536,
+        "return_address": 4522509,
+        "result": 42,
+        "seed_after": 1815643825
+      },
+      {
+        "bound": 4800,
+        "seed_before": 1815643825,
+        "return_address": 4522609,
+        "result": 1,
+        "seed_after": 1434998
+      },
+      {
+        "bound": 100,
+        "seed_before": 1434998,
+        "return_address": 4522509,
+        "result": 15,
+        "seed_after": 644764495
+      },
+      {
+        "bound": 12000,
+        "seed_before": 644764495,
+        "return_address": 4522609,
+        "result": 8511,
+        "seed_after": 3046399116
+      },
+      {
+        "bound": 100,
+        "seed_before": 3046399116,
+        "return_address": 4522509,
+        "result": 31,
+        "seed_after": 1342045885
+      },
+      {
+        "bound": 12000,
+        "seed_before": 1342045885,
+        "return_address": 4522609,
+        "result": 4744,
+        "seed_after": 1698131378
+      },
+      {
+        "bound": 100,
+        "seed_before": 1698131378,
+        "return_address": 4522509,
+        "result": 54,
+        "seed_after": 2352278651
+      },
+      {
+        "bound": 4800,
+        "seed_before": 2352278651,
+        "return_address": 4522609,
+        "result": 1252,
+        "seed_after": 1120930408
+      },
+      {
+        "bound": 100,
+        "seed_before": 1120930408,
+        "return_address": 4522509,
+        "result": 15,
+        "seed_after": 648926217
+      },
+      {
+        "bound": 12000,
+        "seed_before": 648926217,
+        "return_address": 4522609,
+        "result": 3515,
+        "seed_after": 1258407982
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x4504f4",
+        "eax": 33669,
+        "edx": 2293926,
+        "ecx": 2752554
+      },
+      {
+        "function": "0x4502e0",
+        "eax": 8449974,
+        "edx": 0,
+        "ecx": 4681516
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 4,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 5,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 6,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 7,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 8,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 9,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 10,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 11,
+        "edx": 23,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x450768",
+        "eax": 655441,
+        "edx": 655441,
+        "ecx": 200
+      },
+      {
+        "function": "0x450858",
+        "eax": 2344,
+        "edx": 655441,
+        "ecx": 200
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1178246078,
+    "seed_after": 1258407982,
+    "expected_seed_after": 1258407982
+  },
+  {
+    "index": 64,
+    "phase": "fleet",
+    "nation": 8,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1258407982,
+    "seed_after": 1258407982,
+    "expected_seed_after": 1258407982
+  },
+  {
+    "index": 66,
+    "phase": "diplomacy",
+    "nation": 6,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3735939168,
+    "seed_after": 3735939168,
+    "expected_seed_after": 3735939168
+  },
+  {
+    "index": 68,
+    "phase": "economy",
+    "nation": 6,
+    "draws": [
+      {
+        "bound": 100,
+        "seed_before": 3735939168,
+        "return_address": 4522509,
+        "result": 28,
+        "seed_after": 1211566561
+      },
+      {
+        "bound": 12000,
+        "seed_before": 1211566561,
+        "return_address": 4522609,
+        "result": 1556,
+        "seed_after": 557004134
+      },
+      {
+        "bound": 100,
+        "seed_before": 557004134,
+        "return_address": 4522509,
+        "result": 90,
+        "seed_after": 3904414463
+      },
+      {
+        "bound": 2000,
+        "seed_before": 3904414463,
+        "return_address": 4522609,
+        "result": 1622,
+        "seed_after": 3483282172
+      },
+      {
+        "bound": 100,
+        "seed_before": 3483282172,
+        "return_address": 4522509,
+        "result": 8,
+        "seed_after": 371410669
+      },
+      {
+        "bound": 12000,
+        "seed_before": 371410669,
+        "return_address": 4522609,
+        "result": 2937,
+        "seed_after": 1051367074
+      },
+      {
+        "bound": 100,
+        "seed_before": 1051367074,
+        "return_address": 4522509,
+        "result": 95,
+        "seed_after": 4094720299
+      },
+      {
+        "bound": 2000,
+        "seed_before": 4094720299,
+        "return_address": 4522609,
+        "result": 782,
+        "seed_after": 1680116184
+      },
+      {
+        "bound": 100,
+        "seed_before": 1680116184,
+        "return_address": 4522509,
+        "result": 85,
+        "seed_after": 3666481465
+      },
+      {
+        "bound": 5600,
+        "seed_before": 3666481465,
+        "return_address": 4522609,
+        "result": 4360,
+        "seed_after": 3344677406
+      }
+    ],
+    "decision_calls": [
+      {
+        "function": "0x4504f4",
+        "eax": 34603,
+        "edx": 2293926,
+        "ecx": 2162755
+      },
+      {
+        "function": "0x4502e0",
+        "eax": 8449974,
+        "edx": 0,
+        "ecx": 4679172
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 12,
+        "edx": 45,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 13,
+        "edx": 45,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 14,
+        "edx": 45,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 15,
+        "edx": 45,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x4501f4",
+        "eax": 16,
+        "edx": 45,
+        "ecx": 4294966796
+      },
+      {
+        "function": "0x450768",
+        "eax": 36440,
+        "edx": 524377,
+        "ecx": 200
+      },
+      {
+        "function": "0x450858",
+        "eax": 1758,
+        "edx": 524377,
+        "ecx": 200
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 3735939168,
+    "seed_after": 3344677406,
+    "expected_seed_after": 3344677406
+  },
+  {
+    "index": 70,
+    "phase": "fleet",
+    "nation": 6,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 72,
+    "phase": "diplomacy",
+    "nation": 11,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 74,
+    "phase": "economy",
+    "nation": 11,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x4504f4",
+        "eax": 18924,
+        "edx": 2293926,
+        "ecx": 1442001
+      },
+      {
+        "function": "0x4502e0",
+        "eax": 8449974,
+        "edx": 0,
+        "ecx": 4685032
+      },
+      {
+        "function": "0x450768",
+        "eax": 25880,
+        "edx": 4685032,
+        "ecx": 1900733
+      },
+      {
+        "function": "0x450858",
+        "eax": 3223,
+        "edx": 4685032,
+        "ecx": 1900733
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 76,
+    "phase": "fleet",
+    "nation": 11,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 78,
+    "phase": "diplomacy",
+    "nation": 2,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 80,
+    "phase": "economy",
+    "nation": 2,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x4504f4",
+        "eax": 23607,
+        "edx": 2293926,
+        "ecx": 3866844
+      },
+      {
+        "function": "0x4502e0",
+        "eax": 8449974,
+        "edx": 0,
+        "ecx": 4674484
+      },
+      {
+        "function": "0x450768",
+        "eax": 40400,
+        "edx": 246,
+        "ecx": 3866828
+      },
+      {
+        "function": "0x450858",
+        "eax": 586,
+        "edx": 1000,
+        "ecx": 100
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 0
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 82,
+    "phase": "fleet",
+    "nation": 2,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1397391690,
+    "expected_seed_after": 1397391690
+  },
+  {
+    "index": 84,
+    "phase": "diplomacy",
+    "nation": 13,
+    "draws": [
+      {
+        "bound": 20,
+        "seed_before": 1397391690,
+        "return_address": 4521318,
+        "result": 7,
+        "seed_after": 1701752435
+      }
+    ],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1397391690,
+    "seed_after": 1701752435,
+    "expected_seed_after": 1701752435
+  },
+  {
+    "index": 86,
+    "phase": "economy",
+    "nation": 13,
+    "draws": [],
+    "decision_calls": [
+      {
+        "function": "0x450768",
+        "eax": 12733,
+        "edx": 2293926,
+        "ecx": 2228486
+      },
+      {
+        "function": "0x450858",
+        "eax": 3809,
+        "edx": 2293926,
+        "ecx": 2228486
+      },
+      {
+        "function": "0x4509f0",
+        "eax": 4653071,
+        "edx": 4711884,
+        "ecx": 14
+      },
+      {
+        "function": "0x450b30",
+        "eax": 15,
+        "edx": 0,
+        "ecx": 14
+      }
+    ],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1701752435,
+    "seed_after": 1701752435,
+    "expected_seed_after": 1701752435
+  },
+  {
+    "index": 88,
+    "phase": "fleet",
+    "nation": 13,
+    "draws": [],
+    "decision_calls": [],
+    "complete": true,
+    "whole_captured_RAM_equal": true,
+    "differing_bytes": 0,
+    "first_difference_addresses": [],
+    "seed_before": 1701752435,
+    "seed_after": 1701752435,
+    "expected_seed_after": 1701752435
+  }
+]
