@@ -1,0 +1,88 @@
+[
+  {
+    "case": "target-fallback-False",
+    "origin": [
+      221,
+      94
+    ],
+    "target": [
+      230,
+      100
+    ],
+    "point": null,
+    "branch": "target-local-fallback",
+    "model_equal": true
+  },
+  {
+    "case": "target-fallback-True",
+    "origin": [
+      221,
+      94
+    ],
+    "target": [
+      230,
+      100
+    ],
+    "point": [
+      233,
+      103
+    ],
+    "branch": "target-local-fallback",
+    "model_equal": true
+  },
+  {
+    "case": "score-vs-route-False",
+    "origin": [
+      230,
+      80
+    ],
+    "target": [
+      240,
+      90
+    ],
+    "changed_cell": null,
+    "selected_army": 6,
+    "score": 1010,
+    "distance": 10,
+    "direct": true,
+    "waypoint": null,
+    "entered_steps": 8,
+    "terminal": [
+      238,
+      88
+    ],
+    "remaining": 0,
+    "continuation_guard": "seeded nonnegative to model the proven F31C caller context; budget exhaustion makes residue immaterial here"
+  },
+  {
+    "case": "score-vs-route-True",
+    "origin": [
+      230,
+      80
+    ],
+    "target": [
+      240,
+      90
+    ],
+    "changed_cell": [
+      235,
+      85,
+      0
+    ],
+    "selected_army": 6,
+    "score": 1010,
+    "distance": 10,
+    "direct": false,
+    "waypoint": [
+      221,
+      94
+    ],
+    "entered_steps": 8,
+    "terminal": [
+      225,
+      88
+    ],
+    "remaining": 0,
+    "continuation_guard": "seeded nonnegative to model the proven F31C caller context; budget exhaustion makes residue immaterial here"
+  }
+]

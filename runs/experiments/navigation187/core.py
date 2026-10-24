@@ -39,21 +39,27 @@ def run(entry,eax=0,edx=0,ecx=0,args=(),ram=RAM,fill=0,local_e=None,readonly=Tru
  if frame_setup:
   for off,value,width in frame_setup:u.mem_write(0x80b000+off,struct.pack('<h' if width==2 else '<I',value))
  for reg,value in [(UC_X86_REG_EAX,eax),(UC_X86_REG_EDX,edx),(UC_X86_REG_ECX,ecx),(UC_X86_REG_ESP,esp)]:u.reg_write(reg,value)
- trace=[];rng=[];hits=[]
+ trace=[];rng=[];hits=[];stores=[]
  def hook(uc,address,size,data):
   if address==0x40284c:rng.append(address)
   if address in [0x44d010,0x44cec8,0x44d9a8,0x44cd08,0x44b79c,0x44d174,0x44d734,0x44aee4,0x44b27c,0x44f6d8,0x44dba8]:
    row=dict(function=hex(address),eax=uc.reg_read(UC_X86_REG_EAX),edx=uc.reg_read(UC_X86_REG_EDX),ecx=uc.reg_read(UC_X86_REG_ECX))
-   if address==0x44dba8:row['entry_local_e']=struct.unpack('<h',uc.mem_read(uc.reg_read(UC_X86_REG_ESP)-14,2))[0]
+   if address==0x44dba8:
+    sp=uc.reg_read(UC_X86_REG_ESP);row['entry_local_e']=struct.unpack('<h',uc.mem_read(sp-14,2))[0]
+    ret=struct.unpack('<I',uc.mem_read(sp,4))[0];row['return_address']=ret
+    if ret in [0x44f40e,0x44f444,0x44f481,0x44f4a8,0x44f4cc]:row['caller_scored_words']=list(struct.unpack('<7h',uc.mem_read(sp+4,14)))
    trace.append(row)
   if address in stop:hits.append(hex(address));uc.emu_stop()
- u.hook_add(UC_HOOK_CODE,hook);u.emu_start(entry,0x600000,count=budget)
+ def write(uc,access,address,size,value,data):
+  for actor in [2,4]:
+   if address in [0x47c1ec+actor*656,0x47c1ee+actor*656]:stores.append(dict(actor=actor,field='x' if address==0x47c1ec+actor*656 else 'y',value=value&65535))
+ u.hook_add(UC_HOOK_CODE,hook);u.hook_add(UC_HOOK_MEM_WRITE,write);u.emu_start(entry,0x600000,count=budget)
  assert hits or u.reg_read(UC_X86_REG_EIP)==0x600000,hex(u.reg_read(UC_X86_REG_EIP))
  final=bytes(u.mem_read(ORIGIN,SIZE))
  assert not rng,'Unexpected RNG call'
  if readonly:assert final==bytes(ram),'Read-only helper changed game RAM'
  return dict(eax=u.reg_read(UC_X86_REG_EAX),out=list(struct.unpack('<2h',u.mem_read(0x80a000,4))),trace=trace,stop=hits,ram=final,
-   words=list(struct.unpack('<8h',u.mem_read(0x80a000,16))),frame_goal_after=list(struct.unpack('<2h',u.mem_read(0x80b000-6,4))))
+   words=list(struct.unpack('<8h',u.mem_read(0x80a000,16))),frame_goal_after=list(struct.unpack('<2h',u.mem_read(0x80b000-6,4))),coordinate_stores=stores)
 def classify(ram,pos):
  out=run(0x44ca30,point(pos),0x80a000,0x80a004,ram=ram)
  return out['words'][0],out['words'][2]&255

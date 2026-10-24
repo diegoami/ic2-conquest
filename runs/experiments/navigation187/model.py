@@ -2,8 +2,14 @@
 
 Undefined original stack branches raise explicitly. No invented pathfinder.
 """
-import json
-from core import DATA,cell
+import json,struct
+from pathlib import Path
+DATA=Path(__file__).resolve().parents[3]/'runs/experiments/data/run-exp-navigation187'
+def cell(world,p):
+ # Public model needs only a cell(x,y) callback. Raw-RAM adapter is retained
+ # for the original diagnostic controls; no original binary is imported here.
+ if callable(world):return world(*p)
+ return struct.unpack_from('<h',world,0x870+2*(p[0]*140+p[1]))[0]
 SPEC=json.loads((DATA/'navigation-data-v1.json').read_text())
 POINTS={p['index']:(p['x'],p['y']) for p in SPEC['waypoints']}
 ROUTES={(r['group'],r['row']):r['points'] for r in SPEC['routes']}

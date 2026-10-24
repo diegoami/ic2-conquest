@@ -1,0 +1,379 @@
+{
+  "regions": [
+    {
+      "region": 0,
+      "land_or_land_marker_cells": 21,
+      "visible_island_node_union": [],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 1,
+      "land_or_land_marker_cells": 20,
+      "visible_island_node_union": [],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 2,
+      "land_or_land_marker_cells": 66,
+      "visible_island_node_union": [
+        55
+      ],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 3,
+      "land_or_land_marker_cells": 85,
+      "visible_island_node_union": [
+        56
+      ],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 4,
+      "land_or_land_marker_cells": 16,
+      "visible_island_node_union": [],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 5,
+      "land_or_land_marker_cells": 35,
+      "visible_island_node_union": [
+        57
+      ],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 6,
+      "land_or_land_marker_cells": 10,
+      "visible_island_node_union": [],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    },
+    {
+      "region": 7,
+      "land_or_land_marker_cells": 76,
+      "visible_island_node_union": [
+        58
+      ],
+      "graph_fallback_reachable_for_two_same_region_land_points": false
+    }
+  ],
+  "original_instruction_spot_controls": [
+    {
+      "region": 1,
+      "point": [
+        87,
+        43
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 1,
+      "point": [
+        88,
+        42
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 1,
+      "point": [
+        89,
+        41
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        100,
+        64
+      ],
+      "node": 58,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        100,
+        65
+      ],
+      "node": 57,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        100,
+        66
+      ],
+      "node": 56,
+      "direct": true
+    },
+    {
+      "region": 3,
+      "point": [
+        101,
+        64
+      ],
+      "node": 57,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        101,
+        65
+      ],
+      "node": 56,
+      "direct": true
+    },
+    {
+      "region": 3,
+      "point": [
+        101,
+        66
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        102,
+        63
+      ],
+      "node": 57,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        102,
+        64
+      ],
+      "node": 56,
+      "direct": true
+    },
+    {
+      "region": 3,
+      "point": [
+        102,
+        65
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 3,
+      "point": [
+        103,
+        63
+      ],
+      "node": 56,
+      "direct": true
+    },
+    {
+      "region": 3,
+      "point": [
+        103,
+        64
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        158,
+        80
+      ],
+      "node": 58,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        159,
+        79
+      ],
+      "node": 58,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        159,
+        80
+      ],
+      "node": 57,
+      "direct": true
+    },
+    {
+      "region": 5,
+      "point": [
+        160,
+        78
+      ],
+      "node": 58,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        160,
+        79
+      ],
+      "node": 57,
+      "direct": true
+    },
+    {
+      "region": 5,
+      "point": [
+        161,
+        78
+      ],
+      "node": 57,
+      "direct": true
+    },
+    {
+      "region": 5,
+      "point": [
+        161,
+        79
+      ],
+      "node": 56,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        162,
+        78
+      ],
+      "node": 56,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        162,
+        79
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 5,
+      "point": [
+        163,
+        78
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 7,
+      "point": [
+        198,
+        77
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        199,
+        76
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        200,
+        75
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        201,
+        74
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        201,
+        75
+      ],
+      "node": 57,
+      "direct": false
+    },
+    {
+      "region": 7,
+      "point": [
+        202,
+        75
+      ],
+      "node": 56,
+      "direct": false
+    },
+    {
+      "region": 7,
+      "point": [
+        202,
+        76
+      ],
+      "node": 55,
+      "direct": false
+    },
+    {
+      "region": 7,
+      "point": [
+        203,
+        72
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        204,
+        71
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        205,
+        70
+      ],
+      "node": 58,
+      "direct": true
+    },
+    {
+      "region": 7,
+      "point": [
+        206,
+        69
+      ],
+      "node": 58,
+      "direct": true
+    }
+  ],
+  "domain": "fixed original classical terrain plus army/city marker substitution; does not cover arbitrary edited maps",
+  "proof": "At most one island waypoint is visible anywhere within each region. If origin and target each see a waypoint, it is the same common node. Otherwise origin/target local fallback runs; D010group3is not reached."
+}
