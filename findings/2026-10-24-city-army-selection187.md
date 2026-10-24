@@ -6,7 +6,15 @@ input/projection gates, candidate arithmetic and public score-fed controls].
 [Main T212/#1394](https://github.com/diegoami/imperial_conquest_2/issues/1394).
 **Follow-ups:** [#1417 city policy](https://github.com/diegoami/imperial_conquest_2/issues/1417),
 [#1418 exact-100 boundary](https://github.com/diegoami/imperial_conquest_2/issues/1418).
-Research intake pending. No production or scope/label change.
+Promoted by [Research PR75](https://github.com/diegoami/imperial-conquest-2-research/pull/75)
+at `2c2a18370c4d9c6be49692fdc7f830fee6912323`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/2c2a18370c4d9c6be49692fdc7f830fee6912323/docs/reports/2026-10-24-city-army-selection187.md)
+and [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/2c2a18370c4d9c6be49692fdc7f830fee6912323/docs/data/city198-intake-v1.json).
+Research freshly reproduces the original/scorer/projection/component evidence,
+complete retained native v3 scalar, and all 32 original/native grid rows without
+normalization. It confirms the signed JLE boundaries and corrects its older
+strategic report/rules. No fresh game, native rebuild, production patch,
+scope/label change, full-turn or Windows acceptance is claimed.
 
 ## Answer to Main's bounded question
 
@@ -90,7 +98,8 @@ state. No new city name, coordinate list or owner state is published.
 Main #1417 holds the policy/scope follow-up: evaluate original-policy CAB4 city
 eligibility plus EB9C geography separately from the designed/Improved filter.
 Do not remove the Improved policy, alter the walker, or silently widen T212.
-Research promotion must precede production use.
+Research has promoted this bounded evidence; Main still owns an explicit
+policy/scope decision and production acceptance.
 
 ## Independent exact-100 branch discrepancy
 

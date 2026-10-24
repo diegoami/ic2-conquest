@@ -1,6 +1,9 @@
 # #187 city-versus-army same-state attribution
 
-Finding: `findings/2026-10-24-city-army-selection187.md` (Research intake pending).
+Finding: `findings/2026-10-24-city-army-selection187.md`, promoted by Research
+PR75 at `2c2a18370c4d9c6be49692fdc7f830fee6912323`. Canonical report and safe
+receipt are linked from the finding. Fresh Research replay reproduces every
+scalar/grid field without normalization; no old measurement changed.
 Main #1417 owns faithful city policy review, #1418 the independent score100
 boundary. PR1415 enemy-army contract remains separate; no source/scope change.
 
@@ -48,5 +51,5 @@ scalars remain alongside v3's stronger gates.
 owner assets or running the game. Current summary-v1/audit-execution-v1 pass.
 Python compilation/native builds/diff checks pass; no external reviewer.
 Results do not prove full End turn/global RNG, corrected command acceptance,
-every city policy or native Windows parity. Research promotion and explicit
-Main contract review precede implementation.
+every city policy or native Windows parity. Promotion is recorded above;
+explicit Main contract review and acceptance still precede implementation claims.
