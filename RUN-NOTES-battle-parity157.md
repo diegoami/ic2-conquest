@@ -136,3 +136,16 @@ was received by Research, but is NOT approved/intaken there yet; no promotion
 pointer added to #1388. No new experiment or unrelated task started. Preserve
 all measurements and eleven unrelated untracked files. Publish this metadata,
 relay the landed changed finding and retain actual delivery/baseline receipt.
+
+## END — Research promotion receipt
+
+Promotion pointer PR169 merged at `ec243d62f859278a15112fdbf033ce34610ae390`
+after successful GitGuardian check; whitespace check passed, no model review.
+Reported-findings and last successfully delivered baseline are this SHA:
+`findings/2026-10-23-seed2-walk-captured-target1377.md` changed metadata only.
+Actual main-pinned receipt delivered successfully to verified Research thread
+01a167fa-9fb2-7570-bf21-b32682c79e6e. Source finding and Main handoff now cite
+canonical Research main d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19. No measurement
+or private artifact changed; no new game run or production edit. Main remains
+owner-carried, not directly messaged. #1388 is received but not intaken by
+Research; do not label it promoted. All eleven unrelated files preserved.
