@@ -16,7 +16,11 @@ Scope #1405's native state/save/load/export and actual accepted behavior through
 the normal Main task/PR workflow. Keep deliberately designed sailing policy and
 proposal membership separate from accepted full-loop decisions. Original prepass
 and port selection run before routing; route absence tests signed X. The
-combined stored-route/zero-moves case is UNTESTED and belongs in the follow-up,
-along with route lifetime, movement/cargo/port/contact and appropriate CI checks.
+combined stored-route/zero-moves case was untested by PR70. The new conquest
+finding `findings/2026-10-24-fleet-accepted-movement174.md` covers it synthetically
+and adds actual movement/accepted actions, cargo/port controls and a separate
+budget discrepancy (1408); its Research intake is still pending. Faithful
+policy/execution is scoped separately in1409. Retain route lifetime,
+movement/cargo/port/contact and appropriate CI checks.
 Do not infer global RNG or Windows acceptance from this report. Main is reached
 through the owner and existing issue links; no direct Main session message.

@@ -66,8 +66,10 @@ checks**). Its real outer launched/moves guards are respected. This measures
 | Zero actor moves / actor under construction | No move | No proposal |
 | Target under construction / same owner | Port | No proposal |
 
-The zero-moves control has no stored route: **stored route plus zero moves is
-untested**. Original route absence tests the signed X word. Automatic prepass
+The zero-moves control in this packet has no stored route: stored route plus
+zero moves was not tested by this packet. The [accepted-movement follow-up](2026-10-24-fleet-accepted-movement174.md)
+adds that synthetic combination and live-phase/accepted-action coverage.
+Original route absence tests the signed X word. Automatic prepass
 and port selection still run before the stored/absent-route branch.
 
 The native sailing weights and minimum score are explicitly marked **designed**

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/runs/experiments/fleet174-actions/verify_bundle.py", line 6, in <module>
+    m=json.loads((DATA/'artifact-manifest-v1.json').read_text());archive=BASE/m['archive'];assert hashlib.sha256(archive.read_bytes()).hexdigest()==m['sha256']
+      ^^^^
+NameError: name 'json' is not defined. Did you forget to import 'json'?

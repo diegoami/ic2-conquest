@@ -1,0 +1,5264 @@
+[
+  {
+    "case": "phase-actor-construction",
+    "status": "complete",
+    "movement_calls": [],
+    "coordinate_stores": [],
+    "move_writes": [],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      62,
+      -1,
+      -1,
+      1,
+      5,
+      25,
+      80,
+      1000,
+      90,
+      0,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": null,
+    "native_input_boundary": "declared input (no phase move, or low-level human walk)"
+  },
+  {
+    "case": "phase-alliance",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-no-moves",
+    "status": "complete",
+    "movement_calls": [],
+    "coordinate_stores": [],
+    "move_writes": [],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      62,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": null,
+    "native_input_boundary": "declared input (no phase move, or low-level human walk)"
+  },
+  {
+    "case": "phase-peace",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-same-owner",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      },
+      {
+        "fleet": 1,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          48,
+          65
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-score100",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-score101",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          41,
+          80
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      41,
+      80
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-stored-a",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          66
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      },
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          66
+        ],
+        "origin": [
+          48,
+          64
+        ],
+        "moves": 23
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      48,
+      66,
+      48,
+      66,
+      1,
+      -1,
+      21,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      48,
+      66
+    ],
+    "native_direct_goal": [
+      48,
+      66
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-stored-b",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          47,
+          67
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      74,
+      69,
+      47,
+      67,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      47,
+      67
+    ],
+    "native_direct_goal": [
+      47,
+      67
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-target-construction",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-trade",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-war",
+    "status": "stopped-before-naval-combat",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          65
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      48,
+      64,
+      -1,
+      -1,
+      1,
+      -1,
+      23,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      48,
+      65
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-war-stronger",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          45,
+          68
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 50,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 62,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 51,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 52,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 53,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 54,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 55,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 56,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 57,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 58,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 59,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 60,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 61,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 62,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 63,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 64,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 65,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 66,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 67,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 68,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 69,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 67,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 70,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 71,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 72,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 73,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 68,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 74,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 69,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      74,
+      69,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      45,
+      68
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "phase-war-weaker",
+    "status": "stopped-before-naval-combat",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          65
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      48,
+      64,
+      -1,
+      -1,
+      1,
+      -1,
+      23,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      48,
+      65
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "stored-zero",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          66
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 0
+      }
+    ],
+    "coordinate_stores": [],
+    "move_writes": [
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      62,
+      48,
+      66,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      48,
+      66
+    ],
+    "native_direct_goal": [
+      48,
+      66
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "stored-one",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          66
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 1
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      63,
+      48,
+      66,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      48,
+      66
+    ],
+    "native_direct_goal": [
+      48,
+      66
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "rough-ai-one",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          49,
+          63
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 1
+      }
+    ],
+    "coordinate_stores": [],
+    "move_writes": [
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      62,
+      49,
+      63,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      49,
+      63
+    ],
+    "native_direct_goal": [
+      49,
+      63
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "rough-ai-three",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          49,
+          63
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 3
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      63,
+      49,
+      63,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      -1,
+      1
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      49,
+      63
+    ],
+    "native_direct_goal": [
+      49,
+      63
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "rough-human-one",
+    "status": "complete",
+    "movement_calls": [],
+    "coordinate_stores": [],
+    "move_writes": [],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      62,
+      49,
+      63,
+      1,
+      -1,
+      1,
+      80,
+      1000,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      49,
+      63
+    ],
+    "native_direct_goal": [
+      49,
+      63
+    ],
+    "native_input_boundary": "declared input (no phase move, or low-level human walk)"
+  },
+  {
+    "case": "cargo-positive",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          66
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 49,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 63,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 64,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 65,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 48,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 66,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      }
+    ],
+    "cargo_stores": [
+      {
+        "field": "x",
+        "value": 49
+      },
+      {
+        "field": "y",
+        "value": 63
+      },
+      {
+        "field": "x",
+        "value": 48
+      },
+      {
+        "field": "y",
+        "value": 64
+      },
+      {
+        "field": "x",
+        "value": 48
+      },
+      {
+        "field": "y",
+        "value": 65
+      },
+      {
+        "field": "x",
+        "value": 48
+      },
+      {
+        "field": "y",
+        "value": 66
+      }
+    ],
+    "draws": [],
+    "final_fleet0": [
+      48,
+      66,
+      48,
+      66,
+      1,
+      -1,
+      21,
+      341,
+      975,
+      90,
+      100,
+      3,
+      0
+    ],
+    "final_army3": [
+      48,
+      66,
+      1,
+      8,
+      -1,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      48,
+      66
+    ],
+    "native_direct_goal": [
+      48,
+      66
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "cargo-zero",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          48,
+          66
+        ],
+        "origin": [
+          49,
+          62
+        ],
+        "moves": 0
+      }
+    ],
+    "coordinate_stores": [],
+    "move_writes": [
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [],
+    "final_fleet0": [
+      49,
+      62,
+      48,
+      66,
+      1,
+      -1,
+      0,
+      341,
+      975,
+      90,
+      100,
+      3,
+      0
+    ],
+    "final_army3": [
+      49,
+      62,
+      1,
+      8,
+      -1,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      48,
+      66
+    ],
+    "native_direct_goal": [
+      48,
+      66
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "port-protected",
+    "status": "complete",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          124,
+          105
+        ],
+        "origin": [
+          186,
+          90
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 185,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 90,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 184,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 90,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 183,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 90,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 182,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 90,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 181,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 90,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 180,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 179,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 178,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 177,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 176,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 175,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 174,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 173,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 172,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 171,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 170,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 89,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 169,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 168,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 167,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 166,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 165,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 164,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 163,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 162,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 161,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 88,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 22,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 21,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 20,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 19,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 18,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 17,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 16,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 15,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 14,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 13,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 12,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 11,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 10,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 9,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 8,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 7,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 6,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 5,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 4,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 3,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 2,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 1,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 0,
+        "instruction": "0x44e073"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "final_fleet0": [
+      161,
+      88,
+      -1,
+      -1,
+      1,
+      -1,
+      0,
+      80,
+      1000,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      124,
+      105
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  },
+  {
+    "case": "port-unprotected",
+    "status": "stopped-before-naval-combat",
+    "movement_calls": [
+      {
+        "fleet": 0,
+        "goal": [
+          188,
+          92
+        ],
+        "origin": [
+          185,
+          89
+        ],
+        "moves": 25
+      }
+    ],
+    "coordinate_stores": [
+      {
+        "field": "x",
+        "value": 186,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 90,
+        "instruction": "0x44dfa4"
+      },
+      {
+        "field": "x",
+        "value": 187,
+        "instruction": "0x44dfa1"
+      },
+      {
+        "field": "y",
+        "value": 91,
+        "instruction": "0x44dfa4"
+      }
+    ],
+    "move_writes": [
+      {
+        "value": 24,
+        "instruction": "0x44dfe5"
+      },
+      {
+        "value": 23,
+        "instruction": "0x44dfe5"
+      }
+    ],
+    "cargo_stores": [],
+    "draws": [
+      {
+        "bound": 4,
+        "seed_before": 0,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "bound": 4,
+        "seed_before": 1,
+        "return": 4500125,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "final_fleet0": [
+      187,
+      91,
+      -1,
+      -1,
+      1,
+      -1,
+      23,
+      80,
+      1000,
+      90,
+      100,
+      -1,
+      0
+    ],
+    "final_army3": [
+      93,
+      79,
+      1,
+      8,
+      2,
+      90,
+      100,
+      68
+    ],
+    "stored_route": [
+      -1,
+      -1
+    ],
+    "native_direct_goal": [
+      188,
+      92
+    ],
+    "native_input_boundary": "original first fleet0 destination call after automatic prepass/selection"
+  }
+]

@@ -1,0 +1,32 @@
+using System.Text.Json;
+using IC2.Engine.Core;
+using IC2.Engine.Import;
+using IC2.Engine.Model;
+using IC2.Engine.Serialization;
+using IC2.Engine.Battle.Commands;
+using IC2.Engine.Naval.Commands;
+var root=args[0];var repo=GameDataRepository.Load(Path.Combine(args[1],"data"));var ctx=repo.Resolve("classical-mediterranean");var rules=repo.RulesetById("classical-faithful")!;
+var dispatcher=new CommandDispatcher(SystemRegistry.FromEngineAssembly(),rules,ctx.World,NullEventSink.Instance);var rows=new List<object>();
+foreach(var name in new[]{"port-protected","port-unprotected"})
+{
+ var folder=Path.Combine(root,"native-v2",name);
+ var path=Directory.GetFiles(folder,"accepted-fleet-*-after.json").Order(StringComparer.Ordinal).First();
+ var state=JsonSerializer.Deserialize<GameState>(File.ReadAllText(path))!;var before=JsonSerializer.Serialize(state);
+ var a=state.FleetById("fleet-0")!;var b=state.FleetById("fleet-1")!;
+ if(Math.Max(Math.Abs(a.X-b.X),Math.Abs(a.Y-b.Y))!=1)throw new Exception("Attack comparison requires measured adjacency");
+ var r=dispatcher.Dispatch(state,new AttackFleetCommand("carthage","fleet-0","fleet-1"));
+ if(r.IsAccepted!=(name=="port-unprotected"))throw new Exception("Unexpected port guard result");
+ if(r.IsRejected&&JsonSerializer.Serialize(r.State)!=before)throw new Exception("Rejected attack changed state");
+ rows.Add(new{caseName=name,adjacent=true,r.IsAccepted,rejection=r.Rejection?.ToString(),rejected_state_unchanged=r.IsRejected&&JsonSerializer.Serialize(r.State)==before});
+}
+foreach(var human in new[]{false,true})
+{
+ var path=Path.Combine(root,"affordability-v1",human?"human":"ai","before.SAV");var s=OriginalSaveImporter.Import(File.ReadAllBytes(path),path,ctx.World,rules,ctx.Scenario,"afford174","afford174").Save.State;
+ var f=s.FleetById("fleet-0")!;if(f.Moves!=1||!s.IsRoughSea(49,63)||(s.NationById("carthage")!.Control==SeatControl.Human)!=human)throw new Exception("Affordability input gate failed");
+ var r=dispatcher.Dispatch(s,new MoveFleetCommand("carthage","fleet-0",49,63));
+ if(!r.IsAccepted||r.State.FleetById("fleet-0")!.Moves!=1)throw new Exception("Unexpected native affordability result");
+ rows.Add(new{caseName=human?"human-unaffordable":"ai-unaffordable",r.IsAccepted,moves_before=1,moves_after=r.State.FleetById("fleet-0")!.Moves,
+  human,rough=true,rough_cost=rules.Economy.Weather.RoughSeaMoveCost,position=new[]{r.State.FleetById("fleet-0")!.X,r.State.FleetById("fleet-0")!.Y}});
+}
+using(var file=new FileStream(args[2],FileMode.CreateNew))JsonSerializer.Serialize(file,rows,new JsonSerializerOptions{WriteIndented=true});
+Console.WriteLine("PASS accepted/rejected port attacks and paired native affordability/controller gates");
