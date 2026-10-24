@@ -72,3 +72,18 @@ root174–178. No other-repository source write, native Computer Use, new live
 game, accepted-action parity or production fix claimed. Eleven unrelated files
 preserved; no active process/reviewer/delegate. Continue174at actual fleet
 boundary/accepted-action coverage; keep intentional designed policies separate.
+
+## Owner-authorized Research merge — 2026-10-24
+
+Owner explicitly said “merge”, superseding PR70's previous merge hold. Verified
+head0d9fc6ef0897d61ba4b48104299efd201b5d6bc0, no review objections, successful
+security check and mergeability; merged through GitHub without another-repo
+filesystem write. Actual research main ebe8acb530f9b0250855aded20e1988f94d4c873.
+Canonical report read at that pin; peer merge receipt independently agrees.
+
+Source finding/README now mark intake and retain the clarified limits: original
+prepass/port choice still run, absence tests signed X, stored-route+zero-move is
+untested. Added canonical owner-carried Main handoff for1405. Measurements and
+classifications unchanged; no game/production experiment or other task started.
+Reply-start findings comparison against6e7ed5d was empty. Publish metadata,
+relay actual source main and retain the successful delivery/baseline receipt.

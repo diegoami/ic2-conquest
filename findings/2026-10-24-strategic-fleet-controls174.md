@@ -4,7 +4,11 @@
 fleet controls; not fresh original gameplay or accepted native action parity].
 **Tasks:** [#174](https://github.com/diegoami/ic2-conquest/issues/174), parent171;
 new [remake1405](https://github.com/diegoami/imperial_conquest_2/issues/1405).
-Research intake/promotion pending. Remake source/data pin55d96876.
+Intaken by [Research PR70](https://github.com/diegoami/imperial-conquest-2-research/pull/70),
+main `ebe8acb530f9b0250855aded20e1988f94d4c873`.
+[Canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/ebe8acb530f9b0250855aded20e1988f94d4c873/docs/reports/2026-10-24-strategic-fleet-controls174.md).
+Promotion changes no measurement or production/Windows acceptance claim.
+Remake source/data pin55d96876.
 
 ## Answer
 
@@ -61,6 +65,10 @@ checks**). Its real outer launched/moves guards are respected. This measures
 | Original hunt score100 /101, distance18 | Port / enemy | No march proposal in either |
 | Zero actor moves / actor under construction | No move | No proposal |
 | Target under construction / same owner | Port | No proposal |
+
+The zero-moves control has no stored route: **stored route plus zero moves is
+untested**. Original route absence tests the signed X word. Automatic prepass
+and port selection still run before the stored/absent-route branch.
 
 The native sailing weights and minimum score are explicitly marked **designed**
 in the ruleset. The distance18 proposal cutoff and relationship/strength
