@@ -149,3 +149,18 @@ canonical Research main d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19. No measurement
 or private artifact changed; no new game run or production edit. Main remains
 owner-carried, not directly messaged. #1388 is received but not intaken by
 Research; do not label it promoted. All eleven unrelated files preserved.
+
+## Current-Main acceptance audit — 2026-10-25
+
+Owner resumed157 with “So what”. Live source history shows T206/PR1371 and
+captured-target+live-guard PR1387 already merged;1377closed. Earlier source
+candidate/promotion notes above are historical, not current production status.
+Fresh archived Mainb593c6e audit passes318strictstate+318draw/0exemption,
+5fixed,14recorded entries incl owner/2331combatdraws/253boundaries and2420
+ordinary tactical tests/0failure/0skip, empty KnownFailures. Focused6+5 pass;
+5862private corpus files unchanged. Fourorderingfiles equal retained candidate
+bytes. New task RUN-NOTES-battle-current157.md and finding dated2026-10-25.
+No newgame/Windows/delegate, fixture edit or new production patch.1355stays
+open/blocked for acceptance; installed build and natural owner protocol not
+established. Do not repeat the false no-tactical-fix-merged premise or apply
+another copy. Preserve old reports/measurements and old historical assumptions.

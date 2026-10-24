@@ -1,0 +1,40 @@
+{
+  "main_pin": "b593c6e28939c1c7154f9a41d0436a8f14f352dc",
+  "archive_sha256": "cae620d398fbc7a270445195f904d85597fa96810693e3f261545a40b78b6a8d",
+  "ordering_merge": {
+    "pr": 1371,
+    "commit": "f0cd6296400f132d1387d717d5f767ace6834ad2"
+  },
+  "movement_merge": {
+    "pr": 1387,
+    "commit": "3c1860079db6dd9b1fb11ceb8b726c7fd95293ac"
+  },
+  "ordering_files": [
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralOrders.cs",
+      "current_sha256": "08fd581083a207761bc18e32082e2b18e4716a09e9b05de62dfa8928eefa832b",
+      "exact_retained_ordering_candidate_bytes": true
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPassTwo.cs",
+      "current_sha256": "97ebd80019f3249033f8ca19a987dd5202bb300c807c5c8fc2eb21f4c549241e",
+      "exact_retained_ordering_candidate_bytes": true
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPassThree.cs",
+      "current_sha256": "0ce1e29c695928744e2a521d6acf44aceb4057ab2d4783e5bf6bdaecf684b518",
+      "exact_retained_ordering_candidate_bytes": true
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/ComputerGeneral.cs",
+      "current_sha256": "b50fe981d970989a889a1a480f18fc8021a693418ff8384eeea35fba119340a3",
+      "exact_retained_ordering_candidate_bytes": true
+    }
+  ],
+  "pass_two_slot_order": true,
+  "pass_three_slot_order_calls": 4,
+  "captures_destination_once": true,
+  "uses_captured_enemy": true,
+  "positive_troop_shot_guard": true,
+  "scope": "merged source audit only; installed desktop binary and1355acceptance not established"
+}

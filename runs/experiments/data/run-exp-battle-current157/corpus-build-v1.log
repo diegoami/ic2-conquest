@@ -1,0 +1,24 @@
+  Determining projects to restore...
+  Restored /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj (in 171 ms).
+  Restored /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Inspect/IC2.Inspect.csproj (in 185 ms).
+  Restored /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Engine/IC2.Engine.csproj (in 185 ms).
+  Restored /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/tests/IC2.Engine.Tests/IC2.Engine.Tests.csproj (in 710 ms).
+  Restored /home/diego/projects/ic2-conquest/runs/experiments/battle-current157/Corpus.csproj (in 712 ms).
+/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj]
+  IC2.Data -> /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/bin/Debug/net10.0/IC2.Data.dll
+  IC2.Engine -> /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Engine/bin/Debug/net10.0/IC2.Engine.dll
+  IC2.Inspect -> /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Inspect/bin/Debug/net10.0/IC2.Inspect.dll
+  IC2.Engine.Tests -> /home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/tests/IC2.Engine.Tests/bin/Debug/net10.0/IC2.Engine.Tests.dll
+  Corpus -> /home/diego/projects/ic2-conquest/runs/experiments/battle-current157/bin/Debug/net10.0/Corpus.dll
+
+Build succeeded.
+
+/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-battle-current157/source-v1/src/IC2.Data/IC2.Data.csproj]
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:16.10
