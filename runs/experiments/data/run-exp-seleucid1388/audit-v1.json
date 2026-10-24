@@ -1,0 +1,78 @@
+{
+  "tag": "confirmed, partial",
+  "remake_pin": "3c1860079db6dd9b1fb11ceb8b726c7fd95293ac",
+  "original_turn": 756,
+  "original_live_runs": 3,
+  "observed_runs": 2,
+  "plain_runs": 1,
+  "before_and_after_whole_sav_equal_across_all_three": true,
+  "observer_cpu_preservation_states": 816,
+  "original_destination": [
+    191,
+    95
+  ],
+  "original_waypoint": [
+    189,
+    104
+  ],
+  "original_target_score": 828,
+  "remake_destination": [
+    207,
+    95
+  ],
+  "remake_target_score": 212,
+  "weak_target_reachable_original": true,
+  "weak_target_reachable_remake": false,
+  "original_weak_target_direct_line": false,
+  "original_region_and_coast_equal": true,
+  "field_strengths_agree": true,
+  "original_full_wrapper_matches_saved_army_record": true,
+  "paired_conditional_walks": [
+    {
+      "goal": [
+        207,
+        95
+      ],
+      "steps": 7,
+      "endpoint": [
+        212,
+        94
+      ]
+    },
+    {
+      "goal": [
+        191,
+        95
+      ],
+      "steps": 7,
+      "endpoint": [
+        213,
+        94
+      ]
+    },
+    {
+      "goal": [
+        189,
+        104
+      ],
+      "steps": 7,
+      "endpoint": [
+        212,
+        96
+      ]
+    }
+  ],
+  "matching_conditional_steps": 21,
+  "original_local_rng_calls": 0,
+  "original_local_seed_controls": 5,
+  "original_local_seed_control_endpoints_identical": true,
+  "native_diagnostic_repeats_equal": 3,
+  "production_source_changed": false,
+  "owner_hashes_or_full_states_published": false,
+  "limits": [
+    "One owner campaign and one seeded original trajectory, not three independent scenarios.",
+    "Five seed controls are original-instruction local replays, not five fresh whole-turn games.",
+    "The whole End-turn action/RNG stream is not synchronized across engines.",
+    "No complete strategic routing implementation, production correction or native Windows acceptance."
+  ]
+}

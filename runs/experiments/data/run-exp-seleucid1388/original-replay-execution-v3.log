@@ -1,0 +1,4 @@
+  File "/home/diego/projects/ic2-conquest/runs/experiments/seleucid1388/original_replay.py", line 56
+    map_after=list(struct.unpack('<44800h',u.mem_read(0x45e870,89600)))))
+                                                                        ^
+SyntaxError: unmatched ')'

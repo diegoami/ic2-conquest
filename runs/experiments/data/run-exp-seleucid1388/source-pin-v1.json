@@ -1,0 +1,1335 @@
+{
+  "remake_pin": "3c1860079db6dd9b1fb11ceb8b726c7fd95293ac",
+  "all_archived_blobs_verified": true,
+  "files": [
+    {
+      "path": "Directory.Build.props",
+      "git_blob": "3cdceaee1346e0e81f488eff48d41fa724c77732"
+    },
+    {
+      "path": "src/IC2.Data/AssetSettings.cs",
+      "git_blob": "aa4da4bf47de12f79bac79b41d8055ec9681238b"
+    },
+    {
+      "path": "src/IC2.Data/DatLayout.cs",
+      "git_blob": "dd2548ba1bd322a5c0a59acdb405b7796f240e32"
+    },
+    {
+      "path": "src/IC2.Data/DatLeaderPool.cs",
+      "git_blob": "da366c928e55ac24cb00eab58db80a9ae7a1bba0"
+    },
+    {
+      "path": "src/IC2.Data/IC2.Data.csproj",
+      "git_blob": "2878e96f1057b7828987c73cd52dda688c16f2ee"
+    },
+    {
+      "path": "src/IC2.Data/NationCatalog.cs",
+      "git_blob": "b91c8ac058e77b9ba20c7461f8fc900a89fb0b77"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveCodec.cs",
+      "git_blob": "1263b02fba90d334ae8b00106150c2c479dbfd27"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveDocument.cs",
+      "git_blob": "0a1996182141e3fa4af62dd89331504203e53e3d"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveExportPolicy.cs",
+      "git_blob": "4cda5e86b1510d9bd7fbce6752f52db2d4c8f152"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveLayout.cs",
+      "git_blob": "497e99d415fbb71dcde8c8771406550371b6af8a"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveWritePlan.cs",
+      "git_blob": "01638a8baa1e946b8d9680074afe83ab4984e370"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveWriteReport.cs",
+      "git_blob": "2a3b29e92ac5db3f67f489ee33db9745e85953da"
+    },
+    {
+      "path": "src/IC2.Data/OriginalSaveWriter.cs",
+      "git_blob": "0d7233004d3cb14d4230f897d0143eae9dbc445f"
+    },
+    {
+      "path": "src/IC2.Data/SaveArmyTable.cs",
+      "git_blob": "5ab7cb64d312b26339c14b703d6c949f78295334"
+    },
+    {
+      "path": "src/IC2.Data/SaveBattleBlock.cs",
+      "git_blob": "c7ceb8b40ee31fa2b14a79607a1f0f271f02ddb0"
+    },
+    {
+      "path": "src/IC2.Data/SaveFleetTable.cs",
+      "git_blob": "c3f6e3329d2363510146a95b6d937ca1877a985b"
+    },
+    {
+      "path": "src/IC2.Data/SaveFormat.cs",
+      "git_blob": "b2dffca6cd94f83e15ddd1c2bc8e09e117b4b3df"
+    },
+    {
+      "path": "src/IC2.Data/SaveMercenaryTable.cs",
+      "git_blob": "ba87c8f58c491433e9f49d04def9816bd0db17e6"
+    },
+    {
+      "path": "src/IC2.Data/SaveNationTable.cs",
+      "git_blob": "2c428c28260c5bbeba41cc1dce44d0c9cd853a01"
+    },
+    {
+      "path": "src/IC2.Data/SaveNewsLog.cs",
+      "git_blob": "1b9270a484f4c9ec61e03d77c84d3f76cd57c82f"
+    },
+    {
+      "path": "src/IC2.Data/SavePendingOffer.cs",
+      "git_blob": "d767bd96f625f6fdb9b5c9f1bf133577e7c24ca4"
+    },
+    {
+      "path": "src/IC2.Data/SaveRecruitmentTable.cs",
+      "git_blob": "30eca7fbd650667a16fe71bf01c9a665ee5f56e2"
+    },
+    {
+      "path": "src/IC2.Data/SaveTurnState.cs",
+      "git_blob": "0a47c0c19d3af8c8bcc962117975993a94b17da7"
+    },
+    {
+      "path": "src/IC2.Data/UnitCatalog.cs",
+      "git_blob": "770e7c92fa65b17e6a64917e31695a2b985a3037"
+    },
+    {
+      "path": "src/IC2.Data/WorldPrefix.cs",
+      "git_blob": "54bd8eac32f7e12114b6b47fb841fc8761eb7f83"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiArmyTargetTree.cs",
+      "git_blob": "9d039eac35fe12258844cc8849092a771bac7daa"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiCandidate.cs",
+      "git_blob": "cdb7a116c80ee7e6caca1bfab874304145580354"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiDiplomacyPhase.cs",
+      "git_blob": "c206ac0db93a3ed982118470ef27be8f4e5d00b0"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiEconomyPhase.cs",
+      "git_blob": "6d4693951ad268b4292efc453761ff7d608aac27"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiFaithfulEconomy.cs",
+      "git_blob": "3ccaa8a0191706534393c3b428cc71b8d7208a30"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiFormat.cs",
+      "git_blob": "289eb8c17d459920d6a88d594993393c2e220849"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiGameRunner.cs",
+      "git_blob": "ef788a738081270eece9b250f6ce9b7d82cc3daf"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiMercenaryHirePass.cs",
+      "git_blob": "79aaf9d1ed40055255ee2918e4a37d00cc0ac3cb"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiMilitaryPhase.cs",
+      "git_blob": "d0d56f08d14c8f7a46faa0faa93cd21f7a94e63c"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiPersonalityProfile.cs",
+      "git_blob": "28c6adc51378cf48cf4e1ca035466243f44506e3"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiResupplyPass.cs",
+      "git_blob": "44749cff7e53a1f12bd0274e18dc0e19ac7a1c85"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiSiegeGateTally.cs",
+      "git_blob": "e8bb00535b08e634a7a0cfae267124e14f754218"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiStallTracker.cs",
+      "git_blob": "6ddd49e0c317a4b80a3977e9f7f9be81ca3a81b9"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiSubstantiveState.cs",
+      "git_blob": "62ddb5f11db8d0486773fd83e42526b24e7ea56a"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiTurn.cs",
+      "git_blob": "0d91c0d12bd352d0192fe416d66b9cf146e0f3cb"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiTurnSystem.cs",
+      "git_blob": "6d7bc173176b35eb56348ee0fda7f5dcc08e803b"
+    },
+    {
+      "path": "src/IC2.Engine/Ai/AiView.cs",
+      "git_blob": "82eae925f82ea7f0a02f57109c26909c771aad31"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/AdjacentPartner.cs",
+      "git_blob": "4fed5d5f9ece8da6711ccdc31f072a3c81b575a4"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/ArmyNaming.cs",
+      "git_blob": "37a77800704abde53673e39ba68146a90e68736b"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/AiAbsorbArmyCommand.cs",
+      "git_blob": "febefe7cc3ef42de4cb26b59648ed7793e7d175e"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/AiAbsorbArmyCommandHandler.cs",
+      "git_blob": "ac0a3c39c32751aa30ef82d4d32a7d931db89fa2"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/ArmyTransferCommand.cs",
+      "git_blob": "75c88f9c8adbccc1591bae46fcc177f828f3fce2"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/ArmyTransferCommandHandler.cs",
+      "git_blob": "09c8ecdd373f626d8536be368ebfb19d89661452"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/DisbandArmyCommand.cs",
+      "git_blob": "81962a65a48c355d5629cbb45dfb6bb13f9212d4"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/DisbandArmyCommandHandler.cs",
+      "git_blob": "e6537ac694ef9915fdad4945c457a0f0b3aca865"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/DisbandUnitCommand.cs",
+      "git_blob": "134d8449857699f0ec14d2af1fa6aa6804ac8407"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/DisbandUnitCommandHandler.cs",
+      "git_blob": "492b7ae803af8183be7b5964de34fc7d61f3f544"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/JoinArmiesCommand.cs",
+      "git_blob": "68e462f8baceee33a71b668a32cb575471c8d8eb"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/JoinArmiesCommandHandler.cs",
+      "git_blob": "85c4b2ff65a22cd8554f66aef9df6bd889e839d2"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/JoinUnitsCommand.cs",
+      "git_blob": "78bf384976e82b58b8c578f5734f042bf5ad1f86"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/JoinUnitsCommandHandler.cs",
+      "git_blob": "11c7317380434d23aa5bc98156ce9e4f379b3045"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/RenameUnitCommand.cs",
+      "git_blob": "72d5572b55b377640e5d313ae248810dcf5f15aa"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/RenameUnitCommandHandler.cs",
+      "git_blob": "05c588e4e7d413d9040902fdc2bc7e4c766f144e"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/SplitArmyCommand.cs",
+      "git_blob": "3a729b2d055c81aeb5ff5d69f20a7a1b9afbc6e2"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/SplitArmyCommandHandler.cs",
+      "git_blob": "120f5eaf56164d70c447f524c929716b323e2f27"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/SplitUnitCommand.cs",
+      "git_blob": "9d5809dc82dd9c0ac0c9773c25820a3fe76cf231"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/Commands/SplitUnitCommandHandler.cs",
+      "git_blob": "5e08c85890f092361481cac0986d59f161705ee6"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/MobilizationArmyCreation.cs",
+      "git_blob": "613d93c90d81a93899ad4821c41e1de078c2a915"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/MobilizationReceivingArmy.cs",
+      "git_blob": "89295d54dc769377812c7a2976f85f203b9cfc2a"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/NearbyOwnCity.cs",
+      "git_blob": "3aff790d67bd09f7ea916f47d0458b81d64b35d4"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/SplitPlacement.cs",
+      "git_blob": "67aeeebdf429b397dbebc3ab9e8952be78b2ff70"
+    },
+    {
+      "path": "src/IC2.Engine/Assets/AssetKeys.cs",
+      "git_blob": "a79e7ef638ece0f9bc6ee5279710057448b34ccd"
+    },
+    {
+      "path": "src/IC2.Engine/Assets/AssetLoader.cs",
+      "git_blob": "75095a25c61ae822c8912aff83257aab1975a1b4"
+    },
+    {
+      "path": "src/IC2.Engine/Assets/AssetPack.cs",
+      "git_blob": "f76393ec8948eac0d0e1ad0b15a56d7e3416ed9e"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/BattleCasualties.cs",
+      "git_blob": "fffc933fc8a7ea672390ec2957ef403ed237aedd"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/BattleEvents.cs",
+      "git_blob": "8ddbe1b65d47a403a50941e5c6fd3b08d8a18847"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/BattleResult.cs",
+      "git_blob": "72ee34c83deaf150b05039fe0de375ea430dc7de"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/CandidateSeam.cs",
+      "git_blob": "4c3d474d1761292d0569f053f0b04d884fb4d67e"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/CandidateTables.cs",
+      "git_blob": "f234ac1acef0a39aabc0b1625c68c3f0c9432b96"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/MergedInstantCandidate.cs",
+      "git_blob": "0baf34305b822b9defdc6616b94cff030b3ef5f4"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/RoundBasedCandidate.cs",
+      "git_blob": "c8e734bfb0bb8d44ee6a2050daf0bc6715a1139b"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/TacticalBattle.cs",
+      "git_blob": "028c23bf3aeceb1b85306aef98aeccff57f2324d"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/TacticalCandidates.cs",
+      "git_blob": "55cfff7bae33672398eb02e7d7dffc94267154a1"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/TacticalProbe.cs",
+      "git_blob": "1067f23e2640085f0def9779478e2c3ca8f45123"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/Tournament/Scorecard.cs",
+      "git_blob": "2fb82c5e4799e5378a3e66806e601460fb1102ed"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/Tournament/TestArmies.cs",
+      "git_blob": "9223817922f1467eeec1999c8598def167bb5b7f"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/Tournament/TournamentHarness.cs",
+      "git_blob": "6b504b87c54a3f770d3cff94b46176aed9e7ee6b"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Candidates/TypeWeightedInstantCandidate.cs",
+      "git_blob": "793903febbfc798c747642ee175b16612caabf82"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/ApplyTacticalBattleCommand.cs",
+      "git_blob": "df9b9b500fa30eff62e5ce9cddcc10394cb19725"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/ApplyTacticalBattleCommandHandler.cs",
+      "git_blob": "ca0ee618a5934bdf3da140cf084125ef7fa07b3e"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/AttackArmyCommand.cs",
+      "git_blob": "268ccb5e2fb0112515addb435c28d80623c2aa20"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/AttackArmyCommandHandler.cs",
+      "git_blob": "a24c93491b7d7548b6339344824994ee0942db8e"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/AttackFleetCommand.cs",
+      "git_blob": "473ad3ca246eb55ff548025f2ffabcd3166e8fe2"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/AttackFleetCommandHandler.cs",
+      "git_blob": "f33015e0f71cfcf78dbf895f5e05238ab3be4447"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/AttackLegality.cs",
+      "git_blob": "9c8405b52ac699f557aa6460ce4021316b377234"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/BattleCommandRuleset.cs",
+      "git_blob": "c412614c038947bb12d2adab3eb26c647d23b6d9"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/BesiegeCityCommand.cs",
+      "git_blob": "62865e430f4f399d78570368276f2d84f4a5cf1a"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Commands/BesiegeCityCommandHandler.cs",
+      "git_blob": "aa84bb49e5b08183aaa0ffabbd5dbfadf091db10"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/InstantBattleResolver.cs",
+      "git_blob": "66a82b84094bc14f1e836e32a95a765023f07410"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/ScatterPlacement.cs",
+      "git_blob": "b465ff688205db9d5892f3b2bc350cf18b361d12"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/ComputerGeneral.cs",
+      "git_blob": "42758b7edad7e30448d790ebe7ff058990e706ed"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralDecision.cs",
+      "git_blob": "9dcd8bba69ec15172c00ac09a0035097d9a0249b"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralEngage.cs",
+      "git_blob": "0c53c88d41767f41df0c2221546ba8f8a5b0295c"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralLine.cs",
+      "git_blob": "16dad98350eadb2a9113b9d34b815d2e969fdd65"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralOrders.cs",
+      "git_blob": "5a4b344f3c750455f4823a99cf99698bc1b1bc96"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPassThree.cs",
+      "git_blob": "a6c065ec3cb3ab2582593f488c10f9653e572956"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPassTwo.cs",
+      "git_blob": "928ecb3c9bb401c98916f3100641de63b8866b91"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralPlacement.cs",
+      "git_blob": "832830de1244f1c29580c724a185610a86209799"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/General/GeneralTargeting.cs",
+      "git_blob": "e558a61c5c7cd9feec6383c2760d0cea1a289aca"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/IBattleDraws.cs",
+      "git_blob": "29ad69e2ff7b23eb11a6acc2f77dccc267f7bc7f"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/RetreatLosses.cs",
+      "git_blob": "12612f475802dff62e015b5dc57e18463253108b"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalBattleAftermath.cs",
+      "git_blob": "4b37a2af87dee204a3c222d8e8df21d7b29b844a"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalBattleState.cs",
+      "git_blob": "a09a048f1c0c688c91ae982729c265c270f1a5fb"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalBoard.cs",
+      "git_blob": "78b81ecf9916264533f57d3066c682c066104841"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalContext.cs",
+      "git_blob": "a48ff2058601eb9ca51b0606d4509154e4118487"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalCopyIn.cs",
+      "git_blob": "97c36713156c85998b409deb1537efa8da7b21e0"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalDriver.cs",
+      "git_blob": "d751eff88f0dbae3ffd449dfab8679dd18412fb0"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalEvent.cs",
+      "git_blob": "a9732ed28bebcb4e42e4a2b075701de8566840f2"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalHalfRound.cs",
+      "git_blob": "b65e69bb717401aacccdcc28d320691e1224bf8e"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalIcon.cs",
+      "git_blob": "33827d3ce4f663c252130817c8483333e5901cd8"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalMelee.cs",
+      "git_blob": "a583d137e5bd41f7bd1ff17a7eb15658ddc16312"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalMovement.cs",
+      "git_blob": "4f5ac9f8f108c883204c0e5b36eaf97553efe811"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalOrders.cs",
+      "git_blob": "6a8b31413d16da92db504bcf74cc06131ba6766b"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalRout.cs",
+      "git_blob": "eb8b064237eb5174ab49a17f76f7df0e8acae6fb"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalShooting.cs",
+      "git_blob": "990a53cd1d8c71759bacb7bde2dc0f577ad43c60"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalSurrender.cs",
+      "git_blob": "d82f43d03cffeeee936dea7490965f6c42d1fa41"
+    },
+    {
+      "path": "src/IC2.Engine/Battle/Tactical/TacticalWriteBack.cs",
+      "git_blob": "437fb242d110e02d874468920825c443d0e5c6c0"
+    },
+    {
+      "path": "src/IC2.Engine/Calendar/CalendarSystem.cs",
+      "git_blob": "26f5c59957e449209ca43a621a03bf34044fcb2f"
+    },
+    {
+      "path": "src/IC2.Engine/Calendar/CityUnitStateCode.cs",
+      "git_blob": "bddaf057295d042b2d37426bc76cd59e1b9fc070"
+    },
+    {
+      "path": "src/IC2.Engine/Calendar/NewGameTurnOrder.cs",
+      "git_blob": "4c109b3b311809f2b7efde8ecba4a67647a68905"
+    },
+    {
+      "path": "src/IC2.Engine/Calendar/SeatRotationSystem.cs",
+      "git_blob": "cd180997571c5c937b3ca590df56eb4d8f10adc6"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/CapitalOwnership.cs",
+      "git_blob": "b003736e33a465315d6a9e9e51c652eb793d9901"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/CaptureEvents.cs",
+      "git_blob": "b86f29fe2ad0ce58d3efcd2953e6546af8da5841"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/CityCaptureResolver.cs",
+      "git_blob": "99cedb65c5a4c4d7810159765c7e834c577936ed"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/CompleteDefenderStrength.cs",
+      "git_blob": "3b50dfd4905eb49e2699697c6460b92a812f7a35"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/ConquestCascade.cs",
+      "git_blob": "6a5ec5eab8619ff92fadf428e22dfcaf03cc9209"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/ConquestTrigger.cs",
+      "git_blob": "85e32eb4b73cc5aeeee9b8dcde03dfa981f0307d"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/EliminationForces.cs",
+      "git_blob": "16e471b64b209d6aecf1de8b9b3c7f1c1d85e2d8"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Capture/NationElimination.cs",
+      "git_blob": "e5bd015e02daf335994a3e0b1eeac1c0cec1e240"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Orders/CityOrderProgressSystem.cs",
+      "git_blob": "9766f3ab51a91ee4c48e75372235935fa690e9bb"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Orders/CityOrderRejections.cs",
+      "git_blob": "68d024a9c963b886a2f34a71dcf777987438810b"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Orders/OrderCityCommand.cs",
+      "git_blob": "57a42384f03041a4cf831bf310d556a2b4485201"
+    },
+    {
+      "path": "src/IC2.Engine/Cities/Orders/OrderCityCommandHandler.cs",
+      "git_blob": "6047d25867dbd949bb373e5c4d41d289caef55f5"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/CommandContext.cs",
+      "git_blob": "48b2b0d9c25246eeaa4a0ee3331b7db576295fe1"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/CommandDispatcher.cs",
+      "git_blob": "27b7312bfbb981ca85bb1ecdc5263e0b89365bbe"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/CommandOutcome.cs",
+      "git_blob": "103f5852598a200adcdb32728d5340b402188486"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/CommandResult.cs",
+      "git_blob": "a40cdb558b30e402354c96c08e5234cc504ab9f2"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/ICommand.cs",
+      "git_blob": "1015128eb8139b3d2f9a0596e7f5dda5147c8454"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/ICommandHandler.cs",
+      "git_blob": "3187010b619e76479d4fa1fb4d01c5ca5f8f04e2"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Commands/RejectionCode.cs",
+      "git_blob": "71f3bf3a7cd2acf5f250ae3c60d29fa94baecc2b"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Events/DomainEvent.cs",
+      "git_blob": "9752940510e5f4881ed46efefc3ad8858018f4be"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Events/IEventSink.cs",
+      "git_blob": "961a752a899dec4e4432b2ff6b87d6dd20ca775d"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Events/PublishedEvent.cs",
+      "git_blob": "51e8bcaf4f2d61991f4fbe65da546aa92cb25826"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/AssemblyScan.cs",
+      "git_blob": "1c91f143d2af409e9abbb35268b3921b6e71a159"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/GameSystemAttribute.cs",
+      "git_blob": "779aa13292e60339d5a27a20cb05a71d20053054"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/IGameSystem.cs",
+      "git_blob": "aaa8f48283b2b46defcc88e30b4ebfcf12f69995"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/QuarterBoundary.cs",
+      "git_blob": "6bb2cb9b70cca0ed654e3031e6df49313aca05e9"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/SystemContext.cs",
+      "git_blob": "5634628020131268edd9d5a1024b5e2a34a1d354"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/SystemRegistry.cs",
+      "git_blob": "fff7f322117a67b39a1cbef2673cc3c72bf7bd29"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/TurnCoordinator.cs",
+      "git_blob": "6472299d6fabd699c7ae884b9df5b3159420573e"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Pipeline/TurnPhase.cs",
+      "git_blob": "4deea8df894decac151d9cd04eaf342f9bf9adf2"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Rng/IRng.cs",
+      "git_blob": "264c1187529f7b40e78c708152b5aa0d9e8c51b6"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Rng/RngStreams.cs",
+      "git_blob": "9af7fc2b851195df9e16350f164366da4547fbe6"
+    },
+    {
+      "path": "src/IC2.Engine/Core/Rng/SplitMix64Rng.cs",
+      "git_blob": "e839b45639ec9e2bc8d3a4e5896501a2a5a31fa0"
+    },
+    {
+      "path": "src/IC2.Engine/Core/State/GameStateHash.cs",
+      "git_blob": "b5b70c8fd75aa5fdd6763e1754991c9a649a0919"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/AiOwnDiplomacyRule.cs",
+      "git_blob": "cfecc36e8927754e2791094efca5a796a1bd83d5"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/AcceptPeaceTreatyCommand.cs",
+      "git_blob": "e674c63020e706771bb2b50a987fe0cb5e71b60f"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/AcceptPendingOfferCommand.cs",
+      "git_blob": "733e89c3c23215ccb9c42dbe9fa3e6be5291e5e9"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/AiFormAllianceCommand.cs",
+      "git_blob": "c02a0985512d3f8db73e62d29b483e1de102be86"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/AiFormTradeCommand.cs",
+      "git_blob": "cb64ab6f8b07310e45d1b4bc78278e5b21855b07"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/AiSwapTradePartnerCommand.cs",
+      "git_blob": "d6976b09206c383cff3b87cc03c929c13bb14040"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/DeclareWarCommand.cs",
+      "git_blob": "41cbc1bf94562cb2fe83ff6b25d0aa996a9b64c6"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/MakePeaceCommand.cs",
+      "git_blob": "4fb5be35f75aa7036da6c1ae02d45e3ef22e4e75"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/ProposeAllianceCommand.cs",
+      "git_blob": "3c556357804eeb78577611afa44a3143b21321da"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/Commands/ProposeTradeCommand.cs",
+      "git_blob": "8720b412c3f13286ee0164a60eb75823831d4252"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/DiplomacyEvents.cs",
+      "git_blob": "6e26d53550a249cdfe35a7bd6b7df408ed8fe81b"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/HonourablePeaceGate.cs",
+      "git_blob": "03f954f5363e62bea0744e67defa5eeea23eea52"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/NeighbourGeography.cs",
+      "git_blob": "4b90e5b8ac1f6a50923cda794c3cef7a10373129"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/PeaceTreatySystem.cs",
+      "git_blob": "92a08e4a3e023c5613fd3ed4b22ea998c9764f31"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/PendingOfferSystem.cs",
+      "git_blob": "0efaacb53a9bf8caa66daf3bdf1fb671a55938d3"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/QuarterlyThawSystem.cs",
+      "git_blob": "60ea9159cd6a7917197079859305d8afee80ba05"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/RelationTransitions.cs",
+      "git_blob": "6c3585f93edf7232eba850ba82bb40ddfc6a7402"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/ReparationsFormula.cs",
+      "git_blob": "6eb4becc3e36a9019d95b19a21bb0a6e2740ee91"
+    },
+    {
+      "path": "src/IC2.Engine/Diplomacy/TradePartnerCap.cs",
+      "git_blob": "88ba06d81a237070856666c49f91b43c9b8ad158"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/AiDepositionHandler.cs",
+      "git_blob": "2459dc32afd2746075494115afdce2eac27c95bc"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/ArmySupplyAndMoraleSystem.cs",
+      "git_blob": "711cc6966498a466d18045cbcecc868ecd084393"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/ArmyUpkeep.cs",
+      "git_blob": "ea7741047b478ddf89568a6ff6e211a53790853d"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/AutomaticResupply.cs",
+      "git_blob": "9f8bdf08d8e9cfd1600f4937e4c8b73c2ca44b4f"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/BalanceSheet.cs",
+      "git_blob": "4ed3c01c38577e4731f51b9394e5a5ded1b5d679"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/CityLoyaltyDraws.cs",
+      "git_blob": "991e20797f7c9c0401b325ffac7ee6edc77df258"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/CityOwnershipTaxTransfer.cs",
+      "git_blob": "2012d010aeb4c348405a761a8e60d7c5392d40b8"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/CityPopulationGrowth.cs",
+      "git_blob": "fee414f2d056a71bc511b899ed35a78505fa5d87"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/CityTaxContribution.cs",
+      "git_blob": "fe5fd1e5433c813f6bec13ac4c7d5f0af4baba65"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/CityWeeklySupply.cs",
+      "git_blob": "3007031f9924ddff1adc86affcbfd67a4911cfd1"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/BuySupplyCommand.cs",
+      "git_blob": "27e955e986aaf88ec136a021ea8a20f0d01a5e88"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/BuySupplyCommandHandler.cs",
+      "git_blob": "2bc096a525b9b88820ce496e4acc7ac3ad307436"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/SetTaxRateCommand.cs",
+      "git_blob": "3a02f8bdddca2efc87a6c08fba95d6c10eb9e283"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/SetTaxRateCommandHandler.cs",
+      "git_blob": "b0c3a2bd372f693bf5a8e9a8a1be0ae9506f37ba"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/SupplyCommandEvents.cs",
+      "git_blob": "0412487ecde1074ec2b03ecf3f1efb09fb8d1d28"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/TransferMoneyCommand.cs",
+      "git_blob": "6684cbf272f89dd7c717c5e2512bbf3bcf723d27"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Commands/TransferMoneyCommandHandler.cs",
+      "git_blob": "9a66af872c31e9ecbb0947e7cf608d20f4fa0362"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Deposition.cs",
+      "git_blob": "4a9091060187103fe19d1215526fee813041d418"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/EconomyEvents.cs",
+      "git_blob": "c3627a2f33d39fcf72711f4284363d0c49f1371f"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/GarrisonUpkeep.cs",
+      "git_blob": "c194a88e7e20892473020c01c247a44c91c1a48e"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/HostileArmyAdjacent.cs",
+      "git_blob": "0a8ffaae36f07a63317c723b3f629fe74977eea2"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/LeaderSuccession.cs",
+      "git_blob": "a65c08c27ed147f02c3879cefca8482beff8b895"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/MercenaryDesertion.cs",
+      "git_blob": "2bd1d3ba86f3ce9bae7cdeadc4408029ba2f5903"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/NationTaxBaseRebuild.cs",
+      "git_blob": "fef19e77a154222844eb101175e02a1ac2733c9c"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/NationTreasuryCredit.cs",
+      "git_blob": "84afea0a1844a149583579d475d57e8a73fd4729"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/NationUnityUpdate.cs",
+      "git_blob": "80fed3ec7c7d2def1e7c769cb25abdea8662c623"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/PurseAccounting.cs",
+      "git_blob": "8312be6d2fb62bf4289a8bfd9948487466e200a2"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/QuarterlyCityEconomySystem.cs",
+      "git_blob": "1c9b77d9674fbc6d95ed5d6359741b3c5111c0a6"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/QuarterlyEconomySystem.cs",
+      "git_blob": "15958e25d7cf7120c39e8f0e8fbfc7e002071056"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/QuarterlyNationEconomySystem.cs",
+      "git_blob": "13a688454ac14d7f0a84641c3609780335d6a6c8"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Rebellion.cs",
+      "git_blob": "806e21ae4d9d184697affdb6f26280ba597e5368"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/Rebirth.cs",
+      "git_blob": "a6d1e5b2c6895759d6c22255071a0cf3a158248d"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/ShipUpkeep.cs",
+      "git_blob": "b1fbd96aaba202b50a90001034b2637936521705"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/SupplyCapacity.cs",
+      "git_blob": "5bdcc65150781bd3f2e819a4adbaabe6cd446af9"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/SupplyConsumption.cs",
+      "git_blob": "34fc3eb4b687a02ea153c27fa5035662b6cd0ae1"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/SupplyMoraleRule.cs",
+      "git_blob": "f43a3e32df00a5a42982d61943ce3bbfdb50ad26"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/SupplyProviders.cs",
+      "git_blob": "a9d4b48ad239e961dbd49b7fd1f40008a1203878"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/SupplyPurchase.cs",
+      "git_blob": "2fc7b3f0f6f0ee613a997b9d4d865f5e76b08d83"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/TaxIncome.cs",
+      "git_blob": "7f3a738d209ec445acb0b92e1d0fdb6d8b22047f"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/TreasuryPurseTransfer.cs",
+      "git_blob": "884097638b6708f5152ae3a5b53c8d1ca72149bc"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/WeatherEventSystem.cs",
+      "git_blob": "8aea2a9b61eb45b6afd98278f9c0cc137dde12a3"
+    },
+    {
+      "path": "src/IC2.Engine/Economy/WeeklyCitySupplySystem.cs",
+      "git_blob": "1d87d081a2b0edb6fabfa52b711dbfab66cb098b"
+    },
+    {
+      "path": "src/IC2.Engine/IC2.Engine.csproj",
+      "git_blob": "248d318c21c8c75f02422afb661edd73b4afce24"
+    },
+    {
+      "path": "src/IC2.Engine/Import/EmbarkationLinker.cs",
+      "git_blob": "f086883c357a14c3155a95cd9fb2e2c4e9151d31"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalBattleBlockImport.cs",
+      "git_blob": "a148f30bc6f2f0d2bf2e1a81c8ea36db556b373b"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalSaveExporter.cs",
+      "git_blob": "18266d9efb0ef6af5a5eba1d153970a54be57312"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalSaveFieldMapping.cs",
+      "git_blob": "79ec17351733aa5ce322ff18891a4061c2accf5c"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalSaveImportReport.cs",
+      "git_blob": "9691ac5df92fcdd234dd7e127b1c8cb18c147989"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalSaveImporter.cs",
+      "git_blob": "bacba6f4f9abc4e3acf255db5d58ba7d8c7a55f0"
+    },
+    {
+      "path": "src/IC2.Engine/Model/CityOwnership.cs",
+      "git_blob": "7016760af46a33bbd92f39667ee34263db4ecda3"
+    },
+    {
+      "path": "src/IC2.Engine/Model/FortificationCode.cs",
+      "git_blob": "4e2b2890b3c0b6598a93b40a63c3f590efb3eb45"
+    },
+    {
+      "path": "src/IC2.Engine/Model/GameDataSchema.cs",
+      "git_blob": "7483a880693c9992ff35b654f896de1187702b3d"
+    },
+    {
+      "path": "src/IC2.Engine/Model/GameState.cs",
+      "git_blob": "30030f7586f9c614330eb60e7ea88aab07a0d4eb"
+    },
+    {
+      "path": "src/IC2.Engine/Model/GameStateFactory.cs",
+      "git_blob": "4792180d1824ad1212b76d145d610bf13befb10a"
+    },
+    {
+      "path": "src/IC2.Engine/Model/JsonContract.cs",
+      "git_blob": "015d486191f73f1789d5cb43fc5cfb056c14ec49"
+    },
+    {
+      "path": "src/IC2.Engine/Model/NewGameLeaders.cs",
+      "git_blob": "e7d1a7b4d19549a2b8d3e5015b391dbc63045cac"
+    },
+    {
+      "path": "src/IC2.Engine/Model/Provenance.cs",
+      "git_blob": "87dced282e9e4b98bd9dc5e6f9514a7ef4fbb859"
+    },
+    {
+      "path": "src/IC2.Engine/Model/Ruleset.cs",
+      "git_blob": "208c2e2abc12935ae9048faa39eee3d732417fac"
+    },
+    {
+      "path": "src/IC2.Engine/Model/RulesetNumbers.cs",
+      "git_blob": "64fc3b6a801246b0521617cc7bce4271b84f6792"
+    },
+    {
+      "path": "src/IC2.Engine/Model/SaveGame.cs",
+      "git_blob": "b0506fa4779c2e7a9cb07da01292eed482b05cd5"
+    },
+    {
+      "path": "src/IC2.Engine/Model/Scenario.cs",
+      "git_blob": "43218750476fa3724f197149d078328b001c2f15"
+    },
+    {
+      "path": "src/IC2.Engine/Model/UnitSlot.cs",
+      "git_blob": "e985b2e07256e4e6a730c46748561ce757524da1"
+    },
+    {
+      "path": "src/IC2.Engine/Model/ValueList.cs",
+      "git_blob": "d57845405d6c1e298f3146c3677d06733a3dbd88"
+    },
+    {
+      "path": "src/IC2.Engine/Model/World.cs",
+      "git_blob": "8041373c2427cc80560181829a97b8873f2c3051"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/BresenhamPath.cs",
+      "git_blob": "20db17afe08c38b75f250be3264e084a6da57e87"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/Commands/MoveArmyCommand.cs",
+      "git_blob": "facb17140970197be807657d3c890ef236b854ed"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/Commands/MoveArmyCommandHandler.cs",
+      "git_blob": "76050b186dbefc6b5f7c3055d60a6c6ec23938bd"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/Commands/MovementCommandEvents.cs",
+      "git_blob": "eb50a1ce78e4bae7aa9c444d2d80daddacf07962"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/GridPoint.cs",
+      "git_blob": "87ad67f5662771c1b0f711039d16c259bdaaaa5d"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/MovementAbortRule.cs",
+      "git_blob": "99c25486b245459548d439459174ea6510e1dc15"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/MovementEvents.cs",
+      "git_blob": "40b7153e30ee754864e65ba6ec8b2396f3cda290"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/MovementWalker.cs",
+      "git_blob": "491864a80013cdb443f4fb69d2a3990e8d9a417f"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/StrategicTravelObservation.cs",
+      "git_blob": "a902f9ff87cbeb87ccb49d1c904bf4279524c3ce"
+    },
+    {
+      "path": "src/IC2.Engine/Movement/TerrainCostLookup.cs",
+      "git_blob": "6f196751204e3ead04d6f3edc4c02b89d9dbebe7"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/ArmyTransportTrim.cs",
+      "git_blob": "118ffbfc93037bf62505bc2c16ba99e90d3e49b5"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/CoastalCity.cs",
+      "git_blob": "4d0f55660b1d333a78e7061e0ed52b819d8a7152"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/AiAbsorbFleetCommand.cs",
+      "git_blob": "ea00bf229dd6ee55f8d6e56d4ce63f593cb7b0c8"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/AiAbsorbFleetCommandHandler.cs",
+      "git_blob": "c6292c3760163f4a36faf34080d12259554bcb31"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/BuyFleetSupplyCommand.cs",
+      "git_blob": "15db1e6b98b5c693527333e9dd89f213a1fb568b"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/BuyFleetSupplyCommandHandler.cs",
+      "git_blob": "723045ff14d1621b0300633e80fcccc6c7a728c8"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/DisembarkArmyCommand.cs",
+      "git_blob": "348aa0fea460b75d8cdc4e9473bb578fa2fb0b58"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/DisembarkArmyCommandHandler.cs",
+      "git_blob": "d599de46d88d1d476f05e66641ea7711e7b18e8c"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/EmbarkArmyCommand.cs",
+      "git_blob": "f5085ad0ef2ef70504d26d7d79c1540bec2caea7"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/EmbarkArmyCommandHandler.cs",
+      "git_blob": "89a2d9727122674a1cd5f341291b3844ab8f5494"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/FleetToFleetSupplyTransfer.cs",
+      "git_blob": "8af17bee411fb5adcef515f4c0893dab6fdbb4be"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/FleetToFleetTransferCommand.cs",
+      "git_blob": "bda7f7a325d42f5ac7874929f95bf82f9654a706"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/FleetToFleetTransferCommandHandler.cs",
+      "git_blob": "f1a44a7801cb0983ddbf2a2f16ae27224f1e9188"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/FleetTransferAndSupplyCommandEvents.cs",
+      "git_blob": "f3f95f06597a096e276ed9b4fcc18b161370690e"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/JoinFleetsCommand.cs",
+      "git_blob": "426b13ce622d8c8c78b840214e03cbb1dafdf09e"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/JoinFleetsCommandHandler.cs",
+      "git_blob": "5a3f381a4b8c585becb22b9f123f4eb0e9cedf72"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/MoveFleetCommand.cs",
+      "git_blob": "b74e4df59efb36418406f46c6d1cb0fbaa52d59f"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/MoveFleetCommandHandler.cs",
+      "git_blob": "56a279d25dd38c48d3d37a604f367959ef5249b3"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/OrderFleetCommand.cs",
+      "git_blob": "dd229838726f57a4920425bffecda7a68cb19e07"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/OrderFleetCommandHandler.cs",
+      "git_blob": "8107af75b56e7096ea6e9499bff394f73c704759"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/RepairFleetCommand.cs",
+      "git_blob": "80444e5e79ba5c11bf4fa9cff0e36d8544f960b7"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/RepairFleetCommandHandler.cs",
+      "git_blob": "baeaa445b11632b7bc8618afa07c016c8fb589ce"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/ScuttleFleetCommand.cs",
+      "git_blob": "3c9c193131f63303436bf5c976b0ca90ee83dff0"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/ScuttleFleetCommandHandler.cs",
+      "git_blob": "e5c4b7cd5a8573b7c707617a0421b553fd374bf8"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/SplitFleetCommand.cs",
+      "git_blob": "d7a6802ac85daaa4ac1fdceb95fbf808a683e253"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/Commands/SplitFleetCommandHandler.cs",
+      "git_blob": "bb7f962cb7a143d64fbe3c9adf32049d6a26ee19"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/FleetAttritionRule.cs",
+      "git_blob": "9f6f73e0fa61155f9fb5d60aa3252d2cd066a515"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/FleetMarker.cs",
+      "git_blob": "424507a88551af84073d62c7d8ccd34842379993"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/FleetTickSystem.cs",
+      "git_blob": "804ded3bf0605a78644db091b9a7b63d22809ea8"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/LandingTile.cs",
+      "git_blob": "d4e9a166ea9e894f369f06bca4f29740ba145755"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/NavalEvents.cs",
+      "git_blob": "d503ef94481c9a6697b613052ec6b99b1d7af642"
+    },
+    {
+      "path": "src/IC2.Engine/News/NewsLogWriter.cs",
+      "git_blob": "50eb8e96404e6ad061427105d27667e146f0d0e4"
+    },
+    {
+      "path": "src/IC2.Engine/News/NewsMessageCatalog.cs",
+      "git_blob": "3cb0d0613a3cee2ca463a0979c9d4c8e57443238"
+    },
+    {
+      "path": "src/IC2.Engine/Persistence/EnvelopeJson.cs",
+      "git_blob": "282d3f7dd651be025b73a14095e90604d97dd2d1"
+    },
+    {
+      "path": "src/IC2.Engine/Persistence/PersistenceExceptions.cs",
+      "git_blob": "8be79b02e6a31a51d0df93818e3b84f74e895ad8"
+    },
+    {
+      "path": "src/IC2.Engine/Persistence/SaveFormat.cs",
+      "git_blob": "28f10eac412489ec3821fe806c823933ea2fac6f"
+    },
+    {
+      "path": "src/IC2.Engine/Persistence/SaveManager.cs",
+      "git_blob": "8d0d460ae096e249e71278716169c019fe7de44e"
+    },
+    {
+      "path": "src/IC2.Engine/Persistence/SaveMigrations.cs",
+      "git_blob": "4a773c804d88718d7e1eb848e78e0e02a7dc1d07"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/EndTurnWarnings.cs",
+      "git_blob": "44e0c28679b28233ebbadb44b4acc3efa70f9981"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/GameSession.Commands.cs",
+      "git_blob": "9a47c3f90a6eea45d08f3acd1de0d80bd23c8f31"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/GameSession.cs",
+      "git_blob": "53c445955cdb069d9cb1e54a80e2bde8590fa726"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/GameSessionRendering.cs",
+      "git_blob": "6d0e96fcfef9f48339deaf0b176cffb1b8094b9e"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/PendingPeaceOffer.cs",
+      "git_blob": "37ffb40b0aedfb5d3fc48636287501e525584097"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/SeatFall.cs",
+      "git_blob": "923af454702c08efdfef0cbd9532bb04e1ebbc28"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/SessionOutput.cs",
+      "git_blob": "a2ff837958d0191a2221eca38748bb58359f8c0a"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/StrategicTravelTimeline.cs",
+      "git_blob": "ee950c8ca71fc3c48f116735322cfb143a7a9cac"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/TacticalBattleSession.cs",
+      "git_blob": "bd1f521a15dfdfc4d4f362ee00d11a4cd33693c6"
+    },
+    {
+      "path": "src/IC2.Engine/Presentation/TacticalBattleTimeline.cs",
+      "git_blob": "7afbd4974f1e31f22d11a053da14d482b0ce17c8"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/DisbandRecruitmentSlotCommand.cs",
+      "git_blob": "571f8f9ec81d95d60ed06dfda7f1ce64a0f3dac8"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/DisbandRecruitmentSlotCommandHandler.cs",
+      "git_blob": "126ad256faf4d6998b0f141c945615ee255fdb89"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/HireMercenaryCommand.cs",
+      "git_blob": "114d7bbd0112f530208bf05b6d00f0a7ada4420e"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/HireMercenaryCommandHandler.cs",
+      "git_blob": "5be33c26331094aeadae67f51afc0f26825f8fe7"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/MobilizeRecruitSlotCommand.cs",
+      "git_blob": "6493a47744e1a1d38ee02ee5dd6eb4a25e0e8145"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/MobilizeRecruitSlotCommandHandler.cs",
+      "git_blob": "e236c5ea090dfdde4fce08a160e6954cfd2c31ae"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/RecruitStandingUnitCommand.cs",
+      "git_blob": "e0ba1bb7bda651925d2dbd19b1e530cb38f46993"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/Commands/RecruitStandingUnitCommandHandler.cs",
+      "git_blob": "aac947f1c0d482cb50250108fbf02a03c8ac6dbc"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/MercenaryHireCost.cs",
+      "git_blob": "15c54062f8f178ef7d9efb74adaa01601ee31c24"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/MercenaryPoolRestock.cs",
+      "git_blob": "2c0dc163c9dfc232e97269e017a7585f70f9ebc0"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/MercenaryPoolRestockSystem.cs",
+      "git_blob": "fd13541555c8478d69f98abf014ae924963a9eb0"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/MobilizationRate.cs",
+      "git_blob": "3421fe8545333ad4292a07dab3b48680c07750a1"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/MobilizationReadiness.cs",
+      "git_blob": "0ee8ca7b346ad586f2be77fdafbda23b41b87047"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/RecruitmentEligibility.cs",
+      "git_blob": "f15e3319885635296dd06e197fdff86c488d5807"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/RecruitmentSlotReadinessSystem.cs",
+      "git_blob": "e0ca030f46c410e41ba7c4f8495f57542f97fbdd"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/StandingRecruitmentCost.cs",
+      "git_blob": "8fe096870ad0a9d8448cb11cd1f79c407c90b404"
+    },
+    {
+      "path": "src/IC2.Engine/Recruitment/UnitMergeGuard.cs",
+      "git_blob": "1bf38696119bceaa8dc1e1abce37f266190e7ad3"
+    },
+    {
+      "path": "src/IC2.Engine/Serialization/GameDataExceptions.cs",
+      "git_blob": "5a6ee1ecb78a30adb3d54330a457bed924c8f9bd"
+    },
+    {
+      "path": "src/IC2.Engine/Serialization/GameDataLoader.cs",
+      "git_blob": "864f382c5a1a989dfb9dcdabbd0093921b5e933b"
+    },
+    {
+      "path": "src/IC2.Engine/Serialization/GameDataRepository.cs",
+      "git_blob": "0688aff575a210673fc5df3063c3eb60839cf9b3"
+    },
+    {
+      "path": "src/IC2.Engine/Serialization/GameDataValidation.cs",
+      "git_blob": "880a479340ef63c8a95f890f4915cc41f72af6da"
+    },
+    {
+      "path": "src/IC2.Engine/Serialization/GameJson.cs",
+      "git_blob": "efa726de40d4cddde42be5b238cdb1b265e88290"
+    },
+    {
+      "path": "src/IC2.Engine/Serialization/SchemaValidator.cs",
+      "git_blob": "7b241853d958d294687a2b6753d7c4b451d9973f"
+    },
+    {
+      "path": "src/IC2.Engine/Strength/ArmyPower.cs",
+      "git_blob": "75d83dd9afcb6f404d85a91068014afce4483ff4"
+    },
+    {
+      "path": "src/IC2.Engine/Strength/FleetPower.cs",
+      "git_blob": "bc0a5f7274b040210fa2136d0ded4a5ac1afa073"
+    },
+    {
+      "path": "src/IC2.Engine/Strength/SiegeStrength.cs",
+      "git_blob": "84f9e9a9100243af29cb06016964bcce38b01a48"
+    },
+    {
+      "path": "src/IC2.Engine/Victory/CustomVictoryGoal.cs",
+      "git_blob": "7080967767681bf6c998def8a062bc52ea481d8b"
+    },
+    {
+      "path": "src/IC2.Engine/Victory/VictoryCheckSystem.cs",
+      "git_blob": "8a306cf30c9d5f54ea6c123341106908d734b740"
+    },
+    {
+      "path": "src/IC2.Engine/Victory/VictoryEvaluator.cs",
+      "git_blob": "332ea29c54198cc29550e6b18d59d080cef0acad"
+    },
+    {
+      "path": "src/IC2.Engine/Victory/VictoryEvents.cs",
+      "git_blob": "b414cb731ad46e80d4f43c3d404c4fd76f5c77c8"
+    },
+    {
+      "path": "src/IC2.Engine/Victory/VictoryOutcome.cs",
+      "git_blob": "bffd35bda7a25a53e7dad5954d746a372151b36c"
+    }
+  ],
+  "engine_sha256": "9a815a981165a52d62192fc71255a7ea010e0079d9fec431029a24e377436ae7"
+}
