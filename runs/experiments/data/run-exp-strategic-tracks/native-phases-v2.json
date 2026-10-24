@@ -1,0 +1,2283 @@
+[
+  {
+    "caseName": "000-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": 9,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 712,
+    "war_target": "illyria",
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "002-economy-4",
+    "phase": "economy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 17150,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 17150,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 775,
+      "MobilizedPercent": 21,
+      "TaxRatePercent": 15,
+      "Unity": 838,
+      "Wealth": 1788000,
+      "queue": [
+        {
+          "TargetCityId": "pella",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4000,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "pella",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 13
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:145,\u0022Y\u0022:40,\u0022Moves\u0022:8,\u0022Morale\u0022:70,\u0022Money\u0022:100,\u0022SupplyTons\u0022:164,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7900,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5700,\u0022Quality\u0022:9,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:9,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3700,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 775,
+      "MobilizedPercent": 21,
+      "TaxRatePercent": 15,
+      "Unity": 838,
+      "Wealth": 1788000,
+      "queue": [
+        {
+          "TargetCityId": "pella",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4000,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "pella",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 13
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:145,\u0022Y\u0022:40,\u0022Moves\u0022:8,\u0022Morale\u0022:70,\u0022Money\u0022:100,\u0022SupplyTons\u0022:164,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7900,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5700,\u0022Quality\u0022:9,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:9,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3700,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 17150"
+    ]
+  },
+  {
+    "caseName": "006-diplomacy-10",
+    "phase": "diplomacy",
+    "nation": "dacia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 0,
+      "protected": true,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": [
+        {
+          "actor": 10,
+          "target": 3,
+          "relation": 1
+        },
+        {
+          "actor": 10,
+          "target": 5,
+          "relation": 1
+        },
+        {
+          "actor": 10,
+          "target": 8,
+          "relation": 1
+        }
+      ]
+    },
+    "busy": false,
+    "power": 102,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [
+      "ptolemaic",
+      "numidia",
+      "celtiberia",
+      "illyria",
+      "bithynia",
+      "galatia"
+    ],
+    "swap": null
+  },
+  {
+    "caseName": "008-economy-10",
+    "phase": "economy",
+    "nation": "dacia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 9055,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 9055,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 180,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 607,
+      "Wealth": 357000,
+      "queue": [
+        {
+          "TargetCityId": "sirmium",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4200,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "sirmium",
+          "UnitTypeId": "light_infantry",
+          "Troops": 3800,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "sirmium",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2700,
+          "StateCode": 13
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 180,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 607,
+      "Wealth": 357000,
+      "queue": [
+        {
+          "TargetCityId": "sirmium",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4200,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "sirmium",
+          "UnitTypeId": "light_infantry",
+          "Troops": 3800,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "sirmium",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2700,
+          "StateCode": 13
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 9055"
+    ]
+  },
+  {
+    "caseName": "012-diplomacy-12",
+    "phase": "diplomacy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 0,
+      "protected": true,
+      "at_war": true,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": [
+        {
+          "actor": 12,
+          "target": 5,
+          "relation": 1
+        },
+        {
+          "actor": 12,
+          "target": 6,
+          "relation": 1
+        },
+        {
+          "actor": 12,
+          "target": 8,
+          "relation": 1
+        }
+      ]
+    },
+    "busy": true,
+    "power": 238,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [
+      "numidia",
+      "gaul",
+      "celtiberia",
+      "illyria",
+      "thracia"
+    ],
+    "swap": null
+  },
+  {
+    "caseName": "014-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -951,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -951,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "018-diplomacy-15",
+    "phase": "diplomacy",
+    "nation": "thracia",
+    "input_checks": 2584,
+    "original_facts": {
+      "trades": 3,
+      "protected": true,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 441,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "020-economy-15",
+    "phase": "economy",
+    "nation": "thracia",
+    "input_checks": 2584,
+    "complete": true,
+    "Issued": 1,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 12110,
+    "threat": 3531,
+    "original_power": [
+      {
+        "own": 12110,
+        "threat": 3531
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 520,
+      "MobilizedPercent": 22,
+      "TaxRatePercent": 9,
+      "Unity": 703,
+      "Wealth": 1278000,
+      "queue": [
+        {
+          "TargetCityId": "byzantium",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5300,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "byzantium",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4000,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "byzantium",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1000,
+          "StateCode": 17
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:160,\u0022Y\u0022:30,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:142,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:13},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:17}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 520,
+      "MobilizedPercent": 22,
+      "TaxRatePercent": 9,
+      "Unity": 703,
+      "Wealth": 1278000,
+      "queue": [
+        {
+          "TargetCityId": "byzantium",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5300,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "byzantium",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4000,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "byzantium",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1000,
+          "StateCode": 17
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:160,\u0022Y\u0022:30,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:142,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:13},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:17}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 3531, own 12110",
+      "faithful consolidate: joined army-13 slot 0"
+    ]
+  },
+  {
+    "caseName": "024-diplomacy-9",
+    "phase": "diplomacy",
+    "nation": "illyria",
+    "input_checks": 2581,
+    "original_facts": {
+      "trades": 1,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": [
+        {
+          "actor": 9,
+          "target": 5,
+          "relation": 1
+        },
+        {
+          "actor": 9,
+          "target": 11,
+          "relation": 1
+        }
+      ]
+    },
+    "busy": false,
+    "power": 186,
+    "war_target": null,
+    "alliance_partner": "gaul",
+    "trade_candidates": [
+      "numidia",
+      "bithynia",
+      "galatia"
+    ],
+    "swap": null
+  },
+  {
+    "caseName": "026-economy-9",
+    "phase": "economy",
+    "nation": "illyria",
+    "input_checks": 2581,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 0,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 0,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 580,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 690,
+      "Wealth": 627000,
+      "queue": [
+        {
+          "TargetCityId": "scodra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4300,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "scodra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "scodra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 2500,
+          "StateCode": 17
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 580,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 690,
+      "Wealth": 627000,
+      "queue": [
+        {
+          "TargetCityId": "scodra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4300,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "scodra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "scodra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 2500,
+          "StateCode": 17
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 0"
+    ]
+  },
+  {
+    "caseName": "030-diplomacy-5",
+    "phase": "diplomacy",
+    "nation": "numidia",
+    "input_checks": 2581,
+    "original_facts": {
+      "trades": 2,
+      "protected": true,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 198,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "032-economy-5",
+    "phase": "economy",
+    "nation": "numidia",
+    "input_checks": 2581,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 20200,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 20200,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 410,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 619,
+      "Wealth": 675000,
+      "queue": [
+        {
+          "TargetCityId": "gemellae",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 2500,
+          "StateCode": 5
+        },
+        {
+          "TargetCityId": "gemellae",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 700,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "gemellae",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4300,
+          "StateCode": 15
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 410,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 619,
+      "Wealth": 675000,
+      "queue": [
+        {
+          "TargetCityId": "gemellae",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 2500,
+          "StateCode": 5
+        },
+        {
+          "TargetCityId": "gemellae",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 700,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "gemellae",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4300,
+          "StateCode": 15
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 20200"
+    ]
+  },
+  {
+    "caseName": "036-diplomacy-3",
+    "phase": "diplomacy",
+    "nation": "ptolemaic",
+    "input_checks": 2581,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 3054,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "038-economy-3",
+    "phase": "economy",
+    "nation": "ptolemaic",
+    "input_checks": 2581,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 18112,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 18112,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 1640,
+      "MobilizedPercent": 17,
+      "TaxRatePercent": 13,
+      "Unity": 666,
+      "Wealth": 10191000,
+      "queue": [
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 900,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "light_infantry",
+          "Troops": 9000,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 5000,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "archers",
+          "Troops": 2000,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7500,
+          "StateCode": 21
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:191,\u0022Y\u0022:96,\u0022Moves\u0022:8,\u0022Morale\u0022:64,\u0022Money\u0022:100,\u0022SupplyTons\u0022:430,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8600,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:10000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:9000,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:13500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:1200,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:9}]}"
+      ],
+      "fleets": [
+        "{\u0022X\u0022:189,\u0022Y\u0022:89,\u0022Moves\u0022:25,\u0022Ships\u0022:70,\u0022Money\u0022:200,\u0022SupplyTons\u0022:80,\u0022ConditionPercent\u0022:75,\u0022ConstructionTicksRemaining\u0022:null,\u0022cargo\u0022:false}"
+      ]
+    },
+    "expected": {
+      "Treasury": 1640,
+      "MobilizedPercent": 17,
+      "TaxRatePercent": 13,
+      "Unity": 666,
+      "Wealth": 10191000,
+      "queue": [
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 900,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "light_infantry",
+          "Troops": 9000,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 5000,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "archers",
+          "Troops": 2000,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "alexandria",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7500,
+          "StateCode": 21
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:191,\u0022Y\u0022:96,\u0022Moves\u0022:8,\u0022Morale\u0022:64,\u0022Money\u0022:100,\u0022SupplyTons\u0022:430,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8600,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:10000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:9000,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:13500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:1200,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:9},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:9}]}"
+      ],
+      "fleets": [
+        "{\u0022X\u0022:189,\u0022Y\u0022:89,\u0022Moves\u0022:25,\u0022Ships\u0022:70,\u0022Money\u0022:200,\u0022SupplyTons\u0022:80,\u0022ConditionPercent\u0022:75,\u0022ConstructionTicksRemaining\u0022:null,\u0022cargo\u0022:false}"
+      ]
+    },
+    "log": [
+      "faithful economy: threat 0, own 18112"
+    ]
+  },
+  {
+    "caseName": "042-diplomacy-1",
+    "phase": "diplomacy",
+    "nation": "carthage",
+    "input_checks": 2581,
+    "original_facts": {
+      "trades": 3,
+      "protected": true,
+      "at_war": true,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 1687,
+    "war_target": null,
+    "alliance_partner": "gaul",
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "044-economy-1",
+    "phase": "economy",
+    "nation": "carthage",
+    "input_checks": 2581,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 34401,
+    "threat": 29560,
+    "original_power": [
+      {
+        "own": 34401,
+        "threat": 29560
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 11000,
+      "MobilizedPercent": 15,
+      "TaxRatePercent": 5,
+      "Unity": 719,
+      "Wealth": 4821000,
+      "queue": [
+        {
+          "TargetCityId": "carthago",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "carthago",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3000,
+          "StateCode": 11
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:47,\u0022Y\u0022:62,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:231,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:1},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:9000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:3},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5200,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:3},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4000,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:3},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:1},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:2100,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:1}]}",
+        "{\u0022X\u0022:93,\u0022Y\u0022:79,\u0022Moves\u0022:8,\u0022Morale\u0022:68,\u0022Money\u0022:100,\u0022SupplyTons\u0022:90,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5700,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:4},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:2000,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:1}]}"
+      ],
+      "fleets": [
+        "{\u0022X\u0022:49,\u0022Y\u0022:62,\u0022Moves\u0022:25,\u0022Ships\u0022:90,\u0022Money\u0022:1000,\u0022SupplyTons\u0022:80,\u0022ConditionPercent\u0022:85,\u0022ConstructionTicksRemaining\u0022:null,\u0022cargo\u0022:false}"
+      ]
+    },
+    "expected": {
+      "Treasury": 11000,
+      "MobilizedPercent": 15,
+      "TaxRatePercent": 5,
+      "Unity": 719,
+      "Wealth": 4821000,
+      "queue": [
+        {
+          "TargetCityId": "carthago",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "carthago",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3000,
+          "StateCode": 11
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:47,\u0022Y\u0022:62,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:231,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:1},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:9000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:3},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5200,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:3},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4000,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:3},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:1},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:2100,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:1}]}",
+        "{\u0022X\u0022:93,\u0022Y\u0022:79,\u0022Moves\u0022:8,\u0022Morale\u0022:68,\u0022Money\u0022:100,\u0022SupplyTons\u0022:90,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2300,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5700,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:4},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1100,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:2000,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:1}]}"
+      ],
+      "fleets": [
+        "{\u0022X\u0022:49,\u0022Y\u0022:62,\u0022Moves\u0022:25,\u0022Ships\u0022:90,\u0022Money\u0022:1000,\u0022SupplyTons\u0022:80,\u0022ConditionPercent\u0022:85,\u0022ConstructionTicksRemaining\u0022:null,\u0022cargo\u0022:false}"
+      ]
+    },
+    "log": [
+      "faithful economy: threat 29560, own 34401"
+    ]
+  },
+  {
+    "caseName": "048-diplomacy-7",
+    "phase": "diplomacy",
+    "nation": "greece",
+    "input_checks": 2584,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": 9,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 635,
+    "war_target": "illyria",
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "050-economy-7",
+    "phase": "economy",
+    "nation": "greece",
+    "input_checks": 2584,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 0,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 0,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 948,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 532,
+      "Wealth": 2550000,
+      "queue": [
+        {
+          "TargetCityId": "athens",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3500,
+          "StateCode": 5
+        },
+        {
+          "TargetCityId": "athens",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4800,
+          "StateCode": 13
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 948,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 5,
+      "Unity": 532,
+      "Wealth": 2550000,
+      "queue": [
+        {
+          "TargetCityId": "athens",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3500,
+          "StateCode": 5
+        },
+        {
+          "TargetCityId": "athens",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4800,
+          "StateCode": 13
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 0"
+    ]
+  },
+  {
+    "caseName": "054-diplomacy-14",
+    "phase": "diplomacy",
+    "nation": "media",
+    "input_checks": 2584,
+    "original_facts": {
+      "trades": 3,
+      "protected": true,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 564,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "056-economy-14",
+    "phase": "economy",
+    "nation": "media",
+    "input_checks": 2584,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 19266,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 19266,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 760,
+      "MobilizedPercent": 25,
+      "TaxRatePercent": 10,
+      "Unity": 682,
+      "Wealth": 1893000,
+      "queue": [
+        {
+          "TargetCityId": "ecbatana",
+          "UnitTypeId": "archers",
+          "Troops": 2500,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "ecbatana",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7000,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "ecbatana",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 4000,
+          "StateCode": 17
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:299,\u0022Y\u0022:59,\u0022Moves\u0022:8,\u0022Morale\u0022:66,\u0022Money\u0022:100,\u0022SupplyTons\u0022:234,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6900,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8100,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:30},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:1900,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:5},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:20},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2400,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:19},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:900,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 760,
+      "MobilizedPercent": 25,
+      "TaxRatePercent": 10,
+      "Unity": 682,
+      "Wealth": 1893000,
+      "queue": [
+        {
+          "TargetCityId": "ecbatana",
+          "UnitTypeId": "archers",
+          "Troops": 2500,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "ecbatana",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7000,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "ecbatana",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 4000,
+          "StateCode": 17
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:299,\u0022Y\u0022:59,\u0022Moves\u0022:8,\u0022Morale\u0022:66,\u0022Money\u0022:100,\u0022SupplyTons\u0022:234,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6900,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8100,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:30},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:1900,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:5},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:20},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2400,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:19},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:900,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 19266"
+    ]
+  },
+  {
+    "caseName": "060-diplomacy-8",
+    "phase": "diplomacy",
+    "nation": "celtiberia",
+    "input_checks": 2584,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": true,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 385,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "062-economy-8",
+    "phase": "economy",
+    "nation": "celtiberia",
+    "input_checks": 2584,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 14560,
+    "threat": 48229,
+    "original_power": [
+      {
+        "own": 14560,
+        "threat": 48229
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1182,
+      "MobilizedPercent": 81,
+      "TaxRatePercent": 15,
+      "Unity": 713,
+      "Wealth": 1116000,
+      "queue": [
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1300,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5500,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3000,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5200,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 6000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 11000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 13500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 9700,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3200,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:34,\u0022Y\u0022:63,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:249,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7800,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5900,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:11},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1182,
+      "MobilizedPercent": 81,
+      "TaxRatePercent": 15,
+      "Unity": 713,
+      "Wealth": 1116000,
+      "queue": [
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1300,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5500,
+          "StateCode": 7
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3000,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5200,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 6000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 11000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 13500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 9700,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3200,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "numantia",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:34,\u0022Y\u0022:63,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:249,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7800,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5900,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:11},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:5400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 48229, own 14560",
+      "faithful order 1: heavy_infantry 6000 troops at numantia",
+      "faithful order 2: light_infantry 7900 troops at numantia",
+      "faithful order 3: light_infantry 11000 troops at numantia",
+      "faithful order 4: heavy_infantry 2000 troops at numantia",
+      "faithful order 5: light_infantry 13500 troops at numantia",
+      "faithful order 6: light_infantry 9700 troops at numantia",
+      "faithful order 7: heavy_infantry 3200 troops at numantia",
+      "faithful order 8: light_infantry 8500 troops at numantia"
+    ]
+  },
+  {
+    "caseName": "066-diplomacy-6",
+    "phase": "diplomacy",
+    "nation": "gaul",
+    "input_checks": 2603,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": true,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 375,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "068-economy-6",
+    "phase": "economy",
+    "nation": "gaul",
+    "input_checks": 2603,
+    "complete": true,
+    "Issued": 5,
+    "Rejected": 0,
+    "draws_consumed": 10,
+    "original_draws": 10,
+    "own": 13696,
+    "threat": 48299,
+    "original_power": [
+      {
+        "own": 13696,
+        "threat": 48299
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -2427,
+      "MobilizedPercent": 89,
+      "TaxRatePercent": 10,
+      "Unity": 577,
+      "Wealth": 1512000,
+      "queue": [
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 1500,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 800,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5700,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 5800,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 11300,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5300,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5600,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 11100,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "archers",
+          "Troops": 2000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 5400,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 15000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 6500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1600,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 6600,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:93,\u0022Y\u0022:34,\u0022Moves\u0022:7,\u0022Morale\u0022:64,\u0022Money\u0022:96,\u0022SupplyTons\u0022:484,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:9200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7800,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:21},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8600,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:41},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:600,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:15000,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:11},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4988,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:45}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -2427,
+      "MobilizedPercent": 89,
+      "TaxRatePercent": 10,
+      "Unity": 577,
+      "Wealth": 1512000,
+      "queue": [
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 1500,
+          "StateCode": 11
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 800,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5700,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 5800,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 11300,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5300,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5600,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 11100,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "archers",
+          "Troops": 2000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 5400,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 15000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 6500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_infantry",
+          "Troops": 7900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1600,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "nimes",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 6600,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:93,\u0022Y\u0022:34,\u0022Moves\u0022:7,\u0022Morale\u0022:64,\u0022Money\u0022:96,\u0022SupplyTons\u0022:484,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:9200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7800,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:21},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8600,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2200,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:41},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:600,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:15000,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:11},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4988,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:45}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 48299, own 13696",
+      "faithful order 1: light_infantry 6500 troops at nimes",
+      "faithful order 2: heavy_cavalry 2400 troops at nimes",
+      "faithful order 3: light_infantry 7900 troops at nimes",
+      "faithful order 4: heavy_cavalry 1600 troops at nimes",
+      "faithful order 5: light_cavalry 6600 troops at nimes"
+    ]
+  },
+  {
+    "caseName": "072-diplomacy-11",
+    "phase": "diplomacy",
+    "nation": "bithynia",
+    "input_checks": 2613,
+    "original_facts": {
+      "trades": 3,
+      "protected": true,
+      "at_war": true,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 270,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "074-economy-11",
+    "phase": "economy",
+    "nation": "bithynia",
+    "input_checks": 2613,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 23739,
+    "threat": 42663,
+    "original_power": [
+      {
+        "own": 23739,
+        "threat": 42663
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1220,
+      "MobilizedPercent": 60,
+      "TaxRatePercent": 12,
+      "Unity": 599,
+      "Wealth": 1098000,
+      "queue": [
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2800,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 6300,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1000,
+          "StateCode": 19
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 12100,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5800,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "archers",
+          "Troops": 3000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 9800,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "archers",
+          "Troops": 2200,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 6000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3600,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 5800,
+          "StateCode": 2
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:189,\u0022Y\u0022:29,\u0022Moves\u0022:9,\u0022Morale\u0022:64,\u0022Money\u0022:100,\u0022SupplyTons\u0022:263,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:20},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2100,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:32},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1220,
+      "MobilizedPercent": 60,
+      "TaxRatePercent": 12,
+      "Unity": 599,
+      "Wealth": 1098000,
+      "queue": [
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2800,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 6300,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1000,
+          "StateCode": 19
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 12100,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5800,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "archers",
+          "Troops": 3000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_infantry",
+          "Troops": 9800,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "archers",
+          "Troops": 2200,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 6000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3600,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "sinope",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 5800,
+          "StateCode": 2
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:189,\u0022Y\u0022:29,\u0022Moves\u0022:9,\u0022Morale\u0022:64,\u0022Money\u0022:100,\u0022SupplyTons\u0022:263,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8700,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:20},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8400,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:6000,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2100,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:32},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1000,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1800,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 42663, own 23739"
+    ]
+  },
+  {
+    "caseName": "078-diplomacy-2",
+    "phase": "diplomacy",
+    "nation": "seleucid",
+    "input_checks": 2613,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": true,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 6006,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "080-economy-2",
+    "phase": "economy",
+    "nation": "seleucid",
+    "input_checks": 2613,
+    "complete": true,
+    "Issued": 1,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 27663,
+    "threat": 51270,
+    "original_power": [
+      {
+        "own": 27663,
+        "threat": 51270
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 2172,
+      "MobilizedPercent": 27,
+      "TaxRatePercent": 18,
+      "Unity": 708,
+      "Wealth": 17178000,
+      "queue": [
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_infantry",
+          "Troops": 6000,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5800,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "archers",
+          "Troops": 1700,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "archers",
+          "Troops": 1400,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4500,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3800,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4000,
+          "StateCode": 23
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8000,
+          "StateCode": 23
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3700,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4600,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3700,
+          "StateCode": 2
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:176,\u0022Y\u0022:42,\u0022Moves\u0022:9,\u0022Morale\u0022:67,\u0022Money\u0022:100,\u0022SupplyTons\u0022:300,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8550,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7662,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6392,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:7},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4916,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4226,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:1180,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:886,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1474,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:7},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1374,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0}]}",
+        "{\u0022X\u0022:225,\u0022Y\u0022:72,\u0022Moves\u0022:9,\u0022Morale\u0022:65,\u0022Money\u0022:700,\u0022SupplyTons\u0022:298,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5680,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6180,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4200,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6420,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:5},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2740,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4220,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2140,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2160,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:6},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1960,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": [
+        "{\u0022X\u0022:0,\u0022Y\u0022:0,\u0022Moves\u0022:0,\u0022Ships\u0022:100,\u0022Money\u0022:0,\u0022SupplyTons\u0022:0,\u0022ConditionPercent\u0022:0,\u0022ConstructionTicksRemaining\u0022:24,\u0022cargo\u0022:false}"
+      ]
+    },
+    "expected": {
+      "Treasury": 2172,
+      "MobilizedPercent": 27,
+      "TaxRatePercent": 18,
+      "Unity": 708,
+      "Wealth": 17178000,
+      "queue": [
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_infantry",
+          "Troops": 6000,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5800,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "archers",
+          "Troops": 1700,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "archers",
+          "Troops": 1400,
+          "StateCode": 13
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4500,
+          "StateCode": 17
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3800,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4000,
+          "StateCode": 23
+        },
+        {
+          "TargetCityId": "antioch",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8000,
+          "StateCode": 23
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3700,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 4600,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8000,
+          "StateCode": 2
+        },
+        {
+          "TargetCityId": "isaura",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 3700,
+          "StateCode": 2
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:176,\u0022Y\u0022:42,\u0022Moves\u0022:9,\u0022Morale\u0022:67,\u0022Money\u0022:100,\u0022SupplyTons\u0022:300,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:8550,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:7662,\u0022Quality\u0022:5,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6392,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:7},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4916,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4226,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:1180,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:886,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1474,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:7},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1374,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0}]}",
+        "{\u0022X\u0022:225,\u0022Y\u0022:72,\u0022Moves\u0022:9,\u0022Morale\u0022:65,\u0022Money\u0022:700,\u0022SupplyTons\u0022:298,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5680,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6180,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:4200,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6420,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:5},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:2740,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:4220,\u0022Quality\u0022:8,\u0022MercenaryLabel\u0022:2},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2140,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022archers\u0022,\u0022Troops\u0022:2160,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:6},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:1500,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:1960,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": [
+        "{\u0022X\u0022:0,\u0022Y\u0022:0,\u0022Moves\u0022:0,\u0022Ships\u0022:100,\u0022Money\u0022:0,\u0022SupplyTons\u0022:0,\u0022ConditionPercent\u0022:0,\u0022ConstructionTicksRemaining\u0022:24,\u0022cargo\u0022:false}"
+      ]
+    },
+    "log": [
+      "faithful economy: threat 51270, own 27663",
+      "faithful fleet order: 100 ships at issus (seleucid-ai-fleet-0)"
+    ]
+  },
+  {
+    "caseName": "084-diplomacy-13",
+    "phase": "diplomacy",
+    "nation": "armenia",
+    "input_checks": 2623,
+    "original_facts": {
+      "trades": 3,
+      "protected": true,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 318,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": null
+  },
+  {
+    "caseName": "086-economy-13",
+    "phase": "economy",
+    "nation": "armenia",
+    "input_checks": 2623,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 12733,
+    "threat": 0,
+    "original_power": [
+      {
+        "own": 12733,
+        "threat": 0
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 530,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 8,
+      "Unity": 660,
+      "Wealth": 1074000,
+      "queue": [
+        {
+          "TargetCityId": "erivan",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "erivan",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "erivan",
+          "UnitTypeId": "archers",
+          "Troops": 2000,
+          "StateCode": 21
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 530,
+      "MobilizedPercent": 0,
+      "TaxRatePercent": 8,
+      "Unity": 660,
+      "Wealth": 1074000,
+      "queue": [
+        {
+          "TargetCityId": "erivan",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "erivan",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5000,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "erivan",
+          "UnitTypeId": "archers",
+          "Troops": 2000,
+          "StateCode": 21
+        }
+      ],
+      "armies": [],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 0, own 12733"
+    ]
+  }
+]

@@ -1,0 +1,4281 @@
+[
+  {
+    "caseName": "1000-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 8609,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 8609,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1001-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 3,
+    "Rejected": 0,
+    "draws_consumed": 6,
+    "original_draws": 6,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1781,
+      "MobilizedPercent": 36,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1781,
+      "MobilizedPercent": 36,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1002-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 3,
+    "Rejected": 0,
+    "draws_consumed": 6,
+    "original_draws": 6,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1780,
+      "MobilizedPercent": 36,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1780,
+      "MobilizedPercent": 36,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1003-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 3,
+    "Rejected": 0,
+    "draws_consumed": 6,
+    "original_draws": 6,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1779,
+      "MobilizedPercent": 36,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1779,
+      "MobilizedPercent": 36,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1004-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 1,
+    "Rejected": 0,
+    "draws_consumed": 2,
+    "original_draws": 2,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 376,
+      "MobilizedPercent": 100,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 376,
+      "MobilizedPercent": 100,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1005-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 440,
+      "MobilizedPercent": 100,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 440,
+      "MobilizedPercent": 100,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948"
+    ]
+  },
+  {
+    "caseName": "1006-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 499,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 499,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1007-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 500,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 500,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1008-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 649,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 649,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1009-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 8,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 650,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 14,
+      "Unity": 650,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1010-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 17,
+      "Unity": 499,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 17,
+      "Unity": 499,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 17"
+    ]
+  },
+  {
+    "caseName": "1011-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 17,
+      "Unity": 500,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 17,
+      "Unity": 500,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 17"
+    ]
+  },
+  {
+    "caseName": "1012-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 17,
+      "Unity": 649,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 17,
+      "Unity": 649,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 17"
+    ]
+  },
+  {
+    "caseName": "1013-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 650,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 650,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 23"
+    ]
+  },
+  {
+    "caseName": "1014-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1392,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1392,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 23"
+    ]
+  },
+  {
+    "caseName": "1015-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -1391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -1391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 23"
+    ]
+  },
+  {
+    "caseName": "1016-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -392,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -392,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 23"
+    ]
+  },
+  {
+    "caseName": "1017-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2568,
+    "complete": true,
+    "Issued": 9,
+    "Rejected": 0,
+    "draws_consumed": 16,
+    "original_draws": 16,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": -391,
+      "MobilizedPercent": 87,
+      "TaxRatePercent": 23,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 3100,
+          "StateCode": 9
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 4900,
+          "StateCode": 15
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 5100,
+          "StateCode": 21
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_infantry",
+          "Troops": 2900,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_cavalry",
+          "Troops": 7000,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 14300,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 8500,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 2400,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "heavy_cavalry",
+          "Troops": 1200,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra",
+      "faithful order 2: heavy_infantry 2900 troops at ancyra",
+      "faithful order 3: archers 3500 troops at ancyra",
+      "faithful order 4: light_cavalry 7000 troops at ancyra",
+      "faithful order 5: light_infantry 14300 troops at ancyra",
+      "faithful order 6: light_infantry 8500 troops at ancyra",
+      "faithful order 7: archers 2400 troops at ancyra",
+      "faithful order 8: heavy_cavalry 1200 troops at ancyra",
+      "week 11: tax 14 -\u003E 23"
+    ]
+  },
+  {
+    "caseName": "1018-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2640,
+    "complete": true,
+    "Issued": 1,
+    "Rejected": 0,
+    "draws_consumed": 2,
+    "original_draws": 2,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 376,
+      "MobilizedPercent": 25,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 376,
+      "MobilizedPercent": 25,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "archers",
+          "Troops": 3300,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948",
+      "faithful order 1: archers 3300 troops at ancyra"
+    ]
+  },
+  {
+    "caseName": "1019-economy-12",
+    "phase": "economy",
+    "nation": "galatia",
+    "input_checks": 2642,
+    "complete": true,
+    "Issued": 0,
+    "Rejected": 0,
+    "draws_consumed": 0,
+    "original_draws": 0,
+    "own": 19948,
+    "threat": 52802,
+    "original_power": [
+      {
+        "own": 19948,
+        "threat": 52802
+      }
+    ],
+    "all_draws_consumed": true,
+    "economy_projection_equal": true,
+    "actual": {
+      "Treasury": 440,
+      "MobilizedPercent": 20,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "expected": {
+      "Treasury": 440,
+      "MobilizedPercent": 20,
+      "TaxRatePercent": 14,
+      "Unity": 728,
+      "Wealth": 684000,
+      "queue": [
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        },
+        {
+          "TargetCityId": "ancyra",
+          "UnitTypeId": "light_infantry",
+          "Troops": 100,
+          "StateCode": 0
+        }
+      ],
+      "armies": [
+        "{\u0022X\u0022:200,\u0022Y\u0022:45,\u0022Moves\u0022:8,\u0022Morale\u0022:65,\u0022Money\u0022:100,\u0022SupplyTons\u0022:73,\u0022IsEmbarked\u0022:false,\u0022units\u0022:[{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:5800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022light_infantry\u0022,\u0022Troops\u0022:6400,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:0},{\u0022UnitTypeId\u0022:\u0022heavy_infantry\u0022,\u0022Troops\u0022:3500,\u0022Quality\u0022:7,\u0022MercenaryLabel\u0022:10},{\u0022UnitTypeId\u0022:\u0022light_cavalry\u0022,\u0022Troops\u0022:2800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:46},{\u0022UnitTypeId\u0022:\u0022heavy_cavalry\u0022,\u0022Troops\u0022:800,\u0022Quality\u0022:6,\u0022MercenaryLabel\u0022:0}]}"
+      ],
+      "fleets": []
+    },
+    "log": [
+      "faithful economy: threat 52802, own 19948"
+    ]
+  },
+  {
+    "caseName": "1020-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": 9,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 712,
+    "war_target": "illyria",
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1021-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 712,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1022-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": 9,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 712,
+    "war_target": "illyria",
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1023-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": true,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": true,
+    "power": 712,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1024-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 0,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1025-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 8,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1026-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 8,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1027-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": null,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 16,
+    "war_target": null,
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  },
+  {
+    "caseName": "1028-diplomacy-4",
+    "phase": "diplomacy",
+    "nation": "macedonia",
+    "input_checks": 2568,
+    "original_facts": {
+      "trades": 3,
+      "protected": false,
+      "at_war": false,
+      "busy": false,
+      "war_target": 9,
+      "pre_draw_relation_writes": []
+    },
+    "busy": false,
+    "power": 1600,
+    "war_target": "illyria",
+    "alliance_partner": null,
+    "trade_candidates": [],
+    "swap": {}
+  }
+]

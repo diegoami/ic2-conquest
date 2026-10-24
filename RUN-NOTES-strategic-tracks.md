@@ -61,3 +61,22 @@ not live per-draw instrumentation. No game/RNG/presentation helper replacement.
 Generated saves ST176-ST-rom-{hook,plain}-v1-{before,after}.SAV; all binaries
 hashed in SAVES.sha256. No human battle orders/Windows restart. Native local
 comparisons and declared synthetic boundaries next; no parity finding yet.
+
+Second batch:15 actual economy phases +20 declared economy boundaries agree on
+own/threat and measured own nation/queue/army/fleet effects under fail-closed
+original draw replay. Fifteen actual +9 synthetic diplomacy inputs agree on
+busy and best-war-target; full alliance/trade/RNG execution is not established.
+Native input gates check77632 fields across the30 captured phase comparisons.
+
+Fleet provider controls:23 retained per-case native results agree. Initial cargo
+fixture mistakenly used quality50, outside importable original quality codes;
+native v1 stopped at the first cargo input. All logs/31 original v1 cases and23
+persisted native provider results remain, recovered without rerunning. Corrected
+cargo v2 uses retained quality7:4 explicit landings at0/8moves and4999/5000troop
+embarks match;5001/10000 troop embarks differ. Mixed-unit v3 confirms original
+F8FC moves whole overflow slots ashore, preserving troops, while native derived
+ArmyTransportTrim scales tocapacity and drops overflow. No inferred production
+fix yet; source/control report and Main issue required. At-cap mixed control
+matches. Stored route is retained at arrival; next synthetic fresh-stack phase
+wanders while retaining route, but coincident CB40 stack behavior means this is
+not a universal after-arrival contract. Keep that limit explicit.
