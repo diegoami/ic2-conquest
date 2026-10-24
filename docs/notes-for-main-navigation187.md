@@ -1,45 +1,44 @@
-# T212 / #187 handoff — rule package and exact stop limit
+# T212 / #187: promoted navigation and caller-history handoff
 
-Read `findings/2026-10-24-army-navigation-rule187.md`,
-`docs/navigation187-rule.md` and the interpreted data/public matrix under
-`runs/experiments/data/run-exp-navigation187/`. Research PR72 merged at
-`c863a97cb1fc66206e23521c7bdd024548ba41dd`:
-use the [promoted report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-army-navigation-rule187.md)
-before changing production behavior. No T212 label
-was cleared and no production patch was made here.
+Use the canonical Research reports:
 
-The reusable eligibility and first-destination rules/data are recovered and
-original-instruction checked:58 valid points,3x7x8 route rows,8 strict geographic
-boxes,6 coordinate split thresholds. Eligibility is same geographic pair OR any
-own fleet, independent of line/usable ferry. CB40 is medium continuity excluding
-the endpoint, not occupancy pathfinding. D174 uses visible nodes, row-index
-distance and hub fallback, not a shortest path. Ferry result includes waiting/
-embark/request side effects even with intermediate X−1. Low-level contact remains
-the walker's separate budget/war dispatch.
+- [Navigation data and decision rule, PR72](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-army-navigation-rule187.md).
+- [Garrison/mercenary caller histories, PR73](https://github.com/diegoami/imperial-conquest-2-research/blob/2420f67295e39d3a37ce4ff4f7adf242822fe1cb/docs/reports/2026-10-24-garrison-mercenary-caller-guards187.md).
 
-Do not invent a fourth island routing table. It does not exist; static-world
-land-domain enumeration proves graph fallback cannot be reached for valid
-same-island pairs. Do not equate the coordinate split bit with water adjacency.
-The owner final conditional and current native supplied-waypoint walker pass;
-portable fixture descriptions give broader regressions without owner data.
+Main #1394 is open with `status:in-progress`. Its current T212 contract covers
+original-policy F31C enemy-army target selection/routing and its tested recursive
+context. Garrison, mercenary and homeland production behavior remains unchanged
+under that contract. Promotion does not widen scope or constitute implementation
+acceptance. Conquest changed no production code or task labels.
 
-Caller limit: DBA8 direct post-walk guard reads an uninitialized local. Actual
-F31C target-tree/recursive context is proved nonnegative, but standalone/other
-garrison/mercenary/homeland histories are not universally defined. Do not guess
-universal initialization. Exact competing outputs and the minimal next original
-call-site capture are in the report. A broader cleanup contract stays blocked;
-scope any narrower T212 implementation explicitly around covered branches.
-Behavior-preserving target/walker regressions can proceed independently.
+The first report specifies 58 valid navigation points, three route matrices,
+eight strict geographic boxes and six coordinate splits. Eligibility is the
+same geographic pair or any own fleet, independent of direct line or a usable
+ferry. Waypoints use visibility, row-index distance and hub fallback. No fourth
+island route matrix exists. The conditioned native walker result is retained;
+it does not prove native navigation or whole-turn parity.
 
-Research replayed the retained controls/build, not an independent rebuild or
-new caller experiment. Four older branch call lists gain DBA8 observer entries
-under the current observer; only those added entries are normalized in its
-receipt. No endpoint/budget/contact result changed. PR190's newer strategic
-continuation is queued separately; its evidence is not promoted by this intake.
+The promoted caller follow-up completes the requested tests: 88 original
+controls, including 64 full F31C histories, and 20 single-word offer pairs.
+Research freshly reproduces every ledger field and all 88 unobserved whole-RAM/
+stack identities without normalization. No fresh game or native comparison.
 
-The requested caller follow-up is now measured in
-`findings/2026-10-24-garrison-mercenary-caller-guards187.md` (separate intake
-pending). In full F31C, a refused mercenary route can pass −1 to garrison;
-without the offer it inherits zero. All other game input bytes match, and the
-blocked budget differs. Do not initialize those callers universally to zero.
-Main's existing approved scope/labels are not changed by these draft results.
+Mercenary entry inherits zero from EE60's loop counter. A refused nested
+mercenary route can instead leave−1 for later garrison. The blocked absent/
+present-offer pair ends with zero/nine moves; a progress-then-block pair retains
+seven with the negative guard, versus recursive cleanup ending at signed−1.
+Do not use universal zero, make all garrison guards nonnegative, clamp the
+observations, or propagate every refusal without respecting caller depth.
+
+The source-shaped decision table distinguishes ordinary destination returns,
+mercenary refusal, no offer and recursion. Arbitrary standalone/interception/
+combat/embarked histories are not universally resolved. A broader production
+contract needs its own explicit review; the tests do not require a new owner
+save or screen access.
+
+The older navigation packet's four observer-only DBA8 call additions remain
+documented separately; the new caller ledgers reproduce without normalization.
+PR190 economy/diplomacy/provider/embark-overflow evidence is still queued and
+unpromoted, including Main #1412. Keep that packet distinct from PR72/73.
+Main receives this handoff through the owner and issue1394; no unverified direct
+Main session channel is substituted.

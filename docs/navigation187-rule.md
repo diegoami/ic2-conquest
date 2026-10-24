@@ -190,7 +190,7 @@ For groups 0–2, each valid point occurs in a row containing its hub. Thus a
 nonempty origin-entry list always supplies a secondary route in this static data.
 
 The requested EBE8/E84C caller controls are now in
-`findings/2026-10-24-garrison-mercenary-caller-guards187.md`, pending separate
-Research promotion. They establish specific full-F31C zero/negative carry
+`findings/2026-10-24-garrison-mercenary-caller-guards187.md`, promoted in Research PR73 at
+`2420f67295e39d3a37ce4ff4f7adf242822fe1cb`. They establish specific full-F31C zero/negative carry
 histories, not a universal standalone initialization. Preserve the original
 packet's narrower scope when reading the contract above.
