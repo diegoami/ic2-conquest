@@ -60,3 +60,28 @@ publication found no newer findings and no open PRs. Keep #187 open for intake
 and the exact caller stop; do not clear T212 blocked. Next original control if
 needed: generated friendly-marker wall at EC7D/ECD6 and E913, capture entry
 ESP−14 and actual subsequent movement; no new owner save/screen access.
+
+## END — publication and delivery receipt, 2026-10-24
+
+PR #188 merged at 1525f3985cc54834c5855055599188197c9ec4d4 after the exact
+65279ee head passed GitGuardian; no other checks or reviews were configured.
+Self-review and validation are recorded above; no independent review claimed.
+
+New findings comparison from b22b31bdc466a638d61ee3db173b8fd71a0e7d86 to
+1525f3985cc54834c5855055599188197c9ec4d4 added exactly
+findings/2026-10-24-army-navigation-rule187.md, with no other finding changes.
+Delivered successfully using codex_tui.send_message_to_thread to the reachable
+ic2-research thread 01a167fa-9fb2-7570-bf21-b32682c79e6e. The bridge returned
+that thread ID with isError=false. This is delivery, not completed intake.
+Last reported and last-delivered findings baseline:
+1525f3985cc54834c5855055599188197c9ec4d4.
+
+Durable checkpoint: conquest #187 comment 6387249730 and Main #1394 comment
+6387250007. #187 remains open for intake/caller-limit review; Main #1394 is
+still open with status:blocked. No label or production behavior changed.
+Main handoff: docs/notes-for-main-navigation187.md; await Research promotion
+before Main consumes behavior changes. Remaining caller-history control is
+explicitly scoped above. Other approved tracks remain in
+RUN-NOTES-strategic-tracks.md / research/strategic-three-tracks at 940f7cb.
+All eleven unrelated untracked files were preserved. No active game/reviewer
+process or owner access request remains from this task.
