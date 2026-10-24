@@ -7,7 +7,8 @@ rows, static-domain checks and a final private conditional regression.
 Promoted by [Research PR72](https://github.com/diegoami/imperial-conquest-2-research/pull/72)
 at `c863a97cb1fc66206e23521c7bdd024548ba41dd`.
 Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-army-navigation-rule187.md).
-T212 remains blocked; no production code changed.
+T212 is now in progress under a narrowed enemy-army target-tree contract;
+no production code changed here.
 
 Research separately reproduced the bounded controls and retained native walker.
 Its [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/data/actions-navigation187-intake-v1.json)
@@ -19,9 +20,13 @@ continuation remains separately queued and unpromoted.
 
 Follow-up: the requested garrison/mercenary caller tests are now recorded in
 [the caller-history finding](2026-10-24-garrison-mercenary-caller-guards187.md),
-pending its own Research intake. It proves reachable zero and negative guards
+promoted by [Research PR73](https://github.com/diegoami/imperial-conquest-2-research/pull/73)
+at `2420f67295e39d3a37ce4ff4f7adf242822fe1cb`. It proves reachable zero and negative guards
 through F31C, so the earlier stop must not be replaced with universal zero.
-The historical tests and limits below retain their original packet scope.
+The historical tests, stop condition and blocked wording below retain their
+original packet scope; they do not describe T212's current label. The promoted
+follow-up resolves its specified caller histories without automatically widening
+Main's approved implementation contract.
 
 ## Reusable rule and navigation data
 

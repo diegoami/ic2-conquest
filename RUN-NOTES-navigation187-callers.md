@@ -102,3 +102,19 @@ Raw generated artifacts/full stack traces/hash manifests remain private as187
 requires. No game/reviewer process or owner-input request remains. Main can
 review the source-shaped decision table after Research promotion; arbitrary
 standalone roots and other route/interception/combat histories remain qualified.
+
+## Research promotion — 2026-10-24
+
+Verified Research PR73 MERGED at2420f67295e39d3a37ce4ff4f7adf242822fe1cb,
+head902118f11de884d79949313398d418a40131163f. Read canonical caller report
+and safe docs/data/navigation187-callers-intake-v1.json at that commit.
+Research freshly reproduces every field of four ledgers,88 controls,88 complete
+RAM/64KiB-stack identities and20 single-WORD pairs without normalization. It
+rechecked source writers/call sites; no fresh game/native parity/external review.
+
+Live Main1394 is open/status:in-progress. Read current docs/tasks/T212.md via
+GitHub: narrowed F31C enemy-army contract, other garrison/mercenary/homeland
+production callers unchanged until reviewed expansion. Corrected source/header
+blocked wording as historical; promotion changes neither scope nor labels.
+PR190 remains queued/unpromoted. Source metadata/docs updated, no measurements
+changed. Baseline0cda6c4417202d39e848ab00569a61f004d7c9ff until landed/relayed.

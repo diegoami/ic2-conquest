@@ -4,7 +4,15 @@
 stack-write provenance and observer/plain identity].
 **Tasks:** [conquest #187](https://github.com/diegoami/ic2-conquest/issues/187),
 [Main T212 / #1394](https://github.com/diegoami/imperial_conquest_2/issues/1394).
-Research intake pending. No production change or task-label change here.
+Promoted by [Research PR73](https://github.com/diegoami/imperial-conquest-2-research/pull/73)
+at `2420f67295e39d3a37ce4ff4f7adf242822fe1cb`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/2420f67295e39d3a37ce4ff4f7adf242822fe1cb/docs/reports/2026-10-24-garrison-mercenary-caller-guards187.md).
+Research freshly reproduced every field of all four ledgers, all 88 unobserved
+RAM/stack identities and 20 input pairs, with no normalization. It rechecked
+the source writers/call sites; see the [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/2420f67295e39d3a37ce4ff4f7adf242822fe1cb/docs/data/navigation187-callers-intake-v1.json).
+No fresh game, native comparison, production change or task-label change here.
+Main T212 is in progress under a narrowed enemy-army contract; promotion alone
+does not expand it. The separate PR190 continuation remains unpromoted.
 
 ## Answer
 
@@ -163,6 +171,6 @@ The requested garrison/mercenary tests now replace an unspecified gap with
 explicit, reproducible **positive and negative** F31C histories. This is not a
 universal contract for every possible earlier waypoint, failed battle, embarked,
 homeland-interception or arbitrary external caller. Do not silently extend
-T212's approved scope or claim all strategic callers equivalent. Research must
-review/promote this follow-up before Main changes those branches; task status
-and implementation acceptance remain Main's responsibility.
+T212's approved scope or claim all strategic callers equivalent. Research has
+reviewed and promoted this follow-up. Main still owns any expansion of its
+production contract, task status and implementation acceptance.

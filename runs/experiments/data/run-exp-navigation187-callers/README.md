@@ -1,7 +1,9 @@
 # #187 garrison and mercenary caller follow-up
 
 Finding: `findings/2026-10-24-garrison-mercenary-caller-guards187.md`.
-Research intake pending; production behavior and Main scope/labels unchanged.
+Promoted by Research PR73 at `2420f67295e39d3a37ce4ff4f7adf242822fe1cb`;
+canonical report: `docs/reports/2026-10-24-garrison-mercenary-caller-guards187.md`
+in imperial-conquest-2-research. Production behavior and Main scope/labels unchanged.
 
 Authoritative audit: `summary-v3.json`, `paired-inputs-v3.json`,
 `observer-identity-v3.json`, `verification-execution-v3.log`. Results:
