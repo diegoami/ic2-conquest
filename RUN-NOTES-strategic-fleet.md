@@ -102,3 +102,15 @@ applied to PR70; no blanket permission for future held research PRs inferred.
 All measurements/owner files preserved, no new experiment or active process.
 Combined stored-route/zero-moves and accepted-action follow-up remain open;
 research promotion is not production/Windows acceptance.
+
+## Accepted movement continuation — 2026-10-24
+
+Owner resumed174testing/analysis, issue comment6386092402 records approval.
+Branch research/fleet174-actions. Reply-start findings unchanged fromce4acd6.
+Current sourcec22cbf69is planning-only: all349runtime/data blobs equal retained
+55d96876build, verified by source-identity-v1. Plan:
+docs/proposals/fleet174-actions.md. Next23synthetic movement controls, real
+accepted native commands/full AI trace, then guarded actual fleet boundary
+observer/plain gate. Keep phase/proposal/accepted-command levels distinct.
+Original fleet AI zeroes unaffordable sea-step moves while native handler
+currently returns remaining moves directly; test rather than assume a defect.

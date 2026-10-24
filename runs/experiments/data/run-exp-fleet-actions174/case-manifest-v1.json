@@ -1,0 +1,188 @@
+{
+  "cases": [
+    {
+      "name": "phase-actor-construction",
+      "kind": "phase",
+      "source": "actor-construction"
+    },
+    {
+      "name": "phase-alliance",
+      "kind": "phase",
+      "source": "alliance"
+    },
+    {
+      "name": "phase-no-moves",
+      "kind": "phase",
+      "source": "no-moves"
+    },
+    {
+      "name": "phase-peace",
+      "kind": "phase",
+      "source": "peace"
+    },
+    {
+      "name": "phase-same-owner",
+      "kind": "phase",
+      "source": "same-owner"
+    },
+    {
+      "name": "phase-score100",
+      "kind": "phase",
+      "source": "score100"
+    },
+    {
+      "name": "phase-score101",
+      "kind": "phase",
+      "source": "score101"
+    },
+    {
+      "name": "phase-stored-a",
+      "kind": "phase",
+      "source": "stored-a"
+    },
+    {
+      "name": "phase-stored-b",
+      "kind": "phase",
+      "source": "stored-b"
+    },
+    {
+      "name": "phase-target-construction",
+      "kind": "phase",
+      "source": "target-construction"
+    },
+    {
+      "name": "phase-trade",
+      "kind": "phase",
+      "source": "trade"
+    },
+    {
+      "name": "phase-war",
+      "kind": "phase",
+      "source": "war"
+    },
+    {
+      "name": "phase-war-stronger",
+      "kind": "phase",
+      "source": "war-stronger"
+    },
+    {
+      "name": "phase-war-weaker",
+      "kind": "phase",
+      "source": "war-weaker"
+    },
+    {
+      "name": "stored-zero",
+      "kind": "phase",
+      "source": "stored-a",
+      "goal": [
+        48,
+        66
+      ],
+      "cargo": false,
+      "rough": null,
+      "moves": 0
+    },
+    {
+      "name": "stored-one",
+      "kind": "phase",
+      "source": "stored-a",
+      "goal": [
+        48,
+        66
+      ],
+      "cargo": false,
+      "rough": null,
+      "moves": 1
+    },
+    {
+      "name": "rough-ai-one",
+      "kind": "phase",
+      "source": "stored-a",
+      "goal": [
+        49,
+        63
+      ],
+      "cargo": false,
+      "rough": true,
+      "moves": 1
+    },
+    {
+      "name": "rough-ai-three",
+      "kind": "phase",
+      "source": "stored-a",
+      "goal": [
+        49,
+        63
+      ],
+      "cargo": false,
+      "rough": true,
+      "moves": 3
+    },
+    {
+      "name": "rough-human-one",
+      "kind": "human-walk",
+      "source": "stored-a",
+      "goal": [
+        49,
+        63
+      ],
+      "cargo": false,
+      "rough": true,
+      "moves": 1
+    },
+    {
+      "name": "cargo-positive",
+      "kind": "phase",
+      "source": "stored-a",
+      "goal": [
+        48,
+        66
+      ],
+      "cargo": true,
+      "rough": null,
+      "moves": 25
+    },
+    {
+      "name": "cargo-zero",
+      "kind": "phase",
+      "source": "stored-a",
+      "goal": [
+        48,
+        66
+      ],
+      "cargo": true,
+      "rough": null,
+      "moves": 0
+    },
+    {
+      "name": "port-protected",
+      "kind": "phase",
+      "source": "stored-a",
+      "actor": [
+        186,
+        90
+      ],
+      "target": [
+        189,
+        93
+      ],
+      "port_city": 214
+    },
+    {
+      "name": "port-unprotected",
+      "kind": "phase",
+      "source": "stored-a",
+      "actor": [
+        185,
+        89
+      ],
+      "target": [
+        188,
+        92
+      ],
+      "port_city": 214
+    }
+  ],
+  "scope": "synthetic complete fleet-phase/low-level controls; no game run yet",
+  "stop_before_naval_combat": true
+}
