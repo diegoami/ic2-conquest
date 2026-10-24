@@ -50,7 +50,7 @@ PDB or unrelated directory is uploaded. Do not use the generic archive walker.
 
 Batch01 `tools/` precedes the original-score counterfactual mode. Use the
 separate batch02 `tools-v7/` for the latest compiled Probe, Engine/DataDLLs and
-runtime/dependencyJSON. Extract all three bundles: batch03 supplies required
+runtime/dependencyJSON. The first three bundles supply the Probe and required
 terrain sidecars. Batch04 supplies `tools-geometry/`.
 `bundle-verification-v3.json` records fresh exclusive four-bundle recovery and
 compiled-tool replay: eleven decision rows and112geometry rows exactly equal
