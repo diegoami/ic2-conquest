@@ -1,0 +1,227 @@
+{
+  "cases": [
+    {
+      "label": "N-rome",
+      "source": "S00-rome",
+      "source_sha256": "955c6fa42165171644a31b4beaf8b59feb049585541a2829da8b81ca65a64903",
+      "input_sha256": "955c6fa42165171644a31b4beaf8b59feb049585541a2829da8b81ca65a64903",
+      "human": "Rome",
+      "turn": 720,
+      "seed": 1,
+      "focus": "natural-start",
+      "edits": [],
+      "provenance": "retained generated gameplay start"
+    },
+    {
+      "label": "N-carthage",
+      "source": "S01-carthage",
+      "source_sha256": "747085a0e863ce6013b62e4fbdbea94aec331d0a5364d16827ca785e75e6f2ba",
+      "input_sha256": "747085a0e863ce6013b62e4fbdbea94aec331d0a5364d16827ca785e75e6f2ba",
+      "human": "Carthage",
+      "turn": 720,
+      "seed": 1,
+      "focus": "natural-start",
+      "edits": [],
+      "provenance": "retained generated gameplay start"
+    },
+    {
+      "label": "N-seleucid",
+      "source": "S02-seleucid",
+      "source_sha256": "70ec829661be10bcac39f51a5531b09b6ab1aeb65df1d91f9f27879515423b4e",
+      "input_sha256": "70ec829661be10bcac39f51a5531b09b6ab1aeb65df1d91f9f27879515423b4e",
+      "human": "Seleucid",
+      "turn": 720,
+      "seed": 1,
+      "focus": "natural-start",
+      "edits": [],
+      "provenance": "retained generated gameplay start"
+    },
+    {
+      "label": "N-ptolemaic",
+      "source": "S03-ptolemaic",
+      "source_sha256": "46fb2819f3736f61abdf2ec73fff377f2618c29f663a46e282d0e8efef1060b9",
+      "input_sha256": "46fb2819f3736f61abdf2ec73fff377f2618c29f663a46e282d0e8efef1060b9",
+      "human": "Ptolemaic",
+      "turn": 720,
+      "seed": 1,
+      "focus": "natural-start",
+      "edits": [],
+      "provenance": "retained generated gameplay start"
+    },
+    {
+      "label": "N-numidia",
+      "source": "S05-numidia",
+      "source_sha256": "6cfc0807c27b1aae672b93b353de24795739dd7a863a71ea9514931b01efb233",
+      "input_sha256": "6cfc0807c27b1aae672b93b353de24795739dd7a863a71ea9514931b01efb233",
+      "human": "Numidia",
+      "turn": 720,
+      "seed": 1,
+      "focus": "natural-start",
+      "edits": [],
+      "provenance": "retained generated gameplay start"
+    },
+    {
+      "label": "N-gaul",
+      "source": "S06-gaul",
+      "source_sha256": "95cc9277118745455538740fc4ad216f5d3bad06e16a18b9df24e44992fb2971",
+      "input_sha256": "95cc9277118745455538740fc4ad216f5d3bad06e16a18b9df24e44992fb2971",
+      "human": "Gaul",
+      "turn": 720,
+      "seed": 1,
+      "focus": "natural-start",
+      "edits": [],
+      "provenance": "retained generated gameplay start"
+    },
+    {
+      "label": "W-carthage-numidia",
+      "source": "S00-rome",
+      "source_sha256": "955c6fa42165171644a31b4beaf8b59feb049585541a2829da8b81ca65a64903",
+      "input_sha256": "073613236ad7607a80bbe0970c017ad0c8d061b04ed43daa794a2097cf05461b",
+      "human": "Rome",
+      "turn": 720,
+      "seed": 1,
+      "focus": "active-war",
+      "edits": [
+        {
+          "field": "relation",
+          "nation": 1,
+          "other": 5,
+          "before": 2,
+          "after": 3
+        },
+        {
+          "field": "relation",
+          "nation": 5,
+          "other": 1,
+          "before": 2,
+          "after": 3
+        }
+      ],
+      "provenance": "synthetic strategic edits of retained generated start"
+    },
+    {
+      "label": "L-ptolemaic-shortages",
+      "source": "S01-carthage",
+      "source_sha256": "747085a0e863ce6013b62e4fbdbea94aec331d0a5364d16827ca785e75e6f2ba",
+      "input_sha256": "12ebe4d7884ea99c0ee5b99575ea44af570df0f56e54cd25e8d438cc35e4035f",
+      "human": "Carthage",
+      "turn": 720,
+      "seed": 1,
+      "focus": "supplies-and-money",
+      "edits": [
+        {
+          "field": "supplies",
+          "army": 6,
+          "before": 430,
+          "after": 0
+        },
+        {
+          "field": "money",
+          "army": 6,
+          "before": 100,
+          "after": 0
+        }
+      ],
+      "provenance": "synthetic strategic edits of retained generated start"
+    },
+    {
+      "label": "H-seleucid-capital",
+      "source": "S00-rome",
+      "source_sha256": "955c6fa42165171644a31b4beaf8b59feb049585541a2829da8b81ca65a64903",
+      "input_sha256": "5746766b8637bae2f7b6e82006d8adecb2baa098967ef1480cc006246581478c",
+      "human": "Rome",
+      "turn": 720,
+      "seed": 1,
+      "focus": "homeland-threat",
+      "edits": [
+        {
+          "field": "relation",
+          "nation": 1,
+          "other": 2,
+          "before": 1,
+          "after": 3
+        },
+        {
+          "field": "relation",
+          "nation": 2,
+          "other": 1,
+          "before": 1,
+          "after": 3
+        },
+        {
+          "field": "army-position-and-map-overlay",
+          "army": 3,
+          "before": [
+            93,
+            79
+          ],
+          "after": [
+            234,
+            59
+          ],
+          "covered_before": 2,
+          "covered_after": 2,
+          "marker": 201,
+          "capital": [
+            220,
+            59
+          ],
+          "distance": 14
+        }
+      ],
+      "provenance": "synthetic strategic edits of retained generated start"
+    },
+    {
+      "label": "P-rome-gaul-peace",
+      "source": "S05-numidia",
+      "source_sha256": "6cfc0807c27b1aae672b93b353de24795739dd7a863a71ea9514931b01efb233",
+      "input_sha256": "a6bbea1106e0513ea109932cf48b7e8ac3cf69a82018940cd39566a5dc9c221a",
+      "human": "Numidia",
+      "turn": 720,
+      "seed": 1,
+      "focus": "peace-versus-natural-war",
+      "edits": [
+        {
+          "field": "relation",
+          "nation": 0,
+          "other": 6,
+          "before": 3,
+          "after": 0
+        },
+        {
+          "field": "relation",
+          "nation": 6,
+          "other": 0,
+          "before": 3,
+          "after": 0
+        }
+      ],
+      "provenance": "synthetic peace counterfactual; natural N-numidia already has Rome-Gaul war"
+    }
+  ],
+  "live_observer_cases": 10,
+  "plain_controls": [
+    "N-rome",
+    "H-seleucid-capital"
+  ],
+  "known_reference": "1388 retained private evidence, no new owner run",
+  "decision_families": [
+    "army-target-tree",
+    "resupply-destination",
+    "army-route",
+    "fleet-route"
+  ],
+  "outcome_only_families": [
+    "recruitment",
+    "economy",
+    "diplomacy"
+  ],
+  "scope": "one End turn per generated case; local conditional comparisons, not whole-turn RNG parity",
+  "superseded_alias": {
+    "label": "W-rome-gaul",
+    "identical_input_to": "N-numidia",
+    "native_observation_retained": true,
+    "original_alias_run_not_needed": true
+  },
+  "amendment": "Before focused original runs: v1 war edit was a no-op because the generated start already has war. Preserve v1 and its native output; test peace against natural war instead."
+}

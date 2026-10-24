@@ -1,0 +1,34 @@
+{
+  "archive": "geometry-audit-tools-batch04.tar.gz",
+  "bytes": 601045,
+  "sha256": "f0b92b307836a78e9c7017762dd99f20ec7fd48588ec3da7ab94e6163bac8613",
+  "member_count": 5,
+  "members": [
+    {
+      "name": "tools-geometry/Geometry.dll",
+      "bytes": 14336,
+      "sha256": "f325ea6e23f51db22b927572ee80fc7b45947608fe45e472fffa706b01d8a107"
+    },
+    {
+      "name": "tools-geometry/Geometry.deps.json",
+      "bytes": 1094,
+      "sha256": "c08d9951e5a3ee1f4e82328380318e282a70a43e6a7962f368064e7b5c47663a"
+    },
+    {
+      "name": "tools-geometry/Geometry.runtimeconfig.json",
+      "bytes": 259,
+      "sha256": "f9bc8e9f0c46247078ed47309f19a7576b4b94e4300e9de0003917d6bd2d667a"
+    },
+    {
+      "name": "tools-geometry/IC2.Engine.dll",
+      "bytes": 1706496,
+      "sha256": "9095a53909d77f833c3b26a6f5d95a2f2373a3958446bb4e1f971817517a338c"
+    },
+    {
+      "name": "tools-geometry/IC2.Data.dll",
+      "bytes": 140288,
+      "sha256": "866dfe87ba284312af3bb21423a5c97b173c77aafe46cb180fce1dc1b9273005"
+    }
+  ],
+  "purpose": "Independent original-map versus native terrain/passability/occupancy audit; unchanged pinned engine/data."
+}

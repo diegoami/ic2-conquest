@@ -1,0 +1,34 @@
+using System.Text.Json;
+using IC2.Engine.Import;
+using IC2.Engine.Serialization;
+
+var root=args[0];var repository=GameDataRepository.Load(Path.Combine(root,"source-v1/data"));
+var resolved=repository.Resolve("classical-mediterranean");var rules=repository.RulesetById("classical-faithful")!;
+var world=resolved.World;var terrain=world.Terrain.Decode(world.Width,world.Height);
+var output=args[1];if(File.Exists(output))throw new IOException("Existing output");
+var rows=new List<object>();int totalTerrain=0,totalBlocked=0,count=0;
+foreach(var folder in Directory.GetDirectories(Path.Combine(root,"projections")).Order(StringComparer.Ordinal))
+foreach(var path in Directory.GetFiles(folder,"*.SAV").Order(StringComparer.Ordinal))
+{
+    var state=OriginalSaveImporter.Import(File.ReadAllBytes(path),path,world,rules,resolved.Scenario,"geometry171","geometry171").Save.State;
+    using var expected=JsonDocument.Parse(File.ReadAllText(Path.ChangeExtension(path,"json")));
+    var map=expected.RootElement.GetProperty("map").EnumerateArray().Select(x=>x.GetInt32()).ToArray();
+    var occupied=new HashSet<(int,int)>();
+    foreach(var c in state.Cities)occupied.Add((c.X,c.Y));
+    foreach(var a in state.Armies)if(!a.IsEmbarked&&a.CoveredTileCode is not null)occupied.Add((a.X,a.Y));
+    foreach(var f in state.Fleets)if(!f.IsUnderConstruction)occupied.Add((f.X,f.Y));
+    int landMismatch=0,blockMismatch=0;
+    for(int x=0;x<world.Width;x++)for(int y=0;y<world.Height;y++)
+    {
+        int original=map[x*140+y],native=terrain[y*world.Width+x];
+        if(original>=2&&original<=11&&original!=native)landMismatch++;
+        bool originalBlocked=original<2||original>11;
+        bool nativeBlocked=world.TileTypeByCode(native)?.PassableByArmies!=true||occupied.Contains((x,y));
+        if(originalBlocked!=nativeBlocked)blockMismatch++;
+    }
+    rows.Add(new{caseRun=Path.GetFileName(folder),snapshot=Path.GetFileNameWithoutExtension(path),landTerrainMismatches=landMismatch,armyPassabilityAndOccupancyMismatches=blockMismatch});
+    count++;totalTerrain+=landMismatch;totalBlocked+=blockMismatch;
+}
+using(var file=new FileStream(output,FileMode.CreateNew))JsonSerializer.Serialize(file,new{states=count,cellsPerState=44800,landTerrainMismatches=totalTerrain,armyPassabilityAndOccupancyMismatches=totalBlocked,rows},new JsonSerializerOptions{WriteIndented=true});
+Console.WriteLine(JsonSerializer.Serialize(new{states=count,landTerrainMismatches=totalTerrain,armyPassabilityAndOccupancyMismatches=totalBlocked}));
+if(totalTerrain!=0||totalBlocked!=0)Environment.Exit(1);

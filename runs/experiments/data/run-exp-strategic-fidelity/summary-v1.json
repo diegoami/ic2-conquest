@@ -1,0 +1,110 @@
+{
+  "cases": 10,
+  "byte_distinct_inputs": 10,
+  "original_observed_runs": 10,
+  "original_plain_runs": 2,
+  "native_normal_runs": 11,
+  "native_unobserved_control_runs": 1,
+  "matched_original_decision_states": 103,
+  "matched_state_gate_checks": 267185,
+  "ai_nations_at_compared_boundaries": {
+    "macedonia": 10,
+    "thracia": 10,
+    "ptolemaic": 10,
+    "carthage": 16,
+    "media": 10,
+    "celtiberia": 7,
+    "gaul": 8,
+    "bithynia": 10,
+    "seleucid": 16,
+    "rome": 5,
+    "galatia": 1
+  },
+  "branches_equal": 54,
+  "city_target_equal": 56,
+  "enemy_target_equal": 53,
+  "raw_resupply_equal": 13,
+  "primary_destination_equal": 9,
+  "primary_destination_compared": 100,
+  "primary_destination_unresolved": 3,
+  "original_live_first_calls_verified": 93,
+  "original_cpu_states": 792,
+  "original_paired_whole_save_controls": 2,
+  "native_observation_inert": true,
+  "negative_input_gates": 2,
+  "original_rng_calls_in_compared_helpers": 0,
+  "resupply_controls": [
+    {
+      "name": "capital-a",
+      "original": 144,
+      "native": 152,
+      "gate_fields": 2568
+    },
+    {
+      "name": "capital-b",
+      "original": 152,
+      "native": 144,
+      "gate_fields": 2568
+    },
+    {
+      "name": "stock29",
+      "original": 144,
+      "native": 152,
+      "gate_fields": 2568
+    },
+    {
+      "name": "stock30",
+      "original": 152,
+      "native": 152,
+      "gate_fields": 2568
+    },
+    {
+      "name": "stock297",
+      "original": 152,
+      "native": 152,
+      "gate_fields": 2568
+    },
+    {
+      "name": "stock298",
+      "original": 152,
+      "native": 159,
+      "gate_fields": 2568
+    }
+  ],
+  "accepted_native_commands": {
+    "movement.move-army": 126,
+    "diplomacy.ai-swap-trade-partner": 99,
+    "diplomacy.ai-form-trade": 79,
+    "recruitment.recruit-standing-unit": 282,
+    "armies.join-units": 11,
+    "battle.besiege-city": 7,
+    "naval.order-fleet": 2,
+    "armies.disband-unit": 7,
+    "battle.attack-army": 3,
+    "diplomacy.declare-war": 1
+  },
+  "original_observed_call_sites": {
+    "0044f38b": 103,
+    "0044f47c": 41,
+    "0044dc16": 147,
+    "0044f2f9": 23,
+    "0044dca1": 47,
+    "0044f6be": 11,
+    "0044f409": 43,
+    "0044e913": 8,
+    "0044f4a3": 7,
+    "0044dc3a": 29,
+    "0044f667": 6,
+    "0044f43f": 9,
+    "0044f4c7": 2
+  },
+  "limits": [
+    "Conditional comparisons test local scorers/tree from original states, not the full native greedy command selection.",
+    "Raw resupply target and reachability-resolved destination are reported separately.",
+    "No-candidate score sentinels -10000/original and0/native are retained, not counted as distinct target choices.",
+    "Whole-turn outcome differences have unmatched RNG/order histories and are not individual defect proofs.",
+    "Mercenary-run continuation destinations are unresolved in the primary-destination denominator.",
+    "Fleet destination observations, recruitment/economy/diplomacy outcomes are not complete same-input decision/RNG comparisons.",
+    "One End turn per case; no all16start, multi-seed campaign, short continuation or Windows acceptance claim."
+  ]
+}
