@@ -68,3 +68,34 @@ incomplete; physical Escape respected. Research bridge verified reachable;
 Research PR68 still under its owner merge hold, unrelated to this new intake.
 Next: publish PR, pass required checks, relay actual landed source, post #1388
 bounded root cause and downstream paired eligibility/routing implementation work.
+
+## END — publication and successful relay
+
+Conquest PR167 merged at `889557fa2d8f1dd6f36bc5ef3a06bcaf3532082c`.
+GitGuardian Security Checks passed: two commits scanned, no secrets. Authored
+source/docs whitespace and Python compilation passed. No separate model review.
+Public privacy audit excludes binary/generated files and owner hash canaries.
+The earlier staging check caught generated bin/obj files; they were unstaged
+and locally ignored before the first commit. No build output was published.
+
+Reported-findings baseline and last successfully delivered findings baseline:
+`889557fa2d8f1dd6f36bc5ef3a06bcaf3532082c` (2026-10-24), new file
+`findings/2026-10-24-seleucid-strategic-target-routing1388.md`.
+Actual main-pinned packet delivered successfully through the verified session
+bridge to Research thread `01a167fa-9fb2-7570-bf21-b32682c79e6e`, with source pin,
+partial tag, evidence/save/turn references, privacy and acceptance limits.
+An initial local TextEncoder guard was unavailable and sent nothing; an ASCII
+length guard then passed and the bridge acknowledged delivery. Research
+promotion is pending, not implied by successful delivery. Existing Research
+PR68 merge hold was explicitly left unchanged.
+
+Results posted on remake1388 comment6382310107 and conquest157 comment6382310321.
+Main owner-carried handoff is `docs/notes-for-main-strategic1388.md`; no direct
+message to Main and no write to another repository. #1388/#1355/#157 remain
+open. The investigation is complete at bounded root-cause attribution; no
+production eligibility/routing correction, whole-turn RNG equivalence, optional
+Improved AI work or native Windows acceptance. All original/native diagnostic
+runs ended; no reviewer/delegate launched. Private evidence and source copies
+retained unchanged, no measured output/save deleted. Eleven unrelated untracked
+owner files preserved. Next production step belongs to Main's normal scoped
+implementation/CI workflow after Research promotion; no further run pending.
