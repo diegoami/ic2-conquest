@@ -87,3 +87,18 @@ untested. Added canonical owner-carried Main handoff for1405. Measurements and
 classifications unchanged; no game/production experiment or other task started.
 Reply-start findings comparison against6e7ed5d was empty. Publish metadata,
 relay actual source main and retain the successful delivery/baseline receipt.
+
+## END — fleet Research promotion published
+
+Source PR183 merged atce4acd64129ee0e3c9b42c990924cb22803499f4 after successful
+latest-head security and whitespace checks. Reported-findings and last delivered
+baseline are `ce4acd64129ee0e3c9b42c990924cb22803499f4`: finding174 changed
+intake/clarification metadata only. Actual main-pinned receipt successfully
+delivered to verified Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e.
+Canonical Research pin ebe8acb530f9b0250855aded20e1988f94d4c873; Main handoff
+docs/notes-for-main-fleet174.md, remake1405 comment6384897376 and root174
+comment6384904288 updated. No direct Main-thread message. Owner's merge approval
+applied to PR70; no blanket permission for future held research PRs inferred.
+All measurements/owner files preserved, no new experiment or active process.
+Combined stored-route/zero-moves and accepted-action follow-up remain open;
+research promotion is not production/Windows acceptance.
