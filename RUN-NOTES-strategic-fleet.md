@@ -24,3 +24,33 @@ never substitute a value or claim random-free selection. New game run not needed
 for this first instruction-level batch. Next live fleet-boundary tracing remains
 on174. Never overwrite/delete saves/measurements; unique labels, tracked text,
 binary hashes/Drive, commit/push each batch/30min. Owner files remain separate.
+
+## END — first continuation batch complete
+
+Fourteen synthetic fleet-phase controls executed real F608 automatic prepass,
+port/hunt selectors and actual Random, stopping before first movement. Native
+probe evaluates production fleet-march proposals with real outer guards;3568
+fleet/relation checks pass. Original hunt100/101 strict boundary independently
+replayed. Absent/A/B SAV containers differ only in fleet0route bytes+4/+6;
+original destinations differ, native serialized state hashes/proposals agree.
+Export mapping explicitly documents no native route field/canonical reset, so
+classify as faithful feature/state-support gap, not covert converter violation.
+Remake1405 created for this gap. Designed fleet weights/policy differences are
+reported separately, never called accepted native moves or unintended defects.
+
+No original or native game launched, no movement executed and no production
+edit. No owner inputs/hashes, original EXE/DAT, runtime or credentials published.
+Generated76member bundle2094486bytes/SHA9262baa50a70ae5b4fb0dcfffc8317687e173ad01a4c14a9b7629afe8a94682f,
+Drive folder1WtM93OfebUVt7vkA1EsWAsSnpWeGVdk8/file1PTWJqQb1STIUnaL3o2swzU26qicnF_mz;
+metadata size/parent verified, no remote digest claim. Fresh recovery rehashes76
+members and reproduces14native rows byte-identically. Builds, audits, Python
+compilation and authored whitespace passed. Existing owner files preserved.
+
+Issue map and bodies tracked. Root171 updated with174–178 and existing1394/new1402.
+Existing1216 tie/word policies remain independent. Main1402/1405 root issue links
+made fully qualified. Publication PR179 opened for source886d48d; verify latest
+checks then merge, link actual source on174/1405, relay landed finding to Research
+and record actual delivered baseline. Newfinding174 remains draft until intake.
+Next174 work is actual fleet-boundary and accepted-native-action tracing, plus
+protected ports/cargo/providers/navigation. Other research issues are queued;
+campaign178 depends on reconciled core differences. No unattended run or agent.
