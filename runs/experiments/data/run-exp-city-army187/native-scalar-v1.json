@@ -1,0 +1,30 @@
+{
+  "source_pin": "0c4944542d32d1e6d2d9982f78fdfcddaabaddea",
+  "input_identity_gate_passed": true,
+  "checked_fields": 2908,
+  "original_city_reachable": false,
+  "native_city": {
+    "target": 253,
+    "Score": 330,
+    "Distance": 6,
+    "Skipped": 36
+  },
+  "native_enemy": {
+    "target": 24,
+    "Score": 828,
+    "Distance": 28
+  },
+  "native_branch": "AttackCity",
+  "original_score_fed_branch": "AttackArmy",
+  "original_city_only_fed_branch": "AttackArmy",
+  "military_phase_branch": "AttackCity",
+  "actor_proposal_kinds": [
+    "approach"
+  ],
+  "assault_strength": 66216,
+  "city_defense_comparisons": 40,
+  "city_defense_mismatches": 0,
+  "original_eligible_native_unreachable": 36,
+  "region_assignment_count": 0,
+  "scope": "same private imported boundary; no whole End turn or production change; diagnostic proposal RNG seed1, no native outcome parity"
+}

@@ -1,0 +1,28 @@
+{
+  "original_city": {
+    "target": 287,
+    "score": 495,
+    "distance": 28
+  },
+  "original_enemy": {
+    "target": 24,
+    "score": 828,
+    "distance": 28
+  },
+  "original_branch": {
+    "kind": "AttackArmy",
+    "call_site": "0x44f409",
+    "actor_matches": true,
+    "recorded_enemy_destination_matches": true
+  },
+  "scorer_sequence_branch": {
+    "kind": "AttackArmy",
+    "call_site": "0x44f409",
+    "actor_matches": true,
+    "recorded_enemy_destination_matches": true
+  },
+  "read_only_complete_RAM_identity": true,
+  "original_RNG_calls": 0,
+  "original_assault_strength": 66216,
+  "scope": "same retained private pre-command state; stopped before movement; no whole End turn claim"
+}
