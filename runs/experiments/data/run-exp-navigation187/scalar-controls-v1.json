@@ -1,0 +1,5348 @@
+{
+  "rows": [
+    {
+      "case": "geo-000",
+      "inputs": {
+        "point": [
+          58,
+          57
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-001",
+      "inputs": {
+        "point": [
+          59,
+          57
+        ]
+      },
+      "result": {
+        "region": 0,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-002",
+      "inputs": {
+        "point": [
+          63,
+          57
+        ]
+      },
+      "result": {
+        "region": 0,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-003",
+      "inputs": {
+        "point": [
+          64,
+          57
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-004",
+      "inputs": {
+        "point": [
+          61,
+          53
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-005",
+      "inputs": {
+        "point": [
+          61,
+          54
+        ]
+      },
+      "result": {
+        "region": 0,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-006",
+      "inputs": {
+        "point": [
+          61,
+          60
+        ]
+      },
+      "result": {
+        "region": 0,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-007",
+      "inputs": {
+        "point": [
+          61,
+          61
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-008",
+      "inputs": {
+        "point": [
+          86,
+          44
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-009",
+      "inputs": {
+        "point": [
+          87,
+          44
+        ]
+      },
+      "result": {
+        "region": 1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-010",
+      "inputs": {
+        "point": [
+          90,
+          44
+        ]
+      },
+      "result": {
+        "region": 1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-011",
+      "inputs": {
+        "point": [
+          91,
+          44
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-012",
+      "inputs": {
+        "point": [
+          88,
+          40
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-013",
+      "inputs": {
+        "point": [
+          88,
+          41
+        ]
+      },
+      "result": {
+        "region": 1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-014",
+      "inputs": {
+        "point": [
+          88,
+          47
+        ]
+      },
+      "result": {
+        "region": 1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-015",
+      "inputs": {
+        "point": [
+          88,
+          48
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-016",
+      "inputs": {
+        "point": [
+          82,
+          56
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-017",
+      "inputs": {
+        "point": [
+          83,
+          56
+        ]
+      },
+      "result": {
+        "region": 2,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-018",
+      "inputs": {
+        "point": [
+          89,
+          56
+        ]
+      },
+      "result": {
+        "region": 2,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-019",
+      "inputs": {
+        "point": [
+          90,
+          56
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-020",
+      "inputs": {
+        "point": [
+          86,
+          49
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-021",
+      "inputs": {
+        "point": [
+          86,
+          50
+        ]
+      },
+      "result": {
+        "region": 2,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-022",
+      "inputs": {
+        "point": [
+          86,
+          62
+        ]
+      },
+      "result": {
+        "region": 2,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-023",
+      "inputs": {
+        "point": [
+          86,
+          63
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-024",
+      "inputs": {
+        "point": [
+          99,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-025",
+      "inputs": {
+        "point": [
+          100,
+          68
+        ]
+      },
+      "result": {
+        "region": 3,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-026",
+      "inputs": {
+        "point": [
+          113,
+          68
+        ]
+      },
+      "result": {
+        "region": 3,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-027",
+      "inputs": {
+        "point": [
+          114,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-028",
+      "inputs": {
+        "point": [
+          106,
+          62
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-029",
+      "inputs": {
+        "point": [
+          106,
+          63
+        ]
+      },
+      "result": {
+        "region": 3,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-030",
+      "inputs": {
+        "point": [
+          106,
+          73
+        ]
+      },
+      "result": {
+        "region": 3,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-031",
+      "inputs": {
+        "point": [
+          106,
+          74
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-032",
+      "inputs": {
+        "point": [
+          149,
+          57
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-033",
+      "inputs": {
+        "point": [
+          150,
+          57
+        ]
+      },
+      "result": {
+        "region": 4,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-034",
+      "inputs": {
+        "point": [
+          155,
+          57
+        ]
+      },
+      "result": {
+        "region": 4,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-035",
+      "inputs": {
+        "point": [
+          156,
+          57
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-036",
+      "inputs": {
+        "point": [
+          152,
+          54
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-037",
+      "inputs": {
+        "point": [
+          152,
+          55
+        ]
+      },
+      "result": {
+        "region": 4,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-038",
+      "inputs": {
+        "point": [
+          152,
+          59
+        ]
+      },
+      "result": {
+        "region": 4,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-039",
+      "inputs": {
+        "point": [
+          152,
+          60
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-040",
+      "inputs": {
+        "point": [
+          150,
+          78
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-041",
+      "inputs": {
+        "point": [
+          151,
+          78
+        ]
+      },
+      "result": {
+        "region": 5,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-042",
+      "inputs": {
+        "point": [
+          163,
+          78
+        ]
+      },
+      "result": {
+        "region": 5,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-043",
+      "inputs": {
+        "point": [
+          164,
+          78
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-044",
+      "inputs": {
+        "point": [
+          157,
+          75
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-045",
+      "inputs": {
+        "point": [
+          157,
+          76
+        ]
+      },
+      "result": {
+        "region": 5,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-046",
+      "inputs": {
+        "point": [
+          157,
+          80
+        ]
+      },
+      "result": {
+        "region": 5,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-047",
+      "inputs": {
+        "point": [
+          157,
+          81
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-048",
+      "inputs": {
+        "point": [
+          163,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-049",
+      "inputs": {
+        "point": [
+          164,
+          68
+        ]
+      },
+      "result": {
+        "region": 6,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-050",
+      "inputs": {
+        "point": [
+          166,
+          68
+        ]
+      },
+      "result": {
+        "region": 6,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-051",
+      "inputs": {
+        "point": [
+          167,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-052",
+      "inputs": {
+        "point": [
+          165,
+          66
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-053",
+      "inputs": {
+        "point": [
+          165,
+          67
+        ]
+      },
+      "result": {
+        "region": 6,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-054",
+      "inputs": {
+        "point": [
+          165,
+          70
+        ]
+      },
+      "result": {
+        "region": 6,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-055",
+      "inputs": {
+        "point": [
+          165,
+          71
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-056",
+      "inputs": {
+        "point": [
+          190,
+          73
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-057",
+      "inputs": {
+        "point": [
+          191,
+          73
+        ]
+      },
+      "result": {
+        "region": 7,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-058",
+      "inputs": {
+        "point": [
+          206,
+          73
+        ]
+      },
+      "result": {
+        "region": 7,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-059",
+      "inputs": {
+        "point": [
+          207,
+          73
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-060",
+      "inputs": {
+        "point": [
+          198,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-061",
+      "inputs": {
+        "point": [
+          198,
+          69
+        ]
+      },
+      "result": {
+        "region": 7,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-062",
+      "inputs": {
+        "point": [
+          198,
+          78
+        ]
+      },
+      "result": {
+        "region": 7,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-063",
+      "inputs": {
+        "point": [
+          198,
+          79
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-064",
+      "inputs": {
+        "point": [
+          43,
+          77
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-065",
+      "inputs": {
+        "point": [
+          44,
+          77
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-066",
+      "inputs": {
+        "point": [
+          43,
+          78
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-067",
+      "inputs": {
+        "point": [
+          44,
+          78
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-068",
+      "inputs": {
+        "point": [
+          157,
+          74
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-069",
+      "inputs": {
+        "point": [
+          158,
+          74
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-070",
+      "inputs": {
+        "point": [
+          157,
+          75
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-071",
+      "inputs": {
+        "point": [
+          158,
+          75
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-072",
+      "inputs": {
+        "point": [
+          179,
+          35
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-073",
+      "inputs": {
+        "point": [
+          180,
+          35
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-074",
+      "inputs": {
+        "point": [
+          179,
+          36
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-075",
+      "inputs": {
+        "point": [
+          180,
+          36
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-076",
+      "inputs": {
+        "point": [
+          170,
+          40
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-077",
+      "inputs": {
+        "point": [
+          171,
+          40
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-078",
+      "inputs": {
+        "point": [
+          170,
+          41
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-079",
+      "inputs": {
+        "point": [
+          171,
+          41
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-080",
+      "inputs": {
+        "point": [
+          162,
+          44
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-081",
+      "inputs": {
+        "point": [
+          163,
+          44
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-082",
+      "inputs": {
+        "point": [
+          162,
+          45
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-083",
+      "inputs": {
+        "point": [
+          163,
+          45
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-084",
+      "inputs": {
+        "point": [
+          160,
+          46
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-085",
+      "inputs": {
+        "point": [
+          161,
+          46
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-086",
+      "inputs": {
+        "point": [
+          160,
+          47
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-087",
+      "inputs": {
+        "point": [
+          161,
+          47
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-088",
+      "inputs": {
+        "point": [
+          180,
+          122
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-089",
+      "inputs": {
+        "point": [
+          304,
+          40
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-090",
+      "inputs": {
+        "point": [
+          299,
+          7
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-091",
+      "inputs": {
+        "point": [
+          298,
+          63
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-092",
+      "inputs": {
+        "point": [
+          254,
+          117
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-093",
+      "inputs": {
+        "point": [
+          85,
+          116
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-094",
+      "inputs": {
+        "point": [
+          178,
+          57
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-095",
+      "inputs": {
+        "point": [
+          170,
+          62
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-096",
+      "inputs": {
+        "point": [
+          130,
+          87
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-097",
+      "inputs": {
+        "point": [
+          230,
+          19
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-098",
+      "inputs": {
+        "point": [
+          178,
+          133
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-099",
+      "inputs": {
+        "point": [
+          261,
+          101
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-100",
+      "inputs": {
+        "point": [
+          221,
+          47
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-101",
+      "inputs": {
+        "point": [
+          81,
+          124
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-102",
+      "inputs": {
+        "point": [
+          310,
+          47
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-103",
+      "inputs": {
+        "point": [
+          189,
+          75
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-104",
+      "inputs": {
+        "point": [
+          135,
+          22
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-105",
+      "inputs": {
+        "point": [
+          68,
+          134
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-106",
+      "inputs": {
+        "point": [
+          292,
+          133
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-107",
+      "inputs": {
+        "point": [
+          255,
+          27
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-108",
+      "inputs": {
+        "point": [
+          182,
+          74
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-109",
+      "inputs": {
+        "point": [
+          159,
+          108
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-110",
+      "inputs": {
+        "point": [
+          169,
+          125
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-111",
+      "inputs": {
+        "point": [
+          32,
+          14
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-112",
+      "inputs": {
+        "point": [
+          84,
+          93
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-113",
+      "inputs": {
+        "point": [
+          187,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-114",
+      "inputs": {
+        "point": [
+          176,
+          69
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-115",
+      "inputs": {
+        "point": [
+          163,
+          120
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-116",
+      "inputs": {
+        "point": [
+          61,
+          15
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-117",
+      "inputs": {
+        "point": [
+          239,
+          81
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-118",
+      "inputs": {
+        "point": [
+          218,
+          28
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-119",
+      "inputs": {
+        "point": [
+          232,
+          58
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-120",
+      "inputs": {
+        "point": [
+          88,
+          95
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-121",
+      "inputs": {
+        "point": [
+          156,
+          30
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-122",
+      "inputs": {
+        "point": [
+          22,
+          84
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-123",
+      "inputs": {
+        "point": [
+          293,
+          75
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-124",
+      "inputs": {
+        "point": [
+          45,
+          123
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-125",
+      "inputs": {
+        "point": [
+          316,
+          14
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-126",
+      "inputs": {
+        "point": [
+          205,
+          4
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-127",
+      "inputs": {
+        "point": [
+          209,
+          111
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-128",
+      "inputs": {
+        "point": [
+          213,
+          109
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-129",
+      "inputs": {
+        "point": [
+          196,
+          10
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-130",
+      "inputs": {
+        "point": [
+          260,
+          67
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-131",
+      "inputs": {
+        "point": [
+          269,
+          58
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-132",
+      "inputs": {
+        "point": [
+          164,
+          25
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-133",
+      "inputs": {
+        "point": [
+          254,
+          14
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-134",
+      "inputs": {
+        "point": [
+          71,
+          48
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-135",
+      "inputs": {
+        "point": [
+          62,
+          67
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-136",
+      "inputs": {
+        "point": [
+          175,
+          15
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-137",
+      "inputs": {
+        "point": [
+          27,
+          125
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-138",
+      "inputs": {
+        "point": [
+          252,
+          30
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-139",
+      "inputs": {
+        "point": [
+          156,
+          74
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-140",
+      "inputs": {
+        "point": [
+          165,
+          61
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-141",
+      "inputs": {
+        "point": [
+          264,
+          52
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-142",
+      "inputs": {
+        "point": [
+          151,
+          71
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-143",
+      "inputs": {
+        "point": [
+          19,
+          61
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-144",
+      "inputs": {
+        "point": [
+          217,
+          37
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-145",
+      "inputs": {
+        "point": [
+          283,
+          12
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-146",
+      "inputs": {
+        "point": [
+          79,
+          55
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-147",
+      "inputs": {
+        "point": [
+          18,
+          115
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-148",
+      "inputs": {
+        "point": [
+          233,
+          136
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-149",
+      "inputs": {
+        "point": [
+          123,
+          67
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-150",
+      "inputs": {
+        "point": [
+          36,
+          107
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-151",
+      "inputs": {
+        "point": [
+          198,
+          70
+        ]
+      },
+      "result": {
+        "region": 7,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-152",
+      "inputs": {
+        "point": [
+          58,
+          35
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-153",
+      "inputs": {
+        "point": [
+          62,
+          40
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-154",
+      "inputs": {
+        "point": [
+          150,
+          31
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-155",
+      "inputs": {
+        "point": [
+          170,
+          119
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-156",
+      "inputs": {
+        "point": [
+          23,
+          117
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-157",
+      "inputs": {
+        "point": [
+          19,
+          116
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-158",
+      "inputs": {
+        "point": [
+          258,
+          137
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-159",
+      "inputs": {
+        "point": [
+          247,
+          3
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-160",
+      "inputs": {
+        "point": [
+          27,
+          87
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-161",
+      "inputs": {
+        "point": [
+          261,
+          20
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-162",
+      "inputs": {
+        "point": [
+          218,
+          33
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-163",
+      "inputs": {
+        "point": [
+          113,
+          61
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-164",
+      "inputs": {
+        "point": [
+          169,
+          119
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-165",
+      "inputs": {
+        "point": [
+          52,
+          46
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-166",
+      "inputs": {
+        "point": [
+          207,
+          64
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-167",
+      "inputs": {
+        "point": [
+          273,
+          123
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-168",
+      "inputs": {
+        "point": [
+          167,
+          50
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-169",
+      "inputs": {
+        "point": [
+          232,
+          1
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-170",
+      "inputs": {
+        "point": [
+          28,
+          37
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-171",
+      "inputs": {
+        "point": [
+          231,
+          112
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-172",
+      "inputs": {
+        "point": [
+          183,
+          133
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-173",
+      "inputs": {
+        "point": [
+          105,
+          8
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-174",
+      "inputs": {
+        "point": [
+          104,
+          18
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-175",
+      "inputs": {
+        "point": [
+          182,
+          68
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-176",
+      "inputs": {
+        "point": [
+          297,
+          90
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-177",
+      "inputs": {
+        "point": [
+          304,
+          48
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-178",
+      "inputs": {
+        "point": [
+          179,
+          116
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-179",
+      "inputs": {
+        "point": [
+          181,
+          110
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-180",
+      "inputs": {
+        "point": [
+          92,
+          138
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-181",
+      "inputs": {
+        "point": [
+          202,
+          137
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-182",
+      "inputs": {
+        "point": [
+          5,
+          63
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 0,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-183",
+      "inputs": {
+        "point": [
+          240,
+          114
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-184",
+      "inputs": {
+        "point": [
+          246,
+          134
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-185",
+      "inputs": {
+        "point": [
+          261,
+          121
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-186",
+      "inputs": {
+        "point": [
+          176,
+          59
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "geo-187",
+      "inputs": {
+        "point": [
+          83,
+          87
+        ]
+      },
+      "result": {
+        "region": -1,
+        "coordinate_side": 1,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-clear",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": null
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-sea-intermediate",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": [
+          [
+            235,
+            85
+          ],
+          0
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-rough-intermediate",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": [
+          [
+            235,
+            85
+          ],
+          1
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-army-intermediate",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": [
+          [
+            235,
+            85
+          ],
+          203
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-city-intermediate",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": [
+          [
+            235,
+            85
+          ],
+          23
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-fleet-intermediate",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": [
+          [
+            235,
+            85
+          ],
+          303
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-sea-final",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "change": [
+          [
+            240,
+            90
+          ],
+          0
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-000",
+      "inputs": {
+        "origin": [
+          101,
+          47
+        ],
+        "target": [
+          167,
+          13
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-001",
+      "inputs": {
+        "origin": [
+          285,
+          122
+        ],
+        "target": [
+          47,
+          59
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-002",
+      "inputs": {
+        "origin": [
+          68,
+          68
+        ],
+        "target": [
+          52,
+          40
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-003",
+      "inputs": {
+        "origin": [
+          159,
+          83
+        ],
+        "target": [
+          265,
+          32
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-004",
+      "inputs": {
+        "origin": [
+          314,
+          26
+        ],
+        "target": [
+          135,
+          63
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-005",
+      "inputs": {
+        "origin": [
+          125,
+          68
+        ],
+        "target": [
+          260,
+          41
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-006",
+      "inputs": {
+        "origin": [
+          220,
+          17
+        ],
+        "target": [
+          77,
+          28
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-007",
+      "inputs": {
+        "origin": [
+          313,
+          13
+        ],
+        "target": [
+          53,
+          59
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-008",
+      "inputs": {
+        "origin": [
+          95,
+          47
+        ],
+        "target": [
+          294,
+          9
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-009",
+      "inputs": {
+        "origin": [
+          113,
+          24
+        ],
+        "target": [
+          84,
+          6
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-010",
+      "inputs": {
+        "origin": [
+          45,
+          27
+        ],
+        "target": [
+          141,
+          47
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-011",
+      "inputs": {
+        "origin": [
+          177,
+          14
+        ],
+        "target": [
+          227,
+          14
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-012",
+      "inputs": {
+        "origin": [
+          294,
+          62
+        ],
+        "target": [
+          228,
+          19
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-013",
+      "inputs": {
+        "origin": [
+          141,
+          67
+        ],
+        "target": [
+          54,
+          126
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-014",
+      "inputs": {
+        "origin": [
+          104,
+          106
+        ],
+        "target": [
+          182,
+          47
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-015",
+      "inputs": {
+        "origin": [
+          59,
+          26
+        ],
+        "target": [
+          228,
+          32
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-016",
+      "inputs": {
+        "origin": [
+          262,
+          23
+        ],
+        "target": [
+          183,
+          37
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-017",
+      "inputs": {
+        "origin": [
+          100,
+          3
+        ],
+        "target": [
+          138,
+          52
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-018",
+      "inputs": {
+        "origin": [
+          269,
+          40
+        ],
+        "target": [
+          233,
+          99
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-019",
+      "inputs": {
+        "origin": [
+          188,
+          84
+        ],
+        "target": [
+          281,
+          27
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-020",
+      "inputs": {
+        "origin": [
+          88,
+          30
+        ],
+        "target": [
+          273,
+          99
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-021",
+      "inputs": {
+        "origin": [
+          7,
+          126
+        ],
+        "target": [
+          105,
+          119
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-022",
+      "inputs": {
+        "origin": [
+          184,
+          78
+        ],
+        "target": [
+          300,
+          92
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-023",
+      "inputs": {
+        "origin": [
+          159,
+          76
+        ],
+        "target": [
+          206,
+          95
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-024",
+      "inputs": {
+        "origin": [
+          116,
+          53
+        ],
+        "target": [
+          17,
+          11
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-025",
+      "inputs": {
+        "origin": [
+          49,
+          121
+        ],
+        "target": [
+          192,
+          31
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-026",
+      "inputs": {
+        "origin": [
+          295,
+          66
+        ],
+        "target": [
+          160,
+          39
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-027",
+      "inputs": {
+        "origin": [
+          156,
+          119
+        ],
+        "target": [
+          3,
+          111
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-028",
+      "inputs": {
+        "origin": [
+          39,
+          120
+        ],
+        "target": [
+          188,
+          47
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-029",
+      "inputs": {
+        "origin": [
+          131,
+          70
+        ],
+        "target": [
+          282,
+          117
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-030",
+      "inputs": {
+        "origin": [
+          269,
+          63
+        ],
+        "target": [
+          75,
+          87
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-031",
+      "inputs": {
+        "origin": [
+          148,
+          95
+        ],
+        "target": [
+          277,
+          62
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-032",
+      "inputs": {
+        "origin": [
+          19,
+          9
+        ],
+        "target": [
+          170,
+          55
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-033",
+      "inputs": {
+        "origin": [
+          36,
+          103
+        ],
+        "target": [
+          309,
+          43
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-034",
+      "inputs": {
+        "origin": [
+          300,
+          128
+        ],
+        "target": [
+          295,
+          20
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-035",
+      "inputs": {
+        "origin": [
+          165,
+          128
+        ],
+        "target": [
+          127,
+          107
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-036",
+      "inputs": {
+        "origin": [
+          269,
+          96
+        ],
+        "target": [
+          186,
+          116
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-037",
+      "inputs": {
+        "origin": [
+          16,
+          135
+        ],
+        "target": [
+          151,
+          65
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-038",
+      "inputs": {
+        "origin": [
+          261,
+          62
+        ],
+        "target": [
+          59,
+          74
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-039",
+      "inputs": {
+        "origin": [
+          161,
+          7
+        ],
+        "target": [
+          143,
+          37
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-040",
+      "inputs": {
+        "origin": [
+          148,
+          119
+        ],
+        "target": [
+          237,
+          75
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-041",
+      "inputs": {
+        "origin": [
+          201,
+          100
+        ],
+        "target": [
+          82,
+          30
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-042",
+      "inputs": {
+        "origin": [
+          267,
+          47
+        ],
+        "target": [
+          61,
+          74
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-043",
+      "inputs": {
+        "origin": [
+          237,
+          87
+        ],
+        "target": [
+          54,
+          59
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-044",
+      "inputs": {
+        "origin": [
+          191,
+          61
+        ],
+        "target": [
+          128,
+          102
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-045",
+      "inputs": {
+        "origin": [
+          246,
+          72
+        ],
+        "target": [
+          293,
+          35
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-046",
+      "inputs": {
+        "origin": [
+          101,
+          114
+        ],
+        "target": [
+          289,
+          6
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-047",
+      "inputs": {
+        "origin": [
+          115,
+          128
+        ],
+        "target": [
+          170,
+          22
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-048",
+      "inputs": {
+        "origin": [
+          109,
+          103
+        ],
+        "target": [
+          101,
+          53
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-049",
+      "inputs": {
+        "origin": [
+          74,
+          51
+        ],
+        "target": [
+          127,
+          20
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-050",
+      "inputs": {
+        "origin": [
+          208,
+          49
+        ],
+        "target": [
+          288,
+          22
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-051",
+      "inputs": {
+        "origin": [
+          31,
+          137
+        ],
+        "target": [
+          34,
+          6
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-052",
+      "inputs": {
+        "origin": [
+          167,
+          93
+        ],
+        "target": [
+          216,
+          8
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-053",
+      "inputs": {
+        "origin": [
+          170,
+          106
+        ],
+        "target": [
+          115,
+          79
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-054",
+      "inputs": {
+        "origin": [
+          128,
+          132
+        ],
+        "target": [
+          152,
+          116
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-055",
+      "inputs": {
+        "origin": [
+          94,
+          66
+        ],
+        "target": [
+          188,
+          124
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-056",
+      "inputs": {
+        "origin": [
+          231,
+          26
+        ],
+        "target": [
+          229,
+          55
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-057",
+      "inputs": {
+        "origin": [
+          31,
+          10
+        ],
+        "target": [
+          8,
+          119
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-058",
+      "inputs": {
+        "origin": [
+          7,
+          87
+        ],
+        "target": [
+          207,
+          41
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-059",
+      "inputs": {
+        "origin": [
+          191,
+          88
+        ],
+        "target": [
+          4,
+          68
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-060",
+      "inputs": {
+        "origin": [
+          287,
+          22
+        ],
+        "target": [
+          9,
+          14
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-061",
+      "inputs": {
+        "origin": [
+          175,
+          19
+        ],
+        "target": [
+          253,
+          74
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-062",
+      "inputs": {
+        "origin": [
+          310,
+          118
+        ],
+        "target": [
+          61,
+          137
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-063",
+      "inputs": {
+        "origin": [
+          85,
+          109
+        ],
+        "target": [
+          109,
+          4
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-064",
+      "inputs": {
+        "origin": [
+          222,
+          103
+        ],
+        "target": [
+          42,
+          35
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-065",
+      "inputs": {
+        "origin": [
+          163,
+          13
+        ],
+        "target": [
+          43,
+          36
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-066",
+      "inputs": {
+        "origin": [
+          207,
+          47
+        ],
+        "target": [
+          11,
+          9
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-067",
+      "inputs": {
+        "origin": [
+          39,
+          37
+        ],
+        "target": [
+          266,
+          48
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-068",
+      "inputs": {
+        "origin": [
+          93,
+          101
+        ],
+        "target": [
+          209,
+          76
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-069",
+      "inputs": {
+        "origin": [
+          232,
+          116
+        ],
+        "target": [
+          4,
+          53
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-070",
+      "inputs": {
+        "origin": [
+          19,
+          12
+        ],
+        "target": [
+          227,
+          103
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-071",
+      "inputs": {
+        "origin": [
+          198,
+          49
+        ],
+        "target": [
+          16,
+          24
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-072",
+      "inputs": {
+        "origin": [
+          277,
+          63
+        ],
+        "target": [
+          178,
+          38
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-073",
+      "inputs": {
+        "origin": [
+          125,
+          70
+        ],
+        "target": [
+          257,
+          59
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-074",
+      "inputs": {
+        "origin": [
+          261,
+          97
+        ],
+        "target": [
+          246,
+          70
+        ]
+      },
+      "result": {
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-075",
+      "inputs": {
+        "origin": [
+          46,
+          101
+        ],
+        "target": [
+          291,
+          35
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-076",
+      "inputs": {
+        "origin": [
+          110,
+          81
+        ],
+        "target": [
+          44,
+          38
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-077",
+      "inputs": {
+        "origin": [
+          71,
+          31
+        ],
+        "target": [
+          215,
+          15
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-078",
+      "inputs": {
+        "origin": [
+          78,
+          137
+        ],
+        "target": [
+          78,
+          75
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-world-079",
+      "inputs": {
+        "origin": [
+          306,
+          63
+        ],
+        "target": [
+          24,
+          123
+        ]
+      },
+      "result": {
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "line-coincident-0",
+      "inputs": {
+        "point": [
+          230,
+          80
+        ],
+        "stack_fill": 0
+      },
+      "result": {
+        "direct": false,
+        "scope": "isolated uninitialized-step control, not a universal no-op rule"
+      }
+    },
+    {
+      "case": "line-coincident-1",
+      "inputs": {
+        "point": [
+          230,
+          80
+        ],
+        "stack_fill": 1
+      },
+      "result": {
+        "direct": true,
+        "scope": "isolated uninitialized-step control, not a universal no-op rule"
+      }
+    },
+    {
+      "case": "line-coincident-255",
+      "inputs": {
+        "point": [
+          230,
+          80
+        ],
+        "stack_fill": 255
+      },
+      "result": {
+        "direct": false,
+        "scope": "isolated uninitialized-step control, not a universal no-op rule"
+      }
+    },
+    {
+      "case": "eligible-same-clear",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "fleet": null
+      },
+      "result": {
+        "eligible": true,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-same-blocked",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ],
+        "fleet": null
+      },
+      "result": {
+        "eligible": true,
+        "direct": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-cross-none",
+      "inputs": {
+        "origin": [
+          100,
+          40
+        ],
+        "target": [
+          230,
+          90
+        ],
+        "fleet": null
+      },
+      "result": {
+        "eligible": false,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-cross-foreign",
+      "inputs": {
+        "origin": [
+          100,
+          40
+        ],
+        "target": [
+          230,
+          90
+        ],
+        "fleet": {
+          "owner": 3
+        }
+      },
+      "result": {
+        "eligible": false,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-cross-own-building",
+      "inputs": {
+        "origin": [
+          100,
+          40
+        ],
+        "target": [
+          230,
+          90
+        ],
+        "fleet": {
+          "owner": 1,
+          "countdown": 5
+        }
+      },
+      "result": {
+        "eligible": true,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-cross-own-loaded",
+      "inputs": {
+        "origin": [
+          100,
+          40
+        ],
+        "target": [
+          230,
+          90
+        ],
+        "fleet": {
+          "owner": 1,
+          "cargo": 3
+        }
+      },
+      "result": {
+        "eligible": true,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-cross-own-zero",
+      "inputs": {
+        "origin": [
+          100,
+          40
+        ],
+        "target": [
+          230,
+          90
+        ],
+        "fleet": {
+          "owner": 1,
+          "moves": 0
+        }
+      },
+      "result": {
+        "eligible": true,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-cross-own-empty",
+      "inputs": {
+        "origin": [
+          100,
+          40
+        ],
+        "target": [
+          230,
+          90
+        ],
+        "fleet": {
+          "owner": 1
+        }
+      },
+      "result": {
+        "eligible": true,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "eligible-different-island",
+      "inputs": {
+        "origin": [
+          86,
+          56
+        ],
+        "target": [
+          108,
+          66
+        ],
+        "fleet": null
+      },
+      "result": {
+        "eligible": false,
+        "direct": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "route-frame-0",
+      "inputs": {
+        "group": 1,
+        "visible_candidates": [
+          26,
+          39
+        ],
+        "target_side_node": 36,
+        "hub": 32
+      },
+      "result": {
+        "point": [
+          269,
+          15
+        ],
+        "node": 39,
+        "primary": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "route-frame-1",
+      "inputs": {
+        "group": 1,
+        "visible_candidates": [
+          26,
+          33
+        ],
+        "target_side_node": 31,
+        "hub": 32
+      },
+      "result": {
+        "point": [
+          20,
+          88
+        ],
+        "node": 26,
+        "primary": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "route-frame-2",
+      "inputs": {
+        "group": 1,
+        "visible_candidates": [
+          31,
+          33
+        ],
+        "target_side_node": 32,
+        "hub": 32
+      },
+      "result": {
+        "point": [
+          189,
+          104
+        ],
+        "node": 31,
+        "primary": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "route-frame-3",
+      "inputs": {
+        "group": 1,
+        "visible_candidates": [
+          33,
+          31
+        ],
+        "target_side_node": 32,
+        "hub": 32
+      },
+      "result": {
+        "point": [
+          227,
+          49
+        ],
+        "node": 33,
+        "primary": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "route-frame-4",
+      "inputs": {
+        "group": 2,
+        "visible_candidates": [
+          40,
+          54
+        ],
+        "target_side_node": 47,
+        "hub": 43
+      },
+      "result": {
+        "point": [
+          22,
+          67
+        ],
+        "node": 40,
+        "primary": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "route-frame-5",
+      "inputs": {
+        "group": 0,
+        "visible_candidates": [
+          1,
+          6
+        ],
+        "target_side_node": 25,
+        "hub": 9
+      },
+      "result": {
+        "point": [
+          75,
+          47
+        ],
+        "node": 6,
+        "primary": false,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-000",
+      "inputs": {
+        "origin": [
+          208,
+          40
+        ],
+        "target": [
+          40,
+          96
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          227,
+          49
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-001",
+      "inputs": {
+        "origin": [
+          256,
+          8
+        ],
+        "target": [
+          200,
+          32
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          269,
+          104
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-002",
+      "inputs": {
+        "origin": [
+          272,
+          40
+        ],
+        "target": [
+          208,
+          128
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-003",
+      "inputs": {
+        "origin": [
+          248,
+          96
+        ],
+        "target": [
+          96,
+          96
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-004",
+      "inputs": {
+        "origin": [
+          40,
+          96
+        ],
+        "target": [
+          312,
+          128
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-005",
+      "inputs": {
+        "origin": [
+          168,
+          56
+        ],
+        "target": [
+          40,
+          104
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          227,
+          49
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-006",
+      "inputs": {
+        "origin": [
+          8,
+          128
+        ],
+        "target": [
+          224,
+          80
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-007",
+      "inputs": {
+        "origin": [
+          256,
+          8
+        ],
+        "target": [
+          192,
+          40
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-008",
+      "inputs": {
+        "origin": [
+          264,
+          48
+        ],
+        "target": [
+          288,
+          56
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          269,
+          15
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-009",
+      "inputs": {
+        "origin": [
+          160,
+          48
+        ],
+        "target": [
+          280,
+          48
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          289,
+          59
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-010",
+      "inputs": {
+        "origin": [
+          192,
+          112
+        ],
+        "target": [
+          296,
+          120
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-011",
+      "inputs": {
+        "origin": [
+          240,
+          104
+        ],
+        "target": [
+          200,
+          112
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-012",
+      "inputs": {
+        "origin": [
+          136,
+          128
+        ],
+        "target": [
+          184,
+          56
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-013",
+      "inputs": {
+        "origin": [
+          120,
+          112
+        ],
+        "target": [
+          280,
+          8
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-014",
+      "inputs": {
+        "origin": [
+          264,
+          16
+        ],
+        "target": [
+          64,
+          112
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-015",
+      "inputs": {
+        "origin": [
+          312,
+          72
+        ],
+        "target": [
+          240,
+          80
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          289,
+          59
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-016",
+      "inputs": {
+        "origin": [
+          272,
+          32
+        ],
+        "target": [
+          280,
+          112
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          289,
+          59
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-017",
+      "inputs": {
+        "origin": [
+          96,
+          32
+        ],
+        "target": [
+          112,
+          16
+        ],
+        "group": 2
+      },
+      "result": {
+        "point": [
+          90,
+          22
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-018",
+      "inputs": {
+        "origin": [
+          80,
+          112
+        ],
+        "target": [
+          248,
+          24
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-019",
+      "inputs": {
+        "origin": [
+          160,
+          120
+        ],
+        "target": [
+          216,
+          40
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-020",
+      "inputs": {
+        "origin": [
+          136,
+          56
+        ],
+        "target": [
+          88,
+          8
+        ],
+        "group": 2
+      },
+      "result": {
+        "point": [
+          144,
+          54
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-021",
+      "inputs": {
+        "origin": [
+          184,
+          112
+        ],
+        "target": [
+          280,
+          32
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-022",
+      "inputs": {
+        "origin": [
+          64,
+          128
+        ],
+        "target": [
+          256,
+          120
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-023",
+      "inputs": {
+        "origin": [
+          176,
+          128
+        ],
+        "target": [
+          256,
+          72
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          189,
+          104
+        ],
+        "branch": "common-visible",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-024",
+      "inputs": {
+        "origin": [
+          272,
+          80
+        ],
+        "target": [
+          72,
+          80
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-025",
+      "inputs": {
+        "origin": [
+          128,
+          120
+        ],
+        "target": [
+          304,
+          32
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          221,
+          94
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-026",
+      "inputs": {
+        "origin": [
+          64,
+          88
+        ],
+        "target": [
+          240,
+          104
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-row",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-027",
+      "inputs": {
+        "origin": [
+          48,
+          80
+        ],
+        "target": [
+          232,
+          8
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-028",
+      "inputs": {
+        "origin": [
+          88,
+          112
+        ],
+        "target": [
+          200,
+          48
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-029",
+      "inputs": {
+        "origin": [
+          184,
+          40
+        ],
+        "target": [
+          104,
+          104
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          227,
+          49
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-030",
+      "inputs": {
+        "origin": [
+          88,
+          88
+        ],
+        "target": [
+          232,
+          40
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          109,
+          106
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-031",
+      "inputs": {
+        "origin": [
+          96,
+          96
+        ],
+        "target": [
+          288,
+          72
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-032",
+      "inputs": {
+        "origin": [
+          192,
+          56
+        ],
+        "target": [
+          232,
+          8
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          227,
+          49
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-033",
+      "inputs": {
+        "origin": [
+          24,
+          72
+        ],
+        "target": [
+          136,
+          56
+        ],
+        "group": 2
+      },
+      "result": {
+        "point": [
+          72,
+          28
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-034",
+      "inputs": {
+        "origin": [
+          280,
+          8
+        ],
+        "target": [
+          32,
+          104
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          227,
+          49
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "world-waypoint-035",
+      "inputs": {
+        "origin": [
+          32,
+          96
+        ],
+        "target": [
+          192,
+          32
+        ],
+        "group": 1
+      },
+      "result": {
+        "point": [
+          145,
+          116
+        ],
+        "branch": "route-hub",
+        "model_equal": true
+      }
+    },
+    {
+      "case": "waypoint-no-node",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ]
+      },
+      "result": {
+        "point": null,
+        "branch": "origin-local-fallback",
+        "eligible_looking": true,
+        "model_equal": true
+      }
+    },
+    {
+      "case": "waypoint-origin-local",
+      "inputs": {
+        "origin": [
+          230,
+          80
+        ],
+        "target": [
+          240,
+          90
+        ]
+      },
+      "result": {
+        "point": [
+          233,
+          83
+        ],
+        "branch": "origin-local-fallback",
+        "eligible_looking": true,
+        "model_equal": true
+      }
+    }
+  ],
+  "world_route_branches": {
+    "route-hub": 12,
+    "common-visible": 12,
+    "route-row": 12
+  }
+}

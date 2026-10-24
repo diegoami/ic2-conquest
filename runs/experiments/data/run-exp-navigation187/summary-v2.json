@@ -1,0 +1,40 @@
+{
+  "public_scalar_rows": 331,
+  "ferry_contact_residue_rows": 20,
+  "actual_caller_entry_controls": 3,
+  "actual_caller_full_controls": 3,
+  "advanced_score_fallback_controls": 4,
+  "additional_original_line_controls": 35,
+  "island_land_cells_enumerated": 329,
+  "static_tables": {
+    "valid_points": 58,
+    "route_shape": [
+      3,
+      7,
+      8
+    ],
+    "region_boxes": 8,
+    "coordinate_splits": 6
+  },
+  "static_blocks_equal_across30live_snapshots": true,
+  "original_RNG_calls_in_controls": 0,
+  "private_final_regression_pass": true,
+  "native_conditioned_walker_pass": true,
+  "implementation_contract": "defined eligibility/direct/waypoint/ferry/contact branches; F31C caller-aware continuation only, not arbitrary DBA8-entry stack",
+  "stop_condition": {
+    "branch": "post-direct-walk continuation for other original caller histories",
+    "observed_alternatives": [
+      "negative inherited word: return with position100,40 and8moves",
+      "nonnegative inherited word: local fallback/recursion reaches100,41 and0moves"
+    ],
+    "current_resolution": "normal F31C and recursive fixture data-flow/controls proved nonnegative; other callers not universally established",
+    "smallest_next_original_control": "generated three-friendly-marker wall; instrument EC7D/ECD6 garrison and E913mercenary calls, record entryESP-14 and subsequent actor moves; no new owner save"
+  },
+  "restrictions": [
+    "No production/source-schema change or broad game rerun.",
+    "Original bytes/RAM/complete traces and owner hashes remain private.",
+    "Group3graph fallback has no table/hub, but is unreachable for valid static classical same-island land pairs as enumerated.",
+    "CB40coincident isolated input is stack-dependent; actual D174sequence makes target-node coincidence visible after its preceding nonzero origin test.",
+    "Native final comparison supplies original waypoint and does not claim native eligibility/whole-turn/RNG equivalence."
+  ]
+}
