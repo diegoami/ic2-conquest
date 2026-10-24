@@ -52,3 +52,8 @@ The Latin1 scan preserves raw bytes; source-audit-v2 is final. The separate buil
 correctly compiled current Main, with three existing Data warnings. No unchanged
 baseline build was mislabelled a candidate. Public audit, compile and diff pass;
 self-review only. Installed-build and Main1355 acceptance remain unverified.
+
+Recorded-runtime qualification: three pilot inputs lack the selected-slot field
+and retain the existing −1 default disclosed in Research67. The owner control
+has its selected slot observed. recorded-runtime-assumptions-v1.json records
+these aggregate facts; no missing field was backfilled and no result changed.

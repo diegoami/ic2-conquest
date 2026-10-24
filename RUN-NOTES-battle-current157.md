@@ -47,3 +47,30 @@ baseline/receipts; current reported/delivered baseline9a13cc53. Main1355/157
 need current verified status, no duplicatepatch/label closure. Main owns review
 of acceptance inventory. No further experiment or original/UI run auto-started.
 No active processes/agents or owner input request. All11untrackedfiles preserved.
+
+## END — publication and successful delivery, 2026-10-25
+
+PR202 merged atfd62cb58421b5fb62eae0058e676ad30e8f2fd2f after exacthead
+3540d5d684080517654b8aa65a4332e32b5a7d5f passed GitGuardian. Self-review,
+no external reviewer. Source868cd23/final3540d5d pushed. New finding
+findings/2026-10-25-current-main-battle-replay157.md; changed historical
+battle-general-later-pass-iteration1355 and seed2-walk-captured-target1377
+finding statuses only. Both new-audit and historical-status messages successfully
+delivered to ic2-research thread01a167fa-9fb2-7570-bf21-b32682c79e6e;
+each returned threadID/isError=false. Intake pending, not claimed from delivery.
+Last reported and last-delivered findings baseline:
+fd62cb58421b5fb62eae0058e676ad30e8f2fd2f.
+
+Main1355/comment6390345653 and conquest157/comment6390345418 hold complete
+source/corpus/owner audit and acceptance inventory. Corrected list formatting
+on those exact comment IDs, no measurement changes. #1355/#157 remain open,
+labels unchanged. No duplicate patch, original/Wine game, Windows/Computer Use,
+newowner request or unrelated battle queue. No active process or agent remains.
+All11 unrelated untracked files preserved. Main owns acceptance review after
+Research promotion, especially installed build and natural owner entry/protocol.
+
+Additional protocol disclosure from the retained14case audit: three pilot
+selected-slot fields were absent and used the preexisting−1default (already
+disclosed in Research67); owner selected-slot field was observed. Public
+recorded-runtime-assumptions-v1 and README clarify; no field backfilled or
+outcome changed. These remain conditional recorded-protocol comparisons.
