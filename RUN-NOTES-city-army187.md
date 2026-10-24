@@ -114,3 +114,20 @@ Live1394 is in-progress;1417/1418 open. Source finding/README/Main handoff updat
 for promotion only. Existing measurements unchanged. Baseline33c72eb9 remains
 until this metadata lands and mandatory relay succeeds. Main owns reviewed
 city-policy/exact100 corrections and acceptance, not conquest source edits.
+
+Research75 source-promotion metadata landed via conquest PR200 at
+9a13cc5313e03b26d4d3371ea521d3e96dcb0ad1 after exactb7fc777 head passed
+GitGuardian. Only findings/2026-10-24-city-army-selection187.md changed among
+findings; no measurements changed. Mandatory metadata relay succeeded through
+codex_tui to Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e, returned
+threadID/isError=false. No re-intake requested. Last reported and last-delivered
+findings baseline:9a13cc5313e03b26d4d3371ea521d3e96dcb0ad1.
+
+Canonical75 report/receipt delivered through existing issue links:
+Main1394/comment6388878994,1417/6388879277,1418/6388879600,
+conquest187/6388879827. No unverified direct Main session used. Main owns
+city-policy/scope decision, exact100 correction and acceptance; no labels or
+contract changed. This city research is now promoted, not pending. No new game,
+owner input, native rebuild or experiment auto-started. Validation metadata only:
+canonical report/receipt and live states read; diff check passes. All11
+unrelated untracked files retained.
