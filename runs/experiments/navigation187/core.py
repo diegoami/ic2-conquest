@@ -1,10 +1,17 @@
 """Pinned original-instruction runner; all raw RAM/trace material stays private."""
-import hashlib,struct,sys
+import hashlib,os,re,struct,sys
 from pathlib import Path
 from unicorn import Uc,UC_ARCH_X86,UC_MODE_32,UC_HOOK_CODE,UC_HOOK_MEM_READ,UC_HOOK_MEM_WRITE
 from unicorn.x86_const import UC_X86_REG_EAX,UC_X86_REG_EDX,UC_X86_REG_ECX,UC_X86_REG_EBP,UC_X86_REG_ESP,UC_X86_REG_EIP,UC_X86_REG_EFLAGS
 ROOT=Path(__file__).resolve().parents[3];sys.path.insert(0,str(ROOT));from state import sav
 BASE=ROOT/'artifacts/run-exp-navigation187';PRIVATE=BASE/'private';DATA=ROOT/'runs/experiments/data/run-exp-navigation187'
+# Optional fresh namespace for replay; individual outputs still use exclusive
+# creation, so accidentally repeating a tag cannot replace measured files.
+replay_tag=os.environ.get('NAV187_REPLAY_TAG')
+if replay_tag:
+ if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,79}',replay_tag):raise ValueError('Invalid NAV187_REPLAY_TAG')
+ PRIVATE=PRIVATE/replay_tag;DATA=DATA/replay_tag
+ PRIVATE.mkdir(parents=True,exist_ok=True);DATA.mkdir(parents=True,exist_ok=True)
 ORIGIN,SIZE=0x45e000,0x43000
 RAM=(ROOT/'artifacts/run-exp-strategic-fidelity/original/N-rome-hook-v1/snapshots/000.ram').read_bytes()
 EXE=Path('/home/diego/ic2-work/build/Imperial Conquest 2.exe').read_bytes();assert hashlib.sha256(EXE).hexdigest()=='9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31'

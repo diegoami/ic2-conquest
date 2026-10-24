@@ -1,5 +1,5 @@
 """Audit published scalar ledgers; no raw/owner hash or full trace output."""
-import json
+import argparse,json
 from pathlib import Path
 DATA=Path(__file__).resolve().parents[3]/'runs/experiments/data/run-exp-navigation187'
 load=lambda n:json.loads((DATA/n).read_text())
@@ -21,8 +21,15 @@ assert all(r['actor']==2 and r['entry_local_e']==128 for r in caller)
 assert all(r['final_army']==[100,41] and r['moves']==0 and [e['local_e'] for e in r['entries']]==[128,103,110,103,110] for r in full)
 assert sum(r['land_or_land_marker_cells'] for r in topology['regions'])==329 and all(len(r['visible_island_node_union'])<=1 for r in topology['regions'])
 assert len(advanced)==4 and advanced[2]['score']==advanced[3]['score']==1010 and advanced[2]['selected_army']==advanced[3]['selected_army']==6
-private=load('private-regression-audit-v1.json');native=load('private-native-audit-v1.json')
+private=load('private-regression-audit-v1.json');native=load('private-native-audit-v2.json')
 assert private['original_geo_model_equal'] and private['waypoint']==[189,104] and native['endpoint']==[212,96] and native['terrain_occupancy_mismatches']==0
+assert native['actor_units_relations_gated'] and not native['owner_fields_published'] and native['Moves']==0
+spec=load('navigation-data-v1.json');pins=load('source-pin-v1.json')
+assert len(spec['waypoints'])==58 and len(spec['routes'])==21 and len(spec['regions'])==8 and len(spec['coordinate_splits'])==6
+assert all(b['static_equal_in_live_snapshots']==30 for b in pins['blocks'])
+for group,hub in [(0,9),(1,32),(2,43)]:
+ for node in range(spec['groups'][str(group)][0],spec['groups'][str(group)][1]+1):
+  assert any(node in row['points'] and hub in row['points'] for row in spec['routes'] if row['group']==group)
 summary=dict(public_scalar_rows=331,ferry_contact_residue_rows=20,actual_caller_entry_controls=3,actual_caller_full_controls=3,advanced_score_fallback_controls=4,
  additional_original_line_controls=len(topology['original_instruction_spot_controls']),island_land_cells_enumerated=329,
  static_tables=dict(valid_points=58,route_shape=[3,7,8],region_boxes=8,coordinate_splits=6),static_blocks_equal_across30live_snapshots=True,
@@ -37,5 +44,6 @@ summary=dict(public_scalar_rows=331,ferry_contact_residue_rows=20,actual_caller_
  'Group3graph fallback has no table/hub, but is unreachable for valid static classical same-island land pairs as enumerated.',
  'CB40coincident isolated input is stack-dependent; actual D174sequence makes target-node coincidence visible after its preceding nonzero origin test.',
  'Native final comparison supplies original waypoint and does not claim native eligibility/whole-turn/RNG equivalence.'])
-with (DATA/'summary-v1.json').open('x') as f:json.dump(summary,f,indent=2)
+p=argparse.ArgumentParser();p.add_argument('--version',required=True);options=p.parse_args()
+with (DATA/('summary-'+options.version+'.json')).open('x') as f:json.dump(summary,f,indent=2)
 print('PASS navigation data,396public control rows/topology spot checks, private final regression and conditioned native walker; caller stop-limit retained')

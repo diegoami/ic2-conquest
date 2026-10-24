@@ -28,3 +28,35 @@ uninitialized step temporary in isolation. DBA8's post-direct-walk local_e is
 uninitialized on the direct branch. Must quantify caller relevance and stack
 sensitivity rather than invent initialization. Defined waypoint choice remains
 separate from ambiguous post-walk continuation. No conclusions published yet.
+
+## Publication checkpoint — 2026-10-24
+
+The initial inspection above is historical. Commits 078840f, 9bf30b4 and
+56470dc preserve extraction, original controls, the private final conditional
+and implementation rule. Final report and Main handoff now describe the
+reusable eligibility/direct/waypoint/ferry/contact contract, including widths,
+ties, static data and the explicit caller-specific stop condition.
+
+Evidence: 331 scalar + 20 branch + 3 caller-entry + 3 full-caller + 4 advanced
+controls + 35 original-line spots = 396 public result rows, not games. Full
+enumeration covers 329 classical island land cells. No original RNG calls.
+Original EXE/listing pins verified; 30 generated live snapshots share tables.
+Retained private #1388 is final only: waypoint (189,104), terminal (212,96),
+zero moves. Native 933a5d4a with supplied waypoint matches after unit/relation/
+terrain/occupancy identity gates. No native eligibility or whole-turn claim.
+
+Validation: audit-execution-v3.log / summary-v3.json pass; earlier v1/v2
+outputs remain unchanged. Portable callback-model smoke passes without original
+assets. Python compilation and git diff --check pass. Self-review only; no
+external reviewer was launched. Original bytes/RAM/full traces/private owner
+hashes remain local and excluded from Git/public uploads per #187.
+
+END (publication pending): research/navigation187 includes the earlier
+three-track setup checkpoint 940f7cb; #176/#177/#174 remain resumable. Publish
+this bounded package, relay after main lands, and record actual main SHA and
+delivery receipt here. Last reported/delivered findings baseline remains
+b22b31bdc466a638d61ee3db173b8fd71a0e7d86 until successful delivery. Fetch at
+publication found no newer findings and no open PRs. Keep #187 open for intake
+and the exact caller stop; do not clear T212 blocked. Next original control if
+needed: generated friendly-marker wall at EC7D/ECD6 and E913, capture entry
+ESP−14 and actual subsequent movement; no new owner save/screen access.
