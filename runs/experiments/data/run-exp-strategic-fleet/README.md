@@ -1,6 +1,11 @@
 # Fleet continuation #174 and issue split
 
 Finding: `findings/2026-10-24-strategic-fleet-controls174.md`.
+Intaken by Research PR70/main `ebe8acb530f9b0250855aded20e1988f94d4c873`;
+canonical `docs/reports/2026-10-24-strategic-fleet-controls174.md`.
+Promotion is metadata only. Stored-route+zero-move remains untested; the
+no-move control has no stored route. Prepass/port selection still run, and
+the stored-route absence guard tests the signed X word.
 Summary/audits: `summary-v1.json`, `stored-route-byte-control-v1.json`,
 `original-score-controls-v1.json`, `recovery-verification-v1.json`.
 
