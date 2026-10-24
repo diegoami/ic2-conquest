@@ -1,0 +1,70 @@
+{
+  "functions": [
+    {
+      "function": "0044b79c",
+      "source_line": 49953
+    },
+    {
+      "function": "0044ca30",
+      "source_line": 50819
+    },
+    {
+      "function": "0044cab4",
+      "source_line": 50856
+    },
+    {
+      "function": "0044cb40",
+      "source_line": 50898
+    },
+    {
+      "function": "0044cd08",
+      "source_line": 51016
+    },
+    {
+      "function": "0044cec8",
+      "source_line": 51122
+    },
+    {
+      "function": "0044d010",
+      "source_line": 51196
+    },
+    {
+      "function": "0044d174",
+      "source_line": 51274
+    },
+    {
+      "function": "0044d734",
+      "source_line": 51517
+    },
+    {
+      "function": "0044d9a8",
+      "source_line": 51663
+    },
+    {
+      "function": "0044da88",
+      "source_line": 51713
+    },
+    {
+      "function": "0044db38",
+      "source_line": 51761
+    },
+    {
+      "function": "0044dba8",
+      "source_line": 51790
+    },
+    {
+      "function": "0044ee60",
+      "source_line": 52715
+    },
+    {
+      "function": "0044f31c",
+      "source_line": 52899
+    }
+  ],
+  "PE_large_address_aware": false,
+  "ABI_notes": [
+    "F31C caller SP=S. EE60 is called with one stack argument; its EBP=S-12 and target-output pointer lives at EBP-8. DBA8 direct local_e at S-18 reads upper16ofthatstack pointer, nonnegative on this non-large-address-aware 32bit user stack.",
+    "Recursive DBA8 follows D734 at same call depth. Child local_e reuses D734 goalX at EBP-10; valid X0..319is nonnegative.",
+    "Standalone DBA8 direct entry does not initialize that slot. Other direct callers require separate caller-history proof; do not guess universal initialization."
+  ]
+}

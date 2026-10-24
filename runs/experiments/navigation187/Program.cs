@@ -9,6 +9,8 @@ var path=args[1];var state=OriginalSaveImporter.Import(File.ReadAllBytes(path),p
 using var source=JsonDocument.Parse(File.ReadAllText(args[2]));var raw=source.RootElement;var a=state.ArmyById("army-4")!;
 if(a.X!=219||a.Y!=93||a.Moves!=7||a.TotalTroops!=78857)throw new Exception("private actor gate");
 var army=raw.GetProperty("armies")[4];string[] types={"light_infantry","heavy_infantry","archers","light_cavalry","heavy_cavalry"};string[] abbreviations={"li","hi","ar","lc","hc"};
+if(a.Morale!=army.GetProperty("morale").GetInt32()||a.Money!=army.GetProperty("money").GetInt32()||a.SupplyTons!=army.GetProperty("supplies").GetInt32())throw new Exception("private actor resource/morale gate");
+if((state.NationById(a.Nation)!.Control==SeatControl.Human)!=raw.GetProperty("nations")[2].GetProperty("human").GetBoolean())throw new Exception("private controller gate");
 var units=army.GetProperty("units").EnumerateArray().ToArray();if(a.Units.Count!=units.Length)throw new Exception("private unit count");
 for(int i=0;i<units.Length;i++)if(a.Units[i].Troops!=units[i].GetProperty("troops").GetInt32()||a.Units[i].Quality!=units[i].GetProperty("quality").GetInt32()||a.Units[i].UnitTypeId!=types[Array.IndexOf(abbreviations,units[i].GetProperty("type").GetString())])throw new Exception("private unit gate");
 var map=raw.GetProperty("map").EnumerateArray().Select(x=>x.GetInt32()).ToArray();var terrain=ctx.World.Terrain.Decode(320,140);int mismatches=0;
