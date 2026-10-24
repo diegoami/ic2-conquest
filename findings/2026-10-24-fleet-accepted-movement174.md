@@ -2,7 +2,15 @@
 
 **Tag:** [confirmed, partial: 23 synthetic original-instruction movement/phase
 controls, actual native accepted-command traces, one original Wine observer/plain
-trajectory, bounded live-phase replay]. Research intake pending.
+trajectory, bounded live-phase replay]. Promoted through Research PR71 and
+strengthened by [Research PR72](https://github.com/diegoami/imperial-conquest-2-research/pull/72)
+at `c863a97cb1fc66206e23521c7bdd024548ba41dd`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-fleet-accepted-movement174.md).
+Research separately rechecked original/native controls, archive recovery,
+paths and retained phase/CPU gates offline; no fresh game or rebuild.
+The budget counterexample below is historical: Main #1408 is now closed after
+T214, not a claim against the corrected build. PR190's newer provider/cargo/
+overflow continuation remains separately queued and unpromoted.
 **Tasks:** conquest174/171; remake [1408](https://github.com/diegoami/imperial_conquest_2/issues/1408)
 (budget), [1409](https://github.com/diegoami/imperial_conquest_2/issues/1409)
 (faithful policy/execution), existing1405(stored destination state).

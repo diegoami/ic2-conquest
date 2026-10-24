@@ -85,3 +85,18 @@ explicitly scoped above. Other approved tracks remain in
 RUN-NOTES-strategic-tracks.md / research/strategic-three-tracks at 940f7cb.
 All eleven unrelated untracked files were preserved. No active game/reviewer
 process or owner access request remains from this task.
+
+## Research promotion — 2026-10-24
+
+Research PR72 verified MERGED at c863a97cb1fc66206e23521c7bdd024548ba41dd,
+exact head dc214ba345de901b930c3f5bbe7a7aa03b9b2761. Read canonical navigation
+report and docs/data/actions-navigation187-intake-v1.json at that commit.
+Research replays pass with four older branch rows gaining only DBA8 observer
+call entries; removing just those entries reproduces call lists, with no
+movement/result normalization. Retained native executable ran, no independent
+rebuild, fresh game or new caller experiment. T212 remains open/status:blocked
+on live GitHub; caller-specific stop is unchanged. Fleet accepted-movement
+report was strengthened; Main1408 is closed after T214. Source findings and
+Main handoffs updated for this promotion only. Newer PR190 remains queued and
+unpromoted. No measurements changed. Last delivered/reported baseline is still
+7129418663447e0b242c0ad56afcb78f8af1ae0c until this metadata lands and is relayed.
