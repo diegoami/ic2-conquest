@@ -18,28 +18,7 @@ def write(p,value):
  with p.open('x') as f:json.dump(value,f,indent=2)
 def keep(p,value):
  with p.open('xb') as f:f.write(value)
-def fixture(context,blocked):
- r=C.fresh_map();C.put(r,0x4a0324,5)
- # Distinct, in-bounds generated city coordinates, away from the test corridor.
- for i in range(334):
-  address=0x479590+i*34;x,y=260+i%50,100+i//50
-  C.put(r,address+14,x);C.put(r,address+16,y);C.setcell(r,(x,y),20+C.short(r,address+18))
- for i in range(5):C.put(r,0x47c1ec+i*656+4,-1);C.put(r,0x47c1ec+i*656+6,0)
- target=(110,40) if context=='mercenary' else (120,40)
- for city,pos in [(0,target),(1,(200,100))]:
-  address=0x479590+city*34
-  C.put(r,address+14,pos[0]);C.put(r,address+16,pos[1]);C.put(r,address+18,1);C.setcell(r,pos,21)
- C.place_army(r,ACTOR,(100,40),1);C.put(r,ARMY+6,8)
- for i,pos in zip([0,1,3],[(101,39),(101,40),(101,41)]):
-  C.place_army(r,i,pos if blocked else (50+i,20),1);C.put(r,0x47c1ec+i*656+6,0)
- C.put(r,0x474670+1172+0x444,0 if context=='garrison-capital' else 1)
- if context=='garrison-nearest':C.place_army(r,4,(200,100),1);C.put(r,0x47c1ec+4*656+6,0)
- # One eligible generated mercenary at the target city, none elsewhere.
- for i in range(50):C.put(r,0x49da10+i*12+8,-1)
- if context=='mercenary':
-  for off,value in [(0,target[0]),(2,target[1]),(4,0),(6,7),(8,1000),(10,1)]:C.put(r,0x49da10+off,value)
-  C.put(r,0x474670+1172+0x26+2,0)
- return bytes(r),target
+from fixtures import fixture
 specs=[dict(context=context,blocked=blocked,stack_fill=fill,stack_top=sp) for context in ['garrison-nearest','garrison-capital','mercenary'] for blocked in [True,False] for fill in ([0,1,255] if blocked else [0]) for sp in SPOTS]
 write(DATA/('manifest-'+options.version+'.json'),dict(cases=specs,scope='generated full EBE8/E84C callers; not a fresh game or full F31C turn',preservation='exclusive unique outputs, raw/SAV/full traces/private hashes private; never overwrite/delete measured files'))
 rows=[]
