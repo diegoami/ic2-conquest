@@ -55,3 +55,21 @@ def parent_fixture(context,blocked):
   C.put(r,0x474670+3*1172+0x444,4)
   for a,b in [(1,3),(3,1)]:C.put(r,0x474670+a*1172+0x26+b*2,3)
  return bytes(r),target
+
+def history_fixture(context,blocked,offers):
+ raw,_=parent_fixture('mercenary',blocked);r=bytearray(raw)
+ origin=(150,70);merc=(160,80);target=(155,70) if context=='garrison-nearest' else (170,70)
+ C.place_army(r,ACTOR,origin,1)
+ for i,pos in zip([0,1,3],[(151,69),(151,70),(151,71)]):
+  C.place_army(r,i,pos if blocked else (50+i,20),1);C.put(r,0x47c1ec+i*656+6,0)
+ for city,pos,owner in [(0,merc,1),(3,(150,60),3),(5,target,1)]:
+  address=0x479590+city*34;old=tuple(C.xy(r,address+14));C.setcell(r,old,2)
+  for off,value in [(14,pos[0]),(16,pos[1]),(18,owner)]:C.put(r,address+off,value)
+  C.setcell(r,pos,20+owner)
+ C.put(r,0x474670+1172+0x444,1 if context=='garrison-nearest' else 5)
+ if context=='garrison-nearest':C.place_army(r,4,(200,100),1);C.put(r,0x47c1ec+4*656+6,0)
+ else:C.put(r,0x47c1ec+4*656+4,-1)
+ for off,value in [(0,merc[0]),(2,merc[1]),(8,1000 if offers else -1)]:C.put(r,0x49da10+off,value)
+ import model as M
+ C.setcell(r,list(M.line(origin,merc))[4],0)
+ return bytes(r),target

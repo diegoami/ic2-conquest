@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/runs/experiments/navigation187-callers/verify.py", line 19, in <module>
+    assert r['endpoint']==list(expected) and r['moves']==(8 if r['blocked'] and r['stack_fill']==255 else 0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

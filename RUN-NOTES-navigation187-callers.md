@@ -41,3 +41,20 @@ return an explicit−1 intermediate without spending moves, then fall directly
 through to EBE8 at the same nested depth. That may carry−1 into garrison. Add
 paired actual-F31C offer/no-offer histories near a geographic boundary, rather
 than calling the garrison universally nonnegative from the normal sample.
+
+History v1:32 full F31C controls reach both mercenary then garrison naturally.
+Paired absent/present mercenary inputs differ only in troop WORD49DA18 (−1 vs
+1000,2bytes), identical other game RAM. No offer leaves EE60 counter0 in the
+shared deep slot; blocked garrison ends150,70/0moves. Present unreachable
+cross-geography offer causes DB38 at44DB47 to write−1 into that same slot;
+mercenary movement refuses without budget spent, garrison inherits−1 and ends
+150,70/9moves. Both nearest-city/capital, allfills, both stacks. Clear controls
+still advance with either sign: guard suppresses no-progress cleanup, not the
+initial direct walk. This is reachable original F31C history, not root noise.
+
+Verification v1 had an audit expectation error: isolated clear garrison cannot
+reach target−2 with only8moves; measured endpoint108,40 is correct. Log retained,
+no output modified. Fixed audit v2 passes all80 scalar cases and16 exact paired
+input differences. Reruns every case without ANY observation hooks: all80 full
+game RAM and all64KiB stack bytes equal the observed run/write ledger. No helper
+replacement, no RNG calls. Raw/SAV/full traces and hashes remain private.
