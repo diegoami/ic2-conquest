@@ -88,3 +88,19 @@ label/production/installed-build/natural owner entry/Windows acceptance claim.
 CurrentMain source fixes merged;1355 stillopen/blocked,157open. Status metadata
 updated on current/historical findings and Main handoffs, no measurement changed.
 Baseline remainsfd62cb58 until metadata lands/relay succeeds. No new experiment.
+
+Research76 promotion metadata landed in conquest PR204 at
+6b9a3f35236de4329ded00d908d05ff39ea80828 after exacta95190d head passed
+GitGuardian. Current-main battle audit plus historical ordering/Walk finding
+promotion pointers changed, no measurements. Mandatory receipt relay delivered
+to Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e through codex_tui,
+returned threadID/isError=false. No re-intake requested. Last reported and
+last-delivered findings baseline:6b9a3f35236de4329ded00d908d05ff39ea80828.
+
+Canonical76 evidence/acceptance inventory posted on Main1355/comment6390501281
+and conquest157/comment6390501548. No unverified direct Main session used.
+No source/label/scope/installed-build/natural owner entry/Windows acceptance
+change;1355 remains open/blocked,157open. Current bounded audit now promoted,
+not awaiting intake. No duplicate patch or new Original game/Windows/owner input
+requested. Validation metadata only: report/receipt/live states read, diffcheck
+passes. All11 unrelated untracked files preserved; no new experiment started.
