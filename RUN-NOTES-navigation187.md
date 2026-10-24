@@ -100,3 +100,13 @@ report was strengthened; Main1408 is closed after T214. Source findings and
 Main handoffs updated for this promotion only. Newer PR190 remains queued and
 unpromoted. No measurements changed. Last delivered/reported baseline is still
 7129418663447e0b242c0ad56afcb78f8af1ae0c until this metadata lands and is relayed.
+
+Research72 source-status update landed in conquest PR192, main
+94efa89aa7527ae8f55d1df0d2af6e3757e2e6e2 (exact188882e head GitGuardian pass).
+The two modified findings are army-navigation-rule187 and fleet-accepted-movement174;
+no experimental outputs changed. Mandatory metadata relay successfully delivered
+to ic2-research thread01a167fa-9fb2-7570-bf21-b32682c79e6e, bridge isError=false.
+No re-intake requested; PR190 remains explicitly unpromoted. Last reported and
+last-delivered findings baseline:94efa89aa7527ae8f55d1df0d2af6e3757e2e6e2.
+Canonical promoted rule/limits posted on Main1394/comment6387586712 and
+conquest187/comment6387587053. T212 status:blocked retained, #187 stays open.
