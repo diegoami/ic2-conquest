@@ -118,3 +118,20 @@ production callers unchanged until reviewed expansion. Corrected source/header
 blocked wording as historical; promotion changes neither scope nor labels.
 PR190 remains queued/unpromoted. Source metadata/docs updated, no measurements
 changed. Baseline0cda6c4417202d39e848ab00569a61f004d7c9ff until landed/relayed.
+
+Research73 promotion metadata landed in conquest PR196 at
+9b2054914ee5892630a0afa3d73ea73c0808ba1f after exact bfe5267 head passed
+GitGuardian. Changed only source promotion/status/handoff documentation; two
+finding files modified, no experimental output changed. Mandatory receipt relay
+succeeded to ic2-research thread01a167fa-9fb2-7570-bf21-b32682c79e6e,
+bridge returned thread ID/isError=false. Last reported and last-delivered
+findings baseline:9b2054914ee5892630a0afa3d73ea73c0808ba1f.
+
+Canonical Research73 report/receipt posted on Main1394/comment6388127662 and
+conquest187/comment6388128079. No unverified direct Main channel substituted.
+Main contract/status remain its narrowed enemy-army scope, in progress; no
+scope/label or production changes. PR190 still queued/unpromoted. Requested
+caller research now promoted; arbitrary extra caller histories stay qualified.
+No experiment auto-started. Metadata validation: canonical report/receipt/task
+contract read, live PR/issue state checked, diff check passes. All11 unrelated
+untracked files preserved.
