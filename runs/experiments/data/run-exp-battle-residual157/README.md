@@ -1,6 +1,10 @@
 # T206 follow-up #1377: captured-target lifetime and live-shot guard
 
 Finding: `findings/2026-10-23-seed2-walk-captured-target1377.md`.
+Promoted Research report: `docs/reports/2026-10-23-seed2-walk-captured-target1377.md`
+at `diegoami/imperial-conquest-2-research@d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19`
+(merged PR68). Research independently reproduced retained controls, not a new
+original/Wine run, production correction or broad CI/Windows acceptance.
 Runners: `runs/experiments/battle-residual157/`.
 
 Use only `movement-cached-live.patch` as the complete candidate.

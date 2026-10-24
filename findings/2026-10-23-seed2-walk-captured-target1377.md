@@ -1,5 +1,11 @@
 # Seed2 residual: preserve the captured destination enemy, but never shoot it dead
 
+**Research intake:** promoted by [Research PR #68](https://github.com/diegoami/imperial-conquest-2-research/pull/68),
+main `d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19`.
+The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19/docs/reports/2026-10-23-seed2-walk-captured-target1377.md)
+independently reproduces the retained controls. This promotion changes no
+measurement or claim about production merge, broader CI or Windows acceptance.
+
 **Status:** [confirmed, partial], 2026-10-23. Fresh original Wine semantic trace,
 conditional native replay and strict full318 corpus controls. A tested source
 candidate, not a merged remake fix or native Windows acceptance.

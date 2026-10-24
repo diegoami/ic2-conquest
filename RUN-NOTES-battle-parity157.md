@@ -117,3 +117,22 @@ PR165 merged at e1a943d5f9de8b88787112f137ad8053a699e6e0. Reported-findings and 
 Clarification: fixturealiases means identical comparatorinputscase/savedstates, not proofthattwolegacyrecordingsoriginatedinonephysicalprocess; repeatedcontrolledrecordingscouldexist. No independent-scenario count isclaimed fromduplicateSAVs. Newcontrolledoriginalrunisone. Supplemental fixed-toolsarchive03metadata checked/file12L6PukG6Xusn9FMu-JdOFnzMahCnB1pA,3186327bytes/SHAba996c8328fecb9636f935278d71abee8f1c028c0f0454ddca03dbc2520bae3d;all3archive92membersprivacy/hashchecked. Existing11untrackedownerfilespreserved. No source/measurement changedbythisreceipt; no activeoriginal/nativeexperimentor agent. MainproductionCI/Windows/broaderfidelityremainpending.
 
 The shared run-exp-battle-parity157/SAVES.sha256 had22pending append-only checksum rows from the reused public archiver; included in this receipt so no task-owned tracked edit remains. All22 refer only to the already published seed2 bundle members; no new measurement or hash value altered.
+
+## Research #1377 promotion verified — 2026-10-24
+
+Research notified owner-approved PR68 merged; live GitHub verification confirms
+main `d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19`. Canonical report is
+`docs/reports/2026-10-23-seed2-walk-captured-target1377.md`. Added promotion
+pointers to the source finding, evidence README and owner-carried Main handoff.
+Research independently reproduced retained strict317/316/318 state/draw corpus,
+fixed5, regressions5,49Walks/178actions/common post-rout state, raw semantic
+decode, original325draw/18SAV gate, prior14controls and27movement tests, plus
+source/instruction/alias/archive checks. No fresh original/Wine run or production
+edit/broadCI/Windows acceptance. T206 scope split remains separate.
+
+At reply start, origin/main findings were unchanged from last reported/delivered
+baseline889557fa2d8f1dd6f36bc5ef3a06bcaf3532082c. New #1388 finding at that pin
+was received by Research, but is NOT approved/intaken there yet; no promotion
+pointer added to #1388. No new experiment or unrelated task started. Preserve
+all measurements and eleven unrelated untracked files. Publish this metadata,
+relay the landed changed finding and retain actual delivery/baseline receipt.

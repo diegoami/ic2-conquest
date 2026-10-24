@@ -9,11 +9,14 @@ Conquest has completed attribution and a source candidate. New finding:
 `findings/2026-10-23-seed2-walk-captured-target1377.md`, with evidence and the
 one-file `movement-cached-live.patch` under
 `runs/experiments/data/run-exp-battle-residual157/`.
-Research has been sent the pushed packet for intake; use its promoted report
-once available under the normal rule-evidence workflow. A relay alone is not
-promotion or a merged production fix.
+Research intake is complete: [PR #68](https://github.com/diegoami/imperial-conquest-2-research/pull/68)
+merged at `d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19/docs/reports/2026-10-23-seed2-walk-captured-target1377.md).
+Research independently reproduced the retained controls; no new original/Wine
+run or production edit was part of that intake.
 
-The two named seed2 series have identical18boundary/post saves: one trajectory.
+The two named seed2 series have identical18boundary/post saves and comparator
+inputs. This does not establish a single physical recording process.
 Fresh original observer matches325draw tuples and18wholeSAVs. Of49conditional
 Walk calls, only HR10/slot24/seq874..891 differs. The original captures its
 destination enemy once, shoots/routs it, retains the captured index and stops
