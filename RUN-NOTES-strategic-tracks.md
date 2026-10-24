@@ -102,3 +102,32 @@ All prior logs/outputs retained, no generic private/runtime tree upload.
 Audit v1, Python compilation, diff checks and native builds pass. Self-review
 only, no external reviewer. Findings baseline remains1525f398 until merged and
 successfully relayed; final fetch/issue checkpoints and delivery receipt follow.
+
+## END — published and delivered, 2026-10-24
+
+PR190 merged at7129418663447e0b242c0ad56afcb78f8af1ae0c. Exact publication
+head ea811624ed300fde3cc8dcf2fac337cccc5a558f passed GitGuardian; no other
+configured checks/reviews. Validation and self-review are recorded above.
+Source and all completed batches were pushed as73cbc22, b8fb9d5,2330371,ea81162.
+
+Findings diff from1525f3985cc54834c5855055599188197c9ec4d4 to7129418663447e0b242c0ad56afcb78f8af1ae0c
+adds exactly findings/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md.
+Successful codex_tui.send_message_to_thread delivery to reachable ic2-research
+thread01a167fa-9fb2-7570-bf21-b32682c79e6e returned that thread with isError=false.
+An earlier local length guard rejected1009characters before any send; shortened
+message delivered normally. Intake/promotion remains pending, not claimed done.
+Last reported and last-delivered findings baseline:
+7129418663447e0b242c0ad56afcb78f8af1ae0c.
+
+Issue checkpoints:176/comment6387545369,177/comment6387545672,
+174/comment6387545937; Main1412 has the landed source/evidence link. All three
+research issues remain open for their explicit coverage gaps; Main source was
+never written. T212/navigation187 blocking and paused battle queue unchanged.
+
+Next authorized controls: #176 ready-slot mobilization/compaction, mercenary and
+consolidation edges; #177 protected/alliance partner and multi-partner trade/swap
+execution, keeping global/named RNG policy explicit; #174 overflow receiver/
+allocation failure and coincident arrived-route caller context. Do not infer
+these branches from positive local comparisons. No new owner save/screen is
+needed. No active game/reviewer process remains. All eleven unrelated untracked
+files were preserved. Drive archive and fresh recovery receipts are tracked.
