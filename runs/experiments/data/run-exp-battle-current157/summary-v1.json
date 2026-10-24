@@ -1,0 +1,32 @@
+{
+  "main_pin": "b593c6e28939c1c7154f9a41d0436a8f14f352dc",
+  "ordering_fix_already_merged": 1371,
+  "movement_fix_already_merged": 1387,
+  "strict_recorded_series": 318,
+  "state_matches": 318,
+  "ordered_draw_matches": 318,
+  "known_failure_registry_entries": 0,
+  "fixed_replays": 5,
+  "recorded_entry_controls": 14,
+  "recorded_combat_draws": 2331,
+  "recorded_boundary_states": 253,
+  "owner_recorded_entry_match": true,
+  "tactical_tests_passed": 2420,
+  "tactical_tests_failed": 0,
+  "tactical_tests_skipped": 0,
+  "ordering_regressions": 6,
+  "movement_regressions": 5,
+  "retained_input_files_unchanged": 5862,
+  "missing_duplicate_patch": false,
+  "installed_desktop_build_verified": false,
+  "native_Windows_acceptance": false,
+  "new_Original_game_launched": false,
+  "coverage_clarification": "GoldenReplay.Passed includes battle conclusion and post-field comparisons where recorded; Fresh-mode series exercise fixture-start copy-in, Resume uses saved block. The earlier receipt wording about no strategic copy-in means no newly validated natural owner End-turn-to-battle pipeline, not omission of fixture copy-in.",
+  "remaining": [
+    "Main1355 acceptance review remains separate",
+    "running desktop build identity not established",
+    "natural owner entry/runtime/RNG equivalence not freshly validated by this audit",
+    "unmodified Original Windows completion/reopen not newly established; prior manual result used fast variant",
+    "historical-entry control retains its missing-runtime assumptions"
+  ]
+}

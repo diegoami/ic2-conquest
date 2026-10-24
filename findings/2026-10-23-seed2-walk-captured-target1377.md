@@ -8,7 +8,15 @@ measurement or claim about production merge, broader CI or Windows acceptance.
 
 **Status:** [confirmed, partial], 2026-10-23. Fresh original Wine semantic trace,
 conditional native replay and strict full318 corpus controls. A tested source
-candidate, not a merged remake fix or native Windows acceptance.
+candidate at that packet's publication, not native Windows acceptance.
+
+**Production update, 2026-10-25:** Main PR1387 merged this correction at
+`3c1860079db6dd9b1fb11ceb8b726c7fd95293ac`; #1377 is closed/status:merged.
+Current Main `b593c6e2` contains capture-once and the positive-troop shot guard.
+[Fresh current-Main verification](2026-10-25-current-main-battle-replay157.md)
+passes 318 strict recorded series for state and ordered draws with an empty
+expected-failure registry. That new audit has separate Research intake pending;
+it does not close #1355 or establish the installed Windows build's acceptance.
 **Tasks:** [remake #1377](https://github.com/diegoami/imperial_conquest_2/issues/1377),
 [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157), related #1324.
 This follows the accepted-scope T206 ordering correction; it does not impose a

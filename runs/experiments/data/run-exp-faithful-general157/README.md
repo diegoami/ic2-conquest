@@ -1,5 +1,11 @@
 # Faithful Computer general correction candidate
 
+Current status (2026-10-25): Main PR1371 and PR1387 are merged; #1377 is closed.
+Fresh b593c6e2 source/corpus audit is in
+`findings/2026-10-25-current-main-battle-replay157.md` (separate intake pending).
+The historical candidate/control data below is unchanged; do not apply a duplicate
+patch or treat it as proof of #1355/installed-Windows acceptance.
+
 Owner direction: reproduce the original first; investigate a separately selectable
 improved general later. Remake fidelity issue #1355 remains the first task;
 optional-controller investigation is #1362, related to planning #1361.

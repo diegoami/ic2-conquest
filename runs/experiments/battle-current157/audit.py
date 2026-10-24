@@ -1,0 +1,15 @@
+"""Audit retained public results; no private battle input is opened."""
+import argparse,json
+from pathlib import Path
+D=Path(__file__).resolve().parents[3]/'runs/experiments/data/run-exp-battle-current157';load=lambda n:json.loads((D/n).read_text())
+s=load('source-audit-v2.json');c=load('corpus-v1.json');f=load('corpus-fixed-v1.json');r=load('control-replay-v1/verification-v1.json');g=load('input-test-gates-v1.json');o=load('ordering-regression-v1.json');m=load('movement-regression-v1.json')
+assert all(x['exact_retained_ordering_candidate_bytes'] for x in s['ordering_files']) and s['captures_destination_once'] and s['uses_captured_enemy'] and s['positive_troop_shot_guard']
+assert c['returncode']==0 and c['counts']==dict(trials=318,statePass=318,drawPass=318,failed=0) and not c['registry_exemptions'] and not c['tactical_overlay']
+assert f['counts']==dict(fixedCases=5,passed=5,failed=0) and r['recorded_cases']==14 and r['all_passed'] and r['owner_case_passed'] and r['draw_tuples']==2331 and r['boundary_states']==253 and r['semantic_actions_equal']
+assert g['retained_battle_files_equal_pinned_archive']==5862 and g['expected_failure_registry_entries']==0 and g['original_DAT_pin_equal']
+assert g['tactical_test_counts']['passed']==2420 and g['tactical_test_counts']['failed']==g['tactical_test_counts']['notExecuted']==0
+assert o['passed']==6 and o['failures']==0 and m['passed']==5 and m['failed']==0
+summary=dict(main_pin=s['main_pin'],ordering_fix_already_merged=1371,movement_fix_already_merged=1387,strict_recorded_series=318,state_matches=318,ordered_draw_matches=318,known_failure_registry_entries=0,fixed_replays=5,recorded_entry_controls=14,recorded_combat_draws=2331,recorded_boundary_states=253,owner_recorded_entry_match=True,tactical_tests_passed=2420,tactical_tests_failed=0,tactical_tests_skipped=0,ordering_regressions=6,movement_regressions=5,retained_input_files_unchanged=5862,missing_duplicate_patch=False,installed_desktop_build_verified=False,native_Windows_acceptance=False,new_Original_game_launched=False,coverage_clarification='GoldenReplay.Passed includes battle conclusion and post-field comparisons where recorded; Fresh-mode series exercise fixture-start copy-in, Resume uses saved block. The earlier receipt wording about no strategic copy-in means no newly validated natural owner End-turn-to-battle pipeline, not omission of fixture copy-in.',remaining=['Main1355 acceptance review remains separate','running desktop build identity not established','natural owner entry/runtime/RNG equivalence not freshly validated by this audit','unmodified Original Windows completion/reopen not newly established; prior manual result used fast variant','historical-entry control retains its missing-runtime assumptions'])
+p=argparse.ArgumentParser();p.add_argument('--version',required=True);a=p.parse_args()
+with (D/('summary-'+a.version+'.json')).open('x') as out:json.dump(summary,out,indent=2)
+print('PASS current-Main audit: merged fixes,318strict state/draw replays,14recorded entries,2420tactical tests; acceptance limits retained')

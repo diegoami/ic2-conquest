@@ -1,51 +1,40 @@
-# Paste-ready handoff to the remake main session
+# Main handoff: current tactical fixes and #1355 acceptance
 
-Owner decision: reproduce the original Computer general faithfully first
-(#1355). Investigate a separate improved controller selectable in Settings
-afterward (#1362, dependent on faithful acceptance; relates to #1361).
-Keep faithful behavior as the default. Do not implement the optional controller
-as part of the fidelity correction.
+The source corrections are already merged. Do not apply a duplicate patch:
 
-Conquest has prepared and compiled an actual source correction, not just a
-diagnostic replacement controller. Packet on diegoami/ic2-conquest main:
+- PR1371/T206 (`f0cd6296`): later Computer general passes use live slot order.
+- PR1387/#1377 (`3c186007`): capture destination once per Walk and retain the
+  positive-troop guard before shooting. #1377 is closed/status:merged.
 
-- `runs/experiments/data/run-exp-faithful-general157/README.md`
-- `faithful-general-portable.patch` and `source-pin-v2.json` in that folder
-- `verification-v1.json`, before/after regression and build/apply receipts
-- `runs/experiments/faithful-general157/Regression.cs` and `Replay.cs`
-- Finding: `findings/2026-10-23-battle-general-later-pass-iteration1355.md`.
+Canonical historical rule evidence is Research PR67 (`63b463cd`) and PR68
+(`d19c20c9`). Candidate patch archives remain provenance, not pending changes.
+The owner still wants faithful behavior first; optional Improved general1362 /
+conquest163 remains separate and dependent on acceptance.
 
-Research PR #67 is merged at63b463cd51822690c5ad8d2aa4f77e0f0175d469.
-Use its promoted report as the canonical rule evidence:
-https://github.com/diegoami/imperial-conquest-2-research/blob/63b463cd51822690c5ad8d2aa4f77e0f0175d469/docs/reports/2026-10-23-battle-general-later-pass-iteration1355.md .
-It independently reruns retained binaries/tools; no independent rebuild or new
-Wine run is claimed. Research promotion does not mean the remake fix is merged.
+New current-Main audit:
+`findings/2026-10-25-current-main-battle-replay157.md`, with public scalars under
+`runs/experiments/data/run-exp-battle-current157/`. It awaits its own Research
+intake; use the promoted version before changing acceptance claims.
 
-The patch is against remake main8e5f0a35c9dd45a8ec31b38154406843b131013a.
-It preserves pass one's type order, adds lazy live-slot iteration, and switches
-pass two and every pass-three helper/entrypoint to slot order. No combat formula,
-controller option or save-schema change. Source blob and SHA256 pins preserve
-the original mixed encodings; use raw Git blob bytes if fetching legacy files.
-Both proposed patches pass read-only application checks. Rebase deliberately
-if current main differs; preserve unrelated work.
+Audited pin b593c6e28939c1c7154f9a41d0436a8f14f352dc: fresh engine/test-helper
+build, no overlay/replacement general. All4 ordering source files equal the
+validated candidate bytes. Strict318state+318ordered-draw comparisons,5fixed
+series,14recorded-entry controls/2331combat draws/253boundaries, ordering6 and
+movement5 regressions pass. The owner recorded tactical entry matches terminal
+slots/grid/counter/RNG and semantic actions. Ordinary tactical tests pass2420,
+zero failures/skips; KnownFailures registry is empty.5862corpus files unchanged.
 
-Please triage #1355 through the remake's normal workflow, apply the scoped
-correction on the appropriate branch, and bring the meaningful regression
-cases into the normal test suite. Two actual API tests fail before and pass
-after: threat movement and shooting visit slot0 before slot1 despite their
-types; also retain first-pass type ordering, defender bounds, live liveness and
-battle-end guards.
+GoldenReplay includes recorded-start copy-in in Fresh mode, battle conclusion
+and post fields where supplied. The owner-entry probe is conditional; the old
+historical-entry assumptions remain assumptions. This does not show the owner's
+running desktop binary or a naturally identical full End-turn-to-battle entry.
 
-The compiled production general passes14 recorded controls:2331combat draw
-tuples,253available boundaries, terminal tactical states/RNG, reference185 and
-owner346 combined movement/shot/melee/removal actions. Historical-entry control
-recovers48969survivors/counter21; its missing old runtime fields remain explicit
-assumptions. Owner inputs/hashes/full replays remain private. Conquest did not
-modify the remake checkout or merge a production fix.
-
-Run the full318-series corpus and relevant tactical tests, assess #1107/#1324
-residuals explicitly, and obtain normal green CI before merge. Never blanket
-refresh known failures or close #1355 from a candidate build alone. Native
-Windows, independent strategic copy-in and writeback acceptance were not
-performed by this packet. Do not launch the unrelated paused conquest battle
-queue. Keep the optional improved-general design in #1362 separate.
+Please refresh #1355's acceptance inventory rather than describe it as awaiting
+these source merges. Main1355 remains open/blocked. Review the installed build
+identity; both natural-entry armies/board/RNG/runtime-controller inputs; current
+writeback/independent acceptance; and Original Windows finish/reopen evidence.
+The existing manual fast-variant result is not unmodified-EXE completion or an
+exact entry trace. Physical Escape stopped Computer Use and remains respected.
+No fresh game, Windows action or owner-file request occurred in this audit.
+No full-game/global-RNG equivalence, UI or release acceptance is claimed.
+Main receives this via the owner/existing issues; no unverified direct channel.

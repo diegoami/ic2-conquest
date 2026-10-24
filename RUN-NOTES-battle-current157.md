@@ -32,3 +32,18 @@ movement5/5 regressions pass.14recorded original entry controls incl owner pass
 2331draws/253boundaries, terminal40slots/grid/counter/RNG and semanticactions;
 historical-assumption control also retained. No new Original game or private
 owner trace publication. These are actual merged-Main tests, not candidate builds.
+
+Coverage reread: unchanged GoldenReplay.Passed includes accepted battle
+conclusion and post-state comparison where supplied; Fresh fixture mode uses
+production copy-in, Resume uses its saved block. Thus early receipt wording
+“not strategic copy-in” means no freshly verified natural OWNER full-flow entry,
+not absence of fixture copy-in. Clarification in summary/report; old receipt
+unchanged.318can include fixture aliases, not318independentcampaigns. No new
+owner natural-entry, installed-build, unmodified-Windows/reopen acceptance.
+
+END publication pending: source868cd23 pushed; publish current audit plus
+historical status fixes/handoffs. Relay after main with actual SHA, record
+baseline/receipts; current reported/delivered baseline9a13cc53. Main1355/157
+need current verified status, no duplicatepatch/label closure. Main owns review
+of acceptance inventory. No further experiment or original/UI run auto-started.
+No active processes/agents or owner input request. All11untrackedfiles preserved.

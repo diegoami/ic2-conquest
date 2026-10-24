@@ -1,15 +1,24 @@
 # Computer general: later-pass iteration changes the owner battle's winner
 
 **Status:** [confirmed, partial], 2026-10-23. Fresh original Wine execution,
-CPU/live recorder validation and diagnostic native controls. No production fix,
-native Windows acceptance or full-corpus clearance.
+CPU/live recorder validation and diagnostic native controls. This describes the
+original packet; production status has advanced as recorded below.
 Promoted 2026-10-23 in research PR #67 at
 [`63b463cd`](https://github.com/diegoami/imperial-conquest-2-research/blob/63b463cd51822690c5ad8d2aa4f77e0f0175d469/docs/reports/2026-10-23-battle-general-later-pass-iteration1355.md).
 Research independently reran the retained offline tools/binaries and validated
 the recorded controls; no independent rebuild or new original/Wine run was
 performed. The canonical report clarifies measured state versus hidden fields,
 three pilot Selected defaults and the historical assumptions. Source evidence
-is retained unchanged; a production remake fix is still pending.
+is retained unchanged.
+
+**Production update, 2026-10-25:** the ordering fix merged in Main PR1371,
+followed by captured-target/live-guard PR1387. The four ordering files in audited
+Main `b593c6e2` match the validated candidate bytes exactly. Fresh current-Main
+replay passes 318 strict state/draw series, 14 recorded entry controls including
+the owner case, and 2,420 tactical tests. See
+[the current-Main audit](2026-10-25-current-main-battle-replay157.md), pending its
+own Research intake. #1355/native acceptance remains separate. The pre-fix
+behavior described below is historical, not a claim against current Main.
 **Task:** [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157),
 following [the owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md).
 

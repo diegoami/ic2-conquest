@@ -1,5 +1,11 @@
 # T206 follow-up #1377: captured-target lifetime and live-shot guard
 
+Current status (2026-10-25): Main PR1371 and PR1387 are merged; #1377 is closed.
+Fresh b593c6e2 source/corpus audit is in
+`findings/2026-10-25-current-main-battle-replay157.md` (separate intake pending).
+The historical candidate/control data below is unchanged; do not apply a duplicate
+patch or treat it as proof of #1355/installed-Windows acceptance.
+
 Finding: `findings/2026-10-23-seed2-walk-captured-target1377.md`.
 Promoted Research report: `docs/reports/2026-10-23-seed2-walk-captured-target1377.md`
 at `diegoami/imperial-conquest-2-research@d19c20c9f58a0ce2ca77de878ef8e01c9f84ca19`
