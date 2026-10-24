@@ -30,3 +30,24 @@ with actual per-candidate original instruction observations and bounded model.
 Raw input/proposals/components/private logs stay private. New runner takes RAM/
 container/decoded paths as CLI arguments; no owner path hardcoded in committed
 source. No full-turn/native acceptance or production patch claimed.
+
+Candidate decomposition: actual original ECE4 instruction44EE16 provides40
+per-candidate adjusted defenses/scores/distances privately. Native raw and
+adjusted defenses match all40; original geography in a source-shaped diagnostic
+of the native formula reproduces all40 scores. Empty native region table
+changes5scores, but removing only the city direct-walk eligibility filter in
+that diagnostic restores original city287/495/28 and AttackArmy. Its unmodified
+filter/formula model first reproduces the production native city253/330/6.
+
+Independent boundary check spotted original JLE100 versus native strict<100.
+32 public synthetic score-fed branch controls give7differences, all at exact100;
+these do not explain the retained case (army828, city495/330). Initial synthetic
+container had inconsistent current-seat/turn-order metadata and native import
+correctly refused; failed v1 log/container retained. Fresh v2 corrects trailer,
+reproduces all32 original rows exactly and completes native comparison.
+
+Research PR74 separately verified merged16ec64575d85582378705c407e0f1b82df848328,
+head5c2b468c742e5ead18089b7526e31701cf34c43b. Read canonical report/receipt:
+PR190 now promoted; shared provider/cargo fields agree with row-order and three
+new counter qualifications; no old measurement overwritten. Mark status while
+publishing this independent city investigation. Current PR1415 head unchanged.

@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><EnableDefaultCompileItems>false</EnableDefaultCompileItems></PropertyGroup>
+ <ItemGroup>
+ <Compile Include="BranchGrid.cs.txt" />
+  <Reference Include="IC2.Engine"><HintPath>../../../artifacts/run-exp-city-army187/source-v1/src/IC2.Engine/bin/Debug/net10.0/IC2.Engine.dll</HintPath></Reference>
+  <Reference Include="IC2.Data"><HintPath>../../../artifacts/run-exp-city-army187/source-v1/src/IC2.Data/bin/Debug/net10.0/IC2.Data.dll</HintPath></Reference>
+ </ItemGroup>
+</Project>

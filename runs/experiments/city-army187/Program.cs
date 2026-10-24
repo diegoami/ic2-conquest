@@ -77,6 +77,9 @@ int Gate(GameState state,JsonElement original)
     return checkedFields;
 }
 var state=Import(Path.Combine(args[1],"before.SAV"));using var raw=JsonDocument.Parse(File.ReadAllText(Path.Combine(args[1],"before.json")));int checks=Gate(state,raw.RootElement);
+var rawMap=raw.RootElement.GetProperty("map").EnumerateArray().Select(x=>x.GetInt32()).ToArray();var terrain=resolved.World.Terrain.Decode(320,140);var occupied=new HashSet<(int,int)>();foreach(var c in state.Cities)occupied.Add((c.X,c.Y));foreach(var a in state.Armies)if(!a.IsEmbarked&&a.CoveredTileCode is not null)occupied.Add((a.X,a.Y));foreach(var f in state.Fleets)if(!f.IsUnderConstruction)occupied.Add((f.X,f.Y));int terrainMismatches=0;
+for(int x=0;x<320;x++)for(int y=0;y<140;y++){int oldCode=rawMap[x*140+y],current=terrain[y*320+x];if(oldCode>=2&&oldCode<=11&&oldCode!=current)terrainMismatches++;if((oldCode<2||oldCode>11)!=(resolved.World.TileTypeByCode(current)?.PassableByArmies!=true||occupied.Contains((x,y))))terrainMismatches++;}
+if(terrainMismatches!=0)throw new Exception("Terrain/occupancy gate failed");
 var actor=state.ArmyById("army-4")!;var view=new AiView(state,rules,resolved.World,actor.Nation);bool atWar=state.Nations.Any(n=>view.IsAtWar(actor.Nation,n.Id));
 var city=AiArmyTargetTree.ScoreCityTarget(view,actor);var enemy=AiArmyTargetTree.ScoreArmyTarget(view,actor);var supply=AiArmyTargetTree.ScoreResupplyCity(view,actor,atWar);
 var decision=AiArmyTargetTree.DecideUnlogged(view,actor,atWar,out var detail);
@@ -88,7 +91,7 @@ var cityOnly=AiArmyTargetTree.DecideFromScores(rules.Ai,actor,supplied,enemy,sup
 var log=AiArmyTargetTree.NewDecisionLog();var proposals=new List<AiCandidate>();
 try{AiMilitaryPhase.Propose(view,AiPersonalityProfile.For(state.NationById(actor.Nation)!,rules),new SplitMix64Rng(1),Array.Empty<string>(),proposals);}finally{AiArmyTargetTree.ClearDecisionLog();}
 var military=log.Single(r=>r.ArmyId==actor.Id);var actorProposals=proposals.Where(p=>p.SubjectId==actor.Id).ToArray();
-Write(Path.Combine(args[1],"native-proposals.json"),proposals);Write(Path.Combine(args[1],"native-decision-log.json"),log);
+Write(Path.Combine(args[1],"native-proposals-v3.json"),proposals);Write(Path.Combine(args[1],"native-decision-log-v3.json"),log);
 using var originalInputs=JsonDocument.Parse(File.ReadAllText(Path.Combine(args[1],"city-inputs.json")));var rows=new List<object>();int defenseMismatches=0;int filteredOriginalEligible=0;
 foreach(var input in originalInputs.RootElement.EnumerateArray())
 {
@@ -96,6 +99,27 @@ foreach(var input in originalInputs.RootElement.EnumerateArray())
  bool reachable=AiArmyTargetTree.IsReachable(view,actor,c.X,c.Y);if(input.GetProperty("eligible").GetBoolean()&&!reachable)filteredOriginalEligible++;
  rows.Add(new{index=i,native_defense=defense,original_defense=Int(input,"defense"),reachable,original_eligible=input.GetProperty("eligible").GetBoolean()});
 }
-Write(Path.Combine(args[1],"native-city-components.json"),rows);
-var result=new{source_pin="0c4944542d32d1e6d2d9982f78fdfcddaabaddea",input_identity_gate_passed=true,checked_fields=checks,original_city_reachable=AiArmyTargetTree.IsReachable(view,actor,originalCity.X,originalCity.Y),native_city=new{target=Index(city.City),city.Score,city.Distance,city.Skipped},native_enemy=new{target=enemy.Army is null?(int?)null:int.Parse(enemy.Army.Id[5..]),enemy.Score,enemy.Distance},native_branch=decision.Selected.ToString(),original_score_fed_branch=fromOriginal.Selected.ToString(),original_city_only_fed_branch=cityOnly.Selected.ToString(),military_phase_branch=military.Kind.ToString(),actor_proposal_kinds=actorProposals.Select(p=>p.Kind).ToArray(),assault_strength=AiArmyTargetTree.AssaultStrength(actor,rules,"archers"),city_defense_comparisons=rows.Count,city_defense_mismatches=defenseMismatches,original_eligible_native_unreachable=filteredOriginalEligible,region_assignment_count=rules.Ai.CityRegionById.Count,scope="same private imported boundary; no whole End turn or production change; diagnostic proposal RNG seed1, no native outcome parity"};
+Write(Path.Combine(args[1],"native-city-components-v3.json"),rows);
+// Diagnostic ranking only: retain production strength/defense helpers and
+// native formula, vary eligibility/geography separately; no production patch.
+using var observedComponents=JsonDocument.Parse(File.ReadAllText(Path.Combine(args[1],"original-components.json")));
+var components=observedComponents.RootElement.EnumerateArray().ToDictionary(r=>Int(r,"index"));
+var diagnostic=new List<(int index,long score,int distance,bool reachable,bool eligible)>();int nativeRegionFormulaMismatches=0,originalRegionFormulaMismatches=0,adjustedDefenseMismatches=0;
+foreach(var r in rows)
+{
+ var row=JsonSerializer.SerializeToElement(r);int i=Int(row,"index");if(!components.TryGetValue(i,out var observed))continue;
+ var c=state.CityById(resolved.World.Cities[i].Id)!;long defense=AiArmyTargetTree.CityDefense(c,rules,state);
+ if(c.Allegiance==actor.Nation)defense=defense*(100-rules.Siege.AttackerIsAllegianceDefenderReductionPercent)/100;
+ if(defense!=Int(observed,"adjusted_defense"))adjustedDefenseMismatches++;
+ int distance=AiView.Distance(actor.X,actor.Y,c.X,c.Y);long strength=AiArmyTargetTree.AssaultStrength(actor,rules,"archers");
+ long Formula(bool different){long score=rules.Ai.ArmyTargetStrengthNumerator*strength/defense-distance;if(different)score-=score/rules.Ai.CityScoreRegionHalvingDenominator;if(defense<strength&&distance<rules.Ai.CityAttackDistanceThreshold)score*=2;if(CapitalOwnership.IsAnyNationsCapital(state,c.Id)&&defense*rules.Ai.CityAttackCapitalDefenseRatioNumerator/rules.Ai.CityAttackCapitalDefenseRatioDenominator<strength)score*=2;return score;}
+ long nativeFormula=Formula(false);long correctedGeometry=Formula(observed.GetProperty("geography_differs").GetBoolean());
+ if(nativeFormula!=Int(observed,"score_before_distance_return"))nativeRegionFormulaMismatches++;
+ if(correctedGeometry!=Int(observed,"score_before_distance_return"))originalRegionFormulaMismatches++;
+ diagnostic.Add((i,nativeFormula,distance,row.GetProperty("reachable").GetBoolean(),row.GetProperty("original_eligible").GetBoolean()));
+}
+(int index,long score,int distance,bool reachable,bool eligible) Best(IEnumerable<(int index,long score,int distance,bool reachable,bool eligible)> input)=>input.OrderByDescending(r=>r.score).ThenBy(r=>resolved.World.Cities[r.index].Id,StringComparer.Ordinal).First();
+var nativeModel=Best(diagnostic.Where(r=>r.reachable));if(nativeModel.index!=Index(city.City)||nativeModel.score+nativeModel.distance!=city.Score)throw new Exception("Native formula diagnostic failed production selection gate");
+var originalEligibilityOnly=Best(diagnostic.Where(r=>r.eligible));var eligibilityBranch=AiArmyTargetTree.DecideFromScores(rules.Ai,actor,new AiArmyTargetTree.CityTarget(state.CityById(resolved.World.Cities[originalEligibilityOnly.index].Id),originalEligibilityOnly.score+originalEligibilityOnly.distance,originalEligibilityOnly.distance),enemy,supply);
+var result=new{source_pin="0c4944542d32d1e6d2d9982f78fdfcddaabaddea",input_identity_gate_passed=true,checked_fields=checks,terrain_and_occupancy_cells_checked=44800,terrain_and_occupancy_mismatches=terrainMismatches,original_city_reachable=AiArmyTargetTree.IsReachable(view,actor,originalCity.X,originalCity.Y),native_city=new{target=Index(city.City),city.Score,city.Distance,city.Skipped},native_enemy=new{target=enemy.Army is null?(int?)null:int.Parse(enemy.Army.Id[5..]),enemy.Score,enemy.Distance},native_branch=decision.Selected.ToString(),original_score_fed_branch=fromOriginal.Selected.ToString(),original_city_only_fed_branch=cityOnly.Selected.ToString(),military_phase_branch=military.Kind.ToString(),actor_proposal_kinds=actorProposals.Select(p=>p.Kind).ToArray(),assault_strength=AiArmyTargetTree.AssaultStrength(actor,rules,"archers"),city_defense_comparisons=rows.Count,city_defense_mismatches=defenseMismatches,original_eligible_native_unreachable=filteredOriginalEligible,region_assignment_count=rules.Ai.CityRegionById.Count,adjusted_defense_mismatches=adjustedDefenseMismatches,original_candidate_observations=diagnostic.Count,native_empty_region_formula_mismatches=nativeRegionFormulaMismatches,original_geography_formula_mismatches=originalRegionFormulaMismatches,diagnostic_native_formula_matches_production_choice=true,original_eligibility_only_city=new{target=originalEligibilityOnly.index,score=originalEligibilityOnly.score+originalEligibilityOnly.distance,distance=originalEligibilityOnly.distance},original_eligibility_only_branch=eligibilityBranch.Selected.ToString(),scope="same private imported boundary; no whole End turn or production change; diagnostic proposal RNG seed1, no native outcome parity"};
 Write(args[3],result);Console.WriteLine("PASS private import/score/branch/proposal measurement; public output contains only scalar facts");

@@ -1,0 +1,4 @@
+Unhandled exception. System.IO.InvalidDataException: Save trailer's turn order at index 5 names nation 4, not the current nation 1.
+   at IC2.Data.SaveTurnState.Parse(Byte[] data) in /home/diego/projects/ic2-conquest/artifacts/run-exp-city-army187/source-v1/src/IC2.Data/SaveTurnState.cs:line 203
+   at IC2.Engine.Import.OriginalSaveImporter.Import(Byte[] data, String documentPath, World world, Ruleset ruleset, Scenario scenario, String saveId, String saveLabel) in /home/diego/projects/ic2-conquest/artifacts/run-exp-city-army187/source-v1/src/IC2.Engine/Import/OriginalSaveImporter.cs:line 151
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/runs/experiments/city-army187/BranchGrid.cs.txt:line 7
