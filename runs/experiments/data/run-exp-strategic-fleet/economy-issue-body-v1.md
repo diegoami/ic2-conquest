@@ -1,0 +1,5 @@
+Compare original and native economic phase inputs and decisions: threat budget, treasury/reserve gates, recruit/mobilize choices and amounts, tax timing, consolidation/disbanding, automatic supply/purse and mercenary hires. Capture pre/post phase states and actual random bounds/results; do not infer defects from the pilot's different terminal resources. Include healthy/depleted cases and own/foreign providers; keep destination scoring separate from transfer quantity. Deliver decision/RNG ledger and minimal controls.
+
+Evidence: https://github.com/diegoami/ic2-conquest/blob/363a9069089bd400c6905f3b93975162395031b3/findings/2026-10-24-strategic-fidelity-pilot171.md and conquest #171. Owner requested issues for the corrections and remaining strategic research, and continued investigation on 2026-10-24.
+
+Never delete/overwrite measurements or saves; unique labels, tracked text/hashes, approved binary storage, commit/push each batch/30min. Owner1355/1388 files/hashes stay private; no other repository source edit or native Computer Use restart. Distinguish matched local decisions from unmatched whole-turn histories and intentional remake policies.

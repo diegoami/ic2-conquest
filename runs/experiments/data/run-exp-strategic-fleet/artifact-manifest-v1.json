@@ -1,0 +1,391 @@
+{
+  "archive": "fleet-controls-batch01.tar.gz",
+  "bytes": 2094486,
+  "sha256": "9262baa50a70ae5b4fb0dcfffc8317687e173ad01a4c14a9b7629afe8a94682f",
+  "member_count": 76,
+  "members": [
+    {
+      "name": "controls-v1/actor-construction/expected.json",
+      "bytes": 231076,
+      "sha256": "57eedffd147c4a0e02fee18de5e6c088176f0af2c081017df9eaa6719c29bc06"
+    },
+    {
+      "name": "controls-v1/actor-construction/input.ram",
+      "bytes": 274432,
+      "sha256": "731ccb0737deffd05a0f6da25f86f7b0d8fd8a7a40beae8cfbff375391785a4f"
+    },
+    {
+      "name": "controls-v1/actor-construction/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "533cc62448694bc073390984717723cf3a7dcbc397cf01769c6d2b75275555fb"
+    },
+    {
+      "name": "controls-v1/actor-construction/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "3ded66ba80ba56fa375b2a691d61cb36bc9879f56d1d04906ae8242287dc1c16"
+    },
+    {
+      "name": "controls-v1/alliance/expected.json",
+      "bytes": 231077,
+      "sha256": "1547f1c2a13f280cf8f16011547a679aa8b775d4dd915a60e4707ebd41eb2fe4"
+    },
+    {
+      "name": "controls-v1/alliance/input.ram",
+      "bytes": 274432,
+      "sha256": "6c106dcd9a7511304681f4979efad765bf1e5fb3fa4efb660a440cffd4baa947"
+    },
+    {
+      "name": "controls-v1/alliance/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "c94848a15d0962ee3acf6fc272c314e95dc429a52245768566ae51edff0cd636"
+    },
+    {
+      "name": "controls-v1/alliance/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "904773611a89acc92e3ed016882eb329872194a13f8a0be4e6b00b1b640ae1f7"
+    },
+    {
+      "name": "controls-v1/no-moves/expected.json",
+      "bytes": 231076,
+      "sha256": "e91d296ae66b989495cd1c5dfc3e1b2050f061dd7673bb2caf44af21886640e5"
+    },
+    {
+      "name": "controls-v1/no-moves/input.ram",
+      "bytes": 274432,
+      "sha256": "ac829bc52daef299ba4c8c2e044ff9271154adfc7d78d6040c677749d6d2049f"
+    },
+    {
+      "name": "controls-v1/no-moves/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "60dbd1f7ccefa2d8adf26b30ec7f76d10ea7164265a98e5b9c487ee363d6ad9c"
+    },
+    {
+      "name": "controls-v1/no-moves/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "5cb3a167f8358c43c30436b996f68a43600563fb281dc3c01817d7886167a486"
+    },
+    {
+      "name": "controls-v1/peace/expected.json",
+      "bytes": 231077,
+      "sha256": "d7e37a4bc2e303d5f6b27d425871e735e92de7d2f952937cd9f16c541c7b94ac"
+    },
+    {
+      "name": "controls-v1/peace/input.ram",
+      "bytes": 274432,
+      "sha256": "7e80c698023af8471260e4cc558d43dff0ffce9a14def07f3a8195e700743801"
+    },
+    {
+      "name": "controls-v1/peace/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "9b126740124e6e5ff650e1e8a58c1e2cd6e27074fc0bc4a41df52f1d2285f6ba"
+    },
+    {
+      "name": "controls-v1/peace/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "b7ef871e181716d09a9874979eee2c629ec4fc9801dd95f106fafaf597b97607"
+    },
+    {
+      "name": "controls-v1/same-owner/expected.json",
+      "bytes": 231077,
+      "sha256": "b18da096f5b5ecfe1a0019dec08293af4b76e17aeb05edae81e80e7ea3eb6628"
+    },
+    {
+      "name": "controls-v1/same-owner/input.ram",
+      "bytes": 274432,
+      "sha256": "fe263c4169787547d3fe9647102c49d6600c2b84680d94fe376fd2165d953f96"
+    },
+    {
+      "name": "controls-v1/same-owner/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "5f8d78f39091831f282a9cf175f810392dcc62fb2a09c3b3a519bf6ee62ce3d4"
+    },
+    {
+      "name": "controls-v1/same-owner/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "66bc96f65923e3cd0f271cdbf9b189bf961eedee94a59fff5bdc5d15b9b3b870"
+    },
+    {
+      "name": "controls-v1/score100/expected.json",
+      "bytes": 231077,
+      "sha256": "03af10bae5b1850d1d4ef072eab058914f8731c795521879a99e3c13c1f2413c"
+    },
+    {
+      "name": "controls-v1/score100/input.ram",
+      "bytes": 274432,
+      "sha256": "f79f30eada3fc14fd1bd5afa6b04cadad2050e39ce368e0c47ffbb938dadada8"
+    },
+    {
+      "name": "controls-v1/score100/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "908a7dde89e4ae1f4c05fbf2d0e7c2c54b973f0d9c8e3ca5da40b29b139fbf15"
+    },
+    {
+      "name": "controls-v1/score100/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "1702f553ebce01af720834b2d9c6529ad9dbc24fb008ff04b390396d5ef464e0"
+    },
+    {
+      "name": "controls-v1/score101/expected.json",
+      "bytes": 231077,
+      "sha256": "ecdfb3bbf938446a65448afa04f3eea7c5ec398958ca9c64efbc190ae7061613"
+    },
+    {
+      "name": "controls-v1/score101/input.ram",
+      "bytes": 274432,
+      "sha256": "5876ab84892effbc59eb89ff9cc5738690a6b200f8b1b09df7ebf1dee3fe73b9"
+    },
+    {
+      "name": "controls-v1/score101/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "88db703c44a453f4993b509fa933cd2679b32cad4cce480311f35821166a019d"
+    },
+    {
+      "name": "controls-v1/score101/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "bcbf0f0d0296c337c62937e3837c083091a79d8b2c6e99ed185747a6fe617c7c"
+    },
+    {
+      "name": "controls-v1/stored-a/expected.json",
+      "bytes": 231077,
+      "sha256": "d7e37a4bc2e303d5f6b27d425871e735e92de7d2f952937cd9f16c541c7b94ac"
+    },
+    {
+      "name": "controls-v1/stored-a/input.ram",
+      "bytes": 274432,
+      "sha256": "7dda8327ecbee0c0d701eb2fa26a110286a3a574d01a943a299d080dab003b54"
+    },
+    {
+      "name": "controls-v1/stored-a/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "a88e3a0077a5f36937a24b5ad265290b99725c088a50fe90e0eaf84dc29f1080"
+    },
+    {
+      "name": "controls-v1/stored-a/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "d403bf74d34025c6ac782c33690035ed2fe2d508e2d285190352b7b08f406dd5"
+    },
+    {
+      "name": "controls-v1/stored-b/expected.json",
+      "bytes": 231077,
+      "sha256": "d7e37a4bc2e303d5f6b27d425871e735e92de7d2f952937cd9f16c541c7b94ac"
+    },
+    {
+      "name": "controls-v1/stored-b/input.ram",
+      "bytes": 274432,
+      "sha256": "1005fe6982f6fbbff263e6cd0fac5a5f8c4a6f9f77597825eee69d2e60113f8d"
+    },
+    {
+      "name": "controls-v1/stored-b/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "95ba08b0a0e3cc5d6a12e4e3a7425be674393be176c23541658b8b07e96337bf"
+    },
+    {
+      "name": "controls-v1/stored-b/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "480f692aa137f52776a2874a01000c6294ce44b613f4c7ad6e38db96f3fedb1f"
+    },
+    {
+      "name": "controls-v1/target-construction/expected.json",
+      "bytes": 231074,
+      "sha256": "719680e0b0ba5a0452e0a60aad8ae7722a6b8eb1a33e5d8c9f99e8f03554ae33"
+    },
+    {
+      "name": "controls-v1/target-construction/input.ram",
+      "bytes": 274432,
+      "sha256": "00ebebe3f0e4bfb48c90f2ff3ff2988abd3a36b52e35e1d061d3881f364d7b79"
+    },
+    {
+      "name": "controls-v1/target-construction/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "ea26d5670b166c80d4ce65957aa0c2527bac6e644c099253d0f579d4ab1cc393"
+    },
+    {
+      "name": "controls-v1/target-construction/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "f8efd510c4c61528ace2dac02b00a774011afab3675e12f505b65f17e0f17918"
+    },
+    {
+      "name": "controls-v1/trade/expected.json",
+      "bytes": 231077,
+      "sha256": "db99e3c981d861cee85c3893e98cbf2867b8b9c767ce9ebbd5583c53272950c9"
+    },
+    {
+      "name": "controls-v1/trade/input.ram",
+      "bytes": 274432,
+      "sha256": "7bf448a329b5ddb587793daaf49220a5470a77f9161569e56cd76c57e3d0eae8"
+    },
+    {
+      "name": "controls-v1/trade/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "a8e2383947a0224fc9fb61599833b47c6381199568cf35b342b3a759d37dd579"
+    },
+    {
+      "name": "controls-v1/trade/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "6cfcd773fd0d0c6f0ca529f8c5f2666b6125561699b51a5284051cf37e81b388"
+    },
+    {
+      "name": "controls-v1/war/expected.json",
+      "bytes": 231077,
+      "sha256": "dff42dc3caa8334d28f8648101d4c1f7ff3ef60069b1bc96e9d6492d7f991544"
+    },
+    {
+      "name": "controls-v1/war/input.ram",
+      "bytes": 274432,
+      "sha256": "91189ebceb0f33cbc4245c2926ed933fe7af919ceb4e09bdc903d29f7a9ce4e4"
+    },
+    {
+      "name": "controls-v1/war/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "577fd6ebbc5667678ecacaedf459c51c1bea023ce0a68617db7b0cb5ed291d21"
+    },
+    {
+      "name": "controls-v1/war/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "71c44f18643df1eed1cba0291c2089d274022c4ca152742fb20f47d79cc8fbb6"
+    },
+    {
+      "name": "controls-v1/war-stronger/expected.json",
+      "bytes": 231078,
+      "sha256": "ffdfa553ad9fc9a02c76435e56bd5fa6f9c884a02a14cbbb10b41d93c237459d"
+    },
+    {
+      "name": "controls-v1/war-stronger/input.ram",
+      "bytes": 274432,
+      "sha256": "b60cb3d0a3515576507e6ef8b31593b94e755e40a1e41b5e1cd70962d7137fd4"
+    },
+    {
+      "name": "controls-v1/war-stronger/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "771790139df7bf0cb13693266095de7ce262de5d1c9bbcdc035198b71c0eb4ac"
+    },
+    {
+      "name": "controls-v1/war-stronger/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "1962938ebf071ceaec19c936c5300193c3407a051dd72865452a3a9aefa7a999"
+    },
+    {
+      "name": "controls-v1/war-weaker/expected.json",
+      "bytes": 231077,
+      "sha256": "60b22372186f3e6ebdd8606834936728a862393725666b8ab7af2809939eeb0e"
+    },
+    {
+      "name": "controls-v1/war-weaker/input.ram",
+      "bytes": 274432,
+      "sha256": "9b71124ffc51b8e1b01126499778738c37bfc35fb643face6b09a2813d4396e8"
+    },
+    {
+      "name": "controls-v1/war-weaker/pre-move.SAV",
+      "bytes": 131740,
+      "sha256": "fee257788bae3cde64a2b0b7a43c383416063788027b570515b9e6567cb87fce"
+    },
+    {
+      "name": "controls-v1/war-weaker/pre-move.ram",
+      "bytes": 274432,
+      "sha256": "9313305d33c42be7409c21b25cfef25c27194087e0113f6c282dd242d8448018"
+    },
+    {
+      "name": "data/rulesets/classical-faithful.json",
+      "bytes": 186961,
+      "sha256": "5dcd891cce8a1a9a620d7126d422042149def676ac3451b9fd3f057df1774fa6"
+    },
+    {
+      "name": "data/rulesets/improved.json",
+      "bytes": 173686,
+      "sha256": "7cec524b7a16596d26e3a54f14aab08db5d2ab0caaf91f50c2724ee897115ea7"
+    },
+    {
+      "name": "data/rulesets/italy-500bc.json",
+      "bytes": 185773,
+      "sha256": "7b0a166df5a0896721bc89136592952929305414917a94da5acf7af2e5db7d62"
+    },
+    {
+      "name": "data/rulesets/toy-ruleset.json",
+      "bytes": 164927,
+      "sha256": "d85abdba408b1fa91f028ba3a63e24cfb543d14741d6da92e2805964eba6e01a"
+    },
+    {
+      "name": "data/scenarios/classical-mediterranean.json",
+      "bytes": 2620,
+      "sha256": "38f05ca10dda8d90a6d598bfa171a49fa3fb98b09d5a550107b2a5b87b255787"
+    },
+    {
+      "name": "data/scenarios/example-classical-improved.json",
+      "bytes": 6238,
+      "sha256": "b78000a54b37f357f3bfd9986c1bc09b6aae0f6305d97c07a0fda8e2388cfaa1"
+    },
+    {
+      "name": "data/scenarios/example-tiny-duel.json",
+      "bytes": 1293,
+      "sha256": "293f29a42b4d39f13a75ede8dfec0f61d3e3112129a0d62aa06ca8091025c41b"
+    },
+    {
+      "name": "data/scenarios/italy-500bc.json",
+      "bytes": 3008,
+      "sha256": "e1682ca5cbd7396a37441d37766c7c61e16cc84f4a3b798382884b7234609a07"
+    },
+    {
+      "name": "data/scenarios/toy-3city.json",
+      "bytes": 1558,
+      "sha256": "5203050361be3b6c5bfb8dd32d2366f85a28d84c785447272a621ebae3ce0474"
+    },
+    {
+      "name": "data/worlds/classical-mediterranean.json",
+      "bytes": 376066,
+      "sha256": "823e813b9504cdbf8e5298ee5a723f49ebe5f7d92717cd9a7d080503a9d34e13"
+    },
+    {
+      "name": "data/worlds/classical-mediterranean.terrain.b64",
+      "bytes": 119469,
+      "sha256": "a358d65dbad5da5131d362b9e5515348aea830e62de60ea9e692bff05137c476"
+    },
+    {
+      "name": "data/worlds/example-tiny-duel.json",
+      "bytes": 10650,
+      "sha256": "cbaf2af932262e6de1681d45b2662c6d9730aa835c2357697538be181d86e08d"
+    },
+    {
+      "name": "data/worlds/italy-500bc.json",
+      "bytes": 337967,
+      "sha256": "8b6eefdf96ec7a5183e0514daf3a09f361f551922352a44c31ca73d3e2fa5ddb"
+    },
+    {
+      "name": "data/worlds/italy-500bc.terrain.b64",
+      "bytes": 129861,
+      "sha256": "5bf6640b4d7cbe75184d6a9a5da733967e543e6079fe09d1c87fc8b252fa6fde"
+    },
+    {
+      "name": "data/worlds/toy-3city.json",
+      "bytes": 14135,
+      "sha256": "7bef7b98651dbc9ef2471f29558228253b4566211e5a82094c3f676ed2d610e2"
+    },
+    {
+      "name": "tools/FleetProbe.dll",
+      "bytes": 17920,
+      "sha256": "5bef0338d660835a76085f6ba8a10241a2d03c77f53c8ef31c878c4811b43814"
+    },
+    {
+      "name": "tools/FleetProbe.deps.json",
+      "bytes": 1100,
+      "sha256": "d4ff35b5ffe46639ee19286ae9c9f8cc7c8b6283370cd0199e8ae31c0088eb18"
+    },
+    {
+      "name": "tools/FleetProbe.runtimeconfig.json",
+      "bytes": 259,
+      "sha256": "f9bc8e9f0c46247078ed47309f19a7576b4b94e4300e9de0003917d6bd2d667a"
+    },
+    {
+      "name": "tools/IC2.Engine.dll",
+      "bytes": 1706496,
+      "sha256": "9095a53909d77f833c3b26a6f5d95a2f2373a3958446bb4e1f971817517a338c"
+    },
+    {
+      "name": "tools/IC2.Data.dll",
+      "bytes": 140288,
+      "sha256": "866dfe87ba284312af3bb21423a5c97b173c77aafe46cb180fce1dc1b9273005"
+    }
+  ],
+  "source_pin": "55d96876a98ba3bb7142ca7c1ecc0d1b61095c18",
+  "owner_hash_canaries_absent": true,
+  "original_EXE_DAT_runtime_excluded": true
+}
