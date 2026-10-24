@@ -1,0 +1,304 @@
+{
+  "cases": 14,
+  "checkedFields": 3568,
+  "rows": [
+    {
+      "caseName": "actor-construction",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "2206b4c7321a857bbee16c3515ffaaa333df5ca82c6446d62b4cecd2b5d7df68",
+      "proposals": [],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "alliance",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "731c8670c676e04698b2d5c78699f2d1cfe225452a752df79372c5a975e0158c",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "no-moves",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "617c971d353304bc0485880f3986ed9ba72fe93f1ade749374b1548be052332c",
+      "proposals": [],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "peace",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "dc5a5749107d85718def88ae87fedfeea7fc2489f542c4611916966231fb34d2",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "same-owner",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "8c3c3209421fe25052c23dc11b6e6d746f9d39e6eacc014829f1444a9373c229",
+      "proposals": [],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "score100",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "2511ea5ff659d19247448e222e43e6ebfd06e7d6df94a541083b640a5e74ef09",
+      "proposals": [],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "score101",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "8fd8cbde37607383a8e5c83f7a2508e12c29208518046558f93a473538ad920a",
+      "proposals": [],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "stored-a",
+      "gate": true,
+      "originalStoredDestination": [
+        48,
+        66
+      ],
+      "nativeStateSha256": "dc5a5749107d85718def88ae87fedfeea7fc2489f542c4611916966231fb34d2",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "stored-b",
+      "gate": true,
+      "originalStoredDestination": [
+        47,
+        67
+      ],
+      "nativeStateSha256": "dc5a5749107d85718def88ae87fedfeea7fc2489f542c4611916966231fb34d2",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "target-construction",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "6db172fa8ae6b1a874df03731dfee642b2f7ca98dcd8b07b94c09b1008b75fe0",
+      "proposals": [],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "trade",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "e2ca0b8790ed396786b73966bfb7d4f6d97f846361e77a0cef667adcedd756c8",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "war",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "4679e43a420cff57e430cff9415fd5f8ec3eb8587e0dd35a61d3c310bb60b0ea",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "war-stronger",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "ac50198ac4bf558ea661172bf8dfe4b247e9fe70eb5193609770d5a033421c29",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    },
+    {
+      "caseName": "war-weaker",
+      "gate": true,
+      "originalStoredDestination": [
+        -1,
+        -1
+      ],
+      "nativeStateSha256": "bd73b3bf2faf2a165c02fa873ea0b19b96d9e5b24d2d4bc3bd35f2b19324a4bd",
+      "proposals": [
+        {
+          "Kind": "sail",
+          "Score": 850,
+          "Rationale": "sail fleet-0 at fleet fleet-1 (ptolemaic): 3 tiles away",
+          "commands": [
+            {
+              "kind": "naval.move-fleet",
+              "body": {
+                "IssuingNationId": "carthage",
+                "FleetId": "fleet-0",
+                "X": 48,
+                "Y": 65,
+                "Kind": "naval.move-fleet"
+              }
+            }
+          ]
+        }
+      ],
+      "sourcePolicy": "sailAtFleetBaseScore and distancePenaltyPerTile explicitly marked designed; proposals are not accepted actions"
+    }
+  ]
+}

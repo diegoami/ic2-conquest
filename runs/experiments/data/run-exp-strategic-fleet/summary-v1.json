@@ -1,0 +1,36 @@
+{
+  "cases": 14,
+  "fleet_and_relation_gate_checks": 3568,
+  "original_game_launched": false,
+  "native_game_launched": false,
+  "original_strength_rng_executed": true,
+  "original_stored_goals": [
+    [
+      48,
+      66
+    ],
+    [
+      47,
+      67
+    ]
+  ],
+  "identical_imported_decision_state_for_absent_and_two_stored_routes": true,
+  "identical_native_march_proposals_for_those_three": true,
+  "original_peace_trade_alliance_choose_port": true,
+  "native_peace_trade_alliance_offer_foreign_fleet_march": true,
+  "original_hunt_boundary_scores": [
+    100,
+    101
+  ],
+  "zero_moves_and_construction_outer_gates_match": true,
+  "classification": {
+    "fleet_march_weights": "explicitly designed native policy; not an unintended defect claim",
+    "stored_destination": "documented absent native field/canonical export reset; faithful feature/state-support gap"
+  },
+  "limits": [
+    "Synthetic fleet-phase controls, not fresh original live boundary traces.",
+    "Native measurements are offered fleet marches, not full greedy-loop accepted commands.",
+    "No matched naval combat/RNG-stream equivalence or full fleet strategy acceptance.",
+    "Ports are original measured choices; native port-selection parity not established."
+  ]
+}

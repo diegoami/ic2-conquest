@@ -1,0 +1,5 @@
+Capture FUN0044EFC8 threat-list/responder boundaries and native equivalents. Cover region/coast membership, war versus peace, capital radii, troops aboard fleets, already-committed armies, responder cap and record order. Use the retained threat-case observed Seleucid dispatch as anchor. Separate target-tree choices from the earlier homeland dispatch. Deliver same-input first-difference controls and identify deliberate policy changes before reporting defects.
+
+Evidence: https://github.com/diegoami/ic2-conquest/blob/363a9069089bd400c6905f3b93975162395031b3/findings/2026-10-24-strategic-fidelity-pilot171.md and conquest #171. Owner requested issues for the corrections and remaining strategic research, and continued investigation on 2026-10-24.
+
+Never delete/overwrite measurements or saves; unique labels, tracked text/hashes, approved binary storage, commit/push each batch/30min. Owner1355/1388 files/hashes stay private; no other repository source edit or native Computer Use restart. Distinguish matched local decisions from unmatched whole-turn histories and intentional remake policies.

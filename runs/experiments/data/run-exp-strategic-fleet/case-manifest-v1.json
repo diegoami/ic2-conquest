@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "name": "peace",
+      "relation": 0
+    },
+    {
+      "name": "trade",
+      "relation": 1
+    },
+    {
+      "name": "alliance",
+      "relation": 2
+    },
+    {
+      "name": "war",
+      "relation": 3
+    },
+    {
+      "name": "war-stronger",
+      "relation": 3,
+      "ships": 100
+    },
+    {
+      "name": "war-weaker",
+      "relation": 3,
+      "ships": 10
+    },
+    {
+      "name": "target-construction",
+      "relation": 3,
+      "countdown": 5
+    },
+    {
+      "name": "same-owner",
+      "relation": 0,
+      "target_owner": 1
+    },
+    {
+      "name": "stored-a",
+      "relation": 0,
+      "stored": [
+        48,
+        66
+      ]
+    },
+    {
+      "name": "stored-b",
+      "relation": 0,
+      "stored": [
+        47,
+        67
+      ]
+    },
+    {
+      "name": "no-moves",
+      "relation": 0,
+      "moves": 0
+    },
+    {
+      "name": "actor-construction",
+      "relation": 0,
+      "actor_countdown": 5
+    },
+    {
+      "name": "score100",
+      "relation": 3,
+      "ships": 90,
+      "goal": [
+        41,
+        80
+      ]
+    },
+    {
+      "name": "score101",
+      "relation": 3,
+      "ships": 89,
+      "goal": [
+        41,
+        80
+      ]
+    }
+  ],
+  "near": [
+    48,
+    65
+  ],
+  "far": [
+    41,
+    80
+  ],
+  "seed": 0,
+  "kind": "synthetic fleet-phase states from retained generated snapshot; no game run",
+  "native_scope": "proposals, not accepted full-turn actions"
+}

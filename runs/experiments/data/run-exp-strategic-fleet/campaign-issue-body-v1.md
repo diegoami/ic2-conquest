@@ -1,0 +1,5 @@
+Expand the pilot after the identified eligibility/routing and resupply differences are reconciled, so a known first-turn divergence does not obscure every later comparison. Cover all16starts and predeclared3-5turn continuations across terrain, seasons, resources and war states. Retain first-divergence evidence and distinguish original/native random histories. Depends on the correction tasks and coverage from the fleet/homeland/economy/diplomacy studies. No automatic strategy run or paused battle-queue resumption.
+
+Evidence: https://github.com/diegoami/ic2-conquest/blob/363a9069089bd400c6905f3b93975162395031b3/findings/2026-10-24-strategic-fidelity-pilot171.md and conquest #171. Owner requested issues for the corrections and remaining strategic research, and continued investigation on 2026-10-24.
+
+Never delete/overwrite measurements or saves; unique labels, tracked text/hashes, approved binary storage, commit/push each batch/30min. Owner1355/1388 files/hashes stay private; no other repository source edit or native Computer Use restart. Distinguish matched local decisions from unmatched whole-turn histories and intentional remake policies.

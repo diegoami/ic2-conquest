@@ -1,0 +1,285 @@
+[
+  {
+    "case": "peace",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "trade",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "alliance",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "war",
+    "original": {
+      "site": 4519578,
+      "fleet": 0,
+      "goal": [
+        48,
+        65
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 1,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "war-stronger",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 1,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "war-weaker",
+    "original": {
+      "site": 4519578,
+      "fleet": 0,
+      "goal": [
+        48,
+        65
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 1,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "target-construction",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "same-owner",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "stored-a",
+    "original": {
+      "site": 4519527,
+      "fleet": 0,
+      "goal": [
+        48,
+        66
+      ]
+    },
+    "draws": [],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "stored-b",
+    "original": {
+      "site": 4519527,
+      "fleet": 0,
+      "goal": [
+        47,
+        67
+      ]
+    },
+    "draws": [],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "no-moves",
+    "original": {},
+    "draws": [],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "actor-construction",
+    "original": {},
+    "draws": [],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "score100",
+    "original": {
+      "site": 4519614,
+      "fleet": 0,
+      "goal": [
+        45,
+        68
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 1,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  },
+  {
+    "case": "score101",
+    "original": {
+      "site": 4519578,
+      "fleet": 0,
+      "goal": [
+        41,
+        80
+      ]
+    },
+    "draws": [
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 0,
+        "result": 0,
+        "seed_after": 1
+      },
+      {
+        "ret": 4500125,
+        "bound": 4,
+        "seed_before": 1,
+        "result": 0,
+        "seed_after": 134775814
+      }
+    ],
+    "mode": "stopped before movement; automatic prepass and RNG actually executed"
+  }
+]
