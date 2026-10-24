@@ -35,8 +35,11 @@ Drive folder: <https://drive.google.com/drive/folders/1gNiyzqi7RbgV0U4AJ5xwiYeDz
    Required native `.terrain.b64` sidecars, pinned with the source. The first
    recovery exposed their omission from batch01's JSON-only allowlist. That
    failed receipt and both existing archives remain preserved.
+4. `geometry-audit-tools-batch04.tar.gz`,5members,601045bytes,
+   SHA256 `f0b92b307836a78e9c7017762dd99f20ec7fd48588ec3da7ab94e6163bac8613`;
+   file `1k5tbljKOYEJX6McF4bMepmUQLB0yoll9`. Independent compiled map audit.
 
-All499members were locally rehashed from the completed archives. Upload size
+All504members were locally rehashed from the completed archives. Upload size
 and destination parent were read back; no remote-download digest verification
 is claimed. Member/archive hashes are appended in `SAVES.sha256`. Existing
 owner1355input hash canaries are absent from every selected member. Explicit
@@ -48,8 +51,10 @@ PDB or unrelated directory is uploaded. Do not use the generic archive walker.
 Batch01 `tools/` precedes the original-score counterfactual mode. Use the
 separate batch02 `tools-v7/` for the latest compiled Probe, Engine/DataDLLs and
 runtime/dependencyJSON. Extract all three bundles: batch03 supplies required
-terrain sidecars. `bundle-verification-v2.json` records fresh exclusive recovery
-and compiled-tool replay whose eleven rows exactly equal retained output.
+terrain sidecars. Batch04 supplies `tools-geometry/`.
+`bundle-verification-v3.json` records fresh exclusive four-bundle recovery and
+compiled-tool replay: eleven decision rows and112geometry rows exactly equal
+retained output. V2 retains the earlier successful three-bundle recovery.
 Original/native engine behavior is unchanged; added
 diagnostic modes/expanded gates are named in the immutable build logs. Published
 script source hashes and compiled artifact hashes define the actual tool;
@@ -80,6 +85,10 @@ Input gates validate112states/290524checks; troop/relation mutations reject
 before comparable output. Six additional synthetic resupply controls use actual
 original instructions and pass full native gates. Positive agreement controls
 are included. No scoring, targeting, movement or RNG game helper is stubbed.
+The independent Geometry.csproj/.cs.txt tool compares original map land codes
+and army blocking against native terrain/entity occupancy at every cell of all
+112states. Geometry-audit-v1 reports zero differences over5017600cell checks.
+This is an army passability audit, not a sea-weather equality assertion.
 
 Original same-seed repeats are controls, not additional scenarios. Input seed1
 does not align original and native whole-turn random streams. Original RAM

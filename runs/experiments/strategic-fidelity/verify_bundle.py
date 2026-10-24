@@ -8,7 +8,7 @@ from pathlib import Path,PurePosixPath
 ROOT=Path(__file__).resolve().parents[3];BASE=ROOT/'artifacts/run-exp-strategic-fidelity';DATA=ROOT/'runs/experiments/data/run-exp-strategic-fidelity'
 p=argparse.ArgumentParser();p.add_argument('--version',required=True);a=p.parse_args()
 out=BASE/('recovery-smoke-'+a.version);out.mkdir(exist_ok=False);count=0
-for version in (1,2,3):
+for version in (1,2,3,4):
     manifest=json.loads((DATA/f'artifact-batch0{version}-manifest-v1.json').read_text());archive=BASE/manifest['archive']
     assert hashlib.sha256(archive.read_bytes()).hexdigest()==manifest['sha256']
     with tarfile.open(archive) as tar:
@@ -26,7 +26,13 @@ with (DATA/('bundle-smoke-execution-'+a.version+'.log')).open('x') as f:
 assert result.returncode==0
 expected=DATA/'N-rome-hook-v1/original-target-from-scores-v1.jsonl'
 assert output.read_bytes()==expected.read_bytes()
-with (DATA/('bundle-verification-'+a.version+'.json')).open('x') as f:json.dump(dict(archives=3,members_verified=count,
+(out/'source-v1').mkdir();(out/'source-v1/data').symlink_to('../data',target_is_directory=True)
+geometry=out/'geometry-smoke.json'
+with (DATA/('geometry-smoke-execution-'+a.version+'.log')).open('x') as f:
+    result=subprocess.run(['/home/diego/.dotnet/dotnet',str(out/'tools-geometry/Geometry.dll'),str(out),str(geometry)],stdout=f,stderr=subprocess.STDOUT)
+assert result.returncode==0 and geometry.read_bytes()==(DATA/'geometry-audit-v1.json').read_bytes()
+with (DATA/('bundle-verification-'+a.version+'.json')).open('x') as f:json.dump(dict(archives=4,members_verified=count,
     exclusive_recovery=True,latest_tool_executes=True,retained_11_rows_byte_identical=True,
+    geometry_112_states_byte_identical=True,source_data_read_only_locator_link=True,
     remote_download_digest_check=False),f,indent=2)
-print('PASS three archives,',count,'member hashes and recovered compiled-tool replay;11 rows byte-identical')
+print('PASS four archives,',count,'member hashes; recovered11decision rows and112geometry rows byte-identical')

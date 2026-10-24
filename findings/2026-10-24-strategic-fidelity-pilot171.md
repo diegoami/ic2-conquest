@@ -18,6 +18,9 @@ and a threatened Seleucid capital. Each original run advances **0720 → 0721**.
 They yield **112 captured original army target-tree states**, involving eleven
 AI nations. The corresponding native import/projection gates pass **290,524
 checks** over units, armies, cities, fleets, nations, relations and recruits.
+A separate geometry audit checks all 44,800 cells in each of the 112 states:
+**zero land-terrain and zero army-passability/occupancy differences**. It tests
+the relevant land/blocking inputs, not sea-weather equality.
 
 | Local comparison on those original states | Agreement |
 |---|---:|
@@ -173,8 +176,10 @@ initial compiled tool. Batch02 adds isolated scarcity and `tools-v7`, including
 the original-score counterfactual mode. Batch03 adds two required native terrain
 sidecars omitted from batch01's JSON-only allowlist. The initial failed recovery
 and both older bundles are preserved. Recovering all three bundles into a new
-tree verifies **499 member hashes** and reproduces eleven retained compiled-tool
-rows byte-for-byte. Each archive is retained independently.
+tree verifies the retained data and reproduces eleven compiled-tool rows.
+Batch04 adds the independent geometry tool. The final four-bundle recovery
+verifies **504 member hashes** and reproduces both those eleven decision rows
+and all **112 geometry rows byte-for-byte**. Each archive is retained independently.
 No original EXE/DAT, Wine prefix/runtime, credentials or owner1355/1388 material
 is in the bundles. Generated RAM captures stay off Git. Local hashes and remote
 size/parent metadata are verified; no remote-download digest check is claimed.

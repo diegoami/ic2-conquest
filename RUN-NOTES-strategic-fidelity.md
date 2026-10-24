@@ -113,3 +113,18 @@ trailing operand spaces preserved as measurements. Failed compile/decoder/recove
 attempts retained. Eleven unrelated owner files preserved. Next: publish PR/checks,
 post actual source on171, relay landed finding to Research, record final reported/
 delivered baseline. Issue171 remains open for the documented remaining coverage.
+
+Publication PR172 opened, head197aeba initially passed GitGuardian Security
+Checks. Before merging, added an independent relevant-input map audit: every
+cell of112states,5017600cells, zero land-code/passability/occupancy differences.
+This closes terrain/marker-input uncertainty around the target rejection claim;
+it is not a new game run or sea-weather comparison. Geometry helper source and
+compiled tool retained as new batch04,5members/601045bytes, SHA
+f0b92b307836a78e9c7017762dd99f20ec7fd48588ec3da7ab94e6163bac8613,
+Drive1k5tbljKOYEJX6McF4bMepmUQLB0yoll9. Metadata size/parent verified. Final
+exclusive recovery-v3 verifies504members and reproduces11decision and112geometry
+rows byte-identically from retained tools. Source-data symlink is an input
+locator adapter to the identical recovered data, not a fixture/rule change.
+Existing archives and successful/failed receipts preserved; no remote digest
+download claim. Recheck current PR head/checks after this addition, then merge
+and relay actual landed finding, preserving source/delivery baseline.
