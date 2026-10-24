@@ -1,0 +1,10 @@
+{
+  "classifier": "all8strict box edges,6split thresholds,100fixed random coordinates",
+  "line": "80fixed random pairs plus one-variable medium/marker/end changes",
+  "eligibility": "same/different geographic pairs; fleet owner/launch/cargo/moves",
+  "routes": "defined real-world pairs and nested route index/hub/tie controls",
+  "undefined": "coincident CB40; direct-walk continuation local_e; group3graph fallback",
+  "fleet": "no usable/adjacent/distant empty own fleet",
+  "contact": "hostile/friendly final army/city dispatch, stop before resolver",
+  "owner": "final private conditional only after public controls"
+}
