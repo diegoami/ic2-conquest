@@ -168,3 +168,17 @@ Reply-start findings diff against last reported/delivered8d975ef was empty.
 Fleet174/PR179 is received but NOT yet approved/intaken by Research; its source
 status remains unchanged. No new experiment or other-repository write. Publish
 these two metadata changes and relay actual main pin; retain delivery receipt.
+
+## END — canonical promotion published and acknowledged
+
+Conquest PR181 merged at6e7ed5d63ebea9af0add97a2625947b5fb6d2109 after latest
+headf40bf5c2e639ea63bbcb9a41330f9d52c74ec630 passed GitGuardian; metadata
+whitespace passed. No experiment, binary/evidence change or separate review.
+Reported-findings and last successfully delivered baseline are
+`6e7ed5d63ebea9af0add97a2625947b5fb6d2109`: both1388/171 finding files changed
+promotion/correction-status metadata only. Actual main-pinned receipt delivered
+successfully to verified Research thread01a167fa-9fb2-7570-bf21-b32682c79e6e.
+Main1394 comment6384547669 and1402 comment6384547908 link canonical reports;
+no direct Main-thread message. Fleet174 stays pending intake. Existing owner
+files and measurements preserved; no active run. Next implementation can use
+canonical evidence under its own task scope, preserving intentional policies.
