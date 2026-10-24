@@ -2,7 +2,11 @@
 
 **Tag:** [confirmed, partial: one private owner campaign, original Wine controls,
 original-instruction replays and pinned production-native diagnostics].
-**Status:** draft for Research intake. Remake [#1388](https://github.com/diegoami/imperial_conquest_2/issues/1388)
+**Status:** intaken by [Research PR69](https://github.com/diegoami/imperial-conquest-2-research/pull/69),
+main `cdb355fde49b7047d6164de26b2922054fb120ee`.
+[Canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/cdb355fde49b7047d6164de26b2922054fb120ee/docs/reports/2026-10-24-seleucid-strategic-target-routing1388.md).
+Promotion changes no measurement or production/Windows acceptance claim.
+Remake [#1388](https://github.com/diegoami/imperial_conquest_2/issues/1388)
 remains open; no production correction implemented. Related acceptance:
 [#1355](https://github.com/diegoami/imperial_conquest_2/issues/1355).
 

@@ -153,3 +153,18 @@ unattended task pending. Four immutable Drive bundles and all failed/superseded
 results retained. Eleven unrelated untracked owner files preserved. Issue171
 stays open for the documented remaining research families, boundaries and short
 campaign coverage; no production fix or Windows acceptance is claimed.
+
+## Research promotion verified — 2026-10-24
+
+Live PR69 verified MERGED atcdb355fde49b7047d6164de26b2922054fb120ee; both
+canonical1388/171 report files read at that pin. Updated source finding status,
+evidence README and owner-carried Main handoffs; measurements unchanged. Research
+reproduced owner audit/helpers,112original and3native-mode rows, ledgers/geometry/
+CPU/resupply/negative gates and504archive members. Canonical section3.3/spec now
+uses destinationq=troops/1000, ownstock>q, favored capital in distance minimum;
+transfer capacity stays /100. No new game, production/globalRNG/Windows claim.
+
+Reply-start findings diff against last reported/delivered8d975ef was empty.
+Fleet174/PR179 is received but NOT yet approved/intaken by Research; its source
+status remains unchanged. No new experiment or other-repository write. Publish
+these two metadata changes and relay actual main pin; retain delivery receipt.
