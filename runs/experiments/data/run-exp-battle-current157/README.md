@@ -1,6 +1,7 @@
 # Current-Main tactical audit #157 — 2026-10-25
 
-Finding: `findings/2026-10-25-current-main-battle-replay157.md` (intake pending).
+Finding: `findings/2026-10-25-current-main-battle-replay157.md` (promoted by Research PR76 at
+`b90f6910493dbf3da5a333e45004e0b2e059270e`).
 Main pin b593c6e28939c1c7154f9a41d0436a8f14f352dc. T206/PR1371 and movement
 PR1387 are already merged; #1377 closed. No duplicate patch is prepared.
 

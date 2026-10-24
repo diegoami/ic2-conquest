@@ -13,7 +13,9 @@ The original source packet remains in
 historical incomplete control, not the correction to apply.
 
 Fresh current-Main audit is
-`findings/2026-10-25-current-main-battle-replay157.md`, awaiting separate intake.
+`findings/2026-10-25-current-main-battle-replay157.md`, promoted by Research PR76
+at `b90f6910493dbf3da5a333e45004e0b2e059270e`:
+use the [canonical current audit](https://github.com/diegoami/imperial-conquest-2-research/blob/b90f6910493dbf3da5a333e45004e0b2e059270e/docs/reports/2026-10-25-current-main-battle-replay157.md).
 It compiles actual current engine/test helpers and passes all318strict state
 and ordered-draw comparisons,5fixed series,14recorded-entry controls and2420
 ordinary tactical tests/0failure/0skip. No fixture, tolerance, registry exemption
