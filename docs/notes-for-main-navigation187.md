@@ -2,8 +2,10 @@
 
 Read `findings/2026-10-24-army-navigation-rule187.md`,
 `docs/navigation187-rule.md` and the interpreted data/public matrix under
-`runs/experiments/data/run-exp-navigation187/`. Research intake is pending;
-use the promoted report before changing production behavior. No T212 label
+`runs/experiments/data/run-exp-navigation187/`. Research PR72 merged at
+`c863a97cb1fc66206e23521c7bdd024548ba41dd`:
+use the [promoted report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-army-navigation-rule187.md)
+before changing production behavior. No T212 label
 was cleared and no production patch was made here.
 
 The reusable eligibility and first-destination rules/data are recovered and
@@ -28,3 +30,9 @@ universal initialization. Exact competing outputs and the minimal next original
 call-site capture are in the report. A broader cleanup contract stays blocked;
 scope any narrower T212 implementation explicitly around covered branches.
 Behavior-preserving target/walker regressions can proceed independently.
+
+Research replayed the retained controls/build, not an independent rebuild or
+new caller experiment. Four older branch call lists gain DBA8 observer entries
+under the current observer; only those added entries are normalized in its
+receipt. No endpoint/budget/contact result changed. PR190's newer strategic
+continuation is queued separately; its evidence is not promoted by this intake.

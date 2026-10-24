@@ -4,7 +4,10 @@ Conquest finding `findings/2026-10-24-strategic-fidelity-pilot171.md` is intaken
 Research PR69 merged at `cdb355fde49b7047d6164de26b2922054fb120ee`.
 Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/cdb355fde49b7047d6164de26b2922054fb120ee/docs/reports/2026-10-24-strategic-fidelity-pilot171.md).
 Research independently reproduced retained controls without a new game run or
-production change. The fleet174 finding remains a separate pending intake.
+production change. Fleet174's initial packet was promoted by Research PR70,
+and its accepted-movement packet by PR71/72. Navigation187 is promoted by PR72
+at `c863a97cb1fc66206e23521c7bdd024548ba41dd`, with its caller limit retained;
+T212 stays blocked. The newer conquest PR190 continuation remains unpromoted.
 
 Pinned remake55d96876: eleven distinct generated inputs,112original army-tree
 states,290524input checks. Own scorers give58/112matching branch kinds; actual

@@ -19,7 +19,11 @@ and port selection run before routing; route absence tests signed X. The
 combined stored-route/zero-moves case was untested by PR70. The new conquest
 finding `findings/2026-10-24-fleet-accepted-movement174.md` covers it synthetically
 and adds actual movement/accepted actions, cargo/port controls and a separate
-budget discrepancy (1408); its Research intake is still pending. Faithful
+budget discrepancy (1408); it is now promoted through Research PR71 and
+strengthened in PR72 at `c863a97cb1fc66206e23521c7bdd024548ba41dd`.
+Use the [accepted-movement report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-fleet-accepted-movement174.md).
+Main1408 is closed after T214; its old counterexample remains historical
+evidence. PR190's provider/overflow follow-up is separately queued/unpromoted. Faithful
 policy/execution is scoped separately in1409. Retain route lifetime,
 movement/cargo/port/contact and appropriate CI checks.
 Do not infer global RNG or Windows acceptance from this report. Main is reached

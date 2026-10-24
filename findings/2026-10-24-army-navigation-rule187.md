@@ -4,7 +4,18 @@
 rows, static-domain checks and a final private conditional regression.
 **Tasks:** [#187](https://github.com/diegoami/ic2-conquest/issues/187),
 [Main T212 / #1394](https://github.com/diegoami/imperial_conquest_2/issues/1394).
-Research intake is pending. T212 remains blocked; no production code changed.
+Promoted by [Research PR72](https://github.com/diegoami/imperial-conquest-2-research/pull/72)
+at `c863a97cb1fc66206e23521c7bdd024548ba41dd`.
+Use the [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/reports/2026-10-24-army-navigation-rule187.md).
+T212 remains blocked; no production code changed.
+
+Research separately reproduced the bounded controls and retained native walker.
+Its [safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/c863a97cb1fc66206e23521c7bdd024548ba41dd/docs/data/actions-navigation187-intake-v1.json)
+documents four older branch rows with added DBA8 observer entries: removing only
+those entries restores the retained call lists; no game result was normalized.
+This was offline replay of retained builds, not an independent rebuild, new
+caller experiment, fresh game or Windows acceptance. The newer PR190
+continuation remains separately queued and unpromoted.
 
 ## Reusable rule and navigation data
 
