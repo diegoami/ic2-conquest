@@ -62,3 +62,9 @@ formula; v2 is authoritative for comparing actual current dispatch. Handler
 blob9a66af8 and faithful ruleset blob4e04ca3 also identical at a5cfebe.
 source-audit-v2 replaces approximate v1 line ranges with exact starts/ends
 located automatically in the pinned decompile. Both retained.
+
+Controls checkpoint: all twelve army cases and all three fleet debt cases now
+match the predeclared predictions through actual UI and saved pairs. Fleet
+reverse receiving cap950 ->1000 limits a requested100 to50. Original fleet
+funding at treasury -100/0/+50 also supplies100 in full. Four fleet controls
+remain. Each measurement is immediately task-owned; no binary/public hashes.
