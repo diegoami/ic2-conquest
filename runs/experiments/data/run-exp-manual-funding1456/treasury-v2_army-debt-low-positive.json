@@ -1,0 +1,37 @@
+{
+  "id": "army-debt-low-positive",
+  "kind": "army",
+  "provider": "city",
+  "treasury": 50,
+  "purse": 100,
+  "direction": 1,
+  "expected": [
+    -50,
+    200,
+    50
+  ],
+  "requested_step": 100,
+  "before": [
+    50,
+    100,
+    50
+  ],
+  "after": [
+    -50,
+    200,
+    50
+  ],
+  "prediction_match": true,
+  "control_enabled": true,
+  "control_visible": true,
+  "form_fields": {
+    "city": 89,
+    "provider_fleet": -1,
+    "target_army": 0,
+    "target_fleet": -1
+  },
+  "turn": 734,
+  "before_save": "treasury-v2_army-debt-low-positive_before.SAV",
+  "after_save": "treasury-v2_army-debt-low-positive_after.SAV",
+  "total_conserved": true
+}

@@ -1,0 +1,37 @@
+{
+  "id": "army-fleet-over-cap",
+  "kind": "army",
+  "provider": "fleet",
+  "treasury": -100,
+  "purse": 1100,
+  "direction": 1,
+  "expected": [
+    -100,
+    1000,
+    150
+  ],
+  "requested_step": 100,
+  "before": [
+    -100,
+    1100,
+    50
+  ],
+  "after": [
+    -100,
+    1000,
+    150
+  ],
+  "prediction_match": true,
+  "control_enabled": true,
+  "control_visible": true,
+  "form_fields": {
+    "city": -1,
+    "provider_fleet": 2,
+    "target_army": 0,
+    "target_fleet": -1
+  },
+  "turn": 734,
+  "before_save": "controls-v3_army-fleet-over-cap_before.SAV",
+  "after_save": "controls-v3_army-fleet-over-cap_after.SAV",
+  "total_conserved": true
+}

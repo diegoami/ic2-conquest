@@ -1,0 +1,37 @@
+{
+  "id": "army-reverse-limited",
+  "kind": "army",
+  "provider": "city",
+  "treasury": -100,
+  "purse": 50,
+  "direction": -1,
+  "expected": [
+    -50,
+    0,
+    50
+  ],
+  "requested_step": -100,
+  "before": [
+    -100,
+    50,
+    50
+  ],
+  "after": [
+    -50,
+    0,
+    50
+  ],
+  "prediction_match": true,
+  "control_enabled": true,
+  "control_visible": true,
+  "form_fields": {
+    "city": 89,
+    "provider_fleet": -1,
+    "target_army": 0,
+    "target_fleet": -1
+  },
+  "turn": 734,
+  "before_save": "controls-v3_army-reverse-limited_before.SAV",
+  "after_save": "controls-v3_army-reverse-limited_after.SAV",
+  "total_conserved": true
+}
