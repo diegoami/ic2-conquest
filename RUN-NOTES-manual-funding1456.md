@@ -68,3 +68,29 @@ match the predeclared predictions through actual UI and saved pairs. Fleet
 reverse receiving cap950 ->1000 limits a requested100 to50. Original fleet
 funding at treasury -100/0/+50 also supplies100 in full. Four fleet controls
 remain. Each measurement is immediately task-owned; no binary/public hashes.
+
+## Completed measurement / self-review
+
+19/19 original UI cases complete. Final audit-v1 independently reparses every
+saved pair: all predictions match, all controls visible/enabled, all totals
+conserved; parsed strategic state unchanged except tested balances and camera
+view. EXE/DAT match private known original pins and remain unchanged. Private
+manifest includes failed pilot, all save pairs, screenshots and fingerprints.
+No End turn/battle/native Windows, no original patch or running-memory write.
+
+Native-v2:12/19 helper+source-dispatch projections match;7 differences are the
+six debt/insufficient treasury cases and fleet target with via-fleet dispatch.
+Actual current native helper calls, not native UI/full command execution.
+Remake main rechecked: still a5cfebedbb419870985c5f86e3987f238dd587f4.
+
+Finding: findings/2026-10-25-manual-funding-in-debt1456.md. Recommend manual
+national treasury semantics without source-balance clamp, preserving signed
+cap/pullback, army/fleet-provider limits/reverse cap and T207 automatic reserve.
+Original fleet targets always use national treasury, even when a fleet is
+selected for supplies; actual native UI caller must be checked before calling
+its generic CLI via behavior a UI defect. No remake implementation.
+
+Validation: Python compile, C helpers compiled, native probe built/evaluated19,
+public source blobs verified, full parsed save-pair audit19, diff --check.
+Self-review only; no external reviewer launched. Earlier pilot/line-reference/
+native-dispatch comparison scopes retained and disclosed, not silently replaced.
