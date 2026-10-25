@@ -155,3 +155,29 @@ reported/delivered baseline92314c8. This promotion changes metadata and adds
 the independent verification receipt; no existing measured outputs change.
 Next: land promotion metadata, relay it to Research, post canonical evidence
 on Main #1456 and record actual delivery. Main implementation remains separate.
+
+### Promotion receipt / final END
+
+PR209 merged promotion metadata at
+`f440e3492331efff393e54da758ce09f76da32ff`, source head
+`6e7d97a287980d719152826dd0baff93d06aebda`; exact-head GitGuardian SUCCESS.
+Changed finding: `findings/2026-10-25-manual-funding-in-debt1456.md` now
+marks Research77 promotion, canonical/safe-receipt links and independent
+offline verification; no observation, tag or measurement changed.
+
+Latest reported findings baseline and successful last-delivered SHA:
+`f440e3492331efff393e54da758ce09f76da32ff`, 2026-10-25. Mandatory metadata
+relay to verified Research thread `01a167fa-9fb2-7570-bf21-b32682c79e6e`
+succeeded (`isError:false`, returned same thread ID). No re-intake requested.
+
+Canonical handoff posted:
+
+- https://github.com/diegoami/imperial_conquest_2/issues/1456#issuecomment-6401024658
+- https://github.com/diegoami/ic2-conquest/issues/206#issuecomment-6401024856
+
+END: source promotion and authorized canonical handoff complete. No new
+game/test, Main code/label or release/tag change. Existing Wine/native UI,
+whole-command, caller and installed-build limits retained. T207 automatic
+reserve remains owner policy. Conquest #206 is closed after the bounded study;
+Main #1456 implementation remains outside this repository. Return checkout to
+main after this receipt; preserve the eleven unrelated untracked files.
