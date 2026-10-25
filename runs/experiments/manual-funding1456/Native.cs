@@ -15,7 +15,9 @@ foreach(var c in JsonDocument.Parse(File.ReadAllText(file)).RootElement.Enumerat
  string kind=c.GetProperty("kind").GetString()!,via=c.GetProperty("provider").GetString()!;
  var n=new NationState("test","test","#000000","test",null,SeatControl.Human,null,t,800,0,0,20,0,0,0,t,0,ValueList<RecruitmentSlot>.Empty,false);
  int[] result;
- if(kind=="army"&&via=="fleet") {
+ // Current TransferMoneyCommandHandler selects via-fleet for either target.
+ // Compare that actual current dispatch, separately from ORIGINAL behavior.
+ if(via=="fleet") {
   var r=TreasuryPurseTransfer.TransferBetweenPurses(provider,p,request,rules);
   result=[t,r.ToMoney,r.FromMoney];
  } else if(kind=="army") {

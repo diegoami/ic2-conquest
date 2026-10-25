@@ -1,0 +1,82 @@
+{
+  "decompile_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "functions": [
+    {
+      "address": "00446f50",
+      "name": "TUnitMap_SupplyArmy",
+      "lines": [
+        46829,
+        46855
+      ],
+      "gates": "owned selected army (including carried); adjacent qualifying city or own fleet; no treasury sign/balance test"
+    },
+    {
+      "address": "004477fc",
+      "name": "TUnitMap_SupplyFleet",
+      "lines": [
+        47126,
+        47158
+      ],
+      "gates": "owned selected fleet; qualifying city or distinct fleet provider; no treasury sign/balance test"
+    },
+    {
+      "address": "0043edc0",
+      "name": "TAFSupply_InitializeForm",
+      "lines": [
+        42278,
+        42332
+      ],
+      "gates": "target army/fleet from current selection, providers initialized; money spinners min0 max1000 position500; no treasury sign/balance gate"
+    },
+    {
+      "address": "0043efac",
+      "name": "TAFSupply_CityOrFleet",
+      "lines": [
+        42337,
+        42564
+      ],
+      "gates": "own city or fleet shows money controls; foreign city hides them; visibility setter 00412c08; no balance-based enable gate"
+    },
+    {
+      "address": "0043fb10",
+      "name": "TAFSupply_ChangeProvider",
+      "lines": [
+        42828,
+        42887
+      ],
+      "gates": "select provider then refresh visibility and printed numbers"
+    },
+    {
+      "address": "0044005c",
+      "name": "TAFSupply_ChangeMoney",
+      "lines": [
+        43091,
+        43174
+      ],
+      "rules": {
+        "army_treasury_up": "step=min(10_or_100,1000-purse); treasury-=step; purse+=step",
+        "army_fleet_up": "step=min(10_or_100,1000-purse); step=min(step,fleet_purse); fleet_purse-=step; purse+=step",
+        "army_treasury_down": "step=min(10_or_100,purse); treasury+=step; purse-=step",
+        "army_fleet_down": "step=min(10_or_100,purse); step=min(step,1000-fleet_purse); fleet_purse+=step; purse-=step",
+        "fleet_up": "step=min(10_or_100,1000-fleet_purse); national_treasury-=step; fleet_purse+=step; supply provider ignored",
+        "fleet_down": "step=min(10_or_100,fleet_purse); national_treasury+=step; fleet_purse-=step; supply provider ignored"
+      }
+    },
+    {
+      "address": "00440234",
+      "name": "TAFSupply_OK",
+      "lines": [
+        43179,
+        43185
+      ],
+      "rules": "closes form; money arrows already mutate actual balances"
+    }
+  ],
+  "native_main_pin": "a5cfebedbb419870985c5f86e3987f238dd587f4",
+  "native_helper_blob": "884097638b6708f5152ae3a5b53c8d1ca72149bc",
+  "native_command_blob": "9a66af872c31e9ecbb0947e7cf608d20f4fa0362",
+  "native_ruleset_blob": "4e04ca3e72cb1eb5bbe68010eb3280a373ebb93b",
+  "purse_cap": 1000,
+  "kind": "static source reading; observations in separate case files",
+  "supersedes": "source-audit-v1.json approximate line ranges; v2 locates exact function starts/ends from pinned source"
+}
