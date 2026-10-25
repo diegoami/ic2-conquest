@@ -94,3 +94,38 @@ Validation: Python compile, C helpers compiled, native probe built/evaluated19,
 public source blobs verified, full parsed save-pair audit19, diff --check.
 Self-review only; no external reviewer launched. Earlier pilot/line-reference/
 native-dispatch comparison scopes retained and disclosed, not silently replaced.
+
+## Publication, relay and END
+
+Commits: first measured batch `94daa86`; control/source checkpoint `9658d0d`;
+fleet checkpoint `6cb0439`; final finding/audit
+`e06c1becc368ec7a580dfa94ff4a5b84c15a0068`. PR207 merged at
+`92314c83449c11285cdccb76e61a47c3b0481158`. Exact final head GitGuardian
+SUCCESS; PR mergeable/clean, no review comments. No external review claimed.
+
+New finding reported and successfully delivered:
+`findings/2026-10-25-manual-funding-in-debt1456.md` — original manual army
+and fleet funding can drive treasury negative; fleet-provider limits and
+fleet-target national-treasury routing measured separately.
+
+Last reported findings baseline and last delivered SHA:
+`92314c83449c11285cdccb76e61a47c3b0481158`, 2026-10-25. Verified Research
+thread `01a167fa-9fb2-7570-bf21-b32682c79e6e` title `ic2-research`; relay tool
+returned that thread ID and `isError:false`. This records **delivery only**;
+canonical intake/promotion remains Research's next step. A pre-send length
+guard rejected an overlong message locally; the shortened message sent once.
+
+Durable issue checkpoints:
+
+- Main #1456: https://github.com/diegoami/imperial_conquest_2/issues/1456#issuecomment-6400629590
+- Conquest #206: https://github.com/diegoami/ic2-conquest/issues/206#issuecomment-6400629742
+
+END: bounded measurement and authorized handoff complete. All game/helper
+processes from the final runner ended through its own-prefix cleanup. No
+Windows access, paused battles/bots, new campaign, original patch, remake
+write, release/tag change or extra reviewer. Eleven unrelated untracked files
+preserved. Private evidence stays local/ignored; no public release attempted
+because the owner's current handoff explicitly requires original files and
+hashes private. Return checkout to main after this receipt merges. Next work
+is Research consolidation, then Main's #1456 implementation using promoted
+evidence; T207 automatic reserve remains a separate owner policy.
