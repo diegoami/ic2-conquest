@@ -1,9 +1,22 @@
 # Manual army and fleet funding can drive the national treasury into debt
 
-**Status:** conquest draft for Main #1456 (v0.8.1), measured under Wine; awaiting
-Research promotion. Conquest task #206. **[confirmed, partial]** for the
+**Status:** promoted by [Research PR77](https://github.com/diegoami/imperial-conquest-2-research/pull/77)
+at `865755e04f107afc38cdb496669d882e2551aca6`, for Main #1456 (v0.8.1).
+[Canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/865755e04f107afc38cdb496669d882e2551aca6/docs/reports/2026-10-25-manual-funding-in-debt1456.md);
+[safe Research receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/865755e04f107afc38cdb496669d882e2551aca6/docs/data/manual-funding1456-intake-v1.json).
+Measured under Wine; independently reaudited offline by Research.
+Conquest task #206. **[confirmed, partial]** for the
 nineteen original UI cases below; **[derived]** for the general code rule.
 No native Windows acceptance or remake fix is claimed.
+
+Research freshly reparsed all 38 retained saves and reproduced the full
+19-case audit exactly, checked all 19 staged byte allowlists and retained
+visible/enabled control/provider records, verified the three authoritative
+helper/handler/ruleset blobs, and freshly rebuilt the unchanged native probe.
+All 19 native-v2 rows reproduced (12 matches, seven differences). This was a
+separate offline verification, not another original UI run or an external
+model review. Native UI/caller/full-command and installed-build acceptance
+remain outside the result; T207 automatic reserve remains unchanged.
 
 ## Answer
 

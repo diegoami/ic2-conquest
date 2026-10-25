@@ -129,3 +129,29 @@ because the owner's current handoff explicitly requires original files and
 hashes private. Return checkout to main after this receipt merges. Next work
 is Research consolidation, then Main's #1456 implementation using promoted
 evidence; T207 automatic reserve remains a separate owner policy.
+
+## Research promotion — 2026-10-25
+
+Research peer reported PR77; verified live MERGED at
+`865755e04f107afc38cdb496669d882e2551aca6`, exact head
+`5c75f6cba10e27c2c736bfe2b5b6059f96caf6cf`, GitGuardian SUCCESS. Read the full
+canonical report and safe receipt from that pinned merge:
+
+- `docs/reports/2026-10-25-manual-funding-in-debt1456.md`
+- `docs/data/manual-funding1456-intake-v1.json`
+
+Independent offline re-audit: 38 retained saves/full 19-case audit exact;
+19 staged byte allowlists, visible/enabled control and target/provider records
+pass; plans match all 19 predictions. Three source blobs verified against
+authoritative a5cfebe; fresh unchanged native probe reproduces every field of
+all 19 native-v2 rows (12 match/seven differ). No fresh original game/UI,
+native UI/full command, installed-build or native Windows acceptance; no
+external reviewer. T207 automatic reserve unchanged. Research updated the
+earlier purse report to distinguish old unmeasured debt coverage from this
+new runtime evidence. Source finding and data README now mark promotion.
+
+Findings comparison at this reply's start: none changed on origin/main since
+reported/delivered baseline92314c8. This promotion changes metadata and adds
+the independent verification receipt; no existing measured outputs change.
+Next: land promotion metadata, relay it to Research, post canonical evidence
+on Main #1456 and record actual delivery. Main implementation remains separate.

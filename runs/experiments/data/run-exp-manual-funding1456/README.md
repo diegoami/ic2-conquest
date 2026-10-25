@@ -1,5 +1,14 @@
 # Manual funding while in debt — Main #1456 / conquest #206
 
+Promoted in [Research PR77](https://github.com/diegoami/imperial-conquest-2-research/pull/77)
+at `865755e04f107afc38cdb496669d882e2551aca6`:
+[canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/865755e04f107afc38cdb496669d882e2551aca6/docs/reports/2026-10-25-manual-funding-in-debt1456.md),
+[safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/865755e04f107afc38cdb496669d882e2551aca6/docs/data/manual-funding1456-intake-v1.json).
+Research independently reparsed 38 saves, verified all 19 staged byte
+allowlists/control/provider records, and rebuilt the unchanged native probe
+with all 19 v2 rows reproduced. No new game or native UI/full-command claim.
+Existing measured files remain unchanged.
+
 Owner-authorized original UI study. `all-cases-plan-v1.json` fixes predictions
 before the control batch. Each completed `<version>_<case>.json` is a distinct
 real UI observation, including visible/enabled status, parsed save balances,
