@@ -1,0 +1,287 @@
+[
+  {
+    "id": "army-debt-negative",
+    "native_after": [
+      -100,
+      100,
+      50
+    ],
+    "original_prediction": [
+      -200,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-debt-zero",
+    "native_after": [
+      0,
+      100,
+      50
+    ],
+    "original_prediction": [
+      -100,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-debt-low-positive",
+    "native_after": [
+      0,
+      150,
+      50
+    ],
+    "original_prediction": [
+      -50,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-at-cap",
+    "native_after": [
+      -100,
+      1000,
+      50
+    ],
+    "original_prediction": [
+      -100,
+      1000,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-over-cap",
+    "native_after": [
+      0,
+      1000,
+      50
+    ],
+    "original_prediction": [
+      0,
+      1000,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-reverse",
+    "native_after": [
+      0,
+      0,
+      50
+    ],
+    "original_prediction": [
+      0,
+      0,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-reverse-limited",
+    "native_after": [
+      -50,
+      0,
+      50
+    ],
+    "original_prediction": [
+      -50,
+      0,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-fleet-limited",
+    "native_after": [
+      -100,
+      150,
+      0
+    ],
+    "original_prediction": [
+      -100,
+      150,
+      0
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-fleet-empty",
+    "native_after": [
+      -100,
+      100,
+      0
+    ],
+    "original_prediction": [
+      -100,
+      100,
+      0
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-fleet-over-cap",
+    "native_after": [
+      -100,
+      1000,
+      150
+    ],
+    "original_prediction": [
+      -100,
+      1000,
+      150
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-fleet-reverse",
+    "native_after": [
+      -100,
+      0,
+      150
+    ],
+    "original_prediction": [
+      -100,
+      0,
+      150
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "army-fleet-reverse-cap",
+    "native_after": [
+      -100,
+      50,
+      1000
+    ],
+    "original_prediction": [
+      -100,
+      50,
+      1000
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-debt-negative",
+    "native_after": [
+      -100,
+      100,
+      50
+    ],
+    "original_prediction": [
+      -200,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-debt-zero",
+    "native_after": [
+      0,
+      100,
+      50
+    ],
+    "original_prediction": [
+      -100,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-debt-low-positive",
+    "native_after": [
+      0,
+      150,
+      50
+    ],
+    "original_prediction": [
+      -50,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-at-cap",
+    "native_after": [
+      -100,
+      1000,
+      50
+    ],
+    "original_prediction": [
+      -100,
+      1000,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-over-cap",
+    "native_after": [
+      0,
+      1000,
+      50
+    ],
+    "original_prediction": [
+      0,
+      1000,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-reverse",
+    "native_after": [
+      0,
+      0,
+      50
+    ],
+    "original_prediction": [
+      0,
+      0,
+      50
+    ],
+    "matches_prediction": true,
+    "scope": "actual helper; not CLI/UI provider routing"
+  },
+  {
+    "id": "fleet-fleet-provider",
+    "native_after": [
+      -100,
+      100,
+      50
+    ],
+    "original_prediction": [
+      -200,
+      200,
+      50
+    ],
+    "matches_prediction": false,
+    "scope": "actual helper; not CLI/UI provider routing"
+  }
+]

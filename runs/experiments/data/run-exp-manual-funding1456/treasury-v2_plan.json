@@ -1,0 +1,41 @@
+[
+  {
+    "id": "army-debt-negative",
+    "kind": "army",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -200,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "army-debt-zero",
+    "kind": "army",
+    "provider": "city",
+    "treasury": 0,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -100,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "army-debt-low-positive",
+    "kind": "army",
+    "provider": "city",
+    "treasury": 50,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -50,
+      200,
+      50
+    ]
+  }
+]

@@ -1,0 +1,251 @@
+[
+  {
+    "id": "army-debt-negative",
+    "kind": "army",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -200,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "army-debt-zero",
+    "kind": "army",
+    "provider": "city",
+    "treasury": 0,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -100,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "army-debt-low-positive",
+    "kind": "army",
+    "provider": "city",
+    "treasury": 50,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -50,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "army-at-cap",
+    "kind": "army",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 1000,
+    "direction": 1,
+    "expected": [
+      -100,
+      1000,
+      50
+    ]
+  },
+  {
+    "id": "army-over-cap",
+    "kind": "army",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 1100,
+    "direction": 1,
+    "expected": [
+      0,
+      1000,
+      50
+    ]
+  },
+  {
+    "id": "army-reverse",
+    "kind": "army",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 100,
+    "direction": -1,
+    "expected": [
+      0,
+      0,
+      50
+    ]
+  },
+  {
+    "id": "army-reverse-limited",
+    "kind": "army",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 50,
+    "direction": -1,
+    "expected": [
+      -50,
+      0,
+      50
+    ]
+  },
+  {
+    "id": "army-fleet-limited",
+    "kind": "army",
+    "provider": "fleet",
+    "treasury": -100,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -100,
+      150,
+      0
+    ]
+  },
+  {
+    "id": "army-fleet-empty",
+    "kind": "army",
+    "provider": "fleet",
+    "treasury": -100,
+    "purse": 100,
+    "fleet_money": 0,
+    "direction": 1,
+    "expected": [
+      -100,
+      100,
+      0
+    ]
+  },
+  {
+    "id": "army-fleet-over-cap",
+    "kind": "army",
+    "provider": "fleet",
+    "treasury": -100,
+    "purse": 1100,
+    "direction": 1,
+    "expected": [
+      -100,
+      1000,
+      150
+    ]
+  },
+  {
+    "id": "army-fleet-reverse",
+    "kind": "army",
+    "provider": "fleet",
+    "treasury": -100,
+    "purse": 100,
+    "direction": -1,
+    "expected": [
+      -100,
+      0,
+      150
+    ]
+  },
+  {
+    "id": "army-fleet-reverse-cap",
+    "kind": "army",
+    "provider": "fleet",
+    "treasury": -100,
+    "purse": 100,
+    "fleet_money": 950,
+    "direction": -1,
+    "expected": [
+      -100,
+      50,
+      1000
+    ]
+  },
+  {
+    "id": "fleet-debt-negative",
+    "kind": "fleet",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -200,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "fleet-debt-zero",
+    "kind": "fleet",
+    "provider": "city",
+    "treasury": 0,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -100,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "fleet-debt-low-positive",
+    "kind": "fleet",
+    "provider": "city",
+    "treasury": 50,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -50,
+      200,
+      50
+    ]
+  },
+  {
+    "id": "fleet-at-cap",
+    "kind": "fleet",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 1000,
+    "direction": 1,
+    "expected": [
+      -100,
+      1000,
+      50
+    ]
+  },
+  {
+    "id": "fleet-over-cap",
+    "kind": "fleet",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 1100,
+    "direction": 1,
+    "expected": [
+      0,
+      1000,
+      50
+    ]
+  },
+  {
+    "id": "fleet-reverse",
+    "kind": "fleet",
+    "provider": "city",
+    "treasury": -100,
+    "purse": 100,
+    "direction": -1,
+    "expected": [
+      0,
+      0,
+      50
+    ]
+  },
+  {
+    "id": "fleet-fleet-provider",
+    "kind": "fleet",
+    "provider": "fleet",
+    "treasury": -100,
+    "purse": 100,
+    "direction": 1,
+    "expected": [
+      -200,
+      200,
+      50
+    ]
+  }
+]
