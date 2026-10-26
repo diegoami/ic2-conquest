@@ -146,3 +146,16 @@ report. units-v3 now runs remaining per-unit controls plus disband-inside-dialog
 OK/Cancel extension. Historical six pairs independently reparsed from retained
 final root paths: U1,U3,U3b,c1,c4,c5. First lookup rejected duplicate priorattempt
 paths; narrowed to published final root, no ambiguous evidence selected.
+
+Bounded sweep UI complete7cases: original fleet arrow950receiver takes50 only,
+1000noop,1100pullback100; ship-only1transfer keeps1100purse; treasury unchanged
+and Cancel inert. Native production model composes100money for those states;
+dispatcher diverts50/100/200 to treasury; ship-only caps1100=>1000,treasury+100.
+Existing1326 owns this; no duplicate. CarriedDisband tested direct and after
+Supply through actualmenu: both formarmyfield−1, no action. Do not claim a
+GUI discrepancy from the native command's carried refusal alone. Original
+quarterly removal→0044AB90 statically clears fleet+22 on valid carried links;
+code-derived/unplayed, not new Windows/runtime lifecycle proof. ±1000 command
+ceiling remains CLI policy; current GUI sends nominal10/100, so no GUI rejection
+case established. Deliberate policies preserved. GUI78pilot starts on freed own
+:757 after sweep; other verified-unit controls continue separately on:758.

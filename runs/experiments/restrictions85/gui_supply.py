@@ -3,6 +3,9 @@ from common import *
 import argparse
 CASES=[dict(id='providers-city-stock-low-first',kind='providers',stocks=[10,90]),dict(id='providers-city-stock-reversed',kind='providers',stocks=[90,10]),dict(id='providers-four-fleets',kind='providers',stocks=[10,90],extra=True)]
 CASES += [dict(id='carried-'+name,kind='carried',city=city,other=other,full=full,stale=stale) for name,city,other,full,stale in [('carrier-alone',False,False,False,False),('city',True,False,False,False),('other-fleet',False,True,False,False),('full-city-other',True,True,True,False),('stale-coordinates',True,True,False,True)]]
+def provider_state(g):
+ s=snapshot(g);s['provider_cities']={str(i):g.i16(0x479590+i*34+24) for i in [85,89,91]};s['provider_fleets']={str(i):g.fleet_state(i) for i in [0,1,2,5]};return s
+
 def execute(c,g,private,stem):
  b=new_bytes();a,f,n=offsets(b);army_units(b,0,[10000]);put(b,a+10,0);put(b,a+12,37)
  if c['kind']=='providers':
@@ -31,16 +34,16 @@ def execute(c,g,private,stem):
   for k in range(lst['count']):
    if k:g.click_list_row(lst,k,pause=.3)
    fields=list(struct.unpack('<9h',g.mem(form+0x27e,18)))
-   events.append(dict(row=k,fields=fields,lists=list_rows('Supply army'),state=snapshot(g)))
+   events.append(dict(row=k,fields=fields,lists=list_rows('Supply army'),state=provider_state(g)))
    if c['kind']=='providers':
     # Each row separately, choose small10 free-supply arrow.
     ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
-    arrow(g,'Supply army',ups[0],1);events.append(dict(row=k,phase='supply10',state=snapshot(g)))
+    arrow(g,'Supply army',ups[0],1);events.append(dict(row=k,phase='supply10',state=provider_state(g)))
   g.shot(private/(stem+'-dialog.png'))
   if c['kind']=='carried':
    cs=inspect('Supply army');ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
    if len(ups)==4:
-    arrow(g,'Supply army',ups[0],1);arrow(g,'Supply army',ups[-1],1);events.append(dict(phase='supply10-money100',state=snapshot(g)))
+    arrow(g,'Supply army',ups[0],1);arrow(g,'Supply army',ups[-1],1);events.append(dict(phase='supply10-money100',state=provider_state(g)))
   close(g,'Supply army',cs,'OK')
  after=save(g,private,stem,'after');s1=snapshot(g)
  public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,before=s0,after=s1,events=events,summary=dict(opened=opened,providers=[e.get('fields') for e in events if 'fields'in e],army=[s1['armies']['0']['supplies'],s1['armies']['0']['money']],carrier=[s1['fleets']['2']['supplies'],s1['fleets']['2']['money']])))
