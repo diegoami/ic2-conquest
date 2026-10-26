@@ -83,3 +83,19 @@ Supply-v2 completed17controls, audit-supply-v1 reparses34saves and whole parsed
 world equality except named resources/camera. Draft signed-paid-supply85 ready
 for bounded publication; no Windows/nativeUI claim. Transport-pilot-v1 starts
 separate human embark5001/hire5001 on freed own :757 context.
+
+Army-v3 first unfinished Split control failed before arrow: one-unit source
+refuses Split (0044755c slot1 gate). Preserved input/before/failure; corrected
+synthetic Split donor to two5000-unit slots, no original or policy change.
+Army-v4 resumes unfinished controls; Split now opens and same money-handler
+pullback1100/0=>1000/100 observed on copies; Cancel restores original resources.
+
+Transport pilot stockoriginal separately ACCEPTS5001 human embark and5001
+post-hire on10ships; links intact, embark zeros moves, hire leaves moves7/7.
+Remaining exact83 boundaries launched transport-v2, no inference between callers.
+
+PR212 draft opened for bounded publication. Current source-supply finding and
+all probes/scalars pushed. NativeExtra first compile failed on contextual
+identifier `from with`; retained buildv1 and failed launchv1, renamed fixture
+variable; buildv2 preserves same production-call semantics. No failed native
+attempt is counted as an observation.

@@ -5,7 +5,7 @@ CASES=[]
 for side in [0,1]:
  for receiver in [900,1000,1100]:
   CASES.append(dict(id=f'money-side{side}-receiver{receiver}',mode='money',purses=[100,receiver] if side==0 else [receiver,100],side=side,presses=2,finish='OK'))
-CASES += [dict(id='money-overcap-cancel',mode='money',purses=[100,1100],side=0,presses=1,finish='Cancel'),dict(id='split-money-shared',mode='money',purses=[1100,100],side=1,presses=1,split=True,finish='Cancel')]
+CASES += [dict(id='money-overcap-cancel',mode='money',purses=[100,1100],side=0,presses=1,finish='Cancel'),dict(id='split-money-shared',mode='money',purses=[1100,100],side=1,presses=1,split=True,counts=[[5000,5000],[10000]],finish='Cancel')]
 for label,sups,selected,finish in [('over-ok',[206,0],0,'OK'),('over-cancel',[206,0],0,'Cancel'),('over-reversed',[206,0],13,'OK'),('within',[50,20],0,'OK'),('both-over',[206,150],0,'OK'),('both-over-reversed',[206,150],13,'OK')]:
  CASES.append(dict(id='unchanged-'+label,mode='unchanged',supplies=sups,selected=selected,finish=finish))
 for side in [0,1]:
