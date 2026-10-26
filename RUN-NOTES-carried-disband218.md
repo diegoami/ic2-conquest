@@ -76,3 +76,26 @@ unbounded timing hunt or whole-program nonreachability claim.
 Runtime760warning checked: serverPID2385006 exactly matches createddisplay
 receipt andXlock; pilot2384271 exited. Warning is failed additional listener,
 not attachment to an unknown/owner display. Two contexts remain task-owned.
+
+Positive GUI evidence changes answer: queued real cargoRecruit(nooffers)→
+Disband clicks at declared0ms and20ms reach actual whole-army confirmation;
+Yes deletes cargo, clearsfleetlink, treasury1730→1767,Antium330→353,mob24
+unchanged. Deadrecord retains5000troops (tombstone, notlive). Source trace
+observes field+220−1→0 beforeconfirmation. Settled/tooltip-rechecked paths
+were negative because selection had reset. Do not preserve an absolute
+'unreachable' conclusion. Runtime sourcepath is timing/redraw-sensitive; await
+150ms, then explicitNo/redrawcontrols before final interpretation. This is
+ordinary UIinput, nohandlercall/memorywrite/EXEpatch. Exact nativewhole and
+last-unit dispatcher comparisons being built against unchanged4d70275a;
+Maincurrenthead verified still4d70275a. Main's documented defensive whole
+refusal vs565ownerlast-unit policy must remain distinct; noautomatic policy
+removal/productionfix authorized by the discovery.
+
+Fast150ms also reaches real wholeDisband confirmation/deletion/refunds. LandNo
+control reaches genuineNo and leaves army/resources intact. Final two boundary
+controls: carriedfast20msNo must actually reachConfirm; explicitAreaMap pan
+betweenNoOfferRecruit andDisband tests redraw reset. No additional timing sweep.
+Three retained outputs additionally tested in separate cold Original processes:
+Change-regularempty, Change-mercempty, Transferdeleted. Earlier g.open(after)
+was a same-process reload and is labelled as such, NOT fresh-process evidence.
+Cold reader preserves all inputs and writes new uniquelynamed originalSAVs.

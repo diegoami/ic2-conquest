@@ -16,6 +16,8 @@ CASES=[
  dict(id='carried-after-nooffer-recruit-toolbar-yes',mode='whole',recruit_toolbar=True,toolbar=True),
  dict(id='carried-after-nooffer-recruit-toolbar-no',mode='whole',recruit_toolbar=True,toolbar=True,confirm_no=True),
  dict(id='carried-after-nooffer-recruit-menu',mode='whole',recruit_toolbar=True),
+ dict(id='carried-nooffer-fast-no',mode='whole',fast_ms=20,confirm_no=True),
+ dict(id='carried-nooffer-then-pan',mode='whole',fast_ms=20,redraw=True),
  *[dict(id='carried-nooffer-fast-'+str(ms)+'ms',mode='whole',fast_ms=ms)for ms in [0,20,150]],
  dict(id='land-whole-no',mode='whole',land=True,confirm_no=True),
  dict(id='land-whole-yes',mode='whole',land=True),
@@ -121,7 +123,12 @@ def execute(case,g,private,stem):
    thread=threading.Thread(target=sample);thread.start()
    try:
     record('verified-fast-toolbar-pair',recruit_x=merc,disband_x=dis,spacing_ms=case['fast_ms'])
-    drv.sh('xdotool','mousemove',str(merc),str(drv.ARMY_TOOLBAR_Y),'click','1','sleep',str(case['fast_ms']/1000),'mousemove',str(dis),str(drv.ARMY_TOOLBAR_Y),'click','1');time.sleep(.8)
+    if case.get('redraw'):
+     drv.sh('xdotool','mousemove',str(merc),str(drv.ARMY_TOOLBAR_Y),'click','1');time.sleep(.02);record('nooffer-before-pan')
+     g.click(drv.AREA_ORIGIN[0]+101,drv.AREA_ORIGIN[1]+46,pause=.5);record('after-area-pan')
+     drv.sh('xdotool','mousemove',str(dis),str(drv.ARMY_TOOLBAR_Y),'click','1')
+    else:drv.sh('xdotool','mousemove',str(merc),str(drv.ARMY_TOOLBAR_Y),'click','1','sleep',str(case['fast_ms']/1000),'mousemove',str(dis),str(drv.ARMY_TOOLBAR_Y),'click','1')
+    time.sleep(.8)
    finally:stop.set();thread.join()
    record('fast-selection-trace',trace=trace)
   elif case.get('toolbar'):
@@ -129,6 +136,7 @@ def execute(case,g,private,stem):
    record('verified-disband-toolbar',x=found,tooltip='Disband army');g.shot(private/(stem+'-toolbar-tooltip.png'));g.click(found,drv.ARMY_TOOLBAR_Y,pause=.7)
   else:c.army_menu(g,6)
   time.sleep(.7)
+  if case.get('confirm_no') and 'fast_ms'in case:assert g.find_windows('^Confirm$'),'actual carried No confirmation must be reached'
   if case.get('confirm_no') and g.find_windows('^Confirm$'):
    box=g.find_windows('^Confirm$')[0];boxes=[g.read_popup(box)];g._answer_confirm(box[0],yes=False)
   else:boxes=g.dismiss_popups()
