@@ -1,0 +1,25 @@
+{
+  "issue": {
+    "html_url": "https://github.com/diegoami/imperial_conquest_2/issues/1001",
+    "title": "After loading a save, units in training are not visible in the app (the engine keeps them)",
+    "body": "**Reported by the user on 2026-10-11** while playing v0.5.x: \"when loading a game where I know I had recruited them, they are gone, or there is no UI to find them.\"\n\n**Checked by the main session: the engine keeps them.** In the CLI (Rome, seed 1), `recruit-standing rome light_infantry 1000` was accepted, then the game was saved and loaded. The save holds `{\"targetCityId\":\"rome\",\"unitTypeId\":\"light_infantry\",\"troops\":1000,\"stateCode\":0}` in Rome's `recruitmentSlots`, so the queue survives save and load.\n\n**So the gap is in the Godot app.** After a load, the app either doesn't show the queued units, or doesn't make it clear where to find them. To find out which:\n- does `RecruitmentPanelViewModel`, `RecruitUnitDialog`, `ContextPanel` or `NationStatusModel` read `NationState.RecruitmentSlots` after a load?\n- is a view cached from the session that recruited?\n- is there any screen that lists a nation's units in training at all? The original shows them in its recruitment dialog.\n\n**Done when:** a headless check recruits, saves, loads, and finds the queued units in the app's training view, and it fails on `main` if they're missing. Related: #514 / T161 (#1000), the DAT's starting queues.",
+    "state": "closed"
+  },
+  "comments": [
+    {
+      "html_url": "https://github.com/diegoami/imperial_conquest_2/issues/1001#issuecomment-6113836940",
+      "created_at": "2026-10-11T21:15:24Z",
+      "body": "**More from the user (2026-10-11):** \"it might be a display problem but also I would not know how to demobilize them\".\n\n**What the app offers today** (main session's reading):\n- **Where:** Strategy \u2192 Recruit unit (`godot/UI/Dialogs/RecruitUnitDialog.cs`).\n- **Per city:** it lists the units in training for **one city at a time**, chosen from a city dropdown (`RecruitmentPanelViewModel.TrainingAtCity`).\n- **Mobilize** stays disabled until the unit is ready (`IsReady`): readiness +2 a week, and a human needs state 16, so about 8 weeks.\n- **Disband** is there too.\n- **No \"All cities\" entry.** The original's dialog has one listing every unit in training; the clone leaves it out (the code comment at :157 says so). That is the likely reason recruits seem \"gone\": the dialog opens on a city that has none.\n\n**Proposed scope for the fix or task:**\n- add the original's **All cities** entry (every unit in training, with its city), and let Mobilize and Disband act on a row there;\n- show each unit's readiness: weeks until it can be mobilized, or \"ready\";\n- a headless check that recruits at a non-capital city, saves, loads, opens Recruit unit, and finds and mobilizes the unit.\n\nThis may be a small task rather than a fix, since All cities adds a user path. The main session decides at triage."
+    },
+    {
+      "html_url": "https://github.com/diegoami/imperial_conquest_2/issues/1001#issuecomment-6119549194",
+      "created_at": "2026-10-12T07:14:47Z",
+      "body": "Triage: folded into T162 (#1007), planned from this bug (plan PR #1009, merged as a5d5410). T162's Done-when 2 is this reproduction: recruit at a non-capital city, save, load, find the unit in Recruit unit and mobilize it."
+    },
+    {
+      "html_url": "https://github.com/diegoami/imperial_conquest_2/issues/1001#issuecomment-6120560599",
+      "created_at": "2026-10-12T08:26:56Z",
+      "body": "Done by T162 (#1007, PR #1014, merged as d18347e): Recruit unit's All cities entry lists every unit in training after a load, with readiness, and Mobilize and Disband act from it."
+    }
+  ]
+}

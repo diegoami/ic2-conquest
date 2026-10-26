@@ -1,0 +1,235 @@
+{
+  "case": {
+    "id": "noncapital-two-town-tie-slots-reversed",
+    "queues": [
+      [
+        90,
+        2000
+      ],
+      [
+        80,
+        2000
+      ]
+    ],
+    "reorder": true
+  },
+  "turn": 734,
+  "before_save": "gui81-v3_noncapital-two-town-tie-slots-reversed_before.SAV",
+  "after_save": "gui81-v3_noncapital-two-town-tie-slots-reversed_after.SAV",
+  "opened": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 5,
+      "selected": 1,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "All cities",
+        "Tarquinii",
+        "Alba Fucens",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 1,
+      "selected": 0,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": [
+        "Lit inf  2,000  average"
+      ]
+    }
+  ],
+  "binding": {
+    "selected_city": 80,
+    "capital": 85
+  },
+  "reopened": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 5,
+      "selected": 1,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "All cities",
+        "Tarquinii",
+        "Alba Fucens",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 1,
+      "selected": 0,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": [
+        "Lit inf  2,000  average"
+      ]
+    }
+  ],
+  "afterclick": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 5,
+      "selected": 1,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "All cities",
+        "Tarquinii",
+        "Alba Fucens",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 2,
+      "selected": 0,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": [
+        "Lit inf  2,000  average",
+        "Lit inf  3,000  not ready"
+      ]
+    }
+  ],
+  "manual_reopen": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 5,
+      "selected": 1,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "All cities",
+        "Tarquinii",
+        "Alba Fucens",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 1,
+      "selected": 0,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": [
+        "Lit inf  2,000  average"
+      ]
+    }
+  ],
+  "boxes": [],
+  "queues_before": [
+    {
+      "slot": 0,
+      "state": 24,
+      "type": "li",
+      "troops": 2000,
+      "city": 90
+    },
+    {
+      "slot": 1,
+      "state": 24,
+      "type": "li",
+      "troops": 2000,
+      "city": 80
+    }
+  ],
+  "queues_after": [
+    {
+      "slot": 0,
+      "state": 24,
+      "type": "li",
+      "troops": 2000,
+      "city": 90
+    },
+    {
+      "slot": 1,
+      "state": 24,
+      "type": "li",
+      "troops": 2000,
+      "city": 80
+    },
+    {
+      "slot": 2,
+      "state": 0,
+      "type": "li",
+      "troops": 3000,
+      "city": 80
+    }
+  ],
+  "summary": {
+    "opened": [
+      {
+        "x": 313,
+        "y": 70,
+        "count": 5,
+        "selected": 1,
+        "cls": "TListBox",
+        "selected_count": -1,
+        "rows": [
+          "All cities",
+          "Tarquinii",
+          "Alba Fucens",
+          "Luceria",
+          "ROME"
+        ]
+      },
+      {
+        "x": 313,
+        "y": 179,
+        "count": 1,
+        "selected": 0,
+        "cls": "TListBox",
+        "selected_count": 0,
+        "rows": [
+          "Lit inf  2,000  average"
+        ]
+      }
+    ],
+    "reopened": [
+      {
+        "x": 313,
+        "y": 70,
+        "count": 5,
+        "selected": 1,
+        "cls": "TListBox",
+        "selected_count": -1,
+        "rows": [
+          "All cities",
+          "Tarquinii",
+          "Alba Fucens",
+          "Luceria",
+          "ROME"
+        ]
+      },
+      {
+        "x": 313,
+        "y": 179,
+        "count": 1,
+        "selected": 0,
+        "cls": "TListBox",
+        "selected_count": 0,
+        "rows": [
+          "Lit inf  2,000  average"
+        ]
+      }
+    ],
+    "boxes": []
+  }
+}

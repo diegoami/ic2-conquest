@@ -5,6 +5,8 @@ existing vacant land/sea, relations set to peace. See common evidence rules.
 from common import *
 import argparse
 CASES=[dict(id='natural-'+label,fleet_ids=fids,stocks=stocks) for label,fids,stocks in [('two-fleets',[2,5],[90,10]),('four-fleets',[2,5,0,1],[90,10]),('four-fleets-id-order-reversed',[5,2,1,0],[10,90])]]
+CASES += [dict(id='natural-staged-switch-'+action,fleet_ids=[2,5],stocks=[90,10],staged=True,buy=(action=='buy-close')) for action in ['close','buy-close']]
+
 def snap(g):
  s=snapshot(g);s['cities']={str(i):g.i16(0x479590+i*34+24) for i in [72,76]};s['all_fleets']={str(i):g.fleet_state(i) for i in [0,1,2,5]};return s
 
@@ -20,6 +22,16 @@ def execute(c,g,private,stem):
  for cid,stock in zip([72,76],c['stocks']):put(b,sav.CITY_OFF+cid*34+24,stock)
  put(b,n+0x26+2,0);put(b,n+1172+0x26,0)
  g.open(staged(b,private,stem));before=save(g,private,stem,'before');s0=snap(g);g.army_tool(0,'supply','Supply army');title='Supply army';cs=inspect(title);lst=g.control(cs,cls='TListBox');form=struct.unpack('<I',g.mem(0x45e71c,4))[0];events=[]
+ if c.get('staged'):
+  stages=[]
+  ups=sorted([u for u in cs if u['cls']=='TUpDown' and u['visible']],key=lambda u:(u['y'],u['x']))
+  arrow(g,title,ups[-1],1);stages.append(dict(phase='stage',amount=g.i16(form+0x290),state=snap(g)))
+  g.click_list_row(lst,1,pause=.4);stages.append(dict(phase='switch',amount=g.i16(form+0x290),fields=list(struct.unpack('<4h',g.mem(form+0x288,8))),state=snap(g)))
+  if c['buy']:
+   g.click_control(g.control(cs,text='Buy supplies'),pause=.5);stages.append(dict(phase='buy',amount=g.i16(form+0x290),state=snap(g)))
+  g.shot(private/(stem+'-switch.png'));close(g,title,cs,'Close');after=save(g,private,stem,'after');s1=snap(g)
+  public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,before=s0,after=s1,events=stages,summary=dict(staged=[x['amount']for x in stages],cities=s1['cities'],army=[s1['armies']['0']['supplies'],s1['armies']['0']['money']])))
+  return
  for k in range(lst['count']):
   if k:lst=click_any_row(g,title,lst,k)
   fields=list(struct.unpack('<9h',g.mem(form+0x27e,18)));cs=inspect(title)

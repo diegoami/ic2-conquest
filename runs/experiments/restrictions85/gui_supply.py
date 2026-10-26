@@ -5,6 +5,8 @@ CASES=[dict(id='providers-city-stock-low-first',kind='providers',stocks=[10,90])
 CASES += [dict(id='carried-'+name,kind='carried',city=city,other=other,full=full,stale=stale) for name,city,other,full,stale in [('carrier-alone',False,False,False,False),('city',True,False,False,False),('other-fleet',False,True,False,False),('full-city-other',True,True,True,False),('stale-coordinates',True,True,False,True)]]
 CASES += [dict(id='carried-moved-carrier',kind='carried',city=True,other=True,full=False,stale=False,move=True)]
 
+CASES += [dict(id='carried-close',kind='carried',city=True,other=True,full=False,stale=False,finish='Close')]
+
 def provider_state(g):
  s=snapshot(g);s['provider_cities']={str(i):g.i16(0x479590+i*34+24) for i in [85,89,91]};s['provider_fleets']={str(i):g.fleet_state(i) for i in [0,1,2,5]};return s
 
@@ -52,7 +54,7 @@ def execute(c,g,private,stem):
    cs=inspect('Supply army');ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
    if len(ups)==4:
     arrow(g,'Supply army',ups[0],1);arrow(g,'Supply army',ups[-1],1);events.append(dict(phase='supply10-money100',state=provider_state(g)))
-  close(g,'Supply army',cs,'OK')
+  close(g,'Supply army',cs,c.get('finish','OK'))
  if c['kind']=='carried':
   g.select_fleet(2);g.click(g.fleet_x['supply'],drv.ARMY_TOOLBAR_Y,pause=.7);time.sleep(.7)
   fleet_open=bool(g.find_windows('^Supply fleet$'))

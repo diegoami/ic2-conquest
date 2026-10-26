@@ -194,7 +194,7 @@ Core85 bounded publication PR213 mergedc7926a69392acef51c0c563508e7dc0c37b7ed34,
 exacthead1317bceb2d31172b4380fecaabb1345dca61a674; GitGuardian success, no review
 comments or external reviewer. Four new findings: army-money-and-unchanged-ok85,
 partial-army-transfer85,human-transport-rounding83,manual-family-assumption-sweep85.
-All54? unique core controls:17supply+14money/OK+17units/disband+9transport+7sweep
+Unique primary core controls:17supply+14money/OK+17units/disband+9transport+7sweep
 =64 completed primarycontrols (extra successful money pilot retained separately).
 Six old pairs reread; total128primary endpoint saves. Per-batch audits pass.
 
@@ -212,3 +212,31 @@ GUI79six controls running on :757; GUI81nine on :758; GUI80pilot stock synthetic
 battle save shows enemy basicdetail click/roster, no selection, no troop/move/
 shotchange. Remaining GUI80 controls one fresh process per case on own:759.
 No native Windows, ownergame, AI/pausedbattlequeue or remake modification.
+
+GUI80 rawzero-moves inputs were refreshed by original load/start to4moves;
+observed v2 zero-labelled rows are positive-move controls, NOT zeromove evidence.
+No memory write/patch used to bypass. Prepared v3 controls use actual repeated
+original archery to spend moves, with surviving30000troop synthetic HI target,
+then reselect own archer at actual0moves before enemyclick. Fresh-process
+version will run after v2 completes. This also separates planned-target details
+from real shot feedback without any Endturn/AI/battle completion.
+GUI79 stale-coordinate fixture fails original carrier selection itself; kept
+as a failed invalid-link-coordinate stimulus, not provider behavior. Natural
+carrier move101,46=>100,46 succeeds and supply correctly follows carried army
+with matching coordinates; measured separately moved-v2. No bypass of selection.
+
+GUI81nine stockcontrols complete: default uses capital withnoqueue and capital
+biascount+1; strictgreater tiesfirsteligible citylist order, queue-slot order
+irrelevant. Allcities entry does not become the initial selection. Accepted
+smallrecruit destination and reopen-after-manual-selection match. Policy trace
+found archivedT162 explicit opensAllwhenawayfromcapital to expose queues (#1001,
+#1007,PR1014); this is deliberate UX policy, NOT automatically a fidelitybug.
+Retained archivedtask and live1001decision chain; preserve it. NativeGui v2
+production models reproduce firstListed/noncapital-All6providers and enemyclick
+None; v1 buildnamespace typo retained. v2 build0warnings/0errors, no Godotappclaim.
+
+GUI80v2eleven cases complete (twozero-labelled actuallypositive because original
+load resets moves). Fresh truezero-v3 two cases now spend moves through four
+actual UIshots before reselect/enemyclick. GUI79Closecase running. GUI78staged
+switch/Close controls added because source0043FB10 does not reset+290 and Buy
+0043FF98 does not reclamp; run exact controls rather than infer transactiontiming.

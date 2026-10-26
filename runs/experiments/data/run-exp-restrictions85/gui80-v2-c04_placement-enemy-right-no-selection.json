@@ -1,0 +1,367 @@
+{
+  "case": {
+    "id": "placement-enemy-right-no-selection",
+    "phase": "placement",
+    "select": false,
+    "distant": false,
+    "moves": 4,
+    "button": 3
+  },
+  "turn": 734,
+  "before_save": "gui80-v2-c04_placement-enemy-right-no-selection_before.SAV",
+  "after_save": "gui80-v2-c04_placement-enemy-right-no-selection_after.SAV",
+  "events": [
+    {
+      "action": "open",
+      "selected": -1,
+      "cursor": [
+        -1,
+        0
+      ],
+      "info": [],
+      "slots": [
+        {
+          "x": 3,
+          "y": 3,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 0,
+          "side": 0,
+          "name": "Audit own ar",
+          "alive": true
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 2,
+          "ammo": 0,
+          "target": -1,
+          "slot": 1,
+          "side": 0,
+          "name": "Audit own hi",
+          "alive": true
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 0,
+          "target": -1,
+          "slot": 20,
+          "side": 1,
+          "name": "Audit enemy hi",
+          "alive": true
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 21,
+          "side": 1,
+          "name": "Audit enemy ar",
+          "alive": true
+        }
+      ],
+      "phase": 0,
+      "side": 0,
+      "rng": 2603520795
+    },
+    {
+      "action": "enemy-click",
+      "selected": -1,
+      "cursor": [
+        -1,
+        0
+      ],
+      "info": [],
+      "slots": [
+        {
+          "x": 3,
+          "y": 3,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 0,
+          "side": 0,
+          "name": "Audit own ar",
+          "alive": true
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 2,
+          "ammo": 0,
+          "target": -1,
+          "slot": 1,
+          "side": 0,
+          "name": "Audit own hi",
+          "alive": true
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 0,
+          "target": -1,
+          "slot": 20,
+          "side": 1,
+          "name": "Audit enemy hi",
+          "alive": true
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 21,
+          "side": 1,
+          "name": "Audit enemy ar",
+          "alive": true
+        }
+      ],
+      "phase": 0,
+      "side": 0,
+      "rng": 2603520795
+    },
+    {
+      "action": "enemy-roster",
+      "selected": -1,
+      "cursor": [
+        -1,
+        0
+      ],
+      "info": [
+        "Carthage's units",
+        "Audit enemy hi   Heavy infantry   2,000",
+        "Audit enemy ar   Archers   3,000"
+      ],
+      "slots": [
+        {
+          "x": 3,
+          "y": 3,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 0,
+          "side": 0,
+          "name": "Audit own ar",
+          "alive": true
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 2,
+          "ammo": 0,
+          "target": -1,
+          "slot": 1,
+          "side": 0,
+          "name": "Audit own hi",
+          "alive": true
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 0,
+          "target": -1,
+          "slot": 20,
+          "side": 1,
+          "name": "Audit enemy hi",
+          "alive": true
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 21,
+          "side": 1,
+          "name": "Audit enemy ar",
+          "alive": true
+        }
+      ],
+      "phase": 0,
+      "side": 0,
+      "rng": 2603520795
+    },
+    {
+      "action": "cancel-selection",
+      "selected": -1,
+      "cursor": [
+        -1,
+        0
+      ],
+      "info": [],
+      "slots": [
+        {
+          "x": 3,
+          "y": 3,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 0,
+          "side": 0,
+          "name": "Audit own ar",
+          "alive": true
+        },
+        {
+          "x": 2,
+          "y": 2,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 2,
+          "ammo": 0,
+          "target": -1,
+          "slot": 1,
+          "side": 0,
+          "name": "Audit own hi",
+          "alive": true
+        },
+        {
+          "x": 4,
+          "y": 3,
+          "merc": 0,
+          "type": "hi",
+          "troops": 2000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 0,
+          "target": -1,
+          "slot": 20,
+          "side": 1,
+          "name": "Audit enemy hi",
+          "alive": true
+        },
+        {
+          "x": 10,
+          "y": 9,
+          "merc": 0,
+          "type": "ar",
+          "troops": 3000,
+          "quality": 7,
+          "morale": 70,
+          "state": 4,
+          "ammo": 25,
+          "target": -1,
+          "slot": 21,
+          "side": 1,
+          "name": "Audit enemy ar",
+          "alive": true
+        }
+      ],
+      "phase": 0,
+      "side": 0,
+      "rng": 2603520795
+    }
+  ],
+  "summary": {
+    "selected": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "info": [
+      [],
+      [],
+      [
+        "Carthage's units",
+        "Audit enemy hi   Heavy infantry   2,000",
+        "Audit enemy ar   Archers   3,000"
+      ],
+      []
+    ],
+    "targets": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "moves": [
+      4,
+      4,
+      4,
+      4
+    ],
+    "shots": [
+      25,
+      25,
+      25,
+      25
+    ]
+  }
+}
