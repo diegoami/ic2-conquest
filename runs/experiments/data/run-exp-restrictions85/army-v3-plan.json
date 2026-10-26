@@ -1,0 +1,508 @@
+[
+  {
+    "id": "split-money-shared",
+    "mode": "money",
+    "purses": [
+      1100,
+      100
+    ],
+    "side": 1,
+    "presses": 1,
+    "split": true,
+    "finish": "Cancel"
+  },
+  {
+    "id": "unchanged-over-ok",
+    "mode": "unchanged",
+    "supplies": [
+      206,
+      0
+    ],
+    "selected": 0,
+    "finish": "OK"
+  },
+  {
+    "id": "unchanged-over-cancel",
+    "mode": "unchanged",
+    "supplies": [
+      206,
+      0
+    ],
+    "selected": 0,
+    "finish": "Cancel"
+  },
+  {
+    "id": "unchanged-over-reversed",
+    "mode": "unchanged",
+    "supplies": [
+      206,
+      0
+    ],
+    "selected": 13,
+    "finish": "OK"
+  },
+  {
+    "id": "unchanged-within",
+    "mode": "unchanged",
+    "supplies": [
+      50,
+      20
+    ],
+    "selected": 0,
+    "finish": "OK"
+  },
+  {
+    "id": "unchanged-both-over",
+    "mode": "unchanged",
+    "supplies": [
+      206,
+      150
+    ],
+    "selected": 0,
+    "finish": "OK"
+  },
+  {
+    "id": "unchanged-both-over-reversed",
+    "mode": "unchanged",
+    "supplies": [
+      206,
+      150
+    ],
+    "selected": 13,
+    "finish": "OK"
+  },
+  {
+    "id": "partial19plus2-side0",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000,
+        1000
+      ],
+      [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      0,
+      1
+    ],
+    "finish": "OK"
+  },
+  {
+    "id": "partial18plus3-side0",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000,
+        1000
+      ],
+      [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      0,
+      1,
+      2
+    ],
+    "finish": "OK"
+  },
+  {
+    "id": "troop100000-side0",
+    "mode": "units",
+    "counts": [
+      [
+        500,
+        1000,
+        2000,
+        1000
+      ],
+      [
+        24500,
+        24500,
+        24500,
+        24500
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "finish": "OK"
+  },
+  {
+    "id": "transport15000-side0",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000
+      ],
+      [
+        14000
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      1
+    ],
+    "carrier": 13,
+    "finish": "OK"
+  },
+  {
+    "id": "transport15499-side0",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1499
+      ],
+      [
+        14000
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      1
+    ],
+    "carrier": 13,
+    "finish": "OK"
+  },
+  {
+    "id": "transport15500-side0",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1500
+      ],
+      [
+        14000
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      1
+    ],
+    "carrier": 13,
+    "finish": "OK"
+  },
+  {
+    "id": "partial19plus2-side1",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      [
+        1000,
+        1000,
+        1000
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      0,
+      1
+    ],
+    "finish": "OK"
+  },
+  {
+    "id": "partial18plus3-side1",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      [
+        1000,
+        1000,
+        1000
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      0,
+      1,
+      2
+    ],
+    "finish": "OK"
+  },
+  {
+    "id": "troop100000-side1",
+    "mode": "units",
+    "counts": [
+      [
+        24500,
+        24500,
+        24500,
+        24500
+      ],
+      [
+        500,
+        1000,
+        2000,
+        1000
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "finish": "OK"
+  },
+  {
+    "id": "transport15000-side1",
+    "mode": "units",
+    "counts": [
+      [
+        14000
+      ],
+      [
+        1000,
+        1000
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      1
+    ],
+    "carrier": 0,
+    "finish": "OK"
+  },
+  {
+    "id": "transport15499-side1",
+    "mode": "units",
+    "counts": [
+      [
+        14000
+      ],
+      [
+        1000,
+        1499
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      1
+    ],
+    "carrier": 0,
+    "finish": "OK"
+  },
+  {
+    "id": "transport15500-side1",
+    "mode": "units",
+    "counts": [
+      [
+        14000
+      ],
+      [
+        1000,
+        1500
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      1
+    ],
+    "carrier": 0,
+    "finish": "OK"
+  },
+  {
+    "id": "partial19plus2-cancel",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000,
+        1000
+      ],
+      [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      0,
+      1
+    ],
+    "finish": "Cancel"
+  },
+  {
+    "id": "two-refusal-types",
+    "mode": "units",
+    "counts": [
+      [
+        100,
+        100,
+        500
+      ],
+      [
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        780
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      0,
+      1,
+      2
+    ],
+    "carrier": 13,
+    "finish": "OK"
+  },
+  {
+    "id": "partial19plus2-right-cancel",
+    "mode": "units",
+    "counts": [
+      [
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      [
+        1000,
+        1000,
+        1000
+      ]
+    ],
+    "side": 1,
+    "rows": [
+      0,
+      1
+    ],
+    "finish": "Cancel"
+  }
+]

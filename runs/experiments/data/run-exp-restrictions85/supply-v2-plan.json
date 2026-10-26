@@ -1,0 +1,208 @@
+[
+  {
+    "id": "paid-army-room--105",
+    "kind": "army",
+    "supply": 206,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-room--5",
+    "kind": "army",
+    "supply": 106,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-room--4",
+    "kind": "army",
+    "supply": 105,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-room--1",
+    "kind": "army",
+    "supply": 102,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-room-0",
+    "kind": "army",
+    "supply": 101,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-room-51",
+    "kind": "army",
+    "supply": 50,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-decrement-zero",
+    "kind": "army",
+    "supply": 0,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1,
+      -1,
+      -1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-empty-city-overcap",
+    "kind": "army",
+    "supply": 206,
+    "purse": 100,
+    "stock": 0,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-poor-purse",
+    "kind": "army",
+    "supply": 0,
+    "purse": 3,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-army-stage-close",
+    "kind": "army",
+    "supply": 206,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": false,
+    "finish": "Close"
+  },
+  {
+    "id": "paid-army-transfer-close",
+    "kind": "army",
+    "supply": 206,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "Close"
+  },
+  {
+    "id": "paid-fleet-room--105",
+    "kind": "fleet",
+    "supply": 265,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-fleet-room--5",
+    "kind": "fleet",
+    "supply": 165,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-fleet-room--4",
+    "kind": "fleet",
+    "supply": 164,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-fleet-room--1",
+    "kind": "fleet",
+    "supply": 161,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-fleet-room-0",
+    "kind": "fleet",
+    "supply": 160,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  },
+  {
+    "id": "paid-fleet-room-51",
+    "kind": "fleet",
+    "supply": 109,
+    "purse": 100,
+    "stock": 330,
+    "steps": [
+      1
+    ],
+    "transfer": true,
+    "finish": "OK"
+  }
+]

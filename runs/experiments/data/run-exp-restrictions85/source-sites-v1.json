@@ -1,0 +1,222 @@
+{
+  "stock_exe_identity_verified": true,
+  "pinned_decompile_verified": true,
+  "remake_revision": "4d70275aac4e155c0370a3ee23525cf34450a908",
+  "research_revision": "865755e04f107afc38cdb496669d882e2551aca6",
+  "sites": [
+    {
+      "function": "TAFSupply_InitializeForm",
+      "address": "0043edc0",
+      "first_line": 42276,
+      "last_line": 42334
+    },
+    {
+      "function": "TAFSupply_CityOrFleet",
+      "address": "0043efac",
+      "first_line": 42335,
+      "last_line": 42566
+    },
+    {
+      "function": "TAFSupply_FindProviders",
+      "address": "0043f468",
+      "first_line": 42567,
+      "last_line": 42749
+    },
+    {
+      "function": "TAFSupply_ChangeProvider",
+      "address": "0043fb10",
+      "first_line": 42826,
+      "last_line": 42889
+    },
+    {
+      "function": "TAFSupply_ChangeSupply",
+      "address": "0043fc74",
+      "first_line": 42890,
+      "last_line": 42984
+    },
+    {
+      "function": "TAFSupply_ChangeBuyAmount",
+      "address": "0043fe4c",
+      "first_line": 42985,
+      "last_line": 43048
+    },
+    {
+      "function": "TAFSupply_TransferSupply",
+      "address": "0043ff98",
+      "first_line": 43049,
+      "last_line": 43088
+    },
+    {
+      "function": "TAFSupply_ChangeMoney",
+      "address": "0044005c",
+      "first_line": 43089,
+      "last_line": 43176
+    },
+    {
+      "function": "TAFSupply_OK",
+      "address": "00440234",
+      "first_line": 43177,
+      "last_line": 43187
+    },
+    {
+      "function": "TArmyToArmy_InitializeForm",
+      "address": "00441c24",
+      "first_line": 43756,
+      "last_line": 43835
+    },
+    {
+      "function": "TArmyToArmy_ChangeMoney",
+      "address": "00442448",
+      "first_line": 44044,
+      "last_line": 44090
+    },
+    {
+      "function": "TArmyToArmy_Army1Transfer",
+      "address": "00442500",
+      "first_line": 44091,
+      "last_line": 44171
+    },
+    {
+      "function": "TArmyToArmy_Army2Transfer",
+      "address": "004426f0",
+      "first_line": 44172,
+      "last_line": 44252
+    },
+    {
+      "function": "TArmyToArmy_MoveUnit",
+      "address": "00442d18",
+      "first_line": 44425,
+      "last_line": 44465
+    },
+    {
+      "function": "TArmyToArmy_OK",
+      "address": "00442ef8",
+      "first_line": 44572,
+      "last_line": 44650
+    },
+    {
+      "function": "TArmyToArmy_Cancel",
+      "address": "004430b0",
+      "first_line": 44651,
+      "last_line": 44664
+    },
+    {
+      "function": "TUnitMap_ArmyToArmyTransfer",
+      "address": "00447288",
+      "first_line": 46922,
+      "last_line": 46949
+    },
+    {
+      "function": "TUnitMap_SplitArmy",
+      "address": "0044755c",
+      "first_line": 47021,
+      "last_line": 47056
+    },
+    {
+      "function": "TUnitMap_SupplyArmy",
+      "address": "00446f50",
+      "first_line": 46827,
+      "last_line": 46857
+    },
+    {
+      "function": "TUnitMap_SupplyFleet",
+      "address": "004477fc",
+      "first_line": 47124,
+      "last_line": 47160
+    },
+    {
+      "function": "TUnitMap_RecruitMercenaries",
+      "address": "00446ff4",
+      "first_line": 46858,
+      "last_line": 46921
+    },
+    {
+      "function": "TRecruitMercs_RecruitMercUnit",
+      "address": "00441360",
+      "first_line": 43618,
+      "last_line": 43703
+    },
+    {
+      "function": "TFleetToFleet_ChangeMoney",
+      "address": "00443a90",
+      "first_line": 44923,
+      "last_line": 44969
+    },
+    {
+      "function": "TFleetToFleet_OK",
+      "address": "00443b48",
+      "first_line": 44970,
+      "last_line": 45030
+    },
+    {
+      "function": "TUnitMap_DisbandArmy",
+      "address": "004476ac",
+      "first_line": 47081,
+      "last_line": 47123
+    },
+    {
+      "function": "FUN_0044ab90",
+      "address": "0044ab90",
+      "first_line": 49372,
+      "last_line": 49395
+    },
+    {
+      "function": "FUN_0044ac3c",
+      "address": "0044ac3c",
+      "first_line": 49430,
+      "last_line": 49463
+    },
+    {
+      "function": "FUN_00451b40",
+      "address": "00451b40",
+      "first_line": 54695,
+      "last_line": 54938
+    },
+    {
+      "function": "TPremierForm_UnitMapAction",
+      "address": "0045b810",
+      "first_line": 58640,
+      "last_line": 58694
+    },
+    {
+      "function": "TArmyRecruits_InitializeForm",
+      "address": "0045489c",
+      "first_line": 55689,
+      "last_line": 55716
+    },
+    {
+      "function": "TArmyRecruits_ChangeCity",
+      "address": "00454bdc",
+      "first_line": 55798,
+      "last_line": 55814
+    },
+    {
+      "function": "TArmyRecruits_SetCityRecruits",
+      "address": "0045495c",
+      "first_line": 55717,
+      "last_line": 55797
+    },
+    {
+      "function": "TBattleMap_OnMapClick",
+      "address": "00437308",
+      "first_line": 37588,
+      "last_line": 37648
+    },
+    {
+      "function": "TBattleMap_SelectUnit",
+      "address": "0043747c",
+      "first_line": 37649,
+      "last_line": 37694
+    },
+    {
+      "function": "TBattleMap_CancelSelection",
+      "address": "00437a60",
+      "first_line": 37827,
+      "last_line": 37840
+    }
+  ],
+  "additional_disassembly_sites": [
+    "004544e0-00454885 recruitment list selection",
+    "004378f8-00437a3d enemy roster"
+  ]
+}

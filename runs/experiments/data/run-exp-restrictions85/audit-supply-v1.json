@@ -1,0 +1,450 @@
+{
+  "batch": "supply-v2",
+  "cases": 17,
+  "all_pairs_reparsed": true,
+  "rows": [
+    {
+      "id": "paid-army-room--105",
+      "before_save": "supply-v2_paid-army-room--105_before.SAV",
+      "after_save": "supply-v2_paid-army-room--105_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105,
+          0
+        ],
+        "target_before": [
+          206,
+          100
+        ],
+        "target_after": [
+          101,
+          121
+        ],
+        "city": [
+          330,
+          435
+        ],
+        "foreign_treasury_change": -21
+      }
+    },
+    {
+      "id": "paid-army-room--5",
+      "before_save": "supply-v2_paid-army-room--5_before.SAV",
+      "after_save": "supply-v2_paid-army-room--5_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -5,
+          0
+        ],
+        "target_before": [
+          106,
+          100
+        ],
+        "target_after": [
+          101,
+          101
+        ],
+        "city": [
+          330,
+          335
+        ],
+        "foreign_treasury_change": -1
+      }
+    },
+    {
+      "id": "paid-army-room--4",
+      "before_save": "supply-v2_paid-army-room--4_before.SAV",
+      "after_save": "supply-v2_paid-army-room--4_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -4,
+          0
+        ],
+        "target_before": [
+          105,
+          100
+        ],
+        "target_after": [
+          101,
+          100
+        ],
+        "city": [
+          330,
+          334
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-army-room--1",
+      "before_save": "supply-v2_paid-army-room--1_before.SAV",
+      "after_save": "supply-v2_paid-army-room--1_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -1,
+          0
+        ],
+        "target_before": [
+          102,
+          100
+        ],
+        "target_after": [
+          101,
+          100
+        ],
+        "city": [
+          330,
+          331
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-army-room-0",
+      "before_save": "supply-v2_paid-army-room-0_before.SAV",
+      "after_save": "supply-v2_paid-army-room-0_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          0,
+          0
+        ],
+        "target_before": [
+          101,
+          100
+        ],
+        "target_after": [
+          101,
+          100
+        ],
+        "city": [
+          330,
+          330
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-army-room-51",
+      "before_save": "supply-v2_paid-army-room-51_before.SAV",
+      "after_save": "supply-v2_paid-army-room-51_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          51,
+          0
+        ],
+        "target_before": [
+          50,
+          100
+        ],
+        "target_after": [
+          101,
+          90
+        ],
+        "city": [
+          330,
+          279
+        ],
+        "foreign_treasury_change": 10
+      }
+    },
+    {
+      "id": "paid-army-decrement-zero",
+      "before_save": "supply-v2_paid-army-decrement-zero_before.SAV",
+      "after_save": "supply-v2_paid-army-decrement-zero_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          100,
+          0,
+          0,
+          0
+        ],
+        "target_before": [
+          0,
+          100
+        ],
+        "target_after": [
+          0,
+          100
+        ],
+        "city": [
+          330,
+          330
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-army-empty-city-overcap",
+      "before_save": "supply-v2_paid-army-empty-city-overcap_before.SAV",
+      "after_save": "supply-v2_paid-army-empty-city-overcap_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105,
+          0
+        ],
+        "target_before": [
+          206,
+          100
+        ],
+        "target_after": [
+          101,
+          121
+        ],
+        "city": [
+          0,
+          105
+        ],
+        "foreign_treasury_change": -21
+      }
+    },
+    {
+      "id": "paid-army-poor-purse",
+      "before_save": "supply-v2_paid-army-poor-purse_before.SAV",
+      "after_save": "supply-v2_paid-army-poor-purse_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          15,
+          0
+        ],
+        "target_before": [
+          0,
+          3
+        ],
+        "target_after": [
+          15,
+          0
+        ],
+        "city": [
+          330,
+          315
+        ],
+        "foreign_treasury_change": 3
+      }
+    },
+    {
+      "id": "paid-army-stage-close",
+      "before_save": "supply-v2_paid-army-stage-close_before.SAV",
+      "after_save": "supply-v2_paid-army-stage-close_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105
+        ],
+        "target_before": [
+          206,
+          100
+        ],
+        "target_after": [
+          206,
+          100
+        ],
+        "city": [
+          330,
+          330
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-army-transfer-close",
+      "before_save": "supply-v2_paid-army-transfer-close_before.SAV",
+      "after_save": "supply-v2_paid-army-transfer-close_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105,
+          0
+        ],
+        "target_before": [
+          206,
+          100
+        ],
+        "target_after": [
+          101,
+          121
+        ],
+        "city": [
+          330,
+          435
+        ],
+        "foreign_treasury_change": -21
+      }
+    },
+    {
+      "id": "paid-fleet-room--105",
+      "before_save": "supply-v2_paid-fleet-room--105_before.SAV",
+      "after_save": "supply-v2_paid-fleet-room--105_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105,
+          0
+        ],
+        "target_before": [
+          265,
+          100
+        ],
+        "target_after": [
+          160,
+          121
+        ],
+        "city": [
+          330,
+          435
+        ],
+        "foreign_treasury_change": -21
+      }
+    },
+    {
+      "id": "paid-fleet-room--5",
+      "before_save": "supply-v2_paid-fleet-room--5_before.SAV",
+      "after_save": "supply-v2_paid-fleet-room--5_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -5,
+          0
+        ],
+        "target_before": [
+          165,
+          100
+        ],
+        "target_after": [
+          160,
+          101
+        ],
+        "city": [
+          330,
+          335
+        ],
+        "foreign_treasury_change": -1
+      }
+    },
+    {
+      "id": "paid-fleet-room--4",
+      "before_save": "supply-v2_paid-fleet-room--4_before.SAV",
+      "after_save": "supply-v2_paid-fleet-room--4_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -4,
+          0
+        ],
+        "target_before": [
+          164,
+          100
+        ],
+        "target_after": [
+          160,
+          100
+        ],
+        "city": [
+          330,
+          334
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-fleet-room--1",
+      "before_save": "supply-v2_paid-fleet-room--1_before.SAV",
+      "after_save": "supply-v2_paid-fleet-room--1_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -1,
+          0
+        ],
+        "target_before": [
+          161,
+          100
+        ],
+        "target_after": [
+          160,
+          100
+        ],
+        "city": [
+          330,
+          331
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-fleet-room-0",
+      "before_save": "supply-v2_paid-fleet-room-0_before.SAV",
+      "after_save": "supply-v2_paid-fleet-room-0_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          0,
+          0
+        ],
+        "target_before": [
+          160,
+          100
+        ],
+        "target_after": [
+          160,
+          100
+        ],
+        "city": [
+          330,
+          330
+        ],
+        "foreign_treasury_change": 0
+      }
+    },
+    {
+      "id": "paid-fleet-room-51",
+      "before_save": "supply-v2_paid-fleet-room-51_before.SAV",
+      "after_save": "supply-v2_paid-fleet-room-51_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          51,
+          0
+        ],
+        "target_before": [
+          109,
+          100
+        ],
+        "target_after": [
+          160,
+          90
+        ],
+        "city": [
+          330,
+          279
+        ],
+        "foreign_treasury_change": 10
+      }
+    }
+  ]
+}
