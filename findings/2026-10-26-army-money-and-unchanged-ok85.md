@@ -50,7 +50,7 @@ above both caps combined. No refusal follows these no-edit controls.
 
 14 completed controls: seven money rows in`army-v2_money*.json`, one
 `army-v4_split-money-shared.json`, six`army-v4_unchanged*.json`;
-`money-unchanged-case-index-v1.json` indexes all14. Extra successful pilot
+`money-unchanged-case-index-v1.json` indexes all14; `audit-money-ok-v1.json` reparses28saves and verifies the whole parsed world except tested resources, camera and the cancelled Split tombstone. Extra successful pilot
 `army-pilot-v1_money-side0-receiver1100.json` repeats one money case.
 Every completed row cites private original-written before/after SAV endpoints,
 turn0734, from`fleet-split-antium-0734.SAV`, plus arrow-time working/live copies.

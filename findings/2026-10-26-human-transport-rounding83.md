@@ -84,6 +84,4 @@ Stock unmodified original identity verified privately; Wine10.0 Ubuntu
 entry and original saved endpoints; read-only memory verifies record timing.
 Synthetic unit/link/offer/map edits documented privately; originals preserved.
 No original observer patch, native Windows, owner game access, arbitrary
-handler injection or remake change. Opening5500 control is deliberately staged
-as an overcapacity army (reachable after the original's accepted5499 army hires
-or loses ships in other paths); no claim this study played that lifecycle.
+handler injection or remake change. Opening5500 control deliberately stages an overcapacity army; no natural lifecycle into that state was played by this study.

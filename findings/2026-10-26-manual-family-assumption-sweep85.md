@@ -46,7 +46,7 @@ owner's independent no-wrap saturation and carrier/over100 safety choices.
 
 Evidence: `sweep-pilot-v1_fleet-money-950.json`,
 `sweep-v2_fleet-money-{1000,1100}.json`,
-`sweep-v2_fleet-ships-only-overcap.json`, plus Cancel control when complete;
+`sweep-v2_fleet-ships-only-overcap.json`, plus `sweep-v2_fleet-money-cancel.json` confirming Cancel commits nothing;
 all under`runs/experiments/data/run-exp-restrictions85/`. Endpoints named in each
 row, e.g.`sweep-v2_fleet-ships-only-overcap_before.SAV` / `_after.SAV`,turn0734.
 Private full records/screenshots/identities/hashes under ignored

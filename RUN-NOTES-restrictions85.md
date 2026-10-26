@@ -159,3 +159,13 @@ code-derived/unplayed, not new Windows/runtime lifecycle proof. ±1000 command
 ceiling remains CLI policy; current GUI sends nominal10/100, so no GUI rejection
 case established. Deliberate policies preserved. GUI78pilot starts on freed own
 :757 after sweep; other verified-unit controls continue separately on:758.
+
+GUI78pilot revealed a real original callback quirk: two cities/two fleets shows
+fourrows but row3 binds thirdfleet slot−1 rather than secondfleet. Source
+0043FB10 case3 corroborates it. Stockreversed case swaps cities by stock,
+not table order, with same row3 behavior. No unsafe-bug replication requested.
+Natural classical map scan finds30citypairs within2tiles; a Carthago/Clupea
+land tile94,77 has four neighboring sea tiles, so a new control can establish
+these limits without editing city coordinates/terrain. Existing synthetic
+pilot retained; natural controls will vary fleet IDs vs physical scan order
+and foreign-city routing. Owner-approved provider extensions remain separate.
