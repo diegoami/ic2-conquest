@@ -1,7 +1,6 @@
 # A no-offer recruitment action exposes a working carried-army Disband route
 
-**Status:** source finding for conquest218 / the carried-Disband question left
-open by Research86 and closed Main802. Awaiting Research consolidation.
+**Status:** Promoted by [Research PR88](https://github.com/diegoami/imperial-conquest-2-research/pull/88), merge `77d89876c89570962c7dc75f718a8f88774177f9`. The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/77d89876c89570962c7dc75f718a8f88774177f9/docs/reports/2026-10-26-carried-army-disband218.md) and [independent verification receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/77d89876c89570962c7dc75f718a8f88774177f9/docs/data/carried-disband218-intake-v1.json) retain the exact caller and timing qualifications below.
 **Tags:** [confirmed, partial: stock-original Wine] for the controls below;
 [code-derived] for caller interpretation and unplayed branches. No new Windows
 or deployed Godot acceptance, remake modification or owner-policy change.
