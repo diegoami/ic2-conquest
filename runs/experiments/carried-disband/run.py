@@ -14,6 +14,8 @@ c.ART=ART;c.DATA=DATA;c.drv.DISPLAY=':760';c.drv.ENV['DISPLAY']=':760'
 write_new=c.write_new;sav=c.sav;drv=c.drv
 CASES=[
  dict(id='land-whole-yes',mode='whole',land=True),
+ dict(id='land-toolbar-whole',mode='whole',land=True,toolbar=True),
+ dict(id='carried-toolbar-whole',mode='whole',toolbar=True),
  dict(id='carried-whole-left',mode='whole'),
  dict(id='carried-whole-right',mode='whole',right=True),
  dict(id='carried-after-change-cancel',mode='whole',preceding='Cancel'),
@@ -88,7 +90,17 @@ def execute(case,g,private,stem):
   record('transfer-disband-confirmed',boxes=boxes,working=[sav.parse_army(g.mem(form+o,656),i) for o,i in [(0x24c,0),(0x4dc,13)]])
   g.shot(private/(stem+'-working.png'));c.close(g,'Army to army transfer',cs,case['finish']);record('transfer-returned')
  if case['mode']=='whole':
-  record('before-whole-command');c.army_menu(g,6);time.sleep(.7)
+  record('before-whole-command')
+  if case.get('toolbar'):
+   guess=g.army_x.get('disband',493)+(0 if case.get('land')else 150)
+   found=None
+   for x in [guess,guess+3,guess-3,guess+6,guess-6]:
+    drv.sh('xdotool','mousemove',str(x),str(drv.ARMY_TOOLBAR_Y));time.sleep(.8)
+    if any(w[1]=='Disband army'for w in g.find_windows('.',tooltips=True)):found=x;break
+   assert found is not None,'actual Disband army tooltip not found'
+   record('verified-disband-toolbar',x=found,tooltip='Disband army');g.shot(private/(stem+'-toolbar-tooltip.png'));g.click(found,drv.ARMY_TOOLBAR_Y,pause=.7)
+  else:c.army_menu(g,6)
+  time.sleep(.7)
   boxes=g.dismiss_popups();record('whole-command-returned',boxes=boxes)
  g.shot(private/(stem+'-final.png'));after=c.save(g,private,stem,'after');record('saved')
  reopened=None

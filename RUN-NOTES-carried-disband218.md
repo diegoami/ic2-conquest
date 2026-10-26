@@ -36,3 +36,15 @@ disband. Reuse stopped private work85 Wine context with unique filenames;
 original byte identity verified privately. Fresh own Xvfb:760, no attach to
 existing display. Record all runtime limits honestly. Commit/push per batch and
 <=30min. No public release of original artifacts/private hashes.
+
+Initial positive land control complete: cd218-pilot-v1_land-whole-yes_before.SAV
+→_after.SAV,turn0734: owner−1,treasury1730→1767,Antium330→353,mobilization24
+unchanged. Confirms whole-command menu navigation and actual refund handler.
+Important source refinement: FleetButtonsOn00446188 shows the cargo army's
+buttons, including Disband, at shifted positions; visibility does not resolve
+form+220. Added separate actualtooltip-verified carried/landtoolbar controls.
+Information resource has no click/doubleclick event/selection picker; keys
+forward to main's bounded map/info shortcuts, DisbandmenuShortcut0. Source
+sites26+syntacticstore candidates10 and117bounded resource callback/shortcut
+rows retained; these are bounded interface audits, not indirect-store absence
+proof. Missing ChangeUnits empty cleanup is a separate prediction to test.
