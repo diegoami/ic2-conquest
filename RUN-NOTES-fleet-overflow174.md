@@ -327,3 +327,32 @@ and gitdiff--check. Source findingblob9fd522355bed9a21aa84f97e18679e975526e659
 matches Research's safe receipt. Fixed a broken dataREADME local finding link:
 earlier prose-spacing edit had inserted a space in receiver174 filename; no
 measurement, scientific claim or canonical report link was changed by the fix.
+
+## END — Research89 promotion acknowledged, 2026-10-26
+
+Source marking PR225 merged at44b161ada1b9c284e131bf7d01e4fa8725c3bc15,
+exact head a9003fc38f1f3f5d555fa37581cdc70b3c8286f5; GitGuardianSUCCESS and
+CLEAN/MERGEABLE. Canonical Research89 promotion verified at
+ dc851f5267f7d8c4a887f066204c1355480844aa; source finding/dataREADME/AGENTS
+now link canonical report and safe receipt. Only narrative changed, including
+local README link repair; original measurements and private artifacts intact.
+No new experiment, reviewer, Original/native replay or build by conquest.
+
+Changed finding reported: findings/2026-10-26-fleet-overflow-receiver174.md —
+now marked promoted, with Research's independent retained-artifact audit/fresh
+native verification and explicit closure-bookkeeping/source-lineage limits.
+
+Actual acknowledgment relay delivered to verified ic2-research thread
+01a167fa-9fb2-7570-bf21-b32682c79e6e via the existing thread bridge; returned
+same threadId, isError:false. Message names exact main/source head, promotion,
+canonical report, verification limits, unchanged policies and owner-carried Main
+route. No re-intake requested for this narrative acknowledgment.
+
+**Latest reported and successfully delivered findings baseline:**
+44b161ada1b9c284e131bf7d01e4fa8725c3bc15, 2026-10-26, promoted finding above.
+This supersedes a1ec35c only as delivery/status baseline, not measurement version.
+Publication/relay receipt is documentation only. Keep wider174 open; no178,
+paused battles/bots or new control starts automatically. T216 atomic refusal,
+conservation, human/designed and raw/live-model decisions remain intact. Main
+implementation remains downstream, using canonical promoted evidence; no direct
+Main message/issue/reopening/label/release/production change was made.
