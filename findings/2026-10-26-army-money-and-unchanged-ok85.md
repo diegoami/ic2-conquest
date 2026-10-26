@@ -1,7 +1,9 @@
 # Army transfer: signed money arrows and unconditional OK rebalance
 
+**Status:** Promoted by [Research PR86](https://github.com/diegoami/imperial-conquest-2-research/pull/86), merge `38259d83f323bf6cbad1a4ddf2cc47ecd69f719f`. The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/reports/2026-10-26-army-money-and-unchanged-ok85.md) and [independent verification receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/data/restrictions85-intake-v1.json) retain the evidence qualifications below.
+
 **Tag:** [confirmed, partial], stock-original Wine. Research85 packages1/4;
-Research84; remake1487. This draft does not close implementation issues.
+Research84; remake1487. This source report does not close implementation issues.
 Promoted research read first at865755e0: purse-writes row4 and army-to-army-OK
 report were code-backed but lacked these exact live controls.
 

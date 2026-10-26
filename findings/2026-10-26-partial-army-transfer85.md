@@ -1,5 +1,7 @@
 # Army transfer admits each unit separately, preserves order and can show two refusals
 
+**Status:** Promoted by [Research PR86](https://github.com/diegoami/imperial-conquest-2-research/pull/86), merge `38259d83f323bf6cbad1a4ddf2cc47ecd69f719f`. The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/reports/2026-10-26-partial-army-transfer85.md) and [independent verification receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/data/restrictions85-intake-v1.json) retain the evidence qualifications below.
+
 **Tag:** [confirmed, partial], stock-original Wine17verified-selection controls;
 retained six promoted patched-Wine controls independently reparsed. Research85
 package2, remake1488/1489. No new battle/AI/Join-armies rule is inferred.
