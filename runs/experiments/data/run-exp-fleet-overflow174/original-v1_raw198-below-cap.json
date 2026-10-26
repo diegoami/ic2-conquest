@@ -1,0 +1,136 @@
+{
+  "spec": {
+    "id": "raw198-below-cap",
+    "table_count": 198,
+    "units": [
+      4999
+    ]
+  },
+  "geometry": {
+    "fleet": [
+      40,
+      33
+    ],
+    "source": [
+      39,
+      34
+    ],
+    "near_land_candidates": [
+      [
+        40,
+        34
+      ]
+    ],
+    "controlled_army_count": 198
+  },
+  "before": {
+    "turn": 720,
+    "raw_army_count": 198,
+    "live_army_count": 198,
+    "troops": 595999,
+    "money": 4631,
+    "supply": 4227,
+    "carrier_link": -1,
+    "source_owner": 1,
+    "source_troops": 4999,
+    "army_records": [
+      {
+        "id": 0,
+        "owner": 1,
+        "x": 39,
+        "y": 34,
+        "troops": 4999,
+        "money": 100,
+        "supply": 90
+      },
+      {
+        "id": 1,
+        "owner": 1,
+        "x": 10,
+        "y": 48,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      },
+      {
+        "id": 2,
+        "owner": 1,
+        "x": 10,
+        "y": 49,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      },
+      {
+        "id": 3,
+        "owner": 1,
+        "x": 10,
+        "y": 50,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      }
+    ],
+    "city315_name_printable": true
+  },
+  "after": {
+    "turn": 720,
+    "raw_army_count": 198,
+    "live_army_count": 198,
+    "troops": 595999,
+    "money": 4631,
+    "supply": 4227,
+    "carrier_link": 0,
+    "source_owner": 1,
+    "source_troops": 4999,
+    "army_records": [
+      {
+        "id": 0,
+        "owner": 1,
+        "x": 40,
+        "y": 33,
+        "troops": 4999,
+        "money": 100,
+        "supply": 90
+      },
+      {
+        "id": 1,
+        "owner": 1,
+        "x": 10,
+        "y": 48,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      },
+      {
+        "id": 2,
+        "owner": 1,
+        "x": 10,
+        "y": 49,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      },
+      {
+        "id": 3,
+        "owner": 1,
+        "x": 10,
+        "y": 50,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      }
+    ],
+    "city315_name_printable": true
+  },
+  "calls": [
+    "embark"
+  ],
+  "negative_index_writes": [],
+  "cpu_callee_saved": true,
+  "full_ram_register_variant_equal": true,
+  "original_rng_draws": 0,
+  "before_save": "before.SAV",
+  "expected_save": "expected.SAV",
+  "save_kind": "diagnostic RAM projection, not Original Save as"
+}

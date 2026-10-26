@@ -1,0 +1,111 @@
+{
+  "spec": {
+    "id": "existing-own-source-only",
+    "block_all_other_land": true
+  },
+  "geometry": {
+    "fleet": [
+      40,
+      33
+    ],
+    "source": [
+      39,
+      34
+    ],
+    "near_land_candidates": [
+      [
+        40,
+        34
+      ]
+    ],
+    "controlled_army_count": 2
+  },
+  "before": {
+    "turn": 720,
+    "raw_army_count": 2,
+    "live_army_count": 2,
+    "troops": 9000,
+    "money": 123,
+    "supply": 111,
+    "carrier_link": -1,
+    "source_owner": 1,
+    "source_troops": 6000,
+    "army_records": [
+      {
+        "id": 0,
+        "owner": 1,
+        "x": 39,
+        "y": 34,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90
+      },
+      {
+        "id": 1,
+        "owner": 1,
+        "x": 40,
+        "y": 34,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      }
+    ],
+    "city315_name_printable": true
+  },
+  "after": {
+    "turn": 720,
+    "raw_army_count": 3,
+    "live_army_count": 3,
+    "troops": 9000,
+    "money": 123,
+    "supply": 111,
+    "carrier_link": 0,
+    "source_owner": 1,
+    "source_troops": 4000,
+    "army_records": [
+      {
+        "id": 0,
+        "owner": 1,
+        "x": 40,
+        "y": 33,
+        "troops": 4000,
+        "money": 67,
+        "supply": 60
+      },
+      {
+        "id": 1,
+        "owner": 1,
+        "x": 40,
+        "y": 34,
+        "troops": 3000,
+        "money": 23,
+        "supply": 21
+      },
+      {
+        "id": 2,
+        "owner": 1,
+        "x": 39,
+        "y": 34,
+        "troops": 2000,
+        "money": 33,
+        "supply": 30
+      }
+    ],
+    "city315_name_printable": true
+  },
+  "calls": [
+    "embark",
+    "overflow",
+    "allocate",
+    "landscan",
+    "moveunit",
+    "removeunit"
+  ],
+  "negative_index_writes": [],
+  "cpu_callee_saved": true,
+  "full_ram_register_variant_equal": true,
+  "original_rng_draws": 0,
+  "before_save": "before.SAV",
+  "expected_save": "expected.SAV",
+  "save_kind": "diagnostic RAM projection, not Original Save as"
+}
