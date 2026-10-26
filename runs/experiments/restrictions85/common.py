@@ -101,8 +101,8 @@ def army_menu(g,item):
 
 def list_rows(title):
  out=[]
- for line in drv.sh(drv.WINE,str(WORK/'lists85.exe'),title).splitlines():
+ for line in drv.sh(drv.WINE,str(WORK/'lists85-v3.exe'),title).splitlines():
   p=line.split('\t')
-  if p[0]=='LIST':out.append(dict(x=int(p[1]),y=int(p[2]),count=int(p[3]),selected=int(p[4]),cls=p[5],rows=[]))
-  else:out[-1]['rows'].append(bytes.fromhex(p[2]).decode('latin1'))
+  if p[0]=='LIST':out.append(dict(x=int(p[1]),y=int(p[2]),count=int(p[3]),selected=int(p[4]),cls=p[5],selected_count=int(p[6]),rows=[]))
+  else:out[-1]['rows'].append(bytes.fromhex(p[2]).decode('utf-16-be'))
  return out

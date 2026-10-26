@@ -57,10 +57,15 @@ def execute(c,g,private,stem):
  elif c['mode']=='units':
   lists=sorted([x for x in cs if x['cls']=='TListBox'],key=lambda x:x['x']);lst=lists[c['side']]
   win=g.find_windows('^'+title+'$')[0][0];g.raise_window(win)
+  # Focus form before first row: inactive-window first click only activates.
+  point_click(g,title,lst['x']+lst['w']//2,lst['y']-8)
   drv.sh('xdotool','keydown','ctrl')
   try:
-   for k in c['rows']:point_click(g,title,lst['cx']+lst['w']//2,lst['cy']+lst['item_h']*k+lst['item_h']//2)
+   for k in c['rows']:g.click(lst['cx']+lst['w']//2,lst['cy']+lst['item_h']*k+lst['item_h']//2,pause=.3)
   finally:drv.sh('xdotool','keyup','ctrl')
+  selection=list_rows(title);chosen=sorted(selection,key=lambda x:x['x'])[c['side']]
+  write_new(private/(stem+'-selection.json'),selection)
+  assert chosen['selected_count']==len(c['rows']),(chosen,c['rows'])
   g.shot(private/(stem+'-selection.png'))
   buttons=sorted([x for x in cs if x['text']=='Transfer'],key=lambda x:x['x'])
   g.click_control(buttons[c['side']],pause=.8)
