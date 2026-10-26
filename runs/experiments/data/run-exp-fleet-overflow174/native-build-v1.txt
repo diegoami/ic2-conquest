@@ -1,0 +1,20 @@
+  Determining projects to restore...
+  Restored /home/diego/projects/ic2-conquest/runs/experiments/fleet-overflow174/Native.csproj (in 63 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/IC2.Data.csproj]
+  IC2.Data -> /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/bin/Debug/net10.0/IC2.Data.dll
+  IC2.Engine -> /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Engine/bin/Debug/net10.0/IC2.Engine.dll
+/home/diego/projects/ic2-conquest/runs/experiments/fleet-overflow174/Native.cs(15,88): error CS1061: 'CityState' does not contain a definition for 'LoyaltyPercent' and no accessible extension method 'LoyaltyPercent' accepting a first argument of type 'CityState' could be found (are you missing a using directive or an assembly reference?) [/home/diego/projects/ic2-conquest/runs/experiments/fleet-overflow174/Native.csproj]
+
+Build FAILED.
+
+/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/OriginalSaveCodec.cs(260,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/OriginalSaveCodec.cs(278,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/OriginalSaveCodec.cs(344,29): warning CS8602: Dereference of a possibly null reference. [/home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/src/IC2.Data/IC2.Data.csproj]
+/home/diego/projects/ic2-conquest/runs/experiments/fleet-overflow174/Native.cs(15,88): error CS1061: 'CityState' does not contain a definition for 'LoyaltyPercent' and no accessible extension method 'LoyaltyPercent' accepting a first argument of type 'CityState' could be found (are you missing a using directive or an assembly reference?) [/home/diego/projects/ic2-conquest/runs/experiments/fleet-overflow174/Native.csproj]
+    3 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:04.59
