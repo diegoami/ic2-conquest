@@ -64,3 +64,11 @@ stock army ownwork-army-v1/:758, both copied from stopped prior prefix with
 symlinks preserved. Initial army pilot confirms A100/B1100 nominal+100 =>
 working200/1000, unchanged globals untilOK; second press unchanged; OK commits.
 Army-v2 extends all30-ish controls, independently from supply context.
+
+Display provenance checked: original task pilot Xvfb processes1764560(:757,
+17:58:58) and1782883(:758,18:04:16) persisted across runner calls. Later redundant
+Xvfb attempts logged bind failure while tests used those same-task displays.
+No owner display involved. Future runner explicitly verifies exact ownserver
+PID/cmdline and records reuse; final cleanup must terminate only those two
+verified owned servers after all tests. No bind-failure log is reported as a
+successful new server launch.

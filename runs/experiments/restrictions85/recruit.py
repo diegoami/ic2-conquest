@@ -19,7 +19,7 @@ def execute(c,g,private,stem):
  g.close_controls(title,cs)
  g.tool('recruit',title);reopened=list_rows(title);cs=inspect(title)
  # Choose LI through existing controls; source default minimum kept (no Max policy changes).
- buttons=[x for x in cs if x['cls']=='TRadioButton'];li=next((x for x in buttons if 'Light infantry' in x['text'] or 'Lit inf' in x['text']),None)
+ buttons=[x for x in cs if x['cls']=='TButton'];li=next((x for x in buttons if 'Light infantry' in x['text'] or 'Lit inf' in x['text']),None)
  if li:g.click_control(li,pause=.3)
  recruit=next((x for x in cs if x['text'] in ['Recruit unit','Create unit']),None)
  if recruit:g.click_control(recruit,pause=.6);boxes=g.dismiss_popups()
