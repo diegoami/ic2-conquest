@@ -238,3 +238,52 @@ for oldhead and must be checked again after finalpush. Finish PRtitle/body,
 markready, verify checks/exacthead, merge under session-led policy, then relay
 actualmainSHA to verified ic2-research thread01a167fa-9fb2-7570-bf21-b32682c79e6e.
 ListThreads currently confirms intended title/status; no message sent yet.
+
+## END — bounded packet published and delivered, 2026-10-26
+
+**This packet is complete; wider #174 remains open.** PR223 merged at
+`a1ec35cfe994d0bbc1d0818e82687e2e4046708d`, exact final finding/audit head
+`fc69a567cf71c9010f1366c895f778d9a4f258b3`. GitGuardian succeeded on that head;
+merge state was CLEAN/MERGEABLE, no existing review comments/threads or required
+checks unresolved. Author audit only; no separate reviewer or independent
+review verdict claimed. All offline checks and private closure verification
+listed above passed. No experiments/native commands/builds repeated on resume.
+
+New main finding reported to owner:
+`findings/2026-10-26-fleet-overflow-receiver174.md` — conditional receiver
+position/moves, destructive original full-table failure, raw tombstones and
+additional all-overflow resource difference; T216 safety/conservation retained.
+Finding and data README explicitly distinguish7 mixed position/moves-only rows
+from1 all-overflow row with resource difference; existing v2 data is immutable.
+
+Research relay **actually delivered** with the relay-to-research procedure via
+available Codex thread bridge. ListThreads and ReadThread verified intended
+`ic2-research`, cwd `/home/diego/projects/imperial-conquest-2-research`, thread
+`01a167fa-9fb2-7570-bf21-b32682c79e6e`. Two ASCII messages825/963bytes returned
+that same threadId and `isError:false`, covering actual mainSHA, finding, counts,
+evidence/private-save names/turn, correction to Research74 compaction wording,
+source/audit limits and T216 policies. No substitute channel used. Research owns
+consolidation/promotion; delivery is not promotion. No Main implementation issue,
+production fix, label change or reopening of1412 was performed.
+
+**Latest reported and successfully delivered findings baseline:**
+`a1ec35cfe994d0bbc1d0818e82687e2e4046708d`, 2026-10-26, the new finding above.
+Keep this baseline until a later actual relay. Main handoff is only after
+Research promotes its canonical report. A narrow accepted faithful-AI receiver
+context/moves follow-up may then be evaluated; preserve typed atomic refusal,
+resource conservation, human/designed policy and separate raw/model decisions.
+
+Private local artifacts remain intact under `artifacts/run-exp-fleet-overflow174/`:
+16 before/expected RAM/SAV/JSON pairs, full traces/shapes, native full states and
+NEW `closure-v2.json` (255payloads, all verified). They are not backed up by
+public git push and were not released/uploaded. Existing native-v2/comparison-v2,
+checkpoint-v1 and all failed/older versions remain unchanged. Do not recreate
+these inputs, repeat existing output versions or publish private hashes/bytes.
+
+The optional union-neighborhood discrimination control remains **UNRUN**, not a
+required experiment or confirmed false-refusal finding. No pending process,
+agent/reviewer/game or required experiment remains. Eleven unrelated untracked
+files preserved, credential backups unread. Remain on supplied branch
+`research/fleet-overflow174`; the publication/relay receipt follows the merged
+source via a documentation PR. On next startup check #174/latest Research intake
+state; do not automatically start #178, new experiments or paused battles/bots.
