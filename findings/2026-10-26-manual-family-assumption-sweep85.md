@@ -12,8 +12,7 @@ research865755e0. Original bytes/private evidence remain ignored/private.
 The unresolved carried whole-army GUI question below records the Research86
 scope. New [conquest218 controls](2026-10-26-carried-army-disband218.md) establish
 a working no-offer recruitment→cargoDisband route, with confirmation, unlink and
-refunds, plus repaint and per-unit cleanup controls. That separate source finding
-awaits Research intake; the canonical Research86 report is not silently rewritten.
+refunds, plus repaint and per-unit cleanup controls. That follow-up is now promoted by [Research PR88](https://github.com/diegoami/imperial-conquest-2-research/pull/88); the [updated canonical sweep](https://github.com/diegoami/imperial-conquest-2-research/blob/77d89876c89570962c7dc75f718a8f88774177f9/docs/reports/2026-10-26-manual-family-assumption-sweep85.md) retains the earlier direct-path controls while resolving this specific GUI-route question.
 Owner last-unit and other deliberate policies remain unchanged.
 
 ## Restriction ledger and disposition

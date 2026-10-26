@@ -1,5 +1,7 @@
 # Original carried-army disband218
 
+**Promoted:** [Research PR88](https://github.com/diegoami/imperial-conquest-2-research/pull/88), merge `77d89876c89570962c7dc75f718a8f88774177f9`. [Canonical finding](https://github.com/diegoami/imperial-conquest-2-research/blob/77d89876c89570962c7dc75f718a8f88774177f9/docs/reports/2026-10-26-carried-army-disband218.md); [shared safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/77d89876c89570962c7dc75f718a8f88774177f9/docs/data/carried-disband218-intake-v1.json). Research reproduced the complete29-pair audit,26sites/10store candidates/117callback rows,1,242authoritative native blobs/four disband files and the fresh dispatcher output. This was offline verification of retained stock-Wine observations; no new Original/Godot/Windows or implementation acceptance. Owner policies unchanged.
+
 Owner-approved in conquest218. Distinguish original whole-army command reachability,
 unit removal on working copies, and actual deletion/link/resource cleanup. Existing
 Research86 sweep leaves this exact question unresolved. Original stock Wine only;
@@ -67,8 +69,7 @@ launch or system install implied. `source_audit.py`/`resource_audit.py` take uni
 Native project references ignored archived production sources here; copy compiled
 output beneath that source tree before running, as its testbed locates IC2.sln.
 
-Research should consolidate this follow-up and refresh the Research86 sweep's
-unresolved carriedDisband row/Main802 residual. Whole-army refusal now has a
+Research PR88 consolidated this follow-up and refreshed the Research86 sweep's previously unresolved carriedDisband row/Main802 residual. Whole-army refusal now has a
 concrete originalGUI counterexample; any support must clear carrier links and
 refund exactaccounts. Guardremoval is not an implementation plan by itself.
 Owner565last-unit refusal remains explicitpolicy, not revoked by the original
