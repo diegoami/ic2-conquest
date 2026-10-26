@@ -99,3 +99,83 @@ all probes/scalars pushed. NativeExtra first compile failed on contextual
 identifier `from with`; retained buildv1 and failed launchv1, renamed fixture
 variable; buildv2 preserves same production-call semantics. No failed native
 attempt is counted as an observation.
+
+First bounded publication PR212 merged4a4be796f846c804e93e5099026edb434d7381c2,
+head597b631ef7e81a3f6890b0d98e415630e4ae9db0; exact-head GitGuardian success,
+no review comments/external review. New main finding signed-paid-supply85;
+other task work remains active. NativeExtra buildv3 log finished appending after
+checkpoint597b631 (initial log prefix was committed); retained complete append,
+no prior measured content overwritten. v3 authoritative fleet comparison fixes
+synthetic constructor field order from v2 (donor money was0, so its fleet
+rows only exercised insufficient money and are not cap evidence).
+
+Latest reported and successfully delivered findings baseline:
+4a4be796f846c804e93e5099026edb434d7381c2 (2026-10-26), new file
+findings/2026-10-26-signed-paid-supply85.md. Verified list_threads title
+ic2-research; actual send_message_to_thread to01a167fa-9fb2-7570-bf21-
+b32682c79e6e returned same ID,isError:false. Delivery succeeded, promotion not
+claimed. Relay explicitly says bounded supply study done, rest85/GUI ongoing.
+First local length-guard attempt failed before toolcall (TextEncoder absent);
+ASCII length guard then succeeded. Active followup branch now based on4a4be79;
+82f4fbd retained/cherry-picked as8d43fda. No evidence lost at branch transition.
+
+Army-v4 completed valid Split/unchangedOK six controls. Its first two multirow
+attempts selected only one row (private screenshot confirms onlyA0S1 in
+19plus2); NOT partial-transfer evidence. Preserved full rows/files with this
+explicit stimulus failure; interrupted before further transfer cases. Targeted
+XSendEvent clicks do not preserve Ctrl-selection as the driver's global clicks
+do. Added form focus, actual pointer-click multi-select and read-only
+LB_GETSELCOUNT assertion BEFORE Transfer; new listsv2 helper. units-pilot-v1
+uses selection guard, any failed assertion will stop without pressing Transfer.
+Only verified selection batches can establish admission/ordering.
+
+units-pilot-v1 correctly stopped BEFORE Transfer: selected_count1!=requested2;
+confirms the targeted-event modifier problem. All failed-selection evidence
+retained. units-pilot-v2 uses actual global pointer clicks whileCtrl held,
+with identical count guard. List string helper separately corrected to
+SendMessageW/UTF16 (v3 executable; v2 preserved); numeric count guard unchanged.
+Transport9/9 exact controls complete; both original callers accept5000/5001/
+5499 and refuse5500, with separate pre-dialog R12 overcap5500 control. All18
+saves reparsed. Hire preserves purse30000 and moves7/7, consumes offer only
+on acceptance; human embark zeros both moves only on acceptance.
+
+Verified-selection units-pilot-v2 passes: requested2,LB_GETSELCOUNT2; highest
+source slot1 moves into targetslot19, selectedslot0 stays; one20-unit refusal;
+source slot2 unselected retained. Exactly agrees with original source/prior
+report. units-v3 now runs remaining per-unit controls plus disband-inside-dialog
+OK/Cancel extension. Historical six pairs independently reparsed from retained
+final root paths: U1,U3,U3b,c1,c4,c5. First lookup rejected duplicate priorattempt
+paths; narrowed to published final root, no ambiguous evidence selected.
+
+Bounded sweep UI complete7cases: original fleet arrow950receiver takes50 only,
+1000noop,1100pullback100; ship-only1transfer keeps1100purse; treasury unchanged
+and Cancel inert. Native production model composes100money for those states;
+dispatcher diverts50/100/200 to treasury; ship-only caps1100=>1000,treasury+100.
+Existing1326 owns this; no duplicate. CarriedDisband tested direct and after
+Supply through actualmenu: both formarmyfield−1, no action. Do not claim a
+GUI discrepancy from the native command's carried refusal alone. Original
+quarterly removal→0044AB90 statically clears fleet+22 on valid carried links;
+code-derived/unplayed, not new Windows/runtime lifecycle proof. ±1000 command
+ceiling remains CLI policy; current GUI sends nominal10/100, so no GUI rejection
+case established. Deliberate policies preserved. GUI78pilot starts on freed own
+:757 after sweep; other verified-unit controls continue separately on:758.
+
+GUI78pilot revealed a real original callback quirk: two cities/two fleets shows
+fourrows but row3 binds thirdfleet slot−1 rather than secondfleet. Source
+0043FB10 case3 corroborates it. Stockreversed case swaps cities by stock,
+not table order, with same row3 behavior. No unsafe-bug replication requested.
+Natural classical map scan finds30citypairs within2tiles; a Carthago/Clupea
+land tile94,77 has four neighboring sea tiles, so a new control can establish
+these limits without editing city coordinates/terrain. Existing synthetic
+pilot retained; natural controls will vary fleet IDs vs physical scan order
+and foreign-city routing. Owner-approved provider extensions remain separate.
+
+Verified unit controls complete17 (units-pilot-v2 one + units-v3 sixteen),
+including two disband-inside-dialog controls. Failed GUI78extra case stopped
+on offscreenrow4 before finalsave; retained. Added actualwheel scrolling plus
+refreshed read-only geometry and per-row immutable progress receipts. Natural
+GUI78v1 then failed BEFORE original launch because sandbox Xvfb bind was
+blocked and prior owned servers had exited; guard prevented attaching unknown
+display. Restarted unique natural-v2 with runtime escalation solely for own
+Wine/Xvfb context. GUI81noqueue pilot uses freed independent :758 likewise.
+No nativeWindows or ownerdisplay access, no new game/bot/battlecompletion.

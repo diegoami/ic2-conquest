@@ -1,0 +1,117 @@
+{
+  "cases": 14,
+  "rows": [
+    {
+      "id": "money-overcap-cancel",
+      "saves": [
+        "army-v2_money-overcap-cancel_before.SAV",
+        "army-v2_money-overcap-cancel_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "money-side1-receiver1000",
+      "saves": [
+        "army-v2_money-side1-receiver1000_before.SAV",
+        "army-v2_money-side1-receiver1000_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "money-side0-receiver1000",
+      "saves": [
+        "army-v2_money-side0-receiver1000_before.SAV",
+        "army-v2_money-side0-receiver1000_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "money-side0-receiver1100",
+      "saves": [
+        "army-v2_money-side0-receiver1100_before.SAV",
+        "army-v2_money-side0-receiver1100_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "money-side1-receiver900",
+      "saves": [
+        "army-v2_money-side1-receiver900_before.SAV",
+        "army-v2_money-side1-receiver900_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "money-side1-receiver1100",
+      "saves": [
+        "army-v2_money-side1-receiver1100_before.SAV",
+        "army-v2_money-side1-receiver1100_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "money-side0-receiver900",
+      "saves": [
+        "army-v2_money-side0-receiver900_before.SAV",
+        "army-v2_money-side0-receiver900_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "split-money-shared",
+      "saves": [
+        "army-v4_split-money-shared_before.SAV",
+        "army-v4_split-money-shared_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "unchanged-both-over-reversed",
+      "saves": [
+        "army-v4_unchanged-both-over-reversed_before.SAV",
+        "army-v4_unchanged-both-over-reversed_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "unchanged-over-ok",
+      "saves": [
+        "army-v4_unchanged-over-ok_before.SAV",
+        "army-v4_unchanged-over-ok_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "unchanged-over-reversed",
+      "saves": [
+        "army-v4_unchanged-over-reversed_before.SAV",
+        "army-v4_unchanged-over-reversed_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "unchanged-over-cancel",
+      "saves": [
+        "army-v4_unchanged-over-cancel_before.SAV",
+        "army-v4_unchanged-over-cancel_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "unchanged-both-over",
+      "saves": [
+        "army-v4_unchanged-both-over_before.SAV",
+        "army-v4_unchanged-both-over_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    },
+    {
+      "id": "unchanged-within",
+      "saves": [
+        "army-v4_unchanged-within_before.SAV",
+        "army-v4_unchanged-within_after.SAV"
+      ],
+      "whole_parsed_state_equal_except_tested_fields_view_and_split_tombstone": true
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "batch": "transport-v2",
+  "cases": 7,
+  "all_pairs_reparsed": true,
+  "rows": [
+    {
+      "id": "embark-5000",
+      "before_save": "transport-v2_embark-5000_before.SAV",
+      "after_save": "transport-v2_embark-5000_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": null,
+        "boxes": [],
+        "troops": [
+          5000,
+          5000
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "embark-5499",
+      "before_save": "transport-v2_embark-5499_before.SAV",
+      "after_save": "transport-v2_embark-5499_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": null,
+        "boxes": [],
+        "troops": [
+          5499,
+          5499
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "embark-5500",
+      "before_save": "transport-v2_embark-5500_before.SAV",
+      "after_save": "transport-v2_embark-5500_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": null,
+        "boxes": [
+          "(?} The army is too large for this fleet ?"
+        ],
+        "troops": [
+          5500,
+          5500
+        ],
+        "army_cell": 2,
+        "carrier_army": -1,
+        "moves": [
+          7,
+          7
+        ]
+      }
+    },
+    {
+      "id": "hire-5000",
+      "before_save": "transport-v2_hire-5000_before.SAV",
+      "after_save": "transport-v2_hire-5000_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": true,
+        "boxes": [],
+        "troops": [
+          4000,
+          5000
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          7,
+          7
+        ]
+      }
+    },
+    {
+      "id": "hire-5499",
+      "before_save": "transport-v2_hire-5499_before.SAV",
+      "after_save": "transport-v2_hire-5499_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": true,
+        "boxes": [],
+        "troops": [
+          4000,
+          5499
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          7,
+          7
+        ]
+      }
+    },
+    {
+      "id": "hire-5500",
+      "before_save": "transport-v2_hire-5500_before.SAV",
+      "after_save": "transport-v2_hire-5500_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": true,
+        "boxes": [
+          "e This fleet has too lle space for these mercenaries. aK"
+        ],
+        "troops": [
+          4000,
+          4000
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          7,
+          7
+        ]
+      }
+    },
+    {
+      "id": "hire-opening-overcap",
+      "before_save": "transport-v2_hire-opening-overcap_before.SAV",
+      "after_save": "transport-v2_hire-opening-overcap_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": false,
+        "boxes": [
+          "e \u2018Your fleet cannot cary any more tops. aK"
+        ],
+        "troops": [
+          5500,
+          5500
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          7,
+          7
+        ]
+      }
+    }
+  ]
+}

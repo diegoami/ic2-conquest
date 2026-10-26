@@ -1,0 +1,47 @@
+{
+  "batch": "transport-pilot-v1",
+  "cases": 2,
+  "all_pairs_reparsed": true,
+  "rows": [
+    {
+      "id": "embark-5001",
+      "before_save": "transport-pilot-v1_embark-5001_before.SAV",
+      "after_save": "transport-pilot-v1_embark-5001_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": null,
+        "boxes": [],
+        "troops": [
+          5001,
+          5001
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "hire-5001",
+      "before_save": "transport-pilot-v1_hire-5001_before.SAV",
+      "after_save": "transport-pilot-v1_hire-5001_after.SAV",
+      "parsed": true,
+      "summary": {
+        "opened": true,
+        "boxes": [],
+        "troops": [
+          4000,
+          5001
+        ],
+        "army_cell": -1,
+        "carrier_army": 0,
+        "moves": [
+          7,
+          7
+        ]
+      }
+    }
+  ]
+}

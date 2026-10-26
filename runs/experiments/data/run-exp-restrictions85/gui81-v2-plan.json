@@ -1,0 +1,73 @@
+[
+  {
+    "id": "no-queue",
+    "queues": [],
+    "reorder": true
+  },
+  {
+    "id": "capital-only",
+    "queues": [
+      [
+        85,
+        2000
+      ]
+    ],
+    "reorder": true
+  },
+  {
+    "id": "noncapital-only",
+    "queues": [
+      [
+        80,
+        2000
+      ]
+    ],
+    "reorder": true
+  },
+  {
+    "id": "two-unequal",
+    "queues": [
+      [
+        80,
+        2000
+      ],
+      [
+        85,
+        2000
+      ],
+      [
+        85,
+        2000
+      ]
+    ],
+    "reorder": true
+  },
+  {
+    "id": "two-tied",
+    "queues": [
+      [
+        80,
+        2000
+      ],
+      [
+        85,
+        2000
+      ]
+    ],
+    "reorder": true
+  },
+  {
+    "id": "two-tied-slots-reversed",
+    "queues": [
+      [
+        85,
+        2000
+      ],
+      [
+        80,
+        2000
+      ]
+    ],
+    "reorder": true
+  }
+]

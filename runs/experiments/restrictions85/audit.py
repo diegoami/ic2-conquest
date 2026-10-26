@@ -34,6 +34,20 @@ for c in plan:
    s['cities'][89]['supplies']=0;s['nations'][1]['treasury']=0
    for nation in s['nations']:nation['view']=[0,0]
   assert states[0]==states[1],c['id']
+ elif c['kind'] if 'kind' in c else False:
+  if c['kind'] in ['embark','hire']:
+   expected=c['total']<5500 and c['id']!='hire-opening-overcap'
+   old=b['armies'][0];new=a['armies'][0]
+   if c['kind']=='embark':
+    assert (new['cell']==-1)==expected
+    assert a['fleets'][2]['army']==(0 if expected else -1)
+    assert [new['moves'],a['fleets'][2]['moves']]==([0,0] if expected else [7,7])
+   else:
+    assert new['troops']==(c['total'] if expected else old['troops'])
+    assert new['money']==old['money']==30000
+    assert new['cell']==-1 and a['fleets'][2]['army']==0
+    assert [new['moves'],a['fleets'][2]['moves']]==[7,7]
+    assert (not any(m['slot']==0 for m in a['mercenaries']))==expected
  elif c['id'].startswith('money-'):
   for i in [0,13]:assert [a['armies'][i]['money'],a['armies'][i]['supplies'],a['armies'][i]['troops']]==r['summary']['after'][[0,13].index(i)]
  elif c['id'].startswith('unchanged-'):

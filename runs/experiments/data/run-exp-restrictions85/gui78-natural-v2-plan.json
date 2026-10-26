@@ -1,0 +1,39 @@
+[
+  {
+    "id": "natural-two-fleets",
+    "fleet_ids": [
+      2,
+      5
+    ],
+    "stocks": [
+      90,
+      10
+    ]
+  },
+  {
+    "id": "natural-four-fleets",
+    "fleet_ids": [
+      2,
+      5,
+      0,
+      1
+    ],
+    "stocks": [
+      90,
+      10
+    ]
+  },
+  {
+    "id": "natural-four-fleets-id-order-reversed",
+    "fleet_ids": [
+      5,
+      2,
+      1,
+      0
+    ],
+    "stocks": [
+      10,
+      90
+    ]
+  }
+]

@@ -1,0 +1,2185 @@
+{
+  "case": {
+    "id": "two-refusal-types",
+    "mode": "units",
+    "counts": [
+      [
+        100,
+        100,
+        500
+      ],
+      [
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        790,
+        780
+      ]
+    ],
+    "side": 0,
+    "rows": [
+      0,
+      1,
+      2
+    ],
+    "carrier": 13,
+    "finish": "OK"
+  },
+  "turn": 734,
+  "before_save": "units-v3_two-refusal-types_before.SAV",
+  "after_save": "units-v3_two-refusal-types_after.SAV",
+  "before": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 100,
+        "morale": 51,
+        "troops": 700,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 100,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          },
+          {
+            "slot": 1,
+            "type": "hi",
+            "troops": 100,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S1"
+          },
+          {
+            "slot": 2,
+            "type": "hi",
+            "troops": 500,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S2"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "12": {
+        "id": 12,
+        "x": 110,
+        "y": 40,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 100,
+        "morale": 59,
+        "troops": 15000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S0"
+          },
+          {
+            "slot": 1,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S1"
+          },
+          {
+            "slot": 2,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S2"
+          },
+          {
+            "slot": 3,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S3"
+          },
+          {
+            "slot": 4,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S4"
+          },
+          {
+            "slot": 5,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S5"
+          },
+          {
+            "slot": 6,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S6"
+          },
+          {
+            "slot": 7,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S7"
+          },
+          {
+            "slot": 8,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S8"
+          },
+          {
+            "slot": 9,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S9"
+          },
+          {
+            "slot": 10,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S10"
+          },
+          {
+            "slot": 11,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S11"
+          },
+          {
+            "slot": 12,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S12"
+          },
+          {
+            "slot": 13,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S13"
+          },
+          {
+            "slot": 14,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S14"
+          },
+          {
+            "slot": 15,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S15"
+          },
+          {
+            "slot": 16,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S16"
+          },
+          {
+            "slot": 17,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S17"
+          },
+          {
+            "slot": 18,
+            "type": "hi",
+            "troops": 780,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S18"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "13": {
+        "id": 13,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 0,
+        "money": 100,
+        "morale": 59,
+        "troops": 15000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S0"
+          },
+          {
+            "slot": 1,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S1"
+          },
+          {
+            "slot": 2,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S2"
+          },
+          {
+            "slot": 3,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S3"
+          },
+          {
+            "slot": 4,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S4"
+          },
+          {
+            "slot": 5,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S5"
+          },
+          {
+            "slot": 6,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S6"
+          },
+          {
+            "slot": 7,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S7"
+          },
+          {
+            "slot": 8,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S8"
+          },
+          {
+            "slot": 9,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S9"
+          },
+          {
+            "slot": 10,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S10"
+          },
+          {
+            "slot": 11,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S11"
+          },
+          {
+            "slot": 12,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S12"
+          },
+          {
+            "slot": 13,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S13"
+          },
+          {
+            "slot": 14,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S14"
+          },
+          {
+            "slot": 15,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S15"
+          },
+          {
+            "slot": 16,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S16"
+          },
+          {
+            "slot": 17,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S17"
+          },
+          {
+            "slot": 18,
+            "type": "hi",
+            "troops": 780,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S18"
+          }
+        ],
+        "supply_pct": 0
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 29,
+        "supplies": 0,
+        "money": 0,
+        "ships": 30,
+        "condition": 97,
+        "army": 13
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      -1,
+      -1
+    ]
+  },
+  "after": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 100,
+        "morale": 51,
+        "troops": 600,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 100,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          },
+          {
+            "slot": 1,
+            "type": "hi",
+            "troops": 500,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S2"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "12": {
+        "id": 12,
+        "x": 110,
+        "y": 40,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 100,
+        "morale": 59,
+        "troops": 15000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S0"
+          },
+          {
+            "slot": 1,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S1"
+          },
+          {
+            "slot": 2,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S2"
+          },
+          {
+            "slot": 3,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S3"
+          },
+          {
+            "slot": 4,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S4"
+          },
+          {
+            "slot": 5,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S5"
+          },
+          {
+            "slot": 6,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S6"
+          },
+          {
+            "slot": 7,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S7"
+          },
+          {
+            "slot": 8,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S8"
+          },
+          {
+            "slot": 9,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S9"
+          },
+          {
+            "slot": 10,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S10"
+          },
+          {
+            "slot": 11,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S11"
+          },
+          {
+            "slot": 12,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S12"
+          },
+          {
+            "slot": 13,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S13"
+          },
+          {
+            "slot": 14,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S14"
+          },
+          {
+            "slot": 15,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S15"
+          },
+          {
+            "slot": 16,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S16"
+          },
+          {
+            "slot": 17,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S17"
+          },
+          {
+            "slot": 18,
+            "type": "hi",
+            "troops": 780,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S18"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "13": {
+        "id": 13,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 0,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 0,
+        "money": 100,
+        "morale": 59,
+        "troops": 15100,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S0"
+          },
+          {
+            "slot": 1,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S1"
+          },
+          {
+            "slot": 2,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S2"
+          },
+          {
+            "slot": 3,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S3"
+          },
+          {
+            "slot": 4,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S4"
+          },
+          {
+            "slot": 5,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S5"
+          },
+          {
+            "slot": 6,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S6"
+          },
+          {
+            "slot": 7,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S7"
+          },
+          {
+            "slot": 8,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S8"
+          },
+          {
+            "slot": 9,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S9"
+          },
+          {
+            "slot": 10,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S10"
+          },
+          {
+            "slot": 11,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S11"
+          },
+          {
+            "slot": 12,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S12"
+          },
+          {
+            "slot": 13,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S13"
+          },
+          {
+            "slot": 14,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S14"
+          },
+          {
+            "slot": 15,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S15"
+          },
+          {
+            "slot": 16,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S16"
+          },
+          {
+            "slot": 17,
+            "type": "hi",
+            "troops": 790,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S17"
+          },
+          {
+            "slot": 18,
+            "type": "hi",
+            "troops": 780,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S18"
+          },
+          {
+            "slot": 19,
+            "type": "hi",
+            "troops": 100,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S1"
+          }
+        ],
+        "supply_pct": 0
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 29,
+        "supplies": 0,
+        "money": 0,
+        "ships": 30,
+        "condition": 97,
+        "army": 13
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      0,
+      -1
+    ]
+  },
+  "events": [
+    {
+      "phase": "open",
+      "ids": [
+        0,
+        13,
+        89,
+        24,
+        -1,
+        2
+      ],
+      "working": [
+        {
+          "id": 0,
+          "x": 101,
+          "y": 45,
+          "owner": 0,
+          "moves": 7,
+          "cell": 2,
+          "embarked": false,
+          "supplies": 0,
+          "money": 100,
+          "morale": 51,
+          "troops": 700,
+          "units": [
+            {
+              "slot": 0,
+              "type": "hi",
+              "troops": 100,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S0"
+            },
+            {
+              "slot": 1,
+              "type": "hi",
+              "troops": 100,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S1"
+            },
+            {
+              "slot": 2,
+              "type": "hi",
+              "troops": 500,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S2"
+            }
+          ],
+          "supply_pct": 0
+        },
+        {
+          "id": 13,
+          "x": 101,
+          "y": 46,
+          "owner": 0,
+          "moves": 7,
+          "cell": -1,
+          "embarked": true,
+          "supplies": 0,
+          "money": 100,
+          "morale": 59,
+          "troops": 15000,
+          "units": [
+            {
+              "slot": 0,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S0"
+            },
+            {
+              "slot": 1,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S1"
+            },
+            {
+              "slot": 2,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S2"
+            },
+            {
+              "slot": 3,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S3"
+            },
+            {
+              "slot": 4,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S4"
+            },
+            {
+              "slot": 5,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S5"
+            },
+            {
+              "slot": 6,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S6"
+            },
+            {
+              "slot": 7,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S7"
+            },
+            {
+              "slot": 8,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S8"
+            },
+            {
+              "slot": 9,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S9"
+            },
+            {
+              "slot": 10,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S10"
+            },
+            {
+              "slot": 11,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S11"
+            },
+            {
+              "slot": 12,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S12"
+            },
+            {
+              "slot": 13,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S13"
+            },
+            {
+              "slot": 14,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S14"
+            },
+            {
+              "slot": 15,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S15"
+            },
+            {
+              "slot": 16,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S16"
+            },
+            {
+              "slot": 17,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S17"
+            },
+            {
+              "slot": 18,
+              "type": "hi",
+              "troops": 780,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S18"
+            }
+          ],
+          "supply_pct": 0
+        }
+      ],
+      "global_state": {
+        "armies": {
+          "0": {
+            "id": 0,
+            "x": 101,
+            "y": 45,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 0,
+            "money": 100,
+            "morale": 51,
+            "troops": 700,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 100,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S0"
+              },
+              {
+                "slot": 1,
+                "type": "hi",
+                "troops": 100,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S1"
+              },
+              {
+                "slot": 2,
+                "type": "hi",
+                "troops": 500,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S2"
+              }
+            ],
+            "supply_pct": 0
+          },
+          "12": {
+            "id": 12,
+            "x": 110,
+            "y": 40,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 0,
+            "money": 100,
+            "morale": 59,
+            "troops": 15000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S0"
+              },
+              {
+                "slot": 1,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S1"
+              },
+              {
+                "slot": 2,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S2"
+              },
+              {
+                "slot": 3,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S3"
+              },
+              {
+                "slot": 4,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S4"
+              },
+              {
+                "slot": 5,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S5"
+              },
+              {
+                "slot": 6,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S6"
+              },
+              {
+                "slot": 7,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S7"
+              },
+              {
+                "slot": 8,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S8"
+              },
+              {
+                "slot": 9,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S9"
+              },
+              {
+                "slot": 10,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S10"
+              },
+              {
+                "slot": 11,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S11"
+              },
+              {
+                "slot": 12,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S12"
+              },
+              {
+                "slot": 13,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S13"
+              },
+              {
+                "slot": 14,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S14"
+              },
+              {
+                "slot": 15,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S15"
+              },
+              {
+                "slot": 16,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S16"
+              },
+              {
+                "slot": 17,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S17"
+              },
+              {
+                "slot": 18,
+                "type": "hi",
+                "troops": 780,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S18"
+              }
+            ],
+            "supply_pct": 0
+          },
+          "13": {
+            "id": 13,
+            "x": 101,
+            "y": 46,
+            "owner": 0,
+            "moves": 7,
+            "cell": -1,
+            "embarked": true,
+            "supplies": 0,
+            "money": 100,
+            "morale": 59,
+            "troops": 15000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S0"
+              },
+              {
+                "slot": 1,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S1"
+              },
+              {
+                "slot": 2,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S2"
+              },
+              {
+                "slot": 3,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S3"
+              },
+              {
+                "slot": 4,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S4"
+              },
+              {
+                "slot": 5,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S5"
+              },
+              {
+                "slot": 6,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S6"
+              },
+              {
+                "slot": 7,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S7"
+              },
+              {
+                "slot": 8,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S8"
+              },
+              {
+                "slot": 9,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S9"
+              },
+              {
+                "slot": 10,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S10"
+              },
+              {
+                "slot": 11,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S11"
+              },
+              {
+                "slot": 12,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S12"
+              },
+              {
+                "slot": 13,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S13"
+              },
+              {
+                "slot": 14,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S14"
+              },
+              {
+                "slot": 15,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S15"
+              },
+              {
+                "slot": 16,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S16"
+              },
+              {
+                "slot": 17,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S17"
+              },
+              {
+                "slot": 18,
+                "type": "hi",
+                "troops": 780,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S18"
+              }
+            ],
+            "supply_pct": 0
+          }
+        },
+        "fleets": {
+          "2": {
+            "id": 2,
+            "x": 101,
+            "y": 46,
+            "owner": 0,
+            "moves": 29,
+            "supplies": 0,
+            "money": 0,
+            "ships": 30,
+            "condition": 97,
+            "army": 13
+          },
+          "5": {
+            "id": 5,
+            "x": 101,
+            "y": 47,
+            "owner": 0,
+            "moves": 0,
+            "supplies": 0,
+            "money": 0,
+            "ships": 10,
+            "condition": 97,
+            "army": -1
+          }
+        },
+        "city_stock": 330,
+        "foreign_treasury": 13474,
+        "selected": [
+          0,
+          -1
+        ]
+      }
+    },
+    {
+      "phase": "transfer",
+      "boxes": [
+        "@ This army already has 20 units.",
+        "e This fleet can not cany any more troops. aK"
+      ],
+      "ids": [
+        0,
+        13,
+        89,
+        24,
+        -1,
+        2
+      ],
+      "working": [
+        {
+          "id": 0,
+          "x": 101,
+          "y": 45,
+          "owner": 0,
+          "moves": 7,
+          "cell": 2,
+          "embarked": false,
+          "supplies": 0,
+          "money": 100,
+          "morale": 51,
+          "troops": 600,
+          "units": [
+            {
+              "slot": 0,
+              "type": "hi",
+              "troops": 100,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S0"
+            },
+            {
+              "slot": 1,
+              "type": "hi",
+              "troops": 500,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S2"
+            }
+          ],
+          "supply_pct": 0
+        },
+        {
+          "id": 13,
+          "x": 101,
+          "y": 46,
+          "owner": 0,
+          "moves": 0,
+          "cell": -1,
+          "embarked": true,
+          "supplies": 0,
+          "money": 100,
+          "morale": 59,
+          "troops": 15100,
+          "units": [
+            {
+              "slot": 0,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S0"
+            },
+            {
+              "slot": 1,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S1"
+            },
+            {
+              "slot": 2,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S2"
+            },
+            {
+              "slot": 3,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S3"
+            },
+            {
+              "slot": 4,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S4"
+            },
+            {
+              "slot": 5,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S5"
+            },
+            {
+              "slot": 6,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S6"
+            },
+            {
+              "slot": 7,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S7"
+            },
+            {
+              "slot": 8,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S8"
+            },
+            {
+              "slot": 9,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S9"
+            },
+            {
+              "slot": 10,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S10"
+            },
+            {
+              "slot": 11,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S11"
+            },
+            {
+              "slot": 12,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S12"
+            },
+            {
+              "slot": 13,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S13"
+            },
+            {
+              "slot": 14,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S14"
+            },
+            {
+              "slot": 15,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S15"
+            },
+            {
+              "slot": 16,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S16"
+            },
+            {
+              "slot": 17,
+              "type": "hi",
+              "troops": 790,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S17"
+            },
+            {
+              "slot": 18,
+              "type": "hi",
+              "troops": 780,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S18"
+            },
+            {
+              "slot": 19,
+              "type": "hi",
+              "troops": 100,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S1"
+            }
+          ],
+          "supply_pct": 0
+        }
+      ],
+      "global_state": {
+        "armies": {
+          "0": {
+            "id": 0,
+            "x": 101,
+            "y": 45,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 0,
+            "money": 100,
+            "morale": 51,
+            "troops": 700,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 100,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S0"
+              },
+              {
+                "slot": 1,
+                "type": "hi",
+                "troops": 100,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S1"
+              },
+              {
+                "slot": 2,
+                "type": "hi",
+                "troops": 500,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S2"
+              }
+            ],
+            "supply_pct": 0
+          },
+          "12": {
+            "id": 12,
+            "x": 110,
+            "y": 40,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 0,
+            "money": 100,
+            "morale": 59,
+            "troops": 15000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S0"
+              },
+              {
+                "slot": 1,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S1"
+              },
+              {
+                "slot": 2,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S2"
+              },
+              {
+                "slot": 3,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S3"
+              },
+              {
+                "slot": 4,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S4"
+              },
+              {
+                "slot": 5,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S5"
+              },
+              {
+                "slot": 6,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S6"
+              },
+              {
+                "slot": 7,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S7"
+              },
+              {
+                "slot": 8,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S8"
+              },
+              {
+                "slot": 9,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S9"
+              },
+              {
+                "slot": 10,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S10"
+              },
+              {
+                "slot": 11,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S11"
+              },
+              {
+                "slot": 12,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S12"
+              },
+              {
+                "slot": 13,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S13"
+              },
+              {
+                "slot": 14,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S14"
+              },
+              {
+                "slot": 15,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S15"
+              },
+              {
+                "slot": 16,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S16"
+              },
+              {
+                "slot": 17,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S17"
+              },
+              {
+                "slot": 18,
+                "type": "hi",
+                "troops": 780,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S18"
+              }
+            ],
+            "supply_pct": 0
+          },
+          "13": {
+            "id": 13,
+            "x": 101,
+            "y": 46,
+            "owner": 0,
+            "moves": 7,
+            "cell": -1,
+            "embarked": true,
+            "supplies": 0,
+            "money": 100,
+            "morale": 59,
+            "troops": 15000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S0"
+              },
+              {
+                "slot": 1,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S1"
+              },
+              {
+                "slot": 2,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S2"
+              },
+              {
+                "slot": 3,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S3"
+              },
+              {
+                "slot": 4,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S4"
+              },
+              {
+                "slot": 5,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S5"
+              },
+              {
+                "slot": 6,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S6"
+              },
+              {
+                "slot": 7,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S7"
+              },
+              {
+                "slot": 8,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S8"
+              },
+              {
+                "slot": 9,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S9"
+              },
+              {
+                "slot": 10,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S10"
+              },
+              {
+                "slot": 11,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S11"
+              },
+              {
+                "slot": 12,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S12"
+              },
+              {
+                "slot": 13,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S13"
+              },
+              {
+                "slot": 14,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S14"
+              },
+              {
+                "slot": 15,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S15"
+              },
+              {
+                "slot": 16,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S16"
+              },
+              {
+                "slot": 17,
+                "type": "hi",
+                "troops": 790,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S17"
+              },
+              {
+                "slot": 18,
+                "type": "hi",
+                "troops": 780,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S18"
+              }
+            ],
+            "supply_pct": 0
+          }
+        },
+        "fleets": {
+          "2": {
+            "id": 2,
+            "x": 101,
+            "y": 46,
+            "owner": 0,
+            "moves": 29,
+            "supplies": 0,
+            "money": 0,
+            "ships": 30,
+            "condition": 97,
+            "army": 13
+          },
+          "5": {
+            "id": 5,
+            "x": 101,
+            "y": 47,
+            "owner": 0,
+            "moves": 0,
+            "supplies": 0,
+            "money": 0,
+            "ships": 10,
+            "condition": 97,
+            "army": -1
+          }
+        },
+        "city_stock": 330,
+        "foreign_treasury": 13474,
+        "selected": [
+          0,
+          -1
+        ]
+      }
+    }
+  ],
+  "boxes": [
+    "@ This army already has 20 units.",
+    "e This fleet can not cany any more troops. aK"
+  ],
+  "summary": {
+    "before": [
+      [
+        100,
+        0,
+        700
+      ],
+      [
+        100,
+        0,
+        15000
+      ]
+    ],
+    "after": [
+      [
+        100,
+        0,
+        600
+      ],
+      [
+        100,
+        0,
+        15100
+      ]
+    ],
+    "working_money": [
+      [
+        100,
+        100
+      ],
+      [
+        100,
+        100
+      ]
+    ],
+    "boxes": [
+      "@ This army already has 20 units.",
+      "e This fleet can not cany any more troops. aK"
+    ]
+  }
+}

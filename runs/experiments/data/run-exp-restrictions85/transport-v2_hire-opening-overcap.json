@@ -1,0 +1,379 @@
+{
+  "case": {
+    "id": "hire-opening-overcap",
+    "kind": "hire",
+    "total": 6000,
+    "base": 5500
+  },
+  "turn": 734,
+  "before_save": "transport-v2_hire-opening-overcap_before.SAV",
+  "after_save": "transport-v2_hire-opening-overcap_after.SAV",
+  "before": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 100,
+        "money": 30000,
+        "morale": 51,
+        "troops": 5500,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5500,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          }
+        ],
+        "supply_pct": 181
+      },
+      "12": {
+        "id": 12,
+        "x": 102,
+        "y": 45,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 7100,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5200,
+            "quality": 7,
+            "merc": 0,
+            "name": "2nd Guards  Battalion"
+          },
+          {
+            "slot": 1,
+            "type": "hc",
+            "troops": 1900,
+            "quality": 7,
+            "merc": 0,
+            "name": "1st Dragoons  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 44,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 5900,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5900,
+            "quality": 7,
+            "merc": 0,
+            "name": "3rd Guards  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": 0
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      -1,
+      -1
+    ]
+  },
+  "during": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 100,
+        "money": 30000,
+        "morale": 51,
+        "troops": 5500,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5500,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          }
+        ],
+        "supply_pct": 181
+      },
+      "12": {
+        "id": 12,
+        "x": 102,
+        "y": 45,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 7100,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5200,
+            "quality": 7,
+            "merc": 0,
+            "name": "2nd Guards  Battalion"
+          },
+          {
+            "slot": 1,
+            "type": "hc",
+            "troops": 1900,
+            "quality": 7,
+            "merc": 0,
+            "name": "1st Dragoons  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 44,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 5900,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5900,
+            "quality": 7,
+            "merc": 0,
+            "name": "3rd Guards  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": 0
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      -1,
+      2
+    ]
+  },
+  "after": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 100,
+        "money": 30000,
+        "morale": 51,
+        "troops": 5500,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5500,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          }
+        ],
+        "supply_pct": 181
+      },
+      "12": {
+        "id": 12,
+        "x": 102,
+        "y": 45,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 7100,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5200,
+            "quality": 7,
+            "merc": 0,
+            "name": "2nd Guards  Battalion"
+          },
+          {
+            "slot": 1,
+            "type": "hc",
+            "troops": 1900,
+            "quality": 7,
+            "merc": 0,
+            "name": "1st Dragoons  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 44,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 5900,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5900,
+            "quality": 7,
+            "merc": 0,
+            "name": "3rd Guards  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": 0
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      -1,
+      2
+    ]
+  },
+  "opened": false,
+  "boxes": [
+    "e \u2018Your fleet cannot cary any more tops. aK"
+  ],
+  "summary": {
+    "opened": false,
+    "boxes": [
+      "e \u2018Your fleet cannot cary any more tops. aK"
+    ],
+    "troops": [
+      5500,
+      5500
+    ],
+    "army_cell": -1,
+    "carrier_army": 0,
+    "moves": [
+      7,
+      7
+    ]
+  }
+}

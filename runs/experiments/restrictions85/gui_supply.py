@@ -3,6 +3,11 @@ from common import *
 import argparse
 CASES=[dict(id='providers-city-stock-low-first',kind='providers',stocks=[10,90]),dict(id='providers-city-stock-reversed',kind='providers',stocks=[90,10]),dict(id='providers-four-fleets',kind='providers',stocks=[10,90],extra=True)]
 CASES += [dict(id='carried-'+name,kind='carried',city=city,other=other,full=full,stale=stale) for name,city,other,full,stale in [('carrier-alone',False,False,False,False),('city',True,False,False,False),('other-fleet',False,True,False,False),('full-city-other',True,True,True,False),('stale-coordinates',True,True,False,True)]]
+CASES += [dict(id='carried-moved-carrier',kind='carried',city=True,other=True,full=False,stale=False,move=True)]
+
+def provider_state(g):
+ s=snapshot(g);s['provider_cities']={str(i):g.i16(0x479590+i*34+24) for i in [85,89,91]};s['provider_fleets']={str(i):g.fleet_state(i) for i in [0,1,2,5]};return s
+
 def execute(c,g,private,stem):
  b=new_bytes();a,f,n=offsets(b);army_units(b,0,[10000]);put(b,a+10,0);put(b,a+12,37)
  if c['kind']=='providers':
@@ -10,6 +15,9 @@ def execute(c,g,private,stem):
   for cid,x,y,stock in [(85,100,44,c['stocks'][0]),(89,102,46,c['stocks'][1])]:
    co=sav.CITY_OFF+cid*34;ox,oy=sav.i16(b,co+14),sav.i16(b,co+16);put(b,(ox*140+oy)*2,2)
    put(b,co+14,x);put(b,co+16,y);put(b,co+24,stock);put(b,(x*140+y)*2,20)
+  if c.get('extra'):
+   # Free the occupied102,44 tile before synthetic extra-fleet topology.
+   put(b,(102*140+44)*2,2);put(b,a+13*656,110);put(b,a+13*656+2,41);put(b,(110*140+41)*2,200)
   fleetids=[2,5,0,1] if c.get('extra') else [2,5]
   for k,fid in enumerate(fleetids):
    off=f+fid*26;ox,oy=sav.i16(b,off),sav.i16(b,off+2);put(b,(ox*140+oy)*2,sav.i16(b,off+24))
@@ -22,26 +30,37 @@ def execute(c,g,private,stem):
   if not c['other']:
    put(b,(101*140+47)*2,0);put(b,f+5*26,110);put(b,f+5*26+2,60);put(b,(110*140+60)*2,300)
   if c['stale']:put(b,a,90);put(b,a+2,30)
- g.open(staged(b,private,stem));before=save(g,private,stem,'before');s0=snapshot(g)
+ g.open(staged(b,private,stem))
+ if c.get('move'):
+  moved,boxes=g.move_fleet(2,100,46);assert tuple(moved)==(100,46),(moved,boxes)
+ before=save(g,private,stem,'before');s0=snapshot(g)
  if c['kind']=='providers':g.army_tool(0,'supply','Supply army')
  else:g.select_fleet(2);army_menu(g,0)
  opened=bool(g.find_windows('^Supply army$'));events=[]
  if opened:
   cs=inspect('Supply army');lst=g.control(cs,cls='TListBox');form=struct.unpack('<I',g.mem(0x45e71c,4))[0]
   for k in range(lst['count']):
-   if k:g.click_list_row(lst,k,pause=.3)
+   if k:lst=click_any_row(g,'Supply army',lst,k)
    fields=list(struct.unpack('<9h',g.mem(form+0x27e,18)))
-   events.append(dict(row=k,fields=fields,lists=list_rows('Supply army'),state=snapshot(g)))
+   events.append(dict(row=k,fields=fields,lists=list_rows('Supply army'),state=provider_state(g)))
    if c['kind']=='providers':
     # Each row separately, choose small10 free-supply arrow.
     ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
-    arrow(g,'Supply army',ups[0],1);events.append(dict(row=k,phase='supply10',state=snapshot(g)))
+    arrow(g,'Supply army',ups[0],1);events.append(dict(row=k,phase='supply10',state=provider_state(g)))
   g.shot(private/(stem+'-dialog.png'))
   if c['kind']=='carried':
    cs=inspect('Supply army');ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
    if len(ups)==4:
-    arrow(g,'Supply army',ups[0],1);arrow(g,'Supply army',ups[-1],1);events.append(dict(phase='supply10-money100',state=snapshot(g)))
+    arrow(g,'Supply army',ups[0],1);arrow(g,'Supply army',ups[-1],1);events.append(dict(phase='supply10-money100',state=provider_state(g)))
   close(g,'Supply army',cs,'OK')
+ if c['kind']=='carried':
+  g.select_fleet(2);g.click(g.fleet_x['supply'],drv.ARMY_TOOLBAR_Y,pause=.7);time.sleep(.7)
+  fleet_open=bool(g.find_windows('^Supply fleet$'))
+  if fleet_open:
+   fc=inspect('Supply fleet');ff=struct.unpack('<I',g.mem(0x45e71c,4))[0]
+   events.append(dict(phase='supply-fleet-control',fields=list(struct.unpack('<4h',g.mem(ff+0x288,8))),lists=list_rows('Supply fleet'),state=provider_state(g)))
+   g.shot(private/(stem+'-fleet-control.png'));g.close_controls('Supply fleet',fc)
+  else:events.append(dict(phase='supply-fleet-control',opened=False,state=provider_state(g)))
  after=save(g,private,stem,'after');s1=snapshot(g)
  public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,before=s0,after=s1,events=events,summary=dict(opened=opened,providers=[e.get('fields') for e in events if 'fields'in e],army=[s1['armies']['0']['supplies'],s1['armies']['0']['money']],carrier=[s1['fleets']['2']['supplies'],s1['fleets']['2']['money']])))
 if __name__=='__main__':
