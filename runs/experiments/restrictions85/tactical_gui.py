@@ -35,4 +35,5 @@ def execute(c,g,private,stem):
  after=save(g,private,stem,'after')
  public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,events=events,summary=dict(selected=[e['selected'] for e in events],info=[e['info'] for e in events],targets=[e['slots'][0]['target'] for e in events],moves=[e['slots'][0]['state'] for e in events],shots=[e['slots'][0]['ammo'] for e in events])))
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--version',required=True);p.add_argument('--cases',nargs='*');q=p.parse_args();session(q.version,execute,[c for c in CASES if not q.cases or c['id'] in q.cases])
+ p=argparse.ArgumentParser();p.add_argument('--version',required=True);p.add_argument('--cases',nargs='*');q=p.parse_args();cases=[c for c in CASES if (not q.cases or c['id'] in q.cases) and c['id']!='movement-enemy-no-selection'];write_new(DATA/(q.version+'-matrix.json'),cases)
+ for i,c in enumerate(cases):session(q.version+f'-c{i:02d}',execute,[c])

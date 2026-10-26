@@ -179,3 +179,36 @@ blocked and prior owned servers had exited; guard prevented attaching unknown
 display. Restarted unique natural-v2 with runtime escalation solely for own
 Wine/Xvfb context. GUI81noqueue pilot uses freed independent :758 likewise.
 No nativeWindows or ownerdisplay access, no new game/bot/battlecompletion.
+
+Recruit GUI81 pilot failed on runner signature tool(name,pause) (passedtitle
+as pause); v2 corrected call but waited for toolbar tooltip Recruitunit rather
+than actual formtitle Armyrecruits. Both failures retained, no accepted recruit
+claimed. DFM and existing driver confirm actual title. v3 uses Armyrecruits,
+read-only formpointer004A0B8C/selectedcity+23C, and extends noncapital score ties
+and reversed queueorder. Source004544E0 separately disassembled privately:
+noqueue-slot0troops=>capital; otherwise maximize queued-unit-count +1capital,
+strictgreater, so first-listed scoretie wins. Inserting Allcities row does not
+change selectedcity. Runtime v3 will test this, not treat static reading as play.
+
+Core85 bounded publication PR213 mergedc7926a69392acef51c0c563508e7dc0c37b7ed34,
+exacthead1317bceb2d31172b4380fecaabb1345dca61a674; GitGuardian success, no review
+comments or external reviewer. Four new findings: army-money-and-unchanged-ok85,
+partial-army-transfer85,human-transport-rounding83,manual-family-assumption-sweep85.
+All54? unique core controls:17supply+14money/OK+17units/disband+9transport+7sweep
+=64 completed primarycontrols (extra successful money pilot retained separately).
+Six old pairs reread; total128primary endpoint saves. Per-batch audits pass.
+
+Latest reported and successfully delivered findings baseline now
+c7926a69392acef51c0c563508e7dc0c37b7ed34. Two actual ASCII<1000byte relay messages
+to verified ic2-research01a167fa-9fb2-7570-bf21-b32682c79e6e returned same ID and
+isError:false, covering all four files. Relay distinguishes code-only/CLI/
+unresolved limits and says GUI78–81 ongoing. Delivery, not promotion, proven.
+
+GUI78natural3controls complete: no city-coordinate/terrain edits, Carthago/
+Clupea actual coast, stocks and fleetIDs varied. Firsttwo/lastfleet cappedscan;
+callback with2cities binds visible fleetrowsF0/F2/F2, skippingF1 (twofleets row3
+invalid−1). Natural fourthfleet case confirms caps and duplicate binding.
+GUI79six controls running on :757; GUI81nine on :758; GUI80pilot stock synthetic
+battle save shows enemy basicdetail click/roster, no selection, no troop/move/
+shotchange. Remaining GUI80 controls one fresh process per case on own:759.
+No native Windows, ownergame, AI/pausedbattlequeue or remake modification.

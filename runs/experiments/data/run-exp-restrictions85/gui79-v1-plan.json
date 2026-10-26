@@ -1,0 +1,51 @@
+[
+  {
+    "id": "carried-carrier-alone",
+    "kind": "carried",
+    "city": false,
+    "other": false,
+    "full": false,
+    "stale": false
+  },
+  {
+    "id": "carried-city",
+    "kind": "carried",
+    "city": true,
+    "other": false,
+    "full": false,
+    "stale": false
+  },
+  {
+    "id": "carried-other-fleet",
+    "kind": "carried",
+    "city": false,
+    "other": true,
+    "full": false,
+    "stale": false
+  },
+  {
+    "id": "carried-full-city-other",
+    "kind": "carried",
+    "city": true,
+    "other": true,
+    "full": true,
+    "stale": false
+  },
+  {
+    "id": "carried-stale-coordinates",
+    "kind": "carried",
+    "city": true,
+    "other": true,
+    "full": false,
+    "stale": true
+  },
+  {
+    "id": "carried-moved-carrier",
+    "kind": "carried",
+    "city": true,
+    "other": true,
+    "full": false,
+    "stale": false,
+    "move": true
+  }
+]
