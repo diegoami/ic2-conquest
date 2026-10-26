@@ -20,8 +20,7 @@ def execute(c,g,private,stem):
   boxes=g.embark(0,2);opened=None;during=snapshot(g)
  else:
   g.select_fleet(2)
-  if not g.army_x:g.calibrate_army_toolbar()
-  g.click(g.army_x['mercs'],drv.ARMY_TOOLBAR_Y,pause=1)
+  army_menu(g,1)
   time.sleep(1);boxes=g.dismiss_popups();opened=bool(g.find_windows('^Recruit mercenary unit$'))
   if opened:
    cs=inspect('Recruit mercenary unit');write_new(private/(stem+'-controls.json'),cs)

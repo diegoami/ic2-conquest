@@ -10,12 +10,14 @@ for label,sups,selected,finish in [('over-ok',[206,0],0,'OK'),('over-cancel',[20
  CASES.append(dict(id='unchanged-'+label,mode='unchanged',supplies=sups,selected=selected,finish=finish))
 for side in [0,1]:
  CASES += [dict(id=f'partial19plus2-side{side}',mode='units',counts=[[1000]*3,[1000]*19] if side==0 else [[1000]*19,[1000]*3],side=side,rows=[0,1],finish='OK'),dict(id=f'partial18plus3-side{side}',mode='units',counts=[[1000]*3,[1000]*18] if side==0 else [[1000]*18,[1000]*3],side=side,rows=[0,1,2],finish='OK')]
- CASES.append(dict(id=f'troop100000-side{side}',mode='units',counts=[[500,2000,1000,1000],[24500]*4] if side==0 else [[24500]*4,[500,2000,1000,1000]],side=side,rows=[0,1,2,3],finish='OK'))
+ CASES.append(dict(id=f'troop100000-side{side}',mode='units',counts=[[500,1000,2000,1000],[24500]*4] if side==0 else [[24500]*4,[500,1000,2000,1000]],side=side,rows=[0,1,2,3],finish='OK'))
  for total in [15000,15499,15500]:
   # Donor retains slot0, one transferred unit increases receiver to boundary.
   donor=[1000,total-14000];recipient=[14000]
   CASES.append(dict(id=f'transport{total}-side{side}',mode='units',counts=[donor,recipient] if side==0 else [recipient,donor],side=side,rows=[1],carrier=13 if side==0 else 0,finish='OK'))
 CASES.append(dict(id='partial19plus2-cancel',mode='units',counts=[[1000]*3,[1000]*19],side=0,rows=[0,1],finish='Cancel'))
+
+CASES += [dict(id='two-refusal-types',mode='units',counts=[[100,100,500],[790]*18+[780]],side=0,rows=[0,1,2],carrier=13,finish='OK'),dict(id='partial19plus2-right-cancel',mode='units',counts=[[1000]*19,[1000]*3],side=1,rows=[0,1],finish='Cancel')]
 
 def setup(c):
  b=new_bytes();a,f,n=offsets(b)
@@ -41,7 +43,7 @@ def copies(g,form):
 def execute(c,g,private,stem):
  b=setup(c);g.open(staged(b,private,stem));before=save(g,private,stem,'before');s0=snapshot(g)
  selected=c.get('selected',0)
- if c.get('carrier')==selected:g.select_fleet(2);g.open_dialog('Army to army transfer',(g.army_x.get('transfer',397),drv.ARMY_TOOLBAR_Y))
+ if c.get('carrier')==selected:g.select_fleet(2);army_menu(g,2);g.wait(lambda:g.find_windows('^Army to army transfer$'),8,'army transfer through selected carrier')
  else:g.army_tool(selected,'split' if c.get('split') else 'transfer','Split army' if c.get('split') else 'Army to army transfer')
  title='Split army' if c.get('split') else 'Army to army transfer'
  cs=inspect(title);write_new(private/(stem+'-controls.json'),cs)

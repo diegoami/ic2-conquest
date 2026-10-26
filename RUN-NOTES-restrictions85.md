@@ -48,3 +48,19 @@ then failed looking up caption Transfer; original visible button is Buy supplies
 All pilot evidence retained; no completed transfer claimed. Corrected lookup;
 fresh supply-v2 tests all17 army/fleet controls. Original binary is stock, not
 fast/seed patched. Private identity and environment captured per attempt.
+
+First stock-Wine runtime result: supply-v2 paid army206/100,10,000 troops,
+city330 => staged-105, buy=>army101/121,city435, foreign treasury-21.
+Room-5=>refund1; room-4/-1=>refund0; room0=>unchanged. Within-cap normal
+purchase51 costs10. Empty-city overcap still stages negative105/refunds21.
+All evidence/scalars retained. Native exact85 probe built at4d70275a: 3
+pre-existing nullable warnings,0errors. First DLL execution failed TestPaths
+root lookup (retained v1); copied unchanged build output under archived source
+root and v2 reproduces all five expected scalar lines, exit0. No full-suite or
+installed/native UI claim. No source repo modified; archive is ignored here.
+
+Parallel isolated contexts (no agents): stock supply uses ownwork-v1/:757,
+stock army ownwork-army-v1/:758, both copied from stopped prior prefix with
+symlinks preserved. Initial army pilot confirms A100/B1100 nominal+100 =>
+working200/1000, unchanged globals untilOK; second press unchanged; OK commits.
+Army-v2 extends all30-ish controls, independently from supply context.

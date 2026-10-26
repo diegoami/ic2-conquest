@@ -11,15 +11,15 @@ spec=importlib.util.spec_from_file_location('funding_base',ROOT/'runs/experiment
 base=importlib.util.module_from_spec(spec);spec.loader.exec_module(base)
 drv=base.drv;sav=base.sav
 ART=ROOT/'artifacts/run-exp-restrictions85';DATA=ROOT/'runs/experiments/data/run-exp-restrictions85'
-WORK=ART/'work-v1';base.WORK=WORK
-drv.WORK=WORK;drv.PREFIX=WORK/'prefix';drv.G=drv.PREFIX/'drive_c/IC2';drv.DISPLAY=':757'
+WORK=Path(os.environ.get('RESTRICTIONS85_WORK',str(ART/'work-v1')));base.WORK=WORK
+drv.WORK=WORK;drv.PREFIX=WORK/'prefix';drv.G=drv.PREFIX/'drive_c/IC2';drv.DISPLAY=os.environ.get('RESTRICTIONS85_DISPLAY',':757')
 drv.ENV.update(DISPLAY=drv.DISPLAY,WINEPREFIX=str(drv.PREFIX))
 drv.TOOLBAR_CACHE=WORK/'toolbar.json';drv.ARMY_TOOLBAR_CACHE=WORK/'army_toolbar.json';drv.FLEET_TOOLBAR_CACHE=WORK/'fleet_toolbar.json'
 write_new=base.write_new;inspect=base.inspect
 class Game(base.Game):
  def ensure_xvfb(self):
-  assert not Path('/tmp/.X11-unix/X757').exists(),'Own display must be free'
-  self.display_process=subprocess.Popen(['Xvfb',':757','-screen','0','1280x1024x24','-nolisten','tcp'],stdout=self.private_log,stderr=self.private_log);time.sleep(2)
+  assert not Path('/tmp/.X11-unix/X'+drv.DISPLAY.lstrip(':')).exists(),'Own display must be free'
+  self.display_process=subprocess.Popen(['Xvfb',drv.DISPLAY,'-screen','0','1280x1024x24','-nolisten','tcp'],stdout=self.private_log,stderr=self.private_log);time.sleep(2)
 
 def session(version,fn,cases):
  private=ART/('private-'+version);private.mkdir()
@@ -76,3 +76,20 @@ def close(g,title,cs,finish):
   win=g.find_windows('^'+title+'$')[0][0];g.raise_window(win);drv.sh('xdotool','key','--window',str(win),'alt+F4');time.sleep(1)
  else:g.close_controls(title,cs,text=finish)
 def public_row(stem,row):write_new(DATA/(stem+'.json'),row);print(stem,json.dumps(row.get('summary',{})),flush=True)
+
+def army_menu(g,item):
+ """Actual Unit map > Army menu, usable with a carrier selected.
+ TPremierForm DFM: Army is first submenu; items supply0,mercs1,transfer2,
+ split3,join4,change5,disband6. Keyboard navigation, no command injection.
+ """
+ g.reset_ui();g.click(270,36,pause=.3)
+ for key in ['Down','Right']+['Down']*item+['Return']:g.key(key,pause=.2)
+ time.sleep(.6)
+
+def list_rows(title):
+ out=[]
+ for line in drv.sh(drv.WINE,str(WORK/'lists85.exe'),title).splitlines():
+  p=line.split('\t')
+  if p[0]=='LIST':out.append(dict(x=int(p[1]),y=int(p[2]),count=int(p[3]),selected=int(p[4]),cls=p[5],rows=[]))
+  else:out[-1]['rows'].append(bytes.fromhex(p[2]).decode('latin1'))
+ return out
