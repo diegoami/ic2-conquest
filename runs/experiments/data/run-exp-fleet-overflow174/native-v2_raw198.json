@@ -1,0 +1,48 @@
+{
+  "id": "raw198",
+  "status": "conditional original mechanics vs native command",
+  "complete_input_projection_equal": true,
+  "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+  "pre_placement": [
+    40,
+    35
+  ],
+  "post_placement": [
+    40,
+    34
+  ],
+  "terrain_checks": 199,
+  "accepted": false,
+  "rejection": "naval.no-safe-overflow-receiver",
+  "state_changed": false,
+  "full_state_unchanged": true,
+  "projection_equal": false,
+  "mismatch_sections": [
+    "armies",
+    "fleets",
+    "cities"
+  ],
+  "troops": 597000,
+  "armies": [
+    {
+      "Id": "army-0",
+      "X": 39,
+      "Y": 34,
+      "Moves": 8,
+      "TotalTroops": 6000,
+      "Money": 100,
+      "SupplyTons": 90,
+      "AboardFleetId": null
+    },
+    {
+      "Id": "army-1",
+      "X": 10,
+      "Y": 48,
+      "Moves": 1,
+      "TotalTroops": 3000,
+      "Money": 23,
+      "SupplyTons": 21,
+      "AboardFleetId": null
+    }
+  ]
+}

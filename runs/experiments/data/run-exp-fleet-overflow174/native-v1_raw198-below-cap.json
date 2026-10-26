@@ -1,0 +1,35 @@
+{
+  "id": "raw198-below-cap",
+  "status": "conditional original mechanics vs native command",
+  "complete_input_projection_equal": true,
+  "terrain_checks": 199,
+  "accepted": true,
+  "rejection": null,
+  "state_changed": true,
+  "full_state_unchanged": false,
+  "projection_equal": true,
+  "mismatch_sections": [],
+  "troops": 595999,
+  "armies": [
+    {
+      "Id": "army-0",
+      "X": 40,
+      "Y": 33,
+      "Moves": 0,
+      "TotalTroops": 4999,
+      "Money": 100,
+      "SupplyTons": 90,
+      "AboardFleetId": "fleet-0"
+    },
+    {
+      "Id": "army-1",
+      "X": 10,
+      "Y": 48,
+      "Moves": 1,
+      "TotalTroops": 3000,
+      "Money": 23,
+      "SupplyTons": 21,
+      "AboardFleetId": null
+    }
+  ]
+}

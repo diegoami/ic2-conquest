@@ -1,0 +1,47 @@
+{
+  "id": "existing-own",
+  "status": "conditional original mechanics vs native command",
+  "complete_input_projection_equal": true,
+  "terrain_checks": 3,
+  "accepted": true,
+  "rejection": null,
+  "state_changed": true,
+  "full_state_unchanged": false,
+  "projection_equal": false,
+  "mismatch_sections": [
+    "armies"
+  ],
+  "troops": 9000,
+  "armies": [
+    {
+      "Id": "army-0",
+      "X": 40,
+      "Y": 33,
+      "Moves": 0,
+      "TotalTroops": 4000,
+      "Money": 67,
+      "SupplyTons": 60,
+      "AboardFleetId": "fleet-0"
+    },
+    {
+      "Id": "army-1",
+      "X": 40,
+      "Y": 34,
+      "Moves": 1,
+      "TotalTroops": 3000,
+      "Money": 23,
+      "SupplyTons": 21,
+      "AboardFleetId": null
+    },
+    {
+      "Id": "army-0-overflow",
+      "X": 40,
+      "Y": 35,
+      "Moves": 1,
+      "TotalTroops": 2000,
+      "Money": 33,
+      "SupplyTons": 30,
+      "AboardFleetId": null
+    }
+  ]
+}

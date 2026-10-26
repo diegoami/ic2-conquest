@@ -13,6 +13,18 @@ until the owner resumes them (`CLAUDE.md`, "Working with the owner").
 
 For cloud migration or SAV research continuation, read `docs/cloud-continuation.md`.
 
+## Current checkpoint: fleet research #174
+
+Owner explicitly resumed the 2026-10-26 wind-down on
+`research/fleet-overflow174`. Read `RUN-NOTES-fleet-overflow174.md`, its latest
+END checkpoint and the latest comment on
+https://github.com/diegoami/ic2-conquest/issues/174 for publication/intake state.
+The retained packet is audited; the finding qualifies all-overflow resource
+loss and raw tombstones as well as receiver position/moves. Preserve T216
+safety and private artifacts. Never rerun retained measurements. The optional
+union-neighborhood control remains unrun. Do not treat older handovers as a
+queue or auto-start #178, another task, or paused battles/bots.
+
 ## Codex mappings
 
 - Use the tools this session actually exposes. Claude's `Agent`, `ListAgents`,

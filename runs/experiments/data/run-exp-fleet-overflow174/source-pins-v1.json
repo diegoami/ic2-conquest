@@ -1,0 +1,41 @@
+{
+  "repository": "diegoami/imperial_conquest_2",
+  "pin": "4d70275aac4e155c0370a3ee23525cf34450a908",
+  "observed_main": "4d70275aac4e155c0370a3ee23525cf34450a908",
+  "observation_date": "2026-10-26",
+  "method": "GitHub connected fetch_file git blob SHAs; main and pin resolved with gh api commits",
+  "files": [
+    {
+      "path": "src/IC2.Engine/Naval/Commands/EmbarkArmyCommandHandler.cs",
+      "sha": "e6c08fbc2d10d7eb97445b87fa85293c1223cb63"
+    },
+    {
+      "path": "src/IC2.Engine/Armies/SplitPlacement.cs",
+      "sha": "67aeeebdf429b397dbebc3ab9e8952be78b2ff70"
+    },
+    {
+      "path": "src/IC2.Engine/Naval/ArmyTransportTrim.cs",
+      "sha": "33947e79febd8551e44c51d1820e0e9406f32937"
+    },
+    {
+      "path": "src/IC2.Engine/Import/OriginalSaveImporter.cs",
+      "sha": "ad572bbece8b9cda8024be41577e469f910c2b4d"
+    },
+    {
+      "path": "docs/tasks/T216.md",
+      "sha": "26b49b91b57470e52260feeffb97515a7b2cba85"
+    },
+    {
+      "path": "data/worlds/classical-mediterranean.json",
+      "sha": "7e903b54cf1d469a8c236229f764c14a876f4d77"
+    },
+    {
+      "path": "data/worlds/classical-mediterranean.terrain.b64",
+      "sha": "adf50956747715bcc8d263d91a15cd6e19449b9e"
+    },
+    {
+      "path": "data/rulesets/classical-faithful.json",
+      "sha": "4e04ca3e72cb1eb5bbe68010eb3280a373ebb93b"
+    }
+  ]
+}

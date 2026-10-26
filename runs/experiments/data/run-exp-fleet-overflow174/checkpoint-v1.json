@@ -1,0 +1,24 @@
+{
+  "owner_requested_wind_down": true,
+  "original_declared_controls": 16,
+  "original_byte_distinct_inputs": 13,
+  "duplicate_input_groups": [
+    [
+      "vacated-source-only",
+      "existing-own",
+      "existing-own-source-only"
+    ],
+    [
+      "existing-enemy",
+      "existing-enemy-source-only"
+    ]
+  ],
+  "native_commands": 15,
+  "complete_input_gates_passed": 15,
+  "accepted_discrepancy_rows": 8,
+  "accepted_discrepancy_distinct_inputs": 5,
+  "postboard_diagnostic_matches_all_success_receiver_coordinates": true,
+  "production_modified": false,
+  "findings_published": false,
+  "baseline_reported_and_delivered": "359255b582413cd2a968e90f945426e305f6dde4"
+}

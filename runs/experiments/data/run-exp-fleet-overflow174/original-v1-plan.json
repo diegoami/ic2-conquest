@@ -1,0 +1,87 @@
+[
+  {
+    "id": "free-receiver"
+  },
+  {
+    "id": "vacated-source-only",
+    "block_all_other_land": true
+  },
+  {
+    "id": "existing-own",
+    "existing": true
+  },
+  {
+    "id": "existing-enemy",
+    "existing": true,
+    "enemy": true
+  },
+  {
+    "id": "existing-own-source-only",
+    "block_all_other_land": true
+  },
+  {
+    "id": "existing-enemy-source-only",
+    "block_all_other_land": true,
+    "enemy": true
+  },
+  {
+    "id": "raw197",
+    "table_count": 197
+  },
+  {
+    "id": "raw198",
+    "table_count": 198
+  },
+  {
+    "id": "raw198-tombstone",
+    "table_count": 198,
+    "tombstone": true
+  },
+  {
+    "id": "raw198-all-overflow",
+    "table_count": 198,
+    "units": [
+      6000
+    ]
+  },
+  {
+    "id": "raw198-at-cap",
+    "table_count": 198,
+    "units": [
+      5000
+    ]
+  },
+  {
+    "id": "raw198-below-cap",
+    "table_count": 198,
+    "units": [
+      4999
+    ]
+  },
+  {
+    "id": "single-all-overflow",
+    "units": [
+      6000
+    ]
+  },
+  {
+    "id": "human-at-cap",
+    "human": true,
+    "units": [
+      5000
+    ]
+  },
+  {
+    "id": "human-helper-overcap",
+    "human": true,
+    "units": [
+      6000
+    ],
+    "not_gui_equivalent": true
+  },
+  {
+    "id": "helper-only-no-land",
+    "helper_no_land": true,
+    "not_gui_equivalent": true
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "id": "human-at-cap",
+  "status": "conditional original mechanics vs native command",
+  "complete_input_projection_equal": true,
+  "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+  "pre_placement": [
+    40,
+    35
+  ],
+  "post_placement": [
+    40,
+    34
+  ],
+  "terrain_checks": 2,
+  "accepted": true,
+  "rejection": null,
+  "state_changed": true,
+  "full_state_unchanged": false,
+  "projection_equal": true,
+  "mismatch_sections": [],
+  "troops": 5000,
+  "armies": [
+    {
+      "Id": "army-0",
+      "X": 40,
+      "Y": 33,
+      "Moves": 0,
+      "TotalTroops": 5000,
+      "Money": 100,
+      "SupplyTons": 90,
+      "AboardFleetId": "fleet-0"
+    }
+  ]
+}
