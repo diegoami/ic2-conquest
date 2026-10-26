@@ -1,7 +1,15 @@
 # Fleet overflow174: retained controls and final audit
 
-Bounded [finding](../../../../findings/2026-10-26-fleet-overflow-receiver 174.md),
-conquest #174 / PR223. No production change, Research promotion or new game.
+Bounded [finding](../../../../findings/2026-10-26-fleet-overflow-receiver174.md),
+conquest #174 / PR223. Promoted by
+[Research PR89](https://github.com/diegoami/imperial-conquest-2-research/pull/89)
+at `dc851f5267f7d8c4a887f066204c1355480844aa`; use its
+[canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/dc851f5267f7d8c4a887f066204c1355480844aa/docs/reports/2026-10-26-fleet-overflow-receiver174.md)
+and [safe intake receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/dc851f5267f7d8c4a887f066204c1355480844aa/docs/data/fleet-overflow174-intake-v1.json).
+No production change or new game. Research independently verified the retained
+scientific audit and freshly reproduced all 15 native command rows/full states;
+its new 257-file closure includes extra receipts, while the original 255-file
+closure and conquest measurements remain immutable. No Original reexecution.
 
 Original has 16 declared controls, 13 byte-distinct inputs; native has 15 dispatched
 commands. All input projection and real World terrain gates pass. Use
