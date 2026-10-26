@@ -99,3 +99,28 @@ Three retained outputs additionally tested in separate cold Original processes:
 Change-regularempty, Change-mercempty, Transferdeleted. Earlier g.open(after)
 was a same-process reload and is labelled as such, NOT fresh-process evidence.
 Cold reader preserves all inputs and writes new uniquelynamed originalSAVs.
+
+## Completed controls / validation
+
+23action controls acrosspilot2/controls12/early3/fast4/boundary2, plus3 separate
+cold Original processes. All successful; no original/harness run failure. Audit
+v2 reparses29pairs over52unique original-writtenSAVs; complete parsed strategic
+state equality against exactnamed effects/camera, all working/global and cold
+reload assertions pass. Initialaudit expected zero-troop parser supplypercent
+230000 but parser explicitly returns0; preservedaudit-v1-failure.json, corrected
+onlyauditor expectation (no evidence edited) andpassedv2. Assetidentities in both
+runtimeprefixes privately verified against retained EXE/pinnedDAT. Nativeactual
+production dispatcher comparison passes,4exactblobs verified, build3existing
+nullablewarnings/0errors; nofullsuite/Godot/deployed/Windowsclaim. Both ownXvfb
+sessions ended via prefixcleanup; no ownerprocess touched.
+
+Actual carriedNo cancels, and explicitAreaMap pan changes form+2200→−1 before
+Disband; originalarmy/link/resources remain intact. Three successful spacing
+controls prove a GUI route, not a maximum timing threshold. Sourcefinding draft
+andpacket handoff nowready. PriorResearch86sweep source gains a qualified
+follow-up link; its canonicalreport is not rewritten here. Preserve565lastunit
+policy despite ChangeUnits empty-record anomaly; wholedefensive refusal now has
+newcounterevidence for review, not automatic ownerpolicyremoval. No more original
+runs needed. Next:publishPR219,relay landed source/new+changedfinding toResearch,
+postconquest218/Main802 canonical-intake route,recordactualdelivery. Continue no
+other suggested strategic task without ownerinstruction.

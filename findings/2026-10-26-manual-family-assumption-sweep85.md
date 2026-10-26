@@ -7,6 +7,15 @@ embark/hire/disband and associated cleanup. No battle/AI/serializer sweep.
 Promoted through Research consolidation; source revision4d70275aac4e155c0370a3ee23525cf34450a908,
 research865755e0. Original bytes/private evidence remain ignored/private.
 
+## Later carried-Disband follow-up
+
+The unresolved carried whole-army GUI question below records the Research86
+scope. New [conquest218 controls](2026-10-26-carried-army-disband218.md) establish
+a working no-offer recruitment→cargoDisband route, with confirmation, unlink and
+refunds, plus repaint and per-unit cleanup controls. That separate source finding
+awaits Research intake; the canonical Research86 report is not silently rewritten.
+Owner last-unit and other deliberate policies remain unchanged.
+
 ## Restriction ledger and disposition
 
 | Restriction / exact original caller | Evidence and boundary | Remake / history | Intake disposition |
