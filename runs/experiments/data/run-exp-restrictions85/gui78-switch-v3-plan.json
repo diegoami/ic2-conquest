@@ -1,0 +1,28 @@
+[
+  {
+    "id": "natural-staged-switch-close",
+    "fleet_ids": [
+      2,
+      5
+    ],
+    "stocks": [
+      90,
+      10
+    ],
+    "staged": true,
+    "buy": false
+  },
+  {
+    "id": "natural-staged-switch-buy-close",
+    "fleet_ids": [
+      2,
+      5
+    ],
+    "stocks": [
+      90,
+      10
+    ],
+    "staged": true,
+    "buy": true
+  }
+]

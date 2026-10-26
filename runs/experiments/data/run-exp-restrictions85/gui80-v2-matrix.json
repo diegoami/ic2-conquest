@@ -1,0 +1,90 @@
+[
+  {
+    "id": "placement-enemy-no-selection",
+    "phase": "placement",
+    "select": false,
+    "distant": false,
+    "moves": 4,
+    "button": 1
+  },
+  {
+    "id": "placement-enemy-selected-adjacent",
+    "phase": "placement",
+    "select": true,
+    "distant": false,
+    "moves": 4,
+    "button": 1
+  },
+  {
+    "id": "placement-enemy-selected-distant",
+    "phase": "placement",
+    "select": true,
+    "distant": true,
+    "moves": 4,
+    "button": 1
+  },
+  {
+    "id": "placement-enemy-selected-zero-moves",
+    "phase": "placement",
+    "select": true,
+    "distant": false,
+    "moves": 0,
+    "button": 1
+  },
+  {
+    "id": "placement-enemy-right-no-selection",
+    "phase": "placement",
+    "select": false,
+    "distant": false,
+    "moves": 4,
+    "button": 3
+  },
+  {
+    "id": "placement-enemy-right-selected",
+    "phase": "placement",
+    "select": true,
+    "distant": false,
+    "moves": 4,
+    "button": 3
+  },
+  {
+    "id": "movement-enemy-selected-adjacent",
+    "phase": "movement",
+    "select": true,
+    "distant": false,
+    "moves": 4,
+    "button": 1
+  },
+  {
+    "id": "movement-enemy-selected-distant",
+    "phase": "movement",
+    "select": true,
+    "distant": true,
+    "moves": 4,
+    "button": 1
+  },
+  {
+    "id": "movement-enemy-selected-zero-moves",
+    "phase": "movement",
+    "select": true,
+    "distant": false,
+    "moves": 0,
+    "button": 1
+  },
+  {
+    "id": "movement-enemy-right-no-selection",
+    "phase": "movement",
+    "select": false,
+    "distant": false,
+    "moves": 4,
+    "button": 3
+  },
+  {
+    "id": "movement-enemy-right-selected",
+    "phase": "movement",
+    "select": true,
+    "distant": false,
+    "moves": 4,
+    "button": 3
+  }
+]

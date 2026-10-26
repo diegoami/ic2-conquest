@@ -1,0 +1,95 @@
+{
+  "cases": 6,
+  "rows": [
+    {
+      "id": "carried-city",
+      "batch": "gui79-v1",
+      "saves": [
+        "gui79-v1_carried-city_before.SAV",
+        "gui79-v1_carried-city_after.SAV"
+      ],
+      "cargo_coordinates": [
+        101,
+        46
+      ],
+      "supplier": 2,
+      "close": "OK",
+      "fleet_control_open": true
+    },
+    {
+      "id": "carried-full-city-other",
+      "batch": "gui79-v1",
+      "saves": [
+        "gui79-v1_carried-full-city-other_before.SAV",
+        "gui79-v1_carried-full-city-other_after.SAV"
+      ],
+      "cargo_coordinates": [
+        101,
+        46
+      ],
+      "supplier": 5,
+      "close": "OK",
+      "fleet_control_open": true
+    },
+    {
+      "id": "carried-moved-carrier",
+      "batch": "gui79-moved-v2",
+      "saves": [
+        "gui79-moved-v2_carried-moved-carrier_before.SAV",
+        "gui79-moved-v2_carried-moved-carrier_after.SAV"
+      ],
+      "cargo_coordinates": [
+        100,
+        46
+      ],
+      "supplier": 5,
+      "close": "OK",
+      "fleet_control_open": true
+    },
+    {
+      "id": "carried-close",
+      "batch": "gui79-close-v3",
+      "saves": [
+        "gui79-close-v3_carried-close_before.SAV",
+        "gui79-close-v3_carried-close_after.SAV"
+      ],
+      "cargo_coordinates": [
+        101,
+        46
+      ],
+      "supplier": 5,
+      "close": "Close",
+      "fleet_control_open": true
+    },
+    {
+      "id": "carried-carrier-alone",
+      "batch": "gui79-marker-v4",
+      "saves": [
+        "gui79-marker-v4_carried-carrier-alone_before.SAV",
+        "gui79-marker-v4_carried-carrier-alone_after.SAV"
+      ],
+      "cargo_coordinates": [
+        101,
+        46
+      ],
+      "supplier": 2,
+      "close": "OK",
+      "fleet_control_open": false
+    },
+    {
+      "id": "carried-other-fleet",
+      "batch": "gui79-marker-v4",
+      "saves": [
+        "gui79-marker-v4_carried-other-fleet_before.SAV",
+        "gui79-marker-v4_carried-other-fleet_after.SAV"
+      ],
+      "cargo_coordinates": [
+        101,
+        46
+      ],
+      "supplier": 5,
+      "close": "OK",
+      "fleet_control_open": true
+    }
+  ]
+}

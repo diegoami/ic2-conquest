@@ -5,6 +5,8 @@ CASES=[dict(id='providers-city-stock-low-first',kind='providers',stocks=[10,90])
 CASES += [dict(id='carried-'+name,kind='carried',city=city,other=other,full=full,stale=stale) for name,city,other,full,stale in [('carrier-alone',False,False,False,False),('city',True,False,False,False),('other-fleet',False,True,False,False),('full-city-other',True,True,True,False),('stale-coordinates',True,True,False,True)]]
 CASES += [dict(id='carried-moved-carrier',kind='carried',city=True,other=True,full=False,stale=False,move=True)]
 
+CASES += [dict(id='carried-close',kind='carried',city=True,other=True,full=False,stale=False,finish='Close')]
+
 def provider_state(g):
  s=snapshot(g);s['provider_cities']={str(i):g.i16(0x479590+i*34+24) for i in [85,89,91]};s['provider_fleets']={str(i):g.fleet_state(i) for i in [0,1,2,5]};return s
 
@@ -26,7 +28,9 @@ def execute(c,g,private,stem):
   # Carrier at101,46. Army marker removed, actual carried link valid.
   put(b,(101*140+45)*2,2);put(b,a,101);put(b,a+2,46);put(b,a+8,-1);put(b,f+2*26+22,0)
   put(b,a+10,101 if c['full'] else 0);put(b,f+2*26+14,123);put(b,f+2*26+16,321);put(b,f+5*26+14,77);put(b,f+5*26+16,217)
-  if not c['city']:put(b,sav.CITY_OFF+89*34+18,1);put(b,n+0x26+2,3);put(b,n+1172+0x26,3)
+  if not c['city']:
+   put(b,sav.CITY_OFF+89*34+18,1);put(b,(102*140+46)*2,37) # owner1, same city marker band
+   put(b,n+0x26+2,3);put(b,n+1172+0x26,3)
   if not c['other']:
    put(b,(101*140+47)*2,0);put(b,f+5*26,110);put(b,f+5*26+2,60);put(b,(110*140+60)*2,300)
   if c['stale']:put(b,a,90);put(b,a+2,30)
@@ -52,7 +56,7 @@ def execute(c,g,private,stem):
    cs=inspect('Supply army');ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
    if len(ups)==4:
     arrow(g,'Supply army',ups[0],1);arrow(g,'Supply army',ups[-1],1);events.append(dict(phase='supply10-money100',state=provider_state(g)))
-  close(g,'Supply army',cs,'OK')
+  close(g,'Supply army',cs,c.get('finish','OK'))
  if c['kind']=='carried':
   g.select_fleet(2);g.click(g.fleet_x['supply'],drv.ARMY_TOOLBAR_Y,pause=.7);time.sleep(.7)
   fleet_open=bool(g.find_windows('^Supply fleet$'))

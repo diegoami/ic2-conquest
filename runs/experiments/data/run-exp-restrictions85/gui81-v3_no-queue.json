@@ -1,0 +1,174 @@
+{
+  "case": {
+    "id": "no-queue",
+    "queues": [],
+    "reorder": true
+  },
+  "turn": 734,
+  "before_save": "gui81-v3_no-queue_before.SAV",
+  "after_save": "gui81-v3_no-queue_after.SAV",
+  "opened": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 3,
+      "selected": 2,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "Tarquinii",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 0,
+      "selected": -1,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": []
+    }
+  ],
+  "binding": {
+    "selected_city": 85,
+    "capital": 85
+  },
+  "reopened": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 3,
+      "selected": 2,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "Tarquinii",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 0,
+      "selected": -1,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": []
+    }
+  ],
+  "afterclick": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 3,
+      "selected": 2,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "Tarquinii",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 1,
+      "selected": 0,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": [
+        "Lit inf  3,000  not ready"
+      ]
+    }
+  ],
+  "manual_reopen": [
+    {
+      "x": 313,
+      "y": 70,
+      "count": 3,
+      "selected": 2,
+      "cls": "TListBox",
+      "selected_count": -1,
+      "rows": [
+        "Tarquinii",
+        "Luceria",
+        "ROME"
+      ]
+    },
+    {
+      "x": 313,
+      "y": 179,
+      "count": 0,
+      "selected": -1,
+      "cls": "TListBox",
+      "selected_count": 0,
+      "rows": []
+    }
+  ],
+  "boxes": [],
+  "queues_before": [],
+  "queues_after": [
+    {
+      "slot": 0,
+      "state": 0,
+      "type": "li",
+      "troops": 3000,
+      "city": 85
+    }
+  ],
+  "summary": {
+    "opened": [
+      {
+        "x": 313,
+        "y": 70,
+        "count": 3,
+        "selected": 2,
+        "cls": "TListBox",
+        "selected_count": -1,
+        "rows": [
+          "Tarquinii",
+          "Luceria",
+          "ROME"
+        ]
+      },
+      {
+        "x": 313,
+        "y": 179,
+        "count": 0,
+        "selected": -1,
+        "cls": "TListBox",
+        "selected_count": 0,
+        "rows": []
+      }
+    ],
+    "reopened": [
+      {
+        "x": 313,
+        "y": 70,
+        "count": 3,
+        "selected": 2,
+        "cls": "TListBox",
+        "selected_count": -1,
+        "rows": [
+          "Tarquinii",
+          "Luceria",
+          "ROME"
+        ]
+      },
+      {
+        "x": 313,
+        "y": 179,
+        "count": 0,
+        "selected": -1,
+        "cls": "TListBox",
+        "selected_count": 0,
+        "rows": []
+      }
+    ],
+    "boxes": []
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "batch": "supply-marker-v3",
+  "cases": 2,
+  "all_pairs_reparsed": true,
+  "rows": [
+    {
+      "id": "paid-army-room--105",
+      "before_save": "supply-marker-v3_paid-army-room--105_before.SAV",
+      "after_save": "supply-marker-v3_paid-army-room--105_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105,
+          0
+        ],
+        "target_before": [
+          206,
+          100
+        ],
+        "target_after": [
+          101,
+          121
+        ],
+        "city": [
+          330,
+          435
+        ],
+        "foreign_treasury_change": -21
+      }
+    },
+    {
+      "id": "paid-fleet-room--105",
+      "before_save": "supply-marker-v3_paid-fleet-room--105_before.SAV",
+      "after_save": "supply-marker-v3_paid-fleet-room--105_after.SAV",
+      "parsed": true,
+      "summary": {
+        "staged": [
+          0,
+          -105,
+          0
+        ],
+        "target_before": [
+          265,
+          100
+        ],
+        "target_after": [
+          160,
+          121
+        ],
+        "city": [
+          330,
+          435
+        ],
+        "foreign_treasury_change": -21
+      }
+    }
+  ]
+}

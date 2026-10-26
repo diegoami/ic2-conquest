@@ -1,0 +1,564 @@
+{
+  "rows": [
+    {
+      "id": "capital-bias-tie-score",
+      "batch": "gui81-v3",
+      "selected_city": 80,
+      "new_recruit_city": 80,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "capital-only",
+      "batch": "gui81-v3",
+      "selected_city": 85,
+      "new_recruit_city": 85,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "no-queue",
+      "batch": "gui81-v3",
+      "selected_city": 85,
+      "new_recruit_city": 85,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "noncapital-only",
+      "batch": "gui81-v3",
+      "selected_city": 80,
+      "new_recruit_city": 80,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "noncapital-two-town-tie-slots-reversed",
+      "batch": "gui81-v3",
+      "selected_city": 80,
+      "new_recruit_city": 80,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "noncapital-two-town-tie",
+      "batch": "gui81-v3",
+      "selected_city": 80,
+      "new_recruit_city": 80,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "two-tied-slots-reversed",
+      "batch": "gui81-v3",
+      "selected_city": 85,
+      "new_recruit_city": 85,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "two-tied",
+      "batch": "gui81-v3",
+      "selected_city": 85,
+      "new_recruit_city": 85,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "two-unequal",
+      "batch": "gui81-v3",
+      "selected_city": 85,
+      "new_recruit_city": 85,
+      "reopen_resets_default": true
+    },
+    {
+      "id": "natural-four-fleets-id-order-reversed",
+      "batch": "gui78-natural-v2",
+      "bindings": [
+        [
+          76,
+          72,
+          5,
+          2,
+          0,
+          76,
+          -1,
+          0,
+          -1
+        ],
+        [
+          76,
+          72,
+          5,
+          2,
+          0,
+          72,
+          -1,
+          0,
+          -1
+        ],
+        [
+          76,
+          72,
+          5,
+          2,
+          0,
+          -1,
+          5,
+          0,
+          -1
+        ],
+        [
+          76,
+          72,
+          5,
+          2,
+          0,
+          -1,
+          0,
+          0,
+          -1
+        ],
+        [
+          76,
+          72,
+          5,
+          2,
+          0,
+          -1,
+          0,
+          0,
+          -1
+        ]
+      ],
+      "save_pair_reparsed": true
+    },
+    {
+      "id": "natural-four-fleets",
+      "batch": "gui78-natural-v2",
+      "bindings": [
+        [
+          72,
+          76,
+          2,
+          5,
+          1,
+          72,
+          -1,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          1,
+          76,
+          -1,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          1,
+          -1,
+          2,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          1,
+          -1,
+          1,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          1,
+          -1,
+          1,
+          0,
+          -1
+        ]
+      ],
+      "save_pair_reparsed": true
+    },
+    {
+      "id": "natural-two-fleets",
+      "batch": "gui78-natural-v2",
+      "bindings": [
+        [
+          72,
+          76,
+          2,
+          5,
+          -1,
+          72,
+          -1,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          -1,
+          76,
+          -1,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          -1,
+          -1,
+          2,
+          0,
+          -1
+        ],
+        [
+          72,
+          76,
+          2,
+          5,
+          -1,
+          -1,
+          -1,
+          0,
+          -1
+        ]
+      ],
+      "save_pair_reparsed": true
+    },
+    {
+      "id": "natural-staged-switch-buy-close",
+      "batch": "gui78-switch-v3",
+      "summary": {
+        "staged": [
+          90,
+          90,
+          0
+        ],
+        "cities": {
+          "72": 90,
+          "76": -80
+        },
+        "army": [
+          90,
+          82
+        ]
+      },
+      "save_pair_reparsed": true
+    },
+    {
+      "id": "natural-staged-switch-close",
+      "batch": "gui78-switch-v3",
+      "summary": {
+        "staged": [
+          90,
+          90
+        ],
+        "cities": {
+          "72": 90,
+          "76": 10
+        },
+        "army": [
+          0,
+          100
+        ]
+      },
+      "save_pair_reparsed": true
+    },
+    {
+      "id": "placement-own-right-clear",
+      "batch": "gui80-clear-v4-c00",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Rome's army",
+        "Audit own ar",
+        "Archers",
+        "Troops -3,000     ",
+        "Quality -good",
+        "Morale -low",
+        "Moves -4",
+        "Shots -25",
+        " ",
+        "Unit set to attack",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     "
+      ]
+    },
+    {
+      "id": "movement-own-right-clear",
+      "batch": "gui80-clear-v4-c01",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Rome's army",
+        "Audit own ar",
+        "Archers",
+        "Troops -3,000     ",
+        "Quality -good",
+        "Morale -low",
+        "Moves -4",
+        "Shots -25",
+        " ",
+        "Unit set to attack",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     "
+      ]
+    },
+    {
+      "id": "movement-enemy-no-selection",
+      "batch": "gui80-pilot-v1",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Carthage's army",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops -2,000     "
+      ]
+    },
+    {
+      "id": "placement-enemy-no-selection",
+      "batch": "gui80-v2-c00",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Carthage's army",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops -2,000     "
+      ]
+    },
+    {
+      "id": "placement-enemy-selected-adjacent",
+      "batch": "gui80-v2-c01",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Rome's army",
+        "Audit own ar",
+        "Archers",
+        "Troops -3,000     ",
+        "Quality -good",
+        "Morale -low",
+        "Moves -4",
+        "Shots -25",
+        " ",
+        "Unit set to attack",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     "
+      ]
+    },
+    {
+      "id": "placement-enemy-selected-distant",
+      "batch": "gui80-v2-c02",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Carthage's army",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops -2,000     "
+      ]
+    },
+    {
+      "id": "placement-enemy-selected-zero-moves",
+      "batch": "gui80-v2-c03",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": true,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Rome's army",
+        "Audit own ar",
+        "Archers",
+        "Troops -3,000     ",
+        "Quality -good",
+        "Morale -low",
+        "Moves -4",
+        "Shots -25",
+        " ",
+        "Unit set to attack",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     "
+      ]
+    },
+    {
+      "id": "placement-enemy-right-no-selection",
+      "batch": "gui80-v2-c04",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": []
+    },
+    {
+      "id": "placement-enemy-right-selected",
+      "batch": "gui80-v2-c05",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": 0,
+      "info_after_click": [
+        "Audit own ar",
+        "Archers",
+        "Troops   3,000     ",
+        " ",
+        " SHOOTS AT",
+        " ",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     ",
+        " ",
+        "TROOP LOSSES  56"
+      ]
+    },
+    {
+      "id": "movement-enemy-selected-adjacent",
+      "batch": "gui80-v2-c06",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Rome's army",
+        "Audit own ar",
+        "Archers",
+        "Troops -3,000     ",
+        "Quality -good",
+        "Morale -low",
+        "Moves -4",
+        "Shots -25",
+        " ",
+        "Unit set to attack",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     "
+      ]
+    },
+    {
+      "id": "movement-enemy-selected-distant",
+      "batch": "gui80-v2-c07",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Carthage's army",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops -2,000     "
+      ]
+    },
+    {
+      "id": "movement-enemy-selected-zero-moves",
+      "batch": "gui80-v2-c08",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": true,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Rome's army",
+        "Audit own ar",
+        "Archers",
+        "Troops -3,000     ",
+        "Quality -good",
+        "Morale -low",
+        "Moves -4",
+        "Shots -25",
+        " ",
+        "Unit set to attack",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     "
+      ]
+    },
+    {
+      "id": "movement-enemy-right-no-selection",
+      "batch": "gui80-v2-c09",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": []
+    },
+    {
+      "id": "movement-enemy-right-selected",
+      "batch": "gui80-v2-c10",
+      "genuine_zero_control": false,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": 0,
+      "info_after_click": [
+        "Audit own ar",
+        "Archers",
+        "Troops   3,000     ",
+        " ",
+        " SHOOTS AT",
+        " ",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops   2,000     ",
+        " ",
+        "TROOP LOSSES  61"
+      ]
+    },
+    {
+      "id": "placement-enemy-selected-zero-moves",
+      "batch": "gui80-zero-v3-c00",
+      "genuine_zero_control": true,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Carthage's army",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops -29,848    "
+      ]
+    },
+    {
+      "id": "movement-enemy-selected-zero-moves",
+      "batch": "gui80-zero-v3-c01",
+      "genuine_zero_control": true,
+      "load_reset_labelled_zero": false,
+      "save_pair_reparsed": true,
+      "selected_after_click": -1,
+      "info_after_click": [
+        "Carthage's army",
+        "Audit enemy hi",
+        "Heavy infantry",
+        "Troops -29,842    "
+      ]
+    }
+  ],
+  "cases": 30
+}

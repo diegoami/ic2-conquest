@@ -179,3 +179,132 @@ blocked and prior owned servers had exited; guard prevented attaching unknown
 display. Restarted unique natural-v2 with runtime escalation solely for own
 Wine/Xvfb context. GUI81noqueue pilot uses freed independent :758 likewise.
 No nativeWindows or ownerdisplay access, no new game/bot/battlecompletion.
+
+Recruit GUI81 pilot failed on runner signature tool(name,pause) (passedtitle
+as pause); v2 corrected call but waited for toolbar tooltip Recruitunit rather
+than actual formtitle Armyrecruits. Both failures retained, no accepted recruit
+claimed. DFM and existing driver confirm actual title. v3 uses Armyrecruits,
+read-only formpointer004A0B8C/selectedcity+23C, and extends noncapital score ties
+and reversed queueorder. Source004544E0 separately disassembled privately:
+noqueue-slot0troops=>capital; otherwise maximize queued-unit-count +1capital,
+strictgreater, so first-listed scoretie wins. Inserting Allcities row does not
+change selectedcity. Runtime v3 will test this, not treat static reading as play.
+
+Core85 bounded publication PR213 mergedc7926a69392acef51c0c563508e7dc0c37b7ed34,
+exacthead1317bceb2d31172b4380fecaabb1345dca61a674; GitGuardian success, no review
+comments or external reviewer. Four new findings: army-money-and-unchanged-ok85,
+partial-army-transfer85,human-transport-rounding83,manual-family-assumption-sweep85.
+Unique primary core controls:17supply+14money/OK+17units/disband+9transport+7sweep
+=64 completed primarycontrols (extra successful money pilot retained separately).
+Six old pairs reread; total128primary endpoint saves. Per-batch audits pass.
+
+Latest reported and successfully delivered findings baseline now
+c7926a69392acef51c0c563508e7dc0c37b7ed34. Two actual ASCII<1000byte relay messages
+to verified ic2-research01a167fa-9fb2-7570-bf21-b32682c79e6e returned same ID and
+isError:false, covering all four files. Relay distinguishes code-only/CLI/
+unresolved limits and says GUI78–81 ongoing. Delivery, not promotion, proven.
+
+GUI78natural3controls complete: no city-coordinate/terrain edits, Carthago/
+Clupea actual coast, stocks and fleetIDs varied. Firsttwo/lastfleet cappedscan;
+callback with2cities binds visible fleetrowsF0/F2/F2, skippingF1 (twofleets row3
+invalid−1). Natural fourthfleet case confirms caps and duplicate binding.
+GUI79six controls running on :757; GUI81nine on :758; GUI80pilot stock synthetic
+battle save shows enemy basicdetail click/roster, no selection, no troop/move/
+shotchange. Remaining GUI80 controls one fresh process per case on own:759.
+No native Windows, ownergame, AI/pausedbattlequeue or remake modification.
+
+GUI80 rawzero-moves inputs were refreshed by original load/start to4moves;
+observed v2 zero-labelled rows are positive-move controls, NOT zeromove evidence.
+No memory write/patch used to bypass. Prepared v3 controls use actual repeated
+original archery to spend moves, with surviving30000troop synthetic HI target,
+then reselect own archer at actual0moves before enemyclick. Fresh-process
+version will run after v2 completes. This also separates planned-target details
+from real shot feedback without any Endturn/AI/battle completion.
+GUI79 stale-coordinate fixture fails original carrier selection itself; kept
+as a failed invalid-link-coordinate stimulus, not provider behavior. Natural
+carrier move101,46=>100,46 succeeds and supply correctly follows carried army
+with matching coordinates; measured separately moved-v2. No bypass of selection.
+
+GUI81nine stockcontrols complete: default uses capital withnoqueue and capital
+biascount+1; strictgreater tiesfirsteligible citylist order, queue-slot order
+irrelevant. Allcities entry does not become the initial selection. Accepted
+smallrecruit destination and reopen-after-manual-selection match. Policy trace
+found archivedT162 explicit opensAllwhenawayfromcapital to expose queues (#1001,
+#1007,PR1014); this is deliberate UX policy, NOT automatically a fidelitybug.
+Retained archivedtask and live1001decision chain; preserve it. NativeGui v2
+production models reproduce firstListed/noncapital-All6providers and enemyclick
+None; v1 buildnamespace typo retained. v2 build0warnings/0errors, no Godotappclaim.
+
+GUI80v2eleven cases complete (twozero-labelled actuallypositive because original
+load resets moves). Fresh truezero-v3 two cases now spend moves through four
+actual UIshots before reselect/enemyclick. GUI79Closecase running. GUI78staged
+switch/Close controls added because source0043FB10 does not reset+290 and Buy
+0043FF98 does not reclamp; run exact controls rather than infer transactiontiming.
+
+GUI79 carrier-alone fleetcontrol unexpectedly opened empty. Root cause found
+by exact caller audit: staging foreign ownership in cityrecord did not update
+its Roman mapmarker36. Opening helper trusts owncitymarker first, while dialog
+provider enumeration checks actualcityowner/war. Thus original observed empty
+fleetdialog is an INCONSISTENT synthetic-marker effect, not natural provider
+behavior. Retained all priorrows; corrected warcity marker to37, repeat only
+two no-city cases asmarker-v4. Other four ownedcity/moved/Close inputs coherent.
+Paid-supply-v2 similarly had foreign cityrecord with oldownmarker, but nonhostile
+fallback independently permits its caller. Add coherent-marker primaryarmy/fleet
+-105 controls after current switches to verify exact reachability; no invented
+full-native/SAV acceptance claim. Numerical17case observations remain retained.
+
+Tactical endpoint audit first assertion expected stagedcounter1; original load
+starts/refills the resumed half-round, so before/after originalwritten saves
+both containcounter2 for all14controls (and requested phase0/1 retained). Corrected
+the audit to actualoriginal boundary2, no measuredfile edits/replays. It verifies
+no counteradvance during clicks and the four live testslots here match
+lastobserved records; grid/other slots require separate fullblock comparison.
+GUI78switch confirms staged90 survives cityswitch90stock=>10stock; Buy admits
+retained90 without reclamp, leaves newcitystock−80,army90/82. Close withoutBuy
+keepscity90/10,army0/100. This is original UIbehavior, not a recommendation to
+copy negative-stock unsafe behavior. Report requires an explicit intake choice.
+
+All main GUI questions now measured: three naturalprovider+two stagedswitch,
+six coherent carried-target, nine recruitment defaults, twelve unique tactical
+click controls (14executed, two initialzero labels reclassifiedpositive).
+Added two explicit own-right-click-clear controls to separate clearing an
+assignedtarget from Cancel selection (which leaves the target). Same isolated
+synthetic battle context, no Endturn/AI/battlecompletion. Corrected-marker paid
+army/fleet repeats both complete and audited: same−105/+21; cityowner1/marker37
+verified before/after. Source paidfinding now records original17marker caveat,
+two coherent receipts and no inferred natural empty-provider rule. Research
+caveat message delivered successfully; final correctedsource/GUI intake relay
+will follow the merge. No original test still requires owner inputs.
+
+## Final experimental verification / END of execution
+
+All requested original-side experiments and bounded sweep complete. Four GUI
+reports added (78providers,79cargo,80enemyclick,81recruitdefaults), plus sourcepaid
+staging caveat/coherentmarker revalidation. Audits: supply17pairs+2coherent
+repeats;money/OK14;units/disband17;transport9;sweep7;priorhistory6; GUIv2=30pairs
+(9recruit+5natural/switch+16tacticalexecutions, including2reclassifiedpositive
+repeats);carried6coherentpairs. All audits pass. Actual original outputs not
+modified. Extended tacticalaudit verifies fourlive slots against finalobserved
+state, all other36slots unchanged and non-target gridcells unchanged; no
+counteradvance between original-written endpoints2/2. Two explicit ownrightclear
+controls clear target20=>−1;Cancel alone retains target20. No battlecompletion.
+
+Native exact85repro v2, NativeExtra v4 and NativeGui v3 are authoritative;
+13sourceblob identities verified against GitHub4d70275a. Initial/faulty variants
+and all failed attempts preserved/scoped. Python compilation, two MinGW readonly
+helpers and gitdiffcheck pass. No external reviewer/fullsuite/installedGodot/
+nativeWindows claim. All Wine sessions ended via ownprefix cleanup; psXvfb
+has zero rows (exit1 meansno matching process, not testfailure). No owner
+process touched. Finalcommonrunner records createddisplay PID and rejects a
+pre-existing display rather than retaining historical PID assumptions.
+
+Implementationhandoff: dataREADME and per-finding exact rules/questions. Keep
+original defects (invalidprovider rows/negative-stock stagedswitch) separate
+from mandatoryfidelity; T162defaultUX,1340safety,565unit/name,no-wrap,T207reserve,
+Improvedaffordability,T216refusal unchanged. CarriedwholearmyDisband through
+another valid original selection path stillunproved, correctly not filed as a
+newbug. No remaining original launch needed for this bounded task. Next steps:
+land GUI/sourcecaveat, relay exact mainSHA toResearch with allnine findingpaths
+and ask to consolidate, link78–82/85/211. Research promotion remains separate
+until verified, no implementationissue closure. Latest delivered baseline
+remainsc7926a6 until those sends actually succeed. Preserve11unrelateduntracked.
