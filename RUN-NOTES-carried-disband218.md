@@ -48,3 +48,31 @@ forward to main's bounded map/info shortcuts, DisbandmenuShortcut0. Source
 sites26+syntacticstore candidates10 and117bounded resource callback/shortcut
 rows retained; these are bounded interface audits, not indirect-store absence
 proof. Missing ChangeUnits empty cleanup is a separate prediction to test.
+
+Research peer is separately consolidating old selection assets: scrollbar-only
+98pixel deltas do not prove tile blinking/600ms; townframe unproved. Acknowledged
+scope/correction, no unrelated new selection work started here. Pending canonical
+promotion from that session will not alter this task's measured selection fields.
+
+Hypothesis refinement from exact source: failed/no-offer RecruitMercenaries
+00446FF4 stores cargoID into form+220 BEFORE findingoffers/gates. A no-offer
+return skips Update/Paint, unlike successful modalreturn. The base fixture has
+ownAntium89 adjacent and no mercenary offer there, a valid normal precondition.
+Added actual-tooltip cargo Recruit button→wholeDisband toolbar Yes/No and menu
+controls. This may retain transient cargo selection, so DO NOT prematurely
+conclude original wholeDisband is universally unreachable from direct/repaint
+controls. Separate own stopped work-army-v1 prefix/display761 runs this batch;
+original760batch continues. Both task-owned, no ownerdisplay/process touched.
+Source callback table also shows cargo Disbandbutton exists despite directnoop.
+
+Nooffer settled toolbarYes/plannedNo/menu all leave mainfield−1 and no prompt;
+'No' branch was NOT reached and is not counted as confirmationNo coverage.
+Declared last bounded check: pre-verify both cargo tooltips, actual queued mouse
+clicks Recruit→Disband with0/20/150ms declared spacing; readonly1ms selection
+sampling (state-change-only public trace) to detect fleeting+220 vs a usable
+wholecommand. No handler injection/breakpoints/patch. Add real landNo positive
+confirmation control. This closes the specific earlyreturn hypothesis; no
+unbounded timing hunt or whole-program nonreachability claim.
+Runtime760warning checked: serverPID2385006 exactly matches createddisplay
+receipt andXlock; pilot2384271 exited. Warning is failed additional listener,
+not attachment to an unknown/owner display. Two contexts remain task-owned.

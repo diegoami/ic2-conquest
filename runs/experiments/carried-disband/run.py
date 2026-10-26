@@ -5,14 +5,19 @@ Private original bytes/fullstates/screenshots/hashes stay ignored. No memory
 writes, patches, Endturn, owner desktop, battle/AI or remake modification.
 """
 from pathlib import Path
-import argparse,hashlib,json,struct,subprocess,sys,time
+import argparse,hashlib,json,struct,subprocess,sys,time,os,threading
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT/'runs/experiments/restrictions85'))
 import common as c
 ART=ROOT/'artifacts/run-exp-carried-disband';DATA=ROOT/'runs/experiments/data/run-exp-carried-disband'
-c.ART=ART;c.DATA=DATA;c.drv.DISPLAY=':760';c.drv.ENV['DISPLAY']=':760'
+c.ART=ART;c.DATA=DATA;c.drv.DISPLAY=os.environ.get('DISBAND218_DISPLAY',':760');c.drv.ENV['DISPLAY']=c.drv.DISPLAY
 write_new=c.write_new;sav=c.sav;drv=c.drv
 CASES=[
+ dict(id='carried-after-nooffer-recruit-toolbar-yes',mode='whole',recruit_toolbar=True,toolbar=True),
+ dict(id='carried-after-nooffer-recruit-toolbar-no',mode='whole',recruit_toolbar=True,toolbar=True,confirm_no=True),
+ dict(id='carried-after-nooffer-recruit-menu',mode='whole',recruit_toolbar=True),
+ *[dict(id='carried-nooffer-fast-'+str(ms)+'ms',mode='whole',fast_ms=ms)for ms in [0,20,150]],
+ dict(id='land-whole-no',mode='whole',land=True,confirm_no=True),
  dict(id='land-whole-yes',mode='whole',land=True),
  dict(id='land-toolbar-whole',mode='whole',land=True,toolbar=True),
  dict(id='carried-toolbar-whole',mode='whole',toolbar=True),
@@ -52,6 +57,13 @@ def observed(g):
              cursor=list(struct.unpack('<2h',g.mem(form+0x21a,4))),armies=armies,carrier=g.fleet_state(2),
              treasury=struct.unpack('<i',g.mem(drv.NATIONS+0x438,4))[0],mobilization=g.i16(drv.NATIONS+0x442),city_stock=g.i16(0x479590+89*34+24))
 
+def toolbar(g,tool,label,carried=True):
+ guess=g.army_x.get(tool,{'disband':493,'mercs':372}[tool])+(150 if carried else 0)
+ for x in [guess,guess+3,guess-3,guess+6,guess-6]:
+  drv.sh('xdotool','mousemove',str(x),str(drv.ARMY_TOOLBAR_Y));time.sleep(.8)
+  if any(w[1]==label for w in g.find_windows('.',tooltips=True)):return x
+ raise AssertionError('actual toolbar tooltip not found: '+label)
+
 def execute(case,g,private,stem):
  events=[]
  def record(phase,**kwargs):
@@ -69,6 +81,12 @@ def execute(case,g,private,stem):
   boxes=g.disembark(2,101,45);record('disembarked',boxes=boxes)
   assert g.army_state(0)['cell']>=0 and g.fleet_state(2)['army']==-1
   g.select_army(0,*g.army_pos(0))
+ if case.get('recruit_toolbar'):
+  st=sav.load(before);near=[x for x in st['cities'] if max(abs(x['x']-101),abs(x['y']-46))<=1]
+  assert not any((m['x'],m['y'])==(city['x'],city['y'])for m in st['mercenaries']for city in near),'no-offer precondition'
+  x=toolbar(g,'mercs','Recruit mercenaries');record('verified-recruit-toolbar',x=x,tooltip='Recruit mercenaries')
+  g.click(x,drv.ARMY_TOOLBAR_Y,pause=.8);boxes=g.dismiss_popups();opened=bool(g.find_windows('^Recruit mercenary unit$'))
+  record('nooffer-recruit-returned',boxes=boxes,recruit_dialog_open=opened);assert not opened
  if case.get('preceding') or case['mode']=='change':
   c.army_menu(g,5);g.wait(lambda:g.find_windows('^Change units$'),8,'Change units');cs=c.inspect('Change units')
   form=struct.unpack('<I',g.mem(0x45e73c,4))[0]
@@ -91,17 +109,30 @@ def execute(case,g,private,stem):
   g.shot(private/(stem+'-working.png'));c.close(g,'Army to army transfer',cs,case['finish']);record('transfer-returned')
  if case['mode']=='whole':
   record('before-whole-command')
-  if case.get('toolbar'):
-   guess=g.army_x.get('disband',493)+(0 if case.get('land')else 150)
-   found=None
-   for x in [guess,guess+3,guess-3,guess+6,guess-6]:
-    drv.sh('xdotool','mousemove',str(x),str(drv.ARMY_TOOLBAR_Y));time.sleep(.8)
-    if any(w[1]=='Disband army'for w in g.find_windows('.',tooltips=True)):found=x;break
-   assert found is not None,'actual Disband army tooltip not found'
+  if 'fast_ms'in case:
+   merc=toolbar(g,'mercs','Recruit mercenaries');dis=toolbar(g,'disband','Disband army');g.select_fleet(2)
+   form=struct.unpack('<I',g.mem(0x45e740,4))[0];trace=[];stop=threading.Event();origin=time.monotonic()
+   def sample():
+    with open(f'/proc/{g.pid}/mem','rb',buffering=0)as f:
+     while not stop.is_set():
+      f.seek(form+0x220);raw=f.read(6);values=list(struct.unpack('<3h',raw))
+      if not trace or values!=trace[-1]['selection']:trace.append(dict(ms=round((time.monotonic()-origin)*1000,3),selection=values))
+      time.sleep(.001)
+   thread=threading.Thread(target=sample);thread.start()
+   try:
+    record('verified-fast-toolbar-pair',recruit_x=merc,disband_x=dis,spacing_ms=case['fast_ms'])
+    drv.sh('xdotool','mousemove',str(merc),str(drv.ARMY_TOOLBAR_Y),'click','1','sleep',str(case['fast_ms']/1000),'mousemove',str(dis),str(drv.ARMY_TOOLBAR_Y),'click','1');time.sleep(.8)
+   finally:stop.set();thread.join()
+   record('fast-selection-trace',trace=trace)
+  elif case.get('toolbar'):
+   found=toolbar(g,'disband','Disband army',carried=not case.get('land',False))
    record('verified-disband-toolbar',x=found,tooltip='Disband army');g.shot(private/(stem+'-toolbar-tooltip.png'));g.click(found,drv.ARMY_TOOLBAR_Y,pause=.7)
   else:c.army_menu(g,6)
   time.sleep(.7)
-  boxes=g.dismiss_popups();record('whole-command-returned',boxes=boxes)
+  if case.get('confirm_no') and g.find_windows('^Confirm$'):
+   box=g.find_windows('^Confirm$')[0];boxes=[g.read_popup(box)];g._answer_confirm(box[0],yes=False)
+  else:boxes=g.dismiss_popups()
+  record('whole-command-returned',boxes=boxes)
  g.shot(private/(stem+'-final.png'));after=c.save(g,private,stem,'after');record('saved')
  reopened=None
  if case.get('reopen'):

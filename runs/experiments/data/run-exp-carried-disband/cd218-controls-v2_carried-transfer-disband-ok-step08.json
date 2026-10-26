@@ -1,0 +1,74 @@
+{
+  "phase": "fresh-save-after",
+  "state": {
+    "selection": [
+      -1,
+      -1,
+      -1
+    ],
+    "globals": [
+      -1,
+      -1
+    ],
+    "cursor": [
+      -1,
+      45
+    ],
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 46,
+        "owner": -1,
+        "moves": 7,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 0,
+        "money": 37,
+        "morale": 51,
+        "troops": 0,
+        "units": [],
+        "supply_pct": 0
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 30,
+        "money": 48,
+        "morale": 59,
+        "troops": 3000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 3000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S0"
+          }
+        ],
+        "supply_pct": 100
+      }
+    },
+    "carrier": {
+      "id": 2,
+      "x": 101,
+      "y": 46,
+      "owner": 0,
+      "moves": 7,
+      "supplies": 0,
+      "money": 0,
+      "ships": 30,
+      "condition": 97,
+      "army": -1
+    },
+    "treasury": 1730,
+    "mobilization": 21,
+    "city_stock": 330
+  }
+}

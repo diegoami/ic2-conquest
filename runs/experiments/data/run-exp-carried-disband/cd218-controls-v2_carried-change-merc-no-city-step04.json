@@ -1,0 +1,102 @@
+{
+  "phase": "change-disband-confirmed",
+  "state": {
+    "selection": [
+      -1,
+      -1,
+      2
+    ],
+    "globals": [
+      -1,
+      2
+    ],
+    "cursor": [
+      101,
+      46
+    ],
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 7,
+        "cell": -1,
+        "embarked": true,
+        "supplies": 23,
+        "money": 37,
+        "morale": 51,
+        "troops": 5000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5000,
+            "quality": 7,
+            "merc": 38,
+            "name": "A0S0"
+          }
+        ],
+        "supply_pct": 46
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 44,
+        "owner": 0,
+        "moves": 0,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 0,
+        "money": 0,
+        "morale": 59,
+        "troops": 5900,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 5900,
+            "quality": 7,
+            "merc": 0,
+            "name": "3rd Guards  Battalion"
+          }
+        ],
+        "supply_pct": 0
+      }
+    },
+    "carrier": {
+      "id": 2,
+      "x": 101,
+      "y": 46,
+      "owner": 0,
+      "moves": 7,
+      "supplies": 0,
+      "money": 0,
+      "ships": 30,
+      "condition": 97,
+      "army": 0
+    },
+    "treasury": 1730,
+    "mobilization": 24,
+    "city_stock": 330
+  },
+  "boxes": [
+    "(7) \u2018Ate you sure you want to disband 1 unit Yes No Cancel"
+  ],
+  "working": {
+    "id": 0,
+    "x": 101,
+    "y": 46,
+    "owner": 0,
+    "moves": 7,
+    "cell": -1,
+    "embarked": true,
+    "supplies": 23,
+    "money": 37,
+    "morale": 51,
+    "troops": 0,
+    "units": [],
+    "supply_pct": 0
+  },
+  "working_mobilization": 24
+}
