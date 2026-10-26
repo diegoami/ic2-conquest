@@ -187,3 +187,54 @@ origin/main. An initial non-escalated gitfetch/networkcheck failed; proper
 runtimepermission retry succeeded, live noopenPR beforecheckpoint draftcreation.
 AGENTS.md nowpoints here and records owner'swinddown: next startup reportonly;
 onexplicitresume continue174 rather thanautostart a differenttask.
+
+## 2026-10-26 explicit resume / final audit plan
+
+Owner resumed #174 on this branch and required no repetition of completed
+versions, private-artifact retention and T216 safety. Live PR223 is draft at
+cab04a2; main remains6471d00. Fetch succeeded; findings delta from reported /
+delivered359255b is empty. Main1412 is closed/merged. Current Main source is
+4d70275aac4e155c0370a3ee23525cf34450a908, also the retained native pin.
+
+Finish a separate read-only audit, without running original instructions or
+native commands again: rederive32 RAM/container/JSON/projection endpoints,
+inspect retained call/write traces and CPU assumptions, compare native v2
+full-state projections and exact source blobs, close a NEW private hash
+manifest. Publish safe scalar receipts only. The optional union-neighborhood
+control remains unrun; existing evidence suffices for the bounded finding.
+No agents, reviewer, game, Windows access or production change is needed.
+
+Audit correction to preliminary END: single-all-overflow differs in resources
+as well as receiver position/moves. Original's live receiver retains33 money /
+30 supply, while native preserves100/90 under T216's conservation contract.
+The empty original source retains67/60 as a raw tombstone; no ABE0 compaction
+occurs in this call chain. Separate this resource/representation difference
+from the placement/movement correction candidate. Do not weaken safety or
+silently change the immutable comparison-v2 labels.
+
+### Audit completed / publication preparation
+
+Read-only audit-v2 passes32 retained endpoints,32 trace records,15 native full
+state projections,30 independently rederived placement queries,8 exact public
+source/data blobs and128 original private hashes. NEW private closure-v2.json
+has255 payloads; every payload independently rechecked after creation. No full
+native import or command was rerun, and no original instructions/game launched.
+Audit-v1 tuple-versus-JSON-array comparison failed; failure receipt and private
+source extract retained; canonical JSON comparison fixes it, v2 uses newpaths.
+
+Finding findings/2026-10-26-fleet-overflow-receiver174.md and dataREADME finish
+the bounded packet. Exact counts/duplicates and additional single-all-overflow
+resource policy difference are explicit; old comparison-v2 remains untouched.
+No false-no-safe-refusal result asserted, optional control leftunrun. No source
+correction in another repository, new task or unsafeOriginal policy copying.
+
+Validation: author audit-v2 passes; all255 private closure hashes/lengths,
+local finding/data links and all task Python syntax pass; gitdiff--check clean.
+Offline workflow checks pass: external_review selftest83/83, reviewer_prompt
+exit0, environment16passed, archive_pycache passes. Tests use fake tools and
+were not a reviewer/game launch. No separate reviewer used; authoraudit only.
+Live PR223 had no reviewcomments or threads; existing GitGuardianSUCCESS is
+for oldhead and must be checked again after finalpush. Finish PRtitle/body,
+markready, verify checks/exacthead, merge under session-led policy, then relay
+actualmainSHA to verified ic2-research thread01a167fa-9fb2-7570-bf21-b32682c79e6e.
+ListThreads currently confirms intended title/status; no message sent yet.

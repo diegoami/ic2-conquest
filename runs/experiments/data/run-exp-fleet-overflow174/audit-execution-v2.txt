@@ -1,0 +1,35 @@
+{
+  "scope": "author read-only audit of retained artifacts; no experimental reexecution",
+  "source_pin": "4d70275aac4e155c0370a3ee23525cf34450a908",
+  "source_public_blobs_verified": 8,
+  "stock_original_identity_verified": true,
+  "original_endpoints_verified": 32,
+  "original_trace_records_verified": 32,
+  "original_declared_controls": 16,
+  "byte_distinct_inputs": 13,
+  "duplicate_input_groups": [
+    [
+      "vacated-source-only",
+      "existing-own",
+      "existing-own-source-only"
+    ],
+    [
+      "existing-enemy",
+      "existing-enemy-source-only"
+    ]
+  ],
+  "native_full_state_projections_verified": 15,
+  "retained_input_gates": 15,
+  "placement_queries_independently_rederived": 30,
+  "original_no_rng_or_compaction_in_retained_traces": true,
+  "accepted_receiver_discrepancies": 8,
+  "placement_moves_only_rows": 7,
+  "single_all_overflow_additional_resource_difference": true,
+  "initial_private_hashes_verified": 128,
+  "private_closure_files": 255,
+  "private_closure_manifest": "closure-v2.json",
+  "public_per_input_hashes": false,
+  "reran_original_or_native": false,
+  "additional_union_control_run": false,
+  "full_native_import_reexecution": false
+}

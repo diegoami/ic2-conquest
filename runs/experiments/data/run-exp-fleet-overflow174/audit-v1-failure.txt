@@ -1,0 +1,6 @@
+Author read-only audit v1 stopped at first free-receiver before endpoint:
+AssertionError: ('free-receiver', 'before', 'SAV/JSON')
+Cause: Python parsed tuples compared directly with JSON arrays, before canonical
+JSON normalization. No experiment, native command or original instructions ran.
+Private source-audit-v1.txt preserved. Fixed audit compares canonical JSON;
+continuation uses fresh v2 names. Existing measurements remain unchanged.

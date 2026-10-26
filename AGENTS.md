@@ -13,15 +13,17 @@ until the owner resumes them (`CLAUDE.md`, "Working with the owner").
 
 For cloud migration or SAV research continuation, read `docs/cloud-continuation.md`.
 
-## Current checkpoint: remaining fleet research #174
+## Current checkpoint: fleet research #174
 
-Owner requested wind-down on 2026-10-26. Work is paused on
-`research/fleet-overflow174`; first read `RUN-NOTES-fleet-overflow174.md`,
-its latest END checkpoint, and the latest checkpoint comment on
-https://github.com/diegoami/ic2-conquest/issues/174. The packet is unfinished;
-do not treat the older handover as its queue or rerun retained measurements.
-On startup report state only. Continue #174 on an explicit resume; do not
-auto-start #178, another task, or the paused battle/bot queue.
+Owner explicitly resumed the 2026-10-26 wind-down on
+`research/fleet-overflow174`. Read `RUN-NOTES-fleet-overflow174.md`, its latest
+END checkpoint and the latest comment on
+https://github.com/diegoami/ic2-conquest/issues/174 for publication/intake state.
+The retained packet is audited; the finding qualifies all-overflow resource
+loss and raw tombstones as well as receiver position/moves. Preserve T216
+safety and private artifacts. Never rerun retained measurements. The optional
+union-neighborhood control remains unrun. Do not treat older handovers as a
+queue or auto-start #178, another task, or paused battles/bots.
 
 ## Codex mappings
 
