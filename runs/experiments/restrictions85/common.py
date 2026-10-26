@@ -17,6 +17,12 @@ drv.ENV.update(DISPLAY=drv.DISPLAY,WINEPREFIX=str(drv.PREFIX))
 drv.TOOLBAR_CACHE=WORK/'toolbar.json';drv.ARMY_TOOLBAR_CACHE=WORK/'army_toolbar.json';drv.FLEET_TOOLBAR_CACHE=WORK/'fleet_toolbar.json'
 write_new=base.write_new;inspect=base.inspect
 class Game(base.Game):
+ def read_popup(self,w):
+  self.popup_serial=getattr(self,'popup_serial',0)+1
+  path=self.private_dir/f'popup-{self.popup_serial:04d}.png'
+  assert not path.exists();self.shot(path,window=str(w[0]))
+  txt=subprocess.run(['tesseract',str(path),'-','--psm','6'],capture_output=True,text=True).stdout
+  return ' '.join(txt.split())
  def ensure_xvfb(self):
   # Reuse only servers created by this task's two retained pilots.
   owned={':757':1764560,':758':1782883}
@@ -90,7 +96,7 @@ def army_menu(g,item):
  split3,join4,change5,disband6. Keyboard navigation, no command injection.
  """
  g.reset_ui();g.click(270,36,pause=.3)
- for key in ['Down','Right']+['Down']*item+['Return']:g.key(key,pause=.2)
+ for key in ['Down','Right']+['Down']*item+['Return']:g.key(key)
  time.sleep(.6)
 
 def list_rows(title):

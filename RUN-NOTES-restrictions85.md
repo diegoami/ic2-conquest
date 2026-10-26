@@ -72,3 +72,14 @@ No owner display involved. Future runner explicitly verifies exact ownserver
 PID/cmdline and records reuse; final cleanup must terminate only those two
 verified owned servers after all tests. No bind-failure log is reported as a
 successful new server launch.
+
+Army-v2 deliberately interrupted after seven completed money controls, before
+any refusal, to replace shared popup scratch-image reuse with immutable private
+popup-NNNN.png captures. Completed rows retained; the next staged split input
+and interruption receipt retained; no false completed-case claim. Resume is
+army-v3 with only unfinished case IDs, not a blind full rerun.
+
+Supply-v2 completed17controls, audit-supply-v1 reparses34saves and whole parsed
+world equality except named resources/camera. Draft signed-paid-supply85 ready
+for bounded publication; no Windows/nativeUI claim. Transport-pilot-v1 starts
+separate human embark5001/hire5001 on freed own :757 context.
