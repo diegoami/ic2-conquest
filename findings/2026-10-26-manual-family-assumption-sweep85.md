@@ -1,8 +1,10 @@
 # Bounded manual-family assumption sweep: fleet purse routing and unproved guards
 
+**Status:** Promoted by [Research PR86](https://github.com/diegoami/imperial-conquest-2-research/pull/86), merge `38259d83f323bf6cbad1a4ddf2cc47ecd69f719f`. The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/reports/2026-10-26-manual-family-assumption-sweep85.md) and [independent verification receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/data/restrictions85-intake-v1.json) retain the evidence qualifications below.
+
 **Scope:** Research85 package5 only: manual supply/funding, army/fleet transfer,
 embark/hire/disband and associated cleanup. No battle/AI/serializer sweep.
-Draft for Research consolidation; source revision4d70275aac4e155c0370a3ee23525cf34450a908,
+Promoted through Research consolidation; source revision4d70275aac4e155c0370a3ee23525cf34450a908,
 research865755e0. Original bytes/private evidence remain ignored/private.
 
 ## Restriction ledger and disposition

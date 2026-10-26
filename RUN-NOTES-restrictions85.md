@@ -336,3 +336,23 @@ receipt only needs committing/pushing and returning checkout to syncedmain;
 no required experimental, GUI or nativecomparison work remains. Research
 promotion/owner design decisions/Windows acceptance are explicitly pending
 outside this source-only delivery. Preserve11unrelated untracked files.
+
+## Research86 promotion verified — 2026-10-26
+
+Peer reported allninepromoted. Independently verified live ResearchPR86 MERGED,
+merge38259d83f323bf6cbad1a4ddf2cc47ecd69f719f, exacthead24e93f330a634542e68343a069f1585db6e5b117;
+GitGuardianSUCCESS. Read allninefull canonicalreports and shared safe receipt
+from that immutablemerge; retained public copies privately underresearch86-v1.
+Every sourcefindingGitblob matches receipt's audited9a2009desource. Research
+reproduced complete auditobjects for102current+6historicalpairs plus3supporting
+pilots; verified coherentmarker/peace,1,242publicbuildtreeblobs/13auditedfiles,
+threefresh unchanged nativeprobe scalaroutputs exact. Three runtimeprefix EXE/
+DATidentities privately checked. No neworiginalgame, Godot/Windows/deployed
+acceptance, externalreview or ownerpolicychange. Limits/exclusions preserved.
+
+Markedallnine sourcefindings promoted with canonical+receipt links; dataREADME
+and promotion-research86-v1.json record independent verification scope. No
+measurement/runners/privateartifact changed. Source startup origin/main findings
+delta since reported/delivered9a2009de was empty. Next: publishpromotionmetadata,
+relay the exact landedSHA, link canonical route onconquest211/Main existing
+issues; do not close Main implementationbugs or change acceptance/release gates.

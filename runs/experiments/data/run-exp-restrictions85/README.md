@@ -1,5 +1,7 @@
 # Research85 and GUI78–81 — immutable evidence and implementation handoff
 
+**Promoted:** all nine findings consolidated in [Research PR86](https://github.com/diegoami/imperial-conquest-2-research/pull/86), merge `38259d83f323bf6cbad1a4ddf2cc47ecd69f719f`. Canonical reports use the same basenames under `docs/reports/`; the [shared safe receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/data/restrictions85-intake-v1.json) records independent reparse of102 current pairs,6 historical pairs and3 supporting pilots, full audit equality,1,242 verified public native blobs and fresh exact outputs from all3 native probes. This was offline verification of retained Wine observations, with no new Original/Godot/Windows acceptance or owner-policy changes. Main implementation and acceptance remain separate.
+
 Owner-authorized isolated original investigation: conquest211, Research85/82.
 Source pins: remake4d70275aac4e155c0370a3ee23525cf34450a908;
 research865755e04f107afc38cdb496669d882e2551aca6.13public source blobs verified
@@ -87,4 +89,4 @@ native Windows acceptance; self-review only.
 - Carried whole-army Disband through another legitimate original selection
   route remains unproved; do not request a correction without that control.
 - No new Windows acceptance or running-build identity checks were performed.
-  Promotion/implementation acceptance belongs to Research/Main, not these rows.
+  Research promotion is verified above; Main implementation acceptance remains separate from these rows.

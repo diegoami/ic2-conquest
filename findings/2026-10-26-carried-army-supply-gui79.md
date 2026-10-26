@@ -1,5 +1,7 @@
 # Supply army through a selected carrier targets its cargo and can use that carrier
 
+**Status:** Promoted by [Research PR86](https://github.com/diegoami/imperial-conquest-2-research/pull/86), merge `38259d83f323bf6cbad1a4ddf2cc47ecd69f719f`. The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/reports/2026-10-26-carried-army-supply-gui79.md) and [independent verification receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/data/restrictions85-intake-v1.json) retain the evidence qualifications below.
+
 **Tag:** [confirmed, partial], six coherent stock-original Wine controls.
 Research79/82. Existing promoted single-provider and Research77 manual-funding
 findings read first; this adds the exact selected-carrier caller.

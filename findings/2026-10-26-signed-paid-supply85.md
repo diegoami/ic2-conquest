@@ -1,7 +1,9 @@
 # Paid Supply arrows preserve signed room and refund after Buy supplies
 
+**Status:** Promoted by [Research PR86](https://github.com/diegoami/imperial-conquest-2-research/pull/86), merge `38259d83f323bf6cbad1a4ddf2cc47ecd69f719f`. The [canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/reports/2026-10-26-signed-paid-supply85.md) and [independent verification receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/38259d83f323bf6cbad1a4ddf2cc47ecd69f719f/docs/data/restrictions85-intake-v1.json) retain the evidence qualifications below.
+
 **Tag:** [confirmed, partial] — 17 stock-original Wine UI controls; no native
-Windows acceptance. Draft for Research85,83–84 dispatch. Research main checked
+Windows acceptance. Source report for Research85,83–84 dispatch. Research main checked
 at865755e04f107afc38cdb496669d882e2551aca6; original caller reviewed separately
 from army transfer, embark and hiring. Related remake issue1486 remains open.
 
