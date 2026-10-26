@@ -287,3 +287,43 @@ files preserved, credential backups unread. Remain on supplied branch
 `research/fleet-overflow174`; the publication/relay receipt follows the merged
 source via a documentation PR. On next startup check #174/latest Research intake
 state; do not automatically start #178, new experiments or paused battles/bots.
+
+## 2026-10-26 Research89 promotion verified
+
+Research requested source promotion marking through the existing thread bridge.
+Live PR89 is merged at dc851f5267f7d8c4a887f066204c1355480844aa, exact head
+ da01d29eb7d8c01eb507d173174a13c76d0760f3, GitGuardianSUCCESS. Read canonical
+report docs/reports/2026-10-26-fleet-overflow-receiver174.md and safe receipt
+ docs/data/fleet-overflow174-intake-v1.json at that merge. Source is PR223/main
+ a1ec35cfe994d0bbc1d0818e82687e2e4046708d. Findings delta since last reported /
+delivered baseline is empty before this acknowledgment; 11 unrelated files
+remain preserved and no existing measurements changed.
+
+Research independently checked255 original closure hashes/lengths, all16 audit
+rows/scientific fields,32 endpoints/traces,15 native state projections and30
+queries/128 initial hashes. Fresh native build from1243 authoritative blobs /
+8 cited pins reproduced all15 command rows and full result states exactly.
+Its new closure257/new manifest name is receipt bookkeeping, not a scientific
+change; source255 closure and v1/v2 data remain immutable. No Original replay.
+Corrected Research74 raw tombstone/ABE0 wording; seven mixed rows/four inputs
+plus one all-overflow conservation-policy row = eight rows/five inputs.
+
+Mark source finding/dataREADME/AGENTS with canonical promotion; no new conquest
+experiment, Main issue or production/policy/label/release change. Main1412 stays
+closed/merged;174 stays open; optional union-control remains unrun. Validate
+links/JSON/whitespace, publish acknowledgment PR and relay exact landedSHA.
+
+Owner-carried Main handoff after publication:
+Use the promoted Research89 report at dc851f5267f7d8c4a887f066204c1355480844aa,
+docs/reports/2026-10-26-fleet-overflow-receiver174.md and safe intake receipt.
+Evaluate only the accepted faithful-AI receiver placement context/moves follow-up.
+Preserve T216 atomic refusal, conservation, human/designed policy and raw/model
+boundaries; do not reopen all1412 or treat the unrun control as false-refusal
+proof. Research verified conditional commands, not production/UI/Windows/export
+or whole-AI acceptance. No direct Main delivery or new implementation claimed.
+
+Promotion acknowledgment validation passes local Markdown links, all packet JSON
+and gitdiff--check. Source findingblob9fd522355bed9a21aa84f97e18679e975526e659
+matches Research's safe receipt. Fixed a broken dataREADME local finding link:
+earlier prose-spacing edit had inserted a space in receiver174 filename; no
+measurement, scientific claim or canonical report link was changed by the fix.

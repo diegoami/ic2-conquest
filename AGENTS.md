@@ -19,7 +19,9 @@ Owner explicitly resumed the 2026-10-26 wind-down on
 `research/fleet-overflow174`. Read `RUN-NOTES-fleet-overflow174.md`, its latest
 END checkpoint and the latest comment on
 https://github.com/diegoami/ic2-conquest/issues/174 for publication/intake state.
-The retained packet is audited; the finding qualifies all-overflow resource
+The retained packet is promoted by Research PR89 at
+`dc851f5267f7d8c4a887f066204c1355480844aa`; its canonical report and safe receipt
+are linked from the conquest finding. The finding qualifies all-overflow resource
 loss and raw tombstones as well as receiver position/moves. Preserve T216
 safety and private artifacts. Never rerun retained measurements. The optional
 union-neighborhood control remains unrun. Do not treat older handovers as a

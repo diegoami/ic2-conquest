@@ -1,8 +1,12 @@
 # AI embark overflow: receiver context, raw allocation and safe refusal
 
 **Tag:** [confirmed, partial: conditional original instruction execution and
-accepted native commands; retained-artifact audit]. **Status:** conquest draft
-for Research intake, PR223; no promotion or production change.
+accepted native commands; retained-artifact audit]. **Status:** promoted by
+[Research PR89](https://github.com/diegoami/imperial-conquest-2-research/pull/89),
+merge `dc851f5267f7d8c4a887f066204c1355480844aa`. Use the
+[canonical report](https://github.com/diegoami/imperial-conquest-2-research/blob/dc851f5267f7d8c4a887f066204c1355480844aa/docs/reports/2026-10-26-fleet-overflow-receiver174.md)
+and [safe intake receipt](https://github.com/diegoami/imperial-conquest-2-research/blob/dc851f5267f7d8c4a887f066204c1355480844aa/docs/data/fleet-overflow174-intake-v1.json).
+Source PR223; no production change.
 **Issue:** [conquest174](https://github.com/diegoami/ic2-conquest/issues/174).
 
 ## Result
@@ -172,3 +176,26 @@ No whole-turn/AI caller, RNG-stream parity, original UI, Godot, Windows or nativ
 original-compatible export acceptance is claimed. No owner files, new campaign,
 battle/bot queue or other-repository write was involved. #174 retains wider
 route/caller-aligned coverage; #178 was not started.
+
+## Research intake acknowledgment
+
+Research PR89 independently verifies all 255 original closure hashes/lengths
+and reproduces every scientific audit field and all 16 rows. Its fresh native
+build from 1,243 authoritative source/data/contract blobs at the same pin
+reproduces all 15 command rows and complete native result states exactly. This
+is Research's additional verification, not a new conquest experiment. Research
+did not reexecute original instructions or launch a game.
+
+Its new private closure has 257 files and a new manifest name because it includes
+prior closure/source-audit receipts. These are bookkeeping differences; the
+source's 255-file closure and all measured v1/v2 outputs remain unchanged.
+Research74's canonical report now qualifies raw tombstones versus ABE0
+compaction. Seven mixed placement/moves-only rows cover four inputs; adding the
+all-overflow resource-policy row gives eight discrepancies over five inputs.
+
+Promotion retains T216's atomic refusal, conservation, human/designed refusal
+and raw/live-model boundaries. No false-refusal result, production correction,
+label/release change or reopening of merged Main1412 follows. The optional
+control remains unrun; wider conquest174 remains open. Main may evaluate a
+narrow accepted faithful-AI receiver-context/moves follow-up from the canonical
+report under its own workflow.
