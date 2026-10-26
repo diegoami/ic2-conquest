@@ -28,3 +28,10 @@ var view=(TacticalBattleView)output.OpenBattleView!;if(view is null)throw new Ex
 var display=BattleDisplay.For(view,ts.State,ts.Ruleset);
 var vm=TacticalBattleViewModel.From(view,display);var enemy=view.Slots[20];
 Console.WriteLine($"enemy-left-no-selection={vm.ForLeftClick(enemy.X,enemy.Y).Kind} enemy-right-no-selection={vm.ForRightClick(enemy.X,enemy.Y).Kind}");
+
+var foreignOne=other with {Owner="south",Allegiance="south",SupplyTons=90};
+var foreignTwo=cap with {Owner="south",Allegiance="south",SupplyTons=10};
+var ps=initial with{Armies=ValueList.Of(ar),Cities=ValueList.Of(foreignOne,foreignTwo),Fleets=ValueList<FleetState>.Empty};
+var pm=SupplyDialogModel.ForArmy(ps,ar,rules);pm.SelectProvider(0);pm.AdjustStaged(100);
+var staged=pm.StagedTons;pm.SelectProvider(1);
+Console.WriteLine($"provider-switch stagedBefore={staged} stagedAfter={pm.StagedTons} command={pm.TransferStaged()??"<none>"}");

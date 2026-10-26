@@ -5,6 +5,8 @@ from common import *
 from state import battle_block as BB
 import argparse
 CASES=[dict(id=f'{phase}-{name}',phase=phase,select=select,distant=distant,moves=moves,button=button) for phase in ['placement','movement'] for name,select,distant,moves,button in [('enemy-no-selection',False,False,4,1),('enemy-selected-adjacent',True,False,4,1),('enemy-selected-distant',True,True,4,1),('enemy-selected-zero-moves',True,False,0,1),('enemy-right-no-selection',False,False,4,3),('enemy-right-selected',True,False,4,3)]]
+CASES += [dict(id=phase+'-own-right-clear',phase=phase,select=True,distant=False,moves=4,button=1,clear=True) for phase in ['placement','movement']]
+
 def info(g):
  count=g.i16(0x4a031c)
  return [sav.cstr(g.mem(0x49f00c+61*i,61)) for i in range(max(0,count+1))]
@@ -37,6 +39,8 @@ def execute(c,g,private,stem):
   assert observe(g)['slots'][0]['state']==0,'zero control not reached'
  if c['select']:cellclick(3,3);events.append(dict(action='select-own',**observe(g)))
  cellclick(8 if c['distant'] else 4,8 if c['distant'] else 3,c['button']);events.append(dict(action='enemy-click',**observe(g)))
+ if c.get('clear'):
+  cellclick(3,3,3);events.append(dict(action='own-right-clear',**observe(g)))
  g.shot(private/(stem+'-click.png'))
  # Read-only enemy roster through its actual toolbar button; then Cancel selection.
  g.click(w[2]+64,w[3]+14,pause=.5);events.append(dict(action='enemy-roster',**observe(g)))

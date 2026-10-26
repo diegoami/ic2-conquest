@@ -24,15 +24,10 @@ class Game(base.Game):
   txt=subprocess.run(['tesseract',str(path),'-','--psm','6'],capture_output=True,text=True).stdout
   return ' '.join(txt.split())
  def ensure_xvfb(self):
-  # Reuse only servers created by this task's two retained pilots.
-  owned={':757':1764560,':758':1782883}
-  pid=owned.get(drv.DISPLAY)
-  if pid and Path(f'/proc/{pid}/cmdline').exists():
-   cmd=Path(f'/proc/{pid}/cmdline').read_bytes().split(b'\0')
-   assert cmd[:2]==[b'Xvfb',drv.DISPLAY.encode()],cmd
-   write_new(self.private_dir/'display.json',dict(display=drv.DISPLAY,pid=pid,origin='same-task retained pilot Xvfb'));return
+  # Fresh own server only. Never attach an unknown pre-existing display.
   self.display_process=subprocess.Popen(['Xvfb',drv.DISPLAY,'-screen','0','1280x1024x24','-nolisten','tcp'],stdout=self.private_log,stderr=self.private_log);time.sleep(2)
   assert self.display_process.poll() is None,'Xvfb failed; do not attach unknown display'
+  write_new(self.private_dir/'display-created.json',dict(display=drv.DISPLAY,pid=self.display_process.pid,origin='created by this runner'))
 
 def session(version,fn,cases):
  private=ART/('private-'+version);private.mkdir()

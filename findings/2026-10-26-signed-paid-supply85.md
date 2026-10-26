@@ -101,3 +101,23 @@ Exact source sites and decompile pin verification:
 Original single-provider supply, capacity and purse reports were read before
 these controls; this supplies previously missing live paid/signed evidence,
 not a rediscovery of ordinary own-city supply. Other callers are not implied.
+
+## Staging correction and coherent-marker revalidation (2026-10-26)
+
+The original17 `supply-v2` controls assigned Antium's city-record owner1 but
+kept its old Roman map marker36. Their measured refund/staging outcomes and
+whole-before/after audits remain valid, but the opening gate used the own-marker
+shortcut; those inputs alone do **not** establish natural foreign-city entry.
+This inconsistency was exposed by separate GUI79 war-city controls, not hidden.
+
+Two fresh stock-original controls now use coherent owner1/marker37 and peace in
+both relation directions: `supply-marker-v3_paid-army-room--105_before.SAV` /
+`_after.SAV` and `supply-marker-v3_paid-fleet-room--105_before.SAV` / `_after.SAV`,
+turn0734. Both open through the original non-hostile foreign-city caller and
+repeat staged−105, supply−105,purse+21,city+105,foreign treasury−21 exactly.
+`audit-supply-marker-v3.json` reparses both pairs with whole-world checks;
+`coherent-city-marker-v1.json` verifies marker/record ownership agreement at both
+endpoints. Old inputs and measurements are retained, never rewritten.
+
+The staged-switch multi-provider behavior is investigated separately under
+Research78; no nonnegative-stock safeguard is removed by this report.

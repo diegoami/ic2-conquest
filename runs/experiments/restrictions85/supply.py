@@ -10,7 +10,7 @@ CASES += [dict(id='paid-fleet-room-'+str(room),kind='fleet',supply=160-room,purs
 def execute(c,g,private,stem):
  b=new_bytes();a,f,n=offsets(b);army_units(b,0,[10000]);put(b,a+10,c['supply'] if c['kind']=='army' else 0);put(b,a+12,c['purse'])
  put(b,f+2*26+14,c['supply'] if c['kind']=='fleet' else 0);put(b,f+2*26+16,c['purse'])
- put(b,sav.CITY_OFF+89*34+18,1);put(b,sav.CITY_OFF+89*34+24,c['stock']);put(b,n+0x26+2,0);put(b,n+1172+0x26,0)
+ put(b,sav.CITY_OFF+89*34+18,1);put(b,(102*140+46)*2,37);put(b,sav.CITY_OFF+89*34+24,c['stock']);put(b,n+0x26+2,0);put(b,n+1172+0x26,0)
  g.open(staged(b,private,stem));before=save(g,private,stem,'before');s0=snapshot(g)
  title='Supply army' if c['kind']=='army' else 'Supply fleet'
  if c['kind']=='army':g.army_tool(0,'supply',title)

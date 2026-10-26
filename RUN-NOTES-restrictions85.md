@@ -240,3 +240,71 @@ load resets moves). Fresh truezero-v3 two cases now spend moves through four
 actual UIshots before reselect/enemyclick. GUI79Closecase running. GUI78staged
 switch/Close controls added because source0043FB10 does not reset+290 and Buy
 0043FF98 does not reclamp; run exact controls rather than infer transactiontiming.
+
+GUI79 carrier-alone fleetcontrol unexpectedly opened empty. Root cause found
+by exact caller audit: staging foreign ownership in cityrecord did not update
+its Roman mapmarker36. Opening helper trusts owncitymarker first, while dialog
+provider enumeration checks actualcityowner/war. Thus original observed empty
+fleetdialog is an INCONSISTENT synthetic-marker effect, not natural provider
+behavior. Retained all priorrows; corrected warcity marker to37, repeat only
+two no-city cases asmarker-v4. Other four ownedcity/moved/Close inputs coherent.
+Paid-supply-v2 similarly had foreign cityrecord with oldownmarker, but nonhostile
+fallback independently permits its caller. Add coherent-marker primaryarmy/fleet
+-105 controls after current switches to verify exact reachability; no invented
+full-native/SAV acceptance claim. Numerical17case observations remain retained.
+
+Tactical endpoint audit first assertion expected stagedcounter1; original load
+starts/refills the resumed half-round, so before/after originalwritten saves
+both containcounter2 for all14controls (and requested phase0/1 retained). Corrected
+the audit to actualoriginal boundary2, no measuredfile edits/replays. It verifies
+no counteradvance during clicks and the four live testslots here match
+lastobserved records; grid/other slots require separate fullblock comparison.
+GUI78switch confirms staged90 survives cityswitch90stock=>10stock; Buy admits
+retained90 without reclamp, leaves newcitystock−80,army90/82. Close withoutBuy
+keepscity90/10,army0/100. This is original UIbehavior, not a recommendation to
+copy negative-stock unsafe behavior. Report requires an explicit intake choice.
+
+All main GUI questions now measured: three naturalprovider+two stagedswitch,
+six coherent carried-target, nine recruitment defaults, twelve unique tactical
+click controls (14executed, two initialzero labels reclassifiedpositive).
+Added two explicit own-right-click-clear controls to separate clearing an
+assignedtarget from Cancel selection (which leaves the target). Same isolated
+synthetic battle context, no Endturn/AI/battlecompletion. Corrected-marker paid
+army/fleet repeats both complete and audited: same−105/+21; cityowner1/marker37
+verified before/after. Source paidfinding now records original17marker caveat,
+two coherent receipts and no inferred natural empty-provider rule. Research
+caveat message delivered successfully; final correctedsource/GUI intake relay
+will follow the merge. No original test still requires owner inputs.
+
+## Final experimental verification / END of execution
+
+All requested original-side experiments and bounded sweep complete. Four GUI
+reports added (78providers,79cargo,80enemyclick,81recruitdefaults), plus sourcepaid
+staging caveat/coherentmarker revalidation. Audits: supply17pairs+2coherent
+repeats;money/OK14;units/disband17;transport9;sweep7;priorhistory6; GUIv2=30pairs
+(9recruit+5natural/switch+16tacticalexecutions, including2reclassifiedpositive
+repeats);carried6coherentpairs. All audits pass. Actual original outputs not
+modified. Extended tacticalaudit verifies fourlive slots against finalobserved
+state, all other36slots unchanged and non-target gridcells unchanged; no
+counteradvance between original-written endpoints2/2. Two explicit ownrightclear
+controls clear target20=>−1;Cancel alone retains target20. No battlecompletion.
+
+Native exact85repro v2, NativeExtra v4 and NativeGui v3 are authoritative;
+13sourceblob identities verified against GitHub4d70275a. Initial/faulty variants
+and all failed attempts preserved/scoped. Python compilation, two MinGW readonly
+helpers and gitdiffcheck pass. No external reviewer/fullsuite/installedGodot/
+nativeWindows claim. All Wine sessions ended via ownprefix cleanup; psXvfb
+has zero rows (exit1 meansno matching process, not testfailure). No owner
+process touched. Finalcommonrunner records createddisplay PID and rejects a
+pre-existing display rather than retaining historical PID assumptions.
+
+Implementationhandoff: dataREADME and per-finding exact rules/questions. Keep
+original defects (invalidprovider rows/negative-stock stagedswitch) separate
+from mandatoryfidelity; T162defaultUX,1340safety,565unit/name,no-wrap,T207reserve,
+Improvedaffordability,T216refusal unchanged. CarriedwholearmyDisband through
+another valid original selection path stillunproved, correctly not filed as a
+newbug. No remaining original launch needed for this bounded task. Next steps:
+land GUI/sourcecaveat, relay exact mainSHA toResearch with allnine findingpaths
+and ask to consolidate, link78–82/85/211. Research promotion remains separate
+until verified, no implementationissue closure. Latest delivered baseline
+remainsc7926a6 until those sends actually succeed. Preserve11unrelateduntracked.
