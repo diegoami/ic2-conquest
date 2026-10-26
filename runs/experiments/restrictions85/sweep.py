@@ -16,7 +16,8 @@ def execute(c,g,private,stem):
   ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
   # First pair ships10s/1s, next supply10s/100s, last money10s/100s.
   assert len(ups)==6,ups
-  arrow(g,title,ups[0] if c.get('ships') else ups[-1],-1)
+  ship_small=min([u for u in ups if u['y']<min(z['y'] for z in ups)+3],key=lambda u:u['x'])
+  arrow(g,title,ship_small if c.get('ships') else ups[-1],-1)
   g.shot(private/(stem+'-arrow.png'));events.append(dict(phase='arrow',state=snapshot(g)))
   close(g,title,cs,c.get('finish','OK'));boxes=[]
  else:

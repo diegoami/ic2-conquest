@@ -1,0 +1,28 @@
+[
+  {
+    "id": "fleet-money-1000",
+    "kind": "fleet",
+    "receiver": 1000,
+    "donor": 200
+  },
+  {
+    "id": "fleet-money-1100",
+    "kind": "fleet",
+    "receiver": 1100,
+    "donor": 200
+  },
+  {
+    "id": "fleet-ships-only-overcap",
+    "kind": "fleet",
+    "receiver": 1100,
+    "donor": 200,
+    "ships": true
+  },
+  {
+    "id": "fleet-money-cancel",
+    "kind": "fleet",
+    "receiver": 950,
+    "donor": 200,
+    "finish": "Cancel"
+  }
+]

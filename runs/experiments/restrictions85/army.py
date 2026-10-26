@@ -19,6 +19,8 @@ CASES.append(dict(id='partial19plus2-cancel',mode='units',counts=[[1000]*3,[1000
 
 CASES += [dict(id='two-refusal-types',mode='units',counts=[[100,100,500],[790]*18+[780]],side=0,rows=[0,1,2],carrier=13,finish='OK'),dict(id='partial19plus2-right-cancel',mode='units',counts=[[1000]*19,[1000]*3],side=1,rows=[0,1],finish='Cancel')]
 
+CASES += [dict(id='dialog-disband-'+finish.lower(),mode='disband',counts=[[5000,5000],[10000]],supplies=[206,0],side=0,rows=[0],finish=finish) for finish in ['OK','Cancel']]
+
 def setup(c):
  b=new_bytes();a,f,n=offsets(b)
  for idx,aid in enumerate([0,12,13]):
@@ -54,7 +56,7 @@ def execute(c,g,private,stem):
   # Money row is lower row, right spinner100, up transfers right->left.
   for i in range(c['presses']):
    arrow(g,title,ups[-1],-1 if c['side']==0 else 1);events.append(dict(phase='arrow',**copies(g,form)))
- elif c['mode']=='units':
+ elif c['mode'] in ['units','disband']:
   lists=sorted([x for x in cs if x['cls']=='TListBox'],key=lambda x:x['x']);lst=lists[c['side']]
   win=g.find_windows('^'+title+'$')[0][0];g.raise_window(win)
   # Focus form before first row: inactive-window first click only activates.
@@ -67,7 +69,7 @@ def execute(c,g,private,stem):
   write_new(private/(stem+'-selection.json'),selection)
   assert chosen['selected_count']==len(c['rows']),(chosen,c['rows'])
   g.shot(private/(stem+'-selection.png'))
-  buttons=sorted([x for x in cs if x['text']=='Transfer'],key=lambda x:x['x'])
+  buttons=sorted([x for x in cs if x['text']==('Transfer' if c['mode']=='units' else 'Disband')],key=lambda x:x['x'])
   g.click_control(buttons[c['side']],pause=.8)
   boxes=g.dismiss_popups();events.append(dict(phase='transfer',boxes=boxes,**copies(g,form)))
  g.shot(private/(stem+'-before-close.png'))

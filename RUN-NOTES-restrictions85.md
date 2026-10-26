@@ -138,3 +138,11 @@ Transport9/9 exact controls complete; both original callers accept5000/5001/
 5499 and refuse5500, with separate pre-dialog R12 overcap5500 control. All18
 saves reparsed. Hire preserves purse30000 and moves7/7, consumes offer only
 on acceptance; human embark zeros both moves only on acceptance.
+
+Verified-selection units-pilot-v2 passes: requested2,LB_GETSELCOUNT2; highest
+source slot1 moves into targetslot19, selectedslot0 stays; one20-unit refusal;
+source slot2 unselected retained. Exactly agrees with original source/prior
+report. units-v3 now runs remaining per-unit controls plus disband-inside-dialog
+OK/Cancel extension. Historical six pairs independently reparsed from retained
+final root paths: U1,U3,U3b,c1,c4,c5. First lookup rejected duplicate priorattempt
+paths; narrowed to published final root, no ambiguous evidence selected.
