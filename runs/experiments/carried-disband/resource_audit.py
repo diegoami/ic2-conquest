@@ -13,7 +13,7 @@ for match in re.finditer(b'TPF0',b):
    out.append(dict(form=o['class'],control=obj['name'],cls=obj['class'],path=path,caption=props.get('Caption'),shortcut=props.get('ShortCut'),events=events))
   for c in obj['children']:visit(c,path+[obj['name']])
  visit(o,[])
-p=R/'runs/experiments/data/run-exp-carried-disband/resource-callbacks-v1.json'
+p=R/'runs/experiments/data/run-exp-carried-disband'/('resource-callbacks-'+q.version+'.json')
 with p.open('x')as f:json.dump(out,f,indent=2)
 print('bounded resources:',len(out),'event/shortcut rows')
 for row in out:

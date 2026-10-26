@@ -124,3 +124,30 @@ newcounterevidence for review, not automatic ownerpolicyremoval. No more origina
 runs needed. Next:publishPR219,relay landed source/new+changedfinding toResearch,
 postconquest218/Main802 canonical-intake route,recordactualdelivery. Continue no
 other suggested strategic task without ownerinstruction.
+
+## Publication / relay receipt / END
+
+PR219 merged77f4e21736670dcd7a3a8cb9221df2eccd82e0f8, exacthead501d87b4d1f0f1bdfac77fb88596f7960c1ce84b;
+GitGuardianSUCCESS,mergeableclean,no reviewcomments/externalreview. MainAnew
+findings/2026-10-26-carried-army-disband218.md andMmanual-family-assumption-
+sweep85.md qualifiedfollowuplink only. Both named toowner. No measuredoutput
+modified, policies and Main code untouched.
+
+Latest reported and successfully delivered findings baseline:
+77f4e21736670dcd7a3a8cb9221df2eccd82e0f8,2026-10-26. Verifiedactual ListThreads
+id01a167fa-9fb2-7570-bf21-b32682c79e6e titleic2-research,idle; two actualASCII
+<1000byte messages returned sameID,isError:false, coveringnewfinding+oldsource
+crossref, positiveGUIroute/refunds, unitcaller differences, exact audit/native
+scope and ownerpolicy limits. Requested verification/promotion and refresh of
+Research86sweep/Main802 residual. Deliverycomplete, promotionnot yetclaimed.
+Sourcehandoff comments: conquest218#6424717542 and Main802#6424717917; Main802
+not reopened, no implementation/label/release change. Original experimentsdone.
+
+Final reproducibilitycheck found resource_audit.py accepted--version but its
+output stillhad literalv1 name. Fixedsuffixonly; read-onlyreplay-v2 reproduces
+all117 complete rows exactly, v1untouched. No Original launch/measurementchange.
+This receipt includesfix,staticreplay andsyntax/whitespace validation. Source
+result/caller interpretation unchanged, no re-intake required for this helperfix.
+No additional strategic/other taskstarted. Return tosyncedmain afterreceipt;
+conquest218 awaitsResearchpromotion/implementationintake, no furtherexperiment
+required here. Preserve11unrelateduntracked files. No ownerprocess touched.
