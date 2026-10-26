@@ -13,6 +13,16 @@ until the owner resumes them (`CLAUDE.md`, "Working with the owner").
 
 For cloud migration or SAV research continuation, read `docs/cloud-continuation.md`.
 
+## Current checkpoint: remaining fleet research #174
+
+Owner requested wind-down on 2026-10-26. Work is paused on
+`research/fleet-overflow174`; first read `RUN-NOTES-fleet-overflow174.md`,
+its latest END checkpoint, and the latest checkpoint comment on
+https://github.com/diegoami/ic2-conquest/issues/174. The packet is unfinished;
+do not treat the older handover as its queue or rerun retained measurements.
+On startup report state only. Continue #174 on an explicit resume; do not
+auto-start #178, another task, or the paused battle/bot queue.
+
 ## Codex mappings
 
 - Use the tools this session actually exposes. Claude's `Agent`, `ListAgents`,

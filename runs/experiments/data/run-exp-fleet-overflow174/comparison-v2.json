@@ -1,0 +1,2501 @@
+{
+  "original_controls": 16,
+  "native_commands": 15,
+  "input_projection_gates_passed": 15,
+  "counts": {
+    "accepted success receiver-context/moves discrepancy; correction candidate": 8,
+    "owner-approved atomic refusal; original destructive/corrupt branch not copied": 2,
+    "raw-table versus model-live-count boundary policy; not automatic correction": 1,
+    "exact measured projection match": 3,
+    "non-equivalent human helper/command boundary; preserve human policy": 1,
+    "helper-only diagnostic; not natural adjacent-embark evidence": 1
+  },
+  "rows": [
+    {
+      "id": "free-receiver",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 2,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 2000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 1,
+          "x": 40,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "free-receiver",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 2,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 6000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "vacated-source-only",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 2,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 3,
+        "live_army_count": 3,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 2000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 2,
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "vacated-source-only",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          39,
+          34
+        ],
+        "terrain_checks": 3,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 9000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 40,
+            "Y": 34,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "existing-own",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 2,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 3,
+        "live_army_count": 3,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 2000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 2,
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "existing-own",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          39,
+          34
+        ],
+        "terrain_checks": 3,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 9000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 40,
+            "Y": 34,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "existing-enemy",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 2,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 2,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 3,
+        "live_army_count": 3,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 2,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 2000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 2,
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "existing-enemy",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          39,
+          34
+        ],
+        "terrain_checks": 3,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 6000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "existing-own-source-only",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 2,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 3,
+        "live_army_count": 3,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 2000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 2,
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "existing-own-source-only",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          39,
+          34
+        ],
+        "terrain_checks": 3,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 9000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 40,
+            "Y": 34,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "existing-enemy-source-only",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 2,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 2,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 3,
+        "live_army_count": 3,
+        "troops": 9000,
+        "money": 123,
+        "supply": 111,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 2,
+            "x": 40,
+            "y": 34,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 2000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 2,
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "existing-enemy-source-only",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          39,
+          34
+        ],
+        "terrain_checks": 3,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 6000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "raw197",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 197,
+        "live_army_count": 197,
+        "troops": 594000,
+        "money": 4608,
+        "supply": 4206,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 594000,
+        "money": 4608,
+        "supply": 4206,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 197,
+          "x": 40,
+          "y": 34,
+          "moves": 0,
+          "troops": 2000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "raw197",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 198,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 594000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 10,
+            "Y": 48,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "raw198",
+      "classification": "owner-approved atomic refusal; original destructive/corrupt branch not copied",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 597000,
+        "money": 4631,
+        "supply": 4227,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 595000,
+        "money": 4598,
+        "supply": 4197,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": false
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "raw198",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 199,
+        "accepted": false,
+        "rejection": "naval.no-safe-overflow-receiver",
+        "state_changed": false,
+        "full_state_unchanged": true,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies",
+          "fleets",
+          "cities"
+        ],
+        "troops": 597000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 39,
+            "Y": 34,
+            "Moves": 8,
+            "TotalTroops": 6000,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-1",
+            "X": 10,
+            "Y": 48,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 33,
+          "moves": 0,
+          "money": 67,
+          "supply": 60,
+          "units": [
+            4000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 8,
+          "money": 100,
+          "supply": 90,
+          "units": [
+            4000,
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [
+        {
+          "city_id": 315,
+          "city_offset": 0,
+          "size": 2,
+          "synthetic_value": 30
+        },
+        {
+          "city_id": 315,
+          "city_offset": 2,
+          "size": 2,
+          "synthetic_value": 33
+        }
+      ],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "raw198-tombstone",
+      "classification": "raw-table versus model-live-count boundary policy; not automatic correction",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 197,
+        "troops": 594000,
+        "money": 4608,
+        "supply": 4206,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 197,
+        "troops": 592000,
+        "money": 4575,
+        "supply": 4176,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": false
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "raw198-tombstone",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 198,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies",
+          "cities"
+        ],
+        "troops": 594000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4000,
+            "Money": 67,
+            "SupplyTons": 60,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 10,
+            "Y": 48,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 2000,
+            "Money": 33,
+            "SupplyTons": 30,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            2000
+          ]
+        }
+      ],
+      "negative_index_writes": [
+        {
+          "city_id": 315,
+          "city_offset": 0,
+          "size": 2,
+          "synthetic_value": 30
+        },
+        {
+          "city_id": 315,
+          "city_offset": 2,
+          "size": 2,
+          "synthetic_value": 33
+        }
+      ],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "raw198-all-overflow",
+      "classification": "owner-approved atomic refusal; original destructive/corrupt branch not copied",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 597000,
+        "money": 4631,
+        "supply": 4227,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 197,
+        "troops": 591000,
+        "money": 4531,
+        "supply": 4137,
+        "carrier_link": -1,
+        "source_owner": -1,
+        "source_troops": 0,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": -1,
+            "x": 40,
+            "y": 33,
+            "troops": 0,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": false
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "raw198-all-overflow",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 199,
+        "accepted": false,
+        "rejection": "naval.no-safe-overflow-receiver",
+        "state_changed": false,
+        "full_state_unchanged": true,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies",
+          "fleets",
+          "cities"
+        ],
+        "troops": 597000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 39,
+            "Y": 34,
+            "Moves": 8,
+            "TotalTroops": 6000,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": null
+          },
+          {
+            "Id": "army-1",
+            "X": 10,
+            "Y": 48,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 8,
+          "money": 100,
+          "supply": 90,
+          "units": [
+            6000
+          ]
+        }
+      ],
+      "negative_index_writes": [
+        {
+          "city_id": 315,
+          "city_offset": 0,
+          "size": 2,
+          "synthetic_value": 30
+        },
+        {
+          "city_id": 315,
+          "city_offset": 2,
+          "size": 2,
+          "synthetic_value": 33
+        }
+      ],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "raw198-at-cap",
+      "classification": "exact measured projection match",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 596000,
+        "money": 4631,
+        "supply": 4227,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 5000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 5000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 596000,
+        "money": 4631,
+        "supply": 4227,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 5000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 5000,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "raw198-at-cap",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 199,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": true,
+        "mismatch_sections": [],
+        "troops": 596000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 5000,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 10,
+            "Y": 48,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "raw198-below-cap",
+      "classification": "exact measured projection match",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 595999,
+        "money": 4631,
+        "supply": 4227,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 4999,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 4999,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 198,
+        "live_army_count": 198,
+        "troops": 595999,
+        "money": 4631,
+        "supply": 4227,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4999,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4999,
+            "money": 100,
+            "supply": 90
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 10,
+            "y": 48,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 2,
+            "owner": 1,
+            "x": 10,
+            "y": 49,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          },
+          {
+            "id": 3,
+            "owner": 1,
+            "x": 10,
+            "y": 50,
+            "troops": 3000,
+            "money": 23,
+            "supply": 21
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "raw198-below-cap",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 199,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": true,
+        "mismatch_sections": [],
+        "troops": 595999,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 4999,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": "fleet-0"
+          },
+          {
+            "Id": "army-1",
+            "X": 10,
+            "Y": 48,
+            "Moves": 1,
+            "TotalTroops": 3000,
+            "Money": 23,
+            "SupplyTons": 21,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "single-all-overflow",
+      "classification": "accepted success receiver-context/moves discrepancy; correction candidate",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 2,
+        "live_army_count": 1,
+        "troops": 6000,
+        "money": 33,
+        "supply": 30,
+        "carrier_link": -1,
+        "source_owner": -1,
+        "source_troops": 0,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": -1,
+            "x": 40,
+            "y": 33,
+            "troops": 0,
+            "money": 67,
+            "supply": 60
+          },
+          {
+            "id": 1,
+            "owner": 1,
+            "x": 40,
+            "y": 34,
+            "troops": 6000,
+            "money": 33,
+            "supply": 30
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [
+        {
+          "id": 1,
+          "x": 40,
+          "y": 34,
+          "moves": 0,
+          "troops": 6000,
+          "money": 33,
+          "supply": 30
+        }
+      ],
+      "native": {
+        "id": "single-all-overflow",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 2,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies"
+        ],
+        "troops": 6000,
+        "armies": [
+          {
+            "Id": "army-0-overflow",
+            "X": 40,
+            "Y": 35,
+            "Moves": 1,
+            "TotalTroops": 6000,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 34,
+          "moves": 0,
+          "money": 33,
+          "supply": 30,
+          "units": [
+            6000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 35,
+          "moves": 1,
+          "money": 100,
+          "supply": 90,
+          "units": [
+            6000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "human-at-cap",
+      "classification": "exact measured projection match",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 5000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 5000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 5000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 5000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 5000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 5000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "human-at-cap",
+        "status": "conditional original mechanics vs native command",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 2,
+        "accepted": true,
+        "rejection": null,
+        "state_changed": true,
+        "full_state_unchanged": false,
+        "projection_equal": true,
+        "mismatch_sections": [],
+        "troops": 5000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 40,
+            "Y": 33,
+            "Moves": 0,
+            "TotalTroops": 5000,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": "fleet-0"
+          }
+        ]
+      },
+      "army_projection_differences": [],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "human-helper-overcap",
+      "classification": "non-equivalent human helper/command boundary; preserve human policy",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": -1,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 39,
+            "y": 34,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "human-helper-overcap",
+        "status": "non-equivalent helper/human command boundary",
+        "complete_input_projection_equal": true,
+        "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+        "pre_placement": [
+          40,
+          35
+        ],
+        "post_placement": [
+          40,
+          34
+        ],
+        "terrain_checks": 2,
+        "accepted": false,
+        "rejection": "naval.army-too-large",
+        "state_changed": false,
+        "full_state_unchanged": true,
+        "projection_equal": false,
+        "mismatch_sections": [
+          "armies",
+          "fleets"
+        ],
+        "troops": 6000,
+        "armies": [
+          {
+            "Id": "army-0",
+            "X": 39,
+            "Y": 34,
+            "Moves": 8,
+            "TotalTroops": 6000,
+            "Money": 100,
+            "SupplyTons": 90,
+            "AboardFleetId": null
+          }
+        ]
+      },
+      "army_projection_differences": [
+        {
+          "side": "original_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 40,
+          "y": 33,
+          "moves": 0,
+          "money": 100,
+          "supply": 90,
+          "units": [
+            6000
+          ]
+        },
+        {
+          "side": "native_only",
+          "copies": 1,
+          "owner": "carthage",
+          "x": 39,
+          "y": 34,
+          "moves": 8,
+          "money": 100,
+          "supply": 90,
+          "units": [
+            6000
+          ]
+        }
+      ],
+      "negative_index_writes": [],
+      "raw_compaction_called": false
+    },
+    {
+      "id": "helper-only-no-land",
+      "classification": "helper-only diagnostic; not natural adjacent-embark evidence",
+      "original_before": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 6000,
+        "money": 100,
+        "supply": 90,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 6000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 6000,
+            "money": 100,
+            "supply": 90
+          }
+        ],
+        "city315_name_printable": true
+      },
+      "original_after": {
+        "turn": 720,
+        "raw_army_count": 1,
+        "live_army_count": 1,
+        "troops": 4000,
+        "money": 67,
+        "supply": 60,
+        "carrier_link": 0,
+        "source_owner": 1,
+        "source_troops": 4000,
+        "army_records": [
+          {
+            "id": 0,
+            "owner": 1,
+            "x": 40,
+            "y": 33,
+            "troops": 4000,
+            "money": 67,
+            "supply": 60
+          }
+        ],
+        "city315_name_printable": false
+      },
+      "original_new_receiver": [],
+      "native": {
+        "id": "helper-only-no-land",
+        "status": "not compared: helper-only no-land entry"
+      },
+      "army_projection_differences": [],
+      "negative_index_writes": [
+        {
+          "city_id": 315,
+          "city_offset": 0,
+          "size": 2,
+          "synthetic_value": 30
+        },
+        {
+          "city_id": 315,
+          "city_offset": 2,
+          "size": 2,
+          "synthetic_value": 33
+        }
+      ],
+      "raw_compaction_called": false
+    }
+  ]
+}

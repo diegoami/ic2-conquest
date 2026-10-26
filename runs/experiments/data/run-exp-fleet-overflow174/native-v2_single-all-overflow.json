@@ -1,0 +1,36 @@
+{
+  "id": "single-all-overflow",
+  "status": "conditional original mechanics vs native command",
+  "complete_input_projection_equal": true,
+  "placement_query_scope": "diagnostic only: unchanged production helper, preboard versus staged postboard context",
+  "pre_placement": [
+    40,
+    35
+  ],
+  "post_placement": [
+    40,
+    34
+  ],
+  "terrain_checks": 2,
+  "accepted": true,
+  "rejection": null,
+  "state_changed": true,
+  "full_state_unchanged": false,
+  "projection_equal": false,
+  "mismatch_sections": [
+    "armies"
+  ],
+  "troops": 6000,
+  "armies": [
+    {
+      "Id": "army-0-overflow",
+      "X": 40,
+      "Y": 35,
+      "Moves": 1,
+      "TotalTroops": 6000,
+      "Money": 100,
+      "SupplyTons": 90,
+      "AboardFleetId": null
+    }
+  ]
+}
