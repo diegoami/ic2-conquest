@@ -40,7 +40,7 @@ def execute(c,g,private,stem):
  if opened:
   cs=inspect('Supply army');lst=g.control(cs,cls='TListBox');form=struct.unpack('<I',g.mem(0x45e71c,4))[0]
   for k in range(lst['count']):
-   if k:g.click_list_row(lst,k,pause=.3)
+   if k:lst=click_any_row(g,'Supply army',lst,k)
    fields=list(struct.unpack('<9h',g.mem(form+0x27e,18)))
    events.append(dict(row=k,fields=fields,lists=list_rows('Supply army'),state=provider_state(g)))
    if c['kind']=='providers':

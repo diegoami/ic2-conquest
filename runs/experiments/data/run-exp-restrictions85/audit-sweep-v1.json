@@ -1,0 +1,243 @@
+{
+  "cases": 7,
+  "rows": [
+    {
+      "id": "fleet-money-950",
+      "saves": [
+        "sweep-pilot-v1_fleet-money-950_before.SAV",
+        "sweep-pilot-v1_fleet-money-950_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            950,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            1000,
+            20
+          ],
+          [
+            150,
+            10
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": -1
+      }
+    },
+    {
+      "id": "carried-disband-direct",
+      "saves": [
+        "sweep-pilot-v1_carried-disband-direct_before.SAV",
+        "sweep-pilot-v1_carried-disband-direct_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": 0
+      }
+    },
+    {
+      "id": "carried-disband-after-supply",
+      "saves": [
+        "sweep-pilot-v1_carried-disband-after-supply_before.SAV",
+        "sweep-pilot-v1_carried-disband-after-supply_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            0,
+            20
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": 0
+      }
+    },
+    {
+      "id": "fleet-money-1000",
+      "saves": [
+        "sweep-v2_fleet-money-1000_before.SAV",
+        "sweep-v2_fleet-money-1000_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            1000,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            1000,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": -1
+      }
+    },
+    {
+      "id": "fleet-money-1100",
+      "saves": [
+        "sweep-v2_fleet-money-1100_before.SAV",
+        "sweep-v2_fleet-money-1100_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            1100,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            1000,
+            20
+          ],
+          [
+            300,
+            10
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": -1
+      }
+    },
+    {
+      "id": "fleet-ships-only-overcap",
+      "saves": [
+        "sweep-v2_fleet-ships-only-overcap_before.SAV",
+        "sweep-v2_fleet-ships-only-overcap_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            1100,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            1100,
+            21
+          ],
+          [
+            200,
+            9
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": -1
+      }
+    },
+    {
+      "id": "fleet-money-cancel",
+      "saves": [
+        "sweep-v2_fleet-money-cancel_before.SAV",
+        "sweep-v2_fleet-money-cancel_after.SAV"
+      ],
+      "parsed": true,
+      "summary": {
+        "fleets_before": [
+          [
+            950,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "fleets_after": [
+          [
+            950,
+            20
+          ],
+          [
+            200,
+            10
+          ]
+        ],
+        "treasury_change": 0,
+        "boxes": [],
+        "army_owner": 0,
+        "carrier_link": -1
+      }
+    }
+  ]
+}

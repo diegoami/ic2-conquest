@@ -106,3 +106,10 @@ def list_rows(title):
   if p[0]=='LIST':out.append(dict(x=int(p[1]),y=int(p[2]),count=int(p[3]),selected=int(p[4]),cls=p[5],selected_count=int(p[6]),rows=[]))
   else:out[-1]['rows'].append(bytes.fromhex(p[2]).decode('utf-16-be'))
  return out
+
+def click_any_row(g,title,lst,k):
+ """Reach an off-screen row using actual wheel scrolling, then verify geometry."""
+ if lst['cy']+(k-lst['top'])*lst['item_h']+lst['item_h']//2 > lst['y']+lst['h']-3:
+  g.raise_window(g.find_windows('^'+title+'$')[0][0]);drv.sh('xdotool','mousemove',str(lst['x']+lst['w']//2),str(lst['y']+lst['h']//2));drv.sh('xdotool','click','--repeat','2','--delay','100','5');time.sleep(.3)
+  lst=next(c for c in inspect(title) if c['cls']=='TListBox' and c['x']==lst['x'])
+ g.click_list_row(lst,k,pause=.3);return lst

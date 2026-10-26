@@ -11,7 +11,7 @@ research865755e0. Original bytes/private evidence remain ignored/private.
 |---|---|---|---|
 | Paid staging must be nonnegative | `TAFSupply_ChangeBuyAmount0043FE4C`: floor before signed room; stock Wine17controls, including negative refunds | `SupplyDialogModel.AdjustStaged/TransferStaged`;1486 | proved original discrepancy; separate signed-paid-supply85 report |
 | Army money arrows cannot reverse a positive request | `TArmyToArmy_ChangeMoney00442448`: signed min(step,1000−receiver,giver); stock Wine both directions/Split | `ArmyDialogModels` outer zero floors;1487 | proved discrepancy; separate army-money-and-unchanged-ok85 report |
-| Selected army transfer must fit as a whole | `TArmyToArmy_Army1Transfer00442500` /`Army2Transfer004426F0`: descending per-slot admission; retained U1/c1/c4/c5 reparse plus new verified-selection controls | `ArmyTransferCommandHandler` aggregate gates;1488 | existing issue, preserve per-unit limits/ordering; details in partial-transfer report when complete |
+| Selected army transfer must fit as a whole | `TArmyToArmy_Army1Transfer00442500` /`Army2Transfer004426F0`: descending per-slot admission; retained U1/c1/c4/c5 reparse plus new verified-selection controls | `ArmyTransferCommandHandler` aggregate gates;1488 | existing issue, preserve per-unit limits/ordering; details in partial-army-transfer85 report |
 | Transport always uses exact ships×500 | Separate human embark004466CC, hire opening00446FF4 and hire offer00441360 use truncating division; stock Wine9controls | `EmbarkArmyCommandHandler`,`HireMercenaryCommandHandler`;Research83, transfer1489 | proved per-caller discrepancy; no AI-policy inference |
 | Unchanged Army transferOK is inert | `TArmyToArmy_OK00442EF8` unconditionally pushes selected A then B; six stock Wine no-edit controls | `ComposeOk` null / all-zero dispatcher refusal;Research84 | proved discrepancy; preserve Cancel |
 | A Transfer ships money arrow may send overflow to treasury | `TFleetToFleet_ChangeMoney00443A90`: signed receiver1000 cap on copies; partial`TFleetToFleet_OK00443B48` does not route overflow to treasury | `FleetTransferModel` caps only giver, dispatcher caps receiver and credits treasury;1326 alreadyopen | runtime discrepancy, retain existing1326; no duplicate issue |
@@ -47,7 +47,7 @@ owner's independent no-wrap saturation and carrier/over100 safety choices.
 Evidence: `sweep-pilot-v1_fleet-money-950.json`,
 `sweep-v2_fleet-money-{1000,1100}.json`,
 `sweep-v2_fleet-ships-only-overcap.json`, plus `sweep-v2_fleet-money-cancel.json` confirming Cancel commits nothing;
-all under`runs/experiments/data/run-exp-restrictions85/`. Endpoints named in each
+all under`runs/experiments/data/run-exp-restrictions85/`; `audit-sweep-v1.json` independently reparses all14saves. Endpoints named in each
 row, e.g.`sweep-v2_fleet-ships-only-overcap_before.SAV` / `_after.SAV`,turn0734.
 Private full records/screenshots/identities/hashes under ignored
 `artifacts/run-exp-restrictions85/private-sweep-*/`. No public release.

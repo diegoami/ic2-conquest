@@ -91,6 +91,5 @@ Stock unmodified original, privately verified identity, Wine10.0 Ubuntu
 UI arrows/OK/Cancel; read-only memory for timing; original Save as endpoints.
 No original patch, native Windows, deployed remake GUI, owner desktop, End turn
 or AI run. Exact source/template revisions retained in the task evidence.
-Disband inside this same dialog is a separate extension still in progress;
-these rows establish unchanged OK without it. Static caller/working-copy evidence
+Disband inside this same dialog is measured separately in the partial-army-transfer85 report; these rows establish unchanged OK without it. Static caller/working-copy evidence
 and runtime outcomes remain distinct.

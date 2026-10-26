@@ -21,15 +21,17 @@ def execute(c,g,private,stem):
  put(b,n+0x26+2,0);put(b,n+1172+0x26,0)
  g.open(staged(b,private,stem));before=save(g,private,stem,'before');s0=snap(g);g.army_tool(0,'supply','Supply army');title='Supply army';cs=inspect(title);lst=g.control(cs,cls='TListBox');form=struct.unpack('<I',g.mem(0x45e71c,4))[0];events=[]
  for k in range(lst['count']):
-  if k:g.click_list_row(lst,k,pause=.3)
+  if k:lst=click_any_row(g,title,lst,k)
   fields=list(struct.unpack('<9h',g.mem(form+0x27e,18)));cs=inspect(title)
   events.append(dict(row=k,phase='selected',fields=fields,lists=list_rows(title),state=snap(g)))
+  write_new(DATA/(stem+f'-selected-row{k}.json'),events[-1])
   if fields[5]<0 and fields[6]<0:
    events.append(dict(row=k,phase='invalid-provider-not-transferred'));continue
   ups=sorted([x for x in cs if x['cls']=='TUpDown' and x['visible']],key=lambda x:(x['y'],x['x']))
   arrow(g,title,ups[0],1)
   if fields[5]>=0:g.click_control(g.control(cs,text='Buy supplies'),pause=.4)
   events.append(dict(row=k,phase='transfer10',state=snap(g)))
+  write_new(DATA/(stem+f'-transfer-row{k}.json'),events[-1])
  g.shot(private/(stem+'-dialog.png'));g.close_controls(title,cs);after=save(g,private,stem,'after');s1=snap(g)
  public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,before=s0,after=s1,events=events,summary=dict(rows=[e['lists'][0]['rows'] for e in events if 'lists'in e],fields=[e['fields'] for e in events if 'fields'in e],army_supply=s1['armies']['0']['supplies'],city_stocks=s1['cities'],fleet_stocks={k:v['supplies'] for k,v in s1['all_fleets'].items()})))
 if __name__=='__main__':

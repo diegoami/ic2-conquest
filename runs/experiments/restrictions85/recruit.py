@@ -11,13 +11,20 @@ def execute(c,g,private,stem):
  for k,(cid,num) in enumerate(c['queues']):struct.pack_into('<4h',b,n+0x2e4+8*k,24,0,num,cid)
  put(b,n+0x442,0)
  g.open(staged(b,private,stem));before=save(g,private,stem,'before')
- title='Recruit unit';g.tool('recruit',title);time.sleep(.5);cs=inspect(title)
+ title='Recruit unit';g.tool('recruit');g.wait(lambda:g.find_windows('^Recruit unit$'),8,'Recruit unit');time.sleep(.5);cs=inspect(title)
  form=None
  # Form-global pointer located in TPremierForm_RecruitUnit at45b2xx via source; visible list is primary observation.
  opened=list_rows(title);g.shot(private/(stem+'-open.png'))
  write_new(private/(stem+'-controls.json'),cs)
  g.close_controls(title,cs)
- g.tool('recruit',title);reopened=list_rows(title);cs=inspect(title)
+ g.tool('recruit');g.wait(lambda:g.find_windows('^Recruit unit$'),8,'Recruit unit');reopened=list_rows(title);cs=inspect(title)
+ manual_reopen=None
+ cities=next((x for x in sorted(reopened,key=lambda x:x['y']) if x['rows'] and x['y']<200),None)
+ if cities and cities['count']>1:
+  citylist=next(x for x in cs if x['cls']=='TListBox' and x['x']==cities['x'] and x['y']==cities['y'])
+  g.click_list_row(citylist,0 if cities['selected']!=0 else 1,pause=.3)
+  g.close_controls(title,cs);g.tool('recruit');g.wait(lambda:g.find_windows('^Recruit unit$'),8,'Recruit unit')
+  manual_reopen=list_rows(title);cs=inspect(title)
  # Choose LI through existing controls; source default minimum kept (no Max policy changes).
  buttons=[x for x in cs if x['cls']=='TButton'];li=next((x for x in buttons if 'Light infantry' in x['text'] or 'Lit inf' in x['text']),None)
  if li:g.click_control(li,pause=.3)
@@ -26,6 +33,6 @@ def execute(c,g,private,stem):
  else:boxes=['runner: recruitment button unresolved; no recruitment attempted']
  afterclick=list_rows(title);g.close_controls(title,inspect(title));after=save(g,private,stem,'after')
  s0=sav.load(before);s1=sav.load(after)
- public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,opened=opened,reopened=reopened,afterclick=afterclick,boxes=boxes,queues_before=s0['nations'][0]['recruit_slots'],queues_after=s1['nations'][0]['recruit_slots'],summary=dict(opened=opened,reopened=reopened,boxes=boxes)))
+ public_row(stem,dict(case=c,turn=734,before_save=before.name,after_save=after.name,opened=opened,reopened=reopened,afterclick=afterclick,manual_reopen=manual_reopen,boxes=boxes,queues_before=s0['nations'][0]['recruit_slots'],queues_after=s1['nations'][0]['recruit_slots'],summary=dict(opened=opened,reopened=reopened,boxes=boxes)))
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--version',required=True);p.add_argument('--cases',nargs='*');q=p.parse_args();session(q.version,execute,[c for c in CASES if not q.cases or c['id'] in q.cases])

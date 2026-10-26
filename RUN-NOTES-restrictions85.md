@@ -169,3 +169,13 @@ land tile94,77 has four neighboring sea tiles, so a new control can establish
 these limits without editing city coordinates/terrain. Existing synthetic
 pilot retained; natural controls will vary fleet IDs vs physical scan order
 and foreign-city routing. Owner-approved provider extensions remain separate.
+
+Verified unit controls complete17 (units-pilot-v2 one + units-v3 sixteen),
+including two disband-inside-dialog controls. Failed GUI78extra case stopped
+on offscreenrow4 before finalsave; retained. Added actualwheel scrolling plus
+refreshed read-only geometry and per-row immutable progress receipts. Natural
+GUI78v1 then failed BEFORE original launch because sandbox Xvfb bind was
+blocked and prior owned servers had exited; guard prevented attaching unknown
+display. Restarted unique natural-v2 with runtime escalation solely for own
+Wine/Xvfb context. GUI81noqueue pilot uses freed independent :758 likewise.
+No nativeWindows or ownerdisplay access, no new game/bot/battlecompletion.
