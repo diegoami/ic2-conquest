@@ -1,0 +1,13 @@
+unchanged model=<none> rejected=True code=armies.army-transfer-invalid-amount supply=206/0
+embark total=5000 rejected=False code= carried=a
+hire total=5000 rejected=False code= troops=5000
+embark total=5001 rejected=True code=naval.army-too-large carried=<none>
+hire total=5001 rejected=True code=mercenary.fleet-no-space troops=4000
+embark total=5499 rejected=True code=naval.army-too-large carried=<none>
+hire total=5499 rejected=True code=mercenary.fleet-no-space troops=4000
+embark total=5500 rejected=True code=naval.army-too-large carried=<none>
+hire total=5500 rejected=True code=mercenary.fleet-no-space troops=4000
+fleet-money receiver=950 rejected=False purses=100/1000 treasuryDelta=50
+fleet-money receiver=1000 rejected=False purses=100/1000 treasuryDelta=100
+fleet-money receiver=1100 rejected=False purses=100/1000 treasuryDelta=200
+disband carried rejected=True code=armies.army-embarked

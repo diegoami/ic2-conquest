@@ -1,0 +1,436 @@
+{
+  "case": {
+    "id": "unchanged-within",
+    "mode": "unchanged",
+    "supplies": [
+      50,
+      20
+    ],
+    "selected": 0,
+    "finish": "OK"
+  },
+  "turn": 734,
+  "before_save": "army-v4_unchanged-within_before.SAV",
+  "after_save": "army-v4_unchanged-within_after.SAV",
+  "before": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 50,
+        "money": 100,
+        "morale": 51,
+        "troops": 10000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 10000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          }
+        ],
+        "supply_pct": 50
+      },
+      "12": {
+        "id": 12,
+        "x": 110,
+        "y": 40,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 20,
+        "money": 100,
+        "morale": 59,
+        "troops": 10000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 10000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S0"
+          }
+        ],
+        "supply_pct": 20
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 20,
+        "money": 100,
+        "morale": 59,
+        "troops": 10000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 10000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S0"
+          }
+        ],
+        "supply_pct": 20
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 29,
+        "supplies": 0,
+        "money": 0,
+        "ships": 20,
+        "condition": 97,
+        "army": -1
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      -1,
+      -1
+    ]
+  },
+  "after": {
+    "armies": {
+      "0": {
+        "id": 0,
+        "x": 101,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 50,
+        "money": 100,
+        "morale": 51,
+        "troops": 10000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 10000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A0S0"
+          }
+        ],
+        "supply_pct": 50
+      },
+      "12": {
+        "id": 12,
+        "x": 110,
+        "y": 40,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 20,
+        "money": 100,
+        "morale": 59,
+        "troops": 10000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 10000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A12S0"
+          }
+        ],
+        "supply_pct": 20
+      },
+      "13": {
+        "id": 13,
+        "x": 102,
+        "y": 45,
+        "owner": 0,
+        "moves": 7,
+        "cell": 2,
+        "embarked": false,
+        "supplies": 20,
+        "money": 100,
+        "morale": 59,
+        "troops": 10000,
+        "units": [
+          {
+            "slot": 0,
+            "type": "hi",
+            "troops": 10000,
+            "quality": 7,
+            "merc": 0,
+            "name": "A13S0"
+          }
+        ],
+        "supply_pct": 20
+      }
+    },
+    "fleets": {
+      "2": {
+        "id": 2,
+        "x": 101,
+        "y": 46,
+        "owner": 0,
+        "moves": 29,
+        "supplies": 0,
+        "money": 0,
+        "ships": 20,
+        "condition": 97,
+        "army": -1
+      },
+      "5": {
+        "id": 5,
+        "x": 101,
+        "y": 47,
+        "owner": 0,
+        "moves": 0,
+        "supplies": 0,
+        "money": 0,
+        "ships": 10,
+        "condition": 97,
+        "army": -1
+      }
+    },
+    "city_stock": 330,
+    "foreign_treasury": 13474,
+    "selected": [
+      0,
+      -1
+    ]
+  },
+  "events": [
+    {
+      "phase": "open",
+      "ids": [
+        0,
+        13,
+        89,
+        24,
+        -1,
+        -1
+      ],
+      "working": [
+        {
+          "id": 0,
+          "x": 101,
+          "y": 45,
+          "owner": 0,
+          "moves": 7,
+          "cell": 2,
+          "embarked": false,
+          "supplies": 50,
+          "money": 100,
+          "morale": 51,
+          "troops": 10000,
+          "units": [
+            {
+              "slot": 0,
+              "type": "hi",
+              "troops": 10000,
+              "quality": 7,
+              "merc": 0,
+              "name": "A0S0"
+            }
+          ],
+          "supply_pct": 50
+        },
+        {
+          "id": 13,
+          "x": 102,
+          "y": 45,
+          "owner": 0,
+          "moves": 7,
+          "cell": 2,
+          "embarked": false,
+          "supplies": 20,
+          "money": 100,
+          "morale": 59,
+          "troops": 10000,
+          "units": [
+            {
+              "slot": 0,
+              "type": "hi",
+              "troops": 10000,
+              "quality": 7,
+              "merc": 0,
+              "name": "A13S0"
+            }
+          ],
+          "supply_pct": 20
+        }
+      ],
+      "global_state": {
+        "armies": {
+          "0": {
+            "id": 0,
+            "x": 101,
+            "y": 45,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 50,
+            "money": 100,
+            "morale": 51,
+            "troops": 10000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 10000,
+                "quality": 7,
+                "merc": 0,
+                "name": "A0S0"
+              }
+            ],
+            "supply_pct": 50
+          },
+          "12": {
+            "id": 12,
+            "x": 110,
+            "y": 40,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 20,
+            "money": 100,
+            "morale": 59,
+            "troops": 10000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 10000,
+                "quality": 7,
+                "merc": 0,
+                "name": "A12S0"
+              }
+            ],
+            "supply_pct": 20
+          },
+          "13": {
+            "id": 13,
+            "x": 102,
+            "y": 45,
+            "owner": 0,
+            "moves": 7,
+            "cell": 2,
+            "embarked": false,
+            "supplies": 20,
+            "money": 100,
+            "morale": 59,
+            "troops": 10000,
+            "units": [
+              {
+                "slot": 0,
+                "type": "hi",
+                "troops": 10000,
+                "quality": 7,
+                "merc": 0,
+                "name": "A13S0"
+              }
+            ],
+            "supply_pct": 20
+          }
+        },
+        "fleets": {
+          "2": {
+            "id": 2,
+            "x": 101,
+            "y": 46,
+            "owner": 0,
+            "moves": 29,
+            "supplies": 0,
+            "money": 0,
+            "ships": 20,
+            "condition": 97,
+            "army": -1
+          },
+          "5": {
+            "id": 5,
+            "x": 101,
+            "y": 47,
+            "owner": 0,
+            "moves": 0,
+            "supplies": 0,
+            "money": 0,
+            "ships": 10,
+            "condition": 97,
+            "army": -1
+          }
+        },
+        "city_stock": 330,
+        "foreign_treasury": 13474,
+        "selected": [
+          0,
+          -1
+        ]
+      }
+    }
+  ],
+  "boxes": [],
+  "summary": {
+    "before": [
+      [
+        100,
+        50,
+        10000
+      ],
+      [
+        100,
+        20,
+        10000
+      ]
+    ],
+    "after": [
+      [
+        100,
+        50,
+        10000
+      ],
+      [
+        100,
+        20,
+        10000
+      ]
+    ],
+    "working_money": [
+      [
+        100,
+        100
+      ]
+    ],
+    "boxes": []
+  }
+}

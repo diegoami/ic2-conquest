@@ -99,3 +99,12 @@ all probes/scalars pushed. NativeExtra first compile failed on contextual
 identifier `from with`; retained buildv1 and failed launchv1, renamed fixture
 variable; buildv2 preserves same production-call semantics. No failed native
 attempt is counted as an observation.
+
+First bounded publication PR212 merged4a4be796f846c804e93e5099026edb434d7381c2,
+head597b631ef7e81a3f6890b0d98e415630e4ae9db0; exact-head GitGuardian success,
+no review comments/external review. New main finding signed-paid-supply85;
+other task work remains active. NativeExtra buildv3 log finished appending after
+checkpoint597b631 (initial log prefix was committed); retained complete append,
+no prior measured content overwritten. v3 authoritative fleet comparison fixes
+synthetic constructor field order from v2 (donor money was0, so its fleet
+rows only exercised insufficient money and are not cap evidence).
