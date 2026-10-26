@@ -1,0 +1,67 @@
+[
+  {
+    "id": "land-toolbar-whole",
+    "mode": "whole",
+    "land": true,
+    "toolbar": true
+  },
+  {
+    "id": "carried-toolbar-whole",
+    "mode": "whole",
+    "toolbar": true
+  },
+  {
+    "id": "carried-whole-left",
+    "mode": "whole"
+  },
+  {
+    "id": "carried-whole-right",
+    "mode": "whole",
+    "right": true
+  },
+  {
+    "id": "carried-after-change-cancel",
+    "mode": "whole",
+    "preceding": "Cancel"
+  },
+  {
+    "id": "carried-after-change-ok",
+    "mode": "whole",
+    "preceding": "OK"
+  },
+  {
+    "id": "carried-change-last-cancel",
+    "mode": "change",
+    "finish": "Cancel"
+  },
+  {
+    "id": "carried-change-regular-no-city",
+    "mode": "change",
+    "finish": "OK",
+    "owncity": false
+  },
+  {
+    "id": "carried-change-merc-no-city",
+    "mode": "change",
+    "finish": "OK",
+    "owncity": false,
+    "merc": true,
+    "reopen": true
+  },
+  {
+    "id": "carried-transfer-disband-ok",
+    "mode": "transfer",
+    "finish": "OK",
+    "reopen": true
+  },
+  {
+    "id": "carried-transfer-disband-cancel",
+    "mode": "transfer",
+    "finish": "Cancel"
+  },
+  {
+    "id": "land-after-disembark-whole",
+    "mode": "whole",
+    "disembark": true
+  }
+]

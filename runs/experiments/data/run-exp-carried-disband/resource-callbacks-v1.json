@@ -1,0 +1,1985 @@
+[
+  {
+    "form": "TChangeArmyUnits",
+    "control": "ChangeArmyUnits",
+    "cls": "TChangeArmyUnits",
+    "path": [],
+    "caption": "Change units",
+    "shortcut": null,
+    "events": {
+      "OnCreate": {
+        "ident": "InitializeForm"
+      }
+    }
+  },
+  {
+    "form": "TChangeArmyUnits",
+    "control": "btn_ok",
+    "cls": "TButton",
+    "path": [
+      "ChangeArmyUnits"
+    ],
+    "caption": "OK",
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "OK"
+      }
+    }
+  },
+  {
+    "form": "TChangeArmyUnits",
+    "control": "btn_cancel",
+    "cls": "TButton",
+    "path": [
+      "ChangeArmyUnits"
+    ],
+    "caption": "Cancel",
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "Cancel"
+      }
+    }
+  },
+  {
+    "form": "TChangeArmyUnits",
+    "control": "btn_join",
+    "cls": "TButton",
+    "path": [
+      "ChangeArmyUnits"
+    ],
+    "caption": "Join units",
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "JoinUnits"
+      }
+    }
+  },
+  {
+    "form": "TChangeArmyUnits",
+    "control": "btn_split",
+    "cls": "TButton",
+    "path": [
+      "ChangeArmyUnits"
+    ],
+    "caption": "Split unit",
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "SplitUnit"
+      }
+    }
+  },
+  {
+    "form": "TChangeArmyUnits",
+    "control": "btn_disband",
+    "cls": "TButton",
+    "path": [
+      "ChangeArmyUnits"
+    ],
+    "caption": "Disband",
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "Disband"
+      }
+    }
+  },
+  {
+    "form": "TChangeArmyUnits",
+    "control": "btn_rename",
+    "cls": "TButton",
+    "path": [
+      "ChangeArmyUnits"
+    ],
+    "caption": "Rename unit",
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "RenameUnit"
+      }
+    }
+  },
+  {
+    "form": "TInformation",
+    "control": "Information",
+    "cls": "TInformation",
+    "path": [],
+    "caption": "Information",
+    "shortcut": null,
+    "events": {
+      "OnCloseQuery": {
+        "ident": "CheckQuit"
+      },
+      "OnCreate": {
+        "ident": "InitializeForm"
+      },
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      },
+      "OnPaint": {
+        "ident": "PaintForm"
+      },
+      "OnResize": {
+        "ident": "ResizeForm"
+      },
+      "OnShow": {
+        "ident": "InitializeForm"
+      }
+    }
+  },
+  {
+    "form": "TInformation",
+    "control": "ScrollBarV",
+    "cls": "TScrollBar",
+    "path": [
+      "Information"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      },
+      "OnScroll": {
+        "ident": "FormScrolled"
+      }
+    }
+  },
+  {
+    "form": "TInformation",
+    "control": "ScrollBarH",
+    "cls": "TScrollBar",
+    "path": [
+      "Information"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      },
+      "OnScroll": {
+        "ident": "FormScrolled"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "PremierForm",
+    "cls": "TPremierForm",
+    "path": [],
+    "caption": "Imperial Conquest 2",
+    "shortcut": null,
+    "events": {
+      "OnCloseQuery": {
+        "ident": "CheckQuit"
+      },
+      "OnCreate": {
+        "ident": "InitialiseForm"
+      },
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Open",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "OpenGameFile"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Save",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "SaveGameFile"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Endturn",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "EndTurn"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_News",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Pols",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Tax",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Balance",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Newunit",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Newfleet",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Rome",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Carthage",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Seleucid",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Ptolemaic",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Macedonia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Numidia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Gaul",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Greece",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Celtiberia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Illyria",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Dacia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Bithynia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Galatia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Armenia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Media",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Thracia",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "sb_Allnations",
+    "cls": "TSpeedButton",
+    "path": [
+      "PremierForm",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Newgame",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_file"
+    ],
+    "caption": "New",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "NewGame"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Open",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_file"
+    ],
+    "caption": "Open",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "OpenGameFile"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Save",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_file"
+    ],
+    "caption": "Save",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "SaveGameFile"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_SaveAs",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_file"
+    ],
+    "caption": "Save As",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "SaveGameFileAs"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Exit",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_file"
+    ],
+    "caption": "Close",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "Quit"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Endturn",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Game"
+    ],
+    "caption": "End turn",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "EndTurn"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Newplayer",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Game"
+    ],
+    "caption": "New player",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "NewPlayer"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Newnation",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Game"
+    ],
+    "caption": "New nation",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "NewNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Abdicate",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Game"
+    ],
+    "caption": "Abdicate",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "Abdicate"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_News",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Strategy"
+    ],
+    "caption": "News",
+    "shortcut": 8279,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Politics",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Strategy"
+    ],
+    "caption": "International relations",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Taxation",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Strategy"
+    ],
+    "caption": "Taxation",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Balancesheet",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Strategy"
+    ],
+    "caption": "Balance sheet",
+    "shortcut": 8258,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Newunit",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Strategy"
+    ],
+    "caption": "Recruit unit",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Buildfleet",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Strategy"
+    ],
+    "caption": "Build fleet",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Rome",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Rome",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Carthage",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Carthage",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Seleucid",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Seleucid",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Ptolemaic",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Ptolemaic",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Macedonia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Macedonia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Numidia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Numidia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Gaul",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Gaul",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Greece",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Greece",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Celtiberia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Celtiberia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Illyria",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Illyria",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Dacia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Dacia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Bithynia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Bithynia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Galatia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Galatia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Armenia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Armenia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Media",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Media",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Thracia",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "Thracia",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Allnations",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Nations"
+    ],
+    "caption": "All nations",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeNation"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Showcities",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap"
+    ],
+    "caption": "Show cities",
+    "shortcut": 8259,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Showcapital",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap"
+    ],
+    "caption": "Show capital",
+    "shortcut": 8272,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Showarmies",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap"
+    ],
+    "caption": "Show armies",
+    "shortcut": 8257,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Showfleets",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap"
+    ],
+    "caption": "Show fleets",
+    "shortcut": 8262,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Showall",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap"
+    ],
+    "caption": "Show all",
+    "shortcut": 8268,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Lightinfantry",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap",
+      "mn_Mercenaries"
+    ],
+    "caption": "Light infantry",
+    "shortcut": 8241,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Heavyinfantry",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap",
+      "mn_Mercenaries"
+    ],
+    "caption": "Heavy infantry",
+    "shortcut": 8242,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Archers",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap",
+      "mn_Mercenaries"
+    ],
+    "caption": "Archers",
+    "shortcut": 8243,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Lightcavalry",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap",
+      "mn_Mercenaries"
+    ],
+    "caption": "Light cavalry",
+    "shortcut": 8244,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Heavycavalry",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap",
+      "mn_Mercenaries"
+    ],
+    "caption": "Heavy cavalry",
+    "shortcut": 8245,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Allmercs",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap",
+      "mn_Mercenaries"
+    ],
+    "caption": "All mercenaries",
+    "shortcut": 8269,
+    "events": {
+      "OnClick": {
+        "ident": "ShowOnAreaMap"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Findcity",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Areamap"
+    ],
+    "caption": "Find a city",
+    "shortcut": 8260,
+    "events": {
+      "OnClick": {
+        "ident": "StrategicDecision"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Supplyarmy",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Supply army",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Recruitmercs",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Recruit mercenaries",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Transferunit",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Transfer unit",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Splitarmy",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Split army",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Joinarmies",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Join armies",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Changeunits",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Change units",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Disbandarmy",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Army"
+    ],
+    "caption": "Disband army",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Supplyfleet",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Fleet"
+    ],
+    "caption": "Supply fleet",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Repairfleet",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Fleet"
+    ],
+    "caption": "Repair fleet",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Transferships",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Fleet"
+    ],
+    "caption": "Transfer ships",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Splitfleet",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Fleet"
+    ],
+    "caption": "Split fleet",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Joinfleets",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Fleet"
+    ],
+    "caption": "Join fleets",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Scuttlefleet",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_Fleet"
+    ],
+    "caption": "Scuttle fleet",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Fortifycity",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap",
+      "mn_City"
+    ],
+    "caption": "Fortify city",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Cancelselection",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Unitmap"
+    ],
+    "caption": "Cancel selection",
+    "shortcut": 8280,
+    "events": {
+      "OnClick": {
+        "ident": "UnitMapAction"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Helptopics",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Help"
+    ],
+    "caption": "Help topics",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "HelpTopics"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_Showhints",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Help"
+    ],
+    "caption": "Show hints",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "ToggleHints"
+      }
+    }
+  },
+  {
+    "form": "TPremierForm",
+    "control": "mn_About",
+    "cls": "TMenuItem",
+    "path": [
+      "PremierForm",
+      "MainMenu",
+      "mt_Help"
+    ],
+    "caption": "About Imperial Conquest",
+    "shortcut": 0,
+    "events": {
+      "OnClick": {
+        "ident": "About"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "UnitMap",
+    "cls": "TUnitMap",
+    "path": [],
+    "caption": "Unit map",
+    "shortcut": null,
+    "events": {
+      "OnCloseQuery": {
+        "ident": "CheckQuit"
+      },
+      "OnCreate": {
+        "ident": "InitializeForm"
+      },
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      },
+      "OnMouseDown": {
+        "ident": "UnitMapClick"
+      },
+      "OnPaint": {
+        "ident": "PaintForm"
+      },
+      "OnResize": {
+        "ident": "ResizeForm"
+      },
+      "OnShow": {
+        "ident": "InitializeForm"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_supplyarmy",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "SupplyArmy"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_recruitmercs",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "RecruitMercenaries"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_transferunit",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ArmyToArmyTransfer"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_splitarmy",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "SplitArmy"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_joinarmies",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "JoinArmies"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_changeunit",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ChangeUnitDetails"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_disbandarmy",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "DisbandArmy"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_supplyfleet",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "SupplyFleet"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_repairfleet",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "RepairFlt"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_transferships",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "FleetToFleetTransfer"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_splitfleet",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "SplitFleet"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_joinfleets",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "JoinFleets"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_scuttle",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "ScuttleFleet"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_fortifycity",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "Fortify"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "sb_cancel",
+    "cls": "TSpeedButton",
+    "path": [
+      "UnitMap",
+      "Panel1"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnClick": {
+        "ident": "CancelSelection"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "ScrollBarH",
+    "cls": "TScrollBar",
+    "path": [
+      "UnitMap"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      },
+      "OnScroll": {
+        "ident": "UnitMapScrolled"
+      }
+    }
+  },
+  {
+    "form": "TUnitMap",
+    "control": "ScrollBarV",
+    "cls": "TScrollBar",
+    "path": [
+      "UnitMap"
+    ],
+    "caption": null,
+    "shortcut": null,
+    "events": {
+      "OnKeyDown": {
+        "ident": "KeyPressed"
+      },
+      "OnScroll": {
+        "ident": "UnitMapScrolled"
+      }
+    }
+  }
+]

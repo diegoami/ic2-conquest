@@ -1,0 +1,17 @@
+using IC2.Engine.Model;
+using IC2.Engine.Serialization;
+using IC2.Engine.Tests.Core;
+using IC2.Engine.Tests.Armies;
+using IC2.Engine.Armies.Commands;
+var rules=GameDataRepository.Load("data").Resolve("classical-mediterranean").Ruleset;
+var dispatcher=ArmiesTestbed.DispatcherWithRuleset(rules);
+var army=new ArmyState("cargo","north",4,2,7,70,37,23,null,"carrier",ValueList.Of(new UnitSlot(0,"heavy_infantry",5000,7,"Control")));
+var fleet=new FleetState("carrier","north",4,2,7,30,97,0,0,null,null,"cargo",0);
+var city=new CityState("port","Port",3,2,"north","north",90,330,69,33,33,14,ValueList<UnitSlot>.Empty);
+var initial=CoreTestbed.InitialState();
+var state=initial with{Armies=ValueList.Of(army),Fleets=ValueList.Of(fleet),Cities=ValueList.Of(city),Nations=ValueList.From(initial.Nations.Select(n=>n.Id=="north"?n with{Treasury=1730}:n))};
+var whole=dispatcher.Dispatch(state,new DisbandArmyCommand("north","cargo"));
+Console.WriteLine($"carried-whole rejected={whole.IsRejected} code={whole.Code} cargo={whole.State.ArmyById("cargo") is not null} link={whole.State.FleetById("carrier")!.CarriedArmyId} treasury={whole.State.NationById("north")!.Treasury} stock={whole.State.CityById("port")!.SupplyTons}");
+var last=dispatcher.Dispatch(state,new DisbandUnitCommand("north","cargo",0));
+Console.WriteLine($"carried-last-unit rejected={last.IsRejected} code={last.Code} troops={last.State.ArmyById("cargo")!.TotalTroops}");
+if(!whole.IsRejected||!last.IsRejected)throw new Exception("Expected documented defensive/owner-policy refusals changed at source pin");

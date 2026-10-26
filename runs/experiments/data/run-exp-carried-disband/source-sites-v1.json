@@ -1,0 +1,228 @@
+{
+  "original_listing_identity_verified": true,
+  "sites": [
+    {
+      "function": "TUnitMap_PaintForm",
+      "address": "00445d38",
+      "first_line": 45996,
+      "last_line": 46128
+    },
+    {
+      "function": "TUnitMap_SelectUnit",
+      "address": "004466cc",
+      "first_line": 46487,
+      "last_line": 46666
+    },
+    {
+      "function": "TUnitMap_UnitMapClick",
+      "address": "00446420",
+      "first_line": 46359,
+      "last_line": 46432
+    },
+    {
+      "function": "TUnitMap_AreaMapClicked",
+      "address": "004462ac",
+      "first_line": 46265,
+      "last_line": 46299
+    },
+    {
+      "function": "TUnitMap_CancelSelection",
+      "address": "00448170",
+      "first_line": 47409,
+      "last_line": 47418
+    },
+    {
+      "function": "TUnitMap_KeyPressed",
+      "address": "00448178",
+      "first_line": 47419,
+      "last_line": 47428
+    },
+    {
+      "function": "TUnitMap_EndUMSelection",
+      "address": "00446eac",
+      "first_line": 46780,
+      "last_line": 46796
+    },
+    {
+      "function": "TUnitMap_UpdateUMSelection",
+      "address": "00446ef4",
+      "first_line": 46797,
+      "last_line": 46826
+    },
+    {
+      "function": "TUnitMap_DisbandArmy",
+      "address": "004476ac",
+      "first_line": 47081,
+      "last_line": 47123
+    },
+    {
+      "function": "TUnitMap_SupplyArmy",
+      "address": "00446f50",
+      "first_line": 46827,
+      "last_line": 46857
+    },
+    {
+      "function": "TUnitMap_RecruitMercenaries",
+      "address": "00446ff4",
+      "first_line": 46858,
+      "last_line": 46921
+    },
+    {
+      "function": "TUnitMap_ChangeUnitDetails",
+      "address": "00447644",
+      "first_line": 47057,
+      "last_line": 47080
+    },
+    {
+      "function": "TUnitMap_ArmyToArmyTransfer",
+      "address": "00447288",
+      "first_line": 46922,
+      "last_line": 46949
+    },
+    {
+      "function": "TUnitMap_SplitArmy",
+      "address": "0044755c",
+      "first_line": 47021,
+      "last_line": 47056
+    },
+    {
+      "function": "TPremierForm_UnitMapAction",
+      "address": "0045b810",
+      "first_line": 58640,
+      "last_line": 58694
+    },
+    {
+      "function": "TPremierForm_KeyPressed",
+      "address": "0045b950",
+      "first_line": 58695,
+      "last_line": 58738
+    },
+    {
+      "function": "TInformation_KeyPressed",
+      "address": "0043d2fc",
+      "first_line": 41418,
+      "last_line": 41427
+    },
+    {
+      "function": "TInformation_ShowFleetUnits",
+      "address": "0043cf0c",
+      "first_line": 41312,
+      "last_line": 41326
+    },
+    {
+      "function": "TChangeArmyUnits_InitializeForm",
+      "address": "004449f4",
+      "first_line": 45389,
+      "last_line": 45424
+    },
+    {
+      "function": "TChangeArmyUnits_Disband",
+      "address": "004450c8",
+      "first_line": 45686,
+      "last_line": 45768
+    },
+    {
+      "function": "TChangeArmyUnits_RemoveUnit",
+      "address": "004452c4",
+      "first_line": 45769,
+      "last_line": 45810
+    },
+    {
+      "function": "TChangeArmyUnits_OK",
+      "address": "00445378",
+      "first_line": 45811,
+      "last_line": 45833
+    },
+    {
+      "function": "TChangeArmyUnits_Cancel",
+      "address": "004453c8",
+      "first_line": 45834,
+      "last_line": 45844
+    },
+    {
+      "function": "TArmyToArmy_OK",
+      "address": "00442ef8",
+      "first_line": 44572,
+      "last_line": 44650
+    },
+    {
+      "function": "TArmyToArmy_Cancel",
+      "address": "004430b0",
+      "first_line": 44651,
+      "last_line": 44664
+    },
+    {
+      "function": "FUN_0044ab90",
+      "address": "0044ab90",
+      "first_line": 49372,
+      "last_line": 49395
+    }
+  ],
+  "selection_store_candidates": [
+    {
+      "line": 44625,
+      "function": "TArmyToArmy_OK",
+      "address": "00442ef8",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 45883,
+      "function": "TUnitMap_InitializeForm",
+      "address": "00445958",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46535,
+      "function": "TUnitMap_SelectUnit",
+      "address": "004466cc",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46557,
+      "function": "TUnitMap_SelectUnit",
+      "address": "004466cc",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46585,
+      "function": "TUnitMap_SelectUnit",
+      "address": "004466cc",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46737,
+      "function": "TUnitMap_MoveHumanArmy",
+      "address": "00446d9c",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46787,
+      "function": "TUnitMap_EndUMSelection",
+      "address": "00446eac",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46838,
+      "function": "TUnitMap_SupplyArmy",
+      "address": "00446f50",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 46876,
+      "function": "TUnitMap_RecruitMercenaries",
+      "address": "00446ff4",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    },
+    {
+      "line": 47071,
+      "function": "TUnitMap_ChangeUnitDetails",
+      "address": "00447644",
+      "kind": "syntactic store candidate, aliases/context manually reviewed"
+    }
+  ],
+  "limits": [
+    "bounded named-handler audit; not exhaustive indirect-pointer/VCL reentrancy proof",
+    "disband last-unit in Change units vs Army transfer are distinct commit/cleanup paths",
+    "no new Original run by this static audit"
+  ]
+}

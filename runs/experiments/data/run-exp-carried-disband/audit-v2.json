@@ -1,0 +1,578 @@
+{
+  "action_controls": 23,
+  "cold_process_controls": 3,
+  "action_pairs": 23,
+  "same_process_reload_pairs": 3,
+  "cold_process_pairs": 3,
+  "unique_original_written_saves": 52,
+  "rows": [
+    {
+      "batch": "cd218-pilot-v1",
+      "id": "land-whole-yes",
+      "saves": [
+        "cd218-pilot-v1_land-whole-yes_before.SAV",
+        "cd218-pilot-v1_land-whole-yes_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1767,
+        "city_stock": 353,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-pilot-v1",
+      "id": "carried-change-last-ok",
+      "saves": [
+        "cd218-pilot-v1_carried-change-last-ok_before.SAV",
+        "cd218-pilot-v1_carried-change-last-ok_after.SAV"
+      ],
+      "same_process_reload_equal": true,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 0,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 21,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "land-toolbar-whole",
+      "saves": [
+        "cd218-controls-v2_land-toolbar-whole_before.SAV",
+        "cd218-controls-v2_land-toolbar-whole_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1767,
+        "city_stock": 353,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-toolbar-whole",
+      "saves": [
+        "cd218-controls-v2_carried-toolbar-whole_before.SAV",
+        "cd218-controls-v2_carried-toolbar-whole_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-whole-left",
+      "saves": [
+        "cd218-controls-v2_carried-whole-left_before.SAV",
+        "cd218-controls-v2_carried-whole-left_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-whole-right",
+      "saves": [
+        "cd218-controls-v2_carried-whole-right_before.SAV",
+        "cd218-controls-v2_carried-whole-right_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-after-change-cancel",
+      "saves": [
+        "cd218-controls-v2_carried-after-change-cancel_before.SAV",
+        "cd218-controls-v2_carried-after-change-cancel_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-after-change-ok",
+      "saves": [
+        "cd218-controls-v2_carried-after-change-ok_before.SAV",
+        "cd218-controls-v2_carried-after-change-ok_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-change-last-cancel",
+      "saves": [
+        "cd218-controls-v2_carried-change-last-cancel_before.SAV",
+        "cd218-controls-v2_carried-change-last-cancel_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-change-regular-no-city",
+      "saves": [
+        "cd218-controls-v2_carried-change-regular-no-city_before.SAV",
+        "cd218-controls-v2_carried-change-regular-no-city_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-change-merc-no-city",
+      "saves": [
+        "cd218-controls-v2_carried-change-merc-no-city_before.SAV",
+        "cd218-controls-v2_carried-change-merc-no-city_after.SAV"
+      ],
+      "same_process_reload_equal": true,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 0,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-transfer-disband-ok",
+      "saves": [
+        "cd218-controls-v2_carried-transfer-disband-ok_before.SAV",
+        "cd218-controls-v2_carried-transfer-disband-ok_after.SAV"
+      ],
+      "same_process_reload_equal": true,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 0,
+        "carrier_link": -1,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 21,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "carried-transfer-disband-cancel",
+      "saves": [
+        "cd218-controls-v2_carried-transfer-disband-cancel_before.SAV",
+        "cd218-controls-v2_carried-transfer-disband-cancel_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-controls-v2",
+      "id": "land-after-disembark-whole",
+      "saves": [
+        "cd218-controls-v2_land-after-disembark-whole_before.SAV",
+        "cd218-controls-v2_land-after-disembark-whole_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1767,
+        "city_stock": 353,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-early-v3",
+      "id": "carried-after-nooffer-recruit-toolbar-yes",
+      "saves": [
+        "cd218-early-v3_carried-after-nooffer-recruit-toolbar-yes_before.SAV",
+        "cd218-early-v3_carried-after-nooffer-recruit-toolbar-yes_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-early-v3",
+      "id": "carried-after-nooffer-recruit-toolbar-no",
+      "saves": [
+        "cd218-early-v3_carried-after-nooffer-recruit-toolbar-no_before.SAV",
+        "cd218-early-v3_carried-after-nooffer-recruit-toolbar-no_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-early-v3",
+      "id": "carried-after-nooffer-recruit-menu",
+      "saves": [
+        "cd218-early-v3_carried-after-nooffer-recruit-menu_before.SAV",
+        "cd218-early-v3_carried-after-nooffer-recruit-menu_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-fast-v4",
+      "id": "carried-nooffer-fast-0ms",
+      "saves": [
+        "cd218-fast-v4_carried-nooffer-fast-0ms_before.SAV",
+        "cd218-fast-v4_carried-nooffer-fast-0ms_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1767,
+        "city_stock": 353,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-fast-v4",
+      "id": "carried-nooffer-fast-20ms",
+      "saves": [
+        "cd218-fast-v4_carried-nooffer-fast-20ms_before.SAV",
+        "cd218-fast-v4_carried-nooffer-fast-20ms_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1767,
+        "city_stock": 353,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-fast-v4",
+      "id": "carried-nooffer-fast-150ms",
+      "saves": [
+        "cd218-fast-v4_carried-nooffer-fast-150ms_before.SAV",
+        "cd218-fast-v4_carried-nooffer-fast-150ms_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": -1,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1767,
+        "city_stock": 353,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-fast-v4",
+      "id": "land-whole-no",
+      "saves": [
+        "cd218-fast-v4_land-whole-no_before.SAV",
+        "cd218-fast-v4_land-whole-no_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": -1,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          0,
+          -1,
+          -1
+        ]
+      }
+    },
+    {
+      "batch": "cd218-boundary-v5",
+      "id": "carried-nooffer-fast-no",
+      "saves": [
+        "cd218-boundary-v5_carried-nooffer-fast-no_before.SAV",
+        "cd218-boundary-v5_carried-nooffer-fast-no_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-boundary-v5",
+      "id": "carried-nooffer-then-pan",
+      "saves": [
+        "cd218-boundary-v5_carried-nooffer-then-pan_before.SAV",
+        "cd218-boundary-v5_carried-nooffer-then-pan_after.SAV"
+      ],
+      "same_process_reload_equal": false,
+      "whole_parsed_state_matches_named_effects": true,
+      "summary": {
+        "army_owner": 0,
+        "troops": 5000,
+        "carrier_link": 0,
+        "treasury": 1730,
+        "city_stock": 330,
+        "mobilization": 24,
+        "selection": [
+          -1,
+          -1,
+          2
+        ]
+      }
+    },
+    {
+      "batch": "cd218-cold-v1-c00",
+      "id": "change-regular-empty",
+      "fresh_original_process": true,
+      "source_save": "cd218-pilot-v1_carried-change-last-ok_after.SAV",
+      "cold_save": "cd218-cold-v1-c00_change-regular-empty_cold_saved.SAV",
+      "whole_parsed_state_equal_except_camera": true,
+      "summary": {
+        "owner": 0,
+        "troops": 0,
+        "link": 0
+      }
+    },
+    {
+      "batch": "cd218-cold-v1-c01",
+      "id": "change-merc-empty",
+      "fresh_original_process": true,
+      "source_save": "cd218-controls-v2_carried-change-merc-no-city_after.SAV",
+      "cold_save": "cd218-cold-v1-c01_change-merc-empty_cold_saved.SAV",
+      "whole_parsed_state_equal_except_camera": true,
+      "summary": {
+        "owner": 0,
+        "troops": 0,
+        "link": 0
+      }
+    },
+    {
+      "batch": "cd218-cold-v1-c02",
+      "id": "transfer-deleted",
+      "fresh_original_process": true,
+      "source_save": "cd218-controls-v2_carried-transfer-disband-ok_after.SAV",
+      "cold_save": "cd218-cold-v1-c02_transfer-deleted_cold_saved.SAV",
+      "whole_parsed_state_equal_except_camera": true,
+      "summary": {
+        "owner": -1,
+        "troops": 0,
+        "link": -1
+      }
+    }
+  ]
+}

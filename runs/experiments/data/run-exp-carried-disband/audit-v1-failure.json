@@ -1,0 +1,8 @@
+{
+  "case": "carried-change-last-ok",
+  "kind": "audit expectation error",
+  "field": "parser-derived supply_pct for zero troops",
+  "expected_before_fix": 230000,
+  "actual": 0,
+  "original_measurements_changed": false
+}
