@@ -35,3 +35,16 @@ failed attempts. Unique versioned outputs under runs/experiments/data/run-exp-
 restrictions85; originals/full states/screenshots/private save hashes only in
 ignored artifacts/run-exp-restrictions85. No public binary releases. Commit/push
 after each batch and <=30min. Stock/patched/Wine/native Windows evidence separate.
+
+Conquest execution issue211 opened before launch; Research85 acknowledgement
+posted comment6422105473. Public briefs/comments preserved e9d5ff7 and pushed.
+Setup failure before launch: prefix copy followed dosdevices symlinks. Stopped
+copy, removed only the unmeasured incomplete setup tree (no saves/measurements),
+recreated with symlinks=True. No owner process touched. Runners use private
+fingerprint override to avoid shared recorder publishing original hashes.
+
+Supply pilotv1 reached the paid original dialog and saved before/input/screenshot,
+then failed looking up caption Transfer; original visible button is Buy supplies.
+All pilot evidence retained; no completed transfer claimed. Corrected lookup;
+fresh supply-v2 tests all17 army/fleet controls. Original binary is stock, not
+fast/seed patched. Private identity and environment captured per attempt.

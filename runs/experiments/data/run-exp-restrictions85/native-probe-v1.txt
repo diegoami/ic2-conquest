@@ -1,0 +1,13 @@
+Unhandled exception. System.TypeInitializationException: The type initializer for 'IC2.Engine.Tests.Model.TestPaths' threw an exception.
+ ---> System.InvalidOperationException: Could not find 'IC2.sln' above '/home/diego/projects/ic2-conquest/runs/experiments/restrictions85/bin/Debug/net10.0/'.
+   at IC2.Engine.Tests.Model.TestPaths.FindRepositoryRoot() in /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/tests/IC2.Engine.Tests/Model/TestPaths.cs:line 44
+   at IC2.Engine.Tests.Model.TestPaths..cctor() in /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/tests/IC2.Engine.Tests/Model/TestPaths.cs:line 17
+   --- End of inner exception stack trace ---
+   at IC2.Engine.Tests.Model.TestPaths.get_DataRoot() in /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/tests/IC2.Engine.Tests/Model/TestPaths.cs:line 20
+   at IC2.Engine.Tests.Core.CoreTestbed.<>c.<.cctor>b__8_0() in /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/tests/IC2.Engine.Tests/Core/CoreTestbed.cs:line 65
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at IC2.Engine.Tests.Core.CoreTestbed.get_Toy() in /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/tests/IC2.Engine.Tests/Core/CoreTestbed.cs:line 68
+   at IC2.Engine.Tests.Core.CoreTestbed.InitialState() in /home/diego/projects/ic2-conquest/artifacts/run-exp-restrictions85/remake4d70275a/tests/IC2.Engine.Tests/Core/CoreTestbed.cs:line 72
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/runs/experiments/restrictions85/AuditFromBrief.cs:line 8

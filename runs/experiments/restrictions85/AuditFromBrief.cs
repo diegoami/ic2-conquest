@@ -1,0 +1,38 @@
+// Exact public native reproduction retained from Research85; no original evidence.
+using IC2.Engine.Model;
+using IC2.Engine.Serialization;
+using IC2.Engine.Economy;
+using IC2.Engine.Tests.Core;
+using IC2.Slice.UI;
+var rules = GameDataRepository.Load("data").Resolve("classical-mediterranean").Ruleset;
+var state = CoreTestbed.InitialState();
+var army = new ArmyState("audit-army", "north", 3, 2, 4, 70, 100, 206, null, null, ValueList.Of(new UnitSlot(0,"light_infantry",10000,6,"Audit")));
+var city = new CityState("audit-foreign","Audit",2,2,"south","south",90,330,0,100,100,0,ValueList<UnitSlot>.Empty);
+state = state with { Armies=ValueList.Of(army), Cities=ValueList.Of(city), Fleets=ValueList<FleetState>.Empty };
+var model = SupplyDialogModel.ForArmy(state,army,rules);
+model.SelectProvider(0);
+model.AdjustStaged(100);
+Console.WriteLine($"paid-dialog room={model.ArmyRoomTons} staged={model.StagedTons} cost={model.StagedCostTalents} command={model.TransferStaged() ?? "<none>"}");
+var result=SupplyPurchase.BuyForArmy(army, city, state.NationById("north")!, state.NationById("south")!,100,rules);
+Console.WriteLine($"engine admitted={result.AdmittedTons} armySupply={result.Army.SupplyTons} armyMoney={result.Army.Money}");
+if(model.ArmyRoomTons != -105 || model.StagedTons != 0 || model.TransferStaged() is not null || result.AdmittedTons != -105 || result.Army.Money != 121) throw new Exception("Probe unexpected");
+var partner=army with { Id="audit-partner", X=4, Money=1100, SupplyTons=20 };
+var transfer=ArmyTransferModel.ForArmies(army,partner,rules);
+transfer.AdjustMoney(100);
+Console.WriteLine($"army-money-arrow giver=100 receiver=1100 command={transfer.ComposeOk() ?? "<none>"}");
+if(transfer.ComposeOk() is not null) throw new Exception("Money probe unexpected");
+var donor=army with { Units=ValueList.Of(new UnitSlot(0,"light_infantry",1000,6,"one"),new UnitSlot(0,"light_infantry",1000,6,"two"),new UnitSlot(0,"light_infantry",1000,6,"keep")) };
+var receiver=partner with { Units=ValueList.From(Enumerable.Range(0,19).Select(i=>new UnitSlot(0,"light_infantry",1000,6,"r"+i))), Money=0 };
+var transferState=state with { Armies=ValueList.Of(donor,receiver) };
+var dispatch=IC2.Engine.Tests.Armies.ArmiesTestbed.DispatcherWithRuleset(rules);
+var partial=dispatch.Dispatch(transferState,new IC2.Engine.Armies.Commands.ArmyTransferCommand("north",donor.Id,receiver.Id,ValueList.Of(0,1),0,0,ValueList<int>.Empty,0,0));
+Console.WriteLine($"19plus2units rejected={partial.IsRejected} code={partial.Code} targetUnits={partial.State.ArmyById(receiver.Id)!.Units.Count}");
+if(!partial.IsRejected || partial.State.ArmyById(receiver.Id)!.Units.Count!=19) throw new Exception("Partial probe unexpected");
+var carrier=new FleetState("audit-carrier","north",4,2,4,30,100,0,100,null,null,receiver.Id,null);
+receiver=receiver with { Units=ValueList.Of(new UnitSlot(0,"light_infantry",15000,6,"aboard")), AboardFleetId=carrier.Id, CoveredTileCode=null };
+donor=donor with { Units=ValueList.Of(new UnitSlot(0,"light_infantry",499,6,"small"),new UnitSlot(0,"light_infantry",1000,6,"keep")) };
+transferState=state with { Armies=ValueList.Of(donor,receiver), Fleets=ValueList.Of(carrier) };
+var boundary=dispatch.Dispatch(transferState,new IC2.Engine.Armies.Commands.ArmyTransferCommand("north",donor.Id,receiver.Id,ValueList.Of(0),0,0,ValueList<int>.Empty,0,0));
+Console.WriteLine($"30ships15499 rejected={boundary.IsRejected} code={boundary.Code}");
+if(!boundary.IsRejected) throw new Exception("Capacity probe unexpected");
+
