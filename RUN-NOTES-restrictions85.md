@@ -308,3 +308,31 @@ land GUI/sourcecaveat, relay exact mainSHA toResearch with allnine findingpaths
 and ask to consolidate, link78–82/85/211. Research promotion remains separate
 until verified, no implementationissue closure. Latest delivered baseline
 remainsc7926a6 until those sends actually succeed. Preserve11unrelateduntracked.
+
+## Publication and final relay receipt
+
+GUI/sourcecaveat PR214 merged9a2009de95efedd4be64c38a499fc3539c96b150,
+exacthead97356bf6e6f4de2d13f15265092a8fe1d87b6cb5; mergeableclean, exact-head
+GitGuardian success, no reviewercomments or externalreview. Origin findings
+delta sincec7926a6: newcarried-army-supply-gui79,recruitment-default-gui81,
+supply-provider-gui78,tactical-enemy-click-gui80; changedsigned-paid-supply85
+for17inputmarker caveat/twocoherent revalidations. All five named to owner.
+
+Latest reported and successful delivered findings baseline:
+9a2009de95efedd4be64c38a499fc3539c96b150,2026-10-26. Three actual ASCII<1000byte
+messages to verified ic2-research01a167fa-9fb2-7570-bf21-b32682c79e6e each returned
+same ID,isError:false, covering all five deltafiles and explicit ownerrequest
+'when done so that they consolidate'. Asked verify/promote allninefindings,
+not just queue rawreports; no new original run needed. No promotion claimed.
+Prior research readback had acknowledged the marker caveat and waited for these
+coherent receipts; finalrelay supplies them. Delivery is complete; consolidation
+belongs to that session under the repository's gate, no researchrepo writes here.
+
+Core crosslinks posted85comment6423026002,83comment6423026417,84comment6423026856;
+Main1487comment6423027262,1488comment6423027697,1489comment6423028055,
+1326comment6423028376. FinalGUI/sourcecorrection comments being posted to78–82,
+85,conquest211 andMain1486. Main implementation issues remain open. Final
+receipt only needs committing/pushing and returning checkout to syncedmain;
+no required experimental, GUI or nativecomparison work remains. Research
+promotion/owner design decisions/Windows acceptance are explicitly pending
+outside this source-only delivery. Preserve11unrelated untracked files.
