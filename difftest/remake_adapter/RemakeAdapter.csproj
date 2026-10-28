@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Differential-testing adapter (#229). References the pinned remake assemblies; never edits the remake.
+       Build command: difftest/README.md. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IC2.Engine"><HintPath>$(RemakeBuild)/IC2.Engine.dll</HintPath></Reference>
+    <Reference Include="IC2.Data"><HintPath>$(RemakeBuild)/IC2.Data.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>
