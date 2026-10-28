@@ -17,9 +17,9 @@ from state.sav import NATIONS, load  # noqa: E402
 MAPPING = {
     "map": "compare: terrain and marker code of every one of the 44,800 cells",
     "cities.*": "compare: name, x, y, owner, allegiance, loyalty, supplies, fort, fort_pending, pop, max_pop, tribute",
-    "armies.*": "compare: by position among LIVE records (owner >= 0 and troops > 0), in record order: the original keeps a removed army's record (owner -1) where the remake's export drops it, so raw indexes shift after a removal; x, y, owner, moves, cell, supplies, money, morale, units (slot, type, troops, quality, merc label); unit names ignored",
+    "armies.*": "compare: LIVE records only (owner >= 0 and troops > 0), sorted by owner, position, troops and units; the index in a path is the position in that sorted list, not the record index (the original keeps a removed army's record with owner -1 and re-uses it for the next new army; the remake's export drops it and appends); x, y, owner, moves, cell, supplies, money, morale, units (slot, type, troops, quality, merc label); unit names ignored",
     "armies.*.units.*.name": "ignore: generated names; the remake's exporter may write export-only aliases",
-    "fleets.*": "compare: by position among live records (owner >= 0 and ships > 0), in record order (same reason as armies); every parsed field",
+    "fleets.*": "compare: live records (owner >= 0 and ships > 0) sorted by owner, position, ships and countdown (same reason as armies); every parsed field",
     "armies/fleets removed": "the count of live records is compared ('armies.count', 'fleets.count'); dead records are not",
     "nations.*": "compare: relations, neighbours, city_list, recruit_slots, wealth, treasury, unity, mobilization, capital, cities_count, tax, tax_base, conquered_by, human, alive",
     "nations.*.view": "ignore: the map view origin is interface state",
@@ -37,11 +37,15 @@ TAIL_KEYS = ["turn_order", "current_nation", "seat_index", "week", "year_bc", "s
 
 
 def live_armies(s):
-    return [a for a in s["armies"] if a["owner"] >= 0 and a["troops"] > 0]
+    """Live armies sorted by (owner, x, y, troops, units): record order is not compared, because the original
+    re-uses a removed army's record for the next new army while the remake appends (#230 disband-army-0)."""
+    live = [a for a in s["armies"] if a["owner"] >= 0 and a["troops"] > 0]
+    return sorted(live, key=lambda a: (a["owner"], a["x"], a["y"], a["troops"], [(u["type"], u["troops"]) for u in a["units"]]))
 
 
 def live_fleets(s):
-    return [f for f in s["fleets"] if f["owner"] >= 0 and f["ships"] > 0]
+    live = [f for f in s["fleets"] if f["owner"] >= 0 and f["ships"] > 0]
+    return sorted(live, key=lambda f: (f["owner"], f["x"], f["y"], f["ships"], f["countdown"]))
 
 
 def project(s):
