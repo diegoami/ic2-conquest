@@ -121,7 +121,9 @@ def perform(g, a, state):
     if op == "disband_army":
         return g.disband_army(a["army"])
     if op == "split_army":
-        return g.split_army(a["army"], tuple(a["units"]))
+        # Each Transfer removes its row from the dialog's list, so rows are moved highest first (rows 0 then 1 moved
+        # units 0 and 2, #230 split-army-2units, 2026-10-29).
+        return g.split_army(a["army"], tuple(sorted(a["units"], reverse=True)))
     if op == "join_armies":
         return g.join(a["army"])
     if op == "buy_supply":
