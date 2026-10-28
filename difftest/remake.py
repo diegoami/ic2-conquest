@@ -28,6 +28,25 @@ def command(a):
         return f"recruit-standing {{city:{a['city']}}} {UNIT_TYPES[a['type']]} {a['troops']}"
     if op == "end_turn":
         return "end"
+    if op == "relation":
+        return {"war": "declare-war", "peace": "make-peace", "trade": "propose-trade", "ally": "propose-alliance"}[a["kind"]] \
+            + f" {{nation:{a['nation']}}}"
+    if op == "fortify":
+        return f"order-city {{city:{a['city']}}} fortify {a['points']}"
+    if op == "disband_army":
+        return f"disband-army {{army:{a['army']}}}"
+    if op == "split_army":
+        return f"split-army {{army:{a['army']}}} {{newarmy}} {','.join(str(u) for u in a['units'])}"
+    if op == "join_armies":
+        return f"join-armies {{army:{a['army']}}} {{army:{a['partner']}}}"
+    if op == "buy_supply":
+        return f"buy {{army:{a['army']}}} {{city:{a['city']}}} {a['tons']}"
+    if op == "build_fleet":
+        return f"order-fleet {{buildcity}} {a['ships']} {{newfleet}}"
+    if op == "disband_slot":
+        return f"disband-slot {a['slot']}"
+    if op == "hire_mercenary":
+        return f"hire-mercenary {{army:{a['army']}}} {a['pool']}"
     raise ValueError(op)
 
 

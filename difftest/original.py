@@ -97,6 +97,37 @@ def perform(g, a, state):
     if op == "end_turn":
         line, texts = g.end_turn(peace=False)
         return [f"AUTOSAVE {line}"] + texts
+    if op == "relation":
+        value, texts = g.relation(a["nation"], a["kind"])
+        return [f"relation value {value}"] + texts
+    if op == "fortify":
+        c = state["cities"][a["city"]]
+        return g.fortify(c["name"], c["x"], c["y"], a["points"])
+    if op == "disband_army":
+        return g.disband_army(a["army"])
+    if op == "split_army":
+        return g.split_army(a["army"], tuple(a["units"]))
+    if op == "join_armies":
+        return g.join(a["army"])
+    if op == "buy_supply":
+        moved, texts = g.supply(a["army"], tons=a["tons"])
+        return [f"supplies moved {moved}"] + texts
+    if op == "build_fleet":
+        return g.build_fleet(a["ships"])
+    if op == "disband_slot":
+        nation = state["current_nation"]
+        slots = state["nations"][nation]["recruit_slots"]
+        slot = slots[a["slot"]]
+        unit_row = [x["slot"] for x in slots if x["city"] == slot["city"]].index(slot["slot"])
+        return g.disband_unit(recruit_row(state, nation, slot["city"]), unit_row)
+    if op == "hire_mercenary":
+        army = state["armies"][a["army"]]
+        offers = sorted(m["slot"] for m in state["mercenaries"]
+                        if max(abs(m["x"] - army["x"]), abs(m["y"] - army["y"])) <= 1 and m["troops"] > 0)
+        if a["pool"] not in offers:
+            raise DriverError(f"mercenary pool slot {a['pool']} is not adjacent to army {a['army']} (offers {offers})")
+        n, texts = g.hire_mercs(a["army"], rows=(offers.index(a["pool"]),))
+        return [f"units hired {n}"] + texts
     raise ValueError(op)
 
 

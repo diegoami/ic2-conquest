@@ -44,6 +44,7 @@ else
 }
 
 int step = 0;
+int fresh = 0;
 foreach (var raw in File.ReadLines(commands))
 {
     var line = raw.Trim();
@@ -85,13 +86,30 @@ foreach (var raw in File.ReadLines(commands))
 }
 Emit(new { kind = "done", steps = step });
 
-string Resolve(string line) => Regex.Replace(line, @"\{(army|fleet|city):(\d+)\}", m =>
+string Resolve(string line)
 {
-    int i = int.Parse(m.Groups[2].Value);
-    return m.Groups[1].Value switch
+    line = Regex.Replace(line, @"\{(army|fleet|city|nation):(\d+)\}", m =>
     {
-        "army" => session.State.Armies[i].Id,
-        "fleet" => session.State.Fleets[i].Id,
-        _ => world.Cities[i].Id,
-    };
-});
+        int i = int.Parse(m.Groups[2].Value);
+        return m.Groups[1].Value switch
+        {
+            "army" => session.State.Armies[i].Id,
+            "fleet" => session.State.Fleets[i].Id,
+            "nation" => world.Nations[i].Id,
+            _ => world.Cities[i].Id,
+        };
+    });
+    line = line.Replace("{newarmy}", "diff-army-" + fresh++).Replace("{newfleet}", "diff-fleet-" + fresh++);
+    if (line.Contains("{buildcity}"))
+    {
+        // The remake's Build fleet dialog (godot StrategyDialogModels.FreeCoastalCities): the active nation's coastal
+        // cities in world order, minus those already building a fleet; its OK uses the first.
+        var me = session.State.ActiveNationId;
+        var busy = session.State.Fleets.Where(f => f.Nation == me && f.IsUnderConstruction && f.BuildCityId != null)
+            .Select(f => f.BuildCityId!).ToHashSet();
+        var city = session.State.Cities.FirstOrDefault(c => c.Owner == me && IC2.Engine.Naval.CoastalCity.IsCoastal(c, world)
+            && !busy.Contains(c.Id)) ?? throw new Exception("no free coastal city");
+        line = line.Replace("{buildcity}", city.Id);
+    }
+    return line;
+}

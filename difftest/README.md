@@ -21,7 +21,7 @@ git clone --branch v0.8.4 https://github.com/diegoami/imperial_conquest_2.git ~/
 export DOTNET_ROOT=~/.dotnet PATH=~/.dotnet:$PATH
 B=artifacts/diff084-build
 dotnet build ~/projects/ic2-remake-v084/src/IC2.Cli/IC2.Cli.csproj -c Release --artifacts-path $B/build
-dotnet build difftest/remake_adapter -c Release -p:RemakeBuild=$B/build/bin/IC2.Cli/release --artifacts-path $B/adapter
+dotnet build difftest/remake_adapter -c Release -p:RemakeBuild=$PWD/$B/build/bin/IC2.Cli/release --artifacts-path $B/adapter
 ```
 
 `IC2_REMAKE` and `IC2_DIFF_BUILD` override the two paths. The build is kept outside the measurement folder so its

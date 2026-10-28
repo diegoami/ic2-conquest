@@ -112,3 +112,19 @@ if __name__ == "__main__":
     if "--json" in sys.argv:
         Path(sys.argv[sys.argv.index("--json") + 1]).write_text(json.dumps(d, indent=1))
     print(summary(d))
+
+
+def scoped(d, a, b, nation):
+    """The differences of `d` (from compare(a, b)) that belong to `nation`: its nation record, and the cities,
+    armies and fleets it owns in either save. Used after End turn, where other nations' AI and random draws act."""
+    name = NATIONS[nation]
+    keep = set()
+    for kind in ("cities", "armies", "fleets"):
+        for s in (a, b):
+            keep |= {f"{kind}.{r['id']}" for r in s[kind] if r["owner"] == nation}
+    out = []
+    for f in d["fields"]:
+        p = f["path"].split(".")
+        if p[0] == "nations" and p[1] == name or ".".join(p[:2]) in keep:
+            out.append(f)
+    return out
