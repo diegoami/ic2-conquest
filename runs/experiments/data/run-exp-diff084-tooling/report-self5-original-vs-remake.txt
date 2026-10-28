@@ -1,0 +1,27 @@
+# Differential report: self5-rome.jsonl
+
+- A: original `artifacts/run-exp-diff084-tooling/self5-original-1`, seed 12345
+- B: remake `artifacts/run-exp-diff084-tooling/self5-remake-1`
+- Checkpoints compared: 10
+
+**First divergence: `a003`** (Spring week 1, 270 BC / Spring week 1, 270 BC), after action {"op": "recruit", "city": 85, "type": "hi", "troops": 1000}: 2 fields, 0 map cells.
+
+| field | A | B |
+|---|---|---|
+| `nations.Rome.recruit_slots` | `[{"slot": 0, "state": 9, "type": "li", "troops": 5500, "city": 85}, {"slot": 1, ` | `[{"slot": 0, "state": 9, "type": "li", "troops": 5500, "city": 85}, {"slot": 1, ` |
+| `nations.Rome.treasury` | `1980` | `2100` |
+
+Later checkpoints are consequences unless shown otherwise:
+
+| checkpoint | action | changed A | changed B | differences |
+|---|---|---|---|---|
+| a000 | start |  |  | 0 |
+| a001 | set_tax | 1 | 1 | 0 |
+| a002 | move | 3 | 3 | 0 |
+| a003 | recruit | 3 | 3 | 2 |
+| a004 | end_turn | 442 | 440 | 268 |
+| a005 | move | 3 | 3 | 268 |
+| a006 | end_turn | 430 | 411 | 590 |
+| a007 | end_turn | 431 | 435 | 395 |
+| a008 | end_turn | 403 | 419 | 446 |
+| a009 | end_turn | 389 | 420 | 526 |

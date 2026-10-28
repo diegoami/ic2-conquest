@@ -1,0 +1,8 @@
+{"format": "diff-actions/1", "name": "toy3-rome-1200", "seat": "Rome", "note": "Three turns from the Rome 270 BC start (BASE.SAV): tax, two moves inside Roman Italy, one recruit of 1,200 heavy infantry at Rome (the dialog minimum, battalion/5), at peace."}
+{"op": "set_tax", "percent": 20}
+{"op": "move", "army": 0, "x": 98, "y": 38}
+{"op": "recruit", "city": 85, "type": "hi", "troops": 1200}
+{"op": "end_turn"}
+{"op": "move", "army": 1, "x": 122, "y": 52}
+{"op": "end_turn"}
+{"op": "end_turn"}

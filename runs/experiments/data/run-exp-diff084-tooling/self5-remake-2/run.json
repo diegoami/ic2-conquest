@@ -1,0 +1,24 @@
+{
+ "side": "remake",
+ "script": "difftest/scripts/self5-rome.jsonl",
+ "script_sha256": "1081befd2b99fca2975f4f0aa4e5f967f07dc8b2f6ffb8cd001c1e17da1d1601",
+ "header": {
+  "format": "diff-actions/1",
+  "name": "self5-rome",
+  "seat": "Rome",
+  "note": "Self-check script: five turns from the Rome 270 BC start (BASE.SAV), played twice in the same game with the same seed; any difference is noise in the harness or the game."
+ },
+ "start": "/home/diego/ic2-work/fixtures/BASE.SAV",
+ "start_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+ "seed": null,
+ "conquest_commit": "fa809914e6be0a708382149bf0070b8045c2d5e7",
+ "pins": {
+  "remake": "/home/diego/projects/ic2-remake-v084",
+  "remake_commit": "d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb",
+  "adapter_sha256": "fae0217df4e4e9784ae79d314544f065e023ece97836f3fc1c75ee712e20842b"
+ },
+ "started": "2026-10-28T23:12:29",
+ "finished": "2026-10-28T23:12:30",
+ "actions": 9,
+ "errors": 0
+}

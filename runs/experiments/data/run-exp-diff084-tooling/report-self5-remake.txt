@@ -1,0 +1,19 @@
+# Differential report: self5-rome.jsonl
+
+- A: remake `artifacts/run-exp-diff084-tooling/self5-remake-1`
+- B: remake `artifacts/run-exp-diff084-tooling/self5-remake-2`
+- Checkpoints compared: 10
+
+**No difference** at any compared checkpoint.
+| checkpoint | action | changed A | changed B | differences |
+|---|---|---|---|---|
+| a000 | start |  |  | 0 |
+| a001 | set_tax | 1 | 1 | 0 |
+| a002 | move | 3 | 3 | 0 |
+| a003 | recruit | 3 | 3 | 0 |
+| a004 | end_turn | 440 | 440 | 0 |
+| a005 | move | 3 | 3 | 0 |
+| a006 | end_turn | 411 | 411 | 0 |
+| a007 | end_turn | 435 | 435 | 0 |
+| a008 | end_turn | 419 | 419 | 0 |
+| a009 | end_turn | 420 | 420 | 0 |

@@ -1,0 +1,24 @@
+{
+ "side": "remake",
+ "script": "difftest/scripts/toy3-rome-1200.jsonl",
+ "script_sha256": "f8ede8c23630ff0423774bf6fc45a9c681d1984a8e3adfeec86810f0b132e8e7",
+ "header": {
+  "format": "diff-actions/1",
+  "name": "toy3-rome-1200",
+  "seat": "Rome",
+  "note": "Three turns from the Rome 270 BC start (BASE.SAV): tax, two moves inside Roman Italy, one recruit of 1,200 heavy infantry at Rome (the dialog minimum, battalion/5), at peace."
+ },
+ "start": "/home/diego/ic2-work/fixtures/BASE.SAV",
+ "start_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+ "seed": null,
+ "conquest_commit": "84fce8fd40f4ea98cf3d24ed8a6804b79aec255e",
+ "pins": {
+  "remake": "/home/diego/projects/ic2-remake-v084",
+  "remake_commit": "d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb",
+  "adapter_sha256": "fae0217df4e4e9784ae79d314544f065e023ece97836f3fc1c75ee712e20842b"
+ },
+ "started": "2026-10-28T23:21:54",
+ "finished": "2026-10-28T23:21:55",
+ "actions": 7,
+ "errors": 0
+}

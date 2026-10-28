@@ -1,0 +1,23 @@
+{
+ "side": "original",
+ "script": "difftest/scripts/self5-rome.jsonl",
+ "script_sha256": "1081befd2b99fca2975f4f0aa4e5f967f07dc8b2f6ffb8cd001c1e17da1d1601",
+ "header": {
+  "format": "diff-actions/1",
+  "name": "self5-rome",
+  "seat": "Rome",
+  "note": "Self-check script: five turns from the Rome 270 BC start (BASE.SAV), played twice in the same game with the same seed; any difference is noise in the harness or the game."
+ },
+ "start": "/home/diego/ic2-work/fixtures/BASE.SAV",
+ "start_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+ "seed": 12345,
+ "conquest_commit": "2094df36209358ed796e4ccd5bd12afaadcc7688",
+ "pins": {
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "exe_sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+ },
+ "started": "2026-10-28T23:15:00",
+ "finished": "2026-10-28T23:17:12",
+ "actions": 9,
+ "errors": 0
+}
