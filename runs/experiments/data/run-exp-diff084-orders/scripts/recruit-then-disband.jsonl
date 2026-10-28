@@ -1,0 +1,4 @@
+{"format": "diff-actions/1", "name": "recruit-then-disband", "note": "recruit 1,200 hi at Rome, then disband it (slot 4)"}
+{"op": "recruit", "city": 85, "type": "hi", "troops": 1200}
+{"op": "disband_slot", "slot": 4}
+{"op": "end_turn"}

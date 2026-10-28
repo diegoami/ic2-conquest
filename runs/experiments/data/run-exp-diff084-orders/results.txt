@@ -1,0 +1,55 @@
+# run-exp-diff084-orders: single-order sweep
+
+Verdicts: harness 1, refusal-difference 2, differs-immediate 6, same 40
+
+| case | orders | original | remake | verdict | first difference |
+|---|---|---|---|---|---|
+| tax-0 | tax 0 | met tax 10 -> 0 | met tax 10 -> 0 | **same** |  |
+| tax-25 | tax 25 | met tax 10 -> 25 | met tax 10 -> 25 | **same** |  |
+| tax-40 | tax 40 (maximum) | met tax 10 -> 40 | met tax 10 -> 40 | **same** |  |
+| move-plain-1 | army 0 one plain tile west | unchecked  | unchecked  | **same** |  |
+| move-forest | army 0 into forest (101,38) | unchecked  | unchecked  | **same** |  |
+| move-mountain | army 0 into mountains (101,37) | unchecked  | unchecked  | **same** |  |
+| move-river | army 0 onto a river (101,36) | unchecked  | unchecked  | **same** |  |
+| move-far | army 0 toward (90,50), beyond its moves | no-change the state did not change | unchecked  | **refusal-difference** | a001: armies.0.moves: 8 vs 4; armies.0.x: 100 vs 98; armies.0.y: 37 vs 41; 2 map cells |
+| move-sea | army 1 onto sea (122,54) | no-change the state did not change | unchecked  | **refusal-difference** | a001: armies.1.moves: 8 vs 7; armies.1.x: 120 vs 121; armies.1.y: 53 vs 54; 2 map cells |
+| move-own-city | army 0 onto Arretium (99,36) | no-change the state did not change | no-change the state did not change | **same** |  |
+| move-twice | army 1 two moves in a row | unchecked ; unchecked  | unchecked ; unchecked  | **same** |  |
+| recruit-li-min | recruit 3000 li at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 3000, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 3000, ' | **same** |  |
+| recruit-hi-min | recruit 1200 hi at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 1200, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 1200, ' | **same** |  |
+| recruit-ar-min | recruit 700 ar at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'ar', 'troops': 700, 'c | met new slots [{'slot': 4, 'state': 0, 'type': 'ar', 'troops': 700, 'c | **same** |  |
+| recruit-lc-min | recruit 1400 lc at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'lc', 'troops': 1400, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'lc', 'troops': 1400, ' | **same** |  |
+| recruit-hc-min | recruit 500 hc at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'hc', 'troops': 500, 'c | met new slots [{'slot': 4, 'state': 0, 'type': 'hc', 'troops': 500, 'c | **same** |  |
+| recruit-li-max | recruit 15000 li at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 15000,  | met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 15000,  | **same** |  |
+| recruit-hi-max | recruit 6000 hi at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 6000, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 6000, ' | **same** |  |
+| recruit-ar-max | recruit 3500 ar at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'ar', 'troops': 3500, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'ar', 'troops': 3500, ' | **same** |  |
+| recruit-lc-max | recruit 7000 lc at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'lc', 'troops': 7000, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'lc', 'troops': 7000, ' | **same** |  |
+| recruit-hc-max | recruit 2500 hc at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'hc', 'troops': 2500, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'hc', 'troops': 2500, ' | **same** |  |
+| recruit-luceria | recruit 2,000 hi at Luceria | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 2000, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 2000, ' | **same** |  |
+| recruit-two | two recruits at Rome | met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 4000, '; met new slots [{'slot': 5, 'state': 0, 'type': 'lc', 'troops': 2000, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 4000, '; met new slots [{'slot': 5, 'state': 0, 'type': 'lc', 'troops': 2000, ' | **same** |  |
+| rel-war-carthage | declare war on Carthage | met relation 0 -> 3 | met relation 0 -> 3 | **differs-immediate** | a001: nations.Numidia.relations: {"Rome": -18, "Carthage": 2, "Seleucid": vs {"Rome": 3, "Carthage": 2, "Seleucid": 0; nations.Rome.relations: {"Carthage": 3, "Seleucid": 0, "Ptolemai vs {"Carthage": 3, "Seleucid": 0, "Ptolemai |
+| rel-war-illyria | declare war on Illyria (trade partner) | met relation 1 -> 3 | met relation 1 -> 3 | **same** |  |
+| rel-peace-gaul | propose peace to Gaul (at war) | no-change the state did not change | no-change the state did not change | **same** |  |
+| rel-trade-carthage | propose trade to Carthage | no-change the state did not change | no-change the state did not change | **same** |  |
+| rel-trade-bithynia | propose trade to Bithynia | met relation 0 -> 1 | met relation 0 -> 1 | **same** |  |
+| rel-ally-carthage | propose alliance to Carthage | no-change the state did not change | no-change the state did not change | **same** |  |
+| rel-ally-illyria | propose alliance to Illyria (trade partner) | no-change the state did not change | no-change the state did not change | **same** |  |
+| rel-war-macedonia | declare war on Macedonia (peace cooldown -8) | met relation -8 -> 3 | met relation -8 -> 3 | **same** |  |
+| fortify-pisae-10 | fortify Pisae 10 points | met pending points 0 -> 10 | met pending points 0 -> 10 | **same** |  |
+| fortify-rome-5 | fortify Rome 5 points | met pending points 0 -> 5 | met pending points 0 -> 5 | **same** |  |
+| fortify-arretium-25 | fortify Arretium 25 points | met pending points 0 -> 25 | met pending points 0 -> 25 | **same** |  |
+| fortify-caere-50 | fortify Caere 50 points (to 100) | met pending points 0 -> 50 | met pending points 0 -> 50 | **same** |  |
+| buy-arretium-20 | army 0 buys 20 tons at Arretium | met army supplies 170 -> 190 | met army supplies 170 -> 190 | **same** |  |
+| buy-heraclea-50 | army 1 buys 50 tons at Heraclea | not-met army supplies 176 -> 221 | not-met army supplies 176 -> 221 | **harness** |  |
+| disband-army-0 | disband army 0 (next to Arretium) | unchecked  | unchecked  | **differs-immediate** | a001: armies.0.morale: 70 vs 68; armies.0.owner: -1 vs 0; armies.0.supplies: 170 vs 176; armies.0.units: [[0, "li", 4800, 6, 0], [1, "hi", 5000,  vs [[0, "li", 4100, 6, 0], [1, "hi", 5500, ; armies.0.x: 100 vs 120; armies.0.y: 37 vs 53 (+94) |
+| split-army-1unit | split unit row 0 off army 0 | met armies 14 -> 15 | met armies 14 -> 15 | **same** |  |
+| split-army-2units | split unit rows 0 and 1 off army 0 | met armies 14 -> 15 | met armies 14 -> 15 | **same** |  |
+| split-then-join | split row 0 off army 0, then Join army 0 with it | met armies 14 -> 15; unchecked  | met armies 14 -> 15; unchecked  | **differs-immediate** | a002: armies.14.cell: 4 vs "<absent>"; armies.14.money: 0 vs "<absent>"; armies.14.morale: 59 vs "<absent>"; armies.14.moves: 0 vs "<absent>"; armies.14.owner: -1 vs "<absent>"; armies.14.supplies: 0 vs "<absent>" (+4) |
+| fleet-10 | build a fleet of 10 ships | met new fleets [(10, 82)] | met new fleets [(10, 71)] | **differs-immediate** | a001: fleets.2.build_city: 82 vs 71 |
+| fleet-25 | build a fleet of 25 ships | met new fleets [(25, 82)] | met new fleets [(25, 71)] | **differs-immediate** | a001: fleets.0.build_city: 82 vs 71 |
+| fleet-two | two Build fleet orders of 10 | met new fleets [(10, 82)]; met new fleets [(10, 89)] | met new fleets [(10, 71)]; met new fleets [(10, 80)] | **differs-immediate** | a001: fleets.2.build_city: 82 vs 71 |
+| disband-slot-0 | disband queued recruit slot 0 (li 5,500) | met slots 4 -> 3 | met slots 4 -> 3 | **same** |  |
+| disband-slot-3 | disband queued recruit slot 3 (hc 1,000) | met slots 4 -> 3 | met slots 4 -> 3 | **same** |  |
+| recruit-then-disband | recruit 1,200 hi at Rome, then disband it (slot 4) | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 1200, '; met slots 5 -> 4 | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 1200, '; met slots 5 -> 4 | **same** |  |
+| hire-merc-25 | army 1 hires mercenary offer 25 (li 3,868) | unchecked  | unchecked  | **same** |  |
+| tax-then-recruit | tax 30, then recruit 3,000 li at Luceria | met tax 10 -> 30; met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 3000, ' | met tax 10 -> 30; met new slots [{'slot': 4, 'state': 0, 'type': 'li', 'troops': 3000, ' | **same** |  |

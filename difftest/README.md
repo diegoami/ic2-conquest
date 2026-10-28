@@ -21,7 +21,7 @@ git clone --branch v0.8.4 https://github.com/diegoami/imperial_conquest_2.git ~/
 export DOTNET_ROOT=~/.dotnet PATH=~/.dotnet:$PATH
 B=artifacts/diff084-build
 dotnet build ~/projects/ic2-remake-v084/src/IC2.Cli/IC2.Cli.csproj -c Release --artifacts-path $B/build
-dotnet build difftest/remake_adapter -c Release -p:RemakeBuild=$B/build/bin/IC2.Cli/release --artifacts-path $B/adapter
+dotnet build difftest/remake_adapter -c Release -p:RemakeBuild=$PWD/$B/build/bin/IC2.Cli/release --artifacts-path $B/adapter
 ```
 
 `IC2_REMAKE` and `IC2_DIFF_BUILD` override the two paths. The build is kept outside the measurement folder so its
@@ -50,3 +50,13 @@ run (`--tag`).
 - Known asymmetries: the original asks about pending offers and post-battle peace when a save opens or a turn ends;
   the driver dismisses information boxes and answers a Confirm **No**. A battle against the human during the AI turns is fought by the original's Computer
   general, and resolved instantly in the remake (`HumanBattles = Instant`).
+
+## Test history
+
+Every comparison is recorded in [`HISTORY.md`](HISTORY.md), generated from the append-only [`history.jsonl`](history.jsonl):
+
+```bash
+python3 -m difftest.history record <report.json> --data run-exp-<name> --issue <n> --verdict "<one line: what it shows>"
+```
+
+A wrong or superseded verdict is never edited: record a new entry with `--corrects <id>`.

@@ -1,0 +1,11 @@
+# run-exp-diff084-orders-b2: single-order sweep
+
+Verdicts: differs-immediate 2, same 3
+
+| case | orders | original | remake | verdict | first difference |
+|---|---|---|---|---|---|
+| move-far-land | army 0 toward plain (110,42), 10 tiles away, outside the view (beyond its moves) | unchecked  | unchecked  | **same** |  |
+| rel-war-numidia | declare war on Numidia (ally Carthage, lower index) | met relation 0 -> 3 | met relation 0 -> 3 | **same** |  |
+| rel-war-dacia | declare war on Dacia (ally Thracia, higher index) | met relation 0 -> 3 | met relation 0 -> 3 | **differs-immediate** | a001: nations.Rome.relations: {"Carthage": 0, "Seleucid": 0, "Ptolemai vs {"Carthage": 0, "Seleucid": 0, "Ptolemai; nations.Thracia.relations: {"Rome": -18, "Carthage": 1, "Seleucid": vs {"Rome": 3, "Carthage": 1, "Seleucid": 0 |
+| rel-war-thracia | declare war on Thracia (ally Dacia, lower index) | met relation 0 -> 3 | met relation 0 -> 3 | **same** |  |
+| rel-war-bithynia | declare war on Bithynia (ally Galatia, higher index) | met relation 0 -> 3 | met relation 0 -> 3 | **differs-immediate** | a001: nations.Galatia.relations: {"Rome": -18, "Carthage": 0, "Seleucid": vs {"Rome": 3, "Carthage": 0, "Seleucid": 3; nations.Rome.relations: {"Carthage": 0, "Seleucid": 0, "Ptolemai vs {"Carthage": 0, "Seleucid": 0, "Ptolemai |

@@ -19,7 +19,21 @@ OPS = {
     "move": {"army": int, "x": int, "y": int},
     "recruit": {"city": int, "type": str, "troops": int},
     "end_turn": {},
+    "relation": {"nation": int, "kind": str},          # kind: peace, trade, ally, war (International Relations radio)
+    "fortify": {"city": int, "points": int},
+    "disband_army": {"army": int},
+    "split_army": {"army": int, "units": list},        # unit rows of the army (its live units in slot order)
+    "join_armies": {"army": int, "partner": int},      # original: Join on `army` (the game picks the adjacent partner)
+    "buy_supply": {"army": int, "city": int, "tons": int},
+    "build_fleet": {"ships": int},
+    "disband_slot": {"slot": int},                     # index among the nation's occupied recruitment slots
+    "hire_mercenary": {"army": int, "pool": int},      # pool slot of the adjacent offer
+    "move_fleet": {"fleet": int, "x": int, "y": int},
+    "attack_fleet": {"fleet": int, "target": int},     # at war only (no peace prompt)
+    "besiege": {"army": int, "city": int},             # adjacent enemy city, at war
+    "attack_army": {"army": int, "target": int},       # adjacent enemy army: a field battle (original: Computer general)
 }
+RELATION_KINDS = ("peace", "trade", "ally", "war")
 UNIT_TYPES = {"li": "light_infantry", "hi": "heavy_infantry", "ar": "archers", "lc": "light_cavalry", "hc": "heavy_cavalry"}
 
 
@@ -39,6 +53,8 @@ def validate(a, line=0):
         raise ActionError(f"line {line}: {op} has unknown fields {sorted(extra)}")
     if op == "set_tax" and not 0 <= a["percent"] <= 40:
         raise ActionError(f"line {line}: tax percent out of 0..40")
+    if op == "relation" and a["kind"] not in RELATION_KINDS:
+        raise ActionError(f"line {line}: relation kind {a['kind']!r} (known: {', '.join(RELATION_KINDS)})")
     if op == "recruit":
         if a["type"] not in UNIT_TYPES:
             raise ActionError(f"line {line}: unit type {a['type']!r} (known: {', '.join(UNIT_TYPES)})")
