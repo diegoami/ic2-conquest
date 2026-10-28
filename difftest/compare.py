@@ -17,9 +17,10 @@ from state.sav import NATIONS, load  # noqa: E402
 MAPPING = {
     "map": "compare: terrain and marker code of every one of the 44,800 cells",
     "cities.*": "compare: name, x, y, owner, allegiance, loyalty, supplies, fort, fort_pending, pop, max_pop, tribute",
-    "armies.*": "compare: by record index; x, y, owner, moves, cell, supplies, money, morale, units (slot, type, troops, quality, merc label); unit names ignored",
+    "armies.*": "compare: by position among LIVE records (owner >= 0 and troops > 0), in record order: the original keeps a removed army's record (owner -1) where the remake's export drops it, so raw indexes shift after a removal; x, y, owner, moves, cell, supplies, money, morale, units (slot, type, troops, quality, merc label); unit names ignored",
     "armies.*.units.*.name": "ignore: generated names; the remake's exporter may write export-only aliases",
-    "fleets.*": "compare: by record index; every parsed field",
+    "fleets.*": "compare: by position among live records (owner >= 0 and ships > 0), in record order (same reason as armies); every parsed field",
+    "armies/fleets removed": "the count of live records is compared ('armies.count', 'fleets.count'); dead records are not",
     "nations.*": "compare: relations, neighbours, city_list, recruit_slots, wealth, treasury, unity, mobilization, capital, cities_count, tax, tax_base, conquered_by, human, alive",
     "nations.*.view": "ignore: the map view origin is interface state",
     "nations.*.name/leader": "compare",
@@ -35,6 +36,14 @@ NATION_KEYS = ["name", "leader", "relations", "neighbours", "city_list", "recrui
 TAIL_KEYS = ["turn_order", "current_nation", "seat_index", "week", "year_bc", "season", "pending_offer", "battle_flag"]
 
 
+def live_armies(s):
+    return [a for a in s["armies"] if a["owner"] >= 0 and a["troops"] > 0]
+
+
+def live_fleets(s):
+    return [f for f in s["fleets"] if f["owner"] >= 0 and f["ships"] > 0]
+
+
 def project(s):
     """The compared view of one parsed save: {path: value} with stable, readable paths."""
     out = {}
@@ -44,16 +53,18 @@ def project(s):
         for k, v in c.items():
             if k != "id":
                 out[f"cities.{c['id']}.{k}"] = v
-    out["armies.count"] = len(s["armies"])
-    for a in s["armies"]:
+    armies = live_armies(s)
+    out["armies.count"] = len(armies)
+    for i, a in enumerate(armies):
         for k in ("x", "y", "owner", "moves", "cell", "supplies", "money", "morale"):
-            out[f"armies.{a['id']}.{k}"] = a[k]
-        out[f"armies.{a['id']}.units"] = [(u["slot"], u["type"], u["troops"], u["quality"], u["merc"]) for u in a["units"]]
-    out["fleets.count"] = len(s["fleets"])
-    for f in s["fleets"]:
+            out[f"armies.{i}.{k}"] = a[k]
+        out[f"armies.{i}.units"] = [(u["slot"], u["type"], u["troops"], u["quality"], u["merc"]) for u in a["units"]]
+    fleets = live_fleets(s)
+    out["fleets.count"] = len(fleets)
+    for i, f in enumerate(fleets):
         for k, v in f.items():
             if k != "id":
-                out[f"fleets.{f['id']}.{k}"] = v
+                out[f"fleets.{i}.{k}"] = v
     for n in s["nations"]:
         for k in NATION_KEYS:
             out[f"nations.{NATIONS[n['id']]}.{k}"] = n[k]
@@ -119,9 +130,10 @@ def scoped(d, a, b, nation):
     armies and fleets it owns in either save. Used after End turn, where other nations' AI and random draws act."""
     name = NATIONS[nation]
     keep = set()
-    for kind in ("cities", "armies", "fleets"):
-        for s in (a, b):
-            keep |= {f"{kind}.{r['id']}" for r in s[kind] if r["owner"] == nation}
+    for s in (a, b):
+        keep |= {f"cities.{r['id']}" for r in s["cities"] if r["owner"] == nation}
+        keep |= {f"armies.{i}" for i, r in enumerate(live_armies(s)) if r["owner"] == nation}
+        keep |= {f"fleets.{i}" for i, r in enumerate(live_fleets(s)) if r["owner"] == nation}
     out = []
     for f in d["fields"]:
         p = f["path"].split(".")
