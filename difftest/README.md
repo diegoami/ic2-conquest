@@ -48,5 +48,5 @@ run (`--tag`).
   A difference after `end_turn` may be an AI decision or a random draw, not a rule difference in our orders. Each
   report names the first differing checkpoint; whatever follows it is a consequence until shown otherwise.
 - Known asymmetries: the original asks about pending offers and post-battle peace when a save opens or a turn ends;
-  the driver answers **No**. A battle against the human during the AI turns is fought by the original's Computer
+  the driver dismisses information boxes and answers a Confirm **No**. A battle against the human during the AI turns is fought by the original's Computer
   general, and resolved instantly in the remake (`HumanBattles = Instant`).
