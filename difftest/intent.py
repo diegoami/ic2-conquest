@@ -30,8 +30,12 @@ def check(a, before, after):
         got = ca["fort_pending"] - cb["fort_pending"]
         return ("met" if got == a["points"] else "not-met"), f"pending points {cb['fort_pending']} -> {ca['fort_pending']}"
     if op == "buy_supply":
-        sb, sa = before["armies"][a["army"]]["supplies"], after["armies"][a["army"]]["supplies"]
-        return ("met" if sa - sb == a["tons"] else "not-met"), f"army supplies {sb} -> {sa}"
+        # Capped by the army's need (troops / 100 + 1, driver.supply) and the city's stock: both games gave
+        # 45 of 50 asked at Heraclea (#230 buy-heraclea-50).
+        army = before["armies"][a["army"]]
+        sb, sa = army["supplies"], after["armies"][a["army"]]["supplies"]
+        want = max(0, min(a["tons"], army["troops"] // 100 + 1 - sb, before["cities"][a["city"]]["supplies"]))
+        return ("met" if sa - sb == want else "not-met"), f"army supplies {sb} -> {sa} (expected +{want})"
     if op == "build_fleet":
         new = after["fleets"][len(before["fleets"]):]
         ok = len(new) == 1 and new[0]["building"] and new[0]["ships"] == a["ships"]
