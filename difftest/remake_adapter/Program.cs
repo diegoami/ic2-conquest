@@ -18,7 +18,11 @@ using IC2.Engine.Serialization;
 // CLI would, and at each "#checkpoint <name>" line writes <name>.native (the native JSON save) and <name>.SAV (exported
 // with the template's interface settings). One JSON line per event on stdout. Never overwrites a file.
 string root = args[0], start = args[1], template = args[2], commands = args[3], outDir = args[4];
-var mode = args.Length > 5 && args[5] == "tactical" ? HumanBattleMode.Tactical : HumanBattleMode.Instant;
+var options = args.Skip(5).ToArray();
+var mode = options.Contains("tactical") ? HumanBattleMode.Tactical : HumanBattleMode.Instant;
+// seed=N replaces the state's RandomSeed (an imported save otherwise carries the scenario's fixed seed), so one
+// start can be played under many random histories (#233). Recorded in the start event.
+ulong? seedOverride = options.Where(o => o.StartsWith("seed=")).Select(o => (ulong?)ulong.Parse(o[5..])).FirstOrDefault();
 Directory.CreateDirectory(outDir);
 var repo = GameDataRepository.Load(Path.Combine(root, "data"));
 var resolved = repo.Resolve("classical-mediterranean");
@@ -32,15 +36,20 @@ string Fresh(string path) => File.Exists(path) ? throw new IOException("Refusing
 GameSession session;
 if (!start.EndsWith(".sav", StringComparison.OrdinalIgnoreCase))
 {
-    session = new GameSession(world, rules, scenario, SaveManager.LoadFile(start, world, rules)) { HumanBattles = mode };
-    Emit(new { kind = "start", from = "native", path = start, sha256 = Sha(start) });
+    var loaded = SaveManager.LoadFile(start, world, rules);
+    if (seedOverride is { } s1) loaded = loaded with { State = loaded.State with { RandomSeed = s1 } };
+    session = new GameSession(world, rules, scenario, loaded) { HumanBattles = mode };
+    Emit(new { kind = "start", from = "native", path = start, sha256 = Sha(start), seed = seedOverride });
 }
 else
 {
     var imported = OriginalSaveImporter.Import(File.ReadAllBytes(start), Path.GetFileName(start), world, rules, scenario,
         "diff-start", "diff-start");
-    session = new GameSession(world, rules, scenario, imported.Save) { HumanBattles = mode };
-    Emit(new { kind = "start", from = "original-sav", path = start, sha256 = Sha(start), report = imported.Report });
+    var save = imported.Save;
+    if (seedOverride is { } s2) save = save with { State = save.State with { RandomSeed = s2 } };
+    session = new GameSession(world, rules, scenario, save) { HumanBattles = mode };
+    Emit(new { kind = "start", from = "original-sav", path = start, sha256 = Sha(start), report = imported.Report,
+        seed = seedOverride, randomSeed = session.State.RandomSeed });
 }
 
 int step = 0;

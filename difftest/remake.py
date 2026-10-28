@@ -47,6 +47,14 @@ def command(a):
         return f"disband-slot {a['slot']}"
     if op == "hire_mercenary":
         return f"hire-mercenary {{army:{a['army']}}} {a['pool']}"
+    if op == "move_fleet":
+        return f"move-fleet {{fleet:{a['fleet']}}} {a['x']} {a['y']}"
+    if op == "attack_fleet":
+        return f"attack-fleet {{fleet:{a['fleet']}}} {{fleet:{a['target']}}}"
+    if op == "besiege":
+        return f"besiege-city {{army:{a['army']}}} {{city:{a['city']}}}"
+    if op == "attack_army":
+        return f"attack-army {{army:{a['army']}}} {{army:{a['target']}}}"
     raise ValueError(op)
 
 
@@ -58,14 +66,15 @@ def commands(actions):
     return "\n".join(out) + "\n"
 
 
-def run(actions, start, out, log=print):
+def run(actions, start, out, log=print, seed=None, options=()):
     """Play the actions from `start` (an original SAV) in the remake; checkpoints and receipt.jsonl go to `out`."""
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     (out / "commands.txt").write_text(commands(actions))
     env = dict(os.environ, DOTNET_ROOT=str(DOTNET.parent))
     with open(out / "receipt.jsonl", "w") as receipt:
-        p = subprocess.run([str(DOTNET), str(ADAPTER), str(REMAKE), str(start), str(start), str(out / "commands.txt"), str(out)],
+        p = subprocess.run([str(DOTNET), str(ADAPTER), str(REMAKE), str(start), str(start), str(out / "commands.txt"), str(out)]
+                           + ([f"seed={seed}"] if seed is not None else []) + list(options),
                            stdout=receipt, stderr=subprocess.PIPE, text=True, env=env)
     (out / "stderr.txt").write_text(p.stderr)
     events = [json.loads(l) for l in (out / "receipt.jsonl").read_text().splitlines() if l.strip()]

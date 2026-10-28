@@ -128,6 +128,17 @@ def perform(g, a, state):
             raise DriverError(f"mercenary pool slot {a['pool']} is not adjacent to army {a['army']} (offers {offers})")
         n, texts = g.hire_mercs(a["army"], rows=(offers.index(a["pool"]),))
         return [f"units hired {n}"] + texts
+    if op == "move_fleet":
+        pos, texts = g.move_fleet(a["fleet"], a["x"], a["y"])
+        return texts
+    if op == "attack_fleet":
+        return g.attack_fleet(a["fleet"], a["target"])
+    if op == "besiege":
+        c = state["cities"][a["city"]]
+        return g.attack(a["army"], c["x"], c["y"])
+    if op == "attack_army":
+        t = state["armies"][a["target"]]
+        return g.attack(a["army"], t["x"], t["y"])
     raise ValueError(op)
 
 

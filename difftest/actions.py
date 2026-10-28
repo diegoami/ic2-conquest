@@ -28,6 +28,10 @@ OPS = {
     "build_fleet": {"ships": int},
     "disband_slot": {"slot": int},                     # index among the nation's occupied recruitment slots
     "hire_mercenary": {"army": int, "pool": int},      # pool slot of the adjacent offer
+    "move_fleet": {"fleet": int, "x": int, "y": int},
+    "attack_fleet": {"fleet": int, "target": int},     # at war only (no peace prompt)
+    "besiege": {"army": int, "city": int},             # adjacent enemy city, at war
+    "attack_army": {"army": int, "target": int},       # adjacent enemy army: a field battle (original: Computer general)
 }
 RELATION_KINDS = ("peace", "trade", "ally", "war")
 UNIT_TYPES = {"li": "light_infantry", "hi": "heavy_infantry", "ar": "archers", "lc": "light_cavalry", "hc": "heavy_cavalry"}
