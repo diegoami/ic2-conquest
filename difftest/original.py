@@ -6,6 +6,7 @@ run folder as `aNNN.SAV`. Autosaves already in the game folder are moved aside f
 A progress file records the last finished action, so a stopped run shows where it stopped.
 """
 import json
+import re
 import shutil
 import subprocess
 import tempfile
@@ -31,21 +32,32 @@ def recruit_row(state, nation, city):
 TYPES = {"li": "Light infantry", "hi": "Heavy infantry", "ar": "Archers", "lc": "Light cavalry", "hc": "Heavy cavalry"}
 
 
+def _ocr_last_number(shot, x, y, scale, d):
+    """The last word of a 100 x 21 field at (x, y) of a screenshot, read as digits: tesseract first finds the words
+    of the whole field, then only the last word's box is read with a digits whitelist. A field's label varies in
+    length ("Hvy inf 1,200", "Archers 700"), so a fixed crop of the digits misread it (31400 for 700, 2026-10-29)."""
+    img, num = Path(d) / f"f{scale}.png", Path(d) / f"n{scale}.png"
+    subprocess.run(["convert", str(shot), "-crop", f"100x21+{x}+{y}", "+repage", "-colorspace", "Gray", "-scale", f"{scale}%",
+                    "-threshold", "60%", "-bordercolor", "white", "-border", "20", str(img)], check=True)
+    tsv = subprocess.run(["tesseract", str(img), "-", "--psm", "7", "tsv"], capture_output=True, text=True).stdout
+    words = [l.split("\t") for l in tsv.splitlines()[1:] if l.count("\t") >= 11 and l.split("\t")[11].strip()]
+    if not words:
+        return None
+    l, t, w, h = map(int, words[-1][6:10])
+    subprocess.run(["convert", str(img), "-crop", f"{w + 16}x{h + 16}+{l - 8}+{t - 8}", "+repage", "-bordercolor", "white",
+                    "-border", "20", str(num)], check=True)
+    text = subprocess.run(["tesseract", str(num), "-", "--psm", "7", "-c", "tessedit_char_whitelist=0123456789,"],
+                          capture_output=True, text=True).stdout.strip().replace(",", "")
+    return int(text) if text.isdigit() else None
+
+
 def read_amount(g, spin100):
-    """The troop amount in the Recruit dialog's "New unit" field, by OCR of its digits (the field is not a
-    control). Its digits sit 39 px right of and 98 px below the 100s arrows (measured 2026-10-28, run-exp-diff084-tooling).
-    Read at three scales; the majority wins, and no majority raises."""
+    """The troop amount in the Recruit dialog's "New unit" field (not a control): the field sits 9 px left of and
+    98 px below the 100s arrows (measured 2026-10-28). Read at three scales; the majority wins, and no majority raises."""
     with tempfile.TemporaryDirectory() as d:
         shot = Path(d) / "root.png"
         g.shot(str(shot))
-        reads = []
-        for scale in (300, 400, 500):
-            img = Path(d) / f"{scale}.png"
-            subprocess.run(["convert", str(shot), "-crop", f"50x21+{spin100['x'] + 39}+{spin100['y'] + 98}", "-colorspace", "Gray",
-                            "-scale", f"{scale}%", "-threshold", "60%", "-bordercolor", "white", "-border", "20", str(img)], check=True)
-            text = subprocess.run(["tesseract", str(img), "-", "--psm", "7", "-c", "tessedit_char_whitelist=0123456789,"],
-                                  capture_output=True, text=True).stdout.strip().replace(",", "")
-            reads.append(int(text) if text.isdigit() else None)
+        reads = [_ocr_last_number(shot, spin100["x"] - 9, spin100["y"] + 98, scale, d) for scale in (300, 400, 500)]
     value, n = Counter(reads).most_common(1)[0]
     if value is None or n < 2:
         raise DriverError(f"Recruit amount unreadable: {reads}")

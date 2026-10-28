@@ -51,7 +51,10 @@ def verdict_of(case, ra, rb, n_actions):
     nation = load(ra / "a000.SAV")["current_nation"]
     end = scoped(compare(a_end, b_end), a_end, b_end, nation)
     details = {"intents": intents, "immediate": rows, "after_end_turn_own": end, "nation": NATIONS[nation]}
-    if any(i["original"][0] == "not-met" for i in intents):
+    errors = [json.loads(l).get("error") for l in (ra / "receipt.jsonl").read_text().splitlines()
+              if l.strip() and json.loads(l).get("kind") == "action"]
+    details["original_errors"] = [e for e in errors if e]
+    if details["original_errors"] or any(i["original"][0] == "not-met" for i in intents):
         return "harness", details
     if any((i["original"][0] == "no-change") != (i["remake"][0] == "no-change") for i in intents):
         return "refusal-difference", details
@@ -95,18 +98,43 @@ def render(out, cases):
     return counts
 
 
+def rejudge(cases_module, name):
+    """Recompute every case's verdict from its saved run folders with the current rules (no game is played).
+    Writes results-rejudged-<stamp>.jsonl beside results.jsonl; the original results are kept."""
+    cases = {c["id"]: c for c in importlib.import_module(cases_module).CASES}
+    out = ROOT / "artifacts" / name
+    res = [json.loads(l) for l in (out / "results.jsonl").read_text().splitlines() if l.strip()]
+    target = out / f"results-rejudged-{time.strftime('%Y%m%d-%H%M%S')}.jsonl"
+    with open(target, "w") as f:
+        for r in res:
+            if r["verdict"] == "error":
+                f.write(json.dumps(r) + "\n")
+                continue
+            actions = [act.validate(x) for x in cases[r["id"]]["actions"]] + [{"op": "end_turn"}]
+            v, details = verdict_of({"actions": actions}, out / r["original_run"], out / r["remake_run"], len(actions) - 1)
+            r2 = dict(r, verdict=v, summary=short(details), intents=details["intents"], details=details,
+                      rejudged=time.strftime("%Y-%m-%dT%H:%M:%S"), previous_verdict=r["verdict"])
+            f.write(json.dumps(r2, default=str) + "\n")
+    return target
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "rejudge":
+        print(rejudge(sys.argv[2], sys.argv[3]))
+        return
     ap = argparse.ArgumentParser()
     ap.add_argument("cases")
     ap.add_argument("name")
     ap.add_argument("--only", nargs="*")
     ap.add_argument("--seed", type=int, default=12345)
+    ap.add_argument("--rerun", nargs="*", default=[], help="play these cases again in new folders (a new result line; the old one is kept)")
     a = ap.parse_args()
     cases = importlib.import_module(a.cases).CASES
     out = ROOT / "artifacts" / a.name
     (out / "scripts").mkdir(parents=True, exist_ok=True)
     resfile = out / "results.jsonl"
     done = {json.loads(l)["id"] for l in resfile.read_text().splitlines() if l.strip()} if resfile.exists() else set()
+    done -= set(a.rerun)
     from difftest import original, remake
     for c in cases:
         if c["id"] in done or (a.only and c["id"] not in a.only):
