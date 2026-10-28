@@ -6,12 +6,8 @@ run folder as `aNNN.SAV`. Autosaves already in the game folder are moved aside f
 A progress file records the last finished action, so a stopped run shows where it stopped.
 """
 import json
-import re
 import shutil
-import subprocess
-import tempfile
 import time
-from collections import Counter
 from pathlib import Path
 
 from difftest.actions import checkpoint_names
@@ -32,71 +28,34 @@ def recruit_row(state, nation, city):
 TYPES = {"li": "Light infantry", "hi": "Heavy infantry", "ar": "Archers", "lc": "Light cavalry", "hc": "Heavy cavalry"}
 
 
-def _ocr_last_number(shot, x, y, scale, d):
-    """The last word of a 100 x 21 field at (x, y) of a screenshot, read as digits: tesseract first finds the words
-    of the whole field, then only the last word's box is read with a digits whitelist. A field's label varies in
-    length ("Hvy inf 1,200", "Archers 700"), so a fixed crop of the digits misread it (31400 for 700, 2026-10-29)."""
-    img, num = Path(d) / f"f{scale}.png", Path(d) / f"n{scale}.png"
-    subprocess.run(["convert", str(shot), "-crop", f"100x21+{x}+{y}", "+repage", "-colorspace", "Gray", "-scale", f"{scale}%",
-                    "-threshold", "60%", "-bordercolor", "white", "-border", "20", str(img)], check=True)
-    tsv = subprocess.run(["tesseract", str(img), "-", "--psm", "7", "tsv"], capture_output=True, text=True).stdout
-    words = [l.split("\t") for l in tsv.splitlines()[1:] if l.count("\t") >= 11 and l.split("\t")[11].strip()]
-    if not words:
-        return None
-    l, t, w, h = map(int, words[-1][6:10])
-    subprocess.run(["convert", str(img), "-crop", f"{w + 16}x{h + 16}+{l - 8}+{t - 8}", "+repage", "-bordercolor", "white",
-                    "-border", "20", str(num)], check=True)
-    text = subprocess.run(["tesseract", str(num), "-", "--psm", "7", "-c", "tessedit_char_whitelist=0123456789,"],
-                          capture_output=True, text=True).stdout.strip().replace(",", "")
-    return int(text) if text.isdigit() else None
-
-
-def read_amount(g, spin100):
-    """The troop amount in the Recruit dialog's "New unit" field (not a control): the field sits 9 px left of and
-    98 px below the 100s arrows (measured 2026-10-28). Read at three scales; the majority wins, and no majority raises."""
-    with tempfile.TemporaryDirectory() as d:
-        shot = Path(d) / "root.png"
-        g.shot(str(shot))
-        reads = [_ocr_last_number(shot, spin100["x"] - 9, spin100["y"] + 98, scale, d) for scale in (300, 400, 500)]
-    value, n = Counter(reads).most_common(1)[0]
-    if value is None or n < 2:
-        raise DriverError(f"Recruit amount unreadable: {reads}")
-    return value
+RECRUIT_MIN = {"li": 3000, "hi": 1200, "ar": 700, "lc": 1400, "hc": 500}       # battalion / 5
+RECRUIT_MAX = {"li": 15000, "hi": 6000, "ar": 3500, "lc": 7000, "hc": 2500}    # battalion (DAT)
 
 
 def recruit_exact(g, row, unit_type, troops):
-    """Recruit exactly `troops` of `unit_type` at the Recruit list's `row`. The dialog starts each type at a
-    default amount (1,200 at Rome, 270 BC) and the arrows step it by 100 and 1,000, so the amount is read, stepped
-    to the target and read again before "Recruit unit" (driver.recruit only adds clicks to the default)."""
+    """Recruit exactly `troops` of `unit_type` at the Recruit list's `row`, by arithmetic, not by reading the field:
+    choosing a type sets the amount to battalion / 5 and the arrows step it by 100 and 1,000, clamped to
+    [battalion / 5, battalion] (research rules-specification.md, "Amounts" [confirmed]; seen 2026-10-29 in
+    probe-recruit-ocr-v1: archers 700, light cavalry 1,400, heavy cavalry 500). From the minimum, a target inside the
+    limits is reached without clamping. The intent check on the save confirms the amount. (OCR of the field was
+    tried first and misread 700 as 0 and 2,500 as 2,000.)"""
+    lo, hi = RECRUIT_MIN[unit_type], RECRUIT_MAX[unit_type]
+    if not lo <= troops <= hi or (troops - lo) % 100:
+        raise DriverError(f"{troops} {unit_type} cannot be set in the Recruit dialog ({lo}..{hi} in steps of 100 from {lo})")
     g.open_recruit()
     cs = g.controls("Army recruits")
-    g.click_list_row(g.control(cs, cls="TListBox", index=0), row, pause=0.6)
-    g.click_control(g.control(cs, text=TYPES[unit_type]), pause=0.6)
-    spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])      # 100s, 1000s
-    texts = []
     try:
-        for attempt in range(4):
-            have = read_amount(g, spins[0])
-            if have == troops:
-                break
-            if attempt == 3:
-                continue
-            diff = troops - have
-            thousands, hundreds = abs(diff) // 1000, abs(diff) % 1000 // 100
-            fy = 0.25 if diff > 0 else 0.75
-            for _ in range(thousands):
-                g.click_control(spins[1], fy=fy, pause=0.2)
-            for _ in range(hundreds):
-                g.click_control(spins[0], fy=fy, pause=0.2)
-            time.sleep(0.3)
-        else:
-            raise DriverError(f"Recruit amount stuck at {have}, wanted {troops}")
-    except DriverError:
+        g.click_list_row(g.control(cs, cls="TListBox", index=0), row, pause=0.6)
+        g.click_control(g.control(cs, text=TYPES[unit_type]), pause=0.6)
+        spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])      # 100s, 1000s
+        for _ in range((troops - lo) // 1000):
+            g.click_control(spins[1], fy=0.25, pause=0.2)
+        for _ in range((troops - lo) % 1000 // 100):
+            g.click_control(spins[0], fy=0.25, pause=0.2)
+        g.click_control(g.control(cs, text="Recruit unit"), pause=0.8)
+        texts = g.dismiss_popups()
+    finally:
         g.close_controls("Army recruits", cs)       # an open dialog would block the checkpoint's File > Save
-        raise
-    g.click_control(g.control(cs, text="Recruit unit"), pause=0.8)
-    texts += g.dismiss_popups()
-    g.close_controls("Army recruits", cs)
     return [f"amount {troops}"] + texts
 
 
