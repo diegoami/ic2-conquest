@@ -1,0 +1,23 @@
+{
+ "side": "original",
+ "script": "difftest/scripts/toy3-rome.jsonl",
+ "script_sha256": "61cc5527658b09784abcbf6ae210539bd12fe097f803803eb7b2e15cf4c5f73c",
+ "header": {
+  "format": "diff-actions/1",
+  "name": "toy3-rome",
+  "seat": "Rome",
+  "note": "Three turns from the Rome 270 BC start (BASE.SAV): tax, two moves inside Roman Italy, one recruit at Rome, at peace."
+ },
+ "start": "/home/diego/ic2-work/fixtures/BASE.SAV",
+ "start_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+ "seed": 12345,
+ "conquest_commit": "84fce8fd40f4ea98cf3d24ed8a6804b79aec255e",
+ "pins": {
+  "exe": "Imperial Conquest 2 fast rollingsave seed.exe",
+  "exe_sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"
+ },
+ "started": "2026-10-28T23:19:28",
+ "finished": "2026-10-28T23:21:17",
+ "actions": 7,
+ "errors": 1
+}

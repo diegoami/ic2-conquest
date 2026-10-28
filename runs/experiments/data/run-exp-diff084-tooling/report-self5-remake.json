@@ -1,0 +1,183 @@
+{
+ "a": {
+  "run": "artifacts/run-exp-diff084-tooling/self5-remake-1",
+  "side": "remake",
+  "seed": null
+ },
+ "b": {
+  "run": "artifacts/run-exp-diff084-tooling/self5-remake-2",
+  "side": "remake",
+  "seed": null
+ },
+ "script": "difftest/scripts/self5-rome.jsonl",
+ "checkpoints": 10,
+ "missing": 0,
+ "first_divergence": null,
+ "rows": [
+  {
+   "checkpoint": "a000",
+   "date_a": "Spring week 1, 270 BC",
+   "date_b": "Spring week 1, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   }
+  },
+  {
+   "checkpoint": "a001",
+   "date_a": "Spring week 1, 270 BC",
+   "date_b": "Spring week 1, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "set_tax",
+    "percent": 20
+   },
+   "changed_a": 1,
+   "changed_b": 1
+  },
+  {
+   "checkpoint": "a002",
+   "date_a": "Spring week 1, 270 BC",
+   "date_b": "Spring week 1, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "move",
+    "army": 0,
+    "x": 98,
+    "y": 38
+   },
+   "changed_a": 3,
+   "changed_b": 3
+  },
+  {
+   "checkpoint": "a003",
+   "date_a": "Spring week 1, 270 BC",
+   "date_b": "Spring week 1, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "recruit",
+    "city": 85,
+    "type": "hi",
+    "troops": 1000
+   },
+   "changed_a": 3,
+   "changed_b": 3
+  },
+  {
+   "checkpoint": "a004",
+   "date_a": "Spring week 3, 270 BC",
+   "date_b": "Spring week 3, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "end_turn"
+   },
+   "changed_a": 440,
+   "changed_b": 440
+  },
+  {
+   "checkpoint": "a005",
+   "date_a": "Spring week 3, 270 BC",
+   "date_b": "Spring week 3, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "move",
+    "army": 1,
+    "x": 122,
+    "y": 52
+   },
+   "changed_a": 3,
+   "changed_b": 3
+  },
+  {
+   "checkpoint": "a006",
+   "date_a": "Spring week 5, 270 BC",
+   "date_b": "Spring week 5, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "end_turn"
+   },
+   "changed_a": 411,
+   "changed_b": 411
+  },
+  {
+   "checkpoint": "a007",
+   "date_a": "Spring week 7, 270 BC",
+   "date_b": "Spring week 7, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "end_turn"
+   },
+   "changed_a": 435,
+   "changed_b": 435
+  },
+  {
+   "checkpoint": "a008",
+   "date_a": "Spring week 9, 270 BC",
+   "date_b": "Spring week 9, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "end_turn"
+   },
+   "changed_a": 419,
+   "changed_b": 419
+  },
+  {
+   "checkpoint": "a009",
+   "date_a": "Spring week 11, 270 BC",
+   "date_b": "Spring week 11, 270 BC",
+   "differences": 0,
+   "fields": [],
+   "map": {
+    "count": 0,
+    "first": []
+   },
+   "action": {
+    "op": "end_turn"
+   },
+   "changed_a": 420,
+   "changed_b": 420
+  }
+ ]
+}

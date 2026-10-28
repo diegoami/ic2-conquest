@@ -1,0 +1,59 @@
+{
+ "checkpoint": "artifacts/run-exp-diff084-tooling/self5-original-1/a004.SAV",
+ "controls": [
+  {
+   "control": "unchanged copy",
+   "reported": [],
+   "map": 0,
+   "pass": true
+  },
+  {
+   "control": "nations.Rome.treasury",
+   "reported": [
+    "nations.Rome.treasury"
+   ],
+   "pass": true
+  },
+  {
+   "control": "cities.85.loyalty",
+   "reported": [
+    "cities.85.loyalty"
+   ],
+   "pass": true
+  },
+  {
+   "control": "armies.0.x",
+   "reported": [
+    "armies.0.x"
+   ],
+   "pass": true
+  },
+  {
+   "control": "armies.0.units",
+   "reported": [
+    "armies.0.units"
+   ],
+   "pass": true
+  },
+  {
+   "control": "nations.Rome.relations",
+   "reported": [
+    "nations.Rome.relations"
+   ],
+   "pass": true
+  },
+  {
+   "control": "week",
+   "reported": [
+    "week"
+   ],
+   "pass": true
+  },
+  {
+   "control": "map (100,37)",
+   "map": 1,
+   "pass": true
+  }
+ ],
+ "all_pass": true
+}

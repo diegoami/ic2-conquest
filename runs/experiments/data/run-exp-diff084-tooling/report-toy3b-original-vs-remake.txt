@@ -1,0 +1,64 @@
+# Differential report: toy3-rome-1200.jsonl
+
+- A: original `artifacts/run-exp-diff084-tooling/toy3b-original-1`, seed 12345
+- B: remake `artifacts/run-exp-diff084-tooling/toy3b-remake-1`
+- Checkpoints compared: 8
+
+**First divergence: `a004`** (Spring week 3, 270 BC / Spring week 3, 270 BC), after action {"op": "end_turn"}: 76 fields, 190 map cells.
+
+| field | A | B |
+|---|---|---|
+| `armies.3.x` | `88` | `94` |
+| `armies.3.y` | `77` | `78` |
+| `armies.5.x` | `180` | `177` |
+| `armies.5.y` | `46` | `44` |
+| `armies.8.moves` | `2` | `8` |
+| `armies.8.x` | `144` | `145` |
+| `armies.9.cell` | `5` | `2` |
+| `armies.9.x` | `96` | `95` |
+| `armies.9.y` | `30` | `29` |
+| `armies.12.moves` | `0` | `5` |
+| `armies.12.supplies` | `193` | `111` |
+| `armies.12.x` | `194` | `198` |
+| `armies.13.moves` | `3` | `5` |
+| `armies.13.x` | `307` | `301` |
+| `cities.1.supplies` | `76` | `75` |
+| `cities.2.supplies` | `60` | `59` |
+| `cities.3.supplies` | `65` | `64` |
+| `cities.7.supplies` | `36` | `35` |
+| `cities.8.supplies` | `71` | `69` |
+| `cities.10.supplies` | `55` | `54` |
+| `cities.11.supplies` | `136` | `134` |
+| `cities.12.supplies` | `161` | `158` |
+| `cities.14.supplies` | `89` | `88` |
+| `cities.15.supplies` | `47` | `46` |
+| `cities.17.supplies` | `13` | `11` |
+| `cities.19.supplies` | `71` | `70` |
+| `cities.20.supplies` | `216` | `212` |
+| `cities.22.supplies` | `98` | `97` |
+| `cities.23.supplies` | `161` | `158` |
+| `cities.27.supplies` | `123` | `121` |
+| … 46 more | | |
+| map (49,62) | 0 | 333 |
+| map (74,71) | 333 | 0 |
+| map (88,77) | 201 | 2 |
+| map (94,78) | 2 | 201 |
+| map (95,29) | 2 | 222 |
+| map (96,30) | 222 | 5 |
+| map (144,42) | 220 | 2 |
+| map (145,42) | 2 | 220 |
+| map (169,76) | 0 | 1 |
+| map (169,78) | 0 | 1 |
+
+Later checkpoints are consequences unless shown otherwise:
+
+| checkpoint | action | changed A | changed B | differences |
+|---|---|---|---|---|
+| a000 | start |  |  | 0 |
+| a001 | set_tax | 1 | 1 | 0 |
+| a002 | move | 3 | 3 | 0 |
+| a003 | recruit | 3 | 3 | 0 |
+| a004 | end_turn | 442 | 440 | 266 |
+| a005 | move | 3 | 3 | 266 |
+| a006 | end_turn | 430 | 411 | 588 |
+| a007 | end_turn | 431 | 435 | 393 |
