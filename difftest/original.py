@@ -142,6 +142,32 @@ def build_fleet_tens_first(g, ships):
     return texts
 
 
+def supply_from_controls(g, army, tons):
+    """Supply army with the dialog's own controls. driver.supply clicks fixed points and closes the dialog at
+    (239,337), but the OK button now sits at (223..293, 349..374) (measured 2026-10-29), so the dialog stayed
+    open and the checkpoint's save timed out (#230 buy-*). The upper arrow pair moves tons from the provider
+    (left: 10s, right: 100s; layout of Supply fleet), the provider being the list's default (first) row."""
+    g.army_tool(army, "supply", "Supply army")
+    cs = g.controls("Supply army")
+    ups = [c for c in cs if c["cls"] == "TUpDown"]
+    top = min(c["y"] for c in ups)
+    tons_pair = sorted((c for c in ups if c["y"] == top), key=lambda c: c["x"])
+    try:
+        for _ in range(tons // 100):
+            g.click_control(tons_pair[1], fy=0.25, pause=0.2)
+        for _ in range(tons % 100 // 10):
+            g.click_control(tons_pair[0], fy=0.25, pause=0.2)
+        texts = g.dismiss_popups()
+    finally:
+        for _ in range(3):
+            if not g.find_windows("^Supply army$"):
+                break
+            g.click_control(g.control(cs, text="OK"), pause=1.0)
+    if g.find_windows("^Supply army$"):
+        raise DriverError("Supply army did not close after OK")
+    return texts
+
+
 def perform(g, a, state):
     op = a["op"]
     if op == "set_tax":
@@ -169,8 +195,7 @@ def perform(g, a, state):
     if op == "join_armies":
         return g.join(a["army"])
     if op == "buy_supply":
-        moved, texts = g.supply(a["army"], tons=a["tons"])
-        return [f"supplies moved {moved}"] + texts
+        return supply_from_controls(g, a["army"], a["tons"])
     if op == "build_fleet":
         return build_fleet_tens_first(g, a["ships"])
     if op == "disband_slot":
