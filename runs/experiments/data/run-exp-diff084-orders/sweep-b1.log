@@ -1,0 +1,47 @@
+tax-0: same 
+tax-40: same 
+move-forest: same 
+move-mountain: same 
+move-river: same 
+move-far: refusal-difference a001: armies.0.moves: 8 vs 4; armies.0.x: 100 vs 98; armies.0.y: 37 vs 41; 2 map cells
+move-sea: refusal-difference a001: armies.1.moves: 8 vs 7; armies.1.x: 120 vs 121; armies.1.y: 53 vs 54; 2 map cells
+move-own-city: same 
+move-twice: same 
+recruit-li-min: same 
+recruit-hi-min: same 
+recruit-ar-min: refusal-difference a001: nations.Rome.mobilization: 30 vs 31; nations.Rome.recruit_slots: [{"slot": 0, "state": 9, "type": "li", " vs [{"slot": 0, "state": 9, "type": "li", "; nations.Rome.treasury: 2200 vs 2188
+recruit-lc-min: same 
+recruit-hc-min: error DriverError: timeout waiting for save Sorders-recruit-hc-min-original-a001.SAV
+recruit-li-max: same 
+recruit-hi-max: same 
+recruit-ar-max: error DriverError: timeout waiting for save Sorders-recruit-ar-max-original-a001.SAV
+recruit-lc-max: refusal-difference a001: nations.Rome.mobilization: 30 vs 33; nations.Rome.recruit_slots: [{"slot": 0, "state": 9, "type": "li", " vs [{"slot": 0, "state": 9, "type": "li", "; nations.Rome.treasury: 2200 vs 1675
+recruit-hc-max: error DriverError: timeout waiting for save Sorders-recruit-hc-max-original-a001.SAV
+recruit-luceria: same 
+recruit-two: same 
+rel-war-carthage: differs-immediate a001: nations.Numidia.relations: {"Rome": -18, "Carthage": 2, "Seleucid": vs {"Rome": 3, "Carthage": 2, "Seleucid": 0; nations.Rome.relations: {"Carthage": 3, "Seleucid": 0, "Ptolemai vs {"Carthage": 
+rel-war-illyria: same 
+rel-peace-gaul: same 
+rel-trade-carthage: same 
+rel-trade-bithynia: same 
+rel-ally-carthage: same 
+rel-ally-illyria: same 
+rel-war-macedonia: same 
+fortify-pisae-10: same 
+fortify-rome-5: same 
+fortify-arretium-25: same 
+fortify-caere-50: same 
+buy-arretium-20: error DriverError: timeout waiting for save Sorders-buy-arretium-20-original-a001.SAV
+buy-heraclea-50: error DriverError: timeout waiting for save Sorders-buy-heraclea-50-original-a001.SAV
+disband-army-0: differs-immediate a001: armies.0.morale: 70 vs 68; armies.0.owner: -1 vs 0; armies.0.supplies: 170 vs 176; armies.0.units: [[0, "li", 4800, 6, 0], [1, "hi", 5000,  vs [[0, "li", 4100, 6, 0], [1, "hi", 5500, ; armies.0.
+split-army-1unit: same 
+split-army-2units: differs-immediate a001: armies.0.supplies: 137 vs 139; armies.0.units: [[0, "hi", 5000, 8, 0], [1, "hi", 5900,  vs [[0, "hi", 5200, 7, 0], [1, "hi", 5900, ; armies.14.supplies: 33 vs 31; armies.14.units: [[0, "li", 480
+split-then-join: differs-immediate a002: armies.14.cell: 4 vs "<absent>"; armies.14.money: 0 vs "<absent>"; armies.14.morale: 59 vs "<absent>"; armies.14.moves: 0 vs "<absent>"; armies.14.owner: -1 vs "<absent>"; armies.14.supplies: 0 
+fleet-25: harness a001: fleets.2.build_city: 82 vs 71; fleets.2.ships: 34 vs 25; nations.Rome.treasury: 1860 vs 1950
+fleet-two: differs-immediate a001: fleets.2.build_city: 82 vs 71
+disband-slot-0: same 
+disband-slot-3: same 
+recruit-then-disband: same 
+hire-merc-25: same 
+tax-then-recruit: same 
+{"same": 33, "differs-immediate": 6, "refusal-difference": 4, "error": 5, "harness": 1}

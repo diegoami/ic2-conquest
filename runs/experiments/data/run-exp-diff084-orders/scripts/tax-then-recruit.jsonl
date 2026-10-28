@@ -1,0 +1,4 @@
+{"format": "diff-actions/1", "name": "tax-then-recruit", "note": "tax 30, then recruit 3,000 li at Luceria"}
+{"op": "set_tax", "percent": 30}
+{"op": "recruit", "city": 110, "type": "li", "troops": 3000}
+{"op": "end_turn"}

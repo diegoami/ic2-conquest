@@ -1,0 +1,17 @@
+move-far: refusal-difference a001: armies.0.moves: 8 vs 4; armies.0.x: 100 vs 98; armies.0.y: 37 vs 41; 2 map cells
+recruit-ar-min: harness a001: nations.Rome.mobilization: 30 vs 31; nations.Rome.recruit_slots: [{"slot": 0, "state": 9, "type": "li", " vs [{"slot": 0, "state": 9, "type": "li", "; nations.Rome.treasury: 2200 vs 2188
+recruit-hc-min: harness a001: nations.Rome.mobilization: 30 vs 31; nations.Rome.recruit_slots: [{"slot": 0, "state": 9, "type": "li", " vs [{"slot": 0, "state": 9, "type": "li", "; nations.Rome.treasury: 2200 vs 2140
+recruit-ar-max: same 
+recruit-lc-max: harness a001: nations.Rome.mobilization: 30 vs 33; nations.Rome.recruit_slots: [{"slot": 0, "state": 9, "type": "li", " vs [{"slot": 0, "state": 9, "type": "li", "; nations.Rome.treasury: 2200 vs 1675
+recruit-hc-max: harness a001: nations.Rome.mobilization: 30 vs 31; nations.Rome.recruit_slots: [{"slot": 0, "state": 9, "type": "li", " vs [{"slot": 0, "state": 9, "type": "li", "; nations.Rome.treasury: 2200 vs 1840
+buy-arretium-20: same 
+buy-heraclea-50: harness 
+split-army-2units: differs-immediate a001: armies.1.units: [[0, "hi", 5000, 8, 0], [1, "li", 4800,  vs [[0, "li", 4800, 6, 0], [1, "hi", 5000, 
+fleet-25: differs-immediate a001: fleets.0.build_city: 82 vs 71
+{"same": 35, "differs-immediate": 7, "refusal-difference": 2, "harness": 5}
+move-far-land: same 
+rel-war-numidia: same 
+rel-war-dacia: differs-immediate a001: nations.Rome.relations: {"Carthage": 0, "Seleucid": 0, "Ptolemai vs {"Carthage": 0, "Seleucid": 0, "Ptolemai; nations.Thracia.relations: {"Rome": -18, "Carthage": 1, "Seleucid": vs {"Rome": 3, "
+rel-war-thracia: same 
+rel-war-bithynia: differs-immediate a001: nations.Galatia.relations: {"Rome": -18, "Carthage": 0, "Seleucid": vs {"Rome": 3, "Carthage": 0, "Seleucid": 3; nations.Rome.relations: {"Carthage": 0, "Seleucid": 0, "Ptolemai vs {"Carthage": 
+{"same": 3, "differs-immediate": 2}
