@@ -13,10 +13,15 @@ Predictions for the original (the remake, which declares through its command, sh
 - rel-war-dacia (10; ally Thracia 15, higher): Thracia-Rome -18.
 - rel-war-thracia (15; ally Dacia 10, lower): Dacia-Rome 3.
 - rel-war-bithynia (11; ally Galatia 12, higher): Galatia-Rome -18.
+
+Also move-far-land: batch 1's move-far target (90,50) turned out to be SEA (the same situation as move-sea); this
+case moves toward a land tile outside the 13 x 13 view, through the selection-keeping move of difftest/original.py.
 """
 from difftest.cases.orders230_b1 import BASE, case
 
 CASES = [
+    case("move-far-land", "army 0 toward plain (110,42), 10 tiles away, outside the view (beyond its moves)",
+         {"op": "move", "army": 0, "x": 110, "y": 42}),
     case("rel-war-numidia", "declare war on Numidia (ally Carthage, lower index)", {"op": "relation", "nation": 5, "kind": "war"}),
     case("rel-war-dacia", "declare war on Dacia (ally Thracia, higher index)", {"op": "relation", "nation": 10, "kind": "war"}),
     case("rel-war-thracia", "declare war on Thracia (ally Dacia, lower index)", {"op": "relation", "nation": 15, "kind": "war"}),

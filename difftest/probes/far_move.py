@@ -26,7 +26,12 @@ rec["selected_after_scroll"] = g.i16(SEL_ARMY)
 ox, oy = g.view_origin()
 rec["view_origin"] = [ox, oy]
 c, r = tx - ox, ty - oy
-g.click(UNIT_PAINT[0] + 32 * c + 16, UNIT_PAINT[1] + 30 + 32 * r + 16, pause=1.2)
+rec["clicks"] = []
+for k in range(2):      # the first click into the unit map may only re-activate it (the area map took the focus)
+    g.click(UNIT_PAINT[0] + 32 * c + 16, UNIT_PAINT[1] + 30 + 32 * r + 16, pause=1.2)
+    rec["clicks"].append({"pos": g.army_pos(0), "selected": g.i16(SEL_ARMY)})
+    if g.army_pos(0) != (x0, y0):
+        break
 rec["texts"] = g.dismiss_popups()
 rec["after"] = g.army_pos(0)
 rec["moves_after"] = list(g.army_state(0).values())[:6] if isinstance(g.army_state(0), dict) else str(g.army_state(0))

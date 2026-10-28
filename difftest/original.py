@@ -15,7 +15,7 @@ from collections import Counter
 from pathlib import Path
 
 from difftest.actions import checkpoint_names
-from harness.driver import G, DriverError, Game
+from harness.driver import AREA_ORIGIN, G, SEL_ARMY, UNIT_PAINT, VIEW_COLS, VIEW_ROWS, DriverError, Game
 from state.sav import can_recruit_at, load
 
 
@@ -168,13 +168,38 @@ def supply_from_controls(g, army, tons):
     return texts
 
 
+def move_army(g, i, x, y):
+    """Select army i and click (x, y). A target outside the 13 x 13 unit map is first brought into view by a click on
+    the area map WITHOUT driver.show()'s reset_ui (its Escape and neutral click may drop the selection); the army
+    stays selected (probe-far-move-v1/v2, 2026-10-29). The click on the target is repeated once only if the first
+    provably moved nothing (the area map takes the focus, so the first click may only re-activate the unit map;
+    a click on sea moves nothing either time)."""
+    ax, ay = g.army_pos(i)
+    g.select_army(i, ax, ay)
+    ox, oy = g.view_origin()
+    if not (ox <= x < ox + VIEW_COLS and oy <= y < oy + VIEW_ROWS - 1):
+        g.click(AREA_ORIGIN[0] + x, AREA_ORIGIN[1] + y, pause=0.8)
+        if g.i16(SEL_ARMY) != i:
+            raise DriverError(f"army {i} lost its selection when the map scrolled to {x},{y}")
+        ox, oy = g.view_origin()
+    c, r = x - ox, y - oy
+    if not (0 <= c < VIEW_COLS and 0 <= r < VIEW_ROWS):
+        raise DriverError(f"tile {x},{y} not visible from origin {ox},{oy}")
+    texts = []
+    for _ in range(2):
+        g.click(UNIT_PAINT[0] + 32 * c + 16, UNIT_PAINT[1] + 30 + 32 * r + 16, pause=1.2)
+        texts += g.dismiss_popups()
+        if g.army_pos(i) != (ax, ay) or texts:
+            break
+    return texts
+
+
 def perform(g, a, state):
     op = a["op"]
     if op == "set_tax":
         return g.taxation(a["percent"])
     if op == "move":
-        pos, texts = g.move(a["army"], a["x"], a["y"])
-        return texts
+        return move_army(g, a["army"], a["x"], a["y"])
     if op == "recruit":
         return recruit_exact(g, recruit_row(state, state["current_nation"], a["city"]), a["type"], a["troops"])
     if op == "end_turn":
