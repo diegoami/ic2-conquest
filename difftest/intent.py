@@ -41,9 +41,9 @@ def check(a, before, after):
         ok = len(new) == 1 and new[0]["building"] and new[0]["ships"] == a["ships"]
         return ("met" if ok else "not-met"), f"new fleets {[(f['ships'], f.get('build_city')) for f in new]}"
     if op == "split_army":
-        moved = sorted((u["type"], u["troops"], u["quality"]) for k, u in enumerate(before["armies"][a["army"]]["units"]) if k in a["units"])
+        moved = [(u["type"], u["troops"], u["quality"]) for k, u in enumerate(before["armies"][a["army"]]["units"]) if k in a["units"]]
         new = after["armies"][-1]
-        ok = len(after["armies"]) == len(before["armies"]) + 1 and sorted((u["type"], u["troops"], u["quality"]) for u in new["units"]) == moved
+        ok = len(after["armies"]) == len(before["armies"]) + 1 and [(u["type"], u["troops"], u["quality"]) for u in new["units"]] == moved
         return ("met" if ok else "not-met"), f"armies {len(before['armies'])} -> {len(after['armies'])}"
     if op == "disband_slot":
         return ("met" if len(na["recruit_slots"]) == len(nb["recruit_slots"]) - 1 else "not-met"), \

@@ -214,9 +214,10 @@ def perform(g, a, state):
     if op == "disband_army":
         return g.disband_army(a["army"])
     if op == "split_army":
-        # Each Transfer removes its row from the dialog's list, so rows are moved highest first (rows 0 then 1 moved
-        # units 0 and 2, #230 split-army-2units, 2026-10-29).
-        return g.split_army(a["army"], tuple(sorted(a["units"], reverse=True)))
+        # Each Transfer removes its row from the dialog's list (rows 0 then 1 moved units 0 and 2), and the new army
+        # takes the units in transfer order (highest first reversed them; #230 split-army-2units, 2026-10-29). So the
+        # units go top to bottom, each row shifted up by the number already moved, as a player clicking down the list.
+        return g.split_army(a["army"], tuple(u - k for k, u in enumerate(sorted(a["units"]))))
     if op == "join_armies":
         return g.join(a["army"])
     if op == "buy_supply":
