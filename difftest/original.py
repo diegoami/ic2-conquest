@@ -100,6 +100,48 @@ def recruit_exact(g, row, unit_type, troops):
     return [f"amount {troops}"] + texts
 
 
+def build_fleet_tens_first(g, ships):
+    """driver.build_fleet presses the 1s arrows before the 10s: for 25 ships the game built 34 (#230 fleet-25,
+    2026-10-29; the 1s arrow seems to jump to the 10-ship minimum first). The driver's dialog handling (notices
+    of fleets in construction, refusals, Cancel after OK), with the 10s arrows pressed first.
+    The built size is checked by the intent check on the save."""
+    def clicks(n):
+        cs = g.controls("Build fleet")
+        ups = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])      # 1s, 10s
+        for _ in range(n // 10):
+            g.click_control(ups[1], fy=0.25, pause=0.2)
+        for _ in range(n % 10):
+            g.click_control(ups[0], fy=0.25, pause=0.2)
+
+    g.tool("build_fleet")
+    for _ in range(40):
+        g.wait(lambda: g.find_windows("^Build fleet$") or [w for w in g.popups() if w[1] in ("Information", "Warning", "Error")],
+               20, "the Build fleet dialog or its refusal")
+        if g.find_windows("^Build fleet$"):
+            break
+        boxes = [w for w in g.popups() if w[1] in ("Information", "Warning", "Error")]
+        texts = [g.read_popup(w) for w in boxes]
+        if not texts or not all("ready in" in t for t in texts):
+            break
+        g.dismiss_popups()
+        time.sleep(1.0)
+    if not g.find_windows("^Build fleet$"):
+        refusal = [g.read_popup(w) for w in g.popups() if w[1] in ("Information", "Warning", "Error")]
+        g.dismiss_popups()
+        return refusal
+    clicks(ships)
+    cs = g.controls("Build fleet")
+    g.click_control(g.control(cs, text="OK"), pause=1.5)
+    texts = g.dismiss_popups()
+    for _ in range(3):
+        if not g.find_windows("^Build fleet$"):
+            break
+        g.click_control(g.control(cs, text="Cancel"), pause=1.0)
+    if g.find_windows("^Build fleet$"):
+        raise DriverError("Build fleet did not close after Cancel")
+    return texts
+
+
 def perform(g, a, state):
     op = a["op"]
     if op == "set_tax":
@@ -130,7 +172,7 @@ def perform(g, a, state):
         moved, texts = g.supply(a["army"], tons=a["tons"])
         return [f"supplies moved {moved}"] + texts
     if op == "build_fleet":
-        return g.build_fleet(a["ships"])
+        return build_fleet_tens_first(g, a["ships"])
     if op == "disband_slot":
         nation = state["current_nation"]
         slots = state["nations"][nation]["recruit_slots"]
