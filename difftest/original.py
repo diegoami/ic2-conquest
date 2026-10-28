@@ -142,45 +142,61 @@ def perform(g, a, state):
     raise ValueError(op)
 
 
+class OriginalSession:
+    """One original game process playing from `start` with startup seed `seed`; every checkpoint is saved as
+    `<tag>-<name>.SAV` in the game folder and copied to `out/<name>.SAV`. receipt.jsonl and progress.json are
+    written as it goes."""
+
+    def __init__(self, start, out, seed, tag, log=print):
+        self.out, self.tag, self.log = Path(out), tag, log
+        self.out.mkdir(parents=True, exist_ok=False)
+        self.receipt = open(self.out / "receipt.jsonl", "w")
+        self.g = Game(log=log)
+        moved = self.g.move_aside(sorted(G.glob("AUTO*")))
+        self.emit(kind="start", start=str(start), seed=seed, tag=tag, moved_aside=str(moved) if moved else None)
+        popups = self.g.load(start, seed=seed)
+        self.emit(kind="loaded", seed_line=getattr(self.g, "seed_line", ""), popups=popups, environment=self.g.environment)
+
+    def emit(self, **e):
+        e["time"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+        self.receipt.write(json.dumps(e, default=str) + "\n")
+        self.receipt.flush()
+
+    def checkpoint(self, name):
+        saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+        dst = self.out / f"{name}.SAV"
+        shutil.copy(saved, dst)
+        (self.out / "progress.json").write_text(json.dumps({"last_checkpoint": name, "time": time.strftime("%Y-%m-%dT%H:%M:%S")}))
+        self.state = load(dst)
+        return self.state
+
+    def act(self, a, name):
+        """Perform one action on the current state, then checkpoint `name`. Returns (reply texts, error)."""
+        try:
+            texts, error = perform(self.g, a, self.state), None
+        except DriverError as e:
+            texts, error = [], f"{type(e).__name__}: {e}"
+            self.g.dismiss_popups()
+        self.checkpoint(name)
+        self.emit(kind="action", action=a, reply=texts, error=error, checkpoint=name, date=self.state["date"])
+        return texts, error
+
+    def close(self):
+        self.emit(kind="done")
+        self.receipt.close()
+        self.g.kill()
+
+
 def run(actions, start, out, seed, tag, log=print):
     """Play the actions from `start` in the original with startup seed `seed`; checkpoints, receipt.jsonl and
     progress.json go to `out`. `tag` makes the in-game save names unique to this run."""
-    out = Path(out)
-    out.mkdir(parents=True, exist_ok=False)
     names = checkpoint_names(actions)
-    receipt = open(out / "receipt.jsonl", "w")
-
-    def emit(**e):
-        e["time"] = time.strftime("%Y-%m-%dT%H:%M:%S")
-        receipt.write(json.dumps(e) + "\n")
-        receipt.flush()
-
-    def checkpoint(name):
-        saved = g.save_as(f"{tag}-{name}.SAV")
-        dst = out / f"{name}.SAV"
-        shutil.copy(saved, dst)
-        (out / "progress.json").write_text(json.dumps({"last_checkpoint": name, "time": time.strftime("%Y-%m-%dT%H:%M:%S")}))
-        return load(dst)
-
-    g = Game(log=log)
-    moved = g.move_aside(sorted(G.glob("AUTO*")))
-    emit(kind="start", start=str(start), seed=seed, tag=tag, moved_aside=str(moved) if moved else None)
-    popups = g.load(start, seed=seed)
-    emit(kind="loaded", seed_line=getattr(g, "seed_line", ""), popups=popups, environment=g.environment)
-    state = checkpoint(names[0])
+    s = OriginalSession(start, out, seed, tag, log)
+    s.checkpoint(names[0])
     results = []
-    for k, (a, name) in enumerate(zip(actions, names[1:])):
-        try:
-            texts = perform(g, a, state)
-            error = None
-        except DriverError as e:
-            texts, error = [], f"{type(e).__name__}: {e}"
-            g.dismiss_popups()
-        state = checkpoint(name)
+    for a, name in zip(actions, names[1:]):
+        texts, error = s.act(a, name)
         results.append({"action": a, "reply": texts, "error": error})
-        emit(kind="action", step=k, action=a, reply=texts, error=error, checkpoint=name, date=state["date"])
-        log(f"original: {name} {a['op']} -> {state['date']}{' ERROR ' + error if error else ''}")
-    emit(kind="done", steps=len(actions))
-    receipt.close()
-    g.kill()
+        log(f"original: {name} {a['op']} -> {s.state['date']}{' ERROR ' + error if error else ''}")
+    s.close()
     return results

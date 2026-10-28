@@ -66,14 +66,19 @@ def commands(actions):
     return "\n".join(out) + "\n"
 
 
-def run(actions, start, out, log=print, seed=None, options=()):
-    """Play the actions from `start` (an original SAV) in the remake; checkpoints and receipt.jsonl go to `out`."""
+def run(actions, start, out, log=print, seed=None, options=(), template=None):
+    """Play the actions from `start` (an original SAV, or a native save written by an earlier run) in the remake;
+    checkpoints and receipt.jsonl go to `out`. `template` is the original SAV whose interface settings the exports
+    reuse (default: `start`, which must then be a SAV)."""
+    template = template or start
+    if not str(template).upper().endswith(".SAV"):
+        raise ValueError("a native start needs an original SAV as template")
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     (out / "commands.txt").write_text(commands(actions))
     env = dict(os.environ, DOTNET_ROOT=str(DOTNET.parent))
     with open(out / "receipt.jsonl", "w") as receipt:
-        p = subprocess.run([str(DOTNET), str(ADAPTER), str(REMAKE), str(start), str(start), str(out / "commands.txt"), str(out)]
+        p = subprocess.run([str(DOTNET), str(ADAPTER), str(REMAKE), str(start), str(template), str(out / "commands.txt"), str(out)]
                            + ([f"seed={seed}"] if seed is not None else []) + list(options),
                            stdout=receipt, stderr=subprocess.PIPE, text=True, env=env)
     (out / "stderr.txt").write_text(p.stderr)

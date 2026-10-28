@@ -15,6 +15,13 @@ def _changed(before, after):
 
 
 def check(a, before, after):
+    if a["op"] == "move":
+        b = before["armies"][a["army"]]
+        far = max(abs(b["x"] - a["x"]), abs(b["y"] - a["y"])) > 6
+        if far and not _changed(before, after):
+            # The unit map shows 13 x 13 tiles; harness/driver.py show() resets the interface (dropping the army's
+            # selection) before scrolling to a tile outside it, so the click moves nothing (#230 move-far, 2026-10-28).
+            return "not-met", "target outside the view: the driver's scroll dropped the selection"
     if not _changed(before, after):
         return "no-change", "the state did not change"
     op, me = a["op"], before["current_nation"]
