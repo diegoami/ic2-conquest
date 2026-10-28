@@ -50,3 +50,13 @@ run (`--tag`).
 - Known asymmetries: the original asks about pending offers and post-battle peace when a save opens or a turn ends;
   the driver dismisses information boxes and answers a Confirm **No**. A battle against the human during the AI turns is fought by the original's Computer
   general, and resolved instantly in the remake (`HumanBattles = Instant`).
+
+## Test history
+
+Every comparison is recorded in [`HISTORY.md`](HISTORY.md), generated from the append-only [`history.jsonl`](history.jsonl):
+
+```bash
+python3 -m difftest.history record <report.json> --data run-exp-<name> --issue <n> --verdict "<one line: what it shows>"
+```
+
+A wrong or superseded verdict is never edited: record a new entry with `--corrects <id>`.
