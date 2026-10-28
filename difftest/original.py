@@ -74,23 +74,26 @@ def recruit_exact(g, row, unit_type, troops):
     g.click_control(g.control(cs, text=TYPES[unit_type]), pause=0.6)
     spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])      # 100s, 1000s
     texts = []
-    for attempt in range(4):
-        have = read_amount(g, spins[0])
-        if have == troops:
-            break
-        if attempt == 3:
-            continue
-        diff = troops - have
-        thousands, hundreds = abs(diff) // 1000, abs(diff) % 1000 // 100
-        fy = 0.25 if diff > 0 else 0.75
-        for _ in range(thousands):
-            g.click_control(spins[1], fy=fy, pause=0.2)
-        for _ in range(hundreds):
-            g.click_control(spins[0], fy=fy, pause=0.2)
-        time.sleep(0.3)
-    else:
-        g.close_controls("Army recruits", cs)
-        raise DriverError(f"Recruit amount stuck at {have}, wanted {troops}")
+    try:
+        for attempt in range(4):
+            have = read_amount(g, spins[0])
+            if have == troops:
+                break
+            if attempt == 3:
+                continue
+            diff = troops - have
+            thousands, hundreds = abs(diff) // 1000, abs(diff) % 1000 // 100
+            fy = 0.25 if diff > 0 else 0.75
+            for _ in range(thousands):
+                g.click_control(spins[1], fy=fy, pause=0.2)
+            for _ in range(hundreds):
+                g.click_control(spins[0], fy=fy, pause=0.2)
+            time.sleep(0.3)
+        else:
+            raise DriverError(f"Recruit amount stuck at {have}, wanted {troops}")
+    except DriverError:
+        g.close_controls("Army recruits", cs)       # an open dialog would block the checkpoint's File > Save
+        raise
     g.click_control(g.control(cs, text="Recruit unit"), pause=0.8)
     texts += g.dismiss_popups()
     g.close_controls("Army recruits", cs)
