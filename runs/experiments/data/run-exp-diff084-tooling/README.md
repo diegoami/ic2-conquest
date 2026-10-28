@@ -51,7 +51,7 @@ after End turn, and matching AI draws, is the next step (#230, #232).
 Each run folder: `run.json` (inputs, hashes, pins), `receipt.jsonl` (every action with the game's reply), the remake's
 `commands.txt` and `stderr.txt`, the original's `progress.json`. Checkpoint saves (`aNNN.SAV`) and the remake's native
 saves (`aNNN.native`) stay out of git; their SHA-256 are in `SAVES.sha256` (SAV) and in each remake receipt
-(`nativeSha256`). Reports: `report-*.json` / `.md` (the `.md` copies are in the run's artifacts; the JSON is tracked).
+(`nativeSha256`). Reports: `report-*.json` and `report-*.txt` (the Markdown report, archived as .txt).
 
 No release token was available in this session. To publish the binaries:
 
