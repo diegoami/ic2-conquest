@@ -53,10 +53,6 @@ Each run folder: `run.json` (inputs, hashes, pins), `receipt.jsonl` (every actio
 saves (`aNNN.native`) stay out of git; their SHA-256 are in `SAVES.sha256` (SAV) and in each remake receipt
 (`nativeSha256`). Reports: `report-*.json` and `report-*.txt` (the Markdown report, archived as .txt).
 
-No release token was available in this session. To publish the binaries:
-
-```bash
-cd artifacts && tar czf run-exp-diff084-tooling.tar.gz run-exp-diff084-tooling && \
-gh release create run-exp-diff084-tooling run-exp-diff084-tooling.tar.gz --title 'diff084 tooling self-checks (#229)' \
-  --notes 'Checkpoint saves of runs/experiments/data/run-exp-diff084-tooling (hashes in SAVES.sha256).'
-```
+Published 2026-10-28 as release [`run-exp-diff084-tooling`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-diff084-tooling):
+`run-exp-diff084-tooling.tar.gz`, 1,865,432 bytes, SHA-256 `ddd8ad682b7412c230ef47b06060c32476609b958e6018544de7ae3b8a8e9f69`
+(every run folder with its `aNNN.SAV` and `aNNN.native` checkpoints, receipts and reports).
