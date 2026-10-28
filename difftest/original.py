@@ -7,7 +7,10 @@ A progress file records the last finished action, so a stopped run shows where i
 """
 import json
 import shutil
+import subprocess
+import tempfile
 import time
+from collections import Counter
 from pathlib import Path
 
 from difftest.actions import checkpoint_names
@@ -25,6 +28,63 @@ def recruit_row(state, nation, city):
     return rows.index(city)
 
 
+TYPES = {"li": "Light infantry", "hi": "Heavy infantry", "ar": "Archers", "lc": "Light cavalry", "hc": "Heavy cavalry"}
+
+
+def read_amount(g, spin100):
+    """The troop amount in the Recruit dialog's "New unit" field, by OCR of its digits (the field is not a
+    control). Its digits sit 39 px right of and 98 px below the 100s arrows (measured 2026-10-28, run-exp-diff084-tooling).
+    Read at three scales; the majority wins, and no majority raises."""
+    with tempfile.TemporaryDirectory() as d:
+        shot = Path(d) / "root.png"
+        g.shot(str(shot))
+        reads = []
+        for scale in (300, 400, 500):
+            img = Path(d) / f"{scale}.png"
+            subprocess.run(["convert", str(shot), "-crop", f"50x21+{spin100['x'] + 39}+{spin100['y'] + 98}", "-colorspace", "Gray",
+                            "-scale", f"{scale}%", "-threshold", "60%", "-bordercolor", "white", "-border", "20", str(img)], check=True)
+            text = subprocess.run(["tesseract", str(img), "-", "--psm", "7", "-c", "tessedit_char_whitelist=0123456789,"],
+                                  capture_output=True, text=True).stdout.strip().replace(",", "")
+            reads.append(int(text) if text.isdigit() else None)
+    value, n = Counter(reads).most_common(1)[0]
+    if value is None or n < 2:
+        raise DriverError(f"Recruit amount unreadable: {reads}")
+    return value
+
+
+def recruit_exact(g, row, unit_type, troops):
+    """Recruit exactly `troops` of `unit_type` at the Recruit list's `row`. The dialog starts each type at a
+    default amount (1,200 at Rome, 270 BC) and the arrows step it by 100 and 1,000, so the amount is read, stepped
+    to the target and read again before "Recruit unit" (driver.recruit only adds clicks to the default)."""
+    g.open_recruit()
+    cs = g.controls("Army recruits")
+    g.click_list_row(g.control(cs, cls="TListBox", index=0), row, pause=0.6)
+    g.click_control(g.control(cs, text=TYPES[unit_type]), pause=0.6)
+    spins = sorted((c for c in cs if c["cls"] == "TUpDown"), key=lambda c: c["x"])      # 100s, 1000s
+    texts = []
+    for attempt in range(4):
+        have = read_amount(g, spins[0])
+        if have == troops:
+            break
+        if attempt == 3:
+            continue
+        diff = troops - have
+        thousands, hundreds = abs(diff) // 1000, abs(diff) % 1000 // 100
+        fy = 0.25 if diff > 0 else 0.75
+        for _ in range(thousands):
+            g.click_control(spins[1], fy=fy, pause=0.2)
+        for _ in range(hundreds):
+            g.click_control(spins[0], fy=fy, pause=0.2)
+        time.sleep(0.3)
+    else:
+        g.close_controls("Army recruits", cs)
+        raise DriverError(f"Recruit amount stuck at {have}, wanted {troops}")
+    g.click_control(g.control(cs, text="Recruit unit"), pause=0.8)
+    texts += g.dismiss_popups()
+    g.close_controls("Army recruits", cs)
+    return [f"amount {troops}"] + texts
+
+
 def perform(g, a, state):
     op = a["op"]
     if op == "set_tax":
@@ -33,9 +93,7 @@ def perform(g, a, state):
         pos, texts = g.move(a["army"], a["x"], a["y"])
         return texts
     if op == "recruit":
-        nation = state["current_nation"]
-        t = a["troops"]
-        return g.recruit(recruit_row(state, nation, a["city"]), a["type"], thousands=t // 1000, hundreds=t % 1000 // 100)
+        return recruit_exact(g, recruit_row(state, state["current_nation"], a["city"]), a["type"], a["troops"])
     if op == "end_turn":
         line, texts = g.end_turn(peace=False)
         return [f"AUTOSAVE {line}"] + texts
