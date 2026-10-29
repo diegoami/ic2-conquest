@@ -119,11 +119,4 @@ def main():
             g.kill()
     out.write_text(json.dumps({"exe_for_image": "Imperial Conquest 2.exe (9d753d5d...)", "game_exe": "seed build via harness.driver",
                                "start": START.name, "rows": rows}, indent=1))
-    with open(DATA / "SAVES.sha256", "a") as f:
-        for r in rows:
-            for t in r["files"].values():
-                f.write(f"{t['sha256']}  artifacts/run-exp-selection1010/{t['file']}\n")
-
-
-if __name__ == "__main__":
-    main()
+    # SAVES.sha256 is written by scripts/archive_measurements.py (bare names, checked from artifacts/run-exp-selection1010/).
