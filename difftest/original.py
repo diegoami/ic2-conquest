@@ -269,9 +269,12 @@ class OriginalSession:
         """Perform one action on the current state, then checkpoint `name`. Returns (reply texts, error)."""
         try:
             texts, error = perform(self.g, a, self.state), None
-        except DriverError as e:
+        except Exception as e:      # any failure of one order is recorded (an xdotool click once exited 1 mid-campaign)
             texts, error = [], f"{type(e).__name__}: {e}"
-            self.g.dismiss_popups()
+            try:
+                self.g.dismiss_popups()
+            except Exception:
+                pass
         self.checkpoint(name)
         self.emit(kind="action", action=a, reply=texts, error=error, checkpoint=name, date=self.state["date"])
         return texts, error
