@@ -19,8 +19,10 @@ extra).
 
 **It is the only such rule.** I tried centres 15, 15.5, 16 and 16.5 on each axis independently, and every band [lo, hi] with
 10 ≤ lo ≤ hi ≤ 23. Only (15.5, 15.5) with [14, 17] reproduces the image.
-- With centre (16, 16), the band 14..17 gives 238 pixels, 29 of them wrong.
-- With centre (16, 16), the band 15..18 also gives 238, 57 of them wrong.
+- With centre (16, 16), the band 14..17 gives 238 pixels: 29 black pixels missed and 27 extra, 56 wrong in all.
+- With centre (16, 16), the band 15..18 also gives 238: 57 missed and 55 extra, 112 wrong in all.
+
+(Corrected 2026-10-30: the first version said "29 / 57 of them wrong", counting only the missed pixels; research noted it.)
 
 So both candidates from the T242 brief differ from the image on any whole-pixel centre.
 
