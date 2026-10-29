@@ -81,7 +81,7 @@ def main():
                 g.click(6 + x, 126 + y, pause=0.8)
                 ox, oy = g.view_origin()
                 c, r = x - ox, y - oy
-            x0, y0 = UNIT_PAINT[0] + 32 * c, UNIT_PAINT[1] + 30 + 32 * r
+            x0, y0 = UNIT_PAINT[0] - 1 + 32 * c, UNIT_PAINT[1] + 30 + 32 * r   # the paint box starts one column left of UNIT_PAINT (v1 used +0: off by one)
             nx, ny = g.neutral_point()
             sh("xdotool", "mousemove", str(nx), str(ny))
             time.sleep(1.0)

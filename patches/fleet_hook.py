@@ -32,7 +32,7 @@ DST = "Imperial Conquest 2 fast rollingsave seed fleethook.exe"
 P1, P2, P3, P4, P5 = 0x44E245, 0x44E287, 0x44E2BB, 0x44E2FD, 0x44E302
 EXPECT = {P1: bytes.fromhex("e8f6e8ffff"), P2: bytes.fromhex("66837c2404ff7e0b"), P3: bytes.fromhex("66837c2404ff740b"),
           P4: bytes.fromhex("e8fafeffff"), P5: bytes.fromhex("8b138b0424")}
-CALL_SITES = {0x44F64F: "f64f", 0x44F659: "f659", 0x44F67B: "f67b", 0x44E302: "recursion"}
+CALL_SITES = {0x44E2FD: "recursion"}   # key: call address = return address - 5; others print as the hex return address
 u32 = W.u32
 
 
