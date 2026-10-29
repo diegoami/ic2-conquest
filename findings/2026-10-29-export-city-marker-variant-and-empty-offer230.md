@@ -26,8 +26,9 @@ the original's own save, the same parser (`state/sav.py`) finds two differences:
    ones. **Cause (research, PR #93, from `2026-10-07-city-marker-variants.md`):** the original refreshes a city's tier
    only when the city changes owner, never as it grows. In `embark/original/a000.SAV` these three are exactly the
    only stale tiers (Bordeaux and Tarquinii at population 26 should be tier 1, Tarrentum at 51 tier 2). The export
-   has none, because the conversion recomputes the tier from the current population. So the remake's export is
-   "correct" by the tier rule, and the original's save carries a tier its own rule would no longer give.
+   has none, because the conversion recomputes the tier from the current population. So the original keeps a tier
+   from the last change of owner, while the remake's conversion drops that history: a save that goes through the
+   remake comes back with these markers re-tiered.
 2. **The empty pending offer's type.** With no offer pending (sender −1), the original's tail holds type 1 and the
    export writes 0.
 
