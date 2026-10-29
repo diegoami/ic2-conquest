@@ -1,0 +1,32 @@
+{
+ "start": "artifacts/run-exp-tiehook117/starts/carthage-rulebot1-5t-r2-et2.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-160956",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0722.SAV",
+    "sha256": "d6f62cdaef01ce68d460b20fa4d9081a32405867caf05d2dd7749f90a35bd39a"
+   }
+  ],
+  "records": 19
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-161025",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0722.SAV",
+    "sha256": "d6f62cdaef01ce68d460b20fa4d9081a32405867caf05d2dd7749f90a35bd39a"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ],
+ "hooked_exe_sha256": "854744b87a7d550c9de6f5e89150c73211d77b9cfc3579262a8103a54bb3ffc5"
+}

@@ -1,0 +1,32 @@
+{
+ "start": "artifacts/run-exp-tiehook117/starts/celtiberia-rulebot1-5t-r2-et3.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-161346",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0723.SAV",
+    "sha256": "9332f18aef9ad83a5077f431648c4133b0b306e71d1e81fe63449eaef02de2c5"
+   }
+  ],
+  "records": 13
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-161418",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0723.SAV",
+    "sha256": "9332f18aef9ad83a5077f431648c4133b0b306e71d1e81fe63449eaef02de2c5"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ],
+ "hooked_exe_sha256": "854744b87a7d550c9de6f5e89150c73211d77b9cfc3579262a8103a54bb3ffc5"
+}

@@ -113,13 +113,29 @@ The first open item below ("cross-nation loops") is answered for the two AI rout
 So a reorder between **different** nations, which the original makes after deaths and the remake does not, can change an AI
 army's target and the capital defence's assignments. None of the 43 observed death turns was checked for such a tie.
 
+## Addendum 2 (2026-10-30): how often the enemy-army pick ties in real AI turns
+
+An observation-only hook on `FUN_0044ee60` (`patches/tie_hook.py`) logs every candidate's score and the chosen one. It ran on
+the 43 death turns' End-turn-click saves, one End turn each, seed 12345. Hooked and plain autosaves are byte-identical in
+**43 of 43**.
+
+- **501 picks; 220 had at least one candidate.**
+- **6 ties** at the top score, all **one situation** that recurs in six campaigns sharing the same early AI state:
+  - nation 12's army chooses between **Seleucid** armies 4 and 5, both scoring 31, at 27 and 22 tiles;
+  - table order decides, and the **farther** one (index 4, 27 tiles) is chosen.
+- **0 ties between different nations.** So in these turns a cross-nation reorder could not have changed a pick. The one tie is
+  between two armies of one nation, whose relative order the original's sweep would change only through deaths among them.
+
+So ties decided by table order do occur in play, and the capped regime of the emulated case (score 2,000) was not reached in
+these early turns.
+
 ## What this does not establish
 
 - **Later game.** With several armies per nation, a death can invert a same-nation pair, and then the merge choice (as
   controlled) and the army phase's visit order differ between the games. No such turn was observed in these 5-turn campaigns.
 - **Cross-nation loops beyond the two above.** Other AI scans (e.g. `FUN_004502e0`, `FUN_0044ffbc`'s economy decisions) were
-  not read for table-order tie-breaks. Whether a tie of `FUN_0044ee60` actually occurred in the 43 death turns was not checked
-  (it needs the actor's view at that moment).
+  not read for table-order tie-breaks. The tie count (Addendum 2) covers one End turn from each of the 43 starts, replayed with a fresh seed;
+  later turns, with more and larger armies, were not hooked.
 - **The remake's handling of an imported dead record** (imports were of saves without one in the 19 runs).
 
 ## Evidence
@@ -145,6 +161,9 @@ army's target and the capital defence's assignments. None of the 43 observed dea
     (release `run-exp-diff084-campaign`);
   - the remake runs in `artifacts/run-exp-armyorder117/remake-v2/<campaign>-tNN/` (corrected) and `remake-v1/` (first
     version), release `run-exp-armyorder117`.
+- Tie hook (Addendum 2): `patches/tie_hook.py`, `difftest/probes/tie_hook_run.py`, `runs/experiments/tiehook117/analyze.py`;
+  data `runs/experiments/data/run-exp-tiehook117/` (`*-ties.jsonl`, `<start>/inert.json`, `summary-v1.json`,
+  `SAVES.sha256`); release `run-exp-tiehook117`.
 - RAM: the #187 snapshot (private).
 - Decompile `all_app_functions.txt` (SHA-256 `2018c205…`): ABE0 :49396, ADB0 :49537, 509F0 :53964 (called at :53573),
   F31C :52899.
