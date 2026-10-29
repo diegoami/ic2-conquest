@@ -648,6 +648,54 @@
   "finding": "2026-10-29-war-declaration-ally-cooldown-diff230.md"
  },
  {
+  "test": "naval30",
+  "kind": "many seeds",
+  "start": "",
+  "orders": "",
+  "verdict": "consistent",
+  "detail": "original 30 trials, remake 30",
+  "runs": 60,
+  "data": "run-exp-diff084-stats",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "siege10",
+  "kind": "many seeds",
+  "start": "",
+  "orders": "",
+  "verdict": "consistent",
+  "detail": "original 10 trials, remake 10",
+  "runs": 20,
+  "data": "run-exp-diff084-stats",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "storm30",
+  "kind": "many seeds",
+  "start": "",
+  "orders": "",
+  "verdict": "differs: at_target, fleet_survives, ships_lost",
+  "detail": "original 30 trials, remake 30",
+  "runs": 60,
+  "data": "run-exp-diff084-stats",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
+ },
+ {
+  "test": "storm30b",
+  "kind": "many seeds",
+  "start": "",
+  "orders": "",
+  "verdict": "consistent",
+  "detail": "original 30 trials, remake 30",
+  "runs": 60,
+  "data": "run-exp-diff084-stats",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "self5-rome (original vs remake)",
   "kind": "script",
   "start": "BASE.SAV",
