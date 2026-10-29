@@ -19,6 +19,7 @@ using IC2.Engine.Serialization;
 // with the template's interface settings). One JSON line per event on stdout. Never overwrites a file.
 if (args.Length > 0 && args[0] == "tactical") return Tactical.Run(args[1..]);
 if (args.Length > 0 && args[0] == "aiprobe") return AiProbe.Run(args[1..]);
+if (args.Length > 0 && args[0] == "battleentry") return BattleEntry.Run(args[1..]);
 string root = args[0], start = args[1], template = args[2], commands = args[3], outDir = args[4];
 var options = args.Skip(5).ToArray();
 var mode = options.Contains("tactical") ? HumanBattleMode.Tactical : HumanBattleMode.Instant;

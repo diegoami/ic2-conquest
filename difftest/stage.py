@@ -9,6 +9,8 @@ holds exactly these edits, recorded in `out`.json). Offsets follow state/sav.py:
 - ("recruit_slots", nation, [(state, type, troops, city), ...])  the 40 slots at nation +0x2E4 (others zeroed)
 - ("city_fort", city, word)       the fortification word (a value above 100 encodes an order in progress)
 - ("fleet_ships", fleet, ships)   word 9 of the 26-byte fleet record
+- ("army_pos", army, x, y)        move an army with its marker: the old tile gets back the army's covered cell, the
+                                  army's covered cell becomes the new tile's code, and the new tile gets the marker
 
 Only these words change: the staged save is otherwise the fixture, so both games start from identical bytes.
 """
@@ -53,6 +55,15 @@ def edit(b, e):
             struct.pack_into("<4h", b, base + 8 * k, st, sav.UNIT_TYPES.index(typ), troops, city)
     elif kind == "city_fort":
         struct.pack_into("<h", b, sav.CITY_OFF + e[1] * sav.CITY_LEN + 14 + 12, e[2])
+    elif kind == "army_pos":
+        rec = a + e[1] * sav.ARMY_LEN
+        ox, oy, _, _, cell = struct.unpack_from("<5h", b, rec)
+        marker = struct.unpack_from("<h", b, 2 * (ox * sav.MAP_H + oy))[0]
+        struct.pack_into("<h", b, 2 * (ox * sav.MAP_H + oy), cell)
+        newcell = struct.unpack_from("<h", b, 2 * (e[2] * sav.MAP_H + e[3]))[0]
+        struct.pack_into("<h", b, 2 * (e[2] * sav.MAP_H + e[3]), marker)
+        struct.pack_into("<2h", b, rec, e[2], e[3])
+        struct.pack_into("<h", b, rec + 8, newcell)
     elif kind == "fleet_ships":
         struct.pack_into("<h", b, f + e[1] * sav.FLEET_LEN + 18, e[2])
     else:

@@ -309,3 +309,32 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def run_original_entry(start, attacker, target, seed, tag):
+    """#231 natural entry: the original opens `start` with startup seed `seed`, army `attacker` (the human's) clicks the
+    adjacent enemy army `target`, and the battle board is read from memory as soon as the battle window is up, before any
+    command. Returns {"slots", "side", "counter"}; the game is then killed (nothing is fought)."""
+    from harness.driver import BATTLE_SLOTS, G, Game
+    from state.sav import load
+    g = Game()
+    g.move_aside(sorted(G.glob("AUTO*")))
+    name = f"{tag}.SAV"
+    if (G / name).exists():
+        raise RuntimeError(f"{G / name} exists; use a new tag")
+    (G / name).write_bytes(Path(start).read_bytes())
+    try:
+        g.load(G / name, seed=seed)
+        s = load(G / name)
+        t = s["armies"][target]
+        ax, ay = g.army_pos(attacker)
+        g.select_army(attacker, ax, ay)
+        g.click_tile(t["x"], t["y"], pause=1.5)
+        g.wait(lambda: g.in_battle() and g.find_windows(" v "), 30, "battle window")
+        time.sleep(1.0)
+        raw = bytes(BB.HEADER_LEN) + g.mem(BATTLE_SLOTS, BB.BLOCK_LEN - BB.HEADER_LEN)
+        blk = BB.parse_block(raw)
+        return {"slots": board_from_block(blk), "side": struct.unpack_from("<h", g.mem(0x4A0B78, 2))[0],
+                "counter": g.half_round_counter(), "title": g.find_windows(" v ")[0][1]}
+    finally:
+        g.kill()
