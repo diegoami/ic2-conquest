@@ -864,6 +864,42 @@
   "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
  },
  {
+  "test": "walk-1",
+  "kind": "tactical",
+  "start": "staged battle",
+  "orders": "each side walks one unit, then ends its half-round",
+  "verdict": "same-exact",
+  "detail": "\"\"",
+  "runs": 1,
+  "data": "run-exp-diff084-tactical",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "shoot-li",
+  "kind": "tactical",
+  "start": "staged battle",
+  "orders": "light infantry shoots an enemy in range, then the defender ends",
+  "verdict": "same-exact",
+  "detail": "\"\"",
+  "runs": 1,
+  "data": "run-exp-diff084-tactical",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "melee-target",
+  "kind": "tactical",
+  "start": "staged battle",
+  "orders": "a heavy infantry unit targets an adjacent enemy; the half-round's melee follows End",
+  "verdict": "same-exact",
+  "detail": "\"\"",
+  "runs": 1,
+  "data": "run-exp-diff084-tactical",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "self5-rome (original vs remake)",
   "kind": "script",
   "start": "BASE.SAV",
