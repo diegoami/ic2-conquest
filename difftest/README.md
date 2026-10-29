@@ -60,3 +60,11 @@ python3 -m difftest.history record <report.json> --data run-exp-<name> --issue <
 ```
 
 A wrong or superseded verdict is never edited: record a new entry with `--corrects <id>`.
+
+## Test registry
+
+[`REGISTRY.md`](REGISTRY.md) lists every test that has run, one row per test with its latest verdict and the
+finding that reports its difference. It is generated from the tracked measurements:
+`python3 -m difftest.registry`. **Check it before running a test** (owner, 2026-10-29). Re-run a test only to
+check a fix or a new remake version, and say so in the history. Every difference found goes into `findings/`; add
+the test-to-finding link in `difftest/registry.py` (`FINDINGS`).
