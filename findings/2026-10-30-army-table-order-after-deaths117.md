@@ -164,6 +164,30 @@ its cell. The sweep removes dead fleets by swap-remove too (`FUN_0044ad7c`: the 
 fleet can change which fleet survives an AI fleet merge, and where. The remake's AI fleet merge (if any) and its fleet order
 were not checked.
 
+## Addendum 4 (2026-10-30): fleets diverge the same way
+
+- **Original, in play** (`fleet_order.py`). Sources: the 80 campaign End turns, the 90 long-run End turns, and the 30 `storm30`
+  End turns (#233: Carthage's fleet hunts and sinks Rome's fleet 2). **31** End turns lose a fleet; the order is kept in
+  **0 of 31**, and swap-remove sweep groupings (`FUN_0044ad7c`: the last record into the freed slot) reproduce **31 of 31**.
+  - Example, `storm30` seed 1: Rome's fleet 2 sinks; `[0, 1, 2, 3, 4]` becomes `[0, 1, 4, 3]`.
+  - No two fleets of one nation were inverted: each nation has one fleet at this stage.
+- **Remake v0.8.4.** It removes fleets by filtering in place: `AiAbsorbFleetCommandHandler` (`.Where`, the survivor replaced in
+  place), the storm pass `FleetTickSystem` (the list rebuilt in order) and `ScuttleFleetCommandHandler`. So **its fleets keep
+  their order**.
+- **The AI fleet merge reads that order in both games.** The original's `FUN_00450b30` and the remake's
+  `AiFaithfulEconomy.MergeFleets` (T159) pick the survivor as the first own fleet in list order that passes the gates, and the
+  absorbed one as the first other own fleet that passes.
+  - **Emulated control** (`fleet_merge.py`, #187 RAM, unmodified): two 20-ship launched Carthaginian fleets at (49,62) and
+    (48,66).
+
+    | Order | Merged 40-ship fleet stands on |
+    |---|---|
+    | as staged | (49,62) |
+    | the two records swapped | **(48,66)** |
+
+    The absorbed record stays as a dead record (owner −1) until the next sweep.
+  - So after a fleet loss, the two games can merge different fleets, onto different cells.
+
 ## What this does not establish
 
 - **Later game.** With several armies per nation, a death can invert a same-nation pair, and then the merge choice (as
@@ -195,6 +219,9 @@ were not checked.
     (release `run-exp-diff084-campaign`);
   - the remake runs in `artifacts/run-exp-armyorder117/remake-v2/<campaign>-tNN/` (corrected) and `remake-v1/` (first
     version), release `run-exp-armyorder117`.
+- Fleets (Addendum 4): `fleet_order.py` → `fleet-order-v1.json` (campaigns and long runs) and `fleet-order-v2.json` (plus
+  `storm30`); `fleet_merge.py` → `fleet-merge-v2.json` (`fleet-merge-v1-nomerge-56tiles.json`: the first staging, 56 tiles
+  apart, no merge, kept).
 - Tie hook, 30-turn runs (Addendum 3): `runs/experiments/data/run-exp-tiehook117-long/` (`summary-long-v2.json`,
   `summary-long-v1.json` kept), release `run-exp-tiehook117-long`.
 - Tie hook (Addendum 2): `patches/tie_hook.py`, `difftest/probes/tie_hook_run.py`, `runs/experiments/tiehook117/analyze.py`;

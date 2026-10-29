@@ -1,0 +1,71 @@
+{
+ "ram": "#187 snapshot (private)",
+ "cells_before": {
+  "as_staged": [
+   [
+    49,
+    62
+   ],
+   [
+    105,
+    60
+   ]
+  ],
+  "swapped": [
+   [
+    105,
+    60
+   ],
+   [
+    49,
+    62
+   ]
+  ]
+ },
+ "as_staged": {
+  "count": 2,
+  "fleets": [
+   {
+    "record": 0,
+    "owner": 1,
+    "cell": [
+     49,
+     62
+    ],
+    "ships": 20
+   },
+   {
+    "record": 1,
+    "owner": 1,
+    "cell": [
+     105,
+     60
+    ],
+    "ships": 20
+   }
+  ]
+ },
+ "swapped": {
+  "count": 2,
+  "fleets": [
+   {
+    "record": 0,
+    "owner": 1,
+    "cell": [
+     105,
+     60
+    ],
+    "ships": 20
+   },
+   {
+    "record": 1,
+    "owner": 1,
+    "cell": [
+     49,
+     62
+    ],
+    "ships": 20
+   }
+  ]
+ }
+}
