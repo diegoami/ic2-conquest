@@ -107,8 +107,8 @@ The first open item below ("cross-nation loops") is answered for the two AI rout
     | (44,62) and (51,62), 3 and 4 away | targets (44,62), 3 away | targets **(51,62), 4 away: the farther one** |
 
 - **`FUN_0044efc8`, the capital defence** (dump :52776–52899, read, not emulated). It first lists the enemy armies near the
-  capital, other nations', in table order, **at most 10** (`min(9, n + 1)`). Then it gives each own army a threat from that
-  list. With more than 10 threats, which ones are listed depends on the order, and the assignment runs in list order.
+  capital, other nations', in table order, **at most 9** (`n = min(9, n + 1)`: later threats overwrite an uncounted tenth slot; corrected 2026-10-30, see `2026-10-30-capital-defence-rule123.md`). Then it gives each own army a threat from that
+  list. With more than 9 threats, which ones are listed depends on the order, and the assignment runs in list order.
 
 So a reorder between **different** nations, which the original makes after deaths and the remake does not, can change an AI
 army's target and the capital defence's assignments. None of the 43 observed death turns was checked for such a tie.
