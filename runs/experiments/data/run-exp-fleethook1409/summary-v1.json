@@ -1,0 +1,1053 @@
+{
+ "starts": [
+  {
+   "log": "BASE-fleet.jsonl",
+   "records": 58,
+   "counts": {
+    "calls": 8,
+    "levels": 18,
+    "direct_levels": 10,
+    "d174_levels": 8,
+    "d174_points_in_table": 8,
+    "d174_none": 0,
+    "cec8_calls": 4,
+    "cec8_none": 0,
+    "recursive_calls": 6,
+    "max_depth": 2
+   },
+   "inert": {
+    "identical": true,
+    "per_turn": [
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "calls": [
+    {
+     "turn": 1,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      86,
+      76
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_start": 25,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        49,
+        62
+       ],
+       "moves": 25
+      }
+     ],
+     "cec8": [],
+     "recursions": 0,
+     "end": [
+      74,
+      71
+     ],
+     "moves_end": 0
+    },
+    {
+     "turn": 1,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      190,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        190,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        193,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 13
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        193,
+        93
+       ],
+       "at": [
+        190,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 5
+    },
+    {
+     "turn": 2,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      67,
+      79
+     ],
+     "start": [
+      74,
+      71
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        74,
+        71
+       ],
+       "moves": 26
+      }
+     ],
+     "cec8": [],
+     "recursions": 0,
+     "end": [
+      68,
+      78
+     ],
+     "moves_end": 19
+    },
+    {
+     "turn": 2,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    },
+    {
+     "turn": 3,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      82,
+      79
+     ],
+     "start": [
+      68,
+      78
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 0,
+       "at": [
+        68,
+        78
+       ],
+       "moves": 26,
+       "d174": [
+        75,
+        69
+       ],
+       "waypoint_id": 5
+      },
+      {
+       "direct": 0,
+       "at": [
+        75,
+        69
+       ],
+       "moves": 17,
+       "d174": [
+        75,
+        47
+       ],
+       "waypoint_id": 6
+      }
+     ],
+     "cec8": [],
+     "recursions": 1,
+     "end": [
+      75,
+      52
+     ],
+     "moves_end": 0
+    },
+    {
+     "turn": 3,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    },
+    {
+     "turn": 4,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      88,
+      61
+     ],
+     "start": [
+      75,
+      52
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 0,
+       "at": [
+        75,
+        52
+       ],
+       "moves": 26,
+       "d174": [
+        75,
+        69
+       ],
+       "waypoint_id": 5
+      },
+      {
+       "direct": 0,
+       "at": [
+        75,
+        69
+       ],
+       "moves": 9,
+       "d174": [
+        120,
+        84
+       ],
+       "waypoint_id": 9
+      }
+     ],
+     "cec8": [],
+     "recursions": 1,
+     "end": [
+      84,
+      72
+     ],
+     "moves_end": 0
+    },
+    {
+     "turn": 4,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    }
+   ]
+  },
+  {
+   "log": "fleet-port-antium-0734-fleet.jsonl",
+   "records": 80,
+   "counts": {
+    "calls": 10,
+    "levels": 25,
+    "direct_levels": 19,
+    "d174_levels": 6,
+    "d174_points_in_table": 5,
+    "d174_none": 0,
+    "cec8_calls": 9,
+    "cec8_none": 0,
+    "recursive_calls": 10,
+    "max_depth": 2
+   },
+   "inert": {
+    "identical": true,
+    "per_turn": [
+     true,
+     true,
+     true,
+     true
+    ]
+   },
+   "calls": [
+    {
+     "turn": 1,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      109,
+      63
+     ],
+     "start": [
+      110,
+      63
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        110,
+        63
+       ],
+       "moves": 26
+      },
+      {
+       "direct": 1,
+       "at": [
+        113,
+        60
+       ],
+       "moves": 22
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        113,
+        60
+       ],
+       "at": [
+        110,
+        63
+       ],
+       "moves": 26
+      }
+     ],
+     "recursions": 1,
+     "end": [
+      110,
+      62
+     ],
+     "moves_end": 19
+    },
+    {
+     "turn": 1,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    },
+    {
+     "turn": 2,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      104,
+      64
+     ],
+     "start": [
+      110,
+      62
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 0,
+       "at": [
+        110,
+        62
+       ],
+       "moves": 26,
+       "d174": [
+        98,
+        59
+       ],
+       "waypoint_id": 7
+      },
+      {
+       "direct": 0,
+       "at": [
+        98,
+        59
+       ],
+       "moves": 14,
+       "d174": [
+        108,
+        60
+       ],
+       "waypoint_id": null
+      },
+      {
+       "direct": 1,
+       "at": [
+        108,
+        60
+       ],
+       "moves": 4
+      }
+     ],
+     "cec8": [],
+     "recursions": 2,
+     "end": [
+      105,
+      63
+     ],
+     "moves_end": 1
+    },
+    {
+     "turn": 2,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    },
+    {
+     "turn": 3,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      104,
+      64
+     ],
+     "start": [
+      105,
+      63
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        105,
+        63
+       ],
+       "moves": 26
+      },
+      {
+       "direct": 1,
+       "at": [
+        108,
+        60
+       ],
+       "moves": 22
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        108,
+        60
+       ],
+       "at": [
+        105,
+        63
+       ],
+       "moves": 26
+      }
+     ],
+     "recursions": 1,
+     "end": [
+      105,
+      63
+     ],
+     "moves_end": 19
+    },
+    {
+     "turn": 3,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      104,
+      64
+     ],
+     "start": [
+      105,
+      63
+     ],
+     "moves_start": 19,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        105,
+        63
+       ],
+       "moves": 19
+      },
+      {
+       "direct": 1,
+       "at": [
+        108,
+        60
+       ],
+       "moves": 15
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        108,
+        60
+       ],
+       "at": [
+        105,
+        63
+       ],
+       "moves": 19
+      }
+     ],
+     "recursions": 1,
+     "end": [
+      105,
+      63
+     ],
+     "moves_end": 12
+    },
+    {
+     "turn": 3,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    },
+    {
+     "turn": 4,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      104,
+      64
+     ],
+     "start": [
+      105,
+      63
+     ],
+     "moves_start": 26,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        105,
+        63
+       ],
+       "moves": 26
+      },
+      {
+       "direct": 1,
+       "at": [
+        108,
+        60
+       ],
+       "moves": 22
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        108,
+        60
+       ],
+       "at": [
+        105,
+        63
+       ],
+       "moves": 26
+      }
+     ],
+     "recursions": 1,
+     "end": [
+      105,
+      63
+     ],
+     "moves_end": 19
+    },
+    {
+     "turn": 4,
+     "nation": 1,
+     "fleet": 0,
+     "target": [
+      104,
+      64
+     ],
+     "start": [
+      105,
+      63
+     ],
+     "moves_start": 19,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        105,
+        63
+       ],
+       "moves": 19
+      },
+      {
+       "direct": 1,
+       "at": [
+        108,
+        60
+       ],
+       "moves": 15
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        108,
+        60
+       ],
+       "at": [
+        105,
+        63
+       ],
+       "moves": 19
+      }
+     ],
+     "recursions": 1,
+     "end": [
+      105,
+      63
+     ],
+     "moves_end": 12
+    },
+    {
+     "turn": 4,
+     "nation": 3,
+     "fleet": 1,
+     "target": [
+      190,
+      94
+     ],
+     "start": [
+      189,
+      93
+     ],
+     "moves_start": 28,
+     "levels": [
+      {
+       "direct": 1,
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      },
+      {
+       "direct": 0,
+       "at": [
+        192,
+        93
+       ],
+       "moves": 24,
+       "d174": [
+        182,
+        85
+       ],
+       "waypoint_id": 22
+      },
+      {
+       "direct": 1,
+       "at": [
+        182,
+        85
+       ],
+       "moves": 14
+      }
+     ],
+     "cec8": [
+      {
+       "point": [
+        192,
+        93
+       ],
+       "at": [
+        189,
+        93
+       ],
+       "moves": 28
+      }
+     ],
+     "recursions": 2,
+     "end": [
+      189,
+      93
+     ],
+     "moves_end": 6
+    }
+   ]
+  }
+ ],
+ "totals": {
+  "calls": 18,
+  "levels": 43,
+  "direct_levels": 29,
+  "d174_levels": 14,
+  "d174_points_in_table": 13,
+  "d174_none": 0,
+  "cec8_calls": 13,
+  "cec8_none": 0,
+  "recursive_calls": 16
+ }
+}

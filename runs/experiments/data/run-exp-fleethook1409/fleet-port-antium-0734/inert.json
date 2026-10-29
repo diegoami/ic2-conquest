@@ -1,0 +1,65 @@
+{
+ "start": "saves/fleet-port-antium-0734.SAV",
+ "seed": 12345,
+ "turns": 4,
+ "hooked": {
+  "moved_aside": null,
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0735.SAV",
+    "sha256": "050bfb2f9d72d6c02a28fb346e811e0919ca92c07073b7439fae264542c44558"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0736.SAV",
+    "sha256": "f4833ba8506404fe05d98407f4c85d07002b56f52baa35ec1bb1df4f7a6afad0"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0737.SAV",
+    "sha256": "1407f1bb7f79f5141d13d7b660864bd30938c348c3b0854762856d5700d04988"
+   },
+   {
+    "turn": 4,
+    "file": "hooked-t04-AUTO0738.SAV",
+    "sha256": "1de1a38c578d5d94ccda04dcb71a679edf1a01470e718903ffa03bc505ded2a4"
+   }
+  ],
+  "records": 80
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-131503",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0735.SAV",
+    "sha256": "050bfb2f9d72d6c02a28fb346e811e0919ca92c07073b7439fae264542c44558"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0736.SAV",
+    "sha256": "f4833ba8506404fe05d98407f4c85d07002b56f52baa35ec1bb1df4f7a6afad0"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0737.SAV",
+    "sha256": "1407f1bb7f79f5141d13d7b660864bd30938c348c3b0854762856d5700d04988"
+   },
+   {
+    "turn": 4,
+    "file": "plain-t04-AUTO0738.SAV",
+    "sha256": "1de1a38c578d5d94ccda04dcb71a679edf1a01470e718903ffa03bc505ded2a4"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true,
+  true
+ ],
+ "hooked_exe_sha256": "f933501d58110ef77e3582e50f76b0a3179acd882ea9d67050024c9adee2de56"
+}
