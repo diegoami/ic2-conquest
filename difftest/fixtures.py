@@ -1,6 +1,7 @@
 """Start saves built once in the original for the differential tests (#233, #232).
 
     python3 -m difftest.fixtures siege-felsina OUT.SAV
+    python3 -m difftest.fixtures new-game OUT.SAV ROW      # ROW 0 Rome ... 15 Thracia
 
 siege-felsina: BASE.SAV (Rome, 270 BC), seed 12345; army 0 to (99,34), End turn, then toward Felsina (Gaul, at
 war) until adjacent, as tests/test_orders.py test_attack does; saved before the siege. Both games then start the
@@ -53,4 +54,21 @@ if __name__ == "__main__":
     if out.exists():
         raise SystemExit(f"refusing to overwrite {out}")
     out.parent.mkdir(parents=True, exist_ok=True)
-    print(json.dumps({"siege-felsina": siege_felsina}[kind](out), default=str)[:600])
+    if kind == "new-game":
+        print(json.dumps(new_game_start(int(sys.argv[3]), out), default=str)[:600])
+    else:
+        print(json.dumps({"siege-felsina": siege_felsina}[kind](out), default=str)[:600])
+
+
+def new_game_start(row, out):
+    """New Game with nation `row` (0 Rome ... 15 Thracia) human, startup seed 12345; the new-game autosave
+    (AUTO0720.SAV) is copied to `out`. Earlier autosaves are moved aside, never deleted (driver.new_game)."""
+    g = Game()
+    path, texts = g.new_game(row=row, seed=12345)
+    shutil.copy(path, out)
+    s = load(out)
+    log = {"row": row, "seed": 12345, "seed_line": getattr(g, "seed_line", ""), "popups": texts, "date": s["date"],
+           "human": [n["name"] for n in s["nations"] if n["human"]]}
+    Path(out).with_suffix(".json").write_text(json.dumps(log, indent=1, default=str))
+    g.kill()
+    return log
