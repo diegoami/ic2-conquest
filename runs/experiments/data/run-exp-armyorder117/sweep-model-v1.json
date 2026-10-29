@@ -1,0 +1,804 @@
+[
+ {
+  "campaign": "armenia-rulebot1-5t",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "armenia-rulebot1-5t",
+  "turn": 2,
+  "dead_pre_indices": [
+   1,
+   10,
+   11
+  ],
+  "actual": [
+   9,
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [],
+  "explained": false
+ },
+ {
+  "campaign": "dacia-rulebot1-5t",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "dacia-rulebot1-5t",
+  "turn": 2,
+  "dead_pre_indices": [
+   10,
+   11
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": false,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     10
+    ],
+    [
+     11
+    ]
+   ],
+   [
+    [
+     11
+    ],
+    [
+     10
+    ]
+   ],
+   [
+    [
+     10,
+     11
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "gaul-rulebot1-5t-r2",
+  "turn": 1,
+  "dead_pre_indices": [
+   11
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": false,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     11
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "gaul-rulebot1-5t-r2",
+  "turn": 2,
+  "dead_pre_indices": [
+   0
+  ],
+  "actual": [
+   9,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     0
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "greece-rulebot1-5t-r2",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "greece-rulebot1-5t-r2",
+  "turn": 2,
+  "dead_pre_indices": [
+   1,
+   10,
+   11
+  ],
+  "actual": [
+   9,
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [],
+  "explained": false
+ },
+ {
+  "campaign": "illyria-rulebot1-5t",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "illyria-rulebot1-5t",
+  "turn": 2,
+  "dead_pre_indices": [
+   1,
+   11
+  ],
+  "actual": [
+   10,
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "remake_rule": [
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [],
+  "explained": false
+ },
+ {
+  "campaign": "illyria-rulebot1-5t",
+  "turn": 3,
+  "dead_pre_indices": [
+   0
+  ],
+  "actual": [
+   9,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     0
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "macedonia-rulebot1-5t-r2",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "macedonia-rulebot1-5t-r2",
+  "turn": 2,
+  "dead_pre_indices": [
+   1,
+   10,
+   11
+  ],
+  "actual": [
+   9,
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [],
+  "explained": false
+ },
+ {
+  "campaign": "media-rulebot1-5t",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "numidia-rulebot1-5t-r2",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "numidia-rulebot1-5t-r2",
+  "turn": 2,
+  "dead_pre_indices": [
+   1,
+   11
+  ],
+  "actual": [
+   10,
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "remake_rule": [
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [],
+  "explained": false
+ },
+ {
+  "campaign": "numidia-rulebot1-5t-r2",
+  "turn": 3,
+  "dead_pre_indices": [
+   0
+  ],
+  "actual": [
+   9,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     0
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "thracia-rulebot1-5t",
+  "turn": 1,
+  "dead_pre_indices": [
+   9,
+   10
+  ],
+  "actual": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   13,
+   12,
+   11
+  ],
+  "remake_rule": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   11,
+   12,
+   13
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [
+   [
+    [
+     9
+    ],
+    [
+     10
+    ]
+   ]
+  ],
+  "explained": true
+ },
+ {
+  "campaign": "thracia-rulebot1-5t",
+  "turn": 2,
+  "dead_pre_indices": [
+   1,
+   10,
+   11
+  ],
+  "actual": [
+   9,
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "remake_rule": [
+   0,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "differs_from_remake_rule": true,
+  "sweep_sequences_reproducing": [],
+  "explained": false
+ }
+]
