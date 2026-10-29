@@ -45,7 +45,12 @@ def verdict_of(case, ra, rb, n_actions):
         io, ir = check(act_, a0, a1), check(act_, b0, b1)
         d = compare(a1, b1)
         intents.append({"step": k, "op": act_["op"], "original": io, "remake": ir})
-        rows.append({"checkpoint": f"a{k:03d}", "fields": d["fields"], "map": d["map"]["count"]})
+        if any(x["op"] == "end_turn" for x in case["actions"][:k]):
+            # After an End turn inside the case, AI moves and random draws act: only the acting nation's records.
+            own = scoped(d, a1, b1, load(ra / "a000.SAV")["current_nation"])
+            rows.append({"checkpoint": f"a{k:03d}", "fields": own, "map": 0, "scoped": True})
+        else:
+            rows.append({"checkpoint": f"a{k:03d}", "fields": d["fields"], "map": d["map"]["count"]})
     last = n_actions + 1
     a_end, b_end = load(ra / f"a{last:03d}.SAV"), load(rb / f"a{last:03d}.SAV")
     nation = load(ra / "a000.SAV")["current_nation"]

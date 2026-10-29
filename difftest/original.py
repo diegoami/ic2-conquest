@@ -208,6 +208,32 @@ def perform(g, a, state):
     if op == "attack_army":
         t = state["armies"][a["target"]]
         return g.attack(a["army"], t["x"], t["y"])
+    if op == "embark":
+        return g.embark(a["army"], a["fleet"])
+    if op == "disembark":
+        return g.disembark(a["fleet"], a["x"], a["y"])
+    if op == "repair_fleet":
+        return g.repair_fleet(a["fleet"], a["points"])
+    if op == "scuttle_fleet":
+        return g.scuttle_fleet(a["fleet"], yes=True)
+    if op == "split_fleet":
+        return g.split_fleet(a["fleet"], a["ships"])
+    if op == "join_fleets":
+        return g.join_fleets(a["fleet"])
+    if op == "transfer_ships":
+        return g.transfer_ships(a["fleet"], a["ships"])
+    if op == "mobilize":
+        nation = state["current_nation"]
+        slots = state["nations"][nation]["recruit_slots"]
+        slot = slots[a["slot"]]
+        unit_row = [x["slot"] for x in slots if x["city"] == slot["city"]].index(slot["slot"])
+        return g.mobilize(recruit_row(state, nation, slot["city"]), [unit_row])
+    if op == "disband_unit":
+        return g.change_units_disband(a["army"], a["unit"])
+    if op == "join_units":
+        return g.join_units(a["army"], list(a["units"]))
+    if op == "transfer_units":
+        return g.transfer_units(a["army"], a["unit"])
     raise ValueError(op)
 
 

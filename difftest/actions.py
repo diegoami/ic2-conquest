@@ -32,6 +32,17 @@ OPS = {
     "attack_fleet": {"fleet": int, "target": int},     # at war only (no peace prompt)
     "besiege": {"army": int, "city": int},             # adjacent enemy city, at war
     "attack_army": {"army": int, "target": int},       # adjacent enemy army: a field battle (original: Computer general)
+    "embark": {"army": int, "fleet": int},             # adjacent own fleet carrying no army
+    "disembark": {"army": int, "fleet": int, "x": int, "y": int},   # the army aboard `fleet` lands on adjacent (x, y)
+    "repair_fleet": {"fleet": int, "points": int},
+    "scuttle_fleet": {"fleet": int},
+    "split_fleet": {"fleet": int, "ships": int},
+    "join_fleets": {"fleet": int, "partner": int},     # original: Join on `fleet` (the game picks the adjacent partner)
+    "transfer_ships": {"fleet": int, "partner": int, "ships": int},
+    "mobilize": {"slot": int},                         # index among the nation's occupied recruitment slots
+    "disband_unit": {"army": int, "unit": int},        # unit row of the army
+    "join_units": {"army": int, "units": list},
+    "transfer_units": {"army": int, "partner": int, "unit": int},   # one unit row to the adjacent own army
 }
 RELATION_KINDS = ("peace", "trade", "ally", "war")
 UNIT_TYPES = {"li": "light_infantry", "hi": "heavy_infantry", "ar": "archers", "lc": "light_cavalry", "hc": "heavy_cavalry"}
