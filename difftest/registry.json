@@ -1,5 +1,17 @@
 [
  {
+  "test": "rome-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "BASE.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
   "test": "tax-25",
   "kind": "single order",
   "start": "BASE.SAV",
@@ -812,6 +824,54 @@
   "detail": "",
   "runs": 1,
   "data": "run-exp-diff084-orders-b3",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "walk-city-on-line",
+  "kind": "single order",
+  "start": "BASE.SAV",
+  "orders": "move(army=1, x=99, y=32); end_turn()",
+  "verdict": "differs-immediate",
+  "detail": "a001: armies.1.cell: 4 vs 2; armies.1.moves: 1 vs 6; armies.1.x: 115 vs 118; armies.1.y: 49 vs 52; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b4",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
+  "test": "walk-city-on-line-near",
+  "kind": "single order",
+  "start": "BASE.SAV",
+  "orders": "move(army=1, x=116, y=49); end_turn()",
+  "verdict": "differs-immediate",
+  "detail": "a001: armies.1.moves: 3 vs 6; armies.1.x: 116 vs 118; armies.1.y: 49 vs 52; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b4",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
+  "test": "walk-line-clear",
+  "kind": "single order",
+  "start": "BASE.SAV",
+  "orders": "move(army=1, x=120, y=45); end_turn()",
+  "verdict": "refusal-difference",
+  "detail": "a001: armies.1.moves: 8 vs 1; armies.1.x: 120 vs 119; armies.1.y: 53 vs 46; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b4",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "walk-line-clear-land",
+  "kind": "single order",
+  "start": "BASE.SAV",
+  "orders": "move(army=1, x=120, y=48); end_turn()",
+  "verdict": "same",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b4",
   "remake": "v0.8.4 `d9cc71bc`",
   "finding": ""
  },

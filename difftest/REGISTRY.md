@@ -6,6 +6,7 @@ version. Batch-level results and corrections: [HISTORY.md](HISTORY.md).
 
 | test | kind | remake | start | orders | verdict | runs | finding | data |
 |---|---|---|---|---|---|---|---|---|
+| `rome-rulebot1-5t` | bot campaign | v0.8.4 `d9cc71bc` | BASE.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 | [2026-10-29-walk-stops-at-own-c…](../findings/2026-10-29-walk-stops-at-own-city-on-line230.md) | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
 | `tax-25` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | set_tax(percent=25); end_turn() | same | 1 |  | [run-exp-diff084-orders](../runs/experiments/data/run-exp-diff084-orders/) |
 | `move-plain-1` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | move(army=0, x=99, y=37); end_turn() | same | 1 |  | [run-exp-diff084-orders](../runs/experiments/data/run-exp-diff084-orders/) |
 | `fleet-10` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | build_fleet(ships=10); end_turn() | differs-immediate | 1 | [2026-10-29-v084-known-differen…](../findings/2026-10-29-v084-known-differences-and-command-gaps.md) | [run-exp-diff084-orders](../runs/experiments/data/run-exp-diff084-orders/) |
@@ -74,6 +75,10 @@ version. Batch-level results and corrections: [HISTORY.md](HISTORY.md).
 | `disband-unit` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | disband_unit(army=0, unit=0); end_turn() | same | 1 |  | [run-exp-diff084-orders-b3](../runs/experiments/data/run-exp-diff084-orders-b3/) |
 | `join-units-hi` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | join_units(army=0, units=[1, 2]); end_turn() | same | 1 |  | [run-exp-diff084-orders-b3](../runs/experiments/data/run-exp-diff084-orders-b3/) |
 | `split-transfer-unit` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | split_army(army=0, units=[0]); transfer_units(army=0, partner=14, unit=0); end_turn() | same | 1 |  | [run-exp-diff084-orders-b3](../runs/experiments/data/run-exp-diff084-orders-b3/) |
+| `walk-city-on-line` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | move(army=1, x=99, y=32); end_turn() | differs-immediate | 1 | [2026-10-29-walk-stops-at-own-c…](../findings/2026-10-29-walk-stops-at-own-city-on-line230.md) | [run-exp-diff084-orders-b4](../runs/experiments/data/run-exp-diff084-orders-b4/) |
+| `walk-city-on-line-near` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | move(army=1, x=116, y=49); end_turn() | differs-immediate | 1 | [2026-10-29-walk-stops-at-own-c…](../findings/2026-10-29-walk-stops-at-own-city-on-line230.md) | [run-exp-diff084-orders-b4](../runs/experiments/data/run-exp-diff084-orders-b4/) |
+| `walk-line-clear` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | move(army=1, x=120, y=45); end_turn() | refusal-difference | 1 |  | [run-exp-diff084-orders-b4](../runs/experiments/data/run-exp-diff084-orders-b4/) |
+| `walk-line-clear-land` | single order | v0.8.4 `d9cc71bc` | BASE.SAV | move(army=1, x=120, y=48); end_turn() | same | 1 |  | [run-exp-diff084-orders-b4](../runs/experiments/data/run-exp-diff084-orders-b4/) |
 | `naval30` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 60 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `siege10` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 20 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `storm30` | many seeds | v0.8.4 `d9cc71bc` |  |  | differs: at_target, fleet_survives, ships_lost | 60 | [2026-10-29-ai-fleet-hunt-absen…](../findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md) | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
