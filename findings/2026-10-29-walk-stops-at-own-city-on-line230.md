@@ -1,6 +1,7 @@
 # A long walk whose line crosses an own city goes around it in the original; the remake stops after one side step (and two more short walks)
 
-**Status:** promoted by research PR #94 (merge `683a484`), 2026-10-29, with the cause **established** (next section).
+**Status:** promoted by research PR #94 (merge `683a484`), 2026-10-29, with the cause **established** (next section);
+the two later cases promoted by research PR #95 (merge `4840439`), with both second walks replayed.
 **Tag:** [confirmed, partial]. Single orders from the same save in both games, deterministic (a move draws nothing),
 under Wine. One army, one blocking city.
 **Tasks:** conquest [#230](https://github.com/diegoami/ic2-conquest/issues/230), found by the
@@ -54,8 +55,15 @@ The #232 campaigns from nine more New Game starts found two more walks that end 
 | `S06_Gaul_AUTO0720.SAV` | army 9 from (93,28) toward (92,34) | (92,34), 1 left | (92,32), 3 left ("spending 5 of 8") |
 
 Both fit the cause above: the remake stops with moves left, short of the target, where the original's second walk
-goes on. Neither has an own city on the line, so the cause is not specific to cities. The second walk is not
-replayed instruction by instruction here. In the Gaul campaign, Rome's AI destroyed the Gaulish army where the
+goes on. Neither has an own city on the line, so the cause is not specific to cities. **Replayed by research (PR #94's
+method, PR #95, merge `4840439`):**
+- Carthage: one walker call gives (93,79) → (92,78) → (92,77) → (91,77) → (90,77) with 1 move left, the remake's
+  result; two calls add (89,76) with 0 left, the original's.
+- Gaul: one call gives (93,28) → (92,28) → … → (92,32) with 3 left, the remake's; two calls add (92,33) → (92,34) with
+  1 left, the original's.
+
+So the missing second walk is general: whenever the first walk ends short with moves left, the remake matches the
+single call exactly. In the Gaul campaign, Rome's AI destroyed the Gaulish army where the
 original's walk had put it, next to Roman territory, at (92,34); in the remake it stood two tiles away and survived.
 
 ## Found in play
