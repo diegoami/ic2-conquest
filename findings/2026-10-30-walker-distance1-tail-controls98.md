@@ -1,5 +1,7 @@
 # The army walker's distance-1 tail: contact branches confirmed; the strict-cost re-entry never decides in these controls
 
+**Status:** promoted by research PR #102 (merge `0a30a80`): research re-ran `tail_controls.py` on the pinned EXE and DAT and
+got exactly `tail-controls-v1.json`.
 **Tag:** [confirmed, partial]: 27 synthetic controls, each with the current seat's human flag off and on, run on the pinned
 unpatched original EXE (`9d753d5d…`) in Unicorn. Not a Wine or Windows run; not original gameplay.
 **Task:** research [#98](https://github.com/diegoami/imperial-conquest-2-research/issues/98) (for remake

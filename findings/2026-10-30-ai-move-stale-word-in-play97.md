@@ -1,5 +1,7 @@
 # In play, the original's AI move always walks again: the stale word it tests is never −1
 
+**Status:** promoted by research PR #102 (merge `0a30a80`; research re-compared the hooked and plain autosaves itself, all
+identical), with one correction (call sites, below); rules consolidated in research `docs/rules-specification.md` (PR #103).
 **Tag:** [confirmed, partial]: observed in the running original under Wine with an observation-only hook, 5 starts × 5 AI End
 turns (seed 12345). The hooked build's autosaves are byte-identical to the unpatched seed build's in all 25 turns.
 **Task:** research [#97](https://github.com/diegoami/imperial-conquest-2-research/issues/97) (for remake
@@ -54,8 +56,11 @@ original) collapses to its upper end. **About 28% of the remake's AI marches sto
 0x44F4A3` and **`0x44F4C7`**. The last is missing from #97's list of 9: it moves the army to a city's coordinates
 (`[0x47959E + 34·i]`). Calls seen (A records, by return site): recursion 152, `0x44F47C` 117, `0x44F43F` 52, `0x44F409` 49,
 `0x44F2F9` (intercept toward a threat army) 23, `0x44E913` 12, `0x44F4C7` 10, `0x44F4A3` 5, `0x44EC7D` 2, `0x44ECD6` 2.
-`0x44F2E7` (intercept toward the capital) was not seen. The B tests were reached mostly within recursive calls (138), then
-from `0x44F43F` (7), `0x44F409`, `0x44F4A3` and `0x44F4C7` (2 each), and `0x44F47C` (1).
+`0x44F2E7` (intercept toward the capital) was not seen. By each B record's own return address, the recursion tests were
+reached mostly in top-level calls (141): `0x44F47C` 93, `0x44F43F` 18, `0x44F409` 15, `0x44F2F9` 11, `0x44E913` 2,
+`0x44ECD6` 1, `0x44EC7D` 1. Only 11 were in recursive frames. (Corrected after research PR #102: the first version linked
+each B to the latest A record of the same army, which after a recursion is the inner call's, and said "mostly within
+recursive calls (138)".)
 
 ## What this does not establish
 
