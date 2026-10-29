@@ -42,3 +42,19 @@ Failed attempts, kept: the first folders of Carthage, Seleucid, Ptolemaic, Maced
 shared by all runs, refused by the driver), Gaul (the display died mid-run), and Greece, Celtiberia and Illyria
 (the display was gone; `harness/driver.py` `ensure_xvfb` now checks our own display). `carthage-rulebot1-5t-r3` is
 a partial duplicate started by a rerun-script bug and stopped. The completed runs are the folders with `summary.json`.
+
+## The last six nations (2026-10-29): New Game starts made here (`starts/S<row>_<nation>_AUTO0720.SAV`, seed 12345)
+
+Summary of all 16: `campaigns-report-v2.txt` and `.json`.
+
+| Campaign | First own difference | Cause |
+|---|---|---|
+| Dacia | none | identical own records and orders for all 5 turns |
+| Armenia | none | identical for all 5 turns |
+| Bithynia | turn 1 | the compared army lists differ by armies of other owners (an army that belongs to another nation in one game). Bithynia's own move spent all 8 moves in both, so this is not the walk. AI armies; not analysed further |
+| Galatia | turn 1 | the same pattern; its own move spent 8 of 8 in both. AI armies; not analysed further |
+| Media | turn 2 | the same pattern, in a turn without own orders. AI armies |
+| Thracia | turn 2 | the same pattern, in a turn without own orders. AI armies |
+
+Over all 16 starts: 3 identical for 5 turns (Numidia, Dacia, Armenia); 3 first differ through the
+missing second walk (Rome, Carthage, Gaul); the rest through the AI (diplomacy, armies, economy) or random draws.
