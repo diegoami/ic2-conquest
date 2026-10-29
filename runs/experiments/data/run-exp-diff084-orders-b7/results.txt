@@ -1,0 +1,8 @@
+# run-exp-diff084-orders-b7: single-order sweep
+
+Verdicts: differs-immediate 2
+
+| case | orders | original | remake | verdict | first difference |
+|---|---|---|---|---|---|
+| fleet-second-walk-88-32 | fleet 2 toward (88,32) | unchecked  | unchecked  | **differs-immediate** | a001: fleets.0.moves: 14 vs 19; fleets.0.x: 88 vs 93; fleets.0.y: 32 vs 37; 2 map cells |
+| fleet-second-walk-87-47 | fleet 2 toward (87,47) | unchecked  | unchecked  | **differs-immediate** | a001: fleets.0.moves: 14 vs 16; fleets.0.x: 87 vs 89; fleets.0.y: 47 vs 48; 2 map cells |

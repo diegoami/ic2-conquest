@@ -6,6 +6,7 @@ version. Batch-level results and corrections: [HISTORY.md](HISTORY.md).
 
 | test | kind | remake | start | orders | verdict | runs | finding | data |
 |---|---|---|---|---|---|---|---|---|
+| `allhuman-rulebot1-32` | bot campaign | v0.8.4 `d9cc71bc` | start-allhuman-AUTO0720.SAV | rulebot-1, 32 turns | first divergence turn 5 | 1 |  | [run-exp-diff084-allhuman](../runs/experiments/data/run-exp-diff084-allhuman/) |
 | `armenia-rulebot1-5t` | bot campaign | v0.8.4 `d9cc71bc` | S13_armenia_AUTO0720.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 |  | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
 | `bithynia-rulebot1-5t` | bot campaign | v0.8.4 `d9cc71bc` | S11_bithynia_AUTO0720.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 |  | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
 | `carthage-rulebot1-5t-r2` | bot campaign | v0.8.4 `d9cc71bc` | S01_Carthage_AUTO0720.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 | [2026-10-29-walk-stops-at-own-c…](../findings/2026-10-29-walk-stops-at-own-city-on-line230.md) | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
@@ -113,6 +114,8 @@ version. Batch-level results and corrections: [HISTORY.md](HISTORY.md).
 | `split-fleet-19` | single order | v0.8.4 `d9cc71bc` | split-fleet-19.SAV | split_fleet(fleet=2, ships=5); end_turn() | same | 2 |  | [run-exp-diff084-orders-b6](../runs/experiments/data/run-exp-diff084-orders-b6/) |
 | `merc-20-units` | single order | v0.8.4 `d9cc71bc` | merc-20-units.SAV | hire_mercenary(army=1, pool=25); end_turn() | same | 1 |  | [run-exp-diff084-orders-b6](../runs/experiments/data/run-exp-diff084-orders-b6/) |
 | `merc-low-supplies` | single order | v0.8.4 `d9cc71bc` | merc-low-supplies.SAV | hire_mercenary(army=1, pool=25); end_turn() | same | 1 |  | [run-exp-diff084-orders-b6](../runs/experiments/data/run-exp-diff084-orders-b6/) |
+| `fleet-second-walk-88-32` | single order | v0.8.4 `d9cc71bc` | fleet-port-antium-0734.SAV | move_fleet(fleet=2, x=88, y=32); end_turn() | differs-immediate | 1 | [2026-10-30-paths-in-play-and-f…](../findings/2026-10-30-paths-in-play-and-fleet-walks42.md) | [run-exp-diff084-orders-b7](../runs/experiments/data/run-exp-diff084-orders-b7/) |
+| `fleet-second-walk-87-47` | single order | v0.8.4 `d9cc71bc` | fleet-port-antium-0734.SAV | move_fleet(fleet=2, x=87, y=47); end_turn() | differs-immediate | 1 | [2026-10-30-paths-in-play-and-f…](../findings/2026-10-30-paths-in-play-and-fleet-walks42.md) | [run-exp-diff084-orders-b7](../runs/experiments/data/run-exp-diff084-orders-b7/) |
 | `naval30` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 60 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `siege10` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 20 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `storm30` | many seeds | v0.8.4 `d9cc71bc` |  |  | differs: at_target, fleet_survives, ships_lost | 60 | [2026-10-29-ai-fleet-hunt-absen…](../findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md) | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
