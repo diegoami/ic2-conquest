@@ -1,5 +1,6 @@
 # Remake v0.8.4: three known differences remain, and its commands accept what both interfaces refuse
 
+**Status:** promoted by research PR #92 (merge `d8c8e39`), with the corrections below applied here on 2026-10-29.
 **Tag:** [confirmed, partial]. Original-vs-remake differential runs under Wine, same start save and same orders in
 both games. Not run on native Windows.
 **Tasks:** conquest [#229](https://github.com/diegoami/ic2-conquest/issues/229) and
@@ -36,17 +37,23 @@ The engine's own check for the recruit amount is only `troops > 0` (`RecruitStan
 The same orders give identical states in both games up to the first End turn: tax 20, a move, and a 1,200 heavy
 infantry recruit at Rome (run `run-exp-diff084-tooling`, `toy3b-original-1` vs `toy3b-remake-1`, checkpoints
 `a000`–`a003`, 0 differences). Rome's own records also stay equal after it. Over that End turn (turn 0720 → 0721):
-- seven AI armies and two fleets stand elsewhere;
-- Bithynia, Celtiberia and Gaul queue different recruits (mobilization: Gaul 50 vs 63, Celtiberia 56 vs 73);
+- six AI armies (records 3, 5, 8, 9, 12 and 13; 12 is Galatia's) and two fleets stand elsewhere;
+- Bithynia, Celtiberia and Gaul queue different recruits (mobilization: Gaul 50 vs 63, Celtiberia 56 vs 73, Bithynia
+  47 vs 45);
 - the pending offer comes from Celtiberia in the original and from Seleucid in the remake;
-- the 48 cities whose supplies differ all belong to those AI nations, and their supply growth follows the different
-  recruitment.
+- the 48 cities whose supplies differ all belong to AI nations: Gaul 24, Celtiberia 18, Bithynia 3 and Galatia 3
+  (Acroinon, Gordium, Iconium). Their supply growth follows the different recruitment and, for Galatia, its army.
 
 These are the AI recruitment and diplomacy families of #176 and #177; the remake was given no recorded original
-draws here. In 52 single-order cases, Rome's own records were equal after End turn every time.
+draws here. In all 54 single-order cases of #230 batches 1 and 2, Rome's own records were equal after End turn.
 
 ## Not covered
 
 Fleet orders, mobilization and unit-level orders (#230 batch 3); battles (#231); multi-turn play (#232); random
 outcomes (#233, `findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md` for the AI fleet). The test registry is
 `difftest/REGISTRY.md`.
+
+**Corrections (research intake, PR #92, 2026-10-29):** the first version said "seven AI armies" (six), left out
+Bithynia's mobilization and Galatia's three cities, and said "52 single-order cases" (54: batch 1 has 49 cases,
+not 47). The fleet-hunt finding it cites was on branch `research/diff084-stats233` at intake and reaches main with
+that branch's PR.
