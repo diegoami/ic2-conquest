@@ -1368,6 +1368,30 @@
   "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
  },
  {
+  "test": "weather30",
+  "kind": "many seeds",
+  "start": "",
+  "orders": "",
+  "verdict": "consistent",
+  "detail": "original 30 trials, remake 30",
+  "runs": 60,
+  "data": "run-exp-diff084-stats",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "weather60h",
+  "kind": "many seeds",
+  "start": "",
+  "orders": "",
+  "verdict": "consistent",
+  "detail": "original 60 trials, remake 60",
+  "runs": 120,
+  "data": "run-exp-diff084-stats",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "walk-1",
   "kind": "tactical",
   "start": "staged battle",

@@ -20,6 +20,20 @@ in-remake233.md`). Pre-registered before running:
 - storm30b: storm30 from a staged copy of the fixture with Rome-Carthage set to peace (0) both ways, so no
   nation at war with Rome has a fleet within reach; the staged save is written once by stage_storm_peace() and
   kept with the run. Same order, metrics and seeds 1-30.
+
+ADDED 2026-10-30, before running (after the #232 AI-free game showed 520 rough-sea cells painted in the remake and none in
+the original over one week, a single draw):
+- weather30: BASE.SAV (Rome, 270 BC Spring week 1), one End turn; metrics: the number of rough-sea cells (map code 1)
+  after it, and whether any is painted. Seeds 1-30. The original's rule (research feature inventory E07): 20 fixed sea
+  regions rolled each tick, spring 1/15 (radius 4) before week 6.
+
+ADDED 2026-10-30, before running (weather30 was Holm-consistent, but a post-hoc count of hit regions gave the original
+59 hits in 600 centre rolls against the rule's 40, the remake 36; the original's 12 multi-hit trials were reproduced
+draw-exactly by the decompiled roll on Delphi's LCG a few hundred draws after the seed, so the rule itself is 1/15):
+- weather60h: weather30 with new seeds 31-90. Metrics: weather30's two, plus hits = the number of the 20 DAT centres
+  (research decompiled-map-code1-overlay.md) whose central 3x3 has at least 5 rough cells. Hypothesis: the mean hits
+  differ between the games. Read-out also reports each side's hits against the rule's 20/15 per turn (one-sample,
+  descriptive). Tested alone (its own Holm family of 3 metrics).
 """
 from pathlib import Path
 import struct
@@ -49,6 +63,22 @@ def storm(before, after):
     return {"fleet_survives": alive, "ships_lost": f0["ships"] - (f1["ships"] if alive else 0),
             "condition_lost": (f0["condition"] - f1["condition"]) if alive else None,
             "at_target": int(alive and (f1["x"], f1["y"]) == (97, 48))}
+
+
+def weather(before, after):
+    cells = sum(1 for v in after["map"] if v == 1)
+    return {"rough_cells": cells, "any_rough": int(cells > 0)}
+
+
+CENTRES = [(10, 10), (32, 79), (74, 50), (68, 68), (92, 68), (100, 56), (105, 81), (131, 66), (126, 89), (148, 86),
+           (177, 83), (206, 83), (213, 70), (180, 74), (158, 69), (153, 48), (177, 24), (191, 10), (209, 12), (233, 22)]
+
+
+def weather_hits(before, after):
+    m = after["map"]
+    hits = sum(1 for cx, cy in CENTRES
+               if sum(m[x * 140 + y] == 1 for x in range(cx - 1, cx + 2) for y in range(cy - 1, cy + 2)) >= 5)
+    return dict(weather(before, after), hits=hits)
 
 
 def siege(before, after):
@@ -88,7 +118,11 @@ SCENARIOS = [
      "seeds": list(range(1, 31))},
     {"id": "siege10", "start": SIEGE_START,
      "actions": [{"op": "besiege", "army": 0, "city": 79}], "metrics": siege, "seeds": list(range(1, 11))},
+    {"id": "weather30", "start": str(Path.home() / "ic2-work/fixtures/BASE.SAV"), "actions": [{"op": "end_turn"}],
+     "metrics": weather, "seeds": list(range(1, 31))},
     {"id": "storm30b", "start": STORM_PEACE,
      "actions": [{"op": "move_fleet", "fleet": 2, "x": 97, "y": 48}, {"op": "end_turn"}], "metrics": storm,
      "seeds": list(range(1, 31))},
+    {"id": "weather60h", "start": str(Path.home() / "ic2-work/fixtures/BASE.SAV"), "actions": [{"op": "end_turn"}],
+     "metrics": weather_hits, "seeds": list(range(31, 91))},
 ]
