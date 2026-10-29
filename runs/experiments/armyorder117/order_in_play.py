@@ -78,16 +78,42 @@ def transition(pre_s, post_s):
             "new_positions": new, "post_len": len(post)}
 
 
+def end_turn_pairs(c):
+    """v3: the receipt's end_turn actions. pre = the checkpoint before the End-turn click (t00-start for the first action),
+    post = that action's checkpoint, the autosave written just before the human's StartTurn, after every AI seat.
+    (v1/v2 paired the last checkpoint of turn NN with turn NN+1's a00, which is the next End turn's autosave only when the
+    turn had no orders; otherwise it is the save after the next turn's first order, so those pairs missed the AI round.)"""
+    acts = [json.loads(l) for l in (c / "original" / "receipt.jsonl").read_text().splitlines() if l.strip()]
+    acts = [x for x in acts if x.get("kind") == "action" and x.get("checkpoint")]
+    prev = "t00-start"
+    for x in acts:
+        if x["action"]["op"] == "end_turn" and not x.get("error"):
+            yield prev, x["checkpoint"]
+        prev = x["checkpoint"]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--version", required=True)
-    v = ap.parse_args().version
+    ap.add_argument("--pairs", choices=["v2", "receipt"], default="receipt")
+    a = ap.parse_args()
+    v = a.version
     out = DATA / f"order-in-play-{v}.json"
     if out.exists():
         raise SystemExit(f"refusing to overwrite {out}")
     DATA.mkdir(parents=True, exist_ok=True)
     rows = []
     for c in sorted(p for p in CAMP.iterdir() if (p / "original").is_dir()):
+        if a.pairs == "receipt":
+            if not (c / "original" / "receipt.jsonl").exists():
+                continue
+            for t, (pre, post) in enumerate(end_turn_pairs(c), 1):
+                pre_f, post_f = c / "original" / f"{pre}.SAV", c / "original" / f"{post}.SAV"
+                if not (pre_f.exists() and post_f.exists()):
+                    continue
+                r = transition(sav.parse(pre_f.read_bytes()), sav.parse(post_f.read_bytes()))
+                rows.append(dict(campaign=c.name, turn=t, pre=pre_f.name, post=post_f.name, **r))
+            continue
         saves = {}
         for f in (c / "original").glob("t*-a*.SAV"):
             t, k = re.match(r"t(\d+)-a(\d+)", f.stem).groups()
