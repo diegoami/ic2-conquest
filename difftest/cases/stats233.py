@@ -13,8 +13,16 @@ more seeds gets a NEW scenario id with its own pre-registration, never a quiet e
 - siege10: army 0 next to Felsina (Gaul, at war) besieges it. Start fixture `siege-felsina-start.SAV`, built once
   in the original (BASE.SAV, seed 12345: army 0 to (99,34), End turn, then to Felsina's neighbourhood) and kept
   with the run. The siege may be deterministic; 10 seeds check that. Seeds 1-10.
+
+ADDED 2026-10-29, after storm30 ran (its storm damage could not be compared: Carthage's fleet hunted and sank
+Rome's fleet in 30 of 30 original trials and never moved in the remake; `findings/2026-10-29-ai-fleet-hunt-absent-
+in-remake233.md`). Pre-registered before running:
+- storm30b: storm30 from a staged copy of the fixture with Rome-Carthage set to peace (0) both ways, so no
+  nation at war with Rome has a fleet within reach; the staged save is written once by stage_storm_peace() and
+  kept with the run. Same order, metrics and seeds 1-30.
 """
 from pathlib import Path
+import struct
 
 ROOT = Path(__file__).resolve().parents[2]
 ALPHA = 0.05
@@ -51,6 +59,27 @@ def siege(before, after):
             "pop_change": c1["pop"] - c0["pop"]}
 
 
+STORM_PEACE = str(ROOT / "artifacts/run-exp-diff084-stats/fixtures/fleet-port-antium-peace-carthage.SAV")
+
+
+def stage_storm_peace():
+    """Write STORM_PEACE once: the storm fixture with nations 0 and 1 at relation 0 both ways (state/sav.py layout:
+    relations are 16 words at +0x26 of each 1,172-byte nation record)."""
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from difftest.tactical import _offsets
+    out = Path(STORM_PEACE)
+    if out.exists():
+        return out
+    b = bytearray((ROOT / "saves/fleet-port-antium-0734.SAV").read_bytes())
+    _, _, n = _offsets(b)
+    for me, them in ((0, 1), (1, 0)):
+        struct.pack_into("<h", b, n + me * 1172 + 0x26 + 2 * them, 0)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_bytes(bytes(b))
+    return out
+
+
 SCENARIOS = [
     {"id": "naval30", "start": str(ROOT / "saves/fleets-adjacent-at-sea-0723.SAV"),
      "actions": [{"op": "attack_fleet", "fleet": 1, "target": 0}], "metrics": naval, "seeds": list(range(1, 31))},
@@ -59,4 +88,7 @@ SCENARIOS = [
      "seeds": list(range(1, 31))},
     {"id": "siege10", "start": SIEGE_START,
      "actions": [{"op": "besiege", "army": 0, "city": 79}], "metrics": siege, "seeds": list(range(1, 11))},
+    {"id": "storm30b", "start": STORM_PEACE,
+     "actions": [{"op": "move_fleet", "fleet": 2, "x": 97, "y": 48}, {"op": "end_turn"}], "metrics": storm,
+     "seeds": list(range(1, 31))},
 ]

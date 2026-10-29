@@ -2,7 +2,7 @@
 
 Task #230 (tracker #228), approved by the owner on 2026-10-28. Batch 2 (controls): `../run-exp-diff084-orders-b2/`.
 Remake v0.8.4 (`d9cc71bc`), `classical-faithful`; original `fast rollingsave seed.exe`, seed 12345, Wine 10.0.
-Start: `BASE.SAV` (Rome, 270 BC Spring week 1). Cases: `difftest/cases/orders230_b1.py` (47 cases).
+Start: `BASE.SAV` (Rome, 270 BC Spring week 1). Cases: `difftest/cases/orders230_b1.py` (49 cases).
 
 Each case plays its order(s) then one End turn in both games (`python3 -m difftest.sweep`). The order's own
 checkpoints are compared in full. The state after End turn is compared on the acting nation's records only,

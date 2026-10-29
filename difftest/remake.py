@@ -55,6 +55,28 @@ def command(a):
         return f"besiege-city {{army:{a['army']}}} {{city:{a['city']}}}"
     if op == "attack_army":
         return f"attack-army {{army:{a['army']}}} {{army:{a['target']}}}"
+    if op == "embark":
+        return f"embark-army {{army:{a['army']}}} {{fleet:{a['fleet']}}}"
+    if op == "disembark":
+        return f"disembark-army {{army:{a['army']}}} {a['x']} {a['y']}"
+    if op == "repair_fleet":
+        return f"repair-fleet {{fleet:{a['fleet']}}} {a['points']}"
+    if op == "scuttle_fleet":
+        return f"scuttle-fleet {{fleet:{a['fleet']}}}"
+    if op == "split_fleet":
+        return f"split-fleet {{fleet:{a['fleet']}}} {{newfleet}} {a['ships']}"
+    if op == "join_fleets":
+        return f"join-fleets {{fleet:{a['fleet']}}} {{fleet:{a['partner']}}}"
+    if op == "transfer_ships":
+        return f"fleet-transfer {{fleet:{a['fleet']}}} {{fleet:{a['partner']}}} {a['ships']} 0 0"
+    if op == "mobilize":
+        return f"mobilize {a['slot']} {{newarmy}}"
+    if op == "disband_unit":
+        return f"disband-unit {{army:{a['army']}}} {a['unit']}"
+    if op == "join_units":
+        return f"join-units {{army:{a['army']}}} " + " ".join(str(u) for u in a["units"])
+    if op == "transfer_units":
+        return f"army-transfer {{army:{a['army']}}} {{army:{a['partner']}}} units={a['unit']}"
     raise ValueError(op)
 
 

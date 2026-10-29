@@ -38,6 +38,18 @@ def fresh_dir(base):
 def verdict_of(case, ra, rb, n_actions):
     """(verdict, details) from the two run folders."""
     rows, intents = [], []
+    # Differences already present at the start (a000) come from the import -> export round trip of the start save,
+    # not from the case's orders: a later difference identical to one of them is set aside as "baseline"
+    # (#230 batch 3: fleet-port-antium-0734 starts with 3 city marker cells and the empty pending offer's type).
+    d0 = compare(load(ra / "a000.SAV"), load(rb / "a000.SAV"))
+    base_fields = {(f["path"], json.dumps(f["a"]), json.dumps(f["b"])) for f in d0["fields"]}
+    base_cells = {(c["x"], c["y"], c["a"], c["b"]) for c in d0["map"]["first"]}
+
+    def strip(d):
+        fields = [f for f in d["fields"] if (f["path"], json.dumps(f["a"]), json.dumps(f["b"])) not in base_fields]
+        cells = [c for c in d["map"]["first"] if (c["x"], c["y"], c["a"], c["b"]) not in base_cells]
+        extra = max(0, d["map"]["count"] - len(d["map"]["first"]))      # cells beyond the listed ones are kept
+        return fields, len(cells) + extra
     for k in range(1, n_actions + 1):
         a0, a1 = load(ra / f"a{k - 1:03d}.SAV"), load(ra / f"a{k:03d}.SAV")
         b0, b1 = load(rb / f"a{k - 1:03d}.SAV"), load(rb / f"a{k:03d}.SAV")
@@ -45,12 +57,19 @@ def verdict_of(case, ra, rb, n_actions):
         io, ir = check(act_, a0, a1), check(act_, b0, b1)
         d = compare(a1, b1)
         intents.append({"step": k, "op": act_["op"], "original": io, "remake": ir})
-        rows.append({"checkpoint": f"a{k:03d}", "fields": d["fields"], "map": d["map"]["count"]})
+        fields, cells = strip(d)
+        if any(x["op"] == "end_turn" for x in case["actions"][:k]):
+            # After an End turn inside the case, AI moves and random draws act: only the acting nation's records.
+            own = scoped({"fields": fields}, a1, b1, load(ra / "a000.SAV")["current_nation"])
+            rows.append({"checkpoint": f"a{k:03d}", "fields": own, "map": 0, "scoped": True})
+        else:
+            rows.append({"checkpoint": f"a{k:03d}", "fields": fields, "map": cells})
     last = n_actions + 1
     a_end, b_end = load(ra / f"a{last:03d}.SAV"), load(rb / f"a{last:03d}.SAV")
     nation = load(ra / "a000.SAV")["current_nation"]
-    end = scoped(compare(a_end, b_end), a_end, b_end, nation)
-    details = {"intents": intents, "immediate": rows, "after_end_turn_own": end, "nation": NATIONS[nation]}
+    end = scoped({"fields": strip(compare(a_end, b_end))[0]}, a_end, b_end, nation)
+    details = {"intents": intents, "immediate": rows, "after_end_turn_own": end, "nation": NATIONS[nation],
+               "start_baseline": {"fields": d0["fields"], "map_cells": d0["map"]["count"]}}
     errors = [json.loads(l).get("error") for l in (ra / "receipt.jsonl").read_text().splitlines()
               if l.strip() and json.loads(l).get("kind") == "action"]
     details["original_errors"] = [e for e in errors if e]

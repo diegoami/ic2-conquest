@@ -1,5 +1,9 @@
 # Declaring war from International Relations leaves a higher-index ally at peace (−18); the remake puts it at war
 
+**Status:** promoted by research PR #92 (merge `d8c8e39`), 2026-10-29: all 430 saves hash OK, all five tables reproduce
+from the saves, and the explanation is upgraded to [confirmed: decompile] from a re-read of `TPolitics_OK` and the
+setter in the pinned dump. It corrects feature-inventory S02c. An earlier case fits the attack-path expectation:
+in `2026-10-03-fleet-peace-prompt.md`, a fleet attack on Carthage left its higher-index ally Numidia at 3.
 **Tag:** [confirmed, partial]: five original-vs-remake cases under Wine with the same start save and the same
 order, and an explanation `[derived]` from the research's reading of `TPolitics_OK`. Not run on native Windows.
 **Task:** [conquest #230](https://github.com/diegoami/ic2-conquest/issues/230) (tracker #228), remake **v0.8.4**

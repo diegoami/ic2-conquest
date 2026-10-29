@@ -1,0 +1,5 @@
+{"format": "diff-actions/1", "name": "embark-turn-disembark", "note": "army 0 boards fleet 2, End turn, then lands at (102,47)"}
+{"op": "embark", "army": 0, "fleet": 2}
+{"op": "end_turn"}
+{"op": "disembark", "army": 0, "fleet": 2, "x": 102, "y": 47}
+{"op": "end_turn"}
