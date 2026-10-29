@@ -1,0 +1,12 @@
+32f3ce7 Pass2 weighted eligibility (merged by 30e1386): 23
+   ar-hc-three_s1_r5_hook, ar-li-three_s2_r5_hook, hc-ar-three_s1_r5_hook, hc-ar-three_s3_r5_hook, hc-hc-three_s2_r5_hook, hc-hi-three_s3_r5_hook, hi-ar-three_s1_r5_hook, hi-lc-three_s1_r5_hook, hi-li-three_s3_r5_hook, lc-hi-three_s1_r5_hook, lc-hi-three_s2_r5_hook, lc-li-three_s2_r5_hook, lc-li-three_s3_r5_hook, li-hc-three_s1_r5_hook, li-hc-three_s3_r5_hook, li-hi-half-three_s1_r5_hook, li-hi-half-three_s3_r5_hook, li-hi-one-three_s1_r5_hook, li-hi-one-three_s3_r5_hook, li-hi-three_s2_r5_hook, li-lc-three_s1_r5_hook, li-lc-three_s2_r5_hook, li-lc-three_s3_r5_hook
+65cfc1f threat movement actor shooting mode/radius: 11
+   ar-hi-three_s2_r5_hook, ar-hi-three_s3_r5_hook, ar-lc-three_s2_r5_hook, ar-li-three_s1_r5_hook, ar-li-three_s3_r5_hook, hi-ar-three_s2_r5_hook, hi-ar-three_s3_r5_hook, lc-ar-three_s1_r5_hook, lc-ar-three_s2_r5_hook, li-ar-three_s2_r5_hook, mix-rg_s3_r5_hook
+PR1371 f0cd629 later-pass slot order: 1
+   mix-rg_s1_r5_hook
+PR1387 3c18600 captured Walk target / live-shot guard: 1
+   mix-rg_s2_r5_hook
+total attributed 36 of 36
+mix-rg_s1_r5_hook -> ['PR1371']
+ar-hi-three_s3_r5_hook -> ['65cfc1f']
+hi-ar-three_s3_r5_hook -> ['65cfc1f']
