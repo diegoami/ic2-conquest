@@ -1,0 +1,158 @@
+{
+ "case": "source2-of5-tombstone1",
+ "source_index": 2,
+ "tombstone_index": 1,
+ "geometry": {
+  "fleet": [
+   40,
+   33
+  ],
+  "source": [
+   39,
+   34
+  ],
+  "near_land_candidates": [
+   [
+    40,
+    34
+   ]
+  ],
+  "controlled_army_count": 5
+ },
+ "before": {
+  "count_word": 5,
+  "records": [
+   {
+    "index": 0,
+    "owner": 1,
+    "x": 10,
+    "y": 49,
+    "moves": 1,
+    "troops": 3000,
+    "first_unit_name": "F2-0"
+   },
+   {
+    "index": 1,
+    "owner": -1,
+    "x": 10,
+    "y": 48,
+    "moves": 1,
+    "troops": 0,
+    "first_unit_name": "F1-0"
+   },
+   {
+    "index": 2,
+    "owner": 1,
+    "x": 39,
+    "y": 34,
+    "moves": 8,
+    "troops": 6000,
+    "first_unit_name": "C0"
+   },
+   {
+    "index": 3,
+    "owner": 1,
+    "x": 10,
+    "y": 50,
+    "moves": 1,
+    "troops": 3000,
+    "first_unit_name": "F3-0"
+   },
+   {
+    "index": 4,
+    "owner": 1,
+    "x": 10,
+    "y": 51,
+    "moves": 1,
+    "troops": 3000,
+    "first_unit_name": "F4-0"
+   },
+   {
+    "index": 5,
+    "owner": 2,
+    "x": 176,
+    "y": 42,
+    "moves": 0,
+    "troops": 36660,
+    "first_unit_name": "3rd Foot"
+   }
+  ]
+ },
+ "after": {
+  "count_word": 6,
+  "records": [
+   {
+    "index": 0,
+    "owner": 1,
+    "x": 10,
+    "y": 49,
+    "moves": 1,
+    "troops": 3000,
+    "first_unit_name": "F2-0"
+   },
+   {
+    "index": 1,
+    "owner": -1,
+    "x": 10,
+    "y": 48,
+    "moves": 1,
+    "troops": 0,
+    "first_unit_name": "F1-0"
+   },
+   {
+    "index": 2,
+    "owner": -1,
+    "x": 40,
+    "y": 33,
+    "moves": 0,
+    "troops": 0,
+    "first_unit_name": "C0"
+   },
+   {
+    "index": 3,
+    "owner": 1,
+    "x": 10,
+    "y": 50,
+    "moves": 1,
+    "troops": 3000,
+    "first_unit_name": "F3-0"
+   },
+   {
+    "index": 4,
+    "owner": 1,
+    "x": 10,
+    "y": 51,
+    "moves": 1,
+    "troops": 3000,
+    "first_unit_name": "F4-0"
+   },
+   {
+    "index": 5,
+    "owner": 1,
+    "x": 40,
+    "y": 34,
+    "moves": 0,
+    "troops": 6000,
+    "first_unit_name": "C0"
+   },
+   {
+    "index": 6,
+    "owner": 3,
+    "x": 191,
+    "y": 96,
+    "moves": 8,
+    "troops": 56400,
+    "first_unit_name": "3rd Foot"
+   }
+  ]
+ },
+ "calls": [
+  "embark",
+  "overflow",
+  "allocate",
+  "landscan",
+  "moveunit",
+  "removeunit",
+  "deletearmy"
+ ]
+}
