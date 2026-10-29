@@ -151,8 +151,12 @@ class Game:
 
     # ---- process ---------------------------------------------------------
     def ensure_xvfb(self):
-        if subprocess.run(["pgrep", "-x", "Xvfb"], capture_output=True).returncode:
-            Path("/tmp/.X99-lock").unlink(missing_ok=True)
+        # Look for OUR display, not any Xvfb: another session's Xvfb (:91, :92, :95 on 2026-10-29) made
+        # `pgrep -x Xvfb` succeed after ours had died, so it was never restarted and every start timed out.
+        alive = subprocess.run(["xdotool", "getdisplaygeometry"], env=dict(ENV, DISPLAY=DISPLAY),
+                               capture_output=True).returncode == 0
+        if not alive:
+            Path("/tmp/.X%s-lock" % DISPLAY.lstrip(":")).unlink(missing_ok=True)
             subprocess.Popen(["setsid", "Xvfb", DISPLAY, "-screen", "0", "1280x1024x24"],
                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             time.sleep(2)
