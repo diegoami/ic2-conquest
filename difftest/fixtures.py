@@ -2,6 +2,7 @@
 
     python3 -m difftest.fixtures siege-felsina OUT.SAV
     python3 -m difftest.fixtures new-game OUT.SAV ROW      # ROW 0 Rome ... 15 Thracia
+    python3 -m difftest.fixtures all-human OUT.SAV         # all 16 nations human
 
 siege-felsina: BASE.SAV (Rome, 270 BC), seed 12345; army 0 to (99,34), End turn, then toward Felsina (Gaul, at
 war) until adjacent, as tests/test_orders.py test_attack does; saved before the siege. Both games then start the
@@ -49,6 +50,19 @@ def siege_felsina(out):
     return log
 
 
+def all_human_start(out):
+    """New Game with all 16 nations human (no AI seat at all), startup seed 12345 (#232 AI-free games)."""
+    g = Game()
+    path, texts = g.new_game(rows=list(range(16)), seed=12345)
+    shutil.copy(path, out)
+    s = load(out)
+    log = {"rows": list(range(16)), "seed": 12345, "seed_line": getattr(g, "seed_line", ""), "popups": texts, "date": s["date"],
+           "human": [n["name"] for n in s["nations"] if n["human"]], "current": s["current_nation"]}
+    Path(out).with_suffix(".json").write_text(json.dumps(log, indent=1, default=str))
+    g.kill()
+    return log
+
+
 def new_game_start(row, out):
     """New Game with nation `row` (0 Rome ... 15 Thracia) human, startup seed 12345; the new-game autosave
     (AUTO0720.SAV) is copied to `out`. Earlier autosaves are moved aside, never deleted (driver.new_game)."""
@@ -68,7 +82,9 @@ if __name__ == "__main__":
     if out.exists():
         raise SystemExit(f"refusing to overwrite {out}")
     out.parent.mkdir(parents=True, exist_ok=True)
-    if kind == "new-game":
+    if kind == "all-human":
+        print(json.dumps(all_human_start(out), default=str)[:800])
+    elif kind == "new-game":
         print(json.dumps(new_game_start(int(sys.argv[3]), out), default=str)[:600])
     else:
         print(json.dumps({"siege-felsina": siege_felsina}[kind](out), default=str)[:600])
