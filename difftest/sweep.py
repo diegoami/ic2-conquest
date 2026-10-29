@@ -76,6 +76,12 @@ def verdict_of(case, ra, rb, n_actions):
     # failure: the box text is the game's answer (it is kept in details["original_refusals"]).
     details["original_refusals"] = [{"error": x["error"], "box": x.get("reply")} for x in acts if x.get("error") and x.get("reply")]
     details["original_errors"] = [x["error"] for x in acts if x.get("error") and not x.get("reply")]
+    # A dialog that never opened while the original's state did not change is a silent refusal (e.g. Split army at 198
+    # armies, FUN_00449f08: no box at all): the game's answer, not a harness failure (#230 b8).
+    if details["original_errors"] and all("did not open" in e for e in details["original_errors"]) \
+            and all(i["original"][0] == "no-change" for i in intents):
+        details["original_refusals"] += [{"error": e, "box": None, "silent": True} for e in details["original_errors"]]
+        details["original_errors"] = []
     if details["original_errors"] or any(i["original"][0] == "not-met" for i in intents):
         return "harness", details
     if any((i["original"][0] == "no-change") != (i["remake"][0] == "no-change") for i in intents):

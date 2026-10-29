@@ -11,6 +11,11 @@ holds exactly these edits, recorded in `out`.json). Offsets follow state/sav.py:
 - ("fleet_ships", fleet, ships)   word 9 of the 26-byte fleet record
 - ("army_pos", army, x, y)        move an army with its marker: the old tile gets back the army's covered cell, the
                                   army's covered cell becomes the new tile's code, and the new tile gets the marker
+- ("add_armies", owner, total, troops)  append armies of `owner` until the game holds `total` army records, each with one
+                                  heavy-infantry unit of `troops` (quality 7, 30 tons, no money, morale 70, 0 moves), on
+                                  terrain cells (codes 2-11) whose whole 3x3 is terrain, scanned from the map's south-east
+                                  corner; the cell gets the marker 200 + owner (band below 25,000 troops), the record
+                                  keeps the terrain code as its covered cell. The army count word is updated.
 
 Only these words change: the staged save is otherwise the fixture, so both games start from identical bytes.
 """
@@ -64,6 +69,26 @@ def edit(b, e):
         struct.pack_into("<h", b, 2 * (e[2] * sav.MAP_H + e[3]), marker)
         struct.pack_into("<2h", b, rec, e[2], e[3])
         struct.pack_into("<h", b, rec + 8, newcell)
+    elif kind == "add_armies":
+        owner, total, troops = e[1], e[2], e[3]
+        na = struct.unpack_from("<h", b, sav.ARMY_OFF)[0]
+        terr = lambda x, y: 2 <= struct.unpack_from("<h", b, 2 * (x * sav.MAP_H + y))[0] <= 11
+        cells = ((x, y) for x in range(sav.MAP_W - 2, 0, -1) for y in range(sav.MAP_H - 2, 0, -1)
+                 if all(terr(x + i, y + j) for i in (-1, 0, 1) for j in (-1, 0, 1)))
+        new = bytearray()
+        for k in range(na, total):
+            x, y = next(cells)
+            code = struct.unpack_from("<h", b, 2 * (x * sav.MAP_H + y))[0]
+            struct.pack_into("<h", b, 2 * (x * sav.MAP_H + y), 200 + owner)
+            rec = bytearray(sav.ARMY_LEN)
+            struct.pack_into("<8h", rec, 0, x, y, owner, 0, code, 30, 0, 70)
+            struct.pack_into("<4h", rec, 16, 0, sav.UNIT_TYPES.index("hi"), troops, 7)
+            name = f"S{k}U0".encode()
+            rec[24:24 + len(name)] = name
+            new += rec
+        end = sav.ARMY_OFF + 2 + na * sav.ARMY_LEN
+        b[end:end] = new
+        struct.pack_into("<h", b, sav.ARMY_OFF, max(na, total))
     elif kind == "fleet_ships":
         struct.pack_into("<h", b, f + e[1] * sav.FLEET_LEN + 18, e[2])
     else:
