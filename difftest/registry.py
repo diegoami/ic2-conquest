@@ -38,6 +38,8 @@ FINDINGS = {
     "walk-gaul-army9": "2026-10-29-walk-stops-at-own-city-on-line230.md",
     "carthage-rulebot1-5t-r2": "2026-10-29-walk-stops-at-own-city-on-line230.md",
     "gaul-rulebot1-5t-r2": "2026-10-29-walk-stops-at-own-city-on-line230.md",
+    "fleet-second-walk-88-32": "2026-10-30-paths-in-play-and-fleet-walks42.md",
+    "fleet-second-walk-87-47": "2026-10-30-paths-in-play-and-fleet-walks42.md",
     "storm30b": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md",
     "fleet-sail": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md",
     "embark": "2026-10-29-export-city-marker-variant-and-empty-offer230.md",

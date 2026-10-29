@@ -1,0 +1,1559 @@
+{
+ "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+ "dat_sha256": "94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd",
+ "runner_sha256": "55f78a92a75132f2f33cd4c6f2104ec07e32baab1d7ef7b7a8b42400e24ba4c7",
+ "terrain_costs": [
+  1,
+  3,
+  1,
+  1,
+  2,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4,
+  4
+ ],
+ "evidence": "Unicorn, original instructions; presentation and unit-map UI calls stubbed",
+ "walker": [
+  {
+   "name": "walk-calm-3",
+   "goal": [
+    10,
+    7
+   ],
+   "moves": 8,
+   "cells_set": {},
+   "final": [
+    10,
+    7
+   ],
+   "moves_left": 5,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ]
+   ],
+   "step_calls": 3,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "walk-rough-on-line-laterals-calm",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "cells_set": {
+    "10,9": 1
+   },
+   "final": [
+    10,
+    6
+   ],
+   "moves_left": 4,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     11,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     6
+    ]
+   ],
+   "step_calls": 4,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "walk-rough-on-line-east-rough",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "cells_set": {
+    "10,9": 1,
+    "11,9": 1
+   },
+   "final": [
+    10,
+    6
+   ],
+   "moves_left": 4,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     9,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     6
+    ]
+   ],
+   "step_calls": 4,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "walk-rough-on-line-east-marker",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "cells_set": {
+    "10,9": 1,
+    "11,9": 301
+   },
+   "final": [
+    10,
+    6
+   ],
+   "moves_left": 4,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     9,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     6
+    ]
+   ],
+   "step_calls": 4,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "walk-rough-all-three",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "cells_set": {
+    "10,9": 1,
+    "11,9": 1,
+    "9,9": 1
+   },
+   "final": [
+    10,
+    6
+   ],
+   "moves_left": 2,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     6
+    ]
+   ],
+   "step_calls": 4,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "terminal-rough-cost3-moves3",
+   "goal": [
+    10,
+    9
+   ],
+   "moves": 3,
+   "cells_set": {
+    "10,9": 1
+   },
+   "final": [
+    10,
+    9
+   ],
+   "moves_left": 0,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     10,
+     9
+    ]
+   ],
+   "step_calls": 1,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "terminal-rough-cost3-moves2",
+   "goal": [
+    10,
+    9
+   ],
+   "moves": 2,
+   "cells_set": {
+    "10,9": 1
+   },
+   "final": [
+    10,
+    10
+   ],
+   "moves_left": 2,
+   "cells": [
+    [
+     10,
+     10
+    ]
+   ],
+   "step_calls": 1,
+   "routine_entries": [],
+   "stubbed": []
+  },
+  {
+   "name": "terminal-rough-cost3-moves4",
+   "goal": [
+    10,
+    9
+   ],
+   "moves": 4,
+   "cells_set": {
+    "10,9": 1
+   },
+   "final": [
+    10,
+    9
+   ],
+   "moves_left": 1,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     10,
+     9
+    ]
+   ],
+   "step_calls": 1,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "island-on-line",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "cells_set": {
+    "10,9": 2
+   },
+   "final": [
+    10,
+    6
+   ],
+   "moves_left": 4,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     11,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     6
+    ]
+   ],
+   "step_calls": 4,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  },
+  {
+   "name": "wall-of-land",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "cells_set": {
+    "9,9": 2,
+    "10,9": 2,
+    "11,9": 2
+   },
+   "final": [
+    10,
+    10
+   ],
+   "moves_left": 8,
+   "cells": [
+    [
+     10,
+     10
+    ]
+   ],
+   "step_calls": 1,
+   "routine_entries": [],
+   "stubbed": []
+  },
+  {
+   "name": "long-wall-short-walk",
+   "goal": [
+    10,
+    2
+   ],
+   "moves": 12,
+   "cells_set": {
+    "6,8": 2,
+    "7,8": 2,
+    "8,8": 2,
+    "9,8": 2,
+    "10,8": 2,
+    "11,8": 2,
+    "12,8": 2,
+    "13,8": 2
+   },
+   "final": [
+    10,
+    9
+   ],
+   "moves_left": 11,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     10,
+     9
+    ]
+   ],
+   "step_calls": 2,
+   "routine_entries": [],
+   "stubbed": [
+    "redraw",
+    "sound"
+   ]
+  }
+ ],
+ "human_handler_vs_walker": [
+  {
+   "name": "wall-of-land",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "walker_once": {
+    "final": [
+     10,
+     10
+    ],
+    "moves_left": 8,
+    "cells": [
+     [
+      10,
+      10
+     ]
+    ],
+    "step_calls": 1,
+    "routine_entries": [],
+    "stubbed": []
+   },
+   "human_handler": {
+    "final": [
+     10,
+     10
+    ],
+    "moves_left": 8,
+    "cells": [
+     [
+      10,
+      10
+     ]
+    ],
+    "step_calls": 2,
+    "routine_entries": [],
+    "stubbed": [
+     "UpdateUMSelection"
+    ]
+   }
+  },
+  {
+   "name": "long-wall",
+   "goal": [
+    10,
+    2
+   ],
+   "moves": 12,
+   "walker_once": {
+    "final": [
+     10,
+     9
+    ],
+    "moves_left": 11,
+    "cells": [
+     [
+      10,
+      10
+     ],
+     [
+      10,
+      9
+     ]
+    ],
+    "step_calls": 2,
+    "routine_entries": [],
+    "stubbed": [
+     "redraw",
+     "sound"
+    ]
+   },
+   "human_handler": {
+    "final": [
+     10,
+     9
+    ],
+    "moves_left": 11,
+    "cells": [
+     [
+      10,
+      10
+     ],
+     [
+      10,
+      9
+     ]
+    ],
+    "step_calls": 3,
+    "routine_entries": [],
+    "stubbed": [
+     "UpdateUMSelection",
+     "redraw",
+     "sound"
+    ]
+   }
+  },
+  {
+   "name": "island-on-line",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "walker_once": {
+    "final": [
+     10,
+     6
+    ],
+    "moves_left": 4,
+    "cells": [
+     [
+      10,
+      10
+     ],
+     [
+      11,
+      9
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      10,
+      7
+     ],
+     [
+      10,
+      6
+     ]
+    ],
+    "step_calls": 4,
+    "routine_entries": [],
+    "stubbed": [
+     "redraw",
+     "sound"
+    ]
+   },
+   "human_handler": {
+    "final": [
+     10,
+     6
+    ],
+    "moves_left": 4,
+    "cells": [
+     [
+      10,
+      10
+     ],
+     [
+      11,
+      9
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      10,
+      7
+     ],
+     [
+      10,
+      6
+     ]
+    ],
+    "step_calls": 4,
+    "routine_entries": [],
+    "stubbed": [
+     "UpdateUMSelection",
+     "redraw",
+     "sound"
+    ]
+   }
+  },
+  {
+   "name": "calm-straight",
+   "goal": [
+    10,
+    4
+   ],
+   "moves": 8,
+   "walker_once": {
+    "final": [
+     10,
+     4
+    ],
+    "moves_left": 2,
+    "cells": [
+     [
+      10,
+      10
+     ],
+     [
+      10,
+      9
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      10,
+      7
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      10,
+      5
+     ],
+     [
+      10,
+      4
+     ]
+    ],
+    "step_calls": 6,
+    "routine_entries": [],
+    "stubbed": [
+     "redraw",
+     "sound"
+    ]
+   },
+   "human_handler": {
+    "final": [
+     10,
+     4
+    ],
+    "moves_left": 2,
+    "cells": [
+     [
+      10,
+      10
+     ],
+     [
+      10,
+      9
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      10,
+      7
+     ],
+     [
+      10,
+      6
+     ],
+     [
+      10,
+      5
+     ],
+     [
+      10,
+      4
+     ]
+    ],
+    "step_calls": 6,
+    "routine_entries": [],
+    "stubbed": [
+     "UpdateUMSelection",
+     "redraw",
+     "sound"
+    ]
+   }
+  }
+ ],
+ "ai_routine": [
+  {
+   "name": "ai-calm-far",
+   "goal": [
+    10,
+    2
+   ],
+   "moves": 8,
+   "final": [
+    10,
+    2
+   ],
+   "moves_left": 0,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     10,
+     9
+    ],
+    [
+     10,
+     8
+    ],
+    [
+     10,
+     7
+    ],
+    [
+     10,
+     6
+    ],
+    [
+     10,
+     5
+    ],
+    [
+     10,
+     4
+    ],
+    [
+     10,
+     3
+    ],
+    [
+     10,
+     2
+    ]
+   ],
+   "step_calls": 8,
+   "routine_entries": [
+    [
+     10,
+     10,
+     8
+    ]
+   ],
+   "stubbed": []
+  },
+  {
+   "name": "ai-wall",
+   "goal": [
+    10,
+    2
+   ],
+   "moves": 12,
+   "final": [
+    22,
+    22
+   ],
+   "moves_left": 0,
+   "cells": [
+    [
+     10,
+     10
+    ],
+    [
+     11,
+     11
+    ],
+    [
+     12,
+     12
+    ],
+    [
+     13,
+     13
+    ],
+    [
+     14,
+     14
+    ],
+    [
+     15,
+     15
+    ],
+    [
+     16,
+     16
+    ],
+    [
+     17,
+     17
+    ],
+    [
+     18,
+     18
+    ],
+    [
+     19,
+     19
+    ],
+    [
+     20,
+     20
+    ],
+    [
+     21,
+     21
+    ],
+    [
+     22,
+     22
+    ]
+   ],
+   "step_calls": 12,
+   "routine_entries": [
+    [
+     10,
+     10,
+     12
+    ],
+    [
+     13,
+     13,
+     9
+    ],
+    [
+     16,
+     16,
+     6
+    ],
+    [
+     19,
+     19,
+     3
+    ]
+   ],
+   "stubbed": []
+  },
+  {
+   "name": "ai-island",
+   "goal": [
+    10,
+    6
+   ],
+   "moves": 8,
+   "error": "Invalid memory fetch (UC_ERR_FETCH_UNMAPPED)",
+   "last_addresses": [
+    "0x44d291",
+    "0x44d293",
+    "0x44d297",
+    "0x44d29e",
+    "0x44d2a1",
+    "0x44d2a3",
+    "0x44d311",
+    "0x44d312",
+    "0x44d313",
+    "0x44d314",
+    "0x44d316",
+    "0x44d317"
+   ],
+   "routine_entries": [
+    [
+     10,
+     10,
+     8
+    ]
+   ],
+   "partial_cells": []
+  }
+ ],
+ "human_handler_search": {
+  "trials": 400,
+  "seed": 42,
+  "differing": 103,
+  "examples": [
+   {
+    "trial": 2,
+    "goal": [
+     9,
+     1
+    ],
+    "moves": 10,
+    "cells_set": {
+     "7,8": 2,
+     "15,3": 2,
+     "8,7": 2,
+     "16,9": 2,
+     "16,4": 2,
+     "8,3": 1,
+     "10,9": 1
+    },
+    "walker_once": {
+     "final": [
+      9,
+      3
+     ],
+     "moves_left": 2,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       9,
+       10
+      ],
+      [
+       9,
+       9
+      ],
+      [
+       9,
+       8
+      ],
+      [
+       9,
+       7
+      ],
+      [
+       9,
+       6
+      ],
+      [
+       9,
+       5
+      ],
+      [
+       9,
+       4
+      ],
+      [
+       9,
+       3
+      ]
+     ],
+     "step_calls": 9,
+     "routine_entries": [],
+     "stubbed": [
+      "redraw",
+      "sound"
+     ]
+    },
+    "human_handler": {
+     "final": [
+      9,
+      1
+     ],
+     "moves_left": 0,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       9,
+       10
+      ],
+      [
+       9,
+       9
+      ],
+      [
+       9,
+       8
+      ],
+      [
+       9,
+       7
+      ],
+      [
+       9,
+       6
+      ],
+      [
+       9,
+       5
+      ],
+      [
+       9,
+       4
+      ],
+      [
+       9,
+       3
+      ],
+      [
+       9,
+       2
+      ],
+      [
+       9,
+       1
+      ]
+     ],
+     "step_calls": 11,
+     "routine_entries": [],
+     "stubbed": [
+      "EndUMSelection",
+      "UpdateUMSelection",
+      "redraw",
+      "sound"
+     ]
+    }
+   },
+   {
+    "trial": 8,
+    "goal": [
+     9,
+     4
+    ],
+    "moves": 10,
+    "cells_set": {
+     "10,3": 2,
+     "16,3": 2,
+     "14,9": 2,
+     "15,9": 2,
+     "9,8": 2,
+     "15,4": 2,
+     "13,4": 1,
+     "10,8": 1
+    },
+    "walker_once": {
+     "final": [
+      9,
+      9
+     ],
+     "moves_left": 8,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       10,
+       9
+      ],
+      [
+       9,
+       9
+      ]
+     ],
+     "step_calls": 3,
+     "routine_entries": [],
+     "stubbed": [
+      "redraw",
+      "sound"
+     ]
+    },
+    "human_handler": {
+     "final": [
+      9,
+      4
+     ],
+     "moves_left": 3,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       10,
+       9
+      ],
+      [
+       9,
+       9
+      ],
+      [
+       8,
+       8
+      ],
+      [
+       9,
+       7
+      ],
+      [
+       9,
+       6
+      ],
+      [
+       9,
+       5
+      ],
+      [
+       9,
+       4
+      ]
+     ],
+     "step_calls": 8,
+     "routine_entries": [],
+     "stubbed": [
+      "UpdateUMSelection",
+      "redraw",
+      "sound"
+     ]
+    }
+   },
+   {
+    "trial": 10,
+    "goal": [
+     11,
+     4
+    ],
+    "moves": 10,
+    "cells_set": {
+     "11,8": 2,
+     "10,7": 2,
+     "16,7": 2,
+     "10,9": 2,
+     "13,4": 2,
+     "8,8": 2,
+     "12,6": 2
+    },
+    "walker_once": {
+     "final": [
+      11,
+      9
+     ],
+     "moves_left": 8,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       11,
+       10
+      ],
+      [
+       11,
+       9
+      ]
+     ],
+     "step_calls": 3,
+     "routine_entries": [],
+     "stubbed": [
+      "redraw",
+      "sound"
+     ]
+    },
+    "human_handler": {
+     "final": [
+      11,
+      4
+     ],
+     "moves_left": 3,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       11,
+       10
+      ],
+      [
+       11,
+       9
+      ],
+      [
+       12,
+       8
+      ],
+      [
+       11,
+       7
+      ],
+      [
+       11,
+       6
+      ],
+      [
+       11,
+       5
+      ],
+      [
+       11,
+       4
+      ]
+     ],
+     "step_calls": 8,
+     "routine_entries": [],
+     "stubbed": [
+      "UpdateUMSelection",
+      "redraw",
+      "sound"
+     ]
+    }
+   },
+   {
+    "trial": 19,
+    "goal": [
+     7,
+     1
+    ],
+    "moves": 10,
+    "cells_set": {
+     "9,7": 1,
+     "12,7": 2,
+     "9,6": 1
+    },
+    "walker_once": {
+     "final": [
+      8,
+      3
+     ],
+     "moves_left": 2,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       10,
+       9
+      ],
+      [
+       9,
+       8
+      ],
+      [
+       8,
+       8
+      ],
+      [
+       8,
+       7
+      ],
+      [
+       8,
+       6
+      ],
+      [
+       8,
+       5
+      ],
+      [
+       8,
+       4
+      ],
+      [
+       8,
+       3
+      ]
+     ],
+     "step_calls": 9,
+     "routine_entries": [],
+     "stubbed": [
+      "redraw",
+      "sound"
+     ]
+    },
+    "human_handler": {
+     "final": [
+      7,
+      1
+     ],
+     "moves_left": 0,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       10,
+       9
+      ],
+      [
+       9,
+       8
+      ],
+      [
+       8,
+       8
+      ],
+      [
+       8,
+       7
+      ],
+      [
+       8,
+       6
+      ],
+      [
+       8,
+       5
+      ],
+      [
+       8,
+       4
+      ],
+      [
+       8,
+       3
+      ],
+      [
+       7,
+       2
+      ],
+      [
+       7,
+       1
+      ]
+     ],
+     "step_calls": 11,
+     "routine_entries": [],
+     "stubbed": [
+      "EndUMSelection",
+      "UpdateUMSelection",
+      "redraw",
+      "sound"
+     ]
+    }
+   },
+   {
+    "trial": 20,
+    "goal": [
+     18,
+     2
+    ],
+    "moves": 10,
+    "cells_set": {
+     "7,5": 2,
+     "10,8": 2,
+     "12,9": 2,
+     "13,7": 1,
+     "9,4": 1
+    },
+    "walker_once": {
+     "final": [
+      13,
+      7
+     ],
+     "moves_left": 4,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       11,
+       9
+      ],
+      [
+       12,
+       8
+      ],
+      [
+       13,
+       8
+      ],
+      [
+       13,
+       7
+      ]
+     ],
+     "step_calls": 5,
+     "routine_entries": [],
+     "stubbed": [
+      "redraw",
+      "sound"
+     ]
+    },
+    "human_handler": {
+     "final": [
+      17,
+      3
+     ],
+     "moves_left": 0,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       11,
+       9
+      ],
+      [
+       12,
+       8
+      ],
+      [
+       13,
+       8
+      ],
+      [
+       13,
+       7
+      ],
+      [
+       14,
+       6
+      ],
+      [
+       15,
+       5
+      ],
+      [
+       16,
+       4
+      ],
+      [
+       17,
+       3
+      ]
+     ],
+     "step_calls": 10,
+     "routine_entries": [],
+     "stubbed": [
+      "EndUMSelection",
+      "UpdateUMSelection",
+      "redraw",
+      "sound"
+     ]
+    }
+   },
+   {
+    "trial": 21,
+    "goal": [
+     6,
+     3
+    ],
+    "moves": 10,
+    "cells_set": {
+     "13,3": 2,
+     "12,9": 2,
+     "10,5": 2,
+     "8,6": 2,
+     "14,4": 2,
+     "14,5": 2,
+     "10,4": 2,
+     "10,6": 2,
+     "11,9": 2
+    },
+    "walker_once": {
+     "final": [
+      7,
+      5
+     ],
+     "moves_left": 4,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       9,
+       9
+      ],
+      [
+       9,
+       8
+      ],
+      [
+       8,
+       7
+      ],
+      [
+       7,
+       7
+      ],
+      [
+       7,
+       6
+      ],
+      [
+       7,
+       5
+      ]
+     ],
+     "step_calls": 7,
+     "routine_entries": [],
+     "stubbed": [
+      "redraw",
+      "sound"
+     ]
+    },
+    "human_handler": {
+     "final": [
+      6,
+      3
+     ],
+     "moves_left": 2,
+     "cells": [
+      [
+       10,
+       10
+      ],
+      [
+       9,
+       9
+      ],
+      [
+       9,
+       8
+      ],
+      [
+       8,
+       7
+      ],
+      [
+       7,
+       7
+      ],
+      [
+       7,
+       6
+      ],
+      [
+       7,
+       5
+      ],
+      [
+       6,
+       4
+      ],
+      [
+       6,
+       3
+      ]
+     ],
+     "step_calls": 9,
+     "routine_entries": [],
+     "stubbed": [
+      "UpdateUMSelection",
+      "redraw",
+      "sound"
+     ]
+    }
+   }
+  ]
+ }
+}

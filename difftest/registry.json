@@ -1296,6 +1296,30 @@
   "finding": ""
  },
  {
+  "test": "fleet-second-walk-88-32",
+  "kind": "single order",
+  "start": "fleet-port-antium-0734.SAV",
+  "orders": "move_fleet(fleet=2, x=88, y=32); end_turn()",
+  "verdict": "differs-immediate",
+  "detail": "a001: fleets.0.moves: 14 vs 19; fleets.0.x: 88 vs 93; fleets.0.y: 32 vs 37; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b7",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-30-paths-in-play-and-fleet-walks42.md"
+ },
+ {
+  "test": "fleet-second-walk-87-47",
+  "kind": "single order",
+  "start": "fleet-port-antium-0734.SAV",
+  "orders": "move_fleet(fleet=2, x=87, y=47); end_turn()",
+  "verdict": "differs-immediate",
+  "detail": "a001: fleets.0.moves: 14 vs 16; fleets.0.x: 87 vs 89; fleets.0.y: 47 vs 48; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b7",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-30-paths-in-play-and-fleet-walks42.md"
+ },
+ {
   "test": "naval30",
   "kind": "many seeds",
   "start": "",
