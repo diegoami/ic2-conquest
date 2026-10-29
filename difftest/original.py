@@ -257,7 +257,36 @@ class OriginalSession:
         self.receipt.write(json.dumps(e, default=str) + "\n")
         self.receipt.flush()
 
+    ORDER_DIALOGS = ("Army to army transfer", "Split army", "Change units", "Split unit", "Rename unit", "Army recruits",
+                     "Supply army", "Recruit mercenary unit", "Supply fleet", "Repair fleet", "Split fleet",
+                     "Fleet to fleet transfer", "Build fleet", "International Relations", "Change tax level")
+
+    def close_stray_dialogs(self):
+        """Close any order dialog still open before a save: a refusal box can leave its dialog open (Army to army
+        transfer into a 20-unit army, #230 transfer-into-20), and an open dialog blocks File > Save. Cancel if the
+        dialog has it, else OK. Returns the titles closed."""
+        closed = []
+        for title in self.ORDER_DIALOGS:
+            for _ in range(3):
+                if not self.g.find_windows("^%s$" % title):
+                    break
+                self.g.dismiss_popups()
+                try:
+                    cs = self.g.controls(title)
+                    button = next((c for c in cs if c["text"].replace("&", "").strip() in ("Cancel",)), None) \
+                        or next((c for c in cs if c["text"].replace("&", "").strip() == "OK"), None)
+                    if button is None:
+                        break
+                    self.g.click_control(button, pause=1.0)
+                except DriverError:
+                    time.sleep(0.6)
+                closed.append(title)
+        return closed
+
     def checkpoint(self, name):
+        stray = self.close_stray_dialogs()
+        if stray:
+            self.emit(kind="closed_stray_dialogs", before=name, titles=stray)
         saved = self.g.save_as(f"{self.tag}-{name}.SAV")
         dst = self.out / f"{name}.SAV"
         shutil.copy(saved, dst)
