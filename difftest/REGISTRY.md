@@ -120,6 +120,8 @@ version. Batch-level results and corrections: [HISTORY.md](HISTORY.md).
 | `siege10` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 20 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `storm30` | many seeds | v0.8.4 `d9cc71bc` |  |  | differs: at_target, fleet_survives, ships_lost | 60 | [2026-10-29-ai-fleet-hunt-absen…](../findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md) | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `storm30b` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 60 | [2026-10-29-ai-fleet-hunt-absen…](../findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md) | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
+| `weather30` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 60 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
+| `weather60h` | many seeds | v0.8.4 `d9cc71bc` |  |  | consistent | 120 |  | [run-exp-diff084-stats](../runs/experiments/data/run-exp-diff084-stats/) |
 | `walk-1` | tactical | v0.8.4 `d9cc71bc` | staged battle | each side walks one unit, then ends its half-round | same-exact | 1 |  | [run-exp-diff084-tactical](../runs/experiments/data/run-exp-diff084-tactical/) |
 | `shoot-li` | tactical | v0.8.4 `d9cc71bc` | staged battle | light infantry shoots an enemy in range, then the defender ends | same-exact | 1 |  | [run-exp-diff084-tactical](../runs/experiments/data/run-exp-diff084-tactical/) |
 | `melee-target` | tactical | v0.8.4 `d9cc71bc` | staged battle | a heavy infantry unit targets an adjacent enemy; the half-round's melee follows End | same-exact | 1 |  | [run-exp-diff084-tactical](../runs/experiments/data/run-exp-diff084-tactical/) |

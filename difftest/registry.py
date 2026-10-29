@@ -74,8 +74,14 @@ def _order(o):
     return o["op"] + "(" + ", ".join(f"{k}={v}" for k, v in o.items() if k not in ("op", "note")) + ")"
 
 
+def newest(d, stem):
+    """The archiver keeps a grown file as <stem>.v<N>.jsonl beside the old one (rule 6): read the newest."""
+    vs = sorted(d.glob(f"{stem}.v*.jsonl"), key=lambda p: int(p.suffixes[-2][2:]))
+    return vs[-1] if vs else d / f"{stem}.jsonl"
+
+
 def stats(d):
-    ts = jl(d / "trials.jsonl")
+    ts = jl(newest(d, "trials"))
     out = []
     for sc in sorted({t["scenario"] for t in ts}):
         n = {s: sum(1 for t in ts if t["scenario"] == sc and t["side"] == s and "metrics" in t) for s in ("original", "remake")}
