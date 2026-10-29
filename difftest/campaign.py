@@ -37,7 +37,9 @@ def main(argv=None):
     (out / "run.json").write_text(json.dumps({"start": a.start, "turns": a.turns, "seed": a.seed, "bot": bot.NAME,
                                               "started": time.strftime("%Y-%m-%dT%H:%M:%S")}, indent=1))
     rlog = lambda *x: None
-    o = original.OriginalSession(a.start, out / "original", a.seed, f"C{out.name[-12:]}", log=rlog)
+    # The in-game save names must be unique per run (the tag once took the folder name's last 12 characters,
+    # identical for every nation's "<nation>-rulebot1-5t", and the driver refused to overwrite, 2026-10-29).
+    o = original.OriginalSession(a.start, out / "original", a.seed, f"C{out.name}-{time.strftime('%Y%m%d%H%M%S')}", log=rlog)
     so = o.checkpoint("t00-start")
     rdir = out / "remake"
     rdir.mkdir()
