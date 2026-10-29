@@ -1,0 +1,137 @@
+{
+ "totals": {
+  "calls": 1127,
+  "calls_with_candidates": 437,
+  "ties": 5,
+  "ties_cross_nation": 2,
+  "ties_farther_won": 4,
+  "starts": 3,
+  "inert": 2
+ },
+ "starts": [
+  {
+   "start": "S10_dacia_AUTO0720",
+   "calls": 379,
+   "calls_with_candidates": 115,
+   "ties": [
+    {
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "calls": 418,
+   "calls_with_candidates": 219,
+   "ties": [
+    {
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    },
+    {
+     "actor": 9,
+     "nation": 3,
+     "score": 64,
+     "tied": [
+      11,
+      13
+     ],
+     "tied_owners": [
+      11,
+      14
+     ],
+     "tied_distances": [
+      51,
+      56
+     ],
+     "chosen": 11,
+     "chosen_is_first": true,
+     "farther_won": false
+    },
+    {
+     "actor": 9,
+     "nation": 3,
+     "score": -19,
+     "tied": [
+      3,
+      13
+     ],
+     "tied_owners": [
+      1,
+      14
+     ],
+     "tied_distances": [
+      51,
+      45
+     ],
+     "chosen": 3,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": false
+  },
+  {
+   "start": "rome-BASE",
+   "calls": 330,
+   "calls_with_candidates": 103,
+   "ties": [
+    {
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  }
+ ]
+}

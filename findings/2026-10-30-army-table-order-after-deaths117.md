@@ -129,12 +129,46 @@ the 43 death turns' End-turn-click saves, one End turn each, seed 12345. Hooked 
 So ties decided by table order do occur in play, and the capped regime of the emulated case (score 2,000) was not reached in
 these early turns.
 
+## Addendum 3 (2026-10-30): 30-turn runs, and the rest of the AI's army scans
+
+**Ties over 30 turns.** The same hook ran on 3 starts × 30 End turns with the human seat idle: BASE.SAV (Rome) and the #232
+campaign starts S13 (Armenia) and S10 (Dacia), seed 12345, with every turn replayed by the plain build.
+
+- **Picks:** 1,127, of which 437 had a candidate.
+- **5 ties, all between armies of one nation:**
+  - the turn-1 Seleucid case again, in each start;
+  - in the Armenia start, nation 3's army 9 at turns 24 and 26, between two **Carthaginian** armies (score 64 at 51 and 56
+    tiles; score −19 at 51 and 45 tiles, where table order chose the farther one).
+- **0 cross-nation ties.** Owners are read from the table at the start of each turn, i.e. the previous turn's autosave.
+  `summary-long-v2.json`; v1, which read owners from the start save, wrongly showed 2 cross-nation ties and is kept.
+- **Inertness:** Rome and Dacia are byte-identical in 30 of 30 turns. Armenia differs at turns 11, 14, 15 and 22 in **one word
+  only, fleet +6 (`route_y`)**. The SAV ledger (`run-exp-sav-atlas107/field-map-v13.csv`) lists that word as
+  LIVE_AND_RESIDUE: `0x451723` writes only +4, so +6 keeps stale data. The hook's stack use changes that residue; every other
+  byte and every later turn are identical.
+
+**The other army scans of the AI turn** (dump, read):
+
+| Routine | Role | Depends on army table order? |
+|---|---|---|
+| `FUN_004502e0` :53626 | recruitment city | **no**: its army loop only sets an "own army within 15 of the capital" flag; its tie-break runs over the city list |
+| `FUN_0044ffbc` :53459 | economy phase | **no**: its army loop only sums strengths (own, allied, at war, near the capital) |
+| `FUN_00450858` :53884 | merge or disband weak units | **no**: each army is handled on its own |
+| `FUN_004504f4` :53730 | recruitment when outnumbered | **no**: its army loop only sets a flag |
+| `FUN_004509f0` :53964 | small-army merge | **yes** (above) |
+| `FUN_0044ee60` / `FUN_0044efc8` | enemy-army pick / capital defence | **yes** (above) |
+| `FUN_00450b30` :54002 | AI **fleet** merge | depends on **fleet** table order (below) |
+
+**Fleets have the same structure.** `FUN_00450b30` merges the first own fleet in table order that has fewer than 40 ships, is
+not carrying and is not under construction, with the first other own fleet within 34 tiles whose ships fit. The receiver keeps
+its cell. The sweep removes dead fleets by swap-remove too (`FUN_0044ad7c`: the last record into the freed slot). So a sunk
+fleet can change which fleet survives an AI fleet merge, and where. The remake's AI fleet merge (if any) and its fleet order
+were not checked.
+
 ## What this does not establish
 
 - **Later game.** With several armies per nation, a death can invert a same-nation pair, and then the merge choice (as
   controlled) and the army phase's visit order differ between the games. No such turn was observed in these 5-turn campaigns.
-- **Cross-nation loops beyond the two above.** Other AI scans (e.g. `FUN_004502e0`, `FUN_0044ffbc`'s economy decisions) were
-  not read for table-order tie-breaks. The tie count (Addendum 2) covers one End turn from each of the 43 starts, replayed with a fresh seed;
+- **Loops outside the AI turn's army scans** (Addendum 3 covers those called from `FUN_0044fa20`'s phases). The tie count (Addendum 2) covers one End turn from each of the 43 starts, replayed with a fresh seed;
   later turns, with more and larger armies, were not hooked.
 - **The remake's handling of an imported dead record** (imports were of saves without one in the 19 runs).
 
@@ -161,6 +195,8 @@ these early turns.
     (release `run-exp-diff084-campaign`);
   - the remake runs in `artifacts/run-exp-armyorder117/remake-v2/<campaign>-tNN/` (corrected) and `remake-v1/` (first
     version), release `run-exp-armyorder117`.
+- Tie hook, 30-turn runs (Addendum 3): `runs/experiments/data/run-exp-tiehook117-long/` (`summary-long-v2.json`,
+  `summary-long-v1.json` kept), release `run-exp-tiehook117-long`.
 - Tie hook (Addendum 2): `patches/tie_hook.py`, `difftest/probes/tie_hook_run.py`, `runs/experiments/tiehook117/analyze.py`;
   data `runs/experiments/data/run-exp-tiehook117/` (`*-ties.jsonl`, `<start>/inert.json`, `summary-v1.json`,
   `SAVES.sha256`); release `run-exp-tiehook117`.
