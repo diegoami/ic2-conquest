@@ -68,3 +68,17 @@ finding that reports its difference. It is generated from the tracked measuremen
 `python3 -m difftest.registry`. **Check it before running a test** (owner, 2026-10-29). Re-run a test only to
 check a fix or a new remake version, and say so in the history. Every difference found goes into `findings/`; add
 the test-to-finding link in `difftest/registry.py` (`FINDINGS`).
+
+## Re-checking a newer remake (pins)
+
+When the remake fixes a difference, re-run the registered tests on the new build without touching the v0.8.4 one:
+
+```bash
+python3 -m difftest.pin build <ref>                    # a tag, a branch or a commit; prints the pin (short = 8 hex digits)
+python3 -m difftest.recheck <short> --version v1       # tiers: orders stats campaigns (default: all three)
+```
+
+Only the remake side is played again; each test is judged against the STORED original runs with the same code
+(`sweep.verdict_of`, `stats.analyze`, the campaign comparison). `artifacts/run-exp-recheck-<short>/report-<version>.md`
+lists every test with its v0.8.4 verdict, the new one and a label: FIXED, REGRESSED, CHANGED or unchanged, and the finding
+the registry links to it. A pin of v0.8.4 itself (`d9cc71bc`) must give "unchanged" everywhere; it is the tool's self-check.
