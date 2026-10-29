@@ -1,0 +1,1117 @@
+[
+ {
+  "campaign": "carthage-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 1,
+  "first_order_difference_turn": 2,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 2
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": false,
+    "own_differences": 23
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": false,
+    "own_differences": 27
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": false,
+    "own_differences": 38
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": false,
+    "own_differences": 15
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "armies.3.x",
+    "a": 89,
+    "b": 90
+   },
+   {
+    "path": "armies.3.y",
+    "a": 76,
+    "b": 77
+   }
+  ]
+ },
+ {
+  "campaign": "celtiberia-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 1,
+  "first_order_difference_turn": 3,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 16
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": false,
+    "own_differences": 1
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "nations.Celtiberia.relations",
+    "a": {
+     "Rome": 0,
+     "Carthage": 3,
+     "Seleucid": 0,
+     "Ptolemaic": 0,
+     "Macedonia": 0,
+     "Numidia": 0,
+     "Gaul": 1,
+     "Greece": 0,
+     "Illyria": 0,
+     "Dacia": 0,
+     "Bithynia": 0,
+     "Galatia": 0,
+     "Armenia": 0,
+     "Media": 0,
+     "Thracia": 0
+    },
+    "b": {
+     "Rome": 0,
+     "Carthage": 3,
+     "Seleucid": 0,
+     "Ptolemaic": 0,
+     "Macedonia": 0,
+     "Numidia": 0,
+     "Gaul": -10,
+     "Greece": 0,
+     "Illyria": 0,
+     "Dacia": 0,
+     "Bithynia": 0,
+     "Galatia": 0,
+     "Armenia": 0,
+     "Media": 0,
+     "Thracia": 0
+    }
+   }
+  ]
+ },
+ {
+  "campaign": "gaul-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 1,
+  "first_order_difference_turn": 2,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 9
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": false,
+    "own_differences": 1
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 13
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "armies.8.morale",
+    "a": 66,
+    "b": 64
+   },
+   {
+    "path": "armies.8.moves",
+    "a": 0,
+    "b": 8
+   },
+   {
+    "path": "armies.8.owner",
+    "a": 12,
+    "b": 6
+   },
+   {
+    "path": "armies.8.supplies",
+    "a": 193,
+    "b": 191
+   },
+   {
+    "path": "armies.8.units",
+    "a": [
+     [
+      0,
+      "li",
+      5800,
+      6,
+      0
+     ],
+     [
+      1,
+      "li",
+      6400,
+      7,
+      0
+     ],
+     [
+      2,
+      "hi",
+      3500,
+      7,
+      10
+     ],
+     [
+      3,
+      "lc",
+      2800,
+      6,
+      46
+     ],
+     [
+      4,
+      "hc",
+      800,
+      6,
+      0
+     ]
+    ],
+    "b": [
+     [
+      0,
+      "li",
+      8000,
+      5,
+      0
+     ],
+     [
+      1,
+      "li",
+      9200,
+      6,
+      0
+     ],
+     [
+      2,
+      "li",
+      7800,
+      5,
+      21
+     ],
+     [
+      3,
+      "li",
+      8600,
+      6,
+      0
+     ],
+     [
+      4,
+      "hi",
+      2200,
+      6,
+      41
+     ],
+     [
+      5,
+      "hi",
+      2700,
+      6,
+      0
+     ],
+     [
+      6,
+      "lc",
+      1400,
+      6,
+      0
+     ],
+     [
+      7,
+      "hc",
+      600,
+      7,
+      0
+     ]
+    ]
+   },
+   {
+    "path": "armies.8.x",
+    "a": 194,
+    "b": 92
+   },
+   {
+    "path": "armies.8.y",
+    "a": 46,
+    "b": 32
+   },
+   {
+    "path": "nations.Gaul.relations",
+    "a": {
+     "Rome": 3,
+     "Carthage": 0,
+     "Seleucid": 0,
+     "Ptolemaic": 0,
+     "Macedonia": 0,
+     "Numidia": 0,
+     "Greece": 0,
+     "Celtiberia": -10,
+     "Illyria": -8,
+     "Dacia": -8,
+     "Bithynia": 0,
+     "Galatia": 0,
+     "Armenia": 0,
+     "Media": 0,
+     "Thracia": 0
+    },
+    "b": {
+     "Rome": 3,
+     "Carthage": 0,
+     "Seleucid": 0,
+     "Ptolemaic": 0,
+     "Macedonia": 0,
+     "Numidia": 0,
+     "Greece": 0,
+     "Celtiberia": 1,
+     "Illyria": -8,
+     "Dacia": -8,
+     "Bithynia": 0,
+     "Galatia": 0,
+     "Armenia": 0,
+     "Media": 0,
+     "Thracia": 0
+    }
+   },
+   {
+    "path": "nations.Gaul.unity",
+    "a": 552,
+    "b": 577
+   }
+  ]
+ },
+ {
+  "campaign": "greece-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 2,
+  "first_order_difference_turn": null,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 2
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 2
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 2
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 2
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "cities.29.supplies",
+    "a": 46,
+    "b": 23
+   },
+   {
+    "path": "nations.Greece.treasury",
+    "a": 948,
+    "b": 952
+   }
+  ]
+ },
+ {
+  "campaign": "illyria-rulebot1-5t",
+  "turns": 5,
+  "first_own_difference_turn": 1,
+  "first_order_difference_turn": null,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 1
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "nations.Illyria.relations",
+    "a": {
+     "Rome": 1,
+     "Carthage": 0,
+     "Seleucid": 0,
+     "Ptolemaic": 0,
+     "Macedonia": 0,
+     "Numidia": 0,
+     "Gaul": 1,
+     "Greece": 0,
+     "Celtiberia": 0,
+     "Dacia": 0,
+     "Bithynia": 0,
+     "Galatia": 0,
+     "Armenia": 0,
+     "Media": 0,
+     "Thracia": 0
+    },
+    "b": {
+     "Rome": -8,
+     "Carthage": 0,
+     "Seleucid": 0,
+     "Ptolemaic": 0,
+     "Macedonia": 0,
+     "Numidia": 0,
+     "Gaul": 1,
+     "Greece": 0,
+     "Celtiberia": 0,
+     "Dacia": 0,
+     "Bithynia": 0,
+     "Galatia": 0,
+     "Armenia": 0,
+     "Media": 0,
+     "Thracia": 0
+    }
+   }
+  ]
+ },
+ {
+  "campaign": "macedonia-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 3,
+  "first_order_difference_turn": null,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 16
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 16
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 16
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "armies.6.money",
+    "a": 100,
+    "b": 600
+   },
+   {
+    "path": "armies.6.morale",
+    "a": 68,
+    "b": 67
+   },
+   {
+    "path": "armies.6.moves",
+    "a": 8,
+    "b": 5
+   },
+   {
+    "path": "armies.6.owner",
+    "a": 4,
+    "b": 3
+   },
+   {
+    "path": "armies.6.supplies",
+    "a": 0,
+    "b": 640
+   },
+   {
+    "path": "armies.6.units",
+    "a": [
+     [
+      0,
+      "li",
+      7900,
+      7,
+      0
+     ],
+     [
+      1,
+      "li",
+      4400,
+      6,
+      9
+     ],
+     [
+      2,
+      "hi",
+      5700,
+      9,
+      0
+     ],
+     [
+      3,
+      "hi",
+      6000,
+      9,
+      0
+     ],
+     [
+      4,
+      "hi",
+      3700,
+      7,
+      2
+     ],
+     [
+      5,
+      "lc",
+      1300,
+      6,
+      9
+     ],
+     [
+      6,
+      "hc",
+      800,
+      6,
+      0
+     ]
+    ],
+    "b": [
+     [
+      0,
+      "li",
+      8600,
+      5,
+      0
+     ],
+     [
+      1,
+      "li",
+      10000,
+      5,
+      0
+     ],
+     [
+      2,
+      "li",
+      9000,
+      7,
+      2
+     ],
+     [
+      3,
+      "li",
+      13500,
+      6,
+      9
+     ],
+     [
+      4,
+      "hi",
+      3500,
+      6,
+      0
+     ],
+     [
+      5,
+      "hi",
+      6000,
+      8,
+      2
+     ],
+     [
+      6,
+      "ar",
+      1200,
+      5,
+      0
+     ],
+     [
+      7,
+      "lc",
+      1700,
+      6,
+      9
+     ],
+     [
+      8,
+      "hc",
+      1800,
+      7,
+      0
+     ],
+     [
+      9,
+      "hc",
+      1100,
+      7,
+      9
+     ],
+     [
+      10,
+      "li",
+      7630,
+      7,
+      35
+     ]
+    ]
+   },
+   {
+    "path": "armies.6.x",
+    "a": 145,
+    "b": 192
+   },
+   {
+    "path": "armies.6.y",
+    "a": 40,
+    "b": 96
+   },
+   {
+    "path": "armies.7.money",
+    "a": 600,
+    "b": 100
+   },
+   {
+    "path": "armies.7.morale",
+    "a": 69,
+    "b": 68
+   }
+  ]
+ },
+ {
+  "campaign": "numidia-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": null,
+  "first_order_difference_turn": null,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   }
+  ],
+  "first_own_fields": []
+ },
+ {
+  "campaign": "ptolemaic-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 2,
+  "first_order_difference_turn": null,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 2
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 15
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 17
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": true,
+    "own_differences": 26
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "fleets.1.condition",
+    "a": 66,
+    "b": 68
+   },
+   {
+    "path": "fleets.1.moves",
+    "a": 24,
+    "b": 25
+   }
+  ]
+ },
+ {
+  "campaign": "rome-rulebot1-5t",
+  "turns": 5,
+  "first_own_difference_turn": 1,
+  "first_order_difference_turn": 2,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 3
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": false,
+    "own_differences": 4
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": false,
+    "own_differences": 15
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": false,
+    "own_differences": 25
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": false,
+    "own_differences": 24
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "armies.1.cell",
+    "a": 4,
+    "b": 2
+   },
+   {
+    "path": "armies.1.x",
+    "a": 115,
+    "b": 118
+   },
+   {
+    "path": "armies.1.y",
+    "a": 49,
+    "b": 52
+   }
+  ]
+ },
+ {
+  "campaign": "seleucid-rulebot1-5t-r2",
+  "turns": 5,
+  "first_own_difference_turn": 2,
+  "first_order_difference_turn": 5,
+  "per_turn": [
+   {
+    "turn": 1,
+    "orders_same_by_identity": true,
+    "own_differences": 0
+   },
+   {
+    "turn": 2,
+    "orders_same_by_identity": true,
+    "own_differences": 3
+   },
+   {
+    "turn": 3,
+    "orders_same_by_identity": true,
+    "own_differences": 23
+   },
+   {
+    "turn": 4,
+    "orders_same_by_identity": true,
+    "own_differences": 10
+   },
+   {
+    "turn": 5,
+    "orders_same_by_identity": false,
+    "own_differences": 21
+   }
+  ],
+  "first_own_fields": [
+   {
+    "path": "armies.4.units",
+    "a": [
+     [
+      0,
+      "li",
+      8335,
+      5,
+      0
+     ],
+     [
+      1,
+      "li",
+      7470,
+      5,
+      0
+     ],
+     [
+      2,
+      "li",
+      6225,
+      7,
+      7
+     ],
+     [
+      3,
+      "hi",
+      4775,
+      7,
+      0
+     ],
+     [
+      4,
+      "hi",
+      4105,
+      7,
+      0
+     ],
+     [
+      5,
+      "ar",
+      1150,
+      6,
+      0
+     ],
+     [
+      6,
+      "lc",
+      860,
+      6,
+      0
+     ],
+     [
+      7,
+      "lc",
+      1435,
+      7,
+      7
+     ],
+     [
+      8,
+      "hc",
+      1335,
+      7,
+      0
+     ]
+    ],
+    "b": [
+     [
+      0,
+      "li",
+      8310,
+      5,
+      0
+     ],
+     [
+      1,
+      "li",
+      7455,
+      5,
+      0
+     ],
+     [
+      2,
+      "li",
+      6205,
+      7,
+      7
+     ],
+     [
+      3,
+      "hi",
+      4790,
+      7,
+      0
+     ],
+     [
+      4,
+      "hi",
+      4105,
+      7,
+      0
+     ],
+     [
+      5,
+      "ar",
+      1145,
+      6,
+      0
+     ],
+     [
+      6,
+      "lc",
+      860,
+      6,
+      0
+     ],
+     [
+      7,
+      "lc",
+      1430,
+      7,
+      7
+     ],
+     [
+      8,
+      "hc",
+      1340,
+      7,
+      0
+     ]
+    ]
+   },
+   {
+    "path": "armies.5.units",
+    "a": [
+     [
+      0,
+      "li",
+      6878,
+      5,
+      0
+     ],
+     [
+      1,
+      "li",
+      7374,
+      5,
+      0
+     ],
+     [
+      2,
+      "li",
+      5010,
+      7,
+      2
+     ],
+     [
+      3,
+      "li",
+      7564,
+      6,
+      5
+     ],
+     [
+      4,
+      "hi",
+      3240,
+      7,
+      0
+     ],
+     [
+      5,
+      "hi",
+      5014,
+      8,
+      2
+     ],
+     [
+      6,
+      "ar",
+      1572,
+      5,
+      0
+     ],
+     [
+      7,
+      "ar",
+      982,
+      5,
+      0
+     ],
+     [
+      8,
+      "ar",
+      2554,
+      7,
+      6
+     ],
+     [
+      9,
+      "lc",
+      1768,
+      5,
+      0
+     ],
+     [
+      10,
+      "hc",
+      2356,
+      7,
+      0
+     ]
+    ],
+    "b": [
+     [
+      0,
+      "li",
+      6882,
+      5,
+      0
+     ],
+     [
+      1,
+      "li",
+      7368,
+      5,
+      0
+     ],
+     [
+      2,
+      "li",
+      5012,
+      7,
+      2
+     ],
+     [
+      3,
+      "li",
+      7564,
+      6,
+      5
+     ],
+     [
+      4,
+      "hi",
+      3246,
+      7,
+      0
+     ],
+     [
+      5,
+      "hi",
+      5012,
+      8,
+      2
+     ],
+     [
+      6,
+      "ar",
+      1572,
+      5,
+      0
+     ],
+     [
+      7,
+      "ar",
+      982,
+      5,
+      0
+     ],
+     [
+      8,
+      "ar",
+      2556,
+      7,
+      6
+     ],
+     [
+      9,
+      "lc",
+      1768,
+      5,
+      0
+     ],
+     [
+      10,
+      "hc",
+      2356,
+      7,
+      0
+     ]
+    ]
+   },
+   {
+    "path": "cities.202.supplies",
+    "a": 96,
+    "b": 114
+   }
+  ]
+ }
+]

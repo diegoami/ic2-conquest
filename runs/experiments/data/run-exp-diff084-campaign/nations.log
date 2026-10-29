@@ -1,0 +1,57 @@
+== carthage
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 85, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 41, in main
+    so = o.checkpoint("t00-start")
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 261, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 742, in save_as
+    raise DriverError(f"save_as: {target} already exists; use a unique name (run stamp) or overwrite=True for your own scratch file")
+harness.driver.DriverError: save_as: /home/diego/ic2-work/prefix/drive_c/IC2/C-rulebot1-5t-t00-start.SAV already exists; use a unique name (run stamp) or overwrite=True for your own scratch file
+== seleucid
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 85, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 41, in main
+    so = o.checkpoint("t00-start")
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 261, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 742, in save_as
+    raise DriverError(f"save_as: {target} already exists; use a unique name (run stamp) or overwrite=True for your own scratch file")
+harness.driver.DriverError: save_as: /home/diego/ic2-work/prefix/drive_c/IC2/C-rulebot1-5t-t00-start.SAV already exists; use a unique name (run stamp) or overwrite=True for your own scratch file
+== ptolemaic
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 85, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 41, in main
+    so = o.checkpoint("t00-start")
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 261, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 742, in save_as
+    raise DriverError(f"save_as: {target} already exists; use a unique name (run stamp) or overwrite=True for your own scratch file")
+harness.driver.DriverError: save_as: /home/diego/ic2-work/prefix/drive_c/IC2/C-rulebot1-5t-t00-start.SAV already exists; use a unique name (run stamp) or overwrite=True for your own scratch file
+== macedonia
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 85, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 41, in main
+    so = o.checkpoint("t00-start")
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 261, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 742, in save_as
+    raise DriverError(f"save_as: {target} already exists; use a unique name (run stamp) or overwrite=True for your own scratch file")
+harness.driver.DriverError: save_as: /home/diego/ic2-work/prefix/drive_c/IC2/C-rulebot1-5t-t00-start.SAV already exists; use a unique name (run stamp) or overwrite=True for your own scratch file
+== numidia
