@@ -1,0 +1,23 @@
+# run-exp-diff084-orders-b6: single-order sweep
+
+Verdicts: differs-after-end-turn 1, same 16
+
+| case | orders | original | remake | verdict | first difference |
+|---|---|---|---|---|---|
+| join-20-ok | join 12 + 8 units: exactly 20 (accepted) | unchecked  | unchecked  | **same** |  |
+| join-21-refused | join 12 + 9 units: 21 (R03 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| join-100k-exact | join to exactly 100,000 troops (accepted) | unchecked  | unchecked  | **same** |  |
+| join-100k-over | join to 102,000 troops (R04 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| split-one-unit | split an army of 1 unit (R01 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| transfer-into-20 | transfer a unit into an army of 20 units (R28 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| recruit-slot-40 | recruit with 39 slots queued: the 40th (accepted) | met new slots [{'slot': 39, 'state': 0, 'type': 'li', 'troops': 3000,  | met new slots [{'slot': 39, 'state': 0, 'type': 'li', 'troops': 3000,  | **same** |  |
+| recruit-slot-41 | recruit with 40 slots queued (R46 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| recruit-mob-100 | recruit at mobilisation 100 (R47 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| recruit-no-money | recruit 1,200 HI (120 talents) with 50 in the treasury (no catalogued refusal) | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 1200, ' | met new slots [{'slot': 4, 'state': 0, 'type': 'hi', 'troops': 1200, ' | **same** |  |
+| fortify-full | fortify Rome at 100 (R23 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| fortify-in-progress | fortify Rome with an order in progress, word 578 (R24 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| join-fleets-101 | join fleets of 60 + 41 ships (R15 refusal) | no-change the state did not change | no-change the state did not change | **differs-after-end-turn** | after End turn: fleets.1.condition: 96 vs 97 |
+| join-fleets-100 | join fleets of 60 + 40 ships (accepted) | unchecked  | unchecked  | **same** |  |
+| split-fleet-19 | split a fleet of 19 ships (R17 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| merc-20-units | hire a mercenary into an army of 20 units (R08 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
+| merc-low-supplies | hire a mercenary with 10 tons for 22,000 troops (R11 refusal) | no-change the state did not change | no-change the state did not change | **same** |  |
