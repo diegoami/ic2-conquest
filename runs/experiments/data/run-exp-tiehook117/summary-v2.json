@@ -1,0 +1,446 @@
+{
+ "totals": {
+  "calls": 501,
+  "calls_with_candidates": 220,
+  "ties": 6,
+  "ties_cross_nation": 0,
+  "ties_farther_won": 6,
+  "starts": 43,
+  "inert": 43
+ },
+ "starts": [
+  {
+   "start": "armenia-rulebot1-5t-et2",
+   "calls": 13,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "armenia-rulebot1-5t-et3",
+   "calls": 11,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "bithynia-rulebot1-5t-et1",
+   "calls": 14,
+   "calls_with_candidates": 8,
+   "ties": [
+    {
+     "turn": 1,
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "bithynia-rulebot1-5t-et2",
+   "calls": 10,
+   "calls_with_candidates": 4,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "bithynia-rulebot1-5t-et3",
+   "calls": 11,
+   "calls_with_candidates": 4,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "carthage-rulebot1-5t-r2-et1",
+   "calls": 13,
+   "calls_with_candidates": 7,
+   "ties": [
+    {
+     "turn": 1,
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "carthage-rulebot1-5t-r2-et2",
+   "calls": 10,
+   "calls_with_candidates": 5,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "carthage-rulebot1-5t-r2-et3",
+   "calls": 9,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "celtiberia-rulebot1-5t-r2-et1",
+   "calls": 13,
+   "calls_with_candidates": 7,
+   "ties": [
+    {
+     "turn": 1,
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "celtiberia-rulebot1-5t-r2-et2",
+   "calls": 11,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "celtiberia-rulebot1-5t-r2-et3",
+   "calls": 10,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "dacia-rulebot1-5t-et2",
+   "calls": 13,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "dacia-rulebot1-5t-et3",
+   "calls": 12,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "galatia-rulebot1-5t-et1",
+   "calls": 13,
+   "calls_with_candidates": 10,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "galatia-rulebot1-5t-et2",
+   "calls": 13,
+   "calls_with_candidates": 7,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "galatia-rulebot1-5t-et3",
+   "calls": 11,
+   "calls_with_candidates": 5,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "gaul-rulebot1-5t-r2-et1",
+   "calls": 13,
+   "calls_with_candidates": 8,
+   "ties": [
+    {
+     "turn": 1,
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "gaul-rulebot1-5t-r2-et2",
+   "calls": 11,
+   "calls_with_candidates": 4,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "gaul-rulebot1-5t-r2-et3",
+   "calls": 10,
+   "calls_with_candidates": 1,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "greece-rulebot1-5t-r2-et2",
+   "calls": 13,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "greece-rulebot1-5t-r2-et3",
+   "calls": 11,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "illyria-rulebot1-5t-et1",
+   "calls": 17,
+   "calls_with_candidates": 14,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "illyria-rulebot1-5t-et2",
+   "calls": 13,
+   "calls_with_candidates": 6,
+   "ties": [
+    {
+     "turn": 1,
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "illyria-rulebot1-5t-et3",
+   "calls": 11,
+   "calls_with_candidates": 4,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "illyria-rulebot1-5t-et4",
+   "calls": 10,
+   "calls_with_candidates": 1,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "macedonia-rulebot1-5t-r2-et2",
+   "calls": 12,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "macedonia-rulebot1-5t-r2-et3",
+   "calls": 10,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "media-rulebot1-5t-et2",
+   "calls": 12,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "media-rulebot1-5t-et3",
+   "calls": 10,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "numidia-rulebot1-5t-r2-et1",
+   "calls": 17,
+   "calls_with_candidates": 14,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "numidia-rulebot1-5t-r2-et2",
+   "calls": 13,
+   "calls_with_candidates": 6,
+   "ties": [
+    {
+     "turn": 1,
+     "actor": 12,
+     "nation": 12,
+     "score": 31,
+     "tied": [
+      4,
+      5
+     ],
+     "tied_owners": [
+      2,
+      2
+     ],
+     "tied_distances": [
+      27,
+      22
+     ],
+     "chosen": 4,
+     "chosen_is_first": true,
+     "farther_won": true
+    }
+   ],
+   "inert": true
+  },
+  {
+   "start": "numidia-rulebot1-5t-r2-et3",
+   "calls": 11,
+   "calls_with_candidates": 4,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "numidia-rulebot1-5t-r2-et4",
+   "calls": 10,
+   "calls_with_candidates": 1,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "ptolemaic-rulebot1-5t-r2-et1",
+   "calls": 14,
+   "calls_with_candidates": 11,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "ptolemaic-rulebot1-5t-r2-et2",
+   "calls": 12,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "ptolemaic-rulebot1-5t-r2-et3",
+   "calls": 9,
+   "calls_with_candidates": 3,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "ptolemaic-rulebot1-5t-r2-et4",
+   "calls": 9,
+   "calls_with_candidates": 3,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "rome-rulebot1-5t-et2",
+   "calls": 11,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "rome-rulebot1-5t-et3",
+   "calls": 11,
+   "calls_with_candidates": 3,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "seleucid-rulebot1-5t-r2-et2",
+   "calls": 12,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "seleucid-rulebot1-5t-r2-et3",
+   "calls": 10,
+   "calls_with_candidates": 4,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "thracia-rulebot1-5t-et2",
+   "calls": 12,
+   "calls_with_candidates": 6,
+   "ties": [],
+   "inert": true
+  },
+  {
+   "start": "thracia-rulebot1-5t-et3",
+   "calls": 10,
+   "calls_with_candidates": 2,
+   "ties": [],
+   "inert": true
+  }
+ ]
+}
