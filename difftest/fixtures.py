@@ -49,17 +49,6 @@ def siege_felsina(out):
     return log
 
 
-if __name__ == "__main__":
-    kind, out = sys.argv[1], Path(sys.argv[2])
-    if out.exists():
-        raise SystemExit(f"refusing to overwrite {out}")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    if kind == "new-game":
-        print(json.dumps(new_game_start(int(sys.argv[3]), out), default=str)[:600])
-    else:
-        print(json.dumps({"siege-felsina": siege_felsina}[kind](out), default=str)[:600])
-
-
 def new_game_start(row, out):
     """New Game with nation `row` (0 Rome ... 15 Thracia) human, startup seed 12345; the new-game autosave
     (AUTO0720.SAV) is copied to `out`. Earlier autosaves are moved aside, never deleted (driver.new_game)."""
@@ -72,3 +61,15 @@ def new_game_start(row, out):
     Path(out).with_suffix(".json").write_text(json.dumps(log, indent=1, default=str))
     g.kill()
     return log
+
+
+if __name__ == "__main__":
+    kind, out = sys.argv[1], Path(sys.argv[2])
+    if out.exists():
+        raise SystemExit(f"refusing to overwrite {out}")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    if kind == "new-game":
+        print(json.dumps(new_game_start(int(sys.argv[3]), out), default=str)[:600])
+    else:
+        print(json.dumps({"siege-felsina": siege_felsina}[kind](out), default=str)[:600])
+
