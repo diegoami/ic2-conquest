@@ -1,7 +1,8 @@
 # The original's AI army move keeps walking until it arrives or runs out of moves; the remake's AI marches once
 
-**Status:** promoted by research PR #100 (merge `d77a43e`), with a correction (next section); frequency measured in the
-remake on 2026-10-30 (section "How often").
+**Status:** promoted by research PR #100 (merge `d77a43e`), with a correction (next section); the frequency section
+promoted by research PR #101 (merge `8c33560`): all 48 probe files reproduce. The distance after the walk is measured
+to the march's aimed point (the target or the remake's intermediate point), not to the final target.
 **Tag:** [derived: code] on both sides; the remake-side frequency [confirmed] (probe below). For research issue
 [#97](https://github.com/diegoami/imperial-conquest-2-research/issues/97) (remake
 [#1585](https://github.com/diegoami/imperial_conquest_2/issues/1585)). Remake **v0.8.4**
@@ -55,7 +56,7 @@ Game starts with 3 seeds (48 runs) and records, for every AI march the remake's 
 | logged | 5,105 (94 armies gone by the end of their round) |
 | walked | 5,011 |
 | ended within 1 tile of the aimed point | 2,984 (59.5%) |
-| **ended more than 1 tile short WITH moves left** | **1,406 (28.1%)**: approach an enemy army 781, approach a city 436, mercenary run 100, garrison fallback 32, via an intermediate point 26, resupply 24 |
+| **ended more than 1 tile short WITH moves left** | **1,406 (28.1%)**: approach an enemy army 781, approach a city 436, mercenary run 100, garrison fallback 32, via an intermediate point 26, resupply 24, defend the resupply city 7 |
 | ended short with no moves left | 621 |
 
 Moves left in the 1,406: 1 (365), 2 (197), 3 (245), 4 (127), 5 (56), 6 (145), 7 (86), 8 (142), 9 (43). These are the
@@ -65,6 +66,10 @@ recurse in the original on that path. The other 1,380 went straight at the targe
 when the stale word allows it. So **the remake's AI stops short with moves left in about 28% of its
 marches; the share that ends differently in the original lies between 26/5,011 (0.5%) and 1,406/5,011 (28%)**, set by
 the stale word.
+
+**Update (research #97, measured in play):** the stale word was never −1 in 5 starts × 5 AI End turns, so every
+recursion test passed. The bracket collapses to its upper end: about 28% of the remake's AI marches stop where the
+original's walk on (`findings/2026-10-30-ai-move-stale-word-in-play97.md`).
 
 ## Consequence
 

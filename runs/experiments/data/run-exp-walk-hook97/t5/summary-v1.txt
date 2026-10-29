@@ -1,0 +1,10 @@
+5 starts x 5 AI End turns (seed 12345); records 666 : A 424 B 152 C 90
+A (calls past the fleet branch): direct path 346 | intermediate 78
+[ebp-0xa] at entry on the DIRECT path: {49: 207, 71: 133, 0: 6}
+[ebp-0xa] at entry on the intermediate path (before db38 writes it): {49: 49, 71: 19, 0: 10}
+B recursion test, by path: {'direct: passes (>= 0)': 131, 'intermediate: passes (>= 0)': 21}
+C no-progress test, by path: {'direct: passes (>= 0)': 90}
+min word at B: 0  at C: 0
+moves left at B: {1: 6, 2: 13, 3: 18, 4: 16, 5: 83, 6: 12, 7: 4}
+A by caller: {'recursion': 152, 'f47c': 117, 'f43f': 52, 'f409': 49, 'intercept_army': 23, 'e913': 12, '0x44f4cc': 10, 'f4a3': 5, 'ec7d': 2, 'ecd6': 2}
+B by caller of the call that reached it: {'recursion': 138, 'f43f': 7, 'f409': 2, 'f4a3': 2, '0x44f4cc': 2, 'f47c': 1}
