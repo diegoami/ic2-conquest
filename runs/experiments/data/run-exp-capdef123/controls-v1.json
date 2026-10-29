@@ -1,0 +1,176 @@
+{
+ "ram": "#187 snapshot (private)",
+ "rows": [
+  {
+   "case": "tie: Roman (90,79) and Seleucid (96,79), both 3 from the responder",
+   "as_staged": {
+    "moves": [
+     {
+      "army": 2,
+      "target": [
+       90,
+       79
+      ]
+     },
+     {
+      "army": 3,
+      "target": [
+       90,
+       79
+      ]
+     }
+    ],
+    "skipped_attacks": [
+     {
+      "call": "attack_army",
+      "army": 3,
+      "target": 0,
+      "draw_index": 0
+     }
+    ],
+    "draws": 0
+   },
+   "records_0_and_4_swapped": {
+    "moves": [
+     {
+      "army": 2,
+      "target": [
+       90,
+       79
+      ]
+     },
+     {
+      "army": 3,
+      "target": [
+       96,
+       79
+      ]
+     }
+    ],
+    "skipped_attacks": [],
+    "draws": 0
+   }
+  },
+  {
+   "case": "cap: 12 threats; record 13 nearest to the responder at (90, 76)",
+   "threat_cells": {
+    "0": [
+     84,
+     59
+    ],
+    "1": [
+     85,
+     59
+    ],
+    "4": [
+     86,
+     59
+    ],
+    "5": [
+     87,
+     59
+    ],
+    "6": [
+     88,
+     59
+    ],
+    "7": [
+     89,
+     59
+    ],
+    "8": [
+     74,
+     79
+    ],
+    "9": [
+     74,
+     80
+    ],
+    "10": [
+     74,
+     81
+    ],
+    "11": [
+     74,
+     82
+    ],
+    "12": [
+     74,
+     83
+    ],
+    "13": [
+     90,
+     76
+    ]
+   },
+   "as_staged": {
+    "moves": [
+     {
+      "army": 2,
+      "target": [
+       74,
+       79
+      ]
+     },
+     {
+      "army": 3,
+      "target": [
+       90,
+       76
+      ]
+     },
+     {
+      "army": 3,
+      "target": [
+       90,
+       76
+      ]
+     }
+    ],
+    "skipped_attacks": [
+     {
+      "call": "attack_army",
+      "army": 3,
+      "target": 13,
+      "draw_index": 0
+     }
+    ],
+    "draws": 0
+   },
+   "records_0_and_13_swapped": {
+    "moves": [
+     {
+      "army": 2,
+      "target": [
+       74,
+       79
+      ]
+     },
+     {
+      "army": 3,
+      "target": [
+       90,
+       76
+      ]
+     },
+     {
+      "army": 3,
+      "target": [
+       90,
+       76
+      ]
+     }
+    ],
+    "skipped_attacks": [
+     {
+      "call": "attack_army",
+      "army": 3,
+      "target": 0,
+      "draw_index": 0
+     }
+    ],
+    "draws": 0
+   }
+  }
+ ]
+}
