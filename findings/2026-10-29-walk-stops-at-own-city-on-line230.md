@@ -15,9 +15,11 @@ moves left, it calls the walker **once more** from the new position on a fresh l
 remake calls it once: its single walk equals the original's first call, step for step. A first walk ends short when
 its chosen step is blocked (a city or army marker on the line) or costs more than the moves left, even if another
 neighbouring tile would be affordable (the step rule of `2026-10-21-strategic-lateral-steps-and-callers.md`). Human
-armies only. In the 15 finished #232 campaigns, 21 of the remake's 32 move orders ended short with moves left: those
-are the moves where the original walks a second time (the second walk can be blocked too, as for Ptolemaic's army,
-whose target lies across sea).
+armies only. In the 16 finished #232 campaigns, 21 of the remake's 32 move orders ended short with moves left: those
+are the moves where the original walks a second time. They come from 7 armies, most re-ordered every turn (Carthage
+army 3 ×5, Rome army 1 ×5, Bithynia army 11 ×4, Ptolemaic army 7 ×4, one each for Celtiberia, Gaul and Seleucid).
+Since a second walk can be blocked too (Ptolemaic's target lies across sea), 21 is an upper bound on the orders that
+end differently. (Counts as re-checked by research PR #96; the first version said 15 campaigns.)
 
 ## Answer
 
