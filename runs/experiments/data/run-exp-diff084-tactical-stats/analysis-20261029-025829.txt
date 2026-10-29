@@ -1,0 +1,14 @@
+# run-exp-diff084-tactical-stats: original vs remake over many seeds
+
+Permutation test on the difference of means (10,000 permutations), Holm-corrected over 8 tests, alpha 0.05.
+
+| scenario | metric | n (o/r) | mean original | mean remake | p | p Holm | verdict |
+|---|---|---|---|---|---|---|---|
+| melee30 | slot0_morale | 30/30 | 71.333 | 71.333 | 1.0000 | 1.0000 | **consistent** |
+| melee30 | slot0_troops_lost | 30/30 | 215.933 | 213.900 | 0.9255 | 1.0000 | **consistent** |
+| melee30 | slot20_morale | 30/30 | 67.667 | 67.667 | 1.0000 | 1.0000 | **consistent** |
+| melee30 | slot20_troops_lost | 30/30 | 427.867 | 400.700 | 0.5106 | 1.0000 | **consistent** |
+| archery30 | slot0_morale | 30/30 | 70.000 | 70.000 | 1.0000 | 1.0000 | **consistent** |
+| archery30 | slot0_troops_lost | 30/30 | 0.000 | 0.000 | 1.0000 | 1.0000 | **consistent** |
+| archery30 | slot20_morale | 30/30 | 70.000 | 70.000 | 1.0000 | 1.0000 | **consistent** |
+| archery30 | slot20_troops_lost | 30/30 | 18.100 | 17.733 | 0.8006 | 1.0000 | **consistent** |

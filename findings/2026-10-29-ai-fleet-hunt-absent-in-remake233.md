@@ -1,5 +1,9 @@
 # An AI fleet at war hunts and sinks a nearby enemy fleet in the original; in the remake it stays in port
 
+**Status:** promoted by research PR #93 (merge `403db0d`), 2026-10-29: 582/582 saves OK and all 120 storm30/storm30b
+trials reproduce from the saves. Corrected here: the Holm p values (below). Research's lead for "which step differs":
+the remake's `src/` at v0.8.4 has no port of `FUN_0044f608` / `FUN_0044f4f8` (the hunt-or-port decision and its
+scorer), only the generic `ProposeFleetMarches` in `AiMilitaryPhase.cs`.
 **Tag:** [confirmed, partial]. 30 seeds in each game from the same save, under Wine. One start state.
 **Task:** conquest [#233](https://github.com/diegoami/ic2-conquest/issues/233) (tracker #228); remake **v0.8.4**
 (`d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb`), `classical-faithful`. Found by the pre-registered scenario
@@ -16,7 +20,8 @@ Then End turn.
 | Carthage's fleet (90 ships at (110,63)) | sails 14 tiles to (98,49), next to Rome's fleet, and attacks | does not move (stays at (110,63), condition 100) |
 | Rome's fleet survives the turn | **0 of 30** (all 30 ships lost) | **30 of 30** (0 ships lost; condition −3 or −4) |
 
-The permutation test gives p = 0.0001 (Holm-corrected 0.0012) for survival; the samples do not overlap at all.
+The permutation test gives p = 0.0001 (Holm-corrected 0.0016 in the final analysis over 17 tests,
+`analysis-20261029-021154`; the first draft quoted 0.0012 from the earlier 13-test analysis) for survival; the samples do not overlap at all.
 In the original, Carthage's fleet loses 3 ships and falls to condition 93 in the battle (seed 1).
 
 The original's behaviour is its documented AI fleet hunt
