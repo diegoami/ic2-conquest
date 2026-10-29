@@ -23,6 +23,18 @@ The original's behaviour is its documented AI fleet hunt
 (`findings/2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`: the hunt-or-port decision in `FUN_0044f608`, seen
 firing as decompiled). In the remake, the same state, with Carthage at war with Rome, never produces a hunt.
 
+## A second scenario repeats it after an AI declaration of war (`storm30b`)
+
+`storm30b` is the same order from a staged copy with Rome and Carthage at peace (pre-registered to measure storms).
+During the End turn, Carthage's AI declared war on Rome in **4 of 30** original trials and **5 of 30** remake trials.
+That rate is consistent between the games and with the documented `Random(10) == 0` gate
+(`findings/2026-10-22-ai-declares-war-on-a-human-seat.md`). After the declaration:
+- **original (4 of 4):** Carthage's fleet sailed to (98,49) and sank Rome's ("Carthage sinks fleet of Rome.");
+- **remake (0 of 5):** no hunt, and Rome's fleet survived.
+
+This is an observation made after the run, not one of `storm30b`'s pre-registered metrics. Seeds: original 9, 18, 21
+and 27 (`storm30b/original-s<seed>/a002.SAV`, turn 0735). Storm damage itself is consistent (below).
+
 ## What this does and does not establish
 
 - **Established:** for this state, the remake's AI does not hunt a reachable enemy fleet at sea, while the
@@ -33,7 +45,8 @@ firing as decompiled). In the remake, the same state, with Carthage at war with 
   synthetic inputs, at remake pins `55d96876` and `195a588e`
   (`findings/2026-10-24-strategic-fleet-controls174.md`, `findings/2026-10-24-fleet-accepted-movement174.md`).
 - The storm damage that `storm30` set out to measure could not be compared, because no original fleet survived.
-  `storm30b` repeats it with Rome and Carthage staged at peace.
+  `storm30b` measured it: condition lost 3.35 (original, 26 surviving fleets) vs 3.60 (remake, 30), Holm p = 1.0,
+  consistent. The original lost 3 points in 17 trials and 4 in 9; the remake 3 in 12 and 4 in 18.
 
 ## Evidence
 

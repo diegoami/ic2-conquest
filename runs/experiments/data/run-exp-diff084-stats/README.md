@@ -10,14 +10,14 @@ fixed in `difftest/cases/stats233.py` before any trial ran; `storm30b` was added
 - Test: two-sided permutation test on the difference of means, 10,000 permutations, Holm over all metrics, alpha
   0.05.
 
-## Results (analysis of 2026-10-29, before storm30b)
+## Results (newest analysis-*.txt, 2026-10-29)
 
 | Scenario | Start | Result |
 |---|---|---|
 | `naval30` | `saves/fleets-adjacent-at-sea-0723.SAV`: Ptolemaic fleet 1 (70 ships) attacks Carthage's fleet 0 (90) | **consistent**: the attacker sinks in 30/30 in both games; the defender loses 12.6 vs 13.0 ships on average, ending at condition 63.8 vs 63.5 |
 | `siege10` | `fixtures/siege-felsina-start.SAV` (built once, see below): army 0 besieges Felsina | **consistent**: no capture; army losses 1,869 vs 1,880 on average; loyalty −3, fortification −3 and population −1 in every trial of both games |
 | `storm30` | `saves/fleet-port-antium-0734.SAV`: Rome's fleet sails to open sea, End turn | **differs**, but through the AI, not storms: Carthage's fleet sinks Rome's in 30/30 original trials and never moves in the remake. `findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md` |
-| `storm30b` | the same with Rome–Carthage staged at peace (`fixtures/fleet-port-antium-peace-carthage.SAV`) | see the newest `analysis-*.txt` |
+| `storm30b` | the same with Rome–Carthage staged at peace (`fixtures/fleet-port-antium-peace-carthage.SAV`) | **consistent** on every pre-registered metric (Holm over 17 tests): condition lost 3.35 vs 3.60. Observed after the run: Carthage declared war on Rome in 4/30 original and 5/30 remake trials, and only in the original did the fleet hunt follow (4/4 vs 0/5): fleet-hunt finding |
 
 ## Fixtures (built once, kept)
 
