@@ -1,7 +1,9 @@
 # All 36 residual series of the 318-series tactical corpus are attributed: four Main commits removed them
 
+**Status:** promoted by research PR #108, with two corrections (marked below); rules spec §8 and pending-requests #25
+updated there.
 **Tag:** [confirmed]: the unchanged strict corpus replay (state and ordered draws, no KnownFailures) run on Main's own engine
-and test helpers at 21 pins, on the same private fixtures. No game run, no fixture, bound or tolerance change.
+and test helpers at 23 distinct pins (corrected from "21"), on the same private fixtures. No game run, no fixture, bound or tolerance change.
 **Task:** research [#25](https://github.com/diegoami/imperial-conquest-2-research/issues/25) (build imperial_conquest_2#1107),
 delegated to conquest on 2026-10-30.
 
@@ -14,7 +16,7 @@ broke at any step.
 
 | Commit | Change | Residuals removed |
 |---|---|---|
-| `32f3ce7` (merged into main by `30e1386`, 2026-10-18) | "Fix Pass2 weighted candidate eligibility and strict minimum" | **23** |
+| `32f3ce7` (2026-10-18; `30e1386`, the first tested pin with the fix and main together, merges main **into** the fix branch: corrected from "merged into main by") | "Fix Pass2 weighted candidate eligibility and strict minimum" | **23** |
 | `65cfc1f` (2026-10-18) | "Correct threat movement actor shooting mode and radius" | **11**, including the state-only `ar-hi-three_s3_r5_hook` and `hi-ar-three_s3_r5_hook` |
 | `f0cd629`, PR1371 / T206 | later-pass slot order (GeneralOrders, GeneralPassTwo, GeneralPassThree, ComputerGeneral) | **1**: `mix-rg_s1_r5_hook` |
 | `3c18600`, PR1387 / #1377 | captured Walk target, positive-troop shot guard (TacticalMovement) | **1**: `mix-rg_s2_r5_hook` |
@@ -61,6 +63,7 @@ Runner `runs/experiments/tactical25-attrib/run_pins.py` (the #157 `Corpus.cs` un
 - `pins-v1.json`: 4 pins;
 - `pins-v2.json`: 5 pins, adding PR1371's parent `a99d414`;
 - `pins-v3.json`: 20 pins, every tactical-touching commit from PR1156 to `a99d414`;
+- in all, 23 distinct pins (v3's 20 plus `f0cd629`, `3c18600` and `b593c6e`);
 - `attribution-v1.txt`.
 
 Per-series rows and fixture paths stay private (artifacts). Fixtures: the private pinned corpus of the #157 audit (revision
