@@ -1,5 +1,29 @@
 [
  {
+  "test": "armenia-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S13_armenia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "bithynia-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S11_bithynia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "carthage-rulebot1-5t-r2",
   "kind": "bot campaign",
   "start": "S01_Carthage_AUTO0720.SAV",
@@ -15,6 +39,30 @@
   "test": "celtiberia-rulebot1-5t-r2",
   "kind": "bot campaign",
   "start": "S08_Celtiberia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "dacia-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S10_dacia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "galatia-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S12_galatia_AUTO0720.SAV",
   "orders": "rulebot-1, 5 turns",
   "verdict": "first divergence turn 1",
   "detail": "",
@@ -72,6 +120,18 @@
   "finding": ""
  },
  {
+  "test": "media-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S14_media_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "numidia-rulebot1-5t-r2",
   "kind": "bot campaign",
   "start": "S05_Numidia_AUTO0720.SAV",
@@ -111,6 +171,18 @@
   "test": "seleucid-rulebot1-5t-r2",
   "kind": "bot campaign",
   "start": "S02_Seleucid_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "thracia-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S15_thracia_AUTO0720.SAV",
   "orders": "rulebot-1, 5 turns",
   "verdict": "first divergence turn 1",
   "detail": "",
