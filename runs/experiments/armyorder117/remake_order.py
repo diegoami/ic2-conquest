@@ -26,12 +26,14 @@ def main():
     for c in sorted(p for p in O.CAMP.iterdir() if (p / "remake").is_dir()):
         turns = sorted(int(d.name[1:]) for d in (c / "remake").iterdir() if d.is_dir() and d.name.startswith("t"))
         for t in turns:
-            nxt = c / "remake" / f"t{t + 1:02d}" / "a000.SAV"
+            # v2: inside the turn folder, End turn is the last command: its checkpoint is the last aKKK, the one before it is
+            # the state at the click. (v1 compared the last checkpoint with the next folder's a000, the same state imported
+            # again, so it could not show a death.)
             cur = sorted((c / "remake" / f"t{t:02d}").glob("a*.SAV"))
-            if not cur or not nxt.exists():
+            if len(cur) < 2:
                 continue
-            r = O.transition(sav.parse(cur[-1].read_bytes()), sav.parse(nxt.read_bytes()))
-            rows.append(dict(campaign=c.name, turn=t, pre=str(cur[-1].relative_to(c)), post=str(nxt.relative_to(c)), **r))
+            r = O.transition(sav.parse(cur[-2].read_bytes()), sav.parse(cur[-1].read_bytes()))
+            rows.append(dict(campaign=c.name, turn=t, pre=str(cur[-2].relative_to(c)), post=str(cur[-1].relative_to(c)), **r))
     out.write_text(json.dumps(rows, indent=1))
     d = [r for r in rows if r["died_or_merged"]]
     print("remake transitions", len(rows), "with deaths", len(d), "order kept when deaths", sum(r["order_preserved"] for r in d),

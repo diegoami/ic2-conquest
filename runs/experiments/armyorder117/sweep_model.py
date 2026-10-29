@@ -60,16 +60,36 @@ def main():
         m = O.match(L, P)
         dead = [i for i, _ in L if i not in m.values()]
         actual = [m[j] for j, _ in P if j in m]
-        start = [i for i, _ in L]
+        # v3: the raw pre table. Dead records already in it (the previous round's last AI seats) are swept by this End
+        # turn's first sweep; a death whose record is still a dead record in the post table was never swept (it happened
+        # after the last sweep), so it leaves the live order without moving anything.
+        raw = list(range(len(pre["armies"])))
+        pre_dead = [i for i in raw if pre["armies"][i]["owner"] < 0]
+        post_tomb_sigs = [O.sig(x) for x in post["armies"] if x["owner"] < 0 and O.sig(x)]
+        post_tomb_cells = [(x["x"], x["y"]) for x in post["armies"] if x["owner"] < 0]
+        # a dead record keeps its cell; one emptied by its battle also has all unit troops at 0 (no signature left)
+        unswept = [i for i in dead if O.sig(pre["armies"][i]) in post_tomb_sigs
+                   or (pre["armies"][i]["x"], pre["armies"][i]["y"]) in post_tomb_cells]
+        swept = [i for i in dead if i not in unswept]
         found = []
-        for p in partitions(dead):
-            tab = start
-            for batch in p:
-                tab = sweep(tab, batch)
+        for p in partitions(swept):
+            # the old dead records go in the End turn's first sweep, alone or with the first batch of new deaths
+            options = [[set(pre_dead)] + p, [set(pre_dead) | p[0]] + p[1:]] if (pre_dead and p) else [[set(pre_dead)] + p if pre_dead else p]
+            for batches in options:
+                tab = raw
+                for batch in batches:
+                    tab = sweep(tab, batch)
+                tab = [k for k in tab if k not in unswept and k not in pre_dead and k not in swept]
+                if tab == actual:
+                    found.append([sorted(b) for b in batches])
+        if not swept and pre_dead:
+            tab = [k for k in sweep(raw, set(pre_dead)) if k not in unswept]
             if tab == actual:
-                found.append([sorted(b) for b in p])
+                found.append([])
+        start = [i for i, _ in L]
         remake = [i for i in start if i not in dead]
-        rows.append({"campaign": r["campaign"], "turn": r["turn"], "dead_pre_indices": dead, "actual": actual,
+        rows.append({"campaign": r["campaign"], "turn": r["turn"], "dead_pre_indices": dead, "pre_dead_records": pre_dead,
+                     "unswept_deaths": unswept, "actual": actual,
                      "remake_rule": remake, "differs_from_remake_rule": actual != remake,
                      "sweep_sequences_reproducing": found[:4], "explained": bool(found)})
         print(r["campaign"], r["turn"], "dead", dead, "explained", bool(found), found[:2], "differs", actual != remake)
