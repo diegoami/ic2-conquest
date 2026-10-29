@@ -18,3 +18,27 @@ The first divergence is the walk (turn 1). Everything after it in Rome's records
 draws. AI nations differ from the first End turn, as in every run (#176/#177 families). Per turn:
 `rome-rulebot1-5t/turns.jsonl` (orders and replies on both sides, differences); saves under `original/` and
 `remake/t<k>/`.
+
+## Nine more nations (2026-10-29): rulebot-1, 5 turns, from `artifacts/run-exp-civ-sweep/S0n_<Nation>_AUTO0720.SAV`
+
+Summary: `campaigns-report-v1.txt` and `.json` (`python3 -m difftest.campaign_report`). Orders there are compared by
+**identity**: each army or fleet index is replaced by (owner, x, y) in the state the bot read. Two games name the same
+army by different record indexes (Ptolemaic, turn 2: army 7 vs 6, one army of 56,400 at (189,94)), and `turns.jsonl`'s
+`orders_same` compares the raw indexes. Once an army stands elsewhere, its orders differ by identity too.
+
+| Campaign | First own difference | Cause |
+|---|---|---|
+| Carthage | turn 1 | army 3's walk ends apart: the missing second walk (reproduced, `run-exp-diff084-orders-b5`) |
+| Gaul | turn 1 | army 9's walk ends apart, the same cause (reproduced). Rome's AI then destroys the army in the original only |
+| Celtiberia | turn 1 | a relation changed by AI diplomacy (#177 family) |
+| Illyria | turn 1 | Rome ends its trade with Illyria in the remake only (relation −8): AI diplomacy |
+| Greece | turn 2 | one city's supplies and the treasury: AI or economy, not from Greece's orders (none that turn) |
+| Ptolemaic | turn 2 | a fleet's condition: the storm draw. Its army's walk toward (171,68) is blocked by sea in both games |
+| Seleucid | turn 2 | siege losses (random draws, consistent per #233 `siege10`) |
+| Macedonia | turn 3 | AI armies (an army changes hands) |
+| Numidia | none | identical own records and orders for all 5 turns |
+
+Failed attempts, kept: the first folders of Carthage, Seleucid, Ptolemaic, Macedonia and Numidia (an in-game save name
+shared by all runs, refused by the driver), Gaul (the display died mid-run), and Greece, Celtiberia and Illyria
+(the display was gone; `harness/driver.py` `ensure_xvfb` now checks our own display). `carthage-rulebot1-5t-r3` is
+a partial duplicate started by a rerun-script bug and stopped. The completed runs are the folders with `summary.json`.

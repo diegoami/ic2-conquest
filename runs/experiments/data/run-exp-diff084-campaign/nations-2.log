@@ -1,0 +1,79 @@
+== carthage
+turn 1 Carthage: orders same, 308 differences (2 own)
+turn 2 Carthage: orders DIFFER, 1154 differences (23 own)
+turn 3 Carthage: orders same, 541 differences (27 own)
+turn 4 Carthage: orders DIFFER, 386 differences (38 own)
+turn 5 Carthage: orders DIFFER, 298 differences (15 own)
+== seleucid
+turn 1 Seleucid: orders same, 526 differences (0 own)
+turn 2 Seleucid: orders same, 546 differences (3 own)
+turn 3 Seleucid: orders same, 267 differences (23 own)
+turn 4 Seleucid: orders same, 334 differences (10 own)
+turn 5 Seleucid: orders DIFFER, 370 differences (21 own)
+== ptolemaic
+turn 1 Ptolemaic: orders same, 624 differences (0 own)
+turn 2 Ptolemaic: orders DIFFER, 1154 differences (2 own)
+turn 3 Ptolemaic: orders DIFFER, 702 differences (15 own)
+turn 4 Ptolemaic: orders DIFFER, 536 differences (17 own)
+turn 5 Ptolemaic: orders DIFFER, 361 differences (26 own)
+== macedonia
+turn 1 Macedonia: orders same, 120 differences (0 own)
+turn 2 Macedonia: orders same, 359 differences (0 own)
+turn 3 Macedonia: orders same, 623 differences (16 own)
+turn 4 Macedonia: orders same, 483 differences (16 own)
+turn 5 Macedonia: orders same, 603 differences (16 own)
+== numidia
+turn 1 Numidia: orders same, 796 differences (0 own)
+turn 2 Numidia: orders same, 959 differences (0 own)
+turn 3 Numidia: orders same, 811 differences (0 own)
+turn 4 Numidia: orders same, 715 differences (0 own)
+turn 5 Numidia: orders same, 736 differences (0 own)
+== gaul
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 87, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 58, in main
+    texts, err = o.act(act.validate(x), f"t{k:02d}-a{j:02d}")
+                 ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 271, in act
+    texts, error = perform(self.g, a, self.state), None
+                   ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 161, in perform
+    return move_army(g, a["army"], a["x"], a["y"])
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 140, in move_army
+    g.click(AREA_ORIGIN[0] + x, AREA_ORIGIN[1] + y, pause=0.8)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 269, in click
+    sh("xdotool", "click", "1")
+    ~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 103, in sh
+    return subprocess.run(args, env=ENV, capture_output=True, text=True, check=check).stdout
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '('xdotool', 'click', '1')' returned non-zero exit status 1.
+== greece
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 87, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 42, in main
+    o = original.OriginalSession(a.start, out / "original", a.seed, f"C{out.name}-{time.strftime('%Y%m%d%H%M%S')}", log=rlog)
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 252, in __init__
+    popups = self.g.load(start, seed=seed)
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 632, in load
+    self.start()
+    ~~~~~~~~~~^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 170, in start
+    self.wait(lambda: self.find_windows("^Imperial Conquest 2$"), 40, "main window")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 181, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for main window
+== celtiberia

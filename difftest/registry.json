@@ -1,5 +1,101 @@
 [
  {
+  "test": "carthage-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S01_Carthage_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
+  "test": "celtiberia-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S08_Celtiberia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "gaul-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S06_Gaul_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
+  "test": "greece-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S07_Greece_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "illyria-rulebot1-5t",
+  "kind": "bot campaign",
+  "start": "S09_Illyria_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "macedonia-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S04_Macedonia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "numidia-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S05_Numidia_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
+  "test": "ptolemaic-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S03_Ptolemaic_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "rome-rulebot1-5t",
   "kind": "bot campaign",
   "start": "BASE.SAV",
@@ -10,6 +106,18 @@
   "data": "run-exp-diff084-campaign",
   "remake": "v0.8.4 `d9cc71bc`",
   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
+  "test": "seleucid-rulebot1-5t-r2",
+  "kind": "bot campaign",
+  "start": "S02_Seleucid_AUTO0720.SAV",
+  "orders": "rulebot-1, 5 turns",
+  "verdict": "first divergence turn 1",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-campaign",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
  },
  {
   "test": "tax-25",
@@ -874,6 +982,30 @@
   "data": "run-exp-diff084-orders-b4",
   "remake": "v0.8.4 `d9cc71bc`",
   "finding": ""
+ },
+ {
+  "test": "walk-carthage-army3",
+  "kind": "single order",
+  "start": "S01_Carthage_AUTO0720.SAV",
+  "orders": "move(army=3, x=61, y=56); end_turn()",
+  "verdict": "differs-immediate",
+  "detail": "a001: armies.3.moves: 0 vs 1; armies.3.x: 89 vs 90; armies.3.y: 76 vs 77; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b5",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+ },
+ {
+  "test": "walk-gaul-army9",
+  "kind": "single order",
+  "start": "S06_Gaul_AUTO0720.SAV",
+  "orders": "move(army=9, x=92, y=34); end_turn()",
+  "verdict": "differs-immediate",
+  "detail": "a001: armies.8.moves: 1 vs 3; armies.8.y: 34 vs 32; 2 map cells",
+  "runs": 1,
+  "data": "run-exp-diff084-orders-b5",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
  },
  {
   "test": "naval30",

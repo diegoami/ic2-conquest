@@ -1,4 +1,4 @@
-# A long walk whose line crosses an own city goes around it in the original; the remake stops after one side step
+# A long walk whose line crosses an own city goes around it in the original; the remake stops after one side step (and two more short walks)
 
 **Status:** promoted by research PR #94 (merge `683a484`), 2026-10-29, with the cause **established** (next section).
 **Tag:** [confirmed, partial]. Single orders from the same save in both games, deterministic (a move draws nothing),
@@ -42,6 +42,21 @@ on a fresh line. Research replayed the pinned unpatched EXE (`9d753d5d`) in Unic
 So the remake's walker matches the original's single walk; the missing piece is the handler's second call. No step
 refuses; the second walk is never made. Remake v0.8.4 cites `TUnitMap_MoveHumanArmy` only for the stay-selected rule
 (`MapClickRules.cs:170`, `GameMapView.cs:1327`).
+
+## Two more cases from other nations (added 2026-10-29, after the promotion)
+
+The #232 campaigns from nine more New Game starts found two more walks that end apart. Reproduced as single orders
+(run `run-exp-diff084-orders-b5`, cases written before running, turn 0720):
+
+| Start | Order | Original | Remake |
+|---|---|---|---|
+| `S01_Carthage_AUTO0720.SAV` | army 3 from (93,79) toward (61,56) | (89,76), 0 moves left | (90,77), 1 left ("spending 7 of 8") |
+| `S06_Gaul_AUTO0720.SAV` | army 9 from (93,28) toward (92,34) | (92,34), 1 left | (92,32), 3 left ("spending 5 of 8") |
+
+Both fit the cause above: the remake stops with moves left, short of the target, where the original's second walk
+goes on. Neither has an own city on the line, so the cause is not specific to cities. The second walk is not
+replayed instruction by instruction here. In the Gaul campaign, Rome's AI destroyed the Gaulish army where the
+original's walk had put it, next to Roman territory, at (92,34); in the remake it stood two tiles away and survived.
 
 ## Found in play
 

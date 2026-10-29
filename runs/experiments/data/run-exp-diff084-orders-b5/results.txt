@@ -1,0 +1,8 @@
+# run-exp-diff084-orders-b5: single-order sweep
+
+Verdicts: differs-immediate 2
+
+| case | orders | original | remake | verdict | first difference |
+|---|---|---|---|---|---|
+| walk-carthage-army3 | Carthage army 3 from (93,79) toward (61,56) | unchecked  | unchecked  | **differs-immediate** | a001: armies.3.moves: 0 vs 1; armies.3.x: 89 vs 90; armies.3.y: 76 vs 77; 2 map cells |
+| walk-gaul-army9 | Gaul army 9 from (93,28) toward (92,34) | unchecked  | unchecked  | **differs-immediate** | a001: armies.8.moves: 1 vs 3; armies.8.y: 34 vs 32; 2 map cells |
