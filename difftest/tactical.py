@@ -106,6 +106,10 @@ def board_from_block(blk):
 def run_remake(case_dir, script, seed):
     from difftest.remake import ADAPTER, DOTNET, REMAKE
     out = case_dir / f"remake-s{seed}.jsonl"
+    n = 1
+    while out.exists():
+        n += 1
+        out = case_dir / f"remake-s{seed}-r{n}.jsonl"
     env = dict(os.environ, DOTNET_ROOT=str(DOTNET.parent))
     p = subprocess.run([str(DOTNET), str(ADAPTER), "tactical", str(REMAKE), str(case_dir / "strategic.SAV"), str(case_dir / "block.bin"),
                         str(script), str(out), f"seed={seed}"], capture_output=True, text=True, env=env)
@@ -142,10 +146,11 @@ def run_original(case_dir, script, seed, tag):
         w = g.find_windows(" v ")[0]
 
         def read():
-            raw = g.mem(BATTLE_SLOTS - BB.HEADER_LEN, BB.BLOCK_LEN)
+            # The slots and grid are contiguous at BATTLE_SLOTS; the header is NOT stored just before them (read there it
+            # is garbage), so it is not read. The side to move is at 0x4A0B78 (gui80's observer).
+            raw = bytes(BB.HEADER_LEN) + g.mem(BATTLE_SLOTS, BB.BLOCK_LEN - BB.HEADER_LEN)
             blk = BB.parse_block(raw)
-            return {"slots": board_from_block(blk), "side": struct.unpack_from("<h", g.mem(0x4A0B78, 2))[0], "header": {
-                k: blk[k] for k in ("attacker_army", "defender_army", "x2", "y1", "half_round")}}
+            return {"slots": board_from_block(blk), "side": struct.unpack_from("<h", g.mem(0x4A0B78, 2))[0]}
 
         def cellclick(x, y, button=1):
             sh("xdotool", "windowraise", str(w[0]), check=False)
@@ -182,12 +187,15 @@ def run_original(case_dir, script, seed, tag):
             except Exception as ex:          # recorded; the board is still read
                 err = f"{type(ex).__name__}: {ex}"
             texts = g.dismiss_popups() if not g.in_battle() else []
-            st = read() if g.in_battle() else {"slots": [], "side": None, "header": None}
+            st = read() if g.in_battle() else {"slots": [], "side": None}
             rows.append({"kind": "command", "step": step, "command": line, "error": err, "popups": texts,
                          "in_battle": g.in_battle(), **st})
     finally:
         g.kill()
-    (case_dir / f"original-s{seed}.jsonl").write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    target_log = case_dir / f"original-s{seed}.jsonl"
+    if target_log.exists():
+        target_log = case_dir / f"original-s{seed}-{tag}.jsonl"
+    target_log.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
     return rows
 
 
@@ -218,7 +226,51 @@ def compare_steps(orig, rem):
     return out
 
 
+def run_stats(mod_name, name):
+    """Many seeds per case in both games; one line per (case, side, seed) in artifacts/<name>/trials.jsonl, resumable.
+    Analyse with `python3 -m difftest.stats analyze <module> <name>` (the module's SCENARIOS and ALPHA)."""
+    mod = importlib.import_module(mod_name)
+    out = ROOT / "artifacts" / name
+    out.mkdir(parents=True, exist_ok=True)
+    tf = out / "trials.jsonl"
+    done = {(t["scenario"], t["side"], t["seed"]) for t in (json.loads(l) for l in tf.read_text().splitlines() if l.strip())
+            if "metrics" in t} if tf.exists() else set()
+    for c in mod.CASES:
+        base = out / c["id"]
+        if not base.exists():
+            stage(c, base)
+            (base / "script.txt").write_text("\n".join(c["script"]) + "\n")
+        for seed in c["seeds"]:
+            for side in ("remake", "original"):
+                if (c["id"], side, seed) in done:
+                    continue
+                rec = {"scenario": c["id"], "side": side, "seed": seed, "started": time.strftime("%Y-%m-%dT%H:%M:%S")}
+                try:
+                    if side == "remake":
+                        rows = run_remake(base, base / "script.txt", seed)
+                    else:
+                        rows = run_original(base, base / "script.txt", seed, f"TS-{name[-6:]}-{c['id']}-s{seed}-{int(time.time())}")
+                    first = next(r for r in rows if "slots" in r)
+                    last = [r for r in rows if r.get("slots")][-1]
+                    s0 = {s["k"]: s for s in first["slots"]}
+                    s1 = {s["k"]: s for s in last["slots"]}
+                    rec["metrics"] = {}
+                    for k in c["slots"]:
+                        rec["metrics"][f"slot{k}_troops_lost"] = s0[k]["troops"] - max(s1[k]["troops"], 0)
+                        rec["metrics"][f"slot{k}_morale"] = s1[k]["morale"]
+                    rec["errors"] = [r.get("error") for r in rows if r.get("error")]
+                except Exception as e:
+                    rec["error"] = f"{type(e).__name__}: {e}"[:400]
+                rec["finished"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+                with open(tf, "a") as f:
+                    f.write(json.dumps(rec) + "\n")
+                print(f"{c['id']} {side} seed {seed}: {rec.get('metrics', rec.get('error'))}", flush=True)
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] == "stats":
+        run_stats(sys.argv[2], sys.argv[3])
+        return
     ap = argparse.ArgumentParser()
     ap.add_argument("cases")
     ap.add_argument("name")
