@@ -20,6 +20,12 @@ in-remake233.md`). Pre-registered before running:
 - storm30b: storm30 from a staged copy of the fixture with Rome-Carthage set to peace (0) both ways, so no
   nation at war with Rome has a fleet within reach; the staged save is written once by stage_storm_peace() and
   kept with the run. Same order, metrics and seeds 1-30.
+
+ADDED 2026-10-30, before running (after the #232 AI-free game showed 520 rough-sea cells painted in the remake and none in
+the original over one week, a single draw):
+- weather30: BASE.SAV (Rome, 270 BC Spring week 1), one End turn; metrics: the number of rough-sea cells (map code 1)
+  after it, and whether any is painted. Seeds 1-30. The original's rule (research feature inventory E07): 20 fixed sea
+  regions rolled each tick, spring 1/15 (radius 4) before week 6.
 """
 from pathlib import Path
 import struct
@@ -49,6 +55,11 @@ def storm(before, after):
     return {"fleet_survives": alive, "ships_lost": f0["ships"] - (f1["ships"] if alive else 0),
             "condition_lost": (f0["condition"] - f1["condition"]) if alive else None,
             "at_target": int(alive and (f1["x"], f1["y"]) == (97, 48))}
+
+
+def weather(before, after):
+    cells = sum(1 for v in after["map"] if v == 1)
+    return {"rough_cells": cells, "any_rough": int(cells > 0)}
 
 
 def siege(before, after):
@@ -88,6 +99,8 @@ SCENARIOS = [
      "seeds": list(range(1, 31))},
     {"id": "siege10", "start": SIEGE_START,
      "actions": [{"op": "besiege", "army": 0, "city": 79}], "metrics": siege, "seeds": list(range(1, 11))},
+    {"id": "weather30", "start": str(Path.home() / "ic2-work/fixtures/BASE.SAV"), "actions": [{"op": "end_turn"}],
+     "metrics": weather, "seeds": list(range(1, 31))},
     {"id": "storm30b", "start": STORM_PEACE,
      "actions": [{"op": "move_fleet", "fleet": 2, "x": 97, "y": 48}, {"op": "end_turn"}], "metrics": storm,
      "seeds": list(range(1, 31))},
