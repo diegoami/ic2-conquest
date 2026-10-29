@@ -1,0 +1,49 @@
+{
+ "ram": "#187 snapshot (private)",
+ "rows": [
+  {
+   "case": "tie: both at distance 3",
+   "as_staged": {
+    "record": 0,
+    "cell": [
+     44,
+     62
+    ],
+    "score_plus_distance": 2003,
+    "distance": 3
+   },
+   "records_swapped": {
+    "record": 0,
+    "cell": [
+     50,
+     62
+    ],
+    "score_plus_distance": 2003,
+    "distance": 3
+   },
+   "same_cell_chosen": false
+  },
+  {
+   "case": "no tie: 3 and 4",
+   "as_staged": {
+    "record": 0,
+    "cell": [
+     44,
+     62
+    ],
+    "score_plus_distance": 2003,
+    "distance": 3
+   },
+   "records_swapped": {
+    "record": 0,
+    "cell": [
+     51,
+     62
+    ],
+    "score_plus_distance": 2004,
+    "distance": 4
+   },
+   "same_cell_chosen": false
+  }
+ ]
+}

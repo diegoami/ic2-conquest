@@ -86,12 +86,40 @@ Re-paired from the receipts (`order-in-play-v3.json`, `sweep-model-v5.json`, `re
 The conclusions stand: the orders diverge, the original's order is the sweep's, the merge depends on it, and no same-nation
 pair was inverted in these turns. The first version's data files are kept beside the new ones.
 
+## Addendum (2026-10-30): cross-nation tie-breaks also depend on the order
+
+The first open item below ("cross-nation loops") is answered for the two AI routines that scan other nations' armies.
+
+- **`FUN_0044ee60`, the enemy army an AI army goes for** (dump :52715–52776).
+  - It scans **every** army of a nation at war with the actor's (relation 3), in table order.
+  - Each one scores `min(1000, strength×110 / enemy strength − distance)`, halved by `FUN_0044eb9c`'s test, plus 1,000 when the
+    enemy is weaker and within 7 tiles.
+  - A candidate replaces the current one only when its score is **strictly** greater, so on a tie the **lowest table index
+    wins**.
+  - The cap applies before anything else can separate the candidates. So for a strong army **every weak enemy within 7 tiles
+    scores exactly 2,000**, whatever its distance, and the target is simply the first of them in table order.
+  - **Emulated** (`tiebreak.py`, #187 RAM, unmodified helpers). Carthage's 33,900-troop army 2 at (47,62), at war with Rome,
+    with Rome's armies re-placed as 2,000-troop units:
+
+    | Romans at | Records as staged | The two records swapped |
+    |---|---|---|
+    | (44,62) and (50,62), both 3 away | targets (44,62) | targets **(50,62)** |
+    | (44,62) and (51,62), 3 and 4 away | targets (44,62), 3 away | targets **(51,62), 4 away: the farther one** |
+
+- **`FUN_0044efc8`, the capital defence** (dump :52776–52899, read, not emulated). It first lists the enemy armies near the
+  capital, other nations', in table order, **at most 10** (`min(9, n + 1)`). Then it gives each own army a threat from that
+  list. With more than 10 threats, which ones are listed depends on the order, and the assignment runs in list order.
+
+So a reorder between **different** nations, which the original makes after deaths and the remake does not, can change an AI
+army's target and the capital defence's assignments. None of the 43 observed death turns was checked for such a tie.
+
 ## What this does not establish
 
 - **Later game.** With several armies per nation, a death can invert a same-nation pair, and then the merge choice (as
   controlled) and the army phase's visit order differ between the games. No such turn was observed in these 5-turn campaigns.
-- **Cross-nation loops.** Tie-breaks by table order across nations (an enemy target chosen as the first at the minimal
-  distance, interception scans) were not read; those could depend on the order even when no same-nation pair is inverted.
+- **Cross-nation loops beyond the two above.** Other AI scans (e.g. `FUN_004502e0`, `FUN_0044ffbc`'s economy decisions) were
+  not read for table-order tie-breaks. Whether a tie of `FUN_0044ee60` actually occurred in the 43 death turns was not checked
+  (it needs the actor's view at that moment).
 - **The remake's handling of an imported dead record** (imports were of saves without one in the 19 runs).
 
 ## Evidence
