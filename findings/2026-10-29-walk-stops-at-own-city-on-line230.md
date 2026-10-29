@@ -24,7 +24,8 @@ side step, to (118,52), and stops with most of its moves unspent.
 The original's step rule is documented: `findings/2026-10-21-strategic-lateral-steps-and-callers.md` (cheapest of
 the line cursor and two alternatives; the line is left only for a strictly cheaper one). The army navigation rule is
 `findings/2026-10-24-army-navigation-rule187.md`. This case adds what that work did not observe: a human army's walk
-with an own city on the line. Which step the remake's walker refuses after the side step was not read.
+with an own city on the line. The first draft left open which step the remake's walker refuses after the side step;
+research found that no step refuses (next section).
 
 ## Cause (research PR #94, [confirmed: original instructions replayed])
 
@@ -41,8 +42,6 @@ on a fresh line. Research replayed the pinned unpatched EXE (`9d753d5d`) in Unic
 So the remake's walker matches the original's single walk; the missing piece is the handler's second call. No step
 refuses; the second walk is never made. Remake v0.8.4 cites `TUnitMap_MoveHumanArmy` only for the stay-selected rule
 (`MapClickRules.cs:170`, `GameMapView.cs:1327`).
-
-The earlier text below asked "which step of the remake's walker refuses after the side step"; the answer is none.
 
 ## Found in play
 
