@@ -159,6 +159,10 @@ def main():
         if c["id"] in done or (a.only and c["id"] not in a.only):
             continue
         actions = [act.validate(x) for x in c["actions"]] + [{"op": "end_turn"}]
+        if c.get("stage"):
+            # A staged start (difftest/stage.py): written once beside the case's runs and used by both games.
+            from difftest import stage
+            c = dict(c, start=str(stage.apply(c["start"], c["stage"], out / "staged" / f"{c['id']}.SAV")))
         script = out / "scripts" / f"{c['id']}.jsonl"
         if not script.exists():
             script.write_text("\n".join(json.dumps(x) for x in
