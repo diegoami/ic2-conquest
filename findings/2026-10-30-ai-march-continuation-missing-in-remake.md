@@ -67,6 +67,10 @@ when the stale word allows it. So **the remake's AI stops short with moves left 
 marches; the share that ends differently in the original lies between 26/5,011 (0.5%) and 1,406/5,011 (28%)**, set by
 the stale word.
 
+**Update (research #97, measured in play):** the stale word was never −1 in 5 starts × 5 AI End turns, so every
+recursion test passed. The bracket collapses to its upper end: about 28% of the remake's AI marches stop where the
+original's walk on (`findings/2026-10-30-ai-move-stale-word-in-play97.md`).
+
 ## Consequence
 
 The gap in #1585 is wider than the human move:
