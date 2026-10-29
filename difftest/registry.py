@@ -31,6 +31,9 @@ FINDINGS = {
     "move-far": "2026-10-29-v084-known-differences-and-command-gaps.md",
     "toy3-rome-1200": "2026-10-29-v084-known-differences-and-command-gaps.md",
     "storm30": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md",
+    "storm30b": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md",
+    "fleet-sail": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md",
+    "embark": "2026-10-29-export-city-marker-variant-and-empty-offer230.md",
 }
 
 

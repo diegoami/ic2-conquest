@@ -1,0 +1,4 @@
+{"format": "diff-actions/1", "name": "split-transfer-unit", "note": "split row 0 off army 0, then transfer row 0 of army 0 to the new army"}
+{"op": "split_army", "army": 0, "units": [0]}
+{"op": "transfer_units", "army": 0, "partner": 14, "unit": 0}
+{"op": "end_turn"}
