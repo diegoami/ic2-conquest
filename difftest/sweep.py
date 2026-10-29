@@ -70,9 +70,12 @@ def verdict_of(case, ra, rb, n_actions):
     end = scoped({"fields": strip(compare(a_end, b_end))[0]}, a_end, b_end, nation)
     details = {"intents": intents, "immediate": rows, "after_end_turn_own": end, "nation": NATIONS[nation],
                "start_baseline": {"fields": d0["fields"], "map_cells": d0["map"]["count"]}}
-    errors = [json.loads(l).get("error") for l in (ra / "receipt.jsonl").read_text().splitlines()
-              if l.strip() and json.loads(l).get("kind") == "action"]
-    details["original_errors"] = [e for e in errors if e]
+    acts = [json.loads(l) for l in (ra / "receipt.jsonl").read_text().splitlines() if l.strip()]
+    acts = [x for x in acts if x.get("kind") == "action"]
+    # An adapter error that came with a game box is a refusal the dialog-driving code did not expect, not a harness
+    # failure: the box text is the game's answer (it is kept in details["original_refusals"]).
+    details["original_refusals"] = [{"error": x["error"], "box": x.get("reply")} for x in acts if x.get("error") and x.get("reply")]
+    details["original_errors"] = [x["error"] for x in acts if x.get("error") and not x.get("reply")]
     if details["original_errors"] or any(i["original"][0] == "not-met" for i in intents):
         return "harness", details
     if any((i["original"][0] == "no-change") != (i["remake"][0] == "no-change") for i in intents):
@@ -159,6 +162,10 @@ def main():
         if c["id"] in done or (a.only and c["id"] not in a.only):
             continue
         actions = [act.validate(x) for x in c["actions"]] + [{"op": "end_turn"}]
+        if c.get("stage"):
+            # A staged start (difftest/stage.py): written once beside the case's runs and used by both games.
+            from difftest import stage
+            c = dict(c, start=str(stage.apply(c["start"], c["stage"], out / "staged" / f"{c['id']}.SAV")))
         script = out / "scripts" / f"{c['id']}.jsonl"
         if not script.exists():
             script.write_text("\n".join(json.dumps(x) for x in

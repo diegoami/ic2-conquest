@@ -1,0 +1,18 @@
+join-20-ok: same 
+join-21-refused: same 
+join-100k-exact: same 
+join-100k-over: same 
+split-one-unit: harness 
+transfer-into-20: error DriverError: timeout waiting for save Sers-b6-transfer-into-20-original-a001.SAV
+recruit-slot-40: same 
+recruit-slot-41: same 
+recruit-mob-100: same 
+recruit-no-money: same 
+fortify-full: harness 
+fortify-in-progress: harness 
+join-fleets-101: differs-after-end-turn after End turn: fleets.1.condition: 96 vs 97
+join-fleets-100: same 
+split-fleet-19: harness 
+merc-20-units: same 
+merc-low-supplies: same 
+{"same": 11, "harness": 4, "error": 1, "differs-after-end-turn": 1}

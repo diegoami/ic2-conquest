@@ -257,7 +257,38 @@ class OriginalSession:
         self.receipt.write(json.dumps(e, default=str) + "\n")
         self.receipt.flush()
 
+    ORDER_DIALOGS = ("Army to army transfer", "Split army", "Change units", "Split unit", "Rename unit", "Army recruits",
+                     "Supply army", "Recruit mercenary unit", "Supply fleet", "Repair fleet", "Split fleet",
+                     "Fleet to fleet transfer", "Build fleet", "International Relations", "Change tax level", "Fortify .*")
+
+    def close_stray_dialogs(self):
+        """Close any order dialog still open before a save: a refusal box can leave its dialog open (Army to army
+        transfer into a 20-unit army, #230 transfer-into-20), and an open dialog blocks File > Save. Cancel if the
+        dialog has it, else OK. Returns the titles closed."""
+        closed = []
+        for pattern in self.ORDER_DIALOGS:
+            for _ in range(3):
+                found = self.g.find_windows("^%s$" % pattern)
+                if not found:
+                    break
+                title = found[0][1]
+                self.g.dismiss_popups()
+                try:
+                    cs = self.g.controls(title)
+                    button = next((c for c in cs if c["text"].replace("&", "").strip() in ("Cancel",)), None) \
+                        or next((c for c in cs if c["text"].replace("&", "").strip() == "OK"), None)
+                    if button is None:
+                        break
+                    self.g.click_control(button, pause=1.0)
+                except DriverError:
+                    time.sleep(0.6)
+                closed.append(title)
+        return closed
+
     def checkpoint(self, name):
+        stray = self.close_stray_dialogs()
+        if stray:
+            self.emit(kind="closed_stray_dialogs", before=name, titles=stray)
         saved = self.g.save_as(f"{self.tag}-{name}.SAV")
         dst = self.out / f"{name}.SAV"
         shutil.copy(saved, dst)
@@ -272,7 +303,9 @@ class OriginalSession:
         except Exception as e:      # any failure of one order is recorded (an xdotool click once exited 1 mid-campaign)
             texts, error = [], f"{type(e).__name__}: {e}"
             try:
-                self.g.dismiss_popups()
+                # A refusal box shown instead of the expected dialog ("Split army did not open" for a one-unit army,
+                # #230 split-one-unit): its text is the game's answer, kept as the reply.
+                texts = self.g.dismiss_popups()
             except Exception:
                 pass
         self.checkpoint(name)
