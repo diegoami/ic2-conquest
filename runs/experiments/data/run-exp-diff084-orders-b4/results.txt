@@ -1,0 +1,10 @@
+# run-exp-diff084-orders-b4: single-order sweep
+
+Verdicts: refusal-difference 1, differs-immediate 2, same 1
+
+| case | orders | original | remake | verdict | first difference |
+|---|---|---|---|---|---|
+| walk-city-on-line | army 1 from (120,53) toward (99,32): Venusia (118,51) is on the line | unchecked  | unchecked  | **differs-immediate** | a001: armies.1.cell: 4 vs 2; armies.1.moves: 1 vs 6; armies.1.x: 115 vs 118; armies.1.y: 49 vs 52; 2 map cells |
+| walk-city-on-line-near | army 1 toward (116,49): the same line, a target within its moves | unchecked  | unchecked  | **differs-immediate** | a001: armies.1.moves: 3 vs 6; armies.1.x: 116 vs 118; armies.1.y: 49 vs 52; 2 map cells |
+| walk-line-clear | army 1 toward (120,45): a line with no marker (control) | no-change the state did not change | unchecked  | **refusal-difference** | a001: armies.1.moves: 8 vs 1; armies.1.x: 120 vs 119; armies.1.y: 53 vs 46; 2 map cells |
+| walk-line-clear-land | army 1 north to (120,48): a clear land line (control) | unchecked  | unchecked  | **same** |  |
