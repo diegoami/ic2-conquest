@@ -1,0 +1,571 @@
+{
+ "ram": "#187 snapshot (private)",
+ "rows": [
+  {
+   "nation": 0,
+   "armies": [
+    0,
+    1
+   ],
+   "armies_state": {
+    "army0": {
+     "captured_order": {
+      "x": 95,
+      "y": 35,
+      "owner": 0,
+      "moves": -1,
+      "troops": 23700,
+      "money": 600,
+      "supplies": 237
+     },
+     "swapped_order": {
+      "x": 95,
+      "y": 35,
+      "owner": 0,
+      "moves": -1,
+      "troops": 23700,
+      "money": 600,
+      "supplies": 237
+     }
+    },
+    "army1": {
+     "captured_order": {
+      "x": 114,
+      "y": 49,
+      "owner": 0,
+      "moves": -1,
+      "troops": 22000,
+      "money": 600,
+      "supplies": 220
+     },
+     "swapped_order": {
+      "x": 114,
+      "y": 49,
+      "owner": 0,
+      "moves": -1,
+      "troops": 22000,
+      "money": 600,
+      "supplies": 220
+     }
+    }
+   },
+   "same_outcome": true,
+   "calls_captured": [
+    {
+     "call": "army_move",
+     "army": 0,
+     "edx": 2228317
+    },
+    {
+     "call": "attack_army",
+     "army": 0,
+     "target": 8,
+     "draw_index": 0
+    },
+    {
+     "call": "army_move",
+     "army": 1,
+     "edx": 2228317
+    },
+    {
+     "call": "army_move",
+     "army": 1,
+     "edx": 2228317
+    },
+    {
+     "call": "army_upkeep",
+     "army": 0,
+     "edx": 2228317
+    },
+    {
+     "call": "own_city_contact",
+     "army": 71,
+     "edx": 0
+    },
+    {
+     "call": "army_move",
+     "army": 0,
+     "edx": 2228317
+    },
+    {
+     "call": "attack_army",
+     "army": 0,
+     "target": 8,
+     "draw_index": 0
+    },
+    {
+     "call": "army_upkeep",
+     "army": 1,
+     "edx": 6900
+    },
+    {
+     "call": "own_city_contact",
+     "army": 110,
+     "edx": 1
+    },
+    {
+     "call": "own_city_contact",
+     "army": 113,
+     "edx": 1
+    },
+    {
+     "call": "own_city_contact",
+     "army": 115,
+     "edx": 1
+    }
+   ],
+   "calls_swapped_renamed": [
+    {
+     "call": "army_move",
+     "army": 1,
+     "edx": 2228317
+    },
+    {
+     "call": "army_move",
+     "army": 1,
+     "edx": 2228317
+    },
+    {
+     "call": "army_move",
+     "army": 0,
+     "edx": 2228317
+    },
+    {
+     "call": "attack_army",
+     "army": 0,
+     "target": 8,
+     "draw_index": 0
+    },
+    {
+     "call": "army_upkeep",
+     "army": 1,
+     "edx": 2228317
+    },
+    {
+     "call": "own_city_contact",
+     "army": 110,
+     "edx": 0
+    },
+    {
+     "call": "own_city_contact",
+     "army": 113,
+     "edx": 0
+    },
+    {
+     "call": "own_city_contact",
+     "army": 115,
+     "edx": 0
+    },
+    {
+     "call": "army_upkeep",
+     "army": 0,
+     "edx": 3211378
+    },
+    {
+     "call": "own_city_contact",
+     "army": 71,
+     "edx": 1
+    },
+    {
+     "call": "army_move",
+     "army": 0,
+     "edx": 2228317
+    },
+    {
+     "call": "attack_army",
+     "army": 0,
+     "target": 8,
+     "draw_index": 0
+    }
+   ],
+   "calls_same_multiset": false,
+   "rng_draws": [
+    0,
+    0
+   ]
+  },
+  {
+   "nation": 1,
+   "armies": [
+    2,
+    3
+   ],
+   "armies_state": {
+    "army2": {
+     "captured_order": {
+      "x": 42,
+      "y": 63,
+      "owner": 1,
+      "moves": 0,
+      "troops": 33900,
+      "money": 597,
+      "supplies": 339
+     },
+     "swapped_order": {
+      "x": 42,
+      "y": 63,
+      "owner": 1,
+      "moves": 0,
+      "troops": 33900,
+      "money": 597,
+      "supplies": 339
+     }
+    },
+    "army3": {
+     "captured_order": {
+      "x": 89,
+      "y": 81,
+      "owner": 1,
+      "moves": 0,
+      "troops": 24320,
+      "money": 600,
+      "supplies": 243
+     },
+     "swapped_order": {
+      "x": 89,
+      "y": 81,
+      "owner": 1,
+      "moves": 0,
+      "troops": 24320,
+      "money": 600,
+      "supplies": 243
+     }
+    }
+   },
+   "same_outcome": true,
+   "calls_captured": [
+    {
+     "call": "army_upkeep",
+     "army": 2,
+     "edx": 8388686
+    },
+    {
+     "call": "own_city_contact",
+     "army": 26,
+     "edx": 2
+    },
+    {
+     "call": "own_city_contact",
+     "army": 29,
+     "edx": 2
+    },
+    {
+     "call": "own_city_contact",
+     "army": 30,
+     "edx": 2
+    },
+    {
+     "call": "army_move",
+     "army": 2,
+     "edx": 4128802
+    },
+    {
+     "call": "army_upkeep",
+     "army": 3,
+     "edx": 2100
+    },
+    {
+     "call": "own_city_contact",
+     "army": 66,
+     "edx": 3
+    },
+    {
+     "call": "own_city_contact",
+     "army": 69,
+     "edx": 3
+    },
+    {
+     "call": "own_city_contact",
+     "army": 72,
+     "edx": 3
+    },
+    {
+     "call": "own_city_contact",
+     "army": 74,
+     "edx": 3
+    },
+    {
+     "call": "own_city_contact",
+     "army": 76,
+     "edx": 3
+    },
+    {
+     "call": "army_move",
+     "army": 3,
+     "edx": 5570643
+    },
+    {
+     "call": "army_move",
+     "army": 3,
+     "edx": 4128802
+    }
+   ],
+   "calls_swapped_renamed": [
+    {
+     "call": "army_upkeep",
+     "army": 3,
+     "edx": 8388686
+    },
+    {
+     "call": "own_city_contact",
+     "army": 66,
+     "edx": 2
+    },
+    {
+     "call": "own_city_contact",
+     "army": 69,
+     "edx": 2
+    },
+    {
+     "call": "own_city_contact",
+     "army": 72,
+     "edx": 2
+    },
+    {
+     "call": "own_city_contact",
+     "army": 74,
+     "edx": 2
+    },
+    {
+     "call": "own_city_contact",
+     "army": 76,
+     "edx": 2
+    },
+    {
+     "call": "army_move",
+     "army": 3,
+     "edx": 5570643
+    },
+    {
+     "call": "army_move",
+     "army": 3,
+     "edx": 4128802
+    },
+    {
+     "call": "army_upkeep",
+     "army": 2,
+     "edx": 9760
+    },
+    {
+     "call": "own_city_contact",
+     "army": 26,
+     "edx": 3
+    },
+    {
+     "call": "own_city_contact",
+     "army": 29,
+     "edx": 3
+    },
+    {
+     "call": "own_city_contact",
+     "army": 30,
+     "edx": 3
+    },
+    {
+     "call": "army_move",
+     "army": 2,
+     "edx": 4128802
+    }
+   ],
+   "calls_same_multiset": false,
+   "rng_draws": [
+    0,
+    0
+   ]
+  },
+  {
+   "nation": 2,
+   "armies": [
+    4,
+    5
+   ],
+   "armies_state": {
+    "army4": {
+     "captured_order": {
+      "x": 225,
+      "y": 72,
+      "owner": 2,
+      "moves": 0,
+      "troops": 40425,
+      "money": 694,
+      "supplies": 404
+     },
+     "swapped_order": {
+      "x": 225,
+      "y": 72,
+      "owner": 2,
+      "moves": 0,
+      "troops": 40425,
+      "money": 694,
+      "supplies": 404
+     }
+    },
+    "army5": {
+     "captured_order": {
+      "x": 176,
+      "y": 42,
+      "owner": 2,
+      "moves": 0,
+      "troops": 36660,
+      "money": 600,
+      "supplies": 366
+     },
+     "swapped_order": {
+      "x": 176,
+      "y": 42,
+      "owner": 2,
+      "moves": 0,
+      "troops": 36660,
+      "money": 600,
+      "supplies": 366
+     }
+    }
+   },
+   "same_outcome": true,
+   "calls_captured": [
+    {
+     "call": "army_upkeep",
+     "army": 4,
+     "edx": 8388667
+    },
+    {
+     "call": "own_city_contact",
+     "army": 262,
+     "edx": 4
+    },
+    {
+     "call": "own_city_contact",
+     "army": 263,
+     "edx": 4
+    },
+    {
+     "call": "own_city_contact",
+     "army": 264,
+     "edx": 4
+    },
+    {
+     "call": "own_city_contact",
+     "army": 272,
+     "edx": 4
+    },
+    {
+     "call": "army_upkeep",
+     "army": 5,
+     "edx": 4718817
+    },
+    {
+     "call": "own_city_contact",
+     "army": 202,
+     "edx": 5
+    }
+   ],
+   "calls_swapped_renamed": [
+    {
+     "call": "army_upkeep",
+     "army": 5,
+     "edx": 8388667
+    },
+    {
+     "call": "own_city_contact",
+     "army": 202,
+     "edx": 4
+    },
+    {
+     "call": "army_upkeep",
+     "army": 4,
+     "edx": 2752688
+    },
+    {
+     "call": "own_city_contact",
+     "army": 262,
+     "edx": 5
+    },
+    {
+     "call": "own_city_contact",
+     "army": 263,
+     "edx": 5
+    },
+    {
+     "call": "own_city_contact",
+     "army": 264,
+     "edx": 5
+    },
+    {
+     "call": "own_city_contact",
+     "army": 272,
+     "edx": 5
+    }
+   ],
+   "calls_same_multiset": false,
+   "rng_draws": [
+    0,
+    0
+   ]
+  },
+  {
+   "case": "merge_small (FUN_004509f0)",
+   "armies_before": {
+    "record2": [
+     42,
+     63
+    ],
+    "record3": [
+     45,
+     63
+    ]
+   },
+   "result": {
+    "captured": [
+     {
+      "x": 47,
+      "y": 62,
+      "owner": -1,
+      "moves": 8,
+      "troops": 0,
+      "money": 100,
+      "supplies": 231,
+      "record": 2,
+      "first_unit": "M21\u0000"
+     },
+     {
+      "x": 45,
+      "y": 63,
+      "owner": 1,
+      "moves": 8,
+      "troops": 24000,
+      "money": 200,
+      "supplies": 321,
+      "record": 3,
+      "first_unit": "M30\u0000"
+     }
+    ],
+    "captured_draws": 0,
+    "swapped": [
+     {
+      "x": 45,
+      "y": 63,
+      "owner": -1,
+      "moves": 8,
+      "troops": 0,
+      "money": 100,
+      "supplies": 90,
+      "record": 2,
+      "first_unit": "M31\u0000"
+     },
+     {
+      "x": 47,
+      "y": 62,
+      "owner": 1,
+      "moves": 8,
+      "troops": 24000,
+      "money": 200,
+      "supplies": 321,
+      "record": 3,
+      "first_unit": "M20\u0000"
+     }
+    ],
+    "swapped_draws": 0
+   }
+  }
+ ]
+}
