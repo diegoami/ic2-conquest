@@ -1,0 +1,32 @@
+{
+ "start": "artifacts/run-exp-tiehook117/starts/numidia-rulebot1-5t-r2-et3.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-163122",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0723.SAV",
+    "sha256": "b6e602d00ddc257bc435a199564702613f3353d121ef0ad9efa6225ad7ff04b2"
+   }
+  ],
+  "records": 19
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-163146",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0723.SAV",
+    "sha256": "b6e602d00ddc257bc435a199564702613f3353d121ef0ad9efa6225ad7ff04b2"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ],
+ "hooked_exe_sha256": "854744b87a7d550c9de6f5e89150c73211d77b9cfc3579262a8103a54bb3ffc5"
+}

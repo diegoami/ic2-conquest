@@ -1,0 +1,32 @@
+{
+ "start": "artifacts/run-exp-tiehook117/starts/bithynia-rulebot1-5t-et1.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-160644",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "fe4d4ec02572469ee1cd6482cfe8ecbc5f0b00b4e9bfd32d38c952b546366c21"
+   }
+  ],
+  "records": 26
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261029-160707",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "fe4d4ec02572469ee1cd6482cfe8ecbc5f0b00b4e9bfd32d38c952b546366c21"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ],
+ "hooked_exe_sha256": "854744b87a7d550c9de6f5e89150c73211d77b9cfc3579262a8103a54bb3ffc5"
+}
