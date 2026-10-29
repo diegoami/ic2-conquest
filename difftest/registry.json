@@ -1,5 +1,17 @@
 [
  {
+  "test": "allhuman-rulebot1-32",
+  "kind": "bot campaign",
+  "start": "start-allhuman-AUTO0720.SAV",
+  "orders": "rulebot-1, 32 turns",
+  "verdict": "first divergence turn 5",
+  "detail": "",
+  "runs": 1,
+  "data": "run-exp-diff084-allhuman",
+  "remake": "v0.8.4 `d9cc71bc`",
+  "finding": ""
+ },
+ {
   "test": "armenia-rulebot1-5t",
   "kind": "bot campaign",
   "start": "S13_armenia_AUTO0720.SAV",

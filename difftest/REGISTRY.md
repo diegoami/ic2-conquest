@@ -6,6 +6,7 @@ version. Batch-level results and corrections: [HISTORY.md](HISTORY.md).
 
 | test | kind | remake | start | orders | verdict | runs | finding | data |
 |---|---|---|---|---|---|---|---|---|
+| `allhuman-rulebot1-32` | bot campaign | v0.8.4 `d9cc71bc` | start-allhuman-AUTO0720.SAV | rulebot-1, 32 turns | first divergence turn 5 | 1 |  | [run-exp-diff084-allhuman](../runs/experiments/data/run-exp-diff084-allhuman/) |
 | `armenia-rulebot1-5t` | bot campaign | v0.8.4 `d9cc71bc` | S13_armenia_AUTO0720.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 |  | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
 | `bithynia-rulebot1-5t` | bot campaign | v0.8.4 `d9cc71bc` | S11_bithynia_AUTO0720.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 |  | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
 | `carthage-rulebot1-5t-r2` | bot campaign | v0.8.4 `d9cc71bc` | S01_Carthage_AUTO0720.SAV | rulebot-1, 5 turns | first divergence turn 1 | 1 | [2026-10-29-walk-stops-at-own-c…](../findings/2026-10-29-walk-stops-at-own-city-on-line230.md) | [run-exp-diff084-campaign](../runs/experiments/data/run-exp-diff084-campaign/) |
