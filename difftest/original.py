@@ -259,17 +259,19 @@ class OriginalSession:
 
     ORDER_DIALOGS = ("Army to army transfer", "Split army", "Change units", "Split unit", "Rename unit", "Army recruits",
                      "Supply army", "Recruit mercenary unit", "Supply fleet", "Repair fleet", "Split fleet",
-                     "Fleet to fleet transfer", "Build fleet", "International Relations", "Change tax level")
+                     "Fleet to fleet transfer", "Build fleet", "International Relations", "Change tax level", "Fortify .*")
 
     def close_stray_dialogs(self):
         """Close any order dialog still open before a save: a refusal box can leave its dialog open (Army to army
         transfer into a 20-unit army, #230 transfer-into-20), and an open dialog blocks File > Save. Cancel if the
         dialog has it, else OK. Returns the titles closed."""
         closed = []
-        for title in self.ORDER_DIALOGS:
+        for pattern in self.ORDER_DIALOGS:
             for _ in range(3):
-                if not self.g.find_windows("^%s$" % title):
+                found = self.g.find_windows("^%s$" % pattern)
+                if not found:
                     break
+                title = found[0][1]
                 self.g.dismiss_popups()
                 try:
                     cs = self.g.controls(title)
