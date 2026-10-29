@@ -1,5 +1,6 @@
 # A long walk whose line crosses an own city goes around it in the original; the remake stops after one side step
 
+**Status:** promoted by research PR #94 (merge `683a484`), 2026-10-29, with the cause **established** (next section).
 **Tag:** [confirmed, partial]. Single orders from the same save in both games, deterministic (a move draws nothing),
 under Wine. One army, one blocking city.
 **Tasks:** conquest [#230](https://github.com/diegoami/ic2-conquest/issues/230), found by the
@@ -24,6 +25,24 @@ The original's step rule is documented: `findings/2026-10-21-strategic-lateral-s
 the line cursor and two alternatives; the line is left only for a strictly cheaper one). The army navigation rule is
 `findings/2026-10-24-army-navigation-rule187.md`. This case adds what that work did not observe: a human army's walk
 with an own city on the line. Which step the remake's walker refuses after the side step was not read.
+
+## Cause (research PR #94, [confirmed: original instructions replayed])
+
+`TUnitMap_MoveHumanArmy` (`0x446d9c`, dump :46713) calls the army walker `FUN_0044d734` once. If the army is still short
+of the target (`FUN_00449018 > 0`) and has moves left, it calls the walker a **second time**, from the new position
+on a fresh line. Research replayed the pinned unpatched EXE (`9d753d5d`) in Unicorn on
+`walk-city-on-line/original/a000.SAV` (army 1):
+- **one walker call:** (120,53) → (119,52) → (118,52), 6 moves left, for both targets. That is exactly the remake's
+  result;
+- **the handler's two calls:** (115,49) with 1 left for (99,32), and (116,49) with 3 left for (116,49). That is
+  exactly the original's saves;
+- **the clear-line control** (120,48) ends in one call with 3 left, in both.
+
+So the remake's walker matches the original's single walk; the missing piece is the handler's second call. No step
+refuses; the second walk is never made. Remake v0.8.4 cites `TUnitMap_MoveHumanArmy` only for the stay-selected rule
+(`MapClickRules.cs:170`, `GameMapView.cs:1327`).
+
+The earlier text below asked "which step of the remake's walker refuses after the side step"; the answer is none.
 
 ## Found in play
 
