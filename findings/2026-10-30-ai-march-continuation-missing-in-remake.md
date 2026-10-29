@@ -59,9 +59,10 @@ Game starts with 3 seeds (48 runs) and records, for every AI march the remake's 
 | ended short with no moves left | 621 |
 
 Moves left in the 1,406: 1 (365), 2 (197), 3 (245), 4 (127), 5 (56), 6 (145), 7 (86), 8 (142), 9 (43). These are the
-marches where the original's `FUN_0044dba8` reaches its recursion test with moves left. The 26 marches via an
-intermediate point recurse in the original for certain. The other 1,380 are on the direct path, where the original
-continues only when the stale word allows it. So **the remake's AI stops short with moves left in about 28% of its
+marches where the original's `FUN_0044dba8` reaches its recursion test with moves left (assuming it chose the same
+path as the remake's AI, which this probe does not check). The 26 the remake routed via an intermediate point would
+recurse in the original on that path. The other 1,380 went straight at the target, where the original continues only
+when the stale word allows it. So **the remake's AI stops short with moves left in about 28% of its
 marches; the share that ends differently in the original lies between 26/5,011 (0.5%) and 1,406/5,011 (28%)**, set by
 the stale word.
 
@@ -72,7 +73,7 @@ The gap in #1585 is wider than the human move:
 | Mover | Original | Remake v0.8.4 |
 |---|---|---|
 | human army | walker, plus **one** second walk if short with moves left (`TUnitMap_MoveHumanArmy`) | one walk |
-| AI army | walker repeated (fresh line and intermediate point each time) until within 1 tile or out of moves, with a forced-cost fallback when stuck | one walk per turn |
+| AI army | walker repeated (fresh line and intermediate point each time) until within 1 tile or out of moves, with a forced-cost fallback when stuck; on the direct path only when the stale `[ebp-0xa]` is ≥ 0 | one walk per turn |
 
 A fix that adds one second walk to the shared `move` command would match human moves, but would still leave AI
 armies short of the original's continuation. The AI needs the recursion (or an equivalent loop) of `FUN_0044dba8`,
