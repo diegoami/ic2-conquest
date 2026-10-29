@@ -113,7 +113,7 @@ def run_remake(case_dir, script, seed):
     env = dict(os.environ, DOTNET_ROOT=str(DOTNET.parent))
     p = subprocess.run([str(DOTNET), str(ADAPTER), "tactical", str(REMAKE), str(case_dir / "strategic.SAV"), str(case_dir / "block.bin"),
                         str(script), str(out), f"seed={seed}"], capture_output=True, text=True, env=env)
-    (case_dir / f"remake-s{seed}.stderr.txt").write_text(p.stderr)
+    out.with_suffix(".stderr.txt").write_text(p.stderr)
     if p.returncode:
         raise RuntimeError(f"remake tactical adapter failed: {p.stderr[-1500:]}")
     rows = []
