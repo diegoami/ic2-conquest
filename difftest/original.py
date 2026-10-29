@@ -272,7 +272,9 @@ class OriginalSession:
         except Exception as e:      # any failure of one order is recorded (an xdotool click once exited 1 mid-campaign)
             texts, error = [], f"{type(e).__name__}: {e}"
             try:
-                self.g.dismiss_popups()
+                # A refusal box shown instead of the expected dialog ("Split army did not open" for a one-unit army,
+                # #230 split-one-unit): its text is the game's answer, kept as the reply.
+                texts = self.g.dismiss_popups()
             except Exception:
                 pass
         self.checkpoint(name)
