@@ -1,4 +1,4 @@
-# A long walk whose line crosses an own city goes around it in the original; the remake stops after one side step (and two more short walks)
+# A player's move walks a second time in the original when the first walk ends short; the remake walks once (first seen with an own city on the line)
 
 **Status:** promoted by research PR #94 (merge `683a484`), 2026-10-29, with the cause **established** (next section);
 the two later cases promoted by research PR #95 (merge `4840439`), with both second walks replayed.
@@ -7,6 +7,17 @@ under Wine. One army, one blocking city.
 **Tasks:** conquest [#230](https://github.com/diegoami/ic2-conquest/issues/230), found by the
 [#232](https://github.com/diegoami/ic2-conquest/issues/232) rule-bot campaign; remake **v0.8.4**
 (`d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb`), `classical-faithful`.
+
+## In general
+
+After a human army's move order, the original calls the army walker; if the army is still short of the target with
+moves left, it calls the walker **once more** from the new position on a fresh line (`TUnitMap_MoveHumanArmy`). The
+remake calls it once: its single walk equals the original's first call, step for step. A first walk ends short when
+its chosen step is blocked (a city or army marker on the line) or costs more than the moves left, even if another
+neighbouring tile would be affordable (the step rule of `2026-10-21-strategic-lateral-steps-and-callers.md`). Human
+armies only. In the 15 finished #232 campaigns, 21 of the remake's 32 move orders ended short with moves left: those
+are the moves where the original walks a second time (the second walk can be blocked too, as for Ptolemaic's army,
+whose target lies across sea).
 
 ## Answer
 
