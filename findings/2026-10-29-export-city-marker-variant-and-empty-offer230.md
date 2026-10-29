@@ -1,6 +1,8 @@
 # Converting a save through the remake changes three conquered cities' marker variant and the empty offer's type
 
-**Tag:** [confirmed, partial] for the bytes; the cause is not established. One start save, under Wine.
+**Status:** promoted by research PR #93 (merge `403db0d`), 2026-10-29, with the cause of the marker change established
+(below). The empty offer's type change is still unexplained.
+**Tag:** [confirmed, partial] for the bytes; the marker cause [confirmed] by research. One start save, under Wine.
 **Task:** conquest [#230](https://github.com/diegoami/ic2-conquest/issues/230) (tracker #228); remake **v0.8.4**
 (`d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb`).
 
@@ -21,8 +23,11 @@ the original's own save, the same parser (`state/sav.py`) finds two differences:
    | Tarrentum (123) | (124,52) | Gaul (Greece) | 51 / 56 | 42 (variant 1) | 58 (variant 2) |
 
    All three are conquered cities (owner ≠ allegiance). Every other city marker matches, including other conquered
-   ones. A plausible but untested reading: the original computes the variant at some event (a capture, a growth
-   step) and keeps it, while the exporter recomputes it from the current record.
+   ones. **Cause (research, PR #93, from `2026-10-07-city-marker-variants.md`):** the original refreshes a city's tier
+   only when the city changes owner, never as it grows. In `embark/original/a000.SAV` these three are exactly the
+   only stale tiers (Bordeaux and Tarquinii at population 26 should be tier 1, Tarrentum at 51 tier 2). The export
+   has none, because the conversion recomputes the tier from the current population. So the remake's export is
+   "correct" by the tier rule, and the original's save carries a tier its own rule would no longer give.
 2. **The empty pending offer's type.** With no offer pending (sender −1), the original's tail holds type 1 and the
    export writes 0.
 

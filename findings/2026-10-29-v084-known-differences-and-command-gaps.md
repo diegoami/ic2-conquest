@@ -45,7 +45,9 @@ infantry recruit at Rome (run `run-exp-diff084-tooling`, `toy3b-original-1` vs `
   (Acroinon, Gordium, Iconium). Their supply growth follows the different recruitment and, for Galatia, its army.
 
 These are the AI recruitment and diplomacy families of #176 and #177; the remake was given no recorded original
-draws here. In all 54 single-order cases of #230 batches 1 and 2, Rome's own records were equal after End turn.
+draws here. Of the 54 cases of #230 batches 1 and 2 (6 of them give more than one order), 46 leave Rome's own records equal
+after End turn. The other 8 keep the difference their order made at once (Build fleet site ×3, the sea-target
+moves ×2, the ally relation ×3); End turn does not widen it. (Wording corrected after research PR #93.)
 
 ## Not covered
 
