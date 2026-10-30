@@ -31,12 +31,17 @@ position.
    its owner (relation ≥ 3, 0x44F24F), or the responder is 20 or more from the capital (0x44F257). The distance is compared
    strictly (`jge` keeps the current best, 0x44F22B), so **on a tie the earlier list entry wins**, and the list is in table
    order.
-4. **The order:**
-   - **toward the threat** (`FUN_0044dba8(responder, threat position)`) when the nation is at war with its owner and it is not
-     aboard a fleet;
-   - **otherwise toward the capital** (0x44F2A3–0x44F2F9).
+4. **The order:** both tests are on the chosen **threat**, not the responder:
+   - **toward the threat** (`FUN_0044dba8(responder, threat position)`) when the **threat** is not aboard a fleet (its record
+     +8 ≠ −1; 0x44F29B loads the threat's index, 0x44F2A3 tests its +8) and the nation is at war with the **threat's owner**
+     (relation 3, 0x44F2CA);
+   - **otherwise toward the capital** (0x44F2D2–0x44F2E7), including whenever the threat is aboard.
 
-   The responder walks at once, within the same call.
+   The responder walks at once, within the same call. `FUN_0044efc8` never tests whether the responder is aboard; that case
+   is left to `FUN_0044dba8`'s own aboard branch.
+
+   *Correction (2026-10-30, after research #123 / Research PR #128):* the first version said "when the nation is at war with
+   its owner and it is not aboard a fleet", which could be read as the responder being aboard. It is the threat.
 
 **Relation to the enemy-army pick.** The army phase `FUN_0044f31c` calls `FUN_0044efc8` first (:52918), then visits every own
 army in table order. Its per-army logic, including `FUN_0044ee60`'s target pick, runs only for armies with moves > 0
