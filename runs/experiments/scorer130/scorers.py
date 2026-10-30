@@ -13,9 +13,9 @@ nations written over the snapshot) for every army of every nation, and checks ev
 Outputs go to runs/experiments/data/run-exp-scorer130/ with exclusive creation (rule 6).
 """
 import argparse
-import glob
 import hashlib
 import json
+import os
 import struct
 import sys
 from pathlib import Path
@@ -187,7 +187,8 @@ class Emu:
             u.emu_start(ECE4 if kind == "city" else EE60, RET, count=20_000_000)
         except UcError as e:
             return {"error": str(e), "eip": hex(u.reg_read(UC_X86_REG_EIP)), "rec": self.rec}
-        assert u.reg_read(UC_X86_REG_EIP) == RET and u.reg_read(UC_X86_REG_ESP) == esp + 8
+        if u.reg_read(UC_X86_REG_EIP) != RET or u.reg_read(UC_X86_REG_ESP) != esp + 8:
+            return {"error": "did not return (instruction budget)", "eip": hex(u.reg_read(UC_X86_REG_EIP)), "rec": self.rec}
         idx, score, dist = struct.unpack("<3h", u.mem_read(OUT, 6))
         assert bytes(u.mem_read(ORIGIN, len(self.ram))) == self.ram, "scorer changed game RAM"
         return {"index": idx, "score": score, "dist": dist, "eax": u.reg_read(UC_X86_REG_EAX), "rec": self.rec}
@@ -333,12 +334,24 @@ def ram_from_sav(b):
     return r, a
 
 
+def find_saves(roots):
+    """Every *.SAV under the roots, without following symlinks (Wine prefixes link dosdevices/z: to /)."""
+    out = []
+    for r in roots:
+        r = Path(r)
+        if r.is_file():
+            out.append(str(r))
+            continue
+        for d, dirs, files in os.walk(r, followlinks=False):
+            out += [os.path.join(d, f) for f in files if f.upper().endswith(".SAV")]
+    return sorted(out)
+
+
 def corpus():
-    pats = [str(ROOT / "saves/*.SAV"), str(ROOT / "artifacts/**/*.SAV"), str(Path.home() / "ic2-work-archive/**/*.SAV"),
-            str(Path.home() / "ic2-work/**/*.SAV")]
+    roots = [ROOT / "saves", ROOT / "artifacts", Path.home() / "ic2-work-archive", Path.home() / "ic2-work"]
     seen, out = set(), []
-    for p in pats:
-        for f in sorted(glob.glob(p, recursive=True)):
+    for f in find_saves(roots):
+        if True:
             if "/remake" in f or "remake/" in f:          # remake-written saves are not original states
                 continue
             b = Path(f).read_bytes()
@@ -360,21 +373,30 @@ def run_survey(version, limit):
         ram, a = ram_from_sav(Path(f).read_bytes())
         if not 0 <= a <= 198:
             continue
+        e = None
         for i in range(a):
             owner = struct.unpack_from("<h", ram, ARMY + i * 0x290 + 4 - ORIGIN)[0]
             if owner < 0 or owner > 15:
                 continue
             put(ram, CUR, owner)
-            e = Emu(ram)
+            if e is None:
+                e = Emu(ram)
+            else:                                   # same save: only the current nation word changes
+                e.u.mem_write(CUR, struct.pack("<h", owner))
+                e.ram = bytes(ram)
             for kind in ("city", "army"):
                 got = e.call(kind, i)
                 g = agg[kind]
                 g["calls"] += 1
                 calls += 1
                 if "error" in got:
-                    g["zero_divisor"] += 1
-                    if len(g["examples"]) < 20:
-                        g["examples"].append({"save": Path(f).name, "sha": h[:12], "army": i, "error": got["error"]})
+                    g["zero_divisor" if "EXCEPTION" in got["error"] else "did_not_return"] = \
+                        g.get("zero_divisor" if "EXCEPTION" in got["error"] else "did_not_return", 0) + 1
+                    if len(g["examples"]) < 40:
+                        g["examples"].append({"save": Path(f).name, "sha": h[:12], "army": i, "owner": owner,
+                                              "error": got["error"], "eip": got.get("eip"),
+                                              "candidates_seen": len(got["rec"]["cands"])})
+                    e = None                       # a fresh emulator after any abnormal end
                     continue
                 cands = got["rec"]["cands"]
                 A = got["rec"]["A"]
