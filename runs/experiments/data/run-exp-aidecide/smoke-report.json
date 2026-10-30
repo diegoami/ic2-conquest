@@ -1,0 +1,495 @@
+{
+ "counts": {
+  "same": 9,
+  "differs": 2,
+  "diff:resupply-city": 2
+ },
+ "rows": [
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig": {
+    "x": 190,
+    "y": 30,
+    "moves": 8,
+    "supplies": 328,
+    "morale": 63,
+    "home": 250,
+    "city": 189,
+    "city_score": 109,
+    "city_dist": 23,
+    "target": 5,
+    "army_score": 106,
+    "army_dist": 17,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    167,
+    45
+   ],
+   "remake": {
+    "ArmyX": 190,
+    "ArmyY": 30,
+    "Kind": "AttackArmy",
+    "TargetCityId": "cyzicus",
+    "TargetCityX": 167,
+    "TargetCityY": 45,
+    "TargetArmyId": "army-5",
+    "CityScore": 109,
+    "ArmyScore": 106,
+    "CityDistance": 23,
+    "ArmyDistance": 17,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig": {
+    "x": 47,
+    "y": 62,
+    "moves": 8,
+    "supplies": 339,
+    "morale": 65,
+    "home": 30,
+    "city": 19,
+    "city_score": 141,
+    "city_dist": 11,
+    "target": 10,
+    "army_score": 126,
+    "army_dist": 13,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "remake": {
+    "ArmyX": 47,
+    "ArmyY": 62,
+    "Kind": "AttackArmy",
+    "TargetCityId": "castulo",
+    "TargetCityX": 36,
+    "TargetCityY": 61,
+    "TargetArmyId": "army-10",
+    "CityScore": 141,
+    "ArmyScore": 126,
+    "CityDistance": 11,
+    "ArmyDistance": 13,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 93,
+    "y": 79,
+    "moves": 8,
+    "supplies": 246,
+    "morale": 68,
+    "home": 72,
+    "city": 31,
+    "city_score": 91,
+    "city_dist": 44,
+    "target": 10,
+    "army_score": 93,
+    "army_dist": 59,
+    "a698": 24600,
+    "branch": "e84c+army>70"
+   },
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "remake": {
+    "ArmyX": 93,
+    "ArmyY": 79,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "osca",
+    "TargetCityX": 49,
+    "TargetCityY": 41,
+    "TargetArmyId": "army-10",
+    "CityScore": 91,
+    "ArmyScore": 93,
+    "CityDistance": 44,
+    "ArmyDistance": 59,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig": {
+    "x": 93,
+    "y": 28,
+    "moves": 8,
+    "supplies": 405,
+    "morale": 63,
+    "home": 73,
+    "city": 120,
+    "city_score": 173,
+    "city_dist": 28,
+    "target": 0,
+    "army_score": 65,
+    "army_dist": 9,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "remake": {
+    "ArmyX": 93,
+    "ArmyY": 28,
+    "Kind": "AttackCity",
+    "TargetCityId": "heraclea",
+    "TargetCityX": 121,
+    "TargetCityY": 53,
+    "TargetArmyId": "army-0",
+    "CityScore": 173,
+    "ArmyScore": 65,
+    "CityDistance": 28,
+    "ArmyDistance": 9,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig": {
+    "x": 34,
+    "y": 63,
+    "moves": 8,
+    "supplies": 339,
+    "morale": 65,
+    "home": 23,
+    "city": 26,
+    "city_score": 207,
+    "city_dist": 12,
+    "target": 2,
+    "army_score": 95,
+    "army_dist": 8,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "remake": {
+    "ArmyX": 34,
+    "ArmyY": 63,
+    "Kind": "AttackCity",
+    "TargetCityId": "helice",
+    "TargetCityX": 46,
+    "TargetCityY": 65,
+    "TargetArmyId": "army-2",
+    "CityScore": 207,
+    "ArmyScore": 95,
+    "CityDistance": 12,
+    "ArmyDistance": 8,
+    "Skipped": 28
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 189,
+    "y": 104,
+    "moves": 7,
+    "supplies": 640,
+    "morale": 65,
+    "home": 214,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 19630,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake": {
+    "ArmyX": 189,
+    "ArmyY": 104,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    190,
+    94
+   ],
+   "remake_aim": [
+    190,
+    94
+   ],
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 225,
+    "y": 72,
+    "moves": 9,
+    "supplies": 372,
+    "morale": 65,
+    "home": 259,
+    "city": 202,
+    "city_score": 310,
+    "city_dist": 48,
+    "target": 12,
+    "army_score": 207,
+    "army_dist": 31,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "remake": {
+    "ArmyX": 225,
+    "ArmyY": 72,
+    "Kind": "AttackArmy",
+    "TargetCityId": "astacus",
+    "TargetCityX": 177,
+    "TargetCityY": 41,
+    "TargetArmyId": "army-12",
+    "CityScore": 310,
+    "ArmyScore": 207,
+    "CityDistance": 48,
+    "ArmyDistance": 31,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 178,
+    "y": 47,
+    "moves": 9,
+    "supplies": 299,
+    "morale": 67,
+    "home": 198,
+    "city": 202,
+    "city_score": 548,
+    "city_dist": 6,
+    "target": 12,
+    "army_score": 227,
+    "army_dist": 16,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "remake": {
+    "ArmyX": 178,
+    "ArmyY": 47,
+    "Kind": "AttackArmy",
+    "TargetCityId": "astacus",
+    "TargetCityX": 177,
+    "TargetCityY": 41,
+    "TargetArmyId": "army-12",
+    "CityScore": 548,
+    "ArmyScore": 227,
+    "CityDistance": 6,
+    "ArmyDistance": 16,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 166,
+    "y": 35,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 66,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12204,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake": {
+    "ArmyX": 166,
+    "ArmyY": 35,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "diffs": []
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig": {
+    "x": 144,
+    "y": 41,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 41,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    146,
+    42
+   ],
+   "verdict": "differs",
+   "diffs": [
+    "resupply-city"
+   ]
+  },
+  {
+   "start": "rome-BASE",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig": {
+    "x": 305,
+    "y": 57,
+    "moves": 9,
+    "supplies": 377,
+    "morale": 67,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 19467,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37700,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake": {
+    "ArmyX": 305,
+    "ArmyY": 57,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": [
+    300,
+    58
+   ],
+   "verdict": "differs",
+   "diffs": [
+    "resupply-city"
+   ]
+  }
+ ]
+}

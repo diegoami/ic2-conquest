@@ -56,7 +56,8 @@ def remake(orig, short, out):
             if dec.exists():
                 continue
             p = subprocess.run([DOTNET, build, "aiprobe", clone, round_start(d, t), "1", out / f"{d.name}-t{t:02d}-probe.jsonl",
-                                "seed=12345", f"decisions={dec}", f"relations={rel}"], capture_output=True, text=True,
+                                "seed=12345", f"decisions={dec}", f"relations={rel}",
+                                f"ailog={out / f'{d.name}-t{t:02d}-ailog.txt'}"], capture_output=True, text=True,
                                env=dict(os.environ, DOTNET_ROOT=str(DOTNET.parent)))
             if p.returncode:
                 (out / f"{d.name}-t{t:02d}-error.txt").write_text(p.stdout + p.stderr)
@@ -113,6 +114,12 @@ def compare(orig, rdir, report):
             for l in (probef.read_text().splitlines() if probef.exists() else []):
                 x = json.loads(l)
                 aims.setdefault(x["army"], (x["why"], x["aim"]))
+            ailf = rdir / f"{d.name}-t{t:02d}-ailog.txt"
+            capdef = set()                      # armies the remake's capital defence dispatched this round
+            for l in (ailf.read_text().splitlines() if ailf.exists() else []):
+                m_ = l.split("\t", 1)[-1]
+                if m_.startswith("capital defence: army-"):
+                    capdef.add((l.split("\t", 1)[0], m_.split()[2]))
             first = {}
             for r in rem:                       # the first record per army is the decision; later ones re-evaluate
                 first.setdefault(r["ArmyId"], r)
@@ -137,6 +144,7 @@ def compare(orig, rdir, report):
                        "orig": {k: o[k] for k in ("x", "y", "moves", "supplies", "morale", "home", "city", "city_score",
                                                   "city_dist", "target", "army_score", "army_dist", "a698", "branch")},
                        "orig_city_xy": [city["x"], city["y"]] if city else None}
+                row["remake_capdef"] = (NATIONS[o["nation"]], key) in capdef
                 if m is None:
                     why, aim = aims.get(key, (None, None))
                     row["remake_why"] = why
@@ -178,8 +186,11 @@ def compare(orig, rdir, report):
                         if diffs and (w0 != w1 or (rw is not None and rw != w1)):
                             row["verdict"] = "diplomacy"   # the nation's wars changed in the round, or differ at its end
                         row["diffs"] = diffs
-                if row["verdict"] == "differs" and battle_before and set(row["diffs"]) & {"army-target", "army-score", "city-target", "city-score"}:
-                    row["verdict"] = "state-battle"     # an attack earlier in the round: battle results are random draws
+                if row["verdict"] == "differs" and set(row["diffs"]) & {"army-target", "army-score", "city-target", "city-score"}:
+                    if battle_before:
+                        row["verdict"] = "state-battle"  # an attack earlier in the round: battle results are random draws
+                    elif len(end["armies"]) < len(save["armies"]):
+                        row["verdict"] = "state-death"   # armies died in the original's round (by an order this log does not cover)
                 if battle_seq is not None:
                     battle_before = True
                 counts[row["verdict"]] += 1

@@ -1,0 +1,22 @@
+diff --git a/src/IC2.Engine/Ai/AiCapitalDefence.cs b/src/IC2.Engine/Ai/AiCapitalDefence.cs
+index 07a4b1e5..a4f52d1f 100644
+--- a/src/IC2.Engine/Ai/AiCapitalDefence.cs
++++ b/src/IC2.Engine/Ai/AiCapitalDefence.cs
+@@ -104,6 +104,17 @@ public static class AiCapitalDefence
+             }
+             if (!AiSubstantiveState.AreEquivalent(state, result.State)) issued++;
+             state = result.State;
++            // Diagnostic (#aidecide): FUN_0044dba8 walking at the threat's cell attacks it on arrival.
++            var moved = state.ArmyById(army.Id);
++            var target = state.ArmyById(threat.Id);
++            if (moved is not null && target is not null && moved.Moves > 0
++                && destination == new GridPoint(target.X, target.Y)
++                && AiView.Distance(moved.X, moved.Y, target.X, target.Y) == 1)
++            {
++                var attack = commands.Dispatch(state, new IC2.Engine.Battle.Commands.AttackArmyCommand(nationId, moved.Id, target.Id), events);
++                log.Add(Inv("capital defence: {0} attacks {1}{2}", moved.Id, target.Id, attack.IsRejected ? " REJECTED " + attack.Rejection!.Message : ""));
++                if (!attack.IsRejected) state = attack.State;
++            }
+         }
+         return new(state, dispatches, issued, rejected);
+     }

@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-civ-sweep/S05_Numidia_AUTO0720.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261030-205133",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "3e54af8e50724e432e07f0446bd24e6ddf8e1492d62e799b5d5b1b24515e721d"
+   }
+  ],
+  "records": 10
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261030-205155",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "3e54af8e50724e432e07f0446bd24e6ddf8e1492d62e799b5d5b1b24515e721d"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "counts": {
+  "same": 390,
+  "h925-resupply": 252,
+  "diplomacy": 44,
+  "capdef-attack": 17,
+  "h925-fallback": 8,
+  "state": 16,
+  "f4c7-city-target": 21,
+  "unattributed": 1
+ },
+ "rows": 749,
+ "unattributed": [
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 227,
+    "y": 54,
+    "moves": 9,
+    "supplies": 372,
+    "morale": 67,
+    "home": 259,
+    "city": 202,
+    "city_score": 319,
+    "city_dist": 50,
+    "target": 20428,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 227,
+    "ArmyY": 54,
+    "Kind": "AttackArmy",
+    "TargetCityId": "astacus",
+    "TargetCityX": 177,
+    "TargetCityY": 41,
+    "TargetArmyId": "army-10",
+    "CityScore": 319,
+    "ArmyScore": 207,
+    "CityDistance": 50,
+    "ArmyDistance": 42,
+    "Skipped": 0
+   },
+   "verdict": "differs",
+   "wars": {
+    "orig_start": [
+     "bithynia",
+     "galatia"
+    ],
+    "orig_end": [
+     "bithynia",
+     "galatia"
+    ],
+    "remake_end": [
+     "bithynia",
+     "galatia"
+    ]
+   },
+   "diffs": [
+    "branch"
+   ],
+   "cause": "unattributed"
+  }
+ ]
+}
