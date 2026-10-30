@@ -1,0 +1,313 @@
+{
+ "method": "Unicorn on the pinned EXE with the #187 RAM snapshot (runs/experiments/navigation187/core.py: unmodified helpers, read-only\nRAM check, no RNG). Each control runs the routine with EAX = the army and stops at the entry of FUN_0044dba8, the walk it\nstarts: the walk's army (EAX) and destination (EDX) are the routine's choice. Nothing after that call runs, so no state\nchanges and no presentation code is reached. Inputs are written into the snapshot copy only:",
+ "ram": "#187 snapshot (private)",
+ "rows": [
+  {
+   "control": "ebe8 capital distance 9",
+   "army": [
+    102,
+    78
+   ],
+   "capital": [
+    93,
+    78
+   ],
+   "army_to_capital": 9,
+   "nearest_city": [
+    103,
+    78
+   ],
+   "destination": [
+    103,
+    78
+   ],
+   "branch": "nearest city"
+  },
+  {
+   "control": "ebe8 capital distance 10",
+   "army": [
+    103,
+    78
+   ],
+   "capital": [
+    93,
+    78
+   ],
+   "army_to_capital": 10,
+   "nearest_city": [
+    104,
+    78
+   ],
+   "destination": [
+    93,
+    78
+   ],
+   "branch": "capital"
+  },
+  {
+   "control": "ebe8 capital distance 11",
+   "army": [
+    104,
+    78
+   ],
+   "capital": [
+    93,
+    78
+   ],
+   "army_to_capital": 11,
+   "nearest_city": [
+    105,
+    78
+   ],
+   "destination": [
+    93,
+    78
+   ],
+   "branch": "capital"
+  },
+  {
+   "control": "ebe8 capital index -1, deciding army 20 from the old capital",
+   "army": [
+    113,
+    78
+   ],
+   "record_minus_1_xy": [
+    153,
+    48
+   ],
+   "destination": [
+    153,
+    48
+   ]
+  },
+  {
+   "control": "ebe8 tie, as staged",
+   "army": [
+    61,
+    40
+   ],
+   "record_i": 1,
+   "id_i": "olisipo",
+   "xy_i": [
+    60,
+    40
+   ],
+   "record_j": 3,
+   "id_j": "ebora",
+   "xy_j": [
+    62,
+    40
+   ],
+   "destination": [
+    60,
+    40
+   ],
+   "chosen_record": 1
+  },
+  {
+   "control": "ebe8 tie, positions swapped",
+   "army": [
+    61,
+    40
+   ],
+   "record_i": 1,
+   "id_i": "olisipo",
+   "xy_i": [
+    62,
+    40
+   ],
+   "record_j": 3,
+   "id_j": "ebora",
+   "xy_j": [
+    60,
+    40
+   ],
+   "destination": [
+    62,
+    40
+   ],
+   "chosen_record": 1
+  },
+  {
+   "control": "e84c single offer at 19",
+   "army": [
+    60,
+    70
+   ],
+   "offer": [
+    79,
+    70
+   ],
+   "distance": 19,
+   "destination": [
+    79,
+    70
+   ],
+   "taken": true
+  },
+  {
+   "control": "e84c single offer at 20",
+   "army": [
+    60,
+    70
+   ],
+   "offer": [
+    80,
+    70
+   ],
+   "distance": 20,
+   "destination": null,
+   "taken": false
+  },
+  {
+   "control": "e84c single offer at 21",
+   "army": [
+    60,
+    70
+   ],
+   "offer": [
+    81,
+    70
+   ],
+   "distance": 21,
+   "destination": null,
+   "taken": false
+  },
+  {
+   "control": "e84c pair 19 vs 20, 19 in slot 201, 20 in slot 202",
+   "army": [
+    60,
+    70
+   ],
+   "destination": [
+    79,
+    70
+   ],
+   "chosen": 19
+  },
+  {
+   "control": "e84c pair 19 vs 20, 19 in slot 202, 20 in slot 201",
+   "army": [
+    60,
+    70
+   ],
+   "destination": [
+    79,
+    70
+   ],
+   "chosen": 19
+  },
+  {
+   "control": "e84c tie at 5, A in slot 201, B in slot 202, A on record i",
+   "army": [
+    60,
+    70
+   ],
+   "A": [
+    65,
+    70
+   ],
+   "B": [
+    55,
+    70
+   ],
+   "slot_A": 201,
+   "slot_B": 202,
+   "record_A": 1,
+   "id_A": "olisipo",
+   "record_B": 3,
+   "id_B": "ebora",
+   "destination": [
+    65,
+    70
+   ],
+   "chosen": "A",
+   "chosen_slot": 201
+  },
+  {
+   "control": "e84c tie at 5, A in slot 201, B in slot 202, A on record j",
+   "army": [
+    60,
+    70
+   ],
+   "A": [
+    65,
+    70
+   ],
+   "B": [
+    55,
+    70
+   ],
+   "slot_A": 201,
+   "slot_B": 202,
+   "record_A": 3,
+   "id_A": "ebora",
+   "record_B": 1,
+   "id_B": "olisipo",
+   "destination": [
+    65,
+    70
+   ],
+   "chosen": "A",
+   "chosen_slot": 201
+  },
+  {
+   "control": "e84c tie at 5, A in slot 202, B in slot 201, A on record i",
+   "army": [
+    60,
+    70
+   ],
+   "A": [
+    65,
+    70
+   ],
+   "B": [
+    55,
+    70
+   ],
+   "slot_A": 202,
+   "slot_B": 201,
+   "record_A": 1,
+   "id_A": "olisipo",
+   "record_B": 3,
+   "id_B": "ebora",
+   "destination": [
+    55,
+    70
+   ],
+   "chosen": "B",
+   "chosen_slot": 201
+  },
+  {
+   "control": "e84c tie at 5, A in slot 202, B in slot 201, A on record j",
+   "army": [
+    60,
+    70
+   ],
+   "A": [
+    65,
+    70
+   ],
+   "B": [
+    55,
+    70
+   ],
+   "slot_A": 202,
+   "slot_B": 201,
+   "record_A": 3,
+   "id_A": "ebora",
+   "record_B": 1,
+   "id_B": "olisipo",
+   "destination": [
+    55,
+    70
+   ],
+   "chosen": "B",
+   "chosen_slot": 201
+  },
+  {
+   "control": "relation(1,1) in the snapshot",
+   "value": 0
+  }
+ ]
+}
