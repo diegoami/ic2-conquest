@@ -1,0 +1,3826 @@
+{
+ "cases": [
+  {
+   "case": "cargo-positive",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        66
+       ],
+       "moves_after": 21
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      48,
+      66
+     ],
+     "moves_out": 21
+    }
+   ],
+   "fleet0_after": [
+    48,
+    66,
+    48,
+    66,
+    1,
+    -1,
+    21,
+    341,
+    975,
+    90,
+    100,
+    3,
+    0
+   ],
+   "cargo_army": 3,
+   "cargo_after": [
+    48,
+    66,
+    1,
+    8,
+    -1
+   ],
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "cargo-zero",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 0,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 0,
+       "to": [
+        49,
+        62
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      62
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    49,
+    62,
+    48,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    3,
+    0
+   ],
+   "cargo_army": 3,
+   "cargo_after": [
+    49,
+    62,
+    1,
+    8,
+    -1
+   ],
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-actor-construction",
+   "status": "complete",
+   "levels": [],
+   "fleet0_after": [
+    49,
+    62,
+    -1,
+    -1,
+    1,
+    5,
+    25,
+    80,
+    1000,
+    90,
+    0,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-alliance",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-no-moves",
+   "status": "complete",
+   "levels": [],
+   "fleet0_after": [
+    49,
+    62,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-peace",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-same-owner",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    },
+    {
+     "fleet": 1,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      48,
+      65
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        48,
+        65
+       ],
+       "moves": 25,
+       "to": [
+        73,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       48,
+       65
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      73,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    },
+    {
+     "fleet": 1,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-score100",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-score101",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      41,
+      80
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       41,
+       80
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-stored-a",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      48,
+      66
+     ],
+     "moves_out": 21
+    },
+    {
+     "fleet": 0,
+     "depth": 1,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      48,
+      64
+     ],
+     "moves_in": 23,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 23,
+       "to": [
+        48,
+        66
+       ],
+       "moves_after": 21
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      48,
+      66
+     ],
+     "moves_out": 21
+    }
+   ],
+   "fleet0_after": [
+    48,
+    66,
+    48,
+    66,
+    1,
+    -1,
+    21,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-stored-b",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      67
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       47,
+       67
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    47,
+    67,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-target-construction",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-trade",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-war",
+   "status": "stopped-before-naval-combat",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      65
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        65
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "arrival": "naval combat FUN_0044b5d0 (from 0x44e415)",
+     "end": [
+      48,
+      64
+     ],
+     "moves_out": 23,
+     "unfinished": true
+    }
+   ],
+   "fleet0_after": [
+    48,
+    64,
+    -1,
+    -1,
+    1,
+    -1,
+    23,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-war-stronger",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "phase-war-weaker",
+   "status": "stopped-before-naval-combat",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      65
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        65
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "arrival": "naval combat FUN_0044b5d0 (from 0x44e415)",
+     "end": [
+      48,
+      64
+     ],
+     "moves_out": 23,
+     "unfinished": true
+    }
+   ],
+   "fleet0_after": [
+    48,
+    64,
+    -1,
+    -1,
+    1,
+    -1,
+    23,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "port-protected",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      124,
+      105
+     ],
+     "start": [
+      186,
+      90
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        120,
+        84
+       ],
+       "from_": [
+        186,
+        90
+       ],
+       "moves": 25,
+       "to": [
+        161,
+        88
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      124,
+      105
+     ],
+     "replace_out": [
+      125,
+      104
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       186,
+       90
+      ],
+      "target": [
+       125,
+       104
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       120,
+       84
+      ],
+      "node": 9
+     },
+     "d174_out": [
+      120,
+      84
+     ],
+     "end": [
+      161,
+      88
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    161,
+    88,
+    -1,
+    -1,
+    1,
+    -1,
+    0,
+    80,
+    1000,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      120,
+      84
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       120,
+       84
+      ],
+      "node": 9
+     },
+     "match": true
+    }
+   ],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "port-unprotected",
+   "status": "stopped-before-naval-combat",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      188,
+      92
+     ],
+     "start": [
+      185,
+      89
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        188,
+        92
+       ],
+       "from_": [
+        185,
+        89
+       ],
+       "moves": 25,
+       "to": [
+        187,
+        91
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "arrival": "naval combat FUN_0044b5d0 (from 0x44e415)",
+     "end": [
+      187,
+      91
+     ],
+     "moves_out": 23,
+     "unfinished": true
+    }
+   ],
+   "fleet0_after": [
+    187,
+    91,
+    -1,
+    -1,
+    1,
+    -1,
+    23,
+    80,
+    1000,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "rough-ai-one",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      49,
+      63
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 1,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        49,
+        63
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 1,
+       "to": [
+        49,
+        62
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      62
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    49,
+    62,
+    49,
+    63,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "rough-ai-three",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      49,
+      63
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 3,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        49,
+        63
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 3,
+       "to": [
+        49,
+        63
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      63
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    49,
+    63,
+    49,
+    63,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    1
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "stored-one",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 1,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 1,
+       "to": [
+        49,
+        63
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      63
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    49,
+    63,
+    48,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "stored-zero",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 0,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 0,
+       "to": [
+        49,
+        62
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      62
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    49,
+    62,
+    48,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "fleet174 input replayed"
+  },
+  {
+   "case": "route-landing-cargo",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      47,
+      64
+     ],
+     "replace_out": [
+      48,
+      65
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       48,
+       65
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    47,
+    64,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    3,
+    0
+   ],
+   "cargo_army": 3,
+   "cargo_after": [
+    74,
+    69,
+    1,
+    8,
+    -1
+   ],
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 cargo-positive",
+   "isolates": "route on a land cell (47,64) next to sea, army aboard: movement then the arrival's land branch"
+  },
+  {
+   "case": "route-landing-no-cargo",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      47,
+      64
+     ],
+     "replace_out": [
+      48,
+      65
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       48,
+       65
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    47,
+    64,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "the same land route without cargo: the arrival's land branch needs +0x16 > -1"
+  },
+  {
+   "case": "route-own-port",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      63
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      47,
+      63
+     ],
+     "replace_out": [
+      48,
+      64
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       48,
+       64
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    47,
+    63,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "route on own city 30 (47,63), code 21: the arrival's city branch, not at war -> FUN_0044f7e4"
+  },
+  {
+   "case": "route-inland",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      41,
+      57
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      41,
+      57
+     ],
+     "replace_out": [
+      48,
+      64
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       48,
+       64
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    41,
+    57,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "route on an inland cell (41,57): no sea approach"
+  },
+  {
+   "case": "route-x-minus2",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -2,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "x = -2: the signed test treats every negative x as absent"
+  },
+  {
+   "case": "route-x-minus1-y-kept",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "x = -1 with y = 66 left over: absent; y is not read"
+  },
+  {
+   "case": "route-x-0-residue",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      0,
+      0
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       0,
+       0
+      ]
+     },
+     "model": {
+      "kind": "route-row",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    0,
+    0,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "route-row",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "x = 0 (the split residue (0;0)): present, so the phase steers to (0,0)"
+  },
+  {
+   "case": "route-zero-moves",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 0,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 0,
+       "to": [
+        49,
+        62
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      62
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    49,
+    62,
+    48,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "stored route (48,66), moves 0: E1FC is still called"
+  },
+  {
+   "case": "route-reached",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      48,
+      66
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        39,
+        78
+       ],
+       "from_": [
+        48,
+        66
+       ],
+       "moves": 25,
+       "to": [
+        39,
+        78
+       ],
+       "moves_after": 13
+      }
+     ],
+     "direct_line": false,
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       48,
+       66
+      ],
+      "target": [
+       48,
+       66
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       39,
+       78
+      ],
+      "node": 4
+     },
+     "d174_out": [
+      39,
+      78
+     ],
+     "end": [
+      48,
+      66
+     ],
+     "moves_out": 1
+    },
+    {
+     "fleet": 0,
+     "depth": 1,
+     "target": [
+      48,
+      66
+     ],
+     "start": [
+      39,
+      78
+     ],
+     "moves_in": 13,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        48,
+        66
+       ],
+       "from_": [
+        39,
+        78
+       ],
+       "moves": 13,
+       "to": [
+        48,
+        66
+       ],
+       "moves_after": 1
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      48,
+      66
+     ],
+     "moves_out": 1
+    }
+   ],
+   "fleet0_after": [
+    48,
+    66,
+    48,
+    66,
+    1,
+    -1,
+    1,
+    720,
+    1000,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      39,
+      78
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       39,
+       78
+      ],
+      "node": 4
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "the fleet already stands on its route cell: distance 0"
+  },
+  {
+   "case": "adjacent-landing-cargo",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      48,
+      64
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        47,
+        64
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 25
+      },
+      {
+       "walk": "fallback",
+       "goal": [
+        51,
+        67
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 25,
+       "to": [
+        51,
+        67
+       ],
+       "moves_after": 22
+      }
+     ],
+     "direct_line": true,
+     "cec8_out": [
+      51,
+      67
+     ],
+     "fallback_move_charged": true,
+     "end": [
+      48,
+      65
+     ],
+     "moves_out": 0
+    },
+    {
+     "fleet": 0,
+     "depth": 1,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      51,
+      67
+     ],
+     "moves_in": 21,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        47,
+        64
+       ],
+       "from_": [
+        51,
+        67
+       ],
+       "moves": 21,
+       "to": [
+        48,
+        65
+       ],
+       "moves_after": 18
+      }
+     ],
+     "direct_line": true,
+     "arrival": "landing FUN_0044b840",
+     "end": [
+      48,
+      65
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    48,
+    65,
+    47,
+    64,
+    1,
+    -1,
+    0,
+    216,
+    1000,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": 3,
+   "cargo_after": [
+    47,
+    64,
+    1,
+    0,
+    2
+   ],
+   "d174_model_checks": [],
+   "source": "derived from fleet174 cargo-positive",
+   "isolates": "fleet at (48,64), army aboard, route on the land cell (47,64) at distance 1: the arrival's land branch"
+  },
+  {
+   "case": "adjacent-landing-no-cargo",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      48,
+      64
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        47,
+        64
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 25
+      },
+      {
+       "walk": "fallback",
+       "goal": [
+        51,
+        67
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 25,
+       "to": [
+        51,
+        67
+       ],
+       "moves_after": 22
+      }
+     ],
+     "direct_line": true,
+     "cec8_out": [
+      51,
+      67
+     ],
+     "fallback_move_charged": true,
+     "end": [
+      48,
+      65
+     ],
+     "moves_out": 18
+    },
+    {
+     "fleet": 0,
+     "depth": 1,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      51,
+      67
+     ],
+     "moves_in": 21,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        47,
+        64
+       ],
+       "from_": [
+        51,
+        67
+       ],
+       "moves": 21,
+       "to": [
+        48,
+        65
+       ],
+       "moves_after": 18
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      48,
+      65
+     ],
+     "moves_out": 18
+    }
+   ],
+   "fleet0_after": [
+    48,
+    65,
+    47,
+    64,
+    1,
+    -1,
+    18,
+    216,
+    1000,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "the same without cargo"
+  },
+  {
+   "case": "adjacent-own-port",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      63
+     ],
+     "start": [
+      48,
+      64
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        47,
+        63
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 25,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 25
+      },
+      {
+       "walk": "fallback",
+       "goal": [
+        51,
+        67
+       ],
+       "from_": [
+        48,
+        64
+       ],
+       "moves": 25,
+       "to": [
+        51,
+        67
+       ],
+       "moves_after": 22
+      }
+     ],
+     "direct_line": true,
+     "cec8_out": [
+      51,
+      67
+     ],
+     "fallback_move_charged": true,
+     "arrival": "port FUN_0044f7e4",
+     "end": [
+      48,
+      64
+     ],
+     "moves_out": 18
+    },
+    {
+     "fleet": 0,
+     "depth": 1,
+     "target": [
+      47,
+      63
+     ],
+     "start": [
+      51,
+      67
+     ],
+     "moves_in": 21,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        47,
+        63
+       ],
+       "from_": [
+        51,
+        67
+       ],
+       "moves": 21,
+       "to": [
+        48,
+        64
+       ],
+       "moves_after": 18
+      }
+     ],
+     "direct_line": true,
+     "arrival": "port FUN_0044f7e4",
+     "end": [
+      48,
+      64
+     ],
+     "moves_out": 18
+    }
+   ],
+   "fleet0_after": [
+    48,
+    64,
+    47,
+    63,
+    1,
+    -1,
+    18,
+    216,
+    1000,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "fleet at (48,64), route on own city 30 (47,63) at distance 1: the arrival's city branch"
+  },
+  {
+   "case": "no-route-zero-moves",
+   "status": "complete",
+   "levels": [],
+   "fleet0_after": [
+    49,
+    62,
+    -1,
+    66,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "no route, moves 0: prepass and port pick run, no hunt and no move"
+  },
+  {
+   "case": "hunt-tie-a",
+   "status": "stopped-before-naval-combat",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      52,
+      62
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        52,
+        62
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        51,
+        62
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "arrival": "naval combat FUN_0044b5d0 (from 0x44e415)",
+     "end": [
+      51,
+      62
+     ],
+     "moves_out": 23,
+     "unfinished": true
+    }
+   ],
+   "fleet0_after": [
+    51,
+    62,
+    -1,
+    66,
+    1,
+    -1,
+    23,
+    8,
+    1000,
+    1,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "two targets, same strength 2, both at distance 3: (5*100/2 - 3)*2 = 494 each; fleet 1 (52,62) is first"
+  },
+  {
+   "case": "hunt-tie-b",
+   "status": "stopped-before-naval-combat",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      49,
+      65
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        49,
+        65
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        49,
+        64
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "arrival": "naval combat FUN_0044b5d0 (from 0x44e415)",
+     "end": [
+      49,
+      64
+     ],
+     "moves_out": 23,
+     "unfinished": true
+    }
+   ],
+   "fleet0_after": [
+    49,
+    64,
+    -1,
+    66,
+    1,
+    -1,
+    23,
+    8,
+    1000,
+    1,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "the same two positions with the table order swapped"
+  },
+  {
+   "case": "hunt-protected",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      45,
+      68
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      45,
+      68
+     ],
+     "replace_out": [
+      46,
+      69
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       46,
+       69
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    -1,
+    66,
+    1,
+    -1,
+    0,
+    8,
+    1000,
+    1,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "the only target at (48,64), next to a map city cell coded for its owner (23 = 20+3) at (47,63): protected"
+  },
+  {
+   "case": "hunt-unprotected-2",
+   "status": "stopped-before-naval-combat",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      49,
+      65
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        49,
+        65
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        49,
+        64
+       ],
+       "moves_after": 23
+      }
+     ],
+     "direct_line": true,
+     "arrival": "naval combat FUN_0044b5d0 (from 0x44e415)",
+     "end": [
+      49,
+      64
+     ],
+     "moves_out": 23,
+     "unfinished": true
+    }
+   ],
+   "fleet0_after": [
+    49,
+    64,
+    -1,
+    66,
+    1,
+    -1,
+    23,
+    8,
+    1000,
+    1,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "the same city code, target at (49,65), 2 from it (outside the 3x3): hunted"
+  },
+  {
+   "case": "p3-no-progress-sea-target",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      49,
+      63
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "direct",
+       "goal": [
+        49,
+        63
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        49,
+        63
+       ],
+       "moves_after": 24
+      }
+     ],
+     "direct_line": true,
+     "end": [
+      49,
+      63
+     ],
+     "moves_out": 24
+    }
+   ],
+   "fleet0_after": [
+    49,
+    63,
+    49,
+    63,
+    1,
+    -1,
+    24,
+    341,
+    975,
+    90,
+    100,
+    -1,
+    0
+   ],
+   "cargo_army": -1,
+   "cargo_after": null,
+   "d174_model_checks": [],
+   "source": "derived from fleet174 stored-one",
+   "isolates": "route on the adjacent sea cell (49,63): distance 1 from the start, a direct step"
+  },
+  {
+   "case": "p3-carried-across-coast",
+   "status": "complete",
+   "levels": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "target": [
+      47,
+      64
+     ],
+     "start": [
+      49,
+      62
+     ],
+     "moves_in": 25,
+     "steps": [
+      {
+       "walk": "waypoint",
+       "goal": [
+        75,
+        69
+       ],
+       "from_": [
+        49,
+        62
+       ],
+       "moves": 25,
+       "to": [
+        74,
+        69
+       ],
+       "moves_after": 0
+      }
+     ],
+     "direct_line": false,
+     "replace_in": [
+      47,
+      64
+     ],
+     "replace_out": [
+      48,
+      65
+     ],
+     "d174_in": {
+      "group": 0,
+      "origin": [
+       49,
+       62
+      ],
+      "target": [
+       48,
+       65
+      ]
+     },
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "d174_out": [
+      75,
+      69
+     ],
+     "end": [
+      74,
+      69
+     ],
+     "moves_out": 0
+    }
+   ],
+   "fleet0_after": [
+    74,
+    69,
+    47,
+    64,
+    1,
+    -1,
+    0,
+    341,
+    975,
+    90,
+    100,
+    3,
+    0
+   ],
+   "cargo_army": 3,
+   "cargo_after": [
+    74,
+    69,
+    1,
+    8,
+    -1
+   ],
+   "d174_model_checks": [
+    {
+     "fleet": 0,
+     "depth": 0,
+     "original": [
+      75,
+      69
+     ],
+     "model": {
+      "kind": "common-visible",
+      "point": [
+       75,
+       69
+      ],
+      "node": 5
+     },
+     "match": true
+    }
+   ],
+   "source": "derived from fleet174 cargo-positive",
+   "isolates": "army aboard, land route (47,64) across the coast: where the carried army ends"
+  }
+ ],
+ "d174_checks": 21,
+ "d174_mismatches": 0
+}
