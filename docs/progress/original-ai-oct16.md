@@ -78,3 +78,38 @@ run the owner's MiniMax M3 review. Keep the owner-selected reviewer through
 any necessary fixes; do not silently choose another reviewer. After approval,
 relay the bounded findings to research; #25 remains pending the build session's
 independent correction and immutable comparison inputs.
+
+## END — reviewed delivery, 2026-10-16
+
+- PR #88 merged to main as `caf2a17d420cfca35757fad60311cae9514af257`.
+  MiniMax M3 thinking approved reviewed head
+  `26f09c9157750422b01dd549aa9962d39a4dea15`; CI passed. Full return is retained
+  at https://github.com/diegoami/ic2-conquest/pull/88#issuecomment-6216894814.
+- Last successful research relay: main
+  `caf2a17d420cfca35757fad60311cae9514af257`, 2026-10-16, both
+  `findings/2026-10-16-strategic-ai-regions-resupply.md` and
+  `findings/2026-10-16-computer-general-predicate-and-reload.md`. Delivered through
+  the available Codex thread bridge to verified `ic2-research` task
+  `01a144a6-6636-70a2-ba78-1789c9c6a07b` in three bounded messages, all successful.
+  Research intake/promotion remains the research session's work; delivery is
+  not a claim of promotion or build integration.
+- Last reported-findings baseline: `origin/main` at `caf2a17`; the two paths
+  above are the new files since `6d72bbf`. No other new finding was seen.
+- Validation: 28 supply/fleet cases, seven byte-identical plain/observed region
+  pairs, 109 tactical boundaries, 257 artifact hashes; full observer CPU/stack/
+  memory checks and scorer ABI checks passed. All 257 assets uploaded without
+  clobbering. Artifact/input copies also preserved in the shared checkout's
+  gitignored `artifacts/run-exp-ai-oct16/`; three Wine prefixes stayed private.
+- Completed runnable scope: #22/#23/#24/#26 original-side findings; #5 existing
+  promoted evidence audited. #25 inventory audited, **comparison still pending**
+  the independently corrected general-control behavior in the build. The owner
+  has already chosen this session as implementer and MiniMax as reviewer for
+  that continuation; do not re-ask those choices or silently substitute models.
+- No native Windows confirmation, original-fixture/draw edit, remake code edit
+  or write to the research repository. Main checkout fast-forwarded to the
+  reviewed merge while preserving its pre-existing untracked files.
+
+This terminal journal is kept on `research/original-ai-oct16-handoff`, separately
+from the merged/approved research head so recording delivery cannot change the
+commit whose review and measurements were approved. No extra implementation
+or unreviewed finding is added by this journal.
