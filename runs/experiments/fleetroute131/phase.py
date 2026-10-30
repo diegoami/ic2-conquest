@@ -104,6 +104,26 @@ CASES = [
     ("no-route-zero-moves", "stored-one", dict(fleet0={4: -1, 12: 0}),
      "no route, moves 0: prepass and port pick run, no hunt and no move"),
 ]
+# Hunt controls: strengths below 10 make Random(4)*(base/10) = 0, so every score is fixed while the draws still happen.
+_ACTOR = {4: -1, 12: 25, 18: 1, 20: 50}                       # strength 1*50/10 = 5
+_TARGET = {4: -1, 6: -1, 8: 3, 10: -1, 12: 10, 18: 1, 20: 20, 22: -1, 24: 0}   # strength 2
+_WAR = {(1, 3): 3, (3, 1): 3}
+CASES += [
+    ("hunt-tie-a", "stored-one",
+     dict(fleet0=_ACTOR, nfleets=3, relations=_WAR, fleets={1: {**_TARGET, 0: 52, 2: 62}, 2: {**_TARGET, 0: 49, 2: 65}},
+          cells={(52, 62): 335, (49, 65): 335}),
+     "two targets, same strength 2, both at distance 3: (5*100/2 - 3)*2 = 494 each; fleet 1 (52,62) is first"),
+    ("hunt-tie-b", "stored-one",
+     dict(fleet0=_ACTOR, nfleets=3, relations=_WAR, fleets={1: {**_TARGET, 0: 49, 2: 65}, 2: {**_TARGET, 0: 52, 2: 62}},
+          cells={(52, 62): 335, (49, 65): 335}),
+     "the same two positions with the table order swapped"),
+    ("hunt-protected", "stored-one",
+     dict(fleet0=_ACTOR, nfleets=2, relations=_WAR, fleets={1: {**_TARGET, 0: 48, 2: 64}}, cells={(48, 64): 335, (47, 63): 23}),
+     "the only target at (48,64), next to a map city cell coded for its owner (23 = 20+3) at (47,63): protected"),
+    ("hunt-unprotected-2", "stored-one",
+     dict(fleet0=_ACTOR, nfleets=2, relations=_WAR, fleets={1: {**_TARGET, 0: 49, 2: 65}}, cells={(49, 65): 335, (47, 63): 23}),
+     "the same city code, target at (49,65), 2 from it (outside the 3x3): hunted"),
+]
 
 
 def run_case(name, ram):
@@ -134,6 +154,18 @@ def run_case(name, ram):
         if a in (0x44e5dc, 0x44e9a8, 0x44f4f8, 0x44e094, 0x44939c, 0x44d174, 0x44cec8, 0x44b840, 0x44f7e4, 0x44b79c):
             ret = struct.unpack("<I", uc.mem_read(uc.reg_read(UC_X86_REG_ESP), 4))[0]
             row["calls"].append(f"{a:#x}<-{ret:#x}")
+        if a == 0x44f514:                          # hunt: the actor's strength (FUN_0044aa54, one Random(4))
+            row.setdefault("hunt_terms", []).append(dict(actor_strength=uc.reg_read(UC_X86_REG_EAX), targets=[]))
+        if a == 0x44f59f:                          # hunt: distance to an eligible target
+            row["hunt_terms"][-1]["targets"].append(dict(d=s16(uc.reg_read(UC_X86_REG_EAX))))
+        if a == 0x44f5aa:                          # hunt: that target's strength (one Random(4))
+            row["hunt_terms"][-1]["targets"][-1]["s"] = uc.reg_read(UC_X86_REG_EAX)
+        if a == 0x44f682:                          # back from the hunt: [esp] score word, [esp+2] target index word
+            sp = uc.reg_read(UC_X86_REG_ESP)
+            sc, tg, port = struct.unpack("<3h", uc.mem_read(sp, 6))
+            row.setdefault("hunt", []).append(dict(score=sc, target=tg, port=port))
+        if a == 0x44f65b:                          # back from the port pick: [esp+4] city index word
+            row.setdefault("port_pick", []).append(s16(struct.unpack("<H", uc.mem_read(uc.reg_read(UC_X86_REG_ESP) + 4, 2))[0]))
         if a == 0x44b5d0:
             row["status"] = "stopped-before-naval-combat"
             uc.emu_stop()
