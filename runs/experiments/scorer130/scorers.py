@@ -318,6 +318,12 @@ def run_controls(version):
 
 # ---------------------------------------------------------------- survey on original saves
 def ram_from_sav(b):
+    a = struct.unpack_from("<h", b, 100956)[0] if len(b) > 100958 else -1
+    if not 0 <= a <= 198 or len(b) < 100958 + a * 656 + 2:
+        return None, -1
+    f = struct.unpack_from("<h", b, 100958 + a * 656)[0]
+    if not 0 <= f <= 200 or len(b) < 100958 + a * 656 + 2 + f * 26 + 16 * 1172:
+        return None, -1                            # truncated or not a plain save: counted as unparsed
     r = bytearray(RAM)
     r[MAP - ORIGIN:MAP - ORIGIN + 89600] = b[:89600]
     r[CITY - ORIGIN:CITY - ORIGIN + 11356] = b[89600:100956]
@@ -365,13 +371,14 @@ def corpus():
 
 def run_survey(version, limit):
     files = corpus()[:limit] if limit else corpus()
-    calls = mism = 0
+    calls = mism = unparsed = 0
     agg = {k: {"max_candidate": None, "min_candidate": None, "max_winner_final": None, "truncated_winners": 0,
                "final_carries": 0, "zero_divisor": 0, "calls": 0, "calls_with_target": 0, "max_A": 0, "min_s": None,
                "max_A_over_s": 0.0, "examples": []} for k in ("city", "army")}
     for n, (f, h) in enumerate(files):
         ram, a = ram_from_sav(Path(f).read_bytes())
-        if not 0 <= a <= 198:
+        if ram is None:
+            unparsed += 1
             continue
         e = None
         for i in range(a):
@@ -423,7 +430,7 @@ def run_survey(version, limit):
                         g["final_carries"] += 1
         if n % 100 == 0:
             print(f"{n}/{len(files)} saves, {calls} calls, {mism} model mismatches", flush=True)
-    res = {"saves": len(files), "calls": calls, "model_mismatches": mism, "by_scorer": agg,
+    res = {"saves": len(files), "unparsed": unparsed, "calls": calls, "model_mismatches": mism, "by_scorer": agg,
            "corpus_sha256": sorted(h for _, h in files)}
     write(f"survey-{version}.json", res)
     print(json.dumps({k: {x: v for x, v in g.items() if x != "examples"} for k, g in agg.items()}, indent=1))
