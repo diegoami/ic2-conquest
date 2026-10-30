@@ -1,0 +1,79 @@
+diff --git a/src/IC2.Engine/Ai/AiDiplomacyPhase.cs b/src/IC2.Engine/Ai/AiDiplomacyPhase.cs
+index c206ac0d..e2b047a5 100644
+--- a/src/IC2.Engine/Ai/AiDiplomacyPhase.cs
++++ b/src/IC2.Engine/Ai/AiDiplomacyPhase.cs
+@@ -192,8 +192,60 @@ public static class AiDiplomacyPhase
+     /// T82 (#359, bug #357): the closing "swap a poorer partner for a richer one" loop of
+     /// <c>FUN_0044FB7C</c> <strong>[confirmed: decompiled-ai-offers-to-human-seats.md §1a]</strong>.
+     /// </summary>
++    // Diagnostic (#diplo, IC2_DIAG_SWAPPASS=1): the original's single swap pass (FUN_0044fb7c 0x44FF04-0x44FFAC),
++    // planned once per seat-turn from the state at the first call, then offered in order while still valid.
++    private static readonly Dictionary<(string, int), Queue<(string, string)>> SwapPlans = new();
++
++    private static Queue<(string, string)> PlanSwapPass(AiView view)
++    {
++        var st = view.State;
++        var me = view.NationId;
++        var codes = view.Ruleset.Diplomacy.StateCodes;
++        var ids = st.Nations.Select(n => n.Id).ToList();
++        var rel = ids.ToDictionary(a => a, a => ids.ToDictionary(b => b, b => a == b ? 0 : st.Relations.Get(a, b)));
++        int Trades(string n) => ids.Count(o => o != n && rel[n][o] == codes.Trade);
++        var plan = new Queue<(string, string)>();
++        foreach (var i in ids)
++            foreach (var s in ids)
++            {
++                var ns = st.NationById(s)!;
++                if (s == me || ns.Eliminated) continue;
++                if (rel[me][i] != codes.Trade || rel[me][s] != codes.Peace) continue;
++                if (st.NationById(i)!.TaxBase >= ns.TaxBase) continue;
++                if (Trades(s) >= view.Ruleset.Diplomacy.MaxTradePartners || ns.Control != SeatControl.Ai) continue;
++                plan.Enqueue((i, s));
++                rel[me][i] = rel[i][me] = -8;
++                rel[me][s] = rel[s][me] = codes.Trade;
++            }
++        return plan;
++    }
++
+     private static void ProposeOwnTradeSwap(AiView view, List<AiCandidate> into)
+     {
++        if (Environment.GetEnvironmentVariable("IC2_DIAG_SWAPPASS") == "1")
++        {
++            var key = (view.NationId, view.State.Calendar.TurnIndex);
++            if (!SwapPlans.TryGetValue(key, out var plan))
++            {
++                // The original's swap pass runs after its two trade loops: plan it once no trade is left to make.
++                if (AiOwnDiplomacyRule.EligibleTradePartners(view.State, view.Ruleset, view.NationId).Count > 0) return;
++                SwapPlans[key] = plan = PlanSwapPass(view);
++            }
++            var codes = view.Ruleset.Diplomacy.StateCodes;
++            while (plan.Count > 0)
++            {
++                var (p, r) = plan.Peek();
++                if (view.State.Relations.Get(view.NationId, p) == codes.Trade && view.State.Relations.Get(view.NationId, r) == codes.Peace)
++                {
++                    into.Add(AiCandidate.Single(AiPhase.Diplomacy, "ai-swap-trade-partner",
++                        new AiSwapTradePartnerCommand(view.NationId, p, r), view.Ruleset.Ai.OwnTradeSwapScore,
++                        Inv("swap trade partner {0} for richer {1}", p, r)));
++                    return;
++                }
++                plan.Dequeue();
++            }
++            return;
++        }
+         if (AiOwnDiplomacyRule.FindTradeSwap(view.State, view.Ruleset, view.NationId) is not { } swap)
+         {
+             return;
+diff --git a/src/IC2.Engine/Ai/AiMilitaryPhase.cs b/src/IC2.Engine/Ai/AiMilitaryPhase.cs
+index 5580b69e..423d3a35 100644
+--- a/src/IC2.Engine/Ai/AiMilitaryPhase.cs
++++ b/src/IC2.Engine/Ai/AiMilitaryPhase.cs
+@@ -171,6 +171,9 @@ public static class AiMilitaryPhase
+     private static void ProposeOwnWarDeclaration(AiView view, IRng rng, List<AiCandidate> into)
+     {
+         var target = AiOwnDiplomacyRule.BestWarTarget(view.State, view.Ruleset, view.World, view.NationId);
++        // Diagnostic (#diplo, log only): every war-target evaluation, so the candidate can be compared with the original's.
++        if (Environment.GetEnvironmentVariable("IC2_DIAG_WAR") is { } diagPath)
++            File.AppendAllText(diagPath, Inv("{0}\t{1}\t{2}\n", view.NationId, view.State.Calendar.TurnIndex, target ?? "-"));
+         if (target is null)
+         {
+             return;
