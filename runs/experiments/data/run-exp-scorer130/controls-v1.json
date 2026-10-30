@@ -1,0 +1,822 @@
+[
+ {
+  "control": "city-ordinary",
+  "scorer": "city",
+  "A": 15000,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 22000,
+    "d": 10
+   },
+   {
+    "index": 2,
+    "s": 5000,
+    "d": 4
+   }
+  ],
+  "shows": "bounded: 65 vs 326 doubled (A>s, d<7) = 652; final 656",
+  "emulated": {
+   "index": 2,
+   "score": 656,
+   "dist": 4,
+   "error": null
+  },
+  "candidate_scores": [
+   65,
+   652
+  ],
+  "model": {
+   "index": 2,
+   "score": 656,
+   "stored_best": 652,
+   "dist": 4
+  },
+  "wide": {
+   "index": 2,
+   "score": 656
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "city-32767",
+  "scorer": "city",
+  "A": 32777,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   }
+  ],
+  "shows": "candidate 32767 stored as is; final add 32767+10 carries to -32759",
+  "emulated": {
+   "index": 1,
+   "score": -32759,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   32767
+  ],
+  "model": {
+   "index": 1,
+   "score": -32759,
+   "stored_best": 32767,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 32777
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-32768",
+  "scorer": "city",
+  "A": 32778,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   }
+  ],
+  "shows": "candidate 32768 stored as -32768; final -32758",
+  "emulated": {
+   "index": 1,
+   "score": -32758,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   32768
+  ],
+  "model": {
+   "index": 1,
+   "score": -32758,
+   "stored_best": -32768,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 32778
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-65535",
+  "scorer": "city",
+  "A": 65545,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   }
+  ],
+  "shows": "candidate 65535 stored as -1; final 9",
+  "emulated": {
+   "index": 1,
+   "score": 9,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   65535
+  ],
+  "model": {
+   "index": 1,
+   "score": 9,
+   "stored_best": -1,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 65545
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-65536",
+  "scorer": "city",
+  "A": 65546,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   }
+  ],
+  "shows": "candidate 65536 stored as 0; final 10",
+  "emulated": {
+   "index": 1,
+   "score": 10,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   65536
+  ],
+  "model": {
+   "index": 1,
+   "score": 10,
+   "stored_best": 0,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 65546
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-final-no-carry",
+  "scorer": "city",
+  "A": 32767,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   }
+  ],
+  "shows": "candidate 32757 + 10 = 32767: no carry",
+  "emulated": {
+   "index": 1,
+   "score": 32767,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   32757
+  ],
+  "model": {
+   "index": 1,
+   "score": 32767,
+   "stored_best": 32757,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 32767
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "city-final-carry",
+  "scorer": "city",
+  "A": 32768,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 11
+   }
+  ],
+  "shows": "candidate 32757 + 11 = 32768: carries to -32768",
+  "emulated": {
+   "index": 1,
+   "score": -32768,
+   "dist": 11,
+   "error": null
+  },
+  "candidate_scores": [
+   32757
+  ],
+  "model": {
+   "index": 1,
+   "score": -32768,
+   "stored_best": 32757,
+   "dist": 11
+  },
+  "wide": {
+   "index": 1,
+   "score": 32768
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-negative-halving",
+  "scorer": "city",
+  "A": 0,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 7,
+    "other_region": true
+   }
+  ],
+  "shows": "-7 halved toward zero: -7 - (-3) = -4; final 3",
+  "emulated": {
+   "index": 1,
+   "score": 3,
+   "dist": 7,
+   "error": null
+  },
+  "candidate_scores": [
+   -4
+  ],
+  "model": {
+   "index": 1,
+   "score": 3,
+   "stored_best": -4,
+   "dist": 7
+  },
+  "wide": {
+   "index": 1,
+   "score": 3
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "city-below-sentinel",
+  "scorer": "city",
+  "A": 0,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10001
+   }
+  ],
+  "shows": "-10001 is not > -10000: no target, index -1, score -10000",
+  "emulated": {
+   "index": -1,
+   "score": -10000,
+   "dist": 0,
+   "error": null
+  },
+  "candidate_scores": [
+   -10001
+  ],
+  "model": {
+   "index": -1,
+   "score": -10000,
+   "stored_best": -10000,
+   "dist": 0
+  },
+  "wide": {
+   "index": -1,
+   "score": -10000
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "city-just-above-sentinel",
+  "scorer": "city",
+  "A": 0,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 9999
+   }
+  ],
+  "shows": "-9999 > -10000 wins; final 0",
+  "emulated": {
+   "index": 1,
+   "score": 0,
+   "dist": 9999,
+   "error": null
+  },
+  "candidate_scores": [
+   -9999
+  ],
+  "model": {
+   "index": 1,
+   "score": 0,
+   "stored_best": -9999,
+   "dist": 9999
+  },
+  "wide": {
+   "index": 1,
+   "score": 0
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "city-two-truncated-first",
+  "scorer": "city",
+  "A": 40010,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   },
+   {
+    "index": 2,
+    "s": 1000,
+    "d": 10
+   }
+  ],
+  "shows": "first 40000 kept as -25536, so the second (4391) beats it; wide keeps the first",
+  "emulated": {
+   "index": 2,
+   "score": 4401,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   40000,
+   4391
+  ],
+  "model": {
+   "index": 2,
+   "score": 4401,
+   "stored_best": 4391,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 40010
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-two-truncated-second",
+  "scorer": "city",
+  "A": 30010,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   },
+   {
+    "index": 2,
+    "s": 80,
+    "d": 10
+   }
+  ],
+  "shows": "30000 then 41253: the second wins in both, but its stored -24283 makes the final negative",
+  "emulated": {
+   "index": 2,
+   "score": -24273,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   30000,
+   41253
+  ],
+  "model": {
+   "index": 2,
+   "score": -24273,
+   "stored_best": -24283,
+   "dist": 10
+  },
+  "wide": {
+   "index": 2,
+   "score": 41263
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-tie-after-truncation",
+  "scorer": "city",
+  "A": 65646,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   },
+   {
+    "index": 2,
+    "s": 65646,
+    "d": 10
+   }
+  ],
+  "shows": "first 65636 kept as the word 100; second exactly 100 is not > 100, so the first stays (final 110); wide also keeps the first",
+  "emulated": {
+   "index": 1,
+   "score": 110,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   65636,
+   100
+  ],
+  "model": {
+   "index": 1,
+   "score": 110,
+   "stored_best": 100,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 65646
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-distance-upper-bits",
+  "scorer": "city",
+  "A": 1100,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 65539
+   }
+  ],
+  "shows": "distance eax 0x10003 kept as the word 3",
+  "emulated": {
+   "index": 1,
+   "score": 2197,
+   "dist": 3,
+   "error": null
+  },
+  "candidate_scores": [
+   2194
+  ],
+  "model": {
+   "index": 1,
+   "score": 2197,
+   "stored_best": 2194,
+   "dist": 3
+  },
+  "wide": {
+   "index": 1,
+   "score": 2197
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-ordinary",
+  "scorer": "army",
+  "A": 15000,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 22000,
+    "d": 10
+   },
+   {
+    "index": 2,
+    "s": 5000,
+    "d": 4
+   }
+  ],
+  "shows": "bounded: 65 vs 326+1000 = 1326; final 1330",
+  "emulated": {
+   "index": 2,
+   "score": 1330,
+   "dist": 4,
+   "error": null
+  },
+  "candidate_scores": [
+   65,
+   1326
+  ],
+  "model": {
+   "index": 2,
+   "score": 1330,
+   "stored_best": 1326,
+   "dist": 4
+  },
+  "wide": {
+   "index": 2,
+   "score": 1330
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-cap",
+  "scorer": "army",
+  "A": 50000,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   }
+  ],
+  "shows": "49990 capped at 1000; final 1010",
+  "emulated": {
+   "index": 1,
+   "score": 1010,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   1000
+  ],
+  "model": {
+   "index": 1,
+   "score": 1010,
+   "stored_best": 1000,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 1010
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-cap-plus-1000",
+  "scorer": "army",
+  "A": 50000,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 3
+   }
+  ],
+  "shows": "capped 1000 then +1000 (A>s, d<7) = 2000; final 2003: the most a winner can hold",
+  "emulated": {
+   "index": 1,
+   "score": 2003,
+   "dist": 3,
+   "error": null
+  },
+  "candidate_scores": [
+   2000
+  ],
+  "model": {
+   "index": 1,
+   "score": 2003,
+   "stored_best": 2000,
+   "dist": 3
+  },
+  "wide": {
+   "index": 1,
+   "score": 2003
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-negative-halving",
+  "scorer": "army",
+  "A": 0,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 7,
+    "other_region": true
+   }
+  ],
+  "shows": "-7 -> -4; final 3",
+  "emulated": {
+   "index": 1,
+   "score": 3,
+   "dist": 7,
+   "error": null
+  },
+  "candidate_scores": [
+   -4
+  ],
+  "model": {
+   "index": 1,
+   "score": 3,
+   "stored_best": -4,
+   "dist": 7
+  },
+  "wide": {
+   "index": 1,
+   "score": 3
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-no-target",
+  "scorer": "army",
+  "A": 0,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10001
+   }
+  ],
+  "shows": "no winner: index word untouched (0x1234), score -10000, dist 0",
+  "emulated": {
+   "index": 4660,
+   "score": -10000,
+   "dist": 0,
+   "error": null
+  },
+  "candidate_scores": [
+   -10001
+  ],
+  "model": {
+   "index": 4660,
+   "score": -10000,
+   "stored_best": -10000,
+   "dist": 0
+  },
+  "wide": {
+   "index": 4660,
+   "score": -10000
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-two-capped-tie",
+  "scorer": "army",
+  "A": 50000,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 10
+   },
+   {
+    "index": 2,
+    "s": 120,
+    "d": 20
+   }
+  ],
+  "shows": "both capped at 1000: the earlier wins",
+  "emulated": {
+   "index": 1,
+   "score": 1010,
+   "dist": 10,
+   "error": null
+  },
+  "candidate_scores": [
+   1000,
+   1000
+  ],
+  "model": {
+   "index": 1,
+   "score": 1010,
+   "stored_best": 1000,
+   "dist": 10
+  },
+  "wide": {
+   "index": 1,
+   "score": 1010
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-negative-distance-word",
+  "scorer": "army",
+  "A": 0,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 40000
+   }
+  ],
+  "shows": "diagnostic: distance word 40000 = -25536 sign-extended: score +25536 -> 1000, d<7 -> +1000 if A>s (no: A=0); final 1000-25536 = -24536",
+  "emulated": {
+   "index": 1,
+   "score": -24536,
+   "dist": -25536,
+   "error": null
+  },
+  "candidate_scores": [
+   1000
+  ],
+  "model": {
+   "index": 1,
+   "score": -24536,
+   "stored_best": 1000,
+   "dist": -25536
+  },
+  "wide": {
+   "index": 1,
+   "score": -24536
+  },
+  "model_matches": true,
+  "wide_differs": false
+ },
+ {
+  "control": "army-final-carry-diagnostic",
+  "scorer": "army",
+  "A": 50000,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 110,
+    "d": 32000
+   }
+  ],
+  "shows": "diagnostic: 1000 + 32000 = 33000 carries to -32536",
+  "emulated": {
+   "index": 1,
+   "score": -32536,
+   "dist": 32000,
+   "error": null
+  },
+  "candidate_scores": [
+   1000
+  ],
+  "model": {
+   "index": 1,
+   "score": -32536,
+   "stored_best": 1000,
+   "dist": 32000
+  },
+  "wide": {
+   "index": 1,
+   "score": 33000
+  },
+  "model_matches": true,
+  "wide_differs": true
+ },
+ {
+  "control": "city-zero-divisor",
+  "scorer": "city",
+  "A": 100,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 0,
+    "d": 10
+   }
+  ],
+  "shows": "s = 0: idiv by zero",
+  "emulated": {
+   "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+   "eip": "0x44edab"
+  }
+ },
+ {
+  "control": "army-zero-divisor",
+  "scorer": "army",
+  "A": 100,
+  "candidates": [
+   {
+    "index": 1,
+    "s": 0,
+    "d": 10
+   }
+  ],
+  "shows": "s = 0: idiv by zero",
+  "emulated": {
+   "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+   "eip": "0x44ef2c"
+  }
+ }
+]
