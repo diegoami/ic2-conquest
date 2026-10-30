@@ -1,0 +1,14 @@
+diff --git a/src/IC2.Engine/Ai/AiArmyTargetTree.cs b/src/IC2.Engine/Ai/AiArmyTargetTree.cs
+index 21dd7839..2b4cc9bf 100644
+--- a/src/IC2.Engine/Ai/AiArmyTargetTree.cs
++++ b/src/IC2.Engine/Ai/AiArmyTargetTree.cs
+@@ -290,7 +290,8 @@ public static class AiArmyTargetTree
+             }
+ 
+             var score = (numerator * strength) / theirStrength - distance;
+-            if (RegionOf(view, target.X, target.Y) != armyRegion)
++            if (faithfulNavigation ? ClassicalArmyNavigation.Classify(target.X, target.Y) != ClassicalArmyNavigation.Classify(army.X, army.Y)
++                : RegionOf(view, target.X, target.Y) != armyRegion)
+             {
+                 score -= score / halving;
+             }

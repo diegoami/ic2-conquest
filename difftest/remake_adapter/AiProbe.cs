@@ -11,7 +11,10 @@ using IC2.Engine.Serialization;
 // AI march probe (follow-up of findings/2026-10-30-ai-march-continuation-missing-in-remake.md): how often does a remake
 // AI march end short of its aimed point with moves left?
 //
-//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N>
+//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>]
+//
+// decisions= (#138) also installs the remake's own target-tree log (AiArmyTargetTree.NewDecisionLog) and writes each
+// DecisionRecord (kind, city and army targets, their scores and distances) as one JSON line, after the last turn.
 //
 // Plays <turns> End turns from an imported original save (the human seat gives no orders). Each AI seat's
 // AiTurnDecided lines name the chosen marches ("... (x, y) with army-N: K tiles away"); right after that seat's turn
@@ -34,6 +37,9 @@ public static class AiProbe
         var rules = repo.RulesetById("classical-faithful")!;
         var imported = OriginalSaveImporter.Import(File.ReadAllBytes(start), Path.GetFileName(start), resolved.World, rules,
             resolved.Scenario, "diff-aiprobe", "diff-aiprobe");
+        var decisionsPath = args.FirstOrDefault(a => a.StartsWith("decisions="))?[10..];
+        if (decisionsPath != null && File.Exists(decisionsPath)) throw new IOException("Refusing existing output: " + decisionsPath);
+        var decisions = decisionsPath == null ? null : AiArmyTargetTree.NewDecisionLog();
         var save = imported.Save with { State = imported.Save.State with { RandomSeed = seed } };
         var session = new GameSession(resolved.World, rules, resolved.Scenario, save) { HumanBattles = HumanBattleMode.Instant };
         using var output = new StreamWriter(outPath);
@@ -79,6 +85,13 @@ public static class AiProbe
         {
             var r = session.Submit("end");
             if (r.ShouldExit) break;
+        }
+        if (decisions != null)
+        {
+            using var d = new StreamWriter(decisionsPath!);
+            foreach (var rec in decisions)
+                d.WriteLine(JsonSerializer.Serialize(rec with { }, new JsonSerializerOptions { Converters = { new System.Text.Json.Serialization.JsonStringEnumConverter() } }));
+            AiArmyTargetTree.ClearDecisionLog();
         }
         return 0;
     }
