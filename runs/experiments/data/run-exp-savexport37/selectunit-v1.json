@@ -1,0 +1,320 @@
+{
+ "ram": "#187 snapshot (private)",
+ "rows": [
+  {
+   "case": "war, dialog answer 6",
+   "setup": {
+    "own_fleet": 0,
+    "enemy_fleet": 1,
+    "enemy_owner": 3,
+    "own_at": [
+     100,
+     100
+    ],
+    "enemy_at": [
+     101,
+     100
+    ],
+    "map_codes": [
+     300,
+     301
+    ],
+    "relation": 3
+   },
+   "click": {
+    "calls": [
+     {
+      "call": "PrintMapSquare",
+      "eax": 0,
+      "edx": 6553701
+     },
+     {
+      "call": "FUN_004465a8",
+      "eax": 101,
+      "edx": 6553701
+     },
+     {
+      "call": "naval_battle",
+      "eax": 0,
+      "edx": 4587521
+     },
+     {
+      "call": "EndUMSelection",
+      "eax": 0,
+      "edx": 4587521
+     },
+     {
+      "call": "PaintForm",
+      "eax": 0,
+      "edx": 0
+     },
+     {
+      "call": "PrintNews",
+      "eax": 724,
+      "edx": 0
+     },
+     {
+      "call": "AllButtonsOff",
+      "eax": 0,
+      "edx": 0
+     }
+    ],
+    "after": {
+     "selected_army": -1,
+     "selected_fleet": 0
+    }
+   },
+   "refresh_rerun": {
+    "calls": [
+     {
+      "call": "PrintMapSquare",
+      "eax": 0,
+      "edx": 6553701
+     },
+     {
+      "call": "FUN_004465a8",
+      "eax": 101,
+      "edx": 6553701
+     },
+     {
+      "call": "naval_battle",
+      "eax": 0,
+      "edx": 4587521
+     },
+     {
+      "call": "EndUMSelection",
+      "eax": 0,
+      "edx": 4587521
+     },
+     {
+      "call": "PaintForm",
+      "eax": 0,
+      "edx": 0
+     },
+     {
+      "call": "PrintNews",
+      "eax": 724,
+      "edx": 0
+     },
+     {
+      "call": "AllButtonsOff",
+      "eax": 0,
+      "edx": 0
+     }
+    ],
+    "after": {
+     "selected_army": -1,
+     "selected_fleet": 0
+    }
+   }
+  },
+  {
+   "case": "peace, dialog answer 7",
+   "setup": {
+    "own_fleet": 0,
+    "enemy_fleet": 1,
+    "enemy_owner": 3,
+    "own_at": [
+     100,
+     100
+    ],
+    "enemy_at": [
+     101,
+     100
+    ],
+    "map_codes": [
+     300,
+     301
+    ],
+    "relation": 0
+   },
+   "click": {
+    "calls": [
+     {
+      "call": "PrintMapSquare",
+      "eax": 0,
+      "edx": 6553701
+     },
+     {
+      "call": "FUN_004465a8",
+      "eax": 101,
+      "edx": 6553701
+     },
+     {
+      "call": "MessageDlg",
+      "eax": 27764,
+      "edx": 4610051,
+      "text": "Are you sure you want to attack this fleet ?"
+     },
+     {
+      "call": "AllButtonsOff",
+      "eax": 0,
+      "edx": 4610051
+     }
+    ],
+    "after": {
+     "selected_army": -1,
+     "selected_fleet": 0
+    }
+   },
+   "refresh_rerun": {
+    "calls": [
+     {
+      "call": "PrintMapSquare",
+      "eax": 0,
+      "edx": 6553701
+     },
+     {
+      "call": "FUN_004465a8",
+      "eax": 101,
+      "edx": 6553701
+     },
+     {
+      "call": "MessageDlg",
+      "eax": 27764,
+      "edx": 4610051,
+      "text": "Are you sure you want to attack this fleet ?"
+     },
+     {
+      "call": "AllButtonsOff",
+      "eax": 0,
+      "edx": 4610051
+     }
+    ],
+    "after": {
+     "selected_army": -1,
+     "selected_fleet": 0
+    }
+   }
+  },
+  {
+   "case": "peace, dialog answer 6",
+   "setup": {
+    "own_fleet": 0,
+    "enemy_fleet": 1,
+    "enemy_owner": 3,
+    "own_at": [
+     100,
+     100
+    ],
+    "enemy_at": [
+     101,
+     100
+    ],
+    "map_codes": [
+     300,
+     301
+    ],
+    "relation": 0
+   },
+   "click": {
+    "calls": [
+     {
+      "call": "PrintMapSquare",
+      "eax": 0,
+      "edx": 6553701
+     },
+     {
+      "call": "FUN_004465a8",
+      "eax": 101,
+      "edx": 6553701
+     },
+     {
+      "call": "MessageDlg",
+      "eax": 27764,
+      "edx": 4610051,
+      "text": "Are you sure you want to attack this fleet ?"
+     },
+     {
+      "call": "set_relation",
+      "eax": 1,
+      "edx": 3
+     },
+     {
+      "call": "naval_battle",
+      "eax": 0,
+      "edx": 1
+     },
+     {
+      "call": "EndUMSelection",
+      "eax": 0,
+      "edx": 1
+     },
+     {
+      "call": "PaintForm",
+      "eax": 0,
+      "edx": 0
+     },
+     {
+      "call": "PrintNews",
+      "eax": 724,
+      "edx": 0
+     },
+     {
+      "call": "AllButtonsOff",
+      "eax": 0,
+      "edx": 0
+     }
+    ],
+    "after": {
+     "selected_army": -1,
+     "selected_fleet": 0
+    }
+   },
+   "refresh_rerun": {
+    "calls": [
+     {
+      "call": "PrintMapSquare",
+      "eax": 0,
+      "edx": 6553701
+     },
+     {
+      "call": "FUN_004465a8",
+      "eax": 101,
+      "edx": 6553701
+     },
+     {
+      "call": "MessageDlg",
+      "eax": 27764,
+      "edx": 4610051,
+      "text": "Are you sure you want to attack this fleet ?"
+     },
+     {
+      "call": "set_relation",
+      "eax": 1,
+      "edx": 3
+     },
+     {
+      "call": "naval_battle",
+      "eax": 0,
+      "edx": 1
+     },
+     {
+      "call": "EndUMSelection",
+      "eax": 0,
+      "edx": 1
+     },
+     {
+      "call": "PaintForm",
+      "eax": 0,
+      "edx": 0
+     },
+     {
+      "call": "PrintNews",
+      "eax": 724,
+      "edx": 0
+     },
+     {
+      "call": "AllButtonsOff",
+      "eax": 0,
+      "edx": 0
+     }
+    ],
+    "after": {
+     "selected_army": -1,
+     "selected_fleet": 0
+    }
+   }
+  }
+ ]
+}
