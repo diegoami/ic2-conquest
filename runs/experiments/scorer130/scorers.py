@@ -26,8 +26,8 @@ from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_EDX, UC_X86_REG_ECX, UC
 
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "runs/experiments/data/run-exp-scorer130"
-EXE = Path("/home/diego/ic2-work/build/Imperial Conquest 2.exe").read_bytes()
-assert hashlib.sha256(EXE).hexdigest().startswith("9d753d5d")
+sys.path.insert(0, str(ROOT / "runs/experiments/navigation187"))
+from core import EXE  # noqa: E402  (the pinned unpatched EXE; core.py checks its hash)
 RAM = (ROOT / "artifacts/run-exp-strategic-fidelity/original/N-rome-hook-v1/snapshots/000.ram").read_bytes()
 ORIGIN = 0x45e000
 CITY, ARMY, FLEET, NATION, MAP = 0x479590, 0x47c1ec, 0x49c26c, 0x474670, 0x45e870
@@ -346,7 +346,7 @@ def corpus():
             if h in seen or len(b) < 120000:
                 continue
             seen.add(h)
-            out.append((f, h, b))
+            out.append((f, h))
     return out
 
 
@@ -356,8 +356,10 @@ def run_survey(version, limit):
     agg = {k: {"max_candidate": None, "min_candidate": None, "max_winner_final": None, "truncated_winners": 0,
                "final_carries": 0, "zero_divisor": 0, "calls": 0, "calls_with_target": 0, "max_A": 0, "min_s": None,
                "max_A_over_s": 0.0, "examples": []} for k in ("city", "army")}
-    for n, (f, h, b) in enumerate(files):
-        ram, a = ram_from_sav(b)
+    for n, (f, h) in enumerate(files):
+        ram, a = ram_from_sav(Path(f).read_bytes())
+        if not 0 <= a <= 198:
+            continue
         for i in range(a):
             owner = struct.unpack_from("<h", ram, ARMY + i * 0x290 + 4 - ORIGIN)[0]
             if owner < 0 or owner > 15:
@@ -400,7 +402,7 @@ def run_survey(version, limit):
         if n % 100 == 0:
             print(f"{n}/{len(files)} saves, {calls} calls, {mism} model mismatches", flush=True)
     res = {"saves": len(files), "calls": calls, "model_mismatches": mism, "by_scorer": agg,
-           "corpus_sha256": sorted(h for _, h, _ in files)}
+           "corpus_sha256": sorted(h for _, h in files)}
     write(f"survey-{version}.json", res)
     print(json.dumps({k: {x: v for x, v in g.items() if x != "examples"} for k, g in agg.items()}, indent=1))
     print("mismatches", mism)
