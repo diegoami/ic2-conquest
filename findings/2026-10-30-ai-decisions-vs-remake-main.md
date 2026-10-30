@@ -132,6 +132,23 @@ Example: S00 round 3, Carthage–Rome war in the remake only. Once a nation's wa
 is a diplomacy question (peace and war decisions, with their draws), not the army decision tree, and is not attributed
 here.
 
+## Recheck on remake main `05b02936` (T249, #1643)
+
+The same 749 original decisions were compared with remake main `05b02936`, which ports §1 and §2:
+- `remake-05b02936-v1/`, `report-05b02936-v1.json`, `attribution-05b02936-v1.json` (the original side unchanged, `orig-v1/`).
+
+| Cause | `10d3bb81` | `05b02936` |
+|---|---|---|
+| same | 390 | **422** |
+| capital defence attack (§2) | 17 | **0** |
+| city > 85 target (§1) | 21 | **14**, all with the army already next to the city target, then the #925 garrison or emergency tier (§3) |
+| #925 resupply / fallback | 252 / 8 | 250 / 8 |
+| diplomacy / state | 44 / 17 | 41 / 14 |
+| unattributed | 1 | 0 |
+
+So **outside the #925 tiers, diplomacy and battle draws, every decision now matches the original.** §4 (the `<=` boundaries
+and city-id ties, research #144) is not in this commit.
+
 ## What this does not establish
 
 - **Later turns of a campaign:** every round here starts from the original's state, so the remake's own drift is not
