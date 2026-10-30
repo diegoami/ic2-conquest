@@ -1,0 +1,102 @@
+{
+ "pin": {
+  "ref": "v0.8.5",
+  "commit": "1622407eb56183bcfb553bd0c1aa39265186588f",
+  "short": "1622407e",
+  "remake_dir": "/home/diego/projects/ic2-remake-pin-1622407e",
+  "build_dir": "/home/diego/projects/ic2-conquest/artifacts/diffpin-1622407e-build",
+  "subject": "Docs: define v0.8.5 checkpoint claims from the approved correction contracts (#1623)",
+  "built": "2026-10-30T14:10:00"
+ },
+ "tiers": [
+  "campaigns"
+ ],
+ "counts": {
+  "unchanged": 129,
+  "FIXED": 8,
+  "CHANGED": 2
+ },
+ "finished": "2026-10-30T14:11:19",
+ "changes": [
+  {
+   "tier": "orders",
+   "test": "move-far",
+   "before": "refusal-difference",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-v084-known-differences-and-command-gaps.md"
+  },
+  {
+   "tier": "orders",
+   "test": "move-sea",
+   "before": "refusal-difference",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-v084-known-differences-and-command-gaps.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-city-on-line",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-city-on-line-near",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-line-clear",
+   "before": "refusal-difference",
+   "after": "same",
+   "label": "FIXED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "walk-carthage-army3",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-gaul-army9",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "fleet-second-walk-88-32",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-30-paths-in-play-and-fleet-walks42.md"
+  },
+  {
+   "tier": "orders",
+   "test": "fleet-second-walk-87-47",
+   "before": "differs-immediate",
+   "after": "differs-after-end-turn",
+   "label": "CHANGED",
+   "finding": "2026-10-30-paths-in-play-and-fleet-walks42.md"
+  },
+  {
+   "tier": "campaigns",
+   "test": "allhuman-rulebot1-32",
+   "before": "first divergence turn 5",
+   "after": "first divergence turn 16",
+   "label": "CHANGED",
+   "finding": ""
+  }
+ ]
+}

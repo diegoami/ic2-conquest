@@ -1,0 +1,125 @@
+orders tax-25: same -> same
+orders move-plain-1: same -> same
+orders fleet-10: differs-immediate -> differs-immediate
+orders tax-0: same -> same
+orders tax-40: same -> same
+orders move-forest: same -> same
+orders move-mountain: same -> same
+orders move-river: same -> same
+orders move-far: refusal-difference -> same
+orders move-sea: refusal-difference -> same
+orders move-own-city: same -> same
+orders move-twice: same -> same
+orders recruit-li-min: same -> same
+orders recruit-hi-min: same -> same
+orders recruit-ar-min: same -> same
+orders recruit-lc-min: same -> same
+orders recruit-hc-min: same -> same
+orders recruit-li-max: same -> same
+orders recruit-hi-max: same -> same
+orders recruit-ar-max: same -> same
+orders recruit-lc-max: same -> same
+orders recruit-hc-max: same -> same
+orders recruit-luceria: same -> same
+orders recruit-two: same -> same
+orders rel-war-carthage: differs-immediate -> differs-immediate
+orders rel-war-illyria: same -> same
+orders rel-peace-gaul: same -> same
+orders rel-trade-carthage: same -> same
+orders rel-trade-bithynia: same -> same
+orders rel-ally-carthage: same -> same
+orders rel-ally-illyria: same -> same
+orders rel-war-macedonia: same -> same
+orders fortify-pisae-10: same -> same
+orders fortify-rome-5: same -> same
+orders fortify-arretium-25: same -> same
+orders fortify-caere-50: same -> same
+orders buy-arretium-20: same -> same
+orders buy-heraclea-50: same -> same
+orders disband-army-0: same -> same
+orders split-army-1unit: same -> same
+orders split-army-2units: same -> same
+orders split-then-join: same -> same
+orders fleet-25: differs-immediate -> differs-immediate
+orders fleet-two: differs-immediate -> differs-immediate
+orders disband-slot-0: same -> same
+orders disband-slot-3: same -> same
+orders recruit-then-disband: same -> same
+orders hire-merc-25: same -> same
+orders tax-then-recruit: same -> same
+orders move-far-land: same -> same
+orders rel-war-numidia: same -> same
+orders rel-war-dacia: differs-immediate -> differs-immediate
+orders rel-war-thracia: same -> same
+orders rel-war-bithynia: differs-immediate -> differs-immediate
+orders embark: same -> same
+orders embark-sail: same -> same
+orders embark-turn-disembark: differs-after-end-turn -> differs-after-end-turn
+orders fleet-sail: differs-after-end-turn -> differs-after-end-turn
+orders repair-3: differs-after-end-turn -> differs-after-end-turn
+orders scuttle: same -> same
+orders split-fleet-10: differs-after-end-turn -> differs-after-end-turn
+orders join-fleets: same -> same
+orders transfer-ships-5: differs-after-end-turn -> differs-after-end-turn
+orders mobilize-port-0: same -> same
+orders mobilize-base-3: same -> same
+orders disband-unit: same -> same
+orders join-units-hi: same -> same
+orders split-transfer-unit: same -> same
+orders walk-city-on-line: differs-immediate -> same
+orders walk-city-on-line-near: differs-immediate -> same
+orders walk-line-clear: refusal-difference -> same
+orders walk-line-clear-land: same -> same
+orders walk-carthage-army3: differs-immediate -> same
+orders walk-gaul-army9: differs-immediate -> same
+orders join-20-ok: same -> same
+orders join-21-refused: same -> same
+orders join-100k-exact: same -> same
+orders join-100k-over: same -> same
+orders split-one-unit: same -> same
+orders transfer-into-20: same -> same
+orders recruit-slot-40: same -> same
+orders recruit-slot-41: same -> same
+orders recruit-mob-100: same -> same
+orders recruit-no-money: same -> same
+orders fortify-full: same -> same
+orders fortify-in-progress: same -> same
+orders join-fleets-101: differs-after-end-turn -> differs-after-end-turn
+orders join-fleets-100: same -> same
+orders split-fleet-19: same -> same
+orders merc-20-units: same -> same
+orders merc-low-supplies: same -> same
+orders fleet-second-walk-88-32: differs-immediate -> same
+orders fleet-second-walk-87-47: differs-immediate -> differs-after-end-turn
+orders split-at-197: same -> same
+orders split-at-198: same -> same
+orders embark-20-ships: same -> same
+orders embark-21-ships: same -> same
+orders embark-22-ships: same -> same
+orders join-purse-2000: same -> same
+orders join-purse-1600: same -> same
+stats ('naval30', 'attacker_ships_lost'): consistent -> consistent
+stats ('naval30', 'attacker_survives'): consistent -> consistent
+stats ('naval30', 'defender_condition'): consistent -> consistent
+stats ('naval30', 'defender_ships_lost'): consistent -> consistent
+stats ('naval30', 'defender_survives'): consistent -> consistent
+stats ('storm30', 'at_target'): differs -> differs
+stats ('storm30', 'fleet_survives'): differs -> differs
+stats ('storm30', 'ships_lost'): differs -> differs
+stats ('siege10', 'army_troops_lost'): consistent -> consistent
+stats ('siege10', 'captured'): consistent -> consistent
+stats ('siege10', 'fort_change'): consistent -> consistent
+stats ('siege10', 'loyalty_change'): consistent -> consistent
+stats ('siege10', 'pop_change'): consistent -> consistent
+stats ('weather30', 'any_rough'): consistent -> consistent
+stats ('weather30', 'rough_cells'): consistent -> consistent
+stats ('storm30b', 'at_target'): consistent -> consistent
+stats ('storm30b', 'condition_lost'): consistent -> consistent
+stats ('storm30b', 'fleet_survives'): consistent -> consistent
+stats ('storm30b', 'ships_lost'): consistent -> consistent
+stats ('weather60h', 'any_rough'): consistent -> consistent
+stats ('weather60h', 'hits'): consistent -> consistent
+stats ('weather60h', 'rough_cells'): consistent -> consistent
+campaign allhuman-rulebot1-32: first divergence turn 5 -> first divergence turn 16
+campaign armenia-rulebot1-5t: first divergence turn 1 -> first divergence turn 1
+campaign bithynia-rulebot1-5t: first divergence turn 1 -> first divergence turn 1
