@@ -5,6 +5,10 @@ out of git).
 
     python3.12 runs/experiments/scorer130/scorers.py controls --version v1   # stubbed-helper boundary controls + model check
     python3.12 runs/experiments/scorer130/scorers.py survey --version v1     # real helpers on original saves: reachable ranges
+    python3.12 runs/experiments/scorer130/scorers.py redact --version v1     # public copy of a private survey
+
+The full survey (corpus hashes, per-save examples) goes to artifacts/run-exp-scorer130/private/ only, because the corpus
+includes owner-derived material; the tracked survey-<v>-public.json keeps the aggregates and no hash or private path.
 
 Calling convention (both): ax = army index, edx -> index word, ecx -> score word, [esp+4] -> distance word; `ret 4`.
 Controls stub the helpers at their entry (value in eax, plain ret), keyed by the candidate the scorer is visiting, so any
@@ -26,6 +30,7 @@ from unicorn.x86_const import UC_X86_REG_EAX, UC_X86_REG_EDX, UC_X86_REG_ECX, UC
 
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "runs/experiments/data/run-exp-scorer130"
+PRIVATE = ROOT / "artifacts/run-exp-scorer130/private"
 sys.path.insert(0, str(ROOT / "runs/experiments/navigation187"))
 from core import EXE  # noqa: E402  (the pinned unpatched EXE; core.py checks its hash)
 RAM = (ROOT / "artifacts/run-exp-strategic-fidelity/original/N-rome-hook-v1/snapshots/000.ram").read_bytes()
@@ -432,9 +437,25 @@ def run_survey(version, limit):
             print(f"{n}/{len(files)} saves, {calls} calls, {mism} model mismatches", flush=True)
     res = {"saves": len(files), "unparsed": unparsed, "calls": calls, "model_mismatches": mism, "by_scorer": agg,
            "corpus_sha256": sorted(h for _, h in files)}
-    write(f"survey-{version}.json", res)
+    PRIVATE.mkdir(parents=True, exist_ok=True)
+    with open(PRIVATE / f"survey-{version}.json", "x") as f:
+        json.dump(res, f, indent=1, default=str)
+    redact(version)
     print(json.dumps({k: {x: v for x, v in g.items() if x != "examples"} for k, g in agg.items()}, indent=1))
     print("mismatches", mism)
+
+
+def redact(version):
+    full = json.loads((PRIVATE / f"survey-{version}.json").read_text())
+    pub = {k: v for k, v in full.items() if k != "corpus_sha256"}
+    pub["by_scorer"] = {}
+    for kind, g in full["by_scorer"].items():
+        g = dict(g)
+        g["examples"] = [{k: v for k, v in x.items() if k != "sha"} for x in g.get("examples", [])]
+        pub["by_scorer"][kind] = g
+    pub["corpus_size"] = len(full.get("corpus_sha256", []))
+    pub["redacted_from"] = f"artifacts/run-exp-scorer130/private/survey-{version}.json"
+    write(f"survey-{version}-public.json", pub)
 
 
 def write(name, obj):
@@ -445,10 +466,12 @@ def write(name, obj):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("what", choices=["controls", "survey"])
+    ap.add_argument("what", choices=["controls", "survey", "redact"])
     ap.add_argument("--version", default="v1")
     ap.add_argument("--limit", type=int, default=0)
     a = ap.parse_args()
+    if a.what == "redact":
+        return redact(a.version)
     run_controls(a.version) if a.what == "controls" else run_survey(a.version, a.limit)
 
 
