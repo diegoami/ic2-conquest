@@ -11,7 +11,7 @@ using IC2.Engine.Serialization;
 // AI march probe (follow-up of findings/2026-10-30-ai-march-continuation-missing-in-remake.md): how often does a remake
 // AI march end short of its aimed point with moves left?
 //
-//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>] [relations=<out3.json>] [ailog=<out4.txt>]
+//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>] [relations=<out3.json>] [ailog=<out4.txt>] [events=<out5.jsonl>]
 //
 // decisions= (#138) also installs the remake's own target-tree log (AiArmyTargetTree.NewDecisionLog) and writes each
 // DecisionRecord (kind, city and army targets, their scores and distances) as one JSON line, after the last turn.
@@ -46,9 +46,26 @@ public static class AiProbe
         var aiLogPath = args.FirstOrDefault(a => a.StartsWith("ailog="))?[6..];
         if (aiLogPath != null && File.Exists(aiLogPath)) throw new IOException("Refusing existing output: " + aiLogPath);
         using var aiLog = aiLogPath == null ? null : new StreamWriter(aiLogPath);
+        // events= (diplomacy comparison): in publication order, each seat's AiTurnDecided marker and every diplomacy,
+        // peace, war or battle domain event (type name and fields).
+        var eventsPath = args.FirstOrDefault(a => a.StartsWith("events="))?[7..];
+        if (eventsPath != null && File.Exists(eventsPath)) throw new IOException("Refusing existing output: " + eventsPath);
+        using var eventLog = eventsPath == null ? null : new StreamWriter(eventsPath);
         int turn = 0;
         session.EventsPublished += events =>
         {
+            if (eventLog != null)
+            {
+                foreach (var ev in events)
+                {
+                    var name = ev.GetType().Name;
+                    if (ev is AiTurnDecided seat) eventLog.WriteLine(JsonSerializer.Serialize(new { seat = seat.NationId }));
+                    else if ((ev.GetType().Namespace ?? "").Contains("Diplomacy") || name.Contains("Battle") || name.Contains("Peace")
+                             || name.Contains("War") || name.Contains("Alliance") || name.Contains("Elimin"))
+                        eventLog.WriteLine(JsonSerializer.Serialize(new { type = name, data = (object)ev }));
+                }
+                eventLog.Flush();
+            }
             var moved = events.OfType<ArmyMoved>().GroupBy(m => m.ArmyId).ToDictionary(g => g.Key, g => g.ToList());
             foreach (var e in events.OfType<AiTurnDecided>())
             {
