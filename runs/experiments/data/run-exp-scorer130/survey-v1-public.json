@@ -1,0 +1,343 @@
+{
+ "saves": 10105,
+ "unparsed": 1233,
+ "calls": 251182,
+ "model_mismatches": 0,
+ "by_scorer": {
+  "city": {
+   "max_candidate": 13022,
+   "min_candidate": -205,
+   "max_winner_final": 13023,
+   "truncated_winners": 0,
+   "final_carries": 0,
+   "zero_divisor": 0,
+   "calls": 125591,
+   "calls_with_target": 62672,
+   "max_A": 162588,
+   "min_s": 350,
+   "max_A_over_s": 59.2,
+   "examples": []
+  },
+  "army": {
+   "max_candidate": 2000,
+   "min_candidate": -105,
+   "max_winner_final": 2006,
+   "truncated_winners": 0,
+   "final_carries": 0,
+   "zero_divisor": 38,
+   "calls": 125591,
+   "calls_with_target": 46056,
+   "max_A": 87500,
+   "min_s": 51,
+   "max_A_over_s": 529.4117647058823,
+   "examples": [
+    {
+     "save": "b8_ar_r4_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_ar_r5_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_hi_r4_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_hi_r5_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_lc_r4_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_lc_r5_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_lc_r6_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_li_r4_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_li_r5_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_li_r6_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "b8_li_r7_start.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "SG_BEFORE.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "T_JOIN_OVER_20_UNITS.SAV",
+     "army": 1,
+     "owner": 1,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "T_JOIN_OVER_20_UNITS.SAV",
+     "army": 2,
+     "owner": 1,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "T_JOIN_OVER_20_UNITS.SAV",
+     "army": 3,
+     "owner": 1,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "T_JOIN_OVER_20_UNITS.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "T_JOIN_OVER_20_UNITS.SAV",
+     "army": 11,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "ar26_PRE.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "one_man_PRE.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "tmp_l11_07g2a21t.SAV",
+     "army": 1,
+     "owner": 1,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "tmp_l11_07g2a21t.SAV",
+     "army": 2,
+     "owner": 1,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "tmp_l11_07g2a21t.SAV",
+     "army": 3,
+     "owner": 1,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "tmp_l11_07g2a21t.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "tmp_l11_07g2a21t.SAV",
+     "army": 11,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "tmp_l11_armies_t9w45h8g.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 3
+    },
+    {
+     "save": "tmp_l11_eot9451t.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "u79_PRE.SAV",
+     "army": 9,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_ar_r4_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_ar_r5_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_hi_r4_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_hi_r5_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_lc_r4_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_lc_r5_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_lc_r6_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_li_r4_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_li_r5_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_li_r6_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    },
+    {
+     "save": "after_b8_li_r7_BATTLE01.SAV",
+     "army": 10,
+     "owner": 6,
+     "error": "Unhandled CPU exception (UC_ERR_EXCEPTION)",
+     "eip": "0x44ef2c",
+     "candidates_seen": 1
+    }
+   ]
+  }
+ },
+ "corpus_size": 10105,
+ "redacted_from": "artifacts/run-exp-scorer130/private/survey-v1.json"
+}
