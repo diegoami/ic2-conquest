@@ -112,7 +112,7 @@ def tier_stats(out, log):
     return rows
 
 
-def tier_campaigns(out, log):
+def tier_campaigns(out, log, version="v1"):
     from difftest import actions as act, remake
     from difftest.compare import compare, scoped
     from state.sav import load
@@ -130,7 +130,7 @@ def tier_campaigns(out, log):
         if not ends:
             continue
         start = Path(meta["start"]) if Path(meta["start"]).is_absolute() else ROOT / meta["start"]
-        rdir = out / "campaigns" / c.parent.name / c.name
+        rdir = out / f"campaigns-{version}" / c.parent.name / c.name
         if rdir.exists():
             log(f"campaign {c.name}: {rdir} exists; skipped")
             continue
@@ -169,6 +169,8 @@ def main():
     ap.add_argument("short")
     ap.add_argument("--tiers", nargs="*", default=["orders", "stats", "campaigns"])
     ap.add_argument("--version", default="v1")
+    ap.add_argument("--reuse", nargs="*", default=[], help="tiers whose results are read from --reuse-version")
+    ap.add_argument("--reuse-version", default="v1")
     a = ap.parse_args()
     from difftest import pin
     os.environ.update(pin.env(a.short))                      # before difftest.remake is imported
@@ -184,8 +186,17 @@ def main():
         logf.write(m + "\n")
     fmap = findings_map()
     allrows = []
+    for tier in a.reuse:                                     # tiers measured by an earlier version of this recheck
+        rows = [json.loads(l) for l in (out / f"results-{tier}-{a.reuse_version}.jsonl").read_text().splitlines() if l.strip()]
+        for r in rows:
+            r["reused_from"] = f"results-{tier}-{a.reuse_version}.jsonl"
+        log(f"{tier}: {len(rows)} rows reused from {a.reuse_version}")
+        allrows += rows
     for tier in a.tiers:
-        rows = {"orders": tier_orders, "stats": tier_stats, "campaigns": tier_campaigns}[tier](out, log)
+        if tier == "campaigns":
+            rows = tier_campaigns(out, log, a.version)
+        else:
+            rows = {"orders": tier_orders, "stats": tier_stats}[tier](out, log)
         for r in rows:
             r["label"] = label(r["before"], r["after"])
             r["finding"] = fmap.get(r["test"]) or fmap.get(r["test"].split(":")[0])

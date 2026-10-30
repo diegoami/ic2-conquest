@@ -66,6 +66,16 @@ foreach (var raw in File.ReadLines(commands))
         var name = line["#checkpoint ".Length..].Trim();
         var native = Fresh(Path.Combine(outDir, name + ".native"));
         var saved = session.Submit("save " + native);
+        if (!File.Exists(native) && saved.Lines.Any(l => l.Contains("pending peace treaty offer")))
+        {
+            // v0.8.5+: a post-battle peace offer blocks saving. The original side's driver answers that box No
+            // (harness/driver.py end_turn(peace=False)), so the remake side does the same and records it.
+            var answer = session.Submit("peace-no");
+            Emit(new { kind = "command", step = step++, command = "peace-no", resolved = "peace-no", lines = answer.Lines,
+                note = "auto-answered pending peace offer before checkpoint (as the original driver does)",
+                turn = session.State.Calendar.TurnIndex, active = session.State.ActiveNationId });
+            saved = session.Submit("save " + native);
+        }
         if (!File.Exists(native)) throw new Exception("native save failed: " + string.Join("\n", saved.Lines));
         var sav = Fresh(Path.Combine(outDir, name + ".SAV"));
         object export;

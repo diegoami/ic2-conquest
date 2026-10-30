@@ -1,0 +1,363 @@
+orders tax-25: same -> same
+orders move-plain-1: same -> same
+orders fleet-10: differs-immediate -> differs-immediate
+orders tax-0: same -> same
+orders tax-40: same -> same
+orders move-forest: same -> same
+orders move-mountain: same -> same
+orders move-river: same -> same
+orders move-far: refusal-difference -> same
+orders move-sea: refusal-difference -> same
+orders move-own-city: same -> same
+orders move-twice: same -> same
+orders recruit-li-min: same -> same
+orders recruit-hi-min: same -> same
+orders recruit-ar-min: same -> same
+orders recruit-lc-min: same -> same
+orders recruit-hc-min: same -> same
+orders recruit-li-max: same -> same
+orders recruit-hi-max: same -> same
+orders recruit-ar-max: same -> same
+orders recruit-lc-max: same -> same
+orders recruit-hc-max: same -> same
+orders recruit-luceria: same -> same
+orders recruit-two: same -> same
+orders rel-war-carthage: differs-immediate -> differs-immediate
+orders rel-war-illyria: same -> same
+orders rel-peace-gaul: same -> same
+orders rel-trade-carthage: same -> same
+orders rel-trade-bithynia: same -> same
+orders rel-ally-carthage: same -> same
+orders rel-ally-illyria: same -> same
+orders rel-war-macedonia: same -> same
+orders fortify-pisae-10: same -> same
+orders fortify-rome-5: same -> same
+orders fortify-arretium-25: same -> same
+orders fortify-caere-50: same -> same
+orders buy-arretium-20: same -> same
+orders buy-heraclea-50: same -> same
+orders disband-army-0: same -> same
+orders split-army-1unit: same -> same
+orders split-army-2units: same -> same
+orders split-then-join: same -> same
+orders fleet-25: differs-immediate -> differs-immediate
+orders fleet-two: differs-immediate -> differs-immediate
+orders disband-slot-0: same -> same
+orders disband-slot-3: same -> same
+orders recruit-then-disband: same -> same
+orders hire-merc-25: same -> same
+orders tax-then-recruit: same -> same
+orders move-far-land: same -> same
+orders rel-war-numidia: same -> same
+orders rel-war-dacia: differs-immediate -> differs-immediate
+orders rel-war-thracia: same -> same
+orders rel-war-bithynia: differs-immediate -> differs-immediate
+orders embark: same -> same
+orders embark-sail: same -> same
+orders embark-turn-disembark: differs-after-end-turn -> differs-after-end-turn
+orders fleet-sail: differs-after-end-turn -> differs-after-end-turn
+orders repair-3: differs-after-end-turn -> differs-after-end-turn
+orders scuttle: same -> same
+orders split-fleet-10: differs-after-end-turn -> differs-after-end-turn
+orders join-fleets: same -> same
+orders transfer-ships-5: differs-after-end-turn -> differs-after-end-turn
+orders mobilize-port-0: same -> same
+orders mobilize-base-3: same -> same
+orders disband-unit: same -> same
+orders join-units-hi: same -> same
+orders split-transfer-unit: same -> same
+orders walk-city-on-line: differs-immediate -> same
+orders walk-city-on-line-near: differs-immediate -> same
+orders walk-line-clear: refusal-difference -> same
+orders walk-line-clear-land: same -> same
+orders walk-carthage-army3: differs-immediate -> same
+orders walk-gaul-army9: differs-immediate -> same
+orders join-20-ok: same -> same
+orders join-21-refused: same -> same
+orders join-100k-exact: same -> same
+orders join-100k-over: same -> same
+orders split-one-unit: same -> same
+orders transfer-into-20: same -> same
+orders recruit-slot-40: same -> same
+orders recruit-slot-41: same -> same
+orders recruit-mob-100: same -> same
+orders recruit-no-money: same -> same
+orders fortify-full: same -> same
+orders fortify-in-progress: same -> same
+orders join-fleets-101: differs-after-end-turn -> differs-after-end-turn
+orders join-fleets-100: same -> same
+orders split-fleet-19: same -> same
+orders merc-20-units: same -> same
+orders merc-low-supplies: same -> same
+orders fleet-second-walk-88-32: differs-immediate -> same
+orders fleet-second-walk-87-47: differs-immediate -> differs-after-end-turn
+orders split-at-197: same -> same
+orders split-at-198: same -> same
+orders embark-20-ships: same -> same
+orders embark-21-ships: same -> same
+orders embark-22-ships: same -> same
+orders join-purse-2000: same -> same
+orders join-purse-1600: same -> same
+naval30 remake seed 1: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 21, 'attacker_condition': None, 'defender_condition': 56}
+naval30 remake seed 2: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 15, 'attacker_condition': None, 'defender_condition': 62}
+naval30 remake seed 3: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 18, 'attacker_condition': None, 'defender_condition': 60}
+naval30 remake seed 4: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 18, 'attacker_condition': None, 'defender_condition': 60}
+naval30 remake seed 5: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 10, 'attacker_condition': None, 'defender_condition': 66}
+naval30 remake seed 6: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 7, 'attacker_condition': None, 'defender_condition': 68}
+naval30 remake seed 7: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 10, 'attacker_condition': None, 'defender_condition': 66}
+naval30 remake seed 8: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 18, 'attacker_condition': None, 'defender_condition': 59}
+naval30 remake seed 9: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 21, 'attacker_condition': None, 'defender_condition': 56}
+naval30 remake seed 10: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 10, 'attacker_condition': None, 'defender_condition': 66}
+naval30 remake seed 11: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 15, 'attacker_condition': None, 'defender_condition': 62}
+naval30 remake seed 12: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 10, 'attacker_condition': None, 'defender_condition': 66}
+naval30 remake seed 13: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 12, 'attacker_condition': None, 'defender_condition': 64}
+naval30 remake seed 14: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 11, 'attacker_condition': None, 'defender_condition': 65}
+naval30 remake seed 15: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 12, 'attacker_condition': None, 'defender_condition': 64}
+naval30 remake seed 16: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 12, 'attacker_condition': None, 'defender_condition': 64}
+naval30 remake seed 17: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 9, 'attacker_condition': None, 'defender_condition': 67}
+naval30 remake seed 18: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 15, 'attacker_condition': None, 'defender_condition': 62}
+naval30 remake seed 19: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 9, 'attacker_condition': None, 'defender_condition': 67}
+naval30 remake seed 20: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 18, 'attacker_condition': None, 'defender_condition': 60}
+naval30 remake seed 21: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 11, 'attacker_condition': None, 'defender_condition': 65}
+naval30 remake seed 22: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 9, 'attacker_condition': None, 'defender_condition': 67}
+naval30 remake seed 23: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 15, 'attacker_condition': None, 'defender_condition': 62}
+naval30 remake seed 24: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 10, 'attacker_condition': None, 'defender_condition': 66}
+naval30 remake seed 25: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 12, 'attacker_condition': None, 'defender_condition': 64}
+naval30 remake seed 26: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 10, 'attacker_condition': None, 'defender_condition': 66}
+naval30 remake seed 27: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 12, 'attacker_condition': None, 'defender_condition': 64}
+naval30 remake seed 28: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 9, 'attacker_condition': None, 'defender_condition': 67}
+naval30 remake seed 29: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 15, 'attacker_condition': None, 'defender_condition': 62}
+naval30 remake seed 30: {'attacker_survives': 0, 'defender_survives': 1, 'attacker_ships_lost': 70, 'defender_ships_lost': 15, 'attacker_condition': None, 'defender_condition': 62}
+storm30 remake seed 1: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 2: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 3: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 4: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 5: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 6: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 7: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 8: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 9: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 10: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 11: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 12: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 13: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 14: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 15: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 16: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 17: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 18: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 19: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 20: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 21: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 22: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 23: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 24: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 25: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 26: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 27: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30 remake seed 28: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 29: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30 remake seed 30: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+siege10 remake seed 1: {'captured': 0, 'army_troops_lost': 1863, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 2: {'captured': 0, 'army_troops_lost': 1854, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 3: {'captured': 0, 'army_troops_lost': 1881, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 4: {'captured': 0, 'army_troops_lost': 1908, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 5: {'captured': 0, 'army_troops_lost': 1845, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 6: {'captured': 0, 'army_troops_lost': 1872, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 7: {'captured': 0, 'army_troops_lost': 1908, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 8: {'captured': 0, 'army_troops_lost': 1863, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 9: {'captured': 0, 'army_troops_lost': 1890, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+siege10 remake seed 10: {'captured': 0, 'army_troops_lost': 1917, 'loyalty_change': -3, 'fort_change': -3, 'pop_change': -1}
+weather30 remake seed 1: {'rough_cells': 172, 'any_rough': 1}
+weather30 remake seed 2: {'rough_cells': 373, 'any_rough': 1}
+weather30 remake seed 3: {'rough_cells': 194, 'any_rough': 1}
+weather30 remake seed 4: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 5: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 6: {'rough_cells': 480, 'any_rough': 1}
+weather30 remake seed 7: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 8: {'rough_cells': 179, 'any_rough': 1}
+weather30 remake seed 9: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 10: {'rough_cells': 293, 'any_rough': 1}
+weather30 remake seed 11: {'rough_cells': 160, 'any_rough': 1}
+weather30 remake seed 12: {'rough_cells': 166, 'any_rough': 1}
+weather30 remake seed 13: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 14: {'rough_cells': 188, 'any_rough': 1}
+weather30 remake seed 15: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 16: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 17: {'rough_cells': 513, 'any_rough': 1}
+weather30 remake seed 18: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 19: {'rough_cells': 171, 'any_rough': 1}
+weather30 remake seed 20: {'rough_cells': 169, 'any_rough': 1}
+weather30 remake seed 21: {'rough_cells': 166, 'any_rough': 1}
+weather30 remake seed 22: {'rough_cells': 862, 'any_rough': 1}
+weather30 remake seed 23: {'rough_cells': 178, 'any_rough': 1}
+weather30 remake seed 24: {'rough_cells': 342, 'any_rough': 1}
+weather30 remake seed 25: {'rough_cells': 309, 'any_rough': 1}
+weather30 remake seed 26: {'rough_cells': 359, 'any_rough': 1}
+weather30 remake seed 27: {'rough_cells': 184, 'any_rough': 1}
+weather30 remake seed 28: {'rough_cells': 0, 'any_rough': 0}
+weather30 remake seed 29: {'rough_cells': 556, 'any_rough': 1}
+weather30 remake seed 30: {'rough_cells': 171, 'any_rough': 1}
+storm30b remake seed 1: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 2: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 3: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 4: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 5: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 6: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 7: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 8: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 9: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 10: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 11: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 12: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 13: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 14: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 15: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 16: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 17: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 18: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 19: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 20: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 21: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 22: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 23: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 24: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 25: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 26: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 27: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 3, 'at_target': 1}
+storm30b remake seed 28: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 29: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+storm30b remake seed 30: {'fleet_survives': 1, 'ships_lost': 0, 'condition_lost': 4, 'at_target': 1}
+weather60h remake seed 31: {'rough_cells': 185, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 32: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 33: {'rough_cells': 160, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 34: {'rough_cells': 170, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 35: {'rough_cells': 113, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 36: {'rough_cells': 119, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 37: {'rough_cells': 888, 'any_rough': 1, 'hits': 5}
+weather60h remake seed 38: {'rough_cells': 190, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 39: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 40: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 41: {'rough_cells': 325, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 42: {'rough_cells': 665, 'any_rough': 1, 'hits': 4}
+weather60h remake seed 43: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 44: {'rough_cells': 355, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 45: {'rough_cells': 176, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 46: {'rough_cells': 523, 'any_rough': 1, 'hits': 3}
+weather60h remake seed 47: {'rough_cells': 353, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 48: {'rough_cells': 361, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 49: {'rough_cells': 337, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 50: {'rough_cells': 361, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 51: {'rough_cells': 475, 'any_rough': 1, 'hits': 3}
+weather60h remake seed 52: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 53: {'rough_cells': 333, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 54: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 55: {'rough_cells': 713, 'any_rough': 1, 'hits': 4}
+weather60h remake seed 56: {'rough_cells': 188, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 57: {'rough_cells': 178, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 58: {'rough_cells': 292, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 59: {'rough_cells': 119, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 60: {'rough_cells': 182, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 61: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 62: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 63: {'rough_cells': 182, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 64: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 65: {'rough_cells': 180, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 66: {'rough_cells': 118, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 67: {'rough_cells': 186, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 68: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 69: {'rough_cells': 183, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 70: {'rough_cells': 172, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 71: {'rough_cells': 181, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 72: {'rough_cells': 521, 'any_rough': 1, 'hits': 3}
+weather60h remake seed 73: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 74: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 75: {'rough_cells': 110, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 76: {'rough_cells': 186, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 77: {'rough_cells': 150, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 78: {'rough_cells': 543, 'any_rough': 1, 'hits': 3}
+weather60h remake seed 79: {'rough_cells': 527, 'any_rough': 1, 'hits': 3}
+weather60h remake seed 80: {'rough_cells': 194, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 81: {'rough_cells': 461, 'any_rough': 1, 'hits': 3}
+weather60h remake seed 82: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 83: {'rough_cells': 0, 'any_rough': 0, 'hits': 0}
+weather60h remake seed 84: {'rough_cells': 177, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 85: {'rough_cells': 178, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 86: {'rough_cells': 119, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 87: {'rough_cells': 185, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 88: {'rough_cells': 184, 'any_rough': 1, 'hits': 1}
+weather60h remake seed 89: {'rough_cells': 371, 'any_rough': 1, 'hits': 2}
+weather60h remake seed 90: {'rough_cells': 162, 'any_rough': 1, 'hits': 1}
+# run-exp-recheck-1622407e-stats: original vs remake over many seeds
+
+Permutation test on the difference of means (10,000 permutations), Holm-corrected over 22 tests, alpha 0.05.
+
+| scenario | metric | n (o/r) | mean original | mean remake | p | p Holm | verdict |
+|---|---|---|---|---|---|---|---|
+| naval30 | attacker_ships_lost | 30/30 | 70.000 | 70.000 | 1.0000 | 1.0000 | **consistent** |
+| naval30 | attacker_survives | 30/30 | 0.000 | 0.000 | 1.0000 | 1.0000 | **consistent** |
+| naval30 | defender_condition | 30/30 | 63.767 | 63.500 | 0.7783 | 1.0000 | **consistent** |
+| naval30 | defender_ships_lost | 30/30 | 12.567 | 12.967 | 0.6988 | 1.0000 | **consistent** |
+| naval30 | defender_survives | 30/30 | 1.000 | 1.000 | 1.0000 | 1.0000 | **consistent** |
+| storm30 | at_target | 30/30 | 0.000 | 1.000 | 0.0001 | 0.0022 | **differs** |
+| storm30 | fleet_survives | 30/30 | 0.000 | 1.000 | 0.0001 | 0.0021 | **differs** |
+| storm30 | ships_lost | 30/30 | 30.000 | 0.000 | 0.0001 | 0.0020 | **differs** |
+| siege10 | army_troops_lost | 10/10 | 1869.300 | 1880.100 | 0.4657 | 1.0000 | **consistent** |
+| siege10 | captured | 10/10 | 0.000 | 0.000 | 1.0000 | 1.0000 | **consistent** |
+| siege10 | fort_change | 10/10 | -3.000 | -3.000 | 1.0000 | 1.0000 | **consistent** |
+| siege10 | loyalty_change | 10/10 | -3.000 | -3.000 | 1.0000 | 1.0000 | **consistent** |
+| siege10 | pop_change | 10/10 | -1.000 | -1.000 | 1.0000 | 1.0000 | **consistent** |
+| weather30 | any_rough | 30/30 | 0.767 | 0.700 | 0.7707 | 1.0000 | **consistent** |
+| weather30 | rough_cells | 30/30 | 334.700 | 206.167 | 0.0348 | 0.6611 | **consistent** |
+| storm30b | at_target | 30/30 | 0.867 | 1.000 | 0.1088 | 1.0000 | **consistent** |
+| storm30b | condition_lost | 26/30 | 3.346 | 3.600 | 0.0672 | 1.0000 | **consistent** |
+| storm30b | fleet_survives | 30/30 | 0.867 | 1.000 | 0.1077 | 1.0000 | **consistent** |
+| storm30b | ships_lost | 30/30 | 4.000 | 0.000 | 0.1093 | 1.0000 | **consistent** |
+| weather60h | any_rough | 60/60 | 0.833 | 0.767 | 0.4955 | 1.0000 | **consistent** |
+| weather60h | hits | 60/60 | 1.467 | 1.283 | 0.3964 | 1.0000 | **consistent** |
+| weather60h | rough_cells | 60/60 | 250.417 | 217.183 | 0.3225 | 1.0000 | **consistent** |
+stats ('naval30', 'attacker_ships_lost'): consistent -> consistent
+stats ('naval30', 'attacker_survives'): consistent -> consistent
+stats ('naval30', 'defender_condition'): consistent -> consistent
+stats ('naval30', 'defender_ships_lost'): consistent -> consistent
+stats ('naval30', 'defender_survives'): consistent -> consistent
+stats ('storm30', 'at_target'): differs -> differs
+stats ('storm30', 'fleet_survives'): differs -> differs
+stats ('storm30', 'ships_lost'): differs -> differs
+stats ('siege10', 'army_troops_lost'): consistent -> consistent
+stats ('siege10', 'captured'): consistent -> consistent
+stats ('siege10', 'fort_change'): consistent -> consistent
+stats ('siege10', 'loyalty_change'): consistent -> consistent
+stats ('siege10', 'pop_change'): consistent -> consistent
+stats ('weather30', 'any_rough'): consistent -> consistent
+stats ('weather30', 'rough_cells'): consistent -> consistent
+stats ('storm30b', 'at_target'): consistent -> consistent
+stats ('storm30b', 'condition_lost'): consistent -> consistent
+stats ('storm30b', 'fleet_survives'): consistent -> consistent
+stats ('storm30b', 'ships_lost'): consistent -> consistent
+stats ('weather60h', 'any_rough'): consistent -> consistent
+stats ('weather60h', 'hits'): consistent -> consistent
+stats ('weather60h', 'rough_cells'): consistent -> consistent
+campaign allhuman-rulebot1-32: first divergence turn 5 -> first divergence turn 16
+campaign armenia-rulebot1-5t: first divergence turn 1 -> first divergence turn 1
+campaign bithynia-rulebot1-5t: first divergence turn 1 -> first divergence turn 1
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/recheck.py", line 213, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/recheck.py", line 188, in main
+    rows = {"orders": tier_orders, "stats": tier_stats, "campaigns": tier_campaigns}[tier](out, log)
+  File "/home/diego/projects/ic2-conquest/difftest/recheck.py", line 146, in tier_campaigns
+    remake.run([act.validate(x) for x in orr + [{"op": "end_turn"}]], native, rdir / f"t{k:02d}", log=lambda *x: None,
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               template=start)
+               ^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/remake.py", line 109, in run
+    raise RuntimeError(f"remake adapter failed (exit {p.returncode}): {p.stderr[-2000:]}")
+RuntimeError: remake adapter failed (exit -6): Unhandled exception. System.Exception: native save failed: > save /home/diego/projects/ic2-conquest/artifacts/run-exp-recheck-1622407e/campaigns/run-exp-diff084-campaign/carthage-rulebot1-5t-r2/t03/a004.native
+Answer the pending peace treaty offer (peace-yes / peace-no) before saving.
+
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/difftest/remake_adapter/Program.cs:line 69
+
