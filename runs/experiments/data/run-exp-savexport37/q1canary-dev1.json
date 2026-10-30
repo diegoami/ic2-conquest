@@ -1,0 +1,71 @@
+{
+ "ram": "#187 snapshot (private)",
+ "holes": "+0x450..+0x46A, +0x46D, +0x491..+0x493",
+ "paths": {
+  "treaty_honourable": {
+   "hole_accesses": [],
+   "control_accesses": {
+    "unity": 2,
+    "human": 0
+   },
+   "stub_calls": {
+    "str_copy": 1,
+    "str_cat": 3,
+    "news_line": 1
+   },
+   "canary_bytes_unchanged": true,
+   "relation_after": -18
+  },
+  "treaty_sues": {
+   "hole_accesses": [],
+   "control_accesses": {
+    "unity": 2,
+    "human": 0
+   },
+   "stub_calls": {
+    "str_copy": 5,
+    "str_cat": 11,
+    "news_line": 4
+   },
+   "canary_bytes_unchanged": true,
+   "relation_after": -18
+  },
+  "battle": {
+   "hole_accesses": [],
+   "control_accesses": {
+    "unity": 7,
+    "human": 2
+   },
+   "stub_calls": {
+    "sound": 1,
+    "str_copy": 6,
+    "str_cat": 14,
+    "news_line": 5
+   },
+   "canary_bytes_unchanged": true,
+   "owners_after": [
+    1,
+    -1
+   ]
+  },
+  "siege_elimination": {
+   "hole_accesses": [],
+   "control_accesses": {
+    "unity": 4,
+    "human": 0
+   },
+   "stub_calls": {
+    "sound": 1,
+    "str_copy": 1,
+    "str_cat": 5,
+    "news_line": 1
+   },
+   "canary_bytes_unchanged": true,
+   "city_owner_after": 1,
+   "victim_unity_after": 604
+  },
+  "ai_round": {
+   "error": "UcError()"
+  }
+ }
+}
