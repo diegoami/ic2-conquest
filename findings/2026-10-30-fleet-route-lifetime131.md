@@ -169,7 +169,7 @@ needs distance > 1, moves > 0, the point's x ≥ 0 and the target's x ≥ 0.
 - Scripts: `runs/experiments/fleetroute131/phase.py` (inputs: the private fleet174 `inputs-v1/<case>/input.ram`; derived
   cases declared in the script) and `scan.py`.
 - Data: `runs/experiments/data/run-exp-fleetroute131/phase-v1.json` (35 cases), `phase-v2.json` (39 cases, adds the hunt
-  rows and the hunt and port outputs), `scan-v1.json`.
+  rows and the hunt and port outputs), `scan-v1-public.json` (redacted: the full scan, with per-save names and hash prefixes, includes owner-derived material and is kept privately in `artifacts/run-exp-fleetroute131/private/scan-v1.json`; its hash is in `PRIVATE.sha256`).
 - Disassembly: F608 0x44F608–0x44F6D6, E9A8 0x44E9A8–0x44EB17, E5DC 0x44E5DC–0x44E66D, F4F8 0x44F4F8–0x44F604, 4494E4,
   E1FC 0x44E1FC–0x44E41B, D9A8 / DBA8 0x44D9A8–0x44DBFC, tick 0x451716–0x451962. Atlas index:
   `runs/experiments/data/run-exp-sav-atlas107/asm-index-v2.csv` (FLEET.route_x / route_y).

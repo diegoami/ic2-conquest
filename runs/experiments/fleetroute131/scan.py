@@ -3,6 +3,11 @@
 excluded). Counts live fleets with x >= 0 (an active route), x = -1, other negatives, and the y left behind under x < 0.
 
     python3.12 runs/experiments/fleetroute131/scan.py --version v1
+    python3.12 runs/experiments/fleetroute131/scan.py --redact v1     # public copy of an existing private scan
+
+The full scan (per-save names, paths and hash prefixes) is written to artifacts/run-exp-fleetroute131/private/ only: the
+corpus includes owner-derived material, whose identifiers stay out of git. The tracked copy, scan-<v>-public.json, keeps the
+counts and, per example, only the fleet fields, with no hash and no path for anything under a private/ folder.
 """
 import argparse
 import hashlib
@@ -14,6 +19,24 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "runs/experiments/data/run-exp-fleetroute131"
+PRIVATE = ROOT / "artifacts/run-exp-fleetroute131/private"
+
+
+def redact(version):
+    full = json.loads((PRIVATE / f"scan-{version}.json").read_text())
+    ex = []
+    for x in full["active_examples"]:
+        y = {k: x[k] for k in ("fleet", "pos", "route", "owner", "countdown", "moves", "cargo")}
+        if "private" not in x["path"] and "owner" not in x["path"].lower():
+            y["save"] = x["save"]
+            y["path"] = x["path"]
+        else:
+            y["save"] = "private material (not published)"
+        ex.append(y)
+    pub = dict(counts=full["counts"], y_under_x_minus1_top=full["y_under_x_minus1_top"], corpus=full["corpus"],
+               active_examples=ex, redacted_from=f"artifacts/run-exp-fleetroute131/private/scan-{version}.json")
+    with open(DATA / f"scan-{version}-public.json", "x") as f:
+        json.dump(pub, f, indent=1)
 
 
 def fleets(b):
@@ -45,7 +68,10 @@ def find_saves(roots):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--version", default="v1")
+    ap.add_argument("--redact", metavar="VERSION")
     a = ap.parse_args()
+    if a.redact:
+        return redact(a.redact)
     roots = [ROOT / "saves", ROOT / "artifacts", Path.home() / "ic2-work-archive", Path.home() / "ic2-work"]
     seen = set()
     c = Counter()
@@ -84,9 +110,10 @@ def main():
                 else:
                     c["x_other_negative"] += 1
     res = dict(counts=c, y_under_x_minus1_top=ys.most_common(20), active_examples=active, corpus=len(seen))
-    DATA.mkdir(parents=True, exist_ok=True)
-    with open(DATA / f"scan-{a.version}.json", "x") as f:
+    PRIVATE.mkdir(parents=True, exist_ok=True)
+    with open(PRIVATE / f"scan-{a.version}.json", "x") as f:
         json.dump(res, f, indent=1)
+    redact(a.version)
     print(json.dumps({k: v for k, v in res.items() if k != "active_examples"}, indent=1))
     for x in active[:30]:
         print(x)
