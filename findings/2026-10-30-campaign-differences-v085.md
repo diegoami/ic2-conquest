@@ -22,7 +22,7 @@ turns of the all-human game.**
 |---|---|---|---|
 | Carthage fleet 0 | 13 of 16 | sails (49,62) → (74,71) / stays at (49,62) | **Not ported:** the original fleet phase F608/E1FC (port pick, D174 waypoint; `2026-10-30-fleet-move-contract131.md`). Remake #1405/#1409. |
 | Nation 3's fleet 1 | 13 of 16 | the swing next to a land target, 28 → 5 moves (189,93) / untouched, 28 moves (190,93) | **Not ported:** the same contract (no-progress swing, `2026-10-30-ai-fleet-moves-in-play1409.md`) |
-| Carthage army 3, from (93,79) | 13 of 16 (all but the Carthage, Celtiberia and Gaul campaigns) | (88,77), toward the west / (94,78), 1 cell, 8 moves unused | Below |
+| Carthage army 3, from (93,79) | 13 of 16 (all but the Carthage, Celtiberia and Gaul campaigns) | (88,77), toward the west / (94,78), 1 cell, 8 moves unused | Target choice: the remake's resupply branch (#1402); below |
 | City supplies ±1–2, AI recruitment, mobilisation and treasury, relations, map cells | all | small and varying | **Random draws.** The original's own values vary from campaign to campaign: city 1 holds 74–79 after the same round. These were not attributed further. |
 | Later turns and the Gaul campaign's army table | — | — | Follow-on divergence (different positions, deaths, and table order after deaths, #117) |
 
@@ -33,11 +33,12 @@ turns of the all-human game.**
   turn (capdef hook data).
 - **Remake** (its AI probe, `aiprobe-rome-t1.jsonl`): army-3 "move to the resupply city", aim (95,77), 2 away. It walks 1 cell
   to (94,78) and stops with 8 moves unused.
-- So two things differ:
-  1. The remake takes the **resupply branch** where the original does not. Resupply selection is tracked separately (remake
-     #1402, `2026-10-16-strategic-ai-regions-resupply.md`).
-  2. The remake's march **stops 1 short with moves left.** That is the missing march continuation of
-     `2026-10-30-ai-march-continuation-missing-in-remake.md`, still visible at v0.8.5.
+- So the difference is the **target choice**: the remake takes the resupply branch where the original does not. Resupply
+  selection is tracked separately (remake #1402, `2026-10-16-strategic-ai-regions-resupply.md`).
+
+  *Correction (2026-10-30, research intake, Research PR #136):* the first version also blamed the missing march continuation,
+  because the remake's walk stops 1 cell short with 8 moves left. That is wrong. The original's `FUN_0044dba8` continues only
+  while the distance is > 1, so at distance 1 it stops too. The continuation plays no part in this move.
 
 ## Not done (owner: stop at unimplemented work)
 
