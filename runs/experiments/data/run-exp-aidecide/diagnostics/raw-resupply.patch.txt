@@ -1,0 +1,12 @@
+diff --git a/src/IC2.Engine/Ai/AiArmyTargetTree.cs b/src/IC2.Engine/Ai/AiArmyTargetTree.cs
+index b2d1d543..fe5de016 100644
+--- a/src/IC2.Engine/Ai/AiArmyTargetTree.cs
++++ b/src/IC2.Engine/Ai/AiArmyTargetTree.cs
+@@ -449,6 +449,7 @@ public static class AiArmyTargetTree
+         ArgumentNullException.ThrowIfNull(army);
+ 
+         var original = ScoreResupplyCity(view, army, atWar);
++        if (Environment.GetEnvironmentVariable("IC2_PROBE_RAW_RESUPPLY") == "1") return original;
+         var terrainCells = view.World.Terrain.Decode(view.World.Width, view.World.Height);
+         if (original.City is { } picked && IsUsableDestination(view, army, picked.X, picked.Y, terrainCells))
+         {

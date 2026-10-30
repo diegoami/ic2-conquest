@@ -14,7 +14,7 @@ and the intermediate `dab3a2ea` (T246) for the bisection. Turn 1's End-turn stat
 | Army scorer EE60 → army 10 (34,63) | candidate 34 at distance 59, **returned 93** (tie hook) | — |
 | army > 100 (0x44F409) | 93 | no |
 | city > 100 (0x44F43F) | 91 | no |
-| **resupply** (0x44F47C): `FUN_0044a698(army)/500 >= supplies`, or no city target | 18600 / 500 = 37 against 90 supplies; osca exists | **no** |
+| **resupply** (0x44F47C): `FUN_0044a698(army)/500 >= supplies`, or no city target | 24600 / 500 = 49 against 246 supplies (values after the supply pass; see the correction below); osca exists | **no** |
 | `FUN_0044e84c` (0x44F485): nearest table entry within 20, walk via DBA8 (call 0x44E913) | **(111,69)**, 18 away; walks to (88,77), 0 moves left | **yes** |
 | army > 70 (0x44F4A3) → toward army 10 | 93 > 70: called toward (34,63) with 0 moves | yes (no movement) |
 
@@ -23,7 +23,7 @@ So the answer is:
 - **Destination:** (111,69) for the walk, then army 10 at (34,63).
 - **Final position:** (88,77).
 - **Deciding predicates:** the army score 93 is not over 100, and the resupply test is false because the city target exists
-  and 37 < 90.
+  and 49 < 246.
 - The resupply branch first appears at turn 2 (call site f47c, home city (93,78)).
 
 Sources:
@@ -80,6 +80,11 @@ navigation, `RegionOf` otherwise) gives:
 
 That is the original's branch, destination and position.
 
+*Correction (2026-10-30, from the decision hook of `2026-10-30-ai-decisions-vs-remake-main.md`):* the first version read
+army 3's troops and supplies from BASE.SAV (18,600 and 90). F31C calls the supply pass `FUN_0044e41c` for each army just
+before deciding it. At the decision the army holds 246 supplies and `FUN_0044a698` returns 24,600 (hook record, BASE turn 1).
+The branch is unchanged: 49 < 246.
+
 ## What this does not establish
 
 - **Later turns:** the stored route (34,63) that main's `AttackArmy` leaves, and anything after turn 1. A main recheck of
@@ -90,7 +95,7 @@ That is the original's branch, destination and position.
   chose the same point here. Its full contract was not compared.
 - **The original's city score 91** was not hooked. It is the remake's value under the same `Classify` rule, and it does not
   matter here, since every branch threshold it meets (> 100, existence) gives the same answer for any value from 0 to 100.
-- **`FUN_0044a698` = troops:** taken from the remake's documented gate (`troops / 500 < supplies`). With 37 against 90,
+- **`FUN_0044a698` = troops:** taken from the remake's documented gate (`troops / 500 < supplies`). With 49 against 246,
   the margin is wide.
 - **The remake's own `IsReachable` gate** outside faithful navigation (the improved preset) is not affected or judged.
 

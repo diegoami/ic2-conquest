@@ -1,0 +1,75 @@
+{
+ "start": "artifacts/run-exp-diff084-campaign/starts/S12_galatia_AUTO0720.SAV",
+ "seed": 12345,
+ "turns": 5,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261030-204410",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "a63774e05ef3729aca87e2ecba3ca90b6a1a122635e3465d9ce5df7243ea0012"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0722.SAV",
+    "sha256": "6e0c48b39940101cc023f5e2052b6fe9429300caa14f62e1aac600cd49682487"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0723.SAV",
+    "sha256": "f452465145bff9a7fa577dd96c94c6f418466cac2f39b38cae0b8c67439f4e37"
+   },
+   {
+    "turn": 4,
+    "file": "hooked-t04-AUTO0724.SAV",
+    "sha256": "0a612461c32853238b10c744f5d75f949c13842a8a37de2e1d364f89970b0a35"
+   },
+   {
+    "turn": 5,
+    "file": "hooked-t05-AUTO0725.SAV",
+    "sha256": "b339fd38dac5a0ef3ed0b2f68a0984206fef658a2b4698b6f478095adbc03709"
+   }
+  ],
+  "records": 69
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261030-204502",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "a63774e05ef3729aca87e2ecba3ca90b6a1a122635e3465d9ce5df7243ea0012"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0722.SAV",
+    "sha256": "6e0c48b39940101cc023f5e2052b6fe9429300caa14f62e1aac600cd49682487"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0723.SAV",
+    "sha256": "f452465145bff9a7fa577dd96c94c6f418466cac2f39b38cae0b8c67439f4e37"
+   },
+   {
+    "turn": 4,
+    "file": "plain-t04-AUTO0724.SAV",
+    "sha256": "0a612461c32853238b10c744f5d75f949c13842a8a37de2e1d364f89970b0a35"
+   },
+   {
+    "turn": 5,
+    "file": "plain-t05-AUTO0725.SAV",
+    "sha256": "b339fd38dac5a0ef3ed0b2f68a0984206fef658a2b4698b6f478095adbc03709"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true,
+  true,
+  true
+ ]
+}

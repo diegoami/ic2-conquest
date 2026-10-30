@@ -1,0 +1,13 @@
+diff --git a/src/IC2.Engine/Ai/AiMilitaryPhase.cs b/src/IC2.Engine/Ai/AiMilitaryPhase.cs
+index affca2b6..4abd6720 100644
+--- a/src/IC2.Engine/Ai/AiMilitaryPhase.cs
++++ b/src/IC2.Engine/Ai/AiMilitaryPhase.cs
+@@ -399,7 +399,7 @@ public static class AiMilitaryPhase
+                 switch (decision.After)
+                 {
+                     case AiArmyTargetTree.Continuation.DefendResupplyCity:
+-                        if (mayMarch && decision.Resupply?.City is { } defendCity)
++                        if (mayMarch && decision.TargetCity is { } defendCity)
+                         {
+                             AddMarchCandidate(view, army, defendCity.X, defendCity.Y, AiCandidate.ApproachKind,
+                                 "defend the resupply city", view.Ruleset.Ai.ReinforceCityBaseScore, progress, into);
