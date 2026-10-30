@@ -1,0 +1,24 @@
+{
+ "ram": "#187 snapshot (private)",
+ "holes": "+0x450..+0x46A, +0x46D, +0x491..+0x493",
+ "paths": {
+  "siege_elimination": {
+   "hole_accesses": [],
+   "control_accesses": {
+    "unity": 7,
+    "human": 1
+   },
+   "stub_calls": {
+    "sound": 2,
+    "str_copy": 4,
+    "str_cat": 8,
+    "news_line": 4,
+    "disable_nation_menu": 1,
+    "refresh_forms": 1
+   },
+   "canary_bytes_unchanged": true,
+   "city_owner_after": 1,
+   "victim_unity_after": 0
+  }
+ }
+}
