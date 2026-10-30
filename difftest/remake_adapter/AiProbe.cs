@@ -11,7 +11,7 @@ using IC2.Engine.Serialization;
 // AI march probe (follow-up of findings/2026-10-30-ai-march-continuation-missing-in-remake.md): how often does a remake
 // AI march end short of its aimed point with moves left?
 //
-//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>]
+//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>] [relations=<out3.json>] [ailog=<out4.txt>]
 //
 // decisions= (#138) also installs the remake's own target-tree log (AiArmyTargetTree.NewDecisionLog) and writes each
 // DecisionRecord (kind, city and army targets, their scores and distances) as one JSON line, after the last turn.
@@ -43,12 +43,16 @@ public static class AiProbe
         var save = imported.Save with { State = imported.Save.State with { RandomSeed = seed } };
         var session = new GameSession(resolved.World, rules, resolved.Scenario, save) { HumanBattles = HumanBattleMode.Instant };
         using var output = new StreamWriter(outPath);
+        var aiLogPath = args.FirstOrDefault(a => a.StartsWith("ailog="))?[6..];
+        if (aiLogPath != null && File.Exists(aiLogPath)) throw new IOException("Refusing existing output: " + aiLogPath);
+        using var aiLog = aiLogPath == null ? null : new StreamWriter(aiLogPath);
         int turn = 0;
         session.EventsPublished += events =>
         {
             var moved = events.OfType<ArmyMoved>().GroupBy(m => m.ArmyId).ToDictionary(g => g.Key, g => g.ToList());
             foreach (var e in events.OfType<AiTurnDecided>())
             {
+                foreach (var line in e.Lines) aiLog?.WriteLine(e.NationId + "\t" + line);
                 foreach (var line in e.Lines)
                 {
                     var m = March.Match(line);
@@ -85,6 +89,15 @@ public static class AiProbe
         {
             var r = session.Submit("end");
             if (r.ShouldExit) break;
+        }
+        var relationsPath = args.FirstOrDefault(a => a.StartsWith("relations="))?[10..];
+        if (relationsPath != null)
+        {
+            // The relation matrix after the last turn, {nation: {other: code}} (#aidecide: war ended or declared in the round).
+            var rel = session.State.Relations;
+            var m = rel.NationIds.ToDictionary(a => a, a => rel.NationIds.Where(b => b != a).ToDictionary(b => b, b => rel.Get(a, b)));
+            using var fr = new FileStream(relationsPath, FileMode.CreateNew);
+            JsonSerializer.Serialize(fr, m);
         }
         if (decisions != null)
         {
