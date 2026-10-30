@@ -1,0 +1,116 @@
+{
+ "ram": "#187 snapshot (private)",
+ "canary": 165,
+ "ctor": {
+  "index": 14,
+  "count_before": 14,
+  "count_after": 15,
+  "bytes_written": 96,
+  "written": [
+   "+0x000..+0x00f",
+   "+0x012..+0x015",
+   "+0x032..+0x035",
+   "+0x052..+0x055",
+   "+0x072..+0x075",
+   "+0x092..+0x095",
+   "+0x0b2..+0x0b5",
+   "+0x0d2..+0x0d5",
+   "+0x0f2..+0x0f5",
+   "+0x112..+0x115",
+   "+0x132..+0x135",
+   "+0x152..+0x155",
+   "+0x172..+0x175",
+   "+0x192..+0x195",
+   "+0x1b2..+0x1b5",
+   "+0x1d2..+0x1d5",
+   "+0x1f2..+0x1f5",
+   "+0x212..+0x215",
+   "+0x232..+0x235",
+   "+0x252..+0x255",
+   "+0x272..+0x275"
+  ],
+  "values": {
+   "x,y": [
+    95,
+    78
+   ],
+   "owner": 1,
+   "moves": 1,
+   "cell(+8)": 2,
+   "supplies(+0xA)": 0,
+   "money(+0xC)": 0,
+   "morale(+0xE)": 59
+  },
+  "map_marker": 201
+ },
+ "fleet_order": {
+  "index": 2,
+  "count_after": 3,
+  "bytes_written": 10,
+  "written": [
+   "+0x008..+0x00b",
+   "+0x012..+0x017"
+  ],
+  "values": {
+   "owner(+8)": 1,
+   "countdown(+0xA)": 24,
+   "ships(+0x12)": 12,
+   "build_city(+0x14)": 0,
+   "carrier(+0x16)": -1
+  },
+  "treasury_change": -120
+ },
+ "launch": {
+  "bytes_written": 13,
+  "written": [
+   "+0x000..+0x003",
+   "+0x00a..+0x00b",
+   "+0x00e..+0x011",
+   "+0x014",
+   "+0x018..+0x019"
+  ],
+  "residue_still_canary": [
+   "+0x004..+0x007",
+   "+0x00c..+0x00d"
+  ],
+  "values": {
+   "x,y": [
+    10,
+    89
+   ],
+   "countdown(+0xA)": -1,
+   "moves(+0xC)": -23131,
+   "supplies(+0xE)": 50,
+   "money(+0x10)": 0,
+   "condition(+0x14)": 100,
+   "carrier(+0x16)": -1,
+   "+0x18": 0
+  },
+  "map_marker": 301
+ },
+ "compaction": {
+  "count_before": 14,
+  "tombstones": [
+   1,
+   4
+  ],
+  "count_after": 12,
+  "new_index_holds_old_index": [
+   0,
+   12,
+   2,
+   3,
+   13,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "fleet0_carrier_before": 13,
+  "fleet0_carrier_after": 4,
+  "vacated_slots_beyond_count_unchanged": true
+ }
+}
