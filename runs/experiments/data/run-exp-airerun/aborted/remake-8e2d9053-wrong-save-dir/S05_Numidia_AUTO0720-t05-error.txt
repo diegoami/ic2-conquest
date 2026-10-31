@@ -1,0 +1,9 @@
+Unhandled exception. System.IO.FileNotFoundException: Could not find file '/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-aidecide/orig-v1/S05_Numidia_AUTO0720/hooked-t04-AUTO0724.SAV'.
+File name: '/home/diego/projects/ic2-conquest/runs/experiments/data/run-exp-aidecide/orig-v1/S05_Numidia_AUTO0720/hooked-t04-AUTO0724.SAV'
+   at Interop.ThrowExceptionForIoErrno(ErrorInfo errorInfo, String path, Boolean isDirError)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String path, OpenFlags flags, Int32 mode, Boolean failForSymlink, Boolean& wasSymlink, Func`4 createOpenException)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, UnixFileMode openPermissions, Int64& fileLength, UnixFileMode& filePermissions, Boolean failForSymlink, Boolean& wasSymlink, Func`4 createOpenException)
+   at System.IO.File.OpenHandle(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize)
+   at System.IO.File.ReadAllBytes(String path)
+   at AiProbe.Run(String[] args) in /home/diego/projects/ic2-conquest/difftest/remake_adapter/AiProbe.cs:line 38
+   at Program.<Main>$(String[] args) in /home/diego/projects/ic2-conquest/difftest/remake_adapter/Program.cs:line 21
