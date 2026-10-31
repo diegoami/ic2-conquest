@@ -1,0 +1,6347 @@
+{
+ "counts": {
+  "same": 131,
+  "route-written": 19
+ },
+ "rows": [
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 55,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       85,
+       78
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "diplomacy",
+     "diffs": [
+      "resupply-city"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 61,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     75,
+     52
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     88,
+     61
+    ],
+    "port": "corales"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 66,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     84,
+     72
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     90,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 55,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     82,
+     79
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 61,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     75,
+     52
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     88,
+     61
+    ],
+    "port": "corales"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 66,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     84,
+     72
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       88,
+       75
+      ]
+     },
+     {
+      "route": [
+       88,
+       75
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     88,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "diplomacy",
+     "diffs": [
+      "resupply-city"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     89
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       92,
+       78
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       86,
+       78
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     82,
+     79
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-target",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "city>100",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-target",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       83,
+       84
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     90,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "city>100",
+     "remake_kind": "AttackCity",
+     "remake_target_army": "army-1"
+    },
+    {
+     "army": 3,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       78,
+       85
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     90,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "city>100",
+     "remake_kind": "AttackCity",
+     "remake_target_army": "army-1"
+    },
+    {
+     "army": 3,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       78,
+       85
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     90,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "state-battle",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-score"
+     ],
+     "orig_branch": "city>100",
+     "remake_kind": "AttackCity",
+     "remake_target_army": "army-1"
+    },
+    {
+     "army": 3,
+     "verdict": "state-battle",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "city>100",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 55,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     82,
+     79
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 61,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     75,
+     55
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     88,
+     61
+    ],
+    "port": "corales"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 69,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     87,
+     73
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     92,
+     76
+    ],
+    "port": "utica"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       77
+      ],
+      "army_point": [
+       87,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     77
+    ],
+    "route": [
+     86,
+     77
+    ],
+    "pos": [
+     83,
+     78
+    ],
+    "moves": 23
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       77
+      ],
+      "army_point": [
+       88,
+       79
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     77
+    ],
+    "route": [
+     86,
+     77
+    ],
+    "pos": [
+     86,
+     77
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     77
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     77
+    ],
+    "pos": [
+     86,
+     77
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     77
+    ],
+    "moves": 23
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     89
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "none",
+    "dest": null,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "writes": [],
+    "branch": "idle",
+    "dest": null,
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       68,
+       79
+      ],
+      "army": 3,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "aboard",
+      "route": [
+       54,
+       46
+      ],
+      "army": 3,
+      "target": [
+       49,
+       41
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "route": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       54,
+       46
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     54,
+     46
+    ],
+    "port": "akra-leuke"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       92,
+       78
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       86,
+       78
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     82,
+     79
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-target",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "city>100",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-target",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       83,
+       84
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     90,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "city>100",
+     "remake_kind": "AttackCity",
+     "remake_target_army": "army-1"
+    },
+    {
+     "army": 3,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       85,
+       78
+      ],
+      "army_point": [
+       78,
+       85
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "route": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     90,
+     75
+    ],
+    "port": "hippo-dirhytu"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "city>100",
+     "remake_kind": "AttackCity",
+     "remake_target_army": "army-1"
+    },
+    {
+     "army": 3,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 55,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     82,
+     79
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 61,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     75,
+     55
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     88,
+     61
+    ],
+    "port": "corales"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       88,
+       74
+      ],
+      "army_point": [
+       92,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       88,
+       74
+      ],
+      "army_point": [
+       91,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     88,
+     74
+    ],
+    "route": [
+     88,
+     74
+    ],
+    "pos": [
+     87,
+     73
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     92,
+     76
+    ],
+    "port": "utica"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-target",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "city>100",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "city-score",
+      "army-target",
+      "army-score",
+      "branch"
+     ],
+     "orig_branch": "e84c+city>85",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       93,
+       79
+      ]
+     },
+     {
+      "kind": "rendezvous",
+      "route": [
+       86,
+       76
+      ],
+      "army_point": [
+       88,
+       77
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "route": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "carthago-novo"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 46,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       86,
+       76
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     86,
+     76
+    ],
+    "port": "saldae"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "same",
+     "diffs": [],
+     "orig_branch": "army>100",
+     "remake_kind": "AttackArmy",
+     "remake_target_army": "army-10"
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": null
+    }
+   ]
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "route-written",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 55,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [
+     {
+      "route": [
+       85,
+       78
+      ]
+     }
+    ],
+    "branch": "stored-route",
+    "dest": [
+     85,
+     78
+    ],
+    "port": "hippo-regius"
+   },
+   "army_rows": [
+    {
+     "army": 2,
+     "verdict": "diplomacy",
+     "diffs": [
+      "resupply-city"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MoveToResupplyCity",
+     "remake_target_army": null
+    },
+    {
+     "army": 3,
+     "verdict": "diplomacy",
+     "diffs": [
+      "city-target",
+      "branch"
+     ],
+     "orig_branch": "resupply",
+     "remake_kind": "MercenaryRun",
+     "remake_target_army": "army-1"
+    }
+   ]
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 61,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     75,
+     55
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     88,
+     61
+    ],
+    "port": "corales"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 69,
+    "route": [
+     -1,
+     76
+    ],
+    "pos": [
+     87,
+     73
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     92,
+     76
+    ],
+    "port": "utica"
+   },
+   "army_rows": null
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "cause": "same",
+   "orig": {
+    "writes": [],
+    "branch": "port",
+    "dest": 214,
+    "route": [
+     -1,
+     0
+    ],
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "writes": [],
+    "branch": "port",
+    "dest": [
+     190,
+     94
+    ],
+    "port": "alexandria"
+   },
+   "army_rows": null
+  }
+ ]
+}
