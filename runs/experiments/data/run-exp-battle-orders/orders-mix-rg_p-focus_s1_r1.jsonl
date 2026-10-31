@@ -1,0 +1,14 @@
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 0 at (2,2), wanted (2,2)", "slot": 0, "to": [2, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 1 at (3,2), wanted (3,2)", "slot": 1, "to": [3, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 2 at (4,2), wanted (4,2)", "slot": 2, "to": [4, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 3 at (5,2), wanted (5,2)", "slot": 3, "to": [5, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 4 at (6,2), wanted (6,2)", "slot": 4, "to": [6, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 5 at (7,2), wanted (7,2)", "slot": 5, "to": [7, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 6 at (8,2), wanted (8,2)", "slot": 6, "to": [8, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 7 at (9,2), wanted (9,2)", "slot": 7, "to": [9, 2], "rome_half_round": 0}
+{"order": "place", "attempts": 1, "ok": true, "why": "slot 8 at (10,2), wanted (10,2)", "slot": 8, "to": [10, 2], "rome_half_round": 0}
+{"order": "end_turn", "attempts": 1, "ok": true, "half_round_before": 2, "half_round_after": 3, "ended": false, "rome_half_round": 0}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: nearer (3, 2) -> (3, 6), moves used up", "slot": 1, "to": [3, 7], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: nearer (6, 2) -> (4, 6), moves used up", "slot": 4, "to": [3, 7], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: nearer (7, 2) -> (5, 6), moves used up", "slot": 5, "to": [3, 7], "rome_half_round": 1}
+{"order": "move", "attempts": 1, "ok": true, "why": "partial: nearer (2, 2) -> (3, 4), moves used up", "slot": 0, "to": [4, 8], "rome_half_round": 1}

@@ -1,0 +1,31 @@
+# Natural contact evidence, control run (seed 424242, Rome idle)
+# saves: AUTO0720.SAV, AUTO0721.SAV, AUTO0722.SAV, AUTO0723.SAV, AUTO0724.SAV, AUTO0725.SAV, AUTO0726.SAV, AUTO0727.SAV, AUTO0728.SAV, AUTO0729.SAV, AUTO0730.SAV, AUTO0731.SAV, AUTO0732.SAV
+AUTO0720.SAV->AUTO0721.SAV ARMY GONE Media id13 (305,57) moves 2 sup 377 money 600 troops 37700 morale 66
+AUTO0721.SAV->AUTO0722.SAV ARMY GONE Bithynia id11 (182,41) moves 0 sup 263 money 100 troops 32800 morale 64
+AUTO0721.SAV->AUTO0722.SAV ARMY GONE Galatia id12 (194,46) moves 0 sup 193 money 100 troops 19300 morale 66
+AUTO0721.SAV->AUTO0722.SAV Rome armies before: ['id0 (100,37) moves 9 sup 123 money 100 troops 23700 morale 70', 'id1 (120,53) moves 9 sup 132 money 100 troops 22000 morale 69']
+AUTO0721.SAV->AUTO0722.SAV Rome armies after:  ['id0 (100,37) moves 9 sup 65 money 196 troops 6596 morale 70', 'id1 (120,53) moves 9 sup 88 money 100 troops 22000 morale 70']
+AUTO0721.SAV->AUTO0722.SAV Gaul armies before: ['id9 (100,35) moves 0 sup 625 money 96 troops 74330 morale 64']
+AUTO0721.SAV->AUTO0722.SAV Gaul armies after:  []
+AUTO0721.SAV->AUTO0722.SAV turn_texts: ['BATTLE Gaul  v  Rome          Rome to place units.']
+AUTO0722.SAV->AUTO0723.SAV ARMY GONE Media id10 (307,58) moves 2 sup 377 money 600 troops 37700 morale 68
+AUTO0722.SAV->AUTO0723.SAV turn_texts: ['@ Carthage wants to trade with Rome.']
+AUTO0724.SAV->AUTO0725.SAV turn_texts: ['CONFIRM —', 'CONFIRM —']
+AUTO0725.SAV->AUTO0726.SAV CITY Dimale (131,50): owner 9->4 loyalty 76->40 fort 39->34 pop 10->9
+   armies on the tile after: none
+AUTO0725.SAV->AUTO0726.SAV turn_texts: ['CONFIRM —', 'CONFIRM —']
+AUTO0726.SAV->AUTO0727.SAV ARMY GONE Media id9 (307,58) moves 2 sup 377 money 878 troops 37700 morale 70
+AUTO0726.SAV->AUTO0727.SAV turn_texts: ['CONFIRM —', 'CONFIRM —', '@ Thracia wants to trade with Rome.']
+AUTO0727.SAV->AUTO0728.SAV CITY Castulo (36,61): owner 8->1 loyalty 67->50 fort 20->15 pop 18->13 supplies 115->151
+   armies on the tile after: none
+AUTO0727.SAV->AUTO0728.SAV ARMY NEW  Gaul id9 (67,34) moves 0 sup 23 money 0 troops 2300 morale 59
+AUTO0727.SAV->AUTO0728.SAV turn_texts: ['CONFIRM —', 'CONFIRM —', '@ Armenia wants to trade with Rome.']
+AUTO0728.SAV->AUTO0729.SAV CITY Iliturgi (33,63): owner 8->1 loyalty 85->40 fort 43->32 pop 18->13 supplies 128->164
+   armies on the tile after: none
+AUTO0728.SAV->AUTO0729.SAV ARMY NEW  Celtiberia id10 (43,43) moves 0 sup 43 money 0 troops 4300 morale 59
+AUTO0728.SAV->AUTO0729.SAV turn_texts: ['CONFIRM —', 'CONFIRM —', '@ Ptolemaic wants to trade with Rome.']
+AUTO0729.SAV->AUTO0730.SAV CITY Orangis (37,65): owner 8->1 loyalty 94->40 fort 66->58 pop 39->34
+   armies on the tile after: none
+AUTO0729.SAV->AUTO0730.SAV turn_texts: ['CONFIRM —', 'CONFIRM —', '@ Thracia wants to trade with Rome.']
+AUTO0730.SAV->AUTO0731.SAV turn_texts: ['CONFIRM —', 'CONFIRM —']
+AUTO0731.SAV->AUTO0732.SAV turn_texts: ['CONFIRM —', 'CONFIRM —', '@ Numidia wants to trade with Rome.']

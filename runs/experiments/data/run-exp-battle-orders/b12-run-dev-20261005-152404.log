@@ -1,0 +1,5 @@
+[   0.00] xvfb pid=None display=':710'
+[   6.58] process_started trial='mix-rg_p-focus_s1_r1' exe='Imperial Conquest 2 lab hook s1.exe' pid=1900497
+[  31.63] battle_open trial='mix-rg_p-focus_s1_r1' block='4c1670f681ce' seed_mem=1259699184 hook_records=17
+[  97.20] trial_error trial='mix-rg_p-focus_s1_r1' error="OrderFailed: move: the block does not show the order's effect: slot 2 stands at (6, 5), wanted (6, 7) (partial=True)"
+[  98.72] run_done ok=0 errors=1

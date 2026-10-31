@@ -1,0 +1,170 @@
+
+=== Claim 1: Carthage destroys Celtiberia. Carthage army 2 (42,63) -> (39,64); Celtiberia 10 (38,64) gone; troops 33900 -> 22806, supplies 339 -> 228, money 597 -> 697 (+100 loser's purse). ===
+  AUTO0720 Carthage (42,63): id=2 owner=Carthage (42,63) troops=33900 supplies=339 money=597 moves=0
+  AUTO0721 Carthage (39,64): id=2 owner=Carthage (39,64) troops=22806 supplies=228 money=697 moves=0
+  AUTO0720 army   (38,64): id=10 owner=Celtiberia (38,64) troops=33900 supplies=339 money=100 moves=0
+  AUTO0721 army   (38,64): <missing>
+  AUTO0721 news:
+    'Damascus (Seleucid) falls to Ptolemaic.'
+    'Week 1      Spring      270 BC'
+    'Seleucid destroys army of Ptolemaic.'
+    'Ptolemaic sues Seleucid for peace and;'
+    '    Ptolemaic ends all current trading agreements.'
+    '    Ptolemaic  ends all current alliances.'
+    '    Ptolemaic pays reparations of 2,242 talents.'
+    'A fleet belonging to Carthage is damaged in a storm.'
+    'Week  3      Spring      270BC'
+    'Carthage destroys army of Celtiberia.'
+
+=== Claim 2: Seleucid destroys Bithynia mid-walk. Seleucid army 5 (179,44) -> (185,44); Bithynia 11 (182,41) gone; troops 37300 -> 23386, supplies 299 -> 233, money 600 -> 738 (+138; loser's purse 100 + within-turn growth). ===
+  AUTO0721 Seleucid (179,44): id=5 owner=Seleucid (179,44) troops=37300 supplies=299 money=600 moves=0
+  AUTO0722 Seleucid (185,44): id=5 owner=Seleucid (185,44) troops=23386 supplies=233 money=738 moves=0
+  AUTO0721 army   (182,41): id=11 owner=Bithynia (182,41) troops=32800 supplies=263 money=100 moves=0
+  AUTO0722 army   (182,41): <missing>
+  AUTO0722 news (week-5 block):
+    'Week  5      Spring      270BC'
+    'Seleucid destroys army of Bithynia.'
+    'Bithynia sues Seleucid for peace and;'
+    '    Bithynia ends all current trading agreements.'
+    '    Bithynia  ends all current alliances.'
+    '    Bithynia pays reparations of 339 talents.'
+
+=== Note 2b: Galatia id12 (194,46) is also GONE 0721 -> 0722 (natural_evidence). Draft does not itemise; news for this span shows Seleucid destroys Bithynia and Seleucid destroys Galatia in week 7 (later). ===
+  AUTO0721 army (194,46): id=12 owner=Galatia (194,46) troops=19300 supplies=193 money=100 moves=0
+  AUTO0722 army (194,46): <missing>
+  AUTO0722 Galatia armies: [(9, 188, 44, 19300)]
+
+=== Claim 3: Gaul army 9 reaches Rome army 0's neighbourhood. Tactical battle; Rome 0: 23700 -> 6596, money 100 -> 196 (+96), supplies 123 -> 65, moves 9 -> 9 untouched. News: 'Rome destroys army of Gaul' (defender-resolution framing). ===
+  AUTO0721 Rome: [(0, 100, 37, 23700, 123, 100, 9), (1, 120, 53, 22000, 132, 100, 9)]
+  AUTO0722 Rome: [(0, 100, 37, 6596, 65, 196, 9), (1, 120, 53, 22000, 88, 100, 9)]
+  AUTO0721 Gaul: [(9, 100, 35, 74330, 625, 96)]
+  AUTO0722 Gaul: []
+  AUTO0722 turn_texts: []
+
+=== Claim 4: Dimale (131,50) captured. AUTO0725 -> AUTO0726. ===
+  AUTO0725: owner=9 loyalty=76 fort=39 pop=10 supplies=100
+  AUTO0726: owner=4 loyalty=40 fort=34 pop=9 supplies=100
+    news: 'Dimale   (Illyria)  falls to Macedonia.'
+
+=== Claim 4: Castulo (36,61) captured. AUTO0727 -> AUTO0728. ===
+  AUTO0727: owner=8 loyalty=67 fort=20 pop=18 supplies=115
+  AUTO0728: owner=1 loyalty=50 fort=15 pop=13 supplies=151
+    news: 'Carthage fails to capture Castulo   (Celtiberia).'
+    news: 'Castulo   (Celtiberia)  falls to Carthage.'
+
+=== Claim 4: Iliturgi (33,63) captured. AUTO0728 -> AUTO0729. ===
+  AUTO0728: owner=8 loyalty=85 fort=43 pop=18 supplies=128
+  AUTO0729: owner=1 loyalty=40 fort=32 pop=13 supplies=164
+    news: 'Iliturgi   (Celtiberia)  falls to Carthage.'
+
+=== Claim 4: Orangis (37,65) captured. AUTO0729 -> AUTO0730. ===
+  AUTO0729: owner=8 loyalty=94 fort=66 pop=39 supplies=390
+  AUTO0730: owner=1 loyalty=40 fort=58 pop=34 supplies=390
+    news: 'Orangis   (Celtiberia)  falls to Carthage.'
+
+=== Claim 5: Media capital (307,58) army churns by merge (FUN_004509f0), not contact. Identical 377-troop Media armies vanish successive turns with no news. ===
+  AUTO0720 Media (307,58): none; other Media armies: [(13, 305, 57, 37700)]
+  AUTO0721 Media (307,58): [(10, 37700, 377)]; other Media armies: none
+  AUTO0722 Media (307,58): [(10, 37700, 377)]; other Media armies: none
+  AUTO0723 Media (307,58): [(9, 37700, 377)]; other Media armies: none
+  AUTO0724 Media (307,58): [(9, 37700, 377)]; other Media armies: none
+  AUTO0725 Media (307,58): [(9, 37700, 377)]; other Media armies: none
+  AUTO0726 Media (307,58): [(9, 37700, 377)]; other Media armies: none
+  AUTO0727 Media (307,58): [(2, 37700, 377)]; other Media armies: none
+  AUTO0728 Media (307,58): [(2, 37700, 377)]; other Media armies: none
+  AUTO0729 Media (307,58): [(2, 37700, 377)]; other Media armies: none
+  AUTO0730 Media (307,58): [(2, 37700, 377)]; other Media armies: none
+  AUTO0731 Media (307,58): [(2, 37700, 377)]; other Media armies: none
+  AUTO0732 Media (307,58): [(2, 37700, 377)]; other Media armies: none
+
+=== Claim 6: staged through-click deviates off the row, stops at (91,32) with 186 moves left. ===
+  b3_AUTO0731 Rome: [(0, 103, 36, 7, 45700)]
+  b3t_AUTO0732 Rome: [(0, 91, 32, 7, 45700)]
+  b3t (68,33): id=8 owner=Gaul (68,33) troops=16500 supplies=157 money=0 moves=10
+
+=== Claim 7: staged onto-click on Gaul (68,33) from (91,32) is a silent no-op. ===
+  Before (Rome): [(0, 91, 32, 7, 200)]
+  After  (Rome): [(0, 91, 32, 7, 200)]
+  Before (Gaul): [(2, 123, 52, 9, 25923), (8, 68, 33, 10, 16500)]
+  After  (Gaul): [(2, 120, 54, 9, 25923), (8, 72, 30, 9, 31000)]
+  b3o news (12 lines):
+    '    Celtiberia pays reparations of 358 talents.'
+    'Week  11      Summer      270BC'
+    'Acroinon   (Galatia)  falls to Seleucid.'
+    '-----------------------------------------------------------'
+    'Seleucid conquers Galatia.'
+    '-----------------------------------------------------------'
+    'Tarrentum   (Rome)  falls to Gaul.'
+    'Week  1      Autumn      270BC'
+    'Week  3      Autumn      270BC'
+  b3o turn_texts: []
+
+=== Claim 8: chase follows a ghost (stale memory); real Gaul moved elsewhere. ===
+  b3a_AUTO0733:
+    Rome: [(0, 93, 28, 45700, 7)]
+    Gaul: [(2, 120, 54, 25923), (8, 72, 30, 31000)]
+      news: '    Celtiberia pays reparations of 358 talents.'
+      news: 'Week  11      Summer      270BC'
+      news: 'Acroinon   (Galatia)  falls to Seleucid.'
+      news: '-----------------------------------------------------------'
+      news: 'Seleucid conquers Galatia.'
+      news: '-----------------------------------------------------------'
+      news: 'Tarrentum   (Rome)  falls to Gaul.'
+      news: 'Week  1      Autumn      270BC'
+      news: 'Week  3      Autumn      270BC'
+  b3a_AUTO0734:
+    Rome: [(0, 93, 28, 45700, 7)]
+    Gaul: [(2, 118, 62, 25923), (8, 75, 29, 59600)]
+      news: 'Week  11      Summer      270BC'
+      news: 'Acroinon   (Galatia)  falls to Seleucid.'
+      news: '-----------------------------------------------------------'
+      news: 'Seleucid conquers Galatia.'
+      news: '-----------------------------------------------------------'
+      news: 'Tarrentum   (Rome)  falls to Gaul.'
+      news: 'Week  1      Autumn      270BC'
+      news: 'Week  3      Autumn      270BC'
+      news: 'Week  5      Autumn      270BC'
+  b3a_AUTO0735:
+    Rome: [(0, 93, 28, 45700, 7)]
+    Gaul: [(2, 118, 62, 24793), (8, 79, 26, 59600)]
+      news: 'Seleucid conquers Galatia.'
+      news: '-----------------------------------------------------------'
+      news: 'Tarrentum   (Rome)  falls to Gaul.'
+      news: 'Week  1      Autumn      270BC'
+      news: 'Week  3      Autumn      270BC'
+      news: 'Week  5      Autumn      270BC'
+      news: 'Locri   (Rome)  falls to Gaul.'
+      news: 'Week  7      Autumn      270BC'
+  b3a_AUTO0736:
+    Rome: [(0, 93, 28, 45700, 7)]
+    Gaul: [(2, 116, 63, 23267), (8, 85, 25, 59600)]
+      news: 'Week  1      Autumn      270BC'
+      news: 'Week  3      Autumn      270BC'
+      news: 'Week  5      Autumn      270BC'
+      news: 'Locri   (Rome)  falls to Gaul.'
+      news: 'Week  7      Autumn      270BC'
+      news: 'Gaul fails to capture Rhegium   (Rome).'
+      news: 'Week  9      Autumn      270BC'
+  b3a_AUTO0737:
+    Rome: [(0, 93, 28, 45700, 7)]
+    Gaul: [(2, 116, 63, 21825), (8, 93, 33, 59600)]
+      news: 'Week  3      Autumn      270BC'
+      news: 'Week  5      Autumn      270BC'
+      news: 'Locri   (Rome)  falls to Gaul.'
+      news: 'Week  7      Autumn      270BC'
+      news: 'Gaul fails to capture Rhegium   (Rome).'
+      news: 'Week  9      Autumn      270BC'
+      news: 'Gaul fails to capture Rhegium   (Rome).'
+      news: 'Week  11      Autumn      270BC'
+  b3a_AUTO0738:
+    Rome: [(0, 93, 28, 45700, 7)]
+    Gaul: [(2, 120, 54, 17414), (8, 93, 34, 58013)]
+      news: 'Week  7      Autumn      270BC'
+      news: 'Gaul fails to capture Rhegium   (Rome).'
+      news: 'Week  9      Autumn      270BC'
+      news: 'Gaul fails to capture Rhegium   (Rome).'
+      news: 'Week  11      Autumn      270BC'
+      news: 'Pisae   (Rome)  falls to Gaul.'
+      news: 'Seleucid finishes a new fleet at Issus.'
+      news: 'Week  1      Winter      270BC'
+      news: 'Illyria destroys army of Greece.'
