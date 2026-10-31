@@ -1,0 +1,3446 @@
+{
+ "counts": {
+  "same": 124,
+  "differs": 26
+ },
+ "rows": [
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 55,
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 61,
+    "pos": [
+     75,
+     52
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 66,
+    "pos": [
+     84,
+     72
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 55,
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 61,
+    "pos": [
+     75,
+     52
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 66,
+    "pos": [
+     84,
+     72
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     89
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 2
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 2
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 55,
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 61,
+    "pos": [
+     75,
+     55
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 69,
+    "pos": [
+     87,
+     73
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     77
+    ],
+    "pos": [
+     83,
+     78
+    ],
+    "moves": 23
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     77
+    ],
+    "pos": [
+     86,
+     77
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     77
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     77
+    ],
+    "moves": 23
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     89
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "none",
+    "hunt": null,
+    "dest": null,
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 0
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     86,
+     76
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     54,
+     46
+    ],
+    "pos": [
+     66,
+     57
+    ],
+    "moves": 20
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     85,
+     78
+    ],
+    "pos": [
+     85,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 2
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 55,
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 61,
+    "pos": [
+     75,
+     55
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     88,
+     74
+    ],
+    "pos": [
+     87,
+     73
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "stored-route",
+    "hunt": null,
+    "dest": [
+     86,
+     76
+    ],
+    "pos": [
+     49,
+     62
+    ],
+    "moves": 25
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 3
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     190,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "differs",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 46,
+    "pos": [
+     74,
+     71
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "stored-route",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 55,
+    "pos": [
+     68,
+     78
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 61,
+    "pos": [
+     75,
+     55
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 0
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "fleet": 0,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 69,
+    "pos": [
+     87,
+     73
+    ],
+    "moves": 26
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "fleet": 1,
+   "verdict": "same",
+   "orig": {
+    "branch": "port",
+    "hunt": -10000,
+    "dest": 214,
+    "pos": [
+     189,
+     93
+    ],
+    "moves": 28
+   },
+   "remake": {
+    "branch": "port",
+    "hunt": -10000,
+    "support": 1
+   }
+  }
+ ]
+}
