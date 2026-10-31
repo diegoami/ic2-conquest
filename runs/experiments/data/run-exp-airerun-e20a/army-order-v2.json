@@ -1,0 +1,8759 @@
+{
+ "summary": {
+  "e20a": {
+   "match": 679,
+   "differ": 1
+  }
+ },
+ "order_stats": {
+  "e20a": {
+   "seats_2plus_armies_acting": 156,
+   "out_of_id_order": 0
+  }
+ },
+ "changed": [],
+ "rows": [
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    102,
+    33
+   ],
+   "e20a": {
+    "action": "approach target city (102, 33) with army-9: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    102,
+    33
+   ],
+   "e20a": {
+    "action": "besiege ariminum with army-9 (target tree)",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (220, 59) with army-4: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (175, 52) with army-5: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-10: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    98,
+    39
+   ],
+   "e20a": {
+    "action": "approach target city (98, 39) with army-9: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (220, 59) with army-4: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (175, 52) with army-5: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-10: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    99,
+    42
+   ],
+   "e20a": {
+    "action": "approach target city (99, 42) with army-9: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (220, 59) with army-4: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (175, 52) with army-5: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S00_Rome_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-10: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 50 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "celtiberia",
+   "army": 0,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    53,
+    46
+   ],
+   "e20a": {
+    "action": "approach target city (53, 46) with army-0: 19 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "approach target city (187, 45) with army-5: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "celtiberia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (47, 62) with army-0: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "approach target city (187, 45) with army-5: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S01_Carthage_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    94,
+    27
+   ],
+   "e20a": {
+    "action": "approach target city (94, 27) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 14,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-14: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (172, 49) with army-11: 19 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 100 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 14,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-14: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (172, 49) with army-11: 11 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 6,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    221,
+    65
+   ],
+   "e20a": {
+    "action": "mercenary run (224, 100) with army-6: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 93 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-10: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (172, 49) with army-11: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 6,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    221,
+    65
+   ],
+   "e20a": {
+    "action": "mercenary run (224, 100) with army-6: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 90 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-10: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (172, 49) with army-11: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 4,
+   "nation": "galatia",
+   "army": 0,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "garrison fallback (195, 43) with army-0: 1 tiles away",
+    "match": false
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-10: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 6,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-6: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 84 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S02_Seleucid_AUTO0720",
+   "turn": 5,
+   "nation": "galatia",
+   "army": 0,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (173, 39) with army-0: 19 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-14: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    221,
+    71
+   ],
+   "e20a": {
+    "action": "approach target city (221, 71) with army-4: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 47) with army-11: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 22 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 42) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (185, 45) with army-5: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (269, 104) with army-4: 51 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-5: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S03_Ptolemaic_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "approach target city (187, 45) with army-4: 40 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    191,
+    48
+   ],
+   "e20a": {
+    "action": "approach target city (191, 48) with army-4: 32 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    116,
+    26
+   ],
+   "e20a": {
+    "action": "approach target city (116, 26) with army-1: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    191,
+    48
+   ],
+   "e20a": {
+    "action": "approach target city (191, 48) with army-4: 26 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    191,
+    48
+   ],
+   "e20a": {
+    "action": "approach target city (191, 48) with army-5: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S04_Macedonia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (189, 104) with army-7: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (198, 46) with army-5: 26 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (220, 59) with army-4: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (175, 52) with army-5: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S05_Numidia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 10,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 50 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (90, 22) with army-1: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-2: 80 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "mercenary run (67, 79) with army-3: 19 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-5: 42 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (90, 22) with army-1: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-2: 78 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "mercenary run (67, 79) with army-3: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-5: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S06_Gaul_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    94,
+    27
+   ],
+   "e20a": {
+    "action": "approach target city (94, 27) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 50 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (187, 45) with army-5: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (187, 45) with army-5: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S07_Greece_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-3: 54 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 50 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "approach target city (187, 45) with army-5: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    187,
+    45
+   ],
+   "e20a": {
+    "action": "approach target city (187, 45) with army-5: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    94,
+    27
+   ],
+   "e20a": {
+    "action": "approach target city (94, 27) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S08_Celtiberia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (189, 104) with army-7: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (198, 46) with army-5: 26 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 14 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (220, 59) with army-4: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (175, 52) with army-5: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S09_Illyria_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 0,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    116,
+    26
+   ],
+   "e20a": {
+    "action": "mercenary run (102, 24) with army-0: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    131,
+    50
+   ],
+   "e20a": {
+    "action": "mercenary run (121, 53) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 50 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 0,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    116,
+    26
+   ],
+   "e20a": {
+    "action": "approach target city (116, 26) with army-0: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    131,
+    50
+   ],
+   "e20a": {
+    "action": "mercenary run (121, 53) with army-1: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 46 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "besiege astacus with army-5 (target tree)",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 0,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    116,
+    26
+   ],
+   "e20a": {
+    "action": "approach target city (116, 26) with army-0: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    131,
+    50
+   ],
+   "e20a": {
+    "action": "mercenary run (121, 53) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 43 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "besiege astacus with army-5 (target tree)",
+    "match": true
+   }
+  },
+  {
+   "start": "S10_dacia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 9 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (190, 30) with army-4: 32 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    191,
+    48
+   ],
+   "e20a": {
+    "action": "approach target city (191, 48) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (190, 30) with army-4: 29 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    191,
+    48
+   ],
+   "e20a": {
+    "action": "besiege acroinon with army-5 (target tree)",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S11_bithynia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (101, 43) with army-1: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (200, 45) with army-5: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-14: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (221, 94) with army-7: 32 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    221,
+    71
+   ],
+   "e20a": {
+    "action": "approach target city (221, 71) with army-4: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-5: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (177, 44) with army-11: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 94 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 22 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 40) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (49, 41) with army-3: 38 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-5: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 37 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 91 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (200, 45) with army-4: 26 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (200, 45) with army-5: 22 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (36, 61) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "e20a": {
+    "action": "request carried-army landing (49, 41) with army-3: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S12_galatia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (289, 59) with army-7: 87 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    177,
+    41
+   ],
+   "e20a": {
+    "action": "approach target city (177, 41) with army-4: 50 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (90, 22) with army-1: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-2: 80 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "mercenary run (67, 79) with army-3: 19 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (220, 35) with army-5: 42 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (90, 22) with army-1: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-2: 78 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "mercenary run (67, 79) with army-3: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (220, 35) with army-5: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S13_armenia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 6 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (220, 35) with army-5: 42 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "e84c+city>85",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "march at the enemy-city target (220, 35) with army-5: 39 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "thracia",
+   "army": 6,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (170, 38) with army-6: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S14_media_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 7 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (178, 47) with army-11: 17 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (34, 63) with army-2: 13 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "e84c+army>70",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "mercenary run (111, 69) with army-3: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 9,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    121,
+    53
+   ],
+   "e20a": {
+    "action": "approach target city (121, 53) with army-9: 28 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 10,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    46,
+    65
+   ],
+   "e20a": {
+    "action": "approach target city (46, 65) with army-10: 12 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 10 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army via waypoint (227, 49) with army-4: 23 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (194, 46) with army-5: 16 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "media",
+   "army": 13,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-13: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 41 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "bithynia",
+   "army": 11,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (180, 46) with army-11: 8 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (38, 64) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 3 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 2,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 41) with army-5: 5 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "media",
+   "army": 9,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-9: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 36 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "bithynia",
+   "army": 0,
+   "orig_branch": "army>100",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "approach target army (182, 43) with army-11: 2 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 3,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 31 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 4 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 18 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 4,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-5: 42 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "macedonia",
+   "army": 8,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (143, 41) with army-8: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "media",
+   "army": 0,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (306, 57) with army-0: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "rome",
+   "army": 1,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "e20a": {
+    "action": "approach target city (119, 8) with army-1: 27 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 2,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (45, 68) with army-2: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "carthage",
+   "army": 3,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (93, 78) with army-3: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig_branch": "resupply",
+   "orig_city_xy": null,
+   "e20a": {
+    "action": "move to the resupply city (190, 94) with army-7: 1 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 4,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-4: 15 tiles away",
+    "match": true
+   }
+  },
+  {
+   "start": "S15_thracia_AUTO0720",
+   "turn": 5,
+   "nation": "seleucid",
+   "army": 5,
+   "orig_branch": "city>100",
+   "orig_city_xy": [
+    220,
+    35
+   ],
+   "e20a": {
+    "action": "approach target city (220, 35) with army-5: 39 tiles away",
+    "match": true
+   }
+  }
+ ]
+}
