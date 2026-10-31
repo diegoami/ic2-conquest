@@ -55,10 +55,30 @@ these categories.
   "mercenary hire: 0 offer(s)" line as "found no offer". That line (`AiMercenaryHirePass.cs:100`) counts offers hired,
   and the offer search plays no part in this row.
 
+## The #144 boundaries are in 8e2d9053 (correction, 2026-10-31)
+
+Earlier versions of this finding said the #144 corrections were not in this commit. **They are:** T250 made all three
+faithful-only (`AiArmyTargetTree.cs`):
+- the garrison fallback's capital radius is `< 10`, and its nearest city is taken in city-table order (strict `<`);
+- the mercenary run skips offers at `>= 20` and walks the pool in slot order (strict `<`).
+
+**Executed:** the #144 synthetic controls, rerun with `RemakeAdapter helperprobe` on `8e2d9053` (both layouts, 15
+controls each), against the original's emulated answers (`controls-v1.json`, `controls-v2.json`):
+
+| Remake | Controls matching the original |
+|---|---|
+| `10d3bb81` | 14 of 30 |
+| **`8e2d9053`** | **28 of 30** |
+
+- **Distance and tie controls:** all matched, in both layouts. That covers capital distance 9/10/11, offers at
+  19/20/21, the 19-vs-20 pairs, the EBE8 table-order ties and the four E84C slot-order ties.
+- **The two remaining:** the control "capital index −1", once per layout.
+  - The original has no capital guard: it reads "city record −1" (the bytes before the table) and walks to (153,48).
+  - The remake returns no destination.
+  - The #144 finding already lists this as an ambiguity of the original. It is not a boundary.
+
 ## Open
 
-- **#144 boundaries:** capital radius `< 10`, offer range `< 20` and ties in table order are not in `8e2d9053`. These 80
-  rounds do not exercise them.
 - **Carthage fleet 0 (#174):** unchanged, as T250–T252 did not touch the fleet phase. Three rows changed verdict (S02 r4
   now the same; S02 r5 and S15 r3 now differ) because earlier moves in those rounds changed. The cause is still the
   route and moves state at the fleet's turn (see the fleet finding's "Open").
@@ -75,5 +95,6 @@ these categories.
   `hooked-tNN-*.SAV` (S02 round 4 = `hooked-t03-AUTO0723.SAV`).
 - Galatia diagnostic: `runs/experiments/data/run-exp-airerun/diag-galatia-v1/` and `diag-galatia-v2/` (the scratch
   patch and the round's stderr, AI log, decisions and probe).
+- #144 controls on 8e2d9053: `runs/experiments/data/run-exp-boundary144/native-8e2d9053-v1.jsonl`, `-v2.jsonl`.
 - Code: the comparers are unchanged, except that `runs/experiments/aidecide/compare.py remake` now also passes `events=`,
   so one replay serves all four comparers.
