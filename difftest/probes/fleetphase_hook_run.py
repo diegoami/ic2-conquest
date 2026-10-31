@@ -8,7 +8,8 @@ Same runner as difftest/probes/decide_hook_run.py: a fresh hooked process per st
 seat gives no orders), the log read after each End turn into OUT_DIR/<start>-fleet.jsonl, the autosaves copied to
 OUT_DIR/<start>/, then the unpatched build plays the same turns and its autosaves must be byte-identical
 (OUT_DIR/<start>/inert.json). IC2_FLEET_HOOK=fleetroute_hook selects patches/fleetroute_hook.py (the same two
-probes plus the army phase's two route writers). Run one game-driving probe at a time: they share the game folder.
+probes plus the army phase's two route writers); IC2_HOOK_LOG names the log (<start>-<name>.jsonl, default "fleet"). Any
+module with MAGIC, DST, build and decode works (patches/econ2_hook.py). Run one game-driving probe at a time: they share the game folder.
 """
 import hashlib
 import importlib
@@ -69,7 +70,7 @@ def main():
         if (d / "inert.json").exists():
             continue
         d.mkdir(exist_ok=True)
-        log_path = out / f"{start.stem}-fleet.jsonl"
+        log_path = out / f"{start.stem}-{os.environ.get('IC2_HOOK_LOG', 'fleet')}.jsonl"
         if log_path.exists():
             log_path = out / f"{start.stem}-fleet-{time.strftime('%H%M%S')}.jsonl"
         h = play(FH.DST, start, turns, d, "hooked", log_path)
