@@ -1,0 +1,31 @@
+{
+ "start": "/home/diego/ic2-work/fixtures/BASE.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-005910",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "48857fdd89c22f1260682318dc42083c73967c8dd3a926064a1103734cec1a1e"
+   }
+  ],
+  "records": 51
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-005934",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "48857fdd89c22f1260682318dc42083c73967c8dd3a926064a1103734cec1a1e"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}

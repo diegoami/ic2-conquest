@@ -1,0 +1,75 @@
+{
+ "start": "artifacts/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV",
+ "seed": 12345,
+ "turns": 5,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-010026",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "48857fdd89c22f1260682318dc42083c73967c8dd3a926064a1103734cec1a1e"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0722.SAV",
+    "sha256": "135f7e1f0163c2172484444051611bbae63f5e4451135542d40add2af68c0da6"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0723.SAV",
+    "sha256": "8c9b5a6c7c1f16885393cf9aafb3ebf8099cf334b6fa3ff35a9ea3fccfe7566a"
+   },
+   {
+    "turn": 4,
+    "file": "hooked-t04-AUTO0724.SAV",
+    "sha256": "f81f57947072f2140642d3507a507bf9c8e132e7c67eb8a46b3e13d46babc1bd"
+   },
+   {
+    "turn": 5,
+    "file": "hooked-t05-AUTO0725.SAV",
+    "sha256": "3f5d56efc743ba1483f82eb3a179bbef1d5f5c11a4dcaa4f348bc645729486eb"
+   }
+  ],
+  "records": 188
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-010115",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "48857fdd89c22f1260682318dc42083c73967c8dd3a926064a1103734cec1a1e"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0722.SAV",
+    "sha256": "135f7e1f0163c2172484444051611bbae63f5e4451135542d40add2af68c0da6"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0723.SAV",
+    "sha256": "8c9b5a6c7c1f16885393cf9aafb3ebf8099cf334b6fa3ff35a9ea3fccfe7566a"
+   },
+   {
+    "turn": 4,
+    "file": "plain-t04-AUTO0724.SAV",
+    "sha256": "f81f57947072f2140642d3507a507bf9c8e132e7c67eb8a46b3e13d46babc1bd"
+   },
+   {
+    "turn": 5,
+    "file": "plain-t05-AUTO0725.SAV",
+    "sha256": "3f5d56efc743ba1483f82eb3a179bbef1d5f5c11a4dcaa4f348bc645729486eb"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true,
+  true,
+  true
+ ]
+}
