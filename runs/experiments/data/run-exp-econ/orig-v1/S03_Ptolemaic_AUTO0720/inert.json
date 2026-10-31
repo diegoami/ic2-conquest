@@ -1,0 +1,75 @@
+{
+ "start": "artifacts/run-exp-civ-sweep/S03_Ptolemaic_AUTO0720.SAV",
+ "seed": 12345,
+ "turns": 5,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-010558",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "e91fde7704503bca197da1de755cfeca688e9f7c2f5040d2ab677327c1ab8e1c"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0722.SAV",
+    "sha256": "02b52c24df46857b2586660e2c9fdabdb6139a96a92e3d4a75ac6aefc6cd4d80"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0723.SAV",
+    "sha256": "818438ff5cc587b5cff1402ea8c9876bd672e0d8851b87974534f74d10460f31"
+   },
+   {
+    "turn": 4,
+    "file": "hooked-t04-AUTO0724.SAV",
+    "sha256": "e379b9760a9f3e9bbcce7ee08e5da2dc121b19d1f431591bee05a0cebb9b1276"
+   },
+   {
+    "turn": 5,
+    "file": "hooked-t05-AUTO0725.SAV",
+    "sha256": "714a165473ea78eb9a1410241ea976da2048be48aa15249c5bcab543628ccd04"
+   }
+  ],
+  "records": 213
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-010700",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "e91fde7704503bca197da1de755cfeca688e9f7c2f5040d2ab677327c1ab8e1c"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0722.SAV",
+    "sha256": "02b52c24df46857b2586660e2c9fdabdb6139a96a92e3d4a75ac6aefc6cd4d80"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0723.SAV",
+    "sha256": "818438ff5cc587b5cff1402ea8c9876bd672e0d8851b87974534f74d10460f31"
+   },
+   {
+    "turn": 4,
+    "file": "plain-t04-AUTO0724.SAV",
+    "sha256": "e379b9760a9f3e9bbcce7ee08e5da2dc121b19d1f431591bee05a0cebb9b1276"
+   },
+   {
+    "turn": 5,
+    "file": "plain-t05-AUTO0725.SAV",
+    "sha256": "714a165473ea78eb9a1410241ea976da2048be48aa15249c5bcab543628ccd04"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true,
+  true,
+  true
+ ]
+}
