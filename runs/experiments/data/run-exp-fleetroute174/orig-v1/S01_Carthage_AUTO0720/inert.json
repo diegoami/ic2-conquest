@@ -1,0 +1,75 @@
+{
+ "start": "artifacts/run-exp-civ-sweep/S01_Carthage_AUTO0720.SAV",
+ "seed": 12345,
+ "turns": 5,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-165546",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "9b82080e1f2894a8e757cdd27d20b8292e2b8fe5ee7b963b2342b792346e1168"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0722.SAV",
+    "sha256": "433bdc2bc9215bf915bc004fd9f546a99d7b941b7f89471fd4445f3908432e93"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0723.SAV",
+    "sha256": "3b941f2a552487da124ac25ac459c0c9bb35e04c481d9fa369eb69ee5ec61d68"
+   },
+   {
+    "turn": 4,
+    "file": "hooked-t04-AUTO0724.SAV",
+    "sha256": "58357c0de00daa74885675e13e85583f4bb4488781f1878c892fb371ca433cf9"
+   },
+   {
+    "turn": 5,
+    "file": "hooked-t05-AUTO0725.SAV",
+    "sha256": "ad36f6de854dab0a28a897b61862bc9e941c6192a9eabc13f5b4963294ed69ce"
+   }
+  ],
+  "records": 10
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-165644",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "9b82080e1f2894a8e757cdd27d20b8292e2b8fe5ee7b963b2342b792346e1168"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0722.SAV",
+    "sha256": "433bdc2bc9215bf915bc004fd9f546a99d7b941b7f89471fd4445f3908432e93"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0723.SAV",
+    "sha256": "3b941f2a552487da124ac25ac459c0c9bb35e04c481d9fa369eb69ee5ec61d68"
+   },
+   {
+    "turn": 4,
+    "file": "plain-t04-AUTO0724.SAV",
+    "sha256": "58357c0de00daa74885675e13e85583f4bb4488781f1878c892fb371ca433cf9"
+   },
+   {
+    "turn": 5,
+    "file": "plain-t05-AUTO0725.SAV",
+    "sha256": "ad36f6de854dab0a28a897b61862bc9e941c6192a9eabc13f5b4963294ed69ce"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true,
+  true,
+  true
+ ]
+}
