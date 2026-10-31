@@ -20,3 +20,8 @@ Owner request 2026-10-31 ("yeah start it"): attribute the 27 fleet rows of `find
     action vs the original's branch). v1 used the coarse classifier, v2 the refined one; v3 also matches armies by
     position after deaths. v4 is v3 plus the seat-order counts, and is the one cited
     (`findings/2026-10-31-army-order-within-a-seat.md`).
+- `orig-v1/`: the original's hook logs (`<start>-fleet.jsonl`: kinds `fleet`, `hunt`, `rendezvous`, `aboard`) and the inert
+  checks (`<start>/inert.json`, 16/16 identical). The saves are in release `run-exp-fleetroute174`
+  (`fleetroute174-saves.tar.xz`), with hashes in `SAVES.sha256`. `run.log`, `remake*.log`: runner output.
+- `report-routes-v1.json`: `runs/experiments/fleetroute174/compare.py` on all 80 rounds (131 same, 19 route-written).
+  Finding: `findings/2026-10-31-fleet0-rows-attributed174.md`.
