@@ -57,7 +57,7 @@ def remake(orig, short, out):
                 continue
             p = subprocess.run([DOTNET, build, "aiprobe", clone, round_start(d, t), "1", out / f"{d.name}-t{t:02d}-probe.jsonl",
                                 "seed=12345", f"decisions={dec}", f"relations={rel}",
-                                f"ailog={out / f'{d.name}-t{t:02d}-ailog.txt'}"], capture_output=True, text=True,
+                                f"ailog={out / f'{d.name}-t{t:02d}-ailog.txt'}", f"events={out / f'{d.name}-t{t:02d}-events.jsonl'}"], capture_output=True, text=True,
                                env=dict(os.environ, DOTNET_ROOT=str(DOTNET.parent)))
             if p.returncode:
                 (out / f"{d.name}-t{t:02d}-error.txt").write_text(p.stdout + p.stderr)
