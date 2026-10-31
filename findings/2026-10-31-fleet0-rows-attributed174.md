@@ -6,6 +6,17 @@ side is measured with its own fleet events plus a code reading.
 `2026-10-31-ai-fleets-vs-remake-main.md`, rechecked in `2026-10-31-ai-rerun-remake-8e2d9053.md`.
 **Remake compared:** main `8e2d9053`, not released.
 
+> **Correction (2026-10-31, after research PR #162 and the e20a6488 recheck).** Two of the 6 "continuation" rows are
+> something else, so the tally is **8 no difference / 14 state / 4 continuation (all at 0 army moves) / 1 seat replay**.
+> - **S06 r5 is state.** Its route writer is `F31C` city > 100 with 9 moves, not the continuation: the route-moves hook
+>   names the caller (`2026-10-31-ferry-route-written-at-zero-moves159.md`), which this finding's hook could not.
+> - **S08 r2 is the seat replay.** The original plays Carthage's seat twice after army 2's battle with the human's army, and
+>   the first pass's fleet phase moves fleet 0 away, so the continuation (with 9 moves) gets a ferry route instead of
+>   embarking (`2026-10-31-ai-seat-replayed-after-human-battle.md`).
+> - The 4 remaining continuation rows (S06 r3/r4, S13 r4/r5) all have the army at **0 moves** at the write. So remake T254
+>   (the continuation with moves left) does not change them; the zero-move case does.
+> The text below is kept as first written.
+
 ## Method
 
 - **Original:** `patches/fleetroute_hook.py`, one observation-only build that logs, per seat:
