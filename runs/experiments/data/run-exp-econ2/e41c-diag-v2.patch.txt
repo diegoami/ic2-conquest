@@ -1,0 +1,33 @@
+diff --git a/src/IC2.Engine/Ai/AiMercenaryHirePass.cs b/src/IC2.Engine/Ai/AiMercenaryHirePass.cs
+index db0ced25..de12758d 100644
+--- a/src/IC2.Engine/Ai/AiMercenaryHirePass.cs
++++ b/src/IC2.Engine/Ai/AiMercenaryHirePass.cs
+@@ -1,3 +1,4 @@
++using System.Linq;
+ using System.Globalization;
+ using IC2.Engine.Diplomacy;
+ using IC2.Engine.Model;
+@@ -154,6 +155,11 @@ public static class AiMercenaryHirePass
+                 && moneyAtTurnStart.TryGetValue(armyId, out var captured)
+                     ? captured
+                     : army.Money;
++            if (Environment.GetEnvironmentVariable("IC2_DIAG_E41C") == "1")
++                Console.Error.WriteLine(string.Format(CultureInfo.InvariantCulture,
++                    "DIAG e41c {0} {1} at ({2},{3}) supplies {4} money {5} entryMoney {6} troops {7} units {8}",
++                    nationId, armyId, army.X, army.Y, army.SupplyTons, army.Money, entryMoney,
++                    army.Units.Sum(u => u.Troops), army.Units.Count));
+             var moneyGate = entryMoney > minMoney;
+             var atWar = RelationTransitions.IsAtWarWithAnyone(state, ruleset, nationId);
+ 
+@@ -182,6 +188,11 @@ public static class AiMercenaryHirePass
+                 state = ResupplyArmyAtCity(state, ruleset, nationId, armyId, city,
+                     ref armyTransfers, ref tons, ref talents);
+ 
++                if (Environment.GetEnvironmentVariable("IC2_DIAG_E41C") == "1" && PoolSlotsAt(state, city).Any())
++                    Console.Error.WriteLine(string.Format(CultureInfo.InvariantCulture,
++                        "DIAG hire-gate {0} {1} city {2} owner {3}: moneyGate {4} atWar {5} freeSlot {6} inRadius {7} warWithOwner {8} offers {9}",
++                        nationId, armyId, city.Id, city.Owner, moneyGate, atWar, freeSlot, InRadius(army, city, radius),
++                        IsAtWar(state, nationId, city.Owner, warCode), PoolSlotsAt(state, city).Count()));
+                 if (!moneyGate || !atWar || !freeSlot || !InRadius(army, city, radius)
+                     || IsAtWar(state, nationId, city.Owner, warCode))
+                 {
