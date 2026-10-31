@@ -9,9 +9,10 @@
 `FUN_0044fa20` (one AI seat) runs diplomacy `FB7C`, economy `FFBC`, the armies `F31C` and the fleets `F608`, in that order
 (0x44FA42–0x44FA51). The dispatcher `FUN_00451fdc` calls it in a loop.
 
-- **The interrupt flag `DAT_004a0b7c`:**
+- **The interrupt flag `DAT_004a0b7c`** (`F31C` tests it per army at 0x44F348):
   - Set to 1 by `FUN_00437de4`, which prepares the 20 battle slots and opens the battle through `FUN_00439968`.
-  - Cleared by `FUN_00436434` when that battle ends.
+  - Cleared by `TBattleMap_FinishBattle` (0x437B8C) when that battle ends. Research's intake also found clears at 0x448ACA
+    and 0x45C21F. Correction 2026-10-31: the first version named `FUN_00436434`, a header-lookup slip.
 - **`F31C`** handles each army only `if (DAT_004a0b7c == 0)` (decompile :52924). Once an army's attack has opened a battle,
   the seat's remaining armies are skipped: no supply pass and no decision.
 - **`FA20`** still calls `F608` after `F31C`, so **the fleet phase runs**. It advances the seat index only when the flag is
@@ -86,7 +87,8 @@ army on the fleet's tile), and fleet 0 is idle. This is the S08 r2 row of the fl
   - `FUN_0044fa20` 0x44FA20–0x44FA9D;
   - `FUN_00451fdc` 0x451FDC–0x452032;
   - `FUN_0044f31c` (decompile :52918–52924);
-  - `FUN_00437de4` (:38173) and `FUN_00436434` (:37927) in `all_app_functions.txt`.
+  - `FUN_00437de4` (:38173, the set at 0x43817F) and `TBattleMap_FinishBattle` (:37917–37927, the clear) in
+    `all_app_functions.txt`.
 - Data:
   - `runs/experiments/data/run-exp-econ/orig-v1/*-econ.jsonl` (two budget records per replayed seat);
   - `runs/experiments/data/run-exp-econ2/orig-v1/*-econ2.jsonl` (doubled supply passes);
