@@ -1,0 +1,75 @@
+{
+ "start": "artifacts/run-exp-diff084-campaign/starts/S13_armenia_AUTO0720.SAV",
+ "seed": 12345,
+ "turns": 5,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-203044",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0721.SAV",
+    "sha256": "001792465dee9f8a762d0da0a783a7b17fd282f2c09333abf533add0829dbec2"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0722.SAV",
+    "sha256": "6252f545fd2d671bc62651a03b3562ca7ab09a41448aa795061003202be997af"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0723.SAV",
+    "sha256": "3065b886e31f305d4f65cd1fef0108985cd1206a75888be13f5d5a205155f568"
+   },
+   {
+    "turn": 4,
+    "file": "hooked-t04-AUTO0724.SAV",
+    "sha256": "7ab88751ef78b43b9736188bbce2bba9c876e943c9289c915600cb7219870377"
+   },
+   {
+    "turn": 5,
+    "file": "hooked-t05-AUTO0725.SAV",
+    "sha256": "2ab3f0d7bbc299bee187a585a37fc18fbb8b86efd3ebb5b6bb187a74c79c1c4c"
+   }
+  ],
+  "records": 112
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261031-203133",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0721.SAV",
+    "sha256": "001792465dee9f8a762d0da0a783a7b17fd282f2c09333abf533add0829dbec2"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0722.SAV",
+    "sha256": "6252f545fd2d671bc62651a03b3562ca7ab09a41448aa795061003202be997af"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0723.SAV",
+    "sha256": "3065b886e31f305d4f65cd1fef0108985cd1206a75888be13f5d5a205155f568"
+   },
+   {
+    "turn": 4,
+    "file": "plain-t04-AUTO0724.SAV",
+    "sha256": "7ab88751ef78b43b9736188bbce2bba9c876e943c9289c915600cb7219870377"
+   },
+   {
+    "turn": 5,
+    "file": "plain-t05-AUTO0725.SAV",
+    "sha256": "2ab3f0d7bbc299bee187a585a37fc18fbb8b86efd3ebb5b6bb187a74c79c1c4c"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true,
+  true,
+  true
+ ]
+}
