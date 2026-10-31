@@ -111,11 +111,29 @@ def main():
             counts[(label, ok)] += 1
         rows.append(row)
     labels = list(runs)
+    # seats where two or more armies acted, and how many ran them out of table order (the remake's first action per army)
+    order_stats = {}
+    for label, d in runs.items():
+        seats = out_of_order = 0
+        for f in sorted(Path(d).glob("*-ailog.txt")):
+            firsts = {}
+            for line in f.read_text().splitlines():
+                nation, _, text = line.partition("\t")
+                m = CHOSE.search(text)
+                armies = re.findall(r"with (army-\d+)", m[2]) if m else []
+                if armies and armies[-1] not in firsts.setdefault(nation, []):
+                    firsts[nation].append(armies[-1])
+            for ids in firsts.values():
+                if len(ids) > 1:
+                    seats += 1
+                    order = [int(a.split("-")[1]) for a in ids]
+                    out_of_order += order != sorted(order)
+        order_stats[label] = {"seats_2plus_armies_acting": seats, "out_of_id_order": out_of_order}
     changed = [x for x in rows if len({x[l]["match"] for l in labels}) > 1]
     summary = {l: {"match": counts[(l, True)], "differ": counts[(l, False)]} for l in labels}
     with open(out, "x") as fh:
-        json.dump({"summary": summary, "changed": changed, "rows": rows}, fh, indent=1)
-    print(summary)
+        json.dump({"summary": summary, "order_stats": order_stats, "changed": changed, "rows": rows}, fh, indent=1)
+    print(summary, order_stats)
     for x in changed:
         print(x["start"][:3], x["turn"], x["nation"], x["army"], x["orig_branch"], x["orig_city_xy"],
               *[f"| {l}: {'OK' if x[l]['match'] else 'x'} {x[l]['action']}" for l in labels])

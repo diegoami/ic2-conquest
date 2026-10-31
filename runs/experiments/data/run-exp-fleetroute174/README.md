@@ -18,4 +18,5 @@ Owner request 2026-10-31 ("yeah start it"): attribute the 27 fleet rows of `find
     `report-fleet-order-diag-v1.json`, `report-diplo-order-diag-v1.json`.
   - `army-order-v1.json`, `-v2.json`, `-v3.json`: `runs/experiments/fleetroute174/army_order.py` (each army's first
     action vs the original's branch). v1 used the coarse classifier, v2 the refined one; v3 also matches armies by
-    position after deaths, and is the one cited.
+    position after deaths. v4 is v3 plus the seat-order counts, and is the one cited
+    (`findings/2026-10-31-army-order-within-a-seat.md`).
