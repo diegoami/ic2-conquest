@@ -1,0 +1,28 @@
+diff --git a/src/IC2.Engine/Ai/AiTurn.cs b/src/IC2.Engine/Ai/AiTurn.cs
+index 2b1334f8..f40b3d17 100644
+--- a/src/IC2.Engine/Ai/AiTurn.cs
++++ b/src/IC2.Engine/Ai/AiTurn.cs
+@@ -214,6 +214,23 @@ public static class AiTurn
+             var boxedIn = new List<string>();
+             AiMilitaryPhase.Propose(
+                 view, personality, rng, marched, candidates, action == 0 ? siegeGates : null, boxedIn);
++            // DIAGNOSTIC (ic2-conquest #174 attribution, never pushed): the original's F31C runs one army at a time in
++            // table order; offer only the first own army (in state.Armies order) that still has a military candidate.
++            if (ClassicalArmyNavigation.Applies(view) && Environment.GetEnvironmentVariable("IC2_DIAG_ARMY_ORDER") == "1")
++            {
++                string? firstArmy = null;
++                foreach (var a in state.Armies)
++                {
++                    if (a.Nation == nationId && candidates.Exists(c => c.Phase == AiPhase.Military && c.SubjectId == a.Id && c.Score >= ruleset.Ai.MinimumActionScore))
++                    {
++                        firstArmy = a.Id;
++                        break;
++                    }
++                }
++                if (firstArmy != null)
++                    candidates.RemoveAll(c => c.Phase == AiPhase.Military && c.SubjectId is { } sid
++                        && state.ArmyById(sid) is not null && sid != firstArmy);
++            }
+             foreach (var boxedArmyId in boxedIn)
+             {
+                 if (boxedInLogged.Add(boxedArmyId))

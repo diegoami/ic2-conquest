@@ -7,10 +7,13 @@ target), per AI round.
 Same runner as difftest/probes/decide_hook_run.py: a fresh hooked process per start (seed 12345, TURNS End turns, the human
 seat gives no orders), the log read after each End turn into OUT_DIR/<start>-fleet.jsonl, the autosaves copied to
 OUT_DIR/<start>/, then the unpatched build plays the same turns and its autosaves must be byte-identical
-(OUT_DIR/<start>/inert.json). Run one game-driving probe at a time: they share the game folder.
+(OUT_DIR/<start>/inert.json). IC2_FLEET_HOOK=fleetroute_hook selects patches/fleetroute_hook.py (the same two
+probes plus the army phase's two route writers). Run one game-driving probe at a time: they share the game folder.
 """
 import hashlib
+import importlib
 import json
+import os
 import shutil
 import struct
 import sys
@@ -19,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "patches"))
-import fleetphase_hook as FH  # noqa: E402
+FH = importlib.import_module(os.environ.get("IC2_FLEET_HOOK", "fleetphase_hook"))  # fleetroute_hook: + route writers
 import walk_hook as WH  # noqa: E402
 from harness.driver import EXE, G, Game  # noqa: E402
 

@@ -11,7 +11,7 @@ using IC2.Engine.Serialization;
 // AI march probe (follow-up of findings/2026-10-30-ai-march-continuation-missing-in-remake.md): how often does a remake
 // AI march end short of its aimed point with moves left?
 //
-//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>] [relations=<out3.json>] [ailog=<out4.txt>] [events=<out5.jsonl>]
+//   RemakeAdapter aiprobe <remake-root> <start.SAV> <turns> <out.jsonl> seed=<N> [decisions=<out2.jsonl>] [relations=<out3.json>] [ailog=<out4.txt>] [events=<out5.jsonl>] [fleetlog=<out6.jsonl>]
 //
 // decisions= (#138) also installs the remake's own target-tree log (AiArmyTargetTree.NewDecisionLog) and writes each
 // DecisionRecord (kind, city and army targets, their scores and distances) as one JSON line, after the last turn.
@@ -51,9 +51,27 @@ public static class AiProbe
         var eventsPath = args.FirstOrDefault(a => a.StartsWith("events="))?[7..];
         if (eventsPath != null && File.Exists(eventsPath)) throw new IOException("Refusing existing output: " + eventsPath);
         using var eventLog = eventsPath == null ? null : new StreamWriter(eventsPath);
+        // fleetlog= (#174 fleet-0 attribution): in publication order, each seat's AiTurnDecided marker and every fleet,
+        // ferry, embark or landing event: OriginalFleetRouteRequested (the army phase's route writer), OriginalFleetDecision
+        // (F608's branch), fleet moves.
+        var fleetLogPath = args.FirstOrDefault(a => a.StartsWith("fleetlog="))?[9..];
+        if (fleetLogPath != null && File.Exists(fleetLogPath)) throw new IOException("Refusing existing output: " + fleetLogPath);
+        using var fleetLog = fleetLogPath == null ? null : new StreamWriter(fleetLogPath);
         int turn = 0;
         session.EventsPublished += events =>
         {
+            if (fleetLog != null)
+            {
+                foreach (var ev in events)
+                {
+                    var name = ev.GetType().Name;
+                    if (ev is AiTurnDecided seat) fleetLog.WriteLine(JsonSerializer.Serialize(new { seat = seat.NationId }));
+                    else if (name.Contains("Fleet") || name.Contains("Embark") || name.Contains("Ferry") || name.Contains("Land")
+                             || name.Contains("Aboard"))
+                        fleetLog.WriteLine(JsonSerializer.Serialize(new { type = name, data = (object)ev }));
+                }
+                fleetLog.Flush();
+            }
             if (eventLog != null)
             {
                 foreach (var ev in events)

@@ -1,0 +1,119 @@
+ptolemaic	skipped: seat 'ptolemaic' is not AI-controlled
+galatia	seat galatia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+galatia	faithful economy: threat 50622, own 20384
+galatia	capital defence: army-10 toward (180, 47), threat army-5
+galatia	resupply: 1 army transfers, 0 fleet transfers, 38 tons, 0 talents
+galatia	mercenary hire: 0 offer(s) hired across 0 army/armies
+galatia	no candidate scored at least 1; turn ends
+seleucid	seat seleucid: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+seleucid	faithful economy: threat 85277, own 28210
+seleucid	faithful order 1: light_cavalry 7000 troops at isaura
+seleucid	resupply: 1 army transfers, 0 fleet transfers, 62 tons, 0 talents
+seleucid	mercenary hire: 0 offer(s) hired across 0 army/armies
+seleucid	chose [Military/approach] score 1782 of 1 candidates -- approach target army via waypoint (227, 49) with army-4: 22 tiles away
+seleucid	  issued movement.move-army
+seleucid	chose [Military/approach] score 1782 of 1 candidates -- approach target army (182, 42) with army-5: 5 tiles away
+seleucid	  issued movement.move-army
+seleucid	chose [Military/attack-army] score 3000 of 1 candidates -- attack army-11 (bithynia) with army-5 (target tree)
+seleucid	  issued battle.attack-army
+seleucid	no candidate scored at least 1; turn ends
+thracia	seat thracia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+thracia	faithful economy: threat 0, own 12298
+thracia	resupply: 1 army transfers, 0 fleet transfers, 44 tons, 0 talents
+thracia	mercenary hire: 0 offer(s) hired across 0 army/armies
+thracia	chose [Military/approach] score 1242 of 1 candidates -- move to the resupply city (170, 38) with army-6: 1 tiles away
+thracia	  issued movement.move-army
+thracia	no candidate scored at least 1; turn ends
+greece	seat greece: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+greece	faithful economy: threat 0, own 0
+greece	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+greece	mercenary hire: 0 offer(s) hired across 0 army/armies
+greece	no candidate scored at least 1; turn ends
+dacia	seat dacia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+dacia	faithful economy: threat 0, own 9149
+dacia	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+dacia	mercenary hire: 0 offer(s) hired across 0 army/armies
+dacia	chose [Diplomacy/ai-form-trade] score 520 of 1 candidates -- trade with macedonia: at peace, both sides under 3 partners
+dacia	  issued diplomacy.ai-form-trade
+dacia	no candidate scored at least 1; turn ends
+macedonia	seat macedonia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+macedonia	faithful economy: threat 0, own 17150
+macedonia	resupply: 1 army transfers, 0 fleet transfers, 59 tons, 0 talents
+macedonia	mercenary hire: 0 offer(s) hired across 0 army/armies
+macedonia	chose [Military/approach] score 1256 of 1 candidates -- move to the resupply city (143, 41) with army-8: 1 tiles away
+macedonia	  issued movement.move-army
+macedonia	  issued movement.move-army
+macedonia	garrison fallback moved army-8 to (143, 41)
+macedonia	no candidate scored at least 1; turn ends
+media	seat media: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+media	faithful economy: threat 0, own 19668
+media	resupply: 1 army transfers, 0 fleet transfers, 75 tons, 0 talents
+media	mercenary hire: 0 offer(s) hired across 0 army/armies
+media	chose [Military/approach] score 1249 of 2 candidates -- move to the resupply city (306, 57) with army-9: 1 tiles away
+media	  issued movement.move-army
+media	  issued movement.move-army
+media	garrison fallback moved army-9 to (306, 57)
+media	chose [Diplomacy/ai-swap-trade-partner] score 480 of 1 candidates -- swap trade partner numidia for richer gaul
+media	  issued diplomacy.ai-swap-trade-partner
+media	chose [Diplomacy/ai-swap-trade-partner] score 480 of 1 candidates -- swap trade partner gaul for richer bithynia
+media	  issued diplomacy.ai-swap-trade-partner
+media	chose [Diplomacy/ai-swap-trade-partner] score 480 of 1 candidates -- swap trade partner illyria for richer thracia
+media	  issued diplomacy.ai-swap-trade-partner
+media	no candidate scored at least 1; turn ends
+armenia	seat armenia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+armenia	faithful economy: threat 0, own 12834
+armenia	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+armenia	mercenary hire: 0 offer(s) hired across 0 army/armies
+armenia	chose [Diplomacy/ai-swap-trade-partner] score 480 of 1 candidates -- swap trade partner illyria for richer numidia
+armenia	  issued diplomacy.ai-swap-trade-partner
+armenia	no candidate scored at least 1; turn ends
+rome	seat rome: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+rome	faithful economy: threat 0, own 29750
+rome	faithful merge: army army-0 into army-1
+rome	resupply: 1 army transfers, 0 fleet transfers, 81 tons, 0 talents
+rome	mercenary hire: 0 offer(s) hired across 0 army/armies
+rome	chose [Military/approach] score 1288 of 2 candidates -- move to the resupply city (101, 43) with army-1: 9 tiles away
+rome	  issued movement.move-army
+rome	chose [Diplomacy/ai-swap-trade-partner] score 480 of 1 candidates -- swap trade partner numidia for richer bithynia
+rome	  issued diplomacy.ai-swap-trade-partner
+rome	no candidate scored at least 1; turn ends
+bithynia	seat bithynia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+bithynia	faithful economy: threat 0, own 0
+bithynia	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+bithynia	mercenary hire: 0 offer(s) hired across 0 army/armies
+bithynia	chose [Diplomacy/ai-form-trade] score 520 of 1 candidates -- trade with illyria: at peace, both sides under 3 partners
+bithynia	  issued diplomacy.ai-form-trade
+bithynia	no candidate scored at least 1; turn ends
+carthage	seat carthage: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+carthage	faithful economy: threat 15000, own 35015
+carthage	resupply: 1 army transfers, 0 fleet transfers, 49 tons, 0 talents
+carthage	mercenary hire: 0 offer(s) hired across 0 army/armies
+carthage	chose [Military/approach] score 1321 of 1 candidates -- march at the enemy-city target (36, 61) with army-2: 3 tiles away
+carthage	  issued movement.move-army
+carthage	chose [Military/approach] score 1321 of 1 candidates -- march at the enemy-city target (49, 41) with army-3: 38 tiles away
+carthage	  issued movement.move-army
+carthage	no candidate scored at least 1; turn ends
+carthage	fleet phase: fleet-0 idle, support 0, hunt -10000
+gaul	seat gaul: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+gaul	faithful economy: threat 0, own 0
+gaul	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+gaul	mercenary hire: 0 offer(s) hired across 0 army/armies
+gaul	no candidate scored at least 1; turn ends
+celtiberia	seat celtiberia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+celtiberia	faithful economy: threat 44015, own 0
+celtiberia	faithful order 1: light_infantry 8600 troops at numantia
+celtiberia	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+celtiberia	mercenary hire: 0 offer(s) hired across 0 army/armies
+celtiberia	no candidate scored at least 1; turn ends
+illyria	seat illyria: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+illyria	faithful economy: threat 0, own 0
+illyria	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+illyria	mercenary hire: 0 offer(s) hired across 0 army/armies
+illyria	chose [Diplomacy/ai-form-trade] score 520 of 2 candidates -- trade with numidia: at peace, both sides under 3 partners
+illyria	  issued diplomacy.ai-form-trade
+illyria	no candidate scored at least 1; turn ends
+numidia	seat numidia: aggression 500, expansionDrive 500, loyaltyToAlliances 500 (permille)
+numidia	faithful economy: threat 0, own 20595
+numidia	resupply: 0 army transfers, 0 fleet transfers, 0 tons, 0 talents
+numidia	mercenary hire: 0 offer(s) hired across 0 army/armies
+numidia	no candidate scored at least 1; turn ends
