@@ -1,0 +1,20 @@
+diff --git a/src/IC2.Engine/Ai/AiMilitaryPhase.cs b/src/IC2.Engine/Ai/AiMilitaryPhase.cs
+index 44bb12fa..c888cb2e 100644
+--- a/src/IC2.Engine/Ai/AiMilitaryPhase.cs
++++ b/src/IC2.Engine/Ai/AiMilitaryPhase.cs
+@@ -443,6 +443,7 @@ public static class AiMilitaryPhase
+         // Keep the original tree record only when that branch actually offered a command. A fallback
+         // has its own candidate rationale; it must not inherit a rejected attack's decision record.
+         var originalActionOffered = into.Count > candidatesBefore;
++        if (Environment.GetEnvironmentVariable("IC2_DIAG_TREE") == "1") Console.Error.WriteLine(Inv("DIAG tree {0} {1} at ({2},{3}) moves {4}: kind {5} after {6} army {7}@({8},{9}) city {10} mayMarch {11} offered {12}", view.NationId, army.Id, army.X, army.Y, army.Moves, decision.Selected, decision.After, decision.TargetArmy?.Id, decision.TargetArmy?.X, decision.TargetArmy?.Y, decision.TargetCity?.Id, mayMarch, into.Count - candidatesBefore));
+ 
+         // The original's tree always ends in an action for an army with moves: when the chosen branch
+         // produced no executable command (nothing proposable to march at, an adjacent target whose
+@@ -646,6 +647,7 @@ public static class AiMilitaryPhase
+         var continues = ClassicalArmyNavigation.Applies(view);
+         var command = AiArmyTargetTree.MarchCommand(view, army, aimedAt,
+             target is null ? null : new GridPoint(x, y));
++        if (Environment.GetEnvironmentVariable("IC2_DIAG_TREE") == "1") Console.Error.WriteLine(Inv("DIAG march {0} {1} -> ({2},{3}) aim ({4},{5}) '{6}': command {7}", view.NationId, army.Id, x, y, aimedAt.X, aimedAt.Y, why, command is null ? "null" : "ok"));
+         if (command is null) return;
+         // The march must also make progress this turn: a first step dearer than the army's moves would
+         // be accepted and park the army with its moves zeroed (Sol's R1 on PR #933). Not proposing it

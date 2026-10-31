@@ -12,3 +12,7 @@ carries the corrections from the 2026-10-30/31 findings. Finding: `findings/2026
   `report-fleet-v1.json`.
 - `aborted/remake-8e2d9053-wrong-save-dir/`: a first replay pointed at the tracked `orig-v1` folder, which holds no saves:
   rounds 2–5 failed with "file not found" (64 error files); round 1 outputs are the same runs as v1's. Kept per rule 6.
+- `diag-galatia-v1/`, `diag-galatia-v2/`: S02 round 4 replayed with a scratch build of 8e2d9053 (`tree-diag*.patch.txt`,
+  two stderr lines, never pushed; build in `artifacts/diffpin-8e2d9053-diag-build/`). With `IC2_DIAG_TREE=1`, it logs
+  each army's tree decision (v2 adds the DecisionRecord) and each march command. The AI log is identical to v1's. This
+  attributes the Galatia row to Bithynia's battle against army 5 (see the finding).
