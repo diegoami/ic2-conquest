@@ -1,0 +1,30 @@
+DIAG march thracia army-9 -> (170,38) aim (170,38) 'move to the resupply city': command ok
+DIAG tree thracia army-9 at (169,38) moves 9: kind MoveToResupplyCity after None army @(,) city  mayMarch True offered 1
+DIAG march macedonia army-8 -> (143,41) aim (143,41) 'move to the resupply city': command ok
+DIAG tree macedonia army-8 at (144,42) moves 9: kind MoveToResupplyCity after None army @(,) city  mayMarch True offered 1
+DIAG march media army-10 -> (306,57) aim (306,57) 'move to the resupply city': command ok
+DIAG tree media army-10 at (307,58) moves 9: kind MoveToResupplyCity after None army @(,) city  mayMarch True offered 1
+DIAG march rome army-1 -> (119,8) aim (119,8) 'approach target city': command ok
+DIAG tree rome army-1 at (105,39) moves 8: kind AttackCity after None army @(,) city vindobona mayMarch True offered 1
+DIAG march bithynia army-11 -> (172,49) aim (172,49) 'approach target army': command ok
+DIAG tree bithynia army-11 at (177,44) moves 9: kind AttackArmy after None army army-5@(172,49) city cyzicus mayMarch True offered 1
+DIAG tree bithynia army-11 at (173,48) moves 5: kind AttackArmy after None army army-5@(172,49) city cyzicus mayMarch False offered 1
+DIAG march carthage army-2 -> (45,68) aim (45,68) 'move to the resupply city': command ok
+DIAG tree carthage army-2 at (41,66) moves 9: kind MoveToResupplyCity after None army @(,) city  mayMarch True offered 1
+DIAG march carthage army-3 -> (93,78) aim (93,78) 'move to the resupply city': command ok
+DIAG tree carthage army-3 at (94,78) moves 9: kind MoveToResupplyCity after None army @(,) city  mayMarch True offered 1
+DIAG tree carthage army-2 at (44,68) moves 5: kind MoveToResupplyCity after None army @(,) city  mayMarch False offered 0
+DIAG march carthage army-3 -> (93,78) aim (93,78) 'move to the resupply city': command ok
+DIAG tree carthage army-3 at (94,78) moves 9: kind MoveToResupplyCity after None army @(,) city  mayMarch True offered 1
+DIAG tree carthage army-2 at (44,68) moves 5: kind MoveToResupplyCity after None army @(,) city  mayMarch False offered 0
+DIAG tree carthage army-3 at (92,79) moves 3: kind MoveToResupplyCity after None army @(,) city  mayMarch False offered 0
+DIAG march ptolemaic army-6 -> (240,114) aim (240,114) 'mercenary run': command ok
+DIAG tree ptolemaic army-6 at (224,99) moves 9: kind MercenaryRun after MarchAtCityTarget army army-4@(223,65) city aradus mayMarch True offered 1
+DIAG march ptolemaic army-7 -> (289,59) aim (223,65) 'approach target army via waypoint': command ok
+DIAG tree ptolemaic army-7 at (202,100) moves 7: kind AttackArmy after None army army-4@(223,65) city myra mayMarch True offered 1
+DIAG march ptolemaic army-7 -> (289,59) aim (223,65) 'approach target army via waypoint': command ok
+DIAG tree ptolemaic army-7 at (202,100) moves 7: kind AttackArmy after None army army-4@(223,65) city myra mayMarch True offered 1
+DIAG tree galatia army-0 at (195,42) moves 10: kind MercenaryRun after None army army-4@(223,65) city aradus mayMarch True offered 0
+DIAG march galatia army-0 -> (195,43) aim (195,43) 'garrison fallback': command ok
+DIAG tree galatia army-0 at (196,44) moves 3: kind MercenaryRun after None army army-4@(223,65) city myra mayMarch False offered 0
+DIAG tree galatia army-0 at (196,44) moves 3: kind MercenaryRun after None army army-4@(223,65) city myra mayMarch False offered 0
