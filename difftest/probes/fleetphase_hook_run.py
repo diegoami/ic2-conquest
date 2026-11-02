@@ -47,7 +47,8 @@ def play(exe, start, turns, out, tag, log_path=None):
             if magic != FH.MAGIC:
                 raise SystemExit(f"fleet hook magic {magic:#x} is not {FH.MAGIC:#x}: wrong build?")
             if count > seen:
-                buf = g.mem(WH.BUF + seen * WH.REC, (count - seen) * WH.REC)
+                rec = getattr(FH, "REC", WH.REC)    # a hook module with its own record size (patches/aab4_hook.py: 48)
+                buf = g.mem(WH.BUF + seen * rec, (count - seen) * rec)
                 with open(log_path, "a") as f:
                     for r in FH.decode(buf, count - seen):
                         r["turn"] = t

@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v090/aab4starts/rome-t06end.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261102-160859",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0727.SAV",
+    "sha256": "27d81f4b886a890945697ed5bb6d571640ab6c8c0a997a24b01089a4f585ba07"
+   }
+  ],
+  "records": 7
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261102-160922",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0727.SAV",
+    "sha256": "27d81f4b886a890945697ed5bb6d571640ab6c8c0a997a24b01089a4f585ba07"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}

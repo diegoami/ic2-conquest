@@ -28,3 +28,15 @@ counts above (rerunnable in seconds).
 `fleetphase_hook_run` from copies of the original's end-of-turn saves (named by game and turn so the hook's folders are
 unique): gaul t30 end (Carthage fleet at Utica, turn 31), gaul t39 end (Leptis Magna, turn 40), rome t16 end (Ptolemaic
 fleet at Alexandria, turn 17). Output `hooks-fleet-v1/`.
+
+## Seleucid turn 26 (open, harness) — r1-r5
+
+Every run stops at the checkpoint after turn 26's End turn (deterministic: same seed, same orders). r5's save-timeout
+diagnostics (`seleucid-rulebot1-40t-r5/original/receipt.jsonl`, `t26-a01-*.png`):
+- seat 2 (Seleucid), battle flag 0x4A0B7C = 0;
+- a window "Ptolemaic  v  Seleucid          Seleucid to move units." at (5,103), 448×414, never painted (black);
+- main window title without "Seleucid's turn"; the Information pane shows Week 5 Spring 269 BC news;
+- raising the battle window, Computer general and 30 End turn clicks change nothing (the title stays the same); File > Save
+  does not respond.
+Loading the run's AUTO0746.SAV shows no battle (probes/battle-t26). The battle state is not in the save, so reproducing it
+needs the 22-minute game. Not pursued further; the analysis uses r1's 25 turns. Two end_turn changes were tried and reverted.

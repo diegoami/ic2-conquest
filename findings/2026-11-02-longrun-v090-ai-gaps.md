@@ -59,6 +59,27 @@ The same happens to Media army 10 (307,58) → (309,60), Thracia army 6 (169,38)
 (191,95) → (192,97), Seleucid at Antioch (221,60) → (223,62) and Armenia army 1 at Van (256,47) → (257,44)
 (`probes/carthage-rulebot1-40t-t36`: mercenary run, walk back to (256,47), then the fallback toward (262,34)).
 
+**Hook of the fallback's gate (revision 2026-11-02, research's request):** `patches/aab4_hook.py` logs, after each walk
+in F31C, the result of `FUN_0044aab4` (0x44F4CE). AL = 0 → `FUN_0044ebe8` (the garrison fallback) runs. Run
+`hooks-aab4-v2` from the games' own saves (`aab4starts/rome-t01end.SAV`, `rome-t03end.SAV`, `rome-t06end.SAV`,
+`carthage-t35end.SAV`); 38 walks, the hooked autosaves byte-identical to the plain build (4 of 4).
+
+| Army after its walk | Moves left | AAB4 | Fallback |
+|---|---|---|---|
+| Macedonia 8 at (144,42), Media's capital army at (307,58), Thracia 6 at (169,38): back on the start tile (Thracia on turns 4, 7 and 36; on turn 2 it walked there from (169,37)) | 2 | 1 | no |
+| Ptolemaic 7 at (191,95) (start tile) | 2 | 1 | no |
+| Armenia 1 at (256,47) (start tile; Carthage game turn 36) | 3 | 1 | no |
+| Carthage 2 at (37,62), Seleucid 5 at (178,41): the gap-B armies, start tile | 0 | 1 | no |
+| Celtiberia 2 at (41,47): did not move | 8 | **0** | **yes** |
+| the 20 other walks (to other tiles) | 0–8 | 1 | no |
+
+So the gate is "the army spent moves", not "the army changed tile". An army whose walk ends where it started has spent
+moves (AAB4 = 1), and the original never runs EBE8 for it. Only an army that did not spend moves gets the fallback.
+This confirms research's code reading (`FUN_0044aab4` returns `recomputedFullMoves != army[+6]`,
+`2026-10-07-strategic-ai-turn.md` §3.5). The remake's T156 tests tile equality (`AiTurn.cs:336-351`: `beforeTile.X ==
+afterTile.X && beforeTile.Y == afterTile.Y`, with moves > 0), so it runs the fallback where the original does not. The
+likely fix is to test spent moves (moves after the command < moves before), not the tile.
+
 **Effect over a game:** in the free-running remake game these capital armies drift away from their capitals (Rome
 game, turn 30: Macedonia's army at (146,53), Media's at (283,58) by turn 40), while the original's stay put for 40 turns.
 
