@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """"Original stays, remake moves" rows of the anchored long runs (v0.9.0, owner 2026-11-02).
 
-    python3 runs/experiments/longrun-v090/stays.py <campaign_dir> [...]
+    python3 runs/experiments/longrun-v090/stays.py [--anchored=anchored-<short>] <campaign_dir> [...]
 
 For each anchored turn: an AI army or fleet (not the human's) whose record ends the original's turn on the tile it started on,
 while the remake's turn (from the same start state) ends with no unit of that owner and size on that tile. Each row names the
@@ -35,16 +35,20 @@ def size(u):
 
 def main():
     rows, tally = [], Counter()
-    for camp in map(Path, sys.argv[1:]):
+    args = sys.argv[1:]
+    sub = "anchored"
+    if args and args[0].startswith("--anchored="):
+        sub = args.pop(0).split("=", 1)[1]
+    for camp in map(Path, args):
         human = json.loads((camp / "turns.jsonl").read_text().splitlines()[0])["nation"]
-        for line in (camp / "anchored/turns.jsonl").read_text().splitlines():
+        for line in (camp / sub / "turns.jsonl").read_text().splitlines():
             r = json.loads(line)
             if "error" in r:
                 continue
             k = r["turn"]
             st = load(camp / "original/t00-start.SAV") if k == 1 else load(last(str(camp / f"original/t{k - 1:02d}-a*.SAV")))
             eo = load(last(str(camp / f"original/t{k:02d}-a*.SAV")))
-            er = load(last(str(camp / f"anchored/t{k:02d}/a*.SAV")))
+            er = load(last(str(camp / sub / f"t{k:02d}/a*.SAV")))
             for kind in ("armies", "fleets"):
                 end_o = {(u["owner"], u["x"], u["y"]) for u in units(eo, kind)}
                 end_r = {(u["owner"], u["x"], u["y"], size(u)) for u in units(er, kind)}
