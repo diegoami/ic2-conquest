@@ -1,0 +1,3715 @@
+{
+ "carthage-t35end": {
+  "armies": [
+   {
+    "nation": "Celtiberia",
+    "army": 2,
+    "at": [
+     41,
+     47
+    ],
+    "moves0": 8,
+    "calls": [
+     {
+      "seq": 7,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 22,
+      "moves": 8
+     },
+     {
+      "seq": 8,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 2,
+      "moves": 8,
+      "target": [
+       87,
+       76
+      ]
+     },
+     {
+      "seq": 9,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 2,
+      "moves": 8
+     },
+     {
+      "seq": 10,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 3328,
+      "moves": null,
+      "aab4": 0
+     }
+    ],
+    "aab4": 0,
+    "moves_at_last_f31c_walk": 8,
+    "moves_at_aab4": 8,
+    "per_command_spent": false,
+    "full_budget_spent": false,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Illyria",
+    "army": 10,
+    "at": [
+     109,
+     18
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 22,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 94,
+      "moves": 9
+     },
+     {
+      "seq": 23,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       128,
+       39
+      ]
+     },
+     {
+      "seq": 24,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       128,
+       39
+      ]
+     },
+     {
+      "seq": 25,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 10,
+      "moves": 0
+     },
+     {
+      "seq": 26,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1281,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Ptolemaic",
+    "army": 7,
+    "at": [
+     191,
+     95
+    ],
+    "moves0": 7,
+    "calls": [
+     {
+      "seq": 32,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 214,
+      "moves": 7
+     },
+     {
+      "seq": 33,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 222,
+      "moves": 7
+     },
+     {
+      "seq": 34,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       87,
+       76
+      ]
+     },
+     {
+      "seq": 35,
+      "kind": "D734 line walk",
+      "site": "0x44dc3f",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       189,
+       104
+      ]
+     },
+     {
+      "seq": 36,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 7,
+      "moves": 0
+     },
+     {
+      "seq": 37,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 4097,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 7,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 4,
+    "at": [
+     272,
+     30
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 43,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 306,
+      "moves": 9
+     },
+     {
+      "seq": 44,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 4,
+      "moves": 9,
+      "target": [
+       291,
+       20
+      ]
+     },
+     {
+      "seq": 45,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 4,
+      "moves": 9,
+      "target": [
+       291,
+       20
+      ]
+     },
+     {
+      "seq": 46,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 4,
+      "moves": 0
+     },
+     {
+      "seq": 47,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 5,
+    "at": [
+     266,
+     30
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 49,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 297,
+      "moves": 9
+     },
+     {
+      "seq": 50,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 5,
+      "moves": 9,
+      "target": [
+       291,
+       20
+      ]
+     },
+     {
+      "seq": 51,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 5,
+      "moves": 9,
+      "target": [
+       291,
+       20
+      ]
+     },
+     {
+      "seq": 52,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 5,
+      "moves": 0
+     },
+     {
+      "seq": 53,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 11,
+    "at": [
+     235,
+     42
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 55,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 277,
+      "moves": 9
+     },
+     {
+      "seq": 56,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 11,
+      "moves": 9,
+      "target": [
+       291,
+       20
+      ]
+     },
+     {
+      "seq": 57,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 11,
+      "moves": 9,
+      "target": [
+       291,
+       20
+      ]
+     },
+     {
+      "seq": 58,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 11,
+      "moves": 0
+     },
+     {
+      "seq": 59,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1025,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Thracia",
+    "army": 6,
+    "at": [
+     169,
+     38
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 63,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 187,
+      "moves": 9
+     },
+     {
+      "seq": 64,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 65,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 195,
+      "moves": 9
+     },
+     {
+      "seq": 66,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 67,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 68,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 69,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       166,
+       38
+      ]
+     },
+     {
+      "seq": 70,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 71,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 72,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 2
+     },
+     {
+      "seq": 73,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 6,
+      "moves": 2
+     },
+     {
+      "seq": 74,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Macedonia",
+    "army": 8,
+    "at": [
+     144,
+     42
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 82,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 139,
+      "moves": 9
+     },
+     {
+      "seq": 83,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 84,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 145,
+      "moves": 9
+     },
+     {
+      "seq": 85,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 152,
+      "moves": 9
+     },
+     {
+      "seq": 86,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 87,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 88,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 89,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       147,
+       45
+      ]
+     },
+     {
+      "seq": 90,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 91,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 92,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 2
+     },
+     {
+      "seq": 93,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 8,
+      "moves": 2
+     },
+     {
+      "seq": 94,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Media",
+    "army": 0,
+    "at": [
+     266,
+     32
+    ],
+    "moves0": 8,
+    "calls": [
+     {
+      "seq": 98,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 297,
+      "moves": 8
+     },
+     {
+      "seq": 99,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 0,
+      "moves": 8,
+      "target": [
+       270,
+       29
+      ]
+     },
+     {
+      "seq": 100,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 0,
+      "moves": 8,
+      "target": [
+       270,
+       29
+      ]
+     },
+     {
+      "seq": 101,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 0,
+      "moves": 0
+     },
+     {
+      "seq": 102,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1793,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 8,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Armenia",
+    "army": 1,
+    "at": [
+     256,
+     47
+    ],
+    "moves0": 10,
+    "calls": [
+     {
+      "seq": 106,
+      "kind": "E84C merc run",
+      "site": "F31C 0x44F485 (E84C)",
+      "eax": 1,
+      "moves": 10
+     },
+     {
+      "seq": 107,
+      "kind": "DBA8 walk",
+      "site": "E84C 0x44E913 (run)",
+      "eax": 1,
+      "moves": 10,
+      "target": [
+       255,
+       46
+      ]
+     },
+     {
+      "seq": 108,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 1,
+      "moves": 10,
+      "target": [
+       255,
+       46
+      ]
+     },
+     {
+      "seq": 109,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 293,
+      "moves": 10
+     },
+     {
+      "seq": 110,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 1,
+      "moves": 10,
+      "target": [
+       259,
+       50
+      ]
+     },
+     {
+      "seq": 111,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 1,
+      "moves": 6,
+      "target": [
+       255,
+       46
+      ]
+     },
+     {
+      "seq": 112,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 1,
+      "moves": 6,
+      "target": [
+       255,
+       46
+      ]
+     },
+     {
+      "seq": 113,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 293,
+      "moves": 3
+     },
+     {
+      "seq": 114,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 1,
+      "moves": 3
+     },
+     {
+      "seq": 115,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1,
+      "moves": 3,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": null,
+    "moves_at_aab4": 3,
+    "per_command_spent": null,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Rome",
+    "army": 12,
+    "at": [
+     102,
+     44
+    ],
+    "moves0": 1,
+    "calls": [
+     {
+      "seq": 119,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 82,
+      "moves": 1
+     },
+     {
+      "seq": 120,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 85,
+      "moves": 1
+     },
+     {
+      "seq": 121,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 88,
+      "moves": 1
+     },
+     {
+      "seq": 122,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 89,
+      "moves": 1
+     },
+     {
+      "seq": 123,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 90,
+      "moves": 1
+     },
+     {
+      "seq": 124,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 91,
+      "moves": 1
+     },
+     {
+      "seq": 125,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 97,
+      "moves": 1
+     },
+     {
+      "seq": 126,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 12,
+      "moves": 1,
+      "target": [
+       119,
+       8
+      ]
+     },
+     {
+      "seq": 127,
+      "kind": "D734 line walk",
+      "site": "0x44dc3f",
+      "eax": 12,
+      "moves": 1,
+      "target": [
+       90,
+       22
+      ]
+     },
+     {
+      "seq": 128,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 12,
+      "moves": 0
+     },
+     {
+      "seq": 129,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 1,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Bithynia",
+    "army": 9,
+    "at": [
+     222,
+     41
+    ],
+    "moves0": 7,
+    "calls": [
+     {
+      "seq": 133,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 9,
+      "moves": 7,
+      "target": [
+       256,
+       47
+      ]
+     },
+     {
+      "seq": 134,
+      "kind": "D734 line walk",
+      "site": "0x44dc3f",
+      "eax": 9,
+      "moves": 7,
+      "target": [
+       269,
+       104
+      ]
+     },
+     {
+      "seq": 135,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 9,
+      "moves": 0
+     },
+     {
+      "seq": 136,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 513,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 7,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   }
+  ],
+  "watch_changes": [
+   {
+    "seq": 0,
+    "seat": "Carthage",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 8,
+     "5": 0
+    }
+   },
+   {
+    "seq": 16,
+    "seat": "Celtiberia",
+    "kind": "DBA8 walk",
+    "moves": {
+     "2": 5,
+     "5": 0
+    }
+   },
+   {
+    "seq": 18,
+    "seat": "Celtiberia",
+    "kind": "F6D8 non-war city",
+    "moves": {
+     "2": 4,
+     "5": 0
+    }
+   },
+   {
+    "seq": 19,
+    "seat": "Illyria",
+    "kind": "FA20 seat",
+    "moves": {
+     "2": 8,
+     "5": 9
+    }
+   },
+   {
+    "seq": 52,
+    "seat": "Seleucid",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 8,
+     "5": 0
+    }
+   }
+  ]
+ },
+ "rome-t01end": {
+  "armies": [
+   {
+    "nation": "Bithynia",
+    "army": 11,
+    "at": [
+     184,
+     38
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 5,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 211,
+      "moves": 9
+     },
+     {
+      "seq": 6,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 11,
+      "moves": 9,
+      "target": [
+       180,
+       46
+      ]
+     },
+     {
+      "seq": 7,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 11,
+      "moves": 9,
+      "target": [
+       180,
+       46
+      ]
+     },
+     {
+      "seq": 8,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 11,
+      "moves": 3,
+      "target": [
+       180,
+       46
+      ]
+     },
+     {
+      "seq": 9,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 11,
+      "moves": 3,
+      "target": [
+       180,
+       46
+      ]
+     },
+     {
+      "seq": 10,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 11,
+      "moves": 0
+     },
+     {
+      "seq": 11,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Carthage",
+    "army": 2,
+    "at": [
+     42,
+     63
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 15,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 26,
+      "moves": 9
+     },
+     {
+      "seq": 16,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       38,
+       64
+      ]
+     },
+     {
+      "seq": 17,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       38,
+       64
+      ]
+     },
+     {
+      "seq": 18,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 2,
+      "moves": 3,
+      "target": [
+       38,
+       64
+      ]
+     },
+     {
+      "seq": 19,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 2,
+      "moves": 3,
+      "target": [
+       38,
+       64
+      ]
+     },
+     {
+      "seq": 20,
+      "kind": "AEE4 attack army",
+      "site": "0x44d9a0",
+      "eax": 2,
+      "moves": 2
+     },
+     {
+      "seq": 21,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 2,
+      "moves": 0
+     },
+     {
+      "seq": 22,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 513,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Carthage",
+    "army": 3,
+    "at": [
+     88,
+     77
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 24,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 62,
+      "moves": 9
+     },
+     {
+      "seq": 25,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 66,
+      "moves": 9
+     },
+     {
+      "seq": 26,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 69,
+      "moves": 9
+     },
+     {
+      "seq": 27,
+      "kind": "E84C merc run",
+      "site": "F31C 0x44F485 (E84C)",
+      "eax": 3,
+      "moves": 9
+     },
+     {
+      "seq": 28,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F4C7 (city>85 continuation)",
+      "eax": 3,
+      "moves": 9,
+      "target": [
+       49,
+       41
+      ]
+     },
+     {
+      "seq": 29,
+      "kind": "D734 line walk",
+      "site": "0x44dc3f",
+      "eax": 3,
+      "moves": 9,
+      "target": [
+       87,
+       77
+      ]
+     },
+     {
+      "seq": 30,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 3,
+      "moves": 8
+     },
+     {
+      "seq": 31,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 513,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 8,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Gaul",
+    "army": 9,
+    "at": [
+     96,
+     30
+    ],
+    "moves0": 8,
+    "calls": [
+     {
+      "seq": 35,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 73,
+      "moves": 8
+     },
+     {
+      "seq": 36,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 75,
+      "moves": 8
+     },
+     {
+      "seq": 37,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 78,
+      "moves": 8
+     },
+     {
+      "seq": 38,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 79,
+      "moves": 8
+     },
+     {
+      "seq": 39,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 9,
+      "moves": 8,
+      "target": [
+       102,
+       33
+      ]
+     },
+     {
+      "seq": 40,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 9,
+      "moves": 8,
+      "target": [
+       102,
+       33
+      ]
+     },
+     {
+      "seq": 41,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 9,
+      "moves": 6,
+      "target": [
+       102,
+       33
+      ]
+     },
+     {
+      "seq": 42,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 9,
+      "moves": 6,
+      "target": [
+       102,
+       33
+      ]
+     },
+     {
+      "seq": 43,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 9,
+      "moves": 6,
+      "target": [
+       100,
+       34
+      ]
+     },
+     {
+      "seq": 44,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 9,
+      "moves": 3,
+      "target": [
+       102,
+       33
+      ]
+     },
+     {
+      "seq": 45,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 9,
+      "moves": 3,
+      "target": [
+       102,
+       33
+      ]
+     },
+     {
+      "seq": 46,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 9,
+      "moves": 0
+     },
+     {
+      "seq": 47,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1793,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 8,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Ptolemaic",
+    "army": 7,
+    "at": [
+     190,
+     97
+    ],
+    "moves0": 7,
+    "calls": [
+     {
+      "seq": 57,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 208,
+      "moves": 7
+     },
+     {
+      "seq": 58,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 214,
+      "moves": 7
+     },
+     {
+      "seq": 59,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 222,
+      "moves": 7
+     },
+     {
+      "seq": 60,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 61,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 62,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 214,
+      "moves": 5
+     },
+     {
+      "seq": 63,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 7,
+      "moves": 5
+     },
+     {
+      "seq": 64,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 4097,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 7,
+    "moves_at_aab4": 5,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Galatia",
+    "army": 12,
+    "at": [
+     187,
+     46
+    ],
+    "moves0": 0,
+    "calls": [
+     {
+      "seq": 70,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 209,
+      "moves": 0
+     },
+     {
+      "seq": 71,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 215,
+      "moves": 0
+     }
+    ]
+   },
+   {
+    "nation": "Seleucid",
+    "army": 4,
+    "at": [
+     226,
+     63
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 75,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 268,
+      "moves": 9
+     },
+     {
+      "seq": 76,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 4,
+      "moves": 9,
+      "target": [
+       187,
+       46
+      ]
+     },
+     {
+      "seq": 77,
+      "kind": "D734 line walk",
+      "site": "0x44dc3f",
+      "eax": 4,
+      "moves": 9,
+      "target": [
+       227,
+       49
+      ]
+     },
+     {
+      "seq": 78,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 4,
+      "moves": 0
+     },
+     {
+      "seq": 79,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1281,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 5,
+    "at": [
+     180,
+     46
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 81,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F409 (army>100)",
+      "eax": 5,
+      "moves": 9,
+      "target": [
+       182,
+       41
+      ]
+     },
+     {
+      "seq": 82,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 5,
+      "moves": 9,
+      "target": [
+       182,
+       41
+      ]
+     },
+     {
+      "seq": 83,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 5,
+      "moves": 2,
+      "target": [
+       182,
+       41
+      ]
+     },
+     {
+      "seq": 84,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 5,
+      "moves": 2,
+      "target": [
+       182,
+       41
+      ]
+     },
+     {
+      "seq": 85,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 5,
+      "moves": 0
+     },
+     {
+      "seq": 86,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Thracia",
+    "army": 6,
+    "at": [
+     169,
+     37
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 90,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 187,
+      "moves": 9
+     },
+     {
+      "seq": 91,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 92,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 195,
+      "moves": 9
+     },
+     {
+      "seq": 93,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 94,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 95,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 96,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       166,
+       37
+      ]
+     },
+     {
+      "seq": 97,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 98,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 99,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 2
+     },
+     {
+      "seq": 100,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 6,
+      "moves": 2
+     },
+     {
+      "seq": 101,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Macedonia",
+    "army": 8,
+    "at": [
+     144,
+     42
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 109,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 139,
+      "moves": 9
+     },
+     {
+      "seq": 110,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 111,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 145,
+      "moves": 9
+     },
+     {
+      "seq": 112,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 152,
+      "moves": 9
+     },
+     {
+      "seq": 113,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 114,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 115,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 116,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       147,
+       45
+      ]
+     },
+     {
+      "seq": 117,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 118,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 119,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 2
+     },
+     {
+      "seq": 120,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 8,
+      "moves": 2
+     },
+     {
+      "seq": 121,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Media",
+    "army": 10,
+    "at": [
+     307,
+     58
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 125,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 330,
+      "moves": 9
+     },
+     {
+      "seq": 126,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 127,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 128,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 330,
+      "moves": 9
+     },
+     {
+      "seq": 129,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       310,
+       61
+      ]
+     },
+     {
+      "seq": 130,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 10,
+      "moves": 5,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 131,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 10,
+      "moves": 5,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 132,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 330,
+      "moves": 2
+     },
+     {
+      "seq": 133,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 10,
+      "moves": 2
+     },
+     {
+      "seq": 134,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1281,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   }
+  ],
+  "watch_changes": [
+   {
+    "seq": 0,
+    "seat": "Rome",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 9,
+     "5": 0
+    }
+   },
+   {
+    "seq": 18,
+    "seat": "Carthage",
+    "kind": "DBA8 walk",
+    "moves": {
+     "2": 3,
+     "5": 0
+    }
+   },
+   {
+    "seq": 20,
+    "seat": "Carthage",
+    "kind": "AEE4 attack army",
+    "moves": {
+     "2": 2,
+     "5": 0
+    }
+   },
+   {
+    "seq": 21,
+    "seat": "Carthage",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 0,
+     "5": 0
+    }
+   },
+   {
+    "seq": 50,
+    "seat": "Illyria",
+    "kind": "FA20 seat",
+    "moves": {
+     "2": 9,
+     "5": 9
+    }
+   },
+   {
+    "seq": 83,
+    "seat": "Seleucid",
+    "kind": "DBA8 walk",
+    "moves": {
+     "2": 9,
+     "5": 2
+    }
+   },
+   {
+    "seq": 85,
+    "seat": "Seleucid",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 9,
+     "5": 0
+    }
+   }
+  ]
+ },
+ "rome-t03end": {
+  "armies": [
+   {
+    "nation": "Carthage",
+    "army": 2,
+    "at": [
+     37,
+     62
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 7,
+      "kind": "E84C merc run",
+      "site": "F31C 0x44F485 (E84C)",
+      "eax": 2,
+      "moves": 9
+     },
+     {
+      "seq": 8,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F4C7 (city>85 continuation)",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       36,
+       61
+      ]
+     },
+     {
+      "seq": 9,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       36,
+       61
+      ]
+     },
+     {
+      "seq": 10,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 2,
+      "moves": 9,
+      "city": 19
+     },
+     {
+      "seq": 11,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 2,
+      "moves": 0
+     },
+     {
+      "seq": 12,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": [
+     {
+      "seq": 10,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 2,
+      "moves": 9,
+      "city": 19
+     }
+    ]
+   },
+   {
+    "nation": "Carthage",
+    "army": 3,
+    "at": [
+     86,
+     76
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 14,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 55,
+      "moves": 9
+     },
+     {
+      "seq": 15,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 62,
+      "moves": 9
+     },
+     {
+      "seq": 16,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 66,
+      "moves": 9
+     },
+     {
+      "seq": 17,
+      "kind": "E84C merc run",
+      "site": "F31C 0x44F485 (E84C)",
+      "eax": 3,
+      "moves": 9
+     },
+     {
+      "seq": 18,
+      "kind": "DBA8 walk",
+      "site": "E84C 0x44E913 (run)",
+      "eax": 3,
+      "moves": 9,
+      "target": [
+       67,
+       79
+      ]
+     },
+     {
+      "seq": 19,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F4C7 (city>85 continuation)",
+      "eax": 3,
+      "moves": 7,
+      "target": [
+       49,
+       41
+      ]
+     },
+     {
+      "seq": 20,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 3,
+      "moves": 5
+     },
+     {
+      "seq": 21,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 513,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 7,
+    "moves_at_aab4": 5,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Gaul",
+    "army": 9,
+    "at": [
+     101,
+     33
+    ],
+    "moves0": 8,
+    "calls": [
+     {
+      "seq": 25,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 87,
+      "moves": 8
+     },
+     {
+      "seq": 26,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 9,
+      "moves": 8,
+      "target": [
+       98,
+       39
+      ]
+     },
+     {
+      "seq": 27,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 9,
+      "moves": 8,
+      "target": [
+       98,
+       39
+      ]
+     },
+     {
+      "seq": 28,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 9,
+      "moves": 3,
+      "city": 80
+     },
+     {
+      "seq": 29,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 9,
+      "moves": 0
+     },
+     {
+      "seq": 30,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1537,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 8,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": [
+     {
+      "seq": 28,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 9,
+      "moves": 3,
+      "city": 80
+     }
+    ]
+   },
+   {
+    "nation": "Ptolemaic",
+    "army": 7,
+    "at": [
+     191,
+     95
+    ],
+    "moves0": 7,
+    "calls": [
+     {
+      "seq": 40,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 214,
+      "moves": 7
+     },
+     {
+      "seq": 41,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 222,
+      "moves": 7
+     },
+     {
+      "seq": 42,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 43,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 44,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 214,
+      "moves": 7
+     },
+     {
+      "seq": 45,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       194,
+       98
+      ]
+     },
+     {
+      "seq": 46,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 7,
+      "moves": 4,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 47,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 7,
+      "moves": 4,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 48,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 214,
+      "moves": 2
+     },
+     {
+      "seq": 49,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 7,
+      "moves": 2
+     },
+     {
+      "seq": 50,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 4097,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 7,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 4,
+    "at": [
+     223,
+     53
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 56,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 258,
+      "moves": 9
+     },
+     {
+      "seq": 57,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 4,
+      "moves": 9,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 58,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 4,
+      "moves": 9,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 59,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 4,
+      "moves": 0
+     },
+     {
+      "seq": 60,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1281,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 5,
+    "at": [
+     178,
+     41
+    ],
+    "moves0": 10,
+    "calls": [
+     {
+      "seq": 62,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 5,
+      "moves": 10,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 63,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 5,
+      "moves": 10,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 64,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 5,
+      "moves": 10,
+      "city": 202
+     },
+     {
+      "seq": 65,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 5,
+      "moves": 0
+     },
+     {
+      "seq": 66,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 513,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 10,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": [
+     {
+      "seq": 64,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 5,
+      "moves": 10,
+      "city": 202
+     }
+    ]
+   },
+   {
+    "nation": "Thracia",
+    "army": 6,
+    "at": [
+     169,
+     38
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 70,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 187,
+      "moves": 9
+     },
+     {
+      "seq": 71,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 72,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 195,
+      "moves": 9
+     },
+     {
+      "seq": 73,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 74,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 75,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 76,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       166,
+       38
+      ]
+     },
+     {
+      "seq": 77,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 78,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 79,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 2
+     },
+     {
+      "seq": 80,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 6,
+      "moves": 2
+     },
+     {
+      "seq": 81,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Macedonia",
+    "army": 8,
+    "at": [
+     144,
+     42
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 89,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 139,
+      "moves": 9
+     },
+     {
+      "seq": 90,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 91,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 145,
+      "moves": 9
+     },
+     {
+      "seq": 92,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 152,
+      "moves": 9
+     },
+     {
+      "seq": 93,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 94,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 95,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 96,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       147,
+       45
+      ]
+     },
+     {
+      "seq": 97,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 98,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 99,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 2
+     },
+     {
+      "seq": 100,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 8,
+      "moves": 2
+     },
+     {
+      "seq": 101,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Media",
+    "army": 10,
+    "at": [
+     307,
+     58
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 105,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 330,
+      "moves": 9
+     },
+     {
+      "seq": 106,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 107,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 108,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 330,
+      "moves": 9
+     },
+     {
+      "seq": 109,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 10,
+      "moves": 9,
+      "target": [
+       310,
+       61
+      ]
+     },
+     {
+      "seq": 110,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 10,
+      "moves": 5,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 111,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 10,
+      "moves": 5,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 112,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 330,
+      "moves": 2
+     },
+     {
+      "seq": 113,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 10,
+      "moves": 2
+     },
+     {
+      "seq": 114,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1281,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   }
+  ],
+  "watch_changes": [
+   {
+    "seq": 0,
+    "seat": "Rome",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 9,
+     "5": 0
+    }
+   },
+   {
+    "seq": 11,
+    "seat": "Carthage",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 0,
+     "5": 0
+    }
+   },
+   {
+    "seq": 33,
+    "seat": "Illyria",
+    "kind": "FA20 seat",
+    "moves": {
+     "2": 9,
+     "5": 10
+    }
+   },
+   {
+    "seq": 65,
+    "seat": "Seleucid",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 9,
+     "5": 0
+    }
+   }
+  ]
+ },
+ "rome-t06end": {
+  "armies": [
+   {
+    "nation": "Carthage",
+    "army": 3,
+    "at": [
+     51,
+     43
+    ],
+    "moves0": 8,
+    "calls": [
+     {
+      "seq": 9,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 35,
+      "moves": 8
+     },
+     {
+      "seq": 10,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 3,
+      "moves": 8,
+      "target": [
+       49,
+       41
+      ]
+     },
+     {
+      "seq": 11,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 3,
+      "moves": 8,
+      "target": [
+       49,
+       41
+      ]
+     },
+     {
+      "seq": 12,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 3,
+      "moves": 6,
+      "city": 31
+     },
+     {
+      "seq": 13,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 3,
+      "moves": 0
+     },
+     {
+      "seq": 14,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1537,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 8,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": [
+     {
+      "seq": 12,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 3,
+      "moves": 6,
+      "city": 31
+     }
+    ]
+   },
+   {
+    "nation": "Ptolemaic",
+    "army": 7,
+    "at": [
+     191,
+     95
+    ],
+    "moves0": 7,
+    "calls": [
+     {
+      "seq": 26,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 214,
+      "moves": 7
+     },
+     {
+      "seq": 27,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 222,
+      "moves": 7
+     },
+     {
+      "seq": 28,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 29,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 30,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 214,
+      "moves": 7
+     },
+     {
+      "seq": 31,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 7,
+      "moves": 7,
+      "target": [
+       194,
+       98
+      ]
+     },
+     {
+      "seq": 32,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 7,
+      "moves": 4,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 33,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 7,
+      "moves": 4,
+      "target": [
+       190,
+       94
+      ]
+     },
+     {
+      "seq": 34,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 214,
+      "moves": 2
+     },
+     {
+      "seq": 35,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 7,
+      "moves": 2
+     },
+     {
+      "seq": 36,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 4097,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 7,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 4,
+    "at": [
+     215,
+     50
+    ],
+    "moves0": 8,
+    "calls": [
+     {
+      "seq": 42,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F43F (city>100)",
+      "eax": 4,
+      "moves": 8,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 43,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 4,
+      "moves": 8,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 44,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 4,
+      "moves": 0
+     },
+     {
+      "seq": 45,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 2049,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 8,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Seleucid",
+    "army": 5,
+    "at": [
+     178,
+     41
+    ],
+    "moves0": 10,
+    "calls": [
+     {
+      "seq": 47,
+      "kind": "E84C merc run",
+      "site": "F31C 0x44F485 (E84C)",
+      "eax": 5,
+      "moves": 10
+     },
+     {
+      "seq": 48,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F4C7 (city>85 continuation)",
+      "eax": 5,
+      "moves": 10,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 49,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 5,
+      "moves": 10,
+      "target": [
+       177,
+       41
+      ]
+     },
+     {
+      "seq": 50,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 5,
+      "moves": 10,
+      "city": 202
+     },
+     {
+      "seq": 51,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 5,
+      "moves": 0
+     },
+     {
+      "seq": 52,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 10,
+    "moves_at_aab4": 0,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": [
+     {
+      "seq": 50,
+      "kind": "B27C SIEGE",
+      "site": "D734 0x44D949 (end check)",
+      "eax": 5,
+      "moves": 10,
+      "city": 202
+     }
+    ]
+   },
+   {
+    "nation": "Thracia",
+    "army": 6,
+    "at": [
+     169,
+     38
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 56,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 187,
+      "moves": 9
+     },
+     {
+      "seq": 57,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 58,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 195,
+      "moves": 9
+     },
+     {
+      "seq": 59,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 60,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 61,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 9
+     },
+     {
+      "seq": 62,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 6,
+      "moves": 9,
+      "target": [
+       166,
+       38
+      ]
+     },
+     {
+      "seq": 63,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 64,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 6,
+      "moves": 5,
+      "target": [
+       170,
+       38
+      ]
+     },
+     {
+      "seq": 65,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 192,
+      "moves": 2
+     },
+     {
+      "seq": 66,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 6,
+      "moves": 2
+     },
+     {
+      "seq": 67,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 257,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Macedonia",
+    "army": 8,
+    "at": [
+     144,
+     42
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 75,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 139,
+      "moves": 9
+     },
+     {
+      "seq": 76,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 77,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 145,
+      "moves": 9
+     },
+     {
+      "seq": 78,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 152,
+      "moves": 9
+     },
+     {
+      "seq": 79,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 80,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 81,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 9
+     },
+     {
+      "seq": 82,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 8,
+      "moves": 9,
+      "target": [
+       147,
+       45
+      ]
+     },
+     {
+      "seq": 83,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 84,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 8,
+      "moves": 5,
+      "target": [
+       143,
+       41
+      ]
+     },
+     {
+      "seq": 85,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 144,
+      "moves": 2
+     },
+     {
+      "seq": 86,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 8,
+      "moves": 2
+     },
+     {
+      "seq": 87,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 769,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   },
+   {
+    "nation": "Media",
+    "army": 2,
+    "at": [
+     307,
+     58
+    ],
+    "moves0": 9,
+    "calls": [
+     {
+      "seq": 91,
+      "kind": "F6D8 non-war city",
+      "site": "0x44e4d2",
+      "eax": 330,
+      "moves": 9
+     },
+     {
+      "seq": 92,
+      "kind": "DBA8 walk",
+      "site": "F31C 0x44F47C (resupply)",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 93,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 94,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 330,
+      "moves": 9
+     },
+     {
+      "seq": 95,
+      "kind": "D734 line walk",
+      "site": "0x44dc71",
+      "eax": 2,
+      "moves": 9,
+      "target": [
+       310,
+       61
+      ]
+     },
+     {
+      "seq": 96,
+      "kind": "DBA8 walk",
+      "site": "DBA8 0x44DCA1 (recursion)",
+      "eax": 2,
+      "moves": 5,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 97,
+      "kind": "D734 line walk",
+      "site": "DBA8 0x44DC16 (line clear)",
+      "eax": 2,
+      "moves": 5,
+      "target": [
+       306,
+       57
+      ]
+     },
+     {
+      "seq": 98,
+      "kind": "F6D8 non-war city",
+      "site": "0x44d93a",
+      "eax": 330,
+      "moves": 2
+     },
+     {
+      "seq": 99,
+      "kind": "AAB4 gate",
+      "site": "0x564d97",
+      "eax": 2,
+      "moves": 2
+     },
+     {
+      "seq": 100,
+      "kind": "aab4ret",
+      "site": "0x0",
+      "eax": 1281,
+      "moves": null,
+      "aab4": 1
+     }
+    ],
+    "aab4": 1,
+    "moves_at_last_f31c_walk": 9,
+    "moves_at_aab4": 2,
+    "per_command_spent": true,
+    "full_budget_spent": true,
+    "predicates_differ": false,
+    "sieges": []
+   }
+  ],
+  "watch_changes": [
+   {
+    "seq": 0,
+    "seat": "Rome",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 2,
+     "5": 0
+    }
+   },
+   {
+    "seq": 19,
+    "seat": "Illyria",
+    "kind": "FA20 seat",
+    "moves": {
+     "2": 9,
+     "5": 10
+    }
+   },
+   {
+    "seq": 51,
+    "seat": "Seleucid",
+    "kind": "AAB4 gate",
+    "moves": {
+     "2": 9,
+     "5": 0
+    }
+   },
+   {
+    "seq": 96,
+    "seat": "Media",
+    "kind": "DBA8 walk",
+    "moves": {
+     "2": 5,
+     "5": 0
+    }
+   },
+   {
+    "seq": 98,
+    "seat": "Media",
+    "kind": "F6D8 non-war city",
+    "moves": {
+     "2": 2,
+     "5": 0
+    }
+   }
+  ]
+ }
+}
