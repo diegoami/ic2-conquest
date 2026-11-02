@@ -2,6 +2,12 @@
 
 **Tag:** [confirmed: Wine hook] for the call order, call sites, moves and the five sieges. [code] for `D734`'s guards (seed build
 disassembly 0x44D895–0x44D949, and the Ghidra listing of `FUN_0044d734`). Wine only, no native Windows run.
+**Status:** promoted by research PR #169 (merge `5943e53`) as `docs/reports/2026-11-02-gapb-siege-call168.md`; research #168
+closed. Research re-disassembled 0x44D895–0x44D990 (matches), recounted the 5 B27C returns (to 0x44D94E; their DBA8s return
+to 0x44F4CC twice and 0x44F444 three times), the refill at nation 9's FA20 (4/4), AAB4 against the last walk (0 of 38 differ)
+and the inert controls (4/4). Research's side note, the late spend of watched index 2 in `rome-t06end` (seq 96–98, seat 14):
+army table slot 2 belongs to **Media** in that start (the analysis lists "Media a2 [307, 58]", a reused slot), so this is
+Media's capital army walking out and back in its own seat (9 → 5 → 2), not Carthage's army.
 **Task:** research issue [#168](https://github.com/diegoami/imperial-conquest-2-research/issues/168) (for remake #1724), routed
 by the owner 2026-11-02. No remake change is requested here.
 **Starts:** the published `run-exp-longrun-v090` saves `aab4starts/rome-t03end.SAV` (before Rome-game turn 4),
