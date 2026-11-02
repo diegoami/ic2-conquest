@@ -19,7 +19,7 @@ AI units that end the original's turn on their starting tile but are elsewhere i
 | Rome | 40 | 40 × draws only | 39 |
 | Carthage | 40 | 40 × draws only | 38 |
 | Gaul | 40 | 40 × draws only | 39 |
-| Seleucid | 25 (stopped, driver; below) | 25 × draws only | 23 |
+| Seleucid | 25 (stops at turn 26 in every run: driver, below) | 25 × draws only | 23 |
 
 "Draws only" = troop sizes, recruit types, supplies, treasury, storm tiles. The structural AI rows are mostly the two
 gaps below; the rest (relations, city captures, battle outcomes) are not attributed here.
@@ -108,10 +108,12 @@ byte-identical to the plain build):
   20 armies at turn 40 against the original's 9 (Greece, Illyria, Numidia raise armies only in the remake). The anchored
   replays show army counts equal turn by turn (2–5 count rows per game), so this builds up through divergent wars, not
   a per-turn rule.
-- **Our harness:** `harness/driver.py end_turn` returned at the autosave line, but the autosave is written at the
-  round's start; for a human seat that is not first (Seleucid), AI seats still play after it. On turn 26 Ptolemaic
-  attacked Seleucid; the unplayed battle window ("Ptolemaic v Seleucid — Seleucid to move units") blocked File > Save.
-  Fixed in `466ff013` (keep playing battles and boxes until the human seat is current); Seleucid r3 re-runs the game.
+- **Our harness (open):** the Seleucid game stops at turn 26 in every run (r1-r4, deterministic). After the End turn's
+  autosave a window "Ptolemaic v Seleucid — Seleucid to move units" is open, so Ptolemaic attacked and the human
+  defends. It blocks File > Save, and the driver's battle flag `0x4A0B7C` reads 0, so `play_battle` does not run. Two
+  `end_turn` changes did not catch it and were reverted. Run r5 records the seat, the flag and screenshots, and tries
+  Computer general plus End turn clicks. The Seleucid rows above use r1's 25 turns. This is a driver limitation, not a
+  game difference.
 
 ## Data
 
