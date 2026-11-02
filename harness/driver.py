@@ -1544,9 +1544,11 @@ class Game:
         except (OSError, TypeError, AttributeError, struct.error):
             return None
 
-    def end_turn_proven(self, click, timeout=8):
+    def end_turn_proven(self, click, timeout=None):
         """One battle End turn click, then PROOF it advanced: the battle ended (flag down or a "Battle ended" box) or the mark changed
         within `timeout` s. DriverError (and no further click) if there is no sign: the click may still be queued."""
+        if timeout is None:     # the watch build animates battles and discards input meanwhile (owner 2026-11-02): IC2_BATTLE_PROOF_S=90
+            timeout = float(os.environ.get("IC2_BATTLE_PROOF_S", "8"))
         before = self.battle_progress_mark()
         click()
         proof = lambda: (not self.in_battle() or self.find_windows("Battle ended") or self.battle_progress_mark() != before)
