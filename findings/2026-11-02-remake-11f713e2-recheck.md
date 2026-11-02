@@ -1,6 +1,11 @@
 # Recheck on remake main 11f713e2 (fixes 1723, 1724): gaps A and B fixed; the garrison fallback's walk still misses the siege
 
 **Tag:** [confirmed: Wine hook + remake replay]. Wine only.
+**Status:** promoted by research PR #174 (merge `35082cd`) as `docs/reports/2026-11-02-remake-11f713e2-recheck.md`. The
+IC-main report `2026-11-02-remake-fixes-gaps-ab.md` now has a recheck section, and its gap-B scope includes the fallback walk
+(EBE8 → DBA8 at 0x44ECD6) as a third measured caller. Research checked the 6 commits, the 9 rows, `hooks-gapb-v2` seq 111–119
+with its control, the return addresses and the remake log lines. It did not re-check the diplomacy values, the two no-orders
+probes or the freeze diagnostics.
 **Task:** owner 2026-11-02, "there is a new head for the remake". Remake main `11f713e2` = v0.9.0 + 6 commits, including
 `9588fe3e` (fix 1723: spent-move swings without the extra fallback, gap A) and `11f713e2` (fix 1724: Faithful walk end
 contacts before the fallback, gap B). It answers `docs/reports/2026-11-02-remake-fixes-gaps-ab.md` (research PR #171).
