@@ -1,0 +1,140 @@
+{
+ "folder": "C:\\Users\\diego\\Documents\\ic2-turn26-repro",
+ "save": "t26-a00.SAV",
+ "randseed": 3576117115,
+ "events": [],
+ "menus": {
+  "file": 0,
+  "game": 1
+ },
+ "open_dialog_title": "Open",
+ "randseed_after_load": 4169717509,
+ "randseed_written": 3576117115,
+ "after": {
+  "windows": [
+   {
+    "title": "End of Game",
+    "class": "THumanFalls",
+    "visible": true,
+    "enabled": true,
+    "rect": [
+     10,
+     60,
+     456,
+     376
+    ]
+   },
+   {
+    "title": "Information",
+    "class": "TInformation",
+    "visible": true,
+    "enabled": false,
+    "rect": [
+     2,
+     269,
+     336,
+     743
+    ]
+   },
+   {
+    "title": "Unit map",
+    "class": "TUnitMap",
+    "visible": true,
+    "enabled": false,
+    "rect": [
+     332,
+     74,
+     447,
+     500
+    ]
+   },
+   {
+    "title": "Area map",
+    "class": "TAreaMap",
+    "visible": true,
+    "enabled": false,
+    "rect": [
+     2,
+     74,
+     336,
+     209
+    ]
+   },
+   {
+    "title": "Battlefield",
+    "class": "TBattleMap",
+    "visible": false,
+    "enabled": true,
+    "rect": [
+     52,
+     52,
+     320,
+     240
+    ]
+   },
+   {
+    "title": "Imperial Conquest 2    Seleucid's turn   (Darius)",
+    "class": "TPremierForm",
+    "visible": true,
+    "enabled": false,
+    "rect": [
+     -4,
+     -4,
+     666,
+     340
+    ]
+   },
+   {
+    "title": "Imperial Conquest 2",
+    "class": "TApplication",
+    "visible": true,
+    "enabled": false,
+    "rect": [
+     853,
+     533,
+     0,
+     0
+    ]
+   },
+   {
+    "title": "MSCTFIME UI",
+    "class": "MSCTFIME UI",
+    "visible": false,
+    "enabled": false,
+    "rect": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "title": "Default IME",
+    "class": "IME",
+    "visible": false,
+    "enabled": false,
+    "rect": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "battle_flag": 0,
+  "cur_nation": 2,
+  "randseed": 380787481,
+  "responds": true,
+  "hung": false,
+  "autosave_log_new": [
+   "0746 AUTO0746.SAV OK  "
+  ]
+ },
+ "frozen_like_wine": false,
+ "log": [
+  "started pid 25360",
+  "opening C:\\Users\\diego\\Documents\\ic2-turn26-repro\\t26-a00.SAV",
+  "RandSeed 4169717509 -> 3576117115",
+  "End turn"
+ ]
+}

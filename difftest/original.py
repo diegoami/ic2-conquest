@@ -396,6 +396,11 @@ class OriginalSession:
 
     def act(self, a, name):
         """Perform one action on the current state, then checkpoint `name`. Returns (reply texts, error)."""
+        if os.environ.get("IC2_LOG_RANDSEED"):
+            # Delphi RandSeed (0x45E030) right before the action: lets one turn be replayed from its save by writing the seed
+            # back after loading (seleucid turn-26 repro on native Windows, owner 2026-11-02).
+            import struct
+            self.emit(kind="randseed", before=name, op=a.get("op"), value=struct.unpack("<I", self.g.mem(0x45E030, 4))[0])
         try:
             texts, error = perform(self.g, a, self.state), None
         except Exception as e:      # any failure of one order is recorded (an xdotool click once exited 1 mid-campaign)

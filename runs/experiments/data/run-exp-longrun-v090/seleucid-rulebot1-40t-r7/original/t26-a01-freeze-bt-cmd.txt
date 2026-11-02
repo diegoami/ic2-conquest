@@ -1,0 +1,228 @@
+WineDbg attached to pid 0020
+0x7bd98235 ntdll+0x58235: retl 
+
+Backtracing for thread 0024 in process 0020 (C:\IC2\Imperial Conquest 2 fast rollingsave seed.exe):
+Backtrace:
+=>0 0x7a3eeb84 in win32u (+0xeb84) (0x0031ff08)
+  1 0x00424a8e in imperial conquest 2 fast rollin (+0x24a8e) (0x0031ff08)
+  2 0x00424521 in imperial conquest 2 fast rollin (+0x24521) (0x0031ff28)
+  3 0x0045c3ad in imperial conquest 2 fast rollin (+0x5c3ad) (0x0031ff40)
+  4 0x7bc09ab0 in kernel32 (+0x29ab0) (0x0031ff58)
+  5 0x7bd98203 in ntdll (+0x58203) (0x0031ff6c)
+  6 0x7bd98c75 in ntdll (+0x58c75) (0x0031ffec)
+
+Backtracing for thread 0124 in process 0020 (C:\IC2\Imperial Conquest 2 fast rollingsave seed.exe):
+Backtrace:
+=>0 0x7bd97ffc in ntdll (+0x57ffc) (0x029efd98)
+  1 0x7b759e0d in kernelbase (+0x79e0d) (0x029efd98)
+  2 0x7a212a71 in rpcrt4 (+0x42a71) (0x02437770)
+  3 0x7a206bda in rpcrt4 (+0x36bda) (0x02437770)
+  4 0x7bc09ab0 in kernel32 (+0x29ab0) (0x029eff58)
+  5 0x7bd98203 in ntdll (+0x58203) (0x029eff6c)
+  6 0x7bd98c75 in ntdll (+0x58c75) (0x029effec)
+
+Backtracing for thread 0148 in process 0020 (C:\IC2\Imperial Conquest 2 fast rollingsave seed.exe):
+Backtrace:
+=>0 0x7bd9778c in ntdll (+0x5778c) (0x7b5f60cc)
+  1 0x7b745af6 in kernelbase (+0x65af6) (0x7b5f60cc)
+  2 0x79109ee8 in mmdevapi (+0x9ee8) (0x7b5f60cc)
+  3 0x7bc09ab0 in kernel32 (+0x29ab0) (0x031eff58)
+  4 0x7bd98203 in ntdll (+0x58203) (0x031eff6c)
+  5 0x7bd98c75 in ntdll (+0x58c75) (0x031effec)
+
+Backtracing for thread 014c in process 0020 (C:\IC2\Imperial Conquest 2 fast rollingsave seed.exe):
+Backtrace:
+=>0 0x7910400b in mmdevapi (+0x400b) (0x033eff58)
+  1 0x7bc09ab0 in kernel32 (+0x29ab0) (0x033eff58)
+  2 0x7bd98203 in ntdll (+0x58203) (0x033eff6c)
+  3 0x7bd98c75 in ntdll (+0x58c75) (0x033effec)
+
+Backtracing for thread 06f0 in process 0020 (C:\IC2\Imperial Conquest 2 fast rollingsave seed.exe):
+Backtrace:
+=>0 0x7bd98235 in ntdll (+0x58235) (0x02deff40)
+  1 0x7bd98d93 in ntdll (+0x58d93) (0x02deff40)
+  2 0x7bc09ab0 in kernel32 (+0x29ab0) (0x02deff58)
+  3 0x7bd98203 in ntdll (+0x58203) (0x02deff6c)
+  4 0x7bd98c75 in ntdll (+0x58c75) (0x02deffec)
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0038
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0044
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0044
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0044
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0044
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 004c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0070
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0070
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0070
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0070
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0070
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 009c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 009c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 009c
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 00b8
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0100
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0100
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0100
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0100
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0100
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 0100
+WineDbg can't debug several processes at once.
+Either 'detach' from current one, or use another instance of WineDbg
+
+warning: could not attach to 06e0
+
+--- stderr
