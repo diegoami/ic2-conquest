@@ -1,0 +1,16 @@
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed aab4hook.exe","sha256":"f5dbe2b86a58f506072b988056160c75d6c7abb58b31de59cfa5debf4d0a1452"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/probes/fleetphase_hook_run.py", line 85, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/probes/fleetphase_hook_run.py", line 76, in main
+    h = play(FH.DST, start, turns, d, "hooked", log_path)
+  File "/home/diego/projects/ic2-conquest/difftest/probes/fleetphase_hook_run.py", line 52, in play
+    for r in FH.decode(buf, count - seen):
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/patches/aab4_hook.py", line 103, in decode
+    kind, army, eax, _, _, _, a0, a4, a8, ac, nation, seq = struct.unpack_from("<12I", buf, i * REC)
+                                                            ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+struct.error: unpack_from requires a buffer of at least 432 bytes for unpacking 48 bytes at offset 384 (actual buffer size is 400)
