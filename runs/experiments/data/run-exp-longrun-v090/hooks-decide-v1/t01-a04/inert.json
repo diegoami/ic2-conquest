@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v090/rome-rulebot1-40t/original/t01-a04.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261102-145457",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0722.SAV",
+    "sha256": "dfdd8bb90f594d5fb84a95fd2b7402fd80212f52d3f64aa1acee6bc4415d7c1a"
+   }
+  ],
+  "records": 15
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261102-145519",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0722.SAV",
+    "sha256": "dfdd8bb90f594d5fb84a95fd2b7402fd80212f52d3f64aa1acee6bc4415d7c1a"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}
