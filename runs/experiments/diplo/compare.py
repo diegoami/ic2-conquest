@@ -32,6 +32,7 @@ from pathlib import Path
 NATIONS = ["rome", "carthage", "seleucid", "ptolemaic", "macedonia", "numidia", "gaul", "greece", "celtiberia", "illyria",
            "dacia", "bithynia", "galatia", "armenia", "media", "thracia"]
 IDX = {n: i for i, n in enumerate(NATIONS)}
+QUARTERLY = {"451Bxx", "44C9xx"}          # hook caller labels of 0x451FB5 (thaw) and 0x44C9FF (deposition)
 CHOSE = re.compile(r"chose \[(?:Diplomacy|Military)/(?P<kind>[a-z-]+)\].*? -- (?P<why>.*)$")
 
 
@@ -65,6 +66,12 @@ def original_seats(rows):
                     s["actions"].append(("treaty", min(r["a"], r["b"]), max(r["a"], r["b"])))
                 else:
                     s["actions"].append(("treaty-effect", r["a"], r["b"], r["state"]))   # the sues branch's -10s, ally loop
+            elif r["caller"] in QUARTERLY:
+                # Season-tick bookkeeping on the seat that runs the week tick, not an AI diplomacy decision (2026-11-03):
+                # 0x451FB5 the quarterly thaw (FUN_00451b40: v+1, or min(0, v+3) on Random(3)==0) and 0x44C9FF the
+                # deposition (FUN_0044c8f0: an AI nation in debt or below 400 unity, Random(9)==0, clears cooldowns > -6).
+                # Both are rolls; kept apart so they don't read as rule differences.
+                s.setdefault("quarterly", []).append((r["caller"], r["a"], r["b"], r["state"]))
             else:
                 s["actions"].append(("other", r["caller"], r["a"], r["b"], r["state"]))
     return seats
