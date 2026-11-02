@@ -1,0 +1,7 @@
+#checkpoint a000
+split-army {army:0} {newarmy} 0
+#checkpoint a001
+army-transfer {army:0} {army:14} units=0
+#checkpoint a002
+end
+#checkpoint a003
