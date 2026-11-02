@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v090/fleetstarts/gaul-t30end.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261102-151634",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0751.SAV",
+    "sha256": "af47404a7c461d63f4ea2b2710182cd1ab3028510280c3d9362159cb63e6e32e"
+   }
+  ],
+  "records": 11
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261102-151709",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0751.SAV",
+    "sha256": "af47404a7c461d63f4ea2b2710182cd1ab3028510280c3d9362159cb63e6e32e"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}
