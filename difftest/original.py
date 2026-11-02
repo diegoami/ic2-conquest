@@ -306,6 +306,9 @@ class OriginalSession:
                 texts = self.g.dismiss_popups(strict=True)
             except DriverError as c:
                 texts.append(str(c))
+            if self.g.in_battle() and self.g.find_windows(" v "):
+                texts.append("BATTLE " + self.g.find_windows(" v ")[0][1])
+                self.g.play_battle()
             if self.g.find_windows("^Save"):
                 self.g.key("Escape")
                 time.sleep(1.0)
