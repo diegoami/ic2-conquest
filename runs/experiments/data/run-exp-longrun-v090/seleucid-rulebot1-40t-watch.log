@@ -1,0 +1,39 @@
+turn 1 Seleucid: orders same, 577 differences (0 own)
+turn 2 Seleucid: orders same, 452 differences (2 own)
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  3 (X_GetWindowAttributes)
+  Resource id in failed request:  0xa00008
+  Serial number of failed request:  23
+  Current serial number in output stream:  24
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 295, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 751, in save_as
+    self.wait(lambda: target.exists() and target.stat().st_size > 100000, 20, "save " + name)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 185, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for save Cseleucid-rulebot1-40t-watch-20261102180711-t03-a03.SAV
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 87, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 58, in main
+    texts, err = o.act(act.validate(x), f"t{k:02d}-a{j:02d}")
+                 ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 362, in act
+    self.checkpoint(name)
+    ~~~~~~~~~~~~~~~^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 343, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}-retry.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 751, in save_as
+    self.wait(lambda: target.exists() and target.stat().st_size > 100000, 20, "save " + name)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 185, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for save Cseleucid-rulebot1-40t-watch-20261102180711-t03-a03-retry.SAV

@@ -6,6 +6,7 @@ run folder as `aNNN.SAV`. Autosaves already in the game folder are moved aside f
 A progress file records the last finished action, so a stopped run shows where it stopped.
 """
 import json
+import os
 import shutil
 import subprocess
 import time
@@ -339,6 +340,8 @@ class OriginalSession:
             if g.find_windows("^Save"):
                 g.key("Escape")
                 time.sleep(1.0)
+            if os.environ.get("IC2_FREEZE_DIAG"):
+                diag["freeze_diag"] = self.freeze_diag(name)
             self.emit(kind="save_timeout", before=name, error=str(e), screenshot=shot.name if shot.exists() else None, **diag)
             saved = self.g.save_as(f"{self.tag}-{name}-retry.SAV")
         dst = self.out / f"{name}.SAV"
@@ -346,6 +349,50 @@ class OriginalSession:
         (self.out / "progress.json").write_text(json.dumps({"last_checkpoint": name, "time": time.strftime("%Y-%m-%dT%H:%M:%S")}))
         self.state = load(dst)
         return self.state
+
+    def freeze_diag(self, name):
+        """At a frozen checkpoint (IC2_FREEZE_DIAG=1; seleucid turn 26, 2026-11-02): per-thread CPU over 3 s and kernel wait
+        channel of the game's unix process, the X window tree, and winedbg's process list and backtraces of every thread. Written
+        to <name>-freeze-*.txt beside the receipt; returns the file names."""
+        from harness.driver import ENV, WINE
+        out, files = self.out, []
+        def save(tag, text):
+            f = out / f"{name}-freeze-{tag}.txt"
+            f.write_text(text)
+            files.append(f.name)
+        pid = self.g.pid
+        def ticks():
+            r = {}
+            for d in Path(f"/proc/{pid}/task").iterdir():
+                s = (d / "stat").read_text().rsplit(")", 1)[1].split()
+                wchan = (d / "wchan").read_text() if (d / "wchan").exists() else ""
+                r[d.name] = (int(s[11]) + int(s[12]), s[0], wchan)
+            return r
+        try:
+            a = ticks(); time.sleep(3); b = ticks()
+            save("cpu", "\n".join(f"tid {k} state {b[k][1]} wchan {b[k][2]} cpu_ticks_3s {b[k][0] - a.get(k, (b[k][0],))[0]}"
+                                  for k in sorted(b, key=int)) + "\n")
+        except Exception as x:
+            save("cpu", f"error {x}\n")
+        run = lambda args, t=90: subprocess.run(args, env=ENV, capture_output=True, text=True, timeout=t)
+        try:
+            save("xtree", run(["xwininfo", "-root", "-tree"]).stdout)
+        except Exception as x:
+            save("xtree", f"error {x}\n")
+        try:
+            procs = run([WINE, "winedbg", "--command", "info proc"]).stdout
+            save("procs", procs)
+            wpid = next((l.split()[0].lstrip("=") for l in procs.splitlines() if "Imperial Conquest" in l), None)
+            if wpid:
+                r1 = run([WINE, "winedbg", "--command", "bt all", "0x" + wpid], 120)
+                save("bt-cmd", r1.stdout + "\n--- stderr\n" + r1.stderr)
+                script = out / f"{name}-freeze-dbg.cmd"
+                script.write_text(f"attach 0x{wpid}\ninfo thread\nbt all\ndetach\nquit\n")
+                r2 = run([WINE, "winedbg", "--file", str(script)], 120)
+                save("bt-file", r2.stdout + "\n--- stderr\n" + r2.stderr)
+        except Exception as x:
+            save("bt-error", f"error {x}\n")
+        return files
 
     def act(self, a, name):
         """Perform one action on the current state, then checkpoint `name`. Returns (reply texts, error)."""

@@ -100,11 +100,12 @@ def main(argv=None):
     ap.add_argument("campaign")
     ap.add_argument("--pin")
     ap.add_argument("--follow", action="store_true")
+    ap.add_argument("--out", default="anchored", help="folder inside the campaign (a recheck on a new pin: anchored-<short>)")
     a = ap.parse_args(argv)
     if a.pin:
         os.environ.update(pin.env(a.pin))
     camp = Path(a.campaign)
-    out = camp / "anchored"
+    out = camp / a.out
     out.mkdir(exist_ok=True)
     tj = out / "turns.jsonl"
     done = {json.loads(l)["turn"] for l in tj.read_text().splitlines() if l.strip()} if tj.exists() else set()
