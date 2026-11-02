@@ -289,7 +289,29 @@ class OriginalSession:
         stray = self.close_stray_dialogs()
         if stray:
             self.emit(kind="closed_stray_dialogs", before=name, titles=stray)
-        saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+        try:
+            saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+        except DriverError as e:
+            # A window that opened after the End turn's autosave blocked File > Save (seleucid-rulebot1-40t, turn 26,
+            # 2026-11-02). Record what was on screen, answer boxes the documented way (a Confirm is answered No),
+            # close a leftover Save dialog, and retry once under a new name; a second failure ends the game as before.
+            wins = [(w[1], w[4], w[5]) for w in self.g.find_windows(".")]
+            shot = self.out / f"{name}-save-timeout.png"
+            try:
+                self.g.shot(shot)
+            except Exception:
+                pass
+            texts = []
+            try:
+                texts = self.g.dismiss_popups(strict=True)
+            except DriverError as c:
+                texts.append(str(c))
+            if self.g.find_windows("^Save"):
+                self.g.key("Escape")
+                time.sleep(1.0)
+            self.emit(kind="save_timeout", before=name, error=str(e), windows=wins, answered=texts,
+                      screenshot=shot.name if shot.exists() else None)
+            saved = self.g.save_as(f"{self.tag}-{name}-retry.SAV")
         dst = self.out / f"{name}.SAV"
         shutil.copy(saved, dst)
         (self.out / "progress.json").write_text(json.dumps({"last_checkpoint": name, "time": time.strftime("%Y-%m-%dT%H:%M:%S")}))

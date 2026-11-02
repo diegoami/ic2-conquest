@@ -17,7 +17,7 @@ release() {  # $1 = game folder name
   >> $A/runner.log 2>&1 || echo "release upload failed for $1 $(date)" >> $A/runner.log
 }
 for start in ${STARTS:-S00_Rome S01_Carthage S02_Seleucid S06_Gaul}; do
-  g=$(echo ${start#*_} | tr A-Z a-z)-rulebot1-${TURNS}t
+  g=$(echo ${start#*_} | tr A-Z a-z)-rulebot1-${TURNS}t${SUFFIX:-}
   [ -e $A/$g ] && { echo "skip $g (exists)" >> $A/runner.log; continue; }
   echo "start $g $(date -Is)" >> $A/runner.log
   python3 -m difftest.campaign artifacts/run-exp-civ-sweep/${start}_AUTO0720.SAV $A/$g --turns $TURNS --seed 12345 > $A/$g.log 2>&1 &
