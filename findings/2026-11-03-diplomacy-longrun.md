@@ -1,6 +1,14 @@
 # Diplomacy in the long runs: the remake's AI diplomacy follows the original's code; war declarations and relation differences come from rolls and battles
 
 **Tag:** [confirmed: code (both games) + Wine hook]. Wine only.
+**Status:** promoted by research PR #178 (merge `6945db3`) as `docs/reports/2026-11-03-diplomacy-longrun.md`. The recheck
+report's four war declarations now point to it as attributed. Research's intake notes:
+1. **D3 is a remake departure from a documented rule.** Research's §1a pseudocode already has it as the `else if`: a nation
+   that passes the war-candidate test is not offered a trade in the same iteration.
+2. **The busy flag is confirmed.** `FUN_0044faa0` is called at 0x44FC21 and stored at 0x44FC55, *inside* loop 1, after the
+   0 ≤ rel < 3 gates that jump to 0x44FD11. §1a had it before the loop and now carries a correction note.
+
+Research did not re-check the §3 per-row chains, the 157 ±2 cooldown pairs or the 35-turn mask stability.
 **Task:** owner 2026-11-03: "do war declarations and relations", and "can you decompile that in both games". Remake main `11f713e2`.
 
 ## 1. The code, side by side
