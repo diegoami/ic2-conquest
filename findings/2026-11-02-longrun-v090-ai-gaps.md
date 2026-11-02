@@ -2,6 +2,14 @@
 
 **Tag:** [confirmed: Wine hook + remake AI log]. Seed build in Wine; remake `aiprobe` decision and walk logs.
 **Task:** owner request 2026-11-02, "parallel long runs with the original and the remake" (anchored + free-running, 4 starts × 40 turns).
+**Status:** promoted by research PR #165 (merge `a0b21c5`) as `docs/reports/2026-11-02-longrun-v090-ai-gaps.md`.
+Research checked `AiTurn.cs:330-351` and `AiMilitaryPhase.cs:433-440` at 88c1989b, the hook inputs and branches, and that
+the hooked and plain saves are identical; it did not rerun Wine or the remake. Research added a code reading for gap A that is
+not hooked: the original decides on the fallback with `FUN_0044aab4`, which returns `recomputedFullMoves != army[+6]`
+(the army spent moves), not a change of tile (`2026-10-07-strategic-ai-turn.md` §3.5). A swing out and back has spent moves,
+so EBE8 never runs; T156 compares tiles. A hook at 0x44aab4 on `t01-a04` would confirm it. The `fleetstarts/*.SAV` files
+and the hook and probe saves are now in release `run-exp-longrun-v090` (`gaul-t30end.SAV`, `gaul-t39end.SAV`,
+`rome-t16end.SAV`, `hooks-and-probes-saves.tar.gz`).
 **Remake compared:** tag v0.9.0, `88c1989b`. Gap A is older: the Rome game's turn 5 moves the four capital armies on
 `8e2d9053` and `e20a6488` to the same tiles, and on v0.8.4 `d9cc71bc` to other tiles next to them (gap B: checked on
 `88c1989b` only).
