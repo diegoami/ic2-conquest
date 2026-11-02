@@ -177,7 +177,9 @@ def wait(cond, secs, what):
 def main():
     folder, save_name, seed = sys.argv[1], sys.argv[2], int(sys.argv[3])
     secs = int(sys.argv[4]) if len(sys.argv) > 4 else 150
-    res = {"folder": folder, "save": save_name, "randseed": seed, "events": []}
+    import hashlib
+    res = {"folder": folder, "save": save_name, "randseed": seed, "events": [],
+           "exe_sha256": hashlib.sha256(open(os.path.join(folder, EXE), "rb").read()).hexdigest()}
     p = subprocess.Popen([os.path.join(folder, EXE)], cwd=folder)
     pid = p.pid
     say("started pid", pid)
@@ -228,13 +230,20 @@ def main():
                     "responds": bool(ok), "hung": bool(u32.IsHungAppWindow(form)), "autosave_log_new": lines[n0:]}
     res["frozen_like_wine"] = any("Seleucid to move units" in w["title"] for w in res["after"]["windows"]) \
         and not res["after"]["battle_flag"]
+    # Only the game's own windows: the bounding box of its visible windows, with the game brought to the front. A full-desktop
+    # capture once caught the owner's other windows and went into a public release (2026-11-02); never capture the whole screen.
+    u32.SetForegroundWindow(form)
+    time.sleep(1.0)
+    rs = [rect(h) for h in windows(pid) if u32.IsWindowVisible(h) and rect(h)[2] > 2 and rect(h)[3] > 2]
+    x0, y0 = min(r[0] for r in rs), min(r[1] for r in rs)
+    x1, y1 = max(r[0] + r[2] for r in rs), max(r[1] + r[3] for r in rs)
     shot = os.path.join(folder, "after.png")
     subprocess.run(["powershell", "-NoProfile", "-Command",
-                    "Add-Type -AssemblyName System.Windows.Forms,System.Drawing;"
-                    "$b=[System.Windows.Forms.SystemInformation]::VirtualScreen;"
-                    "$i=New-Object System.Drawing.Bitmap $b.Width,$b.Height;"
-                    "$g=[System.Drawing.Graphics]::FromImage($i);$g.CopyFromScreen($b.Left,$b.Top,0,0,$i.Size);"
+                    "Add-Type -AssemblyName System.Drawing;"
+                    f"$i=New-Object System.Drawing.Bitmap {x1 - x0},{y1 - y0};"
+                    f"$g=[System.Drawing.Graphics]::FromImage($i);$g.CopyFromScreen({x0},{y0},0,0,$i.Size);"
                     f"$i.Save('{shot}')"], timeout=60)
+    res["shot_box"] = [x0, y0, x1 - x0, y1 - y0]
     res["log"] = log
     with open(os.path.join(folder, "result.json"), "w") as f:
         json.dump(res, f, indent=1)

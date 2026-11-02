@@ -2,6 +2,19 @@
 
 **Tag:** [confirmed: Wine + native Windows + remake replay] for the overthrow. The frozen battle window is Wine-only and
 unexplained.
+**Status:** promoted by research PR #176 (merge `4ca6e33`) as `docs/reports/2026-11-02-seleucid-turn26-overthrow.md`. Research
+narrowed one claim: "not a harness bug" holds for the turn-26 stop. That the campaign's frozen battle window comes from the
+same overthrow is inference. Research's two evidence gaps, answered:
+1. **Exe:** sha256 `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f` for both
+   `C:\Users\diego\Documents\ic2-turn26-repro\Imperial Conquest 2 fast rollingsave seed.exe` (native run) and the Wine game
+   folder's copy (`turn26-repro/exe-sha256.txt`). `repro_windows.py` now records `exe_sha256` in result.json.
+2. **Message text**, read from both screenshots (Wine `wine-v1/after.png`, Windows `windows-v1/after-game-only.png`): "The game
+   is over for Darius the leader of Seleucid. Your unpopularity has forced the army to overthrow you." Then "Your short time in
+   power in Seleucid produced these changes.": 270 BC population 16,944,000, cities 62, treasury 2,700 talents; 269 BC
+   13,767,000, 47, 6,308 (`turn26-repro/end-of-game-text.txt`).
+
+The Windows screenshot first captured the whole desktop. It was replaced in the release by a crop to the game dialog
+(`turn26-repro-saves-v2.tar.gz`), and the script now captures only the game's windows.
 **Task:** owner 2026-11-02: why the Seleucid long run stops at turn 26, whether it's the original or the remake, and a native
 Windows check.
 
