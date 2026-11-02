@@ -40,3 +40,21 @@ diagnostics (`seleucid-rulebot1-40t-r5/original/receipt.jsonl`, `t26-a01-*.png`)
   does not respond.
 Loading the run's AUTO0746.SAV shows no battle (probes/battle-t26). The battle state is not in the save, so reproducing it
 needs the 22-minute game. Not pursued further; the analysis uses r1's 25 turns. Two end_turn changes were tried and reverted.
+
+## Seleucid turn 26 with the WATCH build (owner 2026-11-02: no `no_delay`)
+
+`patches/watch_seed_build.py` builds `Imperial Conquest 2 watch rollingsave seed.exe`: the owner's watch rollingsave
+(rebuilt byte-identical, sha256 70aa4513…) plus the seed patch. Game `seleucid-rulebot1-40t-watch-r2`, run with
+`IC2_BATTLE_PROOF_S=90`. The first watch run stopped at turn 3: the driver allows 8 s per battle End turn proof, and the watch
+build animates battles and discards input meanwhile.
+- Turns 1–25 match the fast run line for line (orders and difference counts). `Delay` draws no random numbers, so it's the
+  same game.
+- Turn 26 stops identically: "Ptolemaic v Seleucid — Seleucid to move units", never painted, seat 2, battle flag 0, 30 End
+  turn clicks with no effect.
+
+**So `no_delay` is not the cause.** Still possible:
+- the rolling-autosave hook, which both builds have and which runs just before `StartTurn`;
+- the original's own path for a battle the human defends at the start of the turn, which leaves the flag at 0;
+- Wine.
+
+Next: at the freeze, the CPU use and a `winedbg` backtrace.
