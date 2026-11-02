@@ -22,3 +22,9 @@ So these tests compare one random draw; their v0.8.4 "same" was a coincidence. T
 is Gaul's relations after End turn (AI diplomacy, not our order).
 Probe: the scratch script ran `remake.run` with `seed=` over the staged `join-20-ok.SAV`; outputs not kept beyond the
 counts above (rerunnable in seconds).
+
+## Gap C hook (owner "do all", 2026-11-02)
+
+`fleetphase_hook_run` from copies of the original's end-of-turn saves (named by game and turn so the hook's folders are
+unique): gaul t30 end (Carthage fleet at Utica, turn 31), gaul t39 end (Leptis Magna, turn 40), rome t16 end (Ptolemaic
+fleet at Alexandria, turn 17). Output `hooks-fleet-v1/`.
