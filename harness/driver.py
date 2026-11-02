@@ -1525,6 +1525,24 @@ class Game:
             time.sleep(1)
         else:
             raise DriverError("end turn timed out")
+        # The autosave line is written when the round starts; for a human seat that is not first in the turn order, the
+        # AI seats before it still play after it, and one of them can attack the human: the battle window then waited
+        # for the human and blocked File > Save (seleucid-rulebot1-40t turn 26, 2026-11-02). Keep handling battles,
+        # peace offers and boxes until the human's seat is current again.
+        while time.time() - t0 < timeout and (self.i16(CUR_NATION) != me or self.in_battle() and self.find_windows(" v ")):
+            if self.in_battle() and self.find_windows(" v "):
+                texts.append("BATTLE " + self.find_windows(" v ")[0][1])
+                self.play_battle(battle_shot, strict=strict_confirm)
+                continue
+            eog = self.find_windows("^End of Game$")
+            if eog:
+                raise GameOver(self.read_popup(eog[0]))
+            if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
+                r = self.answer_battle_peace(peace)
+                texts.append("PEACE %s: %s" % (r["button"], r["text"]))
+                continue
+            texts += self.dismiss_popups(strict=strict_confirm)
+            time.sleep(1)
         time.sleep(3)
         texts += self.dismiss_popups(strict=strict_confirm)
         line = log.read_text().splitlines()[-1]
