@@ -1,0 +1,62 @@
+turn 1 Seleucid: orders same, 577 differences (0 own)
+turn 2 Seleucid: orders same, 452 differences (2 own)
+turn 3 Seleucid: orders same, 184 differences (17 own)
+turn 4 Seleucid: orders DIFFER, 336 differences (25 own)
+turn 5 Seleucid: orders DIFFER, 412 differences (30 own)
+turn 6 Seleucid: orders DIFFER, 536 differences (65 own)
+turn 7 Seleucid: orders DIFFER, 556 differences (66 own)
+turn 8 Seleucid: orders DIFFER, 391 differences (67 own)
+turn 9 Seleucid: orders DIFFER, 442 differences (66 own)
+turn 10 Seleucid: orders DIFFER, 445 differences (61 own)
+turn 11 Seleucid: orders DIFFER, 544 differences (52 own)
+turn 12 Seleucid: orders DIFFER, 594 differences (58 own)
+turn 13 Seleucid: orders same, 627 differences (64 own)
+turn 14 Seleucid: orders same, 742 differences (52 own)
+turn 15 Seleucid: orders same, 587 differences (51 own)
+turn 16 Seleucid: orders same, 1230 differences (43 own)
+turn 17 Seleucid: orders same, 1146 differences (48 own)
+turn 18 Seleucid: orders same, 1219 differences (62 own)
+turn 19 Seleucid: orders same, 2362 differences (69 own)
+turn 20 Seleucid: orders same, 2320 differences (76 own)
+turn 21 Seleucid: orders same, 2322 differences (84 own)
+turn 22 Seleucid: orders same, 2669 differences (87 own)
+turn 23 Seleucid: orders same, 2241 differences (93 own)
+turn 24 Seleucid: orders same, 2416 differences (93 own)
+turn 25 Seleucid: orders same, 1405 differences (108 own)
+X Error of failed request:  BadWindow (invalid Window parameter)
+  Major opcode of failed request:  3 (X_GetWindowAttributes)
+  Resource id in failed request:  0xa00008
+  Serial number of failed request:  23
+  Current serial number in output stream:  24
+Traceback (most recent call last):
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 296, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 751, in save_as
+    self.wait(lambda: target.exists() and target.stat().st_size > 100000, 20, "save " + name)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 185, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for save Cseleucid-rulebot1-40t-r6-20261102185435-t26-a01.SAV
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 87, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/campaign.py", line 58, in main
+    texts, err = o.act(act.validate(x), f"t{k:02d}-a{j:02d}")
+                 ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 409, in act
+    self.checkpoint(name)
+    ~~~~~~~~~~~~~~~^^^^^^
+  File "/home/diego/projects/ic2-conquest/difftest/original.py", line 346, in checkpoint
+    saved = self.g.save_as(f"{self.tag}-{name}-retry.SAV")
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 751, in save_as
+    self.wait(lambda: target.exists() and target.stat().st_size > 100000, 20, "save " + name)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 185, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for save Cseleucid-rulebot1-40t-r6-20261102185435-t26-a01-retry.SAV

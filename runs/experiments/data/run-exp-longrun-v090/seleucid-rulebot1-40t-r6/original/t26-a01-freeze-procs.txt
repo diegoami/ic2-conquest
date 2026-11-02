@@ -1,0 +1,11 @@
+ pid      threads  executable (all id:s are in hex)
+ 000006f4 1        'start.exe'
+=000006f8 1        \_ 'winedbg.exe'
+ 00000044 4        'explorer.exe'
+ 00000038 10       'services.exe'
+ 000000fc 6        \_ 'rpcss.exe'
+ 000000b8 8        \_ 'winedevice.exe'
+ 0000009c 3        \_ 'svchost.exe'
+ 00000070 5        \_ 'plugplay.exe'
+ 0000004c 8        \_ 'winedevice.exe'
+ 00000020 4        'Imperial Conquest 2 fast rollingsave seed.exe'
