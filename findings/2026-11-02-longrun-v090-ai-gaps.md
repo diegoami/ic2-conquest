@@ -31,7 +31,7 @@ gaps below; the rest (relations, city captures, battle outcomes) are not attribu
 | its own capital (army) | 410 | Macedonia (Pella), Media (Ecbatana), Thracia (Byzantium), Ptolemaic (Alexandria), Seleucid (Antioch): every turn they are idle |
 | an enemy city (army) | 17 | Carthage–Castulo, Seleucid–Astacus, Seleucid–Synnada, Ptolemaic–Sidon, Galatia–Cius (random) |
 | another nation's city (army) | 3 | Armenia–Van (same as gap A) |
-| own port (fleet) | 5 | Ptolemaic–Alexandria, Carthage–Utica, Leptis Magna (gap C, not attributed) |
+| own port (fleet) | 5 | Ptolemaic–Alexandria (port tile), Carthage–Utica, Leptis Magna (random hunt draw): gap C |
 
 ## Gap A: an army whose walk ends where it started gets a second march (garrison fallback) in the remake
 
@@ -77,12 +77,25 @@ tree selects `AttackCity` and the remake besieges like the original (Galatia–C
 Not hooked here: which original call turns the continuation into a siege (the army does not leave its tile; Carthage
 kept 9 moves). The outcome is measured; the mechanism is for research.
 
-## Gap C (not attributed): AI fleets in their own port
+## Gap C: AI fleets in their own port: a random hunt draw, plus one port tile (not a rule gap)
 
-The original keeps Carthage's fleet in port at Utica (93,76) and Leptis Magna (111,93); the remake's fleet phase sends
-it hunting (`fleet phase: fleet-0 hunt, support 1, hunt 116`, `probes/gaul-rulebot1-40t-t31`) to (122,80) / (127,87).
-The Ptolemaic fleet next to Alexandria ends one tile off ((189,93) vs (188,92)). Needs the fleet-phase hook
-(`patches/fleetphase_hook.py`) on these saves.
+Fleet-phase hook (`patches/fleetphase_hook.py`, run `hooks-fleet-v1`, from the games' own saves; hooked autosaves
+byte-identical to the plain build):
+
+| Start | Original (F608 inputs, end) | Remake (`aiprobe`, seeds 12345, 1–5) |
+|---|---|---|
+| Gaul game, before turn 31: Carthage fleet 0 at Utica (93,76) | hunt score **106** → hunts to (122,80) in the hooked run; **stayed** in port in the game itself | 116 at seed 12345; 82, 117, 127, 106, 90 at seeds 1–5 (hunt when > 100) |
+| Gaul game, before turn 40: Carthage fleet 0 at Leptis Magna (111,93) | score **98** → port, stays | 107; 108, 107, 116, 91, 90 |
+| Rome game, before turn 17: Ptolemaic fleet 1 at (189,93), port Alexandria | no route, hunt −10000 → port branch; stays at (189,93) | port branch; ends at (188,92) |
+
+- **The hunt score is random in both games.** The original hunted from the same state in the hooked run but not in the
+  game (a different random stream), and the remake's score spreads from 82 to 127 over seeds. The hunt branch and its
+  `> 100` boundary are exercised here for the first time (the 16 × 5 fleet comparison had only −10000 scores,
+  `2026-10-31-ai-fleets-vs-remake-main.md`). Two samples cannot show whether the two distributions match: a seed sweep
+  of the original's scorer `FUN_0044f4f8` would.
+- **Port tile (open, small):** for Ptolemaic fleet 1 next to Alexandria, both choose the port branch, and the original's
+  fleet stays on its tile while the remake's moves one tile, to (188,92). 3 rows (Rome game turn 17, Carthage game turn 2, Seleucid game turn 20).
+  The port pick is `FUN_0044e9a8`.
 
 ## Other results of the long runs
 
