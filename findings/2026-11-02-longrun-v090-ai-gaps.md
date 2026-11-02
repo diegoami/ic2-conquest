@@ -79,6 +79,8 @@ This confirms research's code reading (`FUN_0044aab4` returns `recomputedFullMov
 `2026-10-07-strategic-ai-turn.md` §3.5). The remake's T156 tests tile equality (`AiTurn.cs:336-351`: `beforeTile.X ==
 afterTile.X && beforeTile.Y == afterTile.Y`, with moves > 0), so it runs the fallback where the original does not. The
 likely fix is to test spent moves (moves after the command < moves before), not the tile.
+**Correction 2026-11-02:** use the original's full-budget gate (moves != the full allowance), not a per-command
+comparison; see `2026-11-02-remake-fixes-gaps-ab.md`.
 
 **Effect over a game:** in the free-running remake game these capital armies drift away from their capitals (Rome
 game, turn 30: Macedonia's army at (146,53), Media's at (283,58) by turn 40), while the original's stay put for 40 turns.
