@@ -7,11 +7,13 @@ A progress file records the last finished action, so a stopped run shows where i
 """
 import json
 import shutil
+import subprocess
 import time
 from pathlib import Path
 
 from difftest.actions import checkpoint_names
-from harness.driver import AREA_ORIGIN, G, SEL_ARMY, UNIT_PAINT, VIEW_COLS, VIEW_ROWS, DriverError, Game
+from harness.driver import (AREA_ORIGIN, BATTLE_TOOLBAR_Y, BATTLE_TOOLS, CUR_NATION, G, SEL_ARMY, UNIT_PAINT, VIEW_COLS,
+                            VIEW_ROWS, DriverError, Game)
 from state.sav import can_recruit_at, load
 
 
@@ -295,25 +297,49 @@ class OriginalSession:
             # A window that opened after the End turn's autosave blocked File > Save (seleucid-rulebot1-40t, turn 26,
             # 2026-11-02). Record what was on screen, answer boxes the documented way (a Confirm is answered No),
             # close a leftover Save dialog, and retry once under a new name; a second failure ends the game as before.
-            wins = [(w[1], w[4], w[5]) for w in self.g.find_windows(".")]
+            g = self.g
+            diag = {"windows": [(w[1], w[2], w[3], w[4], w[5]) for w in g.find_windows(".")],
+                    "cur_nation": g.i16(CUR_NATION), "battle_flag": g.in_battle(), "steps": []}
             shot = self.out / f"{name}-save-timeout.png"
             try:
-                self.g.shot(shot)
+                g.shot(shot)
             except Exception:
                 pass
-            texts = []
             try:
-                texts = self.g.dismiss_popups(strict=True)
+                diag["steps"].append({"dismiss": g.dismiss_popups(strict=True)})
             except DriverError as c:
-                texts.append(str(c))
-            if self.g.in_battle() and self.g.find_windows(" v "):
-                texts.append("BATTLE " + self.g.find_windows(" v ")[0][1])
-                self.g.play_battle()
-            if self.g.find_windows("^Save"):
-                self.g.key("Escape")
+                diag["steps"].append({"dismiss": str(c)})
+            bw = g.find_windows(" v ")
+            if bw:
+                # The battle window the human defends (seleucid turn 26: flag 0x4A0B7C reads 0 while it is open, so
+                # play_battle does nothing). Raise it, then Computer general and up to 30 End turn clicks, recording each.
+                subprocess.run(["xdotool", "windowactivate", "--sync", str(bw[0][0])], check=False)
                 time.sleep(1.0)
-            self.emit(kind="save_timeout", before=name, error=str(e), windows=wins, answered=texts,
-                      screenshot=shot.name if shot.exists() else None)
+                try:
+                    g.shot(self.out / f"{name}-battle-raised.png")
+                except Exception:
+                    pass
+                bx = g.battle_x or BATTLE_TOOLS
+                g.click(bx.get("computer", BATTLE_TOOLS["computer"]), BATTLE_TOOLBAR_Y, pause=2.0)
+                diag["steps"].append({"computer_general": True, "flag": g.in_battle(), "open": bool(g.find_windows(" v "))})
+                for i in range(30):
+                    if not g.find_windows(" v ") or g.find_windows("Battle ended"):
+                        break
+                    g.click(bx.get("end_turn", BATTLE_TOOLS["end_turn"]), BATTLE_TOOLBAR_Y, pause=2.0)
+                    diag["steps"].append({"end_turn_click": i + 1, "flag": g.in_battle(), "open": bool(g.find_windows(" v ")),
+                                          "title": (g.find_windows(" v ") or [[0, ""]])[0][1]})
+                try:
+                    g.shot(self.out / f"{name}-battle-after.png")
+                except Exception:
+                    pass
+                try:
+                    diag["steps"].append({"after_battle": g.dismiss_popups(strict=True)})
+                except DriverError as c:
+                    diag["steps"].append({"after_battle": str(c)})
+            if g.find_windows("^Save"):
+                g.key("Escape")
+                time.sleep(1.0)
+            self.emit(kind="save_timeout", before=name, error=str(e), screenshot=shot.name if shot.exists() else None, **diag)
             saved = self.g.save_as(f"{self.tag}-{name}-retry.SAV")
         dst = self.out / f"{name}.SAV"
         shutil.copy(saved, dst)

@@ -1525,30 +1525,6 @@ class Game:
             time.sleep(1)
         else:
             raise DriverError("end turn timed out")
-        # A battle can open AFTER the autosave line: an AI army attacked the human's, and the human, the defender, is asked to
-        # command it at the start of its turn ("Ptolemaic v Seleucid  Seleucid to move units", seleucid-rulebot1-40t turn 26,
-        # 2026-11-02; the human seat is already current then). Its window blocked File > Save. Watch for it for 12 s after
-        # the line (and after each battle), play it with Computer general, and answer what follows it as above.
-        quiet = time.time()
-        while time.time() - t0 < timeout and time.time() - quiet < 12:
-            if self.in_battle() and self.find_windows(" v "):
-                texts.append("BATTLE " + self.find_windows(" v ")[0][1])
-                self.play_battle(battle_shot, strict=strict_confirm)
-                quiet = time.time()
-                continue
-            eog = self.find_windows("^End of Game$")
-            if eog:
-                raise GameOver(self.read_popup(eog[0]))
-            if self.find_windows("^%s$" % re.escape(self.PEACE_TITLE)):
-                r = self.answer_battle_peace(peace)
-                texts.append("PEACE %s: %s" % (r["button"], r["text"]))
-                quiet = time.time()
-                continue
-            more = self.dismiss_popups(strict=strict_confirm)
-            if more:
-                texts += more
-                quiet = time.time()
-            time.sleep(0.5)
         time.sleep(3)
         texts += self.dismiss_popups(strict=strict_confirm)
         line = log.read_text().splitlines()[-1]
