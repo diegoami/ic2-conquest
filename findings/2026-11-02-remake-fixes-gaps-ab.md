@@ -2,6 +2,15 @@
 
 **Tag:** [derived] from two promoted reports: research PR #165/#167 `2026-11-02-longrun-v090-ai-gaps.md` and research PR
 #169 `2026-11-02-gapb-siege-call168.md`. Both causes are [confirmed: Wine hook]; no native Windows run. No new measurement here.
+**Status:** promoted by research PR #171 (merge `b83060c`) as the single IC-main report
+`docs/reports/2026-11-02-remake-fixes-gaps-ab.md`; the gap-A correction is applied to the long-run report.
+Research's intake corrections (the promoted text is authoritative):
+1. Troop losses per siege turn are about 600–1,150, not 500–1,100 (Castulo 21,878 → 20,732 is −1,146).
+2. The remake `AttackCity` "≥ 102" is one sample (Galatia–Cius); the threshold was not checked.
+3. "The remaining rows are draws" is narrowed: relations, captures and battle rows were never attributed.
+4. Added: the army-attack branch of the end check was measured once. In `hooks-gapb-v1/rome-t01end`, seq 16–20, Carthage 2
+   walks from (42,63) by F31C 0x44F409 (`army>100`), D734 ends at (39,64), and AEE4 is entered from 0x44D9A0 (D734's army
+   branch).
 **Task:** owner 2026-11-02: what the IC main session should change, as a finding for intake and not a prompt only.
 **Remake:** v0.9.0, `88c1989b` (code references at that commit). Both gaps are older (v0.8.4, `8e2d9053`, `e20a6488`).
 **Correction:** the longrun finding's gap-A wording "test spent moves (moves after the command < moves before)" is replaced
