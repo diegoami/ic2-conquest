@@ -1,6 +1,23 @@
 # Recheck on remake v0.9.2 (1723c673): four fixes confirmed, a regression in the launch fix, and the stale walk word at −1 in play
 
 **Tag:** [confirmed: remake replays against the stored original games; Wine hooks (inert) + code in both games]. Wine only.
+**Status:** promoted by research PR #188 (merge `96d547c`) as `docs/reports/2026-11-03-remake-v092-recheck.md`. It carries
+the stale-word specification and the anchored-seed method note; the IC-main fixes report gained a v0.9.2 section; the #97
+report and the spec have notes.
+
+**Verified by research:**
+- LaunchTile on `world.Terrain`, the importer's TurnIndex and seed, the stream key;
+- DBA8's `[ebp-0xa]` in the disassembly: never initialised; not written on the direct path (0x44DC0D); DB38 writes −1 at
+  0x44DB47; the ≤ −1 skips at 0x44DC2C, 0x44DC4D and 0x44DC8C;
+- the walk-hook sequence, the non-inert gapb run, the turn-seed stays, the totals and the recheck counts.
+
+**The specified stale-word rule** is limited to what was measured:
+- when a walk's DB38 fails, that walk does no swing and no recursion;
+- the next walk in the same F31C pass, EBE8 for the same army on the direct path, doesn't either;
+- otherwise T239 applies. Other carry-overs (other sequences, other armies or seats) are unknown.
+
+**Not re-checked by research:** §1's per-game lists, the Gaul t30 case, the weather reading, and the shared frame address
+(the hook shows the value carried over, not the address).
 **Task:** owner 2026-11-03, "ok we have a new release, 0.9.2".
 
 **The release.** Remake `v0.9.2` = main `1723c673` = `0d9d4729` + 3 commits:
