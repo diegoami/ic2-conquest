@@ -1,13 +1,16 @@
 """Research #42 part 1 (delegated 2026-10-30): crossed tiles in play, from patches/step_hook.py.
 
     python3.12 -m difftest.probes.step_hook_run OUT_DIR
+    python3.12 -m difftest.probes.step_hook_run OUT_DIR START.SAV [START.SAV ...]   # one End turn per start (the AI's walks)
 
 Sessions, each played by the hooked build and then by the unpatched seed build with startup seed 12345; their saves must be
 byte-identical (inert.json):
   c4-far   BASE.SAV (= run0-start-AUTO0720-seed12345.SAV), human order: army 0 (100,37), 8 moves -> (100,25); File > Save
   c4-near  the same -> (100,32)
   ai-2     BASE.SAV, two End turns (the AI's walks)
-The log (one record per call of the army step FUN_0044d420) is read from memory after the order or each End turn.
+With START.SAV arguments (v0.9.1 long-run positions, 2026-11-03), each start is a session of its own (named by its stem): one
+End turn, the human seat giving no orders. The log (one record per call of the army step FUN_0044d420) is read from memory
+after the order or each End turn.
 """
 import hashlib
 import json
@@ -37,10 +40,10 @@ def read_log(g, seen):
     return SH.decode(g.mem(W.BUF + seen * SH.REC, (count - seen) * SH.REC), count - seen), count
 
 
-def session(exe, name, out, tag, hooked):
+def session(exe, name, out, tag, hooked, start=BASE, turns=(1, 2)):
     g = Game(exe=exe)
     g.move_aside(sorted(G.glob("AUTO*")))
-    g.load(BASE, seed=SEED)
+    g.load(start, seed=SEED)
     records, seen, saves = [], 0, []
     if name.startswith("c4"):
         goal = (100, 25) if name == "c4-far" else (100, 32)
@@ -53,7 +56,7 @@ def session(exe, name, out, tag, hooked):
         shutil.copy(p, dst)
         saves.append(dst)
     else:
-        for t in (1, 2):
+        for t in turns:
             line, _ = g.end_turn(peace=False)
             dst = out / f"{tag}-{name}-t{t}-{line}"
             shutil.copy(G / line, dst)
@@ -73,11 +76,13 @@ def main():
         b = bytearray((G / SH.SRC).read_bytes())
         SH.build(b)
         hooked_exe.write_bytes(bytes(b))
-    for name in ("c4-far", "c4-near", "ai-2"):
+    starts = [Path(a) for a in sys.argv[2:]]
+    sessions = [(p.stem, p, (1,)) for p in starts] or [(n, BASE, (1, 2)) for n in ("c4-far", "c4-near", "ai-2")]
+    for name, start, turns in sessions:
         if (out / f"{name}-inert.json").exists():
             continue
-        recs, hs = session(SH.DST, name, out, "hooked", True)
-        _, ps = session(EXE, name, out, "plain", False)
+        recs, hs = session(SH.DST, name, out, "hooked", True, start, turns)
+        _, ps = session(EXE, name, out, "plain", False, start, turns)
         (out / f"{name}-steps.jsonl").write_text("".join(json.dumps(r) + "\n" for r in recs))
         same = [a["sha256"] == b["sha256"] for a, b in zip(hs, ps)]
         (out / f"{name}-inert.json").write_text(json.dumps({"hooked": hs, "plain": ps, "identical": all(same),
