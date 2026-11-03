@@ -8,7 +8,9 @@ set -u
 cd "$(dirname "$0")/../../.."
 # NAME, PIN: a later recheck (v0.9.1: NAME=run-exp-longrun-v091 PIN=0d9d4729)
 NAME=${NAME:-run-exp-longrun-v090}; A=artifacts/$NAME; PIN=${PIN:-88c1989b}; TURNS=${TURNS:-40}
-export IC2_REMAKE=$HOME/projects/ic2-remake-pin-$PIN IC2_DIFF_BUILD=$PWD/artifacts/diffpin-$PIN-build PYTHONUNBUFFERED=1
+# IC2_LOG_RANDSEED: RandSeed before every action, so a turn whose outcome depends on draws can be replayed exactly (2026-11-03:
+# 21 Macedonia position rows could not be attributed without it).
+export IC2_REMAKE=$HOME/projects/ic2-remake-pin-$PIN IC2_DIFF_BUILD=$PWD/artifacts/diffpin-$PIN-build PYTHONUNBUFFERED=1 IC2_LOG_RANDSEED=1
 mkdir -p $A
 archive() { python3 scripts/archive_measurements.py $NAME --commit >> $A/runner.log 2>&1 || echo "archive failed $(date)" >> $A/runner.log; }
 release() {  # $1 = game folder name
