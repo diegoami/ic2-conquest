@@ -1,6 +1,12 @@
 # Recheck on remake v0.9.1 (0d9d4729): the garrison fallback's walk now besieges Sidon; no other anchored turn changes
 
 **Tag:** [confirmed: remake replay against the stored original games; Wine hook + remake code for section 4]. Wine only.
+**Status:** promoted by research PR #181 (merge `597b996`) as `docs/reports/2026-11-03-remake-v091-recheck.md`. The IC-main
+report `2026-11-02-remake-fixes-gaps-ab.md` gained a v0.9.1 section and the no-command-fallback fix. Research verified the
+remake code at `0d9d4729` (both fallback paths, `mayMarch`), AAB4's formula in the disassembly (0x44AAB4–0x44AB0B), hook
+seq 4–10 with its control, the probe lines, the anchored-diff and stays files and the recheck counts. Correction applied:
+the recheck summary is `report-v1.json` (the `.md` is not archived). Not re-checked by research: the row-for-row match with
+v0.9.0, `classify.py`, the GameOver change; "spent moves earlier" for the 8 moves is our reading.
 **Task:** owner 2026-11-03, "Now we have version 0.9.1 and some fixes, continue with your tasks". Remake `v0.9.1` = main
 `0d9d4729` = `11f713e2` + 4 commits. One changes the engine: `e1772c52` (fix 1729, PR #1731), the walk end check for both
 garrison construction paths (`AiMilitaryPhase.AddMarchCandidate`'s no-tree-command fallback and `AiTurn.RunGarrisonFallback`).
@@ -35,7 +41,7 @@ contact (F6D8 branch in the original).
 ## 3. Registry recheck
 
 `python3 -m difftest.recheck 0d9d4729 --version v1` (order sweeps, stats scenarios, 5-turn campaigns, remake side replayed
-against the stored original runs; `run-exp-recheck-0d9d4729/report-v1.md`): unchanged 113, FIXED 11, REGRESSED 11, CHANGED 4,
+against the stored original runs; `run-exp-recheck-0d9d4729/report-v1.json`): unchanged 113, FIXED 11, REGRESSED 11, CHANGED 4,
 row for row identical to the v0.9.0 recheck (`run-exp-recheck-88c1989b`). The 11 "regressions" are the one storm draw
 explained there; v0.9.1 changes no registered test.
 
