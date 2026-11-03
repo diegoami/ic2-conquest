@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v092/portstarts/carthage-t21pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-230929",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0741.SAV",
+    "sha256": "3846ac7985f867be5e2f75b1bf61b48bc9c339bd480800b899e5a301caa3d9ad"
+   }
+  ],
+  "records": 4
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-231000",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0741.SAV",
+    "sha256": "3846ac7985f867be5e2f75b1bf61b48bc9c339bd480800b899e5a301caa3d9ad"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}

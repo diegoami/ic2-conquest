@@ -1,0 +1,29 @@
+1 [(220, 65, 5)]
+2 [(220, 65, 5)]
+3 [(220, 65, 5)]
+4 [(220, 65, 5)]
+5 [(220, 65, 5)]
+6 [(220, 65, 5)]
+7 [(220, 65, 5)]
+8 [(220, 65, 5)]
+9 [(220, 65, 5)]
+10 [(220, 65, 5)]
+Counter({((220, 65, 5),): 10})
+seed 12366 from pre start [(220, 65, 5)]
+anchored ts commands: #checkpoint a000 | recruit-standing {city:72} heavy_infantry 1200 | #checkpoint a001 | move {army:3} 61 56 | #checkpoint a002 | end | #checkpoint a003 | 
+a000.SAV [(220, 65, 5)]
+a001.SAV [(220, 65, 5)]
+a002.SAV [(220, 65, 5)]
+a003.SAV [(216, 64, 0)]
+chain seed 1 ((220, 65),)
+chain seed 2 ((220, 65),)
+chain seed 3 ((218, 64),)
+chain seed 4 ((220, 65),)
+chain seed 5 ((220, 65),)
+chain seed 6 ((220, 65),)
+chain seed 7 ((220, 65),)
+chain seed 8 ((220, 65),)
+chain seed 9 ((220, 65),)
+chain seed 10 ((220, 65),)
+chain seed 12366 ((216, 64),)
+Counter({((220, 65),): 9, ((218, 64),): 1, ((216, 64),): 1})

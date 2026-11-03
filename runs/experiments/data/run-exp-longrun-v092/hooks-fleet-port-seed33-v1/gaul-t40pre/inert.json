@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v092/portstarts/gaul-t40pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-230835",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0760.SAV",
+    "sha256": "997f3f616d1e72eb06ec9e2bdf7263f90659d5d3a3285379f36d45b25f60bea3"
+   }
+  ],
+  "records": 14
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-230902",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0760.SAV",
+    "sha256": "997f3f616d1e72eb06ec9e2bdf7263f90659d5d3a3285379f36d45b25f60bea3"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}
