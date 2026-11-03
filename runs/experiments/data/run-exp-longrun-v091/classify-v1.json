@@ -1,0 +1,2411 @@
+{
+ "tally": {
+  "human:draws": 40,
+  "ai:structural": 20,
+  "ai:relations": 141,
+  "ai:position": 15,
+  "ai:draws": 20
+ },
+ "turns": [
+  {
+   "turn": 1,
+   "date": "Spring week 3, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 1,
+   "date": "Spring week 3, 270 BC",
+   "phase": "ai",
+   "fields": 146,
+   "map": 545,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Seleucid": [
+     "position"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "position"
+    ],
+    "Galatia": [
+     "position",
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "relations"
+    ],
+    "Seleucid": [
+     "nation.mobilization",
+     "position",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Celtiberia": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "position",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Galatia": [
+     "nation.mobilization",
+     "position",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 2,
+   "date": "Spring week 5, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 2,
+   "date": "Spring week 5, 270 BC",
+   "phase": "ai",
+   "fields": 65,
+   "map": 884,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Rome": [
+     "position",
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Armenia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "position",
+     "relations",
+     "treasury"
+    ],
+    "Carthage": [
+     "size"
+    ],
+    "Seleucid": [
+     "recruit",
+     "size",
+     "treasury"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Gaul": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Celtiberia": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "recruit",
+     "treasury"
+    ],
+    "Armenia": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 3,
+   "date": "Spring week 7, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 3,
+   "date": "Spring week 7, 270 BC",
+   "phase": "ai",
+   "fields": 37,
+   "map": 371,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "relations"
+    ],
+    "Carthage": [
+     "size"
+    ],
+    "Seleucid": [
+     "recruit",
+     "relations",
+     "size",
+     "treasury"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 4,
+   "date": "Spring week 9, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 4,
+   "date": "Spring week 9, 270 BC",
+   "phase": "ai",
+   "fields": 28,
+   "map": 103,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Seleucid": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Armenia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Carthage": [
+     "size"
+    ],
+    "Seleucid": [
+     "relations",
+     "size",
+     "treasury"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Galatia": [
+     "relations",
+     "treasury"
+    ],
+    "Armenia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 5,
+   "date": "Spring week 11, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 5,
+   "date": "Spring week 11, 270 BC",
+   "phase": "ai",
+   "fields": 4,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Carthage": [
+     "size"
+    ],
+    "Seleucid": [
+     "size"
+    ]
+   }
+  },
+  {
+   "turn": 6,
+   "date": "Summer week 1, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 0,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 6,
+   "date": "Summer week 1, 270 BC",
+   "phase": "ai",
+   "fields": 171,
+   "map": 108,
+   "map_sample_weather": "9/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Greece": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Carthage": [
+     "city.loyalty"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Ptolemaic": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Numidia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Gaul": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Greece": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Celtiberia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Illyria": [
+     "city.loyalty",
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Dacia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Bithynia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Galatia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Armenia": [
+     "city.loyalty"
+    ],
+    "Media": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Thracia": [
+     "city.loyalty"
+    ]
+   }
+  },
+  {
+   "turn": 7,
+   "date": "Summer week 3, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 7,
+   "date": "Summer week 3, 270 BC",
+   "phase": "ai",
+   "fields": 9,
+   "map": 2,
+   "map_sample_weather": "0/2",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Carthage": [
+     "size"
+    ],
+    "Celtiberia": [
+     "recruit",
+     "treasury"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 8,
+   "date": "Summer week 5, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 8,
+   "date": "Summer week 5, 270 BC",
+   "phase": "ai",
+   "fields": 11,
+   "map": 2,
+   "map_sample_weather": "0/2",
+   "structural": {
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 9,
+   "date": "Summer week 7, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 9,
+   "date": "Summer week 7, 270 BC",
+   "phase": "ai",
+   "fields": 2,
+   "map": 54,
+   "map_sample_weather": "8/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 10,
+   "date": "Summer week 9, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 10,
+   "date": "Summer week 9, 270 BC",
+   "phase": "ai",
+   "fields": 7,
+   "map": 115,
+   "map_sample_weather": "9/10",
+   "structural": {
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 11,
+   "date": "Summer week 11, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 11,
+   "date": "Summer week 11, 270 BC",
+   "phase": "ai",
+   "fields": 13,
+   "map": 2,
+   "map_sample_weather": "0/2",
+   "structural": {
+    "Carthage": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Carthage": [
+     "relations",
+     "size",
+     "treasury"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations",
+     "treasury"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 12,
+   "date": "Autumn week 1, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 12,
+   "date": "Autumn week 1, 270 BC",
+   "phase": "ai",
+   "fields": 161,
+   "map": 160,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Carthage": [
+     "city.loyalty",
+     "size"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Ptolemaic": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Numidia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Gaul": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Greece": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Celtiberia": [
+     "city.loyalty"
+    ],
+    "Illyria": [
+     "city.loyalty",
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Dacia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Bithynia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Galatia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Armenia": [
+     "city.loyalty"
+    ],
+    "Media": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Thracia": [
+     "city.loyalty",
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 13,
+   "date": "Autumn week 3, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 13,
+   "date": "Autumn week 3, 270 BC",
+   "phase": "ai",
+   "fields": 9,
+   "map": 4,
+   "map_sample_weather": "0/4",
+   "structural": {
+    "Seleucid": [
+     "position"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Seleucid": [
+     "position"
+    ],
+    "Celtiberia": [
+     "recruit",
+     "treasury"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 14,
+   "date": "Autumn week 5, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 14,
+   "date": "Autumn week 5, 270 BC",
+   "phase": "ai",
+   "fields": 9,
+   "map": 224,
+   "map_sample_weather": "8/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Carthage": [
+     "size",
+     "treasury"
+    ],
+    "Seleucid": [
+     "size"
+    ],
+    "Celtiberia": [
+     "treasury"
+    ],
+    "Bithynia": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 15,
+   "date": "Autumn week 7, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 15,
+   "date": "Autumn week 7, 270 BC",
+   "phase": "ai",
+   "fields": 4,
+   "map": 434,
+   "map_sample_weather": "9/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Bithynia": [
+     "recruit",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 16,
+   "date": "Autumn week 9, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 16,
+   "date": "Autumn week 9, 270 BC",
+   "phase": "ai",
+   "fields": 15,
+   "map": 607,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Seleucid": [
+     "position"
+    ],
+    "Greece": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Bithynia": [
+     "position"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Carthage": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Seleucid": [
+     "position"
+    ],
+    "Greece": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Illyria": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Bithynia": [
+     "position"
+    ]
+   }
+  },
+  {
+   "turn": 17,
+   "date": "Autumn week 11, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 17,
+   "date": "Autumn week 11, 270 BC",
+   "phase": "ai",
+   "fields": 5,
+   "map": 2,
+   "map_sample_weather": "0/2",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Carthage": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 18,
+   "date": "Winter week 1, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 18,
+   "date": "Winter week 1, 270 BC",
+   "phase": "ai",
+   "fields": 162,
+   "map": 193,
+   "map_sample_weather": "9/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Carthage": [
+     "city.loyalty"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "recruit",
+     "treasury"
+    ],
+    "Ptolemaic": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Numidia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Gaul": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Greece": [
+     "city.loyalty"
+    ],
+    "Celtiberia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Illyria": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Dacia": [
+     "city.loyalty"
+    ],
+    "Bithynia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Galatia": [
+     "city.loyalty",
+     "nation.leader",
+     "relations",
+     "treasury"
+    ],
+    "Armenia": [
+     "city.loyalty"
+    ],
+    "Media": [
+     "city.loyalty"
+    ],
+    "Thracia": [
+     "city.loyalty",
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 19,
+   "date": "Winter week 3, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 19,
+   "date": "Winter week 3, 270 BC",
+   "phase": "ai",
+   "fields": 10,
+   "map": 1893,
+   "map_sample_weather": "10/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Seleucid": [
+     "recruit",
+     "size",
+     "treasury"
+    ],
+    "Greece": [
+     "city.loyalty"
+    ],
+    "Bithynia": [
+     "recruit",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 20,
+   "date": "Winter week 5, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 20,
+   "date": "Winter week 5, 270 BC",
+   "phase": "ai",
+   "fields": 22,
+   "map": 876,
+   "map_sample_weather": "9/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "city.loyalty"
+    ],
+    "Carthage": [
+     "city.loyalty",
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 21,
+   "date": "Winter week 7, 270 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 21,
+   "date": "Winter week 7, 270 BC",
+   "phase": "ai",
+   "fields": 5,
+   "map": 1543,
+   "map_sample_weather": "7/10",
+   "structural": {
+    "Celtiberia": [
+     "position"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Seleucid": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty"
+    ],
+    "Celtiberia": [
+     "position"
+    ]
+   }
+  },
+  {
+   "turn": 22,
+   "date": "Winter week 9, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 2,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 22,
+   "date": "Winter week 9, 270 BC",
+   "phase": "ai",
+   "fields": 38,
+   "map": 1467,
+   "map_sample_weather": "10/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "city.loyalty"
+    ],
+    "Carthage": [
+     "city.loyalty",
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Seleucid": [
+     "size"
+    ],
+    "Greece": [
+     "city.loyalty"
+    ],
+    "Celtiberia": [
+     "supplies"
+    ],
+    "Thracia": [
+     "city.loyalty"
+    ]
+   }
+  },
+  {
+   "turn": 23,
+   "date": "Winter week 11, 270 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 23,
+   "date": "Winter week 11, 270 BC",
+   "phase": "ai",
+   "fields": 28,
+   "map": 734,
+   "map_sample_weather": "10/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "city.loyalty"
+    ],
+    "Carthage": [
+     "city.loyalty"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "size"
+    ],
+    "Macedonia": [
+     "city.loyalty"
+    ],
+    "Numidia": [
+     "city.loyalty"
+    ],
+    "Gaul": [
+     "city.loyalty"
+    ],
+    "Greece": [
+     "city.loyalty"
+    ],
+    "Celtiberia": [
+     "supplies"
+    ],
+    "Dacia": [
+     "city.loyalty"
+    ],
+    "Armenia": [
+     "city.loyalty"
+    ],
+    "Media": [
+     "city.loyalty"
+    ],
+    "Thracia": [
+     "city.loyalty"
+    ]
+   }
+  },
+  {
+   "turn": 24,
+   "date": "Spring week 1, 269 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 24,
+   "date": "Spring week 1, 269 BC",
+   "phase": "ai",
+   "fields": 225,
+   "map": 1538,
+   "map_sample_weather": "10/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Carthage": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Carthage": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Ptolemaic": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Numidia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Gaul": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Greece": [
+     "city.loyalty"
+    ],
+    "Celtiberia": [
+     "city.loyalty",
+     "nation.leader",
+     "relations",
+     "treasury"
+    ],
+    "Illyria": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Dacia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Bithynia": [
+     "city.loyalty",
+     "nation.leader",
+     "nation.unity",
+     "relations",
+     "treasury"
+    ],
+    "Galatia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Armenia": [
+     "city.loyalty"
+    ],
+    "Media": [
+     "city.loyalty"
+    ],
+    "Thracia": [
+     "city.loyalty"
+    ]
+   }
+  },
+  {
+   "turn": 25,
+   "date": "Spring week 3, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 5,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 25,
+   "date": "Spring week 3, 269 BC",
+   "phase": "ai",
+   "fields": 46,
+   "map": 376,
+   "map_sample_weather": "9/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Carthage": [
+     "relations"
+    ],
+    "Galatia": [
+     "position"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "relations",
+     "size"
+    ],
+    "Carthage": [
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Seleucid": [
+     "size"
+    ],
+    "Gaul": [
+     "supplies"
+    ],
+    "Celtiberia": [
+     "supplies"
+    ],
+    "Bithynia": [
+     "recruit",
+     "treasury"
+    ],
+    "Galatia": [
+     "position",
+     "supplies"
+    ]
+   }
+  },
+  {
+   "turn": 26,
+   "date": "Spring week 5, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 26,
+   "date": "Spring week 5, 269 BC",
+   "phase": "ai",
+   "fields": 6,
+   "map": 191,
+   "map_sample_weather": "9/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Celtiberia": [
+     "supplies"
+    ],
+    "Media": [
+     "supplies"
+    ]
+   }
+  },
+  {
+   "turn": 27,
+   "date": "Spring week 7, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 27,
+   "date": "Spring week 7, 269 BC",
+   "phase": "ai",
+   "fields": 3,
+   "map": 554,
+   "map_sample_weather": "10/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Media": [
+     "supplies"
+    ]
+   }
+  },
+  {
+   "turn": 28,
+   "date": "Spring week 9, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 28,
+   "date": "Spring week 9, 269 BC",
+   "phase": "ai",
+   "fields": 21,
+   "map": 293,
+   "map_sample_weather": "10/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Greece": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Illyria": [
+     "recruit",
+     "treasury"
+    ],
+    "Media": [
+     "supplies"
+    ]
+   }
+  },
+  {
+   "turn": 29,
+   "date": "Spring week 11, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 29,
+   "date": "Spring week 11, 269 BC",
+   "phase": "ai",
+   "fields": 96,
+   "map": 12,
+   "map_sample_weather": "0/10",
+   "structural": {
+    "Rome": [
+     "position",
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Macedonia": [
+     "position",
+     "relations"
+    ],
+    "Gaul": [
+     "position",
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "position",
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Armenia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "position",
+     "relations"
+    ],
+    "Seleucid": [
+     "relations",
+     "size",
+     "treasury"
+    ],
+    "Macedonia": [
+     "nation.mobilization",
+     "position",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Gaul": [
+     "nation.mobilization",
+     "position",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Greece": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "position",
+     "relations",
+     "supplies"
+    ],
+    "Bithynia": [
+     "relations",
+     "treasury"
+    ],
+    "Armenia": [
+     "relations"
+    ],
+    "Media": [
+     "relations",
+     "supplies"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 30,
+   "date": "Summer week 1, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 30,
+   "date": "Summer week 1, 269 BC",
+   "phase": "ai",
+   "fields": 181,
+   "map": 119,
+   "map_sample_weather": "6/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Carthage": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "position",
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Celtiberia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Armenia": [
+     "relations"
+    ],
+    "Media": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "city.loyalty",
+     "relations",
+     "size"
+    ],
+    "Carthage": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "size"
+    ],
+    "Ptolemaic": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty",
+     "nation.mobilization",
+     "nation.unity",
+     "recruit",
+     "relations",
+     "size",
+     "supplies",
+     "treasury"
+    ],
+    "Numidia": [
+     "city.loyalty",
+     "position",
+     "relations"
+    ],
+    "Gaul": [
+     "city.loyalty",
+     "nation.mobilization",
+     "recruit",
+     "relations",
+     "supplies",
+     "treasury"
+    ],
+    "Greece": [
+     "city.loyalty"
+    ],
+    "Celtiberia": [
+     "city.loyalty",
+     "nation.leader",
+     "relations",
+     "treasury"
+    ],
+    "Illyria": [
+     "city.loyalty",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Dacia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Bithynia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Galatia": [
+     "city.loyalty",
+     "relations",
+     "treasury"
+    ],
+    "Armenia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Media": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Thracia": [
+     "city.loyalty"
+    ]
+   }
+  },
+  {
+   "turn": 31,
+   "date": "Summer week 3, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 31,
+   "date": "Summer week 3, 269 BC",
+   "phase": "ai",
+   "fields": 48,
+   "map": 5,
+   "map_sample_weather": "0/5",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "nation.mobilization",
+     "recruit",
+     "size",
+     "supplies",
+     "treasury"
+    ],
+    "Gaul": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 32,
+   "date": "Summer week 5, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 5,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 32,
+   "date": "Summer week 5, 269 BC",
+   "phase": "ai",
+   "fields": 11,
+   "map": 59,
+   "map_sample_weather": "7/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Macedonia": [
+     "size"
+    ],
+    "Gaul": [
+     "nation.mobilization",
+     "recruit",
+     "supplies",
+     "treasury"
+    ],
+    "Greece": [
+     "size"
+    ]
+   }
+  },
+  {
+   "turn": 33,
+   "date": "Summer week 7, 269 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 5,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 33,
+   "date": "Summer week 7, 269 BC",
+   "phase": "ai",
+   "fields": 10,
+   "map": 107,
+   "map_sample_weather": "9/10",
+   "structural": {
+    "Carthage": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Ptolemaic": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "size"
+    ],
+    "Carthage": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Ptolemaic": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Greece": [
+     "size"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 34,
+   "date": "Summer week 9, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 5,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 34,
+   "date": "Summer week 9, 269 BC",
+   "phase": "ai",
+   "fields": 4,
+   "map": 59,
+   "map_sample_weather": "7/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "nation.mobilization",
+     "recruit",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 35,
+   "date": "Summer week 11, 269 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 5,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 35,
+   "date": "Summer week 11, 269 BC",
+   "phase": "ai",
+   "fields": 1,
+   "map": 62,
+   "map_sample_weather": "8/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 36,
+   "date": "Autumn week 1, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 5,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 36,
+   "date": "Autumn week 1, 269 BC",
+   "phase": "ai",
+   "fields": 166,
+   "map": 108,
+   "map_sample_weather": "9/10",
+   "structural": {
+    "Rome": [
+     "relations"
+    ],
+    "Seleucid": [
+     "position",
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Illyria": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Bithynia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ],
+    "Armenia": [
+     "relations"
+    ],
+    "Thracia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Rome": [
+     "city.loyalty",
+     "relations",
+     "size",
+     "treasury"
+    ],
+    "Carthage": [
+     "city.loyalty"
+    ],
+    "Seleucid": [
+     "city.loyalty",
+     "position",
+     "relations"
+    ],
+    "Ptolemaic": [
+     "city.loyalty"
+    ],
+    "Macedonia": [
+     "city.loyalty"
+    ],
+    "Numidia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Gaul": [
+     "city.loyalty",
+     "recruit",
+     "treasury"
+    ],
+    "Greece": [
+     "city.loyalty",
+     "size"
+    ],
+    "Celtiberia": [
+     "city.loyalty"
+    ],
+    "Illyria": [
+     "city.loyalty",
+     "nation.leader",
+     "recruit",
+     "relations",
+     "treasury"
+    ],
+    "Dacia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Bithynia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Galatia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Armenia": [
+     "city.loyalty",
+     "relations"
+    ],
+    "Media": [
+     "city.loyalty"
+    ],
+    "Thracia": [
+     "city.loyalty",
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 37,
+   "date": "Autumn week 3, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 37,
+   "date": "Autumn week 3, 269 BC",
+   "phase": "ai",
+   "fields": 3,
+   "map": 98,
+   "map_sample_weather": "9/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Gaul": [
+     "recruit",
+     "treasury"
+    ]
+   }
+  },
+  {
+   "turn": 38,
+   "date": "Autumn week 5, 269 BC",
+   "phase": "human",
+   "fields": 0,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 38,
+   "date": "Autumn week 5, 269 BC",
+   "phase": "ai",
+   "fields": 6,
+   "map": 4,
+   "map_sample_weather": "0/4",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "size"
+    ],
+    "Seleucid": [
+     "size"
+    ]
+   }
+  },
+  {
+   "turn": 39,
+   "date": "Autumn week 7, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {}
+  },
+  {
+   "turn": 39,
+   "date": "Autumn week 7, 269 BC",
+   "phase": "ai",
+   "fields": 17,
+   "map": 105,
+   "map_sample_weather": "8/10",
+   "structural": {
+    "Carthage": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations"
+    ],
+    "Ptolemaic": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ]
+   },
+   "verdict": "structural",
+   "kinds": {
+    "Carthage": [
+     "relations"
+    ],
+    "Seleucid": [
+     "relations",
+     "size"
+    ],
+    "Ptolemaic": [
+     "relations"
+    ],
+    "Macedonia": [
+     "relations"
+    ],
+    "Numidia": [
+     "relations"
+    ],
+    "Gaul": [
+     "relations"
+    ],
+    "Greece": [
+     "city.loyalty",
+     "size"
+    ],
+    "Illyria": [
+     "nation.cities_count"
+    ],
+    "Dacia": [
+     "relations"
+    ],
+    "Galatia": [
+     "relations"
+    ]
+   }
+  },
+  {
+   "turn": 40,
+   "date": "Autumn week 9, 269 BC",
+   "phase": "human",
+   "fields": 1,
+   "map": 4,
+   "map_sample_weather": "0/0",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Illyria": [
+     "nation.cities_count"
+    ]
+   }
+  },
+  {
+   "turn": 40,
+   "date": "Autumn week 9, 269 BC",
+   "phase": "ai",
+   "fields": 3,
+   "map": 168,
+   "map_sample_weather": "7/10",
+   "structural": {},
+   "verdict": "draws",
+   "kinds": {
+    "Rome": [
+     "size"
+    ],
+    "Illyria": [
+     "nation.cities_count"
+    ]
+   }
+  }
+ ]
+}
