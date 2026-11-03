@@ -1,6 +1,11 @@
 # The two own-port fleet rows are draws in both games; the remake lands an embarked army at home where the original sails it to a mercenary offer
 
 **Tag:** [confirmed: inert Wine hooks with written RandSeed + remake seed sweeps and code]. Wine only.
+**Status:** promoted by research PR #190 (merge `689d0a5`) as `docs/reports/2026-11-04-port-rows-and-carried-army.md`. The
+IC-main fixes report lists the carried army as an attributed gap with its fix, and closes the two port rows as draws.
+- **Research verified:** `AiMilitaryPhase.cs:356–372` at `1723c673`, the seed table, and 12 of 12 inert controls.
+- **Research noted:** at Aradus the hunt score is −10000 with every seed, so seed 44's one-tile move is not the hunt.
+- **Not re-checked by research:** the remake sweep counts and the route records.
 **Task:** owner 2026-11-04, "yes do that": the open items of `2026-11-04-v092-followups.md` after research's intake (PR #189):
 - the two own-port fleet rows left in the turn-seeded stays;
 - Numidia t29–31, Rome's carried army.
