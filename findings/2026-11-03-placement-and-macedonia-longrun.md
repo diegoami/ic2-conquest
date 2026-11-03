@@ -1,6 +1,17 @@
 # The tile finder in play, and a Macedonia long run on v0.9.1: the remake builds Caspian fleets the original cannot
 
 **Tag:** [confirmed: Wine hooks + remake code and probes] for §1–§3; [measured] for §4's counts. Wine only.
+**Status:** promoted by research PR #186 (merge `8810f80`) as `docs/reports/2026-11-03-placement-and-macedonia-longrun.md`.
+- **Spec:** the launch scan reads the live map, E1FC and B840 match the remake, and the AI build city excludes the 96BC zone.
+- **IC-main fixes report:** the launch fix is ReplaceLandTarget on the live MapCode, the Caspian gap is added, and the
+  disembark item is withdrawn.
+- **Research's correction to §2:** 496E0's best score starts at 1000 (0x3E8) and is replaced only by a smaller one, so a busy
+  city's 2000 never wins. A busy city is skipped in effect, as in the remake, and only the table-order tie remains.
+- **Research's question on the global word `0x4A0330` (read at 0x449783):** it is the calendar **week**
+  (`harness/driver.py`: `SEASON, WEEK, YEAR_BC = 0x4A032E, 0x4A0330, 0x4A0332`). It is always ≥ 1, so `> −1` is always true,
+  and the busy test reduces to the fleet's owner and build city.
+- **Not re-checked by research:** the Thracia E1FC mismatch, the decide counts, the treasury, Salamis/Alexandria and the war
+  roll.
 **Task:** owner 2026-11-03, "sure keep going, 1 and 2":
 1. check the code-only callers of the tile finder `FUN_0044939c` in play (`2026-11-03-ptolemaic-longrun-positions.md` §4);
 2. play another long game on v0.9.1 (Macedonia).
@@ -64,8 +75,8 @@ Ardabil is at x = 309, so Media never has a build city there.
 the Caspian included; busy cities skipped; ties by city id.
 
 **Fix direction:** under Classical Faithful, exclude the 96BC zone (`ClassicalFleetNavigation.ExcludedEasternZone`) from the
-AI's build city. Two smaller differences from the same code are not observed in play: a busy city scores 2000 instead of being
-skipped, and ties go by table order.
+AI's build city. One smaller difference from the same code is not observed in play: ties go by table order. (The busy city's
+2000 never wins, because the best score starts at 1000: research's correction, PR #186.)
 
 ## 3. Macedonia decisions: the resupply tie four more times
 
@@ -113,7 +124,7 @@ reseed (`2026-11-02-seleucid-turn26-overthrow.md`).
 ## Open
 
 - Gap C: why E1FC leaves a fleet next to its port in place (D174/E094); the remake moves it.
-- §2's busy-city score of 2000 and the table-order tie (code only).
+- §2's table-order tie (code only).
 - The 21 draw-dependent Macedonia rows.
 
 ## Evidence
