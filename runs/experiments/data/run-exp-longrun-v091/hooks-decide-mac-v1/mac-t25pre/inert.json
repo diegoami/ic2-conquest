@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v091/decidestarts-mac/mac-t25pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-182417",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0745.SAV",
+    "sha256": "f0ba117d4880e77cf64f079fdca8406dd737fbe944acdf08a07db3deed703a88"
+   }
+  ],
+  "records": 15
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-182445",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0745.SAV",
+    "sha256": "f0ba117d4880e77cf64f079fdca8406dd737fbe944acdf08a07db3deed703a88"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}

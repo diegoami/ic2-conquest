@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v091/decidestarts-mac/mac-t19pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-182022",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0739.SAV",
+    "sha256": "d56d954da6fb24f82873c370a15a8d010baa345e37b857e476792e4d64c8f223"
+   }
+  ],
+  "records": 15
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-182052",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0739.SAV",
+    "sha256": "d56d954da6fb24f82873c370a15a8d010baa345e37b857e476792e4d64c8f223"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}
