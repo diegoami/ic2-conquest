@@ -1,0 +1,9 @@
+Process terminated.
+UnhandledException
+   at System.Environment.FailFast(System.Runtime.CompilerServices.StackCrawlMarkHandle, System.String, System.Runtime.CompilerServices.ObjectHandleOnStack, System.String)
+   at System.Environment.FailFast(System.Threading.StackCrawlMark ByRef, System.String, System.Exception, System.String)
+   at System.Environment.FailFast(System.String)
+   at System.Runtime.EH.FallbackFailFast(System.Runtime.RhFailFastReason, System.Object)
+   at System.Runtime.EH.UnhandledExceptionFailFastViaClasslib(System.Runtime.RhFailFastReason, System.Object, IntPtr, ExInfo ByRef)
+   at System.Runtime.EH.DispatchEx(System.Runtime.StackFrameIterator ByRef, ExInfo ByRef)
+   at System.RuntimeType.GetParentType()

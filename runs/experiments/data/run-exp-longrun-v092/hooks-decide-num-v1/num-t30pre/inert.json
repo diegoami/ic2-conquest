@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v092/decidestarts-num/num-t30pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-221404",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0750.SAV",
+    "sha256": "fdd3167b61113012da6d29ea05b10fd36e39dab4b9a043ee5073d611a3bb3043"
+   }
+  ],
+  "records": 17
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-221430",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0750.SAV",
+    "sha256": "fdd3167b61113012da6d29ea05b10fd36e39dab4b9a043ee5073d611a3bb3043"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}

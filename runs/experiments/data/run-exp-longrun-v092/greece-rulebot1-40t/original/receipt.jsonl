@@ -1,0 +1,153 @@
+{"kind": "start", "start": "artifacts/run-exp-civ-sweep/S07_Greece_AUTO0720.SAV", "seed": 12345, "tag": "Cgreece-rulebot1-40t-20261103214156", "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-214156", "time": "2026-11-03T21:41:56"}
+{"kind": "loaded", "seed_line": "S 0000012345", "popups": [], "environment": {"wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)", "exe": {"name": "Imperial Conquest 2 fast rollingsave seed.exe", "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"}, "xvfb_screen": "1280x1024", "fonts": {"Book Antiqua": "DejaVu Sans", "MS Sans Serif": "DejaVu Sans", "liberation_count": 0, "tahoma_wine": true}, "prefix_fonts": {"sha256_12": "483b99b8e1cf", "count": 63}}, "time": "2026-11-03T21:42:11"}
+{"kind": "randseed", "before": "t01-a00", "op": "set_tax", "value": 4169717509, "time": "2026-11-03T21:42:21"}
+{"kind": "action", "action": {"op": "set_tax", "percent": 20}, "reply": [], "error": null, "checkpoint": "t01-a00", "date": "Spring week 1, 270 BC", "time": "2026-11-03T21:42:34"}
+{"kind": "randseed", "before": "t01-a01", "op": "end_turn", "value": 4169717509, "time": "2026-11-03T21:42:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0721.SAV"], "error": null, "checkpoint": "t01-a01", "date": "Spring week 3, 270 BC", "time": "2026-11-03T21:42:52"}
+{"kind": "randseed", "before": "t02-a00", "op": "end_turn", "value": 4286046681, "time": "2026-11-03T21:42:55"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0722.SAV", "@ Galatia wants to trade with Greece."], "error": null, "checkpoint": "t02-a00", "date": "Spring week 5, 270 BC", "time": "2026-11-03T21:43:15"}
+{"kind": "randseed", "before": "t03-a00", "op": "end_turn", "value": 1087816034, "time": "2026-11-03T21:43:18"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0723.SAV"], "error": null, "checkpoint": "t03-a00", "date": "Spring week 7, 270 BC", "time": "2026-11-03T21:43:37"}
+{"kind": "randseed", "before": "t04-a00", "op": "end_turn", "value": 3613150578, "time": "2026-11-03T21:43:39"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0724.SAV"], "error": null, "checkpoint": "t04-a00", "date": "Spring week 9, 270 BC", "time": "2026-11-03T21:43:58"}
+{"kind": "randseed", "before": "t05-a00", "op": "end_turn", "value": 2135923466, "time": "2026-11-03T21:44:01"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0725.SAV"], "error": null, "checkpoint": "t05-a00", "date": "Spring week 11, 270 BC", "time": "2026-11-03T21:44:19"}
+{"kind": "randseed", "before": "t06-a00", "op": "end_turn", "value": 2139320026, "time": "2026-11-03T21:44:22"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0726.SAV"], "error": null, "checkpoint": "t06-a00", "date": "Summer week 1, 270 BC", "time": "2026-11-03T21:44:40"}
+{"kind": "randseed", "before": "t07-a00", "op": "recruit", "value": 826124612, "time": "2026-11-03T21:44:43"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t07-a00", "date": "Summer week 1, 270 BC", "time": "2026-11-03T21:44:57"}
+{"kind": "randseed", "before": "t07-a01", "op": "end_turn", "value": 826124612, "time": "2026-11-03T21:44:57"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0727.SAV"], "error": null, "checkpoint": "t07-a01", "date": "Summer week 3, 270 BC", "time": "2026-11-03T21:45:15"}
+{"kind": "randseed", "before": "t08-a00", "op": "recruit", "value": 2909878714, "time": "2026-11-03T21:45:18"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t08-a00", "date": "Summer week 3, 270 BC", "time": "2026-11-03T21:45:33"}
+{"kind": "randseed", "before": "t08-a01", "op": "end_turn", "value": 2909878714, "time": "2026-11-03T21:45:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0728.SAV"], "error": null, "checkpoint": "t08-a01", "date": "Summer week 5, 270 BC", "time": "2026-11-03T21:45:52"}
+{"kind": "randseed", "before": "t09-a00", "op": "recruit", "value": 1000899860, "time": "2026-11-03T21:45:56"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t09-a00", "date": "Summer week 5, 270 BC", "time": "2026-11-03T21:46:11"}
+{"kind": "randseed", "before": "t09-a01", "op": "end_turn", "value": 1000899860, "time": "2026-11-03T21:46:11"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0729.SAV"], "error": null, "checkpoint": "t09-a01", "date": "Summer week 7, 270 BC", "time": "2026-11-03T21:46:29"}
+{"kind": "randseed", "before": "t10-a00", "op": "recruit", "value": 3598102245, "time": "2026-11-03T21:46:33"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t10-a00", "date": "Summer week 7, 270 BC", "time": "2026-11-03T21:46:47"}
+{"kind": "randseed", "before": "t10-a01", "op": "end_turn", "value": 3598102245, "time": "2026-11-03T21:46:47"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0730.SAV"], "error": null, "checkpoint": "t10-a01", "date": "Summer week 9, 270 BC", "time": "2026-11-03T21:47:05"}
+{"kind": "randseed", "before": "t11-a00", "op": "recruit", "value": 4279047772, "time": "2026-11-03T21:47:08"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t11-a00", "date": "Summer week 9, 270 BC", "time": "2026-11-03T21:47:22"}
+{"kind": "randseed", "before": "t11-a01", "op": "end_turn", "value": 4279047772, "time": "2026-11-03T21:47:22"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0731.SAV"], "error": null, "checkpoint": "t11-a01", "date": "Summer week 11, 270 BC", "time": "2026-11-03T21:47:40"}
+{"kind": "randseed", "before": "t12-a00", "op": "recruit", "value": 2801877255, "time": "2026-11-03T21:47:43"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t12-a00", "date": "Summer week 11, 270 BC", "time": "2026-11-03T21:47:58"}
+{"kind": "randseed", "before": "t12-a01", "op": "end_turn", "value": 2801877255, "time": "2026-11-03T21:47:58"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0732.SAV", "e Cltberia wants ta trade with Greece, aK"], "error": null, "checkpoint": "t12-a01", "date": "Autumn week 1, 270 BC", "time": "2026-11-03T21:48:18"}
+{"kind": "randseed", "before": "t13-a00", "op": "recruit", "value": 342598492, "time": "2026-11-03T21:48:20"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t13-a00", "date": "Autumn week 1, 270 BC", "time": "2026-11-03T21:48:35"}
+{"kind": "randseed", "before": "t13-a01", "op": "end_turn", "value": 342598492, "time": "2026-11-03T21:48:35"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0733.SAV", "@ Dacia wants to trade with Greece."], "error": null, "checkpoint": "t13-a01", "date": "Autumn week 3, 270 BC", "time": "2026-11-03T21:48:56"}
+{"kind": "randseed", "before": "t14-a00", "op": "recruit", "value": 804641482, "time": "2026-11-03T21:48:58"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t14-a00", "date": "Autumn week 3, 270 BC", "time": "2026-11-03T21:49:13"}
+{"kind": "randseed", "before": "t14-a01", "op": "end_turn", "value": 804641482, "time": "2026-11-03T21:49:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0734.SAV", "@ Rome wants to trade with Greece."], "error": null, "checkpoint": "t14-a01", "date": "Autumn week 5, 270 BC", "time": "2026-11-03T21:49:33"}
+{"kind": "randseed", "before": "t15-a00", "op": "recruit", "value": 728246739, "time": "2026-11-03T21:49:36"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t15-a00", "date": "Autumn week 5, 270 BC", "time": "2026-11-03T21:49:50"}
+{"kind": "randseed", "before": "t15-a01", "op": "end_turn", "value": 728246739, "time": "2026-11-03T21:49:50"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0735.SAV"], "error": null, "checkpoint": "t15-a01", "date": "Autumn week 7, 270 BC", "time": "2026-11-03T21:50:08"}
+{"kind": "randseed", "before": "t16-a00", "op": "recruit", "value": 679499644, "time": "2026-11-03T21:50:12"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t16-a00", "date": "Autumn week 7, 270 BC", "time": "2026-11-03T21:50:26"}
+{"kind": "randseed", "before": "t16-a01", "op": "end_turn", "value": 679499644, "time": "2026-11-03T21:50:26"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0736.SAV", "@ Dacia wants to trade with Greece."], "error": null, "checkpoint": "t16-a01", "date": "Autumn week 9, 270 BC", "time": "2026-11-03T21:50:47"}
+{"kind": "randseed", "before": "t17-a00", "op": "recruit", "value": 892744927, "time": "2026-11-03T21:50:50"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t17-a00", "date": "Autumn week 9, 270 BC", "time": "2026-11-03T21:51:06"}
+{"kind": "randseed", "before": "t17-a01", "op": "end_turn", "value": 892744927, "time": "2026-11-03T21:51:06"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0737.SAV"], "error": null, "checkpoint": "t17-a01", "date": "Autumn week 11, 270 BC", "time": "2026-11-03T21:51:26"}
+{"kind": "randseed", "before": "t18-a00", "op": "recruit", "value": 2554161704, "time": "2026-11-03T21:51:28"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t18-a00", "date": "Autumn week 11, 270 BC", "time": "2026-11-03T21:51:44"}
+{"kind": "randseed", "before": "t18-a01", "op": "end_turn", "value": 2554161704, "time": "2026-11-03T21:51:44"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0738.SAV"], "error": null, "checkpoint": "t18-a01", "date": "Winter week 1, 270 BC", "time": "2026-11-03T21:52:04"}
+{"kind": "randseed", "before": "t19-a00", "op": "recruit", "value": 2413479222, "time": "2026-11-03T21:52:06"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t19-a00", "date": "Winter week 1, 270 BC", "time": "2026-11-03T21:52:22"}
+{"kind": "randseed", "before": "t19-a01", "op": "end_turn", "value": 2413479222, "time": "2026-11-03T21:52:22"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0739.SAV"], "error": null, "checkpoint": "t19-a01", "date": "Winter week 3, 270 BC", "time": "2026-11-03T21:52:42"}
+{"kind": "randseed", "before": "t20-a00", "op": "recruit", "value": 2626258512, "time": "2026-11-03T21:52:44"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t20-a00", "date": "Winter week 3, 270 BC", "time": "2026-11-03T21:52:59"}
+{"kind": "randseed", "before": "t20-a01", "op": "end_turn", "value": 2626258512, "time": "2026-11-03T21:52:59"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0740.SAV"], "error": null, "checkpoint": "t20-a01", "date": "Winter week 5, 270 BC", "time": "2026-11-03T21:53:19"}
+{"kind": "randseed", "before": "t21-a00", "op": "recruit", "value": 3472412133, "time": "2026-11-03T21:53:21"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t21-a00", "date": "Winter week 5, 270 BC", "time": "2026-11-03T21:53:37"}
+{"kind": "randseed", "before": "t21-a01", "op": "end_turn", "value": 3472412133, "time": "2026-11-03T21:53:37"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0741.SAV"], "error": null, "checkpoint": "t21-a01", "date": "Winter week 7, 270 BC", "time": "2026-11-03T21:53:56"}
+{"kind": "randseed", "before": "t22-a00", "op": "recruit", "value": 744806836, "time": "2026-11-03T21:53:58"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t22-a00", "date": "Winter week 7, 270 BC", "time": "2026-11-03T21:54:13"}
+{"kind": "randseed", "before": "t22-a01", "op": "end_turn", "value": 744806836, "time": "2026-11-03T21:54:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0742.SAV"], "error": null, "checkpoint": "t22-a01", "date": "Winter week 9, 270 BC", "time": "2026-11-03T21:54:32"}
+{"kind": "randseed", "before": "t23-a00", "op": "recruit", "value": 3242315032, "time": "2026-11-03T21:54:34"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t23-a00", "date": "Winter week 9, 270 BC", "time": "2026-11-03T21:54:50"}
+{"kind": "randseed", "before": "t23-a01", "op": "end_turn", "value": 3242315032, "time": "2026-11-03T21:54:50"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0743.SAV", "@ Rome wants to trade with Greece."], "error": null, "checkpoint": "t23-a01", "date": "Winter week 11, 270 BC", "time": "2026-11-03T21:55:10"}
+{"kind": "randseed", "before": "t24-a00", "op": "recruit", "value": 326404024, "time": "2026-11-03T21:55:12"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t24-a00", "date": "Winter week 11, 270 BC", "time": "2026-11-03T21:55:27"}
+{"kind": "randseed", "before": "t24-a01", "op": "end_turn", "value": 326404024, "time": "2026-11-03T21:55:27"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0744.SAV"], "error": null, "checkpoint": "t24-a01", "date": "Spring week 1, 269 BC", "time": "2026-11-03T21:55:45"}
+{"kind": "randseed", "before": "t25-a00", "op": "recruit", "value": 429460446, "time": "2026-11-03T21:55:46"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t25-a00", "date": "Spring week 1, 269 BC", "time": "2026-11-03T21:56:01"}
+{"kind": "randseed", "before": "t25-a01", "op": "end_turn", "value": 429460446, "time": "2026-11-03T21:56:01"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0745.SAV"], "error": null, "checkpoint": "t25-a01", "date": "Spring week 3, 269 BC", "time": "2026-11-03T21:56:18"}
+{"kind": "randseed", "before": "t26-a00", "op": "recruit", "value": 1853589437, "time": "2026-11-03T21:56:20"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t26-a00", "date": "Spring week 3, 269 BC", "time": "2026-11-03T21:56:34"}
+{"kind": "randseed", "before": "t26-a01", "op": "end_turn", "value": 1853589437, "time": "2026-11-03T21:56:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0746.SAV", "@ Gaul wants to trade with Greece."], "error": null, "checkpoint": "t26-a01", "date": "Spring week 5, 269 BC", "time": "2026-11-03T21:56:52"}
+{"kind": "randseed", "before": "t27-a00", "op": "recruit", "value": 50431637, "time": "2026-11-03T21:56:54"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t27-a00", "date": "Spring week 5, 269 BC", "time": "2026-11-03T21:57:08"}
+{"kind": "randseed", "before": "t27-a01", "op": "end_turn", "value": 50431637, "time": "2026-11-03T21:57:08"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0747.SAV", "@ Media wants to trade with Greece."], "error": null, "checkpoint": "t27-a01", "date": "Spring week 7, 269 BC", "time": "2026-11-03T21:57:26"}
+{"kind": "randseed", "before": "t28-a00", "op": "recruit", "value": 1123107742, "time": "2026-11-03T21:57:27"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t28-a00", "date": "Spring week 7, 269 BC", "time": "2026-11-03T21:57:41"}
+{"kind": "randseed", "before": "t28-a01", "op": "end_turn", "value": 1123107742, "time": "2026-11-03T21:57:41"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0748.SAV"], "error": null, "checkpoint": "t28-a01", "date": "Spring week 9, 269 BC", "time": "2026-11-03T21:57:58"}
+{"kind": "randseed", "before": "t29-a00", "op": "recruit", "value": 3610060581, "time": "2026-11-03T21:58:00"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t29-a00", "date": "Spring week 9, 269 BC", "time": "2026-11-03T21:58:13"}
+{"kind": "randseed", "before": "t29-a01", "op": "end_turn", "value": 3610060581, "time": "2026-11-03T21:58:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0749.SAV"], "error": null, "checkpoint": "t29-a01", "date": "Spring week 11, 269 BC", "time": "2026-11-03T21:58:31"}
+{"kind": "randseed", "before": "t30-a00", "op": "recruit", "value": 2272846691, "time": "2026-11-03T21:58:32"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t30-a00", "date": "Spring week 11, 269 BC", "time": "2026-11-03T21:58:46"}
+{"kind": "randseed", "before": "t30-a01", "op": "end_turn", "value": 2272846691, "time": "2026-11-03T21:58:46"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0750.SAV"], "error": null, "checkpoint": "t30-a01", "date": "Summer week 1, 269 BC", "time": "2026-11-03T21:59:03"}
+{"kind": "randseed", "before": "t31-a00", "op": "recruit", "value": 1773787689, "time": "2026-11-03T21:59:04"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t31-a00", "date": "Summer week 1, 269 BC", "time": "2026-11-03T21:59:19"}
+{"kind": "randseed", "before": "t31-a01", "op": "end_turn", "value": 1773787689, "time": "2026-11-03T21:59:19"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0751.SAV", "@ Gaul wants to trade with Greece."], "error": null, "checkpoint": "t31-a01", "date": "Summer week 3, 269 BC", "time": "2026-11-03T21:59:39"}
+{"kind": "randseed", "before": "t32-a00", "op": "recruit", "value": 1246167535, "time": "2026-11-03T21:59:41"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t32-a00", "date": "Summer week 3, 269 BC", "time": "2026-11-03T21:59:56"}
+{"kind": "randseed", "before": "t32-a01", "op": "end_turn", "value": 1246167535, "time": "2026-11-03T21:59:56"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0752.SAV"], "error": null, "checkpoint": "t32-a01", "date": "Summer week 5, 269 BC", "time": "2026-11-03T22:00:15"}
+{"kind": "randseed", "before": "t33-a00", "op": "recruit", "value": 4165153200, "time": "2026-11-03T22:00:17"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t33-a00", "date": "Summer week 5, 269 BC", "time": "2026-11-03T22:00:33"}
+{"kind": "randseed", "before": "t33-a01", "op": "end_turn", "value": 4165153200, "time": "2026-11-03T22:00:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0753.SAV"], "error": null, "checkpoint": "t33-a01", "date": "Summer week 7, 269 BC", "time": "2026-11-03T22:00:52"}
+{"kind": "randseed", "before": "t34-a00", "op": "recruit", "value": 1566666545, "time": "2026-11-03T22:00:53"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t34-a00", "date": "Summer week 7, 269 BC", "time": "2026-11-03T22:01:08"}
+{"kind": "randseed", "before": "t34-a01", "op": "end_turn", "value": 1566666545, "time": "2026-11-03T22:01:08"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0754.SAV"], "error": null, "checkpoint": "t34-a01", "date": "Summer week 9, 269 BC", "time": "2026-11-03T22:01:27"}
+{"kind": "randseed", "before": "t35-a00", "op": "recruit", "value": 1447119885, "time": "2026-11-03T22:01:29"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t35-a00", "date": "Summer week 9, 269 BC", "time": "2026-11-03T22:01:45"}
+{"kind": "randseed", "before": "t35-a01", "op": "end_turn", "value": 1447119885, "time": "2026-11-03T22:01:45"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0755.SAV"], "error": null, "checkpoint": "t35-a01", "date": "Summer week 11, 269 BC", "time": "2026-11-03T22:02:03"}
+{"kind": "randseed", "before": "t36-a00", "op": "recruit", "value": 3004611270, "time": "2026-11-03T22:02:05"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t36-a00", "date": "Summer week 11, 269 BC", "time": "2026-11-03T22:02:19"}
+{"kind": "randseed", "before": "t36-a01", "op": "end_turn", "value": 3004611270, "time": "2026-11-03T22:02:19"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0756.SAV"], "error": null, "checkpoint": "t36-a01", "date": "Autumn week 1, 269 BC", "time": "2026-11-03T22:02:37"}
+{"kind": "randseed", "before": "t37-a00", "op": "recruit", "value": 3186874262, "time": "2026-11-03T22:02:39"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t37-a00", "date": "Autumn week 1, 269 BC", "time": "2026-11-03T22:02:54"}
+{"kind": "randseed", "before": "t37-a01", "op": "end_turn", "value": 3186874262, "time": "2026-11-03T22:02:54"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0757.SAV"], "error": null, "checkpoint": "t37-a01", "date": "Autumn week 3, 269 BC", "time": "2026-11-03T22:03:11"}
+{"kind": "randseed", "before": "t38-a00", "op": "recruit", "value": 2527816795, "time": "2026-11-03T22:03:13"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t38-a00", "date": "Autumn week 3, 269 BC", "time": "2026-11-03T22:03:28"}
+{"kind": "randseed", "before": "t38-a01", "op": "end_turn", "value": 2527816795, "time": "2026-11-03T22:03:28"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0758.SAV"], "error": null, "checkpoint": "t38-a01", "date": "Autumn week 5, 269 BC", "time": "2026-11-03T22:03:45"}
+{"kind": "randseed", "before": "t39-a00", "op": "recruit", "value": 776952470, "time": "2026-11-03T22:03:47"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t39-a00", "date": "Autumn week 5, 269 BC", "time": "2026-11-03T22:04:03"}
+{"kind": "randseed", "before": "t39-a01", "op": "end_turn", "value": 776952470, "time": "2026-11-03T22:04:03"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0759.SAV"], "error": null, "checkpoint": "t39-a01", "date": "Autumn week 7, 269 BC", "time": "2026-11-03T22:04:23"}
+{"kind": "randseed", "before": "t40-a00", "op": "recruit", "value": 2080220948, "time": "2026-11-03T22:04:25"}
+{"kind": "action", "action": {"op": "recruit", "city": 166, "type": "hi", "troops": 1200}, "reply": ["amount 1200"], "error": null, "checkpoint": "t40-a00", "date": "Autumn week 7, 269 BC", "time": "2026-11-03T22:04:41"}
+{"kind": "randseed", "before": "t40-a01", "op": "end_turn", "value": 2080220948, "time": "2026-11-03T22:04:41"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0760.SAV", "@ Media wants to trade with Greece."], "error": null, "checkpoint": "t40-a01", "date": "Autumn week 9, 269 BC", "time": "2026-11-03T22:05:02"}
+{"kind": "done", "time": "2026-11-03T22:05:04"}

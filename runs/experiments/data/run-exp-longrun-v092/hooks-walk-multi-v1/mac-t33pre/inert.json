@@ -1,0 +1,54 @@
+{
+ "start": "artifacts/run-exp-longrun-v091/decidestarts-mac/mac-t33pre.SAV",
+ "seed": 12345,
+ "turns": 3,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-213611",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0754.SAV",
+    "sha256": "7d42d0fc6f274b9d33ca397d54c316c8c56f2f680f85505e619fabd723c23f0a"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0755.SAV",
+    "sha256": "5e9b701a4e16a4992f390bbdb6887f97e5f951aebb8eaf3ba99d487791cb324f"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0756.SAV",
+    "sha256": "7cf2d0e61cb11a0652a16294cae0c7621d91843ac01abd6278cb067ae7ad4a45"
+   }
+  ],
+  "records": 82
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-213713",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0754.SAV",
+    "sha256": "7d42d0fc6f274b9d33ca397d54c316c8c56f2f680f85505e619fabd723c23f0a"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0755.SAV",
+    "sha256": "5e9b701a4e16a4992f390bbdb6887f97e5f951aebb8eaf3ba99d487791cb324f"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0756.SAV",
+    "sha256": "7cf2d0e61cb11a0652a16294cae0c7621d91843ac01abd6278cb067ae7ad4a45"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true
+ ],
+ "hooked_exe_sha256": "c385130777f6fc69d960ebce55f94bb6d732a273e18783cbc4a82a0bbf7f74ca"
+}
