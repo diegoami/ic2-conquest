@@ -1,0 +1,42 @@
+rome: 40 turns, errors 0; turns with changed counts 3; totals [54, 116, 1761, 15537] -> [54, 116, 1758, 15531]
+   position rows 22 -> 19; gone [(24, 'Ptolemaic', 'armies'), (24, 'Seleucid', 'fleets'), (30, 'Numidia', 'fleets'), (36, 'Thracia', 'fleets')]; new [(36, 'Seleucid', 'fleets')]
+   turn 24 (1, 3, 214, 2449) -> (1, 3, 209, 2445)
+   turn 30 (0, 3, 157, 108) -> (0, 3, 156, 106)
+   turn 36 (1, 3, 144, 7) -> (1, 3, 147, 7)
+carthage: 40 turns, errors 0; turns with changed counts 7; totals [34, 121, 1829, 17555] -> [34, 121, 1807, 17539]
+   position rows 30 -> 22; gone [(18, 'Seleucid', 'fleets'), (20, 'Seleucid', 'armies'), (22, 'Bithynia', 'armies'), (23, 'Seleucid', 'armies'), (24, 'Ptolemaic', 'armies'), (30, 'Numidia', 'fleets'), (30, 'Seleucid', 'fleets'), (39, 'Media', 'armies')]; new []
+   turn 18 (0, 2, 161, 202) -> (0, 2, 160, 200)
+   turn 20 (1, 4, 19, 2118) -> (1, 4, 7, 2116)
+   turn 22 (1, 4, 24, 1733) -> (1, 4, 22, 1731)
+   turn 23 (1, 5, 41, 2027) -> (1, 5, 40, 2025)
+   turn 24 (1, 5, 229, 2171) -> (1, 5, 225, 2169)
+   turn 30 (0, 4, 161, 12) -> (0, 4, 159, 8)
+   turn 39 (1, 4, 135, 203) -> (1, 4, 135, 201)
+gaul: 40 turns, errors 0; turns with changed counts 5; totals [54, 82, 1712, 17204] -> [54, 82, 1709, 17196]
+   position rows 29 -> 25; gone [(18, 'Seleucid', 'fleets'), (24, 'Ptolemaic', 'armies'), (25, 'Celtiberia', 'armies'), (30, 'Numidia', 'fleets'), (36, 'Thracia', 'fleets')]; new [(30, 'Seleucid', 'fleets')]
+   turn 18 (2, 3, 155, 731) -> (2, 3, 154, 729)
+   turn 24 (2, 2, 227, 1059) -> (2, 2, 223, 1057)
+   turn 25 (2, 2, 15, 705) -> (2, 2, 13, 703)
+   turn 30 (2, 2, 143, 198) -> (2, 2, 148, 198)
+   turn 36 (1, 2, 166, 91) -> (1, 2, 165, 89)
+seleucid: 25 turns, errors 0; turns with changed counts 1; totals [6, 57, 1177, 13359] -> [6, 57, 1175, 13357]
+   position rows 11 -> 10; gone [(24, 'Celtiberia', 'armies')]; new []
+   turn 24 (0, 3, 240, 1289) -> (0, 3, 238, 1287)
+ptolemaic: 40 turns, errors 0; turns with changed counts 7; totals [26, 110, 1808, 14181] -> [26, 110, 1780, 15440]
+   position rows 15 -> 8; gone [(1, 'Galatia', 'armies'), (13, 'Seleucid', 'armies'), (16, 'Bithynia', 'armies'), (16, 'Seleucid', 'armies'), (21, 'Celtiberia', 'armies'), (25, 'Galatia', 'armies'), (30, 'Numidia', 'fleets'), (36, 'Seleucid', 'fleets')]; new [(16, 'Carthage', 'armies')]
+   turn 1 (0, 0, 146, 545) -> (0, 0, 125, 963)
+   turn 13 (1, 2, 9, 4) -> (1, 2, 7, 217)
+   turn 16 (1, 2, 15, 607) -> (1, 2, 17, 1243)
+   turn 21 (1, 2, 5, 1543) -> (1, 2, 3, 1541)
+   turn 25 (1, 5, 46, 376) -> (1, 5, 43, 374)
+   turn 30 (1, 4, 181, 119) -> (1, 4, 180, 117)
+   turn 36 (1, 5, 166, 108) -> (1, 5, 165, 106)
+macedonia: 40 turns, errors 0; turns with changed counts 7; totals [55, 93, 2188, 18623] -> [55, 93, 2175, 18774]
+   position rows 33 -> 25; gone [(18, 'Seleucid', 'fleets'), (19, 'Seleucid', 'armies'), (22, 'Illyria', 'armies'), (22, 'Seleucid', 'armies'), (24, 'Celtiberia', 'armies'), (26, 'Carthage', 'armies'), (26, 'Seleucid', 'armies'), (30, 'Numidia', 'fleets'), (31, 'Celtiberia', 'armies')]; new [(30, 'Seleucid', 'fleets')]
+   turn 18 (1, 3, 179, 753) -> (1, 3, 178, 751)
+   turn 19 (1, 3, 47, 1698) -> (1, 3, 44, 1697)
+   turn 22 (2, 3, 37, 1912) -> (2, 3, 32, 1909)
+   turn 24 (1, 3, 269, 1754) -> (1, 3, 271, 1752)
+   turn 26 (2, 3, 50, 364) -> (2, 3, 43, 525)
+   turn 30 (2, 2, 203, 103) -> (2, 2, 208, 103)
+   turn 31 (2, 3, 73, 5) -> (2, 3, 69, 3)
