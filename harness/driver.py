@@ -93,10 +93,13 @@ class DriverError(RuntimeError):
 
 
 class GameOver(DriverError):
-    """The "End of Game" window opened (the human nation was conquered, or another end of game); `text` is its OCR."""
-    def __init__(self, text):
+    """The "End of Game" window opened (the human nation was conquered, or another end of game); `text` is its OCR.
+    `autosave` is the turn's AUTOSAVE.LOG line when the window opened after it (the human overthrown: the autosave is
+    written first, findings/2026-11-02-seleucid-turn26-overthrow.md), None when it opened before."""
+    def __init__(self, text, autosave=None):
         super().__init__("game over: " + text)
         self.text = text
+        self.autosave = autosave
 
 
 def sh(*args, check=True):
@@ -1481,7 +1484,8 @@ class Game:
         `peace` (default False): the answer to a post-battle "Offer of peace" box (an AI army fought the human's during the AI seats);
         it is answered through `answer_battle_peace` (verified click, box closed) and recorded as "PEACE Yes|No: <text>". No is the
         default because it changes no game state (findings/2026-10-05-battle-peace-offer.md); before this the box blocked until the timeout.
-        An "End of Game" window (the human nation conquered) raises GameOver(text) at once instead of waiting for the timeout."""
+        An "End of Game" window (the human nation conquered) raises GameOver(text) at once instead of waiting for the timeout;
+        one that opens within 5 s after the autosave line (the human overthrown) raises GameOver(text, autosave=line)."""
         log = G / "AUTOSAVE.LOG"
         n = len(log.read_text().splitlines()) if log.exists() else 0
         cal, me = self.calendar(), self.i16(CUR_NATION)
@@ -1530,7 +1534,13 @@ class Game:
         line = log.read_text().splitlines()[-1]
         if not line.rstrip().endswith("OK"):
             raise DriverError("autosave: " + line)
-        return line.split()[1], texts
+        # The human overthrown (unpopularity): the autosave line comes first, then "End of Game" (seleucid turn 26,
+        # 2026-11-02, Wine and native Windows alike). Without this check the next File > Save timed out behind it.
+        try:
+            self.wait(lambda: self.find_windows("^End of Game$"), 5, "End of Game after the autosave", step=0.5)
+        except DriverError:
+            return line.split()[1], texts
+        raise GameOver(self.read_popup(self.find_windows("^End of Game$")[0]), autosave=line)
 
     def battle_progress_mark(self):
         """What changes when an End turn click advanced the battle: the flag, the title, the BATTLEnn.SAV count (lab build) and the half-round counter."""

@@ -14,7 +14,7 @@ from pathlib import Path
 
 from difftest.actions import checkpoint_names
 from harness.driver import (AREA_ORIGIN, BATTLE_TOOLBAR_Y, BATTLE_TOOLS, CUR_NATION, G, SEL_ARMY, UNIT_PAINT, VIEW_COLS,
-                            VIEW_ROWS, DriverError, Game)
+                            VIEW_ROWS, DriverError, Game, GameOver)
 from state.sav import can_recruit_at, load
 
 
@@ -247,6 +247,7 @@ class OriginalSession:
 
     def __init__(self, start, out, seed, tag, log=print):
         self.out, self.tag, self.log = Path(out), tag, log
+        self.game_over = None     # the End of Game text once the human is overthrown or conquered (act stops checkpointing)
         self.out.mkdir(parents=True, exist_ok=False)
         self.receipt = open(self.out / "receipt.jsonl", "w")
         self.g = Game(log=log)
@@ -403,6 +404,19 @@ class OriginalSession:
             self.emit(kind="randseed", before=name, op=a.get("op"), value=struct.unpack("<I", self.g.mem(0x45E030, 4))[0])
         try:
             texts, error = perform(self.g, a, self.state), None
+        except GameOver as e:
+            # The human overthrown or conquered: End of Game is modal, so File > Save cannot run. The turn's own autosave
+            # (written before the window, when there is one) is the checkpoint; `game_over` tells the caller to stop.
+            self.game_over = e.text
+            texts, error = ([f"AUTOSAVE {e.autosave.split()[1]}"] if e.autosave else []) + [f"END OF GAME {e.text}"], None
+            if e.autosave:
+                dst = self.out / f"{name}.SAV"
+                shutil.copy(G / e.autosave.split()[1], dst)
+                self.state = load(dst)
+            self.emit(kind="game_over", after=name, text=e.text, autosave=e.autosave)
+            self.emit(kind="action", action=a, reply=texts, error=error, checkpoint=name if e.autosave else None,
+                      date=self.state["date"])
+            return texts, error
         except Exception as e:      # any failure of one order is recorded (an xdotool click once exited 1 mid-campaign)
             texts, error = [], f"{type(e).__name__}: {e}"
             try:
