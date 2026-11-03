@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v091/decidestarts/ptol-t13pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-123240",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0733.SAV",
+    "sha256": "482421b43fa5b7c9f1559b865946e97d4a1d2f7d8d6043cc07b3df8ac175ef13"
+   }
+  ],
+  "records": 14
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-123309",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0733.SAV",
+    "sha256": "482421b43fa5b7c9f1559b865946e97d4a1d2f7d8d6043cc07b3df8ac175ef13"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}
