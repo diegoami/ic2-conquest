@@ -45,7 +45,7 @@ def main(argv=None):
     rdir.mkdir()
     remake.run([], a.start, rdir / "t00", log=rlog)
     native, sr = rdir / "t00" / "a000.native", load(rdir / "t00" / "a000.SAV")
-    first = None
+    first, game_over = None, None
     try:
         for k in range(1, a.turns + 1):
             nation = so["current_nation"]
@@ -77,9 +77,15 @@ def main(argv=None):
                 f.write(json.dumps(row, default=str) + "\n")
             print(f"turn {k} {row['nation']}: orders {'same' if row['orders_same'] else 'DIFFER'}, "
                   f"{row['differences']} differences ({row['own_differences']} own)", flush=True)
+            if o.game_over:
+                # End of Game in the original (the human overthrown or conquered): the game cannot go on, so the
+                # campaign stops after this turn's row (the remake hands the nation to the AI instead).
+                print(f"turn {k}: END OF GAME in the original: {o.game_over}", flush=True)
+                game_over = {"turn": k, "text": o.game_over}
+                break
     finally:
         o.close()
-    (out / "summary.json").write_text(json.dumps({"turns": a.turns, "first_divergence_turn": first,
+    (out / "summary.json").write_text(json.dumps({"turns": a.turns, "first_divergence_turn": first, "game_over": game_over,
                                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}, indent=1))
 
 

@@ -247,6 +247,42 @@ def test_strict_ok_only_confirm_raises_the_documented_message():
     assert err and err.startswith("end turn: unexpected Confirm:") and "no No button" in err and ("Confirm", True) not in g.answers, (err, g.answers)
 
 
+def test_end_of_game_after_the_line_raises_game_over_with_the_autosave():
+    # the human overthrown: the autosave line is written, then "End of Game" opens (seleucid turn 26, 2026-11-02)
+    g, out, err = run(sign=True, boxes_after_line=[(11, "End of Game")])
+    assert err and err.startswith("game over: text of End of Game 11"), err
+
+
+def test_game_over_carries_the_autosave_line():
+    d = Path(tempfile.mkdtemp())
+    old, old_sleep = D.G, D.time.sleep
+    D.G, D.time.sleep = d, (lambda s: None)
+    try:
+        g = Scripted(d, sign=True, boxes_after_line=[(12, "End of Game")])
+        try:
+            g.end_turn(timeout=5)
+            raise AssertionError("no GameOver")
+        except D.GameOver as e:
+            assert e.autosave == "0721 AUTO0721.SAV OK" and e.text == "text of End of Game 12", (e.autosave, e.text)
+    finally:
+        D.G, D.time.sleep = old, old_sleep
+
+
+def test_end_of_game_before_the_line_has_no_autosave():
+    d = Path(tempfile.mkdtemp())
+    old, old_sleep = D.G, D.time.sleep
+    D.G, D.time.sleep = d, (lambda s: None)
+    try:
+        g = Scripted(d, sign=True, boxes_during=[(13, "End of Game")], defer_line=True)
+        try:
+            g.end_turn(timeout=5)
+            raise AssertionError("no GameOver")
+        except D.GameOver as e:
+            assert e.autosave is None, e.autosave
+    finally:
+        D.G, D.time.sleep = old, old_sleep
+
+
 TESTS = [n for n in sorted(globals()) if n.startswith("test_")]
 
 if __name__ == "__main__":
