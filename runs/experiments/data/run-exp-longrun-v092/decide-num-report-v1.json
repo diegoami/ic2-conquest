@@ -1,0 +1,8171 @@
+{
+ "counts": {
+  "same": 131,
+  "diplomacy": 11,
+  "diff:city-target": 8,
+  "diff:branch": 9,
+  "diff:resupply-city": 2,
+  "diff:city-score": 6,
+  "diff:army-target": 6,
+  "diff:army-score": 7,
+  "no-remake-decision": 2,
+  "same-unlogged": 4,
+  "state-battle": 3,
+  "differs": 1
+ },
+ "rows": [
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 190,
+    "y": 95,
+    "moves": 7,
+    "supplies": 640,
+    "morale": 67,
+    "home": 214,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 20234,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 190,
+    "ArmyY": 95,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    190,
+    94
+   ],
+   "remake_aim": [
+    190,
+    94
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 227,
+    "y": 54,
+    "moves": 9,
+    "supplies": 372,
+    "morale": 67,
+    "home": 259,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 20566,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37280,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 227,
+    "ArmyY": 54,
+    "Kind": "AttackCity",
+    "TargetCityId": "synnada",
+    "TargetCityX": 187,
+    "TargetCityY": 45,
+    "TargetArmyId": null,
+    "CityScore": 293,
+    "ArmyScore": -10000,
+    "CityDistance": 40,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [
+     "galatia"
+    ],
+    "orig_end": [],
+    "remake_end": [
+     "galatia"
+    ]
+   },
+   "diffs": [
+    "city-target",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 182,
+    "y": 43,
+    "moves": 9,
+    "supplies": 551,
+    "morale": 69,
+    "home": 198,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 20566,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 17097,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 182,
+    "ArmyY": 43,
+    "Kind": "AttackCity",
+    "TargetCityId": "synnada",
+    "TargetCityX": 187,
+    "TargetCityY": 45,
+    "TargetArmyId": null,
+    "CityScore": 237,
+    "ArmyScore": -10000,
+    "CityDistance": 5,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [
+     "galatia"
+    ],
+    "orig_end": [],
+    "remake_end": [
+     "galatia"
+    ]
+   },
+   "diffs": [
+    "city-target",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 68,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12392,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig": {
+    "x": 144,
+    "y": 42,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 42,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    143,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 0,
+   "orig": {
+    "x": 307,
+    "y": 58,
+    "moves": 9,
+    "supplies": 377,
+    "morale": 69,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 19869,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37700,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 307,
+    "ArmyY": 58,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": null,
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 105,
+    "y": 39,
+    "moves": 8,
+    "supplies": 406,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 281,
+    "city_dist": 31,
+    "target": 29750,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 105,
+    "ArmyY": 39,
+    "Kind": "AttackCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 281,
+    "ArmyScore": -10000,
+    "CityDistance": 31,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 2,
+   "orig": {
+    "x": 37,
+    "y": 62,
+    "moves": 9,
+    "supplies": 142,
+    "morale": 68,
+    "home": 25,
+    "city": 19,
+    "city_score": 99,
+    "city_dist": 1,
+    "target": -30890,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 21950,
+    "branch": "e84c+city>85"
+   },
+   "orig_city_xy": [
+    36,
+    61
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 37,
+    "ArmyY": 62,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "castulo",
+    "TargetCityX": 36,
+    "TargetCityY": 61,
+    "TargetArmyId": null,
+    "CityScore": 99,
+    "ArmyScore": -10000,
+    "CityDistance": 1,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "celtiberia"
+    ],
+    "orig_end": [
+     "celtiberia"
+    ],
+    "remake_end": [
+     "celtiberia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t04pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 86,
+    "y": 76,
+    "moves": 9,
+    "supplies": 246,
+    "morale": 70,
+    "home": 72,
+    "city": 31,
+    "city_score": 90,
+    "city_dist": 37,
+    "target": -30890,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 24600,
+    "branch": "e84c+city>85"
+   },
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 86,
+    "ArmyY": 76,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "osca",
+    "TargetCityX": 49,
+    "TargetCityY": 41,
+    "TargetArmyId": null,
+    "CityScore": 90,
+    "ArmyScore": -10000,
+    "CityDistance": 37,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "celtiberia"
+    ],
+    "orig_end": [
+     "celtiberia"
+    ],
+    "remake_end": [
+     "celtiberia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 191,
+    "y": 95,
+    "moves": 7,
+    "supplies": 640,
+    "morale": 69,
+    "home": 214,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 20838,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 95,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    190,
+    94
+   ],
+   "remake_aim": [
+    190,
+    94
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 221,
+    "y": 59,
+    "moves": 9,
+    "supplies": 372,
+    "morale": 69,
+    "home": 259,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21075,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37280,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 221,
+    "ArmyY": 59,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    220,
+    59
+   ],
+   "remake_aim": [
+    220,
+    59
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 177,
+    "y": 48,
+    "moves": 10,
+    "supplies": 170,
+    "morale": 70,
+    "home": 198,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21075,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 17097,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 177,
+    "ArmyY": 48,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    175,
+    52
+   ],
+   "remake_aim": [
+    175,
+    52
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 8,
+   "orig": {
+    "x": 144,
+    "y": 42,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 42,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    143,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 0,
+   "orig": {
+    "x": 307,
+    "y": 58,
+    "moves": 9,
+    "supplies": 377,
+    "morale": 70,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 20070,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37700,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 307,
+    "ArmyY": 58,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": [
+    306,
+    57
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 99,
+    "y": 32,
+    "moves": 8,
+    "supplies": 406,
+    "morale": 70,
+    "home": 85,
+    "city": 73,
+    "city_score": 317,
+    "city_dist": 5,
+    "target": 29750,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    94,
+    27
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 99,
+    "ArmyY": 32,
+    "Kind": "AttackCity",
+    "TargetCityId": "brixia",
+    "TargetCityX": 94,
+    "TargetCityY": 27,
+    "TargetArmyId": null,
+    "CityScore": 317,
+    "ArmyScore": -10000,
+    "CityDistance": 5,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t06pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 54,
+    "y": 46,
+    "moves": 9,
+    "supplies": 419,
+    "morale": 70,
+    "home": 30,
+    "city": 31,
+    "city_score": 467,
+    "city_dist": 5,
+    "target": -31746,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    49,
+    41
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 54,
+    "ArmyY": 46,
+    "Kind": "AttackCity",
+    "TargetCityId": "osca",
+    "TargetCityX": 49,
+    "TargetCityY": 41,
+    "TargetArmyId": null,
+    "CityScore": 467,
+    "ArmyScore": -10000,
+    "CityDistance": 5,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "celtiberia"
+    ],
+    "orig_end": [
+     "celtiberia"
+    ],
+    "remake_end": [
+     "celtiberia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 191,
+    "y": 95,
+    "moves": 7,
+    "supplies": 640,
+    "morale": 70,
+    "home": 214,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21140,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 95,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    190,
+    94
+   ],
+   "remake_aim": [
+    190,
+    94
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 221,
+    "y": 60,
+    "moves": 9,
+    "supplies": 372,
+    "morale": 70,
+    "home": 259,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21280,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37280,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 221,
+    "ArmyY": 60,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    220,
+    59
+   ],
+   "remake_aim": [
+    307,
+    58
+   ],
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": [
+    "resupply-city"
+   ]
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 176,
+    "y": 53,
+    "moves": 10,
+    "supplies": 170,
+    "morale": 70,
+    "home": 198,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21280,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 17097,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 176,
+    "ArmyY": 53,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "phanagoria",
+    "TargetCityX": 217,
+    "TargetCityY": 4,
+    "TargetArmyId": "army-0",
+    "CityScore": 69,
+    "ArmyScore": 54,
+    "CityDistance": 49,
+    "ArmyDistance": 131,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": [
+    "city-target",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 144,
+    "y": 42,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 42,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    143,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 0,
+   "orig": {
+    "x": 307,
+    "y": 58,
+    "moves": 9,
+    "supplies": 377,
+    "morale": 70,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 20070,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 37700,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 307,
+    "ArmyY": 58,
+    "Kind": "AttackArmy",
+    "TargetCityId": "uruk",
+    "TargetCityX": 276,
+    "TargetCityY": 100,
+    "TargetArmyId": "army-5",
+    "CityScore": 192,
+    "ArmyScore": 302,
+    "CityDistance": 42,
+    "ArmyDistance": 129,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": [
+    "city-target",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 95,
+    "y": 27,
+    "moves": 8,
+    "supplies": 434,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 297,
+    "city_dist": 24,
+    "target": 8,
+    "army_score": 1022,
+    "army_dist": 22,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 95,
+    "ArmyY": 27,
+    "Kind": "AttackArmy",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": "army-8",
+    "CityScore": 297,
+    "ArmyScore": 1022,
+    "CityDistance": 24,
+    "ArmyDistance": 22,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 45,
+    "y": 50,
+    "moves": 8,
+    "supplies": 393,
+    "morale": 70,
+    "home": 35,
+    "city": 22,
+    "city_score": 285,
+    "city_dist": 5,
+    "target": 9,
+    "army_score": 2006,
+    "army_dist": 6,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    40,
+    47
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 45,
+    "ArmyY": 50,
+    "Kind": "AttackArmy",
+    "TargetCityId": "segontia",
+    "TargetCityX": 40,
+    "TargetCityY": 47,
+    "TargetArmyId": "army-9",
+    "CityScore": 285,
+    "ArmyScore": 2006,
+    "CityDistance": 5,
+    "ArmyDistance": 6,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "celtiberia"
+    ],
+    "orig_end": [
+     "celtiberia"
+    ],
+    "remake_end": [
+     "celtiberia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t11pre",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 8,
+   "orig": {
+    "x": 73,
+    "y": 33,
+    "moves": 10,
+    "supplies": 103,
+    "morale": 61,
+    "home": 45,
+    "city": 86,
+    "city_score": 90,
+    "city_dist": 29,
+    "target": 1,
+    "army_score": 11,
+    "army_dist": 18,
+    "a698": 10800,
+    "branch": "e84c+city>85"
+   },
+   "orig_city_xy": [
+    102,
+    24
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 73,
+    "ArmyY": 33,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "altinum",
+    "TargetCityX": 102,
+    "TargetCityY": 24,
+    "TargetArmyId": "army-1",
+    "CityScore": 90,
+    "ArmyScore": 11,
+    "CityDistance": 29,
+    "ArmyDistance": 18,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "rome"
+    ],
+    "orig_end": [
+     "rome"
+    ],
+    "remake_end": [
+     "rome"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 191,
+    "y": 95,
+    "moves": 7,
+    "supplies": 640,
+    "morale": 70,
+    "home": 214,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21140,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 95,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    190,
+    94
+   ],
+   "remake_aim": [
+    190,
+    94
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 221,
+    "y": 60,
+    "moves": 9,
+    "supplies": 534,
+    "morale": 70,
+    "home": 259,
+    "city": 319,
+    "city_score": 298,
+    "city_dist": 70,
+    "target": 0,
+    "army_score": 183,
+    "army_dist": 86,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 221,
+    "ArmyY": 60,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": [
+    "city-target",
+    "city-score",
+    "army-target",
+    "army-score",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 9,
+   "orig": {
+    "x": 187,
+    "y": 59,
+    "moves": 1,
+    "supplies": 460,
+    "morale": 59,
+    "home": 206,
+    "city": 254,
+    "city_score": 187,
+    "city_dist": 55,
+    "target": 0,
+    "army_score": 85,
+    "army_dist": 120,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    217,
+    4
+   ],
+   "remake_capdef": false,
+   "remake_why": "mercenary run",
+   "verdict": "no-remake-decision"
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 144,
+    "y": 42,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 42,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    143,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 0,
+   "orig": {
+    "x": 307,
+    "y": 58,
+    "moves": 9,
+    "supplies": 442,
+    "morale": 70,
+    "home": 330,
+    "city": 307,
+    "city_score": 193,
+    "city_dist": 42,
+    "target": 5,
+    "army_score": 190,
+    "army_dist": 119,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    276,
+    100
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 307,
+    "ArmyY": 58,
+    "Kind": "AttackArmy",
+    "TargetCityId": "uruk",
+    "TargetCityX": 276,
+    "TargetCityY": 100,
+    "TargetArmyId": "army-5",
+    "CityScore": 193,
+    "ArmyScore": 302,
+    "CityDistance": 42,
+    "ArmyDistance": 129,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": [
+    "army-score"
+   ]
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 79,
+    "y": 30,
+    "moves": 8,
+    "supplies": 411,
+    "morale": 70,
+    "home": 85,
+    "city": 51,
+    "city_score": 275,
+    "city_dist": 5,
+    "target": 8,
+    "army_score": 215,
+    "army_dist": 7,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    79,
+    25
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 79,
+    "ArmyY": 30,
+    "Kind": "AttackArmy",
+    "TargetCityId": "axima",
+    "TargetCityX": 79,
+    "TargetCityY": 25,
+    "TargetArmyId": "army-8",
+    "CityScore": 275,
+    "ArmyScore": 215,
+    "CityDistance": 5,
+    "ArmyDistance": 7,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "carthage",
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t15pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 42,
+    "y": 46,
+    "moves": 9,
+    "supplies": 297,
+    "morale": 70,
+    "home": 22,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 24830,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29773,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 42,
+    "ArmyY": 46,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    40,
+    47
+   ],
+   "remake_aim": [
+    90,
+    22
+   ],
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": [
+     "rome"
+    ]
+   },
+   "diffs": [
+    "resupply-city"
+   ]
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 194,
+    "y": 98,
+    "moves": 7,
+    "supplies": 556,
+    "morale": 70,
+    "home": 229,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21140,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 194,
+    "ArmyY": 98,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    195,
+    104
+   ],
+   "remake_aim": [
+    195,
+    104
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 38,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 62,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6634,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 270,
+    "y": 62,
+    "moves": 8,
+    "supplies": 266,
+    "morale": 70,
+    "home": 298,
+    "city": 319,
+    "city_score": 291,
+    "city_dist": 42,
+    "target": -20048,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 270,
+    "ArmyY": 62,
+    "Kind": "AttackCity",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": null,
+    "CityScore": 291,
+    "ArmyScore": -10000,
+    "CityDistance": 42,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 193,
+    "y": 53,
+    "moves": 6,
+    "supplies": 75,
+    "morale": 62,
+    "home": 206,
+    "city": 319,
+    "city_score": 303,
+    "city_dist": 98,
+    "target": -20048,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 53,
+    "Kind": "AttackCity",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": null,
+    "CityScore": 303,
+    "ArmyScore": -10000,
+    "CityDistance": 98,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 10,
+   "orig": {
+    "x": 223,
+    "y": 53,
+    "moves": 9,
+    "supplies": 0,
+    "morale": 58,
+    "home": 259,
+    "city": 284,
+    "city_score": 42,
+    "city_dist": 19,
+    "target": -20048,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 15853,
+    "branch": "resupply"
+   },
+   "orig_city_xy": [
+    242,
+    35
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 223,
+    "ArmyY": 53,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": "gymnias",
+    "TargetCityX": 242,
+    "TargetCityY": 35,
+    "TargetArmyId": null,
+    "CityScore": 42,
+    "ArmyScore": -10000,
+    "CityDistance": 19,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    220,
+    59
+   ],
+   "remake_aim": [
+    220,
+    59
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 162,
+    "y": 34,
+    "moves": 9,
+    "supplies": 173,
+    "morale": 70,
+    "home": 170,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 162,
+    "ArmyY": 34,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    156,
+    41
+   ],
+   "remake_aim": [
+    156,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 143,
+    "y": 43,
+    "moves": 9,
+    "supplies": 219,
+    "morale": 70,
+    "home": 159,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 143,
+    "ArmyY": 43,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    149,
+    40
+   ],
+   "remake_aim": [
+    149,
+    40
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 76,
+    "y": 24,
+    "moves": 8,
+    "supplies": 0,
+    "morale": 66,
+    "home": 85,
+    "city": 117,
+    "city_score": 240,
+    "city_dist": 43,
+    "target": 23324,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 38300,
+    "branch": "resupply"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 76,
+    "ArmyY": 24,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 240,
+    "ArmyScore": -10000,
+    "CityDistance": 43,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    101,
+    43
+   ],
+   "remake_aim": [
+    101,
+    43
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 118,
+    "y": 54,
+    "moves": 10,
+    "supplies": 64,
+    "morale": 68,
+    "home": 85,
+    "city": 117,
+    "city_score": 41,
+    "city_dist": 46,
+    "target": 23324,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 118,
+    "ArmyY": 54,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 41,
+    "ArmyScore": -10000,
+    "CityDistance": 46,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 52,
+    "y": 46,
+    "moves": 9,
+    "supplies": 48,
+    "morale": 70,
+    "home": 72,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 24830,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29773,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 52,
+    "ArmyY": 46,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    93,
+    78
+   ],
+   "remake_aim": [
+    93,
+    78
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t24pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 32,
+    "y": 44,
+    "moves": 10,
+    "supplies": 102,
+    "morale": 68,
+    "home": 11,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6120,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 32,
+    "ArmyY": 44,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    27,
+    45
+   ],
+   "remake_aim": [
+    27,
+    45
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 195,
+    "y": 99,
+    "moves": 7,
+    "supplies": 332,
+    "morale": 70,
+    "home": 222,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21140,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 195,
+    "ArmyY": 99,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    193,
+    97
+   ],
+   "remake_aim": [
+    193,
+    97
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 38,
+    "moves": 10,
+    "supplies": 138,
+    "morale": 63,
+    "home": 211,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6741,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    188,
+    41
+   ],
+   "remake_aim": [
+    188,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 274,
+    "y": 61,
+    "moves": 8,
+    "supplies": 82,
+    "morale": 70,
+    "home": 299,
+    "city": 319,
+    "city_score": 291,
+    "city_dist": 41,
+    "target": -20782,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 274,
+    "ArmyY": 61,
+    "Kind": "AttackCity",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": null,
+    "CityScore": 291,
+    "ArmyScore": -10000,
+    "CityDistance": 41,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 197,
+    "y": 51,
+    "moves": 6,
+    "supplies": 58,
+    "morale": 60,
+    "home": 221,
+    "city": 319,
+    "city_score": 294,
+    "city_dist": 94,
+    "target": -20782,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 197,
+    "ArmyY": 51,
+    "Kind": "AttackCity",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": null,
+    "CityScore": 294,
+    "ArmyScore": -10000,
+    "CityDistance": 94,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 10,
+   "orig": {
+    "x": 221,
+    "y": 56,
+    "moves": 9,
+    "supplies": 0,
+    "morale": 56,
+    "home": 258,
+    "city": 284,
+    "city_score": 41,
+    "city_dist": 21,
+    "target": -20782,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 15853,
+    "branch": "resupply"
+   },
+   "orig_city_xy": [
+    242,
+    35
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 221,
+    "ArmyY": 56,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": "gymnias",
+    "TargetCityX": 242,
+    "TargetCityY": 35,
+    "TargetArmyId": null,
+    "CityScore": 41,
+    "ArmyScore": -10000,
+    "CityDistance": 21,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    220,
+    54
+   ],
+   "remake_aim": [
+    220,
+    54
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 157,
+    "y": 40,
+    "moves": 9,
+    "supplies": 121,
+    "morale": 70,
+    "home": 170,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 157,
+    "ArmyY": 40,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    156,
+    41
+   ],
+   "remake_aim": [
+    156,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 148,
+    "y": 40,
+    "moves": 9,
+    "supplies": 145,
+    "morale": 70,
+    "home": 159,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 148,
+    "ArmyY": 40,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    149,
+    40
+   ],
+   "remake_aim": [
+    149,
+    40
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 80,
+    "y": 23,
+    "moves": 8,
+    "supplies": 0,
+    "morale": 64,
+    "home": 51,
+    "city": 117,
+    "city_score": 232,
+    "city_dist": 39,
+    "target": 23692,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 38300,
+    "branch": "resupply"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 80,
+    "ArmyY": 23,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 232,
+    "ArmyScore": -10000,
+    "CityDistance": 39,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    79,
+    25
+   ],
+   "remake_aim": [
+    79,
+    25
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 113,
+    "y": 51,
+    "moves": 10,
+    "supplies": 42,
+    "morale": 69,
+    "home": 106,
+    "city": 117,
+    "city_score": 42,
+    "city_dist": 43,
+    "target": 23692,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 113,
+    "ArmyY": 51,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 42,
+    "ArmyScore": -10000,
+    "CityDistance": 43,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 53,
+    "y": 47,
+    "moves": 8,
+    "supplies": 0,
+    "morale": 68,
+    "home": 35,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 24292,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29773,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 53,
+    "ArmyY": 47,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    53,
+    46
+   ],
+   "remake_aim": [
+    53,
+    46
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t25pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 28,
+    "y": 45,
+    "moves": 10,
+    "supplies": 137,
+    "morale": 69,
+    "home": 15,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6210,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 28,
+    "ArmyY": 45,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    31,
+    51
+   ],
+   "remake_aim": [
+    31,
+    51
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 195,
+    "y": 99,
+    "moves": 7,
+    "supplies": 640,
+    "morale": 70,
+    "home": 214,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 21140,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 64030,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 195,
+    "ArmyY": 99,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    190,
+    94
+   ],
+   "remake_aim": [
+    190,
+    94
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 191,
+    "y": 39,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 65,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6955,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 39,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 278,
+    "y": 51,
+    "moves": 7,
+    "supplies": 300,
+    "morale": 66,
+    "home": 301,
+    "city": 319,
+    "city_score": 289,
+    "city_dist": 31,
+    "target": -24167,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 278,
+    "ArmyY": 51,
+    "Kind": "AttackCity",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": null,
+    "CityScore": 289,
+    "ArmyScore": -10000,
+    "CityDistance": 31,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 205,
+    "y": 48,
+    "moves": 6,
+    "supplies": 287,
+    "morale": 56,
+    "home": 259,
+    "city": 319,
+    "city_score": 331,
+    "city_dist": 86,
+    "target": -24167,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 205,
+    "ArmyY": 48,
+    "Kind": "AttackCity",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": null,
+    "CityScore": 331,
+    "ArmyScore": -10000,
+    "CityDistance": 86,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 156,
+    "y": 36,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 156,
+    "ArmyY": 36,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 154,
+    "y": 33,
+    "moves": 9,
+    "supplies": 250,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 154,
+    "ArmyY": 33,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    143,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 10,
+   "orig": {
+    "x": 307,
+    "y": 58,
+    "moves": 1,
+    "supplies": 70,
+    "morale": 59,
+    "home": 330,
+    "city": 316,
+    "city_score": 17,
+    "city_dist": 20,
+    "target": 4,
+    "army_score": 4,
+    "army_dist": 26,
+    "a698": 7000,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    287,
+    77
+   ],
+   "remake_capdef": false,
+   "remake_why": null,
+   "verdict": "same-unlogged"
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 11,
+   "orig": {
+    "x": 282,
+    "y": 20,
+    "moves": 1,
+    "supplies": 146,
+    "morale": 59,
+    "home": 315,
+    "city": 308,
+    "city_score": 69,
+    "city_dist": 30,
+    "target": 4,
+    "army_score": 47,
+    "army_dist": 24,
+    "a698": 20400,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 282,
+    "ArmyY": 20,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-4",
+    "CityScore": 69,
+    "ArmyScore": 47,
+    "CityDistance": 30,
+    "ArmyDistance": 24,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 84,
+    "y": 22,
+    "moves": 8,
+    "supplies": 0,
+    "morale": 60,
+    "home": 85,
+    "city": 59,
+    "city_score": 249,
+    "city_dist": 5,
+    "target": 22360,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    87,
+    17
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 84,
+    "ArmyY": 22,
+    "Kind": "AttackCity",
+    "TargetCityId": "vindonissa",
+    "TargetCityX": 87,
+    "TargetCityY": 17,
+    "TargetArmyId": null,
+    "CityScore": 249,
+    "ArmyScore": -10000,
+    "CityDistance": 5,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 109,
+    "y": 50,
+    "moves": 10,
+    "supplies": 64,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 42,
+    "city_dist": 42,
+    "target": 22360,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 109,
+    "ArmyY": 50,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 42,
+    "ArmyScore": -10000,
+    "CityDistance": 42,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t27pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 54,
+    "y": 46,
+    "moves": 8,
+    "supplies": 33,
+    "morale": 64,
+    "home": 22,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 23216,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29773,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 54,
+    "ArmyY": 46,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    40,
+    47
+   ],
+   "remake_aim": [
+    40,
+    47
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 191,
+    "y": 95,
+    "moves": 7,
+    "supplies": 865,
+    "morale": 70,
+    "home": 214,
+    "city": 60,
+    "city_score": 626,
+    "city_dist": 104,
+    "target": 3,
+    "army_score": 182,
+    "army_dist": 142,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 95,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": []
+   },
+   "diffs": [
+    "city-target",
+    "city-score",
+    "army-target",
+    "army-score",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 14,
+   "orig": {
+    "x": 224,
+    "y": 89,
+    "moves": 1,
+    "supplies": 139,
+    "morale": 59,
+    "home": 267,
+    "city": 102,
+    "city_score": 86,
+    "city_dist": 115,
+    "target": 3,
+    "army_score": 103,
+    "army_dist": 175,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    109,
+    63
+   ],
+   "remake_capdef": false,
+   "remake_why": null,
+   "verdict": "no-remake-decision"
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 194,
+    "y": 41,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 67,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 7169,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 194,
+    "ArmyY": 41,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 289,
+    "y": 48,
+    "moves": 8,
+    "supplies": 74,
+    "morale": 67,
+    "home": 308,
+    "city": 317,
+    "city_score": 484,
+    "city_dist": 6,
+    "target": 10,
+    "army_score": 290,
+    "army_dist": 8,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    289,
+    42
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 289,
+    "ArmyY": 48,
+    "Kind": "AttackArmy",
+    "TargetCityId": "phraata",
+    "TargetCityX": 289,
+    "TargetCityY": 42,
+    "TargetArmyId": "army-10",
+    "CityScore": 484,
+    "ArmyScore": 290,
+    "CityDistance": 6,
+    "ArmyDistance": 8,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 205,
+    "y": 52,
+    "moves": 7,
+    "supplies": 587,
+    "morale": 58,
+    "home": 259,
+    "city": 319,
+    "city_score": 368,
+    "city_dist": 86,
+    "target": 11,
+    "army_score": 221,
+    "army_dist": 78,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 205,
+    "ArmyY": 52,
+    "Kind": "AttackArmy",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": "army-11",
+    "CityScore": 368,
+    "ArmyScore": 221,
+    "CityDistance": 86,
+    "ArmyDistance": 78,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia",
+     "media"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 15,
+   "orig": {
+    "x": 251,
+    "y": 66,
+    "moves": 1,
+    "supplies": 98,
+    "morale": 59,
+    "home": 292,
+    "city": 313,
+    "city_score": 31,
+    "city_dist": 31,
+    "target": 12,
+    "army_score": 20,
+    "army_dist": 27,
+    "a698": 9800,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    282,
+    69
+   ],
+   "remake_capdef": false,
+   "remake_why": null,
+   "verdict": "same-unlogged"
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 144,
+    "y": 40,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 29800,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 40,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    143,
+    41
+   ],
+   "remake_aim": [
+    143,
+    41
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 12,
+   "orig": {
+    "x": 255,
+    "y": 39,
+    "moves": 8,
+    "supplies": 191,
+    "morale": 61,
+    "home": 288,
+    "city": 308,
+    "city_score": 265,
+    "city_dist": 24,
+    "target": 13,
+    "army_score": 896,
+    "army_dist": 27,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 255,
+    "ArmyY": 39,
+    "Kind": "AttackArmy",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-14",
+    "CityScore": 265,
+    "ArmyScore": 896,
+    "CityDistance": 24,
+    "ArmyDistance": 27,
+    "Skipped": 0
+   },
+   "verdict": "state-battle",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": [
+    "army-target"
+   ]
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 86,
+    "y": 18,
+    "moves": 8,
+    "supplies": 112,
+    "morale": 56,
+    "home": 85,
+    "city": 117,
+    "city_score": 194,
+    "city_dist": 33,
+    "target": 20160,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 86,
+    "ArmyY": 18,
+    "Kind": "AttackCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 194,
+    "ArmyScore": -10000,
+    "CityDistance": 33,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 106,
+    "y": 50,
+    "moves": 10,
+    "supplies": 64,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 42,
+    "city_dist": 42,
+    "target": 20160,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 106,
+    "ArmyY": 50,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 42,
+    "ArmyScore": -10000,
+    "CityDistance": 42,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 49,
+    "y": 43,
+    "moves": 8,
+    "supplies": 81,
+    "morale": 60,
+    "home": 22,
+    "city": 137,
+    "city_score": 88,
+    "city_dist": 91,
+    "target": 10,
+    "army_score": 273,
+    "army_dist": 174,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    140,
+    95
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 49,
+    "ArmyY": 43,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [
+     "ptolemaic"
+    ],
+    "remake_end": []
+   },
+   "diffs": [
+    "city-target",
+    "city-score",
+    "army-target",
+    "army-score",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t29pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 32,
+    "y": 46,
+    "moves": 10,
+    "supplies": 156,
+    "morale": 70,
+    "home": 23,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6300,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 32,
+    "ArmyY": 46,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    42,
+    42
+   ],
+   "remake_aim": [
+    42,
+    42
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 191,
+    "y": 94,
+    "moves": 6,
+    "supplies": 993,
+    "morale": 70,
+    "home": 222,
+    "city": 60,
+    "city_score": 687,
+    "city_dist": 104,
+    "target": 3,
+    "army_score": 190,
+    "army_dist": 139,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 94,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": "army-3",
+    "CityScore": 687,
+    "ArmyScore": 190,
+    "CityDistance": 104,
+    "ArmyDistance": 139,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 10,
+   "orig": {
+    "x": 223,
+    "y": 89,
+    "moves": 10,
+    "supplies": 267,
+    "morale": 60,
+    "home": 267,
+    "city": 60,
+    "city_score": 154,
+    "city_dist": 136,
+    "target": 3,
+    "army_score": 109,
+    "army_dist": 171,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 223,
+    "ArmyY": 89,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": "army-3",
+    "CityScore": 154,
+    "ArmyScore": 109,
+    "CityDistance": 136,
+    "ArmyDistance": 171,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 39,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 68,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 7276,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 39,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 296,
+    "y": 52,
+    "moves": 7,
+    "supplies": 3,
+    "morale": 65,
+    "home": 308,
+    "city": 320,
+    "city_score": 344,
+    "city_dist": 6,
+    "target": 14,
+    "army_score": 1010,
+    "army_dist": 10,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    298,
+    46
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 296,
+    "ArmyY": 52,
+    "Kind": "AttackArmy",
+    "TargetCityId": "adhur",
+    "TargetCityX": 298,
+    "TargetCityY": 46,
+    "TargetArmyId": "army-14",
+    "CityScore": 344,
+    "ArmyScore": 1010,
+    "CityDistance": 6,
+    "ArmyDistance": 10,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 211,
+    "y": 49,
+    "moves": 6,
+    "supplies": 756,
+    "morale": 59,
+    "home": 259,
+    "city": 319,
+    "city_score": 374,
+    "city_dist": 80,
+    "target": 14,
+    "army_score": 1095,
+    "army_dist": 95,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    291,
+    20
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 211,
+    "ArmyY": 49,
+    "Kind": "AttackArmy",
+    "TargetCityId": "bardaa",
+    "TargetCityX": 291,
+    "TargetCityY": 20,
+    "TargetArmyId": "army-14",
+    "CityScore": 374,
+    "ArmyScore": 1095,
+    "CityDistance": 80,
+    "ArmyDistance": 95,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 13,
+   "orig": {
+    "x": 251,
+    "y": 66,
+    "moves": 10,
+    "supplies": 127,
+    "morale": 60,
+    "home": 292,
+    "city": 313,
+    "city_score": 60,
+    "city_dist": 31,
+    "target": 14,
+    "army_score": 302,
+    "army_dist": 55,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    282,
+    69
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 251,
+    "ArmyY": 66,
+    "Kind": "AttackArmy",
+    "TargetCityId": "bisitun",
+    "TargetCityX": 282,
+    "TargetCityY": 69,
+    "TargetArmyId": "army-14",
+    "CityScore": 60,
+    "ArmyScore": 302,
+    "CityDistance": 31,
+    "ArmyDistance": 55,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia",
+     "media"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia",
+     "media"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 144,
+    "y": 41,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": 130,
+    "city_score": 122,
+    "city_dist": 13,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    131,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 144,
+    "ArmyY": 41,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "diplomacy",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [
+     "illyria"
+    ],
+    "remake_end": []
+   },
+   "diffs": [
+    "city-target",
+    "city-score",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 12,
+   "orig": {
+    "x": 260,
+    "y": 31,
+    "moves": 8,
+    "supplies": 137,
+    "morale": 61,
+    "home": 295,
+    "city": 308,
+    "city_score": 335,
+    "city_dist": 19,
+    "target": 13,
+    "army_score": 826,
+    "army_dist": 34,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 260,
+    "ArmyY": 31,
+    "Kind": "AttackArmy",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-13",
+    "CityScore": 335,
+    "ArmyScore": 826,
+    "CityDistance": 19,
+    "ArmyDistance": 34,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 89,
+    "y": 16,
+    "moves": 9,
+    "supplies": 55,
+    "morale": 56,
+    "home": 85,
+    "city": 117,
+    "city_score": 194,
+    "city_dist": 30,
+    "target": 20160,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 89,
+    "ArmyY": 16,
+    "Kind": "AttackCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 194,
+    "ArmyScore": -10000,
+    "CityDistance": 30,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 109,
+    "y": 62,
+    "moves": 10,
+    "supplies": 64,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 42,
+    "city_dist": 54,
+    "target": 20160,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 109,
+    "ArmyY": 62,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 42,
+    "ArmyScore": -10000,
+    "CityDistance": 54,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 52,
+    "y": 45,
+    "moves": 8,
+    "supplies": 64,
+    "morale": 58,
+    "home": 22,
+    "city": 137,
+    "city_score": 85,
+    "city_dist": 88,
+    "target": 10,
+    "army_score": 210,
+    "army_dist": 167,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    140,
+    95
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 52,
+    "ArmyY": 45,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ptolemais",
+    "TargetCityX": 140,
+    "TargetCityY": 95,
+    "TargetArmyId": "army-10",
+    "CityScore": 85,
+    "ArmyScore": 210,
+    "CityDistance": 88,
+    "ArmyDistance": 167,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "ptolemaic"
+    ],
+    "orig_end": [
+     "ptolemaic"
+    ],
+    "remake_end": [
+     "ptolemaic"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t30pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 36,
+    "y": 45,
+    "moves": 10,
+    "supplies": 120,
+    "morale": 70,
+    "home": 23,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6300,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 36,
+    "ArmyY": 45,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    42,
+    42
+   ],
+   "remake_aim": [
+    42,
+    42
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 192,
+    "y": 94,
+    "moves": 6,
+    "supplies": 993,
+    "morale": 70,
+    "home": 222,
+    "city": 60,
+    "city_score": 687,
+    "city_dist": 105,
+    "target": 3,
+    "army_score": 194,
+    "army_dist": 138,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 192,
+    "ArmyY": 94,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": "army-3",
+    "CityScore": 687,
+    "ArmyScore": 194,
+    "CityDistance": 105,
+    "ArmyDistance": 138,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 10,
+   "orig": {
+    "x": 219,
+    "y": 86,
+    "moves": 9,
+    "supplies": 267,
+    "morale": 61,
+    "home": 266,
+    "city": 60,
+    "city_score": 156,
+    "city_dist": 132,
+    "target": 3,
+    "army_score": 107,
+    "army_dist": 165,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 219,
+    "ArmyY": 86,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": "army-3",
+    "CityScore": 156,
+    "ArmyScore": 107,
+    "CityDistance": 132,
+    "ArmyDistance": 165,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 14,
+   "orig": {
+    "x": 191,
+    "y": 95,
+    "moves": 1,
+    "supplies": 20,
+    "morale": 59,
+    "home": 214,
+    "city": 102,
+    "city_score": 53,
+    "city_dist": 82,
+    "target": 3,
+    "army_score": 70,
+    "army_dist": 137,
+    "a698": 2000,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    109,
+    63
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 191,
+    "ArmyY": 95,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "mylae",
+    "TargetCityX": 109,
+    "TargetCityY": 63,
+    "TargetArmyId": "army-3",
+    "CityScore": 53,
+    "ArmyScore": 70,
+    "CityDistance": 82,
+    "ArmyDistance": 137,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 39,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 69,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 7383,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 39,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 303,
+    "y": 56,
+    "moves": 7,
+    "supplies": 264,
+    "morale": 63,
+    "home": 316,
+    "city": 295,
+    "city_score": 171,
+    "city_dist": 43,
+    "target": 12,
+    "army_score": 71,
+    "army_dist": 43,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    260,
+    23
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 303,
+    "ArmyY": 56,
+    "Kind": "AttackCity",
+    "TargetCityId": "mtskheta",
+    "TargetCityX": 260,
+    "TargetCityY": 23,
+    "TargetArmyId": "army-12",
+    "CityScore": 171,
+    "ArmyScore": 71,
+    "CityDistance": 43,
+    "ArmyDistance": 43,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 205,
+    "y": 52,
+    "moves": 6,
+    "supplies": 663,
+    "morale": 60,
+    "home": 259,
+    "city": 254,
+    "city_score": 314,
+    "city_dist": 48,
+    "target": 12,
+    "army_score": 95,
+    "army_dist": 55,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    217,
+    4
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 205,
+    "ArmyY": 52,
+    "Kind": "AttackCity",
+    "TargetCityId": "phanagoria",
+    "TargetCityX": 217,
+    "TargetCityY": 4,
+    "TargetArmyId": "army-12",
+    "CityScore": 314,
+    "ArmyScore": 95,
+    "CityDistance": 48,
+    "ArmyDistance": 55,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 13,
+   "orig": {
+    "x": 261,
+    "y": 65,
+    "moves": 10,
+    "supplies": 127,
+    "morale": 61,
+    "home": 299,
+    "city": 284,
+    "city_score": 52,
+    "city_dist": 30,
+    "target": 12,
+    "army_score": 15,
+    "army_dist": 27,
+    "a698": 12700,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    242,
+    35
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 261,
+    "ArmyY": 65,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "gymnias",
+    "TargetCityX": 242,
+    "TargetCityY": 35,
+    "TargetArmyId": "army-12",
+    "CityScore": 52,
+    "ArmyScore": 15,
+    "CityDistance": 30,
+    "ArmyDistance": 27,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 137,
+    "y": 45,
+    "moves": 9,
+    "supplies": 298,
+    "morale": 70,
+    "home": 144,
+    "city": 130,
+    "city_score": 238,
+    "city_dist": 6,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    131,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 137,
+    "ArmyY": 45,
+    "Kind": "AttackCity",
+    "TargetCityId": "dimale",
+    "TargetCityX": 131,
+    "TargetCityY": 50,
+    "TargetArmyId": null,
+    "CityScore": 238,
+    "ArmyScore": -10000,
+    "CityDistance": 6,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "illyria"
+    ],
+    "orig_end": [
+     "greece",
+     "illyria"
+    ],
+    "remake_end": [
+     "illyria"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 11,
+   "orig": {
+    "x": 285,
+    "y": 30,
+    "moves": 9,
+    "supplies": 232,
+    "morale": 63,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 16569,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 39200,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 285,
+    "ArmyY": 30,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": [
+    306,
+    57
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 12,
+   "orig": {
+    "x": 260,
+    "y": 38,
+    "moves": 5,
+    "supplies": 32,
+    "morale": 59,
+    "home": 288,
+    "city": 308,
+    "city_score": 340,
+    "city_dist": 19,
+    "target": 13,
+    "army_score": 934,
+    "army_dist": 25,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 260,
+    "ArmyY": 38,
+    "Kind": "AttackArmy",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-13",
+    "CityScore": 340,
+    "ArmyScore": 934,
+    "CityDistance": 19,
+    "ArmyDistance": 25,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 90,
+    "y": 15,
+    "moves": 8,
+    "supplies": 16,
+    "morale": 54,
+    "home": 85,
+    "city": 117,
+    "city_score": 187,
+    "city_dist": 29,
+    "target": 19510,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 90,
+    "ArmyY": 15,
+    "Kind": "AttackCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 187,
+    "ArmyScore": -10000,
+    "CityDistance": 29,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 110,
+    "y": 63,
+    "moves": 10,
+    "supplies": 64,
+    "morale": 70,
+    "home": 85,
+    "city": 79,
+    "city_score": 25,
+    "city_dist": 32,
+    "target": 19510,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    98,
+    31
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 110,
+    "ArmyY": 63,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "felsina",
+    "TargetCityX": 98,
+    "TargetCityY": 31,
+    "TargetArmyId": null,
+    "CityScore": 25,
+    "ArmyScore": -10000,
+    "CityDistance": 32,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 54,
+    "y": 46,
+    "moves": 8,
+    "supplies": 35,
+    "morale": 56,
+    "home": 22,
+    "city": 137,
+    "city_score": 83,
+    "city_dist": 86,
+    "target": 14,
+    "army_score": 1138,
+    "army_dist": 138,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    140,
+    95
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 54,
+    "ArmyY": 46,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ptolemais",
+    "TargetCityX": 140,
+    "TargetCityY": 95,
+    "TargetArmyId": "army-14",
+    "CityScore": 83,
+    "ArmyScore": 1138,
+    "CityDistance": 86,
+    "ArmyDistance": 138,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "ptolemaic"
+    ],
+    "orig_end": [
+     "ptolemaic"
+    ],
+    "remake_end": [
+     "ptolemaic"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 15,
+   "orig": {
+    "x": 68,
+    "y": 34,
+    "moves": 1,
+    "supplies": 116,
+    "morale": 59,
+    "home": 45,
+    "city": 50,
+    "city_score": 72,
+    "city_dist": 11,
+    "target": 1,
+    "army_score": 15,
+    "army_dist": 24,
+    "a698": 11600,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    73,
+    23
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 68,
+    "ArmyY": 34,
+    "Kind": "AttackArmy",
+    "TargetCityId": "tinurtium",
+    "TargetCityX": 73,
+    "TargetCityY": 23,
+    "TargetArmyId": "army-8",
+    "CityScore": 72,
+    "ArmyScore": 139,
+    "CityDistance": 11,
+    "ArmyDistance": 35,
+    "Skipped": 0
+   },
+   "verdict": "state-battle",
+   "wars": {
+    "orig_start": [
+     "rome"
+    ],
+    "orig_end": [
+     "rome"
+    ],
+    "remake_end": [
+     "rome"
+    ]
+   },
+   "diffs": [
+    "army-target",
+    "army-score",
+    "branch"
+   ]
+  },
+  {
+   "start": "num-t31pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 39,
+    "y": 43,
+    "moves": 10,
+    "supplies": 181,
+    "morale": 70,
+    "home": 14,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6300,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 39,
+    "ArmyY": 43,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    31,
+    44
+   ],
+   "remake_aim": [
+    31,
+    44
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 193,
+    "y": 94,
+    "moves": 6,
+    "supplies": 993,
+    "morale": 70,
+    "home": 214,
+    "city": 60,
+    "city_score": 687,
+    "city_dist": 106,
+    "target": 3,
+    "army_score": 199,
+    "army_dist": 139,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 94,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": "army-3",
+    "CityScore": 687,
+    "ArmyScore": 199,
+    "CityDistance": 106,
+    "ArmyDistance": 139,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 10,
+   "orig": {
+    "x": 218,
+    "y": 85,
+    "moves": 9,
+    "supplies": 289,
+    "morale": 62,
+    "home": 265,
+    "city": 60,
+    "city_score": 172,
+    "city_dist": 131,
+    "target": 3,
+    "army_score": 116,
+    "army_dist": 164,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 218,
+    "ArmyY": 85,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": "army-3",
+    "CityScore": 159,
+    "ArmyScore": 108,
+    "CityDistance": 131,
+    "ArmyDistance": 164,
+    "Skipped": 0
+   },
+   "verdict": "differs",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": [
+    "city-score",
+    "army-score"
+   ]
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 14,
+   "orig": {
+    "x": 192,
+    "y": 95,
+    "moves": 10,
+    "supplies": 20,
+    "morale": 60,
+    "home": 214,
+    "city": 102,
+    "city_score": 53,
+    "city_dist": 83,
+    "target": 3,
+    "army_score": 71,
+    "army_dist": 138,
+    "a698": 2000,
+    "branch": "e84c+army>70"
+   },
+   "orig_city_xy": [
+    109,
+    63
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 192,
+    "ArmyY": 95,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "mylae",
+    "TargetCityX": 109,
+    "TargetCityY": 63,
+    "TargetArmyId": "army-3",
+    "CityScore": 53,
+    "ArmyScore": 71,
+    "CityDistance": 83,
+    "ArmyDistance": 138,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 39,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 70,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 7490,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 39,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 296,
+    "y": 51,
+    "moves": 8,
+    "supplies": 242,
+    "morale": 64,
+    "home": 308,
+    "city": 295,
+    "city_score": 174,
+    "city_dist": 36,
+    "target": 12,
+    "army_score": 63,
+    "army_dist": 35,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    260,
+    23
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 296,
+    "ArmyY": 51,
+    "Kind": "AttackCity",
+    "TargetCityId": "mtskheta",
+    "TargetCityX": 260,
+    "TargetCityY": 23,
+    "TargetArmyId": "army-12",
+    "CityScore": 174,
+    "ArmyScore": 63,
+    "CityDistance": 36,
+    "ArmyDistance": 35,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 211,
+    "y": 49,
+    "moves": 6,
+    "supplies": 849,
+    "morale": 61,
+    "home": 259,
+    "city": 254,
+    "city_score": 319,
+    "city_dist": 45,
+    "target": 12,
+    "army_score": 84,
+    "army_dist": 50,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    217,
+    4
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 211,
+    "ArmyY": 49,
+    "Kind": "AttackCity",
+    "TargetCityId": "phanagoria",
+    "TargetCityX": 217,
+    "TargetCityY": 4,
+    "TargetArmyId": "army-12",
+    "CityScore": 319,
+    "ArmyScore": 84,
+    "CityDistance": 45,
+    "ArmyDistance": 50,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 13,
+   "orig": {
+    "x": 268,
+    "y": 63,
+    "moves": 10,
+    "supplies": 127,
+    "morale": 62,
+    "home": 299,
+    "city": 284,
+    "city_score": 53,
+    "city_dist": 28,
+    "target": 12,
+    "army_score": 13,
+    "army_dist": 23,
+    "a698": 12700,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    242,
+    35
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 268,
+    "ArmyY": 63,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "gymnias",
+    "TargetCityX": 242,
+    "TargetCityY": 35,
+    "TargetArmyId": "army-12",
+    "CityScore": 53,
+    "ArmyScore": 13,
+    "CityDistance": 28,
+    "ArmyDistance": 23,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 134,
+    "y": 48,
+    "moves": 9,
+    "supplies": 284,
+    "morale": 70,
+    "home": 144,
+    "city": 130,
+    "city_score": 241,
+    "city_dist": 3,
+    "target": 17150,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    131,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 134,
+    "ArmyY": 48,
+    "Kind": "AttackCity",
+    "TargetCityId": "dimale",
+    "TargetCityX": 131,
+    "TargetCityY": 50,
+    "TargetArmyId": null,
+    "CityScore": 241,
+    "ArmyScore": -10000,
+    "CityDistance": 3,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "greece",
+     "illyria"
+    ],
+    "orig_end": [
+     "greece",
+     "illyria"
+    ],
+    "remake_end": [
+     "greece",
+     "illyria"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 11,
+   "orig": {
+    "x": 288,
+    "y": 32,
+    "moves": 9,
+    "supplies": 213,
+    "morale": 64,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 16832,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 39200,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 288,
+    "ArmyY": 32,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": [
+    306,
+    57
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 12,
+   "orig": {
+    "x": 261,
+    "y": 40,
+    "moves": 5,
+    "supplies": 0,
+    "morale": 57,
+    "home": 297,
+    "city": 301,
+    "city_score": 476,
+    "city_dist": 6,
+    "target": 13,
+    "army_score": 888,
+    "army_dist": 16,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    267,
+    45
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 261,
+    "ArmyY": 40,
+    "Kind": "AttackCity",
+    "TargetCityId": "shapur",
+    "TargetCityX": 267,
+    "TargetCityY": 45,
+    "TargetArmyId": "army-13",
+    "CityScore": 476,
+    "ArmyScore": 888,
+    "CityDistance": 6,
+    "ArmyDistance": 16,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 92,
+    "y": 14,
+    "moves": 8,
+    "supplies": 0,
+    "morale": 52,
+    "home": 59,
+    "city": 117,
+    "city_score": 180,
+    "city_dist": 27,
+    "target": 15,
+    "army_score": 737,
+    "army_dist": 23,
+    "a698": 36635,
+    "branch": "resupply"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 92,
+    "ArmyY": 14,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": "army-15",
+    "CityScore": 180,
+    "ArmyScore": 737,
+    "CityDistance": 27,
+    "ArmyDistance": 23,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    87,
+    17
+   ],
+   "remake_aim": [
+    87,
+    17
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 110,
+    "y": 64,
+    "moves": 10,
+    "supplies": 64,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 49,
+    "city_dist": 56,
+    "target": 15,
+    "army_score": 63,
+    "army_dist": 41,
+    "a698": 6460,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 110,
+    "ArmyY": 64,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": "army-15",
+    "CityScore": 49,
+    "ArmyScore": 63,
+    "CityDistance": 56,
+    "ArmyDistance": 41,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 54,
+    "y": 46,
+    "moves": 8,
+    "supplies": 140,
+    "morale": 54,
+    "home": 31,
+    "city": 137,
+    "city_score": 81,
+    "city_dist": 86,
+    "target": 14,
+    "army_score": 1141,
+    "army_dist": 141,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    140,
+    95
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 54,
+    "ArmyY": 46,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ptolemais",
+    "TargetCityX": 140,
+    "TargetCityY": 95,
+    "TargetArmyId": "army-14",
+    "CityScore": 81,
+    "ArmyScore": 1141,
+    "CityDistance": 86,
+    "ArmyDistance": 141,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "ptolemaic"
+    ],
+    "orig_end": [
+     "ptolemaic"
+    ],
+    "remake_end": [
+     "ptolemaic"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "gaul",
+   "army": 15,
+   "orig": {
+    "x": 69,
+    "y": 35,
+    "moves": 10,
+    "supplies": 132,
+    "morale": 60,
+    "home": 45,
+    "city": 57,
+    "city_score": 109,
+    "city_dist": 15,
+    "target": 1,
+    "army_score": 19,
+    "army_dist": 21,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    84,
+    27
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 69,
+    "ArmyY": 35,
+    "Kind": "AttackCity",
+    "TargetCityId": "taurasia",
+    "TargetCityX": 84,
+    "TargetCityY": 27,
+    "TargetArmyId": "army-1",
+    "CityScore": 109,
+    "ArmyScore": 19,
+    "CityDistance": 15,
+    "ArmyDistance": 21,
+    "Skipped": 1
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "rome"
+    ],
+    "orig_end": [
+     "rome"
+    ],
+    "remake_end": [
+     "rome"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t32pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 32,
+    "y": 44,
+    "moves": 10,
+    "supplies": 181,
+    "morale": 70,
+    "home": 23,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6300,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 32,
+    "ArmyY": 44,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    42,
+    42
+   ],
+   "remake_aim": [
+    42,
+    42
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 187,
+    "y": 104,
+    "moves": 6,
+    "supplies": 944,
+    "morale": 70,
+    "home": 214,
+    "city": 60,
+    "city_score": 687,
+    "city_dist": 100,
+    "target": -20669,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 187,
+    "ArmyY": 104,
+    "Kind": "AttackCity",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": null,
+    "CityScore": 687,
+    "ArmyScore": -10000,
+    "CityDistance": 100,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 10,
+   "orig": {
+    "x": 151,
+    "y": 85,
+    "moves": 8,
+    "supplies": 0,
+    "morale": 59,
+    "home": 171,
+    "city": 60,
+    "city_score": 164,
+    "city_dist": 64,
+    "target": -20669,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 28900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 151,
+    "ArmyY": 85,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": null,
+    "CityScore": 164,
+    "ArmyScore": -10000,
+    "CityDistance": 64,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    156,
+    80
+   ],
+   "remake_aim": [
+    156,
+    80
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 14,
+   "orig": {
+    "x": 201,
+    "y": 98,
+    "moves": 10,
+    "supplies": 105,
+    "morale": 63,
+    "home": 214,
+    "city": 102,
+    "city_score": 77,
+    "city_dist": 92,
+    "target": -20669,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 10557,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    109,
+    63
+   ],
+   "remake_capdef": false,
+   "remake_why": "garrison fallback",
+   "verdict": "same-unlogged"
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 39,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 70,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 7490,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 39,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 4,
+   "orig": {
+    "x": 275,
+    "y": 41,
+    "moves": 8,
+    "supplies": 507,
+    "morale": 67,
+    "home": 308,
+    "city": 301,
+    "city_score": 374,
+    "city_dist": 8,
+    "target": 15,
+    "army_score": 669,
+    "army_dist": 11,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    267,
+    45
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 275,
+    "ArmyY": 41,
+    "Kind": "AttackArmy",
+    "TargetCityId": "shapur",
+    "TargetCityX": 267,
+    "TargetCityY": 45,
+    "TargetArmyId": "army-15",
+    "CityScore": 374,
+    "ArmyScore": 669,
+    "CityDistance": 8,
+    "ArmyDistance": 11,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 217,
+    "y": 44,
+    "moves": 6,
+    "supplies": 849,
+    "morale": 64,
+    "home": 259,
+    "city": 301,
+    "city_score": 477,
+    "city_dist": 50,
+    "target": 15,
+    "army_score": 730,
+    "army_dist": 47,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    267,
+    45
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 217,
+    "ArmyY": 44,
+    "Kind": "AttackArmy",
+    "TargetCityId": "shapur",
+    "TargetCityX": 267,
+    "TargetCityY": 45,
+    "TargetArmyId": "army-15",
+    "CityScore": 477,
+    "ArmyScore": 730,
+    "CityDistance": 50,
+    "ArmyDistance": 47,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 131,
+    "y": 47,
+    "moves": 9,
+    "supplies": 244,
+    "morale": 70,
+    "home": 144,
+    "city": 129,
+    "city_score": 102,
+    "city_dist": 1,
+    "target": 14070,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    130,
+    46
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 131,
+    "ArmyY": 47,
+    "Kind": "AttackCity",
+    "TargetCityId": "lissus",
+    "TargetCityX": 130,
+    "TargetCityY": 46,
+    "TargetArmyId": null,
+    "CityScore": 102,
+    "ArmyScore": -10000,
+    "CityDistance": 1,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "greece",
+     "illyria"
+    ],
+    "orig_end": [
+     "greece",
+     "illyria"
+    ],
+    "remake_end": [
+     "greece",
+     "illyria"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 11,
+   "orig": {
+    "x": 304,
+    "y": 55,
+    "moves": 9,
+    "supplies": 392,
+    "morale": 67,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 17621,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 39200,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 304,
+    "ArmyY": 55,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": [
+    306,
+    57
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 15,
+   "orig": {
+    "x": 264,
+    "y": 36,
+    "moves": 10,
+    "supplies": 211,
+    "morale": 60,
+    "home": 297,
+    "city": 308,
+    "city_score": 63,
+    "city_dist": 15,
+    "target": 5,
+    "army_score": 23,
+    "army_dist": 44,
+    "a698": 21100,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 264,
+    "ArmyY": 36,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-5",
+    "CityScore": 63,
+    "ArmyScore": 23,
+    "CityDistance": 15,
+    "ArmyDistance": 44,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 103,
+    "y": 67,
+    "moves": 10,
+    "supplies": 130,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 73,
+    "city_dist": 59,
+    "target": 20305,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13050,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake_why": "garrison fallback",
+   "verdict": "same-unlogged"
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 89,
+    "y": 74,
+    "moves": 8,
+    "supplies": 309,
+    "morale": 51,
+    "home": 72,
+    "city": 137,
+    "city_score": 63,
+    "city_dist": 51,
+    "target": 13,
+    "army_score": 465,
+    "army_dist": 105,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    140,
+    95
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 89,
+    "ArmyY": 74,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ptolemais",
+    "TargetCityX": 140,
+    "TargetCityY": 95,
+    "TargetArmyId": "army-14",
+    "CityScore": 62,
+    "ArmyScore": 439,
+    "CityDistance": 51,
+    "ArmyDistance": 105,
+    "Skipped": 0
+   },
+   "verdict": "state-battle",
+   "wars": {
+    "orig_start": [
+     "ptolemaic"
+    ],
+    "orig_end": [
+     "ptolemaic"
+    ],
+    "remake_end": [
+     "ptolemaic"
+    ]
+   },
+   "diffs": [
+    "city-score",
+    "army-target",
+    "army-score"
+   ]
+  },
+  {
+   "start": "num-t35pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 43,
+    "y": 43,
+    "moves": 10,
+    "supplies": 181,
+    "morale": 70,
+    "home": 23,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6300,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 43,
+    "ArmyY": 43,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    42,
+    42
+   ],
+   "remake_aim": [
+    42,
+    42
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 7,
+   "orig": {
+    "x": 175,
+    "y": 106,
+    "moves": 6,
+    "supplies": 846,
+    "morale": 70,
+    "home": 214,
+    "city": 60,
+    "city_score": 702,
+    "city_dist": 88,
+    "target": -20753,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 175,
+    "ArmyY": 106,
+    "Kind": "AttackCity",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": null,
+    "CityScore": 702,
+    "ArmyScore": -10000,
+    "CityDistance": 88,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 10,
+   "orig": {
+    "x": 132,
+    "y": 94,
+    "moves": 9,
+    "supplies": 50,
+    "morale": 58,
+    "home": 135,
+    "city": 60,
+    "city_score": 165,
+    "city_dist": 45,
+    "target": -20753,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    87,
+    119
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 132,
+    "ArmyY": 94,
+    "Kind": "AttackCity",
+    "TargetCityId": "ghadames",
+    "TargetCityX": 87,
+    "TargetCityY": 119,
+    "TargetArmyId": null,
+    "CityScore": 165,
+    "ArmyScore": -10000,
+    "CityDistance": 45,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "ptolemaic",
+   "army": 13,
+   "orig": {
+    "x": 193,
+    "y": 96,
+    "moves": 10,
+    "supplies": 105,
+    "morale": 65,
+    "home": 214,
+    "city": 102,
+    "city_score": 74,
+    "city_dist": 84,
+    "target": -20753,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 10557,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    109,
+    63
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 96,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "mylae",
+    "TargetCityX": 109,
+    "TargetCityY": 63,
+    "TargetArmyId": null,
+    "CityScore": 74,
+    "ArmyScore": -10000,
+    "CityDistance": 84,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "carthage",
+     "numidia"
+    ],
+    "orig_end": [
+     "carthage",
+     "numidia"
+    ],
+    "remake_end": [
+     "carthage",
+     "numidia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "galatia",
+   "army": 0,
+   "orig": {
+    "x": 193,
+    "y": 39,
+    "moves": 10,
+    "supplies": 139,
+    "morale": 70,
+    "home": 218,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 7490,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13900,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 193,
+    "ArmyY": 39,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    192,
+    38
+   ],
+   "remake_aim": [
+    192,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "seleucid",
+   "army": 5,
+   "orig": {
+    "x": 223,
+    "y": 42,
+    "moves": 6,
+    "supplies": 765,
+    "morale": 66,
+    "home": 259,
+    "city": 301,
+    "city_score": 481,
+    "city_dist": 44,
+    "target": 4,
+    "army_score": 513,
+    "army_dist": 28,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    267,
+    45
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 223,
+    "ArmyY": 42,
+    "Kind": "AttackArmy",
+    "TargetCityId": "shapur",
+    "TargetCityX": 267,
+    "TargetCityY": 45,
+    "TargetArmyId": "army-4",
+    "CityScore": 481,
+    "ArmyScore": 513,
+    "CityDistance": 44,
+    "ArmyDistance": 28,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "armenia"
+    ],
+    "orig_end": [
+     "armenia"
+    ],
+    "remake_end": [
+     "armenia"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "thracia",
+   "army": 6,
+   "orig": {
+    "x": 169,
+    "y": 38,
+    "moves": 9,
+    "supplies": 220,
+    "morale": 70,
+    "home": 192,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 12580,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 22000,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 169,
+    "ArmyY": 38,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    170,
+    38
+   ],
+   "remake_aim": [
+    170,
+    38
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "macedonia",
+   "army": 2,
+   "orig": {
+    "x": 131,
+    "y": 47,
+    "moves": 9,
+    "supplies": 219,
+    "morale": 70,
+    "home": 144,
+    "city": 129,
+    "city_score": 99,
+    "city_dist": 1,
+    "target": 12600,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 21934,
+    "branch": "e84c+city>85"
+   },
+   "orig_city_xy": [
+    130,
+    46
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 131,
+    "ArmyY": 47,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "lissus",
+    "TargetCityX": 130,
+    "TargetCityY": 46,
+    "TargetArmyId": null,
+    "CityScore": 99,
+    "ArmyScore": -10000,
+    "CityDistance": 1,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "greece",
+     "illyria"
+    ],
+    "orig_end": [
+     "greece",
+     "illyria"
+    ],
+    "remake_end": [
+     "greece",
+     "illyria"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "media",
+   "army": 11,
+   "orig": {
+    "x": 306,
+    "y": 56,
+    "moves": 9,
+    "supplies": 392,
+    "morale": 69,
+    "home": 330,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 18147,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 39200,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 306,
+    "ArmyY": 56,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    306,
+    57
+   ],
+   "remake_aim": [
+    306,
+    57
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 4,
+   "orig": {
+    "x": 251,
+    "y": 25,
+    "moves": 9,
+    "supplies": 211,
+    "morale": 62,
+    "home": 297,
+    "city": 308,
+    "city_score": 64,
+    "city_dist": 28,
+    "target": 5,
+    "army_score": 23,
+    "army_dist": 27,
+    "a698": 21100,
+    "branch": "e84c"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 251,
+    "ArmyY": 25,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-5",
+    "CityScore": 64,
+    "ArmyScore": 23,
+    "CityDistance": 28,
+    "ArmyDistance": 27,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "armenia",
+   "army": 12,
+   "orig": {
+    "x": 277,
+    "y": 47,
+    "moves": 7,
+    "supplies": 577,
+    "morale": 56,
+    "home": 297,
+    "city": 308,
+    "city_score": 451,
+    "city_dist": 3,
+    "target": 5,
+    "army_score": 92,
+    "army_dist": 53,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    279,
+    50
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 277,
+    "ArmyY": 47,
+    "Kind": "AttackCity",
+    "TargetCityId": "tabriz",
+    "TargetCityX": 279,
+    "TargetCityY": 50,
+    "TargetArmyId": "army-5",
+    "CityScore": 451,
+    "ArmyScore": 92,
+    "CityDistance": 3,
+    "ArmyDistance": 53,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "seleucid"
+    ],
+    "orig_end": [
+     "seleucid"
+    ],
+    "remake_end": [
+     "seleucid"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 1,
+   "orig": {
+    "x": 86,
+    "y": 23,
+    "moves": 9,
+    "supplies": 343,
+    "morale": 55,
+    "home": 85,
+    "city": 117,
+    "city_score": 179,
+    "city_dist": 33,
+    "target": 19855,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": null,
+    "branch": "city>100"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 86,
+    "ArmyY": 23,
+    "Kind": "AttackCity",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 179,
+    "ArmyScore": -10000,
+    "CityDistance": 33,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "rome",
+   "army": 8,
+   "orig": {
+    "x": 79,
+    "y": 69,
+    "moves": 10,
+    "supplies": 65,
+    "morale": 70,
+    "home": 85,
+    "city": 117,
+    "city_score": 86,
+    "city_dist": 61,
+    "target": 19855,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 13050,
+    "branch": "e84c+city>85"
+   },
+   "orig_city_xy": [
+    119,
+    8
+   ],
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 79,
+    "ArmyY": 69,
+    "Kind": "MercenaryRun",
+    "TargetCityId": "vindobona",
+    "TargetCityX": 119,
+    "TargetCityY": 8,
+    "TargetArmyId": null,
+    "CityScore": 86,
+    "ArmyScore": -10000,
+    "CityDistance": 61,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "gaul"
+    ],
+    "orig_end": [
+     "gaul"
+    ],
+    "remake_end": [
+     "gaul"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "carthage",
+   "army": 3,
+   "orig": {
+    "x": 133,
+    "y": 83,
+    "moves": 6,
+    "supplies": 1,
+    "morale": 51,
+    "home": 109,
+    "city": 137,
+    "city_score": 75,
+    "city_dist": 12,
+    "target": 13,
+    "army_score": 799,
+    "army_dist": 60,
+    "a698": null,
+    "branch": "army>100"
+   },
+   "orig_city_xy": [
+    140,
+    95
+   ],
+   "remake_capdef": true,
+   "remake": {
+    "ArmyX": 133,
+    "ArmyY": 83,
+    "Kind": "AttackArmy",
+    "TargetCityId": "ptolemais",
+    "TargetCityX": 140,
+    "TargetCityY": 95,
+    "TargetArmyId": "army-13",
+    "CityScore": 75,
+    "ArmyScore": 799,
+    "CityDistance": 12,
+    "ArmyDistance": 62,
+    "Skipped": 0
+   },
+   "verdict": "same",
+   "wars": {
+    "orig_start": [
+     "ptolemaic"
+    ],
+    "orig_end": [
+     "ptolemaic"
+    ],
+    "remake_end": [
+     "ptolemaic"
+    ]
+   },
+   "diffs": []
+  },
+  {
+   "start": "num-t37pre",
+   "turn": 1,
+   "nation": "celtiberia",
+   "army": 9,
+   "orig": {
+    "x": 43,
+    "y": 43,
+    "moves": 10,
+    "supplies": 181,
+    "morale": 70,
+    "home": 23,
+    "city": -1,
+    "city_score": -10000,
+    "city_dist": 0,
+    "target": 6300,
+    "army_score": -10000,
+    "army_dist": 0,
+    "a698": 18100,
+    "branch": "resupply"
+   },
+   "orig_city_xy": null,
+   "remake_capdef": false,
+   "remake": {
+    "ArmyX": 43,
+    "ArmyY": 43,
+    "Kind": "MoveToResupplyCity",
+    "TargetCityId": null,
+    "TargetCityX": -1,
+    "TargetCityY": -1,
+    "TargetArmyId": null,
+    "CityScore": -10000,
+    "ArmyScore": -10000,
+    "CityDistance": 0,
+    "ArmyDistance": 0,
+    "Skipped": 0
+   },
+   "orig_home_xy": [
+    42,
+    42
+   ],
+   "remake_aim": [
+    42,
+    42
+   ],
+   "verdict": "same",
+   "wars": {
+    "orig_start": [],
+    "orig_end": [],
+    "remake_end": []
+   },
+   "diffs": []
+  }
+ ]
+}

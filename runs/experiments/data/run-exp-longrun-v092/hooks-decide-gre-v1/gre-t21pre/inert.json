@@ -1,0 +1,31 @@
+{
+ "start": "artifacts/run-exp-longrun-v092/decidestarts-gre/gre-t21pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-221830",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0741.SAV",
+    "sha256": "1b26949f4434975fada780ce6dd7b7d5a2c02d841748f40656a6a57f936675f1"
+   }
+  ],
+  "records": 19
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-221856",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0741.SAV",
+    "sha256": "1b26949f4434975fada780ce6dd7b7d5a2c02d841748f40656a6a57f936675f1"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ]
+}
