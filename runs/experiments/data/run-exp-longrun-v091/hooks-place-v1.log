@@ -1,0 +1,27 @@
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed placehook.exe","sha256":"fe64225589db28eb6247a809705708bf1539af2f81d7639791b1b7ac5637d496"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+rome-t04pre: 12 records; autosaves identical to the plain build: True [True, True, True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed placehook.exe","sha256":"fe64225589db28eb6247a809705708bf1539af2f81d7639791b1b7ac5637d496"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+gaul-t29pre: 28 records; autosaves identical to the plain build: True [True, True, True]
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest/difftest/probes/fleetphase_hook_run.py", line 86, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest/difftest/probes/fleetphase_hook_run.py", line 78, in main
+    p = play(EXE, start, turns, d, "plain")
+  File "/home/diego/projects/ic2-conquest/difftest/probes/fleetphase_hook_run.py", line 36, in play
+    g.load(start, seed=SEED)
+    ~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 639, in load
+    self.start()
+    ~~~~~~~~~~^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 177, in start
+    self.wait(lambda: self.find_windows("^Imperial Conquest 2$"), 40, "main window")
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest/harness/driver.py", line 188, in wait
+    raise DriverError("timeout waiting for " + what)
+harness.driver.DriverError: timeout waiting for main window
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed placehook.exe","sha256":"fe64225589db28eb6247a809705708bf1539af2f81d7639791b1b7ac5637d496"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
