@@ -11,6 +11,7 @@ Same runner as difftest/probes/capdef_hook_run.py.
 """
 import hashlib
 import json
+import os
 import shutil
 import struct
 import sys
@@ -30,6 +31,13 @@ def play(exe, start, turns, out, tag, log_path=None):
     g = Game(exe=exe)
     moved = g.move_aside(sorted(G.glob("AUTO*")))
     g.load(start, seed=SEED)
+    seeds = os.environ.get("IC2_START_RANDSEEDS")
+    if seeds and start.stem in json.loads(Path(seeds).read_text()):
+        # The campaign's RandSeed before this turn's End turn (IC2_LOG_RANDSEED): loading does not reseed, so writing it back
+        # replays the campaign's draws, up to the paint routines that reseed (findings/2026-11-02-seleucid-turn26-overthrow.md).
+        with open(f"/proc/{g.pid}/mem", "r+b") as f:
+            f.seek(0x45E030)
+            f.write(struct.pack("<I", json.loads(Path(seeds).read_text())[start.stem]))
     seen, saves = 0, []
     for t in range(1, turns + 1):
         line, texts = g.end_turn(peace=False)
