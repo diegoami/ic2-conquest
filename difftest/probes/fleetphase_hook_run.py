@@ -34,6 +34,16 @@ def play(exe, start, turns, out, tag, log_path=None):
     g = Game(exe=exe)
     moved = g.move_aside(sorted(G.glob("AUTO*")))
     g.load(start, seed=SEED)
+    # RandSeed written after loading (loading does not reseed): IC2_START_RANDSEEDS = a JSON file {start stem: seed} (the
+    # campaign's logged value, an exact replay: findings/2026-11-04-v092-followups.md §4), or IC2_START_RANDSEED = one value for
+    # every start (to sample the original's draws from one state).
+    seed = os.environ.get("IC2_START_RANDSEED")
+    if os.environ.get("IC2_START_RANDSEEDS"):
+        seed = json.loads(Path(os.environ["IC2_START_RANDSEEDS"]).read_text()).get(start.stem, seed)
+    if seed is not None:
+        with open(f"/proc/{g.pid}/mem", "r+b") as f:
+            f.seek(0x45E030)
+            f.write(struct.pack("<I", int(seed)))
     seen, saves = 0, []
     for t in range(1, turns + 1):
         line, texts = g.end_turn(peace=False)
