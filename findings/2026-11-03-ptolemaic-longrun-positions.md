@@ -144,6 +144,8 @@ built at (0,0) with 0 moves at the start):
 | Siga (37,84), Numidia, turn 30 | (36,83), (37,83) | (37,83) = the last | (36,83) = row-major first |
 | Issus (220,54), Seleucid, turn 36 | (219,54), (219,55) | (219,55) = the last | (219,54) = row-major first |
 
+*Correction (2026-11-03, `2026-11-03-placement-and-macedonia-longrun.md` §1):* the remake's Classical Faithful AI disembark and E1FC paths already use this rule (`ClassicalFleetNavigation.ReplaceLandTarget`/`LandingTarget`, T247); in play they match in 27 of 29 calls. The launch is the only gap, and its fix must respect unit markers.
+
 **Same helper, code only, not observed:**
 - `FUN_0044b840`, the AI disembark, calls it with mode 1 (land codes 2–11, no region test) for the landing tile. The remake's
   `LandingTile.FirstAdjacentLandTile` uses the same row-major-first convention as its sea helper.
