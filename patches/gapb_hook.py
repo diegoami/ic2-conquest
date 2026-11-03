@@ -27,9 +27,11 @@ import walk_hook as W  # noqa: E402
 from decide_hook import ARMIES, ARMY_REC, words  # noqa: E402
 
 MAGIC = 0x42504147                      # 'GAPB'
-DST = "Imperial Conquest 2 fast rollingsave seed gapbhook.exe"
 REC, CAP = 48, 32768
 WATCH = [int(x) for x in os.environ.get("IC2_GAPB_WATCH", "2,5").split(",")][:2]
+# The watched armies are baked into the build and the runner reuses an existing exe, so the name carries them (an exe built for
+# 2,5 was reused under the labels 12,6 and 5,4 on 2026-11-03: findings/2026-11-03-ptolemaic-longrun-positions.md, correction).
+DST = "Imperial Conquest 2 fast rollingsave seed gapbhook-w%s.exe" % "-".join(map(str, WATCH))
 # kind: (va, prologue bytes moved into the stub, register holding the army: "eax" or "edx")
 ENTRIES = {
     1: (0x44FA20, "0fbf0520034a00", "eax"),

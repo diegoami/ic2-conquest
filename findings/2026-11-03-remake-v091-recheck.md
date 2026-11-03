@@ -57,7 +57,10 @@ game over, no remake error. Saves are in release `run-exp-longrun-v091`.
   original; in the remake it walks to (198,46). Iconium (197,47), Galatia's own city, is 3 tiles away.
 
 **The original** (hook `patches/gapb_hook.py`, run `hooks-gapb-galatia-v1`, start `starts/ptolemaic-t00start.SAV` = the
-campaign's `t00-start`, watched armies 12 and 6; hooked autosave byte-identical to the plain build). In this round
+campaign's `t00-start`; hooked autosave byte-identical to the plain build). *Correction 2026-11-03:* the run asked to watch
+armies 12 and 6, but the runner reused a hooked exe built for armies 2 and 5, so its `watch` fields are armies 2 and 5 under
+the labels 12 and 6. Army 12's 8 moves come from the acting army's own record (seq 6–10), not from a watch field; the refill
+before Illyria's seat is seen on army 2 (0 → 9 at seq 136). `patches/gapb_hook.py` now names the exe by its watch list. In this round
 Galatia's seat comes first (seat order 12, 2, 15, 7, 10, 4, 14, 13, 0, 11, 1, 6, 8, 9, 5). The mid-round move refill
 comes later, before Illyria's seat. So army 12 still has the 8 moves the save gives it:
 1. E41C supply pass, then F6D8 (city 233, not at war);

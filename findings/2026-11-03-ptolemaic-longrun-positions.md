@@ -1,6 +1,15 @@
 # Ptolemaic long run on v0.9.1: all 15 position differences attributed, including two new remake gaps (capital defence after a battle with the human, the new fleet's launch tile)
 
 **Tag:** [confirmed: Wine hooks + remake probes + code in both games]. Wine only.
+**Status:** promoted by research PR #183 (merge `c7e206c`) as `docs/reports/2026-11-03-ptolemaic-longrun-positions.md`.
+- **Spec gained:** capital defence goes on while a human battle is pending; the launch-tile rule; the resupply tie-break.
+- **Other reports:** the 2026-10-30 report's §2 is refined, and its §4 tie edge is marked measured. The IC-main
+  remake-fixes report has a new section for the three gaps.
+- **Research verified** the disassembly of 939C, 96BC, EFC8 and E670, the remake lines, the hook sequences and the step walk,
+  and 15 of 15 inert controls.
+- **Rows 11–15** are recorded as an inference (they depend on the draw; which draw is not traced).
+- **Not re-checked by research:** the decide-report counts, the control probe, `a004.SAV` and ArmyTick.
+- **Research's watch-field detail** is answered in the correction below.
 **Task:** owner 2026-11-03, "continue with next tasks", after the v0.9.1 recheck (`2026-11-03-remake-v091-recheck.md`,
 research PR #181). Open item there: "the other 14 position nation-turns of the Ptolemaic game". Remake v0.9.1 `0d9d4729`.
 
@@ -139,6 +148,19 @@ built at (0,0) with 0 moves at the start):
 - `FUN_0044b840`, the AI disembark, calls it with mode 1 (land codes 2–11, no region test) for the landing tile. The remake's
   `LandingTile.FirstAdjacentLandTile` uses the same row-major-first convention as its sea helper.
 - `FUN_0044e1fc`, a fleet route to a land target, calls it with mode 0 for the sea tile beside the target.
+
+## Correction (2026-11-03, after research's intake, PR #183)
+
+Research found that in `hooks-gapb-t01pre-v1` the `watch` field shows army 5 still at 8 moves at seq 16–17, while the step
+hook has it at 2 after (178,48). The cause is the hook build. The watched armies are compiled into
+`… seed gapbhook.exe`, and the runner reuses an existing exe. The exe in the game folder had been built for armies 2 and 5
+(`hooks-gapb-v1`, 2026-11-02: the bytes `A1 <0x47C1EC + 0x290·a + 4>` occur for a = 2 and 5 only). So the run's `watch` labels
+5 and 4 are armies 2 and 5. Read that way:
+- army 5 goes from 8 to 0 at seq 16, matching its own record at seq 22 (0 moves at (178,48));
+- army 2 (Macedonia) stays at 8.
+
+None of the attribution depends on a watch field. `patches/gapb_hook.py` now names the exe by its watch list
+(`… seed gapbhook-w5-4.exe`), so a different list builds its own exe.
 
 ## Open
 
