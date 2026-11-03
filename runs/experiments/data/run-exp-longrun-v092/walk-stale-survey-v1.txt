@@ -1,0 +1,10 @@
+counts {'A': 393, 'A direct=1': 316, 'C': 88, 'B': 122, 'A direct=0': 77}
+B/C tests by word {('C', 'word>=0'): 85, ('B', 'word>=0'): 120, ('C', 'word=-1'): 3, ('B', 'word=-1'): 2}
+A records with word -1 at entry: 1
+   ('num-t37pre', 1, 3, 13, 'ecd6', 1, 'prev:', ('B', 3, 13, 'e913', -1))
+--- tests with word -1, with their walk (the A record before) and the next A record
+num-t37pre turn 1 C_no_progress_test nation 3 army 13 pos (193, 96) moves 10 | walk e913 direct 0 entry word 0 target [192, 77] | next walk (3, 13, 'ecd6', 'direct', 1, 'entry word', -1)
+num-t37pre turn 1 B_recursion_test nation 3 army 13 pos (193, 96) moves 10 | walk e913 direct 0 entry word 0 target [192, 77] | next walk (3, 13, 'ecd6', 'direct', 1, 'entry word', -1)
+num-t37pre turn 1 C_no_progress_test nation 3 army 13 pos (193, 96) moves 10 | walk ecd6 direct 1 entry word -1 target [193, 97] | next walk (12, 0, 'f47c', 'direct', 1, 'entry word', 49)
+num-t37pre turn 3 C_no_progress_test nation 3 army 13 pos (187, 96) moves 10 | walk e913 direct 0 entry word 0 target [192, 77] | next walk (3, 13, '0x44f4cc', 'direct', 0, 'entry word', 49)
+num-t37pre turn 3 B_recursion_test nation 3 army 13 pos (187, 96) moves 10 | walk e913 direct 0 entry word 0 target [192, 77] | next walk (3, 13, '0x44f4cc', 'direct', 0, 'entry word', 49)

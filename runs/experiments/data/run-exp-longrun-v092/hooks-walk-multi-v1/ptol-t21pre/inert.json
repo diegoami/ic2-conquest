@@ -1,0 +1,54 @@
+{
+ "start": "artifacts/run-exp-longrun-v091/decidestarts/ptol-t21pre.SAV",
+ "seed": 12345,
+ "turns": 3,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-213017",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0741.SAV",
+    "sha256": "04d0bc8ecfe4313a808f628c8e4190cae1d51855291a740e9fe7422817322df4"
+   },
+   {
+    "turn": 2,
+    "file": "hooked-t02-AUTO0742.SAV",
+    "sha256": "f0f99377ae32f47d35401acd6812611276a25ccdf4c3d33d50ec310052f7fde7"
+   },
+   {
+    "turn": 3,
+    "file": "hooked-t03-AUTO0743.SAV",
+    "sha256": "e59cb9ac6c9ef664cfab66cdd329443091912601eb50885ff62ad92a1e47d60c"
+   }
+  ],
+  "records": 67
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261103-213109",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0741.SAV",
+    "sha256": "04d0bc8ecfe4313a808f628c8e4190cae1d51855291a740e9fe7422817322df4"
+   },
+   {
+    "turn": 2,
+    "file": "plain-t02-AUTO0742.SAV",
+    "sha256": "f0f99377ae32f47d35401acd6812611276a25ccdf4c3d33d50ec310052f7fde7"
+   },
+   {
+    "turn": 3,
+    "file": "plain-t03-AUTO0743.SAV",
+    "sha256": "e59cb9ac6c9ef664cfab66cdd329443091912601eb50885ff62ad92a1e47d60c"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true,
+  true,
+  true
+ ],
+ "hooked_exe_sha256": "c385130777f6fc69d960ebce55f94bb6d732a273e18783cbc4a82a0bbf7f74ca"
+}
