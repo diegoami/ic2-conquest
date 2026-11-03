@@ -61,6 +61,10 @@ not-at-war city branch), with no siege.
 
 **Still not observed:** the E84C run walk (0x44E913), and 0x44F409 / 0x44F47C ending next to an enemy city.
 
+*Note 2026-11-03:* `hooks-gapb-v2` was labelled as watching armies 6 and 5. It reused the hooked exe built for `hooks-gapb-v1`,
+so its `watch` fields are armies 2 and 5. The values cited above (army 6's 9 moves, AAB4 = 0, the callers) come from the
+acting army's own record, not from a watch field, so they stand (`2026-11-03-ptolemaic-longrun-positions.md`, correction).
+
 ## Seleucid turn 26 (harness, open)
 
 The game stops at turn 26 in every run. The watch build, which has no `no_delay`, stops identically, and its turns 1–25
