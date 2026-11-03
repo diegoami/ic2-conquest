@@ -8,7 +8,7 @@
 - **Research's correction to §2:** 496E0's best score starts at 1000 (0x3E8) and is replaced only by a smaller one, so a busy
   city's 2000 never wins. A busy city is skipped in effect, as in the remake, and only the table-order tie remains.
 - **Research's question on the global word `0x4A0330` (read at 0x449783):** it is the calendar **week**
-  (`harness/driver.py`: `SEASON, WEEK, YEAR_BC = 0x4A032E, 0x4A0330, 0x4A0332`). It is always ≥ 1, so `> −1` is always true,
+  (`harness/driver.py`: `SEASON, WEEK, YEAR_BC = 0x4A032E, 0x4A0330, 0x4A0332`). It runs 0–11 (written as (week + 2) % 12; research PR #187), so `> −1` is always true,
   and the busy test reduces to the fleet's owner and build city.
 - **Not re-checked by research:** the Thracia E1FC mismatch, the decide counts, the treasury, Salamis/Alexandria and the war
   roll.
