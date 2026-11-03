@@ -69,7 +69,7 @@ def end_checkpoint(orig, k):
     return names[-1] if names else None
 
 
-def replay_turn(camp, k, row, out, log):
+def replay_turn(camp, k, row, out, log, seed=None):
     orig = camp / "original"
     start = orig / "t00-start.SAV" if k == 1 else end_checkpoint(orig, k - 1)
     acts = [act.validate(x) for x in row["orders_original"]] + [{"op": "end_turn"}]
@@ -79,7 +79,7 @@ def replay_turn(camp, k, row, out, log):
     rdir = out / f"t{k:02d}"
     t0 = time.time()
     try:
-        replies = remake.run(acts, start, rdir, log=lambda *x: None)
+        replies = remake.run(acts, start, rdir, log=lambda *x: None, seed=seed)
     except Exception as e:  # recorded, never retried blind: the receipt and stderr stay in rdir
         return {"turn": k, "error": str(e)[-1500:]}
     names = act.checkpoint_names(acts)
@@ -101,6 +101,10 @@ def main(argv=None):
     ap.add_argument("--pin")
     ap.add_argument("--follow", action="store_true")
     ap.add_argument("--out", default="anchored", help="folder inside the campaign (a recheck on a new pin: anchored-<short>)")
+    # The importer gives every imported save the scenario's fixed RandomSeed and TurnIndex 0, so without a seed every anchored
+    # turn draws the same per-nation streams: a roll that hits once hits in every turn (2026-11-03, Seleucid's war on Armenia
+    # in numidia turns 9-11). --turn-seed B gives turn k the seed B + k, so the turns' draws are independent.
+    ap.add_argument("--turn-seed", type=int, default=None, help="base seed: turn k is replayed with seed BASE + k")
     a = ap.parse_args(argv)
     if a.pin:
         os.environ.update(pin.env(a.pin))
@@ -114,7 +118,8 @@ def main(argv=None):
             if (camp / "turns.jsonl").exists() else []
         todo = [r for r in rows if r["turn"] not in done and end_checkpoint(camp / "original", r["turn"])]
         for r in todo:
-            res = replay_turn(camp, r["turn"], r, out, print)
+            res = replay_turn(camp, r["turn"], r, out, print,
+                              seed=None if a.turn_seed is None else a.turn_seed + r["turn"])
             with open(tj, "a") as f:
                 f.write(json.dumps(res, default=str) + "\n")
             done.add(r["turn"])
