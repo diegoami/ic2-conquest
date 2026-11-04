@@ -95,7 +95,10 @@ def main(argv=None):
     a = ap.parse_args(argv)
     base = Path(a.out)
     os.environ.setdefault("IC2_LOG_RANDSEED", "1")
-    parts = [base] + sorted(base.parent.glob(f"{base.name}-h*"), key=lambda p: int(p.name.rsplit("-h", 1)[1]))
+    import re
+    parts = [base] + sorted((p for p in base.parent.glob(f"{base.name}-h*")
+                             if p.is_dir() and re.fullmatch(re.escape(base.name) + r"-h\d+", p.name)),
+                            key=lambda p: int(p.name.rsplit("-h", 1)[1]))
     parts = [p for p in parts if p.exists() or p == base]
     hand = base.parent / f"{base.name}.handovers.jsonl"
     handovers = [json.loads(l) for l in hand.read_text().splitlines() if l.strip()] if hand.exists() else []
