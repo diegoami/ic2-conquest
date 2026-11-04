@@ -245,16 +245,26 @@ class OriginalSession:
     `<tag>-<name>.SAV` in the game folder and copied to `out/<name>.SAV`. receipt.jsonl and progress.json are
     written as it goes."""
 
-    def __init__(self, start, out, seed, tag, log=print):
+    def __init__(self, start, out, seed, tag, log=print, resume_randseed=None):
+        """`resume_randseed`: continue an interrupted game (owner 2026-11-04, the 150-turn runs). `start` is then the last
+        completed checkpoint and the value is the RandSeed logged right after it (`randseed_after`); loading does not
+        reseed, so writing it back continues the original's random stream exactly (findings/2026-11-04-v092-followups.md §4)."""
         self.out, self.tag, self.log = Path(out), tag, log
         self.game_over = None     # the End of Game text once the human is overthrown or conquered (act stops checkpointing)
-        self.out.mkdir(parents=True, exist_ok=False)
-        self.receipt = open(self.out / "receipt.jsonl", "w")
+        self.out.mkdir(parents=True, exist_ok=resume_randseed is not None)
+        self.receipt = open(self.out / "receipt.jsonl", "a" if resume_randseed is not None else "w")
         self.g = Game(log=log)
         moved = self.g.move_aside(sorted(G.glob("AUTO*")))
-        self.emit(kind="start", start=str(start), seed=seed, tag=tag, moved_aside=str(moved) if moved else None)
+        self.emit(kind="resume" if resume_randseed is not None else "start", start=str(start), seed=seed, tag=tag,
+                  moved_aside=str(moved) if moved else None)
         popups = self.g.load(start, seed=seed)
-        self.emit(kind="loaded", seed_line=getattr(self.g, "seed_line", ""), popups=popups, environment=self.g.environment)
+        if resume_randseed is not None:
+            import struct
+            with open(f"/proc/{self.g.pid}/mem", "r+b") as f:
+                f.seek(0x45E030)
+                f.write(struct.pack("<I", resume_randseed))
+        self.emit(kind="loaded", seed_line=getattr(self.g, "seed_line", ""), popups=popups, environment=self.g.environment,
+                  randseed_written=resume_randseed)
 
     def emit(self, **e):
         e["time"] = time.strftime("%Y-%m-%dT%H:%M:%S")
@@ -347,6 +357,10 @@ class OriginalSession:
             saved = self.g.save_as(f"{self.tag}-{name}-retry.SAV")
         dst = self.out / f"{name}.SAV"
         shutil.copy(saved, dst)
+        if os.environ.get("IC2_LOG_RANDSEED"):
+            # RandSeed after the checkpoint: what a resumed game writes back after loading this save.
+            import struct
+            self.emit(kind="randseed_after", checkpoint=name, value=struct.unpack("<I", self.g.mem(0x45E030, 4))[0])
         (self.out / "progress.json").write_text(json.dumps({"last_checkpoint": name, "time": time.strftime("%Y-%m-%dT%H:%M:%S")}))
         self.state = load(dst)
         return self.state
