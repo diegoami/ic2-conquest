@@ -1,3 +1,59 @@
+# Handover: 2026-11-04 night — shutdown checkpoint (AI audit #195, the decompile, the long-game queue)
+
+The owner shut the machine down at about 00:30. Everything is pushed. Read this entry first; the 2026-11-04 entry below
+still holds for the tooling.
+
+## The decompile (owner: "make sure you do not have to ask me again")
+
+- **It exists:** the full Ghidra pseudo-C, `all_app_functions.txt` (pinned SHA-256 `2018c205…`).
+- **Source of truth:** Drive, `gdrive:IC2/decompilation/`.
+- **Locally it is only a cache** (`~/ic2-decompile/`). `harness/decompile.py` fetches it with rclone when it is missing, on
+  any machine or in the cloud: `python3 -c "import harness.decompile as d; d.check()"`.
+- **Records:** `CLAUDE.md` and `docs/environment.md`. Research's `docs/environment.md` says the same (research PRs #199–#201).
+- **Quality:** the pseudo-C has 2,310 `extraout_` return values and 231 `unaff_` registers, typical of Delphi code. Use
+  the pseudo-C as the map, and check any branch that matters in the disassembly (`objdump -d -M intel` on the seed build).
+
+## AI audit #195 (delegated to this repo by ic2-research)
+
+- **Matrix:** `findings/2026-11-04-ai-audit195-inventory.md` (on main; research intake PRs #198, #203 and #204). It has 229
+  rows, the cross-cutting differences X1–X6 and the pass 1 plan.
+- **Pass 1 so far:**
+  - **X4:** the action cap was not binding in the 19 stored games.
+  - **X2:** the up-front support and hire pass is the cause of the Greece t21 flip. Per-army support (Tactical) matches the
+    original on 3 seeds; research verified this from the code (PR #204).
+  - **B14/D01:** MATCH.
+  - **The 11 other stays rows:** unattributed and draw-sensitive.
+- **Next, in order:**
+  1. X2 as a finding for a remake issue (minimal trigger, the expected and actual result, the fix "per-army support in
+     every Faithful mode").
+  2. X1, the phase order: read the decompile (FA20, FB7C, FFBC, EFC8), then a staged Wine control.
+  3. The 10 own-capital stays: hooks on the original's start saves.
+  4. X3, the seat replay: tactical-mode replays of the five replayed seats.
+  5. C23, C22, D09, D05 and B03: code reads, then controls.
+  6. Classify the late-year (266–264 BC) AI phase by class.
+- **Tools:** `runs/experiments/audit195/` (`orders_per_seat.py`, `x2_mode_probe.py`, `x2_stays_batch.sh`). The data is in
+  `runs/experiments/data/run-exp-audit195/`.
+- **Worktree:** `~/projects/ic2-conquest-audit195`, not under `~/ic2-work`.
+
+## The long-game queue: stopped at shutdown, resumable
+
+- **Done**, 150 turns each with anchored replays on `a44c42fc`: the observer games of Ptolemaic, Macedonia and Seleucid.
+- **Ptolemaic rulebot-2:** conquered at turn 25, then handed over to Seleucid (`-h1`), which stopped at turn 41.
+- **Not started:** Seleucid and Macedonia rulebot-2.
+- **Resume:** `setsid nohup bash runs/experiments/longgames/run_queue.sh` from the main checkout on branch `long-games`.
+  Check `free -m` first. It resumes `-h1` exactly and skips finished items.
+- **Pin:** later games should use v0.9.4 (`168dbc04`). Change `--pin` in `run_queue.sh`, and replay the finished games on
+  `168dbc04` with `runs/experiments/longrun-v090/recheck_pin.sh`.
+- **Saves:** releases `run-exp-longgames` (anchored tarballs) and `ic2-save-corpus` (the original games, also on Drive).
+
+## Open PRs and branches
+
+- **PR #331** (`audit-195-b`): the X2 one-change argument, the stays-row wording and this entry. It waits for the owner's
+  merge.
+- **`long-games`:** the queue's commits since PR #328 (data only). Open a PR once the queue has finished.
+
+---
+
 # Handover: 2026-11-04 — remake rechecks v0.9.1–v0.9.3, long games to 264 BC, save corpus, observer mode, rulebot-2
 
 WSL desktop session, from 2026-11-03 to 2026-11-04. The work is on branch **`long-games`**: 28 commits ahead of `main`,
