@@ -69,14 +69,14 @@ def end_checkpoint(orig, k):
     return names[-1] if names else None
 
 
-def replay_turn(camp, k, row, out, log, seed=None):
+def replay_turn(camp, k, row, out, log, seed=None, attempt=1):
     orig = camp / "original"
     start = orig / "t00-start.SAV" if k == 1 else end_checkpoint(orig, k - 1)
     acts = [act.validate(x) for x in row["orders_original"]] + [{"op": "end_turn"}]
     o_human = orig / f"t{k:02d}-a{len(acts) - 2:02d}.SAV" if len(acts) > 1 else start
     o_ai = orig / f"t{k:02d}-a{len(acts) - 1:02d}.SAV"
     from difftest import remake
-    rdir = out / f"t{k:02d}"
+    rdir = out / (f"t{k:02d}" if attempt == 1 else f"t{k:02d}-r{attempt}")
     t0 = time.time()
     try:
         replies = remake.run(acts, start, rdir, log=lambda *x: None, seed=seed)
@@ -105,6 +105,9 @@ def main(argv=None):
     # turn draws the same per-nation streams: a roll that hits once hits in every turn (2026-11-03, Seleucid's war on Armenia
     # in numidia turns 9-11). --turn-seed B gives turn k the seed B + k, so the turns' draws are independent.
     ap.add_argument("--turn-seed", type=int, default=None, help="base seed: turn k is replayed with seed BASE + k")
+    # A turn whose replay failed for the environment's sake (2026-11-04: "Out of memory", exit -6, while other jobs ran) is
+    # replayed again into t<k>-r<n>; the error row and its folder are kept (rule 6) and the new row is appended.
+    ap.add_argument("--retry-errors", action="store_true", help="replay again only the turns whose rows are all errors")
     a = ap.parse_args(argv)
     if a.pin:
         os.environ.update(pin.env(a.pin))
@@ -112,7 +115,19 @@ def main(argv=None):
     out = camp / a.out
     out.mkdir(exist_ok=True)
     tj = out / "turns.jsonl"
-    done = {json.loads(l)["turn"] for l in tj.read_text().splitlines() if l.strip()} if tj.exists() else set()
+    prior = [json.loads(l) for l in tj.read_text().splitlines() if l.strip()] if tj.exists() else []
+    done = {r["turn"] for r in prior}
+    if a.retry_errors:
+        good = {r["turn"] for r in prior if "error" not in r}
+        for k in sorted(done - good):
+            r = next(x for x in [json.loads(l) for l in (camp / "turns.jsonl").read_text().splitlines() if l.strip()] if x["turn"] == k)
+            attempt = 1 + sum(1 for x in prior if x["turn"] == k)
+            res = replay_turn(camp, k, r, out, print, seed=None if a.turn_seed is None else a.turn_seed + k, attempt=attempt)
+            res["attempt"] = attempt
+            with open(tj, "a") as f:
+                f.write(json.dumps(res, default=str) + "\n")
+            print(f"turn {k} attempt {attempt}: {'ERROR ' + res['error'][:200] if 'error' in res else 'ok'}", flush=True)
+        return
     while True:
         rows = [json.loads(l) for l in (camp / "turns.jsonl").read_text().splitlines() if l.strip()] \
             if (camp / "turns.jsonl").exists() else []
