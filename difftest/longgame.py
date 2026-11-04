@@ -118,8 +118,17 @@ def main(argv=None):
         seed = [e["value"] for e in rec if e.get("kind") == "randseed_after" and e.get("checkpoint") == ck.stem][-1]
         nxt = base.parent / f"{base.name}-h{len(parts)}"
         start = base.parent / f"{nxt.name}-start.SAV"
-        info = handover(ck, start)
-        h = {"part": nxt.name, "after_part": part.name, "game_over": s["game_over"], "from_checkpoint": str(ck.relative_to(ROOT)),
+        if start.exists():
+            # Written by an earlier attempt that stopped before recording the handover: check it, never rewrite it.
+            from state.sav import load, NATIONS
+            d = load(start)
+            info = {"from": [NATIONS[n] for n in range(16) if load(ck)["nations"][n]["human"]],
+                    "to": NATIONS[[n for n in range(16) if d["nations"][n]["human"]][0]], "date": d["date"],
+                    "cities": d["nations"][[n for n in range(16) if d["nations"][n]["human"]][0]]["cities_count"],
+                    "current_seat": NATIONS[d["current_nation"]], "reused_start": True}
+        else:
+            info = handover(ck, start)
+        h = {"part": nxt.name, "after_part": part.name, "game_over": s["game_over"], "from_checkpoint": str(ck),
              "start": str(start), "randseed": seed, **info, "time": time.strftime("%Y-%m-%dT%H:%M:%S")}
         with open(hand, "a") as f:
             f.write(json.dumps(h) + "\n")
