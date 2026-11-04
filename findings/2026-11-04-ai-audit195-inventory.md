@@ -473,6 +473,18 @@ and symbols, and a discriminating experiment.
 7. **The late-year AI-phase differences (266–264 BC):** classify them by class with
    `runs/experiments/longrun-v090/classify.py`, then place each class in this matrix.
 
+## Pass 1 results so far
+
+- **X4, the action cap (measured 2026-11-04, `runs/experiments/data/run-exp-audit195/x4-orders-per-seat-168dbc04-v1.txt`,
+  script `runs/experiments/audit195/orders_per_seat.py`).**
+  - **Measurement:** the remake's End-turn report lines across all 19 anchored replays on `168dbc04` (12,991 AI seats, years
+    270–264 BC). No seat issued more than 20 orders. One seat issued 20 (Seleucid, Galatia game, t14), 3 issued 19, and 98 %
+    issued 10 or fewer.
+  - **Conclusion:** the cap of 24 counts loop iterations, not orders, so it is unlikely to have bound in any stored game.
+    The Seleucid t14 seat (at most 4 non-order iterations) is not excluded.
+  - **Open:** the no-op stop (A37) and random tie-breaks (A38) cannot be seen in these lines.
+  - **Rows:** A36/C34 stay AUTH, now with "not binding in the stored games (≤ 20 orders per seat)".
+
 ## Evidence
 
 - **This pass reads documents only:** research `docs/rules-specification.md`, `docs/reports/` and `docs/findings-intake.md`;
