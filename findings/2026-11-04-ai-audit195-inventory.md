@@ -154,7 +154,7 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 | row (game, turn) | where it sits | state |
 |---|---|---|
-| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | A19/F31 (draws) | **pass 1: draw-dependent (each disappears under another seed; Tactical = Instant)** |
+| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | open | **pass 1: not X2 (Tactical = Instant); draw-sensitive in the remake; unattributed** |
 | Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | **attributed (pass 1): matches the original in Tactical mode on 3 seeds** |
 | Greece army at (112,70): Bithynia t30–31, Media t31–32; Numidia t24–25 | C20 (T277) | fixed on 168dbc04; not hook-confirmed |
 | Numidia t32 | — | not attributed |
@@ -505,9 +505,21 @@ and symbols, and a discriminating experiment.
     - Tactical and Instant give the same result on every seed;
     - each row disappears under at least one other seed.
 
-    They are therefore draw-dependent: the remake's draws differ from the original's, not its rule, and they are not X2.
-    This includes the 10 own-capital stays. They sit under A19/F31, the RNG design, unless a hook shows a rule
-    difference.
+    These rows are therefore **sensitive to the remake's draws and not X2. They stay unattributed, not MATCH.** Research's
+    narrowing at intake (PR #203): a row disappearing under other remake seeds shows only that the remake's outcome depends
+    on its draws. The original was not re-sampled under those seeds, so its rule is not shown to match.
+    - Numidia t6/t11 were already attributed to war rolls.
+    - The 10 own-capital stays included in these rows stay open; a hook on the original start would settle each one.
+  - **Is the mode switch a one-change probe? (research intake, PR #203)** For this turn, yes, from the code:
+    - At `168dbc04` the Tactical/Instant switch reaches the AI turn through one flag,
+      `IAiBattleInterruption.RetainPartialAiPass`.
+    - In `AiTurn.cs` the flag only moves the support and hire pass: the up-front pass at line 186 against `PrepareArmy` per
+      army at line 251, plus the logging at lines 215 and 388.
+    - Its one other reader is `AiCapitalDefence.cs:82`, `continuePending`, which acts only while a human battle is pending.
+    - The Greece t21 replays opened no battle in either mode (no battle line in the receipts), and the human's only order
+      was a recruit.
+
+    So in this turn the switch changes the support pass's placement and nothing else. No remake patch was needed.
   - **Consequence:** X2 is a real Faithful gap in Instant and headless play, which is the CLI default and every anchored
     replay. It changes which city an army resupplies at, so it changes the army's position. The remake's Tactical path
     already has the right timing. A candidate remake fix is to run the support pass per army in every Faithful mode.
