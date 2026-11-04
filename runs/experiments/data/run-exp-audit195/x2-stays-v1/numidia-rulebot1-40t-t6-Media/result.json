@@ -1,0 +1,111 @@
+{
+ "camp": "/home/diego/projects/ic2-conquest/artifacts/run-exp-longrun-v092/numidia-rulebot1-40t",
+ "turn": 6,
+ "start": "t05-a00.SAV",
+ "runs": [
+  {
+   "seed": 12351,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Media": {
+     "only_original": [
+      [
+       307,
+       58,
+       37700
+      ]
+     ],
+     "only_remake": [
+      [
+       299,
+       59,
+       41700
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12351,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Media": {
+     "only_original": [
+      [
+       307,
+       58,
+       37700
+      ]
+     ],
+     "only_remake": [
+      [
+       299,
+       59,
+       41700
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12345,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 12345,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Media": {
+     "only_original": [
+      [
+       307,
+       58,
+       37700
+      ]
+     ],
+     "only_remake": [
+      [
+       299,
+       59,
+       41700
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 99,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Media": {
+     "only_original": [
+      [
+       307,
+       58,
+       37700
+      ]
+     ],
+     "only_remake": [
+      [
+       299,
+       59,
+       41700
+      ]
+     ]
+    }
+   }
+  }
+ ]
+}

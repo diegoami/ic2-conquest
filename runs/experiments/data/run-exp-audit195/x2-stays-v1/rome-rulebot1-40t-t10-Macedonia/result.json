@@ -1,0 +1,77 @@
+{
+ "camp": "/home/diego/projects/ic2-conquest/artifacts/run-exp-longrun-v090/rome-rulebot1-40t",
+ "turn": 10,
+ "start": "t09-a03.SAV",
+ "runs": [
+  {
+   "seed": 12355,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Macedonia": {
+     "only_original": [
+      [
+       144,
+       42,
+       29800
+      ]
+     ],
+     "only_remake": [
+      [
+       140,
+       47,
+       29800
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12355,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Macedonia": {
+     "only_original": [
+      [
+       144,
+       42,
+       29800
+      ]
+     ],
+     "only_remake": [
+      [
+       140,
+       47,
+       29800
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12345,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 12345,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  }
+ ]
+}

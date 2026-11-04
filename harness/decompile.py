@@ -2,8 +2,10 @@
 
 Findings cite LINE NUMBERS of `all_app_functions.txt`, so the file is pinned by SHA-256 (`PINS`); a script that cites
 line numbers calls `check()` and stops when the file is a different one. The folder is outside git on purpose
-(decompiled game code, never committed): `$IC2_DECOMPILE`, else `$IC2_WORK/decompile` (`IC2_WORK` defaults to
-`~/ic2-work`, as in `harness/driver.py`; if that folder does not exist, as with an experiment's private IC2_WORK, `~/ic2-work/decompile`). Old overrides still work: `IC2_RETOOLS` (a folder), `IC2_DUMP` (the dump file),
+(decompiled game code, never committed): `$IC2_DECOMPILE`, else `~/ic2-decompile` (its own folder since 2026-11-04: the
+old place, `~/ic2-work/decompile`, shared a parent with worktrees and game-folder copies that get cleaned up, and was lost
+that way), else the legacy `$IC2_WORK/decompile`. Copies: Windows `%LOCALAPPDATA%/ReTools` and Drive
+`gdrive:IC2/decompilation/` (docs/environment.md, "Decompile"). Old overrides still work: `IC2_RETOOLS` (a folder), `IC2_DUMP` (the dump file),
 `IC2_SYMBOLS` (the symbols file). Standard library only, so any script can import it after putting the repo root on `sys.path`.
 Pins recorded 2026-10-10 (copied from the lost Windows-side ReTools folder, hashes identical)."""
 import hashlib
@@ -12,7 +14,7 @@ import sys
 from pathlib import Path
 
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
-HOME_DIR = Path.home() / "ic2-work" / "decompile"
+HOME_DIR = Path.home() / "ic2-decompile"
 
 
 def _find_dir():
@@ -20,10 +22,53 @@ def _find_dir():
     explicit = os.environ.get("IC2_DECOMPILE") or os.environ.get("IC2_RETOOLS")
     if explicit:
         return Path(explicit)
+    if HOME_DIR.is_dir():
+        return HOME_DIR
     return WORK / "decompile" if (WORK / "decompile").is_dir() else HOME_DIR
 
 
 DIR = _find_dir()
+
+# The source of truth is Google Drive (owner 2026-11-04: "we can never assume that it will be there because we work on
+# other computers and on the cloud ... if it is not there, get it from google drive through rclone"). The local folder is
+# only a cache; fetch() fills it when a file is missing.
+DRIVE = os.environ.get("IC2_DECOMPILE_DRIVE", "gdrive:IC2/decompilation")
+WSL_RCLONE_CONF = Path("/mnt/c/Users/diego/AppData/Roaming/rclone/rclone.conf")
+
+
+def rclone_config():
+    """$RCLONE_CONFIG, else the Windows-side config when running in this WSL, else None (rclone's own default)."""
+    c = os.environ.get("RCLONE_CONFIG")
+    if c:
+        return c
+    return str(WSL_RCLONE_CONF) if WSL_RCLONE_CONF.exists() else None
+
+
+def fetch(log=lambda m: print(m, file=sys.stderr)):
+    """Copy the decompile from Drive into DIR (top-level text files and scripts/, scratch/; not the Ghidra project).
+    Returns True when rclone succeeded. Never prints the config's contents, only passes its path."""
+    import shutil
+    import subprocess
+    if not shutil.which("rclone"):
+        log("decompile: rclone is not installed; install it and configure the 'gdrive:' remote, or set IC2_DECOMPILE")
+        return False
+    DIR.mkdir(parents=True, exist_ok=True)
+    cmd = ["rclone"] + (["--config", rclone_config()] if rclone_config() else []) + [
+        "copy", DRIVE, str(DIR), "--include", "/*.txt", "--include", "/*.tsv", "--include", "/*.json",
+        "--include", "/scripts/**", "--include", "/scratch/**"]
+    log("decompile: %s missing locally, fetching from %s" % (DIR, DRIVE))
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode:
+        log("decompile: rclone failed (%d): %s" % (r.returncode, r.stderr.strip()[-500:]))
+        return False
+    return True
+
+
+def ensure(name="all_app_functions.txt"):
+    """Make sure `name` is in DIR, fetching the folder from Drive once if it is not."""
+    if not (DIR / name).exists():
+        fetch()
+    return (DIR / name).exists()
 
 PINS = {
     "all_app_functions.txt": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
@@ -40,6 +85,8 @@ MISSING = {
 def path(name):
     """Path of a file in the decompile folder (`name` may be 'sub/file'). Fails with a clear message if it is missing."""
     p = DIR / name
+    if not p.exists() and name not in MISSING:
+        ensure(name)
     if not p.exists():
         why = MISSING.get(name)
         sys.exit("decompile file missing: %s%s\n(folder %s; set IC2_DECOMPILE to move it)"
@@ -69,6 +116,8 @@ def check(*files):
         name = os.path.basename(p)
         if p in _checked:
             continue
+        if not os.path.exists(p) and os.path.dirname(p) == str(DIR):
+            ensure(name)
         if not os.path.exists(p):
             sys.exit("decompile file missing: %s\n(folder %s; set IC2_DECOMPILE to move it)" % (p, DIR))
         want = PINS.get(name)

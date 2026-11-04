@@ -1,0 +1,111 @@
+{
+ "camp": "/home/diego/projects/ic2-conquest/artifacts/run-exp-longrun-v090/carthage-rulebot1-40t",
+ "turn": 35,
+ "start": "t34-a02.SAV",
+ "runs": [
+  {
+   "seed": 12380,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Ptolemaic": {
+     "only_original": [
+      [
+       191,
+       95,
+       64030
+      ]
+     ],
+     "only_remake": [
+      [
+       189,
+       102,
+       64030
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12380,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Ptolemaic": {
+     "only_original": [
+      [
+       191,
+       95,
+       64030
+      ]
+     ],
+     "only_remake": [
+      [
+       189,
+       102,
+       64030
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12345,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 12345,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Ptolemaic": {
+     "only_original": [
+      [
+       191,
+       95,
+       64030
+      ]
+     ],
+     "only_remake": [
+      [
+       189,
+       102,
+       64030
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 99,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Ptolemaic": {
+     "only_original": [
+      [
+       191,
+       95,
+       64030
+      ]
+     ],
+     "only_remake": [
+      [
+       189,
+       102,
+       64030
+      ]
+     ]
+    }
+   }
+  }
+ ]
+}

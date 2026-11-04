@@ -1,0 +1,77 @@
+{
+ "camp": "/home/diego/projects/ic2-conquest/artifacts/run-exp-longrun-v091/ptolemaic-rulebot1-40t",
+ "turn": 9,
+ "start": "t08-a02.SAV",
+ "runs": [
+  {
+   "seed": 12354,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Rome": {
+     "only_original": [
+      [
+       102,
+       44,
+       40540
+      ]
+     ],
+     "only_remake": [
+      [
+       101,
+       42,
+       40540
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12354,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Rome": {
+     "only_original": [
+      [
+       102,
+       44,
+       40540
+      ]
+     ],
+     "only_remake": [
+      [
+       101,
+       42,
+       40540
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12345,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 12345,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  }
+ ]
+}
