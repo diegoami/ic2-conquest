@@ -80,7 +80,7 @@ def main(argv=None):
                 row = {"turn": k, "date_original": so["date"], "nation": NATIONS[nation], "orders_original": oo,
                        "orders_same": True, "differences": 0, "original_only": True, "observer": a.observer}
                 replies = []
-                for j, x in enumerate(oo + [{"op": "end_turn"}]):
+                for j, x in enumerate(oo + [end_action(bot, so)]):
                     texts, err = o.act(act.validate(x), f"t{k:02d}-a{j:02d}")
                     replies.append({"op": x["op"], "reply": texts, "error": err})
                 so = o.state
@@ -98,12 +98,12 @@ def main(argv=None):
                    "nation_remake": NATIONS[sr["current_nation"]], "orders_original": oo, "orders_remake": orr,
                    "orders_same": oo == orr}
             replies = []
-            for j, x in enumerate(oo + [{"op": "end_turn"}]):
+            for j, x in enumerate(oo + [end_action(bot, so)]):
                 texts, err = o.act(act.validate(x), f"t{k:02d}-a{j:02d}")
                 replies.append({"op": x["op"], "reply": texts, "error": err})
             so = o.state
-            names = act.checkpoint_names(orr + [{"op": "end_turn"}])
-            remake.run([act.validate(x) for x in orr + [{"op": "end_turn"}]], native, rdir / f"t{k:02d}", log=rlog, template=a.start)
+            names = act.checkpoint_names(orr + [end_action(bot, sr)])
+            remake.run([act.validate(x) for x in orr + [end_action(bot, sr)]], native, rdir / f"t{k:02d}", log=rlog, template=a.start)
             last = rdir / f"t{k:02d}" / names[-1]
             native, sr = last.with_suffix(".native"), load(last.with_suffix(".SAV"))
             rec = [json.loads(l) for l in (rdir / f"t{k:02d}" / "receipt.jsonl").read_text().splitlines() if l.strip()]
@@ -131,6 +131,11 @@ def main(argv=None):
         o.close()
     (out / "summary.json").write_text(json.dumps({"turns": a.turns, "first_divergence_turn": first, "game_over": game_over,
                                                   "finished": time.strftime("%Y-%m-%dT%H:%M:%S")}, indent=1))
+
+
+def end_action(bot, s):
+    """The bot's End turn (rulebot-2 accepts post-battle peace: {"op": "end_turn", "peace": true}); plain otherwise."""
+    return bot.end_turn(s) if hasattr(bot, "end_turn") else {"op": "end_turn"}
 
 
 def resume(out, a, rdir, tag, rlog):

@@ -165,7 +165,7 @@ def perform(g, a, state):
     if op == "recruit":
         return recruit_exact(g, recruit_row(state, state["current_nation"], a["city"]), a["type"], a["troops"])
     if op == "end_turn":
-        line, texts = g.end_turn(peace=False)
+        line, texts = g.end_turn(peace=bool(a.get("peace", False)))
         return [f"AUTOSAVE {line}"] + texts
     if op == "relation":
         value, texts = g.relation(a["nation"], a["kind"])

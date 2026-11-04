@@ -72,8 +72,10 @@ foreach (var raw in File.ReadLines(commands))
         {
             // v0.8.5+: a post-battle peace offer blocks saving. The original side's driver answers that box No
             // (harness/driver.py end_turn(peace=False)), so the remake side does the same and records it.
-            var answer = session.Submit("peace-no");
-            Emit(new { kind = "command", step = step++, command = "peace-no", resolved = "peace-no", lines = answer.Lines,
+            // rulebot-2 accepts the offer (its End turn carries "peace": true; difftest/remake.py passes peace=yes).
+            var peaceAnswer = options.Contains("peace=yes") ? "peace-yes" : "peace-no";
+            var answer = session.Submit(peaceAnswer);
+            Emit(new { kind = "command", step = step++, command = peaceAnswer, resolved = peaceAnswer, lines = answer.Lines,
                 note = "auto-answered pending peace offer before checkpoint (as the original driver does)",
                 turn = session.State.Calendar.TurnIndex, active = session.State.ActiveNationId });
             saved = session.Submit("save " + native);
