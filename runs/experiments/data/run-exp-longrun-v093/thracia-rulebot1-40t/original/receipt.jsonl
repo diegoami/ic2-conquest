@@ -1,0 +1,127 @@
+{"kind": "start", "start": "artifacts/run-exp-civ-sweep/S15_Thracia_AUTO0720.SAV", "seed": 12345, "tag": "Cthracia-rulebot1-40t-20261104160845", "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261104-160845", "time": "2026-11-04T16:08:45"}
+{"kind": "loaded", "seed_line": "S 0000012345", "popups": [], "environment": {"wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)", "exe": {"name": "Imperial Conquest 2 fast rollingsave seed.exe", "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"}, "xvfb_screen": "1280x1024", "fonts": {"Book Antiqua": "DejaVu Sans", "MS Sans Serif": "DejaVu Sans", "liberation_count": 0, "tahoma_wine": true}, "prefix_fonts": {"sha256_12": "483b99b8e1cf", "count": 63}}, "randseed_written": null, "time": "2026-11-04T16:08:59"}
+{"kind": "randseed_after", "checkpoint": "t00-start", "value": 4169717509, "time": "2026-11-04T16:09:06"}
+{"kind": "randseed", "before": "t01-a00", "op": "set_tax", "value": 4169717509, "time": "2026-11-04T16:09:06"}
+{"kind": "randseed_after", "checkpoint": "t01-a00", "value": 4169717509, "time": "2026-11-04T16:09:19"}
+{"kind": "action", "action": {"op": "set_tax", "percent": 20}, "reply": [], "error": null, "checkpoint": "t01-a00", "date": "Spring week 1, 270 BC", "time": "2026-11-04T16:09:19"}
+{"kind": "randseed", "before": "t01-a01", "op": "end_turn", "value": 4169717509, "time": "2026-11-04T16:09:19"}
+{"kind": "randseed_after", "checkpoint": "t01-a01", "value": 148740600, "time": "2026-11-04T16:09:37"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0721.SAV", "@ Gaul wants to trade with Thracia."], "error": null, "checkpoint": "t01-a01", "date": "Spring week 3, 270 BC", "time": "2026-11-04T16:09:37"}
+{"kind": "randseed", "before": "t02-a00", "op": "end_turn", "value": 148740600, "time": "2026-11-04T16:09:38"}
+{"kind": "randseed_after", "checkpoint": "t02-a00", "value": 3234824877, "time": "2026-11-04T16:09:55"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0722.SAV"], "error": null, "checkpoint": "t02-a00", "date": "Spring week 5, 270 BC", "time": "2026-11-04T16:09:55"}
+{"kind": "randseed", "before": "t03-a00", "op": "end_turn", "value": 3234824877, "time": "2026-11-04T16:09:56"}
+{"kind": "randseed_after", "checkpoint": "t03-a00", "value": 4119737457, "time": "2026-11-04T16:10:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0723.SAV"], "error": null, "checkpoint": "t03-a00", "date": "Spring week 7, 270 BC", "time": "2026-11-04T16:10:13"}
+{"kind": "randseed", "before": "t04-a00", "op": "end_turn", "value": 4119737457, "time": "2026-11-04T16:10:14"}
+{"kind": "randseed_after", "checkpoint": "t04-a00", "value": 1893503629, "time": "2026-11-04T16:10:31"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0724.SAV"], "error": null, "checkpoint": "t04-a00", "date": "Spring week 9, 270 BC", "time": "2026-11-04T16:10:31"}
+{"kind": "randseed", "before": "t05-a00", "op": "end_turn", "value": 1893503629, "time": "2026-11-04T16:10:31"}
+{"kind": "randseed_after", "checkpoint": "t05-a00", "value": 1355484543, "time": "2026-11-04T16:10:52"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0725.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved", "@ Media wants to trade with Thracia."], "error": null, "checkpoint": "t05-a00", "date": "Spring week 11, 270 BC", "time": "2026-11-04T16:10:52"}
+{"kind": "randseed", "before": "t06-a00", "op": "end_turn", "value": 1355484543, "time": "2026-11-04T16:10:52"}
+{"kind": "randseed_after", "checkpoint": "t06-a00", "value": 2395948797, "time": "2026-11-04T16:11:12"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0726.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t06-a00", "date": "Summer week 1, 270 BC", "time": "2026-11-04T16:11:12"}
+{"kind": "randseed", "before": "t07-a00", "op": "end_turn", "value": 2395948797, "time": "2026-11-04T16:11:12"}
+{"kind": "randseed_after", "checkpoint": "t07-a00", "value": 3622872834, "time": "2026-11-04T16:11:32"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0727.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t07-a00", "date": "Summer week 3, 270 BC", "time": "2026-11-04T16:11:32"}
+{"kind": "randseed", "before": "t08-a00", "op": "end_turn", "value": 3622872834, "time": "2026-11-04T16:11:32"}
+{"kind": "randseed_after", "checkpoint": "t08-a00", "value": 2064562981, "time": "2026-11-04T16:11:51"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0728.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t08-a00", "date": "Summer week 5, 270 BC", "time": "2026-11-04T16:11:51"}
+{"kind": "randseed", "before": "t09-a00", "op": "end_turn", "value": 2064562981, "time": "2026-11-04T16:11:52"}
+{"kind": "randseed_after", "checkpoint": "t09-a00", "value": 3409456438, "time": "2026-11-04T16:12:11"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0729.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t09-a00", "date": "Summer week 7, 270 BC", "time": "2026-11-04T16:12:11"}
+{"kind": "randseed", "before": "t10-a00", "op": "end_turn", "value": 3409456438, "time": "2026-11-04T16:12:12"}
+{"kind": "randseed_after", "checkpoint": "t10-a00", "value": 1222710805, "time": "2026-11-04T16:12:32"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0730.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved", "@ Armenia wants to trade with Thracia,"], "error": null, "checkpoint": "t10-a00", "date": "Summer week 9, 270 BC", "time": "2026-11-04T16:12:32"}
+{"kind": "randseed", "before": "t11-a00", "op": "end_turn", "value": 1222710805, "time": "2026-11-04T16:12:33"}
+{"kind": "randseed_after", "checkpoint": "t11-a00", "value": 2363095230, "time": "2026-11-04T16:12:52"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0731.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t11-a00", "date": "Summer week 11, 270 BC", "time": "2026-11-04T16:12:52"}
+{"kind": "randseed", "before": "t12-a00", "op": "end_turn", "value": 2363095230, "time": "2026-11-04T16:12:53"}
+{"kind": "randseed_after", "checkpoint": "t12-a00", "value": 3686840276, "time": "2026-11-04T16:13:12"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0732.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t12-a00", "date": "Autumn week 1, 270 BC", "time": "2026-11-04T16:13:12"}
+{"kind": "randseed", "before": "t13-a00", "op": "end_turn", "value": 3686840276, "time": "2026-11-04T16:13:13"}
+{"kind": "randseed_after", "checkpoint": "t13-a00", "value": 1528072074, "time": "2026-11-04T16:13:32"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0733.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t13-a00", "date": "Autumn week 3, 270 BC", "time": "2026-11-04T16:13:32"}
+{"kind": "randseed", "before": "t14-a00", "op": "end_turn", "value": 1528072074, "time": "2026-11-04T16:13:33"}
+{"kind": "randseed_after", "checkpoint": "t14-a00", "value": 2815464314, "time": "2026-11-04T16:13:52"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0734.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t14-a00", "date": "Autumn week 5, 270 BC", "time": "2026-11-04T16:13:52"}
+{"kind": "randseed", "before": "t15-a00", "op": "end_turn", "value": 2815464314, "time": "2026-11-04T16:13:53"}
+{"kind": "randseed_after", "checkpoint": "t15-a00", "value": 1292660344, "time": "2026-11-04T16:14:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0735.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved", "@ Armenia wants to trade with Thracia,"], "error": null, "checkpoint": "t15-a00", "date": "Autumn week 7, 270 BC", "time": "2026-11-04T16:14:13"}
+{"kind": "randseed", "before": "t16-a00", "op": "end_turn", "value": 1292660344, "time": "2026-11-04T16:14:13"}
+{"kind": "randseed_after", "checkpoint": "t16-a00", "value": 2136082044, "time": "2026-11-04T16:14:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0736.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t16-a00", "date": "Autumn week 9, 270 BC", "time": "2026-11-04T16:14:33"}
+{"kind": "randseed", "before": "t17-a00", "op": "end_turn", "value": 2136082044, "time": "2026-11-04T16:14:33"}
+{"kind": "randseed_after", "checkpoint": "t17-a00", "value": 1916266498, "time": "2026-11-04T16:14:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0737.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t17-a00", "date": "Autumn week 11, 270 BC", "time": "2026-11-04T16:14:53"}
+{"kind": "randseed", "before": "t18-a00", "op": "end_turn", "value": 1916266498, "time": "2026-11-04T16:14:53"}
+{"kind": "randseed_after", "checkpoint": "t18-a00", "value": 2403486236, "time": "2026-11-04T16:15:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0738.SAV", "CONFIRM \u2018An army of yours needs supplies. \u2018An army of yours cannot afford to pay its mercenary units. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t18-a00", "date": "Winter week 1, 270 BC", "time": "2026-11-04T16:15:13"}
+{"kind": "randseed", "before": "t19-a00", "op": "end_turn", "value": 2403486236, "time": "2026-11-04T16:15:13"}
+{"kind": "randseed_after", "checkpoint": "t19-a00", "value": 1264355119, "time": "2026-11-04T16:15:31"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0739.SAV"], "error": null, "checkpoint": "t19-a00", "date": "Winter week 3, 270 BC", "time": "2026-11-04T16:15:31"}
+{"kind": "randseed", "before": "t20-a00", "op": "end_turn", "value": 1264355119, "time": "2026-11-04T16:15:31"}
+{"kind": "randseed_after", "checkpoint": "t20-a00", "value": 3490673869, "time": "2026-11-04T16:15:51"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0740.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t20-a00", "date": "Winter week 5, 270 BC", "time": "2026-11-04T16:15:51"}
+{"kind": "randseed", "before": "t21-a00", "op": "end_turn", "value": 3490673869, "time": "2026-11-04T16:15:51"}
+{"kind": "randseed_after", "checkpoint": "t21-a00", "value": 932722391, "time": "2026-11-04T16:16:12"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0741.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved", "@ Bithynia wants to trade with Thracia."], "error": null, "checkpoint": "t21-a00", "date": "Winter week 7, 270 BC", "time": "2026-11-04T16:16:12"}
+{"kind": "randseed", "before": "t22-a00", "op": "end_turn", "value": 932722391, "time": "2026-11-04T16:16:12"}
+{"kind": "randseed_after", "checkpoint": "t22-a00", "value": 414035808, "time": "2026-11-04T16:16:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0742.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved", "@ Gaul wants to trade with Thracia."], "error": null, "checkpoint": "t22-a00", "date": "Winter week 9, 270 BC", "time": "2026-11-04T16:16:33"}
+{"kind": "randseed", "before": "t23-a00", "op": "end_turn", "value": 414035808, "time": "2026-11-04T16:16:34"}
+{"kind": "randseed_after", "checkpoint": "t23-a00", "value": 2320807143, "time": "2026-11-04T16:16:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0743.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t23-a00", "date": "Winter week 11, 270 BC", "time": "2026-11-04T16:16:53"}
+{"kind": "randseed", "before": "t24-a00", "op": "end_turn", "value": 2320807143, "time": "2026-11-04T16:16:54"}
+{"kind": "randseed_after", "checkpoint": "t24-a00", "value": 327427331, "time": "2026-11-04T16:17:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0744.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t24-a00", "date": "Spring week 1, 269 BC", "time": "2026-11-04T16:17:13"}
+{"kind": "randseed", "before": "t25-a00", "op": "end_turn", "value": 327427331, "time": "2026-11-04T16:17:14"}
+{"kind": "randseed_after", "checkpoint": "t25-a00", "value": 1299717551, "time": "2026-11-04T16:17:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0745.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t25-a00", "date": "Spring week 3, 269 BC", "time": "2026-11-04T16:17:33"}
+{"kind": "randseed", "before": "t26-a00", "op": "end_turn", "value": 1299717551, "time": "2026-11-04T16:17:34"}
+{"kind": "randseed_after", "checkpoint": "t26-a00", "value": 3589062293, "time": "2026-11-04T16:17:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0746.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t26-a00", "date": "Spring week 5, 269 BC", "time": "2026-11-04T16:17:53"}
+{"kind": "randseed", "before": "t27-a00", "op": "end_turn", "value": 3589062293, "time": "2026-11-04T16:17:54"}
+{"kind": "randseed_after", "checkpoint": "t27-a00", "value": 3913280308, "time": "2026-11-04T16:18:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0747.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t27-a00", "date": "Spring week 7, 269 BC", "time": "2026-11-04T16:18:13"}
+{"kind": "randseed", "before": "t28-a00", "op": "end_turn", "value": 3913280308, "time": "2026-11-04T16:18:14"}
+{"kind": "randseed_after", "checkpoint": "t28-a00", "value": 187072481, "time": "2026-11-04T16:18:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0748.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t28-a00", "date": "Spring week 9, 269 BC", "time": "2026-11-04T16:18:33"}
+{"kind": "randseed", "before": "t29-a00", "op": "end_turn", "value": 187072481, "time": "2026-11-04T16:18:34"}
+{"kind": "randseed_after", "checkpoint": "t29-a00", "value": 2181759101, "time": "2026-11-04T16:18:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0749.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t29-a00", "date": "Spring week 11, 269 BC", "time": "2026-11-04T16:18:53"}
+{"kind": "randseed", "before": "t30-a00", "op": "end_turn", "value": 2181759101, "time": "2026-11-04T16:18:54"}
+{"kind": "randseed_after", "checkpoint": "t30-a00", "value": 2148810798, "time": "2026-11-04T16:19:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0750.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t30-a00", "date": "Summer week 1, 269 BC", "time": "2026-11-04T16:19:13"}
+{"kind": "randseed", "before": "t31-a00", "op": "end_turn", "value": 2148810798, "time": "2026-11-04T16:19:14"}
+{"kind": "randseed_after", "checkpoint": "t31-a00", "value": 2718709445, "time": "2026-11-04T16:19:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0751.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t31-a00", "date": "Summer week 3, 269 BC", "time": "2026-11-04T16:19:33"}
+{"kind": "randseed", "before": "t32-a00", "op": "end_turn", "value": 2718709445, "time": "2026-11-04T16:19:34"}
+{"kind": "randseed_after", "checkpoint": "t32-a00", "value": 3013469016, "time": "2026-11-04T16:19:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0752.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t32-a00", "date": "Summer week 5, 269 BC", "time": "2026-11-04T16:19:53"}
+{"kind": "randseed", "before": "t33-a00", "op": "end_turn", "value": 3013469016, "time": "2026-11-04T16:19:54"}
+{"kind": "randseed_after", "checkpoint": "t33-a00", "value": 950896353, "time": "2026-11-04T16:20:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0753.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t33-a00", "date": "Summer week 7, 269 BC", "time": "2026-11-04T16:20:13"}
+{"kind": "randseed", "before": "t34-a00", "op": "end_turn", "value": 950896353, "time": "2026-11-04T16:20:14"}
+{"kind": "randseed_after", "checkpoint": "t34-a00", "value": 3880981760, "time": "2026-11-04T16:20:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0754.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t34-a00", "date": "Summer week 9, 269 BC", "time": "2026-11-04T16:20:33"}
+{"kind": "randseed", "before": "t35-a00", "op": "end_turn", "value": 3880981760, "time": "2026-11-04T16:20:34"}
+{"kind": "randseed_after", "checkpoint": "t35-a00", "value": 1764411753, "time": "2026-11-04T16:20:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0755.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t35-a00", "date": "Summer week 11, 269 BC", "time": "2026-11-04T16:20:53"}
+{"kind": "randseed", "before": "t36-a00", "op": "end_turn", "value": 1764411753, "time": "2026-11-04T16:20:54"}
+{"kind": "randseed_after", "checkpoint": "t36-a00", "value": 3029289303, "time": "2026-11-04T16:21:13"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0756.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t36-a00", "date": "Autumn week 1, 269 BC", "time": "2026-11-04T16:21:13"}
+{"kind": "randseed", "before": "t37-a00", "op": "end_turn", "value": 3029289303, "time": "2026-11-04T16:21:14"}
+{"kind": "randseed_after", "checkpoint": "t37-a00", "value": 384472701, "time": "2026-11-04T16:21:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0757.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved", "@ Armenia wants to trade with Thracia,"], "error": null, "checkpoint": "t37-a00", "date": "Autumn week 3, 269 BC", "time": "2026-11-04T16:21:34"}
+{"kind": "randseed", "before": "t38-a00", "op": "end_turn", "value": 384472701, "time": "2026-11-04T16:21:35"}
+{"kind": "randseed_after", "checkpoint": "t38-a00", "value": 4093932767, "time": "2026-11-04T16:21:54"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0758.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t38-a00", "date": "Autumn week 5, 269 BC", "time": "2026-11-04T16:21:54"}
+{"kind": "randseed", "before": "t39-a00", "op": "end_turn", "value": 4093932767, "time": "2026-11-04T16:21:55"}
+{"kind": "randseed_after", "checkpoint": "t39-a00", "value": 2926662830, "time": "2026-11-04T16:22:14"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0759.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t39-a00", "date": "Autumn week 7, 269 BC", "time": "2026-11-04T16:22:14"}
+{"kind": "randseed", "before": "t40-a00", "op": "end_turn", "value": 2926662830, "time": "2026-11-04T16:22:15"}
+{"kind": "randseed_after", "checkpoint": "t40-a00", "value": 3467794452, "time": "2026-11-04T16:22:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0760.SAV", "CONFIRM \u2018An army of yours needs supplies. If you have not finished your tum click MAKE MORE MO\\ If you are finished moving this turn click END TURN. End tum, Make more moved"], "error": null, "checkpoint": "t40-a00", "date": "Autumn week 9, 269 BC", "time": "2026-11-04T16:22:34"}
+{"kind": "done", "time": "2026-11-04T16:22:35"}
