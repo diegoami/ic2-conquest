@@ -27,7 +27,11 @@ def catalogue(camp):
     rec = [json.loads(l) for l in (odir / "receipt.jsonl").read_text().splitlines() if l.strip()] \
         if (odir / "receipt.jsonl").exists() else []
     after = {e["checkpoint"]: e["value"] for e in rec if e.get("kind") == "randseed_after"}
-    turns = sorted({int(p.name[1:3]) for p in odir.glob("t[0-9][0-9]-a*.SAV")})
+    # Only turns the campaign recorded as complete (turns.jsonl): a pack published while the game runs also holds the
+    # checkpoints of the turn in progress, whose last one is a mid-turn state (2026-11-04, rome-rulebot1-150t-t026).
+    tj = camp / "turns.jsonl"
+    complete = {json.loads(l)["turn"] for l in tj.read_text().splitlines() if l.strip()} if tj.exists() else set()
+    turns = sorted(k for k in {int(p.name[1:3]) for p in odir.glob("t[0-9][0-9]-a*.SAV")} if k in complete)
     out = []
     for k in [0] + turns:
         ck = (odir / "t00-start.SAV") if k == 0 else sorted(odir.glob(f"t{k:02d}-a*.SAV"))[-1]
