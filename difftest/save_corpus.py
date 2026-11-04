@@ -58,6 +58,9 @@ def publish(game_dir):
     last = rows[-1]["turn"] if rows else 0
     name = f"{g.name}-t{last:03d}.tar.gz"
     STAGE.mkdir(parents=True, exist_ok=True)
+    # The starts are read BEFORE packing and limited to the pack's own last turn: a game running meanwhile completes more
+    # turns, which the pack does not hold (2026-11-04: rome t026 and carthage t050 listed 2 starts beyond their packs).
+    starts = [s for s in catalogue(g) if s["start_of_turn"] <= last + 1]
     pack = STAGE / name
     if pack.exists():
         raise SystemExit(f"{pack} exists: already published at turn {last} (rule 6: never replaced)")
@@ -69,7 +72,6 @@ def publish(game_dir):
            "Index: runs/experiments/data/save-corpus/index.jsonl. Fetch: python3 -m difftest.save_corpus fetch <game>.")
     gh("release", "upload", RELEASE, str(pack))
     rclone("copy", str(pack), DRIVE)
-    starts = catalogue(g)
     for s in starts:
         s["checkpoint"] = str(Path(g.name) / Path(s["checkpoint"]).relative_to(g.relative_to(ROOT)))
     INDEX.parent.mkdir(parents=True, exist_ok=True)
