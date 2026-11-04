@@ -29,6 +29,47 @@ def _find_dir():
 
 DIR = _find_dir()
 
+# The source of truth is Google Drive (owner 2026-11-04: "we can never assume that it will be there because we work on
+# other computers and on the cloud ... if it is not there, get it from google drive through rclone"). The local folder is
+# only a cache; fetch() fills it when a file is missing.
+DRIVE = os.environ.get("IC2_DECOMPILE_DRIVE", "gdrive:IC2/decompilation")
+WSL_RCLONE_CONF = Path("/mnt/c/Users/diego/AppData/Roaming/rclone/rclone.conf")
+
+
+def rclone_config():
+    """$RCLONE_CONFIG, else the Windows-side config when running in this WSL, else None (rclone's own default)."""
+    c = os.environ.get("RCLONE_CONFIG")
+    if c:
+        return c
+    return str(WSL_RCLONE_CONF) if WSL_RCLONE_CONF.exists() else None
+
+
+def fetch(log=lambda m: print(m, file=sys.stderr)):
+    """Copy the decompile from Drive into DIR (top-level text files and scripts/, scratch/; not the Ghidra project).
+    Returns True when rclone succeeded. Never prints the config's contents, only passes its path."""
+    import shutil
+    import subprocess
+    if not shutil.which("rclone"):
+        log("decompile: rclone is not installed; install it and configure the 'gdrive:' remote, or set IC2_DECOMPILE")
+        return False
+    DIR.mkdir(parents=True, exist_ok=True)
+    cmd = ["rclone"] + (["--config", rclone_config()] if rclone_config() else []) + [
+        "copy", DRIVE, str(DIR), "--include", "/*.txt", "--include", "/*.tsv", "--include", "/*.json",
+        "--include", "/scripts/**", "--include", "/scratch/**"]
+    log("decompile: %s missing locally, fetching from %s" % (DIR, DRIVE))
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode:
+        log("decompile: rclone failed (%d): %s" % (r.returncode, r.stderr.strip()[-500:]))
+        return False
+    return True
+
+
+def ensure(name="all_app_functions.txt"):
+    """Make sure `name` is in DIR, fetching the folder from Drive once if it is not."""
+    if not (DIR / name).exists():
+        fetch()
+    return (DIR / name).exists()
+
 PINS = {
     "all_app_functions.txt": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
     "delphi_symbols.tsv": "c4dbf9bb6a1b4f2907bb9f9ef904d60150997a4f86d08e0dd3195ba87365f58f",
@@ -44,6 +85,8 @@ MISSING = {
 def path(name):
     """Path of a file in the decompile folder (`name` may be 'sub/file'). Fails with a clear message if it is missing."""
     p = DIR / name
+    if not p.exists() and name not in MISSING:
+        ensure(name)
     if not p.exists():
         why = MISSING.get(name)
         sys.exit("decompile file missing: %s%s\n(folder %s; set IC2_DECOMPILE to move it)"
@@ -73,6 +116,8 @@ def check(*files):
         name = os.path.basename(p)
         if p in _checked:
             continue
+        if not os.path.exists(p) and os.path.dirname(p) == str(DIR):
+            ensure(name)
         if not os.path.exists(p):
             sys.exit("decompile file missing: %s\n(folder %s; set IC2_DECOMPILE to move it)" % (p, DIR))
         want = PINS.get(name)
