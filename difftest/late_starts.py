@@ -33,8 +33,8 @@ def catalogue(camp):
     tj = camp / "turns.jsonl"
     complete = {json.loads(l)["turn"] for l in tj.read_text().splitlines() if l.strip()} if tj.exists() else set()
     # Turn numbers past 99 have three digits (t100-a00.SAV, the 150-turn games).
-    turns = sorted(k for k in {int(m.group(1)) for p in odir.glob("t*-a*.SAV")
-                               if (m := re.fullmatch(r"t(\d+)-a\d+\.SAV", p.name))} if k in complete)
+    names = (re.fullmatch(r"t(\d+)-a\d+\.SAV", p.name) for p in odir.glob("t*-a*.SAV"))
+    turns = sorted(k for k in {int(m.group(1)) for m in names if m} if k in complete)
     out = []
     for k in [0] + turns:
         ck = (odir / "t00-start.SAV") if k == 0 else sorted(odir.glob(f"t{k:02d}-a*.SAV"))[-1]
