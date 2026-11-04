@@ -12,7 +12,10 @@ using IC2.Engine.Serialization;
 //
 // Placeholders in a command line name records by their position in the original format, resolved against the
 // session's state at that moment: {army:N} -> the id of state.Armies[N], {fleet:N} -> state.Fleets[N],
-// {city:N} -> world.Cities[N] (the world lists the cities in the original's record order).
+// {city:N} -> world.Cities[N] (the world lists the cities in the original's record order). The original keeps tombstone
+// records (owner -1) that the importer skips (report SkippedArmies/SkippedFleets), so N is first shifted down by the number
+// of skipped records before it (2026-11-04: Bithynia t02/t03 addressed the wrong army). A tombstone the original re-uses
+// for a new army later in the same session is not tracked.
 //
 // Starts a session from an original SAV (imported) or a native save, submits each command line as the
 // CLI would, and at each "#checkpoint <name>" line writes <name>.native (the native JSON save) and <name>.SAV (exported
@@ -39,6 +42,7 @@ string Sha(string path) => Convert.ToHexString(SHA256.HashData(File.ReadAllBytes
 string Fresh(string path) => File.Exists(path) ? throw new IOException("Refusing existing output: " + path) : path;
 
 GameSession session;
+int[] skippedArmies = [], skippedFleets = [];
 if (!start.EndsWith(".sav", StringComparison.OrdinalIgnoreCase))
 {
     var loaded = SaveManager.LoadFile(start, world, rules);
@@ -51,6 +55,8 @@ else
     var imported = OriginalSaveImporter.Import(File.ReadAllBytes(start), Path.GetFileName(start), world, rules, scenario,
         "diff-start", "diff-start");
     var save = imported.Save;
+    skippedArmies = imported.Report.SkippedArmies.Select(r => r.Index).ToArray();
+    skippedFleets = imported.Report.SkippedFleets.Select(r => r.Index).ToArray();
     if (seedOverride is { } s2) save = save with { State = save.State with { RandomSeed = s2 } };
     session = new GameSession(world, rules, scenario, save) { HumanBattles = mode };
     Emit(new { kind = "start", from = "original-sav", path = start, sha256 = Sha(start), report = imported.Report,
@@ -120,8 +126,8 @@ string Resolve(string line)
         int i = int.Parse(m.Groups[2].Value);
         return m.Groups[1].Value switch
         {
-            "army" => session.State.Armies[i].Id,
-            "fleet" => session.State.Fleets[i].Id,
+            "army" => session.State.Armies[i - skippedArmies.Count(k => k < i)].Id,
+            "fleet" => session.State.Fleets[i - skippedFleets.Count(k => k < i)].Id,
             "nation" => world.Nations[i].Id,
             _ => world.Cities[i].Id,
         };

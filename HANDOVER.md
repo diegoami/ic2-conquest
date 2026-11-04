@@ -68,7 +68,7 @@ Seleucid conquered Bithynia and Galatia.
 
 ## Open, in order
 
-1. **Adapter defect** (new finding §3). `difftest/remake_adapter/Program.cs` maps `{army:N}` and `{fleet:N}` to
+1. ~~**Adapter defect**~~ fixed 2026-11-04 evening (adapter rebuilt for pin `168dbc04` only; the `a44c42fc` build used by the queue is unchanged). Was: (new finding §3). `difftest/remake_adapter/Program.cs` maps `{army:N}` and `{fleet:N}` to
    `state.Armies[N]` / `state.Fleets[N]`. When the importer skips a tombstone record (`SkippedArmies` /
    `SkippedFleets` in the receipt's start report), later indices are off by one. Only Bithynia t02 and t03 were hit
    (2 of 2,548 turns). Fix: map through the skipped indices, rebuild the adapter, re-run those two turns.
@@ -78,7 +78,8 @@ Seleucid conquered Bithynia and Galatia.
 4. **Finish the queue** (above). Then compare observer and rulebot-2 games of the same nation, and publish the corpus.
 5. **Not attributed yet:** Greece t21 resupply flip, Numidia t24/t32, Celtiberia t15/t17/t37.
 6. **Merge `long-games`:** open a PR to `main` once the queue's first games are archived.
-7. **Next remake release:** recheck with `difftest/recheck.py` + anchored replays of the stored games, including the
+7. **v0.9.4 candidate `168dbc04` (T277) rechecked** (`findings/2026-11-04-remake-168dbc04-recheck.md`): #1758 fixed in play, 14 position rows gone, none new, registry unchanged. Repeat on the `v0.9.4` tag if it differs; switch the queue's `--pin` for later games then.
+8. **Next remake release:** recheck with `difftest/recheck.py` + anchored replays of the stored games, including the
    264 BC corpus starts.
 
 ## Gotchas learned this session
