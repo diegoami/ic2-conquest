@@ -1,0 +1,129 @@
+{
+ "camp": "/home/diego/projects/ic2-conquest/artifacts/run-exp-longrun-v092/greece-rulebot1-40t",
+ "turn": 6,
+ "start": "t05-a00.SAV",
+ "runs": [
+  {
+   "seed": 12351,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {
+    "Carthage": {
+     "only_original": [
+      [
+       46,
+       66,
+       23044
+      ],
+      [
+       93,
+       79,
+       24600
+      ]
+     ],
+     "only_remake": [
+      [
+       43,
+       61,
+       23044
+      ],
+      [
+       93,
+       81,
+       24600
+      ]
+     ]
+    },
+    "Carthage fleets": {
+     "only_original": [
+      [
+       92,
+       75,
+       90
+      ]
+     ],
+     "only_remake": [
+      [
+       93,
+       77,
+       90
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12351,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {
+    "Carthage": {
+     "only_original": [
+      [
+       46,
+       66,
+       23044
+      ],
+      [
+       93,
+       79,
+       24600
+      ]
+     ],
+     "only_remake": [
+      [
+       43,
+       61,
+       23044
+      ],
+      [
+       93,
+       81,
+       24600
+      ]
+     ]
+    },
+    "Carthage fleets": {
+     "only_original": [
+      [
+       92,
+       75,
+       90
+      ]
+     ],
+     "only_remake": [
+      [
+       93,
+       77,
+       90
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "seed": 12345,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 12345,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "instant",
+   "errors": [],
+   "differing_nations": {}
+  },
+  {
+   "seed": 99,
+   "mode": "tactical",
+   "errors": [],
+   "differing_nations": {}
+  }
+ ]
+}

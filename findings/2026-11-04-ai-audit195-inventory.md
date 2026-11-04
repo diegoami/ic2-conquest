@@ -67,12 +67,12 @@ Short names:
 | area | rows | MATCH | DIFF | AMB | MISSING | APPR | AUTH | UNAUD |
 |---|---|---|---|---|---|---|---|---|
 | A: seat loop, scheduling, draws, authored automation | 43 | 11 | 4 | 14 | 0 | 3 | 8 | 3 |
-| B: economy, recruitment, mercenaries, supply | 35 | 16 | 2 | 10 | 0 | 1 | 2 | 4 |
-| C: army phase | 34 | 19 | 1 | 6 | 1 | 1 | 2 | 4 |
+| B: economy, recruitment, mercenaries, supply | 35 | 16 | 3 | 9 | 0 | 1 | 2 | 4 |
+| C: army phase | 34 | 19 | 2 | 5 | 1 | 1 | 2 | 4 |
 | D: fleets | 33 | 17 | 2 | 10 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
 | F: tactical AI and battle transitions | 43 | 29 | 1 | 4 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **112** | **13** | **57** | **2** | **7** | **22** | **16** |
+| **total** | **229** | **112** | **15** | **55** | **2** | **7** | **22** | **16** |
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -154,8 +154,8 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 | row (game, turn) | where it sits | state |
 |---|---|---|
-| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | C04/C08/X1/X2/C23 | not attributed; no pending battle |
-| Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | candidate |
+| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | A19/F31 (draws) | **pass 1: draw-dependent (each disappears under another seed; Tactical = Instant)** |
+| Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | **attributed (pass 1): matches the original in Tactical mode on 3 seeds** |
 | Greece army at (112,70): Bithynia t30–31, Media t31–32; Numidia t24–25 | C20 (T277) | fixed on 168dbc04; not hook-confirmed |
 | Numidia t32 | — | not attributed |
 | Celtiberia t15/t17 (Pella capital army) | A18 war-roll stream, or X1 | candidate |
@@ -179,7 +179,7 @@ area, its cross-reference is in the X list above.
 | A06 | Per-seat guard: skip the AI's work when unity ≤ 0, still advance | FA20 | AiTurn.Run (Eliminated / not AI) | i, ii | AMB | A living nation with unity ≤ 0 would still act in the remake; reachability not audited | none |
 | A07 | Phase order: diplomacy, economy, armies, fleets | FA20 | AiTurn.Run (economy first; diplomacy inside the scored loop) | i, ii (both sides) | DIFF | **X1** | none |
 | A08 | Armies one at a time in table order, count latched at 0x44F32F | F31C | OriginalArmyOrder (T253) | iv (R/2026-10-31-army-order-within-a-seat: 678/679, at 8e2d9053) | MATCH | — | mirror |
-| A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only in Faithful Tactical | iv (merges176: 2 army-order differences) | DIFF | **X2** | mirror |
+| A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only in Faithful Tactical | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
 | A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences) | AMB | 10 own-capital stays open | mirror |
 | A11 | Phase-mode flag DAT_004a0340 (0 armies, 1 fleets) | F31C/F608 | none | i | UNAUD | Readers not traced | none |
 | A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake | AMB | **X3**; no interruption under Instant | mirror |
@@ -213,6 +213,7 @@ area, its cross-reference is in the X list above.
 | A40 | Stall tracker | none | AiStallTracker | iii | AUTH | Metric only | mirror |
 | A41 | Barbarian seat and arrivals | none | AiTurn.RunBarbarian; Barbarians/* | iii | AUTH | italy-500bc-barbarians only | mirror |
 | A42 | Improved/designed preset | none | AiEconomyPhase, AiMilitaryPhase.Propose | iii | APPR | — | mirror |
+| A44 | FA20's first call, `FUN_0045c084` (research intake) | `TPremierForm_SetTurnTitle` @ 0045c084 (the decompile's function header) | window caption | i | not AI | The turn-title caption update, so no audit row is needed beyond this note | — |
 | A43 | Human auto-support | none | Economy/HumanAutoSupport (T265) | iii | AUTH | A human-side asymmetry | mirror |
 
 ### B. Economy, recruitment, mercenaries, supply
@@ -240,7 +241,7 @@ area, its cross-reference is in the X list above.
 | B19 | Purse normalisation (> 1000 to treasury; < 500 gets +500) | F6D8 | AutomaticResupply | ii | AMB | Not logged by the remake, so not compared | mirror |
 | B20 | Foreign non-war city sale | E41C/F6D8 | FaithfulProviderEligible | iv talents 1,200/1,200 | MATCH | Signed/refund cases staged only | mirror |
 | B21 | Embarked army resupplied and hiring at its own coordinates | E41C | AiResupplyPass (#759) | ii–iii | AMB | Not isolated end to end | mirror |
-| B22 | Support and hire pass timing | F31C → E41C | prepass vs per army | ii | AMB | **X2** | none |
+| B22 | Support and hire pass timing | F31C → E41C | prepass vs per army | ii; iv (Greece t21, pass 1) | DIFF | **X2** | none |
 | B23 | Free hire gates | E41C | AiMercenaryHirePass | iv 1,199/1,200 | MATCH | Labels compared as counts | mirror |
 | B24 | Hire after a post-battle treaty in the same seat | 450C68 | PeaceTreatySystem.ApplyBeforeAiContinues | iv difference at 8e2d9053; fix in (iii) | DIFF → fixed, not re-measured | — | none |
 | B25 | Hire gate on army byte +0x274 | E41C | none | i | UNAUD | Meaning unknown | none |
@@ -266,7 +267,7 @@ area, its cross-reference is in the X list above.
 | C05 | Responder destination and arrival attack | EFC8 → DBA8 → D734 | Destination, ArrivalAttack (T249) | iv (17 → 0) | MATCH | — | mirror |
 | C06 | Capital defence while a human battle is pending | EFC8 (no flag test) | continuePending (T277) | i–iii | AMB | **X5** | mirror |
 | C07 | Capital defence and support read relations after this turn's declaration | FB7C first | war candidate inside the loop | ii (code) | UNAUD (suspected DIFF) | **X1** | none |
-| C08 | Per-army support and hire at each army's entry | E41C at 0x44F366 | up front (Instant) | iv for transfers; ii for timing | AMB (DIFF by code) | **X2**; Greece t21 | mirror |
+| C08 | Per-army support and hire at each army's entry | E41C at 0x44F366 | up front (Instant) | iv for transfers; iv for timing (Greece t21, pass 1) | DIFF | **X2**; Greece t21 attributed | mirror |
 | C09 | Enemy-city scorer | ECE4, CAB4, EB9C | ScoreCityTarget; OriginalWordScore | iv (selection187; decisions) | MATCH | Whole-scorer word overflow never played | discr |
 | C10 | Enemy-army scorer | EE60 | ScoreArmyTarget | iv (army3 fixed; e20a) | MATCH (+ IMPROVED zero guard) | The original divides by zero | mirror |
 | C11 | Resupply/defence city scorer | E670 | ScoreResupplyCity | iv (v0.9.2 tie rows gone) | MATCH | Foreign preference not isolated; the capital test is "any nation's capital" | mirror |
@@ -484,6 +485,33 @@ and symbols, and a discriminating experiment.
     The Seleucid t14 seat (at most 4 non-order iterations) is not excluded.
   - **Open:** the no-op stop (A37) and random tie-breaks (A38) cannot be seen in these lines.
   - **Rows:** A36/C34 stay AUTH, now with "not binding in the stored games (≤ 20 orders per seat)".
+  - **Research caveat (intake PR #198):** `classical-faithful.json:1367` says the cap "binds occasionally" in the remake's
+    own 16-nation free play (1–2 times per 480-turn run, seeds 1–10). "Not binding" therefore holds for these 19 anchored
+    replays only.
+- **X2, support and hire timing (measured 2026-11-04, remake only; `run-exp-audit195/x2-greece-t21-v1`,
+  `x2-stays-v1`; scripts `runs/experiments/audit195/x2_mode_probe.py`, `x2_stays_batch.sh`).**
+  - **Method:** each turn is replayed on `168dbc04` from the original's own start, in Instant mode and in Tactical mode,
+    with seeds 12345 + k, 12345 and 99. Tactical mode uses the remake's per-army support pass (AiTurn PrepareArmy, the
+    retained pass); Instant runs the whole-army prepass up front. The owner's armies and launched fleets are compared with
+    the original's end state.
+  - **Greece t21 (Seleucid): X2 is the cause.**
+    - In Instant mode, on all 3 seeds, the 27,113-man army leaves Antioch (221,60) for (221,64) and pushes the 20,400-man
+      army to (222,64).
+    - In Tactical mode, on all 3 seeds, both armies match the original.
+    - So the up-front support pass alone flips the resupply choice. Per-army timing (the original's `E41C` inside `F31C`)
+      reproduces the original.
+  - **The other 11 rows** (Rome t10, Carthage t21/t33/t35, Gaul t29/t40, Ptolemaic t9, Numidia t6/t11 ×2, Greece t6) have
+    two properties:
+    - Tactical and Instant give the same result on every seed;
+    - each row disappears under at least one other seed.
+
+    They are therefore draw-dependent: the remake's draws differ from the original's, not its rule, and they are not X2.
+    This includes the 10 own-capital stays. They sit under A19/F31, the RNG design, unless a hook shows a rule
+    difference.
+  - **Consequence:** X2 is a real Faithful gap in Instant and headless play, which is the CLI default and every anchored
+    replay. It changes which city an army resupplies at, so it changes the army's position. The remake's Tactical path
+    already has the right timing. A candidate remake fix is to run the support pass per army in every Faithful mode.
+  - **Rows:** A09/B22/C08 become **DIFF (iv on Greece t21, 3 seeds)**.
 
 ## Evidence
 
