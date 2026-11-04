@@ -82,7 +82,8 @@ def publish(game_dir):
 
 
 def entries():
-    return [json.loads(l) for l in INDEX.read_text().splitlines() if l.strip()] if INDEX.exists() else []
+    rows = [json.loads(l) for l in INDEX.read_text().splitlines() if l.strip()] if INDEX.exists() else []
+    return [r for r in rows if "asset" in r]     # note lines (e.g. the Drive mirror record) carry no pack
 
 
 def fetch(game, into):
