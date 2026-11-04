@@ -14,6 +14,7 @@ hook runners (IC2_START_RANDSEEDS).
 import argparse
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -31,7 +32,9 @@ def catalogue(camp):
     # checkpoints of the turn in progress, whose last one is a mid-turn state (2026-11-04, rome-rulebot1-150t-t026).
     tj = camp / "turns.jsonl"
     complete = {json.loads(l)["turn"] for l in tj.read_text().splitlines() if l.strip()} if tj.exists() else set()
-    turns = sorted(k for k in {int(p.name[1:3]) for p in odir.glob("t[0-9][0-9]-a*.SAV")} if k in complete)
+    # Turn numbers past 99 have three digits (t100-a00.SAV, the 150-turn games).
+    turns = sorted(k for k in {int(m.group(1)) for p in odir.glob("t*-a*.SAV")
+                               if (m := re.fullmatch(r"t(\d+)-a\d+\.SAV", p.name))} if k in complete)
     out = []
     for k in [0] + turns:
         ck = (odir / "t00-start.SAV") if k == 0 else sorted(odir.glob(f"t{k:02d}-a*.SAV"))[-1]
