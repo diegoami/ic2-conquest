@@ -1,0 +1,10 @@
+{"kind": "start", "start": "artifacts/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV", "seed": 12345, "tag": "Csmoke-campaign-v1-20261104193055", "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261104-193055", "time": "2026-11-04T19:30:55"}
+{"kind": "loaded", "seed_line": "S 0000012345", "popups": ["@ Bithynia wants to trade with Rome."], "environment": {"wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)", "exe": {"name": "Imperial Conquest 2 fast rollingsave seed observer.exe", "sha256": "1984b558c571cd105215b9cf8eed8526ee1fbb1a8320d30267b49c18e8ffd48e"}, "xvfb_screen": "1280x1024", "fonts": {"Book Antiqua": "DejaVu Sans", "MS Sans Serif": "DejaVu Sans", "liberation_count": 0, "tahoma_wine": true}, "prefix_fonts": {"sha256_12": "483b99b8e1cf", "count": 63}}, "randseed_written": null, "time": "2026-11-04T19:31:10"}
+{"kind": "randseed_after", "checkpoint": "t00-start", "value": 4169717509, "time": "2026-11-04T19:31:16"}
+{"kind": "randseed", "before": "t01-a00", "op": "end_turn", "value": 4169717509, "time": "2026-11-04T19:31:16"}
+{"kind": "randseed_after", "checkpoint": "t01-a00", "value": 561740229, "time": "2026-11-04T19:31:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0721.SAV"], "error": null, "checkpoint": "t01-a00", "date": "Spring week 3, 270 BC", "time": "2026-11-04T19:31:34"}
+{"kind": "randseed", "before": "t02-a00", "op": "end_turn", "value": 561740229, "time": "2026-11-04T19:31:34"}
+{"kind": "randseed_after", "checkpoint": "t02-a00", "value": 815882657, "time": "2026-11-04T19:31:51"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0722.SAV"], "error": null, "checkpoint": "t02-a00", "date": "Spring week 5, 270 BC", "time": "2026-11-04T19:31:51"}
+{"kind": "done", "time": "2026-11-04T19:31:51"}

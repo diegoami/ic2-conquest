@@ -11,7 +11,8 @@ cd "$(dirname "$0")/../../.."
 PIN=a44c42fc
 export IC2_REMAKE=$HOME/projects/ic2-remake-pin-$PIN IC2_DIFF_BUILD=$PWD/artifacts/diffpin-$PIN-build PYTHONUNBUFFERED=1 IC2_LOG_RANDSEED=1
 LOG=artifacts/longgames-queue.log
-QUEUE="${QUEUE:-v093:S09_Illyria:40:full v093:S10_Dacia:40:full v093:S11_Bithynia:40:full v093:S12_Galatia:40:full v093:S13_Armenia:40:full v093:S14_Media:40:full v093:S15_Thracia:40:full long:S00_Rome:150:orig long:S01_Carthage:150:orig long:S03_Ptolemaic:150:orig long:S02_Seleucid:150:orig long:S04_Macedonia:150:orig}"
+# 2026-11-04 evening (owner): the remaining long games both ways, AI-played (observation build) and rulebot-2.
+QUEUE="${QUEUE:-long:S03_Ptolemaic:150:obs long:S02_Seleucid:150:obs long:S04_Macedonia:150:obs long:S03_Ptolemaic:150:bot2 long:S02_Seleucid:150:bot2 long:S04_Macedonia:150:bot2}"
 say() { echo "$(date -Is) $*" | tee -a $LOG; }
 wait_free() {  # available memory > 6 GB and no other game process
   while true; do
@@ -23,12 +24,14 @@ wait_free() {  # available memory > 6 GB and no other game process
 }
 for item in $QUEUE; do
   IFS=: read exp start turns mode <<< "$item"
-  if [ $mode = orig ]; then
+  if [ $mode = orig ] || [ $mode = obs ] || [ $mode = bot2 ]; then
     # Long games: difftest.longgame (parts, exact resume, human-seat handover after End of Game, corpus, anchored).
-    g=$(echo ${start#*_} | tr A-Z a-z)-rulebot1-${turns}t; A=artifacts/run-exp-longgames; mkdir -p $A
+    # orig = rulebot-1; obs = observation build, every nation AI-played (owner 2026-11-04); bot2 = rulebot-2 (defensive).
+    case $mode in orig) label=rulebot1; lgflags="";; obs) label=observer; lgflags="--observer";; bot2) label=rulebot2; lgflags="--bot difftest.bot2";; esac
+    g=$(echo ${start#*_} | tr A-Z a-z)-${label}-${turns}t; A=artifacts/run-exp-longgames; mkdir -p $A
     if grep -q "done:" $A/$g.longgame.log 2>/dev/null; then say "skip $g (done)"; continue; fi
     wait_free; say "longgame $g"
-    python3 -m difftest.longgame artifacts/run-exp-civ-sweep/${start}_AUTO0720.SAV $A/$g --turns $turns --pin $PIN >> $LOG 2>&1 \
+    python3 -m difftest.longgame artifacts/run-exp-civ-sweep/${start}_AUTO0720.SAV $A/$g --turns $turns --pin $PIN $lgflags >> $LOG 2>&1 \
       || { say "STOPPED longgame $g: re-run this script to resume"; exit 1; }
     python3 scripts/archive_measurements.py run-exp-longgames --commit >> $LOG 2>&1 || say "archive failed for $g"
     git push -q >> $LOG 2>&1 || say "push failed"

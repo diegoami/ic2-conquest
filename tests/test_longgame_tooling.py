@@ -234,7 +234,7 @@ def run_longgame(base, turns=150):
     log = {"run_part": [], "anchored": []}
     saved = (LG.run_part, LG.anchored, LG.corpus)
 
-    def fake_run_part(b, part, start, n, seed, pin, observer=False):
+    def fake_run_part(b, part, start, n, seed, pin, observer=False, bot=None):
         log["run_part"].append((part.name, Path(start).name, n, seed, part.exists()))
     LG.run_part = fake_run_part
     LG.anchored = lambda b, part, pin: log["anchored"].append(part.name)
@@ -398,6 +398,10 @@ def test_longgame_passes_observer_to_the_campaign():
             base = Path(tmp) / "x-obs-150t"
             LG.run_part(base, base, SAV, 150, None, "a44c42fc", observer=True)
             assert "--observer" in seen["cmd"] and "--original-only" in seen["cmd"], seen["cmd"]
+            base2 = Path(tmp) / "x-bot2-150t"
+            LG.run_part(base2, base2, SAV, 150, None, "a44c42fc", bot="difftest.bot2")
+            c = seen["cmd"]
+            assert c[c.index("--bot") + 1] == "difftest.bot2" and "--observer" not in c, c
     finally:
         LG.subprocess.Popen, LG.corpus = saved
 
