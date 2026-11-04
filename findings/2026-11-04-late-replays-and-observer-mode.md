@@ -2,7 +2,7 @@
 
 **Tag:** [confirmed: anchored remake replays against stored original games; Wine runs of a patched build; Unicorn
 emulation of the patch]. Wine only.
-**Status:** draft for research.
+**Status:** promoted by research PR #196 (merge `7154747`) as `docs/reports/2026-11-04-late-replays-and-observer-mode.md`, with the offset correction (§2) and answers: the weekly tick overwrites moves (10 − min(5, troops/20000)), so the import clamp of −1 to 0 gives no extra moves.
 **Task:** owner 2026-11-04: "play a game with all civilizations, and maybe play a couple of longer games", "5 games × 150
 turns … save checkpoints", "we need to get to the later years"; "do we have an observation mode for this game? If not we
 should add one".
@@ -49,7 +49,7 @@ example Carthage t128) still show the same four rows, so these rows come from th
 
 | row | original (a) | remake (b) | where | note |
 |---|---|---|---|---|
-| `nations.<dead>.cities_count` | the count at elimination (4–5) | 0 | every turn after a nation falls: Bithynia, Galatia and Illyria (Carthage game); Bithynia, Numidia and Rome (h1) | The original does not clear `+0x44C` when a nation is eliminated. The information window reads this field (N04). |
+| `nations.<dead>.cities_count` | the count at elimination (4–5) | 0 | every turn after a nation falls: Bithynia, Galatia and Illyria (Carthage game); Bithynia, Numidia and Rome (h1) | The original does not clear `+0x446` when a nation is eliminated (corrected from `+0x44C`, the tax base, at research intake PR #196). It is part of the elimination signature in the spec; whether a screen shows it is untraced (the information window field N04 reads it). |
 | `pending_offer` with from = −1 | type 1 | type 0 | 127 of 150 Carthage turns, 83 of 102 h1 turns | With no offer, the type byte keeps its last value in the original. The remake writes 0. |
 | `fleets.N.moves` of a fleet under construction | leftover moves (17–29) | 0 | 88 h1 turns, 36 Carthage turns | Already described: atlas residue (`2026-10-31-sav-export-record-lifecycle37.md`, §moves +0xC) and gate-2 policy §3, where the leftover survives launch. |
 | `armies.N.moves` < 0 | −1 or −2 | 0 | Carthage t128 and t135, h1 t26, t80 and t97 | The remake's import report lists these armies under `ArmiesWithClampedMoves`, so the clamp is deliberate. |

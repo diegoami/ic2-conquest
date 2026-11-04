@@ -1,7 +1,7 @@
 # Recheck on remake main 168dbc04 (T277, the v0.9.4 candidate): the cross-region stale word is fixed in play; no regressions in 19 stored games
 
 **Tag:** [confirmed: anchored remake replays against stored original games]. Wine only.
-**Status:** draft for research.
+**Status:** promoted by research PR #196 (merge `7154747`) as `docs/reports/2026-11-04-remake-v094-recheck.md`. The `v0.9.4` tag is `168dbc04`, so open item 3 is closed; #1741 is not exercised by any stored row.
 **Task:** owner 2026-11-04: "0.9.4 has been build". T277's own validation says: "No new original experiment or
 corrected-pin anchored replay is claimed". This report supplies that replay.
 
