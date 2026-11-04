@@ -41,7 +41,12 @@ def main(argv=None):
     # A continuation part after a human-seat handover (difftest/handover.py): START is the edited save, and this is the
     # RandSeed logged after the checkpoint it was made from, so the original's random stream continues.
     ap.add_argument("--start-randseed", type=int, default=None, help="RandSeed written after loading START")
+    # Observation mode (owner 2026-11-04): the observation build, every nation played by the original's AI, one row per
+    # round (End turn without orders). Implies --original-only.
+    ap.add_argument("--observer", action="store_true", help="every nation AI-played (patches/observer_build.py)")
     a = ap.parse_args(argv)
+    if a.observer:
+        a.original_only = True
     from difftest import original, remake
     bot = importlib.import_module(a.bot)
     out = Path(a.out)
@@ -56,7 +61,8 @@ def main(argv=None):
                                                   "started": time.strftime("%Y-%m-%dT%H:%M:%S")}, indent=1))
         # The in-game save names must be unique per run (the tag once took the folder name's last 12 characters,
         # identical for every nation's "<nation>-rulebot1-5t", and the driver refused to overwrite, 2026-10-29).
-        o = original.OriginalSession(a.start, out / "original", a.seed, tag, log=rlog, start_randseed=a.start_randseed)
+        o = original.OriginalSession(a.start, out / "original", a.seed, tag, log=rlog, start_randseed=a.start_randseed,
+                                     observer=a.observer)
         so = o.checkpoint("t00-start")
         if a.original_only:
             native, sr = None, None
@@ -70,9 +76,9 @@ def main(argv=None):
         for k in range(done + 1, a.turns + 1):
             nation = so["current_nation"]
             if a.original_only:
-                oo = bot.decide(so)
+                oo = [] if a.observer else bot.decide(so)
                 row = {"turn": k, "date_original": so["date"], "nation": NATIONS[nation], "orders_original": oo,
-                       "orders_same": True, "differences": 0, "original_only": True}
+                       "orders_same": True, "differences": 0, "original_only": True, "observer": a.observer}
                 replies = []
                 for j, x in enumerate(oo + [{"op": "end_turn"}]):
                     texts, err = o.act(act.validate(x), f"t{k:02d}-a{j:02d}")
@@ -155,7 +161,8 @@ def resume(out, a, rdir, tag, rlog):
     with open(out / "resumes.jsonl", "a") as f:
         f.write(json.dumps({"time": stamp, "after_turn": done, "checkpoint": ckpt.name, "randseed": after[-1]["value"],
                             "moved_aside": [str(p.name) for p in partial]}) + "\n")
-    o = original.OriginalSession(ckpt, odir, a.seed, tag, log=rlog, resume_randseed=after[-1]["value"])
+    o = original.OriginalSession(ckpt, odir, a.seed, tag, log=rlog, resume_randseed=after[-1]["value"],
+                                 observer=getattr(a, "observer", False))
     so = load(ckpt)
     o.state = so
     if a.original_only:

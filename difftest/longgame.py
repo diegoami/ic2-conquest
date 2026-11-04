@@ -47,9 +47,9 @@ def say(base, msg):
         f.write(line + "\n")
 
 
-def run_part(base, part, start, turns, start_randseed, pin):
+def run_part(base, part, start, turns, start_randseed, pin, observer=False):
     cmd = [sys.executable, "-m", "difftest.campaign", str(start), str(part), "--turns", str(turns), "--seed", "12345",
-           "--original-only"]
+           "--original-only"] + (["--observer"] if observer else [])
     if part.exists():
         cmd.append("--resume")
     elif start_randseed is not None:
@@ -92,6 +92,7 @@ def main(argv=None):
     ap.add_argument("out")
     ap.add_argument("--turns", type=int, default=150)
     ap.add_argument("--pin", default="a44c42fc")
+    ap.add_argument("--observer", action="store_true", help="observation mode: every nation AI-played, one turn = one round")
     a = ap.parse_args(argv)
     base = Path(a.out)
     os.environ.setdefault("IC2_LOG_RANDSEED", "1")
@@ -106,7 +107,8 @@ def main(argv=None):
         played = sum(len(rows(p)) for p in parts[:i])
         if summary(part) is None:
             h = handovers[i - 1] if i else None
-            run_part(base, part, h["start"] if h else a.start, a.turns - played, h["randseed"] if h else None, a.pin)
+            run_part(base, part, h["start"] if h else a.start, a.turns - played, h["randseed"] if h else None, a.pin,
+                     a.observer)
         anchored(base, part, a.pin)
     while True:
         part = parts[-1]
@@ -136,7 +138,7 @@ def main(argv=None):
         with open(hand, "a") as f:
             f.write(json.dumps(h) + "\n")
         say(base, f"handover after {part.name} turn {k}: {info['from']} -> {info['to']} ({info['cities']} cities), {info['date']}")
-        run_part(base, nxt, start, a.turns - total, seed, a.pin)
+        run_part(base, nxt, start, a.turns - total, seed, a.pin, a.observer)
         anchored(base, nxt, a.pin)
         parts.append(nxt)
     say(base, f"done: {sum(len(rows(p)) for p in parts)} turns in {len(parts)} part(s)")

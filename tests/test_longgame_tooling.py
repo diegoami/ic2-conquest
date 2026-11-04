@@ -188,8 +188,8 @@ def run_resume(g, original_only):
     made = {}
 
     class FakeSession:
-        def __init__(self, start, out, seed, tag, log=print, resume_randseed=None, start_randseed=None):
-            made.update(start=Path(start), out=Path(out), resume_randseed=resume_randseed)
+        def __init__(self, start, out, seed, tag, log=print, resume_randseed=None, start_randseed=None, observer=False):
+            made.update(start=Path(start), out=Path(out), resume_randseed=resume_randseed, observer=observer)
     saved = O.OriginalSession
     O.OriginalSession = FakeSession
     try:
@@ -234,7 +234,7 @@ def run_longgame(base, turns=150):
     log = {"run_part": [], "anchored": []}
     saved = (LG.run_part, LG.anchored, LG.corpus)
 
-    def fake_run_part(b, part, start, n, seed, pin):
+    def fake_run_part(b, part, start, n, seed, pin, observer=False):
         log["run_part"].append((part.name, Path(start).name, n, seed, part.exists()))
     LG.run_part = fake_run_part
     LG.anchored = lambda b, part, pin: log["anchored"].append(part.name)
@@ -242,8 +242,8 @@ def run_longgame(base, turns=150):
     try:
         try:
             LG.main([str(SAV), str(base), "--turns", str(turns)])
-        except (AttributeError, TypeError):
-            pass     # the fake run_part writes no summary for the new part: main stops after scheduling it
+        except AttributeError:
+            pass     # the fake run_part writes no summary for the new part: main stops on its missing summary
     finally:
         LG.run_part, LG.anchored, LG.corpus = saved
     return log
@@ -300,6 +300,106 @@ def test_anchored_retry_errors_replays_only_failed_turns_into_new_folders():
         assert seen == [(2, 102, 2)], seen
         last = [json.loads(l) for l in (out / "turns.jsonl").read_text().splitlines()][-1]
         assert last["turn"] == 2 and last["attempt"] == 2 and "error" not in last
+
+
+# ---- observation mode (harness side) ---------------------------------------------------------------------------------
+
+class FakeGame:
+    def __init__(self, exe=None, log=print):
+        self.exe, self.pid, self.writes = exe, 4242, []
+        FakeGame.last = self
+    def move_aside(self, files):
+        return None
+    def load(self, start, seed=None):
+        self.writes.append(("load", str(start)))
+        return []
+    def write_mem(self, addr, data):
+        self.writes.append((addr, bytes(data)))
+    environment = {}
+
+
+def test_apply_observer_writes_obs_and_clears_every_human_flag():
+    import difftest.original as O
+    g = FakeGame()
+    O.apply_observer(g)
+    assert g.writes[0] == (0x565000, b"\x01"), g.writes[0]
+    flags = [w for w in g.writes[1:]]
+    assert flags == [(0x474B00 + 0x494 * n, b"\x00") for n in range(16)], flags
+
+
+def test_observer_session_uses_the_observer_exe_and_writes_after_load():
+    import difftest.original as O
+    sys.path.insert(0, str(ROOT / "patches"))
+    import observer_build as OB
+    saved = O.Game
+    O.Game = FakeGame
+    try:
+        with tempfile.TemporaryDirectory(dir=ROOT / "artifacts") as tmp:
+            O.OriginalSession(SAV, Path(tmp) / "o", 12345, "T", log=lambda *x: None, resume_randseed=77, observer=True)
+            g = FakeGame.last
+            assert g.exe == OB.DST, g.exe
+            kinds = [w[0] for w in g.writes]
+            assert kinds[0] == "load" and kinds[1] == 0x45E030 and kinds[2] == 0x565000, kinds[:3]   # load, seed, OBS
+            assert g.writes[1][1] == struct.pack("<I", 77)
+            O.OriginalSession(SAV, Path(tmp) / "p", 12345, "T", log=lambda *x: None)        # not observer: plain exe
+            assert FakeGame.last.exe != OB.DST and all(w[0] != 0x565000 for w in FakeGame.last.writes)
+    finally:
+        O.Game = saved
+
+
+def test_observer_campaign_plays_rounds_without_orders():
+    import difftest.campaign as K
+    import difftest.original as O
+    acts = []
+
+    class FakeSession:
+        def __init__(self, start, out, seed, tag, log=print, resume_randseed=None, start_randseed=None, observer=False):
+            Path(out).mkdir(parents=True)
+            self.observer, self.game_over, self.state = observer, None, load(SAV)
+        def checkpoint(self, name):
+            return self.state
+        def act(self, a, name):
+            acts.append((a["op"], name))
+            return [], None
+        def close(self):
+            pass
+    saved = O.OriginalSession
+    O.OriginalSession = FakeSession
+    try:
+        with tempfile.TemporaryDirectory(dir=ROOT / "artifacts") as tmp:
+            out = Path(tmp) / "obs"
+            K.main([str(SAV), str(out), "--turns", "3", "--observer"])
+            rows = [json.loads(l) for l in (out / "turns.jsonl").read_text().splitlines()]
+            assert [r["orders_original"] for r in rows] == [[], [], []] and all(r["observer"] for r in rows), rows
+            assert acts == [("end_turn", "t01-a00"), ("end_turn", "t02-a00"), ("end_turn", "t03-a00")], acts
+            assert not (out / "remake").exists()
+    finally:
+        O.OriginalSession = saved
+
+
+def test_longgame_passes_observer_to_the_campaign():
+    import difftest.longgame as LG
+    seen = {}
+
+    class FakePopen:
+        def __init__(self, cmd, **kw):
+            seen["cmd"] = cmd
+            part = Path(cmd[cmd.index("difftest.campaign") + 2])
+            part.mkdir(parents=True, exist_ok=True)
+            (part / "turns.jsonl").write_text("")
+            (part / "summary.json").write_text(json.dumps({"game_over": None}))
+            self.returncode = 0
+        def poll(self):
+            return 0
+    saved = (LG.subprocess.Popen, LG.corpus)
+    LG.subprocess.Popen, LG.corpus = FakePopen, (lambda b, p: None)
+    try:
+        with tempfile.TemporaryDirectory(dir=ROOT / "artifacts") as tmp:
+            base = Path(tmp) / "x-obs-150t"
+            LG.run_part(base, base, SAV, 150, None, "a44c42fc", observer=True)
+            assert "--observer" in seen["cmd"] and "--original-only" in seen["cmd"], seen["cmd"]
+    finally:
+        LG.subprocess.Popen, LG.corpus = saved
 
 
 TESTS = [n for n in sorted(globals()) if n.startswith("test_")]

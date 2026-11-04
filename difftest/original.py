@@ -240,12 +240,22 @@ def perform(g, a, state):
     raise ValueError(op)
 
 
+OBS_BYTE, HUMAN_FLAGS, NATION_STRIDE = 0x565000, 0x474B00, 0x494
+
+
+def apply_observer(g):
+    """Observation mode on a loaded game: OBS = 1 and every nation's human flag = 0 (in memory; the save is unchanged)."""
+    g.write_mem(OBS_BYTE, b"\x01")
+    for n in range(16):
+        g.write_mem(HUMAN_FLAGS + NATION_STRIDE * n, b"\x00")
+
+
 class OriginalSession:
     """One original game process playing from `start` with startup seed `seed`; every checkpoint is saved as
     `<tag>-<name>.SAV` in the game folder and copied to `out/<name>.SAV`. receipt.jsonl and progress.json are
     written as it goes."""
 
-    def __init__(self, start, out, seed, tag, log=print, resume_randseed=None, start_randseed=None):
+    def __init__(self, start, out, seed, tag, log=print, resume_randseed=None, start_randseed=None, observer=False):
         """`resume_randseed`: continue an interrupted game (owner 2026-11-04, the 150-turn runs). `start` is then the last
         completed checkpoint and the value is the RandSeed logged right after it (`randseed_after`); loading does not
         reseed, so writing it back continues the original's random stream exactly (findings/2026-11-04-v092-followups.md §4)."""
@@ -253,7 +263,21 @@ class OriginalSession:
         self.game_over = None     # the End of Game text once the human is overthrown or conquered (act stops checkpointing)
         self.out.mkdir(parents=True, exist_ok=resume_randseed is not None)
         self.receipt = open(self.out / "receipt.jsonl", "a" if resume_randseed is not None else "w")
-        self.g = Game(log=log)
+        self.observer = observer
+        if observer:
+            # Observation build (patches/observer_build.py): every nation is played by the original's AI, one round per
+            # End turn. Built into the game folder if missing.
+            import sys as _sys
+            _sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "patches"))
+            import observer_build as OB
+            if not (G / OB.DST).exists():
+                import walk_hook as WH
+                bb = bytearray((G / WH.SRC).read_bytes())
+                OB.build(bb)
+                (G / OB.DST).write_bytes(bytes(bb))
+            self.g = Game(exe=OB.DST, log=log)
+        else:
+            self.g = Game(log=log)
         moved = self.g.move_aside(sorted(G.glob("AUTO*")))
         self.emit(kind="resume" if resume_randseed is not None else "start", start=str(start), seed=seed, tag=tag,
                   moved_aside=str(moved) if moved else None)
@@ -261,9 +285,9 @@ class OriginalSession:
         written = resume_randseed if resume_randseed is not None else start_randseed
         if written is not None:
             import struct
-            with open(f"/proc/{self.g.pid}/mem", "r+b") as f:
-                f.seek(0x45E030)
-                f.write(struct.pack("<I", written))
+            self.g.write_mem(0x45E030, struct.pack("<I", written))
+        if observer:
+            apply_observer(self.g)
         self.emit(kind="loaded", seed_line=getattr(self.g, "seed_line", ""), popups=popups, environment=self.g.environment,
                   randseed_written=written)
 
