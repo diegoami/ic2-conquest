@@ -93,6 +93,8 @@ def run(actions, start, out, log=print, seed=None, options=(), template=None):
     checkpoints and receipt.jsonl go to `out`. `template` is the original SAV whose interface settings the exports
     reuse (default: `start`, which must then be a SAV)."""
     template = template or start
+    if any(a.get("op") == "end_turn" and a.get("peace") for a in actions) and "peace=yes" not in options:
+        options = tuple(options) + ("peace=yes",)    # the adapter answers a post-battle peace offer Yes (rulebot-2)
     if not str(template).upper().endswith(".SAV"):
         raise ValueError("a native start needs an original SAV as template")
     out = Path(out)

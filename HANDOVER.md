@@ -1,3 +1,106 @@
+# Handover: 2026-11-04 — remake rechecks v0.9.1–v0.9.3, long games to 264 BC, save corpus, observer mode, rulebot-2
+
+WSL desktop session, from 2026-11-03 to 2026-11-04. The work is on branch **`long-games`**: 28 commits ahead of `main`,
+pushed, no PR yet. Findings up to v0.9.3 are merged on `main` and promoted by research (PRs #181–#194). The newest
+finding, `findings/2026-11-04-late-replays-and-observer-mode.md`, is on the branch only and has not been relayed yet.
+
+## Running now (do not start another Wine job)
+
+**The queue.** `runs/experiments/longgames/run_queue.sh` was started on 2026-11-04 at 19:42, detached. Its log is
+`artifacts/longgames-queue.log`.
+- **Order:** Ptolemaic, Seleucid and Macedonia, 150 turns each, as **observer** games; then the same three under
+  **rulebot-2**.
+- **Output:** `artifacts/run-exp-longgames/<nation>-{observer|rulebot2}-150t*`.
+- **Pace:** about 20 s per turn, plus the anchored replays.
+
+**Each item, through `difftest/longgame.py`:**
+- the original game, with a checkpoint every turn;
+- a handover of the human seat at End of Game (bot games only);
+- a corpus pack every 25 turns;
+- an anchored replay (`--pin a44c42fc --turn-seed 12345`).
+
+**Restarting.** The queue is resumable: re-run `setsid nohup bash runs/experiments/longgames/run_queue.sh`. Finished
+items are skipped (the `*.anchored-done` and `*.corpus-done` markers), and a half-played game resumes exactly, using the
+randseed logged at each checkpoint. It waits until more than 6 GB is free and no other game process is running.
+
+**Stopping.** Stop by PID, never with `pkill -f`, which matched the session's own shell once. Use `ps -eo pid,cmd | grep
+run_queue`.
+
+**After each game:**
+- `python3 scripts/archive_measurements.py run-exp-longgames --commit`, then push (rule 6);
+- check the anchored `turns.jsonl` for error rows; re-run them with `difftest/anchored.py --retry-errors`.
+
+## What exists (all on `long-games`)
+
+| piece | where | tests |
+|---|---|---|
+| Anchored replay with per-turn seed and retries | `difftest/anchored.py` (`--turn-seed B`, `--retry-errors`) | `tests/test_longgame_tooling.py` (17) |
+| Exact resume of an original game | `difftest/original.py` (`IC2_LOG_RANDSEED`, `start_randseed`), `difftest/campaign.py --resume` | same |
+| Long-game driver (parts, handover, corpus, replays) | `difftest/longgame.py` (`--observer`, `--bot`), `difftest/handover.py` | same |
+| Save corpus | `difftest/save_corpus.py` (`publish`, `fetch`, `list`): release **`ic2-save-corpus`** + `gdrive:IC2/artifacts/save-corpus/`; index `runs/experiments/data/save-corpus/index.jsonl` (append-only, note lines) | same |
+| Late start saves | `difftest/late_starts.py` | same |
+| Observer build | `patches/observer_build.py` → `… fast rollingsave seed observer.exe`; the OBS byte `0x565000` and the human flags are written by `difftest/original.py:apply_observer` | `tests/test_observer_build.py` (5, needs `python3.12` + unicorn) |
+| rulebot-2 (defensive) | `difftest/bot2.py`; End turn accepts the post-battle peace offer (`end_turn` `peace: true` through `actions.py`, `remake.py`, adapter `peace-yes`) | `tests/test_bot2.py` (8) |
+
+**Releases** (binaries, rule 1): `ic2-save-corpus` (original games), `run-exp-longgames` (anchored remake saves), `run-exp-longrun-v093`, `run-exp-observer`, `run-exp-bot2`. `difftest/REGISTRY.md` was regenerated on 2026-11-04 (it had stayed at v0.8.5).
+
+**rclone.** The rclone config is the Windows one. Pass it by path and never print it:
+`rclone --config /mnt/c/Users/diego/AppData/Roaming/rclone/rclone.conf`.
+
+## Results so far
+
+**Remake rechecks.**
+- v0.9.1 `0d9d4729`, v0.9.2 `1723c673` and v0.9.3 `a44c42fc` were all rechecked, with findings `2026-11-03-remake-v091-…`
+  through `2026-11-04-remake-v093-recheck.md`, all promoted.
+- On v0.9.3, the launch, Caspian build-city and embarked-army fixes are confirmed.
+- Still open in the remake: the stale-word fix misses cross-region runs (D9A8 case (a): Numidia t37, Celtiberia t39–40),
+  and capital defence with a pending human battle.
+
+**All 16 civilisations played.** Eight were played earlier, and eight more at 40 turns in `run-exp-longrun-v093`.
+Seleucid conquered Bithynia and Galatia.
+
+**Long games.**
+- **Carthage:** 150 turns, to Summer 264 BC.
+- **Rome:** conquered by Gaul at turn 48, then handed over to Seleucid, which played 102 more turns to Spring 264 BC.
+- **Anchored replays to 264 BC on v0.9.3:** no failures. The human-phase residue is four normalisations on load or
+  export. See the new finding.
+- **Superseded:** the Ptolemaic rulebot-1 game, paused at turn 5.
+
+## Open, in order
+
+1. ~~**Adapter defect**~~ fixed 2026-11-04 evening (adapter rebuilt for pin `168dbc04` only; the `a44c42fc` build used by the queue is unchanged). Was: (new finding §3). `difftest/remake_adapter/Program.cs` maps `{army:N}` and `{fleet:N}` to
+   `state.Armies[N]` / `state.Fleets[N]`. When the importer skips a tombstone record (`SkippedArmies` /
+   `SkippedFleets` in the receipt's start report), later indices are off by one. Only Bithynia t02 and t03 were hit
+   (2 of 2,548 turns). Fix: map through the skipped indices, rebuild the adapter, re-run those two turns.
+2. **Relay** the new finding to ic2-research (`/relay-to-research`) once it is on `main`, and ask about the round tick on
+   negative moves.
+3. **Attribute** the late-year AI-phase differences (266–264 BC) by class.
+4. **Finish the queue** (above). Then compare observer and rulebot-2 games of the same nation, and publish the corpus.
+5. **Not attributed yet:** Greece t21 resupply flip, Numidia t24/t32, Celtiberia t15/t17/t37.
+6. **Merge `long-games`:** open a PR to `main` once the queue's first games are archived.
+7. **v0.9.4 candidate `168dbc04` (T277) rechecked** (`findings/2026-11-04-remake-168dbc04-recheck.md`): #1758 fixed in play, 14 position rows gone, none new, registry unchanged. Repeat on the `v0.9.4` tag if it differs; switch the queue's `--pin` for later games then.
+8. **Next remake release:** recheck with `difftest/recheck.py` + anchored replays of the stored games, including the
+   264 BC corpus starts.
+
+## Gotchas learned this session
+
+- **Remake runs fail silently.** Out of memory (−6) and segfaults (−11) appear only as error rows in `turns.jsonl`.
+  Scan for them and use `--retry-errors`.
+- **Check free memory** (`free -m`) before any launch.
+- **Corpus index:** list only completed turns and starts inside the pack. Turn numbers above 99 have three digits
+  (`t100`).
+- **Docstrings with a Windows path need `r"""`.** A plain `"""` with `\U` broke `save_corpus` on import, and chained
+  rclone commands then ran without the config.
+- **Monitors:** watch only new log lines, so an old `STOPPED` line does not end them.
+- **The gapb hook's entry probe is not inert.** It changed Numidia t37's stale word. Use `walk_hook` for walk questions.
+- **Observer pauses:** clear the pending offer (`0x49F008`) at the pause, or a stale trade box appears.
+- **Test stand-ins:** when a function gains an argument (`observer`, `bot`), update them, and do not catch `TypeError`
+  broadly.
+- **Original saves keep tombstone records; the remake's import drops them.** Any by-index addressing must account for
+  this (open item 1).
+
+---
+
 # Handover: 2026-10-23 — cloud session → desktop (SAV atlas, export gate 2, manual, runs 0 and 1)
 
 Cloud session `session_01PShu3abz1TNQHX7YopiBbq` (2026-10-21 → 10-23). Everything is merged on `main`; no open PR;

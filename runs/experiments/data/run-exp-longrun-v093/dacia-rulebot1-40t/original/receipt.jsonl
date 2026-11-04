@@ -1,0 +1,127 @@
+{"kind": "start", "start": "artifacts/run-exp-civ-sweep/S10_Dacia_AUTO0720.SAV", "seed": 12345, "tag": "Cdacia-rulebot1-40t-20261104144953", "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261104-144953", "time": "2026-11-04T14:49:53"}
+{"kind": "loaded", "seed_line": "S 0000012345", "popups": [], "environment": {"wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)", "exe": {"name": "Imperial Conquest 2 fast rollingsave seed.exe", "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"}, "xvfb_screen": "1280x1024", "fonts": {"Book Antiqua": "DejaVu Sans", "MS Sans Serif": "DejaVu Sans", "liberation_count": 0, "tahoma_wine": true}, "prefix_fonts": {"sha256_12": "483b99b8e1cf", "count": 63}}, "randseed_written": null, "time": "2026-11-04T14:50:08"}
+{"kind": "randseed_after", "checkpoint": "t00-start", "value": 4169717509, "time": "2026-11-04T14:50:15"}
+{"kind": "randseed", "before": "t01-a00", "op": "set_tax", "value": 4169717509, "time": "2026-11-04T14:50:16"}
+{"kind": "randseed_after", "checkpoint": "t01-a00", "value": 4169717509, "time": "2026-11-04T14:50:29"}
+{"kind": "action", "action": {"op": "set_tax", "percent": 20}, "reply": [], "error": null, "checkpoint": "t01-a00", "date": "Spring week 1, 270 BC", "time": "2026-11-04T14:50:29"}
+{"kind": "randseed", "before": "t01-a01", "op": "end_turn", "value": 4169717509, "time": "2026-11-04T14:50:29"}
+{"kind": "randseed_after", "checkpoint": "t01-a01", "value": 717518233, "time": "2026-11-04T14:50:47"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0721.SAV", "e Macedonia wants to form an alliance with Dacia, aK"], "error": null, "checkpoint": "t01-a01", "date": "Spring week 3, 270 BC", "time": "2026-11-04T14:50:47"}
+{"kind": "randseed", "before": "t02-a00", "op": "end_turn", "value": 717518233, "time": "2026-11-04T14:50:48"}
+{"kind": "randseed_after", "checkpoint": "t02-a00", "value": 3554123785, "time": "2026-11-04T14:51:05"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0722.SAV"], "error": null, "checkpoint": "t02-a00", "date": "Spring week 5, 270 BC", "time": "2026-11-04T14:51:05"}
+{"kind": "randseed", "before": "t03-a00", "op": "end_turn", "value": 3554123785, "time": "2026-11-04T14:51:06"}
+{"kind": "randseed_after", "checkpoint": "t03-a00", "value": 1034367820, "time": "2026-11-04T14:51:24"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0723.SAV"], "error": null, "checkpoint": "t03-a00", "date": "Spring week 7, 270 BC", "time": "2026-11-04T14:51:24"}
+{"kind": "randseed", "before": "t04-a00", "op": "end_turn", "value": 1034367820, "time": "2026-11-04T14:51:25"}
+{"kind": "randseed_after", "checkpoint": "t04-a00", "value": 2989922082, "time": "2026-11-04T14:51:42"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0724.SAV"], "error": null, "checkpoint": "t04-a00", "date": "Spring week 9, 270 BC", "time": "2026-11-04T14:51:42"}
+{"kind": "randseed", "before": "t05-a00", "op": "end_turn", "value": 2989922082, "time": "2026-11-04T14:51:43"}
+{"kind": "randseed_after", "checkpoint": "t05-a00", "value": 458668076, "time": "2026-11-04T14:52:00"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0725.SAV"], "error": null, "checkpoint": "t05-a00", "date": "Spring week 11, 270 BC", "time": "2026-11-04T14:52:00"}
+{"kind": "randseed", "before": "t06-a00", "op": "end_turn", "value": 458668076, "time": "2026-11-04T14:52:02"}
+{"kind": "randseed_after", "checkpoint": "t06-a00", "value": 914481388, "time": "2026-11-04T14:52:19"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0726.SAV"], "error": null, "checkpoint": "t06-a00", "date": "Summer week 1, 270 BC", "time": "2026-11-04T14:52:19"}
+{"kind": "randseed", "before": "t07-a00", "op": "end_turn", "value": 914481388, "time": "2026-11-04T14:52:20"}
+{"kind": "randseed_after", "checkpoint": "t07-a00", "value": 3483387819, "time": "2026-11-04T14:52:37"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0727.SAV"], "error": null, "checkpoint": "t07-a00", "date": "Summer week 3, 270 BC", "time": "2026-11-04T14:52:37"}
+{"kind": "randseed", "before": "t08-a00", "op": "end_turn", "value": 3483387819, "time": "2026-11-04T14:52:38"}
+{"kind": "randseed_after", "checkpoint": "t08-a00", "value": 4158147353, "time": "2026-11-04T14:52:56"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0728.SAV"], "error": null, "checkpoint": "t08-a00", "date": "Summer week 5, 270 BC", "time": "2026-11-04T14:52:56"}
+{"kind": "randseed", "before": "t09-a00", "op": "end_turn", "value": 4158147353, "time": "2026-11-04T14:52:57"}
+{"kind": "randseed_after", "checkpoint": "t09-a00", "value": 368235648, "time": "2026-11-04T14:53:14"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0729.SAV"], "error": null, "checkpoint": "t09-a00", "date": "Summer week 7, 270 BC", "time": "2026-11-04T14:53:14"}
+{"kind": "randseed", "before": "t10-a00", "op": "end_turn", "value": 368235648, "time": "2026-11-04T14:53:15"}
+{"kind": "randseed_after", "checkpoint": "t10-a00", "value": 2212604671, "time": "2026-11-04T14:53:32"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0730.SAV"], "error": null, "checkpoint": "t10-a00", "date": "Summer week 9, 270 BC", "time": "2026-11-04T14:53:32"}
+{"kind": "randseed", "before": "t11-a00", "op": "end_turn", "value": 2212604671, "time": "2026-11-04T14:53:33"}
+{"kind": "randseed_after", "checkpoint": "t11-a00", "value": 2004704658, "time": "2026-11-04T14:53:50"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0731.SAV"], "error": null, "checkpoint": "t11-a00", "date": "Summer week 11, 270 BC", "time": "2026-11-04T14:53:50"}
+{"kind": "randseed", "before": "t12-a00", "op": "end_turn", "value": 2004704658, "time": "2026-11-04T14:53:51"}
+{"kind": "randseed_after", "checkpoint": "t12-a00", "value": 4181394463, "time": "2026-11-04T14:54:08"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0732.SAV"], "error": null, "checkpoint": "t12-a00", "date": "Autumn week 1, 270 BC", "time": "2026-11-04T14:54:08"}
+{"kind": "randseed", "before": "t13-a00", "op": "end_turn", "value": 4181394463, "time": "2026-11-04T14:54:09"}
+{"kind": "randseed_after", "checkpoint": "t13-a00", "value": 2804236904, "time": "2026-11-04T14:54:26"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0733.SAV"], "error": null, "checkpoint": "t13-a00", "date": "Autumn week 3, 270 BC", "time": "2026-11-04T14:54:26"}
+{"kind": "randseed", "before": "t14-a00", "op": "end_turn", "value": 2804236904, "time": "2026-11-04T14:54:27"}
+{"kind": "randseed_after", "checkpoint": "t14-a00", "value": 3187324659, "time": "2026-11-04T14:54:45"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0734.SAV"], "error": null, "checkpoint": "t14-a00", "date": "Autumn week 5, 270 BC", "time": "2026-11-04T14:54:45"}
+{"kind": "randseed", "before": "t15-a00", "op": "end_turn", "value": 3187324659, "time": "2026-11-04T14:54:46"}
+{"kind": "randseed_after", "checkpoint": "t15-a00", "value": 1893485087, "time": "2026-11-04T14:55:03"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0735.SAV"], "error": null, "checkpoint": "t15-a00", "date": "Autumn week 7, 270 BC", "time": "2026-11-04T14:55:03"}
+{"kind": "randseed", "before": "t16-a00", "op": "end_turn", "value": 1893485087, "time": "2026-11-04T14:55:04"}
+{"kind": "randseed_after", "checkpoint": "t16-a00", "value": 158931330, "time": "2026-11-04T14:55:22"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0736.SAV", "e Macedonia wants to form an alliance with Dacia, aK"], "error": null, "checkpoint": "t16-a00", "date": "Autumn week 9, 270 BC", "time": "2026-11-04T14:55:22"}
+{"kind": "randseed", "before": "t17-a00", "op": "end_turn", "value": 158931330, "time": "2026-11-04T14:55:23"}
+{"kind": "randseed_after", "checkpoint": "t17-a00", "value": 4130941819, "time": "2026-11-04T14:55:40"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0737.SAV"], "error": null, "checkpoint": "t17-a00", "date": "Autumn week 11, 270 BC", "time": "2026-11-04T14:55:40"}
+{"kind": "randseed", "before": "t18-a00", "op": "end_turn", "value": 4130941819, "time": "2026-11-04T14:55:41"}
+{"kind": "randseed_after", "checkpoint": "t18-a00", "value": 314659627, "time": "2026-11-04T14:55:58"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0738.SAV"], "error": null, "checkpoint": "t18-a00", "date": "Winter week 1, 270 BC", "time": "2026-11-04T14:55:58"}
+{"kind": "randseed", "before": "t19-a00", "op": "end_turn", "value": 314659627, "time": "2026-11-04T14:55:59"}
+{"kind": "randseed_after", "checkpoint": "t19-a00", "value": 1274150221, "time": "2026-11-04T14:56:16"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0739.SAV"], "error": null, "checkpoint": "t19-a00", "date": "Winter week 3, 270 BC", "time": "2026-11-04T14:56:16"}
+{"kind": "randseed", "before": "t20-a00", "op": "end_turn", "value": 1274150221, "time": "2026-11-04T14:56:17"}
+{"kind": "randseed_after", "checkpoint": "t20-a00", "value": 2321640486, "time": "2026-11-04T14:56:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0740.SAV"], "error": null, "checkpoint": "t20-a00", "date": "Winter week 5, 270 BC", "time": "2026-11-04T14:56:34"}
+{"kind": "randseed", "before": "t21-a00", "op": "end_turn", "value": 2321640486, "time": "2026-11-04T14:56:35"}
+{"kind": "randseed_after", "checkpoint": "t21-a00", "value": 4161640454, "time": "2026-11-04T14:56:52"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0741.SAV"], "error": null, "checkpoint": "t21-a00", "date": "Winter week 7, 270 BC", "time": "2026-11-04T14:56:52"}
+{"kind": "randseed", "before": "t22-a00", "op": "end_turn", "value": 4161640454, "time": "2026-11-04T14:56:53"}
+{"kind": "randseed_after", "checkpoint": "t22-a00", "value": 3135920478, "time": "2026-11-04T14:57:10"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0742.SAV"], "error": null, "checkpoint": "t22-a00", "date": "Winter week 9, 270 BC", "time": "2026-11-04T14:57:10"}
+{"kind": "randseed", "before": "t23-a00", "op": "end_turn", "value": 3135920478, "time": "2026-11-04T14:57:11"}
+{"kind": "randseed_after", "checkpoint": "t23-a00", "value": 3294456390, "time": "2026-11-04T14:57:28"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0743.SAV"], "error": null, "checkpoint": "t23-a00", "date": "Winter week 11, 270 BC", "time": "2026-11-04T14:57:28"}
+{"kind": "randseed", "before": "t24-a00", "op": "end_turn", "value": 3294456390, "time": "2026-11-04T14:57:29"}
+{"kind": "randseed_after", "checkpoint": "t24-a00", "value": 2679535921, "time": "2026-11-04T14:57:46"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0744.SAV"], "error": null, "checkpoint": "t24-a00", "date": "Spring week 1, 269 BC", "time": "2026-11-04T14:57:46"}
+{"kind": "randseed", "before": "t25-a00", "op": "end_turn", "value": 2679535921, "time": "2026-11-04T14:57:47"}
+{"kind": "randseed_after", "checkpoint": "t25-a00", "value": 3749516688, "time": "2026-11-04T14:58:04"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0745.SAV"], "error": null, "checkpoint": "t25-a00", "date": "Spring week 3, 269 BC", "time": "2026-11-04T14:58:04"}
+{"kind": "randseed", "before": "t26-a00", "op": "end_turn", "value": 3749516688, "time": "2026-11-04T14:58:05"}
+{"kind": "randseed_after", "checkpoint": "t26-a00", "value": 4280917028, "time": "2026-11-04T14:58:22"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0746.SAV"], "error": null, "checkpoint": "t26-a00", "date": "Spring week 5, 269 BC", "time": "2026-11-04T14:58:22"}
+{"kind": "randseed", "before": "t27-a00", "op": "end_turn", "value": 4280917028, "time": "2026-11-04T14:58:23"}
+{"kind": "randseed_after", "checkpoint": "t27-a00", "value": 1679490761, "time": "2026-11-04T14:58:40"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0747.SAV"], "error": null, "checkpoint": "t27-a00", "date": "Spring week 7, 269 BC", "time": "2026-11-04T14:58:40"}
+{"kind": "randseed", "before": "t28-a00", "op": "end_turn", "value": 1679490761, "time": "2026-11-04T14:58:41"}
+{"kind": "randseed_after", "checkpoint": "t28-a00", "value": 287327610, "time": "2026-11-04T14:58:58"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0748.SAV"], "error": null, "checkpoint": "t28-a00", "date": "Spring week 9, 269 BC", "time": "2026-11-04T14:58:58"}
+{"kind": "randseed", "before": "t29-a00", "op": "end_turn", "value": 287327610, "time": "2026-11-04T14:58:59"}
+{"kind": "randseed_after", "checkpoint": "t29-a00", "value": 3714250995, "time": "2026-11-04T14:59:16"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0749.SAV"], "error": null, "checkpoint": "t29-a00", "date": "Spring week 11, 269 BC", "time": "2026-11-04T14:59:16"}
+{"kind": "randseed", "before": "t30-a00", "op": "end_turn", "value": 3714250995, "time": "2026-11-04T14:59:16"}
+{"kind": "randseed_after", "checkpoint": "t30-a00", "value": 1082313894, "time": "2026-11-04T14:59:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0750.SAV"], "error": null, "checkpoint": "t30-a00", "date": "Summer week 1, 269 BC", "time": "2026-11-04T14:59:33"}
+{"kind": "randseed", "before": "t31-a00", "op": "end_turn", "value": 1082313894, "time": "2026-11-04T14:59:34"}
+{"kind": "randseed_after", "checkpoint": "t31-a00", "value": 1175656245, "time": "2026-11-04T14:59:51"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0751.SAV"], "error": null, "checkpoint": "t31-a00", "date": "Summer week 3, 269 BC", "time": "2026-11-04T14:59:51"}
+{"kind": "randseed", "before": "t32-a00", "op": "end_turn", "value": 1175656245, "time": "2026-11-04T14:59:52"}
+{"kind": "randseed_after", "checkpoint": "t32-a00", "value": 4238900394, "time": "2026-11-04T15:00:09"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0752.SAV"], "error": null, "checkpoint": "t32-a00", "date": "Summer week 5, 269 BC", "time": "2026-11-04T15:00:09"}
+{"kind": "randseed", "before": "t33-a00", "op": "end_turn", "value": 4238900394, "time": "2026-11-04T15:00:10"}
+{"kind": "randseed_after", "checkpoint": "t33-a00", "value": 2367080863, "time": "2026-11-04T15:00:27"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0753.SAV"], "error": null, "checkpoint": "t33-a00", "date": "Summer week 7, 269 BC", "time": "2026-11-04T15:00:27"}
+{"kind": "randseed", "before": "t34-a00", "op": "end_turn", "value": 2367080863, "time": "2026-11-04T15:00:28"}
+{"kind": "randseed_after", "checkpoint": "t34-a00", "value": 4242755743, "time": "2026-11-04T15:00:45"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0754.SAV"], "error": null, "checkpoint": "t34-a00", "date": "Summer week 9, 269 BC", "time": "2026-11-04T15:00:45"}
+{"kind": "randseed", "before": "t35-a00", "op": "end_turn", "value": 4242755743, "time": "2026-11-04T15:00:46"}
+{"kind": "randseed_after", "checkpoint": "t35-a00", "value": 87174488, "time": "2026-11-04T15:01:03"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0755.SAV"], "error": null, "checkpoint": "t35-a00", "date": "Summer week 11, 269 BC", "time": "2026-11-04T15:01:03"}
+{"kind": "randseed", "before": "t36-a00", "op": "end_turn", "value": 87174488, "time": "2026-11-04T15:01:04"}
+{"kind": "randseed_after", "checkpoint": "t36-a00", "value": 3634657617, "time": "2026-11-04T15:01:21"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0756.SAV"], "error": null, "checkpoint": "t36-a00", "date": "Autumn week 1, 269 BC", "time": "2026-11-04T15:01:21"}
+{"kind": "randseed", "before": "t37-a00", "op": "end_turn", "value": 3634657617, "time": "2026-11-04T15:01:22"}
+{"kind": "randseed_after", "checkpoint": "t37-a00", "value": 468379797, "time": "2026-11-04T15:01:39"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0757.SAV"], "error": null, "checkpoint": "t37-a00", "date": "Autumn week 3, 269 BC", "time": "2026-11-04T15:01:39"}
+{"kind": "randseed", "before": "t38-a00", "op": "end_turn", "value": 468379797, "time": "2026-11-04T15:01:40"}
+{"kind": "randseed_after", "checkpoint": "t38-a00", "value": 938522123, "time": "2026-11-04T15:01:58"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0758.SAV", "e Gaul wants ta form an allnce with Dacia, aK"], "error": null, "checkpoint": "t38-a00", "date": "Autumn week 5, 269 BC", "time": "2026-11-04T15:01:58"}
+{"kind": "randseed", "before": "t39-a00", "op": "end_turn", "value": 938522123, "time": "2026-11-04T15:01:59"}
+{"kind": "randseed_after", "checkpoint": "t39-a00", "value": 178717453, "time": "2026-11-04T15:02:16"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0759.SAV"], "error": null, "checkpoint": "t39-a00", "date": "Autumn week 7, 269 BC", "time": "2026-11-04T15:02:16"}
+{"kind": "randseed", "before": "t40-a00", "op": "end_turn", "value": 178717453, "time": "2026-11-04T15:02:17"}
+{"kind": "randseed_after", "checkpoint": "t40-a00", "value": 1042538459, "time": "2026-11-04T15:02:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0760.SAV"], "error": null, "checkpoint": "t40-a00", "date": "Autumn week 9, 269 BC", "time": "2026-11-04T15:02:34"}
+{"kind": "done", "time": "2026-11-04T15:02:35"}

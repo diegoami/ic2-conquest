@@ -1,0 +1,106 @@
+{"kind": "start", "start": "artifacts/run-exp-civ-sweep/S12_Galatia_AUTO0720.SAV", "seed": 12345, "tag": "Cgalatia-rulebot1-40t-20261104152004", "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261104-152004", "time": "2026-11-04T15:20:04"}
+{"kind": "loaded", "seed_line": "S 0000012345", "popups": [], "environment": {"wine": "wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)", "exe": {"name": "Imperial Conquest 2 fast rollingsave seed.exe", "sha256": "354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"}, "xvfb_screen": "1280x1024", "fonts": {"Book Antiqua": "DejaVu Sans", "MS Sans Serif": "DejaVu Sans", "liberation_count": 0, "tahoma_wine": true}, "prefix_fonts": {"sha256_12": "483b99b8e1cf", "count": 63}}, "randseed_written": null, "time": "2026-11-04T15:20:19"}
+{"kind": "randseed_after", "checkpoint": "t00-start", "value": 4169717509, "time": "2026-11-04T15:20:25"}
+{"kind": "randseed", "before": "t01-a00", "op": "set_tax", "value": 4169717509, "time": "2026-11-04T15:20:26"}
+{"kind": "randseed_after", "checkpoint": "t01-a00", "value": 4169717509, "time": "2026-11-04T15:20:38"}
+{"kind": "action", "action": {"op": "set_tax", "percent": 20}, "reply": [], "error": null, "checkpoint": "t01-a00", "date": "Spring week 1, 270 BC", "time": "2026-11-04T15:20:38"}
+{"kind": "randseed", "before": "t01-a01", "op": "move", "value": 4169717509, "time": "2026-11-04T15:20:38"}
+{"kind": "randseed_after", "checkpoint": "t01-a01", "value": 4169717509, "time": "2026-11-04T15:20:49"}
+{"kind": "action", "action": {"op": "move", "army": 12, "x": 207, "y": 48}, "reply": [], "error": null, "checkpoint": "t01-a01", "date": "Spring week 1, 270 BC", "time": "2026-11-04T15:20:49"}
+{"kind": "randseed", "before": "t01-a02", "op": "end_turn", "value": 4169717509, "time": "2026-11-04T15:20:49"}
+{"kind": "randseed_after", "checkpoint": "t01-a02", "value": 3197324510, "time": "2026-11-04T15:21:06"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0721.SAV"], "error": null, "checkpoint": "t01-a02", "date": "Spring week 3, 270 BC", "time": "2026-11-04T15:21:06"}
+{"kind": "randseed", "before": "t02-a00", "op": "move", "value": 3197324510, "time": "2026-11-04T15:21:07"}
+{"kind": "randseed_after", "checkpoint": "t02-a00", "value": 3197324510, "time": "2026-11-04T15:21:16"}
+{"kind": "action", "action": {"op": "move", "army": 12, "x": 207, "y": 48}, "reply": [], "error": null, "checkpoint": "t02-a00", "date": "Spring week 3, 270 BC", "time": "2026-11-04T15:21:16"}
+{"kind": "randseed", "before": "t02-a01", "op": "end_turn", "value": 3197324510, "time": "2026-11-04T15:21:16"}
+{"kind": "randseed_after", "checkpoint": "t02-a01", "value": 350435056, "time": "2026-11-04T15:21:33"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0722.SAV"], "error": null, "checkpoint": "t02-a01", "date": "Spring week 5, 270 BC", "time": "2026-11-04T15:21:33"}
+{"kind": "randseed", "before": "t03-a00", "op": "besiege", "value": 350435056, "time": "2026-11-04T15:21:34"}
+{"kind": "randseed_after", "checkpoint": "t03-a00", "value": 1834750332, "time": "2026-11-04T15:21:59"}
+{"kind": "action", "action": {"op": "besiege", "army": 10, "city": 247}, "reply": [], "error": null, "checkpoint": "t03-a00", "date": "Spring week 5, 270 BC", "time": "2026-11-04T15:21:59"}
+{"kind": "randseed", "before": "t03-a01", "op": "end_turn", "value": 1834750332, "time": "2026-11-04T15:21:59"}
+{"kind": "randseed_after", "checkpoint": "t03-a01", "value": 3870734757, "time": "2026-11-04T15:22:16"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0723.SAV"], "error": null, "checkpoint": "t03-a01", "date": "Spring week 7, 270 BC", "time": "2026-11-04T15:22:16"}
+{"kind": "randseed", "before": "t04-a00", "op": "besiege", "value": 3870734757, "time": "2026-11-04T15:22:17"}
+{"kind": "randseed_after", "checkpoint": "t04-a00", "value": 1482273825, "time": "2026-11-04T15:22:41"}
+{"kind": "action", "action": {"op": "besiege", "army": 0, "city": 247}, "reply": [], "error": null, "checkpoint": "t04-a00", "date": "Spring week 7, 270 BC", "time": "2026-11-04T15:22:41"}
+{"kind": "randseed", "before": "t04-a01", "op": "end_turn", "value": 1482273825, "time": "2026-11-04T15:22:41"}
+{"kind": "randseed_after", "checkpoint": "t04-a01", "value": 2131617240, "time": "2026-11-04T15:22:59"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0724.SAV"], "error": null, "checkpoint": "t04-a01", "date": "Spring week 9, 270 BC", "time": "2026-11-04T15:22:59"}
+{"kind": "randseed", "before": "t05-a00", "op": "besiege", "value": 2131617240, "time": "2026-11-04T15:22:59"}
+{"kind": "randseed_after", "checkpoint": "t05-a00", "value": 1644428260, "time": "2026-11-04T15:23:24"}
+{"kind": "action", "action": {"op": "besiege", "army": 0, "city": 247}, "reply": [], "error": null, "checkpoint": "t05-a00", "date": "Spring week 9, 270 BC", "time": "2026-11-04T15:23:24"}
+{"kind": "randseed", "before": "t05-a01", "op": "end_turn", "value": 1644428260, "time": "2026-11-04T15:23:24"}
+{"kind": "randseed_after", "checkpoint": "t05-a01", "value": 1595570601, "time": "2026-11-04T15:23:41"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0725.SAV"], "error": null, "checkpoint": "t05-a01", "date": "Spring week 11, 270 BC", "time": "2026-11-04T15:23:41"}
+{"kind": "randseed", "before": "t06-a00", "op": "besiege", "value": 1595570601, "time": "2026-11-04T15:23:42"}
+{"kind": "randseed_after", "checkpoint": "t06-a00", "value": 3163622629, "time": "2026-11-04T15:24:06"}
+{"kind": "action", "action": {"op": "besiege", "army": 0, "city": 247}, "reply": [], "error": null, "checkpoint": "t06-a00", "date": "Spring week 11, 270 BC", "time": "2026-11-04T15:24:06"}
+{"kind": "randseed", "before": "t06-a01", "op": "end_turn", "value": 3163622629, "time": "2026-11-04T15:24:06"}
+{"kind": "randseed_after", "checkpoint": "t06-a01", "value": 957005297, "time": "2026-11-04T15:24:24"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0726.SAV"], "error": null, "checkpoint": "t06-a01", "date": "Summer week 1, 270 BC", "time": "2026-11-04T15:24:24"}
+{"kind": "randseed", "before": "t07-a00", "op": "besiege", "value": 957005297, "time": "2026-11-04T15:24:25"}
+{"kind": "randseed_after", "checkpoint": "t07-a00", "value": 1272893101, "time": "2026-11-04T15:24:49"}
+{"kind": "action", "action": {"op": "besiege", "army": 0, "city": 247}, "reply": [], "error": null, "checkpoint": "t07-a00", "date": "Summer week 1, 270 BC", "time": "2026-11-04T15:24:49"}
+{"kind": "randseed", "before": "t07-a01", "op": "end_turn", "value": 1272893101, "time": "2026-11-04T15:24:49"}
+{"kind": "randseed_after", "checkpoint": "t07-a01", "value": 3508292101, "time": "2026-11-04T15:25:07"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0727.SAV"], "error": null, "checkpoint": "t07-a01", "date": "Summer week 3, 270 BC", "time": "2026-11-04T15:25:07"}
+{"kind": "randseed", "before": "t08-a00", "op": "besiege", "value": 3508292101, "time": "2026-11-04T15:25:08"}
+{"kind": "randseed_after", "checkpoint": "t08-a00", "value": 3827340929, "time": "2026-11-04T15:25:33"}
+{"kind": "action", "action": {"op": "besiege", "army": 0, "city": 247}, "reply": [], "error": null, "checkpoint": "t08-a00", "date": "Summer week 3, 270 BC", "time": "2026-11-04T15:25:33"}
+{"kind": "randseed", "before": "t08-a01", "op": "end_turn", "value": 3827340929, "time": "2026-11-04T15:25:33"}
+{"kind": "randseed_after", "checkpoint": "t08-a01", "value": 1721317620, "time": "2026-11-04T15:25:51"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0728.SAV"], "error": null, "checkpoint": "t08-a01", "date": "Summer week 5, 270 BC", "time": "2026-11-04T15:25:51"}
+{"kind": "randseed", "before": "t09-a00", "op": "besiege", "value": 1721317620, "time": "2026-11-04T15:25:52"}
+{"kind": "randseed_after", "checkpoint": "t09-a00", "value": 1604193344, "time": "2026-11-04T15:26:16"}
+{"kind": "action", "action": {"op": "besiege", "army": 0, "city": 247}, "reply": [], "error": null, "checkpoint": "t09-a00", "date": "Summer week 5, 270 BC", "time": "2026-11-04T15:26:16"}
+{"kind": "randseed", "before": "t09-a01", "op": "end_turn", "value": 1604193344, "time": "2026-11-04T15:26:16"}
+{"kind": "randseed_after", "checkpoint": "t09-a01", "value": 787021370, "time": "2026-11-04T15:26:39"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0729.SAV", "BATTLE Seleucid  v  Galatia          Galatia to place units."], "error": null, "checkpoint": "t09-a01", "date": "Summer week 7, 270 BC", "time": "2026-11-04T15:26:39"}
+{"kind": "randseed", "before": "t10-a00", "op": "end_turn", "value": 787021370, "time": "2026-11-04T15:26:40"}
+{"kind": "randseed_after", "checkpoint": "t10-a00", "value": 3692861827, "time": "2026-11-04T15:26:58"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0730.SAV"], "error": null, "checkpoint": "t10-a00", "date": "Summer week 9, 270 BC", "time": "2026-11-04T15:26:58"}
+{"kind": "randseed", "before": "t11-a00", "op": "end_turn", "value": 3692861827, "time": "2026-11-04T15:26:58"}
+{"kind": "randseed_after", "checkpoint": "t11-a00", "value": 3153875089, "time": "2026-11-04T15:27:16"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0731.SAV"], "error": null, "checkpoint": "t11-a00", "date": "Summer week 11, 270 BC", "time": "2026-11-04T15:27:16"}
+{"kind": "randseed", "before": "t12-a00", "op": "end_turn", "value": 3153875089, "time": "2026-11-04T15:27:16"}
+{"kind": "randseed_after", "checkpoint": "t12-a00", "value": 2422351649, "time": "2026-11-04T15:27:34"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0732.SAV"], "error": null, "checkpoint": "t12-a00", "date": "Autumn week 1, 270 BC", "time": "2026-11-04T15:27:34"}
+{"kind": "randseed", "before": "t13-a00", "op": "end_turn", "value": 2422351649, "time": "2026-11-04T15:27:34"}
+{"kind": "randseed_after", "checkpoint": "t13-a00", "value": 362051243, "time": "2026-11-04T15:27:52"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0733.SAV"], "error": null, "checkpoint": "t13-a00", "date": "Autumn week 3, 270 BC", "time": "2026-11-04T15:27:52"}
+{"kind": "randseed", "before": "t14-a00", "op": "end_turn", "value": 362051243, "time": "2026-11-04T15:27:52"}
+{"kind": "randseed_after", "checkpoint": "t14-a00", "value": 702201331, "time": "2026-11-04T15:28:11"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0734.SAV", "@ Armenia wants to trade with Galatia."], "error": null, "checkpoint": "t14-a00", "date": "Autumn week 5, 270 BC", "time": "2026-11-04T15:28:11"}
+{"kind": "randseed", "before": "t15-a00", "op": "end_turn", "value": 702201331, "time": "2026-11-04T15:28:12"}
+{"kind": "randseed_after", "checkpoint": "t15-a00", "value": 491729296, "time": "2026-11-04T15:28:29"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0735.SAV"], "error": null, "checkpoint": "t15-a00", "date": "Autumn week 7, 270 BC", "time": "2026-11-04T15:28:29"}
+{"kind": "randseed", "before": "t16-a00", "op": "end_turn", "value": 491729296, "time": "2026-11-04T15:28:30"}
+{"kind": "randseed_after", "checkpoint": "t16-a00", "value": 1103833917, "time": "2026-11-04T15:28:47"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0736.SAV"], "error": null, "checkpoint": "t16-a00", "date": "Autumn week 9, 270 BC", "time": "2026-11-04T15:28:47"}
+{"kind": "randseed", "before": "t17-a00", "op": "end_turn", "value": 1103833917, "time": "2026-11-04T15:28:48"}
+{"kind": "randseed_after", "checkpoint": "t17-a00", "value": 4175130624, "time": "2026-11-04T15:29:05"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0737.SAV"], "error": null, "checkpoint": "t17-a00", "date": "Autumn week 11, 270 BC", "time": "2026-11-04T15:29:05"}
+{"kind": "randseed", "before": "t18-a00", "op": "end_turn", "value": 4175130624, "time": "2026-11-04T15:29:06"}
+{"kind": "randseed_after", "checkpoint": "t18-a00", "value": 4279892910, "time": "2026-11-04T15:29:23"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0738.SAV"], "error": null, "checkpoint": "t18-a00", "date": "Winter week 1, 270 BC", "time": "2026-11-04T15:29:23"}
+{"kind": "randseed", "before": "t19-a00", "op": "end_turn", "value": 4279892910, "time": "2026-11-04T15:29:24"}
+{"kind": "randseed_after", "checkpoint": "t19-a00", "value": 1113952018, "time": "2026-11-04T15:29:41"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0739.SAV"], "error": null, "checkpoint": "t19-a00", "date": "Winter week 3, 270 BC", "time": "2026-11-04T15:29:41"}
+{"kind": "randseed", "before": "t20-a00", "op": "end_turn", "value": 1113952018, "time": "2026-11-04T15:29:42"}
+{"kind": "randseed_after", "checkpoint": "t20-a00", "value": 1603288502, "time": "2026-11-04T15:29:59"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0740.SAV"], "error": null, "checkpoint": "t20-a00", "date": "Winter week 5, 270 BC", "time": "2026-11-04T15:29:59"}
+{"kind": "randseed", "before": "t21-a00", "op": "end_turn", "value": 1603288502, "time": "2026-11-04T15:30:00"}
+{"kind": "randseed_after", "checkpoint": "t21-a00", "value": 3403091999, "time": "2026-11-04T15:30:17"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0741.SAV"], "error": null, "checkpoint": "t21-a00", "date": "Winter week 7, 270 BC", "time": "2026-11-04T15:30:17"}
+{"kind": "randseed", "before": "t22-a00", "op": "end_turn", "value": 3403091999, "time": "2026-11-04T15:30:18"}
+{"kind": "randseed_after", "checkpoint": "t22-a00", "value": 188495888, "time": "2026-11-04T15:30:35"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0742.SAV"], "error": null, "checkpoint": "t22-a00", "date": "Winter week 9, 270 BC", "time": "2026-11-04T15:30:35"}
+{"kind": "randseed", "before": "t23-a00", "op": "end_turn", "value": 188495888, "time": "2026-11-04T15:30:36"}
+{"kind": "randseed_after", "checkpoint": "t23-a00", "value": 2843851207, "time": "2026-11-04T15:30:53"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["AUTOSAVE AUTO0743.SAV"], "error": null, "checkpoint": "t23-a00", "date": "Winter week 11, 270 BC", "time": "2026-11-04T15:30:53"}
+{"kind": "randseed", "before": "t24-a00", "op": "end_turn", "value": 2843851207, "time": "2026-11-04T15:30:53"}
+{"kind": "game_over", "after": "t24-a00", "text": "The game is over for Androcles the leader of Galatia. Your nation has been conquerred by Seleucid. Your short time in power in Galatia produced these changes Galatia in 270 BC. Galatia in 270 BC. Population 684,000 Population 534,000 Treasury 440 talents Treasury 169 talents", "autosave": null, "time": "2026-11-04T15:30:56"}
+{"kind": "action", "action": {"op": "end_turn"}, "reply": ["END OF GAME The game is over for Androcles the leader of Galatia. Your nation has been conquerred by Seleucid. Your short time in power in Galatia produced these changes Galatia in 270 BC. Galatia in 270 BC. Population 684,000 Population 534,000 Treasury 440 talents Treasury 169 talents"], "error": null, "checkpoint": null, "date": "Winter week 11, 270 BC", "time": "2026-11-04T15:30:56"}
+{"kind": "done", "time": "2026-11-04T15:30:57"}

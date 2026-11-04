@@ -188,6 +188,12 @@ class Game:
         raise DriverError("timeout waiting for " + what)
 
     # ---- memory (read only) ---------------------------------------------
+    def write_mem(self, addr, data):
+        """Write bytes into the game's memory (/proc/<pid>/mem). Used by the observation mode and seed replays."""
+        with open(f"/proc/{self.pid}/mem", "r+b") as f:
+            f.seek(addr)
+            f.write(bytes(data))
+
     def mem(self, addr, n):
         with open(f"/proc/{self.pid}/mem", "rb") as f:
             f.seek(addr)

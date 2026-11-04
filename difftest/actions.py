@@ -18,7 +18,7 @@ OPS = {
     "set_tax": {"percent": int},
     "move": {"army": int, "x": int, "y": int},
     "recruit": {"city": int, "type": str, "troops": int},
-    "end_turn": {},
+    "end_turn": {},                                    # optional "peace": true accepts a post-battle peace offer (rulebot-2)
     "relation": {"nation": int, "kind": str},          # kind: peace, trade, ally, war (International Relations radio)
     "fortify": {"city": int, "points": int},
     "disband_army": {"army": int},
@@ -59,7 +59,9 @@ def validate(a, line=0):
     for k, t in OPS[op].items():
         if not isinstance(a.get(k), t):
             raise ActionError(f"line {line}: {op} needs {k} ({t.__name__})")
-    extra = set(a) - set(OPS[op]) - {"op", "note"}
+    extra = set(a) - set(OPS[op]) - {"op", "note"} - ({"peace"} if op == "end_turn" else set())
+    if op == "end_turn" and not isinstance(a.get("peace", False), bool):
+        raise ActionError(f"line {line}: end_turn peace must be true or false")
     if extra:
         raise ActionError(f"line {line}: {op} has unknown fields {sorted(extra)}")
     if op == "set_tax" and not 0 <= a["percent"] <= 40:
