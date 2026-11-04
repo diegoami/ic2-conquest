@@ -67,12 +67,12 @@ Short names:
 | area | rows | MATCH | DIFF | AMB | MISSING | APPR | AUTH | UNAUD |
 |---|---|---|---|---|---|---|---|---|
 | A: seat loop, scheduling, draws, authored automation | 43 | 11 | 4 | 14 | 0 | 3 | 8 | 3 |
-| B: economy, recruitment, mercenaries, supply | 35 | 15 | 2 | 11 | 0 | 1 | 2 | 4 |
+| B: economy, recruitment, mercenaries, supply | 35 | 16 | 2 | 10 | 0 | 1 | 2 | 4 |
 | C: army phase | 34 | 19 | 1 | 6 | 1 | 1 | 2 | 4 |
-| D: fleets | 33 | 16 | 2 | 11 | 0 | 0 | 2 | 2 |
+| D: fleets | 33 | 17 | 2 | 10 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
 | F: tactical AI and battle transitions | 43 | 29 | 1 | 4 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **110** | **13** | **59** | **2** | **7** | **22** | **16** |
+| **total** | **229** | **112** | **13** | **57** | **2** | **7** | **22** | **16** |
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -126,8 +126,8 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 - **B03 (DIFF, authored restraint under Faithful):** a ready slot at a city with a hostile army adjacent is not mobilised.
   The original mobilises (`FUN_004504f4` has no such test).
-- **B14 / D01 (AMB):** fleet-order score weights. The spec says "own fleet +1, at sea +4"; the remake gives launched fleets
-  +1 and fleets under construction +4 ("amended by plan PR 964"). Settle it from `FUN_00450768`.
+- **B14 / D01 (settled 2026-11-04):** research read `FUN_00450768` (PR #197): launched +1 and under construction +4, as the
+  remake has it. The spec was wrong and is corrected. Now MATCH at levels i and iii.
 - **D05 (DIFF):** the build-city busy test counts any nation's fleet under construction; the original counts only the
   seat's own.
 - **D09 (DIFF):** a fleet launched into a reused, compacted index keeps the old fleet's leftover moves in the original, so
@@ -232,7 +232,7 @@ area, its cross-reference is in the X list above.
 | B11 | The AI never orders fortification | absent from FFBC | Propose returns early | i, ii | AMB | Absence read from code only | mirror |
 | B12 | Week-11 tax rules | FFBC tail | NextTaxRate | iv 113/113 | MATCH | — | mirror |
 | B13 | Auto-tax for computer seats only | — | AiTurn | ii | AMB | Human side at week 11 not established | none |
-| B14 | Fleet order gates and score | 450768, 4496E0 | OrderFleet, FleetScore, ChoosePort | i–iii | AMB | = D01 (weights) | mirror |
+| B14 | Fleet order gates and score | 450768 (0x450768–0x450855), 4496E0 | OrderFleet, FleetScore, ChoosePort | i (research disassembly, PR #197 `5dc1387`: +1 per own fleet, +3 more under construction; gates count 0x4A0326 < 99, treasury > 3000, cities +0x446 > 50/100); iii (FleetScore read: launched +1, under construction +4) | MATCH | The spec's "at sea +4" was wrong and is corrected; not measured in play | mirror |
 | B15 | Unit consolidation | 450858 | ConsolidateUnits | iv (joins 54, disbands 16) | MATCH | The remake keeps an army's last unit (designed, #565) | mirror |
 | B16 | AI army merge | 4509F0 | MergeArmies | iv (18 merges) | MATCH | Purse: the remake saturates, the original wraps at 16 bits | mirror |
 | B17 | AI fleet merge | 450B30 | MergeFleets | i–iii | AMB | = D27, never exercised | mirror |
@@ -298,7 +298,7 @@ area, its cross-reference is in the X list above.
 
 | id | behaviour | original | remake | levels | cat | difference / uncertainty | tests |
 |---|---|---|---|---|---|---|---|
-| D01 | Fleet-order gates and score | 450768 | OrderFleet, FleetScore | i–iii; partial iv | AMB | Weights: spec vs remake (see B14) | mirror |
+| D01 | Fleet-order gates and score | 450768 | OrderFleet, FleetScore | i (disassembly, research PR #197); iii; partial iv | MATCH | = B14 (weights settled: one under construction blocks further builds) | mirror |
 | D02 | Ship count min(100, cities + 50) | 450768 | OrderFleet | ii (derived); iii | AMB | Order size never compared | mirror |
 | D03 | Build city nearest the capital, eastern zone excluded | 4496E0, 4496BC | ChoosePort; OriginalFleetPort.IsPort | iv (v0.9.3: Media rows gone) | MATCH | — | mirror |
 | D04 | Build-city tie: first record | 4496E0 | ChoosePort | ii; iii | MATCH (code) | Not seen in play | mirror |
@@ -469,7 +469,7 @@ and symbols, and a discriminating experiment.
 5. **X3, seat replay.** The adapter supports `tactical`. Replay the five seats the original replayed (R/2026-10-31) under
    the remake's Tactical retained pass, and compare the second pass's draws, routes and economy.
 6. **C23, the missing F6D8 walk tail;** **C22, unmeasured D734 callers;** **D09, launch moves;** **D05, busy city;**
-   **B03, mobilisation restraint;** **B14/D01, fleet score.** Each gets a code read first, then a staged Wine control.
+   **B03, mobilisation restraint.** Each gets a code read first, then a staged Wine control.
 7. **The late-year AI-phase differences (266–264 BC):** classify them by class with
    `runs/experiments/longrun-v090/classify.py`, then place each class in this matrix.
 
