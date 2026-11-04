@@ -245,7 +245,7 @@ class OriginalSession:
     `<tag>-<name>.SAV` in the game folder and copied to `out/<name>.SAV`. receipt.jsonl and progress.json are
     written as it goes."""
 
-    def __init__(self, start, out, seed, tag, log=print, resume_randseed=None):
+    def __init__(self, start, out, seed, tag, log=print, resume_randseed=None, start_randseed=None):
         """`resume_randseed`: continue an interrupted game (owner 2026-11-04, the 150-turn runs). `start` is then the last
         completed checkpoint and the value is the RandSeed logged right after it (`randseed_after`); loading does not
         reseed, so writing it back continues the original's random stream exactly (findings/2026-11-04-v092-followups.md §4)."""
@@ -258,13 +258,14 @@ class OriginalSession:
         self.emit(kind="resume" if resume_randseed is not None else "start", start=str(start), seed=seed, tag=tag,
                   moved_aside=str(moved) if moved else None)
         popups = self.g.load(start, seed=seed)
-        if resume_randseed is not None:
+        written = resume_randseed if resume_randseed is not None else start_randseed
+        if written is not None:
             import struct
             with open(f"/proc/{self.g.pid}/mem", "r+b") as f:
                 f.seek(0x45E030)
-                f.write(struct.pack("<I", resume_randseed))
+                f.write(struct.pack("<I", written))
         self.emit(kind="loaded", seed_line=getattr(self.g, "seed_line", ""), popups=popups, environment=self.g.environment,
-                  randseed_written=resume_randseed)
+                  randseed_written=written)
 
     def emit(self, **e):
         e["time"] = time.strftime("%Y-%m-%dT%H:%M:%S")

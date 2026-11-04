@@ -23,6 +23,17 @@ wait_free() {  # available memory > 6 GB and no other game process
 }
 for item in $QUEUE; do
   IFS=: read exp start turns mode <<< "$item"
+  if [ $mode = orig ]; then
+    # Long games: difftest.longgame (parts, exact resume, human-seat handover after End of Game, corpus, anchored).
+    g=$(echo ${start#*_} | tr A-Z a-z)-rulebot1-${turns}t; A=artifacts/run-exp-longgames; mkdir -p $A
+    if grep -q "done:" $A/$g.longgame.log 2>/dev/null; then say "skip $g (done)"; continue; fi
+    wait_free; say "longgame $g"
+    python3 -m difftest.longgame artifacts/run-exp-civ-sweep/${start}_AUTO0720.SAV $A/$g --turns $turns --pin $PIN >> $LOG 2>&1 \
+      || { say "STOPPED longgame $g: re-run this script to resume"; exit 1; }
+    python3 scripts/archive_measurements.py run-exp-longgames --commit >> $LOG 2>&1 || say "archive failed for $g"
+    git push -q >> $LOG 2>&1 || say "push failed"
+    continue
+  fi
   case $exp in v093) NAME=run-exp-longrun-v093;; long) NAME=run-exp-longgames;; esac
   A=artifacts/$NAME; mkdir -p $A
   g=$(echo ${start#*_} | tr A-Z a-z)-rulebot1-${turns}t; G=$A/$g

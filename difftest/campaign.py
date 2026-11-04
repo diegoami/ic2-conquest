@@ -38,6 +38,9 @@ def main(argv=None):
     # turn checkpointed as usual. No free-running remake: the comparison comes from `difftest.anchored`, which replays each
     # turn in the remake from the original's own state, and the checkpoints serve as late-year starts (difftest/late_starts.py).
     ap.add_argument("--original-only", action="store_true", help="play the original alone (no remake, no comparison)")
+    # A continuation part after a human-seat handover (difftest/handover.py): START is the edited save, and this is the
+    # RandSeed logged after the checkpoint it was made from, so the original's random stream continues.
+    ap.add_argument("--start-randseed", type=int, default=None, help="RandSeed written after loading START")
     a = ap.parse_args(argv)
     from difftest import original, remake
     bot = importlib.import_module(a.bot)
@@ -53,7 +56,7 @@ def main(argv=None):
                                                   "started": time.strftime("%Y-%m-%dT%H:%M:%S")}, indent=1))
         # The in-game save names must be unique per run (the tag once took the folder name's last 12 characters,
         # identical for every nation's "<nation>-rulebot1-5t", and the driver refused to overwrite, 2026-10-29).
-        o = original.OriginalSession(a.start, out / "original", a.seed, tag, log=rlog)
+        o = original.OriginalSession(a.start, out / "original", a.seed, tag, log=rlog, start_randseed=a.start_randseed)
         so = o.checkpoint("t00-start")
         if a.original_only:
             native, sr = None, None
