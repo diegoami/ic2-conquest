@@ -1,0 +1,32 @@
+{
+ "start": "artifacts/run-exp-longrun-v093/decidestarts/celt-t40pre.SAV",
+ "seed": 12345,
+ "turns": 1,
+ "hooked": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261104-133838",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "hooked-t01-AUTO0760.SAV",
+    "sha256": "3e98a30623804ada088b5e7dcc2df138860f1ccb06447eb16e5068dc31ca1e7d"
+   }
+  ],
+  "records": 40
+ },
+ "plain": {
+  "moved_aside": "/home/diego/ic2-work/prefix/drive_c/IC2/superseded-20261104-133904",
+  "saves": [
+   {
+    "turn": 1,
+    "file": "plain-t01-AUTO0760.SAV",
+    "sha256": "3e98a30623804ada088b5e7dcc2df138860f1ccb06447eb16e5068dc31ca1e7d"
+   }
+  ],
+  "records": 0
+ },
+ "identical": true,
+ "per_turn": [
+  true
+ ],
+ "hooked_exe_sha256": "c385130777f6fc69d960ebce55f94bb6d732a273e18783cbc4a82a0bbf7f74ca"
+}

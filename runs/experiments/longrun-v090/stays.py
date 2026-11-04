@@ -48,7 +48,7 @@ def main():
             k = r["turn"]
             st = load(camp / "original/t00-start.SAV") if k == 1 else load(last(str(camp / f"original/t{k - 1:02d}-a*.SAV")))
             eo = load(last(str(camp / f"original/t{k:02d}-a*.SAV")))
-            er = load(last(str(camp / sub / f"t{k:02d}/a*.SAV")))
+            er = load(last(str(camp / sub / (f"t{k:02d}" + (f"-r{r['attempt']}" if r.get("attempt", 1) > 1 else "")) / "a*.SAV")))  # a retried turn: t<k>-r<n> (anchored.py --retry-errors)
             for kind in ("armies", "fleets"):
                 end_o = {(u["owner"], u["x"], u["y"]) for u in units(eo, kind)}
                 end_r = {(u["owner"], u["x"], u["y"], size(u)) for u in units(er, kind)}

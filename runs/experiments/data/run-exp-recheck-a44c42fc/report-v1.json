@@ -1,0 +1,233 @@
+{
+ "pin": {
+  "ref": "v0.9.3",
+  "commit": "a44c42fcf4359286a19c0360258fc1de98e23952",
+  "short": "a44c42fc",
+  "remake_dir": "/home/diego/projects/ic2-remake-pin-a44c42fc",
+  "build_dir": "/home/diego/projects/ic2-conquest/artifacts/diffpin-a44c42fc-build",
+  "subject": "fix 1755: exercise positive-budget intermediate continuation (#1756)",
+  "built": "2026-11-04T13:22:43"
+ },
+ "tiers": [
+  "orders",
+  "stats",
+  "campaigns"
+ ],
+ "counts": {
+  "unchanged": 113,
+  "FIXED": 11,
+  "REGRESSED": 11,
+  "CHANGED": 4
+ },
+ "finished": "2026-11-04T13:36:22",
+ "changes": [
+  {
+   "tier": "orders",
+   "test": "move-far",
+   "before": "refusal-difference",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-v084-known-differences-and-command-gaps.md"
+  },
+  {
+   "tier": "orders",
+   "test": "move-sea",
+   "before": "refusal-difference",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-v084-known-differences-and-command-gaps.md"
+  },
+  {
+   "tier": "orders",
+   "test": "embark",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": "2026-10-29-export-city-marker-variant-and-empty-offer230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "embark-sail",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "embark-turn-disembark",
+   "before": "differs-after-end-turn",
+   "after": "differs-immediate",
+   "label": "CHANGED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "fleet-sail",
+   "before": "differs-after-end-turn",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
+  },
+  {
+   "tier": "orders",
+   "test": "join-fleets",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "mobilize-port-0",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "walk-city-on-line",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-city-on-line-near",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-line-clear",
+   "before": "refusal-difference",
+   "after": "same",
+   "label": "FIXED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "walk-carthage-army3",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "walk-gaul-army9",
+   "before": "differs-immediate",
+   "after": "differs-after-end-turn",
+   "label": "CHANGED",
+   "finding": "2026-10-29-walk-stops-at-own-city-on-line230.md"
+  },
+  {
+   "tier": "orders",
+   "test": "join-20-ok",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "transfer-into-20",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "join-fleets-100",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "fleet-second-walk-88-32",
+   "before": "differs-immediate",
+   "after": "differs-after-end-turn",
+   "label": "CHANGED",
+   "finding": "2026-10-30-paths-in-play-and-fleet-walks42.md"
+  },
+  {
+   "tier": "orders",
+   "test": "fleet-second-walk-87-47",
+   "before": "differs-immediate",
+   "after": "same",
+   "label": "FIXED",
+   "finding": "2026-10-30-paths-in-play-and-fleet-walks42.md"
+  },
+  {
+   "tier": "orders",
+   "test": "embark-21-ships",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "embark-22-ships",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "join-purse-2000",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "orders",
+   "test": "join-purse-1600",
+   "before": "same",
+   "after": "differs-after-end-turn",
+   "label": "REGRESSED",
+   "finding": ""
+  },
+  {
+   "tier": "stats",
+   "test": "storm30:at_target",
+   "before": "differs",
+   "after": "consistent",
+   "label": "FIXED",
+   "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
+  },
+  {
+   "tier": "stats",
+   "test": "storm30:fleet_survives",
+   "before": "differs",
+   "after": "consistent",
+   "label": "FIXED",
+   "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
+  },
+  {
+   "tier": "stats",
+   "test": "storm30:ships_lost",
+   "before": "differs",
+   "after": "consistent",
+   "label": "FIXED",
+   "finding": "2026-10-29-ai-fleet-hunt-absent-in-remake233.md"
+  },
+  {
+   "tier": "campaigns",
+   "test": "allhuman-rulebot1-32",
+   "before": "first divergence turn 5",
+   "after": "first divergence turn 16",
+   "label": "CHANGED",
+   "finding": ""
+  }
+ ]
+}
