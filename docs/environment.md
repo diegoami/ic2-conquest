@@ -136,6 +136,25 @@ Check: `curl -sf localhost:8765/health`. If that fails:
 
 The decompile lives in **`~/ic2-work/decompile/`** (outside the repository on purpose: decompiled game code is never committed). Override the folder with `IC2_DECOMPILE` (the old `IC2_RETOOLS`, `IC2_DUMP` for the dump file and `IC2_SYMBOLS` for the symbols file still work). Scripts take the paths from `harness/decompile.py` (`DIR`, `DUMP`, `SYMBOLS`, `NEWS_LOG`, `path(name)`); nothing hardcodes a folder. The folder was copied from the old Windows-side ReTools folder after that was lost in the computer move (2026-10-10).
 
+**Where the copies are (2026-11-04, owner: "record that we have it").** The full Ghidra pseudo-C decompilation of the whole
+exe exists and is the source every `:NNNNN` line citation refers to. Its copies:
+- **Windows side, the original:** `C:\Users\diego\AppData\Local\ReTools\` (from WSL `/mnt/c/Users/diego/AppData/Local/ReTools/`).
+  It holds `all_app_functions.txt`, about 40 topic extracts, the Delphi symbols, the Ghidra scripts and the Ghidra project
+  `ghidra_projects/IC2.gpr`, plus the Ghidra 12.1.3 and JDK 21 installs.
+- **Drive backup:** `gdrive:IC2/decompilation/`, 56 files, 23 MiB. It has the same text outputs, `scripts/`, `scratch/` and
+  `ghidra_projects/`, but not the tool installs or the frame folders.
+- **WSL working copy:** `~/ic2-work/decompile/`. It was missing on 2026-11-04 and was restored from the Windows folder;
+  the pins match.
+
+**If `~/ic2-work/decompile/` is missing,** restore it and run the pin check before reading:
+```
+mkdir -p ~/ic2-work/decompile && cp /mnt/c/Users/diego/AppData/Local/ReTools/*.{txt,json,tsv} ~/ic2-work/decompile/
+#   or: rclone --config /mnt/c/Users/diego/AppData/Roaming/rclone/rclone.conf copy gdrive:IC2/decompilation ~/ic2-work/decompile --include "/*.{txt,json,tsv}"
+python3 -c "import harness.decompile as d; d.check()"
+```
+Never say the decompilation is unavailable without checking these three places. Never commit its contents: it is private,
+like the exe.
+
 Findings cite **line numbers** of `all_app_functions.txt`, so the files are pinned by SHA-256 (also in `harness/decompile.py`, `PINS`). A script that cites line numbers calls `decompile.check()` and stops on a different file.
 
 | file | SHA-256 |
