@@ -1,0 +1,27 @@
+rome: 40 turns, remake ERRORS 0; position rows 14 -> 13
+   gone: [(36, 'Seleucid', 'fleets')]
+   new : []
+carthage: 40 turns, remake ERRORS 2; position rows 18 -> 18
+   ERROR turn 14 : remake adapter failed (exit -6): Out of memory. 
+   ERROR turn 17 : remake adapter failed (exit -6): Out of memory. 
+   gone: []
+   new : []
+gaul: 40 turns, remake ERRORS 0; position rows 23 -> 22
+   gone: [(30, 'Seleucid', 'fleets')]
+   new : []
+seleucid: 25 turns, remake ERRORS 1; position rows 8 -> 9
+   ERROR turn 24 : remake adapter failed (exit -6): Out of memory. 
+   gone: []
+   new : [(12, 'Ptolemaic', 'armies')]
+ptolemaic: 40 turns, remake ERRORS 0; position rows 14 -> 14
+   gone: []
+   new : []
+macedonia: 40 turns, remake ERRORS 0; position rows 26 -> 19
+   gone: [(19, 'Media', 'fleets'), (25, 'Media', 'fleets'), (26, 'Media', 'fleets'), (27, 'Media', 'fleets'), (30, 'Seleucid', 'fleets'), (33, 'Ptolemaic', 'armies'), (33, 'Ptolemaic', 'fleets')]
+   new : []
+numidia: 40 turns, remake ERRORS 0; position rows 26 -> 19
+   gone: [(29, 'Rome', 'armies'), (29, 'Rome', 'fleets'), (30, 'Rome', 'armies'), (30, 'Rome', 'fleets'), (31, 'Gaul', 'armies'), (31, 'Rome', 'armies'), (31, 'Rome', 'fleets')]
+   new : []
+greece: 40 turns, remake ERRORS 0; position rows 19 -> 19
+   gone: []
+   new : []
