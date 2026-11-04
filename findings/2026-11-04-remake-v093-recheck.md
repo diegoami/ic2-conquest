@@ -1,6 +1,24 @@
 # Recheck on remake v0.9.3 (a44c42fc): three fixes confirmed in play; the stale-word fix misses cross-region mercenary runs
 
 **Tag:** [confirmed: remake replays against the stored original games; inert Wine walk hook + remake code]. Wine only.
+**Status:** promoted by research PR #193 (merge `bd50ebf`) as `docs/reports/2026-11-04-remake-v093-recheck.md`, with the
+cross-class specification. The IC-main fixes report gained a v0.9.3 section.
+
+**Research's answer to §2, from the disassembly.** DB38 sets out = −1 (0x44DB47) and classifies both points with DA88.
+- **Same class:** D174.
+- **Any difference:** D9A8 only. D9A8 looks for the nearest own fleet (the seat's own, launched, empty, with moves, distance
+  < 1000, ties by table order), then:
+  - **(a)** there is none: the word stays −1;
+  - **(b)** it is adjacent: B79C embarks the army, and the word is set to −1 (0x44DA53);
+  - **(c)** otherwise: CD08 routes the fleet and the word becomes the rendezvous.
+- **Spec:** publish the event in (a) and (b) too.
+
+**Which case applied** (`d9a8-fleet-check-v1.txt`, the start saves): **both are (a).**
+- Numidia t37: Ptolemaic's only fleet (1) carries army 10, so it is not empty; it is also 61 tiles away.
+- Celtiberia t40: Macedonia has no fleet.
+- Caveat: these are the states at End turn's start. Army 10's landing belongs to the fleet phase, after F31C, so fleet 1 is
+  still loaded when army 13 walks.
+
 **Task:** owner 2026-11-04, "0.9.3 is out".
 
 **The release.** Remake `v0.9.3` = main `a44c42fc` = `1723c673` + 3 commits. The engine change is `031296d8`, T276
