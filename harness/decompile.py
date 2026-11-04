@@ -2,8 +2,10 @@
 
 Findings cite LINE NUMBERS of `all_app_functions.txt`, so the file is pinned by SHA-256 (`PINS`); a script that cites
 line numbers calls `check()` and stops when the file is a different one. The folder is outside git on purpose
-(decompiled game code, never committed): `$IC2_DECOMPILE`, else `$IC2_WORK/decompile` (`IC2_WORK` defaults to
-`~/ic2-work`, as in `harness/driver.py`; if that folder does not exist, as with an experiment's private IC2_WORK, `~/ic2-work/decompile`). Old overrides still work: `IC2_RETOOLS` (a folder), `IC2_DUMP` (the dump file),
+(decompiled game code, never committed): `$IC2_DECOMPILE`, else `~/ic2-decompile` (its own folder since 2026-11-04: the
+old place, `~/ic2-work/decompile`, shared a parent with worktrees and game-folder copies that get cleaned up, and was lost
+that way), else the legacy `$IC2_WORK/decompile`. Copies: Windows `%LOCALAPPDATA%/ReTools` and Drive
+`gdrive:IC2/decompilation/` (docs/environment.md, "Decompile"). Old overrides still work: `IC2_RETOOLS` (a folder), `IC2_DUMP` (the dump file),
 `IC2_SYMBOLS` (the symbols file). Standard library only, so any script can import it after putting the repo root on `sys.path`.
 Pins recorded 2026-10-10 (copied from the lost Windows-side ReTools folder, hashes identical)."""
 import hashlib
@@ -12,7 +14,7 @@ import sys
 from pathlib import Path
 
 WORK = Path(os.environ.get("IC2_WORK", Path.home() / "ic2-work"))
-HOME_DIR = Path.home() / "ic2-work" / "decompile"
+HOME_DIR = Path.home() / "ic2-decompile"
 
 
 def _find_dir():
@@ -20,6 +22,8 @@ def _find_dir():
     explicit = os.environ.get("IC2_DECOMPILE") or os.environ.get("IC2_RETOOLS")
     if explicit:
         return Path(explicit)
+    if HOME_DIR.is_dir():
+        return HOME_DIR
     return WORK / "decompile" if (WORK / "decompile").is_dir() else HOME_DIR
 
 
