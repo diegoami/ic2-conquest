@@ -104,6 +104,29 @@ def build_fleet_tens_first(g, ships):
     return texts
 
 
+def fund_from_controls(g, army, money):
+    """Supply army's money arrows (rulebot-2's mercenary pay, 2026-11-05): the lower arrow pair moves talents from the
+    treasury to the army's purse (left: 10s, right: 100s; the layout of Supply fleet, harness/driver.py supply_fleet);
+    `money` is a multiple of 100. Tons are left at 0. Closed with OK as supply_from_controls."""
+    g.army_tool(army, "supply", "Supply army")
+    cs = g.controls("Supply army")
+    ups = [c for c in cs if c["cls"] == "TUpDown"]
+    mid = (min(c["y"] for c in ups) + max(c["y"] for c in ups)) / 2
+    money_pair = sorted((c for c in ups if c["y"] >= mid), key=lambda c: c["x"])
+    try:
+        for _ in range(money // 100):
+            g.click_control(money_pair[1], fy=0.25, pause=0.2)
+        texts = g.dismiss_popups()
+    finally:
+        for _ in range(3):
+            if not g.find_windows("^Supply army$"):
+                break
+            g.click_control(g.control(cs, text="OK"), pause=1.0)
+    if g.find_windows("^Supply army$"):
+        raise DriverError("Supply army did not close after OK")
+    return texts
+
+
 def supply_from_controls(g, army, tons):
     """Supply army with the dialog's own controls. driver.supply clicks fixed points and closes the dialog at
     (239,337), but the OK button now sits at (223..293, 349..374) (measured 2026-10-29), so the dialog stayed
@@ -217,6 +240,8 @@ def perform(g, a, state):
         return g.disembark(a["fleet"], a["x"], a["y"])
     if op == "repair_fleet":
         return g.repair_fleet(a["fleet"], a["points"])
+    if op == "fund_army":
+        return fund_from_controls(g, a["army"], a["money"])
     if op == "supply_fleet":
         return g.supply_fleet(a["fleet"], tons=a["tons"])     # the dialog's default provider (as buy_supply)
     if op == "scuttle_fleet":

@@ -151,11 +151,29 @@ def test_docked_fleet_is_supplied_and_repaired():
     assert not [x for x in B.decide(full) if x["op"] in ("supply_fleet", "repair_fleet")], B.decide(full)
 
 
+def test_mercenaries_are_paid_from_the_treasury():
+    a = army(0, ME, 51, 50, 10000)
+    a["units"] = [{"type": "li", "troops": 8000, "quality": 5, "merc": 0},             # a regular: the treasury pays it
+                  {"type": "li", "troops": 11216, "quality": 7, "merc": 30}]           # Kardackians: 56 x 1 x 7 // 5 = 78
+    a["money"] = 100
+    assert B.mercenary_pay(a) == 78
+    s = state([a], me_kw={"treasury": 2000})
+    assert [x for x in B.decide(s) if x["op"] == "fund_army"] == [{"op": "fund_army", "army": 0, "money": 300}], B.decide(s)
+    a["money"] = 200                                                                    # two quarters' pay is there
+    assert not [x for x in B.decide(state([a], me_kw={"treasury": 2000})) if x["op"] == "fund_army"]
+    a["money"] = 100
+    assert not [x for x in B.decide(state([a], me_kw={"treasury": 1200})) if x["op"] == "fund_army"]   # reserve
+    far = dict(a, x=70, y=70)
+    assert not [x for x in B.decide(state([far], me_kw={"treasury": 2000})) if x["op"] == "fund_army"]  # no city
+
+
 def test_supply_fleet_action_plumbing():
     import difftest.actions as A
     import difftest.remake as R
     a = A.validate({"op": "supply_fleet", "fleet": 3, "city": 10, "tons": 300})
     assert R.command(a) == "buy-fleet-supply {fleet:3} {city:10} 300", R.command(a)
+    f = A.validate({"op": "fund_army", "army": 2, "money": 300})
+    assert R.command(f) == "transfer-money {army:2} 300", R.command(f)
 
 
 def test_march_detours_around_water_the_straight_line_crosses():

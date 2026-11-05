@@ -30,9 +30,12 @@ The rules, from docs/rules-digest.md:
    and repaired"): below half its capacity (8 x ships) it takes tons from the adjacent own city with the most stock; below
    condition FLEET_REPAIR_BELOW it is repaired to 100 when the treasury keeps TREASURY_RESERVE after the cost
    (ships x points / 5). rulebot-2 does not sail its fleets, so they are served where they lie.
-Money: regulars (everything rulebot-2 recruits and mobilizes) are paid from the treasury with no balance check and never
-desert; only mercenaries are paid from their army's purse (docs/rules-digest.md section 3). rulebot-2 hires none, so it
-does not fund purses.
+6. **Mercenary pay** (owner 2026-11-05: "just pay mercenaries"): regulars are paid from the treasury with no balance check
+   and never desert; a mercenary unit (unit marker != 0) is paid `(troops div 200) x price x quality div 5` a quarter
+   from its army's purse and deserts when the purse is at 0 (research upkeep-payment-and-desertion.md). An own army with
+   mercenaries, next to an own city, whose purse holds less than two quarters' pay gets talents from the treasury, in
+   hundreds, up to four quarters' pay (purse cap 1,000), when the treasury keeps TREASURY_RESERVE. rulebot-2 hires none,
+   but a handed-over nation inherits its AI's (the Seleucid game's army 10: 11,216 Kardackians, purse 598 -> 263).
 """
 from planner import path as P
 from state.sav import cell
@@ -46,7 +49,9 @@ HOME = 1            # garrison armies stand next to the capital (3 until 2026-11
 SUPPLY_MIN = 100    # a city worth marching to for supply holds at least this many tons (or the army's whole need)
 DESPERATE_READY = 16  # readiness from which a desperate nation mobilizes (quality 4, the player's earliest)
 FLEET_REPAIR_BELOW = 80   # repair a docked fleet below this condition (storms sink a fleet below 40)
-TREASURY_RESERVE = 1000   # a repair must leave at least this much in the treasury
+TREASURY_RESERVE = 1000   # a repair or a mercenary payment must leave at least this much in the treasury
+PRICE = {"li": 1, "hi": 2, "ar": 1, "lc": 3, "hc": 4}   # quarterly price per 200 troops (DAT unit table +0x24)
+PURSE_CAP = 1000
 RETAKE_RANGE = 15   # core cities farther than this are left alone
 
 
@@ -136,6 +141,11 @@ def approach(s, pos, target):
     return min(tiles, key=lambda t: (cheb(pos, t), t)) if tiles else None
 
 
+def mercenary_pay(army):
+    """One quarter's pay of the army's mercenary units (unit marker != 0), as the quarterly tick bills it."""
+    return sum((u["troops"] // 200) * PRICE[u["type"]] * u["quality"] // 5 for u in army["units"] if u.get("merc"))
+
+
 def desperate(s, me, capital, enemies):
     """The enemy armies within THREAT tiles of the capital outweigh our own armies within THREAT tiles of it."""
     if capital is None:
@@ -209,6 +219,15 @@ def decide(s):
         if capital and cheb(pos, (capital["x"], capital["y"])) > HOME:              # f. garrison
             march(out, s, a, approach(s, pos, (capital["x"], capital["y"])))
     treasury = n["treasury"]
+    for a in s["armies"]:                                                           # 6. mercenary pay
+        pay = mercenary_pay(a) if a["owner"] == me and a["troops"] > 0 and not a["embarked"] else 0
+        if not pay or a["money"] >= 2 * pay or not any(cheb((a["x"], a["y"]), (c["x"], c["y"])) == 1 for c in own):
+            continue
+        amount = (min(PURSE_CAP, 4 * pay) - a["money"] + 99) // 100 * 100
+        amount = min(amount, (PURSE_CAP - a["money"]) // 100 * 100)
+        if amount >= 100 and treasury - amount >= TREASURY_RESERVE:
+            out.append({"op": "fund_army", "army": a["id"], "money": amount})
+            treasury -= amount
     for f in s.get("fleets", []):                                                   # 5. fleets
         if f["owner"] != me or f["ships"] <= 0 or f.get("building") or f.get("army", -1) >= 0:
             continue

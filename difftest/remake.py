@@ -61,6 +61,8 @@ def command(a):
         return f"disembark-army {{army:{a['army']}}} {a['x']} {a['y']}"
     if op == "repair_fleet":
         return f"repair-fleet {{fleet:{a['fleet']}}} {a['points']}"
+    if op == "fund_army":
+        return f"transfer-money {{army:{a['army']}}} {a['money']}"
     if op == "supply_fleet":
         return f"buy-fleet-supply {{fleet:{a['fleet']}}} {{city:{a['city']}}} {a['tons']}"
     if op == "scuttle_fleet":

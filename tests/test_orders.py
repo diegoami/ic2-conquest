@@ -656,6 +656,21 @@ def test_supply_fleet():
     return f"fleet supplies {f0['supplies']} -> {f['supplies']}; Antium {ant0['supplies']} -> {ant['supplies']}"
 
 
+def test_fund_army():
+    """Supply army next to Antium, money arrows only (difftest/original.py fund_from_controls, rulebot-2's mercenary pay):
+    two 100s presses move 200 talents from the treasury to army 0's purse."""
+    import difftest.original as O
+    g = fresh_save(FLEET_PORT)
+    s0 = load(FLEET_PORT)
+    O.fund_from_controls(g, 0, 200)
+    s = _snap(g, "T_FUND_ARMY.SAV")
+    a0, a = _army(s0, 0), _army(s, 0)
+    t0, t = s0["nations"][0]["treasury"], s["nations"][0]["treasury"]
+    assert a["money"] - a0["money"] == 200 and t0 - t == 200 and a["supplies"] == a0["supplies"], \
+        (a0["money"], a["money"], t0, t, a0["supplies"], a["supplies"])
+    return f"purse {a0['money']} -> {a['money']}, treasury {t0} -> {t}"
+
+
 def test_repair_fleet():
     """Repair fleet next to Antium: three 1s presses take the repair from 97 to 100 %, cost ships x points / 5 = 18."""
     g = fresh_save(FLEET_PORT)
@@ -1047,7 +1062,7 @@ TESTS = ["move", "recruit", "end_turn", "scripted_turn_repeats", "attack", "join
          "taxation", "disband_unit", "disband_army", "build_fleet", "split_army",
          "change_units_disband", "transfer_units", "change_units_rename",
          "change_units_split", "change_units_join", "change_units_refusals",
-         "embark_refused", "embark", "disembark", "supply_fleet", "repair_fleet", "scuttle_fleet", "split_fleet",
+         "embark_refused", "embark", "disembark", "supply_fleet", "fund_army", "repair_fleet", "scuttle_fleet", "split_fleet",
          "join_fleets", "join_fleets_99", "join_fleets_100", "join_fleets_101",
          "embark_over_500_per_ship",
          "join_armies_over_100k_troops", "recruit_100pct_mobilization", "recruit_40_slots_cap",
