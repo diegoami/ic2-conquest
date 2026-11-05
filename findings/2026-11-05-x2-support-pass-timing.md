@@ -24,8 +24,13 @@ armies 0..k−1 this seat: their moves, battles, conquests and the money they sp
   `ProposeInOriginalArmyOrder`, which is the original's timing.
 
 `RetainPartialAiPass` is true only when the AI seat runs under `GameSession`'s `AiPhaseBattleGate` built with a battle
-identity (`Presentation/GameSession.cs:2315`): Faithful with Tactical battles. It does not need a pending battle. **Instant
-battles, the CLI and every headless or observer run take the up-front pass.** The flag's only other reader is `AiCapitalDefence.cs:82`
+identity (`Presentation/GameSession.cs:2315`). It does not need a pending battle, but the gate has three conditions
+(research intake PR #206):
+- `PlaySeatTurn` (line 2163) builds the gate only when `UsesAiPhaseBattleGate()` holds (line 2398): Tactical human
+  battles, watch mode off, and a living human nation;
+- it passes the battle identity only when `ClassicalArmyNavigation.Applies` (line 2165).
+
+**Instant battles, the CLI, every headless run and every observer (watch) game, Tactical or not, take the up-front pass.** The flag's only other reader is `AiCapitalDefence.cs:82`
 (`continuePending`), which acts only while a human battle is pending.
 
 ## Minimal trigger

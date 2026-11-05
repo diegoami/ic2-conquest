@@ -90,12 +90,12 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
      the war, alliance and trade candidates compete with the armies.
    - **Consequence:** a war declared this seat is not counted in the threat budget (15,000 per war), the capital-defence
      radius (19 at war, 9 otherwise), the hire gate ("at war with someone") or the busy test.
-   - **Code:** confirmed on both sides; not measured.
+   - **Code:** confirmed on both sides. **Measured (2026-11-05, the economy only):** in 3 of the 11 seats where both games start the same war, the original mobilises in that seat and the remake does not; this attributes those seats' position rows (`2026-11-05-x1-war-before-economy.md`). Radius, hire gate and busy test: not measured.
 2. **X2. Support and hire pass timing** (A09, B22, C08).
    - **Original:** `E41C` is each army's first call inside `F31C` (`0x44F366`), so later armies see the earlier armies'
      moves, battles and treaties.
    - **Remake:** in Instant or headless play (the CLI default and every anchored replay), one pass covers all armies up
-     front. The per-army pass runs only for Faithful with Tactical battles and a human seat.
+     front. The per-army pass runs only for Tactical human battles with a living human seat, outside watch mode, under classical army navigation (`GameSession.cs:2163`, `2398`; research PR #206).
    - **Consequence:** this is the leading candidate for the Greece t21 resupply flip and for some of the 10 own-capital
      stays.
 3. **X3. A seat replayed after a human battle** (A12, A13, B33, C02, D19, D30, E18, F34).
@@ -179,7 +179,7 @@ area, its cross-reference is in the X list above.
 | A06 | Per-seat guard: skip the AI's work when unity ≤ 0, still advance | FA20 | AiTurn.Run (Eliminated / not AI) | i, ii | AMB | A living nation with unity ≤ 0 would still act in the remake; reachability not audited | none |
 | A07 | Phase order: diplomacy, economy, armies, fleets | FA20 | AiTurn.Run (economy first; diplomacy inside the scored loop) | i, ii (both sides) | DIFF | **X1** | none |
 | A08 | Armies one at a time in table order, count latched at 0x44F32F | F31C | OriginalArmyOrder (T253) | iv (R/2026-10-31-army-order-within-a-seat: 678/679, at 8e2d9053) | MATCH | — | mirror |
-| A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only in Faithful Tactical | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
+| A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only with Tactical human battles, a living human seat and no watch mode (GameSession 2398) | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
 | A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences) | AMB | 10 own-capital stays open | mirror |
 | A11 | Phase-mode flag DAT_004a0340 (0 armies, 1 fleets) | F31C/F608 | none | i | UNAUD | Readers not traced | none |
 | A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake | AMB | **X3**; no interruption under Instant | mirror |
@@ -241,7 +241,7 @@ area, its cross-reference is in the X list above.
 | B19 | Purse normalisation (> 1000 to treasury; < 500 gets +500) | F6D8 | AutomaticResupply | ii | AMB | Not logged by the remake, so not compared | mirror |
 | B20 | Foreign non-war city sale | E41C/F6D8 | FaithfulProviderEligible | iv talents 1,200/1,200 | MATCH | Signed/refund cases staged only | mirror |
 | B21 | Embarked army resupplied and hiring at its own coordinates | E41C | AiResupplyPass (#759) | ii–iii | AMB | Not isolated end to end | mirror |
-| B22 | Support and hire pass timing | F31C → E41C | prepass vs per army | ii; iv (Greece t21, pass 1) | DIFF | **X2** | none |
+| B22 | Support and hire pass timing | F31C → E41C | prepass (per army only with Tactical human battles and a living human seat, no watch mode) vs per army | ii; iv (Greece t21, pass 1) | DIFF | **X2** | none |
 | B23 | Free hire gates | E41C | AiMercenaryHirePass | iv 1,199/1,200 | MATCH | Labels compared as counts | mirror |
 | B24 | Hire after a post-battle treaty in the same seat | 450C68 | PeaceTreatySystem.ApplyBeforeAiContinues | iv difference at 8e2d9053; fix in (iii) | DIFF → fixed, not re-measured | — | none |
 | B25 | Hire gate on army byte +0x274 | E41C | none | i | UNAUD | Meaning unknown | none |
@@ -267,7 +267,7 @@ area, its cross-reference is in the X list above.
 | C05 | Responder destination and arrival attack | EFC8 → DBA8 → D734 | Destination, ArrivalAttack (T249) | iv (17 → 0) | MATCH | — | mirror |
 | C06 | Capital defence while a human battle is pending | EFC8 (no flag test) | continuePending (T277) | i–iii | AMB | **X5** | mirror |
 | C07 | Capital defence and support read relations after this turn's declaration | FB7C first | war candidate inside the loop | ii (code) | UNAUD (suspected DIFF) | **X1** | none |
-| C08 | Per-army support and hire at each army's entry | E41C at 0x44F366 | up front (Instant) | iv for transfers; iv for timing (Greece t21, pass 1) | DIFF | **X2**; Greece t21 attributed | mirror |
+| C08 | Per-army support and hire at each army's entry | E41C at 0x44F366 | up front (Instant, headless, watch mode) | iv for transfers; iv for timing (Greece t21, pass 1) | DIFF | **X2**; Greece t21 attributed | mirror |
 | C09 | Enemy-city scorer | ECE4, CAB4, EB9C | ScoreCityTarget; OriginalWordScore | iv (selection187; decisions) | MATCH | Whole-scorer word overflow never played | discr |
 | C10 | Enemy-army scorer | EE60 | ScoreArmyTarget | iv (army3 fixed; e20a) | MATCH (+ IMPROVED zero guard) | The original divides by zero | mirror |
 | C11 | Resupply/defence city scorer | E670 | ScoreResupplyCity | iv (v0.9.2 tie rows gone) | MATCH | Foreign preference not isolated; the capital test is "any nation's capital" | mirror |
