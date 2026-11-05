@@ -69,12 +69,12 @@ Short names:
 | A: seat loop, scheduling, draws, authored automation | 43 | 12 | 4 | 13 | 0 | 3 | 8 | 3 |
 | B: economy, recruitment, mercenaries, supply | 35 | 17 | 3 | 9 | 0 | 1 | 2 | 3 |
 | C: army phase | 34 | 20 | 2 | 4 | 1 | 1 | 2 | 4 |
-| D: fleets | 33 | 18 | 2 | 9 | 0 | 0 | 2 | 2 |
+| D: fleets | 33 | 19 | 1 | 9 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
 | F: tactical AI and battle transitions | 43 | 30 | 1 | 3 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **117** | **15** | **51** | **2** | **7** | **22** | **15** |
+| **total** | **229** | **118** | **14** | **51** | **2** | **7** | **22** | **15** |
 
-Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical).
+Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical). After step 6 (`2026-11-05-audit195-b03-d05-d09.md`): D09 from DIFF to "MATCH (launch) / DIFF (order)".
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -224,7 +224,7 @@ area, its cross-reference is in the X list above.
 |---|---|---|---|---|---|---|---|
 | B01 | Threat-vs-own budget | FFBC, 44A8CC | AiFaithfulEconomy.Threat/Own | iv (economy report 1,059; 8e2d9053: 1,063/0) | MATCH | Threat term corroborated only indirectly; inputs depend on **X1** | mirror |
 | B02 | Mobilise pass (state 24, gate, stop at the deficit) | 4504F4 → 44A4E0 | FaithfulMobilizationGate / ProposeMobilization | iv deployments 1,059/1,059 | MATCH | — | mirror |
-| B03 | No mobilisation at a city with a hostile army adjacent | none in the original | ProposeMobilization `IsThreatened` (spot-checked) | i, ii (both sides) | DIFF (authored, under Faithful) | Probably never hit in the 1,059 deployments | none |
+| B03 | No mobilisation at a city with a hostile army adjacent | none in the original | ProposeMobilization `IsThreatened` (spot-checked) | i, ii (both sides); iv (Thracia t38–39, Armenia at Erivan: 11 slots, the original mobilises and loses the army, the remake keeps the recruits) | DIFF (authored, under Faithful) | Hit in play: 2 seats in 19 games (`2026-11-05-audit195-b03-d05-d09.md`) | none |
 | B04 | Receiving army d < 6 (last match); new 1-unit army | 44A4E0 | MobilizationReceivingArmy / ArmyCreation | ii; iv via counts | MATCH | Identity not compared | mirror |
 | B05 | Order stopping rule (k < 8, deficit, 40 slots) | 4504F4 loop | PlaceOrders | iv 265/265, 263/263 | MATCH | Rule replayed on each side's own draws | mirror |
 | B06 | Deficit floor (≤ 3 orders below it) | 4504F4 | MayPlaceAnother | iv inside B05 | MATCH | — | mirror |
@@ -305,11 +305,11 @@ area, its cross-reference is in the X list above.
 | D02 | Ship count min(100, cities + 50) | 450768 | OrderFleet | ii (derived); iii | AMB | Order size never compared | mirror |
 | D03 | Build city nearest the capital, eastern zone excluded | 4496E0, 4496BC | ChoosePort; OriginalFleetPort.IsPort | iv (v0.9.3: Media rows gone) | MATCH | — | mirror |
 | D04 | Build-city tie: first record | 4496E0 | ChoosePort | ii; iii | MATCH (code) | Not seen in play | mirror |
-| D05 | Busy build city | 4496E0 (own fleet only) | any nation's fleet (spot-checked, line 647) | ii, iii | DIFF | Captured coastal city with a foreign fleet under construction | mirror (asserts the divergent rule) |
+| D05 | Busy build city | 4496E0 (own fleet only) | any nation's fleet (spot-checked, line 647) | ii, iii | DIFF | Captured coastal city with a foreign fleet under construction; never reached: 0 of 181 builds in 25 games had a captured build city (`2026-11-05-audit195-b03-d05-d09.md`) | mirror (asserts the divergent rule) |
 | D06 | Port predicate for the build city | 4492C0 (body not read) | IsPort (E920 3×3) | i | AMB | Substituted routine | mirror |
 | D07 | Launch tile: 939C mode 0 on the live map | 44939C via 44A050 | CoastalCity.LaunchTile | iv (v0.9.3) | MATCH | — | discr |
 | D08 | Launch after the build city changes hands | 44A050 | FleetTickSystem | ii; iii | AMB | Not compared | none |
-| D09 | Launch-turn moves in a reused, compacted index | 44A050, 44ADB0 | moves 0 | ii | DIFF | The original's fleet can hunt or reach port on its launch turn | none |
+| D09 | Launch-turn moves in a reused, compacted index | 44A050, 44ADB0 | launch keeps the record's moves (FleetTickSystem.cs:94); a new order starts at Moves 0 (OrderFleetCommandHandler.cs:76) | ii; iv for the launch step (6 of 6 leftover launches match) | MATCH (launch) / DIFF (order: new fleet Moves 0, ii) | Order step needs a free-running remake game (`2026-11-05-audit195-b03-d05-d09.md`) | none |
 | D10 | Fleet phase branch order | F608 | OriginalFleetPhase.Run | iv (124/150; 26 rows attributed) | MATCH | — | discr (emulation) |
 | D11 | Supply, purse and repair prepass | E5DC, F7E4 | AiResupplyPass(onlyFleetId) | ii; iii | AMB | Staged Wine only | mirror |
 | D12 | Port pick | E9A8, E920 | OriginalFleetPort.Pick | iv (gap C a seed artefact; port rows) | MATCH | — | mirror |
