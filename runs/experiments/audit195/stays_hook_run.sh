@@ -14,7 +14,7 @@ say() { echo "$(date -Is) $*" | tee -a $LOG; }
 [ -e $OUT ] && { say "refusing: $OUT exists"; exit 1; }
 if [ -n "$WAITFILE" ]; then until grep -q "$WAITLINE" "$WAITFILE" 2>/dev/null; do sleep 2; done; say "seen '$WAITLINE'"; fi
 while [ "$(pgrep -f 'Imperial Conquest 2' | wc -l)" -gt 0 ] || [ "$(free -m | awk '/^Mem:/{print $7}')" -lt 6000 ]; do sleep 2; done
-bash -c 'exec -a "Imperial Conquest 2 hold (stays hook run)" sleep 86400' & HOLD=$!
+bash -c 'exec -a "hold: Imperial Conquest 2 (stays hook run)" sleep 86400' & HOLD=$!
 trap 'kill $HOLD 2>/dev/null' EXIT
 say "holding Wine (pid $HOLD)"
 mkdir -p $OUT/regen
