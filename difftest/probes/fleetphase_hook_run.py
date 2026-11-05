@@ -72,9 +72,11 @@ def main():
     out, turns, starts = Path(sys.argv[1]), int(sys.argv[2]), [Path(p) for p in sys.argv[3:]]
     out.mkdir(parents=True, exist_ok=True)
     hooked = G / FH.DST
-    if not hooked.exists():
-        b = bytearray((G / WH.SRC).read_bytes())
-        FH.build(b)
+    b = bytearray((G / WH.SRC).read_bytes())
+    FH.build(b)
+    if not hooked.exists() or hooked.read_bytes() != bytes(b):
+        # rebuilt whenever the module's build differs (2026-11-05: an existing exe was reused after the hook was
+        # changed, and two #195 runs repeated the old probes)
         hooked.write_bytes(bytes(b))
     for start in starts:
         d = out / start.stem

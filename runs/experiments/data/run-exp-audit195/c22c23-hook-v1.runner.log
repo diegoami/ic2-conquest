@@ -1,0 +1,28 @@
+2026-11-05T10:44:23+01:00 seen '^turn 125 ' in /home/diego/projects/ic2-conquest/artifacts/run-exp-longgames/ptolemaic-rulebot2-150t-h1.log
+2026-11-05T10:44:23+01:00 holding Wine (pid 248189); starting the hook run
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed d734hook.exe","sha256":"08b41284dbe5cc2936940cfe1b2505e401fb68fbd4c75a0ee99fa68cd7b29c8b"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/diego/projects/ic2-conquest-audit195/difftest/probes/fleetphase_hook_run.py", line 96, in <module>
+    main()
+    ~~~~^^
+  File "/home/diego/projects/ic2-conquest-audit195/difftest/probes/fleetphase_hook_run.py", line 87, in main
+    h = play(FH.DST, start, turns, d, "hooked", log_path)
+  File "/home/diego/projects/ic2-conquest-audit195/difftest/probes/fleetphase_hook_run.py", line 49, in play
+    line, texts = g.end_turn(peace=False)
+                  ~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest-audit195/harness/driver.py", line 1497, in end_turn
+    cal, me = self.calendar(), self.i16(CUR_NATION)
+              ~~~~~~~~~~~~~^^
+  File "/home/diego/projects/ic2-conquest-audit195/harness/driver.py", line 225, in calendar
+    return {"season": self.i16(SEASON), "week": self.i16(WEEK), "year_bc": self.i16(YEAR_BC)}
+                      ~~~~~~~~^^^^^^^^
+  File "/home/diego/projects/ic2-conquest-audit195/harness/driver.py", line 203, in i16
+    return struct.unpack("<h", self.mem(addr, 2))[0]
+                               ~~~~~~~~^^^^^^^^^
+  File "/home/diego/projects/ic2-conquest-audit195/harness/driver.py", line 198, in mem
+    with open(f"/proc/{self.pid}/mem", "rb") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/proc/248189/mem'
+2026-11-05T10:44:38+01:00 hook run exit 1; hold released

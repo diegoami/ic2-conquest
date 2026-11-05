@@ -68,13 +68,13 @@ Short names:
 |---|---|---|---|---|---|---|---|---|
 | A: seat loop, scheduling, draws, authored automation | 43 | 12 | 4 | 13 | 0 | 3 | 8 | 3 |
 | B: economy, recruitment, mercenaries, supply | 35 | 17 | 3 | 9 | 0 | 1 | 2 | 3 |
-| C: army phase | 34 | 20 | 2 | 4 | 1 | 1 | 2 | 4 |
+| C: army phase | 34 | 21 | 2 | 3 | 1 | 1 | 2 | 4 |
 | D: fleets | 33 | 19 | 1 | 9 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
 | F: tactical AI and battle transitions | 43 | 30 | 1 | 3 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **118** | **14** | **51** | **2** | **7** | **22** | **15** |
+| **total** | **229** | **119** | **14** | **50** | **2** | **7** | **22** | **15** |
 
-Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical). After step 6 (`2026-11-05-audit195-b03-d05-d09.md`): D09 from DIFF to "MATCH (launch) / DIFF (order)".
+Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical). After step 6 (`2026-11-05-audit195-b03-d05-d09.md`): D09 from DIFF to "MATCH (launch) / DIFF (order)". After C22/C23 (`2026-11-05-audit195-c22-c23-stays.md`): C22 from AMB to MATCH (measured scope).
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -156,7 +156,7 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 | row (game, turn) | where it sits | state |
 |---|---|---|
-| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | open | **pass 1: not X2 (Tactical = Instant); draw-sensitive in the remake; unattributed** |
+| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | open | **attributed: diplomacy draws** (the remake declares war or allies in the seat, the original does not; 9 rows; `2026-11-05-audit195-c22-c23-stays.md`) |
 | Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | **attributed (pass 1): matches the original in Tactical mode on 3 seeds** |
 | Greece army at (112,70): Bithynia t30–31, Media t31–32; Numidia t24–25 | C20 (T277) | fixed on 168dbc04; not hook-confirmed |
 | Numidia t32 | — | not attributed |
@@ -283,9 +283,9 @@ area, its cross-reference is in the X list above.
 | C19 | DBA8 walk (CB40, D174, CEC8, recursion) | DBA8 | MoveArmyCommandHandler; ClassicalArmyNavigation | iv (3,303 + 44,734 emulator cases; in-play rows) | MATCH | D174 unbounded recursion: the remake drops the march | mirror |
 | C20 | Stale DBA8 word suppression | DB38 0x44DB47 | inheritFailedIntermediate (T276/T277) | iv (v0.9.4 recheck) | MATCH (measured scope) | Greece (112,70), Numidia t24–25 not hook-confirmed | mirror |
 | C21 | D734 end check at the measured callers | D734 0x44D895–98C | OriginalArmyWalkContact; EndCheck | iv (v0.9.1: 17 → 0) | MATCH | — | mirror |
-| C22 | D734 contact at unmeasured callers (E84C walk, F4A3, F47C) | D734 | EndCheck None there | i, ii partly | AMB | The original would besiege or attack | mirror |
-| C23 | D734 "not at war" city tail: F6D8 resupply at the walk's end | D734 → F6D8 | none (Ruleset.cs acknowledges it) | i, ii | MISSING | Mid-seat supply transfer absent | none |
-| C24 | D734 land tail (one more step if cost < moves) | D734 tail | MovementWalker | i, ii | UNAUD | — | none |
+| C22 | D734 contact at unmeasured callers (E84C walk, F4A3, F47C) | D734 | EndCheck None there | i, ii; iv (D734 hook, 80 rounds: no siege or attack at E84C / 0x44F4A3 / 0x44F47C) | MATCH (measured scope) | 37 actions under DBA8 recursion await the v4 attribution (`2026-11-05-audit195-c22-c23-stays.md`) | mirror |
+| C23 | D734 "not at war" city tail: F6D8 resupply at the walk's end | D734 → F6D8 | none (Ruleset.cs acknowledges it) | i, ii; iv (571 tails in 80 rounds; the remake replay ends equal: supplies 293/294, money 294/294, city stock 321/323) | MISSING | No measurable effect: E41C has just filled the army (`2026-11-05-audit195-c22-c23-stays.md`) | none |
+| C24 | D734 land tail (one more step if cost < moves) | D734 tail | MovementWalker | i, ii | UNAUD | Not reached: the land-tail recursion never fired in 80 rounds (`2026-11-05-audit195-c22-c23-stays.md`) | none |
 | C25 | Garrison fallback destination | EBE8 | GarrisonFallback | iv (gap A 410 → 0) | MATCH | Capital −1 edge (C26) | mirror |
 | C26 | EBE8 with no capital | EBE8 (no guard) | returns null | i | DIFF (code) | Capital-less nation only | mirror |
 | C27 | AAB4 gate after a command | 0x44F4CC | MovesForActionCheck (#1723) | iv | MATCH | — | mirror |
