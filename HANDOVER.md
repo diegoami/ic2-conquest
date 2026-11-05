@@ -1,3 +1,63 @@
+# Handover: 2026-11-05 — AI audit #195 pass 1, rulebot-2 rework, long-game queue on v0.9.4
+
+WSL desktop session. Read this entry first; the 2026-11-04 entries below still hold for the tooling.
+
+## AI audit #195 (delegated by ic2-research)
+
+All findings are on `main` and promoted by research (PRs #206–#215). The inventory
+(`findings/2026-11-04-ai-audit195-inventory.md`) has 229 rows: MATCH 119, DIFF 14, AMB 50, MISSING 2, APPR 7,
+AUTH 22, UNAUD 15.
+
+| step | finding | result |
+|---|---|---|
+| X2 | `2026-11-05-x2-support-pass-timing.md` | remake gap: up-front support pass outside Faithful Tactical with a living human |
+| X1 | `2026-11-05-x1-war-before-economy.md` | remake gap: a same-seat war triggers FFBC's gap call in 8 of 11 seats, in none in the remake |
+| X3 | `2026-11-05-x3-seat-replay-remake.md` | Tactical retained pass matches 5/5 seats; Instant has no replay |
+| B03, D05, D09 | `2026-11-05-audit195-b03-d05-d09.md` | B03 hit in play; D05 never reached; D09 launch MATCH, order DIFF |
+| C22, C23, C24, stays | `2026-11-05-audit195-c22-c23-stays.md` | C23 MISSING without effect; C22 MATCH at the named callers; C24 not reached; stays = diplomacy draws (leading) |
+
+**Scheduled, running unattended:** `runs/experiments/audit195/between_games_hooks.sh` (pid in `ps`) waits for the
+long-game queue's next "done: N turns in K part(s)" line. It then holds Wine and runs the D734 hook v2 (C22 v4:
+`artifacts/run-exp-audit195/c22c23-hook-v4`) and the FB7C hook on the 8 stays starts (`stays-fb7c-v1`), and releases
+the queue. Afterwards:
+- summarise v4 with `c22c23_summary.py` (the 37 recursion-bucket actions);
+- check per stays row, in the FB7C log, whether the original's search found a target and whether the roll hit;
+- update the finding and relay it. Research also asked to cite its `FUN_00449b40` ally-extension MATCH.
+
+**Open:** step 7 (classify the 266–264 BC AI phase by class); the 50 AMB and 15 UNAUD rows.
+
+**Tooling added:** `patches/d734tail_hook.py`, `patches/fb7c_hook.py` (Unicorn tests), the adapter's opt-in `ailog`
+(`diffpin-168dbc04-ailog-build`), `difftest/probes/fleetphase_hook_run.py` (now rebuilds a changed hook).
+
+## Rulebot-2 (owner requests 2026-11-05, on `long-games`)
+
+The changes, in `difftest/bot2.py`; `tests/test_bot2.py` 18/18:
+- supply march along real land paths (straight-click legs);
+- garrison next to the capital, then top-up to full;
+- join adjacent idle armies;
+- mobilize only into an adjacent army, and only at readiness 24 unless desperate;
+- tax by unity;
+- fleets supplied and repaired;
+- mercenaries paid. New actions `supply_fleet` and `fund_army`; Wine order tests pass.
+
+Both earlier rulebot-2 games lost their leader at turn 25 (unity < 400 from lost armies and cities); Macedonia is the
+first game with the last two changes. A human cannot make peace with an AI at war (the original refuses).
+
+## Long-game queue (`long-games`, pin v0.9.4 = 168dbc04)
+
+Ptolemaic rulebot-2 is done (150 turns, 2 parts). Seleucid rulebot-2: overthrown at t25 and handed to Ptolemaic (h1),
+which was running at the time of writing. Macedonia rulebot-2 is last. The owner: wrap up after the Macedonia game: archive,
+PR `long-games` → main, then this handover's follow-up.
+
+## Lessons (also in memory `wine-one-run-at-a-time`)
+
+- A Wine hold must not start with "Imperial Conquest" (the driver's pgrep).
+- Never chain jobs on a phrase a launcher echoes ("hold released" matched a "seen" line, and two games collided).
+- Start a hold in its own Bash call (stopping a call kills its hold).
+- The hook runner reused a stale exe (fixed).
+
+---
+
 # Handover: 2026-11-04 night — shutdown checkpoint (AI audit #195, the decompile, the long-game queue)
 
 The owner shut the machine down at about 00:30. Everything is pushed. Read this entry first; the 2026-11-04 entry below
