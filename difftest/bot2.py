@@ -25,7 +25,15 @@ The rules, from docs/rules-digest.md:
    e. **retake**: the nearest core city held by an enemy that we would take: march to it;
    f. **garrison**: march back next to the capital (HOME = 1, so a garrison can buy supply there; it was 3 until
       2026-11-05, which left the Seleucid game's 80,016-man army 2 tiles from any city at 0 % supply for 100 turns).
+   g. **top up** (owner 2026-11-05, "make sure that the new army then tries and get supplied"): an army given nothing
+      else this turn, next to an own city with stock, buys up to its full capacity (a merged army fills up the turn
+      after its join, which leaves it 0 moves).
    It never declares war and never targets a nation it is not at war with.
+4b. **Join** (owner 2026-11-05): two own armies that stand adjacent and got no other order this turn join when together
+   they hold at most 20 units and fewer than 100,000 troops. Join is pressed on the lower-numbered one, and only when it
+   has no other own army adjacent (the original's Join picks the adjacent partner itself). The game keeps that army and
+   leaves the other record as a tombstone (tests/results.md, join: army 0 kept, record 1 owner -1), so no index shifts;
+   the joins are still issued last among the army orders.
 5. **Each own launched fleet** next to an own city, carrying no army (owner 2026-11-05: "same as fleet, make them supplied
    and repaired"): below half its capacity (8 x ships) it takes tons from the adjacent own city with the most stock; below
    condition FLEET_REPAIR_BELOW it is repaired to 100 when the treasury keeps TREASURY_RESERVE after the cost
@@ -52,6 +60,7 @@ FLEET_REPAIR_BELOW = 80   # repair a docked fleet below this condition (storms s
 TREASURY_RESERVE = 1000   # a repair or a mercenary payment must leave at least this much in the treasury
 PRICE = {"li": 1, "hi": 2, "ar": 1, "lc": 3, "hc": 4}   # quarterly price per 200 troops (DAT unit table +0x24)
 PURSE_CAP = 1000
+JOIN_MAX_UNITS, JOIN_MAX_TROOPS = 20, 100000   # an army holds 20 units; a join over 100,000 troops is refused
 RETAKE_RANGE = 15   # core cities farther than this are left alone
 
 
@@ -146,6 +155,27 @@ def mercenary_pay(army):
     return sum((u["troops"] // 200) * PRICE[u["type"]] * u["quality"] // 5 for u in army["units"] if u.get("merc"))
 
 
+def joins(idle, mine):
+    """4b: Join orders for adjacent idle pairs within the caps, pressed on the lower-numbered army when it has no other
+    own army adjacent; each army joins at most once a turn."""
+    out, used = [], set()
+    adj = lambda a, b: a["id"] != b["id"] and cheb((a["x"], a["y"]), (b["x"], b["y"])) == 1
+    for a in sorted(idle, key=lambda a: a["id"]):
+        if a["id"] in used:
+            continue
+        near = [b for b in mine if adj(a, b)]
+        if len(near) != 1:
+            continue
+        b = near[0]
+        if b["id"] < a["id"] or b["id"] in used or b not in idle:
+            continue
+        if len(a["units"]) + len(b["units"]) > JOIN_MAX_UNITS or a["troops"] + b["troops"] >= JOIN_MAX_TROOPS:
+            continue
+        out.append({"op": "join_armies", "army": a["id"], "partner": b["id"]})
+        used |= {a["id"], b["id"]}
+    return out
+
+
 def desperate(s, me, capital, enemies):
     """The enemy armies within THREAT tiles of the capital outweigh our own armies within THREAT tiles of it."""
     if capital is None:
@@ -179,6 +209,7 @@ def decide(s):
                 break                               # one per turn: slot indices shift after a mobilization
     invaders = [a for a in enemies if any(cheb((a["x"], a["y"]), (c["x"], c["y"])) <= THREAT for c in own)]
     lost_core = [c for c in s["cities"] if c["allegiance"] == me and c["owner"] in at_war]
+    idle = []                                                                       # armies given no order (4b. join)
     for a in s["armies"]:
         if a["owner"] != me or a["troops"] <= 0 or a["moves"] <= 0 or a["embarked"]:
             continue
@@ -217,11 +248,21 @@ def decide(s):
             if march(out, s, a, approach(s, pos, (c["x"], c["y"]))):
                 continue
         if capital and cheb(pos, (capital["x"], capital["y"])) > HOME:              # f. garrison
-            march(out, s, a, approach(s, pos, (capital["x"], capital["y"])))
+            if march(out, s, a, approach(s, pos, (capital["x"], capital["y"]))):
+                continue
+        stocked = [c for c in own if cheb(pos, (c["x"], c["y"])) == 1 and c["supplies"] >= 10]
+        if stocked and need >= 10:                                                  # g. top up
+            c = max(stocked, key=lambda c: (c["supplies"], -c["id"]))
+            out.append({"op": "buy_supply", "army": a["id"], "city": c["id"], "tons": min(need, c["supplies"]) // 10 * 10})
+            continue
+        idle.append(a)
+    out += joins(idle, [a for a in s["armies"] if a["owner"] == me and a["troops"] > 0 and not a["embarked"]])
     treasury = n["treasury"]
+    end = {o["army"]: (o["x"], o["y"]) for o in out if o["op"] == "move"}         # where this turn's clicks leave it
     for a in s["armies"]:                                                           # 6. mercenary pay
         pay = mercenary_pay(a) if a["owner"] == me and a["troops"] > 0 and not a["embarked"] else 0
-        if not pay or a["money"] >= 2 * pay or not any(cheb((a["x"], a["y"]), (c["x"], c["y"])) == 1 for c in own):
+        at = end.get(a["id"], (a["x"], a["y"]))                                     # the Supply army dialog needs a city
+        if not pay or a["money"] >= 2 * pay or not any(cheb(at, (c["x"], c["y"])) == 1 for c in own):
             continue
         amount = (min(PURSE_CAP, 4 * pay) - a["money"] + 99) // 100 * 100
         amount = min(amount, (PURSE_CAP - a["money"]) // 100 * 100)

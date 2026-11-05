@@ -165,6 +165,45 @@ def test_mercenaries_are_paid_from_the_treasury():
     assert not [x for x in B.decide(state([a], me_kw={"treasury": 1200})) if x["op"] == "fund_army"]   # reserve
     far = dict(a, x=70, y=70)
     assert not [x for x in B.decide(state([far], me_kw={"treasury": 2000})) if x["op"] == "fund_army"]  # no city
+    leaving = dict(a, x=51, y=50, supply_pct=0, supplies=0)                         # next to Rome, which is dry: it
+    s = state([leaving], cities=[city(10, 58, 50, ME, supplies=500)], me_kw={"treasury": 2000})   # marches to city 10
+    s["cities"][0]["supplies"] = 0
+    o = [x["op"] for x in B.decide(s) if x["op"] != "recruit"]
+    assert o == ["move", "fund_army"], o                                           # it ends next to city 10: paid there
+    s = state([leaving], cities=[city(10, 75, 50, ME, supplies=500)], me_kw={"treasury": 2000})   # 10 moves: ends in open country
+    s["cities"][0]["supplies"] = 0
+    o = [x["op"] for x in B.decide(s) if x["op"] != "recruit"]
+    assert o == ["move"], o                                                        # ends away from any city: not paid
+
+
+def test_idle_armies_next_to_each_other_join_then_top_up():
+    a, b = army(3, ME, 51, 50, 20000), army(7, ME, 51, 51, 15000)                 # both next to Rome (50,50)
+    for x in (a, b):
+        x["units"] = [{"type": "hi", "troops": x["troops"], "quality": 6, "merc": 0}] * 4
+    o = B.decide(state([a, b]))
+    assert [x for x in o if x["op"] == "join_armies"] == [{"op": "join_armies", "army": 3, "partner": 7}], o
+    assert o[-1]["op"] == "join_armies", o                                          # the last army order
+    merged = army(3, ME, 51, 50, 35000)                                             # the turn after: 351 capacity, 20 aboard
+    merged["supplies"] = 20
+    o = B.decide(state([merged], cities=[]))
+    assert {"op": "buy_supply", "army": 3, "city": 100, "tons": 100} in o, o       # Rome's 100 tons, all of it
+
+
+def test_join_refusals():
+    def pair(ta=20000, tb=15000, units=4):
+        a, b = army(3, ME, 51, 50, ta), army(7, ME, 51, 51, tb)
+        for x in (a, b):
+            x["units"] = [{"type": "hi", "troops": 1000, "quality": 6, "merc": 0}] * units
+        return a, b
+    js = lambda arm: [x for x in B.decide(state(arm)) if x["op"] == "join_armies"]
+    assert not js(list(pair(60000, 45000))), "100,000 troops or more: refused by the game"
+    assert not js(list(pair(units=11))), "more than 20 units together"
+    a, b = pair()
+    c = army(9, ME, 52, 49, 5000)                                                   # a second neighbour of army 3
+    assert not js([a, b, c]) or all(x["army"] != 3 for x in js([a, b, c])), js([a, b, c])
+    a, b = pair()
+    e = army(1, FOE, 53, 50, 1000)                                                  # an invader: army 3 intercepts instead
+    assert not js([a, b, e]), js([a, b, e])
 
 
 def test_supply_fleet_action_plumbing():
