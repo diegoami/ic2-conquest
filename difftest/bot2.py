@@ -7,9 +7,14 @@ peace offer, docs/rules-digest.md §7, so accepting it is the defensive bot's wa
 what a player sees and is deterministic: the same state gives the same orders, in both games.
 
 The rules, from docs/rules-digest.md:
-1. **Tax** 15 % (unity loses tax/2 a quarter; below 400 the leader is overthrown, as Seleucid's was at turn 26).
+1. **Tax** 15 %; with the treasury above 1,000, 5 % below unity 650 and 0 % below 500 (owner 2026-11-05, after both
+   rulebot-2 games lost their leader at turn 25: unity gains 25 - tax/2 - mobilization/5 a quarter, loses 15 per city and
+   25 per army lost, and below 400 the army overthrows the leader).
 2. **Recruit** heavy infantry (field weight 100) at the capital, with treasury >= 1,000 and fewer than 40 queued units.
-3. **Mobilize** a slot once its readiness reaches 24, the cap (quality 6, "average"), one per turn. **Desperate**
+3. **Mobilize** a slot once its readiness reaches 24, the cap (quality 6, "average"), one per turn, **only into an army**
+   (owner 2026-11-05): a human's mobilized slot joins an own army next to its city (fewer than 20 units, at most 100,000
+   troops with it: FUN_0044a120) or else becomes a new army there, and the small new armies were picked off (25 unity
+   each). So a slot waits until such an army stands next to its city. **Desperate**
    (the enemy armies within THREAT tiles of the capital outweigh our own armies there, owner 2026-11-05: "mobilize when
    they are average, not when available, unless you are desperate"): every slot from readiness 16 (quality 4, the
    player's earliest), highest slot index first so the earlier indices do not shift.
@@ -190,8 +195,9 @@ def decide(s):
     me = s["current_nation"]
     n = s["nations"][me]
     out = []
-    if n["tax"] != 15:
-        out.append({"op": "set_tax", "percent": 15})
+    tax = 15 if n["treasury"] <= TREASURY_RESERVE or n["unity"] >= 650 else 5 if n["unity"] >= 500 else 0
+    if n["tax"] != tax:
+        out.append({"op": "set_tax", "percent": tax})
     if n["treasury"] >= 1000 and len(n["recruit_slots"]) < 40 and n["capital"] >= 0:
         out.append({"op": "recruit", "city": n["capital"], "type": "hi", "troops": 1200})
     names = [x["name"] for x in s["nations"]]
@@ -203,8 +209,12 @@ def decide(s):
         ready = [i for i, r in enumerate(n["recruit_slots"]) if r["state"] >= DESPERATE_READY and r["troops"] > 0]
         out += [{"op": "mobilize", "slot": i} for i in sorted(ready, reverse=True)]
     else:
+        cities = {c["id"]: c for c in s["cities"]}
+        mine = [a for a in s["armies"] if a["owner"] == me and a["troops"] > 0 and not a["embarked"]]
         for i, r in enumerate(n["recruit_slots"]):
-            if r["state"] >= 24:
+            c = cities.get(r["city"])
+            if r["state"] >= 24 and c and any(cheb((a["x"], a["y"]), (c["x"], c["y"])) == 1 and len(a["units"]) < 20
+                                             and a["troops"] + r["troops"] <= JOIN_MAX_TROOPS for a in mine):
                 out.append({"op": "mobilize", "slot": i})
                 break                               # one per turn: slot indices shift after a mobilization
     invaders = [a for a in enemies if any(cheb((a["x"], a["y"]), (c["x"], c["y"])) <= THREAT for c in own)]

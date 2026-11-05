@@ -18,7 +18,7 @@ ME, FOE, NEUTRAL = 0, 6, 3          # Rome, Gaul (at war), Ptolemaic (at peace)
 
 
 def nation(i, **kw):
-    n = {"name": NATIONS[i], "tax": 15, "treasury": 0, "recruit_slots": [], "capital": 100 + i,
+    n = {"name": NATIONS[i], "tax": 15, "treasury": 0, "unity": 800, "recruit_slots": [], "capital": 100 + i,
          "relations": {NATIONS[j]: 0 for j in range(16) if j != i}}
     n.update(kw)
     return n
@@ -48,13 +48,21 @@ def ops(s):
 
 
 def test_tax_recruit_and_one_mobilization():
-    s = state(me_kw={"tax": 20, "treasury": 1500, "recruit_slots": [
+    s = state([army(5, ME, 51, 51, 5000)], me_kw={"tax": 20, "treasury": 1500, "recruit_slots": [
         {"state": 22, "city": 100, "troops": 1200}, {"state": 24, "city": 100, "troops": 1200},
         {"state": 24, "city": 100, "troops": 1200}]})
     o = B.decide(s)
     assert o[0] == {"op": "set_tax", "percent": 15}, o
     assert {"op": "recruit", "city": 100, "type": "hi", "troops": 1200} in o
     assert [x for x in o if x["op"] == "mobilize"] == [{"op": "mobilize", "slot": 1}], o      # first ready only
+
+
+def test_tax_follows_unity_when_the_treasury_allows():
+    tax = lambda **kw: [x["percent"] for x in B.decide(state(me_kw=dict(tax=15, **kw))) if x["op"] == "set_tax"]
+    assert tax(unity=700, treasury=5000) == []                                      # 15 % already
+    assert tax(unity=600, treasury=5000) == [5]
+    assert tax(unity=450, treasury=5000) == [0]
+    assert tax(unity=450, treasury=900) == []                                       # a poor treasury keeps 15 %
 
 
 def test_counter_attack_only_with_the_odds():
@@ -123,8 +131,12 @@ def test_supply_marches_to_a_stocked_city_when_the_neighbours_are_dry():
 def test_mobilization_waits_for_average_unless_desperate():
     slots = [{"state": 16, "city": 100, "troops": 1200}, {"state": 20, "city": 100, "troops": 1200},
              {"state": 24, "city": 100, "troops": 1200}]
-    calm = state(me_kw={"recruit_slots": [dict(x) for x in slots]})
+    calm = state([army(5, ME, 51, 51, 5000)], me_kw={"recruit_slots": [dict(x) for x in slots]})
     assert [x for x in B.decide(calm) if x["op"] == "mobilize"] == [{"op": "mobilize", "slot": 2}]
+    alone = state(me_kw={"recruit_slots": [dict(x) for x in slots]})               # no army next to Rome: it waits
+    assert not [x for x in B.decide(alone) if x["op"] == "mobilize"]
+    full = army(5, ME, 51, 51, 99500)                                               # 99,500 + 1,200 > 100,000: waits
+    assert not [x for x in B.decide(state([full], me_kw={"recruit_slots": [dict(x) for x in slots]})) if x["op"] == "mobilize"]
     siege = state([army(1, FOE, 52, 50, 30000), army(0, ME, 51, 50, 5000)], me_kw={"recruit_slots": [dict(x) for x in slots]})
     assert B.desperate(siege, ME, siege["cities"][0], [siege["armies"][0]])
     assert [x["slot"] for x in B.decide(siege) if x["op"] == "mobilize"] == [2, 1, 0], B.decide(siege)
