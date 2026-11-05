@@ -90,7 +90,7 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
      the war, alliance and trade candidates compete with the armies.
    - **Consequence:** a war declared this seat is not counted in the threat budget (15,000 per war), the capital-defence
      radius (19 at war, 9 otherwise), the hire gate ("at war with someone") or the busy test.
-   - **Code:** confirmed on both sides. **Measured (2026-11-05, the economy only):** in 3 of the 11 seats where both games start the same war, the original mobilises in that seat and the remake does not; this attributes those seats' position rows (`2026-11-05-x1-war-before-economy.md`). Radius, hire gate and busy test: not measured.
+   - **Code:** confirmed on both sides. **Measured (2026-11-05, the economy only):** in 8 of the 11 seats where both games start the same war, the original runs the gap call FUN_004504f4 (mobilise and/or raise recruits) in that seat and the remake does not (3 by mobilising, research PR #207 follow-up for the other 5); this attributes 3 seats' position rows (`2026-11-05-x1-war-before-economy.md`). Radius, hire gate and busy test: not measured.
 2. **X2. Support and hire pass timing** (A09, B22, C08).
    - **Original:** `E41C` is each army's first call inside `F31C` (`0x44F366`), so later armies see the earlier armies'
      moves, battles and treaties.

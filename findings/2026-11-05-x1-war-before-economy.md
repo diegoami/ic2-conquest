@@ -45,11 +45,11 @@ remake. In every seat the declarer was at war with no one before.
 | macedonia-rulebot1-40t | 27 | Seleucid (war on Armenia, Media) | 78,600 → **39,400** / 78,600 | 3,961 → 3,405 / 3,961 | Seleucid armies |
 | armenia-rulebot1-40t | 36 | Ptolemaic (war on Carthage, Numidia) | 46,300 → **24,900** / 46,300 | 5,036 → 5,061 / 6,576 | Ptolemaic armies, fleets |
 | greece-rulebot1-40t | 8 | Carthage | 4,200 → **3,000** / 4,200 | 11,287 → 10,762 / 11,287 | none |
-| the 7 other seats | | | equal in both games | | none |
+| the 7 other seats | | | ready recruits equal; but see §Follow-up: 4 of them raise new slots in the original | | none |
 
-- **In the original, 3 of the 11 seats mobilise in the same seat as the war.** A fourth, Greece t8, probably does too, but
-  its slot change has not been decomposed.
-- **The remake mobilises in none of them.** No seat shows the reverse (the remake mobilises and the original does not).
+- **In the original, 3 of the 11 seats mobilise ready recruits in the same seat as the war.** The follow-up below
+  extends this to **8 of 11** seats once raised slots are counted (research intake PR #207).
+- **The remake mobilises or raises in none of them.** No seat shows the reverse (the remake mobilises and the original does not).
 
 **What it moves.** Rome t29, Ptolemaic:
 - Five slots at state 24 are mobilised: hc 900, hi 5,000 and li 7,500 at the capital, city 214 (190,94), and hc 2,200 and
@@ -63,6 +63,48 @@ Macedonia t27, Seleucid: the same, with 16,200 men joining the main army at (211
 (188,59) from city 206.
 
 So these are the position rows of these seats. They were unattributed until now, and this report attributes them to X1.
+
+## Follow-up (2026-11-05, research PR #207): the 11 seats decomposed
+
+**Correction.** Research noted that "the 7 other seats [are] equal" holds for ready recruits only. The mobilisation level
+(`+0x442`) ends higher in the original in 8 of the 11 seats.
+
+**The function.** `FUN_004504f4(gap)` has two parts:
+- **(a) Mobilise.** It mobilises ready slots (state 24) through `FUN_0044a4e0` until the gap is covered. It does so only
+  if an own army is within 6 tiles of a ready slot's city, or if there are 4 or more ready slots.
+- **(b) Raise.** It raises up to 8 new slots (`FUN_004501f4`) in empty slots. It does so while the recruits do not cover
+  the gap, the level is below 100, and the treasury test (or the first 3 slots) passes. Each raised slot costs treasury
+  and adds `troops × 1000 / wealth + 1` to the level.
+
+**Callers (decompile).** `FUN_004501f4` is called only by `FUN_004504f4`, and `FUN_004504f4` only by `FFBC`.
+`FUN_0044a4e0`'s other caller is the human's recruit dialog (`TArmyRecruits_MobilizeUnits`). So in an AI seat, every
+mobilised or raised slot comes from `FFBC`'s gap call.
+
+**The decomposition.** `runs/experiments/audit195/x1_decompose.py` writes `x1-war-seats-v1/decompose.jsonl`. Slots are
+matched as a multiset of (type, troops, city). In each row below, values before the arrow are the state before the AI
+phase; after it, the original's end and then the remake's.
+
+| seat | declarer | (a) mobilised | (b) raised | level | treasury |
+|---|---|---|---|---|---|
+| Rome t29 | Ptolemaic | 5 slots, 21,400 | hc 2,100, lc 6,700, li 9,100 at 214 | 9 → 12 / 9 | 4,030 → 2,645 / 4,030 |
+| Armenia t36 | Ptolemaic | the same 5 slots | hi 4,500, lc 7,000, li 5,100 at 214 | 6 → 6 / 3 | 5,036 → 5,061 / 6,576 |
+| Macedonia t27 | Seleucid | 8 slots, 39,200 | ar 2,900 at 292 | 15 → 16 / 15 | 3,961 → 3,405 / 3,961 |
+| Greece t8 | Carthage | hc 1,200 at 72 | lc 7,000 at 70 | 12 → 14 / 12 | 11,287 → 10,762 / 11,287 |
+| Gaul t7 | Carthage | — | hi 4,200 at 70 | 12 → 13 / 12 | 11,233 → 10,813 / 11,233 |
+| Macedonia t12 | Carthage | — | ar 2,000, li 11,000 at 72 | 12 → 13 / 9 | 12,444 → 14,468 / 14,683 |
+| Media t5 | Carthage | — | hi 6,000 at 70 | 15 → 17 / 15 | 10,114 → 9,352 / 9,952 |
+| Media t1 | Greece | — | 5 slots at 166: hi 2,600, 2,800, 3,900; li 6,300, 10,000 | 0 → 13 / 0 | 920 → −134 / 948 |
+| Rome t26 (Armenia), Gaul t31 (Seleucid), Numidia t30 (Macedonia) | | — | — | equal | equal |
+
+**Result.**
+- In 8 of the 11 seats, the original runs `FUN_004504f4` in the seat that declared the war. The remake runs it in none of
+  the 11, because its economy runs before the war is declared.
+- In the 3 remaining seats, neither game mobilises or raises. In those seats the gap with the new war is not positive, or
+  the gates fail.
+- **Attribution: 8 seats.** The 3 seats with position rows are attributed to X1 (above). The other 5 have no position rows
+  in the seat: their raised slots are still recruits, not armies.
+- **Assumption.** The war-free threat must be equal in both games, i.e. the remake's Faithful economy reproduces `FFBC`
+  without the new war. Every case has the same start state, and no seat shows the remake running the gap call.
 
 ## Expected and actual
 
@@ -88,11 +130,11 @@ So these are the position rows of these seats. They were unattributed until now,
 ## Evidence
 
 - `runs/experiments/data/run-exp-audit195/x1-war-seats-v1/`: `war_seats.jsonl` (234 rows) and `mobilise.jsonl`
-  (13 rows).
+  (13 rows), `decompose.jsonl` (13 rows).
 - The saves this reads:
   - **Original games:** releases `run-exp-longrun-v090` (`rome-rulebot1-40t-saves.tar.gz`), `run-exp-longrun-v091`
     (`macedonia-rulebot1-40t-saves.tar.gz`), `run-exp-longrun-v092` (`greece-…`) and `run-exp-longrun-v093`
     (`armenia-…`). The seats are `t29-a00.SAV` → `t29-a01.SAV` (Rome) and `t26-a01.SAV` → `t27-a00.SAV` (Macedonia).
   - **Remake replays:** release `run-exp-longrun-v093`, `recheck-168dbc04-anchored-saves.tar.gz`
     (`anchored-168dbc04-ts/tNN/a*.SAV`).
-- Tooling: `runs/experiments/audit195/x1_war_seats.py`, `x1_mobilise.py`.
+- Tooling: `runs/experiments/audit195/x1_war_seats.py`, `x1_mobilise.py`, `x1_decompose.py`.
