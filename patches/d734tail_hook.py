@@ -21,7 +21,7 @@ Probes (pushfd/pushad around the log, so the game runs the same instructions on 
      For 2-4 the call is moved to the cave (rel32 relocated) after the log: EAX, EDX, the army's position, its +0xA dword
      (supplies | money, before the action), [ebp+4], and [[ebp]+4] in +0x20.
 A 40-byte record (patches/walk_hook.py layout): +0 kind, +4..+0x14 five values, +0x18 nation, +0x1C week, +0x20 the outer
-return address, +0x24 sequence. Log: CTL 0x565000 (+0 count, +4 'D734', +8 capacity), BUF 0x565100.
+return address (the first non-recursive caller of the DBA8 chain), +0x24 sequence. Log: CTL 0x565000 (+0 count, +4 'D734', +8 capacity), BUF 0x565100.
 """
 import struct
 import sys
@@ -34,7 +34,17 @@ import walk_hook as W  # noqa: E402
 MAGIC = 0x34373344                      # 'D734'
 DST = "Imperial Conquest 2 fast rollingsave seed d734hook.exe"
 RET1 = b"\x8B\x44\x24" + bytes([E.R["ebp"]]) + b"\x8B\x40\x04"                 # eax := [saved ebp + 4]
-RET2 = b"\x8B\x44\x24" + bytes([E.R["ebp"]]) + b"\x8B\x00\x8B\x40\x04"         # eax := [[saved ebp] + 4]
+# eax := the return address of the first frame above D734's caller that is not FUN_0044dba8's own recursion (return
+# 0x44DCA6): from F = [saved ebp] (the caller's frame), while [F+4] == 0x44DCA6 take F := [F]; then eax := [F+4]. With D734
+# called from FUN_0044dba8, this is the DBA8 chain's outer caller (F31C, E84C, EBE8, EFC8 ...). v1 (2026-11-05 morning)
+# logged [[ebp]+4] only, which leaves the recursion's outer caller unknown. EDX is free here (the stub restores it).
+RET2 = (b"\x8B\x44\x24" + bytes([E.R["ebp"]]) + b"\x8B\x00"                    # mov eax,[saved ebp]; mov eax,[eax]
+        + b"\x8B\x50\x04"                                                         # loop: mov edx,[eax+4]
+        + b"\x81\xFA" + E.u32(0x44DCA6)                                            # cmp edx,0x44DCA6
+        + b"\x75\x04"                                                              # jne done
+        + b"\x8B\x00"                                                              # mov eax,[eax]
+        + b"\xEB\xF1"                                                              # jmp loop
+        + b"\x89\xD0")                                                             # done: mov eax,edx
 
 # site: (kind, replaced bytes, call target or None (re-run the bytes), army register, [values])
 SITES = {

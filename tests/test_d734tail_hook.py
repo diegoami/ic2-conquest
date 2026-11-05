@@ -121,6 +121,21 @@ def test_entry():
     assert r["kind"] == "entry" and r["target"] == [64, 48] and r["moves"] == 5, r
 
 
+def test_outer_caller_skips_dba8_recursion():
+    _, b = built()
+    mu = setup(b, 214, ARMY_N)
+    outer2, outer3 = 0x00208200, 0x00208300
+    poke(mu, OUTER + 4, "<I", 0x44DCA6)          # the DBA8 that called D734 was called by DBA8 ...
+    poke(mu, OUTER, "<I", outer2)
+    poke(mu, outer2 + 4, "<I", 0x44DCA6)         # ... twice
+    poke(mu, outer2, "<I", outer3)
+    poke(mu, outer3 + 4, "<I", 0x44F481)         # ... from F31C's resupply walk
+    trace = run(mu, 0x44D935, {0x44F6D8: lambda uc: None, "stop": {0x44D93A}})
+    assert trace[-1] == 0x44D93A
+    assert record(mu)[8] == 0x44F481, hex(record(mu)[8])
+    assert mu.reg_read(UC_X86_REG_EDX) & 0xFFFF == ARMY_N, "EDX restored for the callee"
+
+
 def test_full_log_skips_and_still_runs():
     _, b = built()
     mu = setup(b, 214, ARMY_N)
