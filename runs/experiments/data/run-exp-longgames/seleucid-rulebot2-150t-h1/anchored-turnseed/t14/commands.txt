@@ -1,0 +1,23 @@
+#checkpoint a000
+recruit-standing {city:214} heavy_infantry 1200
+#checkpoint a001
+mobilize 0 {newarmy}
+#checkpoint a002
+move {army:0} 195 101
+#checkpoint a003
+move {army:0} 196 101
+#checkpoint a004
+move {army:7} 222 78
+#checkpoint a005
+move {army:12} 195 101
+#checkpoint a006
+move {army:12} 196 101
+#checkpoint a007
+move {army:14} 195 101
+#checkpoint a008
+move {army:14} 196 101
+#checkpoint a009
+buy-fleet-supply {fleet:1} {city:214} 350
+#checkpoint a010
+end
+#checkpoint a011
