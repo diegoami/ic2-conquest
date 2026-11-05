@@ -94,6 +94,9 @@ phases. Pass 2 runs the Faithful economy again, the armies with moves left and t
 
 ## What this settles and what it does not
 
+- **Narrowed at intake (research PR #210):** "in state" means the end tiles of the seat nation's units only (troops
+  ignored; pass 2's budgets differ by casualties), and the two Tactical misses are attributed to the battle outcome by
+  inference from which army survives, not traced in the receipts.
 - **The remake's Tactical path matches the original's seat replay in state:** 5 of 5 seats wherever the battle ends as in
   the original, with pass 1's economy identical and a second economy pass. Rows A12, B33, C02, D30 and F34 move from
   AMB toward **MATCH (Tactical, iv)**.
