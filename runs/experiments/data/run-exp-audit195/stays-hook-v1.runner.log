@@ -1,0 +1,118 @@
+2026-11-05T10:44:38+01:00 seen 'hold released'
+2026-11-05T11:25:14+01:00 seen 'hold released'
+2026-11-05T11:25:14+01:00 holding Wine (pid 279348)
+2026-11-05T11:25:14+01:00 regen rome (S00_Rome) 9 turns
+2026-11-05T11:36:09+01:00 regen rome exit 0
+2026-11-05T11:36:09+01:00 regen carthage (S01_Carthage) 34 turns
+2026-11-05T12:04:39+01:00 regen carthage exit 0
+2026-11-05T12:04:39+01:00 regen gaul (S06_Gaul) 28 turns
+2026-11-05T12:13:32+01:00 regen gaul exit 0
+2026-11-05T12:13:32+01:00 regen ptolemaic (S03_Ptolemaic) 8 turns
+2026-11-05T12:20:44+01:00 regen ptolemaic exit 0
+2026-11-05T12:20:44+01:00 regen numidia (S05_Numidia) 10 turns
+2026-11-05T12:24:37+01:00 regen numidia exit 0
+2026-11-05T12:24:37+01:00 regen greece (S07_Greece) 5 turns
+2026-11-05T12:26:38+01:00 regen greece exit 0
+{
+ "rome-t10": {
+  "compared": 38,
+  "differ": [],
+  "start": "t09-a03.SAV",
+  "randseed": 303707533
+ },
+ "carthage-t33": {
+  "compared": 101,
+  "differ": [],
+  "start": "t32-a02.SAV",
+  "randseed": 1488268780
+ },
+ "carthage-t35": {
+  "compared": 107,
+  "differ": [],
+  "start": "t34-a02.SAV",
+  "randseed": 3813673084
+ },
+ "gaul-t29": {
+  "compared": 31,
+  "differ": [],
+  "start": "t28-a00.SAV",
+  "randseed": 3987198016
+ },
+ "ptolemaic-t09": {
+  "compared": 27,
+  "differ": [],
+  "start": "t08-a02.SAV",
+  "randseed": 3923796026
+ },
+ "numidia-t06": {
+  "compared": 7,
+  "differ": [],
+  "start": "t05-a00.SAV",
+  "randseed": 2818859621
+ },
+ "numidia-t11": {
+  "compared": 14,
+  "differ": [],
+  "start": "t10-a00.SAV",
+  "randseed": 4278796428
+ },
+ "greece-t06": {
+  "compared": 7,
+  "differ": [],
+  "start": "t05-a00.SAV",
+  "randseed": 2139320026
+ }
+}
+2026-11-05T12:26:38+01:00 hook decide_hook
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+carthage-t33: 17 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+carthage-t35: 16 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+gaul-t29: 22 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+greece-t06: 16 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+numidia-t06: 14 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+numidia-t11: 16 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+ptolemaic-t09: 12 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed decidehook.exe","sha256":"c1a2f48dc99b911ab4139d0b4f9c84aac2a09dfc1eba29bace30d81d6d7bd6c0"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+rome-t10: 13 records; autosaves identical to the plain build: True [True]
+2026-11-05T12:34:01+01:00 hook decide_hook exit 0
+2026-11-05T12:34:01+01:00 hook capdef_hook
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+carthage-t33: 6 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+carthage-t35: 4 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+gaul-t29: 3 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+greece-t06: 1 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+numidia-t06: 1 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+numidia-t11: 3 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+ptolemaic-t09: 2 records; autosaves identical to the plain build: True [True]
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed capdefhook.exe","sha256":"43a803eca6c8ce0bf0d56acf0405cf8701c6eea3a8a2ff8d415b68e40b20d20c"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+rome-t10: 5 records; autosaves identical to the plain build: True [True]
+2026-11-05T12:41:19+01:00 hook capdef_hook exit 0
+2026-11-05T12:41:19+01:00 done; hold released
