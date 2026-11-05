@@ -1,0 +1,8 @@
+2026-11-05T13:05:16+01:00 running order tests
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+PASS fund_army (26s): purse 100 -> 300, treasury 1730 -> 1530
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+PASS supply_fleet (26s): fleet supplies 0 -> 100; Antium 330 -> 230
+environment {"exe":{"name":"Imperial Conquest 2 fast rollingsave seed.exe","sha256":"354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f"},"fonts":{"Book Antiqua":"DejaVu Sans","MS Sans Serif":"DejaVu Sans","liberation_count":0,"tahoma_wine":true},"prefix_fonts":{"count":63,"sha256_12":"483b99b8e1cf"},"wine":"wine-10.0 (Ubuntu 10.0~repack-12ubuntu1)","xvfb_screen":"1280x1024"}
+PASS repair_fleet (27s): condition 97 -> 100, moves 29 -> 0, treasury 1730 -> 1712 (cost 18)
+2026-11-05T13:06:35+01:00 order tests: 3 passed; hook run v3b (S08-S15)

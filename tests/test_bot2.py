@@ -18,7 +18,7 @@ ME, FOE, NEUTRAL = 0, 6, 3          # Rome, Gaul (at war), Ptolemaic (at peace)
 
 
 def nation(i, **kw):
-    n = {"name": NATIONS[i], "tax": 15, "treasury": 0, "recruit_slots": [], "capital": 100 + i,
+    n = {"name": NATIONS[i], "tax": 15, "treasury": 0, "unity": 800, "recruit_slots": [], "capital": 100 + i,
          "relations": {NATIONS[j]: 0 for j in range(16) if j != i}}
     n.update(kw)
     return n
@@ -48,13 +48,21 @@ def ops(s):
 
 
 def test_tax_recruit_and_one_mobilization():
-    s = state(me_kw={"tax": 20, "treasury": 1500, "recruit_slots": [
+    s = state([army(5, ME, 51, 51, 5000)], me_kw={"tax": 20, "treasury": 1500, "recruit_slots": [
         {"state": 22, "city": 100, "troops": 1200}, {"state": 24, "city": 100, "troops": 1200},
         {"state": 24, "city": 100, "troops": 1200}]})
     o = B.decide(s)
     assert o[0] == {"op": "set_tax", "percent": 15}, o
     assert {"op": "recruit", "city": 100, "type": "hi", "troops": 1200} in o
     assert [x for x in o if x["op"] == "mobilize"] == [{"op": "mobilize", "slot": 1}], o      # first ready only
+
+
+def test_tax_follows_unity_when_the_treasury_allows():
+    tax = lambda **kw: [x["percent"] for x in B.decide(state(me_kw=dict(tax=15, **kw))) if x["op"] == "set_tax"]
+    assert tax(unity=700, treasury=5000) == []                                      # 15 % already
+    assert tax(unity=600, treasury=5000) == [5]
+    assert tax(unity=450, treasury=5000) == [0]
+    assert tax(unity=450, treasury=900) == []                                       # a poor treasury keeps 15 %
 
 
 def test_counter_attack_only_with_the_odds():
@@ -91,9 +99,145 @@ def test_intercept_invaders_near_own_cities_only():
 def test_garrison_returns_to_the_capital():
     s = state([army(0, ME, 70, 70, 5000)])
     o = ops(s)
+    assert o[0] == ("move", 0, None, 60, 60), o                      # 10 moves: this turn's leg of the 20-tile walk
+    near = state([army(0, ME, 52, 52, 5000)])                     # 2 tiles out: since 2026-11-05 it closes in (HOME = 1)
+    o = ops(near)
     assert o[0][0] == "move" and max(abs(o[0][3] - 50), abs(o[0][4] - 50)) == 1, o
-    home = state([army(0, ME, 52, 52, 5000)])
+    home = state([army(0, ME, 51, 51, 5000)])
     assert not ops(home), ops(home)
+
+
+def starving(i, x, y, troops=20000):
+    a = army(i, ME, x, y, troops, supply_pct=0)
+    a["supplies"] = 0
+    return a
+
+
+def test_supply_buys_from_the_adjacent_city_with_the_most_stock():
+    s = state([starving(0, 60, 60)], cities=[city(10, 61, 60, ME, supplies=0), city(11, 59, 60, ME, supplies=400),
+                                             city(12, 60, 61, ME, supplies=150)])
+    assert ops(s)[0] == ("buy_supply", 0, 11, None, None), ops(s)
+    o = [x for x in B.decide(s) if x["op"] == "buy_supply"][0]
+    assert o["tons"] == 200, o                                        # need 20000//100 + 1 - 0 = 201 -> 200
+
+
+def test_supply_marches_to_a_stocked_city_when_the_neighbours_are_dry():
+    s = state([starving(0, 60, 60)], cities=[city(10, 61, 60, ME, supplies=0), city(11, 70, 60, ME, supplies=500),
+                                             city(12, 66, 60, ME, supplies=50)])
+    o = ops(s)
+    assert o[0][0] == "move" and max(abs(o[0][3] - 70), abs(o[0][4] - 60)) == 1, o     # city 12 holds too little
+
+
+def test_mobilization_waits_for_average_unless_desperate():
+    slots = [{"state": 16, "city": 100, "troops": 1200}, {"state": 20, "city": 100, "troops": 1200},
+             {"state": 24, "city": 100, "troops": 1200}]
+    calm = state([army(5, ME, 51, 51, 5000)], me_kw={"recruit_slots": [dict(x) for x in slots]})
+    assert [x for x in B.decide(calm) if x["op"] == "mobilize"] == [{"op": "mobilize", "slot": 2}]
+    alone = state(me_kw={"recruit_slots": [dict(x) for x in slots]})               # no army next to Rome: it waits
+    assert not [x for x in B.decide(alone) if x["op"] == "mobilize"]
+    full = army(5, ME, 51, 51, 99500)                                               # 99,500 + 1,200 > 100,000: waits
+    assert not [x for x in B.decide(state([full], me_kw={"recruit_slots": [dict(x) for x in slots]})) if x["op"] == "mobilize"]
+    siege = state([army(1, FOE, 52, 50, 30000), army(0, ME, 51, 50, 5000)], me_kw={"recruit_slots": [dict(x) for x in slots]})
+    assert B.desperate(siege, ME, siege["cities"][0], [siege["armies"][0]])
+    assert [x["slot"] for x in B.decide(siege) if x["op"] == "mobilize"] == [2, 1, 0], B.decide(siege)
+    held = state([army(1, FOE, 52, 50, 5000), army(0, ME, 51, 50, 30000)], me_kw={"recruit_slots": [dict(x) for x in slots]})
+    assert not B.desperate(held, ME, held["cities"][0], [held["armies"][0]])
+
+
+def fleet(i, x, y, ships=50, supplies=0, condition=60, owner=ME, army=-1):
+    return {"id": i, "owner": owner, "x": x, "y": y, "ships": ships, "supplies": supplies, "condition": condition,
+            "building": False, "army": army, "moves": 20}
+
+
+def test_docked_fleet_is_supplied_and_repaired():
+    s = state(cities=[city(10, 61, 60, ME, supplies=300)], me_kw={"treasury": 2000})
+    s["fleets"] = [fleet(3, 60, 60)]
+    o = [x for x in B.decide(s) if x["op"] in ("supply_fleet", "repair_fleet")]
+    assert o == [{"op": "supply_fleet", "fleet": 3, "city": 10, "tons": 300},
+                 {"op": "repair_fleet", "fleet": 3, "points": 40}], o    # cost 50 x 40 / 5 = 400, 1600 left
+    poor = state(cities=[city(10, 61, 60, ME, supplies=300)], me_kw={"treasury": 1300})
+    poor["fleets"] = [fleet(3, 60, 60)]
+    assert not [x for x in B.decide(poor) if x["op"] == "repair_fleet"]   # would leave 900 < 1000
+    full = state(cities=[city(10, 61, 60, ME, supplies=300)], me_kw={"treasury": 2000})
+    full["fleets"] = [fleet(3, 60, 60, supplies=300, condition=90), fleet(4, 60, 60, army=2), fleet(5, 90, 90)]
+    assert not [x for x in B.decide(full) if x["op"] in ("supply_fleet", "repair_fleet")], B.decide(full)
+
+
+def test_mercenaries_are_paid_from_the_treasury():
+    a = army(0, ME, 51, 50, 10000)
+    a["units"] = [{"type": "li", "troops": 8000, "quality": 5, "merc": 0},             # a regular: the treasury pays it
+                  {"type": "li", "troops": 11216, "quality": 7, "merc": 30}]           # Kardackians: 56 x 1 x 7 // 5 = 78
+    a["money"] = 100
+    assert B.mercenary_pay(a) == 78
+    s = state([a], me_kw={"treasury": 2000})
+    assert [x for x in B.decide(s) if x["op"] == "fund_army"] == [{"op": "fund_army", "army": 0, "money": 300}], B.decide(s)
+    a["money"] = 200                                                                    # two quarters' pay is there
+    assert not [x for x in B.decide(state([a], me_kw={"treasury": 2000})) if x["op"] == "fund_army"]
+    a["money"] = 100
+    assert not [x for x in B.decide(state([a], me_kw={"treasury": 1200})) if x["op"] == "fund_army"]   # reserve
+    far = dict(a, x=70, y=70)
+    assert not [x for x in B.decide(state([far], me_kw={"treasury": 2000})) if x["op"] == "fund_army"]  # no city
+    leaving = dict(a, x=51, y=50, supply_pct=0, supplies=0)                         # next to Rome, which is dry: it
+    s = state([leaving], cities=[city(10, 58, 50, ME, supplies=500)], me_kw={"treasury": 2000})   # marches to city 10
+    s["cities"][0]["supplies"] = 0
+    o = [x["op"] for x in B.decide(s) if x["op"] != "recruit"]
+    assert o == ["move", "fund_army"], o                                           # it ends next to city 10: paid there
+    s = state([leaving], cities=[city(10, 75, 50, ME, supplies=500)], me_kw={"treasury": 2000})   # 10 moves: ends in open country
+    s["cities"][0]["supplies"] = 0
+    o = [x["op"] for x in B.decide(s) if x["op"] != "recruit"]
+    assert o == ["move"], o                                                        # ends away from any city: not paid
+
+
+def test_idle_armies_next_to_each_other_join_then_top_up():
+    a, b = army(3, ME, 51, 50, 20000), army(7, ME, 51, 51, 15000)                 # both next to Rome (50,50)
+    for x in (a, b):
+        x["units"] = [{"type": "hi", "troops": x["troops"], "quality": 6, "merc": 0}] * 4
+    o = B.decide(state([a, b]))
+    assert [x for x in o if x["op"] == "join_armies"] == [{"op": "join_armies", "army": 3, "partner": 7}], o
+    assert o[-1]["op"] == "join_armies", o                                          # the last army order
+    merged = army(3, ME, 51, 50, 35000)                                             # the turn after: 351 capacity, 20 aboard
+    merged["supplies"] = 20
+    o = B.decide(state([merged], cities=[]))
+    assert {"op": "buy_supply", "army": 3, "city": 100, "tons": 100} in o, o       # Rome's 100 tons, all of it
+
+
+def test_join_refusals():
+    def pair(ta=20000, tb=15000, units=4):
+        a, b = army(3, ME, 51, 50, ta), army(7, ME, 51, 51, tb)
+        for x in (a, b):
+            x["units"] = [{"type": "hi", "troops": 1000, "quality": 6, "merc": 0}] * units
+        return a, b
+    js = lambda arm: [x for x in B.decide(state(arm)) if x["op"] == "join_armies"]
+    assert not js(list(pair(60000, 45000))), "100,000 troops or more: refused by the game"
+    assert not js(list(pair(units=11))), "more than 20 units together"
+    a, b = pair()
+    c = army(9, ME, 52, 49, 5000)                                                   # a second neighbour of army 3
+    assert not js([a, b, c]) or all(x["army"] != 3 for x in js([a, b, c])), js([a, b, c])
+    a, b = pair()
+    e = army(1, FOE, 53, 50, 1000)                                                  # an invader: army 3 intercepts instead
+    assert not js([a, b, e]), js([a, b, e])
+
+
+def test_supply_fleet_action_plumbing():
+    import difftest.actions as A
+    import difftest.remake as R
+    a = A.validate({"op": "supply_fleet", "fleet": 3, "city": 10, "tons": 300})
+    assert R.command(a) == "buy-fleet-supply {fleet:3} {city:10} 300", R.command(a)
+    f = A.validate({"op": "fund_army", "army": 2, "money": 300})
+    assert R.command(f) == "transfer-money {army:2} 300", R.command(f)
+
+
+def test_march_detours_around_water_the_straight_line_crosses():
+    s = state([army(0, ME, 60, 50, 5000, moves=12)])
+    m = list(s["map"])
+    for y in range(40, 60):
+        m[55 * 140 + y] = 0                                          # a sea strip at x = 55, rows 40..59 (the map is column-major)
+    s["map"] = tuple(m)
+    o = ops(s)[0]
+    assert o[0] == "move", o
+    t = (o[3], o[4])
+    assert all(B.cell(s, *u) in B.LAND for u in B.line((60, 50), t)), t   # the clicked straight line stays on land
+    assert t[1] >= 59 or t[1] <= 40 or t[0] > 55, t                      # it heads round the strip's end
 
 
 def test_field_and_siege_strength_and_defence():

@@ -35,6 +35,8 @@ OPS = {
     "embark": {"army": int, "fleet": int},             # adjacent own fleet carrying no army
     "disembark": {"army": int, "fleet": int, "x": int, "y": int},   # the army aboard `fleet` lands on adjacent (x, y)
     "repair_fleet": {"fleet": int, "points": int},
+    "supply_fleet": {"fleet": int, "city": int, "tons": int},   # tons from the adjacent own city (rulebot-2, 2026-11-05)
+    "fund_army": {"army": int, "money": int},          # talents treasury -> army purse, a multiple of 100 (mercenary pay)
     "scuttle_fleet": {"fleet": int},
     "split_fleet": {"fleet": int, "ships": int},
     "join_fleets": {"fleet": int, "partner": int},     # original: Join on `fleet` (the game picks the adjacent partner)

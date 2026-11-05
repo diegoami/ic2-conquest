@@ -2,13 +2,13 @@
 # Owner 2026-11-04: "complete this and play a game with all civilizations" (the 7 civs not yet played, 40 turns, full
 # campaigns) and "5 games x 150 turns: Rome, Carthago, Ptolomeans, Seleucids, Macedons ... save checkpoints so that we can
 # continue if interrupted" (original only: the comparison is the anchored replay; owner: "we need to get to the later years").
-# Remake v0.9.3 (a44c42fc). One game at a time; each waits for free memory (memory wait-for-free-memory). Re-running this
+# Remake v0.9.3 (a44c42fc) until 2026-11-04; from 2026-11-05 v0.9.4 (168dbc04): games finished before keep their a44c42fc replays. One game at a time; each waits for free memory (memory wait-for-free-memory). Re-running this
 # script continues where it stopped: a finished game (summary.json) is skipped, an unfinished one is resumed exactly
 # (difftest.campaign --resume). Every 25 turns and at the end a pack goes to the save corpus (release ic2-save-corpus +
 # gdrive:IC2/artifacts/save-corpus). After each game: anchored replay with per-turn seeds (+ retries), archive, commit, push.
 set -u
 cd "$(dirname "$0")/../../.."
-PIN=a44c42fc
+PIN=168dbc04
 export IC2_REMAKE=$HOME/projects/ic2-remake-pin-$PIN IC2_DIFF_BUILD=$PWD/artifacts/diffpin-$PIN-build PYTHONUNBUFFERED=1 IC2_LOG_RANDSEED=1
 LOG=artifacts/longgames-queue.log
 # 2026-11-04 evening (owner): the remaining long games both ways, AI-played (observation build) and rulebot-2.
