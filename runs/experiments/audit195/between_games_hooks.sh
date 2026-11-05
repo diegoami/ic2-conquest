@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # #195, run between two long-game queue items: (1) C22: the D734 hook v2 (outer caller past DBA8's recursion) on the 16
-# starts; (2) the own-capital stays: the FB7C diplomacy hook, one round from each of the 8 exact starts (research PR #213).
+# starts; (2) the own-capital stays: the FB7C diplomacy hook, one round from each of the 8 exact starts (research PR #213);
+# (3) step 7: the fleet-phase hook on three late Carthage-game turns.
 # waits for a NEW "done: N turns in K part(s)" line in the queue log (polled each second past the line count at start), takes a Wine hold
 # at once (before the queue's next wait_free), runs, releases. Holds and runs in this one script (memory
 # wine-one-run-at-a-time: never chain jobs on a phrase a launcher echoes).
@@ -21,4 +22,10 @@ echo "$(date -Is) v4 hook run exit $?" >> $LOG
 SV=/home/diego/projects/ic2-conquest/artifacts/run-exp-audit195/stays-hook-v1/starts
 IC2_FLEET_HOOK=fb7c_hook IC2_HOOK_LOG=fb7c IC2_START_RANDSEEDS=$SV/seeds.json PYTHONUNBUFFERED=1 \
   python3 -m difftest.probes.fleetphase_hook_run ${OUT%/*}/stays-fb7c-v1 1 $SV/*.SAV >> $LOG 2>&1
-echo "$(date -Is) fb7c hook run exit $?; releasing the queue" >> $LOG
+echo "$(date -Is) fb7c hook run exit $?" >> $LOG
+# (3) step 7: the original's fleet phase on the late Carthage-game turns whose fleets differ (Celtiberia's shuttle t127/t129,
+# Ptolemaic t130), from the stored starts with their logged RandSeeds (no human orders on those turns)
+LF=/home/diego/projects/ic2-conquest/artifacts/run-exp-audit195/late-fleet-starts
+IC2_FLEET_HOOK=fleetphase_hook IC2_HOOK_LOG=fleet IC2_START_RANDSEEDS=$LF/seeds.json PYTHONUNBUFFERED=1 \
+  python3 -m difftest.probes.fleetphase_hook_run ${OUT%/*}/late-fleet-hook-v1 1 $LF/*.SAV >> $LOG 2>&1
+echo "$(date -Is) fleet hook run exit $?; releasing the queue" >> $LOG
