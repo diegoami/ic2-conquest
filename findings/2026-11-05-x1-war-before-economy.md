@@ -73,7 +73,7 @@ So these are the position rows of these seats. They were unattributed until now,
 - **(a) Mobilise.** It mobilises ready slots (state 24) through `FUN_0044a4e0` until the gap is covered. It does so only
   if an own army is within 6 tiles of a ready slot's city, or if there are 4 or more ready slots.
 - **(b) Raise.** It raises up to 8 new slots (`FUN_004501f4`) in empty slots. It does so while the recruits do not cover
-  the gap, the level is below 100, and the treasury test (or the first 3 slots) passes. Each raised slot costs treasury
+  the gap, the level is below 100, and the treasury gate passes. The gate is `wealth / −500 < treasury`, i.e. the treasury may sink to −wealth/500; the first 3 slots raised in a call skip it. Each slot's cost is subtracted at once, so the treasury can go negative (Media t1: 920 → −134). Each raised slot costs treasury
   and adds `troops × 1000 / wealth + 1` to the level.
 
 **Callers (decompile).** `FUN_004501f4` is called only by `FUN_004504f4`, and `FUN_004504f4` only by `FFBC`.
