@@ -48,7 +48,7 @@ original's end and the remake's end. It assigns the first class that applies:
 | **quiet (armies)** | **20** | | | |
 
 Notes on the classes:
-- **Draws (diplomacy, battle) and their consequences (downstream)** cover 94 rows: 42 % of all rows and 56 % of the 169
+- **Draws (diplomacy, battle) and their consequences (downstream)**, not counting the 7 human_battle rows, cover 94 rows: 42 % of all rows and 56 % of the 169
   non-human-phase rows. This matches the earlier years, where the stays and most position rows came down to war rolls
   and battle outcomes (X1 and stays findings).
 - **human_phase**: all 53 are the rulebot-2 seat's own armies. The difference starts in the human phase (that game's
@@ -62,8 +62,8 @@ Notes on the classes:
 - **Armies (20):** 8 differ by at most 3 tiles (tie-like: Macedonia round Pella, Carthage round Carthago, Ptolemaic
   round Alexandria). 11 are farther (Media t100/t102 by about 10 tiles; Rome t123 at (80,73) against (103,47);
   Ptolemaic t130 at (113,72) against (114,95)). 1 is unpaired.
-- **Fleets (48):** 39 are farther than 3 tiles. One pattern dominates:
-  - **Celtiberia's fleet 6: 12 quiet rows** (14 in all), mostly every other turn from t96 to t145.
+- **Fleets (48):** 8 are within 3 tiles, 39 farther, 1 unpaired. One pattern dominates:
+  - **Celtiberia's fleet (fleet 6 in the t127 AI log; the rows carry no fleet id): 12 quiet rows** (14 in all), mostly every other turn from t96 to t145.
     - In the original it sails between (48,56) and the open sea at about (70,67).
     - In the remake it stays at (48,56). Its AI log (`late-ailog-v1`, t127) reads "original zero-move mercenary
       rendezvous army-15: fleet fleet-6 toward (48, 56)" and "fleet phase: fleet-6 stored-route".
@@ -83,7 +83,7 @@ It will show what the original's fleet phase chose, and whether the rendezvous w
 
 ## Limits
 
-- **The classes are heuristic.**
+- **The classes are first-match heuristics, so "quiet" means a candidate, not a proven rule difference.**
   - "battle" means only that the nation's battle or siege news differs; it is not traced to a draw.
   - "downstream" assumes that an earlier seat's difference explains a later one. The seat order is read from the save
     (`turn_order`, starting after the human's seat).

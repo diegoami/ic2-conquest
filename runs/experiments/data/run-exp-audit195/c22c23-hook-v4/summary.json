@@ -1,0 +1,814 @@
+[
+ {
+  "kind": "attack",
+  "caller": "FUN_0044efc8@0x44f2fe",
+  "count": 32,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 70,
+    "nation": 12,
+    "week": 7,
+    "army": 11,
+    "target_army": 5,
+    "army_pos": [
+     183,
+     43
+    ]
+   },
+   {
+    "start": "S01_Carthage_AUTO0720",
+    "seq": 20,
+    "nation": 0,
+    "week": 3,
+    "army": 0,
+    "target_army": 9,
+    "army_pos": [
+     97,
+     31
+    ]
+   },
+   {
+    "start": "S01_Carthage_AUTO0720",
+    "seq": 62,
+    "nation": 12,
+    "week": 7,
+    "army": 0,
+    "target_army": 5,
+    "army_pos": [
+     183,
+     43
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "attack",
+  "caller": "FUN_0044f31c@0x44f40e",
+  "count": 32,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 27,
+    "nation": 1,
+    "week": 3,
+    "army": 2,
+    "target_army": 10,
+    "army_pos": [
+     39,
+     64
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 54,
+    "nation": 11,
+    "week": 5,
+    "army": 11,
+    "target_army": 5,
+    "army_pos": [
+     182,
+     42
+    ]
+   },
+   {
+    "start": "S01_Carthage_AUTO0720",
+    "seq": 52,
+    "nation": 11,
+    "week": 5,
+    "army": 11,
+    "target_army": 5,
+    "army_pos": [
+     182,
+     42
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044e84c@0x44e918",
+  "count": 32,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 2,
+    "nation": 1,
+    "week": 1,
+    "army": 3,
+    "target": [
+     87,
+     77
+    ],
+    "army_pos": [
+     93,
+     79
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 12,
+    "nation": 1,
+    "week": 1,
+    "army": 3,
+    "target": [
+     87,
+     77
+    ],
+    "army_pos": [
+     93,
+     79
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 45,
+    "nation": 3,
+    "week": 5,
+    "army": 6,
+    "target": [
+     224,
+     100
+    ],
+    "army_pos": [
+     223,
+     82
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044ebe8@0x44ec82",
+  "count": 3,
+  "examples": [
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 17,
+    "nation": 3,
+    "week": 3,
+    "army": 6,
+    "target": [
+     221,
+     94
+    ],
+    "army_pos": [
+     225,
+     73
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 82,
+    "nation": 12,
+    "week": 7,
+    "army": 0,
+    "target": [
+     192,
+     38
+    ],
+    "army_pos": [
+     198,
+     48
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 83,
+    "nation": 12,
+    "week": 7,
+    "army": 0,
+    "target": [
+     192,
+     38
+    ],
+    "army_pos": [
+     196,
+     43
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044ebe8@0x44ecdb",
+  "count": 8,
+  "examples": [
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 19,
+    "nation": 12,
+    "week": 3,
+    "army": 12,
+    "target": [
+     197,
+     47
+    ],
+    "army_pos": [
+     200,
+     45
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 48,
+    "nation": 12,
+    "week": 5,
+    "army": 12,
+    "target": [
+     197,
+     47
+    ],
+    "army_pos": [
+     198,
+     46
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 50,
+    "nation": 12,
+    "week": 5,
+    "army": 12,
+    "target": [
+     201,
+     49
+    ],
+    "army_pos": [
+     198,
+     46
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044efc8@0x44f2fe",
+  "count": 128,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 8,
+    "nation": 12,
+    "week": 3,
+    "army": 12,
+    "target": [
+     178,
+     47
+    ],
+    "army_pos": [
+     200,
+     45
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 34,
+    "nation": 12,
+    "week": 5,
+    "army": 12,
+    "target": [
+     180,
+     46
+    ],
+    "army_pos": [
+     194,
+     46
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 68,
+    "nation": 12,
+    "week": 7,
+    "army": 11,
+    "target": [
+     182,
+     43
+    ],
+    "army_pos": [
+     187,
+     46
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044f31c@0x44f40e",
+  "count": 203,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 0,
+    "nation": 11,
+    "week": 1,
+    "army": 11,
+    "target": [
+     178,
+     47
+    ],
+    "army_pos": [
+     190,
+     30
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 1,
+    "nation": 1,
+    "week": 1,
+    "army": 2,
+    "target": [
+     34,
+     63
+    ],
+    "army_pos": [
+     47,
+     62
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 9,
+    "nation": 2,
+    "week": 3,
+    "army": 4,
+    "target": [
+     227,
+     49
+    ],
+    "army_pos": [
+     225,
+     72
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044f31c@0x44f444",
+  "count": 213,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 4,
+    "nation": 6,
+    "week": 1,
+    "army": 9,
+    "target": [
+     121,
+     53
+    ],
+    "army_pos": [
+     93,
+     28
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 5,
+    "nation": 6,
+    "week": 1,
+    "army": 9,
+    "target": [
+     121,
+     53
+    ],
+    "army_pos": [
+     95,
+     29
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 6,
+    "nation": 8,
+    "week": 1,
+    "army": 10,
+    "target": [
+     46,
+     65
+    ],
+    "army_pos": [
+     34,
+     63
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044f31c@0x44f481",
+  "count": 868,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 7,
+    "nation": 3,
+    "week": 3,
+    "army": 7,
+    "target": [
+     190,
+     94
+    ],
+    "army_pos": [
+     189,
+     104
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 11,
+    "nation": 15,
+    "week": 3,
+    "army": 6,
+    "target": [
+     170,
+     38
+    ],
+    "army_pos": [
+     166,
+     35
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 13,
+    "nation": 4,
+    "week": 3,
+    "army": 8,
+    "target": [
+     143,
+     41
+    ],
+    "army_pos": [
+     144,
+     41
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044f31c@0x44f4a8",
+  "count": 16,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 3,
+    "nation": 1,
+    "week": 1,
+    "army": 3,
+    "target": [
+     87,
+     77
+    ],
+    "army_pos": [
+     88,
+     77
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 13,
+    "nation": 1,
+    "week": 1,
+    "army": 3,
+    "target": [
+     87,
+     77
+    ],
+    "army_pos": [
+     88,
+     77
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 112,
+    "nation": 12,
+    "week": 9,
+    "army": 0,
+    "target": [
+     172,
+     49
+    ],
+    "army_pos": [
+     195,
+     42
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "entry",
+  "caller": "FUN_0044f31c@0x44f4cc",
+  "count": 54,
+  "examples": [
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 46,
+    "nation": 3,
+    "week": 5,
+    "army": 6,
+    "target": [
+     227,
+     49
+    ],
+    "army_pos": [
+     224,
+     90
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 80,
+    "nation": 3,
+    "week": 7,
+    "army": 6,
+    "target": [
+     269,
+     104
+    ],
+    "army_pos": [
+     224,
+     99
+    ]
+   },
+   {
+    "start": "S03_Ptolemaic_AUTO0720",
+    "seq": 43,
+    "nation": 1,
+    "week": 3,
+    "army": 3,
+    "target": [
+     87,
+     77
+    ],
+    "army_pos": [
+     88,
+     77
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "resupply",
+  "caller": "FUN_0044e84c@0x44e918",
+  "count": 5,
+  "examples": [
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 79,
+    "nation": 3,
+    "week": 7,
+    "army": 6,
+    "city": 269,
+    "army_pos": [
+     224,
+     99
+    ]
+   },
+   {
+    "start": "S10_Dacia_AUTO0720",
+    "seq": 35,
+    "nation": 0,
+    "week": 3,
+    "army": 1,
+    "city": 120,
+    "army_pos": [
+     120,
+     52
+    ]
+   },
+   {
+    "start": "S10_Dacia_AUTO0720",
+    "seq": 67,
+    "nation": 0,
+    "week": 5,
+    "army": 1,
+    "city": 120,
+    "army_pos": [
+     120,
+     52
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "resupply",
+  "caller": "FUN_0044ebe8@0x44ecdb",
+  "count": 4,
+  "examples": [
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 20,
+    "nation": 12,
+    "week": 3,
+    "army": 12,
+    "city": 233,
+    "army_pos": [
+     198,
+     46
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 49,
+    "nation": 12,
+    "week": 5,
+    "army": 12,
+    "city": 233,
+    "army_pos": [
+     198,
+     46
+    ]
+   },
+   {
+    "start": "S02_Seleucid_AUTO0720",
+    "seq": 52,
+    "nation": 12,
+    "week": 5,
+    "army": 12,
+    "city": 233,
+    "army_pos": [
+     198,
+     48
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "resupply",
+  "caller": "FUN_0044f31c@0x44f481",
+  "count": 562,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 12,
+    "nation": 15,
+    "week": 3,
+    "army": 6,
+    "city": 192,
+    "army_pos": [
+     169,
+     37
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 14,
+    "nation": 4,
+    "week": 3,
+    "army": 8,
+    "city": 144,
+    "army_pos": [
+     144,
+     41
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 17,
+    "nation": 4,
+    "week": 3,
+    "army": 8,
+    "city": 144,
+    "army_pos": [
+     144,
+     42
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "siege",
+  "caller": "FUN_0044ebe8@0x44ecdb",
+  "count": 3,
+  "examples": [
+   {
+    "start": "S08_Celtiberia_AUTO0720",
+    "seq": 83,
+    "nation": 1,
+    "week": 7,
+    "army": 2,
+    "city": 17,
+    "army_pos": [
+     34,
+     63
+    ]
+   },
+   {
+    "start": "S08_Celtiberia_AUTO0720",
+    "seq": 110,
+    "nation": 1,
+    "week": 9,
+    "army": 2,
+    "city": 17,
+    "army_pos": [
+     34,
+     63
+    ]
+   },
+   {
+    "start": "S08_Celtiberia_AUTO0720",
+    "seq": 138,
+    "nation": 1,
+    "week": 11,
+    "army": 2,
+    "city": 17,
+    "army_pos": [
+     34,
+     63
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "siege",
+  "caller": "FUN_0044f31c@0x44f444",
+  "count": 24,
+  "examples": [
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 62,
+    "nation": 6,
+    "week": 5,
+    "army": 9,
+    "city": 87,
+    "army_pos": [
+     101,
+     33
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 98,
+    "nation": 6,
+    "week": 7,
+    "army": 9,
+    "city": 80,
+    "army_pos": [
+     98,
+     38
+    ]
+   },
+   {
+    "start": "S00_Rome_AUTO0720",
+    "seq": 136,
+    "nation": 6,
+    "week": 9,
+    "army": 9,
+    "city": 82,
+    "army_pos": [
+     99,
+     41
+    ]
+   }
+  ]
+ },
+ {
+  "kind": "siege",
+  "caller": "FUN_0044f31c@0x44f4cc",
+  "count": 22,
+  "examples": [
+   {
+    "start": "S03_Ptolemaic_AUTO0720",
+    "seq": 66,
+    "nation": 1,
+    "week": 5,
+    "army": 2,
+    "city": 19,
+    "army_pos": [
+     37,
+     62
+    ]
+   },
+   {
+    "start": "S03_Ptolemaic_AUTO0720",
+    "seq": 91,
+    "nation": 1,
+    "week": 7,
+    "army": 2,
+    "city": 19,
+    "army_pos": [
+     37,
+     62
+    ]
+   },
+   {
+    "start": "S03_Ptolemaic_AUTO0720",
+    "seq": 117,
+    "nation": 1,
+    "week": 9,
+    "army": 2,
+    "city": 19,
+    "army_pos": [
+     37,
+     62
+    ]
+   }
+  ]
+ }
+]

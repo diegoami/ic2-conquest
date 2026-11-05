@@ -1,3 +1,22 @@
+# Handover: 2026-11-05 evening — wrap-up (owner: "finish the current tasks, then the IC2 session processes the evidence")
+
+- **Long-game queue:** stopped by the session before the Macedonia rulebot-2 item (owner: skip it). It is resumable with
+  `setsid nohup bash runs/experiments/longgames/run_queue.sh`; Macedonia is the only item left, and it would play with
+  the reworked rulebot-2.
+- **`long-games` merged** into main (PR #344): the queue's data and the rulebot-2 rework.
+- **Step 7 done** (`findings/2026-11-05-audit195-step7-late-years.md`, PR #343, with research's notes).
+- **The three hook runs** ran in the queue's last gap (`runs/experiments/audit195/between_games_hooks.sh`):
+  - C22 v4 (`run-exp-audit195/c22c23-hook-v4`);
+  - FB7C on the 8 stays starts (`stays-fb7c-v1`);
+  - the late fleet phase (`late-fleet-hook-v1`).
+
+  Their raw logs are archived and handed to ic2-research to analyse. This session does not interpret them.
+- **Next session:**
+  - fold research's conclusions from those runs into the C22/C23/stays and step-7 findings;
+  - the 50 AMB and 15 UNAUD inventory rows;
+  - a 168dbc04 replay of the observer games (AI-only late years);
+  - the Macedonia rulebot-2 game, if wanted.
+
 # Handover: 2026-11-05 — AI audit #195 pass 1, rulebot-2 rework, long-game queue on v0.9.4
 
 WSL desktop session. Read this entry first; the 2026-11-04 entries below still hold for the tooling.
