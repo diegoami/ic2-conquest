@@ -156,7 +156,7 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 | row (game, turn) | where it sits | state |
 |---|---|---|
-| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | open | **attributed: diplomacy draws** (the remake declares war or allies in the seat, the original does not; 9 rows; `2026-11-05-audit195-c22-c23-stays.md`) |
+| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | open | **diplomacy draws, the leading reading** (the remake declares war or allies in the seat, the original does not; 9 rows; the FB7C hook run settles it; `2026-11-05-audit195-c22-c23-stays.md`) |
 | Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | **attributed (pass 1): matches the original in Tactical mode on 3 seeds** |
 | Greece army at (112,70): Bithynia t30–31, Media t31–32; Numidia t24–25 | C20 (T277) | fixed on 168dbc04; not hook-confirmed |
 | Numidia t32 | — | not attributed |
