@@ -217,6 +217,8 @@ def perform(g, a, state):
         return g.disembark(a["fleet"], a["x"], a["y"])
     if op == "repair_fleet":
         return g.repair_fleet(a["fleet"], a["points"])
+    if op == "supply_fleet":
+        return g.supply_fleet(a["fleet"], tons=a["tons"])     # the dialog's default provider (as buy_supply)
     if op == "scuttle_fleet":
         return g.scuttle_fleet(a["fleet"], yes=True)
     if op == "split_fleet":
